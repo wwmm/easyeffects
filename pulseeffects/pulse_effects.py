@@ -334,7 +334,7 @@ class PulseEffects(Gtk.Application):
                 mag = self.spectrum_magnitudes[n]
 
                 if mag > 0:
-                    bar_height = self.spectrum_magnitudes[n] * height
+                    bar_height = self.spectrum_magnitudes[n] * 1.5
 
                     ctx.rectangle(n * dx, height - bar_height, dx, bar_height)
 

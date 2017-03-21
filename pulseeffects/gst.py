@@ -227,11 +227,6 @@ class GstEffects(GObject.GObject):
 
                     magnitudes = [v - min_value for v in magnitudes]
 
-                    max_value = max(magnitudes)
-
-                    if max_value > 0:
-                        magnitudes = [v / max_value for v in magnitudes]
-
                     self.emit('new_spectrum', magnitudes)
         return True
 
