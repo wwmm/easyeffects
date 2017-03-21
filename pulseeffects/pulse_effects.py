@@ -80,8 +80,8 @@ class PulseEffects(Gtk.Application):
         main_ui_builder = Gtk.Builder()
         headerbar_builder = Gtk.Builder()
 
-        main_ui_builder.add_from_file('ui.glade')
-        headerbar_builder.add_from_file('headerbar.glade')
+        main_ui_builder.add_from_file('ui/main_ui.glade')
+        headerbar_builder.add_from_file('ui/headerbar.glade')
 
         main_ui_handlers = {
             'on_MainWindow_delete_event': self.on_MainWindow_delete_event,
@@ -512,7 +512,7 @@ class PulseEffects(Gtk.Application):
     def onAbout(self, action, parameter):
         builder = Gtk.Builder()
 
-        builder.add_from_file('about.glade')
+        builder.add_from_file('ui/about.glade')
 
         dialog = builder.get_object('about_dialog')
 

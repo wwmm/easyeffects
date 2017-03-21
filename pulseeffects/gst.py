@@ -77,11 +77,15 @@ class GstEffects(GObject.GObject):
         audio_src.set_property('client-name', 'PulseEffects')
         audio_src.set_property('device', 'PulseEffects.monitor')
 
+        self.limiter.set_property('qos', True)
+        self.freeverb.set_property('qos', True)
+        self.equalizer.set_property('qos', True)
+
         spectrum.set_property('bands', self.spectrum_nbands)
         spectrum.set_property('threshold', self.spectrum_threshold)
 
         audio_sink.set_property('drift-tolerance', 20000)  # 20 ms
-        audio_sink.set_property('qos', True)  # 10 ms
+        audio_sink.set_property('qos', True)
 
         pipeline.add(audio_src)
         pipeline.add(queue_src)
@@ -174,6 +178,8 @@ class GstEffects(GObject.GObject):
     def on_message(self, bus, msg):
         if msg.type == Gst.MessageType.ERROR:
             print('on_error():', msg.parse_error())
+        elif msg.type == Gst.MessageType.QOS:
+            print('qos!!!!')
         elif msg.type == Gst.MessageType.ELEMENT:
             plugin = msg.src.get_name()
 
