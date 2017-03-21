@@ -303,6 +303,9 @@ class PulseEffects(Gtk.Application):
             switch.set_active(connected)
             switch.set_name('switch_' + str(idx))
 
+            if connected:
+                is_there_app_enabled = True
+
             def move_sink_input(obj, state):
                 idx = int(obj.get_name().split('_')[1])
 

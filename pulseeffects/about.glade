@@ -7,7 +7,7 @@
     <property name="modal">True</property>
     <property name="type_hint">dialog</property>
     <property name="program_name">PulseEffects</property>
-    <property name="comments" translatable="yes">Stereo Equalizer and Reverberation for Pulseaudio Applications</property>
+    <property name="comments" translatable="yes">Audio Effects for Pulseaudio Applications</property>
     <property name="authors">wellington.melo@cefet-rj.br</property>
     <property name="logo_icon_name">image-missing</property>
     <property name="license_type">gpl-3-0</property>
