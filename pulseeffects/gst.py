@@ -80,7 +80,8 @@ class GstEffects(GObject.GObject):
         spectrum.set_property('bands', self.spectrum_nbands)
         spectrum.set_property('threshold', self.spectrum_threshold)
 
-        audio_sink.set_property('drift-tolerance', 10000)  # 10 ms
+        audio_sink.set_property('drift-tolerance', 20000)  # 20 ms
+        audio_sink.set_property('qos', True)  # 10 ms
 
         pipeline.add(audio_src)
         pipeline.add(queue_src)
@@ -222,7 +223,8 @@ class GstEffects(GObject.GObject):
 
                     max_value = max(magnitudes)
 
-                    magnitudes = [v / max_value for v in magnitudes]
+                    if max_value > 0:
+                        magnitudes = [v / max_value for v in magnitudes]
 
                     self.emit('new_spectrum', magnitudes)
         return True
