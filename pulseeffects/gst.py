@@ -160,7 +160,7 @@ class GstEffects(GObject.GObject):
 
                 self.spectrum_freqs.append(freq)
 
-            # getting only freqs below 16 kHz
+            # getting only freqs below self.max_spectrum_freq
             element = next(i for i in self.spectrum_freqs if i >
                            self.max_spectrum_freq)
 
@@ -214,8 +214,15 @@ class GstEffects(GObject.GObject):
 
                     magnitudes = magnitudes[:self.spectrum_nfreqs]
 
-                    magnitudes = [float(v) - self.spectrum_threshold
-                                  for v in magnitudes]
+                    magnitudes = [float(v) for v in magnitudes]
+
+                    min_value = min(magnitudes)
+
+                    magnitudes = [v - min_value for v in magnitudes]
+
+                    max_value = max(magnitudes)
+
+                    magnitudes = [v / max_value for v in magnitudes]
 
                     self.emit('new_spectrum', magnitudes)
         return True

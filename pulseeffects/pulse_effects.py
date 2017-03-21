@@ -303,9 +303,6 @@ class PulseEffects(Gtk.Application):
             switch.set_active(connected)
             switch.set_name('switch_' + str(idx))
 
-            if connected:
-                is_there_app_enabled = True
-
             def move_sink_input(obj, state):
                 idx = int(obj.get_name().split('_')[1])
 
@@ -337,7 +334,7 @@ class PulseEffects(Gtk.Application):
                 mag = self.spectrum_magnitudes[n]
 
                 if mag > 0:
-                    bar_height = self.spectrum_magnitudes[n]
+                    bar_height = self.spectrum_magnitudes[n] * height
 
                     ctx.rectangle(n * dx, height - bar_height, dx, bar_height)
 
