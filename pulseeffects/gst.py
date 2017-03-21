@@ -59,7 +59,6 @@ class GstEffects(GObject.GObject):
         audio_sink = Gst.ElementFactory.make('pulsesink', None)
 
         queue_src = Gst.ElementFactory.make('queue', None)
-        queue_sink = Gst.ElementFactory.make('queue', None)
 
         level_before_limiter = Gst.ElementFactory.make(
             'level', 'level_before_limiter')
@@ -81,6 +80,8 @@ class GstEffects(GObject.GObject):
         spectrum.set_property('bands', self.spectrum_nbands)
         spectrum.set_property('threshold', self.spectrum_threshold)
 
+        audio_sink.set_property('drift-tolerance', 10000)  # 10 ms
+
         pipeline.add(audio_src)
         pipeline.add(queue_src)
         pipeline.add(level_before_limiter)
@@ -92,7 +93,6 @@ class GstEffects(GObject.GObject):
         pipeline.add(level_after_eq)
         pipeline.add(spectrum_src_type)
         pipeline.add(spectrum)
-        pipeline.add(queue_sink)
         pipeline.add(audio_sink)
 
         audio_src.link(queue_src)
@@ -105,8 +105,7 @@ class GstEffects(GObject.GObject):
         self.equalizer.link(level_after_eq)
         level_after_eq.link(spectrum_src_type)
         spectrum_src_type.link(spectrum)
-        spectrum.link(queue_sink)
-        queue_sink.link(audio_sink)
+        spectrum.link(audio_sink)
 
         spectrum_src_type.connect("have-type", self.media_probe)
 
