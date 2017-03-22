@@ -1,5 +1,6 @@
 __pycache__
 build
+gschemas.compiled
 
 # Compiled python modules.
 *.pyc
