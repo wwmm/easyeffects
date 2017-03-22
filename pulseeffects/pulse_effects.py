@@ -46,15 +46,8 @@ class PulseEffects(Gtk.Application):
         # input-gain,limit,release-time
         self.limiter_default = [0, -10, 1.0]
 
-        # freeverb
-        # room-size,damping,width,level
-        self.reverb_default = [0.5, 0.2, 1, 0.5]
-        self.reverb_cathedral = [0.85, 0, 1.0, 0.5]
-        self.reverb_engine_room = [1.0, 0.25, 1.0, 1.0]
-        self.reverb_small_room = [0.8, 0.25, 0.3, 0.3]
-
-        self.eq_band_user = self.settings.get_value(
-            'equalizer-user').unpack()
+        self.reverb_user = self.settings.get_value('reverb-user').unpack()
+        self.eq_band_user = self.settings.get_value('equalizer-user').unpack()
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
@@ -147,7 +140,7 @@ class PulseEffects(Gtk.Application):
         self.reverb_right_level = main_ui_builder.get_object(
             'reverb_right_level')
 
-        self.apply_reverb_preset(self.reverb_default)
+        self.apply_reverb_preset(self.reverb_user)
 
         # equalizer
 
@@ -394,25 +387,44 @@ class PulseEffects(Gtk.Application):
             label = obj.get_label()
 
             if label == 'cathedral':
-                self.apply_reverb_preset(self.reverb_cathedral)
+                value = self.settings.get_value('reverb-cathedral')
+                self.apply_reverb_preset(value)
             elif label == 'default':
-                self.apply_reverb_preset(self.reverb_default)
+                value = self.settings.get_value('reverb-default')
+                self.apply_reverb_preset(value)
             elif label == 'engine room':
-                self.apply_reverb_preset(self.reverb_engine_room)
+                value = self.settings.get_value('reverb-engine-room')
+                self.apply_reverb_preset(value)
             elif label == 'small room':
-                self.apply_reverb_preset(self.reverb_small_room)
+                value = self.settings.get_value('reverb-small-room')
+                self.apply_reverb_preset(value)
+
+    def save_reverb_user(self, idx, value):
+        self.reverb_user[idx] = value
+
+        out = GLib.Variant('ad', self.reverb_user)
+
+        self.settings.set_value('reverb-user', out)
 
     def on_reverb_room_size_value_changed(self, obj):
-        self.gst.set_reverb_room_size(obj.get_value())
+        value = obj.get_value()
+        self.gst.set_reverb_room_size(value)
+        self.save_reverb_user(0, value)
 
     def on_reverb_damping_value_changed(self, obj):
-        self.gst.set_reverb_damping(obj.get_value())
+        value = obj.get_value()
+        self.gst.set_reverb_damping(value)
+        self.save_reverb_user(1, value)
 
     def on_reverb_width_value_changed(self, obj):
-        self.gst.set_reverb_width(obj.get_value())
+        value = obj.get_value()
+        self.gst.set_reverb_width(value)
+        self.save_reverb_user(2, value)
 
     def on_reverb_level_value_changed(self, obj):
-        self.gst.set_reverb_level(obj.get_value())
+        value = obj.get_value()
+        self.gst.set_reverb_level(value)
+        self.save_reverb_user(3, value)
 
     def apply_eq_preset(self, values):
         self.eq_band0.set_value(values[0])
@@ -477,7 +489,7 @@ class PulseEffects(Gtk.Application):
                 value = self.settings.get_value('equalizer-techno')
                 self.apply_eq_preset(value)
 
-    def save_eq_current(self, idx, value):
+    def save_eq_user(self, idx, value):
         self.eq_band_user[idx] = value
 
         out = GLib.Variant('ad', self.eq_band_user)
@@ -487,52 +499,52 @@ class PulseEffects(Gtk.Application):
     def on_eq_band0_value_changed(self, obj):
         value = obj.get_value()
         self.gst.set_eq_band0(value)
-        self.save_eq_current(0, value)
+        self.save_eq_user(0, value)
 
     def on_eq_band1_value_changed(self, obj):
         value = obj.get_value()
         self.gst.set_eq_band1(value)
-        self.save_eq_current(1, value)
+        self.save_eq_user(1, value)
 
     def on_eq_band2_value_changed(self, obj):
         value = obj.get_value()
         self.gst.set_eq_band2(value)
-        self.save_eq_current(2, value)
+        self.save_eq_user(2, value)
 
     def on_eq_band3_value_changed(self, obj):
         value = obj.get_value()
         self.gst.set_eq_band3(value)
-        self.save_eq_current(3, value)
+        self.save_eq_user(3, value)
 
     def on_eq_band4_value_changed(self, obj):
         value = obj.get_value()
         self.gst.set_eq_band4(value)
-        self.save_eq_current(4, value)
+        self.save_eq_user(4, value)
 
     def on_eq_band5_value_changed(self, obj):
         value = obj.get_value()
         self.gst.set_eq_band5(value)
-        self.save_eq_current(5, value)
+        self.save_eq_user(5, value)
 
     def on_eq_band6_value_changed(self, obj):
         value = obj.get_value()
         self.gst.set_eq_band6(value)
-        self.save_eq_current(6, value)
+        self.save_eq_user(6, value)
 
     def on_eq_band7_value_changed(self, obj):
         value = obj.get_value()
         self.gst.set_eq_band7(value)
-        self.save_eq_current(7, value)
+        self.save_eq_user(7, value)
 
     def on_eq_band8_value_changed(self, obj):
         value = obj.get_value()
         self.gst.set_eq_band8(value)
-        self.save_eq_current(8, value)
+        self.save_eq_user(8, value)
 
     def on_eq_band9_value_changed(self, obj):
         value = obj.get_value()
         self.gst.set_eq_band9(value)
-        self.save_eq_current(9, value)
+        self.save_eq_user(9, value)
 
     def onAbout(self, action, parameter):
         builder = Gtk.Builder()
