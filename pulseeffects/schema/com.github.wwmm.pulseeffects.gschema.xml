@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
     <schema id="com.github.wwmm.pulseeffects" path="/com/github/wwmm/pulseeffects/">
+        <key name="limiter-user" type="ad">
+          <default>[0, 0, 1]</default>
+        </key>
+
         <key name="reverb-cathedral" type="ad">
           <default>[0.85, 0, 1.0, 0.5]</default>
         </key>

@@ -42,10 +42,7 @@ class PulseEffects(Gtk.Application):
 
         self.settings = Gio.Settings('com.github.wwmm.pulseeffects')
 
-        # fast lookahead limiter
-        # input-gain,limit,release-time
-        self.limiter_default = [0, -10, 1.0]
-
+        self.limiter_user = self.settings.get_value('limiter-user').unpack()
         self.reverb_user = self.settings.get_value('reverb-user').unpack()
         self.eq_band_user = self.settings.get_value('equalizer-user').unpack()
 
@@ -118,9 +115,9 @@ class PulseEffects(Gtk.Application):
         self.limiter_attenuation_levelbar = main_ui_builder.get_object(
             'limiter_attenuation_levelbar')
 
-        self.limiter_input_gain.set_value(self.limiter_default[0])
-        self.limiter_limit.set_value(self.limiter_default[1])
-        self.limiter_release_time.set_value(self.limiter_default[2])
+        self.limiter_input_gain.set_value(self.limiter_user[0])
+        self.limiter_limit.set_value(self.limiter_user[1])
+        self.limiter_release_time.set_value(self.limiter_user[2])
 
         self.limiter_attenuation_levelbar.add_offset_value(
             'GTK_LEVEL_BAR_OFFSET_LOW', 20)
@@ -367,14 +364,27 @@ class PulseEffects(Gtk.Application):
 
         self.spectrum.queue_draw()
 
+    def save_limiter_user(self, idx, value):
+        self.limiter_user[idx] = value
+
+        out = GLib.Variant('ad', self.limiter_user)
+
+        self.settings.set_value('limiter-user', out)
+
     def on_limiter_input_gain_value_changed(self, obj):
-        self.gst.set_limiter_input_gain(obj.get_value())
+        value = obj.get_value()
+        self.gst.set_limiter_input_gain(value)
+        self.save_limiter_user(0, value)
 
     def on_limiter_limit_value_changed(self, obj):
-        self.gst.set_limiter_limit(obj.get_value())
+        value = obj.get_value()
+        self.gst.set_limiter_limit(value)
+        self.save_limiter_user(1, value)
 
     def on_limiter_release_time_value_changed(self, obj):
-        self.gst.set_limiter_release_time(obj.get_value())
+        value = obj.get_value()
+        self.gst.set_limiter_release_time(value)
+        self.save_limiter_user(2, value)
 
     def apply_reverb_preset(self, values):
         self.reverb_room_size.set_value(values[0])
