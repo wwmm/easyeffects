@@ -6,8 +6,8 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gio, GLib, Gtk
 
-from pulseeffects.gst import GstEffects
-from pulseeffects.pulse_manager import PulseManager
+from PulseEffects.gst import GstEffects
+from PulseEffects.pulse_manager import PulseManager
 
 
 class Application(Gtk.Application):

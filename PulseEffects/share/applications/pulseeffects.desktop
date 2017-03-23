@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=Audio Effects for Pulseaudio Applications
+Name=PulseEffects
+Exec=pulseeffects
+Type=Application
+Icon=pulseeffects.png
+StartupNotify=true

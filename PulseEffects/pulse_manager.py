@@ -2,7 +2,7 @@
 
 from gi.repository import GObject, GLib
 
-import pulseeffects.libpulse as p
+import PulseEffects.libpulse as p
 
 
 class PulseManager(GObject.GObject):

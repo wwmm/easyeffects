@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='PulseEffects',
-      version='0.1',
+      version='0.3',
       description='Audio effects for Pulseaudio applications',
       url='https://github.com/wwmm/PulseEffects',
       author='wwmm',
@@ -15,6 +15,6 @@ setup(name='PulseEffects',
           'gst-python',
           'swh-plugins'
       ],
-      scripts=['pulse_effects'],
+      scripts=['pulseeffects'],
       include_package_data=True,
       zip_safe=False)
