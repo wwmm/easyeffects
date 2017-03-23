@@ -1,6 +1,3 @@
 include README.md
 include LICENSE.md
 include PulseEffects/ui/*.glade
-include PulseEffects/share/glib-2.0/schemas/com.github.wwmm.pulseeffects.gschema.xml
-include PulseEffects/share/applications/pulseeffects.desktop
-include PulseEffects/share/icons/hicolor/scalable/apps/pulseeffects.svg
