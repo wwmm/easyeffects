@@ -21,7 +21,7 @@ class PulseManager(GObject.GObject):
         self.sink_idx = -1
         self.sink_inputs = []
 
-        self.app_blacklist = ['PulseEffects', 'pulse_effects']
+        self.app_blacklist = ['PulseEffects', 'pulseeffects']
         self.media_blacklist = ['pulsesink probe', 'audio-volume-change',
                                 'device-added-media', 'device-removed-media']
 
