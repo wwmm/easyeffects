@@ -1,6 +1,6 @@
 # PulseEffects
 
-Stereo equalizer and reverberation for Pulseaudio applications
+Audio effects for Pulseaudio applications
 
 ![](pulseeffects/images/pulseeffects_main_window.png)
 ![](pulseeffects/images/pulseeffects_eq_menu.png)
@@ -22,4 +22,4 @@ Required libraries:
 
 Execution:
 
-	python pulse_effects.py
+	python pulse_effects
