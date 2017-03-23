@@ -1,8 +1,8 @@
-#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 from gi.repository import GObject, GLib
 
-import libpulse as p
+import pulseeffects.libpulse as p
 
 
 class PulseManager(GObject.GObject):
@@ -21,7 +21,7 @@ class PulseManager(GObject.GObject):
         self.sink_idx = -1
         self.sink_inputs = []
 
-        self.app_blacklist = ['PulseEffects', 'pulse_effects.py']
+        self.app_blacklist = ['PulseEffects', 'pulse_effects']
         self.media_blacklist = ['pulsesink probe', 'audio-volume-change',
                                 'device-added-media', 'device-removed-media']
 

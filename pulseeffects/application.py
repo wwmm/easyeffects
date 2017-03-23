@@ -1,18 +1,16 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import sys
+import os
 
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gio, GLib, Gtk
 
-from gst import GstEffects
-from pulse_manager import PulseManager
+from pulseeffects.gst import GstEffects
+from pulseeffects.pulse_manager import PulseManager
 
 
-class PulseEffects(Gtk.Application):
-    """Main class."""
+class Application(Gtk.Application):
 
     def __init__(self):
         app_id = 'com.github.wwmm.pulseeffects'
@@ -21,6 +19,7 @@ class PulseEffects(Gtk.Application):
 
         self.ui_initialized = False
         self.spectrum_magnitudes = []
+        self.module_path = os.path.dirname(__file__)
 
         self.pm = PulseManager()
 
@@ -52,8 +51,9 @@ class PulseEffects(Gtk.Application):
         main_ui_builder = Gtk.Builder()
         headerbar_builder = Gtk.Builder()
 
-        main_ui_builder.add_from_file('ui/main_ui.glade')
-        headerbar_builder.add_from_file('ui/headerbar.glade')
+        main_ui_builder.add_from_file(self.module_path + '/ui/main_ui.glade')
+        headerbar_builder.add_from_file(
+            self.module_path + '/ui/headerbar.glade')
 
         main_ui_handlers = {
             'on_MainWindow_delete_event': self.on_MainWindow_delete_event,
@@ -559,18 +559,10 @@ class PulseEffects(Gtk.Application):
     def onAbout(self, action, parameter):
         builder = Gtk.Builder()
 
-        builder.add_from_file('ui/about.glade')
+        builder.add_from_file(self.module_path + '/ui/about.glade')
 
         dialog = builder.get_object('about_dialog')
 
         dialog.set_transient_for(self.window)
 
         dialog.show()
-
-
-if __name__ == '__main__':
-    w = PulseEffects()
-
-    exit_status = w.run(sys.argv)
-
-    sys.exit(exit_status)

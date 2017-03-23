@@ -1,4 +1,4 @@
-#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 from ctypes import (CFUNCTYPE, POINTER, Structure, c_char_p, c_int, c_uint8,
                     c_uint32, c_uint64, c_void_p, cdll)

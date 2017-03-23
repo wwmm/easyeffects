@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(name='PulseEffects',
       version='0.1',
@@ -7,7 +7,7 @@ setup(name='PulseEffects',
       author='wwmm',
       author_email='wellington.melo@cefet-rj.br',
       license='GPL3',
-      packages=['pulseeffects'],
+      packages=find_packages(),
       install_requires=[
           'gi',
           'gst-plugins-good',
@@ -15,6 +15,6 @@ setup(name='PulseEffects',
           'gst-python',
           'swh-plugins'
       ],
-      scripts=['bin/pulse_effects'],
+      scripts=['pulse_effects'],
       include_package_data=True,
       zip_safe=False)
