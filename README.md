@@ -2,9 +2,9 @@
 
 Audio effects for Pulseaudio applications
 
-![](pulseeffects/images/pulseeffects_main_window.png)
-![](pulseeffects/images/pulseeffects_eq_menu.png)
-![](pulseeffects/images/pulseeffects_reverb_menu.png)
+![](PulseEffects/images/pulseeffects_main_window.png)
+![](PulseEffects/images/pulseeffects_eq_menu.png)
+![](PulseEffects/images/pulseeffects_reverb_menu.png)
 
 Effects order:
 
