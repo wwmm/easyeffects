@@ -19,3 +19,7 @@ Required libraries:
 - Gtk 3.18 or above
 - Gstreamer, Gstreamer Plugins Good, Gstreamer Plugins Bad and Gstreamer Python (version 1.0 or above for all of them)
 - swh-plugins from Ladspa
+
+Arch Linux package:
+
+[https://aur.archlinux.org/packages/pulseeffects/](https://aur.archlinux.org/packages/pulseeffects/) 
