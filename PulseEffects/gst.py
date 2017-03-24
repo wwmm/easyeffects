@@ -84,7 +84,6 @@ class GstEffects(GObject.GObject):
         spectrum.set_property('bands', self.spectrum_nbands)
         spectrum.set_property('threshold', self.spectrum_threshold)
 
-        audio_sink.set_property('drift-tolerance', 20000)  # 20 ms
         audio_sink.set_property('qos', True)
 
         pipeline.add(audio_src)
