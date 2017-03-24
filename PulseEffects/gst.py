@@ -76,15 +76,10 @@ class GstEffects(GObject.GObject):
 
         audio_src.set_property('client-name', 'PulseEffects')
         audio_src.set_property('device', 'PulseEffects.monitor')
-
-        self.limiter.set_property('qos', True)
-        self.freeverb.set_property('qos', True)
-        self.equalizer.set_property('qos', True)
+        audio_src.set_property('do-timestamp', True)
 
         spectrum.set_property('bands', self.spectrum_nbands)
         spectrum.set_property('threshold', self.spectrum_threshold)
-
-        audio_sink.set_property('qos', True)
 
         pipeline.add(audio_src)
         pipeline.add(queue_src)
