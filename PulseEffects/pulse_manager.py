@@ -16,6 +16,7 @@ class PulseManager(GObject.GObject):
         GObject.GObject.__init__(self)
 
         self.context_ok = False
+        self.default_sink_name = ''
         self.sink_is_loaded = False
         self.sink_owner_module = -1
         self.sink_idx = -1

@@ -27,6 +27,8 @@ class Application(Gtk.Application):
 
         self.gst = GstEffects()
 
+        self.gst.set_output_sink_name(self.pm.default_sink_name)
+
         self.gst.connect('new_level_before_limiter',
                          self.on_new_level_before_limiter)
         self.gst.connect('new_level_after_limiter',
@@ -38,6 +40,8 @@ class Application(Gtk.Application):
         self.gst.connect('new_level_after_eq',
                          self.on_new_level_after_eq)
         self.gst.connect('new_spectrum', self.on_new_spectrum)
+
+        self.gst.start()
 
         self.settings = Gio.Settings('com.github.wwmm.pulseeffects')
 

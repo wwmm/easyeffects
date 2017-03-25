@@ -44,8 +44,6 @@ class GstEffects(GObject.GObject):
         bus.add_signal_watch()
         bus.connect('message', self.on_message)
 
-        self.start()
-
     def build_pipeline(self):
         pipeline = Gst.Pipeline()
 
@@ -56,7 +54,7 @@ class GstEffects(GObject.GObject):
 
         self.equalizer = Gst.ElementFactory.make('equalizer-10bands', None)
 
-        audio_sink = Gst.ElementFactory.make('pulsesink', None)
+        self.audio_sink = Gst.ElementFactory.make('pulsesink', None)
 
         queue_src = Gst.ElementFactory.make('queue', None)
 
@@ -92,7 +90,7 @@ class GstEffects(GObject.GObject):
         pipeline.add(level_after_eq)
         pipeline.add(spectrum_src_type)
         pipeline.add(spectrum)
-        pipeline.add(audio_sink)
+        pipeline.add(self.audio_sink)
 
         audio_src.link(queue_src)
         queue_src.link(level_before_limiter)
@@ -104,7 +102,7 @@ class GstEffects(GObject.GObject):
         self.equalizer.link(level_after_eq)
         level_after_eq.link(spectrum_src_type)
         spectrum_src_type.link(spectrum)
-        spectrum.link(audio_sink)
+        spectrum.link(self.audio_sink)
 
         spectrum_src_type.connect("have-type", self.media_probe)
 
@@ -172,8 +170,6 @@ class GstEffects(GObject.GObject):
     def on_message(self, bus, msg):
         if msg.type == Gst.MessageType.ERROR:
             print('on_error():', msg.parse_error())
-        elif msg.type == Gst.MessageType.QOS:
-            print('qos!!!!')
         elif msg.type == Gst.MessageType.ELEMENT:
             plugin = msg.src.get_name()
 
@@ -223,6 +219,9 @@ class GstEffects(GObject.GObject):
 
                     self.emit('new_spectrum', magnitudes)
         return True
+
+    def set_output_sink_name(self, name):
+        self.audio_sink.set_property('device', name)
 
     def set_limiter_input_gain(self, value):
         self.limiter.set_property('input-gain', value)
