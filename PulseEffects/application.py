@@ -91,7 +91,6 @@ class Application(Gtk.Application):
         }
 
         headerbar_ui_handlers = {
-            'on_sync_state_set': self.on_sync_state_set,
             'on_buffer_time_value_changed': self.on_buffer_time_value_changed
         }
 
@@ -115,11 +114,8 @@ class Application(Gtk.Application):
 
         self.build_apps_list()
 
-        # buffer and sync
-        sync = headerbar_builder.get_object('sync')
+        # buffer-time
         buffer_time_obj = headerbar_builder.get_object('buffer_time')
-
-        sync.set_active(self.settings.get_value('sync').unpack())
 
         buffer_time = self.settings.get_value('buffer-time').unpack()
 
@@ -269,11 +265,6 @@ class Application(Gtk.Application):
                 eq_none.hide()
 
         button.connect("clicked", button_clicked)
-
-    def on_sync_state_set(self, obj, state):
-        self.gst.set_sync(state)
-        out = GLib.Variant('b', state)
-        self.settings.set_value('sync', out)
 
     def on_buffer_time_value_changed(self, obj):
         value = obj.get_value()

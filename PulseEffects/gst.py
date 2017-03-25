@@ -74,7 +74,7 @@ class GstEffects(GObject.GObject):
 
         self.audio_src.set_property('client-name', 'PulseEffects')
         self.audio_src.set_property('device', 'PulseEffects.monitor')
-        self.audio_src.set_property('do-timestamp', True)
+        self.audio_src.set_property('provide-clock', False)
 
         spectrum.set_property('bands', self.spectrum_nbands)
         spectrum.set_property('threshold', self.spectrum_threshold)
@@ -225,11 +225,6 @@ class GstEffects(GObject.GObject):
         self.set_state('ready')
         self.audio_src.set_property('buffer-time', value)
         self.audio_sink.set_property('buffer-time', value)
-        self.set_state('playing')
-
-    def set_sync(self, value):
-        self.set_state('ready')
-        self.audio_sink.set_property('sync', value)
         self.set_state('playing')
 
     def set_limiter_input_gain(self, value):

@@ -5,10 +5,6 @@
           <default>100</default>
         </key>
 
-        <key name="sync" type="b">
-          <default>false</default>
-        </key>
-
         <key name="limiter-user" type="ad">
           <default>[0, 0, 1]</default>
         </key>

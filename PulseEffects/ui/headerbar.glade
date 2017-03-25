@@ -14,43 +14,6 @@
     <property name="can_focus">False</property>
     <property name="orientation">vertical</property>
     <child>
-      <object class="GtkBox" id="sync_box">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="spacing">4</property>
-        <child>
-          <object class="GtkLabel">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">start</property>
-            <property name="label" translatable="yes">Sync</property>
-          </object>
-          <packing>
-            <property name="expand">True</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSwitch" id="sync">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <signal name="state-set" handler="on_sync_state_set" swapped="no"/>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">0</property>
-      </packing>
-    </child>
-    <child>
       <object class="GtkBox" id="buffer_box">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
