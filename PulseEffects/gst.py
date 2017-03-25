@@ -36,7 +36,6 @@ class GstEffects(GObject.GObject):
         self.spectrum_freqs = []
         self.spectrum_nfreqs = 0
         self.spectrum_threshold = -100  # dB
-        self.buffer_time = 50000  # 50 ms
 
         self.pipeline = self.build_pipeline()
 
@@ -48,7 +47,7 @@ class GstEffects(GObject.GObject):
     def build_pipeline(self):
         pipeline = Gst.Pipeline()
 
-        audio_src = Gst.ElementFactory.make('pulsesrc', None)
+        self.audio_src = Gst.ElementFactory.make('pulsesrc', None)
 
         self.limiter = Gst.ElementFactory.make(
             'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter', None)
@@ -73,18 +72,14 @@ class GstEffects(GObject.GObject):
 
         spectrum = Gst.ElementFactory.make('spectrum', 'spectrum')
 
-        audio_src.set_property('client-name', 'PulseEffects')
-        audio_src.set_property('device', 'PulseEffects.monitor')
-        audio_src.set_property('do-timestamp', True)
-        audio_src.set_property('buffer-time', self.buffer_time)
+        self.audio_src.set_property('client-name', 'PulseEffects')
+        self.audio_src.set_property('device', 'PulseEffects.monitor')
+        self.audio_src.set_property('do-timestamp', True)
 
         spectrum.set_property('bands', self.spectrum_nbands)
         spectrum.set_property('threshold', self.spectrum_threshold)
 
-        self.audio_sink.set_property('buffer-time', self.buffer_time)
-        # self.audio_sink.set_property('sync', False)
-
-        pipeline.add(audio_src)
+        pipeline.add(self.audio_src)
         pipeline.add(queue_src)
         pipeline.add(level_before_limiter)
         pipeline.add(self.limiter)
@@ -97,7 +92,7 @@ class GstEffects(GObject.GObject):
         pipeline.add(spectrum)
         pipeline.add(self.audio_sink)
 
-        audio_src.link(queue_src)
+        self.audio_src.link(queue_src)
         queue_src.link(level_before_limiter)
         level_before_limiter.link(self.limiter)
         self.limiter.link(level_after_limiter)
@@ -113,45 +108,43 @@ class GstEffects(GObject.GObject):
 
         return pipeline
 
-    def start(self):
-        state = self.pipeline.set_state(Gst.State.READY)
+    def set_state(self, state):
+        if state == 'ready':
+            s = self.pipeline.set_state(Gst.State.READY)
 
-        if state == Gst.StateChangeReturn.FAILURE:
-            print("Failed to start PulseEffects Gstreamer pipeline!!!")
+            if s == Gst.StateChangeReturn.FAILURE:
+                print("Failed set PulseEffects Gstreamer pipeline to ready!!!")
 
-            return False
-        else:
-            return True
+                return False
+            else:
+                return True
+        elif state == 'paused':
+            s = self.pipeline.set_state(Gst.State.PAUSED)
 
-    def pause(self):
-        state = self.pipeline.set_state(Gst.State.PAUSED)
+            if s == Gst.StateChangeReturn.FAILURE:
+                print("Failed to pause PulseEffects Gstreamer pipeline!!!")
 
-        if state == Gst.StateChangeReturn.FAILURE:
-            print("Failed to pause PulseEffects Gstreamer pipeline!!!")
+                return False
+            else:
+                return True
+        elif state == 'playing':
+            s = self.pipeline.set_state(Gst.State.PLAYING)
 
-            return False
-        else:
-            return True
+            if s == Gst.StateChangeReturn.FAILURE:
+                print("Playing PulseEffects Gstreamer pipeline failed!!!")
 
-    def play(self):
-        state = self.pipeline.set_state(Gst.State.PLAYING)
+                return False
+            else:
+                return True
+        elif state == 'null':
+            s = self.pipeline.set_state(Gst.State.NULL)
 
-        if state == Gst.StateChangeReturn.FAILURE:
-            print("Failed to play PulseEffects Gstreamer pipeline!!!")
+            if s == Gst.StateChangeReturn.FAILURE:
+                print("Stopping PulseEffects Gstreamer pipeline failed!!!")
 
-            return False
-        else:
-            return True
-
-    def stop(self):
-        state = self.pipeline.set_state(Gst.State.NULL)
-
-        if state == Gst.StateChangeReturn.FAILURE:
-            print("Failed to stop PulseEffects Gstreamer pipeline!!!")
-
-            return False
-        else:
-            return True
+                return False
+            else:
+                return True
 
     def media_probe(self, obj, arg0, caps):
         self.rate = caps.get_structure(0).get_value("rate")
@@ -227,6 +220,17 @@ class GstEffects(GObject.GObject):
 
     def set_output_sink_name(self, name):
         self.audio_sink.set_property('device', name)
+
+    def set_buffer_time(self, value):
+        self.set_state('ready')
+        self.audio_src.set_property('buffer-time', value)
+        self.audio_sink.set_property('buffer-time', value)
+        self.set_state('playing')
+
+    def set_sync(self, value):
+        self.set_state('ready')
+        self.audio_sink.set_property('sync', value)
+        self.set_state('playing')
 
     def set_limiter_input_gain(self, value):
         self.limiter.set_property('input-gain', value)

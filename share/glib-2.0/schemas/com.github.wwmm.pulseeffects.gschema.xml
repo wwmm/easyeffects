@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
     <schema id="com.github.wwmm.pulseeffects" path="/com/github/wwmm/pulseeffects/">
+        <key name="buffer-time" type="i">
+          <default>100</default>
+        </key>
+
+        <key name="sync" type="b">
+          <default>false</default>
+        </key>
+
         <key name="limiter-user" type="ad">
           <default>[0, 0, 1]</default>
         </key>

@@ -21,6 +21,8 @@ class Application(Gtk.Application):
         self.spectrum_magnitudes = []
         self.module_path = os.path.dirname(__file__)
 
+        self.settings = Gio.Settings('com.github.wwmm.pulseeffects')
+
         self.pm = PulseManager()
 
         self.pm.connect('sink_inputs_changed', self.on_sink_inputs_changed)
@@ -41,9 +43,7 @@ class Application(Gtk.Application):
                          self.on_new_level_after_eq)
         self.gst.connect('new_spectrum', self.on_new_spectrum)
 
-        self.gst.start()
-
-        self.settings = Gio.Settings('com.github.wwmm.pulseeffects')
+        self.gst.set_state('ready')
 
         self.limiter_user = self.settings.get_value('limiter-user').unpack()
         self.reverb_user = self.settings.get_value('reverb-user').unpack()
@@ -90,7 +90,13 @@ class Application(Gtk.Application):
             'on_spectrum_draw': self.on_spectrum_draw
         }
 
+        headerbar_ui_handlers = {
+            'on_sync_state_set': self.on_sync_state_set,
+            'on_buffer_time_value_changed': self.on_buffer_time_value_changed
+        }
+
         main_ui_builder.connect_signals(main_ui_handlers)
+        headerbar_builder.connect_signals(headerbar_ui_handlers)
 
         headerbar = headerbar_builder.get_object('headerbar')
 
@@ -100,6 +106,7 @@ class Application(Gtk.Application):
 
         self.create_appmenu()
 
+        self.init_settings_menu(headerbar_builder)
         self.init_reverb_menu(main_ui_builder)
         self.init_equalizer_menu(main_ui_builder)
 
@@ -107,6 +114,16 @@ class Application(Gtk.Application):
         self.spectrum = main_ui_builder.get_object('spectrum')
 
         self.build_apps_list()
+
+        # buffer and sync
+        sync = headerbar_builder.get_object('sync')
+        buffer_time_obj = headerbar_builder.get_object('buffer_time')
+
+        sync.set_active(self.settings.get_value('sync').unpack())
+
+        buffer_time = self.settings.get_value('buffer-time').unpack()
+
+        buffer_time_obj.set_value(buffer_time)
 
         # limiter
 
@@ -177,11 +194,43 @@ class Application(Gtk.Application):
         self.ui_initialized = True
 
     def on_MainWindow_delete_event(self, event, data):
-        self.gst.stop()
+        self.gst.set_state('null')
 
         self.pm.unload_sink()
 
         self.quit()
+
+    def create_appmenu(self):
+        menu = Gio.Menu()
+
+        menu.append('About', 'app.about')
+        menu.append('Quit', 'app.quit')
+
+        self.set_app_menu(menu)
+
+        about_action = Gio.SimpleAction.new('about', None)
+        about_action.connect('activate', self.onAbout)
+        self.add_action(about_action)
+
+        quit_action = Gio.SimpleAction.new('quit', None)
+        quit_action.connect('activate', self.on_MainWindow_delete_event)
+        self.add_action(quit_action)
+
+    def init_settings_menu(self, builder):
+        button = builder.get_object('settings_popover_button')
+        menu = builder.get_object('settings_menu')
+
+        popover = Gtk.Popover.new(button)
+        popover.props.transitions_enabled = True
+        popover.add(menu)
+
+        def button_clicked(arg):
+            if popover.get_visible():
+                popover.hide()
+            else:
+                popover.show_all()
+
+        button.connect("clicked", button_clicked)
 
     def init_reverb_menu(self, builder):
         button = builder.get_object('reverb_popover')
@@ -197,6 +246,7 @@ class Application(Gtk.Application):
                 popover.hide()
             else:
                 popover.show_all()
+                reverb_none.set_active(True)
                 reverb_none.hide()
 
         button.connect("clicked", button_clicked)
@@ -215,28 +265,23 @@ class Application(Gtk.Application):
                 popover.hide()
             else:
                 popover.show_all()
+                eq_none.set_active(True)
                 eq_none.hide()
 
         button.connect("clicked", button_clicked)
 
-    def on_drift_tolerance_value_changed(self, obj):
-        self.gst.set_drift_tolerance(obj.get_value())
+    def on_sync_state_set(self, obj, state):
+        self.gst.set_sync(state)
+        out = GLib.Variant('b', state)
+        self.settings.set_value('sync', out)
 
-    def create_appmenu(self):
-        menu = Gio.Menu()
+    def on_buffer_time_value_changed(self, obj):
+        value = obj.get_value()
 
-        menu.append('About', 'app.about')
-        menu.append('Quit', 'app.quit')
+        out = GLib.Variant('i', value)
+        self.settings.set_value('buffer-time', out)
 
-        self.set_app_menu(menu)
-
-        about_action = Gio.SimpleAction.new('about', None)
-        about_action.connect('activate', self.onAbout)
-        self.add_action(about_action)
-
-        quit_action = Gio.SimpleAction.new('quit', None)
-        quit_action.connect('activate', self.on_MainWindow_delete_event)
-        self.add_action(quit_action)
+        self.gst.set_buffer_time(value * 1000)
 
     def build_apps_list(self):
         children = self.apps_box.get_children()
@@ -323,9 +368,9 @@ class Application(Gtk.Application):
             self.build_apps_list()
 
         if len(self.pm.sink_inputs) > 0:
-            self.gst.play()
+            self.gst.set_state('playing')
         else:
-            self.gst.pause()
+            self.gst.set_state('paused')
 
     def on_new_level_before_limiter(self, obj, left, right):
         if self.ui_initialized:
