@@ -36,6 +36,7 @@ class GstEffects(GObject.GObject):
         self.spectrum_freqs = []
         self.spectrum_nfreqs = 0
         self.spectrum_threshold = -100  # dB
+        self.buffer_time = 50000  # 50 ms
 
         self.pipeline = self.build_pipeline()
 
@@ -75,9 +76,13 @@ class GstEffects(GObject.GObject):
         audio_src.set_property('client-name', 'PulseEffects')
         audio_src.set_property('device', 'PulseEffects.monitor')
         audio_src.set_property('do-timestamp', True)
+        audio_src.set_property('buffer-time', self.buffer_time)
 
         spectrum.set_property('bands', self.spectrum_nbands)
         spectrum.set_property('threshold', self.spectrum_threshold)
+
+        self.audio_sink.set_property('buffer-time', self.buffer_time)
+        # self.audio_sink.set_property('sync', False)
 
         pipeline.add(audio_src)
         pipeline.add(queue_src)
