@@ -17,8 +17,8 @@ Required libraries:
 - Python 3
 - PyGobject 3
 - Gtk 3.18 or above
-- Gstreamer, Gstreamer Plugins Good, Gstreamer Plugins Bad and Gstreamer Python (version 1.0 or above for all of them)
-- swh-plugins from Ladspa
+- Gstreamer, Gstreamer Plugins Bad and Gstreamer Python (version 1.0 or above for all of them)
+- swh-plugins and caps from Ladspa
 
 Arch Linux package:
 

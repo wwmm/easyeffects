@@ -7,7 +7,7 @@
     <property name="modal">True</property>
     <property name="type_hint">dialog</property>
     <property name="program_name">PulseEffects</property>
-    <property name="comments" translatable="yes">Audio Effects for Pulseaudio Applications</property>
+    <property name="comments" translatable="yes">Limiter, Reverberation and Equalizer Effects for Pulseaudio Applications</property>
     <property name="authors">wellington wallace</property>
     <property name="logo">about_icon.png</property>
     <property name="license_type">gpl-3-0</property>

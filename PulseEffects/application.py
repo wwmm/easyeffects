@@ -91,7 +91,9 @@ class Application(Gtk.Application):
         }
 
         headerbar_ui_handlers = {
-            'on_buffer_time_value_changed': self.on_buffer_time_value_changed
+            'on_buffer_time_value_changed': self.on_buffer_time_value_changed,
+            'on_src_provide_clock_state_set':
+                self.on_src_provide_clock_state_set
         }
 
         main_ui_builder.connect_signals(main_ui_handlers)
@@ -120,6 +122,13 @@ class Application(Gtk.Application):
         buffer_time = self.settings.get_value('buffer-time').unpack()
 
         buffer_time_obj.set_value(buffer_time)
+
+        # pulsesrc provide-clock
+        src_provide_clock = headerbar_builder.get_object('src_provide_clock')
+
+        provide_clock = self.settings.get_value('src-provide-clock').unpack()
+
+        src_provide_clock.set_state(provide_clock)
 
         # limiter
 
@@ -273,6 +282,12 @@ class Application(Gtk.Application):
         self.settings.set_value('buffer-time', out)
 
         self.gst.set_buffer_time(value * 1000)
+
+    def on_src_provide_clock_state_set(self, obj, state):
+        self.gst.set_src_provide_clock(state)
+
+        out = GLib.Variant('b', state)
+        self.settings.set_value('src-provide-clock', out)
 
     def build_apps_list(self):
         children = self.apps_box.get_children()
@@ -503,6 +518,9 @@ class Application(Gtk.Application):
                 self.apply_eq_preset(value)
             elif label == 'dance':
                 value = self.settings.get_value('equalizer-dance')
+                self.apply_eq_preset(value)
+            elif label == 'flat':
+                value = self.settings.get_value('equalizer-flat')
                 self.apply_eq_preset(value)
             elif label == 'default':
                 value = self.settings.get_value('equalizer-default')

@@ -31,8 +31,8 @@ class GstEffects(GObject.GObject):
 
         self.old_limiter_attenuation = 0
         self.rate = None
-        self.max_spectrum_freq = 15000  # Hz
-        self.spectrum_nbands = 360
+        self.max_spectrum_freq = 16000  # Hz
+        self.spectrum_nbands = 300
         self.spectrum_freqs = []
         self.spectrum_nfreqs = 0
         self.spectrum_threshold = -100  # dB
@@ -52,7 +52,9 @@ class GstEffects(GObject.GObject):
         self.limiter = Gst.ElementFactory.make(
             'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter', None)
 
-        self.equalizer = Gst.ElementFactory.make('equalizer-10bands', None)
+        self.freeverb = Gst.ElementFactory.make('freeverb', None)
+
+        self.equalizer = Gst.ElementFactory.make('ladspa-caps-so-eq10x2', None)
 
         self.audio_sink = Gst.ElementFactory.make('pulsesink', None)
 
@@ -66,15 +68,12 @@ class GstEffects(GObject.GObject):
             'level', 'level_after_reverb')
         level_after_eq = Gst.ElementFactory.make('level', 'level_after_eq')
 
-        self.freeverb = Gst.ElementFactory.make('freeverb', None)
-
         spectrum_src_type = Gst.ElementFactory.make("typefind", None)
 
         spectrum = Gst.ElementFactory.make('spectrum', 'spectrum')
 
         self.audio_src.set_property('client-name', 'PulseEffects')
         self.audio_src.set_property('device', 'PulseEffects.monitor')
-        self.audio_src.set_property('provide-clock', False)
 
         spectrum.set_property('bands', self.spectrum_nbands)
         spectrum.set_property('threshold', self.spectrum_threshold)
@@ -227,6 +226,11 @@ class GstEffects(GObject.GObject):
         self.audio_sink.set_property('buffer-time', value)
         self.set_state('playing')
 
+    def set_src_provide_clock(self, value):
+        self.set_state('null')
+        self.audio_src.set_property('provide-clock', value)
+        self.set_state('playing')
+
     def set_limiter_input_gain(self, value):
         self.limiter.set_property('input-gain', value)
 
@@ -237,34 +241,34 @@ class GstEffects(GObject.GObject):
         self.limiter.set_property('release-time', value)
 
     def set_eq_band0(self, value):
-        self.equalizer.set_property('band0', value)
+        self.equalizer.set_property('param-31-hz', value)
 
     def set_eq_band1(self, value):
-        self.equalizer.set_property('band1', value)
+        self.equalizer.set_property('param-63-hz', value)
 
     def set_eq_band2(self, value):
-        self.equalizer.set_property('band2', value)
+        self.equalizer.set_property('param-125-hz', value)
 
     def set_eq_band3(self, value):
-        self.equalizer.set_property('band3', value)
+        self.equalizer.set_property('param-250-hz', value)
 
     def set_eq_band4(self, value):
-        self.equalizer.set_property('band4', value)
+        self.equalizer.set_property('param-500-hz', value)
 
     def set_eq_band5(self, value):
-        self.equalizer.set_property('band5', value)
+        self.equalizer.set_property('param-1-khz', value)
 
     def set_eq_band6(self, value):
-        self.equalizer.set_property('band6', value)
+        self.equalizer.set_property('param-2-khz', value)
 
     def set_eq_band7(self, value):
-        self.equalizer.set_property('band7', value)
+        self.equalizer.set_property('param-4-khz', value)
 
     def set_eq_band8(self, value):
-        self.equalizer.set_property('band8', value)
+        self.equalizer.set_property('param-8-khz', value)
 
     def set_eq_band9(self, value):
-        self.equalizer.set_property('band9', value)
+        self.equalizer.set_property('param-16-khz', value)
 
     def set_reverb_room_size(self, value):
         self.freeverb.set_property('room-size', value)
