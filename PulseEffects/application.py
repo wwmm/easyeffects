@@ -43,8 +43,6 @@ class Application(Gtk.Application):
                          self.on_new_level_after_eq)
         self.gst.connect('new_spectrum', self.on_new_spectrum)
 
-        self.gst.set_state('ready')
-
         self.limiter_user = self.settings.get_value('limiter-user').unpack()
         self.reverb_user = self.settings.get_value('reverb-user').unpack()
         self.eq_band_user = self.settings.get_value('equalizer-user').unpack()
@@ -192,6 +190,9 @@ class Application(Gtk.Application):
             'limiter_level_after_left')
         self.limiter_level_after_right = main_ui_builder.get_object(
             'limiter_level_after_right')
+
+        # now that all elements were initialized we set pipeline to ready
+        self.gst.set_state('ready')
 
     def do_activate(self):
         self.window.present()
