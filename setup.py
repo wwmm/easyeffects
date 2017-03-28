@@ -10,10 +10,10 @@ setup(name='PulseEffects',
       packages=find_packages(),
       install_requires=[
           'gi',
+          'gst-plugins-good',
           'gst-plugins-bad',
           'gst-python',
-          'swh-plugins',
-          'caps'
+          'swh-plugins'
       ],
       scripts=['pulseeffects'],
       include_package_data=True,
