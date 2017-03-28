@@ -6,7 +6,7 @@
         </key>
 
         <key name="src-provide-clock" type="b">
-          <default>true</default>
+          <default>false</default>
         </key>
 
         <key name="limiter-user" type="ad">

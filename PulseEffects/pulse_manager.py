@@ -126,7 +126,7 @@ class PulseManager(GObject.GObject):
             self.sink_is_loaded = True
 
     def sink_input_info(self, context, info, eol, user_data):
-        if info:
+        if eol == 0 and info:
             idx = info.contents.index
             connected_sink_idx = info.contents.sink
 

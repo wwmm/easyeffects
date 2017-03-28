@@ -60,7 +60,7 @@
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">src provide clock</property>
+            <property name="label" translatable="yes">source provide clock</property>
           </object>
           <packing>
             <property name="expand">False</property>
