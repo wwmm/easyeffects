@@ -58,8 +58,6 @@ class GstEffects(GObject.GObject):
 
         self.audio_sink = Gst.ElementFactory.make('pulsesink', None)
 
-        queue_src = Gst.ElementFactory.make('queue', None)
-
         level_before_limiter = Gst.ElementFactory.make(
             'level', 'level_before_limiter')
         level_after_limiter = Gst.ElementFactory.make(
@@ -74,13 +72,11 @@ class GstEffects(GObject.GObject):
 
         self.audio_src.set_property('client-name', 'PulseEffects')
         self.audio_src.set_property('device', 'PulseEffects.monitor')
-        self.audio_src.set_property('do-timestamp', True)
 
         spectrum.set_property('bands', self.spectrum_nbands)
         spectrum.set_property('threshold', self.spectrum_threshold)
 
         pipeline.add(self.audio_src)
-        pipeline.add(queue_src)
         pipeline.add(level_before_limiter)
         pipeline.add(self.limiter)
         pipeline.add(level_after_limiter)
@@ -92,8 +88,7 @@ class GstEffects(GObject.GObject):
         pipeline.add(spectrum)
         pipeline.add(self.audio_sink)
 
-        self.audio_src.link(queue_src)
-        queue_src.link(level_before_limiter)
+        self.audio_src.link(level_before_limiter)
         level_before_limiter.link(self.limiter)
         self.limiter.link(level_after_limiter)
         level_after_limiter.link(self.freeverb)
