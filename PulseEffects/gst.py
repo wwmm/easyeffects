@@ -31,7 +31,7 @@ class GstEffects(GObject.GObject):
 
         self.old_limiter_attenuation = 0
         self.rate = None
-        self.max_spectrum_freq = 16000  # Hz
+        self.max_spectrum_freq = 15000  # Hz
         self.spectrum_nbands = 300
         self.spectrum_freqs = []
         self.spectrum_nfreqs = 0
@@ -54,7 +54,7 @@ class GstEffects(GObject.GObject):
 
         self.freeverb = Gst.ElementFactory.make('freeverb', None)
 
-        self.equalizer = Gst.ElementFactory.make('ladspa-caps-so-eq10x2', None)
+        self.equalizer = Gst.ElementFactory.make('equalizer-10bands', None)
 
         self.audio_sink = Gst.ElementFactory.make('pulsesink', None)
 
@@ -237,34 +237,34 @@ class GstEffects(GObject.GObject):
         self.limiter.set_property('release-time', value)
 
     def set_eq_band0(self, value):
-        self.equalizer.set_property('param-31-hz', value)
+        self.equalizer.set_property('band0', value)
 
     def set_eq_band1(self, value):
-        self.equalizer.set_property('param-63-hz', value)
+        self.equalizer.set_property('band1', value)
 
     def set_eq_band2(self, value):
-        self.equalizer.set_property('param-125-hz', value)
+        self.equalizer.set_property('band2', value)
 
     def set_eq_band3(self, value):
-        self.equalizer.set_property('param-250-hz', value)
+        self.equalizer.set_property('band3', value)
 
     def set_eq_band4(self, value):
-        self.equalizer.set_property('param-500-hz', value)
+        self.equalizer.set_property('band4', value)
 
     def set_eq_band5(self, value):
-        self.equalizer.set_property('param-1-khz', value)
+        self.equalizer.set_property('band5', value)
 
     def set_eq_band6(self, value):
-        self.equalizer.set_property('param-2-khz', value)
+        self.equalizer.set_property('band6', value)
 
     def set_eq_band7(self, value):
-        self.equalizer.set_property('param-4-khz', value)
+        self.equalizer.set_property('band7', value)
 
     def set_eq_band8(self, value):
-        self.equalizer.set_property('param-8-khz', value)
+        self.equalizer.set_property('band8', value)
 
     def set_eq_band9(self, value):
-        self.equalizer.set_property('param-16-khz', value)
+        self.equalizer.set_property('band9', value)
 
     def set_reverb_room_size(self, value):
         self.freeverb.set_property('room-size', value)
