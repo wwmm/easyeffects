@@ -3,71 +3,71 @@
 <interface>
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="eq_band0">
-    <property name="lower">-24</property>
-    <property name="upper">12</property>
+    <property name="lower">-48</property>
+    <property name="upper">24</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band0_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="eq_band1">
-    <property name="lower">-24</property>
-    <property name="upper">12</property>
+    <property name="lower">-48</property>
+    <property name="upper">24</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band1_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="eq_band2">
-    <property name="lower">-24</property>
-    <property name="upper">12</property>
+    <property name="lower">-48</property>
+    <property name="upper">24</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band2_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="eq_band3">
-    <property name="lower">-24</property>
-    <property name="upper">12</property>
+    <property name="lower">-48</property>
+    <property name="upper">24</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band3_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="eq_band4">
-    <property name="lower">-24</property>
-    <property name="upper">12</property>
+    <property name="lower">-48</property>
+    <property name="upper">24</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band4_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="eq_band5">
-    <property name="lower">-24</property>
-    <property name="upper">12</property>
+    <property name="lower">-48</property>
+    <property name="upper">24</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band5_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="eq_band6">
-    <property name="lower">-24</property>
-    <property name="upper">12</property>
+    <property name="lower">-48</property>
+    <property name="upper">24</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band6_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="eq_band7">
-    <property name="lower">-24</property>
-    <property name="upper">12</property>
+    <property name="lower">-48</property>
+    <property name="upper">24</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band7_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="eq_band8">
-    <property name="lower">-24</property>
-    <property name="upper">12</property>
+    <property name="lower">-48</property>
+    <property name="upper">24</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band8_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="eq_band9">
-    <property name="lower">-24</property>
-    <property name="upper">12</property>
+    <property name="lower">-48</property>
+    <property name="upper">24</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band9_value_changed" swapped="no"/>
@@ -1206,7 +1206,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">29Hz</property>
+                            <property name="label" translatable="yes">31Hz</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -1247,7 +1247,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">59Hz</property>
+                            <property name="label" translatable="yes">63Hz</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -1288,7 +1288,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">119Hz</property>
+                            <property name="label" translatable="yes">125Hz</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -1329,7 +1329,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">237Hz</property>
+                            <property name="label" translatable="yes">250Hz</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -1370,7 +1370,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">474Hz</property>
+                            <property name="label" translatable="yes">500Hz</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -1411,7 +1411,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">947Hz</property>
+                            <property name="label" translatable="yes">1kHz</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -1452,7 +1452,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">1.8kHz</property>
+                            <property name="label" translatable="yes">2kHz</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -1493,7 +1493,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">3.7kHz</property>
+                            <property name="label" translatable="yes">4kHz</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -1534,7 +1534,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">7.5kHz</property>
+                            <property name="label" translatable="yes">8kHz</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -1575,7 +1575,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">15kHz</property>
+                            <property name="label" translatable="yes">16kHz</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
