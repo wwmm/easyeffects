@@ -2,6 +2,83 @@
 <!-- Generated with glade 3.20.0 -->
 <interface>
   <requires lib="gtk+" version="3.18"/>
+  <object class="GtkAdjustment" id="compressor_attack">
+    <property name="lower">2</property>
+    <property name="upper">400</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+    <signal name="value-changed" handler="on_compressor_attack_time_value_changed" swapped="no"/>
+  </object>
+  <object class="GtkAdjustment" id="compressor_knee">
+    <property name="lower">1</property>
+    <property name="upper">10</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_compressor_knee_value_changed" swapped="no"/>
+  </object>
+  <object class="GtkAdjustment" id="compressor_makeup">
+    <property name="upper">24</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_compressor_makeup_value_changed" swapped="no"/>
+  </object>
+  <object class="GtkBox" id="compressor_menu">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="orientation">vertical</property>
+    <child>
+      <object class="GtkRadioButton" id="compressor_no_selection">
+        <property name="label" translatable="yes">no_selection</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">False</property>
+        <property name="active">True</property>
+        <property name="draw_indicator">True</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkRadioButton" id="compressor_preset_none">
+        <property name="label" translatable="yes">no compression</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">False</property>
+        <property name="active">True</property>
+        <property name="draw_indicator">True</property>
+        <property name="group">compressor_no_selection</property>
+        <signal name="toggled" handler="on_compressor_preset_toggled" swapped="no"/>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">2</property>
+      </packing>
+    </child>
+  </object>
+  <object class="GtkAdjustment" id="compressor_ratio">
+    <property name="lower">1</property>
+    <property name="upper">20</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_compressor_ratio_value_changed" swapped="no"/>
+  </object>
+  <object class="GtkAdjustment" id="compressor_release">
+    <property name="lower">2</property>
+    <property name="upper">800</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+    <signal name="value-changed" handler="on_compressor_release_time_value_changed" swapped="no"/>
+  </object>
+  <object class="GtkAdjustment" id="compressor_threshold">
+    <property name="lower">-30</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_compressor_threshold_value_changed" swapped="no"/>
+  </object>
   <object class="GtkAdjustment" id="eq_band0">
     <property name="lower">-48</property>
     <property name="upper">24</property>
@@ -77,8 +154,8 @@
     <property name="can_focus">False</property>
     <property name="orientation">vertical</property>
     <child>
-      <object class="GtkRadioButton" id="eq_none">
-        <property name="label" translatable="yes">none</property>
+      <object class="GtkRadioButton" id="eq_no_selection">
+        <property name="label" translatable="yes">no selection</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">False</property>
@@ -99,7 +176,7 @@
         <property name="receives_default">False</property>
         <property name="active">True</property>
         <property name="draw_indicator">True</property>
-        <property name="group">eq_none</property>
+        <property name="group">eq_no_selection</property>
         <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
       </object>
       <packing>
@@ -116,7 +193,7 @@
         <property name="receives_default">False</property>
         <property name="active">True</property>
         <property name="draw_indicator">True</property>
-        <property name="group">eq_none</property>
+        <property name="group">eq_no_selection</property>
         <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
       </object>
       <packing>
@@ -133,7 +210,7 @@
         <property name="receives_default">False</property>
         <property name="active">True</property>
         <property name="draw_indicator">True</property>
-        <property name="group">eq_none</property>
+        <property name="group">eq_no_selection</property>
         <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
       </object>
       <packing>
@@ -150,7 +227,7 @@
         <property name="receives_default">False</property>
         <property name="active">True</property>
         <property name="draw_indicator">True</property>
-        <property name="group">eq_none</property>
+        <property name="group">eq_no_selection</property>
         <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
       </object>
       <packing>
@@ -167,7 +244,7 @@
         <property name="receives_default">False</property>
         <property name="active">True</property>
         <property name="draw_indicator">True</property>
-        <property name="group">eq_none</property>
+        <property name="group">eq_no_selection</property>
         <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
       </object>
       <packing>
@@ -184,7 +261,7 @@
         <property name="receives_default">False</property>
         <property name="active">True</property>
         <property name="draw_indicator">True</property>
-        <property name="group">eq_none</property>
+        <property name="group">eq_no_selection</property>
         <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
       </object>
       <packing>
@@ -201,7 +278,7 @@
         <property name="receives_default">False</property>
         <property name="active">True</property>
         <property name="draw_indicator">True</property>
-        <property name="group">eq_none</property>
+        <property name="group">eq_no_selection</property>
         <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
       </object>
       <packing>
@@ -218,7 +295,7 @@
         <property name="receives_default">False</property>
         <property name="active">True</property>
         <property name="draw_indicator">True</property>
-        <property name="group">eq_none</property>
+        <property name="group">eq_no_selection</property>
         <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
       </object>
       <packing>
@@ -235,7 +312,7 @@
         <property name="receives_default">False</property>
         <property name="active">True</property>
         <property name="draw_indicator">True</property>
-        <property name="group">eq_none</property>
+        <property name="group">eq_no_selection</property>
         <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
       </object>
       <packing>
@@ -252,7 +329,7 @@
         <property name="receives_default">False</property>
         <property name="active">True</property>
         <property name="draw_indicator">True</property>
-        <property name="group">eq_none</property>
+        <property name="group">eq_no_selection</property>
         <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
       </object>
       <packing>
@@ -269,7 +346,7 @@
         <property name="receives_default">False</property>
         <property name="active">True</property>
         <property name="draw_indicator">True</property>
-        <property name="group">eq_none</property>
+        <property name="group">eq_no_selection</property>
         <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
       </object>
       <packing>
@@ -286,7 +363,7 @@
         <property name="receives_default">False</property>
         <property name="active">True</property>
         <property name="draw_indicator">True</property>
-        <property name="group">eq_none</property>
+        <property name="group">eq_no_selection</property>
         <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
       </object>
       <packing>
@@ -303,7 +380,7 @@
         <property name="receives_default">False</property>
         <property name="active">True</property>
         <property name="draw_indicator">True</property>
-        <property name="group">eq_none</property>
+        <property name="group">eq_no_selection</property>
         <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
       </object>
       <packing>
@@ -320,7 +397,7 @@
         <property name="receives_default">False</property>
         <property name="active">True</property>
         <property name="draw_indicator">True</property>
-        <property name="group">eq_none</property>
+        <property name="group">eq_no_selection</property>
         <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
       </object>
       <packing>
@@ -337,7 +414,7 @@
         <property name="receives_default">False</property>
         <property name="active">True</property>
         <property name="draw_indicator">True</property>
-        <property name="group">eq_none</property>
+        <property name="group">eq_no_selection</property>
         <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
       </object>
       <packing>
@@ -346,6 +423,11 @@
         <property name="position">15</property>
       </packing>
     </child>
+  </object>
+  <object class="GtkImage" id="image_compressor_menu">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">emblem-system-symbolic</property>
   </object>
   <object class="GtkImage" id="image_eq_menu">
     <property name="visible">True</property>
@@ -394,8 +476,8 @@
     <property name="can_focus">False</property>
     <property name="orientation">vertical</property>
     <child>
-      <object class="GtkRadioButton" id="reverb_none">
-        <property name="label" translatable="yes">none</property>
+      <object class="GtkRadioButton" id="reverb_no_selection">
+        <property name="label" translatable="yes">no selection</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">False</property>
@@ -416,7 +498,7 @@
         <property name="receives_default">False</property>
         <property name="active">True</property>
         <property name="draw_indicator">True</property>
-        <property name="group">reverb_none</property>
+        <property name="group">reverb_no_selection</property>
         <signal name="toggled" handler="on_reverb_preset_toggled" swapped="no"/>
       </object>
       <packing>
@@ -433,7 +515,7 @@
         <property name="receives_default">False</property>
         <property name="active">True</property>
         <property name="draw_indicator">True</property>
-        <property name="group">reverb_none</property>
+        <property name="group">reverb_no_selection</property>
         <signal name="toggled" handler="on_reverb_preset_toggled" swapped="no"/>
       </object>
       <packing>
@@ -450,7 +532,7 @@
         <property name="receives_default">False</property>
         <property name="active">True</property>
         <property name="draw_indicator">True</property>
-        <property name="group">reverb_none</property>
+        <property name="group">reverb_no_selection</property>
         <signal name="toggled" handler="on_reverb_preset_toggled" swapped="no"/>
       </object>
       <packing>
@@ -467,7 +549,7 @@
         <property name="receives_default">False</property>
         <property name="active">True</property>
         <property name="draw_indicator">True</property>
-        <property name="group">reverb_none</property>
+        <property name="group">reverb_no_selection</property>
         <signal name="toggled" handler="on_reverb_preset_toggled" swapped="no"/>
       </object>
       <packing>
@@ -500,7 +582,7 @@
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkDrawingArea" id="spectrum">
-            <property name="height_request">130</property>
+            <property name="height_request">140</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <signal name="draw" handler="on_spectrum_draw" swapped="no"/>
@@ -529,7 +611,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">Fast Lookahead Limiter</property>
+                    <property name="label" translatable="yes">Limiter</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -542,7 +624,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="orientation">vertical</property>
-                    <property name="spacing">4</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
@@ -841,14 +922,465 @@
               <object class="GtkSeparator">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">12</property>
-                <property name="margin_right">12</property>
-                <property name="orientation">vertical</property>
+                <property name="margin_left">4</property>
+                <property name="margin_right">4</property>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
                 <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox" id="compressor">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Compressor</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="compressor_popover">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="image">image_compressor_menu</property>
+                        <property name="always_show_image">True</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">center</property>
+                    <property name="homogeneous">True</property>
+                    <child>
+                      <object class="GtkRadioButton" id="compressor_rms">
+                        <property name="label" translatable="yes">rms</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="active">True</property>
+                        <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_compressor_measurement_type" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkRadioButton" id="compressor_peak">
+                        <property name="label" translatable="yes">peak</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="active">True</property>
+                        <property name="draw_indicator">True</property>
+                        <property name="group">compressor_rms</property>
+                        <signal name="toggled" handler="on_compressor_measurement_type" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="spacing">10</property>
+                    <property name="homogeneous">True</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes">Attack [ms]</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="adjustment">compressor_attack</property>
+                        <property name="round_digits">1</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">right</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="spacing">10</property>
+                    <property name="homogeneous">True</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes">Release [ms]</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="adjustment">compressor_release</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">right</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="spacing">10</property>
+                    <property name="homogeneous">True</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes">Threshold [dB]</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="adjustment">compressor_threshold</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">right</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">4</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="spacing">10</property>
+                    <property name="homogeneous">True</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes">Ratio [n:1]</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="adjustment">compressor_ratio</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">right</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">5</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="spacing">10</property>
+                    <property name="homogeneous">True</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes">Knee [dB]</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="adjustment">compressor_knee</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">right</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">6</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="spacing">10</property>
+                    <property name="homogeneous">True</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes">Makeup [dB]</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="adjustment">compressor_makeup</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">right</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">7</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="homogeneous">True</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes">Gain Reduction</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLevelBar" id="compressor_gain_reduction_levelbar">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="max_value">24</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">8</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="homogeneous">True</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes">output</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="valign">center</property>
+                        <property name="orientation">vertical</property>
+                        <child>
+                          <object class="GtkLevelBar" id="compressor_level_after_left">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLevelBar" id="compressor_level_after_right">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">9</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSeparator">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">4</property>
+                <property name="margin_right">4</property>
+                <property name="orientation">vertical</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">3</property>
               </packing>
             </child>
             <child>
@@ -1130,20 +1662,20 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">2</property>
+                <property name="position">4</property>
               </packing>
             </child>
             <child>
               <object class="GtkSeparator">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">12</property>
-                <property name="margin_right">12</property>
+                <property name="margin_left">4</property>
+                <property name="margin_right">4</property>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">3</property>
+                <property name="position">5</property>
               </packing>
             </child>
             <child>
@@ -1677,7 +2209,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">4</property>
+                <property name="position">6</property>
               </packing>
             </child>
           </object>
@@ -1691,8 +2223,8 @@
           <object class="GtkSeparator">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_top">12</property>
-            <property name="margin_bottom">12</property>
+            <property name="margin_top">4</property>
+            <property name="margin_bottom">4</property>
           </object>
           <packing>
             <property name="expand">False</property>

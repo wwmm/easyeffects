@@ -9,8 +9,9 @@ Limiter, reverberation and stereo equalizer effects for Pulseaudio applications
 Effects order:
 
 1. Fast Lookahead Limiter
-2. Reverberation
-3. Equalizer
+2. SC4 Compressor
+3. Gstreamer Freeverb
+4. Caps 10 Bands Equalizer
 
 Required libraries:
 

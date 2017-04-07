@@ -35,6 +35,10 @@ class Application(Gtk.Application):
                          self.on_new_level_before_limiter)
         self.gst.connect('new_level_after_limiter',
                          self.on_new_level_after_limiter)
+        self.gst.connect('new_level_after_compressor',
+                         self.on_new_level_after_compressor)
+        self.gst.connect('new_compressor_gain_reduction',
+                         self.on_new_compressor_gain_reduction)
         self.gst.connect('new_limiter_attenuation',
                          self.on_new_limiter_attenuation)
         self.gst.connect('new_level_after_reverb',
@@ -44,6 +48,8 @@ class Application(Gtk.Application):
         self.gst.connect('new_spectrum', self.on_new_spectrum)
 
         self.limiter_user = self.settings.get_value('limiter-user').unpack()
+        self.compressor_user = self.settings.get_value(
+            'compressor-user').unpack()
         self.reverb_user = self.settings.get_value('reverb-user').unpack()
         self.eq_band_user = self.settings.get_value('equalizer-user').unpack()
 
@@ -65,6 +71,22 @@ class Application(Gtk.Application):
                 self.on_limiter_limit_value_changed,
             'on_limiter_release_time_value_changed':
                 self.on_limiter_release_time_value_changed,
+            'on_compressor_measurement_type':
+                self.on_compressor_measurement_type,
+            'on_compressor_attack_time_value_changed':
+                self.on_compressor_attack_time_value_changed,
+            'on_compressor_release_time_value_changed':
+                self.on_compressor_release_time_value_changed,
+            'on_compressor_threshold_value_changed':
+                self.on_compressor_threshold_value_changed,
+            'on_compressor_ratio_value_changed':
+                self.on_compressor_ratio_value_changed,
+            'on_compressor_knee_value_changed':
+                self.on_compressor_knee_value_changed,
+            'on_compressor_makeup_value_changed':
+                self.on_compressor_makeup_value_changed,
+            'on_compressor_preset_toggled':
+                self.on_compressor_preset_toggled,
             'on_reverb_room_size_value_changed':
                 self.on_reverb_room_size_value_changed,
             'on_reverb_damping_value_changed':
@@ -104,6 +126,7 @@ class Application(Gtk.Application):
         self.create_appmenu()
 
         self.init_settings_menu(headerbar_builder)
+        self.init_compressor_menu(main_ui_builder)
         self.init_reverb_menu(main_ui_builder)
         self.init_equalizer_menu(main_ui_builder)
 
@@ -130,16 +153,58 @@ class Application(Gtk.Application):
         self.limiter_attenuation_levelbar = main_ui_builder.get_object(
             'limiter_attenuation_levelbar')
 
-        self.limiter_input_gain.set_value(self.limiter_user[0])
-        self.limiter_limit.set_value(self.limiter_user[1])
-        self.limiter_release_time.set_value(self.limiter_user[2])
-
         self.limiter_attenuation_levelbar.add_offset_value(
             'GTK_LEVEL_BAR_OFFSET_LOW', 20)
         self.limiter_attenuation_levelbar.add_offset_value(
             'GTK_LEVEL_BAR_OFFSET_HIGH', 50)
         self.limiter_attenuation_levelbar.add_offset_value(
             'GTK_LEVEL_BAR_OFFSET_FULL', 70)
+
+        self.limiter_level_before_left = main_ui_builder.get_object(
+            'limiter_level_before_left')
+        self.limiter_level_before_right = main_ui_builder.get_object(
+            'limiter_level_before_right')
+        self.limiter_level_after_left = main_ui_builder.get_object(
+            'limiter_level_after_left')
+        self.limiter_level_after_right = main_ui_builder.get_object(
+            'limiter_level_after_right')
+
+        self.limiter_input_gain.set_value(self.limiter_user[0])
+        self.limiter_limit.set_value(self.limiter_user[1])
+        self.limiter_release_time.set_value(self.limiter_user[2])
+
+        # compressor
+
+        self.compressor_rms = main_ui_builder.get_object('compressor_rms')
+        self.compressor_peak = main_ui_builder.get_object('compressor_peak')
+        self.compressor_attack = main_ui_builder.get_object(
+            'compressor_attack')
+        self.compressor_release = main_ui_builder.get_object(
+            'compressor_release')
+        self.compressor_threshold = main_ui_builder.get_object(
+            'compressor_threshold')
+        self.compressor_ratio = main_ui_builder.get_object(
+            'compressor_ratio')
+        self.compressor_knee = main_ui_builder.get_object(
+            'compressor_knee')
+        self.compressor_makeup = main_ui_builder.get_object(
+            'compressor_makeup')
+
+        self.compressor_level_after_left = main_ui_builder.get_object(
+            'compressor_level_after_left')
+        self.compressor_level_after_right = main_ui_builder.get_object(
+            'compressor_level_after_right')
+        self.compressor_gain_reduction_levelbar = main_ui_builder.get_object(
+            'compressor_gain_reduction_levelbar')
+
+        self.compressor_gain_reduction_levelbar.add_offset_value(
+            'GTK_LEVEL_BAR_OFFSET_LOW', 6)
+        self.compressor_gain_reduction_levelbar.add_offset_value(
+            'GTK_LEVEL_BAR_OFFSET_HIGH', 18)
+        self.compressor_gain_reduction_levelbar.add_offset_value(
+            'GTK_LEVEL_BAR_OFFSET_FULL', 24)
+
+        self.apply_compressor_preset(self.compressor_user)
 
         # reverb
         self.reverb_room_size = main_ui_builder.get_object('reverb_room_size')
@@ -167,20 +232,10 @@ class Application(Gtk.Application):
         self.eq_band8 = main_ui_builder.get_object('eq_band8')
         self.eq_band9 = main_ui_builder.get_object('eq_band9')
 
-        self.apply_eq_preset(self.eq_band_user)
-
-        # equalizer vu meter
-
         self.eq_left_level = main_ui_builder.get_object('eq_left_level')
         self.eq_right_level = main_ui_builder.get_object('eq_right_level')
-        self.limiter_level_before_left = main_ui_builder.get_object(
-            'limiter_level_before_left')
-        self.limiter_level_before_right = main_ui_builder.get_object(
-            'limiter_level_before_right')
-        self.limiter_level_after_left = main_ui_builder.get_object(
-            'limiter_level_after_left')
-        self.limiter_level_after_right = main_ui_builder.get_object(
-            'limiter_level_after_right')
+
+        self.apply_eq_preset(self.eq_band_user)
 
         # now that all elements were initialized we set pipeline to ready
         self.gst.set_state('ready')
@@ -229,10 +284,10 @@ class Application(Gtk.Application):
 
         button.connect("clicked", button_clicked)
 
-    def init_reverb_menu(self, builder):
-        button = builder.get_object('reverb_popover')
-        menu = builder.get_object('reverb_menu')
-        reverb_none = builder.get_object('reverb_none')
+    def init_compressor_menu(self, builder):
+        button = builder.get_object('compressor_popover')
+        menu = builder.get_object('compressor_menu')
+        compressor_no_selection = builder.get_object('compressor_no_selection')
 
         popover = Gtk.Popover.new(button)
         popover.props.transitions_enabled = True
@@ -243,15 +298,34 @@ class Application(Gtk.Application):
                 popover.hide()
             else:
                 popover.show_all()
-                reverb_none.set_active(True)
-                reverb_none.hide()
+                compressor_no_selection.set_active(True)
+                compressor_no_selection.hide()
+
+        button.connect("clicked", button_clicked)
+
+    def init_reverb_menu(self, builder):
+        button = builder.get_object('reverb_popover')
+        menu = builder.get_object('reverb_menu')
+        reverb_no_selection = builder.get_object('reverb_no_selection')
+
+        popover = Gtk.Popover.new(button)
+        popover.props.transitions_enabled = True
+        popover.add(menu)
+
+        def button_clicked(arg):
+            if popover.get_visible():
+                popover.hide()
+            else:
+                popover.show_all()
+                reverb_no_selection.set_active(True)
+                reverb_no_selection.hide()
 
         button.connect("clicked", button_clicked)
 
     def init_equalizer_menu(self, builder):
         button = builder.get_object('equalizer_popover')
         menu = builder.get_object('equalizer_menu')
-        eq_none = builder.get_object('eq_none')
+        eq_no_selection = builder.get_object('eq_no_selection')
 
         popover = Gtk.Popover.new(button)
         popover.props.transitions_enabled = True
@@ -262,8 +336,8 @@ class Application(Gtk.Application):
                 popover.hide()
             else:
                 popover.show_all()
-                eq_none.set_active(True)
-                eq_none.hide()
+                eq_no_selection.set_active(True)
+                eq_no_selection.hide()
 
         button.connect("clicked", button_clicked)
 
@@ -380,6 +454,19 @@ class Application(Gtk.Application):
             self.limiter_level_after_left.set_value(l_value)
             self.limiter_level_after_right.set_value(r_value)
 
+    def on_new_level_after_compressor(self, obj, left, right):
+        if self.ui_initialized:
+            l_value = 10**(left / 20)
+            r_value = 10**(right / 20)
+
+            self.compressor_level_after_left.set_value(l_value)
+            self.compressor_level_after_right.set_value(r_value)
+
+    def on_new_compressor_gain_reduction(self, obj, gain_reduction):
+        if self.ui_initialized:
+            value = abs(gain_reduction)
+            self.compressor_gain_reduction_levelbar.set_value(value)
+
     def on_new_limiter_attenuation(self, obj, attenuation):
         if self.ui_initialized:
             self.limiter_attenuation_levelbar.set_value(attenuation)
@@ -426,6 +513,75 @@ class Application(Gtk.Application):
         value = obj.get_value()
         self.gst.set_limiter_release_time(value)
         self.save_limiter_user(2, value)
+
+    def apply_compressor_preset(self, values):
+        if values[0] == 0:
+            self.compressor_rms.set_active(True)
+        elif values[0] == 1:
+            self.compressor_peak.set_active(True)
+
+        self.compressor_attack.set_value(values[1])
+        self.compressor_release.set_value(values[2])
+        self.compressor_threshold.set_value(values[3])
+        self.compressor_ratio.set_value(values[4])
+        self.compressor_knee.set_value(values[5])
+        self.compressor_makeup.set_value(values[6])
+
+    def on_compressor_preset_toggled(self, obj):
+        if obj.get_active():
+            label = obj.get_label()
+
+            if label == 'no compression':
+                value = self.settings.get_value('compressor-no-compression')
+                self.apply_compressor_preset(value)
+
+    def save_compressor_user(self, idx, value):
+        self.compressor_user[idx] = value
+
+        out = GLib.Variant('ad', self.compressor_user)
+
+        self.settings.set_value('compressor-user', out)
+
+    def on_compressor_measurement_type(self, obj):
+        if obj.get_active():
+            label = obj.get_label()
+
+            if label == 'rms':
+                self.gst.set_compressor_measurement_type(0)
+                self.save_compressor_user(0, 0)
+            elif label == 'peak':
+                self.gst.set_compressor_measurement_type(1)
+                self.save_compressor_user(0, 1)
+
+    def on_compressor_attack_time_value_changed(self, obj):
+        value = obj.get_value()
+        self.gst.set_compressor_attack(value)
+        self.save_compressor_user(1, value)
+
+    def on_compressor_release_time_value_changed(self, obj):
+        value = obj.get_value()
+        self.gst.set_compressor_release(value)
+        self.save_compressor_user(2, value)
+
+    def on_compressor_threshold_value_changed(self, obj):
+        value = obj.get_value()
+        self.gst.set_compressor_threshold(value)
+        self.save_compressor_user(3, value)
+
+    def on_compressor_ratio_value_changed(self, obj):
+        value = obj.get_value()
+        self.gst.set_compressor_ratio(value)
+        self.save_compressor_user(4, value)
+
+    def on_compressor_knee_value_changed(self, obj):
+        value = obj.get_value()
+        self.gst.set_compressor_knee(value)
+        self.save_compressor_user(5, value)
+
+    def on_compressor_makeup_value_changed(self, obj):
+        value = obj.get_value()
+        self.gst.set_compressor_makeup(value)
+        self.save_compressor_user(6, value)
 
     def apply_reverb_preset(self, values):
         self.reverb_room_size.set_value(values[0])

@@ -16,6 +16,10 @@ class GstEffects(GObject.GObject):
                                      (float, float)),
         'new_level_after_limiter': (GObject.SIGNAL_RUN_FIRST, None,
                                     (float, float)),
+        'new_level_after_compressor': (GObject.SIGNAL_RUN_FIRST, None,
+                                       (float, float)),
+        'new_compressor_gain_reduction': (GObject.SIGNAL_RUN_FIRST, None,
+                                          (float,)),
         'new_limiter_attenuation': (GObject.SIGNAL_RUN_FIRST, None,
                                     (float,)),
         'new_level_after_reverb': (GObject.SIGNAL_RUN_FIRST, None,
@@ -30,6 +34,7 @@ class GstEffects(GObject.GObject):
         GObject.GObject.__init__(self)
 
         self.old_limiter_attenuation = 0
+        self.old_compressor_gain_reduction = 0
         self.rate = None
         self.max_spectrum_freq = 16000  # Hz
         self.spectrum_nbands = 300
@@ -52,6 +57,9 @@ class GstEffects(GObject.GObject):
         self.limiter = Gst.ElementFactory.make(
             'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter', None)
 
+        self.compressor = Gst.ElementFactory.make(
+            'ladspa-sc4-1882-so-sc4', None)
+
         self.freeverb = Gst.ElementFactory.make('freeverb', None)
 
         self.equalizer = Gst.ElementFactory.make('ladspa-caps-so-eq10x2', None)
@@ -62,6 +70,8 @@ class GstEffects(GObject.GObject):
             'level', 'level_before_limiter')
         level_after_limiter = Gst.ElementFactory.make(
             'level', 'level_after_limiter')
+        level_after_compressor = Gst.ElementFactory.make(
+            'level', 'level_after_compressor')
         level_after_reverb = Gst.ElementFactory.make(
             'level', 'level_after_reverb')
         level_after_eq = Gst.ElementFactory.make('level', 'level_after_eq')
@@ -83,6 +93,8 @@ class GstEffects(GObject.GObject):
         pipeline.add(level_before_limiter)
         pipeline.add(self.limiter)
         pipeline.add(level_after_limiter)
+        pipeline.add(self.compressor)
+        pipeline.add(level_after_compressor)
         pipeline.add(self.freeverb)
         pipeline.add(level_after_reverb)
         pipeline.add(self.equalizer)
@@ -94,7 +106,9 @@ class GstEffects(GObject.GObject):
         self.audio_src.link(level_before_limiter)
         level_before_limiter.link(self.limiter)
         self.limiter.link(level_after_limiter)
-        level_after_limiter.link(self.freeverb)
+        level_after_limiter.link(self.compressor)
+        self.compressor.link(level_after_compressor)
+        level_after_compressor.link(self.freeverb)
         self.freeverb.link(level_after_reverb)
         level_after_reverb.link(self.equalizer)
         self.equalizer.link(level_after_eq)
@@ -184,6 +198,18 @@ class GstEffects(GObject.GObject):
                     self.old_limiter_attenuation = attenuation
 
                     self.emit('new_limiter_attenuation', attenuation)
+            elif plugin == 'level_after_compressor':
+                peak = msg.get_structure().get_value('peak')
+
+                self.emit('new_level_after_compressor', peak[0], peak[1])
+
+                gain_reduction = round(
+                    self.compressor.get_property('gain-reduction'))
+
+                if gain_reduction != self.old_compressor_gain_reduction:
+                    self.old_compressor_gain_reduction = gain_reduction
+
+                    self.emit('new_compressor_gain_reduction', gain_reduction)
             elif plugin == 'level_after_reverb':
                 peak = msg.get_structure().get_value('peak')
 
@@ -234,6 +260,39 @@ class GstEffects(GObject.GObject):
     def set_limiter_release_time(self, value):
         self.limiter.set_property('release-time', value)
 
+    def set_compressor_measurement_type(self, value):
+        self.compressor.set_property('rms-peak', value)
+
+    def set_compressor_attack(self, value):
+        self.compressor.set_property('attack-time', value)
+
+    def set_compressor_release(self, value):
+        self.compressor.set_property('release-time', value)
+
+    def set_compressor_threshold(self, value):
+        self.compressor.set_property('threshold-level', value)
+
+    def set_compressor_ratio(self, value):
+        self.compressor.set_property('ratio', value)
+
+    def set_compressor_knee(self, value):
+        self.compressor.set_property('knee-radius', value)
+
+    def set_compressor_makeup(self, value):
+        self.compressor.set_property('makeup-gain', value)
+
+    def set_reverb_room_size(self, value):
+        self.freeverb.set_property('room-size', value)
+
+    def set_reverb_damping(self, value):
+        self.freeverb.set_property('damping', value)
+
+    def set_reverb_width(self, value):
+        self.freeverb.set_property('width', value)
+
+    def set_reverb_level(self, value):
+        self.freeverb.set_property('level', value)
+
     def set_eq_band0(self, value):
         self.equalizer.set_property('param-31-hz', value)
 
@@ -263,15 +322,3 @@ class GstEffects(GObject.GObject):
 
     def set_eq_band9(self, value):
         self.equalizer.set_property('param-16-khz', value)
-
-    def set_reverb_room_size(self, value):
-        self.freeverb.set_property('room-size', value)
-
-    def set_reverb_damping(self, value):
-        self.freeverb.set_property('damping', value)
-
-    def set_reverb_width(self, value):
-        self.freeverb.set_property('width', value)
-
-    def set_reverb_level(self, value):
-        self.freeverb.set_property('level', value)
