@@ -162,6 +162,8 @@ class GstEffects(GObject.GObject):
         self.rate = caps.get_structure(0).get_value("rate")
 
         if self.rate:
+            self.spectrum_freqs = []
+
             for i in range(self.spectrum_nbands):
                 freq = self.rate * (0.5 * i + 0.25) / self.spectrum_nbands
 

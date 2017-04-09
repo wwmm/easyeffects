@@ -596,8 +596,8 @@ class Application(Gtk.Application):
             if label == 'cathedral':
                 value = self.settings.get_value('reverb-cathedral')
                 self.apply_reverb_preset(value)
-            elif label == 'default':
-                value = self.settings.get_value('reverb-default')
+            elif label == 'no reverberation':
+                value = self.settings.get_value('reverb-no-reverberation')
                 self.apply_reverb_preset(value)
             elif label == 'engine room':
                 value = self.settings.get_value('reverb-engine-room')

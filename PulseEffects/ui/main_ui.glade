@@ -508,8 +508,8 @@
       </packing>
     </child>
     <child>
-      <object class="GtkRadioButton" id="reverb_default">
-        <property name="label" translatable="yes">default</property>
+      <object class="GtkRadioButton" id="reverb_no_reverberation">
+        <property name="label" translatable="yes">no reverberation</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">False</property>
