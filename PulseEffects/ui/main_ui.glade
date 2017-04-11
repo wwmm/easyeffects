@@ -708,7 +708,6 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="hexpand">True</property>
                         <property name="adjustment">limiter_input_gain</property>
                         <property name="round_digits">1</property>
                         <property name="digits">0</property>
