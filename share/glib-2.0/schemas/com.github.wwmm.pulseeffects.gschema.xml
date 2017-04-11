@@ -5,6 +5,9 @@
           <default>100</default>
         </key>
 
+        <key name="limiter-default" type="ad">
+          <default>[0, 0, 1]</default>
+        </key>
         <key name="limiter-user" type="ad">
           <default>[0, 0, 1]</default>
         </key>

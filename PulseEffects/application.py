@@ -71,6 +71,8 @@ class Application(Gtk.Application):
                 self.on_limiter_limit_value_changed,
             'on_limiter_release_time_value_changed':
                 self.on_limiter_release_time_value_changed,
+            'on_limiter_preset_toggled':
+                self.on_limiter_preset_toggled,
             'on_compressor_measurement_type':
                 self.on_compressor_measurement_type,
             'on_compressor_attack_time_value_changed':
@@ -126,6 +128,7 @@ class Application(Gtk.Application):
         self.create_appmenu()
 
         self.init_settings_menu(headerbar_builder)
+        self.init_limiter_menu(main_ui_builder)
         self.init_compressor_menu(main_ui_builder)
         self.init_reverb_menu(main_ui_builder)
         self.init_equalizer_menu(main_ui_builder)
@@ -169,9 +172,7 @@ class Application(Gtk.Application):
         self.limiter_level_after_right = main_ui_builder.get_object(
             'limiter_level_after_right')
 
-        self.limiter_input_gain.set_value(self.limiter_user[0])
-        self.limiter_limit.set_value(self.limiter_user[1])
-        self.limiter_release_time.set_value(self.limiter_user[2])
+        self.apply_limiter_preset(self.limiter_user)
 
         # compressor
 
@@ -281,6 +282,25 @@ class Application(Gtk.Application):
                 popover.hide()
             else:
                 popover.show_all()
+
+        button.connect("clicked", button_clicked)
+
+    def init_limiter_menu(self, builder):
+        button = builder.get_object('limiter_popover')
+        menu = builder.get_object('limiter_menu')
+        limiter_no_selection = builder.get_object('limiter_no_selection')
+
+        popover = Gtk.Popover.new(button)
+        popover.props.transitions_enabled = True
+        popover.add(menu)
+
+        def button_clicked(arg):
+            if popover.get_visible():
+                popover.hide()
+            else:
+                popover.show_all()
+                limiter_no_selection.set_active(True)
+                limiter_no_selection.hide()
 
         button.connect("clicked", button_clicked)
 
@@ -491,6 +511,19 @@ class Application(Gtk.Application):
         self.spectrum_magnitudes = magnitudes
 
         self.spectrum.queue_draw()
+
+    def apply_limiter_preset(self, values):
+        self.limiter_input_gain.set_value(values[0])
+        self.limiter_limit.set_value(values[1])
+        self.limiter_release_time.set_value(values[2])
+
+    def on_limiter_preset_toggled(self, obj):
+        if obj.get_active():
+            label = obj.get_label()
+
+            if label == 'default':
+                value = self.settings.get_value('limiter-default')
+                self.apply_limiter_preset(value)
 
     def save_limiter_user(self, idx, value):
         self.limiter_user[idx] = value
