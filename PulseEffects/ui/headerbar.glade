@@ -65,6 +65,26 @@
     <property name="has_subtitle">False</property>
     <property name="show_close_button">True</property>
     <child>
+      <object class="GtkLabel">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Auto Volume</property>
+      </object>
+      <packing>
+        <property name="position">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSwitch" id="autovolume_enable">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <signal name="state-set" handler="on_autovolume_enable_state_set" swapped="no"/>
+      </object>
+      <packing>
+        <property name="position">2</property>
+      </packing>
+    </child>
+    <child>
       <object class="GtkButton" id="settings_popover_button">
         <property name="visible">True</property>
         <property name="can_focus">True</property>

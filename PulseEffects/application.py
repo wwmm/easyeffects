@@ -35,6 +35,7 @@ class Application(Gtk.Application):
                          self.on_new_level_before_limiter)
         self.gst.connect('new_level_after_limiter',
                          self.on_new_level_after_limiter)
+        self.gst.connect('new_autovolume', self.on_new_autovolume)
         self.gst.connect('new_level_after_compressor',
                          self.on_new_level_after_compressor)
         self.gst.connect('new_compressor_gain_reduction',
@@ -43,8 +44,7 @@ class Application(Gtk.Application):
                          self.on_new_limiter_attenuation)
         self.gst.connect('new_level_after_reverb',
                          self.on_new_level_after_reverb)
-        self.gst.connect('new_level_after_eq',
-                         self.on_new_level_after_eq)
+        self.gst.connect('new_level_after_eq', self.on_new_level_after_eq)
         self.gst.connect('new_spectrum', self.on_new_spectrum)
 
         self.limiter_user = self.settings.get_value('limiter-user').unpack()
@@ -113,6 +113,8 @@ class Application(Gtk.Application):
         }
 
         headerbar_ui_handlers = {
+            'on_autovolume_enable_state_set':
+                self.on_autovolume_enable_state_set,
             'on_buffer_time_value_changed': self.on_buffer_time_value_changed
         }
 
@@ -369,6 +371,9 @@ class Application(Gtk.Application):
 
         self.gst.set_buffer_time(value * 1000)
 
+    def on_autovolume_enable_state_set(self, obj, state):
+        self.gst.set_autovolume_state(state)
+
     def build_apps_list(self):
         children = self.apps_box.get_children()
 
@@ -473,6 +478,10 @@ class Application(Gtk.Application):
 
             self.limiter_level_after_left.set_value(l_value)
             self.limiter_level_after_right.set_value(r_value)
+
+    def on_new_autovolume(self, obj, gain):
+        if self.ui_initialized:
+            self.limiter_input_gain.set_value(gain)
 
     def on_new_level_after_compressor(self, obj, left, right):
         if self.ui_initialized:

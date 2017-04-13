@@ -16,6 +16,8 @@ class GstEffects(GObject.GObject):
                                      (float, float)),
         'new_level_after_limiter': (GObject.SIGNAL_RUN_FIRST, None,
                                     (float, float)),
+        'new_autovolume': (GObject.SIGNAL_RUN_FIRST, None,
+                           (float,)),
         'new_level_after_compressor': (GObject.SIGNAL_RUN_FIRST, None,
                                        (float, float)),
         'new_compressor_gain_reduction': (GObject.SIGNAL_RUN_FIRST, None,
@@ -41,6 +43,9 @@ class GstEffects(GObject.GObject):
         self.spectrum_freqs = []
         self.spectrum_nfreqs = 0
         self.spectrum_threshold = -120  # dB
+
+        self.autovolume_enabled = False
+        self.autovolume_avg_time = 1000000000
 
         self.pipeline = self.build_pipeline()
 
@@ -76,6 +81,8 @@ class GstEffects(GObject.GObject):
             'level', 'level_after_reverb')
         level_after_eq = Gst.ElementFactory.make('level', 'level_after_eq')
 
+        self.autovolume = Gst.ElementFactory.make('level', 'autovolume')
+
         spectrum_src_type = Gst.ElementFactory.make("typefind", None)
 
         spectrum = Gst.ElementFactory.make('spectrum', 'spectrum')
@@ -86,6 +93,8 @@ class GstEffects(GObject.GObject):
         self.audio_src.set_property('provide-clock', False)
         self.audio_src.set_property('slave-method', 1)
 
+        self.autovolume.set_property('interval', self.autovolume_avg_time)
+
         spectrum.set_property('bands', self.spectrum_nbands)
         spectrum.set_property('threshold', self.spectrum_threshold)
 
@@ -93,6 +102,7 @@ class GstEffects(GObject.GObject):
         pipeline.add(level_before_limiter)
         pipeline.add(self.limiter)
         pipeline.add(level_after_limiter)
+        pipeline.add(self.autovolume)
         pipeline.add(self.compressor)
         pipeline.add(level_after_compressor)
         pipeline.add(self.freeverb)
@@ -106,7 +116,8 @@ class GstEffects(GObject.GObject):
         self.audio_src.link(level_before_limiter)
         level_before_limiter.link(self.limiter)
         self.limiter.link(level_after_limiter)
-        level_after_limiter.link(self.compressor)
+        level_after_limiter.link(self.autovolume)
+        self.autovolume.link(self.compressor)
         self.compressor.link(level_after_compressor)
         level_after_compressor.link(self.freeverb)
         self.freeverb.link(level_after_reverb)
@@ -179,6 +190,25 @@ class GstEffects(GObject.GObject):
 
             self.spectrum_nfreqs = len(self.spectrum_freqs)
 
+    def auto_gain(self, mean_peak):
+        threshold = -30
+        delta = 1
+
+        if mean_peak > threshold + delta:
+            gain = self.limiter.get_property('input-gain')
+
+            if gain - 1 >= -20:
+                gain = gain - 1
+
+                self.emit('new_autovolume', gain)
+        elif mean_peak < threshold - delta:
+            gain = self.limiter.get_property('input-gain')
+
+            if gain + 1 <= 0:
+                gain = gain + 1
+
+                self.emit('new_autovolume', gain)
+
     def on_message(self, bus, msg):
         if msg.type == Gst.MessageType.ERROR:
             print('on_error():', msg.parse_error())
@@ -200,6 +230,15 @@ class GstEffects(GObject.GObject):
                     self.old_limiter_attenuation = attenuation
 
                     self.emit('new_limiter_attenuation', attenuation)
+            elif plugin == 'autovolume':
+                if self.autovolume_enabled:
+                    rms = msg.get_structure().get_value('rms')
+
+                    mean_rms = 0.5 * (rms[0] + rms[1])
+
+                    if mean_rms > -50:
+                        self.auto_gain(mean_rms)
+
             elif plugin == 'level_after_compressor':
                 peak = msg.get_structure().get_value('peak')
 
@@ -252,6 +291,9 @@ class GstEffects(GObject.GObject):
         self.audio_src.set_property('buffer-time', value)
         self.audio_sink.set_property('buffer-time', value)
         self.set_state('playing')
+
+    def set_autovolume_state(self, value):
+        self.autovolume_enabled = value
 
     def set_limiter_input_gain(self, value):
         self.limiter.set_property('input-gain', value)
