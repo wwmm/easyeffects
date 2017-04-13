@@ -5,6 +5,10 @@
           <default>100</default>
         </key>
 
+        <key name="autovolume-state" type="b">
+          <default>false</default>
+        </key>
+
         <key name="limiter-default" type="ad">
           <default>[0, 0, 1]</default>
         </key>

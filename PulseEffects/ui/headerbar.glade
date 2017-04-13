@@ -75,7 +75,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkSwitch" id="autovolume_enable">
+      <object class="GtkSwitch" id="autovolume_state">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <signal name="state-set" handler="on_autovolume_enable_state_set" swapped="no"/>
@@ -94,6 +94,7 @@
       </object>
       <packing>
         <property name="pack_type">end</property>
+        <property name="position">2</property>
       </packing>
     </child>
   </object>

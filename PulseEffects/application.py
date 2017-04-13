@@ -147,6 +147,14 @@ class Application(Gtk.Application):
 
         buffer_time_obj.set_value(buffer_time)
 
+        # autovolume
+
+        autovolume_state_obj = headerbar_builder.get_object('autovolume_state')
+
+        autovolume_state = self.settings.get_value('autovolume-state').unpack()
+
+        autovolume_state_obj.set_state(autovolume_state)
+
         # limiter
 
         self.limiter_input_gain = main_ui_builder.get_object(
@@ -373,6 +381,9 @@ class Application(Gtk.Application):
 
     def on_autovolume_enable_state_set(self, obj, state):
         self.gst.set_autovolume_state(state)
+
+        out = GLib.Variant('b', state)
+        self.settings.set_value('autovolume-state', out)
 
     def build_apps_list(self):
         children = self.apps_box.get_children()
