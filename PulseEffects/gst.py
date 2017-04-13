@@ -45,7 +45,6 @@ class GstEffects(GObject.GObject):
         self.spectrum_threshold = -120  # dB
 
         self.autovolume_enabled = False
-        self.autovolume_avg_time = 1000000000
 
         self.pipeline = self.build_pipeline()
 
@@ -92,8 +91,6 @@ class GstEffects(GObject.GObject):
 
         self.audio_src.set_property('provide-clock', False)
         self.audio_src.set_property('slave-method', 1)
-
-        self.autovolume.set_property('interval', self.autovolume_avg_time)
 
         spectrum.set_property('bands', self.spectrum_nbands)
         spectrum.set_property('threshold', self.spectrum_threshold)
@@ -190,21 +187,21 @@ class GstEffects(GObject.GObject):
 
             self.spectrum_nfreqs = len(self.spectrum_freqs)
 
-    def auto_gain(self, mean_peak):
-        threshold = -30
+    def auto_gain(self, mean):
+        threshold = -17
         delta = 1
 
-        if mean_peak > threshold + delta:
+        if mean > threshold + delta:
             gain = self.limiter.get_property('input-gain')
 
             if gain - 1 >= -20:
                 gain = gain - 1
 
                 self.emit('new_autovolume', gain)
-        elif mean_peak < threshold - delta:
+        elif mean < threshold - delta:
             gain = self.limiter.get_property('input-gain')
 
-            if gain + 1 <= 0:
+            if gain + 1 <= 20:
                 gain = gain + 1
 
                 self.emit('new_autovolume', gain)
@@ -232,12 +229,12 @@ class GstEffects(GObject.GObject):
                     self.emit('new_limiter_attenuation', attenuation)
             elif plugin == 'autovolume':
                 if self.autovolume_enabled:
-                    rms = msg.get_structure().get_value('rms')
+                    peak = msg.get_structure().get_value('peak')
 
-                    mean_rms = 0.5 * (rms[0] + rms[1])
+                    mean = 0.5 * (peak[0] + peak[1])
 
-                    if mean_rms > -50:
-                        self.auto_gain(mean_rms)
+                    if mean > -40:
+                        self.auto_gain(mean)
 
             elif plugin == 'level_after_compressor':
                 peak = msg.get_structure().get_value('peak')
@@ -294,6 +291,9 @@ class GstEffects(GObject.GObject):
 
     def set_autovolume_state(self, value):
         self.autovolume_enabled = value
+
+    def set_autovolume_time_window(self, value):
+        self.autovolume.set_property('interval', value * 1000000)
 
     def set_limiter_input_gain(self, value):
         self.limiter.set_property('input-gain', value)

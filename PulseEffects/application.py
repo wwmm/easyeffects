@@ -113,9 +113,11 @@ class Application(Gtk.Application):
         }
 
         headerbar_ui_handlers = {
+            'on_buffer_time_value_changed': self.on_buffer_time_value_changed,
             'on_autovolume_enable_state_set':
                 self.on_autovolume_enable_state_set,
-            'on_buffer_time_value_changed': self.on_buffer_time_value_changed
+            'on_autovolume_time_window_value_changed':
+                self.on_autovolume_time_window_value_changed
         }
 
         main_ui_builder.connect_signals(main_ui_handlers)
@@ -147,14 +149,6 @@ class Application(Gtk.Application):
 
         buffer_time_obj.set_value(buffer_time)
 
-        # autovolume
-
-        autovolume_state_obj = headerbar_builder.get_object('autovolume_state')
-
-        autovolume_state = self.settings.get_value('autovolume-state').unpack()
-
-        autovolume_state_obj.set_state(autovolume_state)
-
         # limiter
 
         self.limiter_input_gain = main_ui_builder.get_object(
@@ -183,6 +177,24 @@ class Application(Gtk.Application):
             'limiter_level_after_right')
 
         self.apply_limiter_preset(self.limiter_user)
+
+        # autovolume
+
+        autovolume_state_obj = headerbar_builder.get_object('autovolume_state')
+        autovolume_time_window_obj = headerbar_builder.get_object(
+            'autovolume_time_window')
+
+        autovolume_state = self.settings.get_value('autovolume-state').unpack()
+        autovolume_time_window = self.settings.get_value(
+            'autovolume-time-window').unpack()
+
+        autovolume_state_obj.set_state(autovolume_state)
+        autovolume_time_window_obj.set_value(autovolume_time_window)
+
+        if autovolume_state:
+            self.limiter_limit.set_value(-15)
+        else:
+            self.limiter_limit.set_value(0)
 
         # compressor
 
@@ -382,8 +394,22 @@ class Application(Gtk.Application):
     def on_autovolume_enable_state_set(self, obj, state):
         self.gst.set_autovolume_state(state)
 
+        if self.ui_initialized:
+            if state:
+                self.limiter_limit.set_value(-15)
+            else:
+                self.limiter_limit.set_value(0)
+
         out = GLib.Variant('b', state)
         self.settings.set_value('autovolume-state', out)
+
+    def on_autovolume_time_window_value_changed(self, obj):
+        value = int(obj.get_value())
+
+        self.gst.set_autovolume_time_window(value)
+
+        out = GLib.Variant('i', value)
+        self.settings.set_value('autovolume-time-window', out)
 
     def build_apps_list(self):
         children = self.apps_box.get_children()
