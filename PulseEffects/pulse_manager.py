@@ -22,9 +22,10 @@ class PulseManager(GObject.GObject):
         self.sink_idx = -1
         self.sink_inputs = []
 
-        self.app_blacklist = ['PulseEffects', 'pulseeffects']
-        self.media_blacklist = ['pulsesink probe', 'audio-volume-change',
-                                'device-added-media', 'device-removed-media']
+        self.app_blacklist = ['PulseEffects', 'pulseeffects', 'gsd-media-keys',
+                              'GNOME Shell', 'libcanberra', 'gnome-pomodoro']
+
+        self.media_blacklist = ['pulsesink probe']
 
         # wrapping callbacks
         self.ctx_cb = p.pa_context_notify_cb_t(self.context_status)
@@ -78,10 +79,9 @@ class PulseManager(GObject.GObject):
         self.load_sink()
 
         # search sink inputs
-        action = 1  # add
         o = p.pa_context_get_sink_input_info_list(self.ctx,
                                                   self.sink_input_info_cb,
-                                                  action)
+                                                  None)
 
         while p.pa_operation_get_state(o) == p.PA_OPERATION_RUNNING:
             pass
@@ -126,22 +126,15 @@ class PulseManager(GObject.GObject):
         elif eol == 1:
             self.sink_is_loaded = True
 
-    def get_sink_input_list_idx(self, sink_input_idx):
-        for n in range(len(self.sink_inputs)):
-            print(n, self.sink_inputs[n][0], sink_input_idx)
-            if self.sink_inputs[n][0] == sink_input_idx:
-                return n
-            else:
-                return None
-
     def sink_input_info(self, context, info, eol, user_data):
         if eol == -1:
             for s in self.sink_inputs:
                 if s[0] == user_data:
                     self.sink_inputs.remove(s)
-                    break
 
-            GLib.idle_add(self.emit, 'sink_inputs_changed')
+                    GLib.idle_add(self.emit, 'sink_inputs_changed')
+
+                    break
 
         if info:
             idx = info.contents.index
@@ -186,7 +179,7 @@ class PulseManager(GObject.GObject):
 
                     list_idx = list_idx + 1
 
-                if have_this_input:
+                if have_this_input:  # update sink input
                     self.sink_inputs[list_idx] = new_input
                 else:
                     self.sink_inputs.append(new_input)
@@ -240,22 +233,6 @@ class PulseManager(GObject.GObject):
 
             self.load_sink_info()
 
-    def find_sink_input_list_idx(self, idx):
-        count = 0
-        sink_input_in_list = False
-
-        for i in self.sink_inputs:
-            if i[0] == idx:
-                sink_input_in_list = True
-                break
-
-            count = count + 1
-
-        if sink_input_in_list:
-            return count
-        else:
-            return None
-
     def grab_input(self, idx):
         p.pa_context_move_sink_input_by_index(self.ctx, idx,
                                               self.sink_idx,
@@ -269,14 +246,10 @@ class PulseManager(GObject.GObject):
     def subscribe(self, context, event_value, idx, user_data):
         event_type = event_value & p.PA_SUBSCRIPTION_EVENT_TYPE_MASK
 
-        user_data = 0
+        user_data = None
 
-        if event_type == p.PA_SUBSCRIPTION_EVENT_NEW:
-            user_data = 1
-        elif event_type == p.PA_SUBSCRIPTION_EVENT_REMOVE:
+        if event_type == p.PA_SUBSCRIPTION_EVENT_REMOVE:
             user_data = idx
-        elif event_type == p.PA_SUBSCRIPTION_EVENT_CHANGE:
-            user_data = 3
 
         p.pa_context_get_sink_input_info(self.ctx, idx,
                                          self.sink_input_info_cb,

@@ -188,7 +188,7 @@ class GstEffects(GObject.GObject):
             self.spectrum_nfreqs = len(self.spectrum_freqs)
 
     def auto_gain(self, mean):
-        threshold = -17
+        threshold = -16
         delta = 1
 
         if mean > threshold + delta:

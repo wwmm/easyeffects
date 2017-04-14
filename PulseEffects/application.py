@@ -191,11 +191,6 @@ class Application(Gtk.Application):
         autovolume_state_obj.set_state(autovolume_state)
         autovolume_time_window_obj.set_value(autovolume_time_window)
 
-        if autovolume_state:
-            self.limiter_limit.set_value(-15)
-        else:
-            self.limiter_limit.set_value(0)
-
         # compressor
 
         self.compressor_rms = main_ui_builder.get_object('compressor_rms')
@@ -394,11 +389,13 @@ class Application(Gtk.Application):
     def on_autovolume_enable_state_set(self, obj, state):
         self.gst.set_autovolume_state(state)
 
-        if self.ui_initialized:
-            if state:
-                self.limiter_limit.set_value(-15)
-            else:
-                self.limiter_limit.set_value(0)
+        if state:
+            self.limiter_input_gain.set_value(-10)
+            self.limiter_limit.set_value(-14)
+            self.limiter_release_time.set_value(1.0)
+        else:
+            self.limiter_input_gain.set_value(-15)
+            self.limiter_limit.set_value(0)
 
         out = GLib.Variant('b', state)
         self.settings.set_value('autovolume-state', out)
