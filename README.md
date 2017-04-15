@@ -1,6 +1,6 @@
 # PulseEffects
 
-Limiter, compressor, reverberation and stereo equalizer effects for Pulseaudio applications
+Limiter, compressor, reverberation, stereo equalizer and autovolume effects for Pulseaudio applications
 
 ![](PulseEffects/images/pulseeffects_main_window.png)
 ![](PulseEffects/images/pulseeffects_eq_menu.png)
