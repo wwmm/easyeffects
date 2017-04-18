@@ -10,3 +10,6 @@ gschemas.compiled
 
 # Python egg metadata, regenerated from source files by setuptools.
 /*.egg-info
+
+# binary language files
+po/*.mo

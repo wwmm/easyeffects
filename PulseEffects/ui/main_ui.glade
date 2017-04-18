@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.20.0 -->
-<interface>
+<interface domain="PulseEffects">
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="compressor_attack">
     <property name="lower">2</property>
@@ -28,7 +28,7 @@
     <property name="orientation">vertical</property>
     <child>
       <object class="GtkRadioButton" id="compressor_no_selection">
-        <property name="label" translatable="yes">no_selection</property>
+        <property name="label">no_selection</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">False</property>
@@ -155,7 +155,7 @@
     <property name="orientation">vertical</property>
     <child>
       <object class="GtkRadioButton" id="eq_no_selection">
-        <property name="label" translatable="yes">no selection</property>
+        <property name="label">no selection</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">False</property>
@@ -463,7 +463,7 @@
     <property name="orientation">vertical</property>
     <child>
       <object class="GtkRadioButton" id="limiter_no_selection">
-        <property name="label" translatable="yes">no selection</property>
+        <property name="label">no selection</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">False</property>
@@ -519,7 +519,7 @@
     <property name="orientation">vertical</property>
     <child>
       <object class="GtkRadioButton" id="reverb_no_selection">
-        <property name="label" translatable="yes">no selection</property>
+        <property name="label">no selection</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">False</property>
@@ -816,7 +816,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
-                        <property name="label" translatable="yes">In</property>
+                        <property name="label" translatable="yes">Input</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -876,7 +876,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
-                        <property name="label" translatable="yes">Out</property>
+                        <property name="label" translatable="yes">Output</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1364,7 +1364,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
-                        <property name="label" translatable="yes">Out</property>
+                        <property name="label" translatable="yes">Output</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1649,7 +1649,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
-                        <property name="label" translatable="yes">Out</property>
+                        <property name="label" translatable="yes">Output</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1779,7 +1779,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">31Hz</property>
+                            <property name="label">31Hz</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -1820,7 +1820,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">63Hz</property>
+                            <property name="label">63Hz</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -1861,7 +1861,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">125Hz</property>
+                            <property name="label">125Hz</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -1902,7 +1902,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">250Hz</property>
+                            <property name="label">250Hz</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -1943,7 +1943,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">500Hz</property>
+                            <property name="label">500Hz</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -1984,7 +1984,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">1kHz</property>
+                            <property name="label">1kHz</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -2025,7 +2025,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">2kHz</property>
+                            <property name="label">2kHz</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -2066,7 +2066,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">4kHz</property>
+                            <property name="label">4kHz</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -2107,7 +2107,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">8kHz</property>
+                            <property name="label">8kHz</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -2148,7 +2148,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">16kHz</property>
+                            <property name="label">16kHz</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -2195,7 +2195,7 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Out</property>
+                        <property name="label" translatable="yes">Output</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
