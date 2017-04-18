@@ -120,8 +120,6 @@ class Application(Gtk.Application):
             'on_buffer_time_value_changed': self.on_buffer_time_value_changed,
             'on_autovolume_enable_state_set':
                 self.on_autovolume_enable_state_set,
-            'on_autovolume_time_window_value_changed':
-                self.on_autovolume_time_window_value_changed,
             'on_save_user_preset_clicked': self.on_save_user_preset_clicked,
             'on_load_user_preset_clicked': self.on_load_user_preset_clicked
         }
@@ -166,6 +164,13 @@ class Application(Gtk.Application):
         self.limiter_attenuation_levelbar = main_ui_builder.get_object(
             'limiter_attenuation_levelbar')
 
+        self.limiter_scale_input_gain = main_ui_builder.get_object(
+            'limiter_scale_input_gain')
+        self.limiter_scale_limit = main_ui_builder.get_object(
+            'limiter_scale_limit')
+        self.limiter_scale_release_time = main_ui_builder.get_object(
+            'limiter_scale_release_time')
+
         self.limiter_attenuation_levelbar.add_offset_value(
             'GTK_LEVEL_BAR_OFFSET_LOW', 20)
         self.limiter_attenuation_levelbar.add_offset_value(
@@ -187,15 +192,10 @@ class Application(Gtk.Application):
         # autovolume
 
         autovolume_state_obj = headerbar_builder.get_object('autovolume_state')
-        autovolume_time_window_obj = headerbar_builder.get_object(
-            'autovolume_time_window')
 
         autovolume_state = self.settings.get_value('autovolume-state').unpack()
-        autovolume_time_window = self.settings.get_value(
-            'autovolume-time-window').unpack()
 
         autovolume_state_obj.set_state(autovolume_state)
-        autovolume_time_window_obj.set_value(autovolume_time_window)
 
         # compressor
 
@@ -398,10 +398,19 @@ class Application(Gtk.Application):
         if state:
             self.limiter_input_gain.set_value(-10)
             self.limiter_limit.set_value(-14)
-            self.limiter_release_time.set_value(1.0)
+            self.limiter_release_time.set_value(2.0)
+
+            self.limiter_scale_input_gain.set_sensitive(False)
+            self.limiter_scale_limit.set_sensitive(False)
+            self.limiter_scale_release_time.set_sensitive(False)
         else:
             self.limiter_input_gain.set_value(-15)
             self.limiter_limit.set_value(0)
+            self.limiter_release_time.set_value(1.0)
+
+            self.limiter_scale_input_gain.set_sensitive(True)
+            self.limiter_scale_limit.set_sensitive(True)
+            self.limiter_scale_release_time.set_sensitive(True)
 
         out = GLib.Variant('b', state)
         self.settings.set_value('autovolume-state', out)

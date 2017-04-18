@@ -705,7 +705,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkScale">
+                      <object class="GtkScale" id="limiter_scale_input_gain">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="adjustment">limiter_input_gain</property>
@@ -745,7 +745,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkScale">
+                      <object class="GtkScale" id="limiter_scale_limit">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="adjustment">limiter_limit</property>
@@ -785,7 +785,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkScale">
+                      <object class="GtkScale" id="limiter_scale_release_time">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="adjustment">limiter_release_time</property>
