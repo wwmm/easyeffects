@@ -855,7 +855,7 @@ class Application(Gtk.Application):
         dialog.add_filter(file_filter)
 
     def on_save_user_preset_clicked(self, obj):
-        dialog = Gtk.FileChooserDialog("Save Preset", self.window,
+        dialog = Gtk.FileChooserDialog('', self.window,
                                        Gtk.FileChooserAction.SAVE,
                                        (Gtk.STOCK_CANCEL,
                                         Gtk.ResponseType.CANCEL,
@@ -919,7 +919,7 @@ class Application(Gtk.Application):
         dialog.destroy()
 
     def on_load_user_preset_clicked(self, obj):
-        dialog = Gtk.FileChooserDialog("Load Preset", self.window,
+        dialog = Gtk.FileChooserDialog('', self.window,
                                        Gtk.FileChooserAction.OPEN,
                                        (Gtk.STOCK_CANCEL,
                                         Gtk.ResponseType.CANCEL,
