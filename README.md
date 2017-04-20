@@ -1,6 +1,6 @@
 # PulseEffects
 
-Limiter, compressor, reverberation, stereo equalizer and autovolume effects for Pulseaudio applications
+Limiter, compressor, reverberation, stereo equalizer and auto volume effects for Pulseaudio applications
 
 ![](PulseEffects/images/pulseeffects_main_window.png)
 ![](PulseEffects/images/pulseeffects_eq_menu.png)
@@ -11,7 +11,7 @@ Effects order:
 1. Fast Lookahead Limiter
 2. SC4 Compressor
 3. Gstreamer Freeverb
-4. Caps 10 Bands Equalizer
+4. Gstreamer 10 Bands Equalizer
 
 Required libraries:
 
@@ -20,7 +20,7 @@ Required libraries:
 - Gtk 3.18 or above
 - Gstreamer, Gstreamer Plugins Good, Gstreamer Plugins Bad and Gstreamer Python
  (version 1.0 or above for all of them)
-- swh-plugins and caps from Ladspa
+- swh-plugins from Ladspa
 
 Arch Linux package:
 
