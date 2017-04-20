@@ -38,7 +38,7 @@ class GstEffects(GObject.GObject):
         self.old_limiter_attenuation = 0
         self.old_compressor_gain_reduction = 0
         self.rate = None
-        self.max_spectrum_freq = 16000  # Hz
+        self.max_spectrum_freq = 15000  # Hz
         self.spectrum_nbands = 300
         self.spectrum_freqs = []
         self.spectrum_nfreqs = 0
