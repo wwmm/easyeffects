@@ -36,8 +36,7 @@ setup(name='PulseEffects',
           'gst-plugins-good',
           'gst-plugins-bad',
           'gst-python',
-          'swh-plugins',
-          'caps'
+          'swh-plugins'
       ],
       scripts=['pulseeffects'],
       include_package_data=True,
