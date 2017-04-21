@@ -190,8 +190,9 @@ class GstEffects(GObject.GObject):
             self.spectrum_nfreqs = len(self.spectrum_freqs)
 
     def auto_gain(self, mean):
-        threshold = -15
+        threshold = -12
         delta = 1
+        mean = int(mean)
 
         if mean > threshold + delta:
             gain = self.limiter.get_property('input-gain')

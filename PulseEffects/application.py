@@ -397,14 +397,14 @@ class Application(Gtk.Application):
 
         if state:
             self.limiter_input_gain.set_value(-10)
-            self.limiter_limit.set_value(-14)
+            self.limiter_limit.set_value(-10)
             self.limiter_release_time.set_value(2.0)
 
             self.limiter_scale_input_gain.set_sensitive(False)
             self.limiter_scale_limit.set_sensitive(False)
             self.limiter_scale_release_time.set_sensitive(False)
         else:
-            self.limiter_input_gain.set_value(-15)
+            self.limiter_input_gain.set_value(-10)
             self.limiter_limit.set_value(0)
             self.limiter_release_time.set_value(1.0)
 
@@ -414,14 +414,6 @@ class Application(Gtk.Application):
 
         out = GLib.Variant('b', state)
         self.settings.set_value('autovolume-state', out)
-
-    def on_autovolume_time_window_value_changed(self, obj):
-        value = int(obj.get_value())
-
-        self.gst.set_autovolume_time_window(value)
-
-        out = GLib.Variant('i', value)
-        self.settings.set_value('autovolume-time-window', out)
 
     def build_apps_list(self):
         children = self.apps_box.get_children()
