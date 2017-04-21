@@ -286,6 +286,10 @@ class GstEffects(GObject.GObject):
     def set_output_sink_name(self, name):
         self.audio_sink.set_property('device', name)
 
+    def init_buffer_time(self, value):
+        self.audio_src.set_property('buffer-time', value)
+        self.audio_sink.set_property('buffer-time', value)
+
     def set_buffer_time(self, value):
         self.set_state('ready')
         self.audio_src.set_property('buffer-time', value)

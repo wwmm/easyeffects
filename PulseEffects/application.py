@@ -390,7 +390,10 @@ class Application(Gtk.Application):
         out = GLib.Variant('i', value)
         self.settings.set_value('buffer-time', out)
 
-        self.gst.set_buffer_time(value * 1000)
+        if self.ui_initialized:
+            self.gst.set_buffer_time(value * 1000)
+        else:
+            self.gst.init_buffer_time(value * 1000)
 
     def on_autovolume_enable_state_set(self, obj, state):
         self.gst.set_autovolume_state(state)

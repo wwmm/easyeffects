@@ -5,6 +5,7 @@
   <object class="GtkAdjustment" id="compressor_attack">
     <property name="lower">2</property>
     <property name="upper">400</property>
+    <property name="value">1000000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
     <signal name="value-changed" handler="on_compressor_attack_time_value_changed" swapped="no"/>
@@ -12,12 +13,14 @@
   <object class="GtkAdjustment" id="compressor_knee">
     <property name="lower">1</property>
     <property name="upper">10</property>
+    <property name="value">1000000</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_compressor_knee_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="compressor_makeup">
     <property name="upper">24</property>
+    <property name="value">1000000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_compressor_makeup_value_changed" swapped="no"/>
@@ -62,6 +65,7 @@
   <object class="GtkAdjustment" id="compressor_ratio">
     <property name="lower">1</property>
     <property name="upper">20</property>
+    <property name="value">1000000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_compressor_ratio_value_changed" swapped="no"/>
@@ -69,12 +73,14 @@
   <object class="GtkAdjustment" id="compressor_release">
     <property name="lower">2</property>
     <property name="upper">800</property>
+    <property name="value">1000000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
     <signal name="value-changed" handler="on_compressor_release_time_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="compressor_threshold">
     <property name="lower">-30</property>
+    <property name="value">1000000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_compressor_threshold_value_changed" swapped="no"/>
@@ -82,6 +88,7 @@
   <object class="GtkAdjustment" id="eq_band0">
     <property name="lower">-24</property>
     <property name="upper">12</property>
+    <property name="value">1000000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band0_value_changed" swapped="no"/>
@@ -89,6 +96,7 @@
   <object class="GtkAdjustment" id="eq_band1">
     <property name="lower">-24</property>
     <property name="upper">12</property>
+    <property name="value">1000000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band1_value_changed" swapped="no"/>
@@ -96,6 +104,7 @@
   <object class="GtkAdjustment" id="eq_band2">
     <property name="lower">-24</property>
     <property name="upper">12</property>
+    <property name="value">1000000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band2_value_changed" swapped="no"/>
@@ -103,6 +112,7 @@
   <object class="GtkAdjustment" id="eq_band3">
     <property name="lower">-24</property>
     <property name="upper">12</property>
+    <property name="value">1000000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band3_value_changed" swapped="no"/>
@@ -110,6 +120,7 @@
   <object class="GtkAdjustment" id="eq_band4">
     <property name="lower">-24</property>
     <property name="upper">12</property>
+    <property name="value">1000000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band4_value_changed" swapped="no"/>
@@ -117,6 +128,7 @@
   <object class="GtkAdjustment" id="eq_band5">
     <property name="lower">-24</property>
     <property name="upper">12</property>
+    <property name="value">1000000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band5_value_changed" swapped="no"/>
@@ -124,6 +136,7 @@
   <object class="GtkAdjustment" id="eq_band6">
     <property name="lower">-24</property>
     <property name="upper">12</property>
+    <property name="value">1000000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band6_value_changed" swapped="no"/>
@@ -131,6 +144,7 @@
   <object class="GtkAdjustment" id="eq_band7">
     <property name="lower">-24</property>
     <property name="upper">12</property>
+    <property name="value">1000000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band7_value_changed" swapped="no"/>
@@ -138,6 +152,7 @@
   <object class="GtkAdjustment" id="eq_band8">
     <property name="lower">-24</property>
     <property name="upper">12</property>
+    <property name="value">1000000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band8_value_changed" swapped="no"/>
@@ -145,6 +160,7 @@
   <object class="GtkAdjustment" id="eq_band9">
     <property name="lower">-24</property>
     <property name="upper">12</property>
+    <property name="value">1000000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band9_value_changed" swapped="no"/>
@@ -447,12 +463,14 @@
   <object class="GtkAdjustment" id="limiter_input_gain">
     <property name="lower">-20</property>
     <property name="upper">20</property>
+    <property name="value">1000000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_limiter_input_gain_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="limiter_limit">
     <property name="lower">-20</property>
+    <property name="value">1000000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_limiter_limit_value_changed" swapped="no"/>
@@ -497,18 +515,21 @@
   <object class="GtkAdjustment" id="limiter_release_time">
     <property name="lower">0.01</property>
     <property name="upper">2</property>
+    <property name="value">1000000</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.10000000000000001</property>
     <signal name="value-changed" handler="on_limiter_release_time_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="reverb_damping">
     <property name="upper">1</property>
+    <property name="value">1000000</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.10000000000000001</property>
     <signal name="value-changed" handler="on_reverb_damping_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="reverb_level">
     <property name="upper">1</property>
+    <property name="value">1000000</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.10000000000000001</property>
     <signal name="value-changed" handler="on_reverb_level_value_changed" swapped="no"/>
@@ -603,12 +624,14 @@
   </object>
   <object class="GtkAdjustment" id="reverb_room_size">
     <property name="upper">1</property>
+    <property name="value">1000000</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.10000000000000001</property>
     <signal name="value-changed" handler="on_reverb_room_size_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="reverb_width">
     <property name="upper">1</property>
+    <property name="value">1000000</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.10000000000000001</property>
     <signal name="value-changed" handler="on_reverb_width_value_changed" swapped="no"/>
