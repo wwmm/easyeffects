@@ -52,19 +52,19 @@
           <default>[9.6, 7, 2.5, 0, 0, -5.6, -7, -7, 0, 0]</default>
         </key>
         <key name="equalizer-equal-loudness-20" type="ad">
-          <default>[12, 5, -1, -6, -9, -10, -11, -12, -6, -4]</default>
+          <default>[12, 4, -3, -7, -9, -8, -9, -12, -5, -2]</default>
         </key>
         <key name="equalizer-equal-loudness-40" type="ad">
-          <default>[12, 5, -1, -6, -9, -11, -11, -12, -5, -5]</default>
+          <default>[12, 2, -3, -8, -9, -8, -9, -12, -4, -5]</default>
         </key>
         <key name="equalizer-equal-loudness-60" type="ad">
-          <default>[12, 4, -2, -6, -10, -11, -11, -12, -4, -6]</default>
+          <default>[12, 3, -3, -8, -8, -7, -8, -12, -3, -5]</default>
         </key>
         <key name="equalizer-equal-loudness-80" type="ad">
-          <default>[12, 3, -3, -8, -10, -11, -10, -12, -2, -7]</default>
+          <default>[12, 3, -3, -7, -8, -5, -6, -12, -1, -5]</default>
         </key>
         <key name="equalizer-equal-loudness-100" type="ad">
-          <default>[12, 2, -5, -10, -11, -11, -10, -12, -2, -10]</default>
+          <default>[12, 4, -1, -3, -4, -2, -6, -12, 0, 5]</default>
         </key>
         <key name="equalizer-flat" type="ad">
           <default>[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]</default>
