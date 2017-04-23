@@ -747,6 +747,21 @@ class Application(Gtk.Application):
             elif label == 'dance':
                 value = self.settings.get_value('equalizer-dance')
                 self.apply_eq_preset(value)
+            elif label == 'equal loudness 20':
+                value = self.settings.get_value('equalizer-equal-loudness-20')
+                self.apply_eq_preset(value)
+            elif label == 'equal loudness 40':
+                value = self.settings.get_value('equalizer-equal-loudness-40')
+                self.apply_eq_preset(value)
+            elif label == 'equal loudness 60':
+                value = self.settings.get_value('equalizer-equal-loudness-60')
+                self.apply_eq_preset(value)
+            elif label == 'equal loudness 80':
+                value = self.settings.get_value('equalizer-equal-loudness-80')
+                self.apply_eq_preset(value)
+            elif label == 'equal loudness 100':
+                value = self.settings.get_value('equalizer-equal-loudness-100')
+                self.apply_eq_preset(value)
             elif label == 'flat':
                 value = self.settings.get_value('equalizer-flat')
                 self.apply_eq_preset(value)
