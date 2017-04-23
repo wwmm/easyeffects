@@ -768,15 +768,9 @@ class Application(Gtk.Application):
             elif obj_id == 'eq_default':
                 value = self.settings.get_value('equalizer-default')
                 self.apply_eq_preset(value)
-            elif obj_id == 'eq_more_bass':
-                value = self.settings.get_value('equalizer-more-bass')
-                self.apply_eq_preset(value)
             elif obj_id == 'eq_more_bass_and_treble':
                 value = self.settings.get_value(
                     'equalizer-more-bass-and-treble')
-                self.apply_eq_preset(value)
-            elif obj_id == 'eq_more_treble':
-                value = self.settings.get_value('equalizer-more-treble')
                 self.apply_eq_preset(value)
             elif obj_id == 'eq_party':
                 value = self.settings.get_value('equalizer-party')

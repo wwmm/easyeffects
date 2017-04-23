@@ -350,23 +350,6 @@
       </packing>
     </child>
     <child>
-      <object class="GtkRadioButton" id="eq_more_bass">
-        <property name="label" translatable="yes">more bass</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="active">True</property>
-        <property name="draw_indicator">True</property>
-        <property name="group">eq_no_selection</property>
-        <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">12</property>
-      </packing>
-    </child>
-    <child>
       <object class="GtkRadioButton" id="eq_more_bass_and_treble">
         <property name="label" translatable="yes">more bass and treble</property>
         <property name="visible">True</property>
@@ -381,23 +364,6 @@
         <property name="expand">False</property>
         <property name="fill">True</property>
         <property name="position">13</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioButton" id="eq_more_treble">
-        <property name="label" translatable="yes">more treble</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="active">True</property>
-        <property name="draw_indicator">True</property>
-        <property name="group">eq_no_selection</property>
-        <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">14</property>
       </packing>
     </child>
     <child>
