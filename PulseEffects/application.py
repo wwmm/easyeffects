@@ -572,9 +572,9 @@ class Application(Gtk.Application):
 
     def on_limiter_preset_toggled(self, obj):
         if obj.get_active():
-            label = obj.get_label()
+            obj_id = Gtk.Buildable.get_name(obj)
 
-            if label == 'default':
+            if obj_id == 'limiter_default':
                 value = self.settings.get_value('limiter-default')
                 self.apply_limiter_preset(value)
 
@@ -615,9 +615,9 @@ class Application(Gtk.Application):
 
     def on_compressor_preset_toggled(self, obj):
         if obj.get_active():
-            label = obj.get_label()
+            obj_id = Gtk.Buildable.get_name(obj)
 
-            if label == 'no compression':
+            if obj_id == 'compressor_preset_none':
                 value = self.settings.get_value('compressor-no-compression')
                 self.apply_compressor_preset(value)
 
@@ -677,18 +677,18 @@ class Application(Gtk.Application):
 
     def on_reverb_preset_toggled(self, obj):
         if obj.get_active():
-            label = obj.get_label()
+            obj_id = Gtk.Buildable.get_name(obj)
 
-            if label == 'cathedral':
+            if obj_id == 'reverb_cathedral':
                 value = self.settings.get_value('reverb-cathedral')
                 self.apply_reverb_preset(value)
-            elif label == 'no reverberation':
+            elif obj_id == 'reverb_no_reverberation':
                 value = self.settings.get_value('reverb-no-reverberation')
                 self.apply_reverb_preset(value)
-            elif label == 'engine room':
+            elif obj_id == 'reverb_engine_room':
                 value = self.settings.get_value('reverb-engine-room')
                 self.apply_reverb_preset(value)
-            elif label == 'small room':
+            elif obj_id == 'reverb_small_room':
                 value = self.settings.get_value('reverb-small-room')
                 self.apply_reverb_preset(value)
 
@@ -733,70 +733,70 @@ class Application(Gtk.Application):
 
     def on_eq_preset_toggled(self, obj):
         if obj.get_active():
-            label = obj.get_label()
+            obj_id = Gtk.Buildable.get_name(obj)
 
-            if label == 'ballad':
+            if obj_id == 'eq_ballad':
                 value = self.settings.get_value('equalizer-ballad')
                 self.apply_eq_preset(value)
-            elif label == 'classic':
+            elif obj_id == 'eq_classic':
                 value = self.settings.get_value('equalizer-classic')
                 self.apply_eq_preset(value)
-            elif label == 'club':
+            elif obj_id == 'eq_club':
                 value = self.settings.get_value('equalizer-club')
                 self.apply_eq_preset(value)
-            elif label == 'dance':
+            elif obj_id == 'eq_dance':
                 value = self.settings.get_value('equalizer-dance')
                 self.apply_eq_preset(value)
-            elif label == 'equal loudness 20':
+            elif obj_id == 'eq_equal_loudness_20':
                 value = self.settings.get_value('equalizer-equal-loudness-20')
                 self.apply_eq_preset(value)
-            elif label == 'equal loudness 40':
+            elif obj_id == 'eq_equal_loudness_40':
                 value = self.settings.get_value('equalizer-equal-loudness-40')
                 self.apply_eq_preset(value)
-            elif label == 'equal loudness 60':
+            elif obj_id == 'eq_equal_loudness_60':
                 value = self.settings.get_value('equalizer-equal-loudness-60')
                 self.apply_eq_preset(value)
-            elif label == 'equal loudness 80':
+            elif obj_id == 'eq_equal_loudness_80':
                 value = self.settings.get_value('equalizer-equal-loudness-80')
                 self.apply_eq_preset(value)
-            elif label == 'equal loudness 100':
+            elif obj_id == 'eq_equal_loudness_100':
                 value = self.settings.get_value('equalizer-equal-loudness-100')
                 self.apply_eq_preset(value)
-            elif label == 'flat':
+            elif obj_id == 'eq_flat':
                 value = self.settings.get_value('equalizer-flat')
                 self.apply_eq_preset(value)
-            elif label == 'default':
+            elif obj_id == 'eq_default':
                 value = self.settings.get_value('equalizer-default')
                 self.apply_eq_preset(value)
-            elif label == 'more bass':
+            elif obj_id == 'eq_more_bass':
                 value = self.settings.get_value('equalizer-more-bass')
                 self.apply_eq_preset(value)
-            elif label == 'more bass and treble':
+            elif obj_id == 'eq_more_bass_and_treble':
                 value = self.settings.get_value(
                     'equalizer-more-bass-and-treble')
                 self.apply_eq_preset(value)
-            elif label == 'more treble':
+            elif obj_id == 'eq_more_treble':
                 value = self.settings.get_value('equalizer-more-treble')
                 self.apply_eq_preset(value)
-            elif label == 'party':
+            elif obj_id == 'eq_party':
                 value = self.settings.get_value('equalizer-party')
                 self.apply_eq_preset(value)
-            elif label == 'pop':
+            elif obj_id == 'eq_pop':
                 value = self.settings.get_value('equalizer-pop')
                 self.apply_eq_preset(value)
-            elif label == 'reggae':
+            elif obj_id == 'eq_reggae':
                 value = self.settings.get_value('equalizer-reggae')
                 self.apply_eq_preset(value)
-            elif label == 'rock':
+            elif obj_id == 'eq_rock':
                 value = self.settings.get_value('equalizer-rock')
                 self.apply_eq_preset(value)
-            elif label == 'ska':
+            elif obj_id == 'eq_ska':
                 value = self.settings.get_value('equalizer-ska')
                 self.apply_eq_preset(value)
-            elif label == 'soft':
+            elif obj_id == 'eq_soft':
                 value = self.settings.get_value('equalizer-soft')
                 self.apply_eq_preset(value)
-            elif label == 'techno':
+            elif obj_id == 'eq_techno':
                 value = self.settings.get_value('equalizer-techno')
                 self.apply_eq_preset(value)
 
