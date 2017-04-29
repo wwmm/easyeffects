@@ -52,6 +52,8 @@ class Application(Gtk.Application):
             'compressor-user').unpack()
         self.reverb_user = self.settings.get_value('reverb-user').unpack()
         self.eq_band_user = self.settings.get_value('equalizer-user').unpack()
+        self.eq_preamp_user = self.settings.get_value(
+            'equalizer-preamp').unpack()
 
         # creating user presets folder
         self.user_config_dir = os.path.expanduser('~/.config/PulseEffects')
@@ -102,6 +104,7 @@ class Application(Gtk.Application):
             'on_reverb_level_value_changed':
                 self.on_reverb_level_value_changed,
             'on_reverb_preset_toggled': self.on_reverb_preset_toggled,
+            'on_eq_preamp_value_changed': self.on_eq_preamp_value_changed,
             'on_eq_band0_value_changed': self.on_eq_band0_value_changed,
             'on_eq_band1_value_changed': self.on_eq_band1_value_changed,
             'on_eq_band2_value_changed': self.on_eq_band2_value_changed,
@@ -245,6 +248,7 @@ class Application(Gtk.Application):
 
         # equalizer
 
+        self.eq_preamp = main_ui_builder.get_object('eq_preamp')
         self.eq_band0 = main_ui_builder.get_object('eq_band0')
         self.eq_band1 = main_ui_builder.get_object('eq_band1')
         self.eq_band2 = main_ui_builder.get_object('eq_band2')
@@ -260,6 +264,7 @@ class Application(Gtk.Application):
         self.eq_right_level = main_ui_builder.get_object('eq_right_level')
 
         self.apply_eq_preset(self.eq_band_user)
+        self.eq_preamp.set_value(self.eq_preamp_user)
 
         # now that all elements were initialized we set pipeline to ready
         self.gst.set_state('ready')
@@ -801,6 +806,16 @@ class Application(Gtk.Application):
 
         self.settings.set_value('equalizer-user', out)
 
+    def on_eq_preamp_value_changed(self, obj):
+        value_db = obj.get_value()
+        value_linear = 10**(value_db / 20)
+
+        self.gst.set_eq_preamp(value_linear)
+
+        out = GLib.Variant('d', value_db)
+
+        self.settings.set_value('equalizer-preamp', out)
+
     def on_eq_band0_value_changed(self, obj):
         value = obj.get_value()
         self.gst.set_eq_band0(value)
@@ -905,9 +920,11 @@ class Application(Gtk.Application):
                                 'width': str(reverb[2]),
                                 'level': str(reverb[3])}
 
+            equalizer_preamp = self.settings.get_value('equalizer-preamp')
             equalizer = self.settings.get_value('equalizer-user')
 
-            config['equalizer'] = {'band0': str(equalizer[0]),
+            config['equalizer'] = {'preamp': str(equalizer_preamp),
+                                   'band0': str(equalizer[0]),
                                    'band1': str(equalizer[1]),
                                    'band2': str(equalizer[2]),
                                    'band3': str(equalizer[3]),
@@ -954,7 +971,12 @@ class Application(Gtk.Application):
             reverb = [float(v) for v in reverb]
             self.apply_reverb_preset(reverb)
 
-            equalizer = dict(config['equalizer']).values()
+            equalizer = list(dict(config['equalizer']).values())
+
+            if len(equalizer) == 11:  # one day this check will be removed...
+                equalizer_preamp = float(equalizer.pop(0))
+                self.eq_preamp.set_value(equalizer_preamp)
+
             equalizer = [float(v) for v in equalizer]
             self.apply_eq_preset(equalizer)
 

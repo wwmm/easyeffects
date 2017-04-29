@@ -66,6 +66,8 @@ class GstEffects(GObject.GObject):
 
         self.freeverb = Gst.ElementFactory.make('freeverb', None)
 
+        self.equalizer_preamp = Gst.ElementFactory.make('volume', None)
+
         self.equalizer = Gst.ElementFactory.make('equalizer-10bands', None)
 
         self.audio_sink = Gst.ElementFactory.make('pulsesink', None)
@@ -106,6 +108,7 @@ class GstEffects(GObject.GObject):
         pipeline.add(level_after_compressor)
         pipeline.add(self.freeverb)
         pipeline.add(level_after_reverb)
+        pipeline.add(self.equalizer_preamp)
         pipeline.add(self.equalizer)
         pipeline.add(level_after_eq)
         pipeline.add(spectrum_src_type)
@@ -120,7 +123,8 @@ class GstEffects(GObject.GObject):
         self.compressor.link(level_after_compressor)
         level_after_compressor.link(self.freeverb)
         self.freeverb.link(level_after_reverb)
-        level_after_reverb.link(self.equalizer)
+        level_after_reverb.link(self.equalizer_preamp)
+        self.equalizer_preamp.link(self.equalizer)
         self.equalizer.link(level_after_eq)
         level_after_eq.link(spectrum_src_type)
         spectrum_src_type.link(spectrum)
@@ -340,6 +344,9 @@ class GstEffects(GObject.GObject):
 
     def set_reverb_level(self, value):
         self.freeverb.set_property('level', value)
+
+    def set_eq_preamp(self, value):
+        self.equalizer_preamp.set_property('volume', value)
 
     def set_eq_band0(self, value):
         self.equalizer.set_property('band0', value)
