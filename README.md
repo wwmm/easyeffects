@@ -25,3 +25,11 @@ Required libraries:
 Arch Linux package:
 
 [https://aur.archlinux.org/packages/pulseeffects/](https://aur.archlinux.org/packages/pulseeffects/)
+
+Note for users trying to install directly from the sources:
+
+The setup.py script only installs the PulseEffects Python module. It does not copy the files inside the share folder to /usr/share. That is because
+python setuptools documentation does not recommends this to be done
+through it. The ideal solution would be to have a package for your 
+distribution. If there is not one available and you would like to try to
+install by yourself you can try to manualy copy the files in the share folder to the corresponding folders inside /usr/share and then run as root **glib-compile-schemas /usr/share/glib-2.0/schemas/**. 
