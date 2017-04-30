@@ -33,3 +33,11 @@ python setuptools documentation does not recommends this to be done
 through it. The ideal solution would be to have a package for your 
 distribution. If there is not one available and you would like to try to
 install by yourself you can try to manualy copy the files in the share folder to the corresponding folders inside /usr/share and then run as root **glib-compile-schemas /usr/share/glib-2.0/schemas/**. 
+
+Another option is running PulseEffects without installing it. Do the following steps:
+
+1. git clone https://github.com/wwmm/pulseeffects.git
+2. cd pulseeffects
+3. glib-compile-schemas share/glib-2.0/schemas/
+4. chmod +x pulseeffects
+5. GSETTINGS_SCHEMA_DIR=share/glib-2.0/schemas/ ./pulseeffects
