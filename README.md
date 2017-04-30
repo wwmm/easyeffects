@@ -16,6 +16,7 @@ Effects order:
 Required libraries:
 
 - Python 3
+- Python configparser (Python versions higher than 3.5.0 come with it. There is no need to install a separate package)
 - PyGobject 3
 - Gtk 3.18 or above
 - Gstreamer, Gstreamer Plugins Good, Gstreamer Plugins Bad and Gstreamer Python
