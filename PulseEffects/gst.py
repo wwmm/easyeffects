@@ -90,7 +90,6 @@ class GstEffects(GObject.GObject):
 
         self.audio_src.set_property('client-name', 'PulseEffects')
         self.audio_src.set_property('device', 'PulseEffects.monitor')
-
         self.audio_src.set_property('provide-clock', False)
         self.audio_src.set_property('slave-method', 1)
 

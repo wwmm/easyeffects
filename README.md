@@ -18,6 +18,7 @@ Required libraries:
 - Python 3
 - Python configparser (Python versions higher than 3.5.0 come with it. There is no need to install a separate package)
 - PyGobject 3
+- Python cairo
 - Gtk 3.18 or above
 - Gstreamer, Gstreamer Plugins Good, Gstreamer Plugins Bad and Gstreamer Python
  (version 1.0 or above for all of them)
@@ -31,9 +32,9 @@ Note for users trying to install directly from the sources:
 
 The setup.py script only installs the PulseEffects Python module. It does not copy the files inside the share folder to /usr/share. That is because
 python setuptools documentation does not recommends this to be done
-through it. The ideal solution would be to have a package for your 
+through it. The ideal solution would be to have a package for your
 distribution. If there is not one available and you would like to try to
-install by yourself you can try to manualy copy the files in the share folder to the corresponding folders inside /usr/share and then run as root **glib-compile-schemas /usr/share/glib-2.0/schemas/**. 
+install by yourself you can try to manualy copy the files in the share folder to the corresponding folders inside /usr/share and then run as root **glib-compile-schemas /usr/share/glib-2.0/schemas/**.
 
 Another option is running PulseEffects without installing it. Do the following steps:
 
