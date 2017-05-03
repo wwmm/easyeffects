@@ -206,7 +206,7 @@ class Application(Gtk.Application):
         self.limiter_level_after_right = main_ui_builder.get_object(
             'limiter_level_after_right')
 
-        self.apply_limiter_preset(self.limiter_user)
+        self.init_limiter()
 
         # autovolume
 
@@ -247,7 +247,7 @@ class Application(Gtk.Application):
         self.compressor_gain_reduction_levelbar.add_offset_value(
             'GTK_LEVEL_BAR_OFFSET_FULL', 24)
 
-        self.apply_compressor_preset(self.compressor_user)
+        self.init_compressor()
 
         # reverb
         self.reverb_room_size = main_ui_builder.get_object('reverb_room_size')
@@ -260,7 +260,7 @@ class Application(Gtk.Application):
         self.reverb_right_level = main_ui_builder.get_object(
             'reverb_right_level')
 
-        self.apply_reverb_preset(self.reverb_user)
+        self.init_reverb()
 
         # equalizer
 
@@ -279,8 +279,7 @@ class Application(Gtk.Application):
         self.eq_left_level = main_ui_builder.get_object('eq_left_level')
         self.eq_right_level = main_ui_builder.get_object('eq_right_level')
 
-        self.apply_eq_preset(self.eq_band_user)
-        self.eq_preamp.set_value(self.eq_preamp_user)
+        self.init_equalizer()
 
         # now that all elements were initialized we set pipeline to ready
         self.gst.set_state('ready')
@@ -409,8 +408,9 @@ class Application(Gtk.Application):
         button = builder.get_object('test_signal_popover')
         menu = builder.get_object('test_signal_menu')
         no_selection = builder.get_object('test_signal_no_selection')
+        default = builder.get_object('test_signal_band5')
 
-        no_selection.set_active(True)
+        default.set_active(True)
 
         popover = Gtk.Popover.new(button)
         popover.props.transitions_enabled = True
@@ -611,6 +611,14 @@ class Application(Gtk.Application):
         self.limiter_limit.set_value(values[1])
         self.limiter_release_time.set_value(values[2])
 
+    def init_limiter(self):
+        self.apply_limiter_preset(self.limiter_user)
+
+        # we need this when saved value is equal to widget default value
+        self.gst.set_limiter_input_gain(self.limiter_user[0])
+        self.gst.set_limiter_limit(self.limiter_user[1])
+        self.gst.set_limiter_release_time(self.limiter_user[2])
+
     def on_limiter_preset_toggled(self, obj):
         if obj.get_active():
             obj_id = Gtk.Buildable.get_name(obj)
@@ -653,6 +661,18 @@ class Application(Gtk.Application):
         self.compressor_ratio.set_value(values[4])
         self.compressor_knee.set_value(values[5])
         self.compressor_makeup.set_value(values[6])
+
+    def init_compressor(self):
+        self.apply_compressor_preset(self.compressor_user)
+
+        # we need this when saved value is equal to widget default value
+        self.gst.set_compressor_measurement_type(self.compressor_user[0])
+        self.gst.set_compressor_attack(self.compressor_user[1])
+        self.gst.set_compressor_release(self.compressor_user[2])
+        self.gst.set_compressor_threshold(self.compressor_user[3])
+        self.gst.set_compressor_ratio(self.compressor_user[4])
+        self.gst.set_compressor_knee(self.compressor_user[5])
+        self.gst.set_compressor_makeup(self.compressor_user[6])
 
     def on_compressor_preset_toggled(self, obj):
         if obj.get_active():
@@ -716,6 +736,15 @@ class Application(Gtk.Application):
         self.reverb_width.set_value(values[2])
         self.reverb_level.set_value(values[3])
 
+    def init_reverb(self):
+        self.apply_reverb_preset(self.reverb_user)
+
+        # we need this when saved value is equal to widget default value
+        self.gst.set_reverb_room_size(self.reverb_user[0])
+        self.gst.set_reverb_damping(self.reverb_user[1])
+        self.gst.set_reverb_width(self.reverb_user[2])
+        self.gst.set_reverb_level(self.reverb_user[3])
+
     def on_reverb_preset_toggled(self, obj):
         if obj.get_active():
             obj_id = Gtk.Buildable.get_name(obj)
@@ -771,6 +800,26 @@ class Application(Gtk.Application):
         self.eq_band7.set_value(values[7])
         self.eq_band8.set_value(values[8])
         self.eq_band9.set_value(values[9])
+
+    def init_equalizer(self):
+        self.eq_preamp.set_value(self.eq_preamp_user)
+        self.apply_eq_preset(self.eq_band_user)
+
+        # we need this when saved value is equal to widget default value
+
+        value_linear = 10**(self.eq_preamp_user / 20)
+        self.gst.set_eq_preamp(value_linear)
+
+        self.gst.set_eq_band0(self.eq_band_user[0])
+        self.gst.set_eq_band1(self.eq_band_user[1])
+        self.gst.set_eq_band2(self.eq_band_user[2])
+        self.gst.set_eq_band3(self.eq_band_user[3])
+        self.gst.set_eq_band4(self.eq_band_user[4])
+        self.gst.set_eq_band5(self.eq_band_user[5])
+        self.gst.set_eq_band6(self.eq_band_user[6])
+        self.gst.set_eq_band7(self.eq_band_user[7])
+        self.gst.set_eq_band8(self.eq_band_user[8])
+        self.gst.set_eq_band9(self.eq_band_user[9])
 
     def on_eq_preset_toggled(self, obj):
         if obj.get_active():
@@ -905,11 +954,9 @@ class Application(Gtk.Application):
     def on_test_signal_switch_state_set(self, obj, state):
         if state:
             self.generating_test_signal = True
-
             self.test_signal.set_state('playing')
         else:
             self.generating_test_signal = False
-
             self.test_signal.set_state('null')
 
     def on_test_signal_freq_toggled(self, obj):

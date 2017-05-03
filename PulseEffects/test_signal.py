@@ -21,16 +21,20 @@ class TestSignal():
         pipeline = Gst.Pipeline()
 
         self.audio_src = Gst.ElementFactory.make('audiotestsrc', None)
+        convert = Gst.ElementFactory.make('audioconvert', None)
         self.audio_sink = Gst.ElementFactory.make('pulsesink', None)
 
         self.audio_src.set_property('wave', 'sine')
+        self.audio_src.set_property('samplesperbuffer', 2048)
 
         self.audio_sink.set_property('device', 'PulseEffects')
 
         pipeline.add(self.audio_src)
+        pipeline.add(convert)
         pipeline.add(self.audio_sink)
 
-        self.audio_src.link(self.audio_sink)
+        self.audio_src.link(convert)
+        convert.link(self.audio_sink)
 
         return pipeline
 
