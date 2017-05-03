@@ -7,6 +7,7 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gio, GLib, Gtk
 from PulseEffects.gst import GstEffects
+from PulseEffects.test_signal import TestSignal
 from PulseEffects.pulse_manager import PulseManager
 
 
@@ -18,14 +19,19 @@ class Application(Gtk.Application):
         Gtk.Application.__init__(self, application_id=app_id)
 
         self.ui_initialized = False
+        self.generating_test_signal = False
         self.spectrum_magnitudes = []
         self.module_path = os.path.dirname(__file__)
 
         self.settings = Gio.Settings('com.github.wwmm.pulseeffects')
 
+        # pulseaudio
+
         self.pm = PulseManager()
 
         self.pm.connect('sink_inputs_changed', self.on_sink_inputs_changed)
+
+        # gstreamer audio effects
 
         self.gst = GstEffects()
 
@@ -46,6 +52,12 @@ class Application(Gtk.Application):
                          self.on_new_level_after_reverb)
         self.gst.connect('new_level_after_eq', self.on_new_level_after_eq)
         self.gst.connect('new_spectrum', self.on_new_spectrum)
+
+        # gstreamer test signal (sine wave)
+
+        self.test_signal = TestSignal()
+
+        # reading last used configurations
 
         self.limiter_user = self.settings.get_value('limiter-user').unpack()
         self.compressor_user = self.settings.get_value(
@@ -116,7 +128,10 @@ class Application(Gtk.Application):
             'on_eq_band8_value_changed': self.on_eq_band8_value_changed,
             'on_eq_band9_value_changed': self.on_eq_band9_value_changed,
             'on_eq_preset_toggled': self.on_eq_preset_toggled,
-            'on_spectrum_draw': self.on_spectrum_draw
+            'on_spectrum_draw': self.on_spectrum_draw,
+            'on_test_signal_switch_state_set':
+                self.on_test_signal_switch_state_set,
+            'on_test_signal_freq_toggled': self.on_test_signal_freq_toggled
         }
 
         headerbar_ui_handlers = {
@@ -143,6 +158,7 @@ class Application(Gtk.Application):
         self.init_compressor_menu(main_ui_builder)
         self.init_reverb_menu(main_ui_builder)
         self.init_equalizer_menu(main_ui_builder)
+        self.init_test_signal_menu(main_ui_builder)
 
         self.apps_box = main_ui_builder.get_object('apps_box')
         self.spectrum = main_ui_builder.get_object('spectrum')
@@ -389,6 +405,26 @@ class Application(Gtk.Application):
 
         button.connect("clicked", button_clicked)
 
+    def init_test_signal_menu(self, builder):
+        button = builder.get_object('test_signal_popover')
+        menu = builder.get_object('test_signal_menu')
+        no_selection = builder.get_object('test_signal_no_selection')
+
+        no_selection.set_active(True)
+
+        popover = Gtk.Popover.new(button)
+        popover.props.transitions_enabled = True
+        popover.add(menu)
+
+        def button_clicked(arg):
+            if popover.get_visible():
+                popover.hide()
+            else:
+                popover.show_all()
+                no_selection.hide()
+
+        button.connect("clicked", button_clicked)
+
     def on_buffer_time_value_changed(self, obj):
         value = obj.get_value()
 
@@ -507,7 +543,7 @@ class Application(Gtk.Application):
         if self.ui_initialized:
             self.build_apps_list()
 
-        if len(self.pm.sink_inputs) > 0:
+        if len(self.pm.sink_inputs) > 0 or self.generating_test_signal:
             self.gst.set_state('playing')
         else:
             self.gst.set_state('paused')
@@ -865,6 +901,41 @@ class Application(Gtk.Application):
         value = obj.get_value()
         self.gst.set_eq_band9(value)
         self.save_eq_user(9, value)
+
+    def on_test_signal_switch_state_set(self, obj, state):
+        if state:
+            self.generating_test_signal = True
+
+            self.test_signal.set_state('playing')
+        else:
+            self.generating_test_signal = False
+
+            self.test_signal.set_state('null')
+
+    def on_test_signal_freq_toggled(self, obj):
+        if obj.get_active():
+            obj_id = Gtk.Buildable.get_name(obj)
+
+            if obj_id == 'test_signal_band0':
+                self.test_signal.set_freq(29)
+            elif obj_id == 'test_signal_band1':
+                self.test_signal.set_freq(59)
+            elif obj_id == 'test_signal_band2':
+                self.test_signal.set_freq(119)
+            elif obj_id == 'test_signal_band3':
+                self.test_signal.set_freq(237)
+            elif obj_id == 'test_signal_band4':
+                self.test_signal.set_freq(474)
+            elif obj_id == 'test_signal_band5':
+                self.test_signal.set_freq(947)
+            elif obj_id == 'test_signal_band6':
+                self.test_signal.set_freq(1889)
+            elif obj_id == 'test_signal_band7':
+                self.test_signal.set_freq(3770)
+            elif obj_id == 'test_signal_band8':
+                self.test_signal.set_freq(7523)
+            elif obj_id == 'test_signal_band9':
+                self.test_signal.set_freq(15011)
 
     def add_file_filter(self, dialog):
         file_filter = Gtk.FileFilter()
