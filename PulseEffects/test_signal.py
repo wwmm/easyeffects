@@ -21,20 +21,23 @@ class TestSignal():
         pipeline = Gst.Pipeline()
 
         self.audio_src = Gst.ElementFactory.make('audiotestsrc', None)
-        convert = Gst.ElementFactory.make('audioconvert', None)
+        self.bandpass = Gst.ElementFactory.make('audiowsincband', None)
         self.audio_sink = Gst.ElementFactory.make('pulsesink', None)
 
-        self.audio_src.set_property('wave', 'sine')
-        self.audio_src.set_property('samplesperbuffer', 2048)
+        self.audio_src.set_property('wave', 'pink-noise')
+        self.audio_src.set_property('volume', 1.0)
+
+        self.bandpass.set_property('length', 20001)
 
         self.audio_sink.set_property('device', 'PulseEffects')
 
         pipeline.add(self.audio_src)
-        pipeline.add(convert)
+        pipeline.add(self.bandpass)
         pipeline.add(self.audio_sink)
 
-        self.audio_src.link(convert)
-        convert.link(self.audio_sink)
+        self.audio_src.link(self.bandpass)
+        self.bandpass.link(self.audio_sink)
+        self.audio_src.link(self.audio_sink)
 
         return pipeline
 
@@ -82,3 +85,17 @@ class TestSignal():
 
     def set_freq(self, value):
         self.audio_src.set_property('freq', value)
+
+    def set_bandpass(self, lower, upper):
+        current_lower = self.bandpass.get_property('lower-frequency')
+        current_upper = self.bandpass.get_property('upper-frequency')
+
+        print(current_lower, lower)
+        print(current_upper, upper)
+
+        if lower > current_upper:
+            self.bandpass.set_property('upper-frequency', upper)
+            self.bandpass.set_property('lower-frequency', lower)
+        else:
+            self.bandpass.set_property('lower-frequency', lower)
+            self.bandpass.set_property('upper-frequency', upper)

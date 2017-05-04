@@ -7,8 +7,8 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gio, GLib, Gtk
 from PulseEffects.gst import GstEffects
-from PulseEffects.test_signal import TestSignal
 from PulseEffects.pulse_manager import PulseManager
+from PulseEffects.test_signal import TestSignal
 
 
 class Application(Gtk.Application):
@@ -964,25 +964,25 @@ class Application(Gtk.Application):
             obj_id = Gtk.Buildable.get_name(obj)
 
             if obj_id == 'test_signal_band0':
-                self.test_signal.set_freq(29)
+                self.test_signal.set_bandpass(19, 39)
             elif obj_id == 'test_signal_band1':
-                self.test_signal.set_freq(59)
+                self.test_signal.set_bandpass(49, 69)
             elif obj_id == 'test_signal_band2':
-                self.test_signal.set_freq(119)
+                self.test_signal.set_bandpass(109, 129)
             elif obj_id == 'test_signal_band3':
-                self.test_signal.set_freq(237)
+                self.test_signal.set_bandpass(227, 247)
             elif obj_id == 'test_signal_band4':
-                self.test_signal.set_freq(474)
+                self.test_signal.set_bandpass(464, 484)
             elif obj_id == 'test_signal_band5':
-                self.test_signal.set_freq(947)
+                self.test_signal.set_bandpass(937, 957)
             elif obj_id == 'test_signal_band6':
-                self.test_signal.set_freq(1889)
+                self.test_signal.set_bandpass(1879, 1899)
             elif obj_id == 'test_signal_band7':
-                self.test_signal.set_freq(3770)
+                self.test_signal.set_bandpass(3760, 3780)
             elif obj_id == 'test_signal_band8':
-                self.test_signal.set_freq(7523)
+                self.test_signal.set_bandpass(7513, 7533)
             elif obj_id == 'test_signal_band9':
-                self.test_signal.set_freq(15011)
+                self.test_signal.set_bandpass(15001, 15021)
 
     def add_file_filter(self, dialog):
         file_filter = Gtk.FileFilter()
