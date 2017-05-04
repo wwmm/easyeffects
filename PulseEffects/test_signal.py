@@ -27,7 +27,7 @@ class TestSignal():
         self.audio_src.set_property('wave', 'pink-noise')
         self.audio_src.set_property('volume', 1.0)
 
-        self.bandpass.set_property('length', 20001)
+        self.bandpass.set_property('length', 10001)
 
         self.audio_sink.set_property('device', 'PulseEffects')
 
@@ -87,11 +87,7 @@ class TestSignal():
         self.audio_src.set_property('freq', value)
 
     def set_bandpass(self, lower, upper):
-        current_lower = self.bandpass.get_property('lower-frequency')
         current_upper = self.bandpass.get_property('upper-frequency')
-
-        print(current_lower, lower)
-        print(current_upper, upper)
 
         if lower > current_upper:
             self.bandpass.set_property('upper-frequency', upper)

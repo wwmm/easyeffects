@@ -964,25 +964,25 @@ class Application(Gtk.Application):
             obj_id = Gtk.Buildable.get_name(obj)
 
             if obj_id == 'test_signal_band0':
-                self.test_signal.set_bandpass(19, 39)
+                self.test_signal.set_bandpass(20, 29)
             elif obj_id == 'test_signal_band1':
-                self.test_signal.set_bandpass(49, 69)
+                self.test_signal.set_bandpass(56, 62)
             elif obj_id == 'test_signal_band2':
-                self.test_signal.set_bandpass(109, 129)
+                self.test_signal.set_bandpass(116, 122)
             elif obj_id == 'test_signal_band3':
-                self.test_signal.set_bandpass(227, 247)
+                self.test_signal.set_bandpass(234, 240)
             elif obj_id == 'test_signal_band4':
-                self.test_signal.set_bandpass(464, 484)
+                self.test_signal.set_bandpass(471, 477)
             elif obj_id == 'test_signal_band5':
-                self.test_signal.set_bandpass(937, 957)
+                self.test_signal.set_bandpass(944, 950)
             elif obj_id == 'test_signal_band6':
-                self.test_signal.set_bandpass(1879, 1899)
+                self.test_signal.set_bandpass(1886, 1892)
             elif obj_id == 'test_signal_band7':
-                self.test_signal.set_bandpass(3760, 3780)
+                self.test_signal.set_bandpass(3767, 3773)
             elif obj_id == 'test_signal_band8':
-                self.test_signal.set_bandpass(7513, 7533)
+                self.test_signal.set_bandpass(7520, 7526)
             elif obj_id == 'test_signal_band9':
-                self.test_signal.set_bandpass(15001, 15021)
+                self.test_signal.set_bandpass(15000, 20000)
 
     def add_file_filter(self, dialog):
         file_filter = Gtk.FileFilter()
