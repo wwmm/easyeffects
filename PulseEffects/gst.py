@@ -90,8 +90,14 @@ class GstEffects(GObject.GObject):
 
         self.audio_src.set_property('client-name', 'PulseEffects')
         self.audio_src.set_property('device', 'PulseEffects.monitor')
+        self.audio_src.set_property('volume', 1.0)
+        self.audio_src.set_property('mute', False)
         self.audio_src.set_property('provide-clock', False)
-        self.audio_src.set_property('slave-method', 1)
+        self.audio_src.set_property('slave-method', 1)  # re-timestamp
+
+        self.audio_sink.set_property('client-name', 'PulseEffects')
+        self.audio_sink.set_property('volume', 1.0)
+        self.audio_sink.set_property('mute', False)
 
         autovolume.set_property('interval', 2000000000)  # 2 seconds
 

@@ -964,25 +964,25 @@ class Application(Gtk.Application):
             obj_id = Gtk.Buildable.get_name(obj)
 
             if obj_id == 'test_signal_band0':
-                self.test_signal.set_freq(0.03, 27, 31)
+                self.test_signal.set_freq(0.03, 28, 30)
             elif obj_id == 'test_signal_band1':
-                self.test_signal.set_freq(0.06, 57, 61)
+                self.test_signal.set_freq(0.06, 58, 60)
             elif obj_id == 'test_signal_band2':
-                self.test_signal.set_freq(0.125, 117, 121)
+                self.test_signal.set_freq(0.125, 118, 120)
             elif obj_id == 'test_signal_band3':
-                self.test_signal.set_freq(0.25, 235, 239)
+                self.test_signal.set_freq(0.25, 236, 238)
             elif obj_id == 'test_signal_band4':
-                self.test_signal.set_freq(0.5, 472, 476)
+                self.test_signal.set_freq(0.5, 473, 475)
             elif obj_id == 'test_signal_band5':
-                self.test_signal.set_freq(1, 945, 949)
+                self.test_signal.set_freq(1, 946, 948)
             elif obj_id == 'test_signal_band6':
-                self.test_signal.set_freq(2, 1887, 1891)
+                self.test_signal.set_freq(2, 1888, 1890)
             elif obj_id == 'test_signal_band7':
-                self.test_signal.set_freq(4, 3768, 3772)
+                self.test_signal.set_freq(4, 3769, 3771)
             elif obj_id == 'test_signal_band8':
-                self.test_signal.set_freq(8, 7521, 7525)
+                self.test_signal.set_freq(8, 7522, 7524)
             elif obj_id == 'test_signal_band9':
-                self.test_signal.set_freq(16, 15009, 15013)
+                self.test_signal.set_freq(16, 15010, 15012)
 
     def add_file_filter(self, dialog):
         file_filter = Gtk.FileFilter()

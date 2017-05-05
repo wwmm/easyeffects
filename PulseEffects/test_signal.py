@@ -30,9 +30,6 @@ class TestSignal():
         self.audio_src1.set_property('wave', 'sine')
         self.audio_src2.set_property('wave', 'sine')
 
-        # self.audio_src1.set_property('volume', 10**(-48.0 / 20.0))
-        # self.audio_src2.set_property('volume', 10**(-48.0 / 20.0))
-
         pipeline.add(self.audio_src1)
         pipeline.add(self.audio_src2)
         pipeline.add(adder)
