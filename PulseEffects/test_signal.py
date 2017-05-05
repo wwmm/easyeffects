@@ -26,6 +26,8 @@ class TestSignal():
         self.audio_sink = Gst.ElementFactory.make('pulsesink', None)
 
         self.audio_sink.set_property('device', 'PulseEffects')
+        self.audio_sink.set_property('volume', 1.0)
+        self.audio_sink.set_property('mute', False)
 
         self.audio_src1.set_property('wave', 'sine')
         self.audio_src2.set_property('wave', 'sine')
