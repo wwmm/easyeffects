@@ -20,24 +20,28 @@ class TestSignal():
     def build_pipeline(self):
         pipeline = Gst.Pipeline()
 
-        self.audio_src = Gst.ElementFactory.make('audiotestsrc', None)
-        self.bandpass = Gst.ElementFactory.make('audiowsincband', None)
+        self.audio_src1 = Gst.ElementFactory.make('audiotestsrc', None)
+        self.audio_src2 = Gst.ElementFactory.make('audiotestsrc', None)
+        adder = Gst.ElementFactory.make('adder', None)
         self.audio_sink = Gst.ElementFactory.make('pulsesink', None)
-
-        self.audio_src.set_property('wave', 'pink-noise')
-        self.audio_src.set_property('volume', 1.0)
-
-        self.bandpass.set_property('length', 10001)
 
         self.audio_sink.set_property('device', 'PulseEffects')
 
-        pipeline.add(self.audio_src)
-        pipeline.add(self.bandpass)
+        self.audio_src1.set_property('wave', 'sine')
+        self.audio_src2.set_property('wave', 'sine')
+
+        # self.audio_src1.set_property('volume', 10**(-48.0 / 20.0))
+        # self.audio_src2.set_property('volume', 10**(-48.0 / 20.0))
+
+        pipeline.add(self.audio_src1)
+        pipeline.add(self.audio_src2)
+        pipeline.add(adder)
         pipeline.add(self.audio_sink)
 
-        self.audio_src.link(self.bandpass)
-        self.bandpass.link(self.audio_sink)
-        self.audio_src.link(self.audio_sink)
+        self.audio_src1.link(adder)
+        adder.link(self.audio_sink)
+
+        self.audio_src2.link(adder)
 
         return pipeline
 
@@ -83,15 +87,9 @@ class TestSignal():
         if msg.type == Gst.MessageType.ERROR:
             print('on_error():', msg.parse_error())
 
-    def set_freq(self, value):
-        self.audio_src.set_property('freq', value)
+    def set_freq(self, amp, lower, upper):
+        self.audio_src1.set_property('volume', 10**(-48 / 20) / amp**(0.5))
+        self.audio_src2.set_property('volume', 10**(-48 / 20) / amp**(0.5))
 
-    def set_bandpass(self, lower, upper):
-        current_upper = self.bandpass.get_property('upper-frequency')
-
-        if lower > current_upper:
-            self.bandpass.set_property('upper-frequency', upper)
-            self.bandpass.set_property('lower-frequency', lower)
-        else:
-            self.bandpass.set_property('lower-frequency', lower)
-            self.bandpass.set_property('upper-frequency', upper)
+        self.audio_src1.set_property('freq', lower)
+        self.audio_src2.set_property('freq', upper)
