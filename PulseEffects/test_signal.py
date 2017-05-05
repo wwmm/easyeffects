@@ -88,8 +88,8 @@ class TestSignal():
             print('on_error():', msg.parse_error())
 
     def set_freq(self, amp, lower, upper):
-        self.audio_src1.set_property('volume', 10**(-48 / 20) / amp**(0.5))
-        self.audio_src2.set_property('volume', 10**(-48 / 20) / amp**(0.5))
+        self.audio_src1.set_property('volume', 10**(-24 / 20) / amp**(0.5))
+        self.audio_src2.set_property('volume', 10**(-24 / 20) / amp**(0.5))
 
         self.audio_src1.set_property('freq', lower)
         self.audio_src2.set_property('freq', upper)

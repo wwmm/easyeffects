@@ -978,7 +978,7 @@ class Application(Gtk.Application):
             elif obj_id == 'test_signal_band6':
                 self.test_signal.set_freq(2, 1887, 1891)
             elif obj_id == 'test_signal_band7':
-                self.test_signal.set_freq(4, 3768, 3778)
+                self.test_signal.set_freq(4, 3768, 3772)
             elif obj_id == 'test_signal_band8':
                 self.test_signal.set_freq(8, 7521, 7525)
             elif obj_id == 'test_signal_band9':
