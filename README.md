@@ -5,6 +5,7 @@ Limiter, compressor, reverberation, stereo equalizer and auto volume effects for
 ![](images/pulseeffects_main_window.png)
 ![](images/pulseeffects_eq_menu.png)
 ![](images/pulseeffects_reverb_menu.png)
+![](images/pulseeffects_test_signal_menu.png)
 
 Effects order:
 
