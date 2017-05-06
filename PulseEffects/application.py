@@ -407,7 +407,6 @@ class Application(Gtk.Application):
     def init_test_signal_menu(self, builder):
         button = builder.get_object('test_signal_popover')
         menu = builder.get_object('test_signal_menu')
-        no_selection = builder.get_object('test_signal_no_selection')
         default = builder.get_object('test_signal_band5')
 
         default.set_active(True)
@@ -421,7 +420,6 @@ class Application(Gtk.Application):
                 popover.hide()
             else:
                 popover.show_all()
-                no_selection.hide()
 
         button.connect("clicked", button_clicked)
 

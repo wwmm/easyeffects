@@ -22,8 +22,8 @@ class TestSignal():
 
         self.audio_src1 = Gst.ElementFactory.make('audiotestsrc', None)
         self.audio_src2 = Gst.ElementFactory.make('audiotestsrc', None)
-        self.bandpass = Gst.ElementFactory.make('audiowsincband', None)
         adder = Gst.ElementFactory.make('adder', None)
+        self.bandpass = Gst.ElementFactory.make('audiowsincband', None)
         self.audio_sink = Gst.ElementFactory.make('pulsesink', None)
 
         self.audio_sink.set_property('device', 'PulseEffects')
@@ -91,6 +91,7 @@ class TestSignal():
         if msg.type == Gst.MessageType.ERROR:
             print('on_error():', msg.parse_error())
 
+    # amp is a rescaling factor so that all frequencies have the same intensity
     def set_freq(self, amp, lower, upper):
         self.audio_src1.set_property('volume', 10**(-24 / 20) / amp**(0.5))
         self.audio_src2.set_property('volume', 10**(-24 / 20) / amp**(0.5))
