@@ -598,15 +598,11 @@
       </packing>
     </child>
     <child>
-      <object class="GtkRadioButton" id="reverb_cathedral">
-        <property name="label" translatable="yes">cathedral</property>
+      <object class="GtkLabel">
         <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="active">True</property>
-        <property name="draw_indicator">True</property>
-        <property name="group">reverb_no_selection</property>
-        <signal name="toggled" handler="on_reverb_preset_toggled" swapped="no"/>
+        <property name="sensitive">False</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Presets</property>
       </object>
       <packing>
         <property name="expand">False</property>
@@ -615,54 +611,78 @@
       </packing>
     </child>
     <child>
-      <object class="GtkRadioButton" id="reverb_no_reverberation">
-        <property name="label" translatable="yes">no reverberation</property>
+      <object class="GtkGrid">
         <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="active">True</property>
-        <property name="draw_indicator">True</property>
-        <property name="group">reverb_no_selection</property>
-        <signal name="toggled" handler="on_reverb_preset_toggled" swapped="no"/>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkRadioButton" id="reverb_cathedral">
+            <property name="label" translatable="yes">cathedral</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="active">True</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">reverb_no_selection</property>
+            <signal name="toggled" handler="on_reverb_preset_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="reverb_engine_room">
+            <property name="label" translatable="yes">engine room</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="active">True</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">reverb_no_selection</property>
+            <signal name="toggled" handler="on_reverb_preset_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="reverb_no_reverberation">
+            <property name="label" translatable="yes">no reverberation</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="active">True</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">reverb_no_selection</property>
+            <signal name="toggled" handler="on_reverb_preset_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="reverb_small_room">
+            <property name="label" translatable="yes">small room</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="active">True</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">reverb_no_selection</property>
+            <signal name="toggled" handler="on_reverb_preset_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
       </object>
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioButton" id="reverb_engine_room">
-        <property name="label" translatable="yes">engine room</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="active">True</property>
-        <property name="draw_indicator">True</property>
-        <property name="group">reverb_no_selection</property>
-        <signal name="toggled" handler="on_reverb_preset_toggled" swapped="no"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">3</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioButton" id="reverb_small_room">
-        <property name="label" translatable="yes">small room</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="active">True</property>
-        <property name="draw_indicator">True</property>
-        <property name="group">reverb_no_selection</property>
-        <signal name="toggled" handler="on_reverb_preset_toggled" swapped="no"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">4</property>
+        <property name="position">5</property>
       </packing>
     </child>
   </object>
