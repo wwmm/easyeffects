@@ -160,6 +160,353 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="orientation">vertical</property>
+    <property name="spacing">4</property>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <object class="GtkSwitch" id="eq_switch">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSeparator">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin_top">1</property>
+        <property name="margin_bottom">1</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel">
+        <property name="visible">True</property>
+        <property name="sensitive">False</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Presets</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">4</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkGrid">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkRadioButton" id="eq_ballad">
+            <property name="label" translatable="yes">ballad</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="active">True</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">eq_no_selection</property>
+            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="eq_classic">
+            <property name="label" translatable="yes">classic</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="active">True</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">eq_no_selection</property>
+            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="eq_club">
+            <property name="label" translatable="yes">club</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="active">True</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">eq_no_selection</property>
+            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="eq_dance">
+            <property name="label" translatable="yes">dance</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="active">True</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">eq_no_selection</property>
+            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="eq_equal_loudness_20">
+            <property name="label" translatable="yes">equal loudness 20</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">eq_no_selection</property>
+            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="eq_equal_loudness_40">
+            <property name="label" translatable="yes">equal loudness 40</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">eq_no_selection</property>
+            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="eq_equal_loudness_60">
+            <property name="label" translatable="yes">equal loudness 60</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">eq_no_selection</property>
+            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="eq_equal_loudness_80">
+            <property name="label" translatable="yes">equal loudness 80</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">eq_no_selection</property>
+            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="eq_equal_loudness_100">
+            <property name="label" translatable="yes">equal loudness 100</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">eq_no_selection</property>
+            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="eq_flat">
+            <property name="label" translatable="yes">flat</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="active">True</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">eq_no_selection</property>
+            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="eq_more_bass_and_treble">
+            <property name="label" translatable="yes">more bass and treble</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="active">True</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">eq_no_selection</property>
+            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="eq_party">
+            <property name="label" translatable="yes">party</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="active">True</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">eq_no_selection</property>
+            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="eq_pop">
+            <property name="label" translatable="yes">pop</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="active">True</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">eq_no_selection</property>
+            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="eq_reggae">
+            <property name="label" translatable="yes">reggae</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="active">True</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">eq_no_selection</property>
+            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="eq_rock">
+            <property name="label" translatable="yes">rock</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="active">True</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">eq_no_selection</property>
+            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="eq_ska">
+            <property name="label" translatable="yes">ska</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="active">True</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">eq_no_selection</property>
+            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">5</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="eq_soft">
+            <property name="label" translatable="yes">soft</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="active">True</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">eq_no_selection</property>
+            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">5</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="eq_techno">
+            <property name="label" translatable="yes">techno</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="active">True</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">eq_no_selection</property>
+            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">5</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">5</property>
+      </packing>
+    </child>
     <child>
       <object class="GtkRadioButton" id="eq_no_selection">
         <property name="label">no selection</property>
@@ -172,308 +519,7 @@
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">0</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioButton" id="eq_ballad">
-        <property name="label" translatable="yes">ballad</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="active">True</property>
-        <property name="draw_indicator">True</property>
-        <property name="group">eq_no_selection</property>
-        <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioButton" id="eq_classic">
-        <property name="label" translatable="yes">classic</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="active">True</property>
-        <property name="draw_indicator">True</property>
-        <property name="group">eq_no_selection</property>
-        <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioButton" id="eq_club">
-        <property name="label" translatable="yes">club</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="active">True</property>
-        <property name="draw_indicator">True</property>
-        <property name="group">eq_no_selection</property>
-        <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">3</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioButton" id="eq_dance">
-        <property name="label" translatable="yes">dance</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="active">True</property>
-        <property name="draw_indicator">True</property>
-        <property name="group">eq_no_selection</property>
-        <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">4</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioButton" id="eq_equal_loudness_20">
-        <property name="label" translatable="yes">equal loudness 20</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="draw_indicator">True</property>
-        <property name="group">eq_no_selection</property>
-        <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
         <property name="position">6</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioButton" id="eq_equal_loudness_40">
-        <property name="label" translatable="yes">equal loudness 40</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="draw_indicator">True</property>
-        <property name="group">eq_no_selection</property>
-        <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">7</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioButton" id="eq_equal_loudness_60">
-        <property name="label" translatable="yes">equal loudness 60</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="draw_indicator">True</property>
-        <property name="group">eq_no_selection</property>
-        <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">8</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioButton" id="eq_equal_loudness_80">
-        <property name="label" translatable="yes">equal loudness 80</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="draw_indicator">True</property>
-        <property name="group">eq_no_selection</property>
-        <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">9</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioButton" id="eq_equal_loudness_100">
-        <property name="label" translatable="yes">equal loudness 100</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="draw_indicator">True</property>
-        <property name="group">eq_no_selection</property>
-        <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">10</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioButton" id="eq_flat">
-        <property name="label" translatable="yes">flat</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="active">True</property>
-        <property name="draw_indicator">True</property>
-        <property name="group">eq_no_selection</property>
-        <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">11</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioButton" id="eq_more_bass_and_treble">
-        <property name="label" translatable="yes">more bass and treble</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="active">True</property>
-        <property name="draw_indicator">True</property>
-        <property name="group">eq_no_selection</property>
-        <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">13</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioButton" id="eq_party">
-        <property name="label" translatable="yes">party</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="active">True</property>
-        <property name="draw_indicator">True</property>
-        <property name="group">eq_no_selection</property>
-        <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">15</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioButton" id="eq_pop">
-        <property name="label" translatable="yes">pop</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="active">True</property>
-        <property name="draw_indicator">True</property>
-        <property name="group">eq_no_selection</property>
-        <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">16</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioButton" id="eq_reggae">
-        <property name="label" translatable="yes">reggae</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="active">True</property>
-        <property name="draw_indicator">True</property>
-        <property name="group">eq_no_selection</property>
-        <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">17</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioButton" id="eq_rock">
-        <property name="label" translatable="yes">rock</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="active">True</property>
-        <property name="draw_indicator">True</property>
-        <property name="group">eq_no_selection</property>
-        <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">18</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioButton" id="eq_ska">
-        <property name="label" translatable="yes">ska</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="active">True</property>
-        <property name="draw_indicator">True</property>
-        <property name="group">eq_no_selection</property>
-        <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">19</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioButton" id="eq_soft">
-        <property name="label" translatable="yes">soft</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="active">True</property>
-        <property name="draw_indicator">True</property>
-        <property name="group">eq_no_selection</property>
-        <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">20</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioButton" id="eq_techno">
-        <property name="label" translatable="yes">techno</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="active">True</property>
-        <property name="draw_indicator">True</property>
-        <property name="group">eq_no_selection</property>
-        <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">21</property>
       </packing>
     </child>
   </object>
