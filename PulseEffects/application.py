@@ -251,6 +251,13 @@ class Application(Gtk.Application):
         self.compressor_gain_reduction_levelbar = main_ui_builder.get_object(
             'compressor_gain_reduction_levelbar')
 
+        self.compressor_level_label_after_left = main_ui_builder.get_object(
+            'compressor_level_label_after_left')
+        self.compressor_level_label_after_right = main_ui_builder.get_object(
+            'compressor_level_label_after_right')
+        self.compressor_gain_reduction_level_label = \
+            main_ui_builder.get_object('compressor_gain_reduction_level_label')
+
         self.compressor_gain_reduction_levelbar.add_offset_value(
             'GTK_LEVEL_BAR_OFFSET_LOW', 6)
         self.compressor_gain_reduction_levelbar.add_offset_value(
@@ -594,6 +601,9 @@ class Application(Gtk.Application):
             l_value = 10**(left / 20)
             r_value = 10**(right / 20)
 
+            self.compressor_level_label_after_left.set_text(str(round(left)))
+            self.compressor_level_label_after_right.set_text(str(round(right)))
+
             self.compressor_level_after_left.set_value(l_value)
             self.compressor_level_after_right.set_value(r_value)
 
@@ -601,6 +611,8 @@ class Application(Gtk.Application):
         if self.ui_initialized:
             value = abs(gain_reduction)
             self.compressor_gain_reduction_levelbar.set_value(value)
+            self.compressor_gain_reduction_level_label.set_text(
+                str(round(value)))
 
     def on_new_level_after_reverb(self, obj, left, right):
         if self.ui_initialized:
