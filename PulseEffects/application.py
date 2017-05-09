@@ -278,6 +278,11 @@ class Application(Gtk.Application):
         self.reverb_right_level = main_ui_builder.get_object(
             'reverb_right_level')
 
+        self.reverb_left_level_label = main_ui_builder.get_object(
+            'reverb_left_level_label')
+        self.reverb_right_level_label = main_ui_builder.get_object(
+            'reverb_right_level_label')
+
         self.init_reverb()
 
         # equalizer
@@ -618,6 +623,9 @@ class Application(Gtk.Application):
         if self.ui_initialized:
             l_value = 10**(left / 20)
             r_value = 10**(right / 20)
+
+            self.reverb_left_level_label.set_text(str(round(left)))
+            self.reverb_right_level_label.set_text(str(round(right)))
 
             self.reverb_left_level.set_value(l_value)
             self.reverb_right_level.set_value(r_value)
