@@ -206,6 +206,17 @@ class Application(Gtk.Application):
         self.limiter_level_after_right = main_ui_builder.get_object(
             'limiter_level_after_right')
 
+        self.limiter_level_label_before_left = main_ui_builder.get_object(
+            'limiter_level_label_before_left')
+        self.limiter_level_label_before_right = main_ui_builder.get_object(
+            'limiter_level_label_before_right')
+        self.limiter_level_label_after_left = main_ui_builder.get_object(
+            'limiter_level_label_after_left')
+        self.limiter_level_label_after_right = main_ui_builder.get_object(
+            'limiter_level_label_after_right')
+        self.limiter_attenuation_level_label = main_ui_builder.get_object(
+            'limiter_attenuation_level_label')
+
         self.init_limiter()
 
         # autovolume
@@ -551,6 +562,9 @@ class Application(Gtk.Application):
             l_value = 10**(left / 20)
             r_value = 10**(right / 20)
 
+            self.limiter_level_label_before_left.set_text(str(round(left)))
+            self.limiter_level_label_before_right.set_text(str(round(right)))
+
             self.limiter_level_before_left.set_value(l_value)
             self.limiter_level_before_right.set_value(r_value)
 
@@ -559,8 +573,17 @@ class Application(Gtk.Application):
             l_value = 10**(left / 20)
             r_value = 10**(right / 20)
 
+            self.limiter_level_label_after_left.set_text(str(round(left)))
+            self.limiter_level_label_after_right.set_text(str(round(right)))
+
             self.limiter_level_after_left.set_value(l_value)
             self.limiter_level_after_right.set_value(r_value)
+
+    def on_new_limiter_attenuation(self, obj, attenuation):
+        if self.ui_initialized:
+            self.limiter_attenuation_levelbar.set_value(attenuation)
+            self.limiter_attenuation_level_label.set_text(
+                str(round(attenuation)))
 
     def on_new_autovolume(self, obj, gain):
         if self.ui_initialized:
@@ -578,10 +601,6 @@ class Application(Gtk.Application):
         if self.ui_initialized:
             value = abs(gain_reduction)
             self.compressor_gain_reduction_levelbar.set_value(value)
-
-    def on_new_limiter_attenuation(self, obj, attenuation):
-        if self.ui_initialized:
-            self.limiter_attenuation_levelbar.set_value(attenuation)
 
     def on_new_level_after_reverb(self, obj, left, right):
         if self.ui_initialized:
