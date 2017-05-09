@@ -302,6 +302,11 @@ class Application(Gtk.Application):
         self.eq_left_level = main_ui_builder.get_object('eq_left_level')
         self.eq_right_level = main_ui_builder.get_object('eq_right_level')
 
+        self.eq_left_level_label = main_ui_builder.get_object(
+            'eq_left_level_label')
+        self.eq_right_level_label = main_ui_builder.get_object(
+            'eq_right_level_label')
+
         self.init_equalizer()
 
         # now that all elements were initialized we set pipeline to ready
@@ -634,6 +639,9 @@ class Application(Gtk.Application):
         if self.ui_initialized:
             l_value = 10**(left / 20)
             r_value = 10**(right / 20)
+
+            self.eq_left_level_label.set_text(str(round(left)))
+            self.eq_right_level_label.set_text(str(round(right)))
 
             self.eq_left_level.set_value(l_value)
             self.eq_right_level.set_value(r_value)
