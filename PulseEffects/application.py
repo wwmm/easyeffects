@@ -576,31 +576,46 @@ class Application(Gtk.Application):
 
     def on_new_level_before_limiter(self, obj, left, right):
         if self.ui_initialized:
-            l_value = 10**(left / 20)
-            r_value = 10**(right / 20)
+            if left >= -99:
+                l_value = 10**(left / 20)
+                self.limiter_level_before_left.set_value(l_value)
+                self.limiter_level_label_before_left.set_text(str(round(left)))
+            else:
+                self.limiter_level_before_left.set_value(0)
+                self.limiter_level_label_before_left.set_text('-99')
 
-            self.limiter_level_label_before_left.set_text(str(round(left)))
-            self.limiter_level_label_before_right.set_text(str(round(right)))
-
-            self.limiter_level_before_left.set_value(l_value)
-            self.limiter_level_before_right.set_value(r_value)
+            if right >= -99:
+                r_value = 10**(right / 20)
+                self.limiter_level_before_right.set_value(r_value)
+                self.limiter_level_label_before_right.set_text(
+                    str(round(right)))
+            else:
+                self.limiter_level_before_right.set_value(0)
+                self.limiter_level_label_before_right.set_text('-99')
 
     def on_new_level_after_limiter(self, obj, left, right):
         if self.ui_initialized:
-            l_value = 10**(left / 20)
-            r_value = 10**(right / 20)
+            if left >= -99:
+                l_value = 10**(left / 20)
+                self.limiter_level_after_left.set_value(l_value)
+                self.limiter_level_label_after_left.set_text(str(round(left)))
+            else:
+                self.limiter_level_after_left.set_value(0)
+                self.limiter_level_label_after_left.set_text('-99')
 
-            self.limiter_level_label_after_left.set_text(str(round(left)))
-            self.limiter_level_label_after_right.set_text(str(round(right)))
-
-            self.limiter_level_after_left.set_value(l_value)
-            self.limiter_level_after_right.set_value(r_value)
+            if right >= -99:
+                r_value = 10**(right / 20)
+                self.limiter_level_after_right.set_value(r_value)
+                self.limiter_level_label_after_right.set_text(
+                    str(round(right)))
+            else:
+                self.limiter_level_after_right.set_value(0)
+                self.limiter_level_label_after_right.set_text('-99')
 
     def on_new_limiter_attenuation(self, obj, attenuation):
         if self.ui_initialized:
             self.limiter_attenuation_levelbar.set_value(attenuation)
-            self.limiter_attenuation_level_label.set_text(
-                str(round(attenuation)))
+            self.limiter_attenuation_level_label.set_text(str(attenuation))
 
     def on_new_autovolume(self, obj, gain):
         if self.ui_initialized:
@@ -608,14 +623,23 @@ class Application(Gtk.Application):
 
     def on_new_level_after_compressor(self, obj, left, right):
         if self.ui_initialized:
-            l_value = 10**(left / 20)
-            r_value = 10**(right / 20)
+            if left >= -99:
+                l_value = 10**(left / 20)
+                self.compressor_level_after_left.set_value(l_value)
+                self.compressor_level_label_after_left.set_text(
+                    str(round(left)))
+            else:
+                self.compressor_level_after_left.set_value(0)
+                self.compressor_level_label_after_left.set_text('-99')
 
-            self.compressor_level_label_after_left.set_text(str(round(left)))
-            self.compressor_level_label_after_right.set_text(str(round(right)))
-
-            self.compressor_level_after_left.set_value(l_value)
-            self.compressor_level_after_right.set_value(r_value)
+            if right >= -99:
+                r_value = 10**(right / 20)
+                self.compressor_level_after_right.set_value(r_value)
+                self.compressor_level_label_after_right.set_text(
+                    str(round(right)))
+            else:
+                self.compressor_level_after_right.set_value(0)
+                self.compressor_level_label_after_right.set_text('-99')
 
     def on_new_compressor_gain_reduction(self, obj, gain_reduction):
         if self.ui_initialized:
@@ -626,25 +650,39 @@ class Application(Gtk.Application):
 
     def on_new_level_after_reverb(self, obj, left, right):
         if self.ui_initialized:
-            l_value = 10**(left / 20)
-            r_value = 10**(right / 20)
+            if left >= -99:
+                l_value = 10**(left / 20)
+                self.reverb_left_level.set_value(l_value)
+                self.reverb_left_level_label.set_text(str(round(left)))
+            else:
+                self.reverb_left_level.set_value(0)
+                self.reverb_left_level_label.set_text('-99')
 
-            self.reverb_left_level_label.set_text(str(round(left)))
-            self.reverb_right_level_label.set_text(str(round(right)))
-
-            self.reverb_left_level.set_value(l_value)
-            self.reverb_right_level.set_value(r_value)
+            if right >= -99:
+                r_value = 10**(right / 20)
+                self.reverb_right_level.set_value(r_value)
+                self.reverb_right_level_label.set_text(str(round(right)))
+            else:
+                self.reverb_right_level.set_value(0)
+                self.reverb_right_level_label.set_text('-99')
 
     def on_new_level_after_eq(self, obj, left, right):
         if self.ui_initialized:
-            l_value = 10**(left / 20)
-            r_value = 10**(right / 20)
+            if left >= -99:
+                l_value = 10**(left / 20)
+                self.eq_left_level.set_value(l_value)
+                self.eq_left_level_label.set_text(str(round(left)))
+            else:
+                self.eq_left_level.set_value(0)
+                self.eq_left_level_label.set_text('-99')
 
-            self.eq_left_level_label.set_text(str(round(left)))
-            self.eq_right_level_label.set_text(str(round(right)))
-
-            self.eq_left_level.set_value(l_value)
-            self.eq_right_level.set_value(r_value)
+            if right >= -99:
+                r_value = 10**(right / 20)
+                self.eq_right_level.set_value(r_value)
+                self.eq_right_level_label.set_text(str(round(right)))
+            else:
+                self.eq_right_level.set_value(0)
+                self.eq_right_level_label.set_text('-99')
 
     def on_new_spectrum(self, obj, magnitudes):
         self.spectrum_magnitudes = magnitudes

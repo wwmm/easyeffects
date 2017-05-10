@@ -772,10 +772,9 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkGrid">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -784,38 +783,25 @@
                         <property name="label" translatable="yes">Input Gain [dB]</property>
                       </object>
                       <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
                       </packing>
                     </child>
                     <child>
                       <object class="GtkScale" id="limiter_scale_input_gain">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">False</property>
                         <property name="adjustment">limiter_input_gain</property>
                         <property name="round_digits">1</property>
                         <property name="digits">0</property>
                         <property name="value_pos">right</property>
                       </object>
                       <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
                       </packing>
                     </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -824,9 +810,8 @@
                         <property name="label" translatable="yes">Limit [dB]</property>
                       </object>
                       <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">1</property>
                       </packing>
                     </child>
                     <child>
@@ -839,23 +824,10 @@
                         <property name="value_pos">right</property>
                       </object>
                       <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">1</property>
                       </packing>
                     </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">3</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -864,9 +836,8 @@
                         <property name="label" translatable="yes">Release [s]</property>
                       </object>
                       <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                     <child>
@@ -879,23 +850,10 @@
                         <property name="value_pos">right</property>
                       </object>
                       <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">4</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -904,9 +862,8 @@
                         <property name="label" translatable="yes">Input</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">3</property>
                       </packing>
                     </child>
                     <child>
@@ -991,23 +948,10 @@
                         </child>
                       </object>
                       <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">3</property>
                       </packing>
                     </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">5</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -1016,9 +960,8 @@
                         <property name="label" translatable="yes">Output</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">4</property>
                       </packing>
                     </child>
                     <child>
@@ -1103,35 +1046,20 @@
                         </child>
                       </object>
                       <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">4</property>
                       </packing>
                     </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">6</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Attenuation</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">5</property>
                       </packing>
                     </child>
                     <child>
@@ -1169,9 +1097,8 @@
                         </child>
                       </object>
                       <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">5</property>
                       </packing>
                     </child>
                   </object>
@@ -1192,8 +1119,8 @@
               <object class="GtkSeparator">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">4</property>
-                <property name="margin_right">4</property>
+                <property name="margin_left">2</property>
+                <property name="margin_right">2</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -1291,10 +1218,9 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkGrid">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -1303,9 +1229,8 @@
                         <property name="label" translatable="yes">Attack [ms]</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
                       </packing>
                     </child>
                     <child>
@@ -1318,23 +1243,10 @@
                         <property name="value_pos">right</property>
                       </object>
                       <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
                       </packing>
                     </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -1343,9 +1255,8 @@
                         <property name="label" translatable="yes">Release [ms]</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">1</property>
                       </packing>
                     </child>
                     <child>
@@ -1358,23 +1269,10 @@
                         <property name="value_pos">right</property>
                       </object>
                       <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">1</property>
                       </packing>
                     </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">3</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -1383,9 +1281,8 @@
                         <property name="label" translatable="yes">Threshold [dB]</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                     <child>
@@ -1398,23 +1295,10 @@
                         <property name="value_pos">right</property>
                       </object>
                       <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">4</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -1423,9 +1307,8 @@
                         <property name="label" translatable="yes">Ratio [n:1]</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">3</property>
                       </packing>
                     </child>
                     <child>
@@ -1438,23 +1321,10 @@
                         <property name="value_pos">right</property>
                       </object>
                       <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">3</property>
                       </packing>
                     </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">5</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -1463,9 +1333,8 @@
                         <property name="label" translatable="yes">Knee [dB]</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">4</property>
                       </packing>
                     </child>
                     <child>
@@ -1478,23 +1347,10 @@
                         <property name="value_pos">right</property>
                       </object>
                       <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">4</property>
                       </packing>
                     </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">6</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -1503,9 +1359,8 @@
                         <property name="label" translatable="yes">Makeup [dB]</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">5</property>
                       </packing>
                     </child>
                     <child>
@@ -1518,23 +1373,10 @@
                         <property name="value_pos">right</property>
                       </object>
                       <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">5</property>
                       </packing>
                     </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">7</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -1543,9 +1385,8 @@
                         <property name="label" translatable="yes">Gain Reduction</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">6</property>
                       </packing>
                     </child>
                     <child>
@@ -1583,23 +1424,10 @@
                         </child>
                       </object>
                       <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">6</property>
                       </packing>
                     </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">8</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -1608,9 +1436,8 @@
                         <property name="label" translatable="yes">Output</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">7</property>
                       </packing>
                     </child>
                     <child>
@@ -1695,16 +1522,15 @@
                         </child>
                       </object>
                       <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">7</property>
                       </packing>
                     </child>
                   </object>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
-                    <property name="position">9</property>
+                    <property name="position">10</property>
                   </packing>
                 </child>
               </object>
@@ -1718,8 +1544,8 @@
               <object class="GtkSeparator">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">4</property>
-                <property name="margin_right">4</property>
+                <property name="margin_left">2</property>
+                <property name="margin_right">2</property>
                 <property name="orientation">vertical</property>
               </object>
               <packing>
@@ -1730,7 +1556,6 @@
             </child>
             <child>
               <object class="GtkBox" id="reverb">
-                <property name="width_request">200</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
@@ -1773,10 +1598,9 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkGrid">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -1785,9 +1609,8 @@
                         <property name="label" translatable="yes">Room Size</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
                       </packing>
                     </child>
                     <child>
@@ -1800,23 +1623,10 @@
                         <property name="value_pos">right</property>
                       </object>
                       <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
                       </packing>
                     </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -1825,9 +1635,8 @@
                         <property name="label" translatable="yes">Damping</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">1</property>
                       </packing>
                     </child>
                     <child>
@@ -1840,23 +1649,10 @@
                         <property name="value_pos">right</property>
                       </object>
                       <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">1</property>
                       </packing>
                     </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">3</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -1865,9 +1661,8 @@
                         <property name="label" translatable="yes">Width</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                     <child>
@@ -1880,23 +1675,10 @@
                         <property name="value_pos">right</property>
                       </object>
                       <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">4</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -1905,9 +1687,8 @@
                         <property name="label" translatable="yes">Level</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">3</property>
                       </packing>
                     </child>
                     <child>
@@ -1920,23 +1701,10 @@
                         <property name="value_pos">right</property>
                       </object>
                       <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">3</property>
                       </packing>
                     </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">5</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -1945,9 +1713,8 @@
                         <property name="label" translatable="yes">Output</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">4</property>
                       </packing>
                     </child>
                     <child>
@@ -2032,9 +1799,8 @@
                         </child>
                       </object>
                       <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">4</property>
                       </packing>
                     </child>
                   </object>
@@ -2055,8 +1821,8 @@
               <object class="GtkSeparator">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">4</property>
-                <property name="margin_right">4</property>
+                <property name="margin_left">2</property>
+                <property name="margin_right">2</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -2127,460 +1893,318 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkGrid">
+                    <property name="height_request">0</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="spacing">8</property>
-                    <property name="homogeneous">True</property>
+                    <property name="column_spacing">8</property>
+                    <property name="column_homogeneous">True</property>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="orientation">vertical</property>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Pre</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_preamp</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">0</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="expand">True</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
+                        <property name="label" translatable="yes">Pre</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkScale">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="vexpand">True</property>
                         <property name="orientation">vertical</property>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label">29Hz</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_band0</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">1</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="expand">True</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
+                        <property name="adjustment">eq_preamp</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">1</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="orientation">vertical</property>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label">59Hz</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_band1</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">1</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="expand">True</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
+                        <property name="label">29Hz</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">2</property>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkScale">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="vexpand">True</property>
                         <property name="orientation">vertical</property>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label">119Hz</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_band2</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">1</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="expand">True</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
+                        <property name="adjustment">eq_band0</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">1</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">3</property>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">1</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="orientation">vertical</property>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label">237Hz</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_band3</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">1</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="expand">True</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
+                        <property name="label">59Hz</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">4</property>
+                        <property name="left_attach">2</property>
+                        <property name="top_attach">0</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkScale">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="vexpand">True</property>
                         <property name="orientation">vertical</property>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label">474Hz</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_band4</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">1</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="expand">True</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
+                        <property name="adjustment">eq_band1</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">1</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">5</property>
+                        <property name="left_attach">2</property>
+                        <property name="top_attach">1</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="orientation">vertical</property>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label">947Hz</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_band5</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">1</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="expand">True</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
+                        <property name="label">119Hz</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">6</property>
+                        <property name="left_attach">3</property>
+                        <property name="top_attach">0</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkScale">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="vexpand">True</property>
                         <property name="orientation">vertical</property>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label">1.9kHz</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_band6</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">0</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="expand">True</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
+                        <property name="adjustment">eq_band2</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">1</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">7</property>
+                        <property name="left_attach">3</property>
+                        <property name="top_attach">1</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="orientation">vertical</property>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label">3.8kHz</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_band7</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">0</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="expand">True</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
+                        <property name="label">237Hz</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">8</property>
+                        <property name="left_attach">4</property>
+                        <property name="top_attach">0</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkScale">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="vexpand">True</property>
                         <property name="orientation">vertical</property>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label">7.5kHz</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_band8</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">0</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="expand">True</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
+                        <property name="adjustment">eq_band3</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">1</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">9</property>
+                        <property name="left_attach">4</property>
+                        <property name="top_attach">1</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="orientation">vertical</property>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label">15kHz</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_band9</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">0</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="expand">True</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
+                        <property name="label">474Hz</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">10</property>
+                        <property name="left_attach">5</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band4</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">1</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">5</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label">947Hz</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">6</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band5</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">1</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">6</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label">1.9kHz</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">7</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band6</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">7</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label">3.8kHz</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">8</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band7</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">8</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label">7.5kHz</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">9</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band8</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">9</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label">15kHz</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">10</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band9</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">10</property>
+                        <property name="top_attach">1</property>
                       </packing>
                     </child>
                   </object>
@@ -2719,8 +2343,8 @@
           <object class="GtkSeparator">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_top">4</property>
-            <property name="margin_bottom">4</property>
+            <property name="margin_top">2</property>
+            <property name="margin_bottom">2</property>
           </object>
           <packing>
             <property name="expand">False</property>
