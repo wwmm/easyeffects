@@ -1761,7 +1761,7 @@
                             <property name="visible">True</property>
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">0</property>
+                            <property name="label">0</property>
                             <property name="width_chars">3</property>
                             <property name="max_width_chars">3</property>
                           </object>
@@ -1787,7 +1787,7 @@
                             <property name="visible">True</property>
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">1</property>
+                            <property name="label">1</property>
                             <property name="width_chars">3</property>
                             <property name="max_width_chars">3</property>
                           </object>
@@ -2275,7 +2275,7 @@
                             <property name="visible">True</property>
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">0</property>
+                            <property name="label">0</property>
                             <property name="width_chars">3</property>
                             <property name="max_width_chars">3</property>
                           </object>
@@ -2301,7 +2301,7 @@
                             <property name="visible">True</property>
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">1</property>
+                            <property name="label">1</property>
                             <property name="width_chars">3</property>
                             <property name="max_width_chars">3</property>
                           </object>

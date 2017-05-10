@@ -615,7 +615,8 @@ class Application(Gtk.Application):
     def on_new_limiter_attenuation(self, obj, attenuation):
         if self.ui_initialized:
             self.limiter_attenuation_levelbar.set_value(attenuation)
-            self.limiter_attenuation_level_label.set_text(str(attenuation))
+            self.limiter_attenuation_level_label.set_text(
+                str(round(attenuation)))
 
     def on_new_autovolume(self, obj, gain):
         if self.ui_initialized:
