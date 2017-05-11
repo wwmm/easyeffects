@@ -245,7 +245,7 @@ class GstEffects(GObject.GObject):
 
                     mean = 0.5 * (peak[0] + peak[1])
 
-                    if mean > -50:
+                    if mean > -40:
                         self.auto_gain(mean)
 
             elif plugin == 'level_after_compressor':
