@@ -33,7 +33,7 @@ class Application(Gtk.Application):
 
         # gstreamer audio effects
 
-        self.gst = GstEffects()
+        self.gst = GstEffects(self.pm.default_sink_rate)
 
         self.gst.set_output_sink_name(self.pm.default_sink_name)
 

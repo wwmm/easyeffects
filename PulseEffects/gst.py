@@ -32,12 +32,12 @@ class GstEffects(GObject.GObject):
                          (object,))
     }
 
-    def __init__(self):
+    def __init__(self, sampling_rate):
         GObject.GObject.__init__(self)
 
         self.old_limiter_attenuation = 0
         self.old_compressor_gain_reduction = 0
-        self.rate = None
+        self.rate = sampling_rate
         self.max_spectrum_freq = 15000  # Hz
         self.spectrum_nbands = 300
         self.spectrum_freqs = []
@@ -57,6 +57,8 @@ class GstEffects(GObject.GObject):
         pipeline = Gst.Pipeline()
 
         self.audio_src = Gst.ElementFactory.make('pulsesrc', None)
+
+        source_caps = Gst.ElementFactory.make("capsfilter", None)
 
         self.limiter = Gst.ElementFactory.make(
             'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter', None)
@@ -95,6 +97,10 @@ class GstEffects(GObject.GObject):
         self.audio_src.set_property('provide-clock', False)
         self.audio_src.set_property('slave-method', 1)  # re-timestamp
 
+        caps = ["audio/x-raw", "rate=" + str(self.rate)]
+        src_caps = Gst.Caps.from_string(",".join(caps))
+        source_caps.set_property("caps", src_caps)
+
         self.audio_sink.set_property('client-name', 'PulseEffects')
         self.audio_sink.set_property('volume', 1.0)
         self.audio_sink.set_property('mute', False)
@@ -105,6 +111,7 @@ class GstEffects(GObject.GObject):
         spectrum.set_property('threshold', self.spectrum_threshold)
 
         pipeline.add(self.audio_src)
+        pipeline.add(source_caps)
         pipeline.add(level_before_limiter)
         pipeline.add(self.limiter)
         pipeline.add(level_after_limiter)
@@ -120,7 +127,8 @@ class GstEffects(GObject.GObject):
         pipeline.add(spectrum)
         pipeline.add(self.audio_sink)
 
-        self.audio_src.link(level_before_limiter)
+        self.audio_src.link(source_caps)
+        source_caps.link(level_before_limiter)
         level_before_limiter.link(self.limiter)
         self.limiter.link(level_after_limiter)
         level_after_limiter.link(autovolume)
