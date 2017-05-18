@@ -8,12 +8,12 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gio, GLib, Gtk
 from PulseEffects.gst import GstEffects
 from PulseEffects.pulse_manager import PulseManager
-from PulseEffects.test_signal import TestSignal
-
-from PulseEffects.setup_limiter import SetupLimiter
 from PulseEffects.setup_compressor import SetupCompressor
-from PulseEffects.setup_reverb import SetupReverb
 from PulseEffects.setup_equalizer import SetupEqualizer
+from PulseEffects.setup_limiter import SetupLimiter
+from PulseEffects.setup_reverb import SetupReverb
+from PulseEffects.spectrum import Spectrum
+from PulseEffects.test_signal import TestSignal
 
 
 class Application(Gtk.Application):
@@ -25,7 +25,6 @@ class Application(Gtk.Application):
 
         self.ui_initialized = False
         self.generating_test_signal = False
-        self.spectrum_magnitudes = []
         self.module_path = os.path.dirname(__file__)
 
         self.settings = Gio.Settings('com.github.wwmm.pulseeffects')
@@ -42,8 +41,6 @@ class Application(Gtk.Application):
 
         self.gst.set_output_sink_name(self.pm.default_sink_name)
 
-        self.gst.connect('new_spectrum', self.on_new_spectrum)
-
         # creating user presets folder
         self.user_config_dir = os.path.expanduser('~/.config/PulseEffects')
         os.makedirs(self.user_config_dir, exist_ok=True)
@@ -55,7 +52,6 @@ class Application(Gtk.Application):
 
         ui_handlers = {
             'on_MainWindow_delete_event': self.on_MainWindow_delete_event,
-            'on_spectrum_draw': self.on_spectrum_draw,
             'on_buffer_time_value_changed': self.on_buffer_time_value_changed,
             'on_save_user_preset_clicked': self.on_save_user_preset_clicked,
             'on_load_user_preset_clicked': self.on_load_user_preset_clicked
@@ -77,12 +73,14 @@ class Application(Gtk.Application):
         self.setup_reverb = SetupReverb(self)
         self.setup_equalizer = SetupEqualizer(self)
         self.test_signal = TestSignal(self)
+        self.spectrum = Spectrum(self)
 
         ui_handlers.update(self.setup_limiter.handlers)
         ui_handlers.update(self.setup_compressor.handlers)
         ui_handlers.update(self.setup_reverb.handlers)
         ui_handlers.update(self.setup_equalizer.handlers)
         ui_handlers.update(self.test_signal.handlers)
+        ui_handlers.update(self.spectrum.handlers)
 
         self.builder.connect_signals(ui_handlers)
 
@@ -95,7 +93,6 @@ class Application(Gtk.Application):
         self.init_settings_menu()
 
         self.apps_box = self.builder.get_object('apps_box')
-        self.spectrum = self.builder.get_object('spectrum')
 
         self.build_apps_list()
 
@@ -221,29 +218,6 @@ class Application(Gtk.Application):
 
         self.apps_box.show_all()
 
-    def on_spectrum_draw(self, drawing_area, ctx):
-        ctx.paint()
-
-        if self.spectrum_magnitudes:
-            width = drawing_area.get_allocation().width
-            height = drawing_area.get_allocation().height
-            n_bars = len(self.spectrum_magnitudes)
-            style = drawing_area.get_style_context()
-
-            dx = width / n_bars
-
-            for n in range(n_bars):
-                mag = self.spectrum_magnitudes[n]
-
-                if mag > 0:
-                    bar_height = self.spectrum_magnitudes[n] * 1.5
-
-                    ctx.rectangle(n * dx, height - bar_height, dx, bar_height)
-
-            color = style.lookup_color('theme_selected_bg_color')[1]
-            ctx.set_source_rgba(color.red, color.green, color.blue, 1.0)
-            ctx.stroke()
-
     def on_sink_inputs_changed(self, obj):
         if self.ui_initialized:
             self.build_apps_list()
@@ -252,11 +226,6 @@ class Application(Gtk.Application):
             self.gst.set_state('playing')
         else:
             self.gst.set_state('paused')
-
-    def on_new_spectrum(self, obj, magnitudes):
-        self.spectrum_magnitudes = magnitudes
-
-        self.spectrum.queue_draw()
 
     def add_file_filter(self, dialog):
         file_filter = Gtk.FileFilter()
