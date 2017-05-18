@@ -90,6 +90,7 @@ class Application(Gtk.Application):
         self.setup_reverb.init()
         self.setup_equalizer.init()
         self.test_signal.init()
+        self.spectrum.init()
         self.list_apps.init()
 
         self.init_settings_menu()

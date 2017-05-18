@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from gi.repository import GLib
+
 
 class Spectrum():
 
@@ -10,14 +12,38 @@ class Spectrum():
         self.settings = app.settings
 
         self.handlers = {
+            'on_show_spectrum_state_set': self.on_show_spectrum_state_set,
             'on_spectrum_draw': self.on_spectrum_draw
         }
 
         self.gst.connect('new_spectrum', self.on_new_spectrum)
 
+        self.spectrum_box = self.builder.get_object('spectrum_box')
         self.drawing_area = self.builder.get_object('spectrum')
 
         self.spectrum_magnitudes = []
+
+    def init(self):
+        show_spectrum_switch = self.builder.get_object('show_spectrum')
+        show_spectrum = self.settings.get_value('show-spectrum').unpack()
+
+        show_spectrum_switch.set_active(show_spectrum)
+
+        # we need this when the saved value is equal to the widget default
+        # value
+        if show_spectrum:
+            self.spectrum_box.show_all()
+        else:
+            self.spectrum_box.hide()
+
+    def on_show_spectrum_state_set(self, obj, state):
+        if state:
+            self.spectrum_box.show_all()
+        else:
+            self.spectrum_box.hide()
+
+        out = GLib.Variant('b', state)
+        self.settings.set_value('show-spectrum', out)
 
     def on_spectrum_draw(self, drawing_area, ctx):
         ctx.paint()

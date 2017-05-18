@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-09 22:24-0300\n"
-"PO-Revision-Date: 2017-05-09 22:25-0300\n"
+"POT-Creation-Date: 2017-05-18 15:57-0300\n"
+"PO-Revision-Date: 2017-05-18 15:57-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -118,120 +118,124 @@ msgstr "sem reverberação"
 msgid "small room"
 msgstr "quarto pequeno"
 
-#: ../PulseEffects/ui/main_ui.glade:744
+#: ../PulseEffects/ui/main_ui.glade:911
 msgid "Input Limiter"
 msgstr "Limitador de Entrada"
 
-#: ../PulseEffects/ui/main_ui.glade:783
+#: ../PulseEffects/ui/main_ui.glade:951
 msgid "Input Gain [dB]"
 msgstr "Ganho de Entrada [dB]"
 
-#: ../PulseEffects/ui/main_ui.glade:810
+#: ../PulseEffects/ui/main_ui.glade:978
 msgid "Limit [dB]"
 msgstr "Limite [dB]"
 
-#: ../PulseEffects/ui/main_ui.glade:836
+#: ../PulseEffects/ui/main_ui.glade:1004
 msgid "Release [s]"
 msgstr "Liberação [s]"
 
-#: ../PulseEffects/ui/main_ui.glade:862
+#: ../PulseEffects/ui/main_ui.glade:1030
 msgid "Input"
 msgstr "Entrada"
 
-#: ../PulseEffects/ui/main_ui.glade:960 ../PulseEffects/ui/main_ui.glade:1436
-#: ../PulseEffects/ui/main_ui.glade:1713 ../PulseEffects/ui/main_ui.glade:2226
+#: ../PulseEffects/ui/main_ui.glade:1128 ../PulseEffects/ui/main_ui.glade:1605
+#: ../PulseEffects/ui/main_ui.glade:1883 ../PulseEffects/ui/main_ui.glade:2396
 msgid "Output"
 msgstr "Saída"
 
-#: ../PulseEffects/ui/main_ui.glade:1058
+#: ../PulseEffects/ui/main_ui.glade:1226
 msgid "Attenuation"
 msgstr "Atenuação"
 
-#: ../PulseEffects/ui/main_ui.glade:1144
+#: ../PulseEffects/ui/main_ui.glade:1312
 msgid "Compressor"
 msgstr "Compressor"
 
-#: ../PulseEffects/ui/main_ui.glade:1182
+#: ../PulseEffects/ui/main_ui.glade:1350
 msgid "rms"
 msgstr "rms"
 
-#: ../PulseEffects/ui/main_ui.glade:1198
+#: ../PulseEffects/ui/main_ui.glade:1366
 msgid "peak"
 msgstr "pico"
 
-#: ../PulseEffects/ui/main_ui.glade:1229
+#: ../PulseEffects/ui/main_ui.glade:1398
 msgid "Attack [ms]"
 msgstr "Ataque [ms]"
 
-#: ../PulseEffects/ui/main_ui.glade:1255
+#: ../PulseEffects/ui/main_ui.glade:1424
 msgid "Release [ms]"
 msgstr "Liberação [ms]"
 
-#: ../PulseEffects/ui/main_ui.glade:1281
+#: ../PulseEffects/ui/main_ui.glade:1450
 msgid "Threshold [dB]"
 msgstr "Limiar [dB]"
 
-#: ../PulseEffects/ui/main_ui.glade:1307
+#: ../PulseEffects/ui/main_ui.glade:1476
 msgid "Ratio [n:1]"
 msgstr "Razão [n:1]"
 
-#: ../PulseEffects/ui/main_ui.glade:1333
+#: ../PulseEffects/ui/main_ui.glade:1502
 msgid "Knee [dB]"
 msgstr "Joelho [dB]"
 
-#: ../PulseEffects/ui/main_ui.glade:1359
+#: ../PulseEffects/ui/main_ui.glade:1528
 msgid "Makeup [dB]"
 msgstr "Ganho de Saída [dB]"
 
-#: ../PulseEffects/ui/main_ui.glade:1385
+#: ../PulseEffects/ui/main_ui.glade:1554
 msgid "Gain Reduction"
 msgstr "Redução de Ganho"
 
-#: ../PulseEffects/ui/main_ui.glade:1570
+#: ../PulseEffects/ui/main_ui.glade:1739
 msgid "Reverberation"
 msgstr "Reverberação"
 
-#: ../PulseEffects/ui/main_ui.glade:1609
+#: ../PulseEffects/ui/main_ui.glade:1779
 msgid "Room Size"
 msgstr "Tamanho do quarto"
 
-#: ../PulseEffects/ui/main_ui.glade:1635
+#: ../PulseEffects/ui/main_ui.glade:1805
 msgid "Damping"
 msgstr "Amortecimento"
 
-#: ../PulseEffects/ui/main_ui.glade:1661
+#: ../PulseEffects/ui/main_ui.glade:1831
 msgid "Width"
 msgstr "Largura"
 
-#: ../PulseEffects/ui/main_ui.glade:1687
+#: ../PulseEffects/ui/main_ui.glade:1857
 msgid "Level"
 msgstr "Nível"
 
-#: ../PulseEffects/ui/main_ui.glade:1879
+#: ../PulseEffects/ui/main_ui.glade:2049
 msgid "Equalizer"
 msgstr "Equalizador"
 
-#: ../PulseEffects/ui/main_ui.glade:1906
+#: ../PulseEffects/ui/main_ui.glade:2076
 msgid "Pre"
 msgstr "Pre"
 
-#: ../PulseEffects/ui/main_ui.glade:2404
+#: ../PulseEffects/ui/main_ui.glade:2574
 msgid "Test Signal"
 msgstr "Sinal de Teste"
 
-#: ../PulseEffects/ui/headerbar.glade:29
+#: ../PulseEffects/ui/headerbar.glade:23
 msgid "buffer-time [ms]"
 msgstr "tempo de atraso [ms]"
 
-#: ../PulseEffects/ui/headerbar.glade:83
+#: ../PulseEffects/ui/headerbar.glade:48
+msgid "Show Spectrum"
+msgstr "Mostrar Espectro"
+
+#: ../PulseEffects/ui/headerbar.glade:93
 msgid "Auto Volume"
 msgstr "Volume Automático"
 
-#: ../PulseEffects/ui/headerbar.glade:117
+#: ../PulseEffects/ui/headerbar.glade:127
 msgid "Save Preset"
 msgstr "Salvar Predefinição"
 
-#: ../PulseEffects/ui/headerbar.glade:132
+#: ../PulseEffects/ui/headerbar.glade:142
 msgid "Load Preset"
 msgstr "Carregar Predefinição"
 

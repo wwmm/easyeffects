@@ -83,18 +83,21 @@ class SetupLimiter():
         self.limiter_user = self.settings.get_value(
             'limiter-user').unpack()
 
-        self.apply_limiter_preset(self.limiter_user)
-
-        # we need this when saved value is equal to widget default value
-        self.gst.set_limiter_input_gain(self.limiter_user[0])
-        self.gst.set_limiter_limit(self.limiter_user[1])
-        self.gst.set_limiter_release_time(self.limiter_user[2])
-
         autovolume_state_obj = self.builder.get_object('autovolume_state')
 
         autovolume_state = self.settings.get_value('autovolume-state').unpack()
 
         autovolume_state_obj.set_state(autovolume_state)
+
+        # we need this when saved value is equal to widget default value
+        if autovolume_state:
+            self.enable_autovolume(True)
+        else:
+            self.apply_limiter_preset(self.limiter_user)
+
+            self.gst.set_limiter_input_gain(self.limiter_user[0])
+            self.gst.set_limiter_limit(self.limiter_user[1])
+            self.gst.set_limiter_release_time(self.limiter_user[2])
 
     def apply_limiter_preset(self, values):
         self.limiter_input_gain.set_value(values[0])
@@ -131,7 +134,7 @@ class SetupLimiter():
         self.gst.set_limiter_release_time(value)
         self.save_limiter_user(2, value)
 
-    def on_autovolume_enable_state_set(self, obj, state):
+    def enable_autovolume(self, state):
         self.gst.set_autovolume_state(state)
 
         if state:
@@ -153,6 +156,9 @@ class SetupLimiter():
 
         out = GLib.Variant('b', state)
         self.settings.set_value('autovolume-state', out)
+
+    def on_autovolume_enable_state_set(self, obj, state):
+        self.enable_autovolume(state)
 
     def on_new_level_before_limiter(self, obj, left, right):
         if self.app.ui_initialized:
