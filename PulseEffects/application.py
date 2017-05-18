@@ -10,6 +10,8 @@ from PulseEffects.gst import GstEffects
 from PulseEffects.pulse_manager import PulseManager
 from PulseEffects.test_signal import TestSignal
 
+from PulseEffects.setup_limiter import SetupLimiter
+
 
 class Application(Gtk.Application):
 
@@ -37,17 +39,10 @@ class Application(Gtk.Application):
 
         self.gst.set_output_sink_name(self.pm.default_sink_name)
 
-        self.gst.connect('new_level_before_limiter',
-                         self.on_new_level_before_limiter)
-        self.gst.connect('new_level_after_limiter',
-                         self.on_new_level_after_limiter)
-        self.gst.connect('new_autovolume', self.on_new_autovolume)
         self.gst.connect('new_level_after_compressor',
                          self.on_new_level_after_compressor)
         self.gst.connect('new_compressor_gain_reduction',
                          self.on_new_compressor_gain_reduction)
-        self.gst.connect('new_limiter_attenuation',
-                         self.on_new_limiter_attenuation)
         self.gst.connect('new_level_after_reverb',
                          self.on_new_level_after_reverb)
         self.gst.connect('new_level_after_eq', self.on_new_level_after_eq)
@@ -59,7 +54,6 @@ class Application(Gtk.Application):
 
         # reading last used configurations
 
-        self.limiter_user = self.settings.get_value('limiter-user').unpack()
         self.compressor_user = self.settings.get_value(
             'compressor-user').unpack()
         self.reverb_user = self.settings.get_value('reverb-user').unpack()
@@ -74,23 +68,10 @@ class Application(Gtk.Application):
     def do_startup(self):
         Gtk.Application.do_startup(self)
 
-        main_ui_builder = Gtk.Builder()
-        headerbar_builder = Gtk.Builder()
+        builder = Gtk.Builder()
 
-        main_ui_builder.add_from_file(self.module_path + '/ui/main_ui.glade')
-        headerbar_builder.add_from_file(
-            self.module_path + '/ui/headerbar.glade')
-
-        main_ui_handlers = {
+        ui_handlers = {
             'on_MainWindow_delete_event': self.on_MainWindow_delete_event,
-            'on_limiter_input_gain_value_changed':
-                self.on_limiter_input_gain_value_changed,
-            'on_limiter_limit_value_changed':
-                self.on_limiter_limit_value_changed,
-            'on_limiter_release_time_value_changed':
-                self.on_limiter_release_time_value_changed,
-            'on_limiter_preset_toggled':
-                self.on_limiter_preset_toggled,
             'on_compressor_measurement_type':
                 self.on_compressor_measurement_type,
             'on_compressor_attack_time_value_changed':
@@ -131,97 +112,50 @@ class Application(Gtk.Application):
             'on_spectrum_draw': self.on_spectrum_draw,
             'on_test_signal_switch_state_set':
                 self.on_test_signal_switch_state_set,
-            'on_test_signal_freq_toggled': self.on_test_signal_freq_toggled
-        }
-
-        headerbar_ui_handlers = {
+            'on_test_signal_freq_toggled': self.on_test_signal_freq_toggled,
             'on_buffer_time_value_changed': self.on_buffer_time_value_changed,
-            'on_autovolume_enable_state_set':
-                self.on_autovolume_enable_state_set,
             'on_save_user_preset_clicked': self.on_save_user_preset_clicked,
             'on_load_user_preset_clicked': self.on_load_user_preset_clicked
         }
 
-        main_ui_builder.connect_signals(main_ui_handlers)
-        headerbar_builder.connect_signals(headerbar_ui_handlers)
+        builder.add_from_file(self.module_path + '/ui/main_ui.glade')
+        builder.add_from_file(self.module_path + '/ui/headerbar.glade')
 
-        headerbar = headerbar_builder.get_object('headerbar')
+        headerbar = builder.get_object('headerbar')
 
-        self.window = main_ui_builder.get_object('MainWindow')
+        self.window = builder.get_object('MainWindow')
         self.window.set_titlebar(headerbar)
         self.window.set_application(self)
 
         self.create_appmenu()
 
-        self.init_settings_menu(headerbar_builder)
-        self.init_limiter_menu(main_ui_builder)
-        self.init_compressor_menu(main_ui_builder)
-        self.init_reverb_menu(main_ui_builder)
-        self.init_equalizer_menu(main_ui_builder)
-        self.init_test_signal_menu(main_ui_builder)
+        self.setup_limiter = SetupLimiter(self, builder)
 
-        self.apps_box = main_ui_builder.get_object('apps_box')
-        self.spectrum = main_ui_builder.get_object('spectrum')
+        ui_handlers.update(self.setup_limiter.handlers)
+
+        builder.connect_signals(ui_handlers)
+
+        self.init_settings_menu(builder)
+        self.init_compressor_menu(builder)
+        self.init_reverb_menu(builder)
+        self.init_equalizer_menu(builder)
+        self.init_test_signal_menu(builder)
+
+        self.apps_box = builder.get_object('apps_box')
+        self.spectrum = builder.get_object('spectrum')
 
         self.build_apps_list()
 
         # buffer-time
-        buffer_time_obj = headerbar_builder.get_object('buffer_time')
+        buffer_time_obj = builder.get_object('buffer_time')
 
         buffer_time = self.settings.get_value('buffer-time').unpack()
 
         buffer_time_obj.set_value(buffer_time)
 
-        # limiter
-
-        self.limiter_input_gain = main_ui_builder.get_object(
-            'limiter_input_gain')
-        self.limiter_limit = main_ui_builder.get_object(
-            'limiter_limit')
-        self.limiter_release_time = main_ui_builder.get_object(
-            'limiter_release_time')
-        self.limiter_attenuation_levelbar = main_ui_builder.get_object(
-            'limiter_attenuation_levelbar')
-
-        self.limiter_scale_input_gain = main_ui_builder.get_object(
-            'limiter_scale_input_gain')
-        self.limiter_scale_limit = main_ui_builder.get_object(
-            'limiter_scale_limit')
-        self.limiter_scale_release_time = main_ui_builder.get_object(
-            'limiter_scale_release_time')
-
-        self.limiter_attenuation_levelbar.add_offset_value(
-            'GTK_LEVEL_BAR_OFFSET_LOW', 20)
-        self.limiter_attenuation_levelbar.add_offset_value(
-            'GTK_LEVEL_BAR_OFFSET_HIGH', 50)
-        self.limiter_attenuation_levelbar.add_offset_value(
-            'GTK_LEVEL_BAR_OFFSET_FULL', 70)
-
-        self.limiter_level_before_left = main_ui_builder.get_object(
-            'limiter_level_before_left')
-        self.limiter_level_before_right = main_ui_builder.get_object(
-            'limiter_level_before_right')
-        self.limiter_level_after_left = main_ui_builder.get_object(
-            'limiter_level_after_left')
-        self.limiter_level_after_right = main_ui_builder.get_object(
-            'limiter_level_after_right')
-
-        self.limiter_level_label_before_left = main_ui_builder.get_object(
-            'limiter_level_label_before_left')
-        self.limiter_level_label_before_right = main_ui_builder.get_object(
-            'limiter_level_label_before_right')
-        self.limiter_level_label_after_left = main_ui_builder.get_object(
-            'limiter_level_label_after_left')
-        self.limiter_level_label_after_right = main_ui_builder.get_object(
-            'limiter_level_label_after_right')
-        self.limiter_attenuation_level_label = main_ui_builder.get_object(
-            'limiter_attenuation_level_label')
-
-        self.init_limiter()
-
         # autovolume
 
-        autovolume_state_obj = headerbar_builder.get_object('autovolume_state')
+        autovolume_state_obj = builder.get_object('autovolume_state')
 
         autovolume_state = self.settings.get_value('autovolume-state').unpack()
 
@@ -229,34 +163,34 @@ class Application(Gtk.Application):
 
         # compressor
 
-        self.compressor_rms = main_ui_builder.get_object('compressor_rms')
-        self.compressor_peak = main_ui_builder.get_object('compressor_peak')
-        self.compressor_attack = main_ui_builder.get_object(
+        self.compressor_rms = builder.get_object('compressor_rms')
+        self.compressor_peak = builder.get_object('compressor_peak')
+        self.compressor_attack = builder.get_object(
             'compressor_attack')
-        self.compressor_release = main_ui_builder.get_object(
+        self.compressor_release = builder.get_object(
             'compressor_release')
-        self.compressor_threshold = main_ui_builder.get_object(
+        self.compressor_threshold = builder.get_object(
             'compressor_threshold')
-        self.compressor_ratio = main_ui_builder.get_object(
+        self.compressor_ratio = builder.get_object(
             'compressor_ratio')
-        self.compressor_knee = main_ui_builder.get_object(
+        self.compressor_knee = builder.get_object(
             'compressor_knee')
-        self.compressor_makeup = main_ui_builder.get_object(
+        self.compressor_makeup = builder.get_object(
             'compressor_makeup')
 
-        self.compressor_level_after_left = main_ui_builder.get_object(
+        self.compressor_level_after_left = builder.get_object(
             'compressor_level_after_left')
-        self.compressor_level_after_right = main_ui_builder.get_object(
+        self.compressor_level_after_right = builder.get_object(
             'compressor_level_after_right')
-        self.compressor_gain_reduction_levelbar = main_ui_builder.get_object(
+        self.compressor_gain_reduction_levelbar = builder.get_object(
             'compressor_gain_reduction_levelbar')
 
-        self.compressor_level_label_after_left = main_ui_builder.get_object(
+        self.compressor_level_label_after_left = builder.get_object(
             'compressor_level_label_after_left')
-        self.compressor_level_label_after_right = main_ui_builder.get_object(
+        self.compressor_level_label_after_right = builder.get_object(
             'compressor_level_label_after_right')
         self.compressor_gain_reduction_level_label = \
-            main_ui_builder.get_object('compressor_gain_reduction_level_label')
+            builder.get_object('compressor_gain_reduction_level_label')
 
         self.compressor_gain_reduction_levelbar.add_offset_value(
             'GTK_LEVEL_BAR_OFFSET_LOW', 6)
@@ -268,43 +202,43 @@ class Application(Gtk.Application):
         self.init_compressor()
 
         # reverb
-        self.reverb_room_size = main_ui_builder.get_object('reverb_room_size')
-        self.reverb_damping = main_ui_builder.get_object('reverb_damping')
-        self.reverb_width = main_ui_builder.get_object('reverb_width')
-        self.reverb_level = main_ui_builder.get_object('reverb_level')
+        self.reverb_room_size = builder.get_object('reverb_room_size')
+        self.reverb_damping = builder.get_object('reverb_damping')
+        self.reverb_width = builder.get_object('reverb_width')
+        self.reverb_level = builder.get_object('reverb_level')
 
-        self.reverb_left_level = main_ui_builder.get_object(
+        self.reverb_left_level = builder.get_object(
             'reverb_left_level')
-        self.reverb_right_level = main_ui_builder.get_object(
+        self.reverb_right_level = builder.get_object(
             'reverb_right_level')
 
-        self.reverb_left_level_label = main_ui_builder.get_object(
+        self.reverb_left_level_label = builder.get_object(
             'reverb_left_level_label')
-        self.reverb_right_level_label = main_ui_builder.get_object(
+        self.reverb_right_level_label = builder.get_object(
             'reverb_right_level_label')
 
         self.init_reverb()
 
         # equalizer
 
-        self.eq_preamp = main_ui_builder.get_object('eq_preamp')
-        self.eq_band0 = main_ui_builder.get_object('eq_band0')
-        self.eq_band1 = main_ui_builder.get_object('eq_band1')
-        self.eq_band2 = main_ui_builder.get_object('eq_band2')
-        self.eq_band3 = main_ui_builder.get_object('eq_band3')
-        self.eq_band4 = main_ui_builder.get_object('eq_band4')
-        self.eq_band5 = main_ui_builder.get_object('eq_band5')
-        self.eq_band6 = main_ui_builder.get_object('eq_band6')
-        self.eq_band7 = main_ui_builder.get_object('eq_band7')
-        self.eq_band8 = main_ui_builder.get_object('eq_band8')
-        self.eq_band9 = main_ui_builder.get_object('eq_band9')
+        self.eq_preamp = builder.get_object('eq_preamp')
+        self.eq_band0 = builder.get_object('eq_band0')
+        self.eq_band1 = builder.get_object('eq_band1')
+        self.eq_band2 = builder.get_object('eq_band2')
+        self.eq_band3 = builder.get_object('eq_band3')
+        self.eq_band4 = builder.get_object('eq_band4')
+        self.eq_band5 = builder.get_object('eq_band5')
+        self.eq_band6 = builder.get_object('eq_band6')
+        self.eq_band7 = builder.get_object('eq_band7')
+        self.eq_band8 = builder.get_object('eq_band8')
+        self.eq_band9 = builder.get_object('eq_band9')
 
-        self.eq_left_level = main_ui_builder.get_object('eq_left_level')
-        self.eq_right_level = main_ui_builder.get_object('eq_right_level')
+        self.eq_left_level = builder.get_object('eq_left_level')
+        self.eq_right_level = builder.get_object('eq_right_level')
 
-        self.eq_left_level_label = main_ui_builder.get_object(
+        self.eq_left_level_label = builder.get_object(
             'eq_left_level_label')
-        self.eq_right_level_label = main_ui_builder.get_object(
+        self.eq_right_level_label = builder.get_object(
             'eq_right_level_label')
 
         self.init_equalizer()
@@ -353,25 +287,6 @@ class Application(Gtk.Application):
                 popover.hide()
             else:
                 popover.show_all()
-
-        button.connect("clicked", button_clicked)
-
-    def init_limiter_menu(self, builder):
-        button = builder.get_object('limiter_popover')
-        menu = builder.get_object('limiter_menu')
-        limiter_no_selection = builder.get_object('limiter_no_selection')
-
-        popover = Gtk.Popover.new(button)
-        popover.props.transitions_enabled = True
-        popover.add(menu)
-
-        def button_clicked(arg):
-            if popover.get_visible():
-                popover.hide()
-            else:
-                popover.show_all()
-                limiter_no_selection.set_active(True)
-                limiter_no_selection.hide()
 
         button.connect("clicked", button_clicked)
 
@@ -462,29 +377,6 @@ class Application(Gtk.Application):
         else:
             self.gst.init_buffer_time(value * 1000)
 
-    def on_autovolume_enable_state_set(self, obj, state):
-        self.gst.set_autovolume_state(state)
-
-        if state:
-            self.limiter_input_gain.set_value(-10)
-            self.limiter_limit.set_value(-10)
-            self.limiter_release_time.set_value(2.0)
-
-            self.limiter_scale_input_gain.set_sensitive(False)
-            self.limiter_scale_limit.set_sensitive(False)
-            self.limiter_scale_release_time.set_sensitive(False)
-        else:
-            self.limiter_input_gain.set_value(-10)
-            self.limiter_limit.set_value(0)
-            self.limiter_release_time.set_value(1.0)
-
-            self.limiter_scale_input_gain.set_sensitive(True)
-            self.limiter_scale_limit.set_sensitive(True)
-            self.limiter_scale_release_time.set_sensitive(True)
-
-        out = GLib.Variant('b', state)
-        self.settings.set_value('autovolume-state', out)
-
     def build_apps_list(self):
         children = self.apps_box.get_children()
 
@@ -574,54 +466,6 @@ class Application(Gtk.Application):
         else:
             self.gst.set_state('paused')
 
-    def on_new_level_before_limiter(self, obj, left, right):
-        if self.ui_initialized:
-            if left >= -99:
-                l_value = 10**(left / 20)
-                self.limiter_level_before_left.set_value(l_value)
-                self.limiter_level_label_before_left.set_text(str(round(left)))
-            else:
-                self.limiter_level_before_left.set_value(0)
-                self.limiter_level_label_before_left.set_text('-99')
-
-            if right >= -99:
-                r_value = 10**(right / 20)
-                self.limiter_level_before_right.set_value(r_value)
-                self.limiter_level_label_before_right.set_text(
-                    str(round(right)))
-            else:
-                self.limiter_level_before_right.set_value(0)
-                self.limiter_level_label_before_right.set_text('-99')
-
-    def on_new_level_after_limiter(self, obj, left, right):
-        if self.ui_initialized:
-            if left >= -99:
-                l_value = 10**(left / 20)
-                self.limiter_level_after_left.set_value(l_value)
-                self.limiter_level_label_after_left.set_text(str(round(left)))
-            else:
-                self.limiter_level_after_left.set_value(0)
-                self.limiter_level_label_after_left.set_text('-99')
-
-            if right >= -99:
-                r_value = 10**(right / 20)
-                self.limiter_level_after_right.set_value(r_value)
-                self.limiter_level_label_after_right.set_text(
-                    str(round(right)))
-            else:
-                self.limiter_level_after_right.set_value(0)
-                self.limiter_level_label_after_right.set_text('-99')
-
-    def on_new_limiter_attenuation(self, obj, attenuation):
-        if self.ui_initialized:
-            self.limiter_attenuation_levelbar.set_value(attenuation)
-            self.limiter_attenuation_level_label.set_text(
-                str(round(attenuation)))
-
-    def on_new_autovolume(self, obj, gain):
-        if self.ui_initialized:
-            self.limiter_input_gain.set_value(gain)
-
     def on_new_level_after_compressor(self, obj, left, right):
         if self.ui_initialized:
             if left >= -99:
@@ -689,49 +533,6 @@ class Application(Gtk.Application):
         self.spectrum_magnitudes = magnitudes
 
         self.spectrum.queue_draw()
-
-    def apply_limiter_preset(self, values):
-        self.limiter_input_gain.set_value(values[0])
-        self.limiter_limit.set_value(values[1])
-        self.limiter_release_time.set_value(values[2])
-
-    def init_limiter(self):
-        self.apply_limiter_preset(self.limiter_user)
-
-        # we need this when saved value is equal to widget default value
-        self.gst.set_limiter_input_gain(self.limiter_user[0])
-        self.gst.set_limiter_limit(self.limiter_user[1])
-        self.gst.set_limiter_release_time(self.limiter_user[2])
-
-    def on_limiter_preset_toggled(self, obj):
-        if obj.get_active():
-            obj_id = Gtk.Buildable.get_name(obj)
-
-            if obj_id == 'limiter_default':
-                value = self.settings.get_value('limiter-default')
-                self.apply_limiter_preset(value)
-
-    def save_limiter_user(self, idx, value):
-        self.limiter_user[idx] = value
-
-        out = GLib.Variant('ad', self.limiter_user)
-
-        self.settings.set_value('limiter-user', out)
-
-    def on_limiter_input_gain_value_changed(self, obj):
-        value = obj.get_value()
-        self.gst.set_limiter_input_gain(value)
-        self.save_limiter_user(0, value)
-
-    def on_limiter_limit_value_changed(self, obj):
-        value = obj.get_value()
-        self.gst.set_limiter_limit(value)
-        self.save_limiter_user(1, value)
-
-    def on_limiter_release_time_value_changed(self, obj):
-        value = obj.get_value()
-        self.gst.set_limiter_release_time(value)
-        self.save_limiter_user(2, value)
 
     def apply_compressor_preset(self, values):
         if values[0] == 0:
@@ -1163,7 +964,7 @@ class Application(Gtk.Application):
 
             limiter = dict(config['limiter']).values()
             limiter = [float(v) for v in limiter]
-            self.apply_limiter_preset(limiter)
+            self.setup_limiter.apply_limiter_preset(limiter)
 
             compressor = dict(config['compressor']).values()
             compressor = [float(v) for v in compressor]
