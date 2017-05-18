@@ -2,14 +2,24 @@
 
 import gi
 gi.require_version('Gst', '1.0')
-from gi.repository import Gst
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gst, Gtk
 
 Gst.init(None)
 
 
 class TestSignal():
 
-    def __init__(self):
+    def __init__(self, app):
+        self.app = app
+        self.builder = app.builder
+
+        self.handlers = {
+            'on_test_signal_switch_state_set':
+            self.on_test_signal_switch_state_set,
+            'on_test_signal_freq_toggled': self.on_test_signal_freq_toggled,
+        }
+
         self.pipeline = self.build_pipeline()
 
         # Create bus to get events from GStreamer pipeline
@@ -48,6 +58,9 @@ class TestSignal():
         self.audio_src2.link(adder)
 
         return pipeline
+
+    def init(self):
+        self.init_menu()
 
     def set_state(self, state):
         if state == 'ready':
@@ -107,3 +120,55 @@ class TestSignal():
         else:
             self.bandpass.set_property('lower-frequency', lower)
             self.bandpass.set_property('upper-frequency', upper)
+
+    def init_menu(self):
+        button = self.builder.get_object('test_signal_popover')
+        menu = self.builder.get_object('test_signal_menu')
+        default = self.builder.get_object('test_signal_band5')
+
+        default.set_active(True)
+
+        popover = Gtk.Popover.new(button)
+        popover.props.transitions_enabled = True
+        popover.add(menu)
+
+        def button_clicked(arg):
+            if popover.get_visible():
+                popover.hide()
+            else:
+                popover.show_all()
+
+        button.connect("clicked", button_clicked)
+
+    def on_test_signal_switch_state_set(self, obj, state):
+        if state:
+            self.generating_test_signal = True
+            self.set_state('playing')
+        else:
+            self.generating_test_signal = False
+            self.set_state('null')
+
+    def on_test_signal_freq_toggled(self, obj):
+        if obj.get_active():
+            obj_id = Gtk.Buildable.get_name(obj)
+
+            if obj_id == 'test_signal_band0':
+                self.set_freq(0.03, 28, 30)
+            elif obj_id == 'test_signal_band1':
+                self.set_freq(0.06, 58, 60)
+            elif obj_id == 'test_signal_band2':
+                self.set_freq(0.125, 118, 120)
+            elif obj_id == 'test_signal_band3':
+                self.set_freq(0.25, 236, 238)
+            elif obj_id == 'test_signal_band4':
+                self.set_freq(0.5, 473, 475)
+            elif obj_id == 'test_signal_band5':
+                self.set_freq(1, 946, 948)
+            elif obj_id == 'test_signal_band6':
+                self.set_freq(2, 1888, 1890)
+            elif obj_id == 'test_signal_band7':
+                self.set_freq(4, 3769, 3771)
+            elif obj_id == 'test_signal_band8':
+                self.set_freq(8, 7522, 7524)
+            elif obj_id == 'test_signal_band9':
+                self.set_freq(16, 15010, 15012)
