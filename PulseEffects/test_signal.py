@@ -142,10 +142,10 @@ class TestSignal():
 
     def on_test_signal_switch_state_set(self, obj, state):
         if state:
-            self.generating_test_signal = True
+            self.app.generating_test_signal = True
             self.set_state('playing')
         else:
-            self.generating_test_signal = False
+            self.app.generating_test_signal = False
             self.set_state('null')
 
     def on_test_signal_freq_toggled(self, obj):

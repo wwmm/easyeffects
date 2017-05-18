@@ -7,6 +7,7 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gio, GLib, Gtk
 from PulseEffects.gst import GstEffects
+from PulseEffects.list_apps import ListApps
 from PulseEffects.pulse_manager import PulseManager
 from PulseEffects.setup_compressor import SetupCompressor
 from PulseEffects.setup_equalizer import SetupEqualizer
@@ -32,8 +33,6 @@ class Application(Gtk.Application):
         # pulseaudio
 
         self.pm = PulseManager()
-
-        self.pm.connect('sink_inputs_changed', self.on_sink_inputs_changed)
 
         # gstreamer audio effects
 
@@ -74,6 +73,7 @@ class Application(Gtk.Application):
         self.setup_equalizer = SetupEqualizer(self)
         self.test_signal = TestSignal(self)
         self.spectrum = Spectrum(self)
+        self.list_apps = ListApps(self)
 
         ui_handlers.update(self.setup_limiter.handlers)
         ui_handlers.update(self.setup_compressor.handlers)
@@ -81,6 +81,7 @@ class Application(Gtk.Application):
         ui_handlers.update(self.setup_equalizer.handlers)
         ui_handlers.update(self.test_signal.handlers)
         ui_handlers.update(self.spectrum.handlers)
+        ui_handlers.update(self.list_apps.handlers)
 
         self.builder.connect_signals(ui_handlers)
 
@@ -89,12 +90,9 @@ class Application(Gtk.Application):
         self.setup_reverb.init()
         self.setup_equalizer.init()
         self.test_signal.init()
+        self.list_apps.init()
 
         self.init_settings_menu()
-
-        self.apps_box = self.builder.get_object('apps_box')
-
-        self.build_apps_list()
 
         # buffer-time
         buffer_time_obj = self.builder.get_object('buffer_time')
@@ -160,72 +158,6 @@ class Application(Gtk.Application):
             self.gst.set_buffer_time(value * 1000)
         else:
             self.gst.init_buffer_time(value * 1000)
-
-    def build_apps_list(self):
-        children = self.apps_box.get_children()
-
-        for child in children:
-            self.apps_box.remove(child)
-
-        sink_inputs = self.pm.sink_inputs
-
-        for i in sink_inputs:
-            idx = i[0]
-            app_name = i[1]
-            media_name = i[2]
-            icon_name = i[3]
-            connected = i[4]
-
-            row = Gtk.ListBoxRow()
-
-            hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=2)
-
-            row.add(hbox)
-
-            # app icon
-            icon_size = Gtk.IconSize.BUTTON
-            icon = Gtk.Image.new_from_icon_name(icon_name, icon_size)
-
-            hbox.pack_start(icon, False, False, 0)
-
-            # label
-            label_text = '<b>' + app_name + '</b>' + ': ' + media_name
-
-            label = Gtk.Label(label_text, xalign=0)
-            label.set_use_markup(True)
-
-            hbox.pack_start(label, True, True, 0)
-
-            # switch
-            switch = Gtk.Switch()
-
-            switch.set_active(connected)
-            switch.set_name('switch_' + str(idx))
-
-            def move_sink_input(obj, state):
-                idx = int(obj.get_name().split('_')[1])
-
-                if state:
-                    self.pm.grab_input(idx)
-                else:
-                    self.pm.move_input_to_default_sink(idx)
-
-            switch.connect('state-set', move_sink_input)
-
-            hbox.pack_end(switch, False, False, 0)
-
-            self.apps_box.add(row)
-
-        self.apps_box.show_all()
-
-    def on_sink_inputs_changed(self, obj):
-        if self.ui_initialized:
-            self.build_apps_list()
-
-        if len(self.pm.sink_inputs) > 0 or self.generating_test_signal:
-            self.gst.set_state('playing')
-        else:
-            self.gst.set_state('paused')
 
     def add_file_filter(self, dialog):
         file_filter = Gtk.FileFilter()
