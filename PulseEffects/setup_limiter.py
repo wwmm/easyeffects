@@ -34,9 +34,6 @@ class SetupLimiter():
                          self.on_new_limiter_attenuation)
         self.gst.connect('new_autovolume', self.on_new_autovolume)
 
-        self.limiter_user = self.settings.get_value(
-            'limiter-user').unpack()
-
         self.limiter_input_gain = self.builder.get_object(
             'limiter_input_gain')
         self.limiter_limit = self.builder.get_object(
@@ -80,15 +77,24 @@ class SetupLimiter():
         self.limiter_attenuation_level_label = self.builder.get_object(
             'limiter_attenuation_level_label')
 
+        self.init_menu()
+
+    def init(self):
+        self.limiter_user = self.settings.get_value(
+            'limiter-user').unpack()
+
+        self.apply_limiter_preset(self.limiter_user)
+
+        # we need this when saved value is equal to widget default value
+        self.gst.set_limiter_input_gain(self.limiter_user[0])
+        self.gst.set_limiter_limit(self.limiter_user[1])
+        self.gst.set_limiter_release_time(self.limiter_user[2])
+
         autovolume_state_obj = self.builder.get_object('autovolume_state')
 
         autovolume_state = self.settings.get_value('autovolume-state').unpack()
 
         autovolume_state_obj.set_state(autovolume_state)
-
-        self.init_menu()
-
-        self.init_limiter()
 
     def apply_limiter_preset(self, values):
         self.limiter_input_gain.set_value(values[0])
@@ -124,14 +130,6 @@ class SetupLimiter():
         value = obj.get_value()
         self.gst.set_limiter_release_time(value)
         self.save_limiter_user(2, value)
-
-    def init_limiter(self):
-        self.apply_limiter_preset(self.limiter_user)
-
-        # we need this when saved value is equal to widget default value
-        self.gst.set_limiter_input_gain(self.limiter_user[0])
-        self.gst.set_limiter_limit(self.limiter_user[1])
-        self.gst.set_limiter_release_time(self.limiter_user[2])
 
     def on_autovolume_enable_state_set(self, obj, state):
         self.gst.set_autovolume_state(state)
