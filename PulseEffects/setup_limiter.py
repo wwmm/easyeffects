@@ -2,16 +2,16 @@
 
 import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, GLib, Gtk
+from gi.repository import GLib, Gtk
 
 
 class SetupLimiter():
 
-    def __init__(self, app, builder):
+    def __init__(self, app):
         self.app = app
-        self.builder = builder
-
-        self.settings = Gio.Settings('com.github.wwmm.pulseeffects')
+        self.builder = app.builder
+        self.gst = app.gst
+        self.settings = app.settings
 
         self.handlers = {
             'on_limiter_input_gain_value_changed':
@@ -26,31 +26,31 @@ class SetupLimiter():
                 self.on_autovolume_enable_state_set
         }
 
-        self.app.gst.connect('new_level_before_limiter',
-                             self.on_new_level_before_limiter)
-        self.app.gst.connect('new_level_after_limiter',
-                             self.on_new_level_after_limiter)
-        self.app.gst.connect('new_limiter_attenuation',
-                             self.on_new_limiter_attenuation)
-        self.app.gst.connect('new_autovolume', self.on_new_autovolume)
+        self.gst.connect('new_level_before_limiter',
+                         self.on_new_level_before_limiter)
+        self.gst.connect('new_level_after_limiter',
+                         self.on_new_level_after_limiter)
+        self.gst.connect('new_limiter_attenuation',
+                         self.on_new_limiter_attenuation)
+        self.gst.connect('new_autovolume', self.on_new_autovolume)
 
         self.limiter_user = self.settings.get_value(
             'limiter-user').unpack()
 
-        self.limiter_input_gain = builder.get_object(
+        self.limiter_input_gain = self.builder.get_object(
             'limiter_input_gain')
-        self.limiter_limit = builder.get_object(
+        self.limiter_limit = self.builder.get_object(
             'limiter_limit')
-        self.limiter_release_time = builder.get_object(
+        self.limiter_release_time = self.builder.get_object(
             'limiter_release_time')
-        self.limiter_attenuation_levelbar = builder.get_object(
+        self.limiter_attenuation_levelbar = self.builder.get_object(
             'limiter_attenuation_levelbar')
 
-        self.limiter_scale_input_gain = builder.get_object(
+        self.limiter_scale_input_gain = self.builder.get_object(
             'limiter_scale_input_gain')
-        self.limiter_scale_limit = builder.get_object(
+        self.limiter_scale_limit = self.builder.get_object(
             'limiter_scale_limit')
-        self.limiter_scale_release_time = builder.get_object(
+        self.limiter_scale_release_time = self.builder.get_object(
             'limiter_scale_release_time')
 
         self.limiter_attenuation_levelbar.add_offset_value(
@@ -60,25 +60,31 @@ class SetupLimiter():
         self.limiter_attenuation_levelbar.add_offset_value(
             'GTK_LEVEL_BAR_OFFSET_FULL', 70)
 
-        self.limiter_level_before_left = builder.get_object(
+        self.limiter_level_before_left = self.builder.get_object(
             'limiter_level_before_left')
-        self.limiter_level_before_right = builder.get_object(
+        self.limiter_level_before_right = self.builder.get_object(
             'limiter_level_before_right')
-        self.limiter_level_after_left = builder.get_object(
+        self.limiter_level_after_left = self.builder.get_object(
             'limiter_level_after_left')
-        self.limiter_level_after_right = builder.get_object(
+        self.limiter_level_after_right = self.builder.get_object(
             'limiter_level_after_right')
 
-        self.limiter_level_label_before_left = builder.get_object(
+        self.limiter_level_label_before_left = self.builder.get_object(
             'limiter_level_label_before_left')
-        self.limiter_level_label_before_right = builder.get_object(
+        self.limiter_level_label_before_right = self.builder.get_object(
             'limiter_level_label_before_right')
-        self.limiter_level_label_after_left = builder.get_object(
+        self.limiter_level_label_after_left = self.builder.get_object(
             'limiter_level_label_after_left')
-        self.limiter_level_label_after_right = builder.get_object(
+        self.limiter_level_label_after_right = self.builder.get_object(
             'limiter_level_label_after_right')
-        self.limiter_attenuation_level_label = builder.get_object(
+        self.limiter_attenuation_level_label = self.builder.get_object(
             'limiter_attenuation_level_label')
+
+        autovolume_state_obj = self.builder.get_object('autovolume_state')
+
+        autovolume_state = self.settings.get_value('autovolume-state').unpack()
+
+        autovolume_state_obj.set_state(autovolume_state)
 
         self.init_menu()
 
@@ -106,29 +112,29 @@ class SetupLimiter():
 
     def on_limiter_input_gain_value_changed(self, obj):
         value = obj.get_value()
-        self.app.gst.set_limiter_input_gain(value)
+        self.gst.set_limiter_input_gain(value)
         self.save_limiter_user(0, value)
 
     def on_limiter_limit_value_changed(self, obj):
         value = obj.get_value()
-        self.app.gst.set_limiter_limit(value)
+        self.gst.set_limiter_limit(value)
         self.save_limiter_user(1, value)
 
     def on_limiter_release_time_value_changed(self, obj):
         value = obj.get_value()
-        self.app.gst.set_limiter_release_time(value)
+        self.gst.set_limiter_release_time(value)
         self.save_limiter_user(2, value)
 
     def init_limiter(self):
         self.apply_limiter_preset(self.limiter_user)
 
         # we need this when saved value is equal to widget default value
-        self.app.gst.set_limiter_input_gain(self.limiter_user[0])
-        self.app.gst.set_limiter_limit(self.limiter_user[1])
-        self.app.gst.set_limiter_release_time(self.limiter_user[2])
+        self.gst.set_limiter_input_gain(self.limiter_user[0])
+        self.gst.set_limiter_limit(self.limiter_user[1])
+        self.gst.set_limiter_release_time(self.limiter_user[2])
 
     def on_autovolume_enable_state_set(self, obj, state):
-        self.app.gst.set_autovolume_state(state)
+        self.gst.set_autovolume_state(state)
 
         if state:
             self.limiter_input_gain.set_value(-10)
