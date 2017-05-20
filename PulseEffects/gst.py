@@ -204,8 +204,6 @@ class GstEffects(GObject.GObject):
 
             self.spectrum_freqs = self.spectrum_freqs[:cutt_off_idx]
 
-            print(self.spectrum_freqs)
-
             self.spectrum_nfreqs = len(self.spectrum_freqs)
 
     def auto_gain(self, mean):
@@ -255,7 +253,7 @@ class GstEffects(GObject.GObject):
 
                     mean = 0.5 * (peak[0] + peak[1])
 
-                    if mean > -45:
+                    if mean > -40:
                         self.auto_gain(mean)
 
             elif plugin == 'level_after_compressor':
