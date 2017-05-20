@@ -39,7 +39,7 @@ class GstEffects(GObject.GObject):
         self.old_compressor_gain_reduction = 0
         self.rate = sampling_rate
         self.max_spectrum_freq = 15000  # Hz
-        self.spectrum_nbands = 300
+        self.spectrum_nbands = 400
         self.spectrum_freqs = []
         self.spectrum_nfreqs = 0
         self.spectrum_threshold = -120  # dB
@@ -204,6 +204,8 @@ class GstEffects(GObject.GObject):
 
             self.spectrum_freqs = self.spectrum_freqs[:cutt_off_idx]
 
+            print(self.spectrum_freqs)
+
             self.spectrum_nfreqs = len(self.spectrum_freqs)
 
     def auto_gain(self, mean):
@@ -253,7 +255,7 @@ class GstEffects(GObject.GObject):
 
                     mean = 0.5 * (peak[0] + peak[1])
 
-                    if mean > -40:
+                    if mean > -45:
                         self.auto_gain(mean)
 
             elif plugin == 'level_after_compressor':

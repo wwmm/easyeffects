@@ -702,12 +702,9 @@
     <property name="can_focus">False</property>
     <signal name="delete-event" handler="on_MainWindow_delete_event" swapped="no"/>
     <child>
-      <object class="GtkBox">
+      <object class="GtkGrid">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="valign">start</property>
-        <property name="orientation">vertical</property>
-        <property name="baseline_position">top</property>
         <child>
           <object class="GtkBox" id="spectrum_box">
             <property name="visible">True</property>
@@ -719,10 +716,11 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
                 <signal name="draw" handler="on_spectrum_draw" swapped="no"/>
               </object>
               <packing>
-                <property name="expand">False</property>
+                <property name="expand">True</property>
                 <property name="fill">True</property>
                 <property name="position">0</property>
               </packing>
@@ -873,9 +871,8 @@
             </child>
           </object>
           <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
           </packing>
         </child>
         <child>
@@ -885,23 +882,46 @@
             <property name="margin_bottom">1</property>
           </object>
           <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">1</property>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="plugins">
+          <object class="GtkSeparator">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_left">2</property>
-            <property name="margin_right">2</property>
             <property name="margin_top">2</property>
             <property name="margin_bottom">2</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox" id="apps_box">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
+            <property name="spacing">4</property>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkGrid" id="plugins">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
             <child>
               <object class="GtkBox" id="limiter">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="valign">start</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkBox">
@@ -946,7 +966,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hexpand">True</property>
-                    <property name="column_homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -963,7 +982,7 @@
                       <object class="GtkScale" id="limiter_scale_input_gain">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="hexpand">False</property>
+                        <property name="hexpand">True</property>
                         <property name="adjustment">limiter_input_gain</property>
                         <property name="round_digits">1</property>
                         <property name="digits">0</property>
@@ -990,6 +1009,7 @@
                       <object class="GtkScale" id="limiter_scale_limit">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="adjustment">limiter_limit</property>
                         <property name="round_digits">2</property>
                         <property name="digits">0</property>
@@ -1016,6 +1036,7 @@
                       <object class="GtkScale" id="limiter_scale_release_time">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="adjustment">limiter_release_time</property>
                         <property name="round_digits">0</property>
                         <property name="digits">2</property>
@@ -1052,6 +1073,7 @@
                               <object class="GtkLevelBar" id="limiter_level_before_left">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="hexpand">True</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -1063,6 +1085,7 @@
                               <object class="GtkLevelBar" id="limiter_level_before_right">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="hexpand">True</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -1150,6 +1173,7 @@
                               <object class="GtkLevelBar" id="limiter_level_after_left">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="hexpand">True</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -1161,6 +1185,7 @@
                               <object class="GtkLevelBar" id="limiter_level_after_right">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="hexpand">True</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -1244,6 +1269,7 @@
                             <property name="can_focus">False</property>
                             <property name="valign">center</property>
                             <property name="margin_top">4</property>
+                            <property name="hexpand">True</property>
                             <property name="max_value">70</property>
                           </object>
                           <packing>
@@ -1282,9 +1308,8 @@
                 </child>
               </object>
               <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
               </packing>
             </child>
             <child>
@@ -1295,15 +1320,15 @@
                 <property name="margin_right">2</property>
               </object>
               <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
               </packing>
             </child>
             <child>
               <object class="GtkBox" id="compressor">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="valign">start</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkBox">
@@ -1394,7 +1419,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hexpand">True</property>
-                    <property name="column_homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -1411,6 +1435,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="adjustment">compressor_attack</property>
                         <property name="round_digits">1</property>
                         <property name="digits">0</property>
@@ -1437,6 +1462,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="adjustment">compressor_release</property>
                         <property name="round_digits">0</property>
                         <property name="digits">0</property>
@@ -1463,6 +1489,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="adjustment">compressor_threshold</property>
                         <property name="round_digits">0</property>
                         <property name="digits">0</property>
@@ -1489,6 +1516,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="adjustment">compressor_ratio</property>
                         <property name="round_digits">0</property>
                         <property name="digits">0</property>
@@ -1515,6 +1543,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="adjustment">compressor_knee</property>
                         <property name="round_digits">0</property>
                         <property name="digits">0</property>
@@ -1541,6 +1570,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="adjustment">compressor_makeup</property>
                         <property name="round_digits">0</property>
                         <property name="digits">0</property>
@@ -1573,6 +1603,7 @@
                             <property name="can_focus">False</property>
                             <property name="valign">center</property>
                             <property name="margin_top">4</property>
+                            <property name="hexpand">True</property>
                             <property name="max_value">24</property>
                           </object>
                           <packing>
@@ -1628,6 +1659,7 @@
                               <object class="GtkLevelBar" id="compressor_level_after_left">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="hexpand">True</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -1639,6 +1671,7 @@
                               <object class="GtkLevelBar" id="compressor_level_after_right">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="hexpand">True</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -1709,9 +1742,8 @@
                 </child>
               </object>
               <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">2</property>
+                <property name="left_attach">2</property>
+                <property name="top_attach">0</property>
               </packing>
             </child>
             <child>
@@ -1723,15 +1755,15 @@
                 <property name="orientation">vertical</property>
               </object>
               <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">3</property>
+                <property name="left_attach">3</property>
+                <property name="top_attach">0</property>
               </packing>
             </child>
             <child>
               <object class="GtkBox" id="reverb">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="valign">start</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkBox">
@@ -1776,7 +1808,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hexpand">True</property>
-                    <property name="column_homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -1793,6 +1824,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="adjustment">reverb_room_size</property>
                         <property name="round_digits">1</property>
                         <property name="digits">2</property>
@@ -1819,6 +1851,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="adjustment">reverb_damping</property>
                         <property name="round_digits">2</property>
                         <property name="digits">2</property>
@@ -1845,6 +1878,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="adjustment">reverb_width</property>
                         <property name="round_digits">2</property>
                         <property name="digits">2</property>
@@ -1871,6 +1905,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="adjustment">reverb_level</property>
                         <property name="round_digits">2</property>
                         <property name="digits">2</property>
@@ -1907,6 +1942,7 @@
                               <object class="GtkLevelBar" id="reverb_left_level">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="hexpand">True</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -1918,6 +1954,7 @@
                               <object class="GtkLevelBar" id="reverb_right_level">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="hexpand">True</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -1988,9 +2025,8 @@
                 </child>
               </object>
               <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">4</property>
+                <property name="left_attach">4</property>
+                <property name="top_attach">0</property>
               </packing>
             </child>
             <child>
@@ -2001,9 +2037,8 @@
                 <property name="margin_right">2</property>
               </object>
               <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">5</property>
+                <property name="left_attach">5</property>
+                <property name="top_attach">0</property>
               </packing>
             </child>
             <child>
@@ -2504,45 +2539,14 @@
                 </child>
               </object>
               <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">6</property>
+                <property name="left_attach">6</property>
+                <property name="top_attach">0</property>
               </packing>
             </child>
           </object>
           <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSeparator">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="margin_top">2</property>
-            <property name="margin_bottom">2</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">3</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkBox" id="apps_box">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="orientation">vertical</property>
-            <property name="spacing">4</property>
-            <child>
-              <placeholder/>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">4</property>
+            <property name="left_attach">0</property>
+            <property name="top_attach">2</property>
           </packing>
         </child>
       </object>

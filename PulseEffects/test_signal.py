@@ -32,10 +32,30 @@ class TestSignal():
 
         self.audio_src1 = Gst.ElementFactory.make('audiotestsrc', None)
         self.audio_src2 = Gst.ElementFactory.make('audiotestsrc', None)
-        adder = Gst.ElementFactory.make('adder', None)
-        self.bandpass = Gst.ElementFactory.make('audiowsincband', None)
+        mixer = Gst.ElementFactory.make('audiomixer', None)
+        self.bandpass = Gst.ElementFactory.make('audiochebband', None)
         self.audio_sink = Gst.ElementFactory.make('pulsesink', None)
 
+        self.init_elements()
+
+        pipeline.add(self.audio_src1)
+        pipeline.add(self.audio_src2)
+        pipeline.add(mixer)
+        pipeline.add(self.bandpass)
+        pipeline.add(self.audio_sink)
+
+        self.audio_src1.link(mixer)
+        mixer.link(self.bandpass)
+        self.bandpass.link(self.audio_sink)
+
+        self.audio_src2.link(mixer)
+
+        return pipeline
+
+    def init(self):
+        self.init_menu()
+
+    def init_elements(self):
         self.audio_sink.set_property('device', 'PulseEffects')
         self.audio_sink.set_property('volume', 1.0)
         self.audio_sink.set_property('mute', False)
@@ -43,24 +63,10 @@ class TestSignal():
         self.audio_src1.set_property('wave', 'sine')
         self.audio_src2.set_property('wave', 'sine')
 
-        self.bandpass.set_property('length', 10001)
-
-        pipeline.add(self.audio_src1)
-        pipeline.add(self.audio_src2)
-        pipeline.add(adder)
-        pipeline.add(self.bandpass)
-        pipeline.add(self.audio_sink)
-
-        self.audio_src1.link(adder)
-        adder.link(self.bandpass)
-        self.bandpass.link(self.audio_sink)
-
-        self.audio_src2.link(adder)
-
-        return pipeline
-
-    def init(self):
-        self.init_menu()
+        self.bandpass.set_property('mode', 'band-pass')
+        self.bandpass.set_property('type', 1)
+        self.bandpass.set_property('ripple', 0)
+        self.bandpass.set_property('poles', 4)
 
     def set_state(self, state):
         if state == 'ready':
@@ -106,6 +112,10 @@ class TestSignal():
 
     # amp is a rescaling factor so that all frequencies have the same intensity
     def set_freq(self, amp, lower, upper):
+        self.set_state('null')
+
+        self.init_elements()
+
         self.audio_src1.set_property('volume', 10**(-24 / 20) / amp**(0.5))
         self.audio_src2.set_property('volume', 10**(-24 / 20) / amp**(0.5))
 
@@ -120,6 +130,9 @@ class TestSignal():
         else:
             self.bandpass.set_property('lower-frequency', lower)
             self.bandpass.set_property('upper-frequency', upper)
+
+        if self.app.generating_test_signal:
+            self.set_state('playing')
 
     def init_menu(self):
         button = self.builder.get_object('test_signal_popover')
@@ -143,6 +156,7 @@ class TestSignal():
     def on_test_signal_switch_state_set(self, obj, state):
         if state:
             self.app.generating_test_signal = True
+            self.init_elements()
             self.set_state('playing')
         else:
             self.app.generating_test_signal = False
