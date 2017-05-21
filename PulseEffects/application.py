@@ -267,9 +267,8 @@ class Application(Gtk.Application):
 
             equalizer = list(dict(config['equalizer']).values())
 
-            if len(equalizer) == 11:  # one day this check will be removed...
-                equalizer_preamp = float(equalizer.pop(0))
-                self.setup_equalizer.eq_preamp.set_value(equalizer_preamp)
+            equalizer_preamp = float(equalizer.pop(0))
+            self.setup_equalizer.eq_preamp.set_value(equalizer_preamp)
 
             equalizer = [float(v) for v in equalizer]
             self.setup_equalizer.apply_eq_preset(equalizer)

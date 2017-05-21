@@ -93,6 +93,41 @@
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band1_value_changed" swapped="no"/>
   </object>
+  <object class="GtkAdjustment" id="eq_band10">
+    <property name="lower">-24</property>
+    <property name="upper">12</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_eq_band10_value_changed" swapped="no"/>
+  </object>
+  <object class="GtkAdjustment" id="eq_band11">
+    <property name="lower">-24</property>
+    <property name="upper">12</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_eq_band11_value_changed" swapped="no"/>
+  </object>
+  <object class="GtkAdjustment" id="eq_band12">
+    <property name="lower">-24</property>
+    <property name="upper">12</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_eq_band12_value_changed" swapped="no"/>
+  </object>
+  <object class="GtkAdjustment" id="eq_band13">
+    <property name="lower">-24</property>
+    <property name="upper">12</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_eq_band13_value_changed" swapped="no"/>
+  </object>
+  <object class="GtkAdjustment" id="eq_band14">
+    <property name="lower">-24</property>
+    <property name="upper">12</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_eq_band14_value_changed" swapped="no"/>
+  </object>
   <object class="GtkAdjustment" id="eq_band2">
     <property name="lower">-24</property>
     <property name="upper">12</property>
@@ -179,70 +214,6 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
-          <object class="GtkRadioButton" id="eq_ballad">
-            <property name="label" translatable="yes">ballad</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="active">True</property>
-            <property name="draw_indicator">True</property>
-            <property name="group">eq_no_selection</property>
-            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkRadioButton" id="eq_classic">
-            <property name="label" translatable="yes">classic</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="active">True</property>
-            <property name="draw_indicator">True</property>
-            <property name="group">eq_no_selection</property>
-            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkRadioButton" id="eq_club">
-            <property name="label" translatable="yes">club</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="active">True</property>
-            <property name="draw_indicator">True</property>
-            <property name="group">eq_no_selection</property>
-            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkRadioButton" id="eq_dance">
-            <property name="label" translatable="yes">dance</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="active">True</property>
-            <property name="draw_indicator">True</property>
-            <property name="group">eq_no_selection</property>
-            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">1</property>
-          </packing>
-        </child>
-        <child>
           <object class="GtkRadioButton" id="eq_equal_loudness_20">
             <property name="label" translatable="yes">equal loudness 20</property>
             <property name="visible">True</property>
@@ -253,8 +224,8 @@
             <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
           </object>
           <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">1</property>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
           </packing>
         </child>
         <child>
@@ -268,8 +239,8 @@
             <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
           </object>
           <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">1</property>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
           </packing>
         </child>
         <child>
@@ -283,8 +254,8 @@
             <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
           </object>
           <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">2</property>
+            <property name="left_attach">2</property>
+            <property name="top_attach">0</property>
           </packing>
         </child>
         <child>
@@ -298,8 +269,8 @@
             <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
           </object>
           <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">2</property>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
           </packing>
         </child>
         <child>
@@ -313,8 +284,8 @@
             <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
           </object>
           <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">2</property>
+            <property name="left_attach">1</property>
+            <property name="top_attach">1</property>
           </packing>
         </child>
         <child>
@@ -329,136 +300,8 @@
             <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
           </object>
           <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">3</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkRadioButton" id="eq_more_bass_and_treble">
-            <property name="label" translatable="yes">more bass and treble</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="active">True</property>
-            <property name="draw_indicator">True</property>
-            <property name="group">eq_no_selection</property>
-            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">3</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkRadioButton" id="eq_party">
-            <property name="label" translatable="yes">party</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="active">True</property>
-            <property name="draw_indicator">True</property>
-            <property name="group">eq_no_selection</property>
-            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-          </object>
-          <packing>
             <property name="left_attach">2</property>
-            <property name="top_attach">3</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkRadioButton" id="eq_pop">
-            <property name="label" translatable="yes">pop</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="active">True</property>
-            <property name="draw_indicator">True</property>
-            <property name="group">eq_no_selection</property>
-            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">4</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkRadioButton" id="eq_reggae">
-            <property name="label" translatable="yes">reggae</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="active">True</property>
-            <property name="draw_indicator">True</property>
-            <property name="group">eq_no_selection</property>
-            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">4</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkRadioButton" id="eq_rock">
-            <property name="label" translatable="yes">rock</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="active">True</property>
-            <property name="draw_indicator">True</property>
-            <property name="group">eq_no_selection</property>
-            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">4</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkRadioButton" id="eq_ska">
-            <property name="label" translatable="yes">ska</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="active">True</property>
-            <property name="draw_indicator">True</property>
-            <property name="group">eq_no_selection</property>
-            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">5</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkRadioButton" id="eq_soft">
-            <property name="label" translatable="yes">soft</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="active">True</property>
-            <property name="draw_indicator">True</property>
-            <property name="group">eq_no_selection</property>
-            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">5</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkRadioButton" id="eq_techno">
-            <property name="label" translatable="yes">techno</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="active">True</property>
-            <property name="draw_indicator">True</property>
-            <property name="group">eq_no_selection</property>
-            <signal name="toggled" handler="on_eq_preset_toggled" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">5</property>
+            <property name="top_attach">1</property>
           </packing>
         </child>
       </object>
@@ -786,7 +629,7 @@
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
                             <property name="halign">start</property>
-                            <property name="label">1.9 kHz</property>
+                            <property name="label">2 kHz</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -807,7 +650,7 @@
                         <property name="sensitive">False</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
-                        <property name="label">3.8 kHz</property>
+                        <property name="label">4 kHz</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -833,7 +676,7 @@
                         <property name="sensitive">False</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
-                        <property name="label">7.5 kHz</property>
+                        <property name="label">8 kHz</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -847,7 +690,7 @@
                         <property name="sensitive">False</property>
                         <property name="can_focus">False</property>
                         <property name="halign">end</property>
-                        <property name="label">15 kHz</property>
+                        <property name="label">16 kHz</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -2110,7 +1953,6 @@
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="column_spacing">8</property>
-                    <property name="column_homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -2143,7 +1985,7 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label">29Hz</property>
+                        <property name="label">26Hz</property>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -2158,7 +2000,7 @@
                         <property name="orientation">vertical</property>
                         <property name="adjustment">eq_band0</property>
                         <property name="inverted">True</property>
-                        <property name="round_digits">1</property>
+                        <property name="round_digits">0</property>
                         <property name="digits">0</property>
                         <property name="value_pos">bottom</property>
                       </object>
@@ -2171,7 +2013,7 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label">59Hz</property>
+                        <property name="label">41Hz</property>
                       </object>
                       <packing>
                         <property name="left_attach">2</property>
@@ -2186,7 +2028,7 @@
                         <property name="orientation">vertical</property>
                         <property name="adjustment">eq_band1</property>
                         <property name="inverted">True</property>
-                        <property name="round_digits">1</property>
+                        <property name="round_digits">0</property>
                         <property name="digits">0</property>
                         <property name="value_pos">bottom</property>
                       </object>
@@ -2199,7 +2041,7 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label">119Hz</property>
+                        <property name="label">65Hz</property>
                       </object>
                       <packing>
                         <property name="left_attach">3</property>
@@ -2214,7 +2056,7 @@
                         <property name="orientation">vertical</property>
                         <property name="adjustment">eq_band2</property>
                         <property name="inverted">True</property>
-                        <property name="round_digits">1</property>
+                        <property name="round_digits">0</property>
                         <property name="digits">0</property>
                         <property name="value_pos">bottom</property>
                       </object>
@@ -2227,7 +2069,7 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label">237Hz</property>
+                        <property name="label">103Hz</property>
                       </object>
                       <packing>
                         <property name="left_attach">4</property>
@@ -2242,7 +2084,7 @@
                         <property name="orientation">vertical</property>
                         <property name="adjustment">eq_band3</property>
                         <property name="inverted">True</property>
-                        <property name="round_digits">1</property>
+                        <property name="round_digits">0</property>
                         <property name="digits">0</property>
                         <property name="value_pos">bottom</property>
                       </object>
@@ -2255,7 +2097,7 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label">474Hz</property>
+                        <property name="label">163Hz</property>
                       </object>
                       <packing>
                         <property name="left_attach">5</property>
@@ -2270,7 +2112,7 @@
                         <property name="orientation">vertical</property>
                         <property name="adjustment">eq_band4</property>
                         <property name="inverted">True</property>
-                        <property name="round_digits">1</property>
+                        <property name="round_digits">0</property>
                         <property name="digits">0</property>
                         <property name="value_pos">bottom</property>
                       </object>
@@ -2283,7 +2125,7 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label">947Hz</property>
+                        <property name="label">259Hz</property>
                       </object>
                       <packing>
                         <property name="left_attach">6</property>
@@ -2298,7 +2140,7 @@
                         <property name="orientation">vertical</property>
                         <property name="adjustment">eq_band5</property>
                         <property name="inverted">True</property>
-                        <property name="round_digits">1</property>
+                        <property name="round_digits">0</property>
                         <property name="digits">0</property>
                         <property name="value_pos">bottom</property>
                       </object>
@@ -2311,7 +2153,7 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label">1.9kHz</property>
+                        <property name="label">410Hz</property>
                       </object>
                       <packing>
                         <property name="left_attach">7</property>
@@ -2339,7 +2181,7 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label">3.8kHz</property>
+                        <property name="label">649Hz</property>
                       </object>
                       <packing>
                         <property name="left_attach">8</property>
@@ -2367,7 +2209,7 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label">7.5kHz</property>
+                        <property name="label">1kHz</property>
                       </object>
                       <packing>
                         <property name="left_attach">9</property>
@@ -2395,7 +2237,7 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label">15kHz</property>
+                        <property name="label">1.6kHz</property>
                       </object>
                       <packing>
                         <property name="left_attach">10</property>
@@ -2416,6 +2258,146 @@
                       </object>
                       <packing>
                         <property name="left_attach">10</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkAccelLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label">2.6kHz</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">11</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkAccelLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label">4.1kHz</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">12</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkAccelLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label">6.5kHz</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">13</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkAccelLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label">10kHz</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">14</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkAccelLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label">16kHz</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">15</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band10</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">11</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band11</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">1</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">12</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band12</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">13</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band13</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">14</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band14</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">15</property>
                         <property name="top_attach">1</property>
                       </packing>
                     </child>

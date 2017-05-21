@@ -38,7 +38,7 @@ class GstEffects(GObject.GObject):
         self.old_limiter_attenuation = 0
         self.old_compressor_gain_reduction = 0
         self.rate = sampling_rate
-        self.max_spectrum_freq = 15000  # Hz
+        self.max_spectrum_freq = 16000  # Hz
         self.spectrum_nbands = 400
         self.spectrum_freqs = []
         self.spectrum_nfreqs = 0
@@ -70,7 +70,7 @@ class GstEffects(GObject.GObject):
 
         self.equalizer_preamp = Gst.ElementFactory.make('volume', None)
 
-        self.equalizer = Gst.ElementFactory.make('equalizer-10bands', None)
+        self.equalizer = Gst.ElementFactory.make('equalizer-nbands', None)
 
         self.audio_sink = Gst.ElementFactory.make('pulsesink', None)
 
@@ -106,6 +106,31 @@ class GstEffects(GObject.GObject):
         self.audio_sink.set_property('mute', False)
 
         autovolume.set_property('interval', 2000000000)  # 2 seconds
+
+        self.equalizer.set_property('num-bands', 15)
+
+        self.eq_band0 = self.equalizer.get_child_by_index(0)
+        self.eq_band1 = self.equalizer.get_child_by_index(1)
+        self.eq_band2 = self.equalizer.get_child_by_index(2)
+        self.eq_band3 = self.equalizer.get_child_by_index(3)
+        self.eq_band4 = self.equalizer.get_child_by_index(4)
+        self.eq_band5 = self.equalizer.get_child_by_index(5)
+        self.eq_band6 = self.equalizer.get_child_by_index(6)
+        self.eq_band7 = self.equalizer.get_child_by_index(7)
+        self.eq_band8 = self.equalizer.get_child_by_index(8)
+        self.eq_band9 = self.equalizer.get_child_by_index(9)
+        self.eq_band10 = self.equalizer.get_child_by_index(10)
+        self.eq_band11 = self.equalizer.get_child_by_index(11)
+        self.eq_band12 = self.equalizer.get_child_by_index(12)
+        self.eq_band13 = self.equalizer.get_child_by_index(13)
+        self.eq_band14 = self.equalizer.get_child_by_index(14)
+
+        # It seems to me that there is a bug in the low shelf filter.
+        # When we increase its gain higher frequencies are attenuated.
+        # Setting the first band to peak type instead of shelf fixes this
+
+        self.eq_band0.set_property('type', 0)  # 0: peak type
+        self.eq_band14.set_property('type', 0)  # 0: peak type
 
         spectrum.set_property('bands', self.spectrum_nbands)
         spectrum.set_property('threshold', self.spectrum_threshold)
@@ -146,6 +171,25 @@ class GstEffects(GObject.GObject):
         spectrum_src_type.connect("have-type", self.media_probe)
 
         return pipeline
+
+    def print_eq_freqs(self):
+        print(self.eq_band0.get_property('freq'))
+        print(self.eq_band1.get_property('freq'))
+        print(self.eq_band2.get_property('freq'))
+        print(self.eq_band3.get_property('freq'))
+        print(self.eq_band4.get_property('freq'))
+        print(self.eq_band5.get_property('freq'))
+        print(self.eq_band6.get_property('freq'))
+        print(self.eq_band7.get_property('freq'))
+        print(self.eq_band8.get_property('freq'))
+        print(self.eq_band9.get_property('freq'))
+        print(self.eq_band10.get_property('freq'))
+        print(self.eq_band11.get_property('freq'))
+        print(self.eq_band12.get_property('freq'))
+        print(self.eq_band13.get_property('freq'))
+        print(self.eq_band14.get_property('freq'))
+
+        # print(self.eq_band0.get_property('bandwidth'))
 
     def set_state(self, state):
         if state == 'ready':
@@ -362,31 +406,46 @@ class GstEffects(GObject.GObject):
         self.equalizer_preamp.set_property('volume', value)
 
     def set_eq_band0(self, value):
-        self.equalizer.set_property('band0', value)
+        self.eq_band0.set_property('gain', value)
 
     def set_eq_band1(self, value):
-        self.equalizer.set_property('band1', value)
+        self.eq_band1.set_property('gain', value)
 
     def set_eq_band2(self, value):
-        self.equalizer.set_property('band2', value)
+        self.eq_band2.set_property('gain', value)
 
     def set_eq_band3(self, value):
-        self.equalizer.set_property('band3', value)
+        self.eq_band3.set_property('gain', value)
 
     def set_eq_band4(self, value):
-        self.equalizer.set_property('band4', value)
+        self.eq_band4.set_property('gain', value)
 
     def set_eq_band5(self, value):
-        self.equalizer.set_property('band5', value)
+        self.eq_band5.set_property('gain', value)
 
     def set_eq_band6(self, value):
-        self.equalizer.set_property('band6', value)
+        self.eq_band6.set_property('gain', value)
 
     def set_eq_band7(self, value):
-        self.equalizer.set_property('band7', value)
+        self.eq_band7.set_property('gain', value)
 
     def set_eq_band8(self, value):
-        self.equalizer.set_property('band8', value)
+        self.eq_band8.set_property('gain', value)
 
     def set_eq_band9(self, value):
-        self.equalizer.set_property('band9', value)
+        self.eq_band9.set_property('gain', value)
+
+    def set_eq_band10(self, value):
+        self.eq_band10.set_property('gain', value)
+
+    def set_eq_band11(self, value):
+        self.eq_band11.set_property('gain', value)
+
+    def set_eq_band12(self, value):
+        self.eq_band12.set_property('gain', value)
+
+    def set_eq_band13(self, value):
+        self.eq_band13.set_property('gain', value)
+
+    def set_eq_band14(self, value):
+        self.eq_band14.set_property('gain', value)

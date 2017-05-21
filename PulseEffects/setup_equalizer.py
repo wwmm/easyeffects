@@ -25,6 +25,11 @@ class SetupEqualizer():
             'on_eq_band7_value_changed': self.on_eq_band7_value_changed,
             'on_eq_band8_value_changed': self.on_eq_band8_value_changed,
             'on_eq_band9_value_changed': self.on_eq_band9_value_changed,
+            'on_eq_band10_value_changed': self.on_eq_band10_value_changed,
+            'on_eq_band11_value_changed': self.on_eq_band11_value_changed,
+            'on_eq_band12_value_changed': self.on_eq_band12_value_changed,
+            'on_eq_band13_value_changed': self.on_eq_band13_value_changed,
+            'on_eq_band14_value_changed': self.on_eq_band14_value_changed,
             'on_eq_preset_toggled': self.on_eq_preset_toggled,
         }
 
@@ -41,6 +46,11 @@ class SetupEqualizer():
         self.eq_band7 = self.builder.get_object('eq_band7')
         self.eq_band8 = self.builder.get_object('eq_band8')
         self.eq_band9 = self.builder.get_object('eq_band9')
+        self.eq_band10 = self.builder.get_object('eq_band10')
+        self.eq_band11 = self.builder.get_object('eq_band11')
+        self.eq_band12 = self.builder.get_object('eq_band12')
+        self.eq_band13 = self.builder.get_object('eq_band13')
+        self.eq_band14 = self.builder.get_object('eq_band14')
 
         self.eq_left_level = self.builder.get_object('eq_left_level')
         self.eq_right_level = self.builder.get_object('eq_right_level')
@@ -73,6 +83,13 @@ class SetupEqualizer():
 
     def init(self):
         self.eq_band_user = self.settings.get_value('equalizer-user').unpack()
+
+        # One day this check will be removed
+        if len(self.eq_band_user) == 10:
+            self.eq_band_user = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            out = GLib.Variant('ad', self.eq_band_user)
+            self.settings.set_value('equalizer-user', out)
+
         self.eq_preamp_user = self.settings.get_value(
             'equalizer-preamp').unpack()
 
@@ -94,6 +111,11 @@ class SetupEqualizer():
         self.gst.set_eq_band7(self.eq_band_user[7])
         self.gst.set_eq_band8(self.eq_band_user[8])
         self.gst.set_eq_band9(self.eq_band_user[9])
+        self.gst.set_eq_band10(self.eq_band_user[10])
+        self.gst.set_eq_band11(self.eq_band_user[11])
+        self.gst.set_eq_band12(self.eq_band_user[12])
+        self.gst.set_eq_band13(self.eq_band_user[13])
+        self.gst.set_eq_band14(self.eq_band_user[14])
 
     def on_new_level_after_eq(self, obj, left, right):
         if self.app.ui_initialized:
@@ -124,24 +146,17 @@ class SetupEqualizer():
         self.eq_band7.set_value(values[7])
         self.eq_band8.set_value(values[8])
         self.eq_band9.set_value(values[9])
+        self.eq_band10.set_value(values[10])
+        self.eq_band11.set_value(values[11])
+        self.eq_band12.set_value(values[12])
+        self.eq_band13.set_value(values[13])
+        self.eq_band14.set_value(values[14])
 
     def on_eq_preset_toggled(self, obj):
         if obj.get_active():
             obj_id = Gtk.Buildable.get_name(obj)
 
-            if obj_id == 'eq_ballad':
-                value = self.settings.get_value('equalizer-ballad')
-                self.apply_eq_preset(value)
-            elif obj_id == 'eq_classic':
-                value = self.settings.get_value('equalizer-classic')
-                self.apply_eq_preset(value)
-            elif obj_id == 'eq_club':
-                value = self.settings.get_value('equalizer-club')
-                self.apply_eq_preset(value)
-            elif obj_id == 'eq_dance':
-                value = self.settings.get_value('equalizer-dance')
-                self.apply_eq_preset(value)
-            elif obj_id == 'eq_equal_loudness_20':
+            if obj_id == 'eq_equal_loudness_20':
                 value = self.settings.get_value('equalizer-equal-loudness-20')
                 self.apply_eq_preset(value)
             elif obj_id == 'eq_equal_loudness_40':
@@ -158,34 +173,6 @@ class SetupEqualizer():
                 self.apply_eq_preset(value)
             elif obj_id == 'eq_flat':
                 value = self.settings.get_value('equalizer-flat')
-                self.apply_eq_preset(value)
-            elif obj_id == 'eq_default':
-                value = self.settings.get_value('equalizer-default')
-                self.apply_eq_preset(value)
-            elif obj_id == 'eq_more_bass_and_treble':
-                value = self.settings.get_value(
-                    'equalizer-more-bass-and-treble')
-                self.apply_eq_preset(value)
-            elif obj_id == 'eq_party':
-                value = self.settings.get_value('equalizer-party')
-                self.apply_eq_preset(value)
-            elif obj_id == 'eq_pop':
-                value = self.settings.get_value('equalizer-pop')
-                self.apply_eq_preset(value)
-            elif obj_id == 'eq_reggae':
-                value = self.settings.get_value('equalizer-reggae')
-                self.apply_eq_preset(value)
-            elif obj_id == 'eq_rock':
-                value = self.settings.get_value('equalizer-rock')
-                self.apply_eq_preset(value)
-            elif obj_id == 'eq_ska':
-                value = self.settings.get_value('equalizer-ska')
-                self.apply_eq_preset(value)
-            elif obj_id == 'eq_soft':
-                value = self.settings.get_value('equalizer-soft')
-                self.apply_eq_preset(value)
-            elif obj_id == 'eq_techno':
-                value = self.settings.get_value('equalizer-techno')
                 self.apply_eq_preset(value)
 
     def save_eq_user(self, idx, value):
@@ -254,3 +241,28 @@ class SetupEqualizer():
         value = obj.get_value()
         self.gst.set_eq_band9(value)
         self.save_eq_user(9, value)
+
+    def on_eq_band10_value_changed(self, obj):
+        value = obj.get_value()
+        self.gst.set_eq_band10(value)
+        self.save_eq_user(10, value)
+
+    def on_eq_band11_value_changed(self, obj):
+        value = obj.get_value()
+        self.gst.set_eq_band11(value)
+        self.save_eq_user(11, value)
+
+    def on_eq_band12_value_changed(self, obj):
+        value = obj.get_value()
+        self.gst.set_eq_band12(value)
+        self.save_eq_user(12, value)
+
+    def on_eq_band13_value_changed(self, obj):
+        value = obj.get_value()
+        self.gst.set_eq_band13(value)
+        self.save_eq_user(13, value)
+
+    def on_eq_band14_value_changed(self, obj):
+        value = obj.get_value()
+        self.gst.set_eq_band14(value)
+        self.save_eq_user(14, value)
