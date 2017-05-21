@@ -227,7 +227,12 @@ class Application(Gtk.Application):
                                    'band6': str(equalizer[6]),
                                    'band7': str(equalizer[7]),
                                    'band8': str(equalizer[8]),
-                                   'band9': str(equalizer[9])}
+                                   'band9': str(equalizer[9]),
+                                   'band10': str(equalizer[10]),
+                                   'band11': str(equalizer[11]),
+                                   'band12': str(equalizer[12]),
+                                   'band13': str(equalizer[13]),
+                                   'band14': str(equalizer[14])}
 
             config.write(output)
 
