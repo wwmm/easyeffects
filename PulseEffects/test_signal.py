@@ -137,7 +137,7 @@ class TestSignal():
     def init_menu(self):
         button = self.builder.get_object('test_signal_popover')
         menu = self.builder.get_object('test_signal_menu')
-        default = self.builder.get_object('test_signal_band5')
+        default = self.builder.get_object('test_signal_band8')
 
         default.set_active(True)
 
@@ -167,22 +167,32 @@ class TestSignal():
             obj_id = Gtk.Buildable.get_name(obj)
 
             if obj_id == 'test_signal_band0':
-                self.set_freq(0.03, 28, 30)
+                self.set_freq(1, 25, 27)  # amp scaling factor, freq1, freq2
             elif obj_id == 'test_signal_band1':
-                self.set_freq(0.06, 58, 60)
+                self.set_freq(1.58, 40, 42)
             elif obj_id == 'test_signal_band2':
-                self.set_freq(0.125, 118, 120)
+                self.set_freq(2.5, 64, 66)
             elif obj_id == 'test_signal_band3':
-                self.set_freq(0.25, 236, 238)
+                self.set_freq(3.96, 102, 104)
             elif obj_id == 'test_signal_band4':
-                self.set_freq(0.5, 473, 475)
+                self.set_freq(6.27, 162, 164)
             elif obj_id == 'test_signal_band5':
-                self.set_freq(1, 946, 948)
+                self.set_freq(9.96, 258, 260)
             elif obj_id == 'test_signal_band6':
-                self.set_freq(2, 1888, 1890)
+                self.set_freq(15.77, 409, 411)
             elif obj_id == 'test_signal_band7':
-                self.set_freq(4, 3769, 3771)
+                self.set_freq(24.96, 648, 650)
             elif obj_id == 'test_signal_band8':
-                self.set_freq(8, 7522, 7524)
+                self.set_freq(39.58, 1028, 1030)
             elif obj_id == 'test_signal_band9':
-                self.set_freq(16, 15010, 15012)
+                self.set_freq(62.73, 1630, 1632)
+            elif obj_id == 'test_signal_band10':
+                self.set_freq(99.42, 2584, 2586)
+            elif obj_id == 'test_signal_band11':
+                self.set_freq(157.58, 4096, 4098)
+            elif obj_id == 'test_signal_band12':
+                self.set_freq(249.73, 6492, 6494)
+            elif obj_id == 'test_signal_band13':
+                self.set_freq(395.81, 10290, 10292)
+            elif obj_id == 'test_signal_band14':
+                self.set_freq(627.31, 16309, 16311)

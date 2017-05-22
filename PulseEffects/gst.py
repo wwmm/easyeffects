@@ -126,8 +126,10 @@ class GstEffects(GObject.GObject):
         self.eq_band14 = self.equalizer.get_child_by_index(14)
 
         # It seems to me that there is a bug in the low shelf filter.
-        # When we increase its gain higher frequencies are attenuated.
-        # Setting the first band to peak type instead of shelf fixes this
+        # When we increase the lower shelf gain higher frequencies
+        # are attenuated. Setting the first band to peak type instead of
+        # shelf fixes this. I didn't notice this with the higher shelf but
+        # higher frequency sound sounds better setting the last band to peak
 
         self.eq_band0.set_property('type', 0)  # 0: peak type
         self.eq_band14.set_property('type', 0)  # 0: peak type
