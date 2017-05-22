@@ -1953,6 +1953,7 @@
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="column_spacing">8</property>
+                    <property name="column_homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
