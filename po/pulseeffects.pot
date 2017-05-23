@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-18 15:57-0300\n"
+"POT-Creation-Date: 2017-05-23 12:53-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,200 +21,156 @@ msgstr ""
 msgid "no compression"
 msgstr ""
 
-#: ../PulseEffects/ui/main_ui.glade:169 ../PulseEffects/ui/main_ui.glade:605
+#: ../PulseEffects/ui/main_ui.glade:204 ../PulseEffects/ui/main_ui.glade:448
 msgid "Presets"
 msgstr ""
 
-#: ../PulseEffects/ui/main_ui.glade:183
-msgid "ballad"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:199
-msgid "classic"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:215
-msgid "club"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:231
-msgid "dance"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:247
+#: ../PulseEffects/ui/main_ui.glade:218
 msgid "equal loudness 20"
 msgstr ""
 
-#: ../PulseEffects/ui/main_ui.glade:262
+#: ../PulseEffects/ui/main_ui.glade:233
 msgid "equal loudness 40"
 msgstr ""
 
-#: ../PulseEffects/ui/main_ui.glade:277
+#: ../PulseEffects/ui/main_ui.glade:248
 msgid "equal loudness 60"
 msgstr ""
 
-#: ../PulseEffects/ui/main_ui.glade:292
+#: ../PulseEffects/ui/main_ui.glade:263
 msgid "equal loudness 80"
 msgstr ""
 
-#: ../PulseEffects/ui/main_ui.glade:307
+#: ../PulseEffects/ui/main_ui.glade:278
 msgid "equal loudness 100"
 msgstr ""
 
-#: ../PulseEffects/ui/main_ui.glade:322
+#: ../PulseEffects/ui/main_ui.glade:293
 msgid "flat"
 msgstr ""
 
-#: ../PulseEffects/ui/main_ui.glade:338
-msgid "more bass and treble"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:354
-msgid "party"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:370
-msgid "pop"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:386
-msgid "reggae"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:402
-msgid "rock"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:418
-msgid "ska"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:434
-msgid "soft"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:450
-msgid "techno"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:546
+#: ../PulseEffects/ui/main_ui.glade:389
 msgid "default"
 msgstr ""
 
-#: ../PulseEffects/ui/main_ui.glade:619
+#: ../PulseEffects/ui/main_ui.glade:462
 msgid "cathedral"
 msgstr ""
 
-#: ../PulseEffects/ui/main_ui.glade:635
+#: ../PulseEffects/ui/main_ui.glade:478
 msgid "engine room"
 msgstr ""
 
-#: ../PulseEffects/ui/main_ui.glade:651
+#: ../PulseEffects/ui/main_ui.glade:494
 msgid "no reverberation"
 msgstr ""
 
-#: ../PulseEffects/ui/main_ui.glade:667
+#: ../PulseEffects/ui/main_ui.glade:510
 msgid "small room"
 msgstr ""
 
-#: ../PulseEffects/ui/main_ui.glade:911
-msgid "Input Limiter"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:951
-msgid "Input Gain [dB]"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:978
-msgid "Limit [dB]"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:1004
-msgid "Release [s]"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:1030
-msgid "Input"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:1128 ../PulseEffects/ui/main_ui.glade:1605
-#: ../PulseEffects/ui/main_ui.glade:1883 ../PulseEffects/ui/main_ui.glade:2396
-msgid "Output"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:1226
-msgid "Attenuation"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:1312
-msgid "Compressor"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:1350
-msgid "rms"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:1366
-msgid "peak"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:1398
-msgid "Attack [ms]"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:1424
-msgid "Release [ms]"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:1450
-msgid "Threshold [dB]"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:1476
-msgid "Ratio [n:1]"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:1502
-msgid "Knee [dB]"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:1528
-msgid "Makeup [dB]"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:1554
-msgid "Gain Reduction"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:1739
-msgid "Reverberation"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:1779
-msgid "Room Size"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:1805
-msgid "Damping"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:1831
-msgid "Width"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:1857
-msgid "Level"
-msgstr ""
-
-#: ../PulseEffects/ui/main_ui.glade:2049
+#: ../PulseEffects/ui/main_ui.glade:834
 msgid "Equalizer"
 msgstr ""
 
-#: ../PulseEffects/ui/main_ui.glade:2076
+#: ../PulseEffects/ui/main_ui.glade:862
 msgid "Pre"
 msgstr ""
 
-#: ../PulseEffects/ui/main_ui.glade:2574
+#: ../PulseEffects/ui/main_ui.glade:1323 ../PulseEffects/ui/main_ui.glade:1690
+#: ../PulseEffects/ui/main_ui.glade:2014 ../PulseEffects/ui/main_ui.glade:2499
+msgid "Output"
+msgstr ""
+
+#: ../PulseEffects/ui/main_ui.glade:1467
+msgid "Input Limiter"
+msgstr ""
+
+#: ../PulseEffects/ui/main_ui.glade:1507
+msgid "Input Gain [dB]"
+msgstr ""
+
+#: ../PulseEffects/ui/main_ui.glade:1534
+msgid "Limit [dB]"
+msgstr ""
+
+#: ../PulseEffects/ui/main_ui.glade:1561
+msgid "Release [s]"
+msgstr ""
+
+#: ../PulseEffects/ui/main_ui.glade:1589
+msgid "Input"
+msgstr ""
+
+#: ../PulseEffects/ui/main_ui.glade:1791
+msgid "Attenuation"
+msgstr ""
+
+#: ../PulseEffects/ui/main_ui.glade:1865
+msgid "Reverberation"
+msgstr ""
+
+#: ../PulseEffects/ui/main_ui.glade:1905
+msgid "Room Size"
+msgstr ""
+
+#: ../PulseEffects/ui/main_ui.glade:1932
+msgid "Damping"
+msgstr ""
+
+#: ../PulseEffects/ui/main_ui.glade:1959
+msgid "Width"
+msgstr ""
+
+#: ../PulseEffects/ui/main_ui.glade:1986
+msgid "Level"
+msgstr ""
+
+#: ../PulseEffects/ui/main_ui.glade:2170
+msgid "Compressor"
+msgstr ""
+
+#: ../PulseEffects/ui/main_ui.glade:2215
+msgid "Threshold [dB]"
+msgstr ""
+
+#: ../PulseEffects/ui/main_ui.glade:2242
+msgid "Release [ms]"
+msgstr ""
+
+#: ../PulseEffects/ui/main_ui.glade:2269
+msgid "Attack [ms]"
+msgstr ""
+
+#: ../PulseEffects/ui/main_ui.glade:2298
+msgid "rms"
+msgstr ""
+
+#: ../PulseEffects/ui/main_ui.glade:2314
+msgid "peak"
+msgstr ""
+
+#: ../PulseEffects/ui/main_ui.glade:2341
+msgid "Sensing Type"
+msgstr ""
+
+#: ../PulseEffects/ui/main_ui.glade:2353
+msgid "Ratio [n:1]"
+msgstr ""
+
+#: ../PulseEffects/ui/main_ui.glade:2391
+msgid "Knee [dB]"
+msgstr ""
+
+#: ../PulseEffects/ui/main_ui.glade:2418
+msgid "Makeup [dB]"
+msgstr ""
+
+#: ../PulseEffects/ui/main_ui.glade:2446
+msgid "Gain Reduction"
+msgstr ""
+
+#: ../PulseEffects/ui/main_ui.glade:2659
 msgid "Test Signal"
 msgstr ""
 

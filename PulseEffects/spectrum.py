@@ -67,7 +67,7 @@ class Spectrum():
                                       bar_height)
 
             color = style.lookup_color('theme_selected_bg_color')[1]
-            ctx.set_source_rgba(color.red, color.green, color.blue, 1.0)
+            ctx.set_source_rgba(color.red, color.green, color.blue, 0.75)
             ctx.stroke()
 
     def on_new_spectrum(self, obj, magnitudes):
