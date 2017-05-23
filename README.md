@@ -12,7 +12,7 @@ Effects order:
 1. Fast Lookahead Limiter
 2. SC4 Compressor
 3. Gstreamer Freeverb
-4. Gstreamer 10 Bands Equalizer
+4. Gstreamer Equalizer
 
 Required libraries:
 
