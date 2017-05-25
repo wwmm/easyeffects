@@ -42,7 +42,7 @@ class GstEffects(GObject.GObject):
         self.spectrum_nbands = 400
         self.spectrum_freqs = []
         self.spectrum_nfreqs = 0
-        self.spectrum_threshold = -120  # dB
+        self.spectrum_threshold = -100  # dB
 
         self.autovolume_enabled = False
 
@@ -339,9 +339,11 @@ class GstEffects(GObject.GObject):
 
                     magnitudes = [float(v) for v in magnitudes]
 
-                    min_value = min(magnitudes)
+                    # min_value = min(magnitudes)
 
-                    magnitudes = [v - min_value for v in magnitudes]
+                    # magnitudes = [v - min_value for v in magnitudes]
+
+                    magnitudes = [(v + 100) / 100 for v in magnitudes]
 
                     self.emit('new_spectrum', magnitudes)
         return True

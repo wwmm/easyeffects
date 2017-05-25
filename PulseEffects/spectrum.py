@@ -56,15 +56,12 @@ class Spectrum():
 
             dx = width / n_bars
 
-            max_mag = max(self.spectrum_magnitudes)
+            for n, mag in enumerate(self.spectrum_magnitudes):
+                bar_height = mag * height
 
-            if max_mag > 0:
-                for n, mag in enumerate(self.spectrum_magnitudes):
-                    if mag > 0:
-                        bar_height = mag * height / 100
-
-                        ctx.rectangle(n * dx, height - bar_height, dx,
-                                      bar_height)
+                if bar_height > 0:
+                    ctx.rectangle(n * dx, height - bar_height, dx,
+                                  bar_height)
 
             color = style.lookup_color('theme_selected_bg_color')[1]
             ctx.set_source_rgba(color.red, color.green, color.blue, 0.75)
