@@ -339,13 +339,10 @@ class GstEffects(GObject.GObject):
 
                     magnitudes = [float(v) for v in magnitudes]
 
-                    # min_value = min(magnitudes)
+                    if max(magnitudes) > -100:
+                        magnitudes = [(v + 100) / 100 for v in magnitudes]
 
-                    # magnitudes = [v - min_value for v in magnitudes]
-
-                    magnitudes = [(v + 100) / 100 for v in magnitudes]
-
-                    self.emit('new_spectrum', magnitudes)
+                        self.emit('new_spectrum', magnitudes)
         return True
 
     def set_output_sink_name(self, name):
