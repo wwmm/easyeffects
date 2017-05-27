@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import logging
+
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
@@ -14,6 +16,8 @@ class ListApps():
         self.gst = app.gst
 
         self.handlers = {}
+
+        self.log = logging.getLogger('PulseEffects')
 
         self.pm.connect('sink_inputs_changed', self.on_sink_inputs_changed)
 
@@ -84,6 +88,7 @@ class ListApps():
             self.build_apps_list()
 
         if len(self.pm.sink_inputs) > 0 or self.app.generating_test_signal:
-            self.gst.set_state('playing')
+            if not self.gst.is_playing:
+                self.gst.set_state('playing')
         else:
             self.gst.set_state('paused')

@@ -47,6 +47,7 @@ class GstEffects(GObject.GObject):
         self.spectrum_threshold = -100  # dB
 
         self.autovolume_enabled = False
+        self.is_playing = False
 
         self.log = logging.getLogger('PulseEffects')
 
@@ -94,12 +95,7 @@ class GstEffects(GObject.GObject):
 
         spectrum = Gst.ElementFactory.make('spectrum', 'spectrum')
 
-        stream_properties = Gst.structure_from_string(
-            'props,media.role=production')
-
         self.audio_src.set_property('client-name', 'PulseEffects')
-        self.audio_src.set_property('device', 'PulseEffects.monitor')
-        self.audio_src.set_property('stream-properties', stream_properties[0])
         self.audio_src.set_property('volume', 1.0)
         self.audio_src.set_property('mute', False)
         self.audio_src.set_property('provide-clock', False)
@@ -207,36 +203,36 @@ class GstEffects(GObject.GObject):
 
             if s == Gst.StateChangeReturn.FAILURE:
                 self.log.critical("Could not set Gstreamer pipeline to ready")
-
                 return False
             else:
+                self.is_playing = False
                 return True
         elif state == 'paused':
             s = self.pipeline.set_state(Gst.State.PAUSED)
 
             if s == Gst.StateChangeReturn.FAILURE:
                 self.log.error("Failed to pause Gstreamer pipeline")
-
                 return False
             else:
+                self.is_playing = False
                 return True
         elif state == 'playing':
             s = self.pipeline.set_state(Gst.State.PLAYING)
 
             if s == Gst.StateChangeReturn.FAILURE:
                 self.log.critical("Playing Gstreamer pipeline has failed")
-
                 return False
             else:
+                self.is_playing = True
                 return True
         elif state == 'null':
             s = self.pipeline.set_state(Gst.State.NULL)
 
             if s == Gst.StateChangeReturn.FAILURE:
                 self.log.error("Could not stop Gstreamer pipeline")
-
                 return False
             else:
+                self.is_playing = False
                 return True
 
     def media_probe(self, obj, arg0, caps):
@@ -353,11 +349,17 @@ class GstEffects(GObject.GObject):
                         self.emit('new_spectrum', magnitudes)
         return True
 
+    def set_source_monitor_name(self, name):
+        self.audio_src.set_property('device', name)
+
     def set_output_sink_name(self, name):
         self.audio_sink.set_property('device', name)
 
-    def get_src_monitor(self):
+    def get_configured_src_device(self):
         return self.audio_src.get_property('device')
+
+    def get_current_src_device(self):
+        return self.audio_src.get_property('current-device')
 
     def init_buffer_time(self, value):
         self.audio_src.set_property('buffer-time', value)

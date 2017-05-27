@@ -50,6 +50,7 @@ class Application(Gtk.Application):
 
         self.gst = GstEffects(self.pm.default_sink_rate)
 
+        self.gst.set_source_monitor_name(self.pm.sink_monitor_name)
         self.gst.set_output_sink_name(self.pm.default_sink_name)
 
         # creating user presets folder
@@ -116,9 +117,6 @@ class Application(Gtk.Application):
 
         # now that all elements were initialized we set pipeline to ready
         self.gst.set_state('ready')
-
-        self.log.info('pipeline was configured to process audio from the ' +
-                      'sink monitor: ' + self.gst.get_src_monitor())
 
     def do_activate(self):
         self.window.present()

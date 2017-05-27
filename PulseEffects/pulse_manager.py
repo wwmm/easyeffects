@@ -21,6 +21,7 @@ class PulseManager(GObject.GObject):
         self.sink_is_loaded = False
         self.sink_owner_module = -1
         self.sink_idx = -1
+        self.sink_monitor_name = ''
         self.sink_inputs = []
 
         self.log = logging.getLogger('PulseEffects')
@@ -80,8 +81,9 @@ class PulseManager(GObject.GObject):
 
         p.pa_operation_unref(o)
 
-        self.log.info('default sink sampling rate: ' +
-                      str(self.default_sink_rate) + ' Hz')
+        self.log.info('default pulseaudio sink sampling rate: ' +
+                      str(self.default_sink_rate) +
+                      ' Hz. We will use the same rate.')
 
         # load source sink
         self.load_sink()
@@ -138,6 +140,9 @@ class PulseManager(GObject.GObject):
             if info:
                 self.sink_idx = info.contents.index
                 self.sink_owner_module = info.contents.owner_module
+
+                monitor_name = info.contents.monitor_source_name.decode()
+                self.sink_monitor_name = monitor_name
         elif eol == 1:
             self.sink_is_loaded = True
 
@@ -217,13 +222,11 @@ class PulseManager(GObject.GObject):
         self.load_sink_info()
 
         if not self.sink_is_loaded:
-            self.log.info('loading sink...')
+            self.log.info('loading Pulseeffects sink...')
 
             args = []
 
             sink_properties = 'device.description=\'PulseEffects\''
-            # sink_properties += 'device.class=\'sound\''
-            # sink_properties += 'device.icon_name=\'audio-card\''
 
             args.append('sink_name=' + sink_name)
             args.append('sink_properties=' + sink_properties)
@@ -235,7 +238,7 @@ class PulseManager(GObject.GObject):
             module = b'module-null-sink'
 
             def module_idx(context, idx, user_data):
-                pass
+                self.log.info('sink idx: ' + str(idx))
 
             self.module_idx_cb = p.pa_context_index_cb_t(module_idx)
 
@@ -251,6 +254,9 @@ class PulseManager(GObject.GObject):
 
             if self.sink_is_loaded:
                 self.log.info('Pulseeffects sink was successfully loaded')
+                self.log.info('Pulseeffects sink monitor name: ' +
+                              self.sink_monitor_name +
+                              '. We will process audio from this source.')
             else:
                 self.log.critical('Could not load sink')
 
