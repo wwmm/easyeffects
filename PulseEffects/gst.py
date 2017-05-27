@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 
+import logging
+import re
+
 import gi
 gi.require_version('Gst', '1.0')
 from gi.repository import GObject, Gst
 
-import re
 
 Gst.init(None)
 
@@ -45,6 +47,8 @@ class GstEffects(GObject.GObject):
         self.spectrum_threshold = -100  # dB
 
         self.autovolume_enabled = False
+
+        self.log = logging.getLogger('PulseEffects')
 
         self.pipeline = self.build_pipeline()
 
@@ -198,7 +202,7 @@ class GstEffects(GObject.GObject):
             s = self.pipeline.set_state(Gst.State.READY)
 
             if s == Gst.StateChangeReturn.FAILURE:
-                print("Failed set PulseEffects Gstreamer pipeline to ready!!!")
+                self.log.critical("Could not set Gstreamer pipeline to ready")
 
                 return False
             else:
@@ -207,7 +211,7 @@ class GstEffects(GObject.GObject):
             s = self.pipeline.set_state(Gst.State.PAUSED)
 
             if s == Gst.StateChangeReturn.FAILURE:
-                print("Failed to pause PulseEffects Gstreamer pipeline!!!")
+                self.log.error("Failed to pause Gstreamer pipeline")
 
                 return False
             else:
@@ -216,7 +220,7 @@ class GstEffects(GObject.GObject):
             s = self.pipeline.set_state(Gst.State.PLAYING)
 
             if s == Gst.StateChangeReturn.FAILURE:
-                print("Playing PulseEffects Gstreamer pipeline failed!!!")
+                self.log.critical("Playing Gstreamer pipeline has failed")
 
                 return False
             else:
@@ -225,7 +229,7 @@ class GstEffects(GObject.GObject):
             s = self.pipeline.set_state(Gst.State.NULL)
 
             if s == Gst.StateChangeReturn.FAILURE:
-                print("Stopping PulseEffects Gstreamer pipeline failed!!!")
+                self.log.error("Could not stop Gstreamer pipeline")
 
                 return False
             else:
@@ -274,7 +278,7 @@ class GstEffects(GObject.GObject):
 
     def on_message(self, bus, msg):
         if msg.type == Gst.MessageType.ERROR:
-            print('on_error():', msg.parse_error())
+            self.log.error('on_error():', msg.parse_error())
         elif msg.type == Gst.MessageType.ELEMENT:
             plugin = msg.src.get_name()
 
@@ -347,6 +351,9 @@ class GstEffects(GObject.GObject):
 
     def set_output_sink_name(self, name):
         self.audio_sink.set_property('device', name)
+
+    def get_src_monitor(self):
+        return self.audio_src.get_property('device')
 
     def init_buffer_time(self, value):
         self.audio_src.set_property('buffer-time', value)

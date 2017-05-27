@@ -135,7 +135,8 @@ class pa_server_info(Structure):
     _fields_ = [('user_name', c_char_p), ('host_name', c_char_p),
                 ('server_version', c_char_p), ('server_name', c_char_p),
                 ('sample_spec', pa_sample_spec),
-                ('default_sink_name', c_char_p)]
+                ('default_sink_name', c_char_p),
+                ('default_source_name', c_char_p)]
 
 
 class pa_client_info(Structure):

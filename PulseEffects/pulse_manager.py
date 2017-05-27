@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from gi.repository import GObject, GLib
+import logging
 
 import PulseEffects.libpulse as p
+from gi.repository import GLib, GObject
 
 
 class PulseManager(GObject.GObject):
@@ -21,6 +22,8 @@ class PulseManager(GObject.GObject):
         self.sink_owner_module = -1
         self.sink_idx = -1
         self.sink_inputs = []
+
+        self.log = logging.getLogger('PulseEffects')
 
         self.app_blacklist = ['PulseEffects', 'pulseeffects', 'gsd-media-keys',
                               'GNOME Shell', 'libcanberra', 'gnome-pomodoro']
@@ -63,6 +66,8 @@ class PulseManager(GObject.GObject):
 
         p.pa_operation_unref(o)
 
+        self.log.info('default pulseaudio sink: ' + self.default_sink_name)
+
         # getting default sink rate through sink info. We set
         # module-null-sink to the same rate to reduce clock drift
 
@@ -74,6 +79,9 @@ class PulseManager(GObject.GObject):
             pass
 
         p.pa_operation_unref(o)
+
+        self.log.info('default sink sampling rate: ' +
+                      str(self.default_sink_rate))
 
         # load source sink
         self.load_sink()
@@ -101,15 +109,22 @@ class PulseManager(GObject.GObject):
 
         if state == p.PA_CONTEXT_READY:
             self.context_ok = True
+            self.log.info('pulseaudio context started')
 
         elif state == p.PA_CONTEXT_FAILED:
-            print("Connection failed")
+            self.log.critical('failed to start pulseaudio context')
 
         elif state == p.PA_CONTEXT_TERMINATED:
-            print("Connection terminated")
+            self.log.warning('pulseaudio context terminated')
 
     def server_info(self, context, info, user_data):
         self.default_sink_name = info.contents.default_sink_name.decode()
+
+        server_version = info.contents.server_version.decode()
+        default_source_name = info.contents.default_source_name.decode()
+
+        self.log.info('pulseaudio version: ' + server_version)
+        self.log.info('default pulseaudio source: ' + default_source_name)
 
     def default_sink_info(self, context, info, eol, user_data):
         if eol == 0:
@@ -204,6 +219,8 @@ class PulseManager(GObject.GObject):
         self.load_sink_info()
 
         if not self.sink_is_loaded:
+            self.log.info('loading sink...')
+
             args = []
 
             sink_properties = 'device.description=\'PulseEffects\''
@@ -233,6 +250,11 @@ class PulseManager(GObject.GObject):
 
             self.load_sink_info()
 
+            if self.sink_is_loaded:
+                self.log.info('Pulseeffects sink was successfully loaded')
+            else:
+                self.log.critical('Could not load sink')
+
     def grab_input(self, idx):
         p.pa_context_move_sink_input_by_index(self.ctx, idx,
                                               self.sink_idx,
@@ -257,7 +279,7 @@ class PulseManager(GObject.GObject):
 
     def ctx_success(self, context, success, user_data):
         if not success:
-            print("context operation failed!!")
+            self.log.info('context operation failed!!')
 
     def unload_sink(self):
         self.load_sink_info()
