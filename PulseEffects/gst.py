@@ -94,8 +94,12 @@ class GstEffects(GObject.GObject):
 
         spectrum = Gst.ElementFactory.make('spectrum', 'spectrum')
 
+        stream_properties = Gst.structure_from_string(
+            'props,media.role=production')
+
         self.audio_src.set_property('client-name', 'PulseEffects')
         self.audio_src.set_property('device', 'PulseEffects.monitor')
+        self.audio_src.set_property('stream-properties', stream_properties[0])
         self.audio_src.set_property('volume', 1.0)
         self.audio_src.set_property('mute', False)
         self.audio_src.set_property('provide-clock', False)

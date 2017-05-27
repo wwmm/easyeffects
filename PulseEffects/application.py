@@ -24,13 +24,20 @@ class Application(Gtk.Application):
         app_id = 'com.github.wwmm.pulseeffects'
 
         Gtk.Application.__init__(self, application_id=app_id)
+        GLib.setenv('PULSE_PROP_media.role', 'production', True)
+        GLib.setenv('PULSE_PROP_application.icon_name', 'pulseeffects', True)
 
         self.ui_initialized = False
         self.generating_test_signal = False
         self.module_path = os.path.dirname(__file__)
 
-        log_format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-        logging.basicConfig(format=log_format, level=logging.INFO)
+        log_format = '%(asctime)s.%(msecs)d - %(name)s - %(levelname)s'
+        log_format = log_format + ' - %(message)s'
+
+        logging.basicConfig(format=log_format,
+                            datefmt='%H:%M:%S',
+                            level=logging.INFO)
+
         self.log = logging.getLogger('PulseEffects')
 
         self.settings = Gio.Settings('com.github.wwmm.pulseeffects')
@@ -110,8 +117,8 @@ class Application(Gtk.Application):
         # now that all elements were initialized we set pipeline to ready
         self.gst.set_state('ready')
 
-        self.log.info('gstreamer pipeline was configured to process audio ' +
-                      'from device: ' + self.gst.get_src_monitor())
+        self.log.info('pipeline was configured to process audio from the ' +
+                      'sink monitor: ' + self.gst.get_src_monitor())
 
     def do_activate(self):
         self.window.present()

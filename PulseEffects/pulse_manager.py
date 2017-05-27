@@ -81,7 +81,7 @@ class PulseManager(GObject.GObject):
         p.pa_operation_unref(o)
 
         self.log.info('default sink sampling rate: ' +
-                      str(self.default_sink_rate))
+                      str(self.default_sink_rate) + ' Hz')
 
         # load source sink
         self.load_sink()
@@ -146,9 +146,7 @@ class PulseManager(GObject.GObject):
             for s in self.sink_inputs:
                 if s[0] == user_data:
                     self.sink_inputs.remove(s)
-
                     GLib.idle_add(self.emit, 'sink_inputs_changed')
-
                     break
 
         if info:
@@ -224,7 +222,8 @@ class PulseManager(GObject.GObject):
             args = []
 
             sink_properties = 'device.description=\'PulseEffects\''
-            sink_properties += 'device.class=\'sound\''
+            # sink_properties += 'device.class=\'sound\''
+            # sink_properties += 'device.icon_name=\'audio-card\''
 
             args.append('sink_name=' + sink_name)
             args.append('sink_properties=' + sink_properties)
