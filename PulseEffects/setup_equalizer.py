@@ -84,12 +84,6 @@ class SetupEqualizer():
     def init(self):
         self.eq_band_user = self.settings.get_value('equalizer-user').unpack()
 
-        # One day this check will be removed
-        if len(self.eq_band_user) == 10:
-            self.eq_band_user = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-            out = GLib.Variant('ad', self.eq_band_user)
-            self.settings.set_value('equalizer-user', out)
-
         self.eq_preamp_user = self.settings.get_value(
             'equalizer-preamp').unpack()
 

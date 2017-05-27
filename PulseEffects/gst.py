@@ -327,24 +327,17 @@ class GstEffects(GObject.GObject):
 
                 self.emit('new_level_after_eq', peak[0], peak[1])
             elif plugin == 'spectrum':
-                # GstValueList is not yet supported in gst-python
-                # we are going to get the magnitudes parsing the structure
-                # string
-                struct_str = msg.get_structure().to_string()
+                magnitudes = msg.get_structure().get_value('magnitude')
 
-                magnitude_str = re.search(r'magnitude=\(float\){(.*)}',
-                                          struct_str)
-
-                if magnitude_str:
-                    magnitudes = magnitude_str.group(
-                        1).replace(' ', '').split(',')
-
+                if len(magnitudes) > 0:
                     magnitudes = magnitudes[:self.spectrum_nfreqs]
 
-                    magnitudes = [float(v) for v in magnitudes]
+                    max_mag = max(magnitudes)
+                    min_mag = self.spectrum_threshold
 
-                    if max(magnitudes) > -100:
-                        magnitudes = [(v + 100) / 100 for v in magnitudes]
+                    if max_mag > min_mag:
+                        magnitudes = [(min_mag - v) / min_mag
+                                      for v in magnitudes]
 
                         self.emit('new_spectrum', magnitudes)
         return True

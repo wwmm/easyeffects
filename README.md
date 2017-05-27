@@ -22,7 +22,7 @@ Required libraries:
 - Python cairo
 - Gtk 3.18 or above
 - Gstreamer, Gstreamer Plugins Good, Gstreamer Plugins Bad and Gstreamer Python
- (version 1.0 or above for all of them)
+ (Since version 1.4.3 Pulseeffects needs Gstreamer 1.12 or above)
 - swh-plugins from Ladspa
 
 Arch Linux package:
