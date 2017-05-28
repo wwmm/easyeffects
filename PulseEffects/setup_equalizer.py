@@ -31,6 +31,10 @@ class SetupEqualizer():
             'on_eq_band13_value_changed': self.on_eq_band13_value_changed,
             'on_eq_band14_value_changed': self.on_eq_band14_value_changed,
             'on_eq_preset_toggled': self.on_eq_preset_toggled,
+            'on_eq_highpass_cutoff_freq_value_changed':
+                self.on_eq_highpass_cutoff_freq_value_changed,
+            'on_eq_lowpass_cutoff_freq_value_changed':
+                self.on_eq_lowpass_cutoff_freq_value_changed
         }
 
         self.gst.connect('new_level_after_eq', self.on_new_level_after_eq)
@@ -51,6 +55,10 @@ class SetupEqualizer():
         self.eq_band12 = self.builder.get_object('eq_band12')
         self.eq_band13 = self.builder.get_object('eq_band13')
         self.eq_band14 = self.builder.get_object('eq_band14')
+        self.eq_highpass_cutoff_freq = self.builder.get_object(
+            'eq_highpass_cutoff_freq')
+        self.eq_lowpass_cutoff_freq = self.builder.get_object(
+            'eq_lowpass_cutoff_freq')
 
         self.eq_left_level = self.builder.get_object('eq_left_level')
         self.eq_right_level = self.builder.get_object('eq_right_level')
@@ -82,17 +90,25 @@ class SetupEqualizer():
         button.connect("clicked", button_clicked)
 
     def init(self):
-        self.eq_band_user = self.settings.get_value('equalizer-user').unpack()
+        eq_highpass_cutoff_freq_user = self.settings.get_value(
+            'equalizer-highpass-cutoff').unpack()
 
-        self.eq_preamp_user = self.settings.get_value(
+        eq_lowpass_cutoff_freq_user = self.settings.get_value(
+            'equalizer-lowpass-cutoff').unpack()
+
+        eq_preamp_user = self.settings.get_value(
             'equalizer-preamp').unpack()
 
-        self.eq_preamp.set_value(self.eq_preamp_user)
+        self.eq_band_user = self.settings.get_value('equalizer-user').unpack()
+
+        self.eq_preamp.set_value(eq_preamp_user)
         self.apply_eq_preset(self.eq_band_user)
+        self.eq_highpass_cutoff_freq.set_value(eq_highpass_cutoff_freq_user)
+        self.eq_lowpass_cutoff_freq.set_value(eq_lowpass_cutoff_freq_user)
 
         # we need this when saved value is equal to widget default value
 
-        value_linear = 10**(self.eq_preamp_user / 20)
+        value_linear = 10**(eq_preamp_user / 20)
         self.gst.set_eq_preamp(value_linear)
 
         self.gst.set_eq_band0(self.eq_band_user[0])
@@ -110,6 +126,9 @@ class SetupEqualizer():
         self.gst.set_eq_band12(self.eq_band_user[12])
         self.gst.set_eq_band13(self.eq_band_user[13])
         self.gst.set_eq_band14(self.eq_band_user[14])
+
+        self.gst.set_eq_highpass_cutoff_freq(eq_highpass_cutoff_freq_user)
+        self.gst.set_eq_lowpass_cutoff_freq(eq_lowpass_cutoff_freq_user)
 
     def on_new_level_after_eq(self, obj, left, right):
         if self.app.ui_initialized:
@@ -260,3 +279,19 @@ class SetupEqualizer():
         value = obj.get_value()
         self.gst.set_eq_band14(value)
         self.save_eq_user(14, value)
+
+    def on_eq_highpass_cutoff_freq_value_changed(self, obj):
+        value = obj.get_value()
+        self.gst.set_eq_highpass_cutoff_freq(value)
+
+        out = GLib.Variant('i', value)
+
+        self.settings.set_value('equalizer-highpass-cutoff', out)
+
+    def on_eq_lowpass_cutoff_freq_value_changed(self, obj):
+        value = obj.get_value()
+        self.gst.set_eq_lowpass_cutoff_freq(value)
+
+        out = GLib.Variant('i', value)
+
+        self.settings.set_value('equalizer-lowpass-cutoff', out)

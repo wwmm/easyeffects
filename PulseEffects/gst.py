@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import logging
-import re
 
 import gi
 gi.require_version('Gst', '1.0')
@@ -132,14 +131,27 @@ class GstEffects(GObject.GObject):
         # It seems to me that there is a bug in the low shelf filter.
         # When we increase the lower shelf gain higher frequencies
         # are attenuated. Setting the first band to peak type instead of
-        # shelf fixes this. I didn't notice this with the higher shelf but
-        # higher frequency sound sounds better setting the last band to peak
+        # shelf fixes this.
 
         self.eq_band0.set_property('type', 0)  # 0: peak type
-        self.eq_band14.set_property('type', 0)  # 0: peak type
 
         spectrum.set_property('bands', self.spectrum_nbands)
         spectrum.set_property('threshold', self.spectrum_threshold)
+
+        self.eq_highpass = Gst.ElementFactory.make('audiocheblimit', None)
+        self.eq_highpass.set_property('mode', 'high-pass')
+        self.eq_highpass.set_property('type', 1)
+        self.eq_highpass.set_property('ripple', 0)
+        self.eq_highpass.set_property('poles', 4)
+
+        self.eq_lowpass = Gst.ElementFactory.make('audiocheblimit', None)
+        self.eq_lowpass.set_property('mode', 'low-pass')
+        self.eq_lowpass.set_property('type', 1)
+        self.eq_lowpass.set_property('ripple', 0)
+        self.eq_lowpass.set_property('poles', 4)
+
+        pipeline.add(self.eq_highpass)
+        pipeline.add(self.eq_lowpass)
 
         pipeline.add(self.audio_src)
         pipeline.add(source_caps)
@@ -167,7 +179,9 @@ class GstEffects(GObject.GObject):
         self.compressor.link(level_after_compressor)
         level_after_compressor.link(self.freeverb)
         self.freeverb.link(level_after_reverb)
-        level_after_reverb.link(self.equalizer_preamp)
+        level_after_reverb.link(self.eq_highpass)
+        self.eq_highpass.link(self.eq_lowpass)
+        self.eq_lowpass.link(self.equalizer_preamp)
         self.equalizer_preamp.link(self.equalizer)
         self.equalizer.link(level_after_eq)
         level_after_eq.link(spectrum_src_type)
@@ -456,3 +470,9 @@ class GstEffects(GObject.GObject):
 
     def set_eq_band14(self, value):
         self.eq_band14.set_property('gain', value)
+
+    def set_eq_highpass_cutoff_freq(self, value):
+        self.eq_highpass.set_property('cutoff', value)
+
+    def set_eq_lowpass_cutoff_freq(self, value):
+        self.eq_lowpass.set_property('cutoff', value)

@@ -229,6 +229,10 @@ class Application(Gtk.Application):
 
             equalizer_preamp = self.settings.get_value('equalizer-preamp')
             equalizer = self.settings.get_value('equalizer-user')
+            equalizer_highpass_cutoff = self.settings.get_value(
+                'equalizer-highpass-cutoff')
+            equalizer_lowpass_cutoff = self.settings.get_value(
+                'equalizer-lowpass-cutoff')
 
             config['equalizer'] = {'preamp': str(equalizer_preamp),
                                    'band0': str(equalizer[0]),
@@ -245,7 +249,11 @@ class Application(Gtk.Application):
                                    'band11': str(equalizer[11]),
                                    'band12': str(equalizer[12]),
                                    'band13': str(equalizer[13]),
-                                   'band14': str(equalizer[14])}
+                                   'band14': str(equalizer[14]),
+                                   'highpass_cutoff':
+                                   str(equalizer_highpass_cutoff),
+                                   'lowpass_cutoff':
+                                   str(equalizer_lowpass_cutoff)}
 
             config.write(output)
 
@@ -283,13 +291,48 @@ class Application(Gtk.Application):
             reverb = [float(v) for v in reverb]
             self.setup_reverb.apply_reverb_preset(reverb)
 
-            equalizer = list(dict(config['equalizer']).values())
+            equalizer_preamp = config.getfloat('equalizer', 'preamp')
 
-            equalizer_preamp = float(equalizer.pop(0))
+            highpass_cutoff_freq = config.getint('equalizer',
+                                                 'highpass_cutoff',
+                                                 fallback=20)
+            lowpass_cutoff_freq = config.getint('equalizer',
+                                                'lowpass_cutoff',
+                                                fallback=20000)
+
+            equalizer_band0 = config.getfloat('equalizer', 'band0')
+            equalizer_band1 = config.getfloat('equalizer', 'band1')
+            equalizer_band2 = config.getfloat('equalizer', 'band2')
+            equalizer_band3 = config.getfloat('equalizer', 'band3')
+            equalizer_band4 = config.getfloat('equalizer', 'band4')
+            equalizer_band5 = config.getfloat('equalizer', 'band5')
+            equalizer_band6 = config.getfloat('equalizer', 'band6')
+            equalizer_band7 = config.getfloat('equalizer', 'band7')
+            equalizer_band8 = config.getfloat('equalizer', 'band8')
+            equalizer_band9 = config.getfloat('equalizer', 'band9')
+            equalizer_band10 = config.getfloat('equalizer', 'band10')
+            equalizer_band11 = config.getfloat('equalizer', 'band11')
+            equalizer_band12 = config.getfloat('equalizer', 'band12')
+            equalizer_band13 = config.getfloat('equalizer', 'band13')
+            equalizer_band14 = config.getfloat('equalizer', 'band14')
+
+            equalizer_bands = [equalizer_band0, equalizer_band1,
+                               equalizer_band2, equalizer_band3,
+                               equalizer_band4, equalizer_band5,
+                               equalizer_band6, equalizer_band7,
+                               equalizer_band8, equalizer_band9,
+                               equalizer_band10, equalizer_band11,
+                               equalizer_band12,
+                               equalizer_band13, equalizer_band14]
+
             self.setup_equalizer.eq_preamp.set_value(equalizer_preamp)
 
-            equalizer = [float(v) for v in equalizer]
-            self.setup_equalizer.apply_eq_preset(equalizer)
+            self.setup_equalizer.apply_eq_preset(equalizer_bands)
+
+            self.setup_equalizer.eq_highpass_cutoff_freq.set_value(
+                highpass_cutoff_freq)
+            self.setup_equalizer.eq_lowpass_cutoff_freq.set_value(
+                lowpass_cutoff_freq)
 
         dialog.destroy()
 

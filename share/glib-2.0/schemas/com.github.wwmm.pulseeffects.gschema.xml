@@ -65,5 +65,11 @@
         <key name="equalizer-preamp" type="d">
           <default>0</default>
         </key>
+        <key name="equalizer-highpass-cutoff" type="i">
+          <default>20</default>
+        </key>
+        <key name="equalizer-lowpass-cutoff" type="i">
+          <default>20000</default>
+        </key>
     </schema>
 </schemalist>
