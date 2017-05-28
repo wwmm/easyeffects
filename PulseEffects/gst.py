@@ -150,9 +150,6 @@ class GstEffects(GObject.GObject):
         self.eq_lowpass.set_property('ripple', 0)
         self.eq_lowpass.set_property('poles', 4)
 
-        pipeline.add(self.eq_highpass)
-        pipeline.add(self.eq_lowpass)
-
         pipeline.add(self.audio_src)
         pipeline.add(source_caps)
         pipeline.add(level_before_limiter)
@@ -163,6 +160,8 @@ class GstEffects(GObject.GObject):
         pipeline.add(level_after_compressor)
         pipeline.add(self.freeverb)
         pipeline.add(level_after_reverb)
+        pipeline.add(self.eq_highpass)
+        pipeline.add(self.eq_lowpass)
         pipeline.add(self.equalizer_preamp)
         pipeline.add(self.equalizer)
         pipeline.add(level_after_eq)
