@@ -9,9 +9,10 @@ class SetupLimiter():
 
     def __init__(self, app):
         self.app = app
-        self.builder = app.builder
+        self.app_builder = app.builder
         self.gst = app.gst
         self.settings = app.settings
+        self.module_path = app.module_path
 
         self.handlers = {
             'on_limiter_input_gain_value_changed':
@@ -20,8 +21,6 @@ class SetupLimiter():
                 self.on_limiter_limit_value_changed,
             'on_limiter_release_time_value_changed':
                 self.on_limiter_release_time_value_changed,
-            'on_limiter_preset_toggled':
-                self.on_limiter_preset_toggled,
             'on_autovolume_enable_state_set':
                 self.on_autovolume_enable_state_set
         }
@@ -34,20 +33,20 @@ class SetupLimiter():
                          self.on_new_limiter_attenuation)
         self.gst.connect('new_autovolume', self.on_new_autovolume)
 
-        self.limiter_input_gain = self.builder.get_object(
+        self.limiter_input_gain = self.app_builder.get_object(
             'limiter_input_gain')
-        self.limiter_limit = self.builder.get_object(
+        self.limiter_limit = self.app_builder.get_object(
             'limiter_limit')
-        self.limiter_release_time = self.builder.get_object(
+        self.limiter_release_time = self.app_builder.get_object(
             'limiter_release_time')
-        self.limiter_attenuation_levelbar = self.builder.get_object(
+        self.limiter_attenuation_levelbar = self.app_builder.get_object(
             'limiter_attenuation_levelbar')
 
-        self.limiter_scale_input_gain = self.builder.get_object(
+        self.limiter_scale_input_gain = self.app_builder.get_object(
             'limiter_scale_input_gain')
-        self.limiter_scale_limit = self.builder.get_object(
+        self.limiter_scale_limit = self.app_builder.get_object(
             'limiter_scale_limit')
-        self.limiter_scale_release_time = self.builder.get_object(
+        self.limiter_scale_release_time = self.app_builder.get_object(
             'limiter_scale_release_time')
 
         self.limiter_attenuation_levelbar.add_offset_value(
@@ -57,24 +56,24 @@ class SetupLimiter():
         self.limiter_attenuation_levelbar.add_offset_value(
             'GTK_LEVEL_BAR_OFFSET_FULL', 70)
 
-        self.limiter_level_before_left = self.builder.get_object(
+        self.limiter_level_before_left = self.app_builder.get_object(
             'limiter_level_before_left')
-        self.limiter_level_before_right = self.builder.get_object(
+        self.limiter_level_before_right = self.app_builder.get_object(
             'limiter_level_before_right')
-        self.limiter_level_after_left = self.builder.get_object(
+        self.limiter_level_after_left = self.app_builder.get_object(
             'limiter_level_after_left')
-        self.limiter_level_after_right = self.builder.get_object(
+        self.limiter_level_after_right = self.app_builder.get_object(
             'limiter_level_after_right')
 
-        self.limiter_level_label_before_left = self.builder.get_object(
+        self.limiter_level_label_before_left = self.app_builder.get_object(
             'limiter_level_label_before_left')
-        self.limiter_level_label_before_right = self.builder.get_object(
+        self.limiter_level_label_before_right = self.app_builder.get_object(
             'limiter_level_label_before_right')
-        self.limiter_level_label_after_left = self.builder.get_object(
+        self.limiter_level_label_after_left = self.app_builder.get_object(
             'limiter_level_label_after_left')
-        self.limiter_level_label_after_right = self.builder.get_object(
+        self.limiter_level_label_after_right = self.app_builder.get_object(
             'limiter_level_label_after_right')
-        self.limiter_attenuation_level_label = self.builder.get_object(
+        self.limiter_attenuation_level_label = self.app_builder.get_object(
             'limiter_attenuation_level_label')
 
         self.init_menu()
@@ -83,7 +82,7 @@ class SetupLimiter():
         self.limiter_user = self.settings.get_value(
             'limiter-user').unpack()
 
-        autovolume_state_obj = self.builder.get_object('autovolume_state')
+        autovolume_state_obj = self.app_builder.get_object('autovolume_state')
 
         autovolume_state = self.settings.get_value('autovolume-state').unpack()
 
@@ -209,9 +208,16 @@ class SetupLimiter():
             self.limiter_input_gain.set_value(gain)
 
     def init_menu(self):
-        button = self.builder.get_object('limiter_popover')
-        menu = self.builder.get_object('limiter_menu')
-        limiter_no_selection = self.builder.get_object('limiter_no_selection')
+        builder = Gtk.Builder()
+
+        builder.add_from_file(self.module_path + '/ui/limiter_menu.glade')
+
+        builder.connect_signals(self)
+
+        menu = builder.get_object('menu')
+        limiter_no_selection = builder.get_object('limiter_no_selection')
+
+        button = self.app_builder.get_object('limiter_popover')
 
         popover = Gtk.Popover.new(button)
         popover.props.transitions_enabled = True
