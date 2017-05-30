@@ -9,9 +9,10 @@ class SetupReverb():
 
     def __init__(self, app):
         self.app = app
-        self.builder = app.builder
+        self.app_builder = app.builder
         self.gst = app.gst
         self.settings = app.settings
+        self.module_path = app.module_path
 
         self.handlers = {
             'on_reverb_room_size_value_changed':
@@ -21,8 +22,7 @@ class SetupReverb():
             'on_reverb_width_value_changed':
             self.on_reverb_width_value_changed,
             'on_reverb_level_value_changed':
-            self.on_reverb_level_value_changed,
-            'on_reverb_preset_toggled': self.on_reverb_preset_toggled,
+            self.on_reverb_level_value_changed
         }
 
         self.reverb_user = self.settings.get_value('reverb-user').unpack()
@@ -30,27 +30,34 @@ class SetupReverb():
         self.gst.connect('new_level_after_reverb',
                          self.on_new_level_after_reverb)
 
-        self.reverb_room_size = self.builder.get_object('reverb_room_size')
-        self.reverb_damping = self.builder.get_object('reverb_damping')
-        self.reverb_width = self.builder.get_object('reverb_width')
-        self.reverb_level = self.builder.get_object('reverb_level')
+        self.reverb_room_size = self.app_builder.get_object('reverb_room_size')
+        self.reverb_damping = self.app_builder.get_object('reverb_damping')
+        self.reverb_width = self.app_builder.get_object('reverb_width')
+        self.reverb_level = self.app_builder.get_object('reverb_level')
 
-        self.reverb_left_level = self.builder.get_object(
+        self.reverb_left_level = self.app_builder.get_object(
             'reverb_left_level')
-        self.reverb_right_level = self.builder.get_object(
+        self.reverb_right_level = self.app_builder.get_object(
             'reverb_right_level')
 
-        self.reverb_left_level_label = self.builder.get_object(
+        self.reverb_left_level_label = self.app_builder.get_object(
             'reverb_left_level_label')
-        self.reverb_right_level_label = self.builder.get_object(
+        self.reverb_right_level_label = self.app_builder.get_object(
             'reverb_right_level_label')
 
         self.init_menu()
 
     def init_menu(self):
-        button = self.builder.get_object('reverb_popover')
-        menu = self.builder.get_object('reverb_menu')
-        reverb_no_selection = self.builder.get_object('reverb_no_selection')
+        builder = Gtk.Builder()
+
+        builder.add_from_file(self.module_path + '/ui/reverb_menu.glade')
+
+        builder.connect_signals(self)
+
+        menu = builder.get_object('menu')
+        reverb_no_selection = builder.get_object('reverb_no_selection')
+
+        button = self.app_builder.get_object('reverb_popover')
 
         popover = Gtk.Popover.new(button)
         popover.props.transitions_enabled = True
