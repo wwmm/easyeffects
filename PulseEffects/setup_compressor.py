@@ -9,9 +9,10 @@ class SetupCompressor():
 
     def __init__(self, app):
         self.app = app
-        self.builder = app.builder
+        self.app_builder = app.builder
         self.gst = app.gst
         self.settings = app.settings
+        self.module_path = app.module_path
 
         self.handlers = {
             'on_compressor_measurement_type':
@@ -27,9 +28,7 @@ class SetupCompressor():
             'on_compressor_knee_value_changed':
             self.on_compressor_knee_value_changed,
             'on_compressor_makeup_value_changed':
-            self.on_compressor_makeup_value_changed,
-            'on_compressor_preset_toggled':
-            self.on_compressor_preset_toggled
+            self.on_compressor_makeup_value_changed
         }
 
         self.compressor_user = self.settings.get_value(
@@ -40,34 +39,35 @@ class SetupCompressor():
         self.gst.connect('new_compressor_gain_reduction',
                          self.on_new_compressor_gain_reduction)
 
-        self.compressor_rms = self.builder.get_object('compressor_rms')
-        self.compressor_peak = self.builder.get_object('compressor_peak')
-        self.compressor_attack = self.builder.get_object(
+        self.compressor_rms = self.app_builder.get_object('compressor_rms')
+        self.compressor_peak = self.app_builder.get_object('compressor_peak')
+        self.compressor_attack = self.app_builder.get_object(
             'compressor_attack')
-        self.compressor_release = self.builder.get_object(
+        self.compressor_release = self.app_builder.get_object(
             'compressor_release')
-        self.compressor_threshold = self.builder.get_object(
+        self.compressor_threshold = self.app_builder.get_object(
             'compressor_threshold')
-        self.compressor_ratio = self.builder.get_object(
+        self.compressor_ratio = self.app_builder.get_object(
             'compressor_ratio')
-        self.compressor_knee = self.builder.get_object(
+        self.compressor_knee = self.app_builder.get_object(
             'compressor_knee')
-        self.compressor_makeup = self.builder.get_object(
+        self.compressor_makeup = self.app_builder.get_object(
             'compressor_makeup')
 
-        self.compressor_level_after_left = self.builder.get_object(
+        self.compressor_level_after_left = self.app_builder.get_object(
             'compressor_level_after_left')
-        self.compressor_level_after_right = self.builder.get_object(
+        self.compressor_level_after_right = self.app_builder.get_object(
             'compressor_level_after_right')
-        self.compressor_gain_reduction_levelbar = self.builder.get_object(
+        self.compressor_gain_reduction_levelbar = self.app_builder.get_object(
             'compressor_gain_reduction_levelbar')
 
-        self.compressor_level_label_after_left = self.builder.get_object(
+        self.compressor_level_label_after_left = self.app_builder.get_object(
             'compressor_level_label_after_left')
-        self.compressor_level_label_after_right = self.builder.get_object(
+        self.compressor_level_label_after_right = self.app_builder.get_object(
             'compressor_level_label_after_right')
         self.compressor_gain_reduction_level_label = \
-            self.builder.get_object('compressor_gain_reduction_level_label')
+            self.app_builder.get_object(
+                'compressor_gain_reduction_level_label')
 
         self.compressor_gain_reduction_levelbar.add_offset_value(
             'GTK_LEVEL_BAR_OFFSET_LOW', 6)
@@ -79,10 +79,17 @@ class SetupCompressor():
         self.init_menu()
 
     def init_menu(self):
-        button = self.builder.get_object('compressor_popover')
-        menu = self.builder.get_object('compressor_menu')
-        compressor_no_selection = self.builder.get_object(
+        builder = Gtk.Builder()
+
+        builder.add_from_file(self.module_path + '/ui/compressor_menu.glade')
+
+        builder.connect_signals(self)
+
+        menu = builder.get_object('menu')
+        compressor_no_selection = builder.get_object(
             'compressor_no_selection')
+
+        button = self.app_builder.get_object('compressor_popover')
 
         popover = Gtk.Popover.new(button)
         popover.props.transitions_enabled = True
