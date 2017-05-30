@@ -50,6 +50,8 @@ class GstEffects(GObject.GObject):
 
         self.log = logging.getLogger('PulseEffects')
 
+        self.calc_spectrum_freqs()
+
         self.pipeline = self.build_pipeline()
 
         # Create bus to get events from GStreamer pipeline
@@ -89,8 +91,6 @@ class GstEffects(GObject.GObject):
         level_after_eq = Gst.ElementFactory.make('level', 'level_after_eq')
 
         autovolume = Gst.ElementFactory.make('level', 'autovolume')
-
-        spectrum_src_type = Gst.ElementFactory.make("typefind", None)
 
         spectrum = Gst.ElementFactory.make('spectrum', 'spectrum')
 
@@ -165,7 +165,6 @@ class GstEffects(GObject.GObject):
         pipeline.add(self.equalizer_preamp)
         pipeline.add(self.equalizer)
         pipeline.add(level_after_eq)
-        pipeline.add(spectrum_src_type)
         pipeline.add(spectrum)
         pipeline.add(self.audio_sink)
 
@@ -183,11 +182,8 @@ class GstEffects(GObject.GObject):
         self.eq_lowpass.link(self.equalizer_preamp)
         self.equalizer_preamp.link(self.equalizer)
         self.equalizer.link(level_after_eq)
-        level_after_eq.link(spectrum_src_type)
-        spectrum_src_type.link(spectrum)
+        level_after_eq.link(spectrum)
         spectrum.link(self.audio_sink)
-
-        spectrum_src_type.connect("have-type", self.media_probe)
 
         return pipeline
 
@@ -248,26 +244,23 @@ class GstEffects(GObject.GObject):
                 self.is_playing = False
                 return True
 
-    def media_probe(self, obj, arg0, caps):
-        self.rate = caps.get_structure(0).get_value("rate")
+    def calc_spectrum_freqs(self):
+        self.spectrum_freqs = []
 
-        if self.rate:
-            self.spectrum_freqs = []
+        for i in range(self.spectrum_nbands):
+            freq = self.rate * (0.5 * i + 0.25) / self.spectrum_nbands
 
-            for i in range(self.spectrum_nbands):
-                freq = self.rate * (0.5 * i + 0.25) / self.spectrum_nbands
+            if freq > self.max_spectrum_freq:
+                break
 
-                self.spectrum_freqs.append(freq)
+            self.spectrum_freqs.append(freq)
 
-            # getting only freqs below self.max_spectrum_freq
-            element = next(i for i in self.spectrum_freqs if i >
-                           self.max_spectrum_freq)
+        self.spectrum_nfreqs = len(self.spectrum_freqs)
 
-            cutt_off_idx = self.spectrum_freqs.index(element)
-
-            self.spectrum_freqs = self.spectrum_freqs[:cutt_off_idx]
-
-            self.spectrum_nfreqs = len(self.spectrum_freqs)
+        self.log.info('(min, max) spectrum frequencies: ' +
+                      '(' + str(min(self.spectrum_freqs)) + ', ' +
+                      str(max(self.spectrum_freqs)) + ')' +
+                      ' these values are sampling rate dependent')
 
     def auto_gain(self, mean):
         threshold = -12
