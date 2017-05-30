@@ -15,6 +15,19 @@
     <property name="page_increment">2</property>
     <signal name="value-changed" handler="on_eq_highpass_poles_value_changed" swapped="no"/>
   </object>
+  <object class="GtkAdjustment" id="eq_lowpass_cutoff_freq">
+    <property name="upper">100000</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1000</property>
+    <signal name="value-changed" handler="on_eq_lowpass_cutoff_freq_value_changed" swapped="no"/>
+  </object>
+  <object class="GtkAdjustment" id="eq_lowpass_poles">
+    <property name="lower">2</property>
+    <property name="upper">32</property>
+    <property name="step_increment">2</property>
+    <property name="page_increment">2</property>
+    <signal name="value-changed" handler="on_eq_lowpass_poles_value_changed" swapped="no"/>
+  </object>
   <object class="GtkGrid" id="menu">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -214,7 +227,8 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="width_chars">5</property>
-                <property name="text" translatable="yes">0</property>
+                <property name="text">0</property>
+                <property name="input_purpose">number</property>
                 <property name="adjustment">eq_highpass_cutoff_freq</property>
                 <property name="numeric">True</property>
               </object>
@@ -239,7 +253,8 @@
               <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="text" translatable="yes">2</property>
+                <property name="text">2</property>
+                <property name="input_purpose">number</property>
                 <property name="adjustment">eq_highpass_poles</property>
                 <property name="value">2</property>
               </object>
@@ -301,7 +316,8 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="width_chars">5</property>
-                <property name="text" translatable="yes">0</property>
+                <property name="text">0</property>
+                <property name="input_purpose">number</property>
                 <property name="adjustment">eq_lowpass_cutoff_freq</property>
                 <property name="numeric">True</property>
               </object>
@@ -326,7 +342,8 @@
               <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="text" translatable="yes">2</property>
+                <property name="text">2</property>
+                <property name="input_purpose">number</property>
                 <property name="adjustment">eq_lowpass_poles</property>
                 <property name="numeric">True</property>
                 <property name="value">2</property>
@@ -348,18 +365,5 @@
         <property name="top_attach">3</property>
       </packing>
     </child>
-  </object>
-  <object class="GtkAdjustment" id="eq_lowpass_cutoff_freq">
-    <property name="upper">100000</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">1000</property>
-    <signal name="value-changed" handler="on_eq_lowpass_cutoff_freq_value_changed" swapped="no"/>
-  </object>
-  <object class="GtkAdjustment" id="eq_lowpass_poles">
-    <property name="lower">2</property>
-    <property name="upper">32</property>
-    <property name="step_increment">2</property>
-    <property name="page_increment">2</property>
-    <signal name="value-changed" handler="on_eq_lowpass_poles_value_changed" swapped="no"/>
   </object>
 </interface>
