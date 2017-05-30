@@ -92,7 +92,6 @@ class Application(Gtk.Application):
         ui_handlers.update(self.setup_compressor.handlers)
         ui_handlers.update(self.setup_reverb.handlers)
         ui_handlers.update(self.setup_equalizer.handlers)
-        ui_handlers.update(self.test_signal.handlers)
         ui_handlers.update(self.spectrum.handlers)
         ui_handlers.update(self.list_apps.handlers)
 

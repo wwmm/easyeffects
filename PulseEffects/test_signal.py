@@ -12,13 +12,8 @@ class TestSignal():
 
     def __init__(self, app):
         self.app = app
-        self.builder = app.builder
-
-        self.handlers = {
-            'on_test_signal_switch_state_set':
-            self.on_test_signal_switch_state_set,
-            'on_test_signal_freq_toggled': self.on_test_signal_freq_toggled,
-        }
+        self.app_builder = app.builder
+        self.module_path = app.module_path
 
         self.pipeline = self.build_pipeline()
 
@@ -135,11 +130,18 @@ class TestSignal():
             self.set_state('playing')
 
     def init_menu(self):
-        button = self.builder.get_object('test_signal_popover')
-        menu = self.builder.get_object('test_signal_menu')
-        default = self.builder.get_object('test_signal_band8')
+        builder = Gtk.Builder()
+
+        builder.add_from_file(self.module_path + '/ui/test_signal_menu.glade')
+
+        builder.connect_signals(self)
+
+        menu = builder.get_object('menu')
+        default = builder.get_object('test_signal_band8')
 
         default.set_active(True)
+
+        button = self.app_builder.get_object('test_signal_popover')
 
         popover = Gtk.Popover.new(button)
         popover.props.transitions_enabled = True
