@@ -68,8 +68,14 @@
         <key name="equalizer-highpass-cutoff" type="i">
           <default>20</default>
         </key>
+        <key name="equalizer-highpass-poles" type="i">
+          <default>4</default>
+        </key>
         <key name="equalizer-lowpass-cutoff" type="i">
           <default>20000</default>
+        </key>
+        <key name="equalizer-lowpass-poles" type="i">
+          <default>4</default>
         </key>
     </schema>
 </schemalist>

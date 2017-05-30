@@ -231,8 +231,12 @@ class Application(Gtk.Application):
             equalizer = self.settings.get_value('equalizer-user')
             equalizer_highpass_cutoff = self.settings.get_value(
                 'equalizer-highpass-cutoff')
+            equalizer_highpass_poles = self.settings.get_value(
+                'equalizer-highpass-poles')
             equalizer_lowpass_cutoff = self.settings.get_value(
                 'equalizer-lowpass-cutoff')
+            equalizer_lowpass_poles = self.settings.get_value(
+                'equalizer-lowpass-poles')
 
             config['equalizer'] = {'preamp': str(equalizer_preamp),
                                    'band0': str(equalizer[0]),
@@ -252,8 +256,12 @@ class Application(Gtk.Application):
                                    'band14': str(equalizer[14]),
                                    'highpass_cutoff':
                                    str(equalizer_highpass_cutoff),
+                                   'highpass_poles':
+                                   str(equalizer_highpass_poles),
                                    'lowpass_cutoff':
-                                   str(equalizer_lowpass_cutoff)}
+                                   str(equalizer_lowpass_cutoff),
+                                   'lowpass_poles':
+                                   str(equalizer_lowpass_poles)}
 
             config.write(output)
 
@@ -296,9 +304,15 @@ class Application(Gtk.Application):
             highpass_cutoff_freq = config.getint('equalizer',
                                                  'highpass_cutoff',
                                                  fallback=20)
+            highpass_poles = config.getint('equalizer',
+                                           'highpass_poles',
+                                           fallback=4)
             lowpass_cutoff_freq = config.getint('equalizer',
                                                 'lowpass_cutoff',
                                                 fallback=20000)
+            lowpass_poles = config.getint('equalizer',
+                                          'lowpass_poles',
+                                          fallback=4)
 
             equalizer_band0 = config.getfloat('equalizer', 'band0')
             equalizer_band1 = config.getfloat('equalizer', 'band1')
@@ -331,8 +345,11 @@ class Application(Gtk.Application):
 
             self.setup_equalizer.eq_highpass_cutoff_freq.set_value(
                 highpass_cutoff_freq)
+            self.setup_equalizer.eq_highpass_poles.set_value(highpass_poles)
+
             self.setup_equalizer.eq_lowpass_cutoff_freq.set_value(
                 lowpass_cutoff_freq)
+            self.setup_equalizer.eq_lowpass_poles.set_value(lowpass_poles)
 
         dialog.destroy()
 

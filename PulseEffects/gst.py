@@ -142,13 +142,11 @@ class GstEffects(GObject.GObject):
         self.eq_highpass.set_property('mode', 'high-pass')
         self.eq_highpass.set_property('type', 1)
         self.eq_highpass.set_property('ripple', 0)
-        self.eq_highpass.set_property('poles', 4)
 
         self.eq_lowpass = Gst.ElementFactory.make('audiocheblimit', None)
         self.eq_lowpass.set_property('mode', 'low-pass')
         self.eq_lowpass.set_property('type', 1)
         self.eq_lowpass.set_property('ripple', 0)
-        self.eq_lowpass.set_property('poles', 4)
 
         pipeline.add(self.audio_src)
         pipeline.add(source_caps)
@@ -466,5 +464,11 @@ class GstEffects(GObject.GObject):
     def set_eq_highpass_cutoff_freq(self, value):
         self.eq_highpass.set_property('cutoff', value)
 
+    def set_eq_highpass_poles(self, value):
+        self.eq_highpass.set_property('poles', value)
+
     def set_eq_lowpass_cutoff_freq(self, value):
         self.eq_lowpass.set_property('cutoff', value)
+
+    def set_eq_lowpass_poles(self, value):
+        self.eq_lowpass.set_property('poles', value)

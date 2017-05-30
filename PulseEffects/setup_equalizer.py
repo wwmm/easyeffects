@@ -9,9 +9,10 @@ class SetupEqualizer():
 
     def __init__(self, app):
         self.app = app
-        self.builder = app.builder
+        self.app_builder = app.builder
         self.gst = app.gst
         self.settings = app.settings
+        self.module_path = app.module_path
 
         self.handlers = {
             'on_eq_preamp_value_changed': self.on_eq_preamp_value_changed,
@@ -29,51 +30,57 @@ class SetupEqualizer():
             'on_eq_band11_value_changed': self.on_eq_band11_value_changed,
             'on_eq_band12_value_changed': self.on_eq_band12_value_changed,
             'on_eq_band13_value_changed': self.on_eq_band13_value_changed,
-            'on_eq_band14_value_changed': self.on_eq_band14_value_changed,
-            'on_eq_preset_toggled': self.on_eq_preset_toggled,
-            'on_eq_highpass_cutoff_freq_value_changed':
-                self.on_eq_highpass_cutoff_freq_value_changed,
-            'on_eq_lowpass_cutoff_freq_value_changed':
-                self.on_eq_lowpass_cutoff_freq_value_changed
+            'on_eq_band14_value_changed': self.on_eq_band14_value_changed
         }
 
         self.gst.connect('new_level_after_eq', self.on_new_level_after_eq)
 
-        self.eq_preamp = self.builder.get_object('eq_preamp')
-        self.eq_band0 = self.builder.get_object('eq_band0')
-        self.eq_band1 = self.builder.get_object('eq_band1')
-        self.eq_band2 = self.builder.get_object('eq_band2')
-        self.eq_band3 = self.builder.get_object('eq_band3')
-        self.eq_band4 = self.builder.get_object('eq_band4')
-        self.eq_band5 = self.builder.get_object('eq_band5')
-        self.eq_band6 = self.builder.get_object('eq_band6')
-        self.eq_band7 = self.builder.get_object('eq_band7')
-        self.eq_band8 = self.builder.get_object('eq_band8')
-        self.eq_band9 = self.builder.get_object('eq_band9')
-        self.eq_band10 = self.builder.get_object('eq_band10')
-        self.eq_band11 = self.builder.get_object('eq_band11')
-        self.eq_band12 = self.builder.get_object('eq_band12')
-        self.eq_band13 = self.builder.get_object('eq_band13')
-        self.eq_band14 = self.builder.get_object('eq_band14')
-        self.eq_highpass_cutoff_freq = self.builder.get_object(
-            'eq_highpass_cutoff_freq')
-        self.eq_lowpass_cutoff_freq = self.builder.get_object(
-            'eq_lowpass_cutoff_freq')
+        self.eq_preamp = self.app_builder.get_object('eq_preamp')
+        self.eq_band0 = self.app_builder.get_object('eq_band0')
+        self.eq_band1 = self.app_builder.get_object('eq_band1')
+        self.eq_band2 = self.app_builder.get_object('eq_band2')
+        self.eq_band3 = self.app_builder.get_object('eq_band3')
+        self.eq_band4 = self.app_builder.get_object('eq_band4')
+        self.eq_band5 = self.app_builder.get_object('eq_band5')
+        self.eq_band6 = self.app_builder.get_object('eq_band6')
+        self.eq_band7 = self.app_builder.get_object('eq_band7')
+        self.eq_band8 = self.app_builder.get_object('eq_band8')
+        self.eq_band9 = self.app_builder.get_object('eq_band9')
+        self.eq_band10 = self.app_builder.get_object('eq_band10')
+        self.eq_band11 = self.app_builder.get_object('eq_band11')
+        self.eq_band12 = self.app_builder.get_object('eq_band12')
+        self.eq_band13 = self.app_builder.get_object('eq_band13')
+        self.eq_band14 = self.app_builder.get_object('eq_band14')
 
-        self.eq_left_level = self.builder.get_object('eq_left_level')
-        self.eq_right_level = self.builder.get_object('eq_right_level')
+        self.eq_left_level = self.app_builder.get_object('eq_left_level')
+        self.eq_right_level = self.app_builder.get_object('eq_right_level')
 
-        self.eq_left_level_label = self.builder.get_object(
+        self.eq_left_level_label = self.app_builder.get_object(
             'eq_left_level_label')
-        self.eq_right_level_label = self.builder.get_object(
+        self.eq_right_level_label = self.app_builder.get_object(
             'eq_right_level_label')
 
         self.init_menu()
 
     def init_menu(self):
-        button = self.builder.get_object('equalizer_popover')
-        menu = self.builder.get_object('equalizer_menu')
-        eq_no_selection = self.builder.get_object('eq_no_selection')
+        builder = Gtk.Builder()
+
+        builder.add_from_file(self.module_path + '/ui/equalizer_menu.glade')
+
+        builder.connect_signals(self)
+
+        menu = builder.get_object('menu')
+        eq_no_selection = builder.get_object('eq_no_selection')
+        self.eq_highpass_cutoff_freq = builder.get_object(
+            'eq_highpass_cutoff_freq')
+        self.eq_highpass_poles = builder.get_object(
+            'eq_highpass_poles')
+        self.eq_lowpass_cutoff_freq = builder.get_object(
+            'eq_lowpass_cutoff_freq')
+        self.eq_lowpass_poles = builder.get_object(
+            'eq_lowpass_poles')
+
+        button = self.app_builder.get_object('equalizer_popover')
 
         popover = Gtk.Popover.new(button)
         popover.props.transitions_enabled = True
@@ -92,9 +99,13 @@ class SetupEqualizer():
     def init(self):
         eq_highpass_cutoff_freq_user = self.settings.get_value(
             'equalizer-highpass-cutoff').unpack()
+        eq_highpass_poles_user = self.settings.get_value(
+            'equalizer-highpass-poles').unpack()
 
         eq_lowpass_cutoff_freq_user = self.settings.get_value(
             'equalizer-lowpass-cutoff').unpack()
+        eq_lowpass_poles_user = self.settings.get_value(
+            'equalizer-lowpass-poles').unpack()
 
         eq_preamp_user = self.settings.get_value(
             'equalizer-preamp').unpack()
@@ -104,7 +115,9 @@ class SetupEqualizer():
         self.eq_preamp.set_value(eq_preamp_user)
         self.apply_eq_preset(self.eq_band_user)
         self.eq_highpass_cutoff_freq.set_value(eq_highpass_cutoff_freq_user)
+        self.eq_highpass_poles.set_value(eq_highpass_poles_user)
         self.eq_lowpass_cutoff_freq.set_value(eq_lowpass_cutoff_freq_user)
+        self.eq_lowpass_poles.set_value(eq_lowpass_poles_user)
 
         # we need this when saved value is equal to widget default value
 
@@ -288,6 +301,14 @@ class SetupEqualizer():
 
         self.settings.set_value('equalizer-highpass-cutoff', out)
 
+    def on_eq_highpass_poles_value_changed(self, obj):
+        value = obj.get_value()
+        self.gst.set_eq_highpass_poles(value)
+
+        out = GLib.Variant('i', value)
+
+        self.settings.set_value('equalizer-highpass-poles', out)
+
     def on_eq_lowpass_cutoff_freq_value_changed(self, obj):
         value = obj.get_value()
         self.gst.set_eq_lowpass_cutoff_freq(value)
@@ -295,3 +316,11 @@ class SetupEqualizer():
         out = GLib.Variant('i', value)
 
         self.settings.set_value('equalizer-lowpass-cutoff', out)
+
+    def on_eq_lowpass_poles_value_changed(self, obj):
+        value = obj.get_value()
+        self.gst.set_eq_lowpass_poles(value)
+
+        out = GLib.Variant('i', value)
+
+        self.settings.set_value('equalizer-lowpass-poles', out)
