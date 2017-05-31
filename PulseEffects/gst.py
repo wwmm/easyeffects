@@ -62,7 +62,7 @@ class GstEffects(GObject.GObject):
     def build_pipeline(self):
         pipeline = Gst.Pipeline()
 
-        self.audio_src = Gst.ElementFactory.make('pulsesrc', None)
+        self.audio_src = Gst.ElementFactory.make('pulsesrc', 'audio_src')
 
         source_caps = Gst.ElementFactory.make("capsfilter", None)
 
@@ -78,7 +78,7 @@ class GstEffects(GObject.GObject):
 
         self.equalizer = Gst.ElementFactory.make('equalizer-nbands', None)
 
-        self.audio_sink = Gst.ElementFactory.make('pulsesink', None)
+        self.audio_sink = Gst.ElementFactory.make('pulsesink', 'audio_sink')
 
         level_before_limiter = Gst.ElementFactory.make(
             'level', 'level_before_limiter')
@@ -284,7 +284,17 @@ class GstEffects(GObject.GObject):
 
     def on_message(self, bus, msg):
         if msg.type == Gst.MessageType.ERROR:
-            self.log.error('on_error():', msg.parse_error())
+            self.log.error('error:', msg.parse_error())
+            self.log.error('error details:', msg.parse_error_details())
+        elif msg.type == Gst.MessageType.LATENCY:
+            plugin = msg.src.get_name()
+
+            if plugin == 'audio_sink':
+                latency = msg.src.get_property('latency-time')
+                self.log.info('pulsesink latency [us]: ' + str(latency))
+            elif plugin == 'audio_src':
+                latency = msg.src.get_property('actual-latency-time')
+                self.log.info('pulsesrc latency [us]: ' + str(latency))
         elif msg.type == Gst.MessageType.ELEMENT:
             plugin = msg.src.get_name()
 
