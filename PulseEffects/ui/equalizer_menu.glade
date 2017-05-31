@@ -40,7 +40,6 @@
         <child>
           <object class="GtkLabel">
             <property name="visible">True</property>
-            <property name="sensitive">False</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Presets</property>
           </object>
@@ -187,7 +186,6 @@
     <child>
       <object class="GtkLabel">
         <property name="visible">True</property>
-        <property name="sensitive">False</property>
         <property name="can_focus">False</property>
         <property name="margin_bottom">2</property>
         <property name="label" translatable="yes">Input Filters</property>
@@ -272,7 +270,6 @@
         <child>
           <object class="GtkLabel">
             <property name="visible">True</property>
-            <property name="sensitive">False</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">High Pass</property>
           </object>
@@ -284,7 +281,6 @@
         <child>
           <object class="GtkLabel">
             <property name="visible">True</property>
-            <property name="sensitive">False</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Low Pass</property>
           </object>

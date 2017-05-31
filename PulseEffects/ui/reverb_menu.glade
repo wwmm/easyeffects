@@ -9,7 +9,6 @@
     <child>
       <object class="GtkLabel">
         <property name="visible">True</property>
-        <property name="sensitive">False</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Presets</property>
       </object>
