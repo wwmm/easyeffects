@@ -100,7 +100,9 @@ class GstEffects(GObject.GObject):
         self.audio_src.set_property('provide-clock', False)
         self.audio_src.set_property('slave-method', 1)  # re-timestamp
 
-        caps = ["audio/x-raw", "rate=" + str(self.rate)]
+        caps = ['audio/x-raw', 'format=F32LE',
+                'rate=' + str(self.rate), 'channels=2']
+
         src_caps = Gst.Caps.from_string(",".join(caps))
         source_caps.set_property("caps", src_caps)
 
