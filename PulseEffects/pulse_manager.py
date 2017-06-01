@@ -281,6 +281,12 @@ class PulseManager(GObject.GObject):
                                              self.default_sink_name.encode(),
                                              self.ctx_success_cb, None)
 
+    def get_max_volume(self, volume):
+        return p.pa_cvolume_max(volume)
+
+    def volume_to_dB(self, raw_volume):
+        return p.pa_sw_volume_to_dB(raw_volume)
+
     def set_sink_input_volume(self, idx, volume):
         pass
 
