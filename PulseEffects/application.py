@@ -23,9 +23,11 @@ class Application(Gtk.Application):
     def __init__(self):
         app_id = 'com.github.wwmm.pulseeffects'
 
-        Gtk.Application.__init__(self, application_id=app_id)
+        GLib.set_application_name('PulseEffects')
         GLib.setenv('PULSE_PROP_media.role', 'production', True)
         GLib.setenv('PULSE_PROP_application.icon_name', 'pulseeffects', True)
+
+        Gtk.Application.__init__(self, application_id=app_id)
 
         self.ui_initialized = False
         self.generating_test_signal = False

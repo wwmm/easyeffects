@@ -94,7 +94,6 @@ class GstEffects(GObject.GObject):
 
         spectrum = Gst.ElementFactory.make('spectrum', 'spectrum')
 
-        self.audio_src.set_property('client-name', 'PulseEffects')
         self.audio_src.set_property('volume', 1.0)
         self.audio_src.set_property('mute', False)
         self.audio_src.set_property('provide-clock', False)
@@ -106,7 +105,6 @@ class GstEffects(GObject.GObject):
         src_caps = Gst.Caps.from_string(",".join(caps))
         source_caps.set_property("caps", src_caps)
 
-        self.audio_sink.set_property('client-name', 'PulseEffects')
         self.audio_sink.set_property('volume', 1.0)
         self.audio_sink.set_property('mute', False)
 
