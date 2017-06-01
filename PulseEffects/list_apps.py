@@ -39,7 +39,8 @@ class ListApps():
             app_name = i[1]
             media_name = i[2]
             icon_name = i[3]
-            connected = i[4]
+            volume = i[4]
+            connected = i[5]
 
             row = Gtk.ListBoxRow()
 
@@ -78,6 +79,24 @@ class ListApps():
             switch.connect('state-set', move_sink_input)
 
             hbox.pack_end(switch, False, False, 0)
+
+            # volume
+
+            volume_adjustment = Gtk.Adjustment(0, 0, 100, 1, 10, 0)
+            # volume_adjustment.set_name('volume_' + str(idx))
+
+            volume_scale = Gtk.Scale(orientation=Gtk.Orientation.HORIZONTAL,
+                                     adjustment=volume_adjustment)
+            volume_scale.set_digits(0)
+            volume_scale.set_value_pos(Gtk.PositionType.RIGHT)
+            volume_scale.set_hexpand(True)
+
+            # for now we will assume right and left channel are locked together
+            left_vol = 100 * float(volume.values[0]) / self.pm.max_volume
+
+            volume_adjustment.set_value(left_vol)
+
+            hbox.pack_end(volume_scale, True, True, 0)
 
             self.apps_box.add(row)
 

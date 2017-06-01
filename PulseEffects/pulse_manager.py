@@ -23,6 +23,7 @@ class PulseManager(GObject.GObject):
         self.sink_idx = -1
         self.sink_monitor_name = ''
         self.sink_inputs = []
+        self.max_volume = p.PA_VOLUME_NORM
 
         self.log = logging.getLogger('PulseEffects')
 
@@ -165,6 +166,14 @@ class PulseManager(GObject.GObject):
             media_name = p.pa_proplist_gets(proplist, b'media.name')
             icon_name = p.pa_proplist_gets(proplist, b'application.icon_name')
 
+            max_vol = p.pa_cvolume_max(volume)
+            print(p.pa_sw_volume_to_dB(max_vol))
+            # if len(self.sink_inputs) > 1:
+            #     print(self.sink_inputs[1][4])
+            #     print(volume)
+            #     print([self.sink_inputs[1][1], self.sink_inputs[1][4].values[0]],
+            #           [app_name, volume.values[0]])
+
             if not app_name:
                 app_name = ''
             else:
@@ -187,7 +196,8 @@ class PulseManager(GObject.GObject):
                 if connected_sink_idx == self.sink_idx:
                     connected = True
 
-                new_input = [idx, app_name, media_name, icon_name, connected]
+                new_input = [idx, app_name, media_name,
+                             icon_name, volume, connected]
                 list_idx = 0
                 have_this_input = False
 
@@ -271,21 +281,25 @@ class PulseManager(GObject.GObject):
                                              self.default_sink_name.encode(),
                                              self.ctx_success_cb, None)
 
+    def set_sink_input_volume(self, idx, volume):
+        pass
+
     def subscribe(self, context, event_value, idx, user_data):
         event_type = event_value & p.PA_SUBSCRIPTION_EVENT_TYPE_MASK
 
-        user_data = None
-
         if event_type == p.PA_SUBSCRIPTION_EVENT_REMOVE:
-            user_data = idx
-
-        p.pa_context_get_sink_input_info(self.ctx, idx,
-                                         self.sink_input_info_cb,
-                                         user_data)
+            p.pa_context_get_sink_input_info(self.ctx, idx,
+                                             self.sink_input_info_cb,
+                                             idx)
+        elif (event_type == p.PA_SUBSCRIPTION_EVENT_NEW or
+              event_type == p.PA_SUBSCRIPTION_EVENT_CHANGE):
+            p.pa_context_get_sink_input_info(self.ctx, idx,
+                                             self.sink_input_info_cb,
+                                             None)
 
     def ctx_success(self, context, success, user_data):
         if not success:
-            self.log.info('context operation failed!!')
+            self.log.critical('context operation failed!!')
 
     def unload_sink(self):
         self.load_sink_info()

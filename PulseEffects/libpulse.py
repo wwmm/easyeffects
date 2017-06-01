@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from ctypes import (CFUNCTYPE, POINTER, Structure, c_char_p, c_int, c_uint8,
-                    c_uint32, c_uint64, c_void_p, cdll)
+from ctypes import (CFUNCTYPE, POINTER, Structure, c_char_p, c_double, c_int,
+                    c_uint8, c_uint32, c_uint64, c_void_p, cdll)
 
 lib = cdll.LoadLibrary("libpulse.so.0")
 
@@ -365,6 +365,22 @@ pa_context_unload_module = lib.pa_context_unload_module
 pa_context_unload_module.restype = POINTER(pa_operation)
 pa_context_unload_module.argtypes = [POINTER(pa_context), c_int,
                                      pa_context_success_cb_t, c_void_p]
+
+pa_cvolume_min = lib.pa_cvolume_min
+pa_cvolume_min.restype = pa_volume_t
+pa_cvolume_min.argtypes = [POINTER(pa_cvolume)]
+
+pa_cvolume_max = lib.pa_cvolume_max
+pa_cvolume_max.restype = pa_volume_t
+pa_cvolume_max.argtypes = [POINTER(pa_cvolume)]
+
+pa_cvolume_scale = lib.pa_cvolume_scale
+pa_cvolume_scale.restype = POINTER(pa_cvolume)
+pa_cvolume_scale.argtypes = [POINTER(pa_cvolume), pa_volume_t]
+
+pa_sw_volume_to_dB = lib.pa_sw_volume_to_dB
+pa_sw_volume_to_dB.restype = c_double
+pa_sw_volume_to_dB.argtypes = [pa_volume_t]
 
 pa_operation_unref = lib.pa_operation_unref
 pa_operation_unref.restype = None
