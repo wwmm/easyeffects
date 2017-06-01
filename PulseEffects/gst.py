@@ -284,8 +284,12 @@ class GstEffects(GObject.GObject):
 
     def on_message(self, bus, msg):
         if msg.type == Gst.MessageType.ERROR:
-            self.log.error('error:', msg.parse_error())
-            self.log.error('error details:', msg.parse_error_details())
+            self.log.error(msg.parse_error())
+            self.log.error(msg.parse_error_details())
+
+            self.set_state('null')
+        elif msg.type == Gst.MessageType.WARNING:
+            self.log.warning(msg.parse_warning())
         elif msg.type == Gst.MessageType.LATENCY:
             plugin = msg.src.get_name()
 
