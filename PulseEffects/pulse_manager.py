@@ -158,6 +158,7 @@ class PulseManager(GObject.GObject):
             idx = info.contents.index
             connected_sink_idx = info.contents.sink
 
+            volume = info.contents.volume
             proplist = info.contents.proplist
 
             app_name = p.pa_proplist_gets(proplist, b'application.name')

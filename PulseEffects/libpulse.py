@@ -66,6 +66,8 @@ PA_SUBSCRIPTION_MASK_SAMPLE_CACHE = 0x0040
 PA_SUBSCRIPTION_MASK_SERVER = 0x0080
 PA_SUBSCRIPTION_MASK_CARD = 0x0200
 PA_SUBSCRIPTION_MASK_ALL = 0x02ff
+PA_VOLUME_MUTED = 0
+PA_VOLUME_NORM = 0x10000
 
 pa_io_event_flags_t = c_int
 pa_context_flags_t = c_int
@@ -311,7 +313,8 @@ pa_context_get_sink_input_info.argtypes = [POINTER(pa_context), c_uint32,
 pa_context_get_sink_input_info_list = lib.pa_context_get_sink_input_info_list
 pa_context_get_sink_input_info_list.restype = POINTER(pa_operation)
 pa_context_get_sink_input_info_list.argtypes = [POINTER(pa_context),
-                                                pa_sink_input_info_cb_t, c_void_p]
+                                                pa_sink_input_info_cb_t,
+                                                c_void_p]
 
 pa_context_get_client_info_list = lib.pa_context_get_client_info_list
 pa_context_get_client_info_list.restype = POINTER(pa_operation)
@@ -321,6 +324,12 @@ pa_context_get_client_info_list.argtypes = [POINTER(pa_context),
 pa_operation_get_state = lib.pa_operation_get_state
 pa_operation_get_state.restype = pa_operation_state_t
 pa_operation_get_state.argtypes = [POINTER(pa_operation)]
+
+pa_context_set_sink_input_volume = lib.pa_context_set_sink_input_volume
+pa_context_set_sink_input_volume.restype = POINTER(pa_operation)
+pa_context_set_sink_input_volume.argtypes = [POINTER(pa_context), c_uint32,
+                                             POINTER(pa_cvolume),
+                                             pa_context_success_cb_t, c_void_p]
 
 pa_context_load_module = lib.pa_context_load_module
 pa_context_load_module.restype = POINTER(pa_operation)
