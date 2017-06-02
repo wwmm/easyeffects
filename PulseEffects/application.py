@@ -116,6 +116,10 @@ class Application(Gtk.Application):
 
         buffer_time_obj.set_value(buffer_time)
 
+        # sink rate label
+        sink_rate_label = self.builder.get_object('sink_rate')
+        sink_rate_label.set_text(str(self.pm.default_sink_rate) + ' Hz')
+
         # now that all elements were initialized we set pipeline to ready
         self.gst.set_state('ready')
 
