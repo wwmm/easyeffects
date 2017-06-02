@@ -175,14 +175,14 @@ class PulseManager(GObject.GObject):
             else:
                 media_name = media_name.decode()
 
-            if not icon_name:
-                icon_name = 'audio-x-generic-symbolic'
-            else:
-                icon_name = icon_name.decode()
-
             if (app_name not in self.app_blacklist and
                     media_name not in self.media_blacklist):
                 connected = False
+
+                if not icon_name:
+                    icon_name = 'audio-x-generic-symbolic'
+                else:
+                    icon_name = icon_name.decode()
 
                 if connected_sink_idx == self.sink_idx:
                     connected = True
@@ -193,9 +193,13 @@ class PulseManager(GObject.GObject):
                 max_volume = p.pa_cvolume_max(volume)
                 max_volume_dB = p.pa_sw_volume_to_dB(max_volume)
 
+                resample_method = info.contents.resample_method.decode()
+                sample_spec = info.contents.sample_spec
+                rate = sample_spec.rate
+
                 new_input = [idx, app_name, media_name,
-                             icon_name, audio_channels, max_volume_dB,
-                             connected]
+                             icon_name, audio_channels, max_volume_dB, rate,
+                             resample_method, connected]
 
                 list_idx = 0
                 have_this_input = False

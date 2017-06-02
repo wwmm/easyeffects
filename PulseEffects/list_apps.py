@@ -33,7 +33,9 @@ class ListApps():
         icon_name = sink_input_parameters[3]
         audio_channels = sink_input_parameters[4]
         max_volume_dB = sink_input_parameters[5]
-        connected = sink_input_parameters[6]
+        rate = sink_input_parameters[6]
+        resample_method = sink_input_parameters[7]
+        connected = sink_input_parameters[8]
 
         app_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=2)
         app_box.set_name('app_box_' + str(idx))
@@ -60,6 +62,12 @@ class ListApps():
 
         info_box.pack_start(label, True, True, 0)
 
+        # rate and resample method
+        label_text = str(rate) + ' Hz, ' + resample_method
+        label = Gtk.Label(label_text, xalign=0)
+
+        info_box.pack_end(label, False, False, 0)
+
         # switch
         switch = Gtk.Switch()
 
@@ -79,7 +87,6 @@ class ListApps():
         control_box.pack_end(switch, False, False, 0)
 
         # volume
-
         volume_adjustment = Gtk.Adjustment(0, -100, 0, 1, 5, 0)
 
         volume_scale = Gtk.Scale(orientation=Gtk.Orientation.HORIZONTAL,
