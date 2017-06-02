@@ -35,14 +35,22 @@ class ListApps():
         max_volume_dB = sink_input_parameters[5]
         connected = sink_input_parameters[6]
 
-        hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=2)
-        hbox.set_name('app_box_' + str(idx))
+        app_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=2)
+        app_box.set_name('app_box_' + str(idx))
+        app_box.set_homogeneous(True)
+
+        info_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=2)
+        control_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL,
+                              spacing=0)
+
+        app_box.pack_start(info_box, True, True, 0)
+        app_box.pack_end(control_box, True, True, 0)
 
         # app icon
         icon_size = Gtk.IconSize.BUTTON
         icon = Gtk.Image.new_from_icon_name(icon_name, icon_size)
 
-        hbox.pack_start(icon, False, False, 0)
+        info_box.pack_start(icon, False, False, 0)
 
         # label
         label_text = '<b>' + app_name + '</b>' + ': ' + media_name
@@ -50,7 +58,7 @@ class ListApps():
         label = Gtk.Label(label_text, xalign=0)
         label.set_use_markup(True)
 
-        hbox.pack_start(label, True, True, 0)
+        info_box.pack_start(label, True, True, 0)
 
         # switch
         switch = Gtk.Switch()
@@ -68,7 +76,7 @@ class ListApps():
 
         switch.connect('state-set', move_sink_input)
 
-        hbox.pack_end(switch, False, False, 0)
+        control_box.pack_end(switch, False, False, 0)
 
         # volume
 
@@ -91,9 +99,9 @@ class ListApps():
 
         volume_scale.connect('value-changed', set_sink_input_volume)
 
-        hbox.pack_end(volume_scale, True, True, 0)
+        control_box.pack_end(volume_scale, True, True, 0)
 
-        self.apps_box.add(hbox)
+        self.apps_box.add(app_box)
 
     def build_apps_list(self):
         children = self.apps_box.get_children()
