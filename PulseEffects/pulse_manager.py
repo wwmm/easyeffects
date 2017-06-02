@@ -159,20 +159,11 @@ class PulseManager(GObject.GObject):
             idx = info.contents.index
             connected_sink_idx = info.contents.sink
 
-            volume = info.contents.volume
             proplist = info.contents.proplist
 
             app_name = p.pa_proplist_gets(proplist, b'application.name')
             media_name = p.pa_proplist_gets(proplist, b'media.name')
             icon_name = p.pa_proplist_gets(proplist, b'application.icon_name')
-
-            max_vol = p.pa_cvolume_max(volume)
-            print(p.pa_sw_volume_to_dB(max_vol))
-            # if len(self.sink_inputs) > 1:
-            #     print(self.sink_inputs[1][4])
-            #     print(volume)
-            #     print([self.sink_inputs[1][1], self.sink_inputs[1][4].values[0]],
-            #           [app_name, volume.values[0]])
 
             if not app_name:
                 app_name = ''
@@ -196,8 +187,13 @@ class PulseManager(GObject.GObject):
                 if connected_sink_idx == self.sink_idx:
                     connected = True
 
+                volume = info.contents.volume
+
+                max_volume = p.pa_cvolume_max(volume)
+                max_volume_dB = p.pa_sw_volume_to_dB(max_volume)
+
                 new_input = [idx, app_name, media_name,
-                             icon_name, volume, connected]
+                             icon_name, max_volume_dB, connected]
                 list_idx = 0
                 have_this_input = False
 
@@ -281,19 +277,22 @@ class PulseManager(GObject.GObject):
                                              self.default_sink_name.encode(),
                                              self.ctx_success_cb, None)
 
-    def get_max_volume(self, volume):
-        return p.pa_cvolume_max(volume)
+    def set_sink_input_volume(self, idx, value_dB):
+        cvolume = p.pa_cvolume()
+        cvolume.channels = 2
 
-    def volume_to_dB(self, raw_volume):
-        return p.pa_sw_volume_to_dB(raw_volume)
+        value = p.pa_sw_volume_from_dB(value_dB)
 
-    def set_sink_input_volume(self, idx, volume):
-        pass
+        cvolume_ptr = p.pa_cvolume_set(p.get_pointer(cvolume), 2, value)
+
+        p.pa_context_set_sink_input_volume(self.ctx, idx, cvolume_ptr,
+                                           self.ctx_success_cb, None)
 
     def subscribe(self, context, event_value, idx, user_data):
         event_type = event_value & p.PA_SUBSCRIPTION_EVENT_TYPE_MASK
 
         if event_type == p.PA_SUBSCRIPTION_EVENT_REMOVE:
+            print('remove')
             p.pa_context_get_sink_input_info(self.ctx, idx,
                                              self.sink_input_info_cb,
                                              idx)

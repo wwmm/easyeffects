@@ -39,7 +39,7 @@ class ListApps():
             app_name = i[1]
             media_name = i[2]
             icon_name = i[3]
-            volume = i[4]
+            max_volume_dB = i[4]
             connected = i[5]
 
             row = Gtk.ListBoxRow()
@@ -89,10 +89,16 @@ class ListApps():
             volume_scale.set_digits(2)
             volume_scale.set_value_pos(Gtk.PositionType.RIGHT)
             volume_scale.set_hexpand(True)
+            volume_scale.set_name('volume_' + str(idx))
 
-            max_volume = self.pm.get_max_volume(volume)
+            volume_adjustment.set_value(max_volume_dB)
 
-            volume_adjustment.set_value(self.pm.volume_to_dB(max_volume))
+            def set_sink_input_volume(obj):
+                idx = int(obj.get_name().split('_')[1])
+
+                self.pm.set_sink_input_volume(idx, obj.get_value())
+
+            volume_scale.connect('value-changed', set_sink_input_volume)
 
             hbox.pack_end(volume_scale, True, True, 0)
 

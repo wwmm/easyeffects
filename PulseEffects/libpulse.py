@@ -1,9 +1,14 @@
 # -*- coding: utf-8 -*-
 
-from ctypes import (CFUNCTYPE, POINTER, Structure, c_char_p, c_double, c_int,
-                    c_uint8, c_uint32, c_uint64, c_void_p, cdll)
+from ctypes import (CFUNCTYPE, POINTER, Structure, byref, c_char_p, c_double,
+                    c_int, c_uint8, c_uint32, c_uint64, c_void_p, cdll)
 
 lib = cdll.LoadLibrary("libpulse.so.0")
+
+
+def get_pointer(obj):
+    return byref(obj)
+
 
 # enumerators
 
@@ -377,6 +382,14 @@ pa_cvolume_max.argtypes = [POINTER(pa_cvolume)]
 pa_cvolume_scale = lib.pa_cvolume_scale
 pa_cvolume_scale.restype = POINTER(pa_cvolume)
 pa_cvolume_scale.argtypes = [POINTER(pa_cvolume), pa_volume_t]
+
+pa_cvolume_set = lib.pa_cvolume_set
+pa_cvolume_set.restype = POINTER(pa_cvolume)
+pa_cvolume_set.argtypes = [POINTER(pa_cvolume), c_uint8, pa_volume_t]
+
+pa_sw_volume_from_dB = lib.pa_sw_volume_from_dB
+pa_sw_volume_from_dB.restype = pa_volume_t
+pa_sw_volume_from_dB.argtypes = [c_double]
 
 pa_sw_volume_to_dB = lib.pa_sw_volume_to_dB
 pa_sw_volume_to_dB.restype = c_double
