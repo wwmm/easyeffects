@@ -188,12 +188,15 @@ class PulseManager(GObject.GObject):
                     connected = True
 
                 volume = info.contents.volume
+                audio_channels = volume.channels
 
                 max_volume = p.pa_cvolume_max(volume)
                 max_volume_dB = p.pa_sw_volume_to_dB(max_volume)
 
                 new_input = [idx, app_name, media_name,
-                             icon_name, max_volume_dB, connected]
+                             icon_name, audio_channels, max_volume_dB,
+                             connected]
+
                 list_idx = 0
                 have_this_input = False
 
@@ -267,7 +270,7 @@ class PulseManager(GObject.GObject):
             else:
                 self.log.critical('Could not load sink')
 
-    def grab_input(self, idx):
+    def move_input_to_pulseeffects_sink(self, idx):
         p.pa_context_move_sink_input_by_index(self.ctx, idx,
                                               self.sink_idx,
                                               self.ctx_success_cb, None)
@@ -277,13 +280,14 @@ class PulseManager(GObject.GObject):
                                              self.default_sink_name.encode(),
                                              self.ctx_success_cb, None)
 
-    def set_sink_input_volume(self, idx, value_dB):
+    def set_sink_input_volume(self, idx, audio_channels, value_dB):
         cvolume = p.pa_cvolume()
-        cvolume.channels = 2
+        cvolume.channels = audio_channels
 
         value = p.pa_sw_volume_from_dB(value_dB)
 
-        cvolume_ptr = p.pa_cvolume_set(p.get_pointer(cvolume), 2, value)
+        cvolume_ptr = p.pa_cvolume_set(p.get_pointer(cvolume), audio_channels,
+                                       value)
 
         p.pa_context_set_sink_input_volume(self.ctx, idx, cvolume_ptr,
                                            self.ctx_success_cb, None)
@@ -292,7 +296,6 @@ class PulseManager(GObject.GObject):
         event_type = event_value & p.PA_SUBSCRIPTION_EVENT_TYPE_MASK
 
         if event_type == p.PA_SUBSCRIPTION_EVENT_REMOVE:
-            print('remove')
             p.pa_context_get_sink_input_info(self.ctx, idx,
                                              self.sink_input_info_cb,
                                              idx)

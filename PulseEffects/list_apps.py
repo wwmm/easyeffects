@@ -26,6 +26,75 @@ class ListApps():
     def init(self):
         self.build_apps_list()
 
+    def add_sink_input(self, sink_input_parameters):
+        idx = sink_input_parameters[0]
+        app_name = sink_input_parameters[1]
+        media_name = sink_input_parameters[2]
+        icon_name = sink_input_parameters[3]
+        audio_channels = sink_input_parameters[4]
+        max_volume_dB = sink_input_parameters[5]
+        connected = sink_input_parameters[6]
+
+        hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=2)
+        hbox.set_name('app_box_' + str(idx))
+
+        # app icon
+        icon_size = Gtk.IconSize.BUTTON
+        icon = Gtk.Image.new_from_icon_name(icon_name, icon_size)
+
+        hbox.pack_start(icon, False, False, 0)
+
+        # label
+        label_text = '<b>' + app_name + '</b>' + ': ' + media_name
+
+        label = Gtk.Label(label_text, xalign=0)
+        label.set_use_markup(True)
+
+        hbox.pack_start(label, True, True, 0)
+
+        # switch
+        switch = Gtk.Switch()
+
+        switch.set_active(connected)
+        switch.set_name('switch_' + str(idx))
+
+        def move_sink_input(obj, state):
+            idx = int(obj.get_name().split('_')[1])
+
+            if state:
+                self.pm.move_input_to_pulseeffects_sink(idx)
+            else:
+                self.pm.move_input_to_default_sink(idx)
+
+        switch.connect('state-set', move_sink_input)
+
+        hbox.pack_end(switch, False, False, 0)
+
+        # volume
+
+        volume_adjustment = Gtk.Adjustment(0, -100, 0, 1, 5, 0)
+
+        volume_scale = Gtk.Scale(orientation=Gtk.Orientation.HORIZONTAL,
+                                 adjustment=volume_adjustment)
+        volume_scale.set_digits(1)
+        volume_scale.set_value_pos(Gtk.PositionType.RIGHT)
+        volume_scale.set_name('volume_' + str(idx) + '_' + str(audio_channels))
+
+        volume_adjustment.set_value(max_volume_dB)
+
+        def set_sink_input_volume(obj):
+            data = obj.get_name().split('_')
+            idx = int(data[1])
+            audio_channels = int(data[2])
+
+            self.pm.set_sink_input_volume(idx, audio_channels, obj.get_value())
+
+        volume_scale.connect('value-changed', set_sink_input_volume)
+
+        hbox.pack_end(volume_scale, True, True, 0)
+
+        self.apps_box.add(hbox)
+
     def build_apps_list(self):
         children = self.apps_box.get_children()
 
@@ -35,74 +104,7 @@ class ListApps():
         sink_inputs = self.pm.sink_inputs
 
         for i in sink_inputs:
-            idx = i[0]
-            app_name = i[1]
-            media_name = i[2]
-            icon_name = i[3]
-            max_volume_dB = i[4]
-            connected = i[5]
-
-            row = Gtk.ListBoxRow()
-
-            hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=2)
-
-            row.add(hbox)
-
-            # app icon
-            icon_size = Gtk.IconSize.BUTTON
-            icon = Gtk.Image.new_from_icon_name(icon_name, icon_size)
-
-            hbox.pack_start(icon, False, False, 0)
-
-            # label
-            label_text = '<b>' + app_name + '</b>' + ': ' + media_name
-
-            label = Gtk.Label(label_text, xalign=0)
-            label.set_use_markup(True)
-
-            hbox.pack_start(label, True, True, 0)
-
-            # switch
-            switch = Gtk.Switch()
-
-            switch.set_active(connected)
-            switch.set_name('switch_' + str(idx))
-
-            def move_sink_input(obj, state):
-                idx = int(obj.get_name().split('_')[1])
-
-                if state:
-                    self.pm.grab_input(idx)
-                else:
-                    self.pm.move_input_to_default_sink(idx)
-
-            switch.connect('state-set', move_sink_input)
-
-            hbox.pack_end(switch, False, False, 0)
-
-            # volume
-
-            volume_adjustment = Gtk.Adjustment(0, -100, 0, 1, 10, 0)
-
-            volume_scale = Gtk.Scale(orientation=Gtk.Orientation.HORIZONTAL,
-                                     adjustment=volume_adjustment)
-            volume_scale.set_digits(2)
-            volume_scale.set_value_pos(Gtk.PositionType.RIGHT)
-            volume_scale.set_hexpand(True)
-            volume_scale.set_name('volume_' + str(idx))
-
-            volume_adjustment.set_value(max_volume_dB)
-
-            def set_sink_input_volume(obj):
-                idx = int(obj.get_name().split('_')[1])
-
-                self.pm.set_sink_input_volume(idx, obj.get_value())
-
-            volume_scale.connect('value-changed', set_sink_input_volume)
-
-            hbox.pack_end(volume_scale, True, True, 0)
-
-            self.apps_box.add(row)
+            self.add_sink_input(i)
 
         self.apps_box.show_all()
 
