@@ -87,7 +87,7 @@ class ListApps():
         control_box.pack_end(switch, False, False, 0)
 
         # volume
-        volume_adjustment = Gtk.Adjustment(0, -100, 0, 1, 5, 0)
+        volume_adjustment = Gtk.Adjustment(0, -100, 0, 1, 2, 0)
 
         volume_scale = Gtk.Scale(orientation=Gtk.Orientation.HORIZONTAL,
                                  adjustment=volume_adjustment)
