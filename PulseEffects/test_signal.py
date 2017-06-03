@@ -13,6 +13,7 @@ class TestSignal():
     def __init__(self, app):
         self.app = app
         self.app_builder = app.builder
+        self.app_gst = app.gst
         self.module_path = app.module_path
 
         self.pipeline = self.build_pipeline()
@@ -159,6 +160,10 @@ class TestSignal():
         if state:
             self.app.generating_test_signal = True
             self.init_elements()
+
+            if not self.app_gst.is_playing:
+                self.app_gst.set_state('playing')
+
             self.set_state('playing')
         else:
             self.app.generating_test_signal = False

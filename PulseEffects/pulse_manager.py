@@ -10,7 +10,13 @@ class PulseManager(GObject.GObject):
 
     __gsignals__ = {
         'sink_inputs_changed': (GObject.SIGNAL_RUN_FIRST, None,
-                                ())
+                                ()),
+        'sink_input_added': (GObject.SIGNAL_RUN_FIRST, None,
+                             (object,)),
+        'sink_input_changed': (GObject.SIGNAL_RUN_FIRST, None,
+                               (object,)),
+        'sink_input_removed': (GObject.SIGNAL_RUN_FIRST, None,
+                               (int,))
     }
 
     def __init__(self):
@@ -148,13 +154,6 @@ class PulseManager(GObject.GObject):
             self.sink_is_loaded = True
 
     def sink_input_info(self, context, info, eol, user_data):
-        if eol == -1:
-            for s in self.sink_inputs:
-                if s[0] == user_data:
-                    self.sink_inputs.remove(s)
-                    GLib.idle_add(self.emit, 'sink_inputs_changed')
-                    break
-
         if info:
             idx = info.contents.index
             connected_sink_idx = info.contents.sink
@@ -201,23 +200,10 @@ class PulseManager(GObject.GObject):
                              icon_name, audio_channels, max_volume_dB, rate,
                              resample_method, connected]
 
-                list_idx = 0
-                have_this_input = False
-
-                for s in self.sink_inputs:
-                    if s[0] == idx:
-                        have_this_input = True
-                        break
-
-                    list_idx = list_idx + 1
-
-                if have_this_input:  # update sink input
-                    self.sink_inputs[list_idx] = new_input
-                else:
-                    self.sink_inputs.append(new_input)
-
-        if eol == 1:
-            GLib.idle_add(self.emit, 'sink_inputs_changed')
+                if user_data == 1:
+                    GLib.idle_add(self.emit, 'sink_input_added', new_input)
+                elif user_data == 2:
+                    GLib.idle_add(self.emit, 'sink_input_changed', new_input)
 
     def load_sink_info(self):
         sink_name = 'PulseEffects'
@@ -274,6 +260,11 @@ class PulseManager(GObject.GObject):
             else:
                 self.log.critical('Could not load sink')
 
+    def find_sink_inputs(self):
+        p.pa_context_get_sink_input_info_list(self.ctx,
+                                              self.sink_input_info_cb,
+                                              1)  # 1 for new
+
     def move_input_to_pulseeffects_sink(self, idx):
         p.pa_context_move_sink_input_by_index(self.ctx, idx,
                                               self.sink_idx,
@@ -299,15 +290,16 @@ class PulseManager(GObject.GObject):
     def subscribe(self, context, event_value, idx, user_data):
         event_type = event_value & p.PA_SUBSCRIPTION_EVENT_TYPE_MASK
 
-        if event_type == p.PA_SUBSCRIPTION_EVENT_REMOVE:
+        if event_type == p.PA_SUBSCRIPTION_EVENT_NEW:
             p.pa_context_get_sink_input_info(self.ctx, idx,
                                              self.sink_input_info_cb,
-                                             idx)
-        elif (event_type == p.PA_SUBSCRIPTION_EVENT_NEW or
-              event_type == p.PA_SUBSCRIPTION_EVENT_CHANGE):
+                                             1)  # 1 for new
+        elif event_type == p.PA_SUBSCRIPTION_EVENT_CHANGE:
             p.pa_context_get_sink_input_info(self.ctx, idx,
                                              self.sink_input_info_cb,
-                                             None)
+                                             2)  # 2 for changes
+        elif event_type == p.PA_SUBSCRIPTION_EVENT_REMOVE:
+            GLib.idle_add(self.emit, 'sink_input_removed', idx)
 
     def ctx_success(self, context, success, user_data):
         if not success:

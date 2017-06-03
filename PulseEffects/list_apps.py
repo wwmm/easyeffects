@@ -19,14 +19,16 @@ class ListApps():
 
         self.log = logging.getLogger('PulseEffects')
 
-        self.pm.connect('sink_inputs_changed', self.on_sink_inputs_changed)
+        self.pm.connect('sink_input_added', self.on_sink_input_added)
+        self.pm.connect('sink_input_changed', self.on_sink_input_changed)
+        self.pm.connect('sink_input_removed', self.on_sink_input_removed)
 
         self.apps_box = self.builder.get_object('apps_box')
 
     def init(self):
-        self.build_apps_list()
+        pass
 
-    def add_sink_input(self, sink_input_parameters):
+    def init_sink_input_ui(self, app_box, sink_input_parameters):
         idx = sink_input_parameters[0]
         app_name = sink_input_parameters[1]
         media_name = sink_input_parameters[2]
@@ -37,7 +39,6 @@ class ListApps():
         resample_method = sink_input_parameters[7]
         connected = sink_input_parameters[8]
 
-        app_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=2)
         app_box.set_name('app_box_' + str(idx))
         app_box.set_homogeneous(True)
 
@@ -108,27 +109,53 @@ class ListApps():
 
         control_box.pack_end(volume_scale, True, True, 0)
 
-        self.apps_box.add(app_box)
-
-    def build_apps_list(self):
-        children = self.apps_box.get_children()
-
-        for child in children:
-            self.apps_box.remove(child)
-
-        sink_inputs = self.pm.sink_inputs
-
-        for i in sink_inputs:
-            self.add_sink_input(i)
-
-        self.apps_box.show_all()
-
-    def on_sink_inputs_changed(self, obj):
+    def on_sink_input_added(self, obj, sink_input_parameters):
         if self.app.ui_initialized:
-            self.build_apps_list()
+            app_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL,
+                              spacing=2)
 
-        if len(self.pm.sink_inputs) > 0 or self.app.generating_test_signal:
+            self.init_sink_input_ui(app_box, sink_input_parameters)
+
+            self.apps_box.add(app_box)
+
+            self.apps_box.show_all()
+
             if not self.gst.is_playing:
                 self.gst.set_state('playing')
-        else:
-            self.gst.set_state('paused')
+                self.log.info('pipeline state: playing')
+
+    def on_sink_input_changed(self, obj, sink_input_parameters):
+        if self.app.ui_initialized:
+            idx = sink_input_parameters[0]
+
+            children = self.apps_box.get_children()
+
+            for child in children:
+                child_name = child.get_name()
+
+                if child_name == 'app_box_' + str(idx):
+                    for c in child.get_children():
+                        child.remove(c)
+
+                    self.init_sink_input_ui(child, sink_input_parameters)
+
+                    self.apps_box.show_all()
+
+                    break
+
+    def on_sink_input_removed(self, obj, idx):
+        if self.app.ui_initialized:
+            children = self.apps_box.get_children()
+
+            for child in children:
+                child_name = child.get_name()
+
+                if child_name == 'app_box_' + str(idx):
+                    self.apps_box.remove(child)
+
+                    break
+
+            if (len(self.apps_box.get_children()) == 0 and
+                    not self.app.generating_test_signal):
+                self.gst.set_state('paused')
+                self.log.info('pipeline state: paused')
