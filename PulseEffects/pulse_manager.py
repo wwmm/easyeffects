@@ -232,7 +232,13 @@ class PulseManager(GObject.GObject):
                 max_volume = p.pa_cvolume_max(volume)
                 max_volume_dB = 100 * p.pa_sw_volume_to_linear(max_volume)
 
-                resample_method = info.contents.resample_method.decode()
+                resample_method = info.contents.resample_method
+
+                if resample_method:
+                    resample_method = resample_method.decode()
+                else:
+                    resample_method = 'null'
+
                 sample_spec = info.contents.sample_spec
                 rate = sample_spec.rate
                 sample_format = self.get_sample_spec_format(sample_spec.format)
