@@ -107,6 +107,26 @@
       </packing>
     </child>
     <child>
+      <object class="GtkSeparator">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+      </object>
+      <packing>
+        <property name="position">5</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="sink_rate">
+        <property name="visible">True</property>
+        <property name="sensitive">False</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">rate</property>
+      </object>
+      <packing>
+        <property name="position">5</property>
+      </packing>
+    </child>
+    <child>
       <object class="GtkButton" id="settings_popover_button">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
@@ -147,18 +167,6 @@
       <packing>
         <property name="pack_type">end</property>
         <property name="position">4</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="sink_rate">
-        <property name="visible">True</property>
-        <property name="sensitive">False</property>
-        <property name="can_focus">False</property>
-        <property name="label" translatable="yes">rate</property>
-      </object>
-      <packing>
-        <property name="pack_type">end</property>
-        <property name="position">5</property>
       </packing>
     </child>
   </object>

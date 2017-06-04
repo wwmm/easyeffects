@@ -139,6 +139,9 @@ class PulseManager(GObject.GObject):
         if eol == 0:
             if info:
                 self.default_sink_rate = info.contents.sample_spec.rate
+                sample_format = info.contents.sample_spec.format
+                self.default_sink_format = self.get_sample_spec_format(
+                    sample_format)
 
     def sink_info(self, context, info, eol, user_data):
         if eol == -1:
@@ -152,6 +155,36 @@ class PulseManager(GObject.GObject):
                 self.sink_monitor_name = monitor_name
         elif eol == 1:
             self.sink_is_loaded = True
+
+    def get_sample_spec_format(self, code):
+        if code == p.PA_SAMPLE_U8:
+            return 'u8'
+        elif code == p.PA_SAMPLE_ALAW:
+            return 'alaw'
+        elif code == p.PA_SAMPLE_ULAW:
+            return 'ulaw'
+        elif code == p.PA_SAMPLE_S16LE:
+            return 's16le'
+        elif code == p.PA_SAMPLE_S16BE:
+            return 's16be'
+        elif code == p.PA_SAMPLE_FLOAT32LE:
+            return 'float32le'
+        elif code == p.PA_SAMPLE_FLOAT32BE:
+            return 'float32be'
+        elif code == p.PA_SAMPLE_S32LE:
+            return 's32le'
+        elif code == p.PA_SAMPLE_S32BE:
+            return 's32Be'
+        elif code == p.PA_SAMPLE_S24LE:
+            return 's24le'
+        elif code == p.PA_SAMPLE_S24BE:
+            return 's24be'
+        elif code == p.PA_SAMPLE_S24_32LE:
+            return 's24_32le'
+        elif code == p.PA_SAMPLE_S24_32BE:
+            return 's24_32be'
+        else:
+            return ''
 
     def sink_input_info(self, context, info, eol, user_data):
         if info:
@@ -195,10 +228,11 @@ class PulseManager(GObject.GObject):
                 resample_method = info.contents.resample_method.decode()
                 sample_spec = info.contents.sample_spec
                 rate = sample_spec.rate
+                sample_format = self.get_sample_spec_format(sample_spec.format)
 
                 new_input = [idx, app_name, media_name,
                              icon_name, audio_channels, max_volume_dB, rate,
-                             resample_method, connected]
+                             resample_method, sample_format, connected]
 
                 if user_data == 1:
                     GLib.idle_add(self.emit, 'sink_input_added', new_input)

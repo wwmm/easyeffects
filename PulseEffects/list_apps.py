@@ -4,7 +4,7 @@ import logging
 
 import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk
+from gi.repository import Gtk, Pango
 
 
 class ListApps():
@@ -38,12 +38,13 @@ class ListApps():
         max_volume_dB = sink_input_parameters[5]
         rate = sink_input_parameters[6]
         resample_method = sink_input_parameters[7]
-        connected = sink_input_parameters[8]
+        sample_format = sink_input_parameters[8]
+        connected = sink_input_parameters[9]
 
         app_box.set_name('app_box_' + str(idx))
         app_box.set_homogeneous(True)
 
-        info_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=2)
+        info_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
         control_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL,
                               spacing=0)
 
@@ -61,14 +62,17 @@ class ListApps():
 
         label = Gtk.Label(label_text, xalign=0)
         label.set_use_markup(True)
+        label.set_ellipsize(Pango.EllipsizeMode.END)
 
         info_box.pack_start(label, True, True, 0)
 
-        # rate and resample method
-        label_text = str(rate) + ' Hz, ' + resample_method
+        # format, rate and resample method
+        label_text = sample_format + ', ' + \
+            str(rate) + ' Hz, ' + resample_method
+
         label = Gtk.Label(label_text, xalign=0)
 
-        info_box.pack_end(label, False, False, 0)
+        info_box.pack_end(label, False, False, 10)
 
         # switch
         switch = Gtk.Switch()
