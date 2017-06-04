@@ -88,6 +88,9 @@ class PulseManager(GObject.GObject):
 
         p.pa_operation_unref(o)
 
+        self.log.info('default pulseaudio sink audio format: ' +
+                      str(self.default_sink_format) +
+                      '. We will use the same format.')
         self.log.info('default pulseaudio sink sampling rate: ' +
                       str(self.default_sink_rate) +
                       ' Hz. We will use the same rate.')
@@ -139,7 +142,9 @@ class PulseManager(GObject.GObject):
         if eol == 0:
             if info:
                 self.default_sink_rate = info.contents.sample_spec.rate
+
                 sample_format = info.contents.sample_spec.format
+
                 self.default_sink_format = self.get_sample_spec_format(
                     sample_format)
 
@@ -183,8 +188,10 @@ class PulseManager(GObject.GObject):
             return 's24_32le'
         elif code == p.PA_SAMPLE_S24_32BE:
             return 's24_32be'
-        else:
-            return ''
+        elif code == p.PA_SAMPLE_MAX:
+            return 'pa_max'
+        elif code == p.PA_SAMPLE_INVALID:
+            return 'invalid'
 
     def sink_input_info(self, context, info, eol, user_data):
         if info:
@@ -223,7 +230,7 @@ class PulseManager(GObject.GObject):
                 audio_channels = volume.channels
 
                 max_volume = p.pa_cvolume_max(volume)
-                max_volume_dB = p.pa_sw_volume_to_dB(max_volume)
+                max_volume_dB = 100 * p.pa_sw_volume_to_linear(max_volume)
 
                 resample_method = info.contents.resample_method.decode()
                 sample_spec = info.contents.sample_spec
@@ -261,6 +268,7 @@ class PulseManager(GObject.GObject):
             args = []
 
             sink_properties = 'device.description=\'PulseEffects\''
+            sink_properties += 'device.class=\'sound\''
 
             args.append('sink_name=' + sink_name)
             args.append('sink_properties=' + sink_properties)
@@ -272,7 +280,7 @@ class PulseManager(GObject.GObject):
             module = b'module-null-sink'
 
             def module_idx(context, idx, user_data):
-                self.log.info('sink idx: ' + str(idx))
+                self.log.info('sink owner module index: ' + str(idx))
 
             self.module_idx_cb = p.pa_context_index_cb_t(module_idx)
 
@@ -288,6 +296,7 @@ class PulseManager(GObject.GObject):
 
             if self.sink_is_loaded:
                 self.log.info('Pulseeffects sink was successfully loaded')
+                self.log.info('Pulseeffects sink index:' + str(self.sink_idx))
                 self.log.info('Pulseeffects sink monitor name: ' +
                               self.sink_monitor_name +
                               '. We will process audio from this source.')
@@ -309,14 +318,14 @@ class PulseManager(GObject.GObject):
                                              self.default_sink_name.encode(),
                                              self.ctx_success_cb, None)
 
-    def set_sink_input_volume(self, idx, audio_channels, value_dB):
+    def set_sink_input_volume(self, idx, audio_channels, value):
         cvolume = p.pa_cvolume()
         cvolume.channels = audio_channels
 
-        value = p.pa_sw_volume_from_dB(value_dB)
+        raw_value = p.pa_sw_volume_from_linear(value / 100.0)
 
         cvolume_ptr = p.pa_cvolume_set(p.get_pointer(cvolume), audio_channels,
-                                       value)
+                                       raw_value)
 
         p.pa_context_set_sink_input_volume(self.ctx, idx, cvolume_ptr,
                                            self.ctx_success_cb, None)

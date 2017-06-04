@@ -71,8 +71,9 @@ class ListApps():
             str(rate) + ' Hz, ' + resample_method
 
         label = Gtk.Label(label_text, xalign=0)
+        label.set_margin_left(5)
 
-        info_box.pack_end(label, False, False, 10)
+        info_box.pack_end(label, False, False, 0)
 
         # switch
         switch = Gtk.Switch()
@@ -93,11 +94,11 @@ class ListApps():
         control_box.pack_end(switch, False, False, 0)
 
         # volume
-        volume_adjustment = Gtk.Adjustment(0, -100, 0, 1, 2, 0)
+        volume_adjustment = Gtk.Adjustment(0, 0, 100, 1, 5, 0)
 
         volume_scale = Gtk.Scale(orientation=Gtk.Orientation.HORIZONTAL,
                                  adjustment=volume_adjustment)
-        volume_scale.set_digits(1)
+        volume_scale.set_digits(0)
         volume_scale.set_value_pos(Gtk.PositionType.RIGHT)
         volume_scale.set_name('volume_' + str(idx) + '_' + str(audio_channels))
 
@@ -125,7 +126,7 @@ class ListApps():
     def on_sink_input_added(self, obj, sink_input_parameters):
         if self.app.ui_initialized:
             app_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL,
-                              spacing=2)
+                              spacing=0)
 
             self.init_sink_input_ui(app_box, sink_input_parameters)
 
