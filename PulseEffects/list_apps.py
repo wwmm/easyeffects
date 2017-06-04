@@ -15,6 +15,7 @@ class ListApps():
         self.pm = app.pm
         self.gst = app.gst
 
+        self.changing_sink_input_volume = False
         self.handlers = {}
 
         self.log = logging.getLogger('PulseEffects')
@@ -105,6 +106,14 @@ class ListApps():
 
             self.pm.set_sink_input_volume(idx, audio_channels, obj.get_value())
 
+        def slider_pressed(obj, event):
+            self.changing_sink_input_volume = True
+
+        def slider_released(obj, event):
+            self.changing_sink_input_volume = False
+
+        volume_scale.connect('button-press-event', slider_pressed)
+        volume_scale.connect('button-release-event', slider_released)
         volume_scale.connect('value-changed', set_sink_input_volume)
 
         control_box.pack_end(volume_scale, True, True, 0)
@@ -134,12 +143,13 @@ class ListApps():
                 child_name = child.get_name()
 
                 if child_name == 'app_box_' + str(idx):
-                    for c in child.get_children():
-                        child.remove(c)
+                    if not self.changing_sink_input_volume:
+                        for c in child.get_children():
+                            child.remove(c)
 
-                    self.init_sink_input_ui(child, sink_input_parameters)
+                        self.init_sink_input_ui(child, sink_input_parameters)
 
-                    self.apps_box.show_all()
+                        self.apps_box.show_all()
 
                     break
 
