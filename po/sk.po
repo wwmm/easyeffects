@@ -1,0 +1,226 @@
+# Slovak translation for Pulseeffects.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Dušan Kazik <prescott66@gmail.com>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-03 09:19+0200\n"
+"PO-Revision-Date: 2017-06-03 09:39+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.1\n"
+"Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Language: sk\n"
+
+#: ../PulseEffects/ui/main_ui.glade:46
+msgid "no compression"
+msgstr "Bez kompresie"
+
+#: ../PulseEffects/ui/main_ui.glade:253
+msgid "default"
+msgstr "Predvolený"
+
+#: ../PulseEffects/ui/main_ui.glade:312
+#: ../PulseEffects/ui/equalizer_menu.glade:45
+msgid "Presets"
+msgstr "Predvoľby"
+
+#: ../PulseEffects/ui/main_ui.glade:326
+msgid "cathedral"
+msgstr "Chrám"
+
+#: ../PulseEffects/ui/main_ui.glade:342
+msgid "engine room"
+msgstr "Strojovňa"
+
+#: ../PulseEffects/ui/main_ui.glade:358
+msgid "no reverberation"
+msgstr "Bez ozveny"
+
+#: ../PulseEffects/ui/main_ui.glade:374
+msgid "small room"
+msgstr "Malá miestnosť"
+
+#: ../PulseEffects/ui/main_ui.glade:698
+msgid "Equalizer"
+msgstr "Ekvalizér"
+
+#: ../PulseEffects/ui/main_ui.glade:726
+msgid "Pre"
+msgstr "Predzosilnenie"
+
+#: ../PulseEffects/ui/main_ui.glade:1187 ../PulseEffects/ui/main_ui.glade:1554
+#: ../PulseEffects/ui/main_ui.glade:1878 ../PulseEffects/ui/main_ui.glade:2363
+msgid "Output"
+msgstr "Výstup"
+
+#: ../PulseEffects/ui/main_ui.glade:1331
+msgid "Input Limiter"
+msgstr "Vstupný obmedzovač"
+
+#: ../PulseEffects/ui/main_ui.glade:1371
+msgid "Input Gain [dB]"
+msgstr "Vstupné zosilnenie [dB]"
+
+#: ../PulseEffects/ui/main_ui.glade:1398
+msgid "Limit [dB]"
+msgstr "Obmedzenie [dB]"
+
+#: ../PulseEffects/ui/main_ui.glade:1425
+msgid "Release [s]"
+msgstr "Uvoľnenie [s]"
+
+#: ../PulseEffects/ui/main_ui.glade:1453
+msgid "Input"
+msgstr "Vstup"
+
+#: ../PulseEffects/ui/main_ui.glade:1655
+msgid "Attenuation"
+msgstr "Zoslabenie"
+
+#: ../PulseEffects/ui/main_ui.glade:1729
+msgid "Reverberation"
+msgstr "Ozvena"
+
+#: ../PulseEffects/ui/main_ui.glade:1769
+msgid "Room Size"
+msgstr "Veľkosť miestnosti"
+
+#: ../PulseEffects/ui/main_ui.glade:1796
+msgid "Damping"
+msgstr "Tlmenie"
+
+#: ../PulseEffects/ui/main_ui.glade:1823
+msgid "Width"
+msgstr "Šírka"
+
+#: ../PulseEffects/ui/main_ui.glade:1850
+msgid "Level"
+msgstr "Úroveň"
+
+#: ../PulseEffects/ui/main_ui.glade:2034
+msgid "Compressor"
+msgstr "Kompresor"
+
+#: ../PulseEffects/ui/main_ui.glade:2079
+msgid "Threshold [dB]"
+msgstr "Prah [dB]"
+
+#: ../PulseEffects/ui/main_ui.glade:2106
+msgid "Release [ms]"
+msgstr "Uvoľnenie [ms]"
+
+#: ../PulseEffects/ui/main_ui.glade:2133
+msgid "Attack [ms]"
+msgstr "Nábeh [ms]"
+
+#: ../PulseEffects/ui/main_ui.glade:2162
+msgid "rms"
+msgstr "RMS"
+
+#: ../PulseEffects/ui/main_ui.glade:2178
+msgid "peak"
+msgstr "Špičkový"
+
+#: ../PulseEffects/ui/main_ui.glade:2205
+msgid "Sensing Type"
+msgstr "Typ snímania"
+
+#: ../PulseEffects/ui/main_ui.glade:2217
+msgid "Ratio [n:1]"
+msgstr "Pomer [n:1]"
+
+#: ../PulseEffects/ui/main_ui.glade:2255
+msgid "Knee [dB]"
+msgstr "Koleno [dB]"
+
+#: ../PulseEffects/ui/main_ui.glade:2282
+msgid "Makeup [dB]"
+msgstr "Výstupné zosilnenie [dB]"
+
+#: ../PulseEffects/ui/main_ui.glade:2310
+msgid "Gain Reduction"
+msgstr "Redukcia zosilnenia"
+
+#: ../PulseEffects/ui/main_ui.glade:2523
+msgid "Test Signal"
+msgstr "Skúšobný signál"
+
+#: ../PulseEffects/ui/headerbar.glade:23
+msgid "buffer-time [ms]"
+msgstr "Čas zásobníka [ms]"
+
+#: ../PulseEffects/ui/headerbar.glade:48
+msgid "Show Spectrum"
+msgstr "Zobraziť spektrum"
+
+#: ../PulseEffects/ui/headerbar.glade:93
+msgid "Auto Volume"
+msgstr "Automatická hlasitosť"
+
+#: ../PulseEffects/ui/headerbar.glade:127
+msgid "Save Preset"
+msgstr "Uložiť predvoľbu"
+
+#: ../PulseEffects/ui/headerbar.glade:142
+msgid "Load Preset"
+msgstr "Načítať predvoľbu"
+
+#: ../PulseEffects/ui/about.glade:11
+msgid "Audio Effects for Pulseaudio Applications"
+msgstr "Zvukové efekty pre aplikácie využívajúce Pulseaudio"
+
+#: ../PulseEffects/ui/equalizer_menu.glade:60
+msgid "equal loudness 20"
+msgstr "Rovnaká hlasitosť 20"
+
+#: ../PulseEffects/ui/equalizer_menu.glade:75
+msgid "equal loudness 40"
+msgstr "Rovnaká hlasitosť 40"
+
+#: ../PulseEffects/ui/equalizer_menu.glade:90
+msgid "equal loudness 60"
+msgstr "Rovnaká hlasitosť 60"
+
+#: ../PulseEffects/ui/equalizer_menu.glade:105
+msgid "equal loudness 80"
+msgstr "Rovnaká hlasitosť 80"
+
+#: ../PulseEffects/ui/equalizer_menu.glade:120
+msgid "equal loudness 100"
+msgstr "Rovnaká hlasitosť 100"
+
+#: ../PulseEffects/ui/equalizer_menu.glade:135
+msgid "flat"
+msgstr "Plochý"
+
+#: ../PulseEffects/ui/equalizer_menu.glade:193
+msgid "Input Filters"
+msgstr "Vstupné filtre"
+
+#: ../PulseEffects/ui/equalizer_menu.glade:218
+msgid "cutoff [Hz]"
+msgstr "Zrezanie [Hz]"
+
+#: ../PulseEffects/ui/equalizer_menu.glade:245
+#: ../PulseEffects/ui/equalizer_menu.glade:334
+msgid "poles"
+msgstr "Póly"
+
+#: ../PulseEffects/ui/equalizer_menu.glade:277
+msgid "High Pass"
+msgstr "Horný prechod"
+
+#: ../PulseEffects/ui/equalizer_menu.glade:289
+msgid "Low Pass"
+msgstr "Dolný prechod"
+
+#: ../PulseEffects/ui/equalizer_menu.glade:307
+msgid "cuttoff [Hz]"
+msgstr "Zrezanie [Hz]"
