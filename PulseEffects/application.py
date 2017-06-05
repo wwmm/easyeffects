@@ -370,4 +370,6 @@ class Application(Gtk.Application):
 
         dialog.set_transient_for(self.window)
 
-        dialog.show()
+        dialog.run()
+
+        dialog.destroy()
