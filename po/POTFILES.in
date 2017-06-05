@@ -2,3 +2,7 @@
 ../PulseEffects/ui/headerbar.glade
 ../PulseEffects/ui/about.glade
 ../PulseEffects/ui/equalizer_menu.glade
+../PulseEffects/ui/compressor_menu.glade
+../PulseEffects/ui/limiter_menu.glade
+../PulseEffects/ui/test_signal_menu.glade
+../PulseEffects/ui/reverb_menu.glade
