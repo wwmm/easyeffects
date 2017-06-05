@@ -529,7 +529,6 @@
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="column_spacing">8</property>
-                    <property name="column_homogeneous">True</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -545,6 +544,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <property name="orientation">vertical</property>
                         <property name="adjustment">eq_preamp</property>
@@ -573,6 +573,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <property name="orientation">vertical</property>
                         <property name="adjustment">eq_band0</property>
@@ -601,6 +602,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <property name="orientation">vertical</property>
                         <property name="adjustment">eq_band1</property>
@@ -629,6 +631,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <property name="orientation">vertical</property>
                         <property name="adjustment">eq_band2</property>
@@ -657,6 +660,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <property name="orientation">vertical</property>
                         <property name="adjustment">eq_band3</property>
@@ -685,6 +689,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <property name="orientation">vertical</property>
                         <property name="adjustment">eq_band4</property>
@@ -713,6 +718,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <property name="orientation">vertical</property>
                         <property name="adjustment">eq_band5</property>
@@ -741,6 +747,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <property name="orientation">vertical</property>
                         <property name="adjustment">eq_band6</property>
@@ -769,6 +776,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <property name="orientation">vertical</property>
                         <property name="adjustment">eq_band7</property>
@@ -797,6 +805,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <property name="orientation">vertical</property>
                         <property name="adjustment">eq_band8</property>
@@ -825,6 +834,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <property name="orientation">vertical</property>
                         <property name="adjustment">eq_band9</property>
@@ -897,6 +907,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <property name="orientation">vertical</property>
                         <property name="adjustment">eq_band10</property>
@@ -914,6 +925,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <property name="orientation">vertical</property>
                         <property name="adjustment">eq_band11</property>
@@ -931,6 +943,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <property name="orientation">vertical</property>
                         <property name="adjustment">eq_band12</property>
@@ -948,6 +961,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <property name="orientation">vertical</property>
                         <property name="adjustment">eq_band13</property>
@@ -965,6 +979,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <property name="orientation">vertical</property>
                         <property name="adjustment">eq_band14</property>
