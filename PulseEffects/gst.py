@@ -84,6 +84,11 @@ class GstEffects(GObject.GObject):
 
         self.equalizer = Gst.ElementFactory.make('equalizer-nbands', None)
 
+        spectrum = Gst.ElementFactory.make('spectrum', 'spectrum')
+
+        output_limiter = Gst.ElementFactory.make(
+            'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter', None)
+
         self.audio_sink = Gst.ElementFactory.make('pulsesink', 'audio_sink')
 
         limiter_input_level = Gst.ElementFactory.make(
@@ -100,8 +105,6 @@ class GstEffects(GObject.GObject):
             'level', 'equalizer_output_level')
 
         autovolume = Gst.ElementFactory.make('level', 'autovolume')
-
-        spectrum = Gst.ElementFactory.make('spectrum', 'spectrum')
 
         self.audio_src.set_property('volume', 1.0)
         self.audio_src.set_property('mute', False)
@@ -157,6 +160,10 @@ class GstEffects(GObject.GObject):
         self.eq_lowpass.set_property('type', 1)
         self.eq_lowpass.set_property('ripple', 0)
 
+        output_limiter.set_property('input-gain', 0)
+        output_limiter.set_property('limit', 0)
+        output_limiter.set_property('release-time', 0.5)
+
         pipeline.add(self.audio_src)
         pipeline.add(source_caps)
         pipeline.add(limiter_input_level)
@@ -174,6 +181,7 @@ class GstEffects(GObject.GObject):
         pipeline.add(self.equalizer)
         pipeline.add(equalizer_output_level)
         pipeline.add(spectrum)
+        pipeline.add(output_limiter)
         pipeline.add(self.audio_sink)
 
         self.audio_src.link(source_caps)
@@ -192,7 +200,8 @@ class GstEffects(GObject.GObject):
         equalizer_input_level.link(self.equalizer)
         self.equalizer.link(equalizer_output_level)
         equalizer_output_level.link(spectrum)
-        spectrum.link(self.audio_sink)
+        spectrum.link(output_limiter)
+        output_limiter.link(self.audio_sink)
 
         return pipeline
 
@@ -271,19 +280,19 @@ class GstEffects(GObject.GObject):
                       str(max(self.spectrum_freqs)) + ')' +
                       ' these values are sampling rate dependent')
 
-    def auto_gain(self, mean):
+    def auto_gain(self, max_value):
         threshold = -12
         delta = 1
-        mean = int(mean)
+        max_value = int(max_value)
 
-        if mean > threshold + delta:
+        if max_value > threshold + delta:
             gain = self.limiter.get_property('input-gain')
 
             if gain - 1 >= -20:
                 gain = gain - 1
 
                 self.emit('new_autovolume', gain)
-        elif mean < threshold - delta:
+        elif max_value < threshold - delta:
             gain = self.limiter.get_property('input-gain')
 
             if gain + 1 <= 20:
@@ -331,10 +340,10 @@ class GstEffects(GObject.GObject):
                 if self.autovolume_enabled:
                     peak = msg.get_structure().get_value('peak')
 
-                    mean = 0.5 * (peak[0] + peak[1])
+                    max_value = max(peak)
 
-                    if mean > -40:
-                        self.auto_gain(mean)
+                    if max_value > -50:
+                        self.auto_gain(max_value)
 
             elif plugin == 'compressor_output_level':
                 peak = msg.get_structure().get_value('peak')
