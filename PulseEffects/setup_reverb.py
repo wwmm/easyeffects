@@ -27,6 +27,8 @@ class SetupReverb():
 
         self.reverb_user = self.settings.get_value('reverb-user').unpack()
 
+        self.gst.connect('new_reverb_input_level',
+                         self.on_new_reverb_input_level)
         self.gst.connect('new_reverb_output_level',
                          self.on_new_reverb_output_level)
 
@@ -35,11 +37,19 @@ class SetupReverb():
         self.reverb_width = self.app_builder.get_object('reverb_width')
         self.reverb_level = self.app_builder.get_object('reverb_level')
 
+        self.reverb_input_level_left = self.app_builder.get_object(
+            'reverb_input_level_left')
+        self.reverb_input_level_right = self.app_builder.get_object(
+            'reverb_input_level_right')
         self.reverb_output_level_left = self.app_builder.get_object(
             'reverb_output_level_left')
         self.reverb_output_level_right = self.app_builder.get_object(
             'reverb_output_level_right')
 
+        self.reverb_input_level_left_label = self.app_builder.get_object(
+            'reverb_input_level_left_label')
+        self.reverb_input_level_right_label = self.app_builder.get_object(
+            'reverb_input_level_right_label')
         self.reverb_output_level_left_label = self.app_builder.get_object(
             'reverb_output_level_left_label')
         self.reverb_output_level_right_label = self.app_builder.get_object(
@@ -81,6 +91,25 @@ class SetupReverb():
         self.gst.set_reverb_damping(self.reverb_user[1])
         self.gst.set_reverb_width(self.reverb_user[2])
         self.gst.set_reverb_level(self.reverb_user[3])
+
+    def on_new_reverb_input_level(self, obj, left, right):
+        if self.app.ui_initialized:
+            if left >= -99:
+                l_value = 10**(left / 20)
+                self.reverb_input_level_left.set_value(l_value)
+                self.reverb_input_level_left_label.set_text(str(round(left)))
+            else:
+                self.reverb_input_level_left.set_value(0)
+                self.reverb_input_level_left_label.set_text('-99')
+
+            if right >= -99:
+                r_value = 10**(right / 20)
+                self.reverb_input_level_right.set_value(r_value)
+                self.reverb_input_level_right_label.set_text(
+                    str(round(right)))
+            else:
+                self.reverb_input_level_right.set_value(0)
+                self.reverb_input_level_right_label.set_text('-99')
 
     def on_new_reverb_output_level(self, obj, left, right):
         if self.app.ui_initialized:

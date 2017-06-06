@@ -27,6 +27,8 @@ class GstEffects(GObject.GObject):
                                           (float,)),
         'new_limiter_attenuation': (GObject.SIGNAL_RUN_FIRST, None,
                                     (float,)),
+        'new_reverb_input_level': (GObject.SIGNAL_RUN_FIRST, None,
+                                   (float, float)),
         'new_reverb_output_level': (GObject.SIGNAL_RUN_FIRST, None,
                                     (float, float)),
         'new_equalizer_input_level': (GObject.SIGNAL_RUN_FIRST, None,
@@ -292,15 +294,11 @@ class GstEffects(GObject.GObject):
     def on_message(self, bus, msg):
         if msg.type == Gst.MessageType.ERROR:
             self.log.error(msg.parse_error())
-            self.log.error(msg.parse_error_details())
-
             self.set_state('null')
         elif msg.type == Gst.MessageType.WARNING:
             self.log.warning(msg.parse_warning())
-            self.log.warning(msg.parse_warning_details())
         elif msg.type == Gst.MessageType.INFO:
             self.log.info(msg.parse_info())
-            self.log.info(msg.parse_info_details())
         elif msg.type == Gst.MessageType.LATENCY:
             plugin = msg.src.get_name()
 
@@ -342,6 +340,7 @@ class GstEffects(GObject.GObject):
                 peak = msg.get_structure().get_value('peak')
 
                 self.emit('new_compressor_output_level', peak[0], peak[1])
+                self.emit('new_reverb_input_level', peak[0], peak[1])
 
                 gain_reduction = round(
                     self.compressor.get_property('gain-reduction'))
