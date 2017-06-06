@@ -25,10 +25,10 @@ class SetupLimiter():
                 self.on_autovolume_enable_state_set
         }
 
-        self.gst.connect('new_level_before_limiter',
-                         self.on_new_level_before_limiter)
-        self.gst.connect('new_level_after_limiter',
-                         self.on_new_level_after_limiter)
+        self.gst.connect('new_limiter_input_level',
+                         self.on_new_limiter_input_level)
+        self.gst.connect('new_limiter_output_level',
+                         self.on_new_limiter_output_level)
         self.gst.connect('new_limiter_attenuation',
                          self.on_new_limiter_attenuation)
         self.gst.connect('new_autovolume', self.on_new_autovolume)
@@ -56,23 +56,23 @@ class SetupLimiter():
         self.limiter_attenuation_levelbar.add_offset_value(
             'GTK_LEVEL_BAR_OFFSET_FULL', 70)
 
-        self.limiter_level_before_left = self.app_builder.get_object(
-            'limiter_level_before_left')
-        self.limiter_level_before_right = self.app_builder.get_object(
-            'limiter_level_before_right')
-        self.limiter_level_after_left = self.app_builder.get_object(
-            'limiter_level_after_left')
-        self.limiter_level_after_right = self.app_builder.get_object(
-            'limiter_level_after_right')
+        self.limiter_input_level_left = self.app_builder.get_object(
+            'limiter_input_level_left')
+        self.limiter_input_level_right = self.app_builder.get_object(
+            'limiter_input_level_right')
+        self.limiter_output_level_left = self.app_builder.get_object(
+            'limiter_output_level_left')
+        self.limiter_output_level_right = self.app_builder.get_object(
+            'limiter_output_level_right')
 
-        self.limiter_level_label_before_left = self.app_builder.get_object(
-            'limiter_level_label_before_left')
-        self.limiter_level_label_before_right = self.app_builder.get_object(
-            'limiter_level_label_before_right')
-        self.limiter_level_label_after_left = self.app_builder.get_object(
-            'limiter_level_label_after_left')
-        self.limiter_level_label_after_right = self.app_builder.get_object(
-            'limiter_level_label_after_right')
+        self.limiter_input_level_left_label = self.app_builder.get_object(
+            'limiter_input_level_left_label')
+        self.limiter_input_level_right_label = self.app_builder.get_object(
+            'limiter_input_level_right_label')
+        self.limiter_output_level_left_label = self.app_builder.get_object(
+            'limiter_output_level_left_label')
+        self.limiter_output_level_right_label = self.app_builder.get_object(
+            'limiter_output_level_right_label')
         self.limiter_attenuation_level_label = self.app_builder.get_object(
             'limiter_attenuation_level_label')
 
@@ -159,43 +159,43 @@ class SetupLimiter():
     def on_autovolume_enable_state_set(self, obj, state):
         self.enable_autovolume(state)
 
-    def on_new_level_before_limiter(self, obj, left, right):
+    def on_new_limiter_input_level(self, obj, left, right):
         if self.app.ui_initialized:
             if left >= -99:
                 l_value = 10**(left / 20)
-                self.limiter_level_before_left.set_value(l_value)
-                self.limiter_level_label_before_left.set_text(str(round(left)))
+                self.limiter_input_level_left.set_value(l_value)
+                self.limiter_input_level_left_label.set_text(str(round(left)))
             else:
-                self.limiter_level_before_left.set_value(0)
-                self.limiter_level_label_before_left.set_text('-99')
+                self.limiter_input_level_left.set_value(0)
+                self.limiter_input_level_left_label.set_text('-99')
 
             if right >= -99:
                 r_value = 10**(right / 20)
-                self.limiter_level_before_right.set_value(r_value)
-                self.limiter_level_label_before_right.set_text(
+                self.limiter_input_level_right.set_value(r_value)
+                self.limiter_input_level_right_label.set_text(
                     str(round(right)))
             else:
-                self.limiter_level_before_right.set_value(0)
-                self.limiter_level_label_before_right.set_text('-99')
+                self.limiter_input_level_right.set_value(0)
+                self.limiter_input_level_right_label.set_text('-99')
 
-    def on_new_level_after_limiter(self, obj, left, right):
+    def on_new_limiter_output_level(self, obj, left, right):
         if self.app.ui_initialized:
             if left >= -99:
                 l_value = 10**(left / 20)
-                self.limiter_level_after_left.set_value(l_value)
-                self.limiter_level_label_after_left.set_text(str(round(left)))
+                self.limiter_output_level_left.set_value(l_value)
+                self.limiter_output_level_left_label.set_text(str(round(left)))
             else:
-                self.limiter_level_after_left.set_value(0)
-                self.limiter_level_label_after_left.set_text('-99')
+                self.limiter_output_level_left.set_value(0)
+                self.limiter_output_level_left_label.set_text('-99')
 
             if right >= -99:
                 r_value = 10**(right / 20)
-                self.limiter_level_after_right.set_value(r_value)
-                self.limiter_level_label_after_right.set_text(
+                self.limiter_output_level_right.set_value(r_value)
+                self.limiter_output_level_right_label.set_text(
                     str(round(right)))
             else:
-                self.limiter_level_after_right.set_value(0)
-                self.limiter_level_label_after_right.set_text('-99')
+                self.limiter_output_level_right.set_value(0)
+                self.limiter_output_level_right_label.set_text('-99')
 
     def on_new_limiter_attenuation(self, obj, attenuation):
         if self.app.ui_initialized:

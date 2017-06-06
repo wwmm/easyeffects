@@ -34,8 +34,8 @@ class SetupCompressor():
         self.compressor_user = self.settings.get_value(
             'compressor-user').unpack()
 
-        self.gst.connect('new_level_after_compressor',
-                         self.on_new_level_after_compressor)
+        self.gst.connect('new_compressor_output_level',
+                         self.on_new_compressor_output_level)
         self.gst.connect('new_compressor_gain_reduction',
                          self.on_new_compressor_gain_reduction)
 
@@ -54,17 +54,17 @@ class SetupCompressor():
         self.compressor_makeup = self.app_builder.get_object(
             'compressor_makeup')
 
-        self.compressor_level_after_left = self.app_builder.get_object(
-            'compressor_level_after_left')
-        self.compressor_level_after_right = self.app_builder.get_object(
-            'compressor_level_after_right')
+        self.compressor_output_level_left = self.app_builder.get_object(
+            'compressor_output_level_left')
+        self.compressor_output_level_right = self.app_builder.get_object(
+            'compressor_output_level_right')
         self.compressor_gain_reduction_levelbar = self.app_builder.get_object(
             'compressor_gain_reduction_levelbar')
 
-        self.compressor_level_label_after_left = self.app_builder.get_object(
-            'compressor_level_label_after_left')
-        self.compressor_level_label_after_right = self.app_builder.get_object(
-            'compressor_level_label_after_right')
+        self.compressor_output_level_left_label = self.app_builder.get_object(
+            'compressor_output_level_left_label')
+        self.compressor_output_level_right_label = self.app_builder.get_object(
+            'compressor_output_level_right_label')
         self.compressor_gain_reduction_level_label = \
             self.app_builder.get_object(
                 'compressor_gain_reduction_level_label')
@@ -117,25 +117,25 @@ class SetupCompressor():
         self.gst.set_compressor_knee(self.compressor_user[5])
         self.gst.set_compressor_makeup(self.compressor_user[6])
 
-    def on_new_level_after_compressor(self, obj, left, right):
+    def on_new_compressor_output_level(self, obj, left, right):
         if self.app.ui_initialized:
             if left >= -99:
                 l_value = 10**(left / 20)
-                self.compressor_level_after_left.set_value(l_value)
-                self.compressor_level_label_after_left.set_text(
+                self.compressor_output_level_left.set_value(l_value)
+                self.compressor_output_level_left_label.set_text(
                     str(round(left)))
             else:
-                self.compressor_level_after_left.set_value(0)
-                self.compressor_level_label_after_left.set_text('-99')
+                self.compressor_output_level_left.set_value(0)
+                self.compressor_output_level_left_label.set_text('-99')
 
             if right >= -99:
                 r_value = 10**(right / 20)
-                self.compressor_level_after_right.set_value(r_value)
-                self.compressor_level_label_after_right.set_text(
+                self.compressor_output_level_right.set_value(r_value)
+                self.compressor_output_level_right_label.set_text(
                     str(round(right)))
             else:
-                self.compressor_level_after_right.set_value(0)
-                self.compressor_level_label_after_right.set_text('-99')
+                self.compressor_output_level_right.set_value(0)
+                self.compressor_output_level_right_label.set_text('-99')
 
     def on_new_compressor_gain_reduction(self, obj, gain_reduction):
         if self.app.ui_initialized:

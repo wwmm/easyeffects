@@ -13,22 +13,22 @@ Gst.init(None)
 class GstEffects(GObject.GObject):
 
     __gsignals__ = {
-        'new_level_before_limiter': (GObject.SIGNAL_RUN_FIRST, None,
-                                     (float, float)),
-        'new_level_after_limiter': (GObject.SIGNAL_RUN_FIRST, None,
+        'new_limiter_input_level': (GObject.SIGNAL_RUN_FIRST, None,
                                     (float, float)),
+        'new_limiter_output_level': (GObject.SIGNAL_RUN_FIRST, None,
+                                     (float, float)),
         'new_autovolume': (GObject.SIGNAL_RUN_FIRST, None,
                            (float,)),
-        'new_level_after_compressor': (GObject.SIGNAL_RUN_FIRST, None,
-                                       (float, float)),
+        'new_compressor_output_level': (GObject.SIGNAL_RUN_FIRST, None,
+                                        (float, float)),
         'new_compressor_gain_reduction': (GObject.SIGNAL_RUN_FIRST, None,
                                           (float,)),
         'new_limiter_attenuation': (GObject.SIGNAL_RUN_FIRST, None,
                                     (float,)),
-        'new_level_after_reverb': (GObject.SIGNAL_RUN_FIRST, None,
-                                   (float, float)),
-        'new_level_after_eq': (GObject.SIGNAL_RUN_FIRST, None,
-                               (float, float)),
+        'new_reverb_output_level': (GObject.SIGNAL_RUN_FIRST, None,
+                                    (float, float)),
+        'new_equalizer_output_level': (GObject.SIGNAL_RUN_FIRST, None,
+                                       (float, float)),
         'new_spectrum': (GObject.SIGNAL_RUN_FIRST, None,
                          (object,))
     }
@@ -80,15 +80,16 @@ class GstEffects(GObject.GObject):
 
         self.audio_sink = Gst.ElementFactory.make('pulsesink', 'audio_sink')
 
-        level_before_limiter = Gst.ElementFactory.make(
-            'level', 'level_before_limiter')
-        level_after_limiter = Gst.ElementFactory.make(
-            'level', 'level_after_limiter')
-        level_after_compressor = Gst.ElementFactory.make(
-            'level', 'level_after_compressor')
-        level_after_reverb = Gst.ElementFactory.make(
-            'level', 'level_after_reverb')
-        level_after_eq = Gst.ElementFactory.make('level', 'level_after_eq')
+        limiter_input_level = Gst.ElementFactory.make(
+            'level', 'limiter_input_level')
+        limiter_output_level = Gst.ElementFactory.make(
+            'level', 'limiter_output_level')
+        compressor_output_level = Gst.ElementFactory.make(
+            'level', 'compressor_output_level')
+        reverb_output_level = Gst.ElementFactory.make(
+            'level', 'reverb_output_level')
+        equalizer_output_level = Gst.ElementFactory.make(
+            'level', 'equalizer_output_level')
 
         autovolume = Gst.ElementFactory.make('level', 'autovolume')
 
@@ -150,37 +151,37 @@ class GstEffects(GObject.GObject):
 
         pipeline.add(self.audio_src)
         pipeline.add(source_caps)
-        pipeline.add(level_before_limiter)
+        pipeline.add(limiter_input_level)
         pipeline.add(self.limiter)
-        pipeline.add(level_after_limiter)
+        pipeline.add(limiter_output_level)
         pipeline.add(autovolume)
         pipeline.add(self.compressor)
-        pipeline.add(level_after_compressor)
+        pipeline.add(compressor_output_level)
         pipeline.add(self.freeverb)
-        pipeline.add(level_after_reverb)
+        pipeline.add(reverb_output_level)
         pipeline.add(self.eq_highpass)
         pipeline.add(self.eq_lowpass)
         pipeline.add(self.equalizer_preamp)
         pipeline.add(self.equalizer)
-        pipeline.add(level_after_eq)
+        pipeline.add(equalizer_output_level)
         pipeline.add(spectrum)
         pipeline.add(self.audio_sink)
 
         self.audio_src.link(source_caps)
-        source_caps.link(level_before_limiter)
-        level_before_limiter.link(self.limiter)
-        self.limiter.link(level_after_limiter)
-        level_after_limiter.link(autovolume)
+        source_caps.link(limiter_input_level)
+        limiter_input_level.link(self.limiter)
+        self.limiter.link(limiter_output_level)
+        limiter_output_level.link(autovolume)
         autovolume.link(self.compressor)
-        self.compressor.link(level_after_compressor)
-        level_after_compressor.link(self.freeverb)
-        self.freeverb.link(level_after_reverb)
-        level_after_reverb.link(self.eq_highpass)
+        self.compressor.link(compressor_output_level)
+        compressor_output_level.link(self.freeverb)
+        self.freeverb.link(reverb_output_level)
+        reverb_output_level.link(self.eq_highpass)
         self.eq_highpass.link(self.eq_lowpass)
         self.eq_lowpass.link(self.equalizer_preamp)
         self.equalizer_preamp.link(self.equalizer)
-        self.equalizer.link(level_after_eq)
-        level_after_eq.link(spectrum)
+        self.equalizer.link(equalizer_output_level)
+        equalizer_output_level.link(spectrum)
         spectrum.link(self.audio_sink)
 
         return pipeline
@@ -304,14 +305,14 @@ class GstEffects(GObject.GObject):
         elif msg.type == Gst.MessageType.ELEMENT:
             plugin = msg.src.get_name()
 
-            if plugin == 'level_before_limiter':
+            if plugin == 'limiter_input_level':
                 peak = msg.get_structure().get_value('peak')
 
-                self.emit('new_level_before_limiter', peak[0], peak[1])
-            elif plugin == 'level_after_limiter':
+                self.emit('new_limiter_input_level', peak[0], peak[1])
+            elif plugin == 'limiter_output_level':
                 peak = msg.get_structure().get_value('peak')
 
-                self.emit('new_level_after_limiter', peak[0], peak[1])
+                self.emit('new_limiter_output_level', peak[0], peak[1])
 
                 attenuation = round(self.limiter.get_property('attenuation'))
 
@@ -328,10 +329,10 @@ class GstEffects(GObject.GObject):
                     if mean > -40:
                         self.auto_gain(mean)
 
-            elif plugin == 'level_after_compressor':
+            elif plugin == 'compressor_output_level':
                 peak = msg.get_structure().get_value('peak')
 
-                self.emit('new_level_after_compressor', peak[0], peak[1])
+                self.emit('new_compressor_output_level', peak[0], peak[1])
 
                 gain_reduction = round(
                     self.compressor.get_property('gain-reduction'))
@@ -340,14 +341,14 @@ class GstEffects(GObject.GObject):
                     self.old_compressor_gain_reduction = gain_reduction
 
                     self.emit('new_compressor_gain_reduction', gain_reduction)
-            elif plugin == 'level_after_reverb':
+            elif plugin == 'reverb_output_level':
                 peak = msg.get_structure().get_value('peak')
 
-                self.emit('new_level_after_reverb', peak[0], peak[1])
-            elif plugin == 'level_after_eq':
+                self.emit('new_reverb_output_level', peak[0], peak[1])
+            elif plugin == 'equalizer_output_level':
                 peak = msg.get_structure().get_value('peak')
 
-                self.emit('new_level_after_eq', peak[0], peak[1])
+                self.emit('new_equalizer_output_level', peak[0], peak[1])
             elif plugin == 'spectrum':
                 magnitudes = msg.get_structure().get_value('magnitude')
 

@@ -1028,7 +1028,7 @@
                             <property name="valign">center</property>
                             <property name="orientation">vertical</property>
                             <child>
-                              <object class="GtkLevelBar" id="eq_left_level">
+                              <object class="GtkLevelBar" id="equalizer_output_level_left">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                               </object>
@@ -1039,7 +1039,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLevelBar" id="eq_right_level">
+                              <object class="GtkLevelBar" id="equalizer_output_level_right">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                               </object>
@@ -1057,7 +1057,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="eq_left_level_label">
+                          <object class="GtkLabel" id="equalizer_output_level_left_label">
                             <property name="visible">True</property>
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
@@ -1083,7 +1083,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="eq_right_level_label">
+                          <object class="GtkLabel" id="equalizer_output_level_right_label">
                             <property name="visible">True</property>
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
@@ -1292,7 +1292,7 @@
                                     <property name="valign">center</property>
                                     <property name="orientation">vertical</property>
                                     <child>
-                                      <object class="GtkLevelBar" id="limiter_level_before_left">
+                                      <object class="GtkLevelBar" id="limiter_input_level_left">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
                                         <property name="hexpand">True</property>
@@ -1304,7 +1304,7 @@
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkLevelBar" id="limiter_level_before_right">
+                                      <object class="GtkLevelBar" id="limiter_input_level_right">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
                                         <property name="hexpand">True</property>
@@ -1323,7 +1323,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkLabel" id="limiter_level_label_before_left">
+                                  <object class="GtkLabel" id="limiter_input_level_left_label">
                                     <property name="visible">True</property>
                                     <property name="sensitive">False</property>
                                     <property name="can_focus">False</property>
@@ -1349,7 +1349,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkLabel" id="limiter_level_label_before_right">
+                                  <object class="GtkLabel" id="limiter_input_level_right_label">
                                     <property name="visible">True</property>
                                     <property name="sensitive">False</property>
                                     <property name="can_focus">False</property>
@@ -1392,7 +1392,7 @@
                                     <property name="valign">center</property>
                                     <property name="orientation">vertical</property>
                                     <child>
-                                      <object class="GtkLevelBar" id="limiter_level_after_left">
+                                      <object class="GtkLevelBar" id="limiter_output_level_left">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
                                         <property name="hexpand">True</property>
@@ -1404,7 +1404,7 @@
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkLevelBar" id="limiter_level_after_right">
+                                      <object class="GtkLevelBar" id="limiter_output_level_right">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
                                         <property name="hexpand">True</property>
@@ -1423,7 +1423,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkLabel" id="limiter_level_label_after_left">
+                                  <object class="GtkLabel" id="limiter_output_level_left_label">
                                     <property name="visible">True</property>
                                     <property name="sensitive">False</property>
                                     <property name="can_focus">False</property>
@@ -1449,7 +1449,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkLabel" id="limiter_level_label_after_right">
+                                  <object class="GtkLabel" id="limiter_output_level_right_label">
                                     <property name="visible">True</property>
                                     <property name="sensitive">False</property>
                                     <property name="can_focus">False</property>
@@ -1714,7 +1714,7 @@
                                     <property name="valign">center</property>
                                     <property name="orientation">vertical</property>
                                     <child>
-                                      <object class="GtkLevelBar" id="reverb_left_level">
+                                      <object class="GtkLevelBar" id="reverb_output_level_left">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
                                         <property name="hexpand">True</property>
@@ -1726,7 +1726,7 @@
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkLevelBar" id="reverb_right_level">
+                                      <object class="GtkLevelBar" id="reverb_output_level_right">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
                                         <property name="hexpand">True</property>
@@ -1745,7 +1745,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkLabel" id="reverb_left_level_label">
+                                  <object class="GtkLabel" id="reverb_output_level_left_label">
                                     <property name="visible">True</property>
                                     <property name="sensitive">False</property>
                                     <property name="can_focus">False</property>
@@ -1771,7 +1771,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkLabel" id="reverb_right_level_label">
+                                  <object class="GtkLabel" id="reverb_output_level_right_label">
                                     <property name="visible">True</property>
                                     <property name="sensitive">False</property>
                                     <property name="can_focus">False</property>
@@ -2197,7 +2197,7 @@
                                     <property name="valign">center</property>
                                     <property name="orientation">vertical</property>
                                     <child>
-                                      <object class="GtkLevelBar" id="compressor_level_after_left">
+                                      <object class="GtkLevelBar" id="compressor_output_level_left">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
                                         <property name="hexpand">True</property>
@@ -2209,7 +2209,7 @@
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkLevelBar" id="compressor_level_after_right">
+                                      <object class="GtkLevelBar" id="compressor_output_level_right">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
                                         <property name="hexpand">True</property>
@@ -2228,7 +2228,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkLabel" id="compressor_level_label_after_left">
+                                  <object class="GtkLabel" id="compressor_output_level_left_label">
                                     <property name="visible">True</property>
                                     <property name="sensitive">False</property>
                                     <property name="can_focus">False</property>
@@ -2254,7 +2254,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkLabel" id="compressor_level_label_after_right">
+                                  <object class="GtkLabel" id="compressor_output_level_right_label">
                                     <property name="visible">True</property>
                                     <property name="sensitive">False</property>
                                     <property name="can_focus">False</property>
