@@ -19,6 +19,8 @@ class GstEffects(GObject.GObject):
                                      (float, float)),
         'new_autovolume': (GObject.SIGNAL_RUN_FIRST, None,
                            (float,)),
+        'new_compressor_input_level': (GObject.SIGNAL_RUN_FIRST, None,
+                                       (float, float)),
         'new_compressor_output_level': (GObject.SIGNAL_RUN_FIRST, None,
                                         (float, float)),
         'new_compressor_gain_reduction': (GObject.SIGNAL_RUN_FIRST, None,
@@ -319,6 +321,7 @@ class GstEffects(GObject.GObject):
                 peak = msg.get_structure().get_value('peak')
 
                 self.emit('new_limiter_output_level', peak[0], peak[1])
+                self.emit('new_compressor_input_level', peak[0], peak[1])
 
                 attenuation = round(self.limiter.get_property('attenuation'))
 

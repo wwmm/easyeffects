@@ -136,6 +136,8 @@ class Application(Gtk.Application):
 
         self.pm.unload_sink()
 
+        self.pm.context_disconnect()
+
         self.quit()
 
     def create_appmenu(self):

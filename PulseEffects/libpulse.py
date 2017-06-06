@@ -305,6 +305,10 @@ pa_context_connect.restype = c_int
 pa_context_connect.argtypes = [
     POINTER(pa_context), c_char_p, pa_context_flags_t, POINTER(pa_spawn_api)]
 
+pa_context_disconnect = lib.pa_context_disconnect
+pa_context_disconnect.restype = None
+pa_context_disconnect.argtypes = [POINTER(pa_context)]
+
 pa_context_get_module_info = lib.pa_context_get_module_info
 pa_context_get_module_info.restype = POINTER(pa_operation)
 pa_context_get_module_info.argtypes = [POINTER(pa_context), c_uint32,

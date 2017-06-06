@@ -129,6 +129,9 @@ class PulseManager(GObject.GObject):
         elif state == p.PA_CONTEXT_TERMINATED:
             self.log.warning('pulseaudio context terminated')
 
+    def context_disconnect(self):
+        p.pa_context_disconnect(self.ctx)
+
     def server_info(self, context, info, user_data):
         self.default_sink_name = info.contents.default_sink_name.decode()
 
