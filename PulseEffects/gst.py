@@ -27,6 +27,8 @@ class GstEffects(GObject.GObject):
                                     (float,)),
         'new_reverb_output_level': (GObject.SIGNAL_RUN_FIRST, None,
                                     (float, float)),
+        'new_equalizer_input_level': (GObject.SIGNAL_RUN_FIRST, None,
+                                      (float, float)),
         'new_equalizer_output_level': (GObject.SIGNAL_RUN_FIRST, None,
                                        (float, float)),
         'new_spectrum': (GObject.SIGNAL_RUN_FIRST, None,
@@ -88,6 +90,8 @@ class GstEffects(GObject.GObject):
             'level', 'compressor_output_level')
         reverb_output_level = Gst.ElementFactory.make(
             'level', 'reverb_output_level')
+        equalizer_input_level = Gst.ElementFactory.make(
+            'level', 'equalizer_input_level')
         equalizer_output_level = Gst.ElementFactory.make(
             'level', 'equalizer_output_level')
 
@@ -162,6 +166,7 @@ class GstEffects(GObject.GObject):
         pipeline.add(self.eq_highpass)
         pipeline.add(self.eq_lowpass)
         pipeline.add(self.equalizer_preamp)
+        pipeline.add(equalizer_input_level)
         pipeline.add(self.equalizer)
         pipeline.add(equalizer_output_level)
         pipeline.add(spectrum)
@@ -179,7 +184,8 @@ class GstEffects(GObject.GObject):
         reverb_output_level.link(self.eq_highpass)
         self.eq_highpass.link(self.eq_lowpass)
         self.eq_lowpass.link(self.equalizer_preamp)
-        self.equalizer_preamp.link(self.equalizer)
+        self.equalizer_preamp.link(equalizer_input_level)
+        equalizer_input_level.link(self.equalizer)
         self.equalizer.link(equalizer_output_level)
         equalizer_output_level.link(spectrum)
         spectrum.link(self.audio_sink)
@@ -345,6 +351,10 @@ class GstEffects(GObject.GObject):
                 peak = msg.get_structure().get_value('peak')
 
                 self.emit('new_reverb_output_level', peak[0], peak[1])
+            elif plugin == 'equalizer_input_level':
+                peak = msg.get_structure().get_value('peak')
+
+                self.emit('new_equalizer_input_level', peak[0], peak[1])
             elif plugin == 'equalizer_output_level':
                 peak = msg.get_structure().get_value('peak')
 

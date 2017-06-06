@@ -33,6 +33,9 @@ class SetupEqualizer():
             'on_eq_band14_value_changed': self.on_eq_band14_value_changed
         }
 
+        self.gst.connect('new_equalizer_input_level',
+                         self.on_new_equalizer_input_level)
+
         self.gst.connect('new_equalizer_output_level',
                          self.on_new_equalizer_output_level)
 
@@ -53,11 +56,19 @@ class SetupEqualizer():
         self.eq_band13 = self.app_builder.get_object('eq_band13')
         self.eq_band14 = self.app_builder.get_object('eq_band14')
 
+        self.equalizer_input_level_left = self.app_builder.get_object(
+            'equalizer_input_level_left')
+        self.equalizer_input_level_right = self.app_builder.get_object(
+            'equalizer_input_level_right')
         self.equalizer_output_level_left = self.app_builder.get_object(
             'equalizer_output_level_left')
         self.equalizer_output_level_right = self.app_builder.get_object(
             'equalizer_output_level_right')
 
+        self.equalizer_input_level_left_label = self.app_builder.get_object(
+            'equalizer_input_level_left_label')
+        self.equalizer_input_level_right_label = self.app_builder.get_object(
+            'equalizer_input_level_right_label')
         self.equalizer_output_level_left_label = self.app_builder.get_object(
             'equalizer_output_level_left_label')
         self.equalizer_output_level_right_label = self.app_builder.get_object(
@@ -145,6 +156,26 @@ class SetupEqualizer():
 
         self.gst.set_eq_highpass_cutoff_freq(eq_highpass_cutoff_freq_user)
         self.gst.set_eq_lowpass_cutoff_freq(eq_lowpass_cutoff_freq_user)
+
+    def on_new_equalizer_input_level(self, obj, left, right):
+        if self.app.ui_initialized:
+            if left >= -99:
+                l_value = 10**(left / 20)
+                self.equalizer_input_level_left.set_value(l_value)
+                self.equalizer_input_level_left_label.set_text(
+                    str(round(left)))
+            else:
+                self.equalizer_input_level_left.set_value(0)
+                self.equalizer_input_level_left_label.set_text('-99')
+
+            if right >= -99:
+                r_value = 10**(right / 20)
+                self.equalizer_input_level_right.set_value(r_value)
+                self.equalizer_input_level_right_label.set_text(
+                    str(round(right)))
+            else:
+                self.equalizer_input_level_right.set_value(0)
+                self.equalizer_input_level_right_label.set_text('-99')
 
     def on_new_equalizer_output_level(self, obj, left, right):
         if self.app.ui_initialized:
