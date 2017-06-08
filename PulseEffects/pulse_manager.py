@@ -232,8 +232,10 @@ class PulseManager(GObject.GObject):
                 volume = info.contents.volume
                 audio_channels = volume.channels
 
-                max_volume = p.pa_cvolume_max(volume)
-                max_volume_dB = 100 * p.pa_sw_volume_to_linear(max_volume)
+                max_volume_linear = 100 * \
+                    p.pa_cvolume_max(volume) / p.PA_VOLUME_NORM
+
+                print(max_volume_linear)
 
                 resample_method = info.contents.resample_method
 
@@ -247,8 +249,8 @@ class PulseManager(GObject.GObject):
                 sample_format = self.get_sample_spec_format(sample_spec.format)
 
                 new_input = [idx, app_name, media_name,
-                             icon_name, audio_channels, max_volume_dB, rate,
-                             resample_method, sample_format, connected]
+                             icon_name, audio_channels, max_volume_linear,
+                             rate, resample_method, sample_format, connected]
 
                 if user_data == 1:
                     GLib.idle_add(self.emit, 'sink_input_added', new_input)
@@ -331,7 +333,7 @@ class PulseManager(GObject.GObject):
         cvolume = p.pa_cvolume()
         cvolume.channels = audio_channels
 
-        raw_value = p.pa_sw_volume_from_linear(value / 100.0)
+        raw_value = int(p.PA_VOLUME_NORM * value / 100)
 
         cvolume_ptr = p.pa_cvolume_set(p.get_pointer(cvolume), audio_channels,
                                        raw_value)
