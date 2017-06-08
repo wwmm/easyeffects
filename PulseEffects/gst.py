@@ -166,7 +166,7 @@ class GstEffects(GObject.GObject):
 
         output_limiter.set_property('input-gain', 0)
         output_limiter.set_property('limit', 0)
-        output_limiter.set_property('release-time', 0.5)
+        output_limiter.set_property('release-time', 1.0)
 
         pipeline.add(self.audio_src)
         pipeline.add(source_caps)
@@ -319,10 +319,10 @@ class GstEffects(GObject.GObject):
 
             if plugin == 'audio_sink':
                 latency = msg.src.get_property('latency-time')
-                self.log.info('pulsesink latency [us]: ' + str(latency))
+                self.log.info('pulsesink latency-time [us]: ' + str(latency))
             elif plugin == 'audio_src':
                 latency = msg.src.get_property('actual-latency-time')
-                self.log.info('pulsesrc latency [us]: ' + str(latency))
+                self.log.info('pulsesrc latency-time [us]: ' + str(latency))
         elif msg.type == Gst.MessageType.ELEMENT:
             plugin = msg.src.get_name()
 
