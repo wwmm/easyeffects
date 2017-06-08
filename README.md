@@ -10,9 +10,11 @@ Limiter, compressor, reverberation, stereo equalizer and auto volume effects for
 Effects order:
 
 1. Fast Lookahead Limiter
-2. SC4 Compressor
-3. Gstreamer Freeverb
-4. Gstreamer Equalizer
+2. Auto Volume
+3. Gstreamer Stereo Panorama
+4. SC4 Compressor
+5. Gstreamer Freeverb
+6. Gstreamer Equalizer
 
 Required libraries:
 

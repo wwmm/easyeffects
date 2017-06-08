@@ -78,6 +78,8 @@ class GstEffects(GObject.GObject):
         self.compressor = Gst.ElementFactory.make(
             'ladspa-sc4-1882-so-sc4', None)
 
+        self.panorama = Gst.ElementFactory.make('audiopanorama', None)
+
         self.freeverb = Gst.ElementFactory.make('freeverb', None)
 
         self.equalizer_preamp = Gst.ElementFactory.make('volume', None)
@@ -121,6 +123,8 @@ class GstEffects(GObject.GObject):
         self.audio_sink.set_property('mute', False)
 
         autovolume.set_property('interval', 2000000000)  # 2 seconds
+
+        self.panorama.set_property('method', 'psychoacoustic')
 
         self.equalizer.set_property('num-bands', 15)
 
@@ -170,6 +174,7 @@ class GstEffects(GObject.GObject):
         pipeline.add(self.limiter)
         pipeline.add(limiter_output_level)
         pipeline.add(autovolume)
+        pipeline.add(self.panorama)
         pipeline.add(self.compressor)
         pipeline.add(compressor_output_level)
         pipeline.add(self.freeverb)
@@ -189,7 +194,8 @@ class GstEffects(GObject.GObject):
         limiter_input_level.link(self.limiter)
         self.limiter.link(limiter_output_level)
         limiter_output_level.link(autovolume)
-        autovolume.link(self.compressor)
+        autovolume.link(self.panorama)
+        self.panorama.link(self.compressor)
         self.compressor.link(compressor_output_level)
         compressor_output_level.link(self.freeverb)
         self.freeverb.link(reverb_output_level)
@@ -419,6 +425,9 @@ class GstEffects(GObject.GObject):
 
     def set_limiter_release_time(self, value):
         self.limiter.set_property('release-time', value)
+
+    def set_panorama(self, value):
+        self.panorama.set_property('panorama', value)
 
     def set_compressor_measurement_type(self, value):
         self.compressor.set_property('rms-peak', value)

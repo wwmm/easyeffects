@@ -67,6 +67,7 @@ class Application(Gtk.Application):
         ui_handlers = {
             'on_MainWindow_delete_event': self.on_MainWindow_delete_event,
             'on_buffer_time_value_changed': self.on_buffer_time_value_changed,
+            'on_panorama_value_changed': self.on_panorama_value_changed,
             'on_save_user_preset_clicked': self.on_save_user_preset_clicked,
             'on_load_user_preset_clicked': self.on_load_user_preset_clicked
         }
@@ -115,6 +116,17 @@ class Application(Gtk.Application):
         buffer_time = self.settings.get_value('buffer-time').unpack()
 
         buffer_time_obj.set_value(buffer_time)
+
+        self.init_buffer_time()
+
+        # stereo panorama
+        panorama_obj = self.builder.get_object('panorama')
+
+        panorama = self.settings.get_value('panorama').unpack()
+
+        panorama_obj.set_value(panorama)
+
+        self.init_panorama()
 
         # label for sink format and rate
         sink_rate_label = self.builder.get_object('sink_rate')
@@ -172,6 +184,11 @@ class Application(Gtk.Application):
 
         button.connect("clicked", button_clicked)
 
+    def init_buffer_time(self):
+        value = self.settings.get_value('buffer-time').unpack()
+
+        self.gst.set_buffer_time(value * 1000)
+
     def on_buffer_time_value_changed(self, obj):
         value = obj.get_value()
 
@@ -182,6 +199,19 @@ class Application(Gtk.Application):
             self.gst.set_buffer_time(value * 1000)
         else:
             self.gst.init_buffer_time(value * 1000)
+
+    def init_panorama(self):
+        value = self.settings.get_value('panorama').unpack()
+
+        self.gst.set_panorama(value)
+
+    def on_panorama_value_changed(self, obj):
+        value = obj.get_value()
+
+        self.gst.set_panorama(value)
+
+        out = GLib.Variant('d', value)
+        self.settings.set_value('panorama', out)
 
     def add_file_filter(self, dialog):
         file_filter = Gtk.FileFilter()

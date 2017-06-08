@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-06 00:43-0300\n"
-"PO-Revision-Date: 2017-06-06 00:43-0300\n"
+"POT-Creation-Date: 2017-06-07 23:46-0300\n"
+"PO-Revision-Date: 2017-06-07 23:46-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -128,15 +128,23 @@ msgstr "tempo de atraso [ms]"
 msgid "Show Spectrum"
 msgstr "Mostrar Espectro"
 
-#: ../PulseEffects/ui/headerbar.glade:93
+#: ../PulseEffects/ui/headerbar.glade:100
 msgid "Auto Volume"
 msgstr "Volume Automático"
 
-#: ../PulseEffects/ui/headerbar.glade:147
+#: ../PulseEffects/ui/headerbar.glade:129
+msgid "L"
+msgstr "L"
+
+#: ../PulseEffects/ui/headerbar.glade:152
+msgid "R"
+msgstr "R"
+
+#: ../PulseEffects/ui/headerbar.glade:176
 msgid "Save Preset"
 msgstr "Salvar Predefinição"
 
-#: ../PulseEffects/ui/headerbar.glade:162
+#: ../PulseEffects/ui/headerbar.glade:191
 msgid "Load Preset"
 msgstr "Carregar Predefinição"
 
