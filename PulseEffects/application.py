@@ -67,6 +67,8 @@ class Application(Gtk.Application):
         ui_handlers = {
             'on_MainWindow_delete_event': self.on_MainWindow_delete_event,
             'on_buffer_time_value_changed': self.on_buffer_time_value_changed,
+            'on_latency_time_value_changed':
+                self.on_latency_time_value_changed,
             'on_panorama_value_changed': self.on_panorama_value_changed,
             'on_save_user_preset_clicked': self.on_save_user_preset_clicked,
             'on_load_user_preset_clicked': self.on_load_user_preset_clicked
@@ -118,6 +120,15 @@ class Application(Gtk.Application):
         buffer_time_obj.set_value(buffer_time)
 
         self.init_buffer_time()
+
+        # latency-time
+        latency_time_obj = self.builder.get_object('latency_time')
+
+        latency_time = self.settings.get_value('latency-time').unpack()
+
+        latency_time_obj.set_value(latency_time)
+
+        self.init_latency_time()
 
         # stereo panorama
         self.panorama = self.builder.get_object('panorama')
@@ -199,6 +210,22 @@ class Application(Gtk.Application):
             self.gst.set_buffer_time(value * 1000)
         else:
             self.gst.init_buffer_time(value * 1000)
+
+    def init_latency_time(self):
+        value = self.settings.get_value('latency-time').unpack()
+
+        self.gst.set_latency_time(value * 1000)
+
+    def on_latency_time_value_changed(self, obj):
+        value = obj.get_value()
+
+        out = GLib.Variant('i', value)
+        self.settings.set_value('latency-time', out)
+
+        if self.ui_initialized:
+            self.gst.set_latency_time(value * 1000)
+        else:
+            self.gst.init_latency_time(value * 1000)
 
     def init_panorama(self):
         value = self.settings.get_value('panorama').unpack()

@@ -4,16 +4,39 @@
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="buffer_time">
     <property name="lower">1</property>
-    <property name="upper">1000</property>
+    <property name="upper">400</property>
     <property name="value">1000000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
     <signal name="value-changed" handler="on_buffer_time_value_changed" swapped="no"/>
   </object>
+  <object class="GtkImage" id="image_load_user_preset">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">document-open-symbolic</property>
+  </object>
+  <object class="GtkImage" id="image_save_user_preset">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">document-save-symbolic</property>
+  </object>
+  <object class="GtkImage" id="image_settings_popover">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">format-justify-fill-symbolic</property>
+  </object>
+  <object class="GtkAdjustment" id="latency_time">
+    <property name="lower">1</property>
+    <property name="upper">20</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+    <signal name="value-changed" handler="on_latency_time_value_changed" swapped="no"/>
+  </object>
   <object class="GtkGrid" id="settings_menu">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="row_spacing">4</property>
+    <property name="column_spacing">2</property>
     <property name="column_homogeneous">True</property>
     <child>
       <object class="GtkLabel">
@@ -49,7 +72,7 @@
       </object>
       <packing>
         <property name="left_attach">0</property>
-        <property name="top_attach">1</property>
+        <property name="top_attach">2</property>
       </packing>
     </child>
     <child>
@@ -61,24 +84,32 @@
       </object>
       <packing>
         <property name="left_attach">1</property>
+        <property name="top_attach">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="halign">start</property>
+        <property name="label" translatable="yes">latency-time [ms]</property>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
         <property name="top_attach">1</property>
       </packing>
     </child>
-  </object>
-  <object class="GtkImage" id="image_load_user_preset">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">document-open-symbolic</property>
-  </object>
-  <object class="GtkImage" id="image_save_user_preset">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">document-save-symbolic</property>
-  </object>
-  <object class="GtkImage" id="image_settings_popover">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">format-justify-fill-symbolic</property>
+    <child>
+      <object class="GtkSpinButton">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="adjustment">latency_time</property>
+      </object>
+      <packing>
+        <property name="left_attach">1</property>
+        <property name="top_attach">1</property>
+      </packing>
+    </child>
   </object>
   <object class="GtkAdjustment" id="panorama">
     <property name="lower">-1</property>

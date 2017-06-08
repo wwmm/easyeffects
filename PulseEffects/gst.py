@@ -111,7 +111,7 @@ class GstEffects(GObject.GObject):
         self.audio_src.set_property('volume', 1.0)
         self.audio_src.set_property('mute', False)
         self.audio_src.set_property('provide-clock', False)
-        self.audio_src.set_property('slave-method', 1)  # re-timestamp
+        self.audio_src.set_property('slave-method', 're-timestamp')
 
         caps = ['audio/x-raw', 'format=F32LE',
                 'rate=' + str(self.rate), 'channels=2']
@@ -144,7 +144,7 @@ class GstEffects(GObject.GObject):
         self.eq_band13 = self.equalizer.get_child_by_index(13)
         self.eq_band14 = self.equalizer.get_child_by_index(14)
 
-        # It seems to me that there is a bug in the low shelf filter.
+        # It seems there is a bug in the low shelf filter.
         # When we increase the lower shelf gain higher frequencies
         # are attenuated. Setting the first band to peak type instead of
         # shelf fixes this.
@@ -412,6 +412,16 @@ class GstEffects(GObject.GObject):
         self.set_state('ready')
         self.audio_src.set_property('buffer-time', value)
         self.audio_sink.set_property('buffer-time', value)
+        self.set_state('playing')
+
+    def init_latency_time(self, value):
+        self.audio_src.set_property('latency-time', value)
+        self.audio_sink.set_property('latency-time', value)
+
+    def set_latency_time(self, value):
+        self.set_state('ready')
+        self.audio_src.set_property('latency-time', value)
+        self.audio_sink.set_property('latency-time', value)
         self.set_state('playing')
 
     def set_autovolume_state(self, value):

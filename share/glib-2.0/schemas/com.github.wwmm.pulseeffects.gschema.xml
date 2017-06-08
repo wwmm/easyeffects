@@ -4,6 +4,9 @@
         <key name="buffer-time" type="i">
           <default>100</default>
         </key>
+        <key name="latency-time" type="i">
+          <default>10</default>
+        </key>
         <key name="show-spectrum" type="b">
           <default>true</default>
         </key>

@@ -235,8 +235,6 @@ class PulseManager(GObject.GObject):
                 max_volume_linear = 100 * \
                     p.pa_cvolume_max(volume) / p.PA_VOLUME_NORM
 
-                print(max_volume_linear)
-
                 resample_method = info.contents.resample_method
 
                 if resample_method:
