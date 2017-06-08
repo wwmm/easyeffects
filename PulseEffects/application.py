@@ -120,11 +120,11 @@ class Application(Gtk.Application):
         self.init_buffer_time()
 
         # stereo panorama
-        panorama_obj = self.builder.get_object('panorama')
+        self.panorama = self.builder.get_object('panorama')
 
-        panorama = self.settings.get_value('panorama').unpack()
+        panorama_user = self.settings.get_value('panorama').unpack()
 
-        panorama_obj.set_value(panorama)
+        self.panorama.set_value(panorama_user)
 
         self.init_panorama()
 
@@ -250,6 +250,10 @@ class Application(Gtk.Application):
                                  'limit': str(limiter[1]),
                                  'release time': str(limiter[2])}
 
+            panorama = self.settings.get_value('panorama')
+
+            config['panorama'] = {'panorama': str(panorama)}
+
             compressor = self.settings.get_value('compressor-user')
 
             config['compressor'] = {'rms-peak': str(compressor[0]),
@@ -330,6 +334,11 @@ class Application(Gtk.Application):
             limiter = dict(config['limiter']).values()
             limiter = [float(v) for v in limiter]
             self.setup_limiter.apply_limiter_preset(limiter)
+
+            panorama_value = config.getfloat('panorama', 'panorama',
+                                             fallback=0.0)
+
+            self.panorama.set_value(panorama_value)
 
             compressor = dict(config['compressor']).values()
             compressor = [float(v) for v in compressor]
