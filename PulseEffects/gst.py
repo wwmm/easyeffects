@@ -319,10 +319,17 @@ class GstEffects(GObject.GObject):
 
             if plugin == 'audio_sink':
                 latency = msg.src.get_property('latency-time')
+                buffer_time = msg.src.get_property('buffer-time')
+
                 self.log.info('pulsesink latency-time [us]: ' + str(latency))
+                self.log.info('pulsesink buffer-time [us]: ' +
+                              str(buffer_time))
             elif plugin == 'audio_src':
                 latency = msg.src.get_property('actual-latency-time')
+                buffer_time = msg.src.get_property('actual-buffer-time')
+
                 self.log.info('pulsesrc latency-time [us]: ' + str(latency))
+                self.log.info('pulsesrc buffer-time [us]: ' + str(buffer_time))
         elif msg.type == Gst.MessageType.ELEMENT:
             plugin = msg.src.get_name()
 
