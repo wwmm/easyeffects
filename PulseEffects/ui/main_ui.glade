@@ -147,12 +147,12 @@
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band9_value_changed" swapped="no"/>
   </object>
-  <object class="GtkAdjustment" id="eq_preamp">
+  <object class="GtkAdjustment" id="equalizer_input_gain">
     <property name="lower">-24</property>
     <property name="upper">20</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_eq_preamp_value_changed" swapped="no"/>
+    <signal name="value-changed" handler="on_equalizer_input_gain_value_changed" swapped="no"/>
   </object>
   <object class="GtkImage" id="image_compressor_menu">
     <property name="visible">True</property>
@@ -533,7 +533,7 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Pre</property>
+                        <property name="label" translatable="yes">Input</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -547,7 +547,7 @@
                         <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <property name="orientation">vertical</property>
-                        <property name="adjustment">eq_preamp</property>
+                        <property name="adjustment">equalizer_input_gain</property>
                         <property name="inverted">True</property>
                         <property name="round_digits">0</property>
                         <property name="digits">0</property>

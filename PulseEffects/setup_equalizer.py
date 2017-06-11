@@ -15,7 +15,8 @@ class SetupEqualizer():
         self.module_path = app.module_path
 
         self.handlers = {
-            'on_eq_preamp_value_changed': self.on_eq_preamp_value_changed,
+            'on_equalizer_input_gain_value_changed':
+                self.on_equalizer_input_gain_value_changed,
             'on_eq_band0_value_changed': self.on_eq_band0_value_changed,
             'on_eq_band1_value_changed': self.on_eq_band1_value_changed,
             'on_eq_band2_value_changed': self.on_eq_band2_value_changed,
@@ -39,7 +40,9 @@ class SetupEqualizer():
         self.gst.connect('new_equalizer_output_level',
                          self.on_new_equalizer_output_level)
 
-        self.eq_preamp = self.app_builder.get_object('eq_preamp')
+        self.equalizer_input_gain = self.app_builder.get_object(
+            'equalizer_input_gain')
+
         self.eq_band0 = self.app_builder.get_object('eq_band0')
         self.eq_band1 = self.app_builder.get_object('eq_band1')
         self.eq_band2 = self.app_builder.get_object('eq_band2')
@@ -121,12 +124,12 @@ class SetupEqualizer():
         eq_lowpass_poles_user = self.settings.get_value(
             'equalizer-lowpass-poles').unpack()
 
-        eq_preamp_user = self.settings.get_value(
-            'equalizer-preamp').unpack()
+        equalizer_input_gain_user = self.settings.get_value(
+            'equalizer-input-gain').unpack()
 
         self.eq_band_user = self.settings.get_value('equalizer-user').unpack()
 
-        self.eq_preamp.set_value(eq_preamp_user)
+        self.equalizer_input_gain.set_value(equalizer_input_gain_user)
         self.apply_eq_preset(self.eq_band_user)
         self.eq_highpass_cutoff_freq.set_value(eq_highpass_cutoff_freq_user)
         self.eq_highpass_poles.set_value(eq_highpass_poles_user)
@@ -135,8 +138,8 @@ class SetupEqualizer():
 
         # we need this when saved value is equal to widget default value
 
-        value_linear = 10**(eq_preamp_user / 20)
-        self.gst.set_eq_preamp(value_linear)
+        value_linear = 10**(equalizer_input_gain_user / 20)
+        self.gst.set_eq_input_gain(value_linear)
 
         self.gst.set_eq_band0(self.eq_band_user[0])
         self.gst.set_eq_band1(self.eq_band_user[1])
@@ -244,15 +247,15 @@ class SetupEqualizer():
 
         self.settings.set_value('equalizer-user', out)
 
-    def on_eq_preamp_value_changed(self, obj):
+    def on_equalizer_input_gain_value_changed(self, obj):
         value_db = obj.get_value()
         value_linear = 10**(value_db / 20)
 
-        self.gst.set_eq_preamp(value_linear)
+        self.gst.set_eq_input_gain(value_linear)
 
         out = GLib.Variant('d', value_db)
 
-        self.settings.set_value('equalizer-preamp', out)
+        self.settings.set_value('equalizer-input-gain', out)
 
     def on_eq_band0_value_changed(self, obj):
         value = obj.get_value()

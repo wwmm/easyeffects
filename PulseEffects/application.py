@@ -298,7 +298,8 @@ class Application(Gtk.Application):
                                 'width': str(reverb[2]),
                                 'level': str(reverb[3])}
 
-            equalizer_preamp = self.settings.get_value('equalizer-preamp')
+            equalizer_input_gain = self.settings.get_value(
+                'equalizer-input-gain')
             equalizer = self.settings.get_value('equalizer-user')
             equalizer_highpass_cutoff = self.settings.get_value(
                 'equalizer-highpass-cutoff')
@@ -309,7 +310,7 @@ class Application(Gtk.Application):
             equalizer_lowpass_poles = self.settings.get_value(
                 'equalizer-lowpass-poles')
 
-            config['equalizer'] = {'preamp': str(equalizer_preamp),
+            config['equalizer'] = {'input_gain': str(equalizer_input_gain),
                                    'band0': str(equalizer[0]),
                                    'band1': str(equalizer[1]),
                                    'band2': str(equalizer[2]),
@@ -375,7 +376,8 @@ class Application(Gtk.Application):
             reverb = [float(v) for v in reverb]
             self.setup_reverb.apply_reverb_preset(reverb)
 
-            equalizer_preamp = config.getfloat('equalizer', 'preamp')
+            equalizer_input_gain = config.getfloat('equalizer', 'input_gain',
+                                                   fallback=0)
 
             highpass_cutoff_freq = config.getint('equalizer',
                                                  'highpass_cutoff',
@@ -415,7 +417,8 @@ class Application(Gtk.Application):
                                equalizer_band12,
                                equalizer_band13, equalizer_band14]
 
-            self.setup_equalizer.eq_preamp.set_value(equalizer_preamp)
+            self.setup_equalizer.equalizer_input_gain.set_value(
+                equalizer_input_gain)
 
             self.setup_equalizer.apply_eq_preset(equalizer_bands)
 

@@ -69,7 +69,10 @@
         <key name="equalizer-user" type="ad">
           <default>[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]</default>
         </key>
-        <key name="equalizer-preamp" type="d">
+        <key name="equalizer-input-gain" type="d">
+          <default>0</default>
+        </key>
+        <key name="equalizer-output-gain" type="d">
           <default>0</default>
         </key>
         <key name="equalizer-highpass-cutoff" type="i">

@@ -82,7 +82,8 @@ class GstEffects(GObject.GObject):
 
         self.freeverb = Gst.ElementFactory.make('freeverb', None)
 
-        self.equalizer_preamp = Gst.ElementFactory.make('volume', None)
+        self.equalizer_input_gain = Gst.ElementFactory.make('volume', None)
+        self.equalizer_output_gain = Gst.ElementFactory.make('volume', None)
 
         self.equalizer = Gst.ElementFactory.make('equalizer-nbands', None)
 
@@ -181,9 +182,10 @@ class GstEffects(GObject.GObject):
         pipeline.add(reverb_output_level)
         pipeline.add(self.eq_highpass)
         pipeline.add(self.eq_lowpass)
-        pipeline.add(self.equalizer_preamp)
+        pipeline.add(self.equalizer_input_gain)
         pipeline.add(equalizer_input_level)
         pipeline.add(self.equalizer)
+        pipeline.add(self.equalizer_output_gain)
         pipeline.add(equalizer_output_level)
         pipeline.add(spectrum)
         pipeline.add(output_limiter)
@@ -201,10 +203,11 @@ class GstEffects(GObject.GObject):
         self.freeverb.link(reverb_output_level)
         reverb_output_level.link(self.eq_highpass)
         self.eq_highpass.link(self.eq_lowpass)
-        self.eq_lowpass.link(self.equalizer_preamp)
-        self.equalizer_preamp.link(equalizer_input_level)
+        self.eq_lowpass.link(self.equalizer_input_gain)
+        self.equalizer_input_gain.link(equalizer_input_level)
         equalizer_input_level.link(self.equalizer)
-        self.equalizer.link(equalizer_output_level)
+        self.equalizer.link(self.equalizer_output_gain)
+        self.equalizer_output_gain.link(equalizer_output_level)
         equalizer_output_level.link(spectrum)
         spectrum.link(output_limiter)
         output_limiter.link(self.audio_sink)
@@ -479,8 +482,11 @@ class GstEffects(GObject.GObject):
     def set_reverb_level(self, value):
         self.freeverb.set_property('level', value)
 
-    def set_eq_preamp(self, value):
-        self.equalizer_preamp.set_property('volume', value)
+    def set_eq_input_gain(self, value):
+        self.equalizer_input_gain.set_property('volume', value)
+
+    def set_eq_output_gain(self, value):
+        self.equalizer_output_gain.set_property('volume', value)
 
     def set_eq_band0(self, value):
         self.eq_band0.set_property('gain', value)
