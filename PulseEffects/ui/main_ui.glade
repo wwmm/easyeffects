@@ -154,6 +154,13 @@
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_equalizer_input_gain_value_changed" swapped="no"/>
   </object>
+  <object class="GtkAdjustment" id="equalizer_output_gain">
+    <property name="lower">-24</property>
+    <property name="upper">20</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_equalizer_output_gain_value_changed" swapped="no"/>
+  </object>
   <object class="GtkImage" id="image_compressor_menu">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -533,39 +540,10 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Input</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkScale">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="hexpand">True</property>
-                        <property name="vexpand">True</property>
-                        <property name="orientation">vertical</property>
-                        <property name="adjustment">equalizer_input_gain</property>
-                        <property name="inverted">True</property>
-                        <property name="round_digits">0</property>
-                        <property name="digits">0</property>
-                        <property name="value_pos">bottom</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
                         <property name="label">26Hz</property>
                       </object>
                       <packing>
-                        <property name="left_attach">1</property>
+                        <property name="left_attach">0</property>
                         <property name="top_attach">0</property>
                       </packing>
                     </child>
@@ -583,7 +561,7 @@
                         <property name="value_pos">bottom</property>
                       </object>
                       <packing>
-                        <property name="left_attach">1</property>
+                        <property name="left_attach">0</property>
                         <property name="top_attach">1</property>
                       </packing>
                     </child>
@@ -594,7 +572,7 @@
                         <property name="label">41Hz</property>
                       </object>
                       <packing>
-                        <property name="left_attach">2</property>
+                        <property name="left_attach">1</property>
                         <property name="top_attach">0</property>
                       </packing>
                     </child>
@@ -612,7 +590,7 @@
                         <property name="value_pos">bottom</property>
                       </object>
                       <packing>
-                        <property name="left_attach">2</property>
+                        <property name="left_attach">1</property>
                         <property name="top_attach">1</property>
                       </packing>
                     </child>
@@ -623,7 +601,7 @@
                         <property name="label">65Hz</property>
                       </object>
                       <packing>
-                        <property name="left_attach">3</property>
+                        <property name="left_attach">2</property>
                         <property name="top_attach">0</property>
                       </packing>
                     </child>
@@ -641,7 +619,7 @@
                         <property name="value_pos">bottom</property>
                       </object>
                       <packing>
-                        <property name="left_attach">3</property>
+                        <property name="left_attach">2</property>
                         <property name="top_attach">1</property>
                       </packing>
                     </child>
@@ -652,7 +630,7 @@
                         <property name="label">103Hz</property>
                       </object>
                       <packing>
-                        <property name="left_attach">4</property>
+                        <property name="left_attach">3</property>
                         <property name="top_attach">0</property>
                       </packing>
                     </child>
@@ -670,7 +648,7 @@
                         <property name="value_pos">bottom</property>
                       </object>
                       <packing>
-                        <property name="left_attach">4</property>
+                        <property name="left_attach">3</property>
                         <property name="top_attach">1</property>
                       </packing>
                     </child>
@@ -681,7 +659,7 @@
                         <property name="label">163Hz</property>
                       </object>
                       <packing>
-                        <property name="left_attach">5</property>
+                        <property name="left_attach">4</property>
                         <property name="top_attach">0</property>
                       </packing>
                     </child>
@@ -699,7 +677,7 @@
                         <property name="value_pos">bottom</property>
                       </object>
                       <packing>
-                        <property name="left_attach">5</property>
+                        <property name="left_attach">4</property>
                         <property name="top_attach">1</property>
                       </packing>
                     </child>
@@ -710,7 +688,7 @@
                         <property name="label">259Hz</property>
                       </object>
                       <packing>
-                        <property name="left_attach">6</property>
+                        <property name="left_attach">5</property>
                         <property name="top_attach">0</property>
                       </packing>
                     </child>
@@ -728,7 +706,7 @@
                         <property name="value_pos">bottom</property>
                       </object>
                       <packing>
-                        <property name="left_attach">6</property>
+                        <property name="left_attach">5</property>
                         <property name="top_attach">1</property>
                       </packing>
                     </child>
@@ -739,7 +717,7 @@
                         <property name="label">410Hz</property>
                       </object>
                       <packing>
-                        <property name="left_attach">7</property>
+                        <property name="left_attach">6</property>
                         <property name="top_attach">0</property>
                       </packing>
                     </child>
@@ -757,7 +735,7 @@
                         <property name="value_pos">bottom</property>
                       </object>
                       <packing>
-                        <property name="left_attach">7</property>
+                        <property name="left_attach">6</property>
                         <property name="top_attach">1</property>
                       </packing>
                     </child>
@@ -768,7 +746,7 @@
                         <property name="label">649Hz</property>
                       </object>
                       <packing>
-                        <property name="left_attach">8</property>
+                        <property name="left_attach">7</property>
                         <property name="top_attach">0</property>
                       </packing>
                     </child>
@@ -786,7 +764,7 @@
                         <property name="value_pos">bottom</property>
                       </object>
                       <packing>
-                        <property name="left_attach">8</property>
+                        <property name="left_attach">7</property>
                         <property name="top_attach">1</property>
                       </packing>
                     </child>
@@ -797,7 +775,7 @@
                         <property name="label">1kHz</property>
                       </object>
                       <packing>
-                        <property name="left_attach">9</property>
+                        <property name="left_attach">8</property>
                         <property name="top_attach">0</property>
                       </packing>
                     </child>
@@ -815,7 +793,7 @@
                         <property name="value_pos">bottom</property>
                       </object>
                       <packing>
-                        <property name="left_attach">9</property>
+                        <property name="left_attach">8</property>
                         <property name="top_attach">1</property>
                       </packing>
                     </child>
@@ -826,7 +804,7 @@
                         <property name="label">1.6kHz</property>
                       </object>
                       <packing>
-                        <property name="left_attach">10</property>
+                        <property name="left_attach">9</property>
                         <property name="top_attach">0</property>
                       </packing>
                     </child>
@@ -844,7 +822,7 @@
                         <property name="value_pos">bottom</property>
                       </object>
                       <packing>
-                        <property name="left_attach">10</property>
+                        <property name="left_attach">9</property>
                         <property name="top_attach">1</property>
                       </packing>
                     </child>
@@ -855,7 +833,7 @@
                         <property name="label">2.6kHz</property>
                       </object>
                       <packing>
-                        <property name="left_attach">11</property>
+                        <property name="left_attach">10</property>
                         <property name="top_attach">0</property>
                       </packing>
                     </child>
@@ -866,7 +844,7 @@
                         <property name="label">4.1kHz</property>
                       </object>
                       <packing>
-                        <property name="left_attach">12</property>
+                        <property name="left_attach">11</property>
                         <property name="top_attach">0</property>
                       </packing>
                     </child>
@@ -877,7 +855,7 @@
                         <property name="label">6.5kHz</property>
                       </object>
                       <packing>
-                        <property name="left_attach">13</property>
+                        <property name="left_attach">12</property>
                         <property name="top_attach">0</property>
                       </packing>
                     </child>
@@ -888,7 +866,7 @@
                         <property name="label">10kHz</property>
                       </object>
                       <packing>
-                        <property name="left_attach">14</property>
+                        <property name="left_attach">13</property>
                         <property name="top_attach">0</property>
                       </packing>
                     </child>
@@ -899,7 +877,7 @@
                         <property name="label">16kHz</property>
                       </object>
                       <packing>
-                        <property name="left_attach">15</property>
+                        <property name="left_attach">14</property>
                         <property name="top_attach">0</property>
                       </packing>
                     </child>
@@ -917,7 +895,7 @@
                         <property name="value_pos">bottom</property>
                       </object>
                       <packing>
-                        <property name="left_attach">11</property>
+                        <property name="left_attach">10</property>
                         <property name="top_attach">1</property>
                       </packing>
                     </child>
@@ -935,7 +913,7 @@
                         <property name="value_pos">bottom</property>
                       </object>
                       <packing>
-                        <property name="left_attach">12</property>
+                        <property name="left_attach">11</property>
                         <property name="top_attach">1</property>
                       </packing>
                     </child>
@@ -953,7 +931,7 @@
                         <property name="value_pos">bottom</property>
                       </object>
                       <packing>
-                        <property name="left_attach">13</property>
+                        <property name="left_attach">12</property>
                         <property name="top_attach">1</property>
                       </packing>
                     </child>
@@ -971,7 +949,7 @@
                         <property name="value_pos">bottom</property>
                       </object>
                       <packing>
-                        <property name="left_attach">14</property>
+                        <property name="left_attach">13</property>
                         <property name="top_attach">1</property>
                       </packing>
                     </child>
@@ -989,7 +967,7 @@
                         <property name="value_pos">bottom</property>
                       </object>
                       <packing>
-                        <property name="left_attach">15</property>
+                        <property name="left_attach">14</property>
                         <property name="top_attach">1</property>
                       </packing>
                     </child>
@@ -1009,7 +987,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
-                        <property name="label" translatable="yes">Input</property>
+                        <property name="label" translatable="yes">Input [dB]</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -1021,7 +999,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
-                        <property name="label" translatable="yes">Output</property>
+                        <property name="label" translatable="yes">Output [dB]</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -1061,7 +1039,7 @@
                         </child>
                       </object>
                       <packing>
-                        <property name="left_attach">1</property>
+                        <property name="left_attach">2</property>
                         <property name="top_attach">0</property>
                       </packing>
                     </child>
@@ -1095,7 +1073,7 @@
                         </child>
                       </object>
                       <packing>
-                        <property name="left_attach">1</property>
+                        <property name="left_attach">2</property>
                         <property name="top_attach">1</property>
                       </packing>
                     </child>
@@ -1109,7 +1087,7 @@
                         <property name="max_width_chars">3</property>
                       </object>
                       <packing>
-                        <property name="left_attach">2</property>
+                        <property name="left_attach">3</property>
                         <property name="top_attach">0</property>
                       </packing>
                     </child>
@@ -1123,7 +1101,7 @@
                         <property name="max_width_chars">3</property>
                       </object>
                       <packing>
-                        <property name="left_attach">4</property>
+                        <property name="left_attach">5</property>
                         <property name="top_attach">0</property>
                       </packing>
                     </child>
@@ -1137,7 +1115,7 @@
                         <property name="max_width_chars">3</property>
                       </object>
                       <packing>
-                        <property name="left_attach">2</property>
+                        <property name="left_attach">3</property>
                         <property name="top_attach">1</property>
                       </packing>
                     </child>
@@ -1147,7 +1125,7 @@
                         <property name="can_focus">False</property>
                       </object>
                       <packing>
-                        <property name="left_attach">3</property>
+                        <property name="left_attach">4</property>
                         <property name="top_attach">1</property>
                       </packing>
                     </child>
@@ -1161,7 +1139,7 @@
                         <property name="max_width_chars">3</property>
                       </object>
                       <packing>
-                        <property name="left_attach">4</property>
+                        <property name="left_attach">5</property>
                         <property name="top_attach">1</property>
                       </packing>
                     </child>
@@ -1171,7 +1149,37 @@
                         <property name="can_focus">False</property>
                       </object>
                       <packing>
-                        <property name="left_attach">3</property>
+                        <property name="left_attach">4</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="adjustment">equalizer_output_gain</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">right</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="adjustment">equalizer_input_gain</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">right</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
                         <property name="top_attach">0</property>
                       </packing>
                     </child>

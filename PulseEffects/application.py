@@ -300,6 +300,8 @@ class Application(Gtk.Application):
 
             equalizer_input_gain = self.settings.get_value(
                 'equalizer-input-gain')
+            equalizer_output_gain = self.settings.get_value(
+                'equalizer-output-gain')
             equalizer = self.settings.get_value('equalizer-user')
             equalizer_highpass_cutoff = self.settings.get_value(
                 'equalizer-highpass-cutoff')
@@ -311,6 +313,7 @@ class Application(Gtk.Application):
                 'equalizer-lowpass-poles')
 
             config['equalizer'] = {'input_gain': str(equalizer_input_gain),
+                                   'output_gain': str(equalizer_output_gain),
                                    'band0': str(equalizer[0]),
                                    'band1': str(equalizer[1]),
                                    'band2': str(equalizer[2]),
@@ -378,6 +381,8 @@ class Application(Gtk.Application):
 
             equalizer_input_gain = config.getfloat('equalizer', 'input_gain',
                                                    fallback=0)
+            equalizer_output_gain = config.getfloat('equalizer', 'output_gain',
+                                                    fallback=0)
 
             highpass_cutoff_freq = config.getint('equalizer',
                                                  'highpass_cutoff',
@@ -419,6 +424,8 @@ class Application(Gtk.Application):
 
             self.setup_equalizer.equalizer_input_gain.set_value(
                 equalizer_input_gain)
+            self.setup_equalizer.equalizer_output_gain.set_value(
+                equalizer_output_gain)
 
             self.setup_equalizer.apply_eq_preset(equalizer_bands)
 
