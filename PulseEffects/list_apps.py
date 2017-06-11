@@ -66,9 +66,10 @@ class ListApps():
 
         info_box.pack_start(label, True, True, 0)
 
-        # format, rate and resample method
+        # format, rate, channels and resample method
         label_text = sample_format + ', ' + \
-            str(rate) + ' Hz, ' + resample_method
+            str(round(rate / 1000.0, 1)) + ' kHz, ' + \
+            str(audio_channels) + 'ch, ' + resample_method
 
         label = Gtk.Label(label_text, xalign=0)
         label.set_margin_left(5)
