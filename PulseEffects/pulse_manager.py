@@ -39,7 +39,7 @@ class PulseManager(GObject.GObject):
         self.media_blacklist = ['pulsesink probe']
 
         # wrapping callbacks
-        self.ctx_cb = p.pa_context_notify_cb_t(self.context_status)
+        self.ctx_notify_cb = p.pa_context_notify_cb_t(self.context_notify)
         self.server_info_cb = p.pa_server_info_cb_t(self.server_info)
         self.default_sink_info_cb = p.pa_sink_info_cb_t(self.default_sink_info)
         self.sink_info_cb = p.pa_sink_info_cb_t(self.sink_info)
@@ -54,7 +54,7 @@ class PulseManager(GObject.GObject):
 
         self.ctx = p.pa_context_new(self.main_loop_api, b'PulseEffects')
 
-        p.pa_context_set_state_callback(self.ctx, self.ctx_cb, None)
+        p.pa_context_set_state_callback(self.ctx, self.ctx_notify_cb, None)
 
         p.pa_context_connect(self.ctx, None, 0, None)
 
@@ -95,9 +95,6 @@ class PulseManager(GObject.GObject):
                       str(self.default_sink_rate) +
                       ' Hz. We will use the same rate.')
 
-        # load source sink
-        self.load_sink()
-
         # search sink inputs
         o = p.pa_context_get_sink_input_info_list(self.ctx,
                                                   self.sink_input_info_cb,
@@ -116,12 +113,16 @@ class PulseManager(GObject.GObject):
                                p.PA_SUBSCRIPTION_MASK_SINK_INPUT,
                                self.ctx_success_cb, None)
 
-    def context_status(self, context, user_data):
-        state = p.pa_context_get_state(context)
+    def context_notify(self, ctx, user_data):
+        state = p.pa_context_get_state(ctx)
 
         if state == p.PA_CONTEXT_READY:
             self.context_ok = True
             self.log.info('pulseaudio context started')
+            self.log.info('connected to server: ' +
+                          p.pa_context_get_server(ctx).decode())
+            self.log.info('server protocol version: ' +
+                          str(p.pa_context_get_server_protocol_version(ctx)))
 
         elif state == p.PA_CONTEXT_FAILED:
             self.log.critical('failed to start pulseaudio context')
@@ -129,7 +130,9 @@ class PulseManager(GObject.GObject):
         elif state == p.PA_CONTEXT_TERMINATED:
             self.log.warning('pulseaudio context terminated')
 
-    def context_disconnect(self):
+    def exit(self):
+        self.unload_sink()
+
         p.pa_context_disconnect(self.ctx)
 
     def server_info(self, context, info, user_data):

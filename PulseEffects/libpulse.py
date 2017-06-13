@@ -309,15 +309,34 @@ pa_context_disconnect = lib.pa_context_disconnect
 pa_context_disconnect.restype = None
 pa_context_disconnect.argtypes = [POINTER(pa_context)]
 
+pa_context_drain = lib.pa_context_drain
+pa_context_drain.restype = POINTER(pa_operation)
+pa_context_drain.argtypes = [POINTER(pa_context), pa_context_notify_cb_t,
+                             c_void_p]
+
+pa_context_unref = lib.pa_context_unref
+pa_context_unref.restype = None
+pa_context_unref.argtypes = [POINTER(pa_context)]
+
 pa_context_get_module_info = lib.pa_context_get_module_info
 pa_context_get_module_info.restype = POINTER(pa_operation)
 pa_context_get_module_info.argtypes = [POINTER(pa_context), c_uint32,
                                        pa_module_info_cb_t, c_void_p]
 
+pa_context_get_server = lib.pa_context_get_server
+pa_context_get_server.restype = c_char_p
+pa_context_get_server.argtypes = [POINTER(pa_context)]
+
 pa_context_get_server_info = lib.pa_context_get_server_info
 pa_context_get_server_info.restype = POINTER(pa_operation)
 pa_context_get_server_info.argtypes = [POINTER(pa_context),
                                        pa_server_info_cb_t, c_void_p]
+
+pa_context_get_server_protocol_version = \
+    lib.pa_context_get_server_protocol_version
+
+pa_context_get_server_protocol_version.restype = c_uint32
+pa_context_get_server_protocol_version.argtypes = [POINTER(pa_context)]
 
 pa_context_get_sink_info_by_name = lib.pa_context_get_sink_info_by_name
 pa_context_get_sink_info_by_name.restype = POINTER(pa_operation)

@@ -48,6 +48,8 @@ class Application(Gtk.Application):
 
         self.pm = PulseManager()
 
+        self.pm.load_sink()
+
         # gstreamer audio effects
 
         self.gst = GstEffects(self.pm.default_sink_rate)
@@ -157,9 +159,7 @@ class Application(Gtk.Application):
     def on_MainWindow_delete_event(self, event, data):
         self.gst.set_state('null')
 
-        self.pm.unload_sink()
-
-        self.pm.context_disconnect()
+        self.pm.exit()
 
         self.quit()
 
