@@ -63,7 +63,11 @@ class GstEffects(GObject.GObject):
         # Create bus to get events from GStreamer pipeline
         bus = self.pipeline.get_bus()
         bus.add_signal_watch()
-        bus.connect('message', self.on_message)
+        bus.connect('message::error', self.on_message_error)
+        bus.connect('message::info', self.on_message_info)
+        bus.connect('message::warning', self.on_message_warning)
+        bus.connect('message::latency', self.on_message_latency)
+        bus.connect('message::element', self.on_message_element)
 
     def build_pipeline(self):
         pipeline = Gst.Pipeline()
@@ -309,97 +313,108 @@ class GstEffects(GObject.GObject):
 
                 self.emit('new_autovolume', gain)
 
-    def on_message(self, bus, msg):
-        if msg.type == Gst.MessageType.ERROR:
-            self.log.error(msg.parse_error())
-            self.set_state('null')
-        elif msg.type == Gst.MessageType.WARNING:
-            self.log.warning(msg.parse_warning())
-        elif msg.type == Gst.MessageType.INFO:
-            self.log.info(msg.parse_info())
-        elif msg.type == Gst.MessageType.LATENCY:
-            plugin = msg.src.get_name()
+    def on_message_error(self, bus, msg):
+        self.log.error(msg.parse_error())
+        self.set_state('null')
 
-            if plugin == 'audio_sink':
-                latency = msg.src.get_property('latency-time')
-                buffer_time = msg.src.get_property('buffer-time')
+        return True
 
-                self.log.info('pulsesink latency-time [us]: ' + str(latency))
-                self.log.info('pulsesink buffer-time [us]: ' +
-                              str(buffer_time))
-            elif plugin == 'audio_src':
-                latency = msg.src.get_property('actual-latency-time')
-                buffer_time = msg.src.get_property('actual-buffer-time')
+    def on_message_info(self, bus, msg):
+        self.log.info(msg.parse_info())
 
-                self.log.info('pulsesrc latency-time [us]: ' + str(latency))
-                self.log.info('pulsesrc buffer-time [us]: ' + str(buffer_time))
-        elif msg.type == Gst.MessageType.ELEMENT:
-            plugin = msg.src.get_name()
+        return True
 
-            if plugin == 'limiter_input_level':
+    def on_message_warning(self, bus, msg):
+        self.log.warning(msg.parse_warning())
+
+        return True
+
+    def on_message_latency(self, bus, msg):
+        plugin = msg.src.get_name()
+
+        if plugin == 'audio_sink':
+            latency = msg.src.get_property('latency-time')
+            buffer_time = msg.src.get_property('buffer-time')
+
+            self.log.info('pulsesink latency-time [us]: ' + str(latency))
+            self.log.info('pulsesink buffer-time [us]: ' +
+                          str(buffer_time))
+        elif plugin == 'audio_src':
+            latency = msg.src.get_property('actual-latency-time')
+            buffer_time = msg.src.get_property('actual-buffer-time')
+
+            self.log.info('pulsesrc latency-time [us]: ' + str(latency))
+            self.log.info('pulsesrc buffer-time [us]: ' + str(buffer_time))
+
+        return True
+
+    def on_message_element(self, bus, msg):
+        plugin = msg.src.get_name()
+
+        if plugin == 'limiter_input_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.emit('new_limiter_input_level', peak[0], peak[1])
+        elif plugin == 'limiter_output_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.emit('new_limiter_output_level', peak[0], peak[1])
+            self.emit('new_compressor_input_level', peak[0], peak[1])
+
+            attenuation = round(self.limiter.get_property('attenuation'))
+
+            if attenuation != self.old_limiter_attenuation:
+                self.old_limiter_attenuation = attenuation
+
+                self.emit('new_limiter_attenuation', attenuation)
+        elif plugin == 'autovolume':
+            if self.autovolume_enabled:
                 peak = msg.get_structure().get_value('peak')
 
-                self.emit('new_limiter_input_level', peak[0], peak[1])
-            elif plugin == 'limiter_output_level':
-                peak = msg.get_structure().get_value('peak')
+                max_value = max(peak)
 
-                self.emit('new_limiter_output_level', peak[0], peak[1])
-                self.emit('new_compressor_input_level', peak[0], peak[1])
+                if max_value > -50:
+                    self.auto_gain(max_value)
 
-                attenuation = round(self.limiter.get_property('attenuation'))
+        elif plugin == 'compressor_output_level':
+            peak = msg.get_structure().get_value('peak')
 
-                if attenuation != self.old_limiter_attenuation:
-                    self.old_limiter_attenuation = attenuation
+            self.emit('new_compressor_output_level', peak[0], peak[1])
+            self.emit('new_reverb_input_level', peak[0], peak[1])
 
-                    self.emit('new_limiter_attenuation', attenuation)
-            elif plugin == 'autovolume':
-                if self.autovolume_enabled:
-                    peak = msg.get_structure().get_value('peak')
+            gain_reduction = round(
+                self.compressor.get_property('gain-reduction'))
 
-                    max_value = max(peak)
+            if gain_reduction != self.old_compressor_gain_reduction:
+                self.old_compressor_gain_reduction = gain_reduction
 
-                    if max_value > -50:
-                        self.auto_gain(max_value)
+                self.emit('new_compressor_gain_reduction', gain_reduction)
+        elif plugin == 'reverb_output_level':
+            peak = msg.get_structure().get_value('peak')
 
-            elif plugin == 'compressor_output_level':
-                peak = msg.get_structure().get_value('peak')
+            self.emit('new_reverb_output_level', peak[0], peak[1])
+        elif plugin == 'equalizer_input_level':
+            peak = msg.get_structure().get_value('peak')
 
-                self.emit('new_compressor_output_level', peak[0], peak[1])
-                self.emit('new_reverb_input_level', peak[0], peak[1])
+            self.emit('new_equalizer_input_level', peak[0], peak[1])
+        elif plugin == 'equalizer_output_level':
+            peak = msg.get_structure().get_value('peak')
 
-                gain_reduction = round(
-                    self.compressor.get_property('gain-reduction'))
+            self.emit('new_equalizer_output_level', peak[0], peak[1])
+        elif plugin == 'spectrum':
+            magnitudes = msg.get_structure().get_value('magnitude')
 
-                if gain_reduction != self.old_compressor_gain_reduction:
-                    self.old_compressor_gain_reduction = gain_reduction
+            if len(magnitudes) > 0:
+                magnitudes = magnitudes[:self.spectrum_nfreqs]
 
-                    self.emit('new_compressor_gain_reduction', gain_reduction)
-            elif plugin == 'reverb_output_level':
-                peak = msg.get_structure().get_value('peak')
+                max_mag = max(magnitudes)
+                min_mag = self.spectrum_threshold
 
-                self.emit('new_reverb_output_level', peak[0], peak[1])
-            elif plugin == 'equalizer_input_level':
-                peak = msg.get_structure().get_value('peak')
+                if max_mag > min_mag:
+                    magnitudes = [(min_mag - v) / min_mag for v in magnitudes]
 
-                self.emit('new_equalizer_input_level', peak[0], peak[1])
-            elif plugin == 'equalizer_output_level':
-                peak = msg.get_structure().get_value('peak')
+                    self.emit('new_spectrum', magnitudes)
 
-                self.emit('new_equalizer_output_level', peak[0], peak[1])
-            elif plugin == 'spectrum':
-                magnitudes = msg.get_structure().get_value('magnitude')
-
-                if len(magnitudes) > 0:
-                    magnitudes = magnitudes[:self.spectrum_nfreqs]
-
-                    max_mag = max(magnitudes)
-                    min_mag = self.spectrum_threshold
-
-                    if max_mag > min_mag:
-                        magnitudes = [(min_mag - v) / min_mag
-                                      for v in magnitudes]
-
-                        self.emit('new_spectrum', magnitudes)
         return True
 
     def set_source_monitor_name(self, name):
