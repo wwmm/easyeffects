@@ -11,6 +11,8 @@ class Spectrum():
         self.gst = app.gst
         self.settings = app.settings
 
+        self.show_spectrum = True
+
         self.handlers = {
             'on_show_spectrum_state_set': self.on_show_spectrum_state_set,
             'on_spectrum_draw': self.on_spectrum_draw
@@ -39,36 +41,42 @@ class Spectrum():
     def on_show_spectrum_state_set(self, obj, state):
         if state:
             self.spectrum_box.show_all()
+            self.show_spectrum = True
         else:
             self.spectrum_box.hide()
+            self.show_spectrum = False
 
         out = GLib.Variant('b', state)
         self.settings.set_value('show-spectrum', out)
 
     def on_spectrum_draw(self, drawing_area, ctx):
         ctx.paint()
+        spectrum_magnitudes = self.spectrum_magnitudes
 
-        if self.spectrum_magnitudes:
+        if spectrum_magnitudes:
             width = drawing_area.get_allocation().width
             height = drawing_area.get_allocation().height
-            n_bars = len(self.spectrum_magnitudes)
+            n_bars = len(spectrum_magnitudes)
             style = drawing_area.get_style_context()
 
             dx = width / n_bars
 
-            bar_height = [mag * height for mag in self.spectrum_magnitudes]
+            bar_height = [mag * height for mag in spectrum_magnitudes]
             x = [n * dx for n in range(n_bars)]
             y = [height - bar_h for bar_h in bar_height]
 
+            rectangle = ctx.rectangle
+
             for n in range(n_bars):
-                if bar_height[n] > 0:
-                    ctx.rectangle(x[n], y[n], dx, bar_height[n])
+                rectangle(x[n], y[n], dx, bar_height[n])
 
             color = style.lookup_color('theme_selected_bg_color')[1]
-            ctx.set_source_rgba(color.red, color.green, color.blue, 0.75)
+            ctx.set_source_rgba(color.red, color.green, color.blue, 1.0)
+            ctx.set_line_width(1.1)
             ctx.stroke()
 
     def on_new_spectrum(self, obj, magnitudes):
-        self.spectrum_magnitudes = magnitudes
+        if self.show_spectrum:
+            self.spectrum_magnitudes = magnitudes
 
-        self.drawing_area.queue_draw()
+            self.drawing_area.queue_draw()
