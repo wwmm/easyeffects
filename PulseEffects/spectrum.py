@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import numpy as np
 from gi.repository import GLib
 
 
@@ -25,7 +26,7 @@ class Spectrum():
         self.spectrum_box = self.builder.get_object('spectrum_box')
         self.drawing_area = self.builder.get_object('spectrum')
 
-        self.spectrum_magnitudes = []
+        self.spectrum_magnitudes = np.array([])
 
     def init(self):
         show_spectrum_switch = self.builder.get_object('show_spectrum')
@@ -68,17 +69,17 @@ class Spectrum():
 
     def on_spectrum_draw(self, drawing_area, ctx):
         ctx.paint()
-        spectrum_magnitudes = self.spectrum_magnitudes
 
-        if spectrum_magnitudes:
+        n_bars = self.spectrum_magnitudes.size
+
+        if n_bars > 0:
             width = drawing_area.get_allocation().width
             height = drawing_area.get_allocation().height
-            n_bars = len(spectrum_magnitudes)
             style = drawing_area.get_style_context()
 
             dx = width / n_bars
 
-            bar_height = [mag * height for mag in spectrum_magnitudes]
+            bar_height = self.spectrum_magnitudes * height
             x = [n * dx for n in range(n_bars)]
             y = [height - bar_h for bar_h in bar_height]
 

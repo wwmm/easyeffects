@@ -405,19 +405,17 @@ class GstEffects(GObject.GObject):
             magnitudes = msg.get_structure().get_value('magnitude')
 
             if len(magnitudes) > 0:
-                magnitudes = magnitudes[:self.spectrum_nfreqs]
+                magnitudes = np.interp(self.spectrum_x_axis,
+                                       self.spectrum_freqs,
+                                       magnitudes[:self.spectrum_nfreqs])
 
-                max_mag = max(magnitudes)
+                max_mag = np.amax(magnitudes)
                 min_mag = self.spectrum_threshold
 
                 if max_mag > min_mag:
-                    magnitudes = [(min_mag - v) / min_mag for v in magnitudes]
+                    magnitudes = (min_mag - magnitudes) / min_mag
 
-                    interpolated_mag = np.interp(self.spectrum_x_axis,
-                                                 self.spectrum_freqs,
-                                                 magnitudes)
-
-                    self.emit('new_spectrum', interpolated_mag.tolist())
+                    self.emit('new_spectrum', magnitudes)
 
         return True
 
