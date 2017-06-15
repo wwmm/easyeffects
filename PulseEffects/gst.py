@@ -50,7 +50,7 @@ class GstEffects(GObject.GObject):
         self.spectrum_nbands = 1000
         self.spectrum_freqs = []
         self.spectrum_x_axis = np.array([])
-        self.spectrum_size = 300  # number of freqs displayed
+        self.spectrum_n_points = 300  # number of freqs displayed
         self.spectrum_nfreqs = 0
         self.spectrum_threshold = -100  # dB
 
@@ -291,12 +291,7 @@ class GstEffects(GObject.GObject):
 
         self.spectrum_nfreqs = len(self.spectrum_freqs)
 
-        self.spectrum_x_axis = np.logspace(1.3, 4.3, self.spectrum_size)
-
-        self.log.info('(min, max) spectrum frequencies: ' +
-                      '(' + str(min(self.spectrum_freqs)) + ', ' +
-                      str(max(self.spectrum_freqs)) + ')' +
-                      ' these values are sampling rate dependent')
+        self.spectrum_x_axis = np.logspace(1.3, 4.3, self.spectrum_n_points)
 
     def auto_gain(self, max_value):
         threshold = -12
@@ -447,6 +442,11 @@ class GstEffects(GObject.GObject):
         self.audio_src.set_property('buffer-time', value)
         self.audio_sink.set_property('buffer-time', value)
         self.set_state('playing')
+
+    def set_spectrum_n_points(self, value):
+        self.spectrum_n_points = value
+
+        self.spectrum_x_axis = np.logspace(1.3, 4.3, value)
 
     def init_latency_time(self, value):
         self.audio_src.set_property('latency-time', value)

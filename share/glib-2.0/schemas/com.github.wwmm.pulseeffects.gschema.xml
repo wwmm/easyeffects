@@ -10,6 +10,9 @@
         <key name="show-spectrum" type="b">
           <default>true</default>
         </key>
+        <key name="spectrum-n-points" type="i">
+          <default>300</default>
+        </key>
         <key name="autovolume-state" type="b">
           <default>false</default>
         </key>
