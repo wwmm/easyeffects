@@ -36,7 +36,7 @@ class PulseManager(GObject.GObject):
         self.app_blacklist = ['PulseEffects', 'pulseeffects', 'gsd-media-keys',
                               'GNOME Shell', 'libcanberra', 'gnome-pomodoro']
 
-        self.media_blacklist = ['pulsesink probe']
+        self.media_blacklist = ['pulsesink probe', 'bell-window-system']
 
         # wrapping callbacks
         self.ctx_notify_cb = p.pa_context_notify_cb_t(self.context_notify)
