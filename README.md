@@ -22,6 +22,7 @@ Required libraries:
 - Python configparser (Python versions higher than 3.5.0 come with it. There is no need to install a separate package)
 - PyGobject 3
 - Python cairo
+- Python numpy
 - Gtk 3.18 or above
 - Gstreamer, Gstreamer Plugins Good, Gstreamer Plugins Bad and Gstreamer Python
  (Since version 1.4.3 Pulseeffects needs Gstreamer 1.12 or above)

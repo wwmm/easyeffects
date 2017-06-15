@@ -3,6 +3,7 @@
 import logging
 
 import gi
+import numpy as np
 gi.require_version('Gst', '1.0')
 from gi.repository import GObject, Gst
 
@@ -46,8 +47,10 @@ class GstEffects(GObject.GObject):
         self.old_compressor_gain_reduction = 0
         self.rate = sampling_rate
         self.max_spectrum_freq = 20000  # Hz
-        self.spectrum_nbands = 400
+        self.spectrum_nbands = 1000
         self.spectrum_freqs = []
+        self.spectrum_x_axis = np.array([])
+        self.spectrum_size = 300  # number of freqs displayed
         self.spectrum_nfreqs = 0
         self.spectrum_threshold = -100  # dB
 
@@ -288,6 +291,8 @@ class GstEffects(GObject.GObject):
 
         self.spectrum_nfreqs = len(self.spectrum_freqs)
 
+        self.spectrum_x_axis = np.logspace(1.3, 4.3, self.spectrum_size)
+
         self.log.info('(min, max) spectrum frequencies: ' +
                       '(' + str(min(self.spectrum_freqs)) + ', ' +
                       str(max(self.spectrum_freqs)) + ')' +
@@ -413,7 +418,11 @@ class GstEffects(GObject.GObject):
                 if max_mag > min_mag:
                     magnitudes = [(min_mag - v) / min_mag for v in magnitudes]
 
-                    self.emit('new_spectrum', magnitudes)
+                    interpolated_mag = np.interp(self.spectrum_x_axis,
+                                                 self.spectrum_freqs,
+                                                 magnitudes)
+
+                    self.emit('new_spectrum', interpolated_mag.tolist())
 
         return True
 
