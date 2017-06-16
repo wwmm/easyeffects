@@ -187,9 +187,9 @@ class GstEffects(GObject.GObject):
         pipeline.add(compressor_output_level)
         pipeline.add(self.freeverb)
         pipeline.add(reverb_output_level)
+        pipeline.add(self.equalizer_input_gain)
         pipeline.add(self.eq_highpass)
         pipeline.add(self.eq_lowpass)
-        pipeline.add(self.equalizer_input_gain)
         pipeline.add(equalizer_input_level)
         pipeline.add(self.equalizer)
         pipeline.add(self.equalizer_output_gain)
@@ -208,10 +208,10 @@ class GstEffects(GObject.GObject):
         self.compressor.link(compressor_output_level)
         compressor_output_level.link(self.freeverb)
         self.freeverb.link(reverb_output_level)
-        reverb_output_level.link(self.eq_highpass)
+        reverb_output_level.link(self.equalizer_input_gain)
+        self.equalizer_input_gain.link(self.eq_highpass)
         self.eq_highpass.link(self.eq_lowpass)
-        self.eq_lowpass.link(self.equalizer_input_gain)
-        self.equalizer_input_gain.link(equalizer_input_level)
+        self.eq_lowpass.link(equalizer_input_level)
         equalizer_input_level.link(self.equalizer)
         self.equalizer.link(self.equalizer_output_gain)
         self.equalizer_output_gain.link(equalizer_output_level)
@@ -404,18 +404,17 @@ class GstEffects(GObject.GObject):
         elif plugin == 'spectrum':
             magnitudes = msg.get_structure().get_value('magnitude')
 
-            if len(magnitudes) > 0:
-                magnitudes = np.interp(self.spectrum_x_axis,
-                                       self.spectrum_freqs,
-                                       magnitudes[:self.spectrum_nfreqs])
+            magnitudes = np.interp(self.spectrum_x_axis,
+                                   self.spectrum_freqs,
+                                   magnitudes[:self.spectrum_nfreqs])
 
-                max_mag = np.amax(magnitudes)
-                min_mag = self.spectrum_threshold
+            max_mag = np.amax(magnitudes)
+            min_mag = self.spectrum_threshold
 
-                if max_mag > min_mag:
-                    magnitudes = (min_mag - magnitudes) / min_mag
+            if max_mag > min_mag:
+                magnitudes = (min_mag - magnitudes) / min_mag
 
-                    self.emit('new_spectrum', magnitudes)
+                self.emit('new_spectrum', magnitudes)
 
         return True
 

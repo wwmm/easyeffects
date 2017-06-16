@@ -77,16 +77,14 @@ class Spectrum():
             height = drawing_area.get_allocation().height
             style = drawing_area.get_style_context()
 
+            bar_height = self.spectrum_magnitudes * height
+            x = np.linspace(0, width, n_bars)
+            y = height - bar_height
             dx = width / n_bars
 
-            bar_height = self.spectrum_magnitudes * height
-            x = [n * dx for n in range(n_bars)]
-            y = [height - bar_h for bar_h in bar_height]
-
             rectangle = ctx.rectangle
-
-            for n in range(n_bars):
-                rectangle(x[n], y[n], dx, bar_height[n])
+            rectangles = np.vectorize(rectangle)
+            rectangles(x, y, dx, bar_height)
 
             color = style.lookup_color('theme_selected_bg_color')[1]
             ctx.set_source_rgba(color.red, color.green, color.blue, 1.0)
