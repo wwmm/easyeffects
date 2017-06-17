@@ -4,6 +4,7 @@ import logging
 
 import gi
 import numpy as np
+from scipy.interpolate import CubicSpline
 gi.require_version('Gst', '1.0')
 from gi.repository import GObject, Gst
 
@@ -404,9 +405,10 @@ class GstEffects(GObject.GObject):
         elif plugin == 'spectrum':
             magnitudes = msg.get_structure().get_value('magnitude')
 
-            magnitudes = np.interp(self.spectrum_x_axis,
-                                   self.spectrum_freqs,
-                                   magnitudes[:self.spectrum_nfreqs])
+            cs = CubicSpline(self.spectrum_freqs,
+                             magnitudes[:self.spectrum_nfreqs])
+
+            magnitudes = cs(self.spectrum_x_axis)
 
             max_mag = np.amax(magnitudes)
             min_mag = self.spectrum_threshold
