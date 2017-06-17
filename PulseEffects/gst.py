@@ -47,7 +47,7 @@ class GstEffects(GObject.GObject):
         self.old_compressor_gain_reduction = 0
         self.rate = sampling_rate
         self.max_spectrum_freq = 20000  # Hz
-        self.spectrum_nbands = 1200
+        self.spectrum_nbands = 1600
         self.spectrum_freqs = []
         self.spectrum_x_axis = np.array([])
         self.spectrum_n_points = 250  # number of freqs displayed
