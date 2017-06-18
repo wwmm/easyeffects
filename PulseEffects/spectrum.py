@@ -137,7 +137,7 @@ class Spectrum():
         # frequency axis is logarithmic
         # 20 Hz = 10^(1.3), 20000 Hz = 10^(4.3)
 
-        self.mouse_freq = round(10**(1.3 + event_motion.x * 3.0 / width), 0)
+        self.mouse_freq = round(10**(1.3 + event_motion.x * 3.0 / width), 1)
 
         # intensity scale is in decibel
         # minimum intensity is -100 dB and maximum is 0 dB
