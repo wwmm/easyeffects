@@ -13,12 +13,21 @@ class Spectrum():
         self.settings = app.settings
 
         self.show_spectrum = True
+        self.mouse_inside = False
+        self.mouse_freq = 0
+        self.mouse_intensity = 0
 
         self.handlers = {
             'on_show_spectrum_state_set': self.on_show_spectrum_state_set,
             'on_spectrum_n_points_value_changed':
                 self.on_spectrum_n_points_value_changed,
-            'on_spectrum_draw': self.on_spectrum_draw
+            'on_spectrum_draw': self.on_spectrum_draw,
+            'on_spectrum_enter_notify_event':
+                self.on_spectrum_enter_notify_event,
+            'on_spectrum_leave_notify_event':
+                self.on_spectrum_leave_notify_event,
+            'on_spectrum_motion_notify_event':
+                self.on_spectrum_motion_notify_event
         }
 
         self.gst.connect('new_spectrum', self.on_new_spectrum)
@@ -96,3 +105,21 @@ class Spectrum():
             self.spectrum_magnitudes = magnitudes
 
             self.drawing_area.queue_draw()
+
+    def on_spectrum_enter_notify_event(self, drawing_area, event_crossing):
+        self.mouse_inside = True
+
+    def on_spectrum_leave_notify_event(self, drawing_area, event_crossing):
+        self.mouse_inside = False
+
+    def on_spectrum_motion_notify_event(self, drawing_area, event_motion):
+        width = drawing_area.get_allocation().width
+        # height = drawing_area.get_allocation().height
+
+        # frequency axis is logarithmic
+        # 20 Hz = 10^(1.3), 20000 Hz = 10^(4.3)
+
+        self.mouse_freq = 10**(1.3 + event_motion.x * 3.0 / width)
+        # self.mouse_intensity = event_motion.y
+
+        print(self.mouse_freq)
