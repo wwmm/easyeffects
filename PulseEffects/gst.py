@@ -53,7 +53,7 @@ class GstEffects(GObject.GObject):
         self.spectrum_x_axis = np.array([])
         self.spectrum_n_points = 250  # number of freqs displayed
         self.spectrum_nfreqs = 0
-        self.spectrum_threshold = -100  # dB
+        self.spectrum_threshold = -120  # dB
 
         self.autovolume_enabled = False
         self.is_playing = False
@@ -215,10 +215,10 @@ class GstEffects(GObject.GObject):
         self.eq_lowpass.link(equalizer_input_level)
         equalizer_input_level.link(self.equalizer)
         self.equalizer.link(self.equalizer_output_gain)
-        self.equalizer_output_gain.link(equalizer_output_level)
+        self.equalizer_output_gain.link(output_limiter)
+        output_limiter.link(equalizer_output_level)
         equalizer_output_level.link(spectrum)
-        spectrum.link(output_limiter)
-        output_limiter.link(self.audio_sink)
+        spectrum.link(self.audio_sink)
 
         return pipeline
 

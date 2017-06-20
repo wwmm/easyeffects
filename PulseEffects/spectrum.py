@@ -140,6 +140,6 @@ class Spectrum():
         self.mouse_freq = round(10**(1.3 + event_motion.x * 3.0 / width), 1)
 
         # intensity scale is in decibel
-        # minimum intensity is -100 dB and maximum is 0 dB
+        # minimum intensity is -120 dB and maximum is 0 dB
 
-        self.mouse_intensity = round(- event_motion.y * 100 / height, 1)
+        self.mouse_intensity = round(- event_motion.y * 120 / height, 1)
