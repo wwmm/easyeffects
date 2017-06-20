@@ -164,22 +164,22 @@
   <object class="GtkImage" id="image_compressor_menu">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="icon_name">emblem-system-symbolic</property>
+    <property name="icon_name">preferences-other-symbolic</property>
   </object>
   <object class="GtkImage" id="image_eq_menu">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="icon_name">emblem-system-symbolic</property>
+    <property name="icon_name">preferences-other-symbolic</property>
   </object>
   <object class="GtkImage" id="image_limiter_menu">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="icon_name">emblem-system-symbolic</property>
+    <property name="icon_name">preferences-other-symbolic</property>
   </object>
   <object class="GtkImage" id="image_reverb_menu">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="icon_name">emblem-system-symbolic</property>
+    <property name="icon_name">preferences-other-symbolic</property>
   </object>
   <object class="GtkImage" id="image_test_signal_menu">
     <property name="visible">True</property>

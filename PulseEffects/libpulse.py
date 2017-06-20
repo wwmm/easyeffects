@@ -393,6 +393,13 @@ pa_context_move_sink_input_by_name.argtypes = [POINTER(pa_context), c_uint32,
                                                pa_context_success_cb_t,
                                                c_void_p]
 
+pa_context_set_sink_input_mute = lib.pa_context_set_sink_input_mute
+pa_context_set_sink_input_mute.restype = POINTER(pa_operation)
+pa_context_set_sink_input_mute.argtypes = [POINTER(pa_context), c_uint32,
+                                           c_int,
+                                           pa_context_success_cb_t,
+                                           c_void_p]
+
 pa_context_subscribe = lib.pa_context_subscribe
 pa_context_subscribe.restype = POINTER(pa_operation)
 pa_context_subscribe.argtypes = [POINTER(pa_context), pa_subscription_mask_t,

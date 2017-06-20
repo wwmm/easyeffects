@@ -234,6 +234,7 @@ class PulseManager(GObject.GObject):
 
                 volume = info.contents.volume
                 audio_channels = volume.channels
+                mute = info.contents.mute
 
                 max_volume_linear = 100 * \
                     p.pa_cvolume_max(volume) / p.PA_VOLUME_NORM
@@ -251,7 +252,8 @@ class PulseManager(GObject.GObject):
 
                 new_input = [idx, app_name, media_name,
                              icon_name, audio_channels, max_volume_linear,
-                             rate, resample_method, sample_format, connected]
+                             rate, resample_method, sample_format, mute,
+                             connected]
 
                 if user_data == 1:
                     GLib.idle_add(self.emit, 'sink_input_added', new_input)
@@ -341,6 +343,10 @@ class PulseManager(GObject.GObject):
 
         p.pa_context_set_sink_input_volume(self.ctx, idx, cvolume_ptr,
                                            self.ctx_success_cb, None)
+
+    def set_sink_input_mute(self, idx, mute_state):
+        p.pa_context_set_sink_input_mute(self.ctx, idx, mute_state,
+                                         self.ctx_success_cb, None)
 
     def subscribe(self, context, event_value, idx, user_data):
         event_type = event_value & p.PA_SUBSCRIPTION_EVENT_TYPE_MASK

@@ -35,11 +35,12 @@ class ListApps():
         media_name = sink_input_parameters[2]
         icon_name = sink_input_parameters[3]
         audio_channels = sink_input_parameters[4]
-        max_volume_dB = sink_input_parameters[5]
+        max_volume_linear = sink_input_parameters[5]
         rate = sink_input_parameters[6]
         resample_method = sink_input_parameters[7]
         sample_format = sink_input_parameters[8]
-        connected = sink_input_parameters[9]
+        mute = sink_input_parameters[9]
+        connected = sink_input_parameters[10]
 
         app_box.set_name('app_box_' + str(idx))
         app_box.set_homogeneous(True)
@@ -103,7 +104,7 @@ class ListApps():
         volume_scale.set_value_pos(Gtk.PositionType.RIGHT)
         volume_scale.set_name('volume_' + str(idx) + '_' + str(audio_channels))
 
-        volume_adjustment.set_value(max_volume_dB)
+        volume_adjustment.set_value(max_volume_linear)
 
         def set_sink_input_volume(obj):
             data = obj.get_name().split('_')
@@ -123,6 +124,45 @@ class ListApps():
         volume_scale.connect('value-changed', set_sink_input_volume)
 
         control_box.pack_end(volume_scale, True, True, 0)
+
+        # mute
+        icon_name = 'audio-volume-high-symbolic'
+
+        if mute:
+            icon_name = 'audio-volume-muted-symbolic'
+
+            volume_scale.set_sensitive(False)
+
+        icon_size = Gtk.IconSize.BUTTON
+        icon = Gtk.Image.new_from_icon_name(icon_name, icon_size)
+
+        mute_button = Gtk.ToggleButton()
+        mute_button.set_image(icon)
+        mute_button.set_margin_left(5)
+        mute_button.set_name('mute_' + str(idx))
+
+        mute_button.set_active(mute)
+
+        def on_mute_button_toggled(button):
+            idx = int(button.get_name().split('_')[1])
+
+            state = button.get_active()
+
+            self.pm.set_sink_input_mute(idx, state)
+
+            parent = button.get_parent()
+
+            for child in parent:
+                data = child.get_name().split('_')
+
+                if data[0] == 'volume':
+                    child.set_sensitive(state)
+
+                    break
+
+        mute_button.connect('toggled', on_mute_button_toggled)
+
+        control_box.pack_end(mute_button, False, False, 0)
 
     def on_sink_input_added(self, obj, sink_input_parameters):
         if self.app.ui_initialized:
