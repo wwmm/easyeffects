@@ -89,8 +89,7 @@ class PulseManager(GObject.GObject):
         p.pa_operation_unref(o)
 
         self.log.info('default pulseaudio sink audio format: ' +
-                      str(self.default_sink_format) +
-                      '. We will use the same format.')
+                      str(self.default_sink_format))
         self.log.info('default pulseaudio sink sampling rate: ' +
                       str(self.default_sink_rate) +
                       ' Hz. We will use the same rate.')

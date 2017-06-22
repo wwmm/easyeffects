@@ -244,7 +244,7 @@
             <property name="orientation">vertical</property>
             <child>
               <object class="GtkDrawingArea" id="spectrum">
-                <property name="height_request">110</property>
+                <property name="height_request">100</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK | GDK_STRUCTURE_MASK</property>
@@ -487,6 +487,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
+                        <property name="valign">center</property>
                         <property name="image">image_eq_menu</property>
                         <property name="relief">half</property>
                         <property name="always_show_image">True</property>
@@ -503,6 +504,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
+                        <property name="valign">center</property>
                         <property name="image">image_test_signal_menu</property>
                         <property name="always_show_image">True</property>
                       </object>
@@ -989,6 +991,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
+                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Input [dB]</property>
                       </object>
                       <packing>
@@ -1001,6 +1004,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
+                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Output [dB]</property>
                       </object>
                       <packing>
@@ -1083,6 +1087,7 @@
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
                         <property name="can_focus">False</property>
+                        <property name="valign">center</property>
                         <property name="label">0</property>
                         <property name="width_chars">3</property>
                         <property name="max_width_chars">3</property>
@@ -1097,6 +1102,7 @@
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
                         <property name="can_focus">False</property>
+                        <property name="valign">center</property>
                         <property name="label">1</property>
                         <property name="width_chars">3</property>
                         <property name="max_width_chars">3</property>
@@ -1111,6 +1117,7 @@
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
                         <property name="can_focus">False</property>
+                        <property name="valign">center</property>
                         <property name="label">0</property>
                         <property name="width_chars">3</property>
                         <property name="max_width_chars">3</property>
@@ -1135,6 +1142,7 @@
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
                         <property name="can_focus">False</property>
+                        <property name="valign">center</property>
                         <property name="label">1</property>
                         <property name="width_chars">3</property>
                         <property name="max_width_chars">3</property>
@@ -1158,6 +1166,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="valign">center</property>
                         <property name="hexpand">True</property>
                         <property name="adjustment">equalizer_output_gain</property>
                         <property name="round_digits">0</property>
@@ -1173,6 +1182,7 @@
                       <object class="GtkScale">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="valign">center</property>
                         <property name="hexpand">True</property>
                         <property name="adjustment">equalizer_input_gain</property>
                         <property name="round_digits">0</property>
@@ -1246,6 +1256,7 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
+                                <property name="valign">center</property>
                                 <property name="image">image_limiter_menu</property>
                                 <property name="always_show_image">True</property>
                               </object>
@@ -1641,6 +1652,7 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
+                                <property name="valign">center</property>
                                 <property name="image">image_reverb_menu</property>
                                 <property name="always_show_image">True</property>
                               </object>
@@ -2045,6 +2057,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
+                            <property name="valign">center</property>
                             <property name="image">image_compressor_menu</property>
                             <property name="always_show_image">True</property>
                           </object>

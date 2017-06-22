@@ -53,8 +53,11 @@ class ListApps():
         app_box.pack_end(control_box, True, True, 0)
 
         # app icon
-        icon_size = Gtk.IconSize.BUTTON
-        icon = Gtk.Image.new_from_icon_name(icon_name, icon_size)
+        icon = Gtk.Image.new_from_icon_name(icon_name,
+                                            Gtk.IconSize.SMALL_TOOLBAR)
+
+        icon.set_valign(Gtk.Align.CENTER)
+        icon.set_margin_right(2)
 
         info_box.pack_start(icon, False, False, 0)
 
@@ -64,6 +67,7 @@ class ListApps():
         label = Gtk.Label(label_text, xalign=0)
         label.set_use_markup(True)
         label.set_ellipsize(Pango.EllipsizeMode.END)
+        label.set_valign(Gtk.Align.CENTER)
 
         info_box.pack_start(label, True, True, 0)
 
@@ -74,6 +78,8 @@ class ListApps():
 
         label = Gtk.Label(label_text, xalign=0)
         label.set_margin_left(5)
+        label.set_valign(Gtk.Align.CENTER)
+        label.set_sensitive(False)
 
         info_box.pack_end(label, False, False, 0)
 
@@ -82,6 +88,8 @@ class ListApps():
 
         switch.set_active(connected)
         switch.set_name('switch_' + str(idx))
+        switch.set_valign(Gtk.Align.CENTER)
+        switch.set_margin_left(2)
 
         def move_sink_input(obj, state):
             idx = int(obj.get_name().split('_')[1])
@@ -103,6 +111,7 @@ class ListApps():
         volume_scale.set_digits(0)
         volume_scale.set_value_pos(Gtk.PositionType.RIGHT)
         volume_scale.set_name('volume_' + str(idx) + '_' + str(audio_channels))
+        volume_scale.set_valign(Gtk.Align.CENTER)
 
         volume_adjustment.set_value(max_volume_linear)
 
@@ -133,13 +142,13 @@ class ListApps():
 
             volume_scale.set_sensitive(False)
 
-        icon_size = Gtk.IconSize.BUTTON
-        icon = Gtk.Image.new_from_icon_name(icon_name, icon_size)
+        icon = Gtk.Image.new_from_icon_name(icon_name, Gtk.IconSize.BUTTON)
 
         mute_button = Gtk.ToggleButton()
         mute_button.set_image(icon)
-        mute_button.set_margin_left(5)
+        mute_button.set_margin_left(4)
         mute_button.set_name('mute_' + str(idx))
+        mute_button.set_valign(Gtk.Align.CENTER)
 
         mute_button.set_active(mute)
 

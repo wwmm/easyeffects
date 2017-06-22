@@ -49,6 +49,7 @@
       <object class="GtkLabel">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="valign">center</property>
         <property name="label" translatable="yes">Auto Volume</property>
       </object>
       <packing>
@@ -59,6 +60,7 @@
       <object class="GtkSwitch" id="autovolume_state">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
+        <property name="valign">center</property>
         <signal name="state-set" handler="on_autovolume_enable_state_set" swapped="no"/>
       </object>
       <packing>
@@ -78,6 +80,7 @@
       <object class="GtkLabel">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="valign">center</property>
         <property name="label" translatable="yes">L</property>
       </object>
       <packing>
@@ -89,6 +92,7 @@
         <property name="width_request">100</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
+        <property name="valign">center</property>
         <property name="adjustment">panorama</property>
         <property name="round_digits">1</property>
         <property name="digits">2</property>
@@ -101,6 +105,7 @@
       <object class="GtkLabel">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="valign">center</property>
         <property name="label" translatable="yes">R</property>
       </object>
       <packing>
@@ -112,6 +117,7 @@
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">True</property>
+        <property name="valign">center</property>
         <property name="image">image_settings_popover</property>
         <property name="always_show_image">True</property>
       </object>
@@ -126,6 +132,7 @@
         <property name="can_focus">True</property>
         <property name="receives_default">True</property>
         <property name="tooltip_text" translatable="yes">Save Preset</property>
+        <property name="valign">center</property>
         <property name="image">image_save_user_preset</property>
         <property name="always_show_image">True</property>
         <signal name="clicked" handler="on_save_user_preset_clicked" swapped="no"/>
@@ -141,6 +148,7 @@
         <property name="can_focus">True</property>
         <property name="receives_default">True</property>
         <property name="tooltip_text" translatable="yes">Load Preset</property>
+        <property name="valign">center</property>
         <property name="image">image_load_user_preset</property>
         <property name="always_show_image">True</property>
         <signal name="clicked" handler="on_load_user_preset_clicked" swapped="no"/>
@@ -155,6 +163,7 @@
         <property name="visible">True</property>
         <property name="sensitive">False</property>
         <property name="can_focus">False</property>
+        <property name="valign">center</property>
         <property name="label">rate</property>
       </object>
       <packing>
@@ -300,6 +309,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="halign">end</property>
+            <property name="valign">center</property>
             <signal name="state-set" handler="on_show_spectrum_state_set" swapped="no"/>
           </object>
           <packing>
