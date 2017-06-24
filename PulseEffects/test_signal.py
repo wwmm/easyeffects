@@ -28,6 +28,7 @@ class TestSignal():
 
         self.audio_src1 = Gst.ElementFactory.make('audiotestsrc', None)
         self.audio_src2 = Gst.ElementFactory.make('audiotestsrc', None)
+        self.audio_src3 = Gst.ElementFactory.make('audiotestsrc', None)
         mixer = Gst.ElementFactory.make('audiomixer', None)
         self.bandpass = Gst.ElementFactory.make('audiochebband', None)
         self.audio_sink = Gst.ElementFactory.make('pulsesink', None)
@@ -36,6 +37,7 @@ class TestSignal():
 
         pipeline.add(self.audio_src1)
         pipeline.add(self.audio_src2)
+        pipeline.add(self.audio_src3)
         pipeline.add(mixer)
         pipeline.add(self.bandpass)
         pipeline.add(self.audio_sink)
@@ -45,6 +47,7 @@ class TestSignal():
         self.bandpass.link(self.audio_sink)
 
         self.audio_src2.link(mixer)
+        self.audio_src3.link(mixer)
 
         return pipeline
 
@@ -58,6 +61,7 @@ class TestSignal():
 
         self.audio_src1.set_property('wave', 'sine')
         self.audio_src2.set_property('wave', 'sine')
+        self.audio_src3.set_property('wave', 'sine')
 
         self.bandpass.set_property('mode', 'band-pass')
         self.bandpass.set_property('type', 1)
@@ -107,16 +111,18 @@ class TestSignal():
             print('on_error():', msg.parse_error())
 
     # amp is a rescaling factor so that all frequencies have the same intensity
-    def set_freq(self, amp, lower, upper):
+    def set_freq(self, amp, lower, center, upper):
         self.set_state('null')
 
         self.init_elements()
 
         self.audio_src1.set_property('volume', 1.0 / amp**(0.5))
         self.audio_src2.set_property('volume', 1.0 / amp**(0.5))
+        self.audio_src3.set_property('volume', 1.0 / amp**(0.5))
 
         self.audio_src1.set_property('freq', lower)
-        self.audio_src2.set_property('freq', upper)
+        self.audio_src2.set_property('freq', center)
+        self.audio_src3.set_property('freq', upper)
 
         current_bandpass_upper = self.bandpass.get_property('upper-frequency')
 
@@ -174,32 +180,33 @@ class TestSignal():
             obj_id = Gtk.Buildable.get_name(obj)
 
             if obj_id == 'test_signal_band0':
-                self.set_freq(1, 25, 27)  # amp scaling factor, freq1, freq2
+                # amplitude scaling factor, lower, center, upper
+                self.set_freq(1, 23, 26, 29)
             elif obj_id == 'test_signal_band1':
-                self.set_freq(1.58, 40, 42)
+                self.set_freq(1.58, 38, 41, 44)
             elif obj_id == 'test_signal_band2':
-                self.set_freq(2.5, 64, 66)
+                self.set_freq(2.5, 62, 65, 68)
             elif obj_id == 'test_signal_band3':
-                self.set_freq(3.96, 102, 104)
+                self.set_freq(3.96, 100, 103, 106)
             elif obj_id == 'test_signal_band4':
-                self.set_freq(6.27, 162, 164)
+                self.set_freq(6.27, 159, 163, 166)
             elif obj_id == 'test_signal_band5':
-                self.set_freq(9.96, 258, 260)
+                self.set_freq(9.96, 256, 259, 262)
             elif obj_id == 'test_signal_band6':
-                self.set_freq(15.77, 409, 411)
+                self.set_freq(15.77, 407, 410, 413)
             elif obj_id == 'test_signal_band7':
-                self.set_freq(24.96, 648, 650)
+                self.set_freq(24.96, 646, 649, 652)
             elif obj_id == 'test_signal_band8':
-                self.set_freq(39.58, 1028, 1030)
+                self.set_freq(39.58, 1026, 1029, 1032)
             elif obj_id == 'test_signal_band9':
-                self.set_freq(62.73, 1630, 1632)
+                self.set_freq(62.73, 1628, 1631, 1634)
             elif obj_id == 'test_signal_band10':
-                self.set_freq(99.42, 2584, 2586)
+                self.set_freq(99.42, 2582, 2585, 2588)
             elif obj_id == 'test_signal_band11':
-                self.set_freq(157.58, 4096, 4098)
+                self.set_freq(157.58, 4094, 4097, 4100)
             elif obj_id == 'test_signal_band12':
-                self.set_freq(249.73, 6492, 6494)
+                self.set_freq(249.73, 6490, 6493, 6496)
             elif obj_id == 'test_signal_band13':
-                self.set_freq(395.81, 10290, 10292)
+                self.set_freq(395.81, 10288, 10291, 10294)
             elif obj_id == 'test_signal_band14':
-                self.set_freq(627.31, 16309, 16311)
+                self.set_freq(627.31, 16307, 16310, 16313)
