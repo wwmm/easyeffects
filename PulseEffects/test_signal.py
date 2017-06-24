@@ -112,8 +112,8 @@ class TestSignal():
 
         self.init_elements()
 
-        self.audio_src1.set_property('volume', 10**(-24 / 20) / amp**(0.5))
-        self.audio_src2.set_property('volume', 10**(-24 / 20) / amp**(0.5))
+        self.audio_src1.set_property('volume', 1.0 / amp**(0.5))
+        self.audio_src2.set_property('volume', 1.0 / amp**(0.5))
 
         self.audio_src1.set_property('freq', lower)
         self.audio_src2.set_property('freq', upper)
