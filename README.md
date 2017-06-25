@@ -19,7 +19,7 @@ Effects order:
 9. 15 bands Equalizer (Gstreamer)
 10. Equalizer Output Gain (Gstreamer volume)
 11. Output Limiter (Ladspa Fast Lookahead Limiter)
-12. Spectrum Analyser (Gstreamer)
+12. Spectrum Analyzer (Gstreamer)
 
 Required libraries:
 
