@@ -97,7 +97,7 @@ class GstEffects(GObject.GObject):
 
         spectrum = Gst.ElementFactory.make('spectrum', 'spectrum')
 
-        output_limiter = Gst.ElementFactory.make(
+        self.output_limiter = Gst.ElementFactory.make(
             'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter', None)
 
         self.audio_sink = Gst.ElementFactory.make('pulsesink', 'audio_sink')
@@ -173,9 +173,9 @@ class GstEffects(GObject.GObject):
         self.eq_lowpass.set_property('type', 1)
         self.eq_lowpass.set_property('ripple', 0)
 
-        output_limiter.set_property('input-gain', 0)
-        output_limiter.set_property('limit', 0)
-        output_limiter.set_property('release-time', 1.0)
+        self.output_limiter.set_property('input-gain', 0)
+        self.output_limiter.set_property('limit', 0)
+        self.output_limiter.set_property('release-time', 2.0)
 
         pipeline.add(self.audio_src)
         pipeline.add(source_caps)
@@ -194,9 +194,9 @@ class GstEffects(GObject.GObject):
         pipeline.add(equalizer_input_level)
         pipeline.add(self.equalizer)
         pipeline.add(self.equalizer_output_gain)
+        pipeline.add(self.output_limiter)
         pipeline.add(equalizer_output_level)
         pipeline.add(spectrum)
-        pipeline.add(output_limiter)
         pipeline.add(self.audio_sink)
 
         self.audio_src.link(source_caps)
@@ -215,8 +215,8 @@ class GstEffects(GObject.GObject):
         self.eq_lowpass.link(equalizer_input_level)
         equalizer_input_level.link(self.equalizer)
         self.equalizer.link(self.equalizer_output_gain)
-        self.equalizer_output_gain.link(output_limiter)
-        output_limiter.link(equalizer_output_level)
+        self.equalizer_output_gain.link(self.output_limiter)
+        self.output_limiter.link(equalizer_output_level)
         equalizer_output_level.link(spectrum)
         spectrum.link(self.audio_sink)
 

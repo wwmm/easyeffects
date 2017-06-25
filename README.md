@@ -8,12 +8,18 @@ Limiter, compressor, reverberation, stereo equalizer and auto volume effects for
 
 Effects order:
 
-1. Fast Lookahead Limiter
+1. Input Limiter (Ladspa Fast Lookahead Limiter)
 2. Auto Volume
-3. Gstreamer Stereo Panorama
-4. SC4 Compressor
-5. Gstreamer Freeverb
-6. Gstreamer Equalizer
+3. Stereo Panorama (Gstreamer)
+4. Compressor (Ladspa SC4)
+5. Freeverb (Gstreamer)
+6. Equalizer Input Gain (Gstreamer volume)
+7. Butterworth Highpass filter (Gstreamer audiocheblimit)
+8. Butterworth Lowpass filter (Gstreamer audiocheblimit)
+9. 15 bands Equalizer (Gstreamer)
+10. Equalizer Output Gain (Gstreamer volume)
+11. Output Limiter (Ladspa Fast Lookahead Limiter)
+12. Spectrum Analyser (Gstreamer)
 
 Required libraries:
 
