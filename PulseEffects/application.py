@@ -240,6 +240,7 @@ class Application(Gtk.Application):
 
         self.spectrum.reset()
         self.setup_limiter.reset()
+        self.setup_compressor.reset()
 
     def add_file_filter(self, dialog):
         file_filter = Gtk.FileFilter()

@@ -31,9 +31,6 @@ class SetupCompressor():
             self.on_compressor_makeup_value_changed
         }
 
-        self.compressor_user = self.settings.get_value(
-            'compressor-user').unpack()
-
         self.gst.connect('new_compressor_input_level',
                          self.on_new_compressor_input_level)
         self.gst.connect('new_compressor_output_level',
@@ -116,6 +113,9 @@ class SetupCompressor():
         button.connect("clicked", button_clicked)
 
     def init(self):
+        self.compressor_user = self.settings.get_value(
+            'compressor-user').unpack()
+
         self.apply_compressor_preset(self.compressor_user)
 
         # we need this when saved value is equal to widget default value
@@ -242,3 +242,8 @@ class SetupCompressor():
         value = obj.get_value()
         self.gst.set_compressor_makeup(value)
         self.save_compressor_user(6, value)
+
+    def reset(self):
+        self.settings.reset('compressor-user')
+
+        self.init()
