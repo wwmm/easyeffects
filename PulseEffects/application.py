@@ -73,7 +73,8 @@ class Application(Gtk.Application):
                 self.on_latency_time_value_changed,
             'on_panorama_value_changed': self.on_panorama_value_changed,
             'on_save_user_preset_clicked': self.on_save_user_preset_clicked,
-            'on_load_user_preset_clicked': self.on_load_user_preset_clicked
+            'on_load_user_preset_clicked': self.on_load_user_preset_clicked,
+            'on_reset_all_settings_clicked': self.on_reset_all_settings_clicked
         }
 
         self.builder.add_from_file(self.module_path + '/ui/main_ui.glade')
@@ -113,32 +114,8 @@ class Application(Gtk.Application):
         self.list_apps.init()
 
         self.init_settings_menu()
-
-        # buffer-time
-        buffer_time_obj = self.builder.get_object('buffer_time')
-
-        buffer_time = self.settings.get_value('buffer-time').unpack()
-
-        buffer_time_obj.set_value(buffer_time)
-
         self.init_buffer_time()
-
-        # latency-time
-        latency_time_obj = self.builder.get_object('latency_time')
-
-        latency_time = self.settings.get_value('latency-time').unpack()
-
-        latency_time_obj.set_value(latency_time)
-
         self.init_latency_time()
-
-        # stereo panorama
-        self.panorama = self.builder.get_object('panorama')
-
-        panorama_user = self.settings.get_value('panorama').unpack()
-
-        self.panorama.set_value(panorama_user)
-
         self.init_panorama()
 
         # label for sink format and rate
@@ -198,6 +175,10 @@ class Application(Gtk.Application):
     def init_buffer_time(self):
         value = self.settings.get_value('buffer-time').unpack()
 
+        buffer_time = self.builder.get_object('buffer_time')
+
+        buffer_time.set_value(value)
+
         self.gst.set_buffer_time(value * 1000)
 
     def on_buffer_time_value_changed(self, obj):
@@ -213,6 +194,10 @@ class Application(Gtk.Application):
 
     def init_latency_time(self):
         value = self.settings.get_value('latency-time').unpack()
+
+        latency_time = self.builder.get_object('latency_time')
+
+        latency_time.set_value(value)
 
         self.gst.set_latency_time(value * 1000)
 
@@ -230,6 +215,10 @@ class Application(Gtk.Application):
     def init_panorama(self):
         value = self.settings.get_value('panorama').unpack()
 
+        self.panorama = self.builder.get_object('panorama')
+
+        self.panorama.set_value(value)
+
         self.gst.set_panorama(value)
 
     def on_panorama_value_changed(self, obj):
@@ -239,6 +228,10 @@ class Application(Gtk.Application):
 
         out = GLib.Variant('d', value)
         self.settings.set_value('panorama', out)
+
+    def on_reset_all_settings_clicked(self, obj):
+        # self.settings.reset('buffer-time')
+        pass
 
     def add_file_filter(self, dialog):
         file_filter = Gtk.FileFilter()
