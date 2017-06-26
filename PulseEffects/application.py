@@ -230,8 +230,15 @@ class Application(Gtk.Application):
         self.settings.set_value('panorama', out)
 
     def on_reset_all_settings_clicked(self, obj):
-        # self.settings.reset('buffer-time')
-        pass
+        self.settings.reset('buffer-time')
+        self.settings.reset('latency-time')
+        self.settings.reset('panorama')
+
+        self.init_buffer_time()
+        self.init_latency_time()
+        self.init_panorama()
+
+        self.spectrum.reset()
 
     def add_file_filter(self, dialog):
         file_filter = Gtk.FileFilter()

@@ -143,3 +143,9 @@ class Spectrum():
         # minimum intensity is -120 dB and maximum is 0 dB
 
         self.mouse_intensity = round(- event_motion.y * 120 / height, 1)
+
+    def reset(self):
+        self.settings.reset('show-spectrum')
+        self.settings.reset('spectrum-n-points')
+
+        self.init()
