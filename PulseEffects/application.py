@@ -239,6 +239,7 @@ class Application(Gtk.Application):
         self.init_panorama()
 
         self.spectrum.reset()
+        self.setup_limiter.reset()
 
     def add_file_filter(self, dialog):
         file_filter = Gtk.FileFilter()

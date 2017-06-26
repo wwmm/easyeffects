@@ -232,3 +232,9 @@ class SetupLimiter():
                 limiter_no_selection.hide()
 
         button.connect("clicked", button_clicked)
+
+    def reset(self):
+        self.settings.reset('limiter-user')
+        self.settings.reset('autovolume-state')
+
+        self.init()
