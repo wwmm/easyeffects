@@ -109,8 +109,10 @@ class PulseManager(GObject.GObject):
         p.pa_context_set_subscribe_callback(self.ctx, self.subscribe_cb,
                                             None)
 
-        p.pa_context_subscribe(self.ctx,
-                               p.PA_SUBSCRIPTION_MASK_SINK_INPUT,
+        subscription_mask = p.PA_SUBSCRIPTION_MASK_SINK_INPUT + \
+            p.PA_SUBSCRIPTION_MASK_SOURCE_OUTPUT
+
+        p.pa_context_subscribe(self.ctx, subscription_mask,
                                self.ctx_success_cb, None)
 
     def context_notify(self, ctx, user_data):
@@ -350,18 +352,30 @@ class PulseManager(GObject.GObject):
                                          self.ctx_success_cb, None)
 
     def subscribe(self, context, event_value, idx, user_data):
-        event_type = event_value & p.PA_SUBSCRIPTION_EVENT_TYPE_MASK
+        event_facility = event_value & p.PA_SUBSCRIPTION_EVENT_FACILITY_MASK
 
-        if event_type == p.PA_SUBSCRIPTION_EVENT_NEW:
-            p.pa_context_get_sink_input_info(self.ctx, idx,
-                                             self.sink_input_info_cb,
-                                             1)  # 1 for new
-        elif event_type == p.PA_SUBSCRIPTION_EVENT_CHANGE:
-            p.pa_context_get_sink_input_info(self.ctx, idx,
-                                             self.sink_input_info_cb,
-                                             2)  # 2 for changes
-        elif event_type == p.PA_SUBSCRIPTION_EVENT_REMOVE:
-            GLib.idle_add(self.emit, 'sink_input_removed', idx)
+        if event_facility == p.PA_SUBSCRIPTION_EVENT_SINK_INPUT:
+            event_type = event_value & p.PA_SUBSCRIPTION_EVENT_TYPE_MASK
+
+            if event_type == p.PA_SUBSCRIPTION_EVENT_NEW:
+                p.pa_context_get_sink_input_info(self.ctx, idx,
+                                                 self.sink_input_info_cb,
+                                                 1)  # 1 for new
+            elif event_type == p.PA_SUBSCRIPTION_EVENT_CHANGE:
+                p.pa_context_get_sink_input_info(self.ctx, idx,
+                                                 self.sink_input_info_cb,
+                                                 2)  # 2 for changes
+            elif event_type == p.PA_SUBSCRIPTION_EVENT_REMOVE:
+                GLib.idle_add(self.emit, 'sink_input_removed', idx)
+        elif event_facility == p.PA_SUBSCRIPTION_EVENT_SOURCE_OUTPUT:
+            event_type = event_value & p.PA_SUBSCRIPTION_EVENT_TYPE_MASK
+
+            if event_type == p.PA_SUBSCRIPTION_EVENT_NEW:
+                self.log.info('new source output: ' + str(idx))
+            elif event_type == p.PA_SUBSCRIPTION_EVENT_CHANGE:
+                self.log.info('source output changed: ' + str(idx))
+            elif event_type == p.PA_SUBSCRIPTION_EVENT_REMOVE:
+                self.log.info('source output removed: ' + str(idx))
 
     def ctx_success(self, context, success, user_data):
         if not success:
