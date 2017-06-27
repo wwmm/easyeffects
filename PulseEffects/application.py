@@ -48,7 +48,7 @@ class Application(Gtk.Application):
 
         self.pm = PulseManager()
 
-        self.pm.load_sink()
+        self.pm.load_apps_sink()
 
         # gstreamer audio effects
 
