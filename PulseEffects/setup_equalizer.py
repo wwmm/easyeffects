@@ -383,3 +383,14 @@ class SetupEqualizer():
         out = GLib.Variant('i', value)
 
         self.settings.set_value('equalizer-lowpass-poles', out)
+
+    def reset(self):
+        self.settings.reset('equalizer-highpass-cutoff')
+        self.settings.reset('equalizer-highpass-poles')
+        self.settings.reset('equalizer-lowpass-cutoff')
+        self.settings.reset('equalizer-lowpass-poles')
+        self.settings.reset('equalizer-input-gain')
+        self.settings.reset('equalizer-output-gain')
+        self.settings.reset('equalizer-user')
+
+        self.init()

@@ -364,7 +364,7 @@
     </child>
     <child>
       <object class="GtkButton" id="reset_all_settings">
-        <property name="label" translatable="yes">Reset All Settings</property>
+        <property name="label" translatable="yes">Reset Everything</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">True</property>

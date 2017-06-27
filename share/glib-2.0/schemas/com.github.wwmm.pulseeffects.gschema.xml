@@ -42,13 +42,13 @@
           <default>[1.0, 0.25, 1.0, 1.0]</default>
         </key>
         <key name="reverb-no-reverberation" type="ad">
-          <default>[0, 0, 0, 0]</default>
+          <default>[0.0, 0.0, 0.0, 0.0]</default>
         </key>
         <key name="reverb-small-room" type="ad">
           <default>[0.8, 0.25, 0.3, 0.3]</default>
         </key>
         <key name="reverb-user" type="ad">
-          <default>[0.8, 0.25, 0.3, 0.3]</default>
+          <default>[0.0, 0.0, 0.0, 0.0]</default>
         </key>
 
         <key name="equalizer-equal-loudness-20" type="ad">

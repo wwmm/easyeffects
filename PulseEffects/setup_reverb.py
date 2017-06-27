@@ -25,8 +25,6 @@ class SetupReverb():
             self.on_reverb_level_value_changed
         }
 
-        self.reverb_user = self.settings.get_value('reverb-user').unpack()
-
         self.gst.connect('new_reverb_input_level',
                          self.on_new_reverb_input_level)
         self.gst.connect('new_reverb_output_level',
@@ -84,6 +82,8 @@ class SetupReverb():
         button.connect("clicked", button_clicked)
 
     def init(self):
+        self.reverb_user = self.settings.get_value('reverb-user').unpack()
+
         self.apply_reverb_preset(self.reverb_user)
 
         # we need this when saved value is equal to widget default value
@@ -179,3 +179,8 @@ class SetupReverb():
         value = obj.get_value()
         self.gst.set_reverb_level(value)
         self.save_reverb_user(3, value)
+
+    def reset(self):
+        self.settings.reset('reverb-user')
+
+        self.init()
