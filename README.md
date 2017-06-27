@@ -1,6 +1,7 @@
 # PulseEffects
 
-Limiter, compressor, reverberation, stereo equalizer and auto volume effects for Pulseaudio applications
+Limiter, compressor, reverberation, stereo equalizer and auto volume effects for
+Pulseaudio applications
 
 ![](images/pulseeffects_main_window.png)
 ![](images/pulseeffects_eq_menu.png)
@@ -24,7 +25,8 @@ Effects order:
 Required libraries:
 
 - Python 3
-- Python configparser (Python versions higher than 3.5.0 come with it. There is no need to install a separate package)
+- Python configparser (Python versions higher than 3.5.0 come with it. There is
+  no need to install a separate package)
 - PyGobject 3
 - Python Cairo
 - Python Numpy
@@ -40,11 +42,14 @@ Arch Linux package:
 
 Note for users trying to install directly from the sources:
 
-The setup.py script only installs the PulseEffects Python module. It does not copy the files inside the share folder to /usr/share. That is because
+The setup.py script only installs the PulseEffects Python module. It does not
+copy the files inside the share folder to /usr/share. That is because
 python setuptools documentation does not recommends this to be done
 through it. The ideal solution would be to have a package for your
 distribution. If there is not one available and you would like to try to
-install by yourself you can try to manualy copy the files in the share folder to the corresponding folders inside /usr/share and then run as root **glib-compile-schemas /usr/share/glib-2.0/schemas/**:
+install by yourself you can try to manualy copy the files in the share folder
+to the corresponding folders inside /usr/share and then run as root
+**glib-compile-schemas /usr/share/glib-2.0/schemas/**:
 
 1. git clone https://github.com/wwmm/pulseeffects.git
 2. cd pulseeffects
@@ -54,7 +59,7 @@ install by yourself you can try to manualy copy the files in the share folder to
 
 In case a package is built for your distribution after you have done the steps
 above you will have to remember to remove the files you copied before installing
-the package. If you do not want to have this headache a better option is is
+the package. If you do not want to have this headache a better option is
 running PulseEffects without installing it. Do the following steps:
 
 1. git clone https://github.com/wwmm/pulseeffects.git
