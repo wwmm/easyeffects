@@ -44,9 +44,18 @@ The setup.py script only installs the PulseEffects Python module. It does not co
 python setuptools documentation does not recommends this to be done
 through it. The ideal solution would be to have a package for your
 distribution. If there is not one available and you would like to try to
-install by yourself you can try to manualy copy the files in the share folder to the corresponding folders inside /usr/share and then run as root **glib-compile-schemas /usr/share/glib-2.0/schemas/**.
+install by yourself you can try to manualy copy the files in the share folder to the corresponding folders inside /usr/share and then run as root **glib-compile-schemas /usr/share/glib-2.0/schemas/**:
 
-Another option is running PulseEffects without installing it. Do the following steps:
+1. git clone https://github.com/wwmm/pulseeffects.git
+2. cd pulseeffects
+3. sudo python3 setup.py install
+4. sudo cp -r share/* /usr/share/
+5. sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
+
+In case a package is built for your distribution after you have done the steps
+above you will have to remember to remove the files you copied before installing
+the package. If you do not want to have this headache a better option is is
+running PulseEffects without installing it. Do the following steps:
 
 1. git clone https://github.com/wwmm/pulseeffects.git
 2. cd pulseeffects
