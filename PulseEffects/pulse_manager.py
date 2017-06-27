@@ -485,13 +485,18 @@ class PulseManager(GObject.GObject):
 
     def move_sink_input_to_pulseeffects_sink(self, idx):
         p.pa_context_move_sink_input_by_index(self.ctx, idx,
-                                              self.sink_idx,
+                                              self.apps_sink_idx,
                                               self.ctx_success_cb, None)
 
     def move_sink_input_to_default_sink(self, idx):
         p.pa_context_move_sink_input_by_name(self.ctx, idx,
                                              self.default_sink_name.encode(),
                                              self.ctx_success_cb, None)
+
+    def move_source_output_to_pulseeffects_source(self, idx):
+        p.pa_context_move_source_output_by_index(self.ctx, idx,
+                                                 self.mic_sink_monitor_idx,
+                                                 self.ctx_success_cb, None)
 
     def move_source_output_to_default_source(self, idx):
         p.pa_context_move_source_output_by_name(self.ctx, idx,

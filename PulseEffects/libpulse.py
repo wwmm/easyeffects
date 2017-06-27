@@ -441,6 +441,13 @@ pa_context_move_sink_input_by_name.argtypes = [POINTER(pa_context), c_uint32,
                                                pa_context_success_cb_t,
                                                c_void_p]
 
+pa_context_move_source_output_by_index = \
+    lib.pa_context_move_source_output_by_index
+pa_context_move_source_output_by_index.restype = POINTER(pa_operation)
+pa_context_move_source_output_by_index.argtypes = [POINTER(pa_context),
+                                                   c_uint32, c_uint32,
+                                                   pa_context_success_cb_t,
+                                                   c_void_p]
 
 pa_context_subscribe = lib.pa_context_subscribe
 pa_context_subscribe.restype = POINTER(pa_operation)
