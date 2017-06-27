@@ -224,6 +224,18 @@ class pa_sink_input_info(Structure):
                 ('format', POINTER(pa_format_info))]
 
 
+class pa_source_output_info(Structure):
+    _fields_ = [('index', c_uint32), ('name', c_char_p),
+                ('owner_module', c_uint32), ('client', c_uint32),
+                ('source', c_uint32), ('sample_spec', pa_sample_spec),
+                ('channel_map', pa_channel_map), ('buffer_usec', pa_usec_t),
+                ('source_usec', pa_usec_t), ('resample_method', c_char_p),
+                ('driver', c_char_p), ('proplist', POINTER(pa_proplist)),
+                ('corked', c_int), ('volume', pa_cvolume), ('mute', c_int),
+                ('has_volume', c_int), ('volume_writable', c_int),
+                ('format', POINTER(pa_format_info))]
+
+
 # callback types
 pa_context_notify_cb_t = CFUNCTYPE(None, POINTER(pa_context), c_void_p)
 pa_server_info_cb_t = CFUNCTYPE(None, POINTER(pa_context),
@@ -248,6 +260,10 @@ pa_source_info_cb_t = CFUNCTYPE(None, POINTER(pa_context),
 pa_sink_input_info_cb_t = CFUNCTYPE(None, POINTER(pa_context),
                                     POINTER(pa_sink_input_info), c_int,
                                     c_void_p)
+
+pa_source_output_info_cb_t = CFUNCTYPE(None, POINTER(pa_context),
+                                       POINTER(pa_source_output_info), c_int,
+                                       c_void_p)
 
 pa_context_subscribe_cb_t = CFUNCTYPE(None, POINTER(pa_context),
                                       pa_subscription_event_type_t, c_uint32,
@@ -358,6 +374,19 @@ pa_context_get_sink_input_info_list.restype = POINTER(pa_operation)
 pa_context_get_sink_input_info_list.argtypes = [POINTER(pa_context),
                                                 pa_sink_input_info_cb_t,
                                                 c_void_p]
+
+pa_context_get_source_output_info = lib.pa_context_get_source_output_info
+pa_context_get_source_output_info.restype = POINTER(pa_operation)
+pa_context_get_source_output_info.argtypes = [POINTER(pa_context), c_uint32,
+                                              pa_source_output_info_cb_t,
+                                              c_void_p]
+
+pa_context_get_source_output_info_list = \
+    lib.pa_context_get_source_output_info_list
+pa_context_get_source_output_info_list.restype = POINTER(pa_operation)
+pa_context_get_source_output_info_list.argtypes = [POINTER(pa_context),
+                                                   pa_source_output_info_cb_t,
+                                                   c_void_p]
 
 pa_context_get_client_info_list = lib.pa_context_get_client_info_list
 pa_context_get_client_info_list.restype = POINTER(pa_operation)
