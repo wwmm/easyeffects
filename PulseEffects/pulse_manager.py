@@ -134,6 +134,7 @@ class PulseManager(GObject.GObject):
         self.unload_sink()
 
         p.pa_context_disconnect(self.ctx)
+        p.pa_context_unref(self.ctx)
 
     def server_info(self, context, info, user_data):
         self.default_sink_name = info.contents.default_sink_name.decode()
