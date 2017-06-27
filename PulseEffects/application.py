@@ -49,12 +49,13 @@ class Application(Gtk.Application):
         self.pm = PulseManager()
 
         self.pm.load_apps_sink()
+        self.pm.load_mic_sink()
 
         # gstreamer audio effects
 
         self.gst = GstEffects(self.pm.default_sink_rate)
 
-        self.gst.set_source_monitor_name(self.pm.sink_monitor_name)
+        self.gst.set_source_monitor_name(self.pm.apps_sink_monitor_name)
         self.gst.set_output_sink_name(self.pm.default_sink_name)
 
         # creating user presets folder

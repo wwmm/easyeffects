@@ -9,14 +9,18 @@ from gi.repository import GLib, GObject
 class PulseManager(GObject.GObject):
 
     __gsignals__ = {
-        'sink_inputs_changed': (GObject.SIGNAL_RUN_FIRST, None,
-                                ()),
         'sink_input_added': (GObject.SIGNAL_RUN_FIRST, None,
                              (object,)),
         'sink_input_changed': (GObject.SIGNAL_RUN_FIRST, None,
                                (object,)),
         'sink_input_removed': (GObject.SIGNAL_RUN_FIRST, None,
-                               (int,))
+                               (int,)),
+        'source_output_added': (GObject.SIGNAL_RUN_FIRST, None,
+                                (object,)),
+        'source_output_changed': (GObject.SIGNAL_RUN_FIRST, None,
+                                  (object,)),
+        'source_output_removed': (GObject.SIGNAL_RUN_FIRST, None,
+                                  (int,))
     }
 
     def __init__(self):
@@ -41,6 +45,7 @@ class PulseManager(GObject.GObject):
         self.sink_rate = -1
         self.sink_format = ''
         self.sink_monitor_name = ''
+        self.sink_monitor_idx = -1
 
         # these variables are used to get values inside pulseaudio's callbacks
         self.source_idx = -1
@@ -51,6 +56,8 @@ class PulseManager(GObject.GObject):
         self.apps_sink_idx = -1
         self.apps_sink_rate = -1
         self.apps_sink_format = ''
+        self.apps_sink_monitor_name = ''
+        self.apps_sink_monitor_idx = -1
         self.apps_sink_description = '\'PulseEffects(apps)\''
 
         # microphone processed output will be sent to this sink
@@ -58,12 +65,15 @@ class PulseManager(GObject.GObject):
         self.mic_sink_idx = -1
         self.mic_sink_rate = -1
         self.mic_sink_format = ''
+        self.mic_sink_monitor_name = ''
+        self.mic_sink_monitor_idx = -1
         self.mic_sink_description = '\'PulseEffects(mic)\''
 
         self.max_volume = p.PA_VOLUME_NORM
 
         self.log = logging.getLogger('PulseEffects')
 
+        # it makes no sense to show some kind of apps. So we blacklist them
         self.app_blacklist = ['PulseEffects', 'pulseeffects', 'gsd-media-keys',
                               'GNOME Shell', 'libcanberra', 'gnome-pomodoro']
 
@@ -77,6 +87,8 @@ class PulseManager(GObject.GObject):
         self.source_info_cb = p.pa_source_info_cb_t(self.source_info)
         self.sink_input_info_cb = p.pa_sink_input_info_cb_t(
             self.sink_input_info)
+        self.source_output_info_cb = p.pa_source_output_info_cb_t(
+            self.source_output_info)
         self.ctx_success_cb = p.pa_context_success_cb_t(self.ctx_success)
         self.subscribe_cb = p.pa_context_subscribe_cb_t(self.subscribe)
 
@@ -242,6 +254,8 @@ class PulseManager(GObject.GObject):
 
                 self.sink_monitor_name = info.contents.monitor_source_name\
                     .decode()
+
+                self.sink_monitor_idx = info.contents.monitor_source
         elif eol == 1:
             self.sink_is_loaded = True
 
@@ -252,67 +266,6 @@ class PulseManager(GObject.GObject):
 
             sample_format = info.contents.sample_spec.format
             self.source_format = self.get_sample_spec_format(sample_format)
-
-    def sink_input_info(self, context, info, eol, user_data):
-        if info:
-            idx = info.contents.index
-            connected_sink_idx = info.contents.sink
-
-            proplist = info.contents.proplist
-
-            app_name = p.pa_proplist_gets(proplist, b'application.name')
-            media_name = p.pa_proplist_gets(proplist, b'media.name')
-            icon_name = p.pa_proplist_gets(proplist, b'application.icon_name')
-
-            if not app_name:
-                app_name = ''
-            else:
-                app_name = app_name.decode()
-
-            if not media_name:
-                media_name = ''
-            else:
-                media_name = media_name.decode()
-
-            if (app_name not in self.app_blacklist and
-                    media_name not in self.media_blacklist):
-                connected = False
-
-                if not icon_name:
-                    icon_name = 'audio-x-generic-symbolic'
-                else:
-                    icon_name = icon_name.decode()
-
-                if connected_sink_idx == self.sink_idx:
-                    connected = True
-
-                volume = info.contents.volume
-                audio_channels = volume.channels
-                mute = info.contents.mute
-
-                max_volume_linear = 100 * \
-                    p.pa_cvolume_max(volume) / p.PA_VOLUME_NORM
-
-                resample_method = info.contents.resample_method
-
-                if resample_method:
-                    resample_method = resample_method.decode()
-                else:
-                    resample_method = 'null'
-
-                sample_spec = info.contents.sample_spec
-                rate = sample_spec.rate
-                sample_format = self.get_sample_spec_format(sample_spec.format)
-
-                new_input = [idx, app_name, media_name,
-                             icon_name, audio_channels, max_volume_linear,
-                             rate, resample_method, sample_format, mute,
-                             connected]
-
-                if user_data == 1:
-                    GLib.idle_add(self.emit, 'sink_input_added', new_input)
-                elif user_data == 2:
-                    GLib.idle_add(self.emit, 'sink_input_changed', new_input)
 
     def load_sink(self, name, description, rate):
         self.load_sink_info(name)
@@ -364,8 +317,15 @@ class PulseManager(GObject.GObject):
         status = self.load_sink(name, description, rate)
 
         if status:
+            self.apps_sink_idx = self.sink_idx
+            self.apps_sink_rate = self.sink_rate
+            self.apps_sink_format = self.sink_format
+            self.apps_sink_monitor_name = self.sink_monitor_name
+            self.apps_sink_monitor_idx = self.sink_monitor_idx
+
             self.log.info('Pulseeffects apps sink was successfully loaded')
-            self.log.info('Pulseeffects apps sink index:' + str(self.sink_idx))
+            self.log.info('Pulseeffects apps sink index:' +
+                          str(self.apps_sink_idx))
             self.log.info('Pulseeffects apps sink monitor name: ' +
                           self.sink_monitor_name)
         else:
@@ -376,9 +336,147 @@ class PulseManager(GObject.GObject):
 
         name = 'PulseEffects_mic'
         description = 'device.description=' + self.mic_sink_description
-        rate = self.default_sink_rate
+        rate = self.default_source_rate
 
-        self.load_sink(name, description, rate)
+        status = self.load_sink(name, description, rate)
+
+        if status:
+            self.mic_sink_idx = self.sink_idx
+            self.mic_sink_rate = self.sink_rate
+            self.mic_sink_format = self.sink_format
+            self.mic_sink_monitor_name = self.sink_monitor_name
+            self.mic_sink_monitor_idx = self.sink_monitor_idx
+
+            self.log.info('Pulseeffects mic sink was successfully loaded')
+            self.log.info('Pulseeffects mic sink index:' +
+                          str(self.mic_sink_idx))
+            self.log.info('Pulseeffects mic sink monitor name: ' +
+                          self.mic_sink_monitor_name)
+        else:
+            self.log.critical('Could not load mic sink')
+
+    def sink_input_info(self, context, info, eol, user_data):
+        if info:
+            idx = info.contents.index
+            connected_sink_idx = info.contents.sink
+
+            proplist = info.contents.proplist
+
+            app_name = p.pa_proplist_gets(proplist, b'application.name')
+            media_name = p.pa_proplist_gets(proplist, b'media.name')
+            icon_name = p.pa_proplist_gets(proplist, b'application.icon_name')
+
+            if not app_name:
+                app_name = ''
+            else:
+                app_name = app_name.decode()
+
+            if not media_name:
+                media_name = ''
+            else:
+                media_name = media_name.decode()
+
+            if (app_name not in self.app_blacklist and
+                    media_name not in self.media_blacklist):
+                if not icon_name:
+                    icon_name = 'audio-x-generic-symbolic'
+                else:
+                    icon_name = icon_name.decode()
+
+                connected = False
+                if connected_sink_idx == self.apps_sink_idx:
+                    connected = True
+
+                volume = info.contents.volume
+                audio_channels = volume.channels
+                mute = info.contents.mute
+
+                max_volume_linear = 100 * \
+                    p.pa_cvolume_max(volume) / p.PA_VOLUME_NORM
+
+                resample_method = info.contents.resample_method
+
+                if resample_method:
+                    resample_method = resample_method.decode()
+                else:
+                    resample_method = 'null'
+
+                sample_spec = info.contents.sample_spec
+                rate = sample_spec.rate
+                sample_format = self.get_sample_spec_format(sample_spec.format)
+
+                new_input = [idx, app_name, media_name,
+                             icon_name, audio_channels, max_volume_linear,
+                             rate, resample_method, sample_format, mute,
+                             connected]
+
+                if user_data == 1:
+                    GLib.idle_add(self.emit, 'sink_input_added', new_input)
+                elif user_data == 2:
+                    GLib.idle_add(self.emit, 'sink_input_changed', new_input)
+
+    def source_output_info(self, context, info, eol, user_data):
+        if info:
+            idx = info.contents.index
+            connected_source_idx = info.contents.source
+
+            proplist = info.contents.proplist
+
+            app_name = p.pa_proplist_gets(proplist, b'application.name')
+            media_name = p.pa_proplist_gets(proplist, b'media.name')
+            icon_name = p.pa_proplist_gets(proplist, b'application.icon_name')
+
+            if not app_name:
+                app_name = ''
+            else:
+                app_name = app_name.decode()
+
+            if not media_name:
+                media_name = ''
+            else:
+                media_name = media_name.decode()
+
+            if (app_name not in self.app_blacklist and
+                    media_name not in self.media_blacklist):
+                if not icon_name:
+                    icon_name = 'audio-x-generic-symbolic'
+                else:
+                    icon_name = icon_name.decode()
+
+                connected = False
+                if connected_source_idx == self.mic_sink_monitor_idx:
+                    connected = True
+
+                volume = info.contents.volume
+                audio_channels = volume.channels
+                mute = info.contents.mute
+
+                max_volume_linear = 100 * \
+                    p.pa_cvolume_max(volume) / p.PA_VOLUME_NORM
+
+                resample_method = info.contents.resample_method
+
+                if resample_method:
+                    resample_method = resample_method.decode()
+                else:
+                    resample_method = 'null'
+
+                sample_spec = info.contents.sample_spec
+                rate = sample_spec.rate
+                sample_format = self.get_sample_spec_format(sample_spec.format)
+
+                new_output = [idx, app_name, media_name,
+                              icon_name, audio_channels, max_volume_linear,
+                              rate, resample_method, sample_format, mute,
+                              connected]
+
+                print(new_output)
+
+                if user_data == 1:
+                    GLib.idle_add(self.emit, 'source_output_added', new_output)
+                elif user_data == 2:
+                    GLib.idle_add(self.emit, 'source_output_changed',
+                                  new_output)
 
     def find_sink_inputs(self):
         p.pa_context_get_sink_input_info_list(self.ctx,
@@ -453,18 +551,29 @@ class PulseManager(GObject.GObject):
             event_type = event_value & p.PA_SUBSCRIPTION_EVENT_TYPE_MASK
 
             if event_type == p.PA_SUBSCRIPTION_EVENT_NEW:
-                self.log.info('new source output: ' + str(idx))
+                p.pa_context_get_source_output_info(self.ctx, idx,
+                                                    self.source_output_info_cb,
+                                                    1)  # 1 for new
             elif event_type == p.PA_SUBSCRIPTION_EVENT_CHANGE:
-                self.log.info('source output changed: ' + str(idx))
+                p.pa_context_get_source_output_info(self.ctx, idx,
+                                                    self.source_output_info_cb,
+                                                    2)  # 1 for new
             elif event_type == p.PA_SUBSCRIPTION_EVENT_REMOVE:
-                self.log.info('source output removed: ' + str(idx))
+                GLib.idle_add(self.emit, 'source_output_removed', idx)
 
     def ctx_success(self, context, success, user_data):
         if not success:
             self.log.critical('context operation failed!!')
 
     def unload_sink(self):
+        # unload apps sink
         self.load_sink_info('PulseEffects_apps')
+
+        p.pa_context_unload_module(self.ctx, self.sink_owner_module,
+                                   self.ctx_success_cb, None)
+
+        # unload mic sink
+        self.load_sink_info('PulseEffects_mic')
 
         p.pa_context_unload_module(self.ctx, self.sink_owner_module,
                                    self.ctx_success_cb, None)
