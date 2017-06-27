@@ -24,11 +24,11 @@ class PulseManager(GObject.GObject):
 
         self.context_ok = False
         self.default_sink_name = ''
+        self.default_source_name = ''
         self.sink_is_loaded = False
         self.sink_owner_module = -1
         self.sink_idx = -1
         self.sink_monitor_name = ''
-        self.sink_inputs = []
         self.max_volume = p.PA_VOLUME_NORM
 
         self.log = logging.getLogger('PulseEffects')
@@ -140,12 +140,12 @@ class PulseManager(GObject.GObject):
 
     def server_info(self, context, info, user_data):
         self.default_sink_name = info.contents.default_sink_name.decode()
+        self.default_source_name = info.contents.default_source_name.decode()
 
         server_version = info.contents.server_version.decode()
-        default_source_name = info.contents.default_source_name.decode()
 
         self.log.info('pulseaudio version: ' + server_version)
-        self.log.info('default pulseaudio source: ' + default_source_name)
+        self.log.info('default pulseaudio source: ' + self.default_source_name)
 
     def default_sink_info(self, context, info, eol, user_data):
         if eol == 0:
@@ -325,15 +325,21 @@ class PulseManager(GObject.GObject):
                                               self.sink_input_info_cb,
                                               1)  # 1 for new
 
-    def move_input_to_pulseeffects_sink(self, idx):
+    def move_sink_input_to_pulseeffects_sink(self, idx):
         p.pa_context_move_sink_input_by_index(self.ctx, idx,
                                               self.sink_idx,
                                               self.ctx_success_cb, None)
 
-    def move_input_to_default_sink(self, idx):
+    def move_sink_input_to_default_sink(self, idx):
         p.pa_context_move_sink_input_by_name(self.ctx, idx,
                                              self.default_sink_name.encode(),
                                              self.ctx_success_cb, None)
+
+    def move_source_output_to_default_source(self, idx):
+        p.pa_context_move_source_output_by_name(self.ctx, idx,
+                                                self.default_source_name
+                                                .encode(),
+                                                self.ctx_success_cb, None)
 
     def set_sink_input_volume(self, idx, audio_channels, value):
         cvolume = p.pa_cvolume()

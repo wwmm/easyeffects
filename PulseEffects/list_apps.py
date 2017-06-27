@@ -95,9 +95,9 @@ class ListApps():
             idx = int(obj.get_name().split('_')[1])
 
             if state:
-                self.pm.move_input_to_pulseeffects_sink(idx)
+                self.pm.move_sink_input_to_pulseeffects_sink(idx)
             else:
-                self.pm.move_input_to_default_sink(idx)
+                self.pm.move_sink_input_to_default_sink(idx)
 
         switch.connect('state-set', move_sink_input)
 
