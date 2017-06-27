@@ -359,10 +359,10 @@ pa_context_get_sink_info_by_name.restype = POINTER(pa_operation)
 pa_context_get_sink_info_by_name.argtypes = [POINTER(pa_context), c_char_p,
                                              pa_sink_info_cb_t, c_void_p]
 
-pa_context_get_source_info_list = lib.pa_context_get_source_info_list
-pa_context_get_source_info_list.restype = POINTER(pa_operation)
-pa_context_get_source_info_list.argtypes = [POINTER(pa_context),
-                                            pa_source_info_cb_t, c_void_p]
+pa_context_get_source_info_by_name = lib.pa_context_get_source_info_by_name
+pa_context_get_source_info_by_name.restype = POINTER(pa_operation)
+pa_context_get_source_info_by_name.argtypes = [POINTER(pa_context), c_char_p,
+                                               pa_source_info_cb_t, c_void_p]
 
 pa_context_get_sink_input_info = lib.pa_context_get_sink_input_info
 pa_context_get_sink_input_info.restype = POINTER(pa_operation)

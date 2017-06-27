@@ -42,6 +42,11 @@ class PulseManager(GObject.GObject):
         self.sink_format = ''
         self.sink_monitor_name = ''
 
+        # these variables are used to get values inside pulseaudio's callbacks
+        self.source_idx = -1
+        self.source_rate = -1
+        self.source_format = ''
+
         # we redirect sink inputs to this sink
         self.apps_sink_idx = -1
         self.apps_sink_rate = -1
@@ -69,6 +74,7 @@ class PulseManager(GObject.GObject):
         self.ctx_notify_cb = p.pa_context_notify_cb_t(self.context_notify)
         self.server_info_cb = p.pa_server_info_cb_t(self.server_info)
         self.sink_info_cb = p.pa_sink_info_cb_t(self.sink_info)
+        self.source_info_cb = p.pa_source_info_cb_t(self.source_info)
         self.sink_input_info_cb = p.pa_sink_input_info_cb_t(
             self.sink_input_info)
         self.ctx_success_cb = p.pa_context_success_cb_t(self.ctx_success)
@@ -93,6 +99,7 @@ class PulseManager(GObject.GObject):
 
         self.get_server_info()
         self.get_default_sink_info()
+        self.get_default_source_info()
 
         # subscribing to pulseaudio events
         p.pa_context_set_subscribe_callback(self.ctx, self.subscribe_cb,
@@ -103,77 +110,6 @@ class PulseManager(GObject.GObject):
 
         p.pa_context_subscribe(self.ctx, subscription_mask,
                                self.ctx_success_cb, None)
-
-    def context_notify(self, ctx, user_data):
-        state = p.pa_context_get_state(ctx)
-
-        if state == p.PA_CONTEXT_READY:
-            self.context_ok = True
-            self.log.info('pulseaudio context started')
-            self.log.info('connected to server: ' +
-                          p.pa_context_get_server(ctx).decode())
-            self.log.info('server protocol version: ' +
-                          str(p.pa_context_get_server_protocol_version(ctx)))
-
-        elif state == p.PA_CONTEXT_FAILED:
-            self.log.critical('failed to start pulseaudio context')
-
-        elif state == p.PA_CONTEXT_TERMINATED:
-            self.log.warning('pulseaudio context terminated')
-
-    def exit(self):
-        self.unload_sink()
-
-        p.pa_context_disconnect(self.ctx)
-        p.pa_context_unref(self.ctx)
-
-    def get_server_info(self):
-        o = p.pa_context_get_server_info(self.ctx, self.server_info_cb, None)
-
-        while p.pa_operation_get_state(o) == p.PA_OPERATION_RUNNING:
-            pass
-
-        p.pa_operation_unref(o)
-
-    def get_default_sink_info(self):
-        self.load_sink_info(self.default_sink_name)
-
-        self.default_sink_rate = self.sink_rate
-        self.default_sink_idx = self.sink_idx
-        self.default_sink_format = self.sink_format
-
-        self.log.info('default pulseaudio sink audio format: ' +
-                      str(self.default_sink_format))
-        self.log.info('default pulseaudio sink sampling rate: ' +
-                      str(self.default_sink_rate) +
-                      ' Hz. We will use the same rate.')
-
-    def server_info(self, context, info, user_data):
-        self.default_sink_name = info.contents.default_sink_name.decode()
-        self.default_source_name = info.contents.default_source_name.decode()
-
-        server_version = info.contents.server_version.decode()
-
-        self.log.info('pulseaudio version: ' + server_version)
-        self.log.info('default pulseaudio source: ' + self.default_source_name)
-        self.log.info('default pulseaudio sink: ' + self.default_sink_name)
-
-    def sink_info(self, context, info, eol, user_data):
-        if eol == -1:
-            self.sink_is_loaded = False
-        elif eol == 0:
-            if info:
-                self.sink_owner_module = info.contents.owner_module
-                self.sink_idx = info.contents.index
-                self.sink_rate = info.contents.sample_spec.rate
-
-                sample_format = info.contents.sample_spec.format
-                self.sink_format = self.get_sample_spec_format(sample_format)
-
-                self.sink_monitor_name = info.contents.monitor_source_name\
-                    .decode()
-        elif eol == 1:
-            self.sink_is_loaded = True
 
     def get_sample_spec_format(self, code):
         if code == p.PA_SAMPLE_U8:
@@ -206,6 +142,116 @@ class PulseManager(GObject.GObject):
             return 'pa_max'
         elif code == p.PA_SAMPLE_INVALID:
             return 'invalid'
+
+    def context_notify(self, ctx, user_data):
+        state = p.pa_context_get_state(ctx)
+
+        if state == p.PA_CONTEXT_READY:
+            self.context_ok = True
+            self.log.info('pulseaudio context started')
+            self.log.info('connected to server: ' +
+                          p.pa_context_get_server(ctx).decode())
+            self.log.info('server protocol version: ' +
+                          str(p.pa_context_get_server_protocol_version(ctx)))
+
+        elif state == p.PA_CONTEXT_FAILED:
+            self.log.critical('failed to start pulseaudio context')
+
+        elif state == p.PA_CONTEXT_TERMINATED:
+            self.log.warning('pulseaudio context terminated')
+
+    def exit(self):
+        self.unload_sink()
+
+        p.pa_context_disconnect(self.ctx)
+        p.pa_context_unref(self.ctx)
+
+    def load_sink_info(self, name):
+        o = p.pa_context_get_sink_info_by_name(self.ctx, name.encode(),
+                                               self.sink_info_cb, None)
+
+        while p.pa_operation_get_state(o) == p.PA_OPERATION_RUNNING:
+            pass
+
+        p.pa_operation_unref(o)
+
+    def load_source_info(self, name):
+        o = p.pa_context_get_source_info_by_name(self.ctx, name.encode(),
+                                                 self.source_info_cb, None)
+
+        while p.pa_operation_get_state(o) == p.PA_OPERATION_RUNNING:
+            pass
+
+        p.pa_operation_unref(o)
+
+    def get_server_info(self):
+        o = p.pa_context_get_server_info(self.ctx, self.server_info_cb, None)
+
+        while p.pa_operation_get_state(o) == p.PA_OPERATION_RUNNING:
+            pass
+
+        p.pa_operation_unref(o)
+
+    def get_default_sink_info(self):
+        self.load_sink_info(self.default_sink_name)
+
+        self.default_sink_rate = self.sink_rate
+        self.default_sink_idx = self.sink_idx
+        self.default_sink_format = self.sink_format
+
+        self.log.info('default pulseaudio sink audio format: ' +
+                      str(self.default_sink_format))
+        self.log.info('default pulseaudio sink sampling rate: ' +
+                      str(self.default_sink_rate) +
+                      ' Hz. We will use the same rate.')
+
+    def get_default_source_info(self):
+        self.load_source_info(self.default_source_name)
+
+        self.default_source_rate = self.sink_rate
+        self.default_source_idx = self.sink_idx
+        self.default_source_format = self.sink_format
+
+        self.log.info('default pulseaudio source audio format: ' +
+                      str(self.default_source_format))
+        self.log.info('default pulseaudio source sampling rate: ' +
+                      str(self.default_source_rate) +
+                      ' Hz. We will use the same rate.')
+
+    def server_info(self, context, info, user_data):
+        self.default_sink_name = info.contents.default_sink_name.decode()
+        self.default_source_name = info.contents.default_source_name.decode()
+
+        server_version = info.contents.server_version.decode()
+
+        self.log.info('pulseaudio version: ' + server_version)
+        self.log.info('default pulseaudio source: ' + self.default_source_name)
+        self.log.info('default pulseaudio sink: ' + self.default_sink_name)
+
+    def sink_info(self, context, info, eol, user_data):
+        if eol == -1:
+            self.sink_is_loaded = False
+        elif eol == 0:
+            if info:
+                self.sink_owner_module = info.contents.owner_module
+                self.sink_idx = info.contents.index
+                self.sink_rate = info.contents.sample_spec.rate
+
+                sample_format = info.contents.sample_spec.format
+                self.sink_format = self.get_sample_spec_format(sample_format)
+
+                self.sink_monitor_name = info.contents.monitor_source_name\
+                    .decode()
+        elif eol == 1:
+            self.sink_is_loaded = True
+
+    def source_info(self, context, info, eol, user_data):
+        if info:
+            self.source_idx = info.contents.index
+            self.source_rate = info.contents.sample_spec.rate
+
+            sample_format = info.contents.sample_spec.format
+            self.source_format = self.get_sample_spec_format(sample_format)
 
     def sink_input_info(self, context, info, eol, user_data):
         if info:
@@ -268,15 +314,6 @@ class PulseManager(GObject.GObject):
                 elif user_data == 2:
                     GLib.idle_add(self.emit, 'sink_input_changed', new_input)
 
-    def load_sink_info(self, name):
-        o = p.pa_context_get_sink_info_by_name(self.ctx, name.encode(),
-                                               self.sink_info_cb, None)
-
-        while p.pa_operation_get_state(o) == p.PA_OPERATION_RUNNING:
-            pass
-
-        p.pa_operation_unref(o)
-
     def load_sink(self, name, description, rate):
         self.load_sink_info(name)
 
@@ -311,13 +348,11 @@ class PulseManager(GObject.GObject):
             self.load_sink_info(name)
 
             if self.sink_is_loaded:
-                self.log.info('Pulseeffects sink was successfully loaded')
-                self.log.info('Pulseeffects sink index:' + str(self.sink_idx))
-                self.log.info('Pulseeffects sink monitor name: ' +
-                              self.sink_monitor_name +
-                              '. We will process audio from this source.')
+                return True
             else:
-                self.log.critical('Could not load sink')
+                return False
+        else:
+            self.load_sink_info(name)
 
     def load_apps_sink(self):
         self.log.info('loading Pulseeffects applications sink...')
@@ -326,7 +361,15 @@ class PulseManager(GObject.GObject):
         description = 'device.description=' + self.apps_sink_description
         rate = self.default_sink_rate
 
-        self.load_sink(name, description, rate)
+        status = self.load_sink(name, description, rate)
+
+        if status:
+            self.log.info('Pulseeffects apps sink was successfully loaded')
+            self.log.info('Pulseeffects apps sink index:' + str(self.sink_idx))
+            self.log.info('Pulseeffects apps sink monitor name: ' +
+                          self.sink_monitor_name)
+        else:
+            self.log.critical('Could not load apps sink')
 
     def load_mic_sink(self):
         self.log.info('loading Pulseeffects microphone output sink...')
