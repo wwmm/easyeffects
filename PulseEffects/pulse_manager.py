@@ -351,6 +351,22 @@ class PulseManager(GObject.GObject):
         p.pa_context_set_sink_input_mute(self.ctx, idx, mute_state,
                                          self.ctx_success_cb, None)
 
+    def set_source_output_volume(self, idx, audio_channels, value):
+        cvolume = p.pa_cvolume()
+        cvolume.channels = audio_channels
+
+        raw_value = int(p.PA_VOLUME_NORM * value / 100)
+
+        cvolume_ptr = p.pa_cvolume_set(p.get_pointer(cvolume), audio_channels,
+                                       raw_value)
+
+        p.pa_context_set_source_output_volume(self.ctx, idx, cvolume_ptr,
+                                              self.ctx_success_cb, None)
+
+    def set_source_output_mute(self, idx, mute_state):
+        p.pa_context_set_source_output_mute(self.ctx, idx, mute_state,
+                                            self.ctx_success_cb, None)
+
     def subscribe(self, context, event_value, idx, user_data):
         event_facility = event_value & p.PA_SUBSCRIPTION_EVENT_FACILITY_MASK
 
