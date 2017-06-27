@@ -483,6 +483,11 @@ class PulseManager(GObject.GObject):
                                               self.sink_input_info_cb,
                                               1)  # 1 for new
 
+    def find_source_outputs(self):
+        p.pa_context_get_source_output_info_list(self.ctx,
+                                                 self.source_output_info_cb,
+                                                 1)  # 1 for new
+
     def move_sink_input_to_pulseeffects_sink(self, idx):
         p.pa_context_move_sink_input_by_index(self.ctx, idx,
                                               self.apps_sink_idx,

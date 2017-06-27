@@ -133,6 +133,7 @@ class Application(Gtk.Application):
         self.ui_initialized = True
 
         self.pm.find_sink_inputs()
+        self.pm.find_source_outputs()
 
     def on_MainWindow_delete_event(self, event, data):
         self.gst.set_state('null')
