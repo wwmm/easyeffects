@@ -72,6 +72,9 @@ class Application(Gtk.Application):
             'on_buffer_time_value_changed': self.on_buffer_time_value_changed,
             'on_latency_time_value_changed':
                 self.on_latency_time_value_changed,
+            'on_show_spectrum_state_set': self.on_show_spectrum_state_set,
+            'on_spectrum_n_points_value_changed':
+                self.on_spectrum_n_points_value_changed,
             'on_panorama_value_changed': self.on_panorama_value_changed,
             'on_save_user_preset_clicked': self.on_save_user_preset_clicked,
             'on_load_user_preset_clicked': self.on_load_user_preset_clicked,
@@ -118,6 +121,7 @@ class Application(Gtk.Application):
         self.init_buffer_time()
         self.init_latency_time()
         self.init_panorama()
+        self.init_spectrum()
 
         # label for sink format and rate
         sink_rate_label = self.builder.get_object('sink_rate')
@@ -213,6 +217,47 @@ class Application(Gtk.Application):
             self.sie.set_latency_time(value * 1000)
         else:
             self.sie.init_latency_time(value * 1000)
+
+    def init_spectrum(self):
+        show_spectrum_switch = self.builder.get_object('show_spectrum')
+        spectrum_n_points_obj = self.builder.get_object('spectrum_n_points')
+
+        show_spectrum = self.settings.get_value('show-spectrum').unpack()
+        spectrum_n_points = self.settings.get_value(
+            'spectrum-n-points').unpack()
+
+        show_spectrum_switch.set_active(show_spectrum)
+        spectrum_n_points_obj.set_value(spectrum_n_points)
+
+        self.sie.set_spectrum_n_points(spectrum_n_points)
+
+        self.sie_spectrum_handler_id = self.sie.connect('new_spectrum',
+                                                        self.spectrum
+                                                        .on_new_spectrum)
+
+        # we need this when the saved value is equal to the widget default
+        # value
+        if show_spectrum:
+            self.spectrum.show()
+        else:
+            self.spectrum.hide()
+
+    def on_show_spectrum_state_set(self, obj, state):
+        if state:
+            self.spectrum.show()
+        else:
+            self.spectrum.hide()
+
+        out = GLib.Variant('b', state)
+        self.settings.set_value('show-spectrum', out)
+
+    def on_spectrum_n_points_value_changed(self, obj):
+        value = obj.get_value()
+
+        out = GLib.Variant('i', value)
+        self.settings.set_value('spectrum-n-points', out)
+
+        self.sie.set_spectrum_n_points(value)
 
     def init_panorama(self):
         value = self.settings.get_value('panorama').unpack()

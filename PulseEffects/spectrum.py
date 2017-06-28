@@ -22,9 +22,6 @@ class Spectrum():
         self.font_description = Pango.FontDescription('Monospace')
 
         self.handlers = {
-            'on_show_spectrum_state_set': self.on_show_spectrum_state_set,
-            'on_spectrum_n_points_value_changed':
-                self.on_spectrum_n_points_value_changed,
             'on_spectrum_draw': self.on_spectrum_draw,
             'on_spectrum_enter_notify_event':
                 self.on_spectrum_enter_notify_event,
@@ -34,51 +31,21 @@ class Spectrum():
                 self.on_spectrum_motion_notify_event
         }
 
-        self.sie.connect('new_spectrum', self.on_new_spectrum)
-
         self.spectrum_box = self.builder.get_object('spectrum_box')
         self.drawing_area = self.builder.get_object('spectrum')
 
         self.spectrum_magnitudes = np.array([])
 
     def init(self):
-        show_spectrum_switch = self.builder.get_object('show_spectrum')
-        spectrum_n_points_obj = self.builder.get_object('spectrum_n_points')
+        pass
 
-        show_spectrum = self.settings.get_value('show-spectrum').unpack()
-        spectrum_n_points = self.settings.get_value(
-            'spectrum-n-points').unpack()
+    def show(self):
+        self.spectrum_box.show_all()
+        self.show_spectrum = True
 
-        show_spectrum_switch.set_active(show_spectrum)
-        spectrum_n_points_obj.set_value(spectrum_n_points)
-
-        self.sie.set_spectrum_n_points(spectrum_n_points)
-
-        # we need this when the saved value is equal to the widget default
-        # value
-        if show_spectrum:
-            self.spectrum_box.show_all()
-        else:
-            self.spectrum_box.hide()
-
-    def on_show_spectrum_state_set(self, obj, state):
-        if state:
-            self.spectrum_box.show_all()
-            self.show_spectrum = True
-        else:
-            self.spectrum_box.hide()
-            self.show_spectrum = False
-
-        out = GLib.Variant('b', state)
-        self.settings.set_value('show-spectrum', out)
-
-    def on_spectrum_n_points_value_changed(self, obj):
-        value = obj.get_value()
-
-        out = GLib.Variant('i', value)
-        self.settings.set_value('spectrum-n-points', out)
-
-        self.sie.set_spectrum_n_points(value)
+    def hide(self):
+        self.spectrum_box.hide()
+        self.show_spectrum = False
 
     def on_spectrum_draw(self, drawing_area, ctx):
         ctx.paint()
