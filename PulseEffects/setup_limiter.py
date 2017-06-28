@@ -10,7 +10,7 @@ class SetupLimiter():
     def __init__(self, app):
         self.app = app
         self.app_builder = app.builder
-        self.gst = app.gst
+        self.sie = app.sie
         self.settings = app.settings
         self.module_path = app.module_path
 
@@ -25,13 +25,13 @@ class SetupLimiter():
                 self.on_autovolume_enable_state_set
         }
 
-        self.gst.connect('new_limiter_input_level',
+        self.sie.connect('new_limiter_input_level',
                          self.on_new_limiter_input_level)
-        self.gst.connect('new_limiter_output_level',
+        self.sie.connect('new_limiter_output_level',
                          self.on_new_limiter_output_level)
-        self.gst.connect('new_limiter_attenuation',
+        self.sie.connect('new_limiter_attenuation',
                          self.on_new_limiter_attenuation)
-        self.gst.connect('new_autovolume', self.on_new_autovolume)
+        self.sie.connect('new_autovolume', self.on_new_autovolume)
 
         self.limiter_input_gain = self.app_builder.get_object(
             'limiter_input_gain')
@@ -94,9 +94,9 @@ class SetupLimiter():
         else:
             self.apply_limiter_preset(self.limiter_user)
 
-            self.gst.set_limiter_input_gain(self.limiter_user[0])
-            self.gst.set_limiter_limit(self.limiter_user[1])
-            self.gst.set_limiter_release_time(self.limiter_user[2])
+            self.sie.set_limiter_input_gain(self.limiter_user[0])
+            self.sie.set_limiter_limit(self.limiter_user[1])
+            self.sie.set_limiter_release_time(self.limiter_user[2])
 
     def apply_limiter_preset(self, values):
         self.limiter_input_gain.set_value(values[0])
@@ -120,21 +120,21 @@ class SetupLimiter():
 
     def on_limiter_input_gain_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_limiter_input_gain(value)
+        self.sie.set_limiter_input_gain(value)
         self.save_limiter_user(0, value)
 
     def on_limiter_limit_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_limiter_limit(value)
+        self.sie.set_limiter_limit(value)
         self.save_limiter_user(1, value)
 
     def on_limiter_release_time_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_limiter_release_time(value)
+        self.sie.set_limiter_release_time(value)
         self.save_limiter_user(2, value)
 
     def enable_autovolume(self, state):
-        self.gst.set_autovolume_state(state)
+        self.sie.set_autovolume_state(state)
 
         if state:
             self.limiter_input_gain.set_value(-10)

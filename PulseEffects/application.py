@@ -7,13 +7,13 @@ import os
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gio, GLib, Gtk
-from PulseEffects.gst import GstEffects
 from PulseEffects.list_apps import ListApps
 from PulseEffects.pulse_manager import PulseManager
 from PulseEffects.setup_compressor import SetupCompressor
 from PulseEffects.setup_equalizer import SetupEqualizer
 from PulseEffects.setup_limiter import SetupLimiter
 from PulseEffects.setup_reverb import SetupReverb
+from PulseEffects.sink_input_effects import SinkInputEffects
 from PulseEffects.spectrum import Spectrum
 from PulseEffects.test_signal import TestSignal
 
@@ -53,10 +53,10 @@ class Application(Gtk.Application):
 
         # gstreamer audio effects
 
-        self.gst = GstEffects(self.pm.default_sink_rate)
+        self.sie = SinkInputEffects(self.pm.default_sink_rate)
 
-        self.gst.set_source_monitor_name(self.pm.apps_sink_monitor_name)
-        self.gst.set_output_sink_name(self.pm.default_sink_name)
+        self.sie.set_source_monitor_name(self.pm.apps_sink_monitor_name)
+        self.sie.set_output_sink_name(self.pm.default_sink_name)
 
         # creating user presets folder
         self.user_config_dir = os.path.expanduser('~/.config/PulseEffects')
@@ -125,7 +125,7 @@ class Application(Gtk.Application):
                                  str(self.pm.default_sink_rate) + ' Hz')
 
         # now that all elements were initialized we set pipeline to ready
-        self.gst.set_state('ready')
+        self.sie.set_state('ready')
 
     def do_activate(self):
         self.window.present()
@@ -136,7 +136,7 @@ class Application(Gtk.Application):
         self.pm.find_source_outputs()
 
     def on_MainWindow_delete_event(self, event, data):
-        self.gst.set_state('null')
+        self.sie.set_state('null')
 
         self.pm.exit()
 
@@ -181,7 +181,7 @@ class Application(Gtk.Application):
 
         buffer_time.set_value(value)
 
-        self.gst.set_buffer_time(value * 1000)
+        self.sie.set_buffer_time(value * 1000)
 
     def on_buffer_time_value_changed(self, obj):
         value = obj.get_value()
@@ -190,9 +190,9 @@ class Application(Gtk.Application):
         self.settings.set_value('buffer-time', out)
 
         if self.ui_initialized:
-            self.gst.set_buffer_time(value * 1000)
+            self.sie.set_buffer_time(value * 1000)
         else:
-            self.gst.init_buffer_time(value * 1000)
+            self.sie.init_buffer_time(value * 1000)
 
     def init_latency_time(self):
         value = self.settings.get_value('latency-time').unpack()
@@ -201,7 +201,7 @@ class Application(Gtk.Application):
 
         latency_time.set_value(value)
 
-        self.gst.set_latency_time(value * 1000)
+        self.sie.set_latency_time(value * 1000)
 
     def on_latency_time_value_changed(self, obj):
         value = obj.get_value()
@@ -210,9 +210,9 @@ class Application(Gtk.Application):
         self.settings.set_value('latency-time', out)
 
         if self.ui_initialized:
-            self.gst.set_latency_time(value * 1000)
+            self.sie.set_latency_time(value * 1000)
         else:
-            self.gst.init_latency_time(value * 1000)
+            self.sie.init_latency_time(value * 1000)
 
     def init_panorama(self):
         value = self.settings.get_value('panorama').unpack()
@@ -221,12 +221,12 @@ class Application(Gtk.Application):
 
         self.panorama.set_value(value)
 
-        self.gst.set_panorama(value)
+        self.sie.set_panorama(value)
 
     def on_panorama_value_changed(self, obj):
         value = obj.get_value()
 
-        self.gst.set_panorama(value)
+        self.sie.set_panorama(value)
 
         out = GLib.Variant('d', value)
         self.settings.set_value('panorama', out)

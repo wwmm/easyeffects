@@ -10,7 +10,7 @@ class SetupReverb():
     def __init__(self, app):
         self.app = app
         self.app_builder = app.builder
-        self.gst = app.gst
+        self.sie = app.sie
         self.settings = app.settings
         self.module_path = app.module_path
 
@@ -25,9 +25,9 @@ class SetupReverb():
             self.on_reverb_level_value_changed
         }
 
-        self.gst.connect('new_reverb_input_level',
+        self.sie.connect('new_reverb_input_level',
                          self.on_new_reverb_input_level)
-        self.gst.connect('new_reverb_output_level',
+        self.sie.connect('new_reverb_output_level',
                          self.on_new_reverb_output_level)
 
         self.reverb_room_size = self.app_builder.get_object('reverb_room_size')
@@ -87,10 +87,10 @@ class SetupReverb():
         self.apply_reverb_preset(self.reverb_user)
 
         # we need this when saved value is equal to widget default value
-        self.gst.set_reverb_room_size(self.reverb_user[0])
-        self.gst.set_reverb_damping(self.reverb_user[1])
-        self.gst.set_reverb_width(self.reverb_user[2])
-        self.gst.set_reverb_level(self.reverb_user[3])
+        self.sie.set_reverb_room_size(self.reverb_user[0])
+        self.sie.set_reverb_damping(self.reverb_user[1])
+        self.sie.set_reverb_width(self.reverb_user[2])
+        self.sie.set_reverb_level(self.reverb_user[3])
 
     def on_new_reverb_input_level(self, obj, left, right):
         if self.app.ui_initialized:
@@ -162,22 +162,22 @@ class SetupReverb():
 
     def on_reverb_room_size_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_reverb_room_size(value)
+        self.sie.set_reverb_room_size(value)
         self.save_reverb_user(0, value)
 
     def on_reverb_damping_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_reverb_damping(value)
+        self.sie.set_reverb_damping(value)
         self.save_reverb_user(1, value)
 
     def on_reverb_width_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_reverb_width(value)
+        self.sie.set_reverb_width(value)
         self.save_reverb_user(2, value)
 
     def on_reverb_level_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_reverb_level(value)
+        self.sie.set_reverb_level(value)
         self.save_reverb_user(3, value)
 
     def reset(self):

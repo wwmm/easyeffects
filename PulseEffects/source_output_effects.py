@@ -12,15 +12,13 @@ from gi.repository import GObject, Gst
 Gst.init(None)
 
 
-class GstEffects(GObject.GObject):
+class SourceOutputEffects(GObject.GObject):
 
     __gsignals__ = {
         'new_limiter_input_level': (GObject.SIGNAL_RUN_FIRST, None,
                                     (float, float)),
         'new_limiter_output_level': (GObject.SIGNAL_RUN_FIRST, None,
                                      (float, float)),
-        'new_autovolume': (GObject.SIGNAL_RUN_FIRST, None,
-                           (float,)),
         'new_compressor_input_level': (GObject.SIGNAL_RUN_FIRST, None,
                                        (float, float)),
         'new_compressor_output_level': (GObject.SIGNAL_RUN_FIRST, None,
@@ -55,7 +53,6 @@ class GstEffects(GObject.GObject):
         self.spectrum_nfreqs = 0
         self.spectrum_threshold = -120  # dB
 
-        self.autovolume_enabled = False
         self.is_playing = False
 
         self.log = logging.getLogger('PulseEffects')
@@ -86,8 +83,6 @@ class GstEffects(GObject.GObject):
         self.compressor = Gst.ElementFactory.make(
             'ladspa-sc4-1882-so-sc4', None)
 
-        self.panorama = Gst.ElementFactory.make('audiopanorama', None)
-
         self.freeverb = Gst.ElementFactory.make('freeverb', None)
 
         self.equalizer_input_gain = Gst.ElementFactory.make('volume', None)
@@ -115,8 +110,6 @@ class GstEffects(GObject.GObject):
         equalizer_output_level = Gst.ElementFactory.make(
             'level', 'equalizer_output_level')
 
-        autovolume = Gst.ElementFactory.make('level', 'autovolume')
-
         self.audio_src.set_property('volume', 1.0)
         self.audio_src.set_property('mute', False)
         self.audio_src.set_property('provide-clock', False)
@@ -130,10 +123,6 @@ class GstEffects(GObject.GObject):
 
         self.audio_sink.set_property('volume', 1.0)
         self.audio_sink.set_property('mute', False)
-
-        autovolume.set_property('interval', 2000000000)  # 2 seconds
-
-        self.panorama.set_property('method', 'psychoacoustic')
 
         self.equalizer.set_property('num-bands', 15)
 
@@ -182,8 +171,6 @@ class GstEffects(GObject.GObject):
         pipeline.add(limiter_input_level)
         pipeline.add(self.limiter)
         pipeline.add(limiter_output_level)
-        pipeline.add(autovolume)
-        pipeline.add(self.panorama)
         pipeline.add(self.compressor)
         pipeline.add(compressor_output_level)
         pipeline.add(self.freeverb)
@@ -203,9 +190,7 @@ class GstEffects(GObject.GObject):
         source_caps.link(limiter_input_level)
         limiter_input_level.link(self.limiter)
         self.limiter.link(limiter_output_level)
-        limiter_output_level.link(autovolume)
-        autovolume.link(self.panorama)
-        self.panorama.link(self.compressor)
+        limiter_output_level.link(self.compressor)
         self.compressor.link(compressor_output_level)
         compressor_output_level.link(self.freeverb)
         self.freeverb.link(reverb_output_level)
@@ -221,25 +206,6 @@ class GstEffects(GObject.GObject):
         spectrum.link(self.audio_sink)
 
         return pipeline
-
-    def print_eq_freqs(self):
-        print(self.eq_band0.get_property('freq'))
-        print(self.eq_band1.get_property('freq'))
-        print(self.eq_band2.get_property('freq'))
-        print(self.eq_band3.get_property('freq'))
-        print(self.eq_band4.get_property('freq'))
-        print(self.eq_band5.get_property('freq'))
-        print(self.eq_band6.get_property('freq'))
-        print(self.eq_band7.get_property('freq'))
-        print(self.eq_band8.get_property('freq'))
-        print(self.eq_band9.get_property('freq'))
-        print(self.eq_band10.get_property('freq'))
-        print(self.eq_band11.get_property('freq'))
-        print(self.eq_band12.get_property('freq'))
-        print(self.eq_band13.get_property('freq'))
-        print(self.eq_band14.get_property('freq'))
-
-        # print(self.eq_band0.get_property('bandwidth'))
 
     def set_state(self, state):
         if state == 'ready':
@@ -293,26 +259,6 @@ class GstEffects(GObject.GObject):
         self.spectrum_nfreqs = len(self.spectrum_freqs)
 
         self.spectrum_x_axis = np.logspace(1.3, 4.3, self.spectrum_n_points)
-
-    def auto_gain(self, max_value):
-        threshold = -12
-        delta = 1
-        max_value = int(max_value)
-
-        if max_value > threshold + delta:
-            gain = self.limiter.get_property('input-gain')
-
-            if gain - 1 >= -20:
-                gain = gain - 1
-
-                self.emit('new_autovolume', gain)
-        elif max_value < threshold - delta:
-            gain = self.limiter.get_property('input-gain')
-
-            if gain + 1 <= 20:
-                gain = gain + 1
-
-                self.emit('new_autovolume', gain)
 
     def on_message_error(self, bus, msg):
         self.log.error(msg.parse_error())
@@ -368,15 +314,6 @@ class GstEffects(GObject.GObject):
                 self.old_limiter_attenuation = attenuation
 
                 self.emit('new_limiter_attenuation', attenuation)
-        elif plugin == 'autovolume':
-            if self.autovolume_enabled:
-                peak = msg.get_structure().get_value('peak')
-
-                max_value = max(peak)
-
-                if max_value > -50:
-                    self.auto_gain(max_value)
-
         elif plugin == 'compressor_output_level':
             peak = msg.get_structure().get_value('peak')
 
@@ -457,9 +394,6 @@ class GstEffects(GObject.GObject):
         self.audio_sink.set_property('latency-time', value)
         self.set_state('playing')
 
-    def set_autovolume_state(self, value):
-        self.autovolume_enabled = value
-
     def set_limiter_input_gain(self, value):
         self.limiter.set_property('input-gain', value)
 
@@ -468,9 +402,6 @@ class GstEffects(GObject.GObject):
 
     def set_limiter_release_time(self, value):
         self.limiter.set_property('release-time', value)
-
-    def set_panorama(self, value):
-        self.panorama.set_property('panorama', value)
 
     def set_compressor_measurement_type(self, value):
         self.compressor.set_property('rms-peak', value)

@@ -10,7 +10,7 @@ class SetupCompressor():
     def __init__(self, app):
         self.app = app
         self.app_builder = app.builder
-        self.gst = app.gst
+        self.sie = app.sie
         self.settings = app.settings
         self.module_path = app.module_path
 
@@ -31,11 +31,11 @@ class SetupCompressor():
             self.on_compressor_makeup_value_changed
         }
 
-        self.gst.connect('new_compressor_input_level',
+        self.sie.connect('new_compressor_input_level',
                          self.on_new_compressor_input_level)
-        self.gst.connect('new_compressor_output_level',
+        self.sie.connect('new_compressor_output_level',
                          self.on_new_compressor_output_level)
-        self.gst.connect('new_compressor_gain_reduction',
+        self.sie.connect('new_compressor_gain_reduction',
                          self.on_new_compressor_gain_reduction)
 
         self.compressor_rms = self.app_builder.get_object('compressor_rms')
@@ -119,13 +119,13 @@ class SetupCompressor():
         self.apply_compressor_preset(self.compressor_user)
 
         # we need this when saved value is equal to widget default value
-        self.gst.set_compressor_measurement_type(self.compressor_user[0])
-        self.gst.set_compressor_attack(self.compressor_user[1])
-        self.gst.set_compressor_release(self.compressor_user[2])
-        self.gst.set_compressor_threshold(self.compressor_user[3])
-        self.gst.set_compressor_ratio(self.compressor_user[4])
-        self.gst.set_compressor_knee(self.compressor_user[5])
-        self.gst.set_compressor_makeup(self.compressor_user[6])
+        self.sie.set_compressor_measurement_type(self.compressor_user[0])
+        self.sie.set_compressor_attack(self.compressor_user[1])
+        self.sie.set_compressor_release(self.compressor_user[2])
+        self.sie.set_compressor_threshold(self.compressor_user[3])
+        self.sie.set_compressor_ratio(self.compressor_user[4])
+        self.sie.set_compressor_knee(self.compressor_user[5])
+        self.sie.set_compressor_makeup(self.compressor_user[6])
 
     def on_new_compressor_input_level(self, obj, left, right):
         if self.app.ui_initialized:
@@ -207,40 +207,40 @@ class SetupCompressor():
             label = obj.get_label()
 
             if label == 'rms':
-                self.gst.set_compressor_measurement_type(0)
+                self.sie.set_compressor_measurement_type(0)
                 self.save_compressor_user(0, 0)
             elif label == 'peak':
-                self.gst.set_compressor_measurement_type(1)
+                self.sie.set_compressor_measurement_type(1)
                 self.save_compressor_user(0, 1)
 
     def on_compressor_attack_time_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_compressor_attack(value)
+        self.sie.set_compressor_attack(value)
         self.save_compressor_user(1, value)
 
     def on_compressor_release_time_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_compressor_release(value)
+        self.sie.set_compressor_release(value)
         self.save_compressor_user(2, value)
 
     def on_compressor_threshold_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_compressor_threshold(value)
+        self.sie.set_compressor_threshold(value)
         self.save_compressor_user(3, value)
 
     def on_compressor_ratio_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_compressor_ratio(value)
+        self.sie.set_compressor_ratio(value)
         self.save_compressor_user(4, value)
 
     def on_compressor_knee_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_compressor_knee(value)
+        self.sie.set_compressor_knee(value)
         self.save_compressor_user(5, value)
 
     def on_compressor_makeup_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_compressor_makeup(value)
+        self.sie.set_compressor_makeup(value)
         self.save_compressor_user(6, value)
 
     def reset(self):

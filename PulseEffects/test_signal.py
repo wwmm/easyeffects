@@ -13,7 +13,7 @@ class TestSignal():
     def __init__(self, app):
         self.app = app
         self.app_builder = app.builder
-        self.app_gst = app.gst
+        self.app_gst = app.sie
         self.module_path = app.module_path
 
         self.pipeline = self.build_pipeline()

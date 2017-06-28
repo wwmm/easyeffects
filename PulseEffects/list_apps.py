@@ -13,7 +13,7 @@ class ListApps():
         self.app = app
         self.builder = app.builder
         self.pm = app.pm
-        self.gst = app.gst
+        self.sie = app.sie
 
         self.changing_sink_input_volume = False
         self.handlers = {}
@@ -184,8 +184,8 @@ class ListApps():
 
             self.apps_box.show_all()
 
-            if not self.gst.is_playing:
-                self.gst.set_state('playing')
+            if not self.sie.is_playing:
+                self.sie.set_state('playing')
                 self.log.info('pipeline state: playing')
 
     def on_sink_input_changed(self, obj, sink_input_parameters):
@@ -222,5 +222,5 @@ class ListApps():
 
             if (len(self.apps_box.get_children()) == 0 and
                     not self.app.generating_test_signal):
-                self.gst.set_state('paused')
+                self.sie.set_state('paused')
                 self.log.info('pipeline state: paused')

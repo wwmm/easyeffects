@@ -11,7 +11,7 @@ class Spectrum():
     def __init__(self, app):
         self.app = app
         self.builder = app.builder
-        self.gst = app.gst
+        self.sie = app.sie
         self.settings = app.settings
 
         self.show_spectrum = True
@@ -34,7 +34,7 @@ class Spectrum():
                 self.on_spectrum_motion_notify_event
         }
 
-        self.gst.connect('new_spectrum', self.on_new_spectrum)
+        self.sie.connect('new_spectrum', self.on_new_spectrum)
 
         self.spectrum_box = self.builder.get_object('spectrum_box')
         self.drawing_area = self.builder.get_object('spectrum')
@@ -52,7 +52,7 @@ class Spectrum():
         show_spectrum_switch.set_active(show_spectrum)
         spectrum_n_points_obj.set_value(spectrum_n_points)
 
-        self.gst.set_spectrum_n_points(spectrum_n_points)
+        self.sie.set_spectrum_n_points(spectrum_n_points)
 
         # we need this when the saved value is equal to the widget default
         # value
@@ -78,7 +78,7 @@ class Spectrum():
         out = GLib.Variant('i', value)
         self.settings.set_value('spectrum-n-points', out)
 
-        self.gst.set_spectrum_n_points(value)
+        self.sie.set_spectrum_n_points(value)
 
     def on_spectrum_draw(self, drawing_area, ctx):
         ctx.paint()

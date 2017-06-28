@@ -10,7 +10,7 @@ class SetupEqualizer():
     def __init__(self, app):
         self.app = app
         self.app_builder = app.builder
-        self.gst = app.gst
+        self.sie = app.sie
         self.settings = app.settings
         self.module_path = app.module_path
 
@@ -36,10 +36,10 @@ class SetupEqualizer():
             'on_eq_band14_value_changed': self.on_eq_band14_value_changed
         }
 
-        self.gst.connect('new_equalizer_input_level',
+        self.sie.connect('new_equalizer_input_level',
                          self.on_new_equalizer_input_level)
 
-        self.gst.connect('new_equalizer_output_level',
+        self.sie.connect('new_equalizer_output_level',
                          self.on_new_equalizer_output_level)
 
         self.equalizer_input_gain = self.app_builder.get_object(
@@ -146,29 +146,29 @@ class SetupEqualizer():
         # we need this when saved value is equal to widget default value
 
         value_linear = 10**(equalizer_input_gain_user / 20)
-        self.gst.set_eq_input_gain(value_linear)
+        self.sie.set_eq_input_gain(value_linear)
 
         value_linear = 10**(equalizer_output_gain_user / 20)
-        self.gst.set_eq_output_gain(value_linear)
+        self.sie.set_eq_output_gain(value_linear)
 
-        self.gst.set_eq_band0(self.eq_band_user[0])
-        self.gst.set_eq_band1(self.eq_band_user[1])
-        self.gst.set_eq_band2(self.eq_band_user[2])
-        self.gst.set_eq_band3(self.eq_band_user[3])
-        self.gst.set_eq_band4(self.eq_band_user[4])
-        self.gst.set_eq_band5(self.eq_band_user[5])
-        self.gst.set_eq_band6(self.eq_band_user[6])
-        self.gst.set_eq_band7(self.eq_band_user[7])
-        self.gst.set_eq_band8(self.eq_band_user[8])
-        self.gst.set_eq_band9(self.eq_band_user[9])
-        self.gst.set_eq_band10(self.eq_band_user[10])
-        self.gst.set_eq_band11(self.eq_band_user[11])
-        self.gst.set_eq_band12(self.eq_band_user[12])
-        self.gst.set_eq_band13(self.eq_band_user[13])
-        self.gst.set_eq_band14(self.eq_band_user[14])
+        self.sie.set_eq_band0(self.eq_band_user[0])
+        self.sie.set_eq_band1(self.eq_band_user[1])
+        self.sie.set_eq_band2(self.eq_band_user[2])
+        self.sie.set_eq_band3(self.eq_band_user[3])
+        self.sie.set_eq_band4(self.eq_band_user[4])
+        self.sie.set_eq_band5(self.eq_band_user[5])
+        self.sie.set_eq_band6(self.eq_band_user[6])
+        self.sie.set_eq_band7(self.eq_band_user[7])
+        self.sie.set_eq_band8(self.eq_band_user[8])
+        self.sie.set_eq_band9(self.eq_band_user[9])
+        self.sie.set_eq_band10(self.eq_band_user[10])
+        self.sie.set_eq_band11(self.eq_band_user[11])
+        self.sie.set_eq_band12(self.eq_band_user[12])
+        self.sie.set_eq_band13(self.eq_band_user[13])
+        self.sie.set_eq_band14(self.eq_band_user[14])
 
-        self.gst.set_eq_highpass_cutoff_freq(eq_highpass_cutoff_freq_user)
-        self.gst.set_eq_lowpass_cutoff_freq(eq_lowpass_cutoff_freq_user)
+        self.sie.set_eq_highpass_cutoff_freq(eq_highpass_cutoff_freq_user)
+        self.sie.set_eq_lowpass_cutoff_freq(eq_lowpass_cutoff_freq_user)
 
     def on_new_equalizer_input_level(self, obj, left, right):
         if self.app.ui_initialized:
@@ -261,7 +261,7 @@ class SetupEqualizer():
         value_db = obj.get_value()
         value_linear = 10**(value_db / 20)
 
-        self.gst.set_eq_input_gain(value_linear)
+        self.sie.set_eq_input_gain(value_linear)
 
         out = GLib.Variant('d', value_db)
 
@@ -271,7 +271,7 @@ class SetupEqualizer():
         value_db = obj.get_value()
         value_linear = 10**(value_db / 20)
 
-        self.gst.set_eq_output_gain(value_linear)
+        self.sie.set_eq_output_gain(value_linear)
 
         out = GLib.Variant('d', value_db)
 
@@ -279,82 +279,82 @@ class SetupEqualizer():
 
     def on_eq_band0_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_eq_band0(value)
+        self.sie.set_eq_band0(value)
         self.save_eq_user(0, value)
 
     def on_eq_band1_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_eq_band1(value)
+        self.sie.set_eq_band1(value)
         self.save_eq_user(1, value)
 
     def on_eq_band2_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_eq_band2(value)
+        self.sie.set_eq_band2(value)
         self.save_eq_user(2, value)
 
     def on_eq_band3_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_eq_band3(value)
+        self.sie.set_eq_band3(value)
         self.save_eq_user(3, value)
 
     def on_eq_band4_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_eq_band4(value)
+        self.sie.set_eq_band4(value)
         self.save_eq_user(4, value)
 
     def on_eq_band5_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_eq_band5(value)
+        self.sie.set_eq_band5(value)
         self.save_eq_user(5, value)
 
     def on_eq_band6_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_eq_band6(value)
+        self.sie.set_eq_band6(value)
         self.save_eq_user(6, value)
 
     def on_eq_band7_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_eq_band7(value)
+        self.sie.set_eq_band7(value)
         self.save_eq_user(7, value)
 
     def on_eq_band8_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_eq_band8(value)
+        self.sie.set_eq_band8(value)
         self.save_eq_user(8, value)
 
     def on_eq_band9_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_eq_band9(value)
+        self.sie.set_eq_band9(value)
         self.save_eq_user(9, value)
 
     def on_eq_band10_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_eq_band10(value)
+        self.sie.set_eq_band10(value)
         self.save_eq_user(10, value)
 
     def on_eq_band11_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_eq_band11(value)
+        self.sie.set_eq_band11(value)
         self.save_eq_user(11, value)
 
     def on_eq_band12_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_eq_band12(value)
+        self.sie.set_eq_band12(value)
         self.save_eq_user(12, value)
 
     def on_eq_band13_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_eq_band13(value)
+        self.sie.set_eq_band13(value)
         self.save_eq_user(13, value)
 
     def on_eq_band14_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_eq_band14(value)
+        self.sie.set_eq_band14(value)
         self.save_eq_user(14, value)
 
     def on_eq_highpass_cutoff_freq_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_eq_highpass_cutoff_freq(value)
+        self.sie.set_eq_highpass_cutoff_freq(value)
 
         out = GLib.Variant('i', value)
 
@@ -362,7 +362,7 @@ class SetupEqualizer():
 
     def on_eq_highpass_poles_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_eq_highpass_poles(value)
+        self.sie.set_eq_highpass_poles(value)
 
         out = GLib.Variant('i', value)
 
@@ -370,7 +370,7 @@ class SetupEqualizer():
 
     def on_eq_lowpass_cutoff_freq_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_eq_lowpass_cutoff_freq(value)
+        self.sie.set_eq_lowpass_cutoff_freq(value)
 
         out = GLib.Variant('i', value)
 
@@ -378,7 +378,7 @@ class SetupEqualizer():
 
     def on_eq_lowpass_poles_value_changed(self, obj):
         value = obj.get_value()
-        self.gst.set_eq_lowpass_poles(value)
+        self.sie.set_eq_lowpass_poles(value)
 
         out = GLib.Variant('i', value)
 
