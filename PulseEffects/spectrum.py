@@ -3,7 +3,7 @@
 import gi
 import numpy as np
 gi.require_version('PangoCairo', '1.0')
-from gi.repository import GLib, Pango, PangoCairo
+from gi.repository import Pango, PangoCairo
 
 
 class Spectrum():
