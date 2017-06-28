@@ -11,8 +11,6 @@ class Spectrum():
     def __init__(self, app):
         self.app = app
         self.builder = app.builder
-        self.sie = app.sie
-        self.settings = app.settings
 
         self.show_spectrum = True
         self.mouse_inside = False
@@ -35,9 +33,6 @@ class Spectrum():
         self.drawing_area = self.builder.get_object('spectrum')
 
         self.spectrum_magnitudes = np.array([])
-
-    def init(self):
-        pass
 
     def show(self):
         self.spectrum_box.show_all()
@@ -110,9 +105,3 @@ class Spectrum():
         # minimum intensity is -120 dB and maximum is 0 dB
 
         self.mouse_intensity = round(- event_motion.y * 120 / height, 1)
-
-    def reset(self):
-        self.settings.reset('show-spectrum')
-        self.settings.reset('spectrum-n-points')
-
-        self.init()

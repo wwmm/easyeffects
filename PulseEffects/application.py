@@ -114,7 +114,6 @@ class Application(Gtk.Application):
         self.setup_reverb.init()
         self.setup_equalizer.init()
         self.test_signal.init()
-        self.spectrum.init()
         self.list_apps.init()
 
         self.init_settings_menu()
@@ -280,12 +279,14 @@ class Application(Gtk.Application):
         self.settings.reset('buffer-time')
         self.settings.reset('latency-time')
         self.settings.reset('panorama')
+        self.settings.reset('show-spectrum')
+        self.settings.reset('spectrum-n-points')
 
         self.init_buffer_time()
         self.init_latency_time()
         self.init_panorama()
+        self.init_spectrum()
 
-        self.spectrum.reset()
         self.setup_limiter.reset()
         self.setup_compressor.reset()
         self.setup_reverb.reset()
