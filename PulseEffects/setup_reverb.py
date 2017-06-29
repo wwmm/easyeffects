@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import os
+
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import GLib, Gtk
@@ -10,9 +12,9 @@ class SetupReverb():
     def __init__(self, app):
         self.app = app
         self.app_builder = app.builder
-        self.sie = app.sie
+        self.effects = app.sie
         self.settings = app.settings
-        self.module_path = app.module_path
+        self.module_path = os.path.dirname(__file__)
 
         self.handlers = {
             'on_reverb_room_size_value_changed':
@@ -25,10 +27,10 @@ class SetupReverb():
             self.on_reverb_level_value_changed
         }
 
-        self.sie.connect('new_reverb_input_level',
-                         self.on_new_reverb_input_level)
-        self.sie.connect('new_reverb_output_level',
-                         self.on_new_reverb_output_level)
+        self.effects.connect('new_reverb_input_level',
+                             self.on_new_reverb_input_level)
+        self.effects.connect('new_reverb_output_level',
+                             self.on_new_reverb_output_level)
 
         self.reverb_room_size = self.app_builder.get_object('reverb_room_size')
         self.reverb_damping = self.app_builder.get_object('reverb_damping')
@@ -87,10 +89,10 @@ class SetupReverb():
         self.apply_reverb_preset(self.reverb_user)
 
         # we need this when saved value is equal to widget default value
-        self.sie.set_reverb_room_size(self.reverb_user[0])
-        self.sie.set_reverb_damping(self.reverb_user[1])
-        self.sie.set_reverb_width(self.reverb_user[2])
-        self.sie.set_reverb_level(self.reverb_user[3])
+        self.effects.set_reverb_room_size(self.reverb_user[0])
+        self.effects.set_reverb_damping(self.reverb_user[1])
+        self.effects.set_reverb_width(self.reverb_user[2])
+        self.effects.set_reverb_level(self.reverb_user[3])
 
     def on_new_reverb_input_level(self, obj, left, right):
         if self.app.ui_initialized:
@@ -162,22 +164,22 @@ class SetupReverb():
 
     def on_reverb_room_size_value_changed(self, obj):
         value = obj.get_value()
-        self.sie.set_reverb_room_size(value)
+        self.effects.set_reverb_room_size(value)
         self.save_reverb_user(0, value)
 
     def on_reverb_damping_value_changed(self, obj):
         value = obj.get_value()
-        self.sie.set_reverb_damping(value)
+        self.effects.set_reverb_damping(value)
         self.save_reverb_user(1, value)
 
     def on_reverb_width_value_changed(self, obj):
         value = obj.get_value()
-        self.sie.set_reverb_width(value)
+        self.effects.set_reverb_width(value)
         self.save_reverb_user(2, value)
 
     def on_reverb_level_value_changed(self, obj):
         value = obj.get_value()
-        self.sie.set_reverb_level(value)
+        self.effects.set_reverb_level(value)
         self.save_reverb_user(3, value)
 
     def reset(self):

@@ -7,7 +7,7 @@ import os
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gio, GLib, Gtk
-from PulseEffects.list_apps import ListApps
+from PulseEffects.list_sink_inputs import ListSinkInputs
 from PulseEffects.pulse_manager import PulseManager
 from PulseEffects.setup_compressor import SetupCompressor
 from PulseEffects.setup_equalizer import SetupEqualizer
@@ -67,7 +67,7 @@ class Application(Gtk.Application):
 
         self.builder = Gtk.Builder()
 
-        ui_handlers = {
+        main_ui_handlers = {
             'on_MainWindow_delete_event': self.on_MainWindow_delete_event,
             'on_buffer_time_value_changed': self.on_buffer_time_value_changed,
             'on_latency_time_value_changed':
@@ -98,23 +98,23 @@ class Application(Gtk.Application):
         self.setup_equalizer = SetupEqualizer(self)
         self.test_signal = TestSignal(self)
         self.spectrum = Spectrum(self)
-        self.list_apps = ListApps(self)
+        self.list_sink_inputs = ListSinkInputs(self)
 
-        ui_handlers.update(self.setup_limiter.handlers)
-        ui_handlers.update(self.setup_compressor.handlers)
-        ui_handlers.update(self.setup_reverb.handlers)
-        ui_handlers.update(self.setup_equalizer.handlers)
-        ui_handlers.update(self.spectrum.handlers)
-        ui_handlers.update(self.list_apps.handlers)
+        main_ui_handlers.update(self.setup_limiter.handlers)
+        main_ui_handlers.update(self.setup_compressor.handlers)
+        main_ui_handlers.update(self.setup_reverb.handlers)
+        main_ui_handlers.update(self.setup_equalizer.handlers)
+        main_ui_handlers.update(self.spectrum.handlers)
+        main_ui_handlers.update(self.list_sink_inputs.handlers)
 
-        self.builder.connect_signals(ui_handlers)
+        self.builder.connect_signals(main_ui_handlers)
 
         self.setup_limiter.init()
         self.setup_compressor.init()
         self.setup_reverb.init()
         self.setup_equalizer.init()
         self.test_signal.init()
-        self.list_apps.init()
+        self.list_sink_inputs.init()
 
         self.init_settings_menu()
         self.init_buffer_time()

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import os
+
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import GLib, Gtk
@@ -10,9 +12,9 @@ class SetupLimiter():
     def __init__(self, app):
         self.app = app
         self.app_builder = app.builder
-        self.sie = app.sie
+        self.effects = app.sie
         self.settings = app.settings
-        self.module_path = app.module_path
+        self.module_path = os.path.dirname(__file__)
 
         self.handlers = {
             'on_limiter_input_gain_value_changed':
@@ -25,13 +27,13 @@ class SetupLimiter():
                 self.on_autovolume_enable_state_set
         }
 
-        self.sie.connect('new_limiter_input_level',
-                         self.on_new_limiter_input_level)
-        self.sie.connect('new_limiter_output_level',
-                         self.on_new_limiter_output_level)
-        self.sie.connect('new_limiter_attenuation',
-                         self.on_new_limiter_attenuation)
-        self.sie.connect('new_autovolume', self.on_new_autovolume)
+        self.effects.connect('new_limiter_input_level',
+                             self.on_new_limiter_input_level)
+        self.effects.connect('new_limiter_output_level',
+                             self.on_new_limiter_output_level)
+        self.effects.connect('new_limiter_attenuation',
+                             self.on_new_limiter_attenuation)
+        self.effects.connect('new_autovolume', self.on_new_autovolume)
 
         self.limiter_input_gain = self.app_builder.get_object(
             'limiter_input_gain')
@@ -94,9 +96,9 @@ class SetupLimiter():
         else:
             self.apply_limiter_preset(self.limiter_user)
 
-            self.sie.set_limiter_input_gain(self.limiter_user[0])
-            self.sie.set_limiter_limit(self.limiter_user[1])
-            self.sie.set_limiter_release_time(self.limiter_user[2])
+            self.effects.set_limiter_input_gain(self.limiter_user[0])
+            self.effects.set_limiter_limit(self.limiter_user[1])
+            self.effects.set_limiter_release_time(self.limiter_user[2])
 
     def apply_limiter_preset(self, values):
         self.limiter_input_gain.set_value(values[0])
@@ -120,21 +122,21 @@ class SetupLimiter():
 
     def on_limiter_input_gain_value_changed(self, obj):
         value = obj.get_value()
-        self.sie.set_limiter_input_gain(value)
+        self.effects.set_limiter_input_gain(value)
         self.save_limiter_user(0, value)
 
     def on_limiter_limit_value_changed(self, obj):
         value = obj.get_value()
-        self.sie.set_limiter_limit(value)
+        self.effects.set_limiter_limit(value)
         self.save_limiter_user(1, value)
 
     def on_limiter_release_time_value_changed(self, obj):
         value = obj.get_value()
-        self.sie.set_limiter_release_time(value)
+        self.effects.set_limiter_release_time(value)
         self.save_limiter_user(2, value)
 
     def enable_autovolume(self, state):
-        self.sie.set_autovolume_state(state)
+        self.effects.set_autovolume_state(state)
 
         if state:
             self.limiter_input_gain.set_value(-10)
