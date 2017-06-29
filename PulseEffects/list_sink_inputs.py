@@ -220,7 +220,6 @@ class ListSinkInputs():
 
                     break
 
-            if (len(self.apps_box.get_children()) == 0 and
-                    not self.app.generating_test_signal):
+            if len(self.apps_box.get_children()) == 0:
                 self.sie.set_state('paused')
                 self.log.info('pipeline state: paused')

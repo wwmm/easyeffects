@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 
 import gi
 gi.require_version('Gst', '1.0')
@@ -10,13 +11,13 @@ Gst.init(None)
 
 class TestSignal():
 
-    def __init__(self, app):
-        self.app = app
-        self.app_builder = app.builder
-        self.app_gst = app.sie
-        self.module_path = app.module_path
+    def __init__(self, app_builder, sie_effects):
+        self.app_builder = app_builder
+        self.sie_effects = sie_effects
+        self.module_path = os.path.dirname(__file__)
 
         self.pipeline = self.build_pipeline()
+        self.switch_is_on = False
 
         # Create bus to get events from GStreamer pipeline
         bus = self.pipeline.get_bus()
@@ -55,7 +56,7 @@ class TestSignal():
         self.init_menu()
 
     def init_elements(self):
-        self.audio_sink.set_property('device', 'PulseEffects')
+        self.audio_sink.set_property('device', 'PulseEffects_apps')
         self.audio_sink.set_property('volume', 1.0)
         self.audio_sink.set_property('mute', False)
 
@@ -133,7 +134,7 @@ class TestSignal():
             self.bandpass.set_property('lower-frequency', lower)
             self.bandpass.set_property('upper-frequency', upper)
 
-        if self.app.generating_test_signal:
+        if self.switch_is_on:
             self.set_state('playing')
 
     def init_menu(self):
@@ -164,15 +165,15 @@ class TestSignal():
 
     def on_test_signal_switch_state_set(self, obj, state):
         if state:
-            self.app.generating_test_signal = True
             self.init_elements()
 
-            if not self.app_gst.is_playing:
-                self.app_gst.set_state('playing')
+            if not self.sie_effects.is_playing:
+                self.sie_effects.set_state('playing')
 
             self.set_state('playing')
+            self.switch_is_on = True
         else:
-            self.app.generating_test_signal = False
+            self.switch_is_on = False
             self.set_state('null')
 
     def on_test_signal_freq_toggled(self, obj):

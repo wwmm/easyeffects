@@ -30,7 +30,6 @@ class Application(Gtk.Application):
         Gtk.Application.__init__(self, application_id=app_id)
 
         self.ui_initialized = False
-        self.generating_test_signal = False
         self.module_path = os.path.dirname(__file__)
 
         log_format = '%(asctime)s.%(msecs)d - %(name)s - %(levelname)s'
@@ -92,32 +91,32 @@ class Application(Gtk.Application):
 
         self.create_appmenu()
 
-        self.setup_limiter = SetupLimiter(self.builder, self.sie,
-                                          self.settings)
-        self.setup_compressor = SetupCompressor(self.builder, self.sie,
-                                                self.settings)
-        self.setup_reverb = SetupReverb(self.builder, self.sie,
-                                        self.settings)
-        self.setup_equalizer = SetupEqualizer(self.builder, self.sie,
+        self.setup_sie_limiter = SetupLimiter(self.builder, self.sie,
                                               self.settings)
+        self.setup_sie_compressor = SetupCompressor(self.builder, self.sie,
+                                                    self.settings)
+        self.setup_sie_reverb = SetupReverb(self.builder, self.sie,
+                                            self.settings)
+        self.setup_sie_equalizer = SetupEqualizer(self.builder, self.sie,
+                                                  self.settings)
 
-        self.test_signal = TestSignal(self)
+        self.test_signal = TestSignal(self.builder, self.sie)
         self.spectrum = Spectrum(self)
         self.list_sink_inputs = ListSinkInputs(self)
 
-        main_ui_handlers.update(self.setup_limiter.handlers)
-        main_ui_handlers.update(self.setup_compressor.handlers)
-        main_ui_handlers.update(self.setup_reverb.handlers)
-        main_ui_handlers.update(self.setup_equalizer.handlers)
+        main_ui_handlers.update(self.setup_sie_limiter.handlers)
+        main_ui_handlers.update(self.setup_sie_compressor.handlers)
+        main_ui_handlers.update(self.setup_sie_reverb.handlers)
+        main_ui_handlers.update(self.setup_sie_equalizer.handlers)
         main_ui_handlers.update(self.spectrum.handlers)
         main_ui_handlers.update(self.list_sink_inputs.handlers)
 
         self.builder.connect_signals(main_ui_handlers)
 
-        self.setup_limiter.init()
-        self.setup_compressor.init()
-        self.setup_reverb.init()
-        self.setup_equalizer.init()
+        self.setup_sie_limiter.init()
+        self.setup_sie_compressor.init()
+        self.setup_sie_reverb.init()
+        self.setup_sie_equalizer.init()
         self.test_signal.init()
         self.list_sink_inputs.init()
 
@@ -132,9 +131,6 @@ class Application(Gtk.Application):
         sink_rate_label.set_text(self.pm.default_sink_format + ', ' +
                                  str(self.pm.default_sink_rate) + ' Hz')
 
-        # now that all elements were initialized we set pipeline to ready
-        self.sie.set_state('ready')
-
     def do_activate(self):
         self.window.present()
 
@@ -143,10 +139,13 @@ class Application(Gtk.Application):
         self.pm.find_sink_inputs()
         self.pm.find_source_outputs()
 
-        self.setup_limiter.connect_signals()
-        self.setup_compressor.connect_signals()
-        self.setup_reverb.connect_signals()
-        self.setup_equalizer.connect_signals()
+        self.setup_sie_limiter.connect_signals()
+        self.setup_sie_compressor.connect_signals()
+        self.setup_sie_reverb.connect_signals()
+        self.setup_sie_equalizer.connect_signals()
+
+        # now that all elements were initialized we set pipeline to ready
+        self.sie.set_state('ready')
 
     def on_MainWindow_delete_event(self, event, data):
         self.sie.set_state('null')
@@ -297,10 +296,10 @@ class Application(Gtk.Application):
         self.init_panorama()
         self.init_spectrum()
 
-        self.setup_limiter.reset()
-        self.setup_compressor.reset()
-        self.setup_reverb.reset()
-        self.setup_equalizer.reset()
+        self.setup_sie_limiter.reset()
+        self.setup_sie_compressor.reset()
+        self.setup_sie_reverb.reset()
+        self.setup_sie_equalizer.reset()
 
     def add_file_filter(self, dialog):
         file_filter = Gtk.FileFilter()
@@ -426,7 +425,7 @@ class Application(Gtk.Application):
 
             limiter = dict(config['limiter']).values()
             limiter = [float(v) for v in limiter]
-            self.setup_limiter.apply_limiter_preset(limiter)
+            self.setup_sie_limiter.apply_limiter_preset(limiter)
 
             panorama_value = config.getfloat('panorama', 'panorama',
                                              fallback=0.0)
@@ -435,11 +434,11 @@ class Application(Gtk.Application):
 
             compressor = dict(config['compressor']).values()
             compressor = [float(v) for v in compressor]
-            self.setup_compressor.apply_compressor_preset(compressor)
+            self.setup_sie_compressor.apply_compressor_preset(compressor)
 
             reverb = dict(config['reverb']).values()
             reverb = [float(v) for v in reverb]
-            self.setup_reverb.apply_reverb_preset(reverb)
+            self.setup_sie_reverb.apply_reverb_preset(reverb)
 
             equalizer_input_gain = config.getfloat('equalizer', 'input_gain',
                                                    fallback=0)
@@ -484,20 +483,20 @@ class Application(Gtk.Application):
                                equalizer_band12,
                                equalizer_band13, equalizer_band14]
 
-            self.setup_equalizer.equalizer_input_gain.set_value(
+            self.setup_sie_equalizer.equalizer_input_gain.set_value(
                 equalizer_input_gain)
-            self.setup_equalizer.equalizer_output_gain.set_value(
+            self.setup_sie_equalizer.equalizer_output_gain.set_value(
                 equalizer_output_gain)
 
-            self.setup_equalizer.apply_eq_preset(equalizer_bands)
+            self.setup_sie_equalizer.apply_eq_preset(equalizer_bands)
 
-            self.setup_equalizer.eq_highpass_cutoff_freq.set_value(
+            self.setup_sie_equalizer.eq_highpass_cutoff_freq.set_value(
                 highpass_cutoff_freq)
-            self.setup_equalizer.eq_highpass_poles.set_value(highpass_poles)
+            self.setup_sie_equalizer.eq_highpass_poles.set_value(highpass_poles)
 
-            self.setup_equalizer.eq_lowpass_cutoff_freq.set_value(
+            self.setup_sie_equalizer.eq_lowpass_cutoff_freq.set_value(
                 lowpass_cutoff_freq)
-            self.setup_equalizer.eq_lowpass_poles.set_value(lowpass_poles)
+            self.setup_sie_equalizer.eq_lowpass_poles.set_value(lowpass_poles)
 
         dialog.destroy()
 
