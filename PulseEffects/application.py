@@ -492,7 +492,8 @@ class Application(Gtk.Application):
 
             self.setup_sie_equalizer.eq_highpass_cutoff_freq.set_value(
                 highpass_cutoff_freq)
-            self.setup_sie_equalizer.eq_highpass_poles.set_value(highpass_poles)
+            self.setup_sie_equalizer.eq_highpass_poles.set_value(
+                highpass_poles)
 
             self.setup_sie_equalizer.eq_lowpass_cutoff_freq.set_value(
                 lowpass_cutoff_freq)
