@@ -98,7 +98,9 @@ class Application(Gtk.Application):
                                                 self.settings)
         self.setup_reverb = SetupReverb(self.builder, self.sie,
                                         self.settings)
-        self.setup_equalizer = SetupEqualizer(self)
+        self.setup_equalizer = SetupEqualizer(self.builder, self.sie,
+                                              self.settings)
+
         self.test_signal = TestSignal(self)
         self.spectrum = Spectrum(self)
         self.list_sink_inputs = ListSinkInputs(self)
@@ -144,6 +146,7 @@ class Application(Gtk.Application):
         self.setup_limiter.connect_signals()
         self.setup_compressor.connect_signals()
         self.setup_reverb.connect_signals()
+        self.setup_equalizer.connect_signals()
 
     def on_MainWindow_delete_event(self, event, data):
         self.sie.set_state('null')
