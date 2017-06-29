@@ -9,11 +9,10 @@ from gi.repository import GLib, Gtk
 
 class SetupLimiter():
 
-    def __init__(self, app):
-        self.app = app
-        self.app_builder = app.builder
-        self.effects = app.sie
-        self.settings = app.settings
+    def __init__(self, app_builder, effects, settings):
+        self.app_builder = app_builder
+        self.effects = effects
+        self.settings = settings
         self.module_path = os.path.dirname(__file__)
 
         self.handlers = {
@@ -26,14 +25,6 @@ class SetupLimiter():
             'on_autovolume_enable_state_set':
                 self.on_autovolume_enable_state_set
         }
-
-        self.effects.connect('new_limiter_input_level',
-                             self.on_new_limiter_input_level)
-        self.effects.connect('new_limiter_output_level',
-                             self.on_new_limiter_output_level)
-        self.effects.connect('new_limiter_attenuation',
-                             self.on_new_limiter_attenuation)
-        self.effects.connect('new_autovolume', self.on_new_autovolume)
 
         self.limiter_input_gain = self.app_builder.get_object(
             'limiter_input_gain')
@@ -100,6 +91,15 @@ class SetupLimiter():
             self.effects.set_limiter_limit(self.limiter_user[1])
             self.effects.set_limiter_release_time(self.limiter_user[2])
 
+    def connect_signals(self):
+        self.effects.connect('new_limiter_input_level',
+                             self.on_new_limiter_input_level)
+        self.effects.connect('new_limiter_output_level',
+                             self.on_new_limiter_output_level)
+        self.effects.connect('new_limiter_attenuation',
+                             self.on_new_limiter_attenuation)
+        self.effects.connect('new_autovolume', self.on_new_autovolume)
+
     def apply_limiter_preset(self, values):
         self.limiter_input_gain.set_value(values[0])
         self.limiter_limit.set_value(values[1])
@@ -162,52 +162,48 @@ class SetupLimiter():
         self.enable_autovolume(state)
 
     def on_new_limiter_input_level(self, obj, left, right):
-        if self.app.ui_initialized:
-            if left >= -99:
-                l_value = 10**(left / 20)
-                self.limiter_input_level_left.set_value(l_value)
-                self.limiter_input_level_left_label.set_text(str(round(left)))
-            else:
-                self.limiter_input_level_left.set_value(0)
-                self.limiter_input_level_left_label.set_text('-99')
+        if left >= -99:
+            l_value = 10**(left / 20)
+            self.limiter_input_level_left.set_value(l_value)
+            self.limiter_input_level_left_label.set_text(str(round(left)))
+        else:
+            self.limiter_input_level_left.set_value(0)
+            self.limiter_input_level_left_label.set_text('-99')
 
-            if right >= -99:
-                r_value = 10**(right / 20)
-                self.limiter_input_level_right.set_value(r_value)
-                self.limiter_input_level_right_label.set_text(
-                    str(round(right)))
-            else:
-                self.limiter_input_level_right.set_value(0)
-                self.limiter_input_level_right_label.set_text('-99')
+        if right >= -99:
+            r_value = 10**(right / 20)
+            self.limiter_input_level_right.set_value(r_value)
+            self.limiter_input_level_right_label.set_text(
+                str(round(right)))
+        else:
+            self.limiter_input_level_right.set_value(0)
+            self.limiter_input_level_right_label.set_text('-99')
 
     def on_new_limiter_output_level(self, obj, left, right):
-        if self.app.ui_initialized:
-            if left >= -99:
-                l_value = 10**(left / 20)
-                self.limiter_output_level_left.set_value(l_value)
-                self.limiter_output_level_left_label.set_text(str(round(left)))
-            else:
-                self.limiter_output_level_left.set_value(0)
-                self.limiter_output_level_left_label.set_text('-99')
+        if left >= -99:
+            l_value = 10**(left / 20)
+            self.limiter_output_level_left.set_value(l_value)
+            self.limiter_output_level_left_label.set_text(str(round(left)))
+        else:
+            self.limiter_output_level_left.set_value(0)
+            self.limiter_output_level_left_label.set_text('-99')
 
-            if right >= -99:
-                r_value = 10**(right / 20)
-                self.limiter_output_level_right.set_value(r_value)
-                self.limiter_output_level_right_label.set_text(
-                    str(round(right)))
-            else:
-                self.limiter_output_level_right.set_value(0)
-                self.limiter_output_level_right_label.set_text('-99')
+        if right >= -99:
+            r_value = 10**(right / 20)
+            self.limiter_output_level_right.set_value(r_value)
+            self.limiter_output_level_right_label.set_text(
+                str(round(right)))
+        else:
+            self.limiter_output_level_right.set_value(0)
+            self.limiter_output_level_right_label.set_text('-99')
 
     def on_new_limiter_attenuation(self, obj, attenuation):
-        if self.app.ui_initialized:
-            self.limiter_attenuation_levelbar.set_value(attenuation)
-            self.limiter_attenuation_level_label.set_text(
-                str(round(attenuation)))
+        self.limiter_attenuation_levelbar.set_value(attenuation)
+        self.limiter_attenuation_level_label.set_text(
+            str(round(attenuation)))
 
     def on_new_autovolume(self, obj, gain):
-        if self.app.ui_initialized:
-            self.limiter_input_gain.set_value(gain)
+        self.limiter_input_gain.set_value(gain)
 
     def init_menu(self):
         builder = Gtk.Builder()

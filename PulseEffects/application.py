@@ -92,9 +92,12 @@ class Application(Gtk.Application):
 
         self.create_appmenu()
 
-        self.setup_limiter = SetupLimiter(self)
-        self.setup_compressor = SetupCompressor(self)
-        self.setup_reverb = SetupReverb(self)
+        self.setup_limiter = SetupLimiter(self.builder, self.sie,
+                                          self.settings)
+        self.setup_compressor = SetupCompressor(self.builder, self.sie,
+                                                self.settings)
+        self.setup_reverb = SetupReverb(self.builder, self.sie,
+                                        self.settings)
         self.setup_equalizer = SetupEqualizer(self)
         self.test_signal = TestSignal(self)
         self.spectrum = Spectrum(self)
@@ -137,6 +140,10 @@ class Application(Gtk.Application):
 
         self.pm.find_sink_inputs()
         self.pm.find_source_outputs()
+
+        self.setup_limiter.connect_signals()
+        self.setup_compressor.connect_signals()
+        self.setup_reverb.connect_signals()
 
     def on_MainWindow_delete_event(self, event, data):
         self.sie.set_state('null')

@@ -9,11 +9,10 @@ from gi.repository import GLib, Gtk
 
 class SetupReverb():
 
-    def __init__(self, app):
-        self.app = app
-        self.app_builder = app.builder
-        self.effects = app.sie
-        self.settings = app.settings
+    def __init__(self, app_builder, effects, settings):
+        self.app_builder = app_builder
+        self.effects = effects
+        self.settings = settings
         self.module_path = os.path.dirname(__file__)
 
         self.handlers = {
@@ -26,11 +25,6 @@ class SetupReverb():
             'on_reverb_level_value_changed':
             self.on_reverb_level_value_changed
         }
-
-        self.effects.connect('new_reverb_input_level',
-                             self.on_new_reverb_input_level)
-        self.effects.connect('new_reverb_output_level',
-                             self.on_new_reverb_output_level)
 
         self.reverb_room_size = self.app_builder.get_object('reverb_room_size')
         self.reverb_damping = self.app_builder.get_object('reverb_damping')
@@ -94,43 +88,47 @@ class SetupReverb():
         self.effects.set_reverb_width(self.reverb_user[2])
         self.effects.set_reverb_level(self.reverb_user[3])
 
-    def on_new_reverb_input_level(self, obj, left, right):
-        if self.app.ui_initialized:
-            if left >= -99:
-                l_value = 10**(left / 20)
-                self.reverb_input_level_left.set_value(l_value)
-                self.reverb_input_level_left_label.set_text(str(round(left)))
-            else:
-                self.reverb_input_level_left.set_value(0)
-                self.reverb_input_level_left_label.set_text('-99')
+    def connect_signals(self):
+        self.effects.connect('new_reverb_input_level',
+                             self.on_new_reverb_input_level)
+        self.effects.connect('new_reverb_output_level',
+                             self.on_new_reverb_output_level)
 
-            if right >= -99:
-                r_value = 10**(right / 20)
-                self.reverb_input_level_right.set_value(r_value)
-                self.reverb_input_level_right_label.set_text(
-                    str(round(right)))
-            else:
-                self.reverb_input_level_right.set_value(0)
-                self.reverb_input_level_right_label.set_text('-99')
+    def on_new_reverb_input_level(self, obj, left, right):
+        if left >= -99:
+            l_value = 10**(left / 20)
+            self.reverb_input_level_left.set_value(l_value)
+            self.reverb_input_level_left_label.set_text(str(round(left)))
+        else:
+            self.reverb_input_level_left.set_value(0)
+            self.reverb_input_level_left_label.set_text('-99')
+
+        if right >= -99:
+            r_value = 10**(right / 20)
+            self.reverb_input_level_right.set_value(r_value)
+            self.reverb_input_level_right_label.set_text(
+                str(round(right)))
+        else:
+            self.reverb_input_level_right.set_value(0)
+            self.reverb_input_level_right_label.set_text('-99')
 
     def on_new_reverb_output_level(self, obj, left, right):
-        if self.app.ui_initialized:
-            if left >= -99:
-                l_value = 10**(left / 20)
-                self.reverb_output_level_left.set_value(l_value)
-                self.reverb_output_level_left_label.set_text(str(round(left)))
-            else:
-                self.reverb_output_level_left.set_value(0)
-                self.reverb_output_level_left_label.set_text('-99')
+        if left >= -99:
+            l_value = 10**(left / 20)
+            self.reverb_output_level_left.set_value(l_value)
+            self.reverb_output_level_left_label.set_text(str(round(left)))
+        else:
+            self.reverb_output_level_left.set_value(0)
+            self.reverb_output_level_left_label.set_text('-99')
 
-            if right >= -99:
-                r_value = 10**(right / 20)
-                self.reverb_output_level_right.set_value(r_value)
-                self.reverb_output_level_right_label.set_text(
-                    str(round(right)))
-            else:
-                self.reverb_output_level_right.set_value(0)
-                self.reverb_output_level_right_label.set_text('-99')
+        if right >= -99:
+            r_value = 10**(right / 20)
+            self.reverb_output_level_right.set_value(r_value)
+            self.reverb_output_level_right_label.set_text(
+                str(round(right)))
+        else:
+            self.reverb_output_level_right.set_value(0)
+            self.reverb_output_level_right_label.set_text('-99')
 
     def apply_reverb_preset(self, values):
         self.reverb_room_size.set_value(values[0])
