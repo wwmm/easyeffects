@@ -14,6 +14,7 @@ from PulseEffects.setup_equalizer import SetupEqualizer
 from PulseEffects.setup_limiter import SetupLimiter
 from PulseEffects.setup_reverb import SetupReverb
 from PulseEffects.sink_input_effects import SinkInputEffects
+from PulseEffects.source_output_effects import SourceOutputEffects
 from PulseEffects.spectrum import Spectrum
 from PulseEffects.test_signal import TestSignal
 
@@ -50,12 +51,17 @@ class Application(Gtk.Application):
         self.pm.load_apps_sink()
         self.pm.load_mic_sink()
 
-        # gstreamer audio effects
+        # gstreamer sink input effects
 
         self.sie = SinkInputEffects(self.pm.default_sink_rate)
-
         self.sie.set_source_monitor_name(self.pm.apps_sink_monitor_name)
         self.sie.set_output_sink_name(self.pm.default_sink_name)
+
+        # gstreamer sink input effects
+
+        self.soe = SourceOutputEffects(self.pm.default_source_rate)
+        self.soe.set_source_monitor_name(self.pm.mic_sink_monitor_name)
+        self.soe.set_output_sink_name('PulseEffects_mic')
 
         # creating user presets folder
         self.user_config_dir = os.path.expanduser('~/.config/PulseEffects')
