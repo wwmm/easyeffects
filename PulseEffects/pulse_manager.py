@@ -54,6 +54,7 @@ class PulseManager(GObject.GObject):
 
         # we redirect sink inputs to this sink
         self.apps_sink_idx = -1
+        self.apps_sink_owner_module = -1
         self.apps_sink_rate = -1
         self.apps_sink_format = ''
         self.apps_sink_monitor_name = ''
@@ -63,6 +64,7 @@ class PulseManager(GObject.GObject):
         # microphone processed output will be sent to this sink
         # we redirect source outputs to this sink monitor
         self.mic_sink_idx = -1
+        self.mic_sink_owner_module = -1
         self.mic_sink_rate = -1
         self.mic_sink_format = ''
         self.mic_sink_monitor_name = ''
@@ -174,7 +176,7 @@ class PulseManager(GObject.GObject):
             self.log.warning('pulseaudio context terminated')
 
     def exit(self):
-        self.unload_sink()
+        self.unload_sinks()
 
         p.pa_context_disconnect(self.ctx)
         p.pa_context_unref(self.ctx)
@@ -319,6 +321,7 @@ class PulseManager(GObject.GObject):
 
         if status:
             self.apps_sink_idx = self.sink_idx
+            self.apps_sink_owner_module = self.sink_owner_module
             self.apps_sink_rate = self.sink_rate
             self.apps_sink_format = self.sink_format
             self.apps_sink_monitor_name = self.sink_monitor_name
@@ -343,6 +346,7 @@ class PulseManager(GObject.GObject):
 
         if status:
             self.mic_sink_idx = self.sink_idx
+            self.mic_sink_owner_module = self.sink_owner_module
             self.mic_sink_rate = self.sink_rate
             self.mic_sink_format = self.sink_format
             self.mic_sink_monitor_name = self.sink_monitor_name
@@ -574,15 +578,9 @@ class PulseManager(GObject.GObject):
         if not success:
             self.log.critical('context operation failed!!')
 
-    def unload_sink(self):
-        # unload apps sink
-        self.load_sink_info('PulseEffects_apps')
-
-        p.pa_context_unload_module(self.ctx, self.sink_owner_module,
+    def unload_sinks(self):
+        p.pa_context_unload_module(self.ctx, self.apps_sink_owner_module,
                                    self.ctx_success_cb, None)
 
-        # unload mic sink
-        self.load_sink_info('PulseEffects_mic')
-
-        p.pa_context_unload_module(self.ctx, self.sink_owner_module,
+        p.pa_context_unload_module(self.ctx, self.mic_sink_owner_module,
                                    self.ctx_success_cb, None)
