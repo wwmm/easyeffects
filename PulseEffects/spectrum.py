@@ -42,6 +42,10 @@ class Spectrum():
         self.spectrum_box.hide()
         self.show_spectrum = False
 
+    def clear(self):
+        self.spectrum_magnitudes = np.array([])
+        self.drawing_area.queue_draw()
+
     def on_spectrum_draw(self, drawing_area, ctx):
         ctx.paint()
 

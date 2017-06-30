@@ -142,6 +142,8 @@ class Application(Gtk.Application):
                                                             self.spectrum
                                                             .on_new_spectrum)
 
+            self.spectrum.clear()
+
         stack.connect("notify::visible-child", on_visible_child_changed)
 
         stack_switcher.set_stack(stack)
@@ -188,11 +190,11 @@ class Application(Gtk.Application):
         self.list_sink_inputs.connect_signals()
         self.list_source_outputs.connect_signals()
 
-        self.pm.find_sink_inputs()
-        self.pm.find_source_outputs()
-
         self.sie.set_state('ready')
         self.soe.set_state('ready')
+
+        self.pm.find_sink_inputs()
+        self.pm.find_source_outputs()
 
     def do_activate(self):
         self.window.present()
