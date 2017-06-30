@@ -6,6 +6,7 @@ Pulseaudio applications
 ![](images/pulseeffects_main_window.png)
 ![](images/pulseeffects_eq_menu.png)
 ![](images/pulseeffects_reverb_menu.png)
+![](images/pulseeffects_mic_window.png)
 
 Order of effects applied to applications output:
 
@@ -51,7 +52,7 @@ Required libraries:
 - swh-plugins from Ladspa
 
 Users upgrading from 1.x to 2.x will have to rebuild their presets. Since
-version 2.0.0PulseEffects uses a different format for saving presets. This
+version 2.0.0 PulseEffects uses a different format for saving presets. This
 change was necessary to support presets for microphone processing.
 
 Arch Linux package:
