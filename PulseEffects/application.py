@@ -52,7 +52,6 @@ class Application(Gtk.Application):
         # pulseaudio
 
         self.pm = PulseManager()
-
         self.pm.load_apps_sink()
         self.pm.load_mic_sink()
 
@@ -62,7 +61,7 @@ class Application(Gtk.Application):
         self.sie.set_source_monitor_name(self.pm.apps_sink_monitor_name)
         self.sie.set_output_sink_name(self.pm.default_sink_name)
 
-        # gstreamer sink input effects
+        # gstreamer source outputs effects
 
         self.soe = SourceOutputEffects(self.pm.default_source_rate)
         self.soe.set_source_monitor_name(self.pm.default_source_name)
@@ -226,13 +225,14 @@ class Application(Gtk.Application):
 
     def init_sink_inputs_widgets(self):
         self.setup_sie_limiter = SetupLimiter(self.sink_inputs_builder,
-                                              self.sie, self.settings)
+                                              self.sie, self.settings_sie)
         self.setup_sie_compressor = SetupCompressor(self.sink_inputs_builder,
-                                                    self.sie, self.settings)
+                                                    self.sie,
+                                                    self.settings_sie)
         self.setup_sie_reverb = SetupReverb(self.sink_inputs_builder, self.sie,
-                                            self.settings)
+                                            self.settings_sie)
         self.setup_sie_equalizer = SetupEqualizer(self.sink_inputs_builder,
-                                                  self.sie, self.settings)
+                                                  self.sie, self.settings_sie)
 
         self.test_signal = TestSignal(self.sink_inputs_builder, self.sie)
 
@@ -259,12 +259,14 @@ class Application(Gtk.Application):
     def init_source_outputs_widgets(self):
         builder = self.source_outputs_builder
 
-        self.setup_soe_limiter = SetupLimiter(builder, self.soe, self.settings)
+        self.setup_soe_limiter = SetupLimiter(builder, self.soe,
+                                              self.settings_soe)
         self.setup_soe_compressor = SetupCompressor(builder, self.soe,
-                                                    self.settings)
-        self.setup_soe_reverb = SetupReverb(builder, self.soe, self.settings)
+                                                    self.settings_soe)
+        self.setup_soe_reverb = SetupReverb(builder, self.soe,
+                                            self.settings_soe)
         self.setup_soe_equalizer = SetupEqualizer(builder, self.soe,
-                                                  self.settings)
+                                                  self.settings_soe)
 
         self.list_source_outputs = ListSourceOutputs(
             self.source_outputs_builder, self.soe, self.pm)
@@ -308,8 +310,8 @@ class Application(Gtk.Application):
 
         buffer_time.set_value(value)
 
-        self.sie.set_buffer_time(value * 1000)
-        self.soe.set_buffer_time(value * 1000)
+        self.sie.init_buffer_time(value * 1000)
+        self.soe.init_buffer_time(value * 1000)
 
     def on_buffer_time_value_changed(self, obj):
         value = obj.get_value()
@@ -331,8 +333,8 @@ class Application(Gtk.Application):
 
         latency_time.set_value(value)
 
-        self.sie.set_latency_time(value * 1000)
-        self.soe.set_latency_time(value * 1000)
+        self.sie.init_latency_time(value * 1000)
+        self.soe.init_latency_time(value * 1000)
 
     def on_latency_time_value_changed(self, obj):
         value = obj.get_value()
@@ -365,8 +367,6 @@ class Application(Gtk.Application):
                                                     self.spectrum
                                                     .on_new_spectrum)
 
-        # we need this when the saved value is equal to the widget default
-        # value
         if show_spectrum:
             self.spectrum.show()
         else:
@@ -432,11 +432,8 @@ class Application(Gtk.Application):
     def on_new_autovolume(self, obj, gain):
         self.setup_sie_limiter.limiter_input_gain.set_value(gain)
 
-    def on_stack_switcher_set_focus_child(self, container, widget):
-        print(container, widget)
-
     def init_panorama(self):
-        value = self.settings.get_value('panorama').unpack()
+        value = self.settings_sie.get_value('panorama').unpack()
 
         self.panorama = self.builder.get_object('panorama')
 
@@ -450,7 +447,7 @@ class Application(Gtk.Application):
         self.sie.set_panorama(value)
 
         out = GLib.Variant('d', value)
-        self.settings.set_value('panorama', out)
+        self.settings_sie.set_value('panorama', out)
 
     def on_reset_all_settings_clicked(self, obj):
         self.settings.reset('buffer-time')
@@ -483,43 +480,84 @@ class Application(Gtk.Application):
 
         dialog.add_filter(file_filter)
 
-    def on_save_user_preset_clicked(self, obj):
-        dialog = Gtk.FileChooserDialog('', self.window,
-                                       Gtk.FileChooserAction.SAVE,
-                                       (Gtk.STOCK_CANCEL,
-                                        Gtk.ResponseType.CANCEL,
-                                        Gtk.STOCK_SAVE, Gtk.ResponseType.OK))
+    def store_sink_inputs_preset(self, config):
+        limiter = self.settings_sie.get_value('limiter-user')
 
-        dialog.set_current_folder(self.user_config_dir)
-        dialog.set_current_name('user.preset')
+        config['apps_limiter'] = {'input gain': str(limiter[0]),
+                                  'limit': str(limiter[1]),
+                                  'release time': str(limiter[2])}
 
-        self.add_file_filter(dialog)
+        panorama = self.settings_sie.get_value('panorama')
 
-        response = dialog.run()
+        config['apps_panorama'] = {'panorama': str(panorama)}
 
-        if response == Gtk.ResponseType.OK:
-            path = dialog.get_filename()
+        compressor = self.settings_sie.get_value('compressor-user')
 
-            if not path.endswith(".preset"):
-                path += ".preset"
+        config['apps_compressor'] = {'rms-peak': str(compressor[0]),
+                                     'attack': str(compressor[1]),
+                                     'release': str(compressor[2]),
+                                     'threshold': str(compressor[3]),
+                                     'ratio': str(compressor[4]),
+                                     'knee': str(compressor[5]),
+                                     'makeup': str(compressor[6])}
 
-            output = open(path, 'w')
+        reverb = self.settings_sie.get_value('reverb-user')
 
-            config = configparser.ConfigParser()
+        config['apps_reverb'] = {'room size': str(reverb[0]),
+                                 'damping': str(reverb[1]),
+                                 'width': str(reverb[2]),
+                                 'level': str(reverb[3])}
 
-            limiter = self.settings.get_value('limiter-user')
+        equalizer_input_gain = self.settings_sie.get_value(
+            'equalizer-input-gain')
+        equalizer_output_gain = self.settings_sie.get_value(
+            'equalizer-output-gain')
+        equalizer = self.settings_sie.get_value('equalizer-user')
+        equalizer_highpass_cutoff = self.settings_sie.get_value(
+            'equalizer-highpass-cutoff')
+        equalizer_highpass_poles = self.settings_sie.get_value(
+            'equalizer-highpass-poles')
+        equalizer_lowpass_cutoff = self.settings_sie.get_value(
+            'equalizer-lowpass-cutoff')
+        equalizer_lowpass_poles = self.settings_sie.get_value(
+            'equalizer-lowpass-poles')
 
-            config['limiter'] = {'input gain': str(limiter[0]),
+        config['apps_equalizer'] = {'input_gain': str(equalizer_input_gain),
+                                    'output_gain': str(equalizer_output_gain),
+                                    'band0': str(equalizer[0]),
+                                    'band1': str(equalizer[1]),
+                                    'band2': str(equalizer[2]),
+                                    'band3': str(equalizer[3]),
+                                    'band4': str(equalizer[4]),
+                                    'band5': str(equalizer[5]),
+                                    'band6': str(equalizer[6]),
+                                    'band7': str(equalizer[7]),
+                                    'band8': str(equalizer[8]),
+                                    'band9': str(equalizer[9]),
+                                    'band10': str(equalizer[10]),
+                                    'band11': str(equalizer[11]),
+                                    'band12': str(equalizer[12]),
+                                    'band13': str(equalizer[13]),
+                                    'band14': str(equalizer[14]),
+                                    'highpass_cutoff':
+                                    str(equalizer_highpass_cutoff),
+                                    'highpass_poles':
+                                    str(equalizer_highpass_poles),
+                                    'lowpass_cutoff':
+                                    str(equalizer_lowpass_cutoff),
+                                    'lowpass_poles':
+                                    str(equalizer_lowpass_poles)}
+
+    def store_source_outputs_preset(self, config):
+        limiter = self.settings_soe.get_value('limiter-user')
+
+        config['mic_limiter'] = {'input gain': str(limiter[0]),
                                  'limit': str(limiter[1]),
                                  'release time': str(limiter[2])}
 
-            panorama = self.settings.get_value('panorama')
+        compressor = self.settings_soe.get_value('compressor-user')
 
-            config['panorama'] = {'panorama': str(panorama)}
-
-            compressor = self.settings.get_value('compressor-user')
-
-            config['compressor'] = {'rms-peak': str(compressor[0]),
+        config['mic_compressor'] = {'rms-peak': str(compressor[0]),
                                     'attack': str(compressor[1]),
                                     'release': str(compressor[2]),
                                     'threshold': str(compressor[3]),
@@ -527,28 +565,28 @@ class Application(Gtk.Application):
                                     'knee': str(compressor[5]),
                                     'makeup': str(compressor[6])}
 
-            reverb = self.settings.get_value('reverb-user')
+        reverb = self.settings_soe.get_value('reverb-user')
 
-            config['reverb'] = {'room size': str(reverb[0]),
+        config['mic_reverb'] = {'room size': str(reverb[0]),
                                 'damping': str(reverb[1]),
                                 'width': str(reverb[2]),
                                 'level': str(reverb[3])}
 
-            equalizer_input_gain = self.settings.get_value(
-                'equalizer-input-gain')
-            equalizer_output_gain = self.settings.get_value(
-                'equalizer-output-gain')
-            equalizer = self.settings.get_value('equalizer-user')
-            equalizer_highpass_cutoff = self.settings.get_value(
-                'equalizer-highpass-cutoff')
-            equalizer_highpass_poles = self.settings.get_value(
-                'equalizer-highpass-poles')
-            equalizer_lowpass_cutoff = self.settings.get_value(
-                'equalizer-lowpass-cutoff')
-            equalizer_lowpass_poles = self.settings.get_value(
-                'equalizer-lowpass-poles')
+        equalizer_input_gain = self.settings_soe.get_value(
+            'equalizer-input-gain')
+        equalizer_output_gain = self.settings_soe.get_value(
+            'equalizer-output-gain')
+        equalizer = self.settings_soe.get_value('equalizer-user')
+        equalizer_highpass_cutoff = self.settings_soe.get_value(
+            'equalizer-highpass-cutoff')
+        equalizer_highpass_poles = self.settings_soe.get_value(
+            'equalizer-highpass-poles')
+        equalizer_lowpass_cutoff = self.settings_soe.get_value(
+            'equalizer-lowpass-cutoff')
+        equalizer_lowpass_poles = self.settings_soe.get_value(
+            'equalizer-lowpass-poles')
 
-            config['equalizer'] = {'input_gain': str(equalizer_input_gain),
+        config['mic_equalizer'] = {'input_gain': str(equalizer_input_gain),
                                    'output_gain': str(equalizer_output_gain),
                                    'band0': str(equalizer[0]),
                                    'band1': str(equalizer[1]),
@@ -574,9 +612,187 @@ class Application(Gtk.Application):
                                    'lowpass_poles':
                                    str(equalizer_lowpass_poles)}
 
+    def on_save_user_preset_clicked(self, obj):
+        dialog = Gtk.FileChooserDialog('', self.window,
+                                       Gtk.FileChooserAction.SAVE,
+                                       (Gtk.STOCK_CANCEL,
+                                        Gtk.ResponseType.CANCEL,
+                                        Gtk.STOCK_SAVE, Gtk.ResponseType.OK))
+
+        dialog.set_current_folder(self.user_config_dir)
+        dialog.set_current_name('user.preset')
+
+        self.add_file_filter(dialog)
+
+        response = dialog.run()
+
+        if response == Gtk.ResponseType.OK:
+            path = dialog.get_filename()
+
+            if not path.endswith(".preset"):
+                path += ".preset"
+
+            output = open(path, 'w')
+
+            config = configparser.ConfigParser()
+
+            self.store_sink_inputs_preset(config)
+            self.store_source_outputs_preset(config)
+
             config.write(output)
 
         dialog.destroy()
+
+    def load_sink_inputs_preset(self, config):
+        limiter = dict(config['apps_limiter']).values()
+        limiter = [float(v) for v in limiter]
+        self.setup_sie_limiter.apply_limiter_preset(limiter)
+
+        panorama_value = config.getfloat('apps_panorama', 'panorama',
+                                         fallback=0.0)
+
+        self.panorama.set_value(panorama_value)
+
+        compressor = dict(config['apps_compressor']).values()
+        compressor = [float(v) for v in compressor]
+        self.setup_sie_compressor.apply_compressor_preset(compressor)
+
+        reverb = dict(config['apps_reverb']).values()
+        reverb = [float(v) for v in reverb]
+        self.setup_sie_reverb.apply_reverb_preset(reverb)
+
+        equalizer_input_gain = config.getfloat('apps_equalizer', 'input_gain',
+                                               fallback=0)
+        equalizer_output_gain = config.getfloat('apps_equalizer',
+                                                'output_gain',
+                                                fallback=0)
+
+        highpass_cutoff_freq = config.getint('apps_equalizer',
+                                             'highpass_cutoff',
+                                             fallback=20)
+        highpass_poles = config.getint('apps_equalizer',
+                                       'highpass_poles',
+                                       fallback=4)
+        lowpass_cutoff_freq = config.getint('apps_equalizer',
+                                            'lowpass_cutoff',
+                                            fallback=20000)
+        lowpass_poles = config.getint('apps_equalizer',
+                                      'lowpass_poles',
+                                      fallback=4)
+
+        equalizer_band0 = config.getfloat('apps_equalizer', 'band0')
+        equalizer_band1 = config.getfloat('apps_equalizer', 'band1')
+        equalizer_band2 = config.getfloat('apps_equalizer', 'band2')
+        equalizer_band3 = config.getfloat('apps_equalizer', 'band3')
+        equalizer_band4 = config.getfloat('apps_equalizer', 'band4')
+        equalizer_band5 = config.getfloat('apps_equalizer', 'band5')
+        equalizer_band6 = config.getfloat('apps_equalizer', 'band6')
+        equalizer_band7 = config.getfloat('apps_equalizer', 'band7')
+        equalizer_band8 = config.getfloat('apps_equalizer', 'band8')
+        equalizer_band9 = config.getfloat('apps_equalizer', 'band9')
+        equalizer_band10 = config.getfloat('apps_equalizer', 'band10')
+        equalizer_band11 = config.getfloat('apps_equalizer', 'band11')
+        equalizer_band12 = config.getfloat('apps_equalizer', 'band12')
+        equalizer_band13 = config.getfloat('apps_equalizer', 'band13')
+        equalizer_band14 = config.getfloat('apps_equalizer', 'band14')
+
+        equalizer_bands = [equalizer_band0, equalizer_band1,
+                           equalizer_band2, equalizer_band3,
+                           equalizer_band4, equalizer_band5,
+                           equalizer_band6, equalizer_band7,
+                           equalizer_band8, equalizer_band9,
+                           equalizer_band10, equalizer_band11,
+                           equalizer_band12,
+                           equalizer_band13, equalizer_band14]
+
+        self.setup_sie_equalizer.equalizer_input_gain.set_value(
+            equalizer_input_gain)
+        self.setup_sie_equalizer.equalizer_output_gain.set_value(
+            equalizer_output_gain)
+
+        self.setup_sie_equalizer.apply_eq_preset(equalizer_bands)
+
+        self.setup_sie_equalizer.eq_highpass_cutoff_freq.set_value(
+            highpass_cutoff_freq)
+        self.setup_sie_equalizer.eq_highpass_poles.set_value(
+            highpass_poles)
+
+        self.setup_sie_equalizer.eq_lowpass_cutoff_freq.set_value(
+            lowpass_cutoff_freq)
+        self.setup_sie_equalizer.eq_lowpass_poles.set_value(lowpass_poles)
+
+    def load_source_outputs_preset(self, config):
+        limiter = dict(config['mic_limiter']).values()
+        limiter = [float(v) for v in limiter]
+        self.setup_soe_limiter.apply_limiter_preset(limiter)
+
+        compressor = dict(config['mic_compressor']).values()
+        compressor = [float(v) for v in compressor]
+        self.setup_soe_compressor.apply_compressor_preset(compressor)
+
+        reverb = dict(config['mic_reverb']).values()
+        reverb = [float(v) for v in reverb]
+        self.setup_soe_reverb.apply_reverb_preset(reverb)
+
+        equalizer_input_gain = config.getfloat('mic_equalizer', 'input_gain',
+                                               fallback=0)
+        equalizer_output_gain = config.getfloat('mic_equalizer',
+                                                'output_gain',
+                                                fallback=0)
+
+        highpass_cutoff_freq = config.getint('mic_equalizer',
+                                             'highpass_cutoff',
+                                             fallback=20)
+        highpass_poles = config.getint('mic_equalizer',
+                                       'highpass_poles',
+                                       fallback=4)
+        lowpass_cutoff_freq = config.getint('mic_equalizer',
+                                            'lowpass_cutoff',
+                                            fallback=20000)
+        lowpass_poles = config.getint('mic_equalizer',
+                                      'lowpass_poles',
+                                      fallback=4)
+
+        equalizer_band0 = config.getfloat('mic_equalizer', 'band0')
+        equalizer_band1 = config.getfloat('mic_equalizer', 'band1')
+        equalizer_band2 = config.getfloat('mic_equalizer', 'band2')
+        equalizer_band3 = config.getfloat('mic_equalizer', 'band3')
+        equalizer_band4 = config.getfloat('mic_equalizer', 'band4')
+        equalizer_band5 = config.getfloat('mic_equalizer', 'band5')
+        equalizer_band6 = config.getfloat('mic_equalizer', 'band6')
+        equalizer_band7 = config.getfloat('mic_equalizer', 'band7')
+        equalizer_band8 = config.getfloat('mic_equalizer', 'band8')
+        equalizer_band9 = config.getfloat('mic_equalizer', 'band9')
+        equalizer_band10 = config.getfloat('mic_equalizer', 'band10')
+        equalizer_band11 = config.getfloat('mic_equalizer', 'band11')
+        equalizer_band12 = config.getfloat('mic_equalizer', 'band12')
+        equalizer_band13 = config.getfloat('mic_equalizer', 'band13')
+        equalizer_band14 = config.getfloat('mic_equalizer', 'band14')
+
+        equalizer_bands = [equalizer_band0, equalizer_band1,
+                           equalizer_band2, equalizer_band3,
+                           equalizer_band4, equalizer_band5,
+                           equalizer_band6, equalizer_band7,
+                           equalizer_band8, equalizer_band9,
+                           equalizer_band10, equalizer_band11,
+                           equalizer_band12,
+                           equalizer_band13, equalizer_band14]
+
+        self.setup_soe_equalizer.equalizer_input_gain.set_value(
+            equalizer_input_gain)
+        self.setup_soe_equalizer.equalizer_output_gain.set_value(
+            equalizer_output_gain)
+
+        self.setup_soe_equalizer.apply_eq_preset(equalizer_bands)
+
+        self.setup_soe_equalizer.eq_highpass_cutoff_freq.set_value(
+            highpass_cutoff_freq)
+        self.setup_soe_equalizer.eq_highpass_poles.set_value(
+            highpass_poles)
+
+        self.setup_soe_equalizer.eq_lowpass_cutoff_freq.set_value(
+            lowpass_cutoff_freq)
+        self.setup_soe_equalizer.eq_lowpass_poles.set_value(lowpass_poles)
 
     def on_load_user_preset_clicked(self, obj):
         dialog = Gtk.FileChooserDialog('', self.window,
@@ -598,81 +814,8 @@ class Application(Gtk.Application):
 
             config.read(path)
 
-            limiter = dict(config['limiter']).values()
-            limiter = [float(v) for v in limiter]
-            self.setup_sie_limiter.apply_limiter_preset(limiter)
-
-            panorama_value = config.getfloat('panorama', 'panorama',
-                                             fallback=0.0)
-
-            self.panorama.set_value(panorama_value)
-
-            compressor = dict(config['compressor']).values()
-            compressor = [float(v) for v in compressor]
-            self.setup_sie_compressor.apply_compressor_preset(compressor)
-
-            reverb = dict(config['reverb']).values()
-            reverb = [float(v) for v in reverb]
-            self.setup_sie_reverb.apply_reverb_preset(reverb)
-
-            equalizer_input_gain = config.getfloat('equalizer', 'input_gain',
-                                                   fallback=0)
-            equalizer_output_gain = config.getfloat('equalizer', 'output_gain',
-                                                    fallback=0)
-
-            highpass_cutoff_freq = config.getint('equalizer',
-                                                 'highpass_cutoff',
-                                                 fallback=20)
-            highpass_poles = config.getint('equalizer',
-                                           'highpass_poles',
-                                           fallback=4)
-            lowpass_cutoff_freq = config.getint('equalizer',
-                                                'lowpass_cutoff',
-                                                fallback=20000)
-            lowpass_poles = config.getint('equalizer',
-                                          'lowpass_poles',
-                                          fallback=4)
-
-            equalizer_band0 = config.getfloat('equalizer', 'band0')
-            equalizer_band1 = config.getfloat('equalizer', 'band1')
-            equalizer_band2 = config.getfloat('equalizer', 'band2')
-            equalizer_band3 = config.getfloat('equalizer', 'band3')
-            equalizer_band4 = config.getfloat('equalizer', 'band4')
-            equalizer_band5 = config.getfloat('equalizer', 'band5')
-            equalizer_band6 = config.getfloat('equalizer', 'band6')
-            equalizer_band7 = config.getfloat('equalizer', 'band7')
-            equalizer_band8 = config.getfloat('equalizer', 'band8')
-            equalizer_band9 = config.getfloat('equalizer', 'band9')
-            equalizer_band10 = config.getfloat('equalizer', 'band10')
-            equalizer_band11 = config.getfloat('equalizer', 'band11')
-            equalizer_band12 = config.getfloat('equalizer', 'band12')
-            equalizer_band13 = config.getfloat('equalizer', 'band13')
-            equalizer_band14 = config.getfloat('equalizer', 'band14')
-
-            equalizer_bands = [equalizer_band0, equalizer_band1,
-                               equalizer_band2, equalizer_band3,
-                               equalizer_band4, equalizer_band5,
-                               equalizer_band6, equalizer_band7,
-                               equalizer_band8, equalizer_band9,
-                               equalizer_band10, equalizer_band11,
-                               equalizer_band12,
-                               equalizer_band13, equalizer_band14]
-
-            self.setup_sie_equalizer.equalizer_input_gain.set_value(
-                equalizer_input_gain)
-            self.setup_sie_equalizer.equalizer_output_gain.set_value(
-                equalizer_output_gain)
-
-            self.setup_sie_equalizer.apply_eq_preset(equalizer_bands)
-
-            self.setup_sie_equalizer.eq_highpass_cutoff_freq.set_value(
-                highpass_cutoff_freq)
-            self.setup_sie_equalizer.eq_highpass_poles.set_value(
-                highpass_poles)
-
-            self.setup_sie_equalizer.eq_lowpass_cutoff_freq.set_value(
-                lowpass_cutoff_freq)
-            self.setup_sie_equalizer.eq_lowpass_poles.set_value(lowpass_poles)
+            self.load_sink_inputs_preset(config)
+            self.load_source_outputs_preset(config)
 
         dialog.destroy()
 
