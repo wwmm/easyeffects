@@ -8,6 +8,7 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gio, GLib, Gtk
 from PulseEffects.list_sink_inputs import ListSinkInputs
+from PulseEffects.list_source_outputs import ListSourceOutputs
 from PulseEffects.pulse_manager import PulseManager
 from PulseEffects.setup_compressor import SetupCompressor
 from PulseEffects.setup_equalizer import SetupEqualizer
@@ -175,6 +176,7 @@ class Application(Gtk.Application):
         self.setup_soe_equalizer.connect_signals()
 
         self.list_sink_inputs.connect_signals()
+        self.list_source_outputs.connect_signals()
 
         self.pm.find_sink_inputs()
         self.pm.find_source_outputs()
@@ -248,8 +250,8 @@ class Application(Gtk.Application):
         self.setup_soe_equalizer = SetupEqualizer(builder, self.soe,
                                                   self.settings)
 
-        # self.list_sink_inputs = ListSinkInputs(self.sink_inputs_builder,
-        #                                        self.sie, self.pm)
+        self.list_source_outputs = ListSourceOutputs(
+            self.source_outputs_builder, self.soe, self.pm)
 
         source_outputs_ui_handlers = {}
 
@@ -257,15 +259,15 @@ class Application(Gtk.Application):
         source_outputs_ui_handlers.update(self.setup_soe_compressor.handlers)
         source_outputs_ui_handlers.update(self.setup_soe_reverb.handlers)
         source_outputs_ui_handlers.update(self.setup_soe_equalizer.handlers)
-        # source_outputs_ui_handlers.update(self.list_sink_inputs.handlers)
+        source_outputs_ui_handlers.update(self.list_source_outputs.handlers)
 
-        self.sink_inputs_builder.connect_signals(source_outputs_ui_handlers)
+        self.source_outputs_builder.connect_signals(source_outputs_ui_handlers)
 
         self.setup_soe_limiter.init()
         self.setup_soe_compressor.init()
         self.setup_soe_reverb.init()
         self.setup_soe_equalizer.init()
-        # self.list_sink_inputs.init()
+        self.list_source_outputs.init()
 
     def init_settings_menu(self):
         button = self.builder.get_object('settings_popover_button')

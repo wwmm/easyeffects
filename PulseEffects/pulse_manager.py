@@ -75,10 +75,11 @@ class PulseManager(GObject.GObject):
 
         # it makes no sense to show some kind of apps. So we blacklist them
         self.app_blacklist = ['PulseEffects', 'pulseeffects', 'gsd-media-keys',
-                              'GNOME Shell', 'libcanberra', 'gnome-pomodoro']
+                              'GNOME Shell', 'libcanberra', 'gnome-pomodoro',
+                              'PulseAudio Volume Control']
 
         self.media_blacklist = ['pulsesink probe', 'bell-window-system',
-                                'audio-volume-change']
+                                'audio-volume-change', 'Peak detect']
 
         # wrapping callbacks
         self.ctx_notify_cb = p.pa_context_notify_cb_t(self.context_notify)
@@ -469,8 +470,6 @@ class PulseManager(GObject.GObject):
                               icon_name, audio_channels, max_volume_linear,
                               rate, resample_method, sample_format, mute,
                               connected]
-
-                print(new_output)
 
                 if user_data == 1:
                     GLib.idle_add(self.emit, 'source_output_added', new_output)
