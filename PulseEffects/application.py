@@ -71,6 +71,7 @@ class Application(Gtk.Application):
         Gtk.Application.do_startup(self)
 
         self.builder = Gtk.Builder()
+        self.sink_inputs_builder = Gtk.Builder()
 
         main_ui_handlers = {
             'on_MainWindow_delete_event': self.on_MainWindow_delete_event,
@@ -80,6 +81,8 @@ class Application(Gtk.Application):
             'on_show_spectrum_state_set': self.on_show_spectrum_state_set,
             'on_spectrum_n_points_value_changed':
                 self.on_spectrum_n_points_value_changed,
+            'on_autovolume_enable_state_set':
+                self.on_autovolume_enable_state_set,
             'on_panorama_value_changed': self.on_panorama_value_changed,
             'on_save_user_preset_clicked': self.on_save_user_preset_clicked,
             'on_load_user_preset_clicked': self.on_load_user_preset_clicked,
@@ -89,6 +92,9 @@ class Application(Gtk.Application):
         self.builder.add_from_file(self.module_path + '/ui/main_ui.glade')
         self.builder.add_from_file(self.module_path + '/ui/headerbar.glade')
 
+        self.sink_inputs_builder.add_from_file(self.module_path +
+                                               '/ui/sink_input_plugins.glade')
+
         headerbar = self.builder.get_object('headerbar')
 
         self.window = self.builder.get_object('MainWindow')
@@ -97,18 +103,21 @@ class Application(Gtk.Application):
 
         self.create_appmenu()
 
-        self.setup_sie_limiter = SetupLimiter(self.builder, self.sie,
-                                              self.settings)
-        self.setup_sie_compressor = SetupCompressor(self.builder, self.sie,
-                                                    self.settings)
-        self.setup_sie_reverb = SetupReverb(self.builder, self.sie,
+        self.setup_sie_limiter = SetupLimiter(self.sink_inputs_builder,
+                                              self.sie, self.settings)
+        self.setup_sie_compressor = SetupCompressor(self.sink_inputs_builder,
+                                                    self.sie, self.settings)
+        self.setup_sie_reverb = SetupReverb(self.sink_inputs_builder, self.sie,
                                             self.settings)
-        self.setup_sie_equalizer = SetupEqualizer(self.builder, self.sie,
-                                                  self.settings)
+        self.setup_sie_equalizer = SetupEqualizer(self.sink_inputs_builder,
+                                                  self.sie, self.settings)
 
-        self.test_signal = TestSignal(self.builder, self.sie)
+        self.test_signal = TestSignal(self.sink_inputs_builder, self.sie)
+
         self.spectrum = Spectrum(self)
-        self.list_sink_inputs = ListSinkInputs(self)
+
+        self.list_sink_inputs = ListSinkInputs(self.sink_inputs_builder,
+                                               self.sie, self.pm)
 
         main_ui_handlers.update(self.setup_sie_limiter.handlers)
         main_ui_handlers.update(self.setup_sie_compressor.handlers)
@@ -129,6 +138,7 @@ class Application(Gtk.Application):
         self.init_settings_menu()
         self.init_buffer_time()
         self.init_latency_time()
+        self.init_autovolume()
         self.init_panorama()
         self.init_spectrum()
 
@@ -142,13 +152,15 @@ class Application(Gtk.Application):
 
         self.ui_initialized = True
 
-        self.pm.find_sink_inputs()
-        self.pm.find_source_outputs()
-
         self.setup_sie_limiter.connect_signals()
         self.setup_sie_compressor.connect_signals()
         self.setup_sie_reverb.connect_signals()
         self.setup_sie_equalizer.connect_signals()
+
+        self.list_sink_inputs.connect_signals()
+
+        self.pm.find_sink_inputs()
+        self.pm.find_source_outputs()
 
         # now that all elements were initialized we set pipeline to ready
         self.sie.set_state('ready')
@@ -272,6 +284,45 @@ class Application(Gtk.Application):
         self.settings.set_value('spectrum-n-points', out)
 
         self.sie.set_spectrum_n_points(value)
+
+    def init_autovolume(self):
+        autovolume_state_obj = self.builder.get_object('autovolume_state')
+
+        autovolume_state = self.settings.get_value('autovolume-state').unpack()
+
+        autovolume_state_obj.set_state(autovolume_state)
+
+        if autovolume_state:
+            self.enable_autovolume(True)
+
+    def enable_autovolume(self, state):
+        self.sie.set_autovolume_state(state)
+
+        if state:
+            self.setup_sie_limiter.limiter_input_gain.set_value(-10)
+            self.setup_sie_limiter.limiter_limit.set_value(-10)
+            self.setup_sie_limiter.limiter_release_time.set_value(2.0)
+
+            self.setup_sie_limiter.limiter_scale_input_gain.set_sensitive(
+                False)
+            self.setup_sie_limiter.limiter_scale_limit.set_sensitive(False)
+            self.setup_sie_limiter.limiter_scale_release_time.set_sensitive(
+                False)
+        else:
+            self.setup_sie_limiter.limiter_input_gain.set_value(-10)
+            self.setup_sie_limiter.limiter_limit.set_value(0)
+            self.setup_sie_limiter.limiter_release_time.set_value(1.0)
+
+            self.setup_sie_limiter.limiter_scale_input_gain.set_sensitive(True)
+            self.setup_sie_limiter.limiter_scale_limit.set_sensitive(True)
+            self.setup_sie_limiter.limiter_scale_release_time.set_sensitive(
+                True)
+
+        out = GLib.Variant('b', state)
+        self.settings.set_value('autovolume-state', out)
+
+    def on_autovolume_enable_state_set(self, obj, state):
+        self.enable_autovolume(state)
 
     def init_panorama(self):
         value = self.settings.get_value('panorama').unpack()

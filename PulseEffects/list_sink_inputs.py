@@ -9,25 +9,25 @@ from gi.repository import Gtk, Pango
 
 class ListSinkInputs():
 
-    def __init__(self, app):
-        self.app = app
-        self.builder = app.builder
-        self.pm = app.pm
-        self.sie = app.sie
+    def __init__(self, app_builder, effects, pulse_manager):
+        self.builder = app_builder
+        self.sie = effects
+        self.pm = pulse_manager
 
         self.changing_sink_input_volume = False
         self.handlers = {}
 
         self.log = logging.getLogger('PulseEffects')
 
-        self.pm.connect('sink_input_added', self.on_sink_input_added)
-        self.pm.connect('sink_input_changed', self.on_sink_input_changed)
-        self.pm.connect('sink_input_removed', self.on_sink_input_removed)
-
         self.apps_box = self.builder.get_object('apps_box')
 
     def init(self):
         pass
+
+    def connect_signals(self):
+        self.pm.connect('sink_input_added', self.on_sink_input_added)
+        self.pm.connect('sink_input_changed', self.on_sink_input_changed)
+        self.pm.connect('sink_input_removed', self.on_sink_input_removed)
 
     def init_sink_input_ui(self, app_box, sink_input_parameters):
         idx = sink_input_parameters[0]
@@ -174,52 +174,49 @@ class ListSinkInputs():
         control_box.pack_end(mute_button, False, False, 0)
 
     def on_sink_input_added(self, obj, sink_input_parameters):
-        if self.app.ui_initialized:
-            app_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL,
-                              spacing=0)
+        app_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL,
+                          spacing=0)
 
-            self.init_sink_input_ui(app_box, sink_input_parameters)
+        self.init_sink_input_ui(app_box, sink_input_parameters)
 
-            self.apps_box.add(app_box)
+        self.apps_box.add(app_box)
 
-            self.apps_box.show_all()
+        self.apps_box.show_all()
 
-            if not self.sie.is_playing:
-                self.sie.set_state('playing')
-                self.log.info('pipeline state: playing')
+        if not self.sie.is_playing:
+            self.sie.set_state('playing')
+            self.log.info('pipeline state: playing')
 
     def on_sink_input_changed(self, obj, sink_input_parameters):
-        if self.app.ui_initialized:
-            idx = sink_input_parameters[0]
+        idx = sink_input_parameters[0]
 
-            children = self.apps_box.get_children()
+        children = self.apps_box.get_children()
 
-            for child in children:
-                child_name = child.get_name()
+        for child in children:
+            child_name = child.get_name()
 
-                if child_name == 'app_box_' + str(idx):
-                    if not self.changing_sink_input_volume:
-                        for c in child.get_children():
-                            child.remove(c)
+            if child_name == 'app_box_' + str(idx):
+                if not self.changing_sink_input_volume:
+                    for c in child.get_children():
+                        child.remove(c)
 
-                        self.init_sink_input_ui(child, sink_input_parameters)
+                    self.init_sink_input_ui(child, sink_input_parameters)
 
-                        self.apps_box.show_all()
+                    self.apps_box.show_all()
 
-                    break
+                break
 
     def on_sink_input_removed(self, obj, idx):
-        if self.app.ui_initialized:
-            children = self.apps_box.get_children()
+        children = self.apps_box.get_children()
 
-            for child in children:
-                child_name = child.get_name()
+        for child in children:
+            child_name = child.get_name()
 
-                if child_name == 'app_box_' + str(idx):
-                    self.apps_box.remove(child)
+            if child_name == 'app_box_' + str(idx):
+                self.apps_box.remove(child)
 
-                    break
+                break
 
-            if len(self.apps_box.get_children()) == 0:
-                self.sie.set_state('paused')
-                self.log.info('pipeline state: paused')
+        if len(self.apps_box.get_children()) == 0:
+            self.sie.set_state('paused')
+            self.log.info('pipeline state: paused')

@@ -21,9 +21,7 @@ class SetupLimiter():
             'on_limiter_limit_value_changed':
                 self.on_limiter_limit_value_changed,
             'on_limiter_release_time_value_changed':
-                self.on_limiter_release_time_value_changed,
-            'on_autovolume_enable_state_set':
-                self.on_autovolume_enable_state_set
+                self.on_limiter_release_time_value_changed
         }
 
         self.limiter_input_gain = self.app_builder.get_object(
@@ -75,21 +73,12 @@ class SetupLimiter():
         self.limiter_user = self.settings.get_value(
             'limiter-user').unpack()
 
-        autovolume_state_obj = self.app_builder.get_object('autovolume_state')
-
-        autovolume_state = self.settings.get_value('autovolume-state').unpack()
-
-        autovolume_state_obj.set_state(autovolume_state)
+        self.apply_limiter_preset(self.limiter_user)
 
         # we need this when saved value is equal to widget default value
-        if autovolume_state:
-            self.enable_autovolume(True)
-        else:
-            self.apply_limiter_preset(self.limiter_user)
-
-            self.effects.set_limiter_input_gain(self.limiter_user[0])
-            self.effects.set_limiter_limit(self.limiter_user[1])
-            self.effects.set_limiter_release_time(self.limiter_user[2])
+        self.effects.set_limiter_input_gain(self.limiter_user[0])
+        self.effects.set_limiter_limit(self.limiter_user[1])
+        self.effects.set_limiter_release_time(self.limiter_user[2])
 
     def connect_signals(self):
         self.effects.connect('new_limiter_input_level',
@@ -134,32 +123,6 @@ class SetupLimiter():
         value = obj.get_value()
         self.effects.set_limiter_release_time(value)
         self.save_limiter_user(2, value)
-
-    def enable_autovolume(self, state):
-        self.effects.set_autovolume_state(state)
-
-        if state:
-            self.limiter_input_gain.set_value(-10)
-            self.limiter_limit.set_value(-10)
-            self.limiter_release_time.set_value(2.0)
-
-            self.limiter_scale_input_gain.set_sensitive(False)
-            self.limiter_scale_limit.set_sensitive(False)
-            self.limiter_scale_release_time.set_sensitive(False)
-        else:
-            self.limiter_input_gain.set_value(-10)
-            self.limiter_limit.set_value(0)
-            self.limiter_release_time.set_value(1.0)
-
-            self.limiter_scale_input_gain.set_sensitive(True)
-            self.limiter_scale_limit.set_sensitive(True)
-            self.limiter_scale_release_time.set_sensitive(True)
-
-        out = GLib.Variant('b', state)
-        self.settings.set_value('autovolume-state', out)
-
-    def on_autovolume_enable_state_set(self, obj, state):
-        self.enable_autovolume(state)
 
     def on_new_limiter_input_level(self, obj, left, right):
         if left >= -99:
