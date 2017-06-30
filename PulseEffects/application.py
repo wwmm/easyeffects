@@ -102,17 +102,31 @@ class Application(Gtk.Application):
 
         # main window notebook
 
-        notebook = self.builder.get_object('effects_notebook')
+        stack_box = self.builder.get_object('stack_box')
+        stack_switcher = self.builder.get_object('stack_switcher')
+
         sink_inputs_ui = self.sink_inputs_builder.get_object(
             'sink_inputs_window')
 
-        notebook.append_page(
-            sink_inputs_ui,
-            Gtk.Image.new_from_icon_name(
-                "help-about",
-                Gtk.IconSize.MENU
-            )
-        )
+        stack = Gtk.Stack()
+        stack.set_transition_type(Gtk.StackTransitionType.CROSSFADE)
+        stack.set_transition_duration(200)
+
+        stack.add_named(sink_inputs_ui, 'sink_inputs')
+
+        stack.child_set_property(sink_inputs_ui, 'icon-name',
+                                 'audio-speakers-symbolic')
+
+        label = Gtk.Label()
+        label.set_markup("<big>A fancy label</big>")
+        stack.add_named(label, "label")
+        stack.child_set_property(label, 'icon-name',
+                                 'audio-input-microphone-symbolic')
+
+        stack_switcher.set_stack(stack)
+
+        stack_box.pack_start(stack, True, True, 0)
+        stack_box.show_all()
 
         self.create_appmenu()
 
@@ -163,11 +177,6 @@ class Application(Gtk.Application):
         self.init_autovolume()
         self.init_panorama()
         self.init_spectrum()
-
-        # label for sink format and rate
-        sink_rate_label = self.builder.get_object('sink_rate')
-        sink_rate_label.set_text(self.pm.default_sink_format + ', ' +
-                                 str(self.pm.default_sink_rate) + ' Hz')
 
     def do_activate(self):
         self.window.present()

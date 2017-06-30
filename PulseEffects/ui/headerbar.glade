@@ -159,12 +159,9 @@
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="sink_rate">
+      <object class="GtkStackSwitcher" id="stack_switcher">
         <property name="visible">True</property>
-        <property name="sensitive">False</property>
         <property name="can_focus">False</property>
-        <property name="valign">center</property>
-        <property name="label">rate</property>
       </object>
       <packing>
         <property name="pack_type">end</property>
