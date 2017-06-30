@@ -50,6 +50,10 @@ Required libraries:
  (Since version 1.4.3 Pulseeffects needs Gstreamer 1.12 or above)
 - swh-plugins from Ladspa
 
+Users upgrading from 1.x to 2.x will have to rebuild their presets. Since
+version 2.0.0PulseEffects uses a different format for saving presets. This
+change was necessary to support presets for microphone processing.
+
 Arch Linux package:
 
 [https://aur.archlinux.org/packages/pulseeffects/](https://aur.archlinux.org/packages/pulseeffects/)
