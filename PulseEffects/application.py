@@ -118,7 +118,7 @@ class Application(Gtk.Application):
                                  'audio-speakers-symbolic')
 
         label = Gtk.Label()
-        label.set_markup("<big>A fancy label</big>")
+        label.set_markup("<big>To do: mic effects control</big>")
         stack.add_named(label, "label")
         stack.child_set_property(label, 'icon-name',
                                  'audio-input-microphone-symbolic')
