@@ -309,6 +309,7 @@ class PulseManager(GObject.GObject):
                 return False
         else:
             self.load_sink_info(name)
+            return True
 
     def load_apps_sink(self):
         self.log.info('loading Pulseeffects applications sink...')

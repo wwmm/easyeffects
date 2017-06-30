@@ -96,6 +96,8 @@ class Application(Gtk.Application):
                 self.on_spectrum_n_points_value_changed,
             'on_autovolume_enable_state_set':
                 self.on_autovolume_enable_state_set,
+            'on_stack_switcher_set_focus_child':
+                self.on_stack_switcher_set_focus_child,
             'on_panorama_value_changed': self.on_panorama_value_changed,
             'on_save_user_preset_clicked': self.on_save_user_preset_clicked,
             'on_load_user_preset_clicked': self.on_load_user_preset_clicked,
@@ -158,11 +160,6 @@ class Application(Gtk.Application):
         self.init_panorama()
         self.init_spectrum()
 
-    def do_activate(self):
-        self.window.present()
-
-        self.ui_initialized = True
-
         self.sie.connect('new_autovolume', self.on_new_autovolume)
 
         self.setup_sie_limiter.connect_signals()
@@ -181,8 +178,13 @@ class Application(Gtk.Application):
         self.pm.find_sink_inputs()
         self.pm.find_source_outputs()
 
-        # now that all elements were initialized we set pipeline to ready
         self.sie.set_state('ready')
+        self.soe.set_state('ready')
+
+    def do_activate(self):
+        self.window.present()
+
+        self.ui_initialized = True
 
     def on_MainWindow_delete_event(self, event, data):
         self.sie.set_state('null')
@@ -293,6 +295,7 @@ class Application(Gtk.Application):
         buffer_time.set_value(value)
 
         self.sie.set_buffer_time(value * 1000)
+        self.soe.set_buffer_time(value * 1000)
 
     def on_buffer_time_value_changed(self, obj):
         value = obj.get_value()
@@ -302,8 +305,10 @@ class Application(Gtk.Application):
 
         if self.ui_initialized:
             self.sie.set_buffer_time(value * 1000)
+            self.soe.set_buffer_time(value * 1000)
         else:
             self.sie.init_buffer_time(value * 1000)
+            self.soe.init_buffer_time(value * 1000)
 
     def init_latency_time(self):
         value = self.settings.get_value('latency-time').unpack()
@@ -313,6 +318,7 @@ class Application(Gtk.Application):
         latency_time.set_value(value)
 
         self.sie.set_latency_time(value * 1000)
+        self.soe.set_latency_time(value * 1000)
 
     def on_latency_time_value_changed(self, obj):
         value = obj.get_value()
@@ -322,8 +328,10 @@ class Application(Gtk.Application):
 
         if self.ui_initialized:
             self.sie.set_latency_time(value * 1000)
+            self.soe.set_latency_time(value * 1000)
         else:
             self.sie.init_latency_time(value * 1000)
+            self.soe.init_latency_time(value * 1000)
 
     def init_spectrum(self):
         show_spectrum_switch = self.builder.get_object('show_spectrum')
@@ -407,6 +415,9 @@ class Application(Gtk.Application):
 
     def on_new_autovolume(self, obj, gain):
         self.setup_sie_limiter.limiter_input_gain.set_value(gain)
+
+    def on_stack_switcher_set_focus_child(self, container, widget):
+        print(container, widget)
 
     def init_panorama(self):
         value = self.settings.get_value('panorama').unpack()
