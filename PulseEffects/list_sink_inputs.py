@@ -185,7 +185,7 @@ class ListSinkInputs():
 
         if not self.sie.is_playing:
             self.sie.set_state('playing')
-            self.log.info('pipeline state: playing')
+            self.log.info('apps pipeline state: playing')
 
     def on_sink_input_changed(self, obj, sink_input_parameters):
         idx = sink_input_parameters[0]
@@ -219,4 +219,4 @@ class ListSinkInputs():
 
         if len(self.apps_box.get_children()) == 0:
             self.sie.set_state('paused')
-            self.log.info('pipeline state: paused')
+            self.log.info('apps pipeline state: paused')

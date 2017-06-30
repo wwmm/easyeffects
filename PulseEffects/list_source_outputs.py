@@ -186,7 +186,7 @@ class ListSourceOutputs():
 
         if not self.soe.is_playing:
             self.soe.set_state('playing')
-            self.log.info('pipeline state: playing')
+            self.log.info('mic pipeline state: playing')
 
     def on_source_output_changed(self, obj, source_output_parameters):
         idx = source_output_parameters[0]
@@ -220,4 +220,4 @@ class ListSourceOutputs():
 
         if len(self.apps_box.get_children()) == 0:
             self.soe.set_state('paused')
-            self.log.info('pipeline state: paused')
+            self.log.info('mic pipeline state: paused')

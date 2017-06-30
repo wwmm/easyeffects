@@ -178,8 +178,12 @@ class PulseManager(GObject.GObject):
     def exit(self):
         self.unload_sinks()
 
+        self.log.warning('sinks unloaded')
+
         p.pa_context_disconnect(self.ctx)
-        p.pa_context_unref(self.ctx)
+
+        # self.log.warning('unferencing pulseaudio context object')
+        # p.pa_context_unref(self.ctx)
 
     def load_sink_info(self, name):
         o = p.pa_context_get_sink_info_by_name(self.ctx, name.encode(),

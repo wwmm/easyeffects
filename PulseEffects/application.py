@@ -129,10 +129,21 @@ class Application(Gtk.Application):
         stack.child_set_property(source_outputs_ui, 'icon-name',
                                  'audio-input-microphone-symbolic')
 
-        def on_stack_visible_child_changed(stack, msg):
-            print(stack, msg)
+        def on_visible_child_changed(stack, visible_child):
+            name = stack.get_visible_child_name()
 
-        stack.connect("notify::visible-child", on_stack_visible_child_changed)
+            if name == 'sink_inputs':
+                self.soe.disconnect(self.spectrum_handler_id)
+                self.spectrum_handler_id = self.sie.connect('new_spectrum',
+                                                            self.spectrum
+                                                            .on_new_spectrum)
+            elif name == 'source_outputs':
+                self.sie.disconnect(self.spectrum_handler_id)
+                self.spectrum_handler_id = self.soe.connect('new_spectrum',
+                                                            self.spectrum
+                                                            .on_new_spectrum)
+
+        stack.connect("notify::visible-child", on_visible_child_changed)
 
         stack_switcher.set_stack(stack)
 
@@ -348,10 +359,11 @@ class Application(Gtk.Application):
         spectrum_n_points_obj.set_value(spectrum_n_points)
 
         self.sie.set_spectrum_n_points(spectrum_n_points)
+        self.soe.set_spectrum_n_points(spectrum_n_points)
 
-        self.sie_spectrum_handler_id = self.sie.connect('new_spectrum',
-                                                        self.spectrum
-                                                        .on_new_spectrum)
+        self.spectrum_handler_id = self.sie.connect('new_spectrum',
+                                                    self.spectrum
+                                                    .on_new_spectrum)
 
         # we need this when the saved value is equal to the widget default
         # value
@@ -376,6 +388,7 @@ class Application(Gtk.Application):
         self.settings.set_value('spectrum-n-points', out)
 
         self.sie.set_spectrum_n_points(value)
+        self.soe.set_spectrum_n_points(value)
 
     def init_autovolume(self):
         autovolume_state_obj = self.builder.get_object('autovolume_state')
