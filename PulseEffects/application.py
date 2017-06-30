@@ -65,7 +65,7 @@ class Application(Gtk.Application):
         # gstreamer sink input effects
 
         self.soe = SourceOutputEffects(self.pm.default_source_rate)
-        self.soe.set_source_monitor_name(self.pm.mic_sink_monitor_name)
+        self.soe.set_source_monitor_name(self.pm.default_source_name)
         self.soe.set_output_sink_name('PulseEffects_mic')
 
         # creating user presets folder
