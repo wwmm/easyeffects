@@ -230,7 +230,7 @@
     <property name="page_increment">0.10000000000000001</property>
     <signal name="value-changed" handler="on_reverb_width_value_changed" swapped="no"/>
   </object>
-  <object class="GtkBox" id="sink_inputs_window">
+  <object class="GtkBox" id="window">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="orientation">vertical</property>

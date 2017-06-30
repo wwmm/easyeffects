@@ -72,11 +72,14 @@ class Application(Gtk.Application):
 
         self.builder = Gtk.Builder()
         self.sink_inputs_builder = Gtk.Builder()
+        self.source_outputs_builder = Gtk.Builder()
 
         self.builder.add_from_file(self.module_path + '/ui/main_ui.glade')
         self.builder.add_from_file(self.module_path + '/ui/headerbar.glade')
         self.sink_inputs_builder.add_from_file(self.module_path +
-                                               '/ui/sink_input_plugins.glade')
+                                               '/ui/sink_inputs_plugins.glade')
+        self.source_outputs_builder.add_from_file(
+            self.module_path + '/ui/source_outputs_plugins.glade')
 
         main_ui_handlers = {
             'on_MainWindow_delete_event': self.on_MainWindow_delete_event,
@@ -100,13 +103,13 @@ class Application(Gtk.Application):
         self.window.set_titlebar(headerbar)
         self.window.set_application(self)
 
-        # main window notebook
+        # main window effects control stack
 
         stack_box = self.builder.get_object('stack_box')
         stack_switcher = self.builder.get_object('stack_switcher')
 
-        sink_inputs_ui = self.sink_inputs_builder.get_object(
-            'sink_inputs_window')
+        sink_inputs_ui = self.sink_inputs_builder.get_object('window')
+        source_outputs_ui = self.source_outputs_builder.get_object('window')
 
         stack = Gtk.Stack()
         stack.set_transition_type(Gtk.StackTransitionType.CROSSFADE)
@@ -117,10 +120,8 @@ class Application(Gtk.Application):
         stack.child_set_property(sink_inputs_ui, 'icon-name',
                                  'audio-speakers-symbolic')
 
-        label = Gtk.Label()
-        label.set_markup("<big>To do: mic effects control</big>")
-        stack.add_named(label, "label")
-        stack.child_set_property(label, 'icon-name',
+        stack.add_named(source_outputs_ui, "source_outputs")
+        stack.child_set_property(source_outputs_ui, 'icon-name',
                                  'audio-input-microphone-symbolic')
 
         stack_switcher.set_stack(stack)
@@ -138,8 +139,63 @@ class Application(Gtk.Application):
 
         self.builder.connect_signals(main_ui_handlers)
 
-        # setting up sink input widgets
+        # setup sink inputs and source outputs widgets
 
+        self.init_sink_inputs_widgets()
+        self.init_source_outputs_widgets()
+
+        # other initializations
+
+        self.init_settings_menu()
+        self.init_buffer_time()
+        self.init_latency_time()
+        self.init_autovolume()
+        self.init_panorama()
+        self.init_spectrum()
+
+    def do_activate(self):
+        self.window.present()
+
+        self.ui_initialized = True
+
+        self.setup_sie_limiter.connect_signals()
+        self.setup_sie_compressor.connect_signals()
+        self.setup_sie_reverb.connect_signals()
+        self.setup_sie_equalizer.connect_signals()
+
+        self.list_sink_inputs.connect_signals()
+
+        self.pm.find_sink_inputs()
+        self.pm.find_source_outputs()
+
+        # now that all elements were initialized we set pipeline to ready
+        self.sie.set_state('ready')
+
+    def on_MainWindow_delete_event(self, event, data):
+        self.sie.set_state('null')
+        self.soe.set_state('null')
+
+        self.pm.exit()
+
+        self.quit()
+
+    def create_appmenu(self):
+        menu = Gio.Menu()
+
+        menu.append('About', 'app.about')
+        menu.append('Quit', 'app.quit')
+
+        self.set_app_menu(menu)
+
+        about_action = Gio.SimpleAction.new('about', None)
+        about_action.connect('activate', self.onAbout)
+        self.add_action(about_action)
+
+        quit_action = Gio.SimpleAction.new('quit', None)
+        quit_action.connect('activate', self.on_MainWindow_delete_event)
+        self.add_action(quit_action)
+
+    def init_sink_inputs_widgets(self):
         self.setup_sie_limiter = SetupLimiter(self.sink_inputs_builder,
                                               self.sie, self.settings)
         self.setup_sie_compressor = SetupCompressor(self.sink_inputs_builder,
@@ -171,53 +227,34 @@ class Application(Gtk.Application):
         self.test_signal.init()
         self.list_sink_inputs.init()
 
-        self.init_settings_menu()
-        self.init_buffer_time()
-        self.init_latency_time()
-        self.init_autovolume()
-        self.init_panorama()
-        self.init_spectrum()
+    def init_source_outputs_widgets(self):
+        builder = self.source_outputs_builder
 
-    def do_activate(self):
-        self.window.present()
+        self.setup_soe_limiter = SetupLimiter(builder, self.soe, self.settings)
+        self.setup_soe_compressor = SetupCompressor(builder, self.soe,
+                                                    self.settings)
+        self.setup_soe_reverb = SetupReverb(builder, self.soe, self.settings)
+        self.setup_soe_equalizer = SetupEqualizer(builder, self.soe,
+                                                  self.settings)
 
-        self.ui_initialized = True
+        # self.list_sink_inputs = ListSinkInputs(self.sink_inputs_builder,
+        #                                        self.sie, self.pm)
 
-        self.setup_sie_limiter.connect_signals()
-        self.setup_sie_compressor.connect_signals()
-        self.setup_sie_reverb.connect_signals()
-        self.setup_sie_equalizer.connect_signals()
+        source_outputs_ui_handlers = {}
 
-        self.list_sink_inputs.connect_signals()
+        source_outputs_ui_handlers.update(self.setup_soe_limiter.handlers)
+        source_outputs_ui_handlers.update(self.setup_soe_compressor.handlers)
+        source_outputs_ui_handlers.update(self.setup_soe_reverb.handlers)
+        source_outputs_ui_handlers.update(self.setup_soe_equalizer.handlers)
+        # source_outputs_ui_handlers.update(self.list_sink_inputs.handlers)
 
-        self.pm.find_sink_inputs()
-        self.pm.find_source_outputs()
+        self.sink_inputs_builder.connect_signals(source_outputs_ui_handlers)
 
-        # now that all elements were initialized we set pipeline to ready
-        self.sie.set_state('ready')
-
-    def on_MainWindow_delete_event(self, event, data):
-        self.sie.set_state('null')
-
-        self.pm.exit()
-
-        self.quit()
-
-    def create_appmenu(self):
-        menu = Gio.Menu()
-
-        menu.append('About', 'app.about')
-        menu.append('Quit', 'app.quit')
-
-        self.set_app_menu(menu)
-
-        about_action = Gio.SimpleAction.new('about', None)
-        about_action.connect('activate', self.onAbout)
-        self.add_action(about_action)
-
-        quit_action = Gio.SimpleAction.new('quit', None)
-        quit_action.connect('activate', self.on_MainWindow_delete_event)
-        self.add_action(quit_action)
+        self.setup_soe_limiter.init()
+        self.setup_soe_compressor.init()
+        self.setup_soe_reverb.init()
+        self.setup_soe_equalizer.init()
+        # self.list_sink_inputs.init()
 
     def init_settings_menu(self):
         button = self.builder.get_object('settings_popover_button')
