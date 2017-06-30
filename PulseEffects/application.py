@@ -43,6 +43,10 @@ class Application(Gtk.Application):
         self.log = logging.getLogger('PulseEffects')
 
         self.settings = Gio.Settings('com.github.wwmm.pulseeffects')
+        self.settings_sie = Gio.Settings(
+            'com.github.wwmm.pulseeffects.sinkinputs')
+        self.settings_soe = Gio.Settings(
+            'com.github.wwmm.pulseeffects.sourceoutputs')
 
         # pulseaudio
 
@@ -158,10 +162,17 @@ class Application(Gtk.Application):
 
         self.ui_initialized = True
 
+        self.sie.connect('new_autovolume', self.on_new_autovolume)
+
         self.setup_sie_limiter.connect_signals()
         self.setup_sie_compressor.connect_signals()
         self.setup_sie_reverb.connect_signals()
         self.setup_sie_equalizer.connect_signals()
+
+        self.setup_soe_limiter.connect_signals()
+        self.setup_soe_compressor.connect_signals()
+        self.setup_soe_reverb.connect_signals()
+        self.setup_soe_equalizer.connect_signals()
 
         self.list_sink_inputs.connect_signals()
 
@@ -392,6 +403,9 @@ class Application(Gtk.Application):
     def on_autovolume_enable_state_set(self, obj, state):
         self.enable_autovolume(state)
 
+    def on_new_autovolume(self, obj, gain):
+        self.setup_sie_limiter.limiter_input_gain.set_value(gain)
+
     def init_panorama(self):
         value = self.settings.get_value('panorama').unpack()
 
@@ -412,12 +426,14 @@ class Application(Gtk.Application):
     def on_reset_all_settings_clicked(self, obj):
         self.settings.reset('buffer-time')
         self.settings.reset('latency-time')
+        self.settings.reset('autovolume-state')
         self.settings.reset('panorama')
         self.settings.reset('show-spectrum')
         self.settings.reset('spectrum-n-points')
 
         self.init_buffer_time()
         self.init_latency_time()
+        self.init_autovolume()
         self.init_panorama()
         self.init_spectrum()
 
@@ -425,6 +441,11 @@ class Application(Gtk.Application):
         self.setup_sie_compressor.reset()
         self.setup_sie_reverb.reset()
         self.setup_sie_equalizer.reset()
+
+        self.setup_soe_limiter.reset()
+        self.setup_soe_compressor.reset()
+        self.setup_soe_reverb.reset()
+        self.setup_soe_equalizer.reset()
 
     def add_file_filter(self, dialog):
         file_filter = Gtk.FileFilter()

@@ -87,7 +87,6 @@ class SetupLimiter():
                              self.on_new_limiter_output_level)
         self.effects.connect('new_limiter_attenuation',
                              self.on_new_limiter_attenuation)
-        self.effects.connect('new_autovolume', self.on_new_autovolume)
 
     def apply_limiter_preset(self, values):
         self.limiter_input_gain.set_value(values[0])
@@ -165,9 +164,6 @@ class SetupLimiter():
         self.limiter_attenuation_level_label.set_text(
             str(round(attenuation)))
 
-    def on_new_autovolume(self, obj, gain):
-        self.limiter_input_gain.set_value(gain)
-
     def init_menu(self):
         builder = Gtk.Builder()
 
@@ -196,6 +192,5 @@ class SetupLimiter():
 
     def reset(self):
         self.settings.reset('limiter-user')
-        self.settings.reset('autovolume-state')
 
         self.init()
