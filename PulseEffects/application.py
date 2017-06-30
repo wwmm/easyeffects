@@ -73,6 +73,11 @@ class Application(Gtk.Application):
         self.builder = Gtk.Builder()
         self.sink_inputs_builder = Gtk.Builder()
 
+        self.builder.add_from_file(self.module_path + '/ui/main_ui.glade')
+        self.builder.add_from_file(self.module_path + '/ui/headerbar.glade')
+        self.sink_inputs_builder.add_from_file(self.module_path +
+                                               '/ui/sink_input_plugins.glade')
+
         main_ui_handlers = {
             'on_MainWindow_delete_event': self.on_MainWindow_delete_event,
             'on_buffer_time_value_changed': self.on_buffer_time_value_changed,
@@ -89,19 +94,37 @@ class Application(Gtk.Application):
             'on_reset_all_settings_clicked': self.on_reset_all_settings_clicked
         }
 
-        self.builder.add_from_file(self.module_path + '/ui/main_ui.glade')
-        self.builder.add_from_file(self.module_path + '/ui/headerbar.glade')
-
-        self.sink_inputs_builder.add_from_file(self.module_path +
-                                               '/ui/sink_input_plugins.glade')
-
         headerbar = self.builder.get_object('headerbar')
 
         self.window = self.builder.get_object('MainWindow')
         self.window.set_titlebar(headerbar)
         self.window.set_application(self)
 
+        # main window notebook
+
+        notebook = self.builder.get_object('effects_notebook')
+        sink_inputs_ui = self.sink_inputs_builder.get_object(
+            'sink_inputs_window')
+
+        notebook.append_page(
+            sink_inputs_ui,
+            Gtk.Image.new_from_icon_name(
+                "help-about",
+                Gtk.IconSize.MENU
+            )
+        )
+
         self.create_appmenu()
+
+        # main window handlers
+
+        self.spectrum = Spectrum(self)
+
+        main_ui_handlers.update(self.spectrum.handlers)
+
+        self.builder.connect_signals(main_ui_handlers)
+
+        # setting up sink input widgets
 
         self.setup_sie_limiter = SetupLimiter(self.sink_inputs_builder,
                                               self.sie, self.settings)
@@ -114,19 +137,18 @@ class Application(Gtk.Application):
 
         self.test_signal = TestSignal(self.sink_inputs_builder, self.sie)
 
-        self.spectrum = Spectrum(self)
-
         self.list_sink_inputs = ListSinkInputs(self.sink_inputs_builder,
                                                self.sie, self.pm)
 
-        main_ui_handlers.update(self.setup_sie_limiter.handlers)
-        main_ui_handlers.update(self.setup_sie_compressor.handlers)
-        main_ui_handlers.update(self.setup_sie_reverb.handlers)
-        main_ui_handlers.update(self.setup_sie_equalizer.handlers)
-        main_ui_handlers.update(self.spectrum.handlers)
-        main_ui_handlers.update(self.list_sink_inputs.handlers)
+        sink_input_ui_handlers = {}
 
-        self.builder.connect_signals(main_ui_handlers)
+        sink_input_ui_handlers.update(self.setup_sie_limiter.handlers)
+        sink_input_ui_handlers.update(self.setup_sie_compressor.handlers)
+        sink_input_ui_handlers.update(self.setup_sie_reverb.handlers)
+        sink_input_ui_handlers.update(self.setup_sie_equalizer.handlers)
+        sink_input_ui_handlers.update(self.list_sink_inputs.handlers)
+
+        self.sink_inputs_builder.connect_signals(sink_input_ui_handlers)
 
         self.setup_sie_limiter.init()
         self.setup_sie_compressor.init()
