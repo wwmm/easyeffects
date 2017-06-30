@@ -7,7 +7,7 @@ Pulseaudio applications
 ![](images/pulseeffects_eq_menu.png)
 ![](images/pulseeffects_reverb_menu.png)
 
-Effects order:
+Order of effects applied to applications output:
 
 1. Input Limiter (Ladspa Fast Lookahead Limiter)
 2. Auto Volume
@@ -21,6 +21,20 @@ Effects order:
 10. Equalizer Output Gain (Gstreamer volume)
 11. Output Limiter (Ladspa Fast Lookahead Limiter)
 12. Spectrum Analyzer (Gstreamer)
+
+Since version 2.0.0 PulseEffects is capable of applying effects to microphone
+output at the same time it applies them for applications output:
+
+1. Input Limiter (Ladspa Fast Lookahead Limiter)
+2. Compressor (Ladspa SC4)
+3. Freeverb (Gstreamer)
+4. Equalizer Input Gain (Gstreamer volume)
+5. Butterworth Highpass filter (Gstreamer audiocheblimit)
+6. Butterworth Lowpass filter (Gstreamer audiocheblimit)
+7. 15 bands Equalizer (Gstreamer)
+8. Equalizer Output Gain (Gstreamer volume)
+9. Output Limiter (Ladspa Fast Lookahead Limiter)
+10. Spectrum Analyzer (Gstreamer)
 
 Required libraries:
 
