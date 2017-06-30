@@ -96,8 +96,6 @@ class Application(Gtk.Application):
                 self.on_spectrum_n_points_value_changed,
             'on_autovolume_enable_state_set':
                 self.on_autovolume_enable_state_set,
-            'on_stack_switcher_set_focus_child':
-                self.on_stack_switcher_set_focus_child,
             'on_panorama_value_changed': self.on_panorama_value_changed,
             'on_save_user_preset_clicked': self.on_save_user_preset_clicked,
             'on_load_user_preset_clicked': self.on_load_user_preset_clicked,
@@ -130,6 +128,11 @@ class Application(Gtk.Application):
         stack.add_named(source_outputs_ui, "source_outputs")
         stack.child_set_property(source_outputs_ui, 'icon-name',
                                  'audio-input-microphone-symbolic')
+
+        def on_stack_visible_child_changed(stack, msg):
+            print(stack, msg)
+
+        stack.connect("notify::visible-child", on_stack_visible_child_changed)
 
         stack_switcher.set_stack(stack)
 

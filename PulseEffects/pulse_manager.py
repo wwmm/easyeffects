@@ -223,9 +223,9 @@ class PulseManager(GObject.GObject):
     def get_default_source_info(self):
         self.load_source_info(self.default_source_name)
 
-        self.default_source_rate = self.sink_rate
-        self.default_source_idx = self.sink_idx
-        self.default_source_format = self.sink_format
+        self.default_source_rate = self.source_rate
+        self.default_source_idx = self.source_idx
+        self.default_source_format = self.source_format
 
         self.log.info('default pulseaudio source audio format: ' +
                       str(self.default_source_format))
