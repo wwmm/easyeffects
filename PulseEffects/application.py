@@ -89,6 +89,20 @@ class Application(Gtk.Application):
         self.source_outputs_builder.add_from_file(
             self.module_path + '/ui/source_outputs_plugins.glade')
 
+        headerbar = self.builder.get_object('headerbar')
+
+        self.window = self.builder.get_object('MainWindow')
+        self.window.set_titlebar(headerbar)
+        self.window.set_application(self)
+
+        # app menu
+
+        self.create_appmenu()
+
+        # main window handlers
+
+        self.spectrum = Spectrum(self)
+
         main_ui_handlers = {
             'on_MainWindow_delete_event': self.on_MainWindow_delete_event,
             'on_buffer_time_value_changed': self.on_buffer_time_value_changed,
@@ -105,14 +119,75 @@ class Application(Gtk.Application):
             'on_reset_all_settings_clicked': self.on_reset_all_settings_clicked
         }
 
-        headerbar = self.builder.get_object('headerbar')
+        main_ui_handlers.update(self.spectrum.handlers)
 
-        self.window = self.builder.get_object('MainWindow')
-        self.window.set_titlebar(headerbar)
-        self.window.set_application(self)
+        self.builder.connect_signals(main_ui_handlers)
 
-        # main window effects control stack
+        # main window widgets initialization
 
+        self.init_settings_menu()
+        self.init_buffer_time()
+        self.init_latency_time()
+        self.init_panorama()
+        self.init_spectrum()
+        self.init_sink_inputs_widgets()
+        self.init_autovolume()  # nust be after init_sink_inputs_widgets
+        self.init_source_outputs_widgets()
+        self.init_stack()
+
+        # connecting signals
+
+        self.sie.connect('new_autovolume', self.on_new_autovolume)
+
+        self.setup_sie_limiter.connect_signals()
+        self.setup_sie_compressor.connect_signals()
+        self.setup_sie_reverb.connect_signals()
+        self.setup_sie_equalizer.connect_signals()
+
+        self.setup_soe_limiter.connect_signals()
+        self.setup_soe_compressor.connect_signals()
+        self.setup_soe_reverb.connect_signals()
+        self.setup_soe_equalizer.connect_signals()
+
+        self.list_sink_inputs.connect_signals()
+        self.list_source_outputs.connect_signals()
+
+        # now that signals are connected we search for apps and add them to the
+        # main window
+
+        self.pm.find_sink_inputs()
+        self.pm.find_source_outputs()
+
+    def do_activate(self):
+        self.window.present()
+
+        self.ui_initialized = True
+
+    def on_MainWindow_delete_event(self, event, data):
+        self.sie.set_state('null')
+        self.soe.set_state('null')
+
+        self.pm.exit()
+
+        self.quit()
+
+    def create_appmenu(self):
+        menu = Gio.Menu()
+
+        menu.append('About', 'app.about')
+        menu.append('Quit', 'app.quit')
+
+        self.set_app_menu(menu)
+
+        about_action = Gio.SimpleAction.new('about', None)
+        about_action.connect('activate', self.onAbout)
+        self.add_action(about_action)
+
+        quit_action = Gio.SimpleAction.new('quit', None)
+        quit_action.connect('activate', self.on_MainWindow_delete_event)
+        self.add_action(quit_action)
+
+    def init_stack(self):
         stack_switcher = self.builder.get_object('stack_switcher')
         stack_box = self.builder.get_object('stack_box')
 
@@ -154,77 +229,6 @@ class Application(Gtk.Application):
 
         stack_box.pack_start(stack, True, True, 0)
         stack_box.show_all()
-
-        self.create_appmenu()
-
-        # main window handlers
-
-        self.spectrum = Spectrum(self)
-
-        main_ui_handlers.update(self.spectrum.handlers)
-
-        self.builder.connect_signals(main_ui_handlers)
-
-        # setup sink inputs and source outputs widgets
-
-        self.init_sink_inputs_widgets()
-        self.init_source_outputs_widgets()
-
-        # other initializations
-
-        self.init_settings_menu()
-        self.init_buffer_time()
-        self.init_latency_time()
-        self.init_autovolume()
-        self.init_panorama()
-        self.init_spectrum()
-
-        self.sie.connect('new_autovolume', self.on_new_autovolume)
-
-        self.setup_sie_limiter.connect_signals()
-        self.setup_sie_compressor.connect_signals()
-        self.setup_sie_reverb.connect_signals()
-        self.setup_sie_equalizer.connect_signals()
-
-        self.setup_soe_limiter.connect_signals()
-        self.setup_soe_compressor.connect_signals()
-        self.setup_soe_reverb.connect_signals()
-        self.setup_soe_equalizer.connect_signals()
-
-        self.list_sink_inputs.connect_signals()
-        self.list_source_outputs.connect_signals()
-
-        self.pm.find_sink_inputs()
-        self.pm.find_source_outputs()
-
-    def do_activate(self):
-        self.window.present()
-
-        self.ui_initialized = True
-
-    def on_MainWindow_delete_event(self, event, data):
-        self.sie.set_state('null')
-        self.soe.set_state('null')
-
-        self.pm.exit()
-
-        self.quit()
-
-    def create_appmenu(self):
-        menu = Gio.Menu()
-
-        menu.append('About', 'app.about')
-        menu.append('Quit', 'app.quit')
-
-        self.set_app_menu(menu)
-
-        about_action = Gio.SimpleAction.new('about', None)
-        about_action.connect('activate', self.onAbout)
-        self.add_action(about_action)
-
-        quit_action = Gio.SimpleAction.new('quit', None)
-        quit_action.connect('activate', self.on_MainWindow_delete_event)
-        self.add_action(quit_action)
 
     def init_sink_inputs_widgets(self):
         self.setup_sie_limiter = SetupLimiter(self.sink_inputs_builder,
