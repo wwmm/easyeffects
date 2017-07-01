@@ -180,6 +180,7 @@ class PulseManager(GObject.GObject):
 
         self.log.info('sinks unloaded')
 
+        self.log.info('disconnecting pulseaudio context')
         p.pa_context_disconnect(self.ctx)
 
         self.log.info('unferencing pulseaudio context object')

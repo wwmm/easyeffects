@@ -67,6 +67,10 @@ class Application(Gtk.Application):
         self.soe.set_source_monitor_name(self.pm.default_source_name)
         self.soe.set_output_sink_name('PulseEffects_mic')
 
+        # putting pipelines in the ready state
+        self.sie.set_state('ready')
+        self.soe.set_state('ready')
+
         # creating user presets folder
         self.user_config_dir = os.path.expanduser('~/.config/PulseEffects')
         os.makedirs(self.user_config_dir, exist_ok=True)
@@ -109,8 +113,8 @@ class Application(Gtk.Application):
 
         # main window effects control stack
 
-        stack_box = self.builder.get_object('stack_box')
         stack_switcher = self.builder.get_object('stack_switcher')
+        stack_box = self.builder.get_object('stack_box')
 
         sink_inputs_ui = self.sink_inputs_builder.get_object('window')
         source_outputs_ui = self.source_outputs_builder.get_object('window')
@@ -189,9 +193,6 @@ class Application(Gtk.Application):
 
         self.list_sink_inputs.connect_signals()
         self.list_source_outputs.connect_signals()
-
-        self.sie.set_state('ready')
-        self.soe.set_state('ready')
 
         self.pm.find_sink_inputs()
         self.pm.find_source_outputs()
