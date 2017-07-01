@@ -173,17 +173,23 @@ class PulseManager(GObject.GObject):
             self.log.critical('failed to start pulseaudio context')
 
         elif state == p.PA_CONTEXT_TERMINATED:
-            self.log.warning('pulseaudio context terminated')
+            self.log.info('pulseaudio context terminated')
 
     def exit(self):
         self.unload_sinks()
 
-        self.log.warning('sinks unloaded')
+        self.log.info('sinks unloaded')
 
         p.pa_context_disconnect(self.ctx)
 
-        # self.log.warning('unferencing pulseaudio context object')
-        # p.pa_context_unref(self.ctx)
+        self.log.info('unferencing pulseaudio context object')
+        p.pa_context_unref(self.ctx)
+
+        self.log.info('stopping pulseaudio threaded main loop')
+        p.pa_threaded_mainloop_stop(self.main_loop)
+
+        self.log.info('freeing pulseaudio main loop object')
+        p.pa_threaded_mainloop_free(self.main_loop)
 
     def load_sink_info(self, name):
         o = p.pa_context_get_sink_info_by_name(self.ctx, name.encode(),

@@ -275,6 +275,10 @@ pa_threaded_mainloop_new = lib.pa_threaded_mainloop_new
 pa_threaded_mainloop_new.restype = POINTER(pa_threaded_mainloop)
 pa_threaded_mainloop_new.argtypes = []
 
+pa_threaded_mainloop_free = lib.pa_threaded_mainloop_free
+pa_threaded_mainloop_free.restype = None
+pa_threaded_mainloop_free.argtypes = [POINTER(pa_threaded_mainloop)]
+
 pa_threaded_mainloop_get_api = lib.pa_threaded_mainloop_get_api
 pa_threaded_mainloop_get_api.restype = POINTER(pa_mainloop_api)
 pa_threaded_mainloop_get_api.argtypes = [POINTER(pa_threaded_mainloop)]
