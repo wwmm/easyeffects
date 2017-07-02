@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.20.0 -->
 <interface domain="PulseEffects">
-  <requires lib="gtk+" version="3.20"/>
+  <requires lib="gtk+" version="3.18"/>
   <object class="GtkApplicationWindow" id="MainWindow">
     <property name="can_focus">False</property>
     <signal name="delete-event" handler="on_MainWindow_delete_event" swapped="no"/>
