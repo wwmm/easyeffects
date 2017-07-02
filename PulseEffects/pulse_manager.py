@@ -183,11 +183,11 @@ class PulseManager(GObject.GObject):
         self.log.info('disconnecting pulseaudio context')
         p.pa_context_disconnect(self.ctx)
 
-        self.log.info('unferencing pulseaudio context object')
-        p.pa_context_unref(self.ctx)
-
         self.log.info('stopping pulseaudio threaded main loop')
         p.pa_threaded_mainloop_stop(self.main_loop)
+
+        self.log.info('unferencing pulseaudio context object')
+        p.pa_context_unref(self.ctx)
 
         self.log.info('freeing pulseaudio main loop object')
         p.pa_threaded_mainloop_free(self.main_loop)

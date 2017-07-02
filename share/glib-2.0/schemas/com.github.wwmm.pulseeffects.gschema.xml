@@ -16,5 +16,8 @@
         <key name="autovolume-state" type="b">
           <default>false</default>
         </key>
+        <key name="use-dark-theme" type="b">
+          <default>false</default>
+        </key>
     </schema>
 </schemalist>

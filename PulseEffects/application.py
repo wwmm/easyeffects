@@ -31,6 +31,8 @@ class Application(Gtk.Application):
 
         Gtk.Application.__init__(self, application_id=app_id)
 
+        self.gtk_settings = Gtk.Settings.get_default()
+
         self.ui_initialized = False
         self.module_path = os.path.dirname(__file__)
 
@@ -116,6 +118,7 @@ class Application(Gtk.Application):
             'on_panorama_value_changed': self.on_panorama_value_changed,
             'on_save_user_preset_clicked': self.on_save_user_preset_clicked,
             'on_load_user_preset_clicked': self.on_load_user_preset_clicked,
+            'on_theme_switch_state_set': self.on_theme_switch_state_set,
             'on_reset_all_settings_clicked': self.on_reset_all_settings_clicked
         }
 
@@ -125,19 +128,23 @@ class Application(Gtk.Application):
 
         # main window widgets initialization
 
+        self.init_theme()
         self.init_settings_menu()
         self.init_buffer_time()
         self.init_latency_time()
         self.init_panorama()
         self.init_spectrum()
         self.init_sink_inputs_widgets()
-        self.init_autovolume()  # nust be after init_sink_inputs_widgets
+        self.init_autovolume()  # must be after init_sink_inputs_widgets
         self.init_source_outputs_widgets()
         self.init_stack()
 
         # connecting signals
 
         self.sie.connect('new_autovolume', self.on_new_autovolume)
+        self.spectrum_handler_id = self.sie.connect('new_spectrum',
+                                                    self.spectrum
+                                                    .on_new_spectrum)
 
         self.setup_sie_limiter.connect_signals()
         self.setup_sie_compressor.connect_signals()
@@ -186,6 +193,19 @@ class Application(Gtk.Application):
         quit_action = Gio.SimpleAction.new('quit', None)
         quit_action.connect('activate', self.on_MainWindow_delete_event)
         self.add_action(quit_action)
+
+    def init_theme(self):
+        switch = self.builder.get_object('theme_switch')
+
+        use_dark = self.settings.get_value('use-dark-theme').unpack()
+
+        switch.set_active(use_dark)
+
+    def on_theme_switch_state_set(self, obj, state):
+        self.gtk_settings.props.gtk_application_prefer_dark_theme = state
+
+        out = GLib.Variant('b', state)
+        self.settings.set_value('use-dark-theme', out)
 
     def init_stack(self):
         stack_switcher = self.builder.get_object('stack_switcher')
@@ -370,10 +390,6 @@ class Application(Gtk.Application):
         self.sie.set_spectrum_n_points(spectrum_n_points)
         self.soe.set_spectrum_n_points(spectrum_n_points)
 
-        self.spectrum_handler_id = self.sie.connect('new_spectrum',
-                                                    self.spectrum
-                                                    .on_new_spectrum)
-
         if show_spectrum:
             self.spectrum.show()
         else:
@@ -463,7 +479,9 @@ class Application(Gtk.Application):
         self.settings.reset('panorama')
         self.settings.reset('show-spectrum')
         self.settings.reset('spectrum-n-points')
+        self.settings.reset('use-dark-theme')
 
+        self.init_theme()
         self.init_buffer_time()
         self.init_latency_time()
         self.init_autovolume()
