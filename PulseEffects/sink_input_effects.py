@@ -250,6 +250,7 @@ class SinkInputEffects(GObject.GObject):
                 return False
             else:
                 self.is_playing = False
+                self.log.info('apps pipeline state: ready')
                 return True
         elif state == 'paused':
             s = self.pipeline.set_state(Gst.State.PAUSED)
@@ -259,6 +260,7 @@ class SinkInputEffects(GObject.GObject):
                 return False
             else:
                 self.is_playing = False
+                self.log.info('apps pipeline state: paused')
                 return True
         elif state == 'playing':
             s = self.pipeline.set_state(Gst.State.PLAYING)
@@ -268,6 +270,7 @@ class SinkInputEffects(GObject.GObject):
                 return False
             else:
                 self.is_playing = True
+                self.log.info('apps pipeline state: playing')
                 return True
         elif state == 'null':
             s = self.pipeline.set_state(Gst.State.NULL)
@@ -277,6 +280,7 @@ class SinkInputEffects(GObject.GObject):
                 return False
             else:
                 self.is_playing = False
+                self.log.info('apps pipeline state: null')
                 return True
 
     def calc_spectrum_freqs(self):

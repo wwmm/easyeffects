@@ -261,10 +261,11 @@ class Application(Gtk.Application):
         self.setup_sie_equalizer = SetupEqualizer(self.sink_inputs_builder,
                                                   self.sie, self.settings_sie)
 
-        self.test_signal = TestSignal(self.sink_inputs_builder, self.sie)
-
         self.list_sink_inputs = ListSinkInputs(self.sink_inputs_builder,
                                                self.sie, self.pm)
+
+        self.test_signal = TestSignal(self.sink_inputs_builder, self.sie,
+                                      self.list_sink_inputs)
 
         sink_input_ui_handlers = {}
 

@@ -216,6 +216,7 @@ class SourceOutputEffects(GObject.GObject):
                 return False
             else:
                 self.is_playing = False
+                self.log.info('mic pipeline state: ready')
                 return True
         elif state == 'paused':
             s = self.pipeline.set_state(Gst.State.PAUSED)
@@ -225,6 +226,7 @@ class SourceOutputEffects(GObject.GObject):
                 return False
             else:
                 self.is_playing = False
+                self.log.info('mic pipeline state: paused')
                 return True
         elif state == 'playing':
             s = self.pipeline.set_state(Gst.State.PLAYING)
@@ -234,6 +236,7 @@ class SourceOutputEffects(GObject.GObject):
                 return False
             else:
                 self.is_playing = True
+                self.log.info('mic pipeline state: playing')
                 return True
         elif state == 'null':
             s = self.pipeline.set_state(Gst.State.NULL)
@@ -243,6 +246,7 @@ class SourceOutputEffects(GObject.GObject):
                 return False
             else:
                 self.is_playing = False
+                self.log.info('mic pipeline state: null')
                 return True
 
     def calc_spectrum_freqs(self):

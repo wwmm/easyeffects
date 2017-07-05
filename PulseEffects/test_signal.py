@@ -11,9 +11,10 @@ Gst.init(None)
 
 class TestSignal():
 
-    def __init__(self, app_builder, sie_effects):
+    def __init__(self, app_builder, sie_effects, list_sink_inputs):
         self.app_builder = app_builder
         self.sie_effects = sie_effects
+        self.list_sink_inputs = list_sink_inputs
         self.module_path = os.path.dirname(__file__)
 
         self.pipeline = self.build_pipeline()
