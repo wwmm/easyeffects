@@ -220,7 +220,7 @@ class Application(Gtk.Application):
 
         stack = Gtk.Stack()
         stack.set_transition_type(Gtk.StackTransitionType.CROSSFADE)
-        stack.set_transition_duration(250)
+        stack.set_transition_duration(300)
         stack.set_homogeneous(False)
         stack.set_interpolate_size(True)
 
