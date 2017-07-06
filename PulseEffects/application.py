@@ -307,9 +307,6 @@ class Application(Gtk.Application):
         self.list_sink_inputs = ListSinkInputs(self.sink_inputs_builder,
                                                self.sie, self.pm)
 
-        self.test_signal = TestSignal(self.sink_inputs_builder, self.sie,
-                                      self.list_sink_inputs)
-
         sink_input_ui_handlers = {}
 
         sink_input_ui_handlers.update(self.setup_sie_limiter.handlers)
@@ -324,7 +321,6 @@ class Application(Gtk.Application):
         self.setup_sie_compressor.init()
         self.setup_sie_reverb.init()
         self.setup_sie_equalizer.init()
-        self.test_signal.init()
         self.list_sink_inputs.init()
 
     def init_source_outputs_widgets(self):
@@ -359,7 +355,10 @@ class Application(Gtk.Application):
         self.list_source_outputs.init()
 
     def init_test_signal_widgets(self):
-        pass
+        self.test_signal = TestSignal(self.sink_inputs_builder, self.sie,
+                                      self.list_sink_inputs)
+
+        self.test_signal.init()
 
     def init_settings_menu(self):
         button = self.builder.get_object('settings_popover_button')

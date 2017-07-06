@@ -82,7 +82,19 @@ class TestSignal(GObject.GObject):
         spectrum = Gst.ElementFactory.make('spectrum', 'spectrum')
         self.audio_sink = Gst.ElementFactory.make('pulsesink', None)
 
-        self.init_elements()
+        self.audio_sink.set_property('device', 'PulseEffects_apps')
+        self.audio_sink.set_property('volume', 1.0)
+        self.audio_sink.set_property('mute', False)
+
+        self.audio_src1.set_property('wave', 'sine')
+        self.audio_src2.set_property('wave', 'sine')
+        self.audio_src3.set_property('wave', 'sine')
+        self.audio_src4.set_property('wave', 'sine')
+
+        self.audio_src4.set_property('volume', 0.0)
+
+        spectrum.set_property('bands', self.spectrum_nbands)
+        spectrum.set_property('threshold', self.spectrum_threshold)
 
         caps = ['audio/x-raw', 'format=F32LE',
                 'rate=' + str(self.rate), 'channels=2']
@@ -124,18 +136,6 @@ class TestSignal(GObject.GObject):
 
     def init(self):
         self.init_menu()
-
-    def init_elements(self):
-        self.audio_sink.set_property('device', 'PulseEffects_apps')
-        self.audio_sink.set_property('volume', 1.0)
-        self.audio_sink.set_property('mute', False)
-
-        self.audio_src1.set_property('wave', 'sine')
-        self.audio_src2.set_property('wave', 'sine')
-        self.audio_src3.set_property('wave', 'sine')
-        self.audio_src4.set_property('wave', 'sine')
-
-        self.audio_src4.set_property('volume', 0.0)
 
     def set_state(self, state):
         if state == 'ready':
@@ -214,8 +214,6 @@ class TestSignal(GObject.GObject):
 
     # amp is a rescaling factor so that all frequencies have the same intensity
     def set_freq(self, amp, lower, center, upper):
-        self.init_elements()
-
         self.audio_src1.set_property('volume', 1.0 / amp**(0.5))
         self.audio_src2.set_property('volume', 1.0 / amp**(0.5))
         self.audio_src3.set_property('volume', 1.0 / amp**(0.5))
@@ -252,8 +250,6 @@ class TestSignal(GObject.GObject):
 
     def on_test_signal_switch_state_set(self, obj, state):
         if state:
-            self.init_elements()
-
             if not self.sie_effects.is_playing:
                 self.sie_effects.set_state('playing')
 
