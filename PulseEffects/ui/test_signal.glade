@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.20.0 -->
-<interface>
-  <requires lib="gtk+" version="3.20"/>
+<interface domain="PulseEffects">
+  <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="wave1_freq">
     <property name="upper">20000</property>
     <property name="step_increment">1</property>
