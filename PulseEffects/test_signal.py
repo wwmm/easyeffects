@@ -32,7 +32,6 @@ class TestSignal():
         self.audio_src2 = Gst.ElementFactory.make('audiotestsrc', None)
         self.audio_src3 = Gst.ElementFactory.make('audiotestsrc', None)
         mixer = Gst.ElementFactory.make('audiomixer', None)
-        self.bandpass = Gst.ElementFactory.make('audiochebband', None)
         self.audio_sink = Gst.ElementFactory.make('pulsesink', None)
 
         self.init_elements()
@@ -41,12 +40,10 @@ class TestSignal():
         pipeline.add(self.audio_src2)
         pipeline.add(self.audio_src3)
         pipeline.add(mixer)
-        pipeline.add(self.bandpass)
         pipeline.add(self.audio_sink)
 
         self.audio_src1.link(mixer)
-        mixer.link(self.bandpass)
-        self.bandpass.link(self.audio_sink)
+        mixer.link(self.audio_sink)
 
         self.audio_src2.link(mixer)
         self.audio_src3.link(mixer)
@@ -64,11 +61,6 @@ class TestSignal():
         self.audio_src1.set_property('wave', 'sine')
         self.audio_src2.set_property('wave', 'sine')
         self.audio_src3.set_property('wave', 'sine')
-
-        self.bandpass.set_property('mode', 'band-pass')
-        self.bandpass.set_property('type', 1)
-        self.bandpass.set_property('ripple', 0)
-        self.bandpass.set_property('poles', 4)
 
     def set_state(self, state):
         if state == 'ready':
@@ -125,15 +117,6 @@ class TestSignal():
         self.audio_src1.set_property('freq', lower)
         self.audio_src2.set_property('freq', center)
         self.audio_src3.set_property('freq', upper)
-
-        current_bandpass_upper = self.bandpass.get_property('upper-frequency')
-
-        if lower > current_bandpass_upper:
-            self.bandpass.set_property('upper-frequency', upper)
-            self.bandpass.set_property('lower-frequency', lower)
-        else:
-            self.bandpass.set_property('lower-frequency', lower)
-            self.bandpass.set_property('upper-frequency', upper)
 
         if self.switch_is_on:
             self.set_state('playing')
