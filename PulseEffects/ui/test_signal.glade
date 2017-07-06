@@ -24,32 +24,23 @@
         <property name="can_focus">False</property>
         <property name="valign">start</property>
         <property name="margin_top">2</property>
-        <property name="label_xalign">0.019999999552965164</property>
+        <property name="label_xalign">0.5</property>
         <property name="shadow_type">in</property>
         <child>
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="margin_left">2</property>
+            <property name="margin_right">2</property>
+            <property name="margin_bottom">2</property>
             <property name="orientation">vertical</property>
-            <property name="spacing">2</property>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="margin_top">2</property>
-                <property name="label" translatable="yes">Waveform</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
+            <property name="spacing">8</property>
             <child>
               <object class="GtkGrid">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
+                <property name="margin_top">4</property>
                 <child>
                   <object class="GtkRadioButton" id="wave_sine">
                     <property name="label" translatable="yes">Sine</property>
@@ -246,21 +237,10 @@
               </packing>
             </child>
             <child>
-              <object class="GtkSeparator">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">2</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkGrid">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="row_spacing">4</property>
+                <property name="row_spacing">2</property>
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
@@ -367,34 +347,25 @@
       <object class="GtkFrame" id="wave2_frame">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="valign">center</property>
+        <property name="valign">start</property>
         <property name="margin_top">2</property>
-        <property name="label_xalign">0.019999999552965164</property>
+        <property name="label_xalign">0.5</property>
         <property name="shadow_type">in</property>
         <child>
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="margin_left">2</property>
+            <property name="margin_right">2</property>
+            <property name="margin_bottom">2</property>
             <property name="orientation">vertical</property>
-            <property name="spacing">2</property>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="margin_top">2</property>
-                <property name="label" translatable="yes">Frequency</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
+            <property name="spacing">8</property>
             <child>
               <object class="GtkGrid" id="wave2_frequencies">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
+                <property name="margin_top">4</property>
                 <child>
                   <object class="GtkRadioButton" id="wave2_band0">
                     <property name="label">26 Hz</property>
@@ -613,17 +584,6 @@
               </packing>
             </child>
             <child>
-              <object class="GtkSeparator">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">2</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkGrid">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
@@ -666,7 +626,7 @@
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Equal Loudness Calibration</property>
+            <property name="label" translatable="yes">Equal Loudness Curve Calibration</property>
           </object>
         </child>
       </object>
