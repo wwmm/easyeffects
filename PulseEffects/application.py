@@ -14,6 +14,7 @@ from PulseEffects.setup_compressor import SetupCompressor
 from PulseEffects.setup_equalizer import SetupEqualizer
 from PulseEffects.setup_limiter import SetupLimiter
 from PulseEffects.setup_reverb import SetupReverb
+from PulseEffects.setup_test_signal import SetupTestSignal
 from PulseEffects.sink_input_effects import SinkInputEffects
 from PulseEffects.source_output_effects import SourceOutputEffects
 from PulseEffects.spectrum import Spectrum
@@ -135,12 +136,14 @@ class Application(Gtk.Application):
         self.init_settings_menu()
         self.init_buffer_time()
         self.init_latency_time()
-        self.init_panorama()
-        self.init_spectrum()
+        self.init_panorama_widgets()
+        self.init_spectrum_widgets()
         self.init_sink_inputs_widgets()
-        self.init_autovolume()  # must be after init_sink_inputs_widgets
         self.init_source_outputs_widgets()
-        self.init_stack()
+        self.init_stack_widgets()
+        # must be after init_sink_inputs_widgets
+        self.init_autovolume_widgets()
+        self.init_test_signal_widgets()
 
         # connecting signals
 
@@ -210,7 +213,7 @@ class Application(Gtk.Application):
         out = GLib.Variant('b', state)
         self.settings.set_value('use-dark-theme', out)
 
-    def init_stack(self):
+    def init_stack_widgets(self):
         stack_switcher = self.builder.get_object('stack_switcher')
         stack_box = self.builder.get_object('stack_box')
 
@@ -355,6 +358,9 @@ class Application(Gtk.Application):
         self.setup_soe_equalizer.init()
         self.list_source_outputs.init()
 
+    def init_test_signal_widgets(self):
+        pass
+
     def init_settings_menu(self):
         button = self.builder.get_object('settings_popover_button')
         menu = self.builder.get_object('settings_menu')
@@ -417,7 +423,7 @@ class Application(Gtk.Application):
             self.sie.init_latency_time(value * 1000)
             self.soe.init_latency_time(value * 1000)
 
-    def init_spectrum(self):
+    def init_spectrum_widgets(self):
         show_spectrum_switch = self.builder.get_object('show_spectrum')
         spectrum_n_points_obj = self.builder.get_object('spectrum_n_points')
 
@@ -454,7 +460,7 @@ class Application(Gtk.Application):
         self.sie.set_spectrum_n_points(value)
         self.soe.set_spectrum_n_points(value)
 
-    def init_autovolume(self):
+    def init_autovolume_widgets(self):
         autovolume_state_obj = self.builder.get_object('autovolume_state')
 
         autovolume_state = self.settings.get_value('autovolume-state').unpack()
@@ -496,7 +502,7 @@ class Application(Gtk.Application):
     def on_new_autovolume(self, obj, gain):
         self.setup_sie_limiter.limiter_input_gain.set_value(gain)
 
-    def init_panorama(self):
+    def init_panorama_widgets(self):
         value = self.settings_sie.get_value('panorama').unpack()
 
         self.panorama = self.builder.get_object('panorama')
@@ -525,9 +531,9 @@ class Application(Gtk.Application):
         self.init_theme()
         self.init_buffer_time()
         self.init_latency_time()
-        self.init_autovolume()
-        self.init_panorama()
-        self.init_spectrum()
+        self.init_autovolume_widgets()
+        self.init_panorama_widgets()
+        self.init_spectrum_widgets()
 
         self.setup_sie_limiter.reset()
         self.setup_sie_compressor.reset()

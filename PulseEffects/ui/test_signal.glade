@@ -29,6 +29,7 @@
         <property name="halign">center</property>
         <property name="valign">center</property>
         <property name="margin_top">8</property>
+        <signal name="state-set" handler="on_test_signal_switch_state_set" swapped="no"/>
       </object>
       <packing>
         <property name="expand">False</property>
@@ -378,6 +379,7 @@
                         <property name="receives_default">False</property>
                         <property name="active">True</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -392,6 +394,7 @@
                         <property name="receives_default">False</property>
                         <property name="draw_indicator">True</property>
                         <property name="group">wave2_band0</property>
+                        <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -406,6 +409,7 @@
                         <property name="receives_default">False</property>
                         <property name="draw_indicator">True</property>
                         <property name="group">wave2_band0</property>
+                        <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">2</property>
@@ -420,6 +424,7 @@
                         <property name="receives_default">False</property>
                         <property name="draw_indicator">True</property>
                         <property name="group">wave2_band0</property>
+                        <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">3</property>
@@ -434,6 +439,7 @@
                         <property name="receives_default">False</property>
                         <property name="draw_indicator">True</property>
                         <property name="group">wave2_band0</property>
+                        <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">4</property>
@@ -448,6 +454,7 @@
                         <property name="receives_default">False</property>
                         <property name="draw_indicator">True</property>
                         <property name="group">wave2_band0</property>
+                        <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">4</property>
@@ -462,6 +469,7 @@
                         <property name="receives_default">False</property>
                         <property name="draw_indicator">True</property>
                         <property name="group">wave2_band0</property>
+                        <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">3</property>
@@ -476,6 +484,7 @@
                         <property name="receives_default">False</property>
                         <property name="draw_indicator">True</property>
                         <property name="group">wave2_band0</property>
+                        <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">2</property>
@@ -490,6 +499,7 @@
                         <property name="receives_default">False</property>
                         <property name="draw_indicator">True</property>
                         <property name="group">wave2_band0</property>
+                        <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -504,6 +514,7 @@
                         <property name="receives_default">False</property>
                         <property name="draw_indicator">True</property>
                         <property name="group">wave2_band0</property>
+                        <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -518,6 +529,7 @@
                         <property name="receives_default">False</property>
                         <property name="draw_indicator">True</property>
                         <property name="group">wave2_band0</property>
+                        <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">4</property>
@@ -532,6 +544,7 @@
                         <property name="receives_default">False</property>
                         <property name="draw_indicator">True</property>
                         <property name="group">wave2_band0</property>
+                        <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">3</property>
@@ -546,6 +559,7 @@
                         <property name="receives_default">False</property>
                         <property name="draw_indicator">True</property>
                         <property name="group">wave2_band0</property>
+                        <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">2</property>
@@ -560,6 +574,7 @@
                         <property name="receives_default">False</property>
                         <property name="draw_indicator">True</property>
                         <property name="group">wave2_band0</property>
+                        <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -574,6 +589,7 @@
                         <property name="receives_default">False</property>
                         <property name="draw_indicator">True</property>
                         <property name="group">wave2_band0</property>
+                        <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
