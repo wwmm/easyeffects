@@ -355,10 +355,11 @@ class Application(Gtk.Application):
         self.list_source_outputs.init()
 
     def init_test_signal_widgets(self):
-        self.test_signal = TestSignal(self.sink_inputs_builder, self.sie,
-                                      self.list_sink_inputs)
+        self.ts = TestSignal()
 
-        self.test_signal.init()
+        self.setup_test_signal = SetupTestSignal(self.test_signal_builder,
+                                                 self.ts, self.sie,
+                                                 self.list_sink_inputs)
 
     def init_settings_menu(self):
         button = self.builder.get_object('settings_popover_button')
