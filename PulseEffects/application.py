@@ -83,6 +83,7 @@ class Application(Gtk.Application):
         self.builder = Gtk.Builder()
         self.sink_inputs_builder = Gtk.Builder()
         self.source_outputs_builder = Gtk.Builder()
+        self.test_signal_builder = Gtk.Builder()
 
         self.builder.add_from_file(self.module_path + '/ui/main_ui.glade')
         self.builder.add_from_file(self.module_path + '/ui/headerbar.glade')
@@ -90,6 +91,8 @@ class Application(Gtk.Application):
                                                '/ui/sink_inputs_plugins.glade')
         self.source_outputs_builder.add_from_file(
             self.module_path + '/ui/source_outputs_plugins.glade')
+        self.test_signal_builder.add_from_file(self.module_path +
+                                               '/ui/test_signal.glade')
 
         headerbar = self.builder.get_object('headerbar')
 
@@ -213,10 +216,13 @@ class Application(Gtk.Application):
 
         sink_inputs_ui = self.sink_inputs_builder.get_object('window')
         source_outputs_ui = self.source_outputs_builder.get_object('window')
+        test_signal_ui = self.test_signal_builder.get_object('window')
 
         stack = Gtk.Stack()
         stack.set_transition_type(Gtk.StackTransitionType.CROSSFADE)
         stack.set_transition_duration(250)
+        stack.set_homogeneous(False)
+        stack.set_interpolate_size(True)
 
         stack.add_named(sink_inputs_ui, 'sink_inputs')
 
@@ -227,19 +233,53 @@ class Application(Gtk.Application):
         stack.child_set_property(source_outputs_ui, 'icon-name',
                                  'audio-input-microphone-symbolic')
 
+        stack.add_named(test_signal_ui, "test_signal")
+        stack.child_set_property(test_signal_ui, 'icon-name',
+                                 'emblem-music-symbolic')
+
+        self.stack_current_child_name = 'sink_inputs'
+
         def on_visible_child_changed(stack, visible_child):
             name = stack.get_visible_child_name()
 
             if name == 'sink_inputs':
-                self.soe.disconnect(self.spectrum_handler_id)
+                if self.stack_current_child_name == 'source_outputs':
+                    self.soe.disconnect(self.spectrum_handler_id)
+                elif self.stack_current_child_name == 'test_signal':
+                    pass
+                    # self.test_signal.disconnect(self.spectrum_handler_id)
+
                 self.spectrum_handler_id = self.sie.connect('new_spectrum',
                                                             self.spectrum
                                                             .on_new_spectrum)
+
+                self.stack_current_child_name = 'sink_inputs'
             elif name == 'source_outputs':
-                self.sie.disconnect(self.spectrum_handler_id)
+                if self.stack_current_child_name == 'sink_inputs':
+                    self.sie.disconnect(self.spectrum_handler_id)
+                elif self.stack_current_child_name == 'test_signal':
+                    pass
+                    # self.test_signal.disconnect(self.spectrum_handler_id)
+
                 self.spectrum_handler_id = self.soe.connect('new_spectrum',
                                                             self.spectrum
                                                             .on_new_spectrum)
+
+                self.stack_current_child_name = 'source_outputs'
+            elif name == 'test_signal':
+                pass
+
+                if self.stack_current_child_name == 'sink_inputs':
+                    self.sie.disconnect(self.spectrum_handler_id)
+                elif self.stack_current_child_name == 'source_outputs':
+                    self.soe.disconnect(self.spectrum_handler_id)
+
+                # self.spectrum_handler_id = self.test_signal.connect(
+                #                                             'new_spectrum',
+                #                                             self.spectrum
+                #                                             .on_new_spectrum)
+
+                self.stack_current_child_name = 'test_signal'
 
             self.spectrum.clear()
 
