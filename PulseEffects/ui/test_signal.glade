@@ -56,6 +56,7 @@
                     <property name="receives_default">False</property>
                     <property name="active">True</property>
                     <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="on_wave1_type_toggled" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -70,6 +71,7 @@
                     <property name="receives_default">False</property>
                     <property name="draw_indicator">True</property>
                     <property name="group">wave_sine</property>
+                    <signal name="toggled" handler="on_wave1_type_toggled" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -84,6 +86,7 @@
                     <property name="receives_default">False</property>
                     <property name="draw_indicator">True</property>
                     <property name="group">wave_sine</property>
+                    <signal name="toggled" handler="on_wave1_type_toggled" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">2</property>
@@ -98,6 +101,7 @@
                     <property name="receives_default">False</property>
                     <property name="draw_indicator">True</property>
                     <property name="group">wave_sine</property>
+                    <signal name="toggled" handler="on_wave1_type_toggled" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">3</property>
@@ -112,6 +116,7 @@
                     <property name="receives_default">False</property>
                     <property name="draw_indicator">True</property>
                     <property name="group">wave_sine</property>
+                    <signal name="toggled" handler="on_wave1_type_toggled" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">2</property>
@@ -126,6 +131,7 @@
                     <property name="receives_default">False</property>
                     <property name="draw_indicator">True</property>
                     <property name="group">wave_sine</property>
+                    <signal name="toggled" handler="on_wave1_type_toggled" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -140,6 +146,7 @@
                     <property name="receives_default">False</property>
                     <property name="draw_indicator">True</property>
                     <property name="group">wave_sine</property>
+                    <signal name="toggled" handler="on_wave1_type_toggled" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -154,6 +161,7 @@
                     <property name="receives_default">False</property>
                     <property name="draw_indicator">True</property>
                     <property name="group">wave_sine</property>
+                    <signal name="toggled" handler="on_wave1_type_toggled" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">3</property>
@@ -168,6 +176,7 @@
                     <property name="receives_default">False</property>
                     <property name="draw_indicator">True</property>
                     <property name="group">wave_sine</property>
+                    <signal name="toggled" handler="on_wave1_type_toggled" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -182,6 +191,7 @@
                     <property name="receives_default">False</property>
                     <property name="draw_indicator">True</property>
                     <property name="group">wave_sine</property>
+                    <signal name="toggled" handler="on_wave1_type_toggled" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -196,6 +206,7 @@
                     <property name="receives_default">False</property>
                     <property name="draw_indicator">True</property>
                     <property name="group">wave_sine</property>
+                    <signal name="toggled" handler="on_wave1_type_toggled" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">2</property>
@@ -210,6 +221,7 @@
                     <property name="receives_default">False</property>
                     <property name="draw_indicator">True</property>
                     <property name="group">wave_sine</property>
+                    <signal name="toggled" handler="on_wave1_type_toggled" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">3</property>
@@ -224,6 +236,7 @@
                     <property name="receives_default">False</property>
                     <property name="draw_indicator">True</property>
                     <property name="group">wave_sine</property>
+                    <signal name="toggled" handler="on_wave1_type_toggled" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>

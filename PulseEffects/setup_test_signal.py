@@ -22,6 +22,8 @@ class SetupTestSignal():
                 self.on_wave1_switch_state_set,
             'on_wave1_volume_value_changed':
                 self.on_wave1_volume_value_changed,
+            'on_wave1_type_toggled':
+                self.on_wave1_type_toggled,
             'on_wave2_freq_toggled':
                 self.on_wave2_freq_toggled,
             'on_wave2_volume_value_changed':
@@ -73,6 +75,15 @@ class SetupTestSignal():
 
     def on_wave1_volume_value_changed(self, obj):
         self.ts.set_wave1_volume(obj.get_value())
+
+    def on_wave1_type_toggled(self, obj):
+        if obj.get_active():
+            obj_id = Gtk.Buildable.get_name(obj)
+
+            print(obj_id)
+
+            if obj_id == 'wave_sine':
+                pass
 
     def on_wave2_switch_state_set(self, obj, state):
         n_sink_inputs = self.list_sink_inputs.get_n_inputs()
