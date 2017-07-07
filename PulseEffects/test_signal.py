@@ -134,37 +134,37 @@ class TestSignal(GObject.GObject):
             s = self.pipeline.set_state(Gst.State.READY)
 
             if s == Gst.StateChangeReturn.FAILURE:
-                print("Failed set PulseEffects Gstreamer pipeline to ready!!!")
-
+                self.log.critical("Could not set Gstreamer pipeline to ready")
                 return False
             else:
+                self.log.info('test signals pipeline state: ready')
                 return True
         elif state == 'paused':
             s = self.pipeline.set_state(Gst.State.PAUSED)
 
             if s == Gst.StateChangeReturn.FAILURE:
-                print("Failed to pause PulseEffects test signal pipeline!!!")
-
+                self.log.error("Failed to pause Gstreamer pipeline")
                 return False
             else:
+                self.log.info('test signals pipeline state: paused')
                 return True
         elif state == 'playing':
             s = self.pipeline.set_state(Gst.State.PLAYING)
 
             if s == Gst.StateChangeReturn.FAILURE:
-                print("Playing PulseEffects test signal pipeline failed!!!")
-
+                self.log.critical("Playing Gstreamer pipeline has failed")
                 return False
             else:
+                self.log.info('test signals pipeline state: playing')
                 return True
         elif state == 'null':
             s = self.pipeline.set_state(Gst.State.NULL)
 
             if s == Gst.StateChangeReturn.FAILURE:
-                print("Stopping PulseEffects test signal pipeline failed!!!")
-
+                self.log.error("Could not stop Gstreamer pipeline")
                 return False
             else:
+                self.log.info('test signals pipeline state: null')
                 return True
 
     def on_message_error(self, bus, msg):
@@ -209,6 +209,9 @@ class TestSignal(GObject.GObject):
 
     def set_wave1_freq(self, value):
         self.audio_src1.set_property('freq', value)
+
+    def set_wave1_type(self, value):
+        self.audio_src1.set_property('wave', value)
 
     # amp is a rescaling factor so that all frequencies have the same intensity
     def set_wave2_freq(self, lower, center, upper):

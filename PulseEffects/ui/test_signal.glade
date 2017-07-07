@@ -6,17 +6,18 @@
     <property name="upper">20000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_wave1_freq_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="wave1_volume">
     <property name="upper">1</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">0.10000000000000001</property>
+    <property name="page_increment">0.050000000000000003</property>
     <signal name="value-changed" handler="on_wave1_volume_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="wave2_volume">
     <property name="upper">1</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">0.10000000000000001</property>
+    <property name="page_increment">0.050000000000000003</property>
     <signal name="value-changed" handler="on_wave2_volume_value_changed" swapped="no"/>
   </object>
   <object class="GtkBox" id="window">

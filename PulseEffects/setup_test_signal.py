@@ -24,6 +24,8 @@ class SetupTestSignal():
                 self.on_wave1_volume_value_changed,
             'on_wave1_type_toggled':
                 self.on_wave1_type_toggled,
+            'on_wave1_freq_value_changed':
+                self.on_wave1_freq_value_changed,
             'on_wave2_freq_toggled':
                 self.on_wave2_freq_toggled,
             'on_wave2_volume_value_changed':
@@ -80,10 +82,35 @@ class SetupTestSignal():
         if obj.get_active():
             obj_id = Gtk.Buildable.get_name(obj)
 
-            print(obj_id)
-
             if obj_id == 'wave_sine':
-                pass
+                self.ts.set_wave1_type('sine')
+            elif obj_id == 'wave_square':
+                self.ts.set_wave1_type('square')
+            elif obj_id == 'wave_saw':
+                self.ts.set_wave1_type('saw')
+            elif obj_id == 'wave_triangle':
+                self.ts.set_wave1_type('triangle')
+            elif obj_id == 'wave_silence':
+                self.ts.set_wave1_type('silence')
+            elif obj_id == 'wave_white_noise':
+                self.ts.set_wave1_type('white-noise')
+            elif obj_id == 'wave_pink_noise':
+                self.ts.set_wave1_type('pink-noise')
+            elif obj_id == 'wave_sine_table':
+                self.ts.set_wave1_type('sine-table')
+            elif obj_id == 'wave_ticks':
+                self.ts.set_wave1_type('ticks')
+            elif obj_id == 'wave_gaussian_noise':
+                self.ts.set_wave1_type('gaussian-noise')
+            elif obj_id == 'wave_red_noise':
+                self.ts.set_wave1_type('red-noise')
+            elif obj_id == 'wave_blue_noise':
+                self.ts.set_wave1_type('blue-noise')
+            elif obj_id == 'wave_violet_noise':
+                self.ts.set_wave1_type('violet-noise')
+
+    def on_wave1_freq_value_changed(self, obj):
+        self.ts.set_wave1_freq(obj.get_value())
 
     def on_wave2_switch_state_set(self, obj, state):
         n_sink_inputs = self.list_sink_inputs.get_n_inputs()

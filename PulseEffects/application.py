@@ -70,9 +70,14 @@ class Application(Gtk.Application):
         self.soe.set_source_monitor_name(self.pm.default_source_name)
         self.soe.set_output_sink_name('PulseEffects_mic')
 
+        # test signals pipeline
+
+        self.ts = TestSignal()
+
         # putting pipelines in the ready state
         self.sie.set_state('ready')
         self.soe.set_state('ready')
+        self.ts.set_state('ready')
 
         # creating user presets folder
         self.user_config_dir = os.path.expanduser('~/.config/PulseEffects')
@@ -183,6 +188,7 @@ class Application(Gtk.Application):
         self.ui_initialized = True
 
     def on_MainWindow_delete_event(self, event, data):
+        self.ts.set_state('null')
         self.sie.set_state('null')
         self.soe.set_state('null')
 
@@ -358,8 +364,6 @@ class Application(Gtk.Application):
         self.list_source_outputs.init()
 
     def init_test_signal_widgets(self):
-        self.ts = TestSignal()
-
         self.setup_test_signal = SetupTestSignal(self.test_signal_builder,
                                                  self.ts, self.sie,
                                                  self.list_sink_inputs)
