@@ -37,10 +37,10 @@ class SetupTestSignal():
         self.app_builder.connect_signals(self.handlers)
 
         self.wave1_switch = self.app_builder.get_object('wave1_switch')
-        self.wave1_volume = self.app_builder.get_object('wave1_volume_scale')
+        self.wave1_volume = self.app_builder.get_object('wave1_volume')
         self.wave1_freq = self.app_builder.get_object('wave1_freq')
         self.wave2_switch = self.app_builder.get_object('wave2_switch')
-        self.wave2_volume = self.app_builder.get_object('wave2_volume_scale')
+        self.wave2_volume = self.app_builder.get_object('wave2_volume')
         self.wave2_band8 = self.app_builder.get_object('wave2_band8')
 
         self.wave1_volume.set_value(0)
@@ -84,30 +84,43 @@ class SetupTestSignal():
 
             if obj_id == 'wave_sine':
                 self.ts.set_wave1_type('sine')
+                self.wave1_freq.set_sensitive(True)
             elif obj_id == 'wave_square':
                 self.ts.set_wave1_type('square')
+                self.wave1_freq.set_sensitive(True)
             elif obj_id == 'wave_saw':
                 self.ts.set_wave1_type('saw')
+                self.wave1_freq.set_sensitive(True)
             elif obj_id == 'wave_triangle':
                 self.ts.set_wave1_type('triangle')
+                self.wave1_freq.set_sensitive(True)
             elif obj_id == 'wave_silence':
                 self.ts.set_wave1_type('silence')
+                self.wave1_freq.set_sensitive(False)
             elif obj_id == 'wave_white_noise':
                 self.ts.set_wave1_type('white-noise')
+                self.wave1_freq.set_sensitive(False)
             elif obj_id == 'wave_pink_noise':
                 self.ts.set_wave1_type('pink-noise')
+                self.wave1_freq.set_sensitive(False)
             elif obj_id == 'wave_sine_table':
                 self.ts.set_wave1_type('sine-table')
+                self.wave1_freq.set_sensitive(True)
             elif obj_id == 'wave_ticks':
                 self.ts.set_wave1_type('ticks')
+                self.wave1_freq.set_sensitive(True)
             elif obj_id == 'wave_gaussian_noise':
                 self.ts.set_wave1_type('gaussian-noise')
+                self.wave1_freq.set_sensitive(False)
             elif obj_id == 'wave_red_noise':
                 self.ts.set_wave1_type('red-noise')
+                self.wave1_freq.set_sensitive(False)
             elif obj_id == 'wave_blue_noise':
                 self.ts.set_wave1_type('blue-noise')
+                self.wave1_freq.set_sensitive(False)
             elif obj_id == 'wave_violet_noise':
                 self.ts.set_wave1_type('violet-noise')
+                self.wave1_freq.set_sensitive(False)
 
     def on_wave1_freq_value_changed(self, obj):
         self.ts.set_wave1_freq(obj.get_value())
