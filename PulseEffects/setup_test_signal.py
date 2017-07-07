@@ -32,8 +32,10 @@ class SetupTestSignal():
 
         self.app_builder.connect_signals(self.handlers)
 
+        self.wave1_switch = self.app_builder.get_object('wave1_switch')
         self.wave1_volume = self.app_builder.get_object('wave1_volume_scale')
         self.wave1_freq = self.app_builder.get_object('wave1_freq')
+        self.wave2_switch = self.app_builder.get_object('wave2_switch')
         self.wave2_volume = self.app_builder.get_object('wave2_volume_scale')
         self.wave2_band8 = self.app_builder.get_object('wave2_band8')
 
@@ -56,18 +58,18 @@ class SetupTestSignal():
             if n_sink_inputs == 0 and not self.sie.is_playing:
                 self.sie.set_state('playing')
 
-            self.ts.set_state('playing')
-
             self.wave1_volume.set_sensitive(True)
             self.wave1_volume.set_value(0.5)
+            self.ts.set_state('playing')
         else:
-            if n_sink_inputs == 0 and self.sie.is_playing:
-                self.sie.set_state('paused')
-
-            self.ts.set_state('paused')
-
             self.wave1_volume.set_sensitive(False)
             self.wave1_volume.set_value(0)
+
+            if not self.wave2_switch.get_state():
+                self.ts.set_state('paused')
+
+                if n_sink_inputs == 0 and self.sie.is_playing:
+                    self.sie.set_state('paused')
 
     def on_wave1_volume_value_changed(self, obj):
         self.ts.set_wave1_volume(obj.get_value())
@@ -79,18 +81,18 @@ class SetupTestSignal():
             if n_sink_inputs == 0 and not self.sie.is_playing:
                 self.sie.set_state('playing')
 
-            self.ts.set_state('playing')
-
             self.wave2_volume.set_sensitive(True)
             self.wave2_volume.set_value(0.5)
+            self.ts.set_state('playing')
         else:
-            if n_sink_inputs == 0 and self.sie.is_playing:
-                self.sie.set_state('paused')
-
-            self.ts.set_state('paused')
-
             self.wave2_volume.set_sensitive(False)
             self.wave2_volume.set_value(0)
+
+            if not self.wave1_switch.get_state():
+                self.ts.set_state('paused')
+
+                if n_sink_inputs == 0 and self.sie.is_playing:
+                    self.sie.set_state('paused')
 
     def on_wave2_volume_value_changed(self, obj):
         self.ts.set_wave2_volume(obj.get_value())
