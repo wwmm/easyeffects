@@ -33,7 +33,7 @@
         <property name="valign">start</property>
         <property name="margin_top">2</property>
         <property name="label_xalign">0.5</property>
-        <property name="shadow_type">in</property>
+        <property name="shadow_type">none</property>
         <child>
           <object class="GtkBox">
             <property name="visible">True</property>
@@ -269,6 +269,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
+                    <property name="valign">center</property>
                     <property name="label" translatable="yes">Frequency [Hz]</property>
                   </object>
                   <packing>
@@ -312,6 +313,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
+                    <property name="valign">center</property>
                     <property name="label" translatable="yes">Volume</property>
                   </object>
                   <packing>
@@ -324,6 +326,7 @@
                   <object class="GtkScale" id="wave1_volume">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="valign">center</property>
                     <property name="hexpand">True</property>
                     <property name="adjustment">wave1_volume_adjustment</property>
                     <property name="round_digits">1</property>
@@ -340,6 +343,7 @@
                   <object class="GtkSwitch" id="wave1_switch">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="halign">end</property>
                     <property name="valign">center</property>
                     <property name="margin_top">8</property>
                     <signal name="state-set" handler="on_wave1_switch_state_set" swapped="no"/>
@@ -364,6 +368,9 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Test Signal</property>
+            <attributes>
+              <attribute name="weight" value="bold"/>
+            </attributes>
           </object>
         </child>
       </object>
@@ -374,13 +381,26 @@
       </packing>
     </child>
     <child>
+      <object class="GtkSeparator">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin_left">3</property>
+        <property name="margin_right">3</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">1</property>
+      </packing>
+    </child>
+    <child>
       <object class="GtkFrame" id="wave2_frame">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="valign">start</property>
         <property name="margin_top">2</property>
         <property name="label_xalign">0.5</property>
-        <property name="shadow_type">in</property>
+        <property name="shadow_type">none</property>
         <child>
           <object class="GtkBox">
             <property name="visible">True</property>
@@ -638,6 +658,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
+                    <property name="valign">center</property>
                     <property name="label" translatable="yes">Volume</property>
                   </object>
                   <packing>
@@ -650,6 +671,7 @@
                   <object class="GtkScale" id="wave2_volume">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="valign">center</property>
                     <property name="hexpand">True</property>
                     <property name="adjustment">wave2_volume_adjustment</property>
                     <property name="round_digits">1</property>
@@ -666,6 +688,7 @@
                   <object class="GtkSwitch" id="wave2_switch">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="halign">end</property>
                     <property name="valign">center</property>
                     <property name="margin_top">8</property>
                     <signal name="state-set" handler="on_wave2_switch_state_set" swapped="no"/>
@@ -690,6 +713,9 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Equal Loudness Curve Calibration</property>
+            <attributes>
+              <attribute name="weight" value="bold"/>
+            </attributes>
           </object>
         </child>
       </object>

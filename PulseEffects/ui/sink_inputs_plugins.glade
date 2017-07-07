@@ -249,6 +249,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
+                    <property name="halign">end</property>
                     <property name="valign">center</property>
                     <property name="image">image_eq_menu</property>
                     <property name="relief">half</property>
@@ -265,7 +266,12 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
                     <property name="label" translatable="yes">Equalizer</property>
+                    <attributes>
+                      <attribute name="weight" value="bold"/>
+                    </attributes>
                   </object>
                   <packing>
                     <property name="expand">True</property>
@@ -989,7 +995,12 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Input Limiter</property>
+                            <attributes>
+                              <attribute name="weight" value="bold"/>
+                            </attributes>
                           </object>
                           <packing>
                             <property name="expand">True</property>
@@ -1002,6 +1013,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
+                            <property name="halign">end</property>
                             <property name="valign">center</property>
                             <property name="image">image_limiter_menu</property>
                             <property name="always_show_image">True</property>
@@ -1385,7 +1397,12 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Reverberation</property>
+                            <attributes>
+                              <attribute name="weight" value="bold"/>
+                            </attributes>
                           </object>
                           <packing>
                             <property name="expand">True</property>
@@ -1398,6 +1415,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
+                            <property name="halign">end</property>
                             <property name="valign">center</property>
                             <property name="image">image_reverb_menu</property>
                             <property name="always_show_image">True</property>
@@ -1790,7 +1808,12 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Compressor</property>
+                        <attributes>
+                          <attribute name="weight" value="bold"/>
+                        </attributes>
                       </object>
                       <packing>
                         <property name="expand">True</property>
@@ -1803,6 +1826,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
+                        <property name="halign">end</property>
                         <property name="valign">center</property>
                         <property name="image">image_compressor_menu</property>
                         <property name="always_show_image">True</property>

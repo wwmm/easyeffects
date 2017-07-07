@@ -42,6 +42,9 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Presets</property>
+            <attributes>
+              <attribute name="weight" value="bold"/>
+            </attributes>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -189,6 +192,9 @@
         <property name="can_focus">False</property>
         <property name="margin_bottom">2</property>
         <property name="label" translatable="yes">Input Filters</property>
+        <attributes>
+          <attribute name="weight" value="bold"/>
+        </attributes>
       </object>
       <packing>
         <property name="left_attach">0</property>
