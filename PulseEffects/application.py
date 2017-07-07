@@ -140,10 +140,12 @@ class Application(Gtk.Application):
         self.init_spectrum_widgets()
         self.init_sink_inputs_widgets()
         self.init_source_outputs_widgets()
-        self.init_stack_widgets()
-        # must be after init_sink_inputs_widgets
+        # these two must be after init_sink_inputs_widgets
         self.init_autovolume_widgets()
         self.init_test_signal_widgets()
+
+        # init stack widgets
+        self.init_stack_widgets()
 
         # connecting signals
 
@@ -249,8 +251,7 @@ class Application(Gtk.Application):
                 if self.stack_current_child_name == 'source_outputs':
                     self.soe.disconnect(self.spectrum_handler_id)
                 elif self.stack_current_child_name == 'test_signal':
-                    pass
-                    # self.test_signal.disconnect(self.spectrum_handler_id)
+                    self.ts.disconnect(self.spectrum_handler_id)
 
                 self.spectrum_handler_id = self.sie.connect('new_spectrum',
                                                             self.spectrum
@@ -261,8 +262,7 @@ class Application(Gtk.Application):
                 if self.stack_current_child_name == 'sink_inputs':
                     self.sie.disconnect(self.spectrum_handler_id)
                 elif self.stack_current_child_name == 'test_signal':
-                    pass
-                    # self.test_signal.disconnect(self.spectrum_handler_id)
+                    self.ts.disconnect(self.spectrum_handler_id)
 
                 self.spectrum_handler_id = self.soe.connect('new_spectrum',
                                                             self.spectrum
@@ -277,10 +277,9 @@ class Application(Gtk.Application):
                 elif self.stack_current_child_name == 'source_outputs':
                     self.soe.disconnect(self.spectrum_handler_id)
 
-                # self.spectrum_handler_id = self.test_signal.connect(
-                #                                             'new_spectrum',
-                #                                             self.spectrum
-                #                                             .on_new_spectrum)
+                self.spectrum_handler_id = self.ts.connect('new_spectrum',
+                                                           self.spectrum
+                                                           .on_new_spectrum)
 
                 self.stack_current_child_name = 'test_signal'
 
