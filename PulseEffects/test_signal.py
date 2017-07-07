@@ -203,7 +203,7 @@ class TestSignal(GObject.GObject):
         return True
 
     # amp is a rescaling factor so that all frequencies have the same intensity
-    def set_freq(self, amp, lower, center, upper):
+    def set_wave2_freq(self, amp, lower, center, upper):
         self.audio_src1.set_property('volume', 1.0 / amp**(0.5))
         self.audio_src2.set_property('volume', 1.0 / amp**(0.5))
         self.audio_src3.set_property('volume', 1.0 / amp**(0.5))
