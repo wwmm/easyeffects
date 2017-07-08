@@ -31,16 +31,13 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="valign">start</property>
-        <property name="margin_top">2</property>
+        <property name="margin_top">3</property>
         <property name="label_xalign">0.5</property>
         <property name="shadow_type">none</property>
         <child>
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_left">2</property>
-            <property name="margin_right">2</property>
-            <property name="margin_bottom">2</property>
             <property name="orientation">vertical</property>
             <property name="spacing">8</property>
             <child>
@@ -288,6 +285,7 @@
                     <property name="input_purpose">number</property>
                     <property name="adjustment">wave1_freq_adjustment</property>
                     <property name="numeric">True</property>
+                    <property name="update_policy">if-valid</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -367,6 +365,7 @@
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="margin_bottom">6</property>
             <property name="label" translatable="yes">Test Signal</property>
             <attributes>
               <attribute name="weight" value="bold"/>
@@ -398,16 +397,13 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="valign">start</property>
-        <property name="margin_top">2</property>
+        <property name="margin_top">3</property>
         <property name="label_xalign">0.5</property>
         <property name="shadow_type">none</property>
         <child>
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_left">2</property>
-            <property name="margin_right">2</property>
-            <property name="margin_bottom">2</property>
             <property name="orientation">vertical</property>
             <property name="spacing">8</property>
             <child>
@@ -712,6 +708,7 @@
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="margin_bottom">6</property>
             <property name="label" translatable="yes">Equal Loudness Curve Calibration</property>
             <attributes>
               <attribute name="weight" value="bold"/>
