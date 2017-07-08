@@ -3,10 +3,9 @@
 Limiter, compressor, reverberation, stereo equalizer and auto volume effects for
 Pulseaudio applications
 
-![](images/pulseeffects_main_window.png)
-![](images/pulseeffects_eq_menu.png)
-![](images/pulseeffects_reverb_menu.png)
+![](images/pulseeffects_apps_window.png)
 ![](images/pulseeffects_mic_window.png)
+![](images/pulseeffects_test_signal_window.png)
 
 Order of effects applied to applications output:
 
