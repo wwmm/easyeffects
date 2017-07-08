@@ -6,11 +6,15 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="orientation">vertical</property>
+    <property name="spacing">6</property>
     <child>
       <object class="GtkLabel">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Presets</property>
+        <attributes>
+          <attribute name="weight" value="bold"/>
+        </attributes>
       </object>
       <packing>
         <property name="expand">False</property>
@@ -22,15 +26,17 @@
       <object class="GtkGrid">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="row_spacing">3</property>
+        <property name="column_spacing">3</property>
+        <property name="column_homogeneous">True</property>
         <child>
-          <object class="GtkRadioButton" id="reverb_cathedral">
-            <property name="label" translatable="yes">cathedral</property>
+          <object class="GtkButton" id="cathedral">
+            <property name="label" translatable="yes">Cathedral</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="draw_indicator">True</property>
-            <property name="group">reverb_no_selection</property>
-            <signal name="toggled" handler="on_reverb_preset_toggled" swapped="no"/>
+            <property name="receives_default">True</property>
+            <property name="valign">center</property>
+            <signal name="clicked" handler="on_reverb_preset_clicked" swapped="no"/>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -38,14 +44,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkRadioButton" id="reverb_engine_room">
-            <property name="label" translatable="yes">engine room</property>
+          <object class="GtkButton" id="engine_room">
+            <property name="label" translatable="yes">Engine Room</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="draw_indicator">True</property>
-            <property name="group">reverb_no_selection</property>
-            <signal name="toggled" handler="on_reverb_preset_toggled" swapped="no"/>
+            <property name="receives_default">True</property>
+            <property name="valign">center</property>
+            <signal name="clicked" handler="on_reverb_preset_clicked" swapped="no"/>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -53,14 +58,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkRadioButton" id="reverb_no_reverberation">
-            <property name="label" translatable="yes">no reverberation</property>
+          <object class="GtkButton" id="no_reverberation">
+            <property name="label" translatable="yes">No Reverberation</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="draw_indicator">True</property>
-            <property name="group">reverb_no_selection</property>
-            <signal name="toggled" handler="on_reverb_preset_toggled" swapped="no"/>
+            <property name="receives_default">True</property>
+            <property name="valign">center</property>
+            <signal name="clicked" handler="on_reverb_preset_clicked" swapped="no"/>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -68,14 +72,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkRadioButton" id="reverb_small_room">
-            <property name="label" translatable="yes">small room</property>
+          <object class="GtkButton" id="small_room">
+            <property name="label" translatable="yes">Small Room</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="draw_indicator">True</property>
-            <property name="group">reverb_no_selection</property>
-            <signal name="toggled" handler="on_reverb_preset_toggled" swapped="no"/>
+            <property name="receives_default">True</property>
+            <property name="valign">center</property>
+            <signal name="clicked" handler="on_reverb_preset_clicked" swapped="no"/>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -87,21 +90,6 @@
         <property name="expand">False</property>
         <property name="fill">True</property>
         <property name="position">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioButton" id="reverb_no_selection">
-        <property name="label">no selection</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="active">True</property>
-        <property name="draw_indicator">True</property>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">2</property>
       </packing>
     </child>
   </object>

@@ -59,7 +59,6 @@ class SetupReverb():
         builder.connect_signals(self)
 
         menu = builder.get_object('menu')
-        reverb_no_selection = builder.get_object('reverb_no_selection')
 
         button = self.app_builder.get_object('reverb_popover')
 
@@ -72,8 +71,6 @@ class SetupReverb():
                 popover.hide()
             else:
                 popover.show_all()
-                reverb_no_selection.set_active(True)
-                reverb_no_selection.hide()
 
         button.connect("clicked", button_clicked)
 
@@ -136,22 +133,21 @@ class SetupReverb():
         self.reverb_width.set_value(values[2])
         self.reverb_level.set_value(values[3])
 
-    def on_reverb_preset_toggled(self, obj):
-        if obj.get_active():
-            obj_id = Gtk.Buildable.get_name(obj)
+    def on_reverb_preset_clicked(self, obj):
+        obj_id = Gtk.Buildable.get_name(obj)
 
-            if obj_id == 'reverb_cathedral':
-                value = self.settings.get_value('reverb-cathedral')
-                self.apply_reverb_preset(value)
-            elif obj_id == 'reverb_no_reverberation':
-                value = self.settings.get_value('reverb-no-reverberation')
-                self.apply_reverb_preset(value)
-            elif obj_id == 'reverb_engine_room':
-                value = self.settings.get_value('reverb-engine-room')
-                self.apply_reverb_preset(value)
-            elif obj_id == 'reverb_small_room':
-                value = self.settings.get_value('reverb-small-room')
-                self.apply_reverb_preset(value)
+        if obj_id == 'cathedral':
+            value = self.settings.get_value('reverb-cathedral')
+            self.apply_reverb_preset(value)
+        elif obj_id == 'no_reverberation':
+            value = self.settings.get_value('reverb-no-reverberation')
+            self.apply_reverb_preset(value)
+        elif obj_id == 'engine_room':
+            value = self.settings.get_value('reverb-engine-room')
+            self.apply_reverb_preset(value)
+        elif obj_id == 'small_room':
+            value = self.settings.get_value('reverb-small-room')
+            self.apply_reverb_preset(value)
 
     def save_reverb_user(self, idx, value):
         self.reverb_user[idx] = value
