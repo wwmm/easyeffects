@@ -87,8 +87,6 @@ class SetupCompressor():
         builder.connect_signals(self)
 
         menu = builder.get_object('menu')
-        compressor_no_selection = builder.get_object(
-            'compressor_no_selection')
 
         button = self.app_builder.get_object('compressor_popover')
 
@@ -101,8 +99,6 @@ class SetupCompressor():
                 popover.hide()
             else:
                 popover.show_all()
-                compressor_no_selection.set_active(True)
-                compressor_no_selection.hide()
 
         button.connect("clicked", button_clicked)
 
@@ -186,13 +182,12 @@ class SetupCompressor():
         self.compressor_knee.set_value(values[5])
         self.compressor_makeup.set_value(values[6])
 
-    def on_compressor_preset_toggled(self, obj):
-        if obj.get_active():
-            obj_id = Gtk.Buildable.get_name(obj)
+    def on_compressor_preset_clicked(self, obj):
+        obj_id = Gtk.Buildable.get_name(obj)
 
-            if obj_id == 'compressor_preset_none':
-                value = self.settings.get_value('compressor-no-compression')
-                self.apply_compressor_preset(value)
+        if obj_id == 'no_compression':
+            value = self.settings.get_value('compressor-no-compression')
+            self.apply_compressor_preset(value)
 
     def save_compressor_user(self, idx, value):
         self.compressor_user[idx] = value

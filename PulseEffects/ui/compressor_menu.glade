@@ -7,34 +7,18 @@
     <property name="can_focus">False</property>
     <property name="orientation">vertical</property>
     <child>
-      <object class="GtkRadioButton" id="compressor_no_selection">
-        <property name="label">no_selection</property>
+      <object class="GtkButton" id="no_compression">
+        <property name="label" translatable="yes">No Compression</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="active">True</property>
-        <property name="draw_indicator">True</property>
+        <property name="receives_default">True</property>
+        <property name="valign">center</property>
+        <signal name="clicked" handler="on_compressor_preset_clicked" swapped="no"/>
       </object>
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
         <property name="position">0</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioButton" id="compressor_preset_none">
-        <property name="label" translatable="yes">no compression</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="draw_indicator">True</property>
-        <property name="group">compressor_no_selection</property>
-        <signal name="toggled" handler="on_compressor_preset_toggled" swapped="no"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">2</property>
       </packing>
     </child>
   </object>

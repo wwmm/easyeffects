@@ -490,6 +490,7 @@ class Application(Gtk.Application):
             self.setup_sie_limiter.limiter_scale_limit.set_sensitive(False)
             self.setup_sie_limiter.limiter_scale_release_time.set_sensitive(
                 False)
+            self.setup_sie_limiter.popover_button.set_sensitive(False)
         else:
             self.setup_sie_limiter.limiter_input_gain.set_value(-10)
             self.setup_sie_limiter.limiter_limit.set_value(0)
@@ -499,6 +500,7 @@ class Application(Gtk.Application):
             self.setup_sie_limiter.limiter_scale_limit.set_sensitive(True)
             self.setup_sie_limiter.limiter_scale_release_time.set_sensitive(
                 True)
+            self.setup_sie_limiter.popover_button.set_sensitive(True)
 
         out = GLib.Variant('b', state)
         self.settings.set_value('autovolume-state', out)

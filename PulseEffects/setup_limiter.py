@@ -93,13 +93,12 @@ class SetupLimiter():
         self.limiter_limit.set_value(values[1])
         self.limiter_release_time.set_value(values[2])
 
-    def on_limiter_preset_toggled(self, obj):
-        if obj.get_active():
-            obj_id = Gtk.Buildable.get_name(obj)
+    def on_limiter_preset_clicked(self, obj):
+        obj_id = Gtk.Buildable.get_name(obj)
 
-            if obj_id == 'limiter_default':
-                value = self.settings.get_value('limiter-default')
-                self.apply_limiter_preset(value)
+        if obj_id == 'default':
+            value = self.settings.get_value('limiter-default')
+            self.apply_limiter_preset(value)
 
     def save_limiter_user(self, idx, value):
         self.limiter_user[idx] = value
@@ -172,11 +171,10 @@ class SetupLimiter():
         builder.connect_signals(self)
 
         menu = builder.get_object('menu')
-        limiter_no_selection = builder.get_object('limiter_no_selection')
 
-        button = self.app_builder.get_object('limiter_popover')
+        self.popover_button = self.app_builder.get_object('limiter_popover')
 
-        popover = Gtk.Popover.new(button)
+        popover = Gtk.Popover.new(self.popover_button)
         popover.props.transitions_enabled = True
         popover.add(menu)
 
@@ -185,10 +183,8 @@ class SetupLimiter():
                 popover.hide()
             else:
                 popover.show_all()
-                limiter_no_selection.set_active(True)
-                limiter_no_selection.hide()
 
-        button.connect("clicked", button_clicked)
+        self.popover_button.connect("clicked", button_clicked)
 
     def reset(self):
         self.settings.reset('limiter-user')
