@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-07 22:12-0300\n"
-"PO-Revision-Date: 2017-07-07 22:17-0300\n"
+"POT-Creation-Date: 2017-07-08 12:51-0300\n"
+"PO-Revision-Date: 2017-07-08 12:54-0300\n"
 "Last-Translator: Wellington Wallace Miguel Melo <wellingtonwallace@gmail."
 "com>\n"
 "Language-Team: Portuguese <>\n"
@@ -24,63 +24,63 @@ msgstr ""
 msgid "Audio Effects for Pulseaudio Applications"
 msgstr "Efeitos de Áudio para Programas que Utilizam Pulseaudio"
 
-#: ../PulseEffects/ui/compressor_menu.glade:26
-msgid "no compression"
-msgstr "sem compressão"
+#: ../PulseEffects/ui/compressor_menu.glade:11
+msgid "No Compression"
+msgstr "Sem Compressão"
 
-#: ../PulseEffects/ui/equalizer_menu.glade:44
-#: ../PulseEffects/ui/reverb_menu.glade:13
-msgid "Presets"
-msgstr "Predefinições"
-
-#: ../PulseEffects/ui/equalizer_menu.glade:62
-msgid "equal loudness 20"
-msgstr "mesma intensidade 20"
-
-#: ../PulseEffects/ui/equalizer_menu.glade:77
-msgid "equal loudness 40"
-msgstr "mesma intensidade 40"
-
-#: ../PulseEffects/ui/equalizer_menu.glade:92
-msgid "equal loudness 60"
-msgstr "mesma intensidade 60"
-
-#: ../PulseEffects/ui/equalizer_menu.glade:107
-msgid "equal loudness 80"
-msgstr "mesma intensidade 80"
-
-#: ../PulseEffects/ui/equalizer_menu.glade:122
-msgid "equal loudness 100"
-msgstr "mesma intensidade 100"
-
-#: ../PulseEffects/ui/equalizer_menu.glade:137
-msgid "flat"
-msgstr "plano"
-
-#: ../PulseEffects/ui/equalizer_menu.glade:194
+#: ../PulseEffects/ui/equalizer_menu.glade:40
 msgid "Input Filters"
 msgstr "Filtros de Entrada"
 
-#: ../PulseEffects/ui/equalizer_menu.glade:222
-msgid "cutoff [Hz]"
-msgstr "corte [Hz]"
+#: ../PulseEffects/ui/equalizer_menu.glade:68
+msgid "Cutoff [Hz]"
+msgstr "Corte [Hz]"
 
-#: ../PulseEffects/ui/equalizer_menu.glade:249
-#: ../PulseEffects/ui/equalizer_menu.glade:336
-msgid "poles"
-msgstr "pólos"
+#: ../PulseEffects/ui/equalizer_menu.glade:95
+#: ../PulseEffects/ui/equalizer_menu.glade:184
+msgid "Poles"
+msgstr "Pólos"
 
-#: ../PulseEffects/ui/equalizer_menu.glade:280
+#: ../PulseEffects/ui/equalizer_menu.glade:127
 msgid "High Pass"
 msgstr "Passa-alta"
 
-#: ../PulseEffects/ui/equalizer_menu.glade:291
+#: ../PulseEffects/ui/equalizer_menu.glade:139
 msgid "Low Pass"
 msgstr "Passa-baixa"
 
-#: ../PulseEffects/ui/equalizer_menu.glade:309
-msgid "cuttoff [Hz]"
-msgstr "corte [Hz]"
+#: ../PulseEffects/ui/equalizer_menu.glade:157
+msgid "Cuttoff [Hz]"
+msgstr "Corte [Hz]"
+
+#: ../PulseEffects/ui/equalizer_menu.glade:227
+msgid "Equal Loudness 20"
+msgstr "Mesma Intensidade 20"
+
+#: ../PulseEffects/ui/equalizer_menu.glade:241
+msgid "Equal Loudness 40"
+msgstr "Mesma Intensidade 40"
+
+#: ../PulseEffects/ui/equalizer_menu.glade:255
+msgid "Equal Loudness 60"
+msgstr "Mesma Intensidade 60"
+
+#: ../PulseEffects/ui/equalizer_menu.glade:269
+msgid "Equal Loudness 80"
+msgstr "Mesma Intensidade 80"
+
+#: ../PulseEffects/ui/equalizer_menu.glade:283
+msgid "Equal Loudness 100"
+msgstr "Mesma Intensidade 100"
+
+#: ../PulseEffects/ui/equalizer_menu.glade:297
+msgid "Flat"
+msgstr "Plano"
+
+#: ../PulseEffects/ui/equalizer_menu.glade:320
+#: ../PulseEffects/ui/reverb_menu.glade:15
+msgid "Presets"
+msgstr "Predefinições"
 
 #: ../PulseEffects/ui/headerbar.glade:54
 msgid "Auto Volume"
@@ -142,25 +142,25 @@ msgstr "Resetar"
 msgid "Use Dark Theme"
 msgstr "Usar Tema Escuro"
 
-#: ../PulseEffects/ui/limiter_menu.glade:26
-msgid "default"
-msgstr "padrão"
+#: ../PulseEffects/ui/limiter_menu.glade:11
+msgid "Default"
+msgstr "Padrão"
 
-#: ../PulseEffects/ui/reverb_menu.glade:27
-msgid "cathedral"
-msgstr "catedral"
+#: ../PulseEffects/ui/reverb_menu.glade:35
+msgid "Cathedral"
+msgstr "Catedral"
 
-#: ../PulseEffects/ui/reverb_menu.glade:42
-msgid "engine room"
-msgstr "sala de máquinas"
+#: ../PulseEffects/ui/reverb_menu.glade:49
+msgid "Engine Room"
+msgstr "Sala de Máquinas"
 
-#: ../PulseEffects/ui/reverb_menu.glade:57
-msgid "no reverberation"
-msgstr "sem reverberação"
+#: ../PulseEffects/ui/reverb_menu.glade:63
+msgid "No Reverberation"
+msgstr "Sem Reverberação"
 
-#: ../PulseEffects/ui/reverb_menu.glade:72
-msgid "small room"
-msgstr "quarto pequeno"
+#: ../PulseEffects/ui/reverb_menu.glade:77
+msgid "Small Room"
+msgstr "Quarto Pequeno"
 
 #: ../PulseEffects/ui/sink_inputs_plugins.glade:271
 #: ../PulseEffects/ui/source_outputs_plugins.glade:271
@@ -368,6 +368,12 @@ msgstr "Sinal de Teste"
 #: ../PulseEffects/ui/test_signal.glade:715
 msgid "Equal Loudness Curve Calibration"
 msgstr "Calibração da Curva de Mesma Intensidade"
+
+#~ msgid "flat"
+#~ msgstr "plano"
+
+#~ msgid "no reverberation"
+#~ msgstr "sem reverberação"
 
 #~ msgid "Reset Everything"
 #~ msgstr "Resetar Tudo"
