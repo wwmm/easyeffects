@@ -2050,7 +2050,6 @@
                             <property name="hexpand">True</property>
                             <property name="adjustment">compressor_knee</property>
                             <property name="round_digits">0</property>
-                            <property name="digits">0</property>
                             <property name="value_pos">right</property>
                           </object>
                           <packing>

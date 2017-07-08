@@ -188,6 +188,9 @@ class SetupCompressor():
         if obj_id == 'no_compression':
             value = self.settings.get_value('compressor-no-compression')
             self.apply_compressor_preset(value)
+        elif obj_id == 'vlc':
+            value = self.settings.get_value('compressor-vlc')
+            self.apply_compressor_preset(value)
 
     def save_compressor_user(self, idx, value):
         self.compressor_user[idx] = value

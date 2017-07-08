@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-08 12:51-0300\n"
-"PO-Revision-Date: 2017-07-08 12:54-0300\n"
+"POT-Creation-Date: 2017-07-08 13:16-0300\n"
+"PO-Revision-Date: 2017-07-08 13:16-0300\n"
 "Last-Translator: Wellington Wallace Miguel Melo <wellingtonwallace@gmail."
 "com>\n"
 "Language-Team: Portuguese <>\n"
@@ -24,9 +24,19 @@ msgstr ""
 msgid "Audio Effects for Pulseaudio Applications"
 msgstr "Efeitos de Áudio para Programas que Utilizam Pulseaudio"
 
-#: ../PulseEffects/ui/compressor_menu.glade:11
+#: ../PulseEffects/ui/compressor_menu.glade:14
+#: ../PulseEffects/ui/equalizer_menu.glade:320
+#: ../PulseEffects/ui/reverb_menu.glade:15
+msgid "Presets"
+msgstr "Predefinições"
+
+#: ../PulseEffects/ui/compressor_menu.glade:33
 msgid "No Compression"
 msgstr "Sem Compressão"
+
+#: ../PulseEffects/ui/compressor_menu.glade:47
+msgid "Vlc"
+msgstr "Vlc"
 
 #: ../PulseEffects/ui/equalizer_menu.glade:40
 msgid "Input Filters"
@@ -76,11 +86,6 @@ msgstr "Mesma Intensidade 100"
 #: ../PulseEffects/ui/equalizer_menu.glade:297
 msgid "Flat"
 msgstr "Plano"
-
-#: ../PulseEffects/ui/equalizer_menu.glade:320
-#: ../PulseEffects/ui/reverb_menu.glade:15
-msgid "Presets"
-msgstr "Predefinições"
 
 #: ../PulseEffects/ui/headerbar.glade:54
 msgid "Auto Volume"
@@ -199,19 +204,19 @@ msgstr "Liberação [s]"
 
 #: ../PulseEffects/ui/sink_inputs_plugins.glade:1126
 #: ../PulseEffects/ui/sink_inputs_plugins.glade:1655
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:2093
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2092
 #: ../PulseEffects/ui/source_outputs_plugins.glade:1126
 #: ../PulseEffects/ui/source_outputs_plugins.glade:1655
-#: ../PulseEffects/ui/source_outputs_plugins.glade:2093
+#: ../PulseEffects/ui/source_outputs_plugins.glade:2092
 msgid "Input"
 msgstr "Entrada"
 
 #: ../PulseEffects/ui/sink_inputs_plugins.glade:1226
 #: ../PulseEffects/ui/sink_inputs_plugins.glade:1555
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:2193
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2192
 #: ../PulseEffects/ui/source_outputs_plugins.glade:1226
 #: ../PulseEffects/ui/source_outputs_plugins.glade:1555
-#: ../PulseEffects/ui/source_outputs_plugins.glade:2193
+#: ../PulseEffects/ui/source_outputs_plugins.glade:2192
 msgid "Output"
 msgstr "Saída"
 
@@ -290,82 +295,82 @@ msgstr "Razão [n:1]"
 msgid "Knee [dB]"
 msgstr "Joelho [dB]"
 
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:2066
-#: ../PulseEffects/ui/source_outputs_plugins.glade:2066
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2065
+#: ../PulseEffects/ui/source_outputs_plugins.glade:2065
 msgid "Makeup [dB]"
 msgstr "Ganho de Saída [dB]"
 
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:2293
-#: ../PulseEffects/ui/source_outputs_plugins.glade:2293
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2292
+#: ../PulseEffects/ui/source_outputs_plugins.glade:2292
 msgid "Gain Reduction"
 msgstr "Redução de Ganho"
 
-#: ../PulseEffects/ui/test_signal.glade:54
+#: ../PulseEffects/ui/test_signal.glade:51
 msgid "Sine"
 msgstr "Seno"
 
-#: ../PulseEffects/ui/test_signal.glade:69
+#: ../PulseEffects/ui/test_signal.glade:66
 msgid "Square"
 msgstr "Quadrada"
 
-#: ../PulseEffects/ui/test_signal.glade:84
+#: ../PulseEffects/ui/test_signal.glade:81
 msgid "Saw"
 msgstr "Serra"
 
-#: ../PulseEffects/ui/test_signal.glade:99
+#: ../PulseEffects/ui/test_signal.glade:96
 msgid "Triangle"
 msgstr "Triângulo"
 
-#: ../PulseEffects/ui/test_signal.glade:114
+#: ../PulseEffects/ui/test_signal.glade:111
 msgid "Pink Noise"
 msgstr "Ruído Rosa"
 
-#: ../PulseEffects/ui/test_signal.glade:129
+#: ../PulseEffects/ui/test_signal.glade:126
 msgid "White Noise"
 msgstr "Ruído Branco"
 
-#: ../PulseEffects/ui/test_signal.glade:144
+#: ../PulseEffects/ui/test_signal.glade:141
 msgid "Silence"
 msgstr "Silencio"
 
-#: ../PulseEffects/ui/test_signal.glade:159
+#: ../PulseEffects/ui/test_signal.glade:156
 msgid "Sine Table"
 msgstr "Tabela de Seno"
 
-#: ../PulseEffects/ui/test_signal.glade:174
+#: ../PulseEffects/ui/test_signal.glade:171
 msgid "Ticks"
 msgstr "Tique-Taque"
 
-#: ../PulseEffects/ui/test_signal.glade:189
+#: ../PulseEffects/ui/test_signal.glade:186
 msgid "Gaussian Noise"
 msgstr "Ruído Gaussiano"
 
-#: ../PulseEffects/ui/test_signal.glade:204
+#: ../PulseEffects/ui/test_signal.glade:201
 msgid "Red Noise"
 msgstr "Ruído Vermelho"
 
-#: ../PulseEffects/ui/test_signal.glade:219
+#: ../PulseEffects/ui/test_signal.glade:216
 msgid "Blue Noise"
 msgstr "Ruído Azul"
 
-#: ../PulseEffects/ui/test_signal.glade:234
+#: ../PulseEffects/ui/test_signal.glade:231
 msgid "Violet Noise"
 msgstr "Ruído Violeta"
 
-#: ../PulseEffects/ui/test_signal.glade:273
+#: ../PulseEffects/ui/test_signal.glade:270
 msgid "Frequency [Hz]"
 msgstr "Frequência [Hz]"
 
-#: ../PulseEffects/ui/test_signal.glade:317
-#: ../PulseEffects/ui/test_signal.glade:662
+#: ../PulseEffects/ui/test_signal.glade:315
+#: ../PulseEffects/ui/test_signal.glade:658
 msgid "Volume"
 msgstr "Volume"
 
-#: ../PulseEffects/ui/test_signal.glade:370
+#: ../PulseEffects/ui/test_signal.glade:369
 msgid "Test Signal"
 msgstr "Sinal de Teste"
 
-#: ../PulseEffects/ui/test_signal.glade:715
+#: ../PulseEffects/ui/test_signal.glade:712
 msgid "Equal Loudness Curve Calibration"
 msgstr "Calibração da Curva de Mesma Intensidade"
 
