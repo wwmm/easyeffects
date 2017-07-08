@@ -86,7 +86,6 @@ class SetupEqualizer():
         builder.connect_signals(self)
 
         menu = builder.get_object('menu')
-        eq_no_selection = builder.get_object('eq_no_selection')
         self.eq_highpass_cutoff_freq = builder.get_object(
             'eq_highpass_cutoff_freq')
         self.eq_highpass_poles = builder.get_object(
@@ -107,8 +106,6 @@ class SetupEqualizer():
                 popover.hide()
             else:
                 popover.show_all()
-                eq_no_selection.set_active(True)
-                eq_no_selection.hide()
 
         button.connect("clicked", button_clicked)
 
@@ -227,28 +224,27 @@ class SetupEqualizer():
         self.eq_band13.set_value(values[13])
         self.eq_band14.set_value(values[14])
 
-    def on_eq_preset_toggled(self, obj):
-        if obj.get_active():
-            obj_id = Gtk.Buildable.get_name(obj)
+    def on_eq_preset_clicked(self, obj):
+        obj_id = Gtk.Buildable.get_name(obj)
 
-            if obj_id == 'eq_equal_loudness_20':
-                value = self.settings.get_value('equalizer-equal-loudness-20')
-                self.apply_eq_preset(value)
-            elif obj_id == 'eq_equal_loudness_40':
-                value = self.settings.get_value('equalizer-equal-loudness-40')
-                self.apply_eq_preset(value)
-            elif obj_id == 'eq_equal_loudness_60':
-                value = self.settings.get_value('equalizer-equal-loudness-60')
-                self.apply_eq_preset(value)
-            elif obj_id == 'eq_equal_loudness_80':
-                value = self.settings.get_value('equalizer-equal-loudness-80')
-                self.apply_eq_preset(value)
-            elif obj_id == 'eq_equal_loudness_100':
-                value = self.settings.get_value('equalizer-equal-loudness-100')
-                self.apply_eq_preset(value)
-            elif obj_id == 'eq_flat':
-                value = self.settings.get_value('equalizer-flat')
-                self.apply_eq_preset(value)
+        if obj_id == 'equal_loudness_20':
+            value = self.settings.get_value('equalizer-equal-loudness-20')
+            self.apply_eq_preset(value)
+        elif obj_id == 'equal_loudness_40':
+            value = self.settings.get_value('equalizer-equal-loudness-40')
+            self.apply_eq_preset(value)
+        elif obj_id == 'equal_loudness_60':
+            value = self.settings.get_value('equalizer-equal-loudness-60')
+            self.apply_eq_preset(value)
+        elif obj_id == 'equal_loudness_80':
+            value = self.settings.get_value('equalizer-equal-loudness-80')
+            self.apply_eq_preset(value)
+        elif obj_id == 'equal_loudness_100':
+            value = self.settings.get_value('equalizer-equal-loudness-100')
+            self.apply_eq_preset(value)
+        elif obj_id == 'flat':
+            value = self.settings.get_value('equalizer-flat')
+            self.apply_eq_preset(value)
 
     def save_eq_user(self, idx, value):
         self.eq_band_user[idx] = value

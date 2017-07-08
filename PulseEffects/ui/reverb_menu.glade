@@ -11,6 +11,7 @@
       <object class="GtkLabel">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="margin_bottom">6</property>
         <property name="label" translatable="yes">Presets</property>
         <attributes>
           <attribute name="weight" value="bold"/>
