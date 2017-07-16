@@ -32,7 +32,6 @@ class TestSignal(GObject.GObject):
         self.rate = 48000
 
         # equal loudness scaling factor
-        self.amp_scaling = [1.0, 1.0, 1.0]
         self.wave2_volume = 0.0
 
         self.log = logging.getLogger('PulseEffects')
@@ -69,12 +68,9 @@ class TestSignal(GObject.GObject):
 
         self.audio_src1 = Gst.ElementFactory.make('audiotestsrc', None)
         self.audio_src2 = Gst.ElementFactory.make('audiotestsrc', None)
-        self.audio_src3 = Gst.ElementFactory.make('audiotestsrc', None)
-        self.audio_src4 = Gst.ElementFactory.make('audiotestsrc', None)
         src1_caps = Gst.ElementFactory.make("capsfilter", None)
         src2_caps = Gst.ElementFactory.make("capsfilter", None)
-        src3_caps = Gst.ElementFactory.make("capsfilter", None)
-        src4_caps = Gst.ElementFactory.make("capsfilter", None)
+        self.bandpass = Gst.ElementFactory.make('audiochebband', None)
         mixer = Gst.ElementFactory.make('audiomixer', None)
         spectrum = Gst.ElementFactory.make('spectrum', 'spectrum')
         self.audio_sink = Gst.ElementFactory.make('pulsesink', None)
@@ -84,9 +80,12 @@ class TestSignal(GObject.GObject):
         self.audio_sink.set_property('mute', False)
 
         self.audio_src1.set_property('wave', 'sine')
-        self.audio_src2.set_property('wave', 'sine')
-        self.audio_src3.set_property('wave', 'sine')
-        self.audio_src4.set_property('wave', 'sine')
+        self.audio_src2.set_property('wave', 'pink-noise')
+
+        self.bandpass.set_property('mode', 'band-pass')
+        self.bandpass.set_property('type', 1)
+        self.bandpass.set_property('poles', 4)
+        self.bandpass.set_property('ripple', 0)
 
         spectrum.set_property('bands', self.spectrum_nbands)
         spectrum.set_property('threshold', self.spectrum_threshold)
@@ -98,17 +97,12 @@ class TestSignal(GObject.GObject):
 
         src1_caps.set_property("caps", src_caps)
         src2_caps.set_property("caps", src_caps)
-        src3_caps.set_property("caps", src_caps)
-        src4_caps.set_property("caps", src_caps)
 
         pipeline.add(self.audio_src1)
         pipeline.add(self.audio_src2)
-        pipeline.add(self.audio_src3)
-        pipeline.add(self.audio_src4)
         pipeline.add(src1_caps)
         pipeline.add(src2_caps)
-        pipeline.add(src3_caps)
-        pipeline.add(src4_caps)
+        pipeline.add(self.bandpass)
         pipeline.add(mixer)
         pipeline.add(spectrum)
         pipeline.add(self.audio_sink)
@@ -119,13 +113,8 @@ class TestSignal(GObject.GObject):
         spectrum.link(self.audio_sink)
 
         self.audio_src2.link(src2_caps)
-        src2_caps.link(mixer)
-
-        self.audio_src3.link(src3_caps)
-        src3_caps.link(mixer)
-
-        self.audio_src4.link(src4_caps)
-        src4_caps.link(mixer)
+        src2_caps.link(self.bandpass)
+        self.bandpass.link(mixer)
 
         return pipeline
 
@@ -215,22 +204,20 @@ class TestSignal(GObject.GObject):
 
     # amp is a rescaling factor so that all frequencies have the same intensity
     def set_wave2_freq(self, lower, center, upper):
-        self.amp_scaling[0] = lower / 26  # frequency / 26 Hz
-        self.amp_scaling[1] = center / 26
-        self.amp_scaling[2] = upper / 26
-
         self.set_wave2_volume(self.wave2_volume)
 
-        self.audio_src2.set_property('freq', lower)
-        self.audio_src3.set_property('freq', center)
-        self.audio_src4.set_property('freq', upper)
+        current_lower = self.bandpass.get_property('lower-frequency')
+
+        if upper < current_lower:
+            self.bandpass.set_property('lower-frequency', lower)
+            self.bandpass.set_property('upper-frequency', upper)
+        else:
+            self.bandpass.set_property('upper-frequency', upper)
+            self.bandpass.set_property('lower-frequency', lower)
+
+        # self.audio_src2.set_property('freq', lower)
 
     def set_wave2_volume(self, value):
         self.wave2_volume = value
 
-        self.audio_src2.set_property('volume',
-                                     value / self.amp_scaling[0]**(0.5))
-        self.audio_src3.set_property('volume',
-                                     value / self.amp_scaling[1]**(0.5))
-        self.audio_src4.set_property('volume',
-                                     value / self.amp_scaling[2]**(0.5))
+        self.audio_src2.set_property('volume', value)
