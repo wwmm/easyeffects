@@ -159,6 +159,7 @@ class SinkInputEffects(GObject.GObject):
         # shelf fixes this.
 
         self.eq_band0.set_property('type', 0)  # 0: peak type
+        self.eq_band14.set_property('type', 0)  # 0: peak type
 
         spectrum.set_property('bands', self.spectrum_nbands)
         spectrum.set_property('threshold', self.spectrum_threshold)

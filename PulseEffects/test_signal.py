@@ -31,9 +31,6 @@ class TestSignal(GObject.GObject):
         self.spectrum_threshold = -120  # dB
         self.rate = 48000
 
-        # equal loudness scaling factor
-        self.wave2_volume = 0.0
-
         self.log = logging.getLogger('PulseEffects')
 
         self.calc_spectrum_freqs()
@@ -204,8 +201,6 @@ class TestSignal(GObject.GObject):
 
     # amp is a rescaling factor so that all frequencies have the same intensity
     def set_wave2_freq(self, lower, center, upper):
-        self.set_wave2_volume(self.wave2_volume)
-
         current_lower = self.bandpass.get_property('lower-frequency')
 
         if upper < current_lower:
@@ -215,9 +210,5 @@ class TestSignal(GObject.GObject):
             self.bandpass.set_property('upper-frequency', upper)
             self.bandpass.set_property('lower-frequency', lower)
 
-        # self.audio_src2.set_property('freq', lower)
-
     def set_wave2_volume(self, value):
-        self.wave2_volume = value
-
         self.audio_src2.set_property('volume', value)
