@@ -95,6 +95,8 @@ class TestSignal(GObject.GObject):
         src1_caps.set_property("caps", src_caps)
         src2_caps.set_property("caps", src_caps)
 
+        mixer.set_property('caps', src_caps)
+
         pipeline.add(self.audio_src1)
         pipeline.add(self.audio_src2)
         pipeline.add(src1_caps)
@@ -200,7 +202,7 @@ class TestSignal(GObject.GObject):
         self.audio_src1.set_property('wave', value)
 
     # amp is a rescaling factor so that all frequencies have the same intensity
-    def set_wave2_freq(self, lower, center, upper):
+    def set_wave2_freq(self, lower, upper, poles):
         current_lower = self.bandpass.get_property('lower-frequency')
 
         if upper < current_lower:
@@ -209,6 +211,8 @@ class TestSignal(GObject.GObject):
         else:
             self.bandpass.set_property('upper-frequency', upper)
             self.bandpass.set_property('lower-frequency', lower)
+
+        self.bandpass.set_property('poles', poles)
 
     def set_wave2_volume(self, value):
         self.audio_src2.set_property('volume', value)

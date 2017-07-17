@@ -156,93 +156,92 @@ class SetupTestSignal():
             upper_factor = 2.0
 
             if obj_id == 'wave2_band0':
-                # amplitude scaling factor, lower, center, upper
                 center = 26
                 lower = lower_factor * center
                 upper = upper_factor * center
 
-                self.ts.set_wave2_freq(lower, center, upper)
+                self.ts.set_wave2_freq(lower, upper, 4)
             elif obj_id == 'wave2_band1':
                 center = 41
                 lower = lower_factor * center
                 upper = upper_factor * center
 
-                self.ts.set_wave2_freq(lower, center, upper)
+                self.ts.set_wave2_freq(lower, upper, 4)
             elif obj_id == 'wave2_band2':
                 center = 65
                 lower = lower_factor * center
                 upper = upper_factor * center
 
-                self.ts.set_wave2_freq(lower, center, upper)
+                self.ts.set_wave2_freq(lower, upper, 4)
             elif obj_id == 'wave2_band3':
                 center = 103
                 lower = lower_factor * center
                 upper = upper_factor * center
 
-                self.ts.set_wave2_freq(lower, center, upper)
+                self.ts.set_wave2_freq(lower, upper, 4)
             elif obj_id == 'wave2_band4':
                 center = 163
                 lower = lower_factor * center
                 upper = upper_factor * center
 
-                self.ts.set_wave2_freq(lower, center, upper)
+                self.ts.set_wave2_freq(lower, upper, 8)
             elif obj_id == 'wave2_band5':
                 center = 259
                 lower = lower_factor * center
                 upper = upper_factor * center
 
-                self.ts.set_wave2_freq(lower, center, upper)
+                self.ts.set_wave2_freq(lower, upper, 8)
             elif obj_id == 'wave2_band6':
                 center = 410
                 lower = lower_factor * center
                 upper = upper_factor * center
 
-                self.ts.set_wave2_freq(lower, center, upper)
+                self.ts.set_wave2_freq(lower, upper, 8)
             elif obj_id == 'wave2_band7':
                 center = 649
                 lower = lower_factor * center
                 upper = upper_factor * center
 
-                self.ts.set_wave2_freq(lower, center, upper)
+                self.ts.set_wave2_freq(lower, upper, 8)
             elif obj_id == 'wave2_band8':
                 center = 1029
                 lower = lower_factor * center
                 upper = upper_factor * center
 
-                self.ts.set_wave2_freq(lower, center, upper)
+                self.ts.set_wave2_freq(lower, upper, 12)
             elif obj_id == 'wave2_band9':
                 center = 1631
                 lower = lower_factor * center
                 upper = upper_factor * center
 
-                self.ts.set_wave2_freq(lower, center, upper)
+                self.ts.set_wave2_freq(lower, upper, 16)
             elif obj_id == 'wave2_band10':
                 center = 2585
                 lower = lower_factor * center
                 upper = upper_factor * center
 
-                self.ts.set_wave2_freq(lower, center, upper)
+                self.ts.set_wave2_freq(lower, upper, 20)
             elif obj_id == 'wave2_band11':
                 center = 4097
                 lower = lower_factor * center
                 upper = upper_factor * center
 
-                self.ts.set_wave2_freq(lower, center, upper)
+                self.ts.set_wave2_freq(lower, upper, 28)
             elif obj_id == 'wave2_band12':
                 center = 6493
                 lower = lower_factor * center
                 upper = upper_factor * center
 
-                self.ts.set_wave2_freq(lower, center, upper)
+                self.ts.set_wave2_freq(lower, upper, 32)
             elif obj_id == 'wave2_band13':
                 center = 10291
                 lower = lower_factor * center
-                upper = upper_factor * center
+                upper = 20000
 
-                self.ts.set_wave2_freq(lower, center, upper)
+                self.ts.set_wave2_freq(lower, upper, 32)
             elif obj_id == 'wave2_band14':
                 center = 16310
                 lower = lower_factor * center
-                upper = upper_factor * center
+                upper = 20000
 
-                self.ts.set_wave2_freq(lower, center, upper)
+                self.ts.set_wave2_freq(lower, upper, 32)
