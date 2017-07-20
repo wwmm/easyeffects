@@ -54,6 +54,10 @@ Users upgrading from 1.x to 2.x will have to rebuild their presets. Since
 version 2.0.0 PulseEffects uses a different format for saving presets. This
 change was necessary to support presets for microphone processing.
 
+Command to install all PulseEffects dependencies for Fedora:
+```
+dnf install python3 python-gobject python3-cairo python3-numpy python3-scipy gtk3 gstreamer1 gstreamer1-plugins-good gstreamer1-plugins-bad-free python3-gstreamer1 ladspa-swh-plugins
+```
 Arch Linux package:
 
 [https://aur.archlinux.org/packages/pulseeffects/](https://aur.archlinux.org/packages/pulseeffects/)
