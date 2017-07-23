@@ -60,6 +60,14 @@ class TestSignal(GObject.GObject):
 
         self.spectrum_x_axis = np.logspace(1.3, 4.3, self.spectrum_n_points)
 
+    def set_spectrum_n_points(self, value):
+        self.spectrum_n_points = value
+
+        self.spectrum_x_axis = np.logspace(1.3, 4.3, value)
+
+    def enable_spectrum(self, state):
+        self.spectrum.set_property('post-messages', state)
+
     def build_pipeline(self):
         pipeline = Gst.Pipeline()
 
@@ -69,7 +77,7 @@ class TestSignal(GObject.GObject):
         src2_caps = Gst.ElementFactory.make("capsfilter", None)
         self.bandpass = Gst.ElementFactory.make('audiochebband', None)
         mixer = Gst.ElementFactory.make('audiomixer', None)
-        spectrum = Gst.ElementFactory.make('spectrum', 'spectrum')
+        self.spectrum = Gst.ElementFactory.make('spectrum', 'spectrum')
         self.audio_sink = Gst.ElementFactory.make('pulsesink', None)
 
         self.audio_sink.set_property('device', 'PulseEffects_apps')
@@ -84,8 +92,8 @@ class TestSignal(GObject.GObject):
         self.bandpass.set_property('poles', 4)
         self.bandpass.set_property('ripple', 0)
 
-        spectrum.set_property('bands', self.spectrum_nbands)
-        spectrum.set_property('threshold', self.spectrum_threshold)
+        self.spectrum.set_property('bands', self.spectrum_nbands)
+        self.spectrum.set_property('threshold', self.spectrum_threshold)
 
         caps = ['audio/x-raw', 'format=F32LE',
                 'rate=' + str(self.rate), 'channels=2']
@@ -103,13 +111,13 @@ class TestSignal(GObject.GObject):
         pipeline.add(src2_caps)
         pipeline.add(self.bandpass)
         pipeline.add(mixer)
-        pipeline.add(spectrum)
+        pipeline.add(self.spectrum)
         pipeline.add(self.audio_sink)
 
         self.audio_src1.link(src1_caps)
         src1_caps.link(mixer)
-        mixer.link(spectrum)
-        spectrum.link(self.audio_sink)
+        mixer.link(self.spectrum)
+        self.spectrum.link(self.audio_sink)
 
         self.audio_src2.link(src2_caps)
         src2_caps.link(self.bandpass)

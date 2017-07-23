@@ -99,7 +99,7 @@ class SinkInputEffects(GObject.GObject):
 
         self.equalizer = Gst.ElementFactory.make('equalizer-nbands', None)
 
-        spectrum = Gst.ElementFactory.make('spectrum', 'spectrum')
+        self.spectrum = Gst.ElementFactory.make('spectrum', 'spectrum')
 
         self.output_limiter = Gst.ElementFactory.make(
             'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter', None)
@@ -163,8 +163,8 @@ class SinkInputEffects(GObject.GObject):
         self.eq_band0.set_property('type', 0)  # 0: peak type
         self.eq_band14.set_property('type', 0)  # 0: peak type
 
-        spectrum.set_property('bands', self.spectrum_nbands)
-        spectrum.set_property('threshold', self.spectrum_threshold)
+        self.spectrum.set_property('bands', self.spectrum_nbands)
+        self.spectrum.set_property('threshold', self.spectrum_threshold)
 
         self.eq_highpass = Gst.ElementFactory.make('audiocheblimit', None)
         self.eq_highpass.set_property('mode', 'high-pass')
@@ -199,7 +199,7 @@ class SinkInputEffects(GObject.GObject):
         pipeline.add(self.equalizer_output_gain)
         pipeline.add(self.output_limiter)
         pipeline.add(equalizer_output_level)
-        pipeline.add(spectrum)
+        pipeline.add(self.spectrum)
         pipeline.add(self.audio_sink)
 
         self.audio_src.link(source_caps)
@@ -220,8 +220,8 @@ class SinkInputEffects(GObject.GObject):
         self.equalizer.link(self.equalizer_output_gain)
         self.equalizer_output_gain.link(self.output_limiter)
         self.output_limiter.link(equalizer_output_level)
-        equalizer_output_level.link(spectrum)
-        spectrum.link(self.audio_sink)
+        equalizer_output_level.link(self.spectrum)
+        self.spectrum.link(self.audio_sink)
 
         return pipeline
 
@@ -451,6 +451,9 @@ class SinkInputEffects(GObject.GObject):
         self.spectrum_n_points = value
 
         self.spectrum_x_axis = np.logspace(1.3, 4.3, value)
+
+    def enable_spectrum(self, state):
+        self.spectrum.set_property('post-messages', state)
 
     def init_latency_time(self, value):
         self.audio_src.set_property('latency-time', value)

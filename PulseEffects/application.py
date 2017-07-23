@@ -451,7 +451,13 @@ class Application(Gtk.Application):
     def on_show_spectrum_state_set(self, obj, state):
         if state:
             self.spectrum.show()
+            self.sie.enable_spectrum(True)
+            self.soe.enable_spectrum(True)
+            self.ts.enable_spectrum(True)
         else:
+            self.sie.enable_spectrum(False)
+            self.soe.enable_spectrum(False)
+            self.ts.enable_spectrum(False)
             self.spectrum.hide()
 
         out = GLib.Variant('b', state)
@@ -465,6 +471,7 @@ class Application(Gtk.Application):
 
         self.sie.set_spectrum_n_points(value)
         self.soe.set_spectrum_n_points(value)
+        self.ts.set_spectrum_n_points(value)
 
     def init_autovolume_widgets(self):
         autovolume_state_obj = self.builder.get_object('autovolume_state')
@@ -555,6 +562,10 @@ class Application(Gtk.Application):
         self.settings.reset('buffer-time')
         self.settings.reset('latency-time')
         self.settings.reset('autovolume-state')
+        self.settings.reset('autovolume-window')
+        self.settings.reset('autovolume-target')
+        self.settings.reset('autovolume-tolerance')
+        self.settings.reset('autovolume-threshold')
         self.settings.reset('panorama')
         self.settings.reset('show-spectrum')
         self.settings.reset('spectrum-n-points')
