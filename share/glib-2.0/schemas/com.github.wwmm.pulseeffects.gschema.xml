@@ -16,6 +16,18 @@
         <key name="autovolume-state" type="b">
           <default>false</default>
         </key>
+        <key name="autovolume-window" type="i">
+          <default>2000</default>
+        </key>
+        <key name="autovolume-target" type="i">
+          <default>-12</default>
+        </key>
+        <key name="autovolume-tolerance" type="i">
+          <default>1</default>
+        </key>
+        <key name="autovolume-threshold" type="i">
+          <default>-50</default>
+        </key>
         <key name="use-dark-theme" type="b">
           <default>false</default>
         </key>

@@ -2,6 +2,29 @@
 <!-- Generated with glade 3.20.0 -->
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.18"/>
+  <object class="GtkAdjustment" id="autovolume_target">
+    <property name="lower">-99</property>
+    <property name="upper">-3</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="autovolume_threshold">
+    <property name="lower">-99</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="autovolume_tolerance">
+    <property name="lower">1</property>
+    <property name="upper">3</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="autovolume_window">
+    <property name="lower">1</property>
+    <property name="upper">2000</property>
+    <property name="step_increment">100</property>
+    <property name="page_increment">100</property>
+  </object>
   <object class="GtkAdjustment" id="buffer_time">
     <property name="lower">1</property>
     <property name="upper">400</property>
@@ -213,7 +236,8 @@
       <object class="GtkGrid">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="row_spacing">2</property>
+        <property name="row_spacing">3</property>
+        <property name="column_spacing">3</property>
         <property name="column_homogeneous">True</property>
         <child>
           <object class="GtkLabel">
@@ -232,9 +256,11 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="halign">end</property>
+            <property name="width_chars">3</property>
             <property name="input_purpose">number</property>
             <property name="adjustment">buffer_time</property>
             <property name="numeric">True</property>
+            <property name="update_policy">if-valid</property>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -258,7 +284,11 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="halign">end</property>
+            <property name="width_chars">2</property>
+            <property name="input_purpose">number</property>
             <property name="adjustment">latency_time</property>
+            <property name="numeric">True</property>
+            <property name="update_policy">if-valid</property>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -290,7 +320,7 @@
         <property name="visible">True</property>
         <property name="sensitive">False</property>
         <property name="can_focus">False</property>
-        <property name="label" translatable="yes">Spectrum</property>
+        <property name="label" translatable="yes">Auto Volume</property>
       </object>
       <packing>
         <property name="expand">False</property>
@@ -299,11 +329,197 @@
       </packing>
     </child>
     <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="row_spacing">3</property>
+            <property name="column_spacing">3</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="label" translatable="yes">Window [ms]</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="label" translatable="yes">Tolerance [dB]</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="width_chars">4</property>
+                <property name="input_purpose">number</property>
+                <property name="adjustment">autovolume_window</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="width_chars">3</property>
+                <property name="input_purpose">number</property>
+                <property name="adjustment">autovolume_tolerance</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSeparator">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">center</property>
+            <property name="margin_left">4</property>
+            <property name="margin_right">4</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="row_spacing">3</property>
+            <property name="column_spacing">3</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="label" translatable="yes">Target [dB]</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="width_chars">3</property>
+                <property name="input_purpose">number</property>
+                <property name="adjustment">autovolume_target</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="label" translatable="yes">Threshold [dB]</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="width_chars">3</property>
+                <property name="input_purpose">number</property>
+                <property name="adjustment">autovolume_threshold</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">4</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSeparator">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin_top">2</property>
+        <property name="margin_bottom">2</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">5</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel">
+        <property name="visible">True</property>
+        <property name="sensitive">False</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Spectrum</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">6</property>
+      </packing>
+    </child>
+    <child>
       <object class="GtkGrid">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="hexpand">True</property>
-        <property name="row_spacing">2</property>
+        <property name="row_spacing">3</property>
+        <property name="column_spacing">3</property>
         <property name="column_homogeneous">True</property>
         <child>
           <object class="GtkLabel">
@@ -347,7 +563,11 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="halign">end</property>
+            <property name="width_chars">3</property>
+            <property name="input_purpose">number</property>
             <property name="adjustment">spectrum_n_points</property>
+            <property name="numeric">True</property>
+            <property name="update_policy">if-valid</property>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -358,7 +578,7 @@
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">4</property>
+        <property name="position">7</property>
       </packing>
     </child>
     <child>
@@ -371,7 +591,7 @@
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">5</property>
+        <property name="position">8</property>
       </packing>
     </child>
     <child>
@@ -384,14 +604,15 @@
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">6</property>
+        <property name="position">9</property>
       </packing>
     </child>
     <child>
       <object class="GtkGrid">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="row_spacing">2</property>
+        <property name="row_spacing">3</property>
+        <property name="column_spacing">3</property>
         <child>
           <object class="GtkLabel">
             <property name="visible">True</property>
@@ -448,7 +669,7 @@
       <packing>
         <property name="expand">True</property>
         <property name="fill">True</property>
-        <property name="position">7</property>
+        <property name="position">10</property>
       </packing>
     </child>
   </object>

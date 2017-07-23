@@ -468,10 +468,34 @@ class Application(Gtk.Application):
 
     def init_autovolume_widgets(self):
         autovolume_state_obj = self.builder.get_object('autovolume_state')
+        autovolume_window_obj = self.builder.get_object('autovolume_window')
+        autovolume_target_obj = self.builder.get_object('autovolume_target')
+        autovolume_tolerance_obj = self.builder.get_object(
+            'autovolume_tolerance')
+        autovolume_threshold_obj = self.builder.get_object(
+            'autovolume_threshold')
 
-        autovolume_state = self.settings.get_value('autovolume-state').unpack()
+        autovolume_state = self.settings.get_value(
+            'autovolume-state').unpack()
+        autovolume_window = self.settings.get_value(
+            'autovolume-window').unpack()
+        autovolume_target = self.settings.get_value(
+            'autovolume-target').unpack()
+        autovolume_tolerance = self.settings.get_value(
+            'autovolume-tolerance').unpack()
+        autovolume_threshold = self.settings.get_value(
+            'autovolume-threshold').unpack()
 
         autovolume_state_obj.set_state(autovolume_state)
+        autovolume_window_obj.set_value(autovolume_window)
+        autovolume_target_obj.set_value(autovolume_target)
+        autovolume_tolerance_obj.set_value(autovolume_tolerance)
+        autovolume_threshold_obj.set_value(autovolume_threshold)
+
+        self.sie.set_autovolume_window(autovolume_window)
+        self.sie.autovolume_target = autovolume_target
+        self.sie.autovolume_tolerance = autovolume_tolerance
+        self.sie.autovolume_threshold = autovolume_threshold
 
         if autovolume_state:
             self.enable_autovolume(True)

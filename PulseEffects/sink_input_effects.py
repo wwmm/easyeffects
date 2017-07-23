@@ -56,6 +56,10 @@ class SinkInputEffects(GObject.GObject):
         self.spectrum_threshold = -120  # dB
 
         self.autovolume_enabled = False
+        self.autovolume_target = -12  # dB
+        self.autovolume_tolerance = 1  # dB
+        self.autovolume_threshold = -50  # autovolume only if avg > threshold
+
         self.is_playing = False
 
         self.log = logging.getLogger('PulseEffects')
@@ -115,7 +119,7 @@ class SinkInputEffects(GObject.GObject):
         equalizer_output_level = Gst.ElementFactory.make(
             'level', 'equalizer_output_level')
 
-        autovolume = Gst.ElementFactory.make('level', 'autovolume')
+        self.autovolume_level = Gst.ElementFactory.make('level', 'autovolume')
 
         self.audio_src.set_property('volume', 1.0)
         self.audio_src.set_property('mute', False)
@@ -130,8 +134,6 @@ class SinkInputEffects(GObject.GObject):
 
         self.audio_sink.set_property('volume', 1.0)
         self.audio_sink.set_property('mute', False)
-
-        autovolume.set_property('interval', 2000000000)  # 2 seconds
 
         self.panorama.set_property('method', 'psychoacoustic')
 
@@ -183,7 +185,7 @@ class SinkInputEffects(GObject.GObject):
         pipeline.add(limiter_input_level)
         pipeline.add(self.limiter)
         pipeline.add(limiter_output_level)
-        pipeline.add(autovolume)
+        pipeline.add(self.autovolume_level)
         pipeline.add(self.panorama)
         pipeline.add(self.compressor)
         pipeline.add(compressor_output_level)
@@ -204,8 +206,8 @@ class SinkInputEffects(GObject.GObject):
         source_caps.link(limiter_input_level)
         limiter_input_level.link(self.limiter)
         self.limiter.link(limiter_output_level)
-        limiter_output_level.link(autovolume)
-        autovolume.link(self.panorama)
+        limiter_output_level.link(self.autovolume_level)
+        self.autovolume_level.link(self.panorama)
         self.panorama.link(self.compressor)
         self.compressor.link(compressor_output_level)
         compressor_output_level.link(self.freeverb)
@@ -300,18 +302,16 @@ class SinkInputEffects(GObject.GObject):
         self.spectrum_x_axis = np.logspace(1.3, 4.3, self.spectrum_n_points)
 
     def auto_gain(self, max_value):
-        threshold = -12
-        delta = 1
         max_value = int(max_value)
 
-        if max_value > threshold + delta:
+        if max_value > self.autovolume_target + self.autovolume_tolerance:
             gain = self.limiter.get_property('input-gain')
 
             if gain - 1 >= -20:
                 gain = gain - 1
 
                 self.emit('new_autovolume', gain)
-        elif max_value < threshold - delta:
+        elif max_value < self.autovolume_target - self.autovolume_tolerance:
             gain = self.limiter.get_property('input-gain')
 
             if gain + 1 <= 20:
@@ -379,7 +379,7 @@ class SinkInputEffects(GObject.GObject):
 
                 max_value = max(peak)
 
-                if max_value > -50:
+                if max_value > self.autovolume_threshold:
                     self.auto_gain(max_value)
 
         elif plugin == 'compressor_output_level':
@@ -464,6 +464,10 @@ class SinkInputEffects(GObject.GObject):
 
     def set_autovolume_state(self, value):
         self.autovolume_enabled = value
+
+    def set_autovolume_window(self, value):
+        # value must be in ms
+        self.autovolume_level.set_property('interval', value * 1000000)
 
     def set_limiter_input_gain(self, value):
         self.limiter.set_property('input-gain', value)
