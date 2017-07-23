@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-23 15:38-0300\n"
+"POT-Creation-Date: 2017-07-23 15:58-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -117,48 +117,48 @@ msgid "latency-time [ms]"
 msgstr ""
 
 #: ../PulseEffects/ui/headerbar.glade:350
-msgid "Window [ms]"
+msgid "Window [s]"
 msgstr ""
 
 #: ../PulseEffects/ui/headerbar.glade:362
 msgid "Tolerance [dB]"
 msgstr ""
 
-#: ../PulseEffects/ui/headerbar.glade:431
+#: ../PulseEffects/ui/headerbar.glade:432
 msgid "Target [dB]"
 msgstr ""
 
-#: ../PulseEffects/ui/headerbar.glade:458
+#: ../PulseEffects/ui/headerbar.glade:459
 #: ../PulseEffects/ui/sink_inputs_plugins.glade:1863
 #: ../PulseEffects/ui/source_outputs_plugins.glade:1863
 msgid "Threshold [dB]"
 msgstr ""
 
-#: ../PulseEffects/ui/headerbar.glade:512
+#: ../PulseEffects/ui/headerbar.glade:513
 msgid "Spectrum"
 msgstr ""
 
-#: ../PulseEffects/ui/headerbar.glade:533
+#: ../PulseEffects/ui/headerbar.glade:534
 msgid "Show"
 msgstr ""
 
-#: ../PulseEffects/ui/headerbar.glade:545
+#: ../PulseEffects/ui/headerbar.glade:546
 msgid "Points"
 msgstr ""
 
-#: ../PulseEffects/ui/headerbar.glade:606
+#: ../PulseEffects/ui/headerbar.glade:607
 msgid "General"
 msgstr ""
 
-#: ../PulseEffects/ui/headerbar.glade:626
+#: ../PulseEffects/ui/headerbar.glade:627
 msgid "Settings"
 msgstr ""
 
-#: ../PulseEffects/ui/headerbar.glade:635
+#: ../PulseEffects/ui/headerbar.glade:636
 msgid "Reset"
 msgstr ""
 
-#: ../PulseEffects/ui/headerbar.glade:654
+#: ../PulseEffects/ui/headerbar.glade:655
 msgid "Use Dark Theme"
 msgstr ""
 

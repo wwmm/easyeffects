@@ -16,8 +16,8 @@
         <key name="autovolume-state" type="b">
           <default>false</default>
         </key>
-        <key name="autovolume-window" type="i">
-          <default>2000</default>
+        <key name="autovolume-window" type="d">
+          <default>2.00</default>
         </key>
         <key name="autovolume-target" type="i">
           <default>-12</default>

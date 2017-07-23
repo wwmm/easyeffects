@@ -23,10 +23,10 @@
     <signal name="value-changed" handler="on_autovolume_tolerance_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="autovolume_window">
-    <property name="lower">10</property>
-    <property name="upper">2000</property>
-    <property name="step_increment">100</property>
-    <property name="page_increment">100</property>
+    <property name="lower">0.01</property>
+    <property name="upper">2</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">0.10000000000000001</property>
     <signal name="value-changed" handler="on_autovolume_window_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="buffer_time">
@@ -347,7 +347,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
-                <property name="label" translatable="yes">Window [ms]</property>
+                <property name="label" translatable="yes">Window [s]</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -373,6 +373,7 @@
                 <property name="width_chars">4</property>
                 <property name="input_purpose">number</property>
                 <property name="adjustment">autovolume_window</property>
+                <property name="digits">2</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
               </object>

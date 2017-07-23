@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-23 15:38-0300\n"
-"PO-Revision-Date: 2017-07-23 15:40-0300\n"
+"POT-Creation-Date: 2017-07-23 15:58-0300\n"
+"PO-Revision-Date: 2017-07-23 15:58-0300\n"
 "Last-Translator: Wellington Wallace Miguel Melo <wellingtonwallace@gmail."
 "com>\n"
 "Language-Team: Portuguese <>\n"
@@ -120,48 +120,48 @@ msgid "latency-time [ms]"
 msgstr "tempo de atraso [ms]"
 
 #: ../PulseEffects/ui/headerbar.glade:350
-msgid "Window [ms]"
-msgstr "Janela [ms]"
+msgid "Window [s]"
+msgstr "Janela [s]"
 
 #: ../PulseEffects/ui/headerbar.glade:362
 msgid "Tolerance [dB]"
 msgstr "Tolerância [dB]"
 
-#: ../PulseEffects/ui/headerbar.glade:431
+#: ../PulseEffects/ui/headerbar.glade:432
 msgid "Target [dB]"
 msgstr "Alvo [dB]"
 
-#: ../PulseEffects/ui/headerbar.glade:458
+#: ../PulseEffects/ui/headerbar.glade:459
 #: ../PulseEffects/ui/sink_inputs_plugins.glade:1863
 #: ../PulseEffects/ui/source_outputs_plugins.glade:1863
 msgid "Threshold [dB]"
 msgstr "Limiar [dB]"
 
-#: ../PulseEffects/ui/headerbar.glade:512
+#: ../PulseEffects/ui/headerbar.glade:513
 msgid "Spectrum"
 msgstr "Espectro"
 
-#: ../PulseEffects/ui/headerbar.glade:533
+#: ../PulseEffects/ui/headerbar.glade:534
 msgid "Show"
 msgstr "Mostrar"
 
-#: ../PulseEffects/ui/headerbar.glade:545
+#: ../PulseEffects/ui/headerbar.glade:546
 msgid "Points"
 msgstr "Pontos"
 
-#: ../PulseEffects/ui/headerbar.glade:606
+#: ../PulseEffects/ui/headerbar.glade:607
 msgid "General"
 msgstr "Geral"
 
-#: ../PulseEffects/ui/headerbar.glade:626
+#: ../PulseEffects/ui/headerbar.glade:627
 msgid "Settings"
 msgstr "Configurações"
 
-#: ../PulseEffects/ui/headerbar.glade:635
+#: ../PulseEffects/ui/headerbar.glade:636
 msgid "Reset"
 msgstr "Resetar"
 
-#: ../PulseEffects/ui/headerbar.glade:654
+#: ../PulseEffects/ui/headerbar.glade:655
 msgid "Use Dark Theme"
 msgstr "Usar Tema Escuro"
 

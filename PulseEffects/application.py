@@ -526,8 +526,7 @@ class Application(Gtk.Application):
 
             self.setup_sie_limiter.limiter_input_gain.set_value(-10)
             self.setup_sie_limiter.limiter_limit.set_value(target + tolerance)
-            self.setup_sie_limiter.limiter_release_time.set_value(
-                float(window) / 1000)
+            self.setup_sie_limiter.limiter_release_time.set_value(window)
 
             self.setup_sie_limiter.limiter_scale_input_gain.set_sensitive(
                 False)
@@ -557,10 +556,9 @@ class Application(Gtk.Application):
 
         self.sie.set_autovolume_window(value)
 
-        self.setup_sie_limiter.limiter_release_time.set_value(
-            float(value) / 1000)
+        self.setup_sie_limiter.limiter_release_time.set_value(value)
 
-        out = GLib.Variant('i', value)
+        out = GLib.Variant('d', value)
         self.settings.set_value('autovolume-window', out)
 
     def on_autovolume_target_value_changed(self, obj):
