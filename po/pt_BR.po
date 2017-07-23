@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-08 13:16-0300\n"
-"PO-Revision-Date: 2017-07-08 13:16-0300\n"
+"POT-Creation-Date: 2017-07-23 15:38-0300\n"
+"PO-Revision-Date: 2017-07-23 15:40-0300\n"
 "Last-Translator: Wellington Wallace Miguel Melo <wellingtonwallace@gmail."
 "com>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
-"X-Generator: Gtranslator 2.91.7\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.2\n"
 "Plural-Forms: \n"
 
 #: ../PulseEffects/ui/about.glade:11
@@ -87,63 +87,81 @@ msgstr "Mesma Intensidade 100"
 msgid "Flat"
 msgstr "Plano"
 
-#: ../PulseEffects/ui/headerbar.glade:54
+#: ../PulseEffects/ui/headerbar.glade:81 ../PulseEffects/ui/headerbar.glade:327
 msgid "Auto Volume"
 msgstr "Volume Automático"
 
-#: ../PulseEffects/ui/headerbar.glade:108
+#: ../PulseEffects/ui/headerbar.glade:135
 msgid "Save Preset"
 msgstr "Salvar Predefinição"
 
-#: ../PulseEffects/ui/headerbar.glade:124
+#: ../PulseEffects/ui/headerbar.glade:151
 msgid "Load Preset"
 msgstr "Carregar Predefinição"
 
-#: ../PulseEffects/ui/headerbar.glade:152
+#: ../PulseEffects/ui/headerbar.glade:179
 msgid "R"
 msgstr "R"
 
-#: ../PulseEffects/ui/headerbar.glade:179
+#: ../PulseEffects/ui/headerbar.glade:206
 msgid "L"
 msgstr "L"
 
-#: ../PulseEffects/ui/headerbar.glade:204
+#: ../PulseEffects/ui/headerbar.glade:231
 msgid "Latency"
 msgstr "Latência"
 
-#: ../PulseEffects/ui/headerbar.glade:223
+#: ../PulseEffects/ui/headerbar.glade:251
 msgid "buffer-time [ms]"
 msgstr "tempo de atraso [ms]"
 
-#: ../PulseEffects/ui/headerbar.glade:249
+#: ../PulseEffects/ui/headerbar.glade:279
 msgid "latency-time [ms]"
 msgstr "tempo de atraso [ms]"
 
-#: ../PulseEffects/ui/headerbar.glade:293
+#: ../PulseEffects/ui/headerbar.glade:350
+msgid "Window [ms]"
+msgstr "Janela [ms]"
+
+#: ../PulseEffects/ui/headerbar.glade:362
+msgid "Tolerance [dB]"
+msgstr "Tolerância [dB]"
+
+#: ../PulseEffects/ui/headerbar.glade:431
+msgid "Target [dB]"
+msgstr "Alvo [dB]"
+
+#: ../PulseEffects/ui/headerbar.glade:458
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1863
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1863
+msgid "Threshold [dB]"
+msgstr "Limiar [dB]"
+
+#: ../PulseEffects/ui/headerbar.glade:512
 msgid "Spectrum"
 msgstr "Espectro"
 
-#: ../PulseEffects/ui/headerbar.glade:313
+#: ../PulseEffects/ui/headerbar.glade:533
 msgid "Show"
 msgstr "Mostrar"
 
-#: ../PulseEffects/ui/headerbar.glade:325
+#: ../PulseEffects/ui/headerbar.glade:545
 msgid "Points"
 msgstr "Pontos"
 
-#: ../PulseEffects/ui/headerbar.glade:382
+#: ../PulseEffects/ui/headerbar.glade:606
 msgid "General"
 msgstr "Geral"
 
-#: ../PulseEffects/ui/headerbar.glade:401
+#: ../PulseEffects/ui/headerbar.glade:626
 msgid "Settings"
 msgstr "Configurações"
 
-#: ../PulseEffects/ui/headerbar.glade:410
+#: ../PulseEffects/ui/headerbar.glade:635
 msgid "Reset"
 msgstr "Resetar"
 
-#: ../PulseEffects/ui/headerbar.glade:429
+#: ../PulseEffects/ui/headerbar.glade:654
 msgid "Use Dark Theme"
 msgstr "Usar Tema Escuro"
 
@@ -254,11 +272,6 @@ msgstr "Nível"
 #: ../PulseEffects/ui/source_outputs_plugins.glade:1813
 msgid "Compressor"
 msgstr "Compressor"
-
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:1863
-#: ../PulseEffects/ui/source_outputs_plugins.glade:1863
-msgid "Threshold [dB]"
-msgstr "Limiar [dB]"
 
 #: ../PulseEffects/ui/sink_inputs_plugins.glade:1890
 #: ../PulseEffects/ui/source_outputs_plugins.glade:1890

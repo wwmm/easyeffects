@@ -470,7 +470,7 @@ class SinkInputEffects(GObject.GObject):
 
     def set_autovolume_window(self, value):
         # value must be in ms
-        self.autovolume_level.set_property('interval', value * 1000000)
+        self.autovolume_level.set_property('interval', int(value * 1000000))
 
     def set_limiter_input_gain(self, value):
         self.limiter.set_property('input-gain', value)

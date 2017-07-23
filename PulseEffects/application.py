@@ -124,6 +124,14 @@ class Application(Gtk.Application):
                 self.on_spectrum_n_points_value_changed,
             'on_autovolume_enable_state_set':
                 self.on_autovolume_enable_state_set,
+            'on_autovolume_window_value_changed':
+                self.on_autovolume_window_value_changed,
+            'on_autovolume_target_value_changed':
+                self.on_autovolume_target_value_changed,
+            'on_autovolume_tolerance_value_changed':
+                self.on_autovolume_tolerance_value_changed,
+            'on_autovolume_threshold_value_changed':
+                self.on_autovolume_threshold_value_changed,
             'on_panorama_value_changed': self.on_panorama_value_changed,
             'on_save_user_preset_clicked': self.on_save_user_preset_clicked,
             'on_load_user_preset_clicked': self.on_load_user_preset_clicked,
@@ -511,9 +519,15 @@ class Application(Gtk.Application):
         self.sie.set_autovolume_state(state)
 
         if state:
+            window = self.settings.get_value('autovolume-window').unpack()
+            target = self.settings.get_value('autovolume-target').unpack()
+            tolerance = self.settings.get_value(
+                'autovolume-tolerance').unpack()
+
             self.setup_sie_limiter.limiter_input_gain.set_value(-10)
-            self.setup_sie_limiter.limiter_limit.set_value(-10)
-            self.setup_sie_limiter.limiter_release_time.set_value(2.0)
+            self.setup_sie_limiter.limiter_limit.set_value(target + tolerance)
+            self.setup_sie_limiter.limiter_release_time.set_value(
+                float(window) / 1000)
 
             self.setup_sie_limiter.limiter_scale_input_gain.set_sensitive(
                 False)
@@ -537,6 +551,50 @@ class Application(Gtk.Application):
 
     def on_autovolume_enable_state_set(self, obj, state):
         self.enable_autovolume(state)
+
+    def on_autovolume_window_value_changed(self, obj):
+        value = obj.get_value()
+
+        self.sie.set_autovolume_window(value)
+
+        self.setup_sie_limiter.limiter_release_time.set_value(
+            float(value) / 1000)
+
+        out = GLib.Variant('i', value)
+        self.settings.set_value('autovolume-window', out)
+
+    def on_autovolume_target_value_changed(self, obj):
+        value = obj.get_value()
+
+        self.sie.autovolume_target = value
+
+        tolerance = self.settings.get_value(
+            'autovolume-tolerance').unpack()
+
+        self.setup_sie_limiter.limiter_limit.set_value(value + tolerance)
+
+        out = GLib.Variant('i', value)
+        self.settings.set_value('autovolume-target', out)
+
+    def on_autovolume_tolerance_value_changed(self, obj):
+        value = obj.get_value()
+
+        self.sie.autovolume_tolerance = value
+
+        target = self.settings.get_value('autovolume-target').unpack()
+
+        self.setup_sie_limiter.limiter_limit.set_value(target + value)
+
+        out = GLib.Variant('i', value)
+        self.settings.set_value('autovolume-tolerance', out)
+
+    def on_autovolume_threshold_value_changed(self, obj):
+        value = obj.get_value()
+
+        self.sie.autovolume_threshold = value
+
+        out = GLib.Variant('i', value)
+        self.settings.set_value('autovolume-threshold', out)
 
     def on_new_autovolume(self, obj, gain):
         self.setup_sie_limiter.limiter_input_gain.set_value(gain)
