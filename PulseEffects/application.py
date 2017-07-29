@@ -815,9 +815,13 @@ class Application(Gtk.Application):
         dialog.destroy()
 
     def load_sink_inputs_preset(self, config):
-        limiter = dict(config['apps_limiter']).values()
-        limiter = [float(v) for v in limiter]
-        self.setup_sie_limiter.apply_limiter_preset(limiter)
+        autovolume_state = self.settings.get_value(
+            'autovolume-state').unpack()
+
+        if autovolume_state is False:
+            limiter = dict(config['apps_limiter']).values()
+            limiter = [float(v) for v in limiter]
+            self.setup_sie_limiter.apply_limiter_preset(limiter)
 
         panorama_value = config.getfloat('apps_panorama', 'panorama',
                                          fallback=0.0)
