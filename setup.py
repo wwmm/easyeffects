@@ -31,6 +31,6 @@ setup(name='PulseEffects',
       author_email='wellingtonwallace@gmail.com',
       license='GPL3',
       packages=find_packages(),
-      scripts=['pulseeffects'],
+      scripts=['pulseeffects', 'pulseeffects_calibration'],
       include_package_data=True,
       zip_safe=False)

@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+
+import sys
+from PulseEffectsCalibration.application import Application
+
+a = Application()
+
+exit_status = a.run(sys.argv)
+
+sys.exit(exit_status)
