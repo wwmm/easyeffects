@@ -26,16 +26,14 @@ class MicrophonePipeline(GObject.GObject):
     def __init__(self):
         GObject.GObject.__init__(self)
 
-        self.old_limiter_attenuation = 0
-        self.old_compressor_gain_reduction = 0
         self.rate = 48000
         self.max_spectrum_freq = 20000  # Hz
-        self.spectrum_nbands = 1600
+        self.spectrum_nbands = 2200
         self.spectrum_freqs = []
         self.spectrum_x_axis = np.array([])
         self.spectrum_n_points = 250  # number of freqs displayed
         self.spectrum_nfreqs = 0
-        self.spectrum_threshold = -120  # dB
+        self.spectrum_threshold = -80  # dB
 
         self.is_playing = False
 
@@ -76,8 +74,8 @@ class MicrophonePipeline(GObject.GObject):
 
         self.audio_src.set_property('volume', 1.0)
         self.audio_src.set_property('mute', False)
-        self.audio_src.set_property('provide-clock', False)
-        self.audio_src.set_property('slave-method', 're-timestamp')
+        # self.audio_src.set_property('provide-clock', False)
+        # self.audio_src.set_property('slave-method', 're-timestamp')
 
         caps = ['audio/x-raw', 'format=F32LE',
                 'rate=' + str(self.rate), 'channels=2']
@@ -103,16 +101,12 @@ class MicrophonePipeline(GObject.GObject):
         self.eq_band13 = self.equalizer.get_child_by_index(13)
         self.eq_band14 = self.equalizer.get_child_by_index(14)
 
-        # It seems there is a bug in the low shelf filter.
-        # When we increase the lower shelf gain higher frequencies
-        # are attenuated. Setting the first band to peak type instead of
-        # shelf fixes this.
-
         self.eq_band0.set_property('type', 0)  # 0: peak type
         self.eq_band14.set_property('type', 0)  # 0: peak type
 
         self.spectrum.set_property('bands', self.spectrum_nbands)
         self.spectrum.set_property('threshold', self.spectrum_threshold)
+        self.spectrum.set_property('interval', 2000000000)
 
         pipeline.add(self.audio_src)
         pipeline.add(source_caps)
@@ -231,7 +225,7 @@ class MicrophonePipeline(GObject.GObject):
             min_mag = self.spectrum_threshold
 
             if max_mag > min_mag:
-                magnitudes = (min_mag - magnitudes) / min_mag
+                magnitudes = (magnitudes - min_mag) / (max_mag - min_mag)
 
                 self.emit('new_spectrum', magnitudes)
 

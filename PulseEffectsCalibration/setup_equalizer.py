@@ -76,11 +76,6 @@ class SetupEqualizer():
             'equalizer_output_level_right_label')
 
     def init(self):
-        self.equalizer_input_gain.set_value(0)
-        self.equalizer_output_gain.set_value(0)
-
-        # we need this when saved value is equal to widget default value
-
         value_linear = 10**(0.0 / 20)
         self.effects.set_eq_input_gain(value_linear)
 

@@ -74,6 +74,15 @@ class Application(Gtk.Application):
         self.setup_equalizer = SetupEqualizer(self.calibration_mic_builder,
                                               self.mp)
 
+        self.setup_equalizer.init()
+
+        calibration_mic_ui_handlers = {}
+
+        calibration_mic_ui_handlers.update(self.setup_equalizer.handlers)
+
+        self.calibration_mic_builder.connect_signals(
+            calibration_mic_ui_handlers)
+
         # init stack widgets
         self.init_stack_widgets()
 
