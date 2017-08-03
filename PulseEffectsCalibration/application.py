@@ -6,7 +6,10 @@ import os
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gio, GLib, Gtk
-from PulseEffects.spectrum import Spectrum
+
+from PulseEffectsCalibration.microphone_pipeline import MicrophonePipeline
+from PulseEffectsCalibration.setup_equalizer import SetupEqualizer
+from PulseEffectsCalibration.spectrum import Spectrum
 
 
 class Application(Gtk.Application):
@@ -33,7 +36,7 @@ class Application(Gtk.Application):
 
         self.log = logging.getLogger('PulseEffectsCalibration')
 
-        # self.settings = Gio.Settings('com.github.wwmm.pulseeffects.calibration')
+        self.mp = MicrophonePipeline()
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
@@ -68,8 +71,19 @@ class Application(Gtk.Application):
 
         self.builder.connect_signals(main_ui_handlers)
 
+        self.setup_equalizer = SetupEqualizer(self.calibration_mic_builder,
+                                              self.mp)
+
         # init stack widgets
         self.init_stack_widgets()
+
+        self.mp.connect('new_spectrum',
+                        self.spectrum
+                        .on_new_spectrum)
+
+        self.setup_equalizer.connect_signals()
+
+        self.mp.set_state('playing')
 
     def do_activate(self):
         self.window.present()
@@ -77,6 +91,8 @@ class Application(Gtk.Application):
         self.ui_initialized = True
 
     def on_MainWindow_delete_event(self, event, data):
+        self.mp.set_state('null')
+
         self.quit()
 
     def create_appmenu(self):

@@ -165,7 +165,7 @@ class Application(Gtk.Application):
         self.sie.connect('new_autovolume', self.on_new_autovolume)
 
         # this connection is changed inside the stack switch handler
-        # dependeing on the selected child. THe connection below is not
+        # depending on the selected child. The connection below is not
         # permanent but just a default
         self.spectrum_handler_id = self.sie.connect('new_spectrum',
                                                     self.spectrum
