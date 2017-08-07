@@ -39,7 +39,7 @@ output at the same time it applies them for applications output:
 ## Installation
 
 Users upgrading from 1.x to 2.x will have to rebuild their presets. Since
-version 2.0.0 PulseEffects uses a different format for saving presets. This
+version 2.0.0 PulseEffects uses a different format. This
 change was necessary to support presets for microphone processing.
 
 ### GNU/Linux Packages
