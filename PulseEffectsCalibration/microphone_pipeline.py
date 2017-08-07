@@ -28,12 +28,13 @@ class MicrophonePipeline(GObject.GObject):
 
         self.rate = 48000
         self.max_spectrum_freq = 20000  # Hz
+        self.min_spectrum_freq = 20  # Hz
         self.spectrum_nbands = 2200
         self.spectrum_freqs = []
         self.spectrum_x_axis = np.array([])
         self.spectrum_n_points = 250  # number of freqs displayed
         self.spectrum_nfreqs = 0
-        self.spectrum_threshold = -80  # dB
+        self.spectrum_threshold = -100  # dB
 
         self.is_playing = False
 
@@ -180,11 +181,15 @@ class MicrophonePipeline(GObject.GObject):
             if freq > self.max_spectrum_freq:
                 break
 
-            self.spectrum_freqs.append(freq)
+            if freq >= self.min_spectrum_freq:
+                self.spectrum_freqs.append(freq)
 
         self.spectrum_nfreqs = len(self.spectrum_freqs)
 
-        self.spectrum_x_axis = np.logspace(1.3, 4.3, self.spectrum_n_points)
+        fmin = np.log10(self.min_spectrum_freq)
+        fmax = np.log10(self.max_spectrum_freq)
+
+        self.spectrum_x_axis = np.logspace(fmin, fmax, self.spectrum_n_points)
 
     def on_message_error(self, bus, msg):
         self.log.error(msg.parse_error())
@@ -226,6 +231,7 @@ class MicrophonePipeline(GObject.GObject):
 
             if max_mag > min_mag:
                 magnitudes = (magnitudes - min_mag) / (max_mag - min_mag)
+                # magnitudes = (min_mag - magnitudes) / min_mag
 
                 self.emit('new_spectrum', magnitudes)
 
