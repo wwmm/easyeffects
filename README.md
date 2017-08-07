@@ -36,56 +36,30 @@ output at the same time it applies them for applications output:
 9. Output Limiter (Ladspa Fast Lookahead Limiter)
 10. Spectrum Analyzer (Gstreamer)
 
+## Installation
+
+Users upgrading from 1.x to 2.x will have to rebuild their presets. Since
+version 2.0.0 PulseEffects uses a different format. This
+change was necessary to support presets for microphone processing.
+
+### GNU/Linux Packages
+
+- [Arch Linux](https://aur.archlinux.org/packages/pulseeffects/)
+
+### Source Code
+
 Required libraries:
 
 - Python 3
-- Python configparser (Python versions higher than 3.5.0 come with it. There is
-  no need to install a separate package)
-- PyGobject 3
-- Python Cairo
-- Python Numpy
-- Python Scipy (0.18 or above)
+- Python configparser (Included with Python3 > 3.5.0. There is
+  no need to install it.)
+- [PyGObject](https://pygobject.readthedocs.io/en/latest/)
+- [Python Cairo](https://cairographics.org/pycairo/)
+- [Python Numpy](http://www.numpy.org/)
+- [Python Scipy](https://scipy.org/scipylib/) (0.18 or above)
 - Gtk 3.18 or above
 - Gstreamer, Gstreamer Plugins Good, Gstreamer Plugins Bad and Gstreamer Python
  (Since version 1.4.3 Pulseeffects needs Gstreamer 1.12 or above)
-- swh-plugins from Ladspa
+- [swh-plugins](https://github.com/swh/ladspa) from Ladspa
 
-Users upgrading from 1.x to 2.x will have to rebuild their presets. Since
-version 2.0.0 PulseEffects uses a different format for saving presets. This
-change was necessary to support presets for microphone processing.
-
-Command to install all PulseEffects dependencies for Fedora:
-```
-dnf install python3 python-gobject python3-cairo python3-numpy python3-scipy gtk3 gstreamer1 gstreamer1-plugins-good gstreamer1-plugins-bad-free python3-gstreamer1 ladspa-swh-plugins
-```
-Arch Linux package:
-
-[https://aur.archlinux.org/packages/pulseeffects/](https://aur.archlinux.org/packages/pulseeffects/)
-
-Note for users trying to install directly from the sources:
-
-The setup.py script only installs the PulseEffects Python module. It does not
-copy the files inside the share folder to /usr/share. That is because
-python setuptools documentation does not recommends this to be done
-through it. The ideal solution would be to have a package for your
-distribution. If there is not one available and you would like to try to
-install by yourself you can try to manualy copy the files in the share folder
-to the corresponding folders inside /usr/share and then run as root
-**glib-compile-schemas /usr/share/glib-2.0/schemas/**:
-
-1. git clone https://github.com/wwmm/pulseeffects.git
-2. cd pulseeffects
-3. sudo python3 setup.py install
-4. sudo cp -r share/* /usr/share/
-5. sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
-
-In case a package is built for your distribution after you have done the steps
-above you will have to remember to remove the files you copied before installing
-the package. If you do not want to have this headache a better option is
-running PulseEffects without installing it. Do the following steps:
-
-1. git clone https://github.com/wwmm/pulseeffects.git
-2. cd pulseeffects
-3. glib-compile-schemas share/glib-2.0/schemas/
-4. chmod +x pulseeffects
-5. GSETTINGS_SCHEMA_DIR=share/glib-2.0/schemas/ ./pulseeffects
+See the wiki: [Installing from Source](https://github.com/wwmm/pulseeffects/wiki/Installation-from-Source), for detailed instructions.
