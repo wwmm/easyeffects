@@ -80,7 +80,8 @@ class Application(Gtk.Application):
         self.ts.set_state('ready')
 
         # creating user presets folder
-        self.user_config_dir = os.path.expanduser('~/.config/PulseEffects')
+        self.user_config_dir = os.path.join(GLib.get_user_config_dir(),
+                                            'PulseEffects')
         os.makedirs(self.user_config_dir, exist_ok=True)
 
     def do_startup(self):
