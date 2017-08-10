@@ -16,6 +16,8 @@ class Spectrum():
         self.mouse_inside = False
         self.mouse_freq = 0
         self.mouse_intensity = 0
+        self.min_mag = 0.0
+        self.max_mag = 0.0
 
         self.font_description = Pango.FontDescription('Monospace')
 
@@ -84,8 +86,10 @@ class Spectrum():
 
                 PangoCairo.show_layout(ctx, layout)
 
-    def on_new_spectrum(self, obj, magnitudes):
+    def on_new_spectrum(self, obj, min_mag, max_mag, magnitudes):
         if self.show_spectrum:
+            self.min_mag = min_mag
+            self.max_mag = max_mag
             self.spectrum_magnitudes = magnitudes
 
             self.drawing_area.queue_draw()
@@ -103,9 +107,14 @@ class Spectrum():
         # frequency axis is logarithmic
         # 20 Hz = 10^(1.3), 20000 Hz = 10^(4.3)
 
-        self.mouse_freq = round(10**(1.3 + event_motion.x * 3.0 / width), 1)
+        freq = 10**(1.3 + event_motion.x * 3.0 / width)
+
+        self.mouse_freq = round(freq, 1)
 
         # intensity scale is in decibel
         # minimum intensity is -120 dB and maximum is 0 dB
 
-        self.mouse_intensity = round(- event_motion.y * 120 / height, 1)
+        intensity = self.max_mag - event_motion.y * \
+            (self.max_mag - self.min_mag) / height
+
+        self.mouse_intensity = round(intensity, 1)

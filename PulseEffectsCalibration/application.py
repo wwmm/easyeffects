@@ -76,7 +76,9 @@ class Application(Gtk.Application):
 
         self.setup_equalizer.init()
 
-        calibration_mic_ui_handlers = {}
+        calibration_mic_ui_handlers = {
+            'on_time_window_value_changed': self.on_time_window_value_changed
+        }
 
         calibration_mic_ui_handlers.update(self.setup_equalizer.handlers)
 
@@ -85,6 +87,12 @@ class Application(Gtk.Application):
 
         # init stack widgets
         self.init_stack_widgets()
+
+        # other initializations
+
+        time_window = self.calibration_mic_builder.get_object('time_window')
+
+        time_window.set_value(2)
 
         self.mp.connect('new_spectrum',
                         self.spectrum
@@ -145,6 +153,11 @@ class Application(Gtk.Application):
 
         stack_box.pack_start(stack, True, True, 0)
         stack_box.show_all()
+
+    def on_time_window_value_changed(self, obj):
+        value = obj.get_value()
+
+        self.mp.set_time_window(value)
 
     def onAbout(self, action, parameter):
         builder = Gtk.Builder()

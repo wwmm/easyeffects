@@ -20,15 +20,15 @@ class MicrophonePipeline(GObject.GObject):
         'new_equalizer_output_level': (GObject.SIGNAL_RUN_FIRST, None,
                                        (float, float)),
         'new_spectrum': (GObject.SIGNAL_RUN_FIRST, None,
-                         (object,))
+                         (float, float, object))
     }
 
     def __init__(self):
         GObject.GObject.__init__(self)
 
         self.rate = 48000
-        self.max_spectrum_freq = 20000  # Hz
-        self.min_spectrum_freq = 20  # Hz
+        self.max_freq = 20000  # Hz
+        self.min_freq = 20  # Hz
         self.spectrum_nbands = 2200
         self.spectrum_freqs = []
         self.spectrum_x_axis = np.array([])
@@ -107,7 +107,6 @@ class MicrophonePipeline(GObject.GObject):
 
         self.spectrum.set_property('bands', self.spectrum_nbands)
         self.spectrum.set_property('threshold', self.spectrum_threshold)
-        self.spectrum.set_property('interval', 2000000000)
 
         pipeline.add(self.audio_src)
         pipeline.add(source_caps)
@@ -178,16 +177,16 @@ class MicrophonePipeline(GObject.GObject):
         for i in range(self.spectrum_nbands):
             freq = self.rate * (0.5 * i + 0.25) / self.spectrum_nbands
 
-            if freq > self.max_spectrum_freq:
+            if freq > self.max_freq:
                 break
 
-            if freq >= self.min_spectrum_freq:
+            if freq >= self.min_freq:
                 self.spectrum_freqs.append(freq)
 
         self.spectrum_nfreqs = len(self.spectrum_freqs)
 
-        fmin = np.log10(self.min_spectrum_freq)
-        fmax = np.log10(self.max_spectrum_freq)
+        fmin = np.log10(self.min_freq)
+        fmax = np.log10(self.max_freq)
 
         self.spectrum_x_axis = np.logspace(fmin, fmax, self.spectrum_n_points)
 
@@ -231,14 +230,16 @@ class MicrophonePipeline(GObject.GObject):
 
             if max_mag > min_mag:
                 magnitudes = (magnitudes - min_mag) / (max_mag - min_mag)
-                # magnitudes = (min_mag - magnitudes) / min_mag
 
-                self.emit('new_spectrum', magnitudes)
+                self.emit('new_spectrum', min_mag, max_mag, magnitudes)
 
         return True
 
     def set_source_monitor_name(self, name):
         self.audio_src.set_property('device', name)
+
+    def set_time_window(self, value):
+        self.spectrum.set_property('interval', int(value * 1000000000))
 
     def set_eq_input_gain(self, value):
         self.equalizer_input_gain.set_property('volume', value)
