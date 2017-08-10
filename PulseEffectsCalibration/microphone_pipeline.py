@@ -38,6 +38,10 @@ class MicrophonePipeline(GObject.GObject):
 
         self.is_playing = False
 
+        self.save_noise = False
+        self.subtract_noise = False
+        self.ambient_noise = np.array([])
+
         self.log = logging.getLogger('PulseEffects')
 
         self.calc_spectrum_freqs()
@@ -225,8 +229,15 @@ class MicrophonePipeline(GObject.GObject):
 
             magnitudes = cs(self.spectrum_x_axis)
 
+            if self.save_noise:
+                self.ambient_noise = magnitudes
+                self.save_noise = False
+
+            if self.subtract_noise:
+                magnitudes = magnitudes - self.ambient_noise
+
             max_mag = np.amax(magnitudes)
-            min_mag = self.spectrum_threshold
+            min_mag = np.amin(magnitudes)
 
             if max_mag > min_mag:
                 magnitudes = (magnitudes - min_mag) / (max_mag - min_mag)
@@ -240,6 +251,12 @@ class MicrophonePipeline(GObject.GObject):
 
     def set_time_window(self, value):
         self.spectrum.set_property('interval', int(value * 1000000000))
+
+    def save_ambient_noise(self):
+        self.save_noise = True
+
+    def subtract_ambient_noise(self, value):
+        self.subtract_noise = value
 
     def set_eq_input_gain(self, value):
         self.equalizer_input_gain.set_property('volume', value)

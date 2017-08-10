@@ -77,7 +77,12 @@ class Application(Gtk.Application):
         self.setup_equalizer.init()
 
         calibration_mic_ui_handlers = {
-            'on_time_window_value_changed': self.on_time_window_value_changed
+            'on_time_window_value_changed':
+                self.on_time_window_value_changed,
+            'on_save_ambient_noise_clicked':
+                self.on_save_ambient_noise_clicked,
+            'on_subtract_ambient_noise_toggled':
+                self.on_subtract_ambient_noise_toggled
         }
 
         calibration_mic_ui_handlers.update(self.setup_equalizer.handlers)
@@ -158,6 +163,12 @@ class Application(Gtk.Application):
         value = obj.get_value()
 
         self.mp.set_time_window(value)
+
+    def on_save_ambient_noise_clicked(self, obj):
+        self.mp.save_ambient_noise()
+
+    def on_subtract_ambient_noise_toggled(self, obj):
+        self.mp.subtract_ambient_noise(obj.get_active())
 
     def onAbout(self, action, parameter):
         builder = Gtk.Builder()

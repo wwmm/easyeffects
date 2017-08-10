@@ -132,34 +132,75 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <child>
-      <object class="GtkGrid">
+      <object class="GtkBox">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="column_spacing">3</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">3</property>
         <child>
-          <object class="GtkLabel">
+          <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Time Window [s]</property>
+            <property name="column_spacing">3</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Time Window [s]</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="width_chars">2</property>
+                <property name="input_purpose">number</property>
+                <property name="adjustment">time_window</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
           </object>
           <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">0</property>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
           </packing>
         </child>
         <child>
-          <object class="GtkSpinButton">
+          <object class="GtkButton" id="save_ambient_noise">
+            <property name="label" translatable="yes">Save Ambient Noise</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="width_chars">2</property>
-            <property name="input_purpose">number</property>
-            <property name="adjustment">time_window</property>
-            <property name="numeric">True</property>
-            <property name="update_policy">if-valid</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="on_save_ambient_noise_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">0</property>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkToggleButton" id="subtract_ambient_noise">
+            <property name="label" translatable="yes">Subtract Ambient Noise</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="toggled" handler="on_subtract_ambient_noise_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
           </packing>
         </child>
       </object>
