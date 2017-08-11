@@ -132,3 +132,5 @@ class Spectrum():
             (self.max_mag - self.min_mag) / height
 
         self.mouse_intensity = round(intensity, 1)
+
+        self.drawing_area.queue_draw()
