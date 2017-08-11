@@ -121,6 +121,12 @@
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_equalizer_output_gain_value_changed" swapped="no"/>
   </object>
+  <object class="GtkAdjustment" id="guideline_position">
+    <property name="upper">1</property>
+    <property name="step_increment">0.10000000000000001</property>
+    <property name="page_increment">0.10000000000000001</property>
+    <signal name="value-changed" handler="on_guideline_position_value_changed" swapped="no"/>
+  </object>
   <object class="GtkAdjustment" id="time_window">
     <property name="lower">1</property>
     <property name="upper">10</property>
@@ -166,6 +172,30 @@
               <packing>
                 <property name="left_attach">1</property>
                 <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="label" translatable="yes">Guideline Position</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScale">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="adjustment">guideline_position</property>
+                <property name="round_digits">1</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
           </object>

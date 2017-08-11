@@ -82,7 +82,9 @@ class Application(Gtk.Application):
             'on_save_ambient_noise_clicked':
                 self.on_save_ambient_noise_clicked,
             'on_subtract_ambient_noise_toggled':
-                self.on_subtract_ambient_noise_toggled
+                self.on_subtract_ambient_noise_toggled,
+            'on_guideline_position_value_changed':
+                self.on_guideline_position_value_changed
         }
 
         calibration_mic_ui_handlers.update(self.setup_equalizer.handlers)
@@ -96,8 +98,11 @@ class Application(Gtk.Application):
         # other initializations
 
         time_window = self.calibration_mic_builder.get_object('time_window')
+        guideline_position = self.calibration_mic_builder.get_object(
+            'guideline_position')
 
         time_window.set_value(2)
+        guideline_position.set_value(0.5)
 
         self.mp.connect('new_spectrum',
                         self.spectrum
@@ -169,6 +174,9 @@ class Application(Gtk.Application):
 
     def on_subtract_ambient_noise_toggled(self, obj):
         self.mp.subtract_ambient_noise(obj.get_active())
+
+    def on_guideline_position_value_changed(self, obj):
+        self.spectrum.set_guideline_position(obj.get_value())
 
     def onAbout(self, action, parameter):
         builder = Gtk.Builder()

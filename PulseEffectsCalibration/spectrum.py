@@ -18,6 +18,7 @@ class Spectrum():
         self.mouse_intensity = 0
         self.min_mag = 0.0
         self.max_mag = 0.0
+        self.guideline_position = 0.5
 
         self.font_description = Pango.FontDescription('Monospace')
 
@@ -48,6 +49,11 @@ class Spectrum():
         self.spectrum_magnitudes = np.array([])
         self.drawing_area.queue_draw()
 
+    def set_guideline_position(self, value):
+        self.guideline_position = value
+
+        self.drawing_area.queue_draw()
+
     def on_spectrum_draw(self, drawing_area, ctx):
         ctx.paint()
 
@@ -70,6 +76,14 @@ class Spectrum():
             color = style.lookup_color('theme_selected_bg_color')[1]
             ctx.set_source_rgba(color.red, color.green, color.blue, 1.0)
             ctx.set_line_width(1.1)
+            ctx.stroke()
+
+            guideline_h = int(self.guideline_position * height)
+
+            ctx.move_to(0, guideline_h)
+            ctx.line_to(width, guideline_h)
+
+            ctx.set_source_rgba(1.0, 0.0, 0.0, 1.0)
             ctx.stroke()
 
             if self.mouse_inside:
