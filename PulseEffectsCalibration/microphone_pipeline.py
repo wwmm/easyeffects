@@ -32,7 +32,7 @@ class MicrophonePipeline(GObject.GObject):
         self.spectrum_nbands = 3600
         self.spectrum_freqs = []
         self.spectrum_x_axis = np.array([])
-        self.spectrum_n_points = 250  # number of freqs displayed
+        self.spectrum_n_points = 3600  # number of freqs displayed
         self.spectrum_nfreqs = 0
         self.spectrum_threshold = -100  # dB
 
