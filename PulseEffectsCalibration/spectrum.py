@@ -67,15 +67,15 @@ class Spectrum():
             bar_height = self.spectrum_magnitudes * height
             x = np.linspace(0, width, n_bars)
             y = height - bar_height
-            dx = width / n_bars
-
-            rectangle = ctx.rectangle
-            rectangles = np.vectorize(rectangle)
-            rectangles(x, y, dx, bar_height)
 
             color = style.lookup_color('theme_selected_bg_color')[1]
             ctx.set_source_rgba(color.red, color.green, color.blue, 1.0)
             ctx.set_line_width(1.1)
+
+            for i in range(len(x) - 1):
+                ctx.move_to(x[i], y[i])
+                ctx.line_to(x[i + 1], y[i + 1])
+
             ctx.stroke()
 
             guideline_h = int(self.guideline_position * height)
@@ -84,6 +84,7 @@ class Spectrum():
             ctx.line_to(width, guideline_h)
 
             ctx.set_source_rgba(1.0, 0.0, 0.0, 1.0)
+            ctx.set_line_width(1.1)
             ctx.stroke()
 
             if self.mouse_inside:

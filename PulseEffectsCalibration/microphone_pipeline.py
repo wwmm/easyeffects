@@ -16,9 +16,9 @@ class MicrophonePipeline(GObject.GObject):
 
     __gsignals__ = {
         'new_equalizer_input_level': (GObject.SIGNAL_RUN_FIRST, None,
-                                      (float, float)),
+                                      (float,)),
         'new_equalizer_output_level': (GObject.SIGNAL_RUN_FIRST, None,
-                                       (float, float)),
+                                       (float,)),
         'new_spectrum': (GObject.SIGNAL_RUN_FIRST, None,
                          (float, float, object))
     }
@@ -29,7 +29,7 @@ class MicrophonePipeline(GObject.GObject):
         self.rate = 48000
         self.max_freq = 20000  # Hz
         self.min_freq = 20  # Hz
-        self.spectrum_nbands = 2200
+        self.spectrum_nbands = 3600
         self.spectrum_freqs = []
         self.spectrum_x_axis = np.array([])
         self.spectrum_n_points = 250  # number of freqs displayed
@@ -79,11 +79,9 @@ class MicrophonePipeline(GObject.GObject):
 
         self.audio_src.set_property('volume', 1.0)
         self.audio_src.set_property('mute', False)
-        # self.audio_src.set_property('provide-clock', False)
-        # self.audio_src.set_property('slave-method', 're-timestamp')
 
         caps = ['audio/x-raw', 'format=F32LE',
-                'rate=' + str(self.rate), 'channels=2']
+                'rate=' + str(self.rate), 'channels=1']
 
         src_caps = Gst.Caps.from_string(",".join(caps))
         source_caps.set_property("caps", src_caps)
@@ -216,11 +214,11 @@ class MicrophonePipeline(GObject.GObject):
         if plugin == 'equalizer_input_level':
             peak = msg.get_structure().get_value('peak')
 
-            self.emit('new_equalizer_input_level', peak[0], peak[1])
+            self.emit('new_equalizer_input_level', peak[0])
         elif plugin == 'equalizer_output_level':
             peak = msg.get_structure().get_value('peak')
 
-            self.emit('new_equalizer_output_level', peak[0], peak[1])
+            self.emit('new_equalizer_output_level', peak[0])
         elif plugin == 'spectrum':
             magnitudes = msg.get_structure().get_value('magnitude')
 
