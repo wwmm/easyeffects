@@ -163,6 +163,7 @@
               <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="hexpand">True</property>
                 <property name="width_chars">2</property>
                 <property name="input_purpose">number</property>
                 <property name="adjustment">time_window</property>
@@ -190,6 +191,7 @@
               <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="hexpand">True</property>
                 <property name="adjustment">guideline_position</property>
                 <property name="round_digits">1</property>
               </object>
@@ -206,31 +208,71 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="save_ambient_noise">
-            <property name="label" translatable="yes">Save Ambient Noise</property>
+          <object class="GtkBox">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="clicked" handler="on_save_ambient_noise_clicked" swapped="no"/>
+            <property name="can_focus">False</property>
+            <property name="spacing">3</property>
+            <child>
+              <object class="GtkButton" id="measure_ambient_noise">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="clicked" handler="on_measure_noise_clicked" swapped="no"/>
+                <child>
+                  <object class="GtkBox" id="measure_noise_button_widget">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Measure Noise</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinner" id="measure_noise_spinner">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkToggleButton" id="subtract_ambient_noise">
+                <property name="label" translatable="yes">Subtract Noise</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="toggled" handler="on_subtract_noise_toggled" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToggleButton" id="subtract_ambient_noise">
-            <property name="label" translatable="yes">Subtract Ambient Noise</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="toggled" handler="on_subtract_ambient_noise_toggled" swapped="no"/>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
           </packing>
         </child>
       </object>
@@ -265,7 +307,7 @@
             <property name="can_focus">False</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
-            <property name="label" translatable="yes">Calibration Microphone Correction Curve</property>
+            <property name="label" translatable="yes">Calibration Microphone Correction</property>
             <attributes>
               <attribute name="weight" value="bold"/>
             </attributes>

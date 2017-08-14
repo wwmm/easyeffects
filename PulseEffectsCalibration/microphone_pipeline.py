@@ -20,7 +20,9 @@ class MicrophonePipeline(GObject.GObject):
         'new_equalizer_output_level': (GObject.SIGNAL_RUN_FIRST, None,
                                        (float,)),
         'new_spectrum': (GObject.SIGNAL_RUN_FIRST, None,
-                         (float, float, object))
+                         (float, float, object)),
+        'noise_measured': (GObject.SIGNAL_RUN_FIRST, None,
+                           ())
     }
 
     def __init__(self):
@@ -34,11 +36,11 @@ class MicrophonePipeline(GObject.GObject):
         self.spectrum_x_axis = np.array([])
         self.spectrum_n_points = 3600  # number of freqs displayed
         self.spectrum_nfreqs = 0
-        self.spectrum_threshold = -100  # dB
+        self.spectrum_threshold = -120  # dB
 
         self.is_playing = False
 
-        self.save_noise = False
+        self.measure_noise = False
         self.subtract_noise = False
         self.ambient_noise = np.array([])
 
@@ -227,9 +229,10 @@ class MicrophonePipeline(GObject.GObject):
 
             magnitudes = cs(self.spectrum_x_axis)
 
-            if self.save_noise:
+            if self.measure_noise:
                 self.ambient_noise = magnitudes
-                self.save_noise = False
+                self.measure_noise = False
+                self.emit('noise_measured')
 
             if self.subtract_noise:
                 magnitudes = magnitudes - self.ambient_noise
@@ -249,12 +252,6 @@ class MicrophonePipeline(GObject.GObject):
 
     def set_time_window(self, value):
         self.spectrum.set_property('interval', int(value * 1000000000))
-
-    def save_ambient_noise(self):
-        self.save_noise = True
-
-    def subtract_ambient_noise(self, value):
-        self.subtract_noise = value
 
     def set_eq_input_gain(self, value):
         self.equalizer_input_gain.set_property('volume', value)

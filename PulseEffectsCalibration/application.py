@@ -38,6 +38,8 @@ class Application(Gtk.Application):
 
         self.mp = MicrophonePipeline()
 
+        self.mp.connect('noise_measured', self.on_noise_measured)
+
     def do_startup(self):
         Gtk.Application.do_startup(self)
 
@@ -79,10 +81,10 @@ class Application(Gtk.Application):
         calibration_mic_ui_handlers = {
             'on_time_window_value_changed':
                 self.on_time_window_value_changed,
-            'on_save_ambient_noise_clicked':
-                self.on_save_ambient_noise_clicked,
-            'on_subtract_ambient_noise_toggled':
-                self.on_subtract_ambient_noise_toggled,
+            'on_measure_noise_clicked':
+                self.on_measure_noise_clicked,
+            'on_subtract_noise_toggled':
+                self.on_subtract_noise_toggled,
             'on_guideline_position_value_changed':
                 self.on_guideline_position_value_changed
         }
@@ -100,6 +102,8 @@ class Application(Gtk.Application):
         time_window = self.calibration_mic_builder.get_object('time_window')
         guideline_position = self.calibration_mic_builder.get_object(
             'guideline_position')
+        self.measure_noise_spinner = self.calibration_mic_builder.get_object(
+            'measure_noise_spinner')
 
         time_window.set_value(2)
         guideline_position.set_value(0.5)
@@ -169,11 +173,15 @@ class Application(Gtk.Application):
 
         self.mp.set_time_window(value)
 
-    def on_save_ambient_noise_clicked(self, obj):
-        self.mp.save_ambient_noise()
+    def on_measure_noise_clicked(self, obj):
+        self.mp.measure_noise = True
+        self.measure_noise_spinner.start()
 
-    def on_subtract_ambient_noise_toggled(self, obj):
-        self.mp.subtract_ambient_noise(obj.get_active())
+    def on_subtract_noise_toggled(self, obj):
+        self.mp.subtract_noise = obj.get_active()
+
+    def on_noise_measured(self, obj):
+        self.measure_noise_spinner.stop()
 
     def on_guideline_position_value_changed(self, obj):
         self.spectrum.set_guideline_position(obj.get_value())
