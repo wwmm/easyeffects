@@ -3,9 +3,9 @@
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="compressor_attack">
-    <property name="lower">2</property>
+    <property name="lower">1.5</property>
     <property name="upper">400</property>
-    <property name="step_increment">1</property>
+    <property name="step_increment">0.10000000000000001</property>
     <property name="page_increment">10</property>
     <signal name="value-changed" handler="on_compressor_attack_time_value_changed" swapped="no"/>
   </object>
@@ -297,6 +297,7 @@
                       <object class="GtkSpinButton" id="limiter_input_gain">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="input_purpose">number</property>
                         <property name="adjustment">limiter_input_gain_adjustment</property>
                         <property name="numeric">True</property>
                         <property name="update_policy">if-valid</property>
@@ -322,6 +323,7 @@
                       <object class="GtkSpinButton" id="limiter_limit">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="input_purpose">number</property>
                         <property name="adjustment">limiter_limit_adjustment</property>
                         <property name="numeric">True</property>
                         <property name="update_policy">if-valid</property>
@@ -348,6 +350,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="width_chars">4</property>
+                        <property name="input_purpose">number</property>
                         <property name="adjustment">limiter_release_time_adjustment</property>
                         <property name="digits">2</property>
                         <property name="numeric">True</property>
@@ -695,7 +698,12 @@
                       <object class="GtkSpinButton">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="width_chars">5</property>
+                        <property name="input_purpose">number</property>
                         <property name="adjustment">compressor_attack</property>
+                        <property name="digits">1</property>
+                        <property name="numeric">True</property>
+                        <property name="update_policy">if-valid</property>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -718,7 +726,10 @@
                       <object class="GtkSpinButton">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="input_purpose">number</property>
                         <property name="adjustment">compressor_release</property>
+                        <property name="numeric">True</property>
+                        <property name="update_policy">if-valid</property>
                       </object>
                       <packing>
                         <property name="left_attach">2</property>
@@ -741,7 +752,10 @@
                       <object class="GtkSpinButton">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="input_purpose">number</property>
                         <property name="adjustment">compressor_threshold</property>
+                        <property name="numeric">True</property>
+                        <property name="update_policy">if-valid</property>
                       </object>
                       <packing>
                         <property name="left_attach">3</property>
@@ -810,7 +824,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
-                        <property name="margin_top">3</property>
+                        <property name="margin_top">24</property>
                         <property name="label" translatable="yes">Ratio [n:1]</property>
                       </object>
                       <packing>
@@ -822,7 +836,10 @@
                       <object class="GtkSpinButton">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="input_purpose">number</property>
                         <property name="adjustment">compressor_ratio</property>
+                        <property name="numeric">True</property>
+                        <property name="update_policy">if-valid</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -834,7 +851,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
-                        <property name="margin_top">3</property>
+                        <property name="margin_top">24</property>
                         <property name="label" translatable="yes">Knee [dB]</property>
                       </object>
                       <packing>
@@ -846,7 +863,12 @@
                       <object class="GtkSpinButton">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="width_chars">4</property>
+                        <property name="input_purpose">number</property>
                         <property name="adjustment">compressor_knee</property>
+                        <property name="digits">2</property>
+                        <property name="numeric">True</property>
+                        <property name="update_policy">if-valid</property>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -858,7 +880,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
-                        <property name="margin_top">3</property>
+                        <property name="margin_top">24</property>
                         <property name="label" translatable="yes">Makeup [dB]</property>
                       </object>
                       <packing>
@@ -870,7 +892,10 @@
                       <object class="GtkSpinButton">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="input_purpose">number</property>
                         <property name="adjustment">compressor_makeup</property>
+                        <property name="numeric">True</property>
+                        <property name="update_policy">if-valid</property>
                       </object>
                       <packing>
                         <property name="left_attach">2</property>
@@ -1268,6 +1293,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="width_chars">4</property>
+                        <property name="input_purpose">number</property>
                         <property name="adjustment">reverb_room_size</property>
                         <property name="digits">2</property>
                         <property name="numeric">True</property>
@@ -1295,6 +1321,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="width_chars">4</property>
+                        <property name="input_purpose">number</property>
                         <property name="adjustment">reverb_damping</property>
                         <property name="digits">2</property>
                         <property name="numeric">True</property>
@@ -1322,6 +1349,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="width_chars">4</property>
+                        <property name="input_purpose">number</property>
                         <property name="adjustment">reverb_width</property>
                         <property name="digits">2</property>
                         <property name="numeric">True</property>
@@ -1349,6 +1377,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="width_chars">4</property>
+                        <property name="input_purpose">number</property>
                         <property name="adjustment">reverb_level</property>
                         <property name="digits">2</property>
                         <property name="numeric">True</property>

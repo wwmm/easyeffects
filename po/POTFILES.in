@@ -1,10 +1,7 @@
 ../PulseEffects/ui/about.glade
-../PulseEffects/ui/compressor_menu.glade
 ../PulseEffects/ui/equalizer_menu.glade
 ../PulseEffects/ui/headerbar.glade
-../PulseEffects/ui/limiter_menu.glade
 ../PulseEffects/ui/main_ui.glade
-../PulseEffects/ui/reverb_menu.glade
 ../PulseEffects/ui/sink_inputs_plugins.glade
 ../PulseEffects/ui/source_outputs_plugins.glade
 ../PulseEffectsCalibration/ui/about.glade
