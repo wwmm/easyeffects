@@ -7,4 +7,8 @@
 ../PulseEffects/ui/reverb_menu.glade
 ../PulseEffects/ui/sink_inputs_plugins.glade
 ../PulseEffects/ui/source_outputs_plugins.glade
-../PulseEffects/ui/test_signal.glade
+../PulseEffectsCalibration/ui/about.glade
+../PulseEffectsCalibration/ui/headerbar.glade
+../PulseEffectsCalibration/ui/main_ui.glade
+../PulseEffectsCalibration/ui/calibration_mic_plugins.glade
+../PulseEffectsCalibration/ui/test_signal.glade

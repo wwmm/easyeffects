@@ -17,8 +17,6 @@ class MicrophonePipeline(GObject.GObject):
     __gsignals__ = {
         'new_equalizer_input_level': (GObject.SIGNAL_RUN_FIRST, None,
                                       (float,)),
-        'new_equalizer_output_level': (GObject.SIGNAL_RUN_FIRST, None,
-                                       (float,)),
         'new_spectrum': (GObject.SIGNAL_RUN_FIRST, None,
                          (float, float, object)),
         'noise_measured': (GObject.SIGNAL_RUN_FIRST, None,
@@ -66,7 +64,6 @@ class MicrophonePipeline(GObject.GObject):
         source_caps = Gst.ElementFactory.make("capsfilter", None)
 
         self.equalizer_input_gain = Gst.ElementFactory.make('volume', None)
-        self.equalizer_output_gain = Gst.ElementFactory.make('volume', None)
 
         self.equalizer = Gst.ElementFactory.make('equalizer-nbands', None)
 
@@ -76,8 +73,6 @@ class MicrophonePipeline(GObject.GObject):
 
         equalizer_input_level = Gst.ElementFactory.make(
             'level', 'equalizer_input_level')
-        equalizer_output_level = Gst.ElementFactory.make(
-            'level', 'equalizer_output_level')
 
         self.audio_src.set_property('volume', 1.0)
         self.audio_src.set_property('mute', False)
@@ -117,8 +112,6 @@ class MicrophonePipeline(GObject.GObject):
         pipeline.add(self.equalizer_input_gain)
         pipeline.add(equalizer_input_level)
         pipeline.add(self.equalizer)
-        pipeline.add(self.equalizer_output_gain)
-        pipeline.add(equalizer_output_level)
         pipeline.add(self.spectrum)
         pipeline.add(self.audio_sink)
 
@@ -126,9 +119,7 @@ class MicrophonePipeline(GObject.GObject):
         source_caps.link(self.equalizer_input_gain)
         self.equalizer_input_gain.link(equalizer_input_level)
         equalizer_input_level.link(self.equalizer)
-        self.equalizer.link(self.equalizer_output_gain)
-        self.equalizer_output_gain.link(equalizer_output_level)
-        equalizer_output_level.link(self.spectrum)
+        self.equalizer.link(self.spectrum)
         self.spectrum.link(self.audio_sink)
 
         return pipeline
@@ -217,10 +208,6 @@ class MicrophonePipeline(GObject.GObject):
             peak = msg.get_structure().get_value('peak')
 
             self.emit('new_equalizer_input_level', peak[0])
-        elif plugin == 'equalizer_output_level':
-            peak = msg.get_structure().get_value('peak')
-
-            self.emit('new_equalizer_output_level', peak[0])
         elif plugin == 'spectrum':
             magnitudes = msg.get_structure().get_value('magnitude')
 
@@ -255,9 +242,6 @@ class MicrophonePipeline(GObject.GObject):
 
     def set_eq_input_gain(self, value):
         self.equalizer_input_gain.set_property('volume', value)
-
-    def set_eq_output_gain(self, value):
-        self.equalizer_output_gain.set_property('volume', value)
 
     def set_eq_band0(self, value):
         self.eq_band0.set_property('gain', value)

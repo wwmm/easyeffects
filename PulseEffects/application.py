@@ -14,11 +14,9 @@ from PulseEffects.setup_compressor import SetupCompressor
 from PulseEffects.setup_equalizer import SetupEqualizer
 from PulseEffects.setup_limiter import SetupLimiter
 from PulseEffects.setup_reverb import SetupReverb
-from PulseEffects.setup_test_signal import SetupTestSignal
 from PulseEffects.sink_input_effects import SinkInputEffects
 from PulseEffects.source_output_effects import SourceOutputEffects
 from PulseEffects.spectrum import Spectrum
-from PulseEffects.test_signal import TestSignal
 
 
 class Application(Gtk.Application):
@@ -70,14 +68,9 @@ class Application(Gtk.Application):
         self.soe.set_source_monitor_name(self.pm.default_source_name)
         self.soe.set_output_sink_name('PulseEffects_mic')
 
-        # test signals pipeline
-
-        self.ts = TestSignal()
-
         # putting pipelines in the ready state
         self.sie.set_state('ready')
         self.soe.set_state('ready')
-        self.ts.set_state('ready')
 
         # creating user presets folder
         self.user_config_dir = os.path.join(GLib.get_user_config_dir(),
@@ -90,7 +83,6 @@ class Application(Gtk.Application):
         self.builder = Gtk.Builder()
         self.sink_inputs_builder = Gtk.Builder()
         self.source_outputs_builder = Gtk.Builder()
-        self.test_signal_builder = Gtk.Builder()
 
         self.builder.add_from_file(self.module_path + '/ui/main_ui.glade')
         self.builder.add_from_file(self.module_path + '/ui/headerbar.glade')
@@ -98,8 +90,6 @@ class Application(Gtk.Application):
                                                '/ui/sink_inputs_plugins.glade')
         self.source_outputs_builder.add_from_file(
             self.module_path + '/ui/source_outputs_plugins.glade')
-        self.test_signal_builder.add_from_file(self.module_path +
-                                               '/ui/test_signal.glade')
 
         headerbar = self.builder.get_object('headerbar')
 
@@ -156,7 +146,6 @@ class Application(Gtk.Application):
         self.init_source_outputs_widgets()
         # these two must be after init_sink_inputs_widgets
         self.init_autovolume_widgets()
-        self.init_test_signal_widgets()
 
         # init stack widgets
         self.init_stack_widgets()
@@ -197,7 +186,6 @@ class Application(Gtk.Application):
         self.ui_initialized = True
 
     def on_MainWindow_delete_event(self, event, data):
-        self.ts.set_state('null')
         self.sie.set_state('null')
         self.soe.set_state('null')
 
@@ -240,7 +228,6 @@ class Application(Gtk.Application):
 
         sink_inputs_ui = self.sink_inputs_builder.get_object('window')
         source_outputs_ui = self.source_outputs_builder.get_object('window')
-        test_signal_ui = self.test_signal_builder.get_object('window')
 
         stack = Gtk.Stack()
         stack.set_transition_type(Gtk.StackTransitionType.CROSSFADE)
@@ -256,10 +243,6 @@ class Application(Gtk.Application):
         stack.child_set_property(source_outputs_ui, 'icon-name',
                                  'audio-input-microphone-symbolic')
 
-        stack.add_named(test_signal_ui, "test_signal")
-        stack.child_set_property(test_signal_ui, 'icon-name',
-                                 'emblem-music-symbolic')
-
         self.stack_current_child_name = 'sink_inputs'
 
         def on_visible_child_changed(stack, visible_child):
@@ -268,8 +251,6 @@ class Application(Gtk.Application):
             if name == 'sink_inputs':
                 if self.stack_current_child_name == 'source_outputs':
                     self.soe.disconnect(self.spectrum_handler_id)
-                elif self.stack_current_child_name == 'test_signal':
-                    self.ts.disconnect(self.spectrum_handler_id)
 
                 self.spectrum_handler_id = self.sie.connect('new_spectrum',
                                                             self.spectrum
@@ -279,27 +260,12 @@ class Application(Gtk.Application):
             elif name == 'source_outputs':
                 if self.stack_current_child_name == 'sink_inputs':
                     self.sie.disconnect(self.spectrum_handler_id)
-                elif self.stack_current_child_name == 'test_signal':
-                    self.ts.disconnect(self.spectrum_handler_id)
 
                 self.spectrum_handler_id = self.soe.connect('new_spectrum',
                                                             self.spectrum
                                                             .on_new_spectrum)
 
                 self.stack_current_child_name = 'source_outputs'
-            elif name == 'test_signal':
-                pass
-
-                if self.stack_current_child_name == 'sink_inputs':
-                    self.sie.disconnect(self.spectrum_handler_id)
-                elif self.stack_current_child_name == 'source_outputs':
-                    self.soe.disconnect(self.spectrum_handler_id)
-
-                self.spectrum_handler_id = self.ts.connect('new_spectrum',
-                                                           self.spectrum
-                                                           .on_new_spectrum)
-
-                self.stack_current_child_name = 'test_signal'
 
             self.spectrum.clear()
 
@@ -370,11 +336,6 @@ class Application(Gtk.Application):
         self.setup_soe_reverb.init()
         self.setup_soe_equalizer.init()
         self.list_source_outputs.init()
-
-    def init_test_signal_widgets(self):
-        self.setup_test_signal = SetupTestSignal(self.test_signal_builder,
-                                                 self.ts, self.sie,
-                                                 self.list_sink_inputs)
 
     def init_settings_menu(self):
         button = self.builder.get_object('settings_popover_button')
@@ -462,11 +423,9 @@ class Application(Gtk.Application):
             self.spectrum.show()
             self.sie.enable_spectrum(True)
             self.soe.enable_spectrum(True)
-            self.ts.enable_spectrum(True)
         else:
             self.sie.enable_spectrum(False)
             self.soe.enable_spectrum(False)
-            self.ts.enable_spectrum(False)
             self.spectrum.hide()
 
         out = GLib.Variant('b', state)
@@ -480,7 +439,6 @@ class Application(Gtk.Application):
 
         self.sie.set_spectrum_n_points(value)
         self.soe.set_spectrum_n_points(value)
-        self.ts.set_spectrum_n_points(value)
 
     def init_autovolume_widgets(self):
         autovolume_state_obj = self.builder.get_object('autovolume_state')

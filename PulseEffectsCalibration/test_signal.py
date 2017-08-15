@@ -16,22 +16,22 @@ class TestSignal(GObject.GObject):
 
     __gsignals__ = {
         'new_spectrum': (GObject.SIGNAL_RUN_FIRST, None,
-                         (object,))
+                         (float, float, object))
     }
 
     def __init__(self):
         GObject.GObject.__init__(self)
 
         self.max_spectrum_freq = 20000  # Hz
-        self.spectrum_nbands = 1600
+        self.spectrum_nbands = 3600
         self.spectrum_freqs = []
         self.spectrum_x_axis = np.array([])
-        self.spectrum_n_points = 250  # number of freqs displayed
+        self.spectrum_n_points = 3600  # number of freqs displayed
         self.spectrum_nfreqs = 0
         self.spectrum_threshold = -120  # dB
         self.rate = 48000
 
-        self.log = logging.getLogger('PulseEffects')
+        self.log = logging.getLogger('PulseEffectsCalibration')
 
         self.calc_spectrum_freqs()
 
@@ -94,6 +94,7 @@ class TestSignal(GObject.GObject):
 
         self.spectrum.set_property('bands', self.spectrum_nbands)
         self.spectrum.set_property('threshold', self.spectrum_threshold)
+        self.spectrum.set_property('interval', int(1 * 1000000000))
 
         caps = ['audio/x-raw', 'format=F32LE',
                 'rate=' + str(self.rate), 'channels=2']
@@ -191,12 +192,12 @@ class TestSignal(GObject.GObject):
             magnitudes = cs(self.spectrum_x_axis)
 
             max_mag = np.amax(magnitudes)
-            min_mag = self.spectrum_threshold
+            min_mag = np.amin(magnitudes)
 
             if max_mag > min_mag:
-                magnitudes = (min_mag - magnitudes) / min_mag
+                magnitudes = (magnitudes - min_mag) / (max_mag - min_mag)
 
-                self.emit('new_spectrum', magnitudes)
+                self.emit('new_spectrum', min_mag, max_mag, magnitudes)
 
         return True
 

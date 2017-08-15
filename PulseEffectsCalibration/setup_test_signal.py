@@ -9,12 +9,9 @@ from gi.repository import Gtk
 
 class SetupTestSignal():
 
-    def __init__(self, app_builder, test_signal, sink_input_effects,
-                 list_sink_inputs):
+    def __init__(self, app_builder, test_signal):
         self.app_builder = app_builder
         self.ts = test_signal
-        self.sie = sink_input_effects
-        self.list_sink_inputs = list_sink_inputs
         self.module_path = os.path.dirname(__file__)
 
         self.handlers = {
@@ -56,12 +53,7 @@ class SetupTestSignal():
         self.wave2_volume.set_sensitive(False)
 
     def on_wave1_switch_state_set(self, obj, state):
-        n_sink_inputs = self.list_sink_inputs.get_n_inputs()
-
         if state:
-            if n_sink_inputs == 0 and not self.sie.is_playing:
-                self.sie.set_state('playing')
-
             self.wave1_volume.set_sensitive(True)
             self.wave1_volume.set_value(0.5)
             self.ts.set_state('playing')
@@ -71,9 +63,6 @@ class SetupTestSignal():
 
             if not self.wave2_switch.get_state():
                 self.ts.set_state('paused')
-
-                if n_sink_inputs == 0 and self.sie.is_playing:
-                    self.sie.set_state('paused')
 
     def on_wave1_volume_value_changed(self, obj):
         self.ts.set_wave1_volume(obj.get_value())
@@ -126,12 +115,7 @@ class SetupTestSignal():
         self.ts.set_wave1_freq(obj.get_value())
 
     def on_wave2_switch_state_set(self, obj, state):
-        n_sink_inputs = self.list_sink_inputs.get_n_inputs()
-
         if state:
-            if n_sink_inputs == 0 and not self.sie.is_playing:
-                self.sie.set_state('playing')
-
             self.wave2_volume.set_sensitive(True)
             self.wave2_volume.set_value(0.5)
             self.ts.set_state('playing')
@@ -141,9 +125,6 @@ class SetupTestSignal():
 
             if not self.wave1_switch.get_state():
                 self.ts.set_state('paused')
-
-                if n_sink_inputs == 0 and self.sie.is_playing:
-                    self.sie.set_state('paused')
 
     def on_wave2_volume_value_changed(self, obj):
         self.ts.set_wave2_volume(obj.get_value())

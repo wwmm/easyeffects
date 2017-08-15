@@ -17,8 +17,6 @@ class SetupEqualizer():
         self.handlers = {
             'on_equalizer_input_gain_value_changed':
                 self.on_equalizer_input_gain_value_changed,
-            'on_equalizer_output_gain_value_changed':
-                self.on_equalizer_output_gain_value_changed,
             'on_eq_band0_value_changed': self.on_eq_band0_value_changed,
             'on_eq_band1_value_changed': self.on_eq_band1_value_changed,
             'on_eq_band2_value_changed': self.on_eq_band2_value_changed,
@@ -38,8 +36,6 @@ class SetupEqualizer():
 
         self.equalizer_input_gain = self.app_builder.get_object(
             'equalizer_input_gain')
-        self.equalizer_output_gain = self.app_builder.get_object(
-            'equalizer_output_gain')
 
         self.eq_band0 = self.app_builder.get_object('eq_band0')
         self.eq_band1 = self.app_builder.get_object('eq_band1')
@@ -59,20 +55,13 @@ class SetupEqualizer():
 
         self.equalizer_input_level = self.app_builder.get_object(
             'equalizer_input_level')
-        self.equalizer_output_level = self.app_builder.get_object(
-            'equalizer_output_level')
 
         self.equalizer_input_level_label = self.app_builder.get_object(
             'equalizer_input_level_label')
-        self.equalizer_output_level_label = self.app_builder.get_object(
-            'equalizer_output_level_label')
 
     def init(self):
         value_linear = 10**(0.0 / 20)
         self.effects.set_eq_input_gain(value_linear)
-
-        value_linear = 10**(0.0 / 20)
-        self.effects.set_eq_output_gain(value_linear)
 
         self.effects.set_eq_band0(0)
         self.effects.set_eq_band1(0)
@@ -94,9 +83,6 @@ class SetupEqualizer():
         self.effects.connect('new_equalizer_input_level',
                              self.on_new_equalizer_input_level)
 
-        self.effects.connect('new_equalizer_output_level',
-                             self.on_new_equalizer_output_level)
-
     def on_new_equalizer_input_level(self, obj, value):
         if value >= -99:
             self.equalizer_input_level_label.set_text(str(round(value)))
@@ -106,16 +92,6 @@ class SetupEqualizer():
         else:
             self.equalizer_input_level.set_value(0)
             self.equalizer_input_level_label.set_text('-99')
-
-    def on_new_equalizer_output_level(self, obj, value):
-        if value >= -99:
-            self.equalizer_output_level_label.set_text(str(round(value)))
-
-            value = 10**(value / 20)
-            self.equalizer_output_level.set_value(value)
-        else:
-            self.equalizer_output_level.set_value(0)
-            self.equalizer_output_level_label.set_text('-99')
 
     def apply_eq_preset(self, values):
         self.eq_band0.set_value(values[0])
@@ -150,12 +126,6 @@ class SetupEqualizer():
         value_linear = 10**(value_db / 20)
 
         self.effects.set_eq_input_gain(value_linear)
-
-    def on_equalizer_output_gain_value_changed(self, obj):
-        value_db = obj.get_value()
-        value_linear = 10**(value_db / 20)
-
-        self.effects.set_eq_output_gain(value_linear)
 
     def on_eq_band0_value_changed(self, obj):
         value = obj.get_value()

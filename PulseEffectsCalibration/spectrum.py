@@ -18,6 +18,8 @@ class Spectrum():
         self.mouse_intensity = 0
         self.min_mag = 0.0
         self.max_mag = 0.0
+
+        self.draw_guideline = False
         self.guideline_position = 0.5
 
         self.font_description = Pango.FontDescription('Monospace')
@@ -78,14 +80,15 @@ class Spectrum():
 
             ctx.stroke()
 
-            guideline_h = int(self.guideline_position * height)
+            if self.draw_guideline:
+                guideline_h = int(self.guideline_position * height)
 
-            ctx.move_to(0, guideline_h)
-            ctx.line_to(width, guideline_h)
+                ctx.move_to(0, guideline_h)
+                ctx.line_to(width, guideline_h)
 
-            ctx.set_source_rgba(1.0, 0.0, 0.0, 1.0)
-            ctx.set_line_width(1.1)
-            ctx.stroke()
+                ctx.set_source_rgba(1.0, 0.0, 0.0, 1.0)
+                ctx.set_line_width(1.1)
+                ctx.stroke()
 
             if self.mouse_inside:
                 label = str(self.mouse_freq) + ' Hz, '

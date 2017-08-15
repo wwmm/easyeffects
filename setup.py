@@ -24,13 +24,13 @@ for lang in langs:
 
 
 setup(name='PulseEffects',
-      version='2.1.2',
+      version='2.2.0',
       description='Audio effects for Pulseaudio applications',
       url='https://github.com/wwmm/PulseEffects',
       author='wwmm',
       author_email='wellingtonwallace@gmail.com',
       license='GPL3',
       packages=find_packages(),
-      scripts=['pulseeffects'],
+      scripts=['pulseeffects', 'pulseeffects_calibration'],
       include_package_data=True,
       zip_safe=False)

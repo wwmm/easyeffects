@@ -9,7 +9,9 @@ from gi.repository import Gio, GLib, Gtk
 
 from PulseEffectsCalibration.microphone_pipeline import MicrophonePipeline
 from PulseEffectsCalibration.setup_equalizer import SetupEqualizer
+from PulseEffectsCalibration.setup_test_signal import SetupTestSignal
 from PulseEffectsCalibration.spectrum import Spectrum
+from PulseEffectsCalibration.test_signal import TestSignal
 
 
 class Application(Gtk.Application):
@@ -37,19 +39,26 @@ class Application(Gtk.Application):
         self.log = logging.getLogger('PulseEffectsCalibration')
 
         self.mp = MicrophonePipeline()
+        self.ts = TestSignal()
 
         self.mp.connect('noise_measured', self.on_noise_measured)
+
+        self.mp.set_state('ready')
+        self.ts.set_state('ready')
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
 
         self.builder = Gtk.Builder()
         self.calibration_mic_builder = Gtk.Builder()
+        self.test_signal_builder = Gtk.Builder()
 
         self.builder.add_from_file(self.module_path + '/ui/main_ui.glade')
         self.builder.add_from_file(self.module_path + '/ui/headerbar.glade')
         self.calibration_mic_builder.add_from_file(
             self.module_path + '/ui/calibration_mic_plugins.glade')
+        self.test_signal_builder.add_from_file(self.module_path +
+                                               '/ui/test_signal.glade')
 
         headerbar = self.builder.get_object('headerbar')
 
@@ -94,6 +103,10 @@ class Application(Gtk.Application):
         self.calibration_mic_builder.connect_signals(
             calibration_mic_ui_handlers)
 
+        # init test signal widgets
+        self.setup_test_signal = SetupTestSignal(self.test_signal_builder,
+                                                 self.ts)
+
         # init stack widgets
         self.init_stack_widgets()
 
@@ -108,10 +121,6 @@ class Application(Gtk.Application):
         time_window.set_value(2)
         guideline_position.set_value(0.5)
 
-        self.mp.connect('new_spectrum',
-                        self.spectrum
-                        .on_new_spectrum)
-
         self.setup_equalizer.connect_signals()
 
         self.mp.set_state('playing')
@@ -123,6 +132,7 @@ class Application(Gtk.Application):
 
     def on_MainWindow_delete_event(self, event, data):
         self.mp.set_state('null')
+        self.ts.set_state('null')
 
         self.quit()
 
@@ -147,19 +157,54 @@ class Application(Gtk.Application):
         stack_box = self.builder.get_object('stack_box')
 
         calibration_mic_ui = self.calibration_mic_builder.get_object('window')
+        test_signal_ui = self.test_signal_builder.get_object('window')
 
         stack = Gtk.Stack()
         stack.set_transition_type(Gtk.StackTransitionType.CROSSFADE)
         stack.set_transition_duration(250)
         stack.set_homogeneous(False)
 
-        stack.add_named(calibration_mic_ui, 'calibration_mic')
+        stack.add_named(test_signal_ui, "test_signal")
+        stack.child_set_property(test_signal_ui, 'icon-name',
+                                 'emblem-music-symbolic')
 
+        stack.add_named(calibration_mic_ui, 'calibration_mic')
         stack.child_set_property(calibration_mic_ui, 'icon-name',
-                                 'audio-speakers-symbolic')
+                                 'audio-input-microphone-symbolic')
+
+        self.stack_current_child_name = 'test_signal'
+
+        self.spectrum_handler_id = self.ts.connect('new_spectrum',
+                                                   self.spectrum
+                                                   .on_new_spectrum)
 
         def on_visible_child_changed(stack, visible_child):
-            pass
+            name = stack.get_visible_child_name()
+
+            if name == 'test_signal':
+                if self.stack_current_child_name == 'calibration_mic':
+                    self.mp.disconnect(self.spectrum_handler_id)
+
+                self.spectrum_handler_id = self.ts.connect('new_spectrum',
+                                                           self.spectrum
+                                                           .on_new_spectrum)
+
+                self.spectrum.draw_guideline = False
+
+                self.stack_current_child_name = 'test_signal'
+            elif name == 'calibration_mic':
+                if self.stack_current_child_name == 'test_signal':
+                    self.ts.disconnect(self.spectrum_handler_id)
+
+                self.spectrum_handler_id = self.mp.connect('new_spectrum',
+                                                           self.spectrum
+                                                           .on_new_spectrum)
+
+                self.spectrum.draw_guideline = True
+
+                self.stack_current_child_name = 'calibration_mic'
+
+            self.spectrum.clear()
 
         stack.connect("notify::visible-child", on_visible_child_changed)
 

@@ -1,0 +1,15 @@
+[Desktop Entry]
+Name=PulseEffects Calibration
+Name[pt_BR]= PulseEffects Calibration
+GenericName=Audio System Calibrator
+GenericName[pt_BR]=Calibrador de Sistemas de Áudio
+Comment=Test Signals for headphone and Speakers Calibration
+Comment[pt_BR]=Sinais de Teste para Calibração de fones de ouvido e autofalantes
+Keywords=calibration;equalizer;headphones;microphone;speakers;
+Keywords[pt_BR]=calibrador;equalizador;fone;microfone;autofalantes;
+Categories=GTK;AudioVideo;Audio;
+Exec=pulseeffects_calibration
+Icon=pulseeffects
+StartupNotify=true
+Terminal=false
+Type=Application
