@@ -33,13 +33,6 @@ class SetupLimiter():
         self.limiter_attenuation_levelbar = self.app_builder.get_object(
             'limiter_attenuation_levelbar')
 
-        self.limiter_scale_input_gain = self.app_builder.get_object(
-            'limiter_scale_input_gain')
-        self.limiter_scale_limit = self.app_builder.get_object(
-            'limiter_scale_limit')
-        self.limiter_scale_release_time = self.app_builder.get_object(
-            'limiter_scale_release_time')
-
         self.limiter_attenuation_levelbar.add_offset_value(
             'GTK_LEVEL_BAR_OFFSET_LOW', 20)
         self.limiter_attenuation_levelbar.add_offset_value(
@@ -67,8 +60,6 @@ class SetupLimiter():
         self.limiter_attenuation_level_label = self.app_builder.get_object(
             'limiter_attenuation_level_label')
 
-        self.init_menu()
-
     def init(self):
         self.limiter_user = self.settings.get_value(
             'limiter-user').unpack()
@@ -92,13 +83,6 @@ class SetupLimiter():
         self.limiter_input_gain.set_value(values[0])
         self.limiter_limit.set_value(values[1])
         self.limiter_release_time.set_value(values[2])
-
-    def on_limiter_preset_clicked(self, obj):
-        obj_id = Gtk.Buildable.get_name(obj)
-
-        if obj_id == 'default':
-            value = self.settings.get_value('limiter-default')
-            self.apply_limiter_preset(value)
 
     def save_limiter_user(self, idx, value):
         self.limiter_user[idx] = value
@@ -162,29 +146,6 @@ class SetupLimiter():
         self.limiter_attenuation_levelbar.set_value(attenuation)
         self.limiter_attenuation_level_label.set_text(
             str(round(attenuation)))
-
-    def init_menu(self):
-        builder = Gtk.Builder()
-
-        builder.add_from_file(self.module_path + '/ui/limiter_menu.glade')
-
-        builder.connect_signals(self)
-
-        menu = builder.get_object('menu')
-
-        self.popover_button = self.app_builder.get_object('limiter_popover')
-
-        popover = Gtk.Popover.new(self.popover_button)
-        popover.props.transitions_enabled = True
-        popover.add(menu)
-
-        def button_clicked(arg):
-            if popover.get_visible():
-                popover.hide()
-            else:
-                popover.show_all()
-
-        self.popover_button.connect("clicked", button_clicked)
 
     def reset(self):
         self.settings.reset('limiter-user')
