@@ -2,3 +2,5 @@ include README.md
 include LICENSE.md
 include PulseEffects/ui/*.glade
 include PulseEffects/ui/*.png
+include PulseEffectsCalibration/ui/*.glade
+include PulseEffectsCalibration/ui/*.png
