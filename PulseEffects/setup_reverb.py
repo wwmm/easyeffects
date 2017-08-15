@@ -23,7 +23,9 @@ class SetupReverb():
             'on_reverb_width_value_changed':
             self.on_reverb_width_value_changed,
             'on_reverb_level_value_changed':
-            self.on_reverb_level_value_changed
+            self.on_reverb_level_value_changed,
+            'on_reverb_preset_clicked':
+                self.on_reverb_preset_clicked
         }
 
         self.reverb_room_size = self.app_builder.get_object('reverb_room_size')
@@ -48,31 +50,6 @@ class SetupReverb():
             'reverb_output_level_left_label')
         self.reverb_output_level_right_label = self.app_builder.get_object(
             'reverb_output_level_right_label')
-
-        self.init_menu()
-
-    def init_menu(self):
-        builder = Gtk.Builder()
-
-        builder.add_from_file(self.module_path + '/ui/reverb_menu.glade')
-
-        builder.connect_signals(self)
-
-        menu = builder.get_object('menu')
-
-        button = self.app_builder.get_object('reverb_popover')
-
-        popover = Gtk.Popover.new(button)
-        popover.props.transitions_enabled = True
-        popover.add(menu)
-
-        def button_clicked(arg):
-            if popover.get_visible():
-                popover.hide()
-            else:
-                popover.show_all()
-
-        button.connect("clicked", button_clicked)
 
     def init(self):
         self.reverb_user = self.settings.get_value('reverb-user').unpack()

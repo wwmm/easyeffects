@@ -17,19 +17,21 @@ class SetupCompressor():
 
         self.handlers = {
             'on_compressor_measurement_type':
-            self.on_compressor_measurement_type,
+                self.on_compressor_measurement_type,
             'on_compressor_attack_time_value_changed':
-            self.on_compressor_attack_time_value_changed,
+                self.on_compressor_attack_time_value_changed,
             'on_compressor_release_time_value_changed':
-            self.on_compressor_release_time_value_changed,
+                self.on_compressor_release_time_value_changed,
             'on_compressor_threshold_value_changed':
-            self.on_compressor_threshold_value_changed,
+                self.on_compressor_threshold_value_changed,
             'on_compressor_ratio_value_changed':
-            self.on_compressor_ratio_value_changed,
+                self.on_compressor_ratio_value_changed,
             'on_compressor_knee_value_changed':
-            self.on_compressor_knee_value_changed,
+                self.on_compressor_knee_value_changed,
             'on_compressor_makeup_value_changed':
-            self.on_compressor_makeup_value_changed
+                self.on_compressor_makeup_value_changed,
+            'on_compressor_preset_clicked':
+                self.on_compressor_preset_clicked
         }
 
         self.compressor_rms = self.app_builder.get_object('compressor_rms')
@@ -76,31 +78,6 @@ class SetupCompressor():
             'GTK_LEVEL_BAR_OFFSET_HIGH', 18)
         self.compressor_gain_reduction_levelbar.add_offset_value(
             'GTK_LEVEL_BAR_OFFSET_FULL', 24)
-
-        self.init_menu()
-
-    def init_menu(self):
-        builder = Gtk.Builder()
-
-        builder.add_from_file(self.module_path + '/ui/compressor_menu.glade')
-
-        builder.connect_signals(self)
-
-        menu = builder.get_object('menu')
-
-        button = self.app_builder.get_object('compressor_popover')
-
-        popover = Gtk.Popover.new(button)
-        popover.props.transitions_enabled = True
-        popover.add(menu)
-
-        def button_clicked(arg):
-            if popover.get_visible():
-                popover.hide()
-            else:
-                popover.show_all()
-
-        button.connect("clicked", button_clicked)
 
     def init(self):
         self.compressor_user = self.settings.get_value(
