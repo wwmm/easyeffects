@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-23 15:58-0300\n"
+"POT-Creation-Date: 2017-08-15 13:25-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -117,6 +117,7 @@ msgid "latency-time [ms]"
 msgstr ""
 
 #: ../PulseEffects/ui/headerbar.glade:350
+#: ../PulseEffectsCalibration/ui/calibration_mic_plugins.glade:150
 msgid "Window [s]"
 msgstr ""
 
@@ -189,6 +190,7 @@ msgstr ""
 
 #: ../PulseEffects/ui/sink_inputs_plugins.glade:747
 #: ../PulseEffects/ui/source_outputs_plugins.glade:747
+#: ../PulseEffectsCalibration/ui/calibration_mic_plugins.glade:777
 msgid "Input [dB]"
 msgstr ""
 
@@ -315,71 +317,91 @@ msgstr ""
 msgid "Gain Reduction"
 msgstr ""
 
-#: ../PulseEffects/ui/test_signal.glade:51
+#: ../PulseEffectsCalibration/ui/about.glade:11
+msgid "Test Signals for Headphone and Speakers Calibration"
+msgstr ""
+
+#: ../PulseEffectsCalibration/ui/calibration_mic_plugins.glade:179
+msgid "Guideline Position"
+msgstr ""
+
+#: ../PulseEffectsCalibration/ui/calibration_mic_plugins.glade:227
+msgid "Measure Noise"
+msgstr ""
+
+#: ../PulseEffectsCalibration/ui/calibration_mic_plugins.glade:257
+msgid "Subtract Noise"
+msgstr ""
+
+#: ../PulseEffectsCalibration/ui/calibration_mic_plugins.glade:308
+msgid "Calibration Microphone Correction"
+msgstr ""
+
+#: ../PulseEffectsCalibration/ui/test_signal.glade:51
 msgid "Sine"
 msgstr ""
 
-#: ../PulseEffects/ui/test_signal.glade:66
+#: ../PulseEffectsCalibration/ui/test_signal.glade:66
 msgid "Square"
 msgstr ""
 
-#: ../PulseEffects/ui/test_signal.glade:81
+#: ../PulseEffectsCalibration/ui/test_signal.glade:81
 msgid "Saw"
 msgstr ""
 
-#: ../PulseEffects/ui/test_signal.glade:96
+#: ../PulseEffectsCalibration/ui/test_signal.glade:96
 msgid "Triangle"
 msgstr ""
 
-#: ../PulseEffects/ui/test_signal.glade:111
+#: ../PulseEffectsCalibration/ui/test_signal.glade:111
 msgid "Pink Noise"
 msgstr ""
 
-#: ../PulseEffects/ui/test_signal.glade:126
+#: ../PulseEffectsCalibration/ui/test_signal.glade:126
 msgid "White Noise"
 msgstr ""
 
-#: ../PulseEffects/ui/test_signal.glade:141
+#: ../PulseEffectsCalibration/ui/test_signal.glade:141
 msgid "Silence"
 msgstr ""
 
-#: ../PulseEffects/ui/test_signal.glade:156
+#: ../PulseEffectsCalibration/ui/test_signal.glade:156
 msgid "Sine Table"
 msgstr ""
 
-#: ../PulseEffects/ui/test_signal.glade:171
+#: ../PulseEffectsCalibration/ui/test_signal.glade:171
 msgid "Ticks"
 msgstr ""
 
-#: ../PulseEffects/ui/test_signal.glade:186
+#: ../PulseEffectsCalibration/ui/test_signal.glade:186
 msgid "Gaussian Noise"
 msgstr ""
 
-#: ../PulseEffects/ui/test_signal.glade:201
+#: ../PulseEffectsCalibration/ui/test_signal.glade:201
 msgid "Red Noise"
 msgstr ""
 
-#: ../PulseEffects/ui/test_signal.glade:216
+#: ../PulseEffectsCalibration/ui/test_signal.glade:216
 msgid "Blue Noise"
 msgstr ""
 
-#: ../PulseEffects/ui/test_signal.glade:231
+#: ../PulseEffectsCalibration/ui/test_signal.glade:231
 msgid "Violet Noise"
 msgstr ""
 
-#: ../PulseEffects/ui/test_signal.glade:270
+#: ../PulseEffectsCalibration/ui/test_signal.glade:270
 msgid "Frequency [Hz]"
 msgstr ""
 
-#: ../PulseEffects/ui/test_signal.glade:315
-#: ../PulseEffects/ui/test_signal.glade:658
+#: ../PulseEffectsCalibration/ui/test_signal.glade:315
+#: ../PulseEffectsCalibration/ui/test_signal.glade:658
 msgid "Volume"
 msgstr ""
 
-#: ../PulseEffects/ui/test_signal.glade:369
+#: ../PulseEffectsCalibration/ui/test_signal.glade:369
 msgid "Test Signal"
 msgstr ""
 
-#: ../PulseEffects/ui/test_signal.glade:712
-msgid "Equal Loudness Curve Calibration"
+#: ../PulseEffectsCalibration/ui/test_signal.glade:712
+msgid "Equal Loudness Test Signals"
 msgstr ""
