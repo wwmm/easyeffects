@@ -201,6 +201,52 @@ class SinkInputEffects(GObject.GObject):
         self.ui_reverb_output_level_right_label = self.builder.get_object(
             'reverb_output_level_right_label')
 
+        # highpass
+
+        self.ui_highpass_cutoff = self.builder.get_object('highpass_cutoff')
+        self.ui_highpass_poles = self.builder.get_object('highpass_poles')
+
+        self.ui_highpass_input_level_left = self.builder.get_object(
+            'highpass_input_level_left')
+        self.ui_highpass_input_level_right = self.builder.get_object(
+            'highpass_input_level_right')
+        self.ui_highpass_output_level_left = self.builder.get_object(
+            'highpass_output_level_left')
+        self.ui_highpass_output_level_right = self.builder.get_object(
+            'highpass_output_level_right')
+
+        self.ui_highpass_input_level_left_label = self.builder.get_object(
+            'highpass_input_level_left_label')
+        self.ui_highpass_input_level_right_label = self.builder.get_object(
+            'highpass_input_level_right_label')
+        self.ui_highpass_output_level_left_label = self.builder.get_object(
+            'highpass_output_level_left_label')
+        self.ui_highpass_output_level_right_label = self.builder.get_object(
+            'highpass_output_level_right_label')
+
+        # lowpass
+
+        self.ui_lowpass_cutoff = self.builder.get_object('lowpass_cutoff')
+        self.ui_lowpass_poles = self.builder.get_object('lowpass_poles')
+
+        self.ui_lowpass_input_level_left = self.builder.get_object(
+            'lowpass_input_level_left')
+        self.ui_lowpass_input_level_right = self.builder.get_object(
+            'lowpass_input_level_right')
+        self.ui_lowpass_output_level_left = self.builder.get_object(
+            'lowpass_output_level_left')
+        self.ui_lowpass_output_level_right = self.builder.get_object(
+            'lowpass_output_level_right')
+
+        self.ui_lowpass_input_level_left_label = self.builder.get_object(
+            'lowpass_input_level_left_label')
+        self.ui_lowpass_input_level_right_label = self.builder.get_object(
+            'lowpass_input_level_right_label')
+        self.ui_lowpass_output_level_left_label = self.builder.get_object(
+            'lowpass_output_level_left_label')
+        self.ui_lowpass_output_level_right_label = self.builder.get_object(
+            'lowpass_output_level_right_label')
+
         # equalizer
 
         self.ui_equalizer_input_gain = self.builder.get_object(
@@ -279,6 +325,10 @@ class SinkInputEffects(GObject.GObject):
             'level', 'compressor_output_level')
         reverb_output_level = Gst.ElementFactory.make(
             'level', 'reverb_output_level')
+        highpass_output_level = Gst.ElementFactory.make(
+            'level', 'highpass_output_level')
+        lowpass_output_level = Gst.ElementFactory.make(
+            'level', 'lowpass_output_level')
         equalizer_input_level = Gst.ElementFactory.make(
             'level', 'equalizer_input_level')
         equalizer_output_level = Gst.ElementFactory.make(
@@ -331,15 +381,15 @@ class SinkInputEffects(GObject.GObject):
         self.spectrum.set_property('bands', self.spectrum_nbands)
         self.spectrum.set_property('threshold', self.spectrum_threshold)
 
-        self.eq_highpass = Gst.ElementFactory.make('audiocheblimit', None)
-        self.eq_highpass.set_property('mode', 'high-pass')
-        self.eq_highpass.set_property('type', 1)
-        self.eq_highpass.set_property('ripple', 0)
+        self.highpass = Gst.ElementFactory.make('audiocheblimit', None)
+        self.highpass.set_property('mode', 'high-pass')
+        self.highpass.set_property('type', 1)
+        self.highpass.set_property('ripple', 0)
 
-        self.eq_lowpass = Gst.ElementFactory.make('audiocheblimit', None)
-        self.eq_lowpass.set_property('mode', 'low-pass')
-        self.eq_lowpass.set_property('type', 1)
-        self.eq_lowpass.set_property('ripple', 0)
+        self.lowpass = Gst.ElementFactory.make('audiocheblimit', None)
+        self.lowpass.set_property('mode', 'low-pass')
+        self.lowpass.set_property('type', 1)
+        self.lowpass.set_property('ripple', 0)
 
         self.output_limiter.set_property('input-gain', 0)
         self.output_limiter.set_property('limit', 0)
@@ -356,15 +406,17 @@ class SinkInputEffects(GObject.GObject):
         pipeline.add(compressor_output_level)
         pipeline.add(self.freeverb)
         pipeline.add(reverb_output_level)
+        pipeline.add(self.highpass)
+        pipeline.add(highpass_output_level)
+        pipeline.add(self.lowpass)
+        pipeline.add(lowpass_output_level)
         pipeline.add(self.equalizer_input_gain)
-        pipeline.add(self.eq_highpass)
-        pipeline.add(self.eq_lowpass)
         pipeline.add(equalizer_input_level)
         pipeline.add(self.equalizer)
         pipeline.add(self.equalizer_output_gain)
-        pipeline.add(self.output_limiter)
         pipeline.add(equalizer_output_level)
         pipeline.add(self.spectrum)
+        pipeline.add(self.output_limiter)
         pipeline.add(self.audio_sink)
 
         self.audio_src.link(source_caps)
@@ -377,16 +429,18 @@ class SinkInputEffects(GObject.GObject):
         self.compressor.link(compressor_output_level)
         compressor_output_level.link(self.freeverb)
         self.freeverb.link(reverb_output_level)
-        reverb_output_level.link(self.equalizer_input_gain)
-        self.equalizer_input_gain.link(self.eq_highpass)
-        self.eq_highpass.link(self.eq_lowpass)
-        self.eq_lowpass.link(equalizer_input_level)
+        reverb_output_level.link(self.highpass)
+        self.highpass.link(highpass_output_level)
+        highpass_output_level.link(self.lowpass)
+        self.lowpass.link(lowpass_output_level)
+        lowpass_output_level.link(self.equalizer_input_gain)
+        self.equalizer_input_gain.link(equalizer_input_level)
         equalizer_input_level.link(self.equalizer)
         self.equalizer.link(self.equalizer_output_gain)
-        self.equalizer_output_gain.link(self.output_limiter)
-        self.output_limiter.link(equalizer_output_level)
+        self.equalizer_output_gain.link(equalizer_output_level)
         equalizer_output_level.link(self.spectrum)
-        self.spectrum.link(self.audio_sink)
+        self.spectrum.link(self.output_limiter)
+        self.output_limiter.link(self.audio_sink)
 
         return pipeline
 
@@ -675,20 +729,94 @@ class SinkInputEffects(GObject.GObject):
                 self.ui_reverb_output_level_left.set_value(l_value)
                 self.ui_reverb_output_level_left_label.set_text(
                     str(round(left)))
+
+                # highpass input
+                self.ui_highpass_input_level_left.set_value(l_value)
+                self.ui_highpass_input_level_left_label.set_text(
+                    str(round(left)))
             else:
                 self.ui_reverb_output_level_left.set_value(0)
                 self.ui_reverb_output_level_left_label.set_text('-99')
+
+                self.ui_highpass_input_level_left.set_value(0)
+                self.ui_highpass_input_level_left_label.set_text('-99')
 
             if right >= -99:
                 r_value = 10**(right / 20)
                 self.ui_reverb_output_level_right.set_value(r_value)
                 self.ui_reverb_output_level_right_label.set_text(
                     str(round(right)))
+
+                # highpass input
+                self.ui_highpass_input_level_right.set_value(r_value)
+                self.ui_highpass_input_level_right_label.set_text(
+                    str(round(right)))
             else:
                 self.ui_reverb_output_level_right.set_value(0)
                 self.ui_reverb_output_level_right_label.set_text('-99')
 
-            # self.emit('new_reverb_output_level', peak[0], peak[1])
+                self.ui_highpass_input_level_right.set_value(0)
+                self.ui_highpass_input_level_right_label.set_text('-99')
+        elif plugin == 'highpass_output_level':
+            peak = msg.get_structure().get_value('peak')
+
+            left, right = peak[0], peak[1]
+
+            if left >= -99:
+                l_value = 10**(left / 20)
+                self.ui_highpass_output_level_left.set_value(l_value)
+                self.ui_highpass_output_level_left_label.set_text(
+                    str(round(left)))
+
+                # lowpass input
+                self.ui_lowpass_input_level_left.set_value(l_value)
+                self.ui_lowpass_input_level_left_label.set_text(
+                    str(round(left)))
+            else:
+                self.ui_highpass_output_level_left.set_value(0)
+                self.ui_highpass_output_level_left_label.set_text('-99')
+
+                self.ui_lowpass_input_level_left.set_value(0)
+                self.ui_lowpass_input_level_left_label.set_text('-99')
+
+            if right >= -99:
+                r_value = 10**(right / 20)
+                self.ui_highpass_output_level_right.set_value(r_value)
+                self.ui_highpass_output_level_right_label.set_text(
+                    str(round(right)))
+
+                # lowpass input
+                self.ui_lowpass_input_level_right.set_value(r_value)
+                self.ui_lowpass_input_level_right_label.set_text(
+                    str(round(right)))
+            else:
+                self.ui_highpass_output_level_right.set_value(0)
+                self.ui_highpass_output_level_right_label.set_text('-99')
+
+                self.ui_lowpass_input_level_right.set_value(0)
+                self.ui_lowpass_input_level_right_label.set_text('-99')
+        elif plugin == 'lowpass_output_level':
+            peak = msg.get_structure().get_value('peak')
+
+            left, right = peak[0], peak[1]
+
+            if left >= -99:
+                l_value = 10**(left / 20)
+                self.ui_lowpass_output_level_left.set_value(l_value)
+                self.ui_lowpass_output_level_left_label.set_text(
+                    str(round(left)))
+            else:
+                self.ui_lowpass_output_level_left.set_value(0)
+                self.ui_lowpass_output_level_left_label.set_text('-99')
+
+            if right >= -99:
+                r_value = 10**(right / 20)
+                self.ui_lowpass_output_level_right.set_value(r_value)
+                self.ui_lowpass_output_level_right_label.set_text(
+                    str(round(right)))
+            else:
+                self.ui_lowpass_output_level_right.set_value(0)
+                self.ui_lowpass_output_level_right_label.set_text('-99')
         elif plugin == 'equalizer_input_level':
             peak = msg.get_structure().get_value('peak')
 
@@ -819,17 +947,33 @@ class SinkInputEffects(GObject.GObject):
         self.reverb_user = self.settings.get_value('reverb-user').unpack()
         self.apply_reverb_preset(self.reverb_user)
 
+        # highpass
+
+        highpass_cutoff_user = self.settings.get_value(
+            'highpass-cutoff').unpack()
+        highpass_poles_user = self.settings.get_value(
+            'highpass-poles').unpack()
+
+        self.ui_highpass_cutoff.set_value(highpass_cutoff_user)
+        self.ui_highpass_poles.set_value(highpass_poles_user)
+
+        self.highpass.set_property('cutoff', highpass_cutoff_user)
+        self.highpass.set_property('poles', highpass_poles_user)
+
+        # lowpass
+
+        lowpass_cutoff_user = self.settings.get_value(
+            'lowpass-cutoff').unpack()
+        lowpass_poles_user = self.settings.get_value(
+            'lowpass-poles').unpack()
+
+        self.ui_lowpass_cutoff.set_value(lowpass_cutoff_user)
+        self.ui_lowpass_poles.set_value(lowpass_poles_user)
+
+        self.lowpass.set_property('cutoff', lowpass_cutoff_user)
+        self.lowpass.set_property('poles', lowpass_poles_user)
+
         # equalizer
-
-        eq_highpass_cutoff_freq_user = self.settings.get_value(
-            'equalizer-highpass-cutoff').unpack()
-        eq_highpass_poles_user = self.settings.get_value(
-            'equalizer-highpass-poles').unpack()
-
-        eq_lowpass_cutoff_freq_user = self.settings.get_value(
-            'equalizer-lowpass-cutoff').unpack()
-        eq_lowpass_poles_user = self.settings.get_value(
-            'equalizer-lowpass-poles').unpack()
 
         equalizer_input_gain_user = self.settings.get_value(
             'equalizer-input-gain').unpack()
@@ -1062,16 +1206,16 @@ class SinkInputEffects(GObject.GObject):
             self.apply_reverb_preset(value)
 
     def set_eq_highpass_cutoff_freq(self, value):
-        self.eq_highpass.set_property('cutoff', value)
+        self.highpass.set_property('cutoff', value)
 
     def set_eq_highpass_poles(self, value):
-        self.eq_highpass.set_property('poles', value)
+        self.highpass.set_property('poles', value)
 
     def set_eq_lowpass_cutoff_freq(self, value):
-        self.eq_lowpass.set_property('cutoff', value)
+        self.lowpass.set_property('cutoff', value)
 
     def set_eq_lowpass_poles(self, value):
-        self.eq_lowpass.set_property('poles', value)
+        self.lowpass.set_property('poles', value)
 
     def on_equalizer_input_gain_value_changed(self, obj):
         value_db = obj.get_value()
