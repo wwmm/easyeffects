@@ -161,11 +161,6 @@
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_equalizer_output_gain_value_changed" swapped="no"/>
   </object>
-  <object class="GtkImage" id="image_eq_menu">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">preferences-other-symbolic</property>
-  </object>
   <object class="GtkAdjustment" id="limiter_input_gain_adjustment">
     <property name="lower">-20</property>
     <property name="upper">20</property>
@@ -1467,6 +1462,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hexpand">True</property>
+                    <property name="column_spacing">6</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -1690,15 +1686,47 @@
                 <property name="orientation">vertical</property>
                 <property name="spacing">10</property>
                 <child>
-                  <object class="GtkButton" id="equalizer_popover">
+                  <object class="GtkGrid">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="halign">end</property>
-                    <property name="valign">center</property>
-                    <property name="image">image_eq_menu</property>
-                    <property name="relief">half</property>
-                    <property name="always_show_image">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">center</property>
+                    <property name="column_spacing">6</property>
+                    <child>
+                      <object class="GtkButton" id="equalizer_presets_button">
+                        <property name="label" translatable="yes">Presets</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">2</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="highpass_menu_button">
+                        <property name="label" translatable="yes">High Pass</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="lowpass_menu_button">
+                        <property name="label" translatable="yes">Low Pass</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
                   </object>
                   <packing>
                     <property name="expand">False</property>

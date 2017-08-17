@@ -145,6 +145,7 @@ class Application(Gtk.Application):
         self.init_sink_inputs_widgets()
         self.init_source_outputs_widgets()
         # these two must be after init_sink_inputs_widgets
+        self.sie.init_ui()
         self.init_autovolume_widgets()
 
         # init stack widgets
@@ -161,10 +162,10 @@ class Application(Gtk.Application):
                                                     self.spectrum
                                                     .on_new_spectrum)
 
-        self.setup_sie_limiter.connect_signals()
-        self.setup_sie_compressor.connect_signals()
-        self.setup_sie_reverb.connect_signals()
-        self.setup_sie_equalizer.connect_signals()
+        # self.setup_sie_limiter.connect_signals()
+        # self.setup_sie_compressor.connect_signals()
+        # self.setup_sie_reverb.connect_signals()
+        # self.setup_sie_equalizer.connect_signals()
 
         self.setup_soe_limiter.connect_signals()
         self.setup_soe_compressor.connect_signals()
@@ -226,7 +227,8 @@ class Application(Gtk.Application):
         stack_switcher = self.builder.get_object('stack_switcher')
         stack_box = self.builder.get_object('stack_box')
 
-        sink_inputs_ui = self.sink_inputs_builder.get_object('window')
+        # sink_inputs_ui = self.sink_inputs_builder.get_object('window')
+        sink_inputs_ui = self.sie.ui_window
         source_outputs_ui = self.source_outputs_builder.get_object('window')
 
         stack = Gtk.Stack()
@@ -277,33 +279,33 @@ class Application(Gtk.Application):
         stack_box.show_all()
 
     def init_sink_inputs_widgets(self):
-        self.setup_sie_limiter = SetupLimiter(self.sink_inputs_builder,
-                                              self.sie, self.settings_sie)
-        self.setup_sie_compressor = SetupCompressor(self.sink_inputs_builder,
-                                                    self.sie,
-                                                    self.settings_sie)
-        self.setup_sie_reverb = SetupReverb(self.sink_inputs_builder, self.sie,
-                                            self.settings_sie)
-        self.setup_sie_equalizer = SetupEqualizer(self.sink_inputs_builder,
-                                                  self.sie, self.settings_sie)
+        # self.setup_sie_limiter = SetupLimiter(self.sink_inputs_builder,
+        #                                       self.sie, self.settings_sie)
+        # self.setup_sie_compressor = SetupCompressor(self.sink_inputs_builder,
+        #                                             self.sie,
+        #                                             self.settings_sie)
+        # self.setup_sie_reverb = SetupReverb(self.sink_inputs_builder, self.sie,
+        #                                     self.settings_sie)
+        # self.setup_sie_equalizer = SetupEqualizer(self.sink_inputs_builder,
+        #                                           self.sie, self.settings_sie)
 
-        self.list_sink_inputs = ListSinkInputs(self.sink_inputs_builder,
-                                               self.sie, self.pm)
+        self.list_sink_inputs = ListSinkInputs(self.sie.builder, self.sie,
+                                               self.pm)
 
         sink_input_ui_handlers = {}
 
-        sink_input_ui_handlers.update(self.setup_sie_limiter.handlers)
-        sink_input_ui_handlers.update(self.setup_sie_compressor.handlers)
-        sink_input_ui_handlers.update(self.setup_sie_reverb.handlers)
-        sink_input_ui_handlers.update(self.setup_sie_equalizer.handlers)
+        # sink_input_ui_handlers.update(self.setup_sie_limiter.handlers)
+        # sink_input_ui_handlers.update(self.setup_sie_compressor.handlers)
+        # sink_input_ui_handlers.update(self.setup_sie_reverb.handlers)
+        # sink_input_ui_handlers.update(self.setup_sie_equalizer.handlers)
         sink_input_ui_handlers.update(self.list_sink_inputs.handlers)
 
-        self.sink_inputs_builder.connect_signals(sink_input_ui_handlers)
+        # self.sink_inputs_builder.connect_signals(sink_input_ui_handlers)
 
-        self.setup_sie_limiter.init()
-        self.setup_sie_compressor.init()
-        self.setup_sie_reverb.init()
-        self.setup_sie_equalizer.init()
+        # self.setup_sie_limiter.init()
+        # self.setup_sie_compressor.init()
+        # self.setup_sie_reverb.init()
+        # self.setup_sie_equalizer.init()
         self.list_sink_inputs.init()
 
     def init_source_outputs_widgets(self):
@@ -483,21 +485,21 @@ class Application(Gtk.Application):
             tolerance = self.settings.get_value(
                 'autovolume-tolerance').unpack()
 
-            self.setup_sie_limiter.limiter_input_gain.set_value(-10)
-            self.setup_sie_limiter.limiter_limit.set_value(target + tolerance)
-            self.setup_sie_limiter.limiter_release_time.set_value(window)
+            self.sie.ui_limiter_input_gain.set_value(-10)
+            self.sie.ui_limiter_limit.set_value(target + tolerance)
+            self.sie.ui_limiter_release_time.set_value(window)
 
-            self.setup_sie_limiter.limiter_input_gain.set_sensitive(False)
-            self.setup_sie_limiter.limiter_limit.set_sensitive(False)
-            self.setup_sie_limiter.limiter_release_time.set_sensitive(False)
+            self.sie.ui_limiter_input_gain.set_sensitive(False)
+            self.sie.ui_limiter_limit.set_sensitive(False)
+            self.sie.ui_limiter_release_time.set_sensitive(False)
         else:
-            self.setup_sie_limiter.limiter_input_gain.set_value(-10)
-            self.setup_sie_limiter.limiter_limit.set_value(0)
-            self.setup_sie_limiter.limiter_release_time.set_value(1.0)
+            self.sie.ui_limiter_input_gain.set_value(-10)
+            self.sie.ui_limiter_limit.set_value(0)
+            self.sie.ui_limiter_release_time.set_value(1.0)
 
-            self.setup_sie_limiter.limiter_input_gain.set_sensitive(True)
-            self.setup_sie_limiter.limiter_limit.set_sensitive(True)
-            self.setup_sie_limiter.limiter_release_time.set_sensitive(True)
+            self.sie.ui_limiter_input_gain.set_sensitive(True)
+            self.sie.ui_limiter_limit.set_sensitive(True)
+            self.sie.ui_limiter_release_time.set_sensitive(True)
 
         out = GLib.Variant('b', state)
         self.settings.set_value('autovolume-state', out)
@@ -510,7 +512,7 @@ class Application(Gtk.Application):
 
         self.sie.set_autovolume_window(value)
 
-        self.setup_sie_limiter.limiter_release_time.set_value(value)
+        self.sie.ui_limiter_release_time.set_value(value)
 
         out = GLib.Variant('d', value)
         self.settings.set_value('autovolume-window', out)
@@ -523,7 +525,7 @@ class Application(Gtk.Application):
         tolerance = self.settings.get_value(
             'autovolume-tolerance').unpack()
 
-        self.setup_sie_limiter.limiter_limit.set_value(value + tolerance)
+        self.sie.ui_limiter_limit.set_value(value + tolerance)
 
         out = GLib.Variant('i', value)
         self.settings.set_value('autovolume-target', out)
@@ -535,7 +537,7 @@ class Application(Gtk.Application):
 
         target = self.settings.get_value('autovolume-target').unpack()
 
-        self.setup_sie_limiter.limiter_limit.set_value(target + value)
+        self.sie.ui_limiter_limit.set_value(target + value)
 
         out = GLib.Variant('i', value)
         self.settings.set_value('autovolume-tolerance', out)
@@ -549,7 +551,7 @@ class Application(Gtk.Application):
         self.settings.set_value('autovolume-threshold', out)
 
     def on_new_autovolume(self, obj, gain):
-        self.setup_sie_limiter.limiter_input_gain.set_value(gain)
+        self.sie.ui_limiter_input_gain.set_value(gain)
 
     def init_panorama_widgets(self):
         value = self.settings_sie.get_value('panorama').unpack()
@@ -588,10 +590,10 @@ class Application(Gtk.Application):
         self.init_panorama_widgets()
         self.init_spectrum_widgets()
 
-        self.setup_sie_limiter.reset()
-        self.setup_sie_compressor.reset()
-        self.setup_sie_reverb.reset()
-        self.setup_sie_equalizer.reset()
+        # self.setup_sie_limiter.reset()
+        # self.setup_sie_compressor.reset()
+        # self.setup_sie_reverb.reset()
+        # self.setup_sie_equalizer.reset()
 
         self.setup_soe_limiter.reset()
         self.setup_soe_compressor.reset()

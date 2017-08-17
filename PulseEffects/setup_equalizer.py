@@ -95,7 +95,7 @@ class SetupEqualizer():
         self.eq_lowpass_poles = builder.get_object(
             'eq_lowpass_poles')
 
-        button = self.app_builder.get_object('equalizer_popover')
+        button = self.app_builder.get_object('equalizer_presets_button')
 
         popover = Gtk.Popover.new(button)
         popover.props.transitions_enabled = True
