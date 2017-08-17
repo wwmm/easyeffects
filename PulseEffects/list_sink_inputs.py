@@ -9,17 +9,15 @@ from gi.repository import Gtk, Pango
 
 class ListSinkInputs():
 
-    def __init__(self, app_builder, effects, pulse_manager):
-        self.builder = app_builder
+    def __init__(self, effects, pulse_manager):
         self.sie = effects
         self.pm = pulse_manager
 
         self.changing_sink_input_volume = False
-        self.handlers = {}
 
         self.log = logging.getLogger('PulseEffects')
 
-        self.apps_box = self.builder.get_object('apps_box')
+        self.apps_box = self.sie.builder.get_object('apps_box')
 
     def init(self):
         pass

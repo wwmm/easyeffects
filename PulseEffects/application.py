@@ -86,8 +86,6 @@ class Application(Gtk.Application):
 
         self.builder.add_from_file(self.module_path + '/ui/main_ui.glade')
         self.builder.add_from_file(self.module_path + '/ui/headerbar.glade')
-        self.sink_inputs_builder.add_from_file(self.module_path +
-                                               '/ui/sink_inputs_plugins.glade')
         self.source_outputs_builder.add_from_file(
             self.module_path + '/ui/source_outputs_plugins.glade')
 
@@ -144,7 +142,7 @@ class Application(Gtk.Application):
         self.init_spectrum_widgets()
         self.init_sink_inputs_widgets()
         self.init_source_outputs_widgets()
-        # these two must be after init_sink_inputs_widgets
+
         self.sie.init_ui()
         self.init_autovolume_widgets()
 
@@ -161,11 +159,6 @@ class Application(Gtk.Application):
         self.spectrum_handler_id = self.sie.connect('new_spectrum',
                                                     self.spectrum
                                                     .on_new_spectrum)
-
-        # self.setup_sie_limiter.connect_signals()
-        # self.setup_sie_compressor.connect_signals()
-        # self.setup_sie_reverb.connect_signals()
-        # self.setup_sie_equalizer.connect_signals()
 
         self.setup_soe_limiter.connect_signals()
         self.setup_soe_compressor.connect_signals()
@@ -227,8 +220,6 @@ class Application(Gtk.Application):
         stack_switcher = self.builder.get_object('stack_switcher')
         stack_box = self.builder.get_object('stack_box')
 
-        # sink_inputs_ui = self.sink_inputs_builder.get_object('window')
-        sink_inputs_ui = self.sie.ui_window
         source_outputs_ui = self.source_outputs_builder.get_object('window')
 
         stack = Gtk.Stack()
@@ -236,9 +227,9 @@ class Application(Gtk.Application):
         stack.set_transition_duration(250)
         stack.set_homogeneous(False)
 
-        stack.add_named(sink_inputs_ui, 'sink_inputs')
+        stack.add_named(self.sie.ui_window, 'sink_inputs')
 
-        stack.child_set_property(sink_inputs_ui, 'icon-name',
+        stack.child_set_property(self.sie.ui_window, 'icon-name',
                                  'audio-speakers-symbolic')
 
         stack.add_named(source_outputs_ui, "source_outputs")
@@ -279,33 +270,8 @@ class Application(Gtk.Application):
         stack_box.show_all()
 
     def init_sink_inputs_widgets(self):
-        # self.setup_sie_limiter = SetupLimiter(self.sink_inputs_builder,
-        #                                       self.sie, self.settings_sie)
-        # self.setup_sie_compressor = SetupCompressor(self.sink_inputs_builder,
-        #                                             self.sie,
-        #                                             self.settings_sie)
-        # self.setup_sie_reverb = SetupReverb(self.sink_inputs_builder, self.sie,
-        #                                     self.settings_sie)
-        # self.setup_sie_equalizer = SetupEqualizer(self.sink_inputs_builder,
-        #                                           self.sie, self.settings_sie)
+        self.list_sink_inputs = ListSinkInputs(self.sie, self.pm)
 
-        self.list_sink_inputs = ListSinkInputs(self.sie.builder, self.sie,
-                                               self.pm)
-
-        sink_input_ui_handlers = {}
-
-        # sink_input_ui_handlers.update(self.setup_sie_limiter.handlers)
-        # sink_input_ui_handlers.update(self.setup_sie_compressor.handlers)
-        # sink_input_ui_handlers.update(self.setup_sie_reverb.handlers)
-        # sink_input_ui_handlers.update(self.setup_sie_equalizer.handlers)
-        sink_input_ui_handlers.update(self.list_sink_inputs.handlers)
-
-        # self.sink_inputs_builder.connect_signals(sink_input_ui_handlers)
-
-        # self.setup_sie_limiter.init()
-        # self.setup_sie_compressor.init()
-        # self.setup_sie_reverb.init()
-        # self.setup_sie_equalizer.init()
         self.list_sink_inputs.init()
 
     def init_source_outputs_widgets(self):

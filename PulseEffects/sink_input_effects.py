@@ -16,28 +16,8 @@ Gst.init(None)
 class SinkInputEffects(GObject.GObject):
 
     __gsignals__ = {
-        'new_limiter_input_level': (GObject.SIGNAL_RUN_FIRST, None,
-                                    (float, float)),
-        'new_limiter_output_level': (GObject.SIGNAL_RUN_FIRST, None,
-                                     (float, float)),
         'new_autovolume': (GObject.SIGNAL_RUN_FIRST, None,
                            (float,)),
-        'new_compressor_input_level': (GObject.SIGNAL_RUN_FIRST, None,
-                                       (float, float)),
-        'new_compressor_output_level': (GObject.SIGNAL_RUN_FIRST, None,
-                                        (float, float)),
-        'new_compressor_gain_reduction': (GObject.SIGNAL_RUN_FIRST, None,
-                                          (float,)),
-        'new_limiter_attenuation': (GObject.SIGNAL_RUN_FIRST, None,
-                                    (float,)),
-        'new_reverb_input_level': (GObject.SIGNAL_RUN_FIRST, None,
-                                   (float, float)),
-        'new_reverb_output_level': (GObject.SIGNAL_RUN_FIRST, None,
-                                    (float, float)),
-        'new_equalizer_input_level': (GObject.SIGNAL_RUN_FIRST, None,
-                                      (float, float)),
-        'new_equalizer_output_level': (GObject.SIGNAL_RUN_FIRST, None,
-                                       (float, float)),
         'new_spectrum': (GObject.SIGNAL_RUN_FIRST, None,
                          (object,))
     }
@@ -598,8 +578,6 @@ class SinkInputEffects(GObject.GObject):
             else:
                 self.ui_limiter_input_level_right.set_value(0)
                 self.ui_limiter_input_level_right_label.set_text('-99')
-
-            # self.emit('new_limiter_input_level', peak[0], peak[1])
         elif plugin == 'limiter_output_level':
             peak = msg.get_structure().get_value('peak')
 
@@ -641,9 +619,6 @@ class SinkInputEffects(GObject.GObject):
                 self.ui_compressor_input_level_right.set_value(0)
                 self.ui_compressor_input_level_right_label.set_text('-99')
 
-            # self.emit('new_limiter_output_level', peak[0], peak[1])
-            # self.emit('new_compressor_input_level', peak[0], peak[1])
-
             attenuation = round(self.limiter.get_property('attenuation'))
 
             if attenuation != self.old_limiter_attenuation:
@@ -652,8 +627,6 @@ class SinkInputEffects(GObject.GObject):
                 self.ui_limiter_attenuation_levelbar.set_value(attenuation)
                 self.ui_limiter_attenuation_level_label.set_text(
                     str(round(attenuation)))
-
-                # self.emit('new_limiter_attenuation', attenuation)
         elif plugin == 'autovolume':
             if self.autovolume_enabled:
                 peak = msg.get_structure().get_value('peak')
@@ -704,9 +677,6 @@ class SinkInputEffects(GObject.GObject):
                 self.ui_reverb_input_level_right.set_value(0)
                 self.ui_reverb_input_level_right_label.set_text('-99')
 
-            # self.emit('new_compressor_output_level', peak[0], peak[1])
-            # self.emit('new_reverb_input_level', peak[0], peak[1])
-
             gain_reduction = abs(round(
                 self.compressor.get_property('gain-reduction')))
 
@@ -717,8 +687,6 @@ class SinkInputEffects(GObject.GObject):
                     gain_reduction)
                 self.ui_compressor_gain_reduction_level_label.set_text(
                     str(round(gain_reduction)))
-
-                # self.emit('new_compressor_gain_reduction', gain_reduction)
         elif plugin == 'reverb_output_level':
             peak = msg.get_structure().get_value('peak')
 
@@ -839,8 +807,6 @@ class SinkInputEffects(GObject.GObject):
             else:
                 self.ui_equalizer_input_level_right.set_value(0)
                 self.ui_equalizer_input_level_right_label.set_text('-99')
-
-            # self.emit('new_equalizer_input_level', peak[0], peak[1])
         elif plugin == 'equalizer_output_level':
             peak = msg.get_structure().get_value('peak')
 
@@ -863,8 +829,6 @@ class SinkInputEffects(GObject.GObject):
             else:
                 self.ui_equalizer_output_level_right.set_value(0)
                 self.ui_equalizer_output_level_right_label.set_text('-99')
-
-            # self.emit('new_equalizer_output_level', peak[0], peak[1])
         elif plugin == 'spectrum':
             magnitudes = msg.get_structure().get_value('magnitude')
 
@@ -1205,17 +1169,37 @@ class SinkInputEffects(GObject.GObject):
             value = self.settings.get_value('reverb-small-room')
             self.apply_reverb_preset(value)
 
-    def set_eq_highpass_cutoff_freq(self, value):
+    def on_highpass_cutoff_value_changed(self, obj):
+        value = obj.get_value()
         self.highpass.set_property('cutoff', value)
 
-    def set_eq_highpass_poles(self, value):
+        out = GLib.Variant('i', value)
+
+        self.settings.set_value('highpass-cutoff', out)
+
+    def on_highpass_poles_value_changed(self, obj):
+        value = obj.get_value()
         self.highpass.set_property('poles', value)
 
-    def set_eq_lowpass_cutoff_freq(self, value):
+        out = GLib.Variant('i', value)
+
+        self.settings.set_value('highpass-poles', out)
+
+    def on_lowpass_cutoff_value_changed(self, obj):
+        value = obj.get_value()
         self.lowpass.set_property('cutoff', value)
 
-    def set_eq_lowpass_poles(self, value):
+        out = GLib.Variant('i', value)
+
+        self.settings.set_value('lowpass-cutoff', out)
+
+    def on_lowpass_poles_value_changed(self, obj):
+        value = obj.get_value()
         self.lowpass.set_property('poles', value)
+
+        out = GLib.Variant('i', value)
+
+        self.settings.set_value('lowpass-poles', out)
 
     def on_equalizer_input_gain_value_changed(self, obj):
         value_db = obj.get_value()
