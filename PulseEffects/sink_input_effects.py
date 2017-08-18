@@ -441,7 +441,22 @@ class SinkInputEffects(GObject.GObject):
         print(self.eq_band13.get_property('freq'))
         print(self.eq_band14.get_property('freq'))
 
-        # print(self.eq_band0.get_property('bandwidth'))
+    def print_eq_bandwwidths(self):
+        print(self.eq_band0.get_property('bandwidth'))
+        print(self.eq_band1.get_property('bandwidth'))
+        print(self.eq_band2.get_property('bandwidth'))
+        print(self.eq_band3.get_property('bandwidth'))
+        print(self.eq_band4.get_property('bandwidth'))
+        print(self.eq_band5.get_property('bandwidth'))
+        print(self.eq_band6.get_property('bandwidth'))
+        print(self.eq_band7.get_property('bandwidth'))
+        print(self.eq_band8.get_property('bandwidth'))
+        print(self.eq_band9.get_property('bandwidth'))
+        print(self.eq_band10.get_property('bandwidth'))
+        print(self.eq_band11.get_property('bandwidth'))
+        print(self.eq_band12.get_property('bandwidth'))
+        print(self.eq_band13.get_property('bandwidth'))
+        print(self.eq_band14.get_property('bandwidth'))
 
     def set_state(self, state):
         if state == 'ready':

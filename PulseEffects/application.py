@@ -742,7 +742,7 @@ class Application(Gtk.Application):
         if autovolume_state is False:
             limiter = dict(config['apps_limiter']).values()
             limiter = [float(v) for v in limiter]
-            self.setup_sie_limiter.apply_limiter_preset(limiter)
+            self.sie.apply_limiter_preset(limiter)
 
         panorama_value = config.getfloat('apps_panorama', 'panorama',
                                          fallback=0.0)
@@ -751,11 +751,11 @@ class Application(Gtk.Application):
 
         compressor = dict(config['apps_compressor']).values()
         compressor = [float(v) for v in compressor]
-        self.setup_sie_compressor.apply_compressor_preset(compressor)
+        self.sie.apply_compressor_preset(compressor)
 
         reverb = dict(config['apps_reverb']).values()
         reverb = [float(v) for v in reverb]
-        self.setup_sie_reverb.apply_reverb_preset(reverb)
+        self.sie.apply_reverb_preset(reverb)
 
         equalizer_input_gain = config.getfloat('apps_equalizer', 'input_gain',
                                                fallback=0)
@@ -763,17 +763,17 @@ class Application(Gtk.Application):
                                                 'output_gain',
                                                 fallback=0)
 
-        highpass_cutoff_freq = config.getint('apps_equalizer',
-                                             'highpass_cutoff',
-                                             fallback=20)
-        highpass_poles = config.getint('apps_equalizer',
-                                       'highpass_poles',
+        highpass_cutoff = config.getint('apps_highpass',
+                                        'cutoff',
+                                        fallback=20)
+        highpass_poles = config.getint('apps_highpass',
+                                       'poles',
                                        fallback=4)
-        lowpass_cutoff_freq = config.getint('apps_equalizer',
-                                            'lowpass_cutoff',
-                                            fallback=20000)
-        lowpass_poles = config.getint('apps_equalizer',
-                                      'lowpass_poles',
+        lowpass_cutoff = config.getint('apps_lowpass',
+                                       'cutoff',
+                                       fallback=20000)
+        lowpass_poles = config.getint('apps_lowpass',
+                                      'poles',
                                       fallback=4)
 
         equalizer_band0 = config.getfloat('apps_equalizer', 'band0')
@@ -798,24 +798,19 @@ class Application(Gtk.Application):
                            equalizer_band6, equalizer_band7,
                            equalizer_band8, equalizer_band9,
                            equalizer_band10, equalizer_band11,
-                           equalizer_band12,
-                           equalizer_band13, equalizer_band14]
+                           equalizer_band12, equalizer_band13,
+                           equalizer_band14]
 
-        self.setup_sie_equalizer.equalizer_input_gain.set_value(
-            equalizer_input_gain)
-        self.setup_sie_equalizer.equalizer_output_gain.set_value(
-            equalizer_output_gain)
+        self.sie.ui_equalizer_input_gain.set_value(equalizer_input_gain)
+        self.sie.ui_equalizer_output_gain.set_value(equalizer_output_gain)
 
-        self.setup_sie_equalizer.apply_eq_preset(equalizer_bands)
+        self.sie.apply_eq_preset(equalizer_bands)
 
-        self.setup_sie_equalizer.eq_highpass_cutoff_freq.set_value(
-            highpass_cutoff_freq)
-        self.setup_sie_equalizer.eq_highpass_poles.set_value(
-            highpass_poles)
+        self.sie.ui_highpass_cutoff.set_value(highpass_cutoff)
+        self.sie.ui_highpass_poles.set_value(highpass_poles)
 
-        self.setup_sie_equalizer.eq_lowpass_cutoff_freq.set_value(
-            lowpass_cutoff_freq)
-        self.setup_sie_equalizer.eq_lowpass_poles.set_value(lowpass_poles)
+        self.sie.ui_lowpass_cutoff.set_value(lowpass_cutoff)
+        self.sie.ui_lowpass_poles.set_value(lowpass_poles)
 
     def load_source_outputs_preset(self, config):
         limiter = dict(config['mic_limiter']).values()
