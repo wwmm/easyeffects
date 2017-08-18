@@ -11,7 +11,7 @@
           <default>true</default>
         </key>
         <key name="spectrum-n-points" type="i">
-          <default>250</default>
+          <default>200</default>
         </key>
         <key name="autovolume-state" type="b">
           <default>false</default>
