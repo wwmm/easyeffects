@@ -1317,3 +1317,17 @@ class SinkInputEffects(GObject.GObject):
         elif obj_id == 'flat':
             value = self.settings.get_value('equalizer-flat')
             self.apply_eq_preset(value)
+
+    def reset(self):
+        self.settings.reset('limiter-user')
+        self.settings.reset('compressor-user')
+        self.settings.reset('reverb-user')
+        self.settings.reset('highpass-cutoff')
+        self.settings.reset('highpass-poles')
+        self.settings.reset('lowpass-cutoff')
+        self.settings.reset('lowpass-poles')
+        self.settings.reset('equalizer-input-gain')
+        self.settings.reset('equalizer-output-gain')
+        self.settings.reset('equalizer-user')
+
+        self.init_ui()

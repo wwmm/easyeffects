@@ -45,8 +45,6 @@ class Application(Gtk.Application):
         self.log = logging.getLogger('PulseEffects')
 
         self.settings = Gio.Settings('com.github.wwmm.pulseeffects')
-        self.settings_sie = Gio.Settings(
-            'com.github.wwmm.pulseeffects.sinkinputs')
         self.settings_soe = Gio.Settings(
             'com.github.wwmm.pulseeffects.sourceoutputs')
 
@@ -520,7 +518,7 @@ class Application(Gtk.Application):
         self.sie.ui_limiter_input_gain.set_value(gain)
 
     def init_panorama_widgets(self):
-        value = self.settings_sie.get_value('panorama').unpack()
+        value = self.sie.settings.get_value('panorama').unpack()
 
         self.panorama = self.builder.get_object('panorama')
 
@@ -534,7 +532,7 @@ class Application(Gtk.Application):
         self.sie.set_panorama(value)
 
         out = GLib.Variant('d', value)
-        self.settings_sie.set_value('panorama', out)
+        self.sie.settings.set_value('panorama', out)
 
     def on_reset_all_settings_clicked(self, obj):
         self.settings.reset('buffer-time')
@@ -556,10 +554,7 @@ class Application(Gtk.Application):
         self.init_panorama_widgets()
         self.init_spectrum_widgets()
 
-        # self.setup_sie_limiter.reset()
-        # self.setup_sie_compressor.reset()
-        # self.setup_sie_reverb.reset()
-        # self.setup_sie_equalizer.reset()
+        self.sie.reset()
 
         self.setup_soe_limiter.reset()
         self.setup_soe_compressor.reset()
@@ -574,17 +569,17 @@ class Application(Gtk.Application):
         dialog.add_filter(file_filter)
 
     def store_sink_inputs_preset(self, config):
-        limiter = self.settings_sie.get_value('limiter-user')
+        limiter = self.sie.settings.get_value('limiter-user')
 
         config['apps_limiter'] = {'input gain': str(limiter[0]),
                                   'limit': str(limiter[1]),
                                   'release time': str(limiter[2])}
 
-        panorama = self.settings_sie.get_value('panorama')
+        panorama = self.sie.settings.get_value('panorama')
 
         config['apps_panorama'] = {'panorama': str(panorama)}
 
-        compressor = self.settings_sie.get_value('compressor-user')
+        compressor = self.sie.settings.get_value('compressor-user')
 
         config['apps_compressor'] = {'rms-peak': str(compressor[0]),
                                      'attack': str(compressor[1]),
@@ -594,26 +589,38 @@ class Application(Gtk.Application):
                                      'knee': str(compressor[5]),
                                      'makeup': str(compressor[6])}
 
-        reverb = self.settings_sie.get_value('reverb-user')
+        reverb = self.sie.settings.get_value('reverb-user')
 
         config['apps_reverb'] = {'room size': str(reverb[0]),
                                  'damping': str(reverb[1]),
                                  'width': str(reverb[2]),
                                  'level': str(reverb[3])}
 
-        equalizer_input_gain = self.settings_sie.get_value(
+        equalizer_highpass_cutoff = self.sie.settings.get_value(
+            'highpass-cutoff')
+        equalizer_highpass_poles = self.sie.settings.get_value(
+            'highpass-poles')
+
+        config['apps_highpass'] = {'cutoff':
+                                   str(equalizer_highpass_cutoff),
+                                   'poles':
+                                   str(equalizer_highpass_poles)}
+
+        equalizer_lowpass_cutoff = self.sie.settings.get_value(
+            'lowpass-cutoff')
+        equalizer_lowpass_poles = self.sie.settings.get_value(
+            'lowpass-poles')
+
+        config['apps_lowpass'] = {'cutoff':
+                                  str(equalizer_lowpass_cutoff),
+                                  'poles':
+                                  str(equalizer_lowpass_poles)}
+
+        equalizer_input_gain = self.sie.settings.get_value(
             'equalizer-input-gain')
-        equalizer_output_gain = self.settings_sie.get_value(
+        equalizer_output_gain = self.sie.settings.get_value(
             'equalizer-output-gain')
-        equalizer = self.settings_sie.get_value('equalizer-user')
-        equalizer_highpass_cutoff = self.settings_sie.get_value(
-            'equalizer-highpass-cutoff')
-        equalizer_highpass_poles = self.settings_sie.get_value(
-            'equalizer-highpass-poles')
-        equalizer_lowpass_cutoff = self.settings_sie.get_value(
-            'equalizer-lowpass-cutoff')
-        equalizer_lowpass_poles = self.settings_sie.get_value(
-            'equalizer-lowpass-poles')
+        equalizer = self.sie.settings.get_value('equalizer-user')
 
         config['apps_equalizer'] = {'input_gain': str(equalizer_input_gain),
                                     'output_gain': str(equalizer_output_gain),
@@ -631,15 +638,7 @@ class Application(Gtk.Application):
                                     'band11': str(equalizer[11]),
                                     'band12': str(equalizer[12]),
                                     'band13': str(equalizer[13]),
-                                    'band14': str(equalizer[14]),
-                                    'highpass_cutoff':
-                                    str(equalizer_highpass_cutoff),
-                                    'highpass_poles':
-                                    str(equalizer_highpass_poles),
-                                    'lowpass_cutoff':
-                                    str(equalizer_lowpass_cutoff),
-                                    'lowpass_poles':
-                                    str(equalizer_lowpass_poles)}
+                                    'band14': str(equalizer[14])}
 
     def store_source_outputs_preset(self, config):
         limiter = self.settings_soe.get_value('limiter-user')
