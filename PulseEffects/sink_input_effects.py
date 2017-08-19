@@ -1004,51 +1004,78 @@ class SinkInputEffects(SinkInputPipeline):
             if obj_id == 'eq_band0_freq':
                 self.eq_freqs[0] = value
                 qfactor = self.eq_qfactors[0]
-
                 self.eq_band0.set_property('freq', value)
                 self.eq_band0.set_property('bandwidth', value / qfactor)
             elif obj_id == 'eq_band1_freq':
-                self.eq_band1.set_property('freq', value)
                 self.eq_freqs[1] = value
+                qfactor = self.eq_qfactors[1]
+                self.eq_band1.set_property('freq', value)
+                self.eq_band1.set_property('bandwidth', value / qfactor)
             elif obj_id == 'eq_band2_freq':
-                self.eq_band2.set_property('freq', value)
                 self.eq_freqs[2] = value
+                qfactor = self.eq_qfactors[2]
+                self.eq_band2.set_property('freq', value)
+                self.eq_band2.set_property('bandwidth', value / qfactor)
             elif obj_id == 'eq_band3_freq':
-                self.eq_band3.set_property('freq', value)
                 self.eq_freqs[3] = value
+                qfactor = self.eq_qfactors[3]
+                self.eq_band3.set_property('freq', value)
+                self.eq_band3.set_property('bandwidth', value / qfactor)
             elif obj_id == 'eq_band4_freq':
-                self.eq_band4.set_property('freq', value)
                 self.eq_freqs[4] = value
+                qfactor = self.eq_qfactors[4]
+                self.eq_band4.set_property('freq', value)
+                self.eq_band4.set_property('bandwidth', value / qfactor)
             elif obj_id == 'eq_band5_freq':
-                self.eq_band5.set_property('freq', value)
                 self.eq_freqs[5] = value
+                qfactor = self.eq_qfactors[5]
+                self.eq_band5.set_property('freq', value)
+                self.eq_band5.set_property('bandwidth', value / qfactor)
             elif obj_id == 'eq_band6_freq':
-                self.eq_band6.set_property('freq', value)
                 self.eq_freqs[6] = value
+                qfactor = self.eq_qfactors[6]
+                self.eq_band6.set_property('freq', value)
+                self.eq_band6.set_property('bandwidth', value / qfactor)
             elif obj_id == 'eq_band7_freq':
-                self.eq_band7.set_property('freq', value)
                 self.eq_freqs[7] = value
+                qfactor = self.eq_qfactors[7]
+                self.eq_band7.set_property('freq', value)
+                self.eq_band7.set_property('bandwidth', value / qfactor)
             elif obj_id == 'eq_band8_freq':
-                self.eq_band8.set_property('freq', value)
                 self.eq_freqs[8] = value
+                qfactor = self.eq_qfactors[8]
+                self.eq_band8.set_property('freq', value)
+                self.eq_band8.set_property('bandwidth', value / qfactor)
             elif obj_id == 'eq_band9_freq':
-                self.eq_band9.set_property('freq', value)
                 self.eq_freqs[9] = value
+                qfactor = self.eq_qfactors[9]
+                self.eq_band9.set_property('freq', value)
+                self.eq_band9.set_property('bandwidth', value / qfactor)
             elif obj_id == 'eq_band10_freq':
-                self.eq_band10.set_property('freq', value)
                 self.eq_freqs[10] = value
+                qfactor = self.eq_qfactors[10]
+                self.eq_band10.set_property('freq', value)
+                self.eq_band10.set_property('bandwidth', value / qfactor)
             elif obj_id == 'eq_band11_freq':
-                self.eq_band11.set_property('freq', value)
                 self.eq_freqs[11] = value
+                qfactor = self.eq_qfactors[11]
+                self.eq_band11.set_property('freq', value)
+                self.eq_band11.set_property('bandwidth', value / qfactor)
             elif obj_id == 'eq_band12_freq':
-                self.eq_band12.set_property('freq', value)
                 self.eq_freqs[12] = value
+                qfactor = self.eq_qfactors[12]
+                self.eq_band12.set_property('freq', value)
+                self.eq_band12.set_property('bandwidth', value / qfactor)
             elif obj_id == 'eq_band13_freq':
-                self.eq_band13.set_property('freq', value)
                 self.eq_freqs[13] = value
+                qfactor = self.eq_qfactors[13]
+                self.eq_band13.set_property('freq', value)
+                self.eq_band13.set_property('bandwidth', value / qfactor)
             elif obj_id == 'eq_band14_freq':
-                self.eq_band14.set_property('freq', value)
                 self.eq_freqs[14] = value
+                qfactor = self.eq_qfactors[14]
+                self.eq_band14.set_property('freq', value)
+                self.eq_band14.set_property('bandwidth', value / qfactor)
 
             out = GLib.Variant('ad', self.eq_freqs)
             self.settings.set_value('equalizer-freqs', out)

@@ -2688,6 +2688,7 @@
                         <property name="max_width_chars">5</property>
                         <property name="xalign">0.5</property>
                         <property name="input_purpose">digits</property>
+                        <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">2</property>
@@ -2988,6 +2989,7 @@
                         <property name="max_width_chars">5</property>
                         <property name="xalign">0.5</property>
                         <property name="input_purpose">digits</property>
+                        <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">3</property>
@@ -3005,6 +3007,7 @@
                         <property name="max_width_chars">5</property>
                         <property name="xalign">0.5</property>
                         <property name="input_purpose">digits</property>
+                        <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">4</property>
@@ -3022,6 +3025,7 @@
                         <property name="max_width_chars">5</property>
                         <property name="xalign">0.5</property>
                         <property name="input_purpose">digits</property>
+                        <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">5</property>
@@ -3039,6 +3043,7 @@
                         <property name="max_width_chars">5</property>
                         <property name="xalign">0.5</property>
                         <property name="input_purpose">digits</property>
+                        <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">6</property>
@@ -3056,6 +3061,7 @@
                         <property name="max_width_chars">5</property>
                         <property name="xalign">0.5</property>
                         <property name="input_purpose">digits</property>
+                        <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">7</property>
@@ -3073,6 +3079,7 @@
                         <property name="max_width_chars">5</property>
                         <property name="xalign">0.5</property>
                         <property name="input_purpose">digits</property>
+                        <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">8</property>
@@ -3090,6 +3097,7 @@
                         <property name="max_width_chars">5</property>
                         <property name="xalign">0.5</property>
                         <property name="input_purpose">digits</property>
+                        <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">9</property>
@@ -3107,6 +3115,7 @@
                         <property name="max_width_chars">5</property>
                         <property name="xalign">0.5</property>
                         <property name="input_purpose">digits</property>
+                        <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">10</property>
@@ -3124,6 +3133,7 @@
                         <property name="max_width_chars">5</property>
                         <property name="xalign">0.5</property>
                         <property name="input_purpose">digits</property>
+                        <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">11</property>
@@ -3141,6 +3151,7 @@
                         <property name="max_width_chars">5</property>
                         <property name="xalign">0.5</property>
                         <property name="input_purpose">digits</property>
+                        <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">12</property>
@@ -3158,6 +3169,7 @@
                         <property name="max_width_chars">5</property>
                         <property name="xalign">0.5</property>
                         <property name="input_purpose">digits</property>
+                        <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">13</property>
@@ -3175,6 +3187,7 @@
                         <property name="max_width_chars">5</property>
                         <property name="xalign">0.5</property>
                         <property name="input_purpose">digits</property>
+                        <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">14</property>
@@ -3192,6 +3205,7 @@
                         <property name="max_width_chars">5</property>
                         <property name="xalign">0.5</property>
                         <property name="input_purpose">digits</property>
+                        <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">15</property>
