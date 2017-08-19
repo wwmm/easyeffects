@@ -2670,6 +2670,7 @@
                         <property name="max_width_chars">5</property>
                         <property name="xalign">0.5</property>
                         <property name="input_purpose">digits</property>
+                        <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>

@@ -621,40 +621,41 @@ class SinkInputEffects(SinkInputPipeline):
         self.equalizer_output_gain.set_property('volume', value_linear)
 
     def init_eq_ui(self):
-        eq_freqs = self.settings.get_value('equalizer-freqs').unpack()
-        eq_qfactors = self.settings.get_value('equalizer-qfactors').unpack()
+        self.eq_freqs = self.settings.get_value('equalizer-freqs').unpack()
+        self.eq_qfactors = self.settings.get_value(
+            'equalizer-qfactors').unpack()
 
-        self.ui_eq_band0_freq.set_text('{0:g}'.format(eq_freqs[0]))
-        self.ui_eq_band1_freq.set_text('{0:g}'.format(eq_freqs[1]))
-        self.ui_eq_band2_freq.set_text('{0:g}'.format(eq_freqs[2]))
-        self.ui_eq_band3_freq.set_text('{0:g}'.format(eq_freqs[3]))
-        self.ui_eq_band4_freq.set_text('{0:g}'.format(eq_freqs[4]))
-        self.ui_eq_band5_freq.set_text('{0:g}'.format(eq_freqs[5]))
-        self.ui_eq_band6_freq.set_text('{0:g}'.format(eq_freqs[6]))
-        self.ui_eq_band7_freq.set_text('{0:g}'.format(eq_freqs[7]))
-        self.ui_eq_band8_freq.set_text('{0:g}'.format(eq_freqs[8]))
-        self.ui_eq_band9_freq.set_text('{0:g}'.format(eq_freqs[9]))
-        self.ui_eq_band10_freq.set_text('{0:g}'.format(eq_freqs[10]))
-        self.ui_eq_band11_freq.set_text('{0:g}'.format(eq_freqs[11]))
-        self.ui_eq_band12_freq.set_text('{0:g}'.format(eq_freqs[12]))
-        self.ui_eq_band13_freq.set_text('{0:g}'.format(eq_freqs[13]))
-        self.ui_eq_band14_freq.set_text('{0:g}'.format(eq_freqs[14]))
+        self.ui_eq_band0_freq.set_text('{0:g}'.format(self.eq_freqs[0]))
+        self.ui_eq_band1_freq.set_text('{0:g}'.format(self.eq_freqs[1]))
+        self.ui_eq_band2_freq.set_text('{0:g}'.format(self.eq_freqs[2]))
+        self.ui_eq_band3_freq.set_text('{0:g}'.format(self.eq_freqs[3]))
+        self.ui_eq_band4_freq.set_text('{0:g}'.format(self.eq_freqs[4]))
+        self.ui_eq_band5_freq.set_text('{0:g}'.format(self.eq_freqs[5]))
+        self.ui_eq_band6_freq.set_text('{0:g}'.format(self.eq_freqs[6]))
+        self.ui_eq_band7_freq.set_text('{0:g}'.format(self.eq_freqs[7]))
+        self.ui_eq_band8_freq.set_text('{0:g}'.format(self.eq_freqs[8]))
+        self.ui_eq_band9_freq.set_text('{0:g}'.format(self.eq_freqs[9]))
+        self.ui_eq_band10_freq.set_text('{0:g}'.format(self.eq_freqs[10]))
+        self.ui_eq_band11_freq.set_text('{0:g}'.format(self.eq_freqs[11]))
+        self.ui_eq_band12_freq.set_text('{0:g}'.format(self.eq_freqs[12]))
+        self.ui_eq_band13_freq.set_text('{0:g}'.format(self.eq_freqs[13]))
+        self.ui_eq_band14_freq.set_text('{0:g}'.format(self.eq_freqs[14]))
 
-        self.ui_eq_band0_qfactor.set_text(str(eq_qfactors[0]))
-        self.ui_eq_band1_qfactor.set_text(str(eq_qfactors[1]))
-        self.ui_eq_band2_qfactor.set_text(str(eq_qfactors[2]))
-        self.ui_eq_band3_qfactor.set_text(str(eq_qfactors[3]))
-        self.ui_eq_band4_qfactor.set_text(str(eq_qfactors[4]))
-        self.ui_eq_band5_qfactor.set_text(str(eq_qfactors[5]))
-        self.ui_eq_band6_qfactor.set_text(str(eq_qfactors[6]))
-        self.ui_eq_band7_qfactor.set_text(str(eq_qfactors[7]))
-        self.ui_eq_band8_qfactor.set_text(str(eq_qfactors[8]))
-        self.ui_eq_band9_qfactor.set_text(str(eq_qfactors[9]))
-        self.ui_eq_band10_qfactor.set_text(str(eq_qfactors[10]))
-        self.ui_eq_band11_qfactor.set_text(str(eq_qfactors[11]))
-        self.ui_eq_band12_qfactor.set_text(str(eq_qfactors[12]))
-        self.ui_eq_band13_qfactor.set_text(str(eq_qfactors[13]))
-        self.ui_eq_band14_qfactor.set_text(str(eq_qfactors[14]))
+        self.ui_eq_band0_qfactor.set_text(str(self.eq_qfactors[0]))
+        self.ui_eq_band1_qfactor.set_text(str(self.eq_qfactors[1]))
+        self.ui_eq_band2_qfactor.set_text(str(self.eq_qfactors[2]))
+        self.ui_eq_band3_qfactor.set_text(str(self.eq_qfactors[3]))
+        self.ui_eq_band4_qfactor.set_text(str(self.eq_qfactors[4]))
+        self.ui_eq_band5_qfactor.set_text(str(self.eq_qfactors[5]))
+        self.ui_eq_band6_qfactor.set_text(str(self.eq_qfactors[6]))
+        self.ui_eq_band7_qfactor.set_text(str(self.eq_qfactors[7]))
+        self.ui_eq_band8_qfactor.set_text(str(self.eq_qfactors[8]))
+        self.ui_eq_band9_qfactor.set_text(str(self.eq_qfactors[9]))
+        self.ui_eq_band10_qfactor.set_text(str(self.eq_qfactors[10]))
+        self.ui_eq_band11_qfactor.set_text(str(self.eq_qfactors[11]))
+        self.ui_eq_band12_qfactor.set_text(str(self.eq_qfactors[12]))
+        self.ui_eq_band13_qfactor.set_text(str(self.eq_qfactors[13]))
+        self.ui_eq_band14_qfactor.set_text(str(self.eq_qfactors[14]))
 
     def apply_limiter_preset(self, values):
         self.ui_limiter_input_gain.set_value(values[0])
@@ -994,6 +995,66 @@ class SinkInputEffects(SinkInputPipeline):
         self.eq_band14.set_property('gain', value)
         self.save_eq_user(14, value)
 
+    def on_eq_freq_changed(self, obj):
+        try:
+            value = float(obj.get_text())
+
+            obj_id = Gtk.Buildable.get_name(obj)
+
+            if obj_id == 'eq_band0_freq':
+                self.eq_freqs[0] = value
+                qfactor = self.eq_qfactors[0]
+
+                self.eq_band0.set_property('freq', value)
+                self.eq_band0.set_property('bandwidth', value / qfactor)
+            elif obj_id == 'eq_band1_freq':
+                self.eq_band1.set_property('freq', value)
+                self.eq_freqs[1] = value
+            elif obj_id == 'eq_band2_freq':
+                self.eq_band2.set_property('freq', value)
+                self.eq_freqs[2] = value
+            elif obj_id == 'eq_band3_freq':
+                self.eq_band3.set_property('freq', value)
+                self.eq_freqs[3] = value
+            elif obj_id == 'eq_band4_freq':
+                self.eq_band4.set_property('freq', value)
+                self.eq_freqs[4] = value
+            elif obj_id == 'eq_band5_freq':
+                self.eq_band5.set_property('freq', value)
+                self.eq_freqs[5] = value
+            elif obj_id == 'eq_band6_freq':
+                self.eq_band6.set_property('freq', value)
+                self.eq_freqs[6] = value
+            elif obj_id == 'eq_band7_freq':
+                self.eq_band7.set_property('freq', value)
+                self.eq_freqs[7] = value
+            elif obj_id == 'eq_band8_freq':
+                self.eq_band8.set_property('freq', value)
+                self.eq_freqs[8] = value
+            elif obj_id == 'eq_band9_freq':
+                self.eq_band9.set_property('freq', value)
+                self.eq_freqs[9] = value
+            elif obj_id == 'eq_band10_freq':
+                self.eq_band10.set_property('freq', value)
+                self.eq_freqs[10] = value
+            elif obj_id == 'eq_band11_freq':
+                self.eq_band11.set_property('freq', value)
+                self.eq_freqs[11] = value
+            elif obj_id == 'eq_band12_freq':
+                self.eq_band12.set_property('freq', value)
+                self.eq_freqs[12] = value
+            elif obj_id == 'eq_band13_freq':
+                self.eq_band13.set_property('freq', value)
+                self.eq_freqs[13] = value
+            elif obj_id == 'eq_band14_freq':
+                self.eq_band14.set_property('freq', value)
+                self.eq_freqs[14] = value
+
+            out = GLib.Variant('ad', self.eq_freqs)
+            self.settings.set_value('equalizer-freqs', out)
+        except ValueError:
+            pass
+
     def on_eq_preset_clicked(self, obj):
         obj_id = Gtk.Buildable.get_name(obj)
 
@@ -1027,5 +1088,7 @@ class SinkInputEffects(SinkInputPipeline):
         self.settings.reset('equalizer-input-gain')
         self.settings.reset('equalizer-output-gain')
         self.settings.reset('equalizer-user')
+        self.settings.reset('equalizer-freqs')
+        self.settings.reset('equalizer-qfactors')
 
         self.init_ui()
