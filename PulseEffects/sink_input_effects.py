@@ -610,6 +610,17 @@ class SinkInputEffects(SinkInputPipeline):
         self.ui_equalizer_output_gain.set_value(equalizer_output_gain_user)
         self.apply_eq_preset(self.eq_band_user)
 
+        self.init_eq_ui()
+
+        # we need this when on value changed is not called
+
+        value_linear = 10**(equalizer_input_gain_user / 20)
+        self.equalizer_input_gain.set_property('volume', value_linear)
+
+        value_linear = 10**(equalizer_output_gain_user / 20)
+        self.equalizer_output_gain.set_property('volume', value_linear)
+
+    def init_eq_ui(self):
         eq_freqs = self.settings.get_value('equalizer-freqs').unpack()
         eq_qfactors = self.settings.get_value('equalizer-qfactors').unpack()
 
@@ -644,14 +655,6 @@ class SinkInputEffects(SinkInputPipeline):
         self.ui_eq_band12_qfactor.set_text(str(eq_qfactors[12]))
         self.ui_eq_band13_qfactor.set_text(str(eq_qfactors[13]))
         self.ui_eq_band14_qfactor.set_text(str(eq_qfactors[14]))
-
-        # we need this when on value changed is not called
-
-        value_linear = 10**(equalizer_input_gain_user / 20)
-        self.equalizer_input_gain.set_property('volume', value_linear)
-
-        value_linear = 10**(equalizer_output_gain_user / 20)
-        self.equalizer_output_gain.set_property('volume', value_linear)
 
     def apply_limiter_preset(self, values):
         self.ui_limiter_input_gain.set_value(values[0])

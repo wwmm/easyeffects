@@ -2334,883 +2334,875 @@
                 <property name="orientation">vertical</property>
                 <property name="spacing">10</property>
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkGrid">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="spacing">6</property>
+                    <property name="halign">center</property>
+                    <property name="row_spacing">6</property>
+                    <property name="column_spacing">6</property>
                     <child>
-                      <object class="GtkGrid">
-                        <property name="height_request">220</property>
+                      <object class="GtkButton">
+                        <property name="label" translatable="yes">Flat Response</property>
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="column_spacing">3</property>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="hexpand">True</property>
-                            <property name="vexpand">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_band0</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">0</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="hexpand">True</property>
-                            <property name="vexpand">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_band1</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">0</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">2</property>
-                            <property name="top_attach">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="hexpand">True</property>
-                            <property name="vexpand">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_band2</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">0</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">3</property>
-                            <property name="top_attach">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="hexpand">True</property>
-                            <property name="vexpand">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_band3</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">0</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">4</property>
-                            <property name="top_attach">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="hexpand">True</property>
-                            <property name="vexpand">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_band4</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">0</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">5</property>
-                            <property name="top_attach">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="hexpand">True</property>
-                            <property name="vexpand">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_band5</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">0</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">6</property>
-                            <property name="top_attach">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="hexpand">True</property>
-                            <property name="vexpand">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_band6</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">0</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">7</property>
-                            <property name="top_attach">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="hexpand">True</property>
-                            <property name="vexpand">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_band7</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">0</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">8</property>
-                            <property name="top_attach">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="hexpand">True</property>
-                            <property name="vexpand">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_band8</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">0</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">9</property>
-                            <property name="top_attach">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="hexpand">True</property>
-                            <property name="vexpand">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_band9</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">0</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">10</property>
-                            <property name="top_attach">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="hexpand">True</property>
-                            <property name="vexpand">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_band10</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">0</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">11</property>
-                            <property name="top_attach">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="hexpand">True</property>
-                            <property name="vexpand">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_band11</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">1</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">12</property>
-                            <property name="top_attach">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="hexpand">True</property>
-                            <property name="vexpand">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_band12</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">0</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">13</property>
-                            <property name="top_attach">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="hexpand">True</property>
-                            <property name="vexpand">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_band13</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">0</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">14</property>
-                            <property name="top_attach">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScale">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="hexpand">True</property>
-                            <property name="vexpand">True</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">eq_band14</property>
-                            <property name="inverted">True</property>
-                            <property name="round_digits">0</property>
-                            <property name="digits">0</property>
-                            <property name="value_pos">bottom</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">15</property>
-                            <property name="top_attach">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band0_freq">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band1_freq">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">2</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band0_qfactor">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band1_qfactor">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">2</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="halign">start</property>
-                            <property name="valign">center</property>
-                            <property name="label" translatable="yes">F [Hz]</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="halign">start</property>
-                            <property name="valign">center</property>
-                            <property name="label" translatable="yes">Q</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band2_qfactor">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">3</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band3_qfactor">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">4</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band4_qfactor">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">5</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band5_qfactor">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">6</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band6_qfactor">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">7</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band7_qfactor">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">8</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band8_qfactor">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">9</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band9_qfactor">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">10</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band10_qfactor">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">11</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band11_qfactor">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">12</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band12_qfactor">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">13</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band13_qfactor">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">14</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band14_qfactor">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">15</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band2_freq">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">3</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band3_freq">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">4</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band4_freq">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">5</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band5_freq">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">6</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band6_freq">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">7</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band7_freq">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">8</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band8_freq">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">9</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band9_freq">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">10</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band10_freq">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">11</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band11_freq">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">12</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band12_freq">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">13</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band13_freq">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">14</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eq_band14_freq">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="max_length">5</property>
-                            <property name="width_chars">5</property>
-                            <property name="max_width_chars">5</property>
-                            <property name="xalign">0.5</property>
-                            <property name="input_purpose">digits</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">15</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkGrid">
+                      <object class="GtkButton">
+                        <property name="label" translatable="yes">Reset Frequencies</property>
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="row_spacing">6</property>
-                        <child>
-                          <object class="GtkButton">
-                            <property name="label" translatable="yes">Flat Response</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkButton">
-                            <property name="label" translatable="yes">Reset Frequencies</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkButton">
-                            <property name="label" translatable="yes">Reset Q Factors</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">2</property>
-                          </packing>
-                        </child>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton">
+                        <property name="label" translatable="yes">Reset Q Factors</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">2</property>
+                        <property name="top_attach">0</property>
                       </packing>
                     </child>
                   </object>
                   <packing>
-                    <property name="expand">True</property>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkGrid">
+                    <property name="height_request">250</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="column_spacing">2</property>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band0</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band1</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">2</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band2</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">3</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band3</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">4</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band4</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">5</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band5</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">6</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band6</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">7</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band7</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">8</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band8</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">9</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band9</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">10</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band10</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">11</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band11</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">1</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">12</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band12</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">13</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band13</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">14</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">eq_band14</property>
+                        <property name="inverted">True</property>
+                        <property name="round_digits">0</property>
+                        <property name="digits">0</property>
+                        <property name="value_pos">bottom</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">15</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band0_freq">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band1_freq">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">2</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band0_qfactor">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band1_qfactor">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">2</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="margin_right">3</property>
+                        <property name="label" translatable="yes">F</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="margin_right">3</property>
+                        <property name="label" translatable="yes">Q</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band2_qfactor">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">3</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band3_qfactor">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">4</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band4_qfactor">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">5</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band5_qfactor">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">6</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band6_qfactor">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">7</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band7_qfactor">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">8</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band8_qfactor">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">9</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band9_qfactor">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">10</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band10_qfactor">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">11</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band11_qfactor">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">12</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band12_qfactor">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">13</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band13_qfactor">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">14</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band14_qfactor">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">15</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band2_freq">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">3</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band3_freq">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">4</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band4_freq">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">5</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band5_freq">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">6</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band6_freq">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">7</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band7_freq">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">8</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band8_freq">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">9</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band9_freq">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">10</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band10_freq">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">11</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band11_freq">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">12</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band12_freq">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">13</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band13_freq">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">14</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eq_band14_freq">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="max_length">5</property>
+                        <property name="width_chars">5</property>
+                        <property name="max_width_chars">5</property>
+                        <property name="xalign">0.5</property>
+                        <property name="input_purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">15</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
                     <property name="fill">True</property>
                     <property name="position">1</property>
                   </packing>
@@ -3431,7 +3423,7 @@
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
-                    <property name="position">4</property>
+                    <property name="position">2</property>
                   </packing>
                 </child>
               </object>
