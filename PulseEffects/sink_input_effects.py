@@ -207,9 +207,40 @@ class SinkInputEffects(SinkInputPipeline):
 
         self.ui_eq_band0_freq = self.builder.get_object('eq_band0_freq')
         self.ui_eq_band1_freq = self.builder.get_object('eq_band1_freq')
+        self.ui_eq_band2_freq = self.builder.get_object('eq_band2_freq')
+        self.ui_eq_band3_freq = self.builder.get_object('eq_band3_freq')
+        self.ui_eq_band4_freq = self.builder.get_object('eq_band4_freq')
+        self.ui_eq_band5_freq = self.builder.get_object('eq_band5_freq')
+        self.ui_eq_band6_freq = self.builder.get_object('eq_band6_freq')
+        self.ui_eq_band7_freq = self.builder.get_object('eq_band7_freq')
+        self.ui_eq_band8_freq = self.builder.get_object('eq_band8_freq')
+        self.ui_eq_band9_freq = self.builder.get_object('eq_band9_freq')
+        self.ui_eq_band10_freq = self.builder.get_object('eq_band10_freq')
+        self.ui_eq_band11_freq = self.builder.get_object('eq_band11_freq')
+        self.ui_eq_band12_freq = self.builder.get_object('eq_band12_freq')
+        self.ui_eq_band13_freq = self.builder.get_object('eq_band13_freq')
+        self.ui_eq_band14_freq = self.builder.get_object('eq_band14_freq')
 
         self.ui_eq_band0_qfactor = self.builder.get_object('eq_band0_qfactor')
         self.ui_eq_band1_qfactor = self.builder.get_object('eq_band1_qfactor')
+        self.ui_eq_band2_qfactor = self.builder.get_object('eq_band2_qfactor')
+        self.ui_eq_band3_qfactor = self.builder.get_object('eq_band3_qfactor')
+        self.ui_eq_band4_qfactor = self.builder.get_object('eq_band4_qfactor')
+        self.ui_eq_band5_qfactor = self.builder.get_object('eq_band5_qfactor')
+        self.ui_eq_band6_qfactor = self.builder.get_object('eq_band6_qfactor')
+        self.ui_eq_band7_qfactor = self.builder.get_object('eq_band7_qfactor')
+        self.ui_eq_band8_qfactor = self.builder.get_object('eq_band8_qfactor')
+        self.ui_eq_band9_qfactor = self.builder.get_object('eq_band9_qfactor')
+        self.ui_eq_band10_qfactor = self.builder.get_object(
+            'eq_band10_qfactor')
+        self.ui_eq_band11_qfactor = self.builder.get_object(
+            'eq_band11_qfactor')
+        self.ui_eq_band12_qfactor = self.builder.get_object(
+            'eq_band12_qfactor')
+        self.ui_eq_band13_qfactor = self.builder.get_object(
+            'eq_band13_qfactor')
+        self.ui_eq_band14_qfactor = self.builder.get_object(
+            'eq_band14_qfactor')
 
         self.ui_equalizer_input_level_left = self.builder.get_object(
             'equalizer_input_level_left')
@@ -584,9 +615,35 @@ class SinkInputEffects(SinkInputPipeline):
 
         self.ui_eq_band0_freq.set_text('{0:g}'.format(eq_freqs[0]))
         self.ui_eq_band1_freq.set_text('{0:g}'.format(eq_freqs[1]))
+        self.ui_eq_band2_freq.set_text('{0:g}'.format(eq_freqs[2]))
+        self.ui_eq_band3_freq.set_text('{0:g}'.format(eq_freqs[3]))
+        self.ui_eq_band4_freq.set_text('{0:g}'.format(eq_freqs[4]))
+        self.ui_eq_band5_freq.set_text('{0:g}'.format(eq_freqs[5]))
+        self.ui_eq_band6_freq.set_text('{0:g}'.format(eq_freqs[6]))
+        self.ui_eq_band7_freq.set_text('{0:g}'.format(eq_freqs[7]))
+        self.ui_eq_band8_freq.set_text('{0:g}'.format(eq_freqs[8]))
+        self.ui_eq_band9_freq.set_text('{0:g}'.format(eq_freqs[9]))
+        self.ui_eq_band10_freq.set_text('{0:g}'.format(eq_freqs[10]))
+        self.ui_eq_band11_freq.set_text('{0:g}'.format(eq_freqs[11]))
+        self.ui_eq_band12_freq.set_text('{0:g}'.format(eq_freqs[12]))
+        self.ui_eq_band13_freq.set_text('{0:g}'.format(eq_freqs[13]))
+        self.ui_eq_band14_freq.set_text('{0:g}'.format(eq_freqs[14]))
 
         self.ui_eq_band0_qfactor.set_text(str(eq_qfactors[0]))
         self.ui_eq_band1_qfactor.set_text(str(eq_qfactors[1]))
+        self.ui_eq_band2_qfactor.set_text(str(eq_qfactors[2]))
+        self.ui_eq_band3_qfactor.set_text(str(eq_qfactors[3]))
+        self.ui_eq_band4_qfactor.set_text(str(eq_qfactors[4]))
+        self.ui_eq_band5_qfactor.set_text(str(eq_qfactors[5]))
+        self.ui_eq_band6_qfactor.set_text(str(eq_qfactors[6]))
+        self.ui_eq_band7_qfactor.set_text(str(eq_qfactors[7]))
+        self.ui_eq_band8_qfactor.set_text(str(eq_qfactors[8]))
+        self.ui_eq_band9_qfactor.set_text(str(eq_qfactors[9]))
+        self.ui_eq_band10_qfactor.set_text(str(eq_qfactors[10]))
+        self.ui_eq_band11_qfactor.set_text(str(eq_qfactors[11]))
+        self.ui_eq_band12_qfactor.set_text(str(eq_qfactors[12]))
+        self.ui_eq_band13_qfactor.set_text(str(eq_qfactors[13]))
+        self.ui_eq_band14_qfactor.set_text(str(eq_qfactors[14]))
 
         # we need this when on value changed is not called
 
