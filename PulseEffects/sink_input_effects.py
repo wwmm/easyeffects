@@ -12,6 +12,14 @@ from PulseEffects.effects_ui_base import EffectsUiBase
 class SinkInputEffects(EffectsUiBase, SinkInputPipeline):
 
     def __init__(self, sampling_rate):
+        self.old_limiter_attenuation = 0
+        self.old_compressor_gain_reduction = 0
+
+        self.autovolume_enabled = False
+        self.autovolume_target = -12  # dB
+        self.autovolume_tolerance = 1  # dB
+        self.autovolume_threshold = -50  # autovolume only if avg > threshold
+
         self.settings = Gio.Settings('com.github.wwmm.pulseeffects.sinkinputs')
 
         SinkInputPipeline.__init__(self, sampling_rate)
@@ -19,6 +27,24 @@ class SinkInputEffects(EffectsUiBase, SinkInputPipeline):
                                self.settings)
 
         self.builder.connect_signals(self)
+
+    def auto_gain(self, max_value):
+        max_value = int(max_value)
+
+        if max_value > self.autovolume_target + self.autovolume_tolerance:
+            gain = self.limiter.get_property('input-gain')
+
+            if gain - 1 >= -20:
+                gain = gain - 1
+
+                self.emit('new_autovolume', gain)
+        elif max_value < self.autovolume_target - self.autovolume_tolerance:
+            gain = self.limiter.get_property('input-gain')
+
+            if gain + 1 <= 20:
+                gain = gain + 1
+
+                self.emit('new_autovolume', gain)
 
     def on_message_element(self, bus, msg):
         plugin = msg.src.get_name()
@@ -321,6 +347,13 @@ class SinkInputEffects(EffectsUiBase, SinkInputPipeline):
         self.init_highpass_ui()
         self.init_lowpass_ui()
         self.init_equalizer_ui()
+
+    def set_autovolume_state(self, value):
+        self.autovolume_enabled = value
+
+    def set_autovolume_window(self, value):
+        # value must be in seconds
+        self.autovolume_level.set_property('interval', int(value * 1000000000))
 
     def set_panorama(self, value):
         self.panorama.set_property('panorama', value)

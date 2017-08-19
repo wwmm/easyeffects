@@ -10,10 +10,6 @@ from gi.repository import Gio, GLib, Gtk
 from PulseEffects.list_sink_inputs import ListSinkInputs
 from PulseEffects.list_source_outputs import ListSourceOutputs
 from PulseEffects.pulse_manager import PulseManager
-from PulseEffects.setup_compressor import SetupCompressor
-from PulseEffects.setup_equalizer import SetupEqualizer
-from PulseEffects.setup_limiter import SetupLimiter
-from PulseEffects.setup_reverb import SetupReverb
 from PulseEffects.sink_input_effects import SinkInputEffects
 from PulseEffects.source_output_effects import SourceOutputEffects
 from PulseEffects.spectrum import Spectrum
@@ -45,8 +41,6 @@ class Application(Gtk.Application):
         self.log = logging.getLogger('PulseEffects')
 
         self.settings = Gio.Settings('com.github.wwmm.pulseeffects')
-        self.settings_soe = Gio.Settings(
-            'com.github.wwmm.pulseeffects.sourceoutputs')
 
         # pulseaudio
 
@@ -79,13 +73,9 @@ class Application(Gtk.Application):
         Gtk.Application.do_startup(self)
 
         self.builder = Gtk.Builder()
-        self.sink_inputs_builder = Gtk.Builder()
-        self.source_outputs_builder = Gtk.Builder()
 
         self.builder.add_from_file(self.module_path + '/ui/main_ui.glade')
         self.builder.add_from_file(self.module_path + '/ui/headerbar.glade')
-        self.source_outputs_builder.add_from_file(
-            self.module_path + '/ui/source_outputs_plugins.glade')
 
         headerbar = self.builder.get_object('headerbar')
 
@@ -142,6 +132,7 @@ class Application(Gtk.Application):
         self.init_source_outputs_widgets()
 
         self.sie.init_ui()
+        self.soe.init_ui()
         self.init_autovolume_widgets()
 
         # init stack widgets
@@ -157,11 +148,6 @@ class Application(Gtk.Application):
         self.spectrum_handler_id = self.sie.connect('new_spectrum',
                                                     self.spectrum
                                                     .on_new_spectrum)
-
-        self.setup_soe_limiter.connect_signals()
-        self.setup_soe_compressor.connect_signals()
-        self.setup_soe_reverb.connect_signals()
-        self.setup_soe_equalizer.connect_signals()
 
         self.list_sink_inputs.connect_signals()
         self.list_source_outputs.connect_signals()
@@ -218,8 +204,6 @@ class Application(Gtk.Application):
         stack_switcher = self.builder.get_object('stack_switcher')
         stack_box = self.builder.get_object('stack_box')
 
-        source_outputs_ui = self.source_outputs_builder.get_object('window')
-
         stack = Gtk.Stack()
         stack.set_transition_type(Gtk.StackTransitionType.CROSSFADE)
         stack.set_transition_duration(250)
@@ -230,8 +214,8 @@ class Application(Gtk.Application):
         stack.child_set_property(self.sie.ui_window, 'icon-name',
                                  'audio-speakers-symbolic')
 
-        stack.add_named(source_outputs_ui, "source_outputs")
-        stack.child_set_property(source_outputs_ui, 'icon-name',
+        stack.add_named(self.soe.ui_window, "source_outputs")
+        stack.child_set_property(self.soe.ui_window, 'icon-name',
                                  'audio-input-microphone-symbolic')
 
         self.stack_current_child_name = 'sink_inputs'
@@ -273,34 +257,8 @@ class Application(Gtk.Application):
         self.list_sink_inputs.init()
 
     def init_source_outputs_widgets(self):
-        builder = self.source_outputs_builder
+        self.list_source_outputs = ListSourceOutputs(self.soe, self.pm)
 
-        self.setup_soe_limiter = SetupLimiter(builder, self.soe,
-                                              self.settings_soe)
-        self.setup_soe_compressor = SetupCompressor(builder, self.soe,
-                                                    self.settings_soe)
-        self.setup_soe_reverb = SetupReverb(builder, self.soe,
-                                            self.settings_soe)
-        self.setup_soe_equalizer = SetupEqualizer(builder, self.soe,
-                                                  self.settings_soe)
-
-        self.list_source_outputs = ListSourceOutputs(
-            self.source_outputs_builder, self.soe, self.pm)
-
-        source_outputs_ui_handlers = {}
-
-        source_outputs_ui_handlers.update(self.setup_soe_limiter.handlers)
-        source_outputs_ui_handlers.update(self.setup_soe_compressor.handlers)
-        source_outputs_ui_handlers.update(self.setup_soe_reverb.handlers)
-        source_outputs_ui_handlers.update(self.setup_soe_equalizer.handlers)
-        source_outputs_ui_handlers.update(self.list_source_outputs.handlers)
-
-        self.source_outputs_builder.connect_signals(source_outputs_ui_handlers)
-
-        self.setup_soe_limiter.init()
-        self.setup_soe_compressor.init()
-        self.setup_soe_reverb.init()
-        self.setup_soe_equalizer.init()
         self.list_source_outputs.init()
 
     def init_settings_menu(self):

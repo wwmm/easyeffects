@@ -1,304 +1,28 @@
 # -*- coding: utf-8 -*-
 
-import logging
-
 import gi
-import numpy as np
-from scipy.interpolate import CubicSpline
 gi.require_version('Gst', '1.0')
-from gi.repository import GObject, Gst
+import numpy as np
+from gi.repository import Gio
+from scipy.interpolate import CubicSpline
+from PulseEffects.source_output_pipeline import SourceOutputPipeline
+from PulseEffects.effects_ui_base import EffectsUiBase
 
 
-Gst.init(None)
-
-
-class SourceOutputEffects(GObject.GObject):
-
-    __gsignals__ = {
-        'new_limiter_input_level': (GObject.SIGNAL_RUN_FIRST, None,
-                                    (float, float)),
-        'new_limiter_output_level': (GObject.SIGNAL_RUN_FIRST, None,
-                                     (float, float)),
-        'new_compressor_input_level': (GObject.SIGNAL_RUN_FIRST, None,
-                                       (float, float)),
-        'new_compressor_output_level': (GObject.SIGNAL_RUN_FIRST, None,
-                                        (float, float)),
-        'new_compressor_gain_reduction': (GObject.SIGNAL_RUN_FIRST, None,
-                                          (float,)),
-        'new_limiter_attenuation': (GObject.SIGNAL_RUN_FIRST, None,
-                                    (float,)),
-        'new_reverb_input_level': (GObject.SIGNAL_RUN_FIRST, None,
-                                   (float, float)),
-        'new_reverb_output_level': (GObject.SIGNAL_RUN_FIRST, None,
-                                    (float, float)),
-        'new_equalizer_input_level': (GObject.SIGNAL_RUN_FIRST, None,
-                                      (float, float)),
-        'new_equalizer_output_level': (GObject.SIGNAL_RUN_FIRST, None,
-                                       (float, float)),
-        'new_spectrum': (GObject.SIGNAL_RUN_FIRST, None,
-                         (object,))
-    }
+class SourceOutputEffects(EffectsUiBase, SourceOutputPipeline):
 
     def __init__(self, sampling_rate):
-        GObject.GObject.__init__(self)
-
         self.old_limiter_attenuation = 0
         self.old_compressor_gain_reduction = 0
-        self.rate = sampling_rate
-        self.max_spectrum_freq = 20000  # Hz
-        self.spectrum_nbands = 1600
-        self.spectrum_freqs = []
-        self.spectrum_x_axis = np.array([])
-        self.spectrum_n_points = 250  # number of freqs displayed
-        self.spectrum_nfreqs = 0
-        self.spectrum_threshold = -120  # dB
 
-        self.is_playing = False
+        self.settings = Gio.Settings(
+            'com.github.wwmm.pulseeffects.sourceoutputs')
 
-        self.log = logging.getLogger('PulseEffects')
+        SourceOutputPipeline.__init__(self, sampling_rate)
+        EffectsUiBase.__init__(self, '/ui/sink_inputs_plugins.glade',
+                               self.settings)
 
-        self.calc_spectrum_freqs()
-
-        self.pipeline = self.build_pipeline()
-
-        # Create bus to get events from GStreamer pipeline
-        bus = self.pipeline.get_bus()
-        bus.add_signal_watch()
-        bus.connect('message::error', self.on_message_error)
-        bus.connect('message::info', self.on_message_info)
-        bus.connect('message::warning', self.on_message_warning)
-        bus.connect('message::latency', self.on_message_latency)
-        bus.connect('message::element', self.on_message_element)
-
-    def build_pipeline(self):
-        pipeline = Gst.Pipeline()
-
-        self.audio_src = Gst.ElementFactory.make('pulsesrc', 'audio_src')
-
-        source_caps = Gst.ElementFactory.make("capsfilter", None)
-
-        self.limiter = Gst.ElementFactory.make(
-            'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter', None)
-
-        self.compressor = Gst.ElementFactory.make(
-            'ladspa-sc4-1882-so-sc4', None)
-
-        self.freeverb = Gst.ElementFactory.make('freeverb', None)
-
-        self.equalizer_input_gain = Gst.ElementFactory.make('volume', None)
-        self.equalizer_output_gain = Gst.ElementFactory.make('volume', None)
-
-        self.equalizer = Gst.ElementFactory.make('equalizer-nbands', None)
-
-        self.spectrum = Gst.ElementFactory.make('spectrum', 'spectrum')
-
-        self.output_limiter = Gst.ElementFactory.make(
-            'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter', None)
-
-        self.audio_sink = Gst.ElementFactory.make('pulsesink', 'audio_sink')
-
-        limiter_input_level = Gst.ElementFactory.make(
-            'level', 'limiter_input_level')
-        limiter_output_level = Gst.ElementFactory.make(
-            'level', 'limiter_output_level')
-        compressor_output_level = Gst.ElementFactory.make(
-            'level', 'compressor_output_level')
-        reverb_output_level = Gst.ElementFactory.make(
-            'level', 'reverb_output_level')
-        equalizer_input_level = Gst.ElementFactory.make(
-            'level', 'equalizer_input_level')
-        equalizer_output_level = Gst.ElementFactory.make(
-            'level', 'equalizer_output_level')
-
-        self.audio_src.set_property('volume', 1.0)
-        self.audio_src.set_property('mute', False)
-        self.audio_src.set_property('provide-clock', False)
-        self.audio_src.set_property('slave-method', 're-timestamp')
-
-        caps = ['audio/x-raw', 'format=F32LE',
-                'rate=' + str(self.rate), 'channels=2']
-
-        src_caps = Gst.Caps.from_string(",".join(caps))
-        source_caps.set_property("caps", src_caps)
-
-        self.audio_sink.set_property('volume', 1.0)
-        self.audio_sink.set_property('mute', False)
-
-        self.equalizer.set_property('num-bands', 15)
-
-        self.eq_band0 = self.equalizer.get_child_by_index(0)
-        self.eq_band1 = self.equalizer.get_child_by_index(1)
-        self.eq_band2 = self.equalizer.get_child_by_index(2)
-        self.eq_band3 = self.equalizer.get_child_by_index(3)
-        self.eq_band4 = self.equalizer.get_child_by_index(4)
-        self.eq_band5 = self.equalizer.get_child_by_index(5)
-        self.eq_band6 = self.equalizer.get_child_by_index(6)
-        self.eq_band7 = self.equalizer.get_child_by_index(7)
-        self.eq_band8 = self.equalizer.get_child_by_index(8)
-        self.eq_band9 = self.equalizer.get_child_by_index(9)
-        self.eq_band10 = self.equalizer.get_child_by_index(10)
-        self.eq_band11 = self.equalizer.get_child_by_index(11)
-        self.eq_band12 = self.equalizer.get_child_by_index(12)
-        self.eq_band13 = self.equalizer.get_child_by_index(13)
-        self.eq_band14 = self.equalizer.get_child_by_index(14)
-
-        # It seems there is a bug in the low shelf filter.
-        # When we increase the lower shelf gain higher frequencies
-        # are attenuated. Setting the first band to peak type instead of
-        # shelf fixes this.
-
-        self.eq_band0.set_property('type', 0)  # 0: peak type
-        self.eq_band14.set_property('type', 0)  # 0: peak type
-
-        self.spectrum.set_property('bands', self.spectrum_nbands)
-        self.spectrum.set_property('threshold', self.spectrum_threshold)
-
-        self.eq_highpass = Gst.ElementFactory.make('audiocheblimit', None)
-        self.eq_highpass.set_property('mode', 'high-pass')
-        self.eq_highpass.set_property('type', 1)
-        self.eq_highpass.set_property('ripple', 0)
-
-        self.eq_lowpass = Gst.ElementFactory.make('audiocheblimit', None)
-        self.eq_lowpass.set_property('mode', 'low-pass')
-        self.eq_lowpass.set_property('type', 1)
-        self.eq_lowpass.set_property('ripple', 0)
-
-        self.output_limiter.set_property('input-gain', 0)
-        self.output_limiter.set_property('limit', 0)
-        self.output_limiter.set_property('release-time', 2.0)
-
-        pipeline.add(self.audio_src)
-        pipeline.add(source_caps)
-        pipeline.add(limiter_input_level)
-        pipeline.add(self.limiter)
-        pipeline.add(limiter_output_level)
-        pipeline.add(self.compressor)
-        pipeline.add(compressor_output_level)
-        pipeline.add(self.freeverb)
-        pipeline.add(reverb_output_level)
-        pipeline.add(self.equalizer_input_gain)
-        pipeline.add(self.eq_highpass)
-        pipeline.add(self.eq_lowpass)
-        pipeline.add(equalizer_input_level)
-        pipeline.add(self.equalizer)
-        pipeline.add(self.equalizer_output_gain)
-        pipeline.add(self.output_limiter)
-        pipeline.add(equalizer_output_level)
-        pipeline.add(self.spectrum)
-        pipeline.add(self.audio_sink)
-
-        self.audio_src.link(source_caps)
-        source_caps.link(limiter_input_level)
-        limiter_input_level.link(self.limiter)
-        self.limiter.link(limiter_output_level)
-        limiter_output_level.link(self.compressor)
-        self.compressor.link(compressor_output_level)
-        compressor_output_level.link(self.freeverb)
-        self.freeverb.link(reverb_output_level)
-        reverb_output_level.link(self.equalizer_input_gain)
-        self.equalizer_input_gain.link(self.eq_highpass)
-        self.eq_highpass.link(self.eq_lowpass)
-        self.eq_lowpass.link(equalizer_input_level)
-        equalizer_input_level.link(self.equalizer)
-        self.equalizer.link(self.equalizer_output_gain)
-        self.equalizer_output_gain.link(self.output_limiter)
-        self.output_limiter.link(equalizer_output_level)
-        equalizer_output_level.link(self.spectrum)
-        self.spectrum.link(self.audio_sink)
-
-        return pipeline
-
-    def set_state(self, state):
-        if state == 'ready':
-            s = self.pipeline.set_state(Gst.State.READY)
-
-            if s == Gst.StateChangeReturn.FAILURE:
-                self.log.critical("Could not set Gstreamer pipeline to ready")
-                return False
-            else:
-                self.is_playing = False
-                self.log.info('mic pipeline state: ready')
-                return True
-        elif state == 'paused':
-            s = self.pipeline.set_state(Gst.State.PAUSED)
-
-            if s == Gst.StateChangeReturn.FAILURE:
-                self.log.error("Failed to pause Gstreamer pipeline")
-                return False
-            else:
-                self.is_playing = False
-                self.log.info('mic pipeline state: paused')
-                return True
-        elif state == 'playing':
-            s = self.pipeline.set_state(Gst.State.PLAYING)
-
-            if s == Gst.StateChangeReturn.FAILURE:
-                self.log.critical("Playing Gstreamer pipeline has failed")
-                return False
-            else:
-                self.is_playing = True
-                self.log.info('mic pipeline state: playing')
-                return True
-        elif state == 'null':
-            s = self.pipeline.set_state(Gst.State.NULL)
-
-            if s == Gst.StateChangeReturn.FAILURE:
-                self.log.error("Could not stop Gstreamer pipeline")
-                return False
-            else:
-                self.is_playing = False
-                self.log.info('mic pipeline state: null')
-                return True
-
-    def calc_spectrum_freqs(self):
-        self.spectrum_freqs = []
-
-        for i in range(self.spectrum_nbands):
-            freq = self.rate * (0.5 * i + 0.25) / self.spectrum_nbands
-
-            if freq > self.max_spectrum_freq:
-                break
-
-            self.spectrum_freqs.append(freq)
-
-        self.spectrum_nfreqs = len(self.spectrum_freqs)
-
-        self.spectrum_x_axis = np.logspace(1.3, 4.3, self.spectrum_n_points)
-
-    def on_message_error(self, bus, msg):
-        self.log.error(msg.parse_error())
-        self.set_state('null')
-
-        return True
-
-    def on_message_info(self, bus, msg):
-        self.log.info(msg.parse_info())
-
-        return True
-
-    def on_message_warning(self, bus, msg):
-        self.log.warning(msg.parse_warning())
-
-        return True
-
-    def on_message_latency(self, bus, msg):
-        plugin = msg.src.get_name()
-
-        if plugin == 'audio_sink':
-            latency = msg.src.get_property('latency-time')
-            buffer_time = msg.src.get_property('buffer-time')
-
-            self.log.info('pulsesink latency-time [us]: ' + str(latency))
-            self.log.info('pulsesink buffer-time [us]: ' +
-                          str(buffer_time))
-        elif plugin == 'audio_src':
-            latency = msg.src.get_property('actual-latency-time')
-            buffer_time = msg.src.get_property('actual-buffer-time')
-
-            self.log.info('pulsesrc latency-time [us]: ' + str(latency))
-            self.log.info('pulsesrc buffer-time [us]: ' + str(buffer_time))
-
-        return True
+        self.builder.connect_signals(self)
 
     def on_message_element(self, bus, msg):
         plugin = msg.src.get_name()
@@ -306,44 +30,267 @@ class SourceOutputEffects(GObject.GObject):
         if plugin == 'limiter_input_level':
             peak = msg.get_structure().get_value('peak')
 
-            self.emit('new_limiter_input_level', peak[0], peak[1])
+            left, right = peak[0], peak[1]
+
+            if left >= -99:
+                l_value = 10**(left / 20)
+                self.ui_limiter_input_level_left.set_value(l_value)
+                self.ui_limiter_input_level_left_label.set_text(
+                    str(round(left)))
+            else:
+                self.ui_limiter_input_level_left.set_value(0)
+                self.ui_limiter_input_level_left_label.set_text('-99')
+
+            if right >= -99:
+                r_value = 10**(right / 20)
+                self.ui_limiter_input_level_right.set_value(r_value)
+                self.ui_limiter_input_level_right_label.set_text(
+                    str(round(right)))
+            else:
+                self.ui_limiter_input_level_right.set_value(0)
+                self.ui_limiter_input_level_right_label.set_text('-99')
         elif plugin == 'limiter_output_level':
             peak = msg.get_structure().get_value('peak')
 
-            self.emit('new_limiter_output_level', peak[0], peak[1])
-            self.emit('new_compressor_input_level', peak[0], peak[1])
+            left, right = peak[0], peak[1]
+
+            if left >= -99:
+                l_value = 10**(left / 20)
+                self.ui_limiter_output_level_left.set_value(l_value)
+                self.ui_limiter_output_level_left_label.set_text(
+                    str(round(left)))
+
+                # compressor input
+                self.ui_compressor_input_level_left.set_value(l_value)
+                self.ui_compressor_input_level_left_label.set_text(
+                    str(round(left)))
+            else:
+                self.ui_limiter_output_level_left.set_value(0)
+                self.ui_limiter_output_level_left_label.set_text('-99')
+
+                # compressor input
+                self.ui_compressor_input_level_left.set_value(0)
+                self.ui_compressor_input_level_left_label.set_text('-99')
+
+            if right >= -99:
+                r_value = 10**(right / 20)
+                self.ui_limiter_output_level_right.set_value(r_value)
+                self.ui_limiter_output_level_right_label.set_text(
+                    str(round(right)))
+
+                # compressor input
+                self.ui_compressor_input_level_right.set_value(r_value)
+                self.ui_compressor_input_level_right_label.set_text(
+                    str(round(left)))
+            else:
+                self.ui_limiter_output_level_right.set_value(0)
+                self.ui_limiter_output_level_right_label.set_text('-99')
+
+                # compressor input
+                self.ui_compressor_input_level_right.set_value(0)
+                self.ui_compressor_input_level_right_label.set_text('-99')
 
             attenuation = round(self.limiter.get_property('attenuation'))
 
             if attenuation != self.old_limiter_attenuation:
                 self.old_limiter_attenuation = attenuation
 
-                self.emit('new_limiter_attenuation', attenuation)
+                self.ui_limiter_attenuation_levelbar.set_value(attenuation)
+                self.ui_limiter_attenuation_level_label.set_text(
+                    str(round(attenuation)))
         elif plugin == 'compressor_output_level':
             peak = msg.get_structure().get_value('peak')
 
-            self.emit('new_compressor_output_level', peak[0], peak[1])
-            self.emit('new_reverb_input_level', peak[0], peak[1])
+            left, right = peak[0], peak[1]
 
-            gain_reduction = round(
-                self.compressor.get_property('gain-reduction'))
+            if left >= -99:
+                l_value = 10**(left / 20)
+                self.ui_compressor_output_level_left.set_value(l_value)
+                self.ui_compressor_output_level_left_label.set_text(
+                    str(round(left)))
+
+                # reverb input
+                self.ui_reverb_input_level_left.set_value(l_value)
+                self.ui_reverb_input_level_left_label.set_text(
+                    str(round(left)))
+            else:
+                self.ui_compressor_output_level_left.set_value(0)
+                self.ui_compressor_output_level_left_label.set_text('-99')
+
+                # reverb input
+                self.ui_reverb_input_level_left.set_value(0)
+                self.ui_reverb_input_level_left_label.set_text('-99')
+
+            if right >= -99:
+                r_value = 10**(right / 20)
+                self.ui_compressor_output_level_right.set_value(r_value)
+                self.ui_compressor_output_level_right_label.set_text(
+                    str(round(right)))
+
+                # reverb input
+                self.ui_reverb_input_level_right.set_value(r_value)
+                self.ui_reverb_input_level_right_label.set_text(
+                    str(round(left)))
+            else:
+                self.ui_compressor_output_level_right.set_value(0)
+                self.ui_compressor_output_level_right_label.set_text('-99')
+
+                # reverb input
+                self.ui_reverb_input_level_right.set_value(0)
+                self.ui_reverb_input_level_right_label.set_text('-99')
+
+            gain_reduction = abs(round(
+                self.compressor.get_property('gain-reduction')))
 
             if gain_reduction != self.old_compressor_gain_reduction:
                 self.old_compressor_gain_reduction = gain_reduction
 
-                self.emit('new_compressor_gain_reduction', gain_reduction)
+                self.ui_compressor_gain_reduction_levelbar.set_value(
+                    gain_reduction)
+                self.ui_compressor_gain_reduction_level_label.set_text(
+                    str(round(gain_reduction)))
         elif plugin == 'reverb_output_level':
             peak = msg.get_structure().get_value('peak')
 
-            self.emit('new_reverb_output_level', peak[0], peak[1])
+            left, right = peak[0], peak[1]
+
+            if left >= -99:
+                l_value = 10**(left / 20)
+                self.ui_reverb_output_level_left.set_value(l_value)
+                self.ui_reverb_output_level_left_label.set_text(
+                    str(round(left)))
+
+                # highpass input
+                self.ui_highpass_input_level_left.set_value(l_value)
+                self.ui_highpass_input_level_left_label.set_text(
+                    str(round(left)))
+            else:
+                self.ui_reverb_output_level_left.set_value(0)
+                self.ui_reverb_output_level_left_label.set_text('-99')
+
+                self.ui_highpass_input_level_left.set_value(0)
+                self.ui_highpass_input_level_left_label.set_text('-99')
+
+            if right >= -99:
+                r_value = 10**(right / 20)
+                self.ui_reverb_output_level_right.set_value(r_value)
+                self.ui_reverb_output_level_right_label.set_text(
+                    str(round(right)))
+
+                # highpass input
+                self.ui_highpass_input_level_right.set_value(r_value)
+                self.ui_highpass_input_level_right_label.set_text(
+                    str(round(right)))
+            else:
+                self.ui_reverb_output_level_right.set_value(0)
+                self.ui_reverb_output_level_right_label.set_text('-99')
+
+                self.ui_highpass_input_level_right.set_value(0)
+                self.ui_highpass_input_level_right_label.set_text('-99')
+        elif plugin == 'highpass_output_level':
+            peak = msg.get_structure().get_value('peak')
+
+            left, right = peak[0], peak[1]
+
+            if left >= -99:
+                l_value = 10**(left / 20)
+                self.ui_highpass_output_level_left.set_value(l_value)
+                self.ui_highpass_output_level_left_label.set_text(
+                    str(round(left)))
+
+                # lowpass input
+                self.ui_lowpass_input_level_left.set_value(l_value)
+                self.ui_lowpass_input_level_left_label.set_text(
+                    str(round(left)))
+            else:
+                self.ui_highpass_output_level_left.set_value(0)
+                self.ui_highpass_output_level_left_label.set_text('-99')
+
+                self.ui_lowpass_input_level_left.set_value(0)
+                self.ui_lowpass_input_level_left_label.set_text('-99')
+
+            if right >= -99:
+                r_value = 10**(right / 20)
+                self.ui_highpass_output_level_right.set_value(r_value)
+                self.ui_highpass_output_level_right_label.set_text(
+                    str(round(right)))
+
+                # lowpass input
+                self.ui_lowpass_input_level_right.set_value(r_value)
+                self.ui_lowpass_input_level_right_label.set_text(
+                    str(round(right)))
+            else:
+                self.ui_highpass_output_level_right.set_value(0)
+                self.ui_highpass_output_level_right_label.set_text('-99')
+
+                self.ui_lowpass_input_level_right.set_value(0)
+                self.ui_lowpass_input_level_right_label.set_text('-99')
+        elif plugin == 'lowpass_output_level':
+            peak = msg.get_structure().get_value('peak')
+
+            left, right = peak[0], peak[1]
+
+            if left >= -99:
+                l_value = 10**(left / 20)
+                self.ui_lowpass_output_level_left.set_value(l_value)
+                self.ui_lowpass_output_level_left_label.set_text(
+                    str(round(left)))
+            else:
+                self.ui_lowpass_output_level_left.set_value(0)
+                self.ui_lowpass_output_level_left_label.set_text('-99')
+
+            if right >= -99:
+                r_value = 10**(right / 20)
+                self.ui_lowpass_output_level_right.set_value(r_value)
+                self.ui_lowpass_output_level_right_label.set_text(
+                    str(round(right)))
+            else:
+                self.ui_lowpass_output_level_right.set_value(0)
+                self.ui_lowpass_output_level_right_label.set_text('-99')
         elif plugin == 'equalizer_input_level':
             peak = msg.get_structure().get_value('peak')
 
-            self.emit('new_equalizer_input_level', peak[0], peak[1])
+            left, right = peak[0], peak[1]
+
+            if left >= -99:
+                l_value = 10**(left / 20)
+                self.ui_equalizer_input_level_left.set_value(l_value)
+                self.ui_equalizer_input_level_left_label.set_text(
+                    str(round(left)))
+            else:
+                self.ui_equalizer_input_level_left.set_value(0)
+                self.ui_equalizer_input_level_left_label.set_text('-99')
+
+            if right >= -99:
+                r_value = 10**(right / 20)
+                self.ui_equalizer_input_level_right.set_value(r_value)
+                self.ui_equalizer_input_level_right_label.set_text(
+                    str(round(right)))
+            else:
+                self.ui_equalizer_input_level_right.set_value(0)
+                self.ui_equalizer_input_level_right_label.set_text('-99')
         elif plugin == 'equalizer_output_level':
             peak = msg.get_structure().get_value('peak')
 
-            self.emit('new_equalizer_output_level', peak[0], peak[1])
+            left, right = peak[0], peak[1]
+
+            if left >= -99:
+                l_value = 10**(left / 20)
+                self.ui_equalizer_output_level_left.set_value(l_value)
+                self.ui_equalizer_output_level_left_label.set_text(
+                    str(round(left)))
+            else:
+                self.ui_equalizer_output_level_left.set_value(0)
+                self.ui_equalizer_output_level_left_label.set_text('-99')
+
+            if right >= -99:
+                r_value = 10**(right / 20)
+                self.ui_equalizer_output_level_right.set_value(r_value)
+                self.ui_equalizer_output_level_right_label.set_text(
+                    str(round(right)))
+            else:
+                self.ui_equalizer_output_level_right.set_value(0)
+                self.ui_equalizer_output_level_right_label.set_text('-99')
         elif plugin == 'spectrum':
             magnitudes = msg.get_structure().get_value('magnitude')
 
@@ -362,147 +309,37 @@ class SourceOutputEffects(GObject.GObject):
 
         return True
 
-    def set_source_monitor_name(self, name):
-        self.audio_src.set_property('device', name)
+    def init_ui(self):
+        self.init_limiter_ui()
+        self.init_compressor_ui()
+        self.init_reverb_ui()
+        self.init_highpass_ui()
+        self.init_lowpass_ui()
+        self.init_equalizer_ui()
 
-    def set_output_sink_name(self, name):
-        self.audio_sink.set_property('device', name)
+    def on_eq_flat_response_button_clicked(self, obj):
+        self.apply_eq_preset([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 
-    def get_configured_src_device(self):
-        return self.audio_src.get_property('device')
+    def on_eq_reset_freqs_button_clicked(self, obj):
+        self.settings.reset('equalizer-freqs')
+        self.init_eq_freq_and_qfactors()
 
-    def get_current_src_device(self):
-        return self.audio_src.get_property('current-device')
+    def on_eq_reset_qfactors_button_clicked(self, obj):
+        self.settings.reset('equalizer-qfactors')
+        self.init_eq_freq_and_qfactors()
 
-    def init_buffer_time(self, value):
-        self.audio_src.set_property('buffer-time', value)
-        self.audio_sink.set_property('buffer-time', value)
+    def reset(self):
+        self.settings.reset('limiter-user')
+        self.settings.reset('compressor-user')
+        self.settings.reset('reverb-user')
+        self.settings.reset('highpass-cutoff')
+        self.settings.reset('highpass-poles')
+        self.settings.reset('lowpass-cutoff')
+        self.settings.reset('lowpass-poles')
+        self.settings.reset('equalizer-input-gain')
+        self.settings.reset('equalizer-output-gain')
+        self.settings.reset('equalizer-user')
+        self.settings.reset('equalizer-freqs')
+        self.settings.reset('equalizer-qfactors')
 
-    def set_buffer_time(self, value):
-        self.set_state('ready')
-        self.audio_src.set_property('buffer-time', value)
-        self.audio_sink.set_property('buffer-time', value)
-        self.set_state('playing')
-
-    def set_spectrum_n_points(self, value):
-        self.spectrum_n_points = value
-
-        self.spectrum_x_axis = np.logspace(1.3, 4.3, value)
-
-    def enable_spectrum(self, state):
-        self.spectrum.set_property('post-messages', state)
-
-    def init_latency_time(self, value):
-        self.audio_src.set_property('latency-time', value)
-        self.audio_sink.set_property('latency-time', value)
-
-    def set_latency_time(self, value):
-        self.set_state('ready')
-        self.audio_src.set_property('latency-time', value)
-        self.audio_sink.set_property('latency-time', value)
-        self.set_state('playing')
-
-    def set_limiter_input_gain(self, value):
-        self.limiter.set_property('input-gain', value)
-
-    def set_limiter_limit(self, value):
-        self.limiter.set_property('limit', value)
-
-    def set_limiter_release_time(self, value):
-        self.limiter.set_property('release-time', value)
-
-    def set_compressor_measurement_type(self, value):
-        self.compressor.set_property('rms-peak', value)
-
-    def set_compressor_attack(self, value):
-        self.compressor.set_property('attack-time', value)
-
-    def set_compressor_release(self, value):
-        self.compressor.set_property('release-time', value)
-
-    def set_compressor_threshold(self, value):
-        self.compressor.set_property('threshold-level', value)
-
-    def set_compressor_ratio(self, value):
-        self.compressor.set_property('ratio', value)
-
-    def set_compressor_knee(self, value):
-        self.compressor.set_property('knee-radius', value)
-
-    def set_compressor_makeup(self, value):
-        self.compressor.set_property('makeup-gain', value)
-
-    def set_reverb_room_size(self, value):
-        self.freeverb.set_property('room-size', value)
-
-    def set_reverb_damping(self, value):
-        self.freeverb.set_property('damping', value)
-
-    def set_reverb_width(self, value):
-        self.freeverb.set_property('width', value)
-
-    def set_reverb_level(self, value):
-        self.freeverb.set_property('level', value)
-
-    def set_eq_input_gain(self, value):
-        self.equalizer_input_gain.set_property('volume', value)
-
-    def set_eq_output_gain(self, value):
-        self.equalizer_output_gain.set_property('volume', value)
-
-    def set_eq_band0(self, value):
-        self.eq_band0.set_property('gain', value)
-
-    def set_eq_band1(self, value):
-        self.eq_band1.set_property('gain', value)
-
-    def set_eq_band2(self, value):
-        self.eq_band2.set_property('gain', value)
-
-    def set_eq_band3(self, value):
-        self.eq_band3.set_property('gain', value)
-
-    def set_eq_band4(self, value):
-        self.eq_band4.set_property('gain', value)
-
-    def set_eq_band5(self, value):
-        self.eq_band5.set_property('gain', value)
-
-    def set_eq_band6(self, value):
-        self.eq_band6.set_property('gain', value)
-
-    def set_eq_band7(self, value):
-        self.eq_band7.set_property('gain', value)
-
-    def set_eq_band8(self, value):
-        self.eq_band8.set_property('gain', value)
-
-    def set_eq_band9(self, value):
-        self.eq_band9.set_property('gain', value)
-
-    def set_eq_band10(self, value):
-        self.eq_band10.set_property('gain', value)
-
-    def set_eq_band11(self, value):
-        self.eq_band11.set_property('gain', value)
-
-    def set_eq_band12(self, value):
-        self.eq_band12.set_property('gain', value)
-
-    def set_eq_band13(self, value):
-        self.eq_band13.set_property('gain', value)
-
-    def set_eq_band14(self, value):
-        self.eq_band14.set_property('gain', value)
-
-    def set_eq_highpass_cutoff_freq(self, value):
-        self.eq_highpass.set_property('cutoff', value)
-
-    def set_eq_highpass_poles(self, value):
-        self.eq_highpass.set_property('poles', value)
-
-    def set_eq_lowpass_cutoff_freq(self, value):
-        self.eq_lowpass.set_property('cutoff', value)
-
-    def set_eq_lowpass_poles(self, value):
-        self.eq_lowpass.set_property('poles', value)
+        self.init_ui()

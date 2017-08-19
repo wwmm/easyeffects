@@ -34,24 +34,19 @@
           <default>[0.0, 0.0, 0.0, 0.0]</default>
         </key>
 
-        <key name="equalizer-equal-loudness-20" type="ad">
-          <default>[12, 3, -4, -10, -15, -18, -20, -20, -20, -20, -23, -24, -18, -14, -10]</default>
+        <key name="highpass-cutoff" type="i">
+          <default>20</default>
         </key>
-        <key name="equalizer-equal-loudness-40" type="ad">
-          <default>[12, 3, -5, -10, -15, -19, -20, -20, -18, -19, -21, -24, -16, -14, -15]</default>
+        <key name="highpass-poles" type="i">
+          <default>4</default>
         </key>
-        <key name="equalizer-equal-loudness-60" type="ad">
-          <default>[12, 2, -5, -11, -16, -18, -21, -19, -17, -18, -21, -24, -14, -14, -14]</default>
+        <key name="lowpass-cutoff" type="i">
+          <default>20000</default>
         </key>
-        <key name="equalizer-equal-loudness-80" type="ad">
-          <default>[12, 2, -5, -10, -14, -18, -19, -14, -16, -14, -21, -24, -13, -10, -14]</default>
+        <key name="lowpass-poles" type="i">
+          <default>4</default>
         </key>
-        <key name="equalizer-equal-loudness-100" type="ad">
-          <default>[12, 3, -4, -7, -11, -13, -14, -13, -11, -15, -21, -24, -12, -6, 1]</default>
-        </key>
-        <key name="equalizer-flat" type="ad">
-          <default>[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]</default>
-        </key>
+
         <key name="equalizer-user" type="ad">
           <default>[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]</default>
         </key>
@@ -61,17 +56,11 @@
         <key name="equalizer-output-gain" type="d">
           <default>0</default>
         </key>
-        <key name="equalizer-highpass-cutoff" type="i">
-          <default>20</default>
+        <key name="equalizer-freqs" type="ad">
+          <default>[26, 41, 65, 103, 163, 259, 410, 649, 1029, 1631, 2585, 4097, 6493, 10291, 16310]</default>
         </key>
-        <key name="equalizer-highpass-poles" type="i">
-          <default>4</default>
-        </key>
-        <key name="equalizer-lowpass-cutoff" type="i">
-          <default>20000</default>
-        </key>
-        <key name="equalizer-lowpass-poles" type="i">
-          <default>4</default>
+        <key name="equalizer-qfactors" type="ad">
+          <default>[2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21]</default>
         </key>
     </schema>
 </schemalist>
