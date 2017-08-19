@@ -2358,19 +2358,8 @@
                             <property name="value_pos">bottom</property>
                           </object>
                           <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label">41Hz</property>
-                          </object>
-                          <packing>
                             <property name="left_attach">1</property>
-                            <property name="top_attach">0</property>
+                            <property name="top_attach">2</property>
                           </packing>
                         </child>
                         <child>
@@ -2387,8 +2376,8 @@
                             <property name="value_pos">bottom</property>
                           </object>
                           <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">1</property>
+                            <property name="left_attach">2</property>
+                            <property name="top_attach">2</property>
                           </packing>
                         </child>
                         <child>
@@ -2398,7 +2387,7 @@
                             <property name="label">65Hz</property>
                           </object>
                           <packing>
-                            <property name="left_attach">2</property>
+                            <property name="left_attach">3</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -2416,8 +2405,8 @@
                             <property name="value_pos">bottom</property>
                           </object>
                           <packing>
-                            <property name="left_attach">2</property>
-                            <property name="top_attach">1</property>
+                            <property name="left_attach">3</property>
+                            <property name="top_attach">2</property>
                           </packing>
                         </child>
                         <child>
@@ -2427,7 +2416,7 @@
                             <property name="label">103Hz</property>
                           </object>
                           <packing>
-                            <property name="left_attach">3</property>
+                            <property name="left_attach">4</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -2445,8 +2434,8 @@
                             <property name="value_pos">bottom</property>
                           </object>
                           <packing>
-                            <property name="left_attach">3</property>
-                            <property name="top_attach">1</property>
+                            <property name="left_attach">4</property>
+                            <property name="top_attach">2</property>
                           </packing>
                         </child>
                         <child>
@@ -2456,7 +2445,7 @@
                             <property name="label">163Hz</property>
                           </object>
                           <packing>
-                            <property name="left_attach">4</property>
+                            <property name="left_attach">5</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -2474,8 +2463,8 @@
                             <property name="value_pos">bottom</property>
                           </object>
                           <packing>
-                            <property name="left_attach">4</property>
-                            <property name="top_attach">1</property>
+                            <property name="left_attach">5</property>
+                            <property name="top_attach">2</property>
                           </packing>
                         </child>
                         <child>
@@ -2485,7 +2474,7 @@
                             <property name="label">259Hz</property>
                           </object>
                           <packing>
-                            <property name="left_attach">5</property>
+                            <property name="left_attach">6</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -2503,8 +2492,8 @@
                             <property name="value_pos">bottom</property>
                           </object>
                           <packing>
-                            <property name="left_attach">5</property>
-                            <property name="top_attach">1</property>
+                            <property name="left_attach">6</property>
+                            <property name="top_attach">2</property>
                           </packing>
                         </child>
                         <child>
@@ -2514,7 +2503,7 @@
                             <property name="label">410Hz</property>
                           </object>
                           <packing>
-                            <property name="left_attach">6</property>
+                            <property name="left_attach">7</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -2532,8 +2521,8 @@
                             <property name="value_pos">bottom</property>
                           </object>
                           <packing>
-                            <property name="left_attach">6</property>
-                            <property name="top_attach">1</property>
+                            <property name="left_attach">7</property>
+                            <property name="top_attach">2</property>
                           </packing>
                         </child>
                         <child>
@@ -2543,7 +2532,7 @@
                             <property name="label">649Hz</property>
                           </object>
                           <packing>
-                            <property name="left_attach">7</property>
+                            <property name="left_attach">8</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -2561,8 +2550,8 @@
                             <property name="value_pos">bottom</property>
                           </object>
                           <packing>
-                            <property name="left_attach">7</property>
-                            <property name="top_attach">1</property>
+                            <property name="left_attach">8</property>
+                            <property name="top_attach">2</property>
                           </packing>
                         </child>
                         <child>
@@ -2572,7 +2561,7 @@
                             <property name="label">1kHz</property>
                           </object>
                           <packing>
-                            <property name="left_attach">8</property>
+                            <property name="left_attach">9</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -2590,8 +2579,8 @@
                             <property name="value_pos">bottom</property>
                           </object>
                           <packing>
-                            <property name="left_attach">8</property>
-                            <property name="top_attach">1</property>
+                            <property name="left_attach">9</property>
+                            <property name="top_attach">2</property>
                           </packing>
                         </child>
                         <child>
@@ -2601,7 +2590,7 @@
                             <property name="label">1.6kHz</property>
                           </object>
                           <packing>
-                            <property name="left_attach">9</property>
+                            <property name="left_attach">10</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -2619,8 +2608,8 @@
                             <property name="value_pos">bottom</property>
                           </object>
                           <packing>
-                            <property name="left_attach">9</property>
-                            <property name="top_attach">1</property>
+                            <property name="left_attach">10</property>
+                            <property name="top_attach">2</property>
                           </packing>
                         </child>
                         <child>
@@ -2628,17 +2617,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label">2.6kHz</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">10</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkAccelLabel">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label">4.1kHz</property>
                           </object>
                           <packing>
                             <property name="left_attach">11</property>
@@ -2649,7 +2627,7 @@
                           <object class="GtkAccelLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label">6.5kHz</property>
+                            <property name="label">4.1kHz</property>
                           </object>
                           <packing>
                             <property name="left_attach">12</property>
@@ -2660,7 +2638,7 @@
                           <object class="GtkAccelLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label">10kHz</property>
+                            <property name="label">6.5kHz</property>
                           </object>
                           <packing>
                             <property name="left_attach">13</property>
@@ -2671,10 +2649,21 @@
                           <object class="GtkAccelLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label">16kHz</property>
+                            <property name="label">10kHz</property>
                           </object>
                           <packing>
                             <property name="left_attach">14</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkAccelLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label">16kHz</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">15</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -2692,8 +2681,8 @@
                             <property name="value_pos">bottom</property>
                           </object>
                           <packing>
-                            <property name="left_attach">10</property>
-                            <property name="top_attach">1</property>
+                            <property name="left_attach">11</property>
+                            <property name="top_attach">2</property>
                           </packing>
                         </child>
                         <child>
@@ -2710,8 +2699,8 @@
                             <property name="value_pos">bottom</property>
                           </object>
                           <packing>
-                            <property name="left_attach">11</property>
-                            <property name="top_attach">1</property>
+                            <property name="left_attach">12</property>
+                            <property name="top_attach">2</property>
                           </packing>
                         </child>
                         <child>
@@ -2728,8 +2717,8 @@
                             <property name="value_pos">bottom</property>
                           </object>
                           <packing>
-                            <property name="left_attach">12</property>
-                            <property name="top_attach">1</property>
+                            <property name="left_attach">13</property>
+                            <property name="top_attach">2</property>
                           </packing>
                         </child>
                         <child>
@@ -2746,8 +2735,8 @@
                             <property name="value_pos">bottom</property>
                           </object>
                           <packing>
-                            <property name="left_attach">13</property>
-                            <property name="top_attach">1</property>
+                            <property name="left_attach">14</property>
+                            <property name="top_attach">2</property>
                           </packing>
                         </child>
                         <child>
@@ -2764,23 +2753,145 @@
                             <property name="value_pos">bottom</property>
                           </object>
                           <packing>
-                            <property name="left_attach">14</property>
-                            <property name="top_attach">1</property>
+                            <property name="left_attach">15</property>
+                            <property name="top_attach">2</property>
                           </packing>
                         </child>
                         <child>
                           <object class="GtkEntry" id="eq_band0_freq">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
                             <property name="max_length">5</property>
                             <property name="width_chars">5</property>
                             <property name="max_width_chars">5</property>
+                            <property name="xalign">0.5</property>
                             <property name="input_purpose">digits</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkEntry" id="eq_band1_freq">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
+                            <property name="max_length">5</property>
+                            <property name="width_chars">5</property>
+                            <property name="max_width_chars">5</property>
+                            <property name="xalign">0.5</property>
+                            <property name="input_purpose">digits</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">2</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkEntry" id="eq_band0_qfactor">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
+                            <property name="max_length">4</property>
+                            <property name="width_chars">4</property>
+                            <property name="max_width_chars">4</property>
+                            <property name="xalign">0.5</property>
+                            <property name="input_purpose">digits</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkEntry" id="eq_band1_qfactor">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
+                            <property name="max_length">4</property>
+                            <property name="width_chars">4</property>
+                            <property name="max_width_chars">4</property>
+                            <property name="xalign">0.5</property>
+                            <property name="input_purpose">digits</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">2</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="valign">end</property>
+                            <property name="label" translatable="yes">F [Hz]</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
                             <property name="top_attach">0</property>
                           </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="valign">end</property>
+                            <property name="label" translatable="yes">Q</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
                         </child>
                       </object>
                       <packing>
@@ -2816,6 +2927,18 @@
                           <packing>
                             <property name="left_attach">0</property>
                             <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton">
+                            <property name="label" translatable="yes">Reset Q Factors</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">2</property>
                           </packing>
                         </child>
                       </object>

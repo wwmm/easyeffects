@@ -205,6 +205,12 @@ class SinkInputEffects(SinkInputPipeline):
         self.ui_eq_band13 = self.builder.get_object('eq_band13')
         self.ui_eq_band14 = self.builder.get_object('eq_band14')
 
+        self.ui_eq_band0_freq = self.builder.get_object('eq_band0_freq')
+        self.ui_eq_band1_freq = self.builder.get_object('eq_band1_freq')
+
+        self.ui_eq_band0_qfactor = self.builder.get_object('eq_band0_qfactor')
+        self.ui_eq_band1_qfactor = self.builder.get_object('eq_band1_qfactor')
+
         self.ui_equalizer_input_level_left = self.builder.get_object(
             'equalizer_input_level_left')
         self.ui_equalizer_input_level_right = self.builder.get_object(
@@ -572,6 +578,15 @@ class SinkInputEffects(SinkInputPipeline):
         self.ui_equalizer_input_gain.set_value(equalizer_input_gain_user)
         self.ui_equalizer_output_gain.set_value(equalizer_output_gain_user)
         self.apply_eq_preset(self.eq_band_user)
+
+        eq_freqs = self.settings.get_value('equalizer-freqs').unpack()
+        eq_qfactors = self.settings.get_value('equalizer-qfactors').unpack()
+
+        self.ui_eq_band0_freq.set_text('{0:g}'.format(eq_freqs[0]))
+        self.ui_eq_band1_freq.set_text('{0:g}'.format(eq_freqs[1]))
+
+        self.ui_eq_band0_qfactor.set_text(str(eq_qfactors[0]))
+        self.ui_eq_band1_qfactor.set_text(str(eq_qfactors[1]))
 
         # we need this when on value changed is not called
 
