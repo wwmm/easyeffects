@@ -1082,6 +1082,78 @@ class SinkInputEffects(SinkInputPipeline):
         except ValueError:
             pass
 
+    def on_eq_qfactor_changed(self, obj):
+        try:
+            value = float(obj.get_text())
+
+            obj_id = Gtk.Buildable.get_name(obj)
+
+            if obj_id == 'eq_band0_qfactor':
+                self.eq_qfactors[0] = value
+                self.eq_band0.set_property(
+                    'bandwidth', self.eq_freqs[0] / value)
+            elif obj_id == 'eq_band1_qfactor':
+                self.eq_qfactors[1] = value
+                self.eq_band1.set_property(
+                    'bandwidth', self.eq_freqs[1] / value)
+            elif obj_id == 'eq_band2_qfactor':
+                self.eq_qfactors[2] = value
+                self.eq_band2.set_property(
+                    'bandwidth', self.eq_freqs[2] / value)
+            elif obj_id == 'eq_band3_qfactor':
+                self.eq_qfactors[3] = value
+                self.eq_band3.set_property(
+                    'bandwidth', self.eq_freqs[3] / value)
+            elif obj_id == 'eq_band4_qfactor':
+                self.eq_qfactors[4] = value
+                self.eq_band4.set_property(
+                    'bandwidth', self.eq_freqs[4] / value)
+            elif obj_id == 'eq_band5_qfactor':
+                self.eq_qfactors[5] = value
+                self.eq_band5.set_property(
+                    'bandwidth', self.eq_freqs[5] / value)
+            elif obj_id == 'eq_band6_qfactor':
+                self.eq_qfactors[6] = value
+                self.eq_band6.set_property(
+                    'bandwidth', self.eq_freqs[6] / value)
+            elif obj_id == 'eq_band7_qfactor':
+                self.eq_qfactors[7] = value
+                self.eq_band7.set_property(
+                    'bandwidth', self.eq_freqs[7] / value)
+            elif obj_id == 'eq_band8_qfactor':
+                self.eq_qfactors[8] = value
+                self.eq_band8.set_property(
+                    'bandwidth', self.eq_freqs[8] / value)
+            elif obj_id == 'eq_band9_qfactor':
+                self.eq_qfactors[9] = value
+                self.eq_band9.set_property(
+                    'bandwidth', self.eq_freqs[9] / value)
+            elif obj_id == 'eq_band10_qfactor':
+                self.eq_qfactors[10] = value
+                self.eq_band10.set_property(
+                    'bandwidth', self.eq_freqs[10] / value)
+            elif obj_id == 'eq_band11_qfactor':
+                self.eq_qfactors[11] = value
+                self.eq_band11.set_property(
+                    'bandwidth', self.eq_freqs[11] / value)
+            elif obj_id == 'eq_band12_qfactor':
+                self.eq_qfactors[12] = value
+                self.eq_band12.set_property(
+                    'bandwidth', self.eq_freqs[12] / value)
+            elif obj_id == 'eq_band13_qfactor':
+                self.eq_qfactors[13] = value
+                self.eq_band13.set_property(
+                    'bandwidth', self.eq_freqs[13] / value)
+            elif obj_id == 'eq_band14_qfactor':
+                self.eq_qfactors[14] = value
+                self.eq_band14.set_property(
+                    'bandwidth', self.eq_freqs[14] / value)
+
+            out = GLib.Variant('ad', self.eq_qfactors)
+            self.settings.set_value('equalizer-qfactors', out)
+        except ValueError:
+            pass
+
     def on_eq_preset_clicked(self, obj):
         obj_id = Gtk.Buildable.get_name(obj)
 
