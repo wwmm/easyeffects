@@ -57,7 +57,7 @@ Required libraries:
 - [Python Cairo](https://cairographics.org/pycairo/)
 - [Python Numpy](http://www.numpy.org/)
 - [Python Scipy](https://scipy.org/scipylib/) (0.18 or above)
-- Gtk 3.18 or above
+- Gtk 3.20 or above
 - Gstreamer, Gstreamer Plugins Good, Gstreamer Plugins Bad and Gstreamer Python
  (Since version 1.4.3 Pulseeffects needs Gstreamer 1.12 or above)
 - [swh-plugins](https://github.com/swh/ladspa) from Ladspa

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.20.0 -->
 <interface domain="PulseEffects">
-  <requires lib="gtk+" version="3.18"/>
+  <requires lib="gtk+" version="3.20"/>
   <object class="GtkAdjustment" id="compressor_attack">
     <property name="lower">1.5</property>
     <property name="upper">400</property>
@@ -2341,11 +2341,12 @@
                     <property name="row_spacing">6</property>
                     <property name="column_spacing">6</property>
                     <child>
-                      <object class="GtkButton">
+                      <object class="GtkButton" id="eq_flat_response_button">
                         <property name="label" translatable="yes">Flat Response</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
+                        <signal name="clicked" handler="on_eq_flat_response_button_clicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -2353,11 +2354,12 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton">
+                      <object class="GtkButton" id="eq_reset_freqs_button">
                         <property name="label" translatable="yes">Reset Frequencies</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
+                        <signal name="clicked" handler="on_eq_reset_freqs_button_clicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -2365,11 +2367,12 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton">
+                      <object class="GtkButton" id="eq_reset_qfactors_button">
                         <property name="label" translatable="yes">Reset Q Factors</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
+                        <signal name="clicked" handler="on_eq_reset_qfactors_button_clicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">2</property>

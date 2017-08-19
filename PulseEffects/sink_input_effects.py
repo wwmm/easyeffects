@@ -610,7 +610,7 @@ class SinkInputEffects(SinkInputPipeline):
         self.ui_equalizer_output_gain.set_value(equalizer_output_gain_user)
         self.apply_eq_preset(self.eq_band_user)
 
-        self.init_eq_ui()
+        self.init_eq_freq_and_qfactors()
 
         # we need this when on value changed is not called
 
@@ -620,7 +620,7 @@ class SinkInputEffects(SinkInputPipeline):
         value_linear = 10**(equalizer_output_gain_user / 20)
         self.equalizer_output_gain.set_property('volume', value_linear)
 
-    def init_eq_ui(self):
+    def init_eq_freq_and_qfactors(self):
         self.eq_freqs = self.settings.get_value('equalizer-freqs').unpack()
         self.eq_qfactors = self.settings.get_value(
             'equalizer-qfactors').unpack()
@@ -656,6 +656,55 @@ class SinkInputEffects(SinkInputPipeline):
         self.ui_eq_band12_qfactor.set_text(str(self.eq_qfactors[12]))
         self.ui_eq_band13_qfactor.set_text(str(self.eq_qfactors[13]))
         self.ui_eq_band14_qfactor.set_text(str(self.eq_qfactors[14]))
+
+        # pipeline
+
+        self.eq_band0.set_property('freq', self.eq_freqs[0])
+        self.eq_band1.set_property('freq', self.eq_freqs[1])
+        self.eq_band2.set_property('freq', self.eq_freqs[2])
+        self.eq_band3.set_property('freq', self.eq_freqs[3])
+        self.eq_band4.set_property('freq', self.eq_freqs[4])
+        self.eq_band5.set_property('freq', self.eq_freqs[5])
+        self.eq_band6.set_property('freq', self.eq_freqs[6])
+        self.eq_band7.set_property('freq', self.eq_freqs[7])
+        self.eq_band8.set_property('freq', self.eq_freqs[8])
+        self.eq_band9.set_property('freq', self.eq_freqs[9])
+        self.eq_band10.set_property('freq', self.eq_freqs[10])
+        self.eq_band11.set_property('freq', self.eq_freqs[11])
+        self.eq_band12.set_property('freq', self.eq_freqs[12])
+        self.eq_band13.set_property('freq', self.eq_freqs[13])
+        self.eq_band14.set_property('freq', self.eq_freqs[14])
+
+        self.eq_band0.set_property('bandwidth',
+                                   self.eq_freqs[0] / self.eq_qfactors[0])
+        self.eq_band1.set_property('bandwidth',
+                                   self.eq_freqs[1] / self.eq_qfactors[1])
+        self.eq_band2.set_property('bandwidth',
+                                   self.eq_freqs[2] / self.eq_qfactors[2])
+        self.eq_band3.set_property('bandwidth',
+                                   self.eq_freqs[3] / self.eq_qfactors[3])
+        self.eq_band4.set_property('bandwidth',
+                                   self.eq_freqs[4] / self.eq_qfactors[4])
+        self.eq_band5.set_property('bandwidth',
+                                   self.eq_freqs[5] / self.eq_qfactors[5])
+        self.eq_band6.set_property('bandwidth',
+                                   self.eq_freqs[6] / self.eq_qfactors[6])
+        self.eq_band7.set_property('bandwidth',
+                                   self.eq_freqs[7] / self.eq_qfactors[7])
+        self.eq_band8.set_property('bandwidth',
+                                   self.eq_freqs[8] / self.eq_qfactors[8])
+        self.eq_band9.set_property('bandwidth',
+                                   self.eq_freqs[9] / self.eq_qfactors[9])
+        self.eq_band10.set_property('bandwidth',
+                                    self.eq_freqs[10] / self.eq_qfactors[10])
+        self.eq_band11.set_property('bandwidth',
+                                    self.eq_freqs[11] / self.eq_qfactors[11])
+        self.eq_band12.set_property('bandwidth',
+                                    self.eq_freqs[12] / self.eq_qfactors[12])
+        self.eq_band13.set_property('bandwidth',
+                                    self.eq_freqs[13] / self.eq_qfactors[13])
+        self.eq_band14.set_property('bandwidth',
+                                    self.eq_freqs[14] / self.eq_qfactors[14])
 
     def apply_limiter_preset(self, values):
         self.ui_limiter_input_gain.set_value(values[0])
@@ -1154,27 +1203,16 @@ class SinkInputEffects(SinkInputPipeline):
         except ValueError:
             pass
 
-    def on_eq_preset_clicked(self, obj):
-        obj_id = Gtk.Buildable.get_name(obj)
+    def on_eq_flat_response_button_clicked(self, obj):
+        self.apply_eq_preset([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 
-        if obj_id == 'equal_loudness_20':
-            value = self.settings.get_value('equalizer-equal-loudness-20')
-            self.apply_eq_preset(value)
-        elif obj_id == 'equal_loudness_40':
-            value = self.settings.get_value('equalizer-equal-loudness-40')
-            self.apply_eq_preset(value)
-        elif obj_id == 'equal_loudness_60':
-            value = self.settings.get_value('equalizer-equal-loudness-60')
-            self.apply_eq_preset(value)
-        elif obj_id == 'equal_loudness_80':
-            value = self.settings.get_value('equalizer-equal-loudness-80')
-            self.apply_eq_preset(value)
-        elif obj_id == 'equal_loudness_100':
-            value = self.settings.get_value('equalizer-equal-loudness-100')
-            self.apply_eq_preset(value)
-        elif obj_id == 'flat':
-            value = self.settings.get_value('equalizer-flat')
-            self.apply_eq_preset(value)
+    def on_eq_reset_freqs_button_clicked(self, obj):
+        self.settings.reset('equalizer-freqs')
+        self.init_eq_freq_and_qfactors()
+
+    def on_eq_reset_qfactors_button_clicked(self, obj):
+        self.settings.reset('equalizer-qfactors')
+        self.init_eq_freq_and_qfactors()
 
     def reset(self):
         self.settings.reset('limiter-user')
