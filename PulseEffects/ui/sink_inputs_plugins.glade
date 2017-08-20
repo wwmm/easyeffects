@@ -692,7 +692,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkSwitch">
+                          <object class="GtkSwitch" id="autovolume_state">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                           </object>

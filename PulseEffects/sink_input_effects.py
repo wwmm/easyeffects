@@ -26,6 +26,16 @@ class SinkInputEffects(EffectsUiBase, SinkInputPipeline):
         EffectsUiBase.__init__(self, '/ui/sink_inputs_plugins.glade',
                                self.settings)
 
+        self.ui_autovolume_state = self.builder.get_object('autovolume_state')
+        self.ui_autovolume_window = self.builder.get_object(
+            'autovolume_window')
+        self.ui_autovolume_target = self.builder.get_object(
+            'autovolume_target')
+        self.ui_autovolume_tolerance = self.builder.get_object(
+            'autovolume_tolerance')
+        self.ui_autovolume_threshold = self.builder.get_object(
+            'autovolume_threshold')
+
         self.builder.connect_signals(self)
 
     def auto_gain(self, max_value):
@@ -340,8 +350,27 @@ class SinkInputEffects(EffectsUiBase, SinkInputPipeline):
 
         return True
 
+    def init_autovolume_ui(self):
+        autovolume_state = self.settings.get_value(
+            'autovolume-state').unpack()
+        autovolume_window = self.settings.get_value(
+            'autovolume-window').unpack()
+        autovolume_target = self.settings.get_value(
+            'autovolume-target').unpack()
+        autovolume_tolerance = self.settings.get_value(
+            'autovolume-tolerance').unpack()
+        autovolume_threshold = self.settings.get_value(
+            'autovolume-threshold').unpack()
+
+        self.ui_autovolume_state.set_state(autovolume_state)
+        self.ui_autovolume_window.set_value(autovolume_window)
+        self.ui_autovolume_target.set_value(autovolume_target)
+        self.ui_autovolume_tolerance.set_value(autovolume_tolerance)
+        self.ui_autovolume_threshold.set_value(autovolume_threshold)
+
     def init_ui(self):
         self.init_limiter_ui()
+        self.init_autovolume_ui()
         self.init_compressor_ui()
         self.init_reverb_ui()
         self.init_highpass_ui()
