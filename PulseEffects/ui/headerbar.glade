@@ -45,7 +45,7 @@
         <property name="sensitive">False</property>
         <property name="can_focus">False</property>
         <property name="valign">center</property>
-        <property name="label" translatable="yes">server info</property>
+        <property name="label">server info</property>
       </object>
       <packing>
         <property name="position">1</property>

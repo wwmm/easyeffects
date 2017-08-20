@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-15 13:25-0300\n"
+"POT-Creation-Date: 2017-08-20 17:19-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,300 +21,312 @@ msgstr ""
 msgid "Audio Effects for Pulseaudio Applications"
 msgstr ""
 
-#: ../PulseEffects/ui/compressor_menu.glade:14
-#: ../PulseEffects/ui/equalizer_menu.glade:320
-#: ../PulseEffects/ui/reverb_menu.glade:15
-msgid "Presets"
-msgstr ""
-
-#: ../PulseEffects/ui/compressor_menu.glade:33
-msgid "No Compression"
-msgstr ""
-
-#: ../PulseEffects/ui/compressor_menu.glade:47
-msgid "Vlc"
-msgstr ""
-
-#: ../PulseEffects/ui/equalizer_menu.glade:40
-msgid "Input Filters"
-msgstr ""
-
-#: ../PulseEffects/ui/equalizer_menu.glade:68
-msgid "Cutoff [Hz]"
-msgstr ""
-
-#: ../PulseEffects/ui/equalizer_menu.glade:95
-#: ../PulseEffects/ui/equalizer_menu.glade:184
-msgid "Poles"
-msgstr ""
-
-#: ../PulseEffects/ui/equalizer_menu.glade:127
-msgid "High Pass"
-msgstr ""
-
-#: ../PulseEffects/ui/equalizer_menu.glade:139
-msgid "Low Pass"
-msgstr ""
-
-#: ../PulseEffects/ui/equalizer_menu.glade:157
-msgid "Cuttoff [Hz]"
-msgstr ""
-
-#: ../PulseEffects/ui/equalizer_menu.glade:227
-msgid "Equal Loudness 20"
-msgstr ""
-
-#: ../PulseEffects/ui/equalizer_menu.glade:241
-msgid "Equal Loudness 40"
-msgstr ""
-
-#: ../PulseEffects/ui/equalizer_menu.glade:255
-msgid "Equal Loudness 60"
-msgstr ""
-
-#: ../PulseEffects/ui/equalizer_menu.glade:269
-msgid "Equal Loudness 80"
-msgstr ""
-
-#: ../PulseEffects/ui/equalizer_menu.glade:283
-msgid "Equal Loudness 100"
-msgstr ""
-
-#: ../PulseEffects/ui/equalizer_menu.glade:297
-msgid "Flat"
-msgstr ""
-
-#: ../PulseEffects/ui/headerbar.glade:81 ../PulseEffects/ui/headerbar.glade:327
-msgid "Auto Volume"
-msgstr ""
-
-#: ../PulseEffects/ui/headerbar.glade:135
+#: ../PulseEffects/ui/headerbar.glade:73
 msgid "Save Preset"
 msgstr ""
 
-#: ../PulseEffects/ui/headerbar.glade:151
+#: ../PulseEffects/ui/headerbar.glade:89
 msgid "Load Preset"
 msgstr ""
 
-#: ../PulseEffects/ui/headerbar.glade:179
-msgid "R"
-msgstr ""
-
-#: ../PulseEffects/ui/headerbar.glade:206
-msgid "L"
-msgstr ""
-
-#: ../PulseEffects/ui/headerbar.glade:231
+#: ../PulseEffects/ui/headerbar.glade:125
 msgid "Latency"
 msgstr ""
 
-#: ../PulseEffects/ui/headerbar.glade:251
+#: ../PulseEffects/ui/headerbar.glade:145
 msgid "buffer-time [ms]"
 msgstr ""
 
-#: ../PulseEffects/ui/headerbar.glade:279
+#: ../PulseEffects/ui/headerbar.glade:173
 msgid "latency-time [ms]"
 msgstr ""
 
-#: ../PulseEffects/ui/headerbar.glade:350
+#: ../PulseEffects/ui/headerbar.glade:234
+msgid "Spectrum"
+msgstr ""
+
+#: ../PulseEffects/ui/headerbar.glade:255
+msgid "Show"
+msgstr ""
+
+#: ../PulseEffects/ui/headerbar.glade:267
+msgid "Points"
+msgstr ""
+
+#: ../PulseEffects/ui/headerbar.glade:328
+msgid "General"
+msgstr ""
+
+#: ../PulseEffects/ui/headerbar.glade:348
+msgid "Settings"
+msgstr ""
+
+#: ../PulseEffects/ui/headerbar.glade:357
+msgid "Reset"
+msgstr ""
+
+#: ../PulseEffects/ui/headerbar.glade:376
+msgid "Use Dark Theme"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:329
+#: ../PulseEffects/ui/source_outputs_plugins.glade:295
+msgid "Input Gain [dB]"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:355
+#: ../PulseEffects/ui/source_outputs_plugins.glade:321
+msgid "Limit [dB]"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:381
+#: ../PulseEffects/ui/source_outputs_plugins.glade:347
+msgid "Release [s]"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:421
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1035
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1439
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2035
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2332
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2629
+#: ../PulseEffects/ui/source_outputs_plugins.glade:387
+#: ../PulseEffects/ui/source_outputs_plugins.glade:944
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1540
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1837
+#: ../PulseEffects/ui/source_outputs_plugins.glade:2134
+msgid "Input"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:522
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:934
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1540
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1934
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2231
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2528
+#: ../PulseEffects/ui/source_outputs_plugins.glade:488
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1045
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1439
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1736
+#: ../PulseEffects/ui/source_outputs_plugins.glade:2033
+msgid "Output"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:623
+#: ../PulseEffects/ui/source_outputs_plugins.glade:589
+msgid "Attenuation"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:695
+msgid "Auto Volume"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:734
 #: ../PulseEffectsCalibration/ui/calibration_mic_plugins.glade:150
 msgid "Window [s]"
 msgstr ""
 
-#: ../PulseEffects/ui/headerbar.glade:362
-msgid "Tolerance [dB]"
-msgstr ""
-
-#: ../PulseEffects/ui/headerbar.glade:432
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:746
 msgid "Target [dB]"
 msgstr ""
 
-#: ../PulseEffects/ui/headerbar.glade:459
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:1863
-#: ../PulseEffects/ui/source_outputs_plugins.glade:1863
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:758
+msgid "Tolerance [dB]"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:770
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1263
+#: ../PulseEffects/ui/source_outputs_plugins.glade:768
 msgid "Threshold [dB]"
 msgstr ""
 
-#: ../PulseEffects/ui/headerbar.glade:513
-msgid "Spectrum"
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:862
+#: ../PulseEffects/ui/source_outputs_plugins.glade:647
+msgid "Input Limiter"
 msgstr ""
 
-#: ../PulseEffects/ui/headerbar.glade:534
-msgid "Show"
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:882
+msgid "L"
 msgstr ""
 
-#: ../PulseEffects/ui/headerbar.glade:546
-msgid "Points"
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:894
+msgid "R"
 msgstr ""
 
-#: ../PulseEffects/ui/headerbar.glade:607
-msgid "General"
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1141
+msgid "Panorama"
 msgstr ""
 
-#: ../PulseEffects/ui/headerbar.glade:627
-msgid "Settings"
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1159
+#: ../PulseEffects/ui/source_outputs_plugins.glade:664
+msgid "rms"
 msgstr ""
 
-#: ../PulseEffects/ui/headerbar.glade:636
-msgid "Reset"
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1175
+#: ../PulseEffects/ui/source_outputs_plugins.glade:680
+msgid "peak"
 msgstr ""
 
-#: ../PulseEffects/ui/headerbar.glade:655
-msgid "Use Dark Theme"
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1209
+#: ../PulseEffects/ui/source_outputs_plugins.glade:714
+msgid "Attack [ms]"
 msgstr ""
 
-#: ../PulseEffects/ui/limiter_menu.glade:11
-msgid "Default"
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1237
+#: ../PulseEffects/ui/source_outputs_plugins.glade:742
+msgid "Release [ms]"
 msgstr ""
 
-#: ../PulseEffects/ui/reverb_menu.glade:35
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1289
+#: ../PulseEffects/ui/source_outputs_plugins.glade:794
+msgid "Ratio [n:1]"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1315
+#: ../PulseEffects/ui/source_outputs_plugins.glade:820
+msgid "Knee [dB]"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1343
+#: ../PulseEffects/ui/source_outputs_plugins.glade:848
+msgid "Makeup [dB]"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1375
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1841
+#: ../PulseEffects/ui/source_outputs_plugins.glade:880
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1346
+msgid "Presets"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1395
+#: ../PulseEffects/ui/source_outputs_plugins.glade:900
+msgid "No Compression"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1409
+#: ../PulseEffects/ui/source_outputs_plugins.glade:914
+msgid "Vlc"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1641
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1146
+msgid "Gain Reduction"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1699
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1204
+msgid "Compressor"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1722
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1227
+msgid "Room Size"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1750
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1255
+msgid "Damping"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1778
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1283
+msgid "Width"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1806
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1311
+msgid "Level"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1862
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1367
 msgid "Cathedral"
 msgstr ""
 
-#: ../PulseEffects/ui/reverb_menu.glade:49
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1876
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1381
 msgid "Engine Room"
 msgstr ""
 
-#: ../PulseEffects/ui/reverb_menu.glade:63
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1890
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1395
 msgid "No Reverberation"
 msgstr ""
 
-#: ../PulseEffects/ui/reverb_menu.glade:77
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1904
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1409
 msgid "Small Room"
 msgstr ""
 
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:271
-#: ../PulseEffects/ui/source_outputs_plugins.glade:271
-msgid "Equalizer"
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2141
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1646
+msgid "Reverberation"
 msgstr ""
 
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:747
-#: ../PulseEffects/ui/source_outputs_plugins.glade:747
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2165
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2462
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1670
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1967
+msgid "Cutoff [Hz]"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2192
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2489
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1697
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1994
+msgid "Poles"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2438
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1943
+msgid "High Pass"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2735
+#: ../PulseEffects/ui/source_outputs_plugins.glade:2240
+msgid "Low Pass"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2755
+#: ../PulseEffects/ui/source_outputs_plugins.glade:2260
+msgid "Flat Response"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2768
+#: ../PulseEffects/ui/source_outputs_plugins.glade:2273
+msgid "Reset Frequencies"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2781
+#: ../PulseEffects/ui/source_outputs_plugins.glade:2286
+msgid "Reset Q Factors"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:3154
+#: ../PulseEffects/ui/source_outputs_plugins.glade:2659
+msgid "F"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:3168
+#: ../PulseEffects/ui/source_outputs_plugins.glade:2673
+msgid "Q"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:3663
+#: ../PulseEffects/ui/source_outputs_plugins.glade:3168
 #: ../PulseEffectsCalibration/ui/calibration_mic_plugins.glade:777
 msgid "Input [dB]"
 msgstr ""
 
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:760
-#: ../PulseEffects/ui/source_outputs_plugins.glade:760
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:3676
+#: ../PulseEffects/ui/source_outputs_plugins.glade:3181
 msgid "Output [dB]"
 msgstr ""
 
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:1000
-#: ../PulseEffects/ui/source_outputs_plugins.glade:1000
-msgid "Input Limiter"
-msgstr ""
-
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:1045
-#: ../PulseEffects/ui/source_outputs_plugins.glade:1045
-msgid "Input Gain [dB]"
-msgstr ""
-
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:1072
-#: ../PulseEffects/ui/source_outputs_plugins.glade:1072
-msgid "Limit [dB]"
-msgstr ""
-
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:1099
-#: ../PulseEffects/ui/source_outputs_plugins.glade:1099
-msgid "Release [s]"
-msgstr ""
-
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:1126
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:1655
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:2092
-#: ../PulseEffects/ui/source_outputs_plugins.glade:1126
-#: ../PulseEffects/ui/source_outputs_plugins.glade:1655
-#: ../PulseEffects/ui/source_outputs_plugins.glade:2092
-msgid "Input"
-msgstr ""
-
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:1226
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:1555
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:2192
-#: ../PulseEffects/ui/source_outputs_plugins.glade:1226
-#: ../PulseEffects/ui/source_outputs_plugins.glade:1555
-#: ../PulseEffects/ui/source_outputs_plugins.glade:2192
-msgid "Output"
-msgstr ""
-
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:1326
-#: ../PulseEffects/ui/source_outputs_plugins.glade:1326
-msgid "Attenuation"
-msgstr ""
-
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:1402
-#: ../PulseEffects/ui/source_outputs_plugins.glade:1402
-msgid "Reverberation"
-msgstr ""
-
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:1447
-#: ../PulseEffects/ui/source_outputs_plugins.glade:1447
-msgid "Room Size"
-msgstr ""
-
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:1474
-#: ../PulseEffects/ui/source_outputs_plugins.glade:1474
-msgid "Damping"
-msgstr ""
-
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:1501
-#: ../PulseEffects/ui/source_outputs_plugins.glade:1501
-msgid "Width"
-msgstr ""
-
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:1528
-#: ../PulseEffects/ui/source_outputs_plugins.glade:1528
-msgid "Level"
-msgstr ""
-
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:1813
-#: ../PulseEffects/ui/source_outputs_plugins.glade:1813
-msgid "Compressor"
-msgstr ""
-
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:1890
-#: ../PulseEffects/ui/source_outputs_plugins.glade:1890
-msgid "Release [ms]"
-msgstr ""
-
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:1917
-#: ../PulseEffects/ui/source_outputs_plugins.glade:1917
-msgid "Attack [ms]"
-msgstr ""
-
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:1946
-#: ../PulseEffects/ui/source_outputs_plugins.glade:1946
-msgid "rms"
-msgstr ""
-
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:1962
-#: ../PulseEffects/ui/source_outputs_plugins.glade:1962
-msgid "peak"
-msgstr ""
-
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:1989
-#: ../PulseEffects/ui/source_outputs_plugins.glade:1989
-msgid "Sensing Type"
-msgstr ""
-
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:2001
-#: ../PulseEffects/ui/source_outputs_plugins.glade:2001
-msgid "Ratio [n:1]"
-msgstr ""
-
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:2039
-#: ../PulseEffects/ui/source_outputs_plugins.glade:2039
-msgid "Knee [dB]"
-msgstr ""
-
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:2065
-#: ../PulseEffects/ui/source_outputs_plugins.glade:2065
-msgid "Makeup [dB]"
-msgstr ""
-
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:2292
-#: ../PulseEffects/ui/source_outputs_plugins.glade:2292
-msgid "Gain Reduction"
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:3875
+#: ../PulseEffects/ui/source_outputs_plugins.glade:3380
+msgid "Equalizer"
 msgstr ""
 
 #: ../PulseEffectsCalibration/ui/about.glade:11
