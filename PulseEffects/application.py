@@ -99,7 +99,6 @@ class Application(Gtk.Application):
             'on_show_spectrum_state_set': self.on_show_spectrum_state_set,
             'on_spectrum_n_points_value_changed':
                 self.on_spectrum_n_points_value_changed,
-            'on_panorama_value_changed': self.on_panorama_value_changed,
             'on_save_user_preset_clicked': self.on_save_user_preset_clicked,
             'on_load_user_preset_clicked': self.on_load_user_preset_clicked,
             'on_theme_switch_state_set': self.on_theme_switch_state_set,
@@ -116,15 +115,17 @@ class Application(Gtk.Application):
         self.init_settings_menu()
         self.init_buffer_time()
         self.init_latency_time()
-        self.init_panorama_widgets()
         self.init_spectrum_widgets()
-        self.init_sink_inputs_widgets()
-        self.init_source_outputs_widgets()
+
+        self.list_sink_inputs = ListSinkInputs(self.sie, self.pm)
+        self.list_sink_inputs.init()
+
+        self.list_source_outputs = ListSourceOutputs(self.soe, self.pm)
+        self.list_source_outputs.init()
 
         self.sie.init_ui()
         self.soe.init_ui()
 
-        # init stack widgets
         self.init_stack_widgets()
 
         # connecting signals
@@ -191,19 +192,19 @@ class Application(Gtk.Application):
         stack_switcher = self.builder.get_object('stack_switcher')
         stack_box = self.builder.get_object('stack_box')
 
-        stack = Gtk.Stack()
-        stack.set_transition_type(Gtk.StackTransitionType.CROSSFADE)
-        stack.set_transition_duration(250)
-        stack.set_homogeneous(False)
+        self.stack = Gtk.Stack()
+        self.stack.set_transition_type(Gtk.StackTransitionType.CROSSFADE)
+        self.stack.set_transition_duration(250)
+        self.stack.set_homogeneous(False)
 
-        stack.add_named(self.sie.ui_window, 'sink_inputs')
+        self.stack.add_named(self.sie.ui_window, 'sink_inputs')
 
-        stack.child_set_property(self.sie.ui_window, 'icon-name',
-                                 'audio-speakers-symbolic')
+        self.stack.child_set_property(self.sie.ui_window, 'icon-name',
+                                      'audio-speakers-symbolic')
 
-        stack.add_named(self.soe.ui_window, "source_outputs")
-        stack.child_set_property(self.soe.ui_window, 'icon-name',
-                                 'audio-input-microphone-symbolic')
+        self.stack.add_named(self.soe.ui_window, "source_outputs")
+        self.stack.child_set_property(self.soe.ui_window, 'icon-name',
+                                      'audio-input-microphone-symbolic')
 
         self.stack_current_child_name = 'sink_inputs'
 
@@ -231,22 +232,12 @@ class Application(Gtk.Application):
 
             self.spectrum.clear()
 
-        stack.connect("notify::visible-child", on_visible_child_changed)
+        self.stack.connect("notify::visible-child", on_visible_child_changed)
 
-        stack_switcher.set_stack(stack)
+        stack_switcher.set_stack(self.stack)
 
-        stack_box.pack_start(stack, True, True, 0)
+        stack_box.pack_start(self.stack, True, True, 0)
         stack_box.show_all()
-
-    def init_sink_inputs_widgets(self):
-        self.list_sink_inputs = ListSinkInputs(self.sie, self.pm)
-
-        self.list_sink_inputs.init()
-
-    def init_source_outputs_widgets(self):
-        self.list_source_outputs = ListSourceOutputs(self.soe, self.pm)
-
-        self.list_source_outputs.init()
 
     def init_settings_menu(self):
         button = self.builder.get_object('settings_popover_button')
@@ -351,27 +342,9 @@ class Application(Gtk.Application):
         self.sie.set_spectrum_n_points(value)
         self.soe.set_spectrum_n_points(value)
 
-    def init_panorama_widgets(self):
-        value = self.sie.settings.get_value('panorama').unpack()
-
-        self.panorama = self.builder.get_object('panorama')
-
-        self.panorama.set_value(value)
-
-        self.sie.set_panorama(value)
-
-    def on_panorama_value_changed(self, obj):
-        value = obj.get_value()
-
-        self.sie.set_panorama(value)
-
-        out = GLib.Variant('d', value)
-        self.sie.settings.set_value('panorama', out)
-
     def on_reset_all_settings_clicked(self, obj):
         self.settings.reset('buffer-time')
         self.settings.reset('latency-time')
-        self.settings.reset('panorama')
         self.settings.reset('show-spectrum')
         self.settings.reset('spectrum-n-points')
         self.settings.reset('use-dark-theme')
@@ -379,8 +352,9 @@ class Application(Gtk.Application):
         self.init_theme()
         self.init_buffer_time()
         self.init_latency_time()
-        self.init_panorama_widgets()
         self.init_spectrum_widgets()
+
+        self.stack.set_visible_child(self.sie.ui_window)
 
         self.sie.reset()
         self.soe.reset()
@@ -399,9 +373,9 @@ class Application(Gtk.Application):
                                   'limit': str(limiter[1]),
                                   'release time': str(limiter[2])}
 
-        panorama = self.sie.settings.get_value('panorama')
+        panorama_position = self.sie.settings.get_value('panorama-position')
 
-        config['apps_panorama'] = {'panorama': str(panorama)}
+        config['apps_panorama'] = {'position': str(panorama_position)}
 
         compressor = self.sie.settings.get_value('compressor-user')
 
@@ -622,8 +596,7 @@ class Application(Gtk.Application):
     def load_sink_inputs_preset(self, config):
         settings = self.sie.settings
 
-        autovolume_state = self.settings.get_value(
-            'autovolume-state').unpack()
+        autovolume_state = settings.get_value('autovolume-state').unpack()
 
         if autovolume_state is False:
             limiter = dict(config['apps_limiter']).values()
@@ -631,10 +604,8 @@ class Application(Gtk.Application):
 
             settings.set_value('limiter-user', GLib.Variant('ad', limiter))
 
-        panorama_value = config.getfloat('apps_panorama', 'panorama',
-                                         fallback=0.0)
-
-        self.panorama.set_value(panorama_value)
+        panorama_position = config.getfloat('apps_panorama', 'position',
+                                            fallback=0.0)
 
         compressor = dict(config['apps_compressor']).values()
         compressor = [float(v) for v in compressor]
@@ -759,6 +730,9 @@ class Application(Gtk.Application):
                        eq_band6_qfactor, eq_band7_qfactor, eq_band8_qfactor,
                        eq_band9_qfactor, eq_band10_qfactor, eq_band11_qfactor,
                        eq_band12_qfactor, eq_band13_qfactor, eq_band14_qfactor]
+
+        settings.set_value('panorama-position',
+                           GLib.Variant('d', panorama_position))
 
         settings.set_value('compressor-user', GLib.Variant('ad', compressor))
 

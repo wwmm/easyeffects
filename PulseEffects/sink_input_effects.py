@@ -37,6 +37,26 @@ class SinkInputEffects(EffectsUiBase, SinkInputPipeline):
         self.ui_autovolume_threshold = self.builder.get_object(
             'autovolume_threshold')
 
+        self.ui_panorama = self.builder.get_object('panorama_position')
+
+        self.ui_panorama_input_level_left = self.builder.get_object(
+            'panorama_input_level_left')
+        self.ui_panorama_input_level_right = self.builder.get_object(
+            'panorama_input_level_right')
+        self.ui_panorama_output_level_left = self.builder.get_object(
+            'panorama_output_level_left')
+        self.ui_panorama_output_level_right = self.builder.get_object(
+            'panorama_output_level_right')
+
+        self.ui_panorama_input_level_left_label = self.builder.get_object(
+            'panorama_input_level_left_label')
+        self.ui_panorama_input_level_right_label = self.builder.get_object(
+            'panorama_input_level_right_label')
+        self.ui_panorama_output_level_left_label = self.builder.get_object(
+            'panorama_output_level_left_label')
+        self.ui_panorama_output_level_right_label = self.builder.get_object(
+            'panorama_output_level_right_label')
+
         self.builder.connect_signals(self)
 
         self.connect('new_autovolume', self.on_new_autovolume)
@@ -95,17 +115,17 @@ class SinkInputEffects(EffectsUiBase, SinkInputPipeline):
                 self.ui_limiter_output_level_left_label.set_text(
                     str(round(left)))
 
-                # compressor input
-                self.ui_compressor_input_level_left.set_value(l_value)
-                self.ui_compressor_input_level_left_label.set_text(
+                # panorama input
+                self.ui_panorama_input_level_left.set_value(l_value)
+                self.ui_panorama_input_level_left_label.set_text(
                     str(round(left)))
             else:
                 self.ui_limiter_output_level_left.set_value(0)
                 self.ui_limiter_output_level_left_label.set_text('-99')
 
-                # compressor input
-                self.ui_compressor_input_level_left.set_value(0)
-                self.ui_compressor_input_level_left_label.set_text('-99')
+                # panorama input
+                self.ui_panorama_input_level_left.set_value(0)
+                self.ui_panorama_input_level_left_label.set_text('-99')
 
             if right >= -99:
                 r_value = 10**(right / 20)
@@ -113,17 +133,17 @@ class SinkInputEffects(EffectsUiBase, SinkInputPipeline):
                 self.ui_limiter_output_level_right_label.set_text(
                     str(round(right)))
 
-                # compressor input
-                self.ui_compressor_input_level_right.set_value(r_value)
-                self.ui_compressor_input_level_right_label.set_text(
+                # panorama input
+                self.ui_panorama_input_level_right.set_value(r_value)
+                self.ui_panorama_input_level_right_label.set_text(
                     str(round(left)))
             else:
                 self.ui_limiter_output_level_right.set_value(0)
                 self.ui_limiter_output_level_right_label.set_text('-99')
 
-                # compressor input
-                self.ui_compressor_input_level_right.set_value(0)
-                self.ui_compressor_input_level_right_label.set_text('-99')
+                # panorama input
+                self.ui_panorama_input_level_right.set_value(0)
+                self.ui_panorama_input_level_right_label.set_text('-99')
 
             attenuation = round(self.limiter.get_property('attenuation'))
 
@@ -141,7 +161,46 @@ class SinkInputEffects(EffectsUiBase, SinkInputPipeline):
 
                 if max_value > self.autovolume_threshold:
                     self.auto_gain(max_value)
+        elif plugin == 'panorama_output_level':
+            peak = msg.get_structure().get_value('peak')
 
+            left, right = peak[0], peak[1]
+
+            if left >= -99:
+                l_value = 10**(left / 20)
+                self.ui_panorama_output_level_left.set_value(l_value)
+                self.ui_panorama_output_level_left_label.set_text(
+                    str(round(left)))
+
+                # compressor input
+                self.ui_compressor_input_level_left.set_value(l_value)
+                self.ui_compressor_input_level_left_label.set_text(
+                    str(round(left)))
+            else:
+                self.ui_panorama_output_level_left.set_value(0)
+                self.ui_panorama_output_level_left_label.set_text('-99')
+
+                # compressor input
+                self.ui_compressor_input_level_left.set_value(0)
+                self.ui_compressor_input_level_left_label.set_text('-99')
+
+            if right >= -99:
+                r_value = 10**(right / 20)
+                self.ui_panorama_output_level_right.set_value(r_value)
+                self.ui_panorama_output_level_right_label.set_text(
+                    str(round(right)))
+
+                # compressor input
+                self.ui_compressor_input_level_right.set_value(r_value)
+                self.ui_compressor_input_level_right_label.set_text(
+                    str(round(left)))
+            else:
+                self.ui_panorama_output_level_right.set_value(0)
+                self.ui_panorama_output_level_right_label.set_text('-99')
+
+                # compressor input
+                self.ui_compressor_input_level_right.set_value(0)
+                self.ui_compressor_input_level_right_label.set_text('-99')
         elif plugin == 'compressor_output_level':
             peak = msg.get_structure().get_value('peak')
 
@@ -374,9 +433,17 @@ class SinkInputEffects(EffectsUiBase, SinkInputPipeline):
         if self.autovolume_enabled:
             self.enable_autovolume(True)
 
+    def init_panorama_ui(self):
+        panorama = self.settings.get_value('panorama-position').unpack()
+
+        self.ui_panorama.set_value(panorama)
+
+        self.panorama.set_property('panorama', panorama)
+
     def init_ui(self):
         self.init_limiter_ui()
         self.init_autovolume_ui()
+        self.init_panorama_ui()
         self.init_compressor_ui()
         self.init_reverb_ui()
         self.init_highpass_ui()
@@ -408,9 +475,6 @@ class SinkInputEffects(EffectsUiBase, SinkInputPipeline):
 
         out = GLib.Variant('b', state)
         self.settings.set_value('autovolume-state', out)
-
-    def set_panorama(self, value):
-        self.panorama.set_property('panorama', value)
 
     def on_autovolume_enable_state_set(self, obj, state):
         self.enable_autovolume(state)
@@ -461,6 +525,14 @@ class SinkInputEffects(EffectsUiBase, SinkInputPipeline):
     def on_new_autovolume(self, obj, gain):
         self.ui_limiter_input_gain.set_value(gain)
 
+    def on_panorama_position_value_changed(self, obj):
+        value = obj.get_value()
+
+        self.panorama.set_property('panorama', value)
+
+        out = GLib.Variant('d', value)
+        self.settings.set_value('panorama-position', out)
+
     def on_eq_flat_response_button_clicked(self, obj):
         self.apply_eq_preset([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 
@@ -479,6 +551,7 @@ class SinkInputEffects(EffectsUiBase, SinkInputPipeline):
         self.settings.reset('autovolume-target')
         self.settings.reset('autovolume-tolerance')
         self.settings.reset('autovolume-threshold')
+        self.settings.reset('panorama-position')
         self.settings.reset('compressor-user')
         self.settings.reset('reverb-user')
         self.settings.reset('highpass-cutoff')

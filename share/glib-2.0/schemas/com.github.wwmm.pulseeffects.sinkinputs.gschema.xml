@@ -24,7 +24,7 @@
           <default>-50</default>
         </key>
 
-        <key name="panorama" type="d">
+        <key name="panorama-position" type="d">
           <default>0.0</default>
         </key>
 

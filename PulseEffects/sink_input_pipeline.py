@@ -22,9 +22,12 @@ class SinkInputPipeline(PipelineBase):
         self.build_pipeline()
 
     def build_pipeline(self):
+        self.autovolume_level = Gst.ElementFactory.make('level', 'autovolume')
+
         self.panorama = Gst.ElementFactory.make('audiopanorama', None)
 
-        self.autovolume_level = Gst.ElementFactory.make('level', 'autovolume')
+        self.panorama_output_level = Gst.ElementFactory.make(
+            'level', 'panorama_output_level')
 
         self.panorama.set_property('method', 'psychoacoustic')
 
@@ -35,6 +38,7 @@ class SinkInputPipeline(PipelineBase):
         self.pipeline.add(self.limiter_output_level)
         self.pipeline.add(self.autovolume_level)
         self.pipeline.add(self.panorama)
+        self.pipeline.add(self.panorama_output_level)
         self.pipeline.add(self.compressor)
         self.pipeline.add(self.compressor_output_level)
         self.pipeline.add(self.freeverb)
@@ -58,7 +62,8 @@ class SinkInputPipeline(PipelineBase):
         self.limiter.link(self.limiter_output_level)
         self.limiter_output_level.link(self.autovolume_level)
         self.autovolume_level.link(self.panorama)
-        self.panorama.link(self.compressor)
+        self.panorama.link(self.panorama_output_level)
+        self.panorama_output_level.link(self.compressor)
         self.compressor.link(self.compressor_output_level)
         self.compressor_output_level.link(self.freeverb)
         self.freeverb.link(self.reverb_output_level)
