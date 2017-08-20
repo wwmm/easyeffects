@@ -99,16 +99,6 @@ class Application(Gtk.Application):
             'on_show_spectrum_state_set': self.on_show_spectrum_state_set,
             'on_spectrum_n_points_value_changed':
                 self.on_spectrum_n_points_value_changed,
-            'on_autovolume_enable_state_set':
-                self.on_autovolume_enable_state_set,
-            'on_autovolume_window_value_changed':
-                self.on_autovolume_window_value_changed,
-            'on_autovolume_target_value_changed':
-                self.on_autovolume_target_value_changed,
-            'on_autovolume_tolerance_value_changed':
-                self.on_autovolume_tolerance_value_changed,
-            'on_autovolume_threshold_value_changed':
-                self.on_autovolume_threshold_value_changed,
             'on_panorama_value_changed': self.on_panorama_value_changed,
             'on_save_user_preset_clicked': self.on_save_user_preset_clicked,
             'on_load_user_preset_clicked': self.on_load_user_preset_clicked,
@@ -133,14 +123,11 @@ class Application(Gtk.Application):
 
         self.sie.init_ui()
         self.soe.init_ui()
-        self.init_autovolume_widgets()
 
         # init stack widgets
         self.init_stack_widgets()
 
         # connecting signals
-
-        self.sie.connect('new_autovolume', self.on_new_autovolume)
 
         # this connection is changed inside the stack switch handler
         # depending on the selected child. The connection below is not
@@ -363,117 +350,6 @@ class Application(Gtk.Application):
 
         self.sie.set_spectrum_n_points(value)
         self.soe.set_spectrum_n_points(value)
-
-    def init_autovolume_widgets(self):
-        autovolume_state_obj = self.builder.get_object('autovolume_state')
-        autovolume_window_obj = self.builder.get_object('autovolume_window')
-        autovolume_target_obj = self.builder.get_object('autovolume_target')
-        autovolume_tolerance_obj = self.builder.get_object(
-            'autovolume_tolerance')
-        autovolume_threshold_obj = self.builder.get_object(
-            'autovolume_threshold')
-
-        autovolume_state = self.settings.get_value(
-            'autovolume-state').unpack()
-        autovolume_window = self.settings.get_value(
-            'autovolume-window').unpack()
-        autovolume_target = self.settings.get_value(
-            'autovolume-target').unpack()
-        autovolume_tolerance = self.settings.get_value(
-            'autovolume-tolerance').unpack()
-        autovolume_threshold = self.settings.get_value(
-            'autovolume-threshold').unpack()
-
-        autovolume_state_obj.set_state(autovolume_state)
-        autovolume_window_obj.set_value(autovolume_window)
-        autovolume_target_obj.set_value(autovolume_target)
-        autovolume_tolerance_obj.set_value(autovolume_tolerance)
-        autovolume_threshold_obj.set_value(autovolume_threshold)
-
-        self.sie.set_autovolume_window(autovolume_window)
-        self.sie.autovolume_target = autovolume_target
-        self.sie.autovolume_tolerance = autovolume_tolerance
-        self.sie.autovolume_threshold = autovolume_threshold
-
-        if autovolume_state:
-            self.enable_autovolume(True)
-
-    def enable_autovolume(self, state):
-        self.sie.set_autovolume_state(state)
-
-        if state:
-            window = self.settings.get_value('autovolume-window').unpack()
-            target = self.settings.get_value('autovolume-target').unpack()
-            tolerance = self.settings.get_value(
-                'autovolume-tolerance').unpack()
-
-            self.sie.ui_limiter_input_gain.set_value(-10)
-            self.sie.ui_limiter_limit.set_value(target + tolerance)
-            self.sie.ui_limiter_release_time.set_value(window)
-
-            self.sie.ui_limiter_input_gain.set_sensitive(False)
-            self.sie.ui_limiter_limit.set_sensitive(False)
-            self.sie.ui_limiter_release_time.set_sensitive(False)
-        else:
-            self.sie.ui_limiter_input_gain.set_value(-10)
-            self.sie.ui_limiter_limit.set_value(0)
-            self.sie.ui_limiter_release_time.set_value(1.0)
-
-            self.sie.ui_limiter_input_gain.set_sensitive(True)
-            self.sie.ui_limiter_limit.set_sensitive(True)
-            self.sie.ui_limiter_release_time.set_sensitive(True)
-
-        out = GLib.Variant('b', state)
-        self.settings.set_value('autovolume-state', out)
-
-    def on_autovolume_enable_state_set(self, obj, state):
-        self.enable_autovolume(state)
-
-    def on_autovolume_window_value_changed(self, obj):
-        value = obj.get_value()
-
-        self.sie.set_autovolume_window(value)
-
-        self.sie.ui_limiter_release_time.set_value(value)
-
-        out = GLib.Variant('d', value)
-        self.settings.set_value('autovolume-window', out)
-
-    def on_autovolume_target_value_changed(self, obj):
-        value = obj.get_value()
-
-        self.sie.autovolume_target = value
-
-        tolerance = self.settings.get_value(
-            'autovolume-tolerance').unpack()
-
-        self.sie.ui_limiter_limit.set_value(value + tolerance)
-
-        out = GLib.Variant('i', value)
-        self.settings.set_value('autovolume-target', out)
-
-    def on_autovolume_tolerance_value_changed(self, obj):
-        value = obj.get_value()
-
-        self.sie.autovolume_tolerance = value
-
-        target = self.settings.get_value('autovolume-target').unpack()
-
-        self.sie.ui_limiter_limit.set_value(target + value)
-
-        out = GLib.Variant('i', value)
-        self.settings.set_value('autovolume-tolerance', out)
-
-    def on_autovolume_threshold_value_changed(self, obj):
-        value = obj.get_value()
-
-        self.sie.autovolume_threshold = value
-
-        out = GLib.Variant('i', value)
-        self.settings.set_value('autovolume-threshold', out)
-
-    def on_new_autovolume(self, obj, gain):
-        self.sie.ui_limiter_input_gain.set_value(gain)
 
     def init_panorama_widgets(self):
         value = self.sie.settings.get_value('panorama').unpack()

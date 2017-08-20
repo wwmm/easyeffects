@@ -7,23 +7,27 @@
     <property name="upper">-4</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_autovolume_target_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="autovolume_threshold">
     <property name="lower">-99</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_autovolume_threshold_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="autovolume_tolerance">
     <property name="lower">1</property>
     <property name="upper">4</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_autovolume_tolerance_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="autovolume_window">
     <property name="lower">0.01</property>
     <property name="upper">2</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.10000000000000001</property>
+    <signal name="value-changed" handler="on_autovolume_window_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="compressor_attack">
     <property name="lower">1.5</property>
@@ -692,9 +696,10 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkSwitch" id="autovolume_state">
+                          <object class="GtkSwitch" id="autovolume_enable">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
+                            <signal name="state-set" handler="on_autovolume_enable_state_set" swapped="no"/>
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
