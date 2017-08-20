@@ -111,6 +111,8 @@ class Application(Gtk.Application):
 
         # main window widgets initialization
 
+        self.server_info_label = self.builder.get_object('server_info_label')
+
         self.init_theme()
         self.init_settings_menu()
         self.init_buffer_time()
@@ -208,6 +210,11 @@ class Application(Gtk.Application):
 
         self.stack_current_child_name = 'sink_inputs'
 
+        server_info = str(self.pm.default_sink_format) + ', ' + \
+            str(round(self.pm.default_sink_rate / 1000.0, 1)) + ' kHz'
+
+        self.server_info_label.set_text(server_info)
+
         def on_visible_child_changed(stack, visible_child):
             name = stack.get_visible_child_name()
 
@@ -220,6 +227,11 @@ class Application(Gtk.Application):
                                                             .on_new_spectrum)
 
                 self.stack_current_child_name = 'sink_inputs'
+
+                server_info = str(self.pm.default_sink_format) + ', ' + \
+                    str(round(self.pm.default_sink_rate / 1000.0, 1)) + ' kHz'
+
+                self.server_info_label.set_text(server_info)
             elif name == 'source_outputs':
                 if self.stack_current_child_name == 'sink_inputs':
                     self.sie.disconnect(self.spectrum_handler_id)
@@ -229,6 +241,12 @@ class Application(Gtk.Application):
                                                             .on_new_spectrum)
 
                 self.stack_current_child_name = 'source_outputs'
+
+                server_info = str(self.pm.default_source_format) + ', ' + \
+                    str(round(self.pm.default_source_rate / 1000.0, 1)) + \
+                    ' kHz'
+
+                self.server_info_label.set_text(server_info)
 
             self.spectrum.clear()
 
