@@ -19,7 +19,7 @@ class SourceOutputEffects(EffectsUiBase, SourceOutputPipeline):
             'com.github.wwmm.pulseeffects.sourceoutputs')
 
         SourceOutputPipeline.__init__(self, sampling_rate)
-        EffectsUiBase.__init__(self, '/ui/sink_inputs_plugins.glade',
+        EffectsUiBase.__init__(self, '/ui/source_outputs_plugins.glade',
                                self.settings)
 
         self.builder.connect_signals(self)

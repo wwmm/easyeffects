@@ -513,6 +513,7 @@ class Application(Gtk.Application):
         self.init_spectrum_widgets()
 
         self.sie.reset()
+        self.soe.reset()
 
         self.setup_soe_limiter.reset()
         self.setup_soe_compressor.reset()
