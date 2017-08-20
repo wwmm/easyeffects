@@ -515,11 +515,6 @@ class Application(Gtk.Application):
         self.sie.reset()
         self.soe.reset()
 
-        self.setup_soe_limiter.reset()
-        self.setup_soe_compressor.reset()
-        self.setup_soe_reverb.reset()
-        self.setup_soe_equalizer.reset()
-
     def add_file_filter(self, dialog):
         file_filter = Gtk.FileFilter()
         file_filter.set_name("preset")
@@ -555,25 +550,21 @@ class Application(Gtk.Application):
                                  'width': str(reverb[2]),
                                  'level': str(reverb[3])}
 
-        equalizer_highpass_cutoff = self.sie.settings.get_value(
-            'highpass-cutoff')
-        equalizer_highpass_poles = self.sie.settings.get_value(
-            'highpass-poles')
+        highpass_cutoff = self.sie.settings.get_value('highpass-cutoff')
+        highpass_poles = self.sie.settings.get_value('highpass-poles')
 
         config['apps_highpass'] = {'cutoff':
-                                   str(equalizer_highpass_cutoff),
+                                   str(highpass_cutoff),
                                    'poles':
-                                   str(equalizer_highpass_poles)}
+                                   str(highpass_poles)}
 
-        equalizer_lowpass_cutoff = self.sie.settings.get_value(
-            'lowpass-cutoff')
-        equalizer_lowpass_poles = self.sie.settings.get_value(
-            'lowpass-poles')
+        lowpass_cutoff = self.sie.settings.get_value('lowpass-cutoff')
+        lowpass_poles = self.sie.settings.get_value('lowpass-poles')
 
         config['apps_lowpass'] = {'cutoff':
-                                  str(equalizer_lowpass_cutoff),
+                                  str(lowpass_cutoff),
                                   'poles':
-                                  str(equalizer_lowpass_poles)}
+                                  str(lowpass_poles)}
 
         equalizer_input_gain = self.sie.settings.get_value(
             'equalizer-input-gain')
@@ -600,13 +591,13 @@ class Application(Gtk.Application):
                                     'band14': str(equalizer[14])}
 
     def store_source_outputs_preset(self, config):
-        limiter = self.settings_soe.get_value('limiter-user')
+        limiter = self.soe.settings.get_value('limiter-user')
 
         config['mic_limiter'] = {'input gain': str(limiter[0]),
                                  'limit': str(limiter[1]),
                                  'release time': str(limiter[2])}
 
-        compressor = self.settings_soe.get_value('compressor-user')
+        compressor = self.soe.settings.get_value('compressor-user')
 
         config['mic_compressor'] = {'rms-peak': str(compressor[0]),
                                     'attack': str(compressor[1]),
@@ -616,26 +607,34 @@ class Application(Gtk.Application):
                                     'knee': str(compressor[5]),
                                     'makeup': str(compressor[6])}
 
-        reverb = self.settings_soe.get_value('reverb-user')
+        reverb = self.soe.settings.get_value('reverb-user')
 
         config['mic_reverb'] = {'room size': str(reverb[0]),
                                 'damping': str(reverb[1]),
                                 'width': str(reverb[2]),
                                 'level': str(reverb[3])}
 
-        equalizer_input_gain = self.settings_soe.get_value(
+        highpass_cutoff = self.soe.settings.get_value('highpass-cutoff')
+        highpass_poles = self.soe.settings.get_value('highpass-poles')
+
+        config['mic_highpass'] = {'cutoff':
+                                  str(highpass_cutoff),
+                                  'poles':
+                                  str(highpass_poles)}
+
+        lowpass_cutoff = self.soe.settings.get_value('lowpass-cutoff')
+        lowpass_poles = self.soe.settings.get_value('lowpass-poles')
+
+        config['mic_lowpass'] = {'cutoff':
+                                 str(lowpass_cutoff),
+                                 'poles':
+                                 str(lowpass_poles)}
+
+        equalizer_input_gain = self.soe.settings.get_value(
             'equalizer-input-gain')
-        equalizer_output_gain = self.settings_soe.get_value(
+        equalizer_output_gain = self.soe.settings.get_value(
             'equalizer-output-gain')
-        equalizer = self.settings_soe.get_value('equalizer-user')
-        equalizer_highpass_cutoff = self.settings_soe.get_value(
-            'equalizer-highpass-cutoff')
-        equalizer_highpass_poles = self.settings_soe.get_value(
-            'equalizer-highpass-poles')
-        equalizer_lowpass_cutoff = self.settings_soe.get_value(
-            'equalizer-lowpass-cutoff')
-        equalizer_lowpass_poles = self.settings_soe.get_value(
-            'equalizer-lowpass-poles')
+        equalizer = self.soe.settings.get_value('equalizer-user')
 
         config['mic_equalizer'] = {'input_gain': str(equalizer_input_gain),
                                    'output_gain': str(equalizer_output_gain),
@@ -653,15 +652,7 @@ class Application(Gtk.Application):
                                    'band11': str(equalizer[11]),
                                    'band12': str(equalizer[12]),
                                    'band13': str(equalizer[13]),
-                                   'band14': str(equalizer[14]),
-                                   'highpass_cutoff':
-                                   str(equalizer_highpass_cutoff),
-                                   'highpass_poles':
-                                   str(equalizer_highpass_poles),
-                                   'lowpass_cutoff':
-                                   str(equalizer_lowpass_cutoff),
-                                   'lowpass_poles':
-                                   str(equalizer_lowpass_poles)}
+                                   'band14': str(equalizer[14])}
 
     def on_save_user_preset_clicked(self, obj):
         dialog = Gtk.FileChooserDialog('', self.window,
@@ -774,15 +765,15 @@ class Application(Gtk.Application):
     def load_source_outputs_preset(self, config):
         limiter = dict(config['mic_limiter']).values()
         limiter = [float(v) for v in limiter]
-        self.setup_soe_limiter.apply_limiter_preset(limiter)
+        self.soe.apply_limiter_preset(limiter)
 
         compressor = dict(config['mic_compressor']).values()
         compressor = [float(v) for v in compressor]
-        self.setup_soe_compressor.apply_compressor_preset(compressor)
+        self.soe.apply_compressor_preset(compressor)
 
         reverb = dict(config['mic_reverb']).values()
         reverb = [float(v) for v in reverb]
-        self.setup_soe_reverb.apply_reverb_preset(reverb)
+        self.soe.apply_reverb_preset(reverb)
 
         equalizer_input_gain = config.getfloat('mic_equalizer', 'input_gain',
                                                fallback=0)
@@ -790,17 +781,17 @@ class Application(Gtk.Application):
                                                 'output_gain',
                                                 fallback=0)
 
-        highpass_cutoff_freq = config.getint('mic_equalizer',
-                                             'highpass_cutoff',
-                                             fallback=20)
+        highpass_cutoff = config.getint('mic_equalizer',
+                                        'cutoff',
+                                        fallback=20)
         highpass_poles = config.getint('mic_equalizer',
-                                       'highpass_poles',
+                                       'poles',
                                        fallback=4)
-        lowpass_cutoff_freq = config.getint('mic_equalizer',
-                                            'lowpass_cutoff',
-                                            fallback=20000)
+        lowpass_cutoff = config.getint('mic_equalizer',
+                                       'cutoff',
+                                       fallback=20000)
         lowpass_poles = config.getint('mic_equalizer',
-                                      'lowpass_poles',
+                                      'poles',
                                       fallback=4)
 
         equalizer_band0 = config.getfloat('mic_equalizer', 'band0')
@@ -825,24 +816,19 @@ class Application(Gtk.Application):
                            equalizer_band6, equalizer_band7,
                            equalizer_band8, equalizer_band9,
                            equalizer_band10, equalizer_band11,
-                           equalizer_band12,
-                           equalizer_band13, equalizer_band14]
+                           equalizer_band12, equalizer_band13,
+                           equalizer_band14]
 
-        self.setup_soe_equalizer.equalizer_input_gain.set_value(
-            equalizer_input_gain)
-        self.setup_soe_equalizer.equalizer_output_gain.set_value(
-            equalizer_output_gain)
+        self.soe.ui_equalizer_input_gain.set_value(equalizer_input_gain)
+        self.soe.ui_equalizer_output_gain.set_value(equalizer_output_gain)
 
-        self.setup_soe_equalizer.apply_eq_preset(equalizer_bands)
+        self.soe.apply_eq_preset(equalizer_bands)
 
-        self.setup_soe_equalizer.eq_highpass_cutoff_freq.set_value(
-            highpass_cutoff_freq)
-        self.setup_soe_equalizer.eq_highpass_poles.set_value(
-            highpass_poles)
+        self.soe.ui_highpass_cutoff.set_value(highpass_cutoff)
+        self.soe.ui_highpass_poles.set_value(highpass_poles)
 
-        self.setup_soe_equalizer.eq_lowpass_cutoff_freq.set_value(
-            lowpass_cutoff_freq)
-        self.setup_soe_equalizer.eq_lowpass_poles.set_value(lowpass_poles)
+        self.soe.ui_lowpass_cutoff.set_value(lowpass_cutoff)
+        self.soe.ui_lowpass_poles.set_value(lowpass_poles)
 
     def on_load_user_preset_clicked(self, obj):
         dialog = Gtk.FileChooserDialog('', self.window,
