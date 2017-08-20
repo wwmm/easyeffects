@@ -371,11 +371,6 @@ class Application(Gtk.Application):
     def on_reset_all_settings_clicked(self, obj):
         self.settings.reset('buffer-time')
         self.settings.reset('latency-time')
-        self.settings.reset('autovolume-state')
-        self.settings.reset('autovolume-window')
-        self.settings.reset('autovolume-target')
-        self.settings.reset('autovolume-tolerance')
-        self.settings.reset('autovolume-threshold')
         self.settings.reset('panorama')
         self.settings.reset('show-spectrum')
         self.settings.reset('spectrum-n-points')
@@ -384,7 +379,6 @@ class Application(Gtk.Application):
         self.init_theme()
         self.init_buffer_time()
         self.init_latency_time()
-        self.init_autovolume_widgets()
         self.init_panorama_widgets()
         self.init_spectrum_widgets()
 

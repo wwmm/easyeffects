@@ -383,16 +383,7 @@ class SinkInputEffects(EffectsUiBase, SinkInputPipeline):
         self.init_lowpass_ui()
         self.init_equalizer_ui()
 
-    def set_autovolume_state(self, value):
-        self.autovolume_enabled = value
-
-    def set_autovolume_window(self, value):
-        # value must be in seconds
-        self.autovolume_level.set_property('interval', int(value * 1000000000))
-
     def enable_autovolume(self, state):
-        self.set_autovolume_state(state)
-
         if state:
             window = self.settings.get_value('autovolume-window').unpack()
             target = self.settings.get_value('autovolume-target').unpack()
@@ -427,7 +418,8 @@ class SinkInputEffects(EffectsUiBase, SinkInputPipeline):
     def on_autovolume_window_value_changed(self, obj):
         value = obj.get_value()
 
-        self.set_autovolume_window(value)
+        # value must be in seconds
+        self.autovolume_level.set_property('interval', int(value * 1000000000))
 
         self.ui_limiter_release_time.set_value(value)
 
@@ -482,6 +474,11 @@ class SinkInputEffects(EffectsUiBase, SinkInputPipeline):
 
     def reset(self):
         self.settings.reset('limiter-user')
+        self.settings.reset('autovolume-state')
+        self.settings.reset('autovolume-window')
+        self.settings.reset('autovolume-target')
+        self.settings.reset('autovolume-tolerance')
+        self.settings.reset('autovolume-threshold')
         self.settings.reset('compressor-user')
         self.settings.reset('reverb-user')
         self.settings.reset('highpass-cutoff')
