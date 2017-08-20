@@ -571,6 +571,8 @@ class Application(Gtk.Application):
         equalizer_output_gain = self.sie.settings.get_value(
             'equalizer-output-gain')
         equalizer = self.sie.settings.get_value('equalizer-user')
+        eq_freqs = self.sie.settings.get_value('equalizer-freqs')
+        eq_qfactors = self.sie.settings.get_value('equalizer-qfactors')
 
         config['apps_equalizer'] = {'input_gain': str(equalizer_input_gain),
                                     'output_gain': str(equalizer_output_gain),
@@ -588,7 +590,37 @@ class Application(Gtk.Application):
                                     'band11': str(equalizer[11]),
                                     'band12': str(equalizer[12]),
                                     'band13': str(equalizer[13]),
-                                    'band14': str(equalizer[14])}
+                                    'band14': str(equalizer[14]),
+                                    'band0_freq': str(eq_freqs[0]),
+                                    'band1_freq': str(eq_freqs[1]),
+                                    'band2_freq': str(eq_freqs[2]),
+                                    'band3_freq': str(eq_freqs[3]),
+                                    'band4_freq': str(eq_freqs[4]),
+                                    'band5_freq': str(eq_freqs[5]),
+                                    'band6_freq': str(eq_freqs[6]),
+                                    'band7_freq': str(eq_freqs[7]),
+                                    'band8_freq': str(eq_freqs[8]),
+                                    'band9_freq': str(eq_freqs[9]),
+                                    'band10_freq': str(eq_freqs[10]),
+                                    'band11_freq': str(eq_freqs[11]),
+                                    'band12_freq': str(eq_freqs[12]),
+                                    'band13_freq': str(eq_freqs[13]),
+                                    'band14_freq': str(eq_freqs[14]),
+                                    'band0_qfactor': str(eq_qfactors[0]),
+                                    'band1_qfactor': str(eq_qfactors[1]),
+                                    'band2_qfactor': str(eq_qfactors[2]),
+                                    'band3_qfactor': str(eq_qfactors[3]),
+                                    'band4_qfactor': str(eq_qfactors[4]),
+                                    'band5_qfactor': str(eq_qfactors[5]),
+                                    'band6_qfactor': str(eq_qfactors[6]),
+                                    'band7_qfactor': str(eq_qfactors[7]),
+                                    'band8_qfactor': str(eq_qfactors[8]),
+                                    'band9_qfactor': str(eq_qfactors[9]),
+                                    'band10_qfactor': str(eq_qfactors[10]),
+                                    'band11_qfactor': str(eq_qfactors[11]),
+                                    'band12_qfactor': str(eq_qfactors[12]),
+                                    'band13_qfactor': str(eq_qfactors[13]),
+                                    'band14_qfactor': str(eq_qfactors[14])}
 
     def store_source_outputs_preset(self, config):
         limiter = self.soe.settings.get_value('limiter-user')
@@ -635,6 +667,8 @@ class Application(Gtk.Application):
         equalizer_output_gain = self.soe.settings.get_value(
             'equalizer-output-gain')
         equalizer = self.soe.settings.get_value('equalizer-user')
+        eq_freqs = self.soe.settings.get_value('equalizer-freqs')
+        eq_qfactors = self.soe.settings.get_value('equalizer-qfactors')
 
         config['mic_equalizer'] = {'input_gain': str(equalizer_input_gain),
                                    'output_gain': str(equalizer_output_gain),
@@ -652,7 +686,37 @@ class Application(Gtk.Application):
                                    'band11': str(equalizer[11]),
                                    'band12': str(equalizer[12]),
                                    'band13': str(equalizer[13]),
-                                   'band14': str(equalizer[14])}
+                                   'band14': str(equalizer[14]),
+                                   'band0_freq': str(eq_freqs[0]),
+                                   'band1_freq': str(eq_freqs[1]),
+                                   'band2_freq': str(eq_freqs[2]),
+                                   'band3_freq': str(eq_freqs[3]),
+                                   'band4_freq': str(eq_freqs[4]),
+                                   'band5_freq': str(eq_freqs[5]),
+                                   'band6_freq': str(eq_freqs[6]),
+                                   'band7_freq': str(eq_freqs[7]),
+                                   'band8_freq': str(eq_freqs[8]),
+                                   'band9_freq': str(eq_freqs[9]),
+                                   'band10_freq': str(eq_freqs[10]),
+                                   'band11_freq': str(eq_freqs[11]),
+                                   'band12_freq': str(eq_freqs[12]),
+                                   'band13_freq': str(eq_freqs[13]),
+                                   'band14_freq': str(eq_freqs[14]),
+                                   'band0_qfactor': str(eq_qfactors[0]),
+                                   'band1_qfactor': str(eq_qfactors[1]),
+                                   'band2_qfactor': str(eq_qfactors[2]),
+                                   'band3_qfactor': str(eq_qfactors[3]),
+                                   'band4_qfactor': str(eq_qfactors[4]),
+                                   'band5_qfactor': str(eq_qfactors[5]),
+                                   'band6_qfactor': str(eq_qfactors[6]),
+                                   'band7_qfactor': str(eq_qfactors[7]),
+                                   'band8_qfactor': str(eq_qfactors[8]),
+                                   'band9_qfactor': str(eq_qfactors[9]),
+                                   'band10_qfactor': str(eq_qfactors[10]),
+                                   'band11_qfactor': str(eq_qfactors[11]),
+                                   'band12_qfactor': str(eq_qfactors[12]),
+                                   'band13_qfactor': str(eq_qfactors[13]),
+                                   'band14_qfactor': str(eq_qfactors[14])}
 
     def on_save_user_preset_clicked(self, obj):
         dialog = Gtk.FileChooserDialog('', self.window,
@@ -686,13 +750,16 @@ class Application(Gtk.Application):
         dialog.destroy()
 
     def load_sink_inputs_preset(self, config):
+        settings = self.sie.settings
+
         autovolume_state = self.settings.get_value(
             'autovolume-state').unpack()
 
         if autovolume_state is False:
             limiter = dict(config['apps_limiter']).values()
             limiter = [float(v) for v in limiter]
-            self.sie.apply_limiter_preset(limiter)
+
+            settings.set_value('limiter-user', GLib.Variant('ad', limiter))
 
         panorama_value = config.getfloat('apps_panorama', 'panorama',
                                          fallback=0.0)
@@ -701,17 +768,9 @@ class Application(Gtk.Application):
 
         compressor = dict(config['apps_compressor']).values()
         compressor = [float(v) for v in compressor]
-        self.sie.apply_compressor_preset(compressor)
 
         reverb = dict(config['apps_reverb']).values()
         reverb = [float(v) for v in reverb]
-        self.sie.apply_reverb_preset(reverb)
-
-        equalizer_input_gain = config.getfloat('apps_equalizer', 'input_gain',
-                                               fallback=0)
-        equalizer_output_gain = config.getfloat('apps_equalizer',
-                                                'output_gain',
-                                                fallback=0)
 
         highpass_cutoff = config.getint('apps_highpass',
                                         'cutoff',
@@ -725,6 +784,12 @@ class Application(Gtk.Application):
         lowpass_poles = config.getint('apps_lowpass',
                                       'poles',
                                       fallback=4)
+
+        equalizer_input_gain = config.getfloat('apps_equalizer', 'input_gain',
+                                               fallback=0)
+        equalizer_output_gain = config.getfloat('apps_equalizer',
+                                                'output_gain',
+                                                fallback=0)
 
         equalizer_band0 = config.getfloat('apps_equalizer', 'band0')
         equalizer_band1 = config.getfloat('apps_equalizer', 'band1')
@@ -742,6 +807,68 @@ class Application(Gtk.Application):
         equalizer_band13 = config.getfloat('apps_equalizer', 'band13')
         equalizer_band14 = config.getfloat('apps_equalizer', 'band14')
 
+        eq_band0_freq = config.getfloat('apps_equalizer', 'band0_freq',
+                                        fallback=26)
+        eq_band1_freq = config.getfloat('apps_equalizer', 'band1_freq',
+                                        fallback=41)
+        eq_band2_freq = config.getfloat('apps_equalizer', 'band2_freq',
+                                        fallback=65)
+        eq_band3_freq = config.getfloat('apps_equalizer', 'band3_freq',
+                                        fallback=103)
+        eq_band4_freq = config.getfloat('apps_equalizer', 'band4_freq',
+                                        fallback=163)
+        eq_band5_freq = config.getfloat('apps_equalizer', 'band5_freq',
+                                        fallback=259)
+        eq_band6_freq = config.getfloat('apps_equalizer', 'band6_freq',
+                                        fallback=410)
+        eq_band7_freq = config.getfloat('apps_equalizer', 'band7_freq',
+                                        fallback=649)
+        eq_band8_freq = config.getfloat('apps_equalizer', 'band8_freq',
+                                        fallback=1029)
+        eq_band9_freq = config.getfloat('apps_equalizer', 'band9_freq',
+                                        fallback=1631)
+        eq_band10_freq = config.getfloat('apps_equalizer', 'band10_freq',
+                                         fallback=2585)
+        eq_band11_freq = config.getfloat('apps_equalizer', 'band11_freq',
+                                         fallback=4097)
+        eq_band12_freq = config.getfloat('apps_equalizer', 'band12_freq',
+                                         fallback=6493)
+        eq_band13_freq = config.getfloat('apps_equalizer', 'band13_freq',
+                                         fallback=10291)
+        eq_band14_freq = config.getfloat('apps_equalizer', 'band14_freq',
+                                         fallback=16310)
+
+        eq_band0_qfactor = config.getfloat('apps_equalizer', 'band0_qfactor',
+                                           fallback=2.21)
+        eq_band1_qfactor = config.getfloat('apps_equalizer', 'band1_qfactor',
+                                           fallback=2.21)
+        eq_band2_qfactor = config.getfloat('apps_equalizer', 'band2_qfactor',
+                                           fallback=2.21)
+        eq_band3_qfactor = config.getfloat('apps_equalizer', 'band3_qfactor',
+                                           fallback=2.21)
+        eq_band4_qfactor = config.getfloat('apps_equalizer', 'band4_qfactor',
+                                           fallback=2.21)
+        eq_band5_qfactor = config.getfloat('apps_equalizer', 'band5_qfactor',
+                                           fallback=2.21)
+        eq_band6_qfactor = config.getfloat('apps_equalizer', 'band6_qfactor',
+                                           fallback=2.21)
+        eq_band7_qfactor = config.getfloat('apps_equalizer', 'band7_qfactor',
+                                           fallback=2.21)
+        eq_band8_qfactor = config.getfloat('apps_equalizer', 'band8_qfactor',
+                                           fallback=2.21)
+        eq_band9_qfactor = config.getfloat('apps_equalizer', 'band9_qfactor',
+                                           fallback=2.21)
+        eq_band10_qfactor = config.getfloat('apps_equalizer', 'band10_qfactor',
+                                            fallback=2.21)
+        eq_band11_qfactor = config.getfloat('apps_equalizer', 'band11_qfactor',
+                                            fallback=2.21)
+        eq_band12_qfactor = config.getfloat('apps_equalizer', 'band12_qfactor',
+                                            fallback=2.21)
+        eq_band13_qfactor = config.getfloat('apps_equalizer', 'band13_qfactor',
+                                            fallback=2.21)
+        eq_band14_qfactor = config.getfloat('apps_equalizer', 'band14_qfactor',
+                                            fallback=2.21)
+
         equalizer_bands = [equalizer_band0, equalizer_band1,
                            equalizer_band2, equalizer_band3,
                            equalizer_band4, equalizer_band5,
@@ -751,35 +878,56 @@ class Application(Gtk.Application):
                            equalizer_band12, equalizer_band13,
                            equalizer_band14]
 
-        self.sie.ui_equalizer_input_gain.set_value(equalizer_input_gain)
-        self.sie.ui_equalizer_output_gain.set_value(equalizer_output_gain)
+        eq_freqs = [eq_band0_freq, eq_band1_freq, eq_band2_freq, eq_band3_freq,
+                    eq_band4_freq, eq_band5_freq, eq_band6_freq, eq_band7_freq,
+                    eq_band8_freq, eq_band9_freq, eq_band10_freq,
+                    eq_band11_freq, eq_band12_freq, eq_band13_freq,
+                    eq_band14_freq]
 
-        self.sie.apply_eq_preset(equalizer_bands)
+        eq_qfactors = [eq_band0_qfactor, eq_band1_qfactor, eq_band2_qfactor,
+                       eq_band3_qfactor, eq_band4_qfactor, eq_band5_qfactor,
+                       eq_band6_qfactor, eq_band7_qfactor, eq_band8_qfactor,
+                       eq_band9_qfactor, eq_band10_qfactor, eq_band11_qfactor,
+                       eq_band12_qfactor, eq_band13_qfactor, eq_band14_qfactor]
 
-        self.sie.ui_highpass_cutoff.set_value(highpass_cutoff)
-        self.sie.ui_highpass_poles.set_value(highpass_poles)
+        settings.set_value('compressor-user', GLib.Variant('ad', compressor))
 
-        self.sie.ui_lowpass_cutoff.set_value(lowpass_cutoff)
-        self.sie.ui_lowpass_poles.set_value(lowpass_poles)
+        settings.set_value('reverb-user', GLib.Variant('ad', reverb))
+
+        settings.set_value('highpass-cutoff',
+                           GLib.Variant('i', highpass_cutoff))
+        settings.set_value('highpass-poles',
+                           GLib.Variant('i', highpass_poles))
+
+        settings.set_value('lowpass-cutoff',
+                           GLib.Variant('i', lowpass_cutoff))
+        settings.set_value('lowpass-poles',
+                           GLib.Variant('i', lowpass_poles))
+
+        settings.set_value('equalizer-input-gain',
+                           GLib.Variant('d', equalizer_input_gain))
+        settings.set_value('equalizer-output-gain',
+                           GLib.Variant('d', equalizer_output_gain))
+        settings.set_value('equalizer-user',
+                           GLib.Variant('ad', equalizer_bands))
+        settings.set_value('equalizer-freqs',
+                           GLib.Variant('ad', eq_freqs))
+        settings.set_value('equalizer-qfactors',
+                           GLib.Variant('ad', eq_qfactors))
+
+        self.sie.init_ui()
 
     def load_source_outputs_preset(self, config):
+        settings = self.soe.settings
+
         limiter = dict(config['mic_limiter']).values()
         limiter = [float(v) for v in limiter]
-        self.soe.apply_limiter_preset(limiter)
 
         compressor = dict(config['mic_compressor']).values()
         compressor = [float(v) for v in compressor]
-        self.soe.apply_compressor_preset(compressor)
 
         reverb = dict(config['mic_reverb']).values()
         reverb = [float(v) for v in reverb]
-        self.soe.apply_reverb_preset(reverb)
-
-        equalizer_input_gain = config.getfloat('mic_equalizer', 'input_gain',
-                                               fallback=0)
-        equalizer_output_gain = config.getfloat('mic_equalizer',
-                                                'output_gain',
-                                                fallback=0)
 
         highpass_cutoff = config.getint('mic_equalizer',
                                         'cutoff',
@@ -793,6 +941,12 @@ class Application(Gtk.Application):
         lowpass_poles = config.getint('mic_equalizer',
                                       'poles',
                                       fallback=4)
+
+        equalizer_input_gain = config.getfloat('mic_equalizer', 'input_gain',
+                                               fallback=0)
+        equalizer_output_gain = config.getfloat('mic_equalizer',
+                                                'output_gain',
+                                                fallback=0)
 
         equalizer_band0 = config.getfloat('mic_equalizer', 'band0')
         equalizer_band1 = config.getfloat('mic_equalizer', 'band1')
@@ -810,6 +964,68 @@ class Application(Gtk.Application):
         equalizer_band13 = config.getfloat('mic_equalizer', 'band13')
         equalizer_band14 = config.getfloat('mic_equalizer', 'band14')
 
+        eq_band0_freq = config.getfloat('mic_equalizer', 'band0_freq',
+                                        fallback=26)
+        eq_band1_freq = config.getfloat('mic_equalizer', 'band1_freq',
+                                        fallback=41)
+        eq_band2_freq = config.getfloat('mic_equalizer', 'band2_freq',
+                                        fallback=65)
+        eq_band3_freq = config.getfloat('mic_equalizer', 'band3_freq',
+                                        fallback=103)
+        eq_band4_freq = config.getfloat('mic_equalizer', 'band4_freq',
+                                        fallback=163)
+        eq_band5_freq = config.getfloat('mic_equalizer', 'band5_freq',
+                                        fallback=259)
+        eq_band6_freq = config.getfloat('mic_equalizer', 'band6_freq',
+                                        fallback=410)
+        eq_band7_freq = config.getfloat('mic_equalizer', 'band7_freq',
+                                        fallback=649)
+        eq_band8_freq = config.getfloat('mic_equalizer', 'band8_freq',
+                                        fallback=1029)
+        eq_band9_freq = config.getfloat('mic_equalizer', 'band9_freq',
+                                        fallback=1631)
+        eq_band10_freq = config.getfloat('mic_equalizer', 'band10_freq',
+                                         fallback=2585)
+        eq_band11_freq = config.getfloat('mic_equalizer', 'band11_freq',
+                                         fallback=4097)
+        eq_band12_freq = config.getfloat('mic_equalizer', 'band12_freq',
+                                         fallback=6493)
+        eq_band13_freq = config.getfloat('mic_equalizer', 'band13_freq',
+                                         fallback=10291)
+        eq_band14_freq = config.getfloat('mic_equalizer', 'band14_freq',
+                                         fallback=16310)
+
+        eq_band0_qfactor = config.getfloat('mic_equalizer', 'band0_qfactor',
+                                           fallback=2.21)
+        eq_band1_qfactor = config.getfloat('mic_equalizer', 'band1_qfactor',
+                                           fallback=2.21)
+        eq_band2_qfactor = config.getfloat('mic_equalizer', 'band2_qfactor',
+                                           fallback=2.21)
+        eq_band3_qfactor = config.getfloat('mic_equalizer', 'band3_qfactor',
+                                           fallback=2.21)
+        eq_band4_qfactor = config.getfloat('mic_equalizer', 'band4_qfactor',
+                                           fallback=2.21)
+        eq_band5_qfactor = config.getfloat('mic_equalizer', 'band5_qfactor',
+                                           fallback=2.21)
+        eq_band6_qfactor = config.getfloat('mic_equalizer', 'band6_qfactor',
+                                           fallback=2.21)
+        eq_band7_qfactor = config.getfloat('mic_equalizer', 'band7_qfactor',
+                                           fallback=2.21)
+        eq_band8_qfactor = config.getfloat('mic_equalizer', 'band8_qfactor',
+                                           fallback=2.21)
+        eq_band9_qfactor = config.getfloat('mic_equalizer', 'band9_qfactor',
+                                           fallback=2.21)
+        eq_band10_qfactor = config.getfloat('mic_equalizer', 'band10_qfactor',
+                                            fallback=2.21)
+        eq_band11_qfactor = config.getfloat('mic_equalizer', 'band11_qfactor',
+                                            fallback=2.21)
+        eq_band12_qfactor = config.getfloat('mic_equalizer', 'band12_qfactor',
+                                            fallback=2.21)
+        eq_band13_qfactor = config.getfloat('mic_equalizer', 'band13_qfactor',
+                                            fallback=2.21)
+        eq_band14_qfactor = config.getfloat('mic_equalizer', 'band14_qfactor',
+                                            fallback=2.21)
+
         equalizer_bands = [equalizer_band0, equalizer_band1,
                            equalizer_band2, equalizer_band3,
                            equalizer_band4, equalizer_band5,
@@ -819,16 +1035,46 @@ class Application(Gtk.Application):
                            equalizer_band12, equalizer_band13,
                            equalizer_band14]
 
-        self.soe.ui_equalizer_input_gain.set_value(equalizer_input_gain)
-        self.soe.ui_equalizer_output_gain.set_value(equalizer_output_gain)
+        eq_freqs = [eq_band0_freq, eq_band1_freq, eq_band2_freq, eq_band3_freq,
+                    eq_band4_freq, eq_band5_freq, eq_band6_freq, eq_band7_freq,
+                    eq_band8_freq, eq_band9_freq, eq_band10_freq,
+                    eq_band11_freq, eq_band12_freq, eq_band13_freq,
+                    eq_band14_freq]
 
-        self.soe.apply_eq_preset(equalizer_bands)
+        eq_qfactors = [eq_band0_qfactor, eq_band1_qfactor, eq_band2_qfactor,
+                       eq_band3_qfactor, eq_band4_qfactor, eq_band5_qfactor,
+                       eq_band6_qfactor, eq_band7_qfactor, eq_band8_qfactor,
+                       eq_band9_qfactor, eq_band10_qfactor, eq_band11_qfactor,
+                       eq_band12_qfactor, eq_band13_qfactor, eq_band14_qfactor]
 
-        self.soe.ui_highpass_cutoff.set_value(highpass_cutoff)
-        self.soe.ui_highpass_poles.set_value(highpass_poles)
+        settings.set_value('limiter-user', GLib.Variant('ad', limiter))
 
-        self.soe.ui_lowpass_cutoff.set_value(lowpass_cutoff)
-        self.soe.ui_lowpass_poles.set_value(lowpass_poles)
+        settings.set_value('compressor-user', GLib.Variant('ad', compressor))
+
+        settings.set_value('reverb-user', GLib.Variant('ad', reverb))
+
+        settings.set_value('highpass-cutoff',
+                           GLib.Variant('i', highpass_cutoff))
+        settings.set_value('highpass-poles',
+                           GLib.Variant('i', highpass_poles))
+
+        settings.set_value('lowpass-cutoff',
+                           GLib.Variant('i', lowpass_cutoff))
+        settings.set_value('lowpass-poles',
+                           GLib.Variant('i', lowpass_poles))
+
+        settings.set_value('equalizer-input-gain',
+                           GLib.Variant('d', equalizer_input_gain))
+        settings.set_value('equalizer-output-gain',
+                           GLib.Variant('d', equalizer_output_gain))
+        settings.set_value('equalizer-user',
+                           GLib.Variant('ad', equalizer_bands))
+        settings.set_value('equalizer-freqs',
+                           GLib.Variant('ad', eq_freqs))
+        settings.set_value('equalizer-qfactors',
+                           GLib.Variant('ad', eq_qfactors))
+
+        self.soe.init_ui()
 
     def on_load_user_preset_clicked(self, obj):
         dialog = Gtk.FileChooserDialog('', self.window,
