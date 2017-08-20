@@ -24,7 +24,7 @@ for lang in langs:
 
 
 setup(name='PulseEffects',
-      version='2.3.0',
+      version='2.3.1',
       description='Audio effects for Pulseaudio applications',
       url='https://github.com/wwmm/PulseEffects',
       author='wwmm',

@@ -451,6 +451,8 @@ class SinkInputEffects(EffectsUiBase, SinkInputPipeline):
         self.init_equalizer_ui()
 
     def enable_autovolume(self, state):
+        self.autovolume_enabled = state
+
         if state:
             window = self.settings.get_value('autovolume-window').unpack()
             target = self.settings.get_value('autovolume-target').unpack()

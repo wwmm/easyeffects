@@ -7,7 +7,7 @@
     <property name="modal">True</property>
     <property name="type_hint">dialog</property>
     <property name="program_name">PulseEffects Calibration</property>
-    <property name="version">2.3.0</property>
+    <property name="version">2.3.1</property>
     <property name="comments" translatable="yes">Test Signals for Headphone and Speakers Calibration</property>
     <property name="authors">wellington wallace</property>
     <property name="logo">about_icon.png</property>
