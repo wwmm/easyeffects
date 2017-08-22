@@ -62,3 +62,7 @@ Required libraries:
 - [swh-plugins](https://github.com/swh/ladspa) from Ladspa
 
 See the wiki: [Installing from Source](https://github.com/wwmm/pulseeffects/wiki/Installation-from-Source), for detailed instructions.
+
+## Translating PulseEffects
+
+See the wiki: [Translating PulseEffects](https://github.com/wwmm/pulseeffects/wiki/Translating-PulseEffects), for detailed instructions.
