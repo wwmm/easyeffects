@@ -84,6 +84,11 @@ class TestSignal(GObject.GObject):
         self.audio_sink.set_property('volume', 1.0)
         self.audio_sink.set_property('mute', False)
 
+        pa_props_str = 'props,application.name=PulseEffectsCalibration'
+        pa_props = Gst.Structure.new_from_string(pa_props_str)
+
+        self.audio_sink.set_property('stream-properties', pa_props)
+
         self.audio_src1.set_property('wave', 'sine')
         self.audio_src2.set_property('wave', 'pink-noise')
 
