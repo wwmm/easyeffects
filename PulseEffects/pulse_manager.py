@@ -20,7 +20,13 @@ class PulseManager(GObject.GObject):
         'source_output_changed': (GObject.SIGNAL_RUN_FIRST, None,
                                   (object,)),
         'source_output_removed': (GObject.SIGNAL_RUN_FIRST, None,
-                                  (int,))
+                                  (int,)),
+        'source_added': (GObject.SIGNAL_RUN_FIRST, None,
+                         ()),
+        'source_changed': (GObject.SIGNAL_RUN_FIRST, None,
+                           ()),
+        'source_removed': (GObject.SIGNAL_RUN_FIRST, None,
+                           ())
     }
 
     def __init__(self):
@@ -121,7 +127,8 @@ class PulseManager(GObject.GObject):
                                             None)
 
         subscription_mask = p.PA_SUBSCRIPTION_MASK_SINK_INPUT + \
-            p.PA_SUBSCRIPTION_MASK_SOURCE_OUTPUT
+            p.PA_SUBSCRIPTION_MASK_SOURCE_OUTPUT + \
+            p.PA_SUBSCRIPTION_MASK_SOURCE
 
         p.pa_context_subscribe(self.ctx, subscription_mask,
                                self.ctx_success_cb, None)
@@ -585,6 +592,15 @@ class PulseManager(GObject.GObject):
                                                     2)  # 1 for new
             elif event_type == p.PA_SUBSCRIPTION_EVENT_REMOVE:
                 GLib.idle_add(self.emit, 'source_output_removed', idx)
+        elif event_facility == p.PA_SUBSCRIPTION_EVENT_SOURCE:
+            event_type = event_value & p.PA_SUBSCRIPTION_EVENT_TYPE_MASK
+
+            if event_type == p.PA_SUBSCRIPTION_EVENT_NEW:
+                GLib.idle_add(self.emit, 'source_added')
+            elif event_type == p.PA_SUBSCRIPTION_EVENT_CHANGE:
+                GLib.idle_add(self.emit, 'source_changed')
+            elif event_type == p.PA_SUBSCRIPTION_EVENT_REMOVE:
+                GLib.idle_add(self.emit, 'source_removed')
 
     def ctx_success(self, context, success, user_data):
         if not success:
