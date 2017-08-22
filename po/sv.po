@@ -1,0 +1,419 @@
+# Swedish translation of PulseEffects application.
+# Copyright (C) 2017
+# This file is distributed under the same license as the pulseeffects package.
+# Patrik Nilsson <translation_AT_hembas.se>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-20 17:19-0300\n"
+"PO-Revision-Date: 2017-08-22 13:02+0200\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.0.3\n"
+
+#: ../PulseEffects/ui/about.glade:11
+msgid "Audio Effects for Pulseaudio Applications"
+msgstr "Ljudeffekter för PulseAudio applikationer"
+
+#: ../PulseEffects/ui/headerbar.glade:73
+msgid "Save Preset"
+msgstr "Spara förinställning"
+
+#: ../PulseEffects/ui/headerbar.glade:89
+msgid "Load Preset"
+msgstr "Öppna förinställning"
+
+#: ../PulseEffects/ui/headerbar.glade:125
+msgid "Latency"
+msgstr "Latens"
+
+#: ../PulseEffects/ui/headerbar.glade:145
+msgid "buffer-time [ms]"
+msgstr "buffert-tid (ms)"
+
+#: ../PulseEffects/ui/headerbar.glade:173
+msgid "latency-time [ms]"
+msgstr "latens-tid (ms)"
+
+#: ../PulseEffects/ui/headerbar.glade:234
+msgid "Spectrum"
+msgstr "Spektrum"
+
+#: ../PulseEffects/ui/headerbar.glade:255
+msgid "Show"
+msgstr "Visa"
+
+#: ../PulseEffects/ui/headerbar.glade:267
+msgid "Points"
+msgstr "Punkter"
+
+#: ../PulseEffects/ui/headerbar.glade:328
+msgid "General"
+msgstr "Allmänt"
+
+#: ../PulseEffects/ui/headerbar.glade:348
+msgid "Settings"
+msgstr "Inställningar"
+
+#: ../PulseEffects/ui/headerbar.glade:357
+msgid "Reset"
+msgstr "Återställ"
+
+#: ../PulseEffects/ui/headerbar.glade:376
+msgid "Use Dark Theme"
+msgstr "Använd mörkt tema"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:329
+#: ../PulseEffects/ui/source_outputs_plugins.glade:295
+msgid "Input Gain [dB]"
+msgstr "Ingångsförstärkning (dB)"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:355
+#: ../PulseEffects/ui/source_outputs_plugins.glade:321
+msgid "Limit [dB]"
+msgstr "Gränsvärde (dB)"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:381
+#: ../PulseEffects/ui/source_outputs_plugins.glade:347
+msgid "Release [s]"
+msgstr "Release (s)"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:421
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1035
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1439
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2035
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2332
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2629
+#: ../PulseEffects/ui/source_outputs_plugins.glade:387
+#: ../PulseEffects/ui/source_outputs_plugins.glade:944
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1540
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1837
+#: ../PulseEffects/ui/source_outputs_plugins.glade:2134
+msgid "Input"
+msgstr "Ingång"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:522
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:934
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1540
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1934
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2231
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2528
+#: ../PulseEffects/ui/source_outputs_plugins.glade:488
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1045
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1439
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1736
+#: ../PulseEffects/ui/source_outputs_plugins.glade:2033
+msgid "Output"
+msgstr "Utgång"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:623
+#: ../PulseEffects/ui/source_outputs_plugins.glade:589
+msgid "Attenuation"
+msgstr "Försvagning"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:695
+msgid "Auto Volume"
+msgstr "Automatisk volym"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:734
+#: ../PulseEffectsCalibration/ui/calibration_mic_plugins.glade:150
+msgid "Window [s]"
+msgstr "Mellanrum (s)"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:746
+msgid "Target [dB]"
+msgstr "Målvärde (dB)"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:758
+msgid "Tolerance [dB]"
+msgstr "Tolerans (dB)"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:770
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1263
+#: ../PulseEffects/ui/source_outputs_plugins.glade:768
+msgid "Threshold [dB]"
+msgstr "Tröskelvärde (dB)"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:862
+#: ../PulseEffects/ui/source_outputs_plugins.glade:647
+msgid "Input Limiter"
+msgstr "Ingångs-begränsning"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:882
+msgid "L"
+msgstr "V"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:894
+msgid "R"
+msgstr "H"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1141
+msgid "Panorama"
+msgstr "Panorama"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1159
+#: ../PulseEffects/ui/source_outputs_plugins.glade:664
+msgid "rms"
+msgstr "rms"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1175
+#: ../PulseEffects/ui/source_outputs_plugins.glade:680
+msgid "peak"
+msgstr "peak"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1209
+#: ../PulseEffects/ui/source_outputs_plugins.glade:714
+msgid "Attack [ms]"
+msgstr "Attack (ms)"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1237
+#: ../PulseEffects/ui/source_outputs_plugins.glade:742
+msgid "Release [ms]"
+msgstr "Release (ms)"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1289
+#: ../PulseEffects/ui/source_outputs_plugins.glade:794
+msgid "Ratio [n:1]"
+msgstr "Förhållande (n:1)"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1315
+#: ../PulseEffects/ui/source_outputs_plugins.glade:820
+msgid "Knee [dB]"
+msgstr "Knee-värde (dB)"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1343
+#: ../PulseEffects/ui/source_outputs_plugins.glade:848
+msgid "Makeup [dB]"
+msgstr "Makeup (dB)"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1375
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1841
+#: ../PulseEffects/ui/source_outputs_plugins.glade:880
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1346
+msgid "Presets"
+msgstr "Förinställningar"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1395
+#: ../PulseEffects/ui/source_outputs_plugins.glade:900
+msgid "No Compression"
+msgstr "Ingen komprimering"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1409
+#: ../PulseEffects/ui/source_outputs_plugins.glade:914
+msgid "Vlc"
+msgstr "VLc"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1641
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1146
+msgid "Gain Reduction"
+msgstr "Förstärkningsreducering"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1699
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1204
+msgid "Compressor"
+msgstr "Kompressor"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1722
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1227
+msgid "Room Size"
+msgstr "Rumsstorlek"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1750
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1255
+msgid "Damping"
+msgstr "Dämpning"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1778
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1283
+msgid "Width"
+msgstr "Bredd"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1806
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1311
+msgid "Level"
+msgstr "Nivå"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1862
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1367
+msgid "Cathedral"
+msgstr "Katedral"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1876
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1381
+msgid "Engine Room"
+msgstr "Motorrum"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1890
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1395
+msgid "No Reverberation"
+msgstr "Inget eko"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:1904
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1409
+msgid "Small Room"
+msgstr "Litet rum"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2141
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1646
+msgid "Reverberation"
+msgstr "Efterljud (eko)"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2165
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2462
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1670
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1967
+msgid "Cutoff [Hz]"
+msgstr "Cut-off (Hz)"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2192
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2489
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1697
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1994
+msgid "Poles"
+msgstr "Poler"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2438
+#: ../PulseEffects/ui/source_outputs_plugins.glade:1943
+msgid "High Pass"
+msgstr "Högpass"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2735
+#: ../PulseEffects/ui/source_outputs_plugins.glade:2240
+msgid "Low Pass"
+msgstr "Lågpass"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2755
+#: ../PulseEffects/ui/source_outputs_plugins.glade:2260
+msgid "Flat Response"
+msgstr "Platt respons"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2768
+#: ../PulseEffects/ui/source_outputs_plugins.glade:2273
+msgid "Reset Frequencies"
+msgstr "Återställ frekvenserna"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2781
+#: ../PulseEffects/ui/source_outputs_plugins.glade:2286
+msgid "Reset Q Factors"
+msgstr "Återställ Q-faktorer"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:3154
+#: ../PulseEffects/ui/source_outputs_plugins.glade:2659
+msgid "F"
+msgstr "F"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:3168
+#: ../PulseEffects/ui/source_outputs_plugins.glade:2673
+msgid "Q"
+msgstr "Q"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:3663
+#: ../PulseEffects/ui/source_outputs_plugins.glade:3168
+#: ../PulseEffectsCalibration/ui/calibration_mic_plugins.glade:777
+msgid "Input [dB]"
+msgstr "Ljudstyrka (dB) (in)"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:3676
+#: ../PulseEffects/ui/source_outputs_plugins.glade:3181
+msgid "Output [dB]"
+msgstr "Ljudstyrka (dB) (ut)"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:3875
+#: ../PulseEffects/ui/source_outputs_plugins.glade:3380
+msgid "Equalizer"
+msgstr "Utjämnare"
+
+#: ../PulseEffectsCalibration/ui/about.glade:11
+msgid "Test Signals for Headphone and Speakers Calibration"
+msgstr "Test signaler för kalibrering av hörlurar och högtalare"
+
+#: ../PulseEffectsCalibration/ui/calibration_mic_plugins.glade:179
+msgid "Guideline Position"
+msgstr "Riktlinjens position"
+
+#: ../PulseEffectsCalibration/ui/calibration_mic_plugins.glade:227
+msgid "Measure Noise"
+msgstr "Mät brus"
+
+#: ../PulseEffectsCalibration/ui/calibration_mic_plugins.glade:257
+msgid "Subtract Noise"
+msgstr "Ta bort brus"
+
+#: ../PulseEffectsCalibration/ui/calibration_mic_plugins.glade:308
+msgid "Calibration Microphone Correction"
+msgstr "Kalibrering och mikrofon korrigering"
+
+#: ../PulseEffectsCalibration/ui/test_signal.glade:51
+msgid "Sine"
+msgstr "Sinus"
+
+#: ../PulseEffectsCalibration/ui/test_signal.glade:66
+msgid "Square"
+msgstr "Fyrkant"
+
+#: ../PulseEffectsCalibration/ui/test_signal.glade:81
+msgid "Saw"
+msgstr "Sågtand"
+
+#: ../PulseEffectsCalibration/ui/test_signal.glade:96
+msgid "Triangle"
+msgstr "Triangel"
+
+#: ../PulseEffectsCalibration/ui/test_signal.glade:111
+msgid "Pink Noise"
+msgstr "Skärt brus"
+
+#: ../PulseEffectsCalibration/ui/test_signal.glade:126
+msgid "White Noise"
+msgstr "Vitt brus"
+
+#: ../PulseEffectsCalibration/ui/test_signal.glade:141
+msgid "Silence"
+msgstr "Tystnad"
+
+#: ../PulseEffectsCalibration/ui/test_signal.glade:156
+msgid "Sine Table"
+msgstr "Sinustabell"
+
+#: ../PulseEffectsCalibration/ui/test_signal.glade:171
+msgid "Ticks"
+msgstr "Tickande"
+
+#: ../PulseEffectsCalibration/ui/test_signal.glade:186
+msgid "Gaussian Noise"
+msgstr "Gaussiskt brus"
+
+#: ../PulseEffectsCalibration/ui/test_signal.glade:201
+msgid "Red Noise"
+msgstr "Rött brus"
+
+#: ../PulseEffectsCalibration/ui/test_signal.glade:216
+msgid "Blue Noise"
+msgstr "Blått brus"
+
+#: ../PulseEffectsCalibration/ui/test_signal.glade:231
+msgid "Violet Noise"
+msgstr "Violett brus"
+
+#: ../PulseEffectsCalibration/ui/test_signal.glade:270
+msgid "Frequency [Hz]"
+msgstr "Frekvens (Hz)"
+
+#: ../PulseEffectsCalibration/ui/test_signal.glade:315
+#: ../PulseEffectsCalibration/ui/test_signal.glade:658
+msgid "Volume"
+msgstr "Volym"
+
+#: ../PulseEffectsCalibration/ui/test_signal.glade:369
+msgid "Test Signal"
+msgstr "Testsignal"
+
+#: ../PulseEffectsCalibration/ui/test_signal.glade:712
+msgid "Equal Loudness Test Signals"
+msgstr "Testsignaler för jämn ljudnivå"
