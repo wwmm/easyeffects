@@ -4,7 +4,6 @@
   <requires lib="gtk+" version="3.20"/>
   <object class="GtkApplicationWindow" id="MainWindow">
     <property name="can_focus">False</property>
-    <signal name="delete-event" handler="on_MainWindow_delete_event" swapped="no"/>
     <child>
       <object class="GtkGrid">
         <property name="visible">True</property>

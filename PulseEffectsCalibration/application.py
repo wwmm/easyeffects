@@ -65,9 +65,7 @@ class Application(Gtk.Application):
 
         self.spectrum = Spectrum(self)
 
-        main_ui_handlers = {
-            'on_MainWindow_delete_event': self.on_MainWindow_delete_event
-        }
+        main_ui_handlers = {}
 
         main_ui_handlers.update(self.spectrum.handlers)
 
@@ -121,11 +119,11 @@ class Application(Gtk.Application):
 
         self.ui_initialized = True
 
-    def on_MainWindow_delete_event(self, event, data):
+    def do_shutdown(self):
+        Gtk.Application.do_shutdown(self)
+
         self.mp.set_state('null')
         self.ts.set_state('null')
-
-        self.quit()
 
     def init_stack_widgets(self):
         stack_switcher = self.builder.get_object('stack_switcher')

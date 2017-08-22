@@ -92,7 +92,6 @@ class Application(Gtk.Application):
         self.spectrum = Spectrum(self)
 
         main_ui_handlers = {
-            'on_MainWindow_delete_event': self.on_MainWindow_delete_event,
             'on_buffer_time_value_changed': self.on_buffer_time_value_changed,
             'on_latency_time_value_changed':
                 self.on_latency_time_value_changed,
@@ -153,13 +152,13 @@ class Application(Gtk.Application):
 
         self.ui_initialized = True
 
-    def on_MainWindow_delete_event(self, event, data):
+    def do_shutdown(self):
+        Gtk.Application.do_shutdown(self)
+
         self.sie.set_state('null')
         self.soe.set_state('null')
 
         self.pm.exit()
-
-        self.quit()
 
     def create_appmenu(self):
         menu = Gio.Menu()
@@ -174,7 +173,7 @@ class Application(Gtk.Application):
         self.add_action(about_action)
 
         quit_action = Gio.SimpleAction.new('quit', None)
-        quit_action.connect('activate', self.on_MainWindow_delete_event)
+        quit_action.connect('activate', lambda action, parameter: self.quit())
         self.add_action(quit_action)
 
     def init_theme(self):
