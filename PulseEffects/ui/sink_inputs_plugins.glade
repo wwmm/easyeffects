@@ -2789,6 +2789,19 @@
                         <property name="top_attach">0</property>
                       </packing>
                     </child>
+                    <child>
+                      <object class="GtkButton" id="eq_calibrate_button">
+                        <property name="label" translatable="yes">Calibration</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <signal name="clicked" handler="on_eq_calibrate_button_clicked" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left_attach">3</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
                   </object>
                   <packing>
                     <property name="expand">False</property>

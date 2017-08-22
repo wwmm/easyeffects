@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-20 17:19-0300\n"
+"POT-Creation-Date: 2017-08-21 22:55-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -303,34 +303,34 @@ msgstr ""
 msgid "Reset Q Factors"
 msgstr ""
 
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:3154
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2794
+msgid "Calibration"
+msgstr ""
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:3167
 #: ../PulseEffects/ui/source_outputs_plugins.glade:2659
 msgid "F"
 msgstr ""
 
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:3168
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:3181
 #: ../PulseEffects/ui/source_outputs_plugins.glade:2673
 msgid "Q"
 msgstr ""
 
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:3663
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:3676
 #: ../PulseEffects/ui/source_outputs_plugins.glade:3168
 #: ../PulseEffectsCalibration/ui/calibration_mic_plugins.glade:777
 msgid "Input [dB]"
 msgstr ""
 
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:3676
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:3689
 #: ../PulseEffects/ui/source_outputs_plugins.glade:3181
 msgid "Output [dB]"
 msgstr ""
 
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:3875
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:3888
 #: ../PulseEffects/ui/source_outputs_plugins.glade:3380
 msgid "Equalizer"
-msgstr ""
-
-#: ../PulseEffectsCalibration/ui/about.glade:11
-msgid "Test Signals for Headphone and Speakers Calibration"
 msgstr ""
 
 #: ../PulseEffectsCalibration/ui/calibration_mic_plugins.glade:179

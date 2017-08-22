@@ -5,7 +5,7 @@ import os
 
 import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, GLib, Gtk
+from gi.repository import Gtk
 
 from PulseEffectsCalibration.microphone_pipeline import MicrophonePipeline
 from PulseEffectsCalibration.setup_equalizer import SetupEqualizer
@@ -18,11 +18,6 @@ class Application(Gtk.Application):
 
     def __init__(self):
         app_id = 'com.github.wwmm.pulseeffects_calibration'
-
-        GLib.set_application_name('PulseEffectsCalibration')
-        GLib.setenv('PULSE_PROP_media.role', 'production', True)
-        GLib.setenv('PULSE_PROP_application.icon_name',
-                    'pulseeffects_calibration', True)
 
         Gtk.Application.__init__(self, application_id=app_id)
 
@@ -65,10 +60,6 @@ class Application(Gtk.Application):
         self.window = self.builder.get_object('MainWindow')
         self.window.set_titlebar(headerbar)
         self.window.set_application(self)
-
-        # app menu
-
-        self.create_appmenu()
 
         # main window handlers
 
@@ -135,22 +126,6 @@ class Application(Gtk.Application):
         self.ts.set_state('null')
 
         self.quit()
-
-    def create_appmenu(self):
-        menu = Gio.Menu()
-
-        menu.append('About', 'app.about')
-        menu.append('Quit', 'app.quit')
-
-        self.set_app_menu(menu)
-
-        about_action = Gio.SimpleAction.new('about', None)
-        about_action.connect('activate', self.onAbout)
-        self.add_action(about_action)
-
-        quit_action = Gio.SimpleAction.new('quit', None)
-        quit_action.connect('activate', self.on_MainWindow_delete_event)
-        self.add_action(quit_action)
 
     def init_stack_widgets(self):
         stack_switcher = self.builder.get_object('stack_switcher')
@@ -230,16 +205,3 @@ class Application(Gtk.Application):
 
     def on_guideline_position_value_changed(self, obj):
         self.spectrum.set_guideline_position(obj.get_value())
-
-    def onAbout(self, action, parameter):
-        builder = Gtk.Builder()
-
-        builder.add_from_file(self.module_path + '/ui/about.glade')
-
-        dialog = builder.get_object('about_dialog')
-
-        dialog.set_transient_for(self.window)
-
-        dialog.run()
-
-        dialog.destroy()

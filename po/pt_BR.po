@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-20 17:19-0300\n"
-"PO-Revision-Date: 2017-08-20 17:19-0300\n"
+"POT-Creation-Date: 2017-08-21 22:55-0300\n"
+"PO-Revision-Date: 2017-08-21 22:56-0300\n"
 "Last-Translator: Wellington Wallace Miguel Melo <wellingtonwallace@gmail."
 "com>\n"
 "Language-Team: Portuguese <>\n"
@@ -306,35 +306,35 @@ msgstr "Redefinir Frequências"
 msgid "Reset Q Factors"
 msgstr "Redefinir Fatores Q"
 
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:3154
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:2794
+msgid "Calibration"
+msgstr "Calibração"
+
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:3167
 #: ../PulseEffects/ui/source_outputs_plugins.glade:2659
 msgid "F"
 msgstr "F"
 
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:3168
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:3181
 #: ../PulseEffects/ui/source_outputs_plugins.glade:2673
 msgid "Q"
 msgstr "Q"
 
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:3663
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:3676
 #: ../PulseEffects/ui/source_outputs_plugins.glade:3168
 #: ../PulseEffectsCalibration/ui/calibration_mic_plugins.glade:777
 msgid "Input [dB]"
 msgstr "Entrada [dB]"
 
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:3676
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:3689
 #: ../PulseEffects/ui/source_outputs_plugins.glade:3181
 msgid "Output [dB]"
 msgstr "Saída [dB]"
 
-#: ../PulseEffects/ui/sink_inputs_plugins.glade:3875
+#: ../PulseEffects/ui/sink_inputs_plugins.glade:3888
 #: ../PulseEffects/ui/source_outputs_plugins.glade:3380
 msgid "Equalizer"
 msgstr "Equalizador"
-
-#: ../PulseEffectsCalibration/ui/about.glade:11
-msgid "Test Signals for Headphone and Speakers Calibration"
-msgstr "Sinais de Teste para Calibração de Fones de ouvido e Autofalantes"
 
 #: ../PulseEffectsCalibration/ui/calibration_mic_plugins.glade:179
 msgid "Guideline Position"
@@ -420,6 +420,9 @@ msgstr "Sinal de Teste"
 #: ../PulseEffectsCalibration/ui/test_signal.glade:712
 msgid "Equal Loudness Test Signals"
 msgstr "Sinais de Teste de Mesma intensidade"
+
+#~ msgid "Test Signals for Headphone and Speakers Calibration"
+#~ msgstr "Sinais de Teste para Calibração de Fones de ouvido e Autofalantes"
 
 #~ msgid "Input Filters"
 #~ msgstr "Filtros de Entrada"

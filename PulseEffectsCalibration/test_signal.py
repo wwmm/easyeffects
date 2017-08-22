@@ -80,7 +80,7 @@ class TestSignal(GObject.GObject):
         self.spectrum = Gst.ElementFactory.make('spectrum', 'spectrum')
         self.audio_sink = Gst.ElementFactory.make('pulsesink', None)
 
-        # self.audio_sink.set_property('device', 'PulseEffects_apps')
+        self.audio_sink.set_property('device', 'PulseEffects_apps')
         self.audio_sink.set_property('volume', 1.0)
         self.audio_sink.set_property('mute', False)
 

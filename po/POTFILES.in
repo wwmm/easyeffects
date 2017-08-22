@@ -3,7 +3,6 @@
 ../PulseEffects/ui/main_ui.glade
 ../PulseEffects/ui/sink_inputs_plugins.glade
 ../PulseEffects/ui/source_outputs_plugins.glade
-../PulseEffectsCalibration/ui/about.glade
 ../PulseEffectsCalibration/ui/headerbar.glade
 ../PulseEffectsCalibration/ui/main_ui.glade
 ../PulseEffectsCalibration/ui/calibration_mic_plugins.glade

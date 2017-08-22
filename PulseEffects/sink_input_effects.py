@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 
 import gi
-gi.require_version('Gst', '1.0')
 import numpy as np
+gi.require_version('Gst', '1.0')
 from gi.repository import Gio, GLib
-from scipy.interpolate import CubicSpline
-from PulseEffects.sink_input_pipeline import SinkInputPipeline
 from PulseEffects.effects_ui_base import EffectsUiBase
+from PulseEffects.sink_input_pipeline import SinkInputPipeline
+from PulseEffectsCalibration.application import Application as Calibration
+from scipy.interpolate import CubicSpline
 
 
 class SinkInputEffects(EffectsUiBase, SinkInputPipeline):
@@ -545,6 +546,10 @@ class SinkInputEffects(EffectsUiBase, SinkInputPipeline):
     def on_eq_reset_qfactors_button_clicked(self, obj):
         self.settings.reset('equalizer-qfactors')
         self.init_eq_freq_and_qfactors()
+
+    def on_eq_calibrate_button_clicked(self, obj):
+        c = Calibration()
+        c.run()
 
     def reset(self):
         self.settings.reset('limiter-user')
