@@ -17,7 +17,7 @@ from PulseEffectsCalibration.test_signal import TestSignal
 class Application(Gtk.Application):
 
     def __init__(self):
-        app_id = 'com.github.wwmm.pulseeffects_calibration'
+        app_id = 'com.github.wwmm.pulseeffects.calibration'
 
         Gtk.Application.__init__(self, application_id=app_id)
 
