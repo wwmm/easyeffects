@@ -2740,7 +2740,6 @@
               <object class="GtkBox" id="equalizer">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="valign">center</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">12</property>
                 <child>
