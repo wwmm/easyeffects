@@ -84,10 +84,11 @@ class PulseManager(GObject.GObject):
         # it makes no sense to show some kind of apps. So we blacklist them
         self.app_blacklist = ['PulseEffects', 'pulseeffects', 'gsd-media-keys',
                               'GNOME Shell', 'libcanberra', 'gnome-pomodoro',
-                              'PulseAudio Volume Control']
+                              'PulseAudio Volume Control', 'Screenshot']
 
         self.media_blacklist = ['pulsesink probe', 'bell-window-system',
-                                'audio-volume-change', 'Peak detect']
+                                'audio-volume-change', 'Peak detect',
+                                'screen-capture']
 
         # wrapping callbacks
         self.ctx_notify_cb = p.pa_context_notify_cb_t(self.context_notify)
