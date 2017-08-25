@@ -8,10 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-21 22:55-0300\n"
-"PO-Revision-Date: 2017-08-21 22:56-0300\n"
-"Last-Translator: Wellington Wallace Miguel Melo <wellingtonwallace@gmail."
-"com>\n"
+"POT-Creation-Date: 2017-08-25 13:49-0100\n"
+"PO-Revision-Date: 2017-08-25 14:27+0200\n"
+"Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -145,6 +144,7 @@ msgstr "Limiar [dB]"
 
 #: ../PulseEffects/ui/sink_inputs_plugins.glade:862
 #: ../PulseEffects/ui/source_outputs_plugins.glade:647
+#: ../data/com.github.wwmm.pulseeffects.appdata.xml.in:49
 msgid "Input Limiter"
 msgstr "Limitador de Entrada"
 
@@ -219,6 +219,7 @@ msgstr "Redução de Ganho"
 
 #: ../PulseEffects/ui/sink_inputs_plugins.glade:1699
 #: ../PulseEffects/ui/source_outputs_plugins.glade:1204
+#: ../data/com.github.wwmm.pulseeffects.appdata.xml.in:54
 msgid "Compressor"
 msgstr "Compressor"
 
@@ -307,6 +308,7 @@ msgid "Reset Q Factors"
 msgstr "Redefinir Fatores Q"
 
 #: ../PulseEffects/ui/sink_inputs_plugins.glade:2794
+#: ../data/com.github.wwmm.pulseeffects.appdata.xml.in:59
 msgid "Calibration"
 msgstr "Calibração"
 
@@ -420,6 +422,65 @@ msgstr "Sinal de Teste"
 #: ../PulseEffectsCalibration/ui/test_signal.glade:712
 msgid "Equal Loudness Test Signals"
 msgstr "Sinais de Teste de Mesma intensidade"
+
+#: ../data/com.github.wwmm.pulseeffects.appdata.xml.in:5
+msgid "PulseEffects"
+msgstr "PulseEffects"
+
+#: ../data/com.github.wwmm.pulseeffects.appdata.xml.in:8
+#: ../data/com.github.wwmm.pulseeffects.desktop.in:4
+#, fuzzy
+#| msgid "Audio Effects for Pulseaudio Applications"
+msgid "Audio Effects for PulseAudio Applications"
+msgstr "Efeitos de Áudio para Programas que Utilizam Pulseaudio"
+
+#: ../data/com.github.wwmm.pulseeffects.appdata.xml.in:11
+msgid ""
+"PulseEffects is an advanced audio manipulation tools. It includes an "
+"equalizer, limiter, compressor and a reverberation tool, just to mention a "
+"few. To complement this there is also a built in spectrum analyzer."
+msgstr ""
+
+#: ../data/com.github.wwmm.pulseeffects.appdata.xml.in:16
+msgid ""
+"Because PulseEffects uses the default PulseAudio sound server it will work "
+"with most, if not all, applications you use. All supported applications are "
+"presented in the main window, where each can be enabled individually."
+msgstr ""
+
+#: ../data/com.github.wwmm.pulseeffects.appdata.xml.in:22
+msgid ""
+"Besides manipulating sound output, PulseEffects is able to apply effects to "
+"an input device, such as a microphone. This is, for example, useful in audio "
+"recording, but it also works well during voice conversations."
+msgstr ""
+
+#: ../data/com.github.wwmm.pulseeffects.appdata.xml.in:27
+msgid ""
+"When PulseEffects is launched it will conveniently remember the "
+"configuration used in the last session. It is also possible to save all the "
+"current settings as profiles."
+msgstr ""
+
+#: ../data/com.github.wwmm.pulseeffects.appdata.xml.in:39
+#, fuzzy
+#| msgid "Equalizer"
+msgid "Equalizer - Input"
+msgstr "Equalizador"
+
+#: ../data/com.github.wwmm.pulseeffects.appdata.xml.in:44
+#, fuzzy
+#| msgid "Equalizer"
+msgid "Equalizer - Output"
+msgstr "Equalizador"
+
+#: ../data/com.github.wwmm.pulseeffects.desktop.in:3
+msgid "Audio Enhancer"
+msgstr "Melhorador de Áudio"
+
+#: ../data/com.github.wwmm.pulseeffects.desktop.in:5
+msgid "limiter;compressor;reverberation;equalizer;autovolume;"
+msgstr "limitador;compressor;reverberação;equalizador;autovolume;"
 
 #~ msgid "Test Signals for Headphone and Speakers Calibration"
 #~ msgstr "Sinais de Teste para Calibração de Fones de ouvido e Autofalantes"

@@ -3,18 +3,17 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-21 22:55-0300\n"
+"POT-Creation-Date: 2017-08-25 13:49-0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../PulseEffects/ui/about.glade:11
@@ -142,6 +141,7 @@ msgstr ""
 
 #: ../PulseEffects/ui/sink_inputs_plugins.glade:862
 #: ../PulseEffects/ui/source_outputs_plugins.glade:647
+#: ../data/com.github.wwmm.pulseeffects.appdata.xml.in:49
 msgid "Input Limiter"
 msgstr ""
 
@@ -216,6 +216,7 @@ msgstr ""
 
 #: ../PulseEffects/ui/sink_inputs_plugins.glade:1699
 #: ../PulseEffects/ui/source_outputs_plugins.glade:1204
+#: ../data/com.github.wwmm.pulseeffects.appdata.xml.in:54
 msgid "Compressor"
 msgstr ""
 
@@ -304,6 +305,7 @@ msgid "Reset Q Factors"
 msgstr ""
 
 #: ../PulseEffects/ui/sink_inputs_plugins.glade:2794
+#: ../data/com.github.wwmm.pulseeffects.appdata.xml.in:59
 msgid "Calibration"
 msgstr ""
 
@@ -416,4 +418,57 @@ msgstr ""
 
 #: ../PulseEffectsCalibration/ui/test_signal.glade:712
 msgid "Equal Loudness Test Signals"
+msgstr ""
+
+#: ../data/com.github.wwmm.pulseeffects.appdata.xml.in:5
+msgid "PulseEffects"
+msgstr ""
+
+#: ../data/com.github.wwmm.pulseeffects.appdata.xml.in:8
+#: ../data/com.github.wwmm.pulseeffects.desktop.in:4
+msgid "Audio Effects for PulseAudio Applications"
+msgstr ""
+
+#: ../data/com.github.wwmm.pulseeffects.appdata.xml.in:11
+msgid ""
+"PulseEffects is an advanced audio manipulation tools. It includes an "
+"equalizer, limiter, compressor and a reverberation tool, just to mention a "
+"few. To complement this there is also a built in spectrum analyzer."
+msgstr ""
+
+#: ../data/com.github.wwmm.pulseeffects.appdata.xml.in:16
+msgid ""
+"Because PulseEffects uses the default PulseAudio sound server it will work "
+"with most, if not all, applications you use. All supported applications are "
+"presented in the main window, where each can be enabled individually."
+msgstr ""
+
+#: ../data/com.github.wwmm.pulseeffects.appdata.xml.in:22
+msgid ""
+"Besides manipulating sound output, PulseEffects is able to apply effects to "
+"an input device, such as a microphone. This is, for example, useful in audio "
+"recording, but it also works well during voice conversations."
+msgstr ""
+
+#: ../data/com.github.wwmm.pulseeffects.appdata.xml.in:27
+msgid ""
+"When PulseEffects is launched it will conveniently remember the "
+"configuration used in the last session. It is also possible to save all the "
+"current settings as profiles."
+msgstr ""
+
+#: ../data/com.github.wwmm.pulseeffects.appdata.xml.in:39
+msgid "Equalizer - Input"
+msgstr ""
+
+#: ../data/com.github.wwmm.pulseeffects.appdata.xml.in:44
+msgid "Equalizer - Output"
+msgstr ""
+
+#: ../data/com.github.wwmm.pulseeffects.desktop.in:3
+msgid "Audio Enhancer"
+msgstr ""
+
+#: ../data/com.github.wwmm.pulseeffects.desktop.in:5
+msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr ""

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2017 Patrik Nilsson -->
+<component type="desktop">
+  <id>com.github.wwmm.pulseeffects.desktop</id>
+  <name>PulseEffects</name>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0</project_license>
+  <summary>Audio Effects for PulseAudio Applications</summary>
+  <developer_name>Wellington Wallace</developer_name>
+  <description>
+    <p>
+      PulseEffects is an advanced audio manipulation tools. It includes an
+      equalizer, limiter, compressor and a reverberation tool, just to mention
+      a few. To complement this there is also a built in spectrum analyzer.
+    </p>
+    <p>
+      Because PulseEffects uses the default PulseAudio sound server it will
+      work with most, if not all, applications you use. All supported
+      applications are presented in the main window, where each can be enabled
+      individually.
+    </p>
+    <p>
+      Besides manipulating sound output, PulseEffects is able to apply effects
+      to an input device, such as a microphone. This is, for example, useful in
+      audio recording, but it also works well during voice conversations.
+    </p> 
+    <p>
+      When PulseEffects is launched it will conveniently remember the
+      configuration used in the last session. It is also possible to save
+      all the current settings as profiles.
+    </p>
+  </description>
+  <launchable type="desktop-id">com.github.wwmm.pulseeffects.desktop</launchable>
+  <url type="homepage">https://github.com/wwmm/pulseeffects</url>
+  <url type="bugtracker">https://github.com/wwmm/pulseeffects/issues</url>
+  <url type="help">https://github.com/wwmm/pulseeffects/blob/master/README.md</url>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/wwmm/pulseeffects/master/images/appdata-screenshot-01.png</image>
+      <caption>Equalizer - Input</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/wwmm/pulseeffects/master/images/appdata-screenshot-02.png</image>
+      <caption>Equalizer - Output</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/wwmm/pulseeffects/master/images/appdata-screenshot-03.png</image>
+      <caption>Input Limiter</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/wwmm/pulseeffects/master/images/appdata-screenshot-04.png</image>
+      <caption>Compressor</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/wwmm/pulseeffects/master/images/appdata-screenshot-05.png</image>
+      <caption>Calibration</caption>
+    </screenshot>
+  </screenshots>
+  <update_contact>contact_AT_hembas.se</update_contact>
+  <translation type="gettext">pulseeffects</translation>
+</component>
