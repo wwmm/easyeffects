@@ -5,6 +5,14 @@ install_data([
   'com.github.wwmm.pulseeffects.sourceoutputs.gschema.xml',
 ], install_dir: schemadir)
 
+i18n_mod.merge_file(
+  input: 'com.github.wwmm.pulseeffects.appdata.xml.in',
+  output: 'com.github.wwmm.pulseeffects.appdata.xml',
+  po_dir: '../po',
+  install: true,
+  install_dir: join_paths(get_option('datadir'), 'metainfo')
+)
+
 menudir = join_paths(get_option('datadir'), 'applications')
 install_data([
   'com.github.wwmm.pulseeffects.desktop'
