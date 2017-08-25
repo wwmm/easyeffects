@@ -13,10 +13,14 @@ i18n_mod.merge_file(
   install_dir: join_paths(get_option('datadir'), 'metainfo')
 )
 
-menudir = join_paths(get_option('datadir'), 'applications')
-install_data([
-  'com.github.wwmm.pulseeffects.desktop'
-], install_dir: menudir)
+i18n_mod.merge_file(
+  input: 'com.github.wwmm.pulseeffects.desktop.in',
+  output: 'com.github.wwmm.pulseeffects.desktop',
+  type: 'desktop',
+  po_dir: '../po',
+  install: true,
+  install_dir: join_paths(get_option('datadir'), 'applications')
+)
 
 icondir = join_paths(get_option('datadir'), 'icons/hicolor')
 install_data('pulseeffects.svg',

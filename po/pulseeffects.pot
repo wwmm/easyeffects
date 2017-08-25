@@ -425,6 +425,7 @@ msgid "PulseEffects"
 msgstr ""
 
 #: ../data/com.github.wwmm.pulseeffects.appdata.xml.in:8
+#: ../data/com.github.wwmm.pulseeffects.desktop.in:4
 msgid "Audio Effects for PulseAudio Applications"
 msgstr ""
 
@@ -462,4 +463,12 @@ msgstr ""
 
 #: ../data/com.github.wwmm.pulseeffects.appdata.xml.in:44
 msgid "Equalizer - Output"
+msgstr ""
+
+#: ../data/com.github.wwmm.pulseeffects.desktop.in:3
+msgid "Audio Enhancer"
+msgstr ""
+
+#: ../data/com.github.wwmm.pulseeffects.desktop.in:5
+msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr ""

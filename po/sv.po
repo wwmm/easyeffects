@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-21 22:55-0300\n"
-"PO-Revision-Date: 2017-08-25 13:42+0200\n"
+"POT-Creation-Date: 2017-08-25 13:49-0100\n"
+"PO-Revision-Date: 2017-08-25 14:21+0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -426,6 +426,7 @@ msgid "PulseEffects"
 msgstr "PulseEffects"
 
 #: ../data/com.github.wwmm.pulseeffects.appdata.xml.in:8
+#: ../data/com.github.wwmm.pulseeffects.desktop.in:4
 msgid "Audio Effects for PulseAudio Applications"
 msgstr "Ljudeffekter för PulseAudio applikationer"
 
@@ -479,5 +480,11 @@ msgstr "Ljudutjämnare - Ingång"
 msgid "Equalizer - Output"
 msgstr "Ljudutjämnare - Utgång"
 
-#~ msgid "Test Signals for Headphone and Speakers Calibration"
-#~ msgstr "Test signaler för kalibrering av hörlurar och högtalare"
+#: ../data/com.github.wwmm.pulseeffects.desktop.in:3
+msgid "Audio Enhancer"
+msgstr "Ljudförstärkare"
+
+#: ../data/com.github.wwmm.pulseeffects.desktop.in:5
+msgid "limiter;compressor;reverberation;equalizer;autovolume;"
+msgstr ""
+"limiter;begränsare;kompressor;eko;efterklang;equalizer;utjämnare;auto;volym;"
