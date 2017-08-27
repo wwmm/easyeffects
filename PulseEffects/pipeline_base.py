@@ -76,8 +76,6 @@ class PipelineBase(GObject.GObject):
             'level', 'reverb_output_level')
         self.highpass_output_level = Gst.ElementFactory.make(
             'level', 'highpass_output_level')
-        self.lowpass_output_level = Gst.ElementFactory.make(
-            'level', 'lowpass_output_level')
 
         self.audio_src.set_property('volume', 1.0)
         self.audio_src.set_property('mute', False)
@@ -101,15 +99,11 @@ class PipelineBase(GObject.GObject):
         self.highpass.set_property('type', 1)
         self.highpass.set_property('ripple', 0)
 
-        self.lowpass = Gst.ElementFactory.make('audiocheblimit', None)
-        self.lowpass.set_property('mode', 'low-pass')
-        self.lowpass.set_property('type', 1)
-        self.lowpass.set_property('ripple', 0)
-
         self.output_limiter.set_property('input-gain', 0)
         self.output_limiter.set_property('limit', 0)
         self.output_limiter.set_property('release-time', 2.0)
 
+        self.build_lowpass_bin()
         self.build_equalizer_bin()
 
     def build_equalizer_bin(self):
@@ -168,6 +162,35 @@ class PipelineBase(GObject.GObject):
         ghost_pad = Gst.GhostPad.new('equalizer_bin_src', pad)
         ghost_pad.set_active(True)
         self.equalizer_bin.add_pad(ghost_pad)
+
+    def build_lowpass_bin(self):
+        self.lowpass = Gst.ElementFactory.make('audiocheblimit', None)
+        lowpass_input_level = Gst.ElementFactory.make('level',
+                                                      'lowpass_input_level')
+        lowpass_output_level = Gst.ElementFactory.make('level',
+                                                       'lowpass_output_level')
+
+        self.lowpass.set_property('mode', 'low-pass')
+        self.lowpass.set_property('type', 1)
+        self.lowpass.set_property('ripple', 0)
+
+        self.lowpass_bin = Gst.Bin.new('lowpass_bin')
+        self.lowpass_bin.add(self.lowpass)
+        self.lowpass_bin.add(lowpass_input_level)
+        self.lowpass_bin.add(lowpass_output_level)
+
+        lowpass_input_level.link(self.lowpass)
+        self.lowpass.link(lowpass_output_level)
+
+        pad = lowpass_input_level.get_static_pad('sink')
+        ghost_pad = Gst.GhostPad.new('lowpass_bin_sink', pad)
+        ghost_pad.set_active(True)
+        self.lowpass_bin.add_pad(ghost_pad)
+
+        pad = lowpass_output_level.get_static_pad('src')
+        ghost_pad = Gst.GhostPad.new('lowpass_bin_src', pad)
+        ghost_pad.set_active(True)
+        self.lowpass_bin.add_pad(ghost_pad)
 
     def set_state(self, state):
         if state == 'ready':
