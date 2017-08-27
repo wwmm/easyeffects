@@ -45,6 +45,17 @@ change was necessary to support presets for microphone processing.
 
 - [Arch Linux](https://aur.archlinux.org/packages/pulseeffects/)
 
+### Flatpak
+
+[Flatpak](https://flatpak.org) packages support multiple distributions and are sandboxed.
+
+Stable releases are hosted on [Flathub](https://flathub.org):
+
+```
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install flathub com.github.wwmm.pulseeffects
+```
+
 ### Source Code
 
 Required libraries:
