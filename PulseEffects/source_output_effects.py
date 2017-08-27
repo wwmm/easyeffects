@@ -159,32 +159,38 @@ class SourceOutputEffects(EffectsUiBase, SourceOutputPipeline):
                 self.ui_reverb_output_level_left.set_value(l_value)
                 self.ui_reverb_output_level_left_label.set_text(
                     str(round(left)))
-
-                # highpass input
-                self.ui_highpass_input_level_left.set_value(l_value)
-                self.ui_highpass_input_level_left_label.set_text(
-                    str(round(left)))
             else:
                 self.ui_reverb_output_level_left.set_value(0)
                 self.ui_reverb_output_level_left_label.set_text('-99')
-
-                self.ui_highpass_input_level_left.set_value(0)
-                self.ui_highpass_input_level_left_label.set_text('-99')
 
             if right >= -99:
                 r_value = 10**(right / 20)
                 self.ui_reverb_output_level_right.set_value(r_value)
                 self.ui_reverb_output_level_right_label.set_text(
                     str(round(right)))
+            else:
+                self.ui_reverb_output_level_right.set_value(0)
+                self.ui_reverb_output_level_right_label.set_text('-99')
+        elif plugin == 'highpass_input_level':
+            peak = msg.get_structure().get_value('peak')
 
-                # highpass input
+            left, right = peak[0], peak[1]
+
+            if left >= -99:
+                l_value = 10**(left / 20)
+                self.ui_highpass_input_level_left.set_value(l_value)
+                self.ui_highpass_input_level_left_label.set_text(
+                    str(round(left)))
+            else:
+                self.ui_highpass_input_level_left.set_value(0)
+                self.ui_highpass_input_level_left_label.set_text('-99')
+
+            if right >= -99:
+                r_value = 10**(right / 20)
                 self.ui_highpass_input_level_right.set_value(r_value)
                 self.ui_highpass_input_level_right_label.set_text(
                     str(round(right)))
             else:
-                self.ui_reverb_output_level_right.set_value(0)
-                self.ui_reverb_output_level_right_label.set_text('-99')
-
                 self.ui_highpass_input_level_right.set_value(0)
                 self.ui_highpass_input_level_right_label.set_text('-99')
         elif plugin == 'highpass_output_level':
@@ -197,32 +203,38 @@ class SourceOutputEffects(EffectsUiBase, SourceOutputPipeline):
                 self.ui_highpass_output_level_left.set_value(l_value)
                 self.ui_highpass_output_level_left_label.set_text(
                     str(round(left)))
-
-                # lowpass input
-                self.ui_lowpass_input_level_left.set_value(l_value)
-                self.ui_lowpass_input_level_left_label.set_text(
-                    str(round(left)))
             else:
                 self.ui_highpass_output_level_left.set_value(0)
                 self.ui_highpass_output_level_left_label.set_text('-99')
-
-                self.ui_lowpass_input_level_left.set_value(0)
-                self.ui_lowpass_input_level_left_label.set_text('-99')
 
             if right >= -99:
                 r_value = 10**(right / 20)
                 self.ui_highpass_output_level_right.set_value(r_value)
                 self.ui_highpass_output_level_right_label.set_text(
                     str(round(right)))
+            else:
+                self.ui_highpass_output_level_right.set_value(0)
+                self.ui_highpass_output_level_right_label.set_text('-99')
+        elif plugin == 'lowpass_input_level':
+            peak = msg.get_structure().get_value('peak')
 
-                # lowpass input
+            left, right = peak[0], peak[1]
+
+            if left >= -99:
+                l_value = 10**(left / 20)
+                self.ui_lowpass_input_level_left.set_value(l_value)
+                self.ui_lowpass_input_level_left_label.set_text(
+                    str(round(left)))
+            else:
+                self.ui_lowpass_input_level_left.set_value(0)
+                self.ui_lowpass_input_level_left_label.set_text('-99')
+
+            if right >= -99:
+                r_value = 10**(right / 20)
                 self.ui_lowpass_input_level_right.set_value(r_value)
                 self.ui_lowpass_input_level_right_label.set_text(
                     str(round(right)))
             else:
-                self.ui_highpass_output_level_right.set_value(0)
-                self.ui_highpass_output_level_right_label.set_text('-99')
-
                 self.ui_lowpass_input_level_right.set_value(0)
                 self.ui_lowpass_input_level_right_label.set_text('-99')
         elif plugin == 'lowpass_output_level':
