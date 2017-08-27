@@ -59,11 +59,6 @@ class PipelineBase(GObject.GObject):
 
         self.freeverb = Gst.ElementFactory.make('freeverb', None)
 
-        self.equalizer_input_gain = Gst.ElementFactory.make('volume', None)
-        self.equalizer_output_gain = Gst.ElementFactory.make('volume', None)
-
-        self.equalizer = Gst.ElementFactory.make('equalizer-nbands', None)
-
         self.spectrum = Gst.ElementFactory.make('spectrum', 'spectrum')
 
         self.output_limiter = Gst.ElementFactory.make(
@@ -83,10 +78,6 @@ class PipelineBase(GObject.GObject):
             'level', 'highpass_output_level')
         self.lowpass_output_level = Gst.ElementFactory.make(
             'level', 'lowpass_output_level')
-        self.equalizer_input_level = Gst.ElementFactory.make(
-            'level', 'equalizer_input_level')
-        self.equalizer_output_level = Gst.ElementFactory.make(
-            'level', 'equalizer_output_level')
 
         self.audio_src.set_property('volume', 1.0)
         self.audio_src.set_property('mute', False)
@@ -101,32 +92,6 @@ class PipelineBase(GObject.GObject):
 
         self.audio_sink.set_property('volume', 1.0)
         self.audio_sink.set_property('mute', False)
-
-        self.equalizer.set_property('num-bands', 15)
-
-        self.eq_band0 = self.equalizer.get_child_by_index(0)
-        self.eq_band1 = self.equalizer.get_child_by_index(1)
-        self.eq_band2 = self.equalizer.get_child_by_index(2)
-        self.eq_band3 = self.equalizer.get_child_by_index(3)
-        self.eq_band4 = self.equalizer.get_child_by_index(4)
-        self.eq_band5 = self.equalizer.get_child_by_index(5)
-        self.eq_band6 = self.equalizer.get_child_by_index(6)
-        self.eq_band7 = self.equalizer.get_child_by_index(7)
-        self.eq_band8 = self.equalizer.get_child_by_index(8)
-        self.eq_band9 = self.equalizer.get_child_by_index(9)
-        self.eq_band10 = self.equalizer.get_child_by_index(10)
-        self.eq_band11 = self.equalizer.get_child_by_index(11)
-        self.eq_band12 = self.equalizer.get_child_by_index(12)
-        self.eq_band13 = self.equalizer.get_child_by_index(13)
-        self.eq_band14 = self.equalizer.get_child_by_index(14)
-
-        # It seems there is a bug in the low shelf filter.
-        # When we increase the lower shelf gain higher frequencies
-        # are attenuated. Setting the first band to peak type instead of
-        # shelf fixes this.
-
-        self.eq_band0.set_property('type', 0)  # 0: peak type
-        self.eq_band14.set_property('type', 0)  # 0: peak type
 
         self.spectrum.set_property('bands', self.spectrum_nbands)
         self.spectrum.set_property('threshold', self.spectrum_threshold)
@@ -144,6 +109,65 @@ class PipelineBase(GObject.GObject):
         self.output_limiter.set_property('input-gain', 0)
         self.output_limiter.set_property('limit', 0)
         self.output_limiter.set_property('release-time', 2.0)
+
+        self.build_equalizer_bin()
+
+    def build_equalizer_bin(self):
+        self.equalizer_input_gain = Gst.ElementFactory.make('volume', None)
+        self.equalizer_output_gain = Gst.ElementFactory.make('volume', None)
+        equalizer = Gst.ElementFactory.make('equalizer-nbands', None)
+        equalizer_input_level = Gst.ElementFactory.make(
+            'level', 'equalizer_input_level')
+        equalizer_output_level = Gst.ElementFactory.make(
+            'level', 'equalizer_output_level')
+
+        equalizer.set_property('num-bands', 15)
+
+        self.eq_band0 = equalizer.get_child_by_index(0)
+        self.eq_band1 = equalizer.get_child_by_index(1)
+        self.eq_band2 = equalizer.get_child_by_index(2)
+        self.eq_band3 = equalizer.get_child_by_index(3)
+        self.eq_band4 = equalizer.get_child_by_index(4)
+        self.eq_band5 = equalizer.get_child_by_index(5)
+        self.eq_band6 = equalizer.get_child_by_index(6)
+        self.eq_band7 = equalizer.get_child_by_index(7)
+        self.eq_band8 = equalizer.get_child_by_index(8)
+        self.eq_band9 = equalizer.get_child_by_index(9)
+        self.eq_band10 = equalizer.get_child_by_index(10)
+        self.eq_band11 = equalizer.get_child_by_index(11)
+        self.eq_band12 = equalizer.get_child_by_index(12)
+        self.eq_band13 = equalizer.get_child_by_index(13)
+        self.eq_band14 = equalizer.get_child_by_index(14)
+
+        # It seems there is a bug in the low shelf filter.
+        # When we increase the lower shelf gain higher frequencies
+        # are attenuated. Setting the first band to peak type instead of
+        # shelf fixes this.
+
+        self.eq_band0.set_property('type', 0)  # 0: peak type
+        self.eq_band14.set_property('type', 0)  # 0: peak type
+
+        self.equalizer_bin = Gst.Bin.new('equalizer_bin')
+        self.equalizer_bin.add(self.equalizer_input_gain)
+        self.equalizer_bin.add(equalizer_input_level)
+        self.equalizer_bin.add(equalizer)
+        self.equalizer_bin.add(self.equalizer_output_gain)
+        self.equalizer_bin.add(equalizer_output_level)
+
+        self.equalizer_input_gain.link(equalizer_input_level)
+        equalizer_input_level.link(equalizer)
+        equalizer.link(self.equalizer_output_gain)
+        self.equalizer_output_gain.link(equalizer_output_level)
+
+        pad = self.equalizer_input_gain.get_static_pad('sink')
+        ghost_pad = Gst.GhostPad.new('equalizer_bin_sink', pad)
+        ghost_pad.set_active(True)
+        self.equalizer_bin.add_pad(ghost_pad)
+
+        pad = equalizer_output_level.get_static_pad('src')
+        ghost_pad = Gst.GhostPad.new('equalizer_bin_src', pad)
+        ghost_pad.set_active(True)
+        self.equalizer_bin.add_pad(ghost_pad)
 
     def set_state(self, state):
         if state == 'ready':
