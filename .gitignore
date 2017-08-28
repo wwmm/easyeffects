@@ -9,3 +9,5 @@ gschemas.compiled
 
 # binary language files
 po/*.mo
+
+\.python-version
