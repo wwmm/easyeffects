@@ -54,13 +54,7 @@ class PipelineBase(GObject.GObject):
         self.limiter = Gst.ElementFactory.make(
             'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter', None)
 
-        self.compressor = Gst.ElementFactory.make(
-            'ladspa-sc4-1882-so-sc4', None)
-
         self.spectrum = Gst.ElementFactory.make('spectrum', 'spectrum')
-
-        self.output_limiter = Gst.ElementFactory.make(
-            'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter', None)
 
         self.audio_sink = Gst.ElementFactory.make('pulsesink', 'audio_sink')
 
@@ -68,8 +62,6 @@ class PipelineBase(GObject.GObject):
             'level', 'limiter_input_level')
         self.limiter_output_level = Gst.ElementFactory.make(
             'level', 'limiter_output_level')
-        self.compressor_output_level = Gst.ElementFactory.make(
-            'level', 'compressor_output_level')
 
         self.audio_src.set_property('volume', 1.0)
         self.audio_src.set_property('mute', False)
@@ -88,14 +80,37 @@ class PipelineBase(GObject.GObject):
         self.spectrum.set_property('bands', self.spectrum_nbands)
         self.spectrum.set_property('threshold', self.spectrum_threshold)
 
-        self.output_limiter.set_property('input-gain', 0)
-        self.output_limiter.set_property('limit', 0)
-        self.output_limiter.set_property('release-time', 2.0)
-
+        self.build_compressor_bin()
         self.build_reverb_bin()
         self.build_highpass_bin()
         self.build_lowpass_bin()
         self.build_equalizer_bin()
+
+    def build_compressor_bin(self):
+        self.compressor = Gst.ElementFactory.make(
+            'ladspa-sc4-1882-so-sc4', None)
+        compressor_input_level = Gst.ElementFactory.make(
+            'level', 'compressor_input_level')
+        compressor_output_level = Gst.ElementFactory.make(
+            'level', 'compressor_output_level')
+
+        self.compressor_bin = Gst.Bin.new('compressor_bin')
+        self.compressor_bin.add(self.compressor)
+        self.compressor_bin.add(compressor_input_level)
+        self.compressor_bin.add(compressor_output_level)
+
+        compressor_input_level.link(self.compressor)
+        self.compressor.link(compressor_output_level)
+
+        pad = compressor_input_level.get_static_pad('sink')
+        ghost_pad = Gst.GhostPad.new('compressor_bin_sink', pad)
+        ghost_pad.set_active(True)
+        self.compressor_bin.add_pad(ghost_pad)
+
+        pad = compressor_output_level.get_static_pad('src')
+        ghost_pad = Gst.GhostPad.new('compressor_bin_src', pad)
+        ghost_pad.set_active(True)
+        self.compressor_bin.add_pad(ghost_pad)
 
     def build_reverb_bin(self):
         self.freeverb = Gst.ElementFactory.make('freeverb', None)
