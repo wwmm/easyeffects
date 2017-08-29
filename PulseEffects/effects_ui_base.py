@@ -20,6 +20,8 @@ class EffectsUiBase():
 
         self.ui_window = self.builder.get_object('window')
 
+        self.old_compressor_gain_reduction = 0
+
         # limiter widgets
 
         self.ui_limiter_input_gain = self.builder.get_object(
@@ -901,3 +903,118 @@ class EffectsUiBase():
             self.settings.set_value('equalizer-qfactors', out)
         except ValueError:
             pass
+
+    def ui_update_level(self, widgets, peak):
+        left, right = peak[0], peak[1]
+
+        widget_level_left = widgets[0]
+        widget_level_right = widgets[1]
+        widget_level_left_label = widgets[2]
+        widget_level_right_label = widgets[3]
+
+        if left >= -99:
+            l_value = 10**(left / 20)
+            widget_level_left.set_value(l_value)
+            widget_level_left_label.set_text(str(round(left)))
+        else:
+            widget_level_left.set_value(0)
+            widget_level_left_label.set_text('-99')
+
+        if right >= -99:
+            r_value = 10**(right / 20)
+            widget_level_right.set_value(r_value)
+            widget_level_right_label.set_text(str(round(right)))
+        else:
+            widget_level_right.set_value(0)
+            widget_level_right_label.set_text('-99')
+
+    def ui_update_compressor_input_level(self, peak):
+        widgets = [self.ui_compressor_input_level_left,
+                   self.ui_compressor_input_level_right,
+                   self.ui_compressor_input_level_left_label,
+                   self.ui_compressor_input_level_right_label]
+
+        self.ui_update_level(widgets, peak)
+
+    def ui_update_compressor_output_level(self, peak):
+        widgets = [self.ui_compressor_output_level_left,
+                   self.ui_compressor_output_level_right,
+                   self.ui_compressor_output_level_left_label,
+                   self.ui_compressor_output_level_right_label]
+
+        self.ui_update_level(widgets, peak)
+
+        gain_reduction = abs(round(
+            self.compressor.get_property('gain-reduction')))
+
+        if gain_reduction != self.old_compressor_gain_reduction:
+            self.old_compressor_gain_reduction = gain_reduction
+
+            self.ui_compressor_gain_reduction_levelbar.set_value(
+                gain_reduction)
+            self.ui_compressor_gain_reduction_level_label.set_text(
+                str(round(gain_reduction)))
+
+    def ui_update_reverb_input_level(self, peak):
+        widgets = [self.ui_reverb_input_level_left,
+                   self.ui_reverb_input_level_right,
+                   self.ui_reverb_input_level_left_label,
+                   self.ui_reverb_input_level_right_label]
+
+        self.ui_update_level(widgets, peak)
+
+    def ui_update_reverb_output_level(self, peak):
+        widgets = [self.ui_reverb_output_level_left,
+                   self.ui_reverb_output_level_right,
+                   self.ui_reverb_output_level_left_label,
+                   self.ui_reverb_output_level_right_label]
+
+        self.ui_update_level(widgets, peak)
+
+    def ui_update_highpass_input_level(self, peak):
+        widgets = [self.ui_highpass_input_level_left,
+                   self.ui_highpass_input_level_right,
+                   self.ui_highpass_input_level_left_label,
+                   self.ui_highpass_input_level_right_label]
+
+        self.ui_update_level(widgets, peak)
+
+    def ui_update_highpass_output_level(self, peak):
+        widgets = [self.ui_highpass_output_level_left,
+                   self.ui_highpass_output_level_right,
+                   self.ui_highpass_output_level_left_label,
+                   self.ui_highpass_output_level_right_label]
+
+        self.ui_update_level(widgets, peak)
+
+    def ui_update_lowpass_input_level(self, peak):
+        widgets = [self.ui_lowpass_input_level_left,
+                   self.ui_lowpass_input_level_right,
+                   self.ui_lowpass_input_level_left_label,
+                   self.ui_lowpass_input_level_right_label]
+
+        self.ui_update_level(widgets, peak)
+
+    def ui_update_lowpass_output_level(self, peak):
+        widgets = [self.ui_lowpass_output_level_left,
+                   self.ui_lowpass_output_level_right,
+                   self.ui_lowpass_output_level_left_label,
+                   self.ui_lowpass_output_level_right_label]
+
+        self.ui_update_level(widgets, peak)
+
+    def ui_update_equalizer_input_level(self, peak):
+        widgets = [self.ui_equalizer_input_level_left,
+                   self.ui_equalizer_input_level_right,
+                   self.ui_equalizer_input_level_left_label,
+                   self.ui_equalizer_input_level_right_label]
+
+        self.ui_update_level(widgets, peak)
+
+    def ui_update_equalizer_output_level(self, peak):
+        widgets = [self.ui_equalizer_output_level_left,
+                   self.ui_equalizer_output_level_right,
+                   self.ui_equalizer_output_level_left_label,
+                   self.ui_equalizer_output_level_right_label]
+
+        self.ui_update_level(widgets, peak)
