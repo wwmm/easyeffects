@@ -149,6 +149,28 @@ class SourceOutputEffects(EffectsUiBase, SourceOutputPipeline):
                     gain_reduction)
                 self.ui_compressor_gain_reduction_level_label.set_text(
                     str(round(gain_reduction)))
+        elif plugin == 'reverb_input_level':
+            peak = msg.get_structure().get_value('peak')
+
+            left, right = peak[0], peak[1]
+
+            if left >= -99:
+                l_value = 10**(left / 20)
+                self.ui_reverb_input_level_left.set_value(l_value)
+                self.ui_reverb_input_level_left_label.set_text(
+                    str(round(left)))
+            else:
+                self.ui_reverb_input_level_left.set_value(0)
+                self.ui_reverb_input_level_left_label.set_text('-99')
+
+            if right >= -99:
+                r_value = 10**(right / 20)
+                self.ui_reverb_input_level_right.set_value(r_value)
+                self.ui_reverb_input_level_right_label.set_text(
+                    str(round(right)))
+            else:
+                self.ui_reverb_input_level_right.set_value(0)
+                self.ui_reverb_input_level_right_label.set_text('-99')
         elif plugin == 'reverb_output_level':
             peak = msg.get_structure().get_value('peak')
 

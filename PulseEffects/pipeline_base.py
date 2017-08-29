@@ -57,8 +57,6 @@ class PipelineBase(GObject.GObject):
         self.compressor = Gst.ElementFactory.make(
             'ladspa-sc4-1882-so-sc4', None)
 
-        self.freeverb = Gst.ElementFactory.make('freeverb', None)
-
         self.spectrum = Gst.ElementFactory.make('spectrum', 'spectrum')
 
         self.output_limiter = Gst.ElementFactory.make(
@@ -72,8 +70,6 @@ class PipelineBase(GObject.GObject):
             'level', 'limiter_output_level')
         self.compressor_output_level = Gst.ElementFactory.make(
             'level', 'compressor_output_level')
-        self.reverb_output_level = Gst.ElementFactory.make(
-            'level', 'reverb_output_level')
 
         self.audio_src.set_property('volume', 1.0)
         self.audio_src.set_property('mute', False)
@@ -96,9 +92,35 @@ class PipelineBase(GObject.GObject):
         self.output_limiter.set_property('limit', 0)
         self.output_limiter.set_property('release-time', 2.0)
 
+        self.build_reverb_bin()
         self.build_highpass_bin()
         self.build_lowpass_bin()
         self.build_equalizer_bin()
+
+    def build_reverb_bin(self):
+        self.freeverb = Gst.ElementFactory.make('freeverb', None)
+        reverb_input_level = Gst.ElementFactory.make('level',
+                                                     'reverb_input_level')
+        reverb_output_level = Gst.ElementFactory.make('level',
+                                                      'reverb_output_level')
+
+        self.reverb_bin = Gst.Bin.new('reverb_bin')
+        self.reverb_bin.add(self.freeverb)
+        self.reverb_bin.add(reverb_input_level)
+        self.reverb_bin.add(reverb_output_level)
+
+        reverb_input_level.link(self.freeverb)
+        self.freeverb.link(reverb_output_level)
+
+        pad = reverb_input_level.get_static_pad('sink')
+        ghost_pad = Gst.GhostPad.new('reverb_bin_sink', pad)
+        ghost_pad.set_active(True)
+        self.reverb_bin.add_pad(ghost_pad)
+
+        pad = reverb_output_level.get_static_pad('src')
+        ghost_pad = Gst.GhostPad.new('reverb_bin_src', pad)
+        ghost_pad.set_active(True)
+        self.reverb_bin.add_pad(ghost_pad)
 
     def build_highpass_bin(self):
         self.highpass = Gst.ElementFactory.make('audiocheblimit', None)
