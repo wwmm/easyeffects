@@ -26,31 +26,16 @@ class SinkInputPipeline(PipelineBase):
         self.autovolume_level = Gst.ElementFactory.make('level', 'autovolume')
 
         self.build_panorama_bin()
+        self.build_effects_bin()
 
         self.pipeline.add(self.audio_src)
         self.pipeline.add(self.source_caps)
-        self.pipeline.add(self.limiter_bin)
-        self.pipeline.add(self.autovolume_level)
-        self.pipeline.add(self.panorama_bin)
-        self.pipeline.add(self.compressor_bin)
-        self.pipeline.add(self.reverb_bin)
-        self.pipeline.add(self.highpass_bin)
-        self.pipeline.add(self.lowpass_bin)
-        self.pipeline.add(self.equalizer_bin)
-        self.pipeline.add(self.spectrum)
+        self.pipeline.add(self.effects_bin)
         self.pipeline.add(self.audio_sink)
 
         self.audio_src.link(self.source_caps)
-        self.source_caps.link(self.limiter_bin)
-        self.limiter_bin.link(self.autovolume_level)
-        self.autovolume_level.link(self.panorama_bin)
-        self.panorama_bin.link(self.compressor_bin)
-        self.compressor_bin.link(self.reverb_bin)
-        self.reverb_bin.link(self.highpass_bin)
-        self.highpass_bin.link(self.lowpass_bin)
-        self.lowpass_bin.link(self.equalizer_bin)
-        self.equalizer_bin.link(self.spectrum)
-        self.spectrum.link(self.audio_sink)
+        self.source_caps.link(self.effects_bin)
+        self.effects_bin.link(self.audio_sink)
 
     def build_panorama_bin(self):
         self.panorama = Gst.ElementFactory.make('audiopanorama', None)
@@ -68,3 +53,16 @@ class SinkInputPipeline(PipelineBase):
                                  None)
         self.panorama_bin.append(panorama_output_level, self.on_filter_added,
                                  None)
+
+    def build_effects_bin(self):
+        self.effects_bin.append(self.limiter_bin, self.on_filter_added, None)
+        self.effects_bin.append(self.autovolume_level, self.on_filter_added,
+                                None)
+        self.effects_bin.append(self.panorama_bin, self.on_filter_added, None)
+        self.effects_bin.append(self.compressor_bin, self.on_filter_added,
+                                None)
+        self.effects_bin.append(self.reverb_bin, self.on_filter_added, None)
+        self.effects_bin.append(self.highpass_bin, self.on_filter_added, None)
+        self.effects_bin.append(self.lowpass_bin, self.on_filter_added, None)
+        self.effects_bin.append(self.equalizer_bin, self.on_filter_added, None)
+        self.effects_bin.append(self.spectrum, self.on_filter_added, None)

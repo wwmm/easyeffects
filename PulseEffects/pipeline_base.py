@@ -52,6 +52,8 @@ class PipelineBase(GObject.GObject):
 
         self.source_caps = Gst.ElementFactory.make("capsfilter", None)
 
+        self.effects_bin = GstInsertBin.InsertBin.new('effects_bin')
+
         self.spectrum = Gst.ElementFactory.make('spectrum', 'spectrum')
 
         self.audio_sink = Gst.ElementFactory.make('pulsesink', 'audio_sink')
