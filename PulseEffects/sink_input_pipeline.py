@@ -2,7 +2,8 @@
 
 import gi
 gi.require_version('Gst', '1.0')
-from gi.repository import GObject, Gst
+gi.require_version('GstInsertBin', '1.0')
+from gi.repository import GObject, Gst, GstInsertBin
 from PulseEffects.pipeline_base import PipelineBase
 
 
@@ -61,20 +62,9 @@ class SinkInputPipeline(PipelineBase):
 
         self.panorama.set_property('method', 'psychoacoustic')
 
-        self.panorama_bin = Gst.Bin.new('panorama_bin')
-        self.panorama_bin.add(self.panorama)
-        self.panorama_bin.add(panorama_input_level)
-        self.panorama_bin.add(panorama_output_level)
-
-        panorama_input_level.link(self.panorama)
-        self.panorama.link(panorama_output_level)
-
-        pad = panorama_input_level.get_static_pad('sink')
-        ghost_pad = Gst.GhostPad.new('panorama_bin_sink', pad)
-        ghost_pad.set_active(True)
-        self.panorama_bin.add_pad(ghost_pad)
-
-        pad = panorama_output_level.get_static_pad('src')
-        ghost_pad = Gst.GhostPad.new('panorama_bin_src', pad)
-        ghost_pad.set_active(True)
-        self.panorama_bin.add_pad(ghost_pad)
+        self.panorama_bin = GstInsertBin.InsertBin.new('panorama_bin')
+        self.panorama_bin.append(self.panorama, self.on_filter_added, None)
+        self.panorama_bin.append(panorama_input_level, self.on_filter_added,
+                                 None)
+        self.panorama_bin.append(panorama_output_level, self.on_filter_added,
+                                 None)

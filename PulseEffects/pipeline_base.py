@@ -3,9 +3,10 @@
 import logging
 
 import gi
-gi.require_version('Gst', '1.0')
 import numpy as np
-from gi.repository import GObject, Gst
+gi.require_version('Gst', '1.0')
+gi.require_version('GstInsertBin', '1.0')
+from gi.repository import GObject, Gst, GstInsertBin
 
 
 Gst.init(None)
@@ -79,6 +80,9 @@ class PipelineBase(GObject.GObject):
         self.build_lowpass_bin()
         self.build_equalizer_bin()
 
+    def on_filter_added(self, bin, element, success, user_data):
+        pass
+
     def build_limiter_bin(self):
         self.limiter = Gst.ElementFactory.make(
             'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter', None)
@@ -87,23 +91,12 @@ class PipelineBase(GObject.GObject):
         limiter_output_level = Gst.ElementFactory.make('level',
                                                        'limiter_output_level')
 
-        self.limiter_bin = Gst.Bin.new('limiter_bin')
-        self.limiter_bin.add(self.limiter)
-        self.limiter_bin.add(limiter_input_level)
-        self.limiter_bin.add(limiter_output_level)
-
-        limiter_input_level.link(self.limiter)
-        self.limiter.link(limiter_output_level)
-
-        pad = limiter_input_level.get_static_pad('sink')
-        ghost_pad = Gst.GhostPad.new('limiter_bin_sink', pad)
-        ghost_pad.set_active(True)
-        self.limiter_bin.add_pad(ghost_pad)
-
-        pad = limiter_output_level.get_static_pad('src')
-        ghost_pad = Gst.GhostPad.new('limiter_bin_src', pad)
-        ghost_pad.set_active(True)
-        self.limiter_bin.add_pad(ghost_pad)
+        self.limiter_bin = GstInsertBin.InsertBin.new('limiter_bin')
+        self.limiter_bin.append(self.limiter, self.on_filter_added, None)
+        self.limiter_bin.append(limiter_input_level, self.on_filter_added,
+                                None)
+        self.limiter_bin.append(limiter_output_level, self.on_filter_added,
+                                None)
 
     def build_compressor_bin(self):
         self.compressor = Gst.ElementFactory.make(
@@ -113,23 +106,12 @@ class PipelineBase(GObject.GObject):
         compressor_output_level = Gst.ElementFactory.make(
             'level', 'compressor_output_level')
 
-        self.compressor_bin = Gst.Bin.new('compressor_bin')
-        self.compressor_bin.add(self.compressor)
-        self.compressor_bin.add(compressor_input_level)
-        self.compressor_bin.add(compressor_output_level)
-
-        compressor_input_level.link(self.compressor)
-        self.compressor.link(compressor_output_level)
-
-        pad = compressor_input_level.get_static_pad('sink')
-        ghost_pad = Gst.GhostPad.new('compressor_bin_sink', pad)
-        ghost_pad.set_active(True)
-        self.compressor_bin.add_pad(ghost_pad)
-
-        pad = compressor_output_level.get_static_pad('src')
-        ghost_pad = Gst.GhostPad.new('compressor_bin_src', pad)
-        ghost_pad.set_active(True)
-        self.compressor_bin.add_pad(ghost_pad)
+        self.compressor_bin = GstInsertBin.InsertBin.new('compressor_bin')
+        self.compressor_bin.append(self.compressor, self.on_filter_added, None)
+        self.compressor_bin.append(compressor_input_level,
+                                   self.on_filter_added, None)
+        self.compressor_bin.append(compressor_output_level,
+                                   self.on_filter_added, None)
 
     def build_reverb_bin(self):
         self.freeverb = Gst.ElementFactory.make('freeverb', None)
@@ -138,23 +120,10 @@ class PipelineBase(GObject.GObject):
         reverb_output_level = Gst.ElementFactory.make('level',
                                                       'reverb_output_level')
 
-        self.reverb_bin = Gst.Bin.new('reverb_bin')
-        self.reverb_bin.add(self.freeverb)
-        self.reverb_bin.add(reverb_input_level)
-        self.reverb_bin.add(reverb_output_level)
-
-        reverb_input_level.link(self.freeverb)
-        self.freeverb.link(reverb_output_level)
-
-        pad = reverb_input_level.get_static_pad('sink')
-        ghost_pad = Gst.GhostPad.new('reverb_bin_sink', pad)
-        ghost_pad.set_active(True)
-        self.reverb_bin.add_pad(ghost_pad)
-
-        pad = reverb_output_level.get_static_pad('src')
-        ghost_pad = Gst.GhostPad.new('reverb_bin_src', pad)
-        ghost_pad.set_active(True)
-        self.reverb_bin.add_pad(ghost_pad)
+        self.reverb_bin = GstInsertBin.InsertBin.new('reverb_bin')
+        self.reverb_bin.append(self.freeverb, self.on_filter_added, None)
+        self.reverb_bin.append(reverb_input_level, self.on_filter_added, None)
+        self.reverb_bin.append(reverb_output_level, self.on_filter_added, None)
 
     def build_highpass_bin(self):
         self.highpass = Gst.ElementFactory.make('audiocheblimit', None)
@@ -167,23 +136,12 @@ class PipelineBase(GObject.GObject):
         self.highpass.set_property('type', 1)
         self.highpass.set_property('ripple', 0)
 
-        self.highpass_bin = Gst.Bin.new('highpass_bin')
-        self.highpass_bin.add(self.highpass)
-        self.highpass_bin.add(highpass_input_level)
-        self.highpass_bin.add(highpass_output_level)
-
-        highpass_input_level.link(self.highpass)
-        self.highpass.link(highpass_output_level)
-
-        pad = highpass_input_level.get_static_pad('sink')
-        ghost_pad = Gst.GhostPad.new('highpass_bin_sink', pad)
-        ghost_pad.set_active(True)
-        self.highpass_bin.add_pad(ghost_pad)
-
-        pad = highpass_output_level.get_static_pad('src')
-        ghost_pad = Gst.GhostPad.new('highpass_bin_src', pad)
-        ghost_pad.set_active(True)
-        self.highpass_bin.add_pad(ghost_pad)
+        self.highpass_bin = GstInsertBin.InsertBin.new('highpass_bin')
+        self.highpass_bin.append(self.highpass, self.on_filter_added, None)
+        self.highpass_bin.append(highpass_input_level, self.on_filter_added,
+                                 None)
+        self.highpass_bin.append(highpass_output_level, self.on_filter_added,
+                                 None)
 
     def build_lowpass_bin(self):
         self.lowpass = Gst.ElementFactory.make('audiocheblimit', None)
@@ -196,23 +154,12 @@ class PipelineBase(GObject.GObject):
         self.lowpass.set_property('type', 1)
         self.lowpass.set_property('ripple', 0)
 
-        self.lowpass_bin = Gst.Bin.new('lowpass_bin')
-        self.lowpass_bin.add(self.lowpass)
-        self.lowpass_bin.add(lowpass_input_level)
-        self.lowpass_bin.add(lowpass_output_level)
-
-        lowpass_input_level.link(self.lowpass)
-        self.lowpass.link(lowpass_output_level)
-
-        pad = lowpass_input_level.get_static_pad('sink')
-        ghost_pad = Gst.GhostPad.new('lowpass_bin_sink', pad)
-        ghost_pad.set_active(True)
-        self.lowpass_bin.add_pad(ghost_pad)
-
-        pad = lowpass_output_level.get_static_pad('src')
-        ghost_pad = Gst.GhostPad.new('lowpass_bin_src', pad)
-        ghost_pad.set_active(True)
-        self.lowpass_bin.add_pad(ghost_pad)
+        self.lowpass_bin = GstInsertBin.InsertBin.new('lowpass_bin')
+        self.lowpass_bin.append(self.lowpass, self.on_filter_added, None)
+        self.lowpass_bin.append(lowpass_input_level, self.on_filter_added,
+                                None)
+        self.lowpass_bin.append(lowpass_output_level, self.on_filter_added,
+                                None)
 
     def build_equalizer_bin(self):
         self.equalizer_input_gain = Gst.ElementFactory.make('volume', None)
@@ -249,27 +196,16 @@ class PipelineBase(GObject.GObject):
         self.eq_band0.set_property('type', 0)  # 0: peak type
         self.eq_band14.set_property('type', 0)  # 0: peak type
 
-        self.equalizer_bin = Gst.Bin.new('equalizer_bin')
-        self.equalizer_bin.add(self.equalizer_input_gain)
-        self.equalizer_bin.add(equalizer_input_level)
-        self.equalizer_bin.add(equalizer)
-        self.equalizer_bin.add(self.equalizer_output_gain)
-        self.equalizer_bin.add(equalizer_output_level)
-
-        self.equalizer_input_gain.link(equalizer_input_level)
-        equalizer_input_level.link(equalizer)
-        equalizer.link(self.equalizer_output_gain)
-        self.equalizer_output_gain.link(equalizer_output_level)
-
-        pad = self.equalizer_input_gain.get_static_pad('sink')
-        ghost_pad = Gst.GhostPad.new('equalizer_bin_sink', pad)
-        ghost_pad.set_active(True)
-        self.equalizer_bin.add_pad(ghost_pad)
-
-        pad = equalizer_output_level.get_static_pad('src')
-        ghost_pad = Gst.GhostPad.new('equalizer_bin_src', pad)
-        ghost_pad.set_active(True)
-        self.equalizer_bin.add_pad(ghost_pad)
+        self.equalizer_bin = GstInsertBin.InsertBin.new('equalizer_bin')
+        self.equalizer_bin.append(self.equalizer_input_gain,
+                                  self.on_filter_added, None)
+        self.equalizer_bin.append(equalizer_input_level, self.on_filter_added,
+                                  None)
+        self.equalizer_bin.append(equalizer, self.on_filter_added, None)
+        self.equalizer_bin.append(self.equalizer_output_gain,
+                                  self.on_filter_added, None)
+        self.equalizer_bin.append(equalizer_output_level, self.on_filter_added,
+                                  None)
 
     def set_state(self, state):
         if state == 'ready':
