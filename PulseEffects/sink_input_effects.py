@@ -13,8 +13,6 @@ from scipy.interpolate import CubicSpline
 class SinkInputEffects(EffectsUiBase, SinkInputPipeline):
 
     def __init__(self, sampling_rate):
-        self.old_limiter_attenuation = 0
-
         self.autovolume_enabled = False
         self.autovolume_target = -12  # dB
         self.autovolume_tolerance = 1  # dB
@@ -85,74 +83,11 @@ class SinkInputEffects(EffectsUiBase, SinkInputPipeline):
         if plugin == 'limiter_input_level':
             peak = msg.get_structure().get_value('peak')
 
-            left, right = peak[0], peak[1]
-
-            if left >= -99:
-                l_value = 10**(left / 20)
-                self.ui_limiter_input_level_left.set_value(l_value)
-                self.ui_limiter_input_level_left_label.set_text(
-                    str(round(left)))
-            else:
-                self.ui_limiter_input_level_left.set_value(0)
-                self.ui_limiter_input_level_left_label.set_text('-99')
-
-            if right >= -99:
-                r_value = 10**(right / 20)
-                self.ui_limiter_input_level_right.set_value(r_value)
-                self.ui_limiter_input_level_right_label.set_text(
-                    str(round(right)))
-            else:
-                self.ui_limiter_input_level_right.set_value(0)
-                self.ui_limiter_input_level_right_label.set_text('-99')
+            self.ui_update_limiter_input_level(peak)
         elif plugin == 'limiter_output_level':
             peak = msg.get_structure().get_value('peak')
 
-            left, right = peak[0], peak[1]
-
-            if left >= -99:
-                l_value = 10**(left / 20)
-                self.ui_limiter_output_level_left.set_value(l_value)
-                self.ui_limiter_output_level_left_label.set_text(
-                    str(round(left)))
-
-                # panorama input
-                self.ui_panorama_input_level_left.set_value(l_value)
-                self.ui_panorama_input_level_left_label.set_text(
-                    str(round(left)))
-            else:
-                self.ui_limiter_output_level_left.set_value(0)
-                self.ui_limiter_output_level_left_label.set_text('-99')
-
-                # panorama input
-                self.ui_panorama_input_level_left.set_value(0)
-                self.ui_panorama_input_level_left_label.set_text('-99')
-
-            if right >= -99:
-                r_value = 10**(right / 20)
-                self.ui_limiter_output_level_right.set_value(r_value)
-                self.ui_limiter_output_level_right_label.set_text(
-                    str(round(right)))
-
-                # panorama input
-                self.ui_panorama_input_level_right.set_value(r_value)
-                self.ui_panorama_input_level_right_label.set_text(
-                    str(round(left)))
-            else:
-                self.ui_limiter_output_level_right.set_value(0)
-                self.ui_limiter_output_level_right_label.set_text('-99')
-
-                # panorama input
-                self.ui_panorama_input_level_right.set_value(0)
-                self.ui_panorama_input_level_right_label.set_text('-99')
-
-            attenuation = round(self.limiter.get_property('attenuation'))
-
-            if attenuation != self.old_limiter_attenuation:
-                self.old_limiter_attenuation = attenuation
-
-                self.ui_limiter_attenuation_levelbar.set_value(attenuation)
-                self.ui_limiter_attenuation_level_label.set_text(
-                    str(round(attenuation)))
+            self.ui_update_limiter_output_level(peak)
         elif plugin == 'autovolume':
             if self.autovolume_enabled:
                 peak = msg.get_structure().get_value('peak')

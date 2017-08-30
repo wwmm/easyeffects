@@ -20,6 +20,7 @@ class EffectsUiBase():
 
         self.ui_window = self.builder.get_object('window')
 
+        self.old_limiter_attenuation = 0
         self.old_compressor_gain_reduction = 0
 
         # limiter widgets
@@ -927,6 +928,31 @@ class EffectsUiBase():
         else:
             widget_level_right.set_value(0)
             widget_level_right_label.set_text('-99')
+
+    def ui_update_limiter_input_level(self, peak):
+        widgets = [self.ui_limiter_input_level_left,
+                   self.ui_limiter_input_level_right,
+                   self.ui_limiter_input_level_left_label,
+                   self.ui_limiter_input_level_right_label]
+
+        self.ui_update_level(widgets, peak)
+
+    def ui_update_limiter_output_level(self, peak):
+        widgets = [self.ui_limiter_output_level_left,
+                   self.ui_limiter_output_level_right,
+                   self.ui_limiter_output_level_left_label,
+                   self.ui_limiter_output_level_right_label]
+
+        self.ui_update_level(widgets, peak)
+
+        attenuation = round(self.limiter.get_property('attenuation'))
+
+        if attenuation != self.old_limiter_attenuation:
+            self.old_limiter_attenuation = attenuation
+
+            self.ui_limiter_attenuation_levelbar.set_value(attenuation)
+            self.ui_limiter_attenuation_level_label.set_text(
+                str(round(attenuation)))
 
     def ui_update_compressor_input_level(self, peak):
         widgets = [self.ui_compressor_input_level_left,

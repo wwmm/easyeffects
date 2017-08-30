@@ -24,12 +24,7 @@ class SinkInputPipeline(PipelineBase):
     def build_pipeline(self):
         self.autovolume_level = Gst.ElementFactory.make('level', 'autovolume')
 
-        self.panorama = Gst.ElementFactory.make('audiopanorama', None)
-
-        self.panorama_output_level = Gst.ElementFactory.make(
-            'level', 'panorama_output_level')
-
-        self.panorama.set_property('method', 'psychoacoustic')
+        self.build_panorama_bin()
 
         self.pipeline.add(self.audio_src)
         self.pipeline.add(self.source_caps)
@@ -61,3 +56,11 @@ class SinkInputPipeline(PipelineBase):
         self.lowpass_bin.link(self.equalizer_bin)
         self.equalizer_bin.link(self.spectrum)
         self.spectrum.link(self.audio_sink)
+
+    def build_panorama_bin(self):
+        self.panorama = Gst.ElementFactory.make('audiopanorama', None)
+
+        self.panorama_output_level = Gst.ElementFactory.make(
+            'level', 'panorama_output_level')
+
+        self.panorama.set_property('method', 'psychoacoustic')
