@@ -32,8 +32,7 @@ class SinkInputPipeline(PipelineBase):
         self.pipeline.add(self.limiter)
         self.pipeline.add(self.limiter_output_level)
         self.pipeline.add(self.autovolume_level)
-        self.pipeline.add(self.panorama)
-        self.pipeline.add(self.panorama_output_level)
+        self.pipeline.add(self.panorama_bin)
         self.pipeline.add(self.compressor_bin)
         self.pipeline.add(self.reverb_bin)
         self.pipeline.add(self.highpass_bin)
@@ -47,9 +46,8 @@ class SinkInputPipeline(PipelineBase):
         self.limiter_input_level.link(self.limiter)
         self.limiter.link(self.limiter_output_level)
         self.limiter_output_level.link(self.autovolume_level)
-        self.autovolume_level.link(self.panorama)
-        self.panorama.link(self.panorama_output_level)
-        self.panorama_output_level.link(self.compressor_bin)
+        self.autovolume_level.link(self.panorama_bin)
+        self.panorama_bin.link(self.compressor_bin)
         self.compressor_bin.link(self.reverb_bin)
         self.reverb_bin.link(self.highpass_bin)
         self.highpass_bin.link(self.lowpass_bin)
@@ -60,7 +58,27 @@ class SinkInputPipeline(PipelineBase):
     def build_panorama_bin(self):
         self.panorama = Gst.ElementFactory.make('audiopanorama', None)
 
-        self.panorama_output_level = Gst.ElementFactory.make(
+        panorama_input_level = Gst.ElementFactory.make(
+            'level', 'panorama_input_level')
+        panorama_output_level = Gst.ElementFactory.make(
             'level', 'panorama_output_level')
 
         self.panorama.set_property('method', 'psychoacoustic')
+
+        self.panorama_bin = Gst.Bin.new('panorama_bin')
+        self.panorama_bin.add(self.panorama)
+        self.panorama_bin.add(panorama_input_level)
+        self.panorama_bin.add(panorama_output_level)
+
+        panorama_input_level.link(self.panorama)
+        self.panorama.link(panorama_output_level)
+
+        pad = panorama_input_level.get_static_pad('sink')
+        ghost_pad = Gst.GhostPad.new('panorama_bin_sink', pad)
+        ghost_pad.set_active(True)
+        self.panorama_bin.add_pad(ghost_pad)
+
+        pad = panorama_output_level.get_static_pad('src')
+        ghost_pad = Gst.GhostPad.new('panorama_bin_src', pad)
+        ghost_pad.set_active(True)
+        self.panorama_bin.add_pad(ghost_pad)
