@@ -82,6 +82,15 @@ class PipelineBase(GObject.GObject):
         self.build_lowpass_bin()
         self.build_equalizer_bin()
 
+        self.pipeline.add(self.audio_src)
+        self.pipeline.add(self.source_caps)
+        self.pipeline.add(self.effects_bin)
+        self.pipeline.add(self.audio_sink)
+
+        self.audio_src.link(self.source_caps)
+        self.source_caps.link(self.effects_bin)
+        self.effects_bin.link(self.audio_sink)
+
     def on_filter_added(self, bin, element, success, user_data):
         pass
 
