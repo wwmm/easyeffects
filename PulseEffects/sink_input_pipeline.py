@@ -28,9 +28,7 @@ class SinkInputPipeline(PipelineBase):
 
         self.pipeline.add(self.audio_src)
         self.pipeline.add(self.source_caps)
-        self.pipeline.add(self.limiter_input_level)
-        self.pipeline.add(self.limiter)
-        self.pipeline.add(self.limiter_output_level)
+        self.pipeline.add(self.limiter_bin)
         self.pipeline.add(self.autovolume_level)
         self.pipeline.add(self.panorama_bin)
         self.pipeline.add(self.compressor_bin)
@@ -42,10 +40,8 @@ class SinkInputPipeline(PipelineBase):
         self.pipeline.add(self.audio_sink)
 
         self.audio_src.link(self.source_caps)
-        self.source_caps.link(self.limiter_input_level)
-        self.limiter_input_level.link(self.limiter)
-        self.limiter.link(self.limiter_output_level)
-        self.limiter_output_level.link(self.autovolume_level)
+        self.source_caps.link(self.limiter_bin)
+        self.limiter_bin.link(self.autovolume_level)
         self.autovolume_level.link(self.panorama_bin)
         self.panorama_bin.link(self.compressor_bin)
         self.compressor_bin.link(self.reverb_bin)

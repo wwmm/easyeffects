@@ -51,17 +51,9 @@ class PipelineBase(GObject.GObject):
 
         self.source_caps = Gst.ElementFactory.make("capsfilter", None)
 
-        self.limiter = Gst.ElementFactory.make(
-            'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter', None)
-
         self.spectrum = Gst.ElementFactory.make('spectrum', 'spectrum')
 
         self.audio_sink = Gst.ElementFactory.make('pulsesink', 'audio_sink')
-
-        self.limiter_input_level = Gst.ElementFactory.make(
-            'level', 'limiter_input_level')
-        self.limiter_output_level = Gst.ElementFactory.make(
-            'level', 'limiter_output_level')
 
         self.audio_src.set_property('volume', 1.0)
         self.audio_src.set_property('mute', False)
@@ -80,11 +72,38 @@ class PipelineBase(GObject.GObject):
         self.spectrum.set_property('bands', self.spectrum_nbands)
         self.spectrum.set_property('threshold', self.spectrum_threshold)
 
+        self.build_limiter_bin()
         self.build_compressor_bin()
         self.build_reverb_bin()
         self.build_highpass_bin()
         self.build_lowpass_bin()
         self.build_equalizer_bin()
+
+    def build_limiter_bin(self):
+        self.limiter = Gst.ElementFactory.make(
+            'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter', None)
+        limiter_input_level = Gst.ElementFactory.make('level',
+                                                      'limiter_input_level')
+        limiter_output_level = Gst.ElementFactory.make('level',
+                                                       'limiter_output_level')
+
+        self.limiter_bin = Gst.Bin.new('limiter_bin')
+        self.limiter_bin.add(self.limiter)
+        self.limiter_bin.add(limiter_input_level)
+        self.limiter_bin.add(limiter_output_level)
+
+        limiter_input_level.link(self.limiter)
+        self.limiter.link(limiter_output_level)
+
+        pad = limiter_input_level.get_static_pad('sink')
+        ghost_pad = Gst.GhostPad.new('limiter_bin_sink', pad)
+        ghost_pad.set_active(True)
+        self.limiter_bin.add_pad(ghost_pad)
+
+        pad = limiter_output_level.get_static_pad('src')
+        ghost_pad = Gst.GhostPad.new('limiter_bin_src', pad)
+        ghost_pad.set_active(True)
+        self.limiter_bin.add_pad(ghost_pad)
 
     def build_compressor_bin(self):
         self.compressor = Gst.ElementFactory.make(
