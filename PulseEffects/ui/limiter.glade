@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.20.0 -->
+<interface domain="PulseEffects">
+  <requires lib="gtk+" version="3.20"/>
+  <object class="GtkAdjustment" id="autovolume_target">
+    <property name="lower">-99</property>
+    <property name="upper">-4</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_autovolume_target_value_changed" swapped="no"/>
+  </object>
+  <object class="GtkAdjustment" id="autovolume_threshold">
+    <property name="lower">-99</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_autovolume_threshold_value_changed" swapped="no"/>
+  </object>
+  <object class="GtkAdjustment" id="autovolume_tolerance">
+    <property name="lower">1</property>
+    <property name="upper">4</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_autovolume_tolerance_value_changed" swapped="no"/>
+  </object>
+  <object class="GtkAdjustment" id="autovolume_window">
+    <property name="lower">0.01</property>
+    <property name="upper">2</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">0.10000000000000001</property>
+    <signal name="value-changed" handler="on_autovolume_window_value_changed" swapped="no"/>
+  </object>
+  <object class="GtkAdjustment" id="limiter_input_gain_adjustment">
+    <property name="lower">-20</property>
+    <property name="upper">20</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_limiter_input_gain_value_changed" swapped="no"/>
+  </object>
+  <object class="GtkAdjustment" id="limiter_limit_adjustment">
+    <property name="lower">-20</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_limiter_limit_value_changed" swapped="no"/>
+  </object>
+  <object class="GtkAdjustment" id="limiter_release_time_adjustment">
+    <property name="lower">0.01</property>
+    <property name="upper">2</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">0.10000000000000001</property>
+    <signal name="value-changed" handler="on_limiter_release_time_value_changed" swapped="no"/>
+  </object>
+  <object class="GtkBox" id="window">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="valign">center</property>
+    <property name="orientation">vertical</property>
+    <property name="spacing">12</property>
+    <child>
+      <object class="GtkGrid">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="halign">center</property>
+        <property name="row_spacing">3</property>
+        <property name="column_spacing">18</property>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">center</property>
+            <property name="label" translatable="yes">Input Gain [dB]</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSpinButton" id="limiter_input_gain">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="input_purpose">number</property>
+            <property name="adjustment">limiter_input_gain_adjustment</property>
+            <property name="numeric">True</property>
+            <property name="update_policy">if-valid</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">center</property>
+            <property name="label" translatable="yes">Limit [dB]</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSpinButton" id="limiter_limit">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="input_purpose">number</property>
+            <property name="adjustment">limiter_limit_adjustment</property>
+            <property name="numeric">True</property>
+            <property name="update_policy">if-valid</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">center</property>
+            <property name="label" translatable="yes">Release [s]</property>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSpinButton" id="limiter_release_time">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="width_chars">4</property>
+            <property name="input_purpose">number</property>
+            <property name="adjustment">limiter_release_time_adjustment</property>
+            <property name="digits">2</property>
+            <property name="numeric">True</property>
+            <property name="update_policy">if-valid</property>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkGrid">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="column_spacing">6</property>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">start</property>
+            <property name="label" translatable="yes">Input</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="hexpand">True</property>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="valign">center</property>
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkLevelBar" id="limiter_input_level_left">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLevelBar" id="limiter_input_level_right">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="limiter_input_level_left_label">
+                <property name="visible">True</property>
+                <property name="sensitive">False</property>
+                <property name="can_focus">False</property>
+                <property name="label">0</property>
+                <property name="width_chars">3</property>
+                <property name="max_width_chars">3</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSeparator">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="limiter_input_level_right_label">
+                <property name="visible">True</property>
+                <property name="sensitive">False</property>
+                <property name="can_focus">False</property>
+                <property name="label">1</property>
+                <property name="width_chars">3</property>
+                <property name="max_width_chars">3</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">start</property>
+            <property name="label" translatable="yes">Output</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="hexpand">True</property>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="valign">center</property>
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkLevelBar" id="limiter_output_level_left">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLevelBar" id="limiter_output_level_right">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="limiter_output_level_left_label">
+                <property name="visible">True</property>
+                <property name="sensitive">False</property>
+                <property name="can_focus">False</property>
+                <property name="label">0</property>
+                <property name="width_chars">3</property>
+                <property name="max_width_chars">3</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSeparator">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="limiter_output_level_right_label">
+                <property name="visible">True</property>
+                <property name="sensitive">False</property>
+                <property name="can_focus">False</property>
+                <property name="label">1</property>
+                <property name="width_chars">3</property>
+                <property name="max_width_chars">3</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">start</property>
+            <property name="label" translatable="yes">Attenuation</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="hexpand">True</property>
+            <child>
+              <object class="GtkLevelBar" id="limiter_attenuation_levelbar">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="valign">center</property>
+                <property name="margin_top">4</property>
+                <property name="hexpand">True</property>
+                <property name="max_value">70</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="limiter_attenuation_level_label">
+                <property name="visible">True</property>
+                <property name="sensitive">False</property>
+                <property name="can_focus">False</property>
+                <property name="label">0</property>
+                <property name="width_chars">2</property>
+                <property name="max_width_chars">2</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkBox" id="autovolume_box">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="halign">center</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">12</property>
+        <child>
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">center</property>
+            <property name="column_spacing">6</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Auto Volume</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSwitch" id="autovolume_enable">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <signal name="state-set" handler="on_autovolume_enable_state_set" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">center</property>
+            <property name="column_spacing">18</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="label" translatable="yes">Window [s]</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="label" translatable="yes">Target [dB]</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="label" translatable="yes">Tolerance [dB]</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="label" translatable="yes">Threshold [dB]</property>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="width_chars">4</property>
+                <property name="text">0,01</property>
+                <property name="input_purpose">number</property>
+                <property name="adjustment">autovolume_window</property>
+                <property name="digits">2</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
+                <property name="value">0.01</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="width_chars">3</property>
+                <property name="text">-4</property>
+                <property name="input_purpose">number</property>
+                <property name="adjustment">autovolume_target</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
+                <property name="value">-4</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="width_chars">3</property>
+                <property name="text">1</property>
+                <property name="input_purpose">number</property>
+                <property name="adjustment">autovolume_tolerance</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
+                <property name="value">1</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="width_chars">3</property>
+                <property name="text">0</property>
+                <property name="input_purpose">number</property>
+                <property name="adjustment">autovolume_threshold</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">3</property>
+      </packing>
+    </child>
+  </object>
+</interface>

@@ -4,12 +4,12 @@ import os
 
 import gi
 import numpy as np
-gi.require_version('Gst', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, GLib, Gtk
+from gi.repository import Gio, Gtk
 from PulseEffects.compressor import Compressor
 from PulseEffects.equalizer import Equalizer
 from PulseEffects.highpass import Highpass
+from PulseEffects.limiter import Limiter
 from PulseEffects.lowpass import Lowpass
 from PulseEffects.panorama import Panorama
 from PulseEffects.reverb import Reverb
@@ -24,11 +24,6 @@ class SinkInputEffects(SinkInputPipeline):
 
         self.module_path = os.path.dirname(__file__)
 
-        self.autovolume_enabled = False
-        self.autovolume_target = -12  # dB
-        self.autovolume_tolerance = 1  # dB
-        self.autovolume_threshold = -50  # autovolume only if avg > threshold
-
         self.settings = Gio.Settings('com.github.wwmm.pulseeffects.sinkinputs')
 
         self.builder = Gtk.Builder()
@@ -39,18 +34,7 @@ class SinkInputEffects(SinkInputPipeline):
 
         self.stack = self.builder.get_object('stack')
 
-        # self.ui_autovolume_enable = self.builder.get_object(
-        #     'autovolume_enable')
-        # self.ui_autovolume_window = self.builder.get_object(
-        #     'autovolume_window')
-        # self.ui_autovolume_target = self.builder.get_object(
-        #     'autovolume_target')
-        # self.ui_autovolume_tolerance = self.builder.get_object(
-        #     'autovolume_tolerance')
-        # self.ui_autovolume_threshold = self.builder.get_object(
-        #     'autovolume_threshold')
-        #
-
+        self.limiter = Limiter(self.settings)
         self.panorama = Panorama(self.settings)
         self.compressor = Compressor(self.settings)
         self.reverb = Reverb(self.settings)
@@ -58,6 +42,7 @@ class SinkInputEffects(SinkInputPipeline):
         self.lowpass = Lowpass(self.settings)
         self.equalizer = Equalizer(self.settings)
 
+        self.stack.add_titled(self.limiter.ui_window, 'Limiter', 'Limiter')
         self.stack.add_titled(self.panorama.ui_window, 'Panorama', 'Panorama')
         self.stack.add_titled(self.compressor.ui_window, 'Compressor',
                               'Compressor')
@@ -67,6 +52,8 @@ class SinkInputEffects(SinkInputPipeline):
         self.stack.add_titled(self.equalizer.ui_window, 'Equalizer',
                               'Equalizer')
 
+        # adding effects to the pipeline
+        self.effects_bin.append(self.limiter.bin, self.on_filter_added, None)
         self.effects_bin.append(self.panorama.bin, self.on_filter_added, None)
         self.effects_bin.append(self.compressor.bin, self.on_filter_added,
                                 None)
@@ -76,45 +63,25 @@ class SinkInputEffects(SinkInputPipeline):
         self.effects_bin.append(self.equalizer.bin, self.on_filter_added, None)
         self.effects_bin.append(self.spectrum, self.on_filter_added, None)
 
-        # self.connect('new_autovolume', self.on_new_autovolume)
-
-    def auto_gain(self, max_value):
-        max_value = int(max_value)
-
-        if max_value > self.autovolume_target + self.autovolume_tolerance:
-            gain = self.limiter.get_property('input-gain')
-
-            if gain - 1 >= -20:
-                gain = gain - 1
-
-                self.emit('new_autovolume', gain)
-        elif max_value < self.autovolume_target - self.autovolume_tolerance:
-            gain = self.limiter.get_property('input-gain')
-
-            if gain + 1 <= 20:
-                gain = gain + 1
-
-                self.emit('new_autovolume', gain)
-
     def on_message_element(self, bus, msg):
         plugin = msg.src.get_name()
 
         if plugin == 'limiter_input_level':
             peak = msg.get_structure().get_value('peak')
 
-            # self.ui_update_limiter_input_level(peak)
+            self.limiter.ui_update_limiter_input_level(peak)
         elif plugin == 'limiter_output_level':
             peak = msg.get_structure().get_value('peak')
 
-            # self.ui_update_limiter_output_level(peak)
+            self.limiter.ui_update_limiter_output_level(peak)
         elif plugin == 'autovolume':
-            if self.autovolume_enabled:
+            if self.limiter.autovolume_enabled:
                 peak = msg.get_structure().get_value('peak')
 
                 max_value = max(peak)
 
-                if max_value > self.autovolume_threshold:
-                    self.auto_gain(max_value)
+                if max_value > self.limiter.autovolume_threshold:
+                    self.limiter.auto_gain(max_value)
         elif plugin == 'panorama_input_level':
             peak = msg.get_structure().get_value('peak')
 
@@ -181,30 +148,8 @@ class SinkInputEffects(SinkInputPipeline):
 
         return True
 
-    def init_autovolume_ui(self):
-        self.autovolume_enabled = self.settings.get_value(
-            'autovolume-state').unpack()
-        autovolume_window = self.settings.get_value(
-            'autovolume-window').unpack()
-        self.autovolume_target = self.settings.get_value(
-            'autovolume-target').unpack()
-        self.autovolume_tolerance = self.settings.get_value(
-            'autovolume-tolerance').unpack()
-        self.autovolume_threshold = self.settings.get_value(
-            'autovolume-threshold').unpack()
-
-        self.ui_autovolume_enable.set_state(self.autovolume_enabled)
-        self.ui_autovolume_window.set_value(autovolume_window)
-        self.ui_autovolume_target.set_value(self.autovolume_target)
-        self.ui_autovolume_tolerance.set_value(self.autovolume_tolerance)
-        self.ui_autovolume_threshold.set_value(self.autovolume_threshold)
-
-        if self.autovolume_enabled:
-            self.enable_autovolume(True)
-
     def init_ui(self):
-        # self.init_limiter_ui()
-        # self.init_autovolume_ui()
+        self.limiter.init_ui()
         self.panorama.init_ui()
         self.compressor.init_ui()
         self.reverb.init_ui()
@@ -212,90 +157,8 @@ class SinkInputEffects(SinkInputPipeline):
         self.lowpass.init_ui()
         self.equalizer.init_ui()
 
-    def enable_autovolume(self, state):
-        self.autovolume_enabled = state
-
-        if state:
-            window = self.settings.get_value('autovolume-window').unpack()
-            target = self.settings.get_value('autovolume-target').unpack()
-            tolerance = self.settings.get_value(
-                'autovolume-tolerance').unpack()
-
-            self.ui_limiter_input_gain.set_value(-10)
-            self.ui_limiter_limit.set_value(target + tolerance)
-            self.ui_limiter_release_time.set_value(window)
-
-            self.ui_limiter_input_gain.set_sensitive(False)
-            self.ui_limiter_limit.set_sensitive(False)
-            self.ui_limiter_release_time.set_sensitive(False)
-        else:
-            self.ui_limiter_input_gain.set_value(-10)
-            self.ui_limiter_limit.set_value(0)
-            self.ui_limiter_release_time.set_value(1.0)
-
-            self.ui_limiter_input_gain.set_sensitive(True)
-            self.ui_limiter_limit.set_sensitive(True)
-            self.ui_limiter_release_time.set_sensitive(True)
-
-        out = GLib.Variant('b', state)
-        self.settings.set_value('autovolume-state', out)
-
-    def on_autovolume_enable_state_set(self, obj, state):
-        self.enable_autovolume(state)
-
-    def on_autovolume_window_value_changed(self, obj):
-        value = obj.get_value()
-
-        # value must be in seconds
-        self.autovolume_level.set_property('interval', int(value * 1000000000))
-
-        self.ui_limiter_release_time.set_value(value)
-
-        out = GLib.Variant('d', value)
-        self.settings.set_value('autovolume-window', out)
-
-    def on_autovolume_target_value_changed(self, obj):
-        value = obj.get_value()
-
-        self.autovolume_target = value
-
-        tolerance = self.settings.get_value('autovolume-tolerance').unpack()
-
-        self.ui_limiter_limit.set_value(value + tolerance)
-
-        out = GLib.Variant('i', value)
-        self.settings.set_value('autovolume-target', out)
-
-    def on_autovolume_tolerance_value_changed(self, obj):
-        value = obj.get_value()
-
-        self.autovolume_tolerance = value
-
-        target = self.settings.get_value('autovolume-target').unpack()
-
-        self.ui_limiter_limit.set_value(target + value)
-
-        out = GLib.Variant('i', value)
-        self.settings.set_value('autovolume-tolerance', out)
-
-    def on_autovolume_threshold_value_changed(self, obj):
-        value = obj.get_value()
-
-        self.autovolume_threshold = value
-
-        out = GLib.Variant('i', value)
-        self.settings.set_value('autovolume-threshold', out)
-
-    def on_new_autovolume(self, obj, gain):
-        self.ui_limiter_input_gain.set_value(gain)
-
     def reset(self):
-        self.settings.reset('limiter-user')
-        self.settings.reset('autovolume-state')
-        self.settings.reset('autovolume-window')
-        self.settings.reset('autovolume-target')
-        self.settings.reset('autovolume-tolerance')
-        self.settings.reset('autovolume-threshold')
+        self.limiter.reset()
         self.panorama.reset()
         self.compressor.reset()
         self.reverb.reset()
