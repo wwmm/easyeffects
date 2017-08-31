@@ -13,6 +13,7 @@ from scipy.interpolate import CubicSpline
 from PulseEffects.equalizer import Equalizer
 from PulseEffects.lowpass import Lowpass
 from PulseEffects.highpass import Highpass
+from PulseEffects.reverb import Reverb
 
 
 class SinkInputEffects(SinkInputPipeline):
@@ -68,15 +69,18 @@ class SinkInputEffects(SinkInputPipeline):
         # self.ui_panorama_output_level_right_label = self.builder.get_object(
         #     'panorama_output_level_right_label')
 
+        self.reverb = Reverb(self.settings)
         self.highpass = Highpass(self.settings)
         self.lowpass = Lowpass(self.settings)
         self.equalizer = Equalizer(self.settings)
 
-        self.stack.add_titled(self.highpass.ui_window, 'Highpass', 'Highpass')
-        self.stack.add_titled(self.lowpass.ui_window, 'Lowpass', 'Lowpass')
+        self.stack.add_titled(self.reverb.ui_window, 'Reverb', 'Reverberation')
+        self.stack.add_titled(self.highpass.ui_window, 'Highpass', 'High pass')
+        self.stack.add_titled(self.lowpass.ui_window, 'Lowpass', 'Low pass')
         self.stack.add_titled(self.equalizer.ui_window, 'Equalizer',
                               'Equalizer')
 
+        self.effects_bin.append(self.reverb.bin, self.on_filter_added, None)
         self.effects_bin.append(self.highpass.bin, self.on_filter_added, None)
         self.effects_bin.append(self.lowpass.bin, self.on_filter_added, None)
         self.effects_bin.append(self.equalizer.bin, self.on_filter_added, None)
@@ -159,11 +163,11 @@ class SinkInputEffects(SinkInputPipeline):
         elif plugin == 'reverb_input_level':
             peak = msg.get_structure().get_value('peak')
 
-            # self.ui_update_reverb_input_level(peak)
+            self.reverb.ui_update_reverb_input_level(peak)
         elif plugin == 'reverb_output_level':
             peak = msg.get_structure().get_value('peak')
 
-            self.ui_update_reverb_output_level(peak)
+            self.reverb.ui_update_reverb_output_level(peak)
         elif plugin == 'highpass_input_level':
             peak = msg.get_structure().get_value('peak')
 
@@ -239,7 +243,7 @@ class SinkInputEffects(SinkInputPipeline):
         # self.init_autovolume_ui()
         # self.init_panorama_ui()
         # self.init_compressor_ui()
-        # self.init_reverb_ui()
+        self.reverb.init_ui()
         self.highpass.init_ui()
         self.lowpass.init_ui()
         self.equalizer.init_ui()
@@ -338,8 +342,8 @@ class SinkInputEffects(SinkInputPipeline):
         self.settings.reset('autovolume-threshold')
         self.settings.reset('panorama-position')
         self.settings.reset('compressor-user')
-        self.settings.reset('reverb-user')
 
+        self.reverb.reset()
         self.highpass.reset()
         self.lowpass.reset()
         self.equalizer.reset()
