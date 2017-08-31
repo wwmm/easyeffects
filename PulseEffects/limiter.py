@@ -186,6 +186,8 @@ class Limiter():
             self.ui_limiter_limit.set_sensitive(True)
             self.ui_limiter_release_time.set_sensitive(True)
 
+        self.autovolume_level.set_property('post-messages', state)
+
         out = GLib.Variant('b', state)
         self.settings.set_value('autovolume-state', out)
 

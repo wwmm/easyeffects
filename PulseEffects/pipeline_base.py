@@ -74,13 +74,6 @@ class PipelineBase(GObject.GObject):
         self.spectrum.set_property('bands', self.spectrum_nbands)
         self.spectrum.set_property('threshold', self.spectrum_threshold)
 
-        self.build_limiter_bin()
-        self.build_compressor_bin()
-        self.build_reverb_bin()
-        self.build_highpass_bin()
-        self.build_lowpass_bin()
-        self.build_equalizer_bin()
-
         self.pipeline.add(self.audio_src)
         self.pipeline.add(self.source_caps)
         self.pipeline.add(self.effects_bin)
@@ -92,130 +85,6 @@ class PipelineBase(GObject.GObject):
 
     def on_filter_added(self, bin, element, success, user_data):
         pass
-
-    def build_limiter_bin(self):
-        self.limiter = Gst.ElementFactory.make(
-            'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter', None)
-        limiter_input_level = Gst.ElementFactory.make('level',
-                                                      'limiter_input_level')
-        limiter_output_level = Gst.ElementFactory.make('level',
-                                                       'limiter_output_level')
-
-        self.limiter_bin = GstInsertBin.InsertBin.new('limiter_bin')
-        self.limiter_bin.append(self.limiter, self.on_filter_added, None)
-        self.limiter_bin.append(limiter_input_level, self.on_filter_added,
-                                None)
-        self.limiter_bin.append(limiter_output_level, self.on_filter_added,
-                                None)
-
-    def build_compressor_bin(self):
-        self.compressor = Gst.ElementFactory.make(
-            'ladspa-sc4-1882-so-sc4', None)
-        compressor_input_level = Gst.ElementFactory.make(
-            'level', 'compressor_input_level')
-        compressor_output_level = Gst.ElementFactory.make(
-            'level', 'compressor_output_level')
-
-        self.compressor_bin = GstInsertBin.InsertBin.new('compressor_bin')
-        self.compressor_bin.append(self.compressor, self.on_filter_added, None)
-        self.compressor_bin.append(compressor_input_level,
-                                   self.on_filter_added, None)
-        self.compressor_bin.append(compressor_output_level,
-                                   self.on_filter_added, None)
-
-    def build_reverb_bin(self):
-        self.freeverb = Gst.ElementFactory.make('freeverb', None)
-        reverb_input_level = Gst.ElementFactory.make('level',
-                                                     'reverb_input_level')
-        reverb_output_level = Gst.ElementFactory.make('level',
-                                                      'reverb_output_level')
-
-        self.reverb_bin = GstInsertBin.InsertBin.new('reverb_bin')
-        self.reverb_bin.append(self.freeverb, self.on_filter_added, None)
-        self.reverb_bin.append(reverb_input_level, self.on_filter_added, None)
-        self.reverb_bin.append(reverb_output_level, self.on_filter_added, None)
-
-    def build_highpass_bin(self):
-        self.highpass = Gst.ElementFactory.make('audiocheblimit', None)
-        highpass_input_level = Gst.ElementFactory.make('level',
-                                                       'highpass_input_level')
-        highpass_output_level = Gst.ElementFactory.make(
-            'level', 'highpass_output_level')
-
-        self.highpass.set_property('mode', 'high-pass')
-        self.highpass.set_property('type', 1)
-        self.highpass.set_property('ripple', 0)
-
-        self.highpass_bin = GstInsertBin.InsertBin.new('highpass_bin')
-        self.highpass_bin.append(self.highpass, self.on_filter_added, None)
-        self.highpass_bin.append(highpass_input_level, self.on_filter_added,
-                                 None)
-        self.highpass_bin.append(highpass_output_level, self.on_filter_added,
-                                 None)
-
-    def build_lowpass_bin(self):
-        self.lowpass = Gst.ElementFactory.make('audiocheblimit', None)
-        lowpass_input_level = Gst.ElementFactory.make('level',
-                                                      'lowpass_input_level')
-        lowpass_output_level = Gst.ElementFactory.make('level',
-                                                       'lowpass_output_level')
-
-        self.lowpass.set_property('mode', 'low-pass')
-        self.lowpass.set_property('type', 1)
-        self.lowpass.set_property('ripple', 0)
-
-        self.lowpass_bin = GstInsertBin.InsertBin.new('lowpass_bin')
-        self.lowpass_bin.append(self.lowpass, self.on_filter_added, None)
-        self.lowpass_bin.append(lowpass_input_level, self.on_filter_added,
-                                None)
-        self.lowpass_bin.append(lowpass_output_level, self.on_filter_added,
-                                None)
-
-    def build_equalizer_bin(self):
-        self.equalizer_input_gain = Gst.ElementFactory.make('volume', None)
-        self.equalizer_output_gain = Gst.ElementFactory.make('volume', None)
-        equalizer = Gst.ElementFactory.make('equalizer-nbands', None)
-        equalizer_input_level = Gst.ElementFactory.make(
-            'level', 'equalizer_input_level')
-        equalizer_output_level = Gst.ElementFactory.make(
-            'level', 'equalizer_output_level')
-
-        equalizer.set_property('num-bands', 15)
-
-        self.eq_band0 = equalizer.get_child_by_index(0)
-        self.eq_band1 = equalizer.get_child_by_index(1)
-        self.eq_band2 = equalizer.get_child_by_index(2)
-        self.eq_band3 = equalizer.get_child_by_index(3)
-        self.eq_band4 = equalizer.get_child_by_index(4)
-        self.eq_band5 = equalizer.get_child_by_index(5)
-        self.eq_band6 = equalizer.get_child_by_index(6)
-        self.eq_band7 = equalizer.get_child_by_index(7)
-        self.eq_band8 = equalizer.get_child_by_index(8)
-        self.eq_band9 = equalizer.get_child_by_index(9)
-        self.eq_band10 = equalizer.get_child_by_index(10)
-        self.eq_band11 = equalizer.get_child_by_index(11)
-        self.eq_band12 = equalizer.get_child_by_index(12)
-        self.eq_band13 = equalizer.get_child_by_index(13)
-        self.eq_band14 = equalizer.get_child_by_index(14)
-
-        # It seems there is a bug in the low shelf filter.
-        # When we increase the lower shelf gain higher frequencies
-        # are attenuated. Setting the first band to peak type instead of
-        # shelf fixes this.
-
-        self.eq_band0.set_property('type', 0)  # 0: peak type
-        self.eq_band14.set_property('type', 0)  # 0: peak type
-
-        self.equalizer_bin = GstInsertBin.InsertBin.new('equalizer_bin')
-        self.equalizer_bin.append(self.equalizer_input_gain,
-                                  self.on_filter_added, None)
-        self.equalizer_bin.append(equalizer_input_level, self.on_filter_added,
-                                  None)
-        self.equalizer_bin.append(equalizer, self.on_filter_added, None)
-        self.equalizer_bin.append(self.equalizer_output_gain,
-                                  self.on_filter_added, None)
-        self.equalizer_bin.append(equalizer_output_level, self.on_filter_added,
-                                  None)
 
     def set_state(self, state):
         if state == 'ready':
@@ -327,40 +196,6 @@ class PipelineBase(GObject.GObject):
         self.audio_src.set_property('latency-time', value)
         self.audio_sink.set_property('latency-time', value)
         self.set_state('playing')
-
-    def print_eq_freqs(self):
-        print(self.eq_band0.get_property('freq'))
-        print(self.eq_band1.get_property('freq'))
-        print(self.eq_band2.get_property('freq'))
-        print(self.eq_band3.get_property('freq'))
-        print(self.eq_band4.get_property('freq'))
-        print(self.eq_band5.get_property('freq'))
-        print(self.eq_band6.get_property('freq'))
-        print(self.eq_band7.get_property('freq'))
-        print(self.eq_band8.get_property('freq'))
-        print(self.eq_band9.get_property('freq'))
-        print(self.eq_band10.get_property('freq'))
-        print(self.eq_band11.get_property('freq'))
-        print(self.eq_band12.get_property('freq'))
-        print(self.eq_band13.get_property('freq'))
-        print(self.eq_band14.get_property('freq'))
-
-    def print_eq_bandwwidths(self):
-        print(self.eq_band0.get_property('bandwidth'))
-        print(self.eq_band1.get_property('bandwidth'))
-        print(self.eq_band2.get_property('bandwidth'))
-        print(self.eq_band3.get_property('bandwidth'))
-        print(self.eq_band4.get_property('bandwidth'))
-        print(self.eq_band5.get_property('bandwidth'))
-        print(self.eq_band6.get_property('bandwidth'))
-        print(self.eq_band7.get_property('bandwidth'))
-        print(self.eq_band8.get_property('bandwidth'))
-        print(self.eq_band9.get_property('bandwidth'))
-        print(self.eq_band10.get_property('bandwidth'))
-        print(self.eq_band11.get_property('bandwidth'))
-        print(self.eq_band12.get_property('bandwidth'))
-        print(self.eq_band13.get_property('bandwidth'))
-        print(self.eq_band14.get_property('bandwidth'))
 
     def calc_spectrum_freqs(self):
         self.spectrum_freqs = []
