@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-31 18:06-0300\n"
-"PO-Revision-Date: 2017-08-31 18:07-0300\n"
+"POT-Creation-Date: 2017-08-31 18:53-0300\n"
+"PO-Revision-Date: 2017-08-31 18:54-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
@@ -20,6 +20,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: ../PulseEffects/sink_input_effects.py:50
+#: ../PulseEffects/source_output_effects.py:51
 msgid "Input Limiter"
 msgstr "Limitador de Entrada"
 
@@ -28,22 +29,27 @@ msgid "Panorama"
 msgstr "Panorama"
 
 #: ../PulseEffects/sink_input_effects.py:54
+#: ../PulseEffects/source_output_effects.py:53
 msgid "Compressor"
 msgstr "Compressor"
 
 #: ../PulseEffects/sink_input_effects.py:56
+#: ../PulseEffects/source_output_effects.py:55
 msgid "Reverberation"
 msgstr "Reverberação"
 
 #: ../PulseEffects/sink_input_effects.py:58
+#: ../PulseEffects/source_output_effects.py:57
 msgid "High pass"
 msgstr "Passa Alta"
 
 #: ../PulseEffects/sink_input_effects.py:60
+#: ../PulseEffects/source_output_effects.py:59
 msgid "Low pass"
 msgstr "Passa Baixa"
 
 #: ../PulseEffects/sink_input_effects.py:62
+#: ../PulseEffects/source_output_effects.py:61
 msgid "Equalizer"
 msgstr "Equalizador"
 

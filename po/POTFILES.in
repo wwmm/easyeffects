@@ -1,4 +1,5 @@
 ../PulseEffects/sink_input_effects.py
+../PulseEffects/source_output_effects.py
 ../PulseEffects/ui/about.glade
 ../PulseEffects/ui/headerbar.glade
 ../PulseEffects/ui/main_ui.glade
