@@ -4,182 +4,79 @@ import os
 
 import gi
 gi.require_version('Gst', '1.0')
+gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import GLib, Gtk
+from gi.repository import GLib, Gst, GstInsertBin, Gtk
+from PulseEffectsCalibration.application import Application as Calibration
 
 
-class EffectsUiBase():
+Gst.init(None)
 
-    def __init__(self, builder_path, settings):
-        self.module_path = os.path.dirname(__file__)
 
+class Equalizer():
+
+    def __init__(self, settings):
         self.settings = settings
+        self.module_path = os.path.dirname(__file__)
 
         self.builder = Gtk.Builder()
 
-        self.builder.add_from_file(self.module_path + builder_path)
+        self.builder.add_from_file(self.module_path + '/ui/equalizer.glade')
 
+        self.build_equalizer_bin()
+
+        self.load_ui()
+
+        self.builder.connect_signals(self)
+
+    def on_filter_added(self, bin, element, success, user_data):
+        pass
+
+    def build_equalizer_bin(self):
+        self.equalizer_input_gain = Gst.ElementFactory.make('volume', None)
+        self.equalizer_output_gain = Gst.ElementFactory.make('volume', None)
+        equalizer = Gst.ElementFactory.make('equalizer-nbands', None)
+        equalizer_input_level = Gst.ElementFactory.make(
+            'level', 'equalizer_input_level')
+        equalizer_output_level = Gst.ElementFactory.make(
+            'level', 'equalizer_output_level')
+
+        equalizer.set_property('num-bands', 15)
+
+        self.eq_band0 = equalizer.get_child_by_index(0)
+        self.eq_band1 = equalizer.get_child_by_index(1)
+        self.eq_band2 = equalizer.get_child_by_index(2)
+        self.eq_band3 = equalizer.get_child_by_index(3)
+        self.eq_band4 = equalizer.get_child_by_index(4)
+        self.eq_band5 = equalizer.get_child_by_index(5)
+        self.eq_band6 = equalizer.get_child_by_index(6)
+        self.eq_band7 = equalizer.get_child_by_index(7)
+        self.eq_band8 = equalizer.get_child_by_index(8)
+        self.eq_band9 = equalizer.get_child_by_index(9)
+        self.eq_band10 = equalizer.get_child_by_index(10)
+        self.eq_band11 = equalizer.get_child_by_index(11)
+        self.eq_band12 = equalizer.get_child_by_index(12)
+        self.eq_band13 = equalizer.get_child_by_index(13)
+        self.eq_band14 = equalizer.get_child_by_index(14)
+
+        # It seems there is a bug in the low shelf filter.
+        # When we increase the lower shelf gain higher frequencies
+        # are attenuated. Setting the first band to peak type instead of
+        # shelf fixes this.
+
+        self.eq_band0.set_property('type', 0)  # 0: peak type
+        self.eq_band14.set_property('type', 0)  # 0: peak type
+
+        self.bin = GstInsertBin.InsertBin.new('equalizer_bin')
+
+        self.bin.append(self.equalizer_input_gain, self.on_filter_added, None)
+        self.bin.append(equalizer_input_level, self.on_filter_added, None)
+        self.bin.append(equalizer, self.on_filter_added, None)
+        self.bin.append(self.equalizer_output_gain, self.on_filter_added, None)
+        self.bin.append(equalizer_output_level, self.on_filter_added, None)
+
+    def load_ui(self):
         self.ui_window = self.builder.get_object('window')
-
-        self.old_limiter_attenuation = 0
-        self.old_compressor_gain_reduction = 0
-
-        # limiter widgets
-
-        self.ui_limiter_input_gain = self.builder.get_object(
-            'limiter_input_gain')
-        self.ui_limiter_limit = self.builder.get_object(
-            'limiter_limit')
-        self.ui_limiter_release_time = self.builder.get_object(
-            'limiter_release_time')
-        self.ui_limiter_attenuation_levelbar = self.builder.get_object(
-            'limiter_attenuation_levelbar')
-
-        self.ui_limiter_attenuation_levelbar.add_offset_value(
-            'GTK_LEVEL_BAR_OFFSET_LOW', 20)
-        self.ui_limiter_attenuation_levelbar.add_offset_value(
-            'GTK_LEVEL_BAR_OFFSET_HIGH', 50)
-        self.ui_limiter_attenuation_levelbar.add_offset_value(
-            'GTK_LEVEL_BAR_OFFSET_FULL', 70)
-
-        self.ui_limiter_input_level_left = self.builder.get_object(
-            'limiter_input_level_left')
-        self.ui_limiter_input_level_right = self.builder.get_object(
-            'limiter_input_level_right')
-        self.ui_limiter_output_level_left = self.builder.get_object(
-            'limiter_output_level_left')
-        self.ui_limiter_output_level_right = self.builder.get_object(
-            'limiter_output_level_right')
-
-        self.ui_limiter_input_level_left_label = self.builder.get_object(
-            'limiter_input_level_left_label')
-        self.ui_limiter_input_level_right_label = self.builder.get_object(
-            'limiter_input_level_right_label')
-        self.ui_limiter_output_level_left_label = self.builder.get_object(
-            'limiter_output_level_left_label')
-        self.ui_limiter_output_level_right_label = self.builder.get_object(
-            'limiter_output_level_right_label')
-        self.ui_limiter_attenuation_level_label = self.builder.get_object(
-            'limiter_attenuation_level_label')
-
-        # compressor widgets
-
-        self.ui_compressor_rms = self.builder.get_object('compressor_rms')
-        self.ui_compressor_peak = self.builder.get_object('compressor_peak')
-        self.ui_compressor_attack = self.builder.get_object(
-            'compressor_attack')
-        self.ui_compressor_release = self.builder.get_object(
-            'compressor_release')
-        self.ui_compressor_threshold = self.builder.get_object(
-            'compressor_threshold')
-        self.ui_compressor_ratio = self.builder.get_object(
-            'compressor_ratio')
-        self.ui_compressor_knee = self.builder.get_object('compressor_knee')
-        self.ui_compressor_makeup = self.builder.get_object(
-            'compressor_makeup')
-
-        self.ui_compressor_input_level_left = self.builder.get_object(
-            'compressor_input_level_left')
-        self.ui_compressor_input_level_right = self.builder.get_object(
-            'compressor_input_level_right')
-        self.ui_compressor_output_level_left = self.builder.get_object(
-            'compressor_output_level_left')
-        self.ui_compressor_output_level_right = self.builder.get_object(
-            'compressor_output_level_right')
-        self.ui_compressor_gain_reduction_levelbar = self.builder.get_object(
-            'compressor_gain_reduction_levelbar')
-
-        self.ui_compressor_input_level_left_label = self.builder.get_object(
-            'compressor_input_level_left_label')
-        self.ui_compressor_input_level_right_label = self.builder.get_object(
-            'compressor_input_level_right_label')
-        self.ui_compressor_output_level_left_label = self.builder.get_object(
-            'compressor_output_level_left_label')
-        self.ui_compressor_output_level_right_label = self.builder.get_object(
-            'compressor_output_level_right_label')
-        self.ui_compressor_gain_reduction_level_label = \
-            self.builder.get_object('compressor_gain_reduction_level_label')
-
-        self.ui_compressor_gain_reduction_levelbar.add_offset_value(
-            'GTK_LEVEL_BAR_OFFSET_LOW', 6)
-        self.ui_compressor_gain_reduction_levelbar.add_offset_value(
-            'GTK_LEVEL_BAR_OFFSET_HIGH', 18)
-        self.ui_compressor_gain_reduction_levelbar.add_offset_value(
-            'GTK_LEVEL_BAR_OFFSET_FULL', 24)
-
-        # reverb
-
-        self.ui_reverb_room_size = self.builder.get_object(
-            'reverb_room_size')
-        self.ui_reverb_damping = self.builder.get_object('reverb_damping')
-        self.ui_reverb_width = self.builder.get_object('reverb_width')
-        self.ui_reverb_level = self.builder.get_object('reverb_level')
-
-        self.ui_reverb_input_level_left = self.builder.get_object(
-            'reverb_input_level_left')
-        self.ui_reverb_input_level_right = self.builder.get_object(
-            'reverb_input_level_right')
-        self.ui_reverb_output_level_left = self.builder.get_object(
-            'reverb_output_level_left')
-        self.ui_reverb_output_level_right = self.builder.get_object(
-            'reverb_output_level_right')
-
-        self.ui_reverb_input_level_left_label = self.builder.get_object(
-            'reverb_input_level_left_label')
-        self.ui_reverb_input_level_right_label = self.builder.get_object(
-            'reverb_input_level_right_label')
-        self.ui_reverb_output_level_left_label = self.builder.get_object(
-            'reverb_output_level_left_label')
-        self.ui_reverb_output_level_right_label = self.builder.get_object(
-            'reverb_output_level_right_label')
-
-        # highpass
-
-        self.ui_highpass_cutoff = self.builder.get_object('highpass_cutoff')
-        self.ui_highpass_poles = self.builder.get_object('highpass_poles')
-
-        self.ui_highpass_input_level_left = self.builder.get_object(
-            'highpass_input_level_left')
-        self.ui_highpass_input_level_right = self.builder.get_object(
-            'highpass_input_level_right')
-        self.ui_highpass_output_level_left = self.builder.get_object(
-            'highpass_output_level_left')
-        self.ui_highpass_output_level_right = self.builder.get_object(
-            'highpass_output_level_right')
-
-        self.ui_highpass_input_level_left_label = self.builder.get_object(
-            'highpass_input_level_left_label')
-        self.ui_highpass_input_level_right_label = self.builder.get_object(
-            'highpass_input_level_right_label')
-        self.ui_highpass_output_level_left_label = self.builder.get_object(
-            'highpass_output_level_left_label')
-        self.ui_highpass_output_level_right_label = self.builder.get_object(
-            'highpass_output_level_right_label')
-
-        # lowpass
-
-        self.ui_lowpass_cutoff = self.builder.get_object('lowpass_cutoff')
-        self.ui_lowpass_poles = self.builder.get_object('lowpass_poles')
-
-        self.ui_lowpass_input_level_left = self.builder.get_object(
-            'lowpass_input_level_left')
-        self.ui_lowpass_input_level_right = self.builder.get_object(
-            'lowpass_input_level_right')
-        self.ui_lowpass_output_level_left = self.builder.get_object(
-            'lowpass_output_level_left')
-        self.ui_lowpass_output_level_right = self.builder.get_object(
-            'lowpass_output_level_right')
-
-        self.ui_lowpass_input_level_left_label = self.builder.get_object(
-            'lowpass_input_level_left_label')
-        self.ui_lowpass_input_level_right_label = self.builder.get_object(
-            'lowpass_input_level_right_label')
-        self.ui_lowpass_output_level_left_label = self.builder.get_object(
-            'lowpass_output_level_left_label')
-        self.ui_lowpass_output_level_right_label = self.builder.get_object(
-            'lowpass_output_level_right_label')
-
-        # equalizer
 
         self.ui_equalizer_input_gain = self.builder.get_object(
             'equalizer_input_gain')
@@ -267,44 +164,7 @@ class EffectsUiBase():
         self.ui_equalizer_output_level_right_label = self.builder.get_object(
             'equalizer_output_level_right_label')
 
-    def init_limiter_ui(self):
-        self.limiter_user = self.settings.get_value('limiter-user').unpack()
-        self.apply_limiter_preset(self.limiter_user)
-
-    def init_compressor_ui(self):
-        self.compressor_user = self.settings.get_value(
-            'compressor-user').unpack()
-        self.apply_compressor_preset(self.compressor_user)
-
-    def init_reverb_ui(self):
-        self.reverb_user = self.settings.get_value('reverb-user').unpack()
-        self.apply_reverb_preset(self.reverb_user)
-
-    def init_highpass_ui(self):
-        highpass_cutoff_user = self.settings.get_value(
-            'highpass-cutoff').unpack()
-        highpass_poles_user = self.settings.get_value(
-            'highpass-poles').unpack()
-
-        self.ui_highpass_cutoff.set_value(highpass_cutoff_user)
-        self.ui_highpass_poles.set_value(highpass_poles_user)
-
-        self.highpass.set_property('cutoff', highpass_cutoff_user)
-        self.highpass.set_property('poles', highpass_poles_user)
-
-    def init_lowpass_ui(self):
-        lowpass_cutoff_user = self.settings.get_value(
-            'lowpass-cutoff').unpack()
-        lowpass_poles_user = self.settings.get_value(
-            'lowpass-poles').unpack()
-
-        self.ui_lowpass_cutoff.set_value(lowpass_cutoff_user)
-        self.ui_lowpass_poles.set_value(lowpass_poles_user)
-
-        self.lowpass.set_property('cutoff', lowpass_cutoff_user)
-        self.lowpass.set_property('poles', lowpass_poles_user)
-
-    def init_equalizer_ui(self):
+    def init_ui(self):
         equalizer_input_gain_user = self.settings.get_value(
             'equalizer-input-gain').unpack()
         equalizer_output_gain_user = self.settings.get_value(
@@ -412,50 +272,6 @@ class EffectsUiBase():
         self.eq_band14.set_property('bandwidth',
                                     self.eq_freqs[14] / self.eq_qfactors[14])
 
-    def apply_limiter_preset(self, values):
-        self.ui_limiter_input_gain.set_value(values[0])
-        self.ui_limiter_limit.set_value(values[1])
-        self.ui_limiter_release_time.set_value(values[2])
-
-        # we need this when on value changed is not called
-        self.limiter.set_property('input-gain', values[0])
-        self.limiter.set_property('limit', values[1])
-        self.limiter.set_property('release-time', values[2])
-
-    def apply_compressor_preset(self, values):
-        if values[0] == 0:
-            self.ui_compressor_rms.set_active(True)
-        elif values[0] == 1:
-            self.ui_compressor_peak.set_active(True)
-
-        self.ui_compressor_attack.set_value(values[1])
-        self.ui_compressor_release.set_value(values[2])
-        self.ui_compressor_threshold.set_value(values[3])
-        self.ui_compressor_ratio.set_value(values[4])
-        self.ui_compressor_knee.set_value(values[5])
-        self.ui_compressor_makeup.set_value(values[6])
-
-        # we need this when on value changed is not called
-        self.compressor.set_property('rms-peak', values[0])
-        self.compressor.set_property('attack-time', values[1])
-        self.compressor.set_property('release-time', values[2])
-        self.compressor.set_property('threshold-level', values[3])
-        self.compressor.set_property('ratio', values[4])
-        self.compressor.set_property('knee-radius', values[5])
-        self.compressor.set_property('makeup-gain', values[6])
-
-    def apply_reverb_preset(self, values):
-        self.ui_reverb_room_size.set_value(values[0])
-        self.ui_reverb_damping.set_value(values[1])
-        self.ui_reverb_width.set_value(values[2])
-        self.ui_reverb_level.set_value(values[3])
-
-        # we need this when on value changed is not called
-        self.freeverb.set_property('room-size', values[0])
-        self.freeverb.set_property('damping', values[1])
-        self.freeverb.set_property('width', values[2])
-        self.freeverb.set_property('level', values[3])
-
     def apply_eq_preset(self, values):
         self.ui_eq_band0.set_value(values[0])
         self.ui_eq_band1.set_value(values[1])
@@ -490,167 +306,12 @@ class EffectsUiBase():
         self.eq_band13.set_property('gain', values[13])
         self.eq_band14.set_property('gain', values[14])
 
-    def save_limiter_user(self, idx, value):
-        self.limiter_user[idx] = value
-
-        out = GLib.Variant('ad', self.limiter_user)
-
-        self.settings.set_value('limiter-user', out)
-
-    def save_compressor_user(self, idx, value):
-        self.compressor_user[idx] = value
-
-        out = GLib.Variant('ad', self.compressor_user)
-
-        self.settings.set_value('compressor-user', out)
-
-    def save_reverb_user(self, idx, value):
-        self.reverb_user[idx] = value
-
-        out = GLib.Variant('ad', self.reverb_user)
-
-        self.settings.set_value('reverb-user', out)
-
     def save_eq_user(self, idx, value):
         self.eq_band_user[idx] = value
 
         out = GLib.Variant('ad', self.eq_band_user)
 
         self.settings.set_value('equalizer-user', out)
-
-    def on_limiter_input_gain_value_changed(self, obj):
-        value = obj.get_value()
-        self.limiter.set_property('input-gain', value)
-        self.save_limiter_user(0, value)
-
-    def on_limiter_limit_value_changed(self, obj):
-        value = obj.get_value()
-        self.limiter.set_property('limit', value)
-        self.save_limiter_user(1, value)
-
-    def on_limiter_release_time_value_changed(self, obj):
-        value = obj.get_value()
-        self.limiter.set_property('release-time', value)
-        self.save_limiter_user(2, value)
-
-    def on_compressor_measurement_type(self, obj):
-        if obj.get_active():
-            label = obj.get_label()
-
-            if label == 'rms':
-                self.compressor.set_property('rms-peak', 0)
-                self.save_compressor_user(0, 0)
-            elif label == 'peak':
-                self.compressor.set_property('rms-peak', 1)
-                self.save_compressor_user(0, 1)
-
-    def on_compressor_attack_time_value_changed(self, obj):
-        value = obj.get_value()
-        self.compressor.set_property('attack-time', value)
-        self.save_compressor_user(1, value)
-
-    def on_compressor_release_time_value_changed(self, obj):
-        value = obj.get_value()
-        self.compressor.set_property('release-time', value)
-        self.save_compressor_user(2, value)
-
-    def on_compressor_threshold_value_changed(self, obj):
-        value = obj.get_value()
-        self.compressor.set_property('threshold-level', value)
-        self.save_compressor_user(3, value)
-
-    def on_compressor_ratio_value_changed(self, obj):
-        value = obj.get_value()
-        self.compressor.set_property('ratio', value)
-        self.save_compressor_user(4, value)
-
-    def on_compressor_knee_value_changed(self, obj):
-        value = obj.get_value()
-        self.compressor.set_property('knee-radius', value)
-        self.save_compressor_user(5, value)
-
-    def on_compressor_makeup_value_changed(self, obj):
-        value = obj.get_value()
-        self.compressor.set_property('makeup-gain', value)
-        self.save_compressor_user(6, value)
-
-    def on_compressor_preset_clicked(self, obj):
-        obj_id = Gtk.Buildable.get_name(obj)
-
-        if obj_id == 'no_compression':
-            value = self.settings.get_value('compressor-no-compression')
-            self.apply_compressor_preset(value)
-        elif obj_id == 'vlc':
-            value = self.settings.get_value('compressor-vlc')
-            self.apply_compressor_preset(value)
-
-    def on_reverb_room_size_value_changed(self, obj):
-        value = obj.get_value()
-        self.freeverb.set_property('room-size', value)
-        self.save_reverb_user(0, value)
-
-    def on_reverb_damping_value_changed(self, obj):
-        value = obj.get_value()
-        self.freeverb.set_property('damping', value)
-        self.save_reverb_user(1, value)
-
-    def on_reverb_width_value_changed(self, obj):
-        value = obj.get_value()
-        self.freeverb.set_property('width', value)
-        self.save_reverb_user(2, value)
-
-    def on_reverb_level_value_changed(self, obj):
-        value = obj.get_value()
-        self.freeverb.set_property('level', value)
-        self.save_reverb_user(3, value)
-
-    def on_reverb_preset_clicked(self, obj):
-        obj_id = Gtk.Buildable.get_name(obj)
-
-        if obj_id == 'cathedral':
-            value = self.settings.get_value('reverb-cathedral')
-            self.apply_reverb_preset(value)
-        elif obj_id == 'no_reverberation':
-            value = self.settings.get_value('reverb-no-reverberation')
-            self.apply_reverb_preset(value)
-        elif obj_id == 'engine_room':
-            value = self.settings.get_value('reverb-engine-room')
-            self.apply_reverb_preset(value)
-        elif obj_id == 'small_room':
-            value = self.settings.get_value('reverb-small-room')
-            self.apply_reverb_preset(value)
-
-    def on_highpass_cutoff_value_changed(self, obj):
-        value = obj.get_value()
-        self.highpass.set_property('cutoff', value)
-
-        out = GLib.Variant('i', value)
-
-        self.settings.set_value('highpass-cutoff', out)
-
-    def on_highpass_poles_value_changed(self, obj):
-        value = obj.get_value()
-        self.highpass.set_property('poles', value)
-
-        out = GLib.Variant('i', value)
-
-        self.settings.set_value('highpass-poles', out)
-
-    def on_lowpass_cutoff_value_changed(self, obj):
-        value = obj.get_value()
-        self.lowpass.set_property('cutoff', value)
-
-        out = GLib.Variant('i', value)
-
-        self.settings.set_value('lowpass-cutoff', out)
-
-    def on_lowpass_poles_value_changed(self, obj):
-        value = obj.get_value()
-        self.lowpass.set_property('poles', value)
-
-        out = GLib.Variant('i', value)
-
-        self.settings.set_value('lowpass-poles', out)
 
     def on_equalizer_input_gain_value_changed(self, obj):
         value_db = obj.get_value()
@@ -930,106 +591,6 @@ class EffectsUiBase():
             widget_level_right.set_value(0)
             widget_level_right_label.set_text('-99')
 
-    def ui_update_limiter_input_level(self, peak):
-        widgets = [self.ui_limiter_input_level_left,
-                   self.ui_limiter_input_level_right,
-                   self.ui_limiter_input_level_left_label,
-                   self.ui_limiter_input_level_right_label]
-
-        self.ui_update_level(widgets, peak)
-
-    def ui_update_limiter_output_level(self, peak):
-        widgets = [self.ui_limiter_output_level_left,
-                   self.ui_limiter_output_level_right,
-                   self.ui_limiter_output_level_left_label,
-                   self.ui_limiter_output_level_right_label]
-
-        self.ui_update_level(widgets, peak)
-
-        attenuation = round(self.limiter.get_property('attenuation'))
-
-        if attenuation != self.old_limiter_attenuation:
-            self.old_limiter_attenuation = attenuation
-
-            self.ui_limiter_attenuation_levelbar.set_value(attenuation)
-            self.ui_limiter_attenuation_level_label.set_text(
-                str(round(attenuation)))
-
-    def ui_update_compressor_input_level(self, peak):
-        widgets = [self.ui_compressor_input_level_left,
-                   self.ui_compressor_input_level_right,
-                   self.ui_compressor_input_level_left_label,
-                   self.ui_compressor_input_level_right_label]
-
-        self.ui_update_level(widgets, peak)
-
-    def ui_update_compressor_output_level(self, peak):
-        widgets = [self.ui_compressor_output_level_left,
-                   self.ui_compressor_output_level_right,
-                   self.ui_compressor_output_level_left_label,
-                   self.ui_compressor_output_level_right_label]
-
-        self.ui_update_level(widgets, peak)
-
-        gain_reduction = abs(round(
-            self.compressor.get_property('gain-reduction')))
-
-        if gain_reduction != self.old_compressor_gain_reduction:
-            self.old_compressor_gain_reduction = gain_reduction
-
-            self.ui_compressor_gain_reduction_levelbar.set_value(
-                gain_reduction)
-            self.ui_compressor_gain_reduction_level_label.set_text(
-                str(round(gain_reduction)))
-
-    def ui_update_reverb_input_level(self, peak):
-        widgets = [self.ui_reverb_input_level_left,
-                   self.ui_reverb_input_level_right,
-                   self.ui_reverb_input_level_left_label,
-                   self.ui_reverb_input_level_right_label]
-
-        self.ui_update_level(widgets, peak)
-
-    def ui_update_reverb_output_level(self, peak):
-        widgets = [self.ui_reverb_output_level_left,
-                   self.ui_reverb_output_level_right,
-                   self.ui_reverb_output_level_left_label,
-                   self.ui_reverb_output_level_right_label]
-
-        self.ui_update_level(widgets, peak)
-
-    def ui_update_highpass_input_level(self, peak):
-        widgets = [self.ui_highpass_input_level_left,
-                   self.ui_highpass_input_level_right,
-                   self.ui_highpass_input_level_left_label,
-                   self.ui_highpass_input_level_right_label]
-
-        self.ui_update_level(widgets, peak)
-
-    def ui_update_highpass_output_level(self, peak):
-        widgets = [self.ui_highpass_output_level_left,
-                   self.ui_highpass_output_level_right,
-                   self.ui_highpass_output_level_left_label,
-                   self.ui_highpass_output_level_right_label]
-
-        self.ui_update_level(widgets, peak)
-
-    def ui_update_lowpass_input_level(self, peak):
-        widgets = [self.ui_lowpass_input_level_left,
-                   self.ui_lowpass_input_level_right,
-                   self.ui_lowpass_input_level_left_label,
-                   self.ui_lowpass_input_level_right_label]
-
-        self.ui_update_level(widgets, peak)
-
-    def ui_update_lowpass_output_level(self, peak):
-        widgets = [self.ui_lowpass_output_level_left,
-                   self.ui_lowpass_output_level_right,
-                   self.ui_lowpass_output_level_left_label,
-                   self.ui_lowpass_output_level_right_label]
-
-        self.ui_update_level(widgets, peak)
-
     def ui_update_equalizer_input_level(self, peak):
         widgets = [self.ui_equalizer_input_level_left,
                    self.ui_equalizer_input_level_right,
@@ -1045,3 +606,25 @@ class EffectsUiBase():
                    self.ui_equalizer_output_level_right_label]
 
         self.ui_update_level(widgets, peak)
+
+    def on_eq_flat_response_button_clicked(self, obj):
+        self.apply_eq_preset([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+
+    def on_eq_reset_freqs_button_clicked(self, obj):
+        self.settings.reset('equalizer-freqs')
+        self.init_eq_freq_and_qfactors()
+
+    def on_eq_reset_qfactors_button_clicked(self, obj):
+        self.settings.reset('equalizer-qfactors')
+        self.init_eq_freq_and_qfactors()
+
+    def on_eq_calibrate_button_clicked(self, obj):
+        c = Calibration()
+        c.run()
+
+    def reset(self):
+        self.settings.reset('equalizer-input-gain')
+        self.settings.reset('equalizer-output-gain')
+        self.settings.reset('equalizer-user')
+        self.settings.reset('equalizer-freqs')
+        self.settings.reset('equalizer-qfactors')
