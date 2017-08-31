@@ -7,14 +7,14 @@ import numpy as np
 gi.require_version('Gst', '1.0')
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gio, GLib, Gtk
+from PulseEffects.compressor import Compressor
+from PulseEffects.equalizer import Equalizer
+from PulseEffects.highpass import Highpass
+from PulseEffects.lowpass import Lowpass
+from PulseEffects.panorama import Panorama
+from PulseEffects.reverb import Reverb
 from PulseEffects.sink_input_pipeline import SinkInputPipeline
 from scipy.interpolate import CubicSpline
-
-from PulseEffects.equalizer import Equalizer
-from PulseEffects.lowpass import Lowpass
-from PulseEffects.highpass import Highpass
-from PulseEffects.reverb import Reverb
-from PulseEffects.compressor import Compressor
 
 
 class SinkInputEffects(SinkInputPipeline):
@@ -50,32 +50,15 @@ class SinkInputEffects(SinkInputPipeline):
         # self.ui_autovolume_threshold = self.builder.get_object(
         #     'autovolume_threshold')
         #
-        # self.ui_panorama = self.builder.get_object('panorama_position')
-        #
-        # self.ui_panorama_input_level_left = self.builder.get_object(
-        #     'panorama_input_level_left')
-        # self.ui_panorama_input_level_right = self.builder.get_object(
-        #     'panorama_input_level_right')
-        # self.ui_panorama_output_level_left = self.builder.get_object(
-        #     'panorama_output_level_left')
-        # self.ui_panorama_output_level_right = self.builder.get_object(
-        #     'panorama_output_level_right')
-        #
-        # self.ui_panorama_input_level_left_label = self.builder.get_object(
-        #     'panorama_input_level_left_label')
-        # self.ui_panorama_input_level_right_label = self.builder.get_object(
-        #     'panorama_input_level_right_label')
-        # self.ui_panorama_output_level_left_label = self.builder.get_object(
-        #     'panorama_output_level_left_label')
-        # self.ui_panorama_output_level_right_label = self.builder.get_object(
-        #     'panorama_output_level_right_label')
 
+        self.panorama = Panorama(self.settings)
         self.compressor = Compressor(self.settings)
         self.reverb = Reverb(self.settings)
         self.highpass = Highpass(self.settings)
         self.lowpass = Lowpass(self.settings)
         self.equalizer = Equalizer(self.settings)
 
+        self.stack.add_titled(self.panorama.ui_window, 'Panorama', 'Panorama')
         self.stack.add_titled(self.compressor.ui_window, 'Compressor',
                               'Compressor')
         self.stack.add_titled(self.reverb.ui_window, 'Reverb', 'Reverberation')
@@ -84,6 +67,7 @@ class SinkInputEffects(SinkInputPipeline):
         self.stack.add_titled(self.equalizer.ui_window, 'Equalizer',
                               'Equalizer')
 
+        self.effects_bin.append(self.panorama.bin, self.on_filter_added, None)
         self.effects_bin.append(self.compressor.bin, self.on_filter_added,
                                 None)
         self.effects_bin.append(self.reverb.bin, self.on_filter_added, None)
@@ -91,8 +75,6 @@ class SinkInputEffects(SinkInputPipeline):
         self.effects_bin.append(self.lowpass.bin, self.on_filter_added, None)
         self.effects_bin.append(self.equalizer.bin, self.on_filter_added, None)
         self.effects_bin.append(self.spectrum, self.on_filter_added, None)
-
-        # self.builder.connect_signals(self)
 
         # self.connect('new_autovolume', self.on_new_autovolume)
 
@@ -113,22 +95,6 @@ class SinkInputEffects(SinkInputPipeline):
                 gain = gain + 1
 
                 self.emit('new_autovolume', gain)
-
-    def ui_update_panorama_input_level(self, peak):
-        widgets = [self.ui_panorama_input_level_left,
-                   self.ui_panorama_input_level_right,
-                   self.ui_panorama_input_level_left_label,
-                   self.ui_panorama_input_level_right_label]
-
-        self.ui_update_level(widgets, peak)
-
-    def ui_update_panorama_output_level(self, peak):
-        widgets = [self.ui_panorama_output_level_left,
-                   self.ui_panorama_output_level_right,
-                   self.ui_panorama_output_level_left_label,
-                   self.ui_panorama_output_level_right_label]
-
-        self.ui_update_level(widgets, peak)
 
     def on_message_element(self, bus, msg):
         plugin = msg.src.get_name()
@@ -152,11 +118,11 @@ class SinkInputEffects(SinkInputPipeline):
         elif plugin == 'panorama_input_level':
             peak = msg.get_structure().get_value('peak')
 
-            # self.ui_update_panorama_input_level(peak)
+            self.panorama.ui_update_panorama_input_level(peak)
         elif plugin == 'panorama_output_level':
             peak = msg.get_structure().get_value('peak')
 
-            # self.ui_update_panorama_output_level(peak)
+            self.panorama.ui_update_panorama_output_level(peak)
         elif plugin == 'compressor_input_level':
             peak = msg.get_structure().get_value('peak')
 
@@ -236,17 +202,10 @@ class SinkInputEffects(SinkInputPipeline):
         if self.autovolume_enabled:
             self.enable_autovolume(True)
 
-    def init_panorama_ui(self):
-        panorama = self.settings.get_value('panorama-position').unpack()
-
-        self.ui_panorama.set_value(panorama)
-
-        self.panorama.set_property('panorama', panorama)
-
     def init_ui(self):
         # self.init_limiter_ui()
         # self.init_autovolume_ui()
-        # self.init_panorama_ui()
+        self.panorama.init_ui()
         self.compressor.init_ui()
         self.reverb.init_ui()
         self.highpass.init_ui()
@@ -330,14 +289,6 @@ class SinkInputEffects(SinkInputPipeline):
     def on_new_autovolume(self, obj, gain):
         self.ui_limiter_input_gain.set_value(gain)
 
-    def on_panorama_position_value_changed(self, obj):
-        value = obj.get_value()
-
-        self.panorama.set_property('panorama', value)
-
-        out = GLib.Variant('d', value)
-        self.settings.set_value('panorama-position', out)
-
     def reset(self):
         self.settings.reset('limiter-user')
         self.settings.reset('autovolume-state')
@@ -345,7 +296,7 @@ class SinkInputEffects(SinkInputPipeline):
         self.settings.reset('autovolume-target')
         self.settings.reset('autovolume-tolerance')
         self.settings.reset('autovolume-threshold')
-        self.settings.reset('panorama-position')
+        self.panorama.reset()
         self.compressor.reset()
         self.reverb.reset()
         self.highpass.reset()
