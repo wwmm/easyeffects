@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import gettext
 import os
 
 import gi
@@ -13,14 +14,17 @@ from PulseEffects.limiter import Limiter
 from PulseEffects.lowpass import Lowpass
 from PulseEffects.panorama import Panorama
 from PulseEffects.reverb import Reverb
-from PulseEffects.sink_input_pipeline import SinkInputPipeline
+from PulseEffects.pipeline_base import PipelineBase
 from scipy.interpolate import CubicSpline
 
+gettext.textdomain('PulseEffects')
+_ = gettext.gettext
 
-class SinkInputEffects(SinkInputPipeline):
+
+class SinkInputEffects(PipelineBase):
 
     def __init__(self, sampling_rate):
-        SinkInputPipeline.__init__(self, sampling_rate)
+        PipelineBase.__init__(self, sampling_rate)
 
         self.module_path = os.path.dirname(__file__)
 
@@ -42,15 +46,20 @@ class SinkInputEffects(SinkInputPipeline):
         self.lowpass = Lowpass(self.settings)
         self.equalizer = Equalizer(self.settings)
 
-        self.stack.add_titled(self.limiter.ui_window, 'Limiter', 'Limiter')
-        self.stack.add_titled(self.panorama.ui_window, 'Panorama', 'Panorama')
+        self.stack.add_titled(self.limiter.ui_window, 'Limiter',
+                              _('Input Limiter'))
+        self.stack.add_titled(self.panorama.ui_window, 'Panorama',
+                              _('Panorama'))
         self.stack.add_titled(self.compressor.ui_window, 'Compressor',
-                              'Compressor')
-        self.stack.add_titled(self.reverb.ui_window, 'Reverb', 'Reverberation')
-        self.stack.add_titled(self.highpass.ui_window, 'Highpass', 'High pass')
-        self.stack.add_titled(self.lowpass.ui_window, 'Lowpass', 'Low pass')
+                              _('Compressor'))
+        self.stack.add_titled(self.reverb.ui_window, 'Reverb',
+                              _('Reverberation'))
+        self.stack.add_titled(self.highpass.ui_window, 'Highpass',
+                              _('High pass'))
+        self.stack.add_titled(self.lowpass.ui_window, 'Lowpass',
+                              _('Low pass'))
         self.stack.add_titled(self.equalizer.ui_window, 'Equalizer',
-                              'Equalizer')
+                              _('Equalizer'))
 
         # adding effects to the pipeline
         self.effects_bin.append(self.limiter.bin, self.on_filter_added, None)
