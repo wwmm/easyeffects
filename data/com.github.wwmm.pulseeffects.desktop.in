@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=PulseEffects
 GenericName=Audio Enhancer
-Comment=Audio Effects for Pulseaudio Applications
+Comment=Audio Effects for PulseAudio Applications
 Keywords=limiter;compressor;reverberation;equalizer;autovolume;
 Categories=GTK;AudioVideo;Audio;
 Exec=pulseeffects
