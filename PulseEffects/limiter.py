@@ -128,6 +128,11 @@ class Limiter():
 
         if self.autovolume_enabled:
             self.enable_autovolume(True)
+        else:
+            self.ui_autovolume_window.set_sensitive(False)
+            self.ui_autovolume_target.set_sensitive(False)
+            self.ui_autovolume_tolerance.set_sensitive(False)
+            self.ui_autovolume_threshold.set_sensitive(False)
 
     def apply_limiter_preset(self, values):
         self.ui_limiter_input_gain.set_value(values[0])
@@ -177,6 +182,11 @@ class Limiter():
             self.ui_limiter_input_gain.set_sensitive(False)
             self.ui_limiter_limit.set_sensitive(False)
             self.ui_limiter_release_time.set_sensitive(False)
+
+            self.ui_autovolume_window.set_sensitive(True)
+            self.ui_autovolume_target.set_sensitive(True)
+            self.ui_autovolume_tolerance.set_sensitive(True)
+            self.ui_autovolume_threshold.set_sensitive(True)
         else:
             self.ui_limiter_input_gain.set_value(-10)
             self.ui_limiter_limit.set_value(0)
@@ -185,6 +195,11 @@ class Limiter():
             self.ui_limiter_input_gain.set_sensitive(True)
             self.ui_limiter_limit.set_sensitive(True)
             self.ui_limiter_release_time.set_sensitive(True)
+
+            self.ui_autovolume_window.set_sensitive(False)
+            self.ui_autovolume_target.set_sensitive(False)
+            self.ui_autovolume_tolerance.set_sensitive(False)
+            self.ui_autovolume_threshold.set_sensitive(False)
 
         self.autovolume_level.set_property('post-messages', state)
 
