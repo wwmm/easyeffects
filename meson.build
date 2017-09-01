@@ -15,13 +15,25 @@ pycairo = dependency('py3cairo')
 gst = dependency('gstreamer-1.0', version: '>= 1.12')
 gstbad = dependency('gstreamer-plugins-bad-1.0', version: '>= 1.12')
 
+prefix = get_option('prefix')
+bindir = join_paths(prefix, get_option('bindir'))
+datadir = join_paths(prefix, get_option('datadir'))
+localedir = join_paths(prefix, get_option('localedir'))
+
 message('Getting python install path')
 py3_dir = py3_mod.sysconfig_path('purelib')
 
 message('Installing PulseEffects')
 install_subdir('PulseEffects', install_dir: py3_dir)
 install_subdir('PulseEffectsCalibration', install_dir: py3_dir)
-install_data('pulseeffects', install_dir: 'bin')
+
+conf_pulseeffects = configuration_data()
+conf_pulseeffects.set('LOCALEDIR', localedir)
+conf_pulseeffects.set('PROJECT_NAME', meson.project_name())
+configure_file(input: 'pulseeffects.in',
+               output: 'pulseeffects',
+               configuration: conf_pulseeffects,
+               install_dir: bindir)
 
 message('Installing data files')
 subdir('data')
