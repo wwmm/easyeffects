@@ -282,12 +282,12 @@ msgstr "Poler"
 
 #: ../PulseEffects/ui/sink_inputs_plugins.glade:2438
 #: ../PulseEffects/ui/source_outputs_plugins.glade:1943
-msgid "High Pass"
+msgid "High pass"
 msgstr "Högpass"
 
 #: ../PulseEffects/ui/sink_inputs_plugins.glade:2735
 #: ../PulseEffects/ui/source_outputs_plugins.glade:2240
-msgid "Low Pass"
+msgid "Low pass"
 msgstr "Lågpass"
 
 #: ../PulseEffects/ui/sink_inputs_plugins.glade:2755
