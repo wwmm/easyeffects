@@ -20,8 +20,9 @@ class Application(Gtk.Application):
 
     def __init__(self):
         app_id = 'com.github.wwmm.pulseeffects'
+        app_name = 'PulseEffects'
 
-        GLib.set_application_name('PulseEffects')
+        GLib.set_application_name(app_name)
         GLib.setenv('PULSE_PROP_media.role', 'production', True)
         GLib.setenv('PULSE_PROP_application.icon_name', 'pulseeffects', True)
 
@@ -39,9 +40,9 @@ class Application(Gtk.Application):
                             datefmt='%H:%M:%S',
                             level=logging.INFO)
 
-        self.log = logging.getLogger('PulseEffects')
+        self.log = logging.getLogger(app_name)
 
-        self.settings = Gio.Settings('com.github.wwmm.pulseeffects')
+        self.settings = Gio.Settings(app_id)
 
         # pulseaudio
 
@@ -67,7 +68,7 @@ class Application(Gtk.Application):
 
         # creating user presets folder
         self.user_config_dir = os.path.join(GLib.get_user_config_dir(),
-                                            'PulseEffects')
+                                            app_name)
         os.makedirs(self.user_config_dir, exist_ok=True)
 
     def do_startup(self):
