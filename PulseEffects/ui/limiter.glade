@@ -77,10 +77,11 @@
                 <property name="valign">center</property>
                 <property name="column_spacing">6</property>
                 <child>
-                  <object class="GtkSwitch">
+                  <object class="GtkSwitch" id="limiter_enable">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="halign">center</property>
+                    <signal name="state-set" handler="on_limiter_enable_state_set" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>

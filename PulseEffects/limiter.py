@@ -55,10 +55,12 @@ class Limiter():
     def load_ui(self):
         self.ui_window = self.builder.get_object('window')
 
+        self.ui_limiter_enable = self.builder.get_object('limiter_enable')
         self.ui_limiter_input_gain = self.builder.get_object(
             'limiter_input_gain')
-        self.ui_limiter_limit = self.builder.get_object(
-            'limiter_limit')
+        self.ui_limiter_input_gain = self.builder.get_object(
+            'limiter_input_gain')
+        self.ui_limiter_limit = self.builder.get_object('limiter_limit')
         self.ui_limiter_release_time = self.builder.get_object(
             'limiter_release_time')
         self.ui_limiter_attenuation_levelbar = self.builder.get_object(
@@ -103,9 +105,11 @@ class Limiter():
             'autovolume_threshold')
 
     def init_ui(self):
+        enabled = self.settings.get_value('limiter-state').unpack()
         self.limiter_user = self.settings.get_value('limiter-user').unpack()
-        self.apply_limiter_preset(self.limiter_user)
 
+        self.ui_limiter_enable.set_state(enabled)
+        self.apply_limiter_preset(self.limiter_user)
         self.init_autovolume_ui()
 
     def init_autovolume_ui(self):
@@ -150,6 +154,10 @@ class Limiter():
         out = GLib.Variant('ad', self.limiter_user)
 
         self.settings.set_value('limiter-user', out)
+
+    def on_limiter_enable_state_set(self, obj, state):
+        out = GLib.Variant('b', state)
+        self.settings.set_value('limiter-state', out)
 
     def on_limiter_input_gain_value_changed(self, obj):
         value = obj.get_value()
