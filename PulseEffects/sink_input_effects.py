@@ -69,6 +69,8 @@ class SinkInputEffects(PipelineBase):
                                                self.on_limiter_enable)
         self.panorama.ui_panorama_enable.connect('state-set',
                                                  self.on_panorama_enable)
+        self.compressor.ui_compressor_enable.connect('state-set',
+                                                     self.on_compressor_enable)
 
         # adding effects to the pipeline
 
@@ -186,6 +188,26 @@ class SinkInputEffects(PipelineBase):
                                          self.on_filter_added, None)
         else:
             self.effects_bin.remove(self.panorama.bin, self.on_filter_added,
+                                    None)
+
+    def on_compressor_enable(self, obj, state):
+        limiter_enabled = self.settings.get_value('limiter-state').unpack()
+        panorama_enabled = self.settings.get_value('panorama-state').unpack()
+
+        if state:
+            if limiter_enabled:
+                self.effects_bin.insert_after(self.compressor.bin,
+                                              self.limiter.bin,
+                                              self.on_filter_added, None)
+            elif panorama_enabled:
+                self.effects_bin.insert_after(self.compressor.bin,
+                                              self.panorama.bin,
+                                              self.on_filter_added, None)
+            else:
+                self.effects_bin.prepend(self.compressor.bin,
+                                         self.on_filter_added, None)
+        else:
+            self.effects_bin.remove(self.compressor.bin, self.on_filter_added,
                                     None)
 
     def init_ui(self):

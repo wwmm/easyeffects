@@ -338,6 +338,7 @@ class Limiter():
                 str(round(attenuation)))
 
     def reset(self):
+        self.settings.reset('limiter-state')
         self.settings.reset('limiter-user')
         self.settings.reset('autovolume-state')
         self.settings.reset('autovolume-window')

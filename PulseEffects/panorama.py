@@ -135,4 +135,5 @@ class Panorama():
         self.ui_update_level(widgets, peak)
 
     def reset(self):
+        self.settings.reset('panorama-state')
         self.settings.reset('panorama-position')

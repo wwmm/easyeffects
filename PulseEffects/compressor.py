@@ -48,6 +48,11 @@ class Compressor():
     def load_ui(self):
         self.ui_window = self.builder.get_object('window')
 
+        self.ui_compressor_controls = self.builder.get_object(
+            'compressor_controls')
+
+        self.ui_compressor_enable = self.builder.get_object(
+            'compressor_enable')
         self.ui_compressor_rms = self.builder.get_object('compressor_rms')
         self.ui_compressor_peak = self.builder.get_object('compressor_peak')
         self.ui_compressor_attack = self.builder.get_object(
@@ -92,8 +97,11 @@ class Compressor():
             'GTK_LEVEL_BAR_OFFSET_FULL', 24)
 
     def init_ui(self):
+        enabled = self.settings.get_value('compressor-state').unpack()
         self.compressor_user = self.settings.get_value(
             'compressor-user').unpack()
+
+        self.ui_compressor_enable.set_state(enabled)
         self.apply_compressor_preset(self.compressor_user)
 
     def apply_compressor_preset(self, values):
@@ -124,6 +132,12 @@ class Compressor():
         out = GLib.Variant('ad', self.compressor_user)
 
         self.settings.set_value('compressor-user', out)
+
+    def on_compressor_enable_state_set(self, obj, state):
+        self.ui_compressor_controls.set_sensitive(state)
+
+        out = GLib.Variant('b', state)
+        self.settings.set_value('compressor-state', out)
 
     def on_compressor_measurement_type(self, obj):
         if obj.get_active():
@@ -228,4 +242,5 @@ class Compressor():
                 str(round(gain_reduction)))
 
     def reset(self):
+        self.settings.reset('compressor-state')
         self.settings.reset('compressor-user')

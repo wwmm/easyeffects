@@ -66,6 +66,8 @@ class SourceOutputEffects(PipelineBase):
 
         self.limiter.ui_limiter_enable.connect('state-set',
                                                self.on_limiter_enable)
+        self.compressor.ui_compressor_enable.connect('state-set',
+                                                     self.on_compressor_enable)
 
         # adding effects to the pipeline
         self.effects_bin.append(self.limiter.bin, self.on_filter_added, None)
@@ -160,6 +162,21 @@ class SourceOutputEffects(PipelineBase):
                                      None)
         else:
             self.effects_bin.remove(self.limiter.bin, self.on_filter_added,
+                                    None)
+
+    def on_compressor_enable(self, obj, state):
+        limiter_enabled = self.settings.get_value('limiter-state').unpack()
+
+        if state:
+            if limiter_enabled:
+                self.effects_bin.insert_after(self.compressor.bin,
+                                              self.limiter.bin,
+                                              self.on_filter_added, None)
+            else:
+                self.effects_bin.prepend(self.compressor.bin,
+                                         self.on_filter_added, None)
+        else:
+            self.effects_bin.remove(self.compressor.bin, self.on_filter_added,
                                     None)
 
     def init_ui(self):
