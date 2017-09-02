@@ -27,6 +27,9 @@
           <default>-50</default>
         </key>
 
+        <key name="panorama-state" type="b">
+          <default>true</default>
+        </key>
         <key name="panorama-position" type="d">
           <default>0.0</default>
         </key>

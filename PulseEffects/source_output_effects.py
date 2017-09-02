@@ -158,13 +158,9 @@ class SourceOutputEffects(PipelineBase):
         if state:
             self.effects_bin.prepend(self.limiter.bin, self.on_filter_added,
                                      None)
-
-            self.limiter.ui_autovolume_box.set_sensitive(True)
         else:
             self.effects_bin.remove(self.limiter.bin, self.on_filter_added,
                                     None)
-
-            self.limiter.ui_autovolume_box.set_sensitive(False)
 
     def init_ui(self):
         self.limiter.init_ui()

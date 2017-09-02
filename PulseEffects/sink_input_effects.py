@@ -67,10 +67,11 @@ class SinkInputEffects(PipelineBase):
 
         self.limiter.ui_limiter_enable.connect('state-set',
                                                self.on_limiter_enable)
+        self.panorama.ui_panorama_enable.connect('state-set',
+                                                 self.on_panorama_enable)
 
         # adding effects to the pipeline
 
-        self.effects_bin.append(self.panorama.bin, self.on_filter_added, None)
         self.effects_bin.append(self.compressor.bin, self.on_filter_added,
                                 None)
         self.effects_bin.append(self.reverb.bin, self.on_filter_added, None)
@@ -168,13 +169,24 @@ class SinkInputEffects(PipelineBase):
         if state:
             self.effects_bin.prepend(self.limiter.bin, self.on_filter_added,
                                      None)
-
-            self.limiter.ui_autovolume_box.set_sensitive(True)
         else:
             self.effects_bin.remove(self.limiter.bin, self.on_filter_added,
                                     None)
 
-            self.limiter.ui_autovolume_box.set_sensitive(False)
+    def on_panorama_enable(self, obj, state):
+        limiter_enabled = self.settings.get_value('limiter-state').unpack()
+
+        if state:
+            if limiter_enabled:
+                self.effects_bin.insert_after(self.panorama.bin,
+                                              self.limiter.bin,
+                                              self.on_filter_added, None)
+            else:
+                self.effects_bin.prepend(self.panorama.bin,
+                                         self.on_filter_added, None)
+        else:
+            self.effects_bin.remove(self.panorama.bin, self.on_filter_added,
+                                    None)
 
     def init_ui(self):
         self.limiter.init_ui()

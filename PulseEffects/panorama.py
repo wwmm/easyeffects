@@ -48,6 +48,10 @@ class Panorama():
     def load_ui(self):
         self.ui_window = self.builder.get_object('window')
 
+        self.ui_panorama_controls = self.builder.get_object(
+            'panorama_controls')
+
+        self.ui_panorama_enable = self.builder.get_object('panorama_enable')
         self.ui_panorama = self.builder.get_object('panorama_position')
 
         self.ui_panorama_input_level_left = self.builder.get_object(
@@ -69,11 +73,18 @@ class Panorama():
             'panorama_output_level_right_label')
 
     def init_ui(self):
+        enabled = self.settings.get_value('panorama-state').unpack()
         panorama = self.settings.get_value('panorama-position').unpack()
 
+        self.ui_panorama_enable.set_state(enabled)
         self.ui_panorama.set_value(panorama)
-
         self.panorama.set_property('panorama', panorama)
+
+    def on_panorama_enable_state_set(self, obj, state):
+        self.ui_panorama_controls.set_sensitive(state)
+
+        out = GLib.Variant('b', state)
+        self.settings.set_value('panorama-state', out)
 
     def on_panorama_position_value_changed(self, obj):
         value = obj.get_value()

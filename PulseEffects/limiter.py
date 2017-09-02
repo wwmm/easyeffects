@@ -55,7 +55,10 @@ class Limiter():
     def load_ui(self):
         self.ui_window = self.builder.get_object('window')
 
+        self.ui_limiter_controls = self.builder.get_object('limiter_controls')
         self.ui_autovolume_box = self.builder.get_object('autovolume_box')
+        self.ui_autovolume_controls = self.builder.get_object(
+            'autovolume_controls')
 
         self.ui_limiter_enable = self.builder.get_object('limiter_enable')
         self.ui_limiter_input_gain = self.builder.get_object(
@@ -110,9 +113,16 @@ class Limiter():
         enabled = self.settings.get_value('limiter-state').unpack()
         self.limiter_user = self.settings.get_value('limiter-user').unpack()
 
+        self.init_autovolume_ui()
         self.ui_limiter_enable.set_state(enabled)
         self.apply_limiter_preset(self.limiter_user)
-        self.init_autovolume_ui()
+
+        if enabled:
+            self.ui_autovolume_box.set_sensitive(True)
+            self.ui_limiter_controls.set_sensitive(True)
+        else:
+            self.ui_autovolume_box.set_sensitive(False)
+            self.ui_limiter_controls.set_sensitive(False)
 
     def init_autovolume_ui(self):
         self.autovolume_enabled = self.settings.get_value(
@@ -135,10 +145,7 @@ class Limiter():
         if self.autovolume_enabled:
             self.enable_autovolume(True)
         else:
-            self.ui_autovolume_window.set_sensitive(False)
-            self.ui_autovolume_target.set_sensitive(False)
-            self.ui_autovolume_tolerance.set_sensitive(False)
-            self.ui_autovolume_threshold.set_sensitive(False)
+            self.ui_limiter_controls.set_sensitive(False)
 
     def apply_limiter_preset(self, values):
         self.ui_limiter_input_gain.set_value(values[0])
@@ -158,6 +165,13 @@ class Limiter():
         self.settings.set_value('limiter-user', out)
 
     def on_limiter_enable_state_set(self, obj, state):
+        if state:
+            self.ui_autovolume_box.set_sensitive(True)
+            self.ui_limiter_controls.set_sensitive(True)
+        else:
+            self.ui_autovolume_box.set_sensitive(False)
+            self.ui_limiter_controls.set_sensitive(False)
+
         out = GLib.Variant('b', state)
         self.settings.set_value('limiter-state', out)
 
@@ -193,10 +207,7 @@ class Limiter():
             self.ui_limiter_limit.set_sensitive(False)
             self.ui_limiter_release_time.set_sensitive(False)
 
-            self.ui_autovolume_window.set_sensitive(True)
-            self.ui_autovolume_target.set_sensitive(True)
-            self.ui_autovolume_tolerance.set_sensitive(True)
-            self.ui_autovolume_threshold.set_sensitive(True)
+            self.ui_autovolume_controls.set_sensitive(True)
         else:
             self.ui_limiter_input_gain.set_value(-10)
             self.ui_limiter_limit.set_value(0)
@@ -206,10 +217,7 @@ class Limiter():
             self.ui_limiter_limit.set_sensitive(True)
             self.ui_limiter_release_time.set_sensitive(True)
 
-            self.ui_autovolume_window.set_sensitive(False)
-            self.ui_autovolume_target.set_sensitive(False)
-            self.ui_autovolume_tolerance.set_sensitive(False)
-            self.ui_autovolume_threshold.set_sensitive(False)
+            self.ui_autovolume_controls.set_sensitive(False)
 
         self.autovolume_level.set_property('post-messages', state)
 
