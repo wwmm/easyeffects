@@ -1,0 +1,279 @@
+# Croatian translation for Pulseeffects.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PulseEffects package.
+# gogo <trebelnik2@gmail.com>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PulseEffects\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-09-02 12:17-0300\n"
+"PO-Revision-Date: 2017-09-02 19:11+0200\n"
+"Language-Team: Croatian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.3\n"
+"Last-Translator: gogo <trebelnik2@gmail.com>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: hr\n"
+
+#: PulseEffects/sink_input_effects.py:52
+#: PulseEffects/source_output_effects.py:51
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:48
+msgid "Input Limiter"
+msgstr "Graničnik ulaza"
+
+#: PulseEffects/sink_input_effects.py:54
+msgid "Panorama"
+msgstr "Panorama"
+
+#: PulseEffects/sink_input_effects.py:56
+#: PulseEffects/source_output_effects.py:53
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:52
+msgid "Compressor"
+msgstr "Kompresor"
+
+#: PulseEffects/sink_input_effects.py:58
+#: PulseEffects/source_output_effects.py:55
+msgid "Reverberation"
+msgstr "Odjek"
+
+#: PulseEffects/sink_input_effects.py:60
+#: PulseEffects/source_output_effects.py:57
+msgid "High pass"
+msgstr "Visok prolaz"
+
+#: PulseEffects/sink_input_effects.py:62
+#: PulseEffects/source_output_effects.py:59
+msgid "Low pass"
+msgstr "Nizak prolaz"
+
+#: PulseEffects/sink_input_effects.py:64
+#: PulseEffects/source_output_effects.py:61
+msgid "Equalizer"
+msgstr "Ekvalizator"
+
+#: PulseEffects/ui/about.glade:11
+msgid "Audio Effects for Pulseaudio Applications"
+msgstr "Zvučni efekti za Pulseaudio aplikacije"
+
+#: PulseEffects/ui/headerbar.glade:73
+msgid "Save Preset"
+msgstr "Spremi predložak"
+
+#: PulseEffects/ui/headerbar.glade:89
+msgid "Load Preset"
+msgstr "Učitaj predložak"
+
+#: PulseEffects/ui/headerbar.glade:125
+msgid "Latency"
+msgstr "Latencija"
+
+#: PulseEffects/ui/headerbar.glade:145
+msgid "buffer-time [ms]"
+msgstr "vrijeme-međuspremnika"
+
+#: PulseEffects/ui/headerbar.glade:173
+msgid "latency-time [ms]"
+msgstr "vrijeme-latencije"
+
+#: PulseEffects/ui/headerbar.glade:234
+msgid "Spectrum"
+msgstr "Spektar"
+
+#: PulseEffects/ui/headerbar.glade:255
+msgid "Show"
+msgstr "Prikaži"
+
+#: PulseEffects/ui/headerbar.glade:267
+msgid "Points"
+msgstr "Traka"
+
+#: PulseEffects/ui/headerbar.glade:328
+msgid "General"
+msgstr "Općenito"
+
+#: PulseEffects/ui/headerbar.glade:348
+msgid "Settings"
+msgstr "Postavke"
+
+#: PulseEffects/ui/headerbar.glade:357
+msgid "Reset"
+msgstr "Vrati izvorno"
+
+#: PulseEffects/ui/headerbar.glade:376
+msgid "Use Dark Theme"
+msgstr "Koristi tamnu temu"
+
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:150
+msgid "Window [s]"
+msgstr "Prozor [s]"
+
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:179
+msgid "Guideline Position"
+msgstr "Položaj smjernice"
+
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:227
+msgid "Measure Noise"
+msgstr "Izmjeri šum"
+
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:257
+msgid "Subtract Noise"
+msgstr "Izdvoji šum"
+
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:308
+msgid "Calibration Microphone Correction"
+msgstr "Kalibracija ispravljanja mikrofona"
+
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:777
+msgid "Input [dB]"
+msgstr "Ulaz [dB]"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:51
+msgid "Sine"
+msgstr "Sinus"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:66
+msgid "Square"
+msgstr "Kvadrat"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:81
+msgid "Saw"
+msgstr "Pila"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:96
+msgid "Triangle"
+msgstr "Trokut"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:111
+msgid "Pink Noise"
+msgstr "Rozi šum"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:126
+msgid "White Noise"
+msgstr "Bijeli šum"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:141
+msgid "Silence"
+msgstr "Tišina"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:156
+msgid "Sine Table"
+msgstr "Sinus tablica"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:171
+msgid "Ticks"
+msgstr "Otkucaji"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:186
+msgid "Gaussian Noise"
+msgstr "Gaussov šum"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:201
+msgid "Red Noise"
+msgstr "Bijeli šum"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:216
+msgid "Blue Noise"
+msgstr "Plavi šum"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:231
+msgid "Violet Noise"
+msgstr "Ljubičasti šum"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:270
+msgid "Frequency [Hz]"
+msgstr "Frekvencija [Hz]"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:315
+#: PulseEffectsCalibration/ui/test_signal.glade:658
+msgid "Volume"
+msgstr "Glasnoća zvuka"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:369
+msgid "Test Signal"
+msgstr "Testni signali"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:712
+msgid "Equal Loudness Test Signals"
+msgstr "Testni signali jednake glasnoće"
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
+#: data/com.github.wwmm.pulseeffects.desktop.in:3
+msgid "PulseEffects"
+msgstr "Pulse Efekti"
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:8
+#: data/com.github.wwmm.pulseeffects.desktop.in:5
+msgid "Audio Effects for PulseAudio Applications"
+msgstr "Zvučni efekti za Pulseaudio aplikacije"
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:9
+msgid "Wellington Wallace"
+msgstr "Wellington Wallace"
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:11
+msgid ""
+"PulseEffects is an advanced audio manipulation tools. It includes an "
+"equalizer, limiter, compressor and a reverberation tool, just to mention a "
+"few. To complement this there is also a built in spectrum analyzer."
+msgstr ""
+"Pulse Efekti je napredan alat za manipulaciju zvukom. Uključuje ekvalizator, "
+"graničnik, kompresor i alat odjeka, i druge alate. Još sadrži i ugrađeni "
+"analizator spektra."
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:16
+msgid ""
+"Because PulseEffects uses the default PulseAudio sound server it will work "
+"with most, if not all, applications you use. All supported applications are "
+"presented in the main window, where each can be enabled individually."
+msgstr ""
+"Zato jer Pulse Efekti koriste zadani PulseAudio zvučni poslužitelj radit će "
+"s većinom, ako ne i sa svim aplikacijama koje koristite. Sve podržane "
+"aplikacije su prikazane u glavnom prozoru, gdje se svaka pojedinačno može "
+"omogućiti."
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:22
+msgid ""
+"Besides manipulating sound output, PulseEffects is able to apply effects to "
+"an input device, such as a microphone. This is, for example, useful in audio "
+"recording, but it also works well during voice conversations."
+msgstr ""
+"Osim manipuliranja izlaza zvuka, Pulse Efekti mogu primijeniti efekte i na "
+"ulazni uređaj, poput mikrofona. To je na primjer, korisno pri snimanju "
+"zvuka, ali isto tako radi i tijekom razgovora."
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:27
+msgid ""
+"When PulseEffects is launched it will conveniently remember the "
+"configuration used in the last session. It is also possible to save all the "
+"current settings as profiles."
+msgstr ""
+"Kada je Pulse Efekti pokrenut, upotrijebit će podešavanja od prošlog puta. "
+"Još je moguće spremiti sve trenutne postavke kao predloške."
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
+msgid "Equalizer - Input"
+msgstr "Ekvalizator - Ulaz"
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
+msgid "Equalizer - Output"
+msgstr "Ekvalizator - Izlaz"
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
+msgid "Calibration"
+msgstr "Kalibracija"
+
+#: data/com.github.wwmm.pulseeffects.desktop.in:4
+msgid "Audio Enhancer"
+msgstr "Zvučni poboljšivač"
+
+#: data/com.github.wwmm.pulseeffects.desktop.in:6
+msgid "limiter;compressor;reverberation;equalizer;autovolume;"
+msgstr "graničnik;kompresor;odjek;ekvalizator;automatska glasnoća zvuka;"
+
+#: data/com.github.wwmm.pulseeffects.desktop.in:9
+msgid "pulseeffects"
+msgstr "pulse efekti"
