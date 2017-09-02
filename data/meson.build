@@ -1,4 +1,4 @@
-schemadir = join_paths(get_option('datadir'), 'glib-2.0/schemas')
+schemadir = join_paths(datadir, 'glib-2.0', 'schemas')
 install_data([
   'com.github.wwmm.pulseeffects.gschema.xml',
   'com.github.wwmm.pulseeffects.sinkinputs.gschema.xml',
@@ -10,7 +10,7 @@ i18n_mod.merge_file(
   output: 'com.github.wwmm.pulseeffects.appdata.xml',
   po_dir: '../po',
   install: true,
-  install_dir: join_paths(get_option('datadir'), 'metainfo')
+  install_dir: join_paths(datadir, 'metainfo')
 )
 
 i18n_mod.merge_file(
@@ -19,10 +19,10 @@ i18n_mod.merge_file(
   type: 'desktop',
   po_dir: '../po',
   install: true,
-  install_dir: join_paths(get_option('datadir'), 'applications')
+  install_dir: join_paths(datadir, 'applications')
 )
 
-icondir = join_paths(get_option('datadir'), 'icons/hicolor')
+icondir = join_paths(datadir, 'icons', 'hicolor')
 install_data('pulseeffects.svg',
-  install_dir: join_paths(icondir, 'scalable/apps')
+  install_dir: join_paths(icondir, 'scalable', 'apps')
 )
