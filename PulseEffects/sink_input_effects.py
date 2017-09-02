@@ -71,12 +71,11 @@ class SinkInputEffects(PipelineBase):
                                                  self.on_panorama_enable)
         self.compressor.ui_compressor_enable.connect('state-set',
                                                      self.on_compressor_enable)
+        self.reverb.ui_reverb_enable.connect('state-set',
+                                             self.on_reverb_enable)
 
         # adding effects to the pipeline
 
-        self.effects_bin.append(self.compressor.bin, self.on_filter_added,
-                                None)
-        self.effects_bin.append(self.reverb.bin, self.on_filter_added, None)
         self.effects_bin.append(self.highpass.bin, self.on_filter_added, None)
         self.effects_bin.append(self.lowpass.bin, self.on_filter_added, None)
         self.effects_bin.append(self.equalizer.bin, self.on_filter_added, None)
@@ -195,19 +194,45 @@ class SinkInputEffects(PipelineBase):
         panorama_enabled = self.settings.get_value('panorama-state').unpack()
 
         if state:
-            if limiter_enabled:
-                self.effects_bin.insert_after(self.compressor.bin,
-                                              self.limiter.bin,
-                                              self.on_filter_added, None)
-            elif panorama_enabled:
+            if panorama_enabled:
                 self.effects_bin.insert_after(self.compressor.bin,
                                               self.panorama.bin,
+                                              self.on_filter_added, None)
+            elif limiter_enabled:
+                self.effects_bin.insert_after(self.compressor.bin,
+                                              self.limiter.bin,
                                               self.on_filter_added, None)
             else:
                 self.effects_bin.prepend(self.compressor.bin,
                                          self.on_filter_added, None)
         else:
             self.effects_bin.remove(self.compressor.bin, self.on_filter_added,
+                                    None)
+
+    def on_reverb_enable(self, obj, state):
+        limiter_enabled = self.settings.get_value('limiter-state').unpack()
+        panorama_enabled = self.settings.get_value('panorama-state').unpack()
+        compressor_enabled = self.settings.get_value(
+            'compressor-state').unpack()
+
+        if state:
+            if compressor_enabled:
+                self.effects_bin.insert_after(self.reverb.bin,
+                                              self.compressor.bin,
+                                              self.on_filter_added, None)
+            elif panorama_enabled:
+                self.effects_bin.insert_after(self.reverb.bin,
+                                              self.panorama.bin,
+                                              self.on_filter_added, None)
+            elif limiter_enabled:
+                self.effects_bin.insert_after(self.reverb.bin,
+                                              self.limiter.bin,
+                                              self.on_filter_added, None)
+            else:
+                self.effects_bin.prepend(self.reverb.bin,
+                                         self.on_filter_added, None)
+        else:
+            self.effects_bin.remove(self.reverb.bin, self.on_filter_added,
                                     None)
 
     def init_ui(self):

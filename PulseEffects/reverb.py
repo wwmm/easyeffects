@@ -45,6 +45,10 @@ class Reverb():
     def load_ui(self):
         self.ui_window = self.builder.get_object('window')
 
+        self.ui_reverb_controls = self.builder.get_object(
+            'reverb_controls')
+
+        self.ui_reverb_enable = self.builder.get_object('reverb_enable')
         self.ui_reverb_room_size = self.builder.get_object(
             'reverb_room_size')
         self.ui_reverb_damping = self.builder.get_object('reverb_damping')
@@ -70,7 +74,10 @@ class Reverb():
             'reverb_output_level_right_label')
 
     def init_ui(self):
+        enabled = self.settings.get_value('reverb-state').unpack()
         self.reverb_user = self.settings.get_value('reverb-user').unpack()
+
+        self.ui_reverb_enable.set_state(enabled)
         self.apply_reverb_preset(self.reverb_user)
 
     def apply_reverb_preset(self, values):
@@ -91,6 +98,12 @@ class Reverb():
         out = GLib.Variant('ad', self.reverb_user)
 
         self.settings.set_value('reverb-user', out)
+
+    def on_reverb_enable_state_set(self, obj, state):
+        self.ui_reverb_controls.set_sensitive(state)
+
+        out = GLib.Variant('b', state)
+        self.settings.set_value('reverb-state', out)
 
     def on_reverb_room_size_value_changed(self, obj):
         value = obj.get_value()
@@ -169,4 +182,5 @@ class Reverb():
         self.ui_update_level(widgets, peak)
 
     def reset(self):
+        self.settings.reset('reverb-state')
         self.settings.reset('reverb-user')
