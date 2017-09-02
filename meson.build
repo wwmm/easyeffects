@@ -1,5 +1,5 @@
 project('PulseEffects',
-  version: '2.3.4'
+  version: '2.3.5'
 )
 
 py3_mod = import('python3')
@@ -8,8 +8,6 @@ i18n_mod = import('i18n')
 message('Checking dependencies')
 py3 = py3_mod.find_python()
 
-<<<<<<< HEAD
-=======
 gtk3 = dependency('gtk+-3.0', version: '>= 3.20')
 pygobj = dependency('pygobject-3.0')
 pycairo = dependency('py3cairo')
@@ -22,7 +20,6 @@ bindir = join_paths(prefix, get_option('bindir'))
 datadir = join_paths(prefix, get_option('datadir'))
 localedir = join_paths(prefix, get_option('localedir'))
 
->>>>>>> 5245f14... Improve support for buildtime options
 message('Getting python install path')
 py3_dir = py3_mod.sysconfig_path('purelib')
 
