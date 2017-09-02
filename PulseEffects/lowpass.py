@@ -49,6 +49,10 @@ class Lowpass():
     def load_ui(self):
         self.ui_window = self.builder.get_object('window')
 
+        self.ui_lowpass_controls = self.builder.get_object(
+            'lowpass_controls')
+
+        self.ui_lowpass_enable = self.builder.get_object('lowpass_enable')
         self.ui_lowpass_cutoff = self.builder.get_object('lowpass_cutoff')
         self.ui_lowpass_poles = self.builder.get_object('lowpass_poles')
 
@@ -71,16 +75,24 @@ class Lowpass():
             'lowpass_output_level_right_label')
 
     def init_ui(self):
+        enabled = self.settings.get_value('lowpass-state').unpack()
         lowpass_cutoff_user = self.settings.get_value(
             'lowpass-cutoff').unpack()
         lowpass_poles_user = self.settings.get_value(
             'lowpass-poles').unpack()
 
+        self.ui_lowpass_enable.set_state(enabled)
         self.ui_lowpass_cutoff.set_value(lowpass_cutoff_user)
         self.ui_lowpass_poles.set_value(lowpass_poles_user)
 
         self.lowpass.set_property('cutoff', lowpass_cutoff_user)
         self.lowpass.set_property('poles', lowpass_poles_user)
+
+    def on_lowpass_enable_state_set(self, obj, state):
+        self.ui_lowpass_controls.set_sensitive(state)
+
+        out = GLib.Variant('b', state)
+        self.settings.set_value('lowpass-state', out)
 
     def on_lowpass_cutoff_value_changed(self, obj):
         value = obj.get_value()
@@ -139,5 +151,6 @@ class Lowpass():
         self.ui_update_level(widgets, peak)
 
     def reset(self):
+        self.settings.reset('lowpass-state')
         self.settings.reset('lowpass-cutoff')
         self.settings.reset('lowpass-poles')

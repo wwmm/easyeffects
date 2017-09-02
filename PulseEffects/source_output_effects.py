@@ -72,10 +72,11 @@ class SourceOutputEffects(PipelineBase):
                                              self.on_reverb_enable)
         self.highpass.ui_highpass_enable.connect('state-set',
                                                  self.on_highpass_enable)
+        self.lowpass.ui_lowpass_enable.connect('state-set',
+                                               self.on_lowpass_enable)
 
         # adding effects to the pipeline
 
-        self.effects_bin.append(self.lowpass.bin, self.on_filter_added, None)
         self.effects_bin.append(self.equalizer.bin, self.on_filter_added, None)
         self.effects_bin.append(self.spectrum, self.on_filter_added, None)
 
@@ -225,6 +226,39 @@ class SourceOutputEffects(PipelineBase):
                                          self.on_filter_added, None)
         else:
             self.effects_bin.remove(self.highpass.bin, self.on_filter_added,
+                                    None)
+
+    def on_lowpass_enable(self, obj, state):
+        limiter_enabled = self.settings.get_value('limiter-state').unpack()
+        compressor_enabled = self.settings.get_value(
+            'compressor-state').unpack()
+        reverb_enabled = self.settings.get_value(
+            'reverb-state').unpack()
+        highpass_enabled = self.settings.get_value(
+            'highpass-state').unpack()
+
+        if state:
+            if highpass_enabled:
+                self.effects_bin.insert_after(self.lowpass.bin,
+                                              self.highpass.bin,
+                                              self.on_filter_added, None)
+            elif reverb_enabled:
+                self.effects_bin.insert_after(self.lowpass.bin,
+                                              self.reverb.bin,
+                                              self.on_filter_added, None)
+            elif compressor_enabled:
+                self.effects_bin.insert_after(self.lowpass.bin,
+                                              self.compressor.bin,
+                                              self.on_filter_added, None)
+            elif limiter_enabled:
+                self.effects_bin.insert_after(self.lowpass.bin,
+                                              self.limiter.bin,
+                                              self.on_filter_added, None)
+            else:
+                self.effects_bin.prepend(self.lowpass.bin,
+                                         self.on_filter_added, None)
+        else:
+            self.effects_bin.remove(self.lowpass.bin, self.on_filter_added,
                                     None)
 
     def init_ui(self):
