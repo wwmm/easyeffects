@@ -73,10 +73,11 @@ class SinkInputEffects(PipelineBase):
                                                      self.on_compressor_enable)
         self.reverb.ui_reverb_enable.connect('state-set',
                                              self.on_reverb_enable)
+        self.highpass.ui_highpass_enable.connect('state-set',
+                                                 self.on_highpass_enable)
 
         # adding effects to the pipeline
 
-        self.effects_bin.append(self.highpass.bin, self.on_filter_added, None)
         self.effects_bin.append(self.lowpass.bin, self.on_filter_added, None)
         self.effects_bin.append(self.equalizer.bin, self.on_filter_added, None)
         self.effects_bin.append(self.spectrum, self.on_filter_added, None)
@@ -233,6 +234,38 @@ class SinkInputEffects(PipelineBase):
                                          self.on_filter_added, None)
         else:
             self.effects_bin.remove(self.reverb.bin, self.on_filter_added,
+                                    None)
+
+    def on_highpass_enable(self, obj, state):
+        limiter_enabled = self.settings.get_value('limiter-state').unpack()
+        panorama_enabled = self.settings.get_value('panorama-state').unpack()
+        compressor_enabled = self.settings.get_value(
+            'compressor-state').unpack()
+        reverb_enabled = self.settings.get_value(
+            'reverb-state').unpack()
+
+        if state:
+            if reverb_enabled:
+                self.effects_bin.insert_after(self.highpass.bin,
+                                              self.reverb.bin,
+                                              self.on_filter_added, None)
+            elif compressor_enabled:
+                self.effects_bin.insert_after(self.highpass.bin,
+                                              self.compressor.bin,
+                                              self.on_filter_added, None)
+            elif panorama_enabled:
+                self.effects_bin.insert_after(self.highpass.bin,
+                                              self.panorama.bin,
+                                              self.on_filter_added, None)
+            elif limiter_enabled:
+                self.effects_bin.insert_after(self.highpass.bin,
+                                              self.limiter.bin,
+                                              self.on_filter_added, None)
+            else:
+                self.effects_bin.prepend(self.highpass.bin,
+                                         self.on_filter_added, None)
+        else:
+            self.effects_bin.remove(self.highpass.bin, self.on_filter_added,
                                     None)
 
     def init_ui(self):

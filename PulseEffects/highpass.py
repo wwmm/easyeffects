@@ -49,6 +49,10 @@ class Highpass():
     def load_ui(self):
         self.ui_window = self.builder.get_object('window')
 
+        self.ui_highpass_controls = self.builder.get_object(
+            'highpass_controls')
+
+        self.ui_highpass_enable = self.builder.get_object('highpass_enable')
         self.ui_highpass_cutoff = self.builder.get_object('highpass_cutoff')
         self.ui_highpass_poles = self.builder.get_object('highpass_poles')
 
@@ -71,16 +75,24 @@ class Highpass():
             'highpass_output_level_right_label')
 
     def init_ui(self):
+        enabled = self.settings.get_value('highpass-state').unpack()
         highpass_cutoff_user = self.settings.get_value(
             'highpass-cutoff').unpack()
         highpass_poles_user = self.settings.get_value(
             'highpass-poles').unpack()
 
+        self.ui_highpass_enable.set_state(enabled)
         self.ui_highpass_cutoff.set_value(highpass_cutoff_user)
         self.ui_highpass_poles.set_value(highpass_poles_user)
 
         self.highpass.set_property('cutoff', highpass_cutoff_user)
         self.highpass.set_property('poles', highpass_poles_user)
+
+    def on_highpass_enable_state_set(self, obj, state):
+        self.ui_highpass_controls.set_sensitive(state)
+
+        out = GLib.Variant('b', state)
+        self.settings.set_value('highpass-state', out)
 
     def on_highpass_cutoff_value_changed(self, obj):
         value = obj.get_value()
@@ -139,5 +151,6 @@ class Highpass():
         self.ui_update_level(widgets, peak)
 
     def reset(self):
+        self.settings.reset('highpass-state')
         self.settings.reset('highpass-cutoff')
         self.settings.reset('highpass-poles')
