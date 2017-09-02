@@ -1,7 +1,7 @@
-# SOME DESCRIPTIVE TITLE.
+# German translation for Pulseeffects.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PulseEffects package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Bleuzen <supgesu@gmail.com>, 2017.
 #
 msgid ""
 msgstr ""
@@ -84,7 +84,7 @@ msgstr "Spektrum"
 
 #: PulseEffects/ui/headerbar.glade:255
 msgid "Show"
-msgstr "Zeigen"
+msgstr "Zeige"
 
 #: PulseEffects/ui/headerbar.glade:267
 msgid "Points"
@@ -111,6 +111,7 @@ msgid "Window [s]"
 msgstr "Fenster [s]"
 
 #: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:179
+#, fuzzy
 msgid "Guideline Position"
 msgstr "Leitlinie"
 
