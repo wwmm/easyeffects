@@ -55,6 +55,8 @@ class Limiter():
     def load_ui(self):
         self.ui_window = self.builder.get_object('window')
 
+        self.ui_autovolume_box = self.builder.get_object('autovolume_box')
+
         self.ui_limiter_enable = self.builder.get_object('limiter_enable')
         self.ui_limiter_input_gain = self.builder.get_object(
             'limiter_input_gain')

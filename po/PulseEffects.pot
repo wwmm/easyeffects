@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-02 01:16+0200\n"
+"POT-Creation-Date: 2017-09-02 12:17-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,38 +17,38 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: PulseEffects/sink_input_effects.py:50
+#: PulseEffects/sink_input_effects.py:52
 #: PulseEffects/source_output_effects.py:51
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:48
 msgid "Input Limiter"
 msgstr ""
 
-#: PulseEffects/sink_input_effects.py:52
+#: PulseEffects/sink_input_effects.py:54
 msgid "Panorama"
 msgstr ""
 
-#: PulseEffects/sink_input_effects.py:54
+#: PulseEffects/sink_input_effects.py:56
 #: PulseEffects/source_output_effects.py:53
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:52
 msgid "Compressor"
 msgstr ""
 
-#: PulseEffects/sink_input_effects.py:56
+#: PulseEffects/sink_input_effects.py:58
 #: PulseEffects/source_output_effects.py:55
 msgid "Reverberation"
 msgstr ""
 
-#: PulseEffects/sink_input_effects.py:58
+#: PulseEffects/sink_input_effects.py:60
 #: PulseEffects/source_output_effects.py:57
 msgid "High pass"
 msgstr ""
 
-#: PulseEffects/sink_input_effects.py:60
+#: PulseEffects/sink_input_effects.py:62
 #: PulseEffects/source_output_effects.py:59
 msgid "Low pass"
 msgstr ""
 
-#: PulseEffects/sink_input_effects.py:62
+#: PulseEffects/sink_input_effects.py:64
 #: PulseEffects/source_output_effects.py:61
 msgid "Equalizer"
 msgstr ""

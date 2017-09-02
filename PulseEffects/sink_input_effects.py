@@ -46,6 +46,8 @@ class SinkInputEffects(PipelineBase):
         self.lowpass = Lowpass(self.settings)
         self.equalizer = Equalizer(self.settings)
 
+        # adding effects widgets to the stack
+
         self.stack.add_titled(self.limiter.ui_window, 'Limiter',
                               _('Input Limiter'))
         self.stack.add_titled(self.panorama.ui_window, 'Panorama',
@@ -61,8 +63,13 @@ class SinkInputEffects(PipelineBase):
         self.stack.add_titled(self.equalizer.ui_window, 'Equalizer',
                               _('Equalizer'))
 
+        # on/off switches connections
+
+        self.limiter.ui_limiter_enable.connect('state-set',
+                                               self.on_limiter_enable)
+
         # adding effects to the pipeline
-        self.effects_bin.append(self.limiter.bin, self.on_filter_added, None)
+
         self.effects_bin.append(self.panorama.bin, self.on_filter_added, None)
         self.effects_bin.append(self.compressor.bin, self.on_filter_added,
                                 None)
@@ -156,6 +163,18 @@ class SinkInputEffects(PipelineBase):
                 self.emit('new_spectrum', magnitudes)
 
         return True
+
+    def on_limiter_enable(self, obj, state):
+        if state:
+            self.effects_bin.prepend(self.limiter.bin, self.on_filter_added,
+                                     None)
+
+            self.limiter.ui_autovolume_box.set_sensitive(True)
+        else:
+            self.effects_bin.remove(self.limiter.bin, self.on_filter_added,
+                                    None)
+
+            self.limiter.ui_autovolume_box.set_sensitive(False)
 
     def init_ui(self):
         self.limiter.init_ui()

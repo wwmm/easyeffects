@@ -1,5 +1,5 @@
 project('PulseEffects',
-  version: '2.3.4'
+  version: '3.0.0'
 )
 
 py3_mod = import('python3')

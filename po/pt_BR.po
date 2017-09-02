@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-31 18:53-0300\n"
-"PO-Revision-Date: 2017-08-31 18:54-0300\n"
+"POT-Creation-Date: 2017-09-01 22:53-0300\n"
+"PO-Revision-Date: 2017-09-01 23:04-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
@@ -19,184 +19,268 @@ msgstr ""
 "X-Generator: Poedit 2.0.3\n"
 "Plural-Forms: \n"
 
-#: ../PulseEffects/sink_input_effects.py:50
-#: ../PulseEffects/source_output_effects.py:51
+#: PulseEffects/sink_input_effects.py:50
+#: PulseEffects/source_output_effects.py:51
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:48
 msgid "Input Limiter"
 msgstr "Limitador de Entrada"
 
-#: ../PulseEffects/sink_input_effects.py:52
+#: PulseEffects/sink_input_effects.py:52
 msgid "Panorama"
 msgstr "Panorama"
 
-#: ../PulseEffects/sink_input_effects.py:54
-#: ../PulseEffects/source_output_effects.py:53
+#: PulseEffects/sink_input_effects.py:54
+#: PulseEffects/source_output_effects.py:53
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:52
 msgid "Compressor"
 msgstr "Compressor"
 
-#: ../PulseEffects/sink_input_effects.py:56
-#: ../PulseEffects/source_output_effects.py:55
+#: PulseEffects/sink_input_effects.py:56
+#: PulseEffects/source_output_effects.py:55
 msgid "Reverberation"
 msgstr "Reverberação"
 
-#: ../PulseEffects/sink_input_effects.py:58
-#: ../PulseEffects/source_output_effects.py:57
+#: PulseEffects/sink_input_effects.py:58
+#: PulseEffects/source_output_effects.py:57
 msgid "High pass"
 msgstr "Passa Alta"
 
-#: ../PulseEffects/sink_input_effects.py:60
-#: ../PulseEffects/source_output_effects.py:59
+#: PulseEffects/sink_input_effects.py:60
+#: PulseEffects/source_output_effects.py:59
 msgid "Low pass"
 msgstr "Passa Baixa"
 
-#: ../PulseEffects/sink_input_effects.py:62
-#: ../PulseEffects/source_output_effects.py:61
+#: PulseEffects/sink_input_effects.py:62
+#: PulseEffects/source_output_effects.py:61
 msgid "Equalizer"
 msgstr "Equalizador"
 
-#: ../PulseEffects/ui/about.glade:11
+#: PulseEffects/ui/about.glade:11
 msgid "Audio Effects for Pulseaudio Applications"
 msgstr "Efeitos de Áudio para Programas que Utilizam Pulseaudio"
 
-#: ../PulseEffects/ui/headerbar.glade:73
+#: PulseEffects/ui/headerbar.glade:73
 msgid "Save Preset"
 msgstr "Salvar Predefinição"
 
-#: ../PulseEffects/ui/headerbar.glade:89
+#: PulseEffects/ui/headerbar.glade:89
 msgid "Load Preset"
 msgstr "Carregar Predefinição"
 
-#: ../PulseEffects/ui/headerbar.glade:125
+#: PulseEffects/ui/headerbar.glade:125
 msgid "Latency"
 msgstr "Latência"
 
-#: ../PulseEffects/ui/headerbar.glade:145
+#: PulseEffects/ui/headerbar.glade:145
 msgid "buffer-time [ms]"
 msgstr "tempo de atraso [ms]"
 
-#: ../PulseEffects/ui/headerbar.glade:173
+#: PulseEffects/ui/headerbar.glade:173
 msgid "latency-time [ms]"
 msgstr "tempo de atraso [ms]"
 
-#: ../PulseEffects/ui/headerbar.glade:234
+#: PulseEffects/ui/headerbar.glade:234
 msgid "Spectrum"
 msgstr "Espectro"
 
-#: ../PulseEffects/ui/headerbar.glade:255
+#: PulseEffects/ui/headerbar.glade:255
 msgid "Show"
 msgstr "Mostrar"
 
-#: ../PulseEffects/ui/headerbar.glade:267
+#: PulseEffects/ui/headerbar.glade:267
 msgid "Points"
 msgstr "Pontos"
 
-#: ../PulseEffects/ui/headerbar.glade:328
+#: PulseEffects/ui/headerbar.glade:328
 msgid "General"
 msgstr "Geral"
 
-#: ../PulseEffects/ui/headerbar.glade:348
+#: PulseEffects/ui/headerbar.glade:348
 msgid "Settings"
 msgstr "Configurações"
 
-#: ../PulseEffects/ui/headerbar.glade:357
+#: PulseEffects/ui/headerbar.glade:357
 msgid "Reset"
 msgstr "Resetar"
 
-#: ../PulseEffects/ui/headerbar.glade:376
+#: PulseEffects/ui/headerbar.glade:376
 msgid "Use Dark Theme"
 msgstr "Usar Tema Escuro"
 
-#: ../PulseEffectsCalibration/ui/calibration_mic_plugins.glade:150
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:150
 msgid "Window [s]"
 msgstr "Janela [s]"
 
-#: ../PulseEffectsCalibration/ui/calibration_mic_plugins.glade:179
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:179
 msgid "Guideline Position"
 msgstr "Posição de Linha Guia"
 
-#: ../PulseEffectsCalibration/ui/calibration_mic_plugins.glade:227
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:227
 msgid "Measure Noise"
 msgstr "Medir Ruído"
 
-#: ../PulseEffectsCalibration/ui/calibration_mic_plugins.glade:257
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:257
 msgid "Subtract Noise"
 msgstr "Subtrair Ruído"
 
-#: ../PulseEffectsCalibration/ui/calibration_mic_plugins.glade:308
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:308
 msgid "Calibration Microphone Correction"
 msgstr "Correção do Microfone de Calibração"
 
-#: ../PulseEffectsCalibration/ui/calibration_mic_plugins.glade:777
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:777
 msgid "Input [dB]"
 msgstr "Entrada [dB]"
 
-#: ../PulseEffectsCalibration/ui/test_signal.glade:51
+#: PulseEffectsCalibration/ui/test_signal.glade:51
 msgid "Sine"
 msgstr "Seno"
 
-#: ../PulseEffectsCalibration/ui/test_signal.glade:66
+#: PulseEffectsCalibration/ui/test_signal.glade:66
 msgid "Square"
 msgstr "Quadrada"
 
-#: ../PulseEffectsCalibration/ui/test_signal.glade:81
+#: PulseEffectsCalibration/ui/test_signal.glade:81
 msgid "Saw"
 msgstr "Serra"
 
-#: ../PulseEffectsCalibration/ui/test_signal.glade:96
+#: PulseEffectsCalibration/ui/test_signal.glade:96
 msgid "Triangle"
 msgstr "Triângulo"
 
-#: ../PulseEffectsCalibration/ui/test_signal.glade:111
+#: PulseEffectsCalibration/ui/test_signal.glade:111
 msgid "Pink Noise"
 msgstr "Ruído Rosa"
 
-#: ../PulseEffectsCalibration/ui/test_signal.glade:126
+#: PulseEffectsCalibration/ui/test_signal.glade:126
 msgid "White Noise"
 msgstr "Ruído Branco"
 
-#: ../PulseEffectsCalibration/ui/test_signal.glade:141
+#: PulseEffectsCalibration/ui/test_signal.glade:141
 msgid "Silence"
 msgstr "Silencio"
 
-#: ../PulseEffectsCalibration/ui/test_signal.glade:156
+#: PulseEffectsCalibration/ui/test_signal.glade:156
 msgid "Sine Table"
 msgstr "Tabela de Seno"
 
-#: ../PulseEffectsCalibration/ui/test_signal.glade:171
+#: PulseEffectsCalibration/ui/test_signal.glade:171
 msgid "Ticks"
 msgstr "Tique-Taque"
 
-#: ../PulseEffectsCalibration/ui/test_signal.glade:186
+#: PulseEffectsCalibration/ui/test_signal.glade:186
 msgid "Gaussian Noise"
 msgstr "Ruído Gaussiano"
 
-#: ../PulseEffectsCalibration/ui/test_signal.glade:201
+#: PulseEffectsCalibration/ui/test_signal.glade:201
 msgid "Red Noise"
 msgstr "Ruído Vermelho"
 
-#: ../PulseEffectsCalibration/ui/test_signal.glade:216
+#: PulseEffectsCalibration/ui/test_signal.glade:216
 msgid "Blue Noise"
 msgstr "Ruído Azul"
 
-#: ../PulseEffectsCalibration/ui/test_signal.glade:231
+#: PulseEffectsCalibration/ui/test_signal.glade:231
 msgid "Violet Noise"
 msgstr "Ruído Violeta"
 
-#: ../PulseEffectsCalibration/ui/test_signal.glade:270
+#: PulseEffectsCalibration/ui/test_signal.glade:270
 msgid "Frequency [Hz]"
 msgstr "Frequência [Hz]"
 
-#: ../PulseEffectsCalibration/ui/test_signal.glade:315
-#: ../PulseEffectsCalibration/ui/test_signal.glade:658
+#: PulseEffectsCalibration/ui/test_signal.glade:315
+#: PulseEffectsCalibration/ui/test_signal.glade:658
 msgid "Volume"
 msgstr "Volume"
 
-#: ../PulseEffectsCalibration/ui/test_signal.glade:369
+#: PulseEffectsCalibration/ui/test_signal.glade:369
 msgid "Test Signal"
 msgstr "Sinal de Teste"
 
-#: ../PulseEffectsCalibration/ui/test_signal.glade:712
+#: PulseEffectsCalibration/ui/test_signal.glade:712
 msgid "Equal Loudness Test Signals"
 msgstr "Sinais de Teste de Mesma intensidade"
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
+#: data/com.github.wwmm.pulseeffects.desktop.in:3
+msgid "PulseEffects"
+msgstr "PulseEffects"
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:8
+#: data/com.github.wwmm.pulseeffects.desktop.in:5
+#, fuzzy
+#| msgid "Audio Effects for Pulseaudio Applications"
+msgid "Audio Effects for PulseAudio Applications"
+msgstr "Efeitos de Áudio para Programas que Utilizam Pulseaudio"
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:9
+msgid "Wellington Wallace"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:11
+msgid ""
+"PulseEffects is an advanced audio manipulation tools. It includes an "
+"equalizer, limiter, compressor and a reverberation tool, just to mention a "
+"few. To complement this there is also a built in spectrum analyzer."
+msgstr ""
+"PulseEffects é uma ferramenta avançada de edição de áudio. Ele inclui "
+"equalizador, limitador, compressor e um plugin de reverberação. Estas "
+"ferramentas são complementadas por um analisador de espectro."
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:16
+msgid ""
+"Because PulseEffects uses the default PulseAudio sound server it will work "
+"with most, if not all, applications you use. All supported applications are "
+"presented in the main window, where each can be enabled individually."
+msgstr ""
+"Como o PulseEffects usa o servidor de áudio padrão PulseAudio ele irá "
+"funcionar com a maioria das aplicações que você usa, senão todas. Todos os "
+"aplicativos suportados estão presentes na janela principal, onde cada uma "
+"pode ser habilitada individualmente."
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:22
+msgid ""
+"Besides manipulating sound output, PulseEffects is able to apply effects to "
+"an input device, such as a microphone. This is, for example, useful in audio "
+"recording, but it also works well during voice conversations."
+msgstr ""
+"Além de manipular saída de som o PulseEffects também é capaz de aplicar "
+"efeitos em dispositivos de entrada, como um microfone. Isto é útil, por "
+"exemplo, em gravação de áudio mas também funciona em conversas."
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:27
+msgid ""
+"When PulseEffects is launched it will conveniently remember the "
+"configuration used in the last session. It is also possible to save all the "
+"current settings as profiles."
+msgstr ""
+"Quando inicializado, o PulseEffects irá convenientemente lembrar das "
+"configurações utilizadas na última sessão. Também é possível salvar todas as "
+"configurações\n"
+"como perfis."
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
+msgid "Equalizer - Input"
+msgstr "Equalizador - Entrada"
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
+msgid "Equalizer - Output"
+msgstr "Equalizador - Saída"
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
+msgid "Calibration"
+msgstr "Calibração"
+
+#: data/com.github.wwmm.pulseeffects.desktop.in:4
+msgid "Audio Enhancer"
+msgstr "Melhorador de Áudio"
+
+#: data/com.github.wwmm.pulseeffects.desktop.in:6
+msgid "limiter;compressor;reverberation;equalizer;autovolume;"
+msgstr "limitador;compressor;reverberação;equalizador;autovolume;"
+
+#: data/com.github.wwmm.pulseeffects.desktop.in:9
+msgid "pulseeffects"
+msgstr "pulseeffects"
 
 #~ msgid "Input Gain [dB]"
 #~ msgstr "Ganho de Entrada [dB]"
@@ -309,9 +393,6 @@ msgstr "Sinais de Teste de Mesma intensidade"
 #~ msgid "Reset Q Factors"
 #~ msgstr "Redefinir Fatores Q"
 
-#~ msgid "Calibration"
-#~ msgstr "Calibração"
-
 #~ msgid "F"
 #~ msgstr "F"
 
@@ -320,30 +401,6 @@ msgstr "Sinais de Teste de Mesma intensidade"
 
 #~ msgid "Output [dB]"
 #~ msgstr "Saída [dB]"
-
-#~ msgid "PulseEffects"
-#~ msgstr "PulseEffects"
-
-#, fuzzy
-#~| msgid "Audio Effects for Pulseaudio Applications"
-#~ msgid "Audio Effects for PulseAudio Applications"
-#~ msgstr "Efeitos de Áudio para Programas que Utilizam Pulseaudio"
-
-#, fuzzy
-#~| msgid "Equalizer"
-#~ msgid "Equalizer - Input"
-#~ msgstr "Equalizador"
-
-#, fuzzy
-#~| msgid "Equalizer"
-#~ msgid "Equalizer - Output"
-#~ msgstr "Equalizador"
-
-#~ msgid "Audio Enhancer"
-#~ msgstr "Melhorador de Áudio"
-
-#~ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
-#~ msgstr "limitador;compressor;reverberação;equalizador;autovolume;"
 
 #~ msgid "Test Signals for Headphone and Speakers Calibration"
 #~ msgstr "Sinais de Teste para Calibração de Fones de ouvido e Autofalantes"
