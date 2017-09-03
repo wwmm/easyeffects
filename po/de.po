@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-09-02 12:17-0300\n"
-"PO-Revision-Date: 2017-09-02 21:09+0200\n"
+"PO-Revision-Date: 2017-09-03 14:46+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: PulseEffects/source_output_effects.py:51
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:48
 msgid "Input Limiter"
-msgstr "Eingabebegrenzer"
+msgstr "Limiter"
 
 #: PulseEffects/sink_input_effects.py:54
 msgid "Panorama"
@@ -84,7 +84,7 @@ msgstr "Spektrum"
 
 #: PulseEffects/ui/headerbar.glade:255
 msgid "Show"
-msgstr "Zeige"
+msgstr "Anzeigen"
 
 #: PulseEffects/ui/headerbar.glade:267
 msgid "Points"
@@ -107,23 +107,23 @@ msgid "Use Dark Theme"
 msgstr "Benutze dunkles Thema"
 
 #: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:150
+#, fuzzy
 msgid "Window [s]"
-msgstr "Fenster [s]"
+msgstr "Window [s]"
 
 #: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:179
 #, fuzzy
 msgid "Guideline Position"
-msgstr "Leitlinie"
+msgstr "Guideline Position"
 
 #: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:227
 #, fuzzy
 msgid "Measure Noise"
-msgstr "Lärm messen"
+msgstr "Measure Noise"
 
 #: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:257
-#, fuzzy
 msgid "Subtract Noise"
-msgstr "Lärm einschränken"
+msgstr "Subtract Noise"
 
 #: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:308
 msgid "Calibration Microphone Correction"
