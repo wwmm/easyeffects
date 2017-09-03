@@ -1,8 +1,16 @@
 PulseEffects/sink_input_effects.py
 PulseEffects/source_output_effects.py
 PulseEffects/ui/about.glade
+PulseEffects/ui/compressor.glade
+PulseEffects/ui/effects_box.glade
+PulseEffects/ui/equalizer.glade
 PulseEffects/ui/headerbar.glade
+PulseEffects/ui/highpass.glade
+PulseEffects/ui/limiter.glade
+PulseEffects/ui/lowpass.glade
 PulseEffects/ui/main_ui.glade
+PulseEffects/ui/panorama.glade
+PulseEffects/ui/reverb.glade
 PulseEffectsCalibration/ui/headerbar.glade
 PulseEffectsCalibration/ui/main_ui.glade
 PulseEffectsCalibration/ui/calibration_mic_plugins.glade
