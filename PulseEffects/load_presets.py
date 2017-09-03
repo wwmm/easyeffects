@@ -2,7 +2,7 @@
 
 import configparser
 
-from gi.repository import Gio, GLib
+from gi.repository import GLib
 
 
 class LoadPresets():
@@ -12,9 +12,7 @@ class LoadPresets():
 
         self.config.read(presets_path)
 
-        self.settings = Gio.Settings('com.github.wwmm.pulseeffects')
-
-    def load_sink_inputs_preset(self, settings):
+    def load_sink_inputs_presets(self, settings):
         autovolume_state = settings.get_value('autovolume-state').unpack()
 
         if autovolume_state is False:
@@ -194,7 +192,7 @@ class LoadPresets():
         settings.set_value('equalizer-qfactors',
                            GLib.Variant('ad', eq_qfactors))
 
-    def load_source_outputs_preset(self, settings):
+    def load_source_outputs_presets(self, settings):
         limiter = dict(self.config['mic_limiter']).values()
         limiter = [float(v) for v in limiter]
 

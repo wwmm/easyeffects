@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import configparser
 import logging
 import os
 
@@ -11,6 +10,7 @@ from PulseEffects.list_sink_inputs import ListSinkInputs
 from PulseEffects.list_source_outputs import ListSourceOutputs
 from PulseEffects.load_presets import LoadPresets
 from PulseEffects.pulse_manager import PulseManager
+from PulseEffects.save_presets import SavePresets
 from PulseEffects.sink_input_effects import SinkInputEffects
 from PulseEffects.source_output_effects import SourceOutputEffects
 from PulseEffects.spectrum import Spectrum
@@ -384,202 +384,6 @@ class Application(Gtk.Application):
 
         dialog.add_filter(file_filter)
 
-    def store_sink_inputs_preset(self, config):
-        limiter = self.sie.settings.get_value('limiter-user')
-
-        config['apps_limiter'] = {'input gain': str(limiter[0]),
-                                  'limit': str(limiter[1]),
-                                  'release time': str(limiter[2])}
-
-        panorama_position = self.sie.settings.get_value('panorama-position')
-
-        config['apps_panorama'] = {'position': str(panorama_position)}
-
-        compressor = self.sie.settings.get_value('compressor-user')
-
-        config['apps_compressor'] = {'rms-peak': str(compressor[0]),
-                                     'attack': str(compressor[1]),
-                                     'release': str(compressor[2]),
-                                     'threshold': str(compressor[3]),
-                                     'ratio': str(compressor[4]),
-                                     'knee': str(compressor[5]),
-                                     'makeup': str(compressor[6])}
-
-        reverb = self.sie.settings.get_value('reverb-user')
-
-        config['apps_reverb'] = {'room size': str(reverb[0]),
-                                 'damping': str(reverb[1]),
-                                 'width': str(reverb[2]),
-                                 'level': str(reverb[3])}
-
-        highpass_cutoff = self.sie.settings.get_value('highpass-cutoff')
-        highpass_poles = self.sie.settings.get_value('highpass-poles')
-
-        config['apps_highpass'] = {'cutoff':
-                                   str(highpass_cutoff),
-                                   'poles':
-                                   str(highpass_poles)}
-
-        lowpass_cutoff = self.sie.settings.get_value('lowpass-cutoff')
-        lowpass_poles = self.sie.settings.get_value('lowpass-poles')
-
-        config['apps_lowpass'] = {'cutoff':
-                                  str(lowpass_cutoff),
-                                  'poles':
-                                  str(lowpass_poles)}
-
-        equalizer_input_gain = self.sie.settings.get_value(
-            'equalizer-input-gain')
-        equalizer_output_gain = self.sie.settings.get_value(
-            'equalizer-output-gain')
-        equalizer = self.sie.settings.get_value('equalizer-user')
-        eq_freqs = self.sie.settings.get_value('equalizer-freqs')
-        eq_qfactors = self.sie.settings.get_value('equalizer-qfactors')
-
-        config['apps_equalizer'] = {'input_gain': str(equalizer_input_gain),
-                                    'output_gain': str(equalizer_output_gain),
-                                    'band0': str(equalizer[0]),
-                                    'band1': str(equalizer[1]),
-                                    'band2': str(equalizer[2]),
-                                    'band3': str(equalizer[3]),
-                                    'band4': str(equalizer[4]),
-                                    'band5': str(equalizer[5]),
-                                    'band6': str(equalizer[6]),
-                                    'band7': str(equalizer[7]),
-                                    'band8': str(equalizer[8]),
-                                    'band9': str(equalizer[9]),
-                                    'band10': str(equalizer[10]),
-                                    'band11': str(equalizer[11]),
-                                    'band12': str(equalizer[12]),
-                                    'band13': str(equalizer[13]),
-                                    'band14': str(equalizer[14]),
-                                    'band0_freq': str(eq_freqs[0]),
-                                    'band1_freq': str(eq_freqs[1]),
-                                    'band2_freq': str(eq_freqs[2]),
-                                    'band3_freq': str(eq_freqs[3]),
-                                    'band4_freq': str(eq_freqs[4]),
-                                    'band5_freq': str(eq_freqs[5]),
-                                    'band6_freq': str(eq_freqs[6]),
-                                    'band7_freq': str(eq_freqs[7]),
-                                    'band8_freq': str(eq_freqs[8]),
-                                    'band9_freq': str(eq_freqs[9]),
-                                    'band10_freq': str(eq_freqs[10]),
-                                    'band11_freq': str(eq_freqs[11]),
-                                    'band12_freq': str(eq_freqs[12]),
-                                    'band13_freq': str(eq_freqs[13]),
-                                    'band14_freq': str(eq_freqs[14]),
-                                    'band0_qfactor': str(eq_qfactors[0]),
-                                    'band1_qfactor': str(eq_qfactors[1]),
-                                    'band2_qfactor': str(eq_qfactors[2]),
-                                    'band3_qfactor': str(eq_qfactors[3]),
-                                    'band4_qfactor': str(eq_qfactors[4]),
-                                    'band5_qfactor': str(eq_qfactors[5]),
-                                    'band6_qfactor': str(eq_qfactors[6]),
-                                    'band7_qfactor': str(eq_qfactors[7]),
-                                    'band8_qfactor': str(eq_qfactors[8]),
-                                    'band9_qfactor': str(eq_qfactors[9]),
-                                    'band10_qfactor': str(eq_qfactors[10]),
-                                    'band11_qfactor': str(eq_qfactors[11]),
-                                    'band12_qfactor': str(eq_qfactors[12]),
-                                    'band13_qfactor': str(eq_qfactors[13]),
-                                    'band14_qfactor': str(eq_qfactors[14])}
-
-    def store_source_outputs_preset(self, config):
-        limiter = self.soe.settings.get_value('limiter-user')
-
-        config['mic_limiter'] = {'input gain': str(limiter[0]),
-                                 'limit': str(limiter[1]),
-                                 'release time': str(limiter[2])}
-
-        compressor = self.soe.settings.get_value('compressor-user')
-
-        config['mic_compressor'] = {'rms-peak': str(compressor[0]),
-                                    'attack': str(compressor[1]),
-                                    'release': str(compressor[2]),
-                                    'threshold': str(compressor[3]),
-                                    'ratio': str(compressor[4]),
-                                    'knee': str(compressor[5]),
-                                    'makeup': str(compressor[6])}
-
-        reverb = self.soe.settings.get_value('reverb-user')
-
-        config['mic_reverb'] = {'room size': str(reverb[0]),
-                                'damping': str(reverb[1]),
-                                'width': str(reverb[2]),
-                                'level': str(reverb[3])}
-
-        highpass_cutoff = self.soe.settings.get_value('highpass-cutoff')
-        highpass_poles = self.soe.settings.get_value('highpass-poles')
-
-        config['mic_highpass'] = {'cutoff':
-                                  str(highpass_cutoff),
-                                  'poles':
-                                  str(highpass_poles)}
-
-        lowpass_cutoff = self.soe.settings.get_value('lowpass-cutoff')
-        lowpass_poles = self.soe.settings.get_value('lowpass-poles')
-
-        config['mic_lowpass'] = {'cutoff':
-                                 str(lowpass_cutoff),
-                                 'poles':
-                                 str(lowpass_poles)}
-
-        equalizer_input_gain = self.soe.settings.get_value(
-            'equalizer-input-gain')
-        equalizer_output_gain = self.soe.settings.get_value(
-            'equalizer-output-gain')
-        equalizer = self.soe.settings.get_value('equalizer-user')
-        eq_freqs = self.soe.settings.get_value('equalizer-freqs')
-        eq_qfactors = self.soe.settings.get_value('equalizer-qfactors')
-
-        config['mic_equalizer'] = {'input_gain': str(equalizer_input_gain),
-                                   'output_gain': str(equalizer_output_gain),
-                                   'band0': str(equalizer[0]),
-                                   'band1': str(equalizer[1]),
-                                   'band2': str(equalizer[2]),
-                                   'band3': str(equalizer[3]),
-                                   'band4': str(equalizer[4]),
-                                   'band5': str(equalizer[5]),
-                                   'band6': str(equalizer[6]),
-                                   'band7': str(equalizer[7]),
-                                   'band8': str(equalizer[8]),
-                                   'band9': str(equalizer[9]),
-                                   'band10': str(equalizer[10]),
-                                   'band11': str(equalizer[11]),
-                                   'band12': str(equalizer[12]),
-                                   'band13': str(equalizer[13]),
-                                   'band14': str(equalizer[14]),
-                                   'band0_freq': str(eq_freqs[0]),
-                                   'band1_freq': str(eq_freqs[1]),
-                                   'band2_freq': str(eq_freqs[2]),
-                                   'band3_freq': str(eq_freqs[3]),
-                                   'band4_freq': str(eq_freqs[4]),
-                                   'band5_freq': str(eq_freqs[5]),
-                                   'band6_freq': str(eq_freqs[6]),
-                                   'band7_freq': str(eq_freqs[7]),
-                                   'band8_freq': str(eq_freqs[8]),
-                                   'band9_freq': str(eq_freqs[9]),
-                                   'band10_freq': str(eq_freqs[10]),
-                                   'band11_freq': str(eq_freqs[11]),
-                                   'band12_freq': str(eq_freqs[12]),
-                                   'band13_freq': str(eq_freqs[13]),
-                                   'band14_freq': str(eq_freqs[14]),
-                                   'band0_qfactor': str(eq_qfactors[0]),
-                                   'band1_qfactor': str(eq_qfactors[1]),
-                                   'band2_qfactor': str(eq_qfactors[2]),
-                                   'band3_qfactor': str(eq_qfactors[3]),
-                                   'band4_qfactor': str(eq_qfactors[4]),
-                                   'band5_qfactor': str(eq_qfactors[5]),
-                                   'band6_qfactor': str(eq_qfactors[6]),
-                                   'band7_qfactor': str(eq_qfactors[7]),
-                                   'band8_qfactor': str(eq_qfactors[8]),
-                                   'band9_qfactor': str(eq_qfactors[9]),
-                                   'band10_qfactor': str(eq_qfactors[10]),
-                                   'band11_qfactor': str(eq_qfactors[11]),
-                                   'band12_qfactor': str(eq_qfactors[12]),
-                                   'band13_qfactor': str(eq_qfactors[13]),
-                                   'band14_qfactor': str(eq_qfactors[14])}
-
     def on_save_user_preset_clicked(self, obj):
         dialog = Gtk.FileChooserDialog('', self.window,
                                        Gtk.FileChooserAction.SAVE,
@@ -600,14 +404,12 @@ class Application(Gtk.Application):
             if not path.endswith(".preset"):
                 path += ".preset"
 
-            output = open(path, 'w')
+            s = SavePresets(path)
 
-            config = configparser.ConfigParser()
+            s.save_sink_inputs_presets(self.sie.settings)
+            s.save_source_outputs_presets(self.soe.settings)
 
-            self.store_sink_inputs_preset(config)
-            self.store_source_outputs_preset(config)
-
-            config.write(output)
+            s.write_config()
 
         dialog.destroy()
 
@@ -629,8 +431,8 @@ class Application(Gtk.Application):
 
             l = LoadPresets(path)
 
-            l.load_sink_inputs_preset(self.sie.settings)
-            l.load_source_outputs_preset(self.soe.settings)
+            l.load_sink_inputs_presets(self.sie.settings)
+            l.load_source_outputs_presets(self.soe.settings)
 
             self.sie.init_ui()
             self.soe.init_ui()
