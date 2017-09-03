@@ -11,20 +11,25 @@ class SavePresets():
         self.output_file = open(presets_path, 'w')
 
     def save_sink_inputs_presets(self, settings):
+        limiter_enabled = settings.get_value('limiter-state')
         limiter = settings.get_value('limiter-user')
 
-        self.config['apps_limiter'] = {'input gain': str(limiter[0]),
+        self.config['apps_limiter'] = {'enabled': str(limiter_enabled),
+                                       'input gain': str(limiter[0]),
                                        'limit': str(limiter[1]),
                                        'release time': str(limiter[2])}
 
+        panorama_enabled = settings.get_value('panorama-state')
         panorama_position = settings.get_value('panorama-position')
 
-        self.config['apps_panorama'] = {'position':
-                                        str(panorama_position)}
+        self.config['apps_panorama'] = {'enabled': str(panorama_enabled),
+                                        'position': str(panorama_position)}
 
+        compressor_enabled = settings.get_value('compressor-state')
         compressor = settings.get_value('compressor-user')
 
-        self.config['apps_compressor'] = {'rms-peak': str(compressor[0]),
+        self.config['apps_compressor'] = {'enabled': str(compressor_enabled),
+                                          'rms-peak': str(compressor[0]),
                                           'attack': str(compressor[1]),
                                           'release': str(compressor[2]),
                                           'threshold': str(compressor[3]),
@@ -32,25 +37,32 @@ class SavePresets():
                                           'knee': str(compressor[5]),
                                           'makeup': str(compressor[6])}
 
+        reverb_enabled = settings.get_value('reverb-state')
         reverb = settings.get_value('reverb-user')
 
-        self.config['apps_reverb'] = {'room size': str(reverb[0]),
+        self.config['apps_reverb'] = {'enabled': str(reverb_enabled),
+                                      'room size': str(reverb[0]),
                                       'damping': str(reverb[1]),
                                       'width': str(reverb[2]),
                                       'level': str(reverb[3])}
 
+        highpass_enabled = settings.get_value('highpass-state')
         highpass_cutoff = settings.get_value('highpass-cutoff')
         highpass_poles = settings.get_value('highpass-poles')
 
-        self.config['apps_highpass'] = {'cutoff': str(highpass_cutoff),
+        self.config['apps_highpass'] = {'enabled': str(highpass_enabled),
+                                        'cutoff': str(highpass_cutoff),
                                         'poles': str(highpass_poles)}
 
+        lowpass_enabled = settings.get_value('lowpass-state')
         lowpass_cutoff = settings.get_value('lowpass-cutoff')
         lowpass_poles = settings.get_value('lowpass-poles')
 
-        self.config['apps_lowpass'] = {'cutoff': str(lowpass_cutoff),
+        self.config['apps_lowpass'] = {'enabled': str(lowpass_enabled),
+                                       'cutoff': str(lowpass_cutoff),
                                        'poles': str(lowpass_poles)}
 
+        equalizer_enabled = settings.get_value('equalizer-state')
         equalizer_input_gain = settings.get_value(
             'equalizer-input-gain')
         equalizer_output_gain = settings.get_value(
@@ -59,7 +71,8 @@ class SavePresets():
         eq_freqs = settings.get_value('equalizer-freqs')
         eq_qfactors = settings.get_value('equalizer-qfactors')
 
-        self.config['apps_equalizer'] = {'input_gain':
+        self.config['apps_equalizer'] = {'enabled': str(equalizer_enabled),
+                                         'input_gain':
                                          str(equalizer_input_gain),
                                          'output_gain':
                                          str(equalizer_output_gain),
@@ -115,15 +128,19 @@ class SavePresets():
                                          str(eq_qfactors[14])}
 
     def save_source_outputs_presets(self, settings):
+        limiter_enabled = settings.get_value('limiter-state')
         limiter = settings.get_value('limiter-user')
 
-        self.config['mic_limiter'] = {'input gain': str(limiter[0]),
+        self.config['mic_limiter'] = {'enabled': str(limiter_enabled),
+                                      'input gain': str(limiter[0]),
                                       'limit': str(limiter[1]),
                                       'release time': str(limiter[2])}
 
+        compressor_enabled = settings.get_value('compressor-state')
         compressor = settings.get_value('compressor-user')
 
-        self.config['mic_compressor'] = {'rms-peak': str(compressor[0]),
+        self.config['mic_compressor'] = {'enabled': str(compressor_enabled),
+                                         'rms-peak': str(compressor[0]),
                                          'attack': str(compressor[1]),
                                          'release': str(compressor[2]),
                                          'threshold': str(compressor[3]),
@@ -131,25 +148,32 @@ class SavePresets():
                                          'knee': str(compressor[5]),
                                          'makeup': str(compressor[6])}
 
+        reverb_enabled = settings.get_value('reverb-state')
         reverb = settings.get_value('reverb-user')
 
-        self.config['mic_reverb'] = {'room size': str(reverb[0]),
+        self.config['mic_reverb'] = {'enabled': str(reverb_enabled),
+                                     'room size': str(reverb[0]),
                                      'damping': str(reverb[1]),
                                      'width': str(reverb[2]),
                                      'level': str(reverb[3])}
 
+        highpass_enabled = settings.get_value('highpass-state')
         highpass_cutoff = settings.get_value('highpass-cutoff')
         highpass_poles = settings.get_value('highpass-poles')
 
-        self.config['mic_highpass'] = {'cutoff': str(highpass_cutoff),
+        self.config['mic_highpass'] = {'enabled': str(highpass_enabled),
+                                       'cutoff': str(highpass_cutoff),
                                        'poles': str(highpass_poles)}
 
+        lowpass_enabled = settings.get_value('lowpass-state')
         lowpass_cutoff = settings.get_value('lowpass-cutoff')
         lowpass_poles = settings.get_value('lowpass-poles')
 
-        self.config['mic_lowpass'] = {'cutoff': str(lowpass_cutoff),
+        self.config['mic_lowpass'] = {'enabled': str(lowpass_enabled),
+                                      'cutoff': str(lowpass_cutoff),
                                       'poles': str(lowpass_poles)}
 
+        equalizer_enabled = settings.get_value('equalizer-state')
         equalizer_input_gain = settings.get_value(
             'equalizer-input-gain')
         equalizer_output_gain = settings.get_value(
@@ -158,7 +182,8 @@ class SavePresets():
         eq_freqs = settings.get_value('equalizer-freqs')
         eq_qfactors = settings.get_value('equalizer-qfactors')
 
-        self.config['mic_equalizer'] = {'input_gain':
+        self.config['mic_equalizer'] = {'enabled': str(equalizer_enabled),
+                                        'input_gain':
                                         str(equalizer_input_gain),
                                         'output_gain':
                                         str(equalizer_output_gain),
