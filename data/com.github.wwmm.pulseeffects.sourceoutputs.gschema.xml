@@ -79,6 +79,9 @@
           <default>4</default>
         </key>
 
+        <key name="equalizer-state" type="b">
+          <default>false</default>
+        </key>
         <key name="equalizer-user" type="ad">
           <default>[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]</default>
         </key>

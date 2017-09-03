@@ -78,6 +78,7 @@ class Reverb():
         self.reverb_user = self.settings.get_value('reverb-user').unpack()
 
         self.ui_reverb_enable.set_state(enabled)
+        self.ui_reverb_controls.set_sensitive(enabled)
         self.apply_reverb_preset(self.reverb_user)
 
     def apply_reverb_preset(self, values):

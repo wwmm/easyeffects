@@ -102,6 +102,7 @@ class Compressor():
             'compressor-user').unpack()
 
         self.ui_compressor_enable.set_state(enabled)
+        self.ui_compressor_controls.set_sensitive(enabled)
         self.apply_compressor_preset(self.compressor_user)
 
     def apply_compressor_preset(self, values):

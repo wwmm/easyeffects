@@ -77,6 +77,7 @@ class Panorama():
         panorama = self.settings.get_value('panorama-position').unpack()
 
         self.ui_panorama_enable.set_state(enabled)
+        self.ui_panorama_controls.set_sensitive(enabled)
         self.ui_panorama.set_value(panorama)
         self.panorama.set_property('panorama', panorama)
 

@@ -78,6 +78,10 @@ class Equalizer():
     def load_ui(self):
         self.ui_window = self.builder.get_object('window')
 
+        self.ui_equalizer_controls = self.builder.get_object(
+            'equalizer_controls')
+        self.ui_equalizer_enable = self.builder.get_object('equalizer_enable')
+
         self.ui_equalizer_input_gain = self.builder.get_object(
             'equalizer_input_gain')
         self.ui_equalizer_output_gain = self.builder.get_object(
@@ -146,6 +150,9 @@ class Equalizer():
         self.ui_eq_band14_qfactor = self.builder.get_object(
             'eq_band14_qfactor')
 
+        self.ui_eq_calibrate_button = self.builder.get_object(
+            'eq_calibrate_button')
+
         self.ui_equalizer_input_level_left = self.builder.get_object(
             'equalizer_input_level_left')
         self.ui_equalizer_input_level_right = self.builder.get_object(
@@ -165,12 +172,17 @@ class Equalizer():
             'equalizer_output_level_right_label')
 
     def init_ui(self):
+        enabled = self.settings.get_value('equalizer-state').unpack()
+
         equalizer_input_gain_user = self.settings.get_value(
             'equalizer-input-gain').unpack()
         equalizer_output_gain_user = self.settings.get_value(
             'equalizer-output-gain').unpack()
 
         self.eq_band_user = self.settings.get_value('equalizer-user').unpack()
+
+        self.ui_equalizer_enable.set_state(enabled)
+        self.ui_equalizer_controls.set_sensitive(enabled)
 
         self.ui_equalizer_input_gain.set_value(equalizer_input_gain_user)
         self.ui_equalizer_output_gain.set_value(equalizer_output_gain_user)
@@ -346,6 +358,12 @@ class Equalizer():
         out = GLib.Variant('ad', self.eq_band_user)
 
         self.settings.set_value('equalizer-user', out)
+
+    def on_equalizer_enable_state_set(self, obj, state):
+        self.ui_equalizer_controls.set_sensitive(state)
+
+        out = GLib.Variant('b', state)
+        self.settings.set_value('equalizer-state', out)
 
     def on_equalizer_input_gain_value_changed(self, obj):
         value_db = obj.get_value()
@@ -657,6 +675,7 @@ class Equalizer():
         c.run()
 
     def reset(self):
+        self.settings.reset('equalizer-state')
         self.settings.reset('equalizer-input-gain')
         self.settings.reset('equalizer-output-gain')
         self.settings.reset('equalizer-user')

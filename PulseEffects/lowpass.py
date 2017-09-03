@@ -82,6 +82,7 @@ class Lowpass():
             'lowpass-poles').unpack()
 
         self.ui_lowpass_enable.set_state(enabled)
+        self.ui_lowpass_controls.set_sensitive(enabled)
         self.ui_lowpass_cutoff.set_value(lowpass_cutoff_user)
         self.ui_lowpass_poles.set_value(lowpass_poles_user)
 

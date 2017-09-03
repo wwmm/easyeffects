@@ -82,6 +82,7 @@ class Highpass():
             'highpass-poles').unpack()
 
         self.ui_highpass_enable.set_state(enabled)
+        self.ui_highpass_controls.set_sensitive(enabled)
         self.ui_highpass_cutoff.set_value(highpass_cutoff_user)
         self.ui_highpass_poles.set_value(highpass_poles_user)
 
