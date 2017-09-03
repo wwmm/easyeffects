@@ -5,6 +5,7 @@ Comment=Audio Effects for PulseAudio Applications
 Keywords=limiter;compressor;reverberation;equalizer;autovolume;
 Categories=GTK;AudioVideo;Audio;
 Exec=pulseeffects
+# Translators: This is an icon name, don't translate!
 Icon=pulseeffects
 StartupNotify=true
 Terminal=false
