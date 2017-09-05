@@ -6,7 +6,7 @@ gi.require_version('PangoCairo', '1.0')
 from gi.repository import Pango, PangoCairo
 
 
-class Spectrum():
+class DrawSpectrum():
 
     def __init__(self, app):
         self.app = app
@@ -16,23 +16,20 @@ class Spectrum():
         self.mouse_inside = False
         self.mouse_freq = 0
         self.mouse_intensity = 0
+        self.spectrum_magnitudes = np.array([])
 
         self.font_description = Pango.FontDescription('Monospace')
-
-        self.handlers = {
-            'on_spectrum_draw': self.on_spectrum_draw,
-            'on_spectrum_enter_notify_event':
-                self.on_spectrum_enter_notify_event,
-            'on_spectrum_leave_notify_event':
-                self.on_spectrum_leave_notify_event,
-            'on_spectrum_motion_notify_event':
-                self.on_spectrum_motion_notify_event
-        }
 
         self.spectrum_box = self.builder.get_object('spectrum_box')
         self.drawing_area = self.builder.get_object('spectrum')
 
-        self.spectrum_magnitudes = np.array([])
+        self.drawing_area.connect('draw', self.on_draw)
+        self.drawing_area.connect('enter-notify-event',
+                                  self.on_enter_notify_event)
+        self.drawing_area.connect('leave-notify-event',
+                                  self.on_leave_notify_event)
+        self.drawing_area.connect('motion-notify-event',
+                                  self.on_motion_notify_event)
 
     def show(self):
         self.spectrum_box.show_all()
@@ -46,7 +43,7 @@ class Spectrum():
         self.spectrum_magnitudes = np.array([])
         self.drawing_area.queue_draw()
 
-    def on_spectrum_draw(self, drawing_area, ctx):
+    def on_draw(self, drawing_area, ctx):
         ctx.paint()
 
         n_bars = self.spectrum_magnitudes.size
@@ -90,13 +87,13 @@ class Spectrum():
 
             self.drawing_area.queue_draw()
 
-    def on_spectrum_enter_notify_event(self, drawing_area, event_crossing):
+    def on_enter_notify_event(self, drawing_area, event_crossing):
         self.mouse_inside = True
 
-    def on_spectrum_leave_notify_event(self, drawing_area, event_crossing):
+    def on_leave_notify_event(self, drawing_area, event_crossing):
         self.mouse_inside = False
 
-    def on_spectrum_motion_notify_event(self, drawing_area, event_motion):
+    def on_motion_notify_event(self, drawing_area, event_motion):
         width = drawing_area.get_allocation().width
         height = drawing_area.get_allocation().height
 

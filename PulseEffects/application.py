@@ -13,7 +13,7 @@ from PulseEffects.pulse_manager import PulseManager
 from PulseEffects.save_presets import SavePresets
 from PulseEffects.sink_input_effects import SinkInputEffects
 from PulseEffects.source_output_effects import SourceOutputEffects
-from PulseEffects.spectrum import Spectrum
+from PulseEffects.draw_spectrum import DrawSpectrum
 
 
 class Application(Gtk.Application):
@@ -77,37 +77,20 @@ class Application(Gtk.Application):
 
         self.builder.add_from_file(self.module_path + '/ui/main_ui.glade')
 
+        self.builder.connect_signals(self)
+
         self.window = self.builder.get_object('MainWindow')
+        self.server_info_label = self.builder.get_object('server_info_label')
+
         self.window.set_application(self)
 
         # app menu
 
         self.create_appmenu()
 
-        # main window handlers
-
-        self.spectrum = Spectrum(self)
-
-        main_ui_handlers = {
-            'on_buffer_time_value_changed': self.on_buffer_time_value_changed,
-            'on_latency_time_value_changed':
-                self.on_latency_time_value_changed,
-            'on_show_spectrum_state_set': self.on_show_spectrum_state_set,
-            'on_spectrum_n_points_value_changed':
-                self.on_spectrum_n_points_value_changed,
-            'on_save_user_preset_clicked': self.on_save_user_preset_clicked,
-            'on_load_user_preset_clicked': self.on_load_user_preset_clicked,
-            'on_theme_switch_state_set': self.on_theme_switch_state_set,
-            'on_reset_all_settings_clicked': self.on_reset_all_settings_clicked
-        }
-
-        main_ui_handlers.update(self.spectrum.handlers)
-
-        self.builder.connect_signals(main_ui_handlers)
-
         # main window widgets initialization
 
-        self.server_info_label = self.builder.get_object('server_info_label')
+        self.draw_spectrum = DrawSpectrum(self)
 
         self.init_theme()
         self.init_settings_menu()
@@ -128,7 +111,7 @@ class Application(Gtk.Application):
         # permanent but just a default
 
         self.spectrum_handler_id = self.sie.connect('new_spectrum',
-                                                    self.spectrum
+                                                    self.draw_spectrum
                                                     .on_new_spectrum)
 
         # searching for apps
@@ -179,16 +162,9 @@ class Application(Gtk.Application):
         self.settings.set_value('use-dark-theme', out)
 
     def init_stack_widgets(self):
-        stack_switcher = self.builder.get_object('stack_switcher')
-        stack_box = self.builder.get_object('stack_box')
-
-        self.stack = Gtk.Stack()
-        self.stack.set_transition_type(Gtk.StackTransitionType.CROSSFADE)
-        self.stack.set_transition_duration(250)
-        self.stack.set_homogeneous(False)
+        self.stack = self.builder.get_object('stack')
 
         self.stack.add_named(self.sie.ui_window, 'sink_inputs')
-
         self.stack.child_set_property(self.sie.ui_window, 'icon-name',
                                       'audio-speakers-symbolic')
 
@@ -211,7 +187,7 @@ class Application(Gtk.Application):
                     self.soe.disconnect(self.spectrum_handler_id)
 
                 self.spectrum_handler_id = self.sie.connect('new_spectrum',
-                                                            self.spectrum
+                                                            self.draw_spectrum
                                                             .on_new_spectrum)
 
                 self.stack_current_child_name = 'sink_inputs'
@@ -225,7 +201,7 @@ class Application(Gtk.Application):
                     self.sie.disconnect(self.spectrum_handler_id)
 
                 self.spectrum_handler_id = self.soe.connect('new_spectrum',
-                                                            self.spectrum
+                                                            self.draw_spectrum
                                                             .on_new_spectrum)
 
                 self.stack_current_child_name = 'source_outputs'
@@ -236,14 +212,9 @@ class Application(Gtk.Application):
 
                 self.server_info_label.set_text(server_info)
 
-            self.spectrum.clear()
+            self.draw_spectrum.clear()
 
         self.stack.connect("notify::visible-child", on_visible_child_changed)
-
-        stack_switcher.set_stack(self.stack)
-
-        stack_box.pack_start(self.stack, True, True, 0)
-        stack_box.show_all()
 
     def init_settings_menu(self):
         button = self.builder.get_object('settings_popover_button')
@@ -322,19 +293,19 @@ class Application(Gtk.Application):
         self.soe.set_spectrum_n_points(spectrum_n_points)
 
         if show_spectrum:
-            self.spectrum.show()
+            self.draw_spectrum.show()
         else:
-            self.spectrum.hide()
+            self.draw_spectrum.hide()
 
     def on_show_spectrum_state_set(self, obj, state):
         if state:
-            self.spectrum.show()
+            self.draw_spectrum.show()
             self.sie.enable_spectrum(True)
             self.soe.enable_spectrum(True)
         else:
             self.sie.enable_spectrum(False)
             self.soe.enable_spectrum(False)
-            self.spectrum.hide()
+            self.draw_spectrum.hide()
 
         out = GLib.Variant('b', state)
         self.settings.set_value('show-spectrum', out)
