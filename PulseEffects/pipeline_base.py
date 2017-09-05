@@ -187,7 +187,10 @@ class PipelineBase(GObject.GObject):
         self.spectrum_x_axis = np.logspace(1.3, 4.3, value)
 
     def enable_spectrum(self, state):
-        self.spectrum.set_property('post-messages', state)
+        if state:
+            self.effects_bin.append(self.spectrum, self.on_filter_added, None)
+        else:
+            self.effects_bin.remove(self.spectrum, self.on_filter_added, None)
 
     def init_latency_time(self, value):
         self.audio_src.set_property('latency-time', value)

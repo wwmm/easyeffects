@@ -80,10 +80,6 @@ class SinkInputEffects(PipelineBase):
         self.equalizer.ui_equalizer_enable.connect('state-set',
                                                    self.on_equalizer_enable)
 
-        # adding effects to the pipeline
-
-        self.effects_bin.append(self.spectrum, self.on_filter_added, None)
-
     def on_message_element(self, bus, msg):
         plugin = msg.src.get_name()
 

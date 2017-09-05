@@ -49,22 +49,6 @@ class Application(Gtk.Application):
         self.pm.load_apps_sink()
         self.pm.load_mic_sink()
 
-        # gstreamer sink input effects
-
-        self.sie = SinkInputEffects(self.pm.default_sink_rate)
-        self.sie.set_source_monitor_name(self.pm.apps_sink_monitor_name)
-        self.sie.set_output_sink_name(self.pm.default_sink_name)
-
-        # gstreamer source outputs effects
-
-        self.soe = SourceOutputEffects(self.pm.default_source_rate)
-        self.soe.set_source_monitor_name(self.pm.default_source_name)
-        self.soe.set_output_sink_name('PulseEffects_mic')
-
-        # putting pipelines in the ready state
-        self.sie.set_state('ready')
-        self.soe.set_state('ready')
-
         # creating user presets folder
         self.user_config_dir = os.path.join(GLib.get_user_config_dir(),
                                             'PulseEffects')
@@ -84,11 +68,21 @@ class Application(Gtk.Application):
 
         self.window.set_application(self)
 
-        # app menu
-
         self.create_appmenu()
 
         # main window widgets initialization
+
+        # gstreamer sink input effects
+
+        self.sie = SinkInputEffects(self.pm.default_sink_rate)
+        self.sie.set_source_monitor_name(self.pm.apps_sink_monitor_name)
+        self.sie.set_output_sink_name(self.pm.default_sink_name)
+
+        # gstreamer source outputs effects
+
+        self.soe = SourceOutputEffects(self.pm.default_source_rate)
+        self.soe.set_source_monitor_name(self.pm.default_source_name)
+        self.soe.set_output_sink_name('PulseEffects_mic')
 
         self.draw_spectrum = DrawSpectrum(self)
 
