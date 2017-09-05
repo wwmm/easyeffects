@@ -11,6 +11,7 @@ py3 = py3_mod.find_python()
 gtk3 = dependency('gtk+-3.0', version: '>= 3.20')
 pygobj = dependency('pygobject-3.0')
 pycairo = dependency('py3cairo')
+pangocairo = dependency('pangocairo', version: '>= 1.0')
 
 gst = dependency('gstreamer-1.0', version: '>= 1.12')
 gstbad = dependency('gstreamer-plugins-bad-1.0', version: '>= 1.12')

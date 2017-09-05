@@ -182,6 +182,8 @@ class PipelineBase(GObject.GObject):
     def set_spectrum_n_points(self, value):
         self.spectrum_n_points = value
 
+        # 20 Hz = 10^(1.3), 20000 Hz = 10^(4.3)
+
         self.spectrum_x_axis = np.logspace(1.3, 4.3, value)
 
     def enable_spectrum(self, state):
@@ -209,5 +211,7 @@ class PipelineBase(GObject.GObject):
             self.spectrum_freqs.append(freq)
 
         self.spectrum_nfreqs = len(self.spectrum_freqs)
+
+        # 20 Hz = 10^(1.3), 20000 Hz = 10^(4.3)
 
         self.spectrum_x_axis = np.logspace(1.3, 4.3, self.spectrum_n_points)
