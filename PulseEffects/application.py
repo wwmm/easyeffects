@@ -76,12 +76,8 @@ class Application(Gtk.Application):
         self.builder = Gtk.Builder()
 
         self.builder.add_from_file(self.module_path + '/ui/main_ui.glade')
-        self.builder.add_from_file(self.module_path + '/ui/headerbar.glade')
-
-        headerbar = self.builder.get_object('headerbar')
 
         self.window = self.builder.get_object('MainWindow')
-        self.window.set_titlebar(headerbar)
         self.window.set_application(self)
 
         # app menu
