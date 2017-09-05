@@ -19,10 +19,6 @@ class ListSinkInputs():
 
         self.apps_box = self.sie.builder.get_object('apps_box')
 
-    def init(self):
-        pass
-
-    def connect_signals(self):
         self.pm.connect('sink_input_added', self.on_sink_input_added)
         self.pm.connect('sink_input_changed', self.on_sink_input_changed)
         self.pm.connect('sink_input_removed', self.on_sink_input_removed)

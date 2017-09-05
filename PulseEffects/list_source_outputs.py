@@ -14,16 +14,11 @@ class ListSourceOutputs():
         self.pm = pulse_manager
 
         self.changing_source_output_volume = False
-        self.handlers = {}
 
         self.log = logging.getLogger('PulseEffects')
 
         self.apps_box = self.soe.builder.get_object('apps_box')
 
-    def init(self):
-        pass
-
-    def connect_signals(self):
         self.pm.connect('source_output_added', self.on_source_output_added)
         self.pm.connect('source_output_changed', self.on_source_output_changed)
         self.pm.connect('source_output_removed', self.on_source_output_removed)

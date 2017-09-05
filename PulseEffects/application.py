@@ -120,30 +120,22 @@ class Application(Gtk.Application):
         self.init_spectrum_widgets()
 
         self.list_sink_inputs = ListSinkInputs(self.sie, self.pm)
-        self.list_sink_inputs.init()
-
         self.list_source_outputs = ListSourceOutputs(self.soe, self.pm)
-        self.list_source_outputs.init()
 
         self.sie.init_ui()
         self.soe.init_ui()
 
         self.init_stack_widgets()
 
-        # connecting signals
-
         # this connection is changed inside the stack switch handler
         # depending on the selected child. The connection below is not
         # permanent but just a default
+
         self.spectrum_handler_id = self.sie.connect('new_spectrum',
                                                     self.spectrum
                                                     .on_new_spectrum)
 
-        self.list_sink_inputs.connect_signals()
-        self.list_source_outputs.connect_signals()
-
-        # now that signals are connected we search for apps and add them to the
-        # main window
+        # searching for apps
 
         self.pm.find_sink_inputs()
         self.pm.find_source_outputs()
