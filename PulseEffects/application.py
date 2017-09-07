@@ -18,19 +18,21 @@ from PulseEffects.source_output_effects import SourceOutputEffects
 
 class Application(Gtk.Application):
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self):
         app_id = 'com.github.wwmm.pulseeffects'
+        app_flags = Gio.ApplicationFlags.HANDLES_COMMAND_LINE
 
         GLib.set_application_name('PulseEffects')
         GLib.setenv('PULSE_PROP_media.role', 'production', True)
         GLib.setenv('PULSE_PROP_application.icon_name', 'pulseeffects', True)
 
-        Gtk.Application.__init__(self, application_id=app_id)
+        Gtk.Application.__init__(self, application_id=app_id, flags=app_flags)
+
+        self.add_main_option('no-window', ord('n'), GLib.OptionFlags.NONE,
+                             GLib.OptionArg.NONE, 'do not show window', None)
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
-
-        self.gtk_settings = Gtk.Settings.get_default()
 
         self.ui_initialized = False
         self.module_path = os.path.dirname(__file__)
@@ -43,6 +45,8 @@ class Application(Gtk.Application):
                             level=logging.INFO)
 
         self.log = logging.getLogger('PulseEffects')
+
+        self.gtk_settings = Gtk.Settings.get_default()
 
         self.settings = Gio.Settings('com.github.wwmm.pulseeffects')
 
@@ -117,6 +121,16 @@ class Application(Gtk.Application):
         self.window.present()
 
         self.ui_initialized = True
+
+    def do_command_line(self, command_line):
+        options = command_line.get_options_dict()
+
+        if options.contains("no-window"):
+            self.log.info('Running as a background service')
+        else:
+            self.activate()
+
+        return 0
 
     def do_shutdown(self):
         Gtk.Application.do_shutdown(self)

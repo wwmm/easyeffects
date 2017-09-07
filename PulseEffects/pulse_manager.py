@@ -329,7 +329,6 @@ class PulseManager(GObject.GObject):
             else:
                 return False
         else:
-            print(name)
             return True
 
     def load_apps_sink(self):
