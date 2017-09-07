@@ -6,7 +6,7 @@ import gi
 gi.require_version('Gst', '1.0')
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import GLib, Gst, GstInsertBin, Gtk
+from gi.repository import Gio, GLib, Gst, GstInsertBin, Gtk
 
 Gst.init(None)
 
@@ -74,42 +74,29 @@ class Lowpass():
         self.ui_lowpass_output_level_right_label = self.builder.get_object(
             'lowpass_output_level_right_label')
 
-    def init_ui(self):
-        enabled = self.settings.get_value('lowpass-state').unpack()
+    def bind(self):
+        self.settings.bind('lowpass-state', self.ui_lowpass_enable, 'active',
+                           Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('lowpass-state', self.ui_lowpass_controls,
+                           'sensitive', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('lowpass-cutoff', self.ui_lowpass_cutoff,
+                           'value', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('lowpass-poles', self.ui_lowpass_poles,
+                           'value', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('lowpass-poles', self.lowpass, 'poles',
+                           Gio.SettingsBindFlags.DEFAULT)
+
+    def init(self):
+        # this property has gfloat type and
+        # bind_with_mapping is not available in python
+        # we have to set it the old way
         lowpass_cutoff_user = self.settings.get_value(
             'lowpass-cutoff').unpack()
-        lowpass_poles_user = self.settings.get_value(
-            'lowpass-poles').unpack()
-
-        self.ui_lowpass_enable.set_state(enabled)
-        self.ui_lowpass_controls.set_sensitive(enabled)
-        self.ui_lowpass_cutoff.set_value(lowpass_cutoff_user)
-        self.ui_lowpass_poles.set_value(lowpass_poles_user)
 
         self.lowpass.set_property('cutoff', lowpass_cutoff_user)
-        self.lowpass.set_property('poles', lowpass_poles_user)
-
-    def on_lowpass_enable_state_set(self, obj, state):
-        self.ui_lowpass_controls.set_sensitive(state)
-
-        out = GLib.Variant('b', state)
-        self.settings.set_value('lowpass-state', out)
 
     def on_lowpass_cutoff_value_changed(self, obj):
-        value = obj.get_value()
-        self.lowpass.set_property('cutoff', value)
-
-        out = GLib.Variant('i', value)
-
-        self.settings.set_value('lowpass-cutoff', out)
-
-    def on_lowpass_poles_value_changed(self, obj):
-        value = obj.get_value()
-        self.lowpass.set_property('poles', value)
-
-        out = GLib.Variant('i', value)
-
-        self.settings.set_value('lowpass-poles', out)
+        self.lowpass.set_property('cutoff', obj.get_value())
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]

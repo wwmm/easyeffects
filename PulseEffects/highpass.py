@@ -6,7 +6,7 @@ import gi
 gi.require_version('Gst', '1.0')
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import GLib, Gst, GstInsertBin, Gtk
+from gi.repository import Gio, GLib, Gst, GstInsertBin, Gtk
 
 Gst.init(None)
 
@@ -74,42 +74,29 @@ class Highpass():
         self.ui_highpass_output_level_right_label = self.builder.get_object(
             'highpass_output_level_right_label')
 
-    def init_ui(self):
-        enabled = self.settings.get_value('highpass-state').unpack()
+    def bind(self):
+        self.settings.bind('highpass-state', self.ui_highpass_enable, 'active',
+                           Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('highpass-state', self.ui_highpass_controls,
+                           'sensitive', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('highpass-cutoff', self.ui_highpass_cutoff,
+                           'value', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('highpass-poles', self.ui_highpass_poles,
+                           'value', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('highpass-poles', self.highpass, 'poles',
+                           Gio.SettingsBindFlags.DEFAULT)
+
+    def init(self):
+        # this property has gfloat type and
+        # bind_with_mapping is not available in python
+        # we have to set it the old way
         highpass_cutoff_user = self.settings.get_value(
             'highpass-cutoff').unpack()
-        highpass_poles_user = self.settings.get_value(
-            'highpass-poles').unpack()
-
-        self.ui_highpass_enable.set_state(enabled)
-        self.ui_highpass_controls.set_sensitive(enabled)
-        self.ui_highpass_cutoff.set_value(highpass_cutoff_user)
-        self.ui_highpass_poles.set_value(highpass_poles_user)
 
         self.highpass.set_property('cutoff', highpass_cutoff_user)
-        self.highpass.set_property('poles', highpass_poles_user)
-
-    def on_highpass_enable_state_set(self, obj, state):
-        self.ui_highpass_controls.set_sensitive(state)
-
-        out = GLib.Variant('b', state)
-        self.settings.set_value('highpass-state', out)
 
     def on_highpass_cutoff_value_changed(self, obj):
-        value = obj.get_value()
-        self.highpass.set_property('cutoff', value)
-
-        out = GLib.Variant('i', value)
-
-        self.settings.set_value('highpass-cutoff', out)
-
-    def on_highpass_poles_value_changed(self, obj):
-        value = obj.get_value()
-        self.highpass.set_property('poles', value)
-
-        out = GLib.Variant('i', value)
-
-        self.settings.set_value('highpass-poles', out)
+        self.highpass.set_property('cutoff', obj.get_value())
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]

@@ -331,8 +331,13 @@ class SourceOutputEffects(PipelineBase):
         self.limiter.init_ui()
         self.compressor.init_ui()
         self.reverb.init_ui()
-        self.highpass.init_ui()
-        self.lowpass.init_ui()
+
+        self.highpass.bind()
+        self.highpass.init()
+
+        self.lowpass.bind()
+        self.lowpass.init()
+
         self.equalizer.init_ui()
 
     def reset(self):

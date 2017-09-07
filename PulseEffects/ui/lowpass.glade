@@ -13,7 +13,6 @@
     <property name="upper">32</property>
     <property name="step_increment">2</property>
     <property name="page_increment">2</property>
-    <signal name="value-changed" handler="on_lowpass_poles_value_changed" swapped="no"/>
   </object>
   <object class="GtkBox" id="window">
     <property name="visible">True</property>
@@ -27,7 +26,6 @@
         <property name="can_focus">True</property>
         <property name="halign">center</property>
         <property name="valign">center</property>
-        <signal name="state-set" handler="on_lowpass_enable_state_set" swapped="no"/>
       </object>
       <packing>
         <property name="expand">False</property>
