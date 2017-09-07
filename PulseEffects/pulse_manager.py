@@ -290,6 +290,8 @@ class PulseManager(GObject.GObject):
             self.source_format = self.get_sample_spec_format(sample_format)
 
     def load_sink(self, name, description, rate):
+        self.sink_is_loaded = False
+
         self.load_sink_info(name)
 
         if not self.sink_is_loaded:
@@ -327,7 +329,7 @@ class PulseManager(GObject.GObject):
             else:
                 return False
         else:
-            self.load_sink_info(name)
+            print(name)
             return True
 
     def load_apps_sink(self):

@@ -6,6 +6,7 @@ import os
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gio, GLib, Gtk
+from PulseEffects.draw_spectrum import DrawSpectrum
 from PulseEffects.list_sink_inputs import ListSinkInputs
 from PulseEffects.list_source_outputs import ListSourceOutputs
 from PulseEffects.load_presets import LoadPresets
@@ -13,7 +14,6 @@ from PulseEffects.pulse_manager import PulseManager
 from PulseEffects.save_presets import SavePresets
 from PulseEffects.sink_input_effects import SinkInputEffects
 from PulseEffects.source_output_effects import SourceOutputEffects
-from PulseEffects.draw_spectrum import DrawSpectrum
 
 
 class Application(Gtk.Application):
@@ -69,8 +69,6 @@ class Application(Gtk.Application):
         self.window.set_application(self)
 
         self.create_appmenu()
-
-        # main window widgets initialization
 
         # gstreamer sink input effects
 
