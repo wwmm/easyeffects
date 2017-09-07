@@ -59,15 +59,16 @@ class LoadPresets():
     def load_reverb_presets(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
 
-        room_size = self.config.getfloat(section, 'room size', fallback=0.0)
-        damping = self.config.getfloat(section, 'damping', fallback=0.0)
-        width = self.config.getfloat(section, 'width', fallback=0.0)
-        level = self.config.getfloat(section, 'level', fallback=0.0)
-
-        user = [room_size, damping, width, level]
+        room_size = self.config.getfloat(section, 'room size', fallback=0.5)
+        damping = self.config.getfloat(section, 'damping', fallback=0.2)
+        width = self.config.getfloat(section, 'width', fallback=1.0)
+        level = self.config.getfloat(section, 'level', fallback=0.5)
 
         settings.set_value('reverb-state', GLib.Variant('b', enabled))
-        settings.set_value('reverb-user', GLib.Variant('ad', user))
+        settings.set_value('reverb-room-size', GLib.Variant('d', room_size))
+        settings.set_value('reverb-damping', GLib.Variant('d', damping))
+        settings.set_value('reverb-width', GLib.Variant('d', width))
+        settings.set_value('reverb-level', GLib.Variant('d', level))
 
     def load_highpass_presets(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)

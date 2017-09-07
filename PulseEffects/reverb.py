@@ -6,7 +6,7 @@ import gi
 gi.require_version('Gst', '1.0')
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import GLib, Gst, GstInsertBin, Gtk
+from gi.repository import Gio, GLib, Gst, GstInsertBin, Gtk
 
 Gst.init(None)
 
@@ -73,13 +73,19 @@ class Reverb():
         self.ui_reverb_output_level_right_label = self.builder.get_object(
             'reverb_output_level_right_label')
 
-    def init_ui(self):
-        enabled = self.settings.get_value('reverb-state').unpack()
-        self.reverb_user = self.settings.get_value('reverb-user').unpack()
-
-        self.ui_reverb_enable.set_state(enabled)
-        self.ui_reverb_controls.set_sensitive(enabled)
-        self.apply_reverb_preset(self.reverb_user)
+    def bind(self):
+        self.settings.bind('reverb-state', self.ui_reverb_enable, 'active',
+                           Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('reverb-state', self.ui_reverb_controls,
+                           'sensitive', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('reverb-room-size', self.ui_reverb_room_size,
+                           'value', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('reverb-damping', self.ui_reverb_damping,
+                           'value', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('reverb-width', self.ui_reverb_width,
+                           'value', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('reverb-level', self.ui_reverb_level,
+                           'value', Gio.SettingsBindFlags.DEFAULT)
 
     def apply_reverb_preset(self, values):
         self.ui_reverb_room_size.set_value(values[0])
@@ -87,53 +93,23 @@ class Reverb():
         self.ui_reverb_width.set_value(values[2])
         self.ui_reverb_level.set_value(values[3])
 
-        # we need this when on value changed is not called
-        self.reverb.set_property('room-size', values[0])
-        self.reverb.set_property('damping', values[1])
-        self.reverb.set_property('width', values[2])
-        self.reverb.set_property('level', values[3])
-
-    def save_reverb_user(self, idx, value):
-        self.reverb_user[idx] = value
-
-        out = GLib.Variant('ad', self.reverb_user)
-
-        self.settings.set_value('reverb-user', out)
-
-    def on_reverb_enable_state_set(self, obj, state):
-        self.ui_reverb_controls.set_sensitive(state)
-
-        out = GLib.Variant('b', state)
-        self.settings.set_value('reverb-state', out)
-
     def on_reverb_room_size_value_changed(self, obj):
-        value = obj.get_value()
-        self.reverb.set_property('room-size', value)
-        self.save_reverb_user(0, value)
+        self.reverb.set_property('room-size', obj.get_value())
 
     def on_reverb_damping_value_changed(self, obj):
-        value = obj.get_value()
-        self.reverb.set_property('damping', value)
-        self.save_reverb_user(1, value)
+        self.reverb.set_property('damping', obj.get_value())
 
     def on_reverb_width_value_changed(self, obj):
-        value = obj.get_value()
-        self.reverb.set_property('width', value)
-        self.save_reverb_user(2, value)
+        self.reverb.set_property('width', obj.get_value())
 
     def on_reverb_level_value_changed(self, obj):
-        value = obj.get_value()
-        self.reverb.set_property('level', value)
-        self.save_reverb_user(3, value)
+        self.reverb.set_property('level', obj.get_value())
 
     def on_reverb_preset_clicked(self, obj):
         obj_id = Gtk.Buildable.get_name(obj)
 
         if obj_id == 'cathedral':
             value = self.settings.get_value('reverb-cathedral')
-            self.apply_reverb_preset(value)
-        elif obj_id == 'no_reverberation':
-            value = self.settings.get_value('reverb-no-reverberation')
             self.apply_reverb_preset(value)
         elif obj_id == 'engine_room':
             value = self.settings.get_value('reverb-engine-room')

@@ -4,24 +4,28 @@
   <requires lib="gtk+" version="3.20"/>
   <object class="GtkAdjustment" id="reverb_damping">
     <property name="upper">1</property>
+    <property name="value">0.20000000000000001</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.10000000000000001</property>
     <signal name="value-changed" handler="on_reverb_damping_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="reverb_level">
     <property name="upper">1</property>
+    <property name="value">0.5</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.10000000000000001</property>
     <signal name="value-changed" handler="on_reverb_level_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="reverb_room_size">
     <property name="upper">1</property>
+    <property name="value">0.5</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.10000000000000001</property>
     <signal name="value-changed" handler="on_reverb_room_size_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="reverb_width">
     <property name="upper">1</property>
+    <property name="value">1</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.10000000000000001</property>
     <signal name="value-changed" handler="on_reverb_width_value_changed" swapped="no"/>
@@ -39,7 +43,6 @@
         <property name="can_focus">True</property>
         <property name="halign">center</property>
         <property name="valign">center</property>
-        <signal name="state-set" handler="on_reverb_enable_state_set" swapped="no"/>
       </object>
       <packing>
         <property name="expand">False</property>
@@ -231,20 +234,6 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="no_reverberation">
-                <property name="label" translatable="yes">No Reverberation</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="valign">center</property>
-                <signal name="clicked" handler="on_reverb_preset_clicked" swapped="no"/>
-              </object>
-              <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">0</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkButton" id="small_room">
                 <property name="label" translatable="yes">Small Room</property>
                 <property name="visible">True</property>
@@ -254,7 +243,7 @@
                 <signal name="clicked" handler="on_reverb_preset_clicked" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">3</property>
+                <property name="left_attach">2</property>
                 <property name="top_attach">0</property>
               </packing>
             </child>

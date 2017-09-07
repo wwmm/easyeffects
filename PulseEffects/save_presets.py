@@ -41,13 +41,16 @@ class SavePresets():
 
     def save_reverb_presets(self, settings, section):
         enabled = settings.get_value('reverb-state')
-        reverb = settings.get_value('reverb-user')
+        room_size = settings.get_value('reverb-room-size')
+        damping = settings.get_value('reverb-damping')
+        width = settings.get_value('reverb-width')
+        level = settings.get_value('reverb-level')
 
         self.config[section] = {'enabled': str(enabled),
-                                'room size': str(reverb[0]),
-                                'damping': str(reverb[1]),
-                                'width': str(reverb[2]),
-                                'level': str(reverb[3])}
+                                'room size': str(room_size),
+                                'damping': str(damping),
+                                'width': str(width),
+                                'level': str(level)}
 
     def save_highpass_presets(self, settings, section):
         enabled = settings.get_value('highpass-state')

@@ -386,8 +386,8 @@ class SinkInputEffects(PipelineBase):
         self.panorama.bind()
 
         self.compressor.init_ui()
-        self.reverb.init_ui()
 
+        self.reverb.bind()
         self.highpass.bind()
         self.lowpass.bind()
 
