@@ -84,7 +84,22 @@ class PipelineBase(GObject.GObject):
         self.effects_bin.link(self.audio_sink)
 
     def on_filter_added(self, bin, element, success, user_data):
-        pass
+        bin_name = element.get_name()
+        plugin_name = bin_name.split('_')[0]
+
+        if success:
+            self.log.info(user_data + plugin_name + ' was enabled')
+        else:
+            self.log.critical(user_data + 'failed to enable ' + plugin_name)
+
+    def on_filter_removed(self, bin, element, success, user_data):
+        bin_name = element.get_name()
+        plugin_name = bin_name.split('_')[0]
+
+        if success:
+            self.log.info(user_data + plugin_name + ' was disabled')
+        else:
+            self.log.critical(user_data + 'failed to disable ' + plugin_name)
 
     def set_state(self, state):
         if state == 'ready':
@@ -185,12 +200,6 @@ class PipelineBase(GObject.GObject):
         # 20 Hz = 10^(1.3), 20000 Hz = 10^(4.3)
 
         self.spectrum_x_axis = np.logspace(1.3, 4.3, value)
-
-    def enable_spectrum(self, state):
-        if state:
-            self.effects_bin.append(self.spectrum, self.on_filter_added, None)
-        else:
-            self.effects_bin.remove(self.spectrum, self.on_filter_added, None)
 
     def init_latency_time(self, value):
         self.audio_src.set_property('latency-time', value)

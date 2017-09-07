@@ -28,6 +28,8 @@ class SinkInputEffects(PipelineBase):
 
         self.module_path = os.path.dirname(__file__)
 
+        self.log_tag = 'apps: '
+
         self.settings = Gio.Settings('com.github.wwmm.pulseeffects.sinkinputs')
 
         self.builder = Gtk.Builder()
@@ -168,10 +170,10 @@ class SinkInputEffects(PipelineBase):
     def on_limiter_enable(self, obj, state):
         if state:
             self.effects_bin.prepend(self.limiter.bin, self.on_filter_added,
-                                     None)
+                                     self.log_tag)
         else:
-            self.effects_bin.remove(self.limiter.bin, self.on_filter_added,
-                                    None)
+            self.effects_bin.remove(self.limiter.bin, self.on_filter_removed,
+                                    self.log_tag)
 
     def on_panorama_enable(self, obj, state):
         limiter_enabled = self.settings.get_value('limiter-state').unpack()
@@ -180,13 +182,14 @@ class SinkInputEffects(PipelineBase):
             if limiter_enabled:
                 self.effects_bin.insert_after(self.panorama.bin,
                                               self.limiter.bin,
-                                              self.on_filter_added, None)
+                                              self.on_filter_added,
+                                              self.log_tag)
             else:
                 self.effects_bin.prepend(self.panorama.bin,
-                                         self.on_filter_added, None)
+                                         self.on_filter_added, self.log_tag)
         else:
-            self.effects_bin.remove(self.panorama.bin, self.on_filter_added,
-                                    None)
+            self.effects_bin.remove(self.panorama.bin, self.on_filter_removed,
+                                    self.log_tag)
 
     def on_compressor_enable(self, obj, state):
         limiter_enabled = self.settings.get_value('limiter-state').unpack()
@@ -196,17 +199,20 @@ class SinkInputEffects(PipelineBase):
             if panorama_enabled:
                 self.effects_bin.insert_after(self.compressor.bin,
                                               self.panorama.bin,
-                                              self.on_filter_added, None)
+                                              self.on_filter_added,
+                                              self.log_tag)
             elif limiter_enabled:
                 self.effects_bin.insert_after(self.compressor.bin,
                                               self.limiter.bin,
-                                              self.on_filter_added, None)
+                                              self.on_filter_added,
+                                              self.log_tag)
             else:
                 self.effects_bin.prepend(self.compressor.bin,
-                                         self.on_filter_added, None)
+                                         self.on_filter_added, self.log_tag)
         else:
-            self.effects_bin.remove(self.compressor.bin, self.on_filter_added,
-                                    None)
+            self.effects_bin.remove(self.compressor.bin,
+                                    self.on_filter_removed,
+                                    self.log_tag)
 
     def on_reverb_enable(self, obj, state):
         limiter_enabled = self.settings.get_value('limiter-state').unpack()
@@ -218,21 +224,24 @@ class SinkInputEffects(PipelineBase):
             if compressor_enabled:
                 self.effects_bin.insert_after(self.reverb.bin,
                                               self.compressor.bin,
-                                              self.on_filter_added, None)
+                                              self.on_filter_added,
+                                              self.log_tag)
             elif panorama_enabled:
                 self.effects_bin.insert_after(self.reverb.bin,
                                               self.panorama.bin,
-                                              self.on_filter_added, None)
+                                              self.on_filter_added,
+                                              self.log_tag)
             elif limiter_enabled:
                 self.effects_bin.insert_after(self.reverb.bin,
                                               self.limiter.bin,
-                                              self.on_filter_added, None)
+                                              self.on_filter_added,
+                                              self.log_tag)
             else:
                 self.effects_bin.prepend(self.reverb.bin,
-                                         self.on_filter_added, None)
+                                         self.on_filter_added, self.log_tag)
         else:
-            self.effects_bin.remove(self.reverb.bin, self.on_filter_added,
-                                    None)
+            self.effects_bin.remove(self.reverb.bin, self.on_filter_removed,
+                                    self.log_tag)
 
     def on_highpass_enable(self, obj, state):
         limiter_enabled = self.settings.get_value('limiter-state').unpack()
@@ -246,25 +255,29 @@ class SinkInputEffects(PipelineBase):
             if reverb_enabled:
                 self.effects_bin.insert_after(self.highpass.bin,
                                               self.reverb.bin,
-                                              self.on_filter_added, None)
+                                              self.on_filter_added,
+                                              self.log_tag)
             elif compressor_enabled:
                 self.effects_bin.insert_after(self.highpass.bin,
                                               self.compressor.bin,
-                                              self.on_filter_added, None)
+                                              self.on_filter_added,
+                                              self.log_tag)
             elif panorama_enabled:
                 self.effects_bin.insert_after(self.highpass.bin,
                                               self.panorama.bin,
-                                              self.on_filter_added, None)
+                                              self.on_filter_added,
+                                              self.log_tag)
             elif limiter_enabled:
                 self.effects_bin.insert_after(self.highpass.bin,
                                               self.limiter.bin,
-                                              self.on_filter_added, None)
+                                              self.on_filter_added,
+                                              self.log_tag)
             else:
                 self.effects_bin.prepend(self.highpass.bin,
-                                         self.on_filter_added, None)
+                                         self.on_filter_added, self.log_tag)
         else:
-            self.effects_bin.remove(self.highpass.bin, self.on_filter_added,
-                                    None)
+            self.effects_bin.remove(self.highpass.bin, self.on_filter_removed,
+                                    self.log_tag)
 
     def on_lowpass_enable(self, obj, state):
         limiter_enabled = self.settings.get_value('limiter-state').unpack()
@@ -280,29 +293,34 @@ class SinkInputEffects(PipelineBase):
             if highpass_enabled:
                 self.effects_bin.insert_after(self.lowpass.bin,
                                               self.highpass.bin,
-                                              self.on_filter_added, None)
+                                              self.on_filter_added,
+                                              self.log_tag)
             elif reverb_enabled:
                 self.effects_bin.insert_after(self.lowpass.bin,
                                               self.reverb.bin,
-                                              self.on_filter_added, None)
+                                              self.on_filter_added,
+                                              self.log_tag)
             elif compressor_enabled:
                 self.effects_bin.insert_after(self.lowpass.bin,
                                               self.compressor.bin,
-                                              self.on_filter_added, None)
+                                              self.on_filter_added,
+                                              self.log_tag)
             elif panorama_enabled:
                 self.effects_bin.insert_after(self.lowpass.bin,
                                               self.panorama.bin,
-                                              self.on_filter_added, None)
+                                              self.on_filter_added,
+                                              self.log_tag)
             elif limiter_enabled:
                 self.effects_bin.insert_after(self.lowpass.bin,
                                               self.limiter.bin,
-                                              self.on_filter_added, None)
+                                              self.on_filter_added,
+                                              self.log_tag)
             else:
                 self.effects_bin.prepend(self.lowpass.bin,
-                                         self.on_filter_added, None)
+                                         self.on_filter_added, self.log_tag)
         else:
-            self.effects_bin.remove(self.lowpass.bin, self.on_filter_added,
-                                    None)
+            self.effects_bin.remove(self.lowpass.bin, self.on_filter_removed,
+                                    self.log_tag)
 
     def on_equalizer_enable(self, obj, state):
         limiter_enabled = self.settings.get_value('limiter-state').unpack()
@@ -320,33 +338,47 @@ class SinkInputEffects(PipelineBase):
             if lowpass_enabled:
                 self.effects_bin.insert_after(self.equalizer.bin,
                                               self.lowpass.bin,
-                                              self.on_filter_added, None)
+                                              self.on_filter_added,
+                                              self.log_tag)
             elif highpass_enabled:
                 self.effects_bin.insert_after(self.equalizer.bin,
                                               self.highpass.bin,
-                                              self.on_filter_added, None)
+                                              self.on_filter_added,
+                                              self.log_tag)
             elif reverb_enabled:
                 self.effects_bin.insert_after(self.equalizer.bin,
                                               self.reverb.bin,
-                                              self.on_filter_added, None)
+                                              self.on_filter_added,
+                                              self.log_tag)
             elif compressor_enabled:
                 self.effects_bin.insert_after(self.equalizer.bin,
                                               self.compressor.bin,
-                                              self.on_filter_added, None)
+                                              self.on_filter_added,
+                                              self.log_tag)
             elif panorama_enabled:
                 self.effects_bin.insert_after(self.equalizer.bin,
                                               self.panorama.bin,
-                                              self.on_filter_added, None)
+                                              self.on_filter_added,
+                                              self.log_tag)
             elif limiter_enabled:
                 self.effects_bin.insert_after(self.equalizer.bin,
                                               self.limiter.bin,
-                                              self.on_filter_added, None)
+                                              self.on_filter_added,
+                                              self.log_tag)
             else:
                 self.effects_bin.prepend(self.equalizer.bin,
-                                         self.on_filter_added, None)
+                                         self.on_filter_added, self.log_tag)
         else:
-            self.effects_bin.remove(self.equalizer.bin, self.on_filter_added,
-                                    None)
+            self.effects_bin.remove(self.equalizer.bin, self.on_filter_removed,
+                                    self.log_tag)
+
+    def enable_spectrum(self, state):
+        if state:
+            self.effects_bin.append(self.spectrum, self.on_filter_added,
+                                    self.log_tag)
+        else:
+            self.effects_bin.remove(self.spectrum, self.on_filter_removed,
+                                    self.log_tag)
 
     def init_ui(self):
         self.limiter.init_ui()
