@@ -21,7 +21,6 @@
         <property name="can_focus">True</property>
         <property name="halign">center</property>
         <property name="valign">center</property>
-        <signal name="state-set" handler="on_panorama_enable_state_set" swapped="no"/>
       </object>
       <packing>
         <property name="expand">False</property>

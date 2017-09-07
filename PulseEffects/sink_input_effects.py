@@ -382,15 +382,14 @@ class SinkInputEffects(PipelineBase):
 
     def init_ui(self):
         self.limiter.init_ui()
-        self.panorama.init_ui()
+
+        self.panorama.bind()
+
         self.compressor.init_ui()
         self.reverb.init_ui()
 
         self.highpass.bind()
-        self.highpass.init()
-
         self.lowpass.bind()
-        self.lowpass.init()
 
         self.equalizer.init_ui()
 

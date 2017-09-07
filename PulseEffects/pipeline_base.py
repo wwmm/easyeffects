@@ -88,7 +88,7 @@ class PipelineBase(GObject.GObject):
         plugin_name = bin_name.split('_')[0]
 
         if success:
-            self.log.info(user_data + plugin_name + ' was enabled')
+            self.log.info(user_data + plugin_name + ' plugin was enabled')
         else:
             self.log.critical(user_data + 'failed to enable ' + plugin_name)
 
@@ -97,7 +97,7 @@ class PipelineBase(GObject.GObject):
         plugin_name = bin_name.split('_')[0]
 
         if success:
-            self.log.info(user_data + plugin_name + ' was disabled')
+            self.log.info(user_data + plugin_name + ' plugin was disabled')
         else:
             self.log.critical(user_data + 'failed to disable ' + plugin_name)
 

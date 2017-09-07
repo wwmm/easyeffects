@@ -6,7 +6,7 @@ import gi
 gi.require_version('Gst', '1.0')
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, GLib, Gst, GstInsertBin, Gtk
+from gi.repository import Gio, Gst, GstInsertBin, Gtk
 
 Gst.init(None)
 
@@ -85,15 +85,6 @@ class Lowpass():
                            'value', Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind('lowpass-poles', self.lowpass, 'poles',
                            Gio.SettingsBindFlags.DEFAULT)
-
-    def init(self):
-        # this property has gfloat type and
-        # bind_with_mapping is not available in python
-        # we have to set it the old way
-        lowpass_cutoff_user = self.settings.get_value(
-            'lowpass-cutoff').unpack()
-
-        self.lowpass.set_property('cutoff', lowpass_cutoff_user)
 
     def on_lowpass_cutoff_value_changed(self, obj):
         self.lowpass.set_property('cutoff', obj.get_value())

@@ -86,15 +86,6 @@ class Highpass():
         self.settings.bind('highpass-poles', self.highpass, 'poles',
                            Gio.SettingsBindFlags.DEFAULT)
 
-    def init(self):
-        # this property has gfloat type and
-        # bind_with_mapping is not available in python
-        # we have to set it the old way
-        highpass_cutoff_user = self.settings.get_value(
-            'highpass-cutoff').unpack()
-
-        self.highpass.set_property('cutoff', highpass_cutoff_user)
-
     def on_highpass_cutoff_value_changed(self, obj):
         self.highpass.set_property('cutoff', obj.get_value())
 

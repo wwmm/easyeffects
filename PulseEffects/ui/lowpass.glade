@@ -11,6 +11,7 @@
   <object class="GtkAdjustment" id="lowpass_poles">
     <property name="lower">2</property>
     <property name="upper">32</property>
+    <property name="value">4</property>
     <property name="step_increment">2</property>
     <property name="page_increment">2</property>
   </object>

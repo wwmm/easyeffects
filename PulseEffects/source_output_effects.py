@@ -333,10 +333,7 @@ class SourceOutputEffects(PipelineBase):
         self.reverb.init_ui()
 
         self.highpass.bind()
-        self.highpass.init()
-
         self.lowpass.bind()
-        self.lowpass.init()
 
         self.equalizer.init_ui()
 

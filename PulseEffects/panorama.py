@@ -6,7 +6,7 @@ import gi
 gi.require_version('Gst', '1.0')
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import GLib, Gst, GstInsertBin, Gtk
+from gi.repository import Gio, Gst, GstInsertBin, Gtk
 
 Gst.init(None)
 
@@ -72,28 +72,16 @@ class Panorama():
         self.ui_panorama_output_level_right_label = self.builder.get_object(
             'panorama_output_level_right_label')
 
-    def init_ui(self):
-        enabled = self.settings.get_value('panorama-state').unpack()
-        panorama = self.settings.get_value('panorama-position').unpack()
-
-        self.ui_panorama_enable.set_state(enabled)
-        self.ui_panorama_controls.set_sensitive(enabled)
-        self.ui_panorama.set_value(panorama)
-        self.panorama.set_property('panorama', panorama)
-
-    def on_panorama_enable_state_set(self, obj, state):
-        self.ui_panorama_controls.set_sensitive(state)
-
-        out = GLib.Variant('b', state)
-        self.settings.set_value('panorama-state', out)
+    def bind(self):
+        self.settings.bind('panorama-state', self.ui_panorama_enable, 'active',
+                           Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('panorama-state', self.ui_panorama_controls,
+                           'sensitive', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('panorama-position', self.ui_panorama,
+                           'value', Gio.SettingsBindFlags.DEFAULT)
 
     def on_panorama_position_value_changed(self, obj):
-        value = obj.get_value()
-
-        self.panorama.set_property('panorama', value)
-
-        out = GLib.Variant('d', value)
-        self.settings.set_value('panorama-position', out)
+        self.panorama.set_property('panorama', obj.get_value())
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]
