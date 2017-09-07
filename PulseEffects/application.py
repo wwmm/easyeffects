@@ -18,7 +18,7 @@ from PulseEffects.source_output_effects import SourceOutputEffects
 
 class Application(Gtk.Application):
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         app_id = 'com.github.wwmm.pulseeffects'
 
         GLib.set_application_name('PulseEffects')
@@ -26,6 +26,9 @@ class Application(Gtk.Application):
         GLib.setenv('PULSE_PROP_application.icon_name', 'pulseeffects', True)
 
         Gtk.Application.__init__(self, application_id=app_id)
+
+    def do_startup(self):
+        Gtk.Application.do_startup(self)
 
         self.gtk_settings = Gtk.Settings.get_default()
 
@@ -43,19 +46,18 @@ class Application(Gtk.Application):
 
         self.settings = Gio.Settings('com.github.wwmm.pulseeffects')
 
+        # creating user presets folder
+        self.user_config_dir = os.path.join(GLib.get_user_config_dir(),
+                                            'PulseEffects')
+        os.makedirs(self.user_config_dir, exist_ok=True)
+
         # pulseaudio
 
         self.pm = PulseManager()
         self.pm.load_apps_sink()
         self.pm.load_mic_sink()
 
-        # creating user presets folder
-        self.user_config_dir = os.path.join(GLib.get_user_config_dir(),
-                                            'PulseEffects')
-        os.makedirs(self.user_config_dir, exist_ok=True)
-
-    def do_startup(self):
-        Gtk.Application.do_startup(self)
+        # ui initializations
 
         self.builder = Gtk.Builder()
 
