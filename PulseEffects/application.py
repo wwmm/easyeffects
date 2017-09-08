@@ -94,13 +94,14 @@ class Application(Gtk.Application):
         self.init_settings_menu()
         self.init_buffer_time()
         self.init_latency_time()
-        self.init_spectrum_widgets()
 
         self.list_sink_inputs = ListSinkInputs(self.sie, self.pm)
         self.list_source_outputs = ListSourceOutputs(self.soe, self.pm)
 
         self.sie.init_ui()
         self.soe.init_ui()
+
+        self.init_spectrum_widgets()
 
         self.init_stack_widgets()
 
