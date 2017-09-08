@@ -5,6 +5,7 @@
   <object class="GtkAdjustment" id="compressor_attack">
     <property name="lower">1.5</property>
     <property name="upper">400</property>
+    <property name="value">101.09999999999999</property>
     <property name="step_increment">0.10000000000000001</property>
     <property name="page_increment">10</property>
     <signal name="value-changed" handler="on_compressor_attack_time_value_changed" swapped="no"/>
@@ -12,6 +13,7 @@
   <object class="GtkAdjustment" id="compressor_knee">
     <property name="lower">1</property>
     <property name="upper">10</property>
+    <property name="value">3.25</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_compressor_knee_value_changed" swapped="no"/>
@@ -25,6 +27,7 @@
   <object class="GtkAdjustment" id="compressor_ratio">
     <property name="lower">1</property>
     <property name="upper">20</property>
+    <property name="value">1</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_compressor_ratio_value_changed" swapped="no"/>
@@ -32,6 +35,7 @@
   <object class="GtkAdjustment" id="compressor_release">
     <property name="lower">2</property>
     <property name="upper">800</property>
+    <property name="value">401</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
     <signal name="value-changed" handler="on_compressor_release_time_value_changed" swapped="no"/>
@@ -54,7 +58,6 @@
         <property name="can_focus">True</property>
         <property name="halign">center</property>
         <property name="valign">center</property>
-        <signal name="state-set" handler="on_compressor_enable_state_set" swapped="no"/>
       </object>
       <packing>
         <property name="expand">False</property>
@@ -303,40 +306,14 @@
           </packing>
         </child>
         <child>
-          <object class="GtkGrid">
+          <object class="GtkButton" id="vlc">
+            <property name="label" translatable="yes">Vlc</property>
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
             <property name="halign">center</property>
-            <property name="column_spacing">3</property>
-            <property name="column_homogeneous">True</property>
-            <child>
-              <object class="GtkButton" id="no_compression">
-                <property name="label" translatable="yes">No Compression</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="valign">center</property>
-                <signal name="clicked" handler="on_compressor_preset_clicked" swapped="no"/>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="vlc">
-                <property name="label" translatable="yes">Vlc</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="valign">center</property>
-                <signal name="clicked" handler="on_compressor_preset_clicked" swapped="no"/>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">0</property>
-              </packing>
-            </child>
+            <property name="valign">center</property>
+            <signal name="clicked" handler="on_compressor_preset_clicked" swapped="no"/>
           </object>
           <packing>
             <property name="expand">False</property>

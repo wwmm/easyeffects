@@ -6,7 +6,7 @@ import gi
 gi.require_version('Gst', '1.0')
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, GLib, Gst, GstInsertBin, Gtk
+from gi.repository import Gio, Gst, GstInsertBin, Gtk
 
 Gst.init(None)
 
@@ -160,4 +160,7 @@ class Reverb():
 
     def reset(self):
         self.settings.reset('reverb-state')
-        self.settings.reset('reverb-user')
+        self.settings.reset('reverb-room-size')
+        self.settings.reset('reverb-damping')
+        self.settings.reset('reverb-width')
+        self.settings.reset('reverb-level')

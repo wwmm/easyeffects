@@ -329,8 +329,8 @@ class SourceOutputEffects(PipelineBase):
 
     def init_ui(self):
         self.limiter.init_ui()
-        self.compressor.init_ui()
 
+        self.compressor.bind()
         self.reverb.bind()
         self.highpass.bind()
         self.lowpass.bind()

@@ -6,7 +6,7 @@ import gi
 gi.require_version('Gst', '1.0')
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, GLib, Gst, GstInsertBin, Gtk
+from gi.repository import Gio, Gst, GstInsertBin, Gtk
 
 Gst.init(None)
 

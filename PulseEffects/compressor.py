@@ -6,7 +6,7 @@ import gi
 gi.require_version('Gst', '1.0')
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import GLib, Gst, GstInsertBin, Gtk
+from gi.repository import Gio, Gst, GstInsertBin, Gtk
 
 Gst.init(None)
 
@@ -96,14 +96,26 @@ class Compressor():
         self.ui_compressor_gain_reduction_levelbar.add_offset_value(
             'GTK_LEVEL_BAR_OFFSET_FULL', 24)
 
-    def init_ui(self):
-        enabled = self.settings.get_value('compressor-state').unpack()
-        self.compressor_user = self.settings.get_value(
-            'compressor-user').unpack()
-
-        self.ui_compressor_enable.set_state(enabled)
-        self.ui_compressor_controls.set_sensitive(enabled)
-        self.apply_compressor_preset(self.compressor_user)
+    def bind(self):
+        self.settings.bind('compressor-state', self.ui_compressor_enable,
+                           'active', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('compressor-state', self.ui_compressor_controls,
+                           'sensitive', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('compressor-use-peak', self.ui_compressor_peak,
+                           'active', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('compressor-attack', self.ui_compressor_attack,
+                           'value', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('compressor-release', self.ui_compressor_release,
+                           'value', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('compressor-threshold',
+                           self.ui_compressor_threshold, 'value',
+                           Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('compressor-ratio', self.ui_compressor_ratio,
+                           'value', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('compressor-knee', self.ui_compressor_knee,
+                           'value', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('compressor-makeup', self.ui_compressor_makeup,
+                           'value', Gio.SettingsBindFlags.DEFAULT)
 
     def apply_compressor_preset(self, values):
         if values[0] == 0:
@@ -118,76 +130,37 @@ class Compressor():
         self.ui_compressor_knee.set_value(values[5])
         self.ui_compressor_makeup.set_value(values[6])
 
-        # we need this when on value changed is not called
-        self.compressor.set_property('rms-peak', values[0])
-        self.compressor.set_property('attack-time', values[1])
-        self.compressor.set_property('release-time', values[2])
-        self.compressor.set_property('threshold-level', values[3])
-        self.compressor.set_property('ratio', values[4])
-        self.compressor.set_property('knee-radius', values[5])
-        self.compressor.set_property('makeup-gain', values[6])
-
-    def save_compressor_user(self, idx, value):
-        self.compressor_user[idx] = value
-
-        out = GLib.Variant('ad', self.compressor_user)
-
-        self.settings.set_value('compressor-user', out)
-
-    def on_compressor_enable_state_set(self, obj, state):
-        self.ui_compressor_controls.set_sensitive(state)
-
-        out = GLib.Variant('b', state)
-        self.settings.set_value('compressor-state', out)
-
     def on_compressor_measurement_type(self, obj):
         if obj.get_active():
             label = obj.get_label()
 
             if label == 'rms':
-                self.compressor.set_property('rms-peak', 0)
-                self.save_compressor_user(0, 0)
+                self.compressor.set_property('rms-peak', False)
             elif label == 'peak':
-                self.compressor.set_property('rms-peak', 1)
-                self.save_compressor_user(0, 1)
+                self.compressor.set_property('rms-peak', True)
 
     def on_compressor_attack_time_value_changed(self, obj):
-        value = obj.get_value()
-        self.compressor.set_property('attack-time', value)
-        self.save_compressor_user(1, value)
+        self.compressor.set_property('attack-time', obj.get_value())
 
     def on_compressor_release_time_value_changed(self, obj):
-        value = obj.get_value()
-        self.compressor.set_property('release-time', value)
-        self.save_compressor_user(2, value)
+        self.compressor.set_property('release-time', obj.get_value())
 
     def on_compressor_threshold_value_changed(self, obj):
-        value = obj.get_value()
-        self.compressor.set_property('threshold-level', value)
-        self.save_compressor_user(3, value)
+        self.compressor.set_property('threshold-level', obj.get_value())
 
     def on_compressor_ratio_value_changed(self, obj):
-        value = obj.get_value()
-        self.compressor.set_property('ratio', value)
-        self.save_compressor_user(4, value)
+        self.compressor.set_property('ratio', obj.get_value())
 
     def on_compressor_knee_value_changed(self, obj):
-        value = obj.get_value()
-        self.compressor.set_property('knee-radius', value)
-        self.save_compressor_user(5, value)
+        self.compressor.set_property('knee-radius', obj.get_value())
 
     def on_compressor_makeup_value_changed(self, obj):
-        value = obj.get_value()
-        self.compressor.set_property('makeup-gain', value)
-        self.save_compressor_user(6, value)
+        self.compressor.set_property('makeup-gain', obj.get_value())
 
     def on_compressor_preset_clicked(self, obj):
         obj_id = Gtk.Buildable.get_name(obj)
 
-        if obj_id == 'no_compression':
-            value = self.settings.get_value('compressor-no-compression')
-            self.apply_compressor_preset(value)
-        elif obj_id == 'vlc':
+        if obj_id == 'vlc':
             value = self.settings.get_value('compressor-vlc')
             self.apply_compressor_preset(value)
 
@@ -244,4 +217,10 @@ class Compressor():
 
     def reset(self):
         self.settings.reset('compressor-state')
-        self.settings.reset('compressor-user')
+        self.settings.reset('compressor-use-peak')
+        self.settings.reset('compressor-attack')
+        self.settings.reset('compressor-release')
+        self.settings.reset('compressor-threshold')
+        self.settings.reset('compressor-ratio')
+        self.settings.reset('compressor-knee')
+        self.settings.reset('compressor-makeup')

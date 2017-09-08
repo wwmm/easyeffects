@@ -28,16 +28,22 @@ class SavePresets():
 
     def save_compressor_presets(self, settings, section):
         enabled = settings.get_value('compressor-state')
-        compressor = settings.get_value('compressor-user')
+        use_peak = settings.get_value('compressor-use-peak')
+        attack = settings.get_value('compressor-attack')
+        release = settings.get_value('compressor-release')
+        threshold = settings.get_value('compressor-threshold')
+        ratio = settings.get_value('compressor-ratio')
+        knee = settings.get_value('compressor-knee')
+        makeup = settings.get_value('compressor-makeup')
 
         self.config[section] = {'enabled': str(enabled),
-                                'rms-peak': str(compressor[0]),
-                                'attack': str(compressor[1]),
-                                'release': str(compressor[2]),
-                                'threshold': str(compressor[3]),
-                                'ratio': str(compressor[4]),
-                                'knee': str(compressor[5]),
-                                'makeup': str(compressor[6])}
+                                'use_peak': str(use_peak),
+                                'attack': str(attack),
+                                'release': str(release),
+                                'threshold': str(threshold),
+                                'ratio': str(ratio),
+                                'knee': str(knee),
+                                'makeup': str(makeup)}
 
     def save_reverb_presets(self, settings, section):
         enabled = settings.get_value('reverb-state')

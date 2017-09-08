@@ -43,18 +43,23 @@ class LoadPresets():
     def load_compressor_presets(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
 
-        rms_peak = self.config.getfloat(section, 'rms-peak', fallback=1.0)
-        attack = self.config.getfloat(section, 'attack', fallback=100.0)
-        release = self.config.getfloat(section, 'release', fallback=400.0)
+        use_peak = self.config.getboolean(section, 'use_peak', fallback=False)
+        attack = self.config.getfloat(section, 'attack', fallback=101.1)
+        release = self.config.getfloat(section, 'release', fallback=401.0)
         threshold = self.config.getfloat(section, 'threshold', fallback=0.0)
         ratio = self.config.getfloat(section, 'ratio', fallback=1.0)
         knee = self.config.getfloat(section, 'knee', fallback=3.0)
         makeup = self.config.getfloat(section, 'makeup', fallback=0.0)
 
-        user = [rms_peak, attack, release, threshold, ratio, knee, makeup]
-
         settings.set_value('compressor-state', GLib.Variant('b', enabled))
-        settings.set_value('compressor-user', GLib.Variant('ad', user))
+        settings.set_value('compressor-use-peak', GLib.Variant('b', use_peak))
+        settings.set_value('compressor-attack', GLib.Variant('d', attack))
+        settings.set_value('compressor-release', GLib.Variant('d', release))
+        settings.set_value('compressor-threshold',
+                           GLib.Variant('d', threshold))
+        settings.set_value('compressor-ratio', GLib.Variant('d', ratio))
+        settings.set_value('compressor-knee', GLib.Variant('d', knee))
+        settings.set_value('compressor-makeup', GLib.Variant('d', makeup))
 
     def load_reverb_presets(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
