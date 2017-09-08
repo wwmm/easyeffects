@@ -4,18 +4,21 @@
         <key name="limiter-state" type="b">
           <default>false</default>
         </key>
-        <key name="limiter-default" type="ad">
-          <default>[0, 0, 1]</default>
+        <key name="limiter-input-gain" type="d">
+          <default>0.0</default>
         </key>
-        <key name="limiter-user" type="ad">
-          <default>[0, 0, 1]</default>
+        <key name="limiter-limit" type="d">
+          <default>0.0</default>
+        </key>
+        <key name="limiter-release-time" type="d">
+          <default>0.5</default>
         </key>
 
         <key name="autovolume-state" type="b">
           <default>false</default>
         </key>
         <key name="autovolume-window" type="d">
-          <default>2.00</default>
+          <default>1.00</default>
         </key>
         <key name="autovolume-target" type="i">
           <default>-12</default>

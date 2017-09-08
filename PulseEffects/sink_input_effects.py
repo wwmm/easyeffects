@@ -94,13 +94,12 @@ class SinkInputEffects(PipelineBase):
 
             self.limiter.ui_update_limiter_output_level(peak)
         elif plugin == 'autovolume':
-            if self.limiter.autovolume_enabled:
-                peak = msg.get_structure().get_value('peak')
+            peak = msg.get_structure().get_value('peak')
 
-                max_value = max(peak)
+            max_value = max(peak)
 
-                if max_value > self.limiter.autovolume_threshold:
-                    self.limiter.auto_gain(max_value)
+            if max_value > self.limiter.autovolume_threshold:
+                self.limiter.auto_gain(max_value)
         elif plugin == 'panorama_input_level':
             peak = msg.get_structure().get_value('peak')
 
@@ -381,8 +380,7 @@ class SinkInputEffects(PipelineBase):
                                     self.log_tag)
 
     def init_ui(self):
-        self.limiter.init_ui()
-
+        self.limiter.bind()
         self.panorama.bind()
         self.compressor.bind()
         self.reverb.bind()

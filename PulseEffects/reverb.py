@@ -77,7 +77,7 @@ class Reverb():
         self.settings.bind('reverb-state', self.ui_reverb_enable, 'active',
                            Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind('reverb-state', self.ui_reverb_controls,
-                           'sensitive', Gio.SettingsBindFlags.DEFAULT)
+                           'sensitive', Gio.SettingsBindFlags.GET)
         self.settings.bind('reverb-room-size', self.ui_reverb_room_size,
                            'value', Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind('reverb-damping', self.ui_reverb_damping,

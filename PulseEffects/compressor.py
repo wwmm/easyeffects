@@ -100,7 +100,7 @@ class Compressor():
         self.settings.bind('compressor-state', self.ui_compressor_enable,
                            'active', Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind('compressor-state', self.ui_compressor_controls,
-                           'sensitive', Gio.SettingsBindFlags.DEFAULT)
+                           'sensitive', Gio.SettingsBindFlags.GET)
         self.settings.bind('compressor-use-peak', self.ui_compressor_peak,
                            'active', Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind('compressor-attack', self.ui_compressor_attack,

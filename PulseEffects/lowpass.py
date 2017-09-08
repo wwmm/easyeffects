@@ -78,7 +78,7 @@ class Lowpass():
         self.settings.bind('lowpass-state', self.ui_lowpass_enable, 'active',
                            Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind('lowpass-state', self.ui_lowpass_controls,
-                           'sensitive', Gio.SettingsBindFlags.DEFAULT)
+                           'sensitive', Gio.SettingsBindFlags.GET)
         self.settings.bind('lowpass-cutoff', self.ui_lowpass_cutoff,
                            'value', Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind('lowpass-poles', self.ui_lowpass_poles,

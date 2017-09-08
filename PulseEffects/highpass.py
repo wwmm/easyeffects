@@ -78,7 +78,7 @@ class Highpass():
         self.settings.bind('highpass-state', self.ui_highpass_enable, 'active',
                            Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind('highpass-state', self.ui_highpass_controls,
-                           'sensitive', Gio.SettingsBindFlags.DEFAULT)
+                           'sensitive', Gio.SettingsBindFlags.GET)
         self.settings.bind('highpass-cutoff', self.ui_highpass_cutoff,
                            'value', Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind('highpass-poles', self.ui_highpass_poles,

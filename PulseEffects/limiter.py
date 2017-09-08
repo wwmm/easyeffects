@@ -6,7 +6,7 @@ import gi
 gi.require_version('Gst', '1.0')
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import GLib, Gst, GstInsertBin, Gtk
+from gi.repository import Gio, Gst, GstInsertBin, Gtk
 
 Gst.init(None)
 
@@ -19,7 +19,6 @@ class Limiter():
 
         self.old_limiter_attenuation = 0
 
-        self.autovolume_enabled = False
         self.autovolume_target = -12  # dB
         self.autovolume_tolerance = 1  # dB
         self.autovolume_threshold = -50  # autovolume only if avg > threshold
@@ -109,90 +108,57 @@ class Limiter():
         self.ui_autovolume_threshold = self.builder.get_object(
             'autovolume_threshold')
 
-    def init_ui(self):
-        enabled = self.settings.get_value('limiter-state').unpack()
-        self.limiter_user = self.settings.get_value('limiter-user').unpack()
+    def bind(self):
+        self.settings.bind('limiter-state', self.ui_limiter_enable,
+                           'active', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('limiter-state', self.ui_autovolume_box,
+                           'sensitive', Gio.SettingsBindFlags.GET)
+        self.settings.bind('limiter-input-gain', self.ui_limiter_input_gain,
+                           'value', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('limiter-limit', self.ui_limiter_limit,
+                           'value', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('limiter-release-time',
+                           self.ui_limiter_release_time,
+                           'value', Gio.SettingsBindFlags.DEFAULT)
 
-        self.init_autovolume_ui()
-        self.ui_limiter_enable.set_state(enabled)
-        self.apply_limiter_preset(self.limiter_user)
-
-        if enabled:
-            self.ui_autovolume_box.set_sensitive(True)
-            self.ui_limiter_controls.set_sensitive(True)
-        else:
-            self.ui_autovolume_box.set_sensitive(False)
-            self.ui_limiter_controls.set_sensitive(False)
-
-    def init_autovolume_ui(self):
-        self.autovolume_enabled = self.settings.get_value(
-            'autovolume-state').unpack()
-        autovolume_window = self.settings.get_value(
-            'autovolume-window').unpack()
-        self.autovolume_target = self.settings.get_value(
-            'autovolume-target').unpack()
-        self.autovolume_tolerance = self.settings.get_value(
-            'autovolume-tolerance').unpack()
-        self.autovolume_threshold = self.settings.get_value(
-            'autovolume-threshold').unpack()
-
-        self.ui_autovolume_enable.set_state(self.autovolume_enabled)
-        self.ui_autovolume_window.set_value(autovolume_window)
-        self.ui_autovolume_target.set_value(self.autovolume_target)
-        self.ui_autovolume_tolerance.set_value(self.autovolume_tolerance)
-        self.ui_autovolume_threshold.set_value(self.autovolume_threshold)
-
-        if self.autovolume_enabled:
-            self.enable_autovolume(True)
-        else:
-            self.ui_limiter_controls.set_sensitive(False)
-
-    def apply_limiter_preset(self, values):
-        self.ui_limiter_input_gain.set_value(values[0])
-        self.ui_limiter_limit.set_value(values[1])
-        self.ui_limiter_release_time.set_value(values[2])
-
-        # we need this when on value changed is not called
-        self.limiter.set_property('input-gain', values[0])
-        self.limiter.set_property('limit', values[1])
-        self.limiter.set_property('release-time', values[2])
-
-    def save_limiter_user(self, idx, value):
-        self.limiter_user[idx] = value
-
-        out = GLib.Variant('ad', self.limiter_user)
-
-        self.settings.set_value('limiter-user', out)
+        self.settings.bind('autovolume-state', self.ui_autovolume_enable,
+                           'active', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('autovolume-state', self.ui_autovolume_controls,
+                           'sensitive', Gio.SettingsBindFlags.GET)
+        self.settings.bind('autovolume-state', self.autovolume_level,
+                           'post-messages', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('autovolume-window', self.ui_autovolume_window,
+                           'value', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('autovolume-target', self.ui_autovolume_target,
+                           'value', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('autovolume-tolerance',
+                           self.ui_autovolume_tolerance,
+                           'value', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('autovolume-threshold',
+                           self.ui_autovolume_threshold,
+                           'value', Gio.SettingsBindFlags.DEFAULT)
 
     def on_limiter_enable_state_set(self, obj, state):
-        if state:
-            self.ui_autovolume_box.set_sensitive(True)
+        autovolume_enabled = self.settings.get_value(
+            'autovolume-state').unpack()
+
+        if state and autovolume_enabled:
+            self.ui_limiter_controls.set_sensitive(False)
+        elif state and not autovolume_enabled:
             self.ui_limiter_controls.set_sensitive(True)
         else:
-            self.ui_autovolume_box.set_sensitive(False)
             self.ui_limiter_controls.set_sensitive(False)
 
-        out = GLib.Variant('b', state)
-        self.settings.set_value('limiter-state', out)
-
     def on_limiter_input_gain_value_changed(self, obj):
-        value = obj.get_value()
-        self.limiter.set_property('input-gain', value)
-        self.save_limiter_user(0, value)
+        self.limiter.set_property('input-gain', obj.get_value())
 
     def on_limiter_limit_value_changed(self, obj):
-        value = obj.get_value()
-        self.limiter.set_property('limit', value)
-        self.save_limiter_user(1, value)
+        self.limiter.set_property('limit', obj.get_value())
 
     def on_limiter_release_time_value_changed(self, obj):
-        value = obj.get_value()
-        self.limiter.set_property('release-time', value)
-        self.save_limiter_user(2, value)
+        self.limiter.set_property('release-time', obj.get_value())
 
     def enable_autovolume(self, state):
-        self.autovolume_enabled = state
-
         if state:
             window = self.settings.get_value('autovolume-window').unpack()
             target = self.settings.get_value('autovolume-target').unpack()
@@ -203,26 +169,13 @@ class Limiter():
             self.ui_limiter_limit.set_value(target + tolerance)
             self.ui_limiter_release_time.set_value(window)
 
-            self.ui_limiter_input_gain.set_sensitive(False)
-            self.ui_limiter_limit.set_sensitive(False)
-            self.ui_limiter_release_time.set_sensitive(False)
-
-            self.ui_autovolume_controls.set_sensitive(True)
+            self.ui_limiter_controls.set_sensitive(False)
         else:
             self.ui_limiter_input_gain.set_value(-10)
             self.ui_limiter_limit.set_value(0)
             self.ui_limiter_release_time.set_value(1.0)
 
-            self.ui_limiter_input_gain.set_sensitive(True)
-            self.ui_limiter_limit.set_sensitive(True)
-            self.ui_limiter_release_time.set_sensitive(True)
-
-            self.ui_autovolume_controls.set_sensitive(False)
-
-        self.autovolume_level.set_property('post-messages', state)
-
-        out = GLib.Variant('b', state)
-        self.settings.set_value('autovolume-state', out)
+            self.ui_limiter_controls.set_sensitive(True)
 
     def on_autovolume_enable_state_set(self, obj, state):
         self.enable_autovolume(state)
@@ -235,9 +188,6 @@ class Limiter():
 
         self.ui_limiter_release_time.set_value(value)
 
-        out = GLib.Variant('d', value)
-        self.settings.set_value('autovolume-window', out)
-
     def on_autovolume_target_value_changed(self, obj):
         value = obj.get_value()
 
@@ -246,9 +196,6 @@ class Limiter():
         tolerance = self.settings.get_value('autovolume-tolerance').unpack()
 
         self.ui_limiter_limit.set_value(value + tolerance)
-
-        out = GLib.Variant('i', value)
-        self.settings.set_value('autovolume-target', out)
 
     def on_autovolume_tolerance_value_changed(self, obj):
         value = obj.get_value()
@@ -259,16 +206,8 @@ class Limiter():
 
         self.ui_limiter_limit.set_value(target + value)
 
-        out = GLib.Variant('i', value)
-        self.settings.set_value('autovolume-tolerance', out)
-
     def on_autovolume_threshold_value_changed(self, obj):
-        value = obj.get_value()
-
-        self.autovolume_threshold = value
-
-        out = GLib.Variant('i', value)
-        self.settings.set_value('autovolume-threshold', out)
+        self.autovolume_threshold = obj.get_value()
 
     def auto_gain(self, max_value):
         max_value = int(max_value)
@@ -339,7 +278,9 @@ class Limiter():
 
     def reset(self):
         self.settings.reset('limiter-state')
-        self.settings.reset('limiter-user')
+        self.settings.reset('limiter-input-gain')
+        self.settings.reset('limiter-limit')
+        self.settings.reset('limiter-release-time')
         self.settings.reset('autovolume-state')
         self.settings.reset('autovolume-window')
         self.settings.reset('autovolume-target')

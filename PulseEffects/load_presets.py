@@ -9,12 +9,10 @@ class LoadPresets():
 
     def __init__(self, presets_path):
         self.config = configparser.ConfigParser()
-
         self.config.read(presets_path)
 
     def load_limiter_presets(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
-
         autovolume_state = settings.get_value('autovolume-state').unpack()
 
         if autovolume_state is False:
@@ -24,17 +22,33 @@ class LoadPresets():
             limit = self.config.getfloat(section, 'limit', fallback=0.0)
 
             release_time = self.config.getfloat(section, 'release time',
-                                                fallback=1.0)
+                                                fallback=0.5)
 
-            user = [input_gain, limit, release_time]
-
-            settings.set_value('limiter-user', GLib.Variant('ad', user))
+            settings.set_value('limiter-input-gain',
+                               GLib.Variant('d', input_gain))
+            settings.set_value('limiter-limit', GLib.Variant('d', limit))
+            settings.set_value('limiter-release-time',
+                               GLib.Variant('d', release_time))
 
         settings.set_value('limiter-state', GLib.Variant('b', enabled))
 
+    def load_autovolume_presets(self, settings, section):
+        enabled = self.config.getboolean(section, 'enabled', fallback=False)
+        window = self.config.getfloat(section, 'window', fallback=1.0)
+        target = self.config.getint(section, 'target', fallback=-12.0)
+        tolerance = self.config.getint(section, 'tolerance', fallback=1.0)
+        threshold = self.config.getint(section, 'threshold', fallback=-50.0)
+
+        settings.set_value('autovolume-state', GLib.Variant('b', enabled))
+        settings.set_value('autovolume-window', GLib.Variant('d', window))
+        settings.set_value('autovolume-target', GLib.Variant('i', target))
+        settings.set_value('autovolume-tolerance',
+                           GLib.Variant('i', tolerance))
+        settings.set_value('autovolume-threshold',
+                           GLib.Variant('i', threshold))
+
     def load_panorama_presets(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
-
         position = self.config.getfloat(section, 'position', fallback=0.0)
 
         settings.set_value('panorama-state', GLib.Variant('b', enabled))
@@ -42,7 +56,6 @@ class LoadPresets():
 
     def load_compressor_presets(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
-
         use_peak = self.config.getboolean(section, 'use_peak', fallback=False)
         attack = self.config.getfloat(section, 'attack', fallback=101.1)
         release = self.config.getfloat(section, 'release', fallback=401.0)
@@ -63,7 +76,6 @@ class LoadPresets():
 
     def load_reverb_presets(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
-
         room_size = self.config.getfloat(section, 'room size', fallback=0.5)
         damping = self.config.getfloat(section, 'damping', fallback=0.2)
         width = self.config.getfloat(section, 'width', fallback=1.0)
@@ -77,7 +89,6 @@ class LoadPresets():
 
     def load_highpass_presets(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
-
         cutoff = self.config.getint(section, 'cutoff', fallback=20)
         poles = self.config.getint(section, 'poles', fallback=4)
 
@@ -87,7 +98,6 @@ class LoadPresets():
 
     def load_lowpass_presets(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
-
         cutoff = self.config.getint(section, 'cutoff', fallback=20000)
         poles = self.config.getint(section, 'poles', fallback=4)
 
@@ -97,7 +107,6 @@ class LoadPresets():
 
     def load_equalizer_presets(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
-
         input_gain = self.config.getfloat(section, 'input_gain', fallback=0)
         output_gain = self.config.getfloat(section, 'output_gain', fallback=0)
 
@@ -198,6 +207,7 @@ class LoadPresets():
 
     def load_sink_inputs_presets(self, settings):
         self.load_limiter_presets(settings, 'apps_limiter')
+        self.load_autovolume_presets(settings, 'apps_autovolume')
         self.load_panorama_presets(settings, 'apps_panorama')
         self.load_compressor_presets(settings, 'apps_compressor')
         self.load_reverb_presets(settings, 'apps_reverb')
@@ -207,6 +217,7 @@ class LoadPresets():
 
     def load_source_outputs_presets(self, settings):
         self.load_limiter_presets(settings, 'mic_limiter')
+        self.load_autovolume_presets(settings, 'mic_autovolume')
         self.load_compressor_presets(settings, 'mic_compressor')
         self.load_reverb_presets(settings, 'mic_reverb')
         self.load_highpass_presets(settings, 'mic_highpass')

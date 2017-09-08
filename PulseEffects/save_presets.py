@@ -7,17 +7,31 @@ class SavePresets():
 
     def __init__(self, presets_path):
         self.config = configparser.ConfigParser()
-
         self.output_file = open(presets_path, 'w')
 
     def save_limiter_presets(self, settings, section):
         enabled = settings.get_value('limiter-state')
-        limiter = settings.get_value('limiter-user')
+        input_gain = settings.get_value('limiter-input-gain')
+        limit = settings.get_value('limiter-limit')
+        release_time = settings.get_value('limiter-release-time')
 
         self.config[section] = {'enabled': str(enabled),
-                                'input gain': str(limiter[0]),
-                                'limit': str(limiter[1]),
-                                'release time': str(limiter[2])}
+                                'input gain': str(input_gain),
+                                'limit': str(limit),
+                                'release time': str(release_time)}
+
+    def save_autovolume_presets(self, settings, section):
+        enabled = settings.get_value('autovolume-state')
+        window = settings.get_value('autovolume-window')
+        target = settings.get_value('autovolume-target')
+        tolerance = settings.get_value('autovolume-tolerance')
+        threshold = settings.get_value('autovolume-threshold')
+
+        self.config[section] = {'enabled': str(enabled),
+                                'window': str(window),
+                                'target': str(target),
+                                'tolerance': str(tolerance),
+                                'threshold': str(threshold)}
 
     def save_panorama_presets(self, settings, section):
         enabled = settings.get_value('panorama-state')
@@ -138,6 +152,7 @@ class SavePresets():
 
     def save_sink_inputs_presets(self, settings):
         self.save_limiter_presets(settings, 'apps_limiter')
+        self.save_autovolume_presets(settings, 'apps_autovolume')
         self.save_panorama_presets(settings, 'apps_panorama')
         self.save_compressor_presets(settings, 'apps_compressor')
         self.save_reverb_presets(settings, 'apps_reverb')
@@ -147,6 +162,7 @@ class SavePresets():
 
     def save_source_outputs_presets(self, settings):
         self.save_limiter_presets(settings, 'mic_limiter')
+        self.save_autovolume_presets(settings, 'mic_autovolume')
         self.save_compressor_presets(settings, 'mic_compressor')
         self.save_reverb_presets(settings, 'mic_reverb')
         self.save_highpass_presets(settings, 'mic_highpass')
