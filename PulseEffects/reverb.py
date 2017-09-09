@@ -17,15 +17,8 @@ class Reverb():
         self.settings = settings
         self.module_path = os.path.dirname(__file__)
 
-        self.builder = Gtk.Builder()
-
-        self.builder.add_from_file(self.module_path + '/ui/reverb.glade')
-
         self.build_bin()
-
         self.load_ui()
-
-        self.builder.connect_signals(self)
 
     def on_filter_added(self, bin, element, success, user_data):
         pass
@@ -41,6 +34,10 @@ class Reverb():
         self.bin.append(output_level, self.on_filter_added, None)
 
     def load_ui(self):
+        self.builder = Gtk.Builder()
+        self.builder.add_from_file(self.module_path + '/ui/reverb.glade')
+        self.builder.connect_signals(self)
+
         self.ui_window = self.builder.get_object('window')
         self.ui_controls = self.builder.get_object('controls')
 

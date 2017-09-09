@@ -69,8 +69,7 @@ class SinkInputEffects(PipelineBase):
 
         self.limiter.ui_limiter_enable.connect('state-set',
                                                self.on_limiter_enable)
-        self.panorama.ui_panorama_enable.connect('state-set',
-                                                 self.on_panorama_enable)
+        self.panorama.ui_enable.connect('state-set', self.on_panorama_enable)
         self.compressor.ui_enable.connect('state-set',
                                           self.on_compressor_enable)
         self.reverb.ui_enable.connect('state-set', self.on_reverb_enable)

@@ -6,7 +6,7 @@ import gi
 gi.require_version('Gst', '1.0')
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, Gst, GstInsertBin, Gtk
+from gi.repository import Gio, GObject, Gst, GstInsertBin, Gtk
 
 Gst.init(None)
 
@@ -17,71 +17,70 @@ class Panorama():
         self.settings = settings
         self.module_path = os.path.dirname(__file__)
 
-        self.builder = Gtk.Builder()
-
-        self.builder.add_from_file(self.module_path + '/ui/panorama.glade')
-
-        self.build_panorama_bin()
-
+        self.build_bin()
         self.load_ui()
-
-        self.builder.connect_signals(self)
 
     def on_filter_added(self, bin, element, success, user_data):
         pass
 
-    def build_panorama_bin(self):
+    def build_bin(self):
         self.panorama = Gst.ElementFactory.make('audiopanorama', None)
 
-        panorama_input_level = Gst.ElementFactory.make(
-            'level', 'panorama_input_level')
-        panorama_output_level = Gst.ElementFactory.make(
-            'level', 'panorama_output_level')
+        input_level = Gst.ElementFactory.make('level', 'panorama_input_level')
+        output_level = Gst.ElementFactory.make('level',
+                                               'panorama_output_level')
 
         self.panorama.set_property('method', 'psychoacoustic')
 
         self.bin = GstInsertBin.InsertBin.new('panorama_bin')
         self.bin.append(self.panorama, self.on_filter_added, None)
-        self.bin.append(panorama_input_level, self.on_filter_added, None)
-        self.bin.append(panorama_output_level, self.on_filter_added, None)
+        self.bin.append(input_level, self.on_filter_added, None)
+        self.bin.append(output_level, self.on_filter_added, None)
 
     def load_ui(self):
+        self.builder = Gtk.Builder()
+        self.builder.add_from_file(self.module_path + '/ui/panorama.glade')
+
         self.ui_window = self.builder.get_object('window')
+        self.ui_controls = self.builder.get_object('controls')
 
-        self.ui_panorama_controls = self.builder.get_object(
-            'panorama_controls')
+        self.ui_enable = self.builder.get_object('enable')
+        self.ui_position = self.builder.get_object('position')
 
-        self.ui_panorama_enable = self.builder.get_object('panorama_enable')
-        self.ui_panorama = self.builder.get_object('panorama_position')
+        self.ui_input_level_left = self.builder.get_object('input_level_left')
+        self.ui_input_level_right = self.builder.get_object(
+            'input_level_right')
+        self.ui_output_level_left = self.builder.get_object(
+            'output_level_left')
+        self.ui_output_level_right = self.builder.get_object(
+            'output_level_right')
 
-        self.ui_panorama_input_level_left = self.builder.get_object(
-            'panorama_input_level_left')
-        self.ui_panorama_input_level_right = self.builder.get_object(
-            'panorama_input_level_right')
-        self.ui_panorama_output_level_left = self.builder.get_object(
-            'panorama_output_level_left')
-        self.ui_panorama_output_level_right = self.builder.get_object(
-            'panorama_output_level_right')
-
-        self.ui_panorama_input_level_left_label = self.builder.get_object(
-            'panorama_input_level_left_label')
-        self.ui_panorama_input_level_right_label = self.builder.get_object(
-            'panorama_input_level_right_label')
-        self.ui_panorama_output_level_left_label = self.builder.get_object(
-            'panorama_output_level_left_label')
-        self.ui_panorama_output_level_right_label = self.builder.get_object(
-            'panorama_output_level_right_label')
+        self.ui_input_level_left_label = self.builder.get_object(
+            'input_level_left_label')
+        self.ui_input_level_right_label = self.builder.get_object(
+            'input_level_right_label')
+        self.ui_output_level_left_label = self.builder.get_object(
+            'output_level_left_label')
+        self.ui_output_level_right_label = self.builder.get_object(
+            'output_level_right_label')
 
     def bind(self):
-        self.settings.bind('panorama-state', self.ui_panorama_enable, 'active',
-                           Gio.SettingsBindFlags.DEFAULT)
-        self.settings.bind('panorama-state', self.ui_panorama_controls,
-                           'sensitive', Gio.SettingsBindFlags.DEFAULT)
-        self.settings.bind('panorama-position', self.ui_panorama,
-                           'value', Gio.SettingsBindFlags.DEFAULT)
+        # binding ui widgets to gstreamer plugins
 
-    def on_panorama_position_value_changed(self, obj):
-        self.panorama.set_property('panorama', obj.get_value())
+        flag = GObject.BindingFlags.DEFAULT
+
+        self.ui_position.bind_property('value', self.panorama, 'panorama',
+                                       flag)
+
+        # binding ui widgets to gsettings
+
+        flag = Gio.SettingsBindFlags.DEFAULT
+
+        self.settings.bind('panorama-state', self.ui_enable, 'active', flag)
+        self.settings.bind('panorama-state', self.ui_controls, 'sensitive',
+                           Gio.SettingsBindFlags.GET)
+        self.settings.bind('panorama-position', self.ui_position, 'value',
+                           flag)
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]
@@ -108,18 +107,16 @@ class Panorama():
             widget_level_right_label.set_text('-99')
 
     def ui_update_panorama_input_level(self, peak):
-        widgets = [self.ui_panorama_input_level_left,
-                   self.ui_panorama_input_level_right,
-                   self.ui_panorama_input_level_left_label,
-                   self.ui_panorama_input_level_right_label]
+        widgets = [self.ui_input_level_left, self.ui_input_level_right,
+                   self.ui_input_level_left_label,
+                   self.ui_input_level_right_label]
 
         self.ui_update_level(widgets, peak)
 
     def ui_update_panorama_output_level(self, peak):
-        widgets = [self.ui_panorama_output_level_left,
-                   self.ui_panorama_output_level_right,
-                   self.ui_panorama_output_level_left_label,
-                   self.ui_panorama_output_level_right_label]
+        widgets = [self.ui_output_level_left, self.ui_output_level_right,
+                   self.ui_output_level_left_label,
+                   self.ui_output_level_right_label]
 
         self.ui_update_level(widgets, peak)
 

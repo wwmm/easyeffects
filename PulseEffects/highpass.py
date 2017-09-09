@@ -17,15 +17,8 @@ class Highpass():
         self.settings = settings
         self.module_path = os.path.dirname(__file__)
 
-        self.builder = Gtk.Builder()
-
-        self.builder.add_from_file(self.module_path + '/ui/highpass.glade')
-
         self.build_bin()
-
         self.load_ui()
-
-        self.builder.connect_signals(self)
 
     def on_filter_added(self, bin, element, success, user_data):
         pass
@@ -46,6 +39,9 @@ class Highpass():
         self.bin.append(output_level, self.on_filter_added, None)
 
     def load_ui(self):
+        self.builder = Gtk.Builder()
+        self.builder.add_from_file(self.module_path + '/ui/highpass.glade')
+
         self.ui_window = self.builder.get_object('window')
         self.ui_controls = self.builder.get_object('controls')
 
@@ -83,12 +79,10 @@ class Highpass():
         flag = Gio.SettingsBindFlags.DEFAULT
 
         self.settings.bind('highpass-state', self.ui_enable, 'active', flag)
-        self.settings.bind('highpass-state', self.ui_controls,
-                           'sensitive', Gio.SettingsBindFlags.GET)
-        self.settings.bind('highpass-cutoff', self.ui_cutoff,
-                           'value', flag)
-        self.settings.bind('highpass-poles', self.ui_poles,
-                           'value', flag)
+        self.settings.bind('highpass-state', self.ui_controls, 'sensitive',
+                           Gio.SettingsBindFlags.GET)
+        self.settings.bind('highpass-cutoff', self.ui_cutoff, 'value', flag)
+        self.settings.bind('highpass-poles', self.ui_poles, 'value', flag)
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]

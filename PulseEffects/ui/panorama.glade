@@ -2,12 +2,11 @@
 <!-- Generated with glade 3.20.0 -->
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.20"/>
-  <object class="GtkAdjustment" id="panorama_position">
+  <object class="GtkAdjustment" id="position">
     <property name="lower">-1</property>
     <property name="upper">1</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.050000000000000003</property>
-    <signal name="value-changed" handler="on_panorama_position_value_changed" swapped="no"/>
   </object>
   <object class="GtkBox" id="window">
     <property name="visible">True</property>
@@ -16,7 +15,7 @@
     <property name="orientation">vertical</property>
     <property name="spacing">12</property>
     <child>
-      <object class="GtkSwitch" id="panorama_enable">
+      <object class="GtkSwitch" id="enable">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="halign">center</property>
@@ -29,7 +28,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkGrid" id="panorama_controls">
+      <object class="GtkGrid" id="controls">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="halign">center</property>
@@ -63,7 +62,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="valign">center</property>
-            <property name="adjustment">panorama_position</property>
+            <property name="adjustment">position</property>
             <property name="round_digits">1</property>
             <property name="digits">2</property>
           </object>
@@ -109,7 +108,7 @@
                 <property name="valign">center</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkLevelBar" id="panorama_output_level_left">
+                  <object class="GtkLevelBar" id="output_level_left">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hexpand">True</property>
@@ -121,7 +120,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLevelBar" id="panorama_output_level_right">
+                  <object class="GtkLevelBar" id="output_level_right">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hexpand">True</property>
@@ -140,7 +139,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="panorama_output_level_left_label">
+              <object class="GtkLabel" id="output_level_left_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -166,7 +165,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="panorama_output_level_right_label">
+              <object class="GtkLabel" id="output_level_right_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -210,7 +209,7 @@
                 <property name="valign">center</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkLevelBar" id="panorama_input_level_left">
+                  <object class="GtkLevelBar" id="input_level_left">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hexpand">True</property>
@@ -222,7 +221,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLevelBar" id="panorama_input_level_right">
+                  <object class="GtkLevelBar" id="input_level_right">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hexpand">True</property>
@@ -241,7 +240,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="panorama_input_level_left_label">
+              <object class="GtkLabel" id="input_level_left_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -267,7 +266,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="panorama_input_level_right_label">
+              <object class="GtkLabel" id="input_level_right_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>

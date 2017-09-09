@@ -19,15 +19,8 @@ class Compressor():
 
         self.old_compressor_gain_reduction = 0
 
-        self.builder = Gtk.Builder()
-
-        self.builder.add_from_file(self.module_path + '/ui/compressor.glade')
-
         self.build_bin()
-
         self.load_ui()
-
-        self.builder.connect_signals(self)
 
     def on_filter_added(self, bin, element, success, user_data):
         pass
@@ -46,6 +39,10 @@ class Compressor():
         self.bin.append(output_level, self.on_filter_added, None)
 
     def load_ui(self):
+        self.builder = Gtk.Builder()
+        self.builder.add_from_file(self.module_path + '/ui/compressor.glade')
+        self.builder.connect_signals(self)
+
         self.ui_window = self.builder.get_object('window')
         self.ui_controls = self.builder.get_object('controls')
 
