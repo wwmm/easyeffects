@@ -6,7 +6,7 @@ import gi
 gi.require_version('Gst', '1.0')
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, Gst, GstInsertBin, Gtk
+from gi.repository import Gio, GObject, Gst, GstInsertBin, Gtk
 
 Gst.init(None)
 
@@ -21,7 +21,7 @@ class Lowpass():
 
         self.builder.add_from_file(self.module_path + '/ui/lowpass.glade')
 
-        self.build_lowpass_bin()
+        self.build_bin()
 
         self.load_ui()
 
@@ -30,12 +30,10 @@ class Lowpass():
     def on_filter_added(self, bin, element, success, user_data):
         pass
 
-    def build_lowpass_bin(self):
+    def build_bin(self):
         self.lowpass = Gst.ElementFactory.make('audiocheblimit', None)
-        lowpass_input_level = Gst.ElementFactory.make('level',
-                                                      'lowpass_input_level')
-        lowpass_output_level = Gst.ElementFactory.make('level',
-                                                       'lowpass_output_level')
+        input_level = Gst.ElementFactory.make('level', 'lowpass_input_level')
+        output_level = Gst.ElementFactory.make('level', 'lowpass_output_level')
 
         self.lowpass.set_property('mode', 'low-pass')
         self.lowpass.set_property('type', 1)
@@ -43,51 +41,52 @@ class Lowpass():
 
         self.bin = GstInsertBin.InsertBin.new('lowpass_bin')
         self.bin.append(self.lowpass, self.on_filter_added, None)
-        self.bin.append(lowpass_input_level, self.on_filter_added, None)
-        self.bin.append(lowpass_output_level, self.on_filter_added, None)
+        self.bin.append(input_level, self.on_filter_added, None)
+        self.bin.append(output_level, self.on_filter_added, None)
 
     def load_ui(self):
         self.ui_window = self.builder.get_object('window')
+        self.ui_controls = self.builder.get_object('controls')
 
-        self.ui_lowpass_controls = self.builder.get_object(
-            'lowpass_controls')
+        self.ui_enable = self.builder.get_object('enable')
+        self.ui_cutoff = self.builder.get_object('cutoff')
+        self.ui_poles = self.builder.get_object('poles')
 
-        self.ui_lowpass_enable = self.builder.get_object('lowpass_enable')
-        self.ui_lowpass_cutoff = self.builder.get_object('lowpass_cutoff')
-        self.ui_lowpass_poles = self.builder.get_object('lowpass_poles')
+        self.ui_input_level_left = self.builder.get_object(
+            'input_level_left')
+        self.ui_input_level_right = self.builder.get_object(
+            'input_level_right')
+        self.ui_output_level_left = self.builder.get_object(
+            'output_level_left')
+        self.ui_output_level_right = self.builder.get_object(
+            'output_level_right')
 
-        self.ui_lowpass_input_level_left = self.builder.get_object(
-            'lowpass_input_level_left')
-        self.ui_lowpass_input_level_right = self.builder.get_object(
-            'lowpass_input_level_right')
-        self.ui_lowpass_output_level_left = self.builder.get_object(
-            'lowpass_output_level_left')
-        self.ui_lowpass_output_level_right = self.builder.get_object(
-            'lowpass_output_level_right')
-
-        self.ui_lowpass_input_level_left_label = self.builder.get_object(
-            'lowpass_input_level_left_label')
-        self.ui_lowpass_input_level_right_label = self.builder.get_object(
-            'lowpass_input_level_right_label')
-        self.ui_lowpass_output_level_left_label = self.builder.get_object(
-            'lowpass_output_level_left_label')
-        self.ui_lowpass_output_level_right_label = self.builder.get_object(
-            'lowpass_output_level_right_label')
+        self.ui_input_level_left_label = self.builder.get_object(
+            'input_level_left_label')
+        self.ui_input_level_right_label = self.builder.get_object(
+            'input_level_right_label')
+        self.ui_output_level_left_label = self.builder.get_object(
+            'output_level_left_label')
+        self.ui_output_level_right_label = self.builder.get_object(
+            'output_level_right_label')
 
     def bind(self):
-        self.settings.bind('lowpass-state', self.ui_lowpass_enable, 'active',
-                           Gio.SettingsBindFlags.DEFAULT)
-        self.settings.bind('lowpass-state', self.ui_lowpass_controls,
-                           'sensitive', Gio.SettingsBindFlags.GET)
-        self.settings.bind('lowpass-cutoff', self.ui_lowpass_cutoff,
-                           'value', Gio.SettingsBindFlags.DEFAULT)
-        self.settings.bind('lowpass-poles', self.ui_lowpass_poles,
-                           'value', Gio.SettingsBindFlags.DEFAULT)
-        self.settings.bind('lowpass-poles', self.lowpass, 'poles',
-                           Gio.SettingsBindFlags.DEFAULT)
+        # binding ui widgets to gstreamer plugins
 
-    def on_lowpass_cutoff_value_changed(self, obj):
-        self.lowpass.set_property('cutoff', obj.get_value())
+        flag = GObject.BindingFlags.DEFAULT
+
+        self.ui_cutoff.bind_property('value', self.lowpass, 'cutoff', flag)
+        self.ui_poles.bind_property('value', self.lowpass, 'poles', flag)
+
+        # binding ui widgets to gsettings
+
+        flag = Gio.SettingsBindFlags.DEFAULT
+
+        self.settings.bind('lowpass-state', self.ui_enable, 'active', flag)
+        self.settings.bind('lowpass-state', self.ui_controls, 'sensitive',
+                           Gio.SettingsBindFlags.GET)
+        self.settings.bind('lowpass-cutoff', self.ui_cutoff, 'value', flag)
+        self.settings.bind('lowpass-poles', self.ui_poles, 'value', flag)
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]
@@ -114,18 +113,16 @@ class Lowpass():
             widget_level_right_label.set_text('-99')
 
     def ui_update_lowpass_input_level(self, peak):
-        widgets = [self.ui_lowpass_input_level_left,
-                   self.ui_lowpass_input_level_right,
-                   self.ui_lowpass_input_level_left_label,
-                   self.ui_lowpass_input_level_right_label]
+        widgets = [self.ui_input_level_left, self.ui_input_level_right,
+                   self.ui_input_level_left_label,
+                   self.ui_input_level_right_label]
 
         self.ui_update_level(widgets, peak)
 
     def ui_update_lowpass_output_level(self, peak):
-        widgets = [self.ui_lowpass_output_level_left,
-                   self.ui_lowpass_output_level_right,
-                   self.ui_lowpass_output_level_left_label,
-                   self.ui_lowpass_output_level_right_label]
+        widgets = [self.ui_output_level_left, self.ui_output_level_right,
+                   self.ui_output_level_left_label,
+                   self.ui_output_level_right_label]
 
         self.ui_update_level(widgets, peak)
 

@@ -23,7 +23,7 @@ class Compressor():
 
         self.builder.add_from_file(self.module_path + '/ui/compressor.glade')
 
-        self.build_compressor_bin()
+        self.build_bin()
 
         self.load_ui()
 
@@ -32,7 +32,7 @@ class Compressor():
     def on_filter_added(self, bin, element, success, user_data):
         pass
 
-    def build_compressor_bin(self):
+    def build_bin(self):
         self.compressor = Gst.ElementFactory.make(
             'ladspa-sc4-1882-so-sc4', None)
         input_level = Gst.ElementFactory.make('level',

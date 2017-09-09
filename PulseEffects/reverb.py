@@ -21,7 +21,7 @@ class Reverb():
 
         self.builder.add_from_file(self.module_path + '/ui/reverb.glade')
 
-        self.build_reverb_bin()
+        self.build_bin()
 
         self.load_ui()
 
@@ -30,7 +30,7 @@ class Reverb():
     def on_filter_added(self, bin, element, success, user_data):
         pass
 
-    def build_reverb_bin(self):
+    def build_bin(self):
         self.reverb = Gst.ElementFactory.make('freeverb', None)
         input_level = Gst.ElementFactory.make('level', 'reverb_input_level')
         output_level = Gst.ElementFactory.make('level', 'reverb_output_level')
