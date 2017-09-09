@@ -2,49 +2,43 @@
 <!-- Generated with glade 3.20.0 -->
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.20"/>
-  <object class="GtkAdjustment" id="compressor_attack">
+  <object class="GtkAdjustment" id="attack">
     <property name="lower">1.5</property>
     <property name="upper">400</property>
     <property name="value">101.09999999999999</property>
     <property name="step_increment">0.10000000000000001</property>
     <property name="page_increment">10</property>
-    <signal name="value-changed" handler="on_compressor_attack_time_value_changed" swapped="no"/>
   </object>
-  <object class="GtkAdjustment" id="compressor_knee">
+  <object class="GtkAdjustment" id="knee">
     <property name="lower">1</property>
     <property name="upper">10</property>
     <property name="value">3.25</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_compressor_knee_value_changed" swapped="no"/>
   </object>
-  <object class="GtkAdjustment" id="compressor_makeup">
+  <object class="GtkAdjustment" id="makeup">
     <property name="upper">24</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_compressor_makeup_value_changed" swapped="no"/>
   </object>
-  <object class="GtkAdjustment" id="compressor_ratio">
+  <object class="GtkAdjustment" id="ratio">
     <property name="lower">1</property>
     <property name="upper">20</property>
     <property name="value">1</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_compressor_ratio_value_changed" swapped="no"/>
   </object>
-  <object class="GtkAdjustment" id="compressor_release">
+  <object class="GtkAdjustment" id="release">
     <property name="lower">2</property>
     <property name="upper">800</property>
     <property name="value">401</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
-    <signal name="value-changed" handler="on_compressor_release_time_value_changed" swapped="no"/>
   </object>
-  <object class="GtkAdjustment" id="compressor_threshold">
+  <object class="GtkAdjustment" id="threshold">
     <property name="lower">-30</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_compressor_threshold_value_changed" swapped="no"/>
   </object>
   <object class="GtkBox" id="window">
     <property name="visible">True</property>
@@ -53,7 +47,7 @@
     <property name="orientation">vertical</property>
     <property name="spacing">12</property>
     <child>
-      <object class="GtkSwitch" id="compressor_enable">
+      <object class="GtkSwitch" id="enable">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="halign">center</property>
@@ -66,7 +60,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkBox" id="compressor_controls">
+      <object class="GtkBox" id="controls">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
@@ -141,7 +135,7 @@
                 <property name="can_focus">True</property>
                 <property name="width_chars">5</property>
                 <property name="input_purpose">number</property>
-                <property name="adjustment">compressor_attack</property>
+                <property name="adjustment">attack</property>
                 <property name="digits">1</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
@@ -168,7 +162,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="input_purpose">number</property>
-                <property name="adjustment">compressor_release</property>
+                <property name="adjustment">release</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
               </object>
@@ -194,7 +188,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="input_purpose">number</property>
-                <property name="adjustment">compressor_threshold</property>
+                <property name="adjustment">threshold</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
               </object>
@@ -220,7 +214,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="input_purpose">number</property>
-                <property name="adjustment">compressor_ratio</property>
+                <property name="adjustment">ratio</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
               </object>
@@ -247,7 +241,7 @@
                 <property name="can_focus">True</property>
                 <property name="width_chars">4</property>
                 <property name="input_purpose">number</property>
-                <property name="adjustment">compressor_knee</property>
+                <property name="adjustment">knee</property>
                 <property name="digits">2</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
@@ -274,7 +268,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="input_purpose">number</property>
-                <property name="adjustment">compressor_makeup</property>
+                <property name="adjustment">makeup</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
               </object>
@@ -358,7 +352,7 @@
                 <property name="valign">center</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkLevelBar" id="compressor_input_level_left">
+                  <object class="GtkLevelBar" id="input_level_left">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hexpand">True</property>
@@ -370,7 +364,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLevelBar" id="compressor_input_level_right">
+                  <object class="GtkLevelBar" id="input_level_right">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hexpand">True</property>
@@ -389,7 +383,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="compressor_input_level_left_label">
+              <object class="GtkLabel" id="input_level_left_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -415,7 +409,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="compressor_input_level_right_label">
+              <object class="GtkLabel" id="input_level_right_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -459,7 +453,7 @@
                 <property name="valign">center</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkLevelBar" id="compressor_output_level_left">
+                  <object class="GtkLevelBar" id="output_level_left">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hexpand">True</property>
@@ -471,7 +465,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLevelBar" id="compressor_output_level_right">
+                  <object class="GtkLevelBar" id="output_level_right">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hexpand">True</property>
@@ -490,7 +484,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="compressor_output_level_left_label">
+              <object class="GtkLabel" id="output_level_left_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -516,7 +510,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="compressor_output_level_right_label">
+              <object class="GtkLabel" id="output_level_right_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -554,7 +548,7 @@
             <property name="can_focus">False</property>
             <property name="hexpand">True</property>
             <child>
-              <object class="GtkLevelBar" id="compressor_gain_reduction_levelbar">
+              <object class="GtkLevelBar" id="gain_reduction_levelbar">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">center</property>
@@ -569,7 +563,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="compressor_gain_reduction_level_label">
+              <object class="GtkLabel" id="gain_reduction_level_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>

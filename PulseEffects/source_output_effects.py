@@ -72,8 +72,8 @@ class SourceOutputEffects(PipelineBase):
 
         self.limiter.ui_limiter_enable.connect('state-set',
                                                self.on_limiter_enable)
-        self.compressor.ui_compressor_enable.connect('state-set',
-                                                     self.on_compressor_enable)
+        self.compressor.ui_enable.connect('state-set',
+                                          self.on_compressor_enable)
         self.reverb.ui_reverb_enable.connect('state-set',
                                              self.on_reverb_enable)
         self.highpass.ui_highpass_enable.connect('state-set',

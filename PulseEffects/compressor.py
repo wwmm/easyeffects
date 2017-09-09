@@ -6,7 +6,7 @@ import gi
 gi.require_version('Gst', '1.0')
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, Gst, GstInsertBin, Gtk
+from gi.repository import Gio, GObject, Gst, GstInsertBin, Gtk
 
 Gst.init(None)
 
@@ -47,75 +47,82 @@ class Compressor():
 
     def load_ui(self):
         self.ui_window = self.builder.get_object('window')
+        self.ui_controls = self.builder.get_object('controls')
 
-        self.ui_compressor_controls = self.builder.get_object(
-            'compressor_controls')
-
-        self.ui_compressor_enable = self.builder.get_object(
-            'compressor_enable')
+        self.ui_enable = self.builder.get_object('enable')
         self.ui_compressor_rms = self.builder.get_object('compressor_rms')
         self.ui_compressor_peak = self.builder.get_object('compressor_peak')
-        self.ui_compressor_attack = self.builder.get_object(
-            'compressor_attack')
-        self.ui_compressor_release = self.builder.get_object(
-            'compressor_release')
-        self.ui_compressor_threshold = self.builder.get_object(
-            'compressor_threshold')
-        self.ui_compressor_ratio = self.builder.get_object(
-            'compressor_ratio')
-        self.ui_compressor_knee = self.builder.get_object('compressor_knee')
-        self.ui_compressor_makeup = self.builder.get_object(
-            'compressor_makeup')
+        self.ui_attack = self.builder.get_object('attack')
+        self.ui_release = self.builder.get_object('release')
+        self.ui_threshold = self.builder.get_object('threshold')
+        self.ui_ratio = self.builder.get_object('ratio')
+        self.ui_knee = self.builder.get_object('knee')
+        self.ui_makeup = self.builder.get_object('makeup')
 
-        self.ui_compressor_input_level_left = self.builder.get_object(
-            'compressor_input_level_left')
-        self.ui_compressor_input_level_right = self.builder.get_object(
-            'compressor_input_level_right')
-        self.ui_compressor_output_level_left = self.builder.get_object(
-            'compressor_output_level_left')
-        self.ui_compressor_output_level_right = self.builder.get_object(
-            'compressor_output_level_right')
-        self.ui_compressor_gain_reduction_levelbar = self.builder.get_object(
-            'compressor_gain_reduction_levelbar')
+        self.ui_input_level_left = self.builder.get_object('input_level_left')
+        self.ui_input_level_right = self.builder.get_object(
+            'input_level_right')
+        self.ui_output_level_left = self.builder.get_object(
+            'output_level_left')
+        self.ui_output_level_right = self.builder.get_object(
+            'output_level_right')
+        self.ui_gain_reduction_levelbar = self.builder.get_object(
+            'gain_reduction_levelbar')
 
-        self.ui_compressor_input_level_left_label = self.builder.get_object(
-            'compressor_input_level_left_label')
-        self.ui_compressor_input_level_right_label = self.builder.get_object(
-            'compressor_input_level_right_label')
-        self.ui_compressor_output_level_left_label = self.builder.get_object(
-            'compressor_output_level_left_label')
-        self.ui_compressor_output_level_right_label = self.builder.get_object(
-            'compressor_output_level_right_label')
-        self.ui_compressor_gain_reduction_level_label = \
-            self.builder.get_object('compressor_gain_reduction_level_label')
+        self.ui_input_level_left_label = self.builder.get_object(
+            'input_level_left_label')
+        self.ui_input_level_right_label = self.builder.get_object(
+            'input_level_right_label')
+        self.ui_output_level_left_label = self.builder.get_object(
+            'output_level_left_label')
+        self.ui_output_level_right_label = self.builder.get_object(
+            'output_level_right_label')
+        self.ui_gain_reduction_level_label = self.builder.get_object(
+            'gain_reduction_level_label')
 
-        self.ui_compressor_gain_reduction_levelbar.add_offset_value(
+        self.ui_gain_reduction_levelbar.add_offset_value(
             'GTK_LEVEL_BAR_OFFSET_LOW', 6)
-        self.ui_compressor_gain_reduction_levelbar.add_offset_value(
+        self.ui_gain_reduction_levelbar.add_offset_value(
             'GTK_LEVEL_BAR_OFFSET_HIGH', 18)
-        self.ui_compressor_gain_reduction_levelbar.add_offset_value(
+        self.ui_gain_reduction_levelbar.add_offset_value(
             'GTK_LEVEL_BAR_OFFSET_FULL', 24)
 
     def bind(self):
-        self.settings.bind('compressor-state', self.ui_compressor_enable,
-                           'active', Gio.SettingsBindFlags.DEFAULT)
-        self.settings.bind('compressor-state', self.ui_compressor_controls,
-                           'sensitive', Gio.SettingsBindFlags.GET)
+        # binding ui widgets to gstreamer plugins
+
+        flag = GObject.BindingFlags.DEFAULT
+
+        self.ui_attack.bind_property('value', self.compressor, 'attack-time',
+                                     flag)
+        self.ui_release.bind_property('value', self.compressor, 'release-time',
+                                      flag)
+        self.ui_threshold.bind_property('value', self.compressor,
+                                        'threshold-level', flag)
+        self.ui_ratio.bind_property('value', self.compressor, 'ratio', flag)
+        self.ui_knee.bind_property('value', self.compressor, 'knee-radius',
+                                   flag)
+        self.ui_makeup.bind_property('value', self.compressor, 'makeup-gain',
+                                     flag)
+
+        # binding ui widgets to gsettings
+
+        flag = Gio.SettingsBindFlags.DEFAULT
+
+        self.settings.bind('compressor-state', self.ui_enable, 'active', flag)
+        self.settings.bind('compressor-state', self.ui_controls, 'sensitive',
+                           Gio.SettingsBindFlags.GET)
+
         self.settings.bind('compressor-use-peak', self.ui_compressor_peak,
-                           'active', Gio.SettingsBindFlags.DEFAULT)
-        self.settings.bind('compressor-attack', self.ui_compressor_attack,
-                           'value', Gio.SettingsBindFlags.DEFAULT)
-        self.settings.bind('compressor-release', self.ui_compressor_release,
-                           'value', Gio.SettingsBindFlags.DEFAULT)
-        self.settings.bind('compressor-threshold',
-                           self.ui_compressor_threshold, 'value',
-                           Gio.SettingsBindFlags.DEFAULT)
-        self.settings.bind('compressor-ratio', self.ui_compressor_ratio,
-                           'value', Gio.SettingsBindFlags.DEFAULT)
-        self.settings.bind('compressor-knee', self.ui_compressor_knee,
-                           'value', Gio.SettingsBindFlags.DEFAULT)
-        self.settings.bind('compressor-makeup', self.ui_compressor_makeup,
-                           'value', Gio.SettingsBindFlags.DEFAULT)
+                           'active', flag)
+
+        self.settings.bind('compressor-attack', self.ui_attack, 'value', flag)
+        self.settings.bind('compressor-release', self.ui_release, 'value',
+                           flag)
+        self.settings.bind('compressor-threshold', self.ui_threshold, 'value',
+                           flag)
+        self.settings.bind('compressor-ratio', self.ui_ratio, 'value', flag)
+        self.settings.bind('compressor-knee', self.ui_knee, 'value', flag)
+        self.settings.bind('compressor-makeup', self.ui_makeup, 'value', flag)
 
     def apply_compressor_preset(self, values):
         if values[0] == 0:
@@ -123,12 +130,12 @@ class Compressor():
         elif values[0] == 1:
             self.ui_compressor_peak.set_active(True)
 
-        self.ui_compressor_attack.set_value(values[1])
-        self.ui_compressor_release.set_value(values[2])
-        self.ui_compressor_threshold.set_value(values[3])
-        self.ui_compressor_ratio.set_value(values[4])
-        self.ui_compressor_knee.set_value(values[5])
-        self.ui_compressor_makeup.set_value(values[6])
+        self.ui_attack.set_value(values[1])
+        self.ui_release.set_value(values[2])
+        self.ui_threshold.set_value(values[3])
+        self.ui_ratio.set_value(values[4])
+        self.ui_knee.set_value(values[5])
+        self.ui_makeup.set_value(values[6])
 
     def on_compressor_measurement_type(self, obj):
         if obj.get_active():
@@ -138,24 +145,6 @@ class Compressor():
                 self.compressor.set_property('rms-peak', False)
             elif label == 'peak':
                 self.compressor.set_property('rms-peak', True)
-
-    def on_compressor_attack_time_value_changed(self, obj):
-        self.compressor.set_property('attack-time', obj.get_value())
-
-    def on_compressor_release_time_value_changed(self, obj):
-        self.compressor.set_property('release-time', obj.get_value())
-
-    def on_compressor_threshold_value_changed(self, obj):
-        self.compressor.set_property('threshold-level', obj.get_value())
-
-    def on_compressor_ratio_value_changed(self, obj):
-        self.compressor.set_property('ratio', obj.get_value())
-
-    def on_compressor_knee_value_changed(self, obj):
-        self.compressor.set_property('knee-radius', obj.get_value())
-
-    def on_compressor_makeup_value_changed(self, obj):
-        self.compressor.set_property('makeup-gain', obj.get_value())
 
     def on_compressor_preset_clicked(self, obj):
         obj_id = Gtk.Buildable.get_name(obj)
@@ -189,18 +178,18 @@ class Compressor():
             widget_level_right_label.set_text('-99')
 
     def ui_update_compressor_input_level(self, peak):
-        widgets = [self.ui_compressor_input_level_left,
-                   self.ui_compressor_input_level_right,
-                   self.ui_compressor_input_level_left_label,
-                   self.ui_compressor_input_level_right_label]
+        widgets = [self.ui_input_level_left,
+                   self.ui_input_level_right,
+                   self.ui_input_level_left_label,
+                   self.ui_input_level_right_label]
 
         self.ui_update_level(widgets, peak)
 
     def ui_update_compressor_output_level(self, peak):
-        widgets = [self.ui_compressor_output_level_left,
-                   self.ui_compressor_output_level_right,
-                   self.ui_compressor_output_level_left_label,
-                   self.ui_compressor_output_level_right_label]
+        widgets = [self.ui_output_level_left,
+                   self.ui_output_level_right,
+                   self.ui_output_level_left_label,
+                   self.ui_output_level_right_label]
 
         self.ui_update_level(widgets, peak)
 
@@ -210,9 +199,8 @@ class Compressor():
         if gain_reduction != self.old_compressor_gain_reduction:
             self.old_compressor_gain_reduction = gain_reduction
 
-            self.ui_compressor_gain_reduction_levelbar.set_value(
-                gain_reduction)
-            self.ui_compressor_gain_reduction_level_label.set_text(
+            self.ui_gain_reduction_levelbar.set_value(gain_reduction)
+            self.ui_gain_reduction_level_label.set_text(
                 str(round(gain_reduction)))
 
     def reset(self):
