@@ -35,15 +35,15 @@ class Compressor():
     def build_compressor_bin(self):
         self.compressor = Gst.ElementFactory.make(
             'ladspa-sc4-1882-so-sc4', None)
-        compressor_input_level = Gst.ElementFactory.make(
-            'level', 'compressor_input_level')
-        compressor_output_level = Gst.ElementFactory.make(
-            'level', 'compressor_output_level')
+        input_level = Gst.ElementFactory.make('level',
+                                              'compressor_input_level')
+        output_level = Gst.ElementFactory.make('level',
+                                               'compressor_output_level')
 
         self.bin = GstInsertBin.InsertBin.new('compressor_bin')
         self.bin.append(self.compressor, self.on_filter_added, None)
-        self.bin.append(compressor_input_level, self.on_filter_added, None)
-        self.bin.append(compressor_output_level, self.on_filter_added, None)
+        self.bin.append(input_level, self.on_filter_added, None)
+        self.bin.append(output_level, self.on_filter_added, None)
 
     def load_ui(self):
         self.ui_window = self.builder.get_object('window')
