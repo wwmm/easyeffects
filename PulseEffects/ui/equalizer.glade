@@ -152,6 +152,7 @@
             <property name="halign">center</property>
             <property name="row_spacing">6</property>
             <property name="column_spacing">3</property>
+            <property name="column_homogeneous">True</property>
             <child>
               <object class="GtkButton" id="eq_flat_response_button">
                 <property name="label" translatable="yes">Flat Response</property>

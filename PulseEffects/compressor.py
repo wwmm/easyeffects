@@ -111,6 +111,9 @@ class Compressor():
 
         self.settings.bind('compressor-use-peak', self.ui_compressor_peak,
                            'active', flag)
+        self.settings.bind('compressor-use-peak', self.ui_compressor_rms,
+                           'active',
+                           flag | Gio.SettingsBindFlags.INVERT_BOOLEAN)
 
         self.settings.bind('compressor-attack', self.ui_attack, 'value', flag)
         self.settings.bind('compressor-release', self.ui_release, 'value',
@@ -139,9 +142,9 @@ class Compressor():
             label = obj.get_label()
 
             if label == 'rms':
-                self.compressor.set_property('rms-peak', False)
+                self.compressor.set_property('rms-peak', 0.0)
             elif label == 'peak':
-                self.compressor.set_property('rms-peak', True)
+                self.compressor.set_property('rms-peak', 1.0)
 
     def on_compressor_preset_clicked(self, obj):
         obj_id = Gtk.Buildable.get_name(obj)
@@ -175,16 +178,14 @@ class Compressor():
             widget_level_right_label.set_text('-99')
 
     def ui_update_compressor_input_level(self, peak):
-        widgets = [self.ui_input_level_left,
-                   self.ui_input_level_right,
+        widgets = [self.ui_input_level_left, self.ui_input_level_right,
                    self.ui_input_level_left_label,
                    self.ui_input_level_right_label]
 
         self.ui_update_level(widgets, peak)
 
     def ui_update_compressor_output_level(self, peak):
-        widgets = [self.ui_output_level_left,
-                   self.ui_output_level_right,
+        widgets = [self.ui_output_level_left, self.ui_output_level_right,
                    self.ui_output_level_left_label,
                    self.ui_output_level_right_label]
 
