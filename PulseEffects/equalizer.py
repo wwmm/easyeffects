@@ -182,37 +182,14 @@ class Equalizer():
         self.qfactors = self.settings.get_value(
             'equalizer-qfactors').unpack()
 
-        self.ui_band0_f.set_text('{0:g}'.format(self.freqs[0]))
-        self.ui_band1_f.set_text('{0:g}'.format(self.freqs[1]))
-        self.ui_band2_f.set_text('{0:g}'.format(self.freqs[2]))
-        self.ui_band3_f.set_text('{0:g}'.format(self.freqs[3]))
-        self.ui_band4_f.set_text('{0:g}'.format(self.freqs[4]))
-        self.ui_band5_f.set_text('{0:g}'.format(self.freqs[5]))
-        self.ui_band6_f.set_text('{0:g}'.format(self.freqs[6]))
-        self.ui_band7_f.set_text('{0:g}'.format(self.freqs[7]))
-        self.ui_band8_f.set_text('{0:g}'.format(self.freqs[8]))
-        self.ui_band9_f.set_text('{0:g}'.format(self.freqs[9]))
-        self.ui_band10_f.set_text('{0:g}'.format(self.freqs[10]))
-        self.ui_band11_f.set_text('{0:g}'.format(self.freqs[11]))
-        self.ui_band12_f.set_text('{0:g}'.format(self.freqs[12]))
-        self.ui_band13_f.set_text('{0:g}'.format(self.freqs[13]))
-        self.ui_band14_f.set_text('{0:g}'.format(self.freqs[14]))
+        for n in range(len(self.freqs)):
+            # init frequencies widgets
+            getattr(self, 'ui_band' + str(n) + '_f').set_text(
+                '{0:g}'.format(self.freqs[n]))
 
-        self.ui_band0_q.set_text(str(self.qfactors[0]))
-        self.ui_band1_q.set_text(str(self.qfactors[1]))
-        self.ui_band2_q.set_text(str(self.qfactors[2]))
-        self.ui_band3_q.set_text(str(self.qfactors[3]))
-        self.ui_band4_q.set_text(str(self.qfactors[4]))
-        self.ui_band5_q.set_text(str(self.qfactors[5]))
-        self.ui_band6_q.set_text(str(self.qfactors[6]))
-        self.ui_band7_q.set_text(str(self.qfactors[7]))
-        self.ui_band8_q.set_text(str(self.qfactors[8]))
-        self.ui_band9_q.set_text(str(self.qfactors[9]))
-        self.ui_band10_q.set_text(str(self.qfactors[10]))
-        self.ui_band11_q.set_text(str(self.qfactors[11]))
-        self.ui_band12_q.set_text(str(self.qfactors[12]))
-        self.ui_band13_q.set_text(str(self.qfactors[13]))
-        self.ui_band14_q.set_text(str(self.qfactors[14]))
+            # init quality factors widgets
+            getattr(self, 'ui_band' + str(n) + '_q').set_text(
+                str(self.qfactors[n]))
 
         # pipeline
 
@@ -298,7 +275,7 @@ class Equalizer():
         print(self.eq_band14.get_property('bandwidth'))
 
     def apply_eq_preset(self, values):
-        for n in range(15):
+        for n in range(len(values)):
             getattr(self, 'ui_band' + str(n)).set_value(values[n])
 
     def save_eq_user(self, idx, value):
