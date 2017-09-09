@@ -298,38 +298,8 @@ class Equalizer():
         print(self.eq_band14.get_property('bandwidth'))
 
     def apply_eq_preset(self, values):
-        self.ui_band0.set_value(values[0])
-        self.ui_band1.set_value(values[1])
-        self.ui_band2.set_value(values[2])
-        self.ui_band3.set_value(values[3])
-        self.ui_band4.set_value(values[4])
-        self.ui_band5.set_value(values[5])
-        self.ui_band6.set_value(values[6])
-        self.ui_band7.set_value(values[7])
-        self.ui_band8.set_value(values[8])
-        self.ui_band9.set_value(values[9])
-        self.ui_band10.set_value(values[10])
-        self.ui_band11.set_value(values[11])
-        self.ui_band12.set_value(values[12])
-        self.ui_band13.set_value(values[13])
-        self.ui_band14.set_value(values[14])
-
-        # we need this when on value changed is not called
-        self.eq_band0.set_property('gain', values[0])
-        self.eq_band1.set_property('gain', values[1])
-        self.eq_band2.set_property('gain', values[2])
-        self.eq_band3.set_property('gain', values[3])
-        self.eq_band4.set_property('gain', values[4])
-        self.eq_band5.set_property('gain', values[5])
-        self.eq_band6.set_property('gain', values[6])
-        self.eq_band7.set_property('gain', values[7])
-        self.eq_band8.set_property('gain', values[8])
-        self.eq_band9.set_property('gain', values[9])
-        self.eq_band10.set_property('gain', values[10])
-        self.eq_band11.set_property('gain', values[11])
-        self.eq_band12.set_property('gain', values[12])
-        self.eq_band13.set_property('gain', values[13])
-        self.eq_band14.set_property('gain', values[14])
+        for n in range(15):
+            getattr(self, 'ui_band' + str(n)).set_value(values[n])
 
     def save_eq_user(self, idx, value):
         self.eq_band_user[idx] = value
