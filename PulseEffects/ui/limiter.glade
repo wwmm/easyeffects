@@ -33,26 +33,23 @@
     <property name="page_increment">0.10000000000000001</property>
     <signal name="value-changed" handler="on_autovolume_window_value_changed" swapped="no"/>
   </object>
-  <object class="GtkAdjustment" id="limiter_input_gain_adjustment">
+  <object class="GtkAdjustment" id="input_gain_adjustment">
     <property name="lower">-20</property>
     <property name="upper">20</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_limiter_input_gain_value_changed" swapped="no"/>
   </object>
-  <object class="GtkAdjustment" id="limiter_limit_adjustment">
+  <object class="GtkAdjustment" id="limit_adjustment">
     <property name="lower">-20</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_limiter_limit_value_changed" swapped="no"/>
   </object>
-  <object class="GtkAdjustment" id="limiter_release_time_adjustment">
+  <object class="GtkAdjustment" id="release_time_adjustment">
     <property name="lower">0.01</property>
     <property name="upper">2</property>
     <property name="value">0.5</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.10000000000000001</property>
-    <signal name="value-changed" handler="on_limiter_release_time_value_changed" swapped="no"/>
   </object>
   <object class="GtkBox" id="window">
     <property name="visible">True</property>
@@ -134,11 +131,11 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkSpinButton" id="limiter_input_gain">
+                  <object class="GtkSpinButton" id="input_gain">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="input_purpose">number</property>
-                    <property name="adjustment">limiter_input_gain_adjustment</property>
+                    <property name="adjustment">input_gain_adjustment</property>
                     <property name="numeric">True</property>
                     <property name="update_policy">if-valid</property>
                   </object>
@@ -160,11 +157,11 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkSpinButton" id="limiter_limit">
+                  <object class="GtkSpinButton" id="limit">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="input_purpose">number</property>
-                    <property name="adjustment">limiter_limit_adjustment</property>
+                    <property name="adjustment">limit_adjustment</property>
                     <property name="numeric">True</property>
                     <property name="update_policy">if-valid</property>
                   </object>
@@ -174,12 +171,12 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkSpinButton" id="limiter_release_time">
+                  <object class="GtkSpinButton" id="release_time">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="width_chars">4</property>
                     <property name="input_purpose">number</property>
-                    <property name="adjustment">limiter_release_time_adjustment</property>
+                    <property name="adjustment">release_time_adjustment</property>
                     <property name="digits">2</property>
                     <property name="numeric">True</property>
                     <property name="update_policy">if-valid</property>
@@ -434,7 +431,7 @@
                 <property name="valign">center</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkLevelBar" id="limiter_input_level_left">
+                  <object class="GtkLevelBar" id="input_level_left">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hexpand">True</property>
@@ -446,7 +443,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLevelBar" id="limiter_input_level_right">
+                  <object class="GtkLevelBar" id="input_level_right">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hexpand">True</property>
@@ -465,7 +462,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="limiter_input_level_left_label">
+              <object class="GtkLabel" id="input_level_left_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -491,7 +488,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="limiter_input_level_right_label">
+              <object class="GtkLabel" id="input_level_right_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -535,7 +532,7 @@
                 <property name="valign">center</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkLevelBar" id="limiter_output_level_left">
+                  <object class="GtkLevelBar" id="output_level_left">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hexpand">True</property>
@@ -547,7 +544,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLevelBar" id="limiter_output_level_right">
+                  <object class="GtkLevelBar" id="output_level_right">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="hexpand">True</property>
@@ -566,7 +563,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="limiter_output_level_left_label">
+              <object class="GtkLabel" id="output_level_left_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -592,7 +589,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="limiter_output_level_right_label">
+              <object class="GtkLabel" id="output_level_right_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -630,7 +627,7 @@
             <property name="can_focus">False</property>
             <property name="hexpand">True</property>
             <child>
-              <object class="GtkLevelBar" id="limiter_attenuation_levelbar">
+              <object class="GtkLevelBar" id="attenuation_levelbar">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">center</property>
@@ -645,7 +642,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="limiter_attenuation_level_label">
+              <object class="GtkLabel" id="attenuation_level_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>

@@ -6,7 +6,7 @@ import gi
 gi.require_version('Gst', '1.0')
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, Gst, GstInsertBin, Gtk
+from gi.repository import Gio, GObject, Gst, GstInsertBin, Gtk
 
 Gst.init(None)
 
@@ -23,79 +23,69 @@ class Limiter():
         self.autovolume_tolerance = 1  # dB
         self.autovolume_threshold = -50  # autovolume only if avg > threshold
 
-        self.builder = Gtk.Builder()
-
-        self.builder.add_from_file(self.module_path + '/ui/limiter.glade')
-
-        self.build_limiter_bin()
-
+        self.build_bin()
         self.load_ui()
-
-        self.builder.connect_signals(self)
 
     def on_filter_added(self, bin, element, success, user_data):
         pass
 
-    def build_limiter_bin(self):
+    def build_bin(self):
         self.limiter = Gst.ElementFactory.make(
             'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter', None)
-        limiter_input_level = Gst.ElementFactory.make('level',
-                                                      'limiter_input_level')
-        limiter_output_level = Gst.ElementFactory.make('level',
-                                                       'limiter_output_level')
+        input_level = Gst.ElementFactory.make('level', 'limiter_input_level')
+        output_level = Gst.ElementFactory.make('level', 'limiter_output_level')
         self.autovolume_level = Gst.ElementFactory.make('level', 'autovolume')
 
         self.bin = GstInsertBin.InsertBin.new('limiter_bin')
         self.bin.append(self.limiter, self.on_filter_added, None)
-        self.bin.append(limiter_input_level, self.on_filter_added, None)
-        self.bin.append(limiter_output_level, self.on_filter_added, None)
+        self.bin.append(input_level, self.on_filter_added, None)
+        self.bin.append(output_level, self.on_filter_added, None)
         self.bin.append(self.autovolume_level, self.on_filter_added, None)
 
     def load_ui(self):
-        self.ui_window = self.builder.get_object('window')
+        self.builder = Gtk.Builder()
+        self.builder.add_from_file(self.module_path + '/ui/limiter.glade')
+        self.builder.connect_signals(self)
 
+        self.ui_window = self.builder.get_object('window')
         self.ui_limiter_controls = self.builder.get_object('limiter_controls')
+
         self.ui_autovolume_box = self.builder.get_object('autovolume_box')
         self.ui_autovolume_controls = self.builder.get_object(
             'autovolume_controls')
 
         self.ui_limiter_enable = self.builder.get_object('limiter_enable')
-        self.ui_limiter_input_gain = self.builder.get_object(
-            'limiter_input_gain')
-        self.ui_limiter_input_gain = self.builder.get_object(
-            'limiter_input_gain')
-        self.ui_limiter_limit = self.builder.get_object('limiter_limit')
-        self.ui_limiter_release_time = self.builder.get_object(
-            'limiter_release_time')
-        self.ui_limiter_attenuation_levelbar = self.builder.get_object(
-            'limiter_attenuation_levelbar')
+        self.ui_input_gain = self.builder.get_object('input_gain')
+        self.ui_limit = self.builder.get_object('limit')
+        self.ui_release_time = self.builder.get_object('release_time')
+        self.ui_attenuation_levelbar = self.builder.get_object(
+            'attenuation_levelbar')
 
-        self.ui_limiter_attenuation_levelbar.add_offset_value(
+        self.ui_attenuation_levelbar.add_offset_value(
             'GTK_LEVEL_BAR_OFFSET_LOW', 20)
-        self.ui_limiter_attenuation_levelbar.add_offset_value(
+        self.ui_attenuation_levelbar.add_offset_value(
             'GTK_LEVEL_BAR_OFFSET_HIGH', 50)
-        self.ui_limiter_attenuation_levelbar.add_offset_value(
+        self.ui_attenuation_levelbar.add_offset_value(
             'GTK_LEVEL_BAR_OFFSET_FULL', 70)
 
-        self.ui_limiter_input_level_left = self.builder.get_object(
-            'limiter_input_level_left')
-        self.ui_limiter_input_level_right = self.builder.get_object(
-            'limiter_input_level_right')
-        self.ui_limiter_output_level_left = self.builder.get_object(
-            'limiter_output_level_left')
-        self.ui_limiter_output_level_right = self.builder.get_object(
-            'limiter_output_level_right')
+        self.ui_input_level_left = self.builder.get_object('input_level_left')
+        self.ui_input_level_right = self.builder.get_object(
+            'input_level_right')
+        self.ui_output_level_left = self.builder.get_object(
+            'output_level_left')
+        self.ui_output_level_right = self.builder.get_object(
+            'output_level_right')
 
-        self.ui_limiter_input_level_left_label = self.builder.get_object(
-            'limiter_input_level_left_label')
-        self.ui_limiter_input_level_right_label = self.builder.get_object(
-            'limiter_input_level_right_label')
-        self.ui_limiter_output_level_left_label = self.builder.get_object(
-            'limiter_output_level_left_label')
-        self.ui_limiter_output_level_right_label = self.builder.get_object(
-            'limiter_output_level_right_label')
-        self.ui_limiter_attenuation_level_label = self.builder.get_object(
-            'limiter_attenuation_level_label')
+        self.ui_input_level_left_label = self.builder.get_object(
+            'input_level_left_label')
+        self.ui_input_level_right_label = self.builder.get_object(
+            'input_level_right_label')
+        self.ui_output_level_left_label = self.builder.get_object(
+            'output_level_left_label')
+        self.ui_output_level_right_label = self.builder.get_object(
+            'output_level_right_label')
+        self.ui_attenuation_level_label = self.builder.get_object(
+            'attenuation_level_label')
 
         self.ui_autovolume_enable = self.builder.get_object(
             'autovolume_enable')
@@ -109,34 +99,46 @@ class Limiter():
             'autovolume_threshold')
 
     def bind(self):
-        self.settings.bind('limiter-state', self.ui_limiter_enable,
-                           'active', Gio.SettingsBindFlags.DEFAULT)
+        # binding ui widgets to gstreamer plugins
+
+        flag = GObject.BindingFlags.DEFAULT
+
+        self.ui_input_gain.bind_property('value', self.limiter, 'input-gain',
+                                         flag)
+        self.ui_limit.bind_property('value', self.limiter, 'limit', flag)
+        self.ui_release_time.bind_property('value', self.limiter,
+                                           'release-time', flag)
+        self.ui_autovolume_enable.bind_property('active',
+                                                self.autovolume_level,
+                                                'post-messages', flag)
+
+        # binding ui widgets to gstreamer plugins
+
+        flag = GObject.BindingFlags.DEFAULT
+
+        self.settings.bind('limiter-state', self.ui_limiter_enable, 'active',
+                           flag)
         self.settings.bind('limiter-state', self.ui_autovolume_box,
                            'sensitive', Gio.SettingsBindFlags.GET)
-        self.settings.bind('limiter-input-gain', self.ui_limiter_input_gain,
-                           'value', Gio.SettingsBindFlags.DEFAULT)
-        self.settings.bind('limiter-limit', self.ui_limiter_limit,
-                           'value', Gio.SettingsBindFlags.DEFAULT)
-        self.settings.bind('limiter-release-time',
-                           self.ui_limiter_release_time,
-                           'value', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('limiter-input-gain', self.ui_input_gain, 'value',
+                           flag)
+        self.settings.bind('limiter-limit', self.ui_limit, 'value', flag)
+        self.settings.bind('limiter-release-time', self.ui_release_time,
+                           'value', flag)
 
         self.settings.bind('autovolume-state', self.ui_autovolume_enable,
-                           'active', Gio.SettingsBindFlags.DEFAULT)
+                           'active', flag)
         self.settings.bind('autovolume-state', self.ui_autovolume_controls,
                            'sensitive', Gio.SettingsBindFlags.GET)
-        self.settings.bind('autovolume-state', self.autovolume_level,
-                           'post-messages', Gio.SettingsBindFlags.DEFAULT)
+
         self.settings.bind('autovolume-window', self.ui_autovolume_window,
-                           'value', Gio.SettingsBindFlags.DEFAULT)
+                           'value', flag)
         self.settings.bind('autovolume-target', self.ui_autovolume_target,
-                           'value', Gio.SettingsBindFlags.DEFAULT)
+                           'value', flag)
         self.settings.bind('autovolume-tolerance',
-                           self.ui_autovolume_tolerance,
-                           'value', Gio.SettingsBindFlags.DEFAULT)
+                           self.ui_autovolume_tolerance, 'value', flag)
         self.settings.bind('autovolume-threshold',
-                           self.ui_autovolume_threshold,
-                           'value', Gio.SettingsBindFlags.DEFAULT)
+                           self.ui_autovolume_threshold, 'value', flag)
 
     def on_limiter_enable_state_set(self, obj, state):
         autovolume_enabled = self.settings.get_value(
@@ -149,15 +151,6 @@ class Limiter():
         else:
             self.ui_limiter_controls.set_sensitive(False)
 
-    def on_limiter_input_gain_value_changed(self, obj):
-        self.limiter.set_property('input-gain', obj.get_value())
-
-    def on_limiter_limit_value_changed(self, obj):
-        self.limiter.set_property('limit', obj.get_value())
-
-    def on_limiter_release_time_value_changed(self, obj):
-        self.limiter.set_property('release-time', obj.get_value())
-
     def enable_autovolume(self, state):
         if state:
             window = self.settings.get_value('autovolume-window').unpack()
@@ -165,15 +158,15 @@ class Limiter():
             tolerance = self.settings.get_value(
                 'autovolume-tolerance').unpack()
 
-            self.ui_limiter_input_gain.set_value(-10)
-            self.ui_limiter_limit.set_value(target + tolerance)
-            self.ui_limiter_release_time.set_value(window)
+            self.ui_input_gain.set_value(-10)
+            self.ui_limit.set_value(target + tolerance)
+            self.ui_release_time.set_value(window)
 
             self.ui_limiter_controls.set_sensitive(False)
         else:
-            self.ui_limiter_input_gain.set_value(-10)
-            self.ui_limiter_limit.set_value(0)
-            self.ui_limiter_release_time.set_value(1.0)
+            self.ui_input_gain.set_value(-10)
+            self.ui_limit.set_value(0)
+            self.ui_release_time.set_value(1.0)
 
             self.ui_limiter_controls.set_sensitive(True)
 
@@ -186,7 +179,7 @@ class Limiter():
         # value must be in seconds
         self.autovolume_level.set_property('interval', int(value * 1000000000))
 
-        self.ui_limiter_release_time.set_value(value)
+        self.ui_release_time.set_value(value)
 
     def on_autovolume_target_value_changed(self, obj):
         value = obj.get_value()
@@ -195,7 +188,7 @@ class Limiter():
 
         tolerance = self.settings.get_value('autovolume-tolerance').unpack()
 
-        self.ui_limiter_limit.set_value(value + tolerance)
+        self.ui_limit.set_value(value + tolerance)
 
     def on_autovolume_tolerance_value_changed(self, obj):
         value = obj.get_value()
@@ -204,7 +197,7 @@ class Limiter():
 
         target = self.settings.get_value('autovolume-target').unpack()
 
-        self.ui_limiter_limit.set_value(target + value)
+        self.ui_limit.set_value(target + value)
 
     def on_autovolume_threshold_value_changed(self, obj):
         self.autovolume_threshold = obj.get_value()
@@ -218,14 +211,14 @@ class Limiter():
             if gain - 1 >= -20:
                 gain = gain - 1
 
-                self.ui_limiter_input_gain.set_value(gain)
+                self.ui_input_gain.set_value(gain)
         elif max_value < self.autovolume_target - self.autovolume_tolerance:
             gain = self.limiter.get_property('input-gain')
 
             if gain + 1 <= 20:
                 gain = gain + 1
 
-                self.ui_limiter_input_gain.set_value(gain)
+                self.ui_input_gain.set_value(gain)
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]
@@ -252,18 +245,16 @@ class Limiter():
             widget_level_right_label.set_text('-99')
 
     def ui_update_limiter_input_level(self, peak):
-        widgets = [self.ui_limiter_input_level_left,
-                   self.ui_limiter_input_level_right,
-                   self.ui_limiter_input_level_left_label,
-                   self.ui_limiter_input_level_right_label]
+        widgets = [self.ui_input_level_left, self.ui_input_level_right,
+                   self.ui_input_level_left_label,
+                   self.ui_input_level_right_label]
 
         self.ui_update_level(widgets, peak)
 
     def ui_update_limiter_output_level(self, peak):
-        widgets = [self.ui_limiter_output_level_left,
-                   self.ui_limiter_output_level_right,
-                   self.ui_limiter_output_level_left_label,
-                   self.ui_limiter_output_level_right_label]
+        widgets = [self.ui_output_level_left, self.ui_output_level_right,
+                   self.ui_output_level_left_label,
+                   self.ui_output_level_right_label]
 
         self.ui_update_level(widgets, peak)
 
@@ -272,9 +263,8 @@ class Limiter():
         if attenuation != self.old_limiter_attenuation:
             self.old_limiter_attenuation = attenuation
 
-            self.ui_limiter_attenuation_levelbar.set_value(attenuation)
-            self.ui_limiter_attenuation_level_label.set_text(
-                str(round(attenuation)))
+            self.ui_attenuation_levelbar.set_value(attenuation)
+            self.ui_attenuation_level_label.set_text(str(round(attenuation)))
 
     def reset(self):
         self.settings.reset('limiter-state')
