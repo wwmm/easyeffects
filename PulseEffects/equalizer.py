@@ -6,7 +6,7 @@ import gi
 gi.require_version('Gst', '1.0')
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, GLib, Gst, GstInsertBin, Gtk
+from gi.repository import Gio, GObject, GLib, Gst, GstInsertBin, Gtk
 from PulseEffectsCalibration.application import Application as Calibration
 
 
@@ -19,20 +19,19 @@ class Equalizer():
         self.settings = settings
         self.module_path = os.path.dirname(__file__)
 
-        self.build_equalizer_bin()
+        self.build_bin()
         self.load_ui()
 
     def on_filter_added(self, bin, element, success, user_data):
         pass
 
-    def build_equalizer_bin(self):
-        self.equalizer_input_gain = Gst.ElementFactory.make('volume', None)
-        self.equalizer_output_gain = Gst.ElementFactory.make('volume', None)
+    def build_bin(self):
+        self.input_gain = Gst.ElementFactory.make('volume', None)
+        self.output_gain = Gst.ElementFactory.make('volume', None)
         equalizer = Gst.ElementFactory.make('equalizer-nbands', None)
-        equalizer_input_level = Gst.ElementFactory.make(
-            'level', 'equalizer_input_level')
-        equalizer_output_level = Gst.ElementFactory.make(
-            'level', 'equalizer_output_level')
+        input_level = Gst.ElementFactory.make('level', 'equalizer_input_level')
+        output_level = Gst.ElementFactory.make('level',
+                                               'equalizer_output_level')
 
         equalizer.set_property('num-bands', 15)
 
@@ -62,11 +61,11 @@ class Equalizer():
 
         self.bin = GstInsertBin.InsertBin.new('equalizer_bin')
 
-        self.bin.append(self.equalizer_input_gain, self.on_filter_added, None)
-        self.bin.append(equalizer_input_level, self.on_filter_added, None)
+        self.bin.append(self.input_gain, self.on_filter_added, None)
+        self.bin.append(input_level, self.on_filter_added, None)
         self.bin.append(equalizer, self.on_filter_added, None)
-        self.bin.append(self.equalizer_output_gain, self.on_filter_added, None)
-        self.bin.append(equalizer_output_level, self.on_filter_added, None)
+        self.bin.append(self.output_gain, self.on_filter_added, None)
+        self.bin.append(output_level, self.on_filter_added, None)
 
     def load_ui(self):
         self.builder = Gtk.Builder()
@@ -79,10 +78,8 @@ class Equalizer():
 
         self.ui_equalizer_enable = self.builder.get_object('equalizer_enable')
 
-        self.ui_equalizer_input_gain = self.builder.get_object(
-            'equalizer_input_gain')
-        self.ui_equalizer_output_gain = self.builder.get_object(
-            'equalizer_output_gain')
+        self.ui_input_gain = self.builder.get_object('input_gain')
+        self.ui_output_gain = self.builder.get_object('output_gain')
 
         self.ui_band0 = self.builder.get_object('eq_band0')
         self.ui_band1 = self.builder.get_object('eq_band1')
@@ -154,16 +151,25 @@ class Equalizer():
             'equalizer_output_level_right_label')
 
     def bind(self):
+        # binding ui widgets to gstreamer plugins
+
+        flag = GObject.BindingFlags.DEFAULT
+
+        # self.ui_attack.bind_property('value', self.compressor, 'attack-time',
+        #                              flag)
+
+        # binding ui widgets to gsettings
+
+        flag = Gio.SettingsBindFlags.DEFAULT
+
         self.settings.bind('equalizer-state', self.ui_equalizer_enable,
-                           'active', Gio.SettingsBindFlags.DEFAULT)
+                           'active', flag)
         self.settings.bind('equalizer-state', self.ui_equalizer_controls,
                            'sensitive', Gio.SettingsBindFlags.GET)
-        self.settings.bind('equalizer-input-gain',
-                           self.ui_equalizer_input_gain, 'value',
-                           Gio.SettingsBindFlags.GET)
-        self.settings.bind('equalizer-output-gain',
-                           self.ui_equalizer_output_gain, 'value',
-                           Gio.SettingsBindFlags.GET)
+        self.settings.bind('equalizer-input-gain', self.ui_input_gain, 'value',
+                           flag)
+        self.settings.bind('equalizer-output-gain', self.ui_output_gain,
+                           'value', flag)
 
     def init_ui(self):
         self.eq_band_user = self.settings.get_value('equalizer-user').unpack()
@@ -333,17 +339,17 @@ class Equalizer():
 
         self.settings.set_value('equalizer-user', out)
 
-    def on_equalizer_input_gain_value_changed(self, obj):
+    def on_input_gain_value_changed(self, obj):
         value_db = obj.get_value()
         value_linear = 10**(value_db / 20.0)
 
-        self.equalizer_input_gain.set_property('volume', value_linear)
+        self.input_gain.set_property('volume', value_linear)
 
-    def on_equalizer_output_gain_value_changed(self, obj):
+    def on_output_gain_value_changed(self, obj):
         value_db = obj.get_value()
         value_linear = 10**(value_db / 20.0)
 
-        self.equalizer_output_gain.set_property('volume', value_linear)
+        self.output_gain.set_property('volume', value_linear)
 
     def on_eq_band0_value_changed(self, obj):
         value = obj.get_value()
