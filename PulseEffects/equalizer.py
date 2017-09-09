@@ -191,54 +191,62 @@ class Equalizer():
             getattr(self, 'ui_band' + str(n) + '_q').set_text(
                 str(self.qfactors[n]))
 
+            # init plugin properties
+            getattr(self, 'eq_band' + str(n)).set_property(
+                'freq', self.freqs[n])
+
+            w = self.freqs[n] / self.qfactors[n]
+
+            getattr(self, 'eq_band' + str(n)).set_property('bandwidth', w)
+
         # pipeline
 
-        self.eq_band0.set_property('freq', self.freqs[0])
-        self.eq_band1.set_property('freq', self.freqs[1])
-        self.eq_band2.set_property('freq', self.freqs[2])
-        self.eq_band3.set_property('freq', self.freqs[3])
-        self.eq_band4.set_property('freq', self.freqs[4])
-        self.eq_band5.set_property('freq', self.freqs[5])
-        self.eq_band6.set_property('freq', self.freqs[6])
-        self.eq_band7.set_property('freq', self.freqs[7])
-        self.eq_band8.set_property('freq', self.freqs[8])
-        self.eq_band9.set_property('freq', self.freqs[9])
-        self.eq_band10.set_property('freq', self.freqs[10])
-        self.eq_band11.set_property('freq', self.freqs[11])
-        self.eq_band12.set_property('freq', self.freqs[12])
-        self.eq_band13.set_property('freq', self.freqs[13])
-        self.eq_band14.set_property('freq', self.freqs[14])
+        # self.eq_band0.set_property('freq', self.freqs[0])
+        # self.eq_band1.set_property('freq', self.freqs[1])
+        # self.eq_band2.set_property('freq', self.freqs[2])
+        # self.eq_band3.set_property('freq', self.freqs[3])
+        # self.eq_band4.set_property('freq', self.freqs[4])
+        # self.eq_band5.set_property('freq', self.freqs[5])
+        # self.eq_band6.set_property('freq', self.freqs[6])
+        # self.eq_band7.set_property('freq', self.freqs[7])
+        # self.eq_band8.set_property('freq', self.freqs[8])
+        # self.eq_band9.set_property('freq', self.freqs[9])
+        # self.eq_band10.set_property('freq', self.freqs[10])
+        # self.eq_band11.set_property('freq', self.freqs[11])
+        # self.eq_band12.set_property('freq', self.freqs[12])
+        # self.eq_band13.set_property('freq', self.freqs[13])
+        # self.eq_band14.set_property('freq', self.freqs[14])
 
-        self.eq_band0.set_property('bandwidth',
-                                   self.freqs[0] / self.qfactors[0])
-        self.eq_band1.set_property('bandwidth',
-                                   self.freqs[1] / self.qfactors[1])
-        self.eq_band2.set_property('bandwidth',
-                                   self.freqs[2] / self.qfactors[2])
-        self.eq_band3.set_property('bandwidth',
-                                   self.freqs[3] / self.qfactors[3])
-        self.eq_band4.set_property('bandwidth',
-                                   self.freqs[4] / self.qfactors[4])
-        self.eq_band5.set_property('bandwidth',
-                                   self.freqs[5] / self.qfactors[5])
-        self.eq_band6.set_property('bandwidth',
-                                   self.freqs[6] / self.qfactors[6])
-        self.eq_band7.set_property('bandwidth',
-                                   self.freqs[7] / self.qfactors[7])
-        self.eq_band8.set_property('bandwidth',
-                                   self.freqs[8] / self.qfactors[8])
-        self.eq_band9.set_property('bandwidth',
-                                   self.freqs[9] / self.qfactors[9])
-        self.eq_band10.set_property('bandwidth',
-                                    self.freqs[10] / self.qfactors[10])
-        self.eq_band11.set_property('bandwidth',
-                                    self.freqs[11] / self.qfactors[11])
-        self.eq_band12.set_property('bandwidth',
-                                    self.freqs[12] / self.qfactors[12])
-        self.eq_band13.set_property('bandwidth',
-                                    self.freqs[13] / self.qfactors[13])
-        self.eq_band14.set_property('bandwidth',
-                                    self.freqs[14] / self.qfactors[14])
+        # self.eq_band0.set_property('bandwidth',
+        #                            self.freqs[0] / self.qfactors[0])
+        # self.eq_band1.set_property('bandwidth',
+        #                            self.freqs[1] / self.qfactors[1])
+        # self.eq_band2.set_property('bandwidth',
+        #                            self.freqs[2] / self.qfactors[2])
+        # self.eq_band3.set_property('bandwidth',
+        #                            self.freqs[3] / self.qfactors[3])
+        # self.eq_band4.set_property('bandwidth',
+        #                            self.freqs[4] / self.qfactors[4])
+        # self.eq_band5.set_property('bandwidth',
+        #                            self.freqs[5] / self.qfactors[5])
+        # self.eq_band6.set_property('bandwidth',
+        #                            self.freqs[6] / self.qfactors[6])
+        # self.eq_band7.set_property('bandwidth',
+        #                            self.freqs[7] / self.qfactors[7])
+        # self.eq_band8.set_property('bandwidth',
+        #                            self.freqs[8] / self.qfactors[8])
+        # self.eq_band9.set_property('bandwidth',
+        #                            self.freqs[9] / self.qfactors[9])
+        # self.eq_band10.set_property('bandwidth',
+        #                             self.freqs[10] / self.qfactors[10])
+        # self.eq_band11.set_property('bandwidth',
+        #                             self.freqs[11] / self.qfactors[11])
+        # self.eq_band12.set_property('bandwidth',
+        #                             self.freqs[12] / self.qfactors[12])
+        # self.eq_band13.set_property('bandwidth',
+        #                             self.freqs[13] / self.qfactors[13])
+        # self.eq_band14.set_property('bandwidth',
+        #                             self.freqs[14] / self.qfactors[14])
 
     def print_eq_freqs(self):
         print(self.eq_band0.get_property('freq'))
