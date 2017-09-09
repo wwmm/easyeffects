@@ -2,105 +2,105 @@
 <!-- Generated with glade 3.20.0 -->
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.20"/>
-  <object class="GtkAdjustment" id="eq_band0">
+  <object class="GtkAdjustment" id="band0_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band0_value_changed" swapped="no"/>
   </object>
-  <object class="GtkAdjustment" id="eq_band1">
-    <property name="lower">-24</property>
-    <property name="upper">12</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_eq_band1_value_changed" swapped="no"/>
-  </object>
-  <object class="GtkAdjustment" id="eq_band10">
+  <object class="GtkAdjustment" id="band10_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band10_value_changed" swapped="no"/>
   </object>
-  <object class="GtkAdjustment" id="eq_band11">
+  <object class="GtkAdjustment" id="band11_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band11_value_changed" swapped="no"/>
   </object>
-  <object class="GtkAdjustment" id="eq_band12">
+  <object class="GtkAdjustment" id="band12_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band12_value_changed" swapped="no"/>
   </object>
-  <object class="GtkAdjustment" id="eq_band13">
+  <object class="GtkAdjustment" id="band13_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band13_value_changed" swapped="no"/>
   </object>
-  <object class="GtkAdjustment" id="eq_band14">
+  <object class="GtkAdjustment" id="band14_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band14_value_changed" swapped="no"/>
   </object>
-  <object class="GtkAdjustment" id="eq_band2">
+  <object class="GtkAdjustment" id="band1_g">
+    <property name="lower">-24</property>
+    <property name="upper">12</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_eq_band1_value_changed" swapped="no"/>
+  </object>
+  <object class="GtkAdjustment" id="band2_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band2_value_changed" swapped="no"/>
   </object>
-  <object class="GtkAdjustment" id="eq_band3">
+  <object class="GtkAdjustment" id="band3_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band3_value_changed" swapped="no"/>
   </object>
-  <object class="GtkAdjustment" id="eq_band4">
+  <object class="GtkAdjustment" id="band4_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band4_value_changed" swapped="no"/>
   </object>
-  <object class="GtkAdjustment" id="eq_band5">
+  <object class="GtkAdjustment" id="band5_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band5_value_changed" swapped="no"/>
   </object>
-  <object class="GtkAdjustment" id="eq_band6">
+  <object class="GtkAdjustment" id="band6_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band6_value_changed" swapped="no"/>
   </object>
-  <object class="GtkAdjustment" id="eq_band7">
+  <object class="GtkAdjustment" id="band7_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band7_value_changed" swapped="no"/>
   </object>
-  <object class="GtkAdjustment" id="eq_band8">
+  <object class="GtkAdjustment" id="band8_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_eq_band8_value_changed" swapped="no"/>
   </object>
-  <object class="GtkAdjustment" id="eq_band9">
+  <object class="GtkAdjustment" id="band9_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
@@ -225,7 +225,7 @@
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">eq_band0</property>
+                <property name="adjustment">band0_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
@@ -243,7 +243,7 @@
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">eq_band1</property>
+                <property name="adjustment">band1_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
@@ -261,7 +261,7 @@
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">eq_band2</property>
+                <property name="adjustment">band2_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
@@ -279,7 +279,7 @@
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">eq_band3</property>
+                <property name="adjustment">band3_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
@@ -297,7 +297,7 @@
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">eq_band4</property>
+                <property name="adjustment">band4_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
@@ -315,7 +315,7 @@
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">eq_band5</property>
+                <property name="adjustment">band5_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
@@ -333,7 +333,7 @@
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">eq_band6</property>
+                <property name="adjustment">band6_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
@@ -351,7 +351,7 @@
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">eq_band7</property>
+                <property name="adjustment">band7_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
@@ -369,7 +369,7 @@
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">eq_band8</property>
+                <property name="adjustment">band8_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
@@ -387,7 +387,7 @@
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">eq_band9</property>
+                <property name="adjustment">band9_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
@@ -405,7 +405,7 @@
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">eq_band10</property>
+                <property name="adjustment">band10_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
@@ -423,7 +423,7 @@
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">eq_band11</property>
+                <property name="adjustment">band11_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">1</property>
                 <property name="digits">0</property>
@@ -441,7 +441,7 @@
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">eq_band12</property>
+                <property name="adjustment">band12_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
@@ -459,7 +459,7 @@
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">eq_band13</property>
+                <property name="adjustment">band13_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
@@ -477,7 +477,7 @@
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">eq_band14</property>
+                <property name="adjustment">band14_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
