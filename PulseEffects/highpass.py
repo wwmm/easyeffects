@@ -6,7 +6,7 @@ import gi
 gi.require_version('Gst', '1.0')
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, Gst, GstInsertBin, Gtk
+from gi.repository import Gio, GObject, Gst, GstInsertBin, Gtk
 
 Gst.init(None)
 
@@ -21,7 +21,7 @@ class Highpass():
 
         self.builder.add_from_file(self.module_path + '/ui/highpass.glade')
 
-        self.build_highpass_bin()
+        self.build_bin()
 
         self.load_ui()
 
@@ -30,12 +30,11 @@ class Highpass():
     def on_filter_added(self, bin, element, success, user_data):
         pass
 
-    def build_highpass_bin(self):
+    def build_bin(self):
         self.highpass = Gst.ElementFactory.make('audiocheblimit', None)
-        highpass_input_level = Gst.ElementFactory.make('level',
-                                                       'highpass_input_level')
-        highpass_output_level = Gst.ElementFactory.make(
-            'level', 'highpass_output_level')
+        input_level = Gst.ElementFactory.make('level', 'highpass_input_level')
+        output_level = Gst.ElementFactory.make('level',
+                                               'highpass_output_level')
 
         self.highpass.set_property('mode', 'high-pass')
         self.highpass.set_property('type', 1)
@@ -43,51 +42,53 @@ class Highpass():
 
         self.bin = GstInsertBin.InsertBin.new('highpass_bin')
         self.bin.append(self.highpass, self.on_filter_added, None)
-        self.bin.append(highpass_input_level, self.on_filter_added, None)
-        self.bin.append(highpass_output_level, self.on_filter_added, None)
+        self.bin.append(input_level, self.on_filter_added, None)
+        self.bin.append(output_level, self.on_filter_added, None)
 
     def load_ui(self):
         self.ui_window = self.builder.get_object('window')
+        self.ui_controls = self.builder.get_object('controls')
 
-        self.ui_highpass_controls = self.builder.get_object(
-            'highpass_controls')
+        self.ui_enable = self.builder.get_object('enable')
+        self.ui_cutoff = self.builder.get_object('cutoff')
+        self.ui_poles = self.builder.get_object('poles')
 
-        self.ui_highpass_enable = self.builder.get_object('highpass_enable')
-        self.ui_highpass_cutoff = self.builder.get_object('highpass_cutoff')
-        self.ui_highpass_poles = self.builder.get_object('highpass_poles')
+        self.ui_input_level_left = self.builder.get_object('input_level_left')
+        self.ui_input_level_right = self.builder.get_object(
+            'input_level_right')
+        self.ui_output_level_left = self.builder.get_object(
+            'output_level_left')
+        self.ui_output_level_right = self.builder.get_object(
+            'output_level_right')
 
-        self.ui_highpass_input_level_left = self.builder.get_object(
-            'highpass_input_level_left')
-        self.ui_highpass_input_level_right = self.builder.get_object(
-            'highpass_input_level_right')
-        self.ui_highpass_output_level_left = self.builder.get_object(
-            'highpass_output_level_left')
-        self.ui_highpass_output_level_right = self.builder.get_object(
-            'highpass_output_level_right')
-
-        self.ui_highpass_input_level_left_label = self.builder.get_object(
-            'highpass_input_level_left_label')
-        self.ui_highpass_input_level_right_label = self.builder.get_object(
-            'highpass_input_level_right_label')
-        self.ui_highpass_output_level_left_label = self.builder.get_object(
-            'highpass_output_level_left_label')
-        self.ui_highpass_output_level_right_label = self.builder.get_object(
-            'highpass_output_level_right_label')
+        self.ui_input_level_left_label = self.builder.get_object(
+            'input_level_left_label')
+        self.ui_input_level_right_label = self.builder.get_object(
+            'input_level_right_label')
+        self.ui_output_level_left_label = self.builder.get_object(
+            'output_level_left_label')
+        self.ui_output_level_right_label = self.builder.get_object(
+            'output_level_right_label')
 
     def bind(self):
-        self.settings.bind('highpass-state', self.ui_highpass_enable, 'active',
-                           Gio.SettingsBindFlags.DEFAULT)
-        self.settings.bind('highpass-state', self.ui_highpass_controls,
-                           'sensitive', Gio.SettingsBindFlags.GET)
-        self.settings.bind('highpass-cutoff', self.ui_highpass_cutoff,
-                           'value', Gio.SettingsBindFlags.DEFAULT)
-        self.settings.bind('highpass-poles', self.ui_highpass_poles,
-                           'value', Gio.SettingsBindFlags.DEFAULT)
-        self.settings.bind('highpass-poles', self.highpass, 'poles',
-                           Gio.SettingsBindFlags.DEFAULT)
+        # binding ui widgets to gstreamer plugins
 
-    def on_highpass_cutoff_value_changed(self, obj):
-        self.highpass.set_property('cutoff', obj.get_value())
+        flag = GObject.BindingFlags.DEFAULT
+
+        self.ui_cutoff.bind_property('value', self.highpass, 'cutoff', flag)
+        self.ui_poles.bind_property('value', self.highpass, 'poles', flag)
+
+        # binding ui widgets to gsettings
+
+        flag = Gio.SettingsBindFlags.DEFAULT
+
+        self.settings.bind('highpass-state', self.ui_enable, 'active', flag)
+        self.settings.bind('highpass-state', self.ui_controls,
+                           'sensitive', Gio.SettingsBindFlags.GET)
+        self.settings.bind('highpass-cutoff', self.ui_cutoff,
+                           'value', flag)
+        self.settings.bind('highpass-poles', self.ui_poles,
+                           'value', flag)
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]
@@ -114,18 +115,16 @@ class Highpass():
             widget_level_right_label.set_text('-99')
 
     def ui_update_highpass_input_level(self, peak):
-        widgets = [self.ui_highpass_input_level_left,
-                   self.ui_highpass_input_level_right,
-                   self.ui_highpass_input_level_left_label,
-                   self.ui_highpass_input_level_right_label]
+        widgets = [self.ui_input_level_left, self.ui_input_level_right,
+                   self.ui_input_level_left_label,
+                   self.ui_input_level_right_label]
 
         self.ui_update_level(widgets, peak)
 
     def ui_update_highpass_output_level(self, peak):
-        widgets = [self.ui_highpass_output_level_left,
-                   self.ui_highpass_output_level_right,
-                   self.ui_highpass_output_level_left_label,
-                   self.ui_highpass_output_level_right_label]
+        widgets = [self.ui_output_level_left, self.ui_output_level_right,
+                   self.ui_output_level_left_label,
+                   self.ui_output_level_right_label]
 
         self.ui_update_level(widgets, peak)
 
