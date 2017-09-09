@@ -77,8 +77,7 @@ class SourceOutputEffects(PipelineBase):
         self.reverb.ui_enable.connect('state-set', self.on_reverb_enable)
         self.highpass.ui_enable.connect('state-set', self.on_highpass_enable)
         self.lowpass.ui_enable.connect('state-set', self.on_lowpass_enable)
-        self.equalizer.ui_equalizer_enable.connect('state-set',
-                                                   self.on_equalizer_enable)
+        self.equalizer.ui_enable.connect('state-set', self.on_equalizer_enable)
 
         # order is important
 

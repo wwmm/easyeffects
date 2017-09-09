@@ -73,10 +73,9 @@ class Equalizer():
         self.builder.connect_signals(self)
 
         self.ui_window = self.builder.get_object('window')
-        self.ui_equalizer_controls = self.builder.get_object(
-            'equalizer_controls')
+        self.ui_controls = self.builder.get_object('controls')
 
-        self.ui_equalizer_enable = self.builder.get_object('equalizer_enable')
+        self.ui_enable = self.builder.get_object('enable')
 
         self.ui_input_gain = self.builder.get_object('input_gain')
         self.ui_output_gain = self.builder.get_object('output_gain')
@@ -162,9 +161,9 @@ class Equalizer():
 
         flag = Gio.SettingsBindFlags.DEFAULT
 
-        self.settings.bind('equalizer-state', self.ui_equalizer_enable,
+        self.settings.bind('equalizer-state', self.ui_enable,
                            'active', flag)
-        self.settings.bind('equalizer-state', self.ui_equalizer_controls,
+        self.settings.bind('equalizer-state', self.ui_controls,
                            'sensitive', Gio.SettingsBindFlags.GET)
         self.settings.bind('equalizer-input-gain', self.ui_input_gain, 'value',
                            flag)

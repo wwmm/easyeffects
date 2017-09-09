@@ -127,7 +127,7 @@
     <property name="orientation">vertical</property>
     <property name="spacing">3</property>
     <child>
-      <object class="GtkSwitch" id="equalizer_enable">
+      <object class="GtkSwitch" id="enable">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="halign">center</property>
@@ -140,7 +140,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkBox" id="equalizer_controls">
+      <object class="GtkBox" id="controls">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
