@@ -489,7 +489,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band0_freq">
+              <object class="GtkEntry" id="band0_f">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -507,7 +507,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band1_freq">
+              <object class="GtkEntry" id="band1_f">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -525,7 +525,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band0_qfactor">
+              <object class="GtkEntry" id="band0_q">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -543,7 +543,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band1_qfactor">
+              <object class="GtkEntry" id="band1_q">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -589,7 +589,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band2_qfactor">
+              <object class="GtkEntry" id="band2_q">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -607,7 +607,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band3_qfactor">
+              <object class="GtkEntry" id="band3_q">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -625,7 +625,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band4_qfactor">
+              <object class="GtkEntry" id="band4_q">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -643,7 +643,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band5_qfactor">
+              <object class="GtkEntry" id="band5_q">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -661,7 +661,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band6_qfactor">
+              <object class="GtkEntry" id="band6_q">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -679,7 +679,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band7_qfactor">
+              <object class="GtkEntry" id="band7_q">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -697,7 +697,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band8_qfactor">
+              <object class="GtkEntry" id="band8_q">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -715,7 +715,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band9_qfactor">
+              <object class="GtkEntry" id="band9_q">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -733,7 +733,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band10_qfactor">
+              <object class="GtkEntry" id="band10_q">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -751,7 +751,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band11_qfactor">
+              <object class="GtkEntry" id="band11_q">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -769,7 +769,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band12_qfactor">
+              <object class="GtkEntry" id="band12_q">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -787,7 +787,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band13_qfactor">
+              <object class="GtkEntry" id="band13_q">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -805,7 +805,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band14_qfactor">
+              <object class="GtkEntry" id="band14_q">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -823,7 +823,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band2_freq">
+              <object class="GtkEntry" id="band2_f">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -841,7 +841,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band3_freq">
+              <object class="GtkEntry" id="band3_f">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -859,7 +859,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band4_freq">
+              <object class="GtkEntry" id="band4_f">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -877,7 +877,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band5_freq">
+              <object class="GtkEntry" id="band5_f">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -895,7 +895,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band6_freq">
+              <object class="GtkEntry" id="band6_f">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -913,7 +913,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band7_freq">
+              <object class="GtkEntry" id="band7_f">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -931,7 +931,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band8_freq">
+              <object class="GtkEntry" id="band8_f">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -949,7 +949,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band9_freq">
+              <object class="GtkEntry" id="band9_f">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -967,7 +967,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band10_freq">
+              <object class="GtkEntry" id="band10_f">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -985,7 +985,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band11_freq">
+              <object class="GtkEntry" id="band11_f">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -1003,7 +1003,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band12_freq">
+              <object class="GtkEntry" id="band12_f">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -1021,7 +1021,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band13_freq">
+              <object class="GtkEntry" id="band13_f">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -1039,7 +1039,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="eq_band14_freq">
+              <object class="GtkEntry" id="band14_f">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
