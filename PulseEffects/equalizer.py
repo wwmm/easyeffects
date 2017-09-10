@@ -205,80 +205,15 @@ class Equalizer():
 
         self.output_gain.set_property('volume', value_linear)
 
-    def on_eq_band0_value_changed(self, obj):
+    def on_band_gain_changed(self, obj):
+        obj_id = Gtk.Buildable.get_name(obj)
         value = obj.get_value()
-        self.eq_band0.set_property('gain', value)
-        self.save_eq_user(0, value)
 
-    def on_eq_band1_value_changed(self, obj):
-        value = obj.get_value()
-        self.eq_band1.set_property('gain', value)
-        self.save_eq_user(1, value)
+        # example glade id: band0_g
+        idx = int(obj_id.split('_')[0].split('d')[1])
 
-    def on_eq_band2_value_changed(self, obj):
-        value = obj.get_value()
-        self.eq_band2.set_property('gain', value)
-        self.save_eq_user(2, value)
-
-    def on_eq_band3_value_changed(self, obj):
-        value = obj.get_value()
-        self.eq_band3.set_property('gain', value)
-        self.save_eq_user(3, value)
-
-    def on_eq_band4_value_changed(self, obj):
-        value = obj.get_value()
-        self.eq_band4.set_property('gain', value)
-        self.save_eq_user(4, value)
-
-    def on_eq_band5_value_changed(self, obj):
-        value = obj.get_value()
-        self.eq_band5.set_property('gain', value)
-        self.save_eq_user(5, value)
-
-    def on_eq_band6_value_changed(self, obj):
-        value = obj.get_value()
-        self.eq_band6.set_property('gain', value)
-        self.save_eq_user(6, value)
-
-    def on_eq_band7_value_changed(self, obj):
-        value = obj.get_value()
-        self.eq_band7.set_property('gain', value)
-        self.save_eq_user(7, value)
-
-    def on_eq_band8_value_changed(self, obj):
-        value = obj.get_value()
-        self.eq_band8.set_property('gain', value)
-        self.save_eq_user(8, value)
-
-    def on_eq_band9_value_changed(self, obj):
-        value = obj.get_value()
-        self.eq_band9.set_property('gain', value)
-        self.save_eq_user(9, value)
-
-    def on_eq_band10_value_changed(self, obj):
-        value = obj.get_value()
-        self.eq_band10.set_property('gain', value)
-        self.save_eq_user(10, value)
-
-    def on_eq_band11_value_changed(self, obj):
-        value = obj.get_value()
-        self.eq_band11.set_property('gain', value)
-        self.save_eq_user(11, value)
-
-    def on_eq_band12_value_changed(self, obj):
-        value = obj.get_value()
-        self.eq_band12.set_property('gain', value)
-        self.save_eq_user(12, value)
-
-    def on_eq_band13_value_changed(self, obj):
-        value = obj.get_value()
-        self.eq_band13.set_property('gain', value)
-        self.save_eq_user(13, value)
-
-    def on_eq_band14_value_changed(self, obj):
-        value = obj.get_value()
-        self.eq_band14.set_property('gain', value)
-        self.save_eq_user(14, value)
+        getattr(self, 'eq_band' + str(idx)).set_property('gain', value)
+        self.save_eq_user(idx, value)
 
     def on_eq_freq_changed(self, obj):
         try:
