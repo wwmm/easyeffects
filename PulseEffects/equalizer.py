@@ -36,15 +36,15 @@ class Equalizer():
         equalizer.set_property('num-bands', 15)
 
         for n in range(15):
-            setattr(self, 'eq_band' + str(n), equalizer.get_child_by_index(n))
+            setattr(self, 'band' + str(n), equalizer.get_child_by_index(n))
 
         # It seems there is a bug in the low shelf filter.
         # When we increase the lower shelf gain higher frequencies
         # are attenuated. Setting the first band to peak type instead of
         # shelf fixes this.
 
-        self.eq_band0.set_property('type', 0)  # 0: peak type
-        self.eq_band14.set_property('type', 0)  # 0: peak type
+        self.band0.set_property('type', 0)  # 0: peak type
+        self.band14.set_property('type', 0)  # 0: peak type
 
         self.bin = GstInsertBin.InsertBin.new('equalizer_bin')
 
@@ -141,17 +141,17 @@ class Equalizer():
                 str(self.qfactors[n]))
 
             # init plugin properties
-            getattr(self, 'eq_band' + str(n)).set_property(
+            getattr(self, 'band' + str(n)).set_property(
                 'freq', self.freqs[n])
 
             w = self.freqs[n] / self.qfactors[n]
 
-            getattr(self, 'eq_band' + str(n)).set_property('bandwidth', w)
+            getattr(self, 'band' + str(n)).set_property('bandwidth', w)
 
     def print_eq_freqs_and_widths(self):
         for n in range(15):
-            f = getattr(self, 'eq_band' + str(n)).get_property('freq')
-            w = getattr(self, 'eq_band' + str(n)).get_property('bandwidth')
+            f = getattr(self, 'band' + str(n)).get_property('freq')
+            w = getattr(self, 'band' + str(n)).get_property('bandwidth')
 
             print(f, w)
 
@@ -185,7 +185,7 @@ class Equalizer():
         # example glade id: band0_g
         idx = int(obj_id.split('_')[0].split('d')[1])
 
-        getattr(self, 'eq_band' + str(idx)).set_property('gain', value)
+        getattr(self, 'band' + str(idx)).set_property('gain', value)
         self.save_eq_user(idx, value)
 
     def on_eq_freq_changed(self, obj):
@@ -197,7 +197,7 @@ class Equalizer():
             # example glade id: band0_f
             idx = int(obj_id.split('_')[0].split('d')[1])
 
-            band = getattr(self, 'eq_band' + str(idx))
+            band = getattr(self, 'band' + str(idx))
             band.set_property('freq', value)
             band.set_property('bandwidth', value / self.qfactors[idx])
 
@@ -217,7 +217,7 @@ class Equalizer():
             # example glade id: band0_q
             idx = int(obj_id.split('_')[0].split('d')[1])
 
-            band = getattr(self, 'eq_band' + str(idx))
+            band = getattr(self, 'band' + str(idx))
             band.set_property('bandwidth', self.freqs[idx] / value)
 
             self.qfactors[idx] = value
