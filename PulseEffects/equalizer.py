@@ -68,7 +68,7 @@ class Equalizer():
         self.ui_output_gain = self.builder.get_object('output_gain')
 
         for n in range(15):
-            setattr(self, 'ui_band' + str(n),
+            setattr(self, 'ui_band' + str(n) + '_g',
                     self.builder.get_object('band' + str(n) + '_g'))
 
             setattr(self, 'ui_band' + str(n) + '_f',
@@ -103,8 +103,9 @@ class Equalizer():
 
         flag = GObject.BindingFlags.DEFAULT
 
-        # self.ui_attack.bind_property('value', self.compressor, 'attack-time',
-        #                              flag)
+        for n in range(15):
+            getattr(self, 'ui_band' + str(n) + '_g').bind_property(
+                'value', getattr(self, 'band' + str(n)), 'gain', flag)
 
         # binding ui widgets to gsettings
 
@@ -119,11 +120,13 @@ class Equalizer():
         self.settings.bind('equalizer-output-gain', self.ui_output_gain,
                            'value', flag)
 
+        for n in range(15):
+            prop = 'equalizer-band' + str(n) + '-gain'
+            ui_band = getattr(self, 'ui_band' + str(n) + '_g')
+
+            self.settings.bind(prop, ui_band, 'value', flag)
+
     def init_ui(self):
-        self.eq_band_user = self.settings.get_value('equalizer-user').unpack()
-
-        self.apply_eq_preset(self.eq_band_user)
-
         self.init_eq_freq_and_qfactors()
 
     def init_eq_freq_and_qfactors(self):
@@ -155,10 +158,6 @@ class Equalizer():
 
             print(f, w)
 
-    def apply_eq_preset(self, values):
-        for n in range(len(values)):
-            getattr(self, 'ui_band' + str(n)).set_value(values[n])
-
     def save_eq_user(self, idx, value):
         self.eq_band_user[idx] = value
 
@@ -177,16 +176,6 @@ class Equalizer():
         value_linear = 10**(value_db / 20.0)
 
         self.output_gain.set_property('volume', value_linear)
-
-    def on_band_gain_changed(self, obj):
-        obj_id = Gtk.Buildable.get_name(obj)
-        value = obj.get_value()
-
-        # example glade id: band0_g
-        idx = int(obj_id.split('_')[0].split('d')[1])
-
-        getattr(self, 'band' + str(idx)).set_property('gain', value)
-        self.save_eq_user(idx, value)
 
     def on_eq_freq_changed(self, obj):
         try:
@@ -268,7 +257,8 @@ class Equalizer():
         self.ui_update_level(widgets, peak)
 
     def on_eq_flat_response_button_clicked(self, obj):
-        self.apply_eq_preset([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+        for n in range(15):
+            self.settings.reset('equalizer-band' + str(n) + '-gain')
 
     def on_eq_reset_freqs_button_clicked(self, obj):
         self.settings.reset('equalizer-freqs')
@@ -286,6 +276,9 @@ class Equalizer():
         self.settings.reset('equalizer-state')
         self.settings.reset('equalizer-input-gain')
         self.settings.reset('equalizer-output-gain')
-        self.settings.reset('equalizer-user')
+
+        for n in range(15):
+            self.settings.reset('equalizer-band' + str(n) + '-gain')
+
         self.settings.reset('equalizer-freqs')
         self.settings.reset('equalizer-qfactors')

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.20.0 -->
 <interface domain="PulseEffects">
-  <requires lib="gtk+" version="3.20"/>
+  <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="damping">
     <property name="upper">1</property>
     <property name="value">0.20000000000000001</property>

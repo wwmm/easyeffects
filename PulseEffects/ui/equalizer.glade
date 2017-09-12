@@ -1,92 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.20.0 -->
 <interface domain="PulseEffects">
-  <requires lib="gtk+" version="3.20"/>
-  <object class="GtkAdjustment" id="band0_g_adjustment">
+  <requires lib="gtk+" version="3.18"/>
+  <object class="GtkAdjustment" id="band0_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
-  <object class="GtkAdjustment" id="band10_g_adjustment">
+  <object class="GtkAdjustment" id="band10_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
-  <object class="GtkAdjustment" id="band11_g_adjustment">
+  <object class="GtkAdjustment" id="band11_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
-  <object class="GtkAdjustment" id="band12_g_adjustment">
+  <object class="GtkAdjustment" id="band12_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
-  <object class="GtkAdjustment" id="band13_g_adjustment">
+  <object class="GtkAdjustment" id="band13_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
-  <object class="GtkAdjustment" id="band14_g_adjustment">
+  <object class="GtkAdjustment" id="band14_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
-  <object class="GtkAdjustment" id="band1_g_adjustment">
+  <object class="GtkAdjustment" id="band1_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
-  <object class="GtkAdjustment" id="band2_g_adjustment">
+  <object class="GtkAdjustment" id="band2_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
-  <object class="GtkAdjustment" id="band3_g_adjustment">
+  <object class="GtkAdjustment" id="band3_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
-  <object class="GtkAdjustment" id="band4_g_adjustment">
+  <object class="GtkAdjustment" id="band4_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
-  <object class="GtkAdjustment" id="band5_g_adjustment">
+  <object class="GtkAdjustment" id="band5_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
-  <object class="GtkAdjustment" id="band6_g_adjustment">
+  <object class="GtkAdjustment" id="band6_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
-  <object class="GtkAdjustment" id="band7_g_adjustment">
+  <object class="GtkAdjustment" id="band7_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
-  <object class="GtkAdjustment" id="band8_g_adjustment">
+  <object class="GtkAdjustment" id="band8_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
-  <object class="GtkAdjustment" id="band9_g_adjustment">
+  <object class="GtkAdjustment" id="band9_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
@@ -204,18 +204,17 @@
             <property name="can_focus">False</property>
             <property name="column_spacing">2</property>
             <child>
-              <object class="GtkScale" id="band0_g">
+              <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">band0_g_adjustment</property>
+                <property name="adjustment">band0_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
                 <property name="value_pos">bottom</property>
-                <signal name="value-changed" handler="on_band_gain_changed" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -223,18 +222,17 @@
               </packing>
             </child>
             <child>
-              <object class="GtkScale" id="band1_g">
+              <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">band1_g_adjustment</property>
+                <property name="adjustment">band1_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
                 <property name="value_pos">bottom</property>
-                <signal name="value-changed" handler="on_band_gain_changed" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -242,18 +240,17 @@
               </packing>
             </child>
             <child>
-              <object class="GtkScale" id="band2_g">
+              <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">band2_g_adjustment</property>
+                <property name="adjustment">band2_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
                 <property name="value_pos">bottom</property>
-                <signal name="value-changed" handler="on_band_gain_changed" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -261,18 +258,17 @@
               </packing>
             </child>
             <child>
-              <object class="GtkScale" id="band3_g">
+              <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">band3_g_adjustment</property>
+                <property name="adjustment">band3_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
                 <property name="value_pos">bottom</property>
-                <signal name="value-changed" handler="on_band_gain_changed" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">4</property>
@@ -280,18 +276,17 @@
               </packing>
             </child>
             <child>
-              <object class="GtkScale" id="band4_g">
+              <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">band4_g_adjustment</property>
+                <property name="adjustment">band4_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
                 <property name="value_pos">bottom</property>
-                <signal name="value-changed" handler="on_band_gain_changed" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">5</property>
@@ -299,18 +294,17 @@
               </packing>
             </child>
             <child>
-              <object class="GtkScale" id="band5_g">
+              <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">band5_g_adjustment</property>
+                <property name="adjustment">band5_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
                 <property name="value_pos">bottom</property>
-                <signal name="value-changed" handler="on_band_gain_changed" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">6</property>
@@ -318,18 +312,17 @@
               </packing>
             </child>
             <child>
-              <object class="GtkScale" id="band6_g">
+              <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">band6_g_adjustment</property>
+                <property name="adjustment">band6_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
                 <property name="value_pos">bottom</property>
-                <signal name="value-changed" handler="on_band_gain_changed" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">7</property>
@@ -337,37 +330,17 @@
               </packing>
             </child>
             <child>
-              <object class="GtkScale" id="band7_g">
+              <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">band7_g_adjustment</property>
+                <property name="adjustment">band8_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
                 <property name="value_pos">bottom</property>
-                <signal name="value-changed" handler="on_band_gain_changed" swapped="no"/>
-              </object>
-              <packing>
-                <property name="left_attach">8</property>
-                <property name="top_attach">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkScale" id="band8_g">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="hexpand">True</property>
-                <property name="vexpand">True</property>
-                <property name="orientation">vertical</property>
-                <property name="adjustment">band8_g_adjustment</property>
-                <property name="inverted">True</property>
-                <property name="round_digits">0</property>
-                <property name="digits">0</property>
-                <property name="value_pos">bottom</property>
-                <signal name="value-changed" handler="on_band_gain_changed" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">9</property>
@@ -375,18 +348,17 @@
               </packing>
             </child>
             <child>
-              <object class="GtkScale" id="band9_g">
+              <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">band9_g_adjustment</property>
+                <property name="adjustment">band9_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
                 <property name="value_pos">bottom</property>
-                <signal name="value-changed" handler="on_band_gain_changed" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">10</property>
@@ -394,18 +366,17 @@
               </packing>
             </child>
             <child>
-              <object class="GtkScale" id="band10_g">
+              <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">band10_g_adjustment</property>
+                <property name="adjustment">band10_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
                 <property name="value_pos">bottom</property>
-                <signal name="value-changed" handler="on_band_gain_changed" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">11</property>
@@ -413,18 +384,17 @@
               </packing>
             </child>
             <child>
-              <object class="GtkScale" id="band11_g">
+              <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">band11_g_adjustment</property>
+                <property name="adjustment">band11_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">1</property>
                 <property name="digits">0</property>
                 <property name="value_pos">bottom</property>
-                <signal name="value-changed" handler="on_band_gain_changed" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">12</property>
@@ -432,18 +402,17 @@
               </packing>
             </child>
             <child>
-              <object class="GtkScale" id="band12_g">
+              <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">band12_g_adjustment</property>
+                <property name="adjustment">band12_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
                 <property name="value_pos">bottom</property>
-                <signal name="value-changed" handler="on_band_gain_changed" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">13</property>
@@ -451,40 +420,20 @@
               </packing>
             </child>
             <child>
-              <object class="GtkScale" id="band13_g">
+              <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">band13_g_adjustment</property>
+                <property name="adjustment">band13_g</property>
                 <property name="inverted">True</property>
                 <property name="round_digits">0</property>
                 <property name="digits">0</property>
                 <property name="value_pos">bottom</property>
-                <signal name="value-changed" handler="on_band_gain_changed" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">14</property>
-                <property name="top_attach">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkScale" id="band14_g">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="hexpand">True</property>
-                <property name="vexpand">True</property>
-                <property name="orientation">vertical</property>
-                <property name="adjustment">band14_g_adjustment</property>
-                <property name="inverted">True</property>
-                <property name="round_digits">0</property>
-                <property name="digits">0</property>
-                <property name="value_pos">bottom</property>
-                <signal name="value-changed" handler="on_band_gain_changed" swapped="no"/>
-              </object>
-              <packing>
-                <property name="left_attach">15</property>
                 <property name="top_attach">2</property>
               </packing>
             </child>
@@ -1054,6 +1003,42 @@
               <packing>
                 <property name="left_attach">15</property>
                 <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScale">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+                <property name="orientation">vertical</property>
+                <property name="adjustment">band7_g</property>
+                <property name="inverted">True</property>
+                <property name="round_digits">0</property>
+                <property name="digits">0</property>
+                <property name="value_pos">bottom</property>
+              </object>
+              <packing>
+                <property name="left_attach">8</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScale">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+                <property name="orientation">vertical</property>
+                <property name="adjustment">band14_g</property>
+                <property name="inverted">True</property>
+                <property name="round_digits">0</property>
+                <property name="digits">0</property>
+                <property name="value_pos">bottom</property>
+              </object>
+              <packing>
+                <property name="left_attach">15</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>

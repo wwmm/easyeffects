@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.20.0 -->
 <interface domain="PulseEffects">
-  <requires lib="gtk+" version="3.20"/>
+  <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="eq_band0">
     <property name="lower">-24</property>
     <property name="upper">12</property>

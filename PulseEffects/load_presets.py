@@ -110,21 +110,23 @@ class LoadPresets():
         input_gain = self.config.getfloat(section, 'input_gain', fallback=0)
         output_gain = self.config.getfloat(section, 'output_gain', fallback=0)
 
-        band0 = self.config.getfloat(section, 'band0')
-        band1 = self.config.getfloat(section, 'band1')
-        band2 = self.config.getfloat(section, 'band2')
-        band3 = self.config.getfloat(section, 'band3')
-        band4 = self.config.getfloat(section, 'band4')
-        band5 = self.config.getfloat(section, 'band5')
-        band6 = self.config.getfloat(section, 'band6')
-        band7 = self.config.getfloat(section, 'band7')
-        band8 = self.config.getfloat(section, 'band8')
-        band9 = self.config.getfloat(section, 'band9')
-        band10 = self.config.getfloat(section, 'band10')
-        band11 = self.config.getfloat(section, 'band11')
-        band12 = self.config.getfloat(section, 'band12')
-        band13 = self.config.getfloat(section, 'band13')
-        band14 = self.config.getfloat(section, 'band14')
+        # it would make more sense to call these keys bandn_g but this would
+        # break people presets...
+        self.band0_g = self.config.getfloat(section, 'band0')
+        self.band1_g = self.config.getfloat(section, 'band1')
+        self.band2_g = self.config.getfloat(section, 'band2')
+        self.band3_g = self.config.getfloat(section, 'band3')
+        self.band4_g = self.config.getfloat(section, 'band4')
+        self.band5_g = self.config.getfloat(section, 'band5')
+        self.band6_g = self.config.getfloat(section, 'band6')
+        self.band7_g = self.config.getfloat(section, 'band7')
+        self.band8_g = self.config.getfloat(section, 'band8')
+        self.band9_g = self.config.getfloat(section, 'band9')
+        self.band10_g = self.config.getfloat(section, 'band10')
+        self.band11_g = self.config.getfloat(section, 'band11')
+        self.band12_g = self.config.getfloat(section, 'band12')
+        self.band13_g = self.config.getfloat(section, 'band13')
+        self.band14_g = self.config.getfloat(section, 'band14')
 
         band0_freq = self.config.getfloat(section, 'band0_freq', fallback=26)
         band1_freq = self.config.getfloat(section, 'band1_freq', fallback=41)
@@ -178,10 +180,6 @@ class LoadPresets():
         band14_qfactor = self.config.getfloat(section, 'band14_qfactor',
                                               fallback=2.21)
 
-        equalizer_bands = [band0, band1, band2, band3, band4, band5, band6,
-                           band7, band8, band9, band10, band11, band12, band13,
-                           band14]
-
         eq_freqs = [band0_freq, band1_freq, band2_freq, band3_freq, band4_freq,
                     band5_freq, band6_freq, band7_freq, band8_freq, band9_freq,
                     band10_freq, band11_freq, band12_freq, band13_freq,
@@ -198,12 +196,14 @@ class LoadPresets():
                            GLib.Variant('d', input_gain))
         settings.set_value('equalizer-output-gain',
                            GLib.Variant('d', output_gain))
-        settings.set_value('equalizer-user',
-                           GLib.Variant('ad', equalizer_bands))
         settings.set_value('equalizer-freqs',
                            GLib.Variant('ad', eq_freqs))
         settings.set_value('equalizer-qfactors',
                            GLib.Variant('ad', eq_qfactors))
+
+        for n in range(15):
+            gain = GLib.Variant('d', getattr(self, 'band' + str(n) + '_g'))
+            settings.set_value('equalizer-band' + str(n) + '-gain', gain)
 
     def load_sink_inputs_presets(self, settings):
         # order is important

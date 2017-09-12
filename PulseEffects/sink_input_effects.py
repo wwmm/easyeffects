@@ -179,9 +179,9 @@ class SinkInputEffects(PipelineBase):
                                     self.log_tag)
 
     def on_panorama_enable(self, obj, state):
-        limiter_enabled = self.settings.get_value('limiter-state').unpack()
-
         if state:
+            limiter_enabled = self.settings.get_value('limiter-state').unpack()
+
             if limiter_enabled:
                 self.effects_bin.insert_after(self.panorama.bin,
                                               self.limiter.bin,
@@ -195,10 +195,11 @@ class SinkInputEffects(PipelineBase):
                                     self.log_tag)
 
     def on_compressor_enable(self, obj, state):
-        limiter_enabled = self.settings.get_value('limiter-state').unpack()
-        panorama_enabled = self.settings.get_value('panorama-state').unpack()
-
         if state:
+            limiter_enabled = self.settings.get_value('limiter-state').unpack()
+            panorama_enabled = self.settings.get_value(
+                'panorama-state').unpack()
+
             if panorama_enabled:
                 self.effects_bin.insert_after(self.compressor.bin,
                                               self.panorama.bin,
@@ -218,12 +219,13 @@ class SinkInputEffects(PipelineBase):
                                     self.log_tag)
 
     def on_reverb_enable(self, obj, state):
-        limiter_enabled = self.settings.get_value('limiter-state').unpack()
-        panorama_enabled = self.settings.get_value('panorama-state').unpack()
-        compressor_enabled = self.settings.get_value(
-            'compressor-state').unpack()
-
         if state:
+            limiter_enabled = self.settings.get_value('limiter-state').unpack()
+            panorama_enabled = self.settings.get_value(
+                'panorama-state').unpack()
+            compressor_enabled = self.settings.get_value(
+                'compressor-state').unpack()
+
             if compressor_enabled:
                 self.effects_bin.insert_after(self.reverb.bin,
                                               self.compressor.bin,
@@ -247,14 +249,15 @@ class SinkInputEffects(PipelineBase):
                                     self.log_tag)
 
     def on_highpass_enable(self, obj, state):
-        limiter_enabled = self.settings.get_value('limiter-state').unpack()
-        panorama_enabled = self.settings.get_value('panorama-state').unpack()
-        compressor_enabled = self.settings.get_value(
-            'compressor-state').unpack()
-        reverb_enabled = self.settings.get_value(
-            'reverb-state').unpack()
-
         if state:
+            limiter_enabled = self.settings.get_value('limiter-state').unpack()
+            panorama_enabled = self.settings.get_value(
+                'panorama-state').unpack()
+            compressor_enabled = self.settings.get_value(
+                'compressor-state').unpack()
+            reverb_enabled = self.settings.get_value(
+                'reverb-state').unpack()
+
             if reverb_enabled:
                 self.effects_bin.insert_after(self.highpass.bin,
                                               self.reverb.bin,
@@ -283,16 +286,17 @@ class SinkInputEffects(PipelineBase):
                                     self.log_tag)
 
     def on_lowpass_enable(self, obj, state):
-        limiter_enabled = self.settings.get_value('limiter-state').unpack()
-        panorama_enabled = self.settings.get_value('panorama-state').unpack()
-        compressor_enabled = self.settings.get_value(
-            'compressor-state').unpack()
-        reverb_enabled = self.settings.get_value(
-            'reverb-state').unpack()
-        highpass_enabled = self.settings.get_value(
-            'highpass-state').unpack()
-
         if state:
+            limiter_enabled = self.settings.get_value('limiter-state').unpack()
+            panorama_enabled = self.settings.get_value(
+                'panorama-state').unpack()
+            compressor_enabled = self.settings.get_value(
+                'compressor-state').unpack()
+            reverb_enabled = self.settings.get_value(
+                'reverb-state').unpack()
+            highpass_enabled = self.settings.get_value(
+                'highpass-state').unpack()
+
             if highpass_enabled:
                 self.effects_bin.insert_after(self.lowpass.bin,
                                               self.highpass.bin,
@@ -326,18 +330,19 @@ class SinkInputEffects(PipelineBase):
                                     self.log_tag)
 
     def on_equalizer_enable(self, obj, state):
-        limiter_enabled = self.settings.get_value('limiter-state').unpack()
-        panorama_enabled = self.settings.get_value('panorama-state').unpack()
-        compressor_enabled = self.settings.get_value(
-            'compressor-state').unpack()
-        reverb_enabled = self.settings.get_value(
-            'reverb-state').unpack()
-        highpass_enabled = self.settings.get_value(
-            'highpass-state').unpack()
-        lowpass_enabled = self.settings.get_value(
-            'lowpass-state').unpack()
-
         if state:
+            limiter_enabled = self.settings.get_value('limiter-state').unpack()
+            panorama_enabled = self.settings.get_value(
+                'panorama-state').unpack()
+            compressor_enabled = self.settings.get_value(
+                'compressor-state').unpack()
+            reverb_enabled = self.settings.get_value(
+                'reverb-state').unpack()
+            highpass_enabled = self.settings.get_value(
+                'highpass-state').unpack()
+            lowpass_enabled = self.settings.get_value(
+                'lowpass-state').unpack()
+
             if lowpass_enabled:
                 self.effects_bin.insert_after(self.equalizer.bin,
                                               self.lowpass.bin,

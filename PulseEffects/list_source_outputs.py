@@ -216,4 +216,4 @@ class ListSourceOutputs():
         n_children_after = len(self.apps_box.get_children())
 
         if n_children_before == 1 and n_children_after == 0:
-            self.soe.set_state('paused')
+            self.soe.set_state('ready')

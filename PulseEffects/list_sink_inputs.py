@@ -215,7 +215,7 @@ class ListSinkInputs():
         n_children_after = len(self.apps_box.get_children())
 
         if n_children_before == 1 and n_children_after == 0:
-            self.sie.set_state('paused')
+            self.sie.set_state('ready')
 
     def get_n_inputs(self):
         return len(self.apps_box.get_children())

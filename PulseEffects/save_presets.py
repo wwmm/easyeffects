@@ -92,28 +92,33 @@ class SavePresets():
         enabled = settings.get_value('equalizer-state')
         input_gain = settings.get_value('equalizer-input-gain')
         output_gain = settings.get_value('equalizer-output-gain')
-        equalizer = settings.get_value('equalizer-user')
         eq_freqs = settings.get_value('equalizer-freqs')
         eq_qfactors = settings.get_value('equalizer-qfactors')
+
+        gain = []
+
+        for n in range(15):
+            gain.append(
+                settings.get_value('equalizer-band' + str(n) + '-gain'))
 
         self.config[section] = {'enabled': str(enabled),
                                 'input_gain': str(input_gain),
                                 'output_gain': str(output_gain),
-                                'band0': str(equalizer[0]),
-                                'band1': str(equalizer[1]),
-                                'band2': str(equalizer[2]),
-                                'band3': str(equalizer[3]),
-                                'band4': str(equalizer[4]),
-                                'band5': str(equalizer[5]),
-                                'band6': str(equalizer[6]),
-                                'band7': str(equalizer[7]),
-                                'band8': str(equalizer[8]),
-                                'band9': str(equalizer[9]),
-                                'band10': str(equalizer[10]),
-                                'band11': str(equalizer[11]),
-                                'band12': str(equalizer[12]),
-                                'band13': str(equalizer[13]),
-                                'band14': str(equalizer[14]),
+                                'band0': str(gain[0]),
+                                'band1': str(gain[1]),
+                                'band2': str(gain[2]),
+                                'band3': str(gain[3]),
+                                'band4': str(gain[4]),
+                                'band5': str(gain[5]),
+                                'band6': str(gain[6]),
+                                'band7': str(gain[7]),
+                                'band8': str(gain[8]),
+                                'band9': str(gain[9]),
+                                'band10': str(gain[10]),
+                                'band11': str(gain[11]),
+                                'band12': str(gain[12]),
+                                'band13': str(gain[13]),
+                                'band14': str(gain[14]),
                                 'band0_freq': str(eq_freqs[0]),
                                 'band1_freq': str(eq_freqs[1]),
                                 'band2_freq': str(eq_freqs[2]),

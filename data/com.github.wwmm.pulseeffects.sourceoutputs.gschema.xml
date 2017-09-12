@@ -106,9 +106,6 @@
         <key name="equalizer-state" type="b">
           <default>false</default>
         </key>
-        <key name="equalizer-user" type="ad">
-          <default>[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]</default>
-        </key>
         <key name="equalizer-input-gain" type="d">
           <default>0</default>
         </key>
@@ -121,5 +118,52 @@
         <key name="equalizer-qfactors" type="ad">
           <default>[2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21]</default>
         </key>
+
+        <key name="equalizer-band0-gain" type="d">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band1-gain" type="d">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band2-gain" type="d">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band3-gain" type="d">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band4-gain" type="d">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band5-gain" type="d">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band6-gain" type="d">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band7-gain" type="d">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band8-gain" type="d">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band9-gain" type="d">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band10-gain" type="d">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band11-gain" type="d">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band12-gain" type="d">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band13-gain" type="d">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band14-gain" type="d">
+          <default>0</default>
+        </key>
+
     </schema>
 </schemalist>
