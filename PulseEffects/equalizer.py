@@ -158,13 +158,6 @@ class Equalizer():
 
             print(f, w)
 
-    def save_eq_user(self, idx, value):
-        self.eq_band_user[idx] = value
-
-        out = GLib.Variant('ad', self.eq_band_user)
-
-        self.settings.set_value('equalizer-user', out)
-
     def on_input_gain_value_changed(self, obj):
         value_db = obj.get_value()
         value_linear = 10**(value_db / 20.0)
