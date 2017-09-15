@@ -95,11 +95,17 @@ class SavePresets():
         eq_freqs = settings.get_value('equalizer-freqs')
         eq_qfactors = settings.get_value('equalizer-qfactors')
 
-        gain = []
+        gain, frequencies, qualities = [], [], []
 
         for n in range(15):
             gain.append(
                 settings.get_value('equalizer-band' + str(n) + '-gain'))
+
+            frequencies.append(
+                settings.get_value('equalizer-band' + str(n) + '-frequency'))
+
+            qualities.append(
+                settings.get_value('equalizer-band' + str(n) + '-quality'))
 
         self.config[section] = {'enabled': str(enabled),
                                 'input_gain': str(input_gain),

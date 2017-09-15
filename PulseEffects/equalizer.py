@@ -98,6 +98,33 @@ class Equalizer():
         self.ui_equalizer_output_level_right_label = self.builder.get_object(
             'equalizer_output_level_right_label')
 
+        # band menu
+        for n in range(15):
+            menu_builder = Gtk.Builder()
+            menu_builder.add_from_file(self.module_path +
+                                       '/ui/equalizer_band_menu.glade')
+
+            menu_builder.connect_signals(self)
+
+            menu_button = self.builder.get_object('band' + str(n) +
+                                                  '_menu_button')
+            band_f = menu_builder.get_object('band_f')
+            band_q = menu_builder.get_object('band_q')
+
+            band_f.connect('value-changed', self.on_frequency_changed)
+            band_q.connect('value-changed', self.on_quality_changed)
+
+            band_menu = menu_builder.get_object('menu')
+
+            band_menu.set_relative_to(self.ui_window)
+            menu_button.set_popover(band_menu)
+
+            # setattr(self, 'ui_band' + str(n) + '_f',
+            #         menu_builder.get_object('band' + str(n) + '_f'))
+            #
+            # setattr(self, 'ui_band' + str(n) + '_q',
+            #         menu_builder.get_object('band' + str(n) + '_q'))
+
     def bind(self):
         # binding ui widgets to gstreamer plugins
 
@@ -121,10 +148,18 @@ class Equalizer():
                            'value', flag)
 
         for n in range(15):
-            prop = 'equalizer-band' + str(n) + '-gain'
-            ui_band = getattr(self, 'ui_band' + str(n) + '_g')
+            ui_band_g = getattr(self, 'ui_band' + str(n) + '_g')
+            ui_band_f = getattr(self, 'ui_band' + str(n) + '_f')
+            ui_band_q = getattr(self, 'ui_band' + str(n) + '_q')
 
-            self.settings.bind(prop, ui_band, 'value', flag)
+            prop = 'equalizer-band' + str(n) + '-gain'
+            self.settings.bind(prop, ui_band_g, 'value', flag)
+
+            # prop = 'equalizer-band' + str(n) + '-frequency'
+            # self.settings.bind(prop, ui_band_f, 'value', flag)
+            #
+            # prop = 'equalizer-band' + str(n) + '-quality'
+            # self.settings.bind(prop, ui_band_q, 'value', flag)
 
     def init_ui(self):
         self.init_eq_freq_and_qfactors()
@@ -169,6 +204,12 @@ class Equalizer():
         value_linear = 10**(value_db / 20.0)
 
         self.output_gain.set_property('volume', value_linear)
+
+    def on_frequency_changed(self, obj):
+        print(obj.get_value())
+
+    def on_quality_changed(self, obj):
+        print(obj.get_value())
 
     def on_eq_freq_changed(self, obj):
         try:

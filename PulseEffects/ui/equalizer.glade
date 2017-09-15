@@ -202,7 +202,7 @@
             <property name="height_request">250</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="column_spacing">2</property>
+            <property name="column_spacing">3</property>
             <child>
               <object class="GtkScale">
                 <property name="visible">True</property>
@@ -217,8 +217,8 @@
                 <property name="value_pos">bottom</property>
               </object>
               <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">2</property>
+                <property name="left_attach">0</property>
+                <property name="top_attach">3</property>
               </packing>
             </child>
             <child>
@@ -235,8 +235,8 @@
                 <property name="value_pos">bottom</property>
               </object>
               <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">2</property>
+                <property name="left_attach">1</property>
+                <property name="top_attach">3</property>
               </packing>
             </child>
             <child>
@@ -253,8 +253,8 @@
                 <property name="value_pos">bottom</property>
               </object>
               <packing>
-                <property name="left_attach">3</property>
-                <property name="top_attach">2</property>
+                <property name="left_attach">2</property>
+                <property name="top_attach">3</property>
               </packing>
             </child>
             <child>
@@ -271,8 +271,8 @@
                 <property name="value_pos">bottom</property>
               </object>
               <packing>
-                <property name="left_attach">4</property>
-                <property name="top_attach">2</property>
+                <property name="left_attach">3</property>
+                <property name="top_attach">3</property>
               </packing>
             </child>
             <child>
@@ -289,8 +289,8 @@
                 <property name="value_pos">bottom</property>
               </object>
               <packing>
-                <property name="left_attach">5</property>
-                <property name="top_attach">2</property>
+                <property name="left_attach">4</property>
+                <property name="top_attach">3</property>
               </packing>
             </child>
             <child>
@@ -307,8 +307,8 @@
                 <property name="value_pos">bottom</property>
               </object>
               <packing>
-                <property name="left_attach">6</property>
-                <property name="top_attach">2</property>
+                <property name="left_attach">5</property>
+                <property name="top_attach">3</property>
               </packing>
             </child>
             <child>
@@ -325,8 +325,8 @@
                 <property name="value_pos">bottom</property>
               </object>
               <packing>
-                <property name="left_attach">7</property>
-                <property name="top_attach">2</property>
+                <property name="left_attach">6</property>
+                <property name="top_attach">3</property>
               </packing>
             </child>
             <child>
@@ -343,8 +343,8 @@
                 <property name="value_pos">bottom</property>
               </object>
               <packing>
-                <property name="left_attach">9</property>
-                <property name="top_attach">2</property>
+                <property name="left_attach">8</property>
+                <property name="top_attach">3</property>
               </packing>
             </child>
             <child>
@@ -361,8 +361,8 @@
                 <property name="value_pos">bottom</property>
               </object>
               <packing>
-                <property name="left_attach">10</property>
-                <property name="top_attach">2</property>
+                <property name="left_attach">9</property>
+                <property name="top_attach">3</property>
               </packing>
             </child>
             <child>
@@ -379,8 +379,8 @@
                 <property name="value_pos">bottom</property>
               </object>
               <packing>
-                <property name="left_attach">11</property>
-                <property name="top_attach">2</property>
+                <property name="left_attach">10</property>
+                <property name="top_attach">3</property>
               </packing>
             </child>
             <child>
@@ -397,8 +397,8 @@
                 <property name="value_pos">bottom</property>
               </object>
               <packing>
-                <property name="left_attach">12</property>
-                <property name="top_attach">2</property>
+                <property name="left_attach">11</property>
+                <property name="top_attach">3</property>
               </packing>
             </child>
             <child>
@@ -415,8 +415,8 @@
                 <property name="value_pos">bottom</property>
               </object>
               <packing>
-                <property name="left_attach">13</property>
-                <property name="top_attach">2</property>
+                <property name="left_attach">12</property>
+                <property name="top_attach">3</property>
               </packing>
             </child>
             <child>
@@ -433,8 +433,8 @@
                 <property name="value_pos">bottom</property>
               </object>
               <packing>
-                <property name="left_attach">14</property>
-                <property name="top_attach">2</property>
+                <property name="left_attach">13</property>
+                <property name="top_attach">3</property>
               </packing>
             </child>
             <child>
@@ -451,8 +451,8 @@
                 <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">0</property>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
             <child>
@@ -469,8 +469,8 @@
                 <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">0</property>
+                <property name="left_attach">1</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
             <child>
@@ -487,8 +487,8 @@
                 <signal name="activate" handler="on_eq_qfactor_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">1</property>
+                <property name="left_attach">0</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
@@ -505,36 +505,8 @@
                 <signal name="activate" handler="on_eq_qfactor_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="margin_right">3</property>
-                <property name="label" translatable="yes">F</property>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="margin_right">3</property>
-                <property name="label" translatable="yes">Q</property>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">1</property>
+                <property name="left_attach">1</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
@@ -551,8 +523,8 @@
                 <signal name="activate" handler="on_eq_qfactor_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">3</property>
-                <property name="top_attach">1</property>
+                <property name="left_attach">2</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
@@ -569,8 +541,8 @@
                 <signal name="activate" handler="on_eq_qfactor_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">4</property>
-                <property name="top_attach">1</property>
+                <property name="left_attach">3</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
@@ -587,8 +559,8 @@
                 <signal name="activate" handler="on_eq_qfactor_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">5</property>
-                <property name="top_attach">1</property>
+                <property name="left_attach">4</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
@@ -605,8 +577,8 @@
                 <signal name="activate" handler="on_eq_qfactor_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">6</property>
-                <property name="top_attach">1</property>
+                <property name="left_attach">5</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
@@ -623,8 +595,8 @@
                 <signal name="activate" handler="on_eq_qfactor_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">7</property>
-                <property name="top_attach">1</property>
+                <property name="left_attach">6</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
@@ -641,8 +613,8 @@
                 <signal name="activate" handler="on_eq_qfactor_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">8</property>
-                <property name="top_attach">1</property>
+                <property name="left_attach">7</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
@@ -659,8 +631,8 @@
                 <signal name="activate" handler="on_eq_qfactor_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">9</property>
-                <property name="top_attach">1</property>
+                <property name="left_attach">8</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
@@ -677,8 +649,8 @@
                 <signal name="activate" handler="on_eq_qfactor_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">10</property>
-                <property name="top_attach">1</property>
+                <property name="left_attach">9</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
@@ -695,8 +667,8 @@
                 <signal name="activate" handler="on_eq_qfactor_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">11</property>
-                <property name="top_attach">1</property>
+                <property name="left_attach">10</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
@@ -713,8 +685,8 @@
                 <signal name="activate" handler="on_eq_qfactor_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">12</property>
-                <property name="top_attach">1</property>
+                <property name="left_attach">11</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
@@ -731,8 +703,8 @@
                 <signal name="activate" handler="on_eq_qfactor_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">13</property>
-                <property name="top_attach">1</property>
+                <property name="left_attach">12</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
@@ -749,8 +721,8 @@
                 <signal name="activate" handler="on_eq_qfactor_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">14</property>
-                <property name="top_attach">1</property>
+                <property name="left_attach">13</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
@@ -767,8 +739,8 @@
                 <signal name="activate" handler="on_eq_qfactor_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">15</property>
-                <property name="top_attach">1</property>
+                <property name="left_attach">14</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
@@ -785,8 +757,8 @@
                 <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">3</property>
-                <property name="top_attach">0</property>
+                <property name="left_attach">2</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
             <child>
@@ -803,8 +775,8 @@
                 <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">4</property>
-                <property name="top_attach">0</property>
+                <property name="left_attach">3</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
             <child>
@@ -821,8 +793,8 @@
                 <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">5</property>
-                <property name="top_attach">0</property>
+                <property name="left_attach">4</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
             <child>
@@ -839,8 +811,8 @@
                 <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">6</property>
-                <property name="top_attach">0</property>
+                <property name="left_attach">5</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
             <child>
@@ -857,8 +829,8 @@
                 <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">7</property>
-                <property name="top_attach">0</property>
+                <property name="left_attach">6</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
             <child>
@@ -875,8 +847,8 @@
                 <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">8</property>
-                <property name="top_attach">0</property>
+                <property name="left_attach">7</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
             <child>
@@ -893,8 +865,8 @@
                 <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">9</property>
-                <property name="top_attach">0</property>
+                <property name="left_attach">8</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
             <child>
@@ -911,8 +883,8 @@
                 <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">10</property>
-                <property name="top_attach">0</property>
+                <property name="left_attach">9</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
             <child>
@@ -929,8 +901,8 @@
                 <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">11</property>
-                <property name="top_attach">0</property>
+                <property name="left_attach">10</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
             <child>
@@ -947,8 +919,8 @@
                 <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">12</property>
-                <property name="top_attach">0</property>
+                <property name="left_attach">11</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
             <child>
@@ -965,8 +937,8 @@
                 <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">13</property>
-                <property name="top_attach">0</property>
+                <property name="left_attach">12</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
             <child>
@@ -983,8 +955,8 @@
                 <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">14</property>
-                <property name="top_attach">0</property>
+                <property name="left_attach">13</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
             <child>
@@ -1001,8 +973,8 @@
                 <signal name="activate" handler="on_eq_freq_changed" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">15</property>
-                <property name="top_attach">0</property>
+                <property name="left_attach">14</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
             <child>
@@ -1019,8 +991,8 @@
                 <property name="value_pos">bottom</property>
               </object>
               <packing>
-                <property name="left_attach">8</property>
-                <property name="top_attach">2</property>
+                <property name="left_attach">7</property>
+                <property name="top_attach">3</property>
               </packing>
             </child>
             <child>
@@ -1037,12 +1009,309 @@
                 <property name="value_pos">bottom</property>
               </object>
               <packing>
-                <property name="left_attach">15</property>
-                <property name="top_attach">2</property>
+                <property name="left_attach">14</property>
+                <property name="top_attach">3</property>
               </packing>
             </child>
             <child>
-              <placeholder/>
+              <object class="GtkMenuButton" id="band0_menu_button">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="icon_name">preferences-other-symbolic</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkMenuButton" id="band1_menu_button">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="icon_name">preferences-other-symbolic</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkMenuButton" id="band2_menu_button">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="icon_name">preferences-other-symbolic</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkMenuButton" id="band3_menu_button">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="icon_name">preferences-other-symbolic</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkMenuButton" id="band4_menu_button">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="icon_name">preferences-other-symbolic</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">4</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkMenuButton" id="band5_menu_button">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="icon_name">preferences-other-symbolic</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">5</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkMenuButton" id="band6_menu_button">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="icon_name">preferences-other-symbolic</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">6</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkMenuButton" id="band7_menu_button">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="icon_name">preferences-other-symbolic</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">7</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkMenuButton" id="band8_menu_button">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="icon_name">preferences-other-symbolic</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">8</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkMenuButton" id="band9_menu_button">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="icon_name">preferences-other-symbolic</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">9</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkMenuButton" id="band10_menu_button">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="icon_name">preferences-other-symbolic</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">10</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkMenuButton" id="band11_menu_button">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="icon_name">preferences-other-symbolic</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">11</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkMenuButton" id="band12_menu_button">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="icon_name">preferences-other-symbolic</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">12</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkMenuButton" id="band13_menu_button">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="icon_name">preferences-other-symbolic</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">13</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkMenuButton" id="band14_menu_button">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="icon_name">preferences-other-symbolic</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">14</property>
+                <property name="top_attach">0</property>
+              </packing>
             </child>
           </object>
           <packing>

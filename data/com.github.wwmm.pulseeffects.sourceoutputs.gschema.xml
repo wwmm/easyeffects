@@ -165,5 +165,97 @@
           <default>0</default>
         </key>
 
+        <key name="equalizer-band0-frequency" type="d">
+          <default>26</default>
+        </key>
+        <key name="equalizer-band1-frequency" type="d">
+          <default>41</default>
+        </key>
+        <key name="equalizer-band2-frequency" type="d">
+          <default>65</default>
+        </key>
+        <key name="equalizer-band3-frequency" type="d">
+          <default>103</default>
+        </key>
+        <key name="equalizer-band4-frequency" type="d">
+          <default>163</default>
+        </key>
+        <key name="equalizer-band5-frequency" type="d">
+          <default>259</default>
+        </key>
+        <key name="equalizer-band6-frequency" type="d">
+          <default>410</default>
+        </key>
+        <key name="equalizer-band7-frequency" type="d">
+          <default>649</default>
+        </key>
+        <key name="equalizer-band8-frequency" type="d">
+          <default>1029</default>
+        </key>
+        <key name="equalizer-band9-frequency" type="d">
+          <default>1631</default>
+        </key>
+        <key name="equalizer-band10-frequency" type="d">
+          <default>2585</default>
+        </key>
+        <key name="equalizer-band11-frequency" type="d">
+          <default>4097</default>
+        </key>
+        <key name="equalizer-band12-frequency" type="d">
+          <default>6493</default>
+        </key>
+        <key name="equalizer-band13-frequency" type="d">
+          <default>10291</default>
+        </key>
+        <key name="equalizer-band14-frequency" type="d">
+          <default>16310</default>
+        </key>
+
+        <key name="equalizer-band0-quality" type="d">
+          <default>2.21</default>
+        </key>
+        <key name="equalizer-band1-quality" type="d">
+          <default>2.21</default>
+        </key>
+        <key name="equalizer-band2-quality" type="d">
+          <default>2.21</default>
+        </key>
+        <key name="equalizer-band3-quality" type="d">
+          <default>2.21</default>
+        </key>
+        <key name="equalizer-band4-quality" type="d">
+          <default>2.21</default>
+        </key>
+        <key name="equalizer-band5-quality" type="d">
+          <default>2.21</default>
+        </key>
+        <key name="equalizer-band6-quality" type="d">
+          <default>2.21</default>
+        </key>
+        <key name="equalizer-band7-quality" type="d">
+          <default>2.21</default>
+        </key>
+        <key name="equalizer-band8-quality" type="d">
+          <default>2.21</default>
+        </key>
+        <key name="equalizer-band9-quality" type="d">
+          <default>2.21</default>
+        </key>
+        <key name="equalizer-band10-quality" type="d">
+          <default>2.21</default>
+        </key>
+        <key name="equalizer-band11-quality" type="d">
+          <default>2.21</default>
+        </key>
+        <key name="equalizer-band12-quality" type="d">
+          <default>2.21</default>
+        </key>
+        <key name="equalizer-band13-quality" type="d">
+          <default>2.21</default>
+        </key>
+        <key name="equalizer-band14-quality" type="d">
+          <default>2.21</default>
+        </key>
+
     </schema>
 </schemalist>
