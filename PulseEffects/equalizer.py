@@ -71,12 +71,6 @@ class Equalizer():
             setattr(self, 'ui_band' + str(n) + '_g',
                     self.builder.get_object('band' + str(n) + '_g'))
 
-            setattr(self, 'ui_band' + str(n) + '_f',
-                    self.builder.get_object('band' + str(n) + '_f'))
-
-            setattr(self, 'ui_band' + str(n) + '_q',
-                    self.builder.get_object('band' + str(n) + '_q'))
-
         self.ui_eq_calibrate_button = self.builder.get_object(
             'eq_calibrate_button')
 
@@ -111,19 +105,16 @@ class Equalizer():
             band_f = menu_builder.get_object('band_f')
             band_q = menu_builder.get_object('band_q')
 
-            band_f.connect('value-changed', self.on_frequency_changed)
-            band_q.connect('value-changed', self.on_quality_changed)
+            band_f.connect('value-changed', self.on_frequency_changed, n)
+            band_q.connect('value-changed', self.on_quality_changed, n)
 
             band_menu = menu_builder.get_object('menu')
 
             band_menu.set_relative_to(self.ui_window)
             menu_button.set_popover(band_menu)
 
-            # setattr(self, 'ui_band' + str(n) + '_f',
-            #         menu_builder.get_object('band' + str(n) + '_f'))
-            #
-            # setattr(self, 'ui_band' + str(n) + '_q',
-            #         menu_builder.get_object('band' + str(n) + '_q'))
+            setattr(self, 'ui_band' + str(n) + '_f', band_f)
+            setattr(self, 'ui_band' + str(n) + '_q', band_q)
 
     def bind(self):
         # binding ui widgets to gstreamer plugins
@@ -155,14 +146,15 @@ class Equalizer():
             prop = 'equalizer-band' + str(n) + '-gain'
             self.settings.bind(prop, ui_band_g, 'value', flag)
 
-            # prop = 'equalizer-band' + str(n) + '-frequency'
-            # self.settings.bind(prop, ui_band_f, 'value', flag)
-            #
-            # prop = 'equalizer-band' + str(n) + '-quality'
-            # self.settings.bind(prop, ui_band_q, 'value', flag)
+            prop = 'equalizer-band' + str(n) + '-frequency'
+            self.settings.bind(prop, ui_band_f, 'value', flag)
+
+            prop = 'equalizer-band' + str(n) + '-quality'
+            self.settings.bind(prop, ui_band_q, 'value', flag)
 
     def init_ui(self):
-        self.init_eq_freq_and_qfactors()
+        # self.init_eq_freq_and_qfactors()
+        pass
 
     def init_eq_freq_and_qfactors(self):
         self.freqs = self.settings.get_value('equalizer-freqs').unpack()
@@ -205,50 +197,24 @@ class Equalizer():
 
         self.output_gain.set_property('volume', value_linear)
 
-    def on_frequency_changed(self, obj):
-        print(obj.get_value())
+    def on_frequency_changed(self, obj, idx):
+        value = obj.get_value()
 
-    def on_quality_changed(self, obj):
-        print(obj.get_value())
+        band = getattr(self, 'band' + str(idx))
 
-    def on_eq_freq_changed(self, obj):
-        try:
-            value = float(obj.get_text())
+        q = self.settings.get_value('equalizer-band' + str(idx) + '-quality')
 
-            obj_id = Gtk.Buildable.get_name(obj)
+        band.set_property('freq', value)
+        band.set_property('bandwidth', value / q.unpack())
 
-            # example glade id: band0_f
-            idx = int(obj_id.split('_')[0].split('d')[1])
+    def on_quality_changed(self, obj, idx):
+        value = obj.get_value()
 
-            band = getattr(self, 'band' + str(idx))
-            band.set_property('freq', value)
-            band.set_property('bandwidth', value / self.qfactors[idx])
+        band = getattr(self, 'band' + str(idx))
 
-            self.freqs[idx] = value
+        f = self.settings.get_value('equalizer-band' + str(idx) + '-frequency')
 
-            self.settings.set_value('equalizer-freqs',
-                                    GLib.Variant('ad', self.freqs))
-        except ValueError:
-            pass
-
-    def on_eq_qfactor_changed(self, obj):
-        try:
-            value = float(obj.get_text())
-
-            obj_id = Gtk.Buildable.get_name(obj)
-
-            # example glade id: band0_q
-            idx = int(obj_id.split('_')[0].split('d')[1])
-
-            band = getattr(self, 'band' + str(idx))
-            band.set_property('bandwidth', self.freqs[idx] / value)
-
-            self.qfactors[idx] = value
-
-            self.settings.set_value('equalizer-qfactors',
-                                    GLib.Variant('ad', self.qfactors))
-        except ValueError:
-            pass
+        band.set_property('bandwidth', f.unpack() / value)
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]
@@ -295,12 +261,12 @@ class Equalizer():
             self.settings.reset('equalizer-band' + str(n) + '-gain')
 
     def on_eq_reset_freqs_button_clicked(self, obj):
-        self.settings.reset('equalizer-freqs')
-        self.init_eq_freq_and_qfactors()
+        for n in range(15):
+            self.settings.reset('equalizer-band' + str(n) + '-frequency')
 
     def on_eq_reset_qfactors_button_clicked(self, obj):
-        self.settings.reset('equalizer-qfactors')
-        self.init_eq_freq_and_qfactors()
+        for n in range(15):
+            self.settings.reset('equalizer-band' + str(n) + '-quality')
 
     def on_eq_calibrate_button_clicked(self, obj):
         c = Calibration()
@@ -313,6 +279,5 @@ class Equalizer():
 
         for n in range(15):
             self.settings.reset('equalizer-band' + str(n) + '-gain')
-
-        self.settings.reset('equalizer-freqs')
-        self.settings.reset('equalizer-qfactors')
+            self.settings.reset('equalizer-band' + str(n) + '-frequency')
+            self.settings.reset('equalizer-band' + str(n) + '-quality')

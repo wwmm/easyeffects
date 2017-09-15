@@ -92,8 +92,6 @@ class SavePresets():
         enabled = settings.get_value('equalizer-state')
         input_gain = settings.get_value('equalizer-input-gain')
         output_gain = settings.get_value('equalizer-output-gain')
-        eq_freqs = settings.get_value('equalizer-freqs')
-        eq_qfactors = settings.get_value('equalizer-qfactors')
 
         gain, frequencies, qualities = [], [], []
 
@@ -125,41 +123,36 @@ class SavePresets():
                                 'band12': str(gain[12]),
                                 'band13': str(gain[13]),
                                 'band14': str(gain[14]),
-                                'band0_freq': str(eq_freqs[0]),
-                                'band1_freq': str(eq_freqs[1]),
-                                'band2_freq': str(eq_freqs[2]),
-                                'band3_freq': str(eq_freqs[3]),
-                                'band4_freq': str(eq_freqs[4]),
-                                'band5_freq': str(eq_freqs[5]),
-                                'band6_freq': str(eq_freqs[6]),
-                                'band7_freq': str(eq_freqs[7]),
-                                'band8_freq': str(eq_freqs[8]),
-                                'band9_freq': str(eq_freqs[9]),
-                                'band10_freq': str(eq_freqs[10]),
-                                'band11_freq': str(eq_freqs[11]),
-                                'band12_freq': str(eq_freqs[12]),
-                                'band13_freq': str(eq_freqs[13]),
-                                'band14_freq': str(eq_freqs[14]),
-                                'band0_qfactor': str(eq_qfactors[0]),
-                                'band1_qfactor': str(eq_qfactors[1]),
-                                'band2_qfactor': str(eq_qfactors[2]),
-                                'band3_qfactor': str(eq_qfactors[3]),
-                                'band4_qfactor': str(eq_qfactors[4]),
-                                'band5_qfactor': str(eq_qfactors[5]),
-                                'band6_qfactor': str(eq_qfactors[6]),
-                                'band7_qfactor': str(eq_qfactors[7]),
-                                'band8_qfactor': str(eq_qfactors[8]),
-                                'band9_qfactor': str(eq_qfactors[9]),
-                                'band10_qfactor':
-                                str(eq_qfactors[10]),
-                                'band11_qfactor':
-                                str(eq_qfactors[11]),
-                                'band12_qfactor':
-                                str(eq_qfactors[12]),
-                                'band13_qfactor':
-                                str(eq_qfactors[13]),
-                                'band14_qfactor':
-                                str(eq_qfactors[14])}
+                                'band0_freq': str(frequencies[0]),
+                                'band1_freq': str(frequencies[1]),
+                                'band2_freq': str(frequencies[2]),
+                                'band3_freq': str(frequencies[3]),
+                                'band4_freq': str(frequencies[4]),
+                                'band5_freq': str(frequencies[5]),
+                                'band6_freq': str(frequencies[6]),
+                                'band7_freq': str(frequencies[7]),
+                                'band8_freq': str(frequencies[8]),
+                                'band9_freq': str(frequencies[9]),
+                                'band10_freq': str(frequencies[10]),
+                                'band11_freq': str(frequencies[11]),
+                                'band12_freq': str(frequencies[12]),
+                                'band13_freq': str(frequencies[13]),
+                                'band14_freq': str(frequencies[14]),
+                                'band0_qfactor': str(qualities[0]),
+                                'band1_qfactor': str(qualities[1]),
+                                'band2_qfactor': str(qualities[2]),
+                                'band3_qfactor': str(qualities[3]),
+                                'band4_qfactor': str(qualities[4]),
+                                'band5_qfactor': str(qualities[5]),
+                                'band6_qfactor': str(qualities[6]),
+                                'band7_qfactor': str(qualities[7]),
+                                'band8_qfactor': str(qualities[8]),
+                                'band9_qfactor': str(qualities[9]),
+                                'band10_qfactor': str(qualities[10]),
+                                'band11_qfactor': str(qualities[11]),
+                                'band12_qfactor': str(qualities[12]),
+                                'band13_qfactor': str(qualities[13]),
+                                'band14_qfactor': str(qualities[14])}
 
     def save_sink_inputs_presets(self, settings):
         self.save_limiter_presets(settings, 'apps_limiter')

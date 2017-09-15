@@ -119,12 +119,6 @@
         <key name="equalizer-output-gain" type="d">
           <default>0</default>
         </key>
-        <key name="equalizer-freqs" type="ad">
-          <default>[26, 41, 65, 103, 163, 259, 410, 649, 1029, 1631, 2585, 4097, 6493, 10291, 16310]</default>
-        </key>
-        <key name="equalizer-qfactors" type="ad">
-          <default>[2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21, 2.21]</default>
-        </key>
 
         <key name="equalizer-band0-gain" type="d">
           <default>0</default>
