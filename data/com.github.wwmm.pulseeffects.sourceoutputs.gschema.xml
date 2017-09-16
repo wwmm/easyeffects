@@ -251,5 +251,51 @@
           <default>2.21</default>
         </key>
 
+        <key name="equalizer-band0-type" type="i">
+          <default>1</default>
+        </key>
+        <key name="equalizer-band1-type" type="i">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band2-type" type="i">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band3-type" type="i">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band4-type" type="i">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band5-type" type="i">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band6-type" type="i">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band7-type" type="i">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band8-type" type="i">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band9-type" type="i">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band10-type" type="i">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band11-type" type="i">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band12-type" type="i">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band13-type" type="i">
+          <default>0</default>
+        </key>
+        <key name="equalizer-band14-type" type="i">
+          <default>2</default>
+        </key>
+
     </schema>
 </schemalist>

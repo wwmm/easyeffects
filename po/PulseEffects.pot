@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-15 11:36-0300\n"
+"POT-Creation-Date: 2017-09-16 15:15-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -113,47 +113,54 @@ msgstr ""
 msgid "Gain Reduction"
 msgstr ""
 
-#: PulseEffects/ui/equalizer.glade:143
+#: PulseEffects/ui/equalizer.glade:218
 msgid "Flat Response"
 msgstr ""
 
-#: PulseEffects/ui/equalizer.glade:156
-msgid "Reset Frequencies"
-msgstr ""
-
-#: PulseEffects/ui/equalizer.glade:169
-msgid "Reset Q Factors"
-msgstr ""
-
-#: PulseEffects/ui/equalizer.glade:182
+#: PulseEffects/ui/equalizer.glade:231
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
 msgid "Calibration"
 msgstr ""
 
-#: PulseEffects/ui/equalizer.glade:519
-msgid "F"
-msgstr ""
-
-#: PulseEffects/ui/equalizer.glade:533
-msgid "Q"
-msgstr ""
-
-#: PulseEffects/ui/equalizer.glade:1064
+#: PulseEffects/ui/equalizer.glade:994
 #: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:777
 msgid "Input [dB]"
 msgstr ""
 
-#: PulseEffects/ui/equalizer.glade:1077
+#: PulseEffects/ui/equalizer.glade:1007
 msgid "Output [dB]"
 msgstr ""
 
-#: PulseEffects/ui/equalizer_band_menu.glade:28
+#: PulseEffects/ui/equalizer_band_menu.glade:32
 #: PulseEffectsCalibration/ui/test_signal.glade:270
 msgid "Frequency [Hz]"
 msgstr ""
 
-#: PulseEffects/ui/equalizer_band_menu.glade:41
+#: PulseEffects/ui/equalizer_band_menu.glade:45
 msgid "Quality"
+msgstr ""
+
+#: PulseEffects/ui/equalizer_band_menu.glade:88
+#: PulseEffects/ui/equalizer_band_menu.glade:102
+#: PulseEffects/ui/equalizer_band_menu.glade:127
+#: PulseEffects/ui/main_ui.glade:591
+msgid "Reset"
+msgstr ""
+
+#: PulseEffects/ui/equalizer_band_menu.glade:118
+msgid "Type"
+msgstr ""
+
+#: PulseEffects/ui/equalizer_band_menu.glade:146
+msgid "Peak"
+msgstr ""
+
+#: PulseEffects/ui/equalizer_band_menu.glade:160
+msgid "Low Shelf"
+msgstr ""
+
+#: PulseEffects/ui/equalizer_band_menu.glade:175
+msgid "High Shelf"
 msgstr ""
 
 #: PulseEffects/ui/highpass.glade:49 PulseEffects/ui/lowpass.glade:49
@@ -239,10 +246,6 @@ msgstr ""
 
 #: PulseEffects/ui/main_ui.glade:582
 msgid "Settings"
-msgstr ""
-
-#: PulseEffects/ui/main_ui.glade:591
-msgid "Reset"
 msgstr ""
 
 #: PulseEffects/ui/main_ui.glade:610

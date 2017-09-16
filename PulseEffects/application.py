@@ -180,7 +180,8 @@ class Application(Gtk.Application):
         self.stack_current_child_name = 'sink_inputs'
 
         server_info = str(self.pm.default_sink_format) + ', ' + \
-            str(round(self.pm.default_sink_rate / 1000.0, 1)) + ' kHz'
+            '{:.1f}'.format(round(
+                self.pm.default_sink_rate / 1000.0, 1)) + ' kHz'
 
         self.server_info_label.set_text(server_info)
 
@@ -198,7 +199,8 @@ class Application(Gtk.Application):
                 self.stack_current_child_name = 'sink_inputs'
 
                 server_info = str(self.pm.default_sink_format) + ', ' + \
-                    str(round(self.pm.default_sink_rate / 1000.0, 1)) + ' kHz'
+                    '{:.1f}'.format(round(
+                        self.pm.default_sink_rate / 1000.0, 1)) + ' kHz'
 
                 self.server_info_label.set_text(server_info)
             elif name == 'source_outputs':
@@ -212,8 +214,8 @@ class Application(Gtk.Application):
                 self.stack_current_child_name = 'source_outputs'
 
                 server_info = str(self.pm.default_source_format) + ', ' + \
-                    str(round(self.pm.default_source_rate / 1000.0, 1)) + \
-                    ' kHz'
+                    '{:.1f}'.format(round(
+                        self.pm.default_source_rate / 1000.0, 1)) + ' kHz'
 
                 self.server_info_label.set_text(server_info)
 

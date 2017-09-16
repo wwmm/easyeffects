@@ -2,17 +2,32 @@
 <!-- Generated with glade 3.20.0 -->
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.18"/>
+  <object class="GtkImage" id="ban11_menu_image">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">preferences-system-symbolic</property>
+  </object>
   <object class="GtkAdjustment" id="band0_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
+  <object class="GtkImage" id="band0_menu_image">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">preferences-system-symbolic</property>
+  </object>
   <object class="GtkAdjustment" id="band10_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
+  </object>
+  <object class="GtkImage" id="band10_menu_image">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">preferences-system-symbolic</property>
   </object>
   <object class="GtkAdjustment" id="band11_g">
     <property name="lower">-24</property>
@@ -26,11 +41,21 @@
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
+  <object class="GtkImage" id="band12_menu_image">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">preferences-system-symbolic</property>
+  </object>
   <object class="GtkAdjustment" id="band13_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
+  </object>
+  <object class="GtkImage" id="band13_menu_image">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">preferences-system-symbolic</property>
   </object>
   <object class="GtkAdjustment" id="band14_g">
     <property name="lower">-24</property>
@@ -38,11 +63,21 @@
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
+  <object class="GtkImage" id="band14_menu_image">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">preferences-system-symbolic</property>
+  </object>
   <object class="GtkAdjustment" id="band1_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
+  </object>
+  <object class="GtkImage" id="band1_menu_image">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">preferences-system-symbolic</property>
   </object>
   <object class="GtkAdjustment" id="band2_g">
     <property name="lower">-24</property>
@@ -50,11 +85,21 @@
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
+  <object class="GtkImage" id="band2_menu_image">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">preferences-system-symbolic</property>
+  </object>
   <object class="GtkAdjustment" id="band3_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
+  </object>
+  <object class="GtkImage" id="band3_menu_image">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">preferences-system-symbolic</property>
   </object>
   <object class="GtkAdjustment" id="band4_g">
     <property name="lower">-24</property>
@@ -62,11 +107,21 @@
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
+  <object class="GtkImage" id="band4_menu_image">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">preferences-system-symbolic</property>
+  </object>
   <object class="GtkAdjustment" id="band5_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
+  </object>
+  <object class="GtkImage" id="band5_menu_image">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">preferences-system-symbolic</property>
   </object>
   <object class="GtkAdjustment" id="band6_g">
     <property name="lower">-24</property>
@@ -74,11 +129,21 @@
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
+  <object class="GtkImage" id="band6_menu_image">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">preferences-system-symbolic</property>
+  </object>
   <object class="GtkAdjustment" id="band7_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
+  </object>
+  <object class="GtkImage" id="band7_menu_image">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">preferences-system-symbolic</property>
   </object>
   <object class="GtkAdjustment" id="band8_g">
     <property name="lower">-24</property>
@@ -86,11 +151,21 @@
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
+  <object class="GtkImage" id="band8_menu_image">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">preferences-system-symbolic</property>
+  </object>
   <object class="GtkAdjustment" id="band9_g">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
+  </object>
+  <object class="GtkImage" id="band9_menu_image">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">preferences-system-symbolic</property>
   </object>
   <object class="GtkAdjustment" id="input_gain">
     <property name="lower">-24</property>
@@ -152,32 +227,6 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="eq_reset_freqs_button">
-                <property name="label" translatable="yes">Reset Frequencies</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <signal name="clicked" handler="on_eq_reset_freqs_button_clicked" swapped="no"/>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="eq_reset_qfactors_button">
-                <property name="label" translatable="yes">Reset Q Factors</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <signal name="clicked" handler="on_eq_reset_qfactors_button_clicked" swapped="no"/>
-              </object>
-              <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">0</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkButton" id="eq_calibrate_button">
                 <property name="label" translatable="yes">Calibration</property>
                 <property name="visible">True</property>
@@ -186,7 +235,7 @@
                 <signal name="clicked" handler="on_eq_calibrate_button_clicked" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">3</property>
+                <property name="left_attach">1</property>
                 <property name="top_attach">0</property>
               </packing>
             </child>
@@ -202,12 +251,14 @@
             <property name="height_request">250</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="column_spacing">3</property>
+            <property name="halign">center</property>
+            <property name="column_spacing">12</property>
+            <property name="column_homogeneous">True</property>
             <child>
               <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="hexpand">True</property>
+                <property name="halign">center</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
                 <property name="adjustment">band0_g</property>
@@ -218,14 +269,14 @@
               </object>
               <packing>
                 <property name="left_attach">0</property>
-                <property name="top_attach">1</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
               <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="hexpand">True</property>
+                <property name="halign">center</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
                 <property name="adjustment">band1_g</property>
@@ -236,14 +287,14 @@
               </object>
               <packing>
                 <property name="left_attach">1</property>
-                <property name="top_attach">1</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
               <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="hexpand">True</property>
+                <property name="halign">center</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
                 <property name="adjustment">band2_g</property>
@@ -254,14 +305,14 @@
               </object>
               <packing>
                 <property name="left_attach">2</property>
-                <property name="top_attach">1</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
               <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="hexpand">True</property>
+                <property name="halign">center</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
                 <property name="adjustment">band3_g</property>
@@ -272,14 +323,14 @@
               </object>
               <packing>
                 <property name="left_attach">3</property>
-                <property name="top_attach">1</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
               <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="hexpand">True</property>
+                <property name="halign">center</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
                 <property name="adjustment">band4_g</property>
@@ -290,14 +341,14 @@
               </object>
               <packing>
                 <property name="left_attach">4</property>
-                <property name="top_attach">1</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
               <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="hexpand">True</property>
+                <property name="halign">center</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
                 <property name="adjustment">band5_g</property>
@@ -308,14 +359,14 @@
               </object>
               <packing>
                 <property name="left_attach">5</property>
-                <property name="top_attach">1</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
               <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="hexpand">True</property>
+                <property name="halign">center</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
                 <property name="adjustment">band6_g</property>
@@ -326,14 +377,14 @@
               </object>
               <packing>
                 <property name="left_attach">6</property>
-                <property name="top_attach">1</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
               <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="hexpand">True</property>
+                <property name="halign">center</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
                 <property name="adjustment">band8_g</property>
@@ -344,14 +395,14 @@
               </object>
               <packing>
                 <property name="left_attach">8</property>
-                <property name="top_attach">1</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
               <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="hexpand">True</property>
+                <property name="halign">center</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
                 <property name="adjustment">band9_g</property>
@@ -362,14 +413,14 @@
               </object>
               <packing>
                 <property name="left_attach">9</property>
-                <property name="top_attach">1</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
               <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="hexpand">True</property>
+                <property name="halign">center</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
                 <property name="adjustment">band10_g</property>
@@ -380,14 +431,14 @@
               </object>
               <packing>
                 <property name="left_attach">10</property>
-                <property name="top_attach">1</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
               <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="hexpand">True</property>
+                <property name="halign">center</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
                 <property name="adjustment">band11_g</property>
@@ -398,14 +449,14 @@
               </object>
               <packing>
                 <property name="left_attach">11</property>
-                <property name="top_attach">1</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
               <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="hexpand">True</property>
+                <property name="halign">center</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
                 <property name="adjustment">band12_g</property>
@@ -416,14 +467,14 @@
               </object>
               <packing>
                 <property name="left_attach">12</property>
-                <property name="top_attach">1</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
               <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="hexpand">True</property>
+                <property name="halign">center</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
                 <property name="adjustment">band13_g</property>
@@ -434,14 +485,14 @@
               </object>
               <packing>
                 <property name="left_attach">13</property>
-                <property name="top_attach">1</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
               <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="hexpand">True</property>
+                <property name="halign">center</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
                 <property name="adjustment">band7_g</property>
@@ -452,14 +503,14 @@
               </object>
               <packing>
                 <property name="left_attach">7</property>
-                <property name="top_attach">1</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
               <object class="GtkScale">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="hexpand">True</property>
+                <property name="halign">center</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
                 <property name="adjustment">band14_g</property>
@@ -470,23 +521,228 @@
               </object>
               <packing>
                 <property name="left_attach">14</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="band0_label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="label">band0</property>
+                <property name="max_width_chars">7</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
                 <property name="top_attach">1</property>
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="band0_menu_button">
+              <object class="GtkLabel" id="band1_label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="label">band1</property>
+                <property name="max_width_chars">7</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="band2_label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="label">band2</property>
+                <property name="max_width_chars">7</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="band3_label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="label">band3</property>
+                <property name="max_width_chars">7</property>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="band4_label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="label">band4</property>
+                <property name="max_width_chars">7</property>
+              </object>
+              <packing>
+                <property name="left_attach">4</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="band5_label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="label">band5</property>
+                <property name="max_width_chars">7</property>
+              </object>
+              <packing>
+                <property name="left_attach">5</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="band6_label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="label">band6</property>
+                <property name="max_width_chars">7</property>
+              </object>
+              <packing>
+                <property name="left_attach">6</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="band7_label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="label">band7</property>
+                <property name="max_width_chars">7</property>
+              </object>
+              <packing>
+                <property name="left_attach">7</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="band8_label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="label">band8</property>
+                <property name="max_width_chars">7</property>
+              </object>
+              <packing>
+                <property name="left_attach">8</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="band9_label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="label">band9</property>
+                <property name="max_width_chars">7</property>
+              </object>
+              <packing>
+                <property name="left_attach">9</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="band10_label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="label">band10</property>
+                <property name="max_width_chars">7</property>
+              </object>
+              <packing>
+                <property name="left_attach">10</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="band11_label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="label">band11</property>
+                <property name="max_width_chars">7</property>
+              </object>
+              <packing>
+                <property name="left_attach">11</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="band12_label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="label">band12</property>
+                <property name="max_width_chars">7</property>
+              </object>
+              <packing>
+                <property name="left_attach">12</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="band13_label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="label">band13</property>
+                <property name="max_width_chars">7</property>
+              </object>
+              <packing>
+                <property name="left_attach">13</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="band14_label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="label">band14</property>
+                <property name="max_width_chars">7</property>
+              </object>
+              <packing>
+                <property name="left_attach">14</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="band0_menu_button">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="icon_name">preferences-other-symbolic</property>
-                  </object>
-                </child>
+                <property name="image">band0_menu_image</property>
+                <property name="always_show_image">True</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -494,19 +750,14 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="band1_menu_button">
+              <object class="GtkButton" id="band1_menu_button">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="icon_name">preferences-other-symbolic</property>
-                  </object>
-                </child>
+                <property name="image">band1_menu_image</property>
+                <property name="always_show_image">True</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -514,19 +765,14 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="band2_menu_button">
+              <object class="GtkButton" id="band2_menu_button">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="icon_name">preferences-other-symbolic</property>
-                  </object>
-                </child>
+                <property name="image">band2_menu_image</property>
+                <property name="always_show_image">True</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -534,19 +780,14 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="band3_menu_button">
+              <object class="GtkButton" id="band3_menu_button">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="icon_name">preferences-other-symbolic</property>
-                  </object>
-                </child>
+                <property name="image">band3_menu_image</property>
+                <property name="always_show_image">True</property>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -554,19 +795,14 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="band4_menu_button">
+              <object class="GtkButton" id="band4_menu_button">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="icon_name">preferences-other-symbolic</property>
-                  </object>
-                </child>
+                <property name="image">band4_menu_image</property>
+                <property name="always_show_image">True</property>
               </object>
               <packing>
                 <property name="left_attach">4</property>
@@ -574,19 +810,14 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="band5_menu_button">
+              <object class="GtkButton" id="band5_menu_button">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="icon_name">preferences-other-symbolic</property>
-                  </object>
-                </child>
+                <property name="image">band5_menu_image</property>
+                <property name="always_show_image">True</property>
               </object>
               <packing>
                 <property name="left_attach">5</property>
@@ -594,19 +825,14 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="band6_menu_button">
+              <object class="GtkButton" id="band6_menu_button">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="icon_name">preferences-other-symbolic</property>
-                  </object>
-                </child>
+                <property name="image">band6_menu_image</property>
+                <property name="always_show_image">True</property>
               </object>
               <packing>
                 <property name="left_attach">6</property>
@@ -614,19 +840,14 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="band7_menu_button">
+              <object class="GtkButton" id="band7_menu_button">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="icon_name">preferences-other-symbolic</property>
-                  </object>
-                </child>
+                <property name="image">band7_menu_image</property>
+                <property name="always_show_image">True</property>
               </object>
               <packing>
                 <property name="left_attach">7</property>
@@ -634,19 +855,14 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="band8_menu_button">
+              <object class="GtkButton" id="band8_menu_button">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="icon_name">preferences-other-symbolic</property>
-                  </object>
-                </child>
+                <property name="image">band8_menu_image</property>
+                <property name="always_show_image">True</property>
               </object>
               <packing>
                 <property name="left_attach">8</property>
@@ -654,19 +870,14 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="band9_menu_button">
+              <object class="GtkButton" id="band9_menu_button">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="icon_name">preferences-other-symbolic</property>
-                  </object>
-                </child>
+                <property name="image">band9_menu_image</property>
+                <property name="always_show_image">True</property>
               </object>
               <packing>
                 <property name="left_attach">9</property>
@@ -674,19 +885,14 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="band10_menu_button">
+              <object class="GtkButton" id="band10_menu_button">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="icon_name">preferences-other-symbolic</property>
-                  </object>
-                </child>
+                <property name="image">band10_menu_image</property>
+                <property name="always_show_image">True</property>
               </object>
               <packing>
                 <property name="left_attach">10</property>
@@ -694,19 +900,14 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="band11_menu_button">
+              <object class="GtkButton" id="band11_menu_button">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="icon_name">preferences-other-symbolic</property>
-                  </object>
-                </child>
+                <property name="image">ban11_menu_image</property>
+                <property name="always_show_image">True</property>
               </object>
               <packing>
                 <property name="left_attach">11</property>
@@ -714,19 +915,14 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="band12_menu_button">
+              <object class="GtkButton" id="band12_menu_button">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="icon_name">preferences-other-symbolic</property>
-                  </object>
-                </child>
+                <property name="image">band12_menu_image</property>
+                <property name="always_show_image">True</property>
               </object>
               <packing>
                 <property name="left_attach">12</property>
@@ -734,19 +930,14 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="band13_menu_button">
+              <object class="GtkButton" id="band13_menu_button">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="icon_name">preferences-other-symbolic</property>
-                  </object>
-                </child>
+                <property name="image">band13_menu_image</property>
+                <property name="always_show_image">True</property>
               </object>
               <packing>
                 <property name="left_attach">13</property>
@@ -754,19 +945,14 @@
               </packing>
             </child>
             <child>
-              <object class="GtkMenuButton" id="band14_menu_button">
+              <object class="GtkButton" id="band14_menu_button">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="icon_name">preferences-other-symbolic</property>
-                  </object>
-                </child>
+                <property name="image">band14_menu_image</property>
+                <property name="always_show_image">True</property>
               </object>
               <packing>
                 <property name="left_attach">14</property>

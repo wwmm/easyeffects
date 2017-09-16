@@ -6,7 +6,7 @@ import gi
 gi.require_version('Gst', '1.0')
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, GObject, GLib, Gst, GstInsertBin, Gtk
+from gi.repository import Gio, GObject, Gst, GstInsertBin, Gtk
 from PulseEffectsCalibration.application import Application as Calibration
 
 
@@ -71,6 +71,9 @@ class Equalizer():
             setattr(self, 'ui_band' + str(n) + '_g',
                     self.builder.get_object('band' + str(n) + '_g'))
 
+            setattr(self, 'ui_band' + str(n) + '_label',
+                    self.builder.get_object('band' + str(n) + '_label'))
+
         self.ui_eq_calibrate_button = self.builder.get_object(
             'eq_calibrate_button')
 
@@ -98,23 +101,31 @@ class Equalizer():
             menu_builder.add_from_file(self.module_path +
                                        '/ui/equalizer_band_menu.glade')
 
-            menu_builder.connect_signals(self)
-
             menu_button = self.builder.get_object('band' + str(n) +
                                                   '_menu_button')
+            menu = menu_builder.get_object('menu')
             band_f = menu_builder.get_object('band_f')
             band_q = menu_builder.get_object('band_q')
-
-            band_f.connect('value-changed', self.on_frequency_changed, n)
-            band_q.connect('value-changed', self.on_quality_changed, n)
-
-            band_menu = menu_builder.get_object('menu')
-
-            band_menu.set_relative_to(self.ui_window)
-            menu_button.set_popover(band_menu)
+            reset_f = menu_builder.get_object('reset_f')
+            reset_q = menu_builder.get_object('reset_q')
+            # reset_t = menu_builder.get_object('reset_t')
 
             setattr(self, 'ui_band' + str(n) + '_f', band_f)
             setattr(self, 'ui_band' + str(n) + '_q', band_q)
+
+            menu.set_relative_to(menu_button)
+
+            def button_clicked(arg, popover_menu):
+                if popover_menu.get_visible():
+                    popover_menu.hide()
+                else:
+                    popover_menu.show_all()
+
+            menu_button.connect("clicked", button_clicked, menu)
+            band_f.connect('value-changed', self.on_frequency_changed, n)
+            band_q.connect('value-changed', self.on_quality_changed, n)
+            reset_f.connect('clicked', self.on_reset_frequency, n)
+            reset_q.connect('clicked', self.on_reset_quality, n)
 
     def bind(self):
         # binding ui widgets to gstreamer plugins
@@ -181,6 +192,15 @@ class Equalizer():
         band.set_property('freq', value)
         band.set_property('bandwidth', value / q.unpack())
 
+        if value < 1000:
+            label = '{:0d}'.format(int(value)) + 'Hz'
+
+            getattr(self, 'ui_band' + str(idx) + '_label').set_text(label)
+        else:
+            label = '{:.1f}'.format(round(value / 1000.0, 1)) + 'kHz'
+
+            getattr(self, 'ui_band' + str(idx) + '_label').set_text(label)
+
     def on_quality_changed(self, obj, idx):
         value = obj.get_value()
 
@@ -189,6 +209,12 @@ class Equalizer():
         f = self.settings.get_value('equalizer-band' + str(idx) + '-frequency')
 
         band.set_property('bandwidth', f.unpack() / value)
+
+    def on_reset_frequency(self, obj, idx):
+        self.settings.reset('equalizer-band' + str(idx) + '-frequency')
+
+    def on_reset_quality(self, obj, idx):
+        self.settings.reset('equalizer-band' + str(idx) + '-quality')
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]
@@ -233,14 +259,6 @@ class Equalizer():
     def on_eq_flat_response_button_clicked(self, obj):
         for n in range(15):
             self.settings.reset('equalizer-band' + str(n) + '-gain')
-
-    def on_eq_reset_freqs_button_clicked(self, obj):
-        for n in range(15):
-            self.settings.reset('equalizer-band' + str(n) + '-frequency')
-
-    def on_eq_reset_qfactors_button_clicked(self, obj):
-        for n in range(15):
-            self.settings.reset('equalizer-band' + str(n) + '-quality')
 
     def on_eq_calibrate_button_clicked(self, obj):
         c = Calibration()
