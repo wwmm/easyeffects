@@ -152,32 +152,6 @@ class Equalizer():
             prop = 'equalizer-band' + str(n) + '-quality'
             self.settings.bind(prop, ui_band_q, 'value', flag)
 
-    def init_ui(self):
-        # self.init_eq_freq_and_qfactors()
-        pass
-
-    def init_eq_freq_and_qfactors(self):
-        self.freqs = self.settings.get_value('equalizer-freqs').unpack()
-        self.qfactors = self.settings.get_value(
-            'equalizer-qfactors').unpack()
-
-        for n in range(len(self.freqs)):
-            # init frequencies widgets
-            getattr(self, 'ui_band' + str(n) + '_f').set_text(
-                '{0:g}'.format(self.freqs[n]))
-
-            # init quality factors widgets
-            getattr(self, 'ui_band' + str(n) + '_q').set_text(
-                str(self.qfactors[n]))
-
-            # init plugin properties
-            getattr(self, 'band' + str(n)).set_property(
-                'freq', self.freqs[n])
-
-            w = self.freqs[n] / self.qfactors[n]
-
-            getattr(self, 'band' + str(n)).set_property('bandwidth', w)
-
     def print_eq_freqs_and_widths(self):
         for n in range(15):
             f = getattr(self, 'band' + str(n)).get_property('freq')

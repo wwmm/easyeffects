@@ -98,11 +98,7 @@ class Application(Gtk.Application):
         self.list_sink_inputs = ListSinkInputs(self.sie, self.pm)
         self.list_source_outputs = ListSourceOutputs(self.soe, self.pm)
 
-        self.sie.init_ui()
-        self.soe.init_ui()
-
         self.init_spectrum_widgets()
-
         self.init_stack_widgets()
 
         # this connection is changed inside the stack switch handler
@@ -401,9 +397,6 @@ class Application(Gtk.Application):
 
             l.load_sink_inputs_presets(self.sie.settings)
             l.load_source_outputs_presets(self.soe.settings)
-
-            self.sie.init_ui()
-            self.soe.init_ui()
 
         dialog.destroy()
 

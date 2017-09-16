@@ -86,6 +86,7 @@ class SourceOutputEffects(PipelineBase):
         self.reverb.bind()
         self.highpass.bind()
         self.lowpass.bind()
+        self.equalizer.bind()
 
     def on_message_element(self, bus, msg):
         plugin = msg.src.get_name()
@@ -330,10 +331,6 @@ class SourceOutputEffects(PipelineBase):
             self.effects_bin.remove(self.spectrum, self.on_filter_removed,
                                     self.log_tag)
 
-    def init_ui(self):
-        self.equalizer.bind()
-        self.equalizer.init_ui()
-
     def reset(self):
         self.limiter.reset()
         self.compressor.reset()
@@ -341,5 +338,3 @@ class SourceOutputEffects(PipelineBase):
         self.highpass.reset()
         self.lowpass.reset()
         self.equalizer.reset()
-
-        self.init_ui()
