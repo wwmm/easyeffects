@@ -49,6 +49,8 @@ class PipelineBase(GObject.GObject):
 
         self.audio_src = Gst.ElementFactory.make('pulsesrc', 'audio_src')
 
+        self.queue = Gst.ElementFactory.make('queue', None)
+
         self.source_caps = Gst.ElementFactory.make("capsfilter", None)
 
         self.effects_bin = GstInsertBin.InsertBin.new('effects_bin')
@@ -75,11 +77,13 @@ class PipelineBase(GObject.GObject):
         self.spectrum.set_property('threshold', self.spectrum_threshold)
 
         self.pipeline.add(self.audio_src)
+        self.pipeline.add(self.queue)
         self.pipeline.add(self.source_caps)
         self.pipeline.add(self.effects_bin)
         self.pipeline.add(self.audio_sink)
 
-        self.audio_src.link(self.source_caps)
+        self.audio_src.link(self.queue)
+        self.queue.link(self.source_caps)
         self.source_caps.link(self.effects_bin)
         self.effects_bin.link(self.audio_sink)
 
