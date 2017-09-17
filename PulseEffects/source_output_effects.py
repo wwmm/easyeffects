@@ -166,7 +166,8 @@ class SourceOutputEffects(PipelineBase):
 
     def on_limiter_enable(self, obj, state):
         if state:
-            self.effects_bin.prepend(self.limiter.bin, self.on_filter_added,
+            self.limiter_ready = False
+            self.effects_bin.prepend(self.limiter.bin, self.on_limiter_added,
                                      self.log_tag)
         else:
             self.effects_bin.remove(self.limiter.bin, self.on_filter_removed,
@@ -177,13 +178,17 @@ class SourceOutputEffects(PipelineBase):
             limiter_enabled = self.settings.get_value('limiter-state').unpack()
 
             if limiter_enabled:
+                while not self.limiter_ready:
+                    pass
+
                 self.effects_bin.insert_after(self.compressor.bin,
                                               self.limiter.bin,
-                                              self.on_filter_added,
+                                              self.on_compressor_added,
                                               self.log_tag)
             else:
                 self.effects_bin.prepend(self.compressor.bin,
-                                         self.on_filter_added, self.log_tag)
+                                         self.on_compressor_added,
+                                         self.log_tag)
         else:
             self.effects_bin.remove(self.compressor.bin,
                                     self.on_filter_removed,
@@ -196,18 +201,24 @@ class SourceOutputEffects(PipelineBase):
                 'compressor-state').unpack()
 
             if compressor_enabled:
+                while not self.compressor_ready:
+                    pass
+
                 self.effects_bin.insert_after(self.reverb.bin,
                                               self.compressor.bin,
-                                              self.on_filter_added,
+                                              self.on_reverb_added,
                                               self.log_tag)
             elif limiter_enabled:
+                while not self.limiter_ready:
+                    pass
+
                 self.effects_bin.insert_after(self.reverb.bin,
                                               self.limiter.bin,
-                                              self.on_filter_added,
+                                              self.on_reverb_added,
                                               self.log_tag)
             else:
                 self.effects_bin.prepend(self.reverb.bin,
-                                         self.on_filter_added, self.log_tag)
+                                         self.on_reverb_added, self.log_tag)
         else:
             self.effects_bin.remove(self.reverb.bin, self.on_filter_removed,
                                     self.log_tag)
@@ -221,23 +232,32 @@ class SourceOutputEffects(PipelineBase):
                 'reverb-state').unpack()
 
             if reverb_enabled:
+                while not self.reverb_ready:
+                    pass
+
                 self.effects_bin.insert_after(self.highpass.bin,
                                               self.reverb.bin,
-                                              self.on_filter_added,
+                                              self.on_highpass_added,
                                               self.log_tag)
             elif compressor_enabled:
+                while not self.compressor_ready:
+                    pass
+
                 self.effects_bin.insert_after(self.highpass.bin,
                                               self.compressor.bin,
-                                              self.on_filter_added,
+                                              self.on_highpass_added,
                                               self.log_tag)
             elif limiter_enabled:
+                while not self.limiter_ready:
+                    pass
+
                 self.effects_bin.insert_after(self.highpass.bin,
                                               self.limiter.bin,
-                                              self.on_filter_added,
+                                              self.on_highpass_added,
                                               self.log_tag)
             else:
                 self.effects_bin.prepend(self.highpass.bin,
-                                         self.on_filter_added, self.log_tag)
+                                         self.on_highpass_added, self.log_tag)
         else:
             self.effects_bin.remove(self.highpass.bin, self.on_filter_removed,
                                     self.log_tag)
@@ -253,28 +273,40 @@ class SourceOutputEffects(PipelineBase):
                 'highpass-state').unpack()
 
             if highpass_enabled:
+                while not self.highpass_ready:
+                    pass
+
                 self.effects_bin.insert_after(self.lowpass.bin,
                                               self.highpass.bin,
-                                              self.on_filter_added,
+                                              self.on_lowpass_added,
                                               self.log_tag)
             elif reverb_enabled:
+                while not self.reverb_ready:
+                    pass
+
                 self.effects_bin.insert_after(self.lowpass.bin,
                                               self.reverb.bin,
-                                              self.on_filter_added,
+                                              self.on_lowpass_added,
                                               self.log_tag)
             elif compressor_enabled:
+                while not self.compressor_ready:
+                    pass
+
                 self.effects_bin.insert_after(self.lowpass.bin,
                                               self.compressor.bin,
-                                              self.on_filter_added,
+                                              self.on_lowpass_added,
                                               self.log_tag)
             elif limiter_enabled:
+                while not self.limiter_ready:
+                    pass
+
                 self.effects_bin.insert_after(self.lowpass.bin,
                                               self.limiter.bin,
-                                              self.on_filter_added,
+                                              self.on_lowpass_added,
                                               self.log_tag)
             else:
                 self.effects_bin.prepend(self.lowpass.bin,
-                                         self.on_filter_added, self.log_tag)
+                                         self.on_lowpass_added, self.log_tag)
         else:
             self.effects_bin.remove(self.lowpass.bin, self.on_filter_removed,
                                     self.log_tag)
@@ -292,40 +324,55 @@ class SourceOutputEffects(PipelineBase):
                 'lowpass-state').unpack()
 
             if lowpass_enabled:
+                while not self.lowpass_ready:
+                    pass
+
                 self.effects_bin.insert_after(self.equalizer.bin,
                                               self.lowpass.bin,
-                                              self.on_filter_added,
+                                              self.on_equalizer_added,
                                               self.log_tag)
             elif highpass_enabled:
+                while not self.highpass_ready:
+                    pass
+
                 self.effects_bin.insert_after(self.equalizer.bin,
                                               self.highpass.bin,
-                                              self.on_filter_added,
+                                              self.on_equalizer_added,
                                               self.log_tag)
             elif reverb_enabled:
+                while not self.reverb_ready:
+                    pass
+
                 self.effects_bin.insert_after(self.equalizer.bin,
                                               self.reverb.bin,
-                                              self.on_filter_added,
+                                              self.on_equalizer_added,
                                               self.log_tag)
             elif compressor_enabled:
+                while not self.compressor_ready:
+                    pass
+
                 self.effects_bin.insert_after(self.equalizer.bin,
                                               self.compressor.bin,
-                                              self.on_filter_added,
+                                              self.on_equalizer_added,
                                               self.log_tag)
             elif limiter_enabled:
+                while not self.limiter_ready:
+                    pass
+
                 self.effects_bin.insert_after(self.equalizer.bin,
                                               self.limiter.bin,
-                                              self.on_filter_added,
+                                              self.on_equalizer_added,
                                               self.log_tag)
             else:
                 self.effects_bin.prepend(self.equalizer.bin,
-                                         self.on_filter_added, self.log_tag)
+                                         self.on_equalizer_added, self.log_tag)
         else:
             self.effects_bin.remove(self.equalizer.bin, self.on_filter_removed,
                                     self.log_tag)
 
     def enable_spectrum(self, state):
         if state:
-            self.effects_bin.append(self.spectrum, self.on_filter_added,
+            self.effects_bin.append(self.spectrum, self.on_spectrum_added,
                                     self.log_tag)
         else:
             self.effects_bin.remove(self.spectrum, self.on_filter_removed,
