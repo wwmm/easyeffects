@@ -173,8 +173,9 @@ class SinkInputEffects(PipelineBase):
         return True
 
     def on_limiter_enable(self, obj, state):
+        self.limiter_ready = False
+
         if state:
-            self.limiter_ready = False
             self.effects_bin.prepend(self.limiter.bin, self.on_limiter_added,
                                      self.log_tag)
         else:
@@ -182,10 +183,10 @@ class SinkInputEffects(PipelineBase):
                                     self.log_tag)
 
     def on_panorama_enable(self, obj, state):
+        self.panorama_ready = False
+
         if state:
             limiter_enabled = self.settings.get_value('limiter-state').unpack()
-
-            self.panorama_ready = False
 
             if limiter_enabled:
                 while not self.limiter_ready:
@@ -203,6 +204,8 @@ class SinkInputEffects(PipelineBase):
                                     self.log_tag)
 
     def on_compressor_enable(self, obj, state):
+        self.compressor_ready = False
+
         if state:
             limiter_enabled = self.settings.get_value('limiter-state').unpack()
             panorama_enabled = self.settings.get_value(
@@ -234,6 +237,8 @@ class SinkInputEffects(PipelineBase):
                                     self.log_tag)
 
     def on_reverb_enable(self, obj, state):
+        self.reverb_ready = False
+
         if state:
             limiter_enabled = self.settings.get_value('limiter-state').unpack()
             panorama_enabled = self.settings.get_value(
@@ -273,6 +278,8 @@ class SinkInputEffects(PipelineBase):
                                     self.log_tag)
 
     def on_highpass_enable(self, obj, state):
+        self.highpass_ready = False
+
         if state:
             limiter_enabled = self.settings.get_value('limiter-state').unpack()
             panorama_enabled = self.settings.get_value(
@@ -322,6 +329,8 @@ class SinkInputEffects(PipelineBase):
                                     self.log_tag)
 
     def on_lowpass_enable(self, obj, state):
+        self.lowpass_ready = False
+
         if state:
             limiter_enabled = self.settings.get_value('limiter-state').unpack()
             panorama_enabled = self.settings.get_value(
@@ -381,6 +390,8 @@ class SinkInputEffects(PipelineBase):
                                     self.log_tag)
 
     def on_equalizer_enable(self, obj, state):
+        self.equalizer_ready = False
+
         if state:
             limiter_enabled = self.settings.get_value('limiter-state').unpack()
             panorama_enabled = self.settings.get_value(
