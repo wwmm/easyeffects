@@ -38,14 +38,6 @@ class Equalizer():
         for n in range(15):
             setattr(self, 'band' + str(n), equalizer.get_child_by_index(n))
 
-        # It seems there is a bug in the low shelf filter.
-        # When we increase the lower shelf gain higher frequencies
-        # are attenuated. Setting the first band to peak type instead of
-        # shelf fixes this.
-
-        self.band0.set_property('type', 0)  # 0: peak type
-        self.band14.set_property('type', 0)  # 0: peak type
-
         self.bin = GstInsertBin.InsertBin.new('equalizer_bin')
 
         self.bin.append(self.input_gain, self.on_filter_added, None)
@@ -106,12 +98,13 @@ class Equalizer():
             menu = menu_builder.get_object('menu')
             band_f = menu_builder.get_object('band_f')
             band_q = menu_builder.get_object('band_q')
+            band_t = menu_builder.get_object('band_t')
             reset_f = menu_builder.get_object('reset_f')
             reset_q = menu_builder.get_object('reset_q')
-            # reset_t = menu_builder.get_object('reset_t')
 
             setattr(self, 'ui_band' + str(n) + '_f', band_f)
             setattr(self, 'ui_band' + str(n) + '_q', band_q)
+            setattr(self, 'ui_band' + str(n) + '_t', band_t)
 
             menu.set_relative_to(menu_button)
 
@@ -133,8 +126,12 @@ class Equalizer():
         flag = GObject.BindingFlags.DEFAULT
 
         for n in range(15):
-            getattr(self, 'ui_band' + str(n) + '_g').bind_property(
-                'value', getattr(self, 'band' + str(n)), 'gain', flag)
+            ui_band_g = getattr(self, 'ui_band' + str(n) + '_g')
+            ui_band_t = getattr(self, 'ui_band' + str(n) + '_t')
+            band = getattr(self, 'band' + str(n))
+
+            ui_band_g.bind_property('value', band, 'gain', flag)
+            ui_band_t.bind_property('active', band, 'type', flag)
 
         # binding ui widgets to gsettings
 
@@ -153,6 +150,7 @@ class Equalizer():
             ui_band_g = getattr(self, 'ui_band' + str(n) + '_g')
             ui_band_f = getattr(self, 'ui_band' + str(n) + '_f')
             ui_band_q = getattr(self, 'ui_band' + str(n) + '_q')
+            ui_band_t = getattr(self, 'ui_band' + str(n) + '_t')
 
             prop = 'equalizer-band' + str(n) + '-gain'
             self.settings.bind(prop, ui_band_g, 'value', flag)
@@ -162,6 +160,9 @@ class Equalizer():
 
             prop = 'equalizer-band' + str(n) + '-quality'
             self.settings.bind(prop, ui_band_q, 'value', flag)
+
+            prop = 'equalizer-band' + str(n) + '-type'
+            self.settings.bind(prop, ui_band_t, 'active', flag)
 
     def print_eq_freqs_and_widths(self):
         for n in range(15):
@@ -273,3 +274,4 @@ class Equalizer():
             self.settings.reset('equalizer-band' + str(n) + '-gain')
             self.settings.reset('equalizer-band' + str(n) + '-frequency')
             self.settings.reset('equalizer-band' + str(n) + '-quality')
+            self.settings.reset('equalizer-band' + str(n) + '-type')

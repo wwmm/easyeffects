@@ -93,7 +93,7 @@ class SavePresets():
         input_gain = settings.get_value('equalizer-input-gain')
         output_gain = settings.get_value('equalizer-output-gain')
 
-        gain, frequencies, qualities = [], [], []
+        gain, frequencies, qualities, types = [], [], [], []
 
         for n in range(15):
             gain.append(
@@ -104,6 +104,9 @@ class SavePresets():
 
             qualities.append(
                 settings.get_value('equalizer-band' + str(n) + '-quality'))
+
+            types.append(
+                settings.get_value('equalizer-band' + str(n) + '-type'))
 
         self.config[section] = {'enabled': str(enabled),
                                 'input_gain': str(input_gain),
@@ -152,7 +155,22 @@ class SavePresets():
                                 'band11_qfactor': str(qualities[11]),
                                 'band12_qfactor': str(qualities[12]),
                                 'band13_qfactor': str(qualities[13]),
-                                'band14_qfactor': str(qualities[14])}
+                                'band14_qfactor': str(qualities[14]),
+                                'band0_type': str(types[0]),
+                                'band1_type': str(types[1]),
+                                'band2_type': str(types[2]),
+                                'band3_type': str(types[3]),
+                                'band4_type': str(types[4]),
+                                'band5_type': str(types[5]),
+                                'band6_type': str(types[6]),
+                                'band7_type': str(types[7]),
+                                'band8_type': str(types[8]),
+                                'band9_type': str(types[9]),
+                                'band10_type': str(types[10]),
+                                'band11_type': str(types[11]),
+                                'band12_type': str(types[12]),
+                                'band13_type': str(types[13]),
+                                'band14_type': str(types[14])}
 
     def save_sink_inputs_presets(self, settings):
         self.save_limiter_presets(settings, 'apps_limiter')

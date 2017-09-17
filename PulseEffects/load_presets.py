@@ -187,6 +187,27 @@ class LoadPresets():
         self.band14_q = self.config.getfloat(section, 'band14_qfactor',
                                              fallback=2.21)
 
+        self.band0_t = self.config.getfloat(section, 'band0_type', fallback=1)
+        self.band1_t = self.config.getfloat(section, 'band1_type', fallback=0)
+        self.band2_t = self.config.getfloat(section, 'band2_type', fallback=0)
+        self.band3_t = self.config.getfloat(section, 'band3_type', fallback=0)
+        self.band4_t = self.config.getfloat(section, 'band4_type', fallback=0)
+        self.band5_t = self.config.getfloat(section, 'band5_type', fallback=0)
+        self.band6_t = self.config.getfloat(section, 'band6_type', fallback=0)
+        self.band7_t = self.config.getfloat(section, 'band7_type', fallback=0)
+        self.band8_t = self.config.getfloat(section, 'band8_type', fallback=0)
+        self.band9_t = self.config.getfloat(section, 'band9_type', fallback=0)
+        self.band10_t = self.config.getfloat(section, 'band10_type',
+                                             fallback=0)
+        self.band11_t = self.config.getfloat(section, 'band11_type',
+                                             fallback=0)
+        self.band12_t = self.config.getfloat(section, 'band12_type',
+                                             fallback=0)
+        self.band13_t = self.config.getfloat(section, 'band13_type',
+                                             fallback=0)
+        self.band14_t = self.config.getfloat(section, 'band14_type',
+                                             fallback=2)
+
         settings.set_value('equalizer-state', GLib.Variant('b', enabled))
         settings.set_value('equalizer-input-gain',
                            GLib.Variant('d', input_gain))
@@ -197,10 +218,12 @@ class LoadPresets():
             g = GLib.Variant('d', getattr(self, 'band' + str(n) + '_g'))
             f = GLib.Variant('d', getattr(self, 'band' + str(n) + '_f'))
             q = GLib.Variant('d', getattr(self, 'band' + str(n) + '_q'))
+            t = GLib.Variant('i', getattr(self, 'band' + str(n) + '_t'))
 
             settings.set_value('equalizer-band' + str(n) + '-gain', g)
             settings.set_value('equalizer-band' + str(n) + '-frequency', f)
             settings.set_value('equalizer-band' + str(n) + '-quality', q)
+            settings.set_value('equalizer-band' + str(n) + '-type', t)
 
     def load_sink_inputs_presets(self, settings):
         # order is important
