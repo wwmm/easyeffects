@@ -91,6 +91,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
+            <property name="spacing">6</property>
             <child>
               <object class="GtkRadioButton" id="compressor_rms">
                 <property name="label" translatable="yes">rms</property>
@@ -137,6 +138,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
+            <property name="row_spacing">6</property>
             <property name="column_spacing">18</property>
             <child>
               <object class="GtkLabel">
@@ -348,12 +350,13 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="hexpand">True</property>
+        <property name="row_spacing">6</property>
         <property name="column_spacing">6</property>
         <child>
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="halign">start</property>
+            <property name="halign">end</property>
             <property name="label" translatable="yes">Input</property>
           </object>
           <packing>
@@ -454,7 +457,7 @@
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="halign">start</property>
+            <property name="halign">end</property>
             <property name="label" translatable="yes">Output</property>
           </object>
           <packing>
@@ -555,7 +558,7 @@
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="halign">start</property>
+            <property name="halign">end</property>
             <property name="label" translatable="yes">Gain Reduction</property>
           </object>
           <packing>

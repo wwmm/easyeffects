@@ -375,6 +375,10 @@ class SinkInputEffects(EffectsBase):
             self.log.critical(user_data + 'failed to enable ' + plugin_name)
 
     def reset(self):
-        EffectsBase.reset(self)
-
+        self.limiter.reset()
         self.panorama.reset()
+        self.compressor.reset()
+        self.reverb.reset()
+        self.highpass.reset()
+        self.lowpass.reset()
+        self.equalizer.reset()

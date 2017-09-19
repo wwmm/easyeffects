@@ -219,14 +219,13 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="orientation">vertical</property>
-    <property name="spacing">6</property>
+    <property name="spacing">12</property>
     <child>
       <object class="GtkGrid">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="halign">center</property>
-        <property name="row_spacing">6</property>
-        <property name="column_spacing">3</property>
+        <property name="column_spacing">6</property>
         <property name="column_homogeneous">True</property>
         <child>
           <object class="GtkButton" id="eq_flat_response_button">
@@ -985,11 +984,13 @@
       <object class="GtkGrid">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="row_spacing">6</property>
+        <property name="column_spacing">6</property>
         <child>
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="halign">start</property>
+            <property name="halign">end</property>
             <property name="valign">center</property>
             <property name="label" translatable="yes">Input [dB]</property>
           </object>
@@ -1002,7 +1003,7 @@
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="halign">start</property>
+            <property name="halign">end</property>
             <property name="valign">center</property>
             <property name="label" translatable="yes">Output [dB]</property>
           </object>

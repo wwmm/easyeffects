@@ -60,6 +60,8 @@
               <object class="GtkBox" id="spectrum_labels">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="margin_left">6</property>
+                <property name="margin_right">6</property>
                 <property name="homogeneous">True</property>
                 <child>
                   <object class="GtkBox">
@@ -223,8 +225,7 @@
               <object class="GtkSeparator">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="valign">start</property>
-                <property name="margin_bottom">3</property>
+                <property name="margin_bottom">6</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -354,12 +355,14 @@
     <property name="margin_top">6</property>
     <property name="margin_bottom">6</property>
     <property name="orientation">vertical</property>
-    <property name="spacing">2</property>
+    <property name="spacing">18</property>
     <child>
       <object class="GtkLabel">
         <property name="visible">True</property>
         <property name="sensitive">False</property>
         <property name="can_focus">False</property>
+        <property name="halign">center</property>
+        <property name="valign">center</property>
         <property name="label" translatable="yes">Latency</property>
       </object>
       <packing>
@@ -372,14 +375,16 @@
       <object class="GtkGrid">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="row_spacing">3</property>
-        <property name="column_spacing">3</property>
+        <property name="valign">center</property>
+        <property name="row_spacing">6</property>
+        <property name="column_spacing">12</property>
         <property name="column_homogeneous">True</property>
         <child>
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">start</property>
+            <property name="valign">center</property>
             <property name="label" translatable="yes">buffer-time [ms]</property>
           </object>
           <packing>
@@ -392,6 +397,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="halign">end</property>
+            <property name="valign">center</property>
             <property name="width_chars">3</property>
             <property name="input_purpose">number</property>
             <property name="adjustment">buffer_time</property>
@@ -408,6 +414,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">start</property>
+            <property name="valign">center</property>
             <property name="label" translatable="yes">latency-time [ms]</property>
           </object>
           <packing>
@@ -420,6 +427,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="halign">end</property>
+            <property name="valign">center</property>
             <property name="width_chars">2</property>
             <property name="input_purpose">number</property>
             <property name="adjustment">latency_time</property>
@@ -439,51 +447,27 @@
       </packing>
     </child>
     <child>
-      <object class="GtkSeparator">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="margin_top">2</property>
-        <property name="margin_bottom">2</property>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkSeparator">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="margin_top">2</property>
-        <property name="margin_bottom">2</property>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">5</property>
-      </packing>
-    </child>
-    <child>
       <object class="GtkLabel">
         <property name="visible">True</property>
         <property name="sensitive">False</property>
         <property name="can_focus">False</property>
+        <property name="halign">center</property>
+        <property name="valign">center</property>
         <property name="label" translatable="yes">Spectrum</property>
       </object>
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">6</property>
+        <property name="position">3</property>
       </packing>
     </child>
     <child>
       <object class="GtkGrid">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="hexpand">True</property>
-        <property name="row_spacing">3</property>
-        <property name="column_spacing">3</property>
+        <property name="valign">center</property>
+        <property name="row_spacing">6</property>
+        <property name="column_spacing">12</property>
         <property name="column_homogeneous">True</property>
         <child>
           <object class="GtkLabel">
@@ -542,20 +526,7 @@
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">7</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkSeparator">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="margin_top">2</property>
-        <property name="margin_bottom">2</property>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">8</property>
+        <property name="position">4</property>
       </packing>
     </child>
     <child>
@@ -563,20 +534,22 @@
         <property name="visible">True</property>
         <property name="sensitive">False</property>
         <property name="can_focus">False</property>
+        <property name="halign">center</property>
+        <property name="valign">center</property>
         <property name="label" translatable="yes">General</property>
       </object>
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">9</property>
+        <property name="position">5</property>
       </packing>
     </child>
     <child>
       <object class="GtkGrid">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="row_spacing">3</property>
-        <property name="column_spacing">3</property>
+        <property name="row_spacing">6</property>
+        <property name="column_spacing">12</property>
         <child>
           <object class="GtkLabel">
             <property name="visible">True</property>
@@ -633,7 +606,7 @@
       <packing>
         <property name="expand">True</property>
         <property name="fill">True</property>
-        <property name="position">10</property>
+        <property name="position">7</property>
       </packing>
     </child>
   </object>

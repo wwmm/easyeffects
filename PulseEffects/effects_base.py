@@ -74,8 +74,8 @@ class EffectsBase(PipelineBase):
 
         row.set_name(name)
 
-        row.set_margin_top(3)
-        row.set_margin_bottom(3)
+        row.set_margin_top(6)
+        row.set_margin_bottom(6)
 
         self.listbox.add(row)
 
@@ -200,11 +200,3 @@ class EffectsBase(PipelineBase):
         else:
             self.effects_bin.remove(self.spectrum, self.on_filter_removed,
                                     self.log_tag)
-
-    def reset(self):
-        self.limiter.reset()
-        self.compressor.reset()
-        self.reverb.reset()
-        self.highpass.reset()
-        self.lowpass.reset()
-        self.equalizer.reset()

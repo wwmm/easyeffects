@@ -15,6 +15,10 @@
           <object class="GtkListBox" id="listbox">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="margin_left">6</property>
+            <property name="margin_right">6</property>
+            <property name="margin_top">6</property>
+            <property name="margin_bottom">6</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -37,6 +41,10 @@
           <object class="GtkStack" id="stack">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="margin_left">6</property>
+            <property name="margin_right">6</property>
+            <property name="margin_top">6</property>
+            <property name="margin_bottom">6</property>
             <property name="hexpand">True</property>
             <property name="transition_duration">250</property>
             <property name="transition_type">crossfade</property>
@@ -61,8 +69,6 @@
       <object class="GtkSeparator">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="margin_top">3</property>
-        <property name="margin_bottom">3</property>
       </object>
       <packing>
         <property name="expand">False</property>
@@ -74,7 +80,10 @@
       <object class="GtkBox" id="apps_box">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="margin_bottom">3</property>
+        <property name="margin_left">6</property>
+        <property name="margin_right">6</property>
+        <property name="margin_top">6</property>
+        <property name="margin_bottom">6</property>
         <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child>

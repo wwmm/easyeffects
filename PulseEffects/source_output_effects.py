@@ -259,3 +259,11 @@ class SourceOutputEffects(EffectsBase):
         else:
             self.effects_bin.remove(self.equalizer.bin, self.on_filter_removed,
                                     self.log_tag)
+
+    def reset(self):
+        self.limiter.reset()
+        self.compressor.reset()
+        self.reverb.reset()
+        self.highpass.reset()
+        self.lowpass.reset()
+        self.equalizer.reset()

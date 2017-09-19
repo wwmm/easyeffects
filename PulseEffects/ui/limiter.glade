@@ -103,7 +103,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
-            <property name="row_spacing">3</property>
+            <property name="row_spacing">6</property>
             <property name="column_spacing">18</property>
             <child>
               <object class="GtkLabel">
@@ -244,6 +244,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
+                <property name="row_spacing">6</property>
                 <property name="column_spacing">18</property>
                 <child>
                   <object class="GtkLabel">
@@ -386,12 +387,13 @@
       <object class="GtkGrid">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="row_spacing">6</property>
         <property name="column_spacing">6</property>
         <child>
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="halign">start</property>
+            <property name="halign">end</property>
             <property name="label" translatable="yes">Input</property>
           </object>
           <packing>
@@ -492,7 +494,7 @@
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="halign">start</property>
+            <property name="halign">end</property>
             <property name="label" translatable="yes">Output</property>
           </object>
           <packing>
@@ -593,7 +595,7 @@
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="halign">start</property>
+            <property name="halign">end</property>
             <property name="label" translatable="yes">Attenuation</property>
           </object>
           <packing>
