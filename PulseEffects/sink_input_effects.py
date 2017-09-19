@@ -107,6 +107,9 @@ class SinkInputEffects(PipelineBase):
 
         row.set_name(name)
 
+        row.set_margin_top(3)
+        row.set_margin_bottom(3)
+
         self.listbox.add(row)
 
     def on_listbox_row_activated(self, obj, row):
