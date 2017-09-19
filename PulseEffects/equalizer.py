@@ -53,7 +53,6 @@ class Equalizer():
 
         self.ui_window = self.builder.get_object('window')
         self.ui_listbox_control = self.builder.get_object('listbox_control')
-        self.ui_controls = self.builder.get_object('controls')
 
         self.ui_enable = self.builder.get_object('enable')
 
@@ -140,7 +139,7 @@ class Equalizer():
 
         self.settings.bind('equalizer-state', self.ui_enable,
                            'active', flag)
-        self.settings.bind('equalizer-state', self.ui_controls,
+        self.settings.bind('equalizer-state', self.ui_window,
                            'sensitive', Gio.SettingsBindFlags.GET)
         self.settings.bind('equalizer-input-gain', self.ui_input_gain, 'value',
                            flag)

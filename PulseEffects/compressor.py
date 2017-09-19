@@ -45,7 +45,6 @@ class Compressor():
 
         self.ui_window = self.builder.get_object('window')
         self.ui_listbox_control = self.builder.get_object('listbox_control')
-        self.ui_controls = self.builder.get_object('controls')
 
         self.ui_enable = self.builder.get_object('enable')
         self.ui_compressor_rms = self.builder.get_object('compressor_rms')
@@ -107,7 +106,7 @@ class Compressor():
         flag = Gio.SettingsBindFlags.DEFAULT
 
         self.settings.bind('compressor-state', self.ui_enable, 'active', flag)
-        self.settings.bind('compressor-state', self.ui_controls, 'sensitive',
+        self.settings.bind('compressor-state', self.ui_window, 'sensitive',
                            Gio.SettingsBindFlags.GET)
 
         self.settings.bind('compressor-use-peak', self.ui_compressor_peak,

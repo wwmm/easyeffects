@@ -43,7 +43,6 @@ class Panorama():
 
         self.ui_window = self.builder.get_object('window')
         self.ui_listbox_control = self.builder.get_object('listbox_control')
-        self.ui_controls = self.builder.get_object('controls')
 
         self.ui_enable = self.builder.get_object('enable')
         self.ui_position = self.builder.get_object('position')
@@ -78,7 +77,7 @@ class Panorama():
         flag = Gio.SettingsBindFlags.DEFAULT
 
         self.settings.bind('panorama-state', self.ui_enable, 'active', flag)
-        self.settings.bind('panorama-state', self.ui_controls, 'sensitive',
+        self.settings.bind('panorama-state', self.ui_window, 'sensitive',
                            Gio.SettingsBindFlags.GET)
         self.settings.bind('panorama-position', self.ui_position, 'value',
                            flag)

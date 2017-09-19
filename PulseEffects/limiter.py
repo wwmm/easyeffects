@@ -119,6 +119,8 @@ class Limiter():
 
         self.settings.bind('limiter-state', self.ui_limiter_enable, 'active',
                            flag)
+        self.settings.bind('limiter-state', self.ui_window,
+                           'sensitive', Gio.SettingsBindFlags.GET)
         self.settings.bind('limiter-state', self.ui_autovolume_box,
                            'sensitive', Gio.SettingsBindFlags.GET)
         self.settings.bind('limiter-input-gain', self.ui_input_gain, 'value',

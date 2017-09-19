@@ -40,7 +40,6 @@ class Reverb():
 
         self.ui_window = self.builder.get_object('window')
         self.ui_listbox_control = self.builder.get_object('listbox_control')
-        self.ui_controls = self.builder.get_object('controls')
 
         self.ui_enable = self.builder.get_object('enable')
         self.ui_room_size = self.builder.get_object('room_size')
@@ -82,7 +81,7 @@ class Reverb():
         flag = Gio.SettingsBindFlags.DEFAULT
 
         self.settings.bind('reverb-state', self.ui_enable, 'active', flag)
-        self.settings.bind('reverb-state', self.ui_controls, 'sensitive',
+        self.settings.bind('reverb-state', self.ui_window, 'sensitive',
                            Gio.SettingsBindFlags.GET)
         self.settings.bind('reverb-room-size', self.ui_room_size, 'value',
                            flag)

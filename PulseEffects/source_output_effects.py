@@ -49,35 +49,12 @@ class SourceOutputEffects(PipelineBase):
         self.lowpass = Lowpass(self.settings)
         self.equalizer = Equalizer(self.settings)
 
-        row = Gtk.ListBoxRow()
-        row.add(self.limiter.ui_listbox_control)
-        row.set_name('limiter')
-        self.listbox.add(row)
-
-        row = Gtk.ListBoxRow()
-        row.add(self.compressor.ui_listbox_control)
-        row.set_name('compressor')
-        self.listbox.add(row)
-
-        row = Gtk.ListBoxRow()
-        row.add(self.reverb.ui_listbox_control)
-        row.set_name('reverb')
-        self.listbox.add(row)
-
-        row = Gtk.ListBoxRow()
-        row.add(self.highpass.ui_listbox_control)
-        row.set_name('highpass')
-        self.listbox.add(row)
-
-        row = Gtk.ListBoxRow()
-        row.add(self.lowpass.ui_listbox_control)
-        row.set_name('lowpass')
-        self.listbox.add(row)
-
-        row = Gtk.ListBoxRow()
-        row.add(self.equalizer.ui_listbox_control)
-        row.set_name('equalizer')
-        self.listbox.add(row)
+        self.add_to_listbox('limiter')
+        self.add_to_listbox('compressor')
+        self.add_to_listbox('reverb')
+        self.add_to_listbox('highpass')
+        self.add_to_listbox('lowpass')
+        self.add_to_listbox('equalizer')
 
         self.listbox.connect('row-activated', self.on_listbox_row_activated)
 
@@ -121,6 +98,15 @@ class SourceOutputEffects(PipelineBase):
         self.highpass.bind()
         self.lowpass.bind()
         self.equalizer.bind()
+
+    def add_to_listbox(self, name):
+        row = Gtk.ListBoxRow()
+
+        row.add(getattr(self, name).ui_listbox_control)
+
+        row.set_name(name)
+
+        self.listbox.add(row)
 
     def on_listbox_row_activated(self, obj, row):
         name = row.get_name()
