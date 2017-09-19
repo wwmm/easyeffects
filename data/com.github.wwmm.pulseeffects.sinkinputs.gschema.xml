@@ -259,7 +259,7 @@
         </key>
 
         <key name="equalizer-band0-type" type="i">
-          <default>1</default>
+          <default>0</default>
         </key>
         <key name="equalizer-band1-type" type="i">
           <default>0</default>

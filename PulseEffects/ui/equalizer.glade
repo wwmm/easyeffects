@@ -174,6 +174,40 @@
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_input_gain_value_changed" swapped="no"/>
   </object>
+  <object class="GtkBox" id="listbox_control">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="spacing">12</property>
+    <child>
+      <object class="GtkLabel">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Equalizer</property>
+        <attributes>
+          <attribute name="weight" value="bold"/>
+        </attributes>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSwitch" id="enable">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="halign">center</property>
+        <property name="valign">center</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="pack_type">end</property>
+        <property name="position">1</property>
+      </packing>
+    </child>
+  </object>
   <object class="GtkAdjustment" id="output_gain">
     <property name="lower">-24</property>
     <property name="upper">20</property>
@@ -186,19 +220,6 @@
     <property name="can_focus">False</property>
     <property name="orientation">vertical</property>
     <property name="spacing">3</property>
-    <child>
-      <object class="GtkSwitch" id="enable">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="halign">center</property>
-        <property name="valign">center</property>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">0</property>
-      </packing>
-    </child>
     <child>
       <object class="GtkBox" id="controls">
         <property name="visible">True</property>

@@ -52,6 +52,7 @@ class Equalizer():
         self.builder.connect_signals(self)
 
         self.ui_window = self.builder.get_object('window')
+        self.ui_listbox_control = self.builder.get_object('listbox_control')
         self.ui_controls = self.builder.get_object('controls')
 
         self.ui_enable = self.builder.get_object('enable')

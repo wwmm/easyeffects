@@ -48,6 +48,7 @@ class Limiter():
         self.builder.connect_signals(self)
 
         self.ui_window = self.builder.get_object('window')
+        self.ui_listbox_control = self.builder.get_object('listbox_control')
         self.ui_limiter_controls = self.builder.get_object('limiter_controls')
 
         self.ui_autovolume_box = self.builder.get_object('autovolume_box')

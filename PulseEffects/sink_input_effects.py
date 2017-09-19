@@ -38,7 +38,7 @@ class SinkInputEffects(PipelineBase):
         self.builder.add_from_file(self.module_path + '/ui/effects_box.glade')
 
         self.ui_window = self.builder.get_object('window')
-
+        self.listbox = self.builder.get_object('listbox')
         self.stack = self.builder.get_object('stack')
 
         self.limiter = Limiter(self.settings)
@@ -48,6 +48,45 @@ class SinkInputEffects(PipelineBase):
         self.highpass = Highpass(self.settings)
         self.lowpass = Lowpass(self.settings)
         self.equalizer = Equalizer(self.settings)
+
+        row = Gtk.ListBoxRow()
+        row.add(self.limiter.ui_listbox_control)
+        row.set_name('limiter')
+        self.listbox.add(row)
+
+        row = Gtk.ListBoxRow()
+        row.add(self.panorama.ui_listbox_control)
+        row.set_name('panorama')
+        self.listbox.add(row)
+
+        row = Gtk.ListBoxRow()
+        row.add(self.compressor.ui_listbox_control)
+        row.set_name('compressor')
+        self.listbox.add(row)
+
+        row = Gtk.ListBoxRow()
+        row.add(self.reverb.ui_listbox_control)
+        row.set_name('reverb')
+        self.listbox.add(row)
+
+        row = Gtk.ListBoxRow()
+        row.add(self.highpass.ui_listbox_control)
+        row.set_name('highpass')
+        self.listbox.add(row)
+
+        row = Gtk.ListBoxRow()
+        row.add(self.lowpass.ui_listbox_control)
+        row.set_name('lowpass')
+        self.listbox.add(row)
+
+        row = Gtk.ListBoxRow()
+        row.add(self.equalizer.ui_listbox_control)
+        row.set_name('equalizer')
+        self.listbox.add(row)
+
+        self.listbox.connect('row-activated', self.on_listbox_row_activated)
+
+        self.listbox.show_all()
 
         # adding effects widgets to the stack
 
@@ -87,6 +126,24 @@ class SinkInputEffects(PipelineBase):
         self.highpass.bind()
         self.lowpass.bind()
         self.equalizer.bind()
+
+    def on_listbox_row_activated(self, obj, row):
+        name = row.get_name()
+
+        if name == 'limiter':
+            self.stack.set_visible_child(self.limiter.ui_window)
+        elif name == 'panorama':
+            self.stack.set_visible_child(self.panorama.ui_window)
+        elif name == 'compressor':
+            self.stack.set_visible_child(self.compressor.ui_window)
+        elif name == 'reverb':
+            self.stack.set_visible_child(self.reverb.ui_window)
+        elif name == 'highpass':
+            self.stack.set_visible_child(self.highpass.ui_window)
+        elif name == 'lowpass':
+            self.stack.set_visible_child(self.lowpass.ui_window)
+        elif name == 'equalizer':
+            self.stack.set_visible_child(self.equalizer.ui_window)
 
     def on_message_element(self, bus, msg):
         plugin = msg.src.get_name()
