@@ -294,7 +294,7 @@
           <default>0</default>
         </key>
         <key name="equalizer-band14-type" type="i">
-          <default>2</default>
+          <default>0</default>
         </key>
 
     </schema>
