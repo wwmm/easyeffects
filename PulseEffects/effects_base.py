@@ -4,7 +4,7 @@ import os
 import gi
 import numpy as np
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk
+from gi.repository import Gio, Gtk
 from PulseEffects.compressor import Compressor
 from PulseEffects.equalizer import Equalizer
 from PulseEffects.highpass import Highpass
@@ -37,6 +37,17 @@ class EffectsBase(PipelineBase):
         self.stack = self.builder.get_object('stack')
 
         self.listbox.connect('row-activated', self.on_listbox_row_activated)
+
+        # listbox style
+        provider = Gtk.CssProvider()
+
+        css_file = Gio.File.new_for_path(self.module_path + '/ui/listbox.css')
+
+        provider.load_from_file(css_file)
+
+        Gtk.StyleContext.add_provider(self.listbox.get_style_context(),
+                                      provider,
+                                      Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
         self.limiter = Limiter(self.settings)
         self.compressor = Compressor(self.settings)
