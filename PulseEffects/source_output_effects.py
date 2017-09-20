@@ -24,18 +24,12 @@ class SourceOutputEffects(EffectsBase):
         self.equalizer.ui_eq_calibrate_button.destroy()
 
         # adding effects widgets to the stack
-        self.stack.add_titled(self.limiter.ui_window, 'Limiter',
-                              _('Input Limiter'))
-        self.stack.add_titled(self.compressor.ui_window, 'Compressor',
-                              _('Compressor'))
-        self.stack.add_titled(self.reverb.ui_window, 'Reverb',
-                              _('Reverberation'))
-        self.stack.add_titled(self.highpass.ui_window, 'Highpass',
-                              _('High pass'))
-        self.stack.add_titled(self.lowpass.ui_window, 'Lowpass',
-                              _('Low pass'))
-        self.stack.add_titled(self.equalizer.ui_window, 'Equalizer',
-                              _('Equalizer'))
+        self.stack.add_named(self.limiter.ui_window, 'Limiter')
+        self.stack.add_named(self.compressor.ui_window, 'Compressor')
+        self.stack.add_named(self.reverb.ui_window, 'Reverb')
+        self.stack.add_named(self.highpass.ui_window, 'Highpass')
+        self.stack.add_named(self.lowpass.ui_window, 'Lowpass')
+        self.stack.add_named(self.equalizer.ui_window, 'Equalizer')
 
         # on/off switches connections
         self.compressor.ui_enable.connect('state-set',

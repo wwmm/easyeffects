@@ -1,5 +1,3 @@
-PulseEffects/sink_input_effects.py
-PulseEffects/source_output_effects.py
 PulseEffects/ui/about.glade
 PulseEffects/ui/compressor.glade
 PulseEffects/ui/effects_box.glade

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-18 23:15-0300\n"
+"POT-Creation-Date: 2017-09-20 11:47-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,118 +17,90 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: PulseEffects/sink_input_effects.py:94
-#: PulseEffects/source_output_effects.py:93 PulseEffects/ui/limiter.glade:55
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:48
-msgid "Input Limiter"
-msgstr ""
-
-#: PulseEffects/sink_input_effects.py:96 PulseEffects/ui/panorama.glade:13
-msgid "Panorama"
-msgstr ""
-
-#: PulseEffects/sink_input_effects.py:98
-#: PulseEffects/source_output_effects.py:95 PulseEffects/ui/compressor.glade:27
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:52
-msgid "Compressor"
-msgstr ""
-
-#: PulseEffects/sink_input_effects.py:100
-#: PulseEffects/source_output_effects.py:97 PulseEffects/ui/reverb.glade:25
-msgid "Reverberation"
-msgstr ""
-
-#: PulseEffects/sink_input_effects.py:102
-#: PulseEffects/source_output_effects.py:99
-msgid "High pass"
-msgstr ""
-
-#: PulseEffects/sink_input_effects.py:104
-#: PulseEffects/source_output_effects.py:101
-msgid "Low pass"
-msgstr ""
-
-#: PulseEffects/sink_input_effects.py:106
-#: PulseEffects/source_output_effects.py:103
-#: PulseEffects/ui/equalizer.glade:185
-msgid "Equalizer"
-msgstr ""
-
 #: PulseEffects/ui/about.glade:11
 msgid "Audio Effects for Pulseaudio Applications"
 msgstr ""
 
-#: PulseEffects/ui/compressor.glade:96
+#: PulseEffects/ui/compressor.glade:27
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:52
+msgid "Compressor"
+msgstr ""
+
+#: PulseEffects/ui/compressor.glade:97
 msgid "rms"
 msgstr ""
 
-#: PulseEffects/ui/compressor.glade:112
+#: PulseEffects/ui/compressor.glade:113
 msgid "peak"
 msgstr ""
 
-#: PulseEffects/ui/compressor.glade:146
+#: PulseEffects/ui/compressor.glade:148
 msgid "Attack [ms]"
 msgstr ""
 
-#: PulseEffects/ui/compressor.glade:174
+#: PulseEffects/ui/compressor.glade:176
 msgid "Release [ms]"
 msgstr ""
 
-#: PulseEffects/ui/compressor.glade:200 PulseEffects/ui/limiter.glade:328
+#: PulseEffects/ui/compressor.glade:202 PulseEffects/ui/limiter.glade:329
 msgid "Threshold [dB]"
 msgstr ""
 
-#: PulseEffects/ui/compressor.glade:226
+#: PulseEffects/ui/compressor.glade:228
 msgid "Ratio [n:1]"
 msgstr ""
 
-#: PulseEffects/ui/compressor.glade:252
+#: PulseEffects/ui/compressor.glade:254
 msgid "Knee [dB]"
 msgstr ""
 
-#: PulseEffects/ui/compressor.glade:280
+#: PulseEffects/ui/compressor.glade:282
 msgid "Makeup [dB]"
 msgstr ""
 
-#: PulseEffects/ui/compressor.glade:312 PulseEffects/ui/reverb.glade:206
+#: PulseEffects/ui/compressor.glade:314 PulseEffects/ui/reverb.glade:207
 msgid "Presets"
 msgstr ""
 
-#: PulseEffects/ui/compressor.glade:325
+#: PulseEffects/ui/compressor.glade:327
 msgid "Vlc"
 msgstr ""
 
-#: PulseEffects/ui/compressor.glade:357 PulseEffects/ui/highpass.glade:237
-#: PulseEffects/ui/limiter.glade:395 PulseEffects/ui/lowpass.glade:237
-#: PulseEffects/ui/panorama.glade:214 PulseEffects/ui/reverb.glade:393
+#: PulseEffects/ui/compressor.glade:360 PulseEffects/ui/highpass.glade:238
+#: PulseEffects/ui/limiter.glade:397 PulseEffects/ui/lowpass.glade:238
+#: PulseEffects/ui/panorama.glade:216 PulseEffects/ui/reverb.glade:394
 msgid "Input"
 msgstr ""
 
-#: PulseEffects/ui/compressor.glade:458 PulseEffects/ui/highpass.glade:136
-#: PulseEffects/ui/limiter.glade:496 PulseEffects/ui/lowpass.glade:136
-#: PulseEffects/ui/panorama.glade:113 PulseEffects/ui/reverb.glade:292
+#: PulseEffects/ui/compressor.glade:461 PulseEffects/ui/highpass.glade:137
+#: PulseEffects/ui/limiter.glade:498 PulseEffects/ui/lowpass.glade:137
+#: PulseEffects/ui/panorama.glade:115 PulseEffects/ui/reverb.glade:293
 msgid "Output"
 msgstr ""
 
-#: PulseEffects/ui/compressor.glade:559
+#: PulseEffects/ui/compressor.glade:562
 msgid "Gain Reduction"
 msgstr ""
 
-#: PulseEffects/ui/equalizer.glade:239
+#: PulseEffects/ui/equalizer.glade:185
+msgid "Equalizer"
+msgstr ""
+
+#: PulseEffects/ui/equalizer.glade:232
 msgid "Flat Response"
 msgstr ""
 
-#: PulseEffects/ui/equalizer.glade:252
+#: PulseEffects/ui/equalizer.glade:245
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
 msgid "Calibration"
 msgstr ""
 
-#: PulseEffects/ui/equalizer.glade:1000
+#: PulseEffects/ui/equalizer.glade:995
 #: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:777
 msgid "Input [dB]"
 msgstr ""
 
-#: PulseEffects/ui/equalizer.glade:1013
+#: PulseEffects/ui/equalizer.glade:1008
 msgid "Output [dB]"
 msgstr ""
 
@@ -144,24 +116,24 @@ msgstr ""
 msgid "High Shelf"
 msgstr ""
 
-#: PulseEffects/ui/equalizer_band_menu.glade:46
+#: PulseEffects/ui/equalizer_band_menu.glade:50
 msgid "Filter Type"
 msgstr ""
 
-#: PulseEffects/ui/equalizer_band_menu.glade:87
+#: PulseEffects/ui/equalizer_band_menu.glade:92
 #: PulseEffectsCalibration/ui/test_signal.glade:270
 msgid "Frequency [Hz]"
 msgstr ""
 
-#: PulseEffects/ui/equalizer_band_menu.glade:100
+#: PulseEffects/ui/equalizer_band_menu.glade:105
 msgid "Quality"
 msgstr ""
 
-#: PulseEffects/ui/equalizer_band_menu.glade:143
+#: PulseEffects/ui/equalizer_band_menu.glade:148
 msgid "Reset Frequency"
 msgstr ""
 
-#: PulseEffects/ui/equalizer_band_menu.glade:156
+#: PulseEffects/ui/equalizer_band_menu.glade:161
 msgid "Reset Quality"
 msgstr ""
 
@@ -175,6 +147,11 @@ msgstr ""
 
 #: PulseEffects/ui/highpass.glade:97 PulseEffects/ui/lowpass.glade:97
 msgid "Poles"
+msgstr ""
+
+#: PulseEffects/ui/limiter.glade:55
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:48
+msgid "Input Limiter"
 msgstr ""
 
 #: PulseEffects/ui/limiter.glade:113
@@ -193,20 +170,20 @@ msgstr ""
 msgid "Auto Volume"
 msgstr ""
 
-#: PulseEffects/ui/limiter.glade:253
+#: PulseEffects/ui/limiter.glade:254
 #: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:150
 msgid "Window [s]"
 msgstr ""
 
-#: PulseEffects/ui/limiter.glade:265
+#: PulseEffects/ui/limiter.glade:266
 msgid "Target [dB]"
 msgstr ""
 
-#: PulseEffects/ui/limiter.glade:357
+#: PulseEffects/ui/limiter.glade:358
 msgid "Tolerance [dB]"
 msgstr ""
 
-#: PulseEffects/ui/limiter.glade:597
+#: PulseEffects/ui/limiter.glade:599
 msgid "Attenuation"
 msgstr ""
 
@@ -214,75 +191,83 @@ msgstr ""
 msgid "Low Pass"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:305
+#: PulseEffects/ui/main_ui.glade:306
 msgid "Save Preset"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:321
+#: PulseEffects/ui/main_ui.glade:322
 msgid "Load Preset"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:359
+#: PulseEffects/ui/main_ui.glade:366
 msgid "Latency"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:379
+#: PulseEffects/ui/main_ui.glade:388
 msgid "buffer-time [ms]"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:407
+#: PulseEffects/ui/main_ui.glade:418
 msgid "latency-time [ms]"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:468
+#: PulseEffects/ui/main_ui.glade:456
 msgid "Spectrum"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:489
+#: PulseEffects/ui/main_ui.glade:477
 msgid "Show"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:501
+#: PulseEffects/ui/main_ui.glade:489
 msgid "Points"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:562
+#: PulseEffects/ui/main_ui.glade:539
 msgid "General"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:582
+#: PulseEffects/ui/main_ui.glade:559
 msgid "Settings"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:591
+#: PulseEffects/ui/main_ui.glade:568
 msgid "Reset"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:610
+#: PulseEffects/ui/main_ui.glade:587
 msgid "Use Dark Theme"
 msgstr ""
 
-#: PulseEffects/ui/panorama.glade:61
+#: PulseEffects/ui/panorama.glade:13
+msgid "Panorama"
+msgstr ""
+
+#: PulseEffects/ui/panorama.glade:62
 msgid "L"
 msgstr ""
 
-#: PulseEffects/ui/panorama.glade:73
+#: PulseEffects/ui/panorama.glade:74
 msgid "R"
 msgstr ""
 
-#: PulseEffects/ui/reverb.glade:87
+#: PulseEffects/ui/reverb.glade:25
+msgid "Reverberation"
+msgstr ""
+
+#: PulseEffects/ui/reverb.glade:88
 msgid "Room Size"
 msgstr ""
 
-#: PulseEffects/ui/reverb.glade:115
+#: PulseEffects/ui/reverb.glade:116
 msgid "Damping"
 msgstr ""
 
-#: PulseEffects/ui/reverb.glade:143
+#: PulseEffects/ui/reverb.glade:144
 msgid "Width"
 msgstr ""
 
-#: PulseEffects/ui/reverb.glade:171
+#: PulseEffects/ui/reverb.glade:172
 msgid "Level"
 msgstr ""
 
