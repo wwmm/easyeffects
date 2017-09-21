@@ -270,7 +270,7 @@ class Application(Gtk.Application):
         latency_time.set_value(value)
 
         self.sie.init_latency_time(value * 1000)
-        self.soe.init_latency_time(value * 1000)
+        # self.soe.init_latency_time(value * 1000)
 
     def on_latency_time_value_changed(self, obj):
         value = obj.get_value()
@@ -280,10 +280,10 @@ class Application(Gtk.Application):
 
         if self.ui_initialized:
             self.sie.set_latency_time(value * 1000)
-            self.soe.set_latency_time(value * 1000)
+            # self.soe.set_latency_time(value * 1000)
         else:
             self.sie.init_latency_time(value * 1000)
-            self.soe.init_latency_time(value * 1000)
+            # self.soe.init_latency_time(value * 1000)
 
     def init_spectrum_widgets(self):
         show_spectrum_switch = self.builder.get_object('show_spectrum')
