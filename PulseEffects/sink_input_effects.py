@@ -46,10 +46,27 @@ class SinkInputEffects(EffectsBase):
         self.lowpass.ui_enable.connect('state-set', self.on_lowpass_enable)
         self.equalizer.ui_enable.connect('state-set', self.on_equalizer_enable)
 
-        # order is important
-        self.limiter.bind()
-        self.panorama.bind()
-        self.compressor.bind()
+        # order of bind is important and may lead to load failure if
+        # done otherwise
+
+        if self.limiter.is_installed:
+            self.limiter.bind()
+        else:
+            self.limiter.ui_window.set_sensitive(False)
+            self.limiter.ui_limiter_enable.set_sensitive(False)
+
+        if self.panorama.is_installed:
+            self.panorama.bind()
+        else:
+            self.panorama.ui_window.set_sensitive(False)
+            self.panorama.ui_enable.set_sensitive(False)
+
+        if self.compressor.is_installed:
+            self.compressor.bind()
+        else:
+            self.compressor.ui_window.set_sensitive(False)
+            self.compressor.ui_enable.set_sensitive(False)
+
         self.reverb.bind()
         self.highpass.bind()
         self.lowpass.bind()
