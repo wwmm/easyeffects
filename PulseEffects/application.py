@@ -98,6 +98,9 @@ class Application(Gtk.Application):
         self.list_sink_inputs = ListSinkInputs(self.sie, self.pm)
         self.list_source_outputs = ListSourceOutputs(self.soe, self.pm)
 
+        self.list_sink_inputs.connect('app_removed', self.on_app_removed)
+        self.list_source_outputs.connect('app_removed', self.on_app_removed)
+
         self.init_spectrum_widgets()
         self.init_stack_widgets()
 
@@ -325,6 +328,9 @@ class Application(Gtk.Application):
 
         self.sie.set_spectrum_n_points(value)
         self.soe.set_spectrum_n_points(value)
+
+    def on_app_removed(self, obj):
+        self.window.resize(1, 1)
 
     def on_reset_all_settings_clicked(self, obj):
         self.settings.reset('buffer-time')
