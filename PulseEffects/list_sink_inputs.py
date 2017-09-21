@@ -4,12 +4,18 @@ import logging
 
 import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, Pango
+from gi.repository import GObject, Gtk, Pango
 
 
-class ListSinkInputs():
+class ListSinkInputs(GObject.GObject):
+
+    __gsignals__ = {
+        'app_removed': (GObject.SIGNAL_RUN_FIRST, None, ())
+    }
 
     def __init__(self, effects, pulse_manager):
+        GObject.GObject.__init__(self)
+
         self.sie = effects
         self.pm = pulse_manager
 
@@ -209,6 +215,8 @@ class ListSinkInputs():
 
             if child_name == 'app_box_' + str(idx):
                 self.apps_box.remove(child)
+
+                self.emit('app_removed')
 
                 break
 
