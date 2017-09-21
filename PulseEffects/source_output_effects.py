@@ -40,8 +40,18 @@ class SourceOutputEffects(EffectsBase):
         self.equalizer.ui_enable.connect('state-set', self.on_equalizer_enable)
 
         # order is important
-        self.limiter.bind()
-        self.compressor.bind()
+        if self.limiter.is_installed:
+            self.limiter.bind()
+        else:
+            self.limiter.ui_window.set_sensitive(False)
+            self.limiter.ui_limiter_enable.set_sensitive(False)
+
+        if self.compressor.is_installed:
+            self.compressor.bind()
+        else:
+            self.compressor.ui_window.set_sensitive(False)
+            self.compressor.ui_enable.set_sensitive(False)
+
         self.reverb.bind()
         self.highpass.bind()
         self.lowpass.bind()

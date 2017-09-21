@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import logging
 import os
 
 import gi
@@ -17,6 +18,15 @@ class Panorama():
         self.settings = settings
         self.module_path = os.path.dirname(__file__)
 
+        self.log = logging.getLogger('PulseEffects')
+
+        if Gst.ElementFactory.make('audiopanorama'):
+            self.is_installed = True
+        else:
+            self.is_installed = False
+
+            self.log.warn('Panorama plugin was not found. Disabling it!')
+
         self.build_bin()
         self.load_ui()
 
@@ -33,9 +43,11 @@ class Panorama():
         self.panorama.set_property('method', 'psychoacoustic')
 
         self.bin = GstInsertBin.InsertBin.new('panorama_bin')
-        self.bin.append(self.panorama, self.on_filter_added, None)
-        self.bin.append(input_level, self.on_filter_added, None)
-        self.bin.append(output_level, self.on_filter_added, None)
+
+        if self.is_installed:
+            self.bin.append(self.panorama, self.on_filter_added, None)
+            self.bin.append(input_level, self.on_filter_added, None)
+            self.bin.append(output_level, self.on_filter_added, None)
 
     def load_ui(self):
         self.builder = Gtk.Builder()

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import logging
 import os
 
 import gi
@@ -17,11 +18,21 @@ class Limiter():
         self.settings = settings
         self.module_path = os.path.dirname(__file__)
 
+        self.log = logging.getLogger('PulseEffects')
+
         self.old_limiter_attenuation = 0
 
         self.autovolume_target = -12  # dB
         self.autovolume_tolerance = 1  # dB
         self.autovolume_threshold = -50  # autovolume only if avg > threshold
+
+        if Gst.ElementFactory.make(
+                'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter'):
+            self.is_installed = True
+        else:
+            self.is_installed = False
+
+            self.log.warn('Limiter plugin was not found. Disabling it!')
 
         self.build_bin()
         self.load_ui()
@@ -37,10 +48,12 @@ class Limiter():
         self.autovolume_level = Gst.ElementFactory.make('level', 'autovolume')
 
         self.bin = GstInsertBin.InsertBin.new('limiter_bin')
-        self.bin.append(self.limiter, self.on_filter_added, None)
-        self.bin.append(input_level, self.on_filter_added, None)
-        self.bin.append(output_level, self.on_filter_added, None)
-        self.bin.append(self.autovolume_level, self.on_filter_added, None)
+
+        if self.is_installed:
+            self.bin.append(self.limiter, self.on_filter_added, None)
+            self.bin.append(input_level, self.on_filter_added, None)
+            self.bin.append(output_level, self.on_filter_added, None)
+            self.bin.append(self.autovolume_level, self.on_filter_added, None)
 
     def load_ui(self):
         self.builder = Gtk.Builder()
