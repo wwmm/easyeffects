@@ -22,8 +22,20 @@ bindir = join_paths(prefix, get_option('bindir'))
 datadir = join_paths(prefix, get_option('datadir'))
 localedir = join_paths(prefix, get_option('localedir'))
 
+# Support Debian non-standard python paths
+# Fallback to Meson python3 module if command fails
 message('Getting python install path')
-py3_dir = py3_mod.sysconfig_path('purelib')
+py3_purelib = ''
+r = run_command(py3.path(), '-c', 'from distutils.sysconfig import get_python_lib; print(get_python_lib(prefix=""))')
+if r.returncode() != 0
+  py3_purelib = py3_mod.sysconfig_path('purelib')
+  if not py3_purelib.endswith('site-packages')
+    error('Cannot find python install path')
+  endif
+  py3_dir = py3_purelib
+else
+  py3_dir = r.stdout().strip()
+endif
 
 message('Installing PulseEffects')
 install_subdir('PulseEffects', install_dir: py3_dir)
