@@ -20,6 +20,7 @@ class ListSourceOutputs(GObject.GObject):
         self.pm = pulse_manager
 
         self.changing_source_output_volume = False
+        self.switch_on_all_apps = False
 
         self.log = logging.getLogger('PulseEffects')
 
@@ -86,7 +87,6 @@ class ListSourceOutputs(GObject.GObject):
         # switch
         switch = Gtk.Switch()
 
-        switch.set_active(connected)
         switch.set_name('switch_' + str(idx))
         switch.set_valign(Gtk.Align.CENTER)
         switch.set_margin_left(2)
@@ -100,6 +100,12 @@ class ListSourceOutputs(GObject.GObject):
                 self.pm.move_source_output_to_default_source(idx)
 
         switch.connect('state-set', move_source_output)
+
+        if self.switch_on_all_apps:
+            switch.set_active(True)
+            switch.set_sensitive(False)
+        else:
+            switch.set_active(connected)
 
         control_box.pack_end(switch, False, False, 0)
 

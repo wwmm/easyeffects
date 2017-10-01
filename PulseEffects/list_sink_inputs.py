@@ -20,6 +20,7 @@ class ListSinkInputs(GObject.GObject):
         self.pm = pulse_manager
 
         self.changing_sink_input_volume = False
+        self.switch_on_all_apps = False
 
         self.log = logging.getLogger('PulseEffects')
 
@@ -86,7 +87,6 @@ class ListSinkInputs(GObject.GObject):
         # switch
         switch = Gtk.Switch()
 
-        switch.set_active(connected)
         switch.set_name('switch_' + str(idx))
         switch.set_valign(Gtk.Align.CENTER)
         switch.set_margin_left(2)
@@ -100,6 +100,12 @@ class ListSinkInputs(GObject.GObject):
                 self.pm.move_sink_input_to_default_sink(idx)
 
         switch.connect('state-set', move_sink_input)
+
+        if self.switch_on_all_apps:
+            switch.set_active(True)
+            switch.set_sensitive(False)
+        else:
+            switch.set_active(connected)
 
         control_box.pack_end(switch, False, False, 0)
 

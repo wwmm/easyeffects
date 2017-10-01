@@ -30,6 +30,9 @@ class Application(Gtk.Application):
 
         self.add_main_option('no-window', ord('n'), GLib.OptionFlags.NONE,
                              GLib.OptionArg.NONE, 'do not show window', None)
+        self.add_main_option('switch-on-all-apps', ord('s'),
+                             GLib.OptionFlags.NONE, GLib.OptionArg.NONE,
+                             'do not show window', None)
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
@@ -112,11 +115,6 @@ class Application(Gtk.Application):
                                                     self.draw_spectrum
                                                     .on_new_spectrum)
 
-        # searching for apps
-
-        self.pm.find_sink_inputs()
-        self.pm.find_source_outputs()
-
     def do_activate(self):
         self.window.present()
 
@@ -125,10 +123,19 @@ class Application(Gtk.Application):
     def do_command_line(self, command_line):
         options = command_line.get_options_dict()
 
-        if options.contains("no-window"):
-            self.log.info('Running as a background service')
+        if options.contains('switch-on-all-apps'):
+            self.list_sink_inputs.switch_on_all_apps = True
+            self.list_source_outputs.switch_on_all_apps = True
+
+        if options.contains('no-window'):
+            self.log.info('Running in background')
         else:
             self.activate()
+
+        # searching for apps
+
+        self.pm.find_sink_inputs()
+        self.pm.find_source_outputs()
 
         return 0
 
