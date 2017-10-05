@@ -10,6 +10,7 @@ from PulseEffects.draw_spectrum import DrawSpectrum
 from PulseEffects.list_sink_inputs import ListSinkInputs
 from PulseEffects.list_source_outputs import ListSourceOutputs
 from PulseEffects.load_presets import LoadPresets
+from PulseEffects.presets_manager import PresetsManager
 from PulseEffects.pulse_manager import PulseManager
 from PulseEffects.save_presets import SavePresets
 from PulseEffects.sink_input_effects import SinkInputEffects
@@ -114,6 +115,8 @@ class Application(Gtk.Application):
         self.spectrum_handler_id = self.sie.connect('new_spectrum',
                                                     self.draw_spectrum
                                                     .on_new_spectrum)
+
+        self.presets = PresetsManager(self.builder)
 
     def do_activate(self):
         self.window.present()

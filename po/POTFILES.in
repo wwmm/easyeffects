@@ -8,7 +8,9 @@ PulseEffects/ui/limiter.glade
 PulseEffects/ui/lowpass.glade
 PulseEffects/ui/main_ui.glade
 PulseEffects/ui/panorama.glade
+PulseEffects/ui/presets_menu.glade
 PulseEffects/ui/reverb.glade
+PulseEffects/presets_manager.py
 PulseEffectsCalibration/ui/headerbar.glade
 PulseEffectsCalibration/ui/main_ui.glade
 PulseEffectsCalibration/ui/calibration_mic_plugins.glade
