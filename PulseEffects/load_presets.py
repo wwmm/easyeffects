@@ -7,9 +7,11 @@ from gi.repository import GLib
 
 class LoadPresets():
 
-    def __init__(self, presets_path):
+    def __init__(self):
         self.config = configparser.ConfigParser()
-        self.config.read(presets_path)
+
+    def set_config_path(self, path):
+        self.config.read(path)
 
     def load_limiter_presets(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)

@@ -9,7 +9,6 @@ from gi.repository import Gio, GLib, Gtk
 from PulseEffects.draw_spectrum import DrawSpectrum
 from PulseEffects.list_sink_inputs import ListSinkInputs
 from PulseEffects.list_source_outputs import ListSourceOutputs
-from PulseEffects.load_presets import LoadPresets
 from PulseEffects.presets_manager import PresetsManager
 from PulseEffects.pulse_manager import PulseManager
 from PulseEffects.save_presets import SavePresets
@@ -116,7 +115,7 @@ class Application(Gtk.Application):
                                                     self.draw_spectrum
                                                     .on_new_spectrum)
 
-        self.presets = PresetsManager(self.builder)
+        self.presets = PresetsManager(self)
 
     def do_activate(self):
         self.window.present()
@@ -392,29 +391,6 @@ class Application(Gtk.Application):
             s.save_source_outputs_presets(self.soe.settings)
 
             s.write_config()
-
-        dialog.destroy()
-
-    def on_load_user_preset_clicked(self, obj):
-        dialog = Gtk.FileChooserDialog('', self.window,
-                                       Gtk.FileChooserAction.OPEN,
-                                       (Gtk.STOCK_CANCEL,
-                                        Gtk.ResponseType.CANCEL,
-                                        Gtk.STOCK_OPEN, Gtk.ResponseType.OK))
-
-        dialog.set_current_folder(self.user_config_dir)
-
-        self.add_file_filter(dialog)
-
-        response = dialog.run()
-
-        if response == Gtk.ResponseType.OK:
-            path = dialog.get_filename()
-
-            l = LoadPresets(path)
-
-            l.load_sink_inputs_presets(self.sie.settings)
-            l.load_source_outputs_presets(self.soe.settings)
 
         dialog.destroy()
 

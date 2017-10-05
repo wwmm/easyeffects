@@ -10,11 +10,6 @@
     <property name="page_increment">10</property>
     <signal name="value-changed" handler="on_buffer_time_value_changed" swapped="no"/>
   </object>
-  <object class="GtkImage" id="image_load_user_preset">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">document-open-symbolic</property>
-  </object>
   <object class="GtkImage" id="image_save_user_preset">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -312,22 +307,6 @@
           <packing>
             <property name="pack_type">end</property>
             <property name="position">3</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="load_user_preset">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Load Preset</property>
-            <property name="valign">center</property>
-            <property name="image">image_load_user_preset</property>
-            <property name="always_show_image">True</property>
-            <signal name="clicked" handler="on_load_user_preset_clicked" swapped="no"/>
-          </object>
-          <packing>
-            <property name="pack_type">end</property>
-            <property name="position">4</property>
           </packing>
         </child>
         <child>

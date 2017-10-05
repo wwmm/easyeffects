@@ -7,18 +7,24 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import GLib, Gtk
 
+from PulseEffects.load_presets import LoadPresets
+
 gettext.textdomain('PulseEffects')
 _ = gettext.gettext
 
 
 class PresetsManager():
 
-    def __init__(self, main_ui_builder):
+    def __init__(self, app):
+        self.app = app
         self.module_path = os.path.dirname(__file__)
 
         self.dir = os.path.join(GLib.get_user_config_dir(), 'PulseEffects')
 
-        self.menu_button = main_ui_builder.get_object('presets_popover_button')
+        self.lp = LoadPresets()
+
+        self.menu_button = self.app.builder.get_object(
+            'presets_popover_button')
 
         self.builder = Gtk.Builder()
         self.builder.add_from_file(self.module_path + '/ui/presets_menu.glade')
@@ -76,12 +82,7 @@ class PresetsManager():
 
         path = os.path.join(self.dir, name + '.preset')
 
-        print(path)
+        self.lp.set_config_path(path)
 
-    def on_preset_changed(self, obj):
-        name = obj.get_active_text()
-
-        if name != _('presets'):
-            path = os.path.join(self.dir, name + '.preset')
-
-            print(path)
+        self.lp.load_sink_inputs_presets(self.app.sie.settings)
+        self.lp.load_source_outputs_presets(self.app.soe.settings)
