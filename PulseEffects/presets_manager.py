@@ -23,6 +23,9 @@ class PresetsManager():
 
         self.lp = LoadPresets()
 
+        self.load_menu()
+
+    def load_menu(self):
         self.menu_button = self.app.builder.get_object(
             'presets_popover_button')
 
@@ -47,17 +50,49 @@ class PresetsManager():
 
     def add_to_listbox(self, name):
         row = Gtk.ListBoxRow()
+        row.set_name(name)
+        row.set_margin_top(6)
+        row.set_margin_bottom(6)
+
+        box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
+        # box.set_homogeneous(True)
+
+        row.add(box)
+
+        # preset label
 
         label = Gtk.Label(name, xalign=0)
         label.set_use_markup(True)
         label.set_valign(Gtk.Align.CENTER)
 
-        row.add(label)
+        # save button
 
-        row.set_name(name)
+        save_button = Gtk.Button()
 
-        row.set_margin_top(6)
-        row.set_margin_bottom(6)
+        icon = Gtk.Image.new_from_icon_name('document-save-symbolic',
+                                            Gtk.IconSize.SMALL_TOOLBAR)
+
+        save_button.set_image(icon)
+        save_button.set_valign(Gtk.Align.CENTER)
+        save_button.set_halign(Gtk.Align.CENTER)
+
+        # delete button
+
+        delete_button = Gtk.Button()
+
+        icon = Gtk.Image.new_from_icon_name('list-remove-symbolic',
+                                            Gtk.IconSize.SMALL_TOOLBAR)
+
+        delete_button.set_image(icon)
+        delete_button.set_valign(Gtk.Align.CENTER)
+        delete_button.set_halign(Gtk.Align.CENTER)
+
+        context = delete_button.get_style_context()
+        context.add_class('destructive-action')
+
+        box.pack_start(label, False, False, 0)
+        box.pack_end(delete_button, False, False, 0)
+        box.pack_end(save_button, False, False, 0)
 
         self.listbox.add(row)
 
