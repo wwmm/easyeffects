@@ -74,6 +74,8 @@ class PresetsManager():
         row.set_name(name)
         row.set_margin_top(6)
         row.set_margin_bottom(6)
+        row.set_margin_left(6)
+        row.set_margin_right(6)
 
         box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         # box.set_homogeneous(True)
