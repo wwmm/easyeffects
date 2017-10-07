@@ -97,6 +97,7 @@ class PresetsManager():
         save_button.set_image(icon)
         save_button.set_valign(Gtk.Align.CENTER)
         save_button.set_halign(Gtk.Align.CENTER)
+        save_button.set_tooltip_text(_('Save Current Settings to Preset'))
 
         save_button.connect('clicked', self.on_save)
 
@@ -111,6 +112,7 @@ class PresetsManager():
         delete_button.set_image(icon)
         delete_button.set_valign(Gtk.Align.CENTER)
         delete_button.set_halign(Gtk.Align.CENTER)
+        delete_button.set_tooltip_text(_('Delete Preset'))
 
         context = delete_button.get_style_context()
         context.add_class('destructive-action')
