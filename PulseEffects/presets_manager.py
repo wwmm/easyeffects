@@ -116,7 +116,6 @@ class PresetsManager():
         box.pack_end(save_button, False, False, 0)
 
         self.listbox.add(row)
-        self.listbox.show_all()
 
     def init_listbox(self):
         children = self.listbox.get_children()
@@ -131,6 +130,9 @@ class PresetsManager():
                 name = f.split('.')[0]
 
                 self.add_to_listbox(name)
+
+        self.listbox.unselect_all()
+        self.listbox.show_all()
 
     def save_preset(self, path):
         self.sp.set_output_path(path)
@@ -158,13 +160,29 @@ class PresetsManager():
         if name.endswith('.preset'):
             name = name.split('.')[0]
 
-        self.new_preset_name.set_text('')
+            self.new_preset_name.set_text(name)
 
-        self.add_to_listbox(name)
+        # checking if preset name already exists
 
-        path = os.path.join(self.dir, name + ".preset")
+        children = self.listbox.get_children()
 
-        self.save_preset(path)
+        add_preset = True
+
+        for child in children:
+            if child.get_name() == name:
+                add_preset = False
+                break
+
+        if add_preset:
+            self.new_preset_name.set_text('')
+
+            self.add_to_listbox(name)
+
+            self.listbox.show_all()
+
+            path = os.path.join(self.dir, name + ".preset")
+
+            self.save_preset(path)
 
     def on_save(self, obj):
         path = os.path.join(self.dir, obj.get_name() + ".preset")
