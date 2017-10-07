@@ -58,6 +58,12 @@ class PresetsManager():
             else:
                 popover_menu.show_all()
 
+                # for some reason when listbox is inside a scrolledwindow
+                # it autoselects a row at startup
+
+                if self.menu_button.get_label() == _('Presets'):
+                    self.listbox.unselect_all()
+
         self.menu_button.connect("clicked", button_clicked, menu)
         self.listbox.connect('row-activated', self.on_listbox_row_activated)
 
@@ -131,7 +137,6 @@ class PresetsManager():
 
                 self.add_to_listbox(name)
 
-        self.listbox.unselect_all()
         self.listbox.show_all()
 
     def save_preset(self, path):
@@ -162,27 +167,28 @@ class PresetsManager():
 
             self.new_preset_name.set_text(name)
 
-        # checking if preset name already exists
+        if name:
+            # checking if preset name already exists
 
-        children = self.listbox.get_children()
+            children = self.listbox.get_children()
 
-        add_preset = True
+            add_preset = True
 
-        for child in children:
-            if child.get_name() == name:
-                add_preset = False
-                break
+            for child in children:
+                if child.get_name() == name:
+                    add_preset = False
+                    break
 
-        if add_preset:
-            self.new_preset_name.set_text('')
+            if add_preset:
+                self.new_preset_name.set_text('')
 
-            self.add_to_listbox(name)
+                self.add_to_listbox(name)
 
-            self.listbox.show_all()
+                self.listbox.show_all()
 
-            path = os.path.join(self.dir, name + ".preset")
+                path = os.path.join(self.dir, name + ".preset")
 
-            self.save_preset(path)
+                self.save_preset(path)
 
     def on_save(self, obj):
         path = os.path.join(self.dir, obj.get_name() + ".preset")
