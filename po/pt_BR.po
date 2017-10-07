@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-06 23:51-0300\n"
-"PO-Revision-Date: 2017-10-06 23:52-0300\n"
+"POT-Creation-Date: 2017-10-07 12:51-0300\n"
+"PO-Revision-Date: 2017-10-07 12:52-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
@@ -60,8 +60,10 @@ msgstr "Joelho [dB]"
 msgid "Makeup [dB]"
 msgstr "Ganho de Saída [dB]"
 
-#: PulseEffects/ui/compressor.glade:314 PulseEffects/ui/main_ui.glade:293
-#: PulseEffects/ui/reverb.glade:207
+#. for some reason when listbox is inside a scrolledwindow
+#. it autoselects a row at startup
+#: PulseEffects/ui/compressor.glade:314 PulseEffects/ui/main_ui.glade:292
+#: PulseEffects/ui/reverb.glade:207 PulseEffects/presets_manager.py:64
 msgid "Presets"
 msgstr "Predefinições"
 
@@ -196,43 +198,43 @@ msgstr "Atenuação"
 msgid "Low Pass"
 msgstr "Passa-Baixa"
 
-#: PulseEffects/ui/main_ui.glade:338
+#: PulseEffects/ui/main_ui.glade:337
 msgid "Latency"
 msgstr "Latência"
 
-#: PulseEffects/ui/main_ui.glade:360
+#: PulseEffects/ui/main_ui.glade:359
 msgid "buffer-time [ms]"
 msgstr "tempo de atraso [ms]"
 
-#: PulseEffects/ui/main_ui.glade:390
+#: PulseEffects/ui/main_ui.glade:389
 msgid "latency-time [ms]"
 msgstr "tempo de atraso [ms]"
 
-#: PulseEffects/ui/main_ui.glade:428
+#: PulseEffects/ui/main_ui.glade:427
 msgid "Spectrum"
 msgstr "Espectro"
 
-#: PulseEffects/ui/main_ui.glade:449
+#: PulseEffects/ui/main_ui.glade:448
 msgid "Show"
 msgstr "Mostrar"
 
-#: PulseEffects/ui/main_ui.glade:461
+#: PulseEffects/ui/main_ui.glade:460
 msgid "Points"
 msgstr "Pontos"
 
-#: PulseEffects/ui/main_ui.glade:511
+#: PulseEffects/ui/main_ui.glade:510
 msgid "General"
 msgstr "Geral"
 
-#: PulseEffects/ui/main_ui.glade:531
+#: PulseEffects/ui/main_ui.glade:530
 msgid "Settings"
 msgstr "Configurações"
 
-#: PulseEffects/ui/main_ui.glade:540
+#: PulseEffects/ui/main_ui.glade:539
 msgid "Reset"
 msgstr "Resetar"
 
-#: PulseEffects/ui/main_ui.glade:559
+#: PulseEffects/ui/main_ui.glade:558
 msgid "Use Dark Theme"
 msgstr "Usar Tema Escuro"
 
@@ -248,7 +250,7 @@ msgstr "L"
 msgid "R"
 msgstr "R"
 
-#: PulseEffects/ui/presets_menu.glade:61
+#: PulseEffects/ui/presets_menu.glade:51
 msgid "Name"
 msgstr "Nome"
 
@@ -283,6 +285,14 @@ msgstr "Sala de Máquinas"
 #: PulseEffects/ui/reverb.glade:255
 msgid "Small Room"
 msgstr "Quarto Pequeno"
+
+#: PulseEffects/presets_manager.py:100
+msgid "Save Current Settings to Preset"
+msgstr "Salvar Configurações atuais para esta predefinição"
+
+#: PulseEffects/presets_manager.py:115
+msgid "Delete Preset"
+msgstr "Deletar Predefinição"
 
 #: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:179
 msgid "Guideline Position"
@@ -441,9 +451,6 @@ msgstr "limitador;compressor;reverberação;equalizador;autovolume;"
 #: data/com.github.wwmm.pulseeffects.desktop.in:10
 msgid "pulseeffects"
 msgstr "pulseeffects"
-
-#~ msgid "Save Preset"
-#~ msgstr "Salvar Predefinição"
 
 #~ msgid "Load Preset"
 #~ msgstr "Carregar Predefinição"
