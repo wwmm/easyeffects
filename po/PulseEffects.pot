@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-20 11:47-0300\n"
+"POT-Creation-Date: 2017-10-06 23:51-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,7 +58,8 @@ msgstr ""
 msgid "Makeup [dB]"
 msgstr ""
 
-#: PulseEffects/ui/compressor.glade:314 PulseEffects/ui/reverb.glade:207
+#: PulseEffects/ui/compressor.glade:314 PulseEffects/ui/main_ui.glade:293
+#: PulseEffects/ui/reverb.glade:207
 msgid "Presets"
 msgstr ""
 
@@ -191,51 +192,43 @@ msgstr ""
 msgid "Low Pass"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:306
-msgid "Save Preset"
-msgstr ""
-
-#: PulseEffects/ui/main_ui.glade:322
-msgid "Load Preset"
-msgstr ""
-
-#: PulseEffects/ui/main_ui.glade:366
+#: PulseEffects/ui/main_ui.glade:338
 msgid "Latency"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:388
+#: PulseEffects/ui/main_ui.glade:360
 msgid "buffer-time [ms]"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:418
+#: PulseEffects/ui/main_ui.glade:390
 msgid "latency-time [ms]"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:456
+#: PulseEffects/ui/main_ui.glade:428
 msgid "Spectrum"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:477
+#: PulseEffects/ui/main_ui.glade:449
 msgid "Show"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:489
+#: PulseEffects/ui/main_ui.glade:461
 msgid "Points"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:539
+#: PulseEffects/ui/main_ui.glade:511
 msgid "General"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:559
+#: PulseEffects/ui/main_ui.glade:531
 msgid "Settings"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:568
+#: PulseEffects/ui/main_ui.glade:540
 msgid "Reset"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:587
+#: PulseEffects/ui/main_ui.glade:559
 msgid "Use Dark Theme"
 msgstr ""
 
@@ -249,6 +242,10 @@ msgstr ""
 
 #: PulseEffects/ui/panorama.glade:74
 msgid "R"
+msgstr ""
+
+#: PulseEffects/ui/presets_menu.glade:61
+msgid "Name"
 msgstr ""
 
 #: PulseEffects/ui/reverb.glade:25

@@ -8,15 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-20 11:47-0300\n"
-"PO-Revision-Date: 2017-09-20 12:47-0300\n"
+"POT-Creation-Date: 2017-10-06 23:51-0300\n"
+"PO-Revision-Date: 2017-10-06 23:52-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.0.4\n"
 "Plural-Forms: \n"
 
 #: PulseEffects/ui/about.glade:11
@@ -60,7 +60,8 @@ msgstr "Joelho [dB]"
 msgid "Makeup [dB]"
 msgstr "Ganho de Saída [dB]"
 
-#: PulseEffects/ui/compressor.glade:314 PulseEffects/ui/reverb.glade:207
+#: PulseEffects/ui/compressor.glade:314 PulseEffects/ui/main_ui.glade:293
+#: PulseEffects/ui/reverb.glade:207
 msgid "Presets"
 msgstr "Predefinições"
 
@@ -195,51 +196,43 @@ msgstr "Atenuação"
 msgid "Low Pass"
 msgstr "Passa-Baixa"
 
-#: PulseEffects/ui/main_ui.glade:306
-msgid "Save Preset"
-msgstr "Salvar Predefinição"
-
-#: PulseEffects/ui/main_ui.glade:322
-msgid "Load Preset"
-msgstr "Carregar Predefinição"
-
-#: PulseEffects/ui/main_ui.glade:366
+#: PulseEffects/ui/main_ui.glade:338
 msgid "Latency"
 msgstr "Latência"
 
-#: PulseEffects/ui/main_ui.glade:388
+#: PulseEffects/ui/main_ui.glade:360
 msgid "buffer-time [ms]"
 msgstr "tempo de atraso [ms]"
 
-#: PulseEffects/ui/main_ui.glade:418
+#: PulseEffects/ui/main_ui.glade:390
 msgid "latency-time [ms]"
 msgstr "tempo de atraso [ms]"
 
-#: PulseEffects/ui/main_ui.glade:456
+#: PulseEffects/ui/main_ui.glade:428
 msgid "Spectrum"
 msgstr "Espectro"
 
-#: PulseEffects/ui/main_ui.glade:477
+#: PulseEffects/ui/main_ui.glade:449
 msgid "Show"
 msgstr "Mostrar"
 
-#: PulseEffects/ui/main_ui.glade:489
+#: PulseEffects/ui/main_ui.glade:461
 msgid "Points"
 msgstr "Pontos"
 
-#: PulseEffects/ui/main_ui.glade:539
+#: PulseEffects/ui/main_ui.glade:511
 msgid "General"
 msgstr "Geral"
 
-#: PulseEffects/ui/main_ui.glade:559
+#: PulseEffects/ui/main_ui.glade:531
 msgid "Settings"
 msgstr "Configurações"
 
-#: PulseEffects/ui/main_ui.glade:568
+#: PulseEffects/ui/main_ui.glade:540
 msgid "Reset"
 msgstr "Resetar"
 
-#: PulseEffects/ui/main_ui.glade:587
+#: PulseEffects/ui/main_ui.glade:559
 msgid "Use Dark Theme"
 msgstr "Usar Tema Escuro"
 
@@ -254,6 +247,10 @@ msgstr "L"
 #: PulseEffects/ui/panorama.glade:74
 msgid "R"
 msgstr "R"
+
+#: PulseEffects/ui/presets_menu.glade:61
+msgid "Name"
+msgstr "Nome"
 
 #: PulseEffects/ui/reverb.glade:25
 msgid "Reverberation"
@@ -444,6 +441,12 @@ msgstr "limitador;compressor;reverberação;equalizador;autovolume;"
 #: data/com.github.wwmm.pulseeffects.desktop.in:10
 msgid "pulseeffects"
 msgstr "pulseeffects"
+
+#~ msgid "Save Preset"
+#~ msgstr "Salvar Predefinição"
+
+#~ msgid "Load Preset"
+#~ msgstr "Carregar Predefinição"
 
 #~ msgid "Low pass"
 #~ msgstr "Passa Baixa"
