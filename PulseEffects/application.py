@@ -11,7 +11,6 @@ from PulseEffects.list_sink_inputs import ListSinkInputs
 from PulseEffects.list_source_outputs import ListSourceOutputs
 from PulseEffects.presets_manager import PresetsManager
 from PulseEffects.pulse_manager import PulseManager
-from PulseEffects.save_presets import SavePresets
 from PulseEffects.sink_input_effects import SinkInputEffects
 from PulseEffects.source_output_effects import SourceOutputEffects
 
@@ -357,42 +356,6 @@ class Application(Gtk.Application):
 
         self.sie.reset()
         self.soe.reset()
-
-    def add_file_filter(self, dialog):
-        file_filter = Gtk.FileFilter()
-        file_filter.set_name("preset")
-        file_filter.add_mime_type("text/plain")
-
-        dialog.add_filter(file_filter)
-
-    def on_save_user_preset_clicked(self, obj):
-        dialog = Gtk.FileChooserDialog('', self.window,
-                                       Gtk.FileChooserAction.SAVE,
-                                       (Gtk.STOCK_CANCEL,
-                                        Gtk.ResponseType.CANCEL,
-                                        Gtk.STOCK_SAVE, Gtk.ResponseType.OK))
-
-        dialog.set_current_folder(self.user_config_dir)
-        dialog.set_current_name('user.preset')
-
-        self.add_file_filter(dialog)
-
-        response = dialog.run()
-
-        if response == Gtk.ResponseType.OK:
-            path = dialog.get_filename()
-
-            if not path.endswith(".preset"):
-                path += ".preset"
-
-            s = SavePresets(path)
-
-            s.save_sink_inputs_presets(self.sie.settings)
-            s.save_source_outputs_presets(self.soe.settings)
-
-            s.write_config()
-
-        dialog.destroy()
 
     def onAbout(self, action, parameter):
         builder = Gtk.Builder()

@@ -29,10 +29,10 @@
           </packing>
         </child>
         <child>
-          <object class="GtkGrid">
+          <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="column_spacing">6</property>
+            <property name="spacing">6</property>
             <child>
               <object class="GtkButton" id="add_preset">
                 <property name="visible">True</property>
@@ -41,17 +41,19 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="image">image_button_add</property>
+                <signal name="clicked" handler="on_add_preset_clicked" swapped="no"/>
                 <style>
                   <class name="suggested-action"/>
                 </style>
               </object>
               <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">0</property>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="preset_name">
+              <object class="GtkEntry" id="new_preset_name">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="valign">center</property>
@@ -60,8 +62,10 @@
                 <property name="input_purpose">name</property>
               </object>
               <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">0</property>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="pack_type">end</property>
+                <property name="position">1</property>
               </packing>
             </child>
           </object>

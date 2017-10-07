@@ -5,9 +5,11 @@ import configparser
 
 class SavePresets():
 
-    def __init__(self, presets_path):
+    def __init__(self):
         self.config = configparser.ConfigParser()
-        self.output_file = open(presets_path, 'w')
+
+    def set_output_path(self, path):
+        self.output_file = open(path, 'w')
 
     def save_limiter_presets(self, settings, section):
         enabled = settings.get_value('limiter-state')
@@ -193,3 +195,4 @@ class SavePresets():
 
     def write_config(self):
         self.config.write(self.output_file)
+        self.output_file.close()
