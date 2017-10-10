@@ -31,13 +31,6 @@ class PipelineBase(GObject.GObject):
         self.spectrum_nfreqs = 0
         self.spectrum_threshold = -120  # dB
 
-        self.limiter_ready = False
-        self.compressor_ready = False
-        self.reverb_ready = False
-        self.highpass_ready = False
-        self.lowpass_ready = False
-        self.equalizer_ready = False
-
         self.log = logging.getLogger('PulseEffects')
 
         self.calc_spectrum_freqs()
@@ -94,67 +87,7 @@ class PipelineBase(GObject.GObject):
         self.source_caps.link(self.effects_bin)
         self.effects_bin.link(self.audio_sink)
 
-    def on_limiter_added(self, bin, element, success, user_data):
-        bin_name = element.get_name()
-        plugin_name = bin_name.split('_')[0]
-
-        if success:
-            self.limiter_ready = True
-            self.log.info(user_data + plugin_name + ' plugin was enabled')
-        else:
-            self.log.critical(user_data + 'failed to enable ' + plugin_name)
-
-    def on_compressor_added(self, bin, element, success, user_data):
-        bin_name = element.get_name()
-        plugin_name = bin_name.split('_')[0]
-
-        if success:
-            self.compressor_ready = True
-            self.log.info(user_data + plugin_name + ' plugin was enabled')
-        else:
-            self.log.critical(user_data + 'failed to enable ' + plugin_name)
-
-    def on_reverb_added(self, bin, element, success, user_data):
-        bin_name = element.get_name()
-        plugin_name = bin_name.split('_')[0]
-
-        if success:
-            self.reverb_ready = True
-            self.log.info(user_data + plugin_name + ' plugin was enabled')
-        else:
-            self.log.critical(user_data + 'failed to enable ' + plugin_name)
-
-    def on_highpass_added(self, bin, element, success, user_data):
-        bin_name = element.get_name()
-        plugin_name = bin_name.split('_')[0]
-
-        if success:
-            self.highpass_ready = True
-            self.log.info(user_data + plugin_name + ' plugin was enabled')
-        else:
-            self.log.critical(user_data + 'failed to enable ' + plugin_name)
-
-    def on_lowpass_added(self, bin, element, success, user_data):
-        bin_name = element.get_name()
-        plugin_name = bin_name.split('_')[0]
-
-        if success:
-            self.lowpass_ready = True
-            self.log.info(user_data + plugin_name + ' plugin was enabled')
-        else:
-            self.log.critical(user_data + 'failed to enable ' + plugin_name)
-
-    def on_equalizer_added(self, bin, element, success, user_data):
-        bin_name = element.get_name()
-        plugin_name = bin_name.split('_')[0]
-
-        if success:
-            self.equalizer_ready = True
-            self.log.info(user_data + plugin_name + ' plugin was enabled')
-        else:
-            self.log.critical(user_data + 'failed to enable ' + plugin_name)
-
-    def on_spectrum_added(self, bin, element, success, user_data):
+    def on_filter_added(self, bin, element, success, user_data):
         bin_name = element.get_name()
         plugin_name = bin_name.split('_')[0]
 

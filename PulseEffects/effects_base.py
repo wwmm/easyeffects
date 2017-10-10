@@ -3,8 +3,9 @@ import os
 
 import gi
 import numpy as np
+gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, Gtk
+from gi.repository import Gio, GstInsertBin, Gtk
 from PulseEffects.compressor import Compressor
 from PulseEffects.equalizer import Equalizer
 from PulseEffects.highpass import Highpass
@@ -66,6 +67,34 @@ class EffectsBase(PipelineBase):
         # on/off switches connections
         self.limiter.ui_limiter_enable.connect('state-set',
                                                self.on_limiter_enable)
+
+        # effects wrappers
+        self.limiter_wrapper = GstInsertBin.InsertBin.new('limiter_wrapper')
+        self.compressor_wrapper = GstInsertBin.InsertBin.new(
+            'compressor_wrapper')
+        self.reverb_wrapper = GstInsertBin.InsertBin.new('reverb_wrapper')
+        self.highpass_wrapper = GstInsertBin.InsertBin.new('highpass_wrapper')
+        self.lowpass_wrapper = GstInsertBin.InsertBin.new('lowpass_wrapper')
+        self.equalizer_wrapper = GstInsertBin.InsertBin.new(
+            'equalizer_wrapper')
+        self.spectrum_wrapper = GstInsertBin.InsertBin.new(
+            'spectrum_wrapper')
+
+        # appending effects wrappers to effects bin
+        self.effects_bin.append(self.limiter_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.compressor_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.reverb_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.highpass_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.lowpass_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.equalizer_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.spectrum_wrapper, self.on_filter_added,
+                                self.log_tag)
 
     def add_to_listbox(self, name):
         row = Gtk.ListBoxRow()
@@ -184,19 +213,71 @@ class EffectsBase(PipelineBase):
         return True
 
     def on_limiter_enable(self, obj, state):
-        self.limiter_ready = False
-
         if state:
-            self.effects_bin.prepend(self.limiter.bin, self.on_limiter_added,
-                                     self.log_tag)
+            self.limiter_wrapper.append(self.limiter.bin,
+                                        self.on_filter_added,
+                                        self.log_tag)
         else:
-            self.effects_bin.remove(self.limiter.bin, self.on_filter_removed,
-                                    self.log_tag)
+            self.limiter_wrapper.remove(self.limiter.bin,
+                                        self.on_filter_removed,
+                                        self.log_tag)
+
+    def on_compressor_enable(self, obj, state):
+        if state:
+            self.compressor_wrapper.append(self.compressor.bin,
+                                           self.on_filter_added,
+                                           self.log_tag)
+        else:
+            self.compressor_wrapper.remove(self.compressor.bin,
+                                           self.on_filter_removed,
+                                           self.log_tag)
+
+    def on_reverb_enable(self, obj, state):
+        if state:
+            self.reverb_wrapper.append(self.reverb.bin,
+                                       self.on_filter_added,
+                                       self.log_tag)
+        else:
+            self.reverb_wrapper.remove(self.reverb.bin,
+                                       self.on_filter_removed,
+                                       self.log_tag)
+
+    def on_highpass_enable(self, obj, state):
+        if state:
+            self.highpass_wrapper.append(self.highpass.bin,
+                                         self.on_filter_added,
+                                         self.log_tag)
+        else:
+            self.highpass_wrapper.remove(self.highpass.bin,
+                                         self.on_filter_removed,
+                                         self.log_tag)
+
+    def on_lowpass_enable(self, obj, state):
+        if state:
+            self.lowpass_wrapper.append(self.lowpass.bin,
+                                        self.on_filter_added,
+                                        self.log_tag)
+        else:
+            self.lowpass_wrapper.remove(self.lowpass.bin,
+                                        self.on_filter_removed,
+                                        self.log_tag)
+
+    def on_equalizer_enable(self, obj, state):
+        if state:
+            self.equalizer_wrapper.append(self.equalizer.bin,
+                                          self.on_filter_added,
+                                          self.log_tag)
+        else:
+            self.equalizer_wrapper.remove(self.equalizer.bin,
+                                          self.on_filter_removed,
+                                          self.log_tag)
 
     def enable_spectrum(self, state):
         if state:
-            self.effects_bin.append(self.spectrum, self.on_spectrum_added,
-                                    self.log_tag)
+            self.spectrum_wrapper.append(self.spectrum,
+                                         self.on_filter_added,
+                                         self.log_tag)
         else:
-            self.effects_bin.remove(self.spectrum, self.on_filter_removed,
-                                    self.log_tag)
+            self.spectrum_wrapper.remove(self.spectrum,
+                                         self.on_filter_removed,
+                                         self.log_tag)
