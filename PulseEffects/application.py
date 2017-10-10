@@ -7,8 +7,6 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gio, GLib, Gtk
 from PulseEffects.draw_spectrum import DrawSpectrum
-from PulseEffects.list_sink_inputs import ListSinkInputs
-from PulseEffects.list_source_outputs import ListSourceOutputs
 from PulseEffects.presets_manager import PresetsManager
 from PulseEffects.pulse_manager import PulseManager
 from PulseEffects.sink_input_effects import SinkInputEffects
@@ -78,31 +76,14 @@ class Application(Gtk.Application):
 
         self.create_appmenu()
 
-        # gstreamer sink input effects
-
-        self.sie = SinkInputEffects(self.pm.default_sink_rate)
-        self.sie.set_source_monitor_name(self.pm.apps_sink_monitor_name)
-        self.sie.set_output_sink_name(self.pm.default_sink_name)
-
-        # gstreamer source outputs effects
-
-        self.soe = SourceOutputEffects(self.pm.default_source_rate)
-        self.soe.set_source_monitor_name(self.pm.default_source_name)
-        self.soe.set_output_sink_name('PulseEffects_mic')
-
+        self.sie = SinkInputEffects(self.pm)
+        self.soe = SourceOutputEffects(self.pm)
         self.draw_spectrum = DrawSpectrum(self)
 
         self.init_theme()
         self.init_settings_menu()
         self.init_buffer_time()
         self.init_latency_time()
-
-        self.list_sink_inputs = ListSinkInputs(self.sie, self.pm)
-        self.list_source_outputs = ListSourceOutputs(self.soe, self.pm)
-
-        self.list_sink_inputs.connect('app_removed', self.on_app_removed)
-        self.list_source_outputs.connect('app_removed', self.on_app_removed)
-
         self.init_spectrum_widgets()
         self.init_stack_widgets()
 
@@ -125,8 +106,8 @@ class Application(Gtk.Application):
         options = command_line.get_options_dict()
 
         if options.contains('switch-on-all-apps'):
-            self.list_sink_inputs.switch_on_all_apps = True
-            self.list_source_outputs.switch_on_all_apps = True
+            self.sie.switch_on_all_apps = True
+            self.soe.switch_on_all_apps = True
 
         if options.contains('no-window'):
             self.log.info('Running in background')

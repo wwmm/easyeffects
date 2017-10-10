@@ -35,6 +35,7 @@ class EffectsBase(PipelineBase):
         self.ui_window = self.builder.get_object('window')
         self.listbox = self.builder.get_object('listbox')
         self.stack = self.builder.get_object('stack')
+        self.apps_box = self.builder.get_object('apps_box')
 
         self.listbox.connect('row-activated', self.on_listbox_row_activated)
 

@@ -122,9 +122,6 @@ class Limiter():
         self.ui_limit.bind_property('value', self.limiter, 'limit', flag)
         self.ui_release_time.bind_property('value', self.limiter,
                                            'release-time', flag)
-        self.ui_autovolume_enable.bind_property('active',
-                                                self.autovolume_level,
-                                                'post-messages', flag)
 
         # binding ui widgets to gstreamer plugins
 
@@ -144,6 +141,8 @@ class Limiter():
 
         self.settings.bind('autovolume-state', self.ui_autovolume_enable,
                            'active', flag)
+        self.settings.bind('autovolume-state', self.autovolume_level,
+                           'post-messages', flag)
         self.settings.bind('autovolume-state', self.ui_autovolume_controls,
                            'sensitive', Gio.SettingsBindFlags.GET)
 
