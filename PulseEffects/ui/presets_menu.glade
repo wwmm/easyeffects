@@ -65,11 +65,10 @@
           </packing>
         </child>
         <child>
-          <object class="GtkScrolledWindow">
+          <object class="GtkScrolledWindow" id="scrolled_window">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="shadow_type">in</property>
-            <property name="max_content_height">300</property>
             <property name="propagate_natural_width">True</property>
             <property name="propagate_natural_height">True</property>
             <child>

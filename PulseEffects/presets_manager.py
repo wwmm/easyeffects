@@ -37,6 +37,7 @@ class PresetsManager():
 
         menu = self.builder.get_object('menu')
         self.listbox = self.builder.get_object('listbox')
+        self.scrolled_window = self.builder.get_object('scrolled_window')
         self.new_preset_name = self.builder.get_object('new_preset_name')
 
         # listbox style
@@ -56,6 +57,10 @@ class PresetsManager():
             if popover_menu.get_visible():
                 popover_menu.hide()
             else:
+                w, h = self.app.window.get_size()
+
+                self.scrolled_window.set_max_content_height(int(0.8 * h))
+
                 popover_menu.show_all()
 
                 # for some reason when listbox is inside a scrolledwindow
@@ -78,7 +83,6 @@ class PresetsManager():
         row.set_margin_right(6)
 
         box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
-        # box.set_homogeneous(True)
 
         row.add(box)
 

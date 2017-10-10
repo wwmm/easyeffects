@@ -31,7 +31,7 @@ class Application(Gtk.Application):
                              GLib.OptionArg.NONE, 'do not show window', None)
         self.add_main_option('switch-on-all-apps', ord('s'),
                              GLib.OptionFlags.NONE, GLib.OptionArg.NONE,
-                             'do not show window', None)
+                             'Force effects for all applications', None)
 
     def do_startup(self):
         Gtk.Application.do_startup(self)

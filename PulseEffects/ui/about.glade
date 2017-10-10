@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.0 -->
+<!-- Generated with glade 3.20.1 -->
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkAboutDialog" id="about_dialog">
@@ -7,7 +7,7 @@
     <property name="modal">True</property>
     <property name="type_hint">dialog</property>
     <property name="program_name">PulseEffects</property>
-    <property name="version">3.0.0</property>
+    <property name="version">3.0.1</property>
     <property name="comments" translatable="yes">Audio Effects for Pulseaudio Applications</property>
     <property name="authors">wellington wallace</property>
     <property name="logo">about_icon.png</property>
