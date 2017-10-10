@@ -34,8 +34,8 @@ class Reverb():
         self.bin.append(output_level, self.on_filter_added, None)
 
     def load_ui(self):
-        self.builder = Gtk.Builder()
-        self.builder.add_from_file(self.module_path + '/ui/reverb.glade')
+        self.builder = Gtk.Builder.new_from_file(self.module_path +
+                                                 '/ui/reverb.glade')
         self.builder.connect_signals(self)
 
         self.ui_window = self.builder.get_object('window')

@@ -38,8 +38,8 @@ class Lowpass():
         self.bin.append(output_level, self.on_filter_added, None)
 
     def load_ui(self):
-        self.builder = Gtk.Builder()
-        self.builder.add_from_file(self.module_path + '/ui/lowpass.glade')
+        self.builder = Gtk.Builder.new_from_file(self.module_path +
+                                                 '/ui/lowpass.glade')
 
         self.ui_window = self.builder.get_object('window')
         self.ui_listbox_control = self.builder.get_object('listbox_control')

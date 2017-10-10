@@ -31,9 +31,8 @@ class PresetsManager():
         self.menu_button = self.app.builder.get_object(
             'presets_popover_button')
 
-        self.builder = Gtk.Builder()
-        self.builder.add_from_file(self.module_path + '/ui/presets_menu.glade')
-        self.builder.connect_signals(self)
+        self.builder = Gtk.Builder.new_from_file(self.module_path +
+                                                 '/ui/presets_menu.glade')
 
         menu = self.builder.get_object('menu')
         self.listbox = self.builder.get_object('listbox')

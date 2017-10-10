@@ -63,9 +63,8 @@ class Application(Gtk.Application):
 
         # ui initializations
 
-        self.builder = Gtk.Builder()
-
-        self.builder.add_from_file(self.module_path + '/ui/main_ui.glade')
+        self.builder = Gtk.Builder.new_from_file(self.module_path +
+                                                 '/ui/main_ui.glade')
 
         self.builder.connect_signals(self)
 

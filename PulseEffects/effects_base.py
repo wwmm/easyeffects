@@ -28,9 +28,8 @@ class EffectsBase(PipelineBase):
         self.settings = settings
         self.log_tag = str()
 
-        self.builder = Gtk.Builder()
-
-        self.builder.add_from_file(self.module_path + '/ui/effects_box.glade')
+        self.builder = Gtk.Builder.new_from_file(self.module_path +
+                                                 '/ui/effects_box.glade')
 
         self.ui_window = self.builder.get_object('window')
         self.listbox = self.builder.get_object('listbox')
@@ -87,8 +86,8 @@ class EffectsBase(PipelineBase):
 
         row.set_name(name)
 
-        row.set_margin_top(3)
-        row.set_margin_bottom(3)
+        row.set_margin_top(6)
+        row.set_margin_bottom(6)
 
         self.listbox.insert(row, idx)
 
