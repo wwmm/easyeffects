@@ -212,9 +212,11 @@ class SinkInputEffects(EffectsBase):
                     for node in child.get_children():
                         node_name = node.get_name()
 
-                        print(node_name)
-
-                        if node_name == 'stream_props':
+                        if node_name == 'switch':
+                            node.set_active(connected)
+                        elif node_name == 'mute':
+                            node.set_active(mute)
+                        elif node_name == 'stream_props':
                             for label in node.get_children():
                                 label_name = label.get_name()
 
