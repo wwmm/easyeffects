@@ -49,7 +49,30 @@
             <property name="transition_duration">250</property>
             <property name="transition_type">crossfade</property>
             <child>
-              <placeholder/>
+              <object class="GtkScrolledWindow">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <child>
+                  <object class="GtkViewport">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkBox" id="apps_box">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="orientation">vertical</property>
+                        <child>
+                          <placeholder/>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="name">audio_applications</property>
+                <property name="title" translatable="yes">Audio Applications</property>
+              </packing>
             </child>
           </object>
           <packing>
@@ -77,24 +100,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkBox" id="apps_box">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="margin_left">6</property>
-        <property name="margin_right">6</property>
-        <property name="margin_top">6</property>
-        <property name="margin_bottom">6</property>
-        <property name="orientation">vertical</property>
-        <property name="spacing">2</property>
-        <child>
-          <placeholder/>
-        </child>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">2</property>
-      </packing>
+      <placeholder/>
     </child>
   </object>
 </interface>

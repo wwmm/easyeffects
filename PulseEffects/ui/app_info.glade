@@ -23,16 +23,18 @@
     <property name="row_spacing">6</property>
     <property name="column_spacing">6</property>
     <child>
-      <object class="GtkSwitch" id="enable">
-        <property name="name">switch</property>
+      <object class="GtkToggleButton" id="mute">
+        <property name="name">mute</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
-        <property name="halign">center</property>
+        <property name="receives_default">True</property>
+        <property name="halign">start</property>
         <property name="valign">center</property>
+        <property name="image">mute_icon</property>
       </object>
       <packing>
         <property name="left_attach">0</property>
-        <property name="top_attach">1</property>
+        <property name="top_attach">2</property>
       </packing>
     </child>
     <child>
@@ -49,6 +51,19 @@
       </object>
       <packing>
         <property name="left_attach">1</property>
+        <property name="top_attach">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSwitch" id="enable">
+        <property name="name">switch</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="halign">center</property>
+        <property name="valign">center</property>
+      </object>
+      <packing>
+        <property name="left_attach">2</property>
         <property name="top_attach">2</property>
       </packing>
     </child>
@@ -168,23 +183,6 @@
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="media">
-        <property name="name">media</property>
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="halign">center</property>
-        <property name="valign">center</property>
-        <property name="label">media</property>
-        <attributes>
-          <attribute name="weight" value="semibold"/>
-        </attributes>
-      </object>
-      <packing>
-        <property name="left_attach">1</property>
-        <property name="top_attach">0</property>
-      </packing>
-    </child>
-    <child>
       <object class="GtkBox">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
@@ -224,24 +222,21 @@
         </child>
       </object>
       <packing>
-        <property name="left_attach">0</property>
+        <property name="left_attach">1</property>
         <property name="top_attach">0</property>
       </packing>
     </child>
     <child>
-      <object class="GtkToggleButton" id="mute">
-        <property name="name">mute</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="halign">center</property>
-        <property name="valign">center</property>
-        <property name="image">mute_icon</property>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">2</property>
-      </packing>
+      <placeholder/>
+    </child>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <placeholder/>
     </child>
   </object>
 </interface>

@@ -23,7 +23,6 @@ class SinkInputEffects(EffectsBase):
         EffectsBase.__init__(self, self.pm.default_sink_rate, self.settings)
 
         self.log_tag = 'apps: '
-        self.changing_sink_input_volume = False
         self.switch_on_all_apps = False
         self.panorama_ready = False
 
@@ -97,15 +96,14 @@ class SinkInputEffects(EffectsBase):
     def build_sink_input_ui(self, sink_input_parameters):
         idx = sink_input_parameters[0]
         app_name = sink_input_parameters[1]
-        app_media = sink_input_parameters[2]
-        icon_name = sink_input_parameters[3]
-        audio_channels = sink_input_parameters[4]
-        max_volume_linear = sink_input_parameters[5]
-        rate = sink_input_parameters[6]
-        resample_method = sink_input_parameters[7]
-        sample_format = sink_input_parameters[8]
-        mute = sink_input_parameters[9]
-        connected = sink_input_parameters[10]
+        icon_name = sink_input_parameters[2]
+        audio_channels = sink_input_parameters[3]
+        max_volume_linear = sink_input_parameters[4]
+        rate = sink_input_parameters[5]
+        resample_method = sink_input_parameters[6]
+        sample_format = sink_input_parameters[7]
+        mute = sink_input_parameters[8]
+        connected = sink_input_parameters[9]
 
         builder = Gtk.Builder.new_from_file(self.module_path +
                                             '/ui/app_info.glade')
@@ -113,7 +111,7 @@ class SinkInputEffects(EffectsBase):
         app_box = builder.get_object('app_box')
         app_icon = builder.get_object('app_icon')
         label_name = builder.get_object('app_name')
-        label_media = builder.get_object('media')
+        # label_media = builder.get_object('media')
         label_format = builder.get_object('format')
         label_rate = builder.get_object('rate')
         label_channels = builder.get_object('channels')
@@ -126,7 +124,7 @@ class SinkInputEffects(EffectsBase):
         app_box.set_name('app_box_' + str(idx))
 
         label_name.set_text(app_name)
-        label_media.set_text(app_media)
+        # label_media.set_text(app_media)
         label_format.set_text(sample_format)
         label_channels.set_text(str(audio_channels))
         label_resampler.set_text(resample_method)
@@ -135,6 +133,12 @@ class SinkInputEffects(EffectsBase):
         label_rate.set_text(rate_str)
 
         app_icon.set_from_icon_name(icon_name, Gtk.IconSize.LARGE_TOOLBAR)
+
+        switch.connect('state-set', self.move_sink_input, idx)
+        volume_scale.connect('value-changed', self.set_sink_input_volume, idx,
+                             audio_channels)
+        mute_button.connect('toggled', self.mute_button_toggled, idx,
+                            mute_icon)
 
         if self.switch_on_all_apps:
             switch.set_active(True)
@@ -145,125 +149,81 @@ class SinkInputEffects(EffectsBase):
         volume_scale.set_value(max_volume_linear)
         mute_button.set_active(mute)
 
-        if mute:
-            icon_name = 'audio-volume-muted-symbolic'
-
-            mute_icon.set_from_icon_name(icon_name, Gtk.IconSize.BUTTON)
-
-            volume_scale.set_sensitive(False)
-
-        def move_sink_input(obj, state, idx):
-            if state:
-                self.pm.move_sink_input_to_pulseeffects_sink(idx)
-            else:
-                self.pm.move_sink_input_to_default_sink(idx)
-
-        def set_sink_input_volume(obj, data):
-            idx, audio_channels = data[0], data[1]
-
-            self.pm.set_sink_input_volume(idx, audio_channels, obj.get_value())
-
-        def slider_pressed(obj, event):
-            self.changing_sink_input_volume = True
-
-        def slider_released(obj, event):
-            self.changing_sink_input_volume = False
-
-        def mute_button_toggled(button, idx):
-            state = button.get_active()
-
-            self.pm.set_sink_input_mute(idx, state)
-
-            parent = button.get_parent()
-
-            for child in parent:
-                data = child.get_name().split('_')
-
-                if data[0] == 'volume':
-                    child.set_sensitive(not state)
-
-                    break
-
-        switch.connect('state-set', move_sink_input, idx)
-        volume_scale.connect('button-press-event', slider_pressed)
-        volume_scale.connect('button-release-event', slider_released)
-        volume_scale.connect('value-changed', set_sink_input_volume,
-                             [idx, audio_channels])
-        mute_button.connect('toggled', mute_button_toggled, idx)
-
         return app_box
 
-    def update_sink_input_ui(self, sink_input_parameters):
-        idx = sink_input_parameters[0]
-        app_media = sink_input_parameters[2]
-        audio_channels = sink_input_parameters[4]
-        max_volume_linear = sink_input_parameters[5]
-        rate = sink_input_parameters[6]
-        resample_method = sink_input_parameters[7]
-        sample_format = sink_input_parameters[8]
-        mute = sink_input_parameters[9]
-        connected = sink_input_parameters[10]
+    def move_sink_input(self, obj, state, idx):
+        if state:
+            self.pm.move_sink_input_to_pulseeffects_sink(idx)
+        else:
+            self.pm.move_sink_input_to_default_sink(idx)
 
-        children = self.apps_box.get_children()
+    def set_sink_input_volume(self, obj, idx, audio_channels):
+        self.pm.set_sink_input_volume(idx, audio_channels, obj.get_value())
 
-        for child in children:
-            if child.get_name() == 'app_box_' + str(idx):
-                if not self.changing_sink_input_volume:
-                    for node in child.get_children():
-                        node_name = node.get_name()
+    def mute_button_toggled(self, button, idx, icon):
+        state = button.get_active()
 
-                        if node_name == 'switch':
-                            node.set_active(connected)
-                        elif node_name == 'mute':
-                            node.set_active(mute)
-                        elif node_name == 'stream_props':
-                            for label in node.get_children():
-                                label_name = label.get_name()
+        if state:
+            icon_name = 'audio-volume-muted-symbolic'
+            icon.set_from_icon_name(icon_name, Gtk.IconSize.BUTTON)
+        else:
+            icon_name = 'audio-volume-high-symbolic'
+            icon.set_from_icon_name(icon_name, Gtk.IconSize.BUTTON)
 
-                                if label_name == 'media':
-                                    label.set_text(app_media)
-                                elif label_name == 'format':
-                                    label.set_text(sample_format)
-                                elif label_name == 'rate':
-                                    rate_str = '{:.1f}'.format(round(
-                                        rate / 1000.0, 1)) + ' kHz'
-
-                                    label.set_text(rate_str)
-                                elif label_name == 'channels':
-                                    label.set_text(str(audio_channels))
-                                elif label_name == 'resampler':
-                                    label.set_text(resample_method)
+        self.pm.set_sink_input_mute(idx, state)
 
     def on_sink_input_added(self, obj, sink_input_parameters):
         app_box = self.build_sink_input_ui(sink_input_parameters)
 
         self.apps_box.add(app_box)
-
         self.apps_box.show_all()
 
         if not self.is_playing:
             self.set_state('playing')
 
     def on_sink_input_changed(self, obj, sink_input_parameters):
-        self.update_sink_input_ui(sink_input_parameters)
+        idx = sink_input_parameters[0]
+        audio_channels = sink_input_parameters[3]
+        max_volume_linear = sink_input_parameters[4]
+        rate = sink_input_parameters[5]
+        resample_method = sink_input_parameters[6]
+        sample_format = sink_input_parameters[7]
+        mute = sink_input_parameters[8]
+        connected = sink_input_parameters[9]
 
-        # idx = sink_input_parameters[0]
-        #
-        # children = self.apps_box.get_children()
-        #
-        # for child in children:
-        #     child_name = child.get_name()
+        children = self.apps_box.get_children()
 
-        # if child_name == 'app_box_' + str(idx):
-        #     if not self.changing_sink_input_volume:
-        #         for c in child.get_children():
-        #             child.remove(c)
-        #
-        #         self.init_sink_input_ui(child, sink_input_parameters)
-        #
-        #         self.apps_box.show_all()
+        for child in children:
+            if child.get_name() == 'app_box_' + str(idx):
+                for node in child.get_children():
+                    node_name = node.get_name()
 
-        # break
+                    if node_name == 'switch':
+                        node.set_active(connected)
+                    elif node_name == 'volume':
+                        node.set_value(max_volume_linear)
+
+                        if mute:
+                            node.set_sensitive(False)
+                        else:
+                            node.set_sensitive(True)
+                    elif node_name == 'mute':
+                        node.set_active(mute)
+                    elif node_name == 'stream_props':
+                        for label in node.get_children():
+                            label_name = label.get_name()
+
+                            if label_name == 'format':
+                                label.set_text(sample_format)
+                            elif label_name == 'rate':
+                                rate_str = '{:.1f}'.format(round(
+                                    rate / 1000.0, 1)) + ' kHz'
+
+                                label.set_text(rate_str)
+                            elif label_name == 'channels':
+                                label.set_text(str(audio_channels))
+                            elif label_name == 'resampler':
+                                label.set_text(resample_method)
 
     def on_sink_input_removed(self, obj, idx):
         children = self.apps_box.get_children()
