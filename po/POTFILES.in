@@ -1,4 +1,5 @@
 PulseEffects/ui/about.glade
+PulseEffects/ui/app_info.glade
 PulseEffects/ui/compressor.glade
 PulseEffects/ui/effects_box.glade
 PulseEffects/ui/equalizer.glade
