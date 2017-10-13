@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-07 12:51-0300\n"
-"PO-Revision-Date: 2017-10-07 12:52-0300\n"
+"POT-Creation-Date: 2017-10-13 11:52-0300\n"
+"PO-Revision-Date: 2017-10-13 11:54-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
@@ -22,6 +22,23 @@ msgstr ""
 #: PulseEffects/ui/about.glade:11
 msgid "Audio Effects for Pulseaudio Applications"
 msgstr "Efeitos de Áudio para Programas que Utilizam Pulseaudio"
+
+#: PulseEffects/ui/app_info.glade:83
+msgid "Format"
+msgstr "Formato"
+
+#: PulseEffects/ui/app_info.glade:94
+msgid "Rate"
+msgstr "Taxa"
+
+#: PulseEffects/ui/app_info.glade:105
+msgid "Channels"
+msgstr "Canais"
+
+#: PulseEffects/ui/app_info.glade:116
+#, fuzzy
+msgid "Resampler"
+msgstr "Resampler"
 
 #: PulseEffects/ui/compressor.glade:27
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:52
@@ -63,7 +80,7 @@ msgstr "Ganho de Saída [dB]"
 #. for some reason when listbox is inside a scrolledwindow
 #. it autoselects a row at startup
 #: PulseEffects/ui/compressor.glade:314 PulseEffects/ui/main_ui.glade:292
-#: PulseEffects/ui/reverb.glade:207 PulseEffects/presets_manager.py:64
+#: PulseEffects/ui/reverb.glade:207 PulseEffects/presets_manager.py:68
 msgid "Presets"
 msgstr "Predefinições"
 
@@ -86,6 +103,10 @@ msgstr "Saída"
 #: PulseEffects/ui/compressor.glade:562
 msgid "Gain Reduction"
 msgstr "Redução de Ganho"
+
+#: PulseEffects/ui/effects_box.glade:74
+msgid "Applications"
+msgstr "Aplicativos"
 
 #: PulseEffects/ui/equalizer.glade:185
 msgid "Equalizer"
@@ -286,11 +307,15 @@ msgstr "Sala de Máquinas"
 msgid "Small Room"
 msgstr "Quarto Pequeno"
 
-#: PulseEffects/presets_manager.py:100
+#: PulseEffects/effects_base.py:46
+msgid "<b>Applications</b>"
+msgstr "<b>Aplicativos</b>"
+
+#: PulseEffects/presets_manager.py:105
 msgid "Save Current Settings to Preset"
 msgstr "Salvar Configurações atuais para esta predefinição"
 
-#: PulseEffects/presets_manager.py:115
+#: PulseEffects/presets_manager.py:120
 msgid "Delete Preset"
 msgstr "Deletar Predefinição"
 

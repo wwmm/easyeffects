@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-07 12:51-0300\n"
+"POT-Creation-Date: 2017-10-13 11:52-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,22 @@ msgstr ""
 
 #: PulseEffects/ui/about.glade:11
 msgid "Audio Effects for Pulseaudio Applications"
+msgstr ""
+
+#: PulseEffects/ui/app_info.glade:83
+msgid "Format"
+msgstr ""
+
+#: PulseEffects/ui/app_info.glade:94
+msgid "Rate"
+msgstr ""
+
+#: PulseEffects/ui/app_info.glade:105
+msgid "Channels"
+msgstr ""
+
+#: PulseEffects/ui/app_info.glade:116
+msgid "Resampler"
 msgstr ""
 
 #: PulseEffects/ui/compressor.glade:27
@@ -61,7 +77,7 @@ msgstr ""
 #. for some reason when listbox is inside a scrolledwindow
 #. it autoselects a row at startup
 #: PulseEffects/ui/compressor.glade:314 PulseEffects/ui/main_ui.glade:292
-#: PulseEffects/ui/reverb.glade:207 PulseEffects/presets_manager.py:64
+#: PulseEffects/ui/reverb.glade:207 PulseEffects/presets_manager.py:68
 msgid "Presets"
 msgstr ""
 
@@ -83,6 +99,10 @@ msgstr ""
 
 #: PulseEffects/ui/compressor.glade:562
 msgid "Gain Reduction"
+msgstr ""
+
+#: PulseEffects/ui/effects_box.glade:74
+msgid "Applications"
 msgstr ""
 
 #: PulseEffects/ui/equalizer.glade:185
@@ -282,11 +302,15 @@ msgstr ""
 msgid "Small Room"
 msgstr ""
 
-#: PulseEffects/presets_manager.py:100
+#: PulseEffects/effects_base.py:46
+msgid "<b>Applications</b>"
+msgstr ""
+
+#: PulseEffects/presets_manager.py:105
 msgid "Save Current Settings to Preset"
 msgstr ""
 
-#: PulseEffects/presets_manager.py:115
+#: PulseEffects/presets_manager.py:120
 msgid "Delete Preset"
 msgstr ""
 
