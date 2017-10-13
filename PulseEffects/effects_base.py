@@ -5,7 +5,7 @@ import gi
 import numpy as np
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, GstInsertBin, Gtk
+from gi.repository import Gio, GstInsertBin, Gtk, Pango
 from PulseEffects.compressor import Compressor
 from PulseEffects.equalizer import Equalizer
 from PulseEffects.highpass import Highpass
@@ -36,6 +36,21 @@ class EffectsBase(PipelineBase):
         self.listbox = self.builder.get_object('listbox')
         self.stack = self.builder.get_object('stack')
         self.apps_box = self.builder.get_object('apps_box')
+
+        # adding applications entry
+        row = Gtk.ListBoxRow()
+        row.set_name('applications')
+        row.set_margin_top(6)
+        row.set_margin_bottom(6)
+
+        entry_label = Gtk.Label(_('<b>Applications</b>'))
+        entry_label.set_halign(Gtk.Align.START)
+        entry_label.set_use_markup(True)
+        entry_label.set_ellipsize(Pango.EllipsizeMode.END)
+
+        row.add(entry_label)
+
+        self.listbox.add(row)
 
         self.listbox.connect('row-activated', self.on_listbox_row_activated)
 
@@ -121,20 +136,7 @@ class EffectsBase(PipelineBase):
         self.listbox.insert(row, idx)
 
     def on_listbox_row_activated(self, obj, row):
-        name = row.get_name()
-
-        if name == 'limiter':
-            self.stack.set_visible_child(self.limiter.ui_window)
-        elif name == 'compressor':
-            self.stack.set_visible_child(self.compressor.ui_window)
-        elif name == 'reverb':
-            self.stack.set_visible_child(self.reverb.ui_window)
-        elif name == 'highpass':
-            self.stack.set_visible_child(self.highpass.ui_window)
-        elif name == 'lowpass':
-            self.stack.set_visible_child(self.lowpass.ui_window)
-        elif name == 'equalizer':
-            self.stack.set_visible_child(self.equalizer.ui_window)
+        self.stack.set_visible_child_name(row.get_name())
 
     def on_message_element(self, bus, msg):
         plugin = msg.src.get_name()

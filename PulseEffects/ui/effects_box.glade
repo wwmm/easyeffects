@@ -70,8 +70,8 @@
                 </child>
               </object>
               <packing>
-                <property name="name">audio_applications</property>
-                <property name="title" translatable="yes">Audio Applications</property>
+                <property name="name">applications</property>
+                <property name="title" translatable="yes">Applications</property>
               </packing>
             </child>
           </object>

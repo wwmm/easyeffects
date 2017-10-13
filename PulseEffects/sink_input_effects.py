@@ -41,13 +41,13 @@ class SinkInputEffects(EffectsBase):
 
         # adding effects widgets to the stack
 
-        self.stack.add_named(self.limiter.ui_window, 'Limiter')
-        self.stack.add_named(self.panorama.ui_window, 'Panorama')
-        self.stack.add_named(self.compressor.ui_window, 'Compressor')
-        self.stack.add_named(self.reverb.ui_window, 'Reverb')
-        self.stack.add_named(self.highpass.ui_window, 'Highpass')
-        self.stack.add_named(self.lowpass.ui_window, 'Lowpass')
-        self.stack.add_named(self.equalizer.ui_window, 'Equalizer')
+        self.stack.add_named(self.limiter.ui_window, 'limiter')
+        self.stack.add_named(self.panorama.ui_window, 'panorama')
+        self.stack.add_named(self.compressor.ui_window, 'compressor')
+        self.stack.add_named(self.reverb.ui_window, 'reverb')
+        self.stack.add_named(self.highpass.ui_window, 'highpass')
+        self.stack.add_named(self.lowpass.ui_window, 'lowpass')
+        self.stack.add_named(self.equalizer.ui_window, 'equalizer')
 
         # on/off switches connections
         self.panorama.ui_enable.connect('state-set', self.on_panorama_enable)
