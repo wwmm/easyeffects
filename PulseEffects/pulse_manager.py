@@ -431,9 +431,12 @@ class PulseManager(GObject.GObject):
                 rate = sample_spec.rate
                 sample_format = self.get_sample_spec_format(sample_spec.format)
 
-                new_input = [idx, app_name, icon_name, audio_channels,
-                             max_volume_linear, rate, resample_method,
-                             sample_format, mute, connected]
+                new_input = {'index': idx, 'name': app_name,
+                             'icon': icon_name, 'channels': audio_channels,
+                             'volume': max_volume_linear, 'rate': rate,
+                             'resampler': resample_method,
+                             'format': sample_format, 'mute': mute,
+                             'connected': connected}
 
                 if user_data == 1:
                     GLib.idle_add(self.emit, 'sink_input_added', new_input)
@@ -490,9 +493,12 @@ class PulseManager(GObject.GObject):
                 rate = sample_spec.rate
                 sample_format = self.get_sample_spec_format(sample_spec.format)
 
-                new_output = [idx, app_name, icon_name, audio_channels,
-                              max_volume_linear, rate, resample_method,
-                              sample_format, mute, connected]
+                new_output = {'index': idx, 'name': app_name,
+                              'icon': icon_name, 'channels': audio_channels,
+                              'volume': max_volume_linear, 'rate': rate,
+                              'resampler': resample_method,
+                              'format': sample_format, 'mute': mute,
+                              'connected': connected}
 
                 if user_data == 1:
                     GLib.idle_add(self.emit, 'source_output_added', new_output)

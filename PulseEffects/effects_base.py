@@ -139,16 +139,16 @@ class EffectsBase(PipelineBase):
         self.stack.set_visible_child_name(row.get_name())
 
     def build_app_ui(self, parameters):
-        idx = parameters[0]
-        app_name = parameters[1]
-        icon_name = parameters[2]
-        audio_channels = parameters[3]
-        max_volume_linear = parameters[4]
-        rate = parameters[5]
-        resample_method = parameters[6]
-        sample_format = parameters[7]
-        mute = parameters[8]
-        connected = parameters[9]
+        idx = parameters['index']
+        app_name = parameters['name']
+        icon_name = parameters['icon']
+        audio_channels = parameters['channels']
+        max_volume_linear = parameters['volume']
+        rate = parameters['rate']
+        resample_method = parameters['resampler']
+        sample_format = parameters['format']
+        mute = parameters['mute']
+        connected = parameters['connected']
 
         builder = Gtk.Builder.new_from_file(self.module_path +
                                             '/ui/app_info.glade')
@@ -204,14 +204,14 @@ class EffectsBase(PipelineBase):
             self.set_state('playing')
 
     def on_app_changed(self, obj, parameters):
-        idx = parameters[0]
-        audio_channels = parameters[3]
-        max_volume_linear = parameters[4]
-        rate = parameters[5]
-        resample_method = parameters[6]
-        sample_format = parameters[7]
-        mute = parameters[8]
-        connected = parameters[9]
+        idx = parameters['index']
+        audio_channels = parameters['channels']
+        max_volume_linear = parameters['volume']
+        rate = parameters['rate']
+        resample_method = parameters['resampler']
+        sample_format = parameters['format']
+        mute = parameters['mute']
+        connected = parameters['connected']
 
         children = self.apps_box.get_children()
 
