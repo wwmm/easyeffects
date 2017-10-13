@@ -490,10 +490,9 @@ class PulseManager(GObject.GObject):
                 rate = sample_spec.rate
                 sample_format = self.get_sample_spec_format(sample_spec.format)
 
-                new_output = [idx, app_name, media_name,
-                              icon_name, audio_channels, max_volume_linear,
-                              rate, resample_method, sample_format, mute,
-                              connected]
+                new_output = [idx, app_name, icon_name, audio_channels,
+                              max_volume_linear, rate, resample_method,
+                              sample_format, mute, connected]
 
                 if user_data == 1:
                     GLib.idle_add(self.emit, 'source_output_added', new_output)

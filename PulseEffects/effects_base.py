@@ -138,6 +138,132 @@ class EffectsBase(PipelineBase):
     def on_listbox_row_activated(self, obj, row):
         self.stack.set_visible_child_name(row.get_name())
 
+    def build_app_ui(self, parameters):
+        idx = parameters[0]
+        app_name = parameters[1]
+        icon_name = parameters[2]
+        audio_channels = parameters[3]
+        max_volume_linear = parameters[4]
+        rate = parameters[5]
+        resample_method = parameters[6]
+        sample_format = parameters[7]
+        mute = parameters[8]
+        connected = parameters[9]
+
+        builder = Gtk.Builder.new_from_file(self.module_path +
+                                            '/ui/app_info.glade')
+
+        app_box = builder.get_object('app_box')
+        app_icon = builder.get_object('app_icon')
+        label_name = builder.get_object('app_name')
+        label_format = builder.get_object('format')
+        label_rate = builder.get_object('rate')
+        label_channels = builder.get_object('channels')
+        label_resampler = builder.get_object('resampler')
+        switch = builder.get_object('enable')
+        volume_scale = builder.get_object('volume_scale')
+        mute_button = builder.get_object('mute')
+        mute_icon = builder.get_object('mute_icon')
+
+        app_box.set_name('app_box_' + str(idx))
+
+        label_name.set_text(app_name)
+        label_format.set_text(sample_format)
+        label_channels.set_text(str(audio_channels))
+        label_resampler.set_text(resample_method)
+
+        rate_str = '{:.1f}'.format(round(rate / 1000.0, 1)) + ' kHz'
+        label_rate.set_text(rate_str)
+
+        app_icon.set_from_icon_name(icon_name, Gtk.IconSize.LARGE_TOOLBAR)
+
+        switch.connect('state-set', self.on_enable_app, idx)
+        volume_scale.connect('value-changed', self.on_volume_changed, idx,
+                             audio_channels)
+        mute_button.connect('toggled', self.on_mute, idx,
+                            mute_icon)
+
+        if self.switch_on_all_apps:
+            switch.set_active(True)
+            switch.set_sensitive(False)
+        else:
+            switch.set_active(connected)
+
+        volume_scale.set_value(max_volume_linear)
+        mute_button.set_active(mute)
+
+        return app_box
+
+    def on_app_added(self, obj, parameters):
+        app_box = self.build_app_ui(parameters)
+
+        self.apps_box.add(app_box)
+        self.apps_box.show_all()
+
+        if not self.is_playing:
+            self.set_state('playing')
+
+    def on_app_changed(self, obj, parameters):
+        idx = parameters[0]
+        audio_channels = parameters[3]
+        max_volume_linear = parameters[4]
+        rate = parameters[5]
+        resample_method = parameters[6]
+        sample_format = parameters[7]
+        mute = parameters[8]
+        connected = parameters[9]
+
+        children = self.apps_box.get_children()
+
+        for child in children:
+            if child.get_name() == 'app_box_' + str(idx):
+                for node in child.get_children():
+                    node_name = node.get_name()
+
+                    if node_name == 'switch':
+                        node.set_active(connected)
+                    elif node_name == 'volume':
+                        node.set_value(max_volume_linear)
+
+                        if mute:
+                            node.set_sensitive(False)
+                        else:
+                            node.set_sensitive(True)
+                    elif node_name == 'mute':
+                        node.set_active(mute)
+                    elif node_name == 'stream_props':
+                        for label in node.get_children():
+                            label_name = label.get_name()
+
+                            if label_name == 'format':
+                                label.set_text(sample_format)
+                            elif label_name == 'rate':
+                                rate_str = '{:.1f}'.format(round(
+                                    rate / 1000.0, 1)) + ' kHz'
+
+                                label.set_text(rate_str)
+                            elif label_name == 'channels':
+                                label.set_text(str(audio_channels))
+                            elif label_name == 'resampler':
+                                label.set_text(resample_method)
+
+    def on_app_removed(self, obj, idx):
+        children = self.apps_box.get_children()
+
+        n_children_before = len(children)
+
+        for child in children:
+            child_name = child.get_name()
+
+            if child_name == 'app_box_' + str(idx):
+                self.apps_box.remove(child)
+                break
+
+        n_children_after = len(self.apps_box.get_children())
+
+        if n_children_before == 1 and n_children_after == 0:
+            self.set_state('ready')
+
     def on_message_element(self, bus, msg):
         plugin = msg.src.get_name()
 
@@ -283,3 +409,11 @@ class EffectsBase(PipelineBase):
             self.spectrum_wrapper.remove(self.spectrum,
                                          self.on_filter_removed,
                                          self.log_tag)
+
+    def reset(self):
+        self.limiter.reset()
+        self.compressor.reset()
+        self.reverb.reset()
+        self.highpass.reset()
+        self.lowpass.reset()
+        self.equalizer.reset()

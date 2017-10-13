@@ -228,7 +228,6 @@ class LoadPresets():
             settings.set_value('equalizer-band' + str(n) + '-type', t)
 
     def load_sink_inputs_presets(self, settings):
-        # order is important
         self.load_limiter_presets(settings, 'apps_limiter')
         self.load_autovolume_presets(settings, 'apps_autovolume')
         self.load_panorama_presets(settings, 'apps_panorama')
@@ -239,7 +238,6 @@ class LoadPresets():
         self.load_equalizer_presets(settings, 'apps_equalizer')
 
     def load_source_outputs_presets(self, settings):
-        # order is important
         self.load_limiter_presets(settings, 'mic_limiter')
         self.load_autovolume_presets(settings, 'mic_autovolume')
         self.load_compressor_presets(settings, 'mic_compressor')
