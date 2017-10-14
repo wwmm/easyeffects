@@ -48,7 +48,7 @@
                 <property name="can_focus">True</property>
                 <property name="valign">center</property>
                 <property name="hexpand">True</property>
-                <property name="placeholder_text" translatable="yes">Preset Name</property>
+                <property name="placeholder_text" translatable="yes">Name</property>
                 <property name="input_purpose">name</property>
               </object>
               <packing>

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-14 12:50-0300\n"
+"POT-Creation-Date: 2017-10-14 19:02-0300\n"
 "PO-Revision-Date: 2017-06-11 22:19+0200\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: \n"
@@ -90,7 +90,7 @@ msgstr "Výstupné zosilnenie [dB]"
 #. for some reason when listbox is inside a scrolledwindow
 #. it autoselects a row at startup
 #: PulseEffects/ui/compressor.glade:314 PulseEffects/ui/main_ui.glade:292
-#: PulseEffects/ui/reverb.glade:207 PulseEffects/presets_manager.py:68
+#: PulseEffects/ui/reverb.glade:207 PulseEffects/presets_manager.py:70
 msgid "Presets"
 msgstr "Predvoľby"
 
@@ -288,9 +288,8 @@ msgid "R"
 msgstr "P"
 
 #: PulseEffects/ui/presets_menu.glade:51
-#, fuzzy
-msgid "Preset Name"
-msgstr "Predvoľby"
+msgid "Name"
+msgstr ""
 
 #: PulseEffects/ui/reverb.glade:25
 msgid "Reverberation"
@@ -339,11 +338,11 @@ msgstr ""
 msgid "playing"
 msgstr ""
 
-#: PulseEffects/presets_manager.py:105
+#: PulseEffects/presets_manager.py:107
 msgid "Save Current Settings to Preset"
 msgstr ""
 
-#: PulseEffects/presets_manager.py:120
+#: PulseEffects/presets_manager.py:122
 #, fuzzy
 msgid "Delete Preset"
 msgstr "Uložiť predvoľbu"
@@ -485,6 +484,10 @@ msgstr ""
 #: data/com.github.wwmm.pulseeffects.desktop.in:10
 msgid "pulseeffects"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Preset Name"
+#~ msgstr "Predvoľby"
 
 #~ msgid "Sensing Type"
 #~ msgstr "Typ snímania"

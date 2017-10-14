@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-14 12:50-0300\n"
+"POT-Creation-Date: 2017-10-14 19:02-0300\n"
 "PO-Revision-Date: 2017-10-14 18:40+0200\n"
 "Last-Translator: Bleuzen <supgesu@gmail.com>\n"
 "Language-Team: \n"
@@ -90,7 +90,7 @@ msgstr "Anhebung [dB]"
 #. for some reason when listbox is inside a scrolledwindow
 #. it autoselects a row at startup
 #: PulseEffects/ui/compressor.glade:314 PulseEffects/ui/main_ui.glade:292
-#: PulseEffects/ui/reverb.glade:207 PulseEffects/presets_manager.py:68
+#: PulseEffects/ui/reverb.glade:207 PulseEffects/presets_manager.py:70
 msgid "Presets"
 msgstr ""
 
@@ -282,7 +282,7 @@ msgid "R"
 msgstr ""
 
 #: PulseEffects/ui/presets_menu.glade:51
-msgid "Preset Name"
+msgid "Name"
 msgstr ""
 
 #: PulseEffects/ui/reverb.glade:25
@@ -329,11 +329,11 @@ msgstr "pausiert"
 msgid "playing"
 msgstr ""
 
-#: PulseEffects/presets_manager.py:105
+#: PulseEffects/presets_manager.py:107
 msgid "Save Current Settings to Preset"
 msgstr "Aktuelle Einstellungen als Preset speichern"
 
-#: PulseEffects/presets_manager.py:120
+#: PulseEffects/presets_manager.py:122
 msgid "Delete Preset"
 msgstr "Preset löschen"
 

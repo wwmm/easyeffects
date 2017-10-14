@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-14 12:50-0300\n"
+"POT-Creation-Date: 2017-10-14 19:02-0300\n"
 "PO-Revision-Date: 2017-08-29 11:00+0200\n"
 "Last-Translator: Nathan Graule <solarliner@gmail.com>\n"
 "Language-Team: \n"
@@ -92,7 +92,7 @@ msgstr "Gain de remise [dB]"
 #. for some reason when listbox is inside a scrolledwindow
 #. it autoselects a row at startup
 #: PulseEffects/ui/compressor.glade:314 PulseEffects/ui/main_ui.glade:292
-#: PulseEffects/ui/reverb.glade:207 PulseEffects/presets_manager.py:68
+#: PulseEffects/ui/reverb.glade:207 PulseEffects/presets_manager.py:70
 msgid "Presets"
 msgstr "Préréglage"
 
@@ -288,9 +288,8 @@ msgid "R"
 msgstr "R"
 
 #: PulseEffects/ui/presets_menu.glade:51
-#, fuzzy
-msgid "Preset Name"
-msgstr "Préréglage"
+msgid "Name"
+msgstr ""
 
 #: PulseEffects/ui/reverb.glade:25
 msgid "Reverberation"
@@ -337,11 +336,11 @@ msgstr ""
 msgid "playing"
 msgstr ""
 
-#: PulseEffects/presets_manager.py:105
+#: PulseEffects/presets_manager.py:107
 msgid "Save Current Settings to Preset"
 msgstr ""
 
-#: PulseEffects/presets_manager.py:120
+#: PulseEffects/presets_manager.py:122
 #, fuzzy
 msgid "Delete Preset"
 msgstr "Sauvegarder préglage"
@@ -496,6 +495,10 @@ msgstr "limiter;compressor;reverberation;equalizer;autovolume;"
 #, fuzzy
 msgid "pulseeffects"
 msgstr "pulseeffects"
+
+#, fuzzy
+#~ msgid "Preset Name"
+#~ msgstr "Préréglage"
 
 #~ msgid "Load Preset"
 #~ msgstr "Ouvrir préréglage"

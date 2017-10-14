@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-14 12:50-0300\n"
+"POT-Creation-Date: 2017-10-14 19:02-0300\n"
 "PO-Revision-Date: 2017-10-14 10:20+0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: \n"
@@ -91,7 +91,7 @@ msgstr "Makeup (dB)"
 #. for some reason when listbox is inside a scrolledwindow
 #. it autoselects a row at startup
 #: PulseEffects/ui/compressor.glade:314 PulseEffects/ui/main_ui.glade:292
-#: PulseEffects/ui/reverb.glade:207 PulseEffects/presets_manager.py:68
+#: PulseEffects/ui/reverb.glade:207 PulseEffects/presets_manager.py:70
 msgid "Presets"
 msgstr "Profiler"
 
@@ -283,9 +283,8 @@ msgid "R"
 msgstr "H"
 
 #: PulseEffects/ui/presets_menu.glade:51
-#, fuzzy
-msgid "Preset Name"
-msgstr "Profiler"
+msgid "Name"
+msgstr "Namn"
 
 #: PulseEffects/ui/reverb.glade:25
 msgid "Reverberation"
@@ -331,11 +330,11 @@ msgstr ""
 msgid "playing"
 msgstr ""
 
-#: PulseEffects/presets_manager.py:105
+#: PulseEffects/presets_manager.py:107
 msgid "Save Current Settings to Preset"
 msgstr "Spara nuvarande inställningar som profil"
 
-#: PulseEffects/presets_manager.py:120
+#: PulseEffects/presets_manager.py:122
 msgid "Delete Preset"
 msgstr "Ta bort profil"
 
@@ -490,8 +489,9 @@ msgstr ""
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
-#~ msgid "Name"
-#~ msgstr "Namn"
+#, fuzzy
+#~ msgid "Preset Name"
+#~ msgstr "Profiler"
 
 #~ msgid "Equalizer - Input"
 #~ msgstr "Ljudutjämnare - Ingång"

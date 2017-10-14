@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-14 12:50-0300\n"
+"POT-Creation-Date: 2017-10-14 19:02-0300\n"
 "PO-Revision-Date: 2017-10-14 12:52-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
@@ -91,7 +91,7 @@ msgstr "Ganho de Saída [dB]"
 #. for some reason when listbox is inside a scrolledwindow
 #. it autoselects a row at startup
 #: PulseEffects/ui/compressor.glade:314 PulseEffects/ui/main_ui.glade:292
-#: PulseEffects/ui/reverb.glade:207 PulseEffects/presets_manager.py:68
+#: PulseEffects/ui/reverb.glade:207 PulseEffects/presets_manager.py:70
 msgid "Presets"
 msgstr "Predefinições"
 
@@ -283,8 +283,8 @@ msgid "R"
 msgstr "R"
 
 #: PulseEffects/ui/presets_menu.glade:51
-msgid "Preset Name"
-msgstr "Nome da Predefinição"
+msgid "Name"
+msgstr "Nome"
 
 #: PulseEffects/ui/reverb.glade:25
 msgid "Reverberation"
@@ -330,11 +330,11 @@ msgstr "pausado"
 msgid "playing"
 msgstr "tocando"
 
-#: PulseEffects/presets_manager.py:105
+#: PulseEffects/presets_manager.py:107
 msgid "Save Current Settings to Preset"
 msgstr "Salvar Configurações atuais para esta predefinição"
 
-#: PulseEffects/presets_manager.py:120
+#: PulseEffects/presets_manager.py:122
 msgid "Delete Preset"
 msgstr "Deletar Predefinição"
 
@@ -488,8 +488,8 @@ msgstr "limitador;compressor;reverberação;equalizador;autovolume;"
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
-#~ msgid "Name"
-#~ msgstr "Nome"
+#~ msgid "Preset Name"
+#~ msgstr "Nome da Predefinição"
 
 #~ msgid "Equalizer - Input"
 #~ msgstr "Equalizador - Entrada"
