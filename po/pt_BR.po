@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-13 11:52-0300\n"
+"POT-Creation-Date: 2017-10-14 12:13+0200\n"
 "PO-Revision-Date: 2017-10-13 11:54-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
@@ -105,10 +105,12 @@ msgid "Gain Reduction"
 msgstr "Redução de Ganho"
 
 #: PulseEffects/ui/effects_box.glade:74
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
 msgid "Applications"
 msgstr "Aplicativos"
 
 #: PulseEffects/ui/equalizer.glade:185
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
 msgid "Equalizer"
 msgstr "Equalizador"
 
@@ -456,14 +458,6 @@ msgstr ""
 "configurações\n"
 "como perfis."
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
-msgid "Equalizer - Input"
-msgstr "Equalizador - Entrada"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
-msgid "Equalizer - Output"
-msgstr "Equalizador - Saída"
-
 #: data/com.github.wwmm.pulseeffects.desktop.in:4
 msgid "Audio Enhancer"
 msgstr "Melhorador de Áudio"
@@ -476,6 +470,12 @@ msgstr "limitador;compressor;reverberação;equalizador;autovolume;"
 #: data/com.github.wwmm.pulseeffects.desktop.in:10
 msgid "pulseeffects"
 msgstr "pulseeffects"
+
+#~ msgid "Equalizer - Input"
+#~ msgstr "Equalizador - Entrada"
+
+#~ msgid "Equalizer - Output"
+#~ msgstr "Equalizador - Saída"
 
 #~ msgid "Load Preset"
 #~ msgstr "Carregar Predefinição"

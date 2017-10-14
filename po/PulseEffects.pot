@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-13 11:52-0300\n"
+"POT-Creation-Date: 2017-10-14 12:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -102,10 +102,12 @@ msgid "Gain Reduction"
 msgstr ""
 
 #: PulseEffects/ui/effects_box.glade:74
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
 msgid "Applications"
 msgstr ""
 
 #: PulseEffects/ui/equalizer.glade:185
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
 msgid "Equalizer"
 msgstr ""
 
@@ -435,14 +437,6 @@ msgid ""
 "When PulseEffects is launched it will conveniently remember the "
 "configuration used in the last session. It is also possible to save all the "
 "current settings as profiles."
-msgstr ""
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
-msgid "Equalizer - Input"
-msgstr ""
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
-msgid "Equalizer - Output"
 msgstr ""
 
 #: data/com.github.wwmm.pulseeffects.desktop.in:4
