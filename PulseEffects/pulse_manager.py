@@ -384,8 +384,6 @@ class PulseManager(GObject.GObject):
     def sink_input_info(self, context, info, eol, user_data):
         if info:
             idx = info.contents.index
-            connected_sink_idx = info.contents.sink
-
             proplist = info.contents.proplist
 
             app_name = p.pa_proplist_gets(proplist, b'application.name')
@@ -410,7 +408,8 @@ class PulseManager(GObject.GObject):
                     icon_name = icon_name.decode()
 
                 connected = False
-                if connected_sink_idx == self.apps_sink_idx:
+
+                if info.contents.sink == self.apps_sink_idx:
                     connected = True
 
                 volume = info.contents.volume
@@ -430,6 +429,11 @@ class PulseManager(GObject.GObject):
                 sample_spec = info.contents.sample_spec
                 rate = sample_spec.rate
                 sample_format = self.get_sample_spec_format(sample_spec.format)
+                buffer_time = info.contents.buffer_usec / 1000.0  # ms
+                latency = info.contents.sink_usec / 1000.0  # ms
+
+                print(app_name + u' buffer: ', buffer_time)
+                print(app_name + u' latency: ', latency)
 
                 new_input = {'index': idx, 'name': app_name,
                              'icon': icon_name, 'channels': audio_channels,
@@ -446,8 +450,6 @@ class PulseManager(GObject.GObject):
     def source_output_info(self, context, info, eol, user_data):
         if info:
             idx = info.contents.index
-            connected_source_idx = info.contents.source
-
             proplist = info.contents.proplist
 
             app_name = p.pa_proplist_gets(proplist, b'application.name')
@@ -472,7 +474,8 @@ class PulseManager(GObject.GObject):
                     icon_name = icon_name.decode()
 
                 connected = False
-                if connected_source_idx == self.mic_sink_monitor_idx:
+
+                if info.contents.source == self.mic_sink_monitor_idx:
                     connected = True
 
                 volume = info.contents.volume
