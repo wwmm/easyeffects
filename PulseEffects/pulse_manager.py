@@ -9,24 +9,17 @@ from gi.repository import GLib, GObject
 class PulseManager(GObject.GObject):
 
     __gsignals__ = {
-        'sink_input_added': (GObject.SIGNAL_RUN_FIRST, None,
-                             (object,)),
-        'sink_input_changed': (GObject.SIGNAL_RUN_FIRST, None,
-                               (object,)),
-        'sink_input_removed': (GObject.SIGNAL_RUN_FIRST, None,
-                               (int,)),
-        'source_output_added': (GObject.SIGNAL_RUN_FIRST, None,
+        'sink_input_added': (GObject.SignalFlags.RUN_FIRST, None, (object,)),
+        'sink_input_changed': (GObject.SignalFlags.RUN_FIRST, None, (object,)),
+        'sink_input_removed': (GObject.SignalFlags.RUN_FIRST, None, (int,)),
+        'source_output_added': (GObject.SignalFlags.RUN_FIRST, None,
                                 (object,)),
-        'source_output_changed': (GObject.SIGNAL_RUN_FIRST, None,
+        'source_output_changed': (GObject.SignalFlags.RUN_FIRST, None,
                                   (object,)),
-        'source_output_removed': (GObject.SIGNAL_RUN_FIRST, None,
-                                  (int,)),
-        'source_added': (GObject.SIGNAL_RUN_FIRST, None,
-                         ()),
-        'source_changed': (GObject.SIGNAL_RUN_FIRST, None,
-                           ()),
-        'source_removed': (GObject.SIGNAL_RUN_FIRST, None,
-                           ())
+        'source_output_removed': (GObject.SignalFlags.RUN_FIRST, None, (int,)),
+        'source_added': (GObject.SignalFlags.RUN_FIRST, None, ()),
+        'source_changed': (GObject.SignalFlags.RUN_FIRST, None, ()),
+        'source_removed': (GObject.SignalFlags.RUN_FIRST, None, ())
     }
 
     def __init__(self):

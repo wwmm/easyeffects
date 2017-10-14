@@ -14,8 +14,7 @@ Gst.init(None)
 class PipelineBase(GObject.GObject):
 
     __gsignals__ = {
-        'new_spectrum': (GObject.SIGNAL_RUN_FIRST, None,
-                         (object,))
+        'new_spectrum': (GObject.SignalFlags.RUN_FIRST, None, (object,))
     }
 
     def __init__(self, sampling_rate):
