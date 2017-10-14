@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-11 22:18+0200\n"
+"POT-Creation-Date: 2017-10-14 12:13+0200\n"
 "PO-Revision-Date: 2017-06-11 22:19+0200\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: \n"
@@ -18,227 +18,488 @@ msgstr ""
 "X-Generator: Poedit 2.0.1\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: ../PulseEffects/ui/main_ui.glade:516
-msgid "Equalizer"
-msgstr "Ekvalizér"
-
-#: ../PulseEffects/ui/main_ui.glade:990
-msgid "Input [dB]"
-msgstr "Vstup [dB]"
-
-#: ../PulseEffects/ui/main_ui.glade:1002
-#| msgid "Output"
-msgid "Output [dB]"
-msgstr "Výstup [dB]"
-
-#: ../PulseEffects/ui/main_ui.glade:1235
-msgid "Input Limiter"
-msgstr "Vstupný obmedzovač"
-
-#: ../PulseEffects/ui/main_ui.glade:1275
-msgid "Input Gain [dB]"
-msgstr "Vstupné zosilnenie [dB]"
-
-#: ../PulseEffects/ui/main_ui.glade:1302
-msgid "Limit [dB]"
-msgstr "Obmedzenie [dB]"
-
-#: ../PulseEffects/ui/main_ui.glade:1329
-msgid "Release [s]"
-msgstr "Uvoľnenie [s]"
-
-#: ../PulseEffects/ui/main_ui.glade:1356 ../PulseEffects/ui/main_ui.glade:1878
-#: ../PulseEffects/ui/main_ui.glade:2309
-msgid "Input"
-msgstr "Vstup"
-
-#: ../PulseEffects/ui/main_ui.glade:1456 ../PulseEffects/ui/main_ui.glade:1778
-#: ../PulseEffects/ui/main_ui.glade:2409
-msgid "Output"
-msgstr "Výstup"
-
-#: ../PulseEffects/ui/main_ui.glade:1556
-msgid "Attenuation"
-msgstr "Zoslabenie"
-
-#: ../PulseEffects/ui/main_ui.glade:1630
-msgid "Reverberation"
-msgstr "Ozvena"
-
-#: ../PulseEffects/ui/main_ui.glade:1670
-msgid "Room Size"
-msgstr "Veľkosť miestnosti"
-
-#: ../PulseEffects/ui/main_ui.glade:1697
-msgid "Damping"
-msgstr "Tlmenie"
-
-#: ../PulseEffects/ui/main_ui.glade:1724
-msgid "Width"
-msgstr "Šírka"
-
-#: ../PulseEffects/ui/main_ui.glade:1751
-msgid "Level"
-msgstr "Úroveň"
-
-#: ../PulseEffects/ui/main_ui.glade:2034
-msgid "Compressor"
-msgstr "Kompresor"
-
-#: ../PulseEffects/ui/main_ui.glade:2079
-msgid "Threshold [dB]"
-msgstr "Prah [dB]"
-
-#: ../PulseEffects/ui/main_ui.glade:2106
-msgid "Release [ms]"
-msgstr "Uvoľnenie [ms]"
-
-#: ../PulseEffects/ui/main_ui.glade:2133
-msgid "Attack [ms]"
-msgstr "Nábeh [ms]"
-
-#: ../PulseEffects/ui/main_ui.glade:2162
-msgid "rms"
-msgstr "RMS"
-
-#: ../PulseEffects/ui/main_ui.glade:2178
-msgid "peak"
-msgstr "Špičkový"
-
-#: ../PulseEffects/ui/main_ui.glade:2205
-msgid "Sensing Type"
-msgstr "Typ snímania"
-
-#: ../PulseEffects/ui/main_ui.glade:2217
-msgid "Ratio [n:1]"
-msgstr "Pomer [n:1]"
-
-#: ../PulseEffects/ui/main_ui.glade:2255
-msgid "Knee [dB]"
-msgstr "Koleno [dB]"
-
-#: ../PulseEffects/ui/main_ui.glade:2282
-msgid "Makeup [dB]"
-msgstr "Výstupné zosilnenie [dB]"
-
-#: ../PulseEffects/ui/main_ui.glade:2509
-msgid "Gain Reduction"
-msgstr "Redukcia zosilnenia"
-
-#: ../PulseEffects/ui/headerbar.glade:46
-msgid "buffer-time [ms]"
-msgstr "Čas zásobníka [ms]"
-
-#: ../PulseEffects/ui/headerbar.glade:71
-msgid "Show Spectrum"
-msgstr "Zobraziť spektrum"
-
-#: ../PulseEffects/ui/headerbar.glade:95
-msgid "latency-time [ms]"
-msgstr "Čas oneskorenia [ms]"
-
-#: ../PulseEffects/ui/headerbar.glade:131
-msgid "Auto Volume"
-msgstr "Automatická hlasitosť"
-
-#: ../PulseEffects/ui/headerbar.glade:160
-msgid "L"
-msgstr "Ľ"
-
-#: ../PulseEffects/ui/headerbar.glade:183
-msgid "R"
-msgstr "P"
-
-#: ../PulseEffects/ui/headerbar.glade:207
-msgid "Save Preset"
-msgstr "Uložiť predvoľbu"
-
-#: ../PulseEffects/ui/headerbar.glade:222
-msgid "Load Preset"
-msgstr "Načítať predvoľbu"
-
-#: ../PulseEffects/ui/about.glade:11
+#: PulseEffects/ui/about.glade:11
 msgid "Audio Effects for Pulseaudio Applications"
 msgstr "Zvukové efekty pre aplikácie využívajúce Pulseaudio"
 
-#: ../PulseEffects/ui/equalizer_menu.glade:44
-#: ../PulseEffects/ui/reverb_menu.glade:13
+#: PulseEffects/ui/app_info.glade:83
+msgid "Format"
+msgstr ""
+
+#: PulseEffects/ui/app_info.glade:94
+msgid "Rate"
+msgstr ""
+
+#: PulseEffects/ui/app_info.glade:105
+msgid "Channels"
+msgstr ""
+
+#: PulseEffects/ui/app_info.glade:116
+msgid "Resampler"
+msgstr ""
+
+#: PulseEffects/ui/compressor.glade:27
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:52
+msgid "Compressor"
+msgstr "Kompresor"
+
+#: PulseEffects/ui/compressor.glade:97
+msgid "rms"
+msgstr "RMS"
+
+#: PulseEffects/ui/compressor.glade:113
+msgid "peak"
+msgstr "Špičkový"
+
+#: PulseEffects/ui/compressor.glade:148
+msgid "Attack [ms]"
+msgstr "Nábeh [ms]"
+
+#: PulseEffects/ui/compressor.glade:176
+msgid "Release [ms]"
+msgstr "Uvoľnenie [ms]"
+
+#: PulseEffects/ui/compressor.glade:202 PulseEffects/ui/limiter.glade:329
+msgid "Threshold [dB]"
+msgstr "Prah [dB]"
+
+#: PulseEffects/ui/compressor.glade:228
+msgid "Ratio [n:1]"
+msgstr "Pomer [n:1]"
+
+#: PulseEffects/ui/compressor.glade:254
+msgid "Knee [dB]"
+msgstr "Koleno [dB]"
+
+#: PulseEffects/ui/compressor.glade:282
+msgid "Makeup [dB]"
+msgstr "Výstupné zosilnenie [dB]"
+
+#. for some reason when listbox is inside a scrolledwindow
+#. it autoselects a row at startup
+#: PulseEffects/ui/compressor.glade:314 PulseEffects/ui/main_ui.glade:292
+#: PulseEffects/ui/reverb.glade:207 PulseEffects/presets_manager.py:68
 msgid "Presets"
 msgstr "Predvoľby"
 
-#: ../PulseEffects/ui/equalizer_menu.glade:59
-msgid "equal loudness 20"
-msgstr "Rovnaká hlasitosť 20"
+#: PulseEffects/ui/compressor.glade:327
+msgid "Vlc"
+msgstr ""
 
-#: ../PulseEffects/ui/equalizer_menu.glade:74
-msgid "equal loudness 40"
-msgstr "Rovnaká hlasitosť 40"
+#: PulseEffects/ui/compressor.glade:360 PulseEffects/ui/highpass.glade:238
+#: PulseEffects/ui/limiter.glade:397 PulseEffects/ui/lowpass.glade:238
+#: PulseEffects/ui/panorama.glade:216 PulseEffects/ui/reverb.glade:394
+msgid "Input"
+msgstr "Vstup"
 
-#: ../PulseEffects/ui/equalizer_menu.glade:89
-msgid "equal loudness 60"
-msgstr "Rovnaká hlasitosť 60"
+#: PulseEffects/ui/compressor.glade:461 PulseEffects/ui/highpass.glade:137
+#: PulseEffects/ui/limiter.glade:498 PulseEffects/ui/lowpass.glade:137
+#: PulseEffects/ui/panorama.glade:115 PulseEffects/ui/reverb.glade:293
+msgid "Output"
+msgstr "Výstup"
 
-#: ../PulseEffects/ui/equalizer_menu.glade:104
-msgid "equal loudness 80"
-msgstr "Rovnaká hlasitosť 80"
+#: PulseEffects/ui/compressor.glade:562
+msgid "Gain Reduction"
+msgstr "Redukcia zosilnenia"
 
-#: ../PulseEffects/ui/equalizer_menu.glade:119
-msgid "equal loudness 100"
-msgstr "Rovnaká hlasitosť 100"
+#: PulseEffects/ui/effects_box.glade:74
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
+msgid "Applications"
+msgstr ""
 
-#: ../PulseEffects/ui/equalizer_menu.glade:134
-msgid "flat"
-msgstr "Plochý"
+#: PulseEffects/ui/equalizer.glade:185
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
+msgid "Equalizer"
+msgstr "Ekvalizér"
 
-#: ../PulseEffects/ui/equalizer_menu.glade:191
-msgid "Input Filters"
-msgstr "Vstupné filtre"
+#: PulseEffects/ui/equalizer.glade:232
+msgid "Flat Response"
+msgstr ""
 
-#: ../PulseEffects/ui/equalizer_menu.glade:216
-msgid "cutoff [Hz]"
-msgstr "Zrezanie [Hz]"
+#: PulseEffects/ui/equalizer.glade:245
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
+msgid "Calibration"
+msgstr ""
 
-#: ../PulseEffects/ui/equalizer_menu.glade:243
-#: ../PulseEffects/ui/equalizer_menu.glade:330
-msgid "poles"
-msgstr "Póly"
+#: PulseEffects/ui/equalizer.glade:995
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:777
+msgid "Input [dB]"
+msgstr "Vstup [dB]"
 
-#: ../PulseEffects/ui/equalizer_menu.glade:274
+#: PulseEffects/ui/equalizer.glade:1008
+msgid "Output [dB]"
+msgstr "Výstup [dB]"
+
+#: PulseEffects/ui/equalizer_band_menu.glade:24
+msgid "Peak"
+msgstr ""
+
+#: PulseEffects/ui/equalizer_band_menu.glade:27
+msgid "Low Shelf"
+msgstr ""
+
+#: PulseEffects/ui/equalizer_band_menu.glade:30
+msgid "High Shelf"
+msgstr ""
+
+#: PulseEffects/ui/equalizer_band_menu.glade:50
+msgid "Filter Type"
+msgstr ""
+
+#: PulseEffects/ui/equalizer_band_menu.glade:92
+#: PulseEffectsCalibration/ui/test_signal.glade:270
+msgid "Frequency [Hz]"
+msgstr ""
+
+#: PulseEffects/ui/equalizer_band_menu.glade:105
+msgid "Quality"
+msgstr ""
+
+#: PulseEffects/ui/equalizer_band_menu.glade:148
+msgid "Reset Frequency"
+msgstr ""
+
+#: PulseEffects/ui/equalizer_band_menu.glade:161
+msgid "Reset Quality"
+msgstr ""
+
+#: PulseEffects/ui/highpass.glade:18
 msgid "High Pass"
 msgstr "Horný prechod"
 
-#: ../PulseEffects/ui/equalizer_menu.glade:285
+#: PulseEffects/ui/highpass.glade:70 PulseEffects/ui/lowpass.glade:70
+#, fuzzy
+msgid "Cutoff [Hz]"
+msgstr "Zrezanie [Hz]"
+
+#: PulseEffects/ui/highpass.glade:97 PulseEffects/ui/lowpass.glade:97
+#, fuzzy
+msgid "Poles"
+msgstr "Póly"
+
+#: PulseEffects/ui/limiter.glade:55
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:48
+msgid "Input Limiter"
+msgstr "Vstupný obmedzovač"
+
+#: PulseEffects/ui/limiter.glade:113
+msgid "Input Gain [dB]"
+msgstr "Vstupné zosilnenie [dB]"
+
+#: PulseEffects/ui/limiter.glade:139
+msgid "Limit [dB]"
+msgstr "Obmedzenie [dB]"
+
+#: PulseEffects/ui/limiter.glade:181
+msgid "Release [s]"
+msgstr "Uvoľnenie [s]"
+
+#: PulseEffects/ui/limiter.glade:214
+msgid "Auto Volume"
+msgstr "Automatická hlasitosť"
+
+#: PulseEffects/ui/limiter.glade:254
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:150
+msgid "Window [s]"
+msgstr ""
+
+#: PulseEffects/ui/limiter.glade:266
+#, fuzzy
+msgid "Target [dB]"
+msgstr "Prah [dB]"
+
+#: PulseEffects/ui/limiter.glade:358
+#, fuzzy
+msgid "Tolerance [dB]"
+msgstr "Koleno [dB]"
+
+#: PulseEffects/ui/limiter.glade:599
+msgid "Attenuation"
+msgstr "Zoslabenie"
+
+#: PulseEffects/ui/lowpass.glade:18
 msgid "Low Pass"
 msgstr "Dolný prechod"
 
-#: ../PulseEffects/ui/equalizer_menu.glade:303
-msgid "cuttoff [Hz]"
-msgstr "Zrezanie [Hz]"
+#: PulseEffects/ui/main_ui.glade:337
+msgid "Latency"
+msgstr ""
 
-#: ../PulseEffects/ui/compressor_menu.glade:26
-msgid "no compression"
-msgstr "Bez kompresie"
+#: PulseEffects/ui/main_ui.glade:359
+msgid "buffer-time [ms]"
+msgstr "Čas zásobníka [ms]"
 
-#: ../PulseEffects/ui/limiter_menu.glade:26
-msgid "default"
-msgstr "Predvolený"
+#: PulseEffects/ui/main_ui.glade:389
+msgid "latency-time [ms]"
+msgstr "Čas oneskorenia [ms]"
 
-#: ../PulseEffects/ui/test_signal_menu.glade:32
+#: PulseEffects/ui/main_ui.glade:427
+#, fuzzy
+msgid "Spectrum"
+msgstr "Zobraziť spektrum"
+
+#: PulseEffects/ui/main_ui.glade:448
+msgid "Show"
+msgstr ""
+
+#: PulseEffects/ui/main_ui.glade:460
+msgid "Points"
+msgstr ""
+
+#: PulseEffects/ui/main_ui.glade:510
+msgid "General"
+msgstr ""
+
+#: PulseEffects/ui/main_ui.glade:530
+msgid "Settings"
+msgstr ""
+
+#: PulseEffects/ui/main_ui.glade:539
+#, fuzzy
+msgid "Reset"
+msgstr "Predvoľby"
+
+#: PulseEffects/ui/main_ui.glade:558
+msgid "Use Dark Theme"
+msgstr ""
+
+#: PulseEffects/ui/panorama.glade:13
+msgid "Panorama"
+msgstr ""
+
+#: PulseEffects/ui/panorama.glade:62
+msgid "L"
+msgstr "Ľ"
+
+#: PulseEffects/ui/panorama.glade:74
+msgid "R"
+msgstr "P"
+
+#: PulseEffects/ui/presets_menu.glade:51
+msgid "Name"
+msgstr ""
+
+#: PulseEffects/ui/reverb.glade:25
+msgid "Reverberation"
+msgstr "Ozvena"
+
+#: PulseEffects/ui/reverb.glade:88
+msgid "Room Size"
+msgstr "Veľkosť miestnosti"
+
+#: PulseEffects/ui/reverb.glade:116
+msgid "Damping"
+msgstr "Tlmenie"
+
+#: PulseEffects/ui/reverb.glade:144
+msgid "Width"
+msgstr "Šírka"
+
+#: PulseEffects/ui/reverb.glade:172
+msgid "Level"
+msgstr "Úroveň"
+
+#: PulseEffects/ui/reverb.glade:227
+#, fuzzy
+msgid "Cathedral"
+msgstr "Chrám"
+
+#: PulseEffects/ui/reverb.glade:241
+#, fuzzy
+msgid "Engine Room"
+msgstr "Strojovňa"
+
+#: PulseEffects/ui/reverb.glade:255
+#, fuzzy
+msgid "Small Room"
+msgstr "Malá miestnosť"
+
+#: PulseEffects/effects_base.py:46
+msgid "<b>Applications</b>"
+msgstr ""
+
+#: PulseEffects/presets_manager.py:105
+msgid "Save Current Settings to Preset"
+msgstr ""
+
+#: PulseEffects/presets_manager.py:120
+#, fuzzy
+msgid "Delete Preset"
+msgstr "Uložiť predvoľbu"
+
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:179
+msgid "Guideline Position"
+msgstr ""
+
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:227
+msgid "Measure Noise"
+msgstr ""
+
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:257
+msgid "Subtract Noise"
+msgstr ""
+
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:308
+msgid "Calibration Microphone Correction"
+msgstr ""
+
+#: PulseEffectsCalibration/ui/test_signal.glade:51
+msgid "Sine"
+msgstr ""
+
+#: PulseEffectsCalibration/ui/test_signal.glade:66
+msgid "Square"
+msgstr ""
+
+#: PulseEffectsCalibration/ui/test_signal.glade:81
+msgid "Saw"
+msgstr ""
+
+#: PulseEffectsCalibration/ui/test_signal.glade:96
+msgid "Triangle"
+msgstr ""
+
+#: PulseEffectsCalibration/ui/test_signal.glade:111
+msgid "Pink Noise"
+msgstr ""
+
+#: PulseEffectsCalibration/ui/test_signal.glade:126
+msgid "White Noise"
+msgstr ""
+
+#: PulseEffectsCalibration/ui/test_signal.glade:141
+msgid "Silence"
+msgstr ""
+
+#: PulseEffectsCalibration/ui/test_signal.glade:156
+msgid "Sine Table"
+msgstr ""
+
+#: PulseEffectsCalibration/ui/test_signal.glade:171
+msgid "Ticks"
+msgstr ""
+
+#: PulseEffectsCalibration/ui/test_signal.glade:186
+msgid "Gaussian Noise"
+msgstr ""
+
+#: PulseEffectsCalibration/ui/test_signal.glade:201
+msgid "Red Noise"
+msgstr ""
+
+#: PulseEffectsCalibration/ui/test_signal.glade:216
+msgid "Blue Noise"
+msgstr ""
+
+#: PulseEffectsCalibration/ui/test_signal.glade:231
+msgid "Violet Noise"
+msgstr ""
+
+#: PulseEffectsCalibration/ui/test_signal.glade:315
+#: PulseEffectsCalibration/ui/test_signal.glade:658
+#, fuzzy
+msgid "Volume"
+msgstr "Automatická hlasitosť"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:369
 msgid "Test Signal"
 msgstr "Skúšobný signál"
 
-#: ../PulseEffects/ui/reverb_menu.glade:27
-msgid "cathedral"
-msgstr "Chrám"
+#: PulseEffectsCalibration/ui/test_signal.glade:712
+msgid "Equal Loudness Test Signals"
+msgstr ""
 
-#: ../PulseEffects/ui/reverb_menu.glade:42
-msgid "engine room"
-msgstr "Strojovňa"
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
+#: data/com.github.wwmm.pulseeffects.desktop.in:3
+msgid "PulseEffects"
+msgstr ""
 
-#: ../PulseEffects/ui/reverb_menu.glade:57
-msgid "no reverberation"
-msgstr "Bez ozveny"
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:8
+#: data/com.github.wwmm.pulseeffects.desktop.in:5
+#, fuzzy
+msgid "Audio Effects for PulseAudio Applications"
+msgstr "Zvukové efekty pre aplikácie využívajúce Pulseaudio"
 
-#: ../PulseEffects/ui/reverb_menu.glade:72
-msgid "small room"
-msgstr "Malá miestnosť"
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:9
+msgid "Wellington Wallace"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:11
+msgid ""
+"PulseEffects is an advanced audio manipulation tools. It includes an "
+"equalizer, limiter, compressor and a reverberation tool, just to mention a "
+"few. To complement this there is also a built in spectrum analyzer."
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:16
+msgid ""
+"Because PulseEffects uses the default PulseAudio sound server it will work "
+"with most, if not all, applications you use. All supported applications are "
+"presented in the main window, where each can be enabled individually."
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:22
+msgid ""
+"Besides manipulating sound output, PulseEffects is able to apply effects to "
+"an input device, such as a microphone. This is, for example, useful in audio "
+"recording, but it also works well during voice conversations."
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:27
+msgid ""
+"When PulseEffects is launched it will conveniently remember the "
+"configuration used in the last session. It is also possible to save all the "
+"current settings as profiles."
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.desktop.in:4
+msgid "Audio Enhancer"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.desktop.in:6
+msgid "limiter;compressor;reverberation;equalizer;autovolume;"
+msgstr ""
+
+#. Translators: This is an icon name, don't translate!
+#: data/com.github.wwmm.pulseeffects.desktop.in:10
+msgid "pulseeffects"
+msgstr ""
+
+#~ msgid "Sensing Type"
+#~ msgstr "Typ snímania"
+
+#~ msgid "Load Preset"
+#~ msgstr "Načítať predvoľbu"
+
+#~ msgid "equal loudness 20"
+#~ msgstr "Rovnaká hlasitosť 20"
+
+#~ msgid "equal loudness 40"
+#~ msgstr "Rovnaká hlasitosť 40"
+
+#~ msgid "equal loudness 60"
+#~ msgstr "Rovnaká hlasitosť 60"
+
+#~ msgid "equal loudness 80"
+#~ msgstr "Rovnaká hlasitosť 80"
+
+#~ msgid "equal loudness 100"
+#~ msgstr "Rovnaká hlasitosť 100"
+
+#~ msgid "flat"
+#~ msgstr "Plochý"
+
+#~ msgid "Input Filters"
+#~ msgstr "Vstupné filtre"
+
+#~ msgid "cuttoff [Hz]"
+#~ msgstr "Zrezanie [Hz]"
+
+#~ msgid "no compression"
+#~ msgstr "Bez kompresie"
+
+#~ msgid "default"
+#~ msgstr "Predvolený"
+
+#~ msgid "no reverberation"
+#~ msgstr "Bez ozveny"

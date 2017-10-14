@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-20 11:47-0300\n"
+"POT-Creation-Date: 2017-10-14 12:13+0200\n"
 "PO-Revision-Date: 2017-09-27 12:23-0300\n"
 "Last-Translator: Pavel Fric <pavelfric@seznam.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -20,6 +20,22 @@ msgstr ""
 #: PulseEffects/ui/about.glade:11
 msgid "Audio Effects for Pulseaudio Applications"
 msgstr "Zvukové efekty pro programy využívající Pulseaudio"
+
+#: PulseEffects/ui/app_info.glade:83
+msgid "Format"
+msgstr ""
+
+#: PulseEffects/ui/app_info.glade:94
+msgid "Rate"
+msgstr ""
+
+#: PulseEffects/ui/app_info.glade:105
+msgid "Channels"
+msgstr ""
+
+#: PulseEffects/ui/app_info.glade:116
+msgid "Resampler"
+msgstr ""
 
 #: PulseEffects/ui/compressor.glade:27
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:52
@@ -58,7 +74,10 @@ msgstr "Koleno [dB]"
 msgid "Makeup [dB]"
 msgstr "Zesílení na výstupu[dB]"
 
-#: PulseEffects/ui/compressor.glade:314 PulseEffects/ui/reverb.glade:207
+#. for some reason when listbox is inside a scrolledwindow
+#. it autoselects a row at startup
+#: PulseEffects/ui/compressor.glade:314 PulseEffects/ui/main_ui.glade:292
+#: PulseEffects/ui/reverb.glade:207 PulseEffects/presets_manager.py:68
 msgid "Presets"
 msgstr "Přednastavení"
 
@@ -82,7 +101,14 @@ msgstr "Výstup"
 msgid "Gain Reduction"
 msgstr "Zmenšení zesílení"
 
+#: PulseEffects/ui/effects_box.glade:74
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
+#, fuzzy
+msgid "Applications"
+msgstr "Kalibrace"
+
 #: PulseEffects/ui/equalizer.glade:185
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
 msgid "Equalizer"
 msgstr "Ekvalizér"
 
@@ -191,51 +217,43 @@ msgstr "Zeslabování"
 msgid "Low Pass"
 msgstr "Dolní pásmová propust"
 
-#: PulseEffects/ui/main_ui.glade:306
-msgid "Save Preset"
-msgstr "Uložit přednastavení"
-
-#: PulseEffects/ui/main_ui.glade:322
-msgid "Load Preset"
-msgstr "Nahrát přednastavení"
-
-#: PulseEffects/ui/main_ui.glade:366
+#: PulseEffects/ui/main_ui.glade:337
 msgid "Latency"
 msgstr "Prodleva"
 
-#: PulseEffects/ui/main_ui.glade:388
+#: PulseEffects/ui/main_ui.glade:359
 msgid "buffer-time [ms]"
 msgstr "Doba utlumení [ms]"
 
-#: PulseEffects/ui/main_ui.glade:418
+#: PulseEffects/ui/main_ui.glade:389
 msgid "latency-time [ms]"
 msgstr "Doba prodlevy [ms]"
 
-#: PulseEffects/ui/main_ui.glade:456
+#: PulseEffects/ui/main_ui.glade:427
 msgid "Spectrum"
 msgstr "Spektrum"
 
-#: PulseEffects/ui/main_ui.glade:477
+#: PulseEffects/ui/main_ui.glade:448
 msgid "Show"
 msgstr "Ukázat"
 
-#: PulseEffects/ui/main_ui.glade:489
+#: PulseEffects/ui/main_ui.glade:460
 msgid "Points"
 msgstr "Body"
 
-#: PulseEffects/ui/main_ui.glade:539
+#: PulseEffects/ui/main_ui.glade:510
 msgid "General"
 msgstr "Obecné"
 
-#: PulseEffects/ui/main_ui.glade:559
+#: PulseEffects/ui/main_ui.glade:530
 msgid "Settings"
 msgstr "Nastavení"
 
-#: PulseEffects/ui/main_ui.glade:568
+#: PulseEffects/ui/main_ui.glade:539
 msgid "Reset"
 msgstr "Vrátit na výchozí"
 
-#: PulseEffects/ui/main_ui.glade:587
+#: PulseEffects/ui/main_ui.glade:558
 msgid "Use Dark Theme"
 msgstr "Použít tmavý vzhled"
 
@@ -250,6 +268,10 @@ msgstr "L"
 #: PulseEffects/ui/panorama.glade:74
 msgid "R"
 msgstr "P"
+
+#: PulseEffects/ui/presets_menu.glade:51
+msgid "Name"
+msgstr ""
 
 #: PulseEffects/ui/reverb.glade:25
 msgid "Reverberation"
@@ -282,6 +304,19 @@ msgstr "Strojovna"
 #: PulseEffects/ui/reverb.glade:255
 msgid "Small Room"
 msgstr "Malý prostor"
+
+#: PulseEffects/effects_base.py:46
+msgid "<b>Applications</b>"
+msgstr ""
+
+#: PulseEffects/presets_manager.py:105
+msgid "Save Current Settings to Preset"
+msgstr ""
+
+#: PulseEffects/presets_manager.py:120
+#, fuzzy
+msgid "Delete Preset"
+msgstr "Uložit přednastavení"
 
 #: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:179
 msgid "Guideline Position"
@@ -418,14 +453,6 @@ msgstr ""
 "Když je PulseEffects spuštěn, zapamatuje si příhodně nastavení používané při "
 "posledním sezení. Je možné i uložení všech nynějších nastavení jako profilů."
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
-msgid "Equalizer - Input"
-msgstr "Ekvalizér - vstup"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
-msgid "Equalizer - Output"
-msgstr "Ekvalizér - výstup"
-
 #: data/com.github.wwmm.pulseeffects.desktop.in:4
 msgid "Audio Enhancer"
 msgstr "Zlepšovač zvuku"
@@ -438,6 +465,15 @@ msgstr "omezovač (limiter);kompresor;dozvuk;ekvalizér;automatická hlasitost;"
 #: data/com.github.wwmm.pulseeffects.desktop.in:10
 msgid "pulseeffects"
 msgstr ""
+
+#~ msgid "Load Preset"
+#~ msgstr "Nahrát přednastavení"
+
+#~ msgid "Equalizer - Input"
+#~ msgstr "Ekvalizér - vstup"
+
+#~ msgid "Equalizer - Output"
+#~ msgstr "Ekvalizér - výstup"
 
 #~ msgid "ballad"
 #~ msgstr "Balada"
