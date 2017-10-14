@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-14 12:13+0200\n"
+"POT-Creation-Date: 2017-10-14 12:50-0300\n"
 "PO-Revision-Date: 2017-09-27 12:23-0300\n"
 "Last-Translator: Pavel Fric <pavelfric@seznam.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -21,20 +21,34 @@ msgstr ""
 msgid "Audio Effects for Pulseaudio Applications"
 msgstr "Zvukové efekty pro programy využívající Pulseaudio"
 
-#: PulseEffects/ui/app_info.glade:83
+#: PulseEffects/ui/app_info.glade:84
 msgid "Format"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:94
+#: PulseEffects/ui/app_info.glade:95
 msgid "Rate"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:105
+#: PulseEffects/ui/app_info.glade:106
 msgid "Channels"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:116
+#: PulseEffects/ui/app_info.glade:117
 msgid "Resampler"
+msgstr ""
+
+#: PulseEffects/ui/app_info.glade:184
+#, fuzzy
+msgid "Buffer Latency"
+msgstr "Prodleva"
+
+#: PulseEffects/ui/app_info.glade:195
+#, fuzzy
+msgid "Sink Latency"
+msgstr "Prodleva"
+
+#: PulseEffects/ui/app_info.glade:234
+msgid "State"
 msgstr ""
 
 #: PulseEffects/ui/compressor.glade:27
@@ -270,8 +284,9 @@ msgid "R"
 msgstr "P"
 
 #: PulseEffects/ui/presets_menu.glade:51
-msgid "Name"
-msgstr ""
+#, fuzzy
+msgid "Preset Name"
+msgstr "Přednastavení"
 
 #: PulseEffects/ui/reverb.glade:25
 msgid "Reverberation"
@@ -307,6 +322,14 @@ msgstr "Malý prostor"
 
 #: PulseEffects/effects_base.py:46
 msgid "<b>Applications</b>"
+msgstr ""
+
+#: PulseEffects/effects_base.py:191 PulseEffects/effects_base.py:281
+msgid "paused"
+msgstr ""
+
+#: PulseEffects/effects_base.py:193 PulseEffects/effects_base.py:283
+msgid "playing"
 msgstr ""
 
 #: PulseEffects/presets_manager.py:105

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-13 11:52-0300\n"
+"POT-Creation-Date: 2017-10-14 12:50-0300\n"
 "PO-Revision-Date: 2017-10-14 10:20+0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: \n"
@@ -21,21 +21,35 @@ msgstr ""
 msgid "Audio Effects for Pulseaudio Applications"
 msgstr "Ljudeffekter för PulseAudio applikationer"
 
-#: PulseEffects/ui/app_info.glade:83
+#: PulseEffects/ui/app_info.glade:84
 msgid "Format"
 msgstr "Format"
 
-#: PulseEffects/ui/app_info.glade:94
+#: PulseEffects/ui/app_info.glade:95
 msgid "Rate"
 msgstr "Takt"
 
-#: PulseEffects/ui/app_info.glade:105
+#: PulseEffects/ui/app_info.glade:106
 msgid "Channels"
 msgstr "Kanaler"
 
-#: PulseEffects/ui/app_info.glade:116
+#: PulseEffects/ui/app_info.glade:117
 msgid "Resampler"
 msgstr "Resampler"
+
+#: PulseEffects/ui/app_info.glade:184
+#, fuzzy
+msgid "Buffer Latency"
+msgstr "Latens"
+
+#: PulseEffects/ui/app_info.glade:195
+#, fuzzy
+msgid "Sink Latency"
+msgstr "Latens"
+
+#: PulseEffects/ui/app_info.glade:234
+msgid "State"
+msgstr ""
 
 #: PulseEffects/ui/compressor.glade:27
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:52
@@ -102,10 +116,12 @@ msgid "Gain Reduction"
 msgstr "Förstärkningsreducering"
 
 #: PulseEffects/ui/effects_box.glade:74
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
 msgid "Applications"
 msgstr "Program"
 
 #: PulseEffects/ui/equalizer.glade:185
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
 msgid "Equalizer"
 msgstr "Utjämnare"
 
@@ -267,8 +283,9 @@ msgid "R"
 msgstr "H"
 
 #: PulseEffects/ui/presets_menu.glade:51
-msgid "Name"
-msgstr "Namn"
+#, fuzzy
+msgid "Preset Name"
+msgstr "Profiler"
 
 #: PulseEffects/ui/reverb.glade:25
 msgid "Reverberation"
@@ -305,6 +322,14 @@ msgstr "Litet rum"
 #: PulseEffects/effects_base.py:46
 msgid "<b>Applications</b>"
 msgstr "<b>Program</b>"
+
+#: PulseEffects/effects_base.py:191 PulseEffects/effects_base.py:281
+msgid "paused"
+msgstr ""
+
+#: PulseEffects/effects_base.py:193 PulseEffects/effects_base.py:283
+msgid "playing"
+msgstr ""
 
 #: PulseEffects/presets_manager.py:105
 msgid "Save Current Settings to Preset"
@@ -451,14 +476,6 @@ msgstr ""
 "den senaste sessionen. Det är också möjligt att spara alla aktuella "
 "inställningar som profiler."
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
-msgid "Equalizer - Input"
-msgstr "Ljudutjämnare - Ingång"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
-msgid "Equalizer - Output"
-msgstr "Ljudutjämnare - Utgång"
-
 #: data/com.github.wwmm.pulseeffects.desktop.in:4
 msgid "Audio Enhancer"
 msgstr "Ljudförstärkare"
@@ -472,6 +489,15 @@ msgstr ""
 #: data/com.github.wwmm.pulseeffects.desktop.in:10
 msgid "pulseeffects"
 msgstr "pulseeffects"
+
+#~ msgid "Name"
+#~ msgstr "Namn"
+
+#~ msgid "Equalizer - Input"
+#~ msgstr "Ljudutjämnare - Ingång"
+
+#~ msgid "Equalizer - Output"
+#~ msgstr "Ljudutjämnare - Utgång"
 
 #~ msgid "Load Preset"
 #~ msgstr "Öppna förinställning"

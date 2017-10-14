@@ -149,6 +149,9 @@ class EffectsBase(PipelineBase):
         sample_format = parameters['format']
         mute = parameters['mute']
         connected = parameters['connected']
+        buffer_latency = parameters['buffer_latency']
+        sink_latency = parameters['sink_latency']
+        corked = parameters['corked']
 
         builder = Gtk.Builder.new_from_file(self.module_path +
                                             '/ui/app_info.glade')
@@ -160,6 +163,9 @@ class EffectsBase(PipelineBase):
         label_rate = builder.get_object('rate')
         label_channels = builder.get_object('channels')
         label_resampler = builder.get_object('resampler')
+        label_buffer_latency = builder.get_object('buffer_latency')
+        label_sink_latency = builder.get_object('sink_latency')
+        label_state = builder.get_object('state')
         switch = builder.get_object('enable')
         volume_scale = builder.get_object('volume_scale')
         mute_button = builder.get_object('mute')
@@ -174,6 +180,17 @@ class EffectsBase(PipelineBase):
 
         rate_str = '{:.1f}'.format(round(rate / 1000.0, 1)) + ' kHz'
         label_rate.set_text(rate_str)
+
+        buffer_str = '{:.1f}'.format(round(buffer_latency / 1000.0, 1)) + ' ms'
+        label_buffer_latency.set_text(buffer_str)
+
+        latency_str = '{:.1f}'.format(round(sink_latency / 1000.0, 1)) + ' ms'
+        label_sink_latency.set_text(latency_str)
+
+        if corked:
+            label_state.set_text(_('paused'))
+        else:
+            label_state.set_text(_('playing'))
 
         app_icon.set_from_icon_name(icon_name, Gtk.IconSize.LARGE_TOOLBAR)
 
@@ -212,6 +229,9 @@ class EffectsBase(PipelineBase):
         sample_format = parameters['format']
         mute = parameters['mute']
         connected = parameters['connected']
+        buffer_latency = parameters['buffer_latency']
+        sink_latency = parameters['sink_latency']
+        corked = parameters['corked']
 
         children = self.apps_box.get_children()
 
@@ -246,6 +266,21 @@ class EffectsBase(PipelineBase):
                                 label.set_text(str(audio_channels))
                             elif label_name == 'resampler':
                                 label.set_text(resample_method)
+                            elif label_name == 'buffer_latency':
+                                buffer_str = '{:.1f}'.format(round(
+                                    buffer_latency / 1000.0, 1)) + ' ms'
+
+                                label.set_text(buffer_str)
+                            elif label_name == 'sink_latency':
+                                latency_str = '{:.1f}'.format(round(
+                                    sink_latency / 1000.0, 1)) + ' ms'
+
+                                label.set_text(latency_str)
+                            elif label_name == 'state':
+                                if corked:
+                                    label.set_text(_('paused'))
+                                else:
+                                    label.set_text(_('playing'))
 
     def on_app_removed(self, obj, idx):
         children = self.apps_box.get_children()

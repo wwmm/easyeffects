@@ -20,7 +20,7 @@
     <property name="margin_right">6</property>
     <property name="margin_top">6</property>
     <property name="margin_bottom">6</property>
-    <property name="row_spacing">6</property>
+    <property name="row_spacing">12</property>
     <property name="column_spacing">6</property>
     <child>
       <object class="GtkToggleButton" id="mute">
@@ -75,7 +75,8 @@
         <property name="halign">center</property>
         <property name="valign">center</property>
         <property name="row_spacing">6</property>
-        <property name="column_spacing">30</property>
+        <property name="column_spacing">12</property>
+        <property name="column_homogeneous">True</property>
         <child>
           <object class="GtkLabel">
             <property name="visible">True</property>
@@ -173,6 +174,81 @@
           </object>
           <packing>
             <property name="left_attach">3</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Buffer Latency</property>
+          </object>
+          <packing>
+            <property name="left_attach">4</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Sink Latency</property>
+          </object>
+          <packing>
+            <property name="left_attach">5</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="buffer_latency">
+            <property name="name">buffer_latency</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="label">bl</property>
+          </object>
+          <packing>
+            <property name="left_attach">4</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="sink_latency">
+            <property name="name">sink_latency</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="label">sl</property>
+          </object>
+          <packing>
+            <property name="left_attach">5</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">State</property>
+          </object>
+          <packing>
+            <property name="left_attach">6</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="state">
+            <property name="name">state</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="label">s</property>
+          </object>
+          <packing>
+            <property name="left_attach">6</property>
             <property name="top_attach">1</property>
           </packing>
         </child>

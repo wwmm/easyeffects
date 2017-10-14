@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-14 12:13+0200\n"
-"PO-Revision-Date: 2017-10-13 11:54-0300\n"
+"POT-Creation-Date: 2017-10-14 12:50-0300\n"
+"PO-Revision-Date: 2017-10-14 12:52-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
@@ -23,22 +23,33 @@ msgstr ""
 msgid "Audio Effects for Pulseaudio Applications"
 msgstr "Efeitos de Áudio para Programas que Utilizam Pulseaudio"
 
-#: PulseEffects/ui/app_info.glade:83
+#: PulseEffects/ui/app_info.glade:84
 msgid "Format"
 msgstr "Formato"
 
-#: PulseEffects/ui/app_info.glade:94
+#: PulseEffects/ui/app_info.glade:95
 msgid "Rate"
 msgstr "Taxa"
 
-#: PulseEffects/ui/app_info.glade:105
+#: PulseEffects/ui/app_info.glade:106
 msgid "Channels"
 msgstr "Canais"
 
-#: PulseEffects/ui/app_info.glade:116
-#, fuzzy
+#: PulseEffects/ui/app_info.glade:117
 msgid "Resampler"
 msgstr "Resampler"
+
+#: PulseEffects/ui/app_info.glade:184
+msgid "Buffer Latency"
+msgstr "Latência de Buffer"
+
+#: PulseEffects/ui/app_info.glade:195
+msgid "Sink Latency"
+msgstr "Latência da Sink"
+
+#: PulseEffects/ui/app_info.glade:234
+msgid "State"
+msgstr "Estado"
 
 #: PulseEffects/ui/compressor.glade:27
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:52
@@ -137,12 +148,10 @@ msgid "Peak"
 msgstr "Pico"
 
 #: PulseEffects/ui/equalizer_band_menu.glade:27
-#, fuzzy
 msgid "Low Shelf"
 msgstr "Low Shelf"
 
 #: PulseEffects/ui/equalizer_band_menu.glade:30
-#, fuzzy
 msgid "High Shelf"
 msgstr "High Shelf"
 
@@ -274,8 +283,8 @@ msgid "R"
 msgstr "R"
 
 #: PulseEffects/ui/presets_menu.glade:51
-msgid "Name"
-msgstr "Nome"
+msgid "Preset Name"
+msgstr "Nome da Predefinição"
 
 #: PulseEffects/ui/reverb.glade:25
 msgid "Reverberation"
@@ -312,6 +321,14 @@ msgstr "Quarto Pequeno"
 #: PulseEffects/effects_base.py:46
 msgid "<b>Applications</b>"
 msgstr "<b>Aplicativos</b>"
+
+#: PulseEffects/effects_base.py:191 PulseEffects/effects_base.py:281
+msgid "paused"
+msgstr "pausado"
+
+#: PulseEffects/effects_base.py:193 PulseEffects/effects_base.py:283
+msgid "playing"
+msgstr "tocando"
 
 #: PulseEffects/presets_manager.py:105
 msgid "Save Current Settings to Preset"
@@ -470,6 +487,9 @@ msgstr "limitador;compressor;reverberação;equalizador;autovolume;"
 #: data/com.github.wwmm.pulseeffects.desktop.in:10
 msgid "pulseeffects"
 msgstr "pulseeffects"
+
+#~ msgid "Name"
+#~ msgstr "Nome"
 
 #~ msgid "Equalizer - Input"
 #~ msgstr "Equalizador - Entrada"

@@ -422,18 +422,18 @@ class PulseManager(GObject.GObject):
                 sample_spec = info.contents.sample_spec
                 rate = sample_spec.rate
                 sample_format = self.get_sample_spec_format(sample_spec.format)
-                buffer_time = info.contents.buffer_usec / 1000.0  # ms
-                latency = info.contents.sink_usec / 1000.0  # ms
-
-                print(app_name + u' buffer: ', buffer_time)
-                print(app_name + u' latency: ', latency)
+                buffer_latency = info.contents.buffer_usec
+                sink_latency = info.contents.sink_usec
+                corked = info.contents.corked
 
                 new_input = {'index': idx, 'name': app_name,
                              'icon': icon_name, 'channels': audio_channels,
                              'volume': max_volume_linear, 'rate': rate,
                              'resampler': resample_method,
                              'format': sample_format, 'mute': mute,
-                             'connected': connected}
+                             'connected': connected,
+                             'buffer_latency': buffer_latency,
+                             'sink_latency': sink_latency, 'corked': corked}
 
                 if user_data == 1:
                     GLib.idle_add(self.emit, 'sink_input_added', new_input)
@@ -488,13 +488,18 @@ class PulseManager(GObject.GObject):
                 sample_spec = info.contents.sample_spec
                 rate = sample_spec.rate
                 sample_format = self.get_sample_spec_format(sample_spec.format)
+                buffer_latency = info.contents.buffer_usec
+                sink_latency = info.contents.sink_usec
+                corked = info.contents.corked
 
                 new_output = {'index': idx, 'name': app_name,
                               'icon': icon_name, 'channels': audio_channels,
                               'volume': max_volume_linear, 'rate': rate,
                               'resampler': resample_method,
                               'format': sample_format, 'mute': mute,
-                              'connected': connected}
+                              'connected': connected,
+                              'buffer_latency': buffer_latency,
+                              'sink_latency': sink_latency, 'corked': corked}
 
                 if user_data == 1:
                     GLib.idle_add(self.emit, 'source_output_added', new_output)
