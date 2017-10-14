@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-10-14 12:50-0300\n"
-"PO-Revision-Date: 2017-09-03 18:33+0200\n"
+"PO-Revision-Date: 2017-10-14 18:40+0200\n"
 "Last-Translator: Bleuzen <supgesu@gmail.com>\n"
 "Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.0.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: PulseEffects/ui/about.glade:11
@@ -32,25 +32,23 @@ msgstr ""
 
 #: PulseEffects/ui/app_info.glade:106
 msgid "Channels"
-msgstr ""
+msgstr "Kanäle"
 
 #: PulseEffects/ui/app_info.glade:117
 msgid "Resampler"
 msgstr ""
 
 #: PulseEffects/ui/app_info.glade:184
-#, fuzzy
 msgid "Buffer Latency"
-msgstr "Latenz"
+msgstr "Puffer Latenz"
 
 #: PulseEffects/ui/app_info.glade:195
-#, fuzzy
 msgid "Sink Latency"
-msgstr "Latenz"
+msgstr "Sink Latenz"
 
 #: PulseEffects/ui/app_info.glade:234
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 #: PulseEffects/ui/compressor.glade:27
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:52
@@ -118,9 +116,8 @@ msgstr ""
 
 #: PulseEffects/ui/effects_box.glade:74
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
-#, fuzzy
 msgid "Applications"
-msgstr "Kalibrierung"
+msgstr "Anwendungen"
 
 #: PulseEffects/ui/equalizer.glade:185
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
@@ -159,7 +156,7 @@ msgstr ""
 
 #: PulseEffects/ui/equalizer_band_menu.glade:50
 msgid "Filter Type"
-msgstr ""
+msgstr "Filtertyp"
 
 #: PulseEffects/ui/equalizer_band_menu.glade:92
 #: PulseEffectsCalibration/ui/test_signal.glade:270
@@ -171,17 +168,14 @@ msgid "Quality"
 msgstr ""
 
 #: PulseEffects/ui/equalizer_band_menu.glade:148
-#, fuzzy
 msgid "Reset Frequency"
-msgstr "Frequenzen zurücksetzen"
+msgstr "Frequenz zurücksetzen"
 
 #: PulseEffects/ui/equalizer_band_menu.glade:161
-#, fuzzy
 msgid "Reset Quality"
-msgstr "Q Faktoren zurücksetzen"
+msgstr "Q Faktor zurücksetzen"
 
 #: PulseEffects/ui/highpass.glade:18
-#, fuzzy
 msgid "High Pass"
 msgstr "Hochpass"
 
@@ -191,7 +185,7 @@ msgstr ""
 
 #: PulseEffects/ui/highpass.glade:97 PulseEffects/ui/lowpass.glade:97
 msgid "Poles"
-msgstr ""
+msgstr "Pole"
 
 #: PulseEffects/ui/limiter.glade:55
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:48
@@ -232,7 +226,6 @@ msgid "Attenuation"
 msgstr "Dämpfung"
 
 #: PulseEffects/ui/lowpass.glade:18
-#, fuzzy
 msgid "Low Pass"
 msgstr "Tiefpass"
 
@@ -326,11 +319,11 @@ msgstr "Kleiner Raum"
 
 #: PulseEffects/effects_base.py:46
 msgid "<b>Applications</b>"
-msgstr ""
+msgstr "<b>Anwendungen</b>"
 
 #: PulseEffects/effects_base.py:191 PulseEffects/effects_base.py:281
 msgid "paused"
-msgstr ""
+msgstr "pausiert"
 
 #: PulseEffects/effects_base.py:193 PulseEffects/effects_base.py:283
 msgid "playing"
@@ -338,12 +331,11 @@ msgstr ""
 
 #: PulseEffects/presets_manager.py:105
 msgid "Save Current Settings to Preset"
-msgstr ""
+msgstr "Aktuelle Einstellungen als Preset speichern"
 
 #: PulseEffects/presets_manager.py:120
-#, fuzzy
 msgid "Delete Preset"
-msgstr "Preset speichern"
+msgstr "Preset löschen"
 
 #: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:179
 msgid "Guideline Position"
