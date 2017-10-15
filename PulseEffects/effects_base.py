@@ -156,66 +156,82 @@ class EffectsBase(PipelineBase):
         builder = Gtk.Builder.new_from_file(self.module_path +
                                             '/ui/app_info.glade')
 
-        app_box = builder.get_object('app_box')
         app_icon = builder.get_object('app_icon')
-        label_name = builder.get_object('app_name')
-        label_format = builder.get_object('format')
-        label_rate = builder.get_object('rate')
-        label_channels = builder.get_object('channels')
-        label_resampler = builder.get_object('resampler')
-        label_buffer_latency = builder.get_object('buffer_latency')
-        label_latency = builder.get_object('latency')
-        label_state = builder.get_object('state')
-        switch = builder.get_object('enable')
-        volume_scale = builder.get_object('volume_scale')
-        mute_button = builder.get_object('mute')
         mute_icon = builder.get_object('mute_icon')
 
-        app_box.set_name('app_box_' + str(idx))
+        setattr(self, 'app_box_' + str(idx),
+                builder.get_object('app_box'))
+        setattr(self, 'app_name_' + str(idx),
+                builder.get_object('app_name'))
+        setattr(self, 'app_format_' + str(idx),
+                builder.get_object('format'))
+        setattr(self, 'app_rate_' + str(idx),
+                builder.get_object('rate'))
+        setattr(self, 'app_channels_' + str(idx),
+                builder.get_object('channels'))
+        setattr(self, 'app_resampler_' + str(idx),
+                builder.get_object('resampler'))
+        setattr(self, 'app_buffer_' + str(idx),
+                builder.get_object('buffer_latency'))
+        setattr(self, 'app_latency_' + str(idx),
+                builder.get_object('latency'))
+        setattr(self, 'app_state_' + str(idx),
+                builder.get_object('state'))
+        setattr(self, 'app_switch_' + str(idx),
+                builder.get_object('enable'))
+        setattr(self, 'app_volume_' + str(idx),
+                builder.get_object('volume_scale'))
+        setattr(self, 'app_mute_' + str(idx),
+                builder.get_object('mute'))
 
-        label_name.set_text(app_name)
-        label_format.set_text(sample_format)
-        label_channels.set_text(str(audio_channels))
-        label_resampler.set_text(resample_method)
+        getattr(self, 'app_name_' + str(idx)).set_text(app_name)
+        getattr(self, 'app_format_' + str(idx)).set_text(sample_format)
+        getattr(self, 'app_channels_' + str(idx)).set_text(str(audio_channels))
+        getattr(self, 'app_resampler_' + str(idx)).set_text(resample_method)
 
         rate_str = '{:.1f}'.format(round(rate / 1000.0, 1)) + ' kHz'
-        label_rate.set_text(rate_str)
+        getattr(self, 'app_rate_' + str(idx)).set_text(rate_str)
 
         buffer_str = '{:.1f}'.format(round(buffer_latency / 1000.0, 1)) + ' ms'
-        label_buffer_latency.set_text(buffer_str)
+        getattr(self, 'app_buffer_' + str(idx)).set_text(buffer_str)
 
         latency_str = '{:.1f}'.format(round(latency / 1000.0, 1)) + ' ms'
-        label_latency.set_text(latency_str)
+        getattr(self, 'app_latency_' + str(idx)).set_text(latency_str)
 
         if corked:
-            label_state.set_text(_('paused'))
+            getattr(self, 'app_state_' + str(idx)).set_text(_('paused'))
         else:
-            label_state.set_text(_('playing'))
+            getattr(self, 'app_state_' + str(idx)).set_text(_('playing'))
 
         app_icon.set_from_icon_name(icon_name, Gtk.IconSize.LARGE_TOOLBAR)
 
-        switch.connect('state-set', self.on_enable_app, idx)
-        volume_scale.connect('value-changed', self.on_volume_changed, idx,
-                             audio_channels)
-        mute_button.connect('toggled', self.on_mute, idx,
-                            mute_icon)
+        # connecting signals
+        getattr(self, 'app_switch_' + str(idx)).connect('state-set',
+                                                        self.on_enable_app,
+                                                        idx)
+        getattr(self, 'app_volume_' + str(idx)).connect('value-changed',
+                                                        self.on_volume_changed,
+                                                        idx,
+                                                        audio_channels)
+        getattr(self, 'app_mute_' + str(idx)).connect('toggled', self.on_mute,
+                                                      idx,
+                                                      mute_icon)
 
         if self.switch_on_all_apps:
-            switch.set_active(True)
-            switch.set_sensitive(False)
+            getattr(self, 'app_switch_' + str(idx)).set_active(True)
+            getattr(self, 'app_switch_' + str(idx)).set_sensitive(False)
         else:
-            switch.set_active(connected)
+            getattr(self, 'app_switch_' + str(idx)).set_active(connected)
 
-        volume_scale.set_value(max_volume_linear)
-        mute_button.set_active(mute)
+        getattr(self, 'app_volume_' + str(idx)).set_value(max_volume_linear)
 
-        return app_box
+        getattr(self, 'app_mute_' + str(idx)).set_active(mute)
+
+        self.apps_box.add(getattr(self, 'app_box_' + str(idx)))
+        self.apps_box.show_all()
 
     def on_app_added(self, obj, parameters):
-        app_box = self.build_app_ui(parameters)
-
-        self.apps_box.add(app_box)
-        self.apps_box.show_all()
+        self.build_app_ui(parameters)
 
         if not self.is_playing:
             self.set_state('playing')
@@ -233,71 +249,78 @@ class EffectsBase(PipelineBase):
         latency = parameters['latency']
         corked = parameters['corked']
 
-        children = self.apps_box.get_children()
+        if hasattr(self, 'app_format_' + str(idx)):
+            getattr(self, 'app_format_' + str(idx)).set_text(sample_format)
 
-        for child in children:
-            if child.get_name() == 'app_box_' + str(idx):
-                for node in child.get_children():
-                    node_name = node.get_name()
+        if hasattr(self, 'app_channels_' + str(idx)):
+            getattr(self, 'app_channels_' + str(idx)).set_text(str(
+                audio_channels))
 
-                    if node_name == 'switch':
-                        node.set_active(connected)
-                    elif node_name == 'volume':
-                        node.set_value(max_volume_linear)
+        if hasattr(self, 'app_resampler_' + str(idx)):
+            getattr(self, 'app_resampler_' + str(idx)).set_text(
+                resample_method)
 
-                        if mute:
-                            node.set_sensitive(False)
-                        else:
-                            node.set_sensitive(True)
-                    elif node_name == 'mute':
-                        node.set_active(mute)
-                    elif node_name == 'stream_props':
-                        for label in node.get_children():
-                            label_name = label.get_name()
+        if hasattr(self, 'app_rate_' + str(idx)):
+            rate_str = '{:.1f}'.format(round(rate / 1000.0, 1)) + ' kHz'
+            getattr(self, 'app_rate_' + str(idx)).set_text(rate_str)
 
-                            if label_name == 'format':
-                                label.set_text(sample_format)
-                            elif label_name == 'rate':
-                                rate_str = '{:.1f}'.format(round(
-                                    rate / 1000.0, 1)) + ' kHz'
+        if hasattr(self, 'app_buffer_' + str(idx)):
+            buffer_str = '{:.1f}'.format(round(buffer_latency / 1000.0, 1))
+            buffer_str += ' ms'
+            getattr(self, 'app_buffer_' + str(idx)).set_text(buffer_str)
 
-                                label.set_text(rate_str)
-                            elif label_name == 'channels':
-                                label.set_text(str(audio_channels))
-                            elif label_name == 'resampler':
-                                label.set_text(resample_method)
-                            elif label_name == 'buffer_latency':
-                                buffer_str = '{:.1f}'.format(round(
-                                    buffer_latency / 1000.0, 1)) + ' ms'
+        if hasattr(self, 'app_latency_' + str(idx)):
+            latency_str = '{:.1f}'.format(round(latency / 1000.0, 1)) + ' ms'
+            getattr(self, 'app_latency_' + str(idx)).set_text(latency_str)
 
-                                label.set_text(buffer_str)
-                            elif label_name == 'latency':
-                                latency_str = '{:.1f}'.format(round(
-                                    latency / 1000.0, 1)) + ' ms'
+        if hasattr(self, 'app_state_' + str(idx)):
+            if corked:
+                getattr(self, 'app_state_' + str(idx)).set_text(_('paused'))
+            else:
+                getattr(self, 'app_state_' + str(idx)).set_text(_('playing'))
 
-                                label.set_text(latency_str)
-                            elif label_name == 'state':
-                                if corked:
-                                    label.set_text(_('paused'))
-                                else:
-                                    label.set_text(_('playing'))
+        if hasattr(self, 'app_switch_' + str(idx)):
+            getattr(self, 'app_switch_' + str(idx)).set_active(connected)
+
+        if hasattr(self, 'app_volume_' + str(idx)):
+            volume = getattr(self, 'app_volume_' + str(idx))
+
+            volume.set_value(
+                max_volume_linear)
+
+            if mute:
+                volume.set_sensitive(False)
+            else:
+                volume.set_sensitive(True)
+
+        if hasattr(self, 'app_mute_' + str(idx)):
+            getattr(self, 'app_mute_' + str(idx)).set_active(mute)
 
     def on_app_removed(self, obj, idx):
-        children = self.apps_box.get_children()
+        if hasattr(self, 'app_box_' + str(idx)):
+            children = self.apps_box.get_children()
 
-        n_children_before = len(children)
+            n_children_before = len(children)
 
-        for child in children:
-            child_name = child.get_name()
+            self.apps_box.remove(getattr(self, 'app_box_' + str(idx)))
 
-            if child_name == 'app_box_' + str(idx):
-                self.apps_box.remove(child)
-                break
+            delattr(self, 'app_box_' + str(idx))
+            delattr(self, 'app_name_' + str(idx))
+            delattr(self, 'app_format_' + str(idx))
+            delattr(self, 'app_rate_' + str(idx))
+            delattr(self, 'app_channels_' + str(idx))
+            delattr(self, 'app_resampler_' + str(idx))
+            delattr(self, 'app_buffer_' + str(idx))
+            delattr(self, 'app_latency_' + str(idx))
+            delattr(self, 'app_state_' + str(idx))
+            delattr(self, 'app_switch_' + str(idx))
+            delattr(self, 'app_volume_' + str(idx))
+            delattr(self, 'app_mute_' + str(idx))
 
-        n_children_after = len(self.apps_box.get_children())
+            n_children_after = len(self.apps_box.get_children())
 
-        if n_children_before == 1 and n_children_after == 0:
-            self.set_state('ready')
+            if n_children_before == 1 and n_children_after == 0:
+                self.set_state('ready')
 
     def on_message_element(self, bus, msg):
         plugin = msg.src.get_name()

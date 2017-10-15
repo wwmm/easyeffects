@@ -3,7 +3,6 @@
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkImage" id="mute_icon">
-    <property name="name">mute_icon</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="icon_name">audio-volume-high-symbolic</property>
@@ -24,7 +23,6 @@
     <property name="column_spacing">6</property>
     <child>
       <object class="GtkToggleButton" id="mute">
-        <property name="name">mute</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">True</property>
@@ -39,7 +37,6 @@
     </child>
     <child>
       <object class="GtkScale" id="volume_scale">
-        <property name="name">volume</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="valign">center</property>
@@ -56,7 +53,6 @@
     </child>
     <child>
       <object class="GtkSwitch" id="enable">
-        <property name="name">switch</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="halign">center</property>
@@ -123,7 +119,6 @@
         </child>
         <child>
           <object class="GtkLabel" id="format">
-            <property name="name">format</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -137,7 +132,6 @@
         </child>
         <child>
           <object class="GtkLabel" id="rate">
-            <property name="name">rate</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -151,7 +145,6 @@
         </child>
         <child>
           <object class="GtkLabel" id="channels">
-            <property name="name">channels</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -165,7 +158,6 @@
         </child>
         <child>
           <object class="GtkLabel" id="resampler">
-            <property name="name">resampler</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -201,7 +193,6 @@
         </child>
         <child>
           <object class="GtkLabel" id="buffer_latency">
-            <property name="name">buffer_latency</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -215,7 +206,6 @@
         </child>
         <child>
           <object class="GtkLabel" id="latency">
-            <property name="name">latency</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -240,7 +230,6 @@
         </child>
         <child>
           <object class="GtkLabel" id="state">
-            <property name="name">state</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>

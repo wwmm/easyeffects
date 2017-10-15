@@ -594,7 +594,8 @@ class PulseManager(GObject.GObject):
 
         flags = p.PA_STREAM_PEAK_DETECT | p.PA_STREAM_DONT_MOVE
 
-        p.pa_stream_connect_record(stream, None, None, flags)
+        p.pa_stream_connect_record(stream, b'PulseEffects_apps.monitor', None,
+                                   flags)
 
         self.sink_input_streams[str(idx)] = stream
 
