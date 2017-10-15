@@ -192,7 +192,7 @@
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Sink Latency</property>
+            <property name="label" translatable="yes">Latency</property>
           </object>
           <packing>
             <property name="left_attach">5</property>
@@ -214,8 +214,8 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="sink_latency">
-            <property name="name">sink_latency</property>
+          <object class="GtkLabel" id="latency">
+            <property name="name">latency</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>

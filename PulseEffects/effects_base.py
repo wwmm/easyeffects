@@ -150,7 +150,7 @@ class EffectsBase(PipelineBase):
         mute = parameters['mute']
         connected = parameters['connected']
         buffer_latency = parameters['buffer_latency']
-        sink_latency = parameters['sink_latency']
+        latency = parameters['latency']
         corked = parameters['corked']
 
         builder = Gtk.Builder.new_from_file(self.module_path +
@@ -164,7 +164,7 @@ class EffectsBase(PipelineBase):
         label_channels = builder.get_object('channels')
         label_resampler = builder.get_object('resampler')
         label_buffer_latency = builder.get_object('buffer_latency')
-        label_sink_latency = builder.get_object('sink_latency')
+        label_latency = builder.get_object('latency')
         label_state = builder.get_object('state')
         switch = builder.get_object('enable')
         volume_scale = builder.get_object('volume_scale')
@@ -184,8 +184,8 @@ class EffectsBase(PipelineBase):
         buffer_str = '{:.1f}'.format(round(buffer_latency / 1000.0, 1)) + ' ms'
         label_buffer_latency.set_text(buffer_str)
 
-        latency_str = '{:.1f}'.format(round(sink_latency / 1000.0, 1)) + ' ms'
-        label_sink_latency.set_text(latency_str)
+        latency_str = '{:.1f}'.format(round(latency / 1000.0, 1)) + ' ms'
+        label_latency.set_text(latency_str)
 
         if corked:
             label_state.set_text(_('paused'))
@@ -230,7 +230,7 @@ class EffectsBase(PipelineBase):
         mute = parameters['mute']
         connected = parameters['connected']
         buffer_latency = parameters['buffer_latency']
-        sink_latency = parameters['sink_latency']
+        latency = parameters['latency']
         corked = parameters['corked']
 
         children = self.apps_box.get_children()
@@ -271,9 +271,9 @@ class EffectsBase(PipelineBase):
                                     buffer_latency / 1000.0, 1)) + ' ms'
 
                                 label.set_text(buffer_str)
-                            elif label_name == 'sink_latency':
+                            elif label_name == 'latency':
                                 latency_str = '{:.1f}'.format(round(
-                                    sink_latency / 1000.0, 1)) + ' ms'
+                                    latency / 1000.0, 1)) + ' ms'
 
                                 label.set_text(latency_str)
                             elif label_name == 'state':

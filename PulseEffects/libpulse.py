@@ -2,17 +2,37 @@
 
 from ctypes import (CFUNCTYPE, POINTER, Structure, byref, c_char_p, c_double,
                     c_int, c_uint8, c_uint32, c_uint64, c_size_t, c_void_p,
-                    c_float, cdll, sizeof)
+                    c_float, cdll, sizeof, cast)
 
 lib = cdll.LoadLibrary("libpulse.so.0")
 
 
-def get_pointer(obj):
+def get_ref(obj):
     return byref(obj)
+
+
+def get_c_void_p_ref():
+    return byref(c_void_p())
+
+
+def int_to_c_int(v):
+    return c_int(v)
+
+
+def int_to_c_size_t_ref(v):
+    return byref(c_size_t(v))
 
 
 def get_sizeof_float():
     return sizeof(c_float)
+
+
+def cast_to_float(v):
+    return cast(v, POINTER(POINTER(c_float)))
+
+
+def cast_to_int(v):
+    return cast(v, POINTER(c_int))
 
 
 # enumerators
@@ -319,6 +339,8 @@ pa_stream_notify_cb_t = CFUNCTYPE(None, POINTER(pa_stream), c_void_p)
 pa_stream_request_cb_t = CFUNCTYPE(None, POINTER(pa_stream), c_size_t,
                                    c_void_p)
 
+pa_stream_success_cb_t = CFUNCTYPE(None, POINTER(pa_stream), c_int, c_void_p)
+
 # functions
 
 pa_threaded_mainloop_new = lib.pa_threaded_mainloop_new
@@ -561,16 +583,30 @@ pa_stream_connect_record = lib.pa_stream_connect_record
 pa_stream_connect_record.restype = c_int
 pa_stream_connect_record.argtypes = [POINTER(pa_stream), c_char_p,
                                      POINTER(pa_buffer_attr),
-                                     pa_stream_state_t]
+                                     pa_stream_flags_t]
+
+pa_stream_cork = lib.pa_stream_cork
+pa_stream_cork.restype = POINTER(pa_operation)
+pa_stream_cork.argtypes = [POINTER(pa_stream), c_int, pa_stream_success_cb_t,
+                           c_void_p]
 
 pa_stream_set_state_callback = lib.pa_stream_set_state_callback
 pa_stream_set_state_callback.restype = None
 pa_stream_set_state_callback.argtypes = [POINTER(pa_stream),
                                          pa_stream_notify_cb_t, c_void_p]
 
+pa_stream_set_suspended_callback = lib.pa_stream_set_suspended_callback
+pa_stream_set_suspended_callback.res = c_int
+pa_stream_set_suspended_callback.argtypes = [POINTER(pa_stream),
+                                             pa_stream_notify_cb_t, c_void_p]
+
 pa_stream_get_state = lib.pa_stream_get_state
 pa_stream_get_state.restype = pa_stream_state_t
 pa_stream_get_state.argtypes = [POINTER(pa_stream)]
+
+pa_stream_get_device_name = lib.pa_stream_get_device_name
+pa_stream_get_device_name.restype = c_char_p
+pa_stream_get_device_name.argtypes = [POINTER(pa_stream)]
 
 pa_stream_peek = lib.pa_stream_peek
 pa_stream_peek.restype = c_int
