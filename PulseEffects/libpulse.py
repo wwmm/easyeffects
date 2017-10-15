@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from ctypes import (CFUNCTYPE, POINTER, Structure, byref, c_char_p, c_double,
-                    c_int, c_uint8, c_uint32, c_uint64, c_void_p, cdll)
+                    c_int, c_uint8, c_uint32, c_uint64, c_size_t, c_void_p,
+                    cdll)
 
 lib = cdll.LoadLibrary("libpulse.so.0")
 
@@ -88,6 +89,11 @@ PA_SUBSCRIPTION_MASK_CARD = 0x0200
 PA_SUBSCRIPTION_MASK_ALL = 0x02ff
 PA_VOLUME_MUTED = 0
 PA_VOLUME_NORM = 0x10000
+PA_STREAM_UNCONNECTED = 0
+PA_STREAM_CREATING = 1
+PA_STREAM_READY = 2
+PA_STREAM_FAILED = 3
+PA_STREAM_TERMINATED = 4
 
 pa_io_event_flags_t = c_int
 pa_context_flags_t = c_int
@@ -101,6 +107,7 @@ pa_usec_t = c_uint64
 pa_sink_flags_t = c_int
 pa_sink_state_t = c_int
 pa_encoding_t = c_int
+pa_stream_state_t = c_int
 
 # structures
 
@@ -137,6 +144,16 @@ class pa_sample_spec(Structure):
 class pa_channel_map(Structure):
     _fields_ = [('channels', c_uint8),
                 ('map', pa_channel_position_t * PA_CHANNELS_MAX)]
+
+
+class pa_stream(Structure):
+    _fields_ = []
+
+
+class pa_buffer_attr(Structure):
+    _fields_ = [('maxlength', c_uint32), ('tlength', c_uint32),
+                ('prebuf', c_uint32), ('minreq', c_uint32),
+                ('fragsize', c_uint32)]
 
 
 class pa_cvolume(Structure):
@@ -268,6 +285,8 @@ pa_source_output_info_cb_t = CFUNCTYPE(None, POINTER(pa_context),
 pa_context_subscribe_cb_t = CFUNCTYPE(None, POINTER(pa_context),
                                       pa_subscription_event_type_t, c_uint32,
                                       c_void_p)
+
+pa_stream_notify_cb_t = CFUNCTYPE(None, POINTER(pa_stream), c_void_p)
 
 # functions
 
@@ -492,6 +511,31 @@ pa_cvolume_scale.argtypes = [POINTER(pa_cvolume), pa_volume_t]
 pa_cvolume_set = lib.pa_cvolume_set
 pa_cvolume_set.restype = POINTER(pa_cvolume)
 pa_cvolume_set.argtypes = [POINTER(pa_cvolume), c_uint8, pa_volume_t]
+
+pa_stream_new = lib.pa_stream_new
+pa_stream_new.restype = POINTER(pa_stream)
+pa_stream_new.argtypes = [POINTER(pa_context), c_char_p,
+                          POINTER(pa_sample_spec), POINTER(pa_channel_map)]
+
+pa_stream_connect_record = lib.pa_stream_connect_record
+pa_stream_connect_record.restype = c_int
+pa_stream_connect_record.argtypes = [POINTER(pa_stream), c_char_p,
+                                     POINTER(pa_buffer_attr),
+                                     pa_stream_state_t]
+
+pa_stream_set_state_callback = lib.pa_stream_set_state_callback
+pa_stream_set_state_callback.restype = None
+pa_stream_set_state_callback.argtypes = [POINTER(pa_stream),
+                                         pa_stream_notify_cb_t, c_void_p]
+
+pa_stream_peek = lib.pa_stream_peek
+pa_stream_peek.restype = c_int
+pa_stream_peek.argtypes = [POINTER(pa_stream), POINTER(c_void_p),
+                           POINTER(c_size_t)]
+
+pa_stream_drop = lib.pa_stream_drop
+pa_stream_drop.restype = c_int
+pa_stream_drop.argtypes = [POINTER(pa_stream)]
 
 pa_sw_volume_from_dB = lib.pa_sw_volume_from_dB
 pa_sw_volume_from_dB.restype = pa_volume_t
