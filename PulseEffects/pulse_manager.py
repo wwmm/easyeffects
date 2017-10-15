@@ -72,6 +72,9 @@ class PulseManager(GObject.GObject):
 
         self.max_volume = p.PA_VOLUME_NORM
 
+        self.sink_input_streams = dict()
+        self.source_output_streams = dict()
+
         self.log = logging.getLogger('PulseEffects')
 
         # it makes no sense to show some kind of apps. So we blacklist them
@@ -94,6 +97,10 @@ class PulseManager(GObject.GObject):
             self.source_output_info)
         self.ctx_success_cb = p.pa_context_success_cb_t(self.ctx_success)
         self.subscribe_cb = p.pa_context_subscribe_cb_t(self.subscribe)
+        self.stream_state_cb = p.pa_stream_notify_cb_t(
+            self.stream_state_callback)
+        self.stream_read_cb = p.pa_stream_request_cb_t(
+            self.stream_read_callback)
 
         # creating main loop and context
         self.main_loop = p.pa_threaded_mainloop_new()
@@ -436,6 +443,8 @@ class PulseManager(GObject.GObject):
                              'sink_latency': sink_latency, 'corked': corked}
 
                 if user_data == 1:
+                    self.create_sink_input_stream(idx)
+
                     GLib.idle_add(self.emit, 'sink_input_added', new_input)
                 elif user_data == 2:
                     GLib.idle_add(self.emit, 'sink_input_changed', new_input)
@@ -569,6 +578,46 @@ class PulseManager(GObject.GObject):
     def set_source_output_mute(self, idx, mute_state):
         p.pa_context_set_source_output_mute(self.ctx, idx, mute_state,
                                             self.ctx_success_cb, None)
+
+    def create_sink_input_stream(self, idx):
+        ss = p.pa_sample_spec()
+        ss.channels = 1
+        ss.format = p.PA_SAMPLE_FLOAT32LE
+        ss.rate = 25
+
+        max_int = 2**32 - 1
+
+        attr = p.pa_buffer_attr()
+        attr.maxlength = max_int
+        attr.tlength = max_int
+        attr.prebuf = max_int
+        attr.minreq = max_int
+        attr.fragsize = p.get_sizeof_float()
+
+        stream = p.pa_stream_new(self.ctx, b'Peak Detect', p.get_pointer(ss),
+                                 None)
+
+        p.pa_stream_set_state_callback(stream, self.stream_state_cb, None)
+        p.pa_stream_set_monitor_stream(stream, idx)
+        p.pa_stream_set_read_callback(stream, self.stream_read_cb, None)
+
+        flags = p.PA_STREAM_PEAK_DETECT
+
+        p.pa_stream_connect_record(stream, str(idx).encode(),
+                                   p.get_pointer(attr), flags)
+
+        self.sink_input_streams[str(idx)] = stream
+
+    def stream_state_callback(self, stream, user_data):
+        print('stream state: ', p.pa_stream_get_state(stream))
+        # print('stream corked: ', p.pa_stream_is_corked(stream))
+        # print('stream suspended: ', p.pa_stream_is_suspended(stream))
+
+    def stream_read_callback(self, stream, length, user_data):
+        print(stream)
+
+    def delete_sink_input_stream(self, idx):
+        print(idx)
 
     def subscribe(self, context, event_value, idx, user_data):
         event_facility = event_value & p.PA_SUBSCRIPTION_EVENT_FACILITY_MASK

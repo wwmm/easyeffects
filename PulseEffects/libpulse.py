@@ -2,13 +2,17 @@
 
 from ctypes import (CFUNCTYPE, POINTER, Structure, byref, c_char_p, c_double,
                     c_int, c_uint8, c_uint32, c_uint64, c_size_t, c_void_p,
-                    cdll)
+                    c_float, cdll, sizeof)
 
 lib = cdll.LoadLibrary("libpulse.so.0")
 
 
 def get_pointer(obj):
     return byref(obj)
+
+
+def get_sizeof_float():
+    return sizeof(c_float)
 
 
 # enumerators
@@ -94,6 +98,27 @@ PA_STREAM_CREATING = 1
 PA_STREAM_READY = 2
 PA_STREAM_FAILED = 3
 PA_STREAM_TERMINATED = 4
+PA_STREAM_NOFLAGS = 0x0000
+PA_STREAM_START_CORKED = 0x0001
+PA_STREAM_INTERPOLATE_TIMING = 0x0002
+PA_STREAM_NOT_MONOTONIC = 0x0004
+PA_STREAM_AUTO_TIMING_UPDATE = 0x0008
+PA_STREAM_NO_REMAP_CHANNELS = 0x0010
+PA_STREAM_NO_REMIX_CHANNELS = 0x0020
+PA_STREAM_FIX_FORMAT = 0x0040
+PA_STREAM_FIX_RATE = 0x0080
+PA_STREAM_FIX_CHANNELS = 0x0100
+PA_STREAM_DONT_MOVE = 0x0200
+PA_STREAM_VARIABLE_RATE = 0x0400
+PA_STREAM_PEAK_DETECT = 0x0800
+PA_STREAM_START_MUTED = 0x1000
+PA_STREAM_ADJUST_LATENCY = 0x2000
+PA_STREAM_EARLY_REQUESTS = 0x4000
+PA_STREAM_DONT_INHIBIT_AUTO_SUSPEND = 0x8000
+PA_STREAM_START_UNMUTED = 0x10000
+PA_STREAM_FAIL_ON_SUSPEND = 0x20000
+PA_STREAM_RELATIVE_VOLUME = 0x40000
+PA_STREAM_PASSTHROUGH = 0x80000
 
 pa_io_event_flags_t = c_int
 pa_context_flags_t = c_int
@@ -108,6 +133,9 @@ pa_sink_flags_t = c_int
 pa_sink_state_t = c_int
 pa_encoding_t = c_int
 pa_stream_state_t = c_int
+pa_stream_flags_t = c_int
+
+uint32_t = c_uint32
 
 # structures
 
@@ -540,6 +568,10 @@ pa_stream_set_state_callback.restype = None
 pa_stream_set_state_callback.argtypes = [POINTER(pa_stream),
                                          pa_stream_notify_cb_t, c_void_p]
 
+pa_stream_get_state = lib.pa_stream_get_state
+pa_stream_get_state.restype = pa_stream_state_t
+pa_stream_get_state.argtypes = [POINTER(pa_stream)]
+
 pa_stream_peek = lib.pa_stream_peek
 pa_stream_peek.restype = c_int
 pa_stream_peek.argtypes = [POINTER(pa_stream), POINTER(c_void_p),
@@ -549,9 +581,21 @@ pa_stream_drop = lib.pa_stream_drop
 pa_stream_drop.restype = c_int
 pa_stream_drop.argtypes = [POINTER(pa_stream)]
 
+pa_stream_is_corked = lib.pa_stream_is_corked
+pa_stream_is_corked.restype = c_int
+pa_stream_is_corked.argtypes = [POINTER(pa_stream)]
+
+pa_stream_is_suspended = lib.pa_stream_is_suspended
+pa_stream_is_suspended.restype = c_int
+pa_stream_is_suspended.argtypes = [POINTER(pa_stream)]
+
 pa_stream_disconnect = lib.pa_stream_disconnect
 pa_stream_disconnect.restype = c_int
 pa_stream_disconnect.argtypes = [POINTER(pa_stream)]
+
+pa_stream_unref = lib.pa_stream_unref
+pa_stream_unref.restype = None
+pa_stream_unref.argtypes = [POINTER(pa_stream)]
 
 pa_sw_volume_from_dB = lib.pa_sw_volume_from_dB
 pa_sw_volume_from_dB.restype = pa_volume_t
