@@ -288,6 +288,9 @@ pa_context_subscribe_cb_t = CFUNCTYPE(None, POINTER(pa_context),
 
 pa_stream_notify_cb_t = CFUNCTYPE(None, POINTER(pa_stream), c_void_p)
 
+pa_stream_request_cb_t = CFUNCTYPE(None, POINTER(pa_stream), c_size_t,
+                                   c_void_p)
+
 # functions
 
 pa_threaded_mainloop_new = lib.pa_threaded_mainloop_new
@@ -517,6 +520,15 @@ pa_stream_new.restype = POINTER(pa_stream)
 pa_stream_new.argtypes = [POINTER(pa_context), c_char_p,
                           POINTER(pa_sample_spec), POINTER(pa_channel_map)]
 
+pa_stream_set_monitor_stream = lib.pa_stream_set_monitor_stream
+pa_stream_set_monitor_stream.restype = c_int
+pa_stream_set_monitor_stream.argtypes = [POINTER(pa_stream), c_uint32]
+
+pa_stream_set_read_callback = lib.pa_stream_set_read_callback
+pa_stream_set_read_callback.restype = None
+pa_stream_set_read_callback.argtypes = [POINTER(pa_stream),
+                                        pa_stream_request_cb_t, c_void_p]
+
 pa_stream_connect_record = lib.pa_stream_connect_record
 pa_stream_connect_record.restype = c_int
 pa_stream_connect_record.argtypes = [POINTER(pa_stream), c_char_p,
@@ -536,6 +548,10 @@ pa_stream_peek.argtypes = [POINTER(pa_stream), POINTER(c_void_p),
 pa_stream_drop = lib.pa_stream_drop
 pa_stream_drop.restype = c_int
 pa_stream_drop.argtypes = [POINTER(pa_stream)]
+
+pa_stream_disconnect = lib.pa_stream_disconnect
+pa_stream_disconnect.restype = c_int
+pa_stream_disconnect.argtypes = [POINTER(pa_stream)]
 
 pa_sw_volume_from_dB = lib.pa_sw_volume_from_dB
 pa_sw_volume_from_dB.restype = pa_volume_t
