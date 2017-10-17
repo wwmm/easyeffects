@@ -183,6 +183,8 @@ class EffectsBase(PipelineBase):
                 builder.get_object('volume_scale'))
         setattr(self, 'app_mute_' + str(idx),
                 builder.get_object('mute'))
+        setattr(self, 'app_level_' + str(idx),
+                builder.get_object('level'))
 
         getattr(self, 'app_name_' + str(idx)).set_text(app_name)
         getattr(self, 'app_format_' + str(idx)).set_text(sample_format)
@@ -316,11 +318,17 @@ class EffectsBase(PipelineBase):
             delattr(self, 'app_switch_' + str(idx))
             delattr(self, 'app_volume_' + str(idx))
             delattr(self, 'app_mute_' + str(idx))
+            delattr(self, 'app_level_' + str(idx))
 
             n_children_after = len(self.apps_box.get_children())
 
             if n_children_before == 1 and n_children_after == 0:
                 self.set_state('ready')
+
+    def on_app_level_changed(self, obj, idx, level):
+        if hasattr(self, 'app_level_' + str(idx)):
+            getattr(self, 'app_level_' + str(idx)).set_value(level)
+            # print(level)
 
     def on_message_element(self, bus, msg):
         plugin = msg.src.get_name()

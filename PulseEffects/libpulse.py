@@ -35,6 +35,10 @@ def cast_to_int(v):
     return cast(v, POINTER(c_int))
 
 
+def cast_to_user_data_stream(v):
+    return cast(v, POINTER(user_data_stream))
+
+
 # enumerators
 
 PA_CONTEXT_UNCONNECTED = 0
@@ -299,6 +303,10 @@ class pa_source_output_info(Structure):
                 ('corked', c_int), ('volume', pa_cvolume), ('mute', c_int),
                 ('has_volume', c_int), ('volume_writable', c_int),
                 ('format', POINTER(pa_format_info))]
+
+
+class user_data_stream(Structure):
+    _fields_ = [('index', c_uint32), ('stream_type', c_uint32)]
 
 
 # callback types
@@ -607,6 +615,14 @@ pa_stream_get_state.argtypes = [POINTER(pa_stream)]
 pa_stream_get_device_name = lib.pa_stream_get_device_name
 pa_stream_get_device_name.restype = c_char_p
 pa_stream_get_device_name.argtypes = [POINTER(pa_stream)]
+
+pa_stream_get_index = lib.pa_stream_get_index
+pa_stream_get_index.restype = c_uint32
+pa_stream_get_index.argtypes = [POINTER(pa_stream)]
+
+pa_stream_get_device_index = lib.pa_stream_get_device_index
+pa_stream_get_device_index.restype = c_uint32
+pa_stream_get_device_index.argtypes = [POINTER(pa_stream)]
 
 pa_stream_peek = lib.pa_stream_peek
 pa_stream_peek.restype = c_int
