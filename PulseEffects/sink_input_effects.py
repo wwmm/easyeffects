@@ -33,8 +33,6 @@ class SinkInputEffects(EffectsBase):
         self.pm.connect('sink_input_changed', self.on_app_changed)
         self.pm.connect('sink_input_removed', self.on_app_removed)
         self.pm.connect('sink_input_level_changed', self.on_app_level_changed)
-        self.pm.connect('source_output_level_changed',
-                        self.on_app_level_changed)
 
         self.panorama = Panorama(self.settings)
 

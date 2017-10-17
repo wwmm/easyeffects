@@ -35,10 +35,6 @@ def cast_to_int(v):
     return cast(v, POINTER(c_int))
 
 
-def cast_to_user_data_stream(v):
-    return cast(v, POINTER(user_data_stream))
-
-
 # enumerators
 
 PA_CONTEXT_UNCONNECTED = 0
@@ -303,10 +299,6 @@ class pa_source_output_info(Structure):
                 ('corked', c_int), ('volume', pa_cvolume), ('mute', c_int),
                 ('has_volume', c_int), ('volume_writable', c_int),
                 ('format', POINTER(pa_format_info))]
-
-
-class user_data_stream(Structure):
-    _fields_ = [('index', c_uint32), ('stream_type', c_uint32)]
 
 
 # callback types

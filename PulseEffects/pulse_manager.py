@@ -21,9 +21,7 @@ class PulseManager(GObject.GObject):
         'source_changed': (GObject.SignalFlags.RUN_FIRST, None, ()),
         'source_removed': (GObject.SignalFlags.RUN_FIRST, None, ()),
         'sink_input_level_changed': (GObject.SignalFlags.RUN_FIRST, None,
-                                     (int, float)),
-        'source_output_level_changed': (GObject.SignalFlags.RUN_FIRST, None,
-                                        (int, float))
+                                     (int, float))
     }
 
     def __init__(self):
@@ -98,10 +96,8 @@ class PulseManager(GObject.GObject):
             self.source_output_info)
         self.ctx_success_cb = p.pa_context_success_cb_t(self.ctx_success)
         self.subscribe_cb = p.pa_context_subscribe_cb_t(self.subscribe)
-        self.stream_state_cb = p.pa_stream_notify_cb_t(
-            self.stream_state_callback)
-        self.stream_read_cb = p.pa_stream_request_cb_t(
-            self.stream_read_callback)
+        self.sink_input_stream_read_cb = p.pa_stream_request_cb_t(
+            self.sink_input_stream_read_callback)
 
         # creating main loop and context
         self.main_loop = p.pa_threaded_mainloop_new()
@@ -444,10 +440,7 @@ class PulseManager(GObject.GObject):
                              'latency': latency, 'corked': corked}
 
                 if user_data == 1:
-                    dev_name = b'PulseEffects_apps.monitor'
-                    stream_type = 1  # sink input peak level stream
-
-                    self.create_stream(dev_name, idx, stream_type)
+                    self.create_sink_input_stream(idx)
 
                     GLib.idle_add(self.emit, 'sink_input_added', new_input)
                 elif user_data == 2:
@@ -515,11 +508,6 @@ class PulseManager(GObject.GObject):
                               'latency': latency, 'corked': corked}
 
                 if user_data == 1:
-                    dev_name = b'PulseEffects_mic.monitor'
-                    stream_type = 2  # source output peak level stream
-
-                    self.create_stream(dev_name, idx, stream_type)
-
                     GLib.idle_add(self.emit, 'source_output_added', new_output)
                 elif user_data == 2:
                     GLib.idle_add(self.emit, 'source_output_changed',
@@ -588,41 +576,24 @@ class PulseManager(GObject.GObject):
         p.pa_context_set_source_output_mute(self.ctx, idx, mute_state,
                                             self.ctx_success_cb, None)
 
-    def create_stream(self, dev_name, idx, stream_type):
+    def create_sink_input_stream(self, idx):
         ss = p.pa_sample_spec()
         ss.channels = 1
         ss.format = p.PA_SAMPLE_FLOAT32LE
         ss.rate = 10
 
-        stream = p.pa_stream_new(self.ctx, b'Peak Detect', p.get_ref(ss), None)
+        stream = p.pa_stream_new(self.ctx, b'Level Meter', p.get_ref(ss), None)
 
-        p.pa_stream_set_state_callback(stream, self.stream_state_cb, None)
         p.pa_stream_set_monitor_stream(stream, idx)
-
-        user_data = p.user_data_stream()
-        user_data.index = idx
-        user_data.stream_type = stream_type
-
-        p.pa_stream_set_read_callback(stream, self.stream_read_cb,
-                                      p.get_ref(user_data))
+        p.pa_stream_set_read_callback(stream, self.sink_input_stream_read_cb,
+                                      idx)
 
         flags = p.PA_STREAM_PEAK_DETECT | p.PA_STREAM_DONT_MOVE
 
-        p.pa_stream_connect_record(stream, dev_name, None, flags)
+        p.pa_stream_connect_record(stream, b'PulseEffects_apps.monitor', None,
+                                   flags)
 
-    def stream_state_callback(self, stream, user_data):
-        state = p.pa_stream_get_state(stream)
-
-        if state == p.PA_STREAM_FAILED:
-            p.pa_stream_unref(stream)
-        elif state == p.PA_STREAM_READY:
-            pass
-        elif state == p.PA_STREAM_UNCONNECTED:
-            pass
-        elif state == p.PA_STREAM_TERMINATED:
-            pass
-
-    def stream_read_callback(self, stream, length, user_data):
+    def sink_input_stream_read_callback(self, stream, length, idx):
         data = p.get_c_void_p_ref()
         clength = p.int_to_c_size_t_ref(length)
 
@@ -644,19 +615,14 @@ class PulseManager(GObject.GObject):
                 p.pa_stream_drop(stream)
                 return
 
-        user = p.cast_to_user_data_stream(user_data)
+        v = d.contents.contents.value
 
-        idx = user.contents.index
-        stream_type = user.contents.stream_type
+        if v < 0:
+            v = 0
+        elif v > 1:
+            v = 1
 
-        print(idx, stream_type, d.contents.contents.value)
-
-        if stream_type == 1:  # sink input stream
-            self.emit('sink_input_level_changed', idx,
-                      d.contents.contents.value)
-        elif stream_type == 2:  # source output stream
-            self.emit('source_output_level_changed', idx,
-                      d.contents.contents.value)
+        self.emit('sink_input_level_changed', idx, v)
 
         p.pa_stream_drop(stream)
 

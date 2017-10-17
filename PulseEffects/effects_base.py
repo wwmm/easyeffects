@@ -183,6 +183,7 @@ class EffectsBase(PipelineBase):
                 builder.get_object('volume_scale'))
         setattr(self, 'app_mute_' + str(idx),
                 builder.get_object('mute'))
+
         setattr(self, 'app_level_' + str(idx),
                 builder.get_object('level'))
 
@@ -328,7 +329,6 @@ class EffectsBase(PipelineBase):
     def on_app_level_changed(self, obj, idx, level):
         if hasattr(self, 'app_level_' + str(idx)):
             getattr(self, 'app_level_' + str(idx)).set_value(level)
-            # print(level)
 
     def on_message_element(self, bus, msg):
         plugin = msg.src.get_name()
