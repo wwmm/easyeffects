@@ -21,6 +21,7 @@ class SourceOutputEffects(EffectsBase):
 
         self.log_tag = 'mic: '
         self.switch_on_all_apps = False
+        self.disable_app_level_meter = True
 
         self.set_source_monitor_name(self.pm.default_source_name)
         self.set_output_sink_name('PulseEffects_mic')

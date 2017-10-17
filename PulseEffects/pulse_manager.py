@@ -96,8 +96,10 @@ class PulseManager(GObject.GObject):
             self.source_output_info)
         self.ctx_success_cb = p.pa_context_success_cb_t(self.ctx_success)
         self.subscribe_cb = p.pa_context_subscribe_cb_t(self.subscribe)
-        self.sink_input_stream_read_cb = p.pa_stream_request_cb_t(
-            self.sink_input_stream_read_callback)
+        self.stream_state_cb = p.pa_stream_notify_cb_t(
+            self.stream_state_callback)
+        self.stream_read_cb = p.pa_stream_request_cb_t(
+            self.stream_read_callback)
 
         # creating main loop and context
         self.main_loop = p.pa_threaded_mainloop_new()
@@ -440,7 +442,7 @@ class PulseManager(GObject.GObject):
                              'latency': latency, 'corked': corked}
 
                 if user_data == 1:
-                    self.create_sink_input_stream(idx)
+                    self.create_stream(idx)
 
                     GLib.idle_add(self.emit, 'sink_input_added', new_input)
                 elif user_data == 2:
@@ -576,58 +578,75 @@ class PulseManager(GObject.GObject):
         p.pa_context_set_source_output_mute(self.ctx, idx, mute_state,
                                             self.ctx_success_cb, None)
 
-    def create_sink_input_stream(self, idx):
+    def create_stream(self, idx):
         ss = p.pa_sample_spec()
         ss.channels = 1
         ss.format = p.PA_SAMPLE_FLOAT32LE
         ss.rate = 10
 
-        stream = p.pa_stream_new(self.ctx, b'Level Meter', p.get_ref(ss), None)
+        stream = p.pa_stream_new(self.ctx, b'PulseEffects Level Meter',
+                                 p.get_ref(ss), None)
 
+        p.pa_stream_set_state_callback(stream, self.stream_state_cb, idx)
         p.pa_stream_set_monitor_stream(stream, idx)
-        p.pa_stream_set_read_callback(stream, self.sink_input_stream_read_cb,
-                                      idx)
+        p.pa_stream_set_read_callback(stream, self.stream_read_cb, idx)
 
         flags = p.PA_STREAM_PEAK_DETECT | p.PA_STREAM_DONT_MOVE
 
         p.pa_stream_connect_record(stream, b'PulseEffects_apps.monitor', None,
                                    flags)
 
-    def sink_input_stream_read_callback(self, stream, length, idx):
+    def stream_state_callback(self, stream, idx):
+        state = p.pa_stream_get_state(stream)
+
+        if not idx:  # zero is interpreted as None
+            idx = 0
+
+        if state == p.PA_STREAM_FAILED:
+            p.pa_stream_unref(stream)
+        elif state == p.PA_STREAM_READY:
+            self.log.info('created stream for sink input ' + str(idx))
+        elif state == p.PA_STREAM_TERMINATED:
+            self.log.info('stream for sink input ' + str(idx) +
+                          'was terminated')
+        elif state == p.PA_STREAM_UNCONNECTED:
+            self.log.info('stream for sink input ' + str(idx) +
+                          'was unconnected')
+
+    def stream_read_callback(self, stream, length, idx):
         data = p.get_c_void_p_ref()
         clength = p.int_to_c_size_t_ref(length)
 
         if p.pa_stream_peek(stream, data, clength) < 0:
-            self.log.warn('failed to read stream data')
+            self.log.warn('failed to read stream' + str(idx) + 'data')
             return
 
         l = p.cast_to_int(clength)
         d = p.cast_to_float(data)
 
-        # according to pavucontrol source code comments:
+        # according to pulseaudio docs:
         # NULL data means either a hole or empty buffer.
         # Only drop the stream when there is a hole (length > 0)
-        if not d:
-            p.pa_stream_drop(stream)
-            return
-        elif not d.contents:
+        if not d.contents:
             if l:
                 p.pa_stream_drop(stream)
+                return
+            else:
                 return
 
         v = d.contents.contents.value
 
+        p.pa_stream_drop(stream)
+
         if v < 0:
-            v = 0
+            v = 0.0
         elif v > 1:
-            v = 1
+            v = 1.0
 
         if not idx:
             idx = 0
 
         self.emit('sink_input_level_changed', idx, v)
-
-        p.pa_stream_drop(stream)
 
     def subscribe(self, context, event_value, idx, user_data):
         event_facility = event_value & p.PA_SUBSCRIPTION_EVENT_FACILITY_MASK

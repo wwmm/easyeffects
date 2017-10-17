@@ -28,6 +28,7 @@ class EffectsBase(PipelineBase):
         self.module_path = os.path.dirname(__file__)
         self.settings = settings
         self.log_tag = str()
+        self.disable_app_level_meter = False
 
         self.builder = Gtk.Builder.new_from_file(self.module_path +
                                                  '/ui/effects_box.glade')
@@ -183,9 +184,13 @@ class EffectsBase(PipelineBase):
                 builder.get_object('volume_scale'))
         setattr(self, 'app_mute_' + str(idx),
                 builder.get_object('mute'))
-
         setattr(self, 'app_level_' + str(idx),
                 builder.get_object('level'))
+
+        # there is no point in showing it for source outputs
+        # their class disables the level
+        if self.disable_app_level_meter:
+            getattr(self, 'app_level_' + str(idx)).destroy()
 
         getattr(self, 'app_name_' + str(idx)).set_text(app_name)
         getattr(self, 'app_format_' + str(idx)).set_text(sample_format)
