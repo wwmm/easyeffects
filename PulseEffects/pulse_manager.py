@@ -622,6 +622,9 @@ class PulseManager(GObject.GObject):
         elif v > 1:
             v = 1
 
+        if not idx:
+            idx = 0
+
         self.emit('sink_input_level_changed', idx, v)
 
         p.pa_stream_drop(stream)
