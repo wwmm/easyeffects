@@ -74,6 +74,8 @@ class PulseManager(GObject.GObject):
 
         self.max_volume = p.PA_VOLUME_NORM
 
+        self.streams = dict()
+
         self.log = logging.getLogger('PulseEffects')
 
         # it makes no sense to show some kind of apps. So we blacklist them
@@ -442,10 +444,17 @@ class PulseManager(GObject.GObject):
                              'latency': latency, 'corked': corked}
 
                 if user_data == 1:
-                    self.create_stream(idx)
+                    if connected:
+                        self.create_stream(idx)
 
                     GLib.idle_add(self.emit, 'sink_input_added', new_input)
                 elif user_data == 2:
+                    if str(idx) in self.streams:
+                        if not connected:
+                            del self.streams[str(idx)]
+                    elif connected:
+                        self.create_stream(idx)
+
                     GLib.idle_add(self.emit, 'sink_input_changed', new_input)
 
     def source_output_info(self, context, info, eol, user_data):
@@ -596,6 +605,8 @@ class PulseManager(GObject.GObject):
         p.pa_stream_connect_record(stream, b'PulseEffects_apps.monitor', None,
                                    flags)
 
+        self.streams[str(idx)] = stream
+
     def stream_state_callback(self, stream, idx):
         state = p.pa_stream_get_state(stream)
 
@@ -608,10 +619,10 @@ class PulseManager(GObject.GObject):
             self.log.info('created stream for sink input ' + str(idx))
         elif state == p.PA_STREAM_TERMINATED:
             self.log.info('stream for sink input ' + str(idx) +
-                          'was terminated')
+                          ' was terminated')
         elif state == p.PA_STREAM_UNCONNECTED:
             self.log.info('stream for sink input ' + str(idx) +
-                          'was unconnected')
+                          ' was unconnected')
 
     def stream_read_callback(self, stream, length, idx):
         data = p.get_c_void_p_ref()
@@ -649,6 +660,9 @@ class PulseManager(GObject.GObject):
         self.emit('sink_input_level_changed', idx, v)
 
     def subscribe(self, context, event_value, idx, user_data):
+        if not idx:
+            idx = 0
+
         event_facility = event_value & p.PA_SUBSCRIPTION_EVENT_FACILITY_MASK
 
         if event_facility == p.PA_SUBSCRIPTION_EVENT_SINK_INPUT:
@@ -663,6 +677,9 @@ class PulseManager(GObject.GObject):
                                                  self.sink_input_info_cb,
                                                  2)  # 2 for changes
             elif event_type == p.PA_SUBSCRIPTION_EVENT_REMOVE:
+                if str(idx) in self.streams:
+                    del self.streams[str(idx)]
+
                 GLib.idle_add(self.emit, 'sink_input_removed', idx)
         elif event_facility == p.PA_SUBSCRIPTION_EVENT_SOURCE_OUTPUT:
             event_type = event_value & p.PA_SUBSCRIPTION_EVENT_TYPE_MASK
