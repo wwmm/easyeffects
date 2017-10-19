@@ -81,7 +81,7 @@ class DrawSpectrum():
 
                 PangoCairo.show_layout(ctx, layout)
 
-            return False
+        return False
 
     def on_new_spectrum(self, obj, magnitudes):
         if self.show_spectrum:
