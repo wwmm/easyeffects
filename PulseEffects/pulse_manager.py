@@ -657,7 +657,7 @@ class PulseManager(GObject.GObject):
         if not idx:
             idx = 0
 
-        self.emit('sink_input_level_changed', idx, v)
+        GLib.idle_add(self.emit, 'sink_input_level_changed', idx, v)
 
     def subscribe(self, context, event_value, idx, user_data):
         if not idx:
