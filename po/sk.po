@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-14 19:02-0300\n"
+"POT-Creation-Date: 2017-10-21 22:01-0200\n"
 "PO-Revision-Date: 2017-06-11 22:19+0200\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: \n"
@@ -22,31 +22,31 @@ msgstr ""
 msgid "Audio Effects for Pulseaudio Applications"
 msgstr "Zvukové efekty pre aplikácie využívajúce Pulseaudio"
 
-#: PulseEffects/ui/app_info.glade:84
+#: PulseEffects/ui/app_info.glade:64
 msgid "Format"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:95
+#: PulseEffects/ui/app_info.glade:75
 msgid "Rate"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:106
+#: PulseEffects/ui/app_info.glade:86
 msgid "Channels"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:117
+#: PulseEffects/ui/app_info.glade:97
 msgid "Resampler"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:184
+#: PulseEffects/ui/app_info.glade:160
 msgid "Buffer Latency"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:195
-msgid "Sink Latency"
+#: PulseEffects/ui/app_info.glade:171 PulseEffects/ui/main_ui.glade:337
+msgid "Latency"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:234
+#: PulseEffects/ui/app_info.glade:208
 msgid "State"
 msgstr ""
 
@@ -113,11 +113,6 @@ msgstr "Výstup"
 #: PulseEffects/ui/compressor.glade:562
 msgid "Gain Reduction"
 msgstr "Redukcia zosilnenia"
-
-#: PulseEffects/ui/effects_box.glade:74
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
-msgid "Applications"
-msgstr ""
 
 #: PulseEffects/ui/equalizer.glade:185
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
@@ -233,10 +228,6 @@ msgstr "Zoslabenie"
 msgid "Low Pass"
 msgstr "Dolný prechod"
 
-#: PulseEffects/ui/main_ui.glade:337
-msgid "Latency"
-msgstr ""
-
 #: PulseEffects/ui/main_ui.glade:359
 msgid "buffer-time [ms]"
 msgstr "Čas zásobníka [ms]"
@@ -326,15 +317,16 @@ msgstr "Strojovňa"
 msgid "Small Room"
 msgstr "Malá miestnosť"
 
-#: PulseEffects/effects_base.py:46
-msgid "<b>Applications</b>"
+#: PulseEffects/effects_base.py:47
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
+msgid "Applications"
 msgstr ""
 
-#: PulseEffects/effects_base.py:191 PulseEffects/effects_base.py:281
+#: PulseEffects/effects_base.py:210 PulseEffects/effects_base.py:286
 msgid "paused"
 msgstr ""
 
-#: PulseEffects/effects_base.py:193 PulseEffects/effects_base.py:283
+#: PulseEffects/effects_base.py:212 PulseEffects/effects_base.py:288
 msgid "playing"
 msgstr ""
 

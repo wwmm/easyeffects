@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-14 19:02-0300\n"
+"POT-Creation-Date: 2017-10-21 22:01-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,31 +21,31 @@ msgstr ""
 msgid "Audio Effects for Pulseaudio Applications"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:84
+#: PulseEffects/ui/app_info.glade:64
 msgid "Format"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:95
+#: PulseEffects/ui/app_info.glade:75
 msgid "Rate"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:106
+#: PulseEffects/ui/app_info.glade:86
 msgid "Channels"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:117
+#: PulseEffects/ui/app_info.glade:97
 msgid "Resampler"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:184
+#: PulseEffects/ui/app_info.glade:160
 msgid "Buffer Latency"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:195
-msgid "Sink Latency"
+#: PulseEffects/ui/app_info.glade:171 PulseEffects/ui/main_ui.glade:337
+msgid "Latency"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:234
+#: PulseEffects/ui/app_info.glade:208
 msgid "State"
 msgstr ""
 
@@ -111,11 +111,6 @@ msgstr ""
 
 #: PulseEffects/ui/compressor.glade:562
 msgid "Gain Reduction"
-msgstr ""
-
-#: PulseEffects/ui/effects_box.glade:74
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
-msgid "Applications"
 msgstr ""
 
 #: PulseEffects/ui/equalizer.glade:185
@@ -228,10 +223,6 @@ msgstr ""
 msgid "Low Pass"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:337
-msgid "Latency"
-msgstr ""
-
 #: PulseEffects/ui/main_ui.glade:359
 msgid "buffer-time [ms]"
 msgstr ""
@@ -316,15 +307,16 @@ msgstr ""
 msgid "Small Room"
 msgstr ""
 
-#: PulseEffects/effects_base.py:46
-msgid "<b>Applications</b>"
+#: PulseEffects/effects_base.py:47
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
+msgid "Applications"
 msgstr ""
 
-#: PulseEffects/effects_base.py:191 PulseEffects/effects_base.py:281
+#: PulseEffects/effects_base.py:210 PulseEffects/effects_base.py:286
 msgid "paused"
 msgstr ""
 
-#: PulseEffects/effects_base.py:193 PulseEffects/effects_base.py:283
+#: PulseEffects/effects_base.py:212 PulseEffects/effects_base.py:288
 msgid "playing"
 msgstr ""
 

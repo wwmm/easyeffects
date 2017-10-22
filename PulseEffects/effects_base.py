@@ -44,7 +44,7 @@ class EffectsBase(PipelineBase):
         row.set_margin_top(6)
         row.set_margin_bottom(6)
 
-        entry_label = Gtk.Label(_('<b>Applications</b>'))
+        entry_label = Gtk.Label('<b>' + _('Applications') + '</b>')
         entry_label.set_halign(Gtk.Align.START)
         entry_label.set_use_markup(True)
         entry_label.set_ellipsize(Pango.EllipsizeMode.END)

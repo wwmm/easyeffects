@@ -71,7 +71,6 @@
               </object>
               <packing>
                 <property name="name">applications</property>
-                <property name="title" translatable="yes">Applications</property>
               </packing>
             </child>
           </object>

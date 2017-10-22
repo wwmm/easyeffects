@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-14 19:02-0300\n"
+"POT-Creation-Date: 2017-10-21 22:01-0200\n"
 "PO-Revision-Date: 2017-10-14 12:52-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
@@ -23,31 +23,31 @@ msgstr ""
 msgid "Audio Effects for Pulseaudio Applications"
 msgstr "Efeitos de Áudio para Programas que Utilizam Pulseaudio"
 
-#: PulseEffects/ui/app_info.glade:84
+#: PulseEffects/ui/app_info.glade:64
 msgid "Format"
 msgstr "Formato"
 
-#: PulseEffects/ui/app_info.glade:95
+#: PulseEffects/ui/app_info.glade:75
 msgid "Rate"
 msgstr "Taxa"
 
-#: PulseEffects/ui/app_info.glade:106
+#: PulseEffects/ui/app_info.glade:86
 msgid "Channels"
 msgstr "Canais"
 
-#: PulseEffects/ui/app_info.glade:117
+#: PulseEffects/ui/app_info.glade:97
 msgid "Resampler"
 msgstr "Resampler"
 
-#: PulseEffects/ui/app_info.glade:184
+#: PulseEffects/ui/app_info.glade:160
 msgid "Buffer Latency"
 msgstr "Latência de Buffer"
 
-#: PulseEffects/ui/app_info.glade:195
-msgid "Sink Latency"
-msgstr "Latência da Sink"
+#: PulseEffects/ui/app_info.glade:171 PulseEffects/ui/main_ui.glade:337
+msgid "Latency"
+msgstr "Latência"
 
-#: PulseEffects/ui/app_info.glade:234
+#: PulseEffects/ui/app_info.glade:208
 msgid "State"
 msgstr "Estado"
 
@@ -114,11 +114,6 @@ msgstr "Saída"
 #: PulseEffects/ui/compressor.glade:562
 msgid "Gain Reduction"
 msgstr "Redução de Ganho"
-
-#: PulseEffects/ui/effects_box.glade:74
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
-msgid "Applications"
-msgstr "Aplicativos"
 
 #: PulseEffects/ui/equalizer.glade:185
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
@@ -230,10 +225,6 @@ msgstr "Atenuação"
 msgid "Low Pass"
 msgstr "Passa-Baixa"
 
-#: PulseEffects/ui/main_ui.glade:337
-msgid "Latency"
-msgstr "Latência"
-
 #: PulseEffects/ui/main_ui.glade:359
 msgid "buffer-time [ms]"
 msgstr "tempo de atraso [ms]"
@@ -318,15 +309,16 @@ msgstr "Sala de Máquinas"
 msgid "Small Room"
 msgstr "Quarto Pequeno"
 
-#: PulseEffects/effects_base.py:46
-msgid "<b>Applications</b>"
-msgstr "<b>Aplicativos</b>"
+#: PulseEffects/effects_base.py:47
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
+msgid "Applications"
+msgstr "Aplicativos"
 
-#: PulseEffects/effects_base.py:191 PulseEffects/effects_base.py:281
+#: PulseEffects/effects_base.py:210 PulseEffects/effects_base.py:286
 msgid "paused"
 msgstr "pausado"
 
-#: PulseEffects/effects_base.py:193 PulseEffects/effects_base.py:283
+#: PulseEffects/effects_base.py:212 PulseEffects/effects_base.py:288
 msgid "playing"
 msgstr "tocando"
 
@@ -487,6 +479,12 @@ msgstr "limitador;compressor;reverberação;equalizador;autovolume;"
 #: data/com.github.wwmm.pulseeffects.desktop.in:10
 msgid "pulseeffects"
 msgstr "pulseeffects"
+
+#~ msgid "<b>Applications</b>"
+#~ msgstr "<b>Aplicativos</b>"
+
+#~ msgid "Sink Latency"
+#~ msgstr "Latência da Sink"
 
 #~ msgid "Preset Name"
 #~ msgstr "Nome da Predefinição"
