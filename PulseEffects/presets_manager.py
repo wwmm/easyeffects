@@ -72,6 +72,22 @@ class PresetsManager():
 
         self.init_listbox()
 
+    def listbox_sort(self, row1, row2):
+        name1 = row1.get_name()
+        name2 = row2.get_name()
+
+        if name1 == name2:
+            return 0
+        else:
+            l = [name1, name2]
+
+            l.sort()
+
+            if name1 == l[0]:
+                return -1
+            else:
+                return 1
+
     def add_to_listbox(self, name):
         row = Gtk.ListBoxRow()
         row.set_name(name)
@@ -130,6 +146,8 @@ class PresetsManager():
         self.listbox.add(row)
 
     def init_listbox(self):
+        self.listbox.set_sort_func(self.listbox_sort)
+
         children = self.listbox.get_children()
 
         for child in children:
