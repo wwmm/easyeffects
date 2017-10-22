@@ -111,7 +111,7 @@ class PulseManager(GObject.GObject):
 
         p.pa_context_set_state_callback(self.ctx, self.ctx_notify_cb, None)
 
-        p.pa_context_connect(self.ctx, None, 0, None)
+        p.pa_context_connect(self.ctx, None, p.PA_CONTEXT_NOFAIL, None)
 
         p.pa_threaded_mainloop_start(self.main_loop)
 
@@ -123,17 +123,6 @@ class PulseManager(GObject.GObject):
         self.get_server_info()
         self.get_default_sink_info()
         self.get_default_source_info()
-
-        # subscribing to pulseaudio events
-        p.pa_context_set_subscribe_callback(self.ctx, self.subscribe_cb,
-                                            None)
-
-        subscription_mask = p.PA_SUBSCRIPTION_MASK_SINK_INPUT + \
-            p.PA_SUBSCRIPTION_MASK_SOURCE_OUTPUT + \
-            p.PA_SUBSCRIPTION_MASK_SOURCE
-
-        p.pa_context_subscribe(self.ctx, subscription_mask,
-                               self.ctx_success_cb, None)
 
     def get_sample_spec_format(self, code):
         if code == p.PA_SAMPLE_U8:
@@ -171,35 +160,49 @@ class PulseManager(GObject.GObject):
         state = p.pa_context_get_state(ctx)
 
         if state == p.PA_CONTEXT_READY:
-            self.context_ok = True
             self.log.info('pulseaudio context started')
             self.log.info('connected to server: ' +
                           p.pa_context_get_server(ctx).decode())
             self.log.info('server protocol version: ' +
                           str(p.pa_context_get_server_protocol_version(ctx)))
 
+            p.pa_context_set_subscribe_callback(self.ctx, self.subscribe_cb,
+                                                None)
+
+            # subscribing to pulseaudio events
+
+            subscription_mask = p.PA_SUBSCRIPTION_MASK_SINK_INPUT + \
+                p.PA_SUBSCRIPTION_MASK_SOURCE_OUTPUT + \
+                p.PA_SUBSCRIPTION_MASK_SOURCE
+
+            p.pa_context_subscribe(self.ctx, subscription_mask,
+                                   self.ctx_success_cb, None)
+
+            self.context_ok = True
+
         elif state == p.PA_CONTEXT_FAILED:
             self.log.critical('failed to start pulseaudio context')
+            self.log.info('unferencing pulseaudio context object')
+            p.pa_context_unref(self.ctx)
 
         elif state == p.PA_CONTEXT_TERMINATED:
             self.log.info('pulseaudio context terminated')
 
+            self.log.info('stopping pulseaudio threaded main loop')
+            p.pa_threaded_mainloop_stop(self.main_loop)
+
+            self.log.info('unferencing pulseaudio context object')
+            p.pa_context_unref(self.ctx)
+
+            self.log.info('freeing pulseaudio main loop object')
+            p.pa_threaded_mainloop_free(self.main_loop)
+
     def exit(self):
         self.unload_sinks()
-
         self.log.info('sinks unloaded')
 
         self.log.info('disconnecting pulseaudio context')
         p.pa_context_disconnect(self.ctx)
-
-        self.log.info('stopping pulseaudio threaded main loop')
-        p.pa_threaded_mainloop_stop(self.main_loop)
-
-        self.log.info('unferencing pulseaudio context object')
-        p.pa_context_unref(self.ctx)
-
-        self.log.info('freeing pulseaudio main loop object')
-        p.pa_threaded_mainloop_free(self.main_loop)
 
     def load_sink_info(self, name):
         o = p.pa_context_get_sink_info_by_name(self.ctx, name.encode(),
