@@ -1,17 +1,11 @@
 # -*- coding: utf-8 -*-
 
-import gettext
-
 import gi
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gio, GstInsertBin, Gtk
 from PulseEffects.effects_base import EffectsBase
 from PulseEffects.panorama import Panorama
-
-
-gettext.textdomain('PulseEffects')
-_ = gettext.gettext
 
 
 class SinkInputEffects(EffectsBase):

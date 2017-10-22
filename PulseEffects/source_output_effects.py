@@ -1,13 +1,9 @@
 # -*- coding: utf-8 -*-
-import gettext
 
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gio, Gtk
 from PulseEffects.effects_base import EffectsBase
-
-gettext.textdomain('PulseEffects')
-_ = gettext.gettext
 
 
 class SourceOutputEffects(EffectsBase):

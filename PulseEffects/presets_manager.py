@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import gettext
 import os
+from gettext import gettext as _
 
 import gi
 gi.require_version('Gtk', '3.0')
@@ -9,9 +9,6 @@ from gi.repository import Gio, GLib, Gtk
 
 from PulseEffects.load_presets import LoadPresets
 from PulseEffects.save_presets import SavePresets
-
-gettext.textdomain('PulseEffects')
-_ = gettext.gettext
 
 
 class PresetsManager():

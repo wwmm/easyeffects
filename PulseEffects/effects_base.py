@@ -1,5 +1,7 @@
-import gettext
+# -*- coding: utf-8 -*-
+
 import os
+from gettext import gettext as _
 
 import gi
 import numpy as np
@@ -14,10 +16,6 @@ from PulseEffects.lowpass import Lowpass
 from PulseEffects.pipeline_base import PipelineBase
 from PulseEffects.reverb import Reverb
 from scipy.interpolate import CubicSpline
-
-
-gettext.textdomain('PulseEffects')
-_ = gettext.gettext
 
 
 class EffectsBase(PipelineBase):
