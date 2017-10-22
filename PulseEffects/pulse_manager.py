@@ -188,14 +188,10 @@ class PulseManager(GObject.GObject):
         elif state == p.PA_CONTEXT_TERMINATED:
             self.log.info('pulseaudio context terminated')
 
-            self.log.info('stopping pulseaudio threaded main loop')
-            p.pa_threaded_mainloop_stop(self.main_loop)
-
             self.log.info('unferencing pulseaudio context object')
             p.pa_context_unref(self.ctx)
 
-            self.log.info('freeing pulseaudio main loop object')
-            p.pa_threaded_mainloop_free(self.main_loop)
+            self.context_ok = False
 
     def exit(self):
         self.unload_sinks()
@@ -203,6 +199,15 @@ class PulseManager(GObject.GObject):
 
         self.log.info('disconnecting pulseaudio context')
         p.pa_context_disconnect(self.ctx)
+
+        while self.context_ok:
+            pass
+
+        self.log.info('stopping pulseaudio threaded main loop')
+        p.pa_threaded_mainloop_stop(self.main_loop)
+
+        self.log.info('freeing pulseaudio main loop object')
+        p.pa_threaded_mainloop_free(self.main_loop)
 
     def load_sink_info(self, name):
         o = p.pa_context_get_sink_info_by_name(self.ctx, name.encode(),
