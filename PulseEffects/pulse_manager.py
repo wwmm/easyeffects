@@ -173,7 +173,8 @@ class PulseManager(GObject.GObject):
 
             subscription_mask = p.PA_SUBSCRIPTION_MASK_SINK_INPUT + \
                 p.PA_SUBSCRIPTION_MASK_SOURCE_OUTPUT + \
-                p.PA_SUBSCRIPTION_MASK_SOURCE
+                p.PA_SUBSCRIPTION_MASK_SOURCE + \
+                p.PA_SUBSCRIPTION_MASK_SERVER
 
             p.pa_context_subscribe(self.ctx, subscription_mask,
                                    self.ctx_success_cb, None)
@@ -640,14 +641,13 @@ class PulseManager(GObject.GObject):
             self.log.warn('failed to read stream' + str(idx) + 'data')
             return
 
-        l = p.cast_to_int(clength)
         d = p.cast_to_float(data)
 
         # according to pulseaudio docs:
         # NULL data means either a hole or empty buffer.
         # Only drop the stream when there is a hole (length > 0)
         if not d.contents:
-            if l:
+            if p.cast_to_int(clength):
                 p.pa_stream_drop(stream)
                 return
             else:
@@ -711,6 +711,12 @@ class PulseManager(GObject.GObject):
                 GLib.idle_add(self.emit, 'source_changed')
             elif event_type == p.PA_SUBSCRIPTION_EVENT_REMOVE:
                 GLib.idle_add(self.emit, 'source_removed')
+        elif event_facility == p.PA_SUBSCRIPTION_EVENT_SERVER:
+            event_type = event_value & p.PA_SUBSCRIPTION_EVENT_TYPE_MASK
+
+            if event_type == p.PA_SUBSCRIPTION_EVENT_CHANGE:
+                p.pa_context_get_server_info(self.ctx, self.server_info_cb,
+                                             None)
 
     def ctx_success(self, context, success, user_data):
         if not success:
