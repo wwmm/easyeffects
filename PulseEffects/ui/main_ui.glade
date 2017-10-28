@@ -262,18 +262,6 @@
           </object>
         </child>
         <child>
-          <object class="GtkLabel" id="server_info_label">
-            <property name="visible">True</property>
-            <property name="sensitive">False</property>
-            <property name="can_focus">False</property>
-            <property name="valign">center</property>
-            <property name="label">server info</property>
-          </object>
-          <packing>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
           <object class="GtkButton" id="settings_popover_button">
             <property name="visible">True</property>
             <property name="can_focus">True</property>

@@ -7,7 +7,7 @@
     <property name="modal">True</property>
     <property name="type_hint">dialog</property>
     <property name="program_name">PulseEffects</property>
-    <property name="version">3.0.5</property>
+    <property name="version">3.0.6</property>
     <property name="comments" translatable="yes">Audio Effects for Pulseaudio Applications</property>
     <property name="authors">wellington wallace</property>
     <property name="logo">about_icon.png</property>
