@@ -25,6 +25,7 @@ class SourceOutputEffects(EffectsBase):
         self.pm.connect('source_output_added', self.on_app_added)
         self.pm.connect('source_output_changed', self.on_app_changed)
         self.pm.connect('source_output_removed', self.on_app_removed)
+        self.pm.connect('new_default_source', self.update_source_monitor_name)
 
         self.listbox.show_all()
 

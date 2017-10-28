@@ -184,7 +184,13 @@ class PipelineBase(GObject.GObject):
     def set_source_monitor_name(self, name):
         self.audio_src.set_property('device', name)
 
+    def update_source_monitor_name(self, obj, name):
+        self.audio_src.set_property('device', name)
+
     def set_output_sink_name(self, name):
+        self.audio_sink.set_property('device', name)
+
+    def update_output_sink_name(self, obj, name):
         self.audio_sink.set_property('device', name)
 
     def init_buffer_time(self, value):

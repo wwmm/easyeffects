@@ -21,7 +21,9 @@ class PulseManager(GObject.GObject):
         'source_changed': (GObject.SignalFlags.RUN_FIRST, None, ()),
         'source_removed': (GObject.SignalFlags.RUN_FIRST, None, ()),
         'sink_input_level_changed': (GObject.SignalFlags.RUN_FIRST, None,
-                                     (int, float))
+                                     (int, float)),
+        'new_default_sink': (GObject.SignalFlags.RUN_FIRST, None, (object,)),
+        'new_default_source': (GObject.SignalFlags.RUN_FIRST, None, (object,))
     }
 
     def __init__(self):
@@ -262,7 +264,7 @@ class PulseManager(GObject.GObject):
                       str(self.default_source_rate) +
                       ' Hz. We will use the same rate.')
 
-    def server_info(self, context, info, user_data):
+    def server_info(self, context, info, emit_signal):
         self.default_sink_name = info.contents.default_sink_name.decode()
         self.default_source_name = info.contents.default_source_name.decode()
 
@@ -271,6 +273,14 @@ class PulseManager(GObject.GObject):
         self.log.info('pulseaudio version: ' + server_version)
         self.log.info('default pulseaudio source: ' + self.default_source_name)
         self.log.info('default pulseaudio sink: ' + self.default_sink_name)
+
+        if emit_signal:
+            if self.default_sink_name != 'PulseEffects_apps':
+                GLib.idle_add(self.emit, 'new_default_sink',
+                              self.default_sink_name)
+
+            GLib.idle_add(self.emit, 'new_default_source',
+                          self.default_source_name)
 
     def sink_info(self, context, info, eol, user_data):
         if eol == -1:
@@ -715,8 +725,7 @@ class PulseManager(GObject.GObject):
             event_type = event_value & p.PA_SUBSCRIPTION_EVENT_TYPE_MASK
 
             if event_type == p.PA_SUBSCRIPTION_EVENT_CHANGE:
-                p.pa_context_get_server_info(self.ctx, self.server_info_cb,
-                                             None)
+                p.pa_context_get_server_info(self.ctx, self.server_info_cb, 1)
 
     def ctx_success(self, context, success, user_data):
         if not success:
