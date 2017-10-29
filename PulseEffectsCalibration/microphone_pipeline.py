@@ -15,12 +15,11 @@ Gst.init(None)
 class MicrophonePipeline(GObject.GObject):
 
     __gsignals__ = {
-        'new_equalizer_input_level': (GObject.SIGNAL_RUN_FIRST, None,
+        'new_equalizer_input_level': (GObject.SignalFlags.RUN_FIRST, None,
                                       (float,)),
-        'new_spectrum': (GObject.SIGNAL_RUN_FIRST, None,
+        'new_spectrum': (GObject.SignalFlags.RUN_FIRST, None,
                          (float, float, object)),
-        'noise_measured': (GObject.SIGNAL_RUN_FIRST, None,
-                           ())
+        'noise_measured': (GObject.SignalFlags.RUN_FIRST, None, ())
     }
 
     def __init__(self):

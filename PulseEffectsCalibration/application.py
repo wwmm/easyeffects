@@ -8,7 +8,6 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
 from PulseEffectsCalibration.microphone_pipeline import MicrophonePipeline
-from PulseEffectsCalibration.setup_equalizer import SetupEqualizer
 from PulseEffectsCalibration.setup_test_signal import SetupTestSignal
 from PulseEffectsCalibration.spectrum import Spectrum
 from PulseEffectsCalibration.test_signal import TestSignal
@@ -49,16 +48,12 @@ class Application(Gtk.Application):
         self.test_signal_builder = Gtk.Builder()
 
         self.builder.add_from_file(self.module_path + '/ui/main_ui.glade')
-        self.builder.add_from_file(self.module_path + '/ui/headerbar.glade')
         self.calibration_mic_builder.add_from_file(
             self.module_path + '/ui/calibration_mic_plugins.glade')
         self.test_signal_builder.add_from_file(self.module_path +
                                                '/ui/test_signal.glade')
 
-        headerbar = self.builder.get_object('headerbar')
-
         self.window = self.builder.get_object('MainWindow')
-        self.window.set_titlebar(headerbar)
         self.window.set_application(self)
 
         # main window handlers
@@ -71,11 +66,6 @@ class Application(Gtk.Application):
 
         self.builder.connect_signals(main_ui_handlers)
 
-        self.setup_equalizer = SetupEqualizer(self.calibration_mic_builder,
-                                              self.mp)
-
-        self.setup_equalizer.init()
-
         calibration_mic_ui_handlers = {
             'on_time_window_value_changed':
                 self.on_time_window_value_changed,
@@ -86,8 +76,6 @@ class Application(Gtk.Application):
             'on_guideline_position_value_changed':
                 self.on_guideline_position_value_changed
         }
-
-        calibration_mic_ui_handlers.update(self.setup_equalizer.handlers)
 
         self.calibration_mic_builder.connect_signals(
             calibration_mic_ui_handlers)
@@ -109,8 +97,6 @@ class Application(Gtk.Application):
 
         time_window.set_value(2)
         guideline_position.set_value(0.5)
-
-        self.setup_equalizer.connect_signals()
 
         self.mp.set_state('playing')
 
