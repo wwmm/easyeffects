@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.0 -->
+<!-- Generated with glade 3.20.1 -->
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="wave1_freq_adjustment">
@@ -25,7 +25,11 @@
     <property name="can_focus">False</property>
     <property name="halign">center</property>
     <property name="valign">start</property>
-    <property name="spacing">8</property>
+    <property name="margin_left">6</property>
+    <property name="margin_right">6</property>
+    <property name="margin_top">6</property>
+    <property name="margin_bottom">6</property>
+    <property name="spacing">12</property>
     <child>
       <object class="GtkFrame" id="wave1_frame">
         <property name="visible">True</property>
@@ -39,7 +43,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
-            <property name="spacing">8</property>
+            <property name="spacing">12</property>
             <child>
               <object class="GtkGrid">
                 <property name="visible">True</property>
@@ -305,7 +309,7 @@
               <object class="GtkBox">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="spacing">2</property>
+                <property name="spacing">6</property>
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
@@ -405,7 +409,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
-            <property name="spacing">8</property>
+            <property name="spacing">12</property>
             <child>
               <object class="GtkGrid" id="wave2_frequencies">
                 <property name="visible">True</property>
@@ -648,7 +652,7 @@
               <object class="GtkBox">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="spacing">2</property>
+                <property name="spacing">6</property>
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
