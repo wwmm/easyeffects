@@ -112,16 +112,10 @@ class Application(Gtk.Application):
         self.ts.set_state('null')
 
     def init_stack_widgets(self):
-        stack_switcher = self.builder.get_object('stack_switcher')
-        stack_box = self.builder.get_object('stack_box')
+        stack = self.builder.get_object('stack')
 
         calibration_mic_ui = self.calibration_mic_builder.get_object('window')
         test_signal_ui = self.test_signal_builder.get_object('window')
-
-        stack = Gtk.Stack()
-        stack.set_transition_type(Gtk.StackTransitionType.CROSSFADE)
-        stack.set_transition_duration(250)
-        stack.set_homogeneous(False)
 
         stack.add_named(test_signal_ui, "test_signal")
         stack.child_set_property(test_signal_ui, 'icon-name',
@@ -166,11 +160,6 @@ class Application(Gtk.Application):
             self.spectrum.clear()
 
         stack.connect("notify::visible-child", on_visible_child_changed)
-
-        stack_switcher.set_stack(stack)
-
-        stack_box.pack_start(stack, True, True, 0)
-        stack_box.show_all()
 
     def on_time_window_value_changed(self, obj):
         value = obj.get_value()

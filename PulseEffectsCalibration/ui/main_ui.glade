@@ -219,12 +219,11 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="stack_box">
+          <object class="GtkStack" id="stack">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_left">2</property>
-            <property name="margin_right">2</property>
-            <property name="hexpand">True</property>
+            <property name="transition_duration">250</property>
+            <property name="transition_type">crossfade</property>
             <child>
               <placeholder/>
             </child>
@@ -249,6 +248,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="valign">center</property>
+            <property name="stack">stack</property>
           </object>
           <packing>
             <property name="position">3</property>

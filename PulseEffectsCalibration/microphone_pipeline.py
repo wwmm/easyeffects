@@ -62,16 +62,9 @@ class MicrophonePipeline(GObject.GObject):
 
         source_caps = Gst.ElementFactory.make("capsfilter", None)
 
-        self.equalizer_input_gain = Gst.ElementFactory.make('volume', None)
-
-        self.equalizer = Gst.ElementFactory.make('equalizer-nbands', None)
-
         self.spectrum = Gst.ElementFactory.make('spectrum', 'spectrum')
 
         self.audio_sink = Gst.ElementFactory.make('fakesink')
-
-        equalizer_input_level = Gst.ElementFactory.make(
-            'level', 'equalizer_input_level')
 
         self.audio_src.set_property('volume', 1.0)
         self.audio_src.set_property('mute', False)
@@ -82,43 +75,16 @@ class MicrophonePipeline(GObject.GObject):
         src_caps = Gst.Caps.from_string(",".join(caps))
         source_caps.set_property("caps", src_caps)
 
-        self.equalizer.set_property('num-bands', 15)
-
-        self.eq_band0 = self.equalizer.get_child_by_index(0)
-        self.eq_band1 = self.equalizer.get_child_by_index(1)
-        self.eq_band2 = self.equalizer.get_child_by_index(2)
-        self.eq_band3 = self.equalizer.get_child_by_index(3)
-        self.eq_band4 = self.equalizer.get_child_by_index(4)
-        self.eq_band5 = self.equalizer.get_child_by_index(5)
-        self.eq_band6 = self.equalizer.get_child_by_index(6)
-        self.eq_band7 = self.equalizer.get_child_by_index(7)
-        self.eq_band8 = self.equalizer.get_child_by_index(8)
-        self.eq_band9 = self.equalizer.get_child_by_index(9)
-        self.eq_band10 = self.equalizer.get_child_by_index(10)
-        self.eq_band11 = self.equalizer.get_child_by_index(11)
-        self.eq_band12 = self.equalizer.get_child_by_index(12)
-        self.eq_band13 = self.equalizer.get_child_by_index(13)
-        self.eq_band14 = self.equalizer.get_child_by_index(14)
-
-        self.eq_band0.set_property('type', 0)  # 0: peak type
-        self.eq_band14.set_property('type', 0)  # 0: peak type
-
         self.spectrum.set_property('bands', self.spectrum_nbands)
         self.spectrum.set_property('threshold', self.spectrum_threshold)
 
         pipeline.add(self.audio_src)
         pipeline.add(source_caps)
-        pipeline.add(self.equalizer_input_gain)
-        pipeline.add(equalizer_input_level)
-        pipeline.add(self.equalizer)
         pipeline.add(self.spectrum)
         pipeline.add(self.audio_sink)
 
         self.audio_src.link(source_caps)
-        source_caps.link(self.equalizer_input_gain)
-        self.equalizer_input_gain.link(equalizer_input_level)
-        equalizer_input_level.link(self.equalizer)
-        self.equalizer.link(self.spectrum)
+        source_caps.link(self.spectrum)
         self.spectrum.link(self.audio_sink)
 
         return pipeline
@@ -238,51 +204,3 @@ class MicrophonePipeline(GObject.GObject):
 
     def set_time_window(self, value):
         self.spectrum.set_property('interval', int(value * 1000000000))
-
-    def set_eq_input_gain(self, value):
-        self.equalizer_input_gain.set_property('volume', value)
-
-    def set_eq_band0(self, value):
-        self.eq_band0.set_property('gain', value)
-
-    def set_eq_band1(self, value):
-        self.eq_band1.set_property('gain', value)
-
-    def set_eq_band2(self, value):
-        self.eq_band2.set_property('gain', value)
-
-    def set_eq_band3(self, value):
-        self.eq_band3.set_property('gain', value)
-
-    def set_eq_band4(self, value):
-        self.eq_band4.set_property('gain', value)
-
-    def set_eq_band5(self, value):
-        self.eq_band5.set_property('gain', value)
-
-    def set_eq_band6(self, value):
-        self.eq_band6.set_property('gain', value)
-
-    def set_eq_band7(self, value):
-        self.eq_band7.set_property('gain', value)
-
-    def set_eq_band8(self, value):
-        self.eq_band8.set_property('gain', value)
-
-    def set_eq_band9(self, value):
-        self.eq_band9.set_property('gain', value)
-
-    def set_eq_band10(self, value):
-        self.eq_band10.set_property('gain', value)
-
-    def set_eq_band11(self, value):
-        self.eq_band11.set_property('gain', value)
-
-    def set_eq_band12(self, value):
-        self.eq_band12.set_property('gain', value)
-
-    def set_eq_band13(self, value):
-        self.eq_band13.set_property('gain', value)
-
-    def set_eq_band14(self, value):
-        self.eq_band14.set_property('gain', value)
