@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-21 22:01-0200\n"
+"POT-Creation-Date: 2017-10-31 14:20-0200\n"
 "PO-Revision-Date: 2017-09-03 13:17+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -44,7 +44,7 @@ msgstr ""
 msgid "Buffer Latency"
 msgstr "Latencija"
 
-#: PulseEffects/ui/app_info.glade:171 PulseEffects/ui/main_ui.glade:337
+#: PulseEffects/ui/app_info.glade:171 PulseEffects/ui/main_ui.glade:325
 msgid "Latency"
 msgstr "Latencija"
 
@@ -92,8 +92,8 @@ msgstr ""
 
 #. for some reason when listbox is inside a scrolledwindow
 #. it autoselects a row at startup
-#: PulseEffects/ui/compressor.glade:314 PulseEffects/ui/main_ui.glade:292
-#: PulseEffects/ui/reverb.glade:207 PulseEffects/presets_manager.py:70
+#: PulseEffects/ui/compressor.glade:314 PulseEffects/ui/main_ui.glade:280
+#: PulseEffects/ui/reverb.glade:207 PulseEffects/presets_manager.py:67
 #, fuzzy
 msgid "Presets"
 msgstr "Spremi predložak"
@@ -134,7 +134,6 @@ msgid "Calibration"
 msgstr "Kalibracija"
 
 #: PulseEffects/ui/equalizer.glade:995
-#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:777
 msgid "Input [dB]"
 msgstr "Ulaz [dB]"
 
@@ -160,7 +159,7 @@ msgid "Filter Type"
 msgstr ""
 
 #: PulseEffects/ui/equalizer_band_menu.glade:92
-#: PulseEffectsCalibration/ui/test_signal.glade:270
+#: PulseEffectsCalibration/ui/test_signal.glade:274
 msgid "Frequency [Hz]"
 msgstr "Frekvencija [Hz]"
 
@@ -215,7 +214,7 @@ msgid "Auto Volume"
 msgstr "Glasnoća zvuka"
 
 #: PulseEffects/ui/limiter.glade:254
-#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:150
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:35
 msgid "Window [s]"
 msgstr "Prozor [s]"
 
@@ -236,39 +235,39 @@ msgstr ""
 msgid "Low Pass"
 msgstr "Nizak prolaz"
 
-#: PulseEffects/ui/main_ui.glade:359
+#: PulseEffects/ui/main_ui.glade:347
 msgid "buffer-time [ms]"
 msgstr "vrijeme-međuspremnika"
 
-#: PulseEffects/ui/main_ui.glade:389
+#: PulseEffects/ui/main_ui.glade:377
 msgid "latency-time [ms]"
 msgstr "vrijeme-latencije"
 
-#: PulseEffects/ui/main_ui.glade:427
+#: PulseEffects/ui/main_ui.glade:415
 msgid "Spectrum"
 msgstr "Spektar"
 
-#: PulseEffects/ui/main_ui.glade:448
+#: PulseEffects/ui/main_ui.glade:436
 msgid "Show"
 msgstr "Prikaži"
 
-#: PulseEffects/ui/main_ui.glade:460
+#: PulseEffects/ui/main_ui.glade:448
 msgid "Points"
 msgstr "Traka"
 
-#: PulseEffects/ui/main_ui.glade:510
+#: PulseEffects/ui/main_ui.glade:498
 msgid "General"
 msgstr "Općenito"
 
-#: PulseEffects/ui/main_ui.glade:530
+#: PulseEffects/ui/main_ui.glade:518
 msgid "Settings"
 msgstr "Postavke"
 
-#: PulseEffects/ui/main_ui.glade:539
+#: PulseEffects/ui/main_ui.glade:527
 msgid "Reset"
 msgstr "Vrati izvorno"
 
-#: PulseEffects/ui/main_ui.glade:558
+#: PulseEffects/ui/main_ui.glade:546
 msgid "Use Dark Theme"
 msgstr "Koristi tamnu temu"
 
@@ -320,107 +319,103 @@ msgstr ""
 msgid "Small Room"
 msgstr ""
 
-#: PulseEffects/effects_base.py:47
+#: PulseEffects/effects_base.py:45
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
 #, fuzzy
 msgid "Applications"
 msgstr "Kalibracija"
 
-#: PulseEffects/effects_base.py:210 PulseEffects/effects_base.py:286
+#: PulseEffects/effects_base.py:208 PulseEffects/effects_base.py:284
 msgid "paused"
 msgstr ""
 
-#: PulseEffects/effects_base.py:212 PulseEffects/effects_base.py:288
+#: PulseEffects/effects_base.py:210 PulseEffects/effects_base.py:286
 msgid "playing"
 msgstr ""
 
-#: PulseEffects/presets_manager.py:107
+#: PulseEffects/presets_manager.py:120
 msgid "Save Current Settings to Preset"
 msgstr ""
 
-#: PulseEffects/presets_manager.py:122
+#: PulseEffects/presets_manager.py:135
 #, fuzzy
 msgid "Delete Preset"
 msgstr "Spremi predložak"
 
-#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:179
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:64
 msgid "Guideline Position"
 msgstr "Položaj smjernice"
 
-#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:227
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:100
 msgid "Measure Noise"
 msgstr "Izmjeri šum"
 
-#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:257
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:129
 msgid "Subtract Noise"
 msgstr "Izdvoji šum"
 
-#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:308
-msgid "Calibration Microphone Correction"
-msgstr "Kalibracija ispravljanja mikrofona"
-
-#: PulseEffectsCalibration/ui/test_signal.glade:51
+#: PulseEffectsCalibration/ui/test_signal.glade:55
 msgid "Sine"
 msgstr "Sinus"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:66
+#: PulseEffectsCalibration/ui/test_signal.glade:70
 msgid "Square"
 msgstr "Kvadrat"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:81
+#: PulseEffectsCalibration/ui/test_signal.glade:85
 msgid "Saw"
 msgstr "Pila"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:96
+#: PulseEffectsCalibration/ui/test_signal.glade:100
 msgid "Triangle"
 msgstr "Trokut"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:111
+#: PulseEffectsCalibration/ui/test_signal.glade:115
 msgid "Pink Noise"
 msgstr "Rozi šum"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:126
+#: PulseEffectsCalibration/ui/test_signal.glade:130
 msgid "White Noise"
 msgstr "Bijeli šum"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:141
+#: PulseEffectsCalibration/ui/test_signal.glade:145
 msgid "Silence"
 msgstr "Tišina"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:156
+#: PulseEffectsCalibration/ui/test_signal.glade:160
 msgid "Sine Table"
 msgstr "Sinus tablica"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:171
+#: PulseEffectsCalibration/ui/test_signal.glade:175
 msgid "Ticks"
 msgstr "Otkucaji"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:186
+#: PulseEffectsCalibration/ui/test_signal.glade:190
 msgid "Gaussian Noise"
 msgstr "Gaussov šum"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:201
+#: PulseEffectsCalibration/ui/test_signal.glade:205
 msgid "Red Noise"
 msgstr "Bijeli šum"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:216
+#: PulseEffectsCalibration/ui/test_signal.glade:220
 msgid "Blue Noise"
 msgstr "Plavi šum"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:231
+#: PulseEffectsCalibration/ui/test_signal.glade:235
 msgid "Violet Noise"
 msgstr "Ljubičasti šum"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:315
-#: PulseEffectsCalibration/ui/test_signal.glade:658
+#: PulseEffectsCalibration/ui/test_signal.glade:319
+#: PulseEffectsCalibration/ui/test_signal.glade:662
 msgid "Volume"
 msgstr "Glasnoća zvuka"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:369
+#: PulseEffectsCalibration/ui/test_signal.glade:373
 msgid "Test Signal"
 msgstr "Testni signali"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:712
+#: PulseEffectsCalibration/ui/test_signal.glade:716
 msgid "Equal Loudness Test Signals"
 msgstr "Testni signali jednake glasnoće"
 
@@ -490,6 +485,9 @@ msgstr "graničnik;kompresor;odjek;ekvalizator;automatska glasnoća zvuka;"
 #: data/com.github.wwmm.pulseeffects.desktop.in:10
 msgid "pulseeffects"
 msgstr "pulseeffects"
+
+#~ msgid "Calibration Microphone Correction"
+#~ msgstr "Kalibracija ispravljanja mikrofona"
 
 #, fuzzy
 #~ msgid "Sink Latency"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-21 22:01-0200\n"
+"POT-Creation-Date: 2017-10-31 14:20-0200\n"
 "PO-Revision-Date: 2017-08-29 11:00+0200\n"
 "Last-Translator: Nathan Graule <solarliner@gmail.com>\n"
 "Language-Team: \n"
@@ -43,7 +43,7 @@ msgstr ""
 msgid "Buffer Latency"
 msgstr "Latence"
 
-#: PulseEffects/ui/app_info.glade:171 PulseEffects/ui/main_ui.glade:337
+#: PulseEffects/ui/app_info.glade:171 PulseEffects/ui/main_ui.glade:325
 msgid "Latency"
 msgstr "Latence"
 
@@ -90,8 +90,8 @@ msgstr "Gain de remise [dB]"
 
 #. for some reason when listbox is inside a scrolledwindow
 #. it autoselects a row at startup
-#: PulseEffects/ui/compressor.glade:314 PulseEffects/ui/main_ui.glade:292
-#: PulseEffects/ui/reverb.glade:207 PulseEffects/presets_manager.py:70
+#: PulseEffects/ui/compressor.glade:314 PulseEffects/ui/main_ui.glade:280
+#: PulseEffects/ui/reverb.glade:207 PulseEffects/presets_manager.py:67
 msgid "Presets"
 msgstr "Préréglage"
 
@@ -130,7 +130,6 @@ msgid "Calibration"
 msgstr "Calibration"
 
 #: PulseEffects/ui/equalizer.glade:995
-#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:777
 msgid "Input [dB]"
 msgstr "Entrée [dB]"
 
@@ -155,7 +154,7 @@ msgid "Filter Type"
 msgstr ""
 
 #: PulseEffects/ui/equalizer_band_menu.glade:92
-#: PulseEffectsCalibration/ui/test_signal.glade:270
+#: PulseEffectsCalibration/ui/test_signal.glade:274
 msgid "Frequency [Hz]"
 msgstr "Fréquence [Hz]"
 
@@ -207,7 +206,7 @@ msgid "Auto Volume"
 msgstr "Volume automatique"
 
 #: PulseEffects/ui/limiter.glade:254
-#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:150
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:35
 msgid "Window [s]"
 msgstr "Fenêtre [s]"
 
@@ -227,40 +226,40 @@ msgstr "Atténuation"
 msgid "Low Pass"
 msgstr "Passe-bas"
 
-#: PulseEffects/ui/main_ui.glade:359
+#: PulseEffects/ui/main_ui.glade:347
 msgid "buffer-time [ms]"
 msgstr "Temps tampon [ms]"
 
-#: PulseEffects/ui/main_ui.glade:389
+#: PulseEffects/ui/main_ui.glade:377
 msgid "latency-time [ms]"
 msgstr "Temps de latence [ms]"
 
-#: PulseEffects/ui/main_ui.glade:427
+#: PulseEffects/ui/main_ui.glade:415
 msgid "Spectrum"
 msgstr "Spectromètre"
 
-#: PulseEffects/ui/main_ui.glade:448
+#: PulseEffects/ui/main_ui.glade:436
 msgid "Show"
 msgstr "Montrer"
 
-#: PulseEffects/ui/main_ui.glade:460
+#: PulseEffects/ui/main_ui.glade:448
 #, fuzzy
 msgid "Points"
 msgstr "Points"
 
-#: PulseEffects/ui/main_ui.glade:510
+#: PulseEffects/ui/main_ui.glade:498
 msgid "General"
 msgstr "Général"
 
-#: PulseEffects/ui/main_ui.glade:530
+#: PulseEffects/ui/main_ui.glade:518
 msgid "Settings"
 msgstr "Paramètres"
 
-#: PulseEffects/ui/main_ui.glade:539
+#: PulseEffects/ui/main_ui.glade:527
 msgid "Reset"
 msgstr "Remettre à zéro"
 
-#: PulseEffects/ui/main_ui.glade:558
+#: PulseEffects/ui/main_ui.glade:546
 msgid "Use Dark Theme"
 msgstr "Utiliser thème sombre"
 
@@ -313,107 +312,103 @@ msgstr "Pièce moteur"
 msgid "Small Room"
 msgstr "Petite pièce"
 
-#: PulseEffects/effects_base.py:47
+#: PulseEffects/effects_base.py:45
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
 #, fuzzy
 msgid "Applications"
 msgstr "Calibration"
 
-#: PulseEffects/effects_base.py:210 PulseEffects/effects_base.py:286
+#: PulseEffects/effects_base.py:208 PulseEffects/effects_base.py:284
 msgid "paused"
 msgstr ""
 
-#: PulseEffects/effects_base.py:212 PulseEffects/effects_base.py:288
+#: PulseEffects/effects_base.py:210 PulseEffects/effects_base.py:286
 msgid "playing"
 msgstr ""
 
-#: PulseEffects/presets_manager.py:107
+#: PulseEffects/presets_manager.py:120
 msgid "Save Current Settings to Preset"
 msgstr ""
 
-#: PulseEffects/presets_manager.py:122
+#: PulseEffects/presets_manager.py:135
 #, fuzzy
 msgid "Delete Preset"
 msgstr "Sauvegarder préglage"
 
-#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:179
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:64
 msgid "Guideline Position"
 msgstr "Guide de position"
 
-#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:227
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:100
 msgid "Measure Noise"
 msgstr "Mesurer le bruit"
 
-#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:257
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:129
 msgid "Subtract Noise"
 msgstr "Enlever le bruit"
 
-#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:308
-msgid "Calibration Microphone Correction"
-msgstr "Calibration de la correction microphone"
-
-#: PulseEffectsCalibration/ui/test_signal.glade:51
+#: PulseEffectsCalibration/ui/test_signal.glade:55
 msgid "Sine"
 msgstr "Sinusoïde"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:66
+#: PulseEffectsCalibration/ui/test_signal.glade:70
 msgid "Square"
 msgstr "Carrée"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:81
+#: PulseEffectsCalibration/ui/test_signal.glade:85
 msgid "Saw"
 msgstr "Dent de scie"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:96
+#: PulseEffectsCalibration/ui/test_signal.glade:100
 msgid "Triangle"
 msgstr "Triangle"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:111
+#: PulseEffectsCalibration/ui/test_signal.glade:115
 msgid "Pink Noise"
 msgstr "Bruit rose"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:126
+#: PulseEffectsCalibration/ui/test_signal.glade:130
 msgid "White Noise"
 msgstr "Bruit blanc"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:141
+#: PulseEffectsCalibration/ui/test_signal.glade:145
 msgid "Silence"
 msgstr "Silence"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:156
+#: PulseEffectsCalibration/ui/test_signal.glade:160
 msgid "Sine Table"
 msgstr "Table sinusoïdale"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:171
+#: PulseEffectsCalibration/ui/test_signal.glade:175
 msgid "Ticks"
 msgstr "Ticks"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:186
+#: PulseEffectsCalibration/ui/test_signal.glade:190
 msgid "Gaussian Noise"
 msgstr "Bruit Gaussien"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:201
+#: PulseEffectsCalibration/ui/test_signal.glade:205
 msgid "Red Noise"
 msgstr "Bruit rouge"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:216
+#: PulseEffectsCalibration/ui/test_signal.glade:220
 msgid "Blue Noise"
 msgstr "Bruit bleu"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:231
+#: PulseEffectsCalibration/ui/test_signal.glade:235
 msgid "Violet Noise"
 msgstr "Bruit violet"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:315
-#: PulseEffectsCalibration/ui/test_signal.glade:658
+#: PulseEffectsCalibration/ui/test_signal.glade:319
+#: PulseEffectsCalibration/ui/test_signal.glade:662
 msgid "Volume"
 msgstr "Volume"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:369
+#: PulseEffectsCalibration/ui/test_signal.glade:373
 msgid "Test Signal"
 msgstr "Signal de test"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:712
+#: PulseEffectsCalibration/ui/test_signal.glade:716
 msgid "Equal Loudness Test Signals"
 msgstr "Signal de test d'intensité constante"
 
@@ -486,6 +481,9 @@ msgstr "limiter;compressor;reverberation;equalizer;autovolume;"
 #, fuzzy
 msgid "pulseeffects"
 msgstr "pulseeffects"
+
+#~ msgid "Calibration Microphone Correction"
+#~ msgstr "Calibration de la correction microphone"
 
 #, fuzzy
 #~ msgid "Sink Latency"
