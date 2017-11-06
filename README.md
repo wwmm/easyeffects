@@ -43,9 +43,9 @@ version 2.0.0 PulseEffects uses a different format. This
 change was necessary to support presets for microphone processing.
 
 ```
-$ meson _build --prefix=/usr <br>
-$ cd _build <br>
-$ sudo ninja install <br>
+$ meson _build --prefix=/usr
+$ cd _build
+$ sudo ninja install
 ```
 
 ### GNU/Linux Packages
@@ -83,9 +83,9 @@ See the wiki: [Installing from Source](https://github.com/wwmm/pulseeffects/wiki
 
 ### Build Debian/Ubuntu .deb package
 ```
-$ debuild -I <br>
+$ debuild -I
 ```
-The built deb package will be located in ../ <br>
+The built deb package will be located in ../
 
 ## Command Line Options
 
