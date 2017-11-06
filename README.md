@@ -52,6 +52,14 @@ $ sudo ninja install
 
 - [Arch Linux](https://aur.archlinux.org/packages/pulseeffects/)
 
+Ubuntu >=17.10 repository:
+```
+wget -q -O- http://repo.dumalogiya.ru/keys/mikhailnov_pub.gpg | sudo apt-key add -
+echo "deb http://repo.dumalogiya.ru/aptly/public artful main" | sudo tee /etc/apt/sources.list.d/dumalogiya-artful.list
+sudo apt update
+sudo apt install pulseeffects
+```
+
 ### Flatpak
 
 [Flatpak](https://flatpak.org) packages support multiple distributions and are sandboxed.
