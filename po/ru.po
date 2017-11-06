@@ -1,0 +1,514 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-06 23:20+0300\n"
+"PO-Revision-Date: 2017-11-07 00:22+0300\n"
+"Last-Translator: Михаил <user@Mikhail-MSK-PC>\n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.1\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: PulseEffects/ui/about.glade:11
+msgid "Audio Effects for Pulseaudio Applications"
+msgstr "Аудиоэффекты для приложений PulseAudio"
+
+#: PulseEffects/ui/app_info.glade:64
+msgid "Format"
+msgstr "Формат"
+
+#: PulseEffects/ui/app_info.glade:75
+msgid "Rate"
+msgstr "Частота"
+
+#: PulseEffects/ui/app_info.glade:86
+msgid "Channels"
+msgstr "Каналы"
+
+#: PulseEffects/ui/app_info.glade:97
+msgid "Resampler"
+msgstr "Ресемплер"
+
+#: PulseEffects/ui/app_info.glade:160
+#, fuzzy
+msgid "Buffer Latency"
+msgstr "Задержка буфера"
+
+#: PulseEffects/ui/app_info.glade:171 PulseEffects/ui/main_ui.glade:325
+msgid "Latency"
+msgstr "Задержка"
+
+#: PulseEffects/ui/app_info.glade:208
+msgid "State"
+msgstr "состояние"
+
+#: PulseEffects/ui/compressor.glade:27
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:52
+msgid "Compressor"
+msgstr "Компрессор"
+
+#: PulseEffects/ui/compressor.glade:97
+msgid "rms"
+msgstr "RMS"
+
+#: PulseEffects/ui/compressor.glade:113
+msgid "peak"
+msgstr "пик"
+
+#: PulseEffects/ui/compressor.glade:148
+msgid "Attack [ms]"
+msgstr "Атака [ms]"
+
+#: PulseEffects/ui/compressor.glade:176
+msgid "Release [ms]"
+msgstr "Релиз [ms]"
+
+#: PulseEffects/ui/compressor.glade:202 PulseEffects/ui/limiter.glade:329
+msgid "Threshold [dB]"
+msgstr "Порог [dB]"
+
+#: PulseEffects/ui/compressor.glade:228
+msgid "Ratio [n:1]"
+msgstr "Отношение [n:1]"
+
+#: PulseEffects/ui/compressor.glade:254
+msgid "Knee [dB]"
+msgstr "Колено [dB]"
+
+#: PulseEffects/ui/compressor.glade:282
+msgid "Makeup [dB]"
+msgstr "Компенсирование [dB]"
+
+#. for some reason when listbox is inside a scrolledwindow
+#. it autoselects a row at startup
+#: PulseEffects/ui/compressor.glade:314 PulseEffects/ui/main_ui.glade:280
+#: PulseEffects/ui/reverb.glade:207 PulseEffects/presets_manager.py:67
+msgid "Presets"
+msgstr "Преднастройки"
+
+#: PulseEffects/ui/compressor.glade:327
+msgid "Vlc"
+msgstr "VLC"
+
+#: PulseEffects/ui/compressor.glade:360 PulseEffects/ui/highpass.glade:238
+#: PulseEffects/ui/limiter.glade:397 PulseEffects/ui/lowpass.glade:238
+#: PulseEffects/ui/panorama.glade:216 PulseEffects/ui/reverb.glade:394
+msgid "Input"
+msgstr "Ввод"
+
+#: PulseEffects/ui/compressor.glade:461 PulseEffects/ui/highpass.glade:137
+#: PulseEffects/ui/limiter.glade:498 PulseEffects/ui/lowpass.glade:137
+#: PulseEffects/ui/panorama.glade:115 PulseEffects/ui/reverb.glade:293
+msgid "Output"
+msgstr "Вывод"
+
+#: PulseEffects/ui/compressor.glade:562
+msgid "Gain Reduction"
+msgstr "Уменьшение усиления"
+
+#: PulseEffects/ui/equalizer.glade:185
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
+msgid "Equalizer"
+msgstr "Эквалайзер"
+
+#: PulseEffects/ui/equalizer.glade:232
+msgid "Flat Response"
+msgstr "Flat-ответ"
+
+#: PulseEffects/ui/equalizer.glade:245
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
+msgid "Calibration"
+msgstr "Калибровка"
+
+#: PulseEffects/ui/equalizer.glade:995
+msgid "Input [dB]"
+msgstr "Ввод [dB]"
+
+#: PulseEffects/ui/equalizer.glade:1008
+msgid "Output [dB]"
+msgstr "Вывод [dB]"
+
+#: PulseEffects/ui/equalizer_band_menu.glade:24
+msgid "Peak"
+msgstr "Пик"
+
+#: PulseEffects/ui/equalizer_band_menu.glade:27
+msgid "Low Shelf"
+msgstr "Низкочастотный полочный фильтр"
+
+#: PulseEffects/ui/equalizer_band_menu.glade:30
+msgid "High Shelf"
+msgstr "Высокочастотный полочный фильтр"
+
+#: PulseEffects/ui/equalizer_band_menu.glade:50
+msgid "Filter Type"
+msgstr "Тип фильтра"
+
+#: PulseEffects/ui/equalizer_band_menu.glade:92
+#: PulseEffectsCalibration/ui/test_signal.glade:274
+msgid "Frequency [Hz]"
+msgstr "Частота [Hz]"
+
+#: PulseEffects/ui/equalizer_band_menu.glade:105
+msgid "Quality"
+msgstr "Качество"
+
+#: PulseEffects/ui/equalizer_band_menu.glade:148
+#, fuzzy
+msgid "Reset Frequency"
+msgstr "Сбросить частоту"
+
+#: PulseEffects/ui/equalizer_band_menu.glade:161
+#, fuzzy
+msgid "Reset Quality"
+msgstr "Сбросить качество"
+
+#: PulseEffects/ui/highpass.glade:18
+msgid "High Pass"
+msgstr "Высокачастотный фильтр"
+
+#: PulseEffects/ui/highpass.glade:70 PulseEffects/ui/lowpass.glade:70
+msgid "Cutoff [Hz]"
+msgstr "Завал частот [Hz]"
+
+#: PulseEffects/ui/highpass.glade:97 PulseEffects/ui/lowpass.glade:97
+msgid "Poles"
+msgstr "Pôles"
+
+#: PulseEffects/ui/limiter.glade:55
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:48
+msgid "Input Limiter"
+msgstr "Ограничитель ввода"
+
+#: PulseEffects/ui/limiter.glade:113
+msgid "Input Gain [dB]"
+msgstr "Усиление ввода [dB]"
+
+#: PulseEffects/ui/limiter.glade:139
+msgid "Limit [dB]"
+msgstr "Ограничение [dB]"
+
+#: PulseEffects/ui/limiter.glade:181
+msgid "Release [s]"
+msgstr "Релиз [s]"
+
+#: PulseEffects/ui/limiter.glade:214
+msgid "Auto Volume"
+msgstr "Автоподстройка уровня звука"
+
+#: PulseEffects/ui/limiter.glade:254
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:35
+msgid "Window [s]"
+msgstr "Окно [s]"
+
+#: PulseEffects/ui/limiter.glade:266
+msgid "Target [dB]"
+msgstr "Целевой результат [dB]"
+
+#: PulseEffects/ui/limiter.glade:358
+msgid "Tolerance [dB]"
+msgstr "Допуск [dB]"
+
+#: PulseEffects/ui/limiter.glade:599
+msgid "Attenuation"
+msgstr "Затухание"
+
+#: PulseEffects/ui/lowpass.glade:18
+msgid "Low Pass"
+msgstr "Фильтр низких частот"
+
+#: PulseEffects/ui/main_ui.glade:347
+msgid "buffer-time [ms]"
+msgstr "Время буферизации [ms]"
+
+#: PulseEffects/ui/main_ui.glade:377
+msgid "latency-time [ms]"
+msgstr "Задержка [ms]"
+
+#: PulseEffects/ui/main_ui.glade:415
+msgid "Spectrum"
+msgstr "Спектр"
+
+#: PulseEffects/ui/main_ui.glade:436
+msgid "Show"
+msgstr "Показать"
+
+#: PulseEffects/ui/main_ui.glade:448
+#, fuzzy
+msgid "Points"
+msgstr "Точки"
+
+#: PulseEffects/ui/main_ui.glade:498
+msgid "General"
+msgstr "Общие"
+
+#: PulseEffects/ui/main_ui.glade:518
+msgid "Settings"
+msgstr "Параметры"
+
+#: PulseEffects/ui/main_ui.glade:527
+msgid "Reset"
+msgstr "Сбросить"
+
+#: PulseEffects/ui/main_ui.glade:546
+msgid "Use Dark Theme"
+msgstr "Исп. тёмную тему"
+
+#: PulseEffects/ui/panorama.glade:13
+msgid "Panorama"
+msgstr "Панорама"
+
+#: PulseEffects/ui/panorama.glade:62
+msgid "L"
+msgstr "L"
+
+#: PulseEffects/ui/panorama.glade:74
+msgid "R"
+msgstr "R"
+
+#: PulseEffects/ui/presets_menu.glade:51
+msgid "Name"
+msgstr "Название"
+
+#: PulseEffects/ui/reverb.glade:25
+msgid "Reverberation"
+msgstr "Ревербация"
+
+# Taking lingual shortcuts to squeeze it in the text box
+#: PulseEffects/ui/reverb.glade:88
+msgid "Room Size"
+msgstr "Размер"
+
+#: PulseEffects/ui/reverb.glade:116
+msgid "Damping"
+msgstr "Демпфирование"
+
+#: PulseEffects/ui/reverb.glade:144
+msgid "Width"
+msgstr "Ширина"
+
+#: PulseEffects/ui/reverb.glade:172
+msgid "Level"
+msgstr "Уровень"
+
+#: PulseEffects/ui/reverb.glade:227
+msgid "Cathedral"
+msgstr "Большая церковь"
+
+#: PulseEffects/ui/reverb.glade:241
+msgid "Engine Room"
+msgstr "Машинномоторное помещение"
+
+#: PulseEffects/ui/reverb.glade:255
+msgid "Small Room"
+msgstr "Маленькая комната"
+
+#: PulseEffects/effects_base.py:45
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
+#, fuzzy
+msgid "Applications"
+msgstr "Приложения"
+
+#: PulseEffects/effects_base.py:208 PulseEffects/effects_base.py:284
+msgid "paused"
+msgstr "на паузе"
+
+#: PulseEffects/effects_base.py:210 PulseEffects/effects_base.py:286
+msgid "playing"
+msgstr "играет"
+
+#: PulseEffects/presets_manager.py:120
+msgid "Save Current Settings to Preset"
+msgstr "Сохранить текущие настройки в набор преднастроек"
+
+#: PulseEffects/presets_manager.py:135
+#, fuzzy
+msgid "Delete Preset"
+msgstr "Удалить набор преднастроек"
+
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:64
+msgid "Guideline Position"
+msgstr ""
+
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:100
+msgid "Measure Noise"
+msgstr "Измерение шума"
+
+#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:129
+msgid "Subtract Noise"
+msgstr "Вычетание шума"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:55
+msgid "Sine"
+msgstr "Синусоида"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:70
+msgid "Square"
+msgstr "Квадратный"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:85
+msgid "Saw"
+msgstr ""
+
+#: PulseEffectsCalibration/ui/test_signal.glade:100
+msgid "Triangle"
+msgstr "Треугольный"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:115
+msgid "Pink Noise"
+msgstr "Розовый шум"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:130
+msgid "White Noise"
+msgstr "Белый шум"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:145
+msgid "Silence"
+msgstr "Тишина"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:160
+msgid "Sine Table"
+msgstr "Таблица синусоид"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:175
+msgid "Ticks"
+msgstr ""
+
+#: PulseEffectsCalibration/ui/test_signal.glade:190
+msgid "Gaussian Noise"
+msgstr "Гауссовский шум"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:205
+msgid "Red Noise"
+msgstr "Красный шум"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:220
+msgid "Blue Noise"
+msgstr "Голубой шум"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:235
+msgid "Violet Noise"
+msgstr "Фиолетовый шум"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:319
+#: PulseEffectsCalibration/ui/test_signal.glade:662
+msgid "Volume"
+msgstr "Громкость"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:373
+msgid "Test Signal"
+msgstr "Проверочный сигнал"
+
+#: PulseEffectsCalibration/ui/test_signal.glade:716
+msgid "Equal Loudness Test Signals"
+msgstr "Проверочный сигналы одинаковой громкости"
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
+#: data/com.github.wwmm.pulseeffects.desktop.in:3
+msgid "PulseEffects"
+msgstr "PulseEffects"
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:8
+#: data/com.github.wwmm.pulseeffects.desktop.in:5
+msgid "Audio Effects for PulseAudio Applications"
+msgstr "Аудиоэффекты для приложений PulseAudio"
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:9
+msgid "Wellington Wallace"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:11
+msgid ""
+"PulseEffects is an advanced audio manipulation tools. It includes an "
+"equalizer, limiter, compressor and a reverberation tool, just to mention a "
+"few. To complement this there is also a built in spectrum analyzer."
+msgstr ""
+"PulseEffects — это продвинутая программа манипуляции звуком в режиме реального времени. Она включает в себя "
+"эквалайзер, ограничитель (лимитер), компрессор и утилиту для ревербации и многое другое. "
+"Более того, имеется встроенный анализатор аудиоспектра."
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:16
+msgid ""
+"Because PulseEffects uses the default PulseAudio sound server it will work "
+"with most, if not all, applications you use. All supported applications are "
+"presented in the main window, where each can be enabled individually."
+msgstr ""
+"Поскольку PulseEffects использует стандартный сервер PulseAudio, она будет работать"
+"с большинством используемых вами программ. Все поддерживаемые приложения "
+"представлены в главном окне, где для каждого могут быть произведены настройки эффектов "
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:22
+msgid ""
+"Besides manipulating sound output, PulseEffects is able to apply effects to "
+"an input device, such as a microphone. This is, for example, useful in audio "
+"recording, but it also works well during voice conversations."
+msgstr ""
+"Помимо изменения звука на выходе, PulseEffects также может применятьа удиоэффекты к "
+"входным аудиопотокам, например, к микрофону. Это полезно, например, "
+"во время аудиозаписи или голосовой конференции."
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:27
+msgid ""
+"When PulseEffects is launched it will conveniently remember the "
+"configuration used in the last session. It is also possible to save all the "
+"current settings as profiles."
+msgstr ""
+"Удобно то, что при запуске PulseEffects автоматически подгрузит настройки "
+"из предыдущей сессии работы. Также можно сохранить текущие настройки "
+"в набор преднастроек."
+
+#: data/com.github.wwmm.pulseeffects.desktop.in:4
+msgid "Audio Enhancer"
+msgstr "Училитель звука"
+
+#: data/com.github.wwmm.pulseeffects.desktop.in:6
+#, fuzzy
+msgid "limiter;compressor;reverberation;equalizer;autovolume;"
+msgstr "лимитер;компрессор;ребербатор;эквалайзер;автогромкость;"
+
+#. Translators: This is an icon name, don't translate!
+#: data/com.github.wwmm.pulseeffects.desktop.in:10
+#, fuzzy
+msgid "pulseeffects"
+msgstr "pulseeffects"
+
+#~ msgid "Calibration Microphone Correction"
+#~ msgstr "Calibration de la correction microphone"
+
+#, fuzzy
+#~ msgid "Sink Latency"
+#~ msgstr "Latence"
+
+#, fuzzy
+#~ msgid "Preset Name"
+#~ msgstr "Préréglage"
+
+#~ msgid "Load Preset"
+#~ msgstr "Ouvrir préréglage"
+
+#~ msgid "No Compression"
+#~ msgstr "Aucune compression"
+
+#~ msgid "No Reverberation"
+#~ msgstr "Pas de réverbération"
+
+#~ msgid "F"
+#~ msgstr "F"
+
+#~ msgid "Q"
+#~ msgstr "Q"
+
+#~ msgid "Equalizer - Input"
+#~ msgstr "Égaliseur - Entrée"
+
+#~ msgid "Equalizer - Output"
+#~ msgstr "Égaliseur - Sortie"
