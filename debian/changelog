@@ -1,0 +1,11 @@
+pulseeffects (3.0.7) artful; urgency=medium
+
+  * Add Russian (ru) localisation
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 06 Nov 2017 22:21:00 +0300 
+
+pulseeffects (3.0.6) artful; urgency=medium
+
+  * Package pulseeffects created
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 06 Nov 2017 22:21:00 +0300 

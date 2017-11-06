@@ -1,0 +1,5 @@
+#!/usr/bin/make -f
+# ignore the .git directory and do not include into the source code tarball
+export DH_ALWAYS_EXCLUDE=.git
+%:
+	dh $@
