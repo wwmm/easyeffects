@@ -42,9 +42,11 @@ Users upgrading from 1.x to 2.x will have to rebuild their presets. Since
 version 2.0.0 PulseEffects uses a different format. This
 change was necessary to support presets for microphone processing.
 
+```
 $ meson _build --prefix=/usr <br>
 $ cd _build <br>
 $ sudo ninja install <br>
+```
 
 ### GNU/Linux Packages
 
@@ -57,8 +59,8 @@ $ sudo ninja install <br>
 Stable releases are hosted on [Flathub](https://flathub.org):
 
 ```
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub com.github.wwmm.pulseeffects
+$ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+$ flatpak install flathub com.github.wwmm.pulseeffects
 ```
 
 ### Source Code
@@ -80,7 +82,9 @@ Required libraries:
 See the wiki: [Installing from Source](https://github.com/wwmm/pulseeffects/wiki/Installation-from-Source), for detailed instructions.
 
 ### Build Debian/Ubuntu .deb package
+```
 $ debuild -I <br>
+```
 The built deb package will be located in ../ <br>
 
 ## Command Line Options
