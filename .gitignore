@@ -3,6 +3,7 @@ _build
 build
 locale
 gschemas.compiled
+obj-*-linux-gnu
 
 # Compiled python modules.
 *.pyc
