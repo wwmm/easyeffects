@@ -36,11 +36,17 @@ output at the same time it applies them for applications output:
 9. Output Limiter (Ladspa Fast Lookahead Limiter)
 10. Spectrum Analyzer (Gstreamer)
 
-## Installation
+## Build and install
 
 Users upgrading from 1.x to 2.x will have to rebuild their presets. Since
 version 2.0.0 PulseEffects uses a different format. This
 change was necessary to support presets for microphone processing.
+
+```
+$ meson _build --prefix=/usr
+$ cd _build
+$ sudo ninja install
+```
 
 ### GNU/Linux Packages
 
@@ -53,8 +59,8 @@ change was necessary to support presets for microphone processing.
 Stable releases are hosted on [Flathub](https://flathub.org):
 
 ```
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub com.github.wwmm.pulseeffects
+$ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+$ flatpak install flathub com.github.wwmm.pulseeffects
 ```
 
 ### Source Code
@@ -74,6 +80,12 @@ Required libraries:
 - [swh-plugins](https://github.com/swh/ladspa) from Ladspa
 
 See the wiki: [Installing from Source](https://github.com/wwmm/pulseeffects/wiki/Installation-from-Source), for detailed instructions.
+
+### Build Debian/Ubuntu .deb package
+```
+$ debuild -I
+```
+The built deb package will be located in ../
 
 ## Command Line Options
 

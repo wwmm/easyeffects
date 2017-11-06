@@ -3,6 +3,7 @@ _build
 build
 locale
 gschemas.compiled
+obj-*-linux-gnu
 
 # Compiled python modules.
 *.pyc
@@ -11,3 +12,17 @@ gschemas.compiled
 po/*.mo
 
 \.python-version
+
+# exclude debian building logs and other junk
+debian/*
+!debian/changelog
+!debian/compat
+!debian/control
+!debian/copyright
+!debian/docs
+!debian/pycompat
+!debian/rules
+!debian/source/format
+
+# Dolphin file manager creates the file .directory to save some folder-specific settings
+*.directory
