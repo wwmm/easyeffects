@@ -36,29 +36,23 @@ output at the same time it applies them for applications output:
 9. Output Limiter (Ladspa Fast Lookahead Limiter)
 10. Spectrum Analyzer (Gstreamer)
 
-## Build and install
+## Installation
 
 Users upgrading from 1.x to 2.x will have to rebuild their presets. Since
 version 2.0.0 PulseEffects uses a different format. This
 change was necessary to support presets for microphone processing.
 
-```
-$ meson _build --prefix=/usr
-$ cd _build
-$ sudo ninja install
-```
-
 ### GNU/Linux Packages
 
 - [Arch Linux](https://aur.archlinux.org/packages/pulseeffects/)
 
-Ubuntu >=17.10 repository:
-```
-wget -q -O- http://repo.dumalogiya.ru/keys/mikhailnov_pub.gpg | sudo apt-key add -
-echo "deb http://repo.dumalogiya.ru/aptly/public artful main" | sudo tee /etc/apt/sources.list.d/dumalogiya-artful.list
-sudo apt update
-sudo apt install pulseeffects
-```
+#### Community Packages
+
+These are community maintained repositories of distribution packages. You can
+find more information about these in the
+[wiki](https://github.com/wwmm/pulseeffects/wiki/Package-Repositories#package-repositories).
+
+- [Ubuntu](https://github.com/wwmm/pulseeffects/wiki/Package-Repositories#ubuntu-1710-and-newer)
 
 ### Flatpak
 
@@ -67,8 +61,8 @@ sudo apt install pulseeffects
 Stable releases are hosted on [Flathub](https://flathub.org):
 
 ```
-$ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-$ flatpak install flathub com.github.wwmm.pulseeffects
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install flathub com.github.wwmm.pulseeffects
 ```
 
 ### Source Code
@@ -87,13 +81,9 @@ Required libraries:
  (Since version 1.4.3 Pulseeffects needs Gstreamer 1.12 or above)
 - [swh-plugins](https://github.com/swh/ladspa) from Ladspa
 
-See the wiki: [Installing from Source](https://github.com/wwmm/pulseeffects/wiki/Installation-from-Source), for detailed instructions.
+#### Installing from Source
 
-### Build Debian/Ubuntu .deb package
-```
-$ debuild -I
-```
-The built deb package will be located in ../
+See the wiki: [Installing from Source](https://github.com/wwmm/pulseeffects/wiki/Installation-from-Source), for detailed instructions.
 
 ## Command Line Options
 
