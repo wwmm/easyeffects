@@ -8,6 +8,6 @@ Homepage: https://github.com/wwmm/pulseeffects
 
 Package: pulseeffects
 Architecture: any
-Depends: python3, libgtk-3-0 (>= 3.18), python3-gi-cairo, python3-cairo, gstreamer1.0-plugins-bad (>= 1.12), gstreamer1.0-plugins-good (>= 1.12), swh-plugins, python3-scipy (>= 0.18), python3-gst-1.0
+Depends: ${misc:Depends}, python3, libgtk-3-0 (>= 3.18), python3-gi-cairo, python3-cairo, gstreamer1.0-plugins-bad (>= 1.12), gstreamer1.0-plugins-good (>= 1.12), swh-plugins, python3-scipy (>= 0.18), python3-gst-1.0
 Description: Sound input and outout effects for PulseAudio
  Limiter, compressor, reverberation, stereo equalizer and auto volume effects for Pulseaudio applications
