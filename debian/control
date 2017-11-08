@@ -11,7 +11,3 @@ Architecture: any
 Depends: ${misc:Depends}, pulseaudio, python3, libgtk-3-0 (>= 3.18), python3-gi, python3-gi-cairo, gstreamer1.0-plugins-bad (>= 1.12), gstreamer1.0-plugins-good (>= 1.12), swh-plugins, python3-scipy (>= 0.18), python3-gst-1.0, gir1.2-gst-plugins-bad-1.0
 Description: Sound input and outout effects for PulseAudio
  Limiter, compressor, reverberation, stereo equalizer and auto volume effects for Pulseaudio applications
- 
- libgtk-3-0 python3-gi python3-gi-cairo python3-numpy python3-scipy libgstreamer1.0-0 libgstreamer-plugins-good1.0-0 libgstreamer-plugins-bad1.0-0 python3-gst-1.0 swh-plugins
-libgtk-3-dev python-gi-dev python3-cairo-dev libgstreamer1.0-dev libgstreamer-plugins-bad1.0-dev libpulse-dev git meson ninja-build pkg-config
-
