@@ -1,7 +1,6 @@
 # PulseEffects
 
-Limiter, compressor, reverberation, stereo equalizer and auto volume effects for
-Pulseaudio applications
+Audio effects for Pulseaudio applications
 
 ![](images/pulseeffects.png)
 ![](images/pulseeffects_equalizer.png)
@@ -14,13 +13,10 @@ Order of effects applied to applications output:
 3. Stereo Panorama (Gstreamer)
 4. Compressor (Ladspa SC4)
 5. Freeverb (Gstreamer)
-6. Equalizer Input Gain (Gstreamer volume)
-7. Butterworth Highpass filter (Gstreamer audiocheblimit)
-8. Butterworth Lowpass filter (Gstreamer audiocheblimit)
-9. 15 bands Equalizer (Gstreamer)
-10. Equalizer Output Gain (Gstreamer volume)
-11. Output Limiter (Ladspa Fast Lookahead Limiter)
-12. Spectrum Analyzer (Gstreamer)
+6. Butterworth Highpass filter (Gstreamer audiocheblimit)
+7. Butterworth Lowpass filter (Gstreamer audiocheblimit)
+8. 15 Bands Parametric Equalizer (Gstreamer)
+9. Spectrum Analyzer (Gstreamer)
 
 Since version 2.0.0 PulseEffects is capable of applying effects to microphone
 output at the same time it applies them for applications output:
@@ -28,19 +24,12 @@ output at the same time it applies them for applications output:
 1. Input Limiter (Ladspa Fast Lookahead Limiter)
 2. Compressor (Ladspa SC4)
 3. Freeverb (Gstreamer)
-4. Equalizer Input Gain (Gstreamer volume)
-5. Butterworth Highpass filter (Gstreamer audiocheblimit)
-6. Butterworth Lowpass filter (Gstreamer audiocheblimit)
-7. 15 bands Equalizer (Gstreamer)
-8. Equalizer Output Gain (Gstreamer volume)
-9. Output Limiter (Ladspa Fast Lookahead Limiter)
-10. Spectrum Analyzer (Gstreamer)
+4. Butterworth Highpass filter (Gstreamer audiocheblimit)
+5. Butterworth Lowpass filter (Gstreamer audiocheblimit)
+6. 15 Bands Parametric Equalizer (Gstreamer)
+7. Spectrum Analyzer (Gstreamer)
 
 ## Installation
-
-Users upgrading from 1.x to 2.x will have to rebuild their presets. Since
-version 2.0.0 PulseEffects uses a different format. This
-change was necessary to support presets for microphone processing.
 
 ### GNU/Linux Packages
 
