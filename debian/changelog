@@ -1,3 +1,9 @@
+pulseeffects (3.0.7.2) artful; urgency=high
+
+  * Fix https://github.com/wwmm/pulseeffects/issues/111 (loosing files while building the deb package)
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 06 Nov 2017 22:21:00 +0300 
+ 
 pulseeffects (3.0.7) artful; urgency=medium
 
   * Add Russian (ru) localisation
