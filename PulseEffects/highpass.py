@@ -34,8 +34,8 @@ class Highpass():
         self.highpass.set_property('ripple', 0)
 
         self.bin = GstInsertBin.InsertBin.new('highpass_bin')
-        self.bin.append(self.highpass, self.on_filter_added, None)
         self.bin.append(input_level, self.on_filter_added, None)
+        self.bin.append(self.highpass, self.on_filter_added, None)
         self.bin.append(output_level, self.on_filter_added, None)
 
     def load_ui(self):

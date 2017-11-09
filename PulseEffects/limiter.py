@@ -50,8 +50,8 @@ class Limiter():
         self.bin = GstInsertBin.InsertBin.new('limiter_bin')
 
         if self.is_installed:
-            self.bin.append(self.limiter, self.on_filter_added, None)
             self.bin.append(input_level, self.on_filter_added, None)
+            self.bin.append(self.limiter, self.on_filter_added, None)
             self.bin.append(output_level, self.on_filter_added, None)
             self.bin.append(self.autovolume_level, self.on_filter_added, None)
 

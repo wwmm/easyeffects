@@ -29,8 +29,8 @@ class Reverb():
         output_level = Gst.ElementFactory.make('level', 'reverb_output_level')
 
         self.bin = GstInsertBin.InsertBin.new('reverb_bin')
-        self.bin.append(self.reverb, self.on_filter_added, None)
         self.bin.append(input_level, self.on_filter_added, None)
+        self.bin.append(self.reverb, self.on_filter_added, None)
         self.bin.append(output_level, self.on_filter_added, None)
 
     def load_ui(self):

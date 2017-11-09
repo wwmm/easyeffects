@@ -45,8 +45,8 @@ class Panorama():
         self.bin = GstInsertBin.InsertBin.new('panorama_bin')
 
         if self.is_installed:
-            self.bin.append(self.panorama, self.on_filter_added, None)
             self.bin.append(input_level, self.on_filter_added, None)
+            self.bin.append(self.panorama, self.on_filter_added, None)
             self.bin.append(output_level, self.on_filter_added, None)
 
     def load_ui(self):
