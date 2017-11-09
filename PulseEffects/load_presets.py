@@ -11,6 +11,7 @@ class LoadPresets():
         self.config = configparser.ConfigParser()
 
     def set_config_path(self, path):
+        self.config.clear()
         self.config.read(path)
 
     def load_limiter_presets(self, settings, section):
@@ -20,9 +21,7 @@ class LoadPresets():
         if autovolume_state is False:
             input_gain = self.config.getfloat(section, 'input gain',
                                               fallback=0.0)
-
             limit = self.config.getfloat(section, 'limit', fallback=0.0)
-
             release_time = self.config.getfloat(section, 'release time',
                                                 fallback=0.5)
 
@@ -227,6 +226,20 @@ class LoadPresets():
             settings.set_value('equalizer-band' + str(n) + '-quality', q)
             settings.set_value('equalizer-band' + str(n) + '-type', t)
 
+    def load_output_limiter_presets(self, settings, section):
+        enabled = self.config.getboolean(section, 'enabled', fallback=False)
+        input_gain = self.config.getfloat(section, 'input gain', fallback=0.0)
+        limit = self.config.getfloat(section, 'limit', fallback=0.0)
+        release_time = self.config.getfloat(section, 'release time',
+                                            fallback=0.5)
+
+        settings.set_value('output-limiter-input-gain',
+                           GLib.Variant('d', input_gain))
+        settings.set_value('output-limiter-limit', GLib.Variant('d', limit))
+        settings.set_value('output-limiter-release-time',
+                           GLib.Variant('d', release_time))
+        settings.set_value('output-limiter-state', GLib.Variant('b', enabled))
+
     def load_sink_inputs_presets(self, settings):
         self.load_limiter_presets(settings, 'apps_limiter')
         self.load_autovolume_presets(settings, 'apps_autovolume')
@@ -236,6 +249,7 @@ class LoadPresets():
         self.load_highpass_presets(settings, 'apps_highpass')
         self.load_lowpass_presets(settings, 'apps_lowpass')
         self.load_equalizer_presets(settings, 'apps_equalizer')
+        self.load_output_limiter_presets(settings, 'apps_output_limiter')
 
     def load_source_outputs_presets(self, settings):
         self.load_limiter_presets(settings, 'mic_limiter')

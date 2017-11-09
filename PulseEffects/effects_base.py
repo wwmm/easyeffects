@@ -50,16 +50,12 @@ class EffectsBase(PipelineBase):
         row.add(entry_label)
 
         self.listbox.add(row)
-
         self.listbox.connect('row-activated', self.on_listbox_row_activated)
 
         # listbox style
         provider = Gtk.CssProvider()
-
         css_file = Gio.File.new_for_path(self.module_path + '/ui/listbox.css')
-
         provider.load_from_file(css_file)
-
         Gtk.StyleContext.add_provider(self.listbox.get_style_context(),
                                       provider,
                                       Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
@@ -81,6 +77,12 @@ class EffectsBase(PipelineBase):
         # on/off switches connections
         self.limiter.ui_limiter_enable.connect('state-set',
                                                self.on_limiter_enable)
+        self.compressor.ui_enable.connect('state-set',
+                                          self.on_compressor_enable)
+        self.reverb.ui_enable.connect('state-set', self.on_reverb_enable)
+        self.highpass.ui_enable.connect('state-set', self.on_highpass_enable)
+        self.lowpass.ui_enable.connect('state-set', self.on_lowpass_enable)
+        self.equalizer.ui_enable.connect('state-set', self.on_equalizer_enable)
 
         # effects wrappers
         self.limiter_wrapper = GstInsertBin.InsertBin.new('limiter_wrapper')

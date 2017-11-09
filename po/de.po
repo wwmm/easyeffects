@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-31 14:20-0200\n"
+"POT-Creation-Date: 2017-11-09 01:32-0200\n"
 "PO-Revision-Date: 2017-10-14 18:40+0200\n"
 "Last-Translator: Bleuzen <supgesu@gmail.com>\n"
 "Language-Team: \n"
@@ -22,31 +22,31 @@ msgstr ""
 msgid "Audio Effects for Pulseaudio Applications"
 msgstr "Audio Effekte für Pulseaudio Anwendungen"
 
-#: PulseEffects/ui/app_info.glade:64
+#: PulseEffects/ui/app_info.glade:137
 msgid "Format"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:75
+#: PulseEffects/ui/app_info.glade:181
 msgid "Rate"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:86
+#: PulseEffects/ui/app_info.glade:225
 msgid "Channels"
 msgstr "Kanäle"
 
-#: PulseEffects/ui/app_info.glade:97
+#: PulseEffects/ui/app_info.glade:269
 msgid "Resampler"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:160
+#: PulseEffects/ui/app_info.glade:313
 msgid "Buffer Latency"
 msgstr "Puffer Latenz"
 
-#: PulseEffects/ui/app_info.glade:171 PulseEffects/ui/main_ui.glade:325
+#: PulseEffects/ui/app_info.glade:357 PulseEffects/ui/main_ui.glade:325
 msgid "Latency"
 msgstr "Latenz"
 
-#: PulseEffects/ui/app_info.glade:208
+#: PulseEffects/ui/app_info.glade:401
 msgid "State"
 msgstr "Status"
 
@@ -100,13 +100,15 @@ msgstr ""
 
 #: PulseEffects/ui/compressor.glade:360 PulseEffects/ui/highpass.glade:238
 #: PulseEffects/ui/limiter.glade:397 PulseEffects/ui/lowpass.glade:238
-#: PulseEffects/ui/panorama.glade:216 PulseEffects/ui/reverb.glade:394
+#: PulseEffects/ui/output_limiter.glade:168 PulseEffects/ui/panorama.glade:216
+#: PulseEffects/ui/reverb.glade:394
 msgid "Input"
 msgstr "Eingang"
 
 #: PulseEffects/ui/compressor.glade:461 PulseEffects/ui/highpass.glade:137
 #: PulseEffects/ui/limiter.glade:498 PulseEffects/ui/lowpass.glade:137
-#: PulseEffects/ui/panorama.glade:115 PulseEffects/ui/reverb.glade:293
+#: PulseEffects/ui/output_limiter.glade:269 PulseEffects/ui/panorama.glade:115
+#: PulseEffects/ui/reverb.glade:293
 msgid "Output"
 msgstr "Ausgang"
 
@@ -186,15 +188,15 @@ msgstr "Pole"
 msgid "Input Limiter"
 msgstr "Limiter"
 
-#: PulseEffects/ui/limiter.glade:113
+#: PulseEffects/ui/limiter.glade:113 PulseEffects/ui/output_limiter.glade:75
 msgid "Input Gain [dB]"
 msgstr "Vorverstärkung [dB]"
 
-#: PulseEffects/ui/limiter.glade:139
+#: PulseEffects/ui/limiter.glade:139 PulseEffects/ui/output_limiter.glade:101
 msgid "Limit [dB]"
 msgstr "Grenze [dB]"
 
-#: PulseEffects/ui/limiter.glade:181
+#: PulseEffects/ui/limiter.glade:181 PulseEffects/ui/output_limiter.glade:143
 msgid "Release [s]"
 msgstr ""
 
@@ -215,7 +217,7 @@ msgstr "Ziel [dB]"
 msgid "Tolerance [dB]"
 msgstr "Toleranz [dB]"
 
-#: PulseEffects/ui/limiter.glade:599
+#: PulseEffects/ui/limiter.glade:599 PulseEffects/ui/output_limiter.glade:370
 msgid "Attenuation"
 msgstr "Dämpfung"
 
@@ -258,6 +260,11 @@ msgstr "Zurücksetzen"
 #: PulseEffects/ui/main_ui.glade:546
 msgid "Use Dark Theme"
 msgstr "Benutze dunkles Thema"
+
+#: PulseEffects/ui/output_limiter.glade:24
+#, fuzzy
+msgid "Output Limiter"
+msgstr "Limiter"
 
 #: PulseEffects/ui/panorama.glade:13
 msgid "Panorama"
@@ -312,11 +319,11 @@ msgstr "Kleiner Raum"
 msgid "Applications"
 msgstr "Anwendungen"
 
-#: PulseEffects/effects_base.py:208 PulseEffects/effects_base.py:284
+#: PulseEffects/effects_base.py:210 PulseEffects/effects_base.py:286
 msgid "paused"
 msgstr "pausiert"
 
-#: PulseEffects/effects_base.py:210 PulseEffects/effects_base.py:286
+#: PulseEffects/effects_base.py:212 PulseEffects/effects_base.py:288
 msgid "playing"
 msgstr ""
 

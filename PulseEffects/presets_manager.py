@@ -79,11 +79,11 @@ class PresetsManager():
         if name1 == name2:
             return 0
         else:
-            l = [name1, name2]
+            nn = [name1, name2]
 
-            l.sort()
+            nn.sort()
 
-            if name1 == l[0]:
+            if name1 == nn[0]:
                 return -1
             else:
                 return 1

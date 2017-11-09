@@ -174,6 +174,17 @@ class SavePresets():
                                 'band13_type': str(types[13]),
                                 'band14_type': str(types[14])}
 
+    def save_output_limiter_presets(self, settings, section):
+        enabled = settings.get_value('output-limiter-state')
+        input_gain = settings.get_value('output-limiter-input-gain')
+        limit = settings.get_value('output-limiter-limit')
+        release_time = settings.get_value('output-limiter-release-time')
+
+        self.config[section] = {'enabled': str(enabled),
+                                'input gain': str(input_gain),
+                                'limit': str(limit),
+                                'release time': str(release_time)}
+
     def save_sink_inputs_presets(self, settings):
         self.save_limiter_presets(settings, 'apps_limiter')
         self.save_autovolume_presets(settings, 'apps_autovolume')
@@ -183,6 +194,7 @@ class SavePresets():
         self.save_highpass_presets(settings, 'apps_highpass')
         self.save_lowpass_presets(settings, 'apps_lowpass')
         self.save_equalizer_presets(settings, 'apps_equalizer')
+        self.save_output_limiter_presets(settings, 'apps_output_limiter')
 
     def save_source_outputs_presets(self, settings):
         self.save_limiter_presets(settings, 'mic_limiter')

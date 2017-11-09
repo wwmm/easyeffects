@@ -40,14 +40,6 @@ class SourceOutputEffects(EffectsBase):
         self.stack.add_named(self.lowpass.ui_window, 'lowpass')
         self.stack.add_named(self.equalizer.ui_window, 'equalizer')
 
-        # on/off switches connections
-        self.compressor.ui_enable.connect('state-set',
-                                          self.on_compressor_enable)
-        self.reverb.ui_enable.connect('state-set', self.on_reverb_enable)
-        self.highpass.ui_enable.connect('state-set', self.on_highpass_enable)
-        self.lowpass.ui_enable.connect('state-set', self.on_lowpass_enable)
-        self.equalizer.ui_enable.connect('state-set', self.on_equalizer_enable)
-
         if self.limiter.is_installed:
             self.limiter.bind()
         else:

@@ -149,6 +149,7 @@ class PipelineBase(GObject.GObject):
     def on_message_error(self, bus, msg):
         self.log.error(msg.parse_error())
         self.set_state('null')
+        self.set_state('playing')
 
         return True
 

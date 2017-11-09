@@ -5,6 +5,7 @@ gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gio, GstInsertBin, Gtk
 from PulseEffects.effects_base import EffectsBase
+from PulseEffects.output_limiter import OutputLimiter
 from PulseEffects.panorama import Panorama
 
 
@@ -30,8 +31,10 @@ class SinkInputEffects(EffectsBase):
         self.pm.connect('new_default_sink', self.update_output_sink_name)
 
         self.panorama = Panorama(self.settings)
+        self.output_limiter = OutputLimiter(self.settings)
 
         self.insert_in_listbox('panorama', 2)
+        self.add_to_listbox('output_limiter')
 
         self.listbox.show_all()
 
@@ -44,24 +47,28 @@ class SinkInputEffects(EffectsBase):
         self.stack.add_named(self.highpass.ui_window, 'highpass')
         self.stack.add_named(self.lowpass.ui_window, 'lowpass')
         self.stack.add_named(self.equalizer.ui_window, 'equalizer')
+        self.stack.add_named(self.output_limiter.ui_window, 'output_limiter')
 
         # on/off switches connections
         self.panorama.ui_enable.connect('state-set', self.on_panorama_enable)
-        self.compressor.ui_enable.connect('state-set',
-                                          self.on_compressor_enable)
-        self.reverb.ui_enable.connect('state-set', self.on_reverb_enable)
-        self.highpass.ui_enable.connect('state-set', self.on_highpass_enable)
-        self.lowpass.ui_enable.connect('state-set', self.on_lowpass_enable)
-        self.equalizer.ui_enable.connect('state-set', self.on_equalizer_enable)
+        self.output_limiter.ui_limiter_enable\
+            .connect('state-set', self.on_output_limiter_enable)
 
         # effects wrappers
         self.panorama_wrapper = GstInsertBin.InsertBin.new('panorama_wrapper')
+        self.output_limiter_wrapper = GstInsertBin.InsertBin.new(
+            'output_limiter_wrapper')
 
         # appending effects wrappers to effects bin
         self.effects_bin.insert_after(self.panorama_wrapper,
                                       self.limiter_wrapper,
                                       self.on_filter_added,
                                       self.log_tag)
+
+        self.effects_bin.insert_before(self.output_limiter_wrapper,
+                                       self.spectrum_wrapper,
+                                       self.on_filter_added,
+                                       self.log_tag)
 
         if self.limiter.is_installed:
             self.limiter.bind()
@@ -80,6 +87,9 @@ class SinkInputEffects(EffectsBase):
         else:
             self.compressor.ui_window.set_sensitive(False)
             self.compressor.ui_enable.set_sensitive(False)
+
+        if self.output_limiter.is_installed:
+            self.output_limiter.bind()
 
         self.reverb.bind()
         self.highpass.bind()
@@ -114,6 +124,8 @@ class SinkInputEffects(EffectsBase):
 
         if name == 'panorama':
             self.stack.set_visible_child(self.panorama.ui_window)
+        elif name == 'output_limiter':
+            self.stack.set_visible_child(self.output_limiter.ui_window)
 
     def on_message_element(self, bus, msg):
         EffectsBase.on_message_element(self, bus, msg)
@@ -128,6 +140,14 @@ class SinkInputEffects(EffectsBase):
             peak = msg.get_structure().get_value('peak')
 
             self.panorama.ui_update_panorama_output_level(peak)
+        elif plugin == 'output_limiter_input_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.output_limiter.ui_update_limiter_input_level(peak)
+        elif plugin == 'output_limiter_output_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.output_limiter.ui_update_limiter_output_level(peak)
 
         return True
 
@@ -141,7 +161,18 @@ class SinkInputEffects(EffectsBase):
                                          self.on_filter_removed,
                                          self.log_tag)
 
+    def on_output_limiter_enable(self, obj, state):
+        if state:
+            self.output_limiter_wrapper.append(self.output_limiter.bin,
+                                               self.on_filter_added,
+                                               self.log_tag)
+        else:
+            self.output_limiter_wrapper.remove(self.output_limiter.bin,
+                                               self.on_filter_removed,
+                                               self.log_tag)
+
     def reset(self):
         EffectsBase.reset(self)
 
         self.panorama.reset()
+        self.output_limiter.reset()

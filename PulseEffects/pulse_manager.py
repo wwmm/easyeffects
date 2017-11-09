@@ -464,16 +464,13 @@ class PulseManager(GObject.GObject):
                              'latency': latency, 'corked': corked}
 
                 if user_data == 1:
-                    if connected:
-                        self.create_stream(idx)
-
                     GLib.idle_add(self.emit, 'sink_input_added', new_input)
                 elif user_data == 2:
                     if str(idx) in self.streams:
                         if not connected:
                             del self.streams[str(idx)]
                     elif connected:
-                        self.create_stream(idx)
+                        self.create_stream(idx, app_name)
 
                     GLib.idle_add(self.emit, 'sink_input_changed', new_input)
 
@@ -607,13 +604,15 @@ class PulseManager(GObject.GObject):
         p.pa_context_set_source_output_mute(self.ctx, idx, mute_state,
                                             self.ctx_success_cb, None)
 
-    def create_stream(self, idx):
+    def create_stream(self, idx, app_name):
         ss = p.pa_sample_spec()
         ss.channels = 1
         ss.format = p.PA_SAMPLE_FLOAT32LE
         ss.rate = 10
 
-        stream = p.pa_stream_new(self.ctx, b'PulseEffects Level Meter',
+        stream_name = app_name + ' - Level Meter Stream'
+
+        stream = p.pa_stream_new(self.ctx, stream_name.encode('utf-8'),
                                  p.get_ref(ss), None)
 
         p.pa_stream_set_state_callback(stream, self.stream_state_cb, idx)
@@ -622,8 +621,7 @@ class PulseManager(GObject.GObject):
 
         flags = p.PA_STREAM_PEAK_DETECT | p.PA_STREAM_DONT_MOVE
 
-        p.pa_stream_connect_record(stream, b'PulseEffects_apps.monitor', None,
-                                   flags)
+        p.pa_stream_connect_record(stream, None, None, flags)
 
         self.streams[str(idx)] = stream
 
