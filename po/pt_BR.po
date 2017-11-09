@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-09 01:32-0200\n"
-"PO-Revision-Date: 2017-10-22 01:32-0200\n"
+"PO-Revision-Date: 2017-11-09 01:34-0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
@@ -264,9 +264,8 @@ msgid "Use Dark Theme"
 msgstr "Usar Tema Escuro"
 
 #: PulseEffects/ui/output_limiter.glade:24
-#, fuzzy
 msgid "Output Limiter"
-msgstr "Limitador de Entrada"
+msgstr "Limitador de Saída"
 
 #: PulseEffects/ui/panorama.glade:13
 msgid "Panorama"
