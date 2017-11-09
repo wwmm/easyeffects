@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import os
+
 import gi
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
@@ -22,7 +24,19 @@ class SinkInputEffects(EffectsBase):
         self.panorama_ready = False
 
         self.set_source_monitor_name(self.pm.apps_sink_monitor_name)
-        self.set_output_sink_name(self.pm.default_sink_name)
+
+        pulse_sink = os.environ.get('PULSE_SINK')
+
+        if pulse_sink:
+            self.set_output_sink_name(pulse_sink)
+
+            self.log.info('$PULSE_SINK = ' + pulse_sink)
+
+            msg = 'user has $PULSE_SINK set. Using it as output device'
+
+            self.log.info(msg)
+        else:
+            self.set_output_sink_name(self.pm.default_sink_name)
 
         self.pm.connect('sink_input_added', self.on_app_added)
         self.pm.connect('sink_input_changed', self.on_app_changed)

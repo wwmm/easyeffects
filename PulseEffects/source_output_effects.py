@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import os
+
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gio, Gtk
@@ -19,7 +21,19 @@ class SourceOutputEffects(EffectsBase):
         self.switch_on_all_apps = False
         self.disable_app_level_meter = True
 
-        self.set_source_monitor_name(self.pm.default_source_name)
+        pulse_source = os.environ.get('PULSE_SOURCE')
+
+        if pulse_source:
+            self.set_source_monitor_name(pulse_source)
+
+            self.log.info('$PULSE_SOURCE = ' + pulse_source)
+
+            msg = 'user has $PULSE_SOURCE set. Using it as input device'
+
+            self.log.info(msg)
+        else:
+            self.set_source_monitor_name(self.pm.default_source_name)
+
         self.set_output_sink_name('PulseEffects_mic')
 
         self.pm.connect('source_output_added', self.on_app_added)
