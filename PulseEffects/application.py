@@ -25,6 +25,8 @@ class Application(Gtk.Application):
 
         Gtk.Application.__init__(self, application_id=app_id, flags=app_flags)
 
+        GLib.unix_signal_add(GLib.PRIORITY_DEFAULT, 2, self.quit)  # sigint
+
         self.add_main_option('no-window', ord('n'), GLib.OptionFlags.NONE,
                              GLib.OptionArg.NONE, 'do not show window', None)
         self.add_main_option('switch-on-all-apps', ord('s'),
