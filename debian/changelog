@@ -1,3 +1,9 @@
+pulseeffects (3.0.7.4) artful; urgency=low
+
+  * = v3.0.7 upstream (synced with upstream versioning, all previous v3.0.7 here were v.3.0.6+git-master from upstream)
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 08 Nov 2017 22:21:00 +0300 
+
 pulseeffects (3.0.7.3) artful; urgency=high
 
   * Additional fixes for https://github.com/wwmm/pulseeffects/issues/111
