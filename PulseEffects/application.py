@@ -27,11 +27,10 @@ class Application(Gtk.Application):
 
         GLib.unix_signal_add(GLib.PRIORITY_DEFAULT, 2, self.quit)  # sigint
 
-        self.add_main_option('no-window', ord('n'), GLib.OptionFlags.NONE,
-                             GLib.OptionArg.NONE, 'do not show window', None)
-        self.add_main_option('switch-on-all-apps', ord('s'),
-                             GLib.OptionFlags.NONE, GLib.OptionArg.NONE,
-                             'Force effects for all applications', None)
+        help_msg = 'Exit PulseEffects. Useful when running in service mode.'
+
+        self.add_main_option('exit', ord('e'), GLib.OptionFlags.NONE,
+                             GLib.OptionArg.NONE, help_msg, None)
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
@@ -68,10 +67,18 @@ class Application(Gtk.Application):
         self.sie = SinkInputEffects(self.pm)
         self.soe = SourceOutputEffects(self.pm)
 
-        # self.hold()
+        if self.props.flags & Gio.ApplicationFlags.IS_SERVICE:
+            self.init_ui()
 
-        # if self.props.flags & Gio.ApplicationFlags.IS_SERVICE:
-        #     self.hold()
+            self.sie.switch_on_all_apps = True
+            self.soe.switch_on_all_apps = True
+
+            self.pm.find_sink_inputs()
+            self.pm.find_source_outputs()
+
+            self.log.info('Running in background')
+
+            self.hold()
 
     def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +
@@ -81,6 +88,7 @@ class Application(Gtk.Application):
 
         self.window = self.builder.get_object('MainWindow')
         self.window.set_application(self)
+        self.window.connect('destroy', self.on_window_destroy)
 
         self.sie.init_ui()
         self.soe.init_ui()
@@ -104,38 +112,32 @@ class Application(Gtk.Application):
 
         self.presets = PresetsManager(self)
 
+        self.ui_initialized = True
+
+    def on_window_destroy(self, window):
+        self.ui_initialized = False
+        self.sie.switch_on_all_apps = True
+        self.soe.switch_on_all_apps = True
+
     def do_activate(self):
+        self.sie.switch_on_all_apps = False
+        self.soe.switch_on_all_apps = False
+
         if not self.ui_initialized:
             self.init_ui()
 
             self.pm.find_sink_inputs()
             self.pm.find_source_outputs()
 
-            def on_window_destroy(window):
-                self.ui_initialized = False
-
-            self.window.connect('destroy', on_window_destroy)
-
         self.window.present()
-
-        self.ui_initialized = True
 
     def do_command_line(self, command_line):
         options = command_line.get_options_dict()
 
-        if options.contains('switch-on-all-apps'):
-            self.sie.switch_on_all_apps = True
-            self.soe.switch_on_all_apps = True
-
-        if options.contains('no-window'):
-            self.log.info('Running in background')
+        if options.contains('exit'):
+            self.quit()
         else:
-            self.activate()
-
-        # searching for apps
-
-        # self.pm.find_sink_inputs()
-        # self.pm.find_source_outputs()
+            self.do_activate()
 
         return Gtk.Application.do_command_line(self, command_line)
 

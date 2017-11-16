@@ -235,7 +235,6 @@ class EffectsBase(PipelineBase):
 
         if self.switch_on_all_apps:
             getattr(self, 'app_switch_' + str(idx)).set_active(True)
-            getattr(self, 'app_switch_' + str(idx)).set_sensitive(False)
         else:
             getattr(self, 'app_switch_' + str(idx)).set_active(connected)
 
