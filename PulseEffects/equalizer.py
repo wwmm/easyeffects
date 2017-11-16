@@ -20,7 +20,6 @@ class Equalizer():
         self.module_path = os.path.dirname(__file__)
 
         self.build_bin()
-        self.load_ui()
 
     def on_filter_added(self, bin, element, success, user_data):
         pass
@@ -46,7 +45,7 @@ class Equalizer():
         self.bin.append(self.output_gain, self.on_filter_added, None)
         self.bin.append(output_level, self.on_filter_added, None)
 
-    def load_ui(self):
+    def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +
                                                  '/ui/equalizer.glade')
         self.builder.connect_signals(self)

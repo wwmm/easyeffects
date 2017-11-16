@@ -97,6 +97,11 @@ class EffectsBase(PipelineBase):
                                       Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
         self.limiter.init_ui()
+        self.compressor.init_ui()
+        self.reverb.init_ui()
+        self.highpass.init_ui()
+        self.lowpass.init_ui()
+        self.equalizer.init_ui()
 
         self.add_to_listbox('limiter')
         self.add_to_listbox('compressor')

@@ -67,6 +67,7 @@ class SinkInputEffects(EffectsBase):
         EffectsBase.init_ui(self)
 
         self.panorama.init_ui()
+        self.output_limiter.init_ui()
 
         self.insert_in_listbox('panorama', 2)
         self.add_to_listbox('output_limiter')
