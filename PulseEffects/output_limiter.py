@@ -105,7 +105,7 @@ class OutputLimiter():
 
         # binding ui widgets to gstreamer plugins
 
-        flag = GObject.BindingFlags.DEFAULT
+        flag = Gio.SettingsBindFlags.DEFAULT
 
         self.settings.bind('output-limiter-state', self.ui_limiter_enable,
                            'active', flag)

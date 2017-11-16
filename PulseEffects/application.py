@@ -68,6 +68,8 @@ class Application(Gtk.Application):
         self.sie = SinkInputEffects(self.pm)
         self.soe = SourceOutputEffects(self.pm)
 
+        self.hold()
+
         # if self.props.flags & Gio.ApplicationFlags.IS_SERVICE:
         #     self.hold()
 

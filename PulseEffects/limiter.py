@@ -122,9 +122,9 @@ class Limiter():
         self.ui_release_time.bind_property('value', self.limiter,
                                            'release-time', flag)
 
-        # binding ui widgets to gstreamer plugins
+        # binding ui widgets to gsettings
 
-        flag = GObject.BindingFlags.DEFAULT
+        flag = Gio.SettingsBindFlags.DEFAULT
 
         self.settings.bind('limiter-state', self.ui_limiter_enable, 'active',
                            flag)
