@@ -41,6 +41,9 @@ class SourceOutputEffects(EffectsBase):
         self.pm.connect('source_output_removed', self.on_app_removed)
         self.pm.connect('new_default_source', self.update_source_monitor_name)
 
+    def init_ui(self):
+        EffectsBase.init_ui(self)
+
         self.listbox.show_all()
 
         # it makes no sense to show the calibration button here

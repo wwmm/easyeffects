@@ -28,6 +28,42 @@ class EffectsBase(PipelineBase):
         self.log_tag = str()
         self.disable_app_level_meter = False
 
+        self.limiter = Limiter(self.settings)
+        self.compressor = Compressor(self.settings)
+        self.reverb = Reverb(self.settings)
+        self.highpass = Highpass(self.settings)
+        self.lowpass = Lowpass(self.settings)
+        self.equalizer = Equalizer(self.settings)
+
+        # effects wrappers
+        self.limiter_wrapper = GstInsertBin.InsertBin.new('limiter_wrapper')
+        self.compressor_wrapper = GstInsertBin.InsertBin.new(
+            'compressor_wrapper')
+        self.reverb_wrapper = GstInsertBin.InsertBin.new('reverb_wrapper')
+        self.highpass_wrapper = GstInsertBin.InsertBin.new('highpass_wrapper')
+        self.lowpass_wrapper = GstInsertBin.InsertBin.new('lowpass_wrapper')
+        self.equalizer_wrapper = GstInsertBin.InsertBin.new(
+            'equalizer_wrapper')
+        self.spectrum_wrapper = GstInsertBin.InsertBin.new(
+            'spectrum_wrapper')
+
+        # appending effects wrappers to effects bin
+        self.effects_bin.append(self.limiter_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.compressor_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.reverb_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.highpass_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.lowpass_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.equalizer_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.spectrum_wrapper, self.on_filter_added,
+                                self.log_tag)
+
+    def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +
                                                  '/ui/effects_box.glade')
 
@@ -60,12 +96,7 @@ class EffectsBase(PipelineBase):
                                       provider,
                                       Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
-        self.limiter = Limiter(self.settings)
-        self.compressor = Compressor(self.settings)
-        self.reverb = Reverb(self.settings)
-        self.highpass = Highpass(self.settings)
-        self.lowpass = Lowpass(self.settings)
-        self.equalizer = Equalizer(self.settings)
+        self.limiter.init_ui()
 
         self.add_to_listbox('limiter')
         self.add_to_listbox('compressor')
@@ -83,34 +114,6 @@ class EffectsBase(PipelineBase):
         self.highpass.ui_enable.connect('state-set', self.on_highpass_enable)
         self.lowpass.ui_enable.connect('state-set', self.on_lowpass_enable)
         self.equalizer.ui_enable.connect('state-set', self.on_equalizer_enable)
-
-        # effects wrappers
-        self.limiter_wrapper = GstInsertBin.InsertBin.new('limiter_wrapper')
-        self.compressor_wrapper = GstInsertBin.InsertBin.new(
-            'compressor_wrapper')
-        self.reverb_wrapper = GstInsertBin.InsertBin.new('reverb_wrapper')
-        self.highpass_wrapper = GstInsertBin.InsertBin.new('highpass_wrapper')
-        self.lowpass_wrapper = GstInsertBin.InsertBin.new('lowpass_wrapper')
-        self.equalizer_wrapper = GstInsertBin.InsertBin.new(
-            'equalizer_wrapper')
-        self.spectrum_wrapper = GstInsertBin.InsertBin.new(
-            'spectrum_wrapper')
-
-        # appending effects wrappers to effects bin
-        self.effects_bin.append(self.limiter_wrapper, self.on_filter_added,
-                                self.log_tag)
-        self.effects_bin.append(self.compressor_wrapper, self.on_filter_added,
-                                self.log_tag)
-        self.effects_bin.append(self.reverb_wrapper, self.on_filter_added,
-                                self.log_tag)
-        self.effects_bin.append(self.highpass_wrapper, self.on_filter_added,
-                                self.log_tag)
-        self.effects_bin.append(self.lowpass_wrapper, self.on_filter_added,
-                                self.log_tag)
-        self.effects_bin.append(self.equalizer_wrapper, self.on_filter_added,
-                                self.log_tag)
-        self.effects_bin.append(self.spectrum_wrapper, self.on_filter_added,
-                                self.log_tag)
 
     def add_to_listbox(self, name):
         row = Gtk.ListBoxRow()

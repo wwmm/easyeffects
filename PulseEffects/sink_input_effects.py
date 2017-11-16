@@ -47,6 +47,27 @@ class SinkInputEffects(EffectsBase):
         self.panorama = Panorama(self.settings)
         self.output_limiter = OutputLimiter(self.settings)
 
+        # effects wrappers
+        self.panorama_wrapper = GstInsertBin.InsertBin.new('panorama_wrapper')
+        self.output_limiter_wrapper = GstInsertBin.InsertBin.new(
+            'output_limiter_wrapper')
+
+        # appending effects wrappers to effects bin
+        self.effects_bin.insert_after(self.panorama_wrapper,
+                                      self.limiter_wrapper,
+                                      self.on_filter_added,
+                                      self.log_tag)
+
+        self.effects_bin.insert_before(self.output_limiter_wrapper,
+                                       self.spectrum_wrapper,
+                                       self.on_filter_added,
+                                       self.log_tag)
+
+    def init_ui(self):
+        EffectsBase.init_ui(self)
+
+        self.panorama.init_ui()
+
         self.insert_in_listbox('panorama', 2)
         self.add_to_listbox('output_limiter')
 
@@ -67,22 +88,6 @@ class SinkInputEffects(EffectsBase):
         self.panorama.ui_enable.connect('state-set', self.on_panorama_enable)
         self.output_limiter.ui_limiter_enable\
             .connect('state-set', self.on_output_limiter_enable)
-
-        # effects wrappers
-        self.panorama_wrapper = GstInsertBin.InsertBin.new('panorama_wrapper')
-        self.output_limiter_wrapper = GstInsertBin.InsertBin.new(
-            'output_limiter_wrapper')
-
-        # appending effects wrappers to effects bin
-        self.effects_bin.insert_after(self.panorama_wrapper,
-                                      self.limiter_wrapper,
-                                      self.on_filter_added,
-                                      self.log_tag)
-
-        self.effects_bin.insert_before(self.output_limiter_wrapper,
-                                       self.spectrum_wrapper,
-                                       self.on_filter_added,
-                                       self.log_tag)
 
         if self.limiter.is_installed:
             self.limiter.bind()

@@ -35,7 +35,6 @@ class Limiter():
             self.log.warn('Limiter plugin was not found. Disabling it!')
 
         self.build_bin()
-        self.load_ui()
 
     def on_filter_added(self, bin, element, success, user_data):
         pass
@@ -55,7 +54,7 @@ class Limiter():
             self.bin.append(output_level, self.on_filter_added, None)
             self.bin.append(self.autovolume_level, self.on_filter_added, None)
 
-    def load_ui(self):
+    def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +
                                                  '/ui/limiter.glade')
         self.builder.connect_signals(self)

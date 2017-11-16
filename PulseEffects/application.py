@@ -57,14 +57,21 @@ class Application(Gtk.Application):
                                             'PulseEffects')
         os.makedirs(self.user_config_dir, exist_ok=True)
 
+        self.create_appmenu()
+
         # pulseaudio
 
         self.pm = PulseManager()
         self.pm.load_apps_sink()
         self.pm.load_mic_sink()
 
-        # ui initializations
+        self.sie = SinkInputEffects(self.pm)
+        self.soe = SourceOutputEffects(self.pm)
 
+        # if self.props.flags & Gio.ApplicationFlags.IS_SERVICE:
+        #     self.hold()
+
+    def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +
                                                  '/ui/main_ui.glade')
 
@@ -73,10 +80,9 @@ class Application(Gtk.Application):
         self.window = self.builder.get_object('MainWindow')
         self.window.set_application(self)
 
-        self.create_appmenu()
+        self.sie.init_ui()
+        self.soe.init_ui()
 
-        self.sie = SinkInputEffects(self.pm)
-        self.soe = SourceOutputEffects(self.pm)
         self.draw_spectrum = DrawSpectrum(self)
 
         self.init_theme()
@@ -97,6 +103,17 @@ class Application(Gtk.Application):
         self.presets = PresetsManager(self)
 
     def do_activate(self):
+        if not self.ui_initialized:
+            self.init_ui()
+
+            self.pm.find_sink_inputs()
+            self.pm.find_source_outputs()
+
+            def on_window_destroy(window):
+                self.ui_initialized = False
+
+            self.window.connect('destroy', on_window_destroy)
+
         self.window.present()
 
         self.ui_initialized = True
@@ -115,10 +132,10 @@ class Application(Gtk.Application):
 
         # searching for apps
 
-        self.pm.find_sink_inputs()
-        self.pm.find_source_outputs()
+        # self.pm.find_sink_inputs()
+        # self.pm.find_source_outputs()
 
-        return 0
+        return Gtk.Application.do_command_line(self, command_line)
 
     def do_shutdown(self):
         Gtk.Application.do_shutdown(self)
