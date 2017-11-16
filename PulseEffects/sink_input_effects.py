@@ -173,9 +173,10 @@ class SinkInputEffects(EffectsBase):
 
     def on_panorama_enable(self, obj, state):
         if state:
-            self.panorama_wrapper.append(self.panorama.bin,
-                                         self.on_filter_added,
-                                         self.log_tag)
+            if not self.panorama_wrapper.get_by_name('panorama_bin'):
+                self.panorama_wrapper.append(self.panorama.bin,
+                                             self.on_filter_added,
+                                             self.log_tag)
         else:
             self.panorama_wrapper.remove(self.panorama.bin,
                                          self.on_filter_removed,
@@ -183,9 +184,11 @@ class SinkInputEffects(EffectsBase):
 
     def on_output_limiter_enable(self, obj, state):
         if state:
-            self.output_limiter_wrapper.append(self.output_limiter.bin,
-                                               self.on_filter_added,
-                                               self.log_tag)
+            if not self.output_limiter_wrapper.get_by_name(
+                    'output_limiter_bin'):
+                self.output_limiter_wrapper.append(self.output_limiter.bin,
+                                                   self.on_filter_added,
+                                                   self.log_tag)
         else:
             self.output_limiter_wrapper.remove(self.output_limiter.bin,
                                                self.on_filter_removed,

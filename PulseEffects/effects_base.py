@@ -421,9 +421,10 @@ class EffectsBase(PipelineBase):
 
     def on_limiter_enable(self, obj, state):
         if state:
-            self.limiter_wrapper.append(self.limiter.bin,
-                                        self.on_filter_added,
-                                        self.log_tag)
+            if not self.limiter_wrapper.get_by_name('limiter_bin'):
+                self.limiter_wrapper.append(self.limiter.bin,
+                                            self.on_filter_added,
+                                            self.log_tag)
         else:
             self.limiter_wrapper.remove(self.limiter.bin,
                                         self.on_filter_removed,
@@ -431,9 +432,10 @@ class EffectsBase(PipelineBase):
 
     def on_compressor_enable(self, obj, state):
         if state:
-            self.compressor_wrapper.append(self.compressor.bin,
-                                           self.on_filter_added,
-                                           self.log_tag)
+            if not self.compressor_wrapper.get_by_name('compressor_bin'):
+                self.compressor_wrapper.append(self.compressor.bin,
+                                               self.on_filter_added,
+                                               self.log_tag)
         else:
             self.compressor_wrapper.remove(self.compressor.bin,
                                            self.on_filter_removed,
@@ -441,9 +443,10 @@ class EffectsBase(PipelineBase):
 
     def on_reverb_enable(self, obj, state):
         if state:
-            self.reverb_wrapper.append(self.reverb.bin,
-                                       self.on_filter_added,
-                                       self.log_tag)
+            if not self.reverb_wrapper.get_by_name('reverb_bin'):
+                self.reverb_wrapper.append(self.reverb.bin,
+                                           self.on_filter_added,
+                                           self.log_tag)
         else:
             self.reverb_wrapper.remove(self.reverb.bin,
                                        self.on_filter_removed,
@@ -451,9 +454,10 @@ class EffectsBase(PipelineBase):
 
     def on_highpass_enable(self, obj, state):
         if state:
-            self.highpass_wrapper.append(self.highpass.bin,
-                                         self.on_filter_added,
-                                         self.log_tag)
+            if not self.highpass_wrapper.get_by_name('highpass_bin'):
+                self.highpass_wrapper.append(self.highpass.bin,
+                                             self.on_filter_added,
+                                             self.log_tag)
         else:
             self.highpass_wrapper.remove(self.highpass.bin,
                                          self.on_filter_removed,
@@ -461,9 +465,10 @@ class EffectsBase(PipelineBase):
 
     def on_lowpass_enable(self, obj, state):
         if state:
-            self.lowpass_wrapper.append(self.lowpass.bin,
-                                        self.on_filter_added,
-                                        self.log_tag)
+            if not self.lowpass_wrapper.get_by_name('lowpass_bin'):
+                self.lowpass_wrapper.append(self.lowpass.bin,
+                                            self.on_filter_added,
+                                            self.log_tag)
         else:
             self.lowpass_wrapper.remove(self.lowpass.bin,
                                         self.on_filter_removed,
@@ -471,9 +476,10 @@ class EffectsBase(PipelineBase):
 
     def on_equalizer_enable(self, obj, state):
         if state:
-            self.equalizer_wrapper.append(self.equalizer.bin,
-                                          self.on_filter_added,
-                                          self.log_tag)
+            if not self.equalizer_wrapper.get_by_name('equalizer_bin'):
+                self.equalizer_wrapper.append(self.equalizer.bin,
+                                              self.on_filter_added,
+                                              self.log_tag)
         else:
             self.equalizer_wrapper.remove(self.equalizer.bin,
                                           self.on_filter_removed,
@@ -481,9 +487,10 @@ class EffectsBase(PipelineBase):
 
     def enable_spectrum(self, state):
         if state:
-            self.spectrum_wrapper.append(self.spectrum,
-                                         self.on_filter_added,
-                                         self.log_tag)
+            if not self.spectrum_wrapper.get_by_name('spectrum'):
+                self.spectrum_wrapper.append(self.spectrum,
+                                             self.on_filter_added,
+                                             self.log_tag)
         else:
             self.spectrum_wrapper.remove(self.spectrum,
                                          self.on_filter_removed,
