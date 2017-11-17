@@ -29,7 +29,7 @@ class Application(Gtk.Application):
 
         help_msg = 'Exit PulseEffects. Useful when running in service mode.'
 
-        self.add_main_option('exit', ord('e'), GLib.OptionFlags.NONE,
+        self.add_main_option('quit', ord('q'), GLib.OptionFlags.NONE,
                              GLib.OptionArg.NONE, help_msg, None)
 
     def do_startup(self):
@@ -134,7 +134,7 @@ class Application(Gtk.Application):
     def do_command_line(self, command_line):
         options = command_line.get_options_dict()
 
-        if options.contains('exit'):
+        if options.contains('quit'):
             self.quit()
         else:
             self.do_activate()
