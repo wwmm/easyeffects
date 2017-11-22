@@ -726,6 +726,7 @@
                     <property name="adjustment">band15_g</property>
                     <property name="inverted">True</property>
                     <property name="round_digits">0</property>
+                    <property name="digits">0</property>
                     <property name="value_pos">bottom</property>
                   </object>
                   <packing>
@@ -743,6 +744,7 @@
                     <property name="adjustment">band16_g</property>
                     <property name="inverted">True</property>
                     <property name="round_digits">0</property>
+                    <property name="digits">0</property>
                     <property name="value_pos">bottom</property>
                   </object>
                   <packing>
@@ -760,6 +762,7 @@
                     <property name="adjustment">band17_g</property>
                     <property name="inverted">True</property>
                     <property name="round_digits">0</property>
+                    <property name="digits">0</property>
                     <property name="value_pos">bottom</property>
                   </object>
                   <packing>
@@ -777,6 +780,7 @@
                     <property name="adjustment">band18_g</property>
                     <property name="inverted">True</property>
                     <property name="round_digits">0</property>
+                    <property name="digits">0</property>
                     <property name="value_pos">bottom</property>
                   </object>
                   <packing>
@@ -794,6 +798,7 @@
                     <property name="adjustment">band19_g</property>
                     <property name="inverted">True</property>
                     <property name="round_digits">0</property>
+                    <property name="digits">0</property>
                     <property name="value_pos">bottom</property>
                   </object>
                   <packing>
@@ -811,6 +816,7 @@
                     <property name="adjustment">band20_g</property>
                     <property name="inverted">True</property>
                     <property name="round_digits">0</property>
+                    <property name="digits">0</property>
                     <property name="value_pos">bottom</property>
                   </object>
                   <packing>
@@ -828,6 +834,7 @@
                     <property name="adjustment">band21_g</property>
                     <property name="inverted">True</property>
                     <property name="round_digits">0</property>
+                    <property name="digits">0</property>
                     <property name="value_pos">bottom</property>
                   </object>
                   <packing>
@@ -845,6 +852,7 @@
                     <property name="adjustment">band22_g</property>
                     <property name="inverted">True</property>
                     <property name="round_digits">0</property>
+                    <property name="digits">0</property>
                     <property name="value_pos">bottom</property>
                   </object>
                   <packing>
@@ -862,6 +870,7 @@
                     <property name="adjustment">band23_g</property>
                     <property name="inverted">True</property>
                     <property name="round_digits">0</property>
+                    <property name="digits">0</property>
                     <property name="value_pos">bottom</property>
                   </object>
                   <packing>
@@ -879,6 +888,7 @@
                     <property name="adjustment">band24_g</property>
                     <property name="inverted">True</property>
                     <property name="round_digits">0</property>
+                    <property name="digits">0</property>
                     <property name="value_pos">bottom</property>
                   </object>
                   <packing>
@@ -896,6 +906,7 @@
                     <property name="adjustment">band25_g</property>
                     <property name="inverted">True</property>
                     <property name="round_digits">0</property>
+                    <property name="digits">0</property>
                     <property name="value_pos">bottom</property>
                   </object>
                   <packing>
@@ -913,6 +924,7 @@
                     <property name="adjustment">band26_g</property>
                     <property name="inverted">True</property>
                     <property name="round_digits">0</property>
+                    <property name="digits">0</property>
                     <property name="value_pos">bottom</property>
                   </object>
                   <packing>
@@ -930,6 +942,7 @@
                     <property name="adjustment">band27_g</property>
                     <property name="inverted">True</property>
                     <property name="round_digits">0</property>
+                    <property name="digits">0</property>
                     <property name="value_pos">bottom</property>
                   </object>
                   <packing>
@@ -947,6 +960,7 @@
                     <property name="adjustment">band28_g</property>
                     <property name="inverted">True</property>
                     <property name="round_digits">0</property>
+                    <property name="digits">0</property>
                     <property name="value_pos">bottom</property>
                   </object>
                   <packing>
@@ -964,6 +978,7 @@
                     <property name="adjustment">band29_g</property>
                     <property name="inverted">True</property>
                     <property name="round_digits">0</property>
+                    <property name="digits">0</property>
                     <property name="value_pos">bottom</property>
                   </object>
                   <packing>
