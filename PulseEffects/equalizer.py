@@ -32,9 +32,9 @@ class Equalizer():
         output_level = Gst.ElementFactory.make('level',
                                                'equalizer_output_level')
 
-        equalizer.set_property('num-bands', 15)
+        equalizer.set_property('num-bands', 30)
 
-        for n in range(15):
+        for n in range(30):
             setattr(self, 'band' + str(n), equalizer.get_child_by_index(n))
 
         self.bin = GstInsertBin.InsertBin.new('equalizer_bin')
@@ -58,7 +58,7 @@ class Equalizer():
         self.ui_input_gain = self.builder.get_object('input_gain')
         self.ui_output_gain = self.builder.get_object('output_gain')
 
-        for n in range(15):
+        for n in range(30):
             setattr(self, 'ui_band' + str(n) + '_g',
                     self.builder.get_object('band' + str(n) + '_g'))
 
@@ -87,7 +87,7 @@ class Equalizer():
             'equalizer_output_level_right_label')
 
         # band menu
-        for n in range(15):
+        for n in range(30):
             menu_builder = Gtk.Builder()
             menu_builder.add_from_file(self.module_path +
                                        '/ui/equalizer_band_menu.glade')
@@ -124,7 +124,7 @@ class Equalizer():
 
         flag = GObject.BindingFlags.DEFAULT
 
-        for n in range(15):
+        for n in range(30):
             ui_band_g = getattr(self, 'ui_band' + str(n) + '_g')
             ui_band_t = getattr(self, 'ui_band' + str(n) + '_t')
             band = getattr(self, 'band' + str(n))
@@ -145,7 +145,7 @@ class Equalizer():
         self.settings.bind('equalizer-output-gain', self.ui_output_gain,
                            'value', flag)
 
-        for n in range(15):
+        for n in range(30):
             ui_band_g = getattr(self, 'ui_band' + str(n) + '_g')
             ui_band_f = getattr(self, 'ui_band' + str(n) + '_f')
             ui_band_q = getattr(self, 'ui_band' + str(n) + '_q')
@@ -164,7 +164,7 @@ class Equalizer():
             self.settings.bind(prop, ui_band_t, 'active', flag)
 
     def print_eq_freqs_and_widths(self):
-        for n in range(15):
+        for n in range(30):
             f = getattr(self, 'band' + str(n)).get_property('freq')
             w = getattr(self, 'band' + str(n)).get_property('bandwidth')
 
@@ -257,7 +257,7 @@ class Equalizer():
         self.ui_update_level(widgets, peak)
 
     def on_eq_flat_response_button_clicked(self, obj):
-        for n in range(15):
+        for n in range(30):
             self.settings.reset('equalizer-band' + str(n) + '-gain')
 
     def on_eq_calibrate_button_clicked(self, obj):
@@ -269,7 +269,7 @@ class Equalizer():
         self.settings.reset('equalizer-input-gain')
         self.settings.reset('equalizer-output-gain')
 
-        for n in range(15):
+        for n in range(30):
             self.settings.reset('equalizer-band' + str(n) + '-gain')
             self.settings.reset('equalizer-band' + str(n) + '-frequency')
             self.settings.reset('equalizer-band' + str(n) + '-quality')

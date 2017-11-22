@@ -128,6 +128,21 @@ class LoadPresets():
         self.band12_g = self.config.getfloat(section, 'band12')
         self.band13_g = self.config.getfloat(section, 'band13')
         self.band14_g = self.config.getfloat(section, 'band14')
+        self.band15_g = self.config.getfloat(section, 'band15')
+        self.band16_g = self.config.getfloat(section, 'band16')
+        self.band17_g = self.config.getfloat(section, 'band17')
+        self.band18_g = self.config.getfloat(section, 'band18')
+        self.band19_g = self.config.getfloat(section, 'band19')
+        self.band20_g = self.config.getfloat(section, 'band20')
+        self.band21_g = self.config.getfloat(section, 'band21')
+        self.band22_g = self.config.getfloat(section, 'band22')
+        self.band23_g = self.config.getfloat(section, 'band23')
+        self.band24_g = self.config.getfloat(section, 'band24')
+        self.band25_g = self.config.getfloat(section, 'band25')
+        self.band26_g = self.config.getfloat(section, 'band26')
+        self.band27_g = self.config.getfloat(section, 'band27')
+        self.band28_g = self.config.getfloat(section, 'band28')
+        self.band29_g = self.config.getfloat(section, 'band29')
 
         self.band0_f = self.config.getfloat(section, 'band0_freq', fallback=26)
         self.band1_f = self.config.getfloat(section, 'band1_freq', fallback=41)
@@ -156,6 +171,36 @@ class LoadPresets():
                                              fallback=10291)
         self.band14_f = self.config.getfloat(section, 'band14_freq',
                                              fallback=16310)
+        self.band15_f = self.config.getfloat(section, 'band15_freq',
+                                             fallback=19610)
+        self.band16_f = self.config.getfloat(section, 'band16_freq',
+                                             fallback=19610)
+        self.band17_f = self.config.getfloat(section, 'band17_freq',
+                                             fallback=19610)
+        self.band18_f = self.config.getfloat(section, 'band18_freq',
+                                             fallback=19610)
+        self.band19_f = self.config.getfloat(section, 'band19_freq',
+                                             fallback=19610)
+        self.band20_f = self.config.getfloat(section, 'band20_freq',
+                                             fallback=19610)
+        self.band21_f = self.config.getfloat(section, 'band21_freq',
+                                             fallback=19610)
+        self.band22_f = self.config.getfloat(section, 'band22_freq',
+                                             fallback=19610)
+        self.band23_f = self.config.getfloat(section, 'band23_freq',
+                                             fallback=19610)
+        self.band24_f = self.config.getfloat(section, 'band24_freq',
+                                             fallback=19610)
+        self.band25_f = self.config.getfloat(section, 'band25_freq',
+                                             fallback=19610)
+        self.band26_f = self.config.getfloat(section, 'band26_freq',
+                                             fallback=19610)
+        self.band27_f = self.config.getfloat(section, 'band27_freq',
+                                             fallback=19610)
+        self.band28_f = self.config.getfloat(section, 'band28_freq',
+                                             fallback=19610)
+        self.band29_f = self.config.getfloat(section, 'band29_freq',
+                                             fallback=19610)
 
         self.band0_q = self.config.getfloat(section, 'band0_qfactor',
                                             fallback=2.21)
@@ -187,6 +232,36 @@ class LoadPresets():
                                              fallback=2.21)
         self.band14_q = self.config.getfloat(section, 'band14_qfactor',
                                              fallback=2.21)
+        self.band15_q = self.config.getfloat(section, 'band15_qfactor',
+                                             fallback=2.21)
+        self.band16_q = self.config.getfloat(section, 'band16_qfactor',
+                                             fallback=2.21)
+        self.band17_q = self.config.getfloat(section, 'band17_qfactor',
+                                             fallback=2.21)
+        self.band18_q = self.config.getfloat(section, 'band18_qfactor',
+                                             fallback=2.21)
+        self.band19_q = self.config.getfloat(section, 'band19_qfactor',
+                                             fallback=2.21)
+        self.band20_q = self.config.getfloat(section, 'band20_qfactor',
+                                             fallback=2.21)
+        self.band21_q = self.config.getfloat(section, 'band21_qfactor',
+                                             fallback=2.21)
+        self.band22_q = self.config.getfloat(section, 'band22_qfactor',
+                                             fallback=2.21)
+        self.band23_q = self.config.getfloat(section, 'band23_qfactor',
+                                             fallback=2.21)
+        self.band24_q = self.config.getfloat(section, 'band24_qfactor',
+                                             fallback=2.21)
+        self.band25_q = self.config.getfloat(section, 'band25_qfactor',
+                                             fallback=2.21)
+        self.band26_q = self.config.getfloat(section, 'band26_qfactor',
+                                             fallback=2.21)
+        self.band27_q = self.config.getfloat(section, 'band27_qfactor',
+                                             fallback=2.21)
+        self.band28_q = self.config.getfloat(section, 'band28_qfactor',
+                                             fallback=2.21)
+        self.band29_q = self.config.getfloat(section, 'band29_qfactor',
+                                             fallback=2.21)
 
         self.band0_t = self.config.getfloat(section, 'band0_type', fallback=1)
         self.band1_t = self.config.getfloat(section, 'band1_type', fallback=0)
@@ -208,6 +283,36 @@ class LoadPresets():
                                              fallback=0)
         self.band14_t = self.config.getfloat(section, 'band14_type',
                                              fallback=2)
+        self.band15_t = self.config.getfloat(section, 'band15_type',
+                                             fallback=0)
+        self.band16_t = self.config.getfloat(section, 'band16_type',
+                                             fallback=0)
+        self.band17_t = self.config.getfloat(section, 'band17_type',
+                                             fallback=0)
+        self.band18_t = self.config.getfloat(section, 'band18_type',
+                                             fallback=0)
+        self.band19_t = self.config.getfloat(section, 'band19_type',
+                                             fallback=2)
+        self.band20_t = self.config.getfloat(section, 'band20_type',
+                                             fallback=0)
+        self.band21_t = self.config.getfloat(section, 'band21_type',
+                                             fallback=0)
+        self.band22_t = self.config.getfloat(section, 'band22_type',
+                                             fallback=0)
+        self.band23_t = self.config.getfloat(section, 'band23_type',
+                                             fallback=0)
+        self.band24_t = self.config.getfloat(section, 'band24_type',
+                                             fallback=2)
+        self.band25_t = self.config.getfloat(section, 'band25_type',
+                                             fallback=0)
+        self.band26_t = self.config.getfloat(section, 'band26_type',
+                                             fallback=0)
+        self.band27_t = self.config.getfloat(section, 'band27_type',
+                                             fallback=0)
+        self.band28_t = self.config.getfloat(section, 'band28_type',
+                                             fallback=0)
+        self.band29_t = self.config.getfloat(section, 'band29_type',
+                                             fallback=2)
 
         settings.set_value('equalizer-state', GLib.Variant('b', enabled))
         settings.set_value('equalizer-input-gain',
@@ -215,7 +320,7 @@ class LoadPresets():
         settings.set_value('equalizer-output-gain',
                            GLib.Variant('d', output_gain))
 
-        for n in range(15):
+        for n in range(30):
             g = GLib.Variant('d', getattr(self, 'band' + str(n) + '_g'))
             f = GLib.Variant('d', getattr(self, 'band' + str(n) + '_f'))
             q = GLib.Variant('d', getattr(self, 'band' + str(n) + '_q'))
