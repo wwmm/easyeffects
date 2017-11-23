@@ -205,96 +205,96 @@
         </key>
 
         <key name="equalizer-band0-frequency" type="d">
-          <default>26</default>
+          <default>22.59</default>
         </key>
         <key name="equalizer-band1-frequency" type="d">
-          <default>41</default>
+          <default>28.44</default>
         </key>
         <key name="equalizer-band2-frequency" type="d">
-          <default>65</default>
+          <default>35.8</default>
         </key>
         <key name="equalizer-band3-frequency" type="d">
-          <default>103</default>
+          <default>45.07</default>
         </key>
         <key name="equalizer-band4-frequency" type="d">
-          <default>163</default>
+          <default>56.74</default>
         </key>
         <key name="equalizer-band5-frequency" type="d">
-          <default>259</default>
+          <default>71.43</default>
         </key>
         <key name="equalizer-band6-frequency" type="d">
-          <default>410</default>
+          <default>89.93</default>
         </key>
         <key name="equalizer-band7-frequency" type="d">
-          <default>649</default>
+          <default>113.21</default>
         </key>
         <key name="equalizer-band8-frequency" type="d">
-          <default>1029</default>
+          <default>142.53</default>
         </key>
         <key name="equalizer-band9-frequency" type="d">
-          <default>1631</default>
+          <default>179.43</default>
         </key>
         <key name="equalizer-band10-frequency" type="d">
-          <default>2585</default>
+          <default>225.89</default>
         </key>
         <key name="equalizer-band11-frequency" type="d">
-          <default>4097</default>
+          <default>284.38</default>
         </key>
         <key name="equalizer-band12-frequency" type="d">
-          <default>6493</default>
+          <default>358.02</default>
         </key>
         <key name="equalizer-band13-frequency" type="d">
-          <default>10291</default>
+          <default>450.72</default>
         </key>
         <key name="equalizer-band14-frequency" type="d">
-          <default>16310</default>
+          <default>567.42</default>
         </key>
         <key name="equalizer-band15-frequency" type="d">
-          <default>16310</default>
+          <default>714.34</default>
         </key>
         <key name="equalizer-band16-frequency" type="d">
-          <default>16310</default>
+          <default>899.29</default>
         </key>
         <key name="equalizer-band17-frequency" type="d">
-          <default>16310</default>
+          <default>1132.15</default>
         </key>
         <key name="equalizer-band18-frequency" type="d">
-          <default>16310</default>
+          <default>1425.29</default>
         </key>
         <key name="equalizer-band19-frequency" type="d">
-          <default>16310</default>
+          <default>1794.33</default>
         </key>
         <key name="equalizer-band20-frequency" type="d">
-          <default>19310</default>
+          <default>2258.93</default>
         </key>
         <key name="equalizer-band21-frequency" type="d">
-          <default>19310</default>
+          <default>2843.82</default>
         </key>
         <key name="equalizer-band22-frequency" type="d">
-          <default>19310</default>
+          <default>3580.16</default>
         </key>
         <key name="equalizer-band23-frequency" type="d">
-          <default>19310</default>
+          <default>4507.15</default>
         </key>
         <key name="equalizer-band24-frequency" type="d">
-          <default>19310</default>
+          <default>5674.16</default>
         </key>
         <key name="equalizer-band25-frequency" type="d">
-          <default>19310</default>
+          <default>7143.35</default>
         </key>
         <key name="equalizer-band26-frequency" type="d">
-          <default>19310</default>
+          <default>8992.94</default>
         </key>
         <key name="equalizer-band27-frequency" type="d">
-          <default>19310</default>
+          <default>11321.45</default>
         </key>
         <key name="equalizer-band28-frequency" type="d">
-          <default>19310</default>
+          <default>14252.86</default>
         </key>
         <key name="equalizer-band29-frequency" type="d">
-          <default>19310</default>
+          <default>17943.28</default>
         </key>
-
+        
         <key name="equalizer-band0-quality" type="d">
           <default>2.21</default>
         </key>

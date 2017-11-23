@@ -21,6 +21,8 @@ class Equalizer():
 
         self.build_bin()
 
+        self.print_eq_freqs_and_widths()
+
     def on_filter_added(self, bin, element, success, user_data):
         pass
 
@@ -168,7 +170,7 @@ class Equalizer():
             f = getattr(self, 'band' + str(n)).get_property('freq')
             w = getattr(self, 'band' + str(n)).get_property('bandwidth')
 
-            print(f, w)
+            print(n, f, w)
 
     def on_input_gain_value_changed(self, obj):
         value_db = obj.get_value()
