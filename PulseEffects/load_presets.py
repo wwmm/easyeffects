@@ -113,94 +113,97 @@ class LoadPresets():
 
         # it would make more sense to call these keys bandn_g but this would
         # break people presets...
-        self.band0_g = self.config.getfloat(section, 'band0')
-        self.band1_g = self.config.getfloat(section, 'band1')
-        self.band2_g = self.config.getfloat(section, 'band2')
-        self.band3_g = self.config.getfloat(section, 'band3')
-        self.band4_g = self.config.getfloat(section, 'band4')
-        self.band5_g = self.config.getfloat(section, 'band5')
-        self.band6_g = self.config.getfloat(section, 'band6')
-        self.band7_g = self.config.getfloat(section, 'band7')
-        self.band8_g = self.config.getfloat(section, 'band8')
-        self.band9_g = self.config.getfloat(section, 'band9')
-        self.band10_g = self.config.getfloat(section, 'band10')
-        self.band11_g = self.config.getfloat(section, 'band11')
-        self.band12_g = self.config.getfloat(section, 'band12')
-        self.band13_g = self.config.getfloat(section, 'band13')
-        self.band14_g = self.config.getfloat(section, 'band14')
-        self.band15_g = self.config.getfloat(section, 'band15')
-        self.band16_g = self.config.getfloat(section, 'band16')
-        self.band17_g = self.config.getfloat(section, 'band17')
-        self.band18_g = self.config.getfloat(section, 'band18')
-        self.band19_g = self.config.getfloat(section, 'band19')
-        self.band20_g = self.config.getfloat(section, 'band20')
-        self.band21_g = self.config.getfloat(section, 'band21')
-        self.band22_g = self.config.getfloat(section, 'band22')
-        self.band23_g = self.config.getfloat(section, 'band23')
-        self.band24_g = self.config.getfloat(section, 'band24')
-        self.band25_g = self.config.getfloat(section, 'band25')
-        self.band26_g = self.config.getfloat(section, 'band26')
-        self.band27_g = self.config.getfloat(section, 'band27')
-        self.band28_g = self.config.getfloat(section, 'band28')
-        self.band29_g = self.config.getfloat(section, 'band29')
+        self.band0_g = self.config.getfloat(section, 'band0', fallback=0)
+        self.band1_g = self.config.getfloat(section, 'band1', fallback=0)
+        self.band2_g = self.config.getfloat(section, 'band2', fallback=0)
+        self.band3_g = self.config.getfloat(section, 'band3', fallback=0)
+        self.band4_g = self.config.getfloat(section, 'band4', fallback=0)
+        self.band5_g = self.config.getfloat(section, 'band5', fallback=0)
+        self.band6_g = self.config.getfloat(section, 'band6', fallback=0)
+        self.band7_g = self.config.getfloat(section, 'band7', fallback=0)
+        self.band8_g = self.config.getfloat(section, 'band8', fallback=0)
+        self.band9_g = self.config.getfloat(section, 'band9', fallback=0)
+        self.band10_g = self.config.getfloat(section, 'band10', fallback=0)
+        self.band11_g = self.config.getfloat(section, 'band11', fallback=0)
+        self.band12_g = self.config.getfloat(section, 'band12', fallback=0)
+        self.band13_g = self.config.getfloat(section, 'band13', fallback=0)
+        self.band14_g = self.config.getfloat(section, 'band14', fallback=0)
+        self.band15_g = self.config.getfloat(section, 'band15', fallback=0)
+        self.band16_g = self.config.getfloat(section, 'band16', fallback=0)
+        self.band17_g = self.config.getfloat(section, 'band17', fallback=0)
+        self.band18_g = self.config.getfloat(section, 'band18', fallback=0)
+        self.band19_g = self.config.getfloat(section, 'band19', fallback=0)
+        self.band20_g = self.config.getfloat(section, 'band20', fallback=0)
+        self.band21_g = self.config.getfloat(section, 'band21', fallback=0)
+        self.band22_g = self.config.getfloat(section, 'band22', fallback=0)
+        self.band23_g = self.config.getfloat(section, 'band23', fallback=0)
+        self.band24_g = self.config.getfloat(section, 'band24', fallback=0)
+        self.band25_g = self.config.getfloat(section, 'band25', fallback=0)
+        self.band26_g = self.config.getfloat(section, 'band26', fallback=0)
+        self.band27_g = self.config.getfloat(section, 'band27', fallback=0)
+        self.band28_g = self.config.getfloat(section, 'band28', fallback=0)
+        self.band29_g = self.config.getfloat(section, 'band29', fallback=0)
 
-        self.band0_f = self.config.getfloat(section, 'band0_freq', fallback=26)
-        self.band1_f = self.config.getfloat(section, 'band1_freq', fallback=41)
-        self.band2_f = self.config.getfloat(section, 'band2_freq', fallback=65)
+        self.band0_f = self.config.getfloat(section, 'band0_freq',
+                                            fallback=22.59)
+        self.band1_f = self.config.getfloat(section, 'band1_freq',
+                                            fallback=28.44)
+        self.band2_f = self.config.getfloat(section, 'band2_freq',
+                                            fallback=35.8)
         self.band3_f = self.config.getfloat(section, 'band3_freq',
-                                            fallback=103)
+                                            fallback=45.07)
         self.band4_f = self.config.getfloat(section, 'band4_freq',
-                                            fallback=163)
+                                            fallback=56.74)
         self.band5_f = self.config.getfloat(section, 'band5_freq',
-                                            fallback=259)
+                                            fallback=71.43)
         self.band6_f = self.config.getfloat(section, 'band6_freq',
-                                            fallback=410)
+                                            fallback=89.93)
         self.band7_f = self.config.getfloat(section, 'band7_freq',
-                                            fallback=649)
+                                            fallback=113.21)
         self.band8_f = self.config.getfloat(section, 'band8_freq',
-                                            fallback=1029)
+                                            fallback=142.53)
         self.band9_f = self.config.getfloat(section, 'band9_freq',
-                                            fallback=1631)
+                                            fallback=179.43)
         self.band10_f = self.config.getfloat(section, 'band10_freq',
-                                             fallback=2585)
+                                             fallback=225.89)
         self.band11_f = self.config.getfloat(section, 'band11_freq',
-                                             fallback=4097)
+                                             fallback=284.38)
         self.band12_f = self.config.getfloat(section, 'band12_freq',
-                                             fallback=6493)
+                                             fallback=358.02)
         self.band13_f = self.config.getfloat(section, 'band13_freq',
-                                             fallback=10291)
+                                             fallback=450.72)
         self.band14_f = self.config.getfloat(section, 'band14_freq',
-                                             fallback=16310)
+                                             fallback=567.42)
         self.band15_f = self.config.getfloat(section, 'band15_freq',
-                                             fallback=19610)
+                                             fallback=714.34)
         self.band16_f = self.config.getfloat(section, 'band16_freq',
-                                             fallback=19610)
+                                             fallback=899.29)
         self.band17_f = self.config.getfloat(section, 'band17_freq',
-                                             fallback=19610)
+                                             fallback=1132.15)
         self.band18_f = self.config.getfloat(section, 'band18_freq',
-                                             fallback=19610)
+                                             fallback=1425.29)
         self.band19_f = self.config.getfloat(section, 'band19_freq',
-                                             fallback=19610)
+                                             fallback=1794.33)
         self.band20_f = self.config.getfloat(section, 'band20_freq',
-                                             fallback=19610)
+                                             fallback=2258.93)
         self.band21_f = self.config.getfloat(section, 'band21_freq',
-                                             fallback=19610)
+                                             fallback=2843.82)
         self.band22_f = self.config.getfloat(section, 'band22_freq',
-                                             fallback=19610)
+                                             fallback=3580.16)
         self.band23_f = self.config.getfloat(section, 'band23_freq',
-                                             fallback=19610)
+                                             fallback=4507.15)
         self.band24_f = self.config.getfloat(section, 'band24_freq',
-                                             fallback=19610)
+                                             fallback=5674.16)
         self.band25_f = self.config.getfloat(section, 'band25_freq',
-                                             fallback=19610)
+                                             fallback=7143.35)
         self.band26_f = self.config.getfloat(section, 'band26_freq',
-                                             fallback=19610)
+                                             fallback=8992.94)
         self.band27_f = self.config.getfloat(section, 'band27_freq',
-                                             fallback=19610)
+                                             fallback=11321.45)
         self.band28_f = self.config.getfloat(section, 'band28_freq',
-                                             fallback=19610)
+                                             fallback=14252.86)
         self.band29_f = self.config.getfloat(section, 'band29_freq',
-                                             fallback=19610)
+                                             fallback=17943.28)
 
         self.band0_q = self.config.getfloat(section, 'band0_qfactor',
                                             fallback=2.21)
@@ -263,7 +266,7 @@ class LoadPresets():
         self.band29_q = self.config.getfloat(section, 'band29_qfactor',
                                              fallback=2.21)
 
-        self.band0_t = self.config.getfloat(section, 'band0_type', fallback=1)
+        self.band0_t = self.config.getfloat(section, 'band0_type', fallback=0)
         self.band1_t = self.config.getfloat(section, 'band1_type', fallback=0)
         self.band2_t = self.config.getfloat(section, 'band2_type', fallback=0)
         self.band3_t = self.config.getfloat(section, 'band3_type', fallback=0)
@@ -282,7 +285,7 @@ class LoadPresets():
         self.band13_t = self.config.getfloat(section, 'band13_type',
                                              fallback=0)
         self.band14_t = self.config.getfloat(section, 'band14_type',
-                                             fallback=2)
+                                             fallback=0)
         self.band15_t = self.config.getfloat(section, 'band15_type',
                                              fallback=0)
         self.band16_t = self.config.getfloat(section, 'band16_type',
@@ -292,7 +295,7 @@ class LoadPresets():
         self.band18_t = self.config.getfloat(section, 'band18_type',
                                              fallback=0)
         self.band19_t = self.config.getfloat(section, 'band19_type',
-                                             fallback=2)
+                                             fallback=0)
         self.band20_t = self.config.getfloat(section, 'band20_type',
                                              fallback=0)
         self.band21_t = self.config.getfloat(section, 'band21_type',
@@ -302,7 +305,7 @@ class LoadPresets():
         self.band23_t = self.config.getfloat(section, 'band23_type',
                                              fallback=0)
         self.band24_t = self.config.getfloat(section, 'band24_type',
-                                             fallback=2)
+                                             fallback=0)
         self.band25_t = self.config.getfloat(section, 'band25_type',
                                              fallback=0)
         self.band26_t = self.config.getfloat(section, 'band26_type',
@@ -312,7 +315,7 @@ class LoadPresets():
         self.band28_t = self.config.getfloat(section, 'band28_type',
                                              fallback=0)
         self.band29_t = self.config.getfloat(section, 'band29_type',
-                                             fallback=2)
+                                             fallback=0)
 
         settings.set_value('equalizer-state', GLib.Variant('b', enabled))
         settings.set_value('equalizer-input-gain',

@@ -21,8 +21,6 @@ class Equalizer():
 
         self.build_bin()
 
-        self.print_eq_freqs_and_widths()
-
     def on_filter_added(self, bin, element, success, user_data):
         pass
 
