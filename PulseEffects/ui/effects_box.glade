@@ -52,6 +52,7 @@
               <object class="GtkScrolledWindow">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="hscrollbar_policy">never</property>
                 <child>
                   <object class="GtkViewport">
                     <property name="visible">True</property>
