@@ -95,12 +95,27 @@ class Application(Gtk.Application):
 
         self.draw_spectrum = DrawSpectrum(self)
 
-        self.init_theme()
         self.init_settings_menu()
         self.init_buffer_time()
         self.init_latency_time()
         self.init_spectrum_widgets()
         self.init_stack_widgets()
+
+        # Gsettings bindings
+
+        flag = Gio.SettingsBindFlags.DEFAULT
+
+        switch_apps = self.builder.get_object('enable_all_apps')
+        switch_theme = self.builder.get_object('theme_switch')
+
+        self.settings.bind('use-dark-theme', switch_theme, 'active', flag)
+        self.settings.bind('use-dark-theme', self.gtk_settings,
+                           'gtk_application_prefer_dark_theme', flag)
+        self.settings.bind('enable-all-apps', switch_apps, 'active', flag)
+        self.settings.bind('enable-all-apps', self.sie, 'switch_on_all_apps',
+                           flag)
+        self.settings.bind('enable-all-apps', self.soe, 'switch_on_all_apps',
+                           flag)
 
         # this connection is changed inside the stack switch handler
         # depending on the selected child. The connection below is not
@@ -120,9 +135,6 @@ class Application(Gtk.Application):
         self.soe.switch_on_all_apps = True
 
     def do_activate(self):
-        self.sie.switch_on_all_apps = False
-        self.soe.switch_on_all_apps = False
-
         if not self.ui_initialized:
             self.init_ui()
 
@@ -164,15 +176,6 @@ class Application(Gtk.Application):
         quit_action = Gio.SimpleAction.new('quit', None)
         quit_action.connect('activate', lambda action, parameter: self.quit())
         self.add_action(quit_action)
-
-    def init_theme(self):
-        flag = Gio.SettingsBindFlags.DEFAULT
-
-        switch = self.builder.get_object('theme_switch')
-
-        self.settings.bind('use-dark-theme', switch, 'active', flag)
-        self.settings.bind('use-dark-theme', self.gtk_settings,
-                           'gtk_application_prefer_dark_theme', flag)
 
     def init_stack_widgets(self):
         self.stack = self.builder.get_object('stack')

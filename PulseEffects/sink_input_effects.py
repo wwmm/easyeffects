@@ -20,7 +20,6 @@ class SinkInputEffects(EffectsBase):
         EffectsBase.__init__(self, self.pm.default_sink_rate, self.settings)
 
         self.log_tag = 'apps: '
-        self.switch_on_all_apps = False
         self.panorama_ready = False
 
         self.set_source_monitor_name(self.pm.apps_sink_monitor_name)

@@ -18,7 +18,6 @@ class SourceOutputEffects(EffectsBase):
         EffectsBase.__init__(self, self.pm.default_source_rate, self.settings)
 
         self.log_tag = 'mic: '
-        self.switch_on_all_apps = False
         self.disable_app_level_meter = True
 
         pulse_source = os.environ.get('PULSE_SOURCE')
