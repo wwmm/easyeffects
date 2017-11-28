@@ -166,17 +166,13 @@ class Application(Gtk.Application):
         self.add_action(quit_action)
 
     def init_theme(self):
+        flag = Gio.SettingsBindFlags.DEFAULT
+
         switch = self.builder.get_object('theme_switch')
 
-        use_dark = self.settings.get_value('use-dark-theme').unpack()
-
-        switch.set_active(use_dark)
-
-    def on_theme_switch_state_set(self, obj, state):
-        self.gtk_settings.props.gtk_application_prefer_dark_theme = state
-
-        out = GLib.Variant('b', state)
-        self.settings.set_value('use-dark-theme', out)
+        self.settings.bind('use-dark-theme', switch, 'active', flag)
+        self.settings.bind('use-dark-theme', self.gtk_settings,
+                           'gtk_application_prefer_dark_theme', flag)
 
     def init_stack_widgets(self):
         self.stack = self.builder.get_object('stack')
