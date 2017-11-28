@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-09 01:32-0200\n"
+"POT-Creation-Date: 2017-11-28 20:56-0200\n"
 "PO-Revision-Date: 2017-11-08 15:36+0100\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -118,25 +118,25 @@ msgstr "Izlaz"
 msgid "Gain Reduction"
 msgstr "Ograničenje pojačanja"
 
-#: PulseEffects/ui/equalizer.glade:185
+#: PulseEffects/ui/equalizer.glade:350
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
 msgid "Equalizer"
 msgstr "Ekvalizator"
 
-#: PulseEffects/ui/equalizer.glade:232
+#: PulseEffects/ui/equalizer.glade:397
 msgid "Flat Response"
 msgstr "Vrati izvorno"
 
-#: PulseEffects/ui/equalizer.glade:245
+#: PulseEffects/ui/equalizer.glade:410
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
 msgid "Calibration"
 msgstr "Kalibracija"
 
-#: PulseEffects/ui/equalizer.glade:995
+#: PulseEffects/ui/equalizer.glade:1882
 msgid "Input [dB]"
 msgstr "Ulaz [dB]"
 
-#: PulseEffects/ui/equalizer.glade:1008
+#: PulseEffects/ui/equalizer.glade:1895
 msgid "Output [dB]"
 msgstr "Izlaz"
 
@@ -263,6 +263,11 @@ msgstr "Vrati izvorno"
 msgid "Use Dark Theme"
 msgstr "Koristi tamnu temu"
 
+#: PulseEffects/ui/main_ui.glade:568
+#, fuzzy
+msgid "Enable All Applications"
+msgstr "Aplikacije"
+
 #: PulseEffects/ui/output_limiter.glade:24
 #, fuzzy
 msgid "Output Limiter"
@@ -316,16 +321,16 @@ msgstr "Strojarnica"
 msgid "Small Room"
 msgstr "Mala soba"
 
-#: PulseEffects/effects_base.py:45
+#: PulseEffects/effects_base.py:81
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
 msgid "Applications"
 msgstr "Aplikacije"
 
-#: PulseEffects/effects_base.py:210 PulseEffects/effects_base.py:286
+#: PulseEffects/effects_base.py:218 PulseEffects/effects_base.py:293
 msgid "paused"
 msgstr "pauzirano"
 
-#: PulseEffects/effects_base.py:212 PulseEffects/effects_base.py:288
+#: PulseEffects/effects_base.py:220 PulseEffects/effects_base.py:295
 msgid "playing"
 msgstr "reprodukcija"
 

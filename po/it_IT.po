@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-09 01:32-0200\n"
+"POT-Creation-Date: 2017-11-28 20:56-0200\n"
 "PO-Revision-Date: 2017-07-09 11:11+0200\n"
 "Last-Translator: Matteo Iervasi <matteoiervasi@gmail.com>\n"
 "Language-Team: \n"
@@ -117,25 +117,25 @@ msgstr "Output"
 msgid "Gain Reduction"
 msgstr "Gain Reduction"
 
-#: PulseEffects/ui/equalizer.glade:185
+#: PulseEffects/ui/equalizer.glade:350
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
 msgid "Equalizer"
 msgstr "Equalizzatore\t"
 
-#: PulseEffects/ui/equalizer.glade:232
+#: PulseEffects/ui/equalizer.glade:397
 msgid "Flat Response"
 msgstr ""
 
-#: PulseEffects/ui/equalizer.glade:245
+#: PulseEffects/ui/equalizer.glade:410
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
 msgid "Calibration"
 msgstr ""
 
-#: PulseEffects/ui/equalizer.glade:995
+#: PulseEffects/ui/equalizer.glade:1882
 msgid "Input [dB]"
 msgstr "Input [dB]"
 
-#: PulseEffects/ui/equalizer.glade:1008
+#: PulseEffects/ui/equalizer.glade:1895
 msgid "Output [dB]"
 msgstr "Output [dB]"
 
@@ -265,6 +265,10 @@ msgstr "Resetta"
 msgid "Use Dark Theme"
 msgstr "Usa tema scuro"
 
+#: PulseEffects/ui/main_ui.glade:568
+msgid "Enable All Applications"
+msgstr ""
+
 #: PulseEffects/ui/output_limiter.glade:24
 #, fuzzy
 msgid "Output Limiter"
@@ -318,16 +322,16 @@ msgstr "Stanza Motori"
 msgid "Small Room"
 msgstr "Piccola Stanza"
 
-#: PulseEffects/effects_base.py:45
+#: PulseEffects/effects_base.py:81
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
 msgid "Applications"
 msgstr ""
 
-#: PulseEffects/effects_base.py:210 PulseEffects/effects_base.py:286
+#: PulseEffects/effects_base.py:218 PulseEffects/effects_base.py:293
 msgid "paused"
 msgstr ""
 
-#: PulseEffects/effects_base.py:212 PulseEffects/effects_base.py:288
+#: PulseEffects/effects_base.py:220 PulseEffects/effects_base.py:295
 msgid "playing"
 msgstr ""
 

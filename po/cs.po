@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-09 01:32-0200\n"
+"POT-Creation-Date: 2017-11-28 20:56-0200\n"
 "PO-Revision-Date: 2017-09-27 12:23-0300\n"
 "Last-Translator: Pavel Fric <pavelfric@seznam.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -116,25 +116,25 @@ msgstr "Výstup"
 msgid "Gain Reduction"
 msgstr "Zmenšení zesílení"
 
-#: PulseEffects/ui/equalizer.glade:185
+#: PulseEffects/ui/equalizer.glade:350
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
 msgid "Equalizer"
 msgstr "Ekvalizér"
 
-#: PulseEffects/ui/equalizer.glade:232
+#: PulseEffects/ui/equalizer.glade:397
 msgid "Flat Response"
 msgstr "Odpověď pod tónem"
 
-#: PulseEffects/ui/equalizer.glade:245
+#: PulseEffects/ui/equalizer.glade:410
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
 msgid "Calibration"
 msgstr "Kalibrace"
 
-#: PulseEffects/ui/equalizer.glade:995
+#: PulseEffects/ui/equalizer.glade:1882
 msgid "Input [dB]"
 msgstr "Vstup [dB]"
 
-#: PulseEffects/ui/equalizer.glade:1008
+#: PulseEffects/ui/equalizer.glade:1895
 msgid "Output [dB]"
 msgstr "Výstup [dB]"
 
@@ -261,6 +261,11 @@ msgstr "Vrátit na výchozí"
 msgid "Use Dark Theme"
 msgstr "Použít tmavý vzhled"
 
+#: PulseEffects/ui/main_ui.glade:568
+#, fuzzy
+msgid "Enable All Applications"
+msgstr "Kalibrace"
+
 #: PulseEffects/ui/output_limiter.glade:24
 #, fuzzy
 msgid "Output Limiter"
@@ -314,17 +319,17 @@ msgstr "Strojovna"
 msgid "Small Room"
 msgstr "Malý prostor"
 
-#: PulseEffects/effects_base.py:45
+#: PulseEffects/effects_base.py:81
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
 #, fuzzy
 msgid "Applications"
 msgstr "Kalibrace"
 
-#: PulseEffects/effects_base.py:210 PulseEffects/effects_base.py:286
+#: PulseEffects/effects_base.py:218 PulseEffects/effects_base.py:293
 msgid "paused"
 msgstr ""
 
-#: PulseEffects/effects_base.py:212 PulseEffects/effects_base.py:288
+#: PulseEffects/effects_base.py:220 PulseEffects/effects_base.py:295
 msgid "playing"
 msgstr ""
 

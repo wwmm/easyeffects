@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-09 01:32-0200\n"
-"PO-Revision-Date: 2017-11-09 01:34-0200\n"
+"POT-Creation-Date: 2017-11-28 20:56-0200\n"
+"PO-Revision-Date: 2017-11-28 20:57-0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
@@ -118,25 +118,25 @@ msgstr "Saída"
 msgid "Gain Reduction"
 msgstr "Redução de Ganho"
 
-#: PulseEffects/ui/equalizer.glade:185
+#: PulseEffects/ui/equalizer.glade:350
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
 msgid "Equalizer"
 msgstr "Equalizador"
 
-#: PulseEffects/ui/equalizer.glade:232
+#: PulseEffects/ui/equalizer.glade:397
 msgid "Flat Response"
 msgstr "Resposta Plana"
 
-#: PulseEffects/ui/equalizer.glade:245
+#: PulseEffects/ui/equalizer.glade:410
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
 msgid "Calibration"
 msgstr "Calibração"
 
-#: PulseEffects/ui/equalizer.glade:995
+#: PulseEffects/ui/equalizer.glade:1882
 msgid "Input [dB]"
 msgstr "Entrada [dB]"
 
-#: PulseEffects/ui/equalizer.glade:1008
+#: PulseEffects/ui/equalizer.glade:1895
 msgid "Output [dB]"
 msgstr "Saída [dB]"
 
@@ -263,6 +263,10 @@ msgstr "Resetar"
 msgid "Use Dark Theme"
 msgstr "Usar Tema Escuro"
 
+#: PulseEffects/ui/main_ui.glade:568
+msgid "Enable All Applications"
+msgstr "Habilitar Todos os Aplicativos"
+
 #: PulseEffects/ui/output_limiter.glade:24
 msgid "Output Limiter"
 msgstr "Limitador de Saída"
@@ -315,16 +319,16 @@ msgstr "Sala de Máquinas"
 msgid "Small Room"
 msgstr "Quarto Pequeno"
 
-#: PulseEffects/effects_base.py:45
+#: PulseEffects/effects_base.py:81
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
 msgid "Applications"
 msgstr "Aplicativos"
 
-#: PulseEffects/effects_base.py:210 PulseEffects/effects_base.py:286
+#: PulseEffects/effects_base.py:218 PulseEffects/effects_base.py:293
 msgid "paused"
 msgstr "pausado"
 
-#: PulseEffects/effects_base.py:212 PulseEffects/effects_base.py:288
+#: PulseEffects/effects_base.py:220 PulseEffects/effects_base.py:295
 msgid "playing"
 msgstr "tocando"
 
