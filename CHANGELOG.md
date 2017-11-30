@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+meson: gstreamer-insetbin dependency check
 
 ## [3.0.9]
 ### Added
