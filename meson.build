@@ -17,6 +17,7 @@ pangocairo = dependency('pangocairo', version: '>= 1.0')
 
 gst = dependency('gstreamer-1.0', version: '>= 1.12')
 gstbad = dependency('gstreamer-plugins-bad-1.0', version: '>= 1.12')
+gstinsertbin = dependency('gstreamer-insertbin-1.0', version: '>= 1.12')
 
 prefix = get_option('prefix')
 bindir = join_paths(prefix, get_option('bindir'))
