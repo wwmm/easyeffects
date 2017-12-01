@@ -34,6 +34,7 @@ output at the same time it applies them for applications output:
 ### GNU/Linux Packages
 
 - [Arch Linux](https://aur.archlinux.org/packages/pulseeffects/)
+- [Gentoo](https://packages.gentoo.org/packages/media-sound/pulseeffects/)
 
 #### Community Packages
 
