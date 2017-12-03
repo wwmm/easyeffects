@@ -4,6 +4,9 @@
 ### Added
 meson: gstreamer-insetbin dependency check
 
+### Fixed
+Enable all apps settings: it is not reset to treu when closing the window
+
 ## [3.0.9]
 ### Added
 - Equalizer: it now has 30 bands fully configurable by the user

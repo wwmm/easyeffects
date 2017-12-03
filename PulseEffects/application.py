@@ -36,6 +36,7 @@ class Application(Gtk.Application):
         Gtk.Application.do_startup(self)
 
         self.ui_initialized = False
+        self.running_as_service = False
         self.module_path = os.path.dirname(__file__)
 
         log_format = '%(asctime)s.%(msecs)d - %(name)s - %(levelname)s'
@@ -68,6 +69,8 @@ class Application(Gtk.Application):
         self.soe = SourceOutputEffects(self.pm)
 
         if self.props.flags & Gio.ApplicationFlags.IS_SERVICE:
+            self.running_as_service = True
+
             self.init_ui()
 
             self.sie.switch_on_all_apps = True
@@ -131,8 +134,10 @@ class Application(Gtk.Application):
 
     def on_window_destroy(self, window):
         self.ui_initialized = False
-        self.sie.switch_on_all_apps = True
-        self.soe.switch_on_all_apps = True
+
+        if self.running_as_service:
+            self.sie.switch_on_all_apps = True
+            self.soe.switch_on_all_apps = True
 
     def do_activate(self):
         if not self.ui_initialized:
