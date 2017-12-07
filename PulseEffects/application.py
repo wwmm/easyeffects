@@ -328,7 +328,6 @@ class Application(Gtk.Application):
         self.settings.reset('spectrum-n-points')
         self.settings.reset('use-dark-theme')
 
-        self.init_theme()
         self.init_buffer_time()
         self.init_latency_time()
         self.init_spectrum_widgets()

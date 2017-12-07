@@ -234,6 +234,25 @@ class SavePresets():
                                 'band28_type': str(types[28]),
                                 'band29_type': str(types[29])}
 
+    def save_bass_enhancer_presets(self, settings, section):
+        enabled = settings.get_value('bass-enhancer-state')
+        input_gain = settings.get_value('bass-enhancer-input-gain')
+        output_gain = settings.get_value('bass-enhancer-output-gain')
+        amount = settings.get_value('bass-enhancer-amount')
+        harmonics = settings.get_value('bass-enhancer-harmonics')
+        scope = settings.get_value('bass-enhancer-scope')
+        floor = settings.get_value('bass-enhancer-floor')
+        blend = settings.get_value('bass-enhancer-blend')
+
+        self.config[section] = {'enabled': str(enabled),
+                                'input_gain': str(input_gain),
+                                'output_gain': str(output_gain),
+                                'amount': str(amount),
+                                'harmonics': str(harmonics),
+                                'scope': str(scope),
+                                'floor': str(floor),
+                                'blend': str(blend)}
+
     def save_output_limiter_presets(self, settings, section):
         enabled = settings.get_value('output-limiter-state')
         input_gain = settings.get_value('output-limiter-input-gain')
@@ -254,6 +273,7 @@ class SavePresets():
         self.save_highpass_presets(settings, 'apps_highpass')
         self.save_lowpass_presets(settings, 'apps_lowpass')
         self.save_equalizer_presets(settings, 'apps_equalizer')
+        self.save_bass_enhancer_presets(settings, 'apps_bass_enhancer')
         self.save_output_limiter_presets(settings, 'apps_output_limiter')
 
     def save_source_outputs_presets(self, settings):

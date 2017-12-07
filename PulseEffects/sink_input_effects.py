@@ -160,16 +160,6 @@ class SinkInputEffects(EffectsBase):
 
         self.pm.set_sink_input_mute(idx, state)
 
-    def on_listbox_row_activated(self, obj, row):
-        EffectsBase.on_listbox_row_activated(self, obj, row)
-
-        name = row.get_name()
-
-        if name == 'panorama':
-            self.stack.set_visible_child(self.panorama.ui_window)
-        elif name == 'output_limiter':
-            self.stack.set_visible_child(self.output_limiter.ui_window)
-
     def on_message_element(self, bus, msg):
         EffectsBase.on_message_element(self, bus, msg)
 
