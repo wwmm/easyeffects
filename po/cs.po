@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-07 15:46-0200\n"
-"PO-Revision-Date: 2017-09-27 12:23-0300\n"
+"PO-Revision-Date: 2017-12-07 21:59+0100\n"
 "Last-Translator: Pavel Fric <pavelfric@seznam.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Lokalize 1.5\n"
 
 #: PulseEffects/ui/about.glade:11
 msgid "Audio Effects for Pulseaudio Applications"
@@ -23,24 +23,23 @@ msgstr "Zvukové efekty pro programy využívající Pulseaudio"
 
 #: PulseEffects/ui/app_info.glade:51
 msgid "Format"
-msgstr ""
+msgstr "Formát"
 
 #: PulseEffects/ui/app_info.glade:95
 msgid "Rate"
-msgstr ""
+msgstr "Kmitočet"
 
 #: PulseEffects/ui/app_info.glade:139
 msgid "Channels"
-msgstr ""
+msgstr "Kanály"
 
 #: PulseEffects/ui/app_info.glade:183
 msgid "Resampler"
-msgstr ""
+msgstr "Převzorkovač"
 
 #: PulseEffects/ui/app_info.glade:227
-#, fuzzy
 msgid "Buffer Latency"
-msgstr "Prodleva"
+msgstr "Prodleva vyrovnávací paměti"
 
 #: PulseEffects/ui/app_info.glade:271 PulseEffects/ui/main_ui.glade:325
 msgid "Latency"
@@ -48,41 +47,40 @@ msgstr "Prodleva"
 
 #: PulseEffects/ui/app_info.glade:315
 msgid "State"
-msgstr ""
+msgstr "Stav"
 
 #: PulseEffects/ui/bass_enhancer.glade:45
-#, fuzzy
 msgid "Bass Enhancer"
-msgstr "Zlepšovač zvuku"
+msgstr "Zlepšovač hloubek"
 
 #: PulseEffects/ui/bass_enhancer.glade:102
 msgid "Amount"
-msgstr ""
+msgstr "Množství"
 
 #: PulseEffects/ui/bass_enhancer.glade:114
 #: PulseEffects/ui/bass_enhancer.glade:544
 msgid "Harmonics"
-msgstr ""
+msgstr "Harmonické kmity"
 
 #: PulseEffects/ui/bass_enhancer.glade:126
 msgid "Floor [Hz]"
-msgstr ""
+msgstr "Spodní mez [Hz]"
 
 #: PulseEffects/ui/bass_enhancer.glade:138
 msgid "Scope [Hz]"
-msgstr ""
+msgstr "Rozsah [Hz]"
 
 #: PulseEffects/ui/bass_enhancer.glade:229
 msgid "3rd"
-msgstr ""
+msgstr "3."
 
 #: PulseEffects/ui/bass_enhancer.glade:241
 msgid "2nd"
-msgstr ""
+msgstr "2."
 
 #: PulseEffects/ui/bass_enhancer.glade:253
 msgid "Blend Harmonics"
-msgstr ""
+msgstr "Míchat harmonické kmity"
 
 #: PulseEffects/ui/bass_enhancer.glade:286 PulseEffects/ui/equalizer.glade:1895
 msgid "Output [dB]"
@@ -296,14 +294,12 @@ msgid "Use Dark Theme"
 msgstr "Použít tmavý vzhled"
 
 #: PulseEffects/ui/main_ui.glade:568
-#, fuzzy
 msgid "Enable All Applications"
-msgstr "Kalibrace"
+msgstr "Povolit všechny programy"
 
 #: PulseEffects/ui/output_limiter.glade:24
-#, fuzzy
 msgid "Output Limiter"
-msgstr "Omezovač vstupu"
+msgstr "Omezovač výstupu"
 
 #: PulseEffects/ui/panorama.glade:13
 msgid "Panorama"
@@ -319,7 +315,7 @@ msgstr "P"
 
 #: PulseEffects/ui/presets_menu.glade:51
 msgid "Name"
-msgstr ""
+msgstr "Název"
 
 #: PulseEffects/ui/reverb.glade:25
 msgid "Reverberation"
@@ -355,26 +351,24 @@ msgstr "Malý prostor"
 
 #: PulseEffects/effects_base.py:81
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
-#, fuzzy
 msgid "Applications"
-msgstr "Kalibrace"
+msgstr "Programy"
 
 #: PulseEffects/effects_base.py:218 PulseEffects/effects_base.py:293
 msgid "paused"
-msgstr ""
+msgstr "Pozastaveno"
 
 #: PulseEffects/effects_base.py:220 PulseEffects/effects_base.py:295
 msgid "playing"
-msgstr ""
+msgstr "Přehrává se"
 
 #: PulseEffects/presets_manager.py:120
 msgid "Save Current Settings to Preset"
-msgstr ""
+msgstr "Uložit nynější nastavení do nového přednastavení"
 
 #: PulseEffects/presets_manager.py:135
-#, fuzzy
 msgid "Delete Preset"
-msgstr "Uložit přednastavení"
+msgstr "Smazat přednastavení"
 
 #: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:64
 msgid "Guideline Position"
@@ -518,7 +512,7 @@ msgstr "omezovač (limiter);kompresor;dozvuk;ekvalizér;automatická hlasitost;"
 #. Translators: This is an icon name, don't translate!
 #: data/com.github.wwmm.pulseeffects.desktop.in:10
 msgid "pulseeffects"
-msgstr ""
+msgstr "PulseEffects"
 
 #~ msgid "Calibration Microphone Correction"
 #~ msgstr "Oprava kalibrace mikrofonu"
