@@ -7,6 +7,7 @@ Bass Enhancer: Calf Studio LV2 Bass Enhancer plugin
 
 ### Fixed
 Enable all apps settings: it is not reset to treu when closing the window
+The following translations were updated: cs
 
 ## [3.0.9]
 ### Added
