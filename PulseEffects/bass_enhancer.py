@@ -49,10 +49,9 @@ class BassEnhancer():
         self.bass_enhancer.set_property('bypass', True)
         self.bass_enhancer.set_property('listen', True)
         self.bass_enhancer.set_property('floor-active', False)
-        self.bass_enhancer.set_property('floor', 50)
-        self.bass_enhancer.set_property('amount', 1.5)
+        self.bass_enhancer.set_property('floor', 70)
+        self.bass_enhancer.set_property('amount', 2.0)
         self.bass_enhancer.set_property('drive', 10)
-        # self.bass_enhancer.set_property('level-out', 0.5)
 
         self.bin = GstInsertBin.InsertBin.new('bass_enhancer_bin')
 
@@ -65,11 +64,16 @@ class BassEnhancer():
         self.builder = Gtk.Builder.new_from_file(self.module_path +
                                                  '/ui/bass_enhancer.glade')
 
+        self.builder.connect_signals(self)
+
         self.ui_window = self.builder.get_object('window')
         self.ui_listbox_control = self.builder.get_object('listbox_control')
 
         self.ui_enable = self.builder.get_object('enable')
         # self.ui_position = self.builder.get_object('position')
+
+        self.ui_input_gain = self.builder.get_object('input_gain')
+        self.ui_output_gain = self.builder.get_object('output_gain')
 
         self.ui_input_level_left = self.builder.get_object('input_level_left')
         self.ui_input_level_right = self.builder.get_object(
@@ -104,8 +108,22 @@ class BassEnhancer():
                            flag)
         self.settings.bind('bass-enhancer-state', self.ui_window, 'sensitive',
                            Gio.SettingsBindFlags.GET)
-        # self.settings.bind('panorama-position', self.ui_position, 'value',
-        #                    flag)
+        self.settings.bind('bass-enhancer-input-gain', self.ui_input_gain,
+                           'value', flag)
+        self.settings.bind('bass-enhancer-output-gain', self.ui_output_gain,
+                           'value', flag)
+
+    def on_input_gain_value_changed(self, obj):
+        value_db = obj.get_value()
+        value_linear = 10**(value_db / 20.0)
+
+        self.bass_enhancer.set_property('level-in', value_linear)
+
+    def on_output_gain_value_changed(self, obj):
+        value_db = obj.get_value()
+        value_linear = 10**(value_db / 20.0)
+
+        self.bass_enhancer.set_property('level-out', value_linear)
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]
@@ -145,7 +163,7 @@ class BassEnhancer():
 
         self.ui_update_level(widgets, peak)
 
-        print(self.bass_enhancer.get_property('meter-drive'))
+        # print(self.bass_enhancer.get_property('meter-drive'))
 
     def reset(self):
         self.settings.reset('bass-enhancer-state')

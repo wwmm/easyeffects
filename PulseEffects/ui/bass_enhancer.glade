@@ -2,6 +2,12 @@
 <!-- Generated with glade 3.20.1 -->
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.18"/>
+  <object class="GtkAdjustment" id="input_gain">
+    <property name="lower">-12</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_input_gain_value_changed" swapped="no"/>
+  </object>
   <object class="GtkBox" id="listbox_control">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -36,6 +42,12 @@
       </packing>
     </child>
   </object>
+  <object class="GtkAdjustment" id="output_gain">
+    <property name="lower">-12</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_output_gain_value_changed" swapped="no"/>
+  </object>
   <object class="GtkBox" id="window">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -48,6 +60,24 @@
         <property name="can_focus">False</property>
         <property name="halign">center</property>
         <property name="column_spacing">6</property>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
         <child>
           <placeholder/>
         </child>
@@ -76,7 +106,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">end</property>
-            <property name="label" translatable="yes">Output</property>
+            <property name="label" translatable="yes">Output [dB]</property>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -168,7 +198,7 @@
             </child>
           </object>
           <packing>
-            <property name="left_attach">1</property>
+            <property name="left_attach">2</property>
             <property name="top_attach">1</property>
           </packing>
         </child>
@@ -177,7 +207,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">end</property>
-            <property name="label" translatable="yes">Input</property>
+            <property name="label" translatable="yes">Input [dB]</property>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -269,8 +299,40 @@
             </child>
           </object>
           <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="valign">center</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">input_gain</property>
+            <property name="round_digits">0</property>
+            <property name="digits">0</property>
+            <property name="value_pos">right</property>
+          </object>
+          <packing>
             <property name="left_attach">1</property>
             <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="valign">center</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">output_gain</property>
+            <property name="round_digits">0</property>
+            <property name="digits">0</property>
+            <property name="value_pos">right</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">1</property>
           </packing>
         </child>
       </object>
