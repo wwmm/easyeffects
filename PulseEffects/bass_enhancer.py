@@ -49,9 +49,6 @@ class BassEnhancer():
         self.bass_enhancer.set_property('bypass', True)
         self.bass_enhancer.set_property('listen', True)
         self.bass_enhancer.set_property('floor-active', False)
-        self.bass_enhancer.set_property('floor', 70)
-        self.bass_enhancer.set_property('amount', 2.0)
-        self.bass_enhancer.set_property('drive', 10)
 
         self.bin = GstInsertBin.InsertBin.new('bass_enhancer_bin')
 
@@ -70,10 +67,13 @@ class BassEnhancer():
         self.ui_listbox_control = self.builder.get_object('listbox_control')
 
         self.ui_enable = self.builder.get_object('enable')
-        # self.ui_position = self.builder.get_object('position')
 
         self.ui_input_gain = self.builder.get_object('input_gain')
         self.ui_output_gain = self.builder.get_object('output_gain')
+        self.ui_amount = self.builder.get_object('amount')
+        self.ui_harmonics = self.builder.get_object('harmonics')
+        self.ui_scope = self.builder.get_object('scope')
+        self.ui_floor = self.builder.get_object('floor')
 
         self.ui_input_level_left = self.builder.get_object('input_level_left')
         self.ui_input_level_right = self.builder.get_object(
@@ -97,8 +97,12 @@ class BassEnhancer():
 
         flag = GObject.BindingFlags.DEFAULT
 
-        # self.ui_position.bind_property('value', self.panorama, 'panorama',
-        #                                flag)
+        self.ui_amount.bind_property('value', self.bass_enhancer, 'amount',
+                                     flag)
+        self.ui_harmonics.bind_property('value', self.bass_enhancer, 'drive',
+                                        flag)
+        self.ui_scope.bind_property('value', self.bass_enhancer, 'freq', flag)
+        self.ui_floor.bind_property('value', self.bass_enhancer, 'floor', flag)
 
         # binding ui widgets to gsettings
 
@@ -112,6 +116,12 @@ class BassEnhancer():
                            'value', flag)
         self.settings.bind('bass-enhancer-output-gain', self.ui_output_gain,
                            'value', flag)
+        self.settings.bind('bass-enhancer-amount', self.ui_amount, 'value',
+                           flag)
+        self.settings.bind('bass-enhancer-harmonics', self.ui_harmonics,
+                           'value', flag)
+        self.settings.bind('bass-enhancer-scope', self.ui_scope, 'value', flag)
+        self.settings.bind('bass-enhancer-floor', self.ui_floor, 'value', flag)
 
     def on_input_gain_value_changed(self, obj):
         value_db = obj.get_value()

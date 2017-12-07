@@ -493,6 +493,18 @@
         <key name="bass-enhancer-output-gain" type="d">
           <default>0</default>
         </key>
+        <key name="bass-enhancer-amount" type="d">
+          <default>1</default>
+        </key>
+        <key name="bass-enhancer-harmonics" type="d">
+          <default>8.5</default>
+        </key>
+        <key name="bass-enhancer-scope" type="d">
+          <default>100</default>
+        </key>
+        <key name="bass-enhancer-floor" type="d">
+          <default>20</default>
+        </key>
 
         <key name="output-limiter-state" type="b">
           <default>false</default>
