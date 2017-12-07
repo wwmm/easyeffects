@@ -3,6 +3,7 @@
 ## [Unreleased]
 ### Added
 meson: gstreamer-insetbin dependency check
+Bass Enhancer: Calf Studio LV2 Bass Enhancer plugin
 
 ### Fixed
 Enable all apps settings: it is not reset to treu when closing the window

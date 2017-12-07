@@ -74,6 +74,7 @@ class BassEnhancer():
         self.ui_harmonics = self.builder.get_object('harmonics')
         self.ui_scope = self.builder.get_object('scope')
         self.ui_floor = self.builder.get_object('floor')
+        self.ui_blend = self.builder.get_object('blend')
 
         self.ui_input_level_left = self.builder.get_object('input_level_left')
         self.ui_input_level_right = self.builder.get_object(
@@ -82,6 +83,8 @@ class BassEnhancer():
             'output_level_left')
         self.ui_output_level_right = self.builder.get_object(
             'output_level_right')
+        self.ui_harmonics_levelbar = self.builder.get_object(
+            'harmonics_levelbar')
 
         self.ui_input_level_left_label = self.builder.get_object(
             'input_level_left_label')
@@ -103,6 +106,7 @@ class BassEnhancer():
                                         flag)
         self.ui_scope.bind_property('value', self.bass_enhancer, 'freq', flag)
         self.ui_floor.bind_property('value', self.bass_enhancer, 'floor', flag)
+        self.ui_blend.bind_property('value', self.bass_enhancer, 'blend', flag)
 
         # binding ui widgets to gsettings
 
@@ -122,6 +126,7 @@ class BassEnhancer():
                            'value', flag)
         self.settings.bind('bass-enhancer-scope', self.ui_scope, 'value', flag)
         self.settings.bind('bass-enhancer-floor', self.ui_floor, 'value', flag)
+        self.settings.bind('bass-enhancer-blend', self.ui_blend, 'value', flag)
 
     def on_input_gain_value_changed(self, obj):
         value_db = obj.get_value()
@@ -173,8 +178,15 @@ class BassEnhancer():
 
         self.ui_update_level(widgets, peak)
 
-        # print(self.bass_enhancer.get_property('meter-drive'))
+        harmonics = self.bass_enhancer.get_property('meter-drive')
+        self.ui_harmonics_levelbar.set_value(harmonics)
 
     def reset(self):
         self.settings.reset('bass-enhancer-state')
-        # self.settings.reset('panorama-position')
+        self.settings.reset('bass-enhancer-input-gain')
+        self.settings.reset('bass-enhancer-output-gain')
+        self.settings.reset('bass-enhancer-amount')
+        self.settings.reset('bass-enhancer-harmonics')
+        self.settings.reset('bass-enhancer-scope')
+        self.settings.reset('bass-enhancer-floor')
+        self.settings.reset('bass-enhancer-blend')

@@ -1,5 +1,5 @@
 project('PulseEffects',
-  version: '3.0.9',
+  version: '3.1.0',
   meson_version: '>= 0.40.0'
 )
 
@@ -10,7 +10,9 @@ message('Checking dependencies')
 py3 = py3_mod.find_python()
 
 libpulse = dependency('libpulse')
+
 gtk3 = dependency('gtk+-3.0', version: '>= 3.18')
+
 pygobj = dependency('pygobject-3.0')
 pycairo = dependency('py3cairo')
 pangocairo = dependency('pangocairo', version: '>= 1.0')
@@ -18,6 +20,8 @@ pangocairo = dependency('pangocairo', version: '>= 1.0')
 gst = dependency('gstreamer-1.0', version: '>= 1.12')
 gstbad = dependency('gstreamer-plugins-bad-1.0', version: '>= 1.12')
 gstinsertbin = dependency('gstreamer-insertbin-1.0', version: '>= 1.12')
+
+lilv = dependency('lilv-0', version: '>= 0.22', required: false)
 
 prefix = get_option('prefix')
 bindir = join_paths(prefix, get_option('bindir'))

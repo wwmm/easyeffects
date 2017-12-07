@@ -16,7 +16,8 @@ Order of effects applied to applications output:
 6. Butterworth Highpass filter (Gstreamer audiocheblimit)
 7. Butterworth Lowpass filter (Gstreamer audiocheblimit)
 8. 30 Bands Parametric Equalizer (Gstreamer)
-9. Spectrum Analyzer (Gstreamer)
+9. Bass Enhancer (LV2 Calf Studio Bass Enhancer)
+10. Spectrum Analyzer (Gstreamer)
 
 Since version 2.0.0 PulseEffects is capable of applying effects to microphone
 output at the same time it applies them for applications output:
