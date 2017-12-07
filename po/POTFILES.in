@@ -5,6 +5,7 @@ PulseEffects/ui/compressor.glade
 PulseEffects/ui/effects_box.glade
 PulseEffects/ui/equalizer.glade
 PulseEffects/ui/equalizer_band_menu.glade
+PulseEffects/ui/exciter.glade
 PulseEffects/ui/highpass.glade
 PulseEffects/ui/limiter.glade
 PulseEffects/ui/lowpass.glade

@@ -234,6 +234,25 @@ class SavePresets():
                                 'band28_type': str(types[28]),
                                 'band29_type': str(types[29])}
 
+    def save_exciter_presets(self, settings, section):
+        enabled = settings.get_value('exciter-state')
+        input_gain = settings.get_value('exciter-input-gain')
+        output_gain = settings.get_value('exciter-output-gain')
+        amount = settings.get_value('exciter-amount')
+        harmonics = settings.get_value('exciter-harmonics')
+        scope = settings.get_value('exciter-scope')
+        ceiling = settings.get_value('exciter-ceiling')
+        blend = settings.get_value('exciter-blend')
+
+        self.config[section] = {'enabled': str(enabled),
+                                'input_gain': str(input_gain),
+                                'output_gain': str(output_gain),
+                                'amount': str(amount),
+                                'harmonics': str(harmonics),
+                                'scope': str(scope),
+                                'floor': str(ceiling),
+                                'blend': str(blend)}
+
     def save_bass_enhancer_presets(self, settings, section):
         enabled = settings.get_value('bass-enhancer-state')
         input_gain = settings.get_value('bass-enhancer-input-gain')
@@ -273,6 +292,7 @@ class SavePresets():
         self.save_highpass_presets(settings, 'apps_highpass')
         self.save_lowpass_presets(settings, 'apps_lowpass')
         self.save_equalizer_presets(settings, 'apps_equalizer')
+        self.save_exciter_presets(settings, 'apps_exciter')
         self.save_bass_enhancer_presets(settings, 'apps_bass_enhancer')
         self.save_output_limiter_presets(settings, 'apps_output_limiter')
 

@@ -8,6 +8,7 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gio, GstInsertBin, Gtk
 from PulseEffects.bass_enhancer import BassEnhancer
 from PulseEffects.effects_base import EffectsBase
+from PulseEffects.exciter import Exciter
 from PulseEffects.output_limiter import OutputLimiter
 from PulseEffects.panorama import Panorama
 
@@ -22,6 +23,7 @@ class SinkInputEffects(EffectsBase):
 
         self.log_tag = 'apps: '
         self.panorama_ready = False
+        self.exciter_ready = False
         self.bass_enhancer_ready = False
 
         self.set_source_monitor_name(self.pm.apps_sink_monitor_name)
@@ -46,11 +48,13 @@ class SinkInputEffects(EffectsBase):
         self.pm.connect('new_default_sink', self.update_output_sink_name)
 
         self.panorama = Panorama(self.settings)
+        self.exciter = Exciter(self.settings)
         self.bass_enhancer = BassEnhancer(self.settings)
         self.output_limiter = OutputLimiter(self.settings)
 
         # effects wrappers
         self.panorama_wrapper = GstInsertBin.InsertBin.new('panorama_wrapper')
+        self.exciter_wrapper = GstInsertBin.InsertBin.new('exciter_wrapper')
         self.bass_enhancer_wrapper = GstInsertBin.InsertBin.new(
             'bass_enhancer_wrapper')
         self.output_limiter_wrapper = GstInsertBin.InsertBin.new(
@@ -62,8 +66,13 @@ class SinkInputEffects(EffectsBase):
                                       self.on_filter_added,
                                       self.log_tag)
 
-        self.effects_bin.insert_after(self.bass_enhancer_wrapper,
+        self.effects_bin.insert_after(self.exciter_wrapper,
                                       self.equalizer_wrapper,
+                                      self.on_filter_added,
+                                      self.log_tag)
+
+        self.effects_bin.insert_after(self.bass_enhancer_wrapper,
+                                      self.exciter_wrapper,
                                       self.on_filter_added,
                                       self.log_tag)
 
@@ -76,10 +85,12 @@ class SinkInputEffects(EffectsBase):
         EffectsBase.init_ui(self)
 
         self.panorama.init_ui()
+        self.exciter.init_ui()
         self.bass_enhancer.init_ui()
         self.output_limiter.init_ui()
 
         self.insert_in_listbox('panorama', 2)
+        self.add_to_listbox('exciter')
         self.add_to_listbox('bass_enhancer')
         self.add_to_listbox('output_limiter')
 
@@ -94,11 +105,13 @@ class SinkInputEffects(EffectsBase):
         self.stack.add_named(self.highpass.ui_window, 'highpass')
         self.stack.add_named(self.lowpass.ui_window, 'lowpass')
         self.stack.add_named(self.equalizer.ui_window, 'equalizer')
+        self.stack.add_named(self.exciter.ui_window, 'exciter')
         self.stack.add_named(self.bass_enhancer.ui_window, 'bass_enhancer')
         self.stack.add_named(self.output_limiter.ui_window, 'output_limiter')
 
         # on/off switches connections
         self.panorama.ui_enable.connect('state-set', self.on_panorama_enable)
+        self.exciter.ui_enable.connect('state-set', self.on_exciter_enable)
         self.bass_enhancer.ui_enable.connect('state-set',
                                              self.on_bass_enhancer_enable)
         self.output_limiter.ui_limiter_enable\
@@ -121,6 +134,12 @@ class SinkInputEffects(EffectsBase):
         else:
             self.compressor.ui_window.set_sensitive(False)
             self.compressor.ui_enable.set_sensitive(False)
+
+        if self.exciter.is_installed:
+            self.exciter.bind()
+        else:
+            self.exciter.ui_window.set_sensitive(False)
+            self.exciter.ui_enable.set_sensitive(False)
 
         if self.bass_enhancer.is_installed:
             self.bass_enhancer.bind()
@@ -173,6 +192,14 @@ class SinkInputEffects(EffectsBase):
             peak = msg.get_structure().get_value('peak')
 
             self.panorama.ui_update_panorama_output_level(peak)
+        elif plugin == 'exciter_input_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.exciter.ui_update_input_level(peak)
+        elif plugin == 'exciter_output_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.exciter.ui_update_output_level(peak)
         elif plugin == 'bass_enhancer_input_level':
             peak = msg.get_structure().get_value('peak')
 
@@ -203,6 +230,17 @@ class SinkInputEffects(EffectsBase):
                                          self.on_filter_removed,
                                          self.log_tag)
 
+    def on_exciter_enable(self, obj, state):
+        if state:
+            if not self.exciter_wrapper.get_by_name('exciter_bin'):
+                self.exciter_wrapper.append(self.exciter.bin,
+                                            self.on_filter_added,
+                                            self.log_tag)
+        else:
+            self.exciter_wrapper.remove(self.exciter.bin,
+                                        self.on_filter_removed,
+                                        self.log_tag)
+
     def on_bass_enhancer_enable(self, obj, state):
         if state:
             if not self.bass_enhancer_wrapper.get_by_name('bass_enhancer_bin'):
@@ -230,5 +268,6 @@ class SinkInputEffects(EffectsBase):
         EffectsBase.reset(self)
 
         self.panorama.reset()
+        self.exciter.reset()
         self.bass_enhancer.reset()
         self.output_limiter.reset()

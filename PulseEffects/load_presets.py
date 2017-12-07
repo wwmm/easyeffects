@@ -334,6 +334,29 @@ class LoadPresets():
             settings.set_value('equalizer-band' + str(n) + '-quality', q)
             settings.set_value('equalizer-band' + str(n) + '-type', t)
 
+    def load_exciter_presets(self, settings, section):
+        enabled = self.config.getboolean(section, 'enabled', fallback=False)
+        input_gain = self.config.getfloat(section, 'input_gain', fallback=0.0)
+        output_gain = self.config.getfloat(section, 'output_gain',
+                                           fallback=0.0)
+        amount = self.config.getfloat(section, 'amount', fallback=1.0)
+        harmonics = self.config.getfloat(section, 'harmonics', fallback=8.5)
+        scope = self.config.getfloat(section, 'scope', fallback=7500.0)
+        ceiling = self.config.getfloat(section, 'ceiling', fallback=16000.0)
+        blend = self.config.getfloat(section, 'blend', fallback=0.0)
+
+        settings.set_value('exciter-state', GLib.Variant('b', enabled))
+        settings.set_value('exciter-input-gain',
+                           GLib.Variant('d', input_gain))
+        settings.set_value('exciter-output-gain',
+                           GLib.Variant('d', output_gain))
+        settings.set_value('exciter-amount', GLib.Variant('d', amount))
+        settings.set_value('exciter-harmonics',
+                           GLib.Variant('d', harmonics))
+        settings.set_value('exciter-scope', GLib.Variant('d', scope))
+        settings.set_value('exciter-ceiling', GLib.Variant('d', ceiling))
+        settings.set_value('exciter-blend', GLib.Variant('d', blend))
+
     def load_bass_enhancer_presets(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
         input_gain = self.config.getfloat(section, 'input_gain', fallback=0.0)
@@ -380,6 +403,7 @@ class LoadPresets():
         self.load_highpass_presets(settings, 'apps_highpass')
         self.load_lowpass_presets(settings, 'apps_lowpass')
         self.load_equalizer_presets(settings, 'apps_equalizer')
+        self.load_exciter_presets(settings, 'apps_exciter')
         self.load_bass_enhancer_presets(settings, 'apps_bass_enhancer')
         self.load_output_limiter_presets(settings, 'apps_output_limiter')
 
