@@ -42,7 +42,17 @@ class BassEnhancer():
         output_level = Gst.ElementFactory.make('level',
                                                'bass_enhancer_output_level')
 
-        self.bass_enhancer.set_property('bypass', False)
+        # it seems there is a bug in gstreaner
+        # booleans are inverted. For example we have to turn on bypass in order
+        # to effects to be applied
+
+        self.bass_enhancer.set_property('bypass', True)
+        self.bass_enhancer.set_property('listen', True)
+        self.bass_enhancer.set_property('floor-active', False)
+        self.bass_enhancer.set_property('floor', 50)
+        self.bass_enhancer.set_property('amount', 1.5)
+        self.bass_enhancer.set_property('drive', 10)
+        # self.bass_enhancer.set_property('level-out', 0.5)
 
         self.bin = GstInsertBin.InsertBin.new('bass_enhancer_bin')
 
@@ -134,6 +144,8 @@ class BassEnhancer():
                    self.ui_output_level_right_label]
 
         self.ui_update_level(widgets, peak)
+
+        print(self.bass_enhancer.get_property('meter-drive'))
 
     def reset(self):
         self.settings.reset('bass-enhancer-state')
