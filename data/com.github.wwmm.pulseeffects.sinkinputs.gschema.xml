@@ -484,6 +484,10 @@
           <default>0</default>
         </key>
 
+        <key name="bass-enhancer-state" type="b">
+          <default>false</default>
+        </key>
+
         <key name="output-limiter-state" type="b">
           <default>false</default>
         </key>
