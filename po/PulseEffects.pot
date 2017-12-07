@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-28 20:56-0200\n"
+"POT-Creation-Date: 2017-12-07 15:46-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,32 +21,73 @@ msgstr ""
 msgid "Audio Effects for Pulseaudio Applications"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:137
+#: PulseEffects/ui/app_info.glade:51
 msgid "Format"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:181
+#: PulseEffects/ui/app_info.glade:95
 msgid "Rate"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:225
+#: PulseEffects/ui/app_info.glade:139
 msgid "Channels"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:269
+#: PulseEffects/ui/app_info.glade:183
 msgid "Resampler"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:313
+#: PulseEffects/ui/app_info.glade:227
 msgid "Buffer Latency"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:357 PulseEffects/ui/main_ui.glade:325
+#: PulseEffects/ui/app_info.glade:271 PulseEffects/ui/main_ui.glade:325
 msgid "Latency"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:401
+#: PulseEffects/ui/app_info.glade:315
 msgid "State"
+msgstr ""
+
+#: PulseEffects/ui/bass_enhancer.glade:45
+msgid "Bass Enhancer"
+msgstr ""
+
+#: PulseEffects/ui/bass_enhancer.glade:102
+msgid "Amount"
+msgstr ""
+
+#: PulseEffects/ui/bass_enhancer.glade:114
+#: PulseEffects/ui/bass_enhancer.glade:544
+msgid "Harmonics"
+msgstr ""
+
+#: PulseEffects/ui/bass_enhancer.glade:126
+msgid "Floor [Hz]"
+msgstr ""
+
+#: PulseEffects/ui/bass_enhancer.glade:138
+msgid "Scope [Hz]"
+msgstr ""
+
+#: PulseEffects/ui/bass_enhancer.glade:229
+msgid "3rd"
+msgstr ""
+
+#: PulseEffects/ui/bass_enhancer.glade:241
+msgid "2nd"
+msgstr ""
+
+#: PulseEffects/ui/bass_enhancer.glade:253
+msgid "Blend Harmonics"
+msgstr ""
+
+#: PulseEffects/ui/bass_enhancer.glade:286 PulseEffects/ui/equalizer.glade:1895
+msgid "Output [dB]"
+msgstr ""
+
+#: PulseEffects/ui/bass_enhancer.glade:299 PulseEffects/ui/equalizer.glade:1882
+msgid "Input [dB]"
 msgstr ""
 
 #: PulseEffects/ui/compressor.glade:27
@@ -127,14 +168,6 @@ msgstr ""
 #: PulseEffects/ui/equalizer.glade:410
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
 msgid "Calibration"
-msgstr ""
-
-#: PulseEffects/ui/equalizer.glade:1882
-msgid "Input [dB]"
-msgstr ""
-
-#: PulseEffects/ui/equalizer.glade:1895
-msgid "Output [dB]"
 msgstr ""
 
 #: PulseEffects/ui/equalizer_band_menu.glade:24

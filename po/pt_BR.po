@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-28 20:56-0200\n"
-"PO-Revision-Date: 2017-11-28 20:57-0200\n"
+"POT-Creation-Date: 2017-12-07 15:46-0200\n"
+"PO-Revision-Date: 2017-12-07 15:50-0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
@@ -24,33 +24,74 @@ msgstr ""
 msgid "Audio Effects for Pulseaudio Applications"
 msgstr "Efeitos de Áudio para Programas que Utilizam Pulseaudio"
 
-#: PulseEffects/ui/app_info.glade:137
+#: PulseEffects/ui/app_info.glade:51
 msgid "Format"
 msgstr "Formato"
 
-#: PulseEffects/ui/app_info.glade:181
+#: PulseEffects/ui/app_info.glade:95
 msgid "Rate"
 msgstr "Taxa"
 
-#: PulseEffects/ui/app_info.glade:225
+#: PulseEffects/ui/app_info.glade:139
 msgid "Channels"
 msgstr "Canais"
 
-#: PulseEffects/ui/app_info.glade:269
+#: PulseEffects/ui/app_info.glade:183
 msgid "Resampler"
 msgstr "Resampler"
 
-#: PulseEffects/ui/app_info.glade:313
+#: PulseEffects/ui/app_info.glade:227
 msgid "Buffer Latency"
 msgstr "Latência de Buffer"
 
-#: PulseEffects/ui/app_info.glade:357 PulseEffects/ui/main_ui.glade:325
+#: PulseEffects/ui/app_info.glade:271 PulseEffects/ui/main_ui.glade:325
 msgid "Latency"
 msgstr "Latência"
 
-#: PulseEffects/ui/app_info.glade:401
+#: PulseEffects/ui/app_info.glade:315
 msgid "State"
 msgstr "Estado"
+
+#: PulseEffects/ui/bass_enhancer.glade:45
+msgid "Bass Enhancer"
+msgstr "Reforçador de Graves"
+
+#: PulseEffects/ui/bass_enhancer.glade:102
+msgid "Amount"
+msgstr "Quantidade"
+
+#: PulseEffects/ui/bass_enhancer.glade:114
+#: PulseEffects/ui/bass_enhancer.glade:544
+msgid "Harmonics"
+msgstr "Harmônico"
+
+#: PulseEffects/ui/bass_enhancer.glade:126
+msgid "Floor [Hz]"
+msgstr "Piso [Hz]"
+
+#: PulseEffects/ui/bass_enhancer.glade:138
+msgid "Scope [Hz]"
+msgstr "Escopo [Hz]"
+
+#: PulseEffects/ui/bass_enhancer.glade:229
+msgid "3rd"
+msgstr "3°"
+
+#: PulseEffects/ui/bass_enhancer.glade:241
+msgid "2nd"
+msgstr "2°"
+
+#: PulseEffects/ui/bass_enhancer.glade:253
+msgid "Blend Harmonics"
+msgstr "Mistura de Harmônicos"
+
+#: PulseEffects/ui/bass_enhancer.glade:286 PulseEffects/ui/equalizer.glade:1895
+msgid "Output [dB]"
+msgstr "Saída [dB]"
+
+#: PulseEffects/ui/bass_enhancer.glade:299 PulseEffects/ui/equalizer.glade:1882
+msgid "Input [dB]"
+msgstr "Entrada [dB]"
 
 #: PulseEffects/ui/compressor.glade:27
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:52
@@ -131,14 +172,6 @@ msgstr "Resposta Plana"
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
 msgid "Calibration"
 msgstr "Calibração"
-
-#: PulseEffects/ui/equalizer.glade:1882
-msgid "Input [dB]"
-msgstr "Entrada [dB]"
-
-#: PulseEffects/ui/equalizer.glade:1895
-msgid "Output [dB]"
-msgstr "Saída [dB]"
 
 #: PulseEffects/ui/equalizer_band_menu.glade:24
 msgid "Peak"
