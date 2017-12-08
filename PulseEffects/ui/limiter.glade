@@ -89,6 +89,7 @@
   <object class="GtkGrid" id="window">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
+    <property name="valign">center</property>
     <property name="row_spacing">6</property>
     <child>
       <object class="GtkBox" id="controls">

@@ -41,9 +41,11 @@ class Lowpass():
                                                  '/ui/lowpass.glade')
 
         self.ui_window = self.builder.get_object('window')
+        self.ui_controls = self.builder.get_object('controls')
         self.ui_listbox_control = self.builder.get_object('listbox_control')
 
         self.ui_enable = self.builder.get_object('enable')
+        self.ui_img_state = self.builder.get_object('img_state')
         self.ui_cutoff = self.builder.get_object('cutoff')
         self.ui_poles = self.builder.get_object('poles')
 
@@ -78,7 +80,8 @@ class Lowpass():
         flag = Gio.SettingsBindFlags.DEFAULT
 
         self.settings.bind('lowpass-state', self.ui_enable, 'active', flag)
-        self.settings.bind('lowpass-state', self.ui_window, 'sensitive',
+        self.settings.bind('lowpass-state', self.ui_img_state, 'visible', flag)
+        self.settings.bind('lowpass-state', self.ui_controls, 'sensitive',
                            Gio.SettingsBindFlags.GET)
         self.settings.bind('lowpass-cutoff', self.ui_cutoff, 'value', flag)
         self.settings.bind('lowpass-poles', self.ui_poles, 'value', flag)
