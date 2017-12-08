@@ -56,10 +56,12 @@ class OutputLimiter():
         self.builder.connect_signals(self)
 
         self.ui_window = self.builder.get_object('window')
+        self.ui_controls = self.builder.get_object('controls')
         self.ui_listbox_control = self.builder.get_object('listbox_control')
         self.ui_limiter_controls = self.builder.get_object('limiter_controls')
 
         self.ui_limiter_enable = self.builder.get_object('limiter_enable')
+        self.ui_img_state = self.builder.get_object('img_state')
         self.ui_input_gain = self.builder.get_object('input_gain')
         self.ui_limit = self.builder.get_object('limit')
         self.ui_release_time = self.builder.get_object('release_time')
@@ -109,7 +111,9 @@ class OutputLimiter():
 
         self.settings.bind('output-limiter-state', self.ui_limiter_enable,
                            'active', flag)
-        self.settings.bind('output-limiter-state', self.ui_window,
+        self.settings.bind('output-limiter-state', self.ui_img_state,
+                           'visible', flag)
+        self.settings.bind('output-limiter-state', self.ui_controls,
                            'sensitive', Gio.SettingsBindFlags.GET)
         self.settings.bind('output-limiter-input-gain', self.ui_input_gain,
                            'value', flag)

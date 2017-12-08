@@ -64,9 +64,11 @@ class BassEnhancer():
         self.builder.connect_signals(self)
 
         self.ui_window = self.builder.get_object('window')
+        self.ui_controls = self.builder.get_object('controls')
         self.ui_listbox_control = self.builder.get_object('listbox_control')
 
         self.ui_enable = self.builder.get_object('enable')
+        self.ui_img_state = self.builder.get_object('img_state')
 
         self.ui_input_gain = self.builder.get_object('input_gain')
         self.ui_output_gain = self.builder.get_object('output_gain')
@@ -114,8 +116,10 @@ class BassEnhancer():
 
         self.settings.bind('bass-enhancer-state', self.ui_enable, 'active',
                            flag)
-        self.settings.bind('bass-enhancer-state', self.ui_window, 'sensitive',
-                           Gio.SettingsBindFlags.GET)
+        self.settings.bind('bass-enhancer-state', self.ui_img_state, 'visible',
+                           flag)
+        self.settings.bind('bass-enhancer-state', self.ui_controls,
+                           'sensitive', Gio.SettingsBindFlags.GET)
         self.settings.bind('bass-enhancer-input-gain', self.ui_input_gain,
                            'value', flag)
         self.settings.bind('bass-enhancer-output-gain', self.ui_output_gain,
