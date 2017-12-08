@@ -12,13 +12,27 @@
         <property name="can_focus">False</property>
         <property name="hexpand">True</property>
         <child>
-          <object class="GtkListBox" id="listbox">
+          <object class="GtkScrolledWindow">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="margin_left">6</property>
-            <property name="margin_right">6</property>
-            <property name="margin_top">6</property>
-            <property name="margin_bottom">6</property>
+            <property name="can_focus">True</property>
+            <property name="hscrollbar_policy">never</property>
+            <property name="propagate_natural_width">True</property>
+            <child>
+              <object class="GtkViewport">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkListBox" id="listbox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_left">6</property>
+                    <property name="margin_right">6</property>
+                    <property name="margin_top">6</property>
+                    <property name="margin_bottom">6</property>
+                  </object>
+                </child>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
