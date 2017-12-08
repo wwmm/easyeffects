@@ -27,7 +27,7 @@
         <property name="can_focus">False</property>
         <property name="halign">center</property>
         <property name="valign">center</property>
-        <property name="icon_name">emblem-default-symbolic</property>
+        <property name="icon_name">emblem-ok-symbolic</property>
       </object>
       <packing>
         <property name="expand">False</property>
