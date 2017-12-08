@@ -53,9 +53,11 @@ class Panorama():
                                                  '/ui/panorama.glade')
 
         self.ui_window = self.builder.get_object('window')
+        self.ui_controls = self.builder.get_object('controls')
         self.ui_listbox_control = self.builder.get_object('listbox_control')
 
         self.ui_enable = self.builder.get_object('enable')
+        self.ui_img_state = self.builder.get_object('img_state')
         self.ui_position = self.builder.get_object('position')
 
         self.ui_input_level_left = self.builder.get_object('input_level_left')
@@ -88,7 +90,9 @@ class Panorama():
         flag = Gio.SettingsBindFlags.DEFAULT
 
         self.settings.bind('panorama-state', self.ui_enable, 'active', flag)
-        self.settings.bind('panorama-state', self.ui_window, 'sensitive',
+        self.settings.bind('panorama-state', self.ui_img_state, 'visible',
+                           flag)
+        self.settings.bind('panorama-state', self.ui_controls, 'sensitive',
                            Gio.SettingsBindFlags.GET)
         self.settings.bind('panorama-position', self.ui_position, 'value',
                            flag)
