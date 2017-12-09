@@ -303,6 +303,7 @@ class Application(Gtk.Application):
                 f.write('Name=PulseEffects\n')
                 f.write('Comment=PulseEffects Service\n')
                 f.write('Exec=pulseeffects --gapplication-service\n')
+                f.write('Icon=pulseeffects\n')
                 f.write('StartupNotify=false\n')
                 f.write('Terminal=false\n')
                 f.write('Type=Application\n')
