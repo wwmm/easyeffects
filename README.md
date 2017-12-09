@@ -72,6 +72,8 @@ Required libraries:
 - Gstreamer, Gstreamer Plugins Good, Gstreamer Plugins Bad and Gstreamer Python
  (Since version 1.4.3 Pulseeffects needs Gstreamer 1.12 or above)
 - [swh-plugins](https://github.com/swh/ladspa) from Ladspa
+- [Lilv](http://drobilla.net/category/lilv/)
+- [Calf Plugins](https://calf-studio-gear.org/)
 
 #### Installing from Source
 
