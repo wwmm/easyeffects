@@ -305,6 +305,7 @@ class Application(Gtk.Application):
                 f.write('Exec=pulseeffects --gapplication-service\n')
                 f.write('StartupNotify=false\n')
                 f.write('Terminal=false\n')
+                f.write('Type=Application\n')
         else:
             os.remove(self.autostart_file)
 
