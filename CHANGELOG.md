@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+
+## [3.1.0]
 ### Added
 - Meson: gstreamer-insetbin dependency check
 - New plugins: Bass Enhancer and Exciter LV2 plugins from Calf Studio
