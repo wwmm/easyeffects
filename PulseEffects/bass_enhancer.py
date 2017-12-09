@@ -42,17 +42,17 @@ class BassEnhancer():
         output_level = Gst.ElementFactory.make('level',
                                                'bass_enhancer_output_level')
 
-        # it seems there is a bug in gstreaner
-        # booleans are inverted. For example we have to turn on bypass in order
-        # to effects to be applied
-
-        self.bass_enhancer.set_property('bypass', True)
-        self.bass_enhancer.set_property('listen', True)
-        self.bass_enhancer.set_property('floor-active', False)
-
         self.bin = GstInsertBin.InsertBin.new('bass_enhancer_bin')
 
         if self.is_installed:
+            # it seems there is a bug in gstreaner
+            # booleans are inverted. For example we have to turn on bypass in
+            # order to effects to be applied
+
+            self.bass_enhancer.set_property('bypass', True)
+            self.bass_enhancer.set_property('listen', True)
+            self.bass_enhancer.set_property('floor-active', False)
+
             self.bin.append(input_level, self.on_filter_added, None)
             self.bin.append(self.bass_enhancer, self.on_filter_added, None)
             self.bin.append(output_level, self.on_filter_added, None)

@@ -40,17 +40,17 @@ class Exciter():
         input_level = Gst.ElementFactory.make('level', 'exciter_input_level')
         output_level = Gst.ElementFactory.make('level', 'exciter_output_level')
 
-        # it seems there is a bug in gstreaner
-        # booleans are inverted. For example we have to turn on bypass in order
-        # to effects to be applied
-
-        self.exciter.set_property('bypass', True)
-        self.exciter.set_property('listen', True)
-        self.exciter.set_property('ceil-active', False)
-
         self.bin = GstInsertBin.InsertBin.new('exciter_bin')
 
         if self.is_installed:
+            # it seems there is a bug in gstreaner
+            # booleans are inverted. For example we have to turn on bypass in
+            # order to effects to be applied
+
+            self.exciter.set_property('bypass', True)
+            self.exciter.set_property('listen', True)
+            self.exciter.set_property('ceil-active', False)
+
             self.bin.append(input_level, self.on_filter_added, None)
             self.bin.append(self.exciter, self.on_filter_added, None)
             self.bin.append(output_level, self.on_filter_added, None)

@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [3.1.1]
+### Fixed
+- Missing Calf plugins do not crash PulseEffects anymore. They are optional.
+
 ## [3.1.0]
 ### Added
 - Meson: gstreamer-insetbin dependency check
