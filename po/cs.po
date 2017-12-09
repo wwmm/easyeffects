@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-08 21:44-0200\n"
+"POT-Creation-Date: 2017-12-09 13:08-0200\n"
 "PO-Revision-Date: 2017-12-07 21:59+0100\n"
 "Last-Translator: Pavel Fric <pavelfric@seznam.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -304,9 +304,13 @@ msgstr "Vrátit na výchozí"
 msgid "Use Dark Theme"
 msgstr "Použít tmavý vzhled"
 
-#: PulseEffects/ui/main_ui.glade:568
+#: PulseEffects/ui/main_ui.glade:570
 msgid "Enable All Applications"
 msgstr "Povolit všechny programy"
+
+#: PulseEffects/ui/main_ui.glade:594
+msgid "Start Service at Login"
+msgstr ""
 
 #: PulseEffects/ui/output_limiter.glade:24
 msgid "Output Limiter"

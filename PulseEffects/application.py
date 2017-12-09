@@ -57,6 +57,12 @@ class Application(Gtk.Application):
                                             'PulseEffects')
         os.makedirs(self.user_config_dir, exist_ok=True)
 
+        # autostart file path
+        autostart_file_name = 'autostart/pulseeffects-service.desktop'
+
+        self.autostart_file = os.path.join(GLib.get_user_config_dir(),
+                                           autostart_file_name)
+
         self.create_appmenu()
 
         # pulseaudio
@@ -103,6 +109,7 @@ class Application(Gtk.Application):
         self.init_latency_time()
         self.init_spectrum_widgets()
         self.init_stack_widgets()
+        self.init_autostart_switch()
 
         # Gsettings bindings
 
@@ -195,31 +202,32 @@ class Application(Gtk.Application):
 
         self.stack_current_child_name = 'sink_inputs'
 
-        def on_visible_child_changed(stack, visible_child):
-            name = stack.get_visible_child_name()
+        self.stack.connect("notify::visible-child",
+                           self.on_stack_visible_child_changed)
 
-            if name == 'sink_inputs':
-                if self.stack_current_child_name == 'source_outputs':
-                    self.soe.disconnect(self.spectrum_handler_id)
+    def on_stack_visible_child_changed(self, stack, visible_child):
+        name = stack.get_visible_child_name()
 
-                self.spectrum_handler_id = self.sie.connect('new_spectrum',
-                                                            self.draw_spectrum
-                                                            .on_new_spectrum)
+        if name == 'sink_inputs':
+            if self.stack_current_child_name == 'source_outputs':
+                self.soe.disconnect(self.spectrum_handler_id)
 
-                self.stack_current_child_name = 'sink_inputs'
-            elif name == 'source_outputs':
-                if self.stack_current_child_name == 'sink_inputs':
-                    self.sie.disconnect(self.spectrum_handler_id)
+            self.spectrum_handler_id = self.sie.connect('new_spectrum',
+                                                        self.draw_spectrum
+                                                        .on_new_spectrum)
 
-                self.spectrum_handler_id = self.soe.connect('new_spectrum',
-                                                            self.draw_spectrum
-                                                            .on_new_spectrum)
+            self.stack_current_child_name = 'sink_inputs'
+        elif name == 'source_outputs':
+            if self.stack_current_child_name == 'sink_inputs':
+                self.sie.disconnect(self.spectrum_handler_id)
 
-                self.stack_current_child_name = 'source_outputs'
+            self.spectrum_handler_id = self.soe.connect('new_spectrum',
+                                                        self.draw_spectrum
+                                                        .on_new_spectrum)
 
-            self.draw_spectrum.clear()
+            self.stack_current_child_name = 'source_outputs'
 
-        self.stack.connect("notify::visible-child", on_visible_child_changed)
+        self.draw_spectrum.clear()
 
     def init_settings_menu(self):
         button = self.builder.get_object('settings_popover_button')
@@ -279,6 +287,26 @@ class Application(Gtk.Application):
             self.sie.set_latency_time(value * 1000)
         else:
             self.sie.init_latency_time(value * 1000)
+
+    def init_autostart_switch(self):
+        switch = self.builder.get_object('enable_autostart')
+
+        if os.path.isfile(self.autostart_file):
+            switch.set_state(True)
+        else:
+            switch.set_state(False)
+
+    def on_enable_autostart_state_set(self, obj, state):
+        if state:
+            with open(self.autostart_file, "w") as f:
+                f.write('[Desktop Entry]\n')
+                f.write('Name=PulseEffects\n')
+                f.write('Comment=PulseEffects Service\n')
+                f.write('Exec=pulseeffects --gapplication-service\n')
+                f.write('StartupNotify=false\n')
+                f.write('Terminal=false\n')
+        else:
+            os.remove(self.autostart_file)
 
     def init_spectrum_widgets(self):
         show_spectrum_switch = self.builder.get_object('show_spectrum')

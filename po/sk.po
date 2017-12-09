@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-08 21:44-0200\n"
+"POT-Creation-Date: 2017-12-09 13:08-0200\n"
 "PO-Revision-Date: 2017-06-11 22:19+0200\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: \n"
@@ -312,8 +312,12 @@ msgstr "Predvoľby"
 msgid "Use Dark Theme"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:568
+#: PulseEffects/ui/main_ui.glade:570
 msgid "Enable All Applications"
+msgstr ""
+
+#: PulseEffects/ui/main_ui.glade:594
+msgid "Start Service at Login"
 msgstr ""
 
 #: PulseEffects/ui/output_limiter.glade:24

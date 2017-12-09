@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-08 21:44-0200\n"
-"PO-Revision-Date: 2017-12-08 21:46-0200\n"
+"POT-Creation-Date: 2017-12-09 13:08-0200\n"
+"PO-Revision-Date: 2017-12-09 13:09-0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
@@ -307,9 +307,13 @@ msgstr "Resetar"
 msgid "Use Dark Theme"
 msgstr "Usar Tema Escuro"
 
-#: PulseEffects/ui/main_ui.glade:568
+#: PulseEffects/ui/main_ui.glade:570
 msgid "Enable All Applications"
 msgstr "Habilitar Todos os Aplicativos"
+
+#: PulseEffects/ui/main_ui.glade:594
+msgid "Start Service at Login"
+msgstr "Inicializar Serviço no Login"
 
 #: PulseEffects/ui/output_limiter.glade:24
 msgid "Output Limiter"
