@@ -138,9 +138,13 @@ class Application(Gtk.Application):
         self.presets = PresetsManager(self)
 
         self.ui_initialized = True
+        self.sie.there_is_window = True
+        self.soe.there_is_window = True
 
     def on_window_destroy(self, window):
         self.ui_initialized = False
+        self.sie.there_is_window = False
+        self.soe.there_is_window = False
 
         if self.running_as_service:
             self.sie.switch_on_all_apps = True

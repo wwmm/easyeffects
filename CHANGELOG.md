@@ -1,6 +1,9 @@
 # Changelog
 
 ## [Unreleased]
+### Fixed
+- Fixed a bug where the pipeline could be put out of the playing state when
+running in service mode.
 
 ## [3.1.1]
 ### Fixed

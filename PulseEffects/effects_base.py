@@ -25,8 +25,11 @@ class EffectsBase(PipelineBase):
 
         self.module_path = os.path.dirname(__file__)
         self.settings = settings
+
         self.log_tag = str()
         self.disable_app_level_meter = False
+        self.there_is_window = False
+        self.apps_list = []
 
         self.limiter = Limiter(self.settings)
         self.compressor = Compressor(self.settings)
@@ -245,13 +248,7 @@ class EffectsBase(PipelineBase):
         self.apps_box.add(getattr(self, 'app_box_' + str(idx)))
         self.apps_box.show_all()
 
-    def on_app_added(self, obj, parameters):
-        self.build_app_ui(parameters)
-
-        if not self.is_playing:
-            self.set_state('playing')
-
-    def on_app_changed(self, obj, parameters):
+    def change_app_ui(self, parameters):
         idx = parameters['index']
         audio_channels = parameters['channels']
         max_volume_linear = parameters['volume']
@@ -300,8 +297,7 @@ class EffectsBase(PipelineBase):
         if hasattr(self, 'app_volume_' + str(idx)):
             volume = getattr(self, 'app_volume_' + str(idx))
 
-            volume.set_value(
-                max_volume_linear)
+            volume.set_value(max_volume_linear)
 
             if mute:
                 volume.set_sensitive(False)
@@ -311,11 +307,11 @@ class EffectsBase(PipelineBase):
         if hasattr(self, 'app_mute_' + str(idx)):
             getattr(self, 'app_mute_' + str(idx)).set_active(mute)
 
-    def on_app_removed(self, obj, idx):
+    def remove_app_ui(self, idx):
         if hasattr(self, 'app_box_' + str(idx)):
-            children = self.apps_box.get_children()
+            # children = self.apps_box.get_children()
 
-            n_children_before = len(children)
+            # n_children_before = len(children)
 
             self.apps_box.remove(getattr(self, 'app_box_' + str(idx)))
 
@@ -333,9 +329,35 @@ class EffectsBase(PipelineBase):
             delattr(self, 'app_mute_' + str(idx))
             delattr(self, 'app_level_' + str(idx))
 
-            n_children_after = len(self.apps_box.get_children())
+            # n_children_after = len(self.apps_box.get_children())
 
-            if n_children_before == 1 and n_children_after == 0:
+    def on_app_added(self, obj, parameters):
+        idx = parameters['index']
+
+        if idx not in self.apps_list:
+            self.apps_list.append(idx)
+
+        if self.there_is_window:
+            self.build_app_ui(parameters)
+
+        if not self.is_playing:
+            self.set_state('playing')
+
+    def on_app_changed(self, obj, parameters):
+        if self.there_is_window:
+            self.change_app_ui(parameters)
+
+    def on_app_removed(self, obj, idx):
+        if idx in self.apps_list:
+            self.remove_app_ui(idx)
+
+            n_apps_before = len(self.apps_list)
+
+            self.apps_list.remove(idx)
+
+            n_apps_after = len(self.apps_list)
+
+            if n_apps_before == 1 and n_apps_after == 0:
                 self.set_state('ready')
 
     def on_app_level_changed(self, obj, idx, level):
