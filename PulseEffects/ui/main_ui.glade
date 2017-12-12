@@ -215,7 +215,6 @@
               <object class="GtkSeparator">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_bottom">6</property>
               </object>
               <packing>
                 <property name="expand">False</property>
