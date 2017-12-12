@@ -1,9 +1,13 @@
 # Changelog
 
 ## [Unreleased]
+
+## [3.1.2]
 ### Fixed
 - Fixed a bug where the pipeline could be put out of the playing state when
 running in service mode.
+- We do not emit level meter and spectrum messages when running in service mode
+anymore. This should improve service performance on weak CPUs.
 
 ## [3.1.1]
 ### Fixed
