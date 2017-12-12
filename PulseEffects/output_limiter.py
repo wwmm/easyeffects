@@ -135,7 +135,7 @@ class OutputLimiter():
         widget_level_right_label = widgets[3]
 
         if left >= -99:
-            l_value = 10**(left / 20)
+            l_value = 10**(left / 10)
             widget_level_left.set_value(l_value)
             widget_level_left_label.set_text(str(round(left)))
         else:
@@ -143,7 +143,7 @@ class OutputLimiter():
             widget_level_left_label.set_text('-99')
 
         if right >= -99:
-            r_value = 10**(right / 20)
+            r_value = 10**(right / 10)
             widget_level_right.set_value(r_value)
             widget_level_right_label.set_text(str(round(right)))
         else:
