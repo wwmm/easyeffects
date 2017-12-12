@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+### Fixed
+- Level meters: conversion from decibel to linear scale uses the correct factor
 
 ## [3.1.2]
 ### Fixed
