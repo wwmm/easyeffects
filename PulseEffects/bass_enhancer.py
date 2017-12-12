@@ -37,10 +37,10 @@ class BassEnhancer():
         self.bass_enhancer = Gst.ElementFactory.make(
             'calf-sourceforge-net-plugins-BassEnhancer', None)
 
-        input_level = Gst.ElementFactory.make('level',
-                                              'bass_enhancer_input_level')
-        output_level = Gst.ElementFactory.make('level',
-                                               'bass_enhancer_output_level')
+        self.input_level = Gst.ElementFactory.make('level',
+                                                   'bass_enhancer_input_level')
+        self.out_level = Gst.ElementFactory.make('level',
+                                                 'bass_enhancer_output_level')
 
         self.bin = GstInsertBin.InsertBin.new('bass_enhancer_bin')
 
@@ -53,9 +53,13 @@ class BassEnhancer():
             self.bass_enhancer.set_property('listen', True)
             self.bass_enhancer.set_property('floor-active', False)
 
-            self.bin.append(input_level, self.on_filter_added, None)
+            self.bin.append(self.input_level, self.on_filter_added, None)
             self.bin.append(self.bass_enhancer, self.on_filter_added, None)
-            self.bin.append(output_level, self.on_filter_added, None)
+            self.bin.append(self.out_level, self.on_filter_added, None)
+
+    def post_messages(self, state):
+        self.input_level.set_property('post-messages', state)
+        self.out_level.set_property('post-messages', state)
 
     def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +

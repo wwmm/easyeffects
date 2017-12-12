@@ -37,8 +37,10 @@ class Exciter():
         self.exciter = Gst.ElementFactory.make(
             'calf-sourceforge-net-plugins-Exciter', None)
 
-        input_level = Gst.ElementFactory.make('level', 'exciter_input_level')
-        output_level = Gst.ElementFactory.make('level', 'exciter_output_level')
+        self.input_level = Gst.ElementFactory.make('level',
+                                                   'exciter_input_level')
+        self.output_level = Gst.ElementFactory.make('level',
+                                                    'exciter_output_level')
 
         self.bin = GstInsertBin.InsertBin.new('exciter_bin')
 
@@ -51,9 +53,13 @@ class Exciter():
             self.exciter.set_property('listen', True)
             self.exciter.set_property('ceil-active', False)
 
-            self.bin.append(input_level, self.on_filter_added, None)
+            self.bin.append(self.input_level, self.on_filter_added, None)
             self.bin.append(self.exciter, self.on_filter_added, None)
-            self.bin.append(output_level, self.on_filter_added, None)
+            self.bin.append(self.output_level, self.on_filter_added, None)
+
+    def post_messages(self, state):
+        self.input_level.set_property('post-messages', state)
+        self.output_level.set_property('post-messages', state)
 
     def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +

@@ -24,18 +24,23 @@ class Highpass():
 
     def build_bin(self):
         self.highpass = Gst.ElementFactory.make('audiocheblimit', None)
-        input_level = Gst.ElementFactory.make('level', 'highpass_input_level')
-        output_level = Gst.ElementFactory.make('level',
-                                               'highpass_output_level')
+        self.input_level = Gst.ElementFactory.make('level',
+                                                   'highpass_input_level')
+        self.output_level = Gst.ElementFactory.make('level',
+                                                    'highpass_output_level')
 
         self.highpass.set_property('mode', 'high-pass')
         self.highpass.set_property('type', 1)
         self.highpass.set_property('ripple', 0)
 
         self.bin = GstInsertBin.InsertBin.new('highpass_bin')
-        self.bin.append(input_level, self.on_filter_added, None)
+        self.bin.append(self.input_level, self.on_filter_added, None)
         self.bin.append(self.highpass, self.on_filter_added, None)
-        self.bin.append(output_level, self.on_filter_added, None)
+        self.bin.append(self.output_level, self.on_filter_added, None)
+
+    def post_messages(self, state):
+        self.input_level.set_property('post-messages', state)
+        self.output_level.set_property('post-messages', state)
 
     def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +

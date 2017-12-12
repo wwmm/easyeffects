@@ -79,6 +79,9 @@ class Application(Gtk.Application):
 
             self.init_ui()
 
+            self.sie.post_messages(False)
+            self.soe.post_messages(False)
+
             self.sie.switch_on_all_apps = True
             self.soe.switch_on_all_apps = True
 
@@ -150,6 +153,9 @@ class Application(Gtk.Application):
             self.sie.switch_on_all_apps = True
             self.soe.switch_on_all_apps = True
 
+            self.sie.post_messages(False)
+            self.soe.post_messages(False)
+
     def do_activate(self):
         if not self.ui_initialized:
             self.init_ui()
@@ -158,6 +164,9 @@ class Application(Gtk.Application):
             self.pm.find_source_outputs()
 
         self.window.present()
+
+        self.sie.post_messages(True)
+        self.soe.post_messages(True)
 
     def do_command_line(self, command_line):
         options = command_line.get_options_dict()

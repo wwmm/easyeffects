@@ -38,17 +38,21 @@ class OutputLimiter():
     def build_bin(self):
         self.limiter = Gst.ElementFactory.make(
             'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter', None)
-        input_level = Gst.ElementFactory.make('level',
-                                              'output_limiter_input_level')
-        output_level = Gst.ElementFactory.make('level',
-                                               'output_limiter_output_level')
+        self.in_level = Gst.ElementFactory.make('level',
+                                                'output_limiter_input_level')
+        self.out_level = Gst.ElementFactory.make('level',
+                                                 'output_limiter_output_level')
 
         self.bin = GstInsertBin.InsertBin.new('output_limiter_bin')
 
         if self.is_installed:
-            self.bin.append(input_level, self.on_filter_added, None)
+            self.bin.append(self.in_level, self.on_filter_added, None)
             self.bin.append(self.limiter, self.on_filter_added, None)
-            self.bin.append(output_level, self.on_filter_added, None)
+            self.bin.append(self.out_level, self.on_filter_added, None)
+
+    def post_messages(self, state):
+        self.in_level.set_property('post-messages', state)
+        self.out_level.set_property('post-messages', state)
 
     def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +

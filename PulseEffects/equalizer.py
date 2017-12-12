@@ -28,9 +28,10 @@ class Equalizer():
         self.input_gain = Gst.ElementFactory.make('volume', None)
         self.output_gain = Gst.ElementFactory.make('volume', None)
         equalizer = Gst.ElementFactory.make('equalizer-nbands', None)
-        input_level = Gst.ElementFactory.make('level', 'equalizer_input_level')
-        output_level = Gst.ElementFactory.make('level',
-                                               'equalizer_output_level')
+        self.input_level = Gst.ElementFactory.make('level',
+                                                   'equalizer_input_level')
+        self.output_level = Gst.ElementFactory.make('level',
+                                                    'equalizer_output_level')
 
         equalizer.set_property('num-bands', 30)
 
@@ -40,10 +41,14 @@ class Equalizer():
         self.bin = GstInsertBin.InsertBin.new('equalizer_bin')
 
         self.bin.append(self.input_gain, self.on_filter_added, None)
-        self.bin.append(input_level, self.on_filter_added, None)
+        self.bin.append(self.input_level, self.on_filter_added, None)
         self.bin.append(equalizer, self.on_filter_added, None)
         self.bin.append(self.output_gain, self.on_filter_added, None)
-        self.bin.append(output_level, self.on_filter_added, None)
+        self.bin.append(self.output_level, self.on_filter_added, None)
+
+    def post_messages(self, state):
+        self.input_level.set_property('post-messages', state)
+        self.output_level.set_property('post-messages', state)
 
     def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +

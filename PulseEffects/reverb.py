@@ -24,13 +24,19 @@ class Reverb():
 
     def build_bin(self):
         self.reverb = Gst.ElementFactory.make('freeverb', None)
-        input_level = Gst.ElementFactory.make('level', 'reverb_input_level')
-        output_level = Gst.ElementFactory.make('level', 'reverb_output_level')
+        self.input_level = Gst.ElementFactory.make('level',
+                                                   'reverb_input_level')
+        self.output_level = Gst.ElementFactory.make('level',
+                                                    'reverb_output_level')
 
         self.bin = GstInsertBin.InsertBin.new('reverb_bin')
-        self.bin.append(input_level, self.on_filter_added, None)
+        self.bin.append(self.input_level, self.on_filter_added, None)
         self.bin.append(self.reverb, self.on_filter_added, None)
-        self.bin.append(output_level, self.on_filter_added, None)
+        self.bin.append(self.output_level, self.on_filter_added, None)
+
+    def post_messages(self, state):
+        self.input_level.set_property('post-messages', state)
+        self.output_level.set_property('post-messages', state)
 
     def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +

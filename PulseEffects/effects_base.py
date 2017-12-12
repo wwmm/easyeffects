@@ -309,10 +309,6 @@ class EffectsBase(PipelineBase):
 
     def remove_app_ui(self, idx):
         if hasattr(self, 'app_box_' + str(idx)):
-            # children = self.apps_box.get_children()
-
-            # n_children_before = len(children)
-
             self.apps_box.remove(getattr(self, 'app_box_' + str(idx)))
 
             delattr(self, 'app_box_' + str(idx))
@@ -328,8 +324,6 @@ class EffectsBase(PipelineBase):
             delattr(self, 'app_volume_' + str(idx))
             delattr(self, 'app_mute_' + str(idx))
             delattr(self, 'app_level_' + str(idx))
-
-            # n_children_after = len(self.apps_box.get_children())
 
     def on_app_added(self, obj, parameters):
         idx = parameters['index']
@@ -363,6 +357,16 @@ class EffectsBase(PipelineBase):
     def on_app_level_changed(self, obj, idx, level):
         if hasattr(self, 'app_level_' + str(idx)):
             getattr(self, 'app_level_' + str(idx)).set_value(level)
+
+    def post_messages(self, state):
+        self.limiter.post_messages(state)
+        self.compressor.post_messages(state)
+        self.reverb.post_messages(state)
+        self.highpass.post_messages(state)
+        self.lowpass.post_messages(state)
+        self.equalizer.post_messages(state)
+
+        self.spectrum.set_property('post-messages', state)
 
     def on_message_element(self, bus, msg):
         plugin = msg.src.get_name()

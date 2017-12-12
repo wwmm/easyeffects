@@ -179,6 +179,14 @@ class SinkInputEffects(EffectsBase):
 
         self.pm.set_sink_input_mute(idx, state)
 
+    def post_messages(self, state):
+        EffectsBase.post_messages(self, state)
+
+        self.panorama.post_messages(state)
+        self.exciter.post_messages(state)
+        self.bass_enhancer.post_messages(state)
+        self.output_limiter.post_messages(state)
+
     def on_message_element(self, bus, msg):
         EffectsBase.on_message_element(self, bus, msg)
 

@@ -35,18 +35,23 @@ class Panorama():
     def build_bin(self):
         self.panorama = Gst.ElementFactory.make('audiopanorama', None)
 
-        input_level = Gst.ElementFactory.make('level', 'panorama_input_level')
-        output_level = Gst.ElementFactory.make('level',
-                                               'panorama_output_level')
+        self.input_level = Gst.ElementFactory.make('level',
+                                                   'panorama_input_level')
+        self.output_level = Gst.ElementFactory.make('level',
+                                                    'panorama_output_level')
 
         self.panorama.set_property('method', 'psychoacoustic')
 
         self.bin = GstInsertBin.InsertBin.new('panorama_bin')
 
         if self.is_installed:
-            self.bin.append(input_level, self.on_filter_added, None)
+            self.bin.append(self.input_level, self.on_filter_added, None)
             self.bin.append(self.panorama, self.on_filter_added, None)
-            self.bin.append(output_level, self.on_filter_added, None)
+            self.bin.append(self.output_level, self.on_filter_added, None)
+
+    def post_messages(self, state):
+        self.input_level.set_property('post-messages', state)
+        self.output_level.set_property('post-messages', state)
 
     def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +
