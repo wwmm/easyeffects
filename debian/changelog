@@ -1,3 +1,27 @@
+pulseeffects (3.1.2-git131220170843msk) artful; urgency=low
+
+  * add gstreamer1.0-pulseaudio as a dependency
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 13 Dec 2017 08:43:00 +0300 
+ 
+pulseeffects (3.1.2-git131220170732msk) artful; urgency=low
+
+  * version 3.1.2 + latest Git
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 13 Dec 2017 07:33:00 +0300 
+ 
+pulseeffects (3.0.7.5) artful; urgency=low
+
+  * fix 3.0.7.4 git merging
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 08 Nov 2017 22:21:00 +0300 
+ 
+pulseeffects (3.0.7.4) artful; urgency=low
+
+  * = v3.0.7 upstream (synced with upstream versioning, all previous v3.0.7 here were v.3.0.6+git-master from upstream)
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 08 Nov 2017 22:21:00 +0300 
+
 pulseeffects (3.0.7.3) artful; urgency=high
 
   * Additional fixes for https://github.com/wwmm/pulseeffects/issues/111
