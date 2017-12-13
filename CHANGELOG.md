@@ -3,7 +3,8 @@
 ## [Unreleased]
 ### Fixed
 - Level meters: conversion from decibel to linear scale uses the correct factor
-- Auto volume: It is working in service mode
+- Auto volume: It is working in service mode and it does not reset the limiter
+gain to -10 dB when the main window is opened anymore
 
 ## [3.1.2]
 ### Fixed

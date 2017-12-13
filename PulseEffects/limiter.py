@@ -181,7 +181,7 @@ class Limiter():
             tolerance = self.settings.get_value(
                 'autovolume-tolerance').unpack()
 
-            self.ui_input_gain.set_value(-10)
+            # self.ui_input_gain.set_value(-10)
             self.ui_limit.set_value(target + tolerance)
             self.ui_release_time.set_value(window)
 
