@@ -30,7 +30,6 @@ class Compressor():
             self.log.warn('Compressor plugin was not found. Disabling it!')
 
         self.build_bin()
-        self.load_ui()
 
     def on_filter_added(self, bin, element, success, user_data):
         pass
@@ -38,27 +37,33 @@ class Compressor():
     def build_bin(self):
         self.compressor = Gst.ElementFactory.make(
             'ladspa-sc4-1882-so-sc4', None)
-        input_level = Gst.ElementFactory.make('level',
-                                              'compressor_input_level')
-        output_level = Gst.ElementFactory.make('level',
-                                               'compressor_output_level')
+        self.input_level = Gst.ElementFactory.make('level',
+                                                   'compressor_input_level')
+        self.output_level = Gst.ElementFactory.make('level',
+                                                    'compressor_output_level')
 
         self.bin = GstInsertBin.InsertBin.new('compressor_bin')
 
         if self.is_installed:
-            self.bin.append(input_level, self.on_filter_added, None)
+            self.bin.append(self.input_level, self.on_filter_added, None)
             self.bin.append(self.compressor, self.on_filter_added, None)
-            self.bin.append(output_level, self.on_filter_added, None)
+            self.bin.append(self.output_level, self.on_filter_added, None)
 
-    def load_ui(self):
+    def post_messages(self, state):
+        self.input_level.set_property('post-messages', state)
+        self.output_level.set_property('post-messages', state)
+
+    def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +
                                                  '/ui/compressor.glade')
         self.builder.connect_signals(self)
 
         self.ui_window = self.builder.get_object('window')
+        self.ui_controls = self.builder.get_object('controls')
         self.ui_listbox_control = self.builder.get_object('listbox_control')
 
         self.ui_enable = self.builder.get_object('enable')
+        self.ui_img_state = self.builder.get_object('img_state')
         self.ui_compressor_rms = self.builder.get_object('compressor_rms')
         self.ui_compressor_peak = self.builder.get_object('compressor_peak')
         self.ui_attack = self.builder.get_object('attack')
@@ -118,7 +123,9 @@ class Compressor():
         flag = Gio.SettingsBindFlags.DEFAULT
 
         self.settings.bind('compressor-state', self.ui_enable, 'active', flag)
-        self.settings.bind('compressor-state', self.ui_window, 'sensitive',
+        self.settings.bind('compressor-state', self.ui_img_state, 'visible',
+                           flag)
+        self.settings.bind('compressor-state', self.ui_controls, 'sensitive',
                            Gio.SettingsBindFlags.GET)
 
         self.settings.bind('compressor-use-peak', self.ui_compressor_peak,
@@ -174,7 +181,7 @@ class Compressor():
         widget_level_right_label = widgets[3]
 
         if left >= -99:
-            l_value = 10**(left / 20)
+            l_value = 10**(left / 10)
             widget_level_left.set_value(l_value)
             widget_level_left_label.set_text(str(round(left)))
         else:
@@ -182,7 +189,7 @@ class Compressor():
             widget_level_left_label.set_text('-99')
 
         if right >= -99:
-            r_value = 10**(right / 20)
+            r_value = 10**(right / 10)
             widget_level_right.set_value(r_value)
             widget_level_right_label.set_text(str(round(right)))
         else:

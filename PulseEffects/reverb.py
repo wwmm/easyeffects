@@ -18,30 +18,37 @@ class Reverb():
         self.module_path = os.path.dirname(__file__)
 
         self.build_bin()
-        self.load_ui()
 
     def on_filter_added(self, bin, element, success, user_data):
         pass
 
     def build_bin(self):
         self.reverb = Gst.ElementFactory.make('freeverb', None)
-        input_level = Gst.ElementFactory.make('level', 'reverb_input_level')
-        output_level = Gst.ElementFactory.make('level', 'reverb_output_level')
+        self.input_level = Gst.ElementFactory.make('level',
+                                                   'reverb_input_level')
+        self.output_level = Gst.ElementFactory.make('level',
+                                                    'reverb_output_level')
 
         self.bin = GstInsertBin.InsertBin.new('reverb_bin')
-        self.bin.append(input_level, self.on_filter_added, None)
+        self.bin.append(self.input_level, self.on_filter_added, None)
         self.bin.append(self.reverb, self.on_filter_added, None)
-        self.bin.append(output_level, self.on_filter_added, None)
+        self.bin.append(self.output_level, self.on_filter_added, None)
 
-    def load_ui(self):
+    def post_messages(self, state):
+        self.input_level.set_property('post-messages', state)
+        self.output_level.set_property('post-messages', state)
+
+    def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +
                                                  '/ui/reverb.glade')
         self.builder.connect_signals(self)
 
         self.ui_window = self.builder.get_object('window')
+        self.ui_controls = self.builder.get_object('controls')
         self.ui_listbox_control = self.builder.get_object('listbox_control')
 
         self.ui_enable = self.builder.get_object('enable')
+        self.ui_img_state = self.builder.get_object('img_state')
         self.ui_room_size = self.builder.get_object('room_size')
         self.ui_damping = self.builder.get_object('damping')
         self.ui_width = self.builder.get_object('width')
@@ -81,7 +88,8 @@ class Reverb():
         flag = Gio.SettingsBindFlags.DEFAULT
 
         self.settings.bind('reverb-state', self.ui_enable, 'active', flag)
-        self.settings.bind('reverb-state', self.ui_window, 'sensitive',
+        self.settings.bind('reverb-state', self.ui_img_state, 'visible', flag)
+        self.settings.bind('reverb-state', self.ui_controls, 'sensitive',
                            Gio.SettingsBindFlags.GET)
         self.settings.bind('reverb-room-size', self.ui_room_size, 'value',
                            flag)
@@ -117,7 +125,7 @@ class Reverb():
         widget_level_right_label = widgets[3]
 
         if left >= -99:
-            l_value = 10**(left / 20)
+            l_value = 10**(left / 10)
             widget_level_left.set_value(l_value)
             widget_level_left_label.set_text(str(round(left)))
         else:
@@ -125,7 +133,7 @@ class Reverb():
             widget_level_left_label.set_text('-99')
 
         if right >= -99:
-            r_value = 10**(right / 20)
+            r_value = 10**(right / 10)
             widget_level_right.set_value(r_value)
             widget_level_right_label.set_text(str(round(right)))
         else:

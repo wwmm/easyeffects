@@ -27,16 +27,16 @@ class Application(Gtk.Application):
 
         GLib.unix_signal_add(GLib.PRIORITY_DEFAULT, 2, self.quit)  # sigint
 
-        self.add_main_option('no-window', ord('n'), GLib.OptionFlags.NONE,
-                             GLib.OptionArg.NONE, 'do not show window', None)
-        self.add_main_option('switch-on-all-apps', ord('s'),
-                             GLib.OptionFlags.NONE, GLib.OptionArg.NONE,
-                             'Force effects for all applications', None)
+        help_msg = 'Exit PulseEffects. Useful when running in service mode.'
+
+        self.add_main_option('quit', ord('q'), GLib.OptionFlags.NONE,
+                             GLib.OptionArg.NONE, help_msg, None)
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
 
         self.ui_initialized = False
+        self.running_as_service = False
         self.module_path = os.path.dirname(__file__)
 
         log_format = '%(asctime)s.%(msecs)d - %(name)s - %(levelname)s'
@@ -57,14 +57,42 @@ class Application(Gtk.Application):
                                             'PulseEffects')
         os.makedirs(self.user_config_dir, exist_ok=True)
 
+        # autostart file path
+        autostart_file_name = 'autostart/pulseeffects-service.desktop'
+
+        self.autostart_file = os.path.join(GLib.get_user_config_dir(),
+                                           autostart_file_name)
+
+        self.create_appmenu()
+
         # pulseaudio
 
         self.pm = PulseManager()
         self.pm.load_apps_sink()
         self.pm.load_mic_sink()
 
-        # ui initializations
+        self.sie = SinkInputEffects(self.pm)
+        self.soe = SourceOutputEffects(self.pm)
 
+        if self.props.flags & Gio.ApplicationFlags.IS_SERVICE:
+            self.running_as_service = True
+
+            self.init_ui()
+
+            self.sie.post_messages(False)
+            self.soe.post_messages(False)
+
+            self.sie.switch_on_all_apps = True
+            self.soe.switch_on_all_apps = True
+
+            self.pm.find_sink_inputs()
+            self.pm.find_source_outputs()
+
+            self.log.info('Running in background')
+
+            self.hold()
+
+    def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +
                                                  '/ui/main_ui.glade')
 
@@ -72,19 +100,35 @@ class Application(Gtk.Application):
 
         self.window = self.builder.get_object('MainWindow')
         self.window.set_application(self)
+        self.window.connect('destroy', self.on_window_destroy)
 
-        self.create_appmenu()
+        self.sie.init_ui()
+        self.soe.init_ui()
 
-        self.sie = SinkInputEffects(self.pm)
-        self.soe = SourceOutputEffects(self.pm)
         self.draw_spectrum = DrawSpectrum(self)
 
-        self.init_theme()
         self.init_settings_menu()
         self.init_buffer_time()
         self.init_latency_time()
         self.init_spectrum_widgets()
         self.init_stack_widgets()
+        self.init_autostart_switch()
+
+        # Gsettings bindings
+
+        flag = Gio.SettingsBindFlags.DEFAULT
+
+        switch_apps = self.builder.get_object('enable_all_apps')
+        switch_theme = self.builder.get_object('theme_switch')
+
+        self.settings.bind('use-dark-theme', switch_theme, 'active', flag)
+        self.settings.bind('use-dark-theme', self.gtk_settings,
+                           'gtk_application_prefer_dark_theme', flag)
+        self.settings.bind('enable-all-apps', switch_apps, 'active', flag)
+        self.settings.bind('enable-all-apps', self.sie, 'switch_on_all_apps',
+                           flag)
+        self.settings.bind('enable-all-apps', self.soe, 'switch_on_all_apps',
+                           flag)
 
         # this connection is changed inside the stack switch handler
         # depending on the selected child. The connection below is not
@@ -96,29 +140,43 @@ class Application(Gtk.Application):
 
         self.presets = PresetsManager(self)
 
+        self.ui_initialized = True
+        self.sie.there_is_window = True
+        self.soe.there_is_window = True
+
+    def on_window_destroy(self, window):
+        self.ui_initialized = False
+        self.sie.there_is_window = False
+        self.soe.there_is_window = False
+
+        if self.running_as_service:
+            self.sie.switch_on_all_apps = True
+            self.soe.switch_on_all_apps = True
+
+            self.sie.post_messages(False)
+            self.soe.post_messages(False)
+
     def do_activate(self):
+        if not self.ui_initialized:
+            self.init_ui()
+
+            self.pm.find_sink_inputs()
+            self.pm.find_source_outputs()
+
         self.window.present()
 
-        self.ui_initialized = True
+        self.sie.post_messages(True)
+        self.soe.post_messages(True)
 
     def do_command_line(self, command_line):
         options = command_line.get_options_dict()
 
-        if options.contains('switch-on-all-apps'):
-            self.sie.switch_on_all_apps = True
-            self.soe.switch_on_all_apps = True
-
-        if options.contains('no-window'):
-            self.log.info('Running in background')
+        if options.contains('quit'):
+            self.quit()
         else:
-            self.activate()
+            self.do_activate()
 
-        # searching for apps
-
-        self.pm.find_sink_inputs()
-        self.pm.find_source_outputs()
-
-        return 0
+        return Gtk.Application.do_command_line(self, command_line)
 
     def do_shutdown(self):
         Gtk.Application.do_shutdown(self)
@@ -144,19 +202,6 @@ class Application(Gtk.Application):
         quit_action.connect('activate', lambda action, parameter: self.quit())
         self.add_action(quit_action)
 
-    def init_theme(self):
-        switch = self.builder.get_object('theme_switch')
-
-        use_dark = self.settings.get_value('use-dark-theme').unpack()
-
-        switch.set_active(use_dark)
-
-    def on_theme_switch_state_set(self, obj, state):
-        self.gtk_settings.props.gtk_application_prefer_dark_theme = state
-
-        out = GLib.Variant('b', state)
-        self.settings.set_value('use-dark-theme', out)
-
     def init_stack_widgets(self):
         self.stack = self.builder.get_object('stack')
 
@@ -170,31 +215,32 @@ class Application(Gtk.Application):
 
         self.stack_current_child_name = 'sink_inputs'
 
-        def on_visible_child_changed(stack, visible_child):
-            name = stack.get_visible_child_name()
+        self.stack.connect("notify::visible-child",
+                           self.on_stack_visible_child_changed)
 
-            if name == 'sink_inputs':
-                if self.stack_current_child_name == 'source_outputs':
-                    self.soe.disconnect(self.spectrum_handler_id)
+    def on_stack_visible_child_changed(self, stack, visible_child):
+        name = stack.get_visible_child_name()
 
-                self.spectrum_handler_id = self.sie.connect('new_spectrum',
-                                                            self.draw_spectrum
-                                                            .on_new_spectrum)
+        if name == 'sink_inputs':
+            if self.stack_current_child_name == 'source_outputs':
+                self.soe.disconnect(self.spectrum_handler_id)
 
-                self.stack_current_child_name = 'sink_inputs'
-            elif name == 'source_outputs':
-                if self.stack_current_child_name == 'sink_inputs':
-                    self.sie.disconnect(self.spectrum_handler_id)
+            self.spectrum_handler_id = self.sie.connect('new_spectrum',
+                                                        self.draw_spectrum
+                                                        .on_new_spectrum)
 
-                self.spectrum_handler_id = self.soe.connect('new_spectrum',
-                                                            self.draw_spectrum
-                                                            .on_new_spectrum)
+            self.stack_current_child_name = 'sink_inputs'
+        elif name == 'source_outputs':
+            if self.stack_current_child_name == 'sink_inputs':
+                self.sie.disconnect(self.spectrum_handler_id)
 
-                self.stack_current_child_name = 'source_outputs'
+            self.spectrum_handler_id = self.soe.connect('new_spectrum',
+                                                        self.draw_spectrum
+                                                        .on_new_spectrum)
 
-            self.draw_spectrum.clear()
+            self.stack_current_child_name = 'source_outputs'
 
-        self.stack.connect("notify::visible-child", on_visible_child_changed)
+        self.draw_spectrum.clear()
 
     def init_settings_menu(self):
         button = self.builder.get_object('settings_popover_button')
@@ -255,6 +301,28 @@ class Application(Gtk.Application):
         else:
             self.sie.init_latency_time(value * 1000)
 
+    def init_autostart_switch(self):
+        switch = self.builder.get_object('enable_autostart')
+
+        if os.path.isfile(self.autostart_file):
+            switch.set_state(True)
+        else:
+            switch.set_state(False)
+
+    def on_enable_autostart_state_set(self, obj, state):
+        if state:
+            with open(self.autostart_file, "w") as f:
+                f.write('[Desktop Entry]\n')
+                f.write('Name=PulseEffects\n')
+                f.write('Comment=PulseEffects Service\n')
+                f.write('Exec=pulseeffects --gapplication-service\n')
+                f.write('Icon=pulseeffects\n')
+                f.write('StartupNotify=false\n')
+                f.write('Terminal=false\n')
+                f.write('Type=Application\n')
+        else:
+            os.remove(self.autostart_file)
+
     def init_spectrum_widgets(self):
         show_spectrum_switch = self.builder.get_object('show_spectrum')
         spectrum_n_points_obj = self.builder.get_object('spectrum_n_points')
@@ -303,7 +371,6 @@ class Application(Gtk.Application):
         self.settings.reset('spectrum-n-points')
         self.settings.reset('use-dark-theme')
 
-        self.init_theme()
         self.init_buffer_time()
         self.init_latency_time()
         self.init_spectrum_widgets()

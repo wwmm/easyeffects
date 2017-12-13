@@ -97,7 +97,7 @@ class SavePresets():
 
         gain, frequencies, qualities, types = [], [], [], []
 
-        for n in range(15):
+        for n in range(30):
             gain.append(
                 settings.get_value('equalizer-band' + str(n) + '-gain'))
 
@@ -128,6 +128,21 @@ class SavePresets():
                                 'band12': str(gain[12]),
                                 'band13': str(gain[13]),
                                 'band14': str(gain[14]),
+                                'band15': str(gain[15]),
+                                'band16': str(gain[16]),
+                                'band17': str(gain[17]),
+                                'band18': str(gain[18]),
+                                'band19': str(gain[19]),
+                                'band20': str(gain[20]),
+                                'band21': str(gain[21]),
+                                'band22': str(gain[22]),
+                                'band23': str(gain[23]),
+                                'band24': str(gain[24]),
+                                'band25': str(gain[25]),
+                                'band26': str(gain[26]),
+                                'band27': str(gain[27]),
+                                'band28': str(gain[28]),
+                                'band29': str(gain[29]),
                                 'band0_freq': str(frequencies[0]),
                                 'band1_freq': str(frequencies[1]),
                                 'band2_freq': str(frequencies[2]),
@@ -143,6 +158,21 @@ class SavePresets():
                                 'band12_freq': str(frequencies[12]),
                                 'band13_freq': str(frequencies[13]),
                                 'band14_freq': str(frequencies[14]),
+                                'band15_freq': str(frequencies[15]),
+                                'band16_freq': str(frequencies[16]),
+                                'band17_freq': str(frequencies[17]),
+                                'band18_freq': str(frequencies[18]),
+                                'band19_freq': str(frequencies[19]),
+                                'band20_freq': str(frequencies[20]),
+                                'band21_freq': str(frequencies[21]),
+                                'band22_freq': str(frequencies[22]),
+                                'band23_freq': str(frequencies[23]),
+                                'band24_freq': str(frequencies[24]),
+                                'band25_freq': str(frequencies[25]),
+                                'band26_freq': str(frequencies[26]),
+                                'band27_freq': str(frequencies[27]),
+                                'band28_freq': str(frequencies[28]),
+                                'band29_freq': str(frequencies[29]),
                                 'band0_qfactor': str(qualities[0]),
                                 'band1_qfactor': str(qualities[1]),
                                 'band2_qfactor': str(qualities[2]),
@@ -158,6 +188,21 @@ class SavePresets():
                                 'band12_qfactor': str(qualities[12]),
                                 'band13_qfactor': str(qualities[13]),
                                 'band14_qfactor': str(qualities[14]),
+                                'band15_qfactor': str(qualities[15]),
+                                'band16_qfactor': str(qualities[16]),
+                                'band17_qfactor': str(qualities[17]),
+                                'band18_qfactor': str(qualities[18]),
+                                'band19_qfactor': str(qualities[19]),
+                                'band20_qfactor': str(qualities[20]),
+                                'band21_qfactor': str(qualities[21]),
+                                'band22_qfactor': str(qualities[22]),
+                                'band23_qfactor': str(qualities[23]),
+                                'band24_qfactor': str(qualities[24]),
+                                'band25_qfactor': str(qualities[25]),
+                                'band26_qfactor': str(qualities[26]),
+                                'band27_qfactor': str(qualities[27]),
+                                'band28_qfactor': str(qualities[28]),
+                                'band29_qfactor': str(qualities[29]),
                                 'band0_type': str(types[0]),
                                 'band1_type': str(types[1]),
                                 'band2_type': str(types[2]),
@@ -172,7 +217,60 @@ class SavePresets():
                                 'band11_type': str(types[11]),
                                 'band12_type': str(types[12]),
                                 'band13_type': str(types[13]),
-                                'band14_type': str(types[14])}
+                                'band14_type': str(types[14]),
+                                'band15_type': str(types[15]),
+                                'band16_type': str(types[16]),
+                                'band17_type': str(types[17]),
+                                'band18_type': str(types[18]),
+                                'band19_type': str(types[19]),
+                                'band20_type': str(types[20]),
+                                'band21_type': str(types[21]),
+                                'band22_type': str(types[22]),
+                                'band23_type': str(types[23]),
+                                'band24_type': str(types[24]),
+                                'band25_type': str(types[25]),
+                                'band26_type': str(types[26]),
+                                'band27_type': str(types[27]),
+                                'band28_type': str(types[28]),
+                                'band29_type': str(types[29])}
+
+    def save_exciter_presets(self, settings, section):
+        enabled = settings.get_value('exciter-state')
+        input_gain = settings.get_value('exciter-input-gain')
+        output_gain = settings.get_value('exciter-output-gain')
+        amount = settings.get_value('exciter-amount')
+        harmonics = settings.get_value('exciter-harmonics')
+        scope = settings.get_value('exciter-scope')
+        ceiling = settings.get_value('exciter-ceiling')
+        blend = settings.get_value('exciter-blend')
+
+        self.config[section] = {'enabled': str(enabled),
+                                'input_gain': str(input_gain),
+                                'output_gain': str(output_gain),
+                                'amount': str(amount),
+                                'harmonics': str(harmonics),
+                                'scope': str(scope),
+                                'floor': str(ceiling),
+                                'blend': str(blend)}
+
+    def save_bass_enhancer_presets(self, settings, section):
+        enabled = settings.get_value('bass-enhancer-state')
+        input_gain = settings.get_value('bass-enhancer-input-gain')
+        output_gain = settings.get_value('bass-enhancer-output-gain')
+        amount = settings.get_value('bass-enhancer-amount')
+        harmonics = settings.get_value('bass-enhancer-harmonics')
+        scope = settings.get_value('bass-enhancer-scope')
+        floor = settings.get_value('bass-enhancer-floor')
+        blend = settings.get_value('bass-enhancer-blend')
+
+        self.config[section] = {'enabled': str(enabled),
+                                'input_gain': str(input_gain),
+                                'output_gain': str(output_gain),
+                                'amount': str(amount),
+                                'harmonics': str(harmonics),
+                                'scope': str(scope),
+                                'floor': str(floor),
+                                'blend': str(blend)}
 
     def save_output_limiter_presets(self, settings, section):
         enabled = settings.get_value('output-limiter-state')
@@ -194,6 +292,8 @@ class SavePresets():
         self.save_highpass_presets(settings, 'apps_highpass')
         self.save_lowpass_presets(settings, 'apps_lowpass')
         self.save_equalizer_presets(settings, 'apps_equalizer')
+        self.save_exciter_presets(settings, 'apps_exciter')
+        self.save_bass_enhancer_presets(settings, 'apps_bass_enhancer')
         self.save_output_limiter_presets(settings, 'apps_output_limiter')
 
     def save_source_outputs_presets(self, settings):

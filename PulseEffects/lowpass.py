@@ -18,33 +18,40 @@ class Lowpass():
         self.module_path = os.path.dirname(__file__)
 
         self.build_bin()
-        self.load_ui()
 
     def on_filter_added(self, bin, element, success, user_data):
         pass
 
     def build_bin(self):
         self.lowpass = Gst.ElementFactory.make('audiocheblimit', None)
-        input_level = Gst.ElementFactory.make('level', 'lowpass_input_level')
-        output_level = Gst.ElementFactory.make('level', 'lowpass_output_level')
+        self.input_level = Gst.ElementFactory.make('level',
+                                                   'lowpass_input_level')
+        self.output_level = Gst.ElementFactory.make('level',
+                                                    'lowpass_output_level')
 
         self.lowpass.set_property('mode', 'low-pass')
         self.lowpass.set_property('type', 1)
         self.lowpass.set_property('ripple', 0)
 
         self.bin = GstInsertBin.InsertBin.new('lowpass_bin')
-        self.bin.append(input_level, self.on_filter_added, None)
+        self.bin.append(self.input_level, self.on_filter_added, None)
         self.bin.append(self.lowpass, self.on_filter_added, None)
-        self.bin.append(output_level, self.on_filter_added, None)
+        self.bin.append(self.output_level, self.on_filter_added, None)
 
-    def load_ui(self):
+    def post_messages(self, state):
+        self.input_level.set_property('post-messages', state)
+        self.output_level.set_property('post-messages', state)
+
+    def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +
                                                  '/ui/lowpass.glade')
 
         self.ui_window = self.builder.get_object('window')
+        self.ui_controls = self.builder.get_object('controls')
         self.ui_listbox_control = self.builder.get_object('listbox_control')
 
         self.ui_enable = self.builder.get_object('enable')
+        self.ui_img_state = self.builder.get_object('img_state')
         self.ui_cutoff = self.builder.get_object('cutoff')
         self.ui_poles = self.builder.get_object('poles')
 
@@ -79,7 +86,8 @@ class Lowpass():
         flag = Gio.SettingsBindFlags.DEFAULT
 
         self.settings.bind('lowpass-state', self.ui_enable, 'active', flag)
-        self.settings.bind('lowpass-state', self.ui_window, 'sensitive',
+        self.settings.bind('lowpass-state', self.ui_img_state, 'visible', flag)
+        self.settings.bind('lowpass-state', self.ui_controls, 'sensitive',
                            Gio.SettingsBindFlags.GET)
         self.settings.bind('lowpass-cutoff', self.ui_cutoff, 'value', flag)
         self.settings.bind('lowpass-poles', self.ui_poles, 'value', flag)
@@ -93,7 +101,7 @@ class Lowpass():
         widget_level_right_label = widgets[3]
 
         if left >= -99:
-            l_value = 10**(left / 20)
+            l_value = 10**(left / 10)
             widget_level_left.set_value(l_value)
             widget_level_left_label.set_text(str(round(left)))
         else:
@@ -101,7 +109,7 @@ class Lowpass():
             widget_level_left_label.set_text('-99')
 
         if right >= -99:
-            r_value = 10**(right / 20)
+            r_value = 10**(right / 10)
             widget_level_right.set_value(r_value)
             widget_level_right_label.set_text(str(round(right)))
         else:

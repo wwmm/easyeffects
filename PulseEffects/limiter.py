@@ -35,7 +35,6 @@ class Limiter():
             self.log.warn('Limiter plugin was not found. Disabling it!')
 
         self.build_bin()
-        self.load_ui()
 
     def on_filter_added(self, bin, element, success, user_data):
         pass
@@ -43,24 +42,31 @@ class Limiter():
     def build_bin(self):
         self.limiter = Gst.ElementFactory.make(
             'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter', None)
-        input_level = Gst.ElementFactory.make('level', 'limiter_input_level')
-        output_level = Gst.ElementFactory.make('level', 'limiter_output_level')
+        self.input_level = Gst.ElementFactory.make('level',
+                                                   'limiter_input_level')
+        self.output_level = Gst.ElementFactory.make('level',
+                                                    'limiter_output_level')
         self.autovolume_level = Gst.ElementFactory.make('level', 'autovolume')
 
         self.bin = GstInsertBin.InsertBin.new('limiter_bin')
 
         if self.is_installed:
-            self.bin.append(input_level, self.on_filter_added, None)
+            self.bin.append(self.input_level, self.on_filter_added, None)
             self.bin.append(self.limiter, self.on_filter_added, None)
-            self.bin.append(output_level, self.on_filter_added, None)
+            self.bin.append(self.output_level, self.on_filter_added, None)
             self.bin.append(self.autovolume_level, self.on_filter_added, None)
 
-    def load_ui(self):
+    def post_messages(self, state):
+        self.input_level.set_property('post-messages', state)
+        self.output_level.set_property('post-messages', state)
+
+    def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +
                                                  '/ui/limiter.glade')
         self.builder.connect_signals(self)
 
         self.ui_window = self.builder.get_object('window')
+        self.ui_controls = self.builder.get_object('controls')
         self.ui_listbox_control = self.builder.get_object('listbox_control')
         self.ui_limiter_controls = self.builder.get_object('limiter_controls')
 
@@ -69,6 +75,7 @@ class Limiter():
             'autovolume_controls')
 
         self.ui_limiter_enable = self.builder.get_object('limiter_enable')
+        self.ui_img_state = self.builder.get_object('img_state')
         self.ui_input_gain = self.builder.get_object('input_gain')
         self.ui_limit = self.builder.get_object('limit')
         self.ui_release_time = self.builder.get_object('release_time')
@@ -123,13 +130,14 @@ class Limiter():
         self.ui_release_time.bind_property('value', self.limiter,
                                            'release-time', flag)
 
-        # binding ui widgets to gstreamer plugins
+        # binding ui widgets to gsettings
 
-        flag = GObject.BindingFlags.DEFAULT
+        flag = Gio.SettingsBindFlags.DEFAULT
 
         self.settings.bind('limiter-state', self.ui_limiter_enable, 'active',
                            flag)
-        self.settings.bind('limiter-state', self.ui_window,
+        self.settings.bind('limiter-state', self.ui_img_state, 'visible', flag)
+        self.settings.bind('limiter-state', self.ui_controls,
                            'sensitive', Gio.SettingsBindFlags.GET)
         self.settings.bind('limiter-state', self.ui_autovolume_box,
                            'sensitive', Gio.SettingsBindFlags.GET)
@@ -244,7 +252,7 @@ class Limiter():
         widget_level_right_label = widgets[3]
 
         if left >= -99:
-            l_value = 10**(left / 20)
+            l_value = 10**(left / 10)
             widget_level_left.set_value(l_value)
             widget_level_left_label.set_text(str(round(left)))
         else:
@@ -252,7 +260,7 @@ class Limiter():
             widget_level_left_label.set_text('-99')
 
         if right >= -99:
-            r_value = 10**(right / 20)
+            r_value = 10**(right / 10)
             widget_level_right.set_value(r_value)
             widget_level_right_label.set_text(str(round(right)))
         else:

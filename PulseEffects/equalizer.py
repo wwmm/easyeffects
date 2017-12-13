@@ -20,7 +20,6 @@ class Equalizer():
         self.module_path = os.path.dirname(__file__)
 
         self.build_bin()
-        self.load_ui()
 
     def on_filter_added(self, bin, element, success, user_data):
         pass
@@ -29,37 +28,44 @@ class Equalizer():
         self.input_gain = Gst.ElementFactory.make('volume', None)
         self.output_gain = Gst.ElementFactory.make('volume', None)
         equalizer = Gst.ElementFactory.make('equalizer-nbands', None)
-        input_level = Gst.ElementFactory.make('level', 'equalizer_input_level')
-        output_level = Gst.ElementFactory.make('level',
-                                               'equalizer_output_level')
+        self.input_level = Gst.ElementFactory.make('level',
+                                                   'equalizer_input_level')
+        self.output_level = Gst.ElementFactory.make('level',
+                                                    'equalizer_output_level')
 
-        equalizer.set_property('num-bands', 15)
+        equalizer.set_property('num-bands', 30)
 
-        for n in range(15):
+        for n in range(30):
             setattr(self, 'band' + str(n), equalizer.get_child_by_index(n))
 
         self.bin = GstInsertBin.InsertBin.new('equalizer_bin')
 
         self.bin.append(self.input_gain, self.on_filter_added, None)
-        self.bin.append(input_level, self.on_filter_added, None)
+        self.bin.append(self.input_level, self.on_filter_added, None)
         self.bin.append(equalizer, self.on_filter_added, None)
         self.bin.append(self.output_gain, self.on_filter_added, None)
-        self.bin.append(output_level, self.on_filter_added, None)
+        self.bin.append(self.output_level, self.on_filter_added, None)
 
-    def load_ui(self):
+    def post_messages(self, state):
+        self.input_level.set_property('post-messages', state)
+        self.output_level.set_property('post-messages', state)
+
+    def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +
                                                  '/ui/equalizer.glade')
         self.builder.connect_signals(self)
 
         self.ui_window = self.builder.get_object('window')
+        self.ui_controls = self.builder.get_object('controls')
         self.ui_listbox_control = self.builder.get_object('listbox_control')
 
         self.ui_enable = self.builder.get_object('enable')
+        self.ui_img_state = self.builder.get_object('img_state')
 
         self.ui_input_gain = self.builder.get_object('input_gain')
         self.ui_output_gain = self.builder.get_object('output_gain')
 
-        for n in range(15):
+        for n in range(30):
             setattr(self, 'ui_band' + str(n) + '_g',
                     self.builder.get_object('band' + str(n) + '_g'))
 
@@ -88,7 +94,7 @@ class Equalizer():
             'equalizer_output_level_right_label')
 
         # band menu
-        for n in range(15):
+        for n in range(30):
             menu_builder = Gtk.Builder()
             menu_builder.add_from_file(self.module_path +
                                        '/ui/equalizer_band_menu.glade')
@@ -125,7 +131,7 @@ class Equalizer():
 
         flag = GObject.BindingFlags.DEFAULT
 
-        for n in range(15):
+        for n in range(30):
             ui_band_g = getattr(self, 'ui_band' + str(n) + '_g')
             ui_band_t = getattr(self, 'ui_band' + str(n) + '_t')
             band = getattr(self, 'band' + str(n))
@@ -139,14 +145,16 @@ class Equalizer():
 
         self.settings.bind('equalizer-state', self.ui_enable,
                            'active', flag)
-        self.settings.bind('equalizer-state', self.ui_window,
+        self.settings.bind('equalizer-state', self.ui_img_state,
+                           'visible', flag)
+        self.settings.bind('equalizer-state', self.ui_controls,
                            'sensitive', Gio.SettingsBindFlags.GET)
         self.settings.bind('equalizer-input-gain', self.ui_input_gain, 'value',
                            flag)
         self.settings.bind('equalizer-output-gain', self.ui_output_gain,
                            'value', flag)
 
-        for n in range(15):
+        for n in range(30):
             ui_band_g = getattr(self, 'ui_band' + str(n) + '_g')
             ui_band_f = getattr(self, 'ui_band' + str(n) + '_f')
             ui_band_q = getattr(self, 'ui_band' + str(n) + '_q')
@@ -165,11 +173,11 @@ class Equalizer():
             self.settings.bind(prop, ui_band_t, 'active', flag)
 
     def print_eq_freqs_and_widths(self):
-        for n in range(15):
+        for n in range(30):
             f = getattr(self, 'band' + str(n)).get_property('freq')
             w = getattr(self, 'band' + str(n)).get_property('bandwidth')
 
-            print(f, w)
+            print(n, f, w)
 
     def on_input_gain_value_changed(self, obj):
         value_db = obj.get_value()
@@ -226,7 +234,7 @@ class Equalizer():
         widget_level_right_label = widgets[3]
 
         if left >= -99:
-            l_value = 10**(left / 20)
+            l_value = 10**(left / 10)
             widget_level_left.set_value(l_value)
             widget_level_left_label.set_text(str(round(left)))
         else:
@@ -234,7 +242,7 @@ class Equalizer():
             widget_level_left_label.set_text('-99')
 
         if right >= -99:
-            r_value = 10**(right / 20)
+            r_value = 10**(right / 10)
             widget_level_right.set_value(r_value)
             widget_level_right_label.set_text(str(round(right)))
         else:
@@ -258,7 +266,7 @@ class Equalizer():
         self.ui_update_level(widgets, peak)
 
     def on_eq_flat_response_button_clicked(self, obj):
-        for n in range(15):
+        for n in range(30):
             self.settings.reset('equalizer-band' + str(n) + '-gain')
 
     def on_eq_calibrate_button_clicked(self, obj):
@@ -270,7 +278,7 @@ class Equalizer():
         self.settings.reset('equalizer-input-gain')
         self.settings.reset('equalizer-output-gain')
 
-        for n in range(15):
+        for n in range(30):
             self.settings.reset('equalizer-band' + str(n) + '-gain')
             self.settings.reset('equalizer-band' + str(n) + '-frequency')
             self.settings.reset('equalizer-band' + str(n) + '-quality')

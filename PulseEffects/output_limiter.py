@@ -31,7 +31,6 @@ class OutputLimiter():
             self.log.warn('Limiter plugin was not found. Disabling it!')
 
         self.build_bin()
-        self.load_ui()
 
     def on_filter_added(self, bin, element, success, user_data):
         pass
@@ -39,28 +38,34 @@ class OutputLimiter():
     def build_bin(self):
         self.limiter = Gst.ElementFactory.make(
             'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter', None)
-        input_level = Gst.ElementFactory.make('level',
-                                              'output_limiter_input_level')
-        output_level = Gst.ElementFactory.make('level',
-                                               'output_limiter_output_level')
+        self.in_level = Gst.ElementFactory.make('level',
+                                                'output_limiter_input_level')
+        self.out_level = Gst.ElementFactory.make('level',
+                                                 'output_limiter_output_level')
 
         self.bin = GstInsertBin.InsertBin.new('output_limiter_bin')
 
         if self.is_installed:
-            self.bin.append(input_level, self.on_filter_added, None)
+            self.bin.append(self.in_level, self.on_filter_added, None)
             self.bin.append(self.limiter, self.on_filter_added, None)
-            self.bin.append(output_level, self.on_filter_added, None)
+            self.bin.append(self.out_level, self.on_filter_added, None)
 
-    def load_ui(self):
+    def post_messages(self, state):
+        self.in_level.set_property('post-messages', state)
+        self.out_level.set_property('post-messages', state)
+
+    def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +
                                                  '/ui/output_limiter.glade')
         self.builder.connect_signals(self)
 
         self.ui_window = self.builder.get_object('window')
+        self.ui_controls = self.builder.get_object('controls')
         self.ui_listbox_control = self.builder.get_object('listbox_control')
         self.ui_limiter_controls = self.builder.get_object('limiter_controls')
 
         self.ui_limiter_enable = self.builder.get_object('limiter_enable')
+        self.ui_img_state = self.builder.get_object('img_state')
         self.ui_input_gain = self.builder.get_object('input_gain')
         self.ui_limit = self.builder.get_object('limit')
         self.ui_release_time = self.builder.get_object('release_time')
@@ -106,11 +111,13 @@ class OutputLimiter():
 
         # binding ui widgets to gstreamer plugins
 
-        flag = GObject.BindingFlags.DEFAULT
+        flag = Gio.SettingsBindFlags.DEFAULT
 
         self.settings.bind('output-limiter-state', self.ui_limiter_enable,
                            'active', flag)
-        self.settings.bind('output-limiter-state', self.ui_window,
+        self.settings.bind('output-limiter-state', self.ui_img_state,
+                           'visible', flag)
+        self.settings.bind('output-limiter-state', self.ui_controls,
                            'sensitive', Gio.SettingsBindFlags.GET)
         self.settings.bind('output-limiter-input-gain', self.ui_input_gain,
                            'value', flag)
@@ -128,7 +135,7 @@ class OutputLimiter():
         widget_level_right_label = widgets[3]
 
         if left >= -99:
-            l_value = 10**(left / 20)
+            l_value = 10**(left / 10)
             widget_level_left.set_value(l_value)
             widget_level_left_label.set_text(str(round(left)))
         else:
@@ -136,7 +143,7 @@ class OutputLimiter():
             widget_level_left_label.set_text('-99')
 
         if right >= -99:
-            r_value = 10**(right / 20)
+            r_value = 10**(right / 10)
             widget_level_right.set_value(r_value)
             widget_level_right_label.set_text(str(round(right)))
         else:

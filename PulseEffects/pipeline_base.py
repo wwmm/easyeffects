@@ -17,6 +17,8 @@ class PipelineBase(GObject.GObject):
         'new_spectrum': (GObject.SignalFlags.RUN_FIRST, None, (object,))
     }
 
+    switch_on_all_apps = GObject.Property(type=bool, default=False)
+
     def __init__(self, sampling_rate):
         GObject.GObject.__init__(self)
 

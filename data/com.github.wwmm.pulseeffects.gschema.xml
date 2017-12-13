@@ -15,6 +15,10 @@
           <default>200</default>
         </key>
 
+        <key name="enable-all-apps" type="b">
+          <default>false</default>
+        </key>
+
         <key name="use-dark-theme" type="b">
           <default>false</default>
         </key>
