@@ -181,7 +181,6 @@ class Limiter():
             tolerance = self.settings.get_value(
                 'autovolume-tolerance').unpack()
 
-            # self.ui_input_gain.set_value(-10)
             self.ui_limit.set_value(target + tolerance)
             self.ui_release_time.set_value(window)
 
@@ -228,7 +227,10 @@ class Limiter():
     def auto_gain(self, max_value):
         max_value = int(max_value)
 
-        if max_value > self.autovolume_target + self.autovolume_tolerance:
+        attenuation = round(self.limiter.get_property('attenuation'))
+
+        if (max_value > self.autovolume_target + self.autovolume_tolerance or
+                attenuation > 0):
             gain = self.limiter.get_property('input-gain')
 
             if gain - 1 >= -20:
