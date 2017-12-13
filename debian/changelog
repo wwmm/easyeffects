@@ -1,3 +1,9 @@
+pulseeffects (3.1.2-git13122017:0732msk) artful; urgency=low
+
+  * version 3.1.2 + latest Git
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 13 Dec 2017 07:33:00 +0300 
+ 
 pulseeffects (3.0.7.5) artful; urgency=low
 
   * fix 3.0.7.4 git merging
