@@ -3,6 +3,7 @@
 ## [Unreleased]
 ### Fixed
 - Level meters: conversion from decibel to linear scale uses the correct factor
+- Auto volume: It is working in service mode
 
 ## [3.1.2]
 ### Fixed

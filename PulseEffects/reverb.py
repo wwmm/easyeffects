@@ -75,7 +75,7 @@ class Reverb():
     def bind(self):
         # binding ui widgets to gstreamer plugins
 
-        flag = GObject.BindingFlags.DEFAULT
+        flag = GObject.BindingFlags.BIDIRECTIONAL
 
         self.ui_room_size.bind_property('value', self.reverb, 'room-size',
                                         flag)

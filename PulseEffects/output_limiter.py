@@ -101,7 +101,7 @@ class OutputLimiter():
     def bind(self):
         # binding ui widgets to gstreamer plugins
 
-        flag = GObject.BindingFlags.DEFAULT
+        flag = GObject.BindingFlags.BIDIRECTIONAL
 
         self.ui_input_gain.bind_property('value', self.limiter, 'input-gain',
                                          flag)
