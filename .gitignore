@@ -27,4 +27,4 @@ debian/*
 # Dolphin file manager creates the file .directory to save some folder-specific settings
 *.directory
 
-*-build-deps.deb
+*-build-deps*.deb
