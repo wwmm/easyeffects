@@ -1,3 +1,10 @@
+pulseeffects (3.1.3) artful; urgency=low
+
+  * Level meters: conversion from decibel to linear scale uses the correct factor
+  * Auto volume: It is working in service mode and it does not reset the limiter
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Tue, 14 Dec 2017 19:43:00 +0300 
+
 pulseeffects (3.1.2-git131220170843msk) artful; urgency=low
 
   * add gstreamer1.0-pulseaudio as a dependency
