@@ -75,7 +75,7 @@ class Highpass():
     def bind(self):
         # binding ui widgets to gstreamer plugins
 
-        flag = GObject.BindingFlags.DEFAULT
+        flag = GObject.BindingFlags.BIDIRECTIONAL
 
         self.ui_cutoff.bind_property('value', self.highpass, 'cutoff', flag)
         self.ui_poles.bind_property('value', self.highpass, 'poles', flag)

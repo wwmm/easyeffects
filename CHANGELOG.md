@@ -1,8 +1,15 @@
 # Changelog
 
 ## [Unreleased]
+
+## [3.1.3]
 ### Fixed
 - Level meters: conversion from decibel to linear scale uses the correct factor
+- Auto volume: It is working in service mode and it does not reset the limiter
+gain to -10 dB when the main window is opened anymore. It alse makes better
+use of the limiter attenuation parameter and reduces its input gain whenever
+ there is attenuation in the limiter.
+- Interface: Uses a little less screen space.
 
 ## [3.1.2]
 ### Fixed

@@ -104,7 +104,7 @@ class BassEnhancer():
     def bind(self):
         # binding ui widgets to gstreamer plugins
 
-        flag = GObject.BindingFlags.DEFAULT
+        flag = GObject.BindingFlags.BIDIRECTIONAL
 
         self.ui_amount.bind_property('value', self.bass_enhancer, 'amount',
                                      flag)

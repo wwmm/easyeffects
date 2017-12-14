@@ -85,7 +85,7 @@ class Panorama():
     def bind(self):
         # binding ui widgets to gstreamer plugins
 
-        flag = GObject.BindingFlags.DEFAULT
+        flag = GObject.BindingFlags.BIDIRECTIONAL
 
         self.ui_position.bind_property('value', self.panorama, 'panorama',
                                        flag)

@@ -104,7 +104,7 @@ class Exciter():
     def bind(self):
         # binding ui widgets to gstreamer plugins
 
-        flag = GObject.BindingFlags.DEFAULT
+        flag = GObject.BindingFlags.BIDIRECTIONAL
 
         self.ui_amount.bind_property('value', self.exciter, 'amount', flag)
         self.ui_harmonics.bind_property('value', self.exciter, 'drive', flag)

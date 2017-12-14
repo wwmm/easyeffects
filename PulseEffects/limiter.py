@@ -122,7 +122,7 @@ class Limiter():
     def bind(self):
         # binding ui widgets to gstreamer plugins
 
-        flag = GObject.BindingFlags.DEFAULT
+        flag = GObject.BindingFlags.BIDIRECTIONAL
 
         self.ui_input_gain.bind_property('value', self.limiter, 'input-gain',
                                          flag)
@@ -181,7 +181,6 @@ class Limiter():
             tolerance = self.settings.get_value(
                 'autovolume-tolerance').unpack()
 
-            self.ui_input_gain.set_value(-10)
             self.ui_limit.set_value(target + tolerance)
             self.ui_release_time.set_value(window)
 
@@ -228,20 +227,26 @@ class Limiter():
     def auto_gain(self, max_value):
         max_value = int(max_value)
 
-        if max_value > self.autovolume_target + self.autovolume_tolerance:
+        attenuation = round(self.limiter.get_property('attenuation'))
+
+        if (max_value > self.autovolume_target + self.autovolume_tolerance or
+                attenuation > 0):
             gain = self.limiter.get_property('input-gain')
 
             if gain - 1 >= -20:
                 gain = gain - 1
 
-                self.ui_input_gain.set_value(gain)
+                # using ui_input_gain has no effect in service mode because
+                # the ui is destroyed
+
+                self.limiter.set_property('input-gain', gain)
         elif max_value < self.autovolume_target - self.autovolume_tolerance:
             gain = self.limiter.get_property('input-gain')
 
             if gain + 1 <= 20:
                 gain = gain + 1
 
-                self.ui_input_gain.set_value(gain)
+                self.limiter.set_property('input-gain', gain)
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]
