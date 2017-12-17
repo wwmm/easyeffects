@@ -145,14 +145,14 @@ class Maximizer():
             widget_level_right.set_value(0)
             widget_level_right_label.set_text('-99')
 
-    def ui_update_limiter_input_level(self, peak):
+    def ui_update_input_level(self, peak):
         widgets = [self.ui_input_level_left, self.ui_input_level_right,
                    self.ui_input_level_left_label,
                    self.ui_input_level_right_label]
 
         self.ui_update_level(widgets, peak)
 
-    def ui_update_limiter_output_level(self, peak):
+    def ui_update_output_level(self, peak):
         widgets = [self.ui_output_level_left, self.ui_output_level_right,
                    self.ui_output_level_left_label,
                    self.ui_output_level_right_label]
