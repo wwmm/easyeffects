@@ -10,6 +10,7 @@ PulseEffects/ui/highpass.glade
 PulseEffects/ui/limiter.glade
 PulseEffects/ui/lowpass.glade
 PulseEffects/ui/main_ui.glade
+PulseEffects/ui/maximizer.glade
 PulseEffects/ui/output_limiter.glade
 PulseEffects/ui/panorama.glade
 PulseEffects/ui/presets_menu.glade

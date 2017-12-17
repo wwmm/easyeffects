@@ -12,7 +12,7 @@ from gi.repository import Gio, GObject, Gst, GstInsertBin, Gtk
 Gst.init(None)
 
 
-class OutputLimiter():
+class Maximizer():
 
     def __init__(self, settings):
         self.settings = settings
@@ -22,13 +22,12 @@ class OutputLimiter():
 
         self.old_limiter_attenuation = 0
 
-        if Gst.ElementFactory.make(
-                'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter'):
+        if Gst.ElementFactory.make('ladspa-zamaximx2-ladspa-so-zamaximx2'):
             self.is_installed = True
         else:
             self.is_installed = False
 
-            self.log.warn('Limiter plugin was not found. Disabling it!')
+            self.log.warn('Maximizer plugin was not found. Disabling it!')
 
         self.build_bin()
 
@@ -36,18 +35,18 @@ class OutputLimiter():
         pass
 
     def build_bin(self):
-        self.limiter = Gst.ElementFactory.make(
-            'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter', None)
+        self.maximizer = Gst.ElementFactory.make(
+            'ladspa-zamaximx2-ladspa-so-zamaximx2', None)
         self.in_level = Gst.ElementFactory.make('level',
-                                                'output_limiter_input_level')
+                                                'maximizer_input_level')
         self.out_level = Gst.ElementFactory.make('level',
-                                                 'output_limiter_output_level')
+                                                 'maximizer_output_level')
 
-        self.bin = GstInsertBin.InsertBin.new('output_limiter_bin')
+        self.bin = GstInsertBin.InsertBin.new('maximizer_bin')
 
         if self.is_installed:
             self.bin.append(self.in_level, self.on_filter_added, None)
-            self.bin.append(self.limiter, self.on_filter_added, None)
+            self.bin.append(self.maximizer, self.on_filter_added, None)
             self.bin.append(self.out_level, self.on_filter_added, None)
 
     def post_messages(self, state):
@@ -56,27 +55,27 @@ class OutputLimiter():
 
     def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +
-                                                 '/ui/output_limiter.glade')
+                                                 '/ui/maximizer.glade')
         self.builder.connect_signals(self)
 
         self.ui_window = self.builder.get_object('window')
         self.ui_controls = self.builder.get_object('controls')
         self.ui_listbox_control = self.builder.get_object('listbox_control')
 
-        self.ui_limiter_enable = self.builder.get_object('limiter_enable')
+        self.ui_enable = self.builder.get_object('enable')
         self.ui_img_state = self.builder.get_object('img_state')
-        self.ui_input_gain = self.builder.get_object('input_gain')
-        self.ui_limit = self.builder.get_object('limit')
-        self.ui_release_time = self.builder.get_object('release_time')
+        self.ui_release = self.builder.get_object('release')
+        self.ui_ceiling = self.builder.get_object('ceiling')
+        self.ui_threshold = self.builder.get_object('threshold')
         self.ui_attenuation_levelbar = self.builder.get_object(
             'attenuation_levelbar')
 
         self.ui_attenuation_levelbar.add_offset_value(
-            'GTK_LEVEL_BAR_OFFSET_LOW', 20)
+            'GTK_LEVEL_BAR_OFFSET_LOW', 10)
         self.ui_attenuation_levelbar.add_offset_value(
-            'GTK_LEVEL_BAR_OFFSET_HIGH', 50)
+            'GTK_LEVEL_BAR_OFFSET_HIGH', 30)
         self.ui_attenuation_levelbar.add_offset_value(
-            'GTK_LEVEL_BAR_OFFSET_FULL', 70)
+            'GTK_LEVEL_BAR_OFFSET_FULL', 40)
 
         self.ui_input_level_left = self.builder.get_object('input_level_left')
         self.ui_input_level_right = self.builder.get_object(
@@ -102,28 +101,25 @@ class OutputLimiter():
 
         flag = GObject.BindingFlags.BIDIRECTIONAL
 
-        self.ui_input_gain.bind_property('value', self.limiter, 'input-gain',
-                                         flag)
-        self.ui_limit.bind_property('value', self.limiter, 'limit', flag)
-        self.ui_release_time.bind_property('value', self.limiter,
-                                           'release-time', flag)
+        self.ui_release.bind_property('value', self.maximizer, 'release', flag)
+        self.ui_ceiling.bind_property('value', self.maximizer,
+                                      'output-ceiling', flag)
+        self.ui_threshold.bind_property('value', self.maximizer,
+                                        'threshold', flag)
 
         # binding ui widgets to gstreamer plugins
 
         flag = Gio.SettingsBindFlags.DEFAULT
 
-        self.settings.bind('output-limiter-state', self.ui_limiter_enable,
-                           'active', flag)
-        self.settings.bind('output-limiter-state', self.ui_img_state,
-                           'visible', flag)
-        self.settings.bind('output-limiter-state', self.ui_controls,
-                           'sensitive', Gio.SettingsBindFlags.GET)
-        self.settings.bind('output-limiter-input-gain', self.ui_input_gain,
-                           'value', flag)
-        self.settings.bind('output-limiter-limit', self.ui_limit, 'value',
+        self.settings.bind('maximizer-state', self.ui_enable, 'active', flag)
+        self.settings.bind('maximizer-state', self.ui_img_state, 'visible',
                            flag)
-        self.settings.bind('output-limiter-release-time', self.ui_release_time,
-                           'value', flag)
+        self.settings.bind('maximizer-state', self.ui_controls, 'sensitive',
+                           Gio.SettingsBindFlags.GET)
+        self.settings.bind('maximizer-release', self.ui_release, 'value', flag)
+        self.settings.bind('maximizer-ceiling', self.ui_ceiling, 'value', flag)
+        self.settings.bind('maximizer-threshold', self.ui_threshold, 'value',
+                           flag)
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]
@@ -163,7 +159,9 @@ class OutputLimiter():
 
         self.ui_update_level(widgets, peak)
 
-        attenuation = round(self.limiter.get_property('attenuation'))
+        attenuation = round(self.maximizer.get_property('gain-reduction'))
+
+        print('latency: ', self.maximizer.get_property('param--latency'))
 
         if attenuation != self.old_limiter_attenuation:
             self.old_limiter_attenuation = attenuation
@@ -172,7 +170,7 @@ class OutputLimiter():
             self.ui_attenuation_level_label.set_text(str(round(attenuation)))
 
     def reset(self):
-        self.settings.reset('output-limiter-state')
-        self.settings.reset('output-limiter-input-gain')
-        self.settings.reset('output-limiter-limit')
-        self.settings.reset('output-limiter-release-time')
+        self.settings.reset('maximizer-state')
+        self.settings.reset('maximizer-release')
+        self.settings.reset('maximizer-ceiling')
+        self.settings.reset('maximizer-threshold')
