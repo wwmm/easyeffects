@@ -161,7 +161,7 @@ class Maximizer():
 
         attenuation = round(self.maximizer.get_property('gain-reduction'))
 
-        print('latency: ', self.maximizer.get_property('param--latency'))
+        # print('latency: ', self.maximizer.get_property('param--latency'))
 
         if attenuation != self.old_limiter_attenuation:
             self.old_limiter_attenuation = attenuation

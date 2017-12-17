@@ -314,6 +314,7 @@ class SinkInputEffects(EffectsBase):
     def reset(self):
         EffectsBase.reset(self)
 
+        self.maximizer.reset()
         self.panorama.reset()
         self.exciter.reset()
         self.bass_enhancer.reset()

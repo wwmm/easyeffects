@@ -117,7 +117,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="input_purpose">number</property>
-                <property name="adjustment">threshold_adjustment</property>
+                <property name="adjustment">ceiling_adjustment</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
               </object>
