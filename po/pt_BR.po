@@ -8,15 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-09 13:08-0200\n"
-"PO-Revision-Date: 2017-12-09 13:09-0200\n"
+"POT-Creation-Date: 2017-12-17 15:21-0200\n"
+"PO-Revision-Date: 2017-12-17 15:21-0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.5\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
@@ -44,7 +44,7 @@ msgstr "Resampler"
 msgid "Buffer Latency"
 msgstr "Latência de Buffer"
 
-#: PulseEffects/ui/app_info.glade:271 PulseEffects/ui/main_ui.glade:325
+#: PulseEffects/ui/app_info.glade:271 PulseEffects/ui/main_ui.glade:324
 msgid "Latency"
 msgstr "Latência"
 
@@ -86,12 +86,12 @@ msgstr "2°"
 msgid "Blend Harmonics"
 msgstr "Mistura de Harmônicos"
 
-#: PulseEffects/ui/bass_enhancer.glade:294 PulseEffects/ui/equalizer.glade:1861
+#: PulseEffects/ui/bass_enhancer.glade:294 PulseEffects/ui/equalizer.glade:1863
 #: PulseEffects/ui/exciter.glade:294
 msgid "Output [dB]"
 msgstr "Saída [dB]"
 
-#: PulseEffects/ui/bass_enhancer.glade:307 PulseEffects/ui/equalizer.glade:1848
+#: PulseEffects/ui/bass_enhancer.glade:307 PulseEffects/ui/equalizer.glade:1850
 #: PulseEffects/ui/exciter.glade:307
 msgid "Input [dB]"
 msgstr "Entrada [dB]"
@@ -118,6 +118,7 @@ msgid "Release [ms]"
 msgstr "Liberação [ms]"
 
 #: PulseEffects/ui/compressor.glade:210 PulseEffects/ui/limiter.glade:336
+#: PulseEffects/ui/maximizer.glade:82
 msgid "Threshold [dB]"
 msgstr "Limiar [dB]"
 
@@ -135,7 +136,7 @@ msgstr "Ganho de Saída [dB]"
 
 #. for some reason when listbox is inside a scrolledwindow
 #. it autoselects a row at startup
-#: PulseEffects/ui/compressor.glade:322 PulseEffects/ui/main_ui.glade:280
+#: PulseEffects/ui/compressor.glade:322 PulseEffects/ui/main_ui.glade:279
 #: PulseEffects/ui/reverb.glade:214 PulseEffects/presets_manager.py:67
 msgid "Presets"
 msgstr "Predefinições"
@@ -146,15 +147,15 @@ msgstr "Vlc"
 
 #: PulseEffects/ui/compressor.glade:368 PulseEffects/ui/highpass.glade:246
 #: PulseEffects/ui/limiter.glade:404 PulseEffects/ui/lowpass.glade:246
-#: PulseEffects/ui/output_limiter.glade:176 PulseEffects/ui/panorama.glade:224
-#: PulseEffects/ui/reverb.glade:401
+#: PulseEffects/ui/maximizer.glade:175 PulseEffects/ui/output_limiter.glade:176
+#: PulseEffects/ui/panorama.glade:224 PulseEffects/ui/reverb.glade:401
 msgid "Input"
 msgstr "Entrada"
 
 #: PulseEffects/ui/compressor.glade:469 PulseEffects/ui/highpass.glade:145
 #: PulseEffects/ui/limiter.glade:505 PulseEffects/ui/lowpass.glade:145
-#: PulseEffects/ui/output_limiter.glade:277 PulseEffects/ui/panorama.glade:123
-#: PulseEffects/ui/reverb.glade:300
+#: PulseEffects/ui/maximizer.glade:276 PulseEffects/ui/output_limiter.glade:277
+#: PulseEffects/ui/panorama.glade:123 PulseEffects/ui/reverb.glade:300
 msgid "Output"
 msgstr "Saída"
 
@@ -167,11 +168,11 @@ msgstr "Redução de Ganho"
 msgid "Equalizer"
 msgstr "Equalizador"
 
-#: PulseEffects/ui/equalizer.glade:2052
+#: PulseEffects/ui/equalizer.glade:2054
 msgid "Flat Response"
 msgstr "Resposta Plana"
 
-#: PulseEffects/ui/equalizer.glade:2065
+#: PulseEffects/ui/equalizer.glade:2067
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
 msgid "Calibration"
 msgstr "Calibração"
@@ -242,7 +243,8 @@ msgstr "Ganho de Entrada [dB]"
 msgid "Limit [dB]"
 msgstr "Limite [dB]"
 
-#: PulseEffects/ui/limiter.glade:188 PulseEffects/ui/output_limiter.glade:151
+#: PulseEffects/ui/limiter.glade:188 PulseEffects/ui/maximizer.glade:150
+#: PulseEffects/ui/output_limiter.glade:151
 msgid "Release [s]"
 msgstr "Liberação [s]"
 
@@ -263,7 +265,8 @@ msgstr "Alvo [dB]"
 msgid "Tolerance [dB]"
 msgstr "Tolerância [dB]"
 
-#: PulseEffects/ui/limiter.glade:606 PulseEffects/ui/output_limiter.glade:378
+#: PulseEffects/ui/limiter.glade:606 PulseEffects/ui/maximizer.glade:377
+#: PulseEffects/ui/output_limiter.glade:378
 msgid "Attenuation"
 msgstr "Atenuação"
 
@@ -271,49 +274,57 @@ msgstr "Atenuação"
 msgid "Low Pass"
 msgstr "Passa-Baixa"
 
-#: PulseEffects/ui/main_ui.glade:347
+#: PulseEffects/ui/main_ui.glade:346
 msgid "buffer-time [ms]"
 msgstr "tempo de atraso [ms]"
 
-#: PulseEffects/ui/main_ui.glade:377
+#: PulseEffects/ui/main_ui.glade:376
 msgid "latency-time [ms]"
 msgstr "tempo de atraso [ms]"
 
-#: PulseEffects/ui/main_ui.glade:415
+#: PulseEffects/ui/main_ui.glade:414
 msgid "Spectrum"
 msgstr "Espectro"
 
-#: PulseEffects/ui/main_ui.glade:436
+#: PulseEffects/ui/main_ui.glade:435
 msgid "Show"
 msgstr "Mostrar"
 
-#: PulseEffects/ui/main_ui.glade:448
+#: PulseEffects/ui/main_ui.glade:447
 msgid "Points"
 msgstr "Pontos"
 
-#: PulseEffects/ui/main_ui.glade:498
+#: PulseEffects/ui/main_ui.glade:497
 msgid "General"
 msgstr "Geral"
 
-#: PulseEffects/ui/main_ui.glade:518
+#: PulseEffects/ui/main_ui.glade:517
 msgid "Settings"
 msgstr "Configurações"
 
-#: PulseEffects/ui/main_ui.glade:527
+#: PulseEffects/ui/main_ui.glade:526
 msgid "Reset"
 msgstr "Resetar"
 
-#: PulseEffects/ui/main_ui.glade:546
+#: PulseEffects/ui/main_ui.glade:545
 msgid "Use Dark Theme"
 msgstr "Usar Tema Escuro"
 
-#: PulseEffects/ui/main_ui.glade:570
+#: PulseEffects/ui/main_ui.glade:569
 msgid "Enable All Applications"
 msgstr "Habilitar Todos os Aplicativos"
 
-#: PulseEffects/ui/main_ui.glade:594
+#: PulseEffects/ui/main_ui.glade:593
 msgid "Start Service at Login"
 msgstr "Inicializar Serviço no Login"
+
+#: PulseEffects/ui/maximizer.glade:18
+msgid "Maximizer"
+msgstr "Maximizador"
+
+#: PulseEffects/ui/maximizer.glade:108
+msgid "Ceiling [dB]"
+msgstr "Teto [dB]"
 
 #: PulseEffects/ui/output_limiter.glade:24
 msgid "Output Limiter"
@@ -367,16 +378,16 @@ msgstr "Sala de Máquinas"
 msgid "Small Room"
 msgstr "Quarto Pequeno"
 
-#: PulseEffects/effects_base.py:81
+#: PulseEffects/effects_base.py:84
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
 msgid "Applications"
 msgstr "Aplicativos"
 
-#: PulseEffects/effects_base.py:218 PulseEffects/effects_base.py:293
+#: PulseEffects/effects_base.py:221 PulseEffects/effects_base.py:290
 msgid "paused"
 msgstr "pausado"
 
-#: PulseEffects/effects_base.py:220 PulseEffects/effects_base.py:295
+#: PulseEffects/effects_base.py:223 PulseEffects/effects_base.py:292
 msgid "playing"
 msgstr "tocando"
 

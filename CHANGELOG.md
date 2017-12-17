@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- Maximizer plugin from ZamAudio 
 
 ## [3.1.3]
 ### Fixed

@@ -272,6 +272,17 @@ class SavePresets():
                                 'floor': str(floor),
                                 'blend': str(blend)}
 
+    def save_maximizer_presets(self, settings, section):
+        enabled = settings.get_value('maximizer-state')
+        release = settings.get_value('maximizer-release')
+        ceiling = settings.get_value('maximizer-ceiling')
+        threshold = settings.get_value('maximizer-threshold')
+
+        self.config[section] = {'enabled': str(enabled),
+                                'release': str(release),
+                                'ceiling': str(ceiling),
+                                'threshold': str(threshold)}
+
     def save_output_limiter_presets(self, settings, section):
         enabled = settings.get_value('output-limiter-state')
         input_gain = settings.get_value('output-limiter-input-gain')
@@ -294,6 +305,7 @@ class SavePresets():
         self.save_equalizer_presets(settings, 'apps_equalizer')
         self.save_exciter_presets(settings, 'apps_exciter')
         self.save_bass_enhancer_presets(settings, 'apps_bass_enhancer')
+        self.save_maximizer_presets(settings, 'apps_maximizer')
         self.save_output_limiter_presets(settings, 'apps_output_limiter')
 
     def save_source_outputs_presets(self, settings):

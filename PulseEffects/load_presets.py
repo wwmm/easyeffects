@@ -380,6 +380,17 @@ class LoadPresets():
         settings.set_value('bass-enhancer-floor', GLib.Variant('d', floor))
         settings.set_value('bass-enhancer-blend', GLib.Variant('d', blend))
 
+    def load_maximizer_presets(self, settings, section):
+        enabled = self.config.getboolean(section, 'enabled', fallback=False)
+        release = self.config.getfloat(section, 'release', fallback=3.16)
+        ceiling = self.config.getfloat(section, 'ceiling', fallback=0.0)
+        threshold = self.config.getfloat(section, 'threshold', fallback=0.0)
+
+        settings.set_value('maximizer-state', GLib.Variant('b', enabled))
+        settings.set_value('maximizer-release', GLib.Variant('d', release))
+        settings.set_value('maximizer-ceiling', GLib.Variant('d', ceiling))
+        settings.set_value('maximizer-threshold', GLib.Variant('d', threshold))
+
     def load_output_limiter_presets(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
         input_gain = self.config.getfloat(section, 'input gain', fallback=0.0)
@@ -405,6 +416,7 @@ class LoadPresets():
         self.load_equalizer_presets(settings, 'apps_equalizer')
         self.load_exciter_presets(settings, 'apps_exciter')
         self.load_bass_enhancer_presets(settings, 'apps_bass_enhancer')
+        self.load_maximizer_presets(settings, 'apps_maximizer')
         self.load_output_limiter_presets(settings, 'apps_output_limiter')
 
     def load_source_outputs_presets(self, settings):

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-09 13:08-0200\n"
+"POT-Creation-Date: 2017-12-17 15:21-0200\n"
 "PO-Revision-Date: 2017-06-11 22:19+0200\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: \n"
@@ -42,7 +42,7 @@ msgstr ""
 msgid "Buffer Latency"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:271 PulseEffects/ui/main_ui.glade:325
+#: PulseEffects/ui/app_info.glade:271 PulseEffects/ui/main_ui.glade:324
 msgid "Latency"
 msgstr ""
 
@@ -85,12 +85,12 @@ msgstr ""
 msgid "Blend Harmonics"
 msgstr ""
 
-#: PulseEffects/ui/bass_enhancer.glade:294 PulseEffects/ui/equalizer.glade:1861
+#: PulseEffects/ui/bass_enhancer.glade:294 PulseEffects/ui/equalizer.glade:1863
 #: PulseEffects/ui/exciter.glade:294
 msgid "Output [dB]"
 msgstr "Výstup [dB]"
 
-#: PulseEffects/ui/bass_enhancer.glade:307 PulseEffects/ui/equalizer.glade:1848
+#: PulseEffects/ui/bass_enhancer.glade:307 PulseEffects/ui/equalizer.glade:1850
 #: PulseEffects/ui/exciter.glade:307
 msgid "Input [dB]"
 msgstr "Vstup [dB]"
@@ -117,6 +117,7 @@ msgid "Release [ms]"
 msgstr "Uvoľnenie [ms]"
 
 #: PulseEffects/ui/compressor.glade:210 PulseEffects/ui/limiter.glade:336
+#: PulseEffects/ui/maximizer.glade:82
 msgid "Threshold [dB]"
 msgstr "Prah [dB]"
 
@@ -134,7 +135,7 @@ msgstr "Výstupné zosilnenie [dB]"
 
 #. for some reason when listbox is inside a scrolledwindow
 #. it autoselects a row at startup
-#: PulseEffects/ui/compressor.glade:322 PulseEffects/ui/main_ui.glade:280
+#: PulseEffects/ui/compressor.glade:322 PulseEffects/ui/main_ui.glade:279
 #: PulseEffects/ui/reverb.glade:214 PulseEffects/presets_manager.py:67
 msgid "Presets"
 msgstr "Predvoľby"
@@ -145,15 +146,15 @@ msgstr ""
 
 #: PulseEffects/ui/compressor.glade:368 PulseEffects/ui/highpass.glade:246
 #: PulseEffects/ui/limiter.glade:404 PulseEffects/ui/lowpass.glade:246
-#: PulseEffects/ui/output_limiter.glade:176 PulseEffects/ui/panorama.glade:224
-#: PulseEffects/ui/reverb.glade:401
+#: PulseEffects/ui/maximizer.glade:175 PulseEffects/ui/output_limiter.glade:176
+#: PulseEffects/ui/panorama.glade:224 PulseEffects/ui/reverb.glade:401
 msgid "Input"
 msgstr "Vstup"
 
 #: PulseEffects/ui/compressor.glade:469 PulseEffects/ui/highpass.glade:145
 #: PulseEffects/ui/limiter.glade:505 PulseEffects/ui/lowpass.glade:145
-#: PulseEffects/ui/output_limiter.glade:277 PulseEffects/ui/panorama.glade:123
-#: PulseEffects/ui/reverb.glade:300
+#: PulseEffects/ui/maximizer.glade:276 PulseEffects/ui/output_limiter.glade:277
+#: PulseEffects/ui/panorama.glade:123 PulseEffects/ui/reverb.glade:300
 msgid "Output"
 msgstr "Výstup"
 
@@ -166,11 +167,11 @@ msgstr "Redukcia zosilnenia"
 msgid "Equalizer"
 msgstr "Ekvalizér"
 
-#: PulseEffects/ui/equalizer.glade:2052
+#: PulseEffects/ui/equalizer.glade:2054
 msgid "Flat Response"
 msgstr ""
 
-#: PulseEffects/ui/equalizer.glade:2065
+#: PulseEffects/ui/equalizer.glade:2067
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
 msgid "Calibration"
 msgstr ""
@@ -243,7 +244,8 @@ msgstr "Vstupné zosilnenie [dB]"
 msgid "Limit [dB]"
 msgstr "Obmedzenie [dB]"
 
-#: PulseEffects/ui/limiter.glade:188 PulseEffects/ui/output_limiter.glade:151
+#: PulseEffects/ui/limiter.glade:188 PulseEffects/ui/maximizer.glade:150
+#: PulseEffects/ui/output_limiter.glade:151
 msgid "Release [s]"
 msgstr "Uvoľnenie [s]"
 
@@ -266,7 +268,8 @@ msgstr "Prah [dB]"
 msgid "Tolerance [dB]"
 msgstr "Koleno [dB]"
 
-#: PulseEffects/ui/limiter.glade:606 PulseEffects/ui/output_limiter.glade:378
+#: PulseEffects/ui/limiter.glade:606 PulseEffects/ui/maximizer.glade:377
+#: PulseEffects/ui/output_limiter.glade:378
 msgid "Attenuation"
 msgstr "Zoslabenie"
 
@@ -274,51 +277,60 @@ msgstr "Zoslabenie"
 msgid "Low Pass"
 msgstr "Dolný prechod"
 
-#: PulseEffects/ui/main_ui.glade:347
+#: PulseEffects/ui/main_ui.glade:346
 msgid "buffer-time [ms]"
 msgstr "Čas zásobníka [ms]"
 
-#: PulseEffects/ui/main_ui.glade:377
+#: PulseEffects/ui/main_ui.glade:376
 msgid "latency-time [ms]"
 msgstr "Čas oneskorenia [ms]"
 
-#: PulseEffects/ui/main_ui.glade:415
+#: PulseEffects/ui/main_ui.glade:414
 #, fuzzy
 msgid "Spectrum"
 msgstr "Zobraziť spektrum"
 
-#: PulseEffects/ui/main_ui.glade:436
+#: PulseEffects/ui/main_ui.glade:435
 msgid "Show"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:448
+#: PulseEffects/ui/main_ui.glade:447
 msgid "Points"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:498
+#: PulseEffects/ui/main_ui.glade:497
 msgid "General"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:518
+#: PulseEffects/ui/main_ui.glade:517
 msgid "Settings"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:527
+#: PulseEffects/ui/main_ui.glade:526
 #, fuzzy
 msgid "Reset"
 msgstr "Predvoľby"
 
-#: PulseEffects/ui/main_ui.glade:546
+#: PulseEffects/ui/main_ui.glade:545
 msgid "Use Dark Theme"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:570
+#: PulseEffects/ui/main_ui.glade:569
 msgid "Enable All Applications"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:594
+#: PulseEffects/ui/main_ui.glade:593
 msgid "Start Service at Login"
 msgstr ""
+
+#: PulseEffects/ui/maximizer.glade:18
+msgid "Maximizer"
+msgstr ""
+
+#: PulseEffects/ui/maximizer.glade:108
+#, fuzzy
+msgid "Ceiling [dB]"
+msgstr "Obmedzenie [dB]"
 
 #: PulseEffects/ui/output_limiter.glade:24
 #, fuzzy
@@ -376,16 +388,16 @@ msgstr "Strojovňa"
 msgid "Small Room"
 msgstr "Malá miestnosť"
 
-#: PulseEffects/effects_base.py:81
+#: PulseEffects/effects_base.py:84
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
 msgid "Applications"
 msgstr ""
 
-#: PulseEffects/effects_base.py:218 PulseEffects/effects_base.py:293
+#: PulseEffects/effects_base.py:221 PulseEffects/effects_base.py:290
 msgid "paused"
 msgstr ""
 
-#: PulseEffects/effects_base.py:220 PulseEffects/effects_base.py:295
+#: PulseEffects/effects_base.py:223 PulseEffects/effects_base.py:292
 msgid "playing"
 msgstr ""
 

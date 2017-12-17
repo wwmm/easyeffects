@@ -17,8 +17,10 @@ Order of effects applied to applications output:
 7. Butterworth Lowpass filter (Gstreamer audiocheblimit)
 8. 30 Bands Parametric Equalizer (Gstreamer)
 9. Exciter (LV2 Exciter from Calf Studio)
-9. Bass Enhancer (LV2 Bass Enhancer from Calf Studio)
-10. Spectrum Analyzer (Gstreamer)
+10. Bass Enhancer (LV2 Bass Enhancer from Calf Studio)
+11. Maximizer (Ladspa MAximizer from ZamAudio)
+12. Output Limiter (Ladspa Fast Lookahead Limiter)
+13. Spectrum Analyzer (Gstreamer)
 
 Since version 2.0.0 PulseEffects is capable of applying effects to microphone
 output at the same time it applies them for applications output:
@@ -74,6 +76,7 @@ Required libraries:
 - [swh-plugins](https://github.com/swh/ladspa) from Ladspa
 - [Lilv](http://drobilla.net/category/lilv/)
 - [Calf Plugins](https://calf-studio-gear.org/)
+- [ZamAudio Ladspa Plugins](http://www.zamaudio.com/)
 
 #### Installing from Source
 
