@@ -86,6 +86,10 @@ See the wiki: [Installing from Source](https://github.com/wwmm/pulseeffects/wiki
 
 See the wiki: [Command Line Options](https://github.com/wwmm/pulseeffects/wiki/Command-Line-Options)
 
+## Reporting bugs 
+
+See the wiki: [Reporting Bugs](https://github.com/wwmm/pulseeffects/wiki/Reporting-bugs)
+
 ## Translating PulseEffects
 
 See the wiki: [Translating PulseEffects](https://github.com/wwmm/pulseeffects/wiki/Translating-PulseEffects), for detailed instructions.
