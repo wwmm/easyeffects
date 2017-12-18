@@ -38,6 +38,7 @@ output at the same time it applies them for applications output:
 ### GNU/Linux Packages
 
 - [Arch Linux](https://aur.archlinux.org/packages/pulseeffects/)
+- [Void Linux](https://github.com/voidlinux/void-packages/blob/master/srcpkgs/pulseeffects/template)
 - [Gentoo](https://packages.gentoo.org/packages/media-sound/pulseeffects/)
 
 #### Community Packages
