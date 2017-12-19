@@ -30,19 +30,6 @@
           <default>-50</default>
         </key>
 
-        <key name="maximizer-state" type="b">
-          <default>false</default>
-        </key>
-        <key name="maximizer-release" type="d">
-          <default>3.16</default>
-        </key>
-        <key name="maximizer-ceiling" type="d">
-          <default>0.0</default>
-        </key>
-        <key name="maximizer-threshold" type="d">
-          <default>0.0</default>
-        </key>
-
         <key name="panorama-state" type="b">
           <default>false</default>
         </key>
@@ -545,6 +532,19 @@
         </key>
         <key name="exciter-blend" type="d">
           <default>0</default>
+        </key>
+
+        <key name="maximizer-state" type="b">
+          <default>false</default>
+        </key>
+        <key name="maximizer-release" type="d">
+          <default>3.16</default>
+        </key>
+        <key name="maximizer-ceiling" type="d">
+          <default>0.0</default>
+        </key>
+        <key name="maximizer-threshold" type="d">
+          <default>0.0</default>
         </key>
 
         <key name="output-limiter-state" type="b">
