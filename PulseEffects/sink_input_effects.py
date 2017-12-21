@@ -7,6 +7,7 @@ gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gio, GstInsertBin, Gtk
 from PulseEffects.bass_enhancer import BassEnhancer
+from PulseEffects.convolver import Convolver
 from PulseEffects.effects_base import EffectsBase
 from PulseEffects.exciter import Exciter
 from PulseEffects.maximizer import Maximizer
@@ -48,6 +49,7 @@ class SinkInputEffects(EffectsBase):
         self.panorama = Panorama(self.settings)
         self.exciter = Exciter(self.settings)
         self.bass_enhancer = BassEnhancer(self.settings)
+        self.convolver = Convolver(self.settings)
         self.maximizer = Maximizer(self.settings)
         self.output_limiter = OutputLimiter(self.settings)
 
@@ -56,6 +58,8 @@ class SinkInputEffects(EffectsBase):
         self.exciter_wrapper = GstInsertBin.InsertBin.new('exciter_wrapper')
         self.bass_enhancer_wrapper = GstInsertBin.InsertBin.new(
             'bass_enhancer_wrapper')
+        self.convolver_wrapper = GstInsertBin.InsertBin.new(
+            'convolver_wrapper')
         self.maximizer_wrapper = GstInsertBin.InsertBin.new(
             'maximizer_wrapper')
         self.output_limiter_wrapper = GstInsertBin.InsertBin.new(
@@ -77,8 +81,13 @@ class SinkInputEffects(EffectsBase):
                                       self.on_filter_added,
                                       self.log_tag)
 
-        self.effects_bin.insert_after(self.maximizer_wrapper,
+        self.effects_bin.insert_after(self.convolver_wrapper,
                                       self.bass_enhancer_wrapper,
+                                      self.on_filter_added,
+                                      self.log_tag)
+
+        self.effects_bin.insert_after(self.maximizer_wrapper,
+                                      self.convolver_wrapper,
                                       self.on_filter_added,
                                       self.log_tag)
 
@@ -93,12 +102,14 @@ class SinkInputEffects(EffectsBase):
         self.panorama.init_ui()
         self.exciter.init_ui()
         self.bass_enhancer.init_ui()
+        self.convolver.init_ui()
         self.maximizer.init_ui()
         self.output_limiter.init_ui()
 
         self.insert_in_listbox('panorama', 2)
         self.add_to_listbox('exciter')
         self.add_to_listbox('bass_enhancer')
+        self.add_to_listbox('convolver')
         self.add_to_listbox('maximizer')
         self.add_to_listbox('output_limiter')
 
@@ -115,6 +126,7 @@ class SinkInputEffects(EffectsBase):
         self.stack.add_named(self.equalizer.ui_window, 'equalizer')
         self.stack.add_named(self.exciter.ui_window, 'exciter')
         self.stack.add_named(self.bass_enhancer.ui_window, 'bass_enhancer')
+        self.stack.add_named(self.convolver.ui_window, 'convolver')
         self.stack.add_named(self.maximizer.ui_window, 'maximizer')
         self.stack.add_named(self.output_limiter.ui_window, 'output_limiter')
 
@@ -123,6 +135,7 @@ class SinkInputEffects(EffectsBase):
         self.exciter.ui_enable.connect('state-set', self.on_exciter_enable)
         self.bass_enhancer.ui_enable.connect('state-set',
                                              self.on_bass_enhancer_enable)
+        self.convolver.ui_enable.connect('state-set', self.on_convolver_enable)
         self.maximizer.ui_enable.connect('state-set', self.on_maximizer_enable)
         self.output_limiter.ui_limiter_enable\
             .connect('state-set', self.on_output_limiter_enable)
@@ -173,6 +186,7 @@ class SinkInputEffects(EffectsBase):
         self.highpass.bind()
         self.lowpass.bind()
         self.equalizer.bind()
+        self.convolver.bind()
 
     def on_enable_app(self, obj, state, idx):
         if state:
@@ -201,6 +215,7 @@ class SinkInputEffects(EffectsBase):
         self.panorama.post_messages(state)
         self.exciter.post_messages(state)
         self.bass_enhancer.post_messages(state)
+        self.convolver.post_messages(state)
         self.maximizer.post_messages(state)
         self.output_limiter.post_messages(state)
 
@@ -233,6 +248,14 @@ class SinkInputEffects(EffectsBase):
             peak = msg.get_structure().get_value('peak')
 
             self.bass_enhancer.ui_update_output_level(peak)
+        elif plugin == 'convolver_input_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.convolver.ui_update_input_level(peak)
+        elif plugin == 'convolver_output_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.convolver.ui_update_output_level(peak)
         elif plugin == 'maximizer_input_level':
             peak = msg.get_structure().get_value('peak')
 
@@ -285,6 +308,17 @@ class SinkInputEffects(EffectsBase):
                                               self.on_filter_removed,
                                               self.log_tag)
 
+    def on_convolver_enable(self, obj, state):
+        if state:
+            if not self.convolver_wrapper.get_by_name('convolver_bin'):
+                self.convolver_wrapper.append(self.convolver.bin,
+                                              self.on_filter_added,
+                                              self.log_tag)
+        else:
+            self.convolver_wrapper.remove(self.convolver.bin,
+                                          self.on_filter_removed,
+                                          self.log_tag)
+
     def on_maximizer_enable(self, obj, state):
         if state:
             if not self.maximizer_wrapper.get_by_name('maximizer_bin'):
@@ -314,5 +348,6 @@ class SinkInputEffects(EffectsBase):
         self.panorama.reset()
         self.exciter.reset()
         self.bass_enhancer.reset()
+        self.convolver.reset()
         self.maximizer.reset()
         self.output_limiter.reset()
