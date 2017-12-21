@@ -4,9 +4,8 @@ import os
 
 import gi
 gi.require_version('Gst', '1.0')
-gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, GObject, Gst, GstInsertBin, Gtk
+from gi.repository import Gio, GObject, Gst, Gtk
 
 Gst.init(None)
 
@@ -23,16 +22,57 @@ class Convolver():
         pass
 
     def build_bin(self):
-        # self.convolver = Gst.ElementFactory.make('audiocheblimit', None)
+        self.bin = Gst.Bin.new('convolver_bin')
+        deinterleave = Gst.ElementFactory.make('deinterleave',
+                                               'convolver_deinterleave')
+        interleave = Gst.ElementFactory.make('interleave', None)
+        self.fir_L = Gst.ElementFactory.make('audiofirfilter', 'fir_L')
+        self.fir_R = Gst.ElementFactory.make('audiofirfilter', 'fir_R')
+
         self.input_level = Gst.ElementFactory.make('level',
                                                    'convolver_input_level')
         self.output_level = Gst.ElementFactory.make('level',
                                                     'convolver_output_level')
 
-        self.bin = GstInsertBin.InsertBin.new('convolver_bin')
-        self.bin.append(self.input_level, self.on_filter_added, None)
-        # self.bin.append(self.convolver, self.on_filter_added, None)
-        self.bin.append(self.output_level, self.on_filter_added, None)
+        self.bin.add(self.input_level)
+        self.bin.add(deinterleave)
+        self.bin.add(self.fir_L)
+        self.bin.add(self.fir_R)
+        self.bin.add(interleave)
+        self.bin.add(self.output_level)
+
+        # self.input_level.link(deinterleave)
+        # interleave.link(self.output_level)
+
+        self.input_level.link(self.output_level)
+
+        static_pad = self.input_level.get_static_pad("sink")
+        ghost_pad = Gst.GhostPad.new('sink', static_pad)
+        self.bin.add_pad(ghost_pad)
+        static_pad = self.output_level.get_static_pad("src")
+        ghost_pad = Gst.GhostPad.new('src', static_pad)
+        self.bin.add_pad(ghost_pad)
+
+        deinterleave.connect('pad-added', self.on_padd_added)
+        interleave.connect('pad-added', self.on_padd_added)
+
+    def on_padd_added(self, element, pad):
+        pad_info = pad.get_name().split('_')
+
+        if pad_info[0] == 'src':  # deinterleave
+            if pad_info[1] == '0':  # left channel pad
+                sink_pad = self.fir_L.get_static_pad('sink')
+                pad.link(sink_pad)
+            else:
+                sink_pad = self.fir_R.get_static_pad('sink')
+                pad.link(sink_pad)
+        else:
+            if pad_info[1] == '0':  # left channel pad
+                sink_pad = self.fir_L.get_static_pad('src')
+                pad.link(sink_pad)
+            else:
+                sink_pad = self.fir_R.get_static_pad('src')
+                pad.link(sink_pad)
 
     def post_messages(self, state):
         self.input_level.set_property('post-messages', state)
