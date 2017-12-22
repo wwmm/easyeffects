@@ -76,23 +76,19 @@ class Convolver():
         self.fir_R.get_static_pad('src').link(request_pad)
 
         self.deinterleave.set_property('keep-positions', True)
+        self.interleave.set_property('channel-positions-from-input', True)
+
         self.deinterleave.connect('pad-added', self.on_padd_added)
-        # self.deinterleave.connect('pad-removed', self.on_padd_removed)
 
     def on_padd_added(self, element, pad):
         pad_info = pad.get_name().split('_')
 
-        caps = pad.query_caps(None)
-
-        print(caps)
+        print('deinterleave_caps: ', pad.query_caps(None))
 
         if pad_info[1] == '0':  # left channel pad
             pad.link(self.queue_L.get_static_pad('sink'))
         else:
             pad.link(self.queue_R.get_static_pad('sink'))
-
-    # def on_padd_removed(self, element, pad):
-    #     print(pad)
 
     def post_messages(self, state):
         self.input_level.set_property('post-messages', state)
