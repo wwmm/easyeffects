@@ -38,24 +38,11 @@ class Convolver():
 
         self.fir_L = Gst.ElementFactory.make('audiofirfilter', 'fir_L')
         self.fir_R = Gst.ElementFactory.make('audiofirfilter', 'fir_R')
-        # self.fir_L = Gst.ElementFactory.make('audioconvert', 'fir_L')
-        # self.fir_R = Gst.ElementFactory.make('audioconvert', 'fir_R')
-
-        self.caps_L = Gst.ElementFactory.make('capsfilter', None)
-        self.caps_R = Gst.ElementFactory.make('capsfilter', None)
 
         self.interleave = Gst.ElementFactory.make('interleave', None)
 
         self.output_level = Gst.ElementFactory.make('level',
                                                     'convolver_output_level')
-
-        caps = ['audio/x-raw', 'channels=1', 'channel-mask=(bitmask)0x1']
-        caps_list = Gst.Caps.from_string(",".join(caps))
-        self.caps_L.set_property("caps", caps_list)
-
-        caps = ['audio/x-raw', 'channels=1', 'channel-mask=(bitmask)0x2']
-        caps_list = Gst.Caps.from_string(",".join(caps))
-        self.caps_R.set_property("caps", caps_list)
 
         self.bin.add(self.input_level)
         self.bin.add(self.deinterleave)
@@ -63,17 +50,13 @@ class Convolver():
         self.bin.add(self.queue_R)
         self.bin.add(self.fir_L)
         self.bin.add(self.fir_R)
-        self.bin.add(self.caps_L)
-        self.bin.add(self.caps_R)
         self.bin.add(self.interleave)
         self.bin.add(self.output_level)
 
         self.input_level.link(self.deinterleave)
 
-        self.queue_L.link(self.caps_L)
-        self.caps_L.link(self.fir_L)
-        self.queue_R.link(self.caps_R)
-        self.caps_R.link(self.fir_R)
+        self.queue_L.link(self.fir_L)
+        self.queue_R.link(self.fir_R)
 
         self.interleave.link(self.output_level)
 
@@ -87,22 +70,29 @@ class Convolver():
         request_pad = self.interleave.get_request_pad('sink_%u')
 
         self.fir_L.get_static_pad('src').link(request_pad)
-        # self.caps_L.get_static_pad('src').link(request_pad)
 
         request_pad = self.interleave.get_request_pad('sink_%u')
 
         self.fir_R.get_static_pad('src').link(request_pad)
-        # self.caps_R.get_static_pad('src').link(request_pad)
 
+        self.deinterleave.set_property('keep-positions', True)
         self.deinterleave.connect('pad-added', self.on_padd_added)
+        # self.deinterleave.connect('pad-removed', self.on_padd_removed)
 
     def on_padd_added(self, element, pad):
         pad_info = pad.get_name().split('_')
+
+        caps = pad.query_caps(None)
+
+        print(caps)
 
         if pad_info[1] == '0':  # left channel pad
             pad.link(self.queue_L.get_static_pad('sink'))
         else:
             pad.link(self.queue_R.get_static_pad('sink'))
+
+    # def on_padd_removed(self, element, pad):
+    #     print(pad)
 
     def post_messages(self, state):
         self.input_level.set_property('post-messages', state)
