@@ -39,8 +39,6 @@ class Convolver():
         self.fir_L = Gst.ElementFactory.make('audiofirfilter', 'fir_L')
         self.fir_R = Gst.ElementFactory.make('audiofirfilter', 'fir_R')
 
-        self.interleave = Gst.ElementFactory.make('interleave', None)
-
         self.output_level = Gst.ElementFactory.make('level',
                                                     'convolver_output_level')
 
@@ -50,15 +48,12 @@ class Convolver():
         self.bin.add(self.queue_R)
         self.bin.add(self.fir_L)
         self.bin.add(self.fir_R)
-        self.bin.add(self.interleave)
         self.bin.add(self.output_level)
 
         self.input_level.link(self.deinterleave)
 
         self.queue_L.link(self.fir_L)
         self.queue_R.link(self.fir_R)
-
-        self.interleave.link(self.output_level)
 
         static_pad = self.input_level.get_static_pad("sink")
         ghost_pad = Gst.GhostPad.new('sink', static_pad)
@@ -67,28 +62,43 @@ class Convolver():
         ghost_pad = Gst.GhostPad.new('src', static_pad)
         self.bin.add_pad(ghost_pad)
 
-        request_pad = self.interleave.get_request_pad('sink_%u')
-
-        self.fir_L.get_static_pad('src').link(request_pad)
-
-        request_pad = self.interleave.get_request_pad('sink_%u')
-
-        self.fir_R.get_static_pad('src').link(request_pad)
-
         self.deinterleave.set_property('keep-positions', True)
-        self.interleave.set_property('channel-positions-from-input', True)
 
-        self.deinterleave.connect('pad-added', self.on_padd_added)
+        self.deinterleave.connect('pad-added', self.on_pad_added)
+        self.deinterleave.connect('pad-removed', self.on_pad_removed)
+        self.deinterleave.connect('no-more-pads', self.on_no_more_pads)
 
-    def on_padd_added(self, element, pad):
+    def on_pad_added(self, element, pad):
         pad_info = pad.get_name().split('_')
-
-        print('deinterleave_caps: ', pad.query_caps(None))
 
         if pad_info[1] == '0':  # left channel pad
             pad.link(self.queue_L.get_static_pad('sink'))
         else:
             pad.link(self.queue_R.get_static_pad('sink'))
+
+    def on_no_more_pads(self, user_data):
+        self.interleave = Gst.ElementFactory.make('interleave', None)
+
+        self.bin.add(self.interleave)
+
+        self.interleave.link(self.output_level)
+
+        self.interleave.set_property('channel-positions-from-input', True)
+
+        self.request_pad_L = self.interleave.get_request_pad('sink_%u')
+
+        self.fir_L.get_static_pad('src').link(self.request_pad_L)
+
+        self.request_pad_R = self.interleave.get_request_pad('sink_%u')
+
+        self.fir_R.get_static_pad('src').link(self.request_pad_R)
+
+        self.interleave.set_state(Gst.State.PLAYING)
+
+    def on_pad_removed(self, element, pad):
+        if self.interleave:
+            self.bin.remove(self.interleave)
+            self.interleave = None
 
     def post_messages(self, state):
         self.input_level.set_property('post-messages', state)
