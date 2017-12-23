@@ -534,10 +534,6 @@
           <default>0</default>
         </key>
 
-        <key name="convolver-state" type="b">
-          <default>false</default>
-        </key>
-
         <key name="maximizer-state" type="b">
           <default>false</default>
         </key>
