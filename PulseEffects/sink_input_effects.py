@@ -132,36 +132,42 @@ class SinkInputEffects(EffectsBase):
         else:
             self.limiter.ui_window.set_sensitive(False)
             self.limiter.ui_limiter_enable.set_sensitive(False)
+            self.limiter.ui_img_state.hide()
 
         if self.compressor.is_installed:
             self.compressor.bind()
         else:
             self.compressor.ui_window.set_sensitive(False)
             self.compressor.ui_enable.set_sensitive(False)
+            self.compressor.ui_img_state.hide()
 
         if self.exciter.is_installed:
             self.exciter.bind()
         else:
             self.exciter.ui_window.set_sensitive(False)
             self.exciter.ui_enable.set_sensitive(False)
+            self.exciter.ui_img_state.hide()
 
         if self.bass_enhancer.is_installed:
             self.bass_enhancer.bind()
         else:
             self.bass_enhancer.ui_window.set_sensitive(False)
             self.bass_enhancer.ui_enable.set_sensitive(False)
+            self.bass_enhancer.ui_img_state.hide()
 
         if self.maximizer.is_installed:
             self.maximizer.bind()
         else:
             self.maximizer.ui_window.set_sensitive(False)
             self.maximizer.ui_enable.set_sensitive(False)
+            self.maximizer.ui_img_state.hide()
 
         if self.output_limiter.is_installed:
             self.output_limiter.bind()
         else:
             self.output_limiter.ui_window.set_sensitive(False)
             self.output_limiter.ui_limiter_enable.set_sensitive(False)
+            self.output_limiter.ui_img_state.hide()
 
         self.panorama.bind()
         self.reverb.bind()

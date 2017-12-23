@@ -61,12 +61,14 @@ class SourceOutputEffects(EffectsBase):
         else:
             self.limiter.ui_window.set_sensitive(False)
             self.limiter.ui_limiter_enable.set_sensitive(False)
+            self.limiter.ui_img_state.hide()
 
         if self.compressor.is_installed:
             self.compressor.bind()
         else:
             self.compressor.ui_window.set_sensitive(False)
             self.compressor.ui_enable.set_sensitive(False)
+            self.compressor.ui_img_state.hide()
 
         self.reverb.bind()
         self.highpass.bind()
