@@ -133,12 +133,6 @@ class SinkInputEffects(EffectsBase):
             self.limiter.ui_window.set_sensitive(False)
             self.limiter.ui_limiter_enable.set_sensitive(False)
 
-        if self.panorama.is_installed:
-            self.panorama.bind()
-        else:
-            self.panorama.ui_window.set_sensitive(False)
-            self.panorama.ui_enable.set_sensitive(False)
-
         if self.compressor.is_installed:
             self.compressor.bind()
         else:
@@ -169,6 +163,7 @@ class SinkInputEffects(EffectsBase):
             self.output_limiter.ui_window.set_sensitive(False)
             self.output_limiter.ui_limiter_enable.set_sensitive(False)
 
+        self.panorama.bind()
         self.reverb.bind()
         self.highpass.bind()
         self.lowpass.bind()

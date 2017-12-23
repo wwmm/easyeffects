@@ -20,13 +20,6 @@ class Panorama():
 
         self.log = logging.getLogger('PulseEffects')
 
-        if Gst.ElementFactory.make('audiopanorama'):
-            self.is_installed = True
-        else:
-            self.is_installed = False
-
-            self.log.warn('Panorama plugin was not found. Disabling it!')
-
         self.build_bin()
 
     def on_filter_added(self, bin, element, success, user_data):
@@ -44,10 +37,9 @@ class Panorama():
 
         self.bin = GstInsertBin.InsertBin.new('panorama_bin')
 
-        if self.is_installed:
-            self.bin.append(self.input_level, self.on_filter_added, None)
-            self.bin.append(self.panorama, self.on_filter_added, None)
-            self.bin.append(self.output_level, self.on_filter_added, None)
+        self.bin.append(self.input_level, self.on_filter_added, None)
+        self.bin.append(self.panorama, self.on_filter_added, None)
+        self.bin.append(self.output_level, self.on_filter_added, None)
 
     def post_messages(self, state):
         self.input_level.set_property('post-messages', state)
