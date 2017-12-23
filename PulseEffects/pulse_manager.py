@@ -464,6 +464,9 @@ class PulseManager(GObject.GObject):
                              'latency': latency, 'corked': corked}
 
                 if user_data == 1:
+                    if str(idx) not in self.streams and connected:
+                        self.create_stream(idx, app_name)
+
                     GLib.idle_add(self.emit, 'sink_input_added', new_input)
                 elif user_data == 2:
                     if str(idx) in self.streams:
@@ -636,9 +639,13 @@ class PulseManager(GObject.GObject):
         elif state == p.PA_STREAM_READY:
             self.log.info('created stream for sink input ' + str(idx))
         elif state == p.PA_STREAM_TERMINATED:
+            del self.streams[str(idx)]
+
             self.log.info('stream for sink input ' + str(idx) +
                           ' was terminated')
         elif state == p.PA_STREAM_UNCONNECTED:
+            del self.streams[str(idx)]
+
             self.log.info('stream for sink input ' + str(idx) +
                           ' was unconnected')
 

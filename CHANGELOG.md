@@ -3,6 +3,7 @@
 ## [Unreleased]
 ### Fixed
 - Check marks are not shown for plugins that are not available
+- Fixed a bug were the volume meter was not updated in applications like XCOM
 
 ## [3.1.4]
 ### Added
