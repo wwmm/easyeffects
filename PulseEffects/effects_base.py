@@ -33,20 +33,20 @@ class EffectsBase(PipelineBase):
 
         self.limiter = Limiter(self.settings)
         self.compressor = Compressor(self.settings)
-        self.reverb = Reverb(self.settings)
         self.highpass = Highpass(self.settings)
         self.lowpass = Lowpass(self.settings)
         self.equalizer = Equalizer(self.settings)
+        self.reverb = Reverb(self.settings)
 
         # effects wrappers
         self.limiter_wrapper = GstInsertBin.InsertBin.new('limiter_wrapper')
         self.compressor_wrapper = GstInsertBin.InsertBin.new(
             'compressor_wrapper')
-        self.reverb_wrapper = GstInsertBin.InsertBin.new('reverb_wrapper')
         self.highpass_wrapper = GstInsertBin.InsertBin.new('highpass_wrapper')
         self.lowpass_wrapper = GstInsertBin.InsertBin.new('lowpass_wrapper')
         self.equalizer_wrapper = GstInsertBin.InsertBin.new(
             'equalizer_wrapper')
+        self.reverb_wrapper = GstInsertBin.InsertBin.new('reverb_wrapper')
         self.spectrum_wrapper = GstInsertBin.InsertBin.new(
             'spectrum_wrapper')
 
@@ -55,13 +55,13 @@ class EffectsBase(PipelineBase):
                                 self.log_tag)
         self.effects_bin.append(self.compressor_wrapper, self.on_filter_added,
                                 self.log_tag)
-        self.effects_bin.append(self.reverb_wrapper, self.on_filter_added,
-                                self.log_tag)
         self.effects_bin.append(self.highpass_wrapper, self.on_filter_added,
                                 self.log_tag)
         self.effects_bin.append(self.lowpass_wrapper, self.on_filter_added,
                                 self.log_tag)
         self.effects_bin.append(self.equalizer_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.reverb_wrapper, self.on_filter_added,
                                 self.log_tag)
         self.effects_bin.append(self.spectrum_wrapper, self.on_filter_added,
                                 self.log_tag)
@@ -98,30 +98,6 @@ class EffectsBase(PipelineBase):
         Gtk.StyleContext.add_provider(self.listbox.get_style_context(),
                                       provider,
                                       Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
-
-        self.limiter.init_ui()
-        self.compressor.init_ui()
-        self.reverb.init_ui()
-        self.highpass.init_ui()
-        self.lowpass.init_ui()
-        self.equalizer.init_ui()
-
-        self.add_to_listbox('limiter')
-        self.add_to_listbox('compressor')
-        self.add_to_listbox('reverb')
-        self.add_to_listbox('highpass')
-        self.add_to_listbox('lowpass')
-        self.add_to_listbox('equalizer')
-
-        # on/off switches connections
-        self.limiter.ui_limiter_enable.connect('state-set',
-                                               self.on_limiter_enable)
-        self.compressor.ui_enable.connect('state-set',
-                                          self.on_compressor_enable)
-        self.reverb.ui_enable.connect('state-set', self.on_reverb_enable)
-        self.highpass.ui_enable.connect('state-set', self.on_highpass_enable)
-        self.lowpass.ui_enable.connect('state-set', self.on_lowpass_enable)
-        self.equalizer.ui_enable.connect('state-set', self.on_equalizer_enable)
 
     def add_to_listbox(self, name):
         row = Gtk.ListBoxRow()
@@ -361,10 +337,10 @@ class EffectsBase(PipelineBase):
     def post_messages(self, state):
         self.limiter.post_messages(state)
         self.compressor.post_messages(state)
-        self.reverb.post_messages(state)
         self.highpass.post_messages(state)
         self.lowpass.post_messages(state)
         self.equalizer.post_messages(state)
+        self.reverb.post_messages(state)
 
         self.spectrum.set_property('post-messages', state)
 
@@ -394,14 +370,6 @@ class EffectsBase(PipelineBase):
             peak = msg.get_structure().get_value('peak')
 
             self.compressor.ui_update_compressor_output_level(peak)
-        elif plugin == 'reverb_input_level':
-            peak = msg.get_structure().get_value('peak')
-
-            self.reverb.ui_update_reverb_input_level(peak)
-        elif plugin == 'reverb_output_level':
-            peak = msg.get_structure().get_value('peak')
-
-            self.reverb.ui_update_reverb_output_level(peak)
         elif plugin == 'highpass_input_level':
             peak = msg.get_structure().get_value('peak')
 
@@ -426,6 +394,14 @@ class EffectsBase(PipelineBase):
             peak = msg.get_structure().get_value('peak')
 
             self.equalizer.ui_update_equalizer_output_level(peak)
+        elif plugin == 'reverb_input_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.reverb.ui_update_reverb_input_level(peak)
+        elif plugin == 'reverb_output_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.reverb.ui_update_reverb_output_level(peak)
         elif plugin == 'spectrum':
             magnitudes = msg.get_structure().get_value('magnitude')
 
@@ -466,17 +442,6 @@ class EffectsBase(PipelineBase):
                                            self.on_filter_removed,
                                            self.log_tag)
 
-    def on_reverb_enable(self, obj, state):
-        if state:
-            if not self.reverb_wrapper.get_by_name('reverb_bin'):
-                self.reverb_wrapper.append(self.reverb.bin,
-                                           self.on_filter_added,
-                                           self.log_tag)
-        else:
-            self.reverb_wrapper.remove(self.reverb.bin,
-                                       self.on_filter_removed,
-                                       self.log_tag)
-
     def on_highpass_enable(self, obj, state):
         if state:
             if not self.highpass_wrapper.get_by_name('highpass_bin'):
@@ -510,6 +475,17 @@ class EffectsBase(PipelineBase):
                                           self.on_filter_removed,
                                           self.log_tag)
 
+    def on_reverb_enable(self, obj, state):
+        if state:
+            if not self.reverb_wrapper.get_by_name('reverb_bin'):
+                self.reverb_wrapper.append(self.reverb.bin,
+                                           self.on_filter_added,
+                                           self.log_tag)
+        else:
+            self.reverb_wrapper.remove(self.reverb.bin,
+                                       self.on_filter_removed,
+                                       self.log_tag)
+
     def enable_spectrum(self, state):
         if state:
             if not self.spectrum_wrapper.get_by_name('spectrum'):
@@ -524,7 +500,7 @@ class EffectsBase(PipelineBase):
     def reset(self):
         self.limiter.reset()
         self.compressor.reset()
-        self.reverb.reset()
         self.highpass.reset()
         self.lowpass.reset()
         self.equalizer.reset()
+        self.reverb.reset()

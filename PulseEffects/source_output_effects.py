@@ -43,6 +43,20 @@ class SourceOutputEffects(EffectsBase):
     def init_ui(self):
         EffectsBase.init_ui(self)
 
+        self.limiter.init_ui()
+        self.compressor.init_ui()
+        self.highpass.init_ui()
+        self.lowpass.init_ui()
+        self.equalizer.init_ui()
+        self.reverb.init_ui()
+
+        self.add_to_listbox('limiter')
+        self.add_to_listbox('compressor')
+        self.add_to_listbox('highpass')
+        self.add_to_listbox('lowpass')
+        self.add_to_listbox('equalizer')
+        self.add_to_listbox('reverb')
+
         self.listbox.show_all()
 
         # it makes no sense to show the calibration button here
@@ -51,10 +65,20 @@ class SourceOutputEffects(EffectsBase):
         # adding effects widgets to the stack
         self.stack.add_named(self.limiter.ui_window, 'limiter')
         self.stack.add_named(self.compressor.ui_window, 'compressor')
-        self.stack.add_named(self.reverb.ui_window, 'reverb')
         self.stack.add_named(self.highpass.ui_window, 'highpass')
         self.stack.add_named(self.lowpass.ui_window, 'lowpass')
         self.stack.add_named(self.equalizer.ui_window, 'equalizer')
+        self.stack.add_named(self.reverb.ui_window, 'reverb')
+
+        # on/off switches connections
+        self.limiter.ui_limiter_enable.connect('state-set',
+                                               self.on_limiter_enable)
+        self.compressor.ui_enable.connect('state-set',
+                                          self.on_compressor_enable)
+        self.highpass.ui_enable.connect('state-set', self.on_highpass_enable)
+        self.lowpass.ui_enable.connect('state-set', self.on_lowpass_enable)
+        self.equalizer.ui_enable.connect('state-set', self.on_equalizer_enable)
+        self.reverb.ui_enable.connect('state-set', self.on_reverb_enable)
 
         if self.limiter.is_installed:
             self.limiter.bind()
@@ -70,10 +94,10 @@ class SourceOutputEffects(EffectsBase):
             self.compressor.ui_enable.set_sensitive(False)
             self.compressor.ui_img_state.hide()
 
-        self.reverb.bind()
         self.highpass.bind()
         self.lowpass.bind()
         self.equalizer.bind()
+        self.reverb.bind()
 
     def on_enable_app(self, obj, state, idx):
         if state:

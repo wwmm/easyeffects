@@ -45,28 +45,23 @@ class SinkInputEffects(EffectsBase):
         self.pm.connect('sink_input_level_changed', self.on_app_level_changed)
         self.pm.connect('new_default_sink', self.update_output_sink_name)
 
-        self.panorama = Panorama(self.settings)
         self.exciter = Exciter(self.settings)
         self.bass_enhancer = BassEnhancer(self.settings)
+        self.panorama = Panorama(self.settings)
         self.maximizer = Maximizer(self.settings)
         self.output_limiter = OutputLimiter(self.settings)
 
         # effects wrappers
-        self.panorama_wrapper = GstInsertBin.InsertBin.new('panorama_wrapper')
         self.exciter_wrapper = GstInsertBin.InsertBin.new('exciter_wrapper')
         self.bass_enhancer_wrapper = GstInsertBin.InsertBin.new(
             'bass_enhancer_wrapper')
+        self.panorama_wrapper = GstInsertBin.InsertBin.new('panorama_wrapper')
         self.maximizer_wrapper = GstInsertBin.InsertBin.new(
             'maximizer_wrapper')
         self.output_limiter_wrapper = GstInsertBin.InsertBin.new(
             'output_limiter_wrapper')
 
         # appending effects wrappers to effects bin
-        self.effects_bin.insert_after(self.panorama_wrapper,
-                                      self.limiter_wrapper,
-                                      self.on_filter_added,
-                                      self.log_tag)
-
         self.effects_bin.insert_after(self.exciter_wrapper,
                                       self.equalizer_wrapper,
                                       self.on_filter_added,
@@ -77,8 +72,13 @@ class SinkInputEffects(EffectsBase):
                                       self.on_filter_added,
                                       self.log_tag)
 
+        self.effects_bin.insert_after(self.panorama_wrapper,
+                                      self.reverb_wrapper,
+                                      self.on_filter_added,
+                                      self.log_tag)
+
         self.effects_bin.insert_after(self.maximizer_wrapper,
-                                      self.bass_enhancer_wrapper,
+                                      self.panorama_wrapper,
                                       self.on_filter_added,
                                       self.log_tag)
 
@@ -90,15 +90,27 @@ class SinkInputEffects(EffectsBase):
     def init_ui(self):
         EffectsBase.init_ui(self)
 
-        self.panorama.init_ui()
+        self.limiter.init_ui()
+        self.compressor.init_ui()
+        self.highpass.init_ui()
+        self.lowpass.init_ui()
+        self.equalizer.init_ui()
         self.exciter.init_ui()
         self.bass_enhancer.init_ui()
+        self.reverb.init_ui()
+        self.panorama.init_ui()
         self.maximizer.init_ui()
         self.output_limiter.init_ui()
 
-        self.insert_in_listbox('panorama', 2)
+        self.add_to_listbox('limiter')
+        self.add_to_listbox('compressor')
+        self.add_to_listbox('highpass')
+        self.add_to_listbox('lowpass')
+        self.add_to_listbox('equalizer')
         self.add_to_listbox('exciter')
         self.add_to_listbox('bass_enhancer')
+        self.add_to_listbox('reverb')
+        self.add_to_listbox('panorama')
         self.add_to_listbox('maximizer')
         self.add_to_listbox('output_limiter')
 
@@ -107,22 +119,30 @@ class SinkInputEffects(EffectsBase):
         # adding effects widgets to the stack
 
         self.stack.add_named(self.limiter.ui_window, 'limiter')
-        self.stack.add_named(self.panorama.ui_window, 'panorama')
         self.stack.add_named(self.compressor.ui_window, 'compressor')
-        self.stack.add_named(self.reverb.ui_window, 'reverb')
         self.stack.add_named(self.highpass.ui_window, 'highpass')
         self.stack.add_named(self.lowpass.ui_window, 'lowpass')
         self.stack.add_named(self.equalizer.ui_window, 'equalizer')
         self.stack.add_named(self.exciter.ui_window, 'exciter')
         self.stack.add_named(self.bass_enhancer.ui_window, 'bass_enhancer')
+        self.stack.add_named(self.reverb.ui_window, 'reverb')
+        self.stack.add_named(self.panorama.ui_window, 'panorama')
         self.stack.add_named(self.maximizer.ui_window, 'maximizer')
         self.stack.add_named(self.output_limiter.ui_window, 'output_limiter')
 
         # on/off switches connections
-        self.panorama.ui_enable.connect('state-set', self.on_panorama_enable)
+        self.limiter.ui_limiter_enable.connect('state-set',
+                                               self.on_limiter_enable)
+        self.compressor.ui_enable.connect('state-set',
+                                          self.on_compressor_enable)
+        self.highpass.ui_enable.connect('state-set', self.on_highpass_enable)
+        self.lowpass.ui_enable.connect('state-set', self.on_lowpass_enable)
+        self.equalizer.ui_enable.connect('state-set', self.on_equalizer_enable)
         self.exciter.ui_enable.connect('state-set', self.on_exciter_enable)
         self.bass_enhancer.ui_enable.connect('state-set',
                                              self.on_bass_enhancer_enable)
+        self.reverb.ui_enable.connect('state-set', self.on_reverb_enable)
+        self.panorama.ui_enable.connect('state-set', self.on_panorama_enable)
         self.maximizer.ui_enable.connect('state-set', self.on_maximizer_enable)
         self.output_limiter.ui_limiter_enable\
             .connect('state-set', self.on_output_limiter_enable)
@@ -169,11 +189,11 @@ class SinkInputEffects(EffectsBase):
             self.output_limiter.ui_limiter_enable.set_sensitive(False)
             self.output_limiter.ui_img_state.hide()
 
-        self.panorama.bind()
-        self.reverb.bind()
         self.highpass.bind()
         self.lowpass.bind()
         self.equalizer.bind()
+        self.reverb.bind()
+        self.panorama.bind()
 
     def on_enable_app(self, obj, state, idx):
         if state:
@@ -199,9 +219,9 @@ class SinkInputEffects(EffectsBase):
     def post_messages(self, state):
         EffectsBase.post_messages(self, state)
 
-        self.panorama.post_messages(state)
         self.exciter.post_messages(state)
         self.bass_enhancer.post_messages(state)
+        self.panorama.post_messages(state)
         self.maximizer.post_messages(state)
         self.output_limiter.post_messages(state)
 
@@ -210,15 +230,7 @@ class SinkInputEffects(EffectsBase):
 
         plugin = msg.src.get_name()
 
-        if plugin == 'panorama_input_level':
-            peak = msg.get_structure().get_value('peak')
-
-            self.panorama.ui_update_panorama_input_level(peak)
-        elif plugin == 'panorama_output_level':
-            peak = msg.get_structure().get_value('peak')
-
-            self.panorama.ui_update_panorama_output_level(peak)
-        elif plugin == 'exciter_input_level':
+        if plugin == 'exciter_input_level':
             peak = msg.get_structure().get_value('peak')
 
             self.exciter.ui_update_input_level(peak)
@@ -234,6 +246,14 @@ class SinkInputEffects(EffectsBase):
             peak = msg.get_structure().get_value('peak')
 
             self.bass_enhancer.ui_update_output_level(peak)
+        elif plugin == 'panorama_input_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.panorama.ui_update_panorama_input_level(peak)
+        elif plugin == 'panorama_output_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.panorama.ui_update_panorama_output_level(peak)
         elif plugin == 'maximizer_input_level':
             peak = msg.get_structure().get_value('peak')
 
@@ -312,8 +332,8 @@ class SinkInputEffects(EffectsBase):
     def reset(self):
         EffectsBase.reset(self)
 
-        self.panorama.reset()
         self.exciter.reset()
         self.bass_enhancer.reset()
+        self.panorama.reset()
         self.maximizer.reset()
         self.output_limiter.reset()
