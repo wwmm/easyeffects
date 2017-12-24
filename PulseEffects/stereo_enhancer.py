@@ -142,13 +142,13 @@ class StereoEnhancer():
 
     def on_input_gain_value_changed(self, obj):
         value_db = obj.get_value()
-        value_linear = 10**(value_db / 10.0)
+        value_linear = 10**(value_db / 20.0)
 
         self.input_gain.set_property('volume', value_linear)
 
     def on_output_gain_value_changed(self, obj):
         value_db = obj.get_value()
-        value_linear = 10**(value_db / 10.0)
+        value_linear = 10**(value_db / 20.0)
 
         self.stereo_enhancer.set_property('level-out', value_linear)
 

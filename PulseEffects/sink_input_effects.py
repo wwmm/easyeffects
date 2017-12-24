@@ -12,6 +12,7 @@ from PulseEffects.exciter import Exciter
 from PulseEffects.maximizer import Maximizer
 from PulseEffects.output_limiter import OutputLimiter
 from PulseEffects.panorama import Panorama
+from PulseEffects.stereo_enhancer import StereoEnhancer
 
 
 class SinkInputEffects(EffectsBase):
@@ -47,6 +48,7 @@ class SinkInputEffects(EffectsBase):
 
         self.exciter = Exciter(self.settings)
         self.bass_enhancer = BassEnhancer(self.settings)
+        self.stereo_enhancer = StereoEnhancer(self.settings)
         self.panorama = Panorama(self.settings)
         self.maximizer = Maximizer(self.settings)
         self.output_limiter = OutputLimiter(self.settings)
@@ -55,6 +57,8 @@ class SinkInputEffects(EffectsBase):
         self.exciter_wrapper = GstInsertBin.InsertBin.new('exciter_wrapper')
         self.bass_enhancer_wrapper = GstInsertBin.InsertBin.new(
             'bass_enhancer_wrapper')
+        self.stereo_enhancer_wrapper = GstInsertBin.InsertBin.new(
+            'stereo_enhancer_wrapper')
         self.panorama_wrapper = GstInsertBin.InsertBin.new('panorama_wrapper')
         self.maximizer_wrapper = GstInsertBin.InsertBin.new(
             'maximizer_wrapper')
@@ -69,6 +73,11 @@ class SinkInputEffects(EffectsBase):
 
         self.effects_bin.insert_after(self.bass_enhancer_wrapper,
                                       self.exciter_wrapper,
+                                      self.on_filter_added,
+                                      self.log_tag)
+
+        self.effects_bin.insert_after(self.stereo_enhancer_wrapper,
+                                      self.bass_enhancer_wrapper,
                                       self.on_filter_added,
                                       self.log_tag)
 
@@ -97,6 +106,7 @@ class SinkInputEffects(EffectsBase):
         self.equalizer.init_ui()
         self.exciter.init_ui()
         self.bass_enhancer.init_ui()
+        self.stereo_enhancer.init_ui()
         self.reverb.init_ui()
         self.panorama.init_ui()
         self.maximizer.init_ui()
@@ -109,6 +119,7 @@ class SinkInputEffects(EffectsBase):
         self.add_to_listbox('equalizer')
         self.add_to_listbox('exciter')
         self.add_to_listbox('bass_enhancer')
+        self.add_to_listbox('stereo_enhancer')
         self.add_to_listbox('reverb')
         self.add_to_listbox('panorama')
         self.add_to_listbox('maximizer')
@@ -125,6 +136,7 @@ class SinkInputEffects(EffectsBase):
         self.stack.add_named(self.equalizer.ui_window, 'equalizer')
         self.stack.add_named(self.exciter.ui_window, 'exciter')
         self.stack.add_named(self.bass_enhancer.ui_window, 'bass_enhancer')
+        self.stack.add_named(self.stereo_enhancer.ui_window, 'stereo_enhancer')
         self.stack.add_named(self.reverb.ui_window, 'reverb')
         self.stack.add_named(self.panorama.ui_window, 'panorama')
         self.stack.add_named(self.maximizer.ui_window, 'maximizer')
@@ -141,6 +153,8 @@ class SinkInputEffects(EffectsBase):
         self.exciter.ui_enable.connect('state-set', self.on_exciter_enable)
         self.bass_enhancer.ui_enable.connect('state-set',
                                              self.on_bass_enhancer_enable)
+        self.stereo_enhancer.ui_enable.connect('state-set',
+                                               self.on_stereo_enhancer_enable)
         self.reverb.ui_enable.connect('state-set', self.on_reverb_enable)
         self.panorama.ui_enable.connect('state-set', self.on_panorama_enable)
         self.maximizer.ui_enable.connect('state-set', self.on_maximizer_enable)
@@ -174,6 +188,13 @@ class SinkInputEffects(EffectsBase):
             self.bass_enhancer.ui_window.set_sensitive(False)
             self.bass_enhancer.ui_enable.set_sensitive(False)
             self.bass_enhancer.ui_img_state.hide()
+
+        if self.stereo_enhancer.is_installed:
+            self.stereo_enhancer.bind()
+        else:
+            self.stereo_enhancer.ui_window.set_sensitive(False)
+            self.stereo_enhancer.ui_enable.set_sensitive(False)
+            self.stereo_enhancer.ui_img_state.hide()
 
         if self.maximizer.is_installed:
             self.maximizer.bind()
@@ -246,6 +267,14 @@ class SinkInputEffects(EffectsBase):
             peak = msg.get_structure().get_value('peak')
 
             self.bass_enhancer.ui_update_output_level(peak)
+        elif plugin == 'stereo_enhancer_input_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.stereo_enhancer.ui_update_input_level(peak)
+        elif plugin == 'stereo_enhancer_output_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.stereo_enhancer.ui_update_output_level(peak)
         elif plugin == 'panorama_input_level':
             peak = msg.get_structure().get_value('peak')
 
@@ -306,6 +335,18 @@ class SinkInputEffects(EffectsBase):
                                               self.on_filter_removed,
                                               self.log_tag)
 
+    def on_stereo_enhancer_enable(self, obj, state):
+        if state:
+            if not self.stereo_enhancer_wrapper.get_by_name(
+                    'stereo_enhancer_bin'):
+                self.stereo_enhancer_wrapper.append(self.stereo_enhancer.bin,
+                                                    self.on_filter_added,
+                                                    self.log_tag)
+        else:
+            self.stereo_enhancer_wrapper.remove(self.stereo_enhancer.bin,
+                                                self.on_filter_removed,
+                                                self.log_tag)
+
     def on_maximizer_enable(self, obj, state):
         if state:
             if not self.maximizer_wrapper.get_by_name('maximizer_bin'):
@@ -334,6 +375,7 @@ class SinkInputEffects(EffectsBase):
 
         self.exciter.reset()
         self.bass_enhancer.reset()
+        self.stereo_enhancer.reset()
         self.panorama.reset()
         self.maximizer.reset()
         self.output_limiter.reset()
