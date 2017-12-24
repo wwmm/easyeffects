@@ -79,11 +79,20 @@ class StereoEnhancer():
 
         self.ui_input_gain = self.builder.get_object('input_gain')
         self.ui_output_gain = self.builder.get_object('output_gain')
-        # self.ui_amount = self.builder.get_object('amount')
-        # self.ui_harmonics = self.builder.get_object('harmonics')
-        # self.ui_scope = self.builder.get_object('scope')
-        # self.ui_floor = self.builder.get_object('floor')
-        # self.ui_blend = self.builder.get_object('blend')
+        self.ui_left_invert_phase = self.builder.get_object(
+            'invert_left_phase')
+        self.ui_left_balance = self.builder.get_object('left_balance')
+        self.ui_left_delay = self.builder.get_object('left_delay')
+        self.ui_left_gain = self.builder.get_object('left_gain')
+        self.ui_right_invert_phase = self.builder.get_object(
+            'invert_right_phase')
+        self.ui_right_balance = self.builder.get_object('right_balance')
+        self.ui_right_delay = self.builder.get_object('right_delay')
+        self.ui_right_gain = self.builder.get_object('right_gain')
+        self.ui_middle_invert_phase = self.builder.get_object(
+            'invert_middle_phase')
+        self.ui_middle_gain = self.builder.get_object('middle_gain')
+        self.ui_middle_source = self.builder.get_object('middle_source')
 
         self.ui_input_level_left = self.builder.get_object('input_level_left')
         self.ui_input_level_right = self.builder.get_object(
@@ -107,16 +116,26 @@ class StereoEnhancer():
 
         flag = GObject.BindingFlags.BIDIRECTIONAL
 
-        # self.ui_amount.bind_property('value', self.stereo_enhancer, 'amount',
-        #                              flag)
-        # self.ui_harmonics.bind_property('value', self.stereo_enhancer, 'drive',
-        #                                 flag)
-        # self.ui_scope.bind_property(
-        #     'value', self.stereo_enhancer, 'freq', flag)
-        # self.ui_floor.bind_property(
-        #     'value', self.stereo_enhancer, 'floor', flag)
-        # self.ui_blend.bind_property(
-        #     'value', self.stereo_enhancer, 'blend', flag)
+        self.ui_left_invert_phase.bind_property('active', self.stereo_enhancer,
+                                                's-phase1', flag)
+        self.ui_left_balance.bind_property('value', self.stereo_enhancer,
+                                           's-balance1', flag)
+        self.ui_left_delay.bind_property('value', self.stereo_enhancer,
+                                         's-delay1', flag)
+
+        self.ui_right_invert_phase.bind_property('active',
+                                                 self.stereo_enhancer,
+                                                 's-phase2', flag)
+        self.ui_right_balance.bind_property('value', self.stereo_enhancer,
+                                            's-balance2', flag)
+        self.ui_right_delay.bind_property('value', self.stereo_enhancer,
+                                          's-delay2', flag)
+
+        self.ui_middle_invert_phase.bind_property('active',
+                                                  self.stereo_enhancer,
+                                                  'm-phase', flag)
+        self.ui_middle_source.bind_property('active', self.stereo_enhancer,
+                                            'm-source', flag)
 
         # binding ui widgets to gsettings
 
@@ -128,17 +147,36 @@ class StereoEnhancer():
                            'visible', flag)
         self.settings.bind('stereo-enhancer-state', self.ui_controls,
                            'sensitive', Gio.SettingsBindFlags.GET)
+
         self.settings.bind('stereo-enhancer-input-gain', self.ui_input_gain,
                            'value', flag)
         self.settings.bind('stereo-enhancer-output-gain', self.ui_output_gain,
                            'value', flag)
-        # self.settings.bind('stereo-enhancer-amount', self.ui_amount, 'value',
-        #                    flag)
-        # self.settings.bind('stereo-enhancer-harmonics', self.ui_harmonics,
-        #                    'value', flag)
-        # self.settings.bind('stereo-enhancer-scope', self.ui_scope, 'value', flag)
-        # self.settings.bind('stereo-enhancer-floor', self.ui_floor, 'value', flag)
-        # self.settings.bind('stereo-enhancer-blend', self.ui_blend, 'value', flag)
+
+        self.settings.bind('stereo-enhancer-left-invert-phase',
+                           self.ui_left_invert_phase, 'active', flag)
+        self.settings.bind('stereo-enhancer-left-balance',
+                           self.ui_left_balance, 'value', flag)
+        self.settings.bind('stereo-enhancer-left-delay',
+                           self.ui_left_delay, 'value', flag)
+        self.settings.bind('stereo-enhancer-left-gain',
+                           self.ui_left_gain, 'value', flag)
+
+        self.settings.bind('stereo-enhancer-right-invert-phase',
+                           self.ui_right_invert_phase, 'active', flag)
+        self.settings.bind('stereo-enhancer-right-balance',
+                           self.ui_right_balance, 'value', flag)
+        self.settings.bind('stereo-enhancer-right-delay',
+                           self.ui_right_delay, 'value', flag)
+        self.settings.bind('stereo-enhancer-right-gain',
+                           self.ui_right_gain, 'value', flag)
+
+        self.settings.bind('stereo-enhancer-middle-invert-phase',
+                           self.ui_middle_invert_phase, 'active', flag)
+        self.settings.bind('stereo-enhancer-middle-gain',
+                           self.ui_middle_gain, 'value', flag)
+        self.settings.bind('stereo-enhancer-middle-source',
+                           self.ui_middle_source, 'active', flag)
 
     def on_input_gain_value_changed(self, obj):
         value_db = obj.get_value()
