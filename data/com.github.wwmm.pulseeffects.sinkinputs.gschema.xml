@@ -511,6 +511,36 @@
         <key name="stereo-enhancer-output-gain" type="d">
           <default>0</default>
         </key>
+        <key name="stereo-enhancer-left-phase" type="b">
+          <default>false</default>
+        </key>
+        <key name="stereo-enhancer-left-balance" type="d">
+          <default>-1</default>
+        </key>
+        <key name="stereo-enhancer-left-delay" type="d">
+          <default>2.05</default>
+        </key>
+        <key name="stereo-enhancer-left-gain" type="d">
+          <default>0</default>
+        </key>
+        <key name="stereo-enhancer-right-phase" type="b">
+          <default>false</default>
+        </key>
+        <key name="stereo-enhancer-right-balance" type="d">
+          <default>1</default>
+        </key>
+        <key name="stereo-enhancer-right-delay" type="d">
+          <default>2.12</default>
+        </key>
+        <key name="stereo-enhancer-right-gain" type="d">
+          <default>0</default>
+        </key>
+        <key name="stereo-enhancer-middle-phase" type="b">
+          <default>false</default>
+        </key>
+        <key name="stereo-enhancer-middle-gain" type="d">
+          <default>0</default>
+        </key>
 
         <key name="reverb-state" type="b">
           <default>false</default>

@@ -61,6 +61,11 @@
       </packing>
     </child>
   </object>
+  <object class="GtkAdjustment" id="middle_gain">
+    <property name="lower">-12</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+  </object>
   <object class="GtkAdjustment" id="output_gain">
     <property name="lower">-12</property>
     <property name="step_increment">1</property>
@@ -191,6 +196,10 @@
                       <object class="GtkSpinButton">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="input_purpose">number</property>
+                        <property name="adjustment">middle_gain</property>
+                        <property name="numeric">True</property>
+                        <property name="update_policy">if-valid</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -317,7 +326,11 @@
                       <object class="GtkSpinButton">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="input_purpose">number</property>
                         <property name="adjustment">left_delay</property>
+                        <property name="digits">2</property>
+                        <property name="numeric">True</property>
+                        <property name="update_policy">if-valid</property>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -339,7 +352,10 @@
                       <object class="GtkSpinButton">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="input_purpose">number</property>
                         <property name="adjustment">left_gain</property>
+                        <property name="numeric">True</property>
+                        <property name="update_policy">if-valid</property>
                       </object>
                       <packing>
                         <property name="left_attach">2</property>
@@ -427,7 +443,11 @@
                       <object class="GtkSpinButton">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="input_purpose">number</property>
                         <property name="adjustment">right_delay</property>
+                        <property name="digits">2</property>
+                        <property name="numeric">True</property>
+                        <property name="update_policy">if-valid</property>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -449,7 +469,10 @@
                       <object class="GtkSpinButton">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="input_purpose">number</property>
                         <property name="adjustment">right_gain</property>
+                        <property name="numeric">True</property>
+                        <property name="update_policy">if-valid</property>
                       </object>
                       <packing>
                         <property name="left_attach">2</property>
