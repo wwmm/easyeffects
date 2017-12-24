@@ -34,6 +34,7 @@ class BassEnhancer():
         pass
 
     def build_bin(self):
+        self.input_gain = Gst.ElementFactory.make('volume', None)
         self.bass_enhancer = Gst.ElementFactory.make(
             'calf-sourceforge-net-plugins-BassEnhancer', None)
 
@@ -53,6 +54,7 @@ class BassEnhancer():
             self.bass_enhancer.set_property('listen', True)
             self.bass_enhancer.set_property('floor-active', False)
 
+            self.bin.append(self.input_gain, self.on_filter_added, None)
             self.bin.append(self.input_level, self.on_filter_added, None)
             self.bin.append(self.bass_enhancer, self.on_filter_added, None)
             self.bin.append(self.out_level, self.on_filter_added, None)
@@ -138,13 +140,13 @@ class BassEnhancer():
 
     def on_input_gain_value_changed(self, obj):
         value_db = obj.get_value()
-        value_linear = 10**(value_db / 20.0)
+        value_linear = 10**(value_db / 10.0)
 
-        self.bass_enhancer.set_property('level-in', value_linear)
+        self.input_gain.set_property('volume', value_linear)
 
     def on_output_gain_value_changed(self, obj):
         value_db = obj.get_value()
-        value_linear = 10**(value_db / 20.0)
+        value_linear = 10**(value_db / 10.0)
 
         self.bass_enhancer.set_property('level-out', value_linear)
 
