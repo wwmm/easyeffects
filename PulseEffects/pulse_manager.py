@@ -639,13 +639,9 @@ class PulseManager(GObject.GObject):
         elif state == p.PA_STREAM_READY:
             self.log.info('created stream for sink input ' + str(idx))
         elif state == p.PA_STREAM_TERMINATED:
-            del self.streams[str(idx)]
-
             self.log.info('stream for sink input ' + str(idx) +
                           ' was terminated')
         elif state == p.PA_STREAM_UNCONNECTED:
-            del self.streams[str(idx)]
-
             self.log.info('stream for sink input ' + str(idx) +
                           ' was unconnected')
 

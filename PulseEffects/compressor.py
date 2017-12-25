@@ -104,7 +104,8 @@ class Compressor():
     def bind(self):
         # binding ui widgets to gstreamer plugins
 
-        flag = GObject.BindingFlags.BIDIRECTIONAL
+        flag = GObject.BindingFlags.BIDIRECTIONAL | \
+            GObject.BindingFlags.SYNC_CREATE
 
         self.ui_attack.bind_property('value', self.compressor, 'attack-time',
                                      flag)

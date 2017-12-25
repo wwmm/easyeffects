@@ -113,13 +113,14 @@ class StereoEnhancer():
     def bind(self):
         # binding ui widgets to gstreamer plugins
 
-        flag = GObject.BindingFlags.BIDIRECTIONAL
+        flag = GObject.BindingFlags.BIDIRECTIONAL | \
+            GObject.BindingFlags.SYNC_CREATE
 
         # it seems there is a bug in gstreaner
         # booleans are inverted. For example we have to turn on bypass in
         # order to effects to be applied
 
-        flag_invert_boolean = GObject.BindingFlags.INVERT_BOOLEAN
+        flag_invert_boolean = flag | GObject.BindingFlags.INVERT_BOOLEAN
 
         self.ui_left_invert_phase.bind_property('active', self.stereo_enhancer,
                                                 's-phase1',

@@ -23,6 +23,7 @@
   </object>
   <object class="GtkAdjustment" id="left_gain">
     <property name="lower">-24</property>
+    <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_left_gain_value_changed" swapped="no"/>
@@ -64,6 +65,7 @@
   </object>
   <object class="GtkAdjustment" id="middle_gain">
     <property name="lower">-24</property>
+    <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_middle_gain_value_changed" swapped="no"/>
@@ -89,6 +91,7 @@
   </object>
   <object class="GtkAdjustment" id="right_gain">
     <property name="lower">-24</property>
+    <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_right_gain_value_changed" swapped="no"/>

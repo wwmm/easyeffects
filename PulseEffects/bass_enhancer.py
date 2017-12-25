@@ -53,7 +53,7 @@ class BassEnhancer():
             self.bass_enhancer.set_property('bypass', True)
             self.bass_enhancer.set_property('listen', True)
             self.bass_enhancer.set_property('floor-active', False)
-            self.stereo_enhancer.set_property('level-in', 1.0)
+            self.bass_enhancer.set_property('level-in', 1.0)
 
             self.bin.append(self.input_gain, self.on_filter_added, None)
             self.bin.append(self.input_level, self.on_filter_added, None)
@@ -107,7 +107,8 @@ class BassEnhancer():
     def bind(self):
         # binding ui widgets to gstreamer plugins
 
-        flag = GObject.BindingFlags.BIDIRECTIONAL
+        flag = GObject.BindingFlags.BIDIRECTIONAL | \
+            GObject.BindingFlags.SYNC_CREATE
 
         self.ui_amount.bind_property('value', self.bass_enhancer, 'amount',
                                      flag)

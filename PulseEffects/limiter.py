@@ -122,7 +122,8 @@ class Limiter():
     def bind(self):
         # binding ui widgets to gstreamer plugins
 
-        flag = GObject.BindingFlags.BIDIRECTIONAL
+        flag = GObject.BindingFlags.BIDIRECTIONAL | \
+            GObject.BindingFlags.SYNC_CREATE
 
         self.ui_input_gain.bind_property('value', self.limiter, 'input-gain',
                                          flag)

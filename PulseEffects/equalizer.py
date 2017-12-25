@@ -129,7 +129,8 @@ class Equalizer():
     def bind(self):
         # binding ui widgets to gstreamer plugins
 
-        flag = GObject.BindingFlags.BIDIRECTIONAL
+        flag = GObject.BindingFlags.BIDIRECTIONAL | \
+            GObject.BindingFlags.SYNC_CREATE
 
         for n in range(30):
             ui_band_g = getattr(self, 'ui_band' + str(n) + '_g')
