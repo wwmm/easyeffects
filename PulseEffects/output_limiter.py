@@ -100,17 +100,6 @@ class OutputLimiter():
     def bind(self):
         # binding ui widgets to gstreamer plugins
 
-        flag = GObject.BindingFlags.BIDIRECTIONAL | \
-            GObject.BindingFlags.SYNC_CREATE
-
-        self.ui_input_gain.bind_property('value', self.limiter, 'input-gain',
-                                         flag)
-        self.ui_limit.bind_property('value', self.limiter, 'limit', flag)
-        self.ui_release_time.bind_property('value', self.limiter,
-                                           'release-time', flag)
-
-        # binding ui widgets to gstreamer plugins
-
         flag = Gio.SettingsBindFlags.DEFAULT
 
         self.settings.bind('output-limiter-state', self.ui_limiter_enable,
@@ -125,6 +114,17 @@ class OutputLimiter():
                            flag)
         self.settings.bind('output-limiter-release-time', self.ui_release_time,
                            'value', flag)
+
+        # binding ui widgets to gstreamer plugins
+
+        flag = GObject.BindingFlags.BIDIRECTIONAL | \
+            GObject.BindingFlags.SYNC_CREATE
+
+        self.ui_input_gain.bind_property('value', self.limiter, 'input-gain',
+                                         flag)
+        self.ui_limit.bind_property('value', self.limiter, 'limit', flag)
+        self.ui_release_time.bind_property('value', self.limiter,
+                                           'release-time', flag)
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]

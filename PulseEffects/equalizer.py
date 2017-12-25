@@ -127,19 +127,6 @@ class Equalizer():
             reset_q.connect('clicked', self.on_reset_quality, n)
 
     def bind(self):
-        # binding ui widgets to gstreamer plugins
-
-        flag = GObject.BindingFlags.BIDIRECTIONAL | \
-            GObject.BindingFlags.SYNC_CREATE
-
-        for n in range(30):
-            ui_band_g = getattr(self, 'ui_band' + str(n) + '_g')
-            ui_band_t = getattr(self, 'ui_band' + str(n) + '_t')
-            band = getattr(self, 'band' + str(n))
-
-            ui_band_g.bind_property('value', band, 'gain', flag)
-            ui_band_t.bind_property('active', band, 'type', flag)
-
         # binding ui widgets to gsettings
 
         flag = Gio.SettingsBindFlags.DEFAULT
@@ -172,6 +159,19 @@ class Equalizer():
 
             prop = 'equalizer-band' + str(n) + '-type'
             self.settings.bind(prop, ui_band_t, 'active', flag)
+
+        # binding ui widgets to gstreamer plugins
+
+        flag = GObject.BindingFlags.BIDIRECTIONAL | \
+            GObject.BindingFlags.SYNC_CREATE
+
+        for n in range(30):
+            ui_band_g = getattr(self, 'ui_band' + str(n) + '_g')
+            ui_band_t = getattr(self, 'ui_band' + str(n) + '_t')
+            band = getattr(self, 'band' + str(n))
+
+            ui_band_g.bind_property('value', band, 'gain', flag)
+            ui_band_t.bind_property('active', band, 'type', flag)
 
     def print_eq_freqs_and_widths(self):
         for n in range(30):

@@ -74,14 +74,6 @@ class Lowpass():
             'output_level_right_label')
 
     def bind(self):
-        # binding ui widgets to gstreamer plugins
-
-        flag = GObject.BindingFlags.BIDIRECTIONAL | \
-            GObject.BindingFlags.SYNC_CREATE
-
-        self.ui_cutoff.bind_property('value', self.lowpass, 'cutoff', flag)
-        self.ui_poles.bind_property('value', self.lowpass, 'poles', flag)
-
         # binding ui widgets to gsettings
 
         flag = Gio.SettingsBindFlags.DEFAULT
@@ -92,6 +84,14 @@ class Lowpass():
                            Gio.SettingsBindFlags.GET)
         self.settings.bind('lowpass-cutoff', self.ui_cutoff, 'value', flag)
         self.settings.bind('lowpass-poles', self.ui_poles, 'value', flag)
+
+        # binding ui widgets to gstreamer plugins
+
+        flag = GObject.BindingFlags.BIDIRECTIONAL | \
+            GObject.BindingFlags.SYNC_CREATE
+
+        self.ui_cutoff.bind_property('value', self.lowpass, 'cutoff', flag)
+        self.ui_poles.bind_property('value', self.lowpass, 'poles', flag)
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]

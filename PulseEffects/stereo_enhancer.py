@@ -111,41 +111,6 @@ class StereoEnhancer():
             'output_level_right_label')
 
     def bind(self):
-        # binding ui widgets to gstreamer plugins
-
-        flag = GObject.BindingFlags.BIDIRECTIONAL | \
-            GObject.BindingFlags.SYNC_CREATE
-
-        # it seems there is a bug in gstreaner
-        # booleans are inverted. For example we have to turn on bypass in
-        # order to effects to be applied
-
-        flag_invert_boolean = flag | GObject.BindingFlags.INVERT_BOOLEAN
-
-        self.ui_left_invert_phase.bind_property('active', self.stereo_enhancer,
-                                                's-phase1',
-                                                flag_invert_boolean)
-        self.ui_left_balance.bind_property('value', self.stereo_enhancer,
-                                           's-balance1', flag)
-        self.ui_left_delay.bind_property('value', self.stereo_enhancer,
-                                         's-delay1', flag)
-
-        self.ui_right_invert_phase.bind_property('active',
-                                                 self.stereo_enhancer,
-                                                 's-phase2',
-                                                 flag_invert_boolean)
-        self.ui_right_balance.bind_property('value', self.stereo_enhancer,
-                                            's-balance2', flag)
-        self.ui_right_delay.bind_property('value', self.stereo_enhancer,
-                                          's-delay2', flag)
-
-        self.ui_middle_invert_phase.bind_property('active',
-                                                  self.stereo_enhancer,
-                                                  'm-phase',
-                                                  flag_invert_boolean)
-        self.ui_middle_source.bind_property('active', self.stereo_enhancer,
-                                            'm-source', flag)
-
         # binding ui widgets to gsettings
 
         flag = Gio.SettingsBindFlags.DEFAULT
@@ -186,6 +151,41 @@ class StereoEnhancer():
                            self.ui_middle_gain, 'value', flag)
         self.settings.bind('stereo-enhancer-middle-source',
                            self.ui_middle_source, 'active', flag)
+
+        # binding ui widgets to gstreamer plugins
+
+        flag = GObject.BindingFlags.BIDIRECTIONAL | \
+            GObject.BindingFlags.SYNC_CREATE
+
+        # it seems there is a bug in gstreaner
+        # booleans are inverted. For example we have to turn on bypass in
+        # order to effects to be applied
+
+        flag_invert_boolean = flag | GObject.BindingFlags.INVERT_BOOLEAN
+
+        self.ui_left_invert_phase.bind_property('active', self.stereo_enhancer,
+                                                's-phase1',
+                                                flag_invert_boolean)
+        self.ui_left_balance.bind_property('value', self.stereo_enhancer,
+                                           's-balance1', flag)
+        self.ui_left_delay.bind_property('value', self.stereo_enhancer,
+                                         's-delay1', flag)
+
+        self.ui_right_invert_phase.bind_property('active',
+                                                 self.stereo_enhancer,
+                                                 's-phase2',
+                                                 flag_invert_boolean)
+        self.ui_right_balance.bind_property('value', self.stereo_enhancer,
+                                            's-balance2', flag)
+        self.ui_right_delay.bind_property('value', self.stereo_enhancer,
+                                          's-delay2', flag)
+
+        self.ui_middle_invert_phase.bind_property('active',
+                                                  self.stereo_enhancer,
+                                                  'm-phase',
+                                                  flag_invert_boolean)
+        self.ui_middle_source.bind_property('active', self.stereo_enhancer,
+                                            'm-source', flag)
 
     def on_input_gain_value_changed(self, obj):
         value_db = obj.get_value()

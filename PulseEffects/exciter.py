@@ -105,17 +105,6 @@ class Exciter():
             'output_level_right_label')
 
     def bind(self):
-        # binding ui widgets to gstreamer plugins
-
-        flag = GObject.BindingFlags.BIDIRECTIONAL | \
-            GObject.BindingFlags.SYNC_CREATE
-
-        self.ui_amount.bind_property('value', self.exciter, 'amount', flag)
-        self.ui_harmonics.bind_property('value', self.exciter, 'drive', flag)
-        self.ui_scope.bind_property('value', self.exciter, 'freq', flag)
-        self.ui_ceiling.bind_property('value', self.exciter, 'ceil', flag)
-        self.ui_blend.bind_property('value', self.exciter, 'blend', flag)
-
         # binding ui widgets to gsettings
 
         flag = Gio.SettingsBindFlags.DEFAULT
@@ -137,6 +126,17 @@ class Exciter():
         self.settings.bind('exciter-scope', self.ui_scope, 'value', flag)
         self.settings.bind('exciter-ceiling', self.ui_ceiling, 'value', flag)
         self.settings.bind('exciter-blend', self.ui_blend, 'value', flag)
+
+        # binding ui widgets to gstreamer plugins
+
+        flag = GObject.BindingFlags.BIDIRECTIONAL | \
+            GObject.BindingFlags.SYNC_CREATE
+
+        self.ui_amount.bind_property('value', self.exciter, 'amount', flag)
+        self.ui_harmonics.bind_property('value', self.exciter, 'drive', flag)
+        self.ui_scope.bind_property('value', self.exciter, 'freq', flag)
+        self.ui_ceiling.bind_property('value', self.exciter, 'ceil', flag)
+        self.ui_blend.bind_property('value', self.exciter, 'blend', flag)
 
     def on_input_gain_value_changed(self, obj):
         value_db = obj.get_value()

@@ -73,17 +73,6 @@ class Reverb():
             'output_level_right_label')
 
     def bind(self):
-        # binding ui widgets to gstreamer plugins
-
-        flag = GObject.BindingFlags.BIDIRECTIONAL | \
-            GObject.BindingFlags.SYNC_CREATE
-
-        self.ui_room_size.bind_property('value', self.reverb, 'room-size',
-                                        flag)
-        self.ui_damping.bind_property('value', self.reverb, 'damping', flag)
-        self.ui_width.bind_property('value', self.reverb, 'width', flag)
-        self.ui_level.bind_property('value', self.reverb, 'level', flag)
-
         # binding ui widgets to gsettings
 
         flag = Gio.SettingsBindFlags.DEFAULT
@@ -97,6 +86,17 @@ class Reverb():
         self.settings.bind('reverb-damping', self.ui_damping, 'value', flag)
         self.settings.bind('reverb-width', self.ui_width, 'value', flag)
         self.settings.bind('reverb-level', self.ui_level, 'value', flag)
+
+        # binding ui widgets to gstreamer plugins
+
+        flag = GObject.BindingFlags.BIDIRECTIONAL | \
+            GObject.BindingFlags.SYNC_CREATE
+
+        self.ui_room_size.bind_property('value', self.reverb, 'room-size',
+                                        flag)
+        self.ui_damping.bind_property('value', self.reverb, 'damping', flag)
+        self.ui_width.bind_property('value', self.reverb, 'width', flag)
+        self.ui_level.bind_property('value', self.reverb, 'level', flag)
 
     def apply_reverb_preset(self, values):
         self.ui_room_size.set_value(values[0])

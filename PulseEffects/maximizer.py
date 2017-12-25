@@ -99,17 +99,6 @@ class Maximizer():
     def bind(self):
         # binding ui widgets to gstreamer plugins
 
-        flag = GObject.BindingFlags.BIDIRECTIONAL | \
-            GObject.BindingFlags.SYNC_CREATE
-
-        self.ui_release.bind_property('value', self.maximizer, 'release', flag)
-        self.ui_ceiling.bind_property('value', self.maximizer,
-                                      'output-ceiling', flag)
-        self.ui_threshold.bind_property('value', self.maximizer,
-                                        'threshold', flag)
-
-        # binding ui widgets to gstreamer plugins
-
         flag = Gio.SettingsBindFlags.DEFAULT
 
         self.settings.bind('maximizer-state', self.ui_enable, 'active', flag)
@@ -121,6 +110,17 @@ class Maximizer():
         self.settings.bind('maximizer-ceiling', self.ui_ceiling, 'value', flag)
         self.settings.bind('maximizer-threshold', self.ui_threshold, 'value',
                            flag)
+
+        # binding ui widgets to gstreamer plugins
+
+        flag = GObject.BindingFlags.BIDIRECTIONAL | \
+            GObject.BindingFlags.SYNC_CREATE
+
+        self.ui_release.bind_property('value', self.maximizer, 'release', flag)
+        self.ui_ceiling.bind_property('value', self.maximizer,
+                                      'output-ceiling', flag)
+        self.ui_threshold.bind_property('value', self.maximizer,
+                                        'threshold', flag)
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]

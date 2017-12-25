@@ -120,17 +120,6 @@ class Limiter():
             'autovolume_threshold')
 
     def bind(self):
-        # binding ui widgets to gstreamer plugins
-
-        flag = GObject.BindingFlags.BIDIRECTIONAL | \
-            GObject.BindingFlags.SYNC_CREATE
-
-        self.ui_input_gain.bind_property('value', self.limiter, 'input-gain',
-                                         flag)
-        self.ui_limit.bind_property('value', self.limiter, 'limit', flag)
-        self.ui_release_time.bind_property('value', self.limiter,
-                                           'release-time', flag)
-
         # binding ui widgets to gsettings
 
         flag = Gio.SettingsBindFlags.DEFAULT
@@ -163,6 +152,17 @@ class Limiter():
                            self.ui_autovolume_tolerance, 'value', flag)
         self.settings.bind('autovolume-threshold',
                            self.ui_autovolume_threshold, 'value', flag)
+
+        # binding ui widgets to gstreamer plugins
+
+        flag = GObject.BindingFlags.BIDIRECTIONAL | \
+            GObject.BindingFlags.SYNC_CREATE
+
+        self.ui_input_gain.bind_property('value', self.limiter, 'input-gain',
+                                         flag)
+        self.ui_limit.bind_property('value', self.limiter, 'limit', flag)
+        self.ui_release_time.bind_property('value', self.limiter,
+                                           'release-time', flag)
 
     def on_limiter_enable_state_set(self, obj, state):
         autovolume_enabled = self.settings.get_value(

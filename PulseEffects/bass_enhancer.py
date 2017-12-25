@@ -105,19 +105,6 @@ class BassEnhancer():
             'output_level_right_label')
 
     def bind(self):
-        # binding ui widgets to gstreamer plugins
-
-        flag = GObject.BindingFlags.BIDIRECTIONAL | \
-            GObject.BindingFlags.SYNC_CREATE
-
-        self.ui_amount.bind_property('value', self.bass_enhancer, 'amount',
-                                     flag)
-        self.ui_harmonics.bind_property('value', self.bass_enhancer, 'drive',
-                                        flag)
-        self.ui_scope.bind_property('value', self.bass_enhancer, 'freq', flag)
-        self.ui_floor.bind_property('value', self.bass_enhancer, 'floor', flag)
-        self.ui_blend.bind_property('value', self.bass_enhancer, 'blend', flag)
-
         # binding ui widgets to gsettings
 
         flag = Gio.SettingsBindFlags.DEFAULT
@@ -139,6 +126,19 @@ class BassEnhancer():
         self.settings.bind('bass-enhancer-scope', self.ui_scope, 'value', flag)
         self.settings.bind('bass-enhancer-floor', self.ui_floor, 'value', flag)
         self.settings.bind('bass-enhancer-blend', self.ui_blend, 'value', flag)
+
+        # binding ui widgets to gstreamer plugins
+
+        flag = GObject.BindingFlags.BIDIRECTIONAL | \
+            GObject.BindingFlags.SYNC_CREATE
+
+        self.ui_amount.bind_property('value', self.bass_enhancer, 'amount',
+                                     flag)
+        self.ui_harmonics.bind_property('value', self.bass_enhancer, 'drive',
+                                        flag)
+        self.ui_scope.bind_property('value', self.bass_enhancer, 'freq', flag)
+        self.ui_floor.bind_property('value', self.bass_enhancer, 'floor', flag)
+        self.ui_blend.bind_property('value', self.bass_enhancer, 'blend', flag)
 
     def on_input_gain_value_changed(self, obj):
         value_db = obj.get_value()

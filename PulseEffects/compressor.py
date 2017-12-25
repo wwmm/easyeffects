@@ -102,23 +102,6 @@ class Compressor():
             'GTK_LEVEL_BAR_OFFSET_FULL', 24)
 
     def bind(self):
-        # binding ui widgets to gstreamer plugins
-
-        flag = GObject.BindingFlags.BIDIRECTIONAL | \
-            GObject.BindingFlags.SYNC_CREATE
-
-        self.ui_attack.bind_property('value', self.compressor, 'attack-time',
-                                     flag)
-        self.ui_release.bind_property('value', self.compressor, 'release-time',
-                                      flag)
-        self.ui_threshold.bind_property('value', self.compressor,
-                                        'threshold-level', flag)
-        self.ui_ratio.bind_property('value', self.compressor, 'ratio', flag)
-        self.ui_knee.bind_property('value', self.compressor, 'knee-radius',
-                                   flag)
-        self.ui_makeup.bind_property('value', self.compressor, 'makeup-gain',
-                                     flag)
-
         # binding ui widgets to gsettings
 
         flag = Gio.SettingsBindFlags.DEFAULT
@@ -143,6 +126,23 @@ class Compressor():
         self.settings.bind('compressor-ratio', self.ui_ratio, 'value', flag)
         self.settings.bind('compressor-knee', self.ui_knee, 'value', flag)
         self.settings.bind('compressor-makeup', self.ui_makeup, 'value', flag)
+
+        # binding ui widgets to gstreamer plugins
+
+        flag = GObject.BindingFlags.BIDIRECTIONAL | \
+            GObject.BindingFlags.SYNC_CREATE
+
+        self.ui_attack.bind_property('value', self.compressor, 'attack-time',
+                                     flag)
+        self.ui_release.bind_property('value', self.compressor, 'release-time',
+                                      flag)
+        self.ui_threshold.bind_property('value', self.compressor,
+                                        'threshold-level', flag)
+        self.ui_ratio.bind_property('value', self.compressor, 'ratio', flag)
+        self.ui_knee.bind_property('value', self.compressor, 'knee-radius',
+                                   flag)
+        self.ui_makeup.bind_property('value', self.compressor, 'makeup-gain',
+                                     flag)
 
     def apply_compressor_preset(self, values):
         if values[0] == 0:

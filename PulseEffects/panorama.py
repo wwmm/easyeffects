@@ -75,14 +75,6 @@ class Panorama():
             'output_level_right_label')
 
     def bind(self):
-        # binding ui widgets to gstreamer plugins
-
-        flag = GObject.BindingFlags.BIDIRECTIONAL | \
-            GObject.BindingFlags.SYNC_CREATE
-
-        self.ui_position.bind_property('value', self.panorama, 'panorama',
-                                       flag)
-
         # binding ui widgets to gsettings
 
         flag = Gio.SettingsBindFlags.DEFAULT
@@ -94,6 +86,14 @@ class Panorama():
                            Gio.SettingsBindFlags.GET)
         self.settings.bind('panorama-position', self.ui_position, 'value',
                            flag)
+
+        # binding ui widgets to gstreamer plugins
+
+        flag = GObject.BindingFlags.BIDIRECTIONAL | \
+            GObject.BindingFlags.SYNC_CREATE
+
+        self.ui_position.bind_property('value', self.panorama, 'panorama',
+                                       flag)
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]
