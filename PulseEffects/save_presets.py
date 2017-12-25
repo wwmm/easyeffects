@@ -272,6 +272,44 @@ class SavePresets():
                                 'floor': str(floor),
                                 'blend': str(blend)}
 
+    def save_stereo_enhancer_presets(self, settings, section):
+        enabled = settings.get_value('stereo-enhancer-state')
+        input_gain = settings.get_value('stereo-enhancer-input-gain')
+        output_gain = settings.get_value('stereo-enhancer-output-gain')
+
+        left_invert_phase = settings.get_value(
+            'stereo-enhancer-left-invert-phase')
+        left_balance = settings.get_value('stereo-enhancer-left-balance')
+        left_delay = settings.get_value('stereo-enhancer-left-delay')
+        left_gain = settings.get_value('stereo-enhancer-left-gain')
+
+        right_invert_phase = settings.get_value(
+            'stereo-enhancer-right-invert-phase')
+        right_balance = settings.get_value('stereo-enhancer-right-balance')
+        right_delay = settings.get_value('stereo-enhancer-right-delay')
+        right_gain = settings.get_value('stereo-enhancer-right-gain')
+
+        middle_invert_phase = settings.get_value(
+            'stereo-enhancer-middle-invert-phase')
+        middle_gain = settings.get_value('stereo-enhancer-middle-gain')
+        middle_source = settings.get_value('stereo-enhancer-middle-source')
+
+        self.config[section] = {'enabled': str(enabled),
+                                'input_gain': str(input_gain),
+                                'output_gain': str(output_gain),
+                                'left_invert_phase': str(left_invert_phase),
+                                'left_balance': str(left_balance),
+                                'left_delay': str(left_delay),
+                                'left_gain': str(left_gain),
+                                'right_invert_phase': str(right_invert_phase),
+                                'right_balance': str(right_balance),
+                                'right_delay': str(right_delay),
+                                'right_gain': str(right_gain),
+                                'middle_invert_phase':
+                                str(middle_invert_phase),
+                                'middle_gain': str(middle_gain),
+                                'middle_source': str(middle_source)}
+
     def save_maximizer_presets(self, settings, section):
         enabled = settings.get_value('maximizer-state')
         release = settings.get_value('maximizer-release')
@@ -305,6 +343,7 @@ class SavePresets():
         self.save_equalizer_presets(settings, 'apps_equalizer')
         self.save_exciter_presets(settings, 'apps_exciter')
         self.save_bass_enhancer_presets(settings, 'apps_bass_enhancer')
+        self.save_stereo_enhancer_presets(settings, 'apps_stereo_enhancer')
         self.save_maximizer_presets(settings, 'apps_maximizer')
         self.save_output_limiter_presets(settings, 'apps_output_limiter')
 
