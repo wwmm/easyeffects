@@ -22,9 +22,10 @@
     <property name="page_increment">0.10000000000000001</property>
   </object>
   <object class="GtkAdjustment" id="left_gain">
-    <property name="lower">-12</property>
+    <property name="lower">-24</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_left_gain_value_changed" swapped="no"/>
   </object>
   <object class="GtkBox" id="listbox_control">
     <property name="visible">True</property>
@@ -62,9 +63,10 @@
     </child>
   </object>
   <object class="GtkAdjustment" id="middle_gain">
-    <property name="lower">-12</property>
+    <property name="lower">-24</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_middle_gain_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="output_gain">
     <property name="lower">-12</property>
@@ -86,9 +88,10 @@
     <property name="page_increment">0.10000000000000001</property>
   </object>
   <object class="GtkAdjustment" id="right_gain">
-    <property name="lower">-12</property>
+    <property name="lower">-24</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_right_gain_value_changed" swapped="no"/>
   </object>
   <object class="GtkGrid" id="window">
     <property name="visible">True</property>
@@ -296,21 +299,6 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkSpinButton">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="input_purpose">number</property>
-                        <property name="adjustment">left_balance</property>
-                        <property name="digits">1</property>
-                        <property name="numeric">True</property>
-                        <property name="update_policy">if-valid</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">1</property>
-                      </packing>
-                    </child>
-                    <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
@@ -358,6 +346,21 @@
                       </object>
                       <packing>
                         <property name="left_attach">2</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinButton">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="input_purpose">number</property>
+                        <property name="adjustment">left_balance</property>
+                        <property name="digits">1</property>
+                        <property name="numeric">True</property>
+                        <property name="update_policy">if-valid</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
                         <property name="top_attach">1</property>
                       </packing>
                     </child>

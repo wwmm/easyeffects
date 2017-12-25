@@ -52,8 +52,6 @@ class StereoEnhancer():
             # order to effects to be applied
 
             self.stereo_enhancer.set_property('bypass', True)
-            # self.stereo_enhancer.set_property('listen', True)
-            # self.stereo_enhancer.set_property('floor-active', False)
 
             self.bin.append(self.input_gain, self.on_filter_added, None)
             self.bin.append(self.input_level, self.on_filter_added, None)
@@ -116,8 +114,15 @@ class StereoEnhancer():
 
         flag = GObject.BindingFlags.BIDIRECTIONAL
 
+        # it seems there is a bug in gstreaner
+        # booleans are inverted. For example we have to turn on bypass in
+        # order to effects to be applied
+
+        flag_invert_boolean = GObject.BindingFlags.INVERT_BOOLEAN
+
         self.ui_left_invert_phase.bind_property('active', self.stereo_enhancer,
-                                                's-phase1', flag)
+                                                's-phase1',
+                                                flag_invert_boolean)
         self.ui_left_balance.bind_property('value', self.stereo_enhancer,
                                            's-balance1', flag)
         self.ui_left_delay.bind_property('value', self.stereo_enhancer,
@@ -125,7 +130,8 @@ class StereoEnhancer():
 
         self.ui_right_invert_phase.bind_property('active',
                                                  self.stereo_enhancer,
-                                                 's-phase2', flag)
+                                                 's-phase2',
+                                                 flag_invert_boolean)
         self.ui_right_balance.bind_property('value', self.stereo_enhancer,
                                             's-balance2', flag)
         self.ui_right_delay.bind_property('value', self.stereo_enhancer,
@@ -133,7 +139,8 @@ class StereoEnhancer():
 
         self.ui_middle_invert_phase.bind_property('active',
                                                   self.stereo_enhancer,
-                                                  'm-phase', flag)
+                                                  'm-phase',
+                                                  flag_invert_boolean)
         self.ui_middle_source.bind_property('active', self.stereo_enhancer,
                                             'm-source', flag)
 
@@ -189,6 +196,24 @@ class StereoEnhancer():
         value_linear = 10**(value_db / 20.0)
 
         self.stereo_enhancer.set_property('level-out', value_linear)
+
+    def on_left_gain_value_changed(self, obj):
+        value_db = obj.get_value()
+        value_linear = 10**(value_db / 20.0)
+
+        self.stereo_enhancer.set_property('s-gain1', value_linear)
+
+    def on_right_gain_value_changed(self, obj):
+        value_db = obj.get_value()
+        value_linear = 10**(value_db / 20.0)
+
+        self.stereo_enhancer.set_property('s-gain2', value_linear)
+
+    def on_middle_gain_value_changed(self, obj):
+        value_db = obj.get_value()
+        value_linear = 10**(value_db / 20.0)
+
+        self.stereo_enhancer.set_property('s-gain', value_linear)
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]
