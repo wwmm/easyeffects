@@ -52,6 +52,7 @@ class StereoEnhancer():
             # order to effects to be applied
 
             self.stereo_enhancer.set_property('bypass', True)
+            self.stereo_enhancer.set_property('level-in', 1.0)
 
             self.bin.append(self.input_gain, self.on_filter_added, None)
             self.bin.append(self.input_level, self.on_filter_added, None)
@@ -257,8 +258,14 @@ class StereoEnhancer():
         self.settings.reset('stereo-enhancer-state')
         self.settings.reset('stereo-enhancer-input-gain')
         self.settings.reset('stereo-enhancer-output-gain')
-        # self.settings.reset('stereo-enhancer-amount')
-        # self.settings.reset('stereo-enhancer-harmonics')
-        # self.settings.reset('stereo-enhancer-scope')
-        # self.settings.reset('stereo-enhancer-floor')
-        # self.settings.reset('stereo-enhancer-blend')
+        self.settings.reset('stereo-enhancer-left-invert-phase')
+        self.settings.reset('stereo-enhancer-left-balance')
+        self.settings.reset('stereo-enhancer-left-delay')
+        self.settings.reset('stereo-enhancer-left-gain')
+        self.settings.reset('stereo-enhancer-right-invert-phase')
+        self.settings.reset('stereo-enhancer-right-balance')
+        self.settings.reset('stereo-enhancer-right-delay')
+        self.settings.reset('stereo-enhancer-right-gain')
+        self.settings.reset('stereo-enhancer-middle-invert-phase')
+        self.settings.reset('stereo-enhancer-middle-gain')
+        self.settings.reset('stereo-enhancer-middle-source')

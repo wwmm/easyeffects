@@ -53,6 +53,7 @@ class BassEnhancer():
             self.bass_enhancer.set_property('bypass', True)
             self.bass_enhancer.set_property('listen', True)
             self.bass_enhancer.set_property('floor-active', False)
+            self.stereo_enhancer.set_property('level-in', 1.0)
 
             self.bin.append(self.input_gain, self.on_filter_added, None)
             self.bin.append(self.input_level, self.on_filter_added, None)
