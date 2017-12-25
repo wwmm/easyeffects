@@ -380,6 +380,70 @@ class LoadPresets():
         settings.set_value('bass-enhancer-floor', GLib.Variant('d', floor))
         settings.set_value('bass-enhancer-blend', GLib.Variant('d', blend))
 
+    def load_stereo_enhancer_presets(self, settings, section):
+        enabled = self.config.getboolean(section, 'enabled', fallback=False)
+        input_gain = self.config.getfloat(section, 'input_gain', fallback=0.0)
+        output_gain = self.config.getfloat(section, 'output_gain',
+                                           fallback=0.0)
+
+        left_invert_phase = self.config.getboolean(section,
+                                                   'left_invert_phase',
+                                                   fallback=False)
+        left_balance = self.config.getfloat(section, 'left_balance',
+                                            fallback=-1.0)
+        left_delay = self.config.getfloat(section, 'left_delay',
+                                          fallback=2.05)
+        left_gain = self.config.getfloat(section, 'left_gain', fallback=0.0)
+
+        right_invert_phase = self.config.getboolean(section,
+                                                    'right_invert_phase',
+                                                    fallback=False)
+        right_balance = self.config.getfloat(section, 'right_balance',
+                                             fallback=-1.0)
+        right_delay = self.config.getfloat(section, 'right_delay',
+                                           fallback=2.05)
+        right_gain = self.config.getfloat(section, 'right_gain', fallback=0.0)
+
+        middle_invert_phase = self.config.getboolean(section,
+                                                     'middle_invert_phase',
+                                                     fallback=False)
+        middle_source = self.config.getint(section, 'middle_source',
+                                           fallback=2)
+
+        side_gain = self.config.getfloat(section, 'side_gain', fallback=0.0)
+
+        settings.set_value('stereo-enhancer-state', GLib.Variant('b', enabled))
+        settings.set_value('stereo-enhancer-input-gain',
+                           GLib.Variant('d', input_gain))
+        settings.set_value('stereo-enhancer-output-gain',
+                           GLib.Variant('d', output_gain))
+
+        settings.set_value('stereo-enhancer-left-invert-phase',
+                           GLib.Variant('b', left_invert_phase))
+        settings.set_value('stereo-enhancer-left-balance',
+                           GLib.Variant('d', left_balance))
+        settings.set_value('stereo-enhancer-left-delay',
+                           GLib.Variant('d', left_delay))
+        settings.set_value('stereo-enhancer-left-gain',
+                           GLib.Variant('d', left_gain))
+
+        settings.set_value('stereo-enhancer-right-invert-phase',
+                           GLib.Variant('b', right_invert_phase))
+        settings.set_value('stereo-enhancer-right-balance',
+                           GLib.Variant('d', right_balance))
+        settings.set_value('stereo-enhancer-right-delay',
+                           GLib.Variant('d', right_delay))
+        settings.set_value('stereo-enhancer-right-gain',
+                           GLib.Variant('d', right_gain))
+
+        settings.set_value('stereo-enhancer-middle-invert-phase',
+                           GLib.Variant('b', middle_invert_phase))
+        settings.set_value('stereo-enhancer-middle-source',
+                           GLib.Variant('i', middle_source))
+
+        settings.set_value('stereo-enhancer-side-gain',
+                           GLib.Variant('d', side_gain))
+
     def load_maximizer_presets(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
         release = self.config.getfloat(section, 'release', fallback=3.16)
@@ -416,6 +480,7 @@ class LoadPresets():
         self.load_equalizer_presets(settings, 'apps_equalizer')
         self.load_exciter_presets(settings, 'apps_exciter')
         self.load_bass_enhancer_presets(settings, 'apps_bass_enhancer')
+        self.load_stereo_enhancer_presets(settings, 'apps_stereo_enhancer')
         self.load_maximizer_presets(settings, 'apps_maximizer')
         self.load_output_limiter_presets(settings, 'apps_output_limiter')
 

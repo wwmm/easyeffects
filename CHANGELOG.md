@@ -1,9 +1,15 @@
 # Changelog
 
 ## [Unreleased]
+
+## [3.1.5]
+### Added
+- Stereo Enhancer from Calf Studio
+
 ### Fixed
 - Check marks are not shown for plugins that are not available
-- Fixed a bug were the volume meter was not updated in applications like XCOM
+- Fixed a bug were the volume meter was not updated in applications like the
+game XCOM
 
 ## [3.1.4]
 ### Added

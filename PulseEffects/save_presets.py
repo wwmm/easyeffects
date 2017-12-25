@@ -291,8 +291,9 @@ class SavePresets():
 
         middle_invert_phase = settings.get_value(
             'stereo-enhancer-middle-invert-phase')
-        middle_gain = settings.get_value('stereo-enhancer-middle-gain')
         middle_source = settings.get_value('stereo-enhancer-middle-source')
+
+        side_gain = settings.get_value('stereo-enhancer-side-gain')
 
         self.config[section] = {'enabled': str(enabled),
                                 'input_gain': str(input_gain),
@@ -307,8 +308,8 @@ class SavePresets():
                                 'right_gain': str(right_gain),
                                 'middle_invert_phase':
                                 str(middle_invert_phase),
-                                'middle_gain': str(middle_gain),
-                                'middle_source': str(middle_source)}
+                                'middle_source': str(middle_source),
+                                'side_gain': str(side_gain)}
 
     def save_maximizer_presets(self, settings, section):
         enabled = settings.get_value('maximizer-state')

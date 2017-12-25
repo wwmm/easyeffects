@@ -63,13 +63,6 @@
       </packing>
     </child>
   </object>
-  <object class="GtkAdjustment" id="middle_gain">
-    <property name="lower">-24</property>
-    <property name="upper">12</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_middle_gain_value_changed" swapped="no"/>
-  </object>
   <object class="GtkAdjustment" id="output_gain">
     <property name="lower">-12</property>
     <property name="step_increment">1</property>
@@ -96,6 +89,13 @@
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_right_gain_value_changed" swapped="no"/>
   </object>
+  <object class="GtkAdjustment" id="side_gain">
+    <property name="lower">-24</property>
+    <property name="upper">12</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_side_gain_value_changed" swapped="no"/>
+  </object>
   <object class="GtkGrid" id="window">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -114,14 +114,14 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
-            <property name="row_spacing">6</property>
+            <property name="row_spacing">12</property>
             <property name="column_spacing">3</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="label" translatable="yes">Left Channel</property>
+                <property name="label" translatable="yes">Left</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -154,21 +154,10 @@
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Right Channel</property>
+                <property name="label" translatable="yes">Right</property>
               </object>
               <packing>
                 <property name="left_attach">4</property>
-                <property name="top_attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Middle</property>
-              </object>
-              <packing>
-                <property name="left_attach">2</property>
                 <property name="top_attach">0</property>
               </packing>
             </child>
@@ -180,7 +169,7 @@
                 <property name="spacing">6</property>
                 <child>
                   <object class="GtkToggleButton" id="invert_middle_phase">
-                    <property name="label" translatable="yes">Invert Phase</property>
+                    <property name="label" translatable="yes">Invert Middle Phase</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
@@ -197,13 +186,13 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="row_spacing">6</property>
-                    <property name="column_spacing">6</property>
+                    <property name="column_spacing">3</property>
                     <child>
                       <object class="GtkSpinButton">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="input_purpose">number</property>
-                        <property name="adjustment">middle_gain</property>
+                        <property name="adjustment">side_gain</property>
                         <property name="numeric">True</property>
                         <property name="update_policy">if-valid</property>
                       </object>
@@ -216,7 +205,7 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Gain [dB]</property>
+                        <property name="label" translatable="yes">Side Gain [dB]</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -227,7 +216,7 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Source</property>
+                        <property name="label" translatable="yes">Middle Source</property>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -289,7 +278,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="row_spacing">6</property>
-                    <property name="column_spacing">6</property>
+                    <property name="column_spacing">3</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -405,7 +394,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="row_spacing">6</property>
-                    <property name="column_spacing">6</property>
+                    <property name="column_spacing">3</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -495,6 +484,9 @@
                 <property name="left_attach">4</property>
                 <property name="top_attach">1</property>
               </packing>
+            </child>
+            <child>
+              <placeholder/>
             </child>
             <child>
               <placeholder/>

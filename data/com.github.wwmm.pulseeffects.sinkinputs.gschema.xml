@@ -538,11 +538,11 @@
         <key name="stereo-enhancer-middle-invert-phase" type="b">
           <default>false</default>
         </key>
-        <key name="stereo-enhancer-middle-gain" type="d">
-          <default>0</default>
-        </key>
         <key name="stereo-enhancer-middle-source" type="i">
           <default>2</default>
+        </key>
+        <key name="stereo-enhancer-side-gain" type="d">
+          <default>0</default>
         </key>
 
         <key name="reverb-state" type="b">

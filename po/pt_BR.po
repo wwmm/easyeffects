@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-17 15:21-0200\n"
-"PO-Revision-Date: 2017-12-17 15:21-0200\n"
+"POT-Creation-Date: 2017-12-25 15:21-0200\n"
+"PO-Revision-Date: 2017-12-25 15:23-0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
@@ -87,12 +87,12 @@ msgid "Blend Harmonics"
 msgstr "Mistura de Harmônicos"
 
 #: PulseEffects/ui/bass_enhancer.glade:294 PulseEffects/ui/equalizer.glade:1863
-#: PulseEffects/ui/exciter.glade:294
+#: PulseEffects/ui/exciter.glade:294 PulseEffects/ui/stereo_enhancer.glade:517
 msgid "Output [dB]"
 msgstr "Saída [dB]"
 
 #: PulseEffects/ui/bass_enhancer.glade:307 PulseEffects/ui/equalizer.glade:1850
-#: PulseEffects/ui/exciter.glade:307
+#: PulseEffects/ui/exciter.glade:307 PulseEffects/ui/stereo_enhancer.glade:530
 msgid "Input [dB]"
 msgstr "Entrada [dB]"
 
@@ -378,16 +378,74 @@ msgstr "Sala de Máquinas"
 msgid "Small Room"
 msgstr "Quarto Pequeno"
 
+#: PulseEffects/ui/stereo_enhancer.glade:39
+msgid "Stereo Enhancer"
+msgstr "Melhorador de Stereo"
+
+#: PulseEffects/ui/stereo_enhancer.glade:124
+#: PulseEffects/ui/stereo_enhancer.glade:231
+msgid "Left"
+msgstr "Esquerda"
+
+#: PulseEffects/ui/stereo_enhancer.glade:157
+#: PulseEffects/ui/stereo_enhancer.glade:232
+msgid "Right"
+msgstr "Direita"
+
+#: PulseEffects/ui/stereo_enhancer.glade:172
+msgid "Invert Middle Phase"
+msgstr "Inverter Fase do Meio"
+
+#: PulseEffects/ui/stereo_enhancer.glade:208
+msgid "Side Gain [dB]"
+msgstr "Ganho Lateral [dB]"
+
+#: PulseEffects/ui/stereo_enhancer.glade:219
+msgid "Middle Source"
+msgstr "Fonte do Meio"
+
+#: PulseEffects/ui/stereo_enhancer.glade:233
+msgid "Mid (L + R)"
+msgstr "Média (E + D)"
+
+#: PulseEffects/ui/stereo_enhancer.glade:234
+msgid "Side (L - R)"
+msgstr "Lado (E - D)"
+
+#: PulseEffects/ui/stereo_enhancer.glade:235
+msgid "Mute"
+msgstr "Mudo"
+
+#: PulseEffects/ui/stereo_enhancer.glade:264
+#: PulseEffects/ui/stereo_enhancer.glade:380
+msgid "Invert Phase"
+msgstr "Inverter Fase"
+
+#: PulseEffects/ui/stereo_enhancer.glade:286
+#: PulseEffects/ui/stereo_enhancer.glade:402
+msgid "Balance"
+msgstr "Balanço"
+
+#: PulseEffects/ui/stereo_enhancer.glade:297
+#: PulseEffects/ui/stereo_enhancer.glade:428
+msgid "Delay [ms]"
+msgstr "Atraso [ms]"
+
+#: PulseEffects/ui/stereo_enhancer.glade:323
+#: PulseEffects/ui/stereo_enhancer.glade:454
+msgid "Gain [dB]"
+msgstr "Ganho [dB]"
+
 #: PulseEffects/effects_base.py:84
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
 msgid "Applications"
 msgstr "Aplicativos"
 
-#: PulseEffects/effects_base.py:221 PulseEffects/effects_base.py:290
+#: PulseEffects/effects_base.py:197 PulseEffects/effects_base.py:266
 msgid "paused"
 msgstr "pausado"
 
-#: PulseEffects/effects_base.py:223 PulseEffects/effects_base.py:292
+#: PulseEffects/effects_base.py:199 PulseEffects/effects_base.py:268
 msgid "playing"
 msgstr "tocando"
 
@@ -545,6 +603,14 @@ msgstr "limitador;compressor;reverberação;equalizador;autovolume;"
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
+#, fuzzy
+#~ msgid "Left Channel"
+#~ msgstr "Canais"
+
+#, fuzzy
+#~ msgid "Right Channel"
+#~ msgstr "Canais"
+
 #~ msgid "Calibration Microphone Correction"
 #~ msgstr "Correção do Microfone de Calibração"
 
@@ -645,9 +711,6 @@ msgstr "pulseeffects"
 
 #~ msgid "club"
 #~ msgstr "clube"
-
-#~ msgid "dance"
-#~ msgstr "dança"
 
 #~ msgid "more bass and treble"
 #~ msgstr "reforçar graves e agudos"

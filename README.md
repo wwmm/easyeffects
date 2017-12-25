@@ -10,27 +10,28 @@ Order of effects applied to applications output:
 
 1. Input Limiter (Ladspa Fast Lookahead Limiter)
 2. Auto Volume
-3. Stereo Panorama (Gstreamer)
-4. Compressor (Ladspa SC4)
-5. Freeverb (Gstreamer)
-6. Butterworth Highpass filter (Gstreamer audiocheblimit)
-7. Butterworth Lowpass filter (Gstreamer audiocheblimit)
-8. 30 Bands Parametric Equalizer (Gstreamer)
-9. Exciter (LV2 Exciter from Calf Studio)
-10. Bass Enhancer (LV2 Bass Enhancer from Calf Studio)
-11. Maximizer (Ladspa MAximizer from ZamAudio)
-12. Output Limiter (Ladspa Fast Lookahead Limiter)
-13. Spectrum Analyzer (Gstreamer)
+3. Compressor (Ladspa SC4)
+4. Butterworth Highpass filter (Gstreamer audiocheblimit)
+5. Butterworth Lowpass filter (Gstreamer audiocheblimit)
+6. 30 Bands Parametric Equalizer (Gstreamer)
+7. Exciter (LV2 Exciter from Calf Studio)
+8. Bass Enhancer (LV2 Bass Enhancer from Calf Studio)
+9. Stereo Enhancer (LV2 Stereo Enhancer from Calf Studio)
+10. Freeverb (Gstreamer)
+11. Stereo Panorama (Gstreamer)
+12. Maximizer (Ladspa MAximizer from ZamAudio)
+13. Output Limiter (Ladspa Fast Lookahead Limiter)
+14. Spectrum Analyzer (Gstreamer)
 
 Since version 2.0.0 PulseEffects is capable of applying effects to microphone
 output at the same time it applies them for applications output:
 
 1. Input Limiter (Ladspa Fast Lookahead Limiter)
 2. Compressor (Ladspa SC4)
-3. Freeverb (Gstreamer)
-4. Butterworth Highpass filter (Gstreamer audiocheblimit)
-5. Butterworth Lowpass filter (Gstreamer audiocheblimit)
-6. 30 Bands Parametric Equalizer (Gstreamer)
+3. Butterworth Highpass filter (Gstreamer audiocheblimit)
+4. Butterworth Lowpass filter (Gstreamer audiocheblimit)
+5. 30 Bands Parametric Equalizer (Gstreamer)
+6. Freeverb (Gstreamer)
 7. Spectrum Analyzer (Gstreamer)
 
 ## Installation
@@ -87,7 +88,7 @@ See the wiki: [Installing from Source](https://github.com/wwmm/pulseeffects/wiki
 
 See the wiki: [Command Line Options](https://github.com/wwmm/pulseeffects/wiki/Command-Line-Options)
 
-## Reporting bugs 
+## Reporting bugs
 
 See the wiki: [Reporting Bugs](https://github.com/wwmm/pulseeffects/wiki/Reporting-bugs)
 

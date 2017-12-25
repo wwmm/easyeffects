@@ -78,20 +78,24 @@ class StereoEnhancer():
 
         self.ui_input_gain = self.builder.get_object('input_gain')
         self.ui_output_gain = self.builder.get_object('output_gain')
+
         self.ui_left_invert_phase = self.builder.get_object(
             'invert_left_phase')
         self.ui_left_balance = self.builder.get_object('left_balance')
         self.ui_left_delay = self.builder.get_object('left_delay')
         self.ui_left_gain = self.builder.get_object('left_gain')
+
         self.ui_right_invert_phase = self.builder.get_object(
             'invert_right_phase')
         self.ui_right_balance = self.builder.get_object('right_balance')
         self.ui_right_delay = self.builder.get_object('right_delay')
         self.ui_right_gain = self.builder.get_object('right_gain')
+
         self.ui_middle_invert_phase = self.builder.get_object(
             'invert_middle_phase')
-        self.ui_middle_gain = self.builder.get_object('middle_gain')
         self.ui_middle_source = self.builder.get_object('middle_source')
+
+        self.ui_side_gain = self.builder.get_object('side_gain')
 
         self.ui_input_level_left = self.builder.get_object('input_level_left')
         self.ui_input_level_right = self.builder.get_object(
@@ -147,10 +151,11 @@ class StereoEnhancer():
 
         self.settings.bind('stereo-enhancer-middle-invert-phase',
                            self.ui_middle_invert_phase, 'active', flag)
-        self.settings.bind('stereo-enhancer-middle-gain',
-                           self.ui_middle_gain, 'value', flag)
         self.settings.bind('stereo-enhancer-middle-source',
                            self.ui_middle_source, 'active', flag)
+
+        self.settings.bind('stereo-enhancer-side-gain',
+                           self.ui_side_gain, 'value', flag)
 
         # binding ui widgets to gstreamer plugins
 
@@ -211,7 +216,7 @@ class StereoEnhancer():
 
         self.stereo_enhancer.set_property('s-gain2', value_linear)
 
-    def on_middle_gain_value_changed(self, obj):
+    def on_side_gain_value_changed(self, obj):
         value_db = obj.get_value()
         value_linear = 10**(value_db / 20.0)
 
@@ -268,5 +273,5 @@ class StereoEnhancer():
         self.settings.reset('stereo-enhancer-right-delay')
         self.settings.reset('stereo-enhancer-right-gain')
         self.settings.reset('stereo-enhancer-middle-invert-phase')
-        self.settings.reset('stereo-enhancer-middle-gain')
         self.settings.reset('stereo-enhancer-middle-source')
+        self.settings.reset('stereo-enhancer-side-gain')

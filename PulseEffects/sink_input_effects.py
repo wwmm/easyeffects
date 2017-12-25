@@ -242,6 +242,7 @@ class SinkInputEffects(EffectsBase):
 
         self.exciter.post_messages(state)
         self.bass_enhancer.post_messages(state)
+        self.stereo_enhancer.post_messages(state)
         self.panorama.post_messages(state)
         self.maximizer.post_messages(state)
         self.output_limiter.post_messages(state)
