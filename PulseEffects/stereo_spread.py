@@ -204,9 +204,6 @@ class StereoSpread():
 
         self.ui_update_level(widgets, peak)
 
-        harmonics = self.stereo_spread.get_property('meter-drive')
-        self.ui_harmonics_levelbar.set_value(harmonics)
-
     def reset(self):
         self.settings.reset('stereo-spread-state')
         self.settings.reset('stereo-spread-input-gain')
