@@ -60,7 +60,7 @@ class StereoSpread():
 
     def post_messages(self, state):
         self.input_level.set_property('post-messages', state)
-        self.output_level.set_property('post-messages', state)
+        self.out_level.set_property('post-messages', state)
 
     def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +
@@ -141,14 +141,6 @@ class StereoSpread():
 
         flag_invert_boolean = flag | GObject.BindingFlags.INVERT_BOOLEAN
 
-        self.ui_amount0.bind_property('value', self.stereo_spread, 'amount0',
-                                      flag)
-        self.ui_amount1.bind_property('value', self.stereo_spread, 'amount1',
-                                      flag)
-        self.ui_amount2.bind_property('value', self.stereo_spread, 'amount2',
-                                      flag)
-        self.ui_amount3.bind_property('value', self.stereo_spread, 'amount3',
-                                      flag)
         self.ui_filters.bind_property('value', self.stereo_spread, 'filters',
                                       flag)
         self.ui_mono.bind_property('active', self.stereo_spread, 'mono',
@@ -165,6 +157,30 @@ class StereoSpread():
         value_linear = 10**(value_db / 20.0)
 
         self.stereo_spread.set_property('level-out', value_linear)
+
+    def on_amount0_value_changed(self, obj):
+        value_db = obj.get_value()
+        value_linear = 10**(value_db / 20.0)
+
+        self.stereo_spread.set_property('amount0', value_linear)
+
+    def on_amount1_value_changed(self, obj):
+        value_db = obj.get_value()
+        value_linear = 10**(value_db / 20.0)
+
+        self.stereo_spread.set_property('amount1', value_linear)
+
+    def on_amount2_value_changed(self, obj):
+        value_db = obj.get_value()
+        value_linear = 10**(value_db / 20.0)
+
+        self.stereo_spread.set_property('amount2', value_linear)
+
+    def on_amount3_value_changed(self, obj):
+        value_db = obj.get_value()
+        value_linear = 10**(value_db / 20.0)
+
+        self.stereo_spread.set_property('amount3', value_linear)
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]

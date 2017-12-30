@@ -7,24 +7,28 @@
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_amount0_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="amount1">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_amount1_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="amount2">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_amount2_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="amount3">
     <property name="lower">-24</property>
     <property name="upper">12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_amount3_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="filters">
     <property name="lower">1</property>
