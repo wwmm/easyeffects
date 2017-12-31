@@ -17,11 +17,12 @@ Order of effects applied to applications output:
 7. Exciter (LV2 Exciter from Calf Studio)
 8. Bass Enhancer (LV2 Bass Enhancer from Calf Studio)
 9. Stereo Enhancer (LV2 Stereo Enhancer from Calf Studio)
-10. Freeverb (Gstreamer)
-11. Stereo Panorama (Gstreamer)
-12. Maximizer (Ladspa MAximizer from ZamAudio)
-13. Output Limiter (Ladspa Fast Lookahead Limiter)
-14. Spectrum Analyzer (Gstreamer)
+9. Stereo Spread (LV2 MultiSpread from Calf Studio)
+11. Freeverb (Gstreamer)
+12. Stereo Panorama (Gstreamer)
+13. Maximizer (Ladspa Maximizer from ZamAudio)
+14. Output Limiter (Ladspa Fast Lookahead Limiter)
+15. Spectrum Analyzer (Gstreamer)
 
 Since version 2.0.0 PulseEffects is capable of applying effects to microphone
 output at the same time it applies them for applications output:
