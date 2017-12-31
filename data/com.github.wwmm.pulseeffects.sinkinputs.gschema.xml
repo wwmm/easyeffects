@@ -54,8 +54,30 @@
         <key name="compressor-makeup" type="d">
           <default>0.0</default>
         </key>
-        <key name="compressor-vlc" type="ad">
-          <default>[0.0, 25.0, 100.0, -11.0, 8.0, 2.5, 7.0]</default>
+
+        <key name="expander-state" type="b">
+          <default>false</default>
+        </key>
+        <key name="expander-use-peak" type="b">
+          <default>false</default>
+        </key>
+        <key name="expander-attack" type="d">
+          <default>101.1</default>
+        </key>
+        <key name="expander-release" type="d">
+          <default>401.0</default>
+        </key>
+        <key name="expander-threshold" type="d">
+          <default>0.0</default>
+        </key>
+        <key name="expander-ratio" type="d">
+          <default>1.0</default>
+        </key>
+        <key name="expander-knee" type="d">
+          <default>3.25</default>
+        </key>
+        <key name="expander-attenuation" type="d">
+          <default>0.0</default>
         </key>
 
         <key name="highpass-state" type="b">

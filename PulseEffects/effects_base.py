@@ -365,11 +365,11 @@ class EffectsBase(PipelineBase):
         elif plugin == 'compressor_input_level':
             peak = msg.get_structure().get_value('peak')
 
-            self.compressor.ui_update_compressor_input_level(peak)
+            self.compressor.ui_update_input_level(peak)
         elif plugin == 'compressor_output_level':
             peak = msg.get_structure().get_value('peak')
 
-            self.compressor.ui_update_compressor_output_level(peak)
+            self.compressor.ui_update_output_level(peak)
         elif plugin == 'highpass_input_level':
             peak = msg.get_structure().get_value('peak')
 
