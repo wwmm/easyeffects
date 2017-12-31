@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-25 15:21-0200\n"
-"PO-Revision-Date: 2017-12-25 15:23-0200\n"
+"POT-Creation-Date: 2017-12-31 17:03-0200\n"
+"PO-Revision-Date: 2017-12-31 17:07-0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
@@ -87,12 +87,14 @@ msgid "Blend Harmonics"
 msgstr "Mistura de Harmônicos"
 
 #: PulseEffects/ui/bass_enhancer.glade:294 PulseEffects/ui/equalizer.glade:1863
-#: PulseEffects/ui/exciter.glade:294 PulseEffects/ui/stereo_enhancer.glade:517
+#: PulseEffects/ui/exciter.glade:294 PulseEffects/ui/stereo_enhancer.glade:519
+#: PulseEffects/ui/stereo_spread.glade:261
 msgid "Output [dB]"
 msgstr "Saída [dB]"
 
 #: PulseEffects/ui/bass_enhancer.glade:307 PulseEffects/ui/equalizer.glade:1850
-#: PulseEffects/ui/exciter.glade:307 PulseEffects/ui/stereo_enhancer.glade:530
+#: PulseEffects/ui/exciter.glade:307 PulseEffects/ui/stereo_enhancer.glade:532
+#: PulseEffects/ui/stereo_spread.glade:274
 msgid "Input [dB]"
 msgstr "Entrada [dB]"
 
@@ -134,32 +136,21 @@ msgstr "Joelho [dB]"
 msgid "Makeup [dB]"
 msgstr "Ganho de Saída [dB]"
 
-#. for some reason when listbox is inside a scrolledwindow
-#. it autoselects a row at startup
-#: PulseEffects/ui/compressor.glade:322 PulseEffects/ui/main_ui.glade:279
-#: PulseEffects/ui/reverb.glade:214 PulseEffects/presets_manager.py:67
-msgid "Presets"
-msgstr "Predefinições"
-
-#: PulseEffects/ui/compressor.glade:335
-msgid "Vlc"
-msgstr "Vlc"
-
-#: PulseEffects/ui/compressor.glade:368 PulseEffects/ui/highpass.glade:246
+#: PulseEffects/ui/compressor.glade:337 PulseEffects/ui/highpass.glade:246
 #: PulseEffects/ui/limiter.glade:404 PulseEffects/ui/lowpass.glade:246
 #: PulseEffects/ui/maximizer.glade:175 PulseEffects/ui/output_limiter.glade:176
 #: PulseEffects/ui/panorama.glade:224 PulseEffects/ui/reverb.glade:401
 msgid "Input"
 msgstr "Entrada"
 
-#: PulseEffects/ui/compressor.glade:469 PulseEffects/ui/highpass.glade:145
+#: PulseEffects/ui/compressor.glade:438 PulseEffects/ui/highpass.glade:145
 #: PulseEffects/ui/limiter.glade:505 PulseEffects/ui/lowpass.glade:145
 #: PulseEffects/ui/maximizer.glade:276 PulseEffects/ui/output_limiter.glade:277
 #: PulseEffects/ui/panorama.glade:123 PulseEffects/ui/reverb.glade:300
 msgid "Output"
 msgstr "Saída"
 
-#: PulseEffects/ui/compressor.glade:570
+#: PulseEffects/ui/compressor.glade:539
 msgid "Gain Reduction"
 msgstr "Redução de Ganho"
 
@@ -274,6 +265,13 @@ msgstr "Atenuação"
 msgid "Low Pass"
 msgstr "Passa-Baixa"
 
+#. for some reason when listbox is inside a scrolledwindow
+#. it autoselects a row at startup
+#: PulseEffects/ui/main_ui.glade:279 PulseEffects/ui/reverb.glade:214
+#: PulseEffects/presets_manager.py:67
+msgid "Presets"
+msgstr "Predefinições"
+
 #: PulseEffects/ui/main_ui.glade:346
 msgid "buffer-time [ms]"
 msgstr "tempo de atraso [ms]"
@@ -378,63 +376,91 @@ msgstr "Sala de Máquinas"
 msgid "Small Room"
 msgstr "Quarto Pequeno"
 
-#: PulseEffects/ui/stereo_enhancer.glade:39
+#: PulseEffects/ui/stereo_enhancer.glade:40
 msgid "Stereo Enhancer"
 msgstr "Melhorador de Stereo"
 
-#: PulseEffects/ui/stereo_enhancer.glade:124
-#: PulseEffects/ui/stereo_enhancer.glade:231
+#: PulseEffects/ui/stereo_enhancer.glade:126
+#: PulseEffects/ui/stereo_enhancer.glade:233
 msgid "Left"
 msgstr "Esquerda"
 
-#: PulseEffects/ui/stereo_enhancer.glade:157
-#: PulseEffects/ui/stereo_enhancer.glade:232
+#: PulseEffects/ui/stereo_enhancer.glade:159
+#: PulseEffects/ui/stereo_enhancer.glade:234
 msgid "Right"
 msgstr "Direita"
 
-#: PulseEffects/ui/stereo_enhancer.glade:172
+#: PulseEffects/ui/stereo_enhancer.glade:174
 msgid "Invert Middle Phase"
 msgstr "Inverter Fase do Meio"
 
-#: PulseEffects/ui/stereo_enhancer.glade:208
+#: PulseEffects/ui/stereo_enhancer.glade:210
 msgid "Side Gain [dB]"
 msgstr "Ganho Lateral [dB]"
 
-#: PulseEffects/ui/stereo_enhancer.glade:219
+#: PulseEffects/ui/stereo_enhancer.glade:221
 msgid "Middle Source"
 msgstr "Fonte do Meio"
 
-#: PulseEffects/ui/stereo_enhancer.glade:233
+#: PulseEffects/ui/stereo_enhancer.glade:235
 msgid "Mid (L + R)"
 msgstr "Média (E + D)"
 
-#: PulseEffects/ui/stereo_enhancer.glade:234
+#: PulseEffects/ui/stereo_enhancer.glade:236
 msgid "Side (L - R)"
 msgstr "Lado (E - D)"
 
-#: PulseEffects/ui/stereo_enhancer.glade:235
+#: PulseEffects/ui/stereo_enhancer.glade:237
 msgid "Mute"
 msgstr "Mudo"
 
-#: PulseEffects/ui/stereo_enhancer.glade:264
-#: PulseEffects/ui/stereo_enhancer.glade:380
+#: PulseEffects/ui/stereo_enhancer.glade:266
+#: PulseEffects/ui/stereo_enhancer.glade:382
 msgid "Invert Phase"
 msgstr "Inverter Fase"
 
-#: PulseEffects/ui/stereo_enhancer.glade:286
-#: PulseEffects/ui/stereo_enhancer.glade:402
+#: PulseEffects/ui/stereo_enhancer.glade:288
+#: PulseEffects/ui/stereo_enhancer.glade:404
 msgid "Balance"
 msgstr "Balanço"
 
-#: PulseEffects/ui/stereo_enhancer.glade:297
-#: PulseEffects/ui/stereo_enhancer.glade:428
+#: PulseEffects/ui/stereo_enhancer.glade:299
+#: PulseEffects/ui/stereo_enhancer.glade:430
 msgid "Delay [ms]"
 msgstr "Atraso [ms]"
 
-#: PulseEffects/ui/stereo_enhancer.glade:323
-#: PulseEffects/ui/stereo_enhancer.glade:454
+#: PulseEffects/ui/stereo_enhancer.glade:325
+#: PulseEffects/ui/stereo_enhancer.glade:456
 msgid "Gain [dB]"
 msgstr "Ganho [dB]"
+
+#: PulseEffects/ui/stereo_spread.glade:54
+msgid "Stereo Spread"
+msgstr "Espalhamento do Stereo"
+
+#: PulseEffects/ui/stereo_spread.glade:102
+msgid "Mono Input"
+msgstr "Entrada Mono"
+
+#: PulseEffects/ui/stereo_spread.glade:126
+msgid "Sub [dB]"
+msgstr "Sub-Baixo [dB]"
+
+#: PulseEffects/ui/stereo_spread.glade:138
+msgid "Low [dB]"
+msgstr "Baixo [dB]"
+
+#: PulseEffects/ui/stereo_spread.glade:150
+msgid "High [dB]"
+msgstr "Alto [dB]"
+
+#: PulseEffects/ui/stereo_spread.glade:162
+msgid "Mid [dB]"
+msgstr "Médio [dB]"
+
+#: PulseEffects/ui/stereo_spread.glade:220
+msgid "Filters"
+msgstr "Filtros"
 
 #: PulseEffects/effects_base.py:84
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
@@ -603,6 +629,9 @@ msgstr "limitador;compressor;reverberação;equalizador;autovolume;"
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
+#~ msgid "Vlc"
+#~ msgstr "Vlc"
+
 #, fuzzy
 #~ msgid "Left Channel"
 #~ msgstr "Canais"
@@ -649,9 +678,6 @@ msgstr "pulseeffects"
 
 #~ msgid "Test Signals for Headphone and Speakers Calibration"
 #~ msgstr "Sinais de Teste para Calibração de Fones de ouvido e Autofalantes"
-
-#~ msgid "Input Filters"
-#~ msgstr "Filtros de Entrada"
 
 #~ msgid "Cuttoff [Hz]"
 #~ msgstr "Corte [Hz]"
