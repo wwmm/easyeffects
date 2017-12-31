@@ -444,6 +444,38 @@ class LoadPresets():
         settings.set_value('stereo-enhancer-side-gain',
                            GLib.Variant('d', side_gain))
 
+    def load_stereo_spread_presets(self, settings, section):
+        enabled = self.config.getboolean(section, 'enabled', fallback=False)
+        input_gain = self.config.getfloat(section, 'input_gain', fallback=0.0)
+        output_gain = self.config.getfloat(section, 'output_gain',
+                                           fallback=0.0)
+
+        amount0 = self.config.getfloat(section, 'amount0', fallback=0.0)
+        amount1 = self.config.getfloat(section, 'amount1', fallback=0.0)
+        amount2 = self.config.getfloat(section, 'amount2', fallback=0.0)
+        amount3 = self.config.getfloat(section, 'amount3', fallback=0.0)
+        filters = self.config.getint(section, 'filters', fallback=2.0)
+        mono = self.config.getboolean(section, 'mono', fallback=False)
+
+        settings.set_value('stereo-spread-state', GLib.Variant('b', enabled))
+        settings.set_value('stereo-spread-input-gain',
+                           GLib.Variant('d', input_gain))
+        settings.set_value('stereo-spread-output-gain',
+                           GLib.Variant('d', output_gain))
+
+        settings.set_value('stereo-spread-amount0',
+                           GLib.Variant('d', amount0))
+        settings.set_value('stereo-spread-amount1',
+                           GLib.Variant('d', amount1))
+        settings.set_value('stereo-spread-amount2',
+                           GLib.Variant('d', amount2))
+        settings.set_value('stereo-spread-amount3',
+                           GLib.Variant('d', amount3))
+        settings.set_value('stereo-spread-filters',
+                           GLib.Variant('i', filters))
+        settings.set_value('stereo-spread-mono',
+                           GLib.Variant('b', mono))
+
     def load_maximizer_presets(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
         release = self.config.getfloat(section, 'release', fallback=3.16)
@@ -481,6 +513,7 @@ class LoadPresets():
         self.load_exciter_presets(settings, 'apps_exciter')
         self.load_bass_enhancer_presets(settings, 'apps_bass_enhancer')
         self.load_stereo_enhancer_presets(settings, 'apps_stereo_enhancer')
+        self.load_stereo_spread_presets(settings, 'apps_stereo_spread')
         self.load_maximizer_presets(settings, 'apps_maximizer')
         self.load_output_limiter_presets(settings, 'apps_output_limiter')
 

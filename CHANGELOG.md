@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- MultiSpread plugin from Calf Studio
 
 ## [3.1.5]
 ### Added

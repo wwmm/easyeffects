@@ -311,6 +311,28 @@ class SavePresets():
                                 'middle_source': str(middle_source),
                                 'side_gain': str(side_gain)}
 
+    def save_stereo_spread_presets(self, settings, section):
+        enabled = settings.get_value('stereo-spread-state')
+        input_gain = settings.get_value('stereo-spread-input-gain')
+        output_gain = settings.get_value('stereo-spread-output-gain')
+
+        amount0 = settings.get_value('stereo-spread-amount0')
+        amount1 = settings.get_value('stereo-spread-amount1')
+        amount2 = settings.get_value('stereo-spread-amount2')
+        amount3 = settings.get_value('stereo-spread-amount3')
+        filters = settings.get_value('stereo-spread-filters')
+        mono = settings.get_value('stereo-spread-mono')
+
+        self.config[section] = {'enabled': str(enabled),
+                                'input_gain': str(input_gain),
+                                'output_gain': str(output_gain),
+                                'amount0': str(amount0),
+                                'amount1': str(amount1),
+                                'amount2': str(amount2),
+                                'amount3': str(amount3),
+                                'filters': str(filters),
+                                'mono': str(mono)}
+
     def save_maximizer_presets(self, settings, section):
         enabled = settings.get_value('maximizer-state')
         release = settings.get_value('maximizer-release')
@@ -345,6 +367,7 @@ class SavePresets():
         self.save_exciter_presets(settings, 'apps_exciter')
         self.save_bass_enhancer_presets(settings, 'apps_bass_enhancer')
         self.save_stereo_enhancer_presets(settings, 'apps_stereo_enhancer')
+        self.save_stereo_spread_presets(settings, 'apps_stereo_spread')
         self.save_maximizer_presets(settings, 'apps_maximizer')
         self.save_output_limiter_presets(settings, 'apps_output_limiter')
 
