@@ -46,7 +46,7 @@ class BassEnhancer():
         self.bin = GstInsertBin.InsertBin.new('bass_enhancer_bin')
 
         if self.is_installed:
-            # it seems there is a bug in gstreaner
+            # it seems there is a bug in gstreaner. LV2 plugins
             # booleans are inverted. For example we have to turn on bypass in
             # order to effects to be applied
 
