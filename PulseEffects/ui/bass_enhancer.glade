@@ -29,7 +29,7 @@
     <property name="page_increment">0.10000000000000001</property>
   </object>
   <object class="GtkAdjustment" id="input_gain">
-    <property name="lower">-12</property>
+    <property name="lower">-30</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_input_gain_value_changed" swapped="no"/>
@@ -70,7 +70,7 @@
     </child>
   </object>
   <object class="GtkAdjustment" id="output_gain">
-    <property name="lower">-12</property>
+    <property name="lower">-30</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_output_gain_value_changed" swapped="no"/>
