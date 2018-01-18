@@ -1,6 +1,9 @@
 # Changelog
 
 ## [Unreleased]
+### Fixed
+- Do not force the "switch all apps" setting to true when running in service
+mode
 
 ## [3.1.6]
 ### Added

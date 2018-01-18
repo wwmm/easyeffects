@@ -150,9 +150,6 @@ class Application(Gtk.Application):
         self.soe.there_is_window = False
 
         if self.running_as_service:
-            self.sie.switch_on_all_apps = True
-            self.soe.switch_on_all_apps = True
-
             self.sie.post_messages(False)
             self.soe.post_messages(False)
 
