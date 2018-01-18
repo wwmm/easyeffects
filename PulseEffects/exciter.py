@@ -46,13 +46,22 @@ class Exciter():
         self.bin = GstInsertBin.InsertBin.new('exciter_bin')
 
         if self.is_installed:
-            # it seems there is a bug in gstreaner. LV2 plugins
-            # booleans are inverted. For example we have to turn on bypass in
-            # order to effects to be applied
+            # There is a bug in gstreaner. Booleans are inverted. For example
+            # we have to turn on bypass in order to effects to be applied
 
-            self.exciter.set_property('bypass', True)
-            self.exciter.set_property('listen', True)
-            self.exciter.set_property('ceil-active', False)
+            registry = Gst.Registry().get()
+            use_workaround = not registry.check_feature_version('pulsesrc', 1,
+                                                                12, 5)
+
+            if use_workaround:
+                self.exciter.set_property('bypass', True)
+                self.exciter.set_property('listen', True)
+                self.exciter.set_property('ceil-active', False)
+            else:
+                self.exciter.set_property('bypass', False)
+                self.exciter.set_property('listen', False)
+                self.exciter.set_property('ceil-active', True)
+
             self.exciter.set_property('level-in', 1.0)
 
             self.bin.append(self.input_gain, self.on_filter_added, None)

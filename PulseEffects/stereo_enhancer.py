@@ -19,6 +19,7 @@ class StereoEnhancer():
         self.module_path = os.path.dirname(__file__)
 
         self.log = logging.getLogger('PulseEffects')
+        self.use_workaround = False
 
         if Gst.ElementFactory.make(
                 'calf-sourceforge-net-plugins-HaasEnhancer'):
@@ -47,11 +48,18 @@ class StereoEnhancer():
         self.bin = GstInsertBin.InsertBin.new('stereo_enhancer_bin')
 
         if self.is_installed:
-            # it seems there is a bug in gstreaner
-            # booleans are inverted. For example we have to turn on bypass in
-            # order to effects to be applied
+            # There is a bug in gstreaner. Booleans are inverted. For example
+            # we have to turn on bypass in order to effects to be applied
 
-            self.stereo_enhancer.set_property('bypass', True)
+            registry = Gst.Registry().get()
+            self.use_workaround = not registry\
+                .check_feature_version('pulsesrc', 1, 12, 5)
+
+            if self.use_workaround:
+                self.stereo_enhancer.set_property('bypass', True)
+            else:
+                self.stereo_enhancer.set_property('bypass', False)
+
             self.stereo_enhancer.set_property('level-in', 1.0)
 
             self.bin.append(self.input_gain, self.on_filter_added, None)
@@ -162,15 +170,16 @@ class StereoEnhancer():
         flag = GObject.BindingFlags.BIDIRECTIONAL | \
             GObject.BindingFlags.SYNC_CREATE
 
-        # it seems there is a bug in gstreaner
-        # booleans are inverted. For example we have to turn on bypass in
-        # order to effects to be applied
+        # There is a bug in gstreaner. Booleans are inverted. For example
+        # we have to turn on bypass in order to effects to be applied
 
-        flag_invert_boolean = flag | GObject.BindingFlags.INVERT_BOOLEAN
+        boolean_flag = flag
+
+        if self.use_workaround:
+            boolean_flag = flag | GObject.BindingFlags.INVERT_BOOLEAN
 
         self.ui_left_invert_phase.bind_property('active', self.stereo_enhancer,
-                                                's-phase1',
-                                                flag_invert_boolean)
+                                                's-phase1', boolean_flag)
         self.ui_left_balance.bind_property('value', self.stereo_enhancer,
                                            's-balance1', flag)
         self.ui_left_delay.bind_property('value', self.stereo_enhancer,
@@ -178,8 +187,7 @@ class StereoEnhancer():
 
         self.ui_right_invert_phase.bind_property('active',
                                                  self.stereo_enhancer,
-                                                 's-phase2',
-                                                 flag_invert_boolean)
+                                                 's-phase2', boolean_flag)
         self.ui_right_balance.bind_property('value', self.stereo_enhancer,
                                             's-balance2', flag)
         self.ui_right_delay.bind_property('value', self.stereo_enhancer,
@@ -187,8 +195,7 @@ class StereoEnhancer():
 
         self.ui_middle_invert_phase.bind_property('active',
                                                   self.stereo_enhancer,
-                                                  'm-phase',
-                                                  flag_invert_boolean)
+                                                  'm-phase', boolean_flag)
         self.ui_middle_source.bind_property('active', self.stereo_enhancer,
                                             'm-source', flag)
 

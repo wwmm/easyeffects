@@ -46,13 +46,22 @@ class BassEnhancer():
         self.bin = GstInsertBin.InsertBin.new('bass_enhancer_bin')
 
         if self.is_installed:
-            # it seems there is a bug in gstreaner. LV2 plugins
-            # booleans are inverted. For example we have to turn on bypass in
-            # order to effects to be applied
+            # There is a bug in gstreaner. Booleans are inverted. For example
+            # we have to turn on bypass in order to effects to be applied
 
-            self.bass_enhancer.set_property('bypass', True)
-            self.bass_enhancer.set_property('listen', True)
-            self.bass_enhancer.set_property('floor-active', False)
+            registry = Gst.Registry().get()
+            use_workaround = not registry.check_feature_version('pulsesrc', 1,
+                                                                12, 5)
+
+            if use_workaround:
+                self.bass_enhancer.set_property('bypass', True)
+                self.bass_enhancer.set_property('listen', True)
+                self.bass_enhancer.set_property('floor-active', False)
+            else:
+                self.bass_enhancer.set_property('bypass', False)
+                self.bass_enhancer.set_property('listen', False)
+                self.bass_enhancer.set_property('floor-active', True)
+
             self.bass_enhancer.set_property('level-in', 1.0)
 
             self.bin.append(self.input_gain, self.on_filter_added, None)

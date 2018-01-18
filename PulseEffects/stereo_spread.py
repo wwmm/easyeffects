@@ -19,6 +19,7 @@ class StereoSpread():
         self.module_path = os.path.dirname(__file__)
 
         self.log = logging.getLogger('PulseEffects')
+        self.use_workaround = False
 
         if Gst.ElementFactory.make(
                 'calf-sourceforge-net-plugins-MultiSpread'):
@@ -46,11 +47,18 @@ class StereoSpread():
         self.bin = GstInsertBin.InsertBin.new('stereo_spread_bin')
 
         if self.is_installed:
-            # it seems there is a bug in gstreaner
-            # booleans are inverted. For example we have to turn on bypass in
-            # order to effects to be applied
+            # There is a bug in gstreaner. Booleans are inverted. For example
+            # we have to turn on bypass in order to effects to be applied
 
-            self.stereo_spread.set_property('bypass', True)
+            registry = Gst.Registry().get()
+            self.use_workaround = not registry\
+                .check_feature_version('pulsesrc', 1, 12, 5)
+
+            if self.use_workaround:
+                self.stereo_spread.set_property('bypass', True)
+            else:
+                self.stereo_spread.set_property('bypass', False)
+
             self.stereo_spread.set_property('level-in', 1.0)
 
             self.bin.append(self.input_gain, self.on_filter_added, None)
@@ -135,16 +143,18 @@ class StereoSpread():
         flag = GObject.BindingFlags.BIDIRECTIONAL | \
             GObject.BindingFlags.SYNC_CREATE
 
-        # it seems there is a bug in gstreaner. Calf plugin booleans
-        # booleans are inverted. For example we have to turn on bypass in
-        # order to effects to be applied
+        # There is a bug in gstreaner. Booleans are inverted. For example
+        # we have to turn on bypass in order to effects to be applied
 
-        flag_invert_boolean = flag | GObject.BindingFlags.INVERT_BOOLEAN
+        boolean_flag = flag
+
+        if self.use_workaround:
+            boolean_flag = flag | GObject.BindingFlags.INVERT_BOOLEAN
 
         self.ui_filters.bind_property('value', self.stereo_spread, 'filters',
                                       flag)
         self.ui_mono.bind_property('active', self.stereo_spread, 'mono',
-                                   flag_invert_boolean)
+                                   boolean_flag)
 
     def on_input_gain_value_changed(self, obj):
         value_db = obj.get_value()
