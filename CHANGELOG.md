@@ -2,9 +2,10 @@
 
 ## [Unreleased]
 ### Fixed
-- Do not force the "switch all apps" setting to true when running in service. 
+- Do not force the "switch all apps" setting to true when running in service.
 - Fixed frequency value in band label being slightly different from the one
 in the frequency menu because of rounding problems
+- Removed unnecessary spaces between a few elements in the interface
 
 ## [3.1.6]
 ### Added

@@ -79,7 +79,6 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
-            <property name="row_spacing">6</property>
             <property name="column_spacing">18</property>
             <child>
               <object class="GtkLabel">
@@ -209,8 +208,23 @@
             <property name="column_spacing">6</property>
             <property name="column_homogeneous">True</property>
             <child>
-              <object class="GtkButton" id="cathedral">
-                <property name="label" translatable="yes">Cathedral</property>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="label" translatable="yes">Presets</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="small_room">
+                <property name="label" translatable="yes">Small Room</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -218,7 +232,7 @@
                 <signal name="clicked" handler="on_reverb_preset_clicked" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">0</property>
+                <property name="left_attach">2</property>
                 <property name="top_attach">1</property>
               </packing>
             </child>
@@ -237,8 +251,8 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="small_room">
-                <property name="label" translatable="yes">Small Room</property>
+              <object class="GtkButton" id="cathedral">
+                <property name="label" translatable="yes">Cathedral</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -246,23 +260,8 @@
                 <signal name="clicked" handler="on_reverb_preset_clicked" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">2</property>
+                <property name="left_attach">0</property>
                 <property name="top_attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">center</property>
-                <property name="label" translatable="yes">Presets</property>
-                <attributes>
-                  <attribute name="weight" value="bold"/>
-                </attributes>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">0</property>
               </packing>
             </child>
             <child>
@@ -282,13 +281,13 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="column_spacing">3</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
+                <property name="margin_right">3</property>
                 <property name="label" translatable="yes">Input</property>
               </object>
               <packing>
@@ -303,6 +302,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
+                <property name="margin_right">3</property>
                 <property name="label" translatable="yes">Output</property>
               </object>
               <packing>
