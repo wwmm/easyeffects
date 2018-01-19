@@ -283,14 +283,13 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="hexpand">True</property>
-            <property name="row_spacing">6</property>
-            <property name="column_spacing">6</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
+                <property name="margin_right">3</property>
                 <property name="label" translatable="yes">Harmonics</property>
               </object>
               <packing>
@@ -383,6 +382,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
+                <property name="margin_right">3</property>
                 <property name="label" translatable="yes">Input [dB]</property>
               </object>
               <packing>
@@ -414,6 +414,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
+                <property name="margin_right">3</property>
                 <property name="label" translatable="yes">Output [dB]</property>
               </object>
               <packing>

@@ -116,7 +116,6 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
-            <property name="row_spacing">12</property>
             <property name="column_spacing">3</property>
             <child>
               <object class="GtkSpinButton">
@@ -202,6 +201,9 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="margin_top">12</property>
+                <property name="margin_bottom">12</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -261,6 +263,7 @@
               <object class="GtkComboBoxText" id="middle_source">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="valign">center</property>
                 <items>
                   <item translatable="yes">Left</item>
                   <item translatable="yes">Right</item>
@@ -292,6 +295,9 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="margin_top">12</property>
+                <property name="margin_bottom">12</property>
               </object>
               <packing>
                 <property name="left_attach">4</property>
@@ -395,6 +401,9 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="margin_top">12</property>
+                <property name="margin_bottom">12</property>
               </object>
               <packing>
                 <property name="left_attach">8</property>
@@ -459,8 +468,6 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="row_spacing">3</property>
-            <property name="column_spacing">6</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>

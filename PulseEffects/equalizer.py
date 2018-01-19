@@ -202,11 +202,11 @@ class Equalizer():
         band.set_property('bandwidth', value / q.unpack())
 
         if value < 1000:
-            label = '{:0d}'.format(int(value)) + 'Hz'
+            label = '{:3.0f}'.format(value) + 'Hz'
 
             getattr(self, 'ui_band' + str(idx) + '_label').set_text(label)
         else:
-            label = '{:.1f}'.format(round(value / 1000.0, 1)) + 'kHz'
+            label = '{:2.1f}'.format(value / 1000.0) + 'kHz'
 
             getattr(self, 'ui_band' + str(idx) + '_label').set_text(label)
 

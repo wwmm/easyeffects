@@ -146,7 +146,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="row_spacing">6</property>
                 <property name="column_spacing">18</property>
                 <child>
                   <object class="GtkLabel">
@@ -326,13 +325,13 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="column_spacing">3</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
+                <property name="margin_right">3</property>
                 <property name="label" translatable="yes">Input</property>
               </object>
               <packing>
@@ -347,6 +346,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
+                <property name="margin_right">3</property>
                 <property name="label" translatable="yes">Output</property>
               </object>
               <packing>
@@ -512,6 +512,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
+                <property name="margin_right">3</property>
                 <property name="label" translatable="yes">Gain Reduction</property>
               </object>
               <packing>

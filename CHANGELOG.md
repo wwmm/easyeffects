@@ -3,6 +3,8 @@
 ## [Unreleased]
 ### Fixed
 - Do not force the "switch all apps" setting to true when running in service
+- Fixed frequency value in band label being slightly different from the one
+in the frequency menu because of rounding problems
 mode
 
 ## [3.1.6]
