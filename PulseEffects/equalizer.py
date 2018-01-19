@@ -72,26 +72,25 @@ class Equalizer():
             setattr(self, 'ui_band' + str(n) + '_label',
                     self.builder.get_object('band' + str(n) + '_label'))
 
-        self.ui_eq_calibrate_button = self.builder.get_object(
-            'eq_calibrate_button')
+        self.ui_calibrate_button = self.builder.get_object('calibrate_button')
 
-        self.ui_equalizer_input_level_left = self.builder.get_object(
-            'equalizer_input_level_left')
-        self.ui_equalizer_input_level_right = self.builder.get_object(
-            'equalizer_input_level_right')
-        self.ui_equalizer_output_level_left = self.builder.get_object(
-            'equalizer_output_level_left')
-        self.ui_equalizer_output_level_right = self.builder.get_object(
-            'equalizer_output_level_right')
+        self.ui_input_level_left = self.builder.get_object(
+            'input_level_left')
+        self.ui_input_level_right = self.builder.get_object(
+            'input_level_right')
+        self.ui_output_level_left = self.builder.get_object(
+            'output_level_left')
+        self.ui_output_level_right = self.builder.get_object(
+            'output_level_right')
 
-        self.ui_equalizer_input_level_left_label = self.builder.get_object(
-            'equalizer_input_level_left_label')
-        self.ui_equalizer_input_level_right_label = self.builder.get_object(
-            'equalizer_input_level_right_label')
-        self.ui_equalizer_output_level_left_label = self.builder.get_object(
-            'equalizer_output_level_left_label')
-        self.ui_equalizer_output_level_right_label = self.builder.get_object(
-            'equalizer_output_level_right_label')
+        self.ui_input_level_left_label = self.builder.get_object(
+            'input_level_left_label')
+        self.ui_input_level_right_label = self.builder.get_object(
+            'input_level_right_label')
+        self.ui_output_level_left_label = self.builder.get_object(
+            'output_level_left_label')
+        self.ui_output_level_right_label = self.builder.get_object(
+            'output_level_right_label')
 
         # band menu
         for n in range(30):
@@ -251,26 +250,24 @@ class Equalizer():
             widget_level_right_label.set_text('-99')
 
     def ui_update_equalizer_input_level(self, peak):
-        widgets = [self.ui_equalizer_input_level_left,
-                   self.ui_equalizer_input_level_right,
-                   self.ui_equalizer_input_level_left_label,
-                   self.ui_equalizer_input_level_right_label]
+        widgets = [self.ui_input_level_left, self.ui_input_level_right,
+                   self.ui_input_level_left_label,
+                   self.ui_input_level_right_label]
 
         self.ui_update_level(widgets, peak)
 
     def ui_update_equalizer_output_level(self, peak):
-        widgets = [self.ui_equalizer_output_level_left,
-                   self.ui_equalizer_output_level_right,
-                   self.ui_equalizer_output_level_left_label,
-                   self.ui_equalizer_output_level_right_label]
+        widgets = [self.ui_output_level_left, self.ui_output_level_right,
+                   self.ui_output_level_left_label,
+                   self.ui_output_level_right_label]
 
         self.ui_update_level(widgets, peak)
 
-    def on_eq_flat_response_button_clicked(self, obj):
+    def on_flat_response_button_clicked(self, obj):
         for n in range(30):
             self.settings.reset('equalizer-band' + str(n) + '-gain')
 
-    def on_eq_calibrate_button_clicked(self, obj):
+    def on_calibrate_button_clicked(self, obj):
         c = Calibration()
         c.run()
 

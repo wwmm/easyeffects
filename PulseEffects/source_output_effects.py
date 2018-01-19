@@ -60,7 +60,7 @@ class SourceOutputEffects(EffectsBase):
         self.listbox.show_all()
 
         # it makes no sense to show the calibration button here
-        self.equalizer.ui_eq_calibrate_button.destroy()
+        self.equalizer.ui_calibrate_button.destroy()
 
         # adding effects widgets to the stack
         self.stack.add_named(self.limiter.ui_window, 'limiter')
