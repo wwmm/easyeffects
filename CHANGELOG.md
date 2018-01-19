@@ -1,6 +1,9 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- New settings menu.
+
 ### Fixed
 - Do not force the "switch all apps" setting to true when running in service.
 - Fixed frequency value in band label being slightly different from the one
