@@ -309,6 +309,9 @@ class EffectsBase(PipelineBase):
 
         if self.there_is_window:
             self.build_app_ui(parameters)
+        elif self.switch_on_all_apps:
+            # necessary when running as service with window closed
+            self.on_enable_app(None, True, idx)
 
         if not self.is_playing:
             self.set_state('playing')
