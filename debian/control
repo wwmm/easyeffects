@@ -9,6 +9,6 @@ Homepage: https://github.com/wwmm/pulseeffects
 Package: pulseeffects
 Architecture: all
 Depends: ${misc:Depends}, pulseaudio, python3, libgtk-3-0 (>= 3.18), python3-gi, python3-gi-cairo, gstreamer1.0-plugins-bad (>= 1.12), gstreamer1.0-plugins-good (>= 1.12), swh-plugins, python3-scipy (>= 0.18), python3-gst-1.0, gir1.2-gst-plugins-bad-1.0, gstreamer1.0-pulseaudio
-Recommends: liblilv-0-0, calf-plugins
+Recommends: liblilv-0-0, calf-plugins, zam-plugins
 Description: Sound input and output effects for PulseAudio
  Many sound effects for PulseAudio input and output.
