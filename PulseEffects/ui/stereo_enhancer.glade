@@ -32,7 +32,7 @@
   <object class="GtkBox" id="listbox_control">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="spacing">12</property>
+    <property name="spacing">6</property>
     <child>
       <object class="GtkLabel">
         <property name="visible">True</property>
@@ -223,28 +223,17 @@
               </packing>
             </child>
             <child>
-              <object class="GtkSeparator">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">center</property>
-              </object>
-              <packing>
-                <property name="left_attach">3</property>
-                <property name="top_attach">1</property>
-                <property name="height">3</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="margin_left">18</property>
                 <property name="input_purpose">number</property>
                 <property name="adjustment">side_gain</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
               </object>
               <packing>
-                <property name="left_attach">4</property>
+                <property name="left_attach">3</property>
                 <property name="top_attach">3</property>
               </packing>
             </child>
@@ -252,10 +241,12 @@
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="margin_left">18</property>
                 <property name="label" translatable="yes">Side Gain [dB]</property>
               </object>
               <packing>
-                <property name="left_attach">4</property>
+                <property name="left_attach">3</property>
                 <property name="top_attach">2</property>
               </packing>
             </child>
@@ -264,6 +255,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">center</property>
+                <property name="margin_right">18</property>
                 <items>
                   <item translatable="yes">Left</item>
                   <item translatable="yes">Right</item>
@@ -273,7 +265,7 @@
                 </items>
               </object>
               <packing>
-                <property name="left_attach">5</property>
+                <property name="left_attach">4</property>
                 <property name="top_attach">3</property>
               </packing>
             </child>
@@ -281,10 +273,12 @@
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="margin_right">18</property>
                 <property name="label" translatable="yes">Middle Source</property>
               </object>
               <packing>
-                <property name="left_attach">5</property>
+                <property name="left_attach">4</property>
                 <property name="top_attach">2</property>
               </packing>
             </child>
@@ -300,21 +294,9 @@
                 <property name="margin_bottom">12</property>
               </object>
               <packing>
-                <property name="left_attach">4</property>
+                <property name="left_attach">3</property>
                 <property name="top_attach">1</property>
                 <property name="width">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkSeparator">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">center</property>
-              </object>
-              <packing>
-                <property name="left_attach">6</property>
-                <property name="top_attach">1</property>
-                <property name="height">3</property>
               </packing>
             </child>
             <child>
@@ -328,7 +310,7 @@
                 <property name="update_policy">if-valid</property>
               </object>
               <packing>
-                <property name="left_attach">7</property>
+                <property name="left_attach">5</property>
                 <property name="top_attach">3</property>
               </packing>
             </child>
@@ -339,7 +321,7 @@
                 <property name="label" translatable="yes">Balance</property>
               </object>
               <packing>
-                <property name="left_attach">7</property>
+                <property name="left_attach">5</property>
                 <property name="top_attach">2</property>
               </packing>
             </child>
@@ -354,7 +336,7 @@
                 <property name="update_policy">if-valid</property>
               </object>
               <packing>
-                <property name="left_attach">8</property>
+                <property name="left_attach">6</property>
                 <property name="top_attach">3</property>
               </packing>
             </child>
@@ -365,7 +347,7 @@
                 <property name="label" translatable="yes">Delay [ms]</property>
               </object>
               <packing>
-                <property name="left_attach">8</property>
+                <property name="left_attach">6</property>
                 <property name="top_attach">2</property>
               </packing>
             </child>
@@ -379,7 +361,7 @@
                 <property name="update_policy">if-valid</property>
               </object>
               <packing>
-                <property name="left_attach">9</property>
+                <property name="left_attach">7</property>
                 <property name="top_attach">3</property>
               </packing>
             </child>
@@ -390,7 +372,7 @@
                 <property name="label" translatable="yes">Gain [dB]</property>
               </object>
               <packing>
-                <property name="left_attach">9</property>
+                <property name="left_attach">7</property>
                 <property name="top_attach">2</property>
               </packing>
             </child>
@@ -406,7 +388,7 @@
                 <property name="margin_bottom">12</property>
               </object>
               <packing>
-                <property name="left_attach">8</property>
+                <property name="left_attach">6</property>
                 <property name="top_attach">1</property>
               </packing>
             </child>
@@ -417,15 +399,9 @@
                 <property name="label" translatable="yes">Right</property>
               </object>
               <packing>
-                <property name="left_attach">8</property>
+                <property name="left_attach">6</property>
                 <property name="top_attach">0</property>
               </packing>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
             </child>
             <child>
               <placeholder/>

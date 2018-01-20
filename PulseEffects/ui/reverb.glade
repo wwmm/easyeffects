@@ -17,7 +17,7 @@
   <object class="GtkBox" id="listbox_control">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="spacing">12</property>
+    <property name="spacing">6</property>
     <child>
       <object class="GtkLabel">
         <property name="visible">True</property>

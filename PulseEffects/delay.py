@@ -58,6 +58,11 @@ class Delay():
                 self.delay.set_property('bypass', False)
 
             self.delay.set_property('mode-l', 'Distance')
+            self.delay.set_property('mode-r', 'Distance')
+            self.delay.set_property('dry-l', 0)
+            self.delay.set_property('wet-l', 1)
+            self.delay.set_property('dry-r', 0)
+            self.delay.set_property('wet-r', 1)
 
             self.bin.append(self.input_level, self.on_filter_added, None)
             self.bin.append(self.delay, self.on_filter_added, None)
