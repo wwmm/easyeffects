@@ -7,6 +7,7 @@ gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gio, GstInsertBin, Gtk
 from PulseEffects.bass_enhancer import BassEnhancer
+from PulseEffects.delay import Delay
 from PulseEffects.effects_base import EffectsBase
 from PulseEffects.exciter import Exciter
 from PulseEffects.maximizer import Maximizer
@@ -49,6 +50,7 @@ class SinkInputEffects(EffectsBase):
 
         self.exciter = Exciter(self.settings)
         self.bass_enhancer = BassEnhancer(self.settings)
+        self.delay = Delay(self.settings)
         self.stereo_enhancer = StereoEnhancer(self.settings)
         self.stereo_spread = StereoSpread(self.settings)
         self.panorama = Panorama(self.settings)
@@ -59,6 +61,7 @@ class SinkInputEffects(EffectsBase):
         self.exciter_wrapper = GstInsertBin.InsertBin.new('exciter_wrapper')
         self.bass_enhancer_wrapper = GstInsertBin.InsertBin.new(
             'bass_enhancer_wrapper')
+        self.delay_wrapper = GstInsertBin.InsertBin.new('delay_wrapper')
         self.stereo_enhancer_wrapper = GstInsertBin.InsertBin.new(
             'stereo_enhancer_wrapper')
         self.stereo_spread_wrapper = GstInsertBin.InsertBin.new(
@@ -81,8 +84,13 @@ class SinkInputEffects(EffectsBase):
                                       self.on_filter_added,
                                       self.log_tag)
 
-        self.effects_bin.insert_after(self.stereo_enhancer_wrapper,
+        self.effects_bin.insert_after(self.delay_wrapper,
                                       self.bass_enhancer_wrapper,
+                                      self.on_filter_added,
+                                      self.log_tag)
+
+        self.effects_bin.insert_after(self.stereo_enhancer_wrapper,
+                                      self.delay_wrapper,
                                       self.on_filter_added,
                                       self.log_tag)
 
@@ -116,6 +124,7 @@ class SinkInputEffects(EffectsBase):
         self.equalizer.init_ui()
         self.exciter.init_ui()
         self.bass_enhancer.init_ui()
+        self.delay.init_ui()
         self.stereo_enhancer.init_ui()
         self.stereo_spread.init_ui()
         self.reverb.init_ui()
@@ -130,6 +139,7 @@ class SinkInputEffects(EffectsBase):
         self.add_to_listbox('equalizer')
         self.add_to_listbox('exciter')
         self.add_to_listbox('bass_enhancer')
+        self.add_to_listbox('delay')
         self.add_to_listbox('stereo_enhancer')
         self.add_to_listbox('stereo_spread')
         self.add_to_listbox('reverb')
@@ -148,6 +158,7 @@ class SinkInputEffects(EffectsBase):
         self.stack.add_named(self.equalizer.ui_window, 'equalizer')
         self.stack.add_named(self.exciter.ui_window, 'exciter')
         self.stack.add_named(self.bass_enhancer.ui_window, 'bass_enhancer')
+        self.stack.add_named(self.delay.ui_window, 'delay')
         self.stack.add_named(self.stereo_enhancer.ui_window, 'stereo_enhancer')
         self.stack.add_named(self.stereo_spread.ui_window, 'stereo_spread')
         self.stack.add_named(self.reverb.ui_window, 'reverb')
@@ -166,6 +177,7 @@ class SinkInputEffects(EffectsBase):
         self.exciter.ui_enable.connect('state-set', self.on_exciter_enable)
         self.bass_enhancer.ui_enable.connect('state-set',
                                              self.on_bass_enhancer_enable)
+        self.delay.ui_enable.connect('state-set', self.on_delay_enable)
         self.stereo_enhancer.ui_enable.connect('state-set',
                                                self.on_stereo_enhancer_enable)
         self.stereo_spread.ui_enable.connect('state-set',
@@ -203,6 +215,13 @@ class SinkInputEffects(EffectsBase):
             self.bass_enhancer.ui_window.set_sensitive(False)
             self.bass_enhancer.ui_enable.set_sensitive(False)
             self.bass_enhancer.ui_img_state.hide()
+
+        if self.delay.is_installed:
+            self.delay.bind()
+        else:
+            self.delay.ui_window.set_sensitive(False)
+            self.delay.ui_enable.set_sensitive(False)
+            self.delay.ui_img_state.hide()
 
         if self.stereo_enhancer.is_installed:
             self.stereo_enhancer.bind()
@@ -264,6 +283,7 @@ class SinkInputEffects(EffectsBase):
 
         self.exciter.post_messages(state)
         self.bass_enhancer.post_messages(state)
+        self.delay.post_messages(state)
         self.stereo_enhancer.post_messages(state)
         self.stereo_spread.post_messages(state)
         self.panorama.post_messages(state)
@@ -291,6 +311,14 @@ class SinkInputEffects(EffectsBase):
             peak = msg.get_structure().get_value('peak')
 
             self.bass_enhancer.ui_update_output_level(peak)
+        elif plugin == 'delay_input_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.delay.ui_update_input_level(peak)
+        elif plugin == 'delay_output_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.delay.ui_update_output_level(peak)
         elif plugin == 'stereo_enhancer_input_level':
             peak = msg.get_structure().get_value('peak')
 
@@ -356,6 +384,17 @@ class SinkInputEffects(EffectsBase):
                                               self.on_filter_removed,
                                               self.log_tag)
 
+    def on_delay_enable(self, obj, state):
+        if state:
+            if not self.delay_wrapper.get_by_name('delay_bin'):
+                self.delay_wrapper.append(self.delay.bin,
+                                          self.on_filter_added,
+                                          self.log_tag)
+        else:
+            self.delay_wrapper.remove(self.delay.bin,
+                                      self.on_filter_removed,
+                                      self.log_tag)
+
     def on_stereo_enhancer_enable(self, obj, state):
         if state:
             if not self.stereo_enhancer_wrapper.get_by_name(
@@ -418,6 +457,7 @@ class SinkInputEffects(EffectsBase):
 
         self.exciter.reset()
         self.bass_enhancer.reset()
+        self.delay.reset()
         self.stereo_enhancer.reset()
         self.stereo_spread.reset()
         self.panorama.reset()

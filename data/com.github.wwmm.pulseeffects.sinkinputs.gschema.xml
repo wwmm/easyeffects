@@ -499,6 +499,10 @@
           <default>0</default>
         </key>
 
+        <key name="delay-state" type="b">
+          <default>false</default>
+        </key>
+
         <key name="stereo-enhancer-state" type="b">
           <default>false</default>
         </key>
