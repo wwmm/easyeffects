@@ -1,5 +1,5 @@
 Source: pulseeffects
-Section: Multimedia
+Section: sound
 Priority: optional
 Maintainer: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>
 Build-Depends: debhelper (>=10), python3-cairo-dev, python-gi-dev, libgstreamer1.0-dev (>= 1.12), libgstreamer-plugins-bad1.0-dev (>=1.12), libpulse-dev, libpango1.0-dev, libgtk-3-dev (>= 3.18), meson (>=0.40), ninja-build, pkg-config
