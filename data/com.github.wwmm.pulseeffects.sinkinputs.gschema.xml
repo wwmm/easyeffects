@@ -502,6 +502,21 @@
         <key name="delay-state" type="b">
           <default>false</default>
         </key>
+        <key name="delay-m-l" type="d">
+          <default>0</default>
+        </key>
+        <key name="delay-cm-l" type="d">
+          <default>0</default>
+        </key>
+        <key name="delay-m-r" type="d">
+          <default>0</default>
+        </key>
+        <key name="delay-cm-r" type="d">
+          <default>0</default>
+        </key>
+        <key name="delay-temperature" type="d">
+          <default>20</default>
+        </key>
 
         <key name="stereo-enhancer-state" type="b">
           <default>false</default>

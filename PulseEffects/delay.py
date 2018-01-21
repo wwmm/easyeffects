@@ -85,7 +85,11 @@ class Delay():
         self.ui_enable = self.builder.get_object('enable')
         self.ui_img_state = self.builder.get_object('img_state')
 
-        # self.ui_amount = self.builder.get_object('amount')
+        self.ui_m_l = self.builder.get_object('m_l')
+        self.ui_cm_l = self.builder.get_object('cm_l')
+        self.ui_m_r = self.builder.get_object('m_r')
+        self.ui_cm_r = self.builder.get_object('cm_r')
+        self.ui_temperature = self.builder.get_object('temperature')
 
         self.ui_input_level_left = self.builder.get_object('input_level_left')
         self.ui_input_level_right = self.builder.get_object(
@@ -109,21 +113,28 @@ class Delay():
 
         flag = Gio.SettingsBindFlags.DEFAULT
 
-        self.settings.bind('delay-state', self.ui_enable, 'active',
-                           flag)
-        self.settings.bind('delay-state', self.ui_img_state, 'visible',
-                           flag)
+        self.settings.bind('delay-state', self.ui_enable, 'active', flag)
+        self.settings.bind('delay-state', self.ui_img_state, 'visible', flag)
         self.settings.bind('delay-state', self.ui_controls, 'sensitive',
                            Gio.SettingsBindFlags.GET)
-        # self.settings.bind('exciter-amount', self.ui_amount, 'value',
-        #                    flag)
+        self.settings.bind('delay-m-l', self.ui_m_l, 'value', flag)
+        self.settings.bind('delay-cm-l', self.ui_cm_l, 'value', flag)
+        self.settings.bind('delay-m-r', self.ui_m_r, 'value', flag)
+        self.settings.bind('delay-cm-r', self.ui_cm_r, 'value', flag)
+        self.settings.bind('delay-temperature', self.ui_temperature, 'value',
+                           flag)
 
         # binding ui widgets to gstreamer plugins
 
         flag = GObject.BindingFlags.BIDIRECTIONAL | \
             GObject.BindingFlags.SYNC_CREATE
 
-        # self.ui_amount.bind_property('value', self.delay, 'amount', flag)
+        self.ui_m_l.bind_property('value', self.delay, 'm-l', flag)
+        self.ui_cm_l.bind_property('value', self.delay, 'cm-l', flag)
+        self.ui_m_r.bind_property('value', self.delay, 'm-r', flag)
+        self.ui_cm_r.bind_property('value', self.delay, 'cm-r', flag)
+        self.ui_temperature.bind_property('value', self.delay, 't-l', flag)
+        self.ui_temperature.bind_property('value', self.delay, 't-r', flag)
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]
@@ -163,6 +174,13 @@ class Delay():
 
         self.ui_update_level(widgets, peak)
 
+        print('delay l:', self.delay.get_property('d-t-l'))
+        print('delay r:', self.delay.get_property('d-t-r'))
+
     def reset(self):
         self.settings.reset('delay-state')
-        # self.settings.reset('exciter-blend')
+        self.settings.reset('delay-m-l')
+        self.settings.reset('delay-cm-l')
+        self.settings.reset('delay-m-r')
+        self.settings.reset('delay-cm-r')
+        self.settings.reset('delay-temperature')
