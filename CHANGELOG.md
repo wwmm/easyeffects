@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+- Delay Compensator Plugin from Linux Studio Plugins
 - New settings menu.
 
 ### Fixed
