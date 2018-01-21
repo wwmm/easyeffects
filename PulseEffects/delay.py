@@ -7,7 +7,7 @@ import gi
 gi.require_version('Gst', '1.0')
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, GObject, Gst, GstInsertBin, Gtk
+from gi.repository import Gio, GLib, GObject, Gst, GstInsertBin, Gtk
 
 Gst.init(None)
 
@@ -59,6 +59,7 @@ class Delay():
 
             self.delay.set_property('mode-l', 'Distance')
             self.delay.set_property('mode-r', 'Distance')
+            self.delay.set_property('g-out', 1)
             self.delay.set_property('dry-l', 0)
             self.delay.set_property('wet-l', 1)
             self.delay.set_property('dry-r', 0)
@@ -90,6 +91,8 @@ class Delay():
         self.ui_m_r = self.builder.get_object('m_r')
         self.ui_cm_r = self.builder.get_object('cm_r')
         self.ui_temperature = self.builder.get_object('temperature')
+        self.ui_d_l = self.builder.get_object('d_l')
+        self.ui_d_r = self.builder.get_object('d_r')
 
         self.ui_input_level_left = self.builder.get_object('input_level_left')
         self.ui_input_level_right = self.builder.get_object(
@@ -107,6 +110,8 @@ class Delay():
             'output_level_left_label')
         self.ui_output_level_right_label = self.builder.get_object(
             'output_level_right_label')
+
+        self.ui_enable.connect('state-set', self.ask_delay)
 
     def bind(self):
         # binding ui widgets to gsettings
@@ -135,6 +140,19 @@ class Delay():
         self.ui_cm_r.bind_property('value', self.delay, 'cm-r', flag)
         self.ui_temperature.bind_property('value', self.delay, 't-l', flag)
         self.ui_temperature.bind_property('value', self.delay, 't-r', flag)
+
+    def ask_delay(self, obj, state):
+        if state:
+            GLib.timeout_add_seconds(1, self.read_delay)
+
+    def read_delay(self):
+        value_l = '{:4.2f}'.format(self.delay.get_property('d-t-l'))
+        value_r = '{:4.2f}'.format(self.delay.get_property('d-t-r'))
+
+        self.ui_d_l.set_text(value_l)
+        self.ui_d_r.set_text(value_r)
+
+        return self.ui_enable.get_state()
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]
@@ -173,9 +191,6 @@ class Delay():
                    self.ui_output_level_right_label]
 
         self.ui_update_level(widgets, peak)
-
-        print('delay l:', self.delay.get_property('d-t-l'))
-        print('delay r:', self.delay.get_property('d-t-r'))
 
     def reset(self):
         self.settings.reset('delay-state')
