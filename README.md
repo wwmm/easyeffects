@@ -80,6 +80,7 @@ Required libraries:
 - [Lilv](http://drobilla.net/category/lilv/)
 - [Calf Plugins](https://calf-studio-gear.org/)
 - [ZamAudio Ladspa Plugins](http://www.zamaudio.com/)
+- [Linux Studio Plugins](http://lsp-plug.in/)
 
 #### Installing from Source
 
