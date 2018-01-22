@@ -294,7 +294,7 @@
         <key name="equalizer-band29-frequency" type="d">
           <default>17943.28</default>
         </key>
-        
+
         <key name="equalizer-band0-quality" type="d">
           <default>2.21</default>
         </key>
@@ -475,6 +475,28 @@
         </key>
         <key name="equalizer-band29-type" type="i">
           <default>0</default>
+        </key>
+
+        <key name="pitch-state" type="b">
+          <default>false</default>
+        </key>
+        <key name="pitch-cents" type="d">
+          <default>0</default>
+        </key>
+        <key name="pitch-semitones" type="i">
+          <default>0</default>
+        </key>
+        <key name="pitch-octaves" type="i">
+          <default>0</default>
+        </key>
+        <key name="pitch-crispness" type="i">
+          <default>3</default>
+        </key>
+        <key name="pitch-formant-preserving" type="b">
+          <default>false</default>
+        </key>
+        <key name="pitch-faster" type="b">
+          <default>false</default>
         </key>
 
     </schema>

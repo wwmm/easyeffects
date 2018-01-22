@@ -73,6 +73,18 @@ class Delay():
         self.input_level.set_property('post-messages', state)
         self.output_level.set_property('post-messages', state)
 
+        if state:
+            GLib.timeout_add_seconds(2, self.read_delay)
+
+    def read_delay(self):
+        value_l = '{:4.2f}'.format(self.delay.get_property('d-t-l'))
+        value_r = '{:4.2f}'.format(self.delay.get_property('d-t-r'))
+
+        self.ui_d_l.set_text(value_l)
+        self.ui_d_r.set_text(value_r)
+
+        return self.input_level.get_property('post-messages')
+
     def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +
                                                  '/ui/delay.glade')
@@ -111,8 +123,6 @@ class Delay():
         self.ui_output_level_right_label = self.builder.get_object(
             'output_level_right_label')
 
-        self.ui_enable.connect('state-set', self.ask_delay)
-
     def bind(self):
         # binding ui widgets to gsettings
 
@@ -140,19 +150,6 @@ class Delay():
         self.ui_cm_r.bind_property('value', self.delay, 'cm-r', flag)
         self.ui_temperature.bind_property('value', self.delay, 't-l', flag)
         self.ui_temperature.bind_property('value', self.delay, 't-r', flag)
-
-    def ask_delay(self, obj, state):
-        if state:
-            GLib.timeout_add_seconds(1, self.read_delay)
-
-    def read_delay(self):
-        value_l = '{:4.2f}'.format(self.delay.get_property('d-t-l'))
-        value_r = '{:4.2f}'.format(self.delay.get_property('d-t-r'))
-
-        self.ui_d_l.set_text(value_l)
-        self.ui_d_r.set_text(value_r)
-
-        return self.ui_enable.get_state()
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]
