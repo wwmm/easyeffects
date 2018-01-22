@@ -71,6 +71,9 @@ class Application(Gtk.Application):
 
         self.apply_css_style('listbox.css')
 
+        icon_theme = Gtk.IconTheme.get_default()
+        icon_theme.append_search_path(self.module_path + '/ui')
+
         # pulseaudio
 
         self.pm = PulseManager()
@@ -104,6 +107,11 @@ class Application(Gtk.Application):
         self.window = self.builder.get_object('MainWindow')
         self.window.set_application(self)
         self.window.connect('destroy', self.on_window_destroy)
+
+        image_test = self.builder.get_object('image_test')
+
+        image_test.set_from_icon_name('pulseeffects-sine-symbolic',
+                                      Gtk.IconSize.BUTTON)
 
         self.sie.init_ui()
         self.soe.init_ui()

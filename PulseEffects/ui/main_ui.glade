@@ -18,7 +18,7 @@
   <object class="GtkImage" id="image_test">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">signal.svg</property>
+    <property name="stock">gtk-missing-image</property>
   </object>
   <object class="GtkApplicationWindow" id="MainWindow">
     <property name="can_focus">False</property>
