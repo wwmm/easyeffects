@@ -492,7 +492,7 @@
         <key name="pitch-crispness" type="i">
           <default>3</default>
         </key>
-        <key name="pitch-formant-preserving" type="b">
+        <key name="pitch-preserve-formant" type="b">
           <default>false</default>
         </key>
         <key name="pitch-faster" type="b">
