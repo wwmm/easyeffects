@@ -19,7 +19,6 @@
     <property name="margin_right">6</property>
     <property name="margin_top">6</property>
     <property name="margin_bottom">6</property>
-    <property name="row_spacing">12</property>
     <property name="column_spacing">6</property>
     <child>
       <object class="GtkGrid">
@@ -27,79 +26,8 @@
         <property name="can_focus">False</property>
         <property name="halign">center</property>
         <property name="valign">center</property>
-        <property name="column_spacing">12</property>
-        <child>
-          <object class="GtkSeparator">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">center</property>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">0</property>
-            <property name="height">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSeparator">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">center</property>
-          </object>
-          <packing>
-            <property name="left_attach">3</property>
-            <property name="top_attach">0</property>
-            <property name="height">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSeparator">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">center</property>
-          </object>
-          <packing>
-            <property name="left_attach">5</property>
-            <property name="top_attach">0</property>
-            <property name="height">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSeparator">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">center</property>
-          </object>
-          <packing>
-            <property name="left_attach">7</property>
-            <property name="top_attach">0</property>
-            <property name="height">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSeparator">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">center</property>
-          </object>
-          <packing>
-            <property name="left_attach">9</property>
-            <property name="top_attach">0</property>
-            <property name="height">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSeparator">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">center</property>
-          </object>
-          <packing>
-            <property name="left_attach">11</property>
-            <property name="top_attach">0</property>
-            <property name="height">2</property>
-          </packing>
-        </child>
+        <property name="row_spacing">6</property>
+        <property name="column_spacing">27</property>
         <child>
           <object class="GtkLabel" id="format">
             <property name="visible">True</property>
@@ -118,6 +46,9 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Format</property>
+            <attributes>
+              <attribute name="weight" value="semibold"/>
+            </attributes>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -133,7 +64,7 @@
             <property name="label">r</property>
           </object>
           <packing>
-            <property name="left_attach">2</property>
+            <property name="left_attach">1</property>
             <property name="top_attach">1</property>
           </packing>
         </child>
@@ -142,9 +73,12 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Rate</property>
+            <attributes>
+              <attribute name="weight" value="semibold"/>
+            </attributes>
           </object>
           <packing>
-            <property name="left_attach">2</property>
+            <property name="left_attach">1</property>
             <property name="top_attach">0</property>
           </packing>
         </child>
@@ -157,7 +91,7 @@
             <property name="label">c</property>
           </object>
           <packing>
-            <property name="left_attach">4</property>
+            <property name="left_attach">2</property>
             <property name="top_attach">1</property>
           </packing>
         </child>
@@ -166,9 +100,12 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Channels</property>
+            <attributes>
+              <attribute name="weight" value="semibold"/>
+            </attributes>
           </object>
           <packing>
-            <property name="left_attach">4</property>
+            <property name="left_attach">2</property>
             <property name="top_attach">0</property>
           </packing>
         </child>
@@ -181,7 +118,7 @@
             <property name="label">r</property>
           </object>
           <packing>
-            <property name="left_attach">6</property>
+            <property name="left_attach">3</property>
             <property name="top_attach">1</property>
           </packing>
         </child>
@@ -190,9 +127,12 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Resampler</property>
+            <attributes>
+              <attribute name="weight" value="semibold"/>
+            </attributes>
           </object>
           <packing>
-            <property name="left_attach">6</property>
+            <property name="left_attach">3</property>
             <property name="top_attach">0</property>
           </packing>
         </child>
@@ -205,7 +145,7 @@
             <property name="label">bl</property>
           </object>
           <packing>
-            <property name="left_attach">8</property>
+            <property name="left_attach">4</property>
             <property name="top_attach">1</property>
           </packing>
         </child>
@@ -214,9 +154,12 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Buffer</property>
+            <attributes>
+              <attribute name="weight" value="semibold"/>
+            </attributes>
           </object>
           <packing>
-            <property name="left_attach">8</property>
+            <property name="left_attach">4</property>
             <property name="top_attach">0</property>
           </packing>
         </child>
@@ -229,7 +172,7 @@
             <property name="label">sl</property>
           </object>
           <packing>
-            <property name="left_attach">10</property>
+            <property name="left_attach">5</property>
             <property name="top_attach">1</property>
           </packing>
         </child>
@@ -238,9 +181,12 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Latency</property>
+            <attributes>
+              <attribute name="weight" value="semibold"/>
+            </attributes>
           </object>
           <packing>
-            <property name="left_attach">10</property>
+            <property name="left_attach">5</property>
             <property name="top_attach">0</property>
           </packing>
         </child>
@@ -253,7 +199,7 @@
             <property name="label">s</property>
           </object>
           <packing>
-            <property name="left_attach">12</property>
+            <property name="left_attach">6</property>
             <property name="top_attach">1</property>
           </packing>
         </child>
@@ -262,10 +208,26 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">State</property>
+            <attributes>
+              <attribute name="weight" value="semibold"/>
+            </attributes>
           </object>
           <packing>
-            <property name="left_attach">12</property>
+            <property name="left_attach">6</property>
             <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLevelBar" id="level">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="valign">center</property>
+            <property name="hexpand">True</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">2</property>
+            <property name="width">7</property>
           </packing>
         </child>
       </object>
@@ -279,6 +241,7 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="halign">center</property>
+        <property name="margin_bottom">12</property>
         <property name="column_spacing">6</property>
         <child>
           <object class="GtkImage" id="app_icon">
@@ -331,6 +294,7 @@
       <object class="GtkGrid">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="hexpand">True</property>
         <child>
           <object class="GtkScale" id="volume_scale">
             <property name="visible">True</property>
@@ -361,18 +325,6 @@
             <property name="top_attach">0</property>
           </packing>
         </child>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">3</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLevelBar" id="level">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="valign">center</property>
-        <property name="hexpand">True</property>
       </object>
       <packing>
         <property name="left_attach">0</property>
