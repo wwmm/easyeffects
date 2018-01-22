@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-21 15:59-0200\n"
+"POT-Creation-Date: 2018-01-21 22:15-0200\n"
 "PO-Revision-Date: 2018-01-21 16:00-0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
@@ -87,13 +87,13 @@ msgid "Blend Harmonics"
 msgstr "Mistura de Harmônicos"
 
 #: PulseEffects/ui/bass_enhancer.glade:386 PulseEffects/ui/equalizer.glade:1847
-#: PulseEffects/ui/exciter.glade:386 PulseEffects/ui/stereo_enhancer.glade:453
+#: PulseEffects/ui/exciter.glade:386 PulseEffects/ui/stereo_enhancer.glade:459
 #: PulseEffects/ui/stereo_spread.glade:272
 msgid "Input [dB]"
 msgstr "Entrada [dB]"
 
 #: PulseEffects/ui/bass_enhancer.glade:418 PulseEffects/ui/equalizer.glade:1862
-#: PulseEffects/ui/exciter.glade:418 PulseEffects/ui/stereo_enhancer.glade:467
+#: PulseEffects/ui/exciter.glade:418 PulseEffects/ui/stereo_enhancer.glade:473
 #: PulseEffects/ui/stereo_spread.glade:286
 msgid "Output [dB]"
 msgstr "Saída [dB]"
@@ -136,7 +136,7 @@ msgstr "Joelho [dB]"
 msgid "Makeup [dB]"
 msgstr "Ganho de Saída [dB]"
 
-#: PulseEffects/ui/compressor.glade:335 PulseEffects/ui/delay.glade:312
+#: PulseEffects/ui/compressor.glade:335 PulseEffects/ui/delay.glade:318
 #: PulseEffects/ui/highpass.glade:143 PulseEffects/ui/limiter.glade:402
 #: PulseEffects/ui/lowpass.glade:143 PulseEffects/ui/maximizer.glade:174
 #: PulseEffects/ui/output_limiter.glade:175 PulseEffects/ui/panorama.glade:122
@@ -144,7 +144,7 @@ msgstr "Ganho de Saída [dB]"
 msgid "Input"
 msgstr "Entrada"
 
-#: PulseEffects/ui/compressor.glade:350 PulseEffects/ui/delay.glade:327
+#: PulseEffects/ui/compressor.glade:350 PulseEffects/ui/delay.glade:333
 #: PulseEffects/ui/highpass.glade:158 PulseEffects/ui/limiter.glade:417
 #: PulseEffects/ui/lowpass.glade:158 PulseEffects/ui/maximizer.glade:189
 #: PulseEffects/ui/output_limiter.glade:190 PulseEffects/ui/panorama.glade:137
@@ -169,22 +169,22 @@ msgid "Centimeters"
 msgstr "Centímetros"
 
 #: PulseEffects/ui/delay.glade:180 PulseEffects/ui/stereo_enhancer.glade:218
-#: PulseEffects/ui/stereo_enhancer.glade:260
+#: PulseEffects/ui/stereo_enhancer.glade:263
 msgid "Left"
 msgstr "Esquerda"
 
-#: PulseEffects/ui/delay.glade:193 PulseEffects/ui/stereo_enhancer.glade:261
-#: PulseEffects/ui/stereo_enhancer.glade:399
+#: PulseEffects/ui/delay.glade:196 PulseEffects/ui/stereo_enhancer.glade:264
+#: PulseEffects/ui/stereo_enhancer.glade:402
 msgid "Right"
 msgstr "Direita"
 
-#: PulseEffects/ui/delay.glade:218
+#: PulseEffects/ui/delay.glade:224
 msgid "Temperature"
 msgstr "Temperatura"
 
-#: PulseEffects/ui/delay.glade:233 PulseEffects/ui/delay.glade:263
+#: PulseEffects/ui/delay.glade:239 PulseEffects/ui/delay.glade:269
 #: PulseEffects/ui/stereo_enhancer.glade:165
-#: PulseEffects/ui/stereo_enhancer.glade:347
+#: PulseEffects/ui/stereo_enhancer.glade:350
 msgid "Delay [ms]"
 msgstr "Atraso [ms]"
 
@@ -411,41 +411,41 @@ msgid "Stereo Enhancer"
 msgstr "Melhorador de Stereo"
 
 #: PulseEffects/ui/stereo_enhancer.glade:139
-#: PulseEffects/ui/stereo_enhancer.glade:321
+#: PulseEffects/ui/stereo_enhancer.glade:324
 msgid "Balance"
 msgstr "Balanço"
 
 #: PulseEffects/ui/stereo_enhancer.glade:190
-#: PulseEffects/ui/stereo_enhancer.glade:372
+#: PulseEffects/ui/stereo_enhancer.glade:375
 msgid "Gain [dB]"
 msgstr "Ganho [dB]"
 
 #: PulseEffects/ui/stereo_enhancer.glade:199
-#: PulseEffects/ui/stereo_enhancer.glade:381
+#: PulseEffects/ui/stereo_enhancer.glade:384
 msgid "Invert Phase"
 msgstr "Inverter Fase"
 
-#: PulseEffects/ui/stereo_enhancer.glade:246
+#: PulseEffects/ui/stereo_enhancer.glade:249
 msgid "Side Gain [dB]"
 msgstr "Ganho Lateral [dB]"
 
-#: PulseEffects/ui/stereo_enhancer.glade:262
+#: PulseEffects/ui/stereo_enhancer.glade:265
 msgid "Mid (L + R)"
 msgstr "Média (E + D)"
 
-#: PulseEffects/ui/stereo_enhancer.glade:263
+#: PulseEffects/ui/stereo_enhancer.glade:266
 msgid "Side (L - R)"
 msgstr "Lado (E - D)"
 
-#: PulseEffects/ui/stereo_enhancer.glade:264
+#: PulseEffects/ui/stereo_enhancer.glade:267
 msgid "Mute"
 msgstr "Mudo"
 
-#: PulseEffects/ui/stereo_enhancer.glade:278
+#: PulseEffects/ui/stereo_enhancer.glade:281
 msgid "Middle Source"
 msgstr "Fonte do Meio"
 
-#: PulseEffects/ui/stereo_enhancer.glade:287
+#: PulseEffects/ui/stereo_enhancer.glade:290
 msgid "Invert Middle Phase"
 msgstr "Inverter Fase do Meio"
 

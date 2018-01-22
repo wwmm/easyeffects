@@ -216,6 +216,9 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="label" translatable="yes">Left</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -397,6 +400,9 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Right</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
               </object>
               <packing>
                 <property name="left_attach">6</property>

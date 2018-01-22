@@ -272,6 +272,21 @@ class SavePresets():
                                 'floor': str(floor),
                                 'blend': str(blend)}
 
+    def save_delay_presets(self, settings, section):
+        enabled = settings.get_value('delay-state')
+        m_l = settings.get_value('delay-m-l')
+        cm_l = settings.get_value('delay-cm-l')
+        m_r = settings.get_value('delay-m-r')
+        cm_r = settings.get_value('delay-cm-r')
+        temperature = settings.get_value('delay-temperature')
+
+        self.config[section] = {'enabled': str(enabled),
+                                'm_l': str(m_l),
+                                'cm_l': str(cm_l),
+                                'm_r': str(m_r),
+                                'cm_r': str(cm_r),
+                                'temperature': str(temperature)}
+
     def save_stereo_enhancer_presets(self, settings, section):
         enabled = settings.get_value('stereo-enhancer-state')
         input_gain = settings.get_value('stereo-enhancer-input-gain')
@@ -366,6 +381,7 @@ class SavePresets():
         self.save_equalizer_presets(settings, 'apps_equalizer')
         self.save_exciter_presets(settings, 'apps_exciter')
         self.save_bass_enhancer_presets(settings, 'apps_bass_enhancer')
+        self.save_delay_presets(settings, 'apps_delay')
         self.save_stereo_enhancer_presets(settings, 'apps_stereo_enhancer')
         self.save_stereo_spread_presets(settings, 'apps_stereo_spread')
         self.save_maximizer_presets(settings, 'apps_maximizer')

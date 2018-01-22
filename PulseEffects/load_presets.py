@@ -380,6 +380,22 @@ class LoadPresets():
         settings.set_value('bass-enhancer-floor', GLib.Variant('d', floor))
         settings.set_value('bass-enhancer-blend', GLib.Variant('d', blend))
 
+    def load_delay_presets(self, settings, section):
+        enabled = self.config.getboolean(section, 'enabled', fallback=False)
+        m_l = self.config.getfloat(section, 'm_l', fallback=0.0)
+        cm_l = self.config.getfloat(section, 'cm_l', fallback=0.0)
+        m_r = self.config.getfloat(section, 'm_r', fallback=0.0)
+        cm_r = self.config.getfloat(section, 'cm_r', fallback=0.0)
+        temperature = self.config.getfloat(section, 'temperature',
+                                           fallback=20.0)
+
+        settings.set_value('delay-state', GLib.Variant('b', enabled))
+        settings.set_value('delay-m-l', GLib.Variant('d', m_l))
+        settings.set_value('delay-cm-l', GLib.Variant('d', cm_l))
+        settings.set_value('delay-m-r', GLib.Variant('d', m_r))
+        settings.set_value('delay-cm-r', GLib.Variant('d', cm_r))
+        settings.set_value('delay-temperature', GLib.Variant('d', temperature))
+
     def load_stereo_enhancer_presets(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
         input_gain = self.config.getfloat(section, 'input_gain', fallback=0.0)
@@ -512,6 +528,7 @@ class LoadPresets():
         self.load_equalizer_presets(settings, 'apps_equalizer')
         self.load_exciter_presets(settings, 'apps_exciter')
         self.load_bass_enhancer_presets(settings, 'apps_bass_enhancer')
+        self.load_delay_presets(settings, 'apps_delay')
         self.load_stereo_enhancer_presets(settings, 'apps_stereo_enhancer')
         self.load_stereo_spread_presets(settings, 'apps_stereo_spread')
         self.load_maximizer_presets(settings, 'apps_maximizer')

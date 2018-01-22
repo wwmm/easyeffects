@@ -16,7 +16,7 @@ Order of effects applied to applications output:
 6. 30 Bands Parametric Equalizer (Gstreamer)
 7. Exciter (LV2 Exciter from Calf Studio)
 8. Bass Enhancer (LV2 Bass Enhancer from Calf Studio)
-9. Delay Compensator(Delay Compensator from Linux Studio Plugins)
+9. Delay Compensator(LV2 Delay Compensator from Linux Studio Plugins)
 10. Stereo Enhancer (LV2 Stereo Enhancer from Calf Studio)
 11. Stereo Spread (LV2 MultiSpread from Calf Studio)
 12. Freeverb (Gstreamer)
