@@ -251,6 +251,7 @@
         <property name="can_focus">False</property>
         <property name="title">PulseEffects</property>
         <property name="has_subtitle">False</property>
+        <property name="spacing">3</property>
         <property name="show_close_button">True</property>
         <child>
           <object class="GtkStackSwitcher" id="stack_switcher">
@@ -259,6 +260,20 @@
             <property name="valign">center</property>
             <property name="stack">stack</property>
           </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="test">
+            <property name="label" translatable="yes">Test Signals</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <signal name="clicked" handler="on_test_clicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="position">3</property>
+          </packing>
         </child>
         <child>
           <object class="GtkButton" id="settings_popover_button">

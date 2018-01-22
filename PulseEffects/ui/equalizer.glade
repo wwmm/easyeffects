@@ -2026,29 +2026,15 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="calibrate_button">
-                <property name="label" translatable="yes">Calibration</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="valign">center</property>
-                <property name="margin_top">1</property>
-                <signal name="clicked" handler="on_calibrate_button_clicked" swapped="no"/>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">2</property>
-                <property name="height">2</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkButton" id="flat_response_button">
                 <property name="label" translatable="yes">Flat Response</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="valign">center</property>
-                <property name="margin_bottom">1</property>
+                <property name="halign">center</property>
+                <property name="valign">start</property>
+                <property name="margin_left">3</property>
+                <property name="margin_right">3</property>
                 <signal name="clicked" handler="on_flat_response_button_clicked" swapped="no"/>
               </object>
               <packing>
@@ -2056,6 +2042,12 @@
                 <property name="top_attach">0</property>
                 <property name="height">2</property>
               </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
             </child>
           </object>
           <packing>

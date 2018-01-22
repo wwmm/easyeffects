@@ -11,6 +11,7 @@
 - Fixed frequency value in band label being slightly different from the one
 in the frequency menu because of rounding problems
 - Removed unnecessary spaces between a few elements in the interface
+- Test Application automatically switches to the default microphone
 
 ## [3.1.6]
 ### Added

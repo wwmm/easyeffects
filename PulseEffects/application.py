@@ -12,6 +12,7 @@ from PulseEffects.presets_manager import PresetsManager
 from PulseEffects.pulse_manager import PulseManager
 from PulseEffects.sink_input_effects import SinkInputEffects
 from PulseEffects.source_output_effects import SourceOutputEffects
+from PulseEffectsTest.application import Application as Test
 
 
 class Application(Gtk.Application):
@@ -374,6 +375,11 @@ class Application(Gtk.Application):
         priority = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
 
         Gtk.StyleContext.add_provider_for_screen(screen, provider, priority)
+
+    def on_test_clicked(self, obj):
+        t = Test(self.pm)
+
+        t.run()
 
     def on_reset_all_settings_clicked(self, obj):
         self.settings.reset('buffer-time')

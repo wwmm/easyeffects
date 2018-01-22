@@ -15,10 +15,14 @@ from PulseEffectsCalibration.test_signal import TestSignal
 
 class Application(Gtk.Application):
 
-    def __init__(self):
+    def __init__(self, pulse_manager):
         app_id = 'com.github.wwmm.pulseeffects.calibration'
+        self.pm = pulse_manager
 
         Gtk.Application.__init__(self, application_id=app_id)
+
+    def do_startup(self):
+        Gtk.Application.do_startup(self)
 
         self.ui_initialized = False
         self.module_path = os.path.dirname(__file__)
@@ -35,13 +39,13 @@ class Application(Gtk.Application):
         self.mp = MicrophonePipeline()
         self.ts = TestSignal()
 
+        self.pm.connect('new_default_source', self.update_source_monitor_name)
         self.mp.connect('noise_measured', self.on_noise_measured)
+
+        self.mp.set_source_monitor_name(self.pm.default_source_name)
 
         self.mp.set_state('ready')
         self.ts.set_state('ready')
-
-    def do_startup(self):
-        Gtk.Application.do_startup(self)
 
         self.builder = Gtk.Builder()
         self.calibration_mic_builder = Gtk.Builder()
@@ -178,3 +182,6 @@ class Application(Gtk.Application):
 
     def on_guideline_position_value_changed(self, obj):
         self.spectrum.set_guideline_position(obj.get_value())
+
+    def update_source_monitor_name(self, obj, name):
+        self.mp.set_source_monitor_name(name)

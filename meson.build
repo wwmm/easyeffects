@@ -45,7 +45,7 @@ endif
 
 message('Installing PulseEffects')
 install_subdir('PulseEffects', install_dir: py3_dir)
-install_subdir('PulseEffectsCalibration', install_dir: py3_dir)
+install_subdir('PulseEffectsTest', install_dir: py3_dir)
 
 conf_pulseeffects = configuration_data()
 conf_pulseeffects.set('LOCALEDIR', localedir)

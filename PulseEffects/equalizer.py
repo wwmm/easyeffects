@@ -7,7 +7,6 @@ gi.require_version('Gst', '1.0')
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gio, GObject, Gst, GstInsertBin, Gtk
-from PulseEffectsCalibration.application import Application as Calibration
 
 
 Gst.init(None)
@@ -71,8 +70,6 @@ class Equalizer():
 
             setattr(self, 'ui_band' + str(n) + '_label',
                     self.builder.get_object('band' + str(n) + '_label'))
-
-        self.ui_calibrate_button = self.builder.get_object('calibrate_button')
 
         self.ui_input_level_left = self.builder.get_object(
             'input_level_left')
@@ -266,10 +263,6 @@ class Equalizer():
     def on_flat_response_button_clicked(self, obj):
         for n in range(30):
             self.settings.reset('equalizer-band' + str(n) + '-gain')
-
-    def on_calibrate_button_clicked(self, obj):
-        c = Calibration()
-        c.run()
 
     def reset(self):
         self.settings.reset('equalizer-state')
