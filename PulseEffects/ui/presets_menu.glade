@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.1 -->
+<!-- Generated with glade 3.21.0 -->
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkImage" id="image_button_add">
@@ -17,53 +17,8 @@
         <property name="margin_right">6</property>
         <property name="margin_top">6</property>
         <property name="margin_bottom">6</property>
-        <property name="row_spacing">6</property>
-        <child>
-          <object class="GtkBox">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="spacing">6</property>
-            <child>
-              <object class="GtkButton" id="add_preset">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="image">image_button_add</property>
-                <signal name="clicked" handler="on_add_preset_clicked" swapped="no"/>
-                <style>
-                  <class name="suggested-action"/>
-                </style>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkEntry" id="new_preset_name">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="valign">center</property>
-                <property name="hexpand">True</property>
-                <property name="placeholder_text" translatable="yes">Name</property>
-                <property name="input_purpose">name</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="pack_type">end</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
+        <property name="row_spacing">3</property>
+        <property name="column_spacing">3</property>
         <child>
           <object class="GtkScrolledWindow" id="scrolled_window">
             <property name="visible">True</property>
@@ -76,6 +31,7 @@
                 <property name="can_focus">False</property>
                 <child>
                   <object class="GtkListBox" id="listbox">
+                    <property name="name">listbox_presets</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                   </object>
@@ -86,6 +42,39 @@
           <packing>
             <property name="left_attach">0</property>
             <property name="top_attach">1</property>
+            <property name="width">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="new_preset_name">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="valign">center</property>
+            <property name="hexpand">True</property>
+            <property name="placeholder_text" translatable="yes">Name</property>
+            <property name="input_purpose">name</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="add_preset">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="image">image_button_add</property>
+            <signal name="clicked" handler="on_add_preset_clicked" swapped="no"/>
+            <style>
+              <class name="suggested-action"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
           </packing>
         </child>
       </object>

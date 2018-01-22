@@ -1,3 +1,7 @@
-* {
-  background-color: transparent;
+list#listbox_plugins {
+    background-color: transparent;
+}
+
+list#listbox_presets {
+    background-color: transparent;
 }

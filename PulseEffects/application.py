@@ -4,8 +4,9 @@ import logging
 import os
 
 import gi
+gi.require_version('Gdk', '3.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, GLib, Gtk
+from gi.repository import Gdk, Gio, GLib, Gtk
 from PulseEffects.draw_spectrum import DrawSpectrum
 from PulseEffects.presets_manager import PresetsManager
 from PulseEffects.pulse_manager import PulseManager
@@ -64,6 +65,10 @@ class Application(Gtk.Application):
                                            autostart_file_name)
 
         self.create_appmenu()
+
+        # custom css styles
+
+        self.apply_css_style('listbox.css')
 
         # pulseaudio
 
@@ -357,6 +362,18 @@ class Application(Gtk.Application):
 
         self.sie.set_spectrum_n_points(value)
         self.soe.set_spectrum_n_points(value)
+
+    def apply_css_style(self, css_file):
+        provider = Gtk.CssProvider()
+
+        css_file = Gio.File.new_for_path(self.module_path + '/ui/' + css_file)
+
+        provider.load_from_file(css_file)
+
+        screen = Gdk.Screen.get_default()
+        priority = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+
+        Gtk.StyleContext.add_provider_for_screen(screen, provider, priority)
 
     def on_reset_all_settings_clicked(self, obj):
         self.settings.reset('buffer-time')

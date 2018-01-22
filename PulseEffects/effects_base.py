@@ -7,7 +7,7 @@ import gi
 import numpy as np
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, GstInsertBin, Gtk, Pango
+from gi.repository import GstInsertBin, Gtk, Pango
 from PulseEffects.compressor import Compressor
 from PulseEffects.equalizer import Equalizer
 from PulseEffects.highpass import Highpass
@@ -90,14 +90,6 @@ class EffectsBase(PipelineBase):
 
         self.listbox.add(row)
         self.listbox.connect('row-activated', self.on_listbox_row_activated)
-
-        # listbox style
-        provider = Gtk.CssProvider()
-        css_file = Gio.File.new_for_path(self.module_path + '/ui/listbox.css')
-        provider.load_from_file(css_file)
-        Gtk.StyleContext.add_provider(self.listbox.get_style_context(),
-                                      provider,
-                                      Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
     def add_to_listbox(self, name):
         row = Gtk.ListBoxRow()

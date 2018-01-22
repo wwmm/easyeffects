@@ -5,7 +5,7 @@ from gettext import gettext as _
 
 import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, GLib, Gtk
+from gi.repository import GLib, Gtk
 
 from PulseEffects.load_presets import LoadPresets
 from PulseEffects.save_presets import SavePresets
@@ -37,17 +37,6 @@ class PresetsManager():
         self.listbox = self.builder.get_object('listbox')
         self.scrolled_window = self.builder.get_object('scrolled_window')
         self.new_preset_name = self.builder.get_object('new_preset_name')
-
-        # listbox style
-        provider = Gtk.CssProvider()
-
-        css_file = Gio.File.new_for_path(self.module_path + '/ui/listbox.css')
-
-        provider.load_from_file(css_file)
-
-        Gtk.StyleContext.add_provider(self.listbox.get_style_context(),
-                                      provider,
-                                      Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
         menu.set_relative_to(self.menu_button)
 
