@@ -2,7 +2,8 @@
 
 ## [Unreleased]
 ### Added
-- Delay Compensator Plugin from Linux Studio Plugins(LV2 version)
+- Delay Compensator plugin from Linux Studio Plugins (LV2 version)
+- Pitch Shifting plugin from Rubber Band library
 - New settings menu.
 
 ### Fixed

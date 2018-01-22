@@ -34,7 +34,8 @@ output at the same time it applies them for applications output:
 4. Butterworth Lowpass filter (Gstreamer audiocheblimit)
 5. 30 Bands Parametric Equalizer (Gstreamer)
 6. Freeverb (Gstreamer)
-7. Spectrum Analyzer (Gstreamer)
+7. Pitch Shifting (Ladspa Pitch Shifting from Rubber Band)
+8. Spectrum Analyzer (Gstreamer)
 
 ## Installation
 
@@ -69,7 +70,7 @@ Required libraries:
 
 - Python 3
 - Python configparser (Included with Python3 > 3.5.0. There is
-  no need to install it.)
+  no need to install it from this Python version onwards)
 - [PyGObject](https://pygobject.readthedocs.io/en/latest/)
 - [Python Cairo](https://cairographics.org/pycairo/)
 - [Python Numpy](http://www.numpy.org/)
@@ -82,6 +83,7 @@ Required libraries:
 - [Calf Plugins](https://calf-studio-gear.org/)
 - [ZamAudio Ladspa Plugins](http://www.zamaudio.com/)
 - [Linux Studio Plugins](http://lsp-plug.in/)
+- [Rubber Band](http://breakfastquay.com/rubberband/)
 
 #### Installing from Source
 
