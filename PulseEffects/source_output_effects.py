@@ -146,6 +146,27 @@ class SourceOutputEffects(EffectsBase):
 
         self.pm.set_source_output_mute(idx, state)
 
+    def post_messages(self, state):
+        EffectsBase.post_messages(self, state)
+
+        self.pitch.post_messages(state)
+
+    def on_message_element(self, bus, msg):
+        EffectsBase.on_message_element(self, bus, msg)
+
+        plugin = msg.src.get_name()
+
+        if plugin == 'pitch_input_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.pitch.ui_update_input_level(peak)
+        elif plugin == 'pitch_output_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.pitch.ui_update_output_level(peak)
+
+        return True
+
     def on_pitch_enable(self, obj, state):
         if state:
             if not self.pitch_wrapper.get_by_name('pitch_bin'):
@@ -156,3 +177,8 @@ class SourceOutputEffects(EffectsBase):
             self.pitch_wrapper.remove(self.pitch.bin,
                                       self.on_filter_removed,
                                       self.log_tag)
+
+    def reset(self):
+        EffectsBase.reset(self)
+
+        self.pitch.reset()
