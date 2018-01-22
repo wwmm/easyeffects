@@ -3,11 +3,11 @@
 ## [Unreleased]
 ### Added
 - Delay Compensator plugin from Linux Studio Plugins (LV2 version)
-- Pitch Shifting plugin from Rubber Band library
+- Pitch Shifting plugin from Rubber Band library (Ladspa)
 - New settings menu.
 
 ### Fixed
-- Do not force the "switch all apps" setting to true when running in service.
+- Do not force the "switch all apps" setting to true when running as service.
 - Fixed frequency value in band label being slightly different from the one
 in the frequency menu because of rounding problems
 - Removed unnecessary spaces between a few elements in the interface
