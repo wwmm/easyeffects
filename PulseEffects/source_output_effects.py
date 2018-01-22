@@ -3,9 +3,11 @@
 import os
 
 import gi
+gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, Gtk
+from gi.repository import Gio, GstInsertBin, Gtk
 from PulseEffects.effects_base import EffectsBase
+from PulseEffects.pitch import Pitch
 
 
 class SourceOutputEffects(EffectsBase):
@@ -40,6 +42,19 @@ class SourceOutputEffects(EffectsBase):
         self.pm.connect('source_output_removed', self.on_app_removed)
         self.pm.connect('new_default_source', self.update_source_monitor_name)
 
+        self.pitch = Pitch(self.settings)
+
+        # effects wrappers
+
+        self.pitch_wrapper = GstInsertBin.InsertBin.new('pitch_wrapper')
+
+        # appending effects wrappers to effects bin
+
+        self.effects_bin.insert_after(self.pitch_wrapper,
+                                      self.reverb_wrapper,
+                                      self.on_filter_added,
+                                      self.log_tag)
+
     def init_ui(self):
         EffectsBase.init_ui(self)
 
@@ -49,6 +64,7 @@ class SourceOutputEffects(EffectsBase):
         self.lowpass.init_ui()
         self.equalizer.init_ui()
         self.reverb.init_ui()
+        self.pitch.init_ui()
 
         self.add_to_listbox('limiter')
         self.add_to_listbox('compressor')
@@ -56,6 +72,7 @@ class SourceOutputEffects(EffectsBase):
         self.add_to_listbox('lowpass')
         self.add_to_listbox('equalizer')
         self.add_to_listbox('reverb')
+        self.add_to_listbox('pitch')
 
         self.listbox.show_all()
 
@@ -69,6 +86,7 @@ class SourceOutputEffects(EffectsBase):
         self.stack.add_named(self.lowpass.ui_window, 'lowpass')
         self.stack.add_named(self.equalizer.ui_window, 'equalizer')
         self.stack.add_named(self.reverb.ui_window, 'reverb')
+        self.stack.add_named(self.pitch.ui_window, 'pitch')
 
         # on/off switches connections
         self.limiter.ui_limiter_enable.connect('state-set',
@@ -79,6 +97,7 @@ class SourceOutputEffects(EffectsBase):
         self.lowpass.ui_enable.connect('state-set', self.on_lowpass_enable)
         self.equalizer.ui_enable.connect('state-set', self.on_equalizer_enable)
         self.reverb.ui_enable.connect('state-set', self.on_reverb_enable)
+        self.pitch.ui_enable.connect('state-set', self.on_pitch_enable)
 
         if self.limiter.is_installed:
             self.limiter.bind()
@@ -93,6 +112,13 @@ class SourceOutputEffects(EffectsBase):
             self.compressor.ui_window.set_sensitive(False)
             self.compressor.ui_enable.set_sensitive(False)
             self.compressor.ui_img_state.hide()
+
+        if self.pitch.is_installed:
+            self.pitch.bind()
+        else:
+            self.pitch.ui_window.set_sensitive(False)
+            self.pitch.ui_enable.set_sensitive(False)
+            self.pitch.ui_img_state.hide()
 
         self.highpass.bind()
         self.lowpass.bind()
@@ -119,3 +145,14 @@ class SourceOutputEffects(EffectsBase):
             icon.set_from_icon_name(icon_name, Gtk.IconSize.BUTTON)
 
         self.pm.set_source_output_mute(idx, state)
+
+    def on_pitch_enable(self, obj, state):
+        if state:
+            if not self.pitch_wrapper.get_by_name('pitch_bin'):
+                self.pitch_wrapper.append(self.pitch.bin,
+                                          self.on_filter_added,
+                                          self.log_tag)
+        else:
+            self.pitch_wrapper.remove(self.pitch.bin,
+                                      self.on_filter_removed,
+                                      self.log_tag)
