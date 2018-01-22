@@ -14,7 +14,7 @@ class LoadPresets():
         self.config.clear()
         self.config.read(path)
 
-    def load_limiter_presets(self, settings, section):
+    def load_limiter_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
         autovolume_state = settings.get_value('autovolume-state').unpack()
 
@@ -33,12 +33,12 @@ class LoadPresets():
 
         settings.set_value('limiter-state', GLib.Variant('b', enabled))
 
-    def load_autovolume_presets(self, settings, section):
+    def load_autovolume_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
         window = self.config.getfloat(section, 'window', fallback=1.0)
-        target = self.config.getint(section, 'target', fallback=-12.0)
-        tolerance = self.config.getint(section, 'tolerance', fallback=1.0)
-        threshold = self.config.getint(section, 'threshold', fallback=-50.0)
+        target = self.config.getint(section, 'target', fallback=-12)
+        tolerance = self.config.getint(section, 'tolerance', fallback=1)
+        threshold = self.config.getint(section, 'threshold', fallback=-50)
 
         settings.set_value('autovolume-state', GLib.Variant('b', enabled))
         settings.set_value('autovolume-window', GLib.Variant('d', window))
@@ -48,14 +48,14 @@ class LoadPresets():
         settings.set_value('autovolume-threshold',
                            GLib.Variant('i', threshold))
 
-    def load_panorama_presets(self, settings, section):
+    def load_panorama_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
         position = self.config.getfloat(section, 'position', fallback=0.0)
 
         settings.set_value('panorama-state', GLib.Variant('b', enabled))
         settings.set_value('panorama-position', GLib.Variant('d', position))
 
-    def load_compressor_presets(self, settings, section):
+    def load_compressor_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
         use_peak = self.config.getboolean(section, 'use_peak', fallback=False)
         attack = self.config.getfloat(section, 'attack', fallback=101.1)
@@ -75,7 +75,7 @@ class LoadPresets():
         settings.set_value('compressor-knee', GLib.Variant('d', knee))
         settings.set_value('compressor-makeup', GLib.Variant('d', makeup))
 
-    def load_reverb_presets(self, settings, section):
+    def load_reverb_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
         room_size = self.config.getfloat(section, 'room size', fallback=0.5)
         damping = self.config.getfloat(section, 'damping', fallback=0.2)
@@ -88,7 +88,7 @@ class LoadPresets():
         settings.set_value('reverb-width', GLib.Variant('d', width))
         settings.set_value('reverb-level', GLib.Variant('d', level))
 
-    def load_highpass_presets(self, settings, section):
+    def load_highpass_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
         cutoff = self.config.getint(section, 'cutoff', fallback=20)
         poles = self.config.getint(section, 'poles', fallback=4)
@@ -97,7 +97,7 @@ class LoadPresets():
         settings.set_value('highpass-cutoff', GLib.Variant('i', cutoff))
         settings.set_value('highpass-poles', GLib.Variant('i', poles))
 
-    def load_lowpass_presets(self, settings, section):
+    def load_lowpass_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
         cutoff = self.config.getint(section, 'cutoff', fallback=20000)
         poles = self.config.getint(section, 'poles', fallback=4)
@@ -106,7 +106,7 @@ class LoadPresets():
         settings.set_value('lowpass-cutoff', GLib.Variant('i', cutoff))
         settings.set_value('lowpass-poles', GLib.Variant('i', poles))
 
-    def load_equalizer_presets(self, settings, section):
+    def load_equalizer_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
         input_gain = self.config.getfloat(section, 'input_gain', fallback=0)
         output_gain = self.config.getfloat(section, 'output_gain', fallback=0)
@@ -334,7 +334,7 @@ class LoadPresets():
             settings.set_value('equalizer-band' + str(n) + '-quality', q)
             settings.set_value('equalizer-band' + str(n) + '-type', t)
 
-    def load_exciter_presets(self, settings, section):
+    def load_exciter_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
         input_gain = self.config.getfloat(section, 'input_gain', fallback=0.0)
         output_gain = self.config.getfloat(section, 'output_gain',
@@ -357,7 +357,7 @@ class LoadPresets():
         settings.set_value('exciter-ceiling', GLib.Variant('d', ceiling))
         settings.set_value('exciter-blend', GLib.Variant('d', blend))
 
-    def load_bass_enhancer_presets(self, settings, section):
+    def load_bass_enhancer_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
         input_gain = self.config.getfloat(section, 'input_gain', fallback=0.0)
         output_gain = self.config.getfloat(section, 'output_gain',
@@ -380,7 +380,7 @@ class LoadPresets():
         settings.set_value('bass-enhancer-floor', GLib.Variant('d', floor))
         settings.set_value('bass-enhancer-blend', GLib.Variant('d', blend))
 
-    def load_delay_presets(self, settings, section):
+    def load_delay_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
         m_l = self.config.getfloat(section, 'm_l', fallback=0.0)
         cm_l = self.config.getfloat(section, 'cm_l', fallback=0.0)
@@ -396,7 +396,7 @@ class LoadPresets():
         settings.set_value('delay-cm-r', GLib.Variant('d', cm_r))
         settings.set_value('delay-temperature', GLib.Variant('d', temperature))
 
-    def load_stereo_enhancer_presets(self, settings, section):
+    def load_stereo_enhancer_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
         input_gain = self.config.getfloat(section, 'input_gain', fallback=0.0)
         output_gain = self.config.getfloat(section, 'output_gain',
@@ -460,7 +460,7 @@ class LoadPresets():
         settings.set_value('stereo-enhancer-side-gain',
                            GLib.Variant('d', side_gain))
 
-    def load_stereo_spread_presets(self, settings, section):
+    def load_stereo_spread_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
         input_gain = self.config.getfloat(section, 'input_gain', fallback=0.0)
         output_gain = self.config.getfloat(section, 'output_gain',
@@ -470,7 +470,7 @@ class LoadPresets():
         amount1 = self.config.getfloat(section, 'amount1', fallback=0.0)
         amount2 = self.config.getfloat(section, 'amount2', fallback=0.0)
         amount3 = self.config.getfloat(section, 'amount3', fallback=0.0)
-        filters = self.config.getint(section, 'filters', fallback=2.0)
+        filters = self.config.getint(section, 'filters', fallback=2)
         mono = self.config.getboolean(section, 'mono', fallback=False)
 
         settings.set_value('stereo-spread-state', GLib.Variant('b', enabled))
@@ -492,7 +492,7 @@ class LoadPresets():
         settings.set_value('stereo-spread-mono',
                            GLib.Variant('b', mono))
 
-    def load_maximizer_presets(self, settings, section):
+    def load_maximizer_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
         release = self.config.getfloat(section, 'release', fallback=3.16)
         ceiling = self.config.getfloat(section, 'ceiling', fallback=0.0)
@@ -503,7 +503,7 @@ class LoadPresets():
         settings.set_value('maximizer-ceiling', GLib.Variant('d', ceiling))
         settings.set_value('maximizer-threshold', GLib.Variant('d', threshold))
 
-    def load_output_limiter_presets(self, settings, section):
+    def load_output_limiter_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
         input_gain = self.config.getfloat(section, 'input gain', fallback=0.0)
         limit = self.config.getfloat(section, 'limit', fallback=0.0)
@@ -517,28 +517,48 @@ class LoadPresets():
                            GLib.Variant('d', release_time))
         settings.set_value('output-limiter-state', GLib.Variant('b', enabled))
 
-    def load_sink_inputs_presets(self, settings):
-        self.load_limiter_presets(settings, 'apps_limiter')
-        self.load_autovolume_presets(settings, 'apps_autovolume')
-        self.load_panorama_presets(settings, 'apps_panorama')
-        self.load_compressor_presets(settings, 'apps_compressor')
-        self.load_reverb_presets(settings, 'apps_reverb')
-        self.load_highpass_presets(settings, 'apps_highpass')
-        self.load_lowpass_presets(settings, 'apps_lowpass')
-        self.load_equalizer_presets(settings, 'apps_equalizer')
-        self.load_exciter_presets(settings, 'apps_exciter')
-        self.load_bass_enhancer_presets(settings, 'apps_bass_enhancer')
-        self.load_delay_presets(settings, 'apps_delay')
-        self.load_stereo_enhancer_presets(settings, 'apps_stereo_enhancer')
-        self.load_stereo_spread_presets(settings, 'apps_stereo_spread')
-        self.load_maximizer_presets(settings, 'apps_maximizer')
-        self.load_output_limiter_presets(settings, 'apps_output_limiter')
+    def load_pitch_preset(self, settings, section):
+        enabled = self.config.getboolean(section, 'enabled', fallback=False)
+        cents = self.config.getfloat(section, 'cents', fallback=0)
+        semitones = self.config.getint(section, 'semitones', fallback=0)
+        octaves = self.config.getint(section, 'octaves', fallback=0)
+        crispness = self.config.getint(section, 'crispness', fallback=3)
+        faster = self.config.getboolean(section, 'faster', fallback=False)
+        preserve_formant = self.config.getboolean(section, 'preserve_formant',
+                                                  fallback=False)
 
-    def load_source_outputs_presets(self, settings):
-        self.load_limiter_presets(settings, 'mic_limiter')
-        self.load_autovolume_presets(settings, 'mic_autovolume')
-        self.load_compressor_presets(settings, 'mic_compressor')
-        self.load_reverb_presets(settings, 'mic_reverb')
-        self.load_highpass_presets(settings, 'mic_highpass')
-        self.load_lowpass_presets(settings, 'mic_lowpass')
-        self.load_equalizer_presets(settings, 'mic_equalizer')
+        settings.set_value('pitch-state', GLib.Variant('b', enabled))
+        settings.set_value('pitch-cents', GLib.Variant('d', cents))
+        settings.set_value('pitch-semitones', GLib.Variant('i', semitones))
+        settings.set_value('pitch-octaves', GLib.Variant('i', octaves))
+        settings.set_value('pitch-crispness', GLib.Variant('i', crispness))
+        settings.set_value('pitch-faster', GLib.Variant('b', faster))
+        settings.set_value('pitch-preserve-formant',
+                           GLib.Variant('b', preserve_formant))
+
+    def load_sink_inputs_preset(self, settings):
+        self.load_limiter_preset(settings, 'apps_limiter')
+        self.load_autovolume_preset(settings, 'apps_autovolume')
+        self.load_panorama_preset(settings, 'apps_panorama')
+        self.load_compressor_preset(settings, 'apps_compressor')
+        self.load_reverb_preset(settings, 'apps_reverb')
+        self.load_highpass_preset(settings, 'apps_highpass')
+        self.load_lowpass_preset(settings, 'apps_lowpass')
+        self.load_equalizer_preset(settings, 'apps_equalizer')
+        self.load_exciter_preset(settings, 'apps_exciter')
+        self.load_bass_enhancer_preset(settings, 'apps_bass_enhancer')
+        self.load_delay_preset(settings, 'apps_delay')
+        self.load_stereo_enhancer_preset(settings, 'apps_stereo_enhancer')
+        self.load_stereo_spread_preset(settings, 'apps_stereo_spread')
+        self.load_maximizer_preset(settings, 'apps_maximizer')
+        self.load_output_limiter_preset(settings, 'apps_output_limiter')
+
+    def load_source_outputs_preset(self, settings):
+        self.load_limiter_preset(settings, 'mic_limiter')
+        self.load_autovolume_preset(settings, 'mic_autovolume')
+        self.load_compressor_preset(settings, 'mic_compressor')
+        self.load_highpass_preset(settings, 'mic_highpass')
+        self.load_lowpass_preset(settings, 'mic_lowpass')
+        self.load_equalizer_preset(settings, 'mic_equalizer')
+        self.load_reverb_preset(settings, 'mic_reverb')
+        self.load_pitch_preset(settings, 'mic_pitch')

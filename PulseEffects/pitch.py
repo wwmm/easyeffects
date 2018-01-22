@@ -165,5 +165,5 @@ class Pitch():
         self.settings.reset('pitch-semitones')
         self.settings.reset('pitch-octaves')
         self.settings.reset('pitch-crispness')
-        self.settings.reset('pitch-formant-preserving')
+        self.settings.reset('pitch-preserve-formant')
         self.settings.reset('pitch-faster')

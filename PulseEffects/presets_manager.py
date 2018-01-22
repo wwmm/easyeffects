@@ -155,8 +155,8 @@ class PresetsManager():
     def save_preset(self, path):
         self.sp.set_output_path(path)
 
-        self.sp.save_sink_inputs_presets(self.app.sie.settings)
-        self.sp.save_source_outputs_presets(self.app.soe.settings)
+        self.sp.save_sink_inputs_preset(self.app.sie.settings)
+        self.sp.save_source_outputs_preset(self.app.soe.settings)
 
         self.sp.write_config()
 
@@ -169,8 +169,8 @@ class PresetsManager():
 
         self.lp.set_config_path(path)
 
-        self.lp.load_sink_inputs_presets(self.app.sie.settings)
-        self.lp.load_source_outputs_presets(self.app.soe.settings)
+        self.lp.load_sink_inputs_preset(self.app.sie.settings)
+        self.lp.load_source_outputs_preset(self.app.soe.settings)
 
     def on_add_preset_clicked(self, obj):
         name = self.new_preset_name.get_text()

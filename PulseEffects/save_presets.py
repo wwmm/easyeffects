@@ -11,7 +11,7 @@ class SavePresets():
     def set_output_path(self, path):
         self.output_file = open(path, 'w')
 
-    def save_limiter_presets(self, settings, section):
+    def save_limiter_preset(self, settings, section):
         enabled = settings.get_value('limiter-state')
         input_gain = settings.get_value('limiter-input-gain')
         limit = settings.get_value('limiter-limit')
@@ -22,7 +22,7 @@ class SavePresets():
                                 'limit': str(limit),
                                 'release time': str(release_time)}
 
-    def save_autovolume_presets(self, settings, section):
+    def save_autovolume_preset(self, settings, section):
         enabled = settings.get_value('autovolume-state')
         window = settings.get_value('autovolume-window')
         target = settings.get_value('autovolume-target')
@@ -35,14 +35,14 @@ class SavePresets():
                                 'tolerance': str(tolerance),
                                 'threshold': str(threshold)}
 
-    def save_panorama_presets(self, settings, section):
+    def save_panorama_preset(self, settings, section):
         enabled = settings.get_value('panorama-state')
         position = settings.get_value('panorama-position')
 
         self.config[section] = {'enabled': str(enabled),
                                 'position': str(position)}
 
-    def save_compressor_presets(self, settings, section):
+    def save_compressor_preset(self, settings, section):
         enabled = settings.get_value('compressor-state')
         use_peak = settings.get_value('compressor-use-peak')
         attack = settings.get_value('compressor-attack')
@@ -61,7 +61,7 @@ class SavePresets():
                                 'knee': str(knee),
                                 'makeup': str(makeup)}
 
-    def save_reverb_presets(self, settings, section):
+    def save_reverb_preset(self, settings, section):
         enabled = settings.get_value('reverb-state')
         room_size = settings.get_value('reverb-room-size')
         damping = settings.get_value('reverb-damping')
@@ -74,7 +74,7 @@ class SavePresets():
                                 'width': str(width),
                                 'level': str(level)}
 
-    def save_highpass_presets(self, settings, section):
+    def save_highpass_preset(self, settings, section):
         enabled = settings.get_value('highpass-state')
         cutoff = settings.get_value('highpass-cutoff')
         poles = settings.get_value('highpass-poles')
@@ -82,7 +82,7 @@ class SavePresets():
         self.config[section] = {'enabled': str(enabled), 'cutoff': str(cutoff),
                                 'poles': str(poles)}
 
-    def save_lowpass_presets(self, settings, section):
+    def save_lowpass_preset(self, settings, section):
         enabled = settings.get_value('lowpass-state')
         cutoff = settings.get_value('lowpass-cutoff')
         poles = settings.get_value('lowpass-poles')
@@ -90,7 +90,7 @@ class SavePresets():
         self.config[section] = {'enabled': str(enabled), 'cutoff': str(cutoff),
                                 'poles': str(poles)}
 
-    def save_equalizer_presets(self, settings, section):
+    def save_equalizer_preset(self, settings, section):
         enabled = settings.get_value('equalizer-state')
         input_gain = settings.get_value('equalizer-input-gain')
         output_gain = settings.get_value('equalizer-output-gain')
@@ -234,7 +234,7 @@ class SavePresets():
                                 'band28_type': str(types[28]),
                                 'band29_type': str(types[29])}
 
-    def save_exciter_presets(self, settings, section):
+    def save_exciter_preset(self, settings, section):
         enabled = settings.get_value('exciter-state')
         input_gain = settings.get_value('exciter-input-gain')
         output_gain = settings.get_value('exciter-output-gain')
@@ -253,7 +253,7 @@ class SavePresets():
                                 'floor': str(ceiling),
                                 'blend': str(blend)}
 
-    def save_bass_enhancer_presets(self, settings, section):
+    def save_bass_enhancer_preset(self, settings, section):
         enabled = settings.get_value('bass-enhancer-state')
         input_gain = settings.get_value('bass-enhancer-input-gain')
         output_gain = settings.get_value('bass-enhancer-output-gain')
@@ -272,7 +272,7 @@ class SavePresets():
                                 'floor': str(floor),
                                 'blend': str(blend)}
 
-    def save_delay_presets(self, settings, section):
+    def save_delay_preset(self, settings, section):
         enabled = settings.get_value('delay-state')
         m_l = settings.get_value('delay-m-l')
         cm_l = settings.get_value('delay-cm-l')
@@ -287,7 +287,7 @@ class SavePresets():
                                 'cm_r': str(cm_r),
                                 'temperature': str(temperature)}
 
-    def save_stereo_enhancer_presets(self, settings, section):
+    def save_stereo_enhancer_preset(self, settings, section):
         enabled = settings.get_value('stereo-enhancer-state')
         input_gain = settings.get_value('stereo-enhancer-input-gain')
         output_gain = settings.get_value('stereo-enhancer-output-gain')
@@ -326,7 +326,7 @@ class SavePresets():
                                 'middle_source': str(middle_source),
                                 'side_gain': str(side_gain)}
 
-    def save_stereo_spread_presets(self, settings, section):
+    def save_stereo_spread_preset(self, settings, section):
         enabled = settings.get_value('stereo-spread-state')
         input_gain = settings.get_value('stereo-spread-input-gain')
         output_gain = settings.get_value('stereo-spread-output-gain')
@@ -348,7 +348,7 @@ class SavePresets():
                                 'filters': str(filters),
                                 'mono': str(mono)}
 
-    def save_maximizer_presets(self, settings, section):
+    def save_maximizer_preset(self, settings, section):
         enabled = settings.get_value('maximizer-state')
         release = settings.get_value('maximizer-release')
         ceiling = settings.get_value('maximizer-ceiling')
@@ -359,7 +359,7 @@ class SavePresets():
                                 'ceiling': str(ceiling),
                                 'threshold': str(threshold)}
 
-    def save_output_limiter_presets(self, settings, section):
+    def save_output_limiter_preset(self, settings, section):
         enabled = settings.get_value('output-limiter-state')
         input_gain = settings.get_value('output-limiter-input-gain')
         limit = settings.get_value('output-limiter-limit')
@@ -370,31 +370,49 @@ class SavePresets():
                                 'limit': str(limit),
                                 'release time': str(release_time)}
 
-    def save_sink_inputs_presets(self, settings):
-        self.save_limiter_presets(settings, 'apps_limiter')
-        self.save_autovolume_presets(settings, 'apps_autovolume')
-        self.save_panorama_presets(settings, 'apps_panorama')
-        self.save_compressor_presets(settings, 'apps_compressor')
-        self.save_reverb_presets(settings, 'apps_reverb')
-        self.save_highpass_presets(settings, 'apps_highpass')
-        self.save_lowpass_presets(settings, 'apps_lowpass')
-        self.save_equalizer_presets(settings, 'apps_equalizer')
-        self.save_exciter_presets(settings, 'apps_exciter')
-        self.save_bass_enhancer_presets(settings, 'apps_bass_enhancer')
-        self.save_delay_presets(settings, 'apps_delay')
-        self.save_stereo_enhancer_presets(settings, 'apps_stereo_enhancer')
-        self.save_stereo_spread_presets(settings, 'apps_stereo_spread')
-        self.save_maximizer_presets(settings, 'apps_maximizer')
-        self.save_output_limiter_presets(settings, 'apps_output_limiter')
+    def save_pitch_preset(self, settings, section):
+        enabled = settings.get_value('pitch-state')
+        cents = settings.get_value('pitch-cents')
+        semitones = settings.get_value('pitch-semitones')
+        octaves = settings.get_value('pitch-octaves')
+        crispness = settings.get_value('pitch-crispness')
+        faster = settings.get_value('pitch-faster')
+        preserve_formant = settings.get_value('pitch-preserve-formant')
 
-    def save_source_outputs_presets(self, settings):
-        self.save_limiter_presets(settings, 'mic_limiter')
-        self.save_autovolume_presets(settings, 'mic_autovolume')
-        self.save_compressor_presets(settings, 'mic_compressor')
-        self.save_reverb_presets(settings, 'mic_reverb')
-        self.save_highpass_presets(settings, 'mic_highpass')
-        self.save_lowpass_presets(settings, 'mic_lowpass')
-        self.save_equalizer_presets(settings, 'mic_equalizer')
+        self.config[section] = {'enabled': str(enabled),
+                                'cents': str(cents),
+                                'semitones': str(semitones),
+                                'octaves': str(octaves),
+                                'crispness': str(crispness),
+                                'faster': str(faster),
+                                'preserve_formant': str(preserve_formant)}
+
+    def save_sink_inputs_preset(self, settings):
+        self.save_limiter_preset(settings, 'apps_limiter')
+        self.save_autovolume_preset(settings, 'apps_autovolume')
+        self.save_panorama_preset(settings, 'apps_panorama')
+        self.save_compressor_preset(settings, 'apps_compressor')
+        self.save_reverb_preset(settings, 'apps_reverb')
+        self.save_highpass_preset(settings, 'apps_highpass')
+        self.save_lowpass_preset(settings, 'apps_lowpass')
+        self.save_equalizer_preset(settings, 'apps_equalizer')
+        self.save_exciter_preset(settings, 'apps_exciter')
+        self.save_bass_enhancer_preset(settings, 'apps_bass_enhancer')
+        self.save_delay_preset(settings, 'apps_delay')
+        self.save_stereo_enhancer_preset(settings, 'apps_stereo_enhancer')
+        self.save_stereo_spread_preset(settings, 'apps_stereo_spread')
+        self.save_maximizer_preset(settings, 'apps_maximizer')
+        self.save_output_limiter_preset(settings, 'apps_output_limiter')
+
+    def save_source_outputs_preset(self, settings):
+        self.save_limiter_preset(settings, 'mic_limiter')
+        self.save_autovolume_preset(settings, 'mic_autovolume')
+        self.save_compressor_preset(settings, 'mic_compressor')
+        self.save_highpass_preset(settings, 'mic_highpass')
+        self.save_lowpass_preset(settings, 'mic_lowpass')
+        self.save_equalizer_preset(settings, 'mic_equalizer')
+        self.save_reverb_preset(settings, 'mic_reverb')
+        self.save_pitch_preset(settings, 'mic_pitch')
 
     def write_config(self):
         self.config.write(self.output_file)
