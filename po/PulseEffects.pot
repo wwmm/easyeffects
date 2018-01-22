@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-21 22:15-0200\n"
+"POT-Creation-Date: 2018-01-22 14:01-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,31 +21,31 @@ msgstr ""
 msgid "Audio Effects for Pulseaudio Applications"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:51
+#: PulseEffects/ui/app_info.glade:48
 msgid "Format"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:95
+#: PulseEffects/ui/app_info.glade:75
 msgid "Rate"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:139
+#: PulseEffects/ui/app_info.glade:102
 msgid "Channels"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:183
+#: PulseEffects/ui/app_info.glade:129
 msgid "Resampler"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:227 PulseEffects/ui/main_ui.glade:354
+#: PulseEffects/ui/app_info.glade:156 PulseEffects/ui/main_ui.glade:354
 msgid "Buffer"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:271 PulseEffects/ui/main_ui.glade:367
+#: PulseEffects/ui/app_info.glade:183 PulseEffects/ui/main_ui.glade:367
 msgid "Latency"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:315
+#: PulseEffects/ui/app_info.glade:210
 msgid "State"
 msgstr ""
 
@@ -137,7 +137,7 @@ msgstr ""
 #: PulseEffects/ui/highpass.glade:143 PulseEffects/ui/limiter.glade:402
 #: PulseEffects/ui/lowpass.glade:143 PulseEffects/ui/maximizer.glade:174
 #: PulseEffects/ui/output_limiter.glade:175 PulseEffects/ui/panorama.glade:122
-#: PulseEffects/ui/reverb.glade:291
+#: PulseEffects/ui/pitch.glade:226 PulseEffects/ui/reverb.glade:291
 msgid "Input"
 msgstr ""
 
@@ -145,7 +145,7 @@ msgstr ""
 #: PulseEffects/ui/highpass.glade:158 PulseEffects/ui/limiter.glade:417
 #: PulseEffects/ui/lowpass.glade:158 PulseEffects/ui/maximizer.glade:189
 #: PulseEffects/ui/output_limiter.glade:190 PulseEffects/ui/panorama.glade:137
-#: PulseEffects/ui/reverb.glade:306
+#: PulseEffects/ui/pitch.glade:241 PulseEffects/ui/reverb.glade:306
 msgid "Output"
 msgstr ""
 
@@ -299,7 +299,7 @@ msgstr ""
 #. for some reason when listbox is inside a scrolledwindow
 #. it autoselects a row at startup
 #: PulseEffects/ui/main_ui.glade:279 PulseEffects/ui/reverb.glade:215
-#: PulseEffects/presets_manager.py:67
+#: PulseEffects/presets_manager.py:56
 msgid "Presets"
 msgstr ""
 
@@ -367,7 +367,35 @@ msgstr ""
 msgid "R"
 msgstr ""
 
-#: PulseEffects/ui/presets_menu.glade:51
+#: PulseEffects/ui/pitch.glade:25
+msgid "Pitch"
+msgstr ""
+
+#: PulseEffects/ui/pitch.glade:136
+msgid "Cents"
+msgstr ""
+
+#: PulseEffects/ui/pitch.glade:147
+msgid "Semitones"
+msgstr ""
+
+#: PulseEffects/ui/pitch.glade:158
+msgid "Octaves"
+msgstr ""
+
+#: PulseEffects/ui/pitch.glade:169
+msgid "Crispness"
+msgstr ""
+
+#: PulseEffects/ui/pitch.glade:178
+msgid "Faster"
+msgstr ""
+
+#: PulseEffects/ui/pitch.glade:194
+msgid "Preserve Formant"
+msgstr ""
+
+#: PulseEffects/ui/presets_menu.glade:54
 msgid "Name"
 msgstr ""
 
@@ -479,19 +507,19 @@ msgstr ""
 msgid "Applications"
 msgstr ""
 
-#: PulseEffects/effects_base.py:197 PulseEffects/effects_base.py:266
+#: PulseEffects/effects_base.py:189 PulseEffects/effects_base.py:258
 msgid "paused"
 msgstr ""
 
-#: PulseEffects/effects_base.py:199 PulseEffects/effects_base.py:268
+#: PulseEffects/effects_base.py:191 PulseEffects/effects_base.py:260
 msgid "playing"
 msgstr ""
 
-#: PulseEffects/presets_manager.py:120
+#: PulseEffects/presets_manager.py:109
 msgid "Save Current Settings to Preset"
 msgstr ""
 
-#: PulseEffects/presets_manager.py:135
+#: PulseEffects/presets_manager.py:124
 msgid "Delete Preset"
 msgstr ""
 

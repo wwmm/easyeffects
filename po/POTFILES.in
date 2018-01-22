@@ -14,6 +14,7 @@ PulseEffects/ui/main_ui.glade
 PulseEffects/ui/maximizer.glade
 PulseEffects/ui/output_limiter.glade
 PulseEffects/ui/panorama.glade
+PulseEffects/ui/pitch.glade
 PulseEffects/ui/presets_menu.glade
 PulseEffects/ui/reverb.glade
 PulseEffects/ui/stereo_enhancer.glade
