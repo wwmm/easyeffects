@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.1 -->
+<!-- Generated with glade 3.21.0 -->
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="guideline_position">
@@ -31,7 +31,7 @@
       <object class="GtkLabel">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="halign">start</property>
+        <property name="halign">end</property>
         <property name="label" translatable="yes">Window [s]</property>
       </object>
       <packing>
@@ -59,7 +59,7 @@
       <object class="GtkLabel">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="halign">start</property>
+        <property name="halign">end</property>
         <property name="valign">center</property>
         <property name="label" translatable="yes">Guideline Position</property>
       </object>

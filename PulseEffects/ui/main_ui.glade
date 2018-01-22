@@ -15,6 +15,11 @@
     <property name="can_focus">False</property>
     <property name="icon_name">format-justify-fill-symbolic</property>
   </object>
+  <object class="GtkImage" id="image_test">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">signal.svg</property>
+  </object>
   <object class="GtkApplicationWindow" id="MainWindow">
     <property name="can_focus">False</property>
     <child>
@@ -263,12 +268,14 @@
         </child>
         <child>
           <object class="GtkButton" id="test">
-            <property name="label" translatable="yes">Test Signals</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">Test Signals</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
+            <property name="image">image_test</property>
+            <property name="always_show_image">True</property>
             <signal name="clicked" handler="on_test_clicked" swapped="no"/>
           </object>
           <packing>
