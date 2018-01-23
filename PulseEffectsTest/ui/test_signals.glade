@@ -406,7 +406,7 @@
         <property name="margin_top">4</property>
         <child>
           <object class="GtkRadioButton" id="wave2_band0">
-            <property name="label">26 Hz</property>
+            <property name="label">23 Hz</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
@@ -421,7 +421,7 @@
         </child>
         <child>
           <object class="GtkRadioButton" id="wave2_band1">
-            <property name="label">41 Hz</property>
+            <property name="label">28 Hz</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
@@ -436,7 +436,7 @@
         </child>
         <child>
           <object class="GtkRadioButton" id="wave2_band2">
-            <property name="label">65 Hz</property>
+            <property name="label">36 Hz</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
@@ -451,7 +451,7 @@
         </child>
         <child>
           <object class="GtkRadioButton" id="wave2_band3">
-            <property name="label">103 Hz</property>
+            <property name="label">45 Hz</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
@@ -466,7 +466,7 @@
         </child>
         <child>
           <object class="GtkRadioButton" id="wave2_band4">
-            <property name="label">163 Hz</property>
+            <property name="label">57 Hz</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
@@ -481,7 +481,7 @@
         </child>
         <child>
           <object class="GtkRadioButton" id="wave2_band14">
-            <property name="label">16 kHz</property>
+            <property name="label">567 Hz</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
@@ -496,7 +496,7 @@
         </child>
         <child>
           <object class="GtkRadioButton" id="wave2_band13">
-            <property name="label">10 kHz</property>
+            <property name="label">451 Hz</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
@@ -511,7 +511,7 @@
         </child>
         <child>
           <object class="GtkRadioButton" id="wave2_band12">
-            <property name="label">6.5 kHz</property>
+            <property name="label">358 Hz</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
@@ -526,7 +526,7 @@
         </child>
         <child>
           <object class="GtkRadioButton" id="wave2_band11">
-            <property name="label">4.1 kHz</property>
+            <property name="label">284 Hz</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
@@ -541,7 +541,7 @@
         </child>
         <child>
           <object class="GtkRadioButton" id="wave2_band10">
-            <property name="label">2.6 kHz</property>
+            <property name="label">226 Hz</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
@@ -556,7 +556,7 @@
         </child>
         <child>
           <object class="GtkRadioButton" id="wave2_band9">
-            <property name="label">1.6 kHz</property>
+            <property name="label">179 Hz</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
@@ -571,7 +571,7 @@
         </child>
         <child>
           <object class="GtkRadioButton" id="wave2_band8">
-            <property name="label">1 kHz</property>
+            <property name="label">143 Hz</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
@@ -586,7 +586,7 @@
         </child>
         <child>
           <object class="GtkRadioButton" id="wave2_band7">
-            <property name="label">649 Hz</property>
+            <property name="label">113 Hz</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
@@ -601,7 +601,7 @@
         </child>
         <child>
           <object class="GtkRadioButton" id="wave2_band6">
-            <property name="label">410 Hz</property>
+            <property name="label">90 Hz</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
@@ -616,7 +616,7 @@
         </child>
         <child>
           <object class="GtkRadioButton" id="wave2_band5">
-            <property name="label">259 Hz</property>
+            <property name="label">71 Hz</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
@@ -627,6 +627,231 @@
           <packing>
             <property name="left_attach">0</property>
             <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="wave2_band15">
+            <property name="label">714 Hz</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">wave2_band0</property>
+            <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="wave2_band16">
+            <property name="label">899 Hz</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">wave2_band0</property>
+            <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="wave2_band17">
+            <property name="label">1.1 kHz</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">wave2_band0</property>
+            <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="wave2_band18">
+            <property name="label">1.4 kHz</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">wave2_band0</property>
+            <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">3</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="wave2_band19">
+            <property name="label">1.8 kHz</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">wave2_band0</property>
+            <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">4</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="wave2_band20">
+            <property name="label">2.3 kHz</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">wave2_band0</property>
+            <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="wave2_band21">
+            <property name="label">2.8 kHz</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">wave2_band0</property>
+            <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="wave2_band22">
+            <property name="label">3.6 kHz</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">wave2_band0</property>
+            <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="wave2_band23">
+            <property name="label">4.5 kHz</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">wave2_band0</property>
+            <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">3</property>
+            <property name="top_attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="wave2_band24">
+            <property name="label">5.7 kHz</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">wave2_band0</property>
+            <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">4</property>
+            <property name="top_attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="wave2_band25">
+            <property name="label">7.1 kHz</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">wave2_band0</property>
+            <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">5</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="wave2_band26">
+            <property name="label">9.0 kHz</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">wave2_band0</property>
+            <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">5</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="wave2_band27">
+            <property name="label">11.3 kHz</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">wave2_band0</property>
+            <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">5</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="wave2_band28">
+            <property name="label">14.3 kHz</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">wave2_band0</property>
+            <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">3</property>
+            <property name="top_attach">5</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="wave2_band29">
+            <property name="label">17.9 kHz</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">wave2_band0</property>
+            <signal name="toggled" handler="on_wave2_freq_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">4</property>
+            <property name="top_attach">5</property>
           </packing>
         </child>
       </object>
