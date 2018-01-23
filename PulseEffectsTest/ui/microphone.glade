@@ -106,7 +106,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkSpinner" id="measure_noise_spinner">
+              <object class="GtkSpinner" id="noise_spinner">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
               </object>

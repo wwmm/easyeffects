@@ -51,7 +51,7 @@ class Spectrum():
         self.spectrum_magnitudes = np.array([])
         self.drawing_area.queue_draw()
 
-    def set_guideline_position(self, value):
+    def set_guideline_position(self, obj, value):
         self.guideline_position = value
 
         self.drawing_area.queue_draw()

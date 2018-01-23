@@ -9,9 +9,6 @@ from scipy.interpolate import CubicSpline
 from PulseEffectsTest.pipeline_base import PipelineBase
 
 
-Gst.init(None)
-
-
 class TestSignal(PipelineBase):
 
     def __init__(self, rate):
