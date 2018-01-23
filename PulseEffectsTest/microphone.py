@@ -116,11 +116,11 @@ class Microphone(PipelineBase):
         self.spectrum.set_property('interval', int(value * 1000000000))
 
     def on_measure_noise_clicked(self, obj):
-        self.mic.measure_noise = True
+        self.measure_noise = True
         self.ui_noise_spinner.start()
 
     def on_subtract_noise_toggled(self, obj):
-        self.mic.subtract_noise = obj.get_active()
+        self.subtract_noise = obj.get_active()
 
     def on_guideline_position_value_changed(self, obj):
         self.emit('new_guideline_position', obj.get_value())
