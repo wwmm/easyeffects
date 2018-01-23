@@ -41,7 +41,7 @@ class MicrophonePipeline(GObject.GObject):
         self.subtract_noise = False
         self.ambient_noise = np.array([])
 
-        self.log = logging.getLogger('PulseEffects')
+        self.log = logging.getLogger('PulseEffectsTest')
 
         self.calc_spectrum_freqs()
 

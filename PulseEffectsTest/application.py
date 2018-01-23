@@ -7,16 +7,16 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
-from PulseEffectsCalibration.microphone_pipeline import MicrophonePipeline
-from PulseEffectsCalibration.setup_test_signal import SetupTestSignal
-from PulseEffectsCalibration.spectrum import Spectrum
-from PulseEffectsCalibration.test_signal import TestSignal
+from PulseEffectsTest.microphone_pipeline import MicrophonePipeline
+from PulseEffectsTest.setup_test_signal import SetupTestSignal
+from PulseEffectsTest.spectrum import Spectrum
+from PulseEffectsTest.test_signal import TestSignal
 
 
 class Application(Gtk.Application):
 
     def __init__(self, pulse_manager):
-        app_id = 'com.github.wwmm.pulseeffects.calibration'
+        app_id = 'com.github.wwmm.pulseeffects.test'
         self.pm = pulse_manager
 
         Gtk.Application.__init__(self, application_id=app_id)
@@ -34,7 +34,7 @@ class Application(Gtk.Application):
                             datefmt='%H:%M:%S',
                             level=logging.INFO)
 
-        self.log = logging.getLogger('PulseEffectsCalibration')
+        self.log = logging.getLogger('PulseEffectsTest')
 
         self.mp = MicrophonePipeline()
         self.ts = TestSignal()
@@ -53,7 +53,7 @@ class Application(Gtk.Application):
 
         self.builder.add_from_file(self.module_path + '/ui/main_ui.glade')
         self.calibration_mic_builder.add_from_file(
-            self.module_path + '/ui/calibration_mic_plugins.glade')
+            self.module_path + '/ui/calibration_mic.glade')
         self.test_signal_builder.add_from_file(self.module_path +
                                                '/ui/test_signal.glade')
 

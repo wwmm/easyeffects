@@ -31,7 +31,7 @@ class TestSignal(GObject.GObject):
         self.spectrum_threshold = -120  # dB
         self.rate = 48000
 
-        self.log = logging.getLogger('PulseEffectsCalibration')
+        self.log = logging.getLogger('PulseEffectsTest')
 
         self.calc_spectrum_freqs()
 
@@ -84,7 +84,7 @@ class TestSignal(GObject.GObject):
         self.audio_sink.set_property('volume', 1.0)
         self.audio_sink.set_property('mute', False)
 
-        pa_props_str = 'props,application.name=PulseEffectsCalibration'
+        pa_props_str = 'props,application.name=PulseEffectsTest'
         pa_props = Gst.Structure.new_from_string(pa_props_str)
 
         self.audio_sink.set_property('stream-properties', pa_props)
