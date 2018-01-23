@@ -36,8 +36,8 @@ class Application(Gtk.Application):
 
         self.log = logging.getLogger('PulseEffectsTest')
 
-        self.mp = MicrophonePipeline()
-        self.ts = TestSignal()
+        self.mp = MicrophonePipeline(48000)
+        self.ts = TestSignal(48000)
 
         self.pm.connect('new_default_source', self.update_source_monitor_name)
         self.mp.connect('noise_measured', self.on_noise_measured)
