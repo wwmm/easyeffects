@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+
+## [3.1.7]
 ### Added
 - Delay Compensator plugin from Linux Studio Plugins (LV2 version)
 - Pitch Shifting plugin from Rubber Band library (Ladspa)
