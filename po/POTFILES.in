@@ -23,6 +23,6 @@ PulseEffects/effects_base.py
 PulseEffects/presets_manager.py
 PulseEffectsTest/ui/main_ui.glade
 PulseEffectsTest/ui/microphone.glade
-PulseEffectsTest/ui/test_signal.glade
+PulseEffectsTest/ui/test_signals.glade
 data/com.github.wwmm.pulseeffects.appdata.xml.in
 data/com.github.wwmm.pulseeffects.desktop.in
