@@ -265,33 +265,33 @@ class TestSignals(PipelineBase):
                 self.set_wave2_freq(358, 567, 8)
             elif obj_id == 'wave2_band14':  # 567 Hz
                 self.set_wave2_freq(451, 714, 8)
-            elif obj_id == 'wave2_band15':  # 567 Hz
-                self.set_wave2_freq(451, 714, 8)
-            elif obj_id == 'wave2_band16':  # 567 Hz
-                self.set_wave2_freq(451, 714, 8)
-            elif obj_id == 'wave2_band17':  # 567 Hz
-                self.set_wave2_freq(451, 714, 8)
-            elif obj_id == 'wave2_band18':  # 567 Hz
-                self.set_wave2_freq(451, 714, 8)
-            elif obj_id == 'wave2_band19':  # 567 Hz
-                self.set_wave2_freq(451, 714, 8)
-            elif obj_id == 'wave2_band20':  # 567 Hz
-                self.set_wave2_freq(451, 714, 8)
-            elif obj_id == 'wave2_band21':  # 567 Hz
-                self.set_wave2_freq(451, 714, 8)
-            elif obj_id == 'wave2_band22':  # 567 Hz
-                self.set_wave2_freq(451, 714, 8)
-            elif obj_id == 'wave2_band23':  # 567 Hz
-                self.set_wave2_freq(451, 714, 8)
-            elif obj_id == 'wave2_band24':  # 567 Hz
-                self.set_wave2_freq(451, 714, 8)
-            elif obj_id == 'wave2_band25':  # 567 Hz
-                self.set_wave2_freq(451, 714, 8)
-            elif obj_id == 'wave2_band26':  # 567 Hz
-                self.set_wave2_freq(451, 714, 8)
-            elif obj_id == 'wave2_band27':  # 567 Hz
-                self.set_wave2_freq(451, 714, 8)
-            elif obj_id == 'wave2_band28':  # 567 Hz
-                self.set_wave2_freq(451, 714, 8)
-            elif obj_id == 'wave2_band29':  # 567 Hz
-                self.set_wave2_freq(451, 714, 8)
+            elif obj_id == 'wave2_band15':  # 714 Hz
+                self.set_wave2_freq(567, 899, 8)
+            elif obj_id == 'wave2_band16':  # 899 Hz
+                self.set_wave2_freq(714, 1100, 8)
+            elif obj_id == 'wave2_band17':  # 1.1 kHz
+                self.set_wave2_freq(899, 1400, 8)
+            elif obj_id == 'wave2_band18':  # 1.4 kHz
+                self.set_wave2_freq(1100, 1800, 12)
+            elif obj_id == 'wave2_band19':  # 1.8 kHz
+                self.set_wave2_freq(1400, 2300, 12)
+            elif obj_id == 'wave2_band20':  # 2.3 kHz
+                self.set_wave2_freq(1800, 2800, 16)
+            elif obj_id == 'wave2_band21':  # 2.8 kHz
+                self.set_wave2_freq(2300, 3600, 16)
+            elif obj_id == 'wave2_band22':  # 3.6 kHz
+                self.set_wave2_freq(2800, 4500, 16)
+            elif obj_id == 'wave2_band23':  # 4.5 kHz
+                self.set_wave2_freq(3600, 5700, 20)
+            elif obj_id == 'wave2_band24':  # 5.7 kHz
+                self.set_wave2_freq(4500, 7100, 24)
+            elif obj_id == 'wave2_band25':  # 7.1 kHz
+                self.set_wave2_freq(5700, 9000, 32)
+            elif obj_id == 'wave2_band26':  # 9.0 kHz
+                self.set_wave2_freq(7100, 11300, 32)
+            elif obj_id == 'wave2_band27':  # 11.3 kHz
+                self.set_wave2_freq(9000, 14300, 32)
+            elif obj_id == 'wave2_band28':  # 14.3 kHz
+                self.set_wave2_freq(11300, 17900, 32)
+            elif obj_id == 'wave2_band29':  # 17.9 kHz
+                self.set_wave2_freq(14300, 20000, 32)
