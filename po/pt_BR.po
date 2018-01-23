@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-22 22:49-0200\n"
+"POT-Creation-Date: 2018-01-23 17:25-0200\n"
 "PO-Revision-Date: 2018-01-22 22:49-0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
@@ -210,7 +210,7 @@ msgid "High Shelf"
 msgstr "High Shelf"
 
 #: PulseEffects/ui/equalizer_band_menu.glade:53
-#: PulseEffectsTest/ui/test_signal.glade:241
+#: PulseEffectsTest/ui/test_signals.glade:158
 msgid "Frequency [Hz]"
 msgstr "Frequência [Hz]"
 
@@ -272,8 +272,7 @@ msgstr "Liberação [s]"
 msgid "Auto Volume"
 msgstr "Volume Automático"
 
-#: PulseEffects/ui/limiter.glade:259
-#: PulseEffectsTest/ui/calibration_mic_plugins.glade:35
+#: PulseEffects/ui/limiter.glade:259 PulseEffectsTest/ui/microphone.glade:35
 msgid "Window [s]"
 msgstr "Janela [s]"
 
@@ -525,82 +524,82 @@ msgstr "Salvar Configurações atuais para esta predefinição"
 msgid "Delete Preset"
 msgstr "Deletar Predefinição"
 
-#: PulseEffectsTest/ui/calibration_mic_plugins.glade:64
+#: PulseEffectsTest/ui/microphone.glade:64
 msgid "Guideline Position"
 msgstr "Posição de Linha Guia"
 
-#: PulseEffectsTest/ui/calibration_mic_plugins.glade:100
+#: PulseEffectsTest/ui/microphone.glade:100
 msgid "Measure Noise"
 msgstr "Medir Ruído"
 
-#: PulseEffectsTest/ui/calibration_mic_plugins.glade:129
+#: PulseEffectsTest/ui/microphone.glade:129
 msgid "Subtract Noise"
 msgstr "Subtrair Ruído"
 
-#: PulseEffectsTest/ui/test_signal.glade:41
-msgid "Sine"
-msgstr "Seno"
-
-#: PulseEffectsTest/ui/test_signal.glade:56
-msgid "Square"
-msgstr "Quadrada"
-
-#: PulseEffectsTest/ui/test_signal.glade:71
-msgid "Saw"
-msgstr "Serra"
-
-#: PulseEffectsTest/ui/test_signal.glade:86
-msgid "Triangle"
-msgstr "Triângulo"
-
-#: PulseEffectsTest/ui/test_signal.glade:101
-msgid "Pink Noise"
-msgstr "Ruído Rosa"
-
-#: PulseEffectsTest/ui/test_signal.glade:116
-msgid "White Noise"
-msgstr "Ruído Branco"
-
-#: PulseEffectsTest/ui/test_signal.glade:131
-msgid "Silence"
-msgstr "Silencio"
-
-#: PulseEffectsTest/ui/test_signal.glade:146
-msgid "Sine Table"
-msgstr "Tabela de Seno"
-
-#: PulseEffectsTest/ui/test_signal.glade:161
-msgid "Ticks"
-msgstr "Tique-Taque"
-
-#: PulseEffectsTest/ui/test_signal.glade:176
-msgid "Gaussian Noise"
-msgstr "Ruído Gaussiano"
-
-#: PulseEffectsTest/ui/test_signal.glade:191
-msgid "Red Noise"
-msgstr "Ruído Vermelho"
-
-#: PulseEffectsTest/ui/test_signal.glade:206
-msgid "Blue Noise"
-msgstr "Ruído Azul"
-
-#: PulseEffectsTest/ui/test_signal.glade:221
-msgid "Violet Noise"
-msgstr "Ruído Violeta"
-
-#: PulseEffectsTest/ui/test_signal.glade:255
-#: PulseEffectsTest/ui/test_signal.glade:621
+#: PulseEffectsTest/ui/test_signals.glade:37
+#: PulseEffectsTest/ui/test_signals.glade:80
 msgid "Volume"
 msgstr "Volume"
 
-#: PulseEffectsTest/ui/test_signal.glade:318
+#: PulseEffectsTest/ui/test_signals.glade:122
+msgid "Equal Loudness Test Signals"
+msgstr "Sinais de Teste de Mesma intensidade"
+
+#: PulseEffectsTest/ui/test_signals.glade:140
 msgid "Test Signal"
 msgstr "Sinal de Teste"
 
-#: PulseEffectsTest/ui/test_signal.glade:675
-msgid "Equal Loudness Test Signals"
-msgstr "Sinais de Teste de Mesma intensidade"
+#: PulseEffectsTest/ui/test_signals.glade:192
+msgid "Sine"
+msgstr "Seno"
+
+#: PulseEffectsTest/ui/test_signals.glade:207
+msgid "Square"
+msgstr "Quadrada"
+
+#: PulseEffectsTest/ui/test_signals.glade:222
+msgid "Saw"
+msgstr "Serra"
+
+#: PulseEffectsTest/ui/test_signals.glade:237
+msgid "Triangle"
+msgstr "Triângulo"
+
+#: PulseEffectsTest/ui/test_signals.glade:252
+msgid "Pink Noise"
+msgstr "Ruído Rosa"
+
+#: PulseEffectsTest/ui/test_signals.glade:267
+msgid "White Noise"
+msgstr "Ruído Branco"
+
+#: PulseEffectsTest/ui/test_signals.glade:282
+msgid "Silence"
+msgstr "Silencio"
+
+#: PulseEffectsTest/ui/test_signals.glade:297
+msgid "Sine Table"
+msgstr "Tabela de Seno"
+
+#: PulseEffectsTest/ui/test_signals.glade:312
+msgid "Ticks"
+msgstr "Tique-Taque"
+
+#: PulseEffectsTest/ui/test_signals.glade:327
+msgid "Gaussian Noise"
+msgstr "Ruído Gaussiano"
+
+#: PulseEffectsTest/ui/test_signals.glade:342
+msgid "Red Noise"
+msgstr "Ruído Vermelho"
+
+#: PulseEffectsTest/ui/test_signals.glade:357
+msgid "Blue Noise"
+msgstr "Ruído Azul"
+
+#: PulseEffectsTest/ui/test_signals.glade:372
+msgid "Violet Noise"
+msgstr "Ruído Violeta"
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
 #: data/com.github.wwmm.pulseeffects.desktop.in:3

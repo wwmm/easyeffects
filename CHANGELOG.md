@@ -12,6 +12,8 @@
 in the frequency menu because of rounding problems
 - Removed unnecessary spaces between a few elements in the interface
 - Test signals application automatically switches to the default microphone
+- Equal loudness test signals frequencies match the equalizer default
+frequencies
 
 ## [3.1.6]
 ### Added

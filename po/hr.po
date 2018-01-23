@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-22 22:49-0200\n"
+"POT-Creation-Date: 2018-01-23 17:25-0200\n"
 "PO-Revision-Date: 2017-11-08 15:36+0100\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -215,7 +215,7 @@ msgid "High Shelf"
 msgstr "Visok"
 
 #: PulseEffects/ui/equalizer_band_menu.glade:53
-#: PulseEffectsTest/ui/test_signal.glade:241
+#: PulseEffectsTest/ui/test_signals.glade:158
 msgid "Frequency [Hz]"
 msgstr "Frekvencija [Hz]"
 
@@ -277,8 +277,7 @@ msgstr "Vrijeme prijelaza [s]"
 msgid "Auto Volume"
 msgstr "Automatska glasnoća zvuka"
 
-#: PulseEffects/ui/limiter.glade:259
-#: PulseEffectsTest/ui/calibration_mic_plugins.glade:35
+#: PulseEffects/ui/limiter.glade:259 PulseEffectsTest/ui/microphone.glade:35
 msgid "Window [s]"
 msgstr "Prozor [s]"
 
@@ -544,82 +543,82 @@ msgstr "Spremi trenutne postavke u predložak"
 msgid "Delete Preset"
 msgstr "Obriši predložak"
 
-#: PulseEffectsTest/ui/calibration_mic_plugins.glade:64
+#: PulseEffectsTest/ui/microphone.glade:64
 msgid "Guideline Position"
 msgstr "Položaj smjernice"
 
-#: PulseEffectsTest/ui/calibration_mic_plugins.glade:100
+#: PulseEffectsTest/ui/microphone.glade:100
 msgid "Measure Noise"
 msgstr "Izmjeri šum"
 
-#: PulseEffectsTest/ui/calibration_mic_plugins.glade:129
+#: PulseEffectsTest/ui/microphone.glade:129
 msgid "Subtract Noise"
 msgstr "Izdvoji šum"
 
-#: PulseEffectsTest/ui/test_signal.glade:41
-msgid "Sine"
-msgstr "Sinus"
-
-#: PulseEffectsTest/ui/test_signal.glade:56
-msgid "Square"
-msgstr "Kvadrat"
-
-#: PulseEffectsTest/ui/test_signal.glade:71
-msgid "Saw"
-msgstr "Pila"
-
-#: PulseEffectsTest/ui/test_signal.glade:86
-msgid "Triangle"
-msgstr "Trokut"
-
-#: PulseEffectsTest/ui/test_signal.glade:101
-msgid "Pink Noise"
-msgstr "Rozi šum"
-
-#: PulseEffectsTest/ui/test_signal.glade:116
-msgid "White Noise"
-msgstr "Bijeli šum"
-
-#: PulseEffectsTest/ui/test_signal.glade:131
-msgid "Silence"
-msgstr "Tišina"
-
-#: PulseEffectsTest/ui/test_signal.glade:146
-msgid "Sine Table"
-msgstr "Sinus tablica"
-
-#: PulseEffectsTest/ui/test_signal.glade:161
-msgid "Ticks"
-msgstr "Otkucaji"
-
-#: PulseEffectsTest/ui/test_signal.glade:176
-msgid "Gaussian Noise"
-msgstr "Gaussov šum"
-
-#: PulseEffectsTest/ui/test_signal.glade:191
-msgid "Red Noise"
-msgstr "Bijeli šum"
-
-#: PulseEffectsTest/ui/test_signal.glade:206
-msgid "Blue Noise"
-msgstr "Plavi šum"
-
-#: PulseEffectsTest/ui/test_signal.glade:221
-msgid "Violet Noise"
-msgstr "Ljubičasti šum"
-
-#: PulseEffectsTest/ui/test_signal.glade:255
-#: PulseEffectsTest/ui/test_signal.glade:621
+#: PulseEffectsTest/ui/test_signals.glade:37
+#: PulseEffectsTest/ui/test_signals.glade:80
 msgid "Volume"
 msgstr "Glasnoća zvuka"
 
-#: PulseEffectsTest/ui/test_signal.glade:318
+#: PulseEffectsTest/ui/test_signals.glade:122
+msgid "Equal Loudness Test Signals"
+msgstr "Testni signali jednake glasnoće"
+
+#: PulseEffectsTest/ui/test_signals.glade:140
 msgid "Test Signal"
 msgstr "Testni signali"
 
-#: PulseEffectsTest/ui/test_signal.glade:675
-msgid "Equal Loudness Test Signals"
-msgstr "Testni signali jednake glasnoće"
+#: PulseEffectsTest/ui/test_signals.glade:192
+msgid "Sine"
+msgstr "Sinus"
+
+#: PulseEffectsTest/ui/test_signals.glade:207
+msgid "Square"
+msgstr "Kvadrat"
+
+#: PulseEffectsTest/ui/test_signals.glade:222
+msgid "Saw"
+msgstr "Pila"
+
+#: PulseEffectsTest/ui/test_signals.glade:237
+msgid "Triangle"
+msgstr "Trokut"
+
+#: PulseEffectsTest/ui/test_signals.glade:252
+msgid "Pink Noise"
+msgstr "Rozi šum"
+
+#: PulseEffectsTest/ui/test_signals.glade:267
+msgid "White Noise"
+msgstr "Bijeli šum"
+
+#: PulseEffectsTest/ui/test_signals.glade:282
+msgid "Silence"
+msgstr "Tišina"
+
+#: PulseEffectsTest/ui/test_signals.glade:297
+msgid "Sine Table"
+msgstr "Sinus tablica"
+
+#: PulseEffectsTest/ui/test_signals.glade:312
+msgid "Ticks"
+msgstr "Otkucaji"
+
+#: PulseEffectsTest/ui/test_signals.glade:327
+msgid "Gaussian Noise"
+msgstr "Gaussov šum"
+
+#: PulseEffectsTest/ui/test_signals.glade:342
+msgid "Red Noise"
+msgstr "Bijeli šum"
+
+#: PulseEffectsTest/ui/test_signals.glade:357
+msgid "Blue Noise"
+msgstr "Plavi šum"
+
+#: PulseEffectsTest/ui/test_signals.glade:372
+msgid "Violet Noise"
+msgstr "Ljubičasti šum"
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
 #: data/com.github.wwmm.pulseeffects.desktop.in:3

@@ -4,7 +4,7 @@ Audio effects for Pulseaudio applications
 
 ![](images/pulseeffects.png)
 ![](images/pulseeffects_equalizer.png)
-![](images/pulseeffects_calibration.png)
+![](images/pulseeffects_test.png)
 
 Order of effects applied to applications output:
 
