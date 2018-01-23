@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-22 14:01-0200\n"
+"POT-Creation-Date: 2018-01-22 22:49-0200\n"
 "PO-Revision-Date: 2017-10-14 10:20+0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: \n"
@@ -37,12 +37,12 @@ msgstr "Kanaler"
 msgid "Resampler"
 msgstr "Resampler"
 
-#: PulseEffects/ui/app_info.glade:156 PulseEffects/ui/main_ui.glade:354
+#: PulseEffects/ui/app_info.glade:156 PulseEffects/ui/main_ui.glade:376
 #, fuzzy
 msgid "Buffer"
 msgstr "Latens"
 
-#: PulseEffects/ui/app_info.glade:183 PulseEffects/ui/main_ui.glade:367
+#: PulseEffects/ui/app_info.glade:183 PulseEffects/ui/main_ui.glade:389
 msgid "Latency"
 msgstr "Latens"
 
@@ -196,11 +196,6 @@ msgid "Equalizer"
 msgstr "Utjämnare"
 
 #: PulseEffects/ui/equalizer.glade:2030
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
-msgid "Calibration"
-msgstr "Kalibrering"
-
-#: PulseEffects/ui/equalizer.glade:2046
 msgid "Flat Response"
 msgstr "Platt respons"
 
@@ -217,7 +212,7 @@ msgid "High Shelf"
 msgstr "High Shelf"
 
 #: PulseEffects/ui/equalizer_band_menu.glade:53
-#: PulseEffectsCalibration/ui/test_signal.glade:274
+#: PulseEffectsTest/ui/test_signal.glade:241
 msgid "Frequency [Hz]"
 msgstr "Frekvens (Hz)"
 
@@ -280,7 +275,7 @@ msgid "Auto Volume"
 msgstr "Automatisk volym"
 
 #: PulseEffects/ui/limiter.glade:259
-#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:35
+#: PulseEffectsTest/ui/calibration_mic_plugins.glade:35
 msgid "Window [s]"
 msgstr "Mellanrum (s)"
 
@@ -301,51 +296,56 @@ msgstr "Försvagning"
 msgid "Low Pass"
 msgstr "Lågpass"
 
+#: PulseEffects/ui/main_ui.glade:274
+#, fuzzy
+msgid "Test Signals"
+msgstr "Testsignal"
+
 #. for some reason when listbox is inside a scrolledwindow
 #. it autoselects a row at startup
-#: PulseEffects/ui/main_ui.glade:279 PulseEffects/ui/reverb.glade:215
+#: PulseEffects/ui/main_ui.glade:301 PulseEffects/ui/reverb.glade:215
 #: PulseEffects/presets_manager.py:56
 msgid "Presets"
 msgstr "Profiler"
 
-#: PulseEffects/ui/main_ui.glade:325
+#: PulseEffects/ui/main_ui.glade:347
 msgid "General"
 msgstr "Allmänt"
 
-#: PulseEffects/ui/main_ui.glade:340
+#: PulseEffects/ui/main_ui.glade:362
 msgid "Latency in Miliseconds"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:414
+#: PulseEffects/ui/main_ui.glade:436
 msgid "Settings"
 msgstr "Inställningar"
 
-#: PulseEffects/ui/main_ui.glade:423
+#: PulseEffects/ui/main_ui.glade:445
 msgid "Reset"
 msgstr "Återställ"
 
-#: PulseEffects/ui/main_ui.glade:443
+#: PulseEffects/ui/main_ui.glade:465
 msgid "Spectrum"
 msgstr "Spektrum"
 
-#: PulseEffects/ui/main_ui.glade:458
+#: PulseEffects/ui/main_ui.glade:480
 msgid "Show"
 msgstr "Visa"
 
-#: PulseEffects/ui/main_ui.glade:472
+#: PulseEffects/ui/main_ui.glade:494
 msgid "Points"
 msgstr "Punkter"
 
-#: PulseEffects/ui/main_ui.glade:515
+#: PulseEffects/ui/main_ui.glade:537
 #, fuzzy
 msgid "Enable All Applications"
 msgstr "Program"
 
-#: PulseEffects/ui/main_ui.glade:540
+#: PulseEffects/ui/main_ui.glade:562
 msgid "Start Service at Login"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:566
+#: PulseEffects/ui/main_ui.glade:588
 msgid "Use Dark Theme"
 msgstr "Använd mörkt tema"
 
@@ -541,80 +541,80 @@ msgstr "Spara nuvarande inställningar som profil"
 msgid "Delete Preset"
 msgstr "Ta bort profil"
 
-#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:64
+#: PulseEffectsTest/ui/calibration_mic_plugins.glade:64
 msgid "Guideline Position"
 msgstr "Riktlinjens position"
 
-#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:100
+#: PulseEffectsTest/ui/calibration_mic_plugins.glade:100
 msgid "Measure Noise"
 msgstr "Mät brus"
 
-#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:129
+#: PulseEffectsTest/ui/calibration_mic_plugins.glade:129
 msgid "Subtract Noise"
 msgstr "Ta bort brus"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:55
+#: PulseEffectsTest/ui/test_signal.glade:41
 msgid "Sine"
 msgstr "Sinus"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:70
+#: PulseEffectsTest/ui/test_signal.glade:56
 msgid "Square"
 msgstr "Fyrkant"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:85
+#: PulseEffectsTest/ui/test_signal.glade:71
 msgid "Saw"
 msgstr "Sågtand"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:100
+#: PulseEffectsTest/ui/test_signal.glade:86
 msgid "Triangle"
 msgstr "Triangel"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:115
+#: PulseEffectsTest/ui/test_signal.glade:101
 msgid "Pink Noise"
 msgstr "Skärt brus"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:130
+#: PulseEffectsTest/ui/test_signal.glade:116
 msgid "White Noise"
 msgstr "Vitt brus"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:145
+#: PulseEffectsTest/ui/test_signal.glade:131
 msgid "Silence"
 msgstr "Tystnad"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:160
+#: PulseEffectsTest/ui/test_signal.glade:146
 msgid "Sine Table"
 msgstr "Sinustabell"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:175
+#: PulseEffectsTest/ui/test_signal.glade:161
 msgid "Ticks"
 msgstr "Tickande"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:190
+#: PulseEffectsTest/ui/test_signal.glade:176
 msgid "Gaussian Noise"
 msgstr "Gaussiskt brus"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:205
+#: PulseEffectsTest/ui/test_signal.glade:191
 msgid "Red Noise"
 msgstr "Rött brus"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:220
+#: PulseEffectsTest/ui/test_signal.glade:206
 msgid "Blue Noise"
 msgstr "Blått brus"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:235
+#: PulseEffectsTest/ui/test_signal.glade:221
 msgid "Violet Noise"
 msgstr "Violett brus"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:319
-#: PulseEffectsCalibration/ui/test_signal.glade:662
+#: PulseEffectsTest/ui/test_signal.glade:255
+#: PulseEffectsTest/ui/test_signal.glade:621
 msgid "Volume"
 msgstr "Volym"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:373
+#: PulseEffectsTest/ui/test_signal.glade:318
 msgid "Test Signal"
 msgstr "Testsignal"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:716
+#: PulseEffectsTest/ui/test_signal.glade:675
 msgid "Equal Loudness Test Signals"
 msgstr "Testsignaler för jämn ljudnivå"
 
@@ -673,6 +673,10 @@ msgstr ""
 "När PulseEffects startas kommer det ihåg konfigurationen som användes under "
 "den senaste sessionen. Det är också möjligt att spara alla aktuella "
 "inställningar som profiler."
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
+msgid "Calibration"
+msgstr "Kalibrering"
 
 #: data/com.github.wwmm.pulseeffects.desktop.in:4
 msgid "Audio Enhancer"

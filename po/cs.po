@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-22 14:01-0200\n"
+"POT-Creation-Date: 2018-01-22 22:49-0200\n"
 "PO-Revision-Date: 2017-12-07 21:59+0100\n"
 "Last-Translator: Pavel Fric <pavelfric@seznam.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -37,12 +37,12 @@ msgstr "Kanály"
 msgid "Resampler"
 msgstr "Převzorkovač"
 
-#: PulseEffects/ui/app_info.glade:156 PulseEffects/ui/main_ui.glade:354
+#: PulseEffects/ui/app_info.glade:156 PulseEffects/ui/main_ui.glade:376
 #, fuzzy
 msgid "Buffer"
 msgstr "Prodleva vyrovnávací paměti"
 
-#: PulseEffects/ui/app_info.glade:183 PulseEffects/ui/main_ui.glade:367
+#: PulseEffects/ui/app_info.glade:183 PulseEffects/ui/main_ui.glade:389
 msgid "Latency"
 msgstr "Prodleva"
 
@@ -195,11 +195,6 @@ msgid "Equalizer"
 msgstr "Ekvalizér"
 
 #: PulseEffects/ui/equalizer.glade:2030
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
-msgid "Calibration"
-msgstr "Kalibrace"
-
-#: PulseEffects/ui/equalizer.glade:2046
 msgid "Flat Response"
 msgstr "Odpověď pod tónem"
 
@@ -216,7 +211,7 @@ msgid "High Shelf"
 msgstr "Vysoký práh"
 
 #: PulseEffects/ui/equalizer_band_menu.glade:53
-#: PulseEffectsCalibration/ui/test_signal.glade:274
+#: PulseEffectsTest/ui/test_signal.glade:241
 msgid "Frequency [Hz]"
 msgstr "Kmitočet [Hz]"
 
@@ -279,7 +274,7 @@ msgid "Auto Volume"
 msgstr "Hlasitost automaticky"
 
 #: PulseEffects/ui/limiter.glade:259
-#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:35
+#: PulseEffectsTest/ui/calibration_mic_plugins.glade:35
 msgid "Window [s]"
 msgstr "Okno [s]"
 
@@ -300,50 +295,55 @@ msgstr "Zeslabování"
 msgid "Low Pass"
 msgstr "Dolní pásmová propust"
 
+#: PulseEffects/ui/main_ui.glade:274
+#, fuzzy
+msgid "Test Signals"
+msgstr "Zkušební signál"
+
 #. for some reason when listbox is inside a scrolledwindow
 #. it autoselects a row at startup
-#: PulseEffects/ui/main_ui.glade:279 PulseEffects/ui/reverb.glade:215
+#: PulseEffects/ui/main_ui.glade:301 PulseEffects/ui/reverb.glade:215
 #: PulseEffects/presets_manager.py:56
 msgid "Presets"
 msgstr "Přednastavení"
 
-#: PulseEffects/ui/main_ui.glade:325
+#: PulseEffects/ui/main_ui.glade:347
 msgid "General"
 msgstr "Obecné"
 
-#: PulseEffects/ui/main_ui.glade:340
+#: PulseEffects/ui/main_ui.glade:362
 msgid "Latency in Miliseconds"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:414
+#: PulseEffects/ui/main_ui.glade:436
 msgid "Settings"
 msgstr "Nastavení"
 
-#: PulseEffects/ui/main_ui.glade:423
+#: PulseEffects/ui/main_ui.glade:445
 msgid "Reset"
 msgstr "Vrátit na výchozí"
 
-#: PulseEffects/ui/main_ui.glade:443
+#: PulseEffects/ui/main_ui.glade:465
 msgid "Spectrum"
 msgstr "Spektrum"
 
-#: PulseEffects/ui/main_ui.glade:458
+#: PulseEffects/ui/main_ui.glade:480
 msgid "Show"
 msgstr "Ukázat"
 
-#: PulseEffects/ui/main_ui.glade:472
+#: PulseEffects/ui/main_ui.glade:494
 msgid "Points"
 msgstr "Body"
 
-#: PulseEffects/ui/main_ui.glade:515
+#: PulseEffects/ui/main_ui.glade:537
 msgid "Enable All Applications"
 msgstr "Povolit všechny programy"
 
-#: PulseEffects/ui/main_ui.glade:540
+#: PulseEffects/ui/main_ui.glade:562
 msgid "Start Service at Login"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:566
+#: PulseEffects/ui/main_ui.glade:588
 msgid "Use Dark Theme"
 msgstr "Použít tmavý vzhled"
 
@@ -538,80 +538,80 @@ msgstr "Uložit nynější nastavení do nového přednastavení"
 msgid "Delete Preset"
 msgstr "Smazat přednastavení"
 
-#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:64
+#: PulseEffectsTest/ui/calibration_mic_plugins.glade:64
 msgid "Guideline Position"
 msgstr "Poloha vodicí čáry"
 
-#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:100
+#: PulseEffectsTest/ui/calibration_mic_plugins.glade:100
 msgid "Measure Noise"
 msgstr "Změřit šum"
 
-#: PulseEffectsCalibration/ui/calibration_mic_plugins.glade:129
+#: PulseEffectsTest/ui/calibration_mic_plugins.glade:129
 msgid "Subtract Noise"
 msgstr "Odečíst šum"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:55
+#: PulseEffectsTest/ui/test_signal.glade:41
 msgid "Sine"
 msgstr "Sinus"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:70
+#: PulseEffectsTest/ui/test_signal.glade:56
 msgid "Square"
 msgstr "Čtverec"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:85
+#: PulseEffectsTest/ui/test_signal.glade:71
 msgid "Saw"
 msgstr "Pila"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:100
+#: PulseEffectsTest/ui/test_signal.glade:86
 msgid "Triangle"
 msgstr "Trojúhelník"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:115
+#: PulseEffectsTest/ui/test_signal.glade:101
 msgid "Pink Noise"
 msgstr "Růžový šum"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:130
+#: PulseEffectsTest/ui/test_signal.glade:116
 msgid "White Noise"
 msgstr "Bílý šum"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:145
+#: PulseEffectsTest/ui/test_signal.glade:131
 msgid "Silence"
 msgstr "Ticho"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:160
+#: PulseEffectsTest/ui/test_signal.glade:146
 msgid "Sine Table"
 msgstr "Sinusová tabulka"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:175
+#: PulseEffectsTest/ui/test_signal.glade:161
 msgid "Ticks"
 msgstr "Tiknutí"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:190
+#: PulseEffectsTest/ui/test_signal.glade:176
 msgid "Gaussian Noise"
 msgstr "Gaussovský šum"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:205
+#: PulseEffectsTest/ui/test_signal.glade:191
 msgid "Red Noise"
 msgstr "Červený šum"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:220
+#: PulseEffectsTest/ui/test_signal.glade:206
 msgid "Blue Noise"
 msgstr "Modrý šum"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:235
+#: PulseEffectsTest/ui/test_signal.glade:221
 msgid "Violet Noise"
 msgstr "Fialový šum"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:319
-#: PulseEffectsCalibration/ui/test_signal.glade:662
+#: PulseEffectsTest/ui/test_signal.glade:255
+#: PulseEffectsTest/ui/test_signal.glade:621
 msgid "Volume"
 msgstr "Hlasitost"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:373
+#: PulseEffectsTest/ui/test_signal.glade:318
 msgid "Test Signal"
 msgstr "Zkušební signál"
 
-#: PulseEffectsCalibration/ui/test_signal.glade:716
+#: PulseEffectsTest/ui/test_signal.glade:675
 msgid "Equal Loudness Test Signals"
 msgstr "Zkušební signály pro shodnou hlasitost"
 
@@ -668,6 +668,10 @@ msgid ""
 msgstr ""
 "Když je PulseEffects spuštěn, zapamatuje si příhodně nastavení používané při "
 "posledním sezení. Je možné i uložení všech nynějších nastavení jako profilů."
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
+msgid "Calibration"
+msgstr "Kalibrace"
 
 #: data/com.github.wwmm.pulseeffects.desktop.in:4
 msgid "Audio Enhancer"
