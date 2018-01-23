@@ -123,7 +123,7 @@ class Application(Gtk.Application):
 
         stack.add_named(test_signal_ui, "test_signal")
         stack.child_set_property(test_signal_ui, 'icon-name',
-                                 'emblem-music-symbolic')
+                                 'pulseeffects-sine-symbolic')
 
         stack.add_named(calibration_mic_ui, 'calibration_mic')
         stack.child_set_property(calibration_mic_ui, 'icon-name',
