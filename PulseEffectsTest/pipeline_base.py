@@ -33,7 +33,7 @@ class PipelineBase(GObject.GObject):
         self.spectrum_nfreqs = 0
         self.spectrum_threshold = -120  # dB
 
-        self.log = logging.getLogger('PulseEffects')
+        self.log = logging.getLogger('PulseEffectsTest')
 
         self.calc_spectrum_freqs()
 
