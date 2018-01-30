@@ -27,6 +27,10 @@ class SinkInputEffects(EffectsBase):
 
         self.log_tag = 'apps: '
 
+        pa_props = 'application.id=com.github.wwmm.pulseeffects.sinkinputs'
+
+        self.set_pa_props(pa_props)
+
         self.set_source_monitor_name(self.pm.apps_sink_monitor_name)
 
         pulse_sink = os.environ.get('PULSE_SINK')

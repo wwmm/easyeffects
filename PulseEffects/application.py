@@ -22,8 +22,10 @@ class Application(Gtk.Application):
         app_flags = Gio.ApplicationFlags.HANDLES_COMMAND_LINE
 
         GLib.set_application_name('PulseEffects')
-        GLib.setenv('PULSE_PROP_media.role', 'production', True)
         GLib.setenv('PULSE_PROP_application.icon_name', 'pulseeffects', True)
+        GLib.setenv('PULSE_PROP_application.id',
+                    'com.github.wwmm.pulseeffects', True)
+        GLib.setenv('PULSE_PROP_application.version', '3.1.8', True)
 
         Gtk.Application.__init__(self, application_id=app_id, flags=app_flags)
 

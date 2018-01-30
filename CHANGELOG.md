@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [3.1.8]
+### Fixed
+- Fixed a critical bug where plug and unplugging a usb microphone a few times
+would break PulseEffects routing.
+
 ## [3.1.7]
 ### Added
 - Delay Compensator plugin from Linux Studio Plugins (LV2 version)

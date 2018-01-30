@@ -22,6 +22,10 @@ class SourceOutputEffects(EffectsBase):
         self.log_tag = 'mic: '
         self.disable_app_level_meter = True
 
+        pa_props = 'application.id=com.github.wwmm.pulseeffects.sourceoutputs'
+
+        self.set_pa_props(pa_props)
+
         pulse_source = os.environ.get('PULSE_SOURCE')
 
         if pulse_source:

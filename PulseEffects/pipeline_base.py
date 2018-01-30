@@ -191,6 +191,12 @@ class PipelineBase(GObject.GObject):
 
         return True
 
+    def set_pa_props(self, props):
+        pa_props_str = 'props,' + props
+        pa_props = Gst.Structure.new_from_string(pa_props_str)
+
+        self.audio_src.set_property('stream-properties', pa_props)
+
     def set_source_monitor_name(self, name):
         self.audio_src.set_property('device', name)
 
