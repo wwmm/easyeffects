@@ -250,7 +250,7 @@ class SavePresets():
                                 'amount': str(amount),
                                 'harmonics': str(harmonics),
                                 'scope': str(scope),
-                                'floor': str(ceiling),
+                                'ceiling': str(ceiling),
                                 'blend': str(blend)}
 
     def save_bass_enhancer_preset(self, settings, section):

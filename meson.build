@@ -1,5 +1,5 @@
 project('PulseEffects',
-  version: '3.1.7',
+  version: '3.1.9',
   meson_version: '>= 0.40.0'
 )
 

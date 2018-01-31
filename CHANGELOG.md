@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [3.1.9]
+### Fixed
+- Fixed exciter ceiling parameter not being loaded from the presets file
+
 ## [3.1.8]
 ### Fixed
 - Fixed a critical bug where plug and unplugging a usb microphone a few times
