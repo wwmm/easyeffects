@@ -73,7 +73,7 @@ class Delay():
         self.input_level.set_property('post-messages', state)
         self.output_level.set_property('post-messages', state)
 
-        if state:
+        if state and self.delay:
             GLib.timeout_add_seconds(2, self.read_delay)
 
     def read_delay(self):
