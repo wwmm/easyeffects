@@ -51,7 +51,6 @@ class PipelineBase(GObject.GObject):
         self.audio_src = Gst.ElementFactory.make('pulsesrc', 'audio_src')
 
         queue_src = Gst.ElementFactory.make('queue', None)
-        queue_sink = Gst.ElementFactory.make('queue', None)
 
         self.source_caps = Gst.ElementFactory.make("capsfilter", None)
 
@@ -80,20 +79,17 @@ class PipelineBase(GObject.GObject):
         self.spectrum.set_property('threshold', self.spectrum_threshold)
 
         queue_src.set_property('silent', True)
-        queue_sink.set_property('silent', True)
 
         self.pipeline.add(self.audio_src)
         self.pipeline.add(self.source_caps)
         self.pipeline.add(queue_src)
         self.pipeline.add(self.effects_bin)
-        self.pipeline.add(queue_sink)
         self.pipeline.add(self.audio_sink)
 
         self.audio_src.link(self.source_caps)
         self.source_caps.link(queue_src)
         queue_src.link(self.effects_bin)
-        self.effects_bin.link(queue_sink)
-        queue_sink.link(self.audio_sink)
+        self.effects_bin.link(self.audio_sink)
 
     def on_filter_added(self, bin, element, success, user_data):
         bin_name = element.get_name()
