@@ -29,6 +29,9 @@ class EffectsBase(PipelineBase):
         self.log_tag = str()
         self.disable_app_level_meter = False
         self.there_is_window = False
+
+        # [[idx, state], [idx, state],...]
+        # state tells if the app wants the pipeline to be running
         self.apps_list = []
 
         self.limiter = Limiter(self.settings)
@@ -293,11 +296,25 @@ class EffectsBase(PipelineBase):
             delattr(self, 'app_mute_' + str(idx))
             delattr(self, 'app_level_' + str(idx))
 
+    def set_pipeline_state(self):
+        # Deciding if GStreamer pipeline should be put in the playing state
+        # based on the apps state. If no app is playing the GStreamer pipeline
+        # should also be in the paused state in order to not waste cpu
+
+        pipeline_state = 'ready'
+
+        for a in self.apps_list:
+            if a[1]:
+                pipeline_state = 'playing'
+
+                break
+
+        self.set_state(pipeline_state)
+
     def on_app_added(self, obj, parameters):
         idx = parameters['index']
-
-        if idx not in self.apps_list:
-            self.apps_list.append(idx)
+        corked = parameters['corked']  # cork = 1 means that the app is paused
+        connected = parameters['connected']  # app switch state
 
         if self.there_is_window:
             self.build_app_ui(parameters)
@@ -305,25 +322,62 @@ class EffectsBase(PipelineBase):
             # necessary when running as service with the window closed
             self.on_enable_app(None, True, idx)
 
-        if not self.is_playing:
-            self.set_state('playing')
+        # checking if this app is already on the list
+        # if it isn't we add it
+
+        add_to_list = True
+
+        for a in self.apps_list:
+            if a[0] == idx:
+                add_to_list = False
+
+                break
+
+        if add_to_list:
+            state = False
+
+            # app wants the pipeline to be running only if it is connected
+            # and not corked
+
+            if connected and not corked:
+                state = True
+
+            self.apps_list.append([idx, state])
+
+        self.set_pipeline_state()
 
     def on_app_changed(self, obj, parameters):
         if self.there_is_window:
             self.change_app_ui(parameters)
 
+        idx = parameters['index']
+        corked = parameters['corked']
+        connected = parameters['connected']
+
+        # updating app state if it is in app_list
+
+        for a in self.apps_list:
+            if a[0] == idx:
+                state = False
+
+                if connected and not corked:
+                    state = True
+
+                a[1] = state
+
+                break
+
+        self.set_pipeline_state()
+
     def on_app_removed(self, obj, idx):
-        if idx in self.apps_list:
-            self.remove_app_ui(idx)
+        for a in self.apps_list:
+            if a[0] == idx:
+                self.remove_app_ui(idx)
+                self.apps_list.remove([idx, a[1]])
 
-            n_apps_before = len(self.apps_list)
+                self.set_pipeline_state()
 
-            self.apps_list.remove(idx)
-
-            n_apps_after = len(self.apps_list)
-
-            if n_apps_before == 1 and n_apps_after == 0:
-                self.set_state('ready')
+                break
 
     def on_app_level_changed(self, obj, idx, level):
         if hasattr(self, 'app_level_' + str(idx)):

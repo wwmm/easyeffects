@@ -1,8 +1,14 @@
 # Changelog
 
 ## [Unreleased]
+
+## [3.2.0]
 ### Added
 - Crossfeed plugin from bs2b library
+- PulseEffects pipeline enters the playing state only when there is at least
+one audio application switched on and in the playing state. This will save cpu
+when the user paused or switched off all audio applications while PulseEffects
+is running
 
 ### Fixed
 - Do no try to read delay plugin properties when it is not available. This will
