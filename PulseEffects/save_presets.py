@@ -348,6 +348,15 @@ class SavePresets():
                                 'filters': str(filters),
                                 'mono': str(mono)}
 
+    def save_crossfeed_preset(self, settings, section):
+        enabled = settings.get_value('crossfeed-state')
+        fcut = settings.get_value('crossfeed-fcut')
+        feed = settings.get_value('crossfeed-feed')
+
+        self.config[section] = {'enabled': str(enabled),
+                                'fcut': str(fcut),
+                                'feed': str(feed)}
+
     def save_maximizer_preset(self, settings, section):
         enabled = settings.get_value('maximizer-state')
         release = settings.get_value('maximizer-release')
