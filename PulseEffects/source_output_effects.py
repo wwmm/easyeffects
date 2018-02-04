@@ -19,7 +19,7 @@ class SourceOutputEffects(EffectsBase):
 
         EffectsBase.__init__(self, self.pm.default_source_rate, self.settings)
 
-        self.log_tag = 'mic: '
+        self.log_tag = 'mic:'
         self.disable_app_level_meter = True
 
         pa_props = 'application.id=com.github.wwmm.pulseeffects.sourceoutputs'
@@ -53,11 +53,24 @@ class SourceOutputEffects(EffectsBase):
         self.pitch_wrapper = GstInsertBin.InsertBin.new('pitch_wrapper')
 
         # appending effects wrappers to effects bin
+        # the effects order is defined here
 
-        self.effects_bin.insert_after(self.pitch_wrapper,
-                                      self.reverb_wrapper,
-                                      self.on_filter_added,
-                                      self.log_tag)
+        self.effects_bin.append(self.limiter_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.compressor_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.highpass_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.lowpass_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.equalizer_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.reverb_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.pitch_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.spectrum_wrapper, self.on_filter_added,
+                                self.log_tag)
 
     def init_ui(self):
         EffectsBase.init_ui(self)

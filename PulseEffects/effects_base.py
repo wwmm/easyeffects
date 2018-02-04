@@ -53,22 +53,6 @@ class EffectsBase(PipelineBase):
         self.spectrum_wrapper = GstInsertBin.InsertBin.new(
             'spectrum_wrapper')
 
-        # appending effects wrappers to effects bin
-        self.effects_bin.append(self.limiter_wrapper, self.on_filter_added,
-                                self.log_tag)
-        self.effects_bin.append(self.compressor_wrapper, self.on_filter_added,
-                                self.log_tag)
-        self.effects_bin.append(self.highpass_wrapper, self.on_filter_added,
-                                self.log_tag)
-        self.effects_bin.append(self.lowpass_wrapper, self.on_filter_added,
-                                self.log_tag)
-        self.effects_bin.append(self.equalizer_wrapper, self.on_filter_added,
-                                self.log_tag)
-        self.effects_bin.append(self.reverb_wrapper, self.on_filter_added,
-                                self.log_tag)
-        self.effects_bin.append(self.spectrum_wrapper, self.on_filter_added,
-                                self.log_tag)
-
     def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +
                                                  '/ui/effects_box.glade')

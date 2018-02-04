@@ -92,22 +92,28 @@ class PipelineBase(GObject.GObject):
         self.effects_bin.link(self.audio_sink)
 
     def on_filter_added(self, bin, element, success, user_data):
-        bin_name = element.get_name()
-        plugin_name = bin_name.split('_')[0]
+        name_array = element.get_name().split('_')
+        name = ' '
+
+        for n in name_array:
+            name += n + ' '
 
         if success:
-            self.log.info(user_data + plugin_name + ' plugin was enabled')
+            self.log.info(user_data + name + 'was enabled')
         else:
-            self.log.critical(user_data + 'failed to enable ' + plugin_name)
+            self.log.critical(user_data + 'failed to enable' + name)
 
     def on_filter_removed(self, bin, element, success, user_data):
-        bin_name = element.get_name()
-        plugin_name = bin_name.split('_')[0]
+        name_array = element.get_name().split('_')
+        name = ' '
+
+        for n in name_array:
+            name += n + ' '
 
         if success:
-            self.log.info(user_data + plugin_name + ' plugin was disabled')
+            self.log.info(user_data + name + 'was disabled')
         else:
-            self.log.critical(user_data + 'failed to disable ' + plugin_name)
+            self.log.critical(user_data + 'failed to disable' + name)
 
     def set_state(self, state):
         if state == 'ready':

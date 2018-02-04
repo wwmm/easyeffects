@@ -16,17 +16,17 @@ Order of effects applied to applications output:
 6. 30 Bands Parametric Equalizer (Gstreamer)
 7. Exciter (LV2 Exciter from Calf Studio)
 8. Bass Enhancer (LV2 Bass Enhancer from Calf Studio)
-9. Delay Compensator(LV2 Delay Compensator from Linux Studio Plugins)
-10. Stereo Enhancer (LV2 Stereo Enhancer from Calf Studio)
+9. Stereo Enhancer (LV2 Stereo Enhancer from Calf Studio)
+10. Stereo Panorama (Gstreamer)
 11. Stereo Spread (LV2 MultiSpread from Calf Studio)
 12. Freeverb (Gstreamer)
-13. Stereo Panorama (Gstreamer)
-14. Maximizer (Ladspa Maximizer from ZamAudio)
-15. Output Limiter (Ladspa Fast Lookahead Limiter)
-16. Spectrum Analyzer (Gstreamer)
+13. Crossfeed (Bs2b library)
+14. Delay Compensator(LV2 Delay Compensator from Linux Studio Plugins)
+15. Maximizer (Ladspa Maximizer from ZamAudio)
+16. Output Limiter (Ladspa Fast Lookahead Limiter)
+17. Spectrum Analyzer (Gstreamer)
 
-Since version 2.0.0 PulseEffects is capable of applying effects to microphone
-output at the same time it applies them for applications output:
+Order of effects applied to microphone output:
 
 1. Input Limiter (Ladspa Fast Lookahead Limiter)
 2. Compressor (Ladspa SC4)
@@ -84,6 +84,7 @@ Required libraries:
 - [ZamAudio Ladspa Plugins](http://www.zamaudio.com/)
 - [Linux Studio Plugins](http://lsp-plug.in/)
 - [Rubber Band](http://breakfastquay.com/rubberband/)
+- [Bs2b Crossfeed](http://bs2b.sourceforge.net/)
 
 #### Installing from Source
 

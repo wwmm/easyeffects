@@ -26,7 +26,7 @@ class SinkInputEffects(EffectsBase):
 
         EffectsBase.__init__(self, self.pm.default_sink_rate, self.settings)
 
-        self.log_tag = 'apps: '
+        self.log_tag = 'apps:'
 
         pa_props = 'application.id=com.github.wwmm.pulseeffects.sinkinputs'
 
@@ -81,51 +81,44 @@ class SinkInputEffects(EffectsBase):
             'output_limiter_wrapper')
 
         # appending effects wrappers to effects bin
+        # the effects order is defined here
 
-        self.effects_bin.insert_after(self.exciter_wrapper,
-                                      self.equalizer_wrapper,
-                                      self.on_filter_added,
-                                      self.log_tag)
-
-        self.effects_bin.insert_after(self.bass_enhancer_wrapper,
-                                      self.exciter_wrapper,
-                                      self.on_filter_added,
-                                      self.log_tag)
-
-        self.effects_bin.insert_after(self.delay_wrapper,
-                                      self.bass_enhancer_wrapper,
-                                      self.on_filter_added,
-                                      self.log_tag)
-
-        self.effects_bin.insert_after(self.stereo_enhancer_wrapper,
-                                      self.delay_wrapper,
-                                      self.on_filter_added,
-                                      self.log_tag)
-
-        self.effects_bin.insert_after(self.stereo_spread_wrapper,
-                                      self.stereo_enhancer_wrapper,
-                                      self.on_filter_added,
-                                      self.log_tag)
-
-        self.effects_bin.insert_after(self.crossfeed_wrapper,
-                                      self.stereo_spread_wrapper,
-                                      self.on_filter_added,
-                                      self.log_tag)
-
-        self.effects_bin.insert_after(self.panorama_wrapper,
-                                      self.reverb_wrapper,
-                                      self.on_filter_added,
-                                      self.log_tag)
-
-        self.effects_bin.insert_after(self.maximizer_wrapper,
-                                      self.panorama_wrapper,
-                                      self.on_filter_added,
-                                      self.log_tag)
-
-        self.effects_bin.insert_before(self.output_limiter_wrapper,
-                                       self.spectrum_wrapper,
-                                       self.on_filter_added,
-                                       self.log_tag)
+        self.effects_bin.append(self.limiter_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.compressor_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.highpass_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.lowpass_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.equalizer_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.exciter_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.bass_enhancer_wrapper,
+                                self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.stereo_enhancer_wrapper,
+                                self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.panorama_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.stereo_spread_wrapper,
+                                self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.reverb_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.crossfeed_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.delay_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.maximizer_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.output_limiter_wrapper,
+                                self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.spectrum_wrapper, self.on_filter_added,
+                                self.log_tag)
 
     def init_ui(self):
         EffectsBase.init_ui(self)
@@ -153,12 +146,12 @@ class SinkInputEffects(EffectsBase):
         self.add_to_listbox('equalizer')
         self.add_to_listbox('exciter')
         self.add_to_listbox('bass_enhancer')
-        self.add_to_listbox('delay')
         self.add_to_listbox('stereo_enhancer')
-        self.add_to_listbox('stereo_spread')
-        self.add_to_listbox('crossfeed')
-        self.add_to_listbox('reverb')
         self.add_to_listbox('panorama')
+        self.add_to_listbox('stereo_spread')
+        self.add_to_listbox('reverb')
+        self.add_to_listbox('crossfeed')
+        self.add_to_listbox('delay')
         self.add_to_listbox('maximizer')
         self.add_to_listbox('output_limiter')
 
@@ -173,12 +166,12 @@ class SinkInputEffects(EffectsBase):
         self.stack.add_named(self.equalizer.ui_window, 'equalizer')
         self.stack.add_named(self.exciter.ui_window, 'exciter')
         self.stack.add_named(self.bass_enhancer.ui_window, 'bass_enhancer')
-        self.stack.add_named(self.delay.ui_window, 'delay')
         self.stack.add_named(self.stereo_enhancer.ui_window, 'stereo_enhancer')
-        self.stack.add_named(self.stereo_spread.ui_window, 'stereo_spread')
-        self.stack.add_named(self.crossfeed.ui_window, 'crossfeed')
-        self.stack.add_named(self.reverb.ui_window, 'reverb')
         self.stack.add_named(self.panorama.ui_window, 'panorama')
+        self.stack.add_named(self.stereo_spread.ui_window, 'stereo_spread')
+        self.stack.add_named(self.reverb.ui_window, 'reverb')
+        self.stack.add_named(self.crossfeed.ui_window, 'crossfeed')
+        self.stack.add_named(self.delay.ui_window, 'delay')
         self.stack.add_named(self.maximizer.ui_window, 'maximizer')
         self.stack.add_named(self.output_limiter.ui_window, 'output_limiter')
 

@@ -9,6 +9,7 @@
 one audio application switched on and in the playing state. This will save cpu
 when the user paused or switched off all audio applications while PulseEffects
 is running
+- Log output is a little more clear
 
 ### Fixed
 - Do no try to read delay plugin properties when it is not available. This will
