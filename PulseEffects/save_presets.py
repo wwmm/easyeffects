@@ -410,6 +410,7 @@ class SavePresets():
         self.save_delay_preset(settings, 'apps_delay')
         self.save_stereo_enhancer_preset(settings, 'apps_stereo_enhancer')
         self.save_stereo_spread_preset(settings, 'apps_stereo_spread')
+        self.save_crossfeed_preset(settings, 'apps_crossfeed')
         self.save_maximizer_preset(settings, 'apps_maximizer')
         self.save_output_limiter_preset(settings, 'apps_output_limiter')
 

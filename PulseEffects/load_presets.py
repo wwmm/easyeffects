@@ -492,6 +492,15 @@ class LoadPresets():
         settings.set_value('stereo-spread-mono',
                            GLib.Variant('b', mono))
 
+    def load_crossfeed_preset(self, settings, section):
+        enabled = self.config.getboolean(section, 'enabled', fallback=False)
+        fcut = self.config.getint(section, 'fcut', fallback=700)
+        feed = self.config.getfloat(section, 'feed', fallback=4.5)
+
+        settings.set_value('crossfeed-state', GLib.Variant('b', enabled))
+        settings.set_value('crossfeed-fcut', GLib.Variant('i', fcut))
+        settings.set_value('crossfeed-feed', GLib.Variant('d', feed))
+
     def load_maximizer_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
         release = self.config.getfloat(section, 'release', fallback=3.16)
@@ -550,6 +559,7 @@ class LoadPresets():
         self.load_delay_preset(settings, 'apps_delay')
         self.load_stereo_enhancer_preset(settings, 'apps_stereo_enhancer')
         self.load_stereo_spread_preset(settings, 'apps_stereo_spread')
+        self.load_crossfeed_preset(settings, 'apps_crossfeed')
         self.load_maximizer_preset(settings, 'apps_maximizer')
         self.load_output_limiter_preset(settings, 'apps_output_limiter')
 

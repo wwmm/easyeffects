@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+## [3.2.0]
+### Added
+- Crossfeed plugin from bs2b library
+
+### Fixed
+- Do no try to read delay plugin properties when it is not available. This will
+flood the logs with error messages
+
 ## [3.1.9]
 ### Fixed
 - Fixed exciter ceiling parameter not being loaded from the presets file
