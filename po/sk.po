@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-23 17:25-0200\n"
+"POT-Creation-Date: 2018-02-04 14:04-0200\n"
 "PO-Revision-Date: 2017-06-11 22:19+0200\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: \n"
@@ -135,25 +135,62 @@ msgstr "Koleno [dB]"
 msgid "Makeup [dB]"
 msgstr "Výstupné zosilnenie [dB]"
 
-#: PulseEffects/ui/compressor.glade:335 PulseEffects/ui/delay.glade:318
-#: PulseEffects/ui/highpass.glade:143 PulseEffects/ui/limiter.glade:402
-#: PulseEffects/ui/lowpass.glade:143 PulseEffects/ui/maximizer.glade:174
-#: PulseEffects/ui/output_limiter.glade:175 PulseEffects/ui/panorama.glade:122
-#: PulseEffects/ui/pitch.glade:226 PulseEffects/ui/reverb.glade:291
+#: PulseEffects/ui/compressor.glade:335 PulseEffects/ui/crossfeed.glade:190
+#: PulseEffects/ui/delay.glade:318 PulseEffects/ui/highpass.glade:143
+#: PulseEffects/ui/limiter.glade:402 PulseEffects/ui/lowpass.glade:143
+#: PulseEffects/ui/maximizer.glade:174 PulseEffects/ui/output_limiter.glade:175
+#: PulseEffects/ui/panorama.glade:122 PulseEffects/ui/pitch.glade:226
+#: PulseEffects/ui/reverb.glade:291
 msgid "Input"
 msgstr "Vstup"
 
-#: PulseEffects/ui/compressor.glade:350 PulseEffects/ui/delay.glade:333
-#: PulseEffects/ui/highpass.glade:158 PulseEffects/ui/limiter.glade:417
-#: PulseEffects/ui/lowpass.glade:158 PulseEffects/ui/maximizer.glade:189
-#: PulseEffects/ui/output_limiter.glade:190 PulseEffects/ui/panorama.glade:137
-#: PulseEffects/ui/pitch.glade:241 PulseEffects/ui/reverb.glade:306
+#: PulseEffects/ui/compressor.glade:350 PulseEffects/ui/crossfeed.glade:205
+#: PulseEffects/ui/delay.glade:333 PulseEffects/ui/highpass.glade:158
+#: PulseEffects/ui/limiter.glade:417 PulseEffects/ui/lowpass.glade:158
+#: PulseEffects/ui/maximizer.glade:189 PulseEffects/ui/output_limiter.glade:190
+#: PulseEffects/ui/panorama.glade:137 PulseEffects/ui/pitch.glade:241
+#: PulseEffects/ui/reverb.glade:306
 msgid "Output"
 msgstr "Výstup"
 
 #: PulseEffects/ui/compressor.glade:516
 msgid "Gain Reduction"
 msgstr "Redukcia zosilnenia"
+
+#: PulseEffects/ui/crossfeed.glade:44 PulseEffects/ui/highpass.glade:77
+#: PulseEffects/ui/lowpass.glade:77
+#, fuzzy
+msgid "Cutoff [Hz]"
+msgstr "Zrezanie [Hz]"
+
+#: PulseEffects/ui/crossfeed.glade:71
+#, fuzzy
+msgid "Feed [dB]"
+msgstr "Koleno [dB]"
+
+#. for some reason when listbox is inside a scrolledwindow
+#. it autoselects a row at startup
+#: PulseEffects/ui/crossfeed.glade:114 PulseEffects/ui/main_ui.glade:301
+#: PulseEffects/ui/reverb.glade:215 PulseEffects/presets_manager.py:56
+msgid "Presets"
+msgstr "Predvoľby"
+
+#: PulseEffects/ui/crossfeed.glade:126
+msgid "Jmeier"
+msgstr ""
+
+#: PulseEffects/ui/crossfeed.glade:140
+#, fuzzy
+msgid "Default"
+msgstr "Predvolený"
+
+#: PulseEffects/ui/crossfeed.glade:154
+msgid "Cmoy"
+msgstr ""
+
+#: PulseEffects/ui/crossfeed.glade:369
+msgid "Crossfeed"
+msgstr ""
 
 #: PulseEffects/ui/delay.glade:23
 #, fuzzy
@@ -244,11 +281,6 @@ msgstr ""
 msgid "High Pass"
 msgstr "Horný prechod"
 
-#: PulseEffects/ui/highpass.glade:77 PulseEffects/ui/lowpass.glade:77
-#, fuzzy
-msgid "Cutoff [Hz]"
-msgstr "Zrezanie [Hz]"
-
 #: PulseEffects/ui/highpass.glade:104 PulseEffects/ui/lowpass.glade:104
 #, fuzzy
 msgid "Poles"
@@ -303,13 +335,6 @@ msgstr "Dolný prechod"
 #, fuzzy
 msgid "Test Signals"
 msgstr "Skúšobný signál"
-
-#. for some reason when listbox is inside a scrolledwindow
-#. it autoselects a row at startup
-#: PulseEffects/ui/main_ui.glade:301 PulseEffects/ui/reverb.glade:215
-#: PulseEffects/presets_manager.py:56
-msgid "Presets"
-msgstr "Predvoľby"
 
 #: PulseEffects/ui/main_ui.glade:347
 msgid "General"
@@ -636,10 +661,6 @@ msgstr ""
 msgid "Audio Effects for PulseAudio Applications"
 msgstr "Zvukové efekty pre aplikácie využívajúce Pulseaudio"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:9
-msgid "Wellington Wallace"
-msgstr ""
-
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:11
 msgid ""
 "PulseEffects is an advanced audio manipulation tools. It includes an "
@@ -723,9 +744,6 @@ msgstr ""
 
 #~ msgid "no compression"
 #~ msgstr "Bez kompresie"
-
-#~ msgid "default"
-#~ msgstr "Predvolený"
 
 #~ msgid "no reverberation"
 #~ msgstr "Bez ozveny"

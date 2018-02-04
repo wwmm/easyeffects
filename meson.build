@@ -1,5 +1,5 @@
 project('PulseEffects',
-  version: '3.1.9',
+  version: '3.2.0',
   meson_version: '>= 0.40.0'
 )
 
@@ -22,6 +22,7 @@ gstbad = dependency('gstreamer-plugins-bad-1.0', version: '>= 1.12')
 gstinsertbin = dependency('gstreamer-insertbin-1.0', version: '>= 1.12')
 
 lilv = dependency('lilv-0', version: '>= 0.22', required: false)
+libbs2b = dependency('libbs2b', required: false)
 
 prefix = get_option('prefix')
 bindir = join_paths(prefix, get_option('bindir'))

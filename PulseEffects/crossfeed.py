@@ -93,6 +93,7 @@ class Crossfeed():
         self.settings.bind('crossfeed-state', self.ui_controls, 'sensitive',
                            Gio.SettingsBindFlags.GET)
         self.settings.bind('crossfeed-fcut', self.ui_cutoff, 'value', flag)
+        self.settings.bind('crossfeed-feed', self.ui_feed, 'value', flag)
 
         # binding ui widgets to gstreamer plugins
 

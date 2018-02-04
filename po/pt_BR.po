@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-23 17:25-0200\n"
-"PO-Revision-Date: 2018-01-22 22:49-0200\n"
+"POT-Creation-Date: 2018-02-04 14:04-0200\n"
+"PO-Revision-Date: 2018-02-04 14:05-0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
@@ -136,25 +136,59 @@ msgstr "Joelho [dB]"
 msgid "Makeup [dB]"
 msgstr "Ganho de Saída [dB]"
 
-#: PulseEffects/ui/compressor.glade:335 PulseEffects/ui/delay.glade:318
-#: PulseEffects/ui/highpass.glade:143 PulseEffects/ui/limiter.glade:402
-#: PulseEffects/ui/lowpass.glade:143 PulseEffects/ui/maximizer.glade:174
-#: PulseEffects/ui/output_limiter.glade:175 PulseEffects/ui/panorama.glade:122
-#: PulseEffects/ui/pitch.glade:226 PulseEffects/ui/reverb.glade:291
+#: PulseEffects/ui/compressor.glade:335 PulseEffects/ui/crossfeed.glade:190
+#: PulseEffects/ui/delay.glade:318 PulseEffects/ui/highpass.glade:143
+#: PulseEffects/ui/limiter.glade:402 PulseEffects/ui/lowpass.glade:143
+#: PulseEffects/ui/maximizer.glade:174 PulseEffects/ui/output_limiter.glade:175
+#: PulseEffects/ui/panorama.glade:122 PulseEffects/ui/pitch.glade:226
+#: PulseEffects/ui/reverb.glade:291
 msgid "Input"
 msgstr "Entrada"
 
-#: PulseEffects/ui/compressor.glade:350 PulseEffects/ui/delay.glade:333
-#: PulseEffects/ui/highpass.glade:158 PulseEffects/ui/limiter.glade:417
-#: PulseEffects/ui/lowpass.glade:158 PulseEffects/ui/maximizer.glade:189
-#: PulseEffects/ui/output_limiter.glade:190 PulseEffects/ui/panorama.glade:137
-#: PulseEffects/ui/pitch.glade:241 PulseEffects/ui/reverb.glade:306
+#: PulseEffects/ui/compressor.glade:350 PulseEffects/ui/crossfeed.glade:205
+#: PulseEffects/ui/delay.glade:333 PulseEffects/ui/highpass.glade:158
+#: PulseEffects/ui/limiter.glade:417 PulseEffects/ui/lowpass.glade:158
+#: PulseEffects/ui/maximizer.glade:189 PulseEffects/ui/output_limiter.glade:190
+#: PulseEffects/ui/panorama.glade:137 PulseEffects/ui/pitch.glade:241
+#: PulseEffects/ui/reverb.glade:306
 msgid "Output"
 msgstr "Saída"
 
 #: PulseEffects/ui/compressor.glade:516
 msgid "Gain Reduction"
 msgstr "Redução de Ganho"
+
+#: PulseEffects/ui/crossfeed.glade:44 PulseEffects/ui/highpass.glade:77
+#: PulseEffects/ui/lowpass.glade:77
+msgid "Cutoff [Hz]"
+msgstr "Corte [Hz]"
+
+#: PulseEffects/ui/crossfeed.glade:71
+msgid "Feed [dB]"
+msgstr "Alimentação [dB]"
+
+#. for some reason when listbox is inside a scrolledwindow
+#. it autoselects a row at startup
+#: PulseEffects/ui/crossfeed.glade:114 PulseEffects/ui/main_ui.glade:301
+#: PulseEffects/ui/reverb.glade:215 PulseEffects/presets_manager.py:56
+msgid "Presets"
+msgstr "Predefinições"
+
+#: PulseEffects/ui/crossfeed.glade:126
+msgid "Jmeier"
+msgstr "Jmeier"
+
+#: PulseEffects/ui/crossfeed.glade:140
+msgid "Default"
+msgstr "Padrão"
+
+#: PulseEffects/ui/crossfeed.glade:154
+msgid "Cmoy"
+msgstr "Cmoy"
+
+#: PulseEffects/ui/crossfeed.glade:369
+msgid "Crossfeed"
+msgstr "Crossfeed"
 
 #: PulseEffects/ui/delay.glade:23
 msgid "Delay"
@@ -242,10 +276,6 @@ msgstr "Teto [Hz]"
 msgid "High Pass"
 msgstr "Passa-Alta"
 
-#: PulseEffects/ui/highpass.glade:77 PulseEffects/ui/lowpass.glade:77
-msgid "Cutoff [Hz]"
-msgstr "Corte [Hz]"
-
 #: PulseEffects/ui/highpass.glade:104 PulseEffects/ui/lowpass.glade:104
 msgid "Poles"
 msgstr "Pólos"
@@ -296,13 +326,6 @@ msgstr "Passa-Baixa"
 #: PulseEffects/ui/main_ui.glade:274
 msgid "Test Signals"
 msgstr "Sinais de Teste"
-
-#. for some reason when listbox is inside a scrolledwindow
-#. it autoselects a row at startup
-#: PulseEffects/ui/main_ui.glade:301 PulseEffects/ui/reverb.glade:215
-#: PulseEffects/presets_manager.py:56
-msgid "Presets"
-msgstr "Predefinições"
 
 #: PulseEffects/ui/main_ui.glade:347
 msgid "General"
@@ -611,10 +634,6 @@ msgstr "PulseEffects"
 msgid "Audio Effects for PulseAudio Applications"
 msgstr "Efeitos de Áudio para Programas que Utilizam Pulseaudio"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:9
-msgid "Wellington Wallace"
-msgstr ""
-
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:11
 msgid ""
 "PulseEffects is an advanced audio manipulation tools. It includes an "
@@ -753,9 +772,6 @@ msgstr "pulseeffects"
 
 #~ msgid "Flat"
 #~ msgstr "Plano"
-
-#~ msgid "Default"
-#~ msgstr "Padrão"
 
 #~ msgid "Sensing Type"
 #~ msgstr "Tipo de Detecção"

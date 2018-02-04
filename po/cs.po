@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-23 17:25-0200\n"
+"POT-Creation-Date: 2018-02-04 14:04-0200\n"
 "PO-Revision-Date: 2017-12-07 21:59+0100\n"
 "Last-Translator: Pavel Fric <pavelfric@seznam.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -134,25 +134,61 @@ msgstr "Koleno [dB]"
 msgid "Makeup [dB]"
 msgstr "Zesílení na výstupu[dB]"
 
-#: PulseEffects/ui/compressor.glade:335 PulseEffects/ui/delay.glade:318
-#: PulseEffects/ui/highpass.glade:143 PulseEffects/ui/limiter.glade:402
-#: PulseEffects/ui/lowpass.glade:143 PulseEffects/ui/maximizer.glade:174
-#: PulseEffects/ui/output_limiter.glade:175 PulseEffects/ui/panorama.glade:122
-#: PulseEffects/ui/pitch.glade:226 PulseEffects/ui/reverb.glade:291
+#: PulseEffects/ui/compressor.glade:335 PulseEffects/ui/crossfeed.glade:190
+#: PulseEffects/ui/delay.glade:318 PulseEffects/ui/highpass.glade:143
+#: PulseEffects/ui/limiter.glade:402 PulseEffects/ui/lowpass.glade:143
+#: PulseEffects/ui/maximizer.glade:174 PulseEffects/ui/output_limiter.glade:175
+#: PulseEffects/ui/panorama.glade:122 PulseEffects/ui/pitch.glade:226
+#: PulseEffects/ui/reverb.glade:291
 msgid "Input"
 msgstr "Vstup"
 
-#: PulseEffects/ui/compressor.glade:350 PulseEffects/ui/delay.glade:333
-#: PulseEffects/ui/highpass.glade:158 PulseEffects/ui/limiter.glade:417
-#: PulseEffects/ui/lowpass.glade:158 PulseEffects/ui/maximizer.glade:189
-#: PulseEffects/ui/output_limiter.glade:190 PulseEffects/ui/panorama.glade:137
-#: PulseEffects/ui/pitch.glade:241 PulseEffects/ui/reverb.glade:306
+#: PulseEffects/ui/compressor.glade:350 PulseEffects/ui/crossfeed.glade:205
+#: PulseEffects/ui/delay.glade:333 PulseEffects/ui/highpass.glade:158
+#: PulseEffects/ui/limiter.glade:417 PulseEffects/ui/lowpass.glade:158
+#: PulseEffects/ui/maximizer.glade:189 PulseEffects/ui/output_limiter.glade:190
+#: PulseEffects/ui/panorama.glade:137 PulseEffects/ui/pitch.glade:241
+#: PulseEffects/ui/reverb.glade:306
 msgid "Output"
 msgstr "Výstup"
 
 #: PulseEffects/ui/compressor.glade:516
 msgid "Gain Reduction"
 msgstr "Zmenšení zesílení"
+
+#: PulseEffects/ui/crossfeed.glade:44 PulseEffects/ui/highpass.glade:77
+#: PulseEffects/ui/lowpass.glade:77
+msgid "Cutoff [Hz]"
+msgstr "Bod zkrácení [Hz]"
+
+#: PulseEffects/ui/crossfeed.glade:71
+#, fuzzy
+msgid "Feed [dB]"
+msgstr "Koleno [dB]"
+
+#. for some reason when listbox is inside a scrolledwindow
+#. it autoselects a row at startup
+#: PulseEffects/ui/crossfeed.glade:114 PulseEffects/ui/main_ui.glade:301
+#: PulseEffects/ui/reverb.glade:215 PulseEffects/presets_manager.py:56
+msgid "Presets"
+msgstr "Přednastavení"
+
+#: PulseEffects/ui/crossfeed.glade:126
+msgid "Jmeier"
+msgstr ""
+
+#: PulseEffects/ui/crossfeed.glade:140
+#, fuzzy
+msgid "Default"
+msgstr "Výchozí"
+
+#: PulseEffects/ui/crossfeed.glade:154
+msgid "Cmoy"
+msgstr ""
+
+#: PulseEffects/ui/crossfeed.glade:369
+msgid "Crossfeed"
+msgstr ""
 
 #: PulseEffects/ui/delay.glade:23
 #, fuzzy
@@ -243,10 +279,6 @@ msgstr ""
 msgid "High Pass"
 msgstr "Horní pásmová propust"
 
-#: PulseEffects/ui/highpass.glade:77 PulseEffects/ui/lowpass.glade:77
-msgid "Cutoff [Hz]"
-msgstr "Bod zkrácení [Hz]"
-
 #: PulseEffects/ui/highpass.glade:104 PulseEffects/ui/lowpass.glade:104
 msgid "Poles"
 msgstr "Póly"
@@ -298,13 +330,6 @@ msgstr "Dolní pásmová propust"
 #, fuzzy
 msgid "Test Signals"
 msgstr "Zkušební signál"
-
-#. for some reason when listbox is inside a scrolledwindow
-#. it autoselects a row at startup
-#: PulseEffects/ui/main_ui.glade:301 PulseEffects/ui/reverb.glade:215
-#: PulseEffects/presets_manager.py:56
-msgid "Presets"
-msgstr "Přednastavení"
 
 #: PulseEffects/ui/main_ui.glade:347
 msgid "General"
@@ -624,10 +649,6 @@ msgstr "PulseEffects"
 msgid "Audio Effects for PulseAudio Applications"
 msgstr "Zvukové efekty pro programy využívající PulseAudio"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:9
-msgid "Wellington Wallace"
-msgstr "Wellington Wallace"
-
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:11
 msgid ""
 "PulseEffects is an advanced audio manipulation tools. It includes an "
@@ -685,6 +706,9 @@ msgstr "omezovač (limiter);kompresor;dozvuk;ekvalizér;automatická hlasitost;"
 msgid "pulseeffects"
 msgstr "PulseEffects"
 
+#~ msgid "Wellington Wallace"
+#~ msgstr "Wellington Wallace"
+
 #~ msgid "Buffer Latency"
 #~ msgstr "Prodleva vyrovnávací paměti"
 
@@ -735,9 +759,6 @@ msgstr "PulseEffects"
 
 #~ msgid "club"
 #~ msgstr "Klub"
-
-#~ msgid "default"
-#~ msgstr "Výchozí"
 
 #~ msgid "flat"
 #~ msgstr "Plocha"
