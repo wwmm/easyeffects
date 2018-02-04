@@ -589,6 +589,25 @@
           <default>false</default>
         </key>
 
+        <key name="crossfeed-state" type="b">
+          <default>false</default>
+        </key>
+        <key name="crossfeed-fcut" type="i">
+          <default>700</default>
+        </key>
+        <key name="crossfeed-feed" type="d">
+          <default>4.5</default>
+        </key>
+        <key name="crossfeed-default" type="ad">
+          <default>[700, 4.5]</default>
+        </key>
+        <key name="crossfeed-cmoy" type="ad">
+          <default>[700, 6.0]</default>
+        </key>
+        <key name="crossfeed-jmeier" type="ad">
+          <default>[650, 9.0]</default>
+        </key>
+
         <key name="reverb-state" type="b">
           <default>false</default>
         </key>

@@ -7,6 +7,7 @@ gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gio, GstInsertBin, Gtk
 from PulseEffects.bass_enhancer import BassEnhancer
+from PulseEffects.crossfeed import Crossfeed
 from PulseEffects.delay import Delay
 from PulseEffects.effects_base import EffectsBase
 from PulseEffects.exciter import Exciter
@@ -57,6 +58,7 @@ class SinkInputEffects(EffectsBase):
         self.delay = Delay(self.settings)
         self.stereo_enhancer = StereoEnhancer(self.settings)
         self.stereo_spread = StereoSpread(self.settings)
+        self.crossfeed = Crossfeed(self.settings)
         self.panorama = Panorama(self.settings)
         self.maximizer = Maximizer(self.settings)
         self.output_limiter = OutputLimiter(self.settings)
