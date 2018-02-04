@@ -72,6 +72,8 @@ class SinkInputEffects(EffectsBase):
             'stereo_enhancer_wrapper')
         self.stereo_spread_wrapper = GstInsertBin.InsertBin.new(
             'stereo_spread_wrapper')
+        self.crossfeed_wrapper = GstInsertBin.InsertBin.new(
+            'crossfeed_wrapper')
         self.panorama_wrapper = GstInsertBin.InsertBin.new('panorama_wrapper')
         self.maximizer_wrapper = GstInsertBin.InsertBin.new(
             'maximizer_wrapper')
@@ -105,6 +107,11 @@ class SinkInputEffects(EffectsBase):
                                       self.on_filter_added,
                                       self.log_tag)
 
+        self.effects_bin.insert_after(self.crossfeed_wrapper,
+                                      self.stereo_spread_wrapper,
+                                      self.on_filter_added,
+                                      self.log_tag)
+
         self.effects_bin.insert_after(self.panorama_wrapper,
                                       self.reverb_wrapper,
                                       self.on_filter_added,
@@ -133,6 +140,7 @@ class SinkInputEffects(EffectsBase):
         self.delay.init_ui()
         self.stereo_enhancer.init_ui()
         self.stereo_spread.init_ui()
+        self.crossfeed.init_ui()
         self.reverb.init_ui()
         self.panorama.init_ui()
         self.maximizer.init_ui()
@@ -148,6 +156,7 @@ class SinkInputEffects(EffectsBase):
         self.add_to_listbox('delay')
         self.add_to_listbox('stereo_enhancer')
         self.add_to_listbox('stereo_spread')
+        self.add_to_listbox('crossfeed')
         self.add_to_listbox('reverb')
         self.add_to_listbox('panorama')
         self.add_to_listbox('maximizer')
@@ -167,6 +176,7 @@ class SinkInputEffects(EffectsBase):
         self.stack.add_named(self.delay.ui_window, 'delay')
         self.stack.add_named(self.stereo_enhancer.ui_window, 'stereo_enhancer')
         self.stack.add_named(self.stereo_spread.ui_window, 'stereo_spread')
+        self.stack.add_named(self.crossfeed.ui_window, 'crossfeed')
         self.stack.add_named(self.reverb.ui_window, 'reverb')
         self.stack.add_named(self.panorama.ui_window, 'panorama')
         self.stack.add_named(self.maximizer.ui_window, 'maximizer')
@@ -188,6 +198,7 @@ class SinkInputEffects(EffectsBase):
                                                self.on_stereo_enhancer_enable)
         self.stereo_spread.ui_enable.connect('state-set',
                                              self.on_stereo_spread_enable)
+        self.crossfeed.ui_enable.connect('state-set', self.on_crossfeed_enable)
         self.reverb.ui_enable.connect('state-set', self.on_reverb_enable)
         self.panorama.ui_enable.connect('state-set', self.on_panorama_enable)
         self.maximizer.ui_enable.connect('state-set', self.on_maximizer_enable)
@@ -243,6 +254,13 @@ class SinkInputEffects(EffectsBase):
             self.stereo_spread.ui_enable.set_sensitive(False)
             self.stereo_spread.ui_img_state.hide()
 
+        if self.crossfeed.is_installed:
+            self.crossfeed.bind()
+        else:
+            self.crossfeed.ui_window.set_sensitive(False)
+            self.crossfeed.ui_enable.set_sensitive(False)
+            self.crossfeed.ui_img_state.hide()
+
         if self.maximizer.is_installed:
             self.maximizer.bind()
         else:
@@ -292,6 +310,7 @@ class SinkInputEffects(EffectsBase):
         self.delay.post_messages(state)
         self.stereo_enhancer.post_messages(state)
         self.stereo_spread.post_messages(state)
+        self.crossfeed.post_messages(state)
         self.panorama.post_messages(state)
         self.maximizer.post_messages(state)
         self.output_limiter.post_messages(state)
@@ -341,14 +360,22 @@ class SinkInputEffects(EffectsBase):
             peak = msg.get_structure().get_value('peak')
 
             self.stereo_spread.ui_update_output_level(peak)
+        elif plugin == 'crossfeed_input_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.crossfeed.ui_update_input_level(peak)
+        elif plugin == 'crossfeed_output_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.crossfeed.ui_update_output_level(peak)
         elif plugin == 'panorama_input_level':
             peak = msg.get_structure().get_value('peak')
 
-            self.panorama.ui_update_panorama_input_level(peak)
+            self.panorama.ui_update_input_level(peak)
         elif plugin == 'panorama_output_level':
             peak = msg.get_structure().get_value('peak')
 
-            self.panorama.ui_update_panorama_output_level(peak)
+            self.panorama.ui_update_output_level(peak)
         elif plugin == 'maximizer_input_level':
             peak = msg.get_structure().get_value('peak')
 
@@ -424,6 +451,17 @@ class SinkInputEffects(EffectsBase):
                                               self.on_filter_removed,
                                               self.log_tag)
 
+    def on_crossfeed_enable(self, obj, state):
+        if state:
+            if not self.crossfeed_wrapper.get_by_name('crossfeed_bin'):
+                self.crossfeed_wrapper.append(self.crossfeed.bin,
+                                              self.on_filter_added,
+                                              self.log_tag)
+        else:
+            self.crossfeed_wrapper.remove(self.crossfeed.bin,
+                                          self.on_filter_removed,
+                                          self.log_tag)
+
     def on_panorama_enable(self, obj, state):
         if state:
             if not self.panorama_wrapper.get_by_name('panorama_bin'):
@@ -466,6 +504,7 @@ class SinkInputEffects(EffectsBase):
         self.delay.reset()
         self.stereo_enhancer.reset()
         self.stereo_spread.reset()
+        self.crossfeed.reset()
         self.panorama.reset()
         self.maximizer.reset()
         self.output_limiter.reset()
