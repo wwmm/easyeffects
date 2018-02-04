@@ -4,7 +4,8 @@
 
 ## [3.2.0]
 ### Added
-- Crossfeed plugin from bs2b library
+- Crossfeed plugin from bs2b library. GStreamer Plugins Bad must be compiled
+against it.
 - PulseEffects pipeline enters the playing state only when there is at least
 one audio application switched on and in the playing state. This will save cpu
 when the user paused or switched off all audio applications while PulseEffects

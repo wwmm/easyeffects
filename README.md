@@ -84,7 +84,7 @@ Required libraries:
 - [ZamAudio Ladspa Plugins](http://www.zamaudio.com/)
 - [Linux Studio Plugins](http://lsp-plug.in/)
 - [Rubber Band](http://breakfastquay.com/rubberband/)
-- [Bs2b Crossfeed](http://bs2b.sourceforge.net/)
+- GStreamer Plugins Bad compiled against [Bs2b Crossfeed](http://bs2b.sourceforge.net/)
 
 #### Installing from Source
 
