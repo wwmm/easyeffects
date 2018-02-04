@@ -76,15 +76,16 @@ Required libraries:
 - [Python Numpy](http://www.numpy.org/)
 - [Python Scipy](https://scipy.org/scipylib/) (0.18 or above)
 - Gtk 3.18 or above
-- Gstreamer, Gstreamer Plugins Good, Gstreamer Plugins Bad and Gstreamer Python
- (Since version 1.4.3 Pulseeffects needs Gstreamer 1.12 or above)
+- Gstreamer, Gstreamer Plugins Good, GStreamer Plugins Bad and Gstreamer Python.
+GStreamer 1.12.3 or above is needed to have all the functionality of
+PulseEffects. And GStreamer Plugins Bad must be compiled against
+[Bs2b](http://bs2b.sourceforge.net/) in order to have the crossfeed
 - [swh-plugins](https://github.com/swh/ladspa) from Ladspa
 - [Lilv](http://drobilla.net/category/lilv/)
 - [Calf Plugins](https://calf-studio-gear.org/)
 - [ZamAudio Ladspa Plugins](http://www.zamaudio.com/)
 - [Linux Studio Plugins](http://lsp-plug.in/)
 - [Rubber Band](http://breakfastquay.com/rubberband/)
-- GStreamer Plugins Bad compiled against [Bs2b Crossfeed](http://bs2b.sourceforge.net/)
 
 #### Installing from Source
 
