@@ -276,7 +276,6 @@ class Application(Gtk.Application):
         buffer_time.set_value(value)
 
         self.sie.init_buffer_time(value * 1000)
-        self.soe.init_buffer_time(value * 1000)
 
     def on_buffer_time_value_changed(self, obj):
         value = obj.get_value()
@@ -286,10 +285,8 @@ class Application(Gtk.Application):
 
         if self.ui_initialized:
             self.sie.set_buffer_time(value * 1000)
-            self.soe.set_buffer_time(value * 1000)
         else:
             self.sie.init_buffer_time(value * 1000)
-            self.soe.init_buffer_time(value * 1000)
 
     def init_latency_time(self):
         value = self.settings.get_value('latency-time').unpack()
