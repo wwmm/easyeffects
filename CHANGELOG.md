@@ -1,6 +1,7 @@
 # Changelog
 
 ## [Unreleased]
+### Added - Updated Czech translation
 
 ## [3.2.0]
 ### Added

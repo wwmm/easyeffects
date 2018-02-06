@@ -1,13 +1,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Pavel Fric <pavelfric@seznam.cz>, 2017.
+# Pavel Fric <pavelfric@seznam.cz>, 2017, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-04 14:04-0200\n"
-"PO-Revision-Date: 2017-12-07 21:59+0100\n"
+"PO-Revision-Date: 2018-02-06 20:54+0100\n"
 "Last-Translator: Pavel Fric <pavelfric@seznam.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -38,9 +38,8 @@ msgid "Resampler"
 msgstr "Převzorkovač"
 
 #: PulseEffects/ui/app_info.glade:156 PulseEffects/ui/main_ui.glade:376
-#, fuzzy
 msgid "Buffer"
-msgstr "Prodleva vyrovnávací paměti"
+msgstr "Vyrovnávací paměť"
 
 #: PulseEffects/ui/app_info.glade:183 PulseEffects/ui/main_ui.glade:389
 msgid "Latency"
@@ -159,12 +158,11 @@ msgstr "Zmenšení zesílení"
 #: PulseEffects/ui/crossfeed.glade:44 PulseEffects/ui/highpass.glade:77
 #: PulseEffects/ui/lowpass.glade:77
 msgid "Cutoff [Hz]"
-msgstr "Bod zkrácení [Hz]"
+msgstr "Useknutí [Hz]"
 
 #: PulseEffects/ui/crossfeed.glade:71
-#, fuzzy
 msgid "Feed [dB]"
-msgstr "Koleno [dB]"
+msgstr "Zaoblení hran [dB]"
 
 #. for some reason when listbox is inside a scrolledwindow
 #. it autoselects a row at startup
@@ -175,55 +173,51 @@ msgstr "Přednastavení"
 
 #: PulseEffects/ui/crossfeed.glade:126
 msgid "Jmeier"
-msgstr ""
+msgstr "Jmeier"
 
 #: PulseEffects/ui/crossfeed.glade:140
-#, fuzzy
 msgid "Default"
 msgstr "Výchozí"
 
 #: PulseEffects/ui/crossfeed.glade:154
 msgid "Cmoy"
-msgstr ""
+msgstr "Sluchátkový zesilovač (CMoy)"
 
 #: PulseEffects/ui/crossfeed.glade:369
 msgid "Crossfeed"
-msgstr ""
+msgstr "Prolínání kanálů"
 
 #: PulseEffects/ui/delay.glade:23
-#, fuzzy
 msgid "Delay"
-msgstr "Uvolnění [ms]"
+msgstr "Zpoždění"
 
 #: PulseEffects/ui/delay.glade:91 PulseEffects/ui/delay.glade:124
-#, fuzzy
 msgid "Meters"
-msgstr "Typ filtru"
+msgstr "Metry"
 
 #: PulseEffects/ui/delay.glade:102 PulseEffects/ui/delay.glade:113
 msgid "Centimeters"
-msgstr ""
+msgstr "Centimetry"
 
 #: PulseEffects/ui/delay.glade:180 PulseEffects/ui/stereo_enhancer.glade:218
 #: PulseEffects/ui/stereo_enhancer.glade:263
 msgid "Left"
-msgstr ""
+msgstr "Levý"
 
 #: PulseEffects/ui/delay.glade:196 PulseEffects/ui/stereo_enhancer.glade:264
 #: PulseEffects/ui/stereo_enhancer.glade:402
 msgid "Right"
-msgstr ""
+msgstr "Pravý"
 
 #: PulseEffects/ui/delay.glade:224
 msgid "Temperature"
-msgstr ""
+msgstr "Teplota"
 
 #: PulseEffects/ui/delay.glade:239 PulseEffects/ui/delay.glade:269
 #: PulseEffects/ui/stereo_enhancer.glade:165
 #: PulseEffects/ui/stereo_enhancer.glade:350
-#, fuzzy
 msgid "Delay [ms]"
-msgstr "Uvolnění [ms]"
+msgstr "Zpoždění [ms]"
 
 #: PulseEffects/ui/equalizer.glade:350
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
@@ -269,11 +263,11 @@ msgstr "Typ filtru"
 
 #: PulseEffects/ui/exciter.glade:45
 msgid "Exciter"
-msgstr ""
+msgstr "Budič"
 
 #: PulseEffects/ui/exciter.glade:134
 msgid "Ceiling [Hz]"
-msgstr ""
+msgstr "Strop [Hz]"
 
 #: PulseEffects/ui/highpass.glade:18
 msgid "High Pass"
@@ -327,9 +321,8 @@ msgid "Low Pass"
 msgstr "Dolní pásmová propust"
 
 #: PulseEffects/ui/main_ui.glade:274
-#, fuzzy
 msgid "Test Signals"
-msgstr "Zkušební signál"
+msgstr "Zkušební signály"
 
 #: PulseEffects/ui/main_ui.glade:347
 msgid "General"
@@ -337,7 +330,7 @@ msgstr "Obecné"
 
 #: PulseEffects/ui/main_ui.glade:362
 msgid "Latency in Miliseconds"
-msgstr ""
+msgstr "Prodleva v milisekundách"
 
 #: PulseEffects/ui/main_ui.glade:436
 msgid "Settings"
@@ -365,7 +358,7 @@ msgstr "Povolit všechny programy"
 
 #: PulseEffects/ui/main_ui.glade:562
 msgid "Start Service at Login"
-msgstr ""
+msgstr "Spustit službu při přihlášení"
 
 #: PulseEffects/ui/main_ui.glade:588
 msgid "Use Dark Theme"
@@ -373,12 +366,11 @@ msgstr "Použít tmavý vzhled"
 
 #: PulseEffects/ui/maximizer.glade:18
 msgid "Maximizer"
-msgstr ""
+msgstr "Zvětšovač"
 
 #: PulseEffects/ui/maximizer.glade:107
-#, fuzzy
 msgid "Ceiling [dB]"
-msgstr "Omezení [dB]"
+msgstr "Strop [dB]"
 
 #: PulseEffects/ui/output_limiter.glade:24
 msgid "Output Limiter"
@@ -398,31 +390,31 @@ msgstr "P"
 
 #: PulseEffects/ui/pitch.glade:25
 msgid "Pitch"
-msgstr ""
+msgstr "Výška tónu"
 
 #: PulseEffects/ui/pitch.glade:136
 msgid "Cents"
-msgstr ""
+msgstr "Centy"
 
 #: PulseEffects/ui/pitch.glade:147
 msgid "Semitones"
-msgstr ""
+msgstr "Půltóny"
 
 #: PulseEffects/ui/pitch.glade:158
 msgid "Octaves"
-msgstr ""
+msgstr "Oktávy"
 
 #: PulseEffects/ui/pitch.glade:169
 msgid "Crispness"
-msgstr ""
+msgstr "Křehkost"
 
 #: PulseEffects/ui/pitch.glade:178
 msgid "Faster"
-msgstr ""
+msgstr "Rychleji"
 
 #: PulseEffects/ui/pitch.glade:194
 msgid "Preserve Formant"
-msgstr ""
+msgstr "Zachovat složku rozhodující o barvě zvuku"
 
 #: PulseEffects/ui/presets_menu.glade:54
 msgid "Name"
@@ -461,85 +453,75 @@ msgid "Cathedral"
 msgstr "Katedrála"
 
 #: PulseEffects/ui/stereo_enhancer.glade:40
-#, fuzzy
 msgid "Stereo Enhancer"
-msgstr "Zlepšovač zvuku"
+msgstr "Zlepšovač sterea"
 
 #: PulseEffects/ui/stereo_enhancer.glade:139
 #: PulseEffects/ui/stereo_enhancer.glade:324
-#, fuzzy
 msgid "Balance"
-msgstr "Tanec"
+msgstr "Vyvážení"
 
 #: PulseEffects/ui/stereo_enhancer.glade:190
 #: PulseEffects/ui/stereo_enhancer.glade:375
-#, fuzzy
 msgid "Gain [dB]"
-msgstr "Vstupní zesílení [dB]"
+msgstr "Zesílení [dB]"
 
 #: PulseEffects/ui/stereo_enhancer.glade:199
 #: PulseEffects/ui/stereo_enhancer.glade:384
 msgid "Invert Phase"
-msgstr ""
+msgstr "Obrátit fázi"
 
 #: PulseEffects/ui/stereo_enhancer.glade:249
-#, fuzzy
 msgid "Side Gain [dB]"
-msgstr "Vstupní zesílení [dB]"
+msgstr "Postranní zesílení [dB]"
 
 #: PulseEffects/ui/stereo_enhancer.glade:265
 msgid "Mid (L + R)"
-msgstr ""
+msgstr "Středový (L + P)"
 
 #: PulseEffects/ui/stereo_enhancer.glade:266
 msgid "Side (L - R)"
-msgstr ""
+msgstr "Postranní (L - P)"
 
 #: PulseEffects/ui/stereo_enhancer.glade:267
 msgid "Mute"
-msgstr ""
+msgstr "Ztlumit"
 
 #: PulseEffects/ui/stereo_enhancer.glade:281
 msgid "Middle Source"
-msgstr ""
+msgstr "Prostřední zdroj"
 
 #: PulseEffects/ui/stereo_enhancer.glade:290
 msgid "Invert Middle Phase"
-msgstr ""
+msgstr "Obrátit prostřední fázi"
 
 #: PulseEffects/ui/stereo_spread.glade:54
 msgid "Stereo Spread"
-msgstr ""
+msgstr "Rozložení sterea"
 
 #: PulseEffects/ui/stereo_spread.glade:112
-#, fuzzy
 msgid "Sub [dB]"
-msgstr "Vstup [dB]"
+msgstr "Basový [dB]"
 
 #: PulseEffects/ui/stereo_spread.glade:124
-#, fuzzy
 msgid "Low [dB]"
-msgstr "Omezení [dB]"
+msgstr "Nízký [dB]"
 
 #: PulseEffects/ui/stereo_spread.glade:136
-#, fuzzy
 msgid "High [dB]"
-msgstr "Omezení [dB]"
+msgstr "Vysoký [dB]"
 
 #: PulseEffects/ui/stereo_spread.glade:148
-#, fuzzy
 msgid "Mid [dB]"
-msgstr "Vstupní zesílení [dB]"
+msgstr "Středový [dB]"
 
 #: PulseEffects/ui/stereo_spread.glade:206
-#, fuzzy
 msgid "Filters"
-msgstr "Typ filtru"
+msgstr "Filtry"
 
 #: PulseEffects/ui/stereo_spread.glade:229
-#, fuzzy
 msgid "Mono Input"
-msgstr "Vstup"
+msgstr "Monofonní vstup"
 
 #: PulseEffects/effects_base.py:84
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
