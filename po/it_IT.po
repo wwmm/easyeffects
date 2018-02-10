@@ -1,47 +1,46 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Italian translation file for PulseEffects
+# Copyright (C) 2018
+# This file is distributed under the same license as the PulseEffects package.
+# Matteo Iervasi <matteoiervasi@gmail.com>, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-04 14:04-0200\n"
-"PO-Revision-Date: 2017-07-09 11:11+0200\n"
+"PO-Revision-Date: 2018-02-10 15:25+0100\n"
 "Last-Translator: Matteo Iervasi <matteoiervasi@gmail.com>\n"
 "Language-Team: \n"
 "Language: it_IT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: PulseEffects/ui/about.glade:11
 msgid "Audio Effects for Pulseaudio Applications"
-msgstr "Effetti Audio per le Applicazioni Pulseaudio"
+msgstr "Effetti Audio per le applicazioni Pulseaudio"
 
 #: PulseEffects/ui/app_info.glade:48
 msgid "Format"
-msgstr ""
+msgstr "Formato"
 
 #: PulseEffects/ui/app_info.glade:75
 msgid "Rate"
-msgstr ""
+msgstr "Perceuntuale"
 
 #: PulseEffects/ui/app_info.glade:102
 msgid "Channels"
-msgstr ""
+msgstr "Canali"
 
 #: PulseEffects/ui/app_info.glade:129
 msgid "Resampler"
-msgstr ""
+msgstr "Campionatore"
 
 #: PulseEffects/ui/app_info.glade:156 PulseEffects/ui/main_ui.glade:376
-#, fuzzy
 msgid "Buffer"
-msgstr "Latenza"
+msgstr "Buffer"
 
 #: PulseEffects/ui/app_info.glade:183 PulseEffects/ui/main_ui.glade:389
 msgid "Latency"
@@ -49,41 +48,41 @@ msgstr "Latenza"
 
 #: PulseEffects/ui/app_info.glade:210
 msgid "State"
-msgstr ""
+msgstr "Stato"
 
 #: PulseEffects/ui/bass_enhancer.glade:45
 msgid "Bass Enhancer"
-msgstr ""
+msgstr "Bass Enhancer"
 
 #: PulseEffects/ui/bass_enhancer.glade:110 PulseEffects/ui/exciter.glade:110
 msgid "Amount"
-msgstr ""
+msgstr "Quota"
 
 #: PulseEffects/ui/bass_enhancer.glade:122
 #: PulseEffects/ui/bass_enhancer.glade:293 PulseEffects/ui/exciter.glade:122
 #: PulseEffects/ui/exciter.glade:293
 msgid "Harmonics"
-msgstr ""
+msgstr "Armoniche"
 
 #: PulseEffects/ui/bass_enhancer.glade:134
 msgid "Floor [Hz]"
-msgstr ""
+msgstr "Minimale [Hz]"
 
 #: PulseEffects/ui/bass_enhancer.glade:146 PulseEffects/ui/exciter.glade:146
 msgid "Scope [Hz]"
-msgstr ""
+msgstr "Base [Hz]"
 
 #: PulseEffects/ui/bass_enhancer.glade:237 PulseEffects/ui/exciter.glade:237
 msgid "3rd"
-msgstr ""
+msgstr "Terza"
 
 #: PulseEffects/ui/bass_enhancer.glade:249 PulseEffects/ui/exciter.glade:249
 msgid "2nd"
-msgstr ""
+msgstr "Seconda"
 
 #: PulseEffects/ui/bass_enhancer.glade:261 PulseEffects/ui/exciter.glade:261
 msgid "Blend Harmonics"
-msgstr ""
+msgstr "Ottava armoniche"
 
 #: PulseEffects/ui/bass_enhancer.glade:386 PulseEffects/ui/equalizer.glade:1847
 #: PulseEffects/ui/exciter.glade:386 PulseEffects/ui/stereo_enhancer.glade:459
@@ -155,7 +154,7 @@ msgstr "Output"
 
 #: PulseEffects/ui/compressor.glade:516
 msgid "Gain Reduction"
-msgstr "Gain Reduction"
+msgstr "Riduzione guadagno"
 
 #: PulseEffects/ui/crossfeed.glade:44 PulseEffects/ui/highpass.glade:77
 #: PulseEffects/ui/lowpass.glade:77
@@ -191,32 +190,30 @@ msgid "Crossfeed"
 msgstr ""
 
 #: PulseEffects/ui/delay.glade:23
-#, fuzzy
 msgid "Delay"
-msgstr "Rilascio [ms]"
+msgstr "Ritardo"
 
 #: PulseEffects/ui/delay.glade:91 PulseEffects/ui/delay.glade:124
-#, fuzzy
 msgid "Meters"
-msgstr "Filtri d'Input"
+msgstr "Metri"
 
 #: PulseEffects/ui/delay.glade:102 PulseEffects/ui/delay.glade:113
 msgid "Centimeters"
-msgstr ""
+msgstr "Centimetri"
 
 #: PulseEffects/ui/delay.glade:180 PulseEffects/ui/stereo_enhancer.glade:218
 #: PulseEffects/ui/stereo_enhancer.glade:263
 msgid "Left"
-msgstr ""
+msgstr "Sinistra"
 
 #: PulseEffects/ui/delay.glade:196 PulseEffects/ui/stereo_enhancer.glade:264
 #: PulseEffects/ui/stereo_enhancer.glade:402
 msgid "Right"
-msgstr ""
+msgstr "Destra"
 
 #: PulseEffects/ui/delay.glade:224
 msgid "Temperature"
-msgstr ""
+msgstr "Temperatura"
 
 #: PulseEffects/ui/delay.glade:239 PulseEffects/ui/delay.glade:269
 #: PulseEffects/ui/stereo_enhancer.glade:165
@@ -232,11 +229,11 @@ msgstr "Equalizzatore\t"
 
 #: PulseEffects/ui/equalizer.glade:2030
 msgid "Flat Response"
-msgstr ""
+msgstr "Risposta piatta"
 
 #: PulseEffects/ui/equalizer_band_menu.glade:24
 msgid "Peak"
-msgstr ""
+msgstr "Picco"
 
 #: PulseEffects/ui/equalizer_band_menu.glade:27
 msgid "Low Shelf"
@@ -253,20 +250,19 @@ msgstr "Frequenza [Hz]"
 
 #: PulseEffects/ui/equalizer_band_menu.glade:66
 msgid "Quality"
-msgstr ""
+msgstr "Qualità"
 
 #: PulseEffects/ui/equalizer_band_menu.glade:109
-#, fuzzy
 msgid "Reset Frequency"
-msgstr "Frequenza [Hz]"
+msgstr "Resetta frequenza"
 
 #: PulseEffects/ui/equalizer_band_menu.glade:123
 msgid "Reset Quality"
-msgstr ""
+msgstr "Resetta qualità"
 
 #: PulseEffects/ui/equalizer_band_menu.glade:159
 msgid "Filter Type"
-msgstr ""
+msgstr "Tipo di filtro"
 
 #: PulseEffects/ui/exciter.glade:45
 msgid "Exciter"
@@ -274,7 +270,7 @@ msgstr ""
 
 #: PulseEffects/ui/exciter.glade:134
 msgid "Ceiling [Hz]"
-msgstr ""
+msgstr "Massimale [Hz]"
 
 #: PulseEffects/ui/highpass.glade:18
 msgid "High Pass"
@@ -291,7 +287,7 @@ msgstr "Input Limiter"
 
 #: PulseEffects/ui/limiter.glade:119 PulseEffects/ui/output_limiter.glade:82
 msgid "Input Gain [dB]"
-msgstr "Guadagno in Input [dB]"
+msgstr "Guadagno in input [dB]"
 
 #: PulseEffects/ui/limiter.glade:145 PulseEffects/ui/output_limiter.glade:108
 msgid "Limit [dB]"
@@ -308,7 +304,7 @@ msgstr "Auto Volume"
 
 #: PulseEffects/ui/limiter.glade:259 PulseEffectsTest/ui/microphone.glade:35
 msgid "Window [s]"
-msgstr ""
+msgstr "Finestra [s]"
 
 #: PulseEffects/ui/limiter.glade:271
 #, fuzzy
@@ -316,9 +312,8 @@ msgid "Target [dB]"
 msgstr "Soglia [dB]"
 
 #: PulseEffects/ui/limiter.glade:363
-#, fuzzy
 msgid "Tolerance [dB]"
-msgstr "Passaggio [dB]"
+msgstr "Tolleranza [dB]"
 
 #: PulseEffects/ui/limiter.glade:432 PulseEffects/ui/maximizer.glade:204
 #: PulseEffects/ui/output_limiter.glade:205
@@ -330,9 +325,8 @@ msgid "Low Pass"
 msgstr "Passa-basso"
 
 #: PulseEffects/ui/main_ui.glade:274
-#, fuzzy
 msgid "Test Signals"
-msgstr "Segnale di Test"
+msgstr "Segnali di test"
 
 #: PulseEffects/ui/main_ui.glade:347
 msgid "General"
@@ -340,7 +334,7 @@ msgstr "Generale"
 
 #: PulseEffects/ui/main_ui.glade:362
 msgid "Latency in Miliseconds"
-msgstr ""
+msgstr "Latenza in millisecondi"
 
 #: PulseEffects/ui/main_ui.glade:436
 msgid "Settings"
@@ -364,11 +358,11 @@ msgstr "Punti"
 
 #: PulseEffects/ui/main_ui.glade:537
 msgid "Enable All Applications"
-msgstr ""
+msgstr "Abilita per tutte le applicazioni"
 
 #: PulseEffects/ui/main_ui.glade:562
 msgid "Start Service at Login"
-msgstr ""
+msgstr "Avvio servizio al login"
 
 #: PulseEffects/ui/main_ui.glade:588
 msgid "Use Dark Theme"
@@ -384,9 +378,8 @@ msgid "Ceiling [dB]"
 msgstr "Limite [dB]"
 
 #: PulseEffects/ui/output_limiter.glade:24
-#, fuzzy
 msgid "Output Limiter"
-msgstr "Input Limiter"
+msgstr ""
 
 #: PulseEffects/ui/panorama.glade:13
 msgid "Panorama"
@@ -410,11 +403,11 @@ msgstr ""
 
 #: PulseEffects/ui/pitch.glade:147
 msgid "Semitones"
-msgstr ""
+msgstr "Semitoni"
 
 #: PulseEffects/ui/pitch.glade:158
 msgid "Octaves"
-msgstr ""
+msgstr "Ottave"
 
 #: PulseEffects/ui/pitch.glade:169
 msgid "Crispness"
@@ -430,7 +423,7 @@ msgstr ""
 
 #: PulseEffects/ui/presets_menu.glade:54
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #: PulseEffects/ui/reverb.glade:25
 msgid "Reverberation"
@@ -438,7 +431,7 @@ msgstr "Riverbero"
 
 #: PulseEffects/ui/reverb.glade:88
 msgid "Room Size"
-msgstr "Dimensione Stanza"
+msgstr "Dimensione stanza"
 
 #: PulseEffects/ui/reverb.glade:116
 msgid "Damping"
@@ -454,11 +447,11 @@ msgstr "Livello"
 
 #: PulseEffects/ui/reverb.glade:227
 msgid "Small Room"
-msgstr "Piccola Stanza"
+msgstr "Piccola stanza"
 
 #: PulseEffects/ui/reverb.glade:241
 msgid "Engine Room"
-msgstr "Stanza Motori"
+msgstr "Stanza motori"
 
 #: PulseEffects/ui/reverb.glade:255
 msgid "Cathedral"
@@ -471,112 +464,102 @@ msgstr ""
 #: PulseEffects/ui/stereo_enhancer.glade:139
 #: PulseEffects/ui/stereo_enhancer.glade:324
 msgid "Balance"
-msgstr ""
+msgstr "Bilancio"
 
 #: PulseEffects/ui/stereo_enhancer.glade:190
 #: PulseEffects/ui/stereo_enhancer.glade:375
-#, fuzzy
 msgid "Gain [dB]"
-msgstr "Guadagno in Input [dB]"
+msgstr "Guadagno [dB]"
 
 #: PulseEffects/ui/stereo_enhancer.glade:199
 #: PulseEffects/ui/stereo_enhancer.glade:384
 msgid "Invert Phase"
-msgstr ""
+msgstr "Inverti fase"
 
 #: PulseEffects/ui/stereo_enhancer.glade:249
-#, fuzzy
 msgid "Side Gain [dB]"
-msgstr "Guadagno in Input [dB]"
+msgstr "Guadagno laterale [dB]"
 
 #: PulseEffects/ui/stereo_enhancer.glade:265
 msgid "Mid (L + R)"
-msgstr ""
+msgstr "Medi (L + R)"
 
 #: PulseEffects/ui/stereo_enhancer.glade:266
 msgid "Side (L - R)"
-msgstr ""
+msgstr "Laterale (L + R)"
 
 #: PulseEffects/ui/stereo_enhancer.glade:267
 msgid "Mute"
-msgstr ""
+msgstr "Muto"
 
 #: PulseEffects/ui/stereo_enhancer.glade:281
 msgid "Middle Source"
-msgstr ""
+msgstr "Sorgente medi"
 
 #: PulseEffects/ui/stereo_enhancer.glade:290
 msgid "Invert Middle Phase"
-msgstr ""
+msgstr "Inverti fase medi"
 
 #: PulseEffects/ui/stereo_spread.glade:54
 msgid "Stereo Spread"
 msgstr ""
 
 #: PulseEffects/ui/stereo_spread.glade:112
-#, fuzzy
 msgid "Sub [dB]"
-msgstr "Input [dB]"
+msgstr ""
 
 #: PulseEffects/ui/stereo_spread.glade:124
-#, fuzzy
 msgid "Low [dB]"
-msgstr "Limite [dB]"
+msgstr ""
 
 #: PulseEffects/ui/stereo_spread.glade:136
-#, fuzzy
 msgid "High [dB]"
-msgstr "Limite [dB]"
+msgstr ""
 
 #: PulseEffects/ui/stereo_spread.glade:148
-#, fuzzy
 msgid "Mid [dB]"
-msgstr "Guadagno in Input [dB]"
+msgstr ""
 
 #: PulseEffects/ui/stereo_spread.glade:206
-#, fuzzy
 msgid "Filters"
-msgstr "Filtri d'Input"
+msgstr ""
 
 #: PulseEffects/ui/stereo_spread.glade:229
-#, fuzzy
 msgid "Mono Input"
-msgstr "Input"
+msgstr "Input Mono"
 
 #: PulseEffects/effects_base.py:84
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
 msgid "Applications"
-msgstr ""
+msgstr "Applicazioni"
 
 #: PulseEffects/effects_base.py:189 PulseEffects/effects_base.py:258
 msgid "paused"
-msgstr ""
+msgstr "in pausa"
 
 #: PulseEffects/effects_base.py:191 PulseEffects/effects_base.py:260
 msgid "playing"
-msgstr ""
+msgstr "in riproduzione"
 
 #: PulseEffects/presets_manager.py:109
 msgid "Save Current Settings to Preset"
-msgstr ""
+msgstr "Salva impostazioni attuali in un preset"
 
 #: PulseEffects/presets_manager.py:124
-#, fuzzy
 msgid "Delete Preset"
-msgstr "Salva Preset"
+msgstr "Cancella preset"
 
 #: PulseEffectsTest/ui/microphone.glade:64
 msgid "Guideline Position"
 msgstr ""
 
 #: PulseEffectsTest/ui/microphone.glade:100
-#, fuzzy
 msgid "Measure Noise"
-msgstr "Rumore Blu"
+msgstr "Misura rumore"
 
 #: PulseEffectsTest/ui/microphone.glade:129
 msgid "Subtract Noise"
-msgstr ""
+msgstr "Sottrai rumore"
 
 #: PulseEffectsTest/ui/test_signals.glade:37
 #: PulseEffectsTest/ui/test_signals.glade:80
@@ -584,9 +567,8 @@ msgid "Volume"
 msgstr "Volume"
 
 #: PulseEffectsTest/ui/test_signals.glade:122
-#, fuzzy
 msgid "Equal Loudness Test Signals"
-msgstr "Stessa Intensità 20"
+msgstr "Segnali di test per stessa intensità"
 
 #: PulseEffectsTest/ui/test_signals.glade:140
 msgid "Test Signal"
@@ -610,11 +592,11 @@ msgstr "Triangolare"
 
 #: PulseEffectsTest/ui/test_signals.glade:252
 msgid "Pink Noise"
-msgstr "Rumore Rosa"
+msgstr "Rumore rosa"
 
 #: PulseEffectsTest/ui/test_signals.glade:267
 msgid "White Noise"
-msgstr "Rumore Bianco"
+msgstr "Rumore bianco"
 
 #: PulseEffectsTest/ui/test_signals.glade:282
 msgid "Silence"
@@ -622,38 +604,37 @@ msgstr "Silenzio"
 
 #: PulseEffectsTest/ui/test_signals.glade:297
 msgid "Sine Table"
-msgstr "Tabella Sinusoidale"
+msgstr "Tabella sinusoidale"
 
 #: PulseEffectsTest/ui/test_signals.glade:312
 msgid "Ticks"
-msgstr "Ticchettio"
+msgstr "Battiti"
 
 #: PulseEffectsTest/ui/test_signals.glade:327
 msgid "Gaussian Noise"
-msgstr "Rumore Gaussiano"
+msgstr "Rumore gaussiano"
 
 #: PulseEffectsTest/ui/test_signals.glade:342
 msgid "Red Noise"
-msgstr "Rumore Rosso"
+msgstr "Rumore rosso"
 
 #: PulseEffectsTest/ui/test_signals.glade:357
 msgid "Blue Noise"
-msgstr "Rumore Blu"
+msgstr "Rumore blu"
 
 #: PulseEffectsTest/ui/test_signals.glade:372
 msgid "Violet Noise"
-msgstr "Rumore Viola"
+msgstr "Rumore viola"
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
 #: data/com.github.wwmm.pulseeffects.desktop.in:3
 msgid "PulseEffects"
-msgstr ""
+msgstr "PulseEffects"
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:8
 #: data/com.github.wwmm.pulseeffects.desktop.in:5
-#, fuzzy
 msgid "Audio Effects for PulseAudio Applications"
-msgstr "Effetti Audio per le Applicazioni Pulseaudio"
+msgstr "Effetti audio per le applicazioni Pulseaudio"
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:11
 msgid ""
@@ -661,6 +642,10 @@ msgid ""
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
+"PulseEffects è uno strumento avanzato di manipolazione dell'audio. Include "
+"un equalizzatore, un limiter, un compressore e uno strumento per il "
+"riverbero, giusto per nominarne alcuni. Oltre ai vari strumenti è presente "
+"anche un analizzatore di spettro."
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:16
 msgid ""
@@ -668,6 +653,10 @@ msgid ""
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
+"Dato che usa il server di default di PulseAudio, PulseEffects dovrebbe "
+"funzionare con quasi tutte le applicazione che usi. Tutte le applicazioni "
+"supportate sono mostrate nella finestra principale, dove si possono "
+"abilitare individualmente."
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:22
 msgid ""
@@ -675,6 +664,10 @@ msgid ""
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
+"Oltre a manipolare il suono di output, PulseEffects è in grado di applicare "
+"effetti anche ad un dispositivo di input, come un microfono. Può essere "
+"utile per esempio nelle registrazioni audio, ma potrebbe anche essere usato "
+"nelle conversazioni."
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:27
 msgid ""
@@ -682,10 +675,13 @@ msgid ""
 "configuration used in the last session. It is also possible to save all the "
 "current settings as profiles."
 msgstr ""
+"Quando PulseEffects viene lanciato si ricorderà della configurazione usata "
+"nell'ultima sessione. E' anche possibile salvare tutte le impostazioni "
+"correnti come un preset."
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
 msgid "Calibration"
-msgstr ""
+msgstr "Calibrazione"
 
 #: data/com.github.wwmm.pulseeffects.desktop.in:4
 msgid "Audio Enhancer"
