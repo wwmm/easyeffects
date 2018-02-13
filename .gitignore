@@ -23,6 +23,7 @@ debian/*
 !debian/pycompat
 !debian/rules
 !debian/source/format
+!debian/build-ppa.sh
 
 # Dolphin file manager creates the file .directory to save some folder-specific settings
 *.directory
