@@ -51,7 +51,7 @@ These are community maintained repositories of distribution packages. You can
 find more information about these in the
 [wiki](https://github.com/wwmm/pulseeffects/wiki/Package-Repositories#package-repositories).
 
-- [Ubuntu](https://github.com/wwmm/pulseeffects/wiki/Package-Repositories#ubuntu-1710-and-newer)
+- [Ubuntu and Debian](https://github.com/wwmm/pulseeffects/wiki/Package-Repositories#debian--ubuntu)
 
 ### Flatpak
 
