@@ -95,6 +95,10 @@ See the wiki: [Installing from Source](https://github.com/wwmm/pulseeffects/wiki
 
 See the wiki: [Command Line Options](https://github.com/wwmm/pulseeffects/wiki/Command-Line-Options)
 
+## Community presets
+
+See the wiki: [Community presets](https://github.com/wwmm/pulseeffects/wiki/Community-presets)
+
 ## Reporting bugs
 
 See the wiki: [Reporting Bugs](https://github.com/wwmm/pulseeffects/wiki/Reporting-bugs)
