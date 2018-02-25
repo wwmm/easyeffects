@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-04 14:04-0200\n"
+"POT-Creation-Date: 2018-02-25 15:18-0300\n"
 "PO-Revision-Date: 2017-10-14 18:40+0200\n"
 "Last-Translator: Bleuzen <supgesu@gmail.com>\n"
 "Language-Team: \n"
@@ -171,7 +171,7 @@ msgstr "Kantenrundung [dB]"
 #. for some reason when listbox is inside a scrolledwindow
 #. it autoselects a row at startup
 #: PulseEffects/ui/crossfeed.glade:114 PulseEffects/ui/main_ui.glade:301
-#: PulseEffects/ui/reverb.glade:215 PulseEffects/presets_manager.py:56
+#: PulseEffects/ui/reverb.glade:215 PulseEffects/presets_manager.py:58
 msgid "Presets"
 msgstr ""
 
@@ -544,26 +544,47 @@ msgstr "Filtertyp"
 msgid "Mono Input"
 msgstr "Eingang"
 
-#: PulseEffects/effects_base.py:84
+#. sigint
+#: PulseEffects/application.py:35
+msgid "Quit PulseEffects. Useful when running in service mode."
+msgstr ""
+
+#: PulseEffects/application.py:40
+msgid "Show available presets."
+msgstr ""
+
+#: PulseEffects/application.py:45
+msgid "Load a preset. Example: pulseeffects -l music"
+msgstr ""
+
+#: PulseEffects/application.py:110
+msgid "Running in background"
+msgstr ""
+
+#: PulseEffects/effects_base.py:71
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
 msgid "Applications"
 msgstr "Anwendungen"
 
-#: PulseEffects/effects_base.py:189 PulseEffects/effects_base.py:258
+#: PulseEffects/effects_base.py:176 PulseEffects/effects_base.py:245
 msgid "paused"
 msgstr "pausiert"
 
-#: PulseEffects/effects_base.py:191 PulseEffects/effects_base.py:260
+#: PulseEffects/effects_base.py:178 PulseEffects/effects_base.py:247
 msgid "playing"
 msgstr ""
 
-#: PulseEffects/presets_manager.py:109
+#: PulseEffects/presets_manager.py:111
 msgid "Save Current Settings to Preset"
 msgstr "Aktuelle Einstellungen als Preset speichern"
 
-#: PulseEffects/presets_manager.py:124
+#: PulseEffects/presets_manager.py:126
 msgid "Delete Preset"
 msgstr "Preset löschen"
+
+#: PulseEffects/presets_manager.py:174
+msgid " is not a file!"
+msgstr ""
 
 #: PulseEffectsTest/ui/microphone.glade:64
 msgid "Guideline Position"
@@ -652,6 +673,10 @@ msgstr "PulseEffects"
 msgid "Audio Effects for PulseAudio Applications"
 msgstr "Audio Effekte für Pulseaudio Anwendungen"
 
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:9
+msgid "Wellington Wallace"
+msgstr "Wellington Wallace"
+
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:11
 msgid ""
 "PulseEffects is an advanced audio manipulation tools. It includes an "
@@ -697,8 +722,8 @@ msgid "Calibration"
 msgstr "Kalibrierung"
 
 #: data/com.github.wwmm.pulseeffects.desktop.in:4
-msgid "Audio Enhancer"
-msgstr "Audio Enhancer"
+msgid "Equalizer, Compressor and Other Audio Effects"
+msgstr ""
 
 #: data/com.github.wwmm.pulseeffects.desktop.in:6
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
@@ -709,8 +734,8 @@ msgstr "Limiter;Kompressor;Hall;Equalizer;Autovolumen;"
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
-#~ msgid "Wellington Wallace"
-#~ msgstr "Wellington Wallace"
+#~ msgid "Audio Enhancer"
+#~ msgstr "Audio Enhancer"
 
 #~ msgid "Buffer Latency"
 #~ msgstr "Puffer Latenz"

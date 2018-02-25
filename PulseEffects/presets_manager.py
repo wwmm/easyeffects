@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
+import logging
 import os
 from gettext import gettext as _
 
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import GLib, Gtk
-
 from PulseEffects.load_presets import LoadPresets
 from PulseEffects.save_presets import SavePresets
 
@@ -18,6 +18,8 @@ class PresetsManager():
         self.module_path = os.path.dirname(__file__)
 
         self.dir = os.path.join(GLib.get_user_config_dir(), 'PulseEffects')
+
+        self.log = logging.getLogger('PulseEffects')
 
         self.lp = LoadPresets()
         self.sp = SavePresets()
@@ -160,17 +162,23 @@ class PresetsManager():
 
         self.sp.write_config()
 
+    def load_preset(self, name):
+        path = os.path.join(self.dir, name + '.preset')
+
+        if os.path.isfile(path):
+            self.lp.set_config_path(path)
+
+            self.lp.load_sink_inputs_preset(self.app.sie.settings)
+            self.lp.load_source_outputs_preset(self.app.soe.settings)
+        else:
+            self.log.error(path + _(' is not a file!'))
+
     def on_listbox_row_activated(self, obj, row):
         name = row.get_name()
 
         self.menu_button.set_label(name)
 
-        path = os.path.join(self.dir, name + '.preset')
-
-        self.lp.set_config_path(path)
-
-        self.lp.load_sink_inputs_preset(self.app.sie.settings)
-        self.lp.load_source_outputs_preset(self.app.soe.settings)
+        self.load_preset(name)
 
     def on_add_preset_clicked(self, obj):
         name = self.new_preset_name.get_text()
@@ -220,3 +228,14 @@ class PresetsManager():
                 path = os.path.join(self.dir, name + ".preset")
 
                 os.remove(path)
+
+    def list_presets(self):
+        file_list = os.listdir(self.dir)
+
+        presets = []
+
+        for f in file_list:
+            if f.endswith('.preset'):
+                presets.append(f.split('.')[0])
+
+        self.log.info('Presets: ' + ','.join(presets))

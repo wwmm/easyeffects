@@ -2,6 +2,7 @@
 
 import logging
 import os
+from gettext import gettext as _
 
 import gi
 gi.require_version('Gdk', '3.0')
@@ -25,16 +26,26 @@ class Application(Gtk.Application):
         GLib.setenv('PULSE_PROP_application.icon_name', 'pulseeffects', True)
         GLib.setenv('PULSE_PROP_application.id',
                     'com.github.wwmm.pulseeffects', True)
-        GLib.setenv('PULSE_PROP_application.version', '3.2.0', True)
+        GLib.setenv('PULSE_PROP_application.version', '3.2.1', True)
 
         Gtk.Application.__init__(self, application_id=app_id, flags=app_flags)
 
         GLib.unix_signal_add(GLib.PRIORITY_DEFAULT, 2, self.quit)  # sigint
 
-        help_msg = 'Exit PulseEffects. Useful when running in service mode.'
+        help_msg = _('Quit PulseEffects. Useful when running in service mode.')
 
         self.add_main_option('quit', ord('q'), GLib.OptionFlags.NONE,
                              GLib.OptionArg.NONE, help_msg, None)
+
+        help_msg = _('Show available presets.')
+
+        self.add_main_option('presets', ord('p'), GLib.OptionFlags.NONE,
+                             GLib.OptionArg.NONE, help_msg, None)
+
+        help_msg = _('Load a preset. Example: pulseeffects -l music')
+
+        self.add_main_option('load-preset', ord('l'), GLib.OptionFlags.NONE,
+                             GLib.OptionArg.STRING, help_msg, None)
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
@@ -96,7 +107,7 @@ class Application(Gtk.Application):
             self.pm.find_sink_inputs()
             self.pm.find_source_outputs()
 
-            self.log.info('Running in background')
+            self.log.info(_('Running in background'))
 
             self.hold()
 
@@ -183,6 +194,12 @@ class Application(Gtk.Application):
 
         if options.contains('quit'):
             self.quit()
+        elif options.contains('presets'):
+            self.presets.list_presets()
+        elif options.contains('load-preset'):
+            value = options.lookup_value('load-preset', None).unpack()
+
+            self.presets.load_preset(value)
         else:
             self.do_activate()
 

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-04 14:04-0200\n"
-"PO-Revision-Date: 2018-02-04 14:05-0200\n"
+"POT-Creation-Date: 2018-02-25 15:18-0300\n"
+"PO-Revision-Date: 2018-02-25 15:22-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
@@ -170,7 +170,7 @@ msgstr "Alimentação [dB]"
 #. for some reason when listbox is inside a scrolledwindow
 #. it autoselects a row at startup
 #: PulseEffects/ui/crossfeed.glade:114 PulseEffects/ui/main_ui.glade:301
-#: PulseEffects/ui/reverb.glade:215 PulseEffects/presets_manager.py:56
+#: PulseEffects/ui/reverb.glade:215 PulseEffects/presets_manager.py:58
 msgid "Presets"
 msgstr "Predefinições"
 
@@ -526,26 +526,47 @@ msgstr "Filtros"
 msgid "Mono Input"
 msgstr "Entrada Mono"
 
-#: PulseEffects/effects_base.py:84
+#. sigint
+#: PulseEffects/application.py:35
+msgid "Quit PulseEffects. Useful when running in service mode."
+msgstr "Sair do PulseEffects. Útil quando executando em modo de serviço."
+
+#: PulseEffects/application.py:40
+msgid "Show available presets."
+msgstr "Mostrar predefinições disponíveis."
+
+#: PulseEffects/application.py:45
+msgid "Load a preset. Example: pulseeffects -l music"
+msgstr "Carregar uma predefinição. Exemplo: pulseeffects -l musica"
+
+#: PulseEffects/application.py:110
+msgid "Running in background"
+msgstr "Rodando em segundo plano"
+
+#: PulseEffects/effects_base.py:71
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
 msgid "Applications"
 msgstr "Aplicativos"
 
-#: PulseEffects/effects_base.py:189 PulseEffects/effects_base.py:258
+#: PulseEffects/effects_base.py:176 PulseEffects/effects_base.py:245
 msgid "paused"
 msgstr "pausado"
 
-#: PulseEffects/effects_base.py:191 PulseEffects/effects_base.py:260
+#: PulseEffects/effects_base.py:178 PulseEffects/effects_base.py:247
 msgid "playing"
 msgstr "tocando"
 
-#: PulseEffects/presets_manager.py:109
+#: PulseEffects/presets_manager.py:111
 msgid "Save Current Settings to Preset"
 msgstr "Salvar Configurações atuais para esta predefinição"
 
-#: PulseEffects/presets_manager.py:124
+#: PulseEffects/presets_manager.py:126
 msgid "Delete Preset"
 msgstr "Deletar Predefinição"
+
+#: PulseEffects/presets_manager.py:174
+msgid " is not a file!"
+msgstr " não é um arquivo!"
 
 #: PulseEffectsTest/ui/microphone.glade:64
 msgid "Guideline Position"
@@ -634,6 +655,10 @@ msgstr "PulseEffects"
 msgid "Audio Effects for PulseAudio Applications"
 msgstr "Efeitos de Áudio para Programas que Utilizam Pulseaudio"
 
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:9
+msgid "Wellington Wallace"
+msgstr ""
+
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:11
 msgid ""
 "PulseEffects is an advanced audio manipulation tools. It includes an "
@@ -681,8 +706,8 @@ msgid "Calibration"
 msgstr "Calibração"
 
 #: data/com.github.wwmm.pulseeffects.desktop.in:4
-msgid "Audio Enhancer"
-msgstr "Melhorador de Áudio"
+msgid "Equalizer, Compressor and Other Audio Effects"
+msgstr "Equalizador, Compressor e Outros Efeitos de Áudio"
 
 #: data/com.github.wwmm.pulseeffects.desktop.in:6
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
@@ -692,6 +717,9 @@ msgstr "limitador;compressor;reverberação;equalizador;autovolume;"
 #: data/com.github.wwmm.pulseeffects.desktop.in:10
 msgid "pulseeffects"
 msgstr "pulseeffects"
+
+#~ msgid "Audio Enhancer"
+#~ msgstr "Melhorador de Áudio"
 
 #~ msgid "Buffer Latency"
 #~ msgstr "Latência de Buffer"
