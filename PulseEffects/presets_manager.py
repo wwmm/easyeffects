@@ -208,14 +208,14 @@ class PresetsManager():
                 self.save_preset(path)
 
     def on_import_preset_clicked(self, obj):
-        dialog = Gtk.FileChooserDialog('Import Presets', self.app.window,
+        dialog = Gtk.FileChooserDialog(_('Import Presets'), self.app.window,
                                        Gtk.FileChooserAction.OPEN,
                                        (Gtk.STOCK_CANCEL,
                                         Gtk.ResponseType.CANCEL,
                                         Gtk.STOCK_OPEN, Gtk.ResponseType.OK))
 
         filter_preset = Gtk.FileFilter()
-        filter_preset.set_name('Preset')
+        filter_preset.set_name('preset')
         filter_preset.add_pattern('*.preset')
         dialog.add_filter(filter_preset)
 
@@ -264,4 +264,4 @@ class PresetsManager():
             if f.endswith('.preset'):
                 presets.append(f.split('.')[0])
 
-        self.log.info('Presets: ' + ','.join(presets))
+        self.log.info(_('Presets: ') + ','.join(presets))

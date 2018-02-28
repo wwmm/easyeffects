@@ -62,7 +62,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Import Preset</property>
+            <property name="tooltip_text" translatable="yes">Import Presets</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
             <property name="image">image_import</property>

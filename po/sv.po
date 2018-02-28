@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-25 15:18-0300\n"
+"POT-Creation-Date: 2018-02-28 15:37-0300\n"
 "PO-Revision-Date: 2017-10-14 10:20+0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: \n"
@@ -426,9 +426,19 @@ msgstr ""
 msgid "Preserve Formant"
 msgstr ""
 
-#: PulseEffects/ui/presets_menu.glade:54
+#: PulseEffects/ui/presets_menu.glade:33
 msgid "Name"
 msgstr "Namn"
+
+#: PulseEffects/ui/presets_menu.glade:46
+#, fuzzy
+msgid "Create Preset"
+msgstr "Ta bort profil"
+
+#: PulseEffects/ui/presets_menu.glade:65 PulseEffects/presets_manager.py:211
+#, fuzzy
+msgid "Import Presets"
+msgstr "Öppna förinställning"
 
 #: PulseEffects/ui/reverb.glade:25
 msgid "Reverberation"
@@ -573,17 +583,22 @@ msgstr ""
 msgid "playing"
 msgstr ""
 
-#: PulseEffects/presets_manager.py:111
+#: PulseEffects/presets_manager.py:107
 msgid "Save Current Settings to Preset"
 msgstr "Spara nuvarande inställningar som profil"
 
-#: PulseEffects/presets_manager.py:126
+#: PulseEffects/presets_manager.py:122
 msgid "Delete Preset"
 msgstr "Ta bort profil"
 
-#: PulseEffects/presets_manager.py:174
+#: PulseEffects/presets_manager.py:170
 msgid " is not a file!"
 msgstr ""
+
+#: PulseEffects/presets_manager.py:267
+#, fuzzy
+msgid "Presets: "
+msgstr "Profiler"
 
 #: PulseEffectsTest/ui/microphone.glade:64
 msgid "Guideline Position"
@@ -781,9 +796,6 @@ msgstr "pulseeffects"
 
 #~ msgid "Equalizer - Output"
 #~ msgstr "Ljudutjämnare - Utgång"
-
-#~ msgid "Load Preset"
-#~ msgstr "Öppna förinställning"
 
 #~ msgid "No Compression"
 #~ msgstr "Ingen komprimering"
