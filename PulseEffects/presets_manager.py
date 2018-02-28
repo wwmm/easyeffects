@@ -235,6 +235,8 @@ class PresetsManager():
 
         dialog.destroy()
 
+        self.init_listbox()
+
     def on_save(self, obj):
         path = os.path.join(self.dir, obj.get_name() + '.preset')
 

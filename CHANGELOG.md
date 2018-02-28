@@ -5,6 +5,7 @@
 - Updated Czech translation
 - Presets can be loaded from command line. Run 'pulseeffects --help' to see the
 available options.
+- Presets can be imported using the presets menu.
 
 ## [3.2.0]
 ### Added
