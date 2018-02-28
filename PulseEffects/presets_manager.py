@@ -6,7 +6,7 @@ from gettext import gettext as _
 
 import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import GLib, Gtk
+from gi.repository import Gio, GLib, Gtk
 from PulseEffects.load_presets import LoadPresets
 from PulseEffects.save_presets import SavePresets
 
@@ -58,7 +58,7 @@ class PresetsManager():
                 if self.menu_button.get_label() == _('Presets'):
                     self.listbox.unselect_all()
 
-        self.menu_button.connect("clicked", button_clicked, menu)
+        self.menu_button.connect('clicked', button_clicked, menu)
         self.listbox.connect('row-activated', self.on_listbox_row_activated)
 
         self.init_listbox()
@@ -82,10 +82,6 @@ class PresetsManager():
     def add_to_listbox(self, name):
         row = Gtk.ListBoxRow()
         row.set_name(name)
-        row.set_margin_top(6)
-        row.set_margin_bottom(6)
-        row.set_margin_left(6)
-        row.set_margin_right(6)
 
         box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
 
@@ -207,12 +203,40 @@ class PresetsManager():
 
                 self.listbox.show_all()
 
-                path = os.path.join(self.dir, name + ".preset")
+                path = os.path.join(self.dir, name + '.preset')
 
                 self.save_preset(path)
 
+    def on_import_preset_clicked(self, obj):
+        dialog = Gtk.FileChooserDialog('Import Presets', self.app.window,
+                                       Gtk.FileChooserAction.OPEN,
+                                       (Gtk.STOCK_CANCEL,
+                                        Gtk.ResponseType.CANCEL,
+                                        Gtk.STOCK_OPEN, Gtk.ResponseType.OK))
+
+        filter_preset = Gtk.FileFilter()
+        filter_preset.set_name('Preset')
+        filter_preset.add_pattern('*.preset')
+        dialog.add_filter(filter_preset)
+
+        dialog.set_select_multiple(True)
+
+        response = dialog.run()
+
+        if response == Gtk.ResponseType.OK:
+            gfiles = dialog.get_files()
+
+            for g in gfiles:
+                name = g.get_basename()
+
+                output = Gio.File.new_for_path(os.path.join(self.dir, name))
+
+                g.copy(output, Gio.FileCopyFlags.OVERWRITE, None, None, None)
+
+        dialog.destroy()
+
     def on_save(self, obj):
-        path = os.path.join(self.dir, obj.get_name() + ".preset")
+        path = os.path.join(self.dir, obj.get_name() + '.preset')
 
         self.save_preset(path)
 
@@ -225,7 +249,7 @@ class PresetsManager():
             if child.get_name() == name:
                 self.listbox.remove(child)
 
-                path = os.path.join(self.dir, name + ".preset")
+                path = os.path.join(self.dir, name + '.preset')
 
                 os.remove(path)
 
