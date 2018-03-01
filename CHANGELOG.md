@@ -1,8 +1,10 @@
 # Changelog
 
 ## [Unreleased]
+
+## [3.2.1]
 ### Added
-- Updated Czech translation
+- Updated Czech and Italian translations
 - Presets can be loaded from command line. Run 'pulseeffects --help' to see the
 available options.
 - Presets can be imported using the presets menu.
