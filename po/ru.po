@@ -53,7 +53,7 @@ msgstr "Состояние"
 #: PulseEffects/ui/bass_enhancer.glade:45
 #, fuzzy
 msgid "Bass Enhancer"
-msgstr "Улучшение басов"
+msgstr "Усиление басов"
 
 #: PulseEffects/ui/bass_enhancer.glade:110 PulseEffects/ui/exciter.glade:110
 msgid "Amount"
@@ -180,7 +180,7 @@ msgstr ""
 
 #: PulseEffects/ui/crossfeed.glade:140
 msgid "Default"
-msgstr "По-умолчанию"
+msgstr "По умолчанию"
 
 #: PulseEffects/ui/crossfeed.glade:154
 msgid "Cmoy"
@@ -207,12 +207,12 @@ msgstr "Сантиметры"
 #: PulseEffects/ui/delay.glade:180 PulseEffects/ui/stereo_enhancer.glade:218
 #: PulseEffects/ui/stereo_enhancer.glade:263
 msgid "Left"
-msgstr "Лев."
+msgstr "Левый"
 
 #: PulseEffects/ui/delay.glade:196 PulseEffects/ui/stereo_enhancer.glade:264
 #: PulseEffects/ui/stereo_enhancer.glade:402
 msgid "Right"
-msgstr "Прав."
+msgstr "Правый"
 
 #: PulseEffects/ui/delay.glade:224
 msgid "Temperature"
@@ -785,7 +785,7 @@ msgstr "pulseeffects"
 #~ msgstr "Правый канал"
 
 #~ msgid "Calibration Microphone Correction"
-#~ msgstr "Салибровка корректировки микрофона"
+#~ msgstr "Калибровка корректировки микрофона"
 
 #, fuzzy
 #~ msgid "Sink Latency"
