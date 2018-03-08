@@ -1,15 +1,14 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# PulseEffects Russian translation
+# This file is distributed under the same license as the PulseEffects package.
+# ⓒ  Mikhail Novosyolov [mikhailnov] <mikhailnov@dumalogiya.ru>, 2017-2018
+# ⓒ  Georgiy Starodubtsov [Mewsimka] <mewsim-ka@yandex.ru >, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-28 15:37-0300\n"
-"PO-Revision-Date: 2017-11-07 00:22+0300\n"
-"Last-Translator: Михаил <user@Mikhail-MSK-PC>\n"
+"PO-Revision-Date: 2018-03-09 01:34+0300\n"
+"Last-Translator: Михаил <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +40,7 @@ msgstr "Ресемплер"
 #: PulseEffects/ui/app_info.glade:156 PulseEffects/ui/main_ui.glade:376
 #, fuzzy
 msgid "Buffer"
-msgstr "Задержка буфера"
+msgstr "Буферизация"
 
 #: PulseEffects/ui/app_info.glade:183 PulseEffects/ui/main_ui.glade:389
 msgid "Latency"
@@ -49,54 +48,54 @@ msgstr "Задержка"
 
 #: PulseEffects/ui/app_info.glade:210
 msgid "State"
-msgstr "состояние"
+msgstr "Состояние"
 
 #: PulseEffects/ui/bass_enhancer.glade:45
 #, fuzzy
 msgid "Bass Enhancer"
-msgstr "Училитель звука"
+msgstr "Улучшение басов"
 
 #: PulseEffects/ui/bass_enhancer.glade:110 PulseEffects/ui/exciter.glade:110
 msgid "Amount"
-msgstr ""
+msgstr "Величина"
 
 #: PulseEffects/ui/bass_enhancer.glade:122
 #: PulseEffects/ui/bass_enhancer.glade:293 PulseEffects/ui/exciter.glade:122
 #: PulseEffects/ui/exciter.glade:293
 msgid "Harmonics"
-msgstr ""
+msgstr "Гармоники"
 
 #: PulseEffects/ui/bass_enhancer.glade:134
 msgid "Floor [Hz]"
-msgstr ""
+msgstr "Шум [Гц]"
 
 #: PulseEffects/ui/bass_enhancer.glade:146 PulseEffects/ui/exciter.glade:146
 msgid "Scope [Hz]"
-msgstr ""
+msgstr "Размах [Гц]"
 
 #: PulseEffects/ui/bass_enhancer.glade:237 PulseEffects/ui/exciter.glade:237
 msgid "3rd"
-msgstr ""
+msgstr "3-ий"
 
 #: PulseEffects/ui/bass_enhancer.glade:249 PulseEffects/ui/exciter.glade:249
 msgid "2nd"
-msgstr ""
+msgstr "2-ой"
 
 #: PulseEffects/ui/bass_enhancer.glade:261 PulseEffects/ui/exciter.glade:261
 msgid "Blend Harmonics"
-msgstr ""
+msgstr "Смешивание гармоник"
 
 #: PulseEffects/ui/bass_enhancer.glade:386 PulseEffects/ui/equalizer.glade:1847
 #: PulseEffects/ui/exciter.glade:386 PulseEffects/ui/stereo_enhancer.glade:459
 #: PulseEffects/ui/stereo_spread.glade:272
 msgid "Input [dB]"
-msgstr "Ввод [dB]"
+msgstr "Ввод [дБ]"
 
 #: PulseEffects/ui/bass_enhancer.glade:418 PulseEffects/ui/equalizer.glade:1862
 #: PulseEffects/ui/exciter.glade:418 PulseEffects/ui/stereo_enhancer.glade:473
 #: PulseEffects/ui/stereo_spread.glade:286
 msgid "Output [dB]"
-msgstr "Вывод [dB]"
+msgstr "Вывод [дБ]"
 
 #: PulseEffects/ui/compressor.glade:27
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:52
@@ -113,16 +112,16 @@ msgstr "пик"
 
 #: PulseEffects/ui/compressor.glade:155
 msgid "Attack [ms]"
-msgstr "Атака [ms]"
+msgstr "Атака [мс]"
 
 #: PulseEffects/ui/compressor.glade:183
 msgid "Release [ms]"
-msgstr "Релиз [ms]"
+msgstr "Высвобождение [мс]"
 
 #: PulseEffects/ui/compressor.glade:209 PulseEffects/ui/limiter.glade:334
 #: PulseEffects/ui/maximizer.glade:81
 msgid "Threshold [dB]"
-msgstr "Порог [dB]"
+msgstr "Порог [дБ]"
 
 #: PulseEffects/ui/compressor.glade:235
 msgid "Ratio [n:1]"
@@ -130,11 +129,11 @@ msgstr "Отношение [n:1]"
 
 #: PulseEffects/ui/compressor.glade:261
 msgid "Knee [dB]"
-msgstr "Колено [dB]"
+msgstr "Излом [дБ]"
 
 #: PulseEffects/ui/compressor.glade:289
 msgid "Makeup [dB]"
-msgstr "Компенсирование [dB]"
+msgstr "Компенсирование [дБ]"
 
 #: PulseEffects/ui/compressor.glade:335 PulseEffects/ui/crossfeed.glade:190
 #: PulseEffects/ui/delay.glade:318 PulseEffects/ui/highpass.glade:143
@@ -156,17 +155,17 @@ msgstr "Вывод"
 
 #: PulseEffects/ui/compressor.glade:516
 msgid "Gain Reduction"
-msgstr "Уменьшение усиления"
+msgstr "Увеличение ослабления"
 
 #: PulseEffects/ui/crossfeed.glade:44 PulseEffects/ui/highpass.glade:77
 #: PulseEffects/ui/lowpass.glade:77
 msgid "Cutoff [Hz]"
-msgstr "Завал частот [Hz]"
+msgstr "Усечение [Гц]"
 
 #: PulseEffects/ui/crossfeed.glade:71
 #, fuzzy
 msgid "Feed [dB]"
-msgstr "Колено [dB]"
+msgstr "Подача [дБ]"
 
 #. for some reason when listbox is inside a scrolledwindow
 #. it autoselects a row at startup
@@ -181,7 +180,7 @@ msgstr ""
 
 #: PulseEffects/ui/crossfeed.glade:140
 msgid "Default"
-msgstr ""
+msgstr "По-умолчанию"
 
 #: PulseEffects/ui/crossfeed.glade:154
 msgid "Cmoy"
@@ -189,12 +188,12 @@ msgstr ""
 
 #: PulseEffects/ui/crossfeed.glade:369
 msgid "Crossfeed"
-msgstr ""
+msgstr "Кроссфейд"
 
 #: PulseEffects/ui/delay.glade:23
 #, fuzzy
 msgid "Delay"
-msgstr "Релиз [ms]"
+msgstr "Задержка [ms]"
 
 #: PulseEffects/ui/delay.glade:91 PulseEffects/ui/delay.glade:124
 #, fuzzy
@@ -203,28 +202,28 @@ msgstr "Тип фильтра"
 
 #: PulseEffects/ui/delay.glade:102 PulseEffects/ui/delay.glade:113
 msgid "Centimeters"
-msgstr ""
+msgstr "Сантиметры"
 
 #: PulseEffects/ui/delay.glade:180 PulseEffects/ui/stereo_enhancer.glade:218
 #: PulseEffects/ui/stereo_enhancer.glade:263
 msgid "Left"
-msgstr ""
+msgstr "Лев."
 
 #: PulseEffects/ui/delay.glade:196 PulseEffects/ui/stereo_enhancer.glade:264
 #: PulseEffects/ui/stereo_enhancer.glade:402
 msgid "Right"
-msgstr ""
+msgstr "Прав."
 
 #: PulseEffects/ui/delay.glade:224
 msgid "Temperature"
-msgstr ""
+msgstr "Температура"
 
 #: PulseEffects/ui/delay.glade:239 PulseEffects/ui/delay.glade:269
 #: PulseEffects/ui/stereo_enhancer.glade:165
 #: PulseEffects/ui/stereo_enhancer.glade:350
 #, fuzzy
 msgid "Delay [ms]"
-msgstr "Релиз [ms]"
+msgstr "Задержка [ms]"
 
 #: PulseEffects/ui/equalizer.glade:350
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
@@ -233,7 +232,7 @@ msgstr "Эквалайзер"
 
 #: PulseEffects/ui/equalizer.glade:2030
 msgid "Flat Response"
-msgstr "Flat-ответ"
+msgstr "Плоская АЧХ"
 
 #: PulseEffects/ui/equalizer_band_menu.glade:24
 msgid "Peak"
@@ -259,12 +258,12 @@ msgstr "Качество"
 #: PulseEffects/ui/equalizer_band_menu.glade:109
 #, fuzzy
 msgid "Reset Frequency"
-msgstr "Сбросить частоту"
+msgstr "Сброс частоты"
 
 #: PulseEffects/ui/equalizer_band_menu.glade:123
 #, fuzzy
 msgid "Reset Quality"
-msgstr "Сбросить качество"
+msgstr "Сброс качества"
 
 #: PulseEffects/ui/equalizer_band_menu.glade:159
 msgid "Filter Type"
@@ -272,11 +271,11 @@ msgstr "Тип фильтра"
 
 #: PulseEffects/ui/exciter.glade:45
 msgid "Exciter"
-msgstr ""
+msgstr "Генератор"
 
 #: PulseEffects/ui/exciter.glade:134
 msgid "Ceiling [Hz]"
-msgstr ""
+msgstr "Верхний порог (Гц)"
 
 #: PulseEffects/ui/highpass.glade:18
 msgid "High Pass"
@@ -284,7 +283,7 @@ msgstr "Высокачастотный фильтр"
 
 #: PulseEffects/ui/highpass.glade:104 PulseEffects/ui/lowpass.glade:104
 msgid "Poles"
-msgstr "Pôles"
+msgstr "Полюса"
 
 #: PulseEffects/ui/limiter.glade:55
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:48
@@ -302,7 +301,7 @@ msgstr "Ограничение [dB]"
 #: PulseEffects/ui/limiter.glade:187 PulseEffects/ui/maximizer.glade:149
 #: PulseEffects/ui/output_limiter.glade:150
 msgid "Release [s]"
-msgstr "Релиз [s]"
+msgstr "Высвобождение [s]"
 
 #: PulseEffects/ui/limiter.glade:220
 msgid "Auto Volume"
@@ -340,7 +339,7 @@ msgstr "Общие"
 
 #: PulseEffects/ui/main_ui.glade:362
 msgid "Latency in Miliseconds"
-msgstr ""
+msgstr "Задержка (мс)"
 
 #: PulseEffects/ui/main_ui.glade:436
 msgid "Settings"
@@ -370,7 +369,7 @@ msgstr "Приложения"
 
 #: PulseEffects/ui/main_ui.glade:562
 msgid "Start Service at Login"
-msgstr ""
+msgstr "Запуск службы при запуске"
 
 #: PulseEffects/ui/main_ui.glade:588
 msgid "Use Dark Theme"
@@ -378,7 +377,7 @@ msgstr "Исп. тёмную тему"
 
 #: PulseEffects/ui/maximizer.glade:18
 msgid "Maximizer"
-msgstr ""
+msgstr "Максимизатор"
 
 #: PulseEffects/ui/maximizer.glade:107
 #, fuzzy
@@ -404,31 +403,31 @@ msgstr "R"
 
 #: PulseEffects/ui/pitch.glade:25
 msgid "Pitch"
-msgstr ""
+msgstr "Высота тона"
 
 #: PulseEffects/ui/pitch.glade:136
 msgid "Cents"
-msgstr ""
+msgstr "Центы"
 
 #: PulseEffects/ui/pitch.glade:147
 msgid "Semitones"
-msgstr ""
+msgstr "Полутона"
 
 #: PulseEffects/ui/pitch.glade:158
 msgid "Octaves"
-msgstr ""
+msgstr "Октавы"
 
 #: PulseEffects/ui/pitch.glade:169
 msgid "Crispness"
-msgstr ""
+msgstr "Чёткость"
 
 #: PulseEffects/ui/pitch.glade:178
 msgid "Faster"
-msgstr ""
+msgstr "Быстрее"
 
 #: PulseEffects/ui/pitch.glade:194
 msgid "Preserve Formant"
-msgstr ""
+msgstr "Сохранить формат"
 
 #: PulseEffects/ui/presets_menu.glade:33
 msgid "Name"
@@ -437,12 +436,12 @@ msgstr "Название"
 #: PulseEffects/ui/presets_menu.glade:46
 #, fuzzy
 msgid "Create Preset"
-msgstr "Удалить набор преднастроек"
+msgstr "Создать новый набор предустановок"
 
 #: PulseEffects/ui/presets_menu.glade:65 PulseEffects/presets_manager.py:211
 #, fuzzy
 msgid "Import Presets"
-msgstr "Ouvrir préréglage"
+msgstr "Импортировать предустановки"
 
 #: PulseEffects/ui/reverb.glade:25
 msgid "Reverberation"
@@ -451,7 +450,7 @@ msgstr "Ревербация"
 # Taking lingual shortcuts to squeeze it in the text box
 #: PulseEffects/ui/reverb.glade:88
 msgid "Room Size"
-msgstr "Размер"
+msgstr "Глубина"
 
 #: PulseEffects/ui/reverb.glade:116
 msgid "Damping"
@@ -480,100 +479,100 @@ msgstr "Большая церковь"
 #: PulseEffects/ui/stereo_enhancer.glade:40
 #, fuzzy
 msgid "Stereo Enhancer"
-msgstr "Училитель звука"
+msgstr "Стереокорректор"
 
 #: PulseEffects/ui/stereo_enhancer.glade:139
 #: PulseEffects/ui/stereo_enhancer.glade:324
 #, fuzzy
 msgid "Balance"
-msgstr "Училитель звука"
+msgstr "Баланс"
 
 #: PulseEffects/ui/stereo_enhancer.glade:190
 #: PulseEffects/ui/stereo_enhancer.glade:375
 #, fuzzy
 msgid "Gain [dB]"
-msgstr "Усиление ввода [dB]"
+msgstr "Усилить [дБ]"
 
 #: PulseEffects/ui/stereo_enhancer.glade:199
 #: PulseEffects/ui/stereo_enhancer.glade:384
 msgid "Invert Phase"
-msgstr ""
+msgstr "Инвертировать фазу"
 
 #: PulseEffects/ui/stereo_enhancer.glade:249
 #, fuzzy
 msgid "Side Gain [dB]"
-msgstr "Усиление ввода [dB]"
+msgstr "Усиление ввода [дБ]"
 
 #: PulseEffects/ui/stereo_enhancer.glade:265
 msgid "Mid (L + R)"
-msgstr ""
+msgstr "Суммарно (Лев + Пр)"
 
 #: PulseEffects/ui/stereo_enhancer.glade:266
 msgid "Side (L - R)"
-msgstr ""
+msgstr "Разность (Лев - Пр)"
 
 #: PulseEffects/ui/stereo_enhancer.glade:267
 msgid "Mute"
-msgstr ""
+msgstr "Приглушить"
 
 #: PulseEffects/ui/stereo_enhancer.glade:281
 msgid "Middle Source"
-msgstr ""
+msgstr "Средний источник"
 
 #: PulseEffects/ui/stereo_enhancer.glade:290
 msgid "Invert Middle Phase"
-msgstr ""
+msgstr "Инвертировать центральную фазу"
 
 #: PulseEffects/ui/stereo_spread.glade:54
 msgid "Stereo Spread"
-msgstr ""
+msgstr "Рассеивание стерео"
 
 #: PulseEffects/ui/stereo_spread.glade:112
 #, fuzzy
 msgid "Sub [dB]"
-msgstr "Ввод [dB]"
+msgstr "Басы [дБ]"
 
 #: PulseEffects/ui/stereo_spread.glade:124
 #, fuzzy
 msgid "Low [dB]"
-msgstr "Ограничение [dB]"
+msgstr "Низкие частоты [дБ]"
 
 #: PulseEffects/ui/stereo_spread.glade:136
 #, fuzzy
 msgid "High [dB]"
-msgstr "Ограничение [dB]"
+msgstr "Высокие частоты [дБ]"
 
 #: PulseEffects/ui/stereo_spread.glade:148
 #, fuzzy
 msgid "Mid [dB]"
-msgstr "Усиление ввода [dB]"
+msgstr "Средние частоты [дБ]"
 
 #: PulseEffects/ui/stereo_spread.glade:206
 #, fuzzy
 msgid "Filters"
-msgstr "Тип фильтра"
+msgstr "Фильтры"
 
 #: PulseEffects/ui/stereo_spread.glade:229
 #, fuzzy
 msgid "Mono Input"
-msgstr "Ввод"
+msgstr "Моноввод"
 
 #. sigint
 #: PulseEffects/application.py:35
 msgid "Quit PulseEffects. Useful when running in service mode."
-msgstr ""
+msgstr "Выйти из PulseEffects. Полезно при запуске в режиме отладки."
 
 #: PulseEffects/application.py:40
 msgid "Show available presets."
-msgstr ""
+msgstr "Показать доступные пресеты."
 
 #: PulseEffects/application.py:45
 msgid "Load a preset. Example: pulseeffects -l music"
-msgstr ""
+msgstr "Загрузить пресет. Пример: pulseeffects -l music"
 
 #: PulseEffects/application.py:110
 msgid "Running in background"
-msgstr ""
+msgstr "Работает в фоне"
 
 #: PulseEffects/effects_base.py:71
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
@@ -587,7 +586,7 @@ msgstr "на паузе"
 
 #: PulseEffects/effects_base.py:178 PulseEffects/effects_base.py:247
 msgid "playing"
-msgstr "играет"
+msgstr "воспроизводится"
 
 #: PulseEffects/presets_manager.py:107
 msgid "Save Current Settings to Preset"
@@ -596,20 +595,20 @@ msgstr "Сохранить текущие настройки в набор пр�
 #: PulseEffects/presets_manager.py:122
 #, fuzzy
 msgid "Delete Preset"
-msgstr "Удалить набор преднастроек"
+msgstr "Удалить набор предустановок"
 
 #: PulseEffects/presets_manager.py:170
 msgid " is not a file!"
-msgstr ""
+msgstr " не является файлом!"
 
 #: PulseEffects/presets_manager.py:267
 #, fuzzy
 msgid "Presets: "
-msgstr "Преднастройки"
+msgstr "Предустановки: "
 
 #: PulseEffectsTest/ui/microphone.glade:64
 msgid "Guideline Position"
-msgstr ""
+msgstr "Расположение гайдлайна"
 
 #: PulseEffectsTest/ui/microphone.glade:100
 msgid "Measure Noise"
@@ -642,7 +641,7 @@ msgstr "Квадратный"
 
 #: PulseEffectsTest/ui/test_signals.glade:222
 msgid "Saw"
-msgstr ""
+msgstr "Пилообразный"
 
 #: PulseEffectsTest/ui/test_signals.glade:237
 msgid "Triangle"
@@ -666,7 +665,7 @@ msgstr "Таблица синусоид"
 
 #: PulseEffectsTest/ui/test_signals.glade:312
 msgid "Ticks"
-msgstr ""
+msgstr "Тики"
 
 #: PulseEffectsTest/ui/test_signals.glade:327
 msgid "Gaussian Noise"
@@ -696,7 +695,7 @@ msgstr "Аудиоэффекты для приложений PulseAudio"
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:9
 msgid "Wellington Wallace"
-msgstr ""
+msgstr "Уоллис Веллингтон"
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:11
 msgid ""
@@ -706,7 +705,7 @@ msgid ""
 msgstr ""
 "PulseEffects — это продвинутая программа манипуляции звуком в режиме "
 "реального времени. Она включает в себя эквалайзер, ограничитель (лимитер), "
-"компрессор и утилиту для ревербации и многое другое. Более того, имеется "
+"компрессор, утилиту для ревербации и многое другое. Более того, имеется "
 "встроенный анализатор аудиоспектра."
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:16
@@ -715,9 +714,9 @@ msgid ""
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"Поскольку PulseEffects использует стандартный сервер PulseAudio, она будет "
-"работатьс большинством используемых вами программ. Все поддерживаемые "
-"приложения представлены в главном окне, где для каждого могут быть "
+"Так как PulseEffects использует стандартный сервер PulseAudio, программа будет "
+"работать с большинством используемых Вами приложений. Все поддерживаемые "
+"представлены в главном окне, где для каждого могут быть "
 "произведены настройки эффектов "
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:22
@@ -726,8 +725,8 @@ msgid ""
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
-"Помимо изменения звука на выходе, PulseEffects также может применятьа "
-"удиоэффекты к входным аудиопотокам, например, к микрофону. Это полезно, "
+"Помимо изменения звука на выходе, PulseEffects также может добавлять "
+"аудиоэффекты к входным аудиопотокам, таким как микрофон. Это полезно, "
 "например, во время аудиозаписи или голосовой конференции."
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:27
@@ -746,7 +745,7 @@ msgstr "Калибровка"
 
 #: data/com.github.wwmm.pulseeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
-msgstr ""
+msgstr "Эквалайзер, Компрессор и другие аудиоэффекты"
 
 #: data/com.github.wwmm.pulseeffects.desktop.in:6
 #, fuzzy
@@ -760,11 +759,11 @@ msgid "pulseeffects"
 msgstr "pulseeffects"
 
 #~ msgid "Audio Enhancer"
-#~ msgstr "Училитель звука"
+#~ msgstr "Усилитель аудио"
 
 #, fuzzy
 #~ msgid "Buffer Latency"
-#~ msgstr "Задержка буфера"
+#~ msgstr "Задержка буферизации"
 
 #, fuzzy
 #~ msgid "buffer-time"
@@ -779,28 +778,28 @@ msgstr "pulseeffects"
 
 #, fuzzy
 #~ msgid "Left Channel"
-#~ msgstr "Каналы"
+#~ msgstr "Левый канал"
 
 #, fuzzy
 #~ msgid "Right Channel"
-#~ msgstr "Каналы"
+#~ msgstr "Правый канал"
 
 #~ msgid "Calibration Microphone Correction"
-#~ msgstr "Calibration de la correction microphone"
+#~ msgstr "Салибровка корректировки микрофона"
 
 #, fuzzy
 #~ msgid "Sink Latency"
-#~ msgstr "Latence"
+#~ msgstr "Задержка затухания"
 
 #, fuzzy
 #~ msgid "Preset Name"
-#~ msgstr "Préréglage"
+#~ msgstr "Название предустановки"
 
 #~ msgid "No Compression"
-#~ msgstr "Aucune compression"
+#~ msgstr "Без сжатия"
 
 #~ msgid "No Reverberation"
-#~ msgstr "Pas de réverbération"
+#~ msgstr "Без ревербации"
 
 #~ msgid "F"
 #~ msgstr "F"
@@ -809,7 +808,7 @@ msgstr "pulseeffects"
 #~ msgstr "Q"
 
 #~ msgid "Equalizer - Input"
-#~ msgstr "Égaliseur - Entrée"
+#~ msgstr "Эквалайзер - Вход"
 
 #~ msgid "Equalizer - Output"
-#~ msgstr "Égaliseur - Sortie"
+#~ msgstr "Эквалайзер - Выход"
