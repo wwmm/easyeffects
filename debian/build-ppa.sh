@@ -13,7 +13,8 @@ do
 	sed -i -re "s/${old_version}/${new_version}/g" ./changelog
 	sed -i -re "1s/unstable/$i/" ./changelog
 	cd ..
-	dpkg-buildpackage -S -sa
+	# -d to allow building *.changes file without installed build dependencies (useful for Launchpad PPA)
+	dpkg-buildpackage -S -sa -d
 	sed  -i -re "1s/.*/${old_header}/" ./debian/changelog
 	cd ..
 	# change ppa:mikhailnov/pulseeffects to your PPA at Launchpad.net
