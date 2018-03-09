@@ -45,6 +45,7 @@ Order of effects applied to microphone output:
 - [Void Linux](https://github.com/voidlinux/void-packages/blob/master/srcpkgs/pulseeffects/template)
 - [Gentoo](https://packages.gentoo.org/packages/media-sound/pulseeffects/)
 - [ROSA](https://abf.io/import/pulseeffects/)
+- [ALT Linux](https://packages.altlinux.org/Sisyphus/srpms/pulseeffects/)
 
 #### Community Packages
 
