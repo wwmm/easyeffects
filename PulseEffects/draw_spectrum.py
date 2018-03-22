@@ -68,8 +68,8 @@ class DrawSpectrum():
             ctx.stroke()
 
             if self.mouse_inside:
-                label = str(self.mouse_freq) + ' Hz, '
-                label += str(self.mouse_intensity) + ' dB'
+                label = '{:.02f} Hz, {:.02f} dB'.format(self.mouse_freq,
+                                                        self.mouse_intensity)
 
                 layout = PangoCairo.create_layout(ctx)
                 layout.set_text(label, -1)
