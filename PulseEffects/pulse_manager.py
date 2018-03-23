@@ -90,21 +90,7 @@ class PulseManager(GObject.GObject):
                                 'audio-volume-change', 'Peak detect',
                                 'screen-capture']
 
-        # wrapping callbacks
-        self.ctx_notify_cb = p.pa_context_notify_cb_t(self.context_notify)
-        self.server_info_cb = p.pa_server_info_cb_t(self.server_info)
-        self.sink_info_cb = p.pa_sink_info_cb_t(self.sink_info)
-        self.source_info_cb = p.pa_source_info_cb_t(self.source_info)
-        self.sink_input_info_cb = p.pa_sink_input_info_cb_t(
-            self.sink_input_info)
-        self.source_output_info_cb = p.pa_source_output_info_cb_t(
-            self.source_output_info)
-        self.ctx_success_cb = p.pa_context_success_cb_t(self.ctx_success)
-        self.subscribe_cb = p.pa_context_subscribe_cb_t(self.subscribe)
-        self.stream_state_cb = p.pa_stream_notify_cb_t(
-            self.stream_state_callback)
-        self.stream_read_cb = p.pa_stream_request_cb_t(
-            self.stream_read_callback)
+        self.wrap_callbacks()
 
         # creating main loop and context
         self.main_loop = p.pa_threaded_mainloop_new()
@@ -127,7 +113,21 @@ class PulseManager(GObject.GObject):
         self.get_default_sink_info()
         self.get_default_source_info()
 
-    def context_notify(self, ctx, user_data):
+    def wrap_callbacks(self):
+        self.ctx_notify_cb = p.pa_context_notify_cb_t(self.ctx_notify_cb)
+        self.server_info_cb = p.pa_server_info_cb_t(self.server_info_cb)
+        self.sink_info_cb = p.pa_sink_info_cb_t(self.sink_info_cb)
+        self.source_info_cb = p.pa_source_info_cb_t(self.source_info_cb)
+        self.sink_input_info_cb = p.pa_sink_input_info_cb_t(
+            self.sink_input_info_cb)
+        self.source_output_info_cb = p.pa_source_output_info_cb_t(
+            self.source_output_info_cb)
+        self.ctx_success_cb = p.pa_context_success_cb_t(self.ctx_success_cb)
+        self.subscribe_cb = p.pa_context_subscribe_cb_t(self.subscribe_cb)
+        self.stream_state_cb = p.pa_stream_notify_cb_t(self.stream_state_cb)
+        self.stream_read_cb = p.pa_stream_request_cb_t(self.stream_read_cb)
+
+    def ctx_notify_cb(self, ctx, user_data):
         state = p.pa_context_get_state(ctx)
 
         if state == p.PA_CONTEXT_READY:
@@ -233,7 +233,7 @@ class PulseManager(GObject.GObject):
                       str(self.default_source_rate) +
                       ' Hz. We will use the same rate.')
 
-    def server_info(self, context, info, emit_signal):
+    def server_info_cb(self, context, info, emit_signal):
         self.default_sink_name = info.contents.default_sink_name.decode()
         self.default_source_name = info.contents.default_source_name.decode()
 
@@ -251,7 +251,7 @@ class PulseManager(GObject.GObject):
             GLib.idle_add(self.emit, 'new_default_source',
                           self.default_source_name)
 
-    def sink_info(self, context, info, eol, user_data):
+    def sink_info_cb(self, context, info, eol, user_data):
         if eol == -1:
             self.sink_is_loaded = False
         elif eol == 0:
@@ -270,7 +270,7 @@ class PulseManager(GObject.GObject):
         elif eol == 1:
             self.sink_is_loaded = True
 
-    def source_info(self, context, info, eol, user_data):
+    def source_info_cb(self, context, info, eol, user_data):
         if info:
             self.source_idx = info.contents.index
             self.source_rate = info.contents.sample_spec.rate
@@ -370,7 +370,7 @@ class PulseManager(GObject.GObject):
         else:
             self.log.critical('Could not load mic sink')
 
-    def sink_input_info(self, context, info, eol, user_data):
+    def sink_input_info_cb(self, context, info, eol, user_data):
         if info:
             idx = info.contents.index
             proplist = info.contents.proplist
@@ -445,7 +445,7 @@ class PulseManager(GObject.GObject):
 
                     GLib.idle_add(self.emit, 'sink_input_changed', new_input)
 
-    def source_output_info(self, context, info, eol, user_data):
+    def source_output_info_cb(self, context, info, eol, user_data):
         if info:
             idx = info.contents.index
             proplist = info.contents.proplist
@@ -596,7 +596,7 @@ class PulseManager(GObject.GObject):
 
         self.streams[str(idx)] = stream
 
-    def stream_state_callback(self, stream, idx):
+    def stream_state_cb(self, stream, idx):
         state = p.pa_stream_get_state(stream)
 
         if not idx:  # zero is interpreted as None
@@ -613,7 +613,7 @@ class PulseManager(GObject.GObject):
             self.log.info('stream for sink input ' + str(idx) +
                           ' was unconnected')
 
-    def stream_read_callback(self, stream, length, idx):
+    def stream_read_cb(self, stream, length, idx):
         data = p.get_c_void_p_ref()
         clength = p.int_to_c_size_t_ref(length)
 
@@ -647,7 +647,7 @@ class PulseManager(GObject.GObject):
 
         GLib.idle_add(self.emit, 'sink_input_level_changed', idx, v)
 
-    def subscribe(self, context, event_value, idx, user_data):
+    def subscribe_cb(self, context, event_value, idx, user_data):
         if not idx:
             idx = 0
 
@@ -697,7 +697,7 @@ class PulseManager(GObject.GObject):
             if event_type == p.PA_SUBSCRIPTION_EVENT_CHANGE:
                 p.pa_context_get_server_info(context, self.server_info_cb, 1)
 
-    def ctx_success(self, context, success, user_data):
+    def ctx_success_cb(self, context, success, user_data):
         if not success:
             self.log.critical('context operation failed!!')
 
