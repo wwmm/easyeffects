@@ -169,7 +169,7 @@ class PulseManager(GObject.GObject):
             self.log.info('server protocol version: ' +
                           str(p.pa_context_get_server_protocol_version(ctx)))
 
-            p.pa_context_set_subscribe_callback(self.ctx, self.subscribe_cb,
+            p.pa_context_set_subscribe_callback(ctx, self.subscribe_cb,
                                                 None)
 
             # subscribing to pulseaudio events
@@ -179,7 +179,7 @@ class PulseManager(GObject.GObject):
                 p.PA_SUBSCRIPTION_MASK_SOURCE + \
                 p.PA_SUBSCRIPTION_MASK_SERVER
 
-            p.pa_context_subscribe(self.ctx, subscription_mask,
+            p.pa_context_subscribe(ctx, subscription_mask,
                                    self.ctx_success_cb, None)
 
             self.context_ok = True
@@ -187,13 +187,13 @@ class PulseManager(GObject.GObject):
         elif state == p.PA_CONTEXT_FAILED:
             self.log.critical('failed to start pulseaudio context')
             self.log.info('unferencing pulseaudio context object')
-            p.pa_context_unref(self.ctx)
+            p.pa_context_unref(ctx)
 
         elif state == p.PA_CONTEXT_TERMINATED:
             self.log.info('pulseaudio context terminated')
 
             self.log.info('unferencing pulseaudio context object')
-            p.pa_context_unref(self.ctx)
+            p.pa_context_unref(ctx)
 
             self.context_ok = False
 
@@ -689,11 +689,11 @@ class PulseManager(GObject.GObject):
             event_type = event_value & p.PA_SUBSCRIPTION_EVENT_TYPE_MASK
 
             if event_type == p.PA_SUBSCRIPTION_EVENT_NEW:
-                p.pa_context_get_sink_input_info(self.ctx, idx,
+                p.pa_context_get_sink_input_info(context, idx,
                                                  self.sink_input_info_cb,
                                                  1)  # 1 for new
             elif event_type == p.PA_SUBSCRIPTION_EVENT_CHANGE:
-                p.pa_context_get_sink_input_info(self.ctx, idx,
+                p.pa_context_get_sink_input_info(context, idx,
                                                  self.sink_input_info_cb,
                                                  2)  # 2 for changes
             elif event_type == p.PA_SUBSCRIPTION_EVENT_REMOVE:
@@ -705,11 +705,11 @@ class PulseManager(GObject.GObject):
             event_type = event_value & p.PA_SUBSCRIPTION_EVENT_TYPE_MASK
 
             if event_type == p.PA_SUBSCRIPTION_EVENT_NEW:
-                p.pa_context_get_source_output_info(self.ctx, idx,
+                p.pa_context_get_source_output_info(context, idx,
                                                     self.source_output_info_cb,
                                                     1)  # 1 for new
             elif event_type == p.PA_SUBSCRIPTION_EVENT_CHANGE:
-                p.pa_context_get_source_output_info(self.ctx, idx,
+                p.pa_context_get_source_output_info(context, idx,
                                                     self.source_output_info_cb,
                                                     2)  # 1 for new
             elif event_type == p.PA_SUBSCRIPTION_EVENT_REMOVE:
@@ -727,7 +727,7 @@ class PulseManager(GObject.GObject):
             event_type = event_value & p.PA_SUBSCRIPTION_EVENT_TYPE_MASK
 
             if event_type == p.PA_SUBSCRIPTION_EVENT_CHANGE:
-                p.pa_context_get_server_info(self.ctx, self.server_info_cb, 1)
+                p.pa_context_get_server_info(context, self.server_info_cb, 1)
 
     def ctx_success(self, context, success, user_data):
         if not success:
