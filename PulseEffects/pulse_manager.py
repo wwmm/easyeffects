@@ -127,38 +127,6 @@ class PulseManager(GObject.GObject):
         self.get_default_sink_info()
         self.get_default_source_info()
 
-    def get_sample_spec_format(self, code):
-        if code == p.PA_SAMPLE_U8:
-            return 'u8'
-        elif code == p.PA_SAMPLE_ALAW:
-            return 'alaw'
-        elif code == p.PA_SAMPLE_ULAW:
-            return 'ulaw'
-        elif code == p.PA_SAMPLE_S16LE:
-            return 's16le'
-        elif code == p.PA_SAMPLE_S16BE:
-            return 's16be'
-        elif code == p.PA_SAMPLE_FLOAT32LE:
-            return 'float32le'
-        elif code == p.PA_SAMPLE_FLOAT32BE:
-            return 'float32be'
-        elif code == p.PA_SAMPLE_S32LE:
-            return 's32le'
-        elif code == p.PA_SAMPLE_S32BE:
-            return 's32Be'
-        elif code == p.PA_SAMPLE_S24LE:
-            return 's24le'
-        elif code == p.PA_SAMPLE_S24BE:
-            return 's24be'
-        elif code == p.PA_SAMPLE_S24_32LE:
-            return 's24_32le'
-        elif code == p.PA_SAMPLE_S24_32BE:
-            return 's24_32be'
-        elif code == p.PA_SAMPLE_MAX:
-            return 'pa_max'
-        elif code == p.PA_SAMPLE_INVALID:
-            return 'invalid'
-
     def context_notify(self, ctx, user_data):
         state = p.pa_context_get_state(ctx)
 
@@ -293,7 +261,7 @@ class PulseManager(GObject.GObject):
                 self.sink_rate = info.contents.sample_spec.rate
 
                 sample_format = info.contents.sample_spec.format
-                self.sink_format = self.get_sample_spec_format(sample_format)
+                self.sink_format = p.sample_spec_format_name(sample_format)
 
                 self.sink_monitor_name = info.contents.monitor_source_name\
                     .decode()
@@ -308,7 +276,7 @@ class PulseManager(GObject.GObject):
             self.source_rate = info.contents.sample_spec.rate
 
             sample_format = info.contents.sample_spec.format
-            self.source_format = self.get_sample_spec_format(sample_format)
+            self.source_format = p.sample_spec_format_name(sample_format)
 
     def load_sink(self, name, description, rate):
         self.sink_is_loaded = False
@@ -449,7 +417,7 @@ class PulseManager(GObject.GObject):
 
                 sample_spec = info.contents.sample_spec
                 rate = sample_spec.rate
-                sample_format = self.get_sample_spec_format(sample_spec.format)
+                sample_format = p.sample_spec_format_name(sample_spec.format)
                 buffer_latency = info.contents.buffer_usec
                 latency = info.contents.sink_usec
                 corked = info.contents.corked
@@ -524,7 +492,7 @@ class PulseManager(GObject.GObject):
 
                 sample_spec = info.contents.sample_spec
                 rate = sample_spec.rate
-                sample_format = self.get_sample_spec_format(sample_spec.format)
+                sample_format = p.sample_spec_format_name(sample_spec.format)
                 buffer_latency = info.contents.buffer_usec
                 latency = info.contents.source_usec
                 corked = info.contents.corked

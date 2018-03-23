@@ -7,35 +7,7 @@ from ctypes import (CFUNCTYPE, POINTER, Structure, byref, c_char_p, c_double,
 lib = cdll.LoadLibrary("libpulse.so.0")
 
 
-def get_ref(obj):
-    return byref(obj)
-
-
-def get_c_void_p_ref():
-    return byref(c_void_p())
-
-
-def int_to_c_int(v):
-    return c_int(v)
-
-
-def int_to_c_size_t_ref(v):
-    return byref(c_size_t(v))
-
-
-def get_sizeof_float():
-    return sizeof(c_float)
-
-
-def cast_to_float(v):
-    return cast(v, POINTER(POINTER(c_float)))
-
-
-def cast_to_int(v):
-    return cast(v, POINTER(c_int))
-
-
-# enumerators
+# enumerators constants
 
 PA_CONTEXT_NOFLAGS = 0x0000
 PA_CONTEXT_NOAUTOSPAWN = 0x0001
@@ -159,6 +131,70 @@ pa_stream_state_t = c_int
 pa_stream_flags_t = c_int
 
 uint32_t = c_uint32
+
+# functions
+
+
+def get_ref(obj):
+    return byref(obj)
+
+
+def get_c_void_p_ref():
+    return byref(c_void_p())
+
+
+def int_to_c_int(v):
+    return c_int(v)
+
+
+def int_to_c_size_t_ref(v):
+    return byref(c_size_t(v))
+
+
+def get_sizeof_float():
+    return sizeof(c_float)
+
+
+def cast_to_float(v):
+    return cast(v, POINTER(POINTER(c_float)))
+
+
+def cast_to_int(v):
+    return cast(v, POINTER(c_int))
+
+
+def sample_spec_format_name(code):
+    if code == PA_SAMPLE_U8:
+        return 'u8'
+    elif code == PA_SAMPLE_ALAW:
+        return 'alaw'
+    elif code == PA_SAMPLE_ULAW:
+        return 'ulaw'
+    elif code == PA_SAMPLE_S16LE:
+        return 's16le'
+    elif code == PA_SAMPLE_S16BE:
+        return 's16be'
+    elif code == PA_SAMPLE_FLOAT32LE:
+        return 'float32le'
+    elif code == PA_SAMPLE_FLOAT32BE:
+        return 'float32be'
+    elif code == PA_SAMPLE_S32LE:
+        return 's32le'
+    elif code == PA_SAMPLE_S32BE:
+        return 's32Be'
+    elif code == PA_SAMPLE_S24LE:
+        return 's24le'
+    elif code == PA_SAMPLE_S24BE:
+        return 's24be'
+    elif code == PA_SAMPLE_S24_32LE:
+        return 's24_32le'
+    elif code == PA_SAMPLE_S24_32BE:
+        return 's24_32be'
+    elif code == PA_SAMPLE_MAX:
+        return 'pa_max'
+    elif code == PA_SAMPLE_INVALID:
+        return 'invalid'
+
 
 # structures
 
