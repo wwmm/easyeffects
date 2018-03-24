@@ -141,16 +141,28 @@ class Application(Gtk.Application):
 
         flag = Gio.SettingsBindFlags.DEFAULT
 
-        switch_apps = self.builder.get_object('enable_all_apps')
-        switch_theme = self.builder.get_object('theme_switch')
+        enable_all_apps = self.builder.get_object('enable_all_apps')
+        theme_switch = self.builder.get_object('theme_switch')
+        use_default_sink = self.builder.get_object('use_default_sink')
+        use_default_source = self.builder.get_object('use_default_source')
 
-        self.settings.bind('use-dark-theme', switch_theme, 'active', flag)
+        self.settings.bind('use-dark-theme', theme_switch, 'active', flag)
         self.settings.bind('use-dark-theme', self.gtk_settings,
                            'gtk_application_prefer_dark_theme', flag)
-        self.settings.bind('enable-all-apps', switch_apps, 'active', flag)
+
+        self.settings.bind('enable-all-apps', enable_all_apps, 'active', flag)
         self.settings.bind('enable-all-apps', self.sie, 'switch_on_all_apps',
                            flag)
         self.settings.bind('enable-all-apps', self.soe, 'switch_on_all_apps',
+                           flag)
+
+        self.settings.bind('use-default-sink', use_default_sink, 'active',
+                           flag)
+        self.settings.bind('use-default-sink', self.pm, 'use_default_sink',
+                           flag)
+        self.settings.bind('use-default-source', use_default_source, 'active',
+                           flag)
+        self.settings.bind('use-default-source', self.pm, 'use_default_source',
                            flag)
 
         # this connection is changed inside the stack switch handler

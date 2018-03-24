@@ -27,6 +27,9 @@ class PulseManager(GObject.GObject):
         'new_default_source': (GObject.SignalFlags.RUN_FIRST, None, (object,))
     }
 
+    use_default_sink = GObject.Property(type=bool, default=True)
+    use_default_source = GObject.Property(type=bool, default=True)
+
     def __init__(self):
         GObject.GObject.__init__(self)
 
@@ -254,12 +257,15 @@ class PulseManager(GObject.GObject):
         self.log.info('default pulseaudio sink: ' + self.default_sink_name)
 
         if emit_signal:
-            if self.default_sink_name != 'PulseEffects_apps':
+            if (self.default_sink_name != 'PulseEffects_apps' and
+                    self.use_default_sink):
                 GLib.idle_add(self.emit, 'new_default_sink',
                               self.default_sink_name)
 
-            GLib.idle_add(self.emit, 'new_default_source',
-                          self.default_source_name)
+            if (self.default_source_name != 'PulseEffects_mic.monitor' and
+                    self.use_default_source):
+                GLib.idle_add(self.emit, 'new_default_source',
+                              self.default_source_name)
 
         p.pa_threaded_mainloop_signal(self.main_loop, 0)
 
