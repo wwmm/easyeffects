@@ -180,30 +180,42 @@ class PulseManager(GObject.GObject):
         p.pa_threaded_mainloop_free(self.main_loop)
 
     def load_sink_info(self, name):
+        p.pa_threaded_mainloop_lock(self.main_loop)
+
         o = p.pa_context_get_sink_info_by_name(self.ctx, name.encode(),
                                                self.sink_info_cb, None)
 
         while p.pa_operation_get_state(o) == p.PA_OPERATION_RUNNING:
-            pass
+            p.pa_threaded_mainloop_wait(self.main_loop)
 
         p.pa_operation_unref(o)
 
+        p.pa_threaded_mainloop_unlock(self.main_loop)
+
     def load_source_info(self, name):
+        p.pa_threaded_mainloop_lock(self.main_loop)
+
         o = p.pa_context_get_source_info_by_name(self.ctx, name.encode(),
                                                  self.source_info_cb, None)
 
         while p.pa_operation_get_state(o) == p.PA_OPERATION_RUNNING:
-            pass
+            p.pa_threaded_mainloop_wait(self.main_loop)
 
         p.pa_operation_unref(o)
 
+        p.pa_threaded_mainloop_unlock(self.main_loop)
+
     def get_server_info(self):
+        p.pa_threaded_mainloop_lock(self.main_loop)
+
         o = p.pa_context_get_server_info(self.ctx, self.server_info_cb, None)
 
         while p.pa_operation_get_state(o) == p.PA_OPERATION_RUNNING:
-            pass
+            p.pa_threaded_mainloop_wait(self.main_loop)
 
         p.pa_operation_unref(o)
+
+        p.pa_threaded_mainloop_unlock(self.main_loop)
 
     def get_default_sink_info(self):
         self.load_sink_info(self.default_sink_name)
@@ -249,6 +261,8 @@ class PulseManager(GObject.GObject):
             GLib.idle_add(self.emit, 'new_default_source',
                           self.default_source_name)
 
+        p.pa_threaded_mainloop_signal(self.main_loop, 0)
+
     def sink_info_cb(self, context, info, eol, user_data):
         if eol == -1:
             self.sink_is_loaded = False
@@ -268,6 +282,8 @@ class PulseManager(GObject.GObject):
         elif eol == 1:
             self.sink_is_loaded = True
 
+        p.pa_threaded_mainloop_signal(self.main_loop, 0)
+
     def source_info_cb(self, context, info, eol, user_data):
         if info:
             self.source_idx = info.contents.index
@@ -275,6 +291,8 @@ class PulseManager(GObject.GObject):
 
             sample_format = info.contents.sample_spec.format
             self.source_format = p.sample_spec_format_name(sample_format)
+
+        p.pa_threaded_mainloop_signal(self.main_loop, 0)
 
     def load_sink(self, name, description, rate):
         self.sink_is_loaded = False
@@ -299,17 +317,23 @@ class PulseManager(GObject.GObject):
             def module_idx(context, idx, user_data):
                 self.log.info('sink owner module index: ' + str(idx))
 
+                p.pa_threaded_mainloop_signal(self.main_loop, 0)
+
             self.module_idx_cb = p.pa_context_index_cb_t(module_idx)
+
+            p.pa_threaded_mainloop_lock(self.main_loop)
 
             o = p.pa_context_load_module(self.ctx, module, argument,
                                          self.module_idx_cb, None)
 
             while p.pa_operation_get_state(o) == p.PA_OPERATION_RUNNING:
-                pass
+                p.pa_threaded_mainloop_wait(self.main_loop)
 
             p.pa_operation_unref(o)
 
-            self.load_sink_info(name)
+            p.pa_threaded_mainloop_unlock(self.main_loop)
+
+            self.load_sink_info(name)  # checking if sink was loaded
 
             if self.sink_is_loaded:
                 return True
