@@ -26,7 +26,7 @@ class Application(Gtk.Application):
         GLib.setenv('PULSE_PROP_application.icon_name', 'pulseeffects', True)
         GLib.setenv('PULSE_PROP_application.id',
                     'com.github.wwmm.pulseeffects', True)
-        GLib.setenv('PULSE_PROP_application.version', '3.2.1', True)
+        GLib.setenv('PULSE_PROP_application.version', '3.2.2', True)
 
         Gtk.Application.__init__(self, application_id=app_id, flags=app_flags)
 
