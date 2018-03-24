@@ -714,11 +714,26 @@ class PulseManager(GObject.GObject):
             event_type = event_value & p.PA_SUBSCRIPTION_EVENT_TYPE_MASK
 
             if event_type == p.PA_SUBSCRIPTION_EVENT_NEW:
-                GLib.idle_add(self.emit, 'source_added')
+                # GLib.idle_add(self.emit, 'source_added')
+                pass
             elif event_type == p.PA_SUBSCRIPTION_EVENT_CHANGE:
-                GLib.idle_add(self.emit, 'source_changed')
+                # GLib.idle_add(self.emit, 'source_changed')
+                pass
             elif event_type == p.PA_SUBSCRIPTION_EVENT_REMOVE:
-                GLib.idle_add(self.emit, 'source_removed')
+                # GLib.idle_add(self.emit, 'source_removed')
+                pass
+        elif event_facility == p.PA_SUBSCRIPTION_EVENT_SINK:
+            event_type = event_value & p.PA_SUBSCRIPTION_EVENT_TYPE_MASK
+
+            if event_type == p.PA_SUBSCRIPTION_EVENT_NEW:
+                # GLib.idle_add(self.emit, 'source_added')
+                pass
+            elif event_type == p.PA_SUBSCRIPTION_EVENT_CHANGE:
+                # GLib.idle_add(self.emit, 'source_changed')
+                pass
+            elif event_type == p.PA_SUBSCRIPTION_EVENT_REMOVE:
+                # GLib.idle_add(self.emit, 'source_removed')
+                pass
         elif event_facility == p.PA_SUBSCRIPTION_EVENT_SERVER:
             event_type = event_value & p.PA_SUBSCRIPTION_EVENT_TYPE_MASK
 

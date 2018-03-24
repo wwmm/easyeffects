@@ -469,15 +469,35 @@ pa_context_get_server_protocol_version = \
 pa_context_get_server_protocol_version.restype = c_uint32
 pa_context_get_server_protocol_version.argtypes = [POINTER(pa_context)]
 
+pa_context_get_sink_info_by_index = lib.pa_context_get_sink_info_by_index
+pa_context_get_sink_info_by_index.restype = POINTER(pa_operation)
+pa_context_get_sink_info_by_index.argtypes = [POINTER(pa_context), c_uint32,
+                                              pa_sink_info_cb_t, c_void_p]
+
 pa_context_get_sink_info_by_name = lib.pa_context_get_sink_info_by_name
 pa_context_get_sink_info_by_name.restype = POINTER(pa_operation)
 pa_context_get_sink_info_by_name.argtypes = [POINTER(pa_context), c_char_p,
                                              pa_sink_info_cb_t, c_void_p]
 
+pa_context_get_sink_info_list = lib.pa_context_get_sink_info_list
+pa_context_get_sink_info_list.restype = POINTER(pa_operation)
+pa_context_get_sink_info_list.argtypes = [POINTER(pa_context),
+                                          pa_sink_info_cb_t, c_void_p]
+
+pa_context_get_source_info_by_index = lib.pa_context_get_source_info_by_index
+pa_context_get_source_info_by_index.restype = POINTER(pa_operation)
+pa_context_get_source_info_by_index.argtypes = [POINTER(pa_context), c_uint32,
+                                                pa_source_info_cb_t, c_void_p]
+
 pa_context_get_source_info_by_name = lib.pa_context_get_source_info_by_name
 pa_context_get_source_info_by_name.restype = POINTER(pa_operation)
 pa_context_get_source_info_by_name.argtypes = [POINTER(pa_context), c_char_p,
                                                pa_source_info_cb_t, c_void_p]
+
+pa_context_get_source_info_list = lib.pa_context_get_source_info_list
+pa_context_get_source_info_list.restype = POINTER(pa_operation)
+pa_context_get_source_info_list.argtypes = [POINTER(pa_context),
+                                            pa_source_info_cb_t, c_void_p]
 
 pa_context_get_sink_input_info = lib.pa_context_get_sink_input_info
 pa_context_get_sink_input_info.restype = POINTER(pa_operation)
