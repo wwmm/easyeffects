@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import logging
+import threading
 
 import PulseEffects.libpulse as p
 from gi.repository import GLib, GObject
@@ -29,7 +30,8 @@ class PulseManager(GObject.GObject):
     def __init__(self):
         GObject.GObject.__init__(self)
 
-        self.context_ok = False
+        self.event_ctx_ready = threading.Event()
+        self.event_ctx_terminated = threading.Event()
 
         self.default_sink_idx = -1
         self.default_sink_name = ''
@@ -104,10 +106,7 @@ class PulseManager(GObject.GObject):
 
         p.pa_threaded_mainloop_start(self.main_loop)
 
-        # waiting context
-
-        while self.context_ok is False:
-            pass
+        self.event_ctx_ready.wait()
 
         self.get_server_info()
         self.get_default_sink_info()
@@ -150,7 +149,7 @@ class PulseManager(GObject.GObject):
             p.pa_context_subscribe(ctx, subscription_mask,
                                    self.ctx_success_cb, None)
 
-            self.context_ok = True
+            self.event_ctx_ready.set()
 
         elif state == p.PA_CONTEXT_FAILED:
             self.log.critical('failed to start pulseaudio context')
@@ -163,7 +162,7 @@ class PulseManager(GObject.GObject):
             self.log.info('unferencing pulseaudio context object')
             p.pa_context_unref(ctx)
 
-            self.context_ok = False
+            self.event_ctx_terminated.set()
 
     def exit(self):
         self.unload_sinks()
@@ -172,8 +171,7 @@ class PulseManager(GObject.GObject):
         self.log.info('disconnecting pulseaudio context')
         p.pa_context_disconnect(self.ctx)
 
-        while self.context_ok:
-            pass
+        self.event_ctx_terminated.wait()
 
         self.log.info('stopping pulseaudio threaded main loop')
         p.pa_threaded_mainloop_stop(self.main_loop)
