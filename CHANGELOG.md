@@ -1,6 +1,9 @@
 # Changelog
 
 ## [Unreleased]
+### Fixed
+- too many decimal places in the frequency and intensity shown in the spectrum
+window when hovering the mouse
 
 ## [3.2.1]
 ### Added

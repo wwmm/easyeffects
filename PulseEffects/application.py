@@ -131,7 +131,6 @@ class Application(Gtk.Application):
 
         self.draw_spectrum = DrawSpectrum(self)
 
-        self.init_settings_menu()
         self.init_buffer_time()
         self.init_latency_time()
         self.init_spectrum_widgets()
@@ -268,22 +267,6 @@ class Application(Gtk.Application):
             self.stack_current_child_name = 'source_outputs'
 
         self.draw_spectrum.clear()
-
-    def init_settings_menu(self):
-        button = self.builder.get_object('settings_popover_button')
-        menu = self.builder.get_object('settings_menu')
-
-        popover = Gtk.Popover.new(button)
-        popover.props.transitions_enabled = True
-        popover.add(menu)
-
-        def button_clicked(arg):
-            if popover.get_visible():
-                popover.hide()
-            else:
-                popover.show_all()
-
-        button.connect("clicked", button_clicked)
 
     def init_buffer_time(self):
         value = self.settings.get_value('buffer-time').unpack()
