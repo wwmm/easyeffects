@@ -20,10 +20,10 @@ class PulseManager(GObject.GObject):
         'source_output_removed': (GObject.SignalFlags.RUN_FIRST, None, (int,)),
         'sink_added': (GObject.SignalFlags.RUN_FIRST, None, (object,)),
         'sink_changed': (GObject.SignalFlags.RUN_FIRST, None, (object,)),
-        'sink_removed': (GObject.SignalFlags.RUN_FIRST, None, (object,)),
+        'sink_removed': (GObject.SignalFlags.RUN_FIRST, None, (int,)),
         'source_added': (GObject.SignalFlags.RUN_FIRST, None, (object,)),
         'source_changed': (GObject.SignalFlags.RUN_FIRST, None, (object,)),
-        'source_removed': (GObject.SignalFlags.RUN_FIRST, None, (object,)),
+        'source_removed': (GObject.SignalFlags.RUN_FIRST, None, (int,)),
         'sink_input_level_changed': (GObject.SignalFlags.RUN_FIRST, None,
                                      (int, float)),
         'new_default_sink': (GObject.SignalFlags.RUN_FIRST, None, (object,)),
@@ -306,13 +306,24 @@ class PulseManager(GObject.GObject):
 
         p.pa_threaded_mainloop_signal(self.main_loop, 0)
 
-    def source_info_cb(self, context, info, eol, user_data):
+    def source_info_cb(self, context, info, eol, emit_signal):
         if info:
             self.source_idx = info.contents.index
             self.source_rate = info.contents.sample_spec.rate
 
             sample_format = info.contents.sample_spec.format
             self.source_format = p.sample_spec_format_name(sample_format)
+
+            name = info.contents.name.decode()
+
+            if (emit_signal and name != 'PulseEffects_apps.monitor' and
+                    name != 'PulseEffects_mic.monitor'):
+                description = info.contents.description.decode()
+
+                new_sink = {'name': name, 'idx': self.source_idx,
+                            'description': description}
+
+                GLib.idle_add(self.emit, 'source_added', new_sink)
 
         p.pa_threaded_mainloop_signal(self.main_loop, 0)
 
@@ -740,14 +751,13 @@ class PulseManager(GObject.GObject):
             event_type = event_value & p.PA_SUBSCRIPTION_EVENT_TYPE_MASK
 
             if event_type == p.PA_SUBSCRIPTION_EVENT_NEW:
-                # GLib.idle_add(self.emit, 'source_added')
-                pass
+                p.pa_context_get_source_info_by_index(self.ctx, idx,
+                                                      self.source_info_cb,
+                                                      1)  # 1 for new
             elif event_type == p.PA_SUBSCRIPTION_EVENT_CHANGE:
-                # GLib.idle_add(self.emit, 'source_changed')
                 pass
             elif event_type == p.PA_SUBSCRIPTION_EVENT_REMOVE:
-                # GLib.idle_add(self.emit, 'source_removed')
-                pass
+                GLib.idle_add(self.emit, 'source_removed', idx)
         elif event_facility == p.PA_SUBSCRIPTION_EVENT_SINK:
             event_type = event_value & p.PA_SUBSCRIPTION_EVENT_TYPE_MASK
 
@@ -756,11 +766,9 @@ class PulseManager(GObject.GObject):
                                                     self.sink_info_cb,
                                                     1)  # 1 for new
             elif event_type == p.PA_SUBSCRIPTION_EVENT_CHANGE:
-                # GLib.idle_add(self.emit, 'source_changed')
                 pass
             elif event_type == p.PA_SUBSCRIPTION_EVENT_REMOVE:
-                # GLib.idle_add(self.emit, 'source_removed')
-                pass
+                GLib.idle_add(self.emit, 'sink_removed', idx)
         elif event_facility == p.PA_SUBSCRIPTION_EVENT_SERVER:
             event_type = event_value & p.PA_SUBSCRIPTION_EVENT_TYPE_MASK
 

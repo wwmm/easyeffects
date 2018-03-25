@@ -94,6 +94,9 @@ class Application(Gtk.Application):
         self.pm.load_mic_sink()
 
         self.pm.connect('sink_added', self.on_sink_added)
+        self.pm.connect('sink_removed', self.on_sink_removed)
+        self.pm.connect('source_added', self.on_source_added)
+        self.pm.connect('source_removed', self.on_source_removed)
 
         self.sie = SinkInputEffects(self.pm)
         self.soe = SourceOutputEffects(self.pm)
@@ -197,6 +200,7 @@ class Application(Gtk.Application):
             self.pm.find_sink_inputs()
             self.pm.find_source_outputs()
             self.pm.find_sinks()
+            self.pm.find_sources()
 
         self.window.present()
 
@@ -388,6 +392,15 @@ class Application(Gtk.Application):
 
     def on_sink_added(self, obj, sink):
         print(sink)
+
+    def on_sink_removed(self, obj, idx):
+        print('sink removed: ', idx)
+
+    def on_source_added(self, obj, source):
+        print(source)
+
+    def on_source_removed(self, obj, idx):
+        print('source removed: ', idx)
 
     def apply_css_style(self, css_file):
         provider = Gtk.CssProvider()
