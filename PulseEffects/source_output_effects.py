@@ -3,10 +3,9 @@
 import os
 
 import gi
-gi.require_version('Gst', '1.0')
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, Gst, GstInsertBin, Gtk
+from gi.repository import Gio, GstInsertBin, Gtk
 from PulseEffects.effects_base import EffectsBase
 from PulseEffects.pitch import Pitch
 

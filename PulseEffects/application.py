@@ -147,11 +147,14 @@ class Application(Gtk.Application):
         # Gsettings bindings
 
         flag = Gio.SettingsBindFlags.DEFAULT
+        flag_invert_boolean = Gio.SettingsBindFlags.INVERT_BOOLEAN
 
         enable_all_apps = self.builder.get_object('enable_all_apps')
         theme_switch = self.builder.get_object('theme_switch')
         use_default_sink = self.builder.get_object('use_default_sink')
         use_default_source = self.builder.get_object('use_default_source')
+        self.ui_output_device = self.builder.get_object('output_device')
+        self.ui_input_device = self.builder.get_object('input_device')
 
         self.settings.bind('use-dark-theme', theme_switch, 'active', flag)
         self.settings.bind('use-dark-theme', self.gtk_settings,
@@ -167,10 +170,15 @@ class Application(Gtk.Application):
                            flag)
         self.settings.bind('use-default-sink', self.pm, 'use_default_sink',
                            flag)
+        self.settings.bind('use-default-sink', self.ui_output_device,
+                           'sensitive', flag | flag_invert_boolean)
+
         self.settings.bind('use-default-source', use_default_source, 'active',
                            flag)
         self.settings.bind('use-default-source', self.pm, 'use_default_source',
                            flag)
+        self.settings.bind('use-default-source', self.ui_input_device,
+                           'sensitive', flag | flag_invert_boolean)
 
         # this connection is changed inside the stack switch handler
         # depending on the selected child. The connection below is not
@@ -404,7 +412,10 @@ class Application(Gtk.Application):
         if add_to_list:
             self.sink_list.append(sink)
 
-            print('sink list: ', self.sink_list)
+        self.ui_output_device.remove_all()
+
+        for s in self.sink_list:
+            self.ui_output_device.append_text(s['name'])
 
     def on_sink_removed(self, obj, idx):
         for s in self.sink_list:
@@ -413,7 +424,10 @@ class Application(Gtk.Application):
 
                 break
 
-        print(self.sink_list)
+        self.ui_output_device.remove_all()
+
+        for s in self.sink_list:
+            self.ui_output_device.append_text(s['name'])
 
     def on_source_added(self, obj, source):
         add_to_list = True
@@ -427,7 +441,10 @@ class Application(Gtk.Application):
         if add_to_list:
             self.source_list.append(source)
 
-            print('source list: ', self.source_list)
+        self.ui_input_device.remove_all()
+
+        for s in self.source_list:
+            self.ui_input_device.append_text(s['name'])
 
     def on_source_removed(self, obj, idx):
         for s in self.source_list:
@@ -436,7 +453,30 @@ class Application(Gtk.Application):
 
                 break
 
-        print(self.source_list)
+        self.ui_input_device.remove_all()
+
+        for s in self.source_list:
+            self.ui_input_device.append_text(s['name'])
+
+    def on_use_default_sink_state_set(self, obj, state):
+        self.sie.set_output_sink_name(self.pm.default_sink_name)
+
+    def on_use_default_source_state_set(self, obj, state):
+        self.soe.set_source_monitor_name(self.pm.default_source_name)
+
+    def on_output_device_changed(self, obj):
+        name = obj.get_active_text()
+
+        for s in self.sink_list:
+            if s['name'] == name:
+                self.sie.set_output_sink_name(name)
+
+    def on_input_device_changed(self, obj):
+        name = obj.get_active_text()
+
+        for s in self.source_list:
+            if s['name'] == name:
+                self.soe.set_source_monitor_name(name)
 
     def apply_css_style(self, css_file):
         provider = Gtk.CssProvider()
