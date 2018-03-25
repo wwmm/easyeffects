@@ -54,11 +54,13 @@ class Application(Gtk.Application):
         self.running_as_service = False
         self.module_path = os.path.dirname(__file__)
 
+        self.sink_list = []
+        self.source_list = []
+
         log_format = '%(asctime)s.%(msecs)d - %(name)s - %(levelname)s'
         log_format = log_format + ' - %(message)s'
 
-        logging.basicConfig(format=log_format,
-                            datefmt='%H:%M:%S',
+        logging.basicConfig(format=log_format, datefmt='%H:%M:%S',
                             level=logging.INFO)
 
         self.log = logging.getLogger('PulseEffects')
@@ -391,16 +393,50 @@ class Application(Gtk.Application):
         self.soe.set_spectrum_n_points(value)
 
     def on_sink_added(self, obj, sink):
-        print(sink)
+        add_to_list = True
+
+        for s in self.sink_list:
+            if s['idx'] == sink['idx']:
+                add_to_list = False
+
+                break
+
+        if add_to_list:
+            self.sink_list.append(sink)
+
+            print('sink list: ', self.sink_list)
 
     def on_sink_removed(self, obj, idx):
-        print('sink removed: ', idx)
+        for s in self.sink_list:
+            if s['idx'] == idx:
+                self.sink_list.remove(s)
+
+                break
+
+        print(self.sink_list)
 
     def on_source_added(self, obj, source):
-        print(source)
+        add_to_list = True
+
+        for s in self.source_list:
+            if s['idx'] == source['idx']:
+                add_to_list = False
+
+                break
+
+        if add_to_list:
+            self.source_list.append(source)
+
+            print('source list: ', self.source_list)
 
     def on_source_removed(self, obj, idx):
-        print('source removed: ', idx)
+        for s in self.source_list:
+            if s['idx'] == idx:
+                self.source_list.remove(s)
+
+                break
+
+        print(self.source_list)
 
     def apply_css_style(self, css_file):
         provider = Gtk.CssProvider()
