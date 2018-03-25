@@ -62,8 +62,6 @@ class TestSignals(PipelineBase):
         src1_caps.set_property("caps", src_caps)
         src2_caps.set_property("caps", src_caps)
 
-        mixer.set_property('caps', src_caps)
-
         self.pipeline.add(self.audio_src1)
         self.pipeline.add(self.audio_src2)
         self.pipeline.add(src1_caps)
