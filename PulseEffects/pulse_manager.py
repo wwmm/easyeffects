@@ -18,9 +18,12 @@ class PulseManager(GObject.GObject):
         'source_output_changed': (GObject.SignalFlags.RUN_FIRST, None,
                                   (object,)),
         'source_output_removed': (GObject.SignalFlags.RUN_FIRST, None, (int,)),
-        'source_added': (GObject.SignalFlags.RUN_FIRST, None, ()),
-        'source_changed': (GObject.SignalFlags.RUN_FIRST, None, ()),
-        'source_removed': (GObject.SignalFlags.RUN_FIRST, None, ()),
+        'sink_added': (GObject.SignalFlags.RUN_FIRST, None, (object,)),
+        'sink_changed': (GObject.SignalFlags.RUN_FIRST, None, (object,)),
+        'sink_removed': (GObject.SignalFlags.RUN_FIRST, None, (object,)),
+        'source_added': (GObject.SignalFlags.RUN_FIRST, None, (object,)),
+        'source_changed': (GObject.SignalFlags.RUN_FIRST, None, (object,)),
+        'source_removed': (GObject.SignalFlags.RUN_FIRST, None, (object,)),
         'sink_input_level_changed': (GObject.SignalFlags.RUN_FIRST, None,
                                      (int, float)),
         'new_default_sink': (GObject.SignalFlags.RUN_FIRST, None, (object,)),
@@ -147,6 +150,7 @@ class PulseManager(GObject.GObject):
             subscription_mask = p.PA_SUBSCRIPTION_MASK_SINK_INPUT + \
                 p.PA_SUBSCRIPTION_MASK_SOURCE_OUTPUT + \
                 p.PA_SUBSCRIPTION_MASK_SOURCE + \
+                p.PA_SUBSCRIPTION_MASK_SINK + \
                 p.PA_SUBSCRIPTION_MASK_SERVER
 
             p.pa_context_subscribe(ctx, subscription_mask,
@@ -269,7 +273,7 @@ class PulseManager(GObject.GObject):
 
         p.pa_threaded_mainloop_signal(self.main_loop, 0)
 
-    def sink_info_cb(self, context, info, eol, user_data):
+    def sink_info_cb(self, context, info, eol, emit_signal):
         if eol == -1:
             self.sink_is_loaded = False
         elif eol == 0:
@@ -285,6 +289,18 @@ class PulseManager(GObject.GObject):
                     .decode()
 
                 self.sink_monitor_idx = info.contents.monitor_source
+
+                name = info.contents.name.decode()
+
+                if (emit_signal and name != 'PulseEffects_apps' and
+                        name != 'PulseEffects_mic'):
+                    description = info.contents.description.decode()
+
+                    new_sink = {'name': name, 'idx': self.sink_idx,
+                                'description': description,
+                                'monitor_source_name': self.sink_monitor_name}
+
+                    GLib.idle_add(self.emit, 'sink_added', new_sink)
         elif eol == 1:
             self.sink_is_loaded = True
 
@@ -550,6 +566,16 @@ class PulseManager(GObject.GObject):
                                                  self.source_output_info_cb,
                                                  1)  # 1 for new
 
+    def find_sinks(self):
+        p.pa_context_get_sink_info_list(self.ctx,
+                                        self.sink_info_cb,
+                                        1)  # 1 for new
+
+    def find_sources(self):
+        p.pa_context_get_source_info_list(self.ctx,
+                                          self.source_info_cb,
+                                          1)  # 1 for new
+
     def move_sink_input_to_pulseeffects_sink(self, idx):
         p.pa_context_move_sink_input_by_index(self.ctx, idx,
                                               self.apps_sink_idx,
@@ -726,8 +752,9 @@ class PulseManager(GObject.GObject):
             event_type = event_value & p.PA_SUBSCRIPTION_EVENT_TYPE_MASK
 
             if event_type == p.PA_SUBSCRIPTION_EVENT_NEW:
-                # GLib.idle_add(self.emit, 'source_added')
-                pass
+                p.pa_context_get_sink_info_by_index(self.ctx, idx,
+                                                    self.sink_info_cb,
+                                                    1)  # 1 for new
             elif event_type == p.PA_SUBSCRIPTION_EVENT_CHANGE:
                 # GLib.idle_add(self.emit, 'source_changed')
                 pass

@@ -3,9 +3,10 @@
 import os
 
 import gi
+gi.require_version('Gst', '1.0')
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, GstInsertBin, Gtk
+from gi.repository import Gio, Gst, GstInsertBin, Gtk
 from PulseEffects.effects_base import EffectsBase
 from PulseEffects.pitch import Pitch
 
@@ -71,6 +72,21 @@ class SourceOutputEffects(EffectsBase):
                                 self.log_tag)
         self.effects_bin.append(self.spectrum_wrapper, self.on_filter_added,
                                 self.log_tag)
+
+        # webrtcprobe_src = Gst.ElementFactory.make('pulsesrc',
+        #                                           'webrtcprobe_src')
+        # webrtcprobe_sink = Gst.ElementFactory.make('fakesink',
+        #                                            'webrtcprobe_sink')
+        #
+        # webrtcprobe_src.set_property('provide-clock', False)
+        #
+        # self.pipeline.add(webrtcprobe_src)
+        # self.pipeline.add(webrtcprobe_sink)
+        #
+        # webrtcprobe_src.link(webrtcprobe_sink)
+        #
+        # webrtcprobe_src.connect('notify::source-output-index',
+        #                         lambda x, y: print(x, y))
 
     def init_ui(self):
         EffectsBase.init_ui(self)
