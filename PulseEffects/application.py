@@ -47,6 +47,22 @@ class Application(Gtk.Application):
         self.add_main_option('load-preset', ord('l'), GLib.OptionFlags.NONE,
                              GLib.OptionArg.STRING, help_msg, None)
 
+        self.init_log()
+
+        debug_logging = os.environ.get('PULSEEFFECTS_DEBUG')
+        if debug_logging:
+            self.log.setLevel(logging.DEBUG)
+            self.log.debug("debug logging enabled")
+
+    def init_log(self):
+        log_format = '%(asctime)s.%(msecs)d - %(name)s - %(levelname)s'
+        log_format = log_format + ' - %(message)s'
+
+        logging.basicConfig(format=log_format, datefmt='%H:%M:%S',
+                            level=logging.INFO)
+
+        self.log = logging.getLogger('PulseEffects')
+
     def do_startup(self):
         Gtk.Application.do_startup(self)
 
@@ -56,14 +72,6 @@ class Application(Gtk.Application):
 
         self.sink_list = []
         self.source_list = []
-
-        log_format = '%(asctime)s.%(msecs)d - %(name)s - %(levelname)s'
-        log_format = log_format + ' - %(message)s'
-
-        logging.basicConfig(format=log_format, datefmt='%H:%M:%S',
-                            level=logging.INFO)
-
-        self.log = logging.getLogger('PulseEffects')
 
         self.gtk_settings = Gtk.Settings.get_default()
 
@@ -356,8 +364,10 @@ class Application(Gtk.Application):
                 f.write('StartupNotify=false\n')
                 f.write('Terminal=false\n')
                 f.write('Type=Application\n')
+            self.log.debug("autostart_file created successfully")
         else:
             os.remove(self.autostart_file)
+            self.log.debug("autostart_file removed successfully")
 
     def init_spectrum_widgets(self):
         show_spectrum_switch = self.builder.get_object('show_spectrum')
@@ -470,6 +480,7 @@ class Application(Gtk.Application):
         for s in self.sink_list:
             if s['name'] == name:
                 self.sie.set_output_sink_name(name)
+                self.log.debug("output device changed: " + name)
 
     def on_input_device_changed(self, obj):
         name = obj.get_active_text()
@@ -477,6 +488,7 @@ class Application(Gtk.Application):
         for s in self.source_list:
             if s['name'] == name:
                 self.soe.set_source_monitor_name(name)
+                self.log.debug("input device changed: " + name)
 
     def apply_css_style(self, css_file):
         provider = Gtk.CssProvider()
