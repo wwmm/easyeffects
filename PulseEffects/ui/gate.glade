@@ -3,16 +3,15 @@
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="attack">
-    <property name="lower">1.5</property>
-    <property name="upper">400</property>
-    <property name="value">101.09999999999999</property>
-    <property name="step_increment">0.10000000000000001</property>
+    <property name="lower">0.01</property>
+    <property name="upper">2000</property>
+    <property name="value">20</property>
+    <property name="step_increment">0.01</property>
     <property name="page_increment">10</property>
   </object>
   <object class="GtkAdjustment" id="knee">
-    <property name="lower">1</property>
-    <property name="upper">10</property>
-    <property name="value">3.25</property>
+    <property name="upper">18</property>
+    <property name="value">9</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">1</property>
   </object>
@@ -52,31 +51,33 @@
     </child>
   </object>
   <object class="GtkAdjustment" id="makeup">
-    <property name="upper">24</property>
+    <property name="upper">36</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
-  <object class="GtkAdjustment" id="max_gain_reduction">
-    <property name="lower">-40</property>
+  <object class="GtkAdjustment" id="range">
+    <property name="lower">-100</property>
+    <property name="value">-24</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="ratio">
     <property name="lower">1</property>
     <property name="upper">20</property>
-    <property name="value">1</property>
+    <property name="value">2</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="release">
-    <property name="lower">2</property>
-    <property name="upper">800</property>
-    <property name="value">401</property>
-    <property name="step_increment">1</property>
+    <property name="lower">0.01</property>
+    <property name="upper">2000</property>
+    <property name="value">250</property>
+    <property name="step_increment">0.01</property>
     <property name="page_increment">10</property>
   </object>
   <object class="GtkAdjustment" id="threshold">
-    <property name="lower">-30</property>
+    <property name="lower">-60</property>
+    <property name="value">-18</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
@@ -202,7 +203,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
-                    <property name="label" translatable="yes">Gain Reduction</property>
+                    <property name="label" translatable="yes">Gain Reduction [dB]</property>
                   </object>
                   <packing>
                     <property name="left_attach">2</property>
@@ -214,7 +215,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="input_purpose">number</property>
-                    <property name="adjustment">max_gain_reduction</property>
+                    <property name="adjustment">range</property>
                     <property name="numeric">True</property>
                     <property name="update_policy">if-valid</property>
                   </object>
