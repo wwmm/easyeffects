@@ -364,6 +364,7 @@ class Application(Gtk.Application):
                 f.write('StartupNotify=false\n')
                 f.write('Terminal=false\n')
                 f.write('Type=Application\n')
+                f.close()
             self.log.debug("autostart_file created successfully")
         else:
             os.remove(self.autostart_file)
