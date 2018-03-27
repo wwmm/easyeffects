@@ -256,7 +256,7 @@
                     <property name="width_chars">5</property>
                     <property name="input_purpose">number</property>
                     <property name="adjustment">attack</property>
-                    <property name="digits">1</property>
+                    <property name="digits">2</property>
                     <property name="numeric">True</property>
                     <property name="update_policy">if-valid</property>
                   </object>
@@ -283,6 +283,7 @@
                     <property name="can_focus">True</property>
                     <property name="input_purpose">number</property>
                     <property name="adjustment">release</property>
+                    <property name="digits">2</property>
                     <property name="numeric">True</property>
                     <property name="update_policy">if-valid</property>
                   </object>
