@@ -428,9 +428,12 @@ class Application(Gtk.Application):
         for s in self.sink_list:
             self.ui_output_device.append_text(s['name'])
 
+        self.log.debug("added sink: %s", sink['name'])
+
     def on_sink_removed(self, obj, idx):
         for s in self.sink_list:
             if s['idx'] == idx:
+                name = s['name']
                 self.sink_list.remove(s)
 
                 break
@@ -439,6 +442,8 @@ class Application(Gtk.Application):
 
         for s in self.sink_list:
             self.ui_output_device.append_text(s['name'])
+
+        self.log.debug("removed sink: %s", name)
 
     def on_source_added(self, obj, source):
         add_to_list = True
@@ -457,9 +462,12 @@ class Application(Gtk.Application):
         for s in self.source_list:
             self.ui_input_device.append_text(s['name'])
 
+        self.log.debug("added source: %s", source['name'])
+
     def on_source_removed(self, obj, idx):
         for s in self.source_list:
             if s['idx'] == idx:
+                name = s['name']
                 self.source_list.remove(s)
 
                 break
@@ -469,11 +477,17 @@ class Application(Gtk.Application):
         for s in self.source_list:
             self.ui_input_device.append_text(s['name'])
 
+        self.log.debug("removed source: %s", name)
+
     def on_use_default_sink_state_set(self, obj, state):
         self.sie.set_output_sink_name(self.pm.default_sink_name)
+        if state:
+            self.log.debug("using default sink")
 
     def on_use_default_source_state_set(self, obj, state):
         self.soe.set_source_monitor_name(self.pm.default_source_name)
+        if state:
+            self.log.debug("using default source")
 
     def on_output_device_changed(self, obj):
         name = obj.get_active_text()
