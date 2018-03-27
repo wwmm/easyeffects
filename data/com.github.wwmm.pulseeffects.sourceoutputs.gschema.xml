@@ -54,9 +54,6 @@
         <key name="compressor-makeup" type="d">
           <default>0.0</default>
         </key>
-        <key name="compressor-vlc" type="ad">
-          <default>[0.0, 25.0, 100.0, -11.0, 8.0, 2.5, 7.0]</default>
-        </key>
 
         <key name="reverb-state" type="b">
           <default>false</default>
@@ -497,6 +494,34 @@
         </key>
         <key name="pitch-faster" type="b">
           <default>false</default>
+        </key>
+
+        <key name="gate-state" type="b">
+          <default>false</default>
+        </key>
+        <key name="gate-detection-rms" type="b">
+          <default>true</default>
+        </key>
+        <key name="gate-stereo-link-average" type="b">
+          <default>true</default>
+        </key>
+        <key name="gate-attack" type="d">
+          <default>20.0</default>
+        </key>
+        <key name="gate-release" type="d">
+          <default>250.0</default>
+        </key>
+        <key name="gate-threshold" type="d">
+          <default>-18</default>
+        </key>
+        <key name="gate-ratio" type="d">
+          <default>2</default>
+        </key>
+        <key name="gate-knee" type="d">
+          <default>9</default>
+        </key>
+        <key name="gate-makeup" type="d">
+          <default>0.0</default>
         </key>
 
     </schema>

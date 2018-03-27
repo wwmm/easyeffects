@@ -7,6 +7,7 @@ gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gio, GstInsertBin, Gtk
 from PulseEffects.effects_base import EffectsBase
+from PulseEffects.gate import Gate
 from PulseEffects.pitch import Pitch
 
 
@@ -47,6 +48,7 @@ class SourceOutputEffects(EffectsBase):
         self.pm.connect('new_default_source', self.update_source_monitor_name)
 
         self.pitch = Pitch(self.settings)
+        self.gate = Gate(self.settings)
 
         # effects wrappers
 

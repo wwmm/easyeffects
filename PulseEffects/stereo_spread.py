@@ -47,8 +47,7 @@ class StereoSpread():
         self.bin = GstInsertBin.InsertBin.new('stereo_spread_bin')
 
         if self.is_installed:
-            # There is a bug in gstreaner. Booleans are inverted. For example
-            # we have to turn on bypass in order to effects to be applied
+            # booleans are inverted in GStreamer versions older than 1.12.5
 
             registry = Gst.Registry().get()
             self.use_workaround = not registry\
