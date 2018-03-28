@@ -39,11 +39,11 @@ class SinkInputEffects(EffectsBase):
         if pulse_sink:
             self.set_output_sink_name(pulse_sink)
 
-            self.log.info('$PULSE_SINK = ' + pulse_sink)
+            self.log.debug('$PULSE_SINK = ' + pulse_sink)
 
             msg = 'user has $PULSE_SINK set. Using it as output device'
 
-            self.log.info(msg)
+            self.log.debug(msg)
         else:
             self.set_output_sink_name(self.pm.default_sink_name)
 

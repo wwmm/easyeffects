@@ -99,7 +99,7 @@ class PipelineBase(GObject.GObject):
             name += n + ' '
 
         if success:
-            self.log.info(user_data + name + 'was enabled')
+            self.log.debug(user_data + name + 'was enabled')
         else:
             self.log.critical(user_data + 'failed to enable' + name)
 
@@ -111,7 +111,7 @@ class PipelineBase(GObject.GObject):
             name += n + ' '
 
         if success:
-            self.log.info(user_data + name + 'was disabled')
+            self.log.debug(user_data + name + 'was disabled')
         else:
             self.log.critical(user_data + 'failed to disable' + name)
 
@@ -124,7 +124,7 @@ class PipelineBase(GObject.GObject):
                 return False
             else:
                 self.is_playing = False
-                self.log.info('pipeline state: ready')
+                self.log.debug('pipeline state: ready')
                 return True
         elif state == 'paused':
             s = self.pipeline.set_state(Gst.State.PAUSED)
@@ -134,7 +134,7 @@ class PipelineBase(GObject.GObject):
                 return False
             else:
                 self.is_playing = False
-                self.log.info('pipeline state: paused')
+                self.log.debug('pipeline state: paused')
                 return True
         elif state == 'playing':
             s = self.pipeline.set_state(Gst.State.PLAYING)
@@ -144,7 +144,7 @@ class PipelineBase(GObject.GObject):
                 return False
             else:
                 self.is_playing = True
-                self.log.info('pipeline state: playing')
+                self.log.debug('pipeline state: playing')
                 return True
         elif state == 'null':
             s = self.pipeline.set_state(Gst.State.NULL)
@@ -154,7 +154,7 @@ class PipelineBase(GObject.GObject):
                 return False
             else:
                 self.is_playing = False
-                self.log.info('pipeline state: null')
+                self.log.debug('pipeline state: null')
                 return True
 
     def on_message_error(self, bus, msg):
@@ -165,7 +165,7 @@ class PipelineBase(GObject.GObject):
         return True
 
     def on_message_info(self, bus, msg):
-        self.log.info(msg.parse_info())
+        self.log.debug(msg.parse_info())
 
         return True
 
@@ -181,15 +181,15 @@ class PipelineBase(GObject.GObject):
             latency = msg.src.get_property('latency-time')
             buffer_time = msg.src.get_property('buffer-time')
 
-            self.log.info('pulsesink latency-time [us]: ' + str(latency))
-            self.log.info('pulsesink buffer-time [us]: ' +
-                          str(buffer_time))
+            self.log.debug('pulsesink latency-time [us]: ' + str(latency))
+            self.log.debug('pulsesink buffer-time [us]: ' +
+                           str(buffer_time))
         elif plugin == 'audio_src':
             latency = msg.src.get_property('actual-latency-time')
             buffer_time = msg.src.get_property('actual-buffer-time')
 
-            self.log.info('pulsesrc latency-time [us]: ' + str(latency))
-            self.log.info('pulsesrc buffer-time [us]: ' + str(buffer_time))
+            self.log.debug('pulsesrc latency-time [us]: ' + str(latency))
+            self.log.debug('pulsesrc buffer-time [us]: ' + str(buffer_time))
 
         return True
 

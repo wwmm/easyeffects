@@ -136,11 +136,11 @@ class PulseManager(GObject.GObject):
         state = p.pa_context_get_state(ctx)
 
         if state == p.PA_CONTEXT_READY:
-            self.log.info('pulseaudio context started')
-            self.log.info('connected to server: ' +
-                          p.pa_context_get_server(ctx).decode())
-            self.log.info('server protocol version: ' +
-                          str(p.pa_context_get_server_protocol_version(ctx)))
+            self.log.debug('pulseaudio context started')
+            self.log.debug('connected to server: ' +
+                           p.pa_context_get_server(ctx).decode())
+            self.log.debug('server protocol version: ' +
+                           str(p.pa_context_get_server_protocol_version(ctx)))
 
             p.pa_context_set_subscribe_callback(ctx, self.subscribe_cb,
                                                 None)
@@ -160,30 +160,31 @@ class PulseManager(GObject.GObject):
 
         elif state == p.PA_CONTEXT_FAILED:
             self.log.critical('failed to start pulseaudio context')
-            self.log.info('unferencing pulseaudio context object')
+            self.log.critical('unferencing pulseaudio context object')
+
             p.pa_context_unref(ctx)
 
         elif state == p.PA_CONTEXT_TERMINATED:
-            self.log.info('pulseaudio context terminated')
+            self.log.debug('pulseaudio context terminated')
 
-            self.log.info('unferencing pulseaudio context object')
+            self.log.debug('unferencing pulseaudio context object')
             p.pa_context_unref(ctx)
 
             self.event_ctx_terminated.set()
 
     def exit(self):
         self.unload_sinks()
-        self.log.info('sinks unloaded')
+        self.log.debug('sinks unloaded')
 
-        self.log.info('disconnecting pulseaudio context')
+        self.log.debug('disconnecting pulseaudio context')
         p.pa_context_disconnect(self.ctx)
 
         self.event_ctx_terminated.wait()
 
-        self.log.info('stopping pulseaudio threaded main loop')
+        self.log.debug('stopping pulseaudio threaded main loop')
         p.pa_threaded_mainloop_stop(self.main_loop)
 
-        self.log.info('freeing pulseaudio main loop object')
+        self.log.debug('freeing pulseaudio main loop object')
         p.pa_threaded_mainloop_free(self.main_loop)
 
     def load_sink_info(self, name):
@@ -231,11 +232,11 @@ class PulseManager(GObject.GObject):
         self.default_sink_idx = self.sink_idx
         self.default_sink_format = self.sink_format
 
-        self.log.info('default pulseaudio sink audio format: ' +
-                      str(self.default_sink_format))
-        self.log.info('default pulseaudio sink sampling rate: ' +
-                      str(self.default_sink_rate) +
-                      ' Hz. We will use the same rate.')
+        self.log.debug('default pulseaudio sink audio format: ' +
+                       str(self.default_sink_format))
+        self.log.debug('default pulseaudio sink sampling rate: ' +
+                       str(self.default_sink_rate) +
+                       ' Hz. We will use the same rate.')
 
     def get_default_source_info(self):
         self.load_source_info(self.default_source_name)
@@ -244,11 +245,11 @@ class PulseManager(GObject.GObject):
         self.default_source_idx = self.source_idx
         self.default_source_format = self.source_format
 
-        self.log.info('default pulseaudio source audio format: ' +
-                      str(self.default_source_format))
-        self.log.info('default pulseaudio source sampling rate: ' +
-                      str(self.default_source_rate) +
-                      ' Hz. We will use the same rate.')
+        self.log.debug('default pulseaudio source audio format: ' +
+                       str(self.default_source_format))
+        self.log.debug('default pulseaudio source sampling rate: ' +
+                       str(self.default_source_rate) +
+                       ' Hz. We will use the same rate.')
 
     def server_info_cb(self, context, info, emit_signal):
         self.default_sink_name = info.contents.default_sink_name.decode()
@@ -256,9 +257,10 @@ class PulseManager(GObject.GObject):
 
         server_version = info.contents.server_version.decode()
 
-        self.log.info('pulseaudio version: ' + server_version)
-        self.log.info('default pulseaudio source: ' + self.default_source_name)
-        self.log.info('default pulseaudio sink: ' + self.default_sink_name)
+        self.log.debug('pulseaudio version: ' + server_version)
+        self.log.debug('default pulseaudio source: ' +
+                       self.default_source_name)
+        self.log.debug('default pulseaudio sink: ' + self.default_sink_name)
 
         if emit_signal:
             if (self.default_sink_name != 'PulseEffects_apps' and
@@ -348,7 +350,7 @@ class PulseManager(GObject.GObject):
             module = b'module-null-sink'
 
             def module_idx(context, idx, user_data):
-                self.log.info('sink owner module index: ' + str(idx))
+                self.log.debug('sink owner module index: ' + str(idx))
 
                 p.pa_threaded_mainloop_signal(self.main_loop, 0)
 
@@ -376,7 +378,7 @@ class PulseManager(GObject.GObject):
             return True
 
     def load_apps_sink(self):
-        self.log.info('loading Pulseeffects applications sink...')
+        self.log.debug('loading Pulseeffects applications sink...')
 
         name = 'PulseEffects_apps'
         description = 'device.description=' + self.apps_sink_description
@@ -392,16 +394,16 @@ class PulseManager(GObject.GObject):
             self.apps_sink_monitor_name = self.sink_monitor_name
             self.apps_sink_monitor_idx = self.sink_monitor_idx
 
-            self.log.info('Pulseeffects apps sink was successfully loaded')
-            self.log.info('Pulseeffects apps sink index:' +
-                          str(self.apps_sink_idx))
-            self.log.info('Pulseeffects apps sink monitor name: ' +
-                          self.sink_monitor_name)
+            self.log.debug('Pulseeffects apps sink was successfully loaded')
+            self.log.debug('Pulseeffects apps sink index:' +
+                           str(self.apps_sink_idx))
+            self.log.debug('Pulseeffects apps sink monitor name: ' +
+                           self.sink_monitor_name)
         else:
             self.log.critical('Could not load apps sink')
 
     def load_mic_sink(self):
-        self.log.info('loading Pulseeffects microphone output sink...')
+        self.log.debug('loading Pulseeffects microphone output sink...')
 
         name = 'PulseEffects_mic'
         description = 'device.description=' + self.mic_sink_description
@@ -417,11 +419,11 @@ class PulseManager(GObject.GObject):
             self.mic_sink_monitor_name = self.sink_monitor_name
             self.mic_sink_monitor_idx = self.sink_monitor_idx
 
-            self.log.info('Pulseeffects mic sink was successfully loaded')
-            self.log.info('Pulseeffects mic sink index:' +
-                          str(self.mic_sink_idx))
-            self.log.info('Pulseeffects mic sink monitor name: ' +
-                          self.mic_sink_monitor_name)
+            self.log.debug('Pulseeffects mic sink was successfully loaded')
+            self.log.debug('Pulseeffects mic sink index:' +
+                           str(self.mic_sink_idx))
+            self.log.debug('Pulseeffects mic sink monitor name: ' +
+                           self.mic_sink_monitor_name)
         else:
             self.log.critical('Could not load mic sink')
 
@@ -670,13 +672,13 @@ class PulseManager(GObject.GObject):
         if state == p.PA_STREAM_FAILED:
             p.pa_stream_unref(stream)
         elif state == p.PA_STREAM_READY:
-            self.log.info('created stream for sink input ' + str(idx))
+            self.log.debug('created stream for sink input ' + str(idx))
         elif state == p.PA_STREAM_TERMINATED:
-            self.log.info('stream for sink input ' + str(idx) +
-                          ' was terminated')
+            self.log.debug('stream for sink input ' + str(idx) +
+                           ' was terminated')
         elif state == p.PA_STREAM_UNCONNECTED:
-            self.log.info('stream for sink input ' + str(idx) +
-                          ' was unconnected')
+            self.log.debug('stream for sink input ' + str(idx) +
+                           ' was unconnected')
 
     def stream_read_cb(self, stream, length, idx):
         data = p.get_c_void_p_ref()
