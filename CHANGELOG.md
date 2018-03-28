@@ -1,6 +1,12 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- User can select the input and output device used in the current session. The
+selected devices are not remembered when PulseEffects is closed.
+- Debug mode: execute PulseEffects doing "PULSEEFFECTS_DEBUG=1 pulseeffects" to
+see debug messages.
+
 ### Fixed
 - too many decimal places in the frequency and intensity shown in the spectrum
 window when hovering the mouse

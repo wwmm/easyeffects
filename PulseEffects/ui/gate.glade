@@ -116,7 +116,6 @@
                     <property name="halign">end</property>
                     <property name="active">True</property>
                     <property name="draw_indicator">False</property>
-                    <signal name="toggled" handler="on_compressor_measurement_type" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -134,7 +133,6 @@
                     <property name="active">True</property>
                     <property name="draw_indicator">False</property>
                     <property name="group">detection_rms</property>
-                    <signal name="toggled" handler="on_compressor_measurement_type" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>

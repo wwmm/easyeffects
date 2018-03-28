@@ -32,11 +32,11 @@ class SourceOutputEffects(EffectsBase):
         if pulse_source:
             self.set_source_monitor_name(pulse_source)
 
-            self.log.info('$PULSE_SOURCE = ' + pulse_source)
+            self.log.debug('$PULSE_SOURCE = ' + pulse_source)
 
             msg = 'user has $PULSE_SOURCE set. Using it as input device'
 
-            self.log.info(msg)
+            self.log.debug(msg)
         else:
             self.set_source_monitor_name(self.pm.default_source_name)
 
@@ -53,10 +53,13 @@ class SourceOutputEffects(EffectsBase):
         # effects wrappers
 
         self.pitch_wrapper = GstInsertBin.InsertBin.new('pitch_wrapper')
+        self.gate_wrapper = GstInsertBin.InsertBin.new('gate_wrapper')
 
         # appending effects wrappers to effects bin
         # the effects order is defined here
 
+        self.effects_bin.append(self.gate_wrapper, self.on_filter_added,
+                                self.log_tag)
         self.effects_bin.append(self.limiter_wrapper, self.on_filter_added,
                                 self.log_tag)
         self.effects_bin.append(self.compressor_wrapper, self.on_filter_added,
@@ -92,6 +95,7 @@ class SourceOutputEffects(EffectsBase):
     def init_ui(self):
         EffectsBase.init_ui(self)
 
+        self.gate.init_ui()
         self.limiter.init_ui()
         self.compressor.init_ui()
         self.highpass.init_ui()
@@ -100,6 +104,7 @@ class SourceOutputEffects(EffectsBase):
         self.reverb.init_ui()
         self.pitch.init_ui()
 
+        self.add_to_listbox('gate')
         self.add_to_listbox('limiter')
         self.add_to_listbox('compressor')
         self.add_to_listbox('highpass')
@@ -111,6 +116,7 @@ class SourceOutputEffects(EffectsBase):
         self.listbox.show_all()
 
         # adding effects widgets to the stack
+        self.stack.add_named(self.gate.ui_window, 'gate')
         self.stack.add_named(self.limiter.ui_window, 'limiter')
         self.stack.add_named(self.compressor.ui_window, 'compressor')
         self.stack.add_named(self.highpass.ui_window, 'highpass')
@@ -120,6 +126,7 @@ class SourceOutputEffects(EffectsBase):
         self.stack.add_named(self.pitch.ui_window, 'pitch')
 
         # on/off switches connections
+        self.gate.ui_enable.connect('state-set', self.on_gate_enable)
         self.limiter.ui_limiter_enable.connect('state-set',
                                                self.on_limiter_enable)
         self.compressor.ui_enable.connect('state-set',
@@ -129,6 +136,13 @@ class SourceOutputEffects(EffectsBase):
         self.equalizer.ui_enable.connect('state-set', self.on_equalizer_enable)
         self.reverb.ui_enable.connect('state-set', self.on_reverb_enable)
         self.pitch.ui_enable.connect('state-set', self.on_pitch_enable)
+
+        if self.gate.is_installed:
+            self.gate.bind()
+        else:
+            self.gate.ui_window.set_sensitive(False)
+            self.gate.ui_limiter_enable.set_sensitive(False)
+            self.gate.ui_img_state.hide()
 
         if self.limiter.is_installed:
             self.limiter.bind()
@@ -181,6 +195,7 @@ class SourceOutputEffects(EffectsBase):
         EffectsBase.post_messages(self, state)
 
         self.pitch.post_messages(state)
+        self.gate.post_messages(state)
 
     def on_message_element(self, bus, msg):
         EffectsBase.on_message_element(self, bus, msg)
@@ -195,6 +210,14 @@ class SourceOutputEffects(EffectsBase):
             peak = msg.get_structure().get_value('peak')
 
             self.pitch.ui_update_output_level(peak)
+        elif plugin == 'gate_input_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.gate.ui_update_input_level(peak)
+        elif plugin == 'gate_output_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.gate.ui_update_output_level(peak)
 
         return True
 
@@ -209,7 +232,19 @@ class SourceOutputEffects(EffectsBase):
                                       self.on_filter_removed,
                                       self.log_tag)
 
+    def on_gate_enable(self, obj, state):
+        if state:
+            if not self.gate_wrapper.get_by_name('gate_bin'):
+                self.gate_wrapper.append(self.gate.bin,
+                                         self.on_filter_added,
+                                         self.log_tag)
+        else:
+            self.gate_wrapper.remove(self.gate.bin,
+                                     self.on_filter_removed,
+                                     self.log_tag)
+
     def reset(self):
         EffectsBase.reset(self)
 
         self.pitch.reset()
+        self.gate.reset()
