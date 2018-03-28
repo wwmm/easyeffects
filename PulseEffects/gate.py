@@ -75,8 +75,12 @@ class Gate():
 
         self.ui_enable = self.builder.get_object('enable')
         self.ui_img_state = self.builder.get_object('img_state')
-        # self.ui_gate_rms = self.builder.get_object('gate_rms')
-        # self.ui_gate_peak = self.builder.get_object('gate_peak')
+        self.ui_gate_detection_rms = self.builder.get_object('detection_rms')
+        self.ui_gate_detection_peak = self.builder.get_object('detection_peak')
+        self.ui_gate_stereo_link_average = self.builder.get_object(
+            'stereo_link_average')
+        self.ui_gate_stereo_link_maximum = self.builder.get_object(
+            'stereo_link_maximum')
         self.ui_range = self.builder.get_object('range')
         self.ui_attack = self.builder.get_object('attack')
         self.ui_release = self.builder.get_object('release')
@@ -122,11 +126,17 @@ class Gate():
         self.settings.bind('gate-state', self.ui_controls, 'sensitive',
                            Gio.SettingsBindFlags.GET)
 
-        # self.settings.bind('gate-use-peak', self.ui_gate_peak,
-        #                    'active', flag)
-        # self.settings.bind('gate-use-peak', self.ui_gate_rms,
-        #                    'active',
-        #                    flag | Gio.SettingsBindFlags.INVERT_BOOLEAN)
+        self.settings.bind('gate-detection-rms', self.ui_gate_detection_rms,
+                           'active', flag)
+        self.settings.bind('gate-detection-rms', self.ui_gate_detection_peak,
+                           'active',
+                           flag | Gio.SettingsBindFlags.INVERT_BOOLEAN)
+
+        self.settings.bind('gate-stereo-link-average',
+                           self.ui_gate_stereo_link_average, 'active', flag)
+        self.settings.bind('gate-stereo-link-average',
+                           self.ui_gate_stereo_link_maximum, 'active',
+                           flag | Gio.SettingsBindFlags.INVERT_BOOLEAN)
 
         self.settings.bind('gate-range', self.ui_range, 'value', flag)
         self.settings.bind('gate-attack', self.ui_attack, 'value', flag)
@@ -169,14 +179,23 @@ class Gate():
 
         self.gate.set_property('range', value_linear)
 
-    def on_gate_measurement_type(self, obj):
+    def on_new_detection_type(self, obj):
         if obj.get_active():
             label = obj.get_label()
 
             if label == 'rms':
-                self.gate.set_property('rms-peak', 0.0)
+                self.gate.set_property('detection', 'RMS')
             elif label == 'peak':
-                self.gate.set_property('rms-peak', 1.0)
+                self.gate.set_property('detection', 'Peak')
+
+    def on_new_stereo_link_type(self, obj):
+        if obj.get_active():
+            label = obj.get_label()
+
+            if label == 'average':
+                self.gate.set_property('stereo-link', 'Average')
+            elif label == 'maximum':
+                self.gate.set_property('stereo-link', 'Maximum')
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]

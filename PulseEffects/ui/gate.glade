@@ -120,6 +120,7 @@
                     <property name="halign">end</property>
                     <property name="active">True</property>
                     <property name="draw_indicator">False</property>
+                    <signal name="toggled" handler="on_new_detection_type" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -137,6 +138,7 @@
                     <property name="active">True</property>
                     <property name="draw_indicator">False</property>
                     <property name="group">detection_rms</property>
+                    <signal name="toggled" handler="on_new_detection_type" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -171,13 +173,14 @@
                 </child>
                 <child>
                   <object class="GtkRadioButton" id="stereo_link_average">
-                    <property name="label" translatable="yes">Average</property>
+                    <property name="label" translatable="yes">average</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
                     <property name="halign">end</property>
                     <property name="active">True</property>
                     <property name="draw_indicator">False</property>
+                    <signal name="toggled" handler="on_new_stereo_link_type" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">3</property>
@@ -186,7 +189,7 @@
                 </child>
                 <child>
                   <object class="GtkRadioButton" id="stereo_link_maximum">
-                    <property name="label" translatable="yes">Maximum</property>
+                    <property name="label" translatable="yes">maximum</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
@@ -194,6 +197,7 @@
                     <property name="active">True</property>
                     <property name="draw_indicator">False</property>
                     <property name="group">stereo_link_average</property>
+                    <signal name="toggled" handler="on_new_stereo_link_type" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">4</property>
