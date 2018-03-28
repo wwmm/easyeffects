@@ -77,6 +77,7 @@ class Gate():
         self.ui_img_state = self.builder.get_object('img_state')
         # self.ui_gate_rms = self.builder.get_object('gate_rms')
         # self.ui_gate_peak = self.builder.get_object('gate_peak')
+        self.ui_range = self.builder.get_object('range')
         self.ui_attack = self.builder.get_object('attack')
         self.ui_release = self.builder.get_object('release')
         self.ui_threshold = self.builder.get_object('threshold')
@@ -127,11 +128,10 @@ class Gate():
         #                    'active',
         #                    flag | Gio.SettingsBindFlags.INVERT_BOOLEAN)
 
+        self.settings.bind('gate-range', self.ui_range, 'value', flag)
         self.settings.bind('gate-attack', self.ui_attack, 'value', flag)
-        self.settings.bind('gate-release', self.ui_release, 'value',
-                           flag)
-        self.settings.bind('gate-threshold', self.ui_threshold, 'value',
-                           flag)
+        self.settings.bind('gate-release', self.ui_release, 'value', flag)
+        self.settings.bind('gate-threshold', self.ui_threshold, 'value', flag)
         self.settings.bind('gate-ratio', self.ui_ratio, 'value', flag)
         self.settings.bind('gate-knee', self.ui_knee, 'value', flag)
         self.settings.bind('gate-makeup', self.ui_makeup, 'value', flag)
@@ -143,11 +143,31 @@ class Gate():
 
         self.ui_attack.bind_property('value', self.gate, 'attack', flag)
         self.ui_release.bind_property('value', self.gate, 'release', flag)
-        # self.ui_threshold.bind_property('value', self.gate, 'threshold',
-        # flag)
         self.ui_ratio.bind_property('value', self.gate, 'ratio', flag)
-        # self.ui_knee.bind_property('value', self.gate, 'knee', flag)
-        # self.ui_makeup.bind_property('value', self.gate, 'makeup', flag)
+
+    def on_threshold_value_changed(self, obj):
+        value_db = obj.get_value()
+        value_linear = 10**(value_db / 20.0)
+
+        self.gate.set_property('threshold', value_linear)
+
+    def on_knee_value_changed(self, obj):
+        value_db = obj.get_value()
+        value_linear = 10**(value_db / 20.0)
+
+        self.gate.set_property('knee', value_linear)
+
+    def on_makeup_value_changed(self, obj):
+        value_db = obj.get_value()
+        value_linear = 10**(value_db / 20.0)
+
+        self.gate.set_property('makeup', value_linear)
+
+    def on_range_value_changed(self, obj):
+        value_db = obj.get_value()
+        value_linear = 10**(value_db / 20.0)
+
+        self.gate.set_property('range', value_linear)
 
     def on_gate_measurement_type(self, obj):
         if obj.get_active():

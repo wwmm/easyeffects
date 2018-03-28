@@ -505,6 +505,9 @@
         <key name="gate-stereo-link-average" type="b">
           <default>true</default>
         </key>
+        <key name="gate-range" type="d">
+          <default>-24.0</default>
+        </key>
         <key name="gate-attack" type="d">
           <default>20.0</default>
         </key>

@@ -14,6 +14,7 @@
     <property name="value">9</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_knee_value_changed" swapped="no"/>
   </object>
   <object class="GtkBox" id="listbox_control">
     <property name="visible">True</property>
@@ -54,12 +55,14 @@
     <property name="upper">36</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_makeup_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="range">
-    <property name="lower">-100</property>
+    <property name="lower">-95</property>
     <property name="value">-24</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_range_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="ratio">
     <property name="lower">1</property>
@@ -80,6 +83,7 @@
     <property name="value">-18</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_threshold_value_changed" swapped="no"/>
   </object>
   <object class="GtkGrid" id="window">
     <property name="visible">True</property>
