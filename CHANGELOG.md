@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+- Gate Plugin from Calf Studio
 - User can select the input and output device used in the current session. The
 selected devices are not remembered when PulseEffects is closed.
 - Debug mode: execute PulseEffects doing "PULSEEFFECTS_DEBUG=1 pulseeffects" to

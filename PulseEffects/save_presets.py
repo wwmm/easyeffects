@@ -396,6 +396,29 @@ class SavePresets():
                                 'faster': str(faster),
                                 'preserve_formant': str(preserve_formant)}
 
+    def save_gate_preset(self, settings, section):
+        enabled = settings.get_value('gate-state')
+        detection = settings.get_value('gate-detection-rms')
+        stereo_link = settings.get_value('gate-stereo-link-average')
+        range = settings.get_value('gate-range')
+        attack = settings.get_value('gate-attack')
+        release = settings.get_value('gate-release')
+        threshold = settings.get_value('gate-threshold')
+        ratio = settings.get_value('gate-ratio')
+        knee = settings.get_value('gate-knee')
+        makeup = settings.get_value('gate-makeup')
+
+        self.config[section] = {'enabled': str(enabled),
+                                'detection_type_rms': str(detection),
+                                'stereo_link_type_average': str(stereo_link),
+                                'range': str(range),
+                                'attack': str(attack),
+                                'release': str(release),
+                                'threshold': str(threshold),
+                                'ratio': str(ratio),
+                                'knee': str(knee),
+                                'makeup': str(makeup)}
+
     def save_sink_inputs_preset(self, settings):
         self.save_limiter_preset(settings, 'apps_limiter')
         self.save_autovolume_preset(settings, 'apps_autovolume')
@@ -423,6 +446,7 @@ class SavePresets():
         self.save_equalizer_preset(settings, 'mic_equalizer')
         self.save_reverb_preset(settings, 'mic_reverb')
         self.save_pitch_preset(settings, 'mic_pitch')
+        self.save_gate_preset(settings, 'mic_gate')
 
     def write_config(self):
         self.config.write(self.output_file)

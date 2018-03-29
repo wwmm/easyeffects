@@ -545,6 +545,32 @@ class LoadPresets():
         settings.set_value('pitch-preserve-formant',
                            GLib.Variant('b', preserve_formant))
 
+    def load_gate_preset(self, settings, section):
+        enabled = self.config.getboolean(section, 'enabled', fallback=False)
+        detection = self.config.getboolean(section, 'detection_type_rms',
+                                           fallback=True)
+        stereo_link = self.config.getboolean(section,
+                                             'stereo_link_type_average',
+                                             fallback=True)
+        attack = self.config.getfloat(section, 'attack', fallback=20.0)
+        release = self.config.getfloat(section, 'release', fallback=250.0)
+        threshold = self.config.getfloat(section, 'threshold', fallback=-18.0)
+        ratio = self.config.getfloat(section, 'ratio', fallback=2.0)
+        knee = self.config.getfloat(section, 'knee', fallback=9.0)
+        makeup = self.config.getfloat(section, 'makeup', fallback=0.0)
+
+        settings.set_value('gate-state', GLib.Variant('b', enabled))
+        settings.set_value('gate-detection-rms', GLib.Variant('b', detection))
+        settings.set_value('gate-stereo-link-average',
+                           GLib.Variant('b', stereo_link))
+        settings.set_value('gate-attack', GLib.Variant('d', attack))
+        settings.set_value('gate-release', GLib.Variant('d', release))
+        settings.set_value('gate-threshold',
+                           GLib.Variant('d', threshold))
+        settings.set_value('gate-ratio', GLib.Variant('d', ratio))
+        settings.set_value('gate-knee', GLib.Variant('d', knee))
+        settings.set_value('gate-makeup', GLib.Variant('d', makeup))
+
     def load_sink_inputs_preset(self, settings):
         self.load_limiter_preset(settings, 'apps_limiter')
         self.load_autovolume_preset(settings, 'apps_autovolume')
@@ -572,3 +598,4 @@ class LoadPresets():
         self.load_equalizer_preset(settings, 'mic_equalizer')
         self.load_reverb_preset(settings, 'mic_reverb')
         self.load_pitch_preset(settings, 'mic_pitch')
+        self.load_gate_preset(settings, 'mic_gate')
