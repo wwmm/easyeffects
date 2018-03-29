@@ -527,5 +527,42 @@
           <default>0.0</default>
         </key>
 
+        <key name="deesser-state" type="b">
+          <default>false</default>
+        </key>
+        <key name="deesser-detection-rms" type="b">
+          <default>true</default>
+        </key>
+        <key name="deesser-mode-wide" type="b">
+          <default>true</default>
+        </key>
+        <key name="deesser-threshold" type="d">
+          <default>-18</default>
+        </key>
+        <key name="deesser-ratio" type="d">
+          <default>3</default>
+        </key>
+        <key name="deesser-laxity" type="i">
+          <default>15</default>
+        </key>
+        <key name="deesser-makeup" type="d">
+          <default>0.0</default>
+        </key>
+        <key name="deesser-f1" type="d">
+          <default>6000</default>
+        </key>
+        <key name="deesser-f2" type="d">
+          <default>4500</default>
+        </key>
+        <key name="deesser-f1-level" type="d">
+          <default>0.0</default>
+        </key>
+        <key name="deesser-f2-level" type="d">
+          <default>12</default>
+        </key>
+        <key name="deesser-f2-q" type="d">
+          <default>1</default>
+        </key>
+
     </schema>
 </schemalist>

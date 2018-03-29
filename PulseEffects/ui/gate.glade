@@ -134,7 +134,6 @@
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
                     <property name="halign">start</property>
-                    <property name="hexpand">True</property>
                     <property name="active">True</property>
                     <property name="draw_indicator">False</property>
                     <property name="group">detection_rms</property>
@@ -329,7 +328,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
-                    <property name="label" translatable="yes">Ratio [n:1]</property>
+                    <property name="label" translatable="yes">Ratio</property>
                   </object>
                   <packing>
                     <property name="left_attach">3</property>

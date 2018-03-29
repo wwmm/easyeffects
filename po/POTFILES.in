@@ -3,6 +3,7 @@ PulseEffects/ui/app_info.glade
 PulseEffects/ui/bass_enhancer.glade
 PulseEffects/ui/compressor.glade
 PulseEffects/ui/crossfeed.glade
+PulseEffects/ui/deesser.glade
 PulseEffects/ui/delay.glade
 PulseEffects/ui/effects_box.glade
 PulseEffects/ui/equalizer.glade
