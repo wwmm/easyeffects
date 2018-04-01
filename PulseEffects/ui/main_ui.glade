@@ -629,7 +629,7 @@
                     <property name="halign">end</property>
                     <property name="valign">center</property>
                     <property name="margin_left">30</property>
-                    <property name="label" translatable="yes">Buffer [ms]</property>
+                    <property name="label" translatable="yes">Buffer</property>
                   </object>
                   <packing>
                     <property name="left_attach">2</property>
@@ -642,7 +642,9 @@
                     <property name="can_focus">True</property>
                     <property name="halign">start</property>
                     <property name="valign">center</property>
-                    <property name="width_chars">3</property>
+                    <property name="width_chars">10</property>
+                    <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
+                    <property name="secondary_icon_activatable">False</property>
                     <property name="input_purpose">number</property>
                     <property name="adjustment">buffer_time</property>
                     <property name="numeric">True</property>
@@ -660,7 +662,7 @@
                     <property name="halign">end</property>
                     <property name="valign">center</property>
                     <property name="margin_left">30</property>
-                    <property name="label" translatable="yes">Latency [ms]</property>
+                    <property name="label" translatable="yes">Latency</property>
                   </object>
                   <packing>
                     <property name="left_attach">2</property>
@@ -673,7 +675,9 @@
                     <property name="can_focus">True</property>
                     <property name="halign">start</property>
                     <property name="valign">center</property>
-                    <property name="width_chars">2</property>
+                    <property name="width_chars">10</property>
+                    <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
+                    <property name="secondary_icon_activatable">False</property>
                     <property name="input_purpose">number</property>
                     <property name="adjustment">latency_time</property>
                     <property name="numeric">True</property>
