@@ -141,7 +141,7 @@ class SourceOutputEffects(EffectsBase):
             self.gate.bind()
         else:
             self.gate.ui_window.set_sensitive(False)
-            self.gate.ui_limiter_enable.set_sensitive(False)
+            self.gate.ui_enable.set_sensitive(False)
             self.gate.ui_img_state.hide()
 
         if self.limiter.is_installed:

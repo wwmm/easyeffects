@@ -107,7 +107,7 @@
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
                     <property name="active">True</property>
-                    <property name="draw_indicator">True</property>
+                    <property name="draw_indicator">False</property>
                     <signal name="toggled" handler="on_compressor_measurement_type" swapped="no"/>
                   </object>
                   <packing>
@@ -124,7 +124,7 @@
                     <property name="receives_default">False</property>
                     <property name="hexpand">True</property>
                     <property name="active">True</property>
-                    <property name="draw_indicator">True</property>
+                    <property name="draw_indicator">False</property>
                     <property name="group">compressor_rms</property>
                     <signal name="toggled" handler="on_compressor_measurement_type" swapped="no"/>
                   </object>
@@ -146,13 +146,13 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="column_spacing">18</property>
+                <property name="column_spacing">30</property>
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
-                    <property name="label" translatable="yes">Attack [ms]</property>
+                    <property name="label" translatable="yes">Attack</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -163,8 +163,13 @@
                   <object class="GtkSpinButton">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="width_chars">5</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="width_chars">10</property>
+                    <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
+                    <property name="secondary_icon_activatable">False</property>
                     <property name="input_purpose">number</property>
+                    <property name="orientation">vertical</property>
                     <property name="adjustment">attack</property>
                     <property name="digits">1</property>
                     <property name="numeric">True</property>
@@ -180,7 +185,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
-                    <property name="label" translatable="yes">Release [ms]</property>
+                    <property name="label" translatable="yes">Release</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -191,7 +196,13 @@
                   <object class="GtkSpinButton">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="width_chars">10</property>
+                    <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
+                    <property name="secondary_icon_activatable">False</property>
                     <property name="input_purpose">number</property>
+                    <property name="orientation">vertical</property>
                     <property name="adjustment">release</property>
                     <property name="numeric">True</property>
                     <property name="update_policy">if-valid</property>
@@ -206,7 +217,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
-                    <property name="label" translatable="yes">Threshold [dB]</property>
+                    <property name="label" translatable="yes">Threshold</property>
                   </object>
                   <packing>
                     <property name="left_attach">2</property>
@@ -217,7 +228,12 @@
                   <object class="GtkSpinButton">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="width_chars">10</property>
+                    <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                     <property name="input_purpose">number</property>
+                    <property name="orientation">vertical</property>
                     <property name="adjustment">threshold</property>
                     <property name="numeric">True</property>
                     <property name="update_policy">if-valid</property>
@@ -243,7 +259,11 @@
                   <object class="GtkSpinButton">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="width_chars">10</property>
                     <property name="input_purpose">number</property>
+                    <property name="orientation">vertical</property>
                     <property name="adjustment">ratio</property>
                     <property name="numeric">True</property>
                     <property name="update_policy">if-valid</property>
@@ -258,7 +278,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
-                    <property name="label" translatable="yes">Knee [dB]</property>
+                    <property name="label" translatable="yes">Knee</property>
                   </object>
                   <packing>
                     <property name="left_attach">4</property>
@@ -269,8 +289,13 @@
                   <object class="GtkSpinButton">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="width_chars">4</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="width_chars">10</property>
+                    <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
+                    <property name="secondary_icon_activatable">False</property>
                     <property name="input_purpose">number</property>
+                    <property name="orientation">vertical</property>
                     <property name="adjustment">knee</property>
                     <property name="digits">2</property>
                     <property name="numeric">True</property>
@@ -286,7 +311,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
-                    <property name="label" translatable="yes">Makeup [dB]</property>
+                    <property name="label" translatable="yes">Makeup</property>
                   </object>
                   <packing>
                     <property name="left_attach">5</property>
@@ -297,7 +322,13 @@
                   <object class="GtkSpinButton">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="width_chars">10</property>
+                    <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
+                    <property name="secondary_icon_activatable">False</property>
                     <property name="input_purpose">number</property>
+                    <property name="orientation">vertical</property>
                     <property name="adjustment">makeup</property>
                     <property name="numeric">True</property>
                     <property name="update_policy">if-valid</property>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.21.0 -->
+<!-- Generated with glade 3.22.0 -->
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="cutoff">
@@ -68,13 +68,13 @@
             <property name="can_focus">False</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
-            <property name="column_spacing">18</property>
+            <property name="column_spacing">30</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="label" translatable="yes">Cutoff [Hz]</property>
+                <property name="label" translatable="yes">Cutoff</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -85,11 +85,15 @@
               <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="width_chars">5</property>
+                <property name="width_chars">10</property>
                 <property name="text">0</property>
+                <property name="secondary_icon_name">pulseeffects-hz-symbolic</property>
+                <property name="secondary_icon_activatable">False</property>
                 <property name="input_purpose">number</property>
+                <property name="orientation">vertical</property>
                 <property name="adjustment">cutoff</property>
                 <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -112,9 +116,13 @@
               <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="width_chars">10</property>
                 <property name="text">2</property>
                 <property name="input_purpose">number</property>
+                <property name="orientation">vertical</property>
                 <property name="adjustment">poles</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
                 <property name="value">2</property>
               </object>
               <packing>
