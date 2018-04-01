@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-01 16:32-0300\n"
+"POT-Creation-Date: 2018-04-01 16:41-0300\n"
 "PO-Revision-Date: 2018-04-01 16:35-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
@@ -40,11 +40,11 @@ msgstr "Canais"
 msgid "Resampler"
 msgstr "Resampler"
 
-#: PulseEffects/ui/app_info.glade:156
+#: PulseEffects/ui/app_info.glade:156 PulseEffects/ui/main_ui.glade:632
 msgid "Buffer"
 msgstr "Buffer"
 
-#: PulseEffects/ui/app_info.glade:183
+#: PulseEffects/ui/app_info.glade:183 PulseEffects/ui/main_ui.glade:665
 msgid "Latency"
 msgstr "Latência"
 
@@ -434,19 +434,11 @@ msgstr "Usar Dispositivo de Entrada Padrão"
 msgid "Output Device"
 msgstr "Dispositivo de Saída"
 
-#: PulseEffects/ui/main_ui.glade:632
-msgid "Buffer [ms]"
-msgstr "Buffer [ms]"
-
-#: PulseEffects/ui/main_ui.glade:663
-msgid "Latency [ms]"
-msgstr "Latência [ms]"
-
-#: PulseEffects/ui/main_ui.glade:705
+#: PulseEffects/ui/main_ui.glade:709
 msgid "Input Device"
 msgstr "Dispositivo de Entrada"
 
-#: PulseEffects/ui/main_ui.glade:728
+#: PulseEffects/ui/main_ui.glade:732
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
 
@@ -815,6 +807,12 @@ msgstr "limitador;compressor;reverberação;equalizador;autovolume;"
 #: data/com.github.wwmm.pulseeffects.desktop.in:10
 msgid "pulseeffects"
 msgstr "pulseeffects"
+
+#~ msgid "Buffer [ms]"
+#~ msgstr "Buffer [ms]"
+
+#~ msgid "Latency [ms]"
+#~ msgstr "Latência [ms]"
 
 #~ msgid "Threshold [dB]"
 #~ msgstr "Limiar [dB]"

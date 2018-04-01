@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-01 16:32-0300\n"
+"POT-Creation-Date: 2018-04-01 16:41-0300\n"
 "PO-Revision-Date: 2018-03-09 01:34+0300\n"
 "Last-Translator: Михаил <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -37,12 +37,12 @@ msgstr "Каналы"
 msgid "Resampler"
 msgstr "Ресемплер"
 
-#: PulseEffects/ui/app_info.glade:156
+#: PulseEffects/ui/app_info.glade:156 PulseEffects/ui/main_ui.glade:632
 #, fuzzy
 msgid "Buffer"
 msgstr "Буферизация"
 
-#: PulseEffects/ui/app_info.glade:183
+#: PulseEffects/ui/app_info.glade:183 PulseEffects/ui/main_ui.glade:665
 msgid "Latency"
 msgstr "Задержка"
 
@@ -465,22 +465,12 @@ msgstr ""
 msgid "Output Device"
 msgstr "Ограничитель ввода"
 
-#: PulseEffects/ui/main_ui.glade:632
-#, fuzzy
-msgid "Buffer [ms]"
-msgstr "Буферизация"
-
-#: PulseEffects/ui/main_ui.glade:663
-#, fuzzy
-msgid "Latency [ms]"
-msgstr "Задержка"
-
-#: PulseEffects/ui/main_ui.glade:705
+#: PulseEffects/ui/main_ui.glade:709
 #, fuzzy
 msgid "Input Device"
 msgstr "Ограничитель ввода"
 
-#: PulseEffects/ui/main_ui.glade:728
+#: PulseEffects/ui/main_ui.glade:732
 msgid "Pulseaudio"
 msgstr ""
 
@@ -865,6 +855,14 @@ msgstr "лимитер;компрессор;ребербатор;эквалай�
 #, fuzzy
 msgid "pulseeffects"
 msgstr "pulseeffects"
+
+#, fuzzy
+#~ msgid "Buffer [ms]"
+#~ msgstr "Буферизация"
+
+#, fuzzy
+#~ msgid "Latency [ms]"
+#~ msgstr "Задержка"
 
 #~ msgid "Threshold [dB]"
 #~ msgstr "Порог [дБ]"

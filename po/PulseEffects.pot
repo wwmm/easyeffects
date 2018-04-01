@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-01 16:32-0300\n"
+"POT-Creation-Date: 2018-04-01 16:41-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,11 +37,11 @@ msgstr ""
 msgid "Resampler"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:156
+#: PulseEffects/ui/app_info.glade:156 PulseEffects/ui/main_ui.glade:632
 msgid "Buffer"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:183
+#: PulseEffects/ui/app_info.glade:183 PulseEffects/ui/main_ui.glade:665
 msgid "Latency"
 msgstr ""
 
@@ -431,19 +431,11 @@ msgstr ""
 msgid "Output Device"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:632
-msgid "Buffer [ms]"
-msgstr ""
-
-#: PulseEffects/ui/main_ui.glade:663
-msgid "Latency [ms]"
-msgstr ""
-
-#: PulseEffects/ui/main_ui.glade:705
+#: PulseEffects/ui/main_ui.glade:709
 msgid "Input Device"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:728
+#: PulseEffects/ui/main_ui.glade:732
 msgid "Pulseaudio"
 msgstr ""
 

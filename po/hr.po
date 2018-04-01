@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-01 16:32-0300\n"
+"POT-Creation-Date: 2018-04-01 16:41-0300\n"
 "PO-Revision-Date: 2017-11-08 15:36+0100\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -39,12 +39,12 @@ msgstr "Kanali"
 msgid "Resampler"
 msgstr "Promjena frekvencije"
 
-#: PulseEffects/ui/app_info.glade:156
+#: PulseEffects/ui/app_info.glade:156 PulseEffects/ui/main_ui.glade:632
 #, fuzzy
 msgid "Buffer"
 msgstr "Latencija međuspremnika"
 
-#: PulseEffects/ui/app_info.glade:183
+#: PulseEffects/ui/app_info.glade:183 PulseEffects/ui/main_ui.glade:665
 msgid "Latency"
 msgstr "Latencija"
 
@@ -460,22 +460,12 @@ msgstr ""
 msgid "Output Device"
 msgstr "Graničnik ulaza"
 
-#: PulseEffects/ui/main_ui.glade:632
-#, fuzzy
-msgid "Buffer [ms]"
-msgstr "Latencija međuspremnika"
-
-#: PulseEffects/ui/main_ui.glade:663
-#, fuzzy
-msgid "Latency [ms]"
-msgstr "Latencija"
-
-#: PulseEffects/ui/main_ui.glade:705
+#: PulseEffects/ui/main_ui.glade:709
 #, fuzzy
 msgid "Input Device"
 msgstr "Graničnik ulaza"
 
-#: PulseEffects/ui/main_ui.glade:728
+#: PulseEffects/ui/main_ui.glade:732
 msgid "Pulseaudio"
 msgstr ""
 
@@ -853,6 +843,14 @@ msgstr "graničnik;kompresor;odjek;ekvalizator;automatska glasnoća zvuka;"
 #: data/com.github.wwmm.pulseeffects.desktop.in:10
 msgid "pulseeffects"
 msgstr "pulseeffects"
+
+#, fuzzy
+#~ msgid "Buffer [ms]"
+#~ msgstr "Latencija međuspremnika"
+
+#, fuzzy
+#~ msgid "Latency [ms]"
+#~ msgstr "Latencija"
 
 #~ msgid "Threshold [dB]"
 #~ msgstr "Prag [dB]"

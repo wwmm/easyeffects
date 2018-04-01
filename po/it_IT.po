@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-01 16:32-0300\n"
+"POT-Creation-Date: 2018-04-01 16:41-0300\n"
 "PO-Revision-Date: 2018-02-10 15:25+0100\n"
 "Last-Translator: Matteo Iervasi <matteoiervasi@gmail.com>\n"
 "Language-Team: \n"
@@ -38,11 +38,11 @@ msgstr "Canali"
 msgid "Resampler"
 msgstr "Campionatore"
 
-#: PulseEffects/ui/app_info.glade:156
+#: PulseEffects/ui/app_info.glade:156 PulseEffects/ui/main_ui.glade:632
 msgid "Buffer"
 msgstr "Buffer"
 
-#: PulseEffects/ui/app_info.glade:183
+#: PulseEffects/ui/app_info.glade:183 PulseEffects/ui/main_ui.glade:665
 msgid "Latency"
 msgstr "Latenza"
 
@@ -454,22 +454,12 @@ msgstr ""
 msgid "Output Device"
 msgstr "Output"
 
-#: PulseEffects/ui/main_ui.glade:632
-#, fuzzy
-msgid "Buffer [ms]"
-msgstr "Buffer"
-
-#: PulseEffects/ui/main_ui.glade:663
-#, fuzzy
-msgid "Latency [ms]"
-msgstr "Latenza"
-
-#: PulseEffects/ui/main_ui.glade:705
+#: PulseEffects/ui/main_ui.glade:709
 #, fuzzy
 msgid "Input Device"
 msgstr "Input Limiter"
 
-#: PulseEffects/ui/main_ui.glade:728
+#: PulseEffects/ui/main_ui.glade:732
 msgid "Pulseaudio"
 msgstr ""
 
@@ -846,6 +836,14 @@ msgstr ""
 #: data/com.github.wwmm.pulseeffects.desktop.in:10
 msgid "pulseeffects"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Buffer [ms]"
+#~ msgstr "Buffer"
+
+#, fuzzy
+#~ msgid "Latency [ms]"
+#~ msgstr "Latenza"
 
 #~ msgid "Threshold [dB]"
 #~ msgstr "Soglia [dB]"
