@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-01 16:41-0300\n"
+"POT-Creation-Date: 2018-04-01 16:50-0300\n"
 "PO-Revision-Date: 2018-02-10 15:25+0100\n"
 "Last-Translator: Matteo Iervasi <matteoiervasi@gmail.com>\n"
 "Language-Team: \n"
@@ -309,6 +309,7 @@ msgid "High Shelf"
 msgstr ""
 
 #: PulseEffects/ui/equalizer_band_menu.glade:53
+#: PulseEffectsTest/ui/test_signals.glade:158
 #, fuzzy
 msgid "Frequency"
 msgstr "Frequenza [Hz]"
@@ -377,7 +378,7 @@ msgstr "Limite [dB]"
 msgid "Auto Volume"
 msgstr "Auto Volume"
 
-#: PulseEffects/ui/limiter.glade:277
+#: PulseEffects/ui/limiter.glade:277 PulseEffectsTest/ui/microphone.glade:35
 #, fuzzy
 msgid "Window"
 msgstr "Finestra [s]"
@@ -678,19 +679,15 @@ msgstr ""
 msgid "Presets: "
 msgstr "Presets"
 
-#: PulseEffectsTest/ui/microphone.glade:35
-msgid "Window [s]"
-msgstr "Finestra [s]"
-
-#: PulseEffectsTest/ui/microphone.glade:64
+#: PulseEffectsTest/ui/microphone.glade:68
 msgid "Guideline Position"
 msgstr ""
 
-#: PulseEffectsTest/ui/microphone.glade:100
+#: PulseEffectsTest/ui/microphone.glade:104
 msgid "Measure Noise"
 msgstr "Misura rumore"
 
-#: PulseEffectsTest/ui/microphone.glade:129
+#: PulseEffectsTest/ui/microphone.glade:133
 msgid "Subtract Noise"
 msgstr "Sottrai rumore"
 
@@ -707,59 +704,55 @@ msgstr "Segnali di test per stessa intensità"
 msgid "Test Signal"
 msgstr "Segnale di Test"
 
-#: PulseEffectsTest/ui/test_signals.glade:158
-msgid "Frequency [Hz]"
-msgstr "Frequenza [Hz]"
-
-#: PulseEffectsTest/ui/test_signals.glade:192
+#: PulseEffectsTest/ui/test_signals.glade:194
 msgid "Sine"
 msgstr "Sinusoidale"
 
-#: PulseEffectsTest/ui/test_signals.glade:207
+#: PulseEffectsTest/ui/test_signals.glade:209
 msgid "Square"
 msgstr "Quadra"
 
-#: PulseEffectsTest/ui/test_signals.glade:222
+#: PulseEffectsTest/ui/test_signals.glade:224
 msgid "Saw"
 msgstr "Sega"
 
-#: PulseEffectsTest/ui/test_signals.glade:237
+#: PulseEffectsTest/ui/test_signals.glade:239
 msgid "Triangle"
 msgstr "Triangolare"
 
-#: PulseEffectsTest/ui/test_signals.glade:252
+#: PulseEffectsTest/ui/test_signals.glade:254
 msgid "Pink Noise"
 msgstr "Rumore rosa"
 
-#: PulseEffectsTest/ui/test_signals.glade:267
+#: PulseEffectsTest/ui/test_signals.glade:269
 msgid "White Noise"
 msgstr "Rumore bianco"
 
-#: PulseEffectsTest/ui/test_signals.glade:282
+#: PulseEffectsTest/ui/test_signals.glade:284
 msgid "Silence"
 msgstr "Silenzio"
 
-#: PulseEffectsTest/ui/test_signals.glade:297
+#: PulseEffectsTest/ui/test_signals.glade:299
 msgid "Sine Table"
 msgstr "Tabella sinusoidale"
 
-#: PulseEffectsTest/ui/test_signals.glade:312
+#: PulseEffectsTest/ui/test_signals.glade:314
 msgid "Ticks"
 msgstr "Battiti"
 
-#: PulseEffectsTest/ui/test_signals.glade:327
+#: PulseEffectsTest/ui/test_signals.glade:329
 msgid "Gaussian Noise"
 msgstr "Rumore gaussiano"
 
-#: PulseEffectsTest/ui/test_signals.glade:342
+#: PulseEffectsTest/ui/test_signals.glade:344
 msgid "Red Noise"
 msgstr "Rumore rosso"
 
-#: PulseEffectsTest/ui/test_signals.glade:357
+#: PulseEffectsTest/ui/test_signals.glade:359
 msgid "Blue Noise"
 msgstr "Rumore blu"
 
-#: PulseEffectsTest/ui/test_signals.glade:372
+#: PulseEffectsTest/ui/test_signals.glade:374
 msgid "Violet Noise"
 msgstr "Rumore viola"
 
@@ -836,6 +829,12 @@ msgstr ""
 #: data/com.github.wwmm.pulseeffects.desktop.in:10
 msgid "pulseeffects"
 msgstr ""
+
+#~ msgid "Window [s]"
+#~ msgstr "Finestra [s]"
+
+#~ msgid "Frequency [Hz]"
+#~ msgstr "Frequenza [Hz]"
 
 #, fuzzy
 #~ msgid "Buffer [ms]"

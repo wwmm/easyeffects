@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-01 16:41-0300\n"
+"POT-Creation-Date: 2018-04-01 16:50-0300\n"
 "PO-Revision-Date: 2017-06-11 22:19+0200\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: \n"
@@ -311,6 +311,7 @@ msgid "High Shelf"
 msgstr ""
 
 #: PulseEffects/ui/equalizer_band_menu.glade:53
+#: PulseEffectsTest/ui/test_signals.glade:158
 msgid "Frequency"
 msgstr ""
 
@@ -379,7 +380,7 @@ msgstr "Obmedzenie [dB]"
 msgid "Auto Volume"
 msgstr "Automatická hlasitosť"
 
-#: PulseEffects/ui/limiter.glade:277
+#: PulseEffects/ui/limiter.glade:277 PulseEffectsTest/ui/microphone.glade:35
 msgid "Window"
 msgstr ""
 
@@ -688,19 +689,15 @@ msgstr ""
 msgid "Presets: "
 msgstr "Predvoľby"
 
-#: PulseEffectsTest/ui/microphone.glade:35
-msgid "Window [s]"
-msgstr ""
-
-#: PulseEffectsTest/ui/microphone.glade:64
+#: PulseEffectsTest/ui/microphone.glade:68
 msgid "Guideline Position"
 msgstr ""
 
-#: PulseEffectsTest/ui/microphone.glade:100
+#: PulseEffectsTest/ui/microphone.glade:104
 msgid "Measure Noise"
 msgstr ""
 
-#: PulseEffectsTest/ui/microphone.glade:129
+#: PulseEffectsTest/ui/microphone.glade:133
 msgid "Subtract Noise"
 msgstr ""
 
@@ -718,59 +715,55 @@ msgstr ""
 msgid "Test Signal"
 msgstr "Skúšobný signál"
 
-#: PulseEffectsTest/ui/test_signals.glade:158
-msgid "Frequency [Hz]"
-msgstr ""
-
-#: PulseEffectsTest/ui/test_signals.glade:192
+#: PulseEffectsTest/ui/test_signals.glade:194
 msgid "Sine"
 msgstr ""
 
-#: PulseEffectsTest/ui/test_signals.glade:207
+#: PulseEffectsTest/ui/test_signals.glade:209
 msgid "Square"
 msgstr ""
 
-#: PulseEffectsTest/ui/test_signals.glade:222
+#: PulseEffectsTest/ui/test_signals.glade:224
 msgid "Saw"
 msgstr ""
 
-#: PulseEffectsTest/ui/test_signals.glade:237
+#: PulseEffectsTest/ui/test_signals.glade:239
 msgid "Triangle"
 msgstr ""
 
-#: PulseEffectsTest/ui/test_signals.glade:252
+#: PulseEffectsTest/ui/test_signals.glade:254
 msgid "Pink Noise"
 msgstr ""
 
-#: PulseEffectsTest/ui/test_signals.glade:267
+#: PulseEffectsTest/ui/test_signals.glade:269
 msgid "White Noise"
 msgstr ""
 
-#: PulseEffectsTest/ui/test_signals.glade:282
+#: PulseEffectsTest/ui/test_signals.glade:284
 msgid "Silence"
 msgstr ""
 
-#: PulseEffectsTest/ui/test_signals.glade:297
+#: PulseEffectsTest/ui/test_signals.glade:299
 msgid "Sine Table"
 msgstr ""
 
-#: PulseEffectsTest/ui/test_signals.glade:312
+#: PulseEffectsTest/ui/test_signals.glade:314
 msgid "Ticks"
 msgstr ""
 
-#: PulseEffectsTest/ui/test_signals.glade:327
+#: PulseEffectsTest/ui/test_signals.glade:329
 msgid "Gaussian Noise"
 msgstr ""
 
-#: PulseEffectsTest/ui/test_signals.glade:342
+#: PulseEffectsTest/ui/test_signals.glade:344
 msgid "Red Noise"
 msgstr ""
 
-#: PulseEffectsTest/ui/test_signals.glade:357
+#: PulseEffectsTest/ui/test_signals.glade:359
 msgid "Blue Noise"
 msgstr ""
 
-#: PulseEffectsTest/ui/test_signals.glade:372
+#: PulseEffectsTest/ui/test_signals.glade:374
 msgid "Violet Noise"
 msgstr ""
 

@@ -62,7 +62,7 @@ class PipelineBase(GObject.GObject):
                 return False
             else:
                 self.is_playing = False
-                self.log.info('pipeline state: ready')
+                self.log.debug('pipeline state: ready')
                 return True
         elif state == 'paused':
             s = self.pipeline.set_state(Gst.State.PAUSED)
@@ -72,7 +72,7 @@ class PipelineBase(GObject.GObject):
                 return False
             else:
                 self.is_playing = False
-                self.log.info('pipeline state: paused')
+                self.log.debug('pipeline state: paused')
                 return True
         elif state == 'playing':
             s = self.pipeline.set_state(Gst.State.PLAYING)
@@ -82,7 +82,7 @@ class PipelineBase(GObject.GObject):
                 return False
             else:
                 self.is_playing = True
-                self.log.info('pipeline state: playing')
+                self.log.debug('pipeline state: playing')
                 return True
         elif state == 'null':
             s = self.pipeline.set_state(Gst.State.NULL)
@@ -92,7 +92,7 @@ class PipelineBase(GObject.GObject):
                 return False
             else:
                 self.is_playing = False
-                self.log.info('pipeline state: null')
+                self.log.debug('pipeline state: null')
                 return True
 
     def on_message_error(self, bus, msg):
@@ -103,7 +103,7 @@ class PipelineBase(GObject.GObject):
         return True
 
     def on_message_info(self, bus, msg):
-        self.log.info(msg.parse_info())
+        self.log.debug(msg.parse_info())
 
         return True
 

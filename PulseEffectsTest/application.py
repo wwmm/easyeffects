@@ -33,7 +33,12 @@ class Application(Gtk.Application):
                             datefmt='%H:%M:%S',
                             level=logging.INFO)
 
-        self.log = logging.getLogger('PulseEffectsTest')
+        self.log = logging.getLogger('PulseEffects')
+
+        if os.environ.get('PULSEEFFECTS_DEBUG'):
+            self.log.setLevel(logging.DEBUG)
+
+            self.log.debug('debug logging enabled')
 
         self.mic = Microphone(48000)
         self.ts = TestSignals(48000)

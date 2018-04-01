@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.21.0 -->
+<!-- Generated with glade 3.22.0 -->
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="guideline_position">
@@ -32,7 +32,7 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="halign">end</property>
-        <property name="label" translatable="yes">Window [s]</property>
+        <property name="label" translatable="yes">Window</property>
       </object>
       <packing>
         <property name="left_attach">0</property>
@@ -43,8 +43,12 @@
       <object class="GtkSpinButton">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
+        <property name="halign">start</property>
+        <property name="valign">center</property>
         <property name="hexpand">True</property>
-        <property name="width_chars">2</property>
+        <property name="width_chars">10</property>
+        <property name="secondary_icon_name">pulseeffects-s-symbolic</property>
+        <property name="secondary_icon_activatable">False</property>
         <property name="input_purpose">number</property>
         <property name="adjustment">time_window</property>
         <property name="numeric">True</property>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.21.0 -->
+<!-- Generated with glade 3.22.0 -->
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="wave1_freq_adjustment">
@@ -155,7 +155,7 @@
         <property name="halign">center</property>
         <property name="valign">center</property>
         <property name="margin_top">18</property>
-        <property name="label" translatable="yes">Frequency [Hz]</property>
+        <property name="label" translatable="yes">Frequency</property>
       </object>
       <packing>
         <property name="left_attach">0</property>
@@ -169,7 +169,9 @@
         <property name="can_focus">True</property>
         <property name="halign">center</property>
         <property name="valign">center</property>
-        <property name="width_chars">5</property>
+        <property name="width_chars">10</property>
+        <property name="secondary_icon_name">pulseeffects-hz-symbolic</property>
+        <property name="secondary_icon_activatable">False</property>
         <property name="input_purpose">number</property>
         <property name="adjustment">wave1_freq_adjustment</property>
         <property name="numeric">True</property>
