@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.21.0 -->
+<!-- Generated with glade 3.22.0 -->
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="cm_l">
@@ -83,7 +83,7 @@
             <property name="can_focus">False</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
-            <property name="column_spacing">3</property>
+            <property name="column_spacing">60</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
@@ -132,7 +132,14 @@
               <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="width_chars">10</property>
+                <property name="input_purpose">number</property>
+                <property name="orientation">vertical</property>
                 <property name="adjustment">m_l</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -143,7 +150,13 @@
               <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="width_chars">10</property>
+                <property name="input_purpose">number</property>
+                <property name="orientation">vertical</property>
                 <property name="adjustment">cm_l</property>
+                <property name="numeric">True</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -154,7 +167,13 @@
               <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="width_chars">10</property>
+                <property name="orientation">vertical</property>
                 <property name="adjustment">m_r</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -165,7 +184,14 @@
               <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="width_chars">10</property>
+                <property name="input_purpose">number</property>
+                <property name="orientation">vertical</property>
                 <property name="adjustment">cm_r</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
               </object>
               <packing>
                 <property name="left_attach">4</property>
@@ -208,9 +234,18 @@
               <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
                 <property name="margin_left">40</property>
                 <property name="margin_right">40</property>
+                <property name="width_chars">10</property>
+                <property name="secondary_icon_name">pulseeffects-celsius-symbolic</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="input_purpose">number</property>
+                <property name="orientation">vertical</property>
                 <property name="adjustment">temperature</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -236,25 +271,11 @@
                 <property name="valign">center</property>
                 <property name="margin_top">21</property>
                 <property name="margin_bottom">6</property>
-                <property name="label" translatable="yes">Delay [ms]</property>
+                <property name="label" translatable="yes">Delay</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
                 <property name="top_attach">3</property>
-                <property name="width">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="d_l">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="label">0</property>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">4</property>
                 <property name="width">2</property>
               </packing>
             </child>
@@ -266,11 +287,25 @@
                 <property name="valign">center</property>
                 <property name="margin_top">21</property>
                 <property name="margin_bottom">6</property>
-                <property name="label" translatable="yes">Delay [ms]</property>
+                <property name="label" translatable="yes">Delay</property>
               </object>
               <packing>
                 <property name="left_attach">3</property>
                 <property name="top_attach">3</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="d_l">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="label" translatable="yes">0</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">4</property>
                 <property name="width">2</property>
               </packing>
             </child>
@@ -280,7 +315,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="label">0</property>
+                <property name="label" translatable="yes">0</property>
               </object>
               <packing>
                 <property name="left_attach">3</property>

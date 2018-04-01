@@ -146,7 +146,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="column_spacing">30</property>
+                <property name="column_spacing">60</property>
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">True</property>

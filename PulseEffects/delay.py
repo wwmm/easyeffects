@@ -80,8 +80,8 @@ class Delay():
         value_l = '{:4.2f}'.format(self.delay.get_property('d-t-l'))
         value_r = '{:4.2f}'.format(self.delay.get_property('d-t-r'))
 
-        self.ui_d_l.set_text(value_l)
-        self.ui_d_r.set_text(value_r)
+        self.ui_d_l.set_text(value_l + ' ms')
+        self.ui_d_r.set_text(value_r + ' ms')
 
         return self.input_level.get_property('post-messages')
 

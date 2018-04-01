@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.21.0 -->
+<!-- Generated with glade 3.22.0 -->
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="amount">
@@ -101,117 +101,6 @@
             <property name="can_focus">False</property>
             <property name="halign">center</property>
             <property name="row_spacing">6</property>
-            <property name="column_spacing">18</property>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">center</property>
-                <property name="label" translatable="yes">Amount</property>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">center</property>
-                <property name="label" translatable="yes">Harmonics</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">center</property>
-                <property name="label" translatable="yes">Ceiling [Hz]</property>
-              </object>
-              <packing>
-                <property name="left_attach">3</property>
-                <property name="top_attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">center</property>
-                <property name="label" translatable="yes">Scope [Hz]</property>
-              </object>
-              <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkSpinButton">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="input_purpose">number</property>
-                <property name="adjustment">amount</property>
-                <property name="digits">1</property>
-                <property name="numeric">True</property>
-                <property name="update_policy">if-valid</property>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkSpinButton">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="adjustment">harmonics</property>
-                <property name="digits">1</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkSpinButton">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="adjustment">scope</property>
-              </object>
-              <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkSpinButton">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="adjustment">ceiling</property>
-              </object>
-              <packing>
-                <property name="left_attach">3</property>
-                <property name="top_attach">1</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkGrid">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">center</property>
-            <property name="row_spacing">6</property>
             <property name="column_spacing">6</property>
             <child>
               <object class="GtkScale">
@@ -270,6 +159,146 @@
             </child>
             <child>
               <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">center</property>
+            <property name="row_spacing">6</property>
+            <property name="column_spacing">60</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="label" translatable="yes">Amount</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="label" translatable="yes">Harmonics</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="label" translatable="yes">Ceiling</property>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="label" translatable="yes">Scope</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="width_chars">10</property>
+                <property name="input_purpose">number</property>
+                <property name="orientation">vertical</property>
+                <property name="adjustment">amount</property>
+                <property name="digits">1</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="width_chars">10</property>
+                <property name="input_purpose">number</property>
+                <property name="orientation">vertical</property>
+                <property name="adjustment">harmonics</property>
+                <property name="digits">1</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="width_chars">10</property>
+                <property name="secondary_icon_name">pulseeffects-hz-symbolic</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="input_purpose">number</property>
+                <property name="orientation">vertical</property>
+                <property name="adjustment">scope</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="width_chars">10</property>
+                <property name="secondary_icon_name">pulseeffects-hz-symbolic</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="input_purpose">number</property>
+                <property name="orientation">vertical</property>
+                <property name="adjustment">ceiling</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">1</property>
+              </packing>
             </child>
           </object>
           <packing>

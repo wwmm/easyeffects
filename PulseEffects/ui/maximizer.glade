@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.21.0 -->
+<!-- Generated with glade 3.22.0 -->
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="ceiling_adjustment">
@@ -72,13 +72,13 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
-            <property name="column_spacing">18</property>
+            <property name="column_spacing">60</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="label" translatable="yes">Threshold [dB]</property>
+                <property name="label" translatable="yes">Threshold</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -89,7 +89,13 @@
               <object class="GtkSpinButton" id="threshold">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="width_chars">10</property>
+                <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
+                <property name="secondary_icon_activatable">False</property>
                 <property name="input_purpose">number</property>
+                <property name="orientation">vertical</property>
                 <property name="adjustment">threshold_adjustment</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
@@ -104,7 +110,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="label" translatable="yes">Ceiling [dB]</property>
+                <property name="label" translatable="yes">Ceiling</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -115,7 +121,13 @@
               <object class="GtkSpinButton" id="ceiling">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="width_chars">10</property>
+                <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
+                <property name="secondary_icon_activatable">False</property>
                 <property name="input_purpose">number</property>
+                <property name="orientation">vertical</property>
                 <property name="adjustment">ceiling_adjustment</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
@@ -129,8 +141,13 @@
               <object class="GtkSpinButton" id="release">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="width_chars">4</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="width_chars">10</property>
+                <property name="secondary_icon_name">pulseeffects-s-symbolic</property>
+                <property name="secondary_icon_activatable">False</property>
                 <property name="input_purpose">number</property>
+                <property name="orientation">vertical</property>
                 <property name="adjustment">release_adjustment</property>
                 <property name="digits">2</property>
                 <property name="numeric">True</property>
@@ -146,7 +163,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="label" translatable="yes">Release [s]</property>
+                <property name="label" translatable="yes">Release</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>

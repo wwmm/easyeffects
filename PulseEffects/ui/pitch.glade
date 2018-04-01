@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.21.0 -->
+<!-- Generated with glade 3.22.0 -->
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="cents">
@@ -85,8 +85,14 @@
               <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="width_chars">10</property>
                 <property name="input_purpose">number</property>
+                <property name="orientation">vertical</property>
                 <property name="adjustment">cents</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -97,8 +103,14 @@
               <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="width_chars">10</property>
                 <property name="input_purpose">number</property>
+                <property name="orientation">vertical</property>
                 <property name="adjustment">semitones</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -109,8 +121,14 @@
               <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="width_chars">10</property>
                 <property name="input_purpose">number</property>
+                <property name="orientation">vertical</property>
                 <property name="adjustment">octaves</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -121,8 +139,14 @@
               <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="width_chars">10</property>
                 <property name="input_purpose">number</property>
+                <property name="orientation">vertical</property>
                 <property name="adjustment">crispness</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
               </object>
               <packing>
                 <property name="left_attach">3</property>

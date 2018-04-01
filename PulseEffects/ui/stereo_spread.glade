@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.21.0 -->
+<!-- Generated with glade 3.22.0 -->
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="amount0">
@@ -103,13 +103,13 @@
             <property name="can_focus">False</property>
             <property name="halign">center</property>
             <property name="row_spacing">6</property>
-            <property name="column_spacing">18</property>
+            <property name="column_spacing">60</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="label" translatable="yes">Sub [dB]</property>
+                <property name="label" translatable="yes">Sub</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -121,7 +121,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="label" translatable="yes">Low [dB]</property>
+                <property name="label" translatable="yes">Low</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -133,7 +133,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="label" translatable="yes">High [dB]</property>
+                <property name="label" translatable="yes">High</property>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -145,7 +145,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="label" translatable="yes">Mid [dB]</property>
+                <property name="label" translatable="yes">Mid</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -156,7 +156,13 @@
               <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="width_chars">10</property>
+                <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
+                <property name="secondary_icon_activatable">False</property>
                 <property name="input_purpose">number</property>
+                <property name="orientation">vertical</property>
                 <property name="adjustment">amount0</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
@@ -170,6 +176,12 @@
               <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="width_chars">10</property>
+                <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="orientation">vertical</property>
                 <property name="adjustment">amount1</property>
               </object>
               <packing>
@@ -181,6 +193,12 @@
               <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="width_chars">10</property>
+                <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="orientation">vertical</property>
                 <property name="adjustment">amount2</property>
               </object>
               <packing>
@@ -192,6 +210,12 @@
               <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="width_chars">10</property>
+                <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="orientation">vertical</property>
                 <property name="adjustment">amount3</property>
               </object>
               <packing>
@@ -203,7 +227,7 @@
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Filters</property>
+                <property name="label" translatable="yes">Filter</property>
               </object>
               <packing>
                 <property name="left_attach">4</property>
@@ -214,7 +238,11 @@
               <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="width_chars">10</property>
                 <property name="input_purpose">number</property>
+                <property name="orientation">vertical</property>
                 <property name="adjustment">filters</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
