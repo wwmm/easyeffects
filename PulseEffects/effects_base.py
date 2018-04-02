@@ -357,7 +357,7 @@ class EffectsBase(PipelineBase):
         for a in self.apps_list:
             if a[0] == idx:
                 self.remove_app_ui(idx)
-                self.apps_list.remove([idx, a[1]])
+                self.apps_list.remove(a)
 
                 self.set_pipeline_state()
 
