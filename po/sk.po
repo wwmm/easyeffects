@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-01 16:50-0300\n"
+"POT-Creation-Date: 2018-04-03 11:57-0300\n"
 "PO-Revision-Date: 2017-06-11 22:19+0200\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: \n"
@@ -682,6 +682,14 @@ msgstr "Uložiť predvoľbu"
 
 #: PulseEffects/presets_manager.py:170
 msgid " is not a file!"
+msgstr ""
+
+#: PulseEffects/presets_manager.py:214
+msgid "Open"
+msgstr ""
+
+#: PulseEffects/presets_manager.py:215
+msgid "Cancel"
 msgstr ""
 
 #: PulseEffects/presets_manager.py:267

@@ -211,8 +211,8 @@ class PresetsManager():
         chooser = Gtk.FileChooserNative.new(_('Import Presets'),
                                             self.app.window,
                                             Gtk.FileChooserAction.OPEN,
-                                            Gtk.STOCK_OPEN,
-                                            Gtk.STOCK_CANCEL)
+                                            _('Open'),
+                                            _('Cancel'))
 
         filter_preset = Gtk.FileFilter()
         filter_preset.set_name('preset')

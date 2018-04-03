@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-01 16:50-0300\n"
+"POT-Creation-Date: 2018-04-03 11:57-0300\n"
 "PO-Revision-Date: 2017-08-29 11:00+0200\n"
 "Last-Translator: Nathan Graule <solarliner@gmail.com>\n"
 "Language-Team: \n"
@@ -688,6 +688,15 @@ msgstr "Sauvegarder préglage"
 #: PulseEffects/presets_manager.py:170
 msgid " is not a file!"
 msgstr ""
+
+#: PulseEffects/presets_manager.py:214
+msgid "Open"
+msgstr ""
+
+#: PulseEffects/presets_manager.py:215
+#, fuzzy
+msgid "Cancel"
+msgstr "Amélioration audio"
 
 #: PulseEffects/presets_manager.py:267
 #, fuzzy

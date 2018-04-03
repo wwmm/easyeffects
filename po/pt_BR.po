@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-01 16:50-0300\n"
-"PO-Revision-Date: 2018-04-01 16:35-0300\n"
+"POT-Creation-Date: 2018-04-03 11:57-0300\n"
+"PO-Revision-Date: 2018-04-03 11:57-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
@@ -646,6 +646,14 @@ msgstr "Deletar Predefinição"
 #: PulseEffects/presets_manager.py:170
 msgid " is not a file!"
 msgstr " não é um arquivo!"
+
+#: PulseEffects/presets_manager.py:214
+msgid "Open"
+msgstr "Abrir"
+
+#: PulseEffects/presets_manager.py:215
+msgid "Cancel"
+msgstr "Cancelar"
 
 #: PulseEffects/presets_manager.py:267
 msgid "Presets: "
