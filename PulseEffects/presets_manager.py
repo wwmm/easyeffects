@@ -208,23 +208,23 @@ class PresetsManager():
                 self.save_preset(path)
 
     def on_import_preset_clicked(self, obj):
-        dialog = Gtk.FileChooserDialog(_('Import Presets'), self.app.window,
-                                       Gtk.FileChooserAction.OPEN,
-                                       (Gtk.STOCK_CANCEL,
-                                        Gtk.ResponseType.CANCEL,
-                                        Gtk.STOCK_OPEN, Gtk.ResponseType.OK))
+        chooser = Gtk.FileChooserNative.new(_('Import Presets'),
+                                            self.app.window,
+                                            Gtk.FileChooserAction.OPEN,
+                                            Gtk.STOCK_OPEN,
+                                            Gtk.STOCK_CANCEL)
 
         filter_preset = Gtk.FileFilter()
         filter_preset.set_name('preset')
         filter_preset.add_pattern('*.preset')
-        dialog.add_filter(filter_preset)
+        chooser.add_filter(filter_preset)
 
-        dialog.set_select_multiple(True)
+        chooser.set_select_multiple(True)
 
-        response = dialog.run()
+        response = chooser.run()
 
-        if response == Gtk.ResponseType.OK:
-            gfiles = dialog.get_files()
+        if response == Gtk.ResponseType.ACCEPT:
+            gfiles = chooser.get_files()
 
             for g in gfiles:
                 name = g.get_basename()
@@ -233,7 +233,7 @@ class PresetsManager():
 
                 g.copy(output, Gio.FileCopyFlags.OVERWRITE, None, None, None)
 
-        dialog.destroy()
+        chooser.destroy()
 
         self.init_listbox()
 
