@@ -11,6 +11,8 @@ see debug messages.
 ### Fixed
 - too many decimal places in the frequency and intensity shown in the spectrum
 window when hovering the mouse
+- Using Gtk.FileChooserNative in the import presets window. Now presets import
+will work in sandboxed environments like flatpak
 
 ## [3.2.1]
 ### Added
