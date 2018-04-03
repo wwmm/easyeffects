@@ -11,7 +11,7 @@ py3 = py3_mod.find_python()
 
 libpulse = dependency('libpulse')
 
-gtk3 = dependency('gtk+-3.0', version: '>= 3.18')
+gtk3 = dependency('gtk+-3.0', version: '>= 3.20')
 
 pygobj = dependency('pygobject-3.0')
 pycairo = dependency('py3cairo')
