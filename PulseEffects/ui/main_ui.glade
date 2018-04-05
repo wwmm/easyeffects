@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.0 -->
+<!-- Generated with glade 3.22.1 -->
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="buffer_time">
@@ -31,6 +31,75 @@
   </object>
   <object class="GtkApplicationWindow" id="MainWindow">
     <property name="can_focus">False</property>
+    <child type="titlebar">
+      <object class="GtkHeaderBar" id="headerbar">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="title">PulseEffects</property>
+        <property name="has_subtitle">False</property>
+        <property name="spacing">3</property>
+        <property name="show_close_button">True</property>
+        <child>
+          <object class="GtkStackSwitcher" id="stack_switcher">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="valign">center</property>
+            <property name="stack">stack</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="test">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">Test Signals</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="image">image_test</property>
+            <property name="always_show_image">True</property>
+            <signal name="clicked" handler="on_test_clicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="position">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkMenuButton" id="settings_popover_button">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="popover">settings_menu</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">format-justify-fill-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack_type">end</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="presets_popover_button">
+            <property name="label" translatable="yes">Presets</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+          </object>
+          <packing>
+            <property name="pack_type">end</property>
+            <property name="position">5</property>
+          </packing>
+        </child>
+      </object>
+    </child>
     <child>
       <object class="GtkGrid">
         <property name="visible">True</property>
@@ -246,6 +315,8 @@
             <property name="can_focus">False</property>
             <property name="hexpand">True</property>
             <property name="vexpand">True</property>
+            <property name="hhomogeneous">False</property>
+            <property name="vhomogeneous">False</property>
             <property name="transition_duration">250</property>
             <property name="transition_type">crossfade</property>
             <child>
@@ -255,75 +326,6 @@
           <packing>
             <property name="left_attach">0</property>
             <property name="top_attach">1</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-    <child type="titlebar">
-      <object class="GtkHeaderBar" id="headerbar">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="title">PulseEffects</property>
-        <property name="has_subtitle">False</property>
-        <property name="spacing">3</property>
-        <property name="show_close_button">True</property>
-        <child>
-          <object class="GtkStackSwitcher" id="stack_switcher">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="valign">center</property>
-            <property name="stack">stack</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="test">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Test Signals</property>
-            <property name="halign">center</property>
-            <property name="valign">center</property>
-            <property name="image">image_test</property>
-            <property name="always_show_image">True</property>
-            <signal name="clicked" handler="on_test_clicked" swapped="no"/>
-          </object>
-          <packing>
-            <property name="position">3</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkMenuButton" id="settings_popover_button">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="halign">center</property>
-            <property name="valign">center</property>
-            <property name="popover">settings_menu</property>
-            <child>
-              <object class="GtkImage">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">format-justify-fill-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="pack_type">end</property>
-            <property name="position">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="presets_popover_button">
-            <property name="label" translatable="yes">Presets</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="halign">center</property>
-            <property name="valign">center</property>
-          </object>
-          <packing>
-            <property name="pack_type">end</property>
-            <property name="position">5</property>
           </packing>
         </child>
       </object>
