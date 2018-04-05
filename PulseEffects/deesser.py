@@ -245,11 +245,15 @@ class Deesser():
         self.ui_compression_levelbar.set_value(compression)
         self.ui_detected_levelbar.set_value(detected)
 
-        compression = 20 * np.log10(compression)
-        detected = 20 * np.log10(detected)
+        if compression > 0:
+            compression = 20 * np.log10(compression)
 
-        self.ui_compression_level_label.set_text(str(round(compression)))
-        self.ui_detected_level_label.set_text(str(round(detected)))
+            self.ui_compression_level_label.set_text(str(round(compression)))
+
+        if detected > 0:
+            detected = 20 * np.log10(detected)
+
+            self.ui_detected_level_label.set_text(str(round(detected)))
 
     def reset(self):
         self.settings.reset('deesser-state')

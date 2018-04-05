@@ -232,9 +232,10 @@ class Gate():
 
         self.ui_gating_levelbar.set_value(gating)
 
-        gating = 20 * np.log10(gating)
+        if gating > 0:
+            gating = 20 * np.log10(gating)
 
-        self.ui_gating_level_label.set_text(str(round(gating)))
+            self.ui_gating_level_label.set_text(str(round(gating)))
 
     def reset(self):
         self.settings.reset('gate-state')
