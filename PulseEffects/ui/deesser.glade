@@ -1,7 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.0 -->
+<!-- Generated with glade 3.22.1 -->
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.18"/>
+  <object class="GtkAdjustment" id="f1_freq">
+    <property name="lower">10</property>
+    <property name="upper">18000</property>
+    <property name="value">6000</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="f1_level">
+    <property name="lower">-24</property>
+    <property name="upper">24</property>
+    <property name="value">1</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_f1_level_value_changed" swapped="no"/>
+  </object>
+  <object class="GtkAdjustment" id="f2_freq">
+    <property name="lower">10</property>
+    <property name="upper">18000</property>
+    <property name="value">4500</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="f2_level">
+    <property name="lower">-24</property>
+    <property name="upper">24</property>
+    <property name="value">4</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_f2_level_value_changed" swapped="no"/>
+  </object>
+  <object class="GtkAdjustment" id="f2_q">
+    <property name="lower">0.10000000000000001</property>
+    <property name="upper">100</property>
+    <property name="value">1</property>
+    <property name="step_increment">0.10000000000000001</property>
+    <property name="page_increment">1</property>
+  </object>
   <object class="GtkAdjustment" id="laxity">
     <property name="lower">1</property>
     <property name="upper">100</property>
@@ -17,7 +54,7 @@
       <object class="GtkLabel">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="label" translatable="yes">Gate</property>
+        <property name="label" translatable="yes">Deesser</property>
         <attributes>
           <attribute name="weight" value="bold"/>
         </attributes>
@@ -82,7 +119,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
-            <property name="spacing">30</property>
+            <property name="spacing">12</property>
             <child>
               <object class="GtkGrid">
                 <property name="visible">True</property>
@@ -95,7 +132,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <property name="margin_top">18</property>
+                    <property name="margin_top">12</property>
                     <property name="label" translatable="yes">Laxity</property>
                   </object>
                   <packing>
@@ -127,7 +164,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <property name="margin_top">18</property>
+                    <property name="margin_top">12</property>
                     <property name="label" translatable="yes">Threshold</property>
                   </object>
                   <packing>
@@ -160,7 +197,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <property name="margin_top">18</property>
+                    <property name="margin_top">12</property>
                     <property name="label" translatable="yes">Ratio</property>
                   </object>
                   <packing>
@@ -191,7 +228,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <property name="margin_top">18</property>
+                    <property name="margin_top">12</property>
                     <property name="label" translatable="yes">Makeup</property>
                   </object>
                   <packing>
@@ -283,7 +320,7 @@
                 </child>
                 <child>
                   <object class="GtkRadioButton" id="mode_wide">
-                    <property name="label" translatable="yes">Wide</property>
+                    <property name="label" translatable="yes">wide</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
@@ -291,7 +328,7 @@
                     <property name="valign">center</property>
                     <property name="active">True</property>
                     <property name="draw_indicator">False</property>
-                    <signal name="toggled" handler="on_mode_wide_toggled" swapped="no"/>
+                    <signal name="toggled" handler="on_new_mode" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">2</property>
@@ -300,7 +337,7 @@
                 </child>
                 <child>
                   <object class="GtkRadioButton" id="mode_split">
-                    <property name="label" translatable="yes">Split</property>
+                    <property name="label" translatable="yes">split</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
@@ -309,7 +346,7 @@
                     <property name="active">True</property>
                     <property name="draw_indicator">False</property>
                     <property name="group">mode_wide</property>
-                    <signal name="toggled" handler="on_mode_split_toggled" swapped="no"/>
+                    <signal name="toggled" handler="on_new_mode" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">3</property>
@@ -353,6 +390,7 @@
                     <property name="secondary_icon_activatable">False</property>
                     <property name="input_purpose">number</property>
                     <property name="orientation">vertical</property>
+                    <property name="adjustment">f1_freq</property>
                     <property name="numeric">True</property>
                     <property name="update_policy">if-valid</property>
                   </object>
@@ -385,6 +423,7 @@
                     <property name="secondary_icon_activatable">False</property>
                     <property name="input_purpose">number</property>
                     <property name="orientation">vertical</property>
+                    <property name="adjustment">f1_level</property>
                     <property name="numeric">True</property>
                     <property name="update_policy">if-valid</property>
                   </object>
@@ -417,6 +456,7 @@
                     <property name="secondary_icon_activatable">False</property>
                     <property name="input_purpose">number</property>
                     <property name="orientation">vertical</property>
+                    <property name="adjustment">f2_freq</property>
                     <property name="numeric">True</property>
                     <property name="update_policy">if-valid</property>
                   </object>
@@ -436,6 +476,7 @@
                     <property name="secondary_icon_activatable">False</property>
                     <property name="input_purpose">number</property>
                     <property name="orientation">vertical</property>
+                    <property name="adjustment">f2_level</property>
                     <property name="numeric">True</property>
                     <property name="update_policy">if-valid</property>
                   </object>
@@ -481,7 +522,10 @@
                     <property name="margin_left">30</property>
                     <property name="margin_right">30</property>
                     <property name="width_chars">10</property>
+                    <property name="input_purpose">number</property>
                     <property name="orientation">vertical</property>
+                    <property name="adjustment">f2_q</property>
+                    <property name="digits">2</property>
                     <property name="numeric">True</property>
                     <property name="update_policy">if-valid</property>
                   </object>
@@ -661,13 +705,67 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLevelBar" id="gating_levelbar">
+              <object class="GtkLevelBar" id="compression_levelbar">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">center</property>
                 <property name="margin_top">4</property>
                 <property name="hexpand">True</property>
-                <property name="max_value">70</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">5</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="compression_level_label">
+                <property name="visible">True</property>
+                <property name="sensitive">False</property>
+                <property name="can_focus">False</property>
+                <property name="label">0</property>
+                <property name="width_chars">2</property>
+                <property name="max_width_chars">2</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">5</property>
+                <property name="width">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="valign">center</property>
+                <property name="margin_right">3</property>
+                <property name="label" translatable="yes">Gain Reduction</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">5</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="valign">center</property>
+                <property name="label" translatable="yes">Detected</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLevelBar" id="detected_levelbar">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="valign">center</property>
+                <property name="margin_top">4</property>
+                <property name="hexpand">True</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -675,7 +773,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="gating_level_label">
+              <object class="GtkLabel" id="detected_level_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -687,20 +785,6 @@
                 <property name="left_attach">2</property>
                 <property name="top_attach">4</property>
                 <property name="width">3</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">end</property>
-                <property name="valign">center</property>
-                <property name="margin_right">3</property>
-                <property name="label" translatable="yes">Reduction Level</property>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">4</property>
               </packing>
             </child>
           </object>

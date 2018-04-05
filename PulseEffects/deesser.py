@@ -13,7 +13,7 @@ from gi.repository import Gio, GObject, Gst, GstInsertBin, Gtk
 Gst.init(None)
 
 
-class Gate():
+class Deesser():
 
     def __init__(self, settings):
         self.settings = settings
@@ -21,12 +21,12 @@ class Gate():
 
         self.log = logging.getLogger('PulseEffects')
 
-        if Gst.ElementFactory.make('calf-sourceforge-net-plugins-Gate'):
+        if Gst.ElementFactory.make('calf-sourceforge-net-plugins-Deesser'):
             self.is_installed = True
         else:
             self.is_installed = False
 
-            self.log.warn('Gate plugin was not found. Disabling it!')
+            self.log.warn('Deesser plugin was not found. Disabling it!')
 
         self.build_bin()
 
@@ -34,14 +34,14 @@ class Gate():
         pass
 
     def build_bin(self):
-        self.gate = Gst.ElementFactory.make(
-            'calf-sourceforge-net-plugins-Gate', None)
+        self.deesser = Gst.ElementFactory.make(
+            'calf-sourceforge-net-plugins-Deesser', None)
         self.input_level = Gst.ElementFactory.make('level',
-                                                   'gate_input_level')
+                                                   'deesser_input_level')
         self.output_level = Gst.ElementFactory.make('level',
-                                                    'gate_output_level')
+                                                    'deesser_output_level')
 
-        self.bin = GstInsertBin.InsertBin.new('gate_bin')
+        self.bin = GstInsertBin.InsertBin.new('deesser_bin')
 
         if self.is_installed:
             # booleans are inverted in GStreamer versions older than 1.12.5
@@ -51,12 +51,14 @@ class Gate():
                 .check_feature_version('pulsesrc', 1, 12, 5)
 
             if self.use_workaround:
-                self.gate.set_property('bypass', True)
+                self.deesser.set_property('bypass', True)
+                self.deesser.set_property('sc-listen', True)
             else:
-                self.gate.set_property('bypass', False)
+                self.deesser.set_property('bypass', False)
+                self.deesser.set_property('sc-listen', False)
 
             self.bin.append(self.input_level, self.on_filter_added, None)
-            self.bin.append(self.gate, self.on_filter_added, None)
+            self.bin.append(self.deesser, self.on_filter_added, None)
             self.bin.append(self.output_level, self.on_filter_added, None)
 
     def post_messages(self, state):
@@ -65,7 +67,7 @@ class Gate():
 
     def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +
-                                                 '/ui/gate.glade')
+                                                 '/ui/deesser.glade')
         self.builder.connect_signals(self)
 
         self.ui_window = self.builder.get_object('window')
@@ -74,19 +76,19 @@ class Gate():
 
         self.ui_enable = self.builder.get_object('enable')
         self.ui_img_state = self.builder.get_object('img_state')
-        self.ui_gate_detection_rms = self.builder.get_object('detection_rms')
-        self.ui_gate_detection_peak = self.builder.get_object('detection_peak')
-        self.ui_gate_stereo_link_average = self.builder.get_object(
-            'stereo_link_average')
-        self.ui_gate_stereo_link_maximum = self.builder.get_object(
-            'stereo_link_maximum')
-        self.ui_range = self.builder.get_object('range')
-        self.ui_attack = self.builder.get_object('attack')
-        self.ui_release = self.builder.get_object('release')
+        self.ui_detection_rms = self.builder.get_object('detection_rms')
+        self.ui_detection_peak = self.builder.get_object('detection_peak')
+        self.ui_mode_wide = self.builder.get_object('mode_wide')
+        self.ui_mode_split = self.builder.get_object('mode_split')
+        self.ui_laxity = self.builder.get_object('laxity')
         self.ui_threshold = self.builder.get_object('threshold')
         self.ui_ratio = self.builder.get_object('ratio')
-        self.ui_knee = self.builder.get_object('knee')
         self.ui_makeup = self.builder.get_object('makeup')
+        self.ui_f1_freq = self.builder.get_object('f1_freq')
+        self.ui_f1_level = self.builder.get_object('f1_level')
+        self.ui_f2_freq = self.builder.get_object('f2_freq')
+        self.ui_f2_level = self.builder.get_object('f2_level')
+        self.ui_f2_q = self.builder.get_object('f2_q')
 
         self.ui_input_level_left = self.builder.get_object('input_level_left')
         self.ui_input_level_right = self.builder.get_object(
@@ -95,7 +97,10 @@ class Gate():
             'output_level_left')
         self.ui_output_level_right = self.builder.get_object(
             'output_level_right')
-        self.ui_gating_levelbar = self.builder.get_object('gating_levelbar')
+        self.ui_compression_levelbar = self.builder.get_object(
+            'compression_levelbar')
+        self.ui_detected_levelbar = self.builder.get_object(
+            'detected_levelbar')
 
         self.ui_input_level_left_label = self.builder.get_object(
             'input_level_left_label')
@@ -105,90 +110,96 @@ class Gate():
             'output_level_left_label')
         self.ui_output_level_right_label = self.builder.get_object(
             'output_level_right_label')
-        self.ui_gating_level_label = self.builder.get_object(
-            'gating_level_label')
+        self.ui_compression_level_label = self.builder.get_object(
+            'compression_level_label')
+        self.ui_detected_level_label = self.builder.get_object(
+            'detected_level_label')
 
     def bind(self):
         # binding ui widgets to gsettings
 
         flag = Gio.SettingsBindFlags.DEFAULT
 
-        self.settings.bind('gate-state', self.ui_enable, 'active', flag)
-        self.settings.bind('gate-state', self.ui_img_state, 'visible',
+        self.settings.bind('deesser-state', self.ui_enable, 'active', flag)
+        self.settings.bind('deesser-state', self.ui_img_state, 'visible',
                            flag)
-        self.settings.bind('gate-state', self.ui_controls, 'sensitive',
+        self.settings.bind('deesser-state', self.ui_controls, 'sensitive',
                            Gio.SettingsBindFlags.GET)
 
-        self.settings.bind('gate-detection-rms', self.ui_gate_detection_rms,
+        self.settings.bind('deesser-detection-rms', self.ui_detection_rms,
                            'active', flag)
-        self.settings.bind('gate-detection-rms', self.ui_gate_detection_peak,
+        self.settings.bind('deesser-detection-rms', self.ui_detection_peak,
                            'active',
                            flag | Gio.SettingsBindFlags.INVERT_BOOLEAN)
 
-        self.settings.bind('gate-stereo-link-average',
-                           self.ui_gate_stereo_link_average, 'active', flag)
-        self.settings.bind('gate-stereo-link-average',
-                           self.ui_gate_stereo_link_maximum, 'active',
+        self.settings.bind('deesser-mode-wide', self.ui_mode_wide, 'active',
+                           flag)
+        self.settings.bind('deesser-mode-wide', self.ui_mode_split, 'active',
                            flag | Gio.SettingsBindFlags.INVERT_BOOLEAN)
 
-        self.settings.bind('gate-range', self.ui_range, 'value', flag)
-        self.settings.bind('gate-attack', self.ui_attack, 'value', flag)
-        self.settings.bind('gate-release', self.ui_release, 'value', flag)
-        self.settings.bind('gate-threshold', self.ui_threshold, 'value', flag)
-        self.settings.bind('gate-ratio', self.ui_ratio, 'value', flag)
-        self.settings.bind('gate-knee', self.ui_knee, 'value', flag)
-        self.settings.bind('gate-makeup', self.ui_makeup, 'value', flag)
+        self.settings.bind('deesser-laxity', self.ui_laxity, 'value', flag)
+        self.settings.bind('deesser-threshold', self.ui_threshold, 'value',
+                           flag)
+        self.settings.bind('deesser-makeup', self.ui_makeup, 'value', flag)
+        self.settings.bind('deesser-ratio', self.ui_ratio, 'value', flag)
+        self.settings.bind('deesser-f1', self.ui_f1_freq, 'value', flag)
+        self.settings.bind('deesser-f1-level', self.ui_f1_level, 'value', flag)
+        self.settings.bind('deesser-f2', self.ui_f2_freq, 'value', flag)
+        self.settings.bind('deesser-f2-level', self.ui_f2_level, 'value', flag)
+        self.settings.bind('deesser-f2-q', self.ui_f2_q, 'value', flag)
 
         # binding ui widgets to gstreamer plugins
 
         flag = GObject.BindingFlags.BIDIRECTIONAL | \
             GObject.BindingFlags.SYNC_CREATE
 
-        self.ui_attack.bind_property('value', self.gate, 'attack', flag)
-        self.ui_release.bind_property('value', self.gate, 'release', flag)
-        self.ui_ratio.bind_property('value', self.gate, 'ratio', flag)
+        self.ui_ratio.bind_property('value', self.deesser, 'ratio', flag)
+        self.ui_laxity.bind_property('value', self.deesser, 'laxity', flag)
+        self.ui_f1_freq.bind_property('value', self.deesser, 'f1-freq', flag)
+        self.ui_f2_freq.bind_property('value', self.deesser, 'f2-freq', flag)
+        self.ui_f2_q.bind_property('value', self.deesser, 'f2-q', flag)
 
     def on_threshold_value_changed(self, obj):
         value_db = obj.get_value()
         value_linear = 10**(value_db / 20.0)
 
-        self.gate.set_property('threshold', value_linear)
-
-    def on_knee_value_changed(self, obj):
-        value_db = obj.get_value()
-        value_linear = 10**(value_db / 20.0)
-
-        self.gate.set_property('knee', value_linear)
+        self.deesser.set_property('threshold', value_linear)
 
     def on_makeup_value_changed(self, obj):
         value_db = obj.get_value()
         value_linear = 10**(value_db / 20.0)
 
-        self.gate.set_property('makeup', value_linear)
+        self.deesser.set_property('makeup', value_linear)
 
-    def on_range_value_changed(self, obj):
+    def on_f1_level_value_changed(self, obj):
         value_db = obj.get_value()
         value_linear = 10**(value_db / 20.0)
 
-        self.gate.set_property('range', value_linear)
+        self.deesser.set_property('f1-level', value_linear)
+
+    def on_f2_level_value_changed(self, obj):
+        value_db = obj.get_value()
+        value_linear = 10**(value_db / 20.0)
+
+        self.deesser.set_property('f2-level', value_linear)
 
     def on_new_detection_type(self, obj):
         if obj.get_active():
             label = obj.get_label()
 
             if label == 'rms':
-                self.gate.set_property('detection', 'RMS')
+                self.deesser.set_property('detection', 'RMS')
             elif label == 'peak':
-                self.gate.set_property('detection', 'Peak')
+                self.deesser.set_property('detection', 'Peak')
 
-    def on_new_stereo_link_type(self, obj):
+    def on_new_mode(self, obj):
         if obj.get_active():
             label = obj.get_label()
 
-            if label == 'average':
-                self.gate.set_property('stereo-link', 'Average')
-            elif label == 'maximum':
-                self.gate.set_property('stereo-link', 'Maximum')
+            if label == 'wide':
+                self.deesser.set_property('mode', 'Wide')
+            elif label == 'split':
+                self.deesser.set_property('mode', 'Split')
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]
@@ -228,21 +239,27 @@ class Gate():
 
         self.ui_update_level(widgets, peak)
 
-        gating = self.gate.get_property('gating')
+        compression = self.deesser.get_property('compression')
+        detected = self.deesser.get_property('detected')
 
-        self.ui_gating_levelbar.set_value(gating)
+        self.ui_compression_levelbar.set_value(compression)
+        self.ui_detected_levelbar.set_value(detected)
 
-        gating = 20 * np.log10(gating)
+        compression = 20 * np.log10(compression)
+        detected = 20 * np.log10(detected)
 
-        self.ui_gating_level_label.set_text(str(round(gating)))
+        self.ui_compression_level_label.set_text(str(round(compression)))
+        self.ui_detected_level_label.set_text(str(round(detected)))
 
     def reset(self):
-        self.settings.reset('gate-state')
-        self.settings.reset('gate-detection-rms')
-        self.settings.reset('gate-stereo-link-average')
-        self.settings.reset('gate-attack')
-        self.settings.reset('gate-release')
-        self.settings.reset('gate-threshold')
-        self.settings.reset('gate-ratio')
-        self.settings.reset('gate-knee')
-        self.settings.reset('gate-makeup')
+        self.settings.reset('deesser-state')
+        self.settings.reset('deesser-detection-rms')
+        self.settings.reset('deesser-mode-wide')
+        self.settings.reset('deesser-threshold')
+        self.settings.reset('deesser-makeup')
+        self.settings.reset('deesser-ratio')
+        self.settings.reset('deesser-f1')
+        self.settings.reset('deesser-f1-level')
+        self.settings.reset('deesser-f2')
+        self.settings.reset('deesser-f2-level')
+        self.settings.reset('deesser-f2-q')

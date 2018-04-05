@@ -6,6 +6,7 @@ import gi
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gio, GstInsertBin, Gtk
+from PulseEffects.deesser import Deesser
 from PulseEffects.effects_base import EffectsBase
 from PulseEffects.gate import Gate
 from PulseEffects.pitch import Pitch
@@ -49,11 +50,13 @@ class SourceOutputEffects(EffectsBase):
 
         self.pitch = Pitch(self.settings)
         self.gate = Gate(self.settings)
+        self.deesser = Deesser(self.settings)
 
         # effects wrappers
 
         self.pitch_wrapper = GstInsertBin.InsertBin.new('pitch_wrapper')
         self.gate_wrapper = GstInsertBin.InsertBin.new('gate_wrapper')
+        self.deesser_wrapper = GstInsertBin.InsertBin.new('deesser_wrapper')
 
         # appending effects wrappers to effects bin
         # the effects order is defined here
@@ -69,6 +72,8 @@ class SourceOutputEffects(EffectsBase):
         self.effects_bin.append(self.lowpass_wrapper, self.on_filter_added,
                                 self.log_tag)
         self.effects_bin.append(self.equalizer_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.deesser_wrapper, self.on_filter_added,
                                 self.log_tag)
         self.effects_bin.append(self.reverb_wrapper, self.on_filter_added,
                                 self.log_tag)
@@ -101,6 +106,7 @@ class SourceOutputEffects(EffectsBase):
         self.highpass.init_ui()
         self.lowpass.init_ui()
         self.equalizer.init_ui()
+        self.deesser.init_ui()
         self.reverb.init_ui()
         self.pitch.init_ui()
 
@@ -110,6 +116,7 @@ class SourceOutputEffects(EffectsBase):
         self.add_to_listbox('highpass')
         self.add_to_listbox('lowpass')
         self.add_to_listbox('equalizer')
+        self.add_to_listbox('deesser')
         self.add_to_listbox('reverb')
         self.add_to_listbox('pitch')
 
@@ -122,6 +129,7 @@ class SourceOutputEffects(EffectsBase):
         self.stack.add_named(self.highpass.ui_window, 'highpass')
         self.stack.add_named(self.lowpass.ui_window, 'lowpass')
         self.stack.add_named(self.equalizer.ui_window, 'equalizer')
+        self.stack.add_named(self.deesser.ui_window, 'deesser')
         self.stack.add_named(self.reverb.ui_window, 'reverb')
         self.stack.add_named(self.pitch.ui_window, 'pitch')
 
@@ -134,6 +142,7 @@ class SourceOutputEffects(EffectsBase):
         self.highpass.ui_enable.connect('state-set', self.on_highpass_enable)
         self.lowpass.ui_enable.connect('state-set', self.on_lowpass_enable)
         self.equalizer.ui_enable.connect('state-set', self.on_equalizer_enable)
+        self.deesser.ui_enable.connect('state-set', self.on_deesser_enable)
         self.reverb.ui_enable.connect('state-set', self.on_reverb_enable)
         self.pitch.ui_enable.connect('state-set', self.on_pitch_enable)
 
@@ -157,6 +166,13 @@ class SourceOutputEffects(EffectsBase):
             self.compressor.ui_window.set_sensitive(False)
             self.compressor.ui_enable.set_sensitive(False)
             self.compressor.ui_img_state.hide()
+
+        if self.deesser.is_installed:
+            self.deesser.bind()
+        else:
+            self.deesser.ui_window.set_sensitive(False)
+            self.deesser.ui_enable.set_sensitive(False)
+            self.deesser.ui_img_state.hide()
 
         if self.pitch.is_installed:
             self.pitch.bind()
@@ -196,6 +212,7 @@ class SourceOutputEffects(EffectsBase):
 
         self.pitch.post_messages(state)
         self.gate.post_messages(state)
+        self.deesser.post_messages(state)
 
     def on_message_element(self, bus, msg):
         EffectsBase.on_message_element(self, bus, msg)
@@ -218,6 +235,14 @@ class SourceOutputEffects(EffectsBase):
             peak = msg.get_structure().get_value('peak')
 
             self.gate.ui_update_output_level(peak)
+        elif plugin == 'deesser_input_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.deesser.ui_update_input_level(peak)
+        elif plugin == 'deesser_output_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.deesser.ui_update_output_level(peak)
 
         return True
 
@@ -243,8 +268,20 @@ class SourceOutputEffects(EffectsBase):
                                      self.on_filter_removed,
                                      self.log_tag)
 
+    def on_deesser_enable(self, obj, state):
+        if state:
+            if not self.deesser_wrapper.get_by_name('deesser_bin'):
+                self.deesser_wrapper.append(self.deesser.bin,
+                                            self.on_filter_added,
+                                            self.log_tag)
+        else:
+            self.deesser_wrapper.remove(self.deesser.bin,
+                                        self.on_filter_removed,
+                                        self.log_tag)
+
     def reset(self):
         EffectsBase.reset(self)
 
         self.pitch.reset()
         self.gate.reset()
+        self.deesser.reset()
