@@ -41,20 +41,29 @@ class Webrtc():
         self.bin = GstInsertBin.InsertBin.new('webrtc_bin')
 
         if self.is_installed:
-            # webrtcprobe_src = Gst.ElementFactory.make('pulsesrc',
-            #                                           'webrtcprobe_src')
-            # webrtcprobe_sink = Gst.ElementFactory.make('fakesink',
-            #                                            'webrtcprobe_sink')
-            #
-            # webrtcprobe_src.set_property('provide-clock', False)
-            #
-            # self.pipeline.add(webrtcprobe_src)
-            # self.pipeline.add(webrtcprobe_sink)
-            #
-            # webrtcprobe_src.link(webrtcprobe_sink)
-            #
-            # webrtcprobe_src.connect('notify::source-output-index',
-            #                         lambda x, y: print(x, y))
+            self.probe_bin = Gst.Bin.new()
+            self.probe = Gst.ElementFactory.make('webrtcechoprobe')
+            self.probe_src = Gst.ElementFactory.make('pulsesrc',
+                                                     'webrtcprobe_src')
+            self.probe_sink = Gst.ElementFactory.make('fakesink',
+                                                      'webrtcprobe_sink')
+
+            self.probe_src.set_property('provide-clock', False)
+
+            pa_props_str = 'props,application.name=PulseEffectsWebrtcProbe'
+            pa_props = Gst.Structure.new_from_string(pa_props_str)
+
+            self.probe_src.set_property('stream-properties', pa_props)
+
+            self.probe_bin.add(self.probe_src)
+            self.probe_bin.add(self.probe)
+            self.probe_bin.add(self.probe_sink)
+
+            self.probe_src.link(self.probe)
+            self.probe.link(self.probe_sink)
+
+            self.probe_src.connect('notify::source-output-index',
+                                   lambda x, y: print(x, y))
 
             self.bin.append(self.in_level, self.on_filter_added, None)
             self.bin.append(self.webrtc, self.on_filter_added, None)
@@ -63,6 +72,9 @@ class Webrtc():
     def post_messages(self, state):
         self.in_level.set_property('post-messages', state)
         self.out_level.set_property('post-messages', state)
+
+    def set_probe_src_device(self, name):
+        self.probe_src.set_property('device', name)
 
     def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +

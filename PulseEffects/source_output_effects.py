@@ -3,9 +3,10 @@
 import os
 
 import gi
+gi.require_version('Gst', '1.0')
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, GstInsertBin, Gtk
+from gi.repository import Gio, Gst, GstInsertBin, Gtk
 from PulseEffects.deesser import Deesser
 from PulseEffects.effects_base import EffectsBase
 from PulseEffects.gate import Gate
@@ -148,6 +149,8 @@ class SourceOutputEffects(EffectsBase):
             self.gate.ui_img_state.hide()
 
         if self.webrtc.is_installed:
+            self.webrtc.set_probe_src_device(self.pm.default_sink_name +
+                                             '.monitor')
             self.webrtc.bind()
         else:
             self.webrtc.ui_window.set_sensitive(False)
@@ -269,14 +272,24 @@ class SourceOutputEffects(EffectsBase):
 
     def on_webrtc_enable(self, obj, state):
         if state:
-            if not self.webrtc_wrapper.get_by_name('webrtc_bin'):
-                self.webrtc_wrapper.append(self.webrtc.bin,
-                                           self.on_filter_added,
-                                           self.log_tag)
+            self.pipeline.add(self.webrtc.probe_bin)
+            self.webrtc.probe_bin.set_state(Gst.State.PLAYING)
+
+            # if not self.webrtc_wrapper.get_by_name('webrtc_bin'):
+            # self.webrtc.set_probe_src_device(self.pm.default_sink_name +
+            #                                  '.monitor')
+            # self.pipeline.add(self.webrtc.probe_bin)
+
+            # self.webrtc_wrapper.append(self.webrtc.bin,
+            #                            self.on_filter_added,
+            #                            self.log_tag)
         else:
-            self.webrtc_wrapper.remove(self.webrtc.bin,
-                                       self.on_filter_removed,
-                                       self.log_tag)
+            # self.webrtc_wrapper.remove(self.webrtc.bin,
+            #                            self.on_filter_removed,
+            #                            self.log_tag)
+
+            self.webrtc.probe_bin.set_state(Gst.State.NULL)
+            self.pipeline.remove(self.webrtc.probe_bin)
 
     def on_deesser_enable(self, obj, state):
         if state:
