@@ -151,7 +151,7 @@
                     <property name="receives_default">False</property>
                     <property name="halign">start</property>
                     <property name="valign">center</property>
-                    <property name="margin_right">30</property>
+                    <property name="margin_right">60</property>
                     <property name="active">True</property>
                     <property name="draw_indicator">False</property>
                     <property name="group">detection_rms</property>
@@ -198,7 +198,7 @@
                     <property name="receives_default">False</property>
                     <property name="halign">end</property>
                     <property name="valign">center</property>
-                    <property name="margin_left">30</property>
+                    <property name="margin_left">60</property>
                     <property name="active">True</property>
                     <property name="draw_indicator">False</property>
                     <signal name="toggled" handler="on_new_mode" swapped="no"/>
@@ -392,8 +392,6 @@
                     <property name="can_focus">True</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <property name="margin_left">30</property>
-                    <property name="margin_right">30</property>
                     <property name="width_chars">10</property>
                     <property name="input_purpose">number</property>
                     <property name="orientation">vertical</property>
