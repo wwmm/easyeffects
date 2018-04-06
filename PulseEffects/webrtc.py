@@ -41,31 +41,60 @@ class Webrtc():
         self.bin = GstInsertBin.InsertBin.new('webrtc_bin')
 
         if self.is_installed:
-            self.probe_bin = Gst.Bin.new()
-            self.probe = Gst.ElementFactory.make('webrtcechoprobe')
-            self.probe_src = Gst.ElementFactory.make('pulsesrc',
-                                                     'webrtcprobe_src')
-            self.probe_sink = Gst.ElementFactory.make('fakesink',
-                                                      'webrtcprobe_sink')
+            # probe setup
 
-            self.probe_src.set_property('provide-clock', False)
+            self.probe_bin = Gst.Bin.new()
+
+            self.probe = Gst.ElementFactory.make('webrtcechoprobe', None)
+            self.probe_src = Gst.ElementFactory.make('pulsesrc', None)
+            probe_sink = Gst.ElementFactory.make('fakesink', None)
+            probe_convert = Gst.ElementFactory.make('audioconvert', None)
+            probe_resample = Gst.ElementFactory.make('audioresample', None)
+            probe_caps = Gst.ElementFactory.make('capsfilter', None)
 
             pa_props_str = 'props,application.name=PulseEffectsWebrtcProbe'
             pa_props = Gst.Structure.new_from_string(pa_props_str)
 
             self.probe_src.set_property('stream-properties', pa_props)
+            self.probe_src.set_property('provide-clock', False)
+
+            caps = ['audio/x-raw', 'format=S16LE', 'rate=48000', 'channels=2']
+
+            src_caps = Gst.Caps.from_string(','.join(caps))
+
+            probe_caps.set_property('caps', src_caps)
 
             self.probe_bin.add(self.probe_src)
+            self.probe_bin.add(probe_convert)
+            self.probe_bin.add(probe_resample)
+            self.probe_bin.add(probe_caps)
             self.probe_bin.add(self.probe)
-            self.probe_bin.add(self.probe_sink)
+            self.probe_bin.add(probe_sink)
 
-            self.probe_src.link(self.probe)
-            self.probe.link(self.probe_sink)
+            self.probe_src.link(probe_convert)
+            probe_convert.link(probe_resample)
+            probe_resample.link(probe_caps)
+            probe_caps.link(self.probe)
+            self.probe.link(probe_sink)
 
-            self.probe_src.connect('notify::source-output-index',
-                                   lambda x, y: print(x, y))
+            # dsp setup
+
+            dsp_convert = Gst.ElementFactory.make('audioconvert', None)
+            dsp_resample = Gst.ElementFactory.make('audioresample', None)
+            dsp_caps = Gst.ElementFactory.make('capsfilter', None)
+
+            dsp_caps.set_property('caps', src_caps)
+
+            self.webrtc.set_property('echo-cancel', True)
+            self.webrtc.set_property('echo-suppression-level', 'high')
+            # self.webrtc.set_property('noise-suppression', True)
+            # self.webrtc.set_property('noise-suppression-level', 'low')
+            # self.webrtc.set_property('experimental-agc', True)
 
             self.bin.append(self.in_level, self.on_filter_added, None)
+            self.bin.append(dsp_convert, self.on_filter_added, None)
+            self.bin.append(dsp_resample, self.on_filter_added, None)
+            self.bin.append(dsp_caps, self.on_filter_added, None)
             self.bin.append(self.webrtc, self.on_filter_added, None)
             self.bin.append(self.out_level, self.on_filter_added, None)
 

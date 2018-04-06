@@ -275,18 +275,14 @@ class SourceOutputEffects(EffectsBase):
             self.pipeline.add(self.webrtc.probe_bin)
             self.webrtc.probe_bin.set_state(Gst.State.PLAYING)
 
-            # if not self.webrtc_wrapper.get_by_name('webrtc_bin'):
-            # self.webrtc.set_probe_src_device(self.pm.default_sink_name +
-            #                                  '.monitor')
-            # self.pipeline.add(self.webrtc.probe_bin)
-
-            # self.webrtc_wrapper.append(self.webrtc.bin,
-            #                            self.on_filter_added,
-            #                            self.log_tag)
+            if not self.webrtc_wrapper.get_by_name('webrtc_bin'):
+                self.webrtc_wrapper.append(self.webrtc.bin,
+                                           self.on_filter_added,
+                                           self.log_tag)
         else:
-            # self.webrtc_wrapper.remove(self.webrtc.bin,
-            #                            self.on_filter_removed,
-            #                            self.log_tag)
+            self.webrtc_wrapper.remove(self.webrtc.bin,
+                                       self.on_filter_removed,
+                                       self.log_tag)
 
             self.webrtc.probe_bin.set_state(Gst.State.NULL)
             self.pipeline.remove(self.webrtc.probe_bin)
