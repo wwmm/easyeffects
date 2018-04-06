@@ -10,6 +10,7 @@ from PulseEffects.deesser import Deesser
 from PulseEffects.effects_base import EffectsBase
 from PulseEffects.gate import Gate
 from PulseEffects.pitch import Pitch
+from PulseEffects.webrtc import Webrtc
 
 
 class SourceOutputEffects(EffectsBase):
@@ -51,17 +52,21 @@ class SourceOutputEffects(EffectsBase):
         self.pitch = Pitch(self.settings)
         self.gate = Gate(self.settings)
         self.deesser = Deesser(self.settings)
+        self.webrtc = Webrtc(self.settings)
 
         # effects wrappers
 
-        self.pitch_wrapper = GstInsertBin.InsertBin.new('pitch_wrapper')
         self.gate_wrapper = GstInsertBin.InsertBin.new('gate_wrapper')
+        self.webrtc_wrapper = GstInsertBin.InsertBin.new('webrtc_wrapper')
+        self.pitch_wrapper = GstInsertBin.InsertBin.new('pitch_wrapper')
         self.deesser_wrapper = GstInsertBin.InsertBin.new('deesser_wrapper')
 
         # appending effects wrappers to effects bin
         # the effects order is defined here
 
         self.effects_bin.append(self.gate_wrapper, self.on_filter_added,
+                                self.log_tag)
+        self.effects_bin.append(self.webrtc_wrapper, self.on_filter_added,
                                 self.log_tag)
         self.effects_bin.append(self.limiter_wrapper, self.on_filter_added,
                                 self.log_tag)
@@ -82,25 +87,11 @@ class SourceOutputEffects(EffectsBase):
         self.effects_bin.append(self.spectrum_wrapper, self.on_filter_added,
                                 self.log_tag)
 
-        # webrtcprobe_src = Gst.ElementFactory.make('pulsesrc',
-        #                                           'webrtcprobe_src')
-        # webrtcprobe_sink = Gst.ElementFactory.make('fakesink',
-        #                                            'webrtcprobe_sink')
-        #
-        # webrtcprobe_src.set_property('provide-clock', False)
-        #
-        # self.pipeline.add(webrtcprobe_src)
-        # self.pipeline.add(webrtcprobe_sink)
-        #
-        # webrtcprobe_src.link(webrtcprobe_sink)
-        #
-        # webrtcprobe_src.connect('notify::source-output-index',
-        #                         lambda x, y: print(x, y))
-
     def init_ui(self):
         EffectsBase.init_ui(self)
 
         self.gate.init_ui()
+        self.webrtc.init_ui()
         self.limiter.init_ui()
         self.compressor.init_ui()
         self.highpass.init_ui()
@@ -111,6 +102,7 @@ class SourceOutputEffects(EffectsBase):
         self.pitch.init_ui()
 
         self.add_to_listbox('gate')
+        self.add_to_listbox('webrtc')
         self.add_to_listbox('limiter')
         self.add_to_listbox('compressor')
         self.add_to_listbox('highpass')
@@ -124,6 +116,7 @@ class SourceOutputEffects(EffectsBase):
 
         # adding effects widgets to the stack
         self.stack.add_named(self.gate.ui_window, 'gate')
+        self.stack.add_named(self.webrtc.ui_window, 'webrtc')
         self.stack.add_named(self.limiter.ui_window, 'limiter')
         self.stack.add_named(self.compressor.ui_window, 'compressor')
         self.stack.add_named(self.highpass.ui_window, 'highpass')
@@ -135,6 +128,7 @@ class SourceOutputEffects(EffectsBase):
 
         # on/off switches connections
         self.gate.ui_enable.connect('state-set', self.on_gate_enable)
+        self.webrtc.ui_enable.connect('state-set', self.on_webrtc_enable)
         self.limiter.ui_limiter_enable.connect('state-set',
                                                self.on_limiter_enable)
         self.compressor.ui_enable.connect('state-set',
@@ -152,6 +146,13 @@ class SourceOutputEffects(EffectsBase):
             self.gate.ui_window.set_sensitive(False)
             self.gate.ui_enable.set_sensitive(False)
             self.gate.ui_img_state.hide()
+
+        if self.webrtc.is_installed:
+            self.webrtc.bind()
+        else:
+            self.webrtc.ui_window.set_sensitive(False)
+            self.webrtc.ui_enable.set_sensitive(False)
+            self.webrtc.ui_img_state.hide()
 
         if self.limiter.is_installed:
             self.limiter.bind()
@@ -210,8 +211,9 @@ class SourceOutputEffects(EffectsBase):
     def post_messages(self, state):
         EffectsBase.post_messages(self, state)
 
-        self.pitch.post_messages(state)
         self.gate.post_messages(state)
+        self.webrtc.post_messages(state)
+        self.pitch.post_messages(state)
         self.deesser.post_messages(state)
 
     def on_message_element(self, bus, msg):
@@ -219,15 +221,7 @@ class SourceOutputEffects(EffectsBase):
 
         plugin = msg.src.get_name()
 
-        if plugin == 'pitch_input_level':
-            peak = msg.get_structure().get_value('peak')
-
-            self.pitch.ui_update_input_level(peak)
-        elif plugin == 'pitch_output_level':
-            peak = msg.get_structure().get_value('peak')
-
-            self.pitch.ui_update_output_level(peak)
-        elif plugin == 'gate_input_level':
+        if plugin == 'gate_input_level':
             peak = msg.get_structure().get_value('peak')
 
             self.gate.ui_update_input_level(peak)
@@ -235,6 +229,14 @@ class SourceOutputEffects(EffectsBase):
             peak = msg.get_structure().get_value('peak')
 
             self.gate.ui_update_output_level(peak)
+        elif plugin == 'webrtc_input_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.webrtc.ui_update_input_level(peak)
+        elif plugin == 'webrtc_output_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.webrtc.ui_update_output_level(peak)
         elif plugin == 'deesser_input_level':
             peak = msg.get_structure().get_value('peak')
 
@@ -243,19 +245,16 @@ class SourceOutputEffects(EffectsBase):
             peak = msg.get_structure().get_value('peak')
 
             self.deesser.ui_update_output_level(peak)
+        elif plugin == 'pitch_input_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.pitch.ui_update_input_level(peak)
+        elif plugin == 'pitch_output_level':
+            peak = msg.get_structure().get_value('peak')
+
+            self.pitch.ui_update_output_level(peak)
 
         return True
-
-    def on_pitch_enable(self, obj, state):
-        if state:
-            if not self.pitch_wrapper.get_by_name('pitch_bin'):
-                self.pitch_wrapper.append(self.pitch.bin,
-                                          self.on_filter_added,
-                                          self.log_tag)
-        else:
-            self.pitch_wrapper.remove(self.pitch.bin,
-                                      self.on_filter_removed,
-                                      self.log_tag)
 
     def on_gate_enable(self, obj, state):
         if state:
@@ -268,6 +267,17 @@ class SourceOutputEffects(EffectsBase):
                                      self.on_filter_removed,
                                      self.log_tag)
 
+    def on_webrtc_enable(self, obj, state):
+        if state:
+            if not self.webrtc_wrapper.get_by_name('webrtc_bin'):
+                self.webrtc_wrapper.append(self.webrtc.bin,
+                                           self.on_filter_added,
+                                           self.log_tag)
+        else:
+            self.webrtc_wrapper.remove(self.webrtc.bin,
+                                       self.on_filter_removed,
+                                       self.log_tag)
+
     def on_deesser_enable(self, obj, state):
         if state:
             if not self.deesser_wrapper.get_by_name('deesser_bin'):
@@ -279,9 +289,21 @@ class SourceOutputEffects(EffectsBase):
                                         self.on_filter_removed,
                                         self.log_tag)
 
+    def on_pitch_enable(self, obj, state):
+        if state:
+            if not self.pitch_wrapper.get_by_name('pitch_bin'):
+                self.pitch_wrapper.append(self.pitch.bin,
+                                          self.on_filter_added,
+                                          self.log_tag)
+        else:
+            self.pitch_wrapper.remove(self.pitch.bin,
+                                      self.on_filter_removed,
+                                      self.log_tag)
+
     def reset(self):
         EffectsBase.reset(self)
 
-        self.pitch.reset()
         self.gate.reset()
+        self.webrtc.reset()
         self.deesser.reset()
+        self.pitch.reset()

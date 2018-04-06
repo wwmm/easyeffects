@@ -22,6 +22,7 @@ PulseEffects/ui/presets_menu.glade
 PulseEffects/ui/reverb.glade
 PulseEffects/ui/stereo_enhancer.glade
 PulseEffects/ui/stereo_spread.glade
+PulseEffects/ui/webrtc.glade
 PulseEffects/application.py
 PulseEffects/effects_base.py
 PulseEffects/presets_manager.py

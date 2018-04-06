@@ -564,5 +564,9 @@
           <default>1</default>
         </key>
 
+        <key name="webrtc-state" type="b">
+          <default>false</default>
+        </key>
+
     </schema>
 </schemalist>
