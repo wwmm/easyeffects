@@ -571,6 +571,35 @@ class LoadPresets():
         settings.set_value('gate-knee', GLib.Variant('d', knee))
         settings.set_value('gate-makeup', GLib.Variant('d', makeup))
 
+    def load_deesser_preset(self, settings, section):
+        enabled = self.config.getboolean(section, 'enabled', fallback=False)
+        detection = self.config.getboolean(section, 'detection_type_rms',
+                                           fallback=True)
+        mode = self.config.getboolean(section, 'mode_type_wide', fallback=True)
+        threshold = self.config.getfloat(section, 'threshold', fallback=-18.0)
+        ratio = self.config.getfloat(section, 'ratio', fallback=3.0)
+        makeup = self.config.getfloat(section, 'makeup', fallback=0.0)
+        laxity = self.config.getint(section, 'laxity', fallback=15)
+        f1 = self.config.getfloat(section, 'f1', fallback=6000.0)
+        f1_level = self.config.getfloat(section, 'f1_level', fallback=0.0)
+        f2 = self.config.getfloat(section, 'f2', fallback=4500.0)
+        f2_level = self.config.getfloat(section, 'f2_level', fallback=12.0)
+        f2_q = self.config.getfloat(section, 'f2_q', fallback=1.0)
+
+        settings.set_value('deesser-state', GLib.Variant('b', enabled))
+        settings.set_value('deesser-detection-rms',
+                           GLib.Variant('b', detection))
+        settings.set_value('deesser-mode-wide', GLib.Variant('b', mode))
+        settings.set_value('deesser-threshold', GLib.Variant('d', threshold))
+        settings.set_value('deesser-ratio', GLib.Variant('d', ratio))
+        settings.set_value('deesser-makeup', GLib.Variant('d', makeup))
+        settings.set_value('deesser-laxity', GLib.Variant('i', laxity))
+        settings.set_value('deesser-f1', GLib.Variant('d', f1))
+        settings.set_value('deesser-f1-level', GLib.Variant('d', f1_level))
+        settings.set_value('deesser-f2', GLib.Variant('d', f2))
+        settings.set_value('deesser-f2-level', GLib.Variant('d', f2_level))
+        settings.set_value('deesser-f2-q', GLib.Variant('d', f2_q))
+
     def load_sink_inputs_preset(self, settings):
         self.load_limiter_preset(settings, 'apps_limiter')
         self.load_autovolume_preset(settings, 'apps_autovolume')
@@ -599,3 +628,4 @@ class LoadPresets():
         self.load_reverb_preset(settings, 'mic_reverb')
         self.load_pitch_preset(settings, 'mic_pitch')
         self.load_gate_preset(settings, 'mic_gate')
+        self.load_deesser_preset(settings, 'mic_deesser')

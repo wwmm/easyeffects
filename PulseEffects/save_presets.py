@@ -419,6 +419,33 @@ class SavePresets():
                                 'knee': str(knee),
                                 'makeup': str(makeup)}
 
+    def save_deesser_preset(self, settings, section):
+        enabled = settings.get_value('deesser-state')
+        detection = settings.get_value('deesser-detection-rms')
+        mode = settings.get_value('deesser-mode-wide')
+        threshold = settings.get_value('deesser-threshold')
+        ratio = settings.get_value('deesser-ratio')
+        makeup = settings.get_value('deesser-makeup')
+        laxity = settings.get_value('deesser-laxity')
+        f1 = settings.get_value('deesser-f1')
+        f1_level = settings.get_value('deesser-f1-level')
+        f2 = settings.get_value('deesser-f2')
+        f2_level = settings.get_value('deesser-f2-level')
+        f2_q = settings.get_value('deesser-f2-q')
+
+        self.config[section] = {'enabled': str(enabled),
+                                'detection_type_rms': str(detection),
+                                'mode_type_wide': str(mode),
+                                'threshold': str(threshold),
+                                'ratio': str(ratio),
+                                'makeup': str(makeup),
+                                'laxity': str(laxity),
+                                'f1': str(f1),
+                                'f1_level': str(f1_level),
+                                'f2': str(f2),
+                                'f2_level': str(f2_level),
+                                'f2_q': str(f2_q)}
+
     def save_sink_inputs_preset(self, settings):
         self.save_limiter_preset(settings, 'apps_limiter')
         self.save_autovolume_preset(settings, 'apps_autovolume')
@@ -447,6 +474,7 @@ class SavePresets():
         self.save_reverb_preset(settings, 'mic_reverb')
         self.save_pitch_preset(settings, 'mic_pitch')
         self.save_gate_preset(settings, 'mic_gate')
+        self.save_deesser_preset(settings, 'mic_deesser')
 
     def write_config(self):
         self.config.write(self.output_file)
