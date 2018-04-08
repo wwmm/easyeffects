@@ -694,7 +694,6 @@
                   <object class="GtkComboBoxText" id="input_device">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="active">0</property>
                     <signal name="changed" handler="on_input_device_changed" swapped="no"/>
                   </object>
                   <packing>
@@ -721,7 +720,6 @@
                   <object class="GtkComboBoxText" id="output_device">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="active">0</property>
                     <signal name="changed" handler="on_output_device_changed" swapped="no"/>
                   </object>
                   <packing>

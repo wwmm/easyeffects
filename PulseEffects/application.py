@@ -431,27 +431,30 @@ class Application(Gtk.Application):
         if add_to_list:
             self.sink_list.append(sink)
 
-        self.ui_output_device.remove_all()
+            if self.ui_initialized:
+                self.ui_output_device.remove_all()
 
-        for s in self.sink_list:
-            self.ui_output_device.append_text(s['name'])
+                for s in self.sink_list:
+                    self.ui_output_device.append_text(s['name'])
 
-        self.log.debug(self.log_tag + 'added sink: ' + sink['name'])
+            self.log.debug(self.log_tag + 'added sink: ' + sink['name'])
 
     def on_sink_removed(self, obj, idx):
         for s in self.sink_list:
             if s['idx'] == idx:
                 name = s['name']
+
                 self.sink_list.remove(s)
 
+                if self.ui_initialized:
+                    self.ui_output_device.remove_all()
+
+                    for s in self.sink_list:
+                        self.ui_output_device.append_text(s['name'])
+
+                self.log.debug(self.log_tag + 'removed sink: ' + name)
+
                 break
-
-        self.ui_output_device.remove_all()
-
-        for s in self.sink_list:
-            self.ui_output_device.append_text(s['name'])
-
-        self.log.debug(self.log_tag + 'removed sink: ' + name)
 
     def on_source_added(self, obj, source):
         add_to_list = True
@@ -465,37 +468,52 @@ class Application(Gtk.Application):
         if add_to_list:
             self.source_list.append(source)
 
-        self.ui_input_device.remove_all()
+            if self.ui_initialized:
+                self.ui_input_device.remove_all()
 
-        for s in self.source_list:
-            self.ui_input_device.append_text(s['name'])
+                for s in self.source_list:
+                    self.ui_input_device.append_text(s['name'])
 
-        self.log.debug(self.log_tag + 'added source: ' + source['name'])
+            self.log.debug(self.log_tag + 'added source: ' + source['name'])
 
     def on_source_removed(self, obj, idx):
         for s in self.source_list:
             if s['idx'] == idx:
                 name = s['name']
+
                 self.source_list.remove(s)
+
+                if self.ui_initialized:
+                    self.ui_input_device.remove_all()
+
+                    for s in self.source_list:
+                        self.ui_input_device.append_text(s['name'])
+
+                self.log.debug(self.log_tag + 'removed source: ' + name)
 
                 break
 
-        self.ui_input_device.remove_all()
-
-        for s in self.source_list:
-            self.ui_input_device.append_text(s['name'])
-
-        self.log.debug(self.log_tag + 'removed source: ' + name)
-
     def on_use_default_sink_state_set(self, obj, state):
         if state:
-            self.sie.set_output_sink_name(self.pm.default_sink_name)
+            for s in self.sink_list:
+                name = s['name']
+
+                if name == self.pm.default_sink_name:
+                    idx = self.sink_list.index(s)
+
+                    self.ui_output_device.set_active(idx)
 
             self.log.debug(self.log_tag + 'using default sink')
 
     def on_use_default_source_state_set(self, obj, state):
         if state:
-            self.soe.set_source_monitor_name(self.pm.default_source_name)
+            for s in self.source_list:
+                name = s['name']
+
+                if name == self.pm.default_source_name:
+                    idx = self.source_list.index(s)
+
+                    self.ui_input_device.set_active(idx)
 
             self.log.debug(self.log_tag + 'using default source')
 
