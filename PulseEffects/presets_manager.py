@@ -21,6 +21,8 @@ class PresetsManager():
 
         self.log = logging.getLogger('PulseEffects')
 
+        self.log_tag = 'PRESETS - '
+
         self.lp = LoadPresets()
         self.sp = SavePresets()
 
@@ -167,7 +169,7 @@ class PresetsManager():
             self.lp.load_sink_inputs_preset(self.app.sie.settings)
             self.lp.load_source_outputs_preset(self.app.soe.settings)
         else:
-            self.log.error(path + _(' is not a file!'))
+            self.log.error(self.log_tag + path + _(' is not a file!'))
 
     def on_listbox_row_activated(self, obj, row):
         name = row.get_name()
@@ -264,4 +266,4 @@ class PresetsManager():
             if f.endswith('.preset'):
                 presets.append(f.split('.')[0])
 
-        self.log.info(_('Presets: ') + ','.join(presets))
+        self.log.info(self.log_tag + _('Presets: ') + ','.join(presets))

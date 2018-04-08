@@ -26,7 +26,7 @@ class SinkInputEffects(EffectsBase):
 
         EffectsBase.__init__(self, self.pm.default_sink_rate, self.settings)
 
-        self.log_tag = 'apps:'
+        self.log_tag = 'SIE - '
 
         pa_props = 'application.id=com.github.wwmm.pulseeffects.sinkinputs'
 
@@ -84,41 +84,36 @@ class SinkInputEffects(EffectsBase):
         # the effects order is defined here
 
         self.effects_bin.append(self.limiter_wrapper, self.on_filter_added,
-                                self.log_tag)
+                                None)
         self.effects_bin.append(self.compressor_wrapper, self.on_filter_added,
-                                self.log_tag)
+                                None)
         self.effects_bin.append(self.highpass_wrapper, self.on_filter_added,
-                                self.log_tag)
+                                None)
         self.effects_bin.append(self.lowpass_wrapper, self.on_filter_added,
-                                self.log_tag)
+                                None)
         self.effects_bin.append(self.equalizer_wrapper, self.on_filter_added,
-                                self.log_tag)
+                                None)
         self.effects_bin.append(self.exciter_wrapper, self.on_filter_added,
-                                self.log_tag)
+                                None)
         self.effects_bin.append(self.bass_enhancer_wrapper,
-                                self.on_filter_added,
-                                self.log_tag)
+                                self.on_filter_added, None)
         self.effects_bin.append(self.stereo_enhancer_wrapper,
-                                self.on_filter_added,
-                                self.log_tag)
+                                self.on_filter_added, None)
         self.effects_bin.append(self.panorama_wrapper, self.on_filter_added,
-                                self.log_tag)
+                                None)
         self.effects_bin.append(self.stereo_spread_wrapper,
-                                self.on_filter_added,
-                                self.log_tag)
+                                self.on_filter_added, None)
         self.effects_bin.append(self.reverb_wrapper, self.on_filter_added,
-                                self.log_tag)
+                                None)
         self.effects_bin.append(self.crossfeed_wrapper, self.on_filter_added,
-                                self.log_tag)
-        self.effects_bin.append(self.delay_wrapper, self.on_filter_added,
-                                self.log_tag)
+                                None)
+        self.effects_bin.append(self.delay_wrapper, self.on_filter_added, None)
         self.effects_bin.append(self.maximizer_wrapper, self.on_filter_added,
-                                self.log_tag)
+                                None)
         self.effects_bin.append(self.output_limiter_wrapper,
-                                self.on_filter_added,
-                                self.log_tag)
+                                self.on_filter_added, None)
         self.effects_bin.append(self.spectrum_wrapper, self.on_filter_added,
-                                self.log_tag)
+                                None)
 
     def init_ui(self):
         EffectsBase.init_ui(self)
@@ -392,102 +387,84 @@ class SinkInputEffects(EffectsBase):
         if state:
             if not self.exciter_wrapper.get_by_name('exciter_bin'):
                 self.exciter_wrapper.append(self.exciter.bin,
-                                            self.on_filter_added,
-                                            self.log_tag)
+                                            self.on_filter_added, None)
         else:
             self.exciter_wrapper.remove(self.exciter.bin,
-                                        self.on_filter_removed,
-                                        self.log_tag)
+                                        self.on_filter_removed, None)
 
     def on_bass_enhancer_enable(self, obj, state):
         if state:
             if not self.bass_enhancer_wrapper.get_by_name('bass_enhancer_bin'):
                 self.bass_enhancer_wrapper.append(self.bass_enhancer.bin,
-                                                  self.on_filter_added,
-                                                  self.log_tag)
+                                                  self.on_filter_added, None)
         else:
             self.bass_enhancer_wrapper.remove(self.bass_enhancer.bin,
-                                              self.on_filter_removed,
-                                              self.log_tag)
+                                              self.on_filter_removed, None)
 
     def on_delay_enable(self, obj, state):
         if state:
             if not self.delay_wrapper.get_by_name('delay_bin'):
                 self.delay_wrapper.append(self.delay.bin,
-                                          self.on_filter_added,
-                                          self.log_tag)
+                                          self.on_filter_added, None)
         else:
             self.delay_wrapper.remove(self.delay.bin,
-                                      self.on_filter_removed,
-                                      self.log_tag)
+                                      self.on_filter_removed, None)
 
     def on_stereo_enhancer_enable(self, obj, state):
         if state:
             if not self.stereo_enhancer_wrapper.get_by_name(
                     'stereo_enhancer_bin'):
                 self.stereo_enhancer_wrapper.append(self.stereo_enhancer.bin,
-                                                    self.on_filter_added,
-                                                    self.log_tag)
+                                                    self.on_filter_added, None)
         else:
             self.stereo_enhancer_wrapper.remove(self.stereo_enhancer.bin,
-                                                self.on_filter_removed,
-                                                self.log_tag)
+                                                self.on_filter_removed, None)
 
     def on_stereo_spread_enable(self, obj, state):
         if state:
             if not self.stereo_spread_wrapper.get_by_name('stereo_spread_bin'):
                 self.stereo_spread_wrapper.append(self.stereo_spread.bin,
-                                                  self.on_filter_added,
-                                                  self.log_tag)
+                                                  self.on_filter_added, None)
         else:
             self.stereo_spread_wrapper.remove(self.stereo_spread.bin,
-                                              self.on_filter_removed,
-                                              self.log_tag)
+                                              self.on_filter_removed, None)
 
     def on_crossfeed_enable(self, obj, state):
         if state:
             if not self.crossfeed_wrapper.get_by_name('crossfeed_bin'):
                 self.crossfeed_wrapper.append(self.crossfeed.bin,
-                                              self.on_filter_added,
-                                              self.log_tag)
+                                              self.on_filter_added, None)
         else:
             self.crossfeed_wrapper.remove(self.crossfeed.bin,
-                                          self.on_filter_removed,
-                                          self.log_tag)
+                                          self.on_filter_removed, None)
 
     def on_panorama_enable(self, obj, state):
         if state:
             if not self.panorama_wrapper.get_by_name('panorama_bin'):
                 self.panorama_wrapper.append(self.panorama.bin,
-                                             self.on_filter_added,
-                                             self.log_tag)
+                                             self.on_filter_added, None)
         else:
             self.panorama_wrapper.remove(self.panorama.bin,
-                                         self.on_filter_removed,
-                                         self.log_tag)
+                                         self.on_filter_removed, None)
 
     def on_maximizer_enable(self, obj, state):
         if state:
             if not self.maximizer_wrapper.get_by_name('maximizer_bin'):
                 self.maximizer_wrapper.append(self.maximizer.bin,
-                                              self.on_filter_added,
-                                              self.log_tag)
+                                              self.on_filter_added, None)
         else:
             self.maximizer_wrapper.remove(self.maximizer.bin,
-                                          self.on_filter_removed,
-                                          self.log_tag)
+                                          self.on_filter_removed, None)
 
     def on_output_limiter_enable(self, obj, state):
         if state:
             if not self.output_limiter_wrapper.get_by_name(
                     'output_limiter_bin'):
                 self.output_limiter_wrapper.append(self.output_limiter.bin,
-                                                   self.on_filter_added,
-                                                   self.log_tag)
+                                                   self.on_filter_added, None)
         else:
             self.output_limiter_wrapper.remove(self.output_limiter.bin,
-                                               self.on_filter_removed,
-                                               self.log_tag)
+                                               self.on_filter_removed, None)
 
     def reset(self):
         EffectsBase.reset(self)

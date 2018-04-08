@@ -32,6 +32,8 @@ class PipelineBase(GObject.GObject):
         self.spectrum_nfreqs = 0
         self.spectrum_threshold = -120  # dB
 
+        self.log_tag = str()
+
         self.log = logging.getLogger('PulseEffects')
 
         self.calc_spectrum_freqs()
@@ -52,7 +54,7 @@ class PipelineBase(GObject.GObject):
 
         queue_src = Gst.ElementFactory.make('queue', None)
 
-        self.source_caps = Gst.ElementFactory.make("capsfilter", None)
+        self.source_caps = Gst.ElementFactory.make('capsfilter', None)
 
         self.effects_bin = GstInsertBin.InsertBin.new('effects_bin')
 
@@ -65,11 +67,11 @@ class PipelineBase(GObject.GObject):
         self.audio_src.set_property('provide-clock', False)
         self.audio_src.set_property('slave-method', 're-timestamp')
 
-        caps = ['audio/x-raw', 'format=F32LE',
-                'rate=' + str(self.rate), 'channels=2']
+        caps = ['audio/x-raw', 'format=F32LE', 'rate=' + str(self.rate),
+                'channels=2']
 
-        src_caps = Gst.Caps.from_string(",".join(caps))
-        self.source_caps.set_property("caps", src_caps)
+        src_caps = Gst.Caps.from_string(','.join(caps))
+        self.source_caps.set_property('caps', src_caps)
 
         self.audio_sink.set_property('volume', 1.0)
         self.audio_sink.set_property('mute', False)
@@ -79,6 +81,9 @@ class PipelineBase(GObject.GObject):
         self.spectrum.set_property('threshold', self.spectrum_threshold)
 
         queue_src.set_property('silent', True)
+        queue_src.set_property('max-size-buffers', 0)
+        queue_src.set_property('max-size-time', 0)
+        queue_src.set_property('max-size-bytes', 0)
 
         self.pipeline.add(self.audio_src)
         self.pipeline.add(self.source_caps)
@@ -93,72 +98,88 @@ class PipelineBase(GObject.GObject):
 
     def on_filter_added(self, bin, element, success, user_data):
         name_array = element.get_name().split('_')
-        name = ' '
+        name = ''
 
         for n in name_array:
             name += n + ' '
 
         if success:
-            self.log.debug(user_data + name + 'was enabled')
+            self.log.debug(self.log_tag + name + 'was enabled')
         else:
-            self.log.critical(user_data + 'failed to enable' + name)
+            self.log.critical(self.log_tag + 'failed to enable' + name)
 
     def on_filter_removed(self, bin, element, success, user_data):
         name_array = element.get_name().split('_')
-        name = ' '
+        name = ''
 
         for n in name_array:
             name += n + ' '
 
         if success:
-            self.log.debug(user_data + name + 'was disabled')
+            self.log.debug(self.log_tag + name + 'was disabled')
         else:
-            self.log.critical(user_data + 'failed to disable' + name)
+            self.log.critical(self.log_tag + 'failed to disable' + name)
 
     def set_state(self, state):
         if state == 'ready':
             s = self.pipeline.set_state(Gst.State.READY)
 
             if s == Gst.StateChangeReturn.FAILURE:
-                self.log.critical("Could not set Gstreamer pipeline to ready")
+                self.log.critical(self.log_tag +
+                                  'Could not set Gstreamer pipeline to ready')
+
                 return False
             else:
                 self.is_playing = False
-                self.log.debug('pipeline state: ready')
+
+                self.log.debug(self.log_tag + 'pipeline state: ready')
+
                 return True
         elif state == 'paused':
             s = self.pipeline.set_state(Gst.State.PAUSED)
 
             if s == Gst.StateChangeReturn.FAILURE:
-                self.log.error("Failed to pause Gstreamer pipeline")
+                self.log.error(self.log_tag +
+                               'Failed to pause Gstreamer pipeline')
+
                 return False
             else:
                 self.is_playing = False
-                self.log.debug('pipeline state: paused')
+
+                self.log.debug(self.log_tag + 'pipeline state: paused')
+
                 return True
         elif state == 'playing':
             s = self.pipeline.set_state(Gst.State.PLAYING)
 
             if s == Gst.StateChangeReturn.FAILURE:
-                self.log.critical("Playing Gstreamer pipeline has failed")
+                self.log.critical(self.log_tag +
+                                  'Playing Gstreamer pipeline has failed')
+
                 return False
             else:
                 self.is_playing = True
-                self.log.debug('pipeline state: playing')
+
+                self.log.debug(self.log_tag + 'pipeline state: playing')
+
                 return True
         elif state == 'null':
             s = self.pipeline.set_state(Gst.State.NULL)
 
             if s == Gst.StateChangeReturn.FAILURE:
-                self.log.error("Could not stop Gstreamer pipeline")
+                self.log.error(self.log_tag +
+                               'Could not stop Gstreamer pipeline')
+
                 return False
             else:
                 self.is_playing = False
-                self.log.debug('pipeline state: null')
+
+                self.log.debug(self.log_tag + 'pipeline state: null')
+
                 return True
 
     def on_message_error(self, bus, msg):
-        self.log.error(msg.parse_error())
+        self.log.error(self.log_tag + msg.parse_error())
         self.set_state('null')
         self.set_state('playing')
 
@@ -181,15 +202,18 @@ class PipelineBase(GObject.GObject):
             latency = msg.src.get_property('latency-time')
             buffer_time = msg.src.get_property('buffer-time')
 
-            self.log.debug('pulsesink latency-time [us]: ' + str(latency))
-            self.log.debug('pulsesink buffer-time [us]: ' +
+            self.log.debug(self.log_tag + 'pulsesink latency-time [us]: ' +
+                           str(latency))
+            self.log.debug(self.log_tag + 'pulsesink buffer-time [us]: ' +
                            str(buffer_time))
         elif plugin == 'audio_src':
             latency = msg.src.get_property('actual-latency-time')
             buffer_time = msg.src.get_property('actual-buffer-time')
 
-            self.log.debug('pulsesrc latency-time [us]: ' + str(latency))
-            self.log.debug('pulsesrc buffer-time [us]: ' + str(buffer_time))
+            self.log.debug(self.log_tag + 'pulsesrc latency-time [us]: ' +
+                           str(latency))
+            self.log.debug(self.log_tag + 'pulsesrc buffer-time [us]: ' +
+                           str(buffer_time))
 
         return True
 

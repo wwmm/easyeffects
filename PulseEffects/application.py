@@ -54,10 +54,12 @@ class Application(Gtk.Application):
 
         self.log = logging.getLogger('PulseEffects')
 
+        self.log_tag = 'MAIN - '
+
         if os.environ.get('PULSEEFFECTS_DEBUG'):
             self.log.setLevel(logging.DEBUG)
 
-            self.log.debug('debug logging enabled')
+            self.log.debug(self.log_tag + 'debug logging enabled')
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
@@ -115,10 +117,13 @@ class Application(Gtk.Application):
             self.sie.post_messages(False)
             self.soe.post_messages(False)
 
+            self.sie.set_state('ready')
+            self.soe.set_state('ready')
+
             self.pm.find_sink_inputs()
             self.pm.find_source_outputs()
 
-            self.log.info(_('Running in background'))
+            self.log.info(self.log_tag + _('Running in background'))
 
             self.hold()
 
@@ -210,6 +215,9 @@ class Application(Gtk.Application):
     def do_activate(self):
         if not self.ui_initialized:
             self.init_ui()
+
+            self.sie.set_state('ready')
+            self.soe.set_state('ready')
 
             self.pm.find_sink_inputs()
             self.pm.find_source_outputs()
@@ -362,11 +370,13 @@ class Application(Gtk.Application):
                 f.write('Type=Application\n')
                 f.close()
 
-            self.log.debug('autostart_file created successfully')
+            self.log.debug(self.log_tag +
+                           'autostart_file created successfully')
         else:
             os.remove(self.autostart_file)
 
-            self.log.debug('autostart_file removed successfully')
+            self.log.debug(self.log_tag +
+                           'autostart_file removed successfully')
 
     def init_spectrum_widgets(self):
         show_spectrum_switch = self.builder.get_object('show_spectrum')
@@ -426,7 +436,7 @@ class Application(Gtk.Application):
         for s in self.sink_list:
             self.ui_output_device.append_text(s['name'])
 
-        self.log.debug('added sink: ' + sink['name'])
+        self.log.debug(self.log_tag + 'added sink: ' + sink['name'])
 
     def on_sink_removed(self, obj, idx):
         for s in self.sink_list:
@@ -441,7 +451,7 @@ class Application(Gtk.Application):
         for s in self.sink_list:
             self.ui_output_device.append_text(s['name'])
 
-        self.log.debug('removed sink: ' + name)
+        self.log.debug(self.log_tag + 'removed sink: ' + name)
 
     def on_source_added(self, obj, source):
         add_to_list = True
@@ -460,7 +470,7 @@ class Application(Gtk.Application):
         for s in self.source_list:
             self.ui_input_device.append_text(s['name'])
 
-        self.log.debug('added source: ' + source['name'])
+        self.log.debug(self.log_tag + 'added source: ' + source['name'])
 
     def on_source_removed(self, obj, idx):
         for s in self.source_list:
@@ -475,19 +485,19 @@ class Application(Gtk.Application):
         for s in self.source_list:
             self.ui_input_device.append_text(s['name'])
 
-        self.log.debug('removed source: ' + name)
+        self.log.debug(self.log_tag + 'removed source: ' + name)
 
     def on_use_default_sink_state_set(self, obj, state):
         if state:
             self.sie.set_output_sink_name(self.pm.default_sink_name)
 
-            self.log.debug('using default sink')
+            self.log.debug(self.log_tag + 'using default sink')
 
     def on_use_default_source_state_set(self, obj, state):
         if state:
             self.soe.set_source_monitor_name(self.pm.default_source_name)
 
-            self.log.debug('using default source')
+            self.log.debug(self.log_tag + 'using default source')
 
     def on_output_device_changed(self, obj):
         name = obj.get_active_text()
@@ -496,7 +506,7 @@ class Application(Gtk.Application):
             if s['name'] == name:
                 self.sie.set_output_sink_name(name)
 
-                self.log.debug('output device changed: ' + name)
+                self.log.debug(self.log_tag + 'output device changed: ' + name)
 
     def on_input_device_changed(self, obj):
         name = obj.get_active_text()
@@ -505,7 +515,7 @@ class Application(Gtk.Application):
             if s['name'] == name:
                 self.soe.set_source_monitor_name(name)
 
-                self.log.debug('input device changed: ' + name)
+                self.log.debug(self.log_tag + 'input device changed: ' + name)
 
     def apply_css_style(self, css_file):
         provider = Gtk.CssProvider()

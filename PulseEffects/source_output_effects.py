@@ -23,7 +23,7 @@ class SourceOutputEffects(EffectsBase):
 
         EffectsBase.__init__(self, self.pm.default_source_rate, self.settings)
 
-        self.log_tag = 'mic:'
+        self.log_tag = 'SOE - '
         self.disable_app_level_meter = True
 
         pa_props = 'application.id=com.github.wwmm.pulseeffects.sourceoutputs'
@@ -65,28 +65,26 @@ class SourceOutputEffects(EffectsBase):
         # appending effects wrappers to effects bin
         # the effects order is defined here
 
-        self.effects_bin.append(self.gate_wrapper, self.on_filter_added,
-                                self.log_tag)
+        self.effects_bin.append(self.gate_wrapper, self.on_filter_added, None)
         self.effects_bin.append(self.webrtc_wrapper, self.on_filter_added,
-                                self.log_tag)
+                                None)
         self.effects_bin.append(self.limiter_wrapper, self.on_filter_added,
-                                self.log_tag)
+                                None)
         self.effects_bin.append(self.compressor_wrapper, self.on_filter_added,
-                                self.log_tag)
+                                None)
         self.effects_bin.append(self.highpass_wrapper, self.on_filter_added,
-                                self.log_tag)
+                                None)
         self.effects_bin.append(self.lowpass_wrapper, self.on_filter_added,
-                                self.log_tag)
+                                None)
         self.effects_bin.append(self.equalizer_wrapper, self.on_filter_added,
-                                self.log_tag)
+                                None)
         self.effects_bin.append(self.deesser_wrapper, self.on_filter_added,
-                                self.log_tag)
+                                None)
         self.effects_bin.append(self.reverb_wrapper, self.on_filter_added,
-                                self.log_tag)
-        self.effects_bin.append(self.pitch_wrapper, self.on_filter_added,
-                                self.log_tag)
+                                None)
+        self.effects_bin.append(self.pitch_wrapper, self.on_filter_added, None)
         self.effects_bin.append(self.spectrum_wrapper, self.on_filter_added,
-                                self.log_tag)
+                                None)
 
     def init_ui(self):
         EffectsBase.init_ui(self)
@@ -263,12 +261,10 @@ class SourceOutputEffects(EffectsBase):
         if state:
             if not self.gate_wrapper.get_by_name('gate_bin'):
                 self.gate_wrapper.append(self.gate.bin,
-                                         self.on_filter_added,
-                                         self.log_tag)
+                                         self.on_filter_added, None)
         else:
             self.gate_wrapper.remove(self.gate.bin,
-                                     self.on_filter_removed,
-                                     self.log_tag)
+                                     self.on_filter_removed, None)
 
     def on_webrtc_enable(self, obj, state):
         if state:
@@ -277,12 +273,10 @@ class SourceOutputEffects(EffectsBase):
 
             if not self.webrtc_wrapper.get_by_name('webrtc_bin'):
                 self.webrtc_wrapper.append(self.webrtc.bin,
-                                           self.on_filter_added,
-                                           self.log_tag)
+                                           self.on_filter_added, None)
         else:
             self.webrtc_wrapper.remove(self.webrtc.bin,
-                                       self.on_filter_removed,
-                                       self.log_tag)
+                                       self.on_filter_removed, None)
 
             self.webrtc.probe_bin.set_state(Gst.State.NULL)
             self.pipeline.remove(self.webrtc.probe_bin)
@@ -291,23 +285,19 @@ class SourceOutputEffects(EffectsBase):
         if state:
             if not self.deesser_wrapper.get_by_name('deesser_bin'):
                 self.deesser_wrapper.append(self.deesser.bin,
-                                            self.on_filter_added,
-                                            self.log_tag)
+                                            self.on_filter_added, None)
         else:
             self.deesser_wrapper.remove(self.deesser.bin,
-                                        self.on_filter_removed,
-                                        self.log_tag)
+                                        self.on_filter_removed, None)
 
     def on_pitch_enable(self, obj, state):
         if state:
             if not self.pitch_wrapper.get_by_name('pitch_bin'):
                 self.pitch_wrapper.append(self.pitch.bin,
-                                          self.on_filter_added,
-                                          self.log_tag)
+                                          self.on_filter_added, None)
         else:
             self.pitch_wrapper.remove(self.pitch.bin,
-                                      self.on_filter_removed,
-                                      self.log_tag)
+                                      self.on_filter_removed, None)
 
     def reset(self):
         EffectsBase.reset(self)

@@ -26,7 +26,6 @@ class EffectsBase(PipelineBase):
         self.module_path = os.path.dirname(__file__)
         self.settings = settings
 
-        self.log_tag = str()
         self.disable_app_level_meter = False
         self.there_is_window = False
 
