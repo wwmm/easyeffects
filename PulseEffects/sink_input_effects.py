@@ -51,7 +51,6 @@ class SinkInputEffects(EffectsBase):
         self.pm.connect('sink_input_changed', self.on_app_changed)
         self.pm.connect('sink_input_removed', self.on_app_removed)
         self.pm.connect('sink_input_level_changed', self.on_app_level_changed)
-        self.pm.connect('new_default_sink', self.update_output_sink_name)
 
         self.exciter = Exciter(self.settings)
         self.bass_enhancer = BassEnhancer(self.settings)

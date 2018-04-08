@@ -101,6 +101,8 @@ class Application(Gtk.Application):
         self.pm = PulseManager()
         self.pm.load_apps_sink()
         self.pm.load_mic_sink()
+        self.pm.connect('new_default_sink', self.on_new_default_sink)
+        self.pm.connect('new_default_source', self.on_new_default_source)
         self.pm.connect('sink_added', self.on_sink_added)
         self.pm.connect('sink_removed', self.on_sink_removed)
         self.pm.connect('source_added', self.on_source_added)
@@ -116,9 +118,6 @@ class Application(Gtk.Application):
 
             self.sie.post_messages(False)
             self.soe.post_messages(False)
-
-            self.sie.set_state('ready')
-            self.soe.set_state('ready')
 
             self.pm.find_sink_inputs()
             self.pm.find_source_outputs()
@@ -216,15 +215,12 @@ class Application(Gtk.Application):
         if not self.ui_initialized:
             self.init_ui()
 
-            self.sie.set_state('ready')
-            self.soe.set_state('ready')
-
-            self.pm.find_sink_inputs()
-            self.pm.find_source_outputs()
-            self.pm.find_sinks()
-            self.pm.find_sources()
-
         self.window.present()
+
+        self.pm.find_sink_inputs()
+        self.pm.find_source_outputs()
+        self.pm.find_sinks()
+        self.pm.find_sources()
 
         self.sie.post_messages(True)
         self.soe.post_messages(True)
@@ -419,6 +415,108 @@ class Application(Gtk.Application):
         self.sie.set_spectrum_n_points(value)
         self.soe.set_spectrum_n_points(value)
 
+    def on_new_default_sink(self, obj, value):
+        if self.ui_initialized:
+            for s in self.sink_list:
+                name = s['name']
+
+                if name == self.pm.default_sink_name:
+                    idx = self.sink_list.index(s)
+
+                    self.ui_output_device.set_active(idx)
+        else:
+            self.sie.set_output_sink_name(value)
+
+    def on_new_default_source(self, obj, value):
+        if self.ui_initialized:
+            for s in self.source_list:
+                name = s['name']
+
+                if name == self.pm.default_source_name:
+                    idx = self.source_list.index(s)
+
+                    self.ui_input_device.set_active(idx)
+        else:
+            self.soe.set_source_monitor_name(value)
+
+    def update_output_dev_combobox(self):
+        active_text = self.ui_output_device.get_active_text()
+
+        use_default = self.settings.get_value('use-default-sink').unpack()
+
+        self.ui_output_device.remove_all()
+
+        if use_default:
+            for s in self.sink_list:
+                name = s['name']
+
+                self.ui_output_device.append_text(name)
+
+                if name == self.pm.default_sink_name:
+                    idx = self.sink_list.index(s)
+
+                    self.ui_output_device.set_active(idx)
+        else:
+            active_is_set = False
+
+            for s in self.sink_list:
+                name = s['name']
+
+                self.ui_output_device.append_text(name)
+
+                if not active_is_set:
+                    if name == active_text:
+                        idx = self.sink_list.index(s)
+
+                        self.ui_output_device.set_active(idx)
+
+                        active_is_set = True
+                    elif name == self.pm.default_sink_name:
+                        idx = self.sink_list.index(s)
+
+                        self.ui_output_device.set_active(idx)
+
+                        active_is_set = True
+
+    def update_input_dev_combobox(self):
+        active_text = self.ui_input_device.get_active_text()
+
+        use_default = self.settings.get_value('use-default-source').unpack()
+
+        self.ui_input_device.remove_all()
+
+        if use_default:
+            for s in self.source_list:
+                name = s['name']
+
+                self.ui_input_device.append_text(name)
+
+                if name == self.pm.default_source_name:
+                    idx = self.source_list.index(s)
+
+                    self.ui_input_device.set_active(idx)
+        else:
+            active_is_set = False
+
+            for s in self.source_list:
+                name = s['name']
+
+                self.ui_input_device.append_text(name)
+
+                if not active_is_set:
+                    if name == active_text:
+                        idx = self.source_list.index(s)
+
+                        self.ui_input_device.set_active(idx)
+
+                        active_is_set = True
+                    elif name == self.pm.default_source_name:
+                        idx = self.source_list.index(s)
+
+                        self.ui_input_device.set_active(idx)
+
+                        active_is_set = True
+
     def on_sink_added(self, obj, sink):
         add_to_list = True
 
@@ -431,13 +529,10 @@ class Application(Gtk.Application):
         if add_to_list:
             self.sink_list.append(sink)
 
-            if self.ui_initialized:
-                self.ui_output_device.remove_all()
-
-                for s in self.sink_list:
-                    self.ui_output_device.append_text(s['name'])
-
             self.log.debug(self.log_tag + 'added sink: ' + sink['name'])
+
+            if self.ui_initialized:
+                self.update_output_dev_combobox()
 
     def on_sink_removed(self, obj, idx):
         for s in self.sink_list:
@@ -446,13 +541,10 @@ class Application(Gtk.Application):
 
                 self.sink_list.remove(s)
 
-                if self.ui_initialized:
-                    self.ui_output_device.remove_all()
-
-                    for s in self.sink_list:
-                        self.ui_output_device.append_text(s['name'])
-
                 self.log.debug(self.log_tag + 'removed sink: ' + name)
+
+                if self.ui_initialized:
+                    self.update_output_dev_combobox()
 
                 break
 
@@ -468,13 +560,10 @@ class Application(Gtk.Application):
         if add_to_list:
             self.source_list.append(source)
 
-            if self.ui_initialized:
-                self.ui_input_device.remove_all()
-
-                for s in self.source_list:
-                    self.ui_input_device.append_text(s['name'])
-
             self.log.debug(self.log_tag + 'added source: ' + source['name'])
+
+            if self.ui_initialized:
+                self.update_input_dev_combobox()
 
     def on_source_removed(self, obj, idx):
         for s in self.source_list:
@@ -483,13 +572,10 @@ class Application(Gtk.Application):
 
                 self.source_list.remove(s)
 
-                if self.ui_initialized:
-                    self.ui_input_device.remove_all()
-
-                    for s in self.source_list:
-                        self.ui_input_device.append_text(s['name'])
-
                 self.log.debug(self.log_tag + 'removed source: ' + name)
+
+                if self.ui_initialized:
+                    self.update_input_dev_combobox()
 
                 break
 
