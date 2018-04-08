@@ -178,20 +178,27 @@ class PipelineBase(GObject.GObject):
 
                 return True
 
-    def on_message_error(self, bus, msg):
-        self.log.error(self.log_tag + msg.parse_error())
+    def on_message_error(self, bus, message):
+        g_error, msg = message.parse_error()
+
+        self.log.debug(self.log_tag + g_error.message + ' : ' + msg)
+
         self.set_state('null')
         self.set_state('playing')
 
         return True
 
-    def on_message_info(self, bus, msg):
-        self.log.debug(msg.parse_info())
+    def on_message_info(self, bus, message):
+        g_error, msg = message.parse_info()
+
+        self.log.debug(self.log_tag + g_error.message + ' : ' + msg)
 
         return True
 
-    def on_message_warning(self, bus, msg):
-        self.log.warning(msg.parse_warning())
+    def on_message_warning(self, bus, message):
+        g_error, msg = message.parse_warning()
+
+        self.log.debug(self.log_tag + g_error.message + ' : ' + msg)
 
         return True
 
