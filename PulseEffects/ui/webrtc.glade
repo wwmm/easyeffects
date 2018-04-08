@@ -74,101 +74,22 @@
             <property name="halign">center</property>
             <property name="column_spacing">60</property>
             <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">center</property>
-                <property name="label" translatable="yes">Threshold</property>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">0</property>
-              </packing>
+              <placeholder/>
             </child>
             <child>
-              <object class="GtkSpinButton">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="width_chars">10</property>
-                <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
-                <property name="secondary_icon_activatable">False</property>
-                <property name="input_purpose">number</property>
-                <property name="orientation">vertical</property>
-                <property name="adjustment">threshold</property>
-                <property name="numeric">True</property>
-                <property name="update_policy">if-valid</property>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">1</property>
-              </packing>
+              <placeholder/>
             </child>
             <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">center</property>
-                <property name="label" translatable="yes">Ceiling</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">0</property>
-              </packing>
+              <placeholder/>
             </child>
             <child>
-              <object class="GtkSpinButton">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="width_chars">10</property>
-                <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
-                <property name="secondary_icon_activatable">False</property>
-                <property name="input_purpose">number</property>
-                <property name="orientation">vertical</property>
-                <property name="adjustment">ceiling</property>
-                <property name="numeric">True</property>
-                <property name="update_policy">if-valid</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">1</property>
-              </packing>
+              <placeholder/>
             </child>
             <child>
-              <object class="GtkSpinButton">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="width_chars">10</property>
-                <property name="secondary_icon_name">pulseeffects-s-symbolic</property>
-                <property name="secondary_icon_activatable">False</property>
-                <property name="input_purpose">number</property>
-                <property name="orientation">vertical</property>
-                <property name="adjustment">release</property>
-                <property name="digits">2</property>
-                <property name="numeric">True</property>
-                <property name="update_policy">if-valid</property>
-              </object>
-              <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">1</property>
-              </packing>
+              <placeholder/>
             </child>
             <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">center</property>
-                <property name="label" translatable="yes">Release</property>
-              </object>
-              <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">0</property>
-              </packing>
+              <placeholder/>
             </child>
           </object>
           <packing>
