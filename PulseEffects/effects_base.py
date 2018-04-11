@@ -35,7 +35,7 @@ class EffectsBase(PipelineBase):
 
         self.limiter = Limiter()
         self.compressor = Compressor()
-        self.highpass = Highpass(self.settings)
+        self.highpass = Highpass()
         self.lowpass = Lowpass(self.settings)
         self.equalizer = Equalizer(self.settings)
         self.reverb = Reverb()

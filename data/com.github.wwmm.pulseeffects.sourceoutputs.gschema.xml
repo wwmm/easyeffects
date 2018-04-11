@@ -33,16 +33,6 @@
           <default>0.0</default>
         </key>
 
-        <key name="highpass-state" type="b">
-          <default>false</default>
-        </key>
-        <key name="highpass-cutoff" type="i">
-          <default>20</default>
-        </key>
-        <key name="highpass-poles" type="i">
-          <default>4</default>
-        </key>
-
         <key name="lowpass-state" type="b">
           <default>false</default>
         </key>

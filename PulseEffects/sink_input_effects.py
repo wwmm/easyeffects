@@ -70,6 +70,8 @@ class SinkInputEffects(EffectsBase):
             'com.github.wwmm.pulseeffects.sinkinputs.compressor')
         self.reverb.settings = Gio.Settings(
             'com.github.wwmm.pulseeffects.sinkinputs.reverb')
+        self.highpass.settings = Gio.Settings(
+            'com.github.wwmm.pulseeffects.sinkinputs.highpass')
 
         # effects wrappers
         self.exciter_wrapper = GstInsertBin.InsertBin.new('exciter_wrapper')
