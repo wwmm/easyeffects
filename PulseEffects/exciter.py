@@ -14,8 +14,8 @@ Gst.init(None)
 
 class Exciter():
 
-    def __init__(self, settings):
-        self.settings = settings
+    def __init__(self):
+        self.settings = None
         self.module_path = os.path.dirname(__file__)
 
         self.log = logging.getLogger('PulseEffects')
@@ -117,23 +117,17 @@ class Exciter():
 
         flag = Gio.SettingsBindFlags.DEFAULT
 
-        self.settings.bind('exciter-state', self.ui_enable, 'active',
-                           flag)
-        self.settings.bind('exciter-state', self.ui_img_state, 'visible',
-                           flag)
-        self.settings.bind('exciter-state', self.ui_controls, 'sensitive',
+        self.settings.bind('state', self.ui_enable, 'active', flag)
+        self.settings.bind('state', self.ui_img_state, 'visible', flag)
+        self.settings.bind('state', self.ui_controls, 'sensitive',
                            Gio.SettingsBindFlags.GET)
-        self.settings.bind('exciter-input-gain', self.ui_input_gain,
-                           'value', flag)
-        self.settings.bind('exciter-output-gain', self.ui_output_gain,
-                           'value', flag)
-        self.settings.bind('exciter-amount', self.ui_amount, 'value',
-                           flag)
-        self.settings.bind('exciter-harmonics', self.ui_harmonics,
-                           'value', flag)
-        self.settings.bind('exciter-scope', self.ui_scope, 'value', flag)
-        self.settings.bind('exciter-ceiling', self.ui_ceiling, 'value', flag)
-        self.settings.bind('exciter-blend', self.ui_blend, 'value', flag)
+        self.settings.bind('input-gain', self.ui_input_gain, 'value', flag)
+        self.settings.bind('output-gain', self.ui_output_gain, 'value', flag)
+        self.settings.bind('amount', self.ui_amount, 'value', flag)
+        self.settings.bind('harmonics', self.ui_harmonics, 'value', flag)
+        self.settings.bind('scope', self.ui_scope, 'value', flag)
+        self.settings.bind('ceiling', self.ui_ceiling, 'value', flag)
+        self.settings.bind('blend', self.ui_blend, 'value', flag)
 
         # binding ui widgets to gstreamer plugins
 
@@ -200,11 +194,11 @@ class Exciter():
         self.ui_harmonics_levelbar.set_value(harmonics)
 
     def reset(self):
-        self.settings.reset('exciter-state')
-        self.settings.reset('exciter-input-gain')
-        self.settings.reset('exciter-output-gain')
-        self.settings.reset('exciter-amount')
-        self.settings.reset('exciter-harmonics')
-        self.settings.reset('exciter-scope')
-        self.settings.reset('exciter-ceiling')
-        self.settings.reset('exciter-blend')
+        self.settings.reset('state')
+        self.settings.reset('input-gain')
+        self.settings.reset('output-gain')
+        self.settings.reset('amount')
+        self.settings.reset('harmonics')
+        self.settings.reset('scope')
+        self.settings.reset('ceiling')
+        self.settings.reset('blend')

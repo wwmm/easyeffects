@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="com.github.wwmm.pulseeffects.sinkinputs.exciter" path="/com/github/wwmm/pulseeffects/sinkinputs/exciter/">
+        <key name="state" type="b">
+          <default>false</default>
+        </key>
+        <key name="input-gain" type="d">
+          <default>0</default>
+        </key>
+        <key name="output-gain" type="d">
+          <default>0</default>
+        </key>
+        <key name="amount" type="d">
+          <default>1</default>
+        </key>
+        <key name="harmonics" type="d">
+          <default>8.5</default>
+        </key>
+        <key name="scope" type="d">
+          <default>7500</default>
+        </key>
+        <key name="ceiling" type="d">
+          <default>16000</default>
+        </key>
+        <key name="blend" type="d">
+          <default>0</default>
+        </key>
+    </schema>
+</schemalist>

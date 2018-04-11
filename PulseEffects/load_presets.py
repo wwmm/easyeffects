@@ -10,6 +10,7 @@ from PulseEffects.reverb_presets import ReverbPresets
 from PulseEffects.highpass_presets import HighpassPresets
 from PulseEffects.lowpass_presets import LowpassPresets
 from PulseEffects.equalizer_presets import EqualizerPresets
+from PulseEffects.exciter_presets import ExciterPresets
 
 
 class LoadPresets():
@@ -24,33 +25,11 @@ class LoadPresets():
         self.highpass_presets = HighpassPresets(self.config)
         self.lowpass_presets = LowpassPresets(self.config)
         self.equalizer_presets = EqualizerPresets(self.config)
+        self.exciter_presets = ExciterPresets(self.config)
 
     def set_config_path(self, path):
         self.config.clear()
         self.config.read(path)
-
-    def load_exciter_preset(self, settings, section):
-        enabled = self.config.getboolean(section, 'enabled', fallback=False)
-        input_gain = self.config.getfloat(section, 'input_gain', fallback=0.0)
-        output_gain = self.config.getfloat(section, 'output_gain',
-                                           fallback=0.0)
-        amount = self.config.getfloat(section, 'amount', fallback=1.0)
-        harmonics = self.config.getfloat(section, 'harmonics', fallback=8.5)
-        scope = self.config.getfloat(section, 'scope', fallback=7500.0)
-        ceiling = self.config.getfloat(section, 'ceiling', fallback=16000.0)
-        blend = self.config.getfloat(section, 'blend', fallback=0.0)
-
-        settings.set_value('exciter-state', GLib.Variant('b', enabled))
-        settings.set_value('exciter-input-gain',
-                           GLib.Variant('d', input_gain))
-        settings.set_value('exciter-output-gain',
-                           GLib.Variant('d', output_gain))
-        settings.set_value('exciter-amount', GLib.Variant('d', amount))
-        settings.set_value('exciter-harmonics',
-                           GLib.Variant('d', harmonics))
-        settings.set_value('exciter-scope', GLib.Variant('d', scope))
-        settings.set_value('exciter-ceiling', GLib.Variant('d', ceiling))
-        settings.set_value('exciter-blend', GLib.Variant('d', blend))
 
     def load_bass_enhancer_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
@@ -296,7 +275,6 @@ class LoadPresets():
         settings.set_value('deesser-f2-q', GLib.Variant('d', f2_q))
 
     def load_sink_inputs_preset(self, settings):
-        self.load_exciter_preset(settings, 'apps_exciter')
         self.load_bass_enhancer_preset(settings, 'apps_bass_enhancer')
         self.load_delay_preset(settings, 'apps_delay')
         self.load_stereo_enhancer_preset(settings, 'apps_stereo_enhancer')
@@ -318,3 +296,4 @@ class LoadPresets():
         self.highpass_presets.load()
         self.lowpass_presets.load()
         self.equalizer_presets.load()
+        self.exciter_presets.load()
