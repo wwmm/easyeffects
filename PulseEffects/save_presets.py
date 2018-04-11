@@ -6,6 +6,7 @@ from PulseEffects.panorama_presets import PanoramaPresets
 from PulseEffects.compressor_presets import CompressorPresets
 from PulseEffects.reverb_presets import ReverbPresets
 from PulseEffects.highpass_presets import HighpassPresets
+from PulseEffects.lowpass_presets import LowpassPresets
 
 
 class SavePresets():
@@ -18,17 +19,10 @@ class SavePresets():
         self.compressor_presets = CompressorPresets(self.config)
         self.reverb_presets = ReverbPresets(self.config)
         self.highpass_presets = HighpassPresets(self.config)
+        self.lowpass_presets = LowpassPresets(self.config)
 
     def set_output_path(self, path):
         self.output_file = open(path, 'w')
-
-    def save_lowpass_preset(self, settings, section):
-        enabled = settings.get_value('lowpass-state')
-        cutoff = settings.get_value('lowpass-cutoff')
-        poles = settings.get_value('lowpass-poles')
-
-        self.config[section] = {'enabled': str(enabled), 'cutoff': str(cutoff),
-                                'poles': str(poles)}
 
     def save_equalizer_preset(self, settings, section):
         enabled = settings.get_value('equalizer-state')
@@ -387,7 +381,6 @@ class SavePresets():
                                 'f2_q': str(f2_q)}
 
     def save_sink_inputs_preset(self, settings):
-        self.save_lowpass_preset(settings, 'apps_lowpass')
         self.save_equalizer_preset(settings, 'apps_equalizer')
         self.save_exciter_preset(settings, 'apps_exciter')
         self.save_bass_enhancer_preset(settings, 'apps_bass_enhancer')
@@ -399,7 +392,6 @@ class SavePresets():
         self.save_output_limiter_preset(settings, 'apps_output_limiter')
 
     def save_source_outputs_preset(self, settings):
-        self.save_lowpass_preset(settings, 'mic_lowpass')
         self.save_equalizer_preset(settings, 'mic_equalizer')
         self.save_pitch_preset(settings, 'mic_pitch')
         self.save_gate_preset(settings, 'mic_gate')
@@ -415,3 +407,4 @@ class SavePresets():
         self.compressor_presets.save()
         self.reverb_presets.save()
         self.highpass_presets.save()
+        self.lowpass_presets.save()

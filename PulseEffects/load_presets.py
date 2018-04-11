@@ -8,6 +8,7 @@ from PulseEffects.panorama_presets import PanoramaPresets
 from PulseEffects.compressor_presets import CompressorPresets
 from PulseEffects.reverb_presets import ReverbPresets
 from PulseEffects.highpass_presets import HighpassPresets
+from PulseEffects.lowpass_presets import LowpassPresets
 
 
 class LoadPresets():
@@ -20,19 +21,11 @@ class LoadPresets():
         self.compressor_presets = CompressorPresets(self.config)
         self.reverb_presets = ReverbPresets(self.config)
         self.highpass_presets = HighpassPresets(self.config)
+        self.lowpass_presets = LowpassPresets(self.config)
 
     def set_config_path(self, path):
         self.config.clear()
         self.config.read(path)
-
-    def load_lowpass_preset(self, settings, section):
-        enabled = self.config.getboolean(section, 'enabled', fallback=False)
-        cutoff = self.config.getint(section, 'cutoff', fallback=20000)
-        poles = self.config.getint(section, 'poles', fallback=4)
-
-        settings.set_value('lowpass-state', GLib.Variant('b', enabled))
-        settings.set_value('lowpass-cutoff', GLib.Variant('i', cutoff))
-        settings.set_value('lowpass-poles', GLib.Variant('i', poles))
 
     def load_equalizer_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
@@ -529,7 +522,6 @@ class LoadPresets():
         settings.set_value('deesser-f2-q', GLib.Variant('d', f2_q))
 
     def load_sink_inputs_preset(self, settings):
-        self.load_lowpass_preset(settings, 'apps_lowpass')
         self.load_equalizer_preset(settings, 'apps_equalizer')
         self.load_exciter_preset(settings, 'apps_exciter')
         self.load_bass_enhancer_preset(settings, 'apps_bass_enhancer')
@@ -541,7 +533,6 @@ class LoadPresets():
         self.load_output_limiter_preset(settings, 'apps_output_limiter')
 
     def load_source_outputs_preset(self, settings):
-        self.load_lowpass_preset(settings, 'mic_lowpass')
         self.load_equalizer_preset(settings, 'mic_equalizer')
         self.load_pitch_preset(settings, 'mic_pitch')
         self.load_gate_preset(settings, 'mic_gate')
@@ -553,3 +544,4 @@ class LoadPresets():
         self.compressor_presets.load()
         self.reverb_presets.load()
         self.highpass_presets.load()
+        self.lowpass_presets.load()

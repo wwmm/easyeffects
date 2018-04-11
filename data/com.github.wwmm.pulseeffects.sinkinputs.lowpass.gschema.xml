@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="com.github.wwmm.pulseeffects.sinkinputs.lowpass" path="/com/github/wwmm/pulseeffects/sinkinputs/lowpass/">
+        <key name="state" type="b">
+          <default>false</default>
+        </key>
+        <key name="cutoff" type="i">
+          <default>20000</default>
+        </key>
+        <key name="poles" type="i">
+          <default>4</default>
+        </key>
+    </schema>
+</schemalist>

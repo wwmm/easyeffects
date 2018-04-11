@@ -13,8 +13,8 @@ Gst.init(None)
 
 class Lowpass():
 
-    def __init__(self, settings):
-        self.settings = settings
+    def __init__(self):
+        self.settings = None
         self.module_path = os.path.dirname(__file__)
 
         self.build_bin()
@@ -78,12 +78,12 @@ class Lowpass():
 
         flag = Gio.SettingsBindFlags.DEFAULT
 
-        self.settings.bind('lowpass-state', self.ui_enable, 'active', flag)
-        self.settings.bind('lowpass-state', self.ui_img_state, 'visible', flag)
-        self.settings.bind('lowpass-state', self.ui_controls, 'sensitive',
+        self.settings.bind('state', self.ui_enable, 'active', flag)
+        self.settings.bind('state', self.ui_img_state, 'visible', flag)
+        self.settings.bind('state', self.ui_controls, 'sensitive',
                            Gio.SettingsBindFlags.GET)
-        self.settings.bind('lowpass-cutoff', self.ui_cutoff, 'value', flag)
-        self.settings.bind('lowpass-poles', self.ui_poles, 'value', flag)
+        self.settings.bind('cutoff', self.ui_cutoff, 'value', flag)
+        self.settings.bind('poles', self.ui_poles, 'value', flag)
 
         # binding ui widgets to gstreamer plugins
 
@@ -132,6 +132,6 @@ class Lowpass():
         self.ui_update_level(widgets, peak)
 
     def reset(self):
-        self.settings.reset('lowpass-state')
-        self.settings.reset('lowpass-cutoff')
-        self.settings.reset('lowpass-poles')
+        self.settings.reset('state')
+        self.settings.reset('cutoff')
+        self.settings.reset('poles')
