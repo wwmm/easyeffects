@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="com.github.wwmm.pulseeffects.sinkinputs.panorama" path="/com/github/wwmm/pulseeffects/sinkinputs/panorama/">
+        <key name="state" type="b">
+          <default>false</default>
+        </key>
+        <key name="position" type="d">
+          <default>0.0</default>
+        </key>
+    </schema>
+</schemalist>

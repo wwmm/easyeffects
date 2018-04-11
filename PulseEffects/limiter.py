@@ -15,8 +15,7 @@ Gst.init(None)
 class Limiter():
 
     def __init__(self):
-        self.settings = Gio.Settings(
-            'com.github.wwmm.pulseeffects.sinkinputs.limiter')
+        self.settings = None
         self.module_path = os.path.dirname(__file__)
 
         self.log = logging.getLogger('PulseEffects')

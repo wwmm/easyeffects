@@ -4,6 +4,7 @@ import configparser
 
 from gi.repository import GLib
 from PulseEffects.limiter_presets import LimiterPresets
+from PulseEffects.panorama_presets import PanoramaPresets
 
 
 class LoadPresets():
@@ -12,17 +13,11 @@ class LoadPresets():
         self.config = configparser.ConfigParser()
 
         self.limiter_presets = LimiterPresets(self.config)
+        self.panorama_presets = PanoramaPresets(self.config)
 
     def set_config_path(self, path):
         self.config.clear()
         self.config.read(path)
-
-    def load_panorama_preset(self, settings, section):
-        enabled = self.config.getboolean(section, 'enabled', fallback=False)
-        position = self.config.getfloat(section, 'position', fallback=0.0)
-
-        settings.set_value('panorama-state', GLib.Variant('b', enabled))
-        settings.set_value('panorama-position', GLib.Variant('d', position))
 
     def load_compressor_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
@@ -570,9 +565,6 @@ class LoadPresets():
         settings.set_value('deesser-f2-q', GLib.Variant('d', f2_q))
 
     def load_sink_inputs_preset(self, settings):
-        # self.load_limiter_preset(settings, 'apps_limiter')
-        self.load_autovolume_preset(settings, 'apps_autovolume')
-        self.load_panorama_preset(settings, 'apps_panorama')
         self.load_compressor_preset(settings, 'apps_compressor')
         self.load_reverb_preset(settings, 'apps_reverb')
         self.load_highpass_preset(settings, 'apps_highpass')
@@ -588,8 +580,6 @@ class LoadPresets():
         self.load_output_limiter_preset(settings, 'apps_output_limiter')
 
     def load_source_outputs_preset(self, settings):
-        # self.load_limiter_preset(settings, 'mic_limiter')
-        self.load_autovolume_preset(settings, 'mic_autovolume')
         self.load_compressor_preset(settings, 'mic_compressor')
         self.load_highpass_preset(settings, 'mic_highpass')
         self.load_lowpass_preset(settings, 'mic_lowpass')
@@ -601,3 +591,4 @@ class LoadPresets():
 
     def load(self):
         self.limiter_presets.load()
+        self.panorama_presets.load()

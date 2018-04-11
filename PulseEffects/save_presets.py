@@ -2,6 +2,7 @@
 
 import configparser
 from PulseEffects.limiter_presets import LimiterPresets
+from PulseEffects.panorama_presets import PanoramaPresets
 
 
 class SavePresets():
@@ -10,16 +11,10 @@ class SavePresets():
         self.config = configparser.ConfigParser()
 
         self.limiter_presets = LimiterPresets(self.config)
+        self.panorama_presets = PanoramaPresets(self.config)
 
     def set_output_path(self, path):
         self.output_file = open(path, 'w')
-
-    def save_panorama_preset(self, settings, section):
-        enabled = settings.get_value('panorama-state')
-        position = settings.get_value('panorama-position')
-
-        self.config[section] = {'enabled': str(enabled),
-                                'position': str(position)}
 
     def save_compressor_preset(self, settings, section):
         enabled = settings.get_value('compressor-state')
@@ -426,7 +421,6 @@ class SavePresets():
                                 'f2_q': str(f2_q)}
 
     def save_sink_inputs_preset(self, settings):
-        self.save_panorama_preset(settings, 'apps_panorama')
         self.save_compressor_preset(settings, 'apps_compressor')
         self.save_reverb_preset(settings, 'apps_reverb')
         self.save_highpass_preset(settings, 'apps_highpass')
@@ -457,3 +451,4 @@ class SavePresets():
 
     def save(self):
         self.limiter_presets.save()
+        self.panorama_presets.save()
