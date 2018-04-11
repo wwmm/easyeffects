@@ -3,14 +3,15 @@
 import configparser
 
 from gi.repository import GLib
-from PulseEffects.limiter_presets import LimiterPresets
-from PulseEffects.panorama_presets import PanoramaPresets
+from PulseEffects.bass_enhancer_presets import BassEnhancerPresets
 from PulseEffects.compressor_presets import CompressorPresets
-from PulseEffects.reverb_presets import ReverbPresets
-from PulseEffects.highpass_presets import HighpassPresets
-from PulseEffects.lowpass_presets import LowpassPresets
 from PulseEffects.equalizer_presets import EqualizerPresets
 from PulseEffects.exciter_presets import ExciterPresets
+from PulseEffects.highpass_presets import HighpassPresets
+from PulseEffects.limiter_presets import LimiterPresets
+from PulseEffects.lowpass_presets import LowpassPresets
+from PulseEffects.panorama_presets import PanoramaPresets
+from PulseEffects.reverb_presets import ReverbPresets
 
 
 class LoadPresets():
@@ -26,6 +27,7 @@ class LoadPresets():
         self.lowpass_presets = LowpassPresets(self.config)
         self.equalizer_presets = EqualizerPresets(self.config)
         self.exciter_presets = ExciterPresets(self.config)
+        self.bass_enhancer_presets = BassEnhancerPresets(self.config)
 
     def set_config_path(self, path):
         self.config.clear()
@@ -275,7 +277,6 @@ class LoadPresets():
         settings.set_value('deesser-f2-q', GLib.Variant('d', f2_q))
 
     def load_sink_inputs_preset(self, settings):
-        self.load_bass_enhancer_preset(settings, 'apps_bass_enhancer')
         self.load_delay_preset(settings, 'apps_delay')
         self.load_stereo_enhancer_preset(settings, 'apps_stereo_enhancer')
         self.load_stereo_spread_preset(settings, 'apps_stereo_spread')
@@ -297,3 +298,4 @@ class LoadPresets():
         self.lowpass_presets.load()
         self.equalizer_presets.load()
         self.exciter_presets.load()
+        self.bass_enhancer_presets.load()

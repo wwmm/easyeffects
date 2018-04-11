@@ -10,6 +10,7 @@ install_data([
   'com.github.wwmm.pulseeffects.sinkinputs.lowpass.gschema.xml',
   'com.github.wwmm.pulseeffects.sinkinputs.equalizer.gschema.xml',
   'com.github.wwmm.pulseeffects.sinkinputs.exciter.gschema.xml',
+  'com.github.wwmm.pulseeffects.sinkinputs.bassenhancer.gschema.xml',
   'com.github.wwmm.pulseeffects.sourceoutputs.gschema.xml',
   'com.github.wwmm.pulseeffects.sourceoutputs.limiter.gschema.xml',
   'com.github.wwmm.pulseeffects.sourceoutputs.compressor.gschema.xml',

@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
 
 import configparser
-from PulseEffects.limiter_presets import LimiterPresets
-from PulseEffects.panorama_presets import PanoramaPresets
+
+from PulseEffects.bass_enhancer_presets import BassEnhancerPresets
 from PulseEffects.compressor_presets import CompressorPresets
-from PulseEffects.reverb_presets import ReverbPresets
-from PulseEffects.highpass_presets import HighpassPresets
-from PulseEffects.lowpass_presets import LowpassPresets
 from PulseEffects.equalizer_presets import EqualizerPresets
 from PulseEffects.exciter_presets import ExciterPresets
+from PulseEffects.highpass_presets import HighpassPresets
+from PulseEffects.limiter_presets import LimiterPresets
+from PulseEffects.lowpass_presets import LowpassPresets
+from PulseEffects.panorama_presets import PanoramaPresets
+from PulseEffects.reverb_presets import ReverbPresets
 
 
 class SavePresets():
@@ -24,28 +26,10 @@ class SavePresets():
         self.lowpass_presets = LowpassPresets(self.config)
         self.equalizer_presets = EqualizerPresets(self.config)
         self.exciter_presets = ExciterPresets(self.config)
+        self.bass_enhancer_presets = BassEnhancerPresets(self.config)
 
     def set_output_path(self, path):
         self.output_file = open(path, 'w')
-
-    def save_bass_enhancer_preset(self, settings, section):
-        enabled = settings.get_value('bass-enhancer-state')
-        input_gain = settings.get_value('bass-enhancer-input-gain')
-        output_gain = settings.get_value('bass-enhancer-output-gain')
-        amount = settings.get_value('bass-enhancer-amount')
-        harmonics = settings.get_value('bass-enhancer-harmonics')
-        scope = settings.get_value('bass-enhancer-scope')
-        floor = settings.get_value('bass-enhancer-floor')
-        blend = settings.get_value('bass-enhancer-blend')
-
-        self.config[section] = {'enabled': str(enabled),
-                                'input_gain': str(input_gain),
-                                'output_gain': str(output_gain),
-                                'amount': str(amount),
-                                'harmonics': str(harmonics),
-                                'scope': str(scope),
-                                'floor': str(floor),
-                                'blend': str(blend)}
 
     def save_delay_preset(self, settings, section):
         enabled = settings.get_value('delay-state')
@@ -222,7 +206,6 @@ class SavePresets():
                                 'f2_q': str(f2_q)}
 
     def save_sink_inputs_preset(self, settings):
-        self.save_bass_enhancer_preset(settings, 'apps_bass_enhancer')
         self.save_delay_preset(settings, 'apps_delay')
         self.save_stereo_enhancer_preset(settings, 'apps_stereo_enhancer')
         self.save_stereo_spread_preset(settings, 'apps_stereo_spread')
@@ -248,3 +231,4 @@ class SavePresets():
         self.lowpass_presets.save()
         self.equalizer_presets.save()
         self.exciter_presets.save()
+        self.bass_enhancer_presets.save()

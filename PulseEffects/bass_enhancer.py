@@ -14,8 +14,8 @@ Gst.init(None)
 
 class BassEnhancer():
 
-    def __init__(self, settings):
-        self.settings = settings
+    def __init__(self):
+        self.settings = None
         self.module_path = os.path.dirname(__file__)
 
         self.log = logging.getLogger('PulseEffects')
@@ -117,23 +117,17 @@ class BassEnhancer():
 
         flag = Gio.SettingsBindFlags.DEFAULT
 
-        self.settings.bind('bass-enhancer-state', self.ui_enable, 'active',
-                           flag)
-        self.settings.bind('bass-enhancer-state', self.ui_img_state, 'visible',
-                           flag)
-        self.settings.bind('bass-enhancer-state', self.ui_controls,
-                           'sensitive', Gio.SettingsBindFlags.GET)
-        self.settings.bind('bass-enhancer-input-gain', self.ui_input_gain,
-                           'value', flag)
-        self.settings.bind('bass-enhancer-output-gain', self.ui_output_gain,
-                           'value', flag)
-        self.settings.bind('bass-enhancer-amount', self.ui_amount, 'value',
-                           flag)
-        self.settings.bind('bass-enhancer-harmonics', self.ui_harmonics,
-                           'value', flag)
-        self.settings.bind('bass-enhancer-scope', self.ui_scope, 'value', flag)
-        self.settings.bind('bass-enhancer-floor', self.ui_floor, 'value', flag)
-        self.settings.bind('bass-enhancer-blend', self.ui_blend, 'value', flag)
+        self.settings.bind('state', self.ui_enable, 'active', flag)
+        self.settings.bind('state', self.ui_img_state, 'visible', flag)
+        self.settings.bind('state', self.ui_controls, 'sensitive',
+                           Gio.SettingsBindFlags.GET)
+        self.settings.bind('input-gain', self.ui_input_gain, 'value', flag)
+        self.settings.bind('output-gain', self.ui_output_gain, 'value', flag)
+        self.settings.bind('amount', self.ui_amount, 'value', flag)
+        self.settings.bind('harmonics', self.ui_harmonics, 'value', flag)
+        self.settings.bind('scope', self.ui_scope, 'value', flag)
+        self.settings.bind('floor', self.ui_floor, 'value', flag)
+        self.settings.bind('blend', self.ui_blend, 'value', flag)
 
         # binding ui widgets to gstreamer plugins
 
@@ -202,11 +196,11 @@ class BassEnhancer():
         self.ui_harmonics_levelbar.set_value(harmonics)
 
     def reset(self):
-        self.settings.reset('bass-enhancer-state')
-        self.settings.reset('bass-enhancer-input-gain')
-        self.settings.reset('bass-enhancer-output-gain')
-        self.settings.reset('bass-enhancer-amount')
-        self.settings.reset('bass-enhancer-harmonics')
-        self.settings.reset('bass-enhancer-scope')
-        self.settings.reset('bass-enhancer-floor')
-        self.settings.reset('bass-enhancer-blend')
+        self.settings.reset('state')
+        self.settings.reset('input-gain')
+        self.settings.reset('output-gain')
+        self.settings.reset('amount')
+        self.settings.reset('harmonics')
+        self.settings.reset('scope')
+        self.settings.reset('floor')
+        self.settings.reset('blend')

@@ -53,7 +53,7 @@ class SinkInputEffects(EffectsBase):
         self.pm.connect('sink_input_level_changed', self.on_app_level_changed)
 
         self.exciter = Exciter()
-        self.bass_enhancer = BassEnhancer(self.settings)
+        self.bass_enhancer = BassEnhancer()
         self.delay = Delay(self.settings)
         self.stereo_enhancer = StereoEnhancer(self.settings)
         self.stereo_spread = StereoSpread(self.settings)
@@ -78,6 +78,8 @@ class SinkInputEffects(EffectsBase):
             'com.github.wwmm.pulseeffects.sinkinputs.equalizer')
         self.exciter.settings = Gio.Settings(
             'com.github.wwmm.pulseeffects.sinkinputs.exciter')
+        self.bass_enhancer.settings = Gio.Settings(
+            'com.github.wwmm.pulseeffects.sinkinputs.bassenhancer')
 
         # effects wrappers
         self.exciter_wrapper = GstInsertBin.InsertBin.new('exciter_wrapper')
