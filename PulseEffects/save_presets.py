@@ -7,6 +7,7 @@ from PulseEffects.compressor_presets import CompressorPresets
 from PulseEffects.reverb_presets import ReverbPresets
 from PulseEffects.highpass_presets import HighpassPresets
 from PulseEffects.lowpass_presets import LowpassPresets
+from PulseEffects.equalizer_presets import EqualizerPresets
 
 
 class SavePresets():
@@ -20,153 +21,10 @@ class SavePresets():
         self.reverb_presets = ReverbPresets(self.config)
         self.highpass_presets = HighpassPresets(self.config)
         self.lowpass_presets = LowpassPresets(self.config)
+        self.equalizer_presets = EqualizerPresets(self.config)
 
     def set_output_path(self, path):
         self.output_file = open(path, 'w')
-
-    def save_equalizer_preset(self, settings, section):
-        enabled = settings.get_value('equalizer-state')
-        input_gain = settings.get_value('equalizer-input-gain')
-        output_gain = settings.get_value('equalizer-output-gain')
-
-        gain, frequencies, qualities, types = [], [], [], []
-
-        for n in range(30):
-            gain.append(
-                settings.get_value('equalizer-band' + str(n) + '-gain'))
-
-            frequencies.append(
-                settings.get_value('equalizer-band' + str(n) + '-frequency'))
-
-            qualities.append(
-                settings.get_value('equalizer-band' + str(n) + '-quality'))
-
-            types.append(
-                settings.get_value('equalizer-band' + str(n) + '-type'))
-
-        self.config[section] = {'enabled': str(enabled),
-                                'input_gain': str(input_gain),
-                                'output_gain': str(output_gain),
-                                'band0': str(gain[0]),
-                                'band1': str(gain[1]),
-                                'band2': str(gain[2]),
-                                'band3': str(gain[3]),
-                                'band4': str(gain[4]),
-                                'band5': str(gain[5]),
-                                'band6': str(gain[6]),
-                                'band7': str(gain[7]),
-                                'band8': str(gain[8]),
-                                'band9': str(gain[9]),
-                                'band10': str(gain[10]),
-                                'band11': str(gain[11]),
-                                'band12': str(gain[12]),
-                                'band13': str(gain[13]),
-                                'band14': str(gain[14]),
-                                'band15': str(gain[15]),
-                                'band16': str(gain[16]),
-                                'band17': str(gain[17]),
-                                'band18': str(gain[18]),
-                                'band19': str(gain[19]),
-                                'band20': str(gain[20]),
-                                'band21': str(gain[21]),
-                                'band22': str(gain[22]),
-                                'band23': str(gain[23]),
-                                'band24': str(gain[24]),
-                                'band25': str(gain[25]),
-                                'band26': str(gain[26]),
-                                'band27': str(gain[27]),
-                                'band28': str(gain[28]),
-                                'band29': str(gain[29]),
-                                'band0_freq': str(frequencies[0]),
-                                'band1_freq': str(frequencies[1]),
-                                'band2_freq': str(frequencies[2]),
-                                'band3_freq': str(frequencies[3]),
-                                'band4_freq': str(frequencies[4]),
-                                'band5_freq': str(frequencies[5]),
-                                'band6_freq': str(frequencies[6]),
-                                'band7_freq': str(frequencies[7]),
-                                'band8_freq': str(frequencies[8]),
-                                'band9_freq': str(frequencies[9]),
-                                'band10_freq': str(frequencies[10]),
-                                'band11_freq': str(frequencies[11]),
-                                'band12_freq': str(frequencies[12]),
-                                'band13_freq': str(frequencies[13]),
-                                'band14_freq': str(frequencies[14]),
-                                'band15_freq': str(frequencies[15]),
-                                'band16_freq': str(frequencies[16]),
-                                'band17_freq': str(frequencies[17]),
-                                'band18_freq': str(frequencies[18]),
-                                'band19_freq': str(frequencies[19]),
-                                'band20_freq': str(frequencies[20]),
-                                'band21_freq': str(frequencies[21]),
-                                'band22_freq': str(frequencies[22]),
-                                'band23_freq': str(frequencies[23]),
-                                'band24_freq': str(frequencies[24]),
-                                'band25_freq': str(frequencies[25]),
-                                'band26_freq': str(frequencies[26]),
-                                'band27_freq': str(frequencies[27]),
-                                'band28_freq': str(frequencies[28]),
-                                'band29_freq': str(frequencies[29]),
-                                'band0_qfactor': str(qualities[0]),
-                                'band1_qfactor': str(qualities[1]),
-                                'band2_qfactor': str(qualities[2]),
-                                'band3_qfactor': str(qualities[3]),
-                                'band4_qfactor': str(qualities[4]),
-                                'band5_qfactor': str(qualities[5]),
-                                'band6_qfactor': str(qualities[6]),
-                                'band7_qfactor': str(qualities[7]),
-                                'band8_qfactor': str(qualities[8]),
-                                'band9_qfactor': str(qualities[9]),
-                                'band10_qfactor': str(qualities[10]),
-                                'band11_qfactor': str(qualities[11]),
-                                'band12_qfactor': str(qualities[12]),
-                                'band13_qfactor': str(qualities[13]),
-                                'band14_qfactor': str(qualities[14]),
-                                'band15_qfactor': str(qualities[15]),
-                                'band16_qfactor': str(qualities[16]),
-                                'band17_qfactor': str(qualities[17]),
-                                'band18_qfactor': str(qualities[18]),
-                                'band19_qfactor': str(qualities[19]),
-                                'band20_qfactor': str(qualities[20]),
-                                'band21_qfactor': str(qualities[21]),
-                                'band22_qfactor': str(qualities[22]),
-                                'band23_qfactor': str(qualities[23]),
-                                'band24_qfactor': str(qualities[24]),
-                                'band25_qfactor': str(qualities[25]),
-                                'band26_qfactor': str(qualities[26]),
-                                'band27_qfactor': str(qualities[27]),
-                                'band28_qfactor': str(qualities[28]),
-                                'band29_qfactor': str(qualities[29]),
-                                'band0_type': str(types[0]),
-                                'band1_type': str(types[1]),
-                                'band2_type': str(types[2]),
-                                'band3_type': str(types[3]),
-                                'band4_type': str(types[4]),
-                                'band5_type': str(types[5]),
-                                'band6_type': str(types[6]),
-                                'band7_type': str(types[7]),
-                                'band8_type': str(types[8]),
-                                'band9_type': str(types[9]),
-                                'band10_type': str(types[10]),
-                                'band11_type': str(types[11]),
-                                'band12_type': str(types[12]),
-                                'band13_type': str(types[13]),
-                                'band14_type': str(types[14]),
-                                'band15_type': str(types[15]),
-                                'band16_type': str(types[16]),
-                                'band17_type': str(types[17]),
-                                'band18_type': str(types[18]),
-                                'band19_type': str(types[19]),
-                                'band20_type': str(types[20]),
-                                'band21_type': str(types[21]),
-                                'band22_type': str(types[22]),
-                                'band23_type': str(types[23]),
-                                'band24_type': str(types[24]),
-                                'band25_type': str(types[25]),
-                                'band26_type': str(types[26]),
-                                'band27_type': str(types[27]),
-                                'band28_type': str(types[28]),
-                                'band29_type': str(types[29])}
 
     def save_exciter_preset(self, settings, section):
         enabled = settings.get_value('exciter-state')
@@ -381,7 +239,6 @@ class SavePresets():
                                 'f2_q': str(f2_q)}
 
     def save_sink_inputs_preset(self, settings):
-        self.save_equalizer_preset(settings, 'apps_equalizer')
         self.save_exciter_preset(settings, 'apps_exciter')
         self.save_bass_enhancer_preset(settings, 'apps_bass_enhancer')
         self.save_delay_preset(settings, 'apps_delay')
@@ -392,7 +249,6 @@ class SavePresets():
         self.save_output_limiter_preset(settings, 'apps_output_limiter')
 
     def save_source_outputs_preset(self, settings):
-        self.save_equalizer_preset(settings, 'mic_equalizer')
         self.save_pitch_preset(settings, 'mic_pitch')
         self.save_gate_preset(settings, 'mic_gate')
         self.save_deesser_preset(settings, 'mic_deesser')
@@ -408,3 +264,4 @@ class SavePresets():
         self.reverb_presets.save()
         self.highpass_presets.save()
         self.lowpass_presets.save()
+        self.equalizer_presets.save()
