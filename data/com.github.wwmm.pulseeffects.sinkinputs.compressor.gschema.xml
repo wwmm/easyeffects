@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="com.github.wwmm.pulseeffects.sinkinputs.compressor" path="/com/github/wwmm/pulseeffects/sinkinputs/compressor/">
+        <key name="state" type="b">
+          <default>false</default>
+        </key>
+        <key name="use-peak" type="b">
+          <default>false</default>
+        </key>
+        <key name="attack" type="d">
+          <default>101.1</default>
+        </key>
+        <key name="release" type="d">
+          <default>401.0</default>
+        </key>
+        <key name="threshold" type="d">
+          <default>0.0</default>
+        </key>
+        <key name="ratio" type="d">
+          <default>1.0</default>
+        </key>
+        <key name="knee" type="d">
+          <default>3.25</default>
+        </key>
+        <key name="makeup" type="d">
+          <default>0.0</default>
+        </key>
+    </schema>
+</schemalist>

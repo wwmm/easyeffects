@@ -3,6 +3,7 @@
 import configparser
 from PulseEffects.limiter_presets import LimiterPresets
 from PulseEffects.panorama_presets import PanoramaPresets
+from PulseEffects.compressor_presets import CompressorPresets
 
 
 class SavePresets():
@@ -12,28 +13,10 @@ class SavePresets():
 
         self.limiter_presets = LimiterPresets(self.config)
         self.panorama_presets = PanoramaPresets(self.config)
+        self.compressor_presets = CompressorPresets(self.config)
 
     def set_output_path(self, path):
         self.output_file = open(path, 'w')
-
-    def save_compressor_preset(self, settings, section):
-        enabled = settings.get_value('compressor-state')
-        use_peak = settings.get_value('compressor-use-peak')
-        attack = settings.get_value('compressor-attack')
-        release = settings.get_value('compressor-release')
-        threshold = settings.get_value('compressor-threshold')
-        ratio = settings.get_value('compressor-ratio')
-        knee = settings.get_value('compressor-knee')
-        makeup = settings.get_value('compressor-makeup')
-
-        self.config[section] = {'enabled': str(enabled),
-                                'use_peak': str(use_peak),
-                                'attack': str(attack),
-                                'release': str(release),
-                                'threshold': str(threshold),
-                                'ratio': str(ratio),
-                                'knee': str(knee),
-                                'makeup': str(makeup)}
 
     def save_reverb_preset(self, settings, section):
         enabled = settings.get_value('reverb-state')
@@ -421,7 +404,6 @@ class SavePresets():
                                 'f2_q': str(f2_q)}
 
     def save_sink_inputs_preset(self, settings):
-        self.save_compressor_preset(settings, 'apps_compressor')
         self.save_reverb_preset(settings, 'apps_reverb')
         self.save_highpass_preset(settings, 'apps_highpass')
         self.save_lowpass_preset(settings, 'apps_lowpass')
@@ -436,7 +418,6 @@ class SavePresets():
         self.save_output_limiter_preset(settings, 'apps_output_limiter')
 
     def save_source_outputs_preset(self, settings):
-        self.save_compressor_preset(settings, 'mic_compressor')
         self.save_highpass_preset(settings, 'mic_highpass')
         self.save_lowpass_preset(settings, 'mic_lowpass')
         self.save_equalizer_preset(settings, 'mic_equalizer')
@@ -452,3 +433,4 @@ class SavePresets():
     def save(self):
         self.limiter_presets.save()
         self.panorama_presets.save()
+        self.compressor_presets.save()

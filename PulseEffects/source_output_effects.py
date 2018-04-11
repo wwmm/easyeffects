@@ -49,13 +49,15 @@ class SourceOutputEffects(EffectsBase):
         self.pm.connect('source_output_changed', self.on_app_changed)
         self.pm.connect('source_output_removed', self.on_app_removed)
 
-        self.limiter.settings = Gio.Settings(
-            'com.github.wwmm.pulseeffects.sourceoutputs.limiter')
-
         self.pitch = Pitch(self.settings)
         self.gate = Gate(self.settings)
         self.deesser = Deesser(self.settings)
         self.webrtc = Webrtc(self.settings)
+
+        self.limiter.settings = Gio.Settings(
+            'com.github.wwmm.pulseeffects.sourceoutputs.limiter')
+        self.compressor.settings = Gio.Settings(
+            'com.github.wwmm.pulseeffects.sourceoutputs.compressor')
 
         # effects wrappers
 

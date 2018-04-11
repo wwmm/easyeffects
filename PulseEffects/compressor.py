@@ -14,8 +14,8 @@ Gst.init(None)
 
 class Compressor():
 
-    def __init__(self, settings):
-        self.settings = settings
+    def __init__(self):
+        self.settings = None
         self.module_path = os.path.dirname(__file__)
 
         self.log = logging.getLogger('PulseEffects')
@@ -106,26 +106,21 @@ class Compressor():
 
         flag = Gio.SettingsBindFlags.DEFAULT
 
-        self.settings.bind('compressor-state', self.ui_enable, 'active', flag)
-        self.settings.bind('compressor-state', self.ui_img_state, 'visible',
-                           flag)
-        self.settings.bind('compressor-state', self.ui_controls, 'sensitive',
+        self.settings.bind('state', self.ui_enable, 'active', flag)
+        self.settings.bind('state', self.ui_img_state, 'visible', flag)
+        self.settings.bind('state', self.ui_controls, 'sensitive',
                            Gio.SettingsBindFlags.GET)
 
-        self.settings.bind('compressor-use-peak', self.ui_compressor_peak,
-                           'active', flag)
-        self.settings.bind('compressor-use-peak', self.ui_compressor_rms,
-                           'active',
+        self.settings.bind('use-peak', self.ui_compressor_peak, 'active', flag)
+        self.settings.bind('use-peak', self.ui_compressor_rms, 'active',
                            flag | Gio.SettingsBindFlags.INVERT_BOOLEAN)
 
-        self.settings.bind('compressor-attack', self.ui_attack, 'value', flag)
-        self.settings.bind('compressor-release', self.ui_release, 'value',
-                           flag)
-        self.settings.bind('compressor-threshold', self.ui_threshold, 'value',
-                           flag)
-        self.settings.bind('compressor-ratio', self.ui_ratio, 'value', flag)
-        self.settings.bind('compressor-knee', self.ui_knee, 'value', flag)
-        self.settings.bind('compressor-makeup', self.ui_makeup, 'value', flag)
+        self.settings.bind('attack', self.ui_attack, 'value', flag)
+        self.settings.bind('release', self.ui_release, 'value', flag)
+        self.settings.bind('threshold', self.ui_threshold, 'value', flag)
+        self.settings.bind('ratio', self.ui_ratio, 'value', flag)
+        self.settings.bind('knee', self.ui_knee, 'value', flag)
+        self.settings.bind('makeup', self.ui_makeup, 'value', flag)
 
         # binding ui widgets to gstreamer plugins
 
@@ -202,11 +197,11 @@ class Compressor():
                 str(round(gain_reduction)))
 
     def reset(self):
-        self.settings.reset('compressor-state')
-        self.settings.reset('compressor-use-peak')
-        self.settings.reset('compressor-attack')
-        self.settings.reset('compressor-release')
-        self.settings.reset('compressor-threshold')
-        self.settings.reset('compressor-ratio')
-        self.settings.reset('compressor-knee')
-        self.settings.reset('compressor-makeup')
+        self.settings.reset('state')
+        self.settings.reset('use-peak')
+        self.settings.reset('attack')
+        self.settings.reset('release')
+        self.settings.reset('threshold')
+        self.settings.reset('ratio')
+        self.settings.reset('knee')
+        self.settings.reset('makeup')

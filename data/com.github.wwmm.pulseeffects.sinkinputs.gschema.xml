@@ -1,30 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
     <schema id="com.github.wwmm.pulseeffects.sinkinputs" path="/com/github/wwmm/pulseeffects/sinkinputs/">
-        <key name="compressor-state" type="b">
-          <default>false</default>
-        </key>
-        <key name="compressor-use-peak" type="b">
-          <default>false</default>
-        </key>
-        <key name="compressor-attack" type="d">
-          <default>101.1</default>
-        </key>
-        <key name="compressor-release" type="d">
-          <default>401.0</default>
-        </key>
-        <key name="compressor-threshold" type="d">
-          <default>0.0</default>
-        </key>
-        <key name="compressor-ratio" type="d">
-          <default>1.0</default>
-        </key>
-        <key name="compressor-knee" type="d">
-          <default>3.25</default>
-        </key>
-        <key name="compressor-makeup" type="d">
-          <default>0.0</default>
-        </key>
 
         <key name="highpass-state" type="b">
           <default>false</default>

@@ -7,7 +7,7 @@ import gi
 import numpy as np
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, GstInsertBin, Gtk, Pango
+from gi.repository import GstInsertBin, Gtk, Pango
 from PulseEffects.compressor import Compressor
 from PulseEffects.equalizer import Equalizer
 from PulseEffects.highpass import Highpass
@@ -34,7 +34,7 @@ class EffectsBase(PipelineBase):
         self.apps_list = []
 
         self.limiter = Limiter()
-        self.compressor = Compressor(self.settings)
+        self.compressor = Compressor()
         self.highpass = Highpass(self.settings)
         self.lowpass = Lowpass(self.settings)
         self.equalizer = Equalizer(self.settings)

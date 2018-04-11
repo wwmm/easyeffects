@@ -5,6 +5,7 @@ import configparser
 from gi.repository import GLib
 from PulseEffects.limiter_presets import LimiterPresets
 from PulseEffects.panorama_presets import PanoramaPresets
+from PulseEffects.compressor_presets import CompressorPresets
 
 
 class LoadPresets():
@@ -14,30 +15,11 @@ class LoadPresets():
 
         self.limiter_presets = LimiterPresets(self.config)
         self.panorama_presets = PanoramaPresets(self.config)
+        self.compressor_presets = CompressorPresets(self.config)
 
     def set_config_path(self, path):
         self.config.clear()
         self.config.read(path)
-
-    def load_compressor_preset(self, settings, section):
-        enabled = self.config.getboolean(section, 'enabled', fallback=False)
-        use_peak = self.config.getboolean(section, 'use_peak', fallback=False)
-        attack = self.config.getfloat(section, 'attack', fallback=101.1)
-        release = self.config.getfloat(section, 'release', fallback=401.0)
-        threshold = self.config.getfloat(section, 'threshold', fallback=0.0)
-        ratio = self.config.getfloat(section, 'ratio', fallback=1.0)
-        knee = self.config.getfloat(section, 'knee', fallback=3.0)
-        makeup = self.config.getfloat(section, 'makeup', fallback=0.0)
-
-        settings.set_value('compressor-state', GLib.Variant('b', enabled))
-        settings.set_value('compressor-use-peak', GLib.Variant('b', use_peak))
-        settings.set_value('compressor-attack', GLib.Variant('d', attack))
-        settings.set_value('compressor-release', GLib.Variant('d', release))
-        settings.set_value('compressor-threshold',
-                           GLib.Variant('d', threshold))
-        settings.set_value('compressor-ratio', GLib.Variant('d', ratio))
-        settings.set_value('compressor-knee', GLib.Variant('d', knee))
-        settings.set_value('compressor-makeup', GLib.Variant('d', makeup))
 
     def load_reverb_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
@@ -565,7 +547,6 @@ class LoadPresets():
         settings.set_value('deesser-f2-q', GLib.Variant('d', f2_q))
 
     def load_sink_inputs_preset(self, settings):
-        self.load_compressor_preset(settings, 'apps_compressor')
         self.load_reverb_preset(settings, 'apps_reverb')
         self.load_highpass_preset(settings, 'apps_highpass')
         self.load_lowpass_preset(settings, 'apps_lowpass')
@@ -580,7 +561,6 @@ class LoadPresets():
         self.load_output_limiter_preset(settings, 'apps_output_limiter')
 
     def load_source_outputs_preset(self, settings):
-        self.load_compressor_preset(settings, 'mic_compressor')
         self.load_highpass_preset(settings, 'mic_highpass')
         self.load_lowpass_preset(settings, 'mic_lowpass')
         self.load_equalizer_preset(settings, 'mic_equalizer')
@@ -592,3 +572,4 @@ class LoadPresets():
     def load(self):
         self.limiter_presets.load()
         self.panorama_presets.load()
+        self.compressor_presets.load()

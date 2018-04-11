@@ -66,6 +66,8 @@ class SinkInputEffects(EffectsBase):
             'com.github.wwmm.pulseeffects.sinkinputs.limiter')
         self.panorama.settings = Gio.Settings(
             'com.github.wwmm.pulseeffects.sinkinputs.panorama')
+        self.compressor.settings = Gio.Settings(
+            'com.github.wwmm.pulseeffects.sinkinputs.compressor')
 
         # effects wrappers
         self.exciter_wrapper = GstInsertBin.InsertBin.new('exciter_wrapper')
