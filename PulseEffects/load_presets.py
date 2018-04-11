@@ -5,6 +5,7 @@ import configparser
 from gi.repository import GLib
 from PulseEffects.bass_enhancer_presets import BassEnhancerPresets
 from PulseEffects.compressor_presets import CompressorPresets
+from PulseEffects.delay_presets import DelayPresets
 from PulseEffects.equalizer_presets import EqualizerPresets
 from PulseEffects.exciter_presets import ExciterPresets
 from PulseEffects.highpass_presets import HighpassPresets
@@ -28,49 +29,11 @@ class LoadPresets():
         self.equalizer_presets = EqualizerPresets(self.config)
         self.exciter_presets = ExciterPresets(self.config)
         self.bass_enhancer_presets = BassEnhancerPresets(self.config)
+        self.delay_presets = DelayPresets(self.config)
 
     def set_config_path(self, path):
         self.config.clear()
         self.config.read(path)
-
-    def load_bass_enhancer_preset(self, settings, section):
-        enabled = self.config.getboolean(section, 'enabled', fallback=False)
-        input_gain = self.config.getfloat(section, 'input_gain', fallback=0.0)
-        output_gain = self.config.getfloat(section, 'output_gain',
-                                           fallback=0.0)
-        amount = self.config.getfloat(section, 'amount', fallback=1.0)
-        harmonics = self.config.getfloat(section, 'harmonics', fallback=8.5)
-        scope = self.config.getfloat(section, 'scope', fallback=100.0)
-        floor = self.config.getfloat(section, 'floor', fallback=20.0)
-        blend = self.config.getfloat(section, 'blend', fallback=0.0)
-
-        settings.set_value('bass-enhancer-state', GLib.Variant('b', enabled))
-        settings.set_value('bass-enhancer-input-gain',
-                           GLib.Variant('d', input_gain))
-        settings.set_value('bass-enhancer-output-gain',
-                           GLib.Variant('d', output_gain))
-        settings.set_value('bass-enhancer-amount', GLib.Variant('d', amount))
-        settings.set_value('bass-enhancer-harmonics',
-                           GLib.Variant('d', harmonics))
-        settings.set_value('bass-enhancer-scope', GLib.Variant('d', scope))
-        settings.set_value('bass-enhancer-floor', GLib.Variant('d', floor))
-        settings.set_value('bass-enhancer-blend', GLib.Variant('d', blend))
-
-    def load_delay_preset(self, settings, section):
-        enabled = self.config.getboolean(section, 'enabled', fallback=False)
-        m_l = self.config.getfloat(section, 'm_l', fallback=0.0)
-        cm_l = self.config.getfloat(section, 'cm_l', fallback=0.0)
-        m_r = self.config.getfloat(section, 'm_r', fallback=0.0)
-        cm_r = self.config.getfloat(section, 'cm_r', fallback=0.0)
-        temperature = self.config.getfloat(section, 'temperature',
-                                           fallback=20.0)
-
-        settings.set_value('delay-state', GLib.Variant('b', enabled))
-        settings.set_value('delay-m-l', GLib.Variant('d', m_l))
-        settings.set_value('delay-cm-l', GLib.Variant('d', cm_l))
-        settings.set_value('delay-m-r', GLib.Variant('d', m_r))
-        settings.set_value('delay-cm-r', GLib.Variant('d', cm_r))
-        settings.set_value('delay-temperature', GLib.Variant('d', temperature))
 
     def load_stereo_enhancer_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
@@ -277,7 +240,6 @@ class LoadPresets():
         settings.set_value('deesser-f2-q', GLib.Variant('d', f2_q))
 
     def load_sink_inputs_preset(self, settings):
-        self.load_delay_preset(settings, 'apps_delay')
         self.load_stereo_enhancer_preset(settings, 'apps_stereo_enhancer')
         self.load_stereo_spread_preset(settings, 'apps_stereo_spread')
         self.load_crossfeed_preset(settings, 'apps_crossfeed')
@@ -299,3 +261,4 @@ class LoadPresets():
         self.equalizer_presets.load()
         self.exciter_presets.load()
         self.bass_enhancer_presets.load()
+        self.delay_presets.load()

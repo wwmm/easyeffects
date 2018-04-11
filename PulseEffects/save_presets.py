@@ -4,6 +4,7 @@ import configparser
 
 from PulseEffects.bass_enhancer_presets import BassEnhancerPresets
 from PulseEffects.compressor_presets import CompressorPresets
+from PulseEffects.delay_presets import DelayPresets
 from PulseEffects.equalizer_presets import EqualizerPresets
 from PulseEffects.exciter_presets import ExciterPresets
 from PulseEffects.highpass_presets import HighpassPresets
@@ -27,24 +28,10 @@ class SavePresets():
         self.equalizer_presets = EqualizerPresets(self.config)
         self.exciter_presets = ExciterPresets(self.config)
         self.bass_enhancer_presets = BassEnhancerPresets(self.config)
+        self.delay_presets = DelayPresets(self.config)
 
     def set_output_path(self, path):
         self.output_file = open(path, 'w')
-
-    def save_delay_preset(self, settings, section):
-        enabled = settings.get_value('delay-state')
-        m_l = settings.get_value('delay-m-l')
-        cm_l = settings.get_value('delay-cm-l')
-        m_r = settings.get_value('delay-m-r')
-        cm_r = settings.get_value('delay-cm-r')
-        temperature = settings.get_value('delay-temperature')
-
-        self.config[section] = {'enabled': str(enabled),
-                                'm_l': str(m_l),
-                                'cm_l': str(cm_l),
-                                'm_r': str(m_r),
-                                'cm_r': str(cm_r),
-                                'temperature': str(temperature)}
 
     def save_stereo_enhancer_preset(self, settings, section):
         enabled = settings.get_value('stereo-enhancer-state')
@@ -206,7 +193,6 @@ class SavePresets():
                                 'f2_q': str(f2_q)}
 
     def save_sink_inputs_preset(self, settings):
-        self.save_delay_preset(settings, 'apps_delay')
         self.save_stereo_enhancer_preset(settings, 'apps_stereo_enhancer')
         self.save_stereo_spread_preset(settings, 'apps_stereo_spread')
         self.save_crossfeed_preset(settings, 'apps_crossfeed')
@@ -232,3 +218,4 @@ class SavePresets():
         self.equalizer_presets.save()
         self.exciter_presets.save()
         self.bass_enhancer_presets.save()
+        self.delay_presets.save()

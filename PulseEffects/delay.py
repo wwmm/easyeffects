@@ -14,8 +14,8 @@ Gst.init(None)
 
 class Delay():
 
-    def __init__(self, settings):
-        self.settings = settings
+    def __init__(self):
+        self.settings = None
         self.module_path = os.path.dirname(__file__)
 
         self.log = logging.getLogger('PulseEffects')
@@ -128,15 +128,15 @@ class Delay():
 
         flag = Gio.SettingsBindFlags.DEFAULT
 
-        self.settings.bind('delay-state', self.ui_enable, 'active', flag)
-        self.settings.bind('delay-state', self.ui_img_state, 'visible', flag)
-        self.settings.bind('delay-state', self.ui_controls, 'sensitive',
+        self.settings.bind('state', self.ui_enable, 'active', flag)
+        self.settings.bind('state', self.ui_img_state, 'visible', flag)
+        self.settings.bind('state', self.ui_controls, 'sensitive',
                            Gio.SettingsBindFlags.GET)
-        self.settings.bind('delay-m-l', self.ui_m_l, 'value', flag)
-        self.settings.bind('delay-cm-l', self.ui_cm_l, 'value', flag)
-        self.settings.bind('delay-m-r', self.ui_m_r, 'value', flag)
-        self.settings.bind('delay-cm-r', self.ui_cm_r, 'value', flag)
-        self.settings.bind('delay-temperature', self.ui_temperature, 'value',
+        self.settings.bind('m-l', self.ui_m_l, 'value', flag)
+        self.settings.bind('cm-l', self.ui_cm_l, 'value', flag)
+        self.settings.bind('m-r', self.ui_m_r, 'value', flag)
+        self.settings.bind('cm-r', self.ui_cm_r, 'value', flag)
+        self.settings.bind('temperature', self.ui_temperature, 'value',
                            flag)
 
         # binding ui widgets to gstreamer plugins
@@ -190,9 +190,9 @@ class Delay():
         self.ui_update_level(widgets, peak)
 
     def reset(self):
-        self.settings.reset('delay-state')
-        self.settings.reset('delay-m-l')
-        self.settings.reset('delay-cm-l')
-        self.settings.reset('delay-m-r')
-        self.settings.reset('delay-cm-r')
-        self.settings.reset('delay-temperature')
+        self.settings.reset('state')
+        self.settings.reset('m-l')
+        self.settings.reset('cm-l')
+        self.settings.reset('m-r')
+        self.settings.reset('cm-r')
+        self.settings.reset('temperature')
