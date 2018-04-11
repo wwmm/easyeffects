@@ -6,6 +6,7 @@ from gi.repository import GLib
 from PulseEffects.limiter_presets import LimiterPresets
 from PulseEffects.panorama_presets import PanoramaPresets
 from PulseEffects.compressor_presets import CompressorPresets
+from PulseEffects.reverb_presets import ReverbPresets
 
 
 class LoadPresets():
@@ -16,23 +17,11 @@ class LoadPresets():
         self.limiter_presets = LimiterPresets(self.config)
         self.panorama_presets = PanoramaPresets(self.config)
         self.compressor_presets = CompressorPresets(self.config)
+        self.reverb_presets = ReverbPresets(self.config)
 
     def set_config_path(self, path):
         self.config.clear()
         self.config.read(path)
-
-    def load_reverb_preset(self, settings, section):
-        enabled = self.config.getboolean(section, 'enabled', fallback=False)
-        room_size = self.config.getfloat(section, 'room size', fallback=0.5)
-        damping = self.config.getfloat(section, 'damping', fallback=0.2)
-        width = self.config.getfloat(section, 'width', fallback=1.0)
-        level = self.config.getfloat(section, 'level', fallback=0.5)
-
-        settings.set_value('reverb-state', GLib.Variant('b', enabled))
-        settings.set_value('reverb-room-size', GLib.Variant('d', room_size))
-        settings.set_value('reverb-damping', GLib.Variant('d', damping))
-        settings.set_value('reverb-width', GLib.Variant('d', width))
-        settings.set_value('reverb-level', GLib.Variant('d', level))
 
     def load_highpass_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
@@ -547,7 +536,6 @@ class LoadPresets():
         settings.set_value('deesser-f2-q', GLib.Variant('d', f2_q))
 
     def load_sink_inputs_preset(self, settings):
-        self.load_reverb_preset(settings, 'apps_reverb')
         self.load_highpass_preset(settings, 'apps_highpass')
         self.load_lowpass_preset(settings, 'apps_lowpass')
         self.load_equalizer_preset(settings, 'apps_equalizer')
@@ -564,7 +552,6 @@ class LoadPresets():
         self.load_highpass_preset(settings, 'mic_highpass')
         self.load_lowpass_preset(settings, 'mic_lowpass')
         self.load_equalizer_preset(settings, 'mic_equalizer')
-        self.load_reverb_preset(settings, 'mic_reverb')
         self.load_pitch_preset(settings, 'mic_pitch')
         self.load_gate_preset(settings, 'mic_gate')
         self.load_deesser_preset(settings, 'mic_deesser')
@@ -573,3 +560,4 @@ class LoadPresets():
         self.limiter_presets.load()
         self.panorama_presets.load()
         self.compressor_presets.load()
+        self.reverb_presets.load()

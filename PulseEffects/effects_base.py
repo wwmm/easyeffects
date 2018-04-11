@@ -38,7 +38,7 @@ class EffectsBase(PipelineBase):
         self.highpass = Highpass(self.settings)
         self.lowpass = Lowpass(self.settings)
         self.equalizer = Equalizer(self.settings)
-        self.reverb = Reverb(self.settings)
+        self.reverb = Reverb()
 
         # effects wrappers
         self.limiter_wrapper = GstInsertBin.InsertBin.new('limiter_wrapper')

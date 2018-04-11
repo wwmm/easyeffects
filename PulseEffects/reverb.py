@@ -13,8 +13,8 @@ Gst.init(None)
 
 class Reverb():
 
-    def __init__(self, settings):
-        self.settings = settings
+    def __init__(self):
+        self.settings = None
         self.module_path = os.path.dirname(__file__)
 
         self.build_bin()
@@ -77,15 +77,14 @@ class Reverb():
 
         flag = Gio.SettingsBindFlags.DEFAULT
 
-        self.settings.bind('reverb-state', self.ui_enable, 'active', flag)
-        self.settings.bind('reverb-state', self.ui_img_state, 'visible', flag)
-        self.settings.bind('reverb-state', self.ui_controls, 'sensitive',
+        self.settings.bind('state', self.ui_enable, 'active', flag)
+        self.settings.bind('state', self.ui_img_state, 'visible', flag)
+        self.settings.bind('state', self.ui_controls, 'sensitive',
                            Gio.SettingsBindFlags.GET)
-        self.settings.bind('reverb-room-size', self.ui_room_size, 'value',
-                           flag)
-        self.settings.bind('reverb-damping', self.ui_damping, 'value', flag)
-        self.settings.bind('reverb-width', self.ui_width, 'value', flag)
-        self.settings.bind('reverb-level', self.ui_level, 'value', flag)
+        self.settings.bind('room-size', self.ui_room_size, 'value', flag)
+        self.settings.bind('damping', self.ui_damping, 'value', flag)
+        self.settings.bind('width', self.ui_width, 'value', flag)
+        self.settings.bind('level', self.ui_level, 'value', flag)
 
         # binding ui widgets to gstreamer plugins
 
@@ -108,13 +107,13 @@ class Reverb():
         obj_id = Gtk.Buildable.get_name(obj)
 
         if obj_id == 'cathedral':
-            value = self.settings.get_value('reverb-cathedral')
+            value = self.settings.get_value('cathedral')
             self.apply_reverb_preset(value)
         elif obj_id == 'engine_room':
-            value = self.settings.get_value('reverb-engine-room')
+            value = self.settings.get_value('engine-room')
             self.apply_reverb_preset(value)
         elif obj_id == 'small_room':
-            value = self.settings.get_value('reverb-small-room')
+            value = self.settings.get_value('small-room')
             self.apply_reverb_preset(value)
 
     def ui_update_level(self, widgets, peak):
@@ -156,8 +155,8 @@ class Reverb():
         self.ui_update_level(widgets, peak)
 
     def reset(self):
-        self.settings.reset('reverb-state')
-        self.settings.reset('reverb-room-size')
-        self.settings.reset('reverb-damping')
-        self.settings.reset('reverb-width')
-        self.settings.reset('reverb-level')
+        self.settings.reset('state')
+        self.settings.reset('room-size')
+        self.settings.reset('damping')
+        self.settings.reset('width')
+        self.settings.reset('level')

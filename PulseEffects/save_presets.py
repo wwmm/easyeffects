@@ -4,6 +4,7 @@ import configparser
 from PulseEffects.limiter_presets import LimiterPresets
 from PulseEffects.panorama_presets import PanoramaPresets
 from PulseEffects.compressor_presets import CompressorPresets
+from PulseEffects.reverb_presets import ReverbPresets
 
 
 class SavePresets():
@@ -14,22 +15,10 @@ class SavePresets():
         self.limiter_presets = LimiterPresets(self.config)
         self.panorama_presets = PanoramaPresets(self.config)
         self.compressor_presets = CompressorPresets(self.config)
+        self.reverb_presets = ReverbPresets(self.config)
 
     def set_output_path(self, path):
         self.output_file = open(path, 'w')
-
-    def save_reverb_preset(self, settings, section):
-        enabled = settings.get_value('reverb-state')
-        room_size = settings.get_value('reverb-room-size')
-        damping = settings.get_value('reverb-damping')
-        width = settings.get_value('reverb-width')
-        level = settings.get_value('reverb-level')
-
-        self.config[section] = {'enabled': str(enabled),
-                                'room size': str(room_size),
-                                'damping': str(damping),
-                                'width': str(width),
-                                'level': str(level)}
 
     def save_highpass_preset(self, settings, section):
         enabled = settings.get_value('highpass-state')
@@ -404,7 +393,6 @@ class SavePresets():
                                 'f2_q': str(f2_q)}
 
     def save_sink_inputs_preset(self, settings):
-        self.save_reverb_preset(settings, 'apps_reverb')
         self.save_highpass_preset(settings, 'apps_highpass')
         self.save_lowpass_preset(settings, 'apps_lowpass')
         self.save_equalizer_preset(settings, 'apps_equalizer')
@@ -421,7 +409,6 @@ class SavePresets():
         self.save_highpass_preset(settings, 'mic_highpass')
         self.save_lowpass_preset(settings, 'mic_lowpass')
         self.save_equalizer_preset(settings, 'mic_equalizer')
-        self.save_reverb_preset(settings, 'mic_reverb')
         self.save_pitch_preset(settings, 'mic_pitch')
         self.save_gate_preset(settings, 'mic_gate')
         self.save_deesser_preset(settings, 'mic_deesser')
@@ -434,3 +421,4 @@ class SavePresets():
         self.limiter_presets.save()
         self.panorama_presets.save()
         self.compressor_presets.save()
+        self.reverb_presets.save()

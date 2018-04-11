@@ -58,6 +58,8 @@ class SourceOutputEffects(EffectsBase):
             'com.github.wwmm.pulseeffects.sourceoutputs.limiter')
         self.compressor.settings = Gio.Settings(
             'com.github.wwmm.pulseeffects.sourceoutputs.compressor')
+        self.reverb.settings = Gio.Settings(
+            'com.github.wwmm.pulseeffects.sourceoutputs.reverb')
 
         # effects wrappers
 

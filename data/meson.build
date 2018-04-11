@@ -5,9 +5,11 @@ install_data([
   'com.github.wwmm.pulseeffects.sinkinputs.limiter.gschema.xml',
   'com.github.wwmm.pulseeffects.sinkinputs.panorama.gschema.xml',
   'com.github.wwmm.pulseeffects.sinkinputs.compressor.gschema.xml',
+  'com.github.wwmm.pulseeffects.sinkinputs.reverb.gschema.xml',
   'com.github.wwmm.pulseeffects.sourceoutputs.gschema.xml',
   'com.github.wwmm.pulseeffects.sourceoutputs.limiter.gschema.xml',
   'com.github.wwmm.pulseeffects.sourceoutputs.compressor.gschema.xml',
+  'com.github.wwmm.pulseeffects.sourceoutputs.reverb.gschema.xml',
 ], install_dir: schemadir)
 
 i18n_mod.merge_file(
