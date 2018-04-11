@@ -155,6 +155,8 @@ class PresetsManager():
     def save_preset(self, path):
         self.sp.set_output_path(path)
 
+        self.sp.save()
+
         self.sp.save_sink_inputs_preset(self.app.sie.settings)
         self.sp.save_source_outputs_preset(self.app.soe.settings)
 
@@ -165,6 +167,8 @@ class PresetsManager():
 
         if os.path.isfile(path):
             self.lp.set_config_path(path)
+
+            self.lp.load()
 
             self.lp.load_sink_inputs_preset(self.app.sie.settings)
             self.lp.load_source_outputs_preset(self.app.soe.settings)

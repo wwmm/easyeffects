@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import configparser
+from PulseEffects.limiter_presets import LimiterPresets
 
 
 class SavePresets():
@@ -8,32 +9,10 @@ class SavePresets():
     def __init__(self):
         self.config = configparser.ConfigParser()
 
+        self.limiter_presets = LimiterPresets(self.config)
+
     def set_output_path(self, path):
         self.output_file = open(path, 'w')
-
-    def save_limiter_preset(self, settings, section):
-        enabled = settings.get_value('limiter-state')
-        input_gain = settings.get_value('limiter-input-gain')
-        limit = settings.get_value('limiter-limit')
-        release_time = settings.get_value('limiter-release-time')
-
-        self.config[section] = {'enabled': str(enabled),
-                                'input gain': str(input_gain),
-                                'limit': str(limit),
-                                'release time': str(release_time)}
-
-    def save_autovolume_preset(self, settings, section):
-        enabled = settings.get_value('autovolume-state')
-        window = settings.get_value('autovolume-window')
-        target = settings.get_value('autovolume-target')
-        tolerance = settings.get_value('autovolume-tolerance')
-        threshold = settings.get_value('autovolume-threshold')
-
-        self.config[section] = {'enabled': str(enabled),
-                                'window': str(window),
-                                'target': str(target),
-                                'tolerance': str(tolerance),
-                                'threshold': str(threshold)}
 
     def save_panorama_preset(self, settings, section):
         enabled = settings.get_value('panorama-state')
@@ -447,8 +426,6 @@ class SavePresets():
                                 'f2_q': str(f2_q)}
 
     def save_sink_inputs_preset(self, settings):
-        self.save_limiter_preset(settings, 'apps_limiter')
-        self.save_autovolume_preset(settings, 'apps_autovolume')
         self.save_panorama_preset(settings, 'apps_panorama')
         self.save_compressor_preset(settings, 'apps_compressor')
         self.save_reverb_preset(settings, 'apps_reverb')
@@ -465,8 +442,6 @@ class SavePresets():
         self.save_output_limiter_preset(settings, 'apps_output_limiter')
 
     def save_source_outputs_preset(self, settings):
-        self.save_limiter_preset(settings, 'mic_limiter')
-        self.save_autovolume_preset(settings, 'mic_autovolume')
         self.save_compressor_preset(settings, 'mic_compressor')
         self.save_highpass_preset(settings, 'mic_highpass')
         self.save_lowpass_preset(settings, 'mic_lowpass')
@@ -479,3 +454,6 @@ class SavePresets():
     def write_config(self):
         self.config.write(self.output_file)
         self.output_file.close()
+
+    def save(self):
+        self.limiter_presets.save()

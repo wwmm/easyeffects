@@ -14,8 +14,9 @@ Gst.init(None)
 
 class Limiter():
 
-    def __init__(self, settings):
-        self.settings = settings
+    def __init__(self):
+        self.settings = Gio.Settings(
+            'com.github.wwmm.pulseeffects.sinkinputs.limiter')
         self.module_path = os.path.dirname(__file__)
 
         self.log = logging.getLogger('PulseEffects')
@@ -124,17 +125,17 @@ class Limiter():
 
         flag = Gio.SettingsBindFlags.DEFAULT
 
-        self.settings.bind('limiter-state', self.ui_limiter_enable, 'active',
+        self.settings.bind('state', self.ui_limiter_enable, 'active',
                            flag)
-        self.settings.bind('limiter-state', self.ui_img_state, 'visible', flag)
-        self.settings.bind('limiter-state', self.ui_controls,
+        self.settings.bind('state', self.ui_img_state, 'visible', flag)
+        self.settings.bind('state', self.ui_controls,
                            'sensitive', Gio.SettingsBindFlags.GET)
-        self.settings.bind('limiter-state', self.ui_autovolume_box,
+        self.settings.bind('state', self.ui_autovolume_box,
                            'sensitive', Gio.SettingsBindFlags.GET)
-        self.settings.bind('limiter-input-gain', self.ui_input_gain, 'value',
+        self.settings.bind('input-gain', self.ui_input_gain, 'value',
                            flag)
-        self.settings.bind('limiter-limit', self.ui_limit, 'value', flag)
-        self.settings.bind('limiter-release-time', self.ui_release_time,
+        self.settings.bind('limit', self.ui_limit, 'value', flag)
+        self.settings.bind('release-time', self.ui_release_time,
                            'value', flag)
 
         self.settings.bind('autovolume-state', self.ui_autovolume_enable,
@@ -296,10 +297,10 @@ class Limiter():
             self.ui_attenuation_level_label.set_text(str(round(attenuation)))
 
     def reset(self):
-        self.settings.reset('limiter-state')
-        self.settings.reset('limiter-input-gain')
-        self.settings.reset('limiter-limit')
-        self.settings.reset('limiter-release-time')
+        self.settings.reset('state')
+        self.settings.reset('input-gain')
+        self.settings.reset('limit')
+        self.settings.reset('release-time')
         self.settings.reset('autovolume-state')
         self.settings.reset('autovolume-window')
         self.settings.reset('autovolume-target')

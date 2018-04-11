@@ -3,6 +3,7 @@
 import configparser
 
 from gi.repository import GLib
+from PulseEffects.limiter_presets import LimiterPresets
 
 
 class LoadPresets():
@@ -10,43 +11,11 @@ class LoadPresets():
     def __init__(self):
         self.config = configparser.ConfigParser()
 
+        self.limiter_presets = LimiterPresets(self.config)
+
     def set_config_path(self, path):
         self.config.clear()
         self.config.read(path)
-
-    def load_limiter_preset(self, settings, section):
-        enabled = self.config.getboolean(section, 'enabled', fallback=False)
-        autovolume_state = settings.get_value('autovolume-state').unpack()
-
-        if autovolume_state is False:
-            input_gain = self.config.getfloat(section, 'input gain',
-                                              fallback=0.0)
-            limit = self.config.getfloat(section, 'limit', fallback=0.0)
-            release_time = self.config.getfloat(section, 'release time',
-                                                fallback=0.5)
-
-            settings.set_value('limiter-input-gain',
-                               GLib.Variant('d', input_gain))
-            settings.set_value('limiter-limit', GLib.Variant('d', limit))
-            settings.set_value('limiter-release-time',
-                               GLib.Variant('d', release_time))
-
-        settings.set_value('limiter-state', GLib.Variant('b', enabled))
-
-    def load_autovolume_preset(self, settings, section):
-        enabled = self.config.getboolean(section, 'enabled', fallback=False)
-        window = self.config.getfloat(section, 'window', fallback=1.0)
-        target = self.config.getint(section, 'target', fallback=-12)
-        tolerance = self.config.getint(section, 'tolerance', fallback=1)
-        threshold = self.config.getint(section, 'threshold', fallback=-50)
-
-        settings.set_value('autovolume-state', GLib.Variant('b', enabled))
-        settings.set_value('autovolume-window', GLib.Variant('d', window))
-        settings.set_value('autovolume-target', GLib.Variant('i', target))
-        settings.set_value('autovolume-tolerance',
-                           GLib.Variant('i', tolerance))
-        settings.set_value('autovolume-threshold',
-                           GLib.Variant('i', threshold))
 
     def load_panorama_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
@@ -601,7 +570,7 @@ class LoadPresets():
         settings.set_value('deesser-f2-q', GLib.Variant('d', f2_q))
 
     def load_sink_inputs_preset(self, settings):
-        self.load_limiter_preset(settings, 'apps_limiter')
+        # self.load_limiter_preset(settings, 'apps_limiter')
         self.load_autovolume_preset(settings, 'apps_autovolume')
         self.load_panorama_preset(settings, 'apps_panorama')
         self.load_compressor_preset(settings, 'apps_compressor')
@@ -619,7 +588,7 @@ class LoadPresets():
         self.load_output_limiter_preset(settings, 'apps_output_limiter')
 
     def load_source_outputs_preset(self, settings):
-        self.load_limiter_preset(settings, 'mic_limiter')
+        # self.load_limiter_preset(settings, 'mic_limiter')
         self.load_autovolume_preset(settings, 'mic_autovolume')
         self.load_compressor_preset(settings, 'mic_compressor')
         self.load_highpass_preset(settings, 'mic_highpass')
@@ -629,3 +598,6 @@ class LoadPresets():
         self.load_pitch_preset(settings, 'mic_pitch')
         self.load_gate_preset(settings, 'mic_gate')
         self.load_deesser_preset(settings, 'mic_deesser')
+
+    def load(self):
+        self.limiter_presets.load()

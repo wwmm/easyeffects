@@ -125,9 +125,13 @@ class Webrtc():
 
         self.ui_enable = self.builder.get_object('enable')
         self.ui_img_state = self.builder.get_object('img_state')
-        # self.ui_release = self.builder.get_object('release')
-        # self.ui_ceiling = self.builder.get_object('ceiling')
-        # self.ui_threshold = self.builder.get_object('threshold')
+        self.ui_echo_cancel = self.builder.get_object('echo_cancel')
+        self.ui_echo_suppression_level_low = self.builder.get_object(
+            'echo_suppression_level_low')
+        self.ui_echo_suppression_level_moderate = self.builder.get_object(
+            'echo_suppression_level_moderate')
+        self.ui_echo_suppression_level_high = self.builder.get_object(
+            'echo_suppression_level_high')
 
         self.ui_input_level_left = self.builder.get_object('input_level_left')
         self.ui_input_level_right = self.builder.get_object(
@@ -156,7 +160,9 @@ class Webrtc():
                            flag)
         self.settings.bind('webrtc-state', self.ui_controls, 'sensitive',
                            Gio.SettingsBindFlags.GET)
-        # self.settings.bind('webrtc-release', self.ui_release, 'value', flag)
+
+        # self.settings.bind('webrtc-echo-cancel', self.ui_echo_cancel, 'value',
+        # flag)
         # self.settings.bind('webrtc-ceiling', self.ui_ceiling, 'value', flag)
         # self.settings.bind('webrtc-threshold', self.ui_threshold, 'value',
         #                    flag)

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="com.github.wwmm.pulseeffects.sourceoutputs.limiter" path="/com/github/wwmm/pulseeffects/sourceoutputs/limiter/">
+        <key name="state" type="b">
+          <default>false</default>
+        </key>
+        <key name="input-gain" type="d">
+          <default>0.0</default>
+        </key>
+        <key name="limit" type="d">
+          <default>0.0</default>
+        </key>
+        <key name="release-time" type="d">
+          <default>0.5</default>
+        </key>
+
+        <key name="autovolume-state" type="b">
+          <default>false</default>
+        </key>
+        <key name="autovolume-window" type="d">
+          <default>1.00</default>
+        </key>
+        <key name="autovolume-target" type="i">
+          <default>-12</default>
+        </key>
+        <key name="autovolume-tolerance" type="i">
+          <default>1</default>
+        </key>
+        <key name="autovolume-threshold" type="i">
+          <default>-50</default>
+        </key>
+    </schema>
+</schemalist>

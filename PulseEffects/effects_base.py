@@ -33,7 +33,7 @@ class EffectsBase(PipelineBase):
         # state tells if the app wants the pipeline to be running
         self.apps_list = []
 
-        self.limiter = Limiter(self.settings)
+        self.limiter = Limiter()
         self.compressor = Compressor(self.settings)
         self.highpass = Highpass(self.settings)
         self.lowpass = Lowpass(self.settings)

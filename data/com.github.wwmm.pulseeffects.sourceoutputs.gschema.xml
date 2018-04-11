@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
+
+    <enum id="webrtc-echo-suppression-level">
+        <value nick="low" value="0"/>
+        <value nick="moderate" value="1"/>
+        <value nick="high" value="2"/>
+    </enum>
+
     <schema id="com.github.wwmm.pulseeffects.sourceoutputs" path="/com/github/wwmm/pulseeffects/sourceoutputs/">
         <key name="limiter-state" type="b">
           <default>false</default>
@@ -565,6 +572,15 @@
         </key>
 
         <key name="webrtc-state" type="b">
+          <default>false</default>
+        </key>
+        <key name="webrtc-echo-suppression-level-low" type="b">
+          <default>false</default>
+        </key>
+        <key name="webrtc-echo-suppression-level-moderate" type="b">
+          <default>true</default>
+        </key>
+        <key name="webrtc-echo-suppression-level-high" type="b">
           <default>false</default>
         </key>
 
