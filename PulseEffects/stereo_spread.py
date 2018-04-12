@@ -14,8 +14,8 @@ Gst.init(None)
 
 class StereoSpread():
 
-    def __init__(self, settings):
-        self.settings = settings
+    def __init__(self):
+        self.settings = None
         self.module_path = os.path.dirname(__file__)
 
         self.log = logging.getLogger('PulseEffects')
@@ -113,29 +113,20 @@ class StereoSpread():
 
         flag = Gio.SettingsBindFlags.DEFAULT
 
-        self.settings.bind('stereo-spread-state', self.ui_enable, 'active',
-                           flag)
-        self.settings.bind('stereo-spread-state', self.ui_img_state, 'visible',
-                           flag)
-        self.settings.bind('stereo-spread-state', self.ui_controls,
-                           'sensitive', Gio.SettingsBindFlags.GET)
+        self.settings.bind('state', self.ui_enable, 'active', flag)
+        self.settings.bind('state', self.ui_img_state, 'visible', flag)
+        self.settings.bind('state', self.ui_controls, 'sensitive',
+                           Gio.SettingsBindFlags.GET)
 
-        self.settings.bind('stereo-spread-input-gain', self.ui_input_gain,
-                           'value', flag)
-        self.settings.bind('stereo-spread-output-gain', self.ui_output_gain,
-                           'value', flag)
+        self.settings.bind('input-gain', self.ui_input_gain, 'value', flag)
+        self.settings.bind('output-gain', self.ui_output_gain, 'value', flag)
 
-        self.settings.bind('stereo-spread-amount0', self.ui_amount0, 'value',
-                           flag)
-        self.settings.bind('stereo-spread-amount1', self.ui_amount1, 'value',
-                           flag)
-        self.settings.bind('stereo-spread-amount2', self.ui_amount2, 'value',
-                           flag)
-        self.settings.bind('stereo-spread-amount3', self.ui_amount3, 'value',
-                           flag)
-        self.settings.bind('stereo-spread-filters', self.ui_filters,
-                           'value', flag)
-        self.settings.bind('stereo-spread-mono', self.ui_mono, 'active', flag)
+        self.settings.bind('amount0', self.ui_amount0, 'value', flag)
+        self.settings.bind('amount1', self.ui_amount1, 'value', flag)
+        self.settings.bind('amount2', self.ui_amount2, 'value', flag)
+        self.settings.bind('amount3', self.ui_amount3, 'value', flag)
+        self.settings.bind('filters', self.ui_filters, 'value', flag)
+        self.settings.bind('mono', self.ui_mono, 'active', flag)
 
         # binding ui widgets to gstreamer plugins
 
@@ -230,12 +221,12 @@ class StereoSpread():
         self.ui_update_level(widgets, peak)
 
     def reset(self):
-        self.settings.reset('stereo-spread-state')
-        self.settings.reset('stereo-spread-input-gain')
-        self.settings.reset('stereo-spread-output-gain')
-        self.settings.reset('stereo-spread-amount0')
-        self.settings.reset('stereo-spread-amount1')
-        self.settings.reset('stereo-spread-amount2')
-        self.settings.reset('stereo-spread-amount3')
-        self.settings.reset('stereo-spread-filters')
-        self.settings.reset('stereo-spread-mono')
+        self.settings.reset('state')
+        self.settings.reset('input-gain')
+        self.settings.reset('output-gain')
+        self.settings.reset('amount0')
+        self.settings.reset('amount1')
+        self.settings.reset('amount2')
+        self.settings.reset('amount3')
+        self.settings.reset('filters')
+        self.settings.reset('mono')

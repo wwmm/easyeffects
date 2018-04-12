@@ -13,6 +13,7 @@ from PulseEffects.lowpass_presets import LowpassPresets
 from PulseEffects.panorama_presets import PanoramaPresets
 from PulseEffects.reverb_presets import ReverbPresets
 from PulseEffects.stereo_enhancer_presets import StereoEnhancerPresets
+from PulseEffects.stereo_spread_presets import StereoSpreadPresets
 
 
 class SavePresets():
@@ -31,31 +32,10 @@ class SavePresets():
         self.bass_enhancer_presets = BassEnhancerPresets(self.config)
         self.delay_presets = DelayPresets(self.config)
         self.stereo_enhancer_presets = StereoEnhancerPresets(self.config)
+        self.stereo_spread_presets = StereoSpreadPresets(self.config)
 
     def set_output_path(self, path):
         self.output_file = open(path, 'w')
-
-    def save_stereo_spread_preset(self, settings, section):
-        enabled = settings.get_value('stereo-spread-state')
-        input_gain = settings.get_value('stereo-spread-input-gain')
-        output_gain = settings.get_value('stereo-spread-output-gain')
-
-        amount0 = settings.get_value('stereo-spread-amount0')
-        amount1 = settings.get_value('stereo-spread-amount1')
-        amount2 = settings.get_value('stereo-spread-amount2')
-        amount3 = settings.get_value('stereo-spread-amount3')
-        filters = settings.get_value('stereo-spread-filters')
-        mono = settings.get_value('stereo-spread-mono')
-
-        self.config[section] = {'enabled': str(enabled),
-                                'input_gain': str(input_gain),
-                                'output_gain': str(output_gain),
-                                'amount0': str(amount0),
-                                'amount1': str(amount1),
-                                'amount2': str(amount2),
-                                'amount3': str(amount3),
-                                'filters': str(filters),
-                                'mono': str(mono)}
 
     def save_crossfeed_preset(self, settings, section):
         enabled = settings.get_value('crossfeed-state')
@@ -156,7 +136,6 @@ class SavePresets():
                                 'f2_q': str(f2_q)}
 
     def save_sink_inputs_preset(self, settings):
-        self.save_stereo_spread_preset(settings, 'apps_stereo_spread')
         self.save_crossfeed_preset(settings, 'apps_crossfeed')
         self.save_maximizer_preset(settings, 'apps_maximizer')
         self.save_output_limiter_preset(settings, 'apps_output_limiter')
@@ -182,3 +161,4 @@ class SavePresets():
         self.bass_enhancer_presets.save()
         self.delay_presets.save()
         self.stereo_enhancer_presets.save()
+        self.stereo_spread_presets.save()
