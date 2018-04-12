@@ -9,28 +9,6 @@
 
     <schema id="com.github.wwmm.pulseeffects.sourceoutputs" path="/com/github/wwmm/pulseeffects/sourceoutputs/">
 
-        <key name="pitch-state" type="b">
-          <default>false</default>
-        </key>
-        <key name="pitch-cents" type="d">
-          <default>0</default>
-        </key>
-        <key name="pitch-semitones" type="i">
-          <default>0</default>
-        </key>
-        <key name="pitch-octaves" type="i">
-          <default>0</default>
-        </key>
-        <key name="pitch-crispness" type="i">
-          <default>3</default>
-        </key>
-        <key name="pitch-preserve-formant" type="b">
-          <default>false</default>
-        </key>
-        <key name="pitch-faster" type="b">
-          <default>false</default>
-        </key>
-
         <key name="gate-state" type="b">
           <default>false</default>
         </key>

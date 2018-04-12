@@ -15,6 +15,7 @@ from PulseEffects.lowpass_presets import LowpassPresets
 from PulseEffects.maximizer_presets import MaximizerPresets
 from PulseEffects.output_limiter_presets import OutputLimiterPresets
 from PulseEffects.panorama_presets import PanoramaPresets
+from PulseEffects.pitch_presets import PitchPresets
 from PulseEffects.reverb_presets import ReverbPresets
 from PulseEffects.stereo_enhancer_presets import StereoEnhancerPresets
 from PulseEffects.stereo_spread_presets import StereoSpreadPresets
@@ -40,29 +41,11 @@ class LoadPresets():
         self.crossfeed_presets = CrossfeedPresets(self.config)
         self.maximizer_presets = MaximizerPresets(self.config)
         self.output_limiter_presets = OutputLimiterPresets(self.config)
+        self.pitch_presets = PitchPresets(self.config)
 
     def set_config_path(self, path):
         self.config.clear()
         self.config.read(path)
-
-    def load_pitch_preset(self, settings, section):
-        enabled = self.config.getboolean(section, 'enabled', fallback=False)
-        cents = self.config.getfloat(section, 'cents', fallback=0)
-        semitones = self.config.getint(section, 'semitones', fallback=0)
-        octaves = self.config.getint(section, 'octaves', fallback=0)
-        crispness = self.config.getint(section, 'crispness', fallback=3)
-        faster = self.config.getboolean(section, 'faster', fallback=False)
-        preserve_formant = self.config.getboolean(section, 'preserve_formant',
-                                                  fallback=False)
-
-        settings.set_value('pitch-state', GLib.Variant('b', enabled))
-        settings.set_value('pitch-cents', GLib.Variant('d', cents))
-        settings.set_value('pitch-semitones', GLib.Variant('i', semitones))
-        settings.set_value('pitch-octaves', GLib.Variant('i', octaves))
-        settings.set_value('pitch-crispness', GLib.Variant('i', crispness))
-        settings.set_value('pitch-faster', GLib.Variant('b', faster))
-        settings.set_value('pitch-preserve-formant',
-                           GLib.Variant('b', preserve_formant))
 
     def load_gate_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
@@ -120,7 +103,6 @@ class LoadPresets():
         settings.set_value('deesser-f2-q', GLib.Variant('d', f2_q))
 
     def load_source_outputs_preset(self, settings):
-        self.load_pitch_preset(settings, 'mic_pitch')
         self.load_gate_preset(settings, 'mic_gate')
         self.load_deesser_preset(settings, 'mic_deesser')
 
@@ -140,3 +122,4 @@ class LoadPresets():
         self.crossfeed_presets.load()
         self.maximizer_presets.load()
         self.output_limiter_presets.load()
+        self.pitch_presets.load()

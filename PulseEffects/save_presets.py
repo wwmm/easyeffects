@@ -14,6 +14,7 @@ from PulseEffects.lowpass_presets import LowpassPresets
 from PulseEffects.maximizer_presets import MaximizerPresets
 from PulseEffects.output_limiter_presets import OutputLimiterPresets
 from PulseEffects.panorama_presets import PanoramaPresets
+from PulseEffects.pitch_presets import PitchPresets
 from PulseEffects.reverb_presets import ReverbPresets
 from PulseEffects.stereo_enhancer_presets import StereoEnhancerPresets
 from PulseEffects.stereo_spread_presets import StereoSpreadPresets
@@ -39,26 +40,10 @@ class SavePresets():
         self.crossfeed_presets = CrossfeedPresets(self.config)
         self.maximizer_presets = MaximizerPresets(self.config)
         self.output_limiter_presets = OutputLimiterPresets(self.config)
+        self.pitch_presets = PitchPresets(self.config)
 
     def set_output_path(self, path):
         self.output_file = open(path, 'w')
-
-    def save_pitch_preset(self, settings, section):
-        enabled = settings.get_value('pitch-state')
-        cents = settings.get_value('pitch-cents')
-        semitones = settings.get_value('pitch-semitones')
-        octaves = settings.get_value('pitch-octaves')
-        crispness = settings.get_value('pitch-crispness')
-        faster = settings.get_value('pitch-faster')
-        preserve_formant = settings.get_value('pitch-preserve-formant')
-
-        self.config[section] = {'enabled': str(enabled),
-                                'cents': str(cents),
-                                'semitones': str(semitones),
-                                'octaves': str(octaves),
-                                'crispness': str(crispness),
-                                'faster': str(faster),
-                                'preserve_formant': str(preserve_formant)}
 
     def save_gate_preset(self, settings, section):
         enabled = settings.get_value('gate-state')
@@ -111,7 +96,6 @@ class SavePresets():
                                 'f2_q': str(f2_q)}
 
     def save_source_outputs_preset(self, settings):
-        self.save_pitch_preset(settings, 'mic_pitch')
         self.save_gate_preset(settings, 'mic_gate')
         self.save_deesser_preset(settings, 'mic_deesser')
 
@@ -135,3 +119,4 @@ class SavePresets():
         self.crossfeed_presets.save()
         self.maximizer_presets.save()
         self.output_limiter_presets.save()
+        self.pitch_presets.save()

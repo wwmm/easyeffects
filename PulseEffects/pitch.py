@@ -14,8 +14,8 @@ Gst.init(None)
 
 class Pitch():
 
-    def __init__(self, settings):
-        self.settings = settings
+    def __init__(self):
+        self.settings = None
         self.module_path = os.path.dirname(__file__)
 
         self.log = logging.getLogger('PulseEffects')
@@ -94,18 +94,17 @@ class Pitch():
 
         flag = Gio.SettingsBindFlags.DEFAULT
 
-        self.settings.bind('pitch-state', self.ui_enable, 'active', flag)
-        self.settings.bind('pitch-state', self.ui_img_state, 'visible',
-                           flag)
-        self.settings.bind('pitch-state', self.ui_controls, 'sensitive',
+        self.settings.bind('state', self.ui_enable, 'active', flag)
+        self.settings.bind('state', self.ui_img_state, 'visible', flag)
+        self.settings.bind('state', self.ui_controls, 'sensitive',
                            Gio.SettingsBindFlags.GET)
 
-        self.settings.bind('pitch-cents', self.ui_cents, 'value', flag)
-        self.settings.bind('pitch-semitones', self.ui_semitones, 'value', flag)
-        self.settings.bind('pitch-octaves', self.ui_octaves, 'value', flag)
-        self.settings.bind('pitch-crispness', self.ui_crispness, 'value', flag)
-        self.settings.bind('pitch-faster', self.ui_faster, 'active', flag)
-        self.settings.bind('pitch-preserve-formant', self.ui_preserve_formant,
+        self.settings.bind('cents', self.ui_cents, 'value', flag)
+        self.settings.bind('semitones', self.ui_semitones, 'value', flag)
+        self.settings.bind('octaves', self.ui_octaves, 'value', flag)
+        self.settings.bind('crispness', self.ui_crispness, 'value', flag)
+        self.settings.bind('faster', self.ui_faster, 'active', flag)
+        self.settings.bind('preserve-formant', self.ui_preserve_formant,
                            'active', flag)
 
         # binding ui widgets to gstreamer plugins
@@ -160,10 +159,10 @@ class Pitch():
         self.ui_update_level(widgets, peak)
 
     def reset(self):
-        self.settings.reset('pitch-state')
-        self.settings.reset('pitch-cents')
-        self.settings.reset('pitch-semitones')
-        self.settings.reset('pitch-octaves')
-        self.settings.reset('pitch-crispness')
-        self.settings.reset('pitch-preserve-formant')
-        self.settings.reset('pitch-faster')
+        self.settings.reset('state')
+        self.settings.reset('cents')
+        self.settings.reset('semitones')
+        self.settings.reset('octaves')
+        self.settings.reset('crispness')
+        self.settings.reset('preserve-formant')
+        self.settings.reset('faster')

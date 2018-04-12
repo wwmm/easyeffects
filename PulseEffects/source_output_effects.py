@@ -49,7 +49,7 @@ class SourceOutputEffects(EffectsBase):
         self.pm.connect('source_output_changed', self.on_app_changed)
         self.pm.connect('source_output_removed', self.on_app_removed)
 
-        self.pitch = Pitch(self.settings)
+        self.pitch = Pitch()
         self.gate = Gate(self.settings)
         self.deesser = Deesser(self.settings)
         self.webrtc = Webrtc(self.settings)
@@ -66,6 +66,8 @@ class SourceOutputEffects(EffectsBase):
             'com.github.wwmm.pulseeffects.sourceoutputs.lowpass')
         self.equalizer.settings = Gio.Settings(
             'com.github.wwmm.pulseeffects.sourceoutputs.equalizer')
+        self.pitch.settings = Gio.Settings(
+            'com.github.wwmm.pulseeffects.sourceoutputs.pitch')
 
         # effects wrappers
 

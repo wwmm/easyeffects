@@ -23,6 +23,7 @@ install_data([
   'com.github.wwmm.pulseeffects.sourceoutputs.highpass.gschema.xml',
   'com.github.wwmm.pulseeffects.sourceoutputs.lowpass.gschema.xml',
   'com.github.wwmm.pulseeffects.sourceoutputs.equalizer.gschema.xml',
+  'com.github.wwmm.pulseeffects.sourceoutputs.pitch.gschema.xml',
 ], install_dir: schemadir)
 
 i18n_mod.merge_file(
