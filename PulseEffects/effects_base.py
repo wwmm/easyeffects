@@ -20,11 +20,10 @@ from scipy.interpolate import CubicSpline
 
 class EffectsBase(PipelineBase):
 
-    def __init__(self, sampling_rate, settings):
+    def __init__(self, sampling_rate):
         PipelineBase.__init__(self, sampling_rate)
 
         self.module_path = os.path.dirname(__file__)
-        self.settings = settings
 
         self.disable_app_level_meter = False
         self.there_is_window = False

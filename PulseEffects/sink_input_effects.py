@@ -22,9 +22,8 @@ class SinkInputEffects(EffectsBase):
 
     def __init__(self, pulse_manager):
         self.pm = pulse_manager
-        self.settings = Gio.Settings('com.github.wwmm.pulseeffects.sinkinputs')
 
-        EffectsBase.__init__(self, self.pm.default_sink_rate, self.settings)
+        EffectsBase.__init__(self, self.pm.default_sink_rate)
 
         self.log_tag = 'SIE - '
 
@@ -60,7 +59,7 @@ class SinkInputEffects(EffectsBase):
         self.crossfeed = Crossfeed()
         self.panorama = Panorama()
         self.maximizer = Maximizer()
-        self.output_limiter = OutputLimiter(self.settings)
+        self.output_limiter = OutputLimiter()
 
         self.limiter.settings = Gio.Settings(
             'com.github.wwmm.pulseeffects.sinkinputs.limiter')
@@ -90,6 +89,8 @@ class SinkInputEffects(EffectsBase):
             'com.github.wwmm.pulseeffects.sinkinputs.crossfeed')
         self.maximizer.settings = Gio.Settings(
             'com.github.wwmm.pulseeffects.sinkinputs.maximizer')
+        self.output_limiter.settings = Gio.Settings(
+            'com.github.wwmm.pulseeffects.sinkinputs.outputlimiter')
 
         # effects wrappers
         self.exciter_wrapper = GstInsertBin.InsertBin.new('exciter_wrapper')

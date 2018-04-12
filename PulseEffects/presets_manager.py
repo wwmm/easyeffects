@@ -157,7 +157,6 @@ class PresetsManager():
 
         self.sp.save()
 
-        self.sp.save_sink_inputs_preset(self.app.sie.settings)
         self.sp.save_source_outputs_preset(self.app.soe.settings)
 
         self.sp.write_config()
@@ -170,7 +169,6 @@ class PresetsManager():
 
             self.lp.load()
 
-            self.lp.load_sink_inputs_preset(self.app.sie.settings)
             self.lp.load_source_outputs_preset(self.app.soe.settings)
         else:
             self.log.error(self.log_tag + path + _(' is not a file!'))

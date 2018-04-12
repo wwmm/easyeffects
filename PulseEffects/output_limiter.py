@@ -14,8 +14,8 @@ Gst.init(None)
 
 class OutputLimiter():
 
-    def __init__(self, settings):
-        self.settings = settings
+    def __init__(self):
+        self.settings = None
         self.module_path = os.path.dirname(__file__)
 
         self.log = logging.getLogger('PulseEffects')
@@ -102,18 +102,13 @@ class OutputLimiter():
 
         flag = Gio.SettingsBindFlags.DEFAULT
 
-        self.settings.bind('output-limiter-state', self.ui_limiter_enable,
-                           'active', flag)
-        self.settings.bind('output-limiter-state', self.ui_img_state,
-                           'visible', flag)
-        self.settings.bind('output-limiter-state', self.ui_controls,
-                           'sensitive', Gio.SettingsBindFlags.GET)
-        self.settings.bind('output-limiter-input-gain', self.ui_input_gain,
-                           'value', flag)
-        self.settings.bind('output-limiter-limit', self.ui_limit, 'value',
-                           flag)
-        self.settings.bind('output-limiter-release-time', self.ui_release_time,
-                           'value', flag)
+        self.settings.bind('state', self.ui_limiter_enable, 'active', flag)
+        self.settings.bind('state', self.ui_img_state, 'visible', flag)
+        self.settings.bind('state', self.ui_controls, 'sensitive',
+                           Gio.SettingsBindFlags.GET)
+        self.settings.bind('input-gain', self.ui_input_gain, 'value', flag)
+        self.settings.bind('limit', self.ui_limit, 'value', flag)
+        self.settings.bind('release-time', self.ui_release_time, 'value', flag)
 
         # binding ui widgets to gstreamer plugins
 
@@ -173,7 +168,7 @@ class OutputLimiter():
             self.ui_attenuation_level_label.set_text(str(round(attenuation)))
 
     def reset(self):
-        self.settings.reset('output-limiter-state')
-        self.settings.reset('output-limiter-input-gain')
-        self.settings.reset('output-limiter-limit')
-        self.settings.reset('output-limiter-release-time')
+        self.settings.reset('state')
+        self.settings.reset('input-gain')
+        self.settings.reset('limit')
+        self.settings.reset('release-time')

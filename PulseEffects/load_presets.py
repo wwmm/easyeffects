@@ -13,6 +13,7 @@ from PulseEffects.highpass_presets import HighpassPresets
 from PulseEffects.limiter_presets import LimiterPresets
 from PulseEffects.lowpass_presets import LowpassPresets
 from PulseEffects.maximizer_presets import MaximizerPresets
+from PulseEffects.output_limiter_presets import OutputLimiterPresets
 from PulseEffects.panorama_presets import PanoramaPresets
 from PulseEffects.reverb_presets import ReverbPresets
 from PulseEffects.stereo_enhancer_presets import StereoEnhancerPresets
@@ -38,24 +39,11 @@ class LoadPresets():
         self.stereo_spread_presets = StereoSpreadPresets(self.config)
         self.crossfeed_presets = CrossfeedPresets(self.config)
         self.maximizer_presets = MaximizerPresets(self.config)
+        self.output_limiter_presets = OutputLimiterPresets(self.config)
 
     def set_config_path(self, path):
         self.config.clear()
         self.config.read(path)
-
-    def load_output_limiter_preset(self, settings, section):
-        enabled = self.config.getboolean(section, 'enabled', fallback=False)
-        input_gain = self.config.getfloat(section, 'input gain', fallback=0.0)
-        limit = self.config.getfloat(section, 'limit', fallback=0.0)
-        release_time = self.config.getfloat(section, 'release time',
-                                            fallback=0.5)
-
-        settings.set_value('output-limiter-input-gain',
-                           GLib.Variant('d', input_gain))
-        settings.set_value('output-limiter-limit', GLib.Variant('d', limit))
-        settings.set_value('output-limiter-release-time',
-                           GLib.Variant('d', release_time))
-        settings.set_value('output-limiter-state', GLib.Variant('b', enabled))
 
     def load_pitch_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
@@ -131,9 +119,6 @@ class LoadPresets():
         settings.set_value('deesser-f2-level', GLib.Variant('d', f2_level))
         settings.set_value('deesser-f2-q', GLib.Variant('d', f2_q))
 
-    def load_sink_inputs_preset(self, settings):
-        self.load_output_limiter_preset(settings, 'apps_output_limiter')
-
     def load_source_outputs_preset(self, settings):
         self.load_pitch_preset(settings, 'mic_pitch')
         self.load_gate_preset(settings, 'mic_gate')
@@ -154,3 +139,4 @@ class LoadPresets():
         self.stereo_spread_presets.load()
         self.crossfeed_presets.load()
         self.maximizer_presets.load()
+        self.output_limiter_presets.load()

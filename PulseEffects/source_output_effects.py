@@ -21,7 +21,7 @@ class SourceOutputEffects(EffectsBase):
         self.settings = Gio.Settings(
             'com.github.wwmm.pulseeffects.sourceoutputs')
 
-        EffectsBase.__init__(self, self.pm.default_source_rate, self.settings)
+        EffectsBase.__init__(self, self.pm.default_source_rate)
 
         self.log_tag = 'SOE - '
         self.disable_app_level_meter = True
