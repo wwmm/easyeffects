@@ -59,7 +59,7 @@ class SinkInputEffects(EffectsBase):
         self.stereo_spread = StereoSpread()
         self.crossfeed = Crossfeed()
         self.panorama = Panorama()
-        self.maximizer = Maximizer(self.settings)
+        self.maximizer = Maximizer()
         self.output_limiter = OutputLimiter(self.settings)
 
         self.limiter.settings = Gio.Settings(
@@ -88,6 +88,8 @@ class SinkInputEffects(EffectsBase):
             'com.github.wwmm.pulseeffects.sinkinputs.stereospread')
         self.crossfeed.settings = Gio.Settings(
             'com.github.wwmm.pulseeffects.sinkinputs.crossfeed')
+        self.maximizer.settings = Gio.Settings(
+            'com.github.wwmm.pulseeffects.sinkinputs.maximizer')
 
         # effects wrappers
         self.exciter_wrapper = GstInsertBin.InsertBin.new('exciter_wrapper')

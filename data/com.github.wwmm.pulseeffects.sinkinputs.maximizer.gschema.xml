@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="com.github.wwmm.pulseeffects.sinkinputs.maximizer" path="/com/github/wwmm/pulseeffects/sinkinputs/maximizer/">
+        <key name="state" type="b">
+          <default>false</default>
+        </key>
+        <key name="release" type="d">
+          <default>3.16</default>
+        </key>
+        <key name="ceiling" type="d">
+          <default>0.0</default>
+        </key>
+        <key name="threshold" type="d">
+          <default>0.0</default>
+        </key>
+    </schema>
+</schemalist>

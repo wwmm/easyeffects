@@ -14,8 +14,8 @@ Gst.init(None)
 
 class Maximizer():
 
-    def __init__(self, settings):
-        self.settings = settings
+    def __init__(self):
+        self.settings = None
         self.module_path = os.path.dirname(__file__)
 
         self.log = logging.getLogger('PulseEffects')
@@ -101,15 +101,13 @@ class Maximizer():
 
         flag = Gio.SettingsBindFlags.DEFAULT
 
-        self.settings.bind('maximizer-state', self.ui_enable, 'active', flag)
-        self.settings.bind('maximizer-state', self.ui_img_state, 'visible',
-                           flag)
-        self.settings.bind('maximizer-state', self.ui_controls, 'sensitive',
+        self.settings.bind('state', self.ui_enable, 'active', flag)
+        self.settings.bind('state', self.ui_img_state, 'visible', flag)
+        self.settings.bind('state', self.ui_controls, 'sensitive',
                            Gio.SettingsBindFlags.GET)
-        self.settings.bind('maximizer-release', self.ui_release, 'value', flag)
-        self.settings.bind('maximizer-ceiling', self.ui_ceiling, 'value', flag)
-        self.settings.bind('maximizer-threshold', self.ui_threshold, 'value',
-                           flag)
+        self.settings.bind('release', self.ui_release, 'value', flag)
+        self.settings.bind('ceiling', self.ui_ceiling, 'value', flag)
+        self.settings.bind('threshold', self.ui_threshold, 'value', flag)
 
         # binding ui widgets to gstreamer plugins
 
@@ -119,8 +117,8 @@ class Maximizer():
         self.ui_release.bind_property('value', self.maximizer, 'release', flag)
         self.ui_ceiling.bind_property('value', self.maximizer,
                                       'output-ceiling', flag)
-        self.ui_threshold.bind_property('value', self.maximizer,
-                                        'threshold', flag)
+        self.ui_threshold.bind_property('value', self.maximizer, 'threshold',
+                                        flag)
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]
@@ -169,7 +167,7 @@ class Maximizer():
             self.ui_attenuation_level_label.set_text(str(round(attenuation)))
 
     def reset(self):
-        self.settings.reset('maximizer-state')
-        self.settings.reset('maximizer-release')
-        self.settings.reset('maximizer-ceiling')
-        self.settings.reset('maximizer-threshold')
+        self.settings.reset('state')
+        self.settings.reset('release')
+        self.settings.reset('ceiling')
+        self.settings.reset('threshold')

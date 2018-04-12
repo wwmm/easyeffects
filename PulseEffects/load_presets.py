@@ -12,6 +12,7 @@ from PulseEffects.exciter_presets import ExciterPresets
 from PulseEffects.highpass_presets import HighpassPresets
 from PulseEffects.limiter_presets import LimiterPresets
 from PulseEffects.lowpass_presets import LowpassPresets
+from PulseEffects.maximizer_presets import MaximizerPresets
 from PulseEffects.panorama_presets import PanoramaPresets
 from PulseEffects.reverb_presets import ReverbPresets
 from PulseEffects.stereo_enhancer_presets import StereoEnhancerPresets
@@ -36,21 +37,11 @@ class LoadPresets():
         self.stereo_enhancer_presets = StereoEnhancerPresets(self.config)
         self.stereo_spread_presets = StereoSpreadPresets(self.config)
         self.crossfeed_presets = CrossfeedPresets(self.config)
+        self.maximizer_presets = MaximizerPresets(self.config)
 
     def set_config_path(self, path):
         self.config.clear()
         self.config.read(path)
-
-    def load_maximizer_preset(self, settings, section):
-        enabled = self.config.getboolean(section, 'enabled', fallback=False)
-        release = self.config.getfloat(section, 'release', fallback=3.16)
-        ceiling = self.config.getfloat(section, 'ceiling', fallback=0.0)
-        threshold = self.config.getfloat(section, 'threshold', fallback=0.0)
-
-        settings.set_value('maximizer-state', GLib.Variant('b', enabled))
-        settings.set_value('maximizer-release', GLib.Variant('d', release))
-        settings.set_value('maximizer-ceiling', GLib.Variant('d', ceiling))
-        settings.set_value('maximizer-threshold', GLib.Variant('d', threshold))
 
     def load_output_limiter_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
@@ -141,7 +132,6 @@ class LoadPresets():
         settings.set_value('deesser-f2-q', GLib.Variant('d', f2_q))
 
     def load_sink_inputs_preset(self, settings):
-        self.load_maximizer_preset(settings, 'apps_maximizer')
         self.load_output_limiter_preset(settings, 'apps_output_limiter')
 
     def load_source_outputs_preset(self, settings):
@@ -163,3 +153,4 @@ class LoadPresets():
         self.stereo_enhancer_presets.load()
         self.stereo_spread_presets.load()
         self.crossfeed_presets.load()
+        self.maximizer_presets.load()

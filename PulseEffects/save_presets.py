@@ -11,6 +11,7 @@ from PulseEffects.exciter_presets import ExciterPresets
 from PulseEffects.highpass_presets import HighpassPresets
 from PulseEffects.limiter_presets import LimiterPresets
 from PulseEffects.lowpass_presets import LowpassPresets
+from PulseEffects.maximizer_presets import MaximizerPresets
 from PulseEffects.panorama_presets import PanoramaPresets
 from PulseEffects.reverb_presets import ReverbPresets
 from PulseEffects.stereo_enhancer_presets import StereoEnhancerPresets
@@ -35,20 +36,10 @@ class SavePresets():
         self.stereo_enhancer_presets = StereoEnhancerPresets(self.config)
         self.stereo_spread_presets = StereoSpreadPresets(self.config)
         self.crossfeed_presets = CrossfeedPresets(self.config)
+        self.maximizer_presets = MaximizerPresets(self.config)
 
     def set_output_path(self, path):
         self.output_file = open(path, 'w')
-
-    def save_maximizer_preset(self, settings, section):
-        enabled = settings.get_value('maximizer-state')
-        release = settings.get_value('maximizer-release')
-        ceiling = settings.get_value('maximizer-ceiling')
-        threshold = settings.get_value('maximizer-threshold')
-
-        self.config[section] = {'enabled': str(enabled),
-                                'release': str(release),
-                                'ceiling': str(ceiling),
-                                'threshold': str(threshold)}
 
     def save_output_limiter_preset(self, settings, section):
         enabled = settings.get_value('output-limiter-state')
@@ -129,7 +120,6 @@ class SavePresets():
                                 'f2_q': str(f2_q)}
 
     def save_sink_inputs_preset(self, settings):
-        self.save_maximizer_preset(settings, 'apps_maximizer')
         self.save_output_limiter_preset(settings, 'apps_output_limiter')
 
     def save_source_outputs_preset(self, settings):
@@ -155,3 +145,4 @@ class SavePresets():
         self.stereo_enhancer_presets.save()
         self.stereo_spread_presets.save()
         self.crossfeed_presets.save()
+        self.maximizer_presets.save()
