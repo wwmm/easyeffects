@@ -14,8 +14,8 @@ Gst.init(None)
 
 class Crossfeed():
 
-    def __init__(self, settings):
-        self.settings = settings
+    def __init__(self):
+        self.settings = None
         self.module_path = os.path.dirname(__file__)
 
         self.log = logging.getLogger('PulseEffects')
@@ -87,13 +87,12 @@ class Crossfeed():
 
         flag = Gio.SettingsBindFlags.DEFAULT
 
-        self.settings.bind('crossfeed-state', self.ui_enable, 'active', flag)
-        self.settings.bind('crossfeed-state',
-                           self.ui_img_state, 'visible', flag)
-        self.settings.bind('crossfeed-state', self.ui_controls, 'sensitive',
+        self.settings.bind('state', self.ui_enable, 'active', flag)
+        self.settings.bind('state', self.ui_img_state, 'visible', flag)
+        self.settings.bind('state', self.ui_controls, 'sensitive',
                            Gio.SettingsBindFlags.GET)
-        self.settings.bind('crossfeed-fcut', self.ui_cutoff, 'value', flag)
-        self.settings.bind('crossfeed-feed', self.ui_feed, 'value', flag)
+        self.settings.bind('fcut', self.ui_cutoff, 'value', flag)
+        self.settings.bind('feed', self.ui_feed, 'value', flag)
 
         # binding ui widgets to gstreamer plugins
 
@@ -113,13 +112,13 @@ class Crossfeed():
         obj_id = Gtk.Buildable.get_name(obj)
 
         if obj_id == 'cmoy':
-            value = self.settings.get_value('crossfeed-cmoy')
+            value = self.settings.get_value('cmoy')
             self.apply_crossfeed_preset(value)
         elif obj_id == 'default':
-            value = self.settings.get_value('crossfeed-default')
+            value = self.settings.get_value('default')
             self.apply_crossfeed_preset(value)
         elif obj_id == 'jmeier':
-            value = self.settings.get_value('crossfeed-jmeier')
+            value = self.settings.get_value('jmeier')
             self.apply_crossfeed_preset(value)
 
     def ui_update_level(self, widgets, peak):
@@ -161,9 +160,9 @@ class Crossfeed():
         self.ui_update_level(widgets, peak)
 
     def reset(self):
-        self.settings.reset('crossfeed-state')
-        self.settings.reset('crossfeed-fcut')
-        self.settings.reset('crossfeed-feed')
-        self.settings.reset('crossfeed-default')
-        self.settings.reset('crossfeed-cmoy')
-        self.settings.reset('crossfeed-jmeier')
+        self.settings.reset('state')
+        self.settings.reset('fcut')
+        self.settings.reset('feed')
+        self.settings.reset('default')
+        self.settings.reset('cmoy')
+        self.settings.reset('jmeier')

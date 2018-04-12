@@ -4,6 +4,7 @@ import configparser
 
 from PulseEffects.bass_enhancer_presets import BassEnhancerPresets
 from PulseEffects.compressor_presets import CompressorPresets
+from PulseEffects.crossfeed_presets import CrossfeedPresets
 from PulseEffects.delay_presets import DelayPresets
 from PulseEffects.equalizer_presets import EqualizerPresets
 from PulseEffects.exciter_presets import ExciterPresets
@@ -33,18 +34,10 @@ class SavePresets():
         self.delay_presets = DelayPresets(self.config)
         self.stereo_enhancer_presets = StereoEnhancerPresets(self.config)
         self.stereo_spread_presets = StereoSpreadPresets(self.config)
+        self.crossfeed_presets = CrossfeedPresets(self.config)
 
     def set_output_path(self, path):
         self.output_file = open(path, 'w')
-
-    def save_crossfeed_preset(self, settings, section):
-        enabled = settings.get_value('crossfeed-state')
-        fcut = settings.get_value('crossfeed-fcut')
-        feed = settings.get_value('crossfeed-feed')
-
-        self.config[section] = {'enabled': str(enabled),
-                                'fcut': str(fcut),
-                                'feed': str(feed)}
 
     def save_maximizer_preset(self, settings, section):
         enabled = settings.get_value('maximizer-state')
@@ -136,7 +129,6 @@ class SavePresets():
                                 'f2_q': str(f2_q)}
 
     def save_sink_inputs_preset(self, settings):
-        self.save_crossfeed_preset(settings, 'apps_crossfeed')
         self.save_maximizer_preset(settings, 'apps_maximizer')
         self.save_output_limiter_preset(settings, 'apps_output_limiter')
 
@@ -162,3 +154,4 @@ class SavePresets():
         self.delay_presets.save()
         self.stereo_enhancer_presets.save()
         self.stereo_spread_presets.save()
+        self.crossfeed_presets.save()

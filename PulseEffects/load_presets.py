@@ -5,6 +5,7 @@ import configparser
 from gi.repository import GLib
 from PulseEffects.bass_enhancer_presets import BassEnhancerPresets
 from PulseEffects.compressor_presets import CompressorPresets
+from PulseEffects.crossfeed_presets import CrossfeedPresets
 from PulseEffects.delay_presets import DelayPresets
 from PulseEffects.equalizer_presets import EqualizerPresets
 from PulseEffects.exciter_presets import ExciterPresets
@@ -34,19 +35,11 @@ class LoadPresets():
         self.delay_presets = DelayPresets(self.config)
         self.stereo_enhancer_presets = StereoEnhancerPresets(self.config)
         self.stereo_spread_presets = StereoSpreadPresets(self.config)
+        self.crossfeed_presets = CrossfeedPresets(self.config)
 
     def set_config_path(self, path):
         self.config.clear()
         self.config.read(path)
-
-    def load_crossfeed_preset(self, settings, section):
-        enabled = self.config.getboolean(section, 'enabled', fallback=False)
-        fcut = self.config.getint(section, 'fcut', fallback=700)
-        feed = self.config.getfloat(section, 'feed', fallback=4.5)
-
-        settings.set_value('crossfeed-state', GLib.Variant('b', enabled))
-        settings.set_value('crossfeed-fcut', GLib.Variant('i', fcut))
-        settings.set_value('crossfeed-feed', GLib.Variant('d', feed))
 
     def load_maximizer_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
@@ -148,7 +141,6 @@ class LoadPresets():
         settings.set_value('deesser-f2-q', GLib.Variant('d', f2_q))
 
     def load_sink_inputs_preset(self, settings):
-        self.load_crossfeed_preset(settings, 'apps_crossfeed')
         self.load_maximizer_preset(settings, 'apps_maximizer')
         self.load_output_limiter_preset(settings, 'apps_output_limiter')
 
@@ -170,3 +162,4 @@ class LoadPresets():
         self.delay_presets.load()
         self.stereo_enhancer_presets.load()
         self.stereo_spread_presets.load()
+        self.crossfeed_presets.load()
