@@ -2,49 +2,6 @@
 <schemalist>
     <schema id="com.github.wwmm.pulseeffects.sinkinputs" path="/com/github/wwmm/pulseeffects/sinkinputs/">
 
-        <key name="stereo-enhancer-state" type="b">
-          <default>false</default>
-        </key>
-        <key name="stereo-enhancer-input-gain" type="d">
-          <default>0</default>
-        </key>
-        <key name="stereo-enhancer-output-gain" type="d">
-          <default>0</default>
-        </key>
-        <key name="stereo-enhancer-left-invert-phase" type="b">
-          <default>false</default>
-        </key>
-        <key name="stereo-enhancer-left-balance" type="d">
-          <default>-1</default>
-        </key>
-        <key name="stereo-enhancer-left-delay" type="d">
-          <default>2.05</default>
-        </key>
-        <key name="stereo-enhancer-left-gain" type="d">
-          <default>0</default>
-        </key>
-        <key name="stereo-enhancer-right-invert-phase" type="b">
-          <default>false</default>
-        </key>
-        <key name="stereo-enhancer-right-balance" type="d">
-          <default>1</default>
-        </key>
-        <key name="stereo-enhancer-right-delay" type="d">
-          <default>2.12</default>
-        </key>
-        <key name="stereo-enhancer-right-gain" type="d">
-          <default>0</default>
-        </key>
-        <key name="stereo-enhancer-middle-invert-phase" type="b">
-          <default>false</default>
-        </key>
-        <key name="stereo-enhancer-middle-source" type="i">
-          <default>2</default>
-        </key>
-        <key name="stereo-enhancer-side-gain" type="d">
-          <default>0</default>
-        </key>
-
         <key name="stereo-spread-state" type="b">
           <default>false</default>
         </key>

@@ -14,8 +14,8 @@ Gst.init(None)
 
 class StereoEnhancer():
 
-    def __init__(self, settings):
-        self.settings = settings
+    def __init__(self):
+        self.settings = None
         self.module_path = os.path.dirname(__file__)
 
         self.log = logging.getLogger('PulseEffects')
@@ -126,43 +126,33 @@ class StereoEnhancer():
 
         flag = Gio.SettingsBindFlags.DEFAULT
 
-        self.settings.bind('stereo-enhancer-state', self.ui_enable, 'active',
+        self.settings.bind('state', self.ui_enable, 'active', flag)
+        self.settings.bind('state', self.ui_img_state, 'visible', flag)
+        self.settings.bind('state', self.ui_controls, 'sensitive',
+                           Gio.SettingsBindFlags.GET)
+
+        self.settings.bind('input-gain', self.ui_input_gain, 'value', flag)
+        self.settings.bind('output-gain', self.ui_output_gain, 'value', flag)
+
+        self.settings.bind('left-invert-phase', self.ui_left_invert_phase,
+                           'active', flag)
+        self.settings.bind('left-balance', self.ui_left_balance, 'value', flag)
+        self.settings.bind('left-delay', self.ui_left_delay, 'value', flag)
+        self.settings.bind('left-gain', self.ui_left_gain, 'value', flag)
+
+        self.settings.bind('right-invert-phase', self.ui_right_invert_phase,
+                           'active', flag)
+        self.settings.bind('right-balance', self.ui_right_balance, 'value',
                            flag)
-        self.settings.bind('stereo-enhancer-state', self.ui_img_state,
-                           'visible', flag)
-        self.settings.bind('stereo-enhancer-state', self.ui_controls,
-                           'sensitive', Gio.SettingsBindFlags.GET)
+        self.settings.bind('right-delay', self.ui_right_delay, 'value', flag)
+        self.settings.bind('right-gain', self.ui_right_gain, 'value', flag)
 
-        self.settings.bind('stereo-enhancer-input-gain', self.ui_input_gain,
-                           'value', flag)
-        self.settings.bind('stereo-enhancer-output-gain', self.ui_output_gain,
-                           'value', flag)
+        self.settings.bind('middle-invert-phase', self.ui_middle_invert_phase,
+                           'active', flag)
+        self.settings.bind('middle-source', self.ui_middle_source, 'active',
+                           flag)
 
-        self.settings.bind('stereo-enhancer-left-invert-phase',
-                           self.ui_left_invert_phase, 'active', flag)
-        self.settings.bind('stereo-enhancer-left-balance',
-                           self.ui_left_balance, 'value', flag)
-        self.settings.bind('stereo-enhancer-left-delay',
-                           self.ui_left_delay, 'value', flag)
-        self.settings.bind('stereo-enhancer-left-gain',
-                           self.ui_left_gain, 'value', flag)
-
-        self.settings.bind('stereo-enhancer-right-invert-phase',
-                           self.ui_right_invert_phase, 'active', flag)
-        self.settings.bind('stereo-enhancer-right-balance',
-                           self.ui_right_balance, 'value', flag)
-        self.settings.bind('stereo-enhancer-right-delay',
-                           self.ui_right_delay, 'value', flag)
-        self.settings.bind('stereo-enhancer-right-gain',
-                           self.ui_right_gain, 'value', flag)
-
-        self.settings.bind('stereo-enhancer-middle-invert-phase',
-                           self.ui_middle_invert_phase, 'active', flag)
-        self.settings.bind('stereo-enhancer-middle-source',
-                           self.ui_middle_source, 'active', flag)
-
-        self.settings.bind('stereo-enhancer-side-gain',
-                           self.ui_side_gain, 'value', flag)
+        self.settings.bind('side-gain', self.ui_side_gain, 'value', flag)
 
         # binding ui widgets to gstreamer plugins
 
@@ -267,17 +257,17 @@ class StereoEnhancer():
         self.ui_update_level(widgets, peak)
 
     def reset(self):
-        self.settings.reset('stereo-enhancer-state')
-        self.settings.reset('stereo-enhancer-input-gain')
-        self.settings.reset('stereo-enhancer-output-gain')
-        self.settings.reset('stereo-enhancer-left-invert-phase')
-        self.settings.reset('stereo-enhancer-left-balance')
-        self.settings.reset('stereo-enhancer-left-delay')
-        self.settings.reset('stereo-enhancer-left-gain')
-        self.settings.reset('stereo-enhancer-right-invert-phase')
-        self.settings.reset('stereo-enhancer-right-balance')
-        self.settings.reset('stereo-enhancer-right-delay')
-        self.settings.reset('stereo-enhancer-right-gain')
-        self.settings.reset('stereo-enhancer-middle-invert-phase')
-        self.settings.reset('stereo-enhancer-middle-source')
-        self.settings.reset('stereo-enhancer-side-gain')
+        self.settings.reset('state')
+        self.settings.reset('input-gain')
+        self.settings.reset('output-gain')
+        self.settings.reset('left-invert-phase')
+        self.settings.reset('left-balance')
+        self.settings.reset('left-delay')
+        self.settings.reset('left-gain')
+        self.settings.reset('right-invert-phase')
+        self.settings.reset('right-balance')
+        self.settings.reset('right-delay')
+        self.settings.reset('right-gain')
+        self.settings.reset('middle-invert-phase')
+        self.settings.reset('middle-source')
+        self.settings.reset('side-gain')

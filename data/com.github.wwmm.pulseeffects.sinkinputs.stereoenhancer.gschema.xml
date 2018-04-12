@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="com.github.wwmm.pulseeffects.sinkinputs.stereoenhancer" path="/com/github/wwmm/pulseeffects/sinkinputs/stereoenhancer/">
+        <key name="state" type="b">
+          <default>false</default>
+        </key>
+        <key name="input-gain" type="d">
+          <default>0</default>
+        </key>
+        <key name="output-gain" type="d">
+          <default>0</default>
+        </key>
+        <key name="left-invert-phase" type="b">
+          <default>false</default>
+        </key>
+        <key name="left-balance" type="d">
+          <default>-1</default>
+        </key>
+        <key name="left-delay" type="d">
+          <default>2.05</default>
+        </key>
+        <key name="left-gain" type="d">
+          <default>0</default>
+        </key>
+        <key name="right-invert-phase" type="b">
+          <default>false</default>
+        </key>
+        <key name="right-balance" type="d">
+          <default>1</default>
+        </key>
+        <key name="right-delay" type="d">
+          <default>2.12</default>
+        </key>
+        <key name="right-gain" type="d">
+          <default>0</default>
+        </key>
+        <key name="middle-invert-phase" type="b">
+          <default>false</default>
+        </key>
+        <key name="middle-source" type="i">
+          <default>2</default>
+        </key>
+        <key name="side-gain" type="d">
+          <default>0</default>
+        </key>
+    </schema>
+</schemalist>

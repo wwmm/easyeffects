@@ -12,6 +12,7 @@ from PulseEffects.limiter_presets import LimiterPresets
 from PulseEffects.lowpass_presets import LowpassPresets
 from PulseEffects.panorama_presets import PanoramaPresets
 from PulseEffects.reverb_presets import ReverbPresets
+from PulseEffects.stereo_enhancer_presets import StereoEnhancerPresets
 
 
 class SavePresets():
@@ -29,48 +30,10 @@ class SavePresets():
         self.exciter_presets = ExciterPresets(self.config)
         self.bass_enhancer_presets = BassEnhancerPresets(self.config)
         self.delay_presets = DelayPresets(self.config)
+        self.stereo_enhancer_presets = StereoEnhancerPresets(self.config)
 
     def set_output_path(self, path):
         self.output_file = open(path, 'w')
-
-    def save_stereo_enhancer_preset(self, settings, section):
-        enabled = settings.get_value('stereo-enhancer-state')
-        input_gain = settings.get_value('stereo-enhancer-input-gain')
-        output_gain = settings.get_value('stereo-enhancer-output-gain')
-
-        left_invert_phase = settings.get_value(
-            'stereo-enhancer-left-invert-phase')
-        left_balance = settings.get_value('stereo-enhancer-left-balance')
-        left_delay = settings.get_value('stereo-enhancer-left-delay')
-        left_gain = settings.get_value('stereo-enhancer-left-gain')
-
-        right_invert_phase = settings.get_value(
-            'stereo-enhancer-right-invert-phase')
-        right_balance = settings.get_value('stereo-enhancer-right-balance')
-        right_delay = settings.get_value('stereo-enhancer-right-delay')
-        right_gain = settings.get_value('stereo-enhancer-right-gain')
-
-        middle_invert_phase = settings.get_value(
-            'stereo-enhancer-middle-invert-phase')
-        middle_source = settings.get_value('stereo-enhancer-middle-source')
-
-        side_gain = settings.get_value('stereo-enhancer-side-gain')
-
-        self.config[section] = {'enabled': str(enabled),
-                                'input_gain': str(input_gain),
-                                'output_gain': str(output_gain),
-                                'left_invert_phase': str(left_invert_phase),
-                                'left_balance': str(left_balance),
-                                'left_delay': str(left_delay),
-                                'left_gain': str(left_gain),
-                                'right_invert_phase': str(right_invert_phase),
-                                'right_balance': str(right_balance),
-                                'right_delay': str(right_delay),
-                                'right_gain': str(right_gain),
-                                'middle_invert_phase':
-                                str(middle_invert_phase),
-                                'middle_source': str(middle_source),
-                                'side_gain': str(side_gain)}
 
     def save_stereo_spread_preset(self, settings, section):
         enabled = settings.get_value('stereo-spread-state')
@@ -193,7 +156,6 @@ class SavePresets():
                                 'f2_q': str(f2_q)}
 
     def save_sink_inputs_preset(self, settings):
-        self.save_stereo_enhancer_preset(settings, 'apps_stereo_enhancer')
         self.save_stereo_spread_preset(settings, 'apps_stereo_spread')
         self.save_crossfeed_preset(settings, 'apps_crossfeed')
         self.save_maximizer_preset(settings, 'apps_maximizer')
@@ -219,3 +181,4 @@ class SavePresets():
         self.exciter_presets.save()
         self.bass_enhancer_presets.save()
         self.delay_presets.save()
+        self.stereo_enhancer_presets.save()

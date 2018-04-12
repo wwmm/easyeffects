@@ -136,8 +136,7 @@ class Delay():
         self.settings.bind('cm-l', self.ui_cm_l, 'value', flag)
         self.settings.bind('m-r', self.ui_m_r, 'value', flag)
         self.settings.bind('cm-r', self.ui_cm_r, 'value', flag)
-        self.settings.bind('temperature', self.ui_temperature, 'value',
-                           flag)
+        self.settings.bind('temperature', self.ui_temperature, 'value', flag)
 
         # binding ui widgets to gstreamer plugins
 
