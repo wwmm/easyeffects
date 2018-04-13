@@ -658,6 +658,8 @@ class Application(Gtk.Application):
         self.settings.reset('spectrum-n-points')
         self.settings.reset('use-dark-theme')
         self.settings.reset('enable-all-apps')
+        self.settings.reset('use-default-sink')
+        self.settings.reset('use-default-source')
 
         self.init_buffer_time()
         self.init_latency_time()
