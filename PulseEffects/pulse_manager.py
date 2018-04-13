@@ -731,7 +731,7 @@ class PulseManager(GObject.GObject):
 
         return stream
 
-    def remove_stream(self, stream):
+    def disconnect_stream(self, stream):
         p.pa_stream_disconnect(stream)
 
     def subscribe_cb(self, context, event_value, idx, user_data):

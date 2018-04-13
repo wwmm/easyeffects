@@ -348,16 +348,19 @@ class SinkInputEffects(EffectsBase):
 
             if connected:
                 if not corked and key not in self.streams:
-                    print('added: ' + key)
                     self.streams[key] = self.pm.create_stream(source_name,
                                                               app_idx,
                                                               app_name)
                 elif corked and key in self.streams:
                     print('connected and corked removed: ' + key)
-                    self.pm.remove_stream(self.streams[key])
+
+                    print(self.streams)
+
+                    self.pm.disconnect_stream(self.streams[key])
+
+                    del self.streams[key]
             else:
                 if key in self.streams:
-
                     del self.streams[key]
 
     def on_app_removed(self, obj, idx):
