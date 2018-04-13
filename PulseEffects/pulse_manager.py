@@ -84,8 +84,6 @@ class PulseManager(GObject.GObject):
 
         self.max_volume = p.PA_VOLUME_NORM
 
-        self.streams = dict()
-
         self.log = logging.getLogger('PulseEffects')
 
         self.log_tag = 'PM - '
@@ -508,17 +506,8 @@ class PulseManager(GObject.GObject):
                              'latency': latency, 'corked': corked}
 
                 if user_data == 1:
-                    if str(idx) not in self.streams and connected:
-                        self.create_stream(idx, app_name)
-
                     GLib.idle_add(self.emit, 'sink_input_added', new_input)
                 elif user_data == 2:
-                    if str(idx) in self.streams:
-                        if not connected:
-                            del self.streams[str(idx)]
-                    elif connected:
-                        self.create_stream(idx, app_name)
-
                     GLib.idle_add(self.emit, 'sink_input_changed', new_input)
 
     def source_output_info_cb(self, context, info, eol, user_data):
@@ -661,27 +650,6 @@ class PulseManager(GObject.GObject):
         p.pa_context_set_source_output_mute(self.ctx, idx, mute_state,
                                             self.ctx_success_cb, None)
 
-    def create_stream(self, idx, app_name):
-        ss = p.pa_sample_spec()
-        ss.channels = 1
-        ss.format = p.PA_SAMPLE_FLOAT32LE
-        ss.rate = 10
-
-        stream_name = app_name + ' - Level Meter Stream'
-
-        stream = p.pa_stream_new(self.ctx, stream_name.encode('utf-8'),
-                                 p.get_ref(ss), None)
-
-        p.pa_stream_set_state_callback(stream, self.stream_state_cb, idx)
-        p.pa_stream_set_monitor_stream(stream, idx)
-        p.pa_stream_set_read_callback(stream, self.stream_read_cb, idx)
-
-        flags = p.PA_STREAM_PEAK_DETECT | p.PA_STREAM_DONT_MOVE
-
-        p.pa_stream_connect_record(stream, None, None, flags)
-
-        self.streams[str(idx)] = stream
-
     def stream_state_cb(self, stream, idx):
         state = p.pa_stream_get_state(stream)
 
@@ -691,14 +659,18 @@ class PulseManager(GObject.GObject):
         if state == p.PA_STREAM_FAILED:
             p.pa_stream_unref(stream)
         elif state == p.PA_STREAM_READY:
-            self.log.debug(self.log_tag + 'created stream for sink input ' +
-                           str(idx))
+            self.log.debug(self.log_tag + 'created volume meter stream for ' +
+                           'sink input ' + str(idx))
         elif state == p.PA_STREAM_TERMINATED:
-            self.log.debug(self.log_tag + 'stream for sink input ' + str(idx) +
-                           ' was terminated')
+            self.log.debug(self.log_tag + 'volume meter stream for sink ' +
+                           'input ' + str(idx) + ' was terminated')
+
+            p.pa_stream_unref(stream)
         elif state == p.PA_STREAM_UNCONNECTED:
-            self.log.debug(self.log_tag + 'stream for sink input ' + str(idx) +
-                           ' was unconnected')
+            self.log.debug(self.log_tag + 'volume meter stream for sink ' +
+                           'input ' + str(idx) + ' was unconnected')
+
+            p.pa_stream_unref(stream)
 
     def stream_read_cb(self, stream, length, idx):
         data = p.get_c_void_p_ref()
@@ -735,6 +707,33 @@ class PulseManager(GObject.GObject):
 
         GLib.idle_add(self.emit, 'sink_input_level_changed', idx, v)
 
+    def create_stream(self, source_name, app_idx, app_name):
+        ss = p.pa_sample_spec()
+        ss.channels = 1
+        ss.format = p.PA_SAMPLE_FLOAT32LE
+        ss.rate = 10
+
+        stream_name = app_name + ' - Level Meter Stream'
+
+        stream = p.pa_stream_new(self.ctx, stream_name.encode('utf-8'),
+                                 p.get_ref(ss), None)
+
+        p.pa_stream_set_state_callback(stream, self.stream_state_cb, app_idx)
+
+        if app_idx != -1:
+            p.pa_stream_set_monitor_stream(stream, app_idx)
+
+        p.pa_stream_set_read_callback(stream, self.stream_read_cb, app_idx)
+
+        flags = p.PA_STREAM_PEAK_DETECT | p.PA_STREAM_DONT_MOVE
+
+        p.pa_stream_connect_record(stream, source_name, None, flags)
+
+        return stream
+
+    def remove_stream(self, stream):
+        p.pa_stream_disconnect(stream)
+
     def subscribe_cb(self, context, event_value, idx, user_data):
         if not idx:
             idx = 0
@@ -753,9 +752,6 @@ class PulseManager(GObject.GObject):
                                                  self.sink_input_info_cb,
                                                  2)  # 2 for changes
             elif event_type == p.PA_SUBSCRIPTION_EVENT_REMOVE:
-                if str(idx) in self.streams:
-                    del self.streams[str(idx)]
-
                 GLib.idle_add(self.emit, 'sink_input_removed', idx)
         elif event_facility == p.PA_SUBSCRIPTION_EVENT_SOURCE_OUTPUT:
             event_type = event_value & p.PA_SUBSCRIPTION_EVENT_TYPE_MASK

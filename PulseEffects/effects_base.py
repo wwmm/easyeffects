@@ -32,6 +32,9 @@ class EffectsBase(PipelineBase):
         # state tells if the app wants the pipeline to be running
         self.apps_list = []
 
+        # app volume meter streams
+        self.streams = dict()
+
         self.limiter = Limiter()
         self.compressor = Compressor()
         self.highpass = Highpass()
@@ -153,8 +156,8 @@ class EffectsBase(PipelineBase):
 
         # there is no point in showing it for source outputs
         # their class disables the level
-        if self.disable_app_level_meter:
-            getattr(self, 'app_level_' + str(idx)).destroy()
+        # if self.disable_app_level_meter:
+        #     getattr(self, 'app_level_' + str(idx)).destroy()
 
         getattr(self, 'app_name_' + str(idx)).set_text(app_name)
         getattr(self, 'app_format_' + str(idx)).set_text(sample_format)

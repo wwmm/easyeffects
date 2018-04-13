@@ -319,6 +319,55 @@ class SinkInputEffects(EffectsBase):
 
         self.pm.set_sink_input_mute(idx, state)
 
+    def on_app_added(self, obj, parameters):
+        EffectsBase.on_app_added(self, obj, parameters)
+
+        if self.there_is_window:
+            source_name = 'PulseEffects_apps.monitor'.encode('utf-8')
+            app_idx = parameters['index']
+            app_name = parameters['name']
+            connected = parameters['connected']
+            corked = parameters['corked']
+
+            if connected and not corked:
+                self.streams[str(app_idx)] = self.pm.create_stream(source_name,
+                                                                   app_idx,
+                                                                   app_name)
+
+    def on_app_changed(self, obj, parameters):
+        EffectsBase.on_app_changed(self, obj, parameters)
+
+        if self.there_is_window:
+            source_name = 'PulseEffects_apps.monitor'.encode('utf-8')
+            app_idx = parameters['index']
+            app_name = parameters['name']
+            connected = parameters['connected']
+            corked = parameters['corked']
+
+            key = str(app_idx)
+
+            if connected:
+                if not corked and key not in self.streams:
+                    print('added: ' + key)
+                    self.streams[key] = self.pm.create_stream(source_name,
+                                                              app_idx,
+                                                              app_name)
+                elif corked and key in self.streams:
+                    print('connected and corked removed: ' + key)
+                    self.pm.remove_stream(self.streams[key])
+            else:
+                if key in self.streams:
+
+                    del self.streams[key]
+
+    def on_app_removed(self, obj, idx):
+        EffectsBase.on_app_removed(self, obj, idx)
+
+        key = str(idx)
+
+        if key in self.streams:
+            del self.streams[key]
+
     def post_messages(self, state):
         EffectsBase.post_messages(self, state)
 
