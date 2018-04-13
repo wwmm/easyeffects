@@ -212,8 +212,6 @@ class Application(Gtk.Application):
         self.presets.load_menu()
 
         self.ui_initialized = True
-        self.sie.there_is_window = True
-        self.soe.there_is_window = True
 
     def on_window_destroy(self, window):
         self.ui_initialized = False
@@ -232,6 +230,8 @@ class Application(Gtk.Application):
         self.window.present()
 
         self.window_activated = True
+        self.sie.there_is_window = True
+        self.soe.there_is_window = True
 
         self.pm.find_sink_inputs()
         self.pm.find_source_outputs()
