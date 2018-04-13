@@ -95,9 +95,11 @@ class PulseManager(GObject.GObject):
                               'PulseAudio Volume Control', 'Screenshot',
                               'speech-dispatcher']
 
-        self.media_blacklist = ['pulsesink probe', 'bell-window-system',
-                                'audio-volume-change', 'Peak detect',
-                                'screen-capture']
+        self.media_name_blacklist = ['pulsesink probe', 'bell-window-system',
+                                     'audio-volume-change', 'Peak detect',
+                                     'screen-capture']
+
+        self.media_role_blacklist = ['event']
 
         self.wrap_callbacks()
 
@@ -451,6 +453,7 @@ class PulseManager(GObject.GObject):
 
             app_name = p.pa_proplist_gets(proplist, b'application.name')
             media_name = p.pa_proplist_gets(proplist, b'media.name')
+            media_role = p.pa_proplist_gets(proplist, b'media.role')
             icon_name = p.pa_proplist_gets(proplist, b'application.icon_name')
 
             if not app_name:
@@ -463,8 +466,14 @@ class PulseManager(GObject.GObject):
             else:
                 media_name = media_name.decode()
 
+            if not media_role:
+                media_role = ''
+            else:
+                media_role = media_role.decode()
+
             if (app_name not in self.app_blacklist and
-                    media_name not in self.media_blacklist):
+                    media_name not in self.media_name_blacklist and
+                    media_role not in self.media_role_blacklist):
                 if not icon_name:
                     icon_name = 'audio-x-generic-symbolic'
                 else:
@@ -517,6 +526,7 @@ class PulseManager(GObject.GObject):
 
             app_name = p.pa_proplist_gets(proplist, b'application.name')
             media_name = p.pa_proplist_gets(proplist, b'media.name')
+            media_role = p.pa_proplist_gets(proplist, b'media.role')
             icon_name = p.pa_proplist_gets(proplist, b'application.icon_name')
 
             if not app_name:
@@ -529,8 +539,14 @@ class PulseManager(GObject.GObject):
             else:
                 media_name = media_name.decode()
 
+            if not media_role:
+                media_role = ''
+            else:
+                media_role = media_role.decode()
+
             if (app_name not in self.app_blacklist and
-                    media_name not in self.media_blacklist):
+                    media_name not in self.media_name_blacklist and
+                    media_role not in self.media_role_blacklist):
                 if not icon_name:
                     icon_name = 'audio-x-generic-symbolic'
                 else:
@@ -658,7 +674,7 @@ class PulseManager(GObject.GObject):
 
         if state == p.PA_STREAM_FAILED:
             self.log.debug(self.log_tag + 'volume meter stream for app ' +
-                           str(idx) + ' has failed')
+                           str(idx) + ' has failed. Disconnecting it.')
 
             p.pa_stream_disconnect(stream)
             p.pa_stream_unref(stream)
