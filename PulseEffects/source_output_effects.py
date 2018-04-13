@@ -46,6 +46,7 @@ class SourceOutputEffects(EffectsBase):
         self.pm.connect('source_output_added', self.on_app_added)
         self.pm.connect('source_output_changed', self.on_app_changed)
         self.pm.connect('source_output_removed', self.on_app_removed)
+        self.pm.connect('stream_level_changed', self.on_stream_level_changed)
 
         self.pitch = Pitch()
         self.gate = Gate()
@@ -226,6 +227,66 @@ class SourceOutputEffects(EffectsBase):
             icon.set_from_icon_name(icon_name, Gtk.IconSize.BUTTON)
 
         self.pm.set_source_output_mute(idx, state)
+
+    def on_app_added(self, obj, parameters):
+        EffectsBase.on_app_added(self, obj, parameters)
+
+        if self.there_is_window:
+            source_name = 'PulseEffects_mic.monitor'.encode('utf-8')
+            app_idx = parameters['index']
+            monitor_idx = -1
+            app_name = parameters['name']
+            connected = parameters['connected']
+            corked = parameters['corked']
+
+            if connected and not corked:
+                self.streams[str(app_idx)] = self.pm.create_stream(source_name,
+                                                                   app_idx,
+                                                                   app_name,
+                                                                   monitor_idx)
+
+    def on_app_changed(self, obj, parameters):
+        EffectsBase.on_app_changed(self, obj, parameters)
+
+        if self.there_is_window:
+            source_name = 'PulseEffects_apps.monitor'.encode('utf-8')
+            app_idx = parameters['index']
+            monitor_idx = -1
+            app_name = parameters['name']
+            connected = parameters['connected']
+            corked = parameters['corked']
+
+            key = str(app_idx)
+
+            if connected:
+                if not corked and key not in self.streams:
+                    self.streams[key] = self.pm.create_stream(source_name,
+                                                              app_idx,
+                                                              app_name,
+                                                              monitor_idx)
+                elif corked and key in self.streams:
+                    self.pm.disconnect_stream(self.streams[key])
+
+                    del self.streams[key]
+            else:
+                if key in self.streams:
+                    self.pm.disconnect_stream(self.streams[key])
+
+                    del self.streams[key]
+
+    def on_app_removed(self, obj, idx):
+        EffectsBase.on_app_removed(self, obj, idx)
+
+        key = str(idx)
+
+        if key in self.streams:
+            self.pm.disconnect_stream(self.streams[key])
+
+            del self.streams[key]
+
+    def disconnect_streams(self):
+        for k in self.streams:
+            self.pm.disconnect_stream(self.streams[k])
 
     def post_messages(self, state):
         EffectsBase.post_messages(self, state)

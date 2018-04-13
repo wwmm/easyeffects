@@ -219,6 +219,9 @@ class Application(Gtk.Application):
         self.sie.there_is_window = False
         self.soe.there_is_window = False
 
+        self.sie.disconnect_streams()
+        self.soe.disconnect_streams()
+
         if self.running_as_service:
             self.sie.post_messages(False)
             self.soe.post_messages(False)

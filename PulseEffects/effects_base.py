@@ -366,7 +366,7 @@ class EffectsBase(PipelineBase):
 
                 break
 
-    def on_app_level_changed(self, obj, idx, level):
+    def on_stream_level_changed(self, obj, idx, level):
         if hasattr(self, 'app_level_' + str(idx)):
             getattr(self, 'app_level_' + str(idx)).set_value(level)
 

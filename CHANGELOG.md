@@ -7,12 +7,16 @@
 selected devices are not remembered when PulseEffects is closed.
 - Debug mode: execute PulseEffects doing "PULSEEFFECTS_DEBUG=1 pulseeffects" to
 see debug messages.
+- Level meter for recording applications
 
 ### Fixed
 - too many decimal places in the frequency and intensity shown in the spectrum
 window when hovering the mouse
 - Using Gtk.FileChooserNative in the import presets window. Now presets import
 will work in sandboxed environments like flatpak
+- Level meter streams are not created when running as service with the window
+closed. These streams are put in the paused together with the corresponding
+application. Both changes should help save cpu.
 
 ## [3.2.1]
 ### Added

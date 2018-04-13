@@ -24,8 +24,8 @@ class PulseManager(GObject.GObject):
         'source_added': (GObject.SignalFlags.RUN_FIRST, None, (object,)),
         'source_changed': (GObject.SignalFlags.RUN_FIRST, None, (object,)),
         'source_removed': (GObject.SignalFlags.RUN_FIRST, None, (int,)),
-        'sink_input_level_changed': (GObject.SignalFlags.RUN_FIRST, None,
-                                     (int, float)),
+        'stream_level_changed': (GObject.SignalFlags.RUN_FIRST, None,
+                                 (int, float)),
         'new_default_sink': (GObject.SignalFlags.RUN_FIRST, None, (object,)),
         'new_default_source': (GObject.SignalFlags.RUN_FIRST, None, (object,))
     }
@@ -660,15 +660,15 @@ class PulseManager(GObject.GObject):
             p.pa_stream_unref(stream)
         elif state == p.PA_STREAM_READY:
             self.log.debug(self.log_tag + 'created volume meter stream for ' +
-                           'sink input ' + str(idx))
+                           'app ' + str(idx))
         elif state == p.PA_STREAM_TERMINATED:
-            self.log.debug(self.log_tag + 'volume meter stream for sink ' +
-                           'input ' + str(idx) + ' was terminated')
+            self.log.debug(self.log_tag + 'volume meter stream for app ' +
+                           str(idx) + ' was terminated')
 
             p.pa_stream_unref(stream)
         elif state == p.PA_STREAM_UNCONNECTED:
-            self.log.debug(self.log_tag + 'volume meter stream for sink ' +
-                           'input ' + str(idx) + ' was unconnected')
+            self.log.debug(self.log_tag + 'volume meter stream for app ' +
+                           str(idx) + ' was unconnected')
 
             p.pa_stream_unref(stream)
 
@@ -705,9 +705,9 @@ class PulseManager(GObject.GObject):
         if not idx:
             idx = 0
 
-        GLib.idle_add(self.emit, 'sink_input_level_changed', idx, v)
+        GLib.idle_add(self.emit, 'stream_level_changed', idx, v)
 
-    def create_stream(self, source_name, app_idx, app_name):
+    def create_stream(self, source_name, app_idx, app_name, monitor_idx):
         ss = p.pa_sample_spec()
         ss.channels = 1
         ss.format = p.PA_SAMPLE_FLOAT32LE
@@ -720,8 +720,8 @@ class PulseManager(GObject.GObject):
 
         p.pa_stream_set_state_callback(stream, self.stream_state_cb, app_idx)
 
-        if app_idx != -1:
-            p.pa_stream_set_monitor_stream(stream, app_idx)
+        if monitor_idx != -1:
+            p.pa_stream_set_monitor_stream(stream, monitor_idx)
 
         p.pa_stream_set_read_callback(stream, self.stream_read_cb, app_idx)
 

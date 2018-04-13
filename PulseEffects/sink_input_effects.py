@@ -49,7 +49,7 @@ class SinkInputEffects(EffectsBase):
         self.pm.connect('sink_input_added', self.on_app_added)
         self.pm.connect('sink_input_changed', self.on_app_changed)
         self.pm.connect('sink_input_removed', self.on_app_removed)
-        self.pm.connect('sink_input_level_changed', self.on_app_level_changed)
+        self.pm.connect('stream_level_changed', self.on_stream_level_changed)
 
         self.exciter = Exciter()
         self.bass_enhancer = BassEnhancer()
@@ -325,6 +325,7 @@ class SinkInputEffects(EffectsBase):
         if self.there_is_window:
             source_name = 'PulseEffects_apps.monitor'.encode('utf-8')
             app_idx = parameters['index']
+            monitor_idx = app_idx
             app_name = parameters['name']
             connected = parameters['connected']
             corked = parameters['corked']
@@ -332,7 +333,8 @@ class SinkInputEffects(EffectsBase):
             if connected and not corked:
                 self.streams[str(app_idx)] = self.pm.create_stream(source_name,
                                                                    app_idx,
-                                                                   app_name)
+                                                                   app_name,
+                                                                   monitor_idx)
 
     def on_app_changed(self, obj, parameters):
         EffectsBase.on_app_changed(self, obj, parameters)
@@ -340,6 +342,7 @@ class SinkInputEffects(EffectsBase):
         if self.there_is_window:
             source_name = 'PulseEffects_apps.monitor'.encode('utf-8')
             app_idx = parameters['index']
+            monitor_idx = app_idx
             app_name = parameters['name']
             connected = parameters['connected']
             corked = parameters['corked']
@@ -350,7 +353,8 @@ class SinkInputEffects(EffectsBase):
                 if not corked and key not in self.streams:
                     self.streams[key] = self.pm.create_stream(source_name,
                                                               app_idx,
-                                                              app_name)
+                                                              app_name,
+                                                              monitor_idx)
                 elif corked and key in self.streams:
                     self.pm.disconnect_stream(self.streams[key])
 
@@ -366,6 +370,10 @@ class SinkInputEffects(EffectsBase):
 
         if key in self.streams:
             del self.streams[key]
+
+    def disconnect_streams(self):
+        for k in self.streams:
+            self.pm.disconnect_stream(self.streams[k])
 
     def post_messages(self, state):
         EffectsBase.post_messages(self, state)
