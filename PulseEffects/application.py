@@ -134,6 +134,8 @@ class Application(Gtk.Application):
         if self.props.flags & Gio.ApplicationFlags.IS_SERVICE:
             self.running_as_service = True
 
+            self.init_ui()
+
             self.sie.post_messages(False)
             self.soe.post_messages(False)
 
