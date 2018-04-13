@@ -5,8 +5,8 @@ import configparser
 from PulseEffects.bass_enhancer_presets import BassEnhancerPresets
 from PulseEffects.compressor_presets import CompressorPresets
 from PulseEffects.crossfeed_presets import CrossfeedPresets
-from PulseEffects.delay_presets import DelayPresets
 from PulseEffects.deesser_presets import DeesserPresets
+from PulseEffects.delay_presets import DelayPresets
 from PulseEffects.equalizer_presets import EqualizerPresets
 from PulseEffects.exciter_presets import ExciterPresets
 from PulseEffects.gate_presets import GatePresets
@@ -20,6 +20,7 @@ from PulseEffects.pitch_presets import PitchPresets
 from PulseEffects.reverb_presets import ReverbPresets
 from PulseEffects.stereo_enhancer_presets import StereoEnhancerPresets
 from PulseEffects.stereo_spread_presets import StereoSpreadPresets
+from PulseEffects.webrtc_presets import WebrtcPresets
 
 
 class LoadPresets():
@@ -45,6 +46,7 @@ class LoadPresets():
         self.pitch_presets = PitchPresets(self.config)
         self.gate_presets = GatePresets(self.config)
         self.deesser_presets = DeesserPresets(self.config)
+        self.webrtc_presets = WebrtcPresets(self.config)
 
     def load(self, path):
         self.config.clear()
@@ -68,3 +70,4 @@ class LoadPresets():
         self.pitch_presets.load()
         self.gate_presets.load()
         self.deesser_presets.load()
+        self.webrtc_presets.load()
