@@ -9,6 +9,7 @@ from PulseEffects.crossfeed_presets import CrossfeedPresets
 from PulseEffects.delay_presets import DelayPresets
 from PulseEffects.equalizer_presets import EqualizerPresets
 from PulseEffects.exciter_presets import ExciterPresets
+from PulseEffects.gate_presets import GatePresets
 from PulseEffects.highpass_presets import HighpassPresets
 from PulseEffects.limiter_presets import LimiterPresets
 from PulseEffects.lowpass_presets import LowpassPresets
@@ -42,36 +43,11 @@ class LoadPresets():
         self.maximizer_presets = MaximizerPresets(self.config)
         self.output_limiter_presets = OutputLimiterPresets(self.config)
         self.pitch_presets = PitchPresets(self.config)
+        self.gate_presets = GatePresets(self.config)
 
     def set_config_path(self, path):
         self.config.clear()
         self.config.read(path)
-
-    def load_gate_preset(self, settings, section):
-        enabled = self.config.getboolean(section, 'enabled', fallback=False)
-        detection = self.config.getboolean(section, 'detection_type_rms',
-                                           fallback=True)
-        stereo_link = self.config.getboolean(section,
-                                             'stereo_link_type_average',
-                                             fallback=True)
-        attack = self.config.getfloat(section, 'attack', fallback=20.0)
-        release = self.config.getfloat(section, 'release', fallback=250.0)
-        threshold = self.config.getfloat(section, 'threshold', fallback=-18.0)
-        ratio = self.config.getfloat(section, 'ratio', fallback=2.0)
-        knee = self.config.getfloat(section, 'knee', fallback=9.0)
-        makeup = self.config.getfloat(section, 'makeup', fallback=0.0)
-
-        settings.set_value('gate-state', GLib.Variant('b', enabled))
-        settings.set_value('gate-detection-rms', GLib.Variant('b', detection))
-        settings.set_value('gate-stereo-link-average',
-                           GLib.Variant('b', stereo_link))
-        settings.set_value('gate-attack', GLib.Variant('d', attack))
-        settings.set_value('gate-release', GLib.Variant('d', release))
-        settings.set_value('gate-threshold',
-                           GLib.Variant('d', threshold))
-        settings.set_value('gate-ratio', GLib.Variant('d', ratio))
-        settings.set_value('gate-knee', GLib.Variant('d', knee))
-        settings.set_value('gate-makeup', GLib.Variant('d', makeup))
 
     def load_deesser_preset(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
@@ -103,7 +79,6 @@ class LoadPresets():
         settings.set_value('deesser-f2-q', GLib.Variant('d', f2_q))
 
     def load_source_outputs_preset(self, settings):
-        self.load_gate_preset(settings, 'mic_gate')
         self.load_deesser_preset(settings, 'mic_deesser')
 
     def load(self):
@@ -123,3 +98,4 @@ class LoadPresets():
         self.maximizer_presets.load()
         self.output_limiter_presets.load()
         self.pitch_presets.load()
+        self.gate_presets.load()

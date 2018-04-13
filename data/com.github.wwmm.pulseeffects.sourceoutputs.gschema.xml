@@ -9,37 +9,6 @@
 
     <schema id="com.github.wwmm.pulseeffects.sourceoutputs" path="/com/github/wwmm/pulseeffects/sourceoutputs/">
 
-        <key name="gate-state" type="b">
-          <default>false</default>
-        </key>
-        <key name="gate-detection-rms" type="b">
-          <default>true</default>
-        </key>
-        <key name="gate-stereo-link-average" type="b">
-          <default>true</default>
-        </key>
-        <key name="gate-range" type="d">
-          <default>-24.0</default>
-        </key>
-        <key name="gate-attack" type="d">
-          <default>20.0</default>
-        </key>
-        <key name="gate-release" type="d">
-          <default>250.0</default>
-        </key>
-        <key name="gate-threshold" type="d">
-          <default>-18</default>
-        </key>
-        <key name="gate-ratio" type="d">
-          <default>2</default>
-        </key>
-        <key name="gate-knee" type="d">
-          <default>9</default>
-        </key>
-        <key name="gate-makeup" type="d">
-          <default>0.0</default>
-        </key>
-
         <key name="deesser-state" type="b">
           <default>false</default>
         </key>

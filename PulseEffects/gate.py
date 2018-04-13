@@ -15,8 +15,8 @@ Gst.init(None)
 
 class Gate():
 
-    def __init__(self, settings):
-        self.settings = settings
+    def __init__(self):
+        self.settings = None
         self.module_path = os.path.dirname(__file__)
 
         self.log = logging.getLogger('PulseEffects')
@@ -113,31 +113,30 @@ class Gate():
 
         flag = Gio.SettingsBindFlags.DEFAULT
 
-        self.settings.bind('gate-state', self.ui_enable, 'active', flag)
-        self.settings.bind('gate-state', self.ui_img_state, 'visible',
-                           flag)
-        self.settings.bind('gate-state', self.ui_controls, 'sensitive',
+        self.settings.bind('state', self.ui_enable, 'active', flag)
+        self.settings.bind('state', self.ui_img_state, 'visible', flag)
+        self.settings.bind('state', self.ui_controls, 'sensitive',
                            Gio.SettingsBindFlags.GET)
 
-        self.settings.bind('gate-detection-rms', self.ui_gate_detection_rms,
+        self.settings.bind('detection-rms', self.ui_gate_detection_rms,
                            'active', flag)
-        self.settings.bind('gate-detection-rms', self.ui_gate_detection_peak,
+        self.settings.bind('detection-rms', self.ui_gate_detection_peak,
                            'active',
                            flag | Gio.SettingsBindFlags.INVERT_BOOLEAN)
 
-        self.settings.bind('gate-stereo-link-average',
+        self.settings.bind('stereo-link-average',
                            self.ui_gate_stereo_link_average, 'active', flag)
-        self.settings.bind('gate-stereo-link-average',
+        self.settings.bind('stereo-link-average',
                            self.ui_gate_stereo_link_maximum, 'active',
                            flag | Gio.SettingsBindFlags.INVERT_BOOLEAN)
 
-        self.settings.bind('gate-range', self.ui_range, 'value', flag)
-        self.settings.bind('gate-attack', self.ui_attack, 'value', flag)
-        self.settings.bind('gate-release', self.ui_release, 'value', flag)
-        self.settings.bind('gate-threshold', self.ui_threshold, 'value', flag)
-        self.settings.bind('gate-ratio', self.ui_ratio, 'value', flag)
-        self.settings.bind('gate-knee', self.ui_knee, 'value', flag)
-        self.settings.bind('gate-makeup', self.ui_makeup, 'value', flag)
+        self.settings.bind('range', self.ui_range, 'value', flag)
+        self.settings.bind('attack', self.ui_attack, 'value', flag)
+        self.settings.bind('release', self.ui_release, 'value', flag)
+        self.settings.bind('threshold', self.ui_threshold, 'value', flag)
+        self.settings.bind('ratio', self.ui_ratio, 'value', flag)
+        self.settings.bind('knee', self.ui_knee, 'value', flag)
+        self.settings.bind('makeup', self.ui_makeup, 'value', flag)
 
         # binding ui widgets to gstreamer plugins
 
@@ -238,12 +237,12 @@ class Gate():
             self.ui_gating_level_label.set_text(str(round(gating)))
 
     def reset(self):
-        self.settings.reset('gate-state')
-        self.settings.reset('gate-detection-rms')
-        self.settings.reset('gate-stereo-link-average')
-        self.settings.reset('gate-attack')
-        self.settings.reset('gate-release')
-        self.settings.reset('gate-threshold')
-        self.settings.reset('gate-ratio')
-        self.settings.reset('gate-knee')
-        self.settings.reset('gate-makeup')
+        self.settings.reset('state')
+        self.settings.reset('detection-rms')
+        self.settings.reset('stereo-link-average')
+        self.settings.reset('attack')
+        self.settings.reset('release')
+        self.settings.reset('threshold')
+        self.settings.reset('ratio')
+        self.settings.reset('knee')
+        self.settings.reset('makeup')

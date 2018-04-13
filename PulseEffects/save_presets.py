@@ -8,6 +8,7 @@ from PulseEffects.crossfeed_presets import CrossfeedPresets
 from PulseEffects.delay_presets import DelayPresets
 from PulseEffects.equalizer_presets import EqualizerPresets
 from PulseEffects.exciter_presets import ExciterPresets
+from PulseEffects.gate_presets import GatePresets
 from PulseEffects.highpass_presets import HighpassPresets
 from PulseEffects.limiter_presets import LimiterPresets
 from PulseEffects.lowpass_presets import LowpassPresets
@@ -41,32 +42,10 @@ class SavePresets():
         self.maximizer_presets = MaximizerPresets(self.config)
         self.output_limiter_presets = OutputLimiterPresets(self.config)
         self.pitch_presets = PitchPresets(self.config)
+        self.gate_presets = GatePresets(self.config)
 
     def set_output_path(self, path):
         self.output_file = open(path, 'w')
-
-    def save_gate_preset(self, settings, section):
-        enabled = settings.get_value('gate-state')
-        detection = settings.get_value('gate-detection-rms')
-        stereo_link = settings.get_value('gate-stereo-link-average')
-        range = settings.get_value('gate-range')
-        attack = settings.get_value('gate-attack')
-        release = settings.get_value('gate-release')
-        threshold = settings.get_value('gate-threshold')
-        ratio = settings.get_value('gate-ratio')
-        knee = settings.get_value('gate-knee')
-        makeup = settings.get_value('gate-makeup')
-
-        self.config[section] = {'enabled': str(enabled),
-                                'detection_type_rms': str(detection),
-                                'stereo_link_type_average': str(stereo_link),
-                                'range': str(range),
-                                'attack': str(attack),
-                                'release': str(release),
-                                'threshold': str(threshold),
-                                'ratio': str(ratio),
-                                'knee': str(knee),
-                                'makeup': str(makeup)}
 
     def save_deesser_preset(self, settings, section):
         enabled = settings.get_value('deesser-state')
@@ -96,7 +75,6 @@ class SavePresets():
                                 'f2_q': str(f2_q)}
 
     def save_source_outputs_preset(self, settings):
-        self.save_gate_preset(settings, 'mic_gate')
         self.save_deesser_preset(settings, 'mic_deesser')
 
     def write_config(self):
@@ -120,3 +98,4 @@ class SavePresets():
         self.maximizer_presets.save()
         self.output_limiter_presets.save()
         self.pitch_presets.save()
+        self.gate_presets.save()
