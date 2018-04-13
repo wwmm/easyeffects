@@ -13,7 +13,7 @@
   <object class="GtkImage" id="image_test">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="stock">gtk-missing-image</property>
+    <property name="icon_name">pulseeffects-sine-symbolic</property>
   </object>
   <object class="GtkAdjustment" id="latency_time">
     <property name="lower">1</property>

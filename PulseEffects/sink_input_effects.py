@@ -352,10 +352,6 @@ class SinkInputEffects(EffectsBase):
                                                               app_idx,
                                                               app_name)
                 elif corked and key in self.streams:
-                    print('connected and corked removed: ' + key)
-
-                    print(self.streams)
-
                     self.pm.disconnect_stream(self.streams[key])
 
                     del self.streams[key]

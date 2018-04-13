@@ -26,8 +26,6 @@ class PresetsManager():
         self.lp = LoadPresets()
         self.sp = SavePresets()
 
-        self.load_menu()
-
     def load_menu(self):
         self.menu_button = self.app.builder.get_object(
             'presets_popover_button')

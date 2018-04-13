@@ -7,7 +7,7 @@ import gi
 import numpy as np
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import GstInsertBin, Gtk, Pango
+from gi.repository import GObject, GstInsertBin, Gtk, Pango
 from PulseEffects.compressor import Compressor
 from PulseEffects.equalizer import Equalizer
 from PulseEffects.highpass import Highpass
@@ -19,6 +19,8 @@ from scipy.interpolate import CubicSpline
 
 
 class EffectsBase(PipelineBase):
+
+    switch_on_all_apps = GObject.Property(type=bool, default=False)
 
     def __init__(self, sampling_rate):
         PipelineBase.__init__(self, sampling_rate)

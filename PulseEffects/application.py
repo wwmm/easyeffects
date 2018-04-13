@@ -108,13 +108,30 @@ class Application(Gtk.Application):
         self.pm.connect('source_added', self.on_source_added)
         self.pm.connect('source_removed', self.on_source_removed)
 
+        flag = Gio.SettingsBindFlags.DEFAULT
+
+        self.settings.bind('use-default-sink', self.pm, 'use_default_sink',
+                           flag)
+        self.settings.bind('use-default-source', self.pm, 'use_default_source',
+                           flag)
+
+        # sink inputs and source outputs effects managers
+
         self.sie = SinkInputEffects(self.pm)
         self.soe = SourceOutputEffects(self.pm)
 
+        self.settings.bind('enable-all-apps', self.sie, 'switch_on_all_apps',
+                           flag)
+        self.settings.bind('enable-all-apps', self.soe, 'switch_on_all_apps',
+                           flag)
+
+        self.init_buffer_time()
+        self.init_latency_time()
+
+        self.presets = PresetsManager(self)
+
         if self.props.flags & Gio.ApplicationFlags.IS_SERVICE:
             self.running_as_service = True
-
-            self.init_ui()
 
             self.sie.post_messages(False)
             self.soe.post_messages(False)
@@ -136,18 +153,11 @@ class Application(Gtk.Application):
         self.window.set_application(self)
         self.window.connect('destroy', self.on_window_destroy)
 
-        image_test = self.builder.get_object('image_test')
-
-        image_test.set_from_icon_name('pulseeffects-sine-symbolic',
-                                      Gtk.IconSize.BUTTON)
-
         self.sie.init_ui()
         self.soe.init_ui()
 
         self.draw_spectrum = DrawSpectrum(self)
 
-        self.init_buffer_time()
-        self.init_latency_time()
         self.init_spectrum_widgets()
         self.init_stack_widgets()
         self.init_autostart_switch()
@@ -163,30 +173,30 @@ class Application(Gtk.Application):
         use_default_source = self.builder.get_object('use_default_source')
         self.ui_output_device = self.builder.get_object('output_device')
         self.ui_input_device = self.builder.get_object('input_device')
+        buffer_time = self.builder.get_object('buffer_time')
+        latency_time = self.builder.get_object('latency_time')
 
         self.settings.bind('use-dark-theme', theme_switch, 'active', flag)
+
         self.settings.bind('use-dark-theme', self.gtk_settings,
                            'gtk_application_prefer_dark_theme', flag)
 
         self.settings.bind('enable-all-apps', enable_all_apps, 'active', flag)
-        self.settings.bind('enable-all-apps', self.sie, 'switch_on_all_apps',
-                           flag)
-        self.settings.bind('enable-all-apps', self.soe, 'switch_on_all_apps',
-                           flag)
 
         self.settings.bind('use-default-sink', use_default_sink, 'active',
                            flag)
-        self.settings.bind('use-default-sink', self.pm, 'use_default_sink',
-                           flag)
+
         self.settings.bind('use-default-sink', self.ui_output_device,
                            'sensitive', flag | flag_invert_boolean)
 
         self.settings.bind('use-default-source', use_default_source, 'active',
                            flag)
-        self.settings.bind('use-default-source', self.pm, 'use_default_source',
-                           flag)
+
         self.settings.bind('use-default-source', self.ui_input_device,
                            'sensitive', flag | flag_invert_boolean)
+
+        self.settings.bind('buffer-time', buffer_time, 'value', flag)
+        self.settings.bind('latency-time', latency_time, 'value', flag)
 
         # this connection is changed inside the stack switch handler
         # depending on the selected child. The connection below is not
@@ -196,7 +206,7 @@ class Application(Gtk.Application):
                                                     self.draw_spectrum
                                                     .on_new_spectrum)
 
-        self.presets = PresetsManager(self)
+        self.presets.load_menu()
 
         self.ui_initialized = True
         self.sie.there_is_window = True
@@ -215,15 +225,15 @@ class Application(Gtk.Application):
         if not self.ui_initialized:
             self.init_ui()
 
-        self.window.present()
+            self.window.present()
 
-        self.pm.find_sink_inputs()
-        self.pm.find_source_outputs()
-        self.pm.find_sinks()
-        self.pm.find_sources()
+            self.pm.find_sink_inputs()
+            self.pm.find_source_outputs()
+            self.pm.find_sinks()
+            self.pm.find_sources()
 
-        self.sie.post_messages(True)
-        self.soe.post_messages(True)
+            self.sie.post_messages(True)
+            self.soe.post_messages(True)
 
     def do_command_line(self, command_line):
         options = command_line.get_options_dict()
@@ -308,10 +318,6 @@ class Application(Gtk.Application):
     def init_buffer_time(self):
         value = self.settings.get_value('buffer-time').unpack()
 
-        buffer_time = self.builder.get_object('buffer_time')
-
-        buffer_time.set_value(value)
-
         self.sie.init_buffer_time(value * 1000)
 
     def on_buffer_time_value_changed(self, obj):
@@ -327,10 +333,6 @@ class Application(Gtk.Application):
 
     def init_latency_time(self):
         value = self.settings.get_value('latency-time').unpack()
-
-        latency_time = self.builder.get_object('latency_time')
-
-        latency_time.set_value(value)
 
         self.sie.init_latency_time(value * 1000)
 
