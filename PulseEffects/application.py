@@ -65,6 +65,7 @@ class Application(Gtk.Application):
         Gtk.Application.do_startup(self)
 
         self.ui_initialized = False
+        self.window_activated = False
         self.running_as_service = False
         self.module_path = os.path.dirname(__file__)
 
@@ -214,6 +215,7 @@ class Application(Gtk.Application):
 
     def on_window_destroy(self, window):
         self.ui_initialized = False
+        self.window_activated = False
         self.sie.there_is_window = False
         self.soe.there_is_window = False
 
@@ -225,15 +227,17 @@ class Application(Gtk.Application):
         if not self.ui_initialized:
             self.init_ui()
 
-            self.window.present()
+        self.window.present()
 
-            self.pm.find_sink_inputs()
-            self.pm.find_source_outputs()
-            self.pm.find_sinks()
-            self.pm.find_sources()
+        self.window_activated = True
 
-            self.sie.post_messages(True)
-            self.soe.post_messages(True)
+        self.pm.find_sink_inputs()
+        self.pm.find_source_outputs()
+        self.pm.find_sinks()
+        self.pm.find_sources()
+
+        self.sie.post_messages(True)
+        self.soe.post_messages(True)
 
     def do_command_line(self, command_line):
         options = command_line.get_options_dict()
@@ -326,10 +330,8 @@ class Application(Gtk.Application):
         out = GLib.Variant('i', value)
         self.settings.set_value('buffer-time', out)
 
-        if self.ui_initialized:
+        if self.window_activated:
             self.sie.set_buffer_time(value * 1000)
-        else:
-            self.sie.init_buffer_time(value * 1000)
 
     def init_latency_time(self):
         value = self.settings.get_value('latency-time').unpack()
@@ -342,10 +344,8 @@ class Application(Gtk.Application):
         out = GLib.Variant('i', value)
         self.settings.set_value('latency-time', out)
 
-        if self.ui_initialized:
+        if self.window_activated:
             self.sie.set_latency_time(value * 1000)
-        else:
-            self.sie.init_latency_time(value * 1000)
 
     def init_autostart_switch(self):
         switch = self.builder.get_object('enable_autostart')
