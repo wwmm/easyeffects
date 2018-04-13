@@ -15,8 +15,8 @@ Gst.init(None)
 
 class Deesser():
 
-    def __init__(self, settings):
-        self.settings = settings
+    def __init__(self):
+        self.settings = None
         self.module_path = os.path.dirname(__file__)
 
         self.log = logging.getLogger('PulseEffects')
@@ -120,33 +120,30 @@ class Deesser():
 
         flag = Gio.SettingsBindFlags.DEFAULT
 
-        self.settings.bind('deesser-state', self.ui_enable, 'active', flag)
-        self.settings.bind('deesser-state', self.ui_img_state, 'visible',
-                           flag)
-        self.settings.bind('deesser-state', self.ui_controls, 'sensitive',
+        self.settings.bind('state', self.ui_enable, 'active', flag)
+        self.settings.bind('state', self.ui_img_state, 'visible', flag)
+        self.settings.bind('state', self.ui_controls, 'sensitive',
                            Gio.SettingsBindFlags.GET)
 
-        self.settings.bind('deesser-detection-rms', self.ui_detection_rms,
-                           'active', flag)
-        self.settings.bind('deesser-detection-rms', self.ui_detection_peak,
+        self.settings.bind('detection-rms', self.ui_detection_rms, 'active',
+                           flag)
+        self.settings.bind('detection-rms', self.ui_detection_peak,
                            'active',
                            flag | Gio.SettingsBindFlags.INVERT_BOOLEAN)
 
-        self.settings.bind('deesser-mode-wide', self.ui_mode_wide, 'active',
-                           flag)
-        self.settings.bind('deesser-mode-wide', self.ui_mode_split, 'active',
+        self.settings.bind('mode-wide', self.ui_mode_wide, 'active', flag)
+        self.settings.bind('mode-wide', self.ui_mode_split, 'active',
                            flag | Gio.SettingsBindFlags.INVERT_BOOLEAN)
 
-        self.settings.bind('deesser-laxity', self.ui_laxity, 'value', flag)
-        self.settings.bind('deesser-threshold', self.ui_threshold, 'value',
-                           flag)
-        self.settings.bind('deesser-makeup', self.ui_makeup, 'value', flag)
-        self.settings.bind('deesser-ratio', self.ui_ratio, 'value', flag)
-        self.settings.bind('deesser-f1', self.ui_f1_freq, 'value', flag)
-        self.settings.bind('deesser-f1-level', self.ui_f1_level, 'value', flag)
-        self.settings.bind('deesser-f2', self.ui_f2_freq, 'value', flag)
-        self.settings.bind('deesser-f2-level', self.ui_f2_level, 'value', flag)
-        self.settings.bind('deesser-f2-q', self.ui_f2_q, 'value', flag)
+        self.settings.bind('laxity', self.ui_laxity, 'value', flag)
+        self.settings.bind('threshold', self.ui_threshold, 'value', flag)
+        self.settings.bind('makeup', self.ui_makeup, 'value', flag)
+        self.settings.bind('ratio', self.ui_ratio, 'value', flag)
+        self.settings.bind('f1', self.ui_f1_freq, 'value', flag)
+        self.settings.bind('f1-level', self.ui_f1_level, 'value', flag)
+        self.settings.bind('f2', self.ui_f2_freq, 'value', flag)
+        self.settings.bind('f2-level', self.ui_f2_level, 'value', flag)
+        self.settings.bind('f2-q', self.ui_f2_q, 'value', flag)
 
         # binding ui widgets to gstreamer plugins
 
@@ -256,14 +253,14 @@ class Deesser():
             self.ui_detected_level_label.set_text(str(round(detected)))
 
     def reset(self):
-        self.settings.reset('deesser-state')
-        self.settings.reset('deesser-detection-rms')
-        self.settings.reset('deesser-mode-wide')
-        self.settings.reset('deesser-threshold')
-        self.settings.reset('deesser-makeup')
-        self.settings.reset('deesser-ratio')
-        self.settings.reset('deesser-f1')
-        self.settings.reset('deesser-f1-level')
-        self.settings.reset('deesser-f2')
-        self.settings.reset('deesser-f2-level')
-        self.settings.reset('deesser-f2-q')
+        self.settings.reset('state')
+        self.settings.reset('detection-rms')
+        self.settings.reset('mode-wide')
+        self.settings.reset('threshold')
+        self.settings.reset('makeup')
+        self.settings.reset('ratio')
+        self.settings.reset('f1')
+        self.settings.reset('f1-level')
+        self.settings.reset('f2')
+        self.settings.reset('f2-level')
+        self.settings.reset('f2-q')

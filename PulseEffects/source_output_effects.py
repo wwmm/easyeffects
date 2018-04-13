@@ -18,8 +18,6 @@ class SourceOutputEffects(EffectsBase):
 
     def __init__(self, pulse_manager):
         self.pm = pulse_manager
-        self.settings = Gio.Settings(
-            'com.github.wwmm.pulseeffects.sourceoutputs')
 
         EffectsBase.__init__(self, self.pm.default_source_rate)
 
@@ -51,8 +49,8 @@ class SourceOutputEffects(EffectsBase):
 
         self.pitch = Pitch()
         self.gate = Gate()
-        self.deesser = Deesser(self.settings)
-        self.webrtc = Webrtc(self.settings)
+        self.deesser = Deesser()
+        self.webrtc = Webrtc()
 
         self.limiter.settings = Gio.Settings(
             'com.github.wwmm.pulseeffects.sourceoutputs.limiter')
@@ -70,6 +68,10 @@ class SourceOutputEffects(EffectsBase):
             'com.github.wwmm.pulseeffects.sourceoutputs.pitch')
         self.gate.settings = Gio.Settings(
             'com.github.wwmm.pulseeffects.sourceoutputs.gate')
+        self.deesser.settings = Gio.Settings(
+            'com.github.wwmm.pulseeffects.sourceoutputs.deesser')
+        self.webrtc.settings = Gio.Settings(
+            'com.github.wwmm.pulseeffects.sourceoutputs.webrtc')
 
         # effects wrappers
 

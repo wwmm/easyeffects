@@ -16,7 +16,6 @@ install_data([
   'com.github.wwmm.pulseeffects.sinkinputs.crossfeed.gschema.xml',
   'com.github.wwmm.pulseeffects.sinkinputs.maximizer.gschema.xml',
   'com.github.wwmm.pulseeffects.sinkinputs.outputlimiter.gschema.xml',
-  'com.github.wwmm.pulseeffects.sourceoutputs.gschema.xml',
   'com.github.wwmm.pulseeffects.sourceoutputs.limiter.gschema.xml',
   'com.github.wwmm.pulseeffects.sourceoutputs.compressor.gschema.xml',
   'com.github.wwmm.pulseeffects.sourceoutputs.reverb.gschema.xml',
@@ -25,6 +24,8 @@ install_data([
   'com.github.wwmm.pulseeffects.sourceoutputs.equalizer.gschema.xml',
   'com.github.wwmm.pulseeffects.sourceoutputs.pitch.gschema.xml',
   'com.github.wwmm.pulseeffects.sourceoutputs.gate.gschema.xml',
+  'com.github.wwmm.pulseeffects.sourceoutputs.deesser.gschema.xml',
+  'com.github.wwmm.pulseeffects.sourceoutputs.webrtc.gschema.xml'
 ], install_dir: schemadir)
 
 i18n_mod.merge_file(

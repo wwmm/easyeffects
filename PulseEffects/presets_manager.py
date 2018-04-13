@@ -153,23 +153,13 @@ class PresetsManager():
         self.listbox.show_all()
 
     def save_preset(self, path):
-        self.sp.set_output_path(path)
-
-        self.sp.save()
-
-        self.sp.save_source_outputs_preset(self.app.soe.settings)
-
-        self.sp.write_config()
+        self.sp.save(path)
 
     def load_preset(self, name):
         path = os.path.join(self.dir, name + '.preset')
 
         if os.path.isfile(path):
-            self.lp.set_config_path(path)
-
-            self.lp.load()
-
-            self.lp.load_source_outputs_preset(self.app.soe.settings)
+            self.lp.load(path)
         else:
             self.log.error(self.log_tag + path + _(' is not a file!'))
 

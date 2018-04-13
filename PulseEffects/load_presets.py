@@ -2,11 +2,11 @@
 
 import configparser
 
-from gi.repository import GLib
 from PulseEffects.bass_enhancer_presets import BassEnhancerPresets
 from PulseEffects.compressor_presets import CompressorPresets
 from PulseEffects.crossfeed_presets import CrossfeedPresets
 from PulseEffects.delay_presets import DelayPresets
+from PulseEffects.deesser_presets import DeesserPresets
 from PulseEffects.equalizer_presets import EqualizerPresets
 from PulseEffects.exciter_presets import ExciterPresets
 from PulseEffects.gate_presets import GatePresets
@@ -44,44 +44,12 @@ class LoadPresets():
         self.output_limiter_presets = OutputLimiterPresets(self.config)
         self.pitch_presets = PitchPresets(self.config)
         self.gate_presets = GatePresets(self.config)
+        self.deesser_presets = DeesserPresets(self.config)
 
-    def set_config_path(self, path):
+    def load(self, path):
         self.config.clear()
         self.config.read(path)
 
-    def load_deesser_preset(self, settings, section):
-        enabled = self.config.getboolean(section, 'enabled', fallback=False)
-        detection = self.config.getboolean(section, 'detection_type_rms',
-                                           fallback=True)
-        mode = self.config.getboolean(section, 'mode_type_wide', fallback=True)
-        threshold = self.config.getfloat(section, 'threshold', fallback=-18.0)
-        ratio = self.config.getfloat(section, 'ratio', fallback=3.0)
-        makeup = self.config.getfloat(section, 'makeup', fallback=0.0)
-        laxity = self.config.getint(section, 'laxity', fallback=15)
-        f1 = self.config.getfloat(section, 'f1', fallback=6000.0)
-        f1_level = self.config.getfloat(section, 'f1_level', fallback=0.0)
-        f2 = self.config.getfloat(section, 'f2', fallback=4500.0)
-        f2_level = self.config.getfloat(section, 'f2_level', fallback=12.0)
-        f2_q = self.config.getfloat(section, 'f2_q', fallback=1.0)
-
-        settings.set_value('deesser-state', GLib.Variant('b', enabled))
-        settings.set_value('deesser-detection-rms',
-                           GLib.Variant('b', detection))
-        settings.set_value('deesser-mode-wide', GLib.Variant('b', mode))
-        settings.set_value('deesser-threshold', GLib.Variant('d', threshold))
-        settings.set_value('deesser-ratio', GLib.Variant('d', ratio))
-        settings.set_value('deesser-makeup', GLib.Variant('d', makeup))
-        settings.set_value('deesser-laxity', GLib.Variant('i', laxity))
-        settings.set_value('deesser-f1', GLib.Variant('d', f1))
-        settings.set_value('deesser-f1-level', GLib.Variant('d', f1_level))
-        settings.set_value('deesser-f2', GLib.Variant('d', f2))
-        settings.set_value('deesser-f2-level', GLib.Variant('d', f2_level))
-        settings.set_value('deesser-f2-q', GLib.Variant('d', f2_q))
-
-    def load_source_outputs_preset(self, settings):
-        self.load_deesser_preset(settings, 'mic_deesser')
-
-    def load(self):
         self.limiter_presets.load()
         self.panorama_presets.load()
         self.compressor_presets.load()
@@ -99,3 +67,4 @@ class LoadPresets():
         self.output_limiter_presets.load()
         self.pitch_presets.load()
         self.gate_presets.load()
+        self.deesser_presets.load()

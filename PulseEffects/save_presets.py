@@ -6,6 +6,7 @@ from PulseEffects.bass_enhancer_presets import BassEnhancerPresets
 from PulseEffects.compressor_presets import CompressorPresets
 from PulseEffects.crossfeed_presets import CrossfeedPresets
 from PulseEffects.delay_presets import DelayPresets
+from PulseEffects.deesser_presets import DeesserPresets
 from PulseEffects.equalizer_presets import EqualizerPresets
 from PulseEffects.exciter_presets import ExciterPresets
 from PulseEffects.gate_presets import GatePresets
@@ -43,45 +44,9 @@ class SavePresets():
         self.output_limiter_presets = OutputLimiterPresets(self.config)
         self.pitch_presets = PitchPresets(self.config)
         self.gate_presets = GatePresets(self.config)
+        self.deesser_presets = DeesserPresets(self.config)
 
-    def set_output_path(self, path):
-        self.output_file = open(path, 'w')
-
-    def save_deesser_preset(self, settings, section):
-        enabled = settings.get_value('deesser-state')
-        detection = settings.get_value('deesser-detection-rms')
-        mode = settings.get_value('deesser-mode-wide')
-        threshold = settings.get_value('deesser-threshold')
-        ratio = settings.get_value('deesser-ratio')
-        makeup = settings.get_value('deesser-makeup')
-        laxity = settings.get_value('deesser-laxity')
-        f1 = settings.get_value('deesser-f1')
-        f1_level = settings.get_value('deesser-f1-level')
-        f2 = settings.get_value('deesser-f2')
-        f2_level = settings.get_value('deesser-f2-level')
-        f2_q = settings.get_value('deesser-f2-q')
-
-        self.config[section] = {'enabled': str(enabled),
-                                'detection_type_rms': str(detection),
-                                'mode_type_wide': str(mode),
-                                'threshold': str(threshold),
-                                'ratio': str(ratio),
-                                'makeup': str(makeup),
-                                'laxity': str(laxity),
-                                'f1': str(f1),
-                                'f1_level': str(f1_level),
-                                'f2': str(f2),
-                                'f2_level': str(f2_level),
-                                'f2_q': str(f2_q)}
-
-    def save_source_outputs_preset(self, settings):
-        self.save_deesser_preset(settings, 'mic_deesser')
-
-    def write_config(self):
-        self.config.write(self.output_file)
-        self.output_file.close()
-
-    def save(self):
+    def save(self, path):
         self.limiter_presets.save()
         self.panorama_presets.save()
         self.compressor_presets.save()
@@ -99,3 +64,10 @@ class SavePresets():
         self.output_limiter_presets.save()
         self.pitch_presets.save()
         self.gate_presets.save()
+        self.deesser_presets.save()
+
+        output_file = open(path, 'w')
+
+        self.config.write(output_file)
+
+        output_file.close()
