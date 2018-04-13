@@ -236,6 +236,12 @@ class Application(Gtk.Application):
         self.sie.there_is_window = True
         self.soe.there_is_window = True
 
+        if self.running_as_service:
+            # adding to ui devices found while in background
+
+            self.update_output_dev_combobox()
+            self.update_input_dev_combobox()
+
         self.pm.find_sink_inputs()
         self.pm.find_source_outputs()
         self.pm.find_sinks()
