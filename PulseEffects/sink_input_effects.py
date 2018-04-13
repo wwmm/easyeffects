@@ -375,6 +375,8 @@ class SinkInputEffects(EffectsBase):
         for k in self.streams:
             self.pm.disconnect_stream(self.streams[k])
 
+        self.streams.clear()
+
     def post_messages(self, state):
         EffectsBase.post_messages(self, state)
 

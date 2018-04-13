@@ -653,14 +653,18 @@ class PulseManager(GObject.GObject):
     def stream_state_cb(self, stream, idx):
         state = p.pa_stream_get_state(stream)
 
-        if not idx:  # zero is interpreted as None
+        if not idx:  # zero is interpreted by python as None
             idx = 0
 
         if state == p.PA_STREAM_FAILED:
+            self.log.debug(self.log_tag + 'volume meter stream for app ' +
+                           str(idx) + ' has failed')
+
+            p.pa_stream_disconnect(stream)
             p.pa_stream_unref(stream)
         elif state == p.PA_STREAM_READY:
-            self.log.debug(self.log_tag + 'created volume meter stream for ' +
-                           'app ' + str(idx))
+            self.log.debug(self.log_tag + 'volume meter stream for app ' +
+                           str(idx) + ' is ready')
         elif state == p.PA_STREAM_TERMINATED:
             self.log.debug(self.log_tag + 'volume meter stream for app ' +
                            str(idx) + ' was terminated')
@@ -668,9 +672,12 @@ class PulseManager(GObject.GObject):
             p.pa_stream_unref(stream)
         elif state == p.PA_STREAM_UNCONNECTED:
             self.log.debug(self.log_tag + 'volume meter stream for app ' +
-                           str(idx) + ' was unconnected')
+                           str(idx) + ' is unconnected')
 
             p.pa_stream_unref(stream)
+        elif state == p.PA_STREAM_CREATING:
+            self.log.debug(self.log_tag + 'volume meter stream for app ' +
+                           str(idx) + ' is being created')
 
     def stream_read_cb(self, stream, length, idx):
         data = p.get_c_void_p_ref()
