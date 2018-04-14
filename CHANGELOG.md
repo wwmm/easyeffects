@@ -8,6 +8,8 @@ selected devices are not remembered when PulseEffects is closed.
 - Debug mode: execute PulseEffects doing "PULSEEFFECTS_DEBUG=1 pulseeffects" to
 see debug messages.
 - Level meter for recording applications
+- Buffer and latency of input and output effects can be independently configured
+in the settings menu
 
 ### Fixed
 - too many decimal places in the frequency and intensity shown in the spectrum

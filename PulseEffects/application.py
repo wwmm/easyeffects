@@ -176,8 +176,11 @@ class Application(Gtk.Application):
         use_default_source = self.builder.get_object('use_default_source')
         self.ui_output_device = self.builder.get_object('output_device')
         self.ui_input_device = self.builder.get_object('input_device')
-        buffer_time = self.builder.get_object('buffer_time')
-        latency_time = self.builder.get_object('latency_time')
+
+        buffer_out = self.builder.get_object('buffer_out')
+        latency_out = self.builder.get_object('latency_out')
+        buffer_in = self.builder.get_object('buffer_in')
+        latency_in = self.builder.get_object('latency_in')
 
         self.settings.bind('use-dark-theme', theme_switch, 'active', flag)
 
@@ -198,8 +201,10 @@ class Application(Gtk.Application):
         self.settings.bind('use-default-source', self.ui_input_device,
                            'sensitive', flag | flag_invert_boolean)
 
-        self.settings.bind('buffer-time', buffer_time, 'value', flag)
-        self.settings.bind('latency-time', latency_time, 'value', flag)
+        self.settings.bind('buffer-out', buffer_out, 'value', flag)
+        self.settings.bind('latency-out', latency_out, 'value', flag)
+        self.settings.bind('buffer-in', buffer_in, 'value', flag)
+        self.settings.bind('latency-in', latency_in, 'value', flag)
 
         # this connection is changed inside the stack switch handler
         # depending on the selected child. The connection below is not
@@ -331,32 +336,58 @@ class Application(Gtk.Application):
         self.draw_spectrum.clear()
 
     def init_buffer_time(self):
-        value = self.settings.get_value('buffer-time').unpack()
+        value = self.settings.get_value('buffer-out').unpack()
 
         self.sie.init_buffer_time(value * 1000)
 
-    def on_buffer_time_value_changed(self, obj):
+        value = self.settings.get_value('buffer-in').unpack()
+
+        self.soe.init_buffer_time(value * 1000)
+
+    def on_buffer_out_value_changed(self, obj):
         value = obj.get_value()
 
         out = GLib.Variant('i', value)
-        self.settings.set_value('buffer-time', out)
+        self.settings.set_value('buffer-out', out)
 
         if self.window_activated:
             self.sie.set_buffer_time(value * 1000)
 
-    def init_latency_time(self):
-        value = self.settings.get_value('latency-time').unpack()
-
-        self.sie.init_latency_time(value * 1000)
-
-    def on_latency_time_value_changed(self, obj):
+    def on_buffer_in_value_changed(self, obj):
         value = obj.get_value()
 
         out = GLib.Variant('i', value)
-        self.settings.set_value('latency-time', out)
+        self.settings.set_value('buffer-in', out)
+
+        if self.window_activated:
+            self.soe.set_buffer_time(value * 1000)
+
+    def init_latency_time(self):
+        value = self.settings.get_value('latency-out').unpack()
+
+        self.sie.init_latency_time(value * 1000)
+
+        value = self.settings.get_value('latency-in').unpack()
+
+        self.soe.init_latency_time(value * 1000)
+
+    def on_latency_out_value_changed(self, obj):
+        value = obj.get_value()
+
+        out = GLib.Variant('i', value)
+        self.settings.set_value('latency-out', out)
 
         if self.window_activated:
             self.sie.set_latency_time(value * 1000)
+
+    def on_latency_in_value_changed(self, obj):
+        value = obj.get_value()
+
+        out = GLib.Variant('i', value)
+        self.settings.set_value('latency-in', out)
+
+        if self.window_activated:
+            self.soe.set_latency_time(value * 1000)
 
     def init_autostart_switch(self):
         switch = self.builder.get_object('enable_autostart')
@@ -592,7 +623,9 @@ class Application(Gtk.Application):
 
                 break
 
-    def on_use_default_sink_state_set(self, obj, state):
+    def on_use_default_sink_toggled(self, obj):
+        state = obj.get_active()
+
         if state:
             for s in self.sink_list:
                 name = s['name']
@@ -604,7 +637,9 @@ class Application(Gtk.Application):
 
             self.log.debug(self.log_tag + 'using default sink')
 
-    def on_use_default_source_state_set(self, obj, state):
+    def on_use_default_source_toggled(self, obj):
+        state = obj.get_active()
+
         if state:
             for s in self.source_list:
                 name = s['name']
