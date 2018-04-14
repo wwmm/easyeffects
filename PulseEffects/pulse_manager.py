@@ -666,6 +666,11 @@ class PulseManager(GObject.GObject):
         p.pa_context_set_source_output_mute(self.ctx, idx, mute_state,
                                             self.ctx_success_cb, None)
 
+    def get_sink_input_info(self, idx):
+        p.pa_context_get_sink_input_info(self.ctx, idx,
+                                         self.sink_input_info_cb,
+                                         2)  # 2 for changes
+
     def stream_state_cb(self, stream, idx):
         state = p.pa_stream_get_state(stream)
 

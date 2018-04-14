@@ -10,6 +10,8 @@ see debug messages.
 - Level meter for recording applications
 - Buffer and latency of input and output effects can be independently configured
 in the settings menu
+- Applications buffer and latency values displayed in the main window is updated
+every 5 seconds.
 
 ### Fixed
 - too many decimal places in the frequency and intensity shown in the spectrum

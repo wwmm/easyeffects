@@ -5,7 +5,7 @@ import os
 import gi
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gio, GstInsertBin, Gtk
+from gi.repository import Gio, GLib, GstInsertBin, Gtk
 from PulseEffects.bass_enhancer import BassEnhancer
 from PulseEffects.crossfeed import Crossfeed
 from PulseEffects.delay import Delay
@@ -22,6 +22,7 @@ class SinkInputEffects(EffectsBase):
 
     def __init__(self, pulse_manager):
         self.pm = pulse_manager
+        self.periodic_info_update = False
 
         EffectsBase.__init__(self, self.pm.default_sink_rate)
 
@@ -377,6 +378,16 @@ class SinkInputEffects(EffectsBase):
 
         self.streams.clear()
 
+    def get_sink_input_info(self):
+        for a in self.apps_list:
+            idx = a[0]
+            state = a[1]
+
+            if state:  # connected and not corked
+                self.pm.get_sink_input_info(idx)
+
+        return self.periodic_info_update
+
     def post_messages(self, state):
         EffectsBase.post_messages(self, state)
 
@@ -389,6 +400,11 @@ class SinkInputEffects(EffectsBase):
         self.panorama.post_messages(state)
         self.maximizer.post_messages(state)
         self.output_limiter.post_messages(state)
+
+        self.periodic_info_update = state
+
+        if state:
+            GLib.timeout_add_seconds(5, self.get_sink_input_info)
 
     def on_message_element(self, bus, msg):
         EffectsBase.on_message_element(self, bus, msg)

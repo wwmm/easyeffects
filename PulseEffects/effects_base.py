@@ -5,9 +5,10 @@ from gettext import gettext as _
 
 import gi
 import numpy as np
+gi.require_version('Gst', '1.0')
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import GObject, GstInsertBin, Gtk, Pango
+from gi.repository import GObject, Gst, GstInsertBin, Gtk, Pango
 from PulseEffects.compressor import Compressor
 from PulseEffects.equalizer import Equalizer
 from PulseEffects.highpass import Highpass
@@ -288,15 +289,21 @@ class EffectsBase(PipelineBase):
         # based on the apps state. If no app is playing the GStreamer pipeline
         # should also be in the paused state in order to not waste cpu
 
-        pipeline_state = 'ready'
+        apps_want_to_play = False
 
         for a in self.apps_list:
             if a[1]:
-                pipeline_state = 'playing'
+                apps_want_to_play = True
 
                 break
 
-        self.set_state(pipeline_state)
+        ok, current, pending = self.pipeline.get_state(2)
+
+        if ok:
+            if current != Gst.State.PLAYING and apps_want_to_play:
+                self.set_state('playing')
+            elif not apps_want_to_play:
+                self.set_state('ready')
 
     def on_app_added(self, obj, parameters):
         idx = parameters['index']
