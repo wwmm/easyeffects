@@ -123,10 +123,10 @@ class SinkInputEffects(EffectsBase):
                                 None)
         self.effects_bin.append(self.equalizer_wrapper, self.on_filter_added,
                                 None)
-        self.effects_bin.append(self.exciter_wrapper, self.on_filter_added,
-                                None)
         self.effects_bin.append(self.bass_enhancer_wrapper,
                                 self.on_filter_added, None)
+        self.effects_bin.append(self.exciter_wrapper, self.on_filter_added,
+                                None)
         self.effects_bin.append(self.stereo_enhancer_wrapper,
                                 self.on_filter_added, None)
         self.effects_bin.append(self.panorama_wrapper, self.on_filter_added,
@@ -153,8 +153,8 @@ class SinkInputEffects(EffectsBase):
         self.highpass.init_ui()
         self.lowpass.init_ui()
         self.equalizer.init_ui()
-        self.exciter.init_ui()
         self.bass_enhancer.init_ui()
+        self.exciter.init_ui()
         self.delay.init_ui()
         self.stereo_enhancer.init_ui()
         self.stereo_spread.init_ui()
@@ -169,8 +169,8 @@ class SinkInputEffects(EffectsBase):
         self.add_to_listbox('highpass')
         self.add_to_listbox('lowpass')
         self.add_to_listbox('equalizer')
-        self.add_to_listbox('exciter')
         self.add_to_listbox('bass_enhancer')
+        self.add_to_listbox('exciter')
         self.add_to_listbox('stereo_enhancer')
         self.add_to_listbox('panorama')
         self.add_to_listbox('stereo_spread')
@@ -189,8 +189,8 @@ class SinkInputEffects(EffectsBase):
         self.stack.add_named(self.highpass.ui_window, 'highpass')
         self.stack.add_named(self.lowpass.ui_window, 'lowpass')
         self.stack.add_named(self.equalizer.ui_window, 'equalizer')
-        self.stack.add_named(self.exciter.ui_window, 'exciter')
         self.stack.add_named(self.bass_enhancer.ui_window, 'bass_enhancer')
+        self.stack.add_named(self.exciter.ui_window, 'exciter')
         self.stack.add_named(self.stereo_enhancer.ui_window, 'stereo_enhancer')
         self.stack.add_named(self.panorama.ui_window, 'panorama')
         self.stack.add_named(self.stereo_spread.ui_window, 'stereo_spread')
