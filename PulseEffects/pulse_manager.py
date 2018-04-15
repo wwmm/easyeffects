@@ -120,6 +120,8 @@ class PulseManager(GObject.GObject):
         self.get_server_info()
         self.get_default_sink_info()
         self.get_default_source_info()
+        self.load_apps_sink()
+        self.load_mic_sink()
 
     def wrap_callbacks(self):
         self.ctx_notify_cb = p.pa_context_notify_cb_t(self.ctx_notify_cb)
@@ -138,8 +140,16 @@ class PulseManager(GObject.GObject):
     def ctx_notify_cb(self, ctx, user_data):
         state = p.pa_context_get_state(ctx)
 
-        if state == p.PA_CONTEXT_READY:
-            self.log.debug(self.log_tag + 'pulseaudio context started')
+        if state == p.PA_CONTEXT_UNCONNECTED:
+            self.log.debug(self.log_tag + 'pulseaudio context is unconnected')
+        elif state == p.PA_CONTEXT_CONNECTING:
+            self.log.debug(self.log_tag + 'pulseaudio context is connecting')
+        elif state == p.PA_CONTEXT_AUTHORIZING:
+            self.log.debug(self.log_tag + 'pulseaudio context is authorizing')
+        elif state == p.PA_CONTEXT_SETTING_NAME:
+            self.log.debug(self.log_tag + 'pulseaudio context is setting name')
+        elif state == p.PA_CONTEXT_READY:
+            self.log.debug(self.log_tag + 'pulseaudio context is ready')
             self.log.debug(self.log_tag + 'connected to server: ' +
                            p.pa_context_get_server(ctx).decode())
             self.log.debug(self.log_tag + 'server protocol version: ' +

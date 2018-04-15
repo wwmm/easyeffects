@@ -100,8 +100,6 @@ class Application(Gtk.Application):
         # pulseaudio
 
         self.pm = PulseManager()
-        self.pm.load_apps_sink()
-        self.pm.load_mic_sink()
         self.pm.connect('new_default_sink', self.on_new_default_sink)
         self.pm.connect('new_default_source', self.on_new_default_source)
         self.pm.connect('sink_added', self.on_sink_added)
