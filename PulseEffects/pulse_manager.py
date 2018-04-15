@@ -300,8 +300,10 @@ class PulseManager(GObject.GObject):
         p.pa_threaded_mainloop_signal(self.main_loop, 0)
 
     def sink_info_cb(self, context, info, eol, emit_signal):
-        if eol == -1:
+        if eol == -1:  # error ocurred. Sink may not exist
             self.sink_is_loaded = False
+
+            p.pa_threaded_mainloop_signal(self.main_loop, 0)
         elif eol == 0:
             if info:
                 self.sink_owner_module = info.contents.owner_module
@@ -327,13 +329,17 @@ class PulseManager(GObject.GObject):
                                 'monitor_source_name': self.sink_monitor_name}
 
                     GLib.idle_add(self.emit, 'sink_added', new_sink)
-        elif eol == 1:
+        elif eol == 1:  # no more objects
             self.sink_is_loaded = True
 
-        p.pa_threaded_mainloop_signal(self.main_loop, 0)
+            p.pa_threaded_mainloop_signal(self.main_loop, 0)
 
     def source_info_cb(self, context, info, eol, emit_signal):
-        if info:
+        if eol == -1:
+            self.log.debug(self.log_tag + ' error in source_info_cb')
+
+            p.pa_threaded_mainloop_signal(self.main_loop, 0)
+        elif eol == 0 and info:
             self.source_idx = info.contents.index
             self.source_rate = info.contents.sample_spec.rate
 
@@ -350,8 +356,8 @@ class PulseManager(GObject.GObject):
                             'description': description}
 
                 GLib.idle_add(self.emit, 'source_added', new_sink)
-
-        p.pa_threaded_mainloop_signal(self.main_loop, 0)
+        elif eol == 1:
+            p.pa_threaded_mainloop_signal(self.main_loop, 0)
 
     def load_sink(self, name, description, rate):
         self.sink_is_loaded = False
@@ -616,14 +622,32 @@ class PulseManager(GObject.GObject):
                                                  1)  # 1 for new
 
     def find_sinks(self):
-        p.pa_context_get_sink_info_list(self.ctx,
-                                        self.sink_info_cb,
-                                        1)  # 1 for new
+        p.pa_threaded_mainloop_lock(self.main_loop)
+
+        o = p.pa_context_get_sink_info_list(self.ctx,
+                                            self.sink_info_cb,
+                                            1)  # 1 for new
+
+        while p.pa_operation_get_state(o) == p.PA_OPERATION_RUNNING:
+            p.pa_threaded_mainloop_wait(self.main_loop)
+
+        p.pa_operation_unref(o)
+
+        p.pa_threaded_mainloop_unlock(self.main_loop)
 
     def find_sources(self):
-        p.pa_context_get_source_info_list(self.ctx,
-                                          self.source_info_cb,
-                                          1)  # 1 for new
+        p.pa_threaded_mainloop_lock(self.main_loop)
+
+        o = p.pa_context_get_source_info_list(self.ctx,
+                                              self.source_info_cb,
+                                              1)  # 1 for new
+
+        while p.pa_operation_get_state(o) == p.PA_OPERATION_RUNNING:
+            p.pa_threaded_mainloop_wait(self.main_loop)
+
+        p.pa_operation_unref(o)
+
+        p.pa_threaded_mainloop_unlock(self.main_loop)
 
     def move_sink_input_to_pulseeffects_sink(self, idx):
         user_data = p.ctx_success_cb_data()
@@ -879,14 +903,22 @@ class PulseManager(GObject.GObject):
             data = p.cast_to_struct_ptr(user_data, p.ctx_success_cb_data)
 
             if data.contents:
-                operation = data.contents.operation.decode('utf-8')
+                operation = data.contents.operation
 
-                if not success:
-                    self.log.critical(self.log_tag + 'context operation ' +
-                                      operation + ' failed!')
+                if operation:
+                    try:
+                        operation = operation.decode('utf-8')
 
-                if operation == 'unload_module':
-                    p.pa_threaded_mainloop_signal(self.main_loop, 0)
+                        if not success:
+                            self.log.critical(self.log_tag +
+                                              'context operation ' +
+                                              operation + ' failed!')
+
+                        if operation == 'unload_module':
+                            p.pa_threaded_mainloop_signal(self.main_loop, 0)
+                    except UnicodeDecodeError:
+                        pass
+
         elif not success:
             self.log.critical(self.log_tag + 'context operation failed!!')
 
