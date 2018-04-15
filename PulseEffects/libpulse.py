@@ -163,6 +163,10 @@ def cast_to_int(v):
     return cast(v, POINTER(c_int))
 
 
+def cast_to_struct_ptr(void_ptr, s):
+    return cast(void_ptr, POINTER(s))
+
+
 def sample_spec_format_name(code):
     if code == PA_SAMPLE_U8:
         return 'u8'
@@ -209,6 +213,10 @@ class pa_threaded_mainloop(Structure):
 
 class pa_context(Structure):
     _fields_ = []
+
+
+class ctx_success_cb_data(Structure):
+    _fields_ = [('operation', c_char_p)]
 
 
 class pa_spawn_api(Structure):

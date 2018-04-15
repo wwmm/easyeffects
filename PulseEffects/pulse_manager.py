@@ -166,8 +166,12 @@ class PulseManager(GObject.GObject):
                 p.PA_SUBSCRIPTION_MASK_SINK + \
                 p.PA_SUBSCRIPTION_MASK_SERVER
 
+            user_data = p.ctx_success_cb_data()
+
+            user_data.operation = 'subscribe'.encode('utf-8')
+
             p.pa_context_subscribe(ctx, subscription_mask,
-                                   self.ctx_success_cb, None)
+                                   self.ctx_success_cb, p.get_ref(user_data))
 
             self.event_ctx_ready.set()
 
@@ -182,11 +186,6 @@ class PulseManager(GObject.GObject):
         elif state == p.PA_CONTEXT_TERMINATED:
             self.log.debug(self.log_tag + 'pulseaudio context terminated')
 
-            self.log.debug(self.log_tag +
-                           'unferencing pulseaudio context object')
-
-            p.pa_context_unref(ctx)
-
             self.event_ctx_terminated.set()
 
     def exit(self):
@@ -197,6 +196,9 @@ class PulseManager(GObject.GObject):
         p.pa_context_disconnect(self.ctx)
 
         self.event_ctx_terminated.wait()
+
+        self.log.debug(self.log_tag + 'unferencing pulseaudio context object')
+        p.pa_context_unref(self.ctx)
 
         self.log.debug(self.log_tag + 'stopping pulseaudio threaded main loop')
         p.pa_threaded_mainloop_stop(self.main_loop)
@@ -624,25 +626,45 @@ class PulseManager(GObject.GObject):
                                           1)  # 1 for new
 
     def move_sink_input_to_pulseeffects_sink(self, idx):
+        user_data = p.ctx_success_cb_data()
+
+        user_data.operation = 'move_sink_input_by_index'.encode('utf-8')
+
         p.pa_context_move_sink_input_by_index(self.ctx, idx,
                                               self.apps_sink_idx,
-                                              self.ctx_success_cb, None)
+                                              self.ctx_success_cb,
+                                              p.get_ref(user_data))
 
     def move_sink_input_to_default_sink(self, idx):
+        user_data = p.ctx_success_cb_data()
+
+        user_data.operation = 'move_sink_input_by_name'.encode('utf-8')
+
         p.pa_context_move_sink_input_by_name(self.ctx, idx,
                                              self.default_sink_name.encode(),
-                                             self.ctx_success_cb, None)
+                                             self.ctx_success_cb,
+                                             p.get_ref(user_data))
 
     def move_source_output_to_pulseeffects_source(self, idx):
+        user_data = p.ctx_success_cb_data()
+
+        user_data.operation = 'move_source_output_by_index'.encode('utf-8')
+
         p.pa_context_move_source_output_by_index(self.ctx, idx,
                                                  self.mic_sink_monitor_idx,
-                                                 self.ctx_success_cb, None)
+                                                 self.ctx_success_cb,
+                                                 p.get_ref(user_data))
 
     def move_source_output_to_default_source(self, idx):
+        user_data = p.ctx_success_cb_data()
+
+        user_data.operation = 'move_source_output_by_name'.encode('utf-8')
+
         p.pa_context_move_source_output_by_name(self.ctx, idx,
                                                 self.default_source_name
                                                 .encode(),
-                                                self.ctx_success_cb, None)
+                                                self.ctx_success_cb,
+                                                p.get_ref(user_data))
 
     def set_sink_input_volume(self, idx, audio_channels, value):
         cvolume = p.pa_cvolume()
@@ -653,12 +675,22 @@ class PulseManager(GObject.GObject):
         cvolume_ptr = p.pa_cvolume_set(p.get_ref(cvolume), audio_channels,
                                        raw_value)
 
+        user_data = p.ctx_success_cb_data()
+
+        user_data.operation = 'set_sink_input_volume'.encode('utf-8')
+
         p.pa_context_set_sink_input_volume(self.ctx, idx, cvolume_ptr,
-                                           self.ctx_success_cb, None)
+                                           self.ctx_success_cb,
+                                           p.get_ref(user_data))
 
     def set_sink_input_mute(self, idx, mute_state):
+        user_data = p.ctx_success_cb_data()
+
+        user_data.operation = 'set_sink_input_mute'.encode('utf-8')
+
         p.pa_context_set_sink_input_mute(self.ctx, idx, mute_state,
-                                         self.ctx_success_cb, None)
+                                         self.ctx_success_cb,
+                                         p.get_ref(user_data))
 
     def set_source_output_volume(self, idx, audio_channels, value):
         cvolume = p.pa_cvolume()
@@ -669,12 +701,22 @@ class PulseManager(GObject.GObject):
         cvolume_ptr = p.pa_cvolume_set(p.get_ref(cvolume), audio_channels,
                                        raw_value)
 
+        user_data = p.ctx_success_cb_data()
+
+        user_data.operation = 'set_source_output_volume'.encode('utf-8')
+
         p.pa_context_set_source_output_volume(self.ctx, idx, cvolume_ptr,
-                                              self.ctx_success_cb, None)
+                                              self.ctx_success_cb,
+                                              p.get_ref(user_data))
 
     def set_source_output_mute(self, idx, mute_state):
+        user_data = p.ctx_success_cb_data()
+
+        user_data.operation = 'set_source_output_mute'.encode('utf-8')
+
         p.pa_context_set_source_output_mute(self.ctx, idx, mute_state,
-                                            self.ctx_success_cb, None)
+                                            self.ctx_success_cb,
+                                            p.get_ref(user_data))
 
     def get_sink_input_info(self, idx):
         p.pa_context_get_sink_input_info(self.ctx, idx,
@@ -833,12 +875,38 @@ class PulseManager(GObject.GObject):
                 p.pa_context_get_server_info(context, self.server_info_cb, 1)
 
     def ctx_success_cb(self, context, success, user_data):
-        if not success:
+        if user_data:
+            data = p.cast_to_struct_ptr(user_data, p.ctx_success_cb_data)
+
+            if data.contents:
+                operation = data.contents.operation.decode('utf-8')
+
+                if not success:
+                    self.log.critical(self.log_tag + 'context operation ' +
+                                      operation + ' failed!')
+
+                if operation == 'unload_module':
+                    p.pa_threaded_mainloop_signal(self.main_loop, 0)
+        elif not success:
             self.log.critical(self.log_tag + 'context operation failed!!')
 
-    def unload_sinks(self):
-        p.pa_context_unload_module(self.ctx, self.apps_sink_owner_module,
-                                   self.ctx_success_cb, None)
+    def unload_module(self, module):
+        user_data = p.ctx_success_cb_data()
 
-        p.pa_context_unload_module(self.ctx, self.mic_sink_owner_module,
-                                   self.ctx_success_cb, None)
+        user_data.operation = 'unload_module'.encode('utf-8')
+
+        p.pa_threaded_mainloop_lock(self.main_loop)
+
+        o = p.pa_context_unload_module(self.ctx, module, self.ctx_success_cb,
+                                       p.get_ref(user_data))
+
+        while p.pa_operation_get_state(o) == p.PA_OPERATION_RUNNING:
+            p.pa_threaded_mainloop_wait(self.main_loop)
+
+        p.pa_operation_unref(o)
+
+        p.pa_threaded_mainloop_unlock(self.main_loop)
+
+    def unload_sinks(self):
+        self.unload_module(self.apps_sink_owner_module)
+        self.unload_module(self.mic_sink_owner_module)
