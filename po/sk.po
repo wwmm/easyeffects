@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-03 11:57-0300\n"
+"POT-Creation-Date: 2018-04-15 10:44-0300\n"
 "PO-Revision-Date: 2017-06-11 22:19+0200\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: \n"
@@ -38,11 +38,13 @@ msgstr ""
 msgid "Resampler"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:156 PulseEffects/ui/main_ui.glade:632
+#: PulseEffects/ui/app_info.glade:156 PulseEffects/ui/main_ui.glade:693
+#: PulseEffects/ui/main_ui.glade:769
 msgid "Buffer"
 msgstr ""
 
-#: PulseEffects/ui/app_info.glade:183 PulseEffects/ui/main_ui.glade:665
+#: PulseEffects/ui/app_info.glade:183 PulseEffects/ui/main_ui.glade:706
+#: PulseEffects/ui/main_ui.glade:782
 msgid "Latency"
 msgstr ""
 
@@ -97,17 +99,17 @@ msgstr "Vstup [dB]"
 msgid "Output [dB]"
 msgstr "Výstup [dB]"
 
-#: PulseEffects/ui/compressor.glade:27
+#: PulseEffects/ui/compressor.glade:27 PulseEffects/ui/webrtc.glade:275
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:52
 msgid "Compressor"
 msgstr "Kompresor"
 
-#: PulseEffects/ui/compressor.glade:105 PulseEffects/ui/deesser.glade:223
+#: PulseEffects/ui/compressor.glade:105 PulseEffects/ui/deesser.glade:131
 #: PulseEffects/ui/gate.glade:116
 msgid "rms"
 msgstr "RMS"
 
-#: PulseEffects/ui/compressor.glade:121 PulseEffects/ui/deesser.glade:240
+#: PulseEffects/ui/compressor.glade:121 PulseEffects/ui/deesser.glade:148
 #: PulseEffects/ui/gate.glade:132
 msgid "peak"
 msgstr "Špičkový"
@@ -124,14 +126,14 @@ msgstr "Nábeh [ms]"
 msgid "Release"
 msgstr "Uvoľnenie [s]"
 
-#: PulseEffects/ui/compressor.glade:220 PulseEffects/ui/deesser.glade:131
+#: PulseEffects/ui/compressor.glade:220 PulseEffects/ui/deesser.glade:446
 #: PulseEffects/ui/gate.glade:319 PulseEffects/ui/limiter.glade:362
 #: PulseEffects/ui/maximizer.glade:81
 #, fuzzy
 msgid "Threshold"
 msgstr "Prah [dB]"
 
-#: PulseEffects/ui/compressor.glade:251 PulseEffects/ui/deesser.glade:164
+#: PulseEffects/ui/compressor.glade:251 PulseEffects/ui/deesser.glade:479
 #: PulseEffects/ui/gate.glade:349
 #, fuzzy
 msgid "Ratio"
@@ -142,39 +144,40 @@ msgstr "Pomer [n:1]"
 msgid "Knee"
 msgstr "Koleno [dB]"
 
-#: PulseEffects/ui/compressor.glade:314 PulseEffects/ui/deesser.glade:195
+#: PulseEffects/ui/compressor.glade:314 PulseEffects/ui/deesser.glade:510
 #: PulseEffects/ui/gate.glade:412
 #, fuzzy
 msgid "Makeup"
 msgstr "Výstupné zosilnenie [dB]"
 
 #: PulseEffects/ui/compressor.glade:366 PulseEffects/ui/crossfeed.glade:200
-#: PulseEffects/ui/deesser.glade:518 PulseEffects/ui/delay.glade:353
+#: PulseEffects/ui/deesser.glade:562 PulseEffects/ui/delay.glade:353
 #: PulseEffects/ui/gate.glade:466 PulseEffects/ui/highpass.glade:151
 #: PulseEffects/ui/limiter.glade:433 PulseEffects/ui/lowpass.glade:151
 #: PulseEffects/ui/maximizer.glade:191 PulseEffects/ui/output_limiter.glade:192
 #: PulseEffects/ui/panorama.glade:122 PulseEffects/ui/pitch.glade:250
-#: PulseEffects/ui/reverb.glade:303
+#: PulseEffects/ui/reverb.glade:303 PulseEffects/ui/webrtc.glade:352
 msgid "Input"
 msgstr "Vstup"
 
 #: PulseEffects/ui/compressor.glade:381 PulseEffects/ui/crossfeed.glade:215
-#: PulseEffects/ui/deesser.glade:533 PulseEffects/ui/delay.glade:368
+#: PulseEffects/ui/deesser.glade:577 PulseEffects/ui/delay.glade:368
 #: PulseEffects/ui/gate.glade:481 PulseEffects/ui/highpass.glade:166
 #: PulseEffects/ui/limiter.glade:448 PulseEffects/ui/lowpass.glade:166
 #: PulseEffects/ui/maximizer.glade:206 PulseEffects/ui/output_limiter.glade:207
 #: PulseEffects/ui/panorama.glade:137 PulseEffects/ui/pitch.glade:265
-#: PulseEffects/ui/reverb.glade:318
+#: PulseEffects/ui/reverb.glade:318 PulseEffects/ui/webrtc.glade:367
 msgid "Output"
 msgstr "Výstup"
 
-#: PulseEffects/ui/compressor.glade:547 PulseEffects/ui/gate.glade:211
+#: PulseEffects/ui/compressor.glade:547 PulseEffects/ui/deesser.glade:742
+#: PulseEffects/ui/gate.glade:211
 msgid "Gain Reduction"
 msgstr "Redukcia zosilnenia"
 
 #. for some reason when listbox is inside a scrolledwindow
 #. it autoselects a row at startup
-#: PulseEffects/ui/crossfeed.glade:46 PulseEffects/ui/main_ui.glade:317
+#: PulseEffects/ui/crossfeed.glade:46 PulseEffects/ui/main_ui.glade:103
 #: PulseEffects/ui/reverb.glade:90 PulseEffects/presets_manager.py:58
 msgid "Presets"
 msgstr "Predvoľby"
@@ -207,57 +210,57 @@ msgstr "Koleno [dB]"
 msgid "Crossfeed"
 msgstr ""
 
-#: PulseEffects/ui/deesser.glade:20 PulseEffects/ui/gate.glade:27
-msgid "Gate"
+#: PulseEffects/ui/deesser.glade:57
+msgid "Deesser"
 msgstr ""
 
-#: PulseEffects/ui/deesser.glade:99
-msgid "Laxity"
-msgstr ""
-
-#: PulseEffects/ui/deesser.glade:262 PulseEffects/ui/gate.glade:152
+#: PulseEffects/ui/deesser.glade:171 PulseEffects/ui/gate.glade:152
 #, fuzzy
 msgid "Detection"
 msgstr "Zoslabenie"
 
-#: PulseEffects/ui/deesser.glade:276
+#: PulseEffects/ui/deesser.glade:185
 msgid "Mode"
 msgstr ""
 
-#: PulseEffects/ui/deesser.glade:286
-msgid "Wide"
+#: PulseEffects/ui/deesser.glade:195
+msgid "wide"
 msgstr ""
 
-#: PulseEffects/ui/deesser.glade:303
-msgid "Split"
+#: PulseEffects/ui/deesser.glade:213
+msgid "split"
 msgstr ""
 
-#: PulseEffects/ui/deesser.glade:338
+#: PulseEffects/ui/deesser.glade:248
 msgid "F1"
 msgstr ""
 
-#: PulseEffects/ui/deesser.glade:370
+#: PulseEffects/ui/deesser.glade:281
 #, fuzzy
 msgid "F1 Level"
 msgstr "Úroveň"
 
-#: PulseEffects/ui/deesser.glade:402
+#: PulseEffects/ui/deesser.glade:314
 msgid "F2"
 msgstr ""
 
-#: PulseEffects/ui/deesser.glade:453
+#: PulseEffects/ui/deesser.glade:367
 #, fuzzy
 msgid "F2 Level"
 msgstr "Úroveň"
 
-#: PulseEffects/ui/deesser.glade:468
+#: PulseEffects/ui/deesser.glade:382
 msgid "F2 Q"
 msgstr ""
 
-#: PulseEffects/ui/deesser.glade:699 PulseEffects/ui/gate.glade:647
+#: PulseEffects/ui/deesser.glade:414
+msgid "Laxity"
+msgstr ""
+
+#: PulseEffects/ui/deesser.glade:755
 #, fuzzy
-msgid "Reduction Level"
-msgstr "Redukcia zosilnenia"
+msgid "Detected"
+msgstr "Zoslabenie"
 
 #: PulseEffects/ui/delay.glade:23 PulseEffects/ui/delay.glade:274
 #: PulseEffects/ui/delay.glade:290 PulseEffects/ui/stereo_enhancer.glade:181
@@ -340,6 +343,10 @@ msgstr ""
 msgid "Ceiling"
 msgstr "Obmedzenie [dB]"
 
+#: PulseEffects/ui/gate.glade:27
+msgid "Gate"
+msgstr ""
+
 #: PulseEffects/ui/gate.glade:165
 msgid "Stereo Link"
 msgstr ""
@@ -351,6 +358,11 @@ msgstr ""
 #: PulseEffects/ui/gate.glade:191
 msgid "maximum"
 msgstr ""
+
+#: PulseEffects/ui/gate.glade:646
+#, fuzzy
+msgid "Reduction Level"
+msgstr "Redukcia zosilnenia"
 
 #: PulseEffects/ui/highpass.glade:18
 msgid "High Pass"
@@ -403,68 +415,75 @@ msgstr "Zoslabenie"
 msgid "Low Pass"
 msgstr "Dolný prechod"
 
-#: PulseEffects/ui/main_ui.glade:283
+#: PulseEffects/ui/main_ui.glade:69
 #, fuzzy
 msgid "Test Signals"
 msgstr "Skúšobný signál"
 
-#: PulseEffects/ui/main_ui.glade:376
+#: PulseEffects/ui/main_ui.glade:396
 msgid "Start Service at Login"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:402
+#: PulseEffects/ui/main_ui.glade:422
 msgid "Enable All Applications"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:427
+#: PulseEffects/ui/main_ui.glade:447
 msgid "Use Dark Theme"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:452
+#: PulseEffects/ui/main_ui.glade:472
 msgid "Settings"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:461
+#: PulseEffects/ui/main_ui.glade:481
 #, fuzzy
 msgid "Reset"
 msgstr "Predvoľby"
 
-#: PulseEffects/ui/main_ui.glade:477
+#: PulseEffects/ui/main_ui.glade:497
 msgid "General"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:495
+#: PulseEffects/ui/main_ui.glade:515
 msgid "Show"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:522
+#: PulseEffects/ui/main_ui.glade:542
 msgid "Points"
 msgstr ""
 
-#: PulseEffects/ui/main_ui.glade:549
+#: PulseEffects/ui/main_ui.glade:569
 #, fuzzy
 msgid "Spectrum"
 msgstr "Zobraziť spektrum"
 
-#: PulseEffects/ui/main_ui.glade:566
-msgid "Use Default Output Device"
-msgstr ""
-
-#: PulseEffects/ui/main_ui.glade:578
-msgid "Use Default Input Device"
-msgstr ""
-
-#: PulseEffects/ui/main_ui.glade:617
+#: PulseEffects/ui/main_ui.glade:592
 #, fuzzy
 msgid "Output Device"
 msgstr "Vstupný obmedzovač"
 
-#: PulseEffects/ui/main_ui.glade:709
+#: PulseEffects/ui/main_ui.glade:602 PulseEffects/ui/main_ui.glade:629
+#, fuzzy
+msgid "Use Default"
+msgstr "Predvolený"
+
+#: PulseEffects/ui/main_ui.glade:658
 #, fuzzy
 msgid "Input Device"
 msgstr "Vstupný obmedzovač"
 
-#: PulseEffects/ui/main_ui.glade:732
+#: PulseEffects/ui/main_ui.glade:841
+#, fuzzy
+msgid "Output Effects"
+msgstr "Vstupný obmedzovač"
+
+#: PulseEffects/ui/main_ui.glade:854
+#, fuzzy
+msgid "Input Effects"
+msgstr "Vstupný obmedzovač"
+
+#: PulseEffects/ui/main_ui.glade:870
 msgid "Pulseaudio"
 msgstr ""
 
@@ -526,7 +545,7 @@ msgstr ""
 msgid "Create Preset"
 msgstr "Uložiť predvoľbu"
 
-#: PulseEffects/ui/presets_menu.glade:65 PulseEffects/presets_manager.py:211
+#: PulseEffects/ui/presets_menu.glade:65 PulseEffects/presets_manager.py:203
 #, fuzzy
 msgid "Import Presets"
 msgstr "Načítať predvoľbu"
@@ -619,11 +638,11 @@ msgstr ""
 msgid "Sub"
 msgstr ""
 
-#: PulseEffects/ui/stereo_spread.glade:124
+#: PulseEffects/ui/stereo_spread.glade:124 PulseEffects/ui/webrtc.glade:76
 msgid "Low"
 msgstr ""
 
-#: PulseEffects/ui/stereo_spread.glade:136
+#: PulseEffects/ui/stereo_spread.glade:136 PulseEffects/ui/webrtc.glade:107
 #, fuzzy
 msgid "High"
 msgstr "Horný prechod"
@@ -642,6 +661,41 @@ msgstr "Vstupné filtre"
 msgid "Mono Input"
 msgstr "Vstup"
 
+#: PulseEffects/ui/webrtc.glade:13
+msgid "Webrtc"
+msgstr ""
+
+#: PulseEffects/ui/webrtc.glade:92
+msgid "Moderate"
+msgstr ""
+
+#: PulseEffects/ui/webrtc.glade:127
+#, fuzzy
+msgid "Suppresion Level"
+msgstr "Redukcia zosilnenia"
+
+#: PulseEffects/ui/webrtc.glade:136
+msgid "Enable"
+msgstr ""
+
+#: PulseEffects/ui/webrtc.glade:162
+msgid "Echo Canceller"
+msgstr ""
+
+#: PulseEffects/ui/webrtc.glade:199
+#, fuzzy
+msgid "Noise Suppressor"
+msgstr "Kompresor"
+
+#: PulseEffects/ui/webrtc.glade:237
+msgid "Gain Controller"
+msgstr ""
+
+#: PulseEffects/ui/webrtc.glade:313
+#, fuzzy
+msgid "Voice Detector"
+msgstr "Zoslabenie"
+
 #: PulseEffects/application.py:34
 msgid "Quit PulseEffects. Useful when running in service mode."
 msgstr ""
@@ -654,20 +708,20 @@ msgstr ""
 msgid "Load a preset. Example: pulseeffects -l music"
 msgstr ""
 
-#: PulseEffects/application.py:121
+#: PulseEffects/application.py:145
 msgid "Running in background"
 msgstr ""
 
-#: PulseEffects/effects_base.py:71
+#: PulseEffects/effects_base.py:75
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
 msgid "Applications"
 msgstr ""
 
-#: PulseEffects/effects_base.py:176 PulseEffects/effects_base.py:245
+#: PulseEffects/effects_base.py:180 PulseEffects/effects_base.py:249
 msgid "paused"
 msgstr ""
 
-#: PulseEffects/effects_base.py:178 PulseEffects/effects_base.py:247
+#: PulseEffects/effects_base.py:182 PulseEffects/effects_base.py:251
 msgid "playing"
 msgstr ""
 
@@ -680,19 +734,19 @@ msgstr ""
 msgid "Delete Preset"
 msgstr "Uložiť predvoľbu"
 
-#: PulseEffects/presets_manager.py:170
+#: PulseEffects/presets_manager.py:162
 msgid " is not a file!"
 msgstr ""
 
-#: PulseEffects/presets_manager.py:214
+#: PulseEffects/presets_manager.py:206
 msgid "Open"
 msgstr ""
 
-#: PulseEffects/presets_manager.py:215
+#: PulseEffects/presets_manager.py:207
 msgid "Cancel"
 msgstr ""
 
-#: PulseEffects/presets_manager.py:267
+#: PulseEffects/presets_manager.py:259
 #, fuzzy
 msgid "Presets: "
 msgstr "Predvoľby"

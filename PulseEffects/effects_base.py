@@ -292,7 +292,7 @@ class EffectsBase(PipelineBase):
         apps_want_to_play = False
 
         for a in self.apps_list:
-            if a[1]:
+            if a[1]:  # connected and not corked
                 apps_want_to_play = True
 
                 break
