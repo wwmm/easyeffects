@@ -125,6 +125,8 @@ class PulseManager(GObject.GObject):
 
     def wrap_callbacks(self):
         self.ctx_notify_cb = p.pa_context_notify_cb_t(self.ctx_notify_cb)
+        self.ctx_drain_notify_cb = p.pa_context_notify_cb_t(
+            self.ctx_drain_notify_cb)
         self.server_info_cb = p.pa_server_info_cb_t(self.server_info_cb)
         self.sink_info_cb = p.pa_sink_info_cb_t(self.sink_info_cb)
         self.source_info_cb = p.pa_source_info_cb_t(self.source_info_cb)
@@ -167,12 +169,12 @@ class PulseManager(GObject.GObject):
                 p.PA_SUBSCRIPTION_MASK_SINK + \
                 p.PA_SUBSCRIPTION_MASK_SERVER
 
-            user_data = p.ctx_success_cb_data()
+            udata = p.ctx_success_cb_data()
 
-            user_data.operation = 'subscribe'.encode('utf-8')
+            udata.operation = 'subscribe'.encode('utf-8')
 
             p.pa_context_subscribe(ctx, subscription_mask,
-                                   self.ctx_success_cb, p.get_ref(user_data))
+                                   self.ctx_success_cb, p.get_ref(udata))
 
             self.event_ctx_ready.set()
 
@@ -189,9 +191,34 @@ class PulseManager(GObject.GObject):
 
             self.event_ctx_terminated.set()
 
+    def ctx_drain_notify_cb(self, ctx, user_data):
+        state = p.pa_context_get_state(ctx)
+
+        if state == p.PA_CONTEXT_READY:
+            p.pa_threaded_mainloop_signal(self.main_loop, 0)
+
+    def drain_ctx(self):
+        o = p.pa_context_drain(self.ctx, self.ctx_drain_notify_cb, None)
+
+        if o:
+            p.pa_threaded_mainloop_lock(self.main_loop)
+
+            while p.pa_operation_get_state(o) == p.PA_OPERATION_RUNNING:
+                p.pa_threaded_mainloop_wait(self.main_loop)
+
+            p.pa_threaded_mainloop_unlock(self.main_loop)
+
+            self.log.debug(self.log_tag + 'drained pulseaudio context')
+        else:
+            self.log.debug(self.log_tag + 'context is already drained')
+
+        p.pa_operation_unref(o)
+
     def exit(self):
         self.unload_sinks()
         self.log.debug(self.log_tag + 'sinks unloaded')
+
+        self.drain_ctx()
 
         self.log.debug(self.log_tag + 'disconnecting pulseaudio context')
         p.pa_context_disconnect(self.ctx)
