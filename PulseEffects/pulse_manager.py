@@ -128,6 +128,7 @@ class PulseManager(GObject.GObject):
         self.server_info_cb = p.pa_server_info_cb_t(self.server_info_cb)
         self.sink_info_cb = p.pa_sink_info_cb_t(self.sink_info_cb)
         self.source_info_cb = p.pa_source_info_cb_t(self.source_info_cb)
+        self.module_idx_cb = p.pa_context_index_cb_t(self.module_idx_cb)
         self.sink_input_info_cb = p.pa_sink_input_info_cb_t(
             self.sink_input_info_cb)
         self.source_output_info_cb = p.pa_source_output_info_cb_t(
@@ -359,6 +360,12 @@ class PulseManager(GObject.GObject):
         elif eol == 1:
             p.pa_threaded_mainloop_signal(self.main_loop, 0)
 
+    def module_idx_cb(self, context, idx, user_data):
+        self.log.debug(self.log_tag + 'sink owner module index: ' +
+                       str(idx))
+
+        p.pa_threaded_mainloop_signal(self.main_loop, 0)
+
     def load_sink(self, name, description, rate):
         self.sink_is_loaded = False
 
@@ -379,13 +386,13 @@ class PulseManager(GObject.GObject):
 
             module = b'module-null-sink'
 
-            def module_idx(context, idx, user_data):
-                self.log.debug(self.log_tag + 'sink owner module index: ' +
-                               str(idx))
-
-                p.pa_threaded_mainloop_signal(self.main_loop, 0)
-
-            self.module_idx_cb = p.pa_context_index_cb_t(module_idx)
+            # def module_idx(context, idx, user_data):
+            #     self.log.debug(self.log_tag + 'sink owner module index: ' +
+            #                    str(idx))
+            #
+            #     p.pa_threaded_mainloop_signal(self.main_loop, 0)
+            #
+            # self.module_idx_cb = p.pa_context_index_cb_t(module_idx)
 
             p.pa_threaded_mainloop_lock(self.main_loop)
 
