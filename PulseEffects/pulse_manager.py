@@ -209,10 +209,10 @@ class PulseManager(GObject.GObject):
             p.pa_threaded_mainloop_unlock(self.main_loop)
 
             self.log.debug(self.log_tag + 'drained pulseaudio context')
+
+            p.pa_operation_unref(o)
         else:
             self.log.debug(self.log_tag + 'context is already drained')
-
-        p.pa_operation_unref(o)
 
     def exit(self):
         self.unload_sinks()
