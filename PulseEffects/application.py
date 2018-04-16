@@ -275,6 +275,9 @@ class Application(Gtk.Application):
         self.sie.set_state('null')
         self.soe.set_state('null')
 
+        self.sie.pe_is_closing = True
+        self.soe.pe_is_closing = True
+
         self.pm.exit()
 
     def create_appmenu(self):
