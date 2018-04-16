@@ -305,31 +305,30 @@ class PulseManager(GObject.GObject):
             self.sink_is_loaded = False
 
             p.pa_threaded_mainloop_signal(self.main_loop, 0)
-        elif eol == 0:
-            if info:
-                self.sink_owner_module = info.contents.owner_module
-                self.sink_idx = info.contents.index
-                self.sink_rate = info.contents.sample_spec.rate
+        elif eol == 0 and info:
+            self.sink_owner_module = info.contents.owner_module
+            self.sink_idx = info.contents.index
+            self.sink_rate = info.contents.sample_spec.rate
 
-                sample_format = info.contents.sample_spec.format
-                self.sink_format = p.sample_spec_format_name(sample_format)
+            sample_format = info.contents.sample_spec.format
+            self.sink_format = p.sample_spec_format_name(sample_format)
 
-                self.sink_monitor_name = info.contents.monitor_source_name\
-                    .decode()
+            self.sink_monitor_name = info.contents.monitor_source_name\
+                .decode()
 
-                self.sink_monitor_idx = info.contents.monitor_source
+            self.sink_monitor_idx = info.contents.monitor_source
 
-                name = info.contents.name.decode()
+            name = info.contents.name.decode()
 
-                if (emit_signal and name != 'PulseEffects_apps' and
-                        name != 'PulseEffects_mic'):
-                    description = info.contents.description.decode()
+            if (emit_signal and name != 'PulseEffects_apps' and
+                    name != 'PulseEffects_mic'):
+                description = info.contents.description.decode()
 
-                    new_sink = {'name': name, 'idx': self.sink_idx,
-                                'description': description,
-                                'monitor_source_name': self.sink_monitor_name}
+                new_sink = {'name': name, 'idx': self.sink_idx,
+                            'description': description,
+                            'monitor_source_name': self.sink_monitor_name}
 
-                    GLib.idle_add(self.emit, 'sink_added', new_sink)
+                GLib.idle_add(self.emit, 'sink_added', new_sink)
         elif eol == 1:  # no more objects
             self.sink_is_loaded = True
 
@@ -361,8 +360,7 @@ class PulseManager(GObject.GObject):
             p.pa_threaded_mainloop_signal(self.main_loop, 0)
 
     def module_idx_cb(self, context, idx, user_data):
-        self.log.debug(self.log_tag + 'sink owner module index: ' +
-                       str(idx))
+        self.log.debug(self.log_tag + 'sink owner module index: ' + str(idx))
 
         p.pa_threaded_mainloop_signal(self.main_loop, 0)
 
@@ -385,14 +383,6 @@ class PulseManager(GObject.GObject):
             argument = ' '.join(map(str, args)).encode('ascii')
 
             module = b'module-null-sink'
-
-            # def module_idx(context, idx, user_data):
-            #     self.log.debug(self.log_tag + 'sink owner module index: ' +
-            #                    str(idx))
-            #
-            #     p.pa_threaded_mainloop_signal(self.main_loop, 0)
-            #
-            # self.module_idx_cb = p.pa_context_index_cb_t(module_idx)
 
             p.pa_threaded_mainloop_lock(self.main_loop)
 
@@ -472,7 +462,9 @@ class PulseManager(GObject.GObject):
             self.log.critical(self.log_tag + 'Could not load mic sink')
 
     def sink_input_info_cb(self, context, info, eol, user_data):
-        if info:
+        if eol == -1:
+            p.pa_threaded_mainloop_signal(self.main_loop, 0)
+        elif eol == 0 and info:
             idx = info.contents.index
             proplist = info.contents.proplist
 
@@ -544,8 +536,13 @@ class PulseManager(GObject.GObject):
                 elif user_data == 2:
                     GLib.idle_add(self.emit, 'sink_input_changed', new_input)
 
+        elif eol == 1:
+            p.pa_threaded_mainloop_signal(self.main_loop, 0)
+
     def source_output_info_cb(self, context, info, eol, user_data):
-        if info:
+        if eol == -1:
+            p.pa_threaded_mainloop_signal(self.main_loop, 0)
+        elif eol == 0 and info:
             idx = info.contents.index
             proplist = info.contents.proplist
 
@@ -618,15 +615,37 @@ class PulseManager(GObject.GObject):
                     GLib.idle_add(self.emit, 'source_output_changed',
                                   new_output)
 
+        elif eol == 1:
+            p.pa_threaded_mainloop_signal(self.main_loop, 0)
+
     def find_sink_inputs(self):
-        p.pa_context_get_sink_input_info_list(self.ctx,
-                                              self.sink_input_info_cb,
-                                              1)  # 1 for new
+        p.pa_threaded_mainloop_lock(self.main_loop)
+
+        o = p.pa_context_get_sink_input_info_list(self.ctx,
+                                                  self.sink_input_info_cb,
+                                                  1)  # 1 for new
+
+        while p.pa_operation_get_state(o) == p.PA_OPERATION_RUNNING:
+            p.pa_threaded_mainloop_wait(self.main_loop)
+
+        p.pa_operation_unref(o)
+
+        p.pa_threaded_mainloop_unlock(self.main_loop)
 
     def find_source_outputs(self):
-        p.pa_context_get_source_output_info_list(self.ctx,
-                                                 self.source_output_info_cb,
-                                                 1)  # 1 for new
+        p.pa_threaded_mainloop_lock(self.main_loop)
+
+        o = p.pa_context_get_source_output_info_list(self.ctx,
+                                                     self
+                                                     .source_output_info_cb,
+                                                     1)  # 1 for new
+
+        while p.pa_operation_get_state(o) == p.PA_OPERATION_RUNNING:
+            p.pa_threaded_mainloop_wait(self.main_loop)
+
+        p.pa_operation_unref(o)
+
+        p.pa_threaded_mainloop_unlock(self.main_loop)
 
     def find_sinks(self):
         p.pa_threaded_mainloop_lock(self.main_loop)
