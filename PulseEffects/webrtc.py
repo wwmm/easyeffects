@@ -57,19 +57,15 @@ class Webrtc():
             pa_props = Gst.Structure.new_from_string(pa_props_str)
 
             self.probe_src.set_property('stream-properties', pa_props)
-            self.probe_src.set_property('buffer-time', 10000)
+            # self.probe_src.set_property('buffer-time', 10000)
             # self.probe_src.set_property('latency-time', 10000)
 
-            caps = ['audio/x-raw', 'format=S16LE', 'rate=48000', 'channels=2']
+            caps_in = Gst.Caps.from_string('audio/x-raw,' + 'format=S16LE,' +
+                                           'rate=48000,' + 'channels=2')
 
-            src_caps = Gst.Caps.from_string(','.join(caps))
-
-            probe_caps.set_property('caps', src_caps)
+            probe_caps.set_property('caps', caps_in)
 
             probe_queue.set_property('silent', True)
-            probe_queue.set_property('max-size-buffers', 0)
-            probe_queue.set_property('max-size-time', 0)
-            probe_queue.set_property('max-size-bytes', 0)
 
             self.probe_bin.add(self.probe_src)
             self.probe_bin.add(probe_queue)
@@ -88,23 +84,21 @@ class Webrtc():
 
             # dsp setup
 
-            dsp_convert = Gst.ElementFactory.make('audioconvert', None)
-            dsp_resample = Gst.ElementFactory.make('audioresample', None)
-            dsp_caps = Gst.ElementFactory.make('capsfilter', None)
+            dsp_convert_in = Gst.ElementFactory.make('audioconvert', None)
+            dsp_resample_in = Gst.ElementFactory.make('audioresample', None)
+            dsp_convert_out = Gst.ElementFactory.make('audioconvert', None)
+            dsp_resample_out = Gst.ElementFactory.make('audioresample', None)
+            dsp_caps_in = Gst.ElementFactory.make('capsfilter', None)
 
-            dsp_caps.set_property('caps', src_caps)
-
-            # self.webrtc.set_property('echo-cancel', True)
-            # self.webrtc.set_property('echo-suppression-level', 'high')
-            # self.webrtc.set_property('noise-suppression', True)
-            # self.webrtc.set_property('noise-suppression-level', 'low')
-            # self.webrtc.set_property('high-pass-filter', True)
+            dsp_caps_in.set_property('caps', caps_in)
 
             self.bin.append(self.in_level, self.on_filter_added, None)
-            self.bin.append(dsp_convert, self.on_filter_added, None)
-            self.bin.append(dsp_resample, self.on_filter_added, None)
-            self.bin.append(dsp_caps, self.on_filter_added, None)
+            self.bin.append(dsp_convert_in, self.on_filter_added, None)
+            self.bin.append(dsp_resample_in, self.on_filter_added, None)
+            self.bin.append(dsp_caps_in, self.on_filter_added, None)
             self.bin.append(self.webrtc, self.on_filter_added, None)
+            self.bin.append(dsp_convert_out, self.on_filter_added, None)
+            self.bin.append(dsp_resample_out, self.on_filter_added, None)
             self.bin.append(self.out_level, self.on_filter_added, None)
 
     def post_messages(self, state):
@@ -125,6 +119,7 @@ class Webrtc():
 
         self.ui_enable = self.builder.get_object('enable')
         self.ui_img_state = self.builder.get_object('img_state')
+
         self.ui_echo_cancel = self.builder.get_object('echo_cancel')
         self.ui_echo_suppression_level_low = self.builder.get_object(
             'echo_suppression_level_low')
@@ -132,6 +127,17 @@ class Webrtc():
             'echo_suppression_level_moderate')
         self.ui_echo_suppression_level_high = self.builder.get_object(
             'echo_suppression_level_high')
+
+        self.ui_noise_suppression = self.builder.get_object(
+            'noise_suppression')
+        self.ui_noise_suppression_level_low = self.builder.get_object(
+            'noise_suppression_level_low')
+        self.ui_noise_suppression_level_moderate = self.builder.get_object(
+            'noise_suppression_level_moderate')
+        self.ui_noise_suppression_level_high = self.builder.get_object(
+            'noise_suppression_level_high')
+        self.ui_noise_suppression_level_very_high = self.builder.get_object(
+            'noise_suppression_level_very_high')
 
         self.ui_input_level_left = self.builder.get_object('input_level_left')
         self.ui_input_level_right = self.builder.get_object(
@@ -160,22 +166,63 @@ class Webrtc():
         self.settings.bind('state', self.ui_controls, 'sensitive',
                            Gio.SettingsBindFlags.GET)
 
-        # self.settings.bind('echo-cancel', self.ui_echo_cancel, 'value',
-        # flag)
-        # self.settings.bind('ceiling', self.ui_ceiling, 'value', flag)
-        # self.settings.bind('threshold', self.ui_threshold, 'value',
-        #                    flag)
+        self.settings.bind('echo-cancel', self.ui_echo_cancel, 'active', flag)
+        self.settings.bind('echo-suppression-level-low',
+                           self.ui_echo_suppression_level_low, 'active', flag)
+        self.settings.bind('echo-suppression-level-moderate',
+                           self.ui_echo_suppression_level_moderate, 'active',
+                           flag)
+        self.settings.bind('echo-suppression-level-high',
+                           self.ui_echo_suppression_level_high, 'active', flag)
+
+        self.settings.bind('noise-suppression', self.ui_noise_suppression,
+                           'active', flag)
+        self.settings.bind('noise-suppression-level-low',
+                           self.ui_noise_suppression_level_low, 'active', flag)
+        self.settings.bind('noise-suppression-level-moderate',
+                           self.ui_noise_suppression_level_moderate, 'active',
+                           flag)
+        self.settings.bind('noise-suppression-level-high',
+                           self.ui_noise_suppression_level_high, 'active',
+                           flag)
+        self.settings.bind('noise-suppression-level-very-high',
+                           self.ui_noise_suppression_level_very_high, 'active',
+                           flag)
 
         # binding ui widgets to gstreamer plugins
 
         flag = GObject.BindingFlags.BIDIRECTIONAL | \
             GObject.BindingFlags.SYNC_CREATE
 
-        # self.ui_release.bind_property('value', self.webrtc, 'release', flag)
-        # self.ui_ceiling.bind_property('value', self.webrtc,
-        #                               'output-ceiling', flag)
-        # self.ui_threshold.bind_property('value', self.webrtc,
-        #                                 'threshold', flag)
+        self.ui_echo_cancel.bind_property('active', self.webrtc, 'echo-cancel',
+                                          flag)
+        self.ui_noise_suppression.bind_property('active', self.webrtc,
+                                                'noise-suppression', flag)
+
+    def on_new_echo_suppression_level(self, obj):
+        if obj.get_active():
+            label = obj.get_name()
+
+            if label == 'echo_suppression_level_low':
+                self.webrtc.set_property('echo-suppression-level', 'low')
+            elif label == 'echo_suppression_level_moderate':
+                self.webrtc.set_property('echo-suppression-level', 'moderate')
+            elif label == 'echo_suppression_level_high':
+                self.webrtc.set_property('echo-suppression-level', 'high')
+
+    def on_new_noise_suppression_level(self, obj):
+        if obj.get_active():
+            label = obj.get_name()
+
+            if label == 'noise_suppression_level_low':
+                self.webrtc.set_property('noise-suppression-level', 'low')
+            elif label == 'noise_suppression_level_moderate':
+                self.webrtc.set_property('noise-suppression-level', 'moderate')
+            elif label == 'noise_suppression_level_high':
+                self.webrtc.set_property('noise-suppression-level', 'high')
+            elif label == 'noise_suppression_level_very_high':
+                self.webrtc.set_property('noise-suppression-level',
+                                         'very-high')
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]

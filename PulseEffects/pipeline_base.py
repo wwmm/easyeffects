@@ -79,9 +79,6 @@ class PipelineBase(GObject.GObject):
         self.spectrum.set_property('threshold', self.spectrum_threshold)
 
         queue_src.set_property('silent', True)
-        queue_src.set_property('max-size-buffers', 0)
-        queue_src.set_property('max-size-time', 0)
-        queue_src.set_property('max-size-bytes', 0)
 
         self.pipeline.add(self.audio_src)
         self.pipeline.add(self.source_caps)
@@ -181,8 +178,15 @@ class PipelineBase(GObject.GObject):
 
         self.log.debug(self.log_tag + g_error.message + ' : ' + msg)
 
-        self.set_state('null')
-        self.set_state('playing')
+        if g_error.message == 'Disconnected: Entity killed':
+            self.set_state('null')
+            self.audio_src.set_property('device', None)
+            self.set_state('playing')
+        elif 'pa_context_move_source_output_by_name' in g_error.message:
+            pass
+        else:
+            self.set_state('null')
+            self.set_state('playing')
 
         return True
 

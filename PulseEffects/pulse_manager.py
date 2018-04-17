@@ -808,10 +808,10 @@ class PulseManager(GObject.GObject):
 
         if state == p.PA_STREAM_FAILED:
             self.log.debug(self.log_tag + 'volume meter stream for app ' +
-                           str(idx) + ' has failed. Disconnecting it.')
+                           str(idx) + ' has failed. Did you disable this ' +
+                           'app ?')
 
             p.pa_stream_disconnect(stream)
-            p.pa_stream_unref(stream)
         elif state == p.PA_STREAM_READY:
             self.log.debug(self.log_tag + 'volume meter stream for app ' +
                            str(idx) + ' is ready')
@@ -823,8 +823,6 @@ class PulseManager(GObject.GObject):
         elif state == p.PA_STREAM_UNCONNECTED:
             self.log.debug(self.log_tag + 'volume meter stream for app ' +
                            str(idx) + ' is unconnected')
-
-            p.pa_stream_unref(stream)
         elif state == p.PA_STREAM_CREATING:
             self.log.debug(self.log_tag + 'volume meter stream for app ' +
                            str(idx) + ' is being created')
