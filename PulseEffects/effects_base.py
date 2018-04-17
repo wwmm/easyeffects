@@ -304,7 +304,7 @@ class EffectsBase(PipelineBase):
             if current != Gst.State.PLAYING and apps_want_to_play:
                 self.set_state('playing')
             elif current == Gst.State.PLAYING and not apps_want_to_play:
-                self.set_state('ready')
+                self.set_state('null')
 
     def on_app_added(self, obj, parameters):
         idx = parameters['index']

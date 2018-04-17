@@ -268,7 +268,7 @@ class PipelineBase(GObject.GObject):
         self.audio_sink.set_property('latency-time', value)
 
     def set_latency_time(self, value):
-        self.set_state('ready')
+        self.set_state('null')
         self.audio_src.set_property('latency-time', value)
         self.audio_sink.set_property('latency-time', value)
         self.set_state('playing')
