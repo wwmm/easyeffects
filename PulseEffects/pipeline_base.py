@@ -178,10 +178,18 @@ class PipelineBase(GObject.GObject):
 
         self.log.debug(self.log_tag + g_error.message + ' : ' + msg)
 
-        if g_error.message == 'Disconnected: Entity killed':
+        if (g_error.message == 'Disconnected: Entity killed' or
+                g_error.message == 'Failed to connect stream: No such entity'):
             self.set_state('null')
             self.audio_src.set_property('device', None)
             self.set_state('playing')
+        elif g_error.message == 'Internal data stream error.':
+            if 'audio_src' in msg:
+                self.set_state('null')
+
+                self.audio_src.set_property('latency-time', 10000)
+
+                self.set_state('playing')
         elif 'pa_context_move_source_output_by_name' in g_error.message:
             pass
         else:
