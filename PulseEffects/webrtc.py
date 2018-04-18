@@ -57,7 +57,7 @@ class Webrtc():
             pa_props = Gst.Structure.new_from_string(pa_props_str)
 
             self.probe_src.set_property('stream-properties', pa_props)
-            # self.probe_src.set_property('buffer-time', 10000)
+            self.probe_src.set_property('buffer-time', 10000)
             # self.probe_src.set_property('latency-time', 10000)
 
             caps_in = Gst.Caps.from_string('audio/x-raw,' + 'format=S16LE,' +
@@ -238,6 +238,8 @@ class Webrtc():
                                                 'noise-suppression', flag)
         self.ui_gain_control.bind_property('active', self.webrtc,
                                            'gain-control', flag)
+        self.ui_voice_detection.bind_property('active', self.webrtc,
+                                              'voice-detection', flag)
 
     def on_new_echo_suppression_level(self, obj):
         if obj.get_active():
@@ -273,6 +275,24 @@ class Webrtc():
                                          'adaptive-digital')
             elif label == 'gain_control_mode_fixed':
                 self.webrtc.set_property('gain-control-mode', 'fixed-digital')
+
+    def on_new_voice_detection_likehood(self, obj):
+        if obj.get_active():
+            label = obj.get_name()
+
+            if label == 'voice_detection_likehood_very_low':
+                self.webrtc.set_property('voice-detection-likelihood',
+                                         'very-low')
+            elif label == 'voice_detection_likehood_low':
+                self.webrtc.set_property('voice-detection-likelihood',
+                                         'low')
+            elif label == 'voice_detection_likehood_moderate':
+                self.webrtc.set_property('voice-detection-likelihood',
+                                         'moderate')
+            elif label == 'voice_detection_likehood_high':
+                print('high')
+                self.webrtc.set_property('voice-detection-likelihood',
+                                         'high')
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]
