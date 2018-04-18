@@ -6,9 +6,8 @@ from gettext import gettext as _
 
 import gi
 gi.require_version('Gdk', '3.0')
-gi.require_version('Gst', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gdk, Gio, GLib, Gst, Gtk
+from gi.repository import Gdk, Gio, GLib, Gtk
 from PulseEffects.draw_spectrum import DrawSpectrum
 from PulseEffects.presets_manager import PresetsManager
 from PulseEffects.pulse_manager import PulseManager
@@ -146,9 +145,6 @@ class Application(Gtk.Application):
                            flag)
         self.settings.bind('latency-in', self.soe.audio_sink, 'latency-time',
                            flag)
-
-        # self.init_buffer_time()
-        # self.init_latency_time()
 
         self.presets = PresetsManager(self)
 
@@ -359,57 +355,21 @@ class Application(Gtk.Application):
 
         self.draw_spectrum.clear()
 
-    def init_buffer_time(self):
-        value = self.settings.get_value('buffer-out').unpack()
-
-        self.sie.init_buffer_time(value * 1000)
-
-        value = self.settings.get_value('buffer-in').unpack()
-
-        self.soe.init_buffer_time(value * 1000)
-
     def on_buffer_out_value_changed(self, obj):
-        ok, current, pending = self.sie.pipeline.get_state(2)
-
-        if ok and self.window_activated:
-            if current == Gst.State.PLAYING:
-                self.sie.set_state('null')
-                self.sie.set_state('playing')
+        if self.window_activated:
+            self.sie.restart_pipeline()
 
     def on_buffer_in_value_changed(self, obj):
-        value = obj.get_value()
-
-        # out = GLib.Variant('i', value)
-        # self.settings.set_value('buffer-in', out)
-        #
-        # if self.window_activated:
-        #     self.soe.set_buffer_time(value * 1000)
-
-    def init_latency_time(self):
-        value = self.settings.get_value('latency-out').unpack()
-
-        self.sie.init_latency_time(value * 1000)
-
-        value = self.settings.get_value('latency-in').unpack()
-
-        self.soe.init_latency_time(value * 1000)
+        if self.window_activated:
+            self.soe.restart_pipeline()
 
     def on_latency_out_value_changed(self, obj):
-        ok, current, pending = self.sie.pipeline.get_state(2)
-
-        if ok and self.window_activated:
-            if current == Gst.State.PLAYING:
-                self.sie.set_state('null')
-                self.sie.set_state('playing')
+        if self.window_activated:
+            self.sie.restart_pipeline()
 
     def on_latency_in_value_changed(self, obj):
-        value = obj.get_value()
-
-        # out = GLib.Variant('i', value)
-        # self.settings.set_value('latency-in', out)
-        #
-        # if self.window_activated:
-        #     self.soe.set_latency_time(value * 1000)
+        if self.window_activated:
+            self.soe.restart_pipeline()
 
     def init_autostart_switch(self):
         switch = self.builder.get_object('enable_autostart')
@@ -709,8 +669,10 @@ class Application(Gtk.Application):
         t.run()
 
     def on_reset_all_settings_clicked(self, obj):
-        self.settings.reset('buffer-time')
-        self.settings.reset('latency-time')
+        self.settings.reset('buffer-in')
+        self.settings.reset('buffer-out')
+        self.settings.reset('latency-in')
+        self.settings.reset('latency-out')
         self.settings.reset('show-spectrum')
         self.settings.reset('spectrum-n-points')
         self.settings.reset('use-dark-theme')
@@ -718,8 +680,6 @@ class Application(Gtk.Application):
         self.settings.reset('use-default-sink')
         self.settings.reset('use-default-source')
 
-        self.init_buffer_time()
-        self.init_latency_time()
         self.init_spectrum_widgets()
 
         self.stack.set_visible_child(self.sie.ui_window)

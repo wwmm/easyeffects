@@ -181,7 +181,9 @@ class PipelineBase(GObject.GObject):
         if (g_error.message == 'Disconnected: Entity killed' or
                 g_error.message == 'Failed to connect stream: No such entity'):
             self.set_state('null')
+
             self.audio_src.set_property('device', None)
+
             self.set_state('playing')
         elif g_error.message == 'Internal data stream error.':
             if 'audio_src' in msg:
@@ -246,20 +248,27 @@ class PipelineBase(GObject.GObject):
         self.audio_src.set_property('stream-properties', pa_props)
 
     def set_source_monitor_name(self, name):
-        self.audio_src.set_property('device', name)
+        ok, current, pending = self.pipeline.get_state(2)
+
+        if ok:
+            if current == Gst.State.PLAYING:
+                self.set_state('null')
+
+                self.audio_src.set_property('device', name)
+
+                self.set_state('playing')
+            else:
+                self.audio_src.set_property('device', name)
 
     def set_output_sink_name(self, name):
         self.audio_sink.set_property('device', name)
 
-    def init_buffer_time(self, value):
-        self.audio_src.set_property('buffer-time', value)
-        self.audio_sink.set_property('buffer-time', value)
+    def restart_pipeline(self):
+        ok, current, pending = self.pipeline.get_state(2)
 
-    def set_buffer_time(self, value):
-        self.set_state('ready')
-        self.audio_src.set_property('buffer-time', value)
-        self.audio_sink.set_property('buffer-time', value)
-        self.set_state('playing')
+        if ok and current == Gst.State.PLAYING:
+            self.set_state('null')
+            self.set_state('playing')
 
     def set_spectrum_n_points(self, value):
         self.spectrum_n_points = value
@@ -267,16 +276,6 @@ class PipelineBase(GObject.GObject):
         # 20 Hz = 10^(1.3), 20000 Hz = 10^(4.3)
 
         self.spectrum_x_axis = np.logspace(1.3, 4.3, value)
-
-    def init_latency_time(self, value):
-        self.audio_src.set_property('latency-time', value)
-        self.audio_sink.set_property('latency-time', value)
-
-    def set_latency_time(self, value):
-        self.set_state('null')
-        self.audio_src.set_property('latency-time', value)
-        self.audio_sink.set_property('latency-time', value)
-        self.set_state('playing')
 
     def calc_spectrum_freqs(self):
         self.spectrum_freqs = []
