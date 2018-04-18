@@ -8,7 +8,6 @@
     <property name="value">100000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1000</property>
-    <signal name="value-changed" handler="on_buffer_in_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="buffer_out">
     <property name="lower">1000</property>
@@ -16,7 +15,6 @@
     <property name="value">100000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1000</property>
-    <signal name="value-changed" handler="on_buffer_out_value_changed" swapped="no"/>
   </object>
   <object class="GtkImage" id="image_test">
     <property name="visible">True</property>
@@ -29,7 +27,6 @@
     <property name="value">10000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1000</property>
-    <signal name="value-changed" handler="on_latency_in_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="latency_out">
     <property name="lower">1000</property>
@@ -37,7 +34,6 @@
     <property name="value">10000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1000</property>
-    <signal name="value-changed" handler="on_latency_out_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="spectrum_n_points">
     <property name="lower">2</property>

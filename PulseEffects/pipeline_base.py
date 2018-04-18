@@ -91,6 +91,9 @@ class PipelineBase(GObject.GObject):
         queue_src.link(self.effects_bin)
         self.effects_bin.link(self.audio_sink)
 
+        self.audio_src.connect('notify::buffer-time', self.on_buffer_changed)
+        self.audio_src.connect('notify::latency-time', self.on_latency_changed)
+
     def on_filter_added(self, bin, element, success, user_data):
         name_array = element.get_name().split('_')
         name = ''
@@ -241,6 +244,12 @@ class PipelineBase(GObject.GObject):
 
         return True
 
+    def on_buffer_changed(self, plugin, param):
+        self.restart_pipeline()
+
+    def on_latency_changed(self, plugin, param):
+        self.restart_pipeline()
+
     def set_pa_props(self, props):
         pa_props_str = 'props,' + props
         pa_props = Gst.Structure.new_from_string(pa_props_str)
@@ -248,17 +257,20 @@ class PipelineBase(GObject.GObject):
         self.audio_src.set_property('stream-properties', pa_props)
 
     def set_source_monitor_name(self, name):
-        ok, current, pending = self.pipeline.get_state(2)
+        current_device = self.audio_src.get_property('current-device')
 
-        if ok:
-            if current == Gst.State.PLAYING:
-                self.set_state('null')
+        if name != current_device:
+            ok, current, pending = self.pipeline.get_state(2)
 
-                self.audio_src.set_property('device', name)
+            if ok:
+                if current == Gst.State.PLAYING:
+                    self.set_state('null')
 
-                self.set_state('playing')
-            else:
-                self.audio_src.set_property('device', name)
+                    self.audio_src.set_property('device', name)
+
+                    self.set_state('playing')
+                else:
+                    self.audio_src.set_property('device', name)
 
     def set_output_sink_name(self, name):
         self.audio_sink.set_property('device', name)

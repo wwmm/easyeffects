@@ -355,22 +355,6 @@ class Application(Gtk.Application):
 
         self.draw_spectrum.clear()
 
-    def on_buffer_out_value_changed(self, obj):
-        if self.window_activated:
-            self.sie.restart_pipeline()
-
-    def on_buffer_in_value_changed(self, obj):
-        if self.window_activated:
-            self.soe.restart_pipeline()
-
-    def on_latency_out_value_changed(self, obj):
-        if self.window_activated:
-            self.sie.restart_pipeline()
-
-    def on_latency_in_value_changed(self, obj):
-        if self.window_activated:
-            self.soe.restart_pipeline()
-
     def init_autostart_switch(self):
         switch = self.builder.get_object('enable_autostart')
 
