@@ -145,6 +145,16 @@ class Webrtc():
         self.ui_gain_control_mode_fixed = self.builder.get_object(
             'gain_control_mode_fixed')
 
+        self.ui_voice_detection = self.builder.get_object('voice_detection')
+        self.ui_voice_detection_likehood_very_low = self.builder.get_object(
+            'voice_detection_likehood_very_low')
+        self.ui_voice_detection_likehood_low = self.builder.get_object(
+            'voice_detection_likehood_low')
+        self.ui_voice_detection_likehood_moderate = self.builder.get_object(
+            'voice_detection_likehood_moderate')
+        self.ui_voice_detection_likehood_high = self.builder.get_object(
+            'voice_detection_likehood_high')
+
         self.ui_input_level_left = self.builder.get_object('input_level_left')
         self.ui_input_level_right = self.builder.get_object(
             'input_level_right')
@@ -201,6 +211,21 @@ class Webrtc():
                            self.ui_gain_control_mode_adaptive, 'active', flag)
         self.settings.bind('gain-control-mode-fixed',
                            self.ui_gain_control_mode_fixed, 'active', flag)
+
+        self.settings.bind('voice-detection', self.ui_voice_detection,
+                           'active', flag)
+        self.settings.bind('voice-detection-likelihood-very-low',
+                           self.ui_voice_detection_likehood_very_low, 'active',
+                           flag)
+        self.settings.bind('voice-detection-likelihood-low',
+                           self.ui_voice_detection_likehood_low, 'active',
+                           flag)
+        self.settings.bind('voice-detection-likelihood-moderate',
+                           self.ui_voice_detection_likehood_moderate, 'active',
+                           flag)
+        self.settings.bind('voice-detection-likelihood-high',
+                           self.ui_voice_detection_likehood_high, 'active',
+                           flag)
 
         # binding ui widgets to gstreamer plugins
 
