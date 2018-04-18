@@ -139,6 +139,12 @@ class Webrtc():
         self.ui_noise_suppression_level_very_high = self.builder.get_object(
             'noise_suppression_level_very_high')
 
+        self.ui_gain_control = self.builder.get_object('gain_control')
+        self.ui_gain_control_mode_adaptive = self.builder.get_object(
+            'gain_control_mode_adaptive')
+        self.ui_gain_control_mode_fixed = self.builder.get_object(
+            'gain_control_mode_fixed')
+
         self.ui_input_level_left = self.builder.get_object('input_level_left')
         self.ui_input_level_right = self.builder.get_object(
             'input_level_right')
@@ -189,6 +195,13 @@ class Webrtc():
                            self.ui_noise_suppression_level_very_high, 'active',
                            flag)
 
+        self.settings.bind('gain-control', self.ui_gain_control, 'active',
+                           flag)
+        self.settings.bind('gain-control-mode-adaptive',
+                           self.ui_gain_control_mode_adaptive, 'active', flag)
+        self.settings.bind('gain-control-mode-fixed',
+                           self.ui_gain_control_mode_fixed, 'active', flag)
+
         # binding ui widgets to gstreamer plugins
 
         flag = GObject.BindingFlags.BIDIRECTIONAL | \
@@ -198,6 +211,8 @@ class Webrtc():
                                           flag)
         self.ui_noise_suppression.bind_property('active', self.webrtc,
                                                 'noise-suppression', flag)
+        self.ui_gain_control.bind_property('active', self.webrtc,
+                                           'gain-control', flag)
 
     def on_new_echo_suppression_level(self, obj):
         if obj.get_active():
@@ -223,6 +238,16 @@ class Webrtc():
             elif label == 'noise_suppression_level_very_high':
                 self.webrtc.set_property('noise-suppression-level',
                                          'very-high')
+
+    def on_new_gain_control_mode(self, obj):
+        if obj.get_active():
+            label = obj.get_name()
+
+            if label == 'gain_control_mode_adaptive':
+                self.webrtc.set_property('gain-control-mode',
+                                         'adaptive-digital')
+            elif label == 'gain_control_mode_fixed':
+                self.webrtc.set_property('gain-control-mode', 'fixed-digital')
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]
