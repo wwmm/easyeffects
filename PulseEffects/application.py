@@ -369,13 +369,12 @@ class Application(Gtk.Application):
         self.soe.init_buffer_time(value * 1000)
 
     def on_buffer_out_value_changed(self, obj):
-        value = obj.get_value()
+        ok, current, pending = self.sie.pipeline.get_state(2)
 
-        # out = GLib.Variant('i', value)
-        # self.settings.set_value('buffer-out', out)
-        #
-        # if self.window_activated:
-        #     self.sie.set_buffer_time(value * 1000)
+        if ok and self.window_activated:
+            if current == Gst.State.PLAYING:
+                self.sie.set_state('null')
+                self.sie.set_state('playing')
 
     def on_buffer_in_value_changed(self, obj):
         value = obj.get_value()
@@ -402,14 +401,6 @@ class Application(Gtk.Application):
             if current == Gst.State.PLAYING:
                 self.sie.set_state('null')
                 self.sie.set_state('playing')
-
-        # value = obj.get_value()
-
-        # out = GLib.Variant('i', value)
-        # self.settings.set_value('latency-out', out)
-        #
-        # if self.window_activated:
-        #     self.sie.set_latency_time(value * 1000)
 
     def on_latency_in_value_changed(self, obj):
         value = obj.get_value()

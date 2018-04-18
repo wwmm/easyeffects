@@ -188,6 +188,7 @@ class PipelineBase(GObject.GObject):
                 self.set_state('null')
 
                 self.audio_src.set_property('latency-time', 10000)
+                self.audio_src.set_property('buffer-time', 100000)
 
                 self.set_state('playing')
         elif 'pa_context_move_source_output_by_name' in g_error.message:
@@ -228,7 +229,7 @@ class PipelineBase(GObject.GObject):
             latency = msg.src.get_property('actual-latency-time')
             buffer_time = msg.src.get_property('actual-buffer-time')
 
-            # plugin.set_property('buffer-time', buffer_time)
+            plugin.set_property('buffer-time', buffer_time)
             plugin.set_property('latency-time', latency)
 
             self.log.debug(self.log_tag + 'pulsesrc latency-time [us]: ' +
