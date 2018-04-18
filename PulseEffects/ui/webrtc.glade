@@ -448,6 +448,7 @@
                         <property name="valign">center</property>
                         <property name="active">True</property>
                         <property name="draw_indicator">False</property>
+                        <property name="group">voice_detection_likehood_low</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -480,6 +481,7 @@
                         <property name="valign">center</property>
                         <property name="active">True</property>
                         <property name="draw_indicator">False</property>
+                        <property name="group">voice_detection_likehood_low</property>
                       </object>
                       <packing>
                         <property name="left_attach">2</property>
@@ -496,6 +498,7 @@
                         <property name="valign">center</property>
                         <property name="active">True</property>
                         <property name="draw_indicator">False</property>
+                        <property name="group">voice_detection_likehood_low</property>
                       </object>
                       <packing>
                         <property name="left_attach">3</property>
