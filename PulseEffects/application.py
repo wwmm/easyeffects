@@ -6,8 +6,9 @@ from gettext import gettext as _
 
 import gi
 gi.require_version('Gdk', '3.0')
+gi.require_version('Gst', '1.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gdk, Gio, GLib, Gtk
+from gi.repository import Gdk, Gio, GLib, Gst, Gtk
 from PulseEffects.draw_spectrum import DrawSpectrum
 from PulseEffects.presets_manager import PresetsManager
 from PulseEffects.pulse_manager import PulseManager
@@ -124,8 +125,30 @@ class Application(Gtk.Application):
         self.settings.bind('enable-all-apps', self.soe, 'switch_on_all_apps',
                            flag)
 
-        self.init_buffer_time()
-        self.init_latency_time()
+        # output effects pipeline latency
+
+        self.settings.bind('buffer-out', self.sie.audio_src, 'buffer-time',
+                           flag)
+        self.settings.bind('latency-out', self.sie.audio_src, 'latency-time',
+                           flag)
+        self.settings.bind('buffer-out', self.sie.audio_sink, 'buffer-time',
+                           flag)
+        self.settings.bind('latency-out', self.sie.audio_sink, 'latency-time',
+                           flag)
+
+        # input effects pipeline latency
+
+        self.settings.bind('buffer-in', self.soe.audio_src, 'buffer-time',
+                           flag)
+        self.settings.bind('latency-in', self.soe.audio_src, 'latency-time',
+                           flag)
+        self.settings.bind('buffer-in', self.soe.audio_sink, 'buffer-time',
+                           flag)
+        self.settings.bind('latency-in', self.soe.audio_sink, 'latency-time',
+                           flag)
+
+        # self.init_buffer_time()
+        # self.init_latency_time()
 
         self.presets = PresetsManager(self)
 
@@ -348,20 +371,20 @@ class Application(Gtk.Application):
     def on_buffer_out_value_changed(self, obj):
         value = obj.get_value()
 
-        out = GLib.Variant('i', value)
-        self.settings.set_value('buffer-out', out)
-
-        if self.window_activated:
-            self.sie.set_buffer_time(value * 1000)
+        # out = GLib.Variant('i', value)
+        # self.settings.set_value('buffer-out', out)
+        #
+        # if self.window_activated:
+        #     self.sie.set_buffer_time(value * 1000)
 
     def on_buffer_in_value_changed(self, obj):
         value = obj.get_value()
 
-        out = GLib.Variant('i', value)
-        self.settings.set_value('buffer-in', out)
-
-        if self.window_activated:
-            self.soe.set_buffer_time(value * 1000)
+        # out = GLib.Variant('i', value)
+        # self.settings.set_value('buffer-in', out)
+        #
+        # if self.window_activated:
+        #     self.soe.set_buffer_time(value * 1000)
 
     def init_latency_time(self):
         value = self.settings.get_value('latency-out').unpack()
@@ -373,22 +396,29 @@ class Application(Gtk.Application):
         self.soe.init_latency_time(value * 1000)
 
     def on_latency_out_value_changed(self, obj):
-        value = obj.get_value()
+        ok, current, pending = self.sie.pipeline.get_state(2)
 
-        out = GLib.Variant('i', value)
-        self.settings.set_value('latency-out', out)
+        if ok and self.window_activated:
+            if current == Gst.State.PLAYING:
+                self.sie.set_state('null')
+                self.sie.set_state('playing')
 
-        if self.window_activated:
-            self.sie.set_latency_time(value * 1000)
+        # value = obj.get_value()
+
+        # out = GLib.Variant('i', value)
+        # self.settings.set_value('latency-out', out)
+        #
+        # if self.window_activated:
+        #     self.sie.set_latency_time(value * 1000)
 
     def on_latency_in_value_changed(self, obj):
         value = obj.get_value()
 
-        out = GLib.Variant('i', value)
-        self.settings.set_value('latency-in', out)
-
-        if self.window_activated:
-            self.soe.set_latency_time(value * 1000)
+        # out = GLib.Variant('i', value)
+        # self.settings.set_value('latency-in', out)
+        #
+        # if self.window_activated:
+        #     self.soe.set_latency_time(value * 1000)
 
     def init_autostart_switch(self):
         switch = self.builder.get_object('enable_autostart')

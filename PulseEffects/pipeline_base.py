@@ -213,9 +213,10 @@ class PipelineBase(GObject.GObject):
         return True
 
     def on_message_latency(self, bus, msg):
-        plugin = msg.src.get_name()
+        plugin = msg.src
+        plugin_name = plugin.get_name()
 
-        if plugin == 'audio_sink':
+        if plugin_name == 'audio_sink':
             latency = msg.src.get_property('latency-time')
             buffer_time = msg.src.get_property('buffer-time')
 
@@ -223,9 +224,12 @@ class PipelineBase(GObject.GObject):
                            str(latency))
             self.log.debug(self.log_tag + 'pulsesink buffer-time [us]: ' +
                            str(buffer_time))
-        elif plugin == 'audio_src':
+        elif plugin_name == 'audio_src':
             latency = msg.src.get_property('actual-latency-time')
             buffer_time = msg.src.get_property('actual-buffer-time')
+
+            # plugin.set_property('buffer-time', buffer_time)
+            plugin.set_property('latency-time', latency)
 
             self.log.debug(self.log_tag + 'pulsesrc latency-time [us]: ' +
                            str(latency))

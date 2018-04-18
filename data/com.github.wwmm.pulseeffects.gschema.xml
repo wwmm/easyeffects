@@ -2,17 +2,17 @@
 <schemalist>
     <schema id="com.github.wwmm.pulseeffects" path="/com/github/wwmm/pulseeffects/">
         <key name="buffer-out" type="i">
-          <default>100</default>
+          <default>100000</default>
         </key>
         <key name="latency-out" type="i">
-          <default>10</default>
+          <default>10000</default>
         </key>
 
         <key name="buffer-in" type="i">
-          <default>100</default>
+          <default>100000</default>
         </key>
         <key name="latency-in" type="i">
-          <default>10</default>
+          <default>10000</default>
         </key>
 
         <key name="show-spectrum" type="b">
