@@ -79,6 +79,9 @@
         <key name="voice-detection" type="b">
           <default>false</default>
         </key>
+        <key name="voice-detection-frame-size-ms" type="i">
+          <default>10</default>
+        </key>
         <key name="voice-detection-likelihood-very-low" type="b">
           <default>false</default>
         </key>

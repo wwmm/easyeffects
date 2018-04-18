@@ -146,6 +146,8 @@ class Webrtc():
             'gain_control_mode_fixed')
 
         self.ui_voice_detection = self.builder.get_object('voice_detection')
+        self.ui_voice_detection_frame_size = self.builder.get_object(
+            'voice_detection_frame_size')
         self.ui_voice_detection_likehood_very_low = self.builder.get_object(
             'voice_detection_likehood_very_low')
         self.ui_voice_detection_likehood_low = self.builder.get_object(
@@ -214,6 +216,8 @@ class Webrtc():
 
         self.settings.bind('voice-detection', self.ui_voice_detection,
                            'active', flag)
+        self.settings.bind('voice-detection-frame-size-ms',
+                           self.ui_voice_detection_frame_size, 'value', flag)
         self.settings.bind('voice-detection-likelihood-very-low',
                            self.ui_voice_detection_likehood_very_low, 'active',
                            flag)
@@ -240,6 +244,8 @@ class Webrtc():
                                            'gain-control', flag)
         self.ui_voice_detection.bind_property('active', self.webrtc,
                                               'voice-detection', flag)
+        self.ui_voice_detection_frame_size.bind_property
+        ('value', self.webrtc, 'voice-detection-frame-size-ms', flag)
 
     def on_new_echo_suppression_level(self, obj):
         if obj.get_active():
@@ -290,7 +296,6 @@ class Webrtc():
                 self.webrtc.set_property('voice-detection-likelihood',
                                          'moderate')
             elif label == 'voice_detection_likehood_high':
-                print('high')
                 self.webrtc.set_property('voice-detection-likelihood',
                                          'high')
 
