@@ -9,10 +9,6 @@
           <default>true</default>
         </key>
 
-        <key name="experimental-agc" type="b">
-          <default>false</default>
-        </key>
-
         <key name="extended-filter" type="b">
           <default>true</default>
         </key>
@@ -27,10 +23,6 @@
 
         <key name="compression-gain-db" type="i">
           <default>3</default>
-        </key>
-
-        <key name="startup-min-volume" type="i">
-          <default>12</default>
         </key>
 
         <key name="limiter" type="b">

@@ -120,6 +120,10 @@ class Webrtc():
         self.ui_enable = self.builder.get_object('enable')
         self.ui_img_state = self.builder.get_object('img_state')
 
+        self.ui_extended_filter = self.builder.get_object('extended_filter')
+        self.ui_high_pass_filter = self.builder.get_object('high_pass_filter')
+        self.ui_delay_agnostic = self.builder.get_object('delay_agnostic')
+
         self.ui_echo_cancel = self.builder.get_object('echo_cancel')
         self.ui_echo_suppression_level_low = self.builder.get_object(
             'echo_suppression_level_low')
@@ -184,6 +188,13 @@ class Webrtc():
         self.settings.bind('state', self.ui_controls, 'sensitive',
                            Gio.SettingsBindFlags.GET)
 
+        self.settings.bind('extended-filter', self.ui_extended_filter,
+                           'active', flag)
+        self.settings.bind('high-pass-filter', self.ui_high_pass_filter,
+                           'active', flag)
+        self.settings.bind('delay-agnostic', self.ui_delay_agnostic,
+                           'active', flag)
+
         self.settings.bind('echo-cancel', self.ui_echo_cancel, 'active', flag)
         self.settings.bind('echo-suppression-level-low',
                            self.ui_echo_suppression_level_low, 'active', flag)
@@ -235,6 +246,13 @@ class Webrtc():
 
         flag = GObject.BindingFlags.BIDIRECTIONAL | \
             GObject.BindingFlags.SYNC_CREATE
+
+        self.ui_extended_filter.bind_property('active', self.webrtc,
+                                              'extended-filter', flag)
+        self.ui_high_pass_filter.bind_property('active', self.webrtc,
+                                               'high-pass-filter', flag)
+        self.ui_delay_agnostic.bind_property('active', self.webrtc,
+                                             'delay-agnostic', flag)
 
         self.ui_echo_cancel.bind_property('active', self.webrtc, 'echo-cancel',
                                           flag)
@@ -340,12 +358,10 @@ class Webrtc():
     def reset(self):
         self.settings.reset('state')
         self.settings.reset('high-pass-filter')
-        self.settings.reset('experimental-agc')
         self.settings.reset('extended-filter')
         self.settings.reset('delay-agnostic')
         self.settings.reset('target-level-dbfs')
         self.settings.reset('compression-gain-db')
-        self.settings.reset('startup-min-volume')
         self.settings.reset('limiter')
         self.settings.reset('gain-control')
         self.settings.reset('gain-control-mode-adaptive')
