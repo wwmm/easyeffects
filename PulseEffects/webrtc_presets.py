@@ -145,7 +145,7 @@ class WebrtcPresets():
             section, 'noise_suppression_level_very_high', fallback=False)
 
         voice_detection = self.config.getboolean(section, 'voice_detection',
-                                                 fallback=True)
+                                                 fallback=False)
         voice_detection_frame_size = self.config.getint(
             section, 'voice_detection_frame_size', fallback=10)
         voice_detection_likelihood_very_low = self.config.getboolean(
