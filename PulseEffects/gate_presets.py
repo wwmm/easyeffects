@@ -41,6 +41,7 @@ class GatePresets():
         stereo_link = self.config.getboolean(section,
                                              'stereo_link_type_average',
                                              fallback=True)
+        range = self.config.getfloat(section, 'range', fallback=-24.0)
         attack = self.config.getfloat(section, 'attack', fallback=20.0)
         release = self.config.getfloat(section, 'release', fallback=250.0)
         threshold = self.config.getfloat(section, 'threshold', fallback=-18.0)
@@ -52,6 +53,7 @@ class GatePresets():
         settings.set_value('detection-rms', GLib.Variant('b', detection))
         settings.set_value('stereo-link-average',
                            GLib.Variant('b', stereo_link))
+        settings.set_value('range', GLib.Variant('d', range))
         settings.set_value('attack', GLib.Variant('d', attack))
         settings.set_value('release', GLib.Variant('d', release))
         settings.set_value('threshold', GLib.Variant('d', threshold))

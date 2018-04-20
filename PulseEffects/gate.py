@@ -229,17 +229,18 @@ class Gate():
 
         gating = self.gate.get_property('gating')
 
-        self.ui_gating_levelbar.set_value(gating)
+        self.ui_gating_levelbar.set_value(1 - gating)
 
         if gating > 0:
             gating = 20 * np.log10(gating)
 
-            self.ui_gating_level_label.set_text(str(round(gating)))
+            self.ui_gating_level_label.set_text(str(round(gating, 1)))
 
     def reset(self):
         self.settings.reset('state')
         self.settings.reset('detection-rms')
         self.settings.reset('stereo-link-average')
+        self.settings.reset('range')
         self.settings.reset('attack')
         self.settings.reset('release')
         self.settings.reset('threshold')

@@ -10,7 +10,7 @@ Order of effects applied to applications output:
 
 1. Input Limiter (Ladspa Fast Lookahead Limiter)
 2. Auto Volume
-3. Compressor (Ladspa SC4)
+3. Compressor (LV2 Compressor from Calf Studio)
 4. Butterworth Highpass filter (Gstreamer audiocheblimit)
 5. Butterworth Lowpass filter (Gstreamer audiocheblimit)
 6. 30 Bands Parametric Equalizer (Gstreamer)
@@ -31,7 +31,7 @@ Order of effects applied to microphone output:
 1. Gate (LV2 Gate from Calf Studio)
 2. Webrtc (GStreamer)
 3. Input Limiter (Ladspa Fast Lookahead Limiter)
-4. Compressor (Ladspa SC4)
+4. Compressor (LV2 Compressor from Calf Studio)
 5. Butterworth Highpass filter (Gstreamer audiocheblimit)
 6. Butterworth Lowpass filter (Gstreamer audiocheblimit)
 7. 30 Bands Parametric Equalizer (Gstreamer)

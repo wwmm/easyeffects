@@ -4,6 +4,7 @@ import logging
 import os
 
 import gi
+import numpy as np
 gi.require_version('Gst', '1.0')
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
@@ -20,9 +21,7 @@ class Compressor():
 
         self.log = logging.getLogger('PulseEffects')
 
-        self.old_compressor_gain_reduction = 0
-
-        if Gst.ElementFactory.make('ladspa-sc4-1882-so-sc4'):
+        if Gst.ElementFactory.make('calf-sourceforge-net-plugins-Compressor'):
             self.is_installed = True
         else:
             self.is_installed = False
@@ -36,7 +35,7 @@ class Compressor():
 
     def build_bin(self):
         self.compressor = Gst.ElementFactory.make(
-            'ladspa-sc4-1882-so-sc4', None)
+            'calf-sourceforge-net-plugins-Compressor', None)
         self.input_level = Gst.ElementFactory.make('level',
                                                    'compressor_input_level')
         self.output_level = Gst.ElementFactory.make('level',
@@ -45,6 +44,17 @@ class Compressor():
         self.bin = GstInsertBin.InsertBin.new('compressor_bin')
 
         if self.is_installed:
+            # booleans are inverted in GStreamer versions older than 1.12.5
+
+            registry = Gst.Registry().get()
+            self.use_workaround = not registry\
+                .check_feature_version('pulsesrc', 1, 12, 5)
+
+            if self.use_workaround:
+                self.compressor.set_property('bypass', True)
+            else:
+                self.compressor.set_property('bypass', False)
+
             self.bin.append(self.input_level, self.on_filter_added, None)
             self.bin.append(self.compressor, self.on_filter_added, None)
             self.bin.append(self.output_level, self.on_filter_added, None)
@@ -64,8 +74,15 @@ class Compressor():
 
         self.ui_enable = self.builder.get_object('enable')
         self.ui_img_state = self.builder.get_object('img_state')
-        self.ui_compressor_rms = self.builder.get_object('compressor_rms')
-        self.ui_compressor_peak = self.builder.get_object('compressor_peak')
+        self.ui_compressor_detection_rms = self.builder.get_object(
+            'detection_rms')
+        self.ui_compressor_detection_peak = self.builder.get_object(
+            'detection_peak')
+        self.ui_stereo_link_average = self.builder.get_object(
+            'stereo_link_average')
+        self.ui_stereo_link_maximum = self.builder.get_object(
+            'stereo_link_maximum')
+        self.ui_mix = self.builder.get_object('mix')
         self.ui_attack = self.builder.get_object('attack')
         self.ui_release = self.builder.get_object('release')
         self.ui_threshold = self.builder.get_object('threshold')
@@ -80,8 +97,8 @@ class Compressor():
             'output_level_left')
         self.ui_output_level_right = self.builder.get_object(
             'output_level_right')
-        self.ui_gain_reduction_levelbar = self.builder.get_object(
-            'gain_reduction_levelbar')
+        self.ui_compression_levelbar = self.builder.get_object(
+            'compression_levelbar')
 
         self.ui_input_level_left_label = self.builder.get_object(
             'input_level_left_label')
@@ -91,15 +108,8 @@ class Compressor():
             'output_level_left_label')
         self.ui_output_level_right_label = self.builder.get_object(
             'output_level_right_label')
-        self.ui_gain_reduction_level_label = self.builder.get_object(
-            'gain_reduction_level_label')
-
-        self.ui_gain_reduction_levelbar.add_offset_value(
-            'GTK_LEVEL_BAR_OFFSET_LOW', 6)
-        self.ui_gain_reduction_levelbar.add_offset_value(
-            'GTK_LEVEL_BAR_OFFSET_HIGH', 18)
-        self.ui_gain_reduction_levelbar.add_offset_value(
-            'GTK_LEVEL_BAR_OFFSET_FULL', 24)
+        self.ui_compression_level_label = self.builder.get_object(
+            'compression_level_label')
 
     def bind(self):
         # binding ui widgets to gsettings
@@ -111,10 +121,19 @@ class Compressor():
         self.settings.bind('state', self.ui_controls, 'sensitive',
                            Gio.SettingsBindFlags.GET)
 
-        self.settings.bind('use-peak', self.ui_compressor_peak, 'active', flag)
-        self.settings.bind('use-peak', self.ui_compressor_rms, 'active',
+        self.settings.bind('detection-rms', self.ui_compressor_detection_rms,
+                           'active', flag)
+        self.settings.bind('detection-rms', self.ui_compressor_detection_peak,
+                           'active',
                            flag | Gio.SettingsBindFlags.INVERT_BOOLEAN)
 
+        self.settings.bind('stereo-link-average',
+                           self.ui_stereo_link_average, 'active', flag)
+        self.settings.bind('stereo-link-average',
+                           self.ui_stereo_link_maximum, 'active',
+                           flag | Gio.SettingsBindFlags.INVERT_BOOLEAN)
+
+        self.settings.bind('mix', self.ui_mix, 'value', flag)
         self.settings.bind('attack', self.ui_attack, 'value', flag)
         self.settings.bind('release', self.ui_release, 'value', flag)
         self.settings.bind('threshold', self.ui_threshold, 'value', flag)
@@ -127,26 +146,52 @@ class Compressor():
         flag = GObject.BindingFlags.BIDIRECTIONAL | \
             GObject.BindingFlags.SYNC_CREATE
 
-        self.ui_attack.bind_property('value', self.compressor, 'attack-time',
-                                     flag)
-        self.ui_release.bind_property('value', self.compressor, 'release-time',
-                                      flag)
-        self.ui_threshold.bind_property('value', self.compressor,
-                                        'threshold-level', flag)
+        self.ui_attack.bind_property('value', self.compressor, 'attack', flag)
+        self.ui_release.bind_property(
+            'value', self.compressor, 'release', flag)
         self.ui_ratio.bind_property('value', self.compressor, 'ratio', flag)
-        self.ui_knee.bind_property('value', self.compressor, 'knee-radius',
-                                   flag)
-        self.ui_makeup.bind_property('value', self.compressor, 'makeup-gain',
-                                     flag)
 
-    def on_compressor_measurement_type(self, obj):
+    def on_threshold_value_changed(self, obj):
+        value_db = obj.get_value()
+        value_linear = 10**(value_db / 20.0)
+
+        self.compressor.set_property('threshold', value_linear)
+
+    def on_knee_value_changed(self, obj):
+        value_db = obj.get_value()
+        value_linear = 10**(value_db / 20.0)
+
+        self.compressor.set_property('knee', value_linear)
+
+    def on_makeup_value_changed(self, obj):
+        value_db = obj.get_value()
+        value_linear = 10**(value_db / 20.0)
+
+        self.compressor.set_property('makeup', value_linear)
+
+    def on_mix_value_changed(self, obj):
+        value_db = obj.get_value()
+        value_linear = 10**(value_db / 20.0)
+
+        self.compressor.set_property('mix', value_linear)
+
+    def on_new_detection_type(self, obj):
         if obj.get_active():
             label = obj.get_label()
 
             if label == 'rms':
-                self.compressor.set_property('rms-peak', 0.0)
+                self.compressor.set_property('detection', 'RMS')
             elif label == 'peak':
-                self.compressor.set_property('rms-peak', 1.0)
+                self.compressor.set_property('detection', 'Peak')
+
+    def on_new_stereo_link_type(self, obj):
+        if obj.get_active():
+            label = obj.get_label()
+
+            if label == 'average':
+                self.compressor.set_property('stereo-link', 'Average')
+            elif label == 'maximum':
+                self.compressor.set_property('stereo-link', 'Maximum')
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]
@@ -186,19 +231,21 @@ class Compressor():
 
         self.ui_update_level(widgets, peak)
 
-        gain_reduction = abs(round(
-            self.compressor.get_property('gain-reduction')))
+        compression = self.compressor.get_property('compression')
 
-        if gain_reduction != self.old_compressor_gain_reduction:
-            self.old_compressor_gain_reduction = gain_reduction
+        self.ui_compression_levelbar.set_value(1 - compression)
 
-            self.ui_gain_reduction_levelbar.set_value(gain_reduction)
-            self.ui_gain_reduction_level_label.set_text(
-                str(round(gain_reduction)))
+        if compression > 0:
+            compression = 20 * np.log10(compression)
+
+            self.ui_compression_level_label.set_text(
+                str(round(compression, 1)))
 
     def reset(self):
         self.settings.reset('state')
-        self.settings.reset('use-peak')
+        self.settings.reset('detection-rms')
+        self.settings.reset('stereo-link-average')
+        self.settings.reset('mix')
         self.settings.reset('attack')
         self.settings.reset('release')
         self.settings.reset('threshold')

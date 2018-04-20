@@ -4,23 +4,29 @@
         <key name="state" type="b">
           <default>false</default>
         </key>
-        <key name="use-peak" type="b">
-          <default>false</default>
+        <key name="detection-rms" type="b">
+          <default>true</default>
         </key>
-        <key name="attack" type="d">
-          <default>101.1</default>
+        <key name="stereo-link-average" type="b">
+          <default>true</default>
         </key>
-        <key name="release" type="d">
-          <default>401.0</default>
-        </key>
-        <key name="threshold" type="d">
+        <key name="mix" type="d">
           <default>0.0</default>
         </key>
+        <key name="attack" type="d">
+          <default>20.0</default>
+        </key>
+        <key name="release" type="d">
+          <default>250.0</default>
+        </key>
+        <key name="threshold" type="d">
+          <default>-18</default>
+        </key>
         <key name="ratio" type="d">
-          <default>1.0</default>
+          <default>2</default>
         </key>
         <key name="knee" type="d">
-          <default>3.25</default>
+          <default>9</default>
         </key>
         <key name="makeup" type="d">
           <default>0.0</default>

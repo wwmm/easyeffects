@@ -16,7 +16,9 @@ class CompressorPresets():
 
     def add_section(self, settings, section):
         enabled = settings.get_value('state')
-        use_peak = settings.get_value('use-peak')
+        detection = settings.get_value('detection-rms')
+        stereo_link = settings.get_value('stereo-link-average')
+        mix = settings.get_value('mix')
         attack = settings.get_value('attack')
         release = settings.get_value('release')
         threshold = settings.get_value('threshold')
@@ -25,7 +27,9 @@ class CompressorPresets():
         makeup = settings.get_value('makeup')
 
         self.config[section] = {'enabled': str(enabled),
-                                'use_peak': str(use_peak),
+                                'detection_type_rms': str(detection),
+                                'stereo_link_type_average': str(stereo_link),
+                                'mix': str(mix),
                                 'attack': str(attack),
                                 'release': str(release),
                                 'threshold': str(threshold),
@@ -35,16 +39,24 @@ class CompressorPresets():
 
     def load_section(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
-        use_peak = self.config.getboolean(section, 'use_peak', fallback=False)
-        attack = self.config.getfloat(section, 'attack', fallback=101.1)
-        release = self.config.getfloat(section, 'release', fallback=401.0)
-        threshold = self.config.getfloat(section, 'threshold', fallback=0.0)
-        ratio = self.config.getfloat(section, 'ratio', fallback=1.0)
-        knee = self.config.getfloat(section, 'knee', fallback=3.0)
+        detection = self.config.getboolean(section, 'detection_type_rms',
+                                           fallback=True)
+        stereo_link = self.config.getboolean(section,
+                                             'stereo_link_type_average',
+                                             fallback=True)
+        mix = self.config.getfloat(section, 'mix', fallback=0.0)
+        attack = self.config.getfloat(section, 'attack', fallback=20.0)
+        release = self.config.getfloat(section, 'release', fallback=250.0)
+        threshold = self.config.getfloat(section, 'threshold', fallback=-18.0)
+        ratio = self.config.getfloat(section, 'ratio', fallback=2.0)
+        knee = self.config.getfloat(section, 'knee', fallback=9.0)
         makeup = self.config.getfloat(section, 'makeup', fallback=0.0)
 
         settings.set_value('state', GLib.Variant('b', enabled))
-        settings.set_value('use-peak', GLib.Variant('b', use_peak))
+        settings.set_value('detection-rms', GLib.Variant('b', detection))
+        settings.set_value('stereo-link-average',
+                           GLib.Variant('b', stereo_link))
+        settings.set_value('mix', GLib.Variant('d', mix))
         settings.set_value('attack', GLib.Variant('d', attack))
         settings.set_value('release', GLib.Variant('d', release))
         settings.set_value('threshold', GLib.Variant('d', threshold))
