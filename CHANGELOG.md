@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+
+## [3.2.2]
 ### Added
 - GStreamer Webrtc plugin
 - Gate and Deesser Plugins from Calf Studio
@@ -23,6 +25,10 @@ will work in sandboxed environments like flatpak
 - Level meter streams are not created when running as service with the window
 closed. These streams are put in the paused together with the corresponding
 application. Both changes should help save cpu.
+
+### Removed Dependencies
+- swh-plugins is not a dependency anymore as the limiter and compressor being
+used are the ones from Calf Studio Plugins
 
 ## [3.2.1]
 ### Added

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-20 01:15-0300\n"
+"POT-Creation-Date: 2018-04-20 18:43-0300\n"
 "PO-Revision-Date: 2017-10-14 10:20+0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: \n"
@@ -104,75 +104,98 @@ msgstr "Ljudstyrka (dB) (ut)"
 msgid "Compressor"
 msgstr "Kompressor"
 
-#: PulseEffects/ui/compressor.glade:105 PulseEffects/ui/deesser.glade:131
+#: PulseEffects/ui/compressor.glade:115 PulseEffects/ui/deesser.glade:131
 #: PulseEffects/ui/gate.glade:116
 msgid "rms"
 msgstr "rms"
 
-#: PulseEffects/ui/compressor.glade:121 PulseEffects/ui/deesser.glade:148
+#: PulseEffects/ui/compressor.glade:131 PulseEffects/ui/deesser.glade:148
 #: PulseEffects/ui/gate.glade:132
 msgid "peak"
 msgstr "peak"
 
-#: PulseEffects/ui/compressor.glade:155 PulseEffects/ui/gate.glade:252
+#: PulseEffects/ui/compressor.glade:151 PulseEffects/ui/deesser.glade:171
+#: PulseEffects/ui/gate.glade:152
+#, fuzzy
+msgid "Detection"
+msgstr "Försvagning"
+
+#: PulseEffects/ui/compressor.glade:164 PulseEffects/ui/gate.glade:165
+#, fuzzy
+msgid "Stereo Link"
+msgstr "Ljudförstärkare"
+
+#: PulseEffects/ui/compressor.glade:174 PulseEffects/ui/gate.glade:175
+msgid "average"
+msgstr ""
+
+#: PulseEffects/ui/compressor.glade:190 PulseEffects/ui/gate.glade:191
+msgid "maximum"
+msgstr ""
+
+#: PulseEffects/ui/compressor.glade:210
+msgid "Mix"
+msgstr ""
+
+#: PulseEffects/ui/compressor.glade:251 PulseEffects/ui/gate.glade:252
 #, fuzzy
 msgid "Attack"
 msgstr "Attack (ms)"
 
-#: PulseEffects/ui/compressor.glade:188 PulseEffects/ui/gate.glade:285
-#: PulseEffects/ui/limiter.glade:204 PulseEffects/ui/maximizer.glade:166
-#: PulseEffects/ui/output_limiter.glade:167
+#: PulseEffects/ui/compressor.glade:284 PulseEffects/ui/gate.glade:285
+#: PulseEffects/ui/limiter.glade:247 PulseEffects/ui/maximizer.glade:166
+#: PulseEffects/ui/output_limiter.glade:189
 #, fuzzy
 msgid "Release"
 msgstr "Release (s)"
 
-#: PulseEffects/ui/compressor.glade:220 PulseEffects/ui/deesser.glade:446
-#: PulseEffects/ui/gate.glade:319 PulseEffects/ui/limiter.glade:362
+#: PulseEffects/ui/compressor.glade:318 PulseEffects/ui/deesser.glade:446
+#: PulseEffects/ui/gate.glade:319 PulseEffects/ui/limiter.glade:487
 #: PulseEffects/ui/maximizer.glade:81
 #, fuzzy
 msgid "Threshold"
 msgstr "Tröskelvärde (dB)"
 
-#: PulseEffects/ui/compressor.glade:251 PulseEffects/ui/deesser.glade:479
+#: PulseEffects/ui/compressor.glade:348 PulseEffects/ui/deesser.glade:479
 #: PulseEffects/ui/gate.glade:349
 #, fuzzy
 msgid "Ratio"
 msgstr "Förhållande (n:1)"
 
-#: PulseEffects/ui/compressor.glade:281 PulseEffects/ui/gate.glade:379
+#: PulseEffects/ui/compressor.glade:378 PulseEffects/ui/gate.glade:379
 #, fuzzy
 msgid "Knee"
 msgstr "Knee-värde (dB)"
 
-#: PulseEffects/ui/compressor.glade:314 PulseEffects/ui/deesser.glade:510
+#: PulseEffects/ui/compressor.glade:411 PulseEffects/ui/deesser.glade:510
 #: PulseEffects/ui/gate.glade:412
 #, fuzzy
 msgid "Makeup"
 msgstr "Makeup (dB)"
 
-#: PulseEffects/ui/compressor.glade:366 PulseEffects/ui/crossfeed.glade:200
+#: PulseEffects/ui/compressor.glade:465 PulseEffects/ui/crossfeed.glade:200
 #: PulseEffects/ui/deesser.glade:562 PulseEffects/ui/delay.glade:353
 #: PulseEffects/ui/gate.glade:466 PulseEffects/ui/highpass.glade:151
-#: PulseEffects/ui/limiter.glade:433 PulseEffects/ui/lowpass.glade:151
-#: PulseEffects/ui/maximizer.glade:191 PulseEffects/ui/output_limiter.glade:192
+#: PulseEffects/ui/limiter.glade:565 PulseEffects/ui/lowpass.glade:151
+#: PulseEffects/ui/maximizer.glade:191 PulseEffects/ui/output_limiter.glade:321
 #: PulseEffects/ui/panorama.glade:122 PulseEffects/ui/pitch.glade:250
 #: PulseEffects/ui/reverb.glade:303 PulseEffects/ui/webrtc.glade:731
 msgid "Input"
 msgstr "Ingång"
 
-#: PulseEffects/ui/compressor.glade:381 PulseEffects/ui/crossfeed.glade:215
+#: PulseEffects/ui/compressor.glade:480 PulseEffects/ui/crossfeed.glade:215
 #: PulseEffects/ui/deesser.glade:577 PulseEffects/ui/delay.glade:368
 #: PulseEffects/ui/gate.glade:481 PulseEffects/ui/highpass.glade:166
-#: PulseEffects/ui/limiter.glade:448 PulseEffects/ui/lowpass.glade:166
-#: PulseEffects/ui/maximizer.glade:206 PulseEffects/ui/output_limiter.glade:207
+#: PulseEffects/ui/limiter.glade:580 PulseEffects/ui/lowpass.glade:166
+#: PulseEffects/ui/maximizer.glade:206 PulseEffects/ui/output_limiter.glade:336
 #: PulseEffects/ui/panorama.glade:137 PulseEffects/ui/pitch.glade:265
 #: PulseEffects/ui/reverb.glade:318 PulseEffects/ui/webrtc.glade:746
 msgid "Output"
 msgstr "Utgång"
 
-#: PulseEffects/ui/compressor.glade:547 PulseEffects/ui/deesser.glade:742
-#: PulseEffects/ui/gate.glade:211
-msgid "Gain Reduction"
+#: PulseEffects/ui/compressor.glade:645 PulseEffects/ui/gate.glade:646
+#, fuzzy
+msgid "Reduction"
 msgstr "Förstärkningsreducering"
 
 #. for some reason when listbox is inside a scrolledwindow
@@ -213,11 +236,6 @@ msgstr ""
 msgid "Deesser"
 msgstr ""
 
-#: PulseEffects/ui/deesser.glade:171 PulseEffects/ui/gate.glade:152
-#, fuzzy
-msgid "Detection"
-msgstr "Försvagning"
-
 #: PulseEffects/ui/deesser.glade:185 PulseEffects/ui/webrtc.glade:389
 msgid "Mode"
 msgstr ""
@@ -257,6 +275,10 @@ msgstr ""
 #: PulseEffects/ui/deesser.glade:414
 msgid "Laxity"
 msgstr ""
+
+#: PulseEffects/ui/deesser.glade:742 PulseEffects/ui/gate.glade:211
+msgid "Gain Reduction"
+msgstr "Förstärkningsreducering"
 
 #: PulseEffects/ui/deesser.glade:755
 #, fuzzy
@@ -349,24 +371,6 @@ msgstr "Gränsvärde (dB)"
 msgid "Gate"
 msgstr ""
 
-#: PulseEffects/ui/gate.glade:165
-#, fuzzy
-msgid "Stereo Link"
-msgstr "Ljudförstärkare"
-
-#: PulseEffects/ui/gate.glade:175
-msgid "average"
-msgstr ""
-
-#: PulseEffects/ui/gate.glade:191
-msgid "maximum"
-msgstr ""
-
-#: PulseEffects/ui/gate.glade:646
-#, fuzzy
-msgid "Reduction Level"
-msgstr "Förstärkningsreducering"
-
 #: PulseEffects/ui/highpass.glade:18
 msgid "High Pass"
 msgstr "Högpass"
@@ -375,42 +379,71 @@ msgstr "Högpass"
 msgid "Poles"
 msgstr "Poler"
 
-#: PulseEffects/ui/limiter.glade:55
+#: PulseEffects/ui/limiter.glade:63
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:48
 msgid "Input Limiter"
 msgstr "Ingångs-begränsning"
 
-#: PulseEffects/ui/limiter.glade:122 PulseEffects/ui/output_limiter.glade:82
+#: PulseEffects/ui/limiter.glade:161 PulseEffects/ui/output_limiter.glade:104
 #, fuzzy
 msgid "Input Gain"
 msgstr "Ingångsförstärkning (dB)"
 
-#: PulseEffects/ui/limiter.glade:153 PulseEffects/ui/output_limiter.glade:114
+#: PulseEffects/ui/limiter.glade:193 PulseEffects/ui/output_limiter.glade:136
 #, fuzzy
 msgid "Limit"
 msgstr "Gränsvärde (dB)"
 
-#: PulseEffects/ui/limiter.glade:237
-msgid "Auto Volume"
-msgstr "Automatisk volym"
+#: PulseEffects/ui/limiter.glade:258 PulseEffects/ui/output_limiter.glade:200
+msgid "Lookahead"
+msgstr ""
 
-#: PulseEffects/ui/limiter.glade:277 PulseEffectsTest/ui/microphone.glade:35
+#: PulseEffects/ui/limiter.glade:291 PulseEffects/ui/output_limiter.glade:234
+msgid "Oversampling"
+msgstr ""
+
+#: PulseEffects/ui/limiter.glade:319 PulseEffects/ui/output_limiter.glade:261
+#, fuzzy
+msgid "ASC Level"
+msgstr "Nivå"
+
+#: PulseEffects/ui/limiter.glade:347 PulseEffects/ui/output_limiter.glade:289
+msgid "ASC"
+msgstr ""
+
+#: PulseEffects/ui/limiter.glade:364 PulseEffects/ui/webrtc.glade:448
+#, fuzzy
+msgid "Limiter"
+msgstr "Gränsvärde (dB)"
+
+#: PulseEffects/ui/limiter.glade:377 PulseEffects/ui/webrtc.glade:95
+#: PulseEffects/ui/webrtc.glade:340 PulseEffects/ui/webrtc.glade:370
+#: PulseEffects/ui/webrtc.glade:637
+#, fuzzy
+msgid "Enable"
+msgstr "Sinustabell"
+
+#: PulseEffects/ui/limiter.glade:402 PulseEffectsTest/ui/microphone.glade:35
 #, fuzzy
 msgid "Window"
 msgstr "Mellanrum (s)"
 
-#: PulseEffects/ui/limiter.glade:289
+#: PulseEffects/ui/limiter.glade:414
 #, fuzzy
 msgid "Target"
 msgstr "Målvärde (dB)"
 
-#: PulseEffects/ui/limiter.glade:394
+#: PulseEffects/ui/limiter.glade:519
 #, fuzzy
 msgid "Tolerance"
 msgstr "Tolerans (dB)"
 
-#: PulseEffects/ui/limiter.glade:463 PulseEffects/ui/maximizer.glade:221
-#: PulseEffects/ui/output_limiter.glade:222
+#: PulseEffects/ui/limiter.glade:536
+msgid "Auto Volume"
+msgstr "Automatisk volym"
+
+#: PulseEffects/ui/limiter.glade:595 PulseEffects/ui/maximizer.glade:221
+#: PulseEffects/ui/output_limiter.glade:351
 msgid "Attenuation"
 msgstr "Försvagning"
 
@@ -484,7 +517,12 @@ msgstr "Ingångs-begränsning"
 msgid "Input Effects"
 msgstr "PulseEffects"
 
-#: PulseEffects/ui/main_ui.glade:869
+#: PulseEffects/ui/main_ui.glade:870
+#, fuzzy
+msgid "Advanced Settings"
+msgstr "Inställningar"
+
+#: PulseEffects/ui/main_ui.glade:880
 msgid "Pulseaudio"
 msgstr ""
 
@@ -492,7 +530,7 @@ msgstr ""
 msgid "Maximizer"
 msgstr ""
 
-#: PulseEffects/ui/output_limiter.glade:24
+#: PulseEffects/ui/output_limiter.glade:32
 #, fuzzy
 msgid "Output Limiter"
 msgstr "Ingångs-begränsning"
@@ -667,12 +705,6 @@ msgstr "Ingång"
 msgid "Webrtc"
 msgstr ""
 
-#: PulseEffects/ui/webrtc.glade:95 PulseEffects/ui/webrtc.glade:340
-#: PulseEffects/ui/webrtc.glade:370 PulseEffects/ui/webrtc.glade:637
-#, fuzzy
-msgid "Enable"
-msgstr "Sinustabell"
-
 #: PulseEffects/ui/webrtc.glade:116
 msgid "Extended Filter"
 msgstr ""
@@ -722,11 +754,6 @@ msgstr ""
 #: PulseEffects/ui/webrtc.glade:435
 msgid "Gain Controller"
 msgstr ""
-
-#: PulseEffects/ui/webrtc.glade:448
-#, fuzzy
-msgid "Limiter"
-msgstr "Gränsvärde (dB)"
 
 #: PulseEffects/ui/webrtc.glade:468
 #, fuzzy
@@ -965,6 +992,10 @@ msgstr "pulseeffects"
 #, fuzzy
 #~ msgid "1"
 #~ msgstr "F"
+
+#, fuzzy
+#~ msgid "Reduction Level"
+#~ msgstr "Förstärkningsreducering"
 
 #~ msgid "Window [s]"
 #~ msgstr "Mellanrum (s)"

@@ -172,7 +172,6 @@
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="width_chars">10</property>
-                        <property name="text" translatable="yes">0</property>
                         <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                         <property name="secondary_icon_activatable">False</property>
                         <property name="input_purpose">number</property>
@@ -205,7 +204,6 @@
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="width_chars">10</property>
-                        <property name="text" translatable="yes">0</property>
                         <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                         <property name="secondary_icon_activatable">False</property>
                         <property name="input_purpose">number</property>
@@ -226,7 +224,6 @@
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="width_chars">10</property>
-                        <property name="text" translatable="yes">50,00</property>
                         <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                         <property name="secondary_icon_activatable">False</property>
                         <property name="input_purpose">number</property>
@@ -272,7 +269,6 @@
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="width_chars">10</property>
-                        <property name="text" translatable="yes">0,50</property>
                         <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                         <property name="secondary_icon_activatable">False</property>
                         <property name="input_purpose">number</property>
@@ -304,7 +300,6 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="width_chars">10</property>
-                        <property name="text" translatable="yes">1</property>
                         <property name="input_purpose">number</property>
                         <property name="orientation">vertical</property>
                         <property name="adjustment">oversampling</property>
@@ -333,7 +328,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="width_chars">10</property>
-                        <property name="text" translatable="yes">1,00</property>
+                        <property name="text">1,00</property>
                         <property name="input_purpose">number</property>
                         <property name="orientation">vertical</property>
                         <property name="adjustment">asc_level</property>

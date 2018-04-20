@@ -197,7 +197,8 @@ class PipelineBase(GObject.GObject):
 
                 self.set_state('playing')
         elif 'pa_context_move_source_output_by_name' in g_error.message:
-            pass
+            self.set_state('null')
+            self.set_state('playing')
         else:
             self.set_state('null')
             self.set_state('playing')

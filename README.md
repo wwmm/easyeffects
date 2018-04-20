@@ -8,7 +8,7 @@ Audio effects for Pulseaudio applications
 
 Order of effects applied to applications output:
 
-1. Input Limiter (Ladspa Fast Lookahead Limiter)
+1. Input Limiter (LV2 Limiter from Calf Studio)
 2. Auto Volume
 3. Compressor (LV2 Compressor from Calf Studio)
 4. Butterworth Highpass filter (Gstreamer audiocheblimit)
@@ -23,14 +23,14 @@ Order of effects applied to applications output:
 13. Crossfeed (Bs2b library)
 14. Delay Compensator(LV2 Delay Compensator from Linux Studio Plugins)
 15. Maximizer (Ladspa Maximizer from ZamAudio)
-16. Output Limiter (Ladspa Fast Lookahead Limiter)
+16. Output Limiter (LV2 Limiter from Calf Studio)
 17. Spectrum Analyzer (Gstreamer)
 
 Order of effects applied to microphone output:
 
 1. Gate (LV2 Gate from Calf Studio)
 2. Webrtc (GStreamer)
-3. Input Limiter (Ladspa Fast Lookahead Limiter)
+3. Input Limiter (LV2 Limiter from Calf Studio)
 4. Compressor (LV2 Compressor from Calf Studio)
 5. Butterworth Highpass filter (Gstreamer audiocheblimit)
 6. Butterworth Lowpass filter (Gstreamer audiocheblimit)
@@ -85,7 +85,6 @@ Required libraries:
 GStreamer 1.12.3 or above is needed to have all the functionality of
 PulseEffects. And GStreamer Plugins Bad must be compiled against
 [Bs2b](http://bs2b.sourceforge.net/) in order to have the crossfeed
-- [swh-plugins](https://github.com/swh/ladspa) from Ladspa
 - [Lilv](http://drobilla.net/category/lilv/)
 - [Calf Plugins](https://calf-studio-gear.org/)
 - [ZamAudio Ladspa Plugins](http://www.zamaudio.com/)

@@ -68,7 +68,6 @@ class Limiter():
 
     def post_messages(self, state):
         self.input_level.set_property('post-messages', state)
-        self.output_level.set_property('post-messages', state)
 
     def init_ui(self):
         self.builder = Gtk.Builder.new_from_file(self.module_path +
@@ -215,6 +214,7 @@ class Limiter():
             self.ui_release.set_value(window)
             self.ui_asc.set_state(True)
             self.ui_asc_level.set_value(1.0)
+            self.ui_lookahead.set_value(10)  # 10 ms
 
             self.ui_limiter_controls.set_sensitive(False)
         else:
@@ -223,6 +223,7 @@ class Limiter():
             self.ui_release.set_value(50.0)  # 50 ms
             self.ui_asc.set_state(False)
             self.ui_asc_level.set_value(0.5)
+            self.ui_lookahead.set_value(5)  # 5 ms
 
             self.ui_limiter_controls.set_sensitive(True)
 
@@ -268,25 +269,31 @@ class Limiter():
             gain = 20 * np.log10(self.limiter.get_property('level-in'))
             gain = round(gain)
 
-            if gain - 1 >= -20:
+            if gain - 1 >= -36:  # -36 = minimum input gain
                 gain = gain - 1
 
                 # using ui_input_gain has no effect in service mode because
                 # the ui is destroyed
 
-                value_linear = 10**(gain / 20.0)
+                if self.ui_input_gain:
+                    self.ui_input_gain.set_value(gain)
+                else:
+                    value_linear = 10**(gain / 20.0)
 
-                self.limiter.set_property('level-in', value_linear)
+                    self.limiter.set_property('level-in', value_linear)
         elif max_value < self.autovolume_target - self.autovolume_tolerance:
             gain = 20 * np.log10(self.limiter.get_property('level-in'))
             gain = round(gain)
 
-            if gain + 1 <= 20:
+            if gain + 1 <= 36:  # 36 = maximum input gain
                 gain = gain + 1
 
-                value_linear = 10**(gain / 20.0)
+                if self.ui_input_gain:
+                    self.ui_input_gain.set_value(gain)
+                else:
+                    value_linear = 10**(gain / 20.0)
 
-                self.limiter.set_property('level-in', value_linear)
+                    self.limiter.set_property('level-in', value_linear)
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]
@@ -329,8 +336,6 @@ class Limiter():
         attenuation = self.limiter.get_property('att')
 
         self.ui_attenuation_levelbar.set_value(1 - attenuation)
-
-        print(attenuation)
 
         if attenuation > 0:
             attenuation = 20 * np.log10(attenuation)

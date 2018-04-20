@@ -239,7 +239,7 @@ class Deesser():
         compression = self.deesser.get_property('compression')
         detected = self.deesser.get_property('detected')
 
-        self.ui_compression_levelbar.set_value(compression)
+        self.ui_compression_levelbar.set_value(1 - compression)
         self.ui_detected_levelbar.set_value(detected)
 
         if compression > 0:
