@@ -4,6 +4,7 @@ import logging
 import os
 
 import gi
+import numpy as np
 gi.require_version('Gst', '1.0')
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
@@ -20,10 +21,8 @@ class OutputLimiter():
 
         self.log = logging.getLogger('PulseEffects')
 
-        self.old_limiter_attenuation = 0
-
         if Gst.ElementFactory.make(
-                'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter'):
+                'calf-sourceforge-net-plugins-Limiter'):
             self.is_installed = True
         else:
             self.is_installed = False
@@ -37,7 +36,7 @@ class OutputLimiter():
 
     def build_bin(self):
         self.limiter = Gst.ElementFactory.make(
-            'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter', None)
+            'calf-sourceforge-net-plugins-Limiter', None)
         self.in_level = Gst.ElementFactory.make('level',
                                                 'output_limiter_input_level')
         self.out_level = Gst.ElementFactory.make('level',
@@ -46,6 +45,17 @@ class OutputLimiter():
         self.bin = GstInsertBin.InsertBin.new('output_limiter_bin')
 
         if self.is_installed:
+            # booleans are inverted in GStreamer versions older than 1.12.5
+
+            registry = Gst.Registry().get()
+            self.use_workaround = not registry\
+                .check_feature_version('pulsesrc', 1, 12, 5)
+
+            if self.use_workaround:
+                self.comprelimiterssor.set_property('bypass', True)
+            else:
+                self.limiter.set_property('bypass', False)
+
             self.bin.append(self.in_level, self.on_filter_added, None)
             self.bin.append(self.limiter, self.on_filter_added, None)
             self.bin.append(self.out_level, self.on_filter_added, None)
@@ -67,16 +77,13 @@ class OutputLimiter():
         self.ui_img_state = self.builder.get_object('img_state')
         self.ui_input_gain = self.builder.get_object('input_gain')
         self.ui_limit = self.builder.get_object('limit')
-        self.ui_release_time = self.builder.get_object('release_time')
+        self.ui_lookahead = self.builder.get_object('lookahead')
+        self.ui_release = self.builder.get_object('release')
+        self.ui_oversampling = self.builder.get_object('oversampling')
+        self.ui_asc = self.builder.get_object('asc')
+        self.ui_asc_level = self.builder.get_object('asc_level')
         self.ui_attenuation_levelbar = self.builder.get_object(
             'attenuation_levelbar')
-
-        self.ui_attenuation_levelbar.add_offset_value(
-            'GTK_LEVEL_BAR_OFFSET_LOW', 20)
-        self.ui_attenuation_levelbar.add_offset_value(
-            'GTK_LEVEL_BAR_OFFSET_HIGH', 50)
-        self.ui_attenuation_levelbar.add_offset_value(
-            'GTK_LEVEL_BAR_OFFSET_FULL', 70)
 
         self.ui_input_level_left = self.builder.get_object('input_level_left')
         self.ui_input_level_right = self.builder.get_object(
@@ -108,18 +115,42 @@ class OutputLimiter():
                            Gio.SettingsBindFlags.GET)
         self.settings.bind('input-gain', self.ui_input_gain, 'value', flag)
         self.settings.bind('limit', self.ui_limit, 'value', flag)
-        self.settings.bind('release-time', self.ui_release_time, 'value', flag)
+        self.settings.bind('lookahead', self.ui_lookahead, 'value', flag)
+        self.settings.bind('release', self.ui_release, 'value', flag)
+        self.settings.bind('oversampling', self.ui_oversampling, 'value', flag)
+        self.settings.bind('asc', self.ui_asc, 'active', flag)
+        self.settings.bind('asc-level', self.ui_asc_level, 'value', flag)
 
         # binding ui widgets to gstreamer plugins
 
         flag = GObject.BindingFlags.BIDIRECTIONAL | \
             GObject.BindingFlags.SYNC_CREATE
 
-        self.ui_input_gain.bind_property('value', self.limiter, 'input-gain',
-                                         flag)
-        self.ui_limit.bind_property('value', self.limiter, 'limit', flag)
-        self.ui_release_time.bind_property('value', self.limiter,
-                                           'release-time', flag)
+        self.ui_asc.bind_property('active', self.limiter, 'asc', flag)
+        self.ui_asc_level.bind_property('value', self.limiter, 'asc-coeff',
+                                        flag)
+        self.ui_lookahead.bind_property('value', self.limiter, 'attack', flag)
+        self.ui_release.bind_property('value', self.limiter, 'release', flag)
+        self.ui_oversampling.bind_property('value', self.limiter,
+                                           'oversampling', flag)
+
+    def on_input_gain_value_changed(self, obj):
+        value_db = obj.get_value()
+        value_linear = 10**(value_db / 20.0)
+
+        self.limiter.set_property('level-in', value_linear)
+
+    def on_limit_value_changed(self, obj):
+        value_db = obj.get_value()
+        value_linear = 10**(value_db / 20.0)
+
+        self.limiter.set_property('limit', value_linear)
+
+        # calf limiter does automatic makeup gain by the same amount given as
+        # limit. See https://github.com/calf-studio-gear/calf/issues/162
+        # that is why we reduce the output level accordingly
+
+        self.limiter.set_property('level-out', value_linear)
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]
@@ -159,16 +190,22 @@ class OutputLimiter():
 
         self.ui_update_level(widgets, peak)
 
-        attenuation = round(self.limiter.get_property('attenuation'))
+        attenuation = self.limiter.get_property('att')
 
-        if attenuation != self.old_limiter_attenuation:
-            self.old_limiter_attenuation = attenuation
+        self.ui_attenuation_levelbar.set_value(1 - attenuation)
 
-            self.ui_attenuation_levelbar.set_value(attenuation)
-            self.ui_attenuation_level_label.set_text(str(round(attenuation)))
+        if attenuation > 0:
+            attenuation = 20 * np.log10(attenuation)
+
+            self.ui_attenuation_level_label.set_text(
+                str(round(attenuation, 1)))
 
     def reset(self):
         self.settings.reset('state')
         self.settings.reset('input-gain')
         self.settings.reset('limit')
-        self.settings.reset('release-time')
+        self.settings.reset('lookahead')
+        self.settings.reset('release')
+        self.settings.reset('oversampling')
+        self.settings.reset('asc')
+        self.settings.reset('asc-level')

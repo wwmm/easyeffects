@@ -10,8 +10,20 @@
         <key name="limit" type="d">
           <default>0.0</default>
         </key>
-        <key name="release-time" type="d">
-          <default>2.0</default>
+        <key name="lookahead" type="d">
+          <default>5.0</default>
+        </key>
+        <key name="release" type="d">
+          <default>50.0</default>
+        </key>
+        <key name="asc" type="b">
+          <default>false</default>
+        </key>
+        <key name="asc-level" type="d">
+          <default>0.5</default>
+        </key>
+        <key name="oversampling" type="i">
+          <default>1</default>
         </key>
     </schema>
 </schemalist>

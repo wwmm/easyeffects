@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.0 -->
+<!-- Generated with glade 3.22.1 -->
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.18"/>
-  <object class="GtkAdjustment" id="input_gain_adjustment">
-    <property name="lower">-20</property>
-    <property name="upper">20</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">1</property>
+  <object class="GtkAdjustment" id="asc_level">
+    <property name="upper">1</property>
+    <property name="value">0.5</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">0.01</property>
   </object>
-  <object class="GtkAdjustment" id="limit_adjustment">
+  <object class="GtkAdjustment" id="input_gain">
+    <property name="lower">-36</property>
+    <property name="upper">36</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_input_gain_value_changed" swapped="no"/>
+  </object>
+  <object class="GtkAdjustment" id="limit">
     <property name="lower">-20</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_limit_value_changed" swapped="no"/>
   </object>
   <object class="GtkBox" id="listbox_control">
     <property name="visible">True</property>
@@ -48,12 +56,26 @@
       </packing>
     </child>
   </object>
-  <object class="GtkAdjustment" id="release_time_adjustment">
-    <property name="lower">0.01</property>
-    <property name="upper">2</property>
-    <property name="value">0.5</property>
-    <property name="step_increment">0.01</property>
+  <object class="GtkAdjustment" id="lookahead">
+    <property name="lower">0.10000000000000001</property>
+    <property name="upper">10</property>
+    <property name="value">5</property>
+    <property name="step_increment">0.10000000000000001</property>
     <property name="page_increment">0.10000000000000001</property>
+  </object>
+  <object class="GtkAdjustment" id="oversampling">
+    <property name="lower">1</property>
+    <property name="upper">4</property>
+    <property name="value">1</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="release">
+    <property name="lower">1</property>
+    <property name="upper">1000</property>
+    <property name="value">50</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
   </object>
   <object class="GtkGrid" id="window">
     <property name="visible">True</property>
@@ -67,7 +89,7 @@
         <property name="valign">center</property>
         <property name="hexpand">True</property>
         <property name="orientation">vertical</property>
-        <property name="spacing">18</property>
+        <property name="spacing">30</property>
         <child>
           <object class="GtkGrid">
             <property name="visible">True</property>
@@ -83,11 +105,11 @@
               </object>
               <packing>
                 <property name="left_attach">0</property>
-                <property name="top_attach">0</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
             <child>
-              <object class="GtkSpinButton" id="input_gain">
+              <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -97,13 +119,13 @@
                 <property name="secondary_icon_activatable">False</property>
                 <property name="input_purpose">number</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">input_gain_adjustment</property>
+                <property name="adjustment">input_gain</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
-                <property name="top_attach">1</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
@@ -115,11 +137,11 @@
               </object>
               <packing>
                 <property name="left_attach">1</property>
-                <property name="top_attach">0</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
             <child>
-              <object class="GtkSpinButton" id="limit">
+              <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -129,34 +151,34 @@
                 <property name="secondary_icon_activatable">False</property>
                 <property name="input_purpose">number</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">limit_adjustment</property>
+                <property name="adjustment">limit</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
-                <property name="top_attach">1</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
-              <object class="GtkSpinButton" id="release_time">
+              <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="width_chars">10</property>
-                <property name="secondary_icon_name">pulseeffects-s-symbolic</property>
+                <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                 <property name="secondary_icon_activatable">False</property>
                 <property name="input_purpose">number</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">release_time_adjustment</property>
+                <property name="adjustment">release</property>
                 <property name="digits">2</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
               </object>
               <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">1</property>
+                <property name="left_attach">3</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
@@ -167,8 +189,115 @@
                 <property name="label" translatable="yes">Release</property>
               </object>
               <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Lookahead</property>
+              </object>
+              <packing>
                 <property name="left_attach">2</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="width_chars">10</property>
+                <property name="text" translatable="yes">0,50</property>
+                <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="input_purpose">number</property>
+                <property name="orientation">vertical</property>
+                <property name="adjustment">lookahead</property>
+                <property name="digits">2</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
+                <property name="value">0.5</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Oversampling</property>
+              </object>
+              <packing>
+                <property name="left_attach">4</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="width_chars">10</property>
+                <property name="input_purpose">number</property>
+                <property name="orientation">vertical</property>
+                <property name="adjustment">oversampling</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
+              </object>
+              <packing>
+                <property name="left_attach">4</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">ASC Level</property>
+              </object>
+              <packing>
+                <property name="left_attach">5</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="width_chars">10</property>
+                <property name="text" translatable="yes">1</property>
+                <property name="input_purpose">number</property>
+                <property name="orientation">vertical</property>
+                <property name="adjustment">asc_level</property>
+                <property name="digits">2</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
+                <property name="value">1</property>
+              </object>
+              <packing>
+                <property name="left_attach">5</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkToggleButton" id="asc">
+                <property name="label" translatable="yes">ASC</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="margin_bottom">30</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
                 <property name="top_attach">0</property>
+                <property name="width">6</property>
               </packing>
             </child>
           </object>
@@ -355,7 +484,6 @@
                 <property name="valign">center</property>
                 <property name="margin_top">4</property>
                 <property name="hexpand">True</property>
-                <property name="max_value">70</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
