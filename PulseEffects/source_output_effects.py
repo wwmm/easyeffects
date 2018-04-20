@@ -380,6 +380,10 @@ class SourceOutputEffects(EffectsBase):
             self.pitch_wrapper.remove(self.pitch.bin,
                                       self.on_filter_removed, None)
 
+    def set_webrtc_probe_src(self, src):
+        if self.webrtc.is_installed:
+            self.webrtc.set_probe_src_device(src)
+
     def reset(self):
         EffectsBase.reset(self)
 

@@ -430,12 +430,16 @@ class Application(Gtk.Application):
             for s in self.sink_list:
                 name = s['name']
 
-                if name == self.pm.default_sink_name:
+                if name == value:
                     idx = self.sink_list.index(s)
 
                     self.ui_output_device.set_active(idx)
+
+                    self.soe.set_webrtc_probe_src(name + '.monitor')
         else:
             self.sie.set_output_sink_name(value)
+
+            self.soe.set_webrtc_probe_src(value + '.monitor')
 
     def on_new_default_source(self, obj, value):
         if self.ui_initialized:
@@ -623,6 +627,8 @@ class Application(Gtk.Application):
         for s in self.sink_list:
             if s['name'] == name:
                 self.sie.set_output_sink_name(name)
+
+                self.soe.set_webrtc_probe_src(name + '.monitor')
 
                 self.log.debug(self.log_tag + 'output device changed: ' + name)
 
