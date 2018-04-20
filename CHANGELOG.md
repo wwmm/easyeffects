@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+- GStreamer Webrtc plugin
 - Gate and Deesser Plugins from Calf Studio
 - User can select the input and output device used in the current session. The
 selected devices are not remembered when PulseEffects is closed.

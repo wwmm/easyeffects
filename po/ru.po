@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-15 10:44-0300\n"
+"POT-Creation-Date: 2018-04-20 01:15-0300\n"
 "PO-Revision-Date: 2018-03-09 01:34+0300\n"
 "Last-Translator: Михаил <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -37,14 +37,14 @@ msgstr "Каналы"
 msgid "Resampler"
 msgstr "Ресемплер"
 
-#: PulseEffects/ui/app_info.glade:156 PulseEffects/ui/main_ui.glade:693
-#: PulseEffects/ui/main_ui.glade:769
+#: PulseEffects/ui/app_info.glade:156 PulseEffects/ui/main_ui.glade:692
+#: PulseEffects/ui/main_ui.glade:768
 #, fuzzy
 msgid "Buffer"
 msgstr "Буферизация"
 
-#: PulseEffects/ui/app_info.glade:183 PulseEffects/ui/main_ui.glade:706
-#: PulseEffects/ui/main_ui.glade:782
+#: PulseEffects/ui/app_info.glade:183 PulseEffects/ui/main_ui.glade:705
+#: PulseEffects/ui/main_ui.glade:781
 msgid "Latency"
 msgstr "Задержка"
 
@@ -74,7 +74,7 @@ msgid "Amount"
 msgstr "Величина"
 
 #: PulseEffects/ui/bass_enhancer.glade:194
-#: PulseEffects/ui/bass_enhancer.glade:326 PulseEffects/ui/exciter.glade:194
+#: PulseEffects/ui/bass_enhancer.glade:324 PulseEffects/ui/exciter.glade:194
 #: PulseEffects/ui/exciter.glade:322
 msgid "Harmonics"
 msgstr "Гармоники"
@@ -89,19 +89,19 @@ msgstr "Шум [Гц]"
 msgid "Scope"
 msgstr "Размах [Гц]"
 
-#: PulseEffects/ui/bass_enhancer.glade:419 PulseEffects/ui/equalizer.glade:1847
+#: PulseEffects/ui/bass_enhancer.glade:417 PulseEffects/ui/equalizer.glade:1847
 #: PulseEffects/ui/exciter.glade:415 PulseEffects/ui/stereo_enhancer.glade:517
 #: PulseEffects/ui/stereo_spread.glade:300
 msgid "Input [dB]"
 msgstr "Ввод [дБ]"
 
-#: PulseEffects/ui/bass_enhancer.glade:451 PulseEffects/ui/equalizer.glade:1862
+#: PulseEffects/ui/bass_enhancer.glade:449 PulseEffects/ui/equalizer.glade:1862
 #: PulseEffects/ui/exciter.glade:447 PulseEffects/ui/stereo_enhancer.glade:531
 #: PulseEffects/ui/stereo_spread.glade:314
 msgid "Output [dB]"
 msgstr "Вывод [дБ]"
 
-#: PulseEffects/ui/compressor.glade:27 PulseEffects/ui/webrtc.glade:275
+#: PulseEffects/ui/compressor.glade:27 PulseEffects/ui/webrtc.glade:525
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:52
 msgid "Compressor"
 msgstr "Компрессор"
@@ -158,7 +158,7 @@ msgstr "Компенсирование [дБ]"
 #: PulseEffects/ui/limiter.glade:433 PulseEffects/ui/lowpass.glade:151
 #: PulseEffects/ui/maximizer.glade:191 PulseEffects/ui/output_limiter.glade:192
 #: PulseEffects/ui/panorama.glade:122 PulseEffects/ui/pitch.glade:250
-#: PulseEffects/ui/reverb.glade:303 PulseEffects/ui/webrtc.glade:352
+#: PulseEffects/ui/reverb.glade:303 PulseEffects/ui/webrtc.glade:731
 msgid "Input"
 msgstr "Ввод"
 
@@ -168,7 +168,7 @@ msgstr "Ввод"
 #: PulseEffects/ui/limiter.glade:448 PulseEffects/ui/lowpass.glade:166
 #: PulseEffects/ui/maximizer.glade:206 PulseEffects/ui/output_limiter.glade:207
 #: PulseEffects/ui/panorama.glade:137 PulseEffects/ui/pitch.glade:265
-#: PulseEffects/ui/reverb.glade:318 PulseEffects/ui/webrtc.glade:367
+#: PulseEffects/ui/reverb.glade:318 PulseEffects/ui/webrtc.glade:746
 msgid "Output"
 msgstr "Вывод"
 
@@ -179,7 +179,7 @@ msgstr "Увеличение ослабления"
 
 #. for some reason when listbox is inside a scrolledwindow
 #. it autoselects a row at startup
-#: PulseEffects/ui/crossfeed.glade:46 PulseEffects/ui/main_ui.glade:103
+#: PulseEffects/ui/crossfeed.glade:46 PulseEffects/ui/main_ui.glade:102
 #: PulseEffects/ui/reverb.glade:90 PulseEffects/presets_manager.py:58
 msgid "Presets"
 msgstr "Преднастройки"
@@ -220,7 +220,7 @@ msgstr ""
 msgid "Detection"
 msgstr "Затухание"
 
-#: PulseEffects/ui/deesser.glade:185
+#: PulseEffects/ui/deesser.glade:185 PulseEffects/ui/webrtc.glade:389
 msgid "Mode"
 msgstr ""
 
@@ -422,75 +422,75 @@ msgstr "Затухание"
 msgid "Low Pass"
 msgstr "Фильтр низких частот"
 
-#: PulseEffects/ui/main_ui.glade:69
+#: PulseEffects/ui/main_ui.glade:68
 #, fuzzy
 msgid "Test Signals"
 msgstr "Проверочный сигнал"
 
-#: PulseEffects/ui/main_ui.glade:396
+#: PulseEffects/ui/main_ui.glade:395
 msgid "Start Service at Login"
 msgstr "Запуск службы при запуске"
 
-#: PulseEffects/ui/main_ui.glade:422
+#: PulseEffects/ui/main_ui.glade:421
 #, fuzzy
 msgid "Enable All Applications"
 msgstr "Приложения"
 
-#: PulseEffects/ui/main_ui.glade:447
+#: PulseEffects/ui/main_ui.glade:446
 msgid "Use Dark Theme"
 msgstr "Исп. тёмную тему"
 
-#: PulseEffects/ui/main_ui.glade:472
+#: PulseEffects/ui/main_ui.glade:471
 msgid "Settings"
 msgstr "Параметры"
 
-#: PulseEffects/ui/main_ui.glade:481
+#: PulseEffects/ui/main_ui.glade:480
 msgid "Reset"
 msgstr "Сбросить"
 
-#: PulseEffects/ui/main_ui.glade:497
+#: PulseEffects/ui/main_ui.glade:496
 msgid "General"
 msgstr "Общие"
 
-#: PulseEffects/ui/main_ui.glade:515
+#: PulseEffects/ui/main_ui.glade:514
 msgid "Show"
 msgstr "Показать"
 
-#: PulseEffects/ui/main_ui.glade:542
+#: PulseEffects/ui/main_ui.glade:541
 #, fuzzy
 msgid "Points"
 msgstr "Точки"
 
-#: PulseEffects/ui/main_ui.glade:569
+#: PulseEffects/ui/main_ui.glade:568
 msgid "Spectrum"
 msgstr "Спектр"
 
-#: PulseEffects/ui/main_ui.glade:592
+#: PulseEffects/ui/main_ui.glade:591
 #, fuzzy
 msgid "Output Device"
 msgstr "Ограничитель ввода"
 
-#: PulseEffects/ui/main_ui.glade:602 PulseEffects/ui/main_ui.glade:629
+#: PulseEffects/ui/main_ui.glade:601 PulseEffects/ui/main_ui.glade:628
 #, fuzzy
 msgid "Use Default"
 msgstr "По умолчанию"
 
-#: PulseEffects/ui/main_ui.glade:658
+#: PulseEffects/ui/main_ui.glade:657
 #, fuzzy
 msgid "Input Device"
 msgstr "Ограничитель ввода"
 
-#: PulseEffects/ui/main_ui.glade:841
+#: PulseEffects/ui/main_ui.glade:840
 #, fuzzy
 msgid "Output Effects"
 msgstr "Ограничитель ввода"
 
-#: PulseEffects/ui/main_ui.glade:854
+#: PulseEffects/ui/main_ui.glade:853
 #, fuzzy
 msgid "Input Effects"
 msgstr "PulseEffects"
 
-#: PulseEffects/ui/main_ui.glade:870
+#: PulseEffects/ui/main_ui.glade:869
 msgid "Pulseaudio"
 msgstr ""
 
@@ -645,11 +645,13 @@ msgstr "Рассеивание стерео"
 msgid "Sub"
 msgstr ""
 
-#: PulseEffects/ui/stereo_spread.glade:124 PulseEffects/ui/webrtc.glade:76
+#: PulseEffects/ui/stereo_spread.glade:124 PulseEffects/ui/webrtc.glade:181
+#: PulseEffects/ui/webrtc.glade:255 PulseEffects/ui/webrtc.glade:578
 msgid "Low"
 msgstr ""
 
-#: PulseEffects/ui/stereo_spread.glade:136 PulseEffects/ui/webrtc.glade:107
+#: PulseEffects/ui/stereo_spread.glade:136 PulseEffects/ui/webrtc.glade:216
+#: PulseEffects/ui/webrtc.glade:290 PulseEffects/ui/webrtc.glade:613
 #, fuzzy
 msgid "High"
 msgstr "Высокачастотный фильтр"
@@ -668,39 +670,96 @@ msgstr "Фильтры"
 msgid "Mono Input"
 msgstr "Моноввод"
 
-#: PulseEffects/ui/webrtc.glade:13
+#: PulseEffects/ui/webrtc.glade:19
 msgid "Webrtc"
 msgstr ""
 
-#: PulseEffects/ui/webrtc.glade:92
-msgid "Moderate"
-msgstr ""
-
-#: PulseEffects/ui/webrtc.glade:127
-#, fuzzy
-msgid "Suppresion Level"
-msgstr "Увеличение ослабления"
-
-#: PulseEffects/ui/webrtc.glade:136
+#: PulseEffects/ui/webrtc.glade:95 PulseEffects/ui/webrtc.glade:340
+#: PulseEffects/ui/webrtc.glade:370 PulseEffects/ui/webrtc.glade:637
 #, fuzzy
 msgid "Enable"
 msgstr "Таблица синусоид"
 
-#: PulseEffects/ui/webrtc.glade:162
+#: PulseEffects/ui/webrtc.glade:116
+msgid "Extended Filter"
+msgstr ""
+
+#: PulseEffects/ui/webrtc.glade:129
+msgid "Delay Agnostic"
+msgstr ""
+
+#: PulseEffects/ui/webrtc.glade:141
+#, fuzzy
+msgid "High Pass Filter"
+msgstr "Высокачастотный фильтр"
+
+#: PulseEffects/ui/webrtc.glade:171 PulseEffects/ui/webrtc.glade:330
+#, fuzzy
+msgid "Suppresion Level"
+msgstr "Увеличение ослабления"
+
+#: PulseEffects/ui/webrtc.glade:199 PulseEffects/ui/webrtc.glade:273
+#: PulseEffects/ui/webrtc.glade:595
+msgid "Moderate"
+msgstr ""
+
+#: PulseEffects/ui/webrtc.glade:241
 #, fuzzy
 msgid "Echo Canceller"
 msgstr "Баланс"
 
-#: PulseEffects/ui/webrtc.glade:199
+#: PulseEffects/ui/webrtc.glade:308
+#, fuzzy
+msgid "Very High"
+msgstr "Высокачастотный фильтр"
+
+#: PulseEffects/ui/webrtc.glade:356
 #, fuzzy
 msgid "Noise Suppressor"
 msgstr "Компрессор"
 
-#: PulseEffects/ui/webrtc.glade:237
+#: PulseEffects/ui/webrtc.glade:399
+msgid "Adaptive"
+msgstr ""
+
+#: PulseEffects/ui/webrtc.glade:416
+msgid "Fixed"
+msgstr ""
+
+#: PulseEffects/ui/webrtc.glade:435
 msgid "Gain Controller"
 msgstr ""
 
-#: PulseEffects/ui/webrtc.glade:313
+#: PulseEffects/ui/webrtc.glade:448
+#, fuzzy
+msgid "Limiter"
+msgstr "Ограничение [dB]"
+
+#: PulseEffects/ui/webrtc.glade:468
+#, fuzzy
+msgid "Target Level"
+msgstr "Целевой результат [dB]"
+
+#: PulseEffects/ui/webrtc.glade:479
+msgid "Maximum Gain"
+msgstr ""
+
+#: PulseEffects/ui/webrtc.glade:550
+#, fuzzy
+msgid "Detection Likelihood"
+msgstr "Затухание"
+
+#: PulseEffects/ui/webrtc.glade:560
+msgid "Very Low"
+msgstr ""
+
+# Taking lingual shortcuts to squeeze it in the text box
+#: PulseEffects/ui/webrtc.glade:659
+#, fuzzy
+msgid "Frame Size"
+msgstr "Глубина"
+
+#: PulseEffects/ui/webrtc.glade:692
 #, fuzzy
 msgid "Voice Detector"
 msgstr "Затухание"
@@ -717,21 +776,21 @@ msgstr "Показать доступные пресеты."
 msgid "Load a preset. Example: pulseeffects -l music"
 msgstr "Загрузить пресет. Пример: pulseeffects -l music"
 
-#: PulseEffects/application.py:145
+#: PulseEffects/application.py:162
 msgid "Running in background"
 msgstr "Работает в фоне"
 
-#: PulseEffects/effects_base.py:75
+#: PulseEffects/effects_base.py:76
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
 #, fuzzy
 msgid "Applications"
 msgstr "Приложения"
 
-#: PulseEffects/effects_base.py:180 PulseEffects/effects_base.py:249
+#: PulseEffects/effects_base.py:181 PulseEffects/effects_base.py:250
 msgid "paused"
 msgstr "на паузе"
 
-#: PulseEffects/effects_base.py:182 PulseEffects/effects_base.py:251
+#: PulseEffects/effects_base.py:183 PulseEffects/effects_base.py:252
 msgid "playing"
 msgstr "воспроизводится"
 

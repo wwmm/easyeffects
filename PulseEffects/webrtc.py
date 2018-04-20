@@ -158,14 +158,14 @@ class Webrtc():
         self.ui_voice_detection = self.builder.get_object('voice_detection')
         self.ui_voice_detection_frame_size = self.builder.get_object(
             'voice_detection_frame_size')
-        self.ui_voice_detection_likehood_very_low = self.builder.get_object(
-            'voice_detection_likehood_very_low')
-        self.ui_voice_detection_likehood_low = self.builder.get_object(
-            'voice_detection_likehood_low')
-        self.ui_voice_detection_likehood_moderate = self.builder.get_object(
-            'voice_detection_likehood_moderate')
-        self.ui_voice_detection_likehood_high = self.builder.get_object(
-            'voice_detection_likehood_high')
+        self.ui_voice_detection_likelihood_very_low = self.builder.get_object(
+            'voice_detection_likelihood_very_low')
+        self.ui_voice_detection_likelihood_low = self.builder.get_object(
+            'voice_detection_likelihood_low')
+        self.ui_voice_detection_likelihood_moderate = self.builder.get_object(
+            'voice_detection_likelihood_moderate')
+        self.ui_voice_detection_likelihood_high = self.builder.get_object(
+            'voice_detection_likelihood_high')
 
         self.ui_input_level_left = self.builder.get_object('input_level_left')
         self.ui_input_level_right = self.builder.get_object(
@@ -242,16 +242,16 @@ class Webrtc():
         self.settings.bind('voice-detection-frame-size-ms',
                            self.ui_voice_detection_frame_size, 'value', flag)
         self.settings.bind('voice-detection-likelihood-very-low',
-                           self.ui_voice_detection_likehood_very_low, 'active',
-                           flag)
+                           self.ui_voice_detection_likelihood_very_low,
+                           'active', flag)
         self.settings.bind('voice-detection-likelihood-low',
-                           self.ui_voice_detection_likehood_low, 'active',
+                           self.ui_voice_detection_likelihood_low, 'active',
                            flag)
         self.settings.bind('voice-detection-likelihood-moderate',
-                           self.ui_voice_detection_likehood_moderate, 'active',
-                           flag)
+                           self.ui_voice_detection_likelihood_moderate,
+                           'active', flag)
         self.settings.bind('voice-detection-likelihood-high',
-                           self.ui_voice_detection_likehood_high, 'active',
+                           self.ui_voice_detection_likelihood_high, 'active',
                            flag)
 
         # binding ui widgets to gstreamer plugins
@@ -318,20 +318,20 @@ class Webrtc():
             elif label == 'gain_control_mode_fixed':
                 self.webrtc.set_property('gain-control-mode', 'fixed-digital')
 
-    def on_new_voice_detection_likehood(self, obj):
+    def on_new_voice_detection_likelihood(self, obj):
         if obj.get_active():
             label = obj.get_name()
 
-            if label == 'voice_detection_likehood_very_low':
+            if label == 'voice_detection_likelihood_very_low':
                 self.webrtc.set_property('voice-detection-likelihood',
                                          'very-low')
-            elif label == 'voice_detection_likehood_low':
+            elif label == 'voice_detection_likelihood_low':
                 self.webrtc.set_property('voice-detection-likelihood',
                                          'low')
-            elif label == 'voice_detection_likehood_moderate':
+            elif label == 'voice_detection_likelihood_moderate':
                 self.webrtc.set_property('voice-detection-likelihood',
                                          'moderate')
-            elif label == 'voice_detection_likehood_high':
+            elif label == 'voice_detection_likelihood_high':
                 self.webrtc.set_property('voice-detection-likelihood',
                                          'high')
 

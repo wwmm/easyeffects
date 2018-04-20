@@ -547,7 +547,7 @@
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
                             <property name="valign">center</property>
-                            <property name="label" translatable="yes">Detection Likehood</property>
+                            <property name="label" translatable="yes">Detection Likelihood</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -556,17 +556,17 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkRadioButton" id="voice_detection_likehood_very_low">
+                          <object class="GtkRadioButton" id="voice_detection_likelihood_very_low">
                             <property name="label" translatable="yes">Very Low</property>
-                            <property name="name">voice_detection_likehood_very_low</property>
+                            <property name="name">voice_detection_likelihood_very_low</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
                             <property name="valign">center</property>
                             <property name="active">True</property>
                             <property name="draw_indicator">False</property>
-                            <property name="group">voice_detection_likehood_low</property>
-                            <signal name="toggled" handler="on_new_voice_detection_likehood" swapped="no"/>
+                            <property name="group">voice_detection_likelihood_low</property>
+                            <signal name="toggled" handler="on_new_voice_detection_likelihood" swapped="no"/>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -574,16 +574,16 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkRadioButton" id="voice_detection_likehood_low">
+                          <object class="GtkRadioButton" id="voice_detection_likelihood_low">
                             <property name="label" translatable="yes">Low</property>
-                            <property name="name">voice_detection_likehood_low</property>
+                            <property name="name">voice_detection_likelihood_low</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
                             <property name="valign">center</property>
                             <property name="active">True</property>
                             <property name="draw_indicator">False</property>
-                            <signal name="toggled" handler="on_new_voice_detection_likehood" swapped="no"/>
+                            <signal name="toggled" handler="on_new_voice_detection_likelihood" swapped="no"/>
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
@@ -591,17 +591,17 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkRadioButton" id="voice_detection_likehood_moderate">
+                          <object class="GtkRadioButton" id="voice_detection_likelihood_moderate">
                             <property name="label" translatable="yes">Moderate</property>
-                            <property name="name">voice_detection_likehood_moderate</property>
+                            <property name="name">voice_detection_likelihood_moderate</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
                             <property name="valign">center</property>
                             <property name="active">True</property>
                             <property name="draw_indicator">False</property>
-                            <property name="group">voice_detection_likehood_low</property>
-                            <signal name="toggled" handler="on_new_voice_detection_likehood" swapped="no"/>
+                            <property name="group">voice_detection_likelihood_low</property>
+                            <signal name="toggled" handler="on_new_voice_detection_likelihood" swapped="no"/>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -609,17 +609,17 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkRadioButton" id="voice_detection_likehood_high">
+                          <object class="GtkRadioButton" id="voice_detection_likelihood_high">
                             <property name="label" translatable="yes">High</property>
-                            <property name="name">voice_detection_likehood_high</property>
+                            <property name="name">voice_detection_likelihood_high</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
                             <property name="valign">center</property>
                             <property name="active">True</property>
                             <property name="draw_indicator">False</property>
-                            <property name="group">voice_detection_likehood_low</property>
-                            <signal name="toggled" handler="on_new_voice_detection_likehood" swapped="no"/>
+                            <property name="group">voice_detection_likelihood_low</property>
+                            <signal name="toggled" handler="on_new_voice_detection_likelihood" swapped="no"/>
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
