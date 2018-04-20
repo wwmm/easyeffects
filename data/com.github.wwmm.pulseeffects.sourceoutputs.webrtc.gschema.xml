@@ -22,7 +22,7 @@
         </key>
 
         <key name="compression-gain-db" type="i">
-          <default>3</default>
+          <default>9</default>
         </key>
 
         <key name="limiter" type="b">

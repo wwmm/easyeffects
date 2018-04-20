@@ -2,6 +2,12 @@
 <!-- Generated with glade 3.22.1 -->
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.18"/>
+  <object class="GtkAdjustment" id="compression_gain_db">
+    <property name="upper">90</property>
+    <property name="value">9</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
   <object class="GtkBox" id="listbox_control">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -36,6 +42,12 @@
         <property name="position">1</property>
       </packing>
     </child>
+  </object>
+  <object class="GtkAdjustment" id="target_level_dbfs">
+    <property name="upper">31</property>
+    <property name="value">3</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="voice_detection_frame_size">
     <property name="lower">10</property>
@@ -428,32 +440,84 @@
                   <object class="GtkGrid">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="halign">center</property>
+                    <property name="column_spacing">30</property>
+                    <property name="column_homogeneous">True</property>
                     <child>
-                      <placeholder/>
+                      <object class="GtkToggleButton" id="limiter">
+                        <property name="label" translatable="yes">Limiter</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="margin_bottom">30</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
+                        <property name="width">2</property>
+                      </packing>
                     </child>
                     <child>
-                      <placeholder/>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">Target Level</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">1</property>
+                      </packing>
                     </child>
                     <child>
-                      <placeholder/>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Maximum Gain</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">1</property>
+                      </packing>
                     </child>
                     <child>
-                      <placeholder/>
+                      <object class="GtkSpinButton">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="width_chars">10</property>
+                        <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
+                        <property name="input_purpose">number</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">target_level_dbfs</property>
+                        <property name="numeric">True</property>
+                        <property name="update_policy">if-valid</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">2</property>
+                      </packing>
                     </child>
                     <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
+                      <object class="GtkSpinButton">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="width_chars">10</property>
+                        <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
+                        <property name="input_purpose">number</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">compression_gain_db</property>
+                        <property name="numeric">True</property>
+                        <property name="update_policy">if-valid</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">2</property>
+                      </packing>
                     </child>
                   </object>
                   <packing>

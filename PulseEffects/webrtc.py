@@ -57,7 +57,7 @@ class Webrtc():
             pa_props = Gst.Structure.new_from_string(pa_props_str)
 
             self.probe_src.set_property('stream-properties', pa_props)
-            self.probe_src.set_property('buffer-time', 10000)
+            self.probe_src.set_property('buffer-time', 10000)  # 10 ms
             # self.probe_src.set_property('latency-time', 10000)
 
             caps_in = Gst.Caps.from_string('audio/x-raw,' + 'format=S16LE,' +
@@ -123,6 +123,12 @@ class Webrtc():
         self.ui_extended_filter = self.builder.get_object('extended_filter')
         self.ui_high_pass_filter = self.builder.get_object('high_pass_filter')
         self.ui_delay_agnostic = self.builder.get_object('delay_agnostic')
+
+        self.ui_limiter = self.builder.get_object('limiter')
+        self.ui_target_level_dbfs = self.builder.get_object(
+            'target_level_dbfs')
+        self.ui_compression_gain_db = self.builder.get_object(
+            'compression_gain_db')
 
         self.ui_echo_cancel = self.builder.get_object('echo_cancel')
         self.ui_echo_suppression_level_low = self.builder.get_object(
@@ -195,6 +201,12 @@ class Webrtc():
         self.settings.bind('delay-agnostic', self.ui_delay_agnostic,
                            'active', flag)
 
+        self.settings.bind('limiter', self.ui_limiter, 'active', flag)
+        self.settings.bind('target-level-dbfs', self.ui_target_level_dbfs,
+                           'value', flag)
+        self.settings.bind('compression-gain-db', self.ui_compression_gain_db,
+                           'value', flag)
+
         self.settings.bind('echo-cancel', self.ui_echo_cancel, 'active', flag)
         self.settings.bind('echo-suppression-level-low',
                            self.ui_echo_suppression_level_low, 'active', flag)
@@ -253,6 +265,12 @@ class Webrtc():
                                                'high-pass-filter', flag)
         self.ui_delay_agnostic.bind_property('active', self.webrtc,
                                              'delay-agnostic', flag)
+
+        self.ui_limiter.bind_property('active', self.webrtc, 'limiter', flag)
+        self.ui_target_level_dbfs.bind_property('value', self.webrtc,
+                                                'target-level-dbfs', flag)
+        self.ui_compression_gain_db.bind_property('value', self.webrtc,
+                                                  'compression-gain-db', flag)
 
         self.ui_echo_cancel.bind_property('active', self.webrtc, 'echo-cancel',
                                           flag)
