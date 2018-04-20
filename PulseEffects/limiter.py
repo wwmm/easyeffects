@@ -268,8 +268,6 @@ class Limiter():
             gain = 20 * np.log10(self.limiter.get_property('level-in'))
             gain = round(gain)
 
-            print(gain)
-
             if gain - 1 >= -20:
                 gain = gain - 1
 
@@ -282,8 +280,6 @@ class Limiter():
         elif max_value < self.autovolume_target - self.autovolume_tolerance:
             gain = 20 * np.log10(self.limiter.get_property('level-in'))
             gain = round(gain)
-
-            print(gain)
 
             if gain + 1 <= 20:
                 gain = gain + 1
@@ -333,6 +329,8 @@ class Limiter():
         attenuation = self.limiter.get_property('att')
 
         self.ui_attenuation_levelbar.set_value(1 - attenuation)
+
+        print(attenuation)
 
         if attenuation > 0:
             attenuation = 20 * np.log10(attenuation)
