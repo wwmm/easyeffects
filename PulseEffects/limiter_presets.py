@@ -18,12 +18,20 @@ class LimiterPresets():
         enabled = settings.get_value('state')
         input_gain = settings.get_value('input-gain')
         limit = settings.get_value('limit')
-        release_time = settings.get_value('release-time')
+        lookahead = settings.get_value('lookahead')
+        release = settings.get_value('release')
+        oversampling = settings.get_value('oversampling')
+        asc = settings.get_value('asc')
+        asc_level = settings.get_value('asc-level')
 
         self.config[section] = {'enabled': str(enabled),
-                                'input gain': str(input_gain),
+                                'input_gain': str(input_gain),
                                 'limit': str(limit),
-                                'release time': str(release_time)}
+                                'lookahead': str(lookahead),
+                                'release': str(release),
+                                'oversampling': str(oversampling),
+                                'asc': str(asc),
+                                'asc_level': str(asc_level)}
 
     def add_autovolume_section(self, settings, section):
         enabled = settings.get_value('autovolume-state')
@@ -46,18 +54,28 @@ class LimiterPresets():
             input_gain = self.config.getfloat(section, 'input gain',
                                               fallback=0.0)
             limit = self.config.getfloat(section, 'limit', fallback=0.0)
-            release_time = self.config.getfloat(section, 'release time',
-                                                fallback=0.5)
+            lookahead = self.config.getfloat(section, 'lookahead', fallback=5)
+            release = self.config.getfloat(section, 'release', fallback=50)
+            oversampling = self.config.getint(section, 'oversampling',
+                                              fallback=1)
+            asc = self.config.getboolean(section, 'asc', fallback=False)
+            asc_level = self.config.getfloat(section, 'asc_level',
+                                             fallback=0.5)
 
+            settings.set_value('state', GLib.Variant('b', enabled))
             settings.set_value('input-gain', GLib.Variant('d', input_gain))
             settings.set_value('limit', GLib.Variant('d', limit))
-            settings.set_value('release-time', GLib.Variant('d', release_time))
+            settings.set_value('lookahead', GLib.Variant('d', lookahead))
+            settings.set_value('release', GLib.Variant('d', release))
+            settings.set_value('oversampling', GLib.Variant('i', oversampling))
+            settings.set_value('asc', GLib.Variant('b', asc))
+            settings.set_value('asc-level', GLib.Variant('d', asc_level))
 
         settings.set_value('state', GLib.Variant('b', enabled))
 
     def load_autovolume_section(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
-        window = self.config.getfloat(section, 'window', fallback=1.0)
+        window = self.config.getfloat(section, 'window', fallback=1000.0)
         target = self.config.getint(section, 'target', fallback=-12)
         tolerance = self.config.getint(section, 'tolerance', fallback=1)
         threshold = self.config.getint(section, 'threshold', fallback=-50)

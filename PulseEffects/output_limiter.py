@@ -27,7 +27,7 @@ class OutputLimiter():
         else:
             self.is_installed = False
 
-            self.log.warn('Limiter plugin was not found. Disabling it!')
+            self.log.warn('Output Limiter plugin was not found. Disabling it!')
 
         self.build_bin()
 
@@ -52,7 +52,7 @@ class OutputLimiter():
                 .check_feature_version('pulsesrc', 1, 12, 5)
 
             if self.use_workaround:
-                self.comprelimiterssor.set_property('bypass', True)
+                self.limiter.set_property('bypass', True)
             else:
                 self.limiter.set_property('bypass', False)
 

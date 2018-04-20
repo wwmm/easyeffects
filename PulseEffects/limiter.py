@@ -4,6 +4,7 @@ import logging
 import os
 
 import gi
+import numpy as np
 gi.require_version('Gst', '1.0')
 gi.require_version('GstInsertBin', '1.0')
 gi.require_version('Gtk', '3.0')
@@ -20,14 +21,12 @@ class Limiter():
 
         self.log = logging.getLogger('PulseEffects')
 
-        self.old_limiter_attenuation = 0
-
         self.autovolume_target = -12  # dB
         self.autovolume_tolerance = 1  # dB
         self.autovolume_threshold = -50  # autovolume only if avg > threshold
 
         if Gst.ElementFactory.make(
-                'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter'):
+                'calf-sourceforge-net-plugins-Limiter'):
             self.is_installed = True
         else:
             self.is_installed = False
@@ -41,7 +40,7 @@ class Limiter():
 
     def build_bin(self):
         self.limiter = Gst.ElementFactory.make(
-            'ladspa-fast-lookahead-limiter-1913-so-fastlookaheadlimiter', None)
+            'calf-sourceforge-net-plugins-Limiter', None)
         self.input_level = Gst.ElementFactory.make('level',
                                                    'limiter_input_level')
         self.output_level = Gst.ElementFactory.make('level',
@@ -51,6 +50,17 @@ class Limiter():
         self.bin = GstInsertBin.InsertBin.new('limiter_bin')
 
         if self.is_installed:
+            # booleans are inverted in GStreamer versions older than 1.12.5
+
+            registry = Gst.Registry().get()
+            self.use_workaround = not registry\
+                .check_feature_version('pulsesrc', 1, 12, 5)
+
+            if self.use_workaround:
+                self.limiter.set_property('bypass', True)
+            else:
+                self.limiter.set_property('bypass', False)
+
             self.bin.append(self.input_level, self.on_filter_added, None)
             self.bin.append(self.limiter, self.on_filter_added, None)
             self.bin.append(self.output_level, self.on_filter_added, None)
@@ -78,16 +88,13 @@ class Limiter():
         self.ui_img_state = self.builder.get_object('img_state')
         self.ui_input_gain = self.builder.get_object('input_gain')
         self.ui_limit = self.builder.get_object('limit')
-        self.ui_release_time = self.builder.get_object('release_time')
+        self.ui_lookahead = self.builder.get_object('lookahead')
+        self.ui_release = self.builder.get_object('release')
+        self.ui_oversampling = self.builder.get_object('oversampling')
+        self.ui_asc = self.builder.get_object('asc')
+        self.ui_asc_level = self.builder.get_object('asc_level')
         self.ui_attenuation_levelbar = self.builder.get_object(
             'attenuation_levelbar')
-
-        self.ui_attenuation_levelbar.add_offset_value(
-            'GTK_LEVEL_BAR_OFFSET_LOW', 20)
-        self.ui_attenuation_levelbar.add_offset_value(
-            'GTK_LEVEL_BAR_OFFSET_HIGH', 50)
-        self.ui_attenuation_levelbar.add_offset_value(
-            'GTK_LEVEL_BAR_OFFSET_FULL', 70)
 
         self.ui_input_level_left = self.builder.get_object('input_level_left')
         self.ui_input_level_right = self.builder.get_object(
@@ -131,11 +138,13 @@ class Limiter():
                            'sensitive', Gio.SettingsBindFlags.GET)
         self.settings.bind('state', self.ui_autovolume_box,
                            'sensitive', Gio.SettingsBindFlags.GET)
-        self.settings.bind('input-gain', self.ui_input_gain, 'value',
-                           flag)
+        self.settings.bind('input-gain', self.ui_input_gain, 'value', flag)
         self.settings.bind('limit', self.ui_limit, 'value', flag)
-        self.settings.bind('release-time', self.ui_release_time,
-                           'value', flag)
+        self.settings.bind('lookahead', self.ui_lookahead, 'value', flag)
+        self.settings.bind('release', self.ui_release, 'value', flag)
+        self.settings.bind('oversampling', self.ui_oversampling, 'value', flag)
+        self.settings.bind('asc', self.ui_asc, 'active', flag)
+        self.settings.bind('asc-level', self.ui_asc_level, 'value', flag)
 
         self.settings.bind('autovolume-state', self.ui_autovolume_enable,
                            'active', flag)
@@ -158,11 +167,13 @@ class Limiter():
         flag = GObject.BindingFlags.BIDIRECTIONAL | \
             GObject.BindingFlags.SYNC_CREATE
 
-        self.ui_input_gain.bind_property('value', self.limiter, 'input-gain',
-                                         flag)
-        self.ui_limit.bind_property('value', self.limiter, 'limit', flag)
-        self.ui_release_time.bind_property('value', self.limiter,
-                                           'release-time', flag)
+        self.ui_asc.bind_property('active', self.limiter, 'asc', flag)
+        self.ui_asc_level.bind_property('value', self.limiter, 'asc-coeff',
+                                        flag)
+        self.ui_lookahead.bind_property('value', self.limiter, 'attack', flag)
+        self.ui_release.bind_property('value', self.limiter, 'release', flag)
+        self.ui_oversampling.bind_property('value', self.limiter,
+                                           'oversampling', flag)
 
     def on_limiter_enable_state_set(self, obj, state):
         autovolume_enabled = self.settings.get_value(
@@ -175,6 +186,24 @@ class Limiter():
         else:
             self.ui_limiter_controls.set_sensitive(False)
 
+    def on_input_gain_value_changed(self, obj):
+        value_db = obj.get_value()
+        value_linear = 10**(value_db / 20.0)
+
+        self.limiter.set_property('level-in', value_linear)
+
+    def on_limit_value_changed(self, obj):
+        value_db = obj.get_value()
+        value_linear = 10**(value_db / 20.0)
+
+        self.limiter.set_property('limit', value_linear)
+
+        # calf limiter does automatic makeup gain by the same amount given as
+        # limit. See https://github.com/calf-studio-gear/calf/issues/162
+        # that is why we reduce the output level accordingly
+
+        self.limiter.set_property('level-out', value_linear)
+
     def enable_autovolume(self, state):
         if state:
             window = self.settings.get_value('autovolume-window').unpack()
@@ -183,26 +212,30 @@ class Limiter():
                 'autovolume-tolerance').unpack()
 
             self.ui_limit.set_value(target + tolerance)
-            self.ui_release_time.set_value(window)
+            self.ui_release.set_value(window)
+            self.ui_asc.set_state(True)
+            self.ui_asc_level.set_value(1.0)
 
             self.ui_limiter_controls.set_sensitive(False)
         else:
             self.ui_input_gain.set_value(-10)
             self.ui_limit.set_value(0)
-            self.ui_release_time.set_value(1.0)
+            self.ui_release.set_value(50.0)  # 50 ms
+            self.ui_asc.set_state(False)
+            self.ui_asc_level.set_value(0.5)
 
             self.ui_limiter_controls.set_sensitive(True)
 
-    def on_autovolume_enable_state_set(self, obj, state):
-        self.enable_autovolume(state)
+    def on_autovolume_enable_toggled(self, obj):
+        self.enable_autovolume(obj.get_active())
 
     def on_autovolume_window_value_changed(self, obj):
         value = obj.get_value()
 
-        # value must be in seconds
-        self.autovolume_level.set_property('interval', int(value * 1000000000))
+        # value must be in ms
+        self.autovolume_level.set_property('interval', int(value * 1000000))
 
-        self.ui_release_time.set_value(value)
+        self.ui_release.set_value(value)
 
     def on_autovolume_target_value_changed(self, obj):
         value = obj.get_value()
@@ -228,11 +261,14 @@ class Limiter():
     def auto_gain(self, max_value):
         max_value = int(max_value)
 
-        attenuation = round(self.limiter.get_property('attenuation'))
+        attenuation = 20 * np.log10(self.limiter.get_property('att'))
 
         if (max_value > self.autovolume_target + self.autovolume_tolerance or
                 attenuation > 0):
-            gain = self.limiter.get_property('input-gain')
+            gain = 20 * np.log10(self.limiter.get_property('level-in'))
+            gain = round(gain)
+
+            print(gain)
 
             if gain - 1 >= -20:
                 gain = gain - 1
@@ -240,14 +276,21 @@ class Limiter():
                 # using ui_input_gain has no effect in service mode because
                 # the ui is destroyed
 
-                self.limiter.set_property('input-gain', gain)
+                value_linear = 10**(gain / 20.0)
+
+                self.limiter.set_property('level-in', value_linear)
         elif max_value < self.autovolume_target - self.autovolume_tolerance:
-            gain = self.limiter.get_property('input-gain')
+            gain = 20 * np.log10(self.limiter.get_property('level-in'))
+            gain = round(gain)
+
+            print(gain)
 
             if gain + 1 <= 20:
                 gain = gain + 1
 
-                self.limiter.set_property('input-gain', gain)
+                value_linear = 10**(gain / 20.0)
+
+                self.limiter.set_property('level-in', value_linear)
 
     def ui_update_level(self, widgets, peak):
         left, right = peak[0], peak[1]
@@ -287,19 +330,25 @@ class Limiter():
 
         self.ui_update_level(widgets, peak)
 
-        attenuation = round(self.limiter.get_property('attenuation'))
+        attenuation = self.limiter.get_property('att')
 
-        if attenuation != self.old_limiter_attenuation:
-            self.old_limiter_attenuation = attenuation
+        self.ui_attenuation_levelbar.set_value(1 - attenuation)
 
-            self.ui_attenuation_levelbar.set_value(attenuation)
-            self.ui_attenuation_level_label.set_text(str(round(attenuation)))
+        if attenuation > 0:
+            attenuation = 20 * np.log10(attenuation)
+
+            self.ui_attenuation_level_label.set_text(
+                str(round(attenuation, 1)))
 
     def reset(self):
         self.settings.reset('state')
         self.settings.reset('input-gain')
         self.settings.reset('limit')
-        self.settings.reset('release-time')
+        self.settings.reset('lookahead')
+        self.settings.reset('release')
+        self.settings.reset('oversampling')
+        self.settings.reset('asc')
+        self.settings.reset('asc-level')
         self.settings.reset('autovolume-state')
         self.settings.reset('autovolume-window')
         self.settings.reset('autovolume-target')
