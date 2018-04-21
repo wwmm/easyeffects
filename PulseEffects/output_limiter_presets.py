@@ -32,7 +32,7 @@ class OutputLimiterPresets():
 
     def load_section(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
-        input_gain = self.config.getfloat(section, 'input gain', fallback=0.0)
+        input_gain = self.config.getfloat(section, 'input_gain', fallback=0.0)
         limit = self.config.getfloat(section, 'limit', fallback=0.0)
         lookahead = self.config.getfloat(section, 'lookahead', fallback=5)
         release = self.config.getfloat(section, 'release', fallback=50)

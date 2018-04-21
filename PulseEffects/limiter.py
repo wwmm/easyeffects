@@ -218,13 +218,6 @@ class Limiter():
 
             self.ui_limiter_controls.set_sensitive(False)
         else:
-            self.ui_input_gain.set_value(-10)
-            self.ui_limit.set_value(0)
-            self.ui_release.set_value(50.0)  # 50 ms
-            self.ui_asc.set_state(False)
-            self.ui_asc_level.set_value(0.5)
-            self.ui_lookahead.set_value(5)  # 5 ms
-
             self.ui_limiter_controls.set_sensitive(True)
 
     def on_autovolume_enable_toggled(self, obj):

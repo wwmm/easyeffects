@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [3.2.3]
+### Fixed
+- Fixed input and output limiter presets not being properly loaded
+
 ## [3.2.2]
 ### Added
 - GStreamer Webrtc plugin

@@ -48,10 +48,23 @@ class LimiterPresets():
 
     def load_section(self, settings, section):
         enabled = self.config.getboolean(section, 'enabled', fallback=False)
-        autovolume_state = settings.get_value('autovolume-state').unpack()
+
+        # reading autovolume state directly from preset because gsettings
+        # writing is asynchronous. IT may not have been updated when we read it
+
+        autovolume_state = None
+
+        if 'apps' in section:
+            autovolume_state = self.config.getboolean('apps_autovolume',
+                                                      'enabled',
+                                                      fallback=False)
+        else:
+            autovolume_state = self.config.getboolean('mic_autovolume',
+                                                      'enabled',
+                                                      fallback=False)
 
         if autovolume_state is False:
-            input_gain = self.config.getfloat(section, 'input gain',
+            input_gain = self.config.getfloat(section, 'input_gain',
                                               fallback=0.0)
             limit = self.config.getfloat(section, 'limit', fallback=0.0)
             lookahead = self.config.getfloat(section, 'lookahead', fallback=5)
@@ -89,17 +102,19 @@ class LimiterPresets():
                            GLib.Variant('i', threshold))
 
     def save(self):
-        self.add_section(self.settings_sinkinputs, 'apps_limiter')
         self.add_autovolume_section(self.settings_sinkinputs,
                                     'apps_autovolume')
-        self.add_section(self.settings_sourceoutputs, 'mic_limiter')
+        self.add_section(self.settings_sinkinputs, 'apps_limiter')
+
         self.add_autovolume_section(self.settings_sourceoutputs,
                                     'mic_autovolume')
+        self.add_section(self.settings_sourceoutputs, 'mic_limiter')
 
     def load(self):
-        self.load_section(self.settings_sinkinputs, 'apps_limiter')
         self.load_autovolume_section(self.settings_sinkinputs,
                                      'apps_autovolume')
-        self.load_section(self.settings_sourceoutputs, 'mic_limiter')
+        self.load_section(self.settings_sinkinputs, 'apps_limiter')
+
         self.load_autovolume_section(self.settings_sourceoutputs,
                                      'mic_autovolume')
+        self.load_section(self.settings_sourceoutputs, 'mic_limiter')
