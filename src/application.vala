@@ -2,11 +2,12 @@ public class Application : Gtk.Application {
     private bool ui_initialized;
     private bool window_activated;
     private bool running_as_service;
-    private Settings settings;
     // private List<mySinkInfo ? > sink_list;
     // private List<mySourceInfo ? > source_list;
 
     private PulseManager pm;
+
+    public Settings settings;
 
     public Application () {
         Object(application_id: "com.github.wwmm.pulseeffects",
@@ -71,6 +72,13 @@ public class Application : Gtk.Application {
         });
         pm.source_added.connect((i) => { debug("source added: " + i.name); });
         pm.sink_added.connect((i) => { debug("sink added: " + i.name); });
+
+        var flags = GLib.SettingsBindFlags.DEFAULT;
+
+        this.settings.bind("use-default-sink", this.pm, "use_default_sink",
+                           flags);
+        this.settings.bind("use-default-source", this.pm, "use_default_source",
+                           flags);
 
         pm.find_sink_inputs();
         pm.find_source_outputs();

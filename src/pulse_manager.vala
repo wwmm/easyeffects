@@ -32,8 +32,8 @@ public class PulseManager : Object {
     private bool ctx_ready;
     private ParseAppInfo pai;
 
-    public bool use_default_sink = true;
-    public bool use_default_source = true;
+    public bool use_default_sink { get; set; }
+    public bool use_default_source { get; set; }
 
     public myServerInfo server_info;
     public mySinkInfo default_sink_info;
