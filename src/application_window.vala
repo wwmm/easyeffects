@@ -3,16 +3,10 @@ using Gtk;
 [GtkTemplate(ui = "/com/github/wwmm/pulseeffects/application.glade")]
 public class ApplicationWindow : Gtk.ApplicationWindow {
     [GtkChild]
-    Switch enable_autostart;
-
-    [GtkChild]
     Switch enable_all_apps;
 
     [GtkChild]
     Switch theme_switch;
-
-    [GtkChild]
-    Button reset_all_settings;
 
     [GtkChild]
     Switch show_spectrum;
@@ -37,6 +31,12 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
 
     [GtkChild]
     Adjustment spectrum_n_points;
+
+    [GtkChild]
+    ComboBox input_device;
+
+    [GtkChild]
+    ComboBox output_device;
 
     [GtkCallback]
     private bool on_enable_autostart_state_set(Switch s, bool state) {
@@ -88,7 +88,7 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
         var gtk_settings = Gtk.Settings.get_default();
 
         var flag = GLib.SettingsBindFlags.DEFAULT;
-        var flag_invert_bool = GLib.SettingsBindFlags.INVERT_BOOLEAN;
+        var flag_invert_boolean = GLib.SettingsBindFlags.INVERT_BOOLEAN;
 
         app.settings.bind("use-dark-theme", this.theme_switch, "active", flag);
 
@@ -97,6 +97,25 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
 
         app.settings.bind("enable-all-apps", this.enable_all_apps, "active",
                           flag);
+
+        app.settings.bind("use-default-sink", this.use_default_sink, "active",
+                          flag);
+
+        app.settings.bind("use-default-sink", this.output_device, "sensitive",
+                          flag | flag_invert_boolean);
+
+        app.settings.bind("use-default-source", this.use_default_source,
+                          "active", flag);
+
+        app.settings.bind("use-default-source", this.input_device, "sensitive",
+                          flag | flag_invert_boolean);
+
+        app.settings.bind("buffer-out", this.buffer_out, "value", flag);
+        app.settings.bind("latency-out", this.latency_out, "value", flag);
+        app.settings.bind("buffer-in", this.buffer_in, "value", flag);
+        app.settings.bind("latency-in", this.latency_in, "value", flag);
+
+        app.settings.bind("show-spectrum", this.show_spectrum, "active", flag);
     }
 
 }
