@@ -8,14 +8,36 @@ public class Application : Gtk.Application {
 
     public Application () {
         Object(application_id: "com.github.wwmm.pulseeffects",
-               flags : ApplicationFlags.FLAGS_NONE);
+               flags : ApplicationFlags.HANDLES_COMMAND_LINE);
 
         Environment.set_application_name("PulseEffects");
+
+        GLib.Environ.set_variable({ "PULSE_PROP_application.id" },
+                                  "com.github.wwmm.pulseeffects", "true");
+        GLib.Environ.set_variable({ "PULSE_PROP_application.icon_name" },
+                                  "pulseeffects", "true");
 
         Unix.signal_add(2, () => {
             this.quit();
             return true;
         });
+
+        string help_msg;
+
+        help_msg = _("Quit PulseEffects. Useful when running in service mode.");
+
+        this.add_main_option("quit", 'q', OptionFlags.NONE, OptionArg.NONE,
+                             help_msg, null);
+
+        help_msg = _("Show available presets.");
+
+        this.add_main_option("presets", 'p', OptionFlags.NONE, OptionArg.NONE,
+                             help_msg, null);
+
+        help_msg = _("Load a preset. Example: pulseeffects -l music");
+
+        this.add_main_option("load-preset", 'l', OptionFlags.NONE,
+                             OptionArg.STRING, help_msg, null);
     }
 
     public override void startup() {
@@ -89,6 +111,22 @@ public class Application : Gtk.Application {
         }
 
         win.present();
+    }
+
+    public override int command_line(ApplicationCommandLine command_line) {
+        var options = command_line.get_options_dict();
+
+        if(options.contains("quit")){
+            this.quit();
+        } else if(options.contains("presets")){
+        } else if(options.contains("load-presets")){
+            // var value = options.lookup_value("load-preset",
+            // new VariantType("s"));
+        } else {
+            this.activate();
+        }
+
+        return base.command_line(command_line);
     }
 
     public override void shutdown() {
