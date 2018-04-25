@@ -1,0 +1,13 @@
+public static int main(string[] args) {
+    // Init internationalization support before anything else
+
+    Intl.setlocale(LocaleCategory.ALL, "");
+    Intl.bindtextdomain("@PROJECT_NAME@", "@LOCALEDIR@");
+    Intl.bind_textdomain_codeset("@PROJECT_NAME@", "UTF-8");
+    Intl.textdomain("@PROJECT_NAME@");
+    // GLib.Environ.set_variable({ "PULSE_PROP_media.role" }, "audio", "true");
+
+    var app = new Application();
+
+    return app.run(args);
+}

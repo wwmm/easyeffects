@@ -49,3 +49,9 @@ icondir = join_paths(datadir, 'icons', 'hicolor')
 install_data('pulseeffects.svg',
   install_dir: join_paths(icondir, 'scalable', 'apps')
 )
+
+gresources = gnome_mod.compile_resources(
+	'pulseeffects-resources',
+	'pulseeffects.gresource.xml',
+	c_name: meson.project_name()
+)
