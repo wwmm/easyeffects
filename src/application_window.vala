@@ -1,89 +1,132 @@
-using Gtk;
-
 [GtkTemplate(ui = "/com/github/wwmm/pulseeffects/application.glade")]
 public class ApplicationWindow : Gtk.ApplicationWindow {
-    [GtkChild]
-    Switch enable_all_apps;
+    private Application app;
+    private List<mySinkInfo ? > sink_list;
+    // private List<mySourceInfo ? > source_list;
 
     [GtkChild]
-    Switch theme_switch;
+    Gtk.Switch enable_all_apps;
 
     [GtkChild]
-    Switch show_spectrum;
+    Gtk.Switch theme_switch;
 
     [GtkChild]
-    ToggleButton use_default_sink;
+    Gtk.Switch show_spectrum;
 
     [GtkChild]
-    ToggleButton use_default_source;
+    Gtk.ToggleButton use_default_sink;
 
     [GtkChild]
-    Adjustment buffer_in;
+    Gtk.ToggleButton use_default_source;
 
     [GtkChild]
-    Adjustment buffer_out;
+    Gtk.Adjustment buffer_in;
 
     [GtkChild]
-    Adjustment latency_in;
+    Gtk.Adjustment buffer_out;
 
     [GtkChild]
-    Adjustment latency_out;
+    Gtk.Adjustment latency_in;
 
     [GtkChild]
-    Adjustment spectrum_n_points;
+    Gtk.Adjustment latency_out;
 
     [GtkChild]
-    ComboBox input_device;
+    Gtk.Adjustment spectrum_n_points;
 
     [GtkChild]
-    ComboBox output_device;
+    Gtk.ComboBox input_device;
+
+    [GtkChild]
+    Gtk.ComboBox output_device;
 
     [GtkCallback]
-    private bool on_enable_autostart_state_set(Switch s, bool state) {
+    private bool on_enable_autostart_state_set(Gtk.Switch s, bool state) {
         return true;
     }
 
     [GtkCallback]
-    private void on_reset_all_settings_clicked(Button b) {
-
+    private void on_reset_all_settings_clicked(Gtk.Button b) {
+        this.app.settings.reset("buffer-in");
+        this.app.settings.reset("buffer-out");
+        this.app.settings.reset("latency-in");
+        this.app.settings.reset("latency-out");
+        this.app.settings.reset("show-spectrum");
+        this.app.settings.reset("spectrum-n-points");
+        this.app.settings.reset("use-dark-theme");
+        this.app.settings.reset("enable-all-apps");
+        this.app.settings.reset("use-default-sink");
+        this.app.settings.reset("use-default-source");
     }
 
     [GtkCallback]
-    private void on_spectrum_n_points_value_changed(Adjustment a) {
+    private void on_spectrum_n_points_value_changed(Gtk.Adjustment a) {
     }
 
     [GtkCallback]
-    private bool on_show_spectrum_state_set(Switch s, bool state) {
+    private bool on_show_spectrum_state_set(Gtk.Switch s, bool state) {
         return true;
     }
 
     [GtkCallback]
-    private void on_input_device_changed(ComboBox c) {
+    private void on_input_device_changed(Gtk.ComboBox c) {
 
     }
 
     [GtkCallback]
-    private void on_output_device_changed(ComboBox c) {
+    private void on_output_device_changed(Gtk.ComboBox c) {
 
     }
 
     [GtkCallback]
-    private void on_use_default_source_toggled(ToggleButton t) {
+    private void on_use_default_source_toggled(Gtk.ToggleButton t) {
 
     }
 
     [GtkCallback]
-    private void on_use_default_sink_toggled(ToggleButton t) {
+    private void on_use_default_sink_toggled(Gtk.ToggleButton t) {
 
     }
 
     [GtkCallback]
-    private void on_test_clicked(Button b) {
+    private void on_test_clicked(Gtk.Button b) {
 
+    }
+
+    private void on_sink_added(mySinkInfo i) {
+        var add_to_list = true;
+
+        foreach(var s in this.sink_list){
+            if(s.index == i.index){
+                add_to_list = false;
+
+                break;
+            }
+        }
+
+        if(add_to_list){
+            this.sink_list.append(i);
+
+            debug("added sink: " + i.name);
+        }
+    }
+
+    private void on_sink_removed(uint32 idx) {
+        foreach(var s in this.sink_list){
+            if(s.index == idx){
+                debug("removed sink: " + s.name);
+
+                this.sink_list.remove(s);
+
+                break;
+            }
+        }
     }
 
     public ApplicationWindow (Application app) {
         Object(application: app);
+
+        this.app = app;
 
         var gtk_settings = Gtk.Settings.get_default();
 
@@ -124,6 +167,9 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
         app.settings.bind("show-spectrum", this.show_spectrum, "active", flag);
         app.settings.bind("spectrum-n-points", this.spectrum_n_points, "value",
                           flag);
+
+        this.app.pm.sink_added.connect(this.on_sink_added);
+        this.app.pm.sink_removed.connect(this.on_sink_removed);
     }
 
 }
