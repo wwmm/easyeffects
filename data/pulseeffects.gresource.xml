@@ -2,5 +2,7 @@
 <gresources>
   <gresource prefix="/com/github/wwmm/pulseeffects">
     <file>application.glade</file>
+    <file>about.glade</file>
+    <file>about_icon.png</file>
   </gresource>
 </gresources>

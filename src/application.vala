@@ -114,8 +114,18 @@ public class Application : Gtk.Application {
 
         about_action.activate.connect(() => {
             this.hold();
-            stdout.printf("simple action %s activated\n",
-                          about_action.get_name());
+
+            var builder = new Gtk.Builder.from_resource(
+                "/com/github/wwmm/pulseeffects/about.glade");
+
+            var dialog = builder.get_object("about_dialog") as Gtk.Dialog;
+
+            dialog.set_transient_for(this.active_window);
+
+            dialog.run();
+
+            dialog.destroy();
+
             this.release();
         });
 
