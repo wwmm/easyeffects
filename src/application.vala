@@ -67,7 +67,6 @@ public class Application : Gtk.Application {
         pm.new_default_source.connect((n) => {
             debug("new default source: " + n);
         });
-        pm.source_added.connect((i) => { debug("source added: " + i.name); });
 
         var flags = GLib.SettingsBindFlags.DEFAULT;
 

@@ -2,7 +2,7 @@
 public class ApplicationWindow : Gtk.ApplicationWindow {
     private Application app;
     private List<mySinkInfo ? > sink_list;
-    // private List<mySourceInfo ? > source_list;
+    private List<mySourceInfo ? > source_list;
 
     [GtkChild]
     Gtk.Switch enable_all_apps;
@@ -123,6 +123,36 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
         }
     }
 
+    private void on_source_added(mySourceInfo i) {
+        var add_to_list = true;
+
+        foreach(var s in this.source_list){
+            if(s.index == i.index){
+                add_to_list = false;
+
+                break;
+            }
+        }
+
+        if(add_to_list){
+            this.source_list.append(i);
+
+            debug("added source: " + i.name);
+        }
+    }
+
+    private void on_source_removed(uint32 idx) {
+        foreach(var s in this.source_list){
+            if(s.index == idx){
+                debug("removed source: " + s.name);
+
+                this.source_list.remove(s);
+
+                break;
+            }
+        }
+    }
+
     public ApplicationWindow (Application app) {
         Object(application: app);
 
@@ -170,6 +200,8 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
 
         this.app.pm.sink_added.connect(this.on_sink_added);
         this.app.pm.sink_removed.connect(this.on_sink_removed);
+        this.app.pm.source_added.connect(this.on_source_added);
+        this.app.pm.source_removed.connect(this.on_source_removed);
     }
 
 }
