@@ -110,12 +110,20 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
         app.settings.bind("use-default-source", this.input_device, "sensitive",
                           flag | flag_invert_boolean);
 
+        app.settings.bind("use-default-source", this.input_device, "sensitive",
+                          flag | flag_invert_boolean);
+
+        app.settings.bind("use-default-sink", this.output_device, "sensitive",
+                          flag | flag_invert_boolean);
+
         app.settings.bind("buffer-out", this.buffer_out, "value", flag);
         app.settings.bind("latency-out", this.latency_out, "value", flag);
         app.settings.bind("buffer-in", this.buffer_in, "value", flag);
         app.settings.bind("latency-in", this.latency_in, "value", flag);
 
         app.settings.bind("show-spectrum", this.show_spectrum, "active", flag);
+        app.settings.bind("spectrum-n-points", this.spectrum_n_points, "value",
+                          flag);
     }
 
 }
