@@ -108,17 +108,35 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
 
     [GtkCallback]
     private void on_input_device_changed(Gtk.ComboBox c) {
+        var combo = c as Gtk.ComboBoxText;
 
+        var name = combo.get_active_text();
+
+        foreach(var s in this.source_list){
+            if(s.name == name){
+                debug("input device changed: " + name);
+            }
+        }
     }
 
     [GtkCallback]
     private void on_output_device_changed(Gtk.ComboBox c) {
+        var combo = c as Gtk.ComboBoxText;
 
+        var name = combo.get_active_text();
+
+        foreach(var s in this.sink_list){
+            if(s.name == name){
+                debug("output device changed: " + name);
+            }
+        }
     }
 
     [GtkCallback]
     private void on_use_default_source_toggled(Gtk.ToggleButton t) {
+        if(t.get_active()){
 
+        }
     }
 
     [GtkCallback]

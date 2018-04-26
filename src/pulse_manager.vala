@@ -36,8 +36,6 @@ public class PulseManager : Object {
     public bool use_default_source { get; set; }
 
     public myServerInfo server_info;
-    public mySinkInfo default_sink_info;
-    public mySourceInfo default_source_info;
     public mySinkInfo apps_sink_info;
     public mySinkInfo mic_sink_info;
 
@@ -77,13 +75,11 @@ public class PulseManager : Object {
         while(!this.ctx_ready){
         }
 
+        this.pai = new ParseAppInfo(this);
+
         this.get_server_info();
-        this.get_default_sink_info();
-        this.get_default_source_info();
         this.load_apps_sink();
         this.load_mic_sink();
-
-        this.pai = new ParseAppInfo(this);
     }
 
     private void ctx_state_cb(Context ctx) {
@@ -353,37 +349,41 @@ public class PulseManager : Object {
         }
     }
 
-    private void get_default_sink_info() {
+    private mySinkInfo ? get_default_sink_info() {
         var name = this.server_info.default_sink_name;
 
         mySinkInfo ? info = get_sink_info(name);
 
         if(info != null){
-            this.default_sink_info = info;
-
             debug("default pulseaudio sink sampling rate: " +
-                  this.default_sink_info.rate.to_string());
+                  info.rate.to_string());
             debug("default pulseaudio sink audio format: " +
-                  this.default_sink_info.format.to_string());
+                  info.format.to_string());
+
+            return info;
         } else {
             critical("could not get default sink info");
+
+            return null;
         }
     }
 
-    private void get_default_source_info() {
+    private mySourceInfo ? get_default_source_info() {
         var name = this.server_info.default_source_name;
 
         mySourceInfo ? info = get_source_info(name);
 
         if(info != null){
-            this.default_source_info = info;
-
             debug("default pulseaudio source sampling rate: " +
-                  this.default_source_info.rate.to_string());
+                  info.rate.to_string());
             debug("default pulseaudio source audio format: " +
-                  this.default_source_info.format.to_string());
+                  info.format.to_string());
+
+            return info;
         } else {
             critical("could not get default sink info");
+
+            return null;
         }
     }
 
@@ -415,9 +415,13 @@ public class PulseManager : Object {
     private void load_apps_sink() {
         debug("loading Pulseeffects applications output sink...");
 
+        var info = this.get_default_sink_info();
+
+        assert(info != null);
+
         string name = "PulseEffects_apps";
         string description = "device.description=\"PulseEffects(apps)\"";
-        uint32 rate = this.default_sink_info.rate;
+        uint32 rate = info.rate;
 
         this.apps_sink_info = this.load_sink(name, description, rate);
     }
@@ -425,9 +429,13 @@ public class PulseManager : Object {
     private void load_mic_sink() {
         debug("loading Pulseeffects microphone output sink...");
 
+        var info = this.get_default_source_info();
+
+        assert(info != null);
+
         string name = "PulseEffects_mic";
         string description = "device.description=\"PulseEffects(mic)\"";
-        uint32 rate = this.default_source_info.rate;
+        uint32 rate = info.rate;
 
         this.mic_sink_info = this.load_sink(name, description, rate);
     }
