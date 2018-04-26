@@ -1,6 +1,4 @@
 public class Application : Gtk.Application {
-    private bool ui_initialized;
-    private bool window_activated;
     private bool running_as_service;
 
     public Settings settings;
@@ -43,8 +41,6 @@ public class Application : Gtk.Application {
     public override void startup() {
         base.startup();
 
-        this.ui_initialized = false;
-        this.window_activated = false;
         this.running_as_service = false;
         this.settings = new Settings("com.github.wwmm.pulseeffects");
 
@@ -97,10 +93,22 @@ public class Application : Gtk.Application {
         this.settings.bind("use-default-source", this.pm, "use_default_source",
                            flags);
 
-        pm.find_sink_inputs();
-        pm.find_source_outputs();
+
         pm.find_sinks();
         pm.find_sources();
+        pm.find_sink_inputs();
+        pm.find_source_outputs();
+
+        if((this.flags & ApplicationFlags.IS_SERVICE) != 0){
+            this.running_as_service = true;
+
+            pm.find_sink_inputs();
+            pm.find_source_outputs();
+
+            debug(_("Running in Background"));
+
+            this.hold();
+        }
     }
 
     public override void activate() {

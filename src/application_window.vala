@@ -179,6 +179,18 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
         }
     }
 
+    private void on_source_removed(uint32 idx) {
+        foreach(var s in this.source_list){
+            if(s.index == idx){
+                debug("removed source: " + s.name);
+
+                this.source_list.remove(s);
+
+                break;
+            }
+        }
+    }
+
     private void init_autostart_switch() {
         var path = Environment.get_user_config_dir() +
                    "/autostart/pulseeffects-service.desktop";
@@ -191,18 +203,6 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
             enable_autostart.set_active(true);
         } else {
             enable_autostart.set_active(false);
-        }
-    }
-
-    private void on_source_removed(uint32 idx) {
-        foreach(var s in this.source_list){
-            if(s.index == idx){
-                debug("removed source: " + s.name);
-
-                this.source_list.remove(s);
-
-                break;
-            }
         }
     }
 
