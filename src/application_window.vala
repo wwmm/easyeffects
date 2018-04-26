@@ -38,10 +38,10 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
     Gtk.Adjustment spectrum_n_points;
 
     [GtkChild]
-    Gtk.ComboBox input_device;
+    Gtk.ComboBoxText input_device;
 
     [GtkChild]
-    Gtk.ComboBox output_device;
+    Gtk.ComboBoxText output_device;
 
     [GtkCallback]
     private bool on_enable_autostart_state_set(Gtk.Switch s, bool state) {
@@ -162,11 +162,6 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
         }
     }
 
-    [GtkCallback]
-    private void on_test_clicked(Gtk.Button b) {
-
-    }
-
     private void on_sink_added(mySinkInfo i) {
         var add_to_list = true;
 
@@ -180,6 +175,8 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
 
         if(add_to_list){
             this.sink_list.append(i);
+
+            this.add_sink_to_combo(i);
 
             debug("added sink: " + i.name);
         }
@@ -227,6 +224,10 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
         }
     }
 
+    [GtkCallback]
+    private void on_test_clicked(Gtk.Button b) {
+    }
+
     private void init_autostart_switch() {
         var path = Environment.get_user_config_dir() +
                    "/autostart/pulseeffects-service.desktop";
@@ -239,6 +240,27 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
             enable_autostart.set_active(true);
         } else {
             enable_autostart.set_active(false);
+        }
+    }
+
+    private void add_sink_to_combo(mySinkInfo i) {
+        bool add_to_combo = true;
+
+        this.output_device.get_model().foreach((model, path, iter) => {
+            Value v = Value(typeof (string));
+
+            model.get_value(iter, 0, out v);
+
+            if(v.get_string() == i.name){
+                add_to_combo = false;
+                return false;
+            } else {
+                return true;
+            }
+        });
+
+        if(add_to_combo){
+            this.output_device.append_text(i.name);
         }
     }
 
@@ -297,5 +319,4 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
         this.app.pm.source_added.connect(this.on_source_added);
         this.app.pm.source_removed.connect(this.on_source_removed);
     }
-
 }
