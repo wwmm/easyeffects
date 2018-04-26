@@ -8,6 +8,9 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
     Gtk.Switch enable_all_apps;
 
     [GtkChild]
+    Gtk.Switch enable_autostart;
+
+    [GtkChild]
     Gtk.Switch theme_switch;
 
     [GtkChild]
@@ -42,6 +45,41 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
 
     [GtkCallback]
     private bool on_enable_autostart_state_set(Gtk.Switch s, bool state) {
+        var path = Environment.get_user_config_dir() +
+                   "/autostart/pulseeffects-service.desktop";
+
+        File file = File.new_for_path(path);
+
+        if(state){
+            try {
+                var fs = file.replace(null, false,
+                                      FileCreateFlags.REPLACE_DESTINATION);
+
+                var dos = new DataOutputStream(fs);
+
+                dos.put_string("[Desktop Entry]\n");
+                dos.put_string("Name=PulseEffects\n");
+                dos.put_string("Comment=PulseEffects Service\n");
+                dos.put_string("Exec=pulseeffects --gapplication-service\n");
+                dos.put_string("Icon=pulseeffects\n");
+                dos.put_string("StartupNotify=false\n");
+                dos.put_string("Terminal=false\n");
+                dos.put_string("Type=Application\n");
+
+                debug("autostart file created");
+            } catch (Error e){
+                error(e.message);
+            }
+        } else {
+            try {
+                file.delete ();
+
+                debug("autostart file removed");
+            } catch (Error e){
+                debug(e.message);
+            }
+        }
+
         return true;
     }
 
@@ -141,6 +179,21 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
         }
     }
 
+    private void init_autostart_switch() {
+        var path = Environment.get_user_config_dir() +
+                   "/autostart/pulseeffects-service.desktop";
+
+        File file = File.new_for_path(path);
+
+        bool exists = file.query_exists();
+
+        if(exists){
+            enable_autostart.set_active(true);
+        } else {
+            enable_autostart.set_active(false);
+        }
+    }
+
     private void on_source_removed(uint32 idx) {
         foreach(var s in this.source_list){
             if(s.index == idx){
@@ -197,6 +250,8 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
         app.settings.bind("show-spectrum", this.show_spectrum, "active", flag);
         app.settings.bind("spectrum-n-points", this.spectrum_n_points, "value",
                           flag);
+
+        this.init_autostart_switch();
 
         this.app.pm.sink_added.connect(this.on_sink_added);
         this.app.pm.sink_removed.connect(this.on_sink_removed);
