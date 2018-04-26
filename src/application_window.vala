@@ -76,11 +76,11 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
 
                 debug("autostart file removed");
             } catch (Error e){
-                debug(e.message);
+                error(e.message);
             }
         }
 
-        return true;
+        return false;
     }
 
     [GtkCallback]
@@ -103,7 +103,7 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
 
     [GtkCallback]
     private bool on_show_spectrum_state_set(Gtk.Switch s, bool state) {
-        return true;
+        return false;
     }
 
     [GtkCallback]
