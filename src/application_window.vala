@@ -135,13 +135,31 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
     [GtkCallback]
     private void on_use_default_source_toggled(Gtk.ToggleButton t) {
         if(t.get_active()){
+            int count = 0;
 
+            foreach(var s in this.source_list){
+                if(s.name == this.app.pm.server_info.default_source_name){
+                    this.input_device.set_active(count);
+                }
+
+                count++;
+            }
         }
     }
 
     [GtkCallback]
     private void on_use_default_sink_toggled(Gtk.ToggleButton t) {
+        if(t.get_active()){
+            int count = 0;
 
+            foreach(var s in this.sink_list){
+                if(s.name == this.app.pm.server_info.default_sink_name){
+                    this.output_device.set_active(count);
+                }
+
+                count++;
+            }
+        }
     }
 
     [GtkCallback]
@@ -228,6 +246,9 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
         Object(application: app);
 
         this.app = app;
+
+        this.sink_list = new List<mySinkInfo ? >();
+        this.source_list = new List<mySourceInfo ? >();
 
         var gtk_settings = Gtk.Settings.get_default();
 
