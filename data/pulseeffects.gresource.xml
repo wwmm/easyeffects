@@ -4,5 +4,7 @@
     <file>application.glade</file>
     <file>about.glade</file>
     <file>about_icon.png</file>
+    <file>listbox.css</file>
+    <file>pulseeffects-sine-symbolic.svg</file>
   </gresource>
 </gresources>

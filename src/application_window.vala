@@ -358,19 +358,34 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
         }
     }
 
+    private void apply_css_style(string css_file_name) {
+        var provider = new Gtk.CssProvider();
+
+        provider.load_from_resource("/com/github/wwmm/pulseeffects/" +
+                                    css_file_name);
+
+        var screen = Gdk.Screen.get_default();
+        var priority = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION;
+
+        Gtk.StyleContext.add_provider_for_screen(screen, provider, priority);
+    }
+
     public ApplicationWindow (Application app) {
         Object(application: app);
 
         this.app = app;
 
-        var gtk_settings = Gtk.Settings.get_default();
+        this.apply_css_style("listbox.css");
+
+        Gtk.IconTheme.get_default().add_resource_path(
+            "/com/github/wwmm/pulseeffects/");
 
         var flag = GLib.SettingsBindFlags.DEFAULT;
         var flag_invert_boolean = GLib.SettingsBindFlags.INVERT_BOOLEAN;
 
         app.settings.bind("use-dark-theme", this.theme_switch, "active", flag);
 
-        app.settings.bind("use-dark-theme", gtk_settings,
+        app.settings.bind("use-dark-theme", Gtk.Settings.get_default(),
                           "gtk_application_prefer_dark_theme", flag);
 
         app.settings.bind("enable-all-apps", this.enable_all_apps, "active",
