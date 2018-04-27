@@ -58,8 +58,6 @@ public class Application : Gtk.Application {
             debug("user preset directory already exists");
         }
 
-        this.create_appmenu();
-
         pm = new PulseManager();
 
         pm.sink_input_added.connect((i) => { debug("si added: " + i.name); });
@@ -142,45 +140,4 @@ public class Application : Gtk.Application {
 
         pm.quit();
     }
-
-    private void create_appmenu() {
-        var menu = new Menu();
-
-        menu.append("About", "app.about");
-        menu.append("Quit", "app.quit");
-
-        this.set_app_menu(menu);
-
-        var about_action = new SimpleAction("about", null);
-
-        about_action.activate.connect(() => {
-            this.hold();
-
-            var builder = new Gtk.Builder.from_resource(
-                "/com/github/wwmm/pulseeffects/about.glade");
-
-            var dialog = builder.get_object("about_dialog") as Gtk.Dialog;
-
-            dialog.set_transient_for(this.active_window);
-
-            dialog.run();
-
-            dialog.destroy();
-
-            this.release();
-        });
-
-        this.add_action(about_action);
-
-        var quit_action = new SimpleAction("quit", null);
-
-        quit_action.activate.connect(() => {
-            this.hold();
-            this.quit();
-            this.release();
-        });
-
-        this.add_action(quit_action);
-    }
-
 }

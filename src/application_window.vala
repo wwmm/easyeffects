@@ -339,10 +339,6 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
         }
     }
 
-    [GtkCallback]
-    private void on_test_clicked(Gtk.Button b) {
-    }
-
     private void init_autostart_switch() {
         var path = Environment.get_user_config_dir() +
                    "/autostart/pulseeffects-service.desktop";
@@ -370,10 +366,56 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
         Gtk.StyleContext.add_provider_for_screen(screen, provider, priority);
     }
 
+    private void create_appmenu() {
+        var menu = new Menu();
+
+        menu.append("About", "app.about");
+        menu.append("Quit", "app.quit");
+
+        this.app.set_app_menu(menu);
+
+        var about_action = new SimpleAction("about", null);
+
+        about_action.activate.connect(() => {
+            this.app.hold();
+
+            var builder = new Gtk.Builder.from_resource(
+                "/com/github/wwmm/pulseeffects/about.glade");
+
+            var dialog = builder.get_object("about_dialog") as Gtk.Dialog;
+
+            dialog.set_transient_for(this);
+
+            dialog.run();
+
+            dialog.destroy();
+
+            this.app.release();
+        });
+
+        this.app.add_action(about_action);
+
+        var quit_action = new SimpleAction("quit", null);
+
+        quit_action.activate.connect(() => {
+            this.app.hold();
+            this.app.quit();
+            this.app.release();
+        });
+
+        this.app.add_action(quit_action);
+    }
+
+    [GtkCallback]
+    private void on_test_clicked(Gtk.Button b) {
+    }
+
     public ApplicationWindow (Application app) {
         Object(application: app);
 
         this.app = app;
+
+        this.create_appmenu();
 
         this.apply_css_style("listbox.css");
 
