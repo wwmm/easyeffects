@@ -1,6 +1,7 @@
 [GtkTemplate(ui = "/com/github/wwmm/pulseeffects/application.glade")]
 public class ApplicationWindow : Gtk.ApplicationWindow {
     private Application app;
+    private DrawSpectrum draw_spectrum;
 
     [GtkChild]
     Gtk.Switch enable_all_apps;
@@ -46,6 +47,12 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
 
     [GtkChild]
     Gtk.ListStore sink_list;
+
+    [GtkChild]
+    public Gtk.Box spectrum_box;
+
+    [GtkChild]
+    public Gtk.DrawingArea spectrum;
 
     [GtkCallback]
     private bool on_enable_autostart_state_set(Gtk.Switch s, bool state) {
@@ -466,5 +473,7 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
         this.app.pm.sink_removed.connect(this.on_sink_removed);
         this.app.pm.source_added.connect(this.on_source_added);
         this.app.pm.source_removed.connect(this.on_source_removed);
+
+        this.draw_spectrum = new DrawSpectrum(this);
     }
 }

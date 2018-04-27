@@ -44,7 +44,6 @@ public class Application : Gtk.Application {
         this.running_as_service = false;
         this.settings = new Settings("com.github.wwmm.pulseeffects");
 
-        // creating user presets folder
         try {
             var presets_directory = Environment.get_user_config_dir() +
                                     "/PulseEffects";

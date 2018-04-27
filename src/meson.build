@@ -14,6 +14,7 @@ pulseeffects_sources = [
 	'application_window.vala',
 	'pulse_manager.vala',
 	'parse_app_info.vala',
+	'draw_spectrum.vala',
 	gresources
 ]
 
