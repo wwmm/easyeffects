@@ -112,31 +112,28 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
 
     [GtkCallback]
     private void on_input_device_changed(Gtk.ComboBox c) {
-        // var combo = c as Gtk.ComboBoxText;
-        //
-        // var name = combo.get_active_text();
-        //
-        // foreach(var s in this.source_list){
-        // if(s.name == name){
-        // debug("input device changed: " + name);
-        // }
-        // }
+        Gtk.TreeIter iter;
+
+        c.get_active_iter(out iter);
+
+        Value name = Value(typeof (string));
+
+        this.source_list.get_value(iter, 1, out name);
+
+        debug("input device changed: " + name.get_string());
     }
 
     [GtkCallback]
     private void on_output_device_changed(Gtk.ComboBox c) {
-        // var combo = c as Gtk.ComboBoxText;
-        //
-        // var name = combo.get_active_text();
-        //
-        // foreach(var s in this.sink_list){
-        // if(s.name == name){
-        // debug("output device changed: " + name);
-        // }
-        // }
+        Gtk.TreeIter iter;
 
-        // this.sink_list.foreach((model, path, iter) => {
-        // });
+        c.get_active_iter(out iter);
+
+        Value name = Value(typeof (string));
+
+        this.sink_list.get_value(iter, 1, out name);
+
+        debug("output device changed: " + name.get_string());
     }
 
     [GtkCallback]
