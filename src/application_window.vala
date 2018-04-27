@@ -1,8 +1,6 @@
 [GtkTemplate(ui = "/com/github/wwmm/pulseeffects/application.glade")]
 public class ApplicationWindow : Gtk.ApplicationWindow {
     private Application app;
-    private List<mySinkInfo ? > sink_list;
-    private List<mySourceInfo ? > source_list;
 
     [GtkChild]
     Gtk.Switch enable_all_apps;
@@ -38,10 +36,16 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
     Gtk.Adjustment spectrum_n_points;
 
     [GtkChild]
-    Gtk.ComboBoxText input_device;
+    Gtk.ComboBox input_device;
 
     [GtkChild]
-    Gtk.ComboBoxText output_device;
+    Gtk.ComboBox output_device;
+
+    [GtkChild]
+    Gtk.ListStore source_list;
+
+    [GtkChild]
+    Gtk.ListStore sink_list;
 
     [GtkCallback]
     private bool on_enable_autostart_state_set(Gtk.Switch s, bool state) {
@@ -108,119 +112,233 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
 
     [GtkCallback]
     private void on_input_device_changed(Gtk.ComboBox c) {
-        var combo = c as Gtk.ComboBoxText;
-
-        var name = combo.get_active_text();
-
-        foreach(var s in this.source_list){
-            if(s.name == name){
-                debug("input device changed: " + name);
-            }
-        }
+        // var combo = c as Gtk.ComboBoxText;
+        //
+        // var name = combo.get_active_text();
+        //
+        // foreach(var s in this.source_list){
+        // if(s.name == name){
+        // debug("input device changed: " + name);
+        // }
+        // }
     }
 
     [GtkCallback]
     private void on_output_device_changed(Gtk.ComboBox c) {
-        var combo = c as Gtk.ComboBoxText;
+        // var combo = c as Gtk.ComboBoxText;
+        //
+        // var name = combo.get_active_text();
+        //
+        // foreach(var s in this.sink_list){
+        // if(s.name == name){
+        // debug("output device changed: " + name);
+        // }
+        // }
 
-        var name = combo.get_active_text();
-
-        foreach(var s in this.sink_list){
-            if(s.name == name){
-                debug("output device changed: " + name);
-            }
-        }
+        // this.sink_list.foreach((model, path, iter) => {
+        // });
     }
 
     [GtkCallback]
     private void on_use_default_source_toggled(Gtk.ToggleButton t) {
         if(t.get_active()){
-            int count = 0;
+            this.source_list.foreach((model, path, iter) => {
+                Value value = Value(typeof (string));
 
-            foreach(var s in this.source_list){
-                if(s.name == this.app.pm.server_info.default_source_name){
-                    this.input_device.set_active(count);
+                model.get_value(iter, 1, out value);
+
+                var name = this.app.pm.server_info.default_source_name;
+
+                if(value.get_string() == name){
+                    this.input_device.set_active_iter(iter);
+
+                    return true; // true to stop foreach
+                } else {
+                    return false;
                 }
-
-                count++;
-            }
+            });
         }
     }
 
     [GtkCallback]
     private void on_use_default_sink_toggled(Gtk.ToggleButton t) {
         if(t.get_active()){
-            int count = 0;
+            this.sink_list.foreach((model, path, iter) => {
+                Value value = Value(typeof (string));
 
-            foreach(var s in this.sink_list){
-                if(s.name == this.app.pm.server_info.default_sink_name){
-                    this.output_device.set_active(count);
+                model.get_value(iter, 1, out value);
+
+                var name = this.app.pm.server_info.default_sink_name;
+
+                if(value.get_string() == name){
+                    this.output_device.set_active_iter(iter);
+
+                    return true; // true to stop foreach
+                } else {
+                    return false;
                 }
-
-                count++;
-            }
+            });
         }
     }
 
     private void on_sink_added(mySinkInfo i) {
         var add_to_list = true;
 
-        foreach(var s in this.sink_list){
-            if(s.index == i.index){
+        this.sink_list.foreach((model, path, iter) => {
+            Value index = Value(typeof (int));
+
+            model.get_value(iter, 0, out index);
+
+            if(index.get_int() == i.index){
                 add_to_list = false;
 
-                break;
+                return true; // true to stop foreach
+            } else {
+                return false;
             }
-        }
+        });
 
         if(add_to_list){
-            this.sink_list.append(i);
+            Gtk.TreeIter iter;
 
-            this.add_sink_to_combo(i);
+            this.sink_list.append(out iter);
+            this.sink_list.set(iter, 0, i.index, 1, i.name);
+
+            if(this.app.pm.use_default_sink){
+                if(i.name == this.app.pm.server_info.default_sink_name){
+                    this.output_device.set_active_iter(iter);
+                }
+            } else {
+                Gtk.TreeIter it;
+
+                bool has_active = this.output_device.get_active_iter(out it);
+
+                if(!has_active){
+                    if(i.name == this.app.pm.server_info.default_sink_name){
+                        this.output_device.set_active_iter(iter);
+                    }
+                }
+            }
 
             debug("added sink: " + i.name);
         }
     }
 
     private void on_sink_removed(uint32 idx) {
-        foreach(var s in this.sink_list){
-            if(s.index == idx){
-                debug("removed sink: " + s.name);
+        Gtk.TreeIter ? default_iter = null;
+        Gtk.TreeIter ? remove_iter = null;
+        string ? remove_name = null;
 
-                this.sink_list.remove(s);
+        this.sink_list.foreach((model, path, iter) => {
+            Value index = Value(typeof (int));
+            Value name = Value(typeof (string));
 
-                break;
+            model.get_value(iter, 0, out index);
+            model.get_value(iter, 1, out name);
+
+            if(index.get_int() == idx){
+                remove_iter = iter;
+                remove_name = name.get_string();
             }
+
+            if(name.get_string() == this.app.pm.server_info.default_sink_name){
+                default_iter = iter;
+            }
+
+            return false;
+        });
+
+        this.sink_list.remove(ref remove_iter);
+
+        debug("removed sink: " + remove_name);
+
+        Gtk.TreeIter iter;
+
+        bool has_active = this.output_device.get_active_iter(out iter);
+
+        if(!has_active){
+            this.output_device.set_active_iter(default_iter);
         }
     }
 
     private void on_source_added(mySourceInfo i) {
         var add_to_list = true;
 
-        foreach(var s in this.source_list){
-            if(s.index == i.index){
+        this.source_list.foreach((model, path, iter) => {
+            Value index = Value(typeof (int));
+
+            model.get_value(iter, 0, out index);
+
+            if(index.get_int() == i.index){
                 add_to_list = false;
 
-                break;
+                return true; // true to stop foreach
+            } else {
+                return false;
             }
-        }
+        });
 
         if(add_to_list){
-            this.source_list.append(i);
+            Gtk.TreeIter iter;
+
+            this.source_list.append(out iter);
+            this.source_list.set(iter, 0, i.index, 1, i.name);
+
+            if(this.app.pm.use_default_source){
+                if(i.name == this.app.pm.server_info.default_source_name){
+                    this.input_device.set_active_iter(iter);
+                }
+            } else {
+                Gtk.TreeIter it;
+
+                bool has_active = this.input_device.get_active_iter(out it);
+
+                if(!has_active){
+                    if(i.name == this.app.pm.server_info.default_source_name){
+                        this.input_device.set_active_iter(iter);
+                    }
+                }
+            }
 
             debug("added source: " + i.name);
         }
     }
 
     private void on_source_removed(uint32 idx) {
-        foreach(var s in this.source_list){
-            if(s.index == idx){
-                debug("removed source: " + s.name);
+        Gtk.TreeIter ? default_iter = null;
+        Gtk.TreeIter ? remove_iter = null;
+        string ? remove_name = null;
 
-                this.source_list.remove(s);
+        this.source_list.foreach((model, path, iter) => {
+            Value index = Value(typeof (int));
+            Value name = Value(typeof (string));
 
-                break;
+            model.get_value(iter, 0, out index);
+            model.get_value(iter, 1, out name);
+
+            if(index.get_int() == idx){
+                remove_iter = iter;
+                remove_name = name.get_string();
             }
+
+            if(name.get_string() ==
+               this.app.pm.server_info.default_source_name){
+                default_iter = iter;
+            }
+
+            return false;
+        });
+
+        this.source_list.remove(ref remove_iter);
+
+        debug("removed source: " + remove_name);
+
+        Gtk.TreeIter iter;
+
+        bool has_active = this.input_device.get_active_iter(out iter);
+
+        if(!has_active){
+            this.input_device.set_active_iter(default_iter);
         }
     }
 
@@ -243,34 +361,10 @@ public class ApplicationWindow : Gtk.ApplicationWindow {
         }
     }
 
-    private void add_sink_to_combo(mySinkInfo i) {
-        bool add_to_combo = true;
-
-        this.output_device.get_model().foreach((model, path, iter) => {
-            Value v = Value(typeof (string));
-
-            model.get_value(iter, 0, out v);
-
-            if(v.get_string() == i.name){
-                add_to_combo = false;
-                return false;
-            } else {
-                return true;
-            }
-        });
-
-        if(add_to_combo){
-            this.output_device.append_text(i.name);
-        }
-    }
-
     public ApplicationWindow (Application app) {
         Object(application: app);
 
         this.app = app;
-
-        this.sink_list = new List<mySinkInfo ? >();
-        this.source_list = new List<mySourceInfo ? >();
 
         var gtk_settings = Gtk.Settings.get_default();
 
