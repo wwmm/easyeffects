@@ -6,7 +6,7 @@
 class Application : public Gtk::Application {
    public:
     Application();
-    virtual ~Application();
+    ~Application();
 
     static Glib::RefPtr<Application> create();
 

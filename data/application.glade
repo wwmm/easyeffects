@@ -58,7 +58,7 @@
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_spectrum_n_points_value_changed" swapped="no"/>
   </object>
-  <template class="ApplicationWindow" parent="GtkApplicationWindow">
+  <object class="GtkApplicationWindow" id="ApplicationWindow">
     <property name="can_focus">False</property>
     <child type="titlebar">
       <object class="GtkHeaderBar" id="headerbar">
@@ -359,7 +359,7 @@
         </child>
       </object>
     </child>
-  </template>
+  </object>
   <object class="GtkPopover" id="settings_menu">
     <property name="can_focus">False</property>
     <property name="relative_to">settings_popover_button</property>

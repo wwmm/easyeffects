@@ -7,6 +7,7 @@ project(
 )
 
 add_global_arguments('-DG_LOG_DOMAIN="pulseeffects"', language : 'c')
+add_global_arguments('-DG_LOG_DOMAIN="pulseeffects"', language : 'cpp')
 
 add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
 	language:'c')

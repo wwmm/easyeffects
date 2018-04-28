@@ -2,10 +2,12 @@
 #include <cstddef>
 #include <iostream>
 #include "application.hpp"
+#include "application_window.hpp"
 
 Application::Application()
     : Gtk::Application("com.github.wwmm.pulseeffects",
-                       Gio::APPLICATION_HANDLES_COMMAND_LINE) {
+                       Gio::APPLICATION_HANDLES_COMMAND_LINE),
+      settings(Gio::Settings::create("com.github.wwmm.pulseeffects")) {
     Glib::set_application_name("PulseEffects");
     Glib::setenv("PULSE_PROP_application.id", "com.github.wwmm.pulseeffects");
     Glib::setenv("PULSE_PROP_application.icon_name", "pulseeffects");
@@ -29,10 +31,8 @@ Glib::RefPtr<Application> Application::create() {
 }
 
 void Application::on_activate() {
-    std::cout << "oi" << std::endl;
-
     if (this->get_active_window() == nullptr) {
-        // this->add_window(win);
+        ApplicationWindow(this);
     }
 }
 
@@ -58,5 +58,11 @@ void Application::on_startup() {
 
     this->running_as_service = false;
 
-    this->settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
+    if (this->get_flags() & Gio::ApplicationFlags::APPLICATION_IS_SERVICE) {
+        this->running_as_service = true;
+
+        this->hold();
+    }
+
+    g_debug("test");
 }
