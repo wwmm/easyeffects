@@ -18,6 +18,7 @@ pulseeffects_deps = [
 	# dependency('glib-2.0'),
 	# dependency('gobject-2.0'),
 	dependency('libpulse'),
+	dependency('glibmm-2.4'),
 	dependency('gtk+-3.0', version: '>= 3.20'),
 	dependency('gtkmm-3.0',version: '>= 3.20')
 ]

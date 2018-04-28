@@ -1,4 +1,5 @@
 -Iinclude
+-I/usr/include/pulse/
 -I/usr/include/gtkmm-3.0/
 -I/usr/include/giomm-2.4/
 -I/usr/include/glibmm-2.4/
