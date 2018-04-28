@@ -1,0 +1,14 @@
+#include "application.hpp"
+
+int main(int argc, char *argv[]) {
+    // Init internationalization support before anything else
+
+    // Intl.setlocale(LocaleCategory.ALL, "");
+    // Intl.bindtextdomain("@PROJECT_NAME@", "@LOCALEDIR@");
+    // Intl.bind_textdomain_codeset("@PROJECT_NAME@", "UTF-8");
+    // Intl.textdomain("@PROJECT_NAME@");
+
+    auto app = Application::create();
+
+    return app->run(argc, argv);
+}

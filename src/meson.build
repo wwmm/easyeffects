@@ -2,32 +2,30 @@ conf_pulseeffects = configuration_data()
 conf_pulseeffects.set('LOCALEDIR', localedir)
 conf_pulseeffects.set('PROJECT_NAME', meson.project_name())
 
-pulseeffects_vala = configure_file(input: 'pulseeffects.vala.in',
-							 output: 'pulseeffects.vala',
+pulseeffects_cpp = configure_file(input: 'pulseeffects.cpp.in',
+							 output: 'pulseeffects.cpp',
 							 configuration: conf_pulseeffects,
 							 install_dir: bindir)
 
 
 pulseeffects_sources = [
-	pulseeffects_vala,
-	'application.vala',
-	'application_window.vala',
-	'pulse_manager.vala',
-	'parse_app_info.vala',
-	'draw_spectrum.vala',
+	pulseeffects_cpp,
+	'application.cpp',
 	gresources
 ]
 
 pulseeffects_deps = [
-	dependency('glib-2.0'),
-	dependency('gobject-2.0'),
+	# dependency('glib-2.0'),
+	# dependency('gobject-2.0'),
 	dependency('libpulse'),
-	dependency('gtk+-3.0', version: '>= 3.20')
+	dependency('gtk+-3.0', version: '>= 3.20'),
+	dependency('gtkmm-3.0',version: '>= 3.20')
 ]
 
 executable(
 	meson.project_name(),
 	pulseeffects_sources,
+	include_directories : include_dir,
 	dependencies : pulseeffects_deps,
 	install: true
 )

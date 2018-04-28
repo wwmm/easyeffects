@@ -1,6 +1,6 @@
 project(
 	'pulseeffects',
-	'vala',
+	'cpp',
 	'c',
 	version: '3.3.0',
 	meson_version: '>= 0.40.0'
@@ -18,6 +18,8 @@ prefix = get_option('prefix')
 bindir = join_paths(prefix, get_option('bindir'))
 datadir = join_paths(prefix, get_option('datadir'))
 localedir = join_paths(prefix, get_option('localedir'))
+
+include_dir = include_directories('include')
 
 subdir('data')
 subdir('po')
