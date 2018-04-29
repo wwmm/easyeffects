@@ -56,10 +56,10 @@ int Application::on_command_line(
 void Application::on_startup() {
     Gtk::Application::on_startup();
 
-    this->running_as_service = false;
+    running_as_service = false;
 
     if (this->get_flags() & Gio::ApplicationFlags::APPLICATION_IS_SERVICE) {
-        this->running_as_service = true;
+        running_as_service = true;
 
         this->hold();
     }
