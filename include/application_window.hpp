@@ -28,6 +28,11 @@ class ApplicationWindow {
     Gtk::Adjustment* latency_out;
     Gtk::Switch* show_spectrum;
     Gtk::Adjustment* spectrum_n_points;
+
+    template <typename T>
+    void get_object(std::string name, T& object) {
+        object = (T)builder->get_object(name).get();
+    }
 };
 
 #endif
