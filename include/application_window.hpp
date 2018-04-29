@@ -9,9 +9,17 @@ class ApplicationWindow {
     ApplicationWindow(Application* app);
 
    private:
+    Application* app;
+
     Glib::RefPtr<Gtk::Builder> builder;
 
     Gtk::ApplicationWindow* window;
+    Gtk::Switch* enable_all_apps;
+    Gtk::Switch* theme_switch;
+    Gtk::ToggleButton* use_default_sink;
+    Gtk::ToggleButton* use_default_source;
+    Gtk::ComboBox* input_device;
+    Gtk::ComboBox* output_device;
 };
 
 #endif

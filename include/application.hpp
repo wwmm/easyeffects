@@ -9,6 +9,7 @@ class Application : public Gtk::Application {
     ~Application();
 
     static Glib::RefPtr<Application> create();
+    Glib::RefPtr<Gio::Settings> settings;
 
    protected:
     void on_activate() override;
@@ -20,7 +21,6 @@ class Application : public Gtk::Application {
 
    private:
     bool running_as_service;
-    Glib::RefPtr<Gio::Settings> settings;
 };
 
 #endif
