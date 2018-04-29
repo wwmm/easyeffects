@@ -3,6 +3,7 @@
 #include <iostream>
 #include "application.hpp"
 #include "application_window.hpp"
+#include "util.hpp"
 
 Application::Application()
     : Gtk::Application("com.github.wwmm.pulseeffects",
@@ -61,14 +62,12 @@ void Application::on_startup() {
     if (this->get_flags() & Gio::ApplicationFlags::APPLICATION_IS_SERVICE) {
         running_as_service = true;
 
-        g_debug(_("Running in Background"));
+        util::debug(log_tag + "Running in Background");
 
         this->hold();
     }
 
     create_appmenu();
-
-    g_debug("test");
 }
 
 void Application::create_appmenu() {

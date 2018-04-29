@@ -1,5 +1,6 @@
 #include <iostream>
 #include "application_window.hpp"
+#include "util.hpp"
 
 ApplicationWindow::ApplicationWindow(Application* application)
     : app(application),
@@ -94,7 +95,7 @@ void ApplicationWindow::init_autostart_switch() {
             enable_autostart->set_active(false);
         }
     } catch (const Glib::Exception& ex) {
-        std::cerr << "Exception: " << ex.what() << std::endl;
+        util::error(log_tag + ex.what());
     }
 }
 
@@ -124,17 +125,17 @@ bool ApplicationWindow::on_enable_autostart(bool state) {
             stream->close();
             stream.reset();
 
-            g_debug("autostart file created");
+            util::debug("application_window.cpp: autostart file created");
         } catch (const Glib::Exception& ex) {
-            std::cerr << "Exception: " << ex.what() << std::endl;
+            util::error("application_window.cpp: " + ex.what());
         }
     } else {
         try {
             file->remove();
 
-            g_debug("autostart file removed");
+            util::debug("application_window.cpp: autostart file removed");
         } catch (const Glib::Exception& ex) {
-            std::cerr << "Exception: " << ex.what() << std::endl;
+            util::error("application_window.cpp: " + ex.what());
         }
     }
 

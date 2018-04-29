@@ -9,6 +9,8 @@ class ApplicationWindow {
     ApplicationWindow(Application* app);
 
    private:
+    std::string log_tag = "application_window.cpp: ";
+
     Application* app;
 
     Glib::RefPtr<Gtk::Builder> builder;

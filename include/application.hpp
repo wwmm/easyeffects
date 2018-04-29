@@ -20,6 +20,8 @@ class Application : public Gtk::Application {
     void on_startup() override;
 
    private:
+    std::string log_tag = "application.cpp: ";
+
     bool running_as_service;
 
     void create_appmenu();
