@@ -21,6 +21,8 @@ ApplicationWindow::ApplicationWindow(Application* application)
     builder->get_widget("input_device", input_device);
     builder->get_widget("output_device", output_device);
     builder->get_widget("show_spectrum", show_spectrum);
+    builder->get_widget("reset_settings", reset_settings);
+    builder->get_widget("spectrum", spectrum);
 
     get_object("buffer_in", buffer_in);
     get_object("buffer_out", buffer_out);
@@ -62,6 +64,9 @@ ApplicationWindow::ApplicationWindow(Application* application)
 
     enable_autostart->signal_state_set().connect(
         sigc::mem_fun(*this, &ApplicationWindow::on_enable_autostart), false);
+
+    reset_settings->signal_clicked().connect(
+        sigc::mem_fun(*this, &ApplicationWindow::on_reset_settings));
 
     app->add_window(*window);
 
@@ -140,4 +145,17 @@ bool ApplicationWindow::on_enable_autostart(bool state) {
     }
 
     return false;
+}
+
+void ApplicationWindow::on_reset_settings() {
+    settings->reset("buffer-in");
+    settings->reset("buffer-out");
+    settings->reset("latency-in");
+    settings->reset("latency-out");
+    settings->reset("show-spectrum");
+    settings->reset("spectrum-n-points");
+    settings->reset("use-dark-theme");
+    settings->reset("enable-all-apps");
+    settings->reset("use-default-sink");
+    settings->reset("use-default-source");
 }

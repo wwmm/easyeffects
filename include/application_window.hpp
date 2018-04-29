@@ -8,6 +8,8 @@ class ApplicationWindow {
    public:
     ApplicationWindow(Application* app);
 
+    Gtk::DrawingArea* spectrum;
+
    private:
     std::string log_tag = "application_window.cpp: ";
 
@@ -31,6 +33,7 @@ class ApplicationWindow {
     Gtk::Adjustment* latency_out;
     Gtk::Switch* show_spectrum;
     Gtk::Adjustment* spectrum_n_points;
+    Gtk::Button* reset_settings;
 
     template <typename T>
     void get_object(std::string name, T& object) {
@@ -42,6 +45,8 @@ class ApplicationWindow {
     void init_autostart_switch();
 
     bool on_enable_autostart(bool state);
+
+    void on_reset_settings();
 };
 
 #endif

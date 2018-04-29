@@ -56,7 +56,6 @@
     <property name="upper">600</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_spectrum_n_points_value_changed" swapped="no"/>
   </object>
   <object class="GtkApplicationWindow" id="ApplicationWindow">
     <property name="can_focus">False</property>
@@ -491,14 +490,13 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="reset_all_settings">
+                  <object class="GtkButton" id="reset_settings">
                     <property name="label" translatable="yes">Reset</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="halign">start</property>
                     <property name="relief">half</property>
-                    <signal name="clicked" handler="on_reset_all_settings_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -539,7 +537,6 @@
                     <property name="can_focus">True</property>
                     <property name="halign">start</property>
                     <property name="valign">center</property>
-                    <signal name="state-set" handler="on_show_spectrum_state_set" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -618,7 +615,6 @@
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="halign">center</property>
-                        <signal name="toggled" handler="on_use_default_sink_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -632,7 +628,6 @@
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="halign">center</property>
-                        <signal name="toggled" handler="on_use_default_source_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -658,7 +653,6 @@
                         <property name="can_focus">False</property>
                         <property name="hexpand">True</property>
                         <property name="model">sink_list</property>
-                        <signal name="changed" handler="on_output_device_changed" swapped="no"/>
                         <child>
                           <object class="GtkCellRendererText"/>
                           <attributes>
@@ -676,7 +670,6 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="model">source_list</property>
-                        <signal name="changed" handler="on_input_device_changed" swapped="no"/>
                         <child>
                           <object class="GtkCellRendererText"/>
                           <attributes>
