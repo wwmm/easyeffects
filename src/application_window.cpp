@@ -1,3 +1,4 @@
+#include <iostream>
 #include "application_window.hpp"
 
 ApplicationWindow::ApplicationWindow(Application* application)
@@ -5,11 +6,14 @@ ApplicationWindow::ApplicationWindow(Application* application)
       builder(Gtk::Builder::create_from_resource(
           "/com/github/wwmm/pulseeffects/application.glade")),
       settings(app->settings) {
+    apply_css_style("listbox.css");
+
     Gtk::IconTheme::get_default()->add_resource_path(
         "/com/github/wwmm/pulseeffects/");
 
     builder->get_widget("ApplicationWindow", window);
     builder->get_widget("theme_switch", theme_switch);
+    builder->get_widget("enable_autostart", enable_autostart);
     builder->get_widget("enable_all_apps", enable_all_apps);
     builder->get_widget("use_default_sink", use_default_sink);
     builder->get_widget("use_default_source", use_default_source);
@@ -53,7 +57,42 @@ ApplicationWindow::ApplicationWindow(Application* application)
     settings->bind("show-spectrum", show_spectrum, "active", flag);
     settings->bind("spectrum-n-points", spectrum_n_points, "value", flag);
 
+    init_autostart_switch();
+
     app->add_window(*window);
 
     window->show();
+}
+
+void ApplicationWindow::apply_css_style(std::string css_file_name) {
+    auto provider = Gtk::CssProvider::create();
+
+    provider->load_from_resource("/com/github/wwmm/pulseeffects/" +
+                                 css_file_name);
+
+    auto screen = Gdk::Screen::get_default();
+    auto priority = GTK_STYLE_PROVIDER_PRIORITY_APPLICATION;
+
+    Gtk::StyleContext::add_provider_for_screen(screen, provider, priority);
+}
+
+void ApplicationWindow::init_autostart_switch() {
+    auto path =
+        Glib::get_user_config_dir() + "/autostart/pulseeffects-service.desktop";
+
+    try {
+        auto file = Gio::File::create_for_path(path);
+
+        bool exists = file->query_exists();
+
+        if (exists) {
+            enable_autostart->set_active(true);
+        } else {
+            enable_autostart->set_active(false);
+        }
+
+        g_debug("autostart");
+    } catch (const Glib::Exception& ex) {
+        std::cerr << "Exception caught: " << ex.what() << std::endl;
+    }
 }

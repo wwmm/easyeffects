@@ -61,6 +61,8 @@ void Application::on_startup() {
     if (this->get_flags() & Gio::ApplicationFlags::APPLICATION_IS_SERVICE) {
         running_as_service = true;
 
+        g_debug(_("Running in Background"));
+
         this->hold();
     }
 
