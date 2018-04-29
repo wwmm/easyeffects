@@ -17,11 +17,11 @@ ApplicationWindow::ApplicationWindow(Application* application)
     builder->get_widget("output_device", output_device);
     builder->get_widget("show_spectrum", show_spectrum);
 
-    this->get_object("buffer_in", buffer_in);
-    this->get_object("buffer_out", buffer_out);
-    this->get_object("latency_in", latency_in);
-    this->get_object("latency_out", latency_out);
-    this->get_object("spectrum_n_points", spectrum_n_points);
+    get_object("buffer_in", buffer_in);
+    get_object("buffer_out", buffer_out);
+    get_object("latency_in", latency_in);
+    get_object("latency_out", latency_out);
+    get_object("spectrum_n_points", spectrum_n_points);
 
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
     auto flag_invert_boolean =

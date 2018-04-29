@@ -21,6 +21,8 @@ class Application : public Gtk::Application {
 
    private:
     bool running_as_service;
+
+    void create_appmenu();
 };
 
 #endif

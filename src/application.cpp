@@ -64,5 +64,40 @@ void Application::on_startup() {
         this->hold();
     }
 
+    create_appmenu();
+
     g_debug("test");
+}
+
+void Application::create_appmenu() {
+    add_action("about", [&]() {
+        auto builder = Gtk::Builder::create_from_resource(
+            "/com/github/wwmm/pulseeffects/about.glade");
+
+        auto dialog = (Gtk::Dialog*)builder->get_object("about_dialog").get();
+
+        dialog->set_transient_for(*this->get_active_window());
+
+        dialog->show();
+
+        // Bring it to the front, in case it was already shown:
+        dialog->present();
+    });
+
+    add_action("quit", [&] {
+        auto windows = get_windows();
+
+        for (auto w : windows) {
+            w->hide();
+        }
+
+        quit();
+    });
+
+    auto menu = Gio::Menu::create();
+
+    menu->append("About", "app.about");
+    menu->append("Quit", "app.quit");
+
+    set_app_menu(menu);
 }
