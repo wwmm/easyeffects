@@ -59,6 +59,9 @@ ApplicationWindow::ApplicationWindow(Application* application)
 
     init_autostart_switch();
 
+    enable_autostart->signal_state_set().connect(
+        sigc::mem_fun(*this, &ApplicationWindow::on_enable_autostart), false);
+
     app->add_window(*window);
 
     window->show();
@@ -90,9 +93,50 @@ void ApplicationWindow::init_autostart_switch() {
         } else {
             enable_autostart->set_active(false);
         }
-
-        g_debug("autostart");
     } catch (const Glib::Exception& ex) {
-        std::cerr << "Exception caught: " << ex.what() << std::endl;
+        std::cerr << "Exception: " << ex.what() << std::endl;
     }
+}
+
+bool ApplicationWindow::on_enable_autostart(bool state) {
+    auto path =
+        Glib::get_user_config_dir() + "/autostart/pulseeffects-service.desktop";
+
+    auto file = Gio::File::create_for_path(path);
+
+    if (state) {
+        try {
+            Glib::RefPtr<Gio::FileOutputStream> stream;
+
+            if (file->query_exists())
+                stream = file->replace();
+            else
+                stream = file->create_file();
+
+            stream->write("[Desktop Entry]\n");
+            stream->write("Name=PulseEffects\n");
+            stream->write("Comment=PulseEffects Service\n");
+            stream->write("Exec=pulseeffects --gapplication-service\n");
+            stream->write("Icon=pulseeffects\n");
+            stream->write("StartupNotify=false\n");
+            stream->write("Terminal=false\n");
+            stream->write("Type=Application\n");
+            stream->close();
+            stream.reset();
+
+            g_debug("autostart file created");
+        } catch (const Glib::Exception& ex) {
+            std::cerr << "Exception: " << ex.what() << std::endl;
+        }
+    } else {
+        try {
+            file->remove();
+
+            g_debug("autostart file removed");
+        } catch (const Glib::Exception& ex) {
+            std::cerr << "Exception: " << ex.what() << std::endl;
+        }
+    }
+
+    return false;
 }

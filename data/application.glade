@@ -421,7 +421,6 @@
                     <property name="can_focus">True</property>
                     <property name="halign">start</property>
                     <property name="valign">center</property>
-                    <signal name="state-set" handler="on_enable_autostart_state_set" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>

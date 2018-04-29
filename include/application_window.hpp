@@ -38,6 +38,8 @@ class ApplicationWindow {
     void apply_css_style(std::string css_file_name);
 
     void init_autostart_switch();
+
+    bool on_enable_autostart(bool state);
 };
 
 #endif
