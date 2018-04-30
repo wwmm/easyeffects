@@ -35,6 +35,10 @@ class PulseManager {
     PulseManager();
     ~PulseManager();
 
+    myServerInfo server_info;
+    mySinkInfo apps_sink_info;
+    mySinkInfo mic_sink_info;
+
    private:
     std::string log_tag = "pulse_manager.cpp: ";
 
@@ -45,6 +49,10 @@ class PulseManager {
     pa_context* context;
 
     static void context_state_cb(pa_context* ctx, void* data);
+
+    void get_server_info();
+
+    void wait_operation(pa_operation* o);
 };
 
 #endif

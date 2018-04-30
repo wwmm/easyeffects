@@ -17,6 +17,8 @@ PulseManager::PulseManager()
 
     while (!context_ready) {
     }
+
+    get_server_info();
 }
 
 PulseManager::~PulseManager() {
@@ -120,4 +122,41 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
 
         pm->context_ready = false;
     }
+}
+
+void PulseManager::get_server_info() {
+    auto o = pa_context_get_server_info(
+        context,
+        [](auto c, auto info, auto d) {
+            if (info != nullptr) {
+                auto pm = static_cast<PulseManager*>(d);
+
+                pm->server_info.server_name = info->server_name;
+                pm->server_info.server_version = info->server_version;
+                pm->server_info.default_sink_name = info->default_sink_name;
+                pm->server_info.default_source_name = info->default_source_name;
+
+                util::debug(pm->log_tag +
+                            "Pulseaudio version: " + info->server_version);
+                util::debug(pm->log_tag + "default pulseaudio source: " +
+                            info->default_source_name);
+                util::debug(pm->log_tag + "default pulseaudio sink: " +
+                            info->default_sink_name);
+
+                pa_threaded_mainloop_signal(pm->main_loop, false);
+            }
+        },
+        this);
+
+    wait_operation(o);
+}
+
+void PulseManager::wait_operation(pa_operation* o) {
+    pa_threaded_mainloop_lock(main_loop);
+
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+        pa_threaded_mainloop_wait(main_loop);
+    }
+
+    pa_threaded_mainloop_unlock(main_loop);
 }
