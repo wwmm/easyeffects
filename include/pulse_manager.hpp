@@ -44,7 +44,7 @@ class PulseManager {
     pa_mainloop_api* main_loop_api;
     pa_context* context;
 
-    static void context_state_cb(pa_context* context, void* data);
+    static void context_state_cb(pa_context* ctx, void* data);
 };
 
 #endif
