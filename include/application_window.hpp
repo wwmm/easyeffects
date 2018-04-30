@@ -35,6 +35,8 @@ class ApplicationWindow {
     Gtk::Adjustment* spectrum_n_points;
     Gtk::Button* reset_settings;
 
+    double mouse_intensity;
+
     template <typename T>
     void get_object(std::string name, T& object) {
         object = (T)builder->get_object(name).get();
@@ -44,7 +46,7 @@ class ApplicationWindow {
 
     void init_autostart_switch();
 
-    bool on_enable_autostart(bool state);
+    bool on_enable_autostart(bool state, std::string tag);
 
     void on_reset_settings();
 
@@ -54,7 +56,7 @@ class ApplicationWindow {
 
     bool on_leave_notify_event(GdkEventCrossing* event);
 
-    bool on_motion_notify_event(GdkEventMotion* event);
+    bool on_motion_notify_event(GdkEventMotion* event, Gtk::DrawingArea* area);
 };
 
 #endif

@@ -69,20 +69,24 @@ ApplicationWindow::ApplicationWindow(Application* application)
     // callbacks connection
 
     enable_autostart->signal_state_set().connect(
-        sigc::mem_fun(*this, &ApplicationWindow::on_enable_autostart), false);
+        sigc::bind(
+            sigc::mem_fun(*this, &ApplicationWindow::on_enable_autostart),
+            log_tag),
+        false);
 
     reset_settings->signal_clicked().connect(
         sigc::mem_fun(*this, &ApplicationWindow::on_reset_settings));
 
     spectrum->signal_draw().connect(
-        sigc::mem_fun(*this, &ApplicationWindow::on_draw), false);
+        sigc::mem_fun(*this, &ApplicationWindow::on_draw));
     spectrum->signal_enter_notify_event().connect(
-        sigc::mem_fun(*this, &ApplicationWindow::on_enter_notify_event), false);
+        sigc::mem_fun(*this, &ApplicationWindow::on_enter_notify_event));
     spectrum->signal_leave_notify_event().connect(
-        sigc::mem_fun(*this, &ApplicationWindow::on_leave_notify_event), false);
-    spectrum->signal_motion_notify_event().connect(
+        sigc::mem_fun(*this, &ApplicationWindow::on_leave_notify_event));
+
+    spectrum->signal_motion_notify_event().connect(sigc::bind(
         sigc::mem_fun(*this, &ApplicationWindow::on_motion_notify_event),
-        false);
+        spectrum));
 
     // show main window
 
@@ -122,7 +126,7 @@ void ApplicationWindow::init_autostart_switch() {
     }
 }
 
-bool ApplicationWindow::on_enable_autostart(bool state) {
+bool ApplicationWindow::on_enable_autostart(bool state, std::string tag) {
     auto path =
         Glib::get_user_config_dir() + "/autostart/pulseeffects-service.desktop";
 
@@ -148,17 +152,17 @@ bool ApplicationWindow::on_enable_autostart(bool state) {
             stream->close();
             stream.reset();
 
-            util::debug("application_window.cpp: autostart file created");
+            util::debug(tag + "autostart file created");
         } catch (const Glib::Exception& ex) {
-            util::error("application_window.cpp: " + ex.what());
+            util::error(tag + ex.what());
         }
     } else {
         try {
             file->remove();
 
-            util::debug("application_window.cpp: autostart file removed");
+            util::debug(tag + "autostart file removed");
         } catch (const Glib::Exception& ex) {
-            util::error("application_window.cpp: " + ex.what());
+            util::error(tag + ex.what());
         }
     }
 
@@ -198,8 +202,16 @@ bool ApplicationWindow::on_leave_notify_event(GdkEventCrossing* event) {
     return false;
 }
 
-bool ApplicationWindow::on_motion_notify_event(GdkEventMotion* event) {
-    g_debug("motion event");
+bool ApplicationWindow::on_motion_notify_event(GdkEventMotion* event,
+                                               Gtk::DrawingArea* area) {
+    auto allocation = area->get_allocation();
+
+    // auto width = allocation.get_width();
+    auto height = allocation.get_height();
+
+    mouse_intensity = -event->y * 120 / height;
+
+    util::debug("mouse intensity: " + std::to_string(mouse_intensity));
 
     return false;
 }
