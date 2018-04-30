@@ -47,6 +47,14 @@ class ApplicationWindow {
     bool on_enable_autostart(bool state);
 
     void on_reset_settings();
+
+    bool on_draw(const Cairo::RefPtr<Cairo::Context>& ctx);
+
+    bool on_enter_notify_event(GdkEventCrossing* event);
+
+    bool on_leave_notify_event(GdkEventCrossing* event);
+
+    bool on_motion_notify_event(GdkEventMotion* event);
 };
 
 #endif

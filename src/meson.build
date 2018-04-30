@@ -12,7 +12,6 @@ pulseeffects_sources = [
 	pulseeffects_cpp,
 	'application.cpp',
 	'application_window.cpp',
-	'draw_spectrum.cpp',
 	'util.cpp',
 	gresources
 ]

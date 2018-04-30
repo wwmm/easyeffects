@@ -12,6 +12,8 @@ ApplicationWindow::ApplicationWindow(Application* application)
     Gtk::IconTheme::get_default()->add_resource_path(
         "/com/github/wwmm/pulseeffects/");
 
+    // loading glade widgets
+
     builder->get_widget("ApplicationWindow", window);
     builder->get_widget("theme_switch", theme_switch);
     builder->get_widget("enable_autostart", enable_autostart);
@@ -29,6 +31,8 @@ ApplicationWindow::ApplicationWindow(Application* application)
     get_object("latency_in", latency_in);
     get_object("latency_out", latency_out);
     get_object("spectrum_n_points", spectrum_n_points);
+
+    // binding glade widgets to gsettings keys
 
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
     auto flag_invert_boolean =
@@ -62,11 +66,25 @@ ApplicationWindow::ApplicationWindow(Application* application)
 
     init_autostart_switch();
 
+    // callbacks connection
+
     enable_autostart->signal_state_set().connect(
         sigc::mem_fun(*this, &ApplicationWindow::on_enable_autostart), false);
 
     reset_settings->signal_clicked().connect(
         sigc::mem_fun(*this, &ApplicationWindow::on_reset_settings));
+
+    spectrum->signal_draw().connect(
+        sigc::mem_fun(*this, &ApplicationWindow::on_draw), false);
+    spectrum->signal_enter_notify_event().connect(
+        sigc::mem_fun(*this, &ApplicationWindow::on_enter_notify_event), false);
+    spectrum->signal_leave_notify_event().connect(
+        sigc::mem_fun(*this, &ApplicationWindow::on_leave_notify_event), false);
+    spectrum->signal_motion_notify_event().connect(
+        sigc::mem_fun(*this, &ApplicationWindow::on_motion_notify_event),
+        false);
+
+    // show main window
 
     app->add_window(*window);
 
@@ -158,4 +176,30 @@ void ApplicationWindow::on_reset_settings() {
     settings->reset("enable-all-apps");
     settings->reset("use-default-sink");
     settings->reset("use-default-source");
+}
+
+bool ApplicationWindow::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
+    ctx->paint();
+
+    g_debug("draw event");
+
+    return false;
+}
+
+bool ApplicationWindow::on_enter_notify_event(GdkEventCrossing* event) {
+    g_debug("enter event");
+
+    return false;
+}
+
+bool ApplicationWindow::on_leave_notify_event(GdkEventCrossing* event) {
+    g_debug("leave event");
+
+    return false;
+}
+
+bool ApplicationWindow::on_motion_notify_event(GdkEventMotion* event) {
+    g_debug("motion event");
+
+    return false;
 }
