@@ -2,6 +2,8 @@
 #define APPLICATION_HPP
 
 #include <gtkmm.h>
+#include <memory>
+#include "pulse_manager.hpp"
 
 class Application : public Gtk::Application {
    public:
@@ -23,6 +25,8 @@ class Application : public Gtk::Application {
     std::string log_tag = "application.cpp: ";
 
     bool running_as_service;
+
+    std::unique_ptr<PulseManager> pm;
 
     void create_appmenu();
 };

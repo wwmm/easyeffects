@@ -3,12 +3,14 @@
 #include <iostream>
 #include "application.hpp"
 #include "application_window.hpp"
+#include "pulse_manager.hpp"
 #include "util.hpp"
 
 Application::Application()
-    : Gtk::Application("com.github.wwmm.pulseeffects",
+    : Gtk::Application("com.github.wwmm.pulseeffects2",
                        Gio::APPLICATION_HANDLES_COMMAND_LINE),
-      settings(Gio::Settings::create("com.github.wwmm.pulseeffects")) {
+      settings(Gio::Settings::create("com.github.wwmm.pulseeffects")),
+      pm(std::unique_ptr<PulseManager>(new PulseManager())) {
     Glib::set_application_name("PulseEffects");
     Glib::setenv("PULSE_PROP_application.id", "com.github.wwmm.pulseeffects");
     Glib::setenv("PULSE_PROP_application.icon_name", "pulseeffects");

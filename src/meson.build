@@ -12,13 +12,12 @@ pulseeffects_sources = [
 	pulseeffects_cpp,
 	'application.cpp',
 	'application_window.cpp',
+	'pulse_manager.cpp',
 	'util.cpp',
 	gresources
 ]
 
 pulseeffects_deps = [
-	# dependency('glib-2.0'),
-	# dependency('gobject-2.0'),
 	dependency('libpulse'),
 	dependency('glibmm-2.4'),
 	dependency('gtk+-3.0', version: '>= 3.20'),
