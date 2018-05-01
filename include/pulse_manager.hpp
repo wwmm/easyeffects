@@ -46,6 +46,8 @@ class PulseManager {
 
     sigc::signal<void, std::shared_ptr<mySourceInfo>> source_added;
     sigc::signal<void, uint> source_removed;
+    sigc::signal<void, std::shared_ptr<mySinkInfo>> sink_added;
+    sigc::signal<void, uint> sink_removed;
 
    private:
     std::string log_tag = "pulse_manager.cpp: ";

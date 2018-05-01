@@ -63,8 +63,18 @@ void Application::on_startup() {
 
     create_appmenu();
 
+    // just for tests. It will be removed
+
     pm->source_added.connect(
         [](auto i) { util::debug("added source: " + i->name); });
+    pm->source_removed.connect(
+        [](auto i) { util::debug("removed source: " + std::to_string(i)); });
+    pm->sink_added.connect([](auto i) {
+        sleep(2);
+        util::debug("added sink: " + i->name);
+    });
+    pm->sink_removed.connect(
+        [](auto i) { util::debug("removed sink: " + std::to_string(i)); });
 
     if (get_flags() & Gio::ApplicationFlags::APPLICATION_IS_SERVICE) {
         running_as_service = true;

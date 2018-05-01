@@ -13,6 +13,8 @@ class Application : public Gtk::Application {
     static Glib::RefPtr<Application> create();
     Glib::RefPtr<Gio::Settings> settings;
 
+    std::unique_ptr<PulseManager> pm;
+
    protected:
     void on_activate() override;
 
@@ -25,8 +27,6 @@ class Application : public Gtk::Application {
     std::string log_tag = "application.cpp: ";
 
     bool running_as_service;
-
-    std::unique_ptr<PulseManager> pm;
 
     void create_appmenu();
 };

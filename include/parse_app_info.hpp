@@ -57,7 +57,7 @@ class ParseAppInfo {
         });
     }
 
-    void print_info(std::unique_ptr<AppInfo> info) {
+    void print_info(std::shared_ptr<AppInfo> info) {
         std::cout << info->index << std::endl;
         std::cout << info->name << std::endl;
         std::cout << info->icon_name << std::endl;
@@ -109,9 +109,9 @@ class ParseAppInfo {
     }
 
     template <typename T>
-    std::unique_ptr<AppInfo> parse_app_info(const T& info) {
+    std::shared_ptr<AppInfo> parse_app_info(const T& info) {
         std::string app_name, media_name, media_role;
-        auto ai = std::make_unique<AppInfo>();
+        auto ai = std::make_shared<AppInfo>();
 
         auto prop = pa_proplist_gets(info->proplist, "application.name");
 
@@ -182,7 +182,7 @@ class ParseAppInfo {
             ai->latency = get_latency(info);
             ai->corked = info->corked;
 
-            print_info(move(ai));
+            print_info(ai);
 
             return ai;
         }

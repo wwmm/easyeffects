@@ -1,4 +1,14 @@
+#include <glib-unix.h>
 #include "application.hpp"
+
+bool sigterm(void* data){
+    auto app = static_cast<Application*>(data);
+
+    app->quit();
+    app->pm->~PulseManager();
+
+    return G_SOURCE_REMOVE;
+}
 
 int main(int argc, char *argv[]) {
     // Init internationalization support before anything else
@@ -10,5 +20,9 @@ int main(int argc, char *argv[]) {
 
     auto app = Application::create();
 
-    return app->run(argc, argv);
+    g_unix_signal_add(2, (GSourceFunc)sigterm, app.get());
+
+    auto status = app->run(argc, argv);
+
+    return status;
 }
