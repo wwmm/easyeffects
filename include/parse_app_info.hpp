@@ -35,18 +35,26 @@ class ParseAppInfo {
     void new_app(const T& info) {
         auto app_info = parse_app_info(info);
 
-        if (typeid(T) == typeid(pa_sink_input_info)) {
-        } else if (typeid(T) == typeid(pa_source_output_info)) {
-        }
+        Glib::signal_idle().connect([&]() {
+            if (typeid(T) == typeid(pa_sink_input_info)) {
+            } else if (typeid(T) == typeid(pa_source_output_info)) {
+            }
+
+            return false;
+        });
     }
 
     template <typename T>
     void changed_app(const T& info) {
         auto app_info = parse_app_info(info);
 
-        if (typeid(T) == typeid(pa_sink_input_info)) {
-        } else if (typeid(T) == typeid(pa_source_output_info)) {
-        }
+        Glib::signal_idle().connect([&]() {
+            if (typeid(T) == typeid(pa_sink_input_info)) {
+            } else if (typeid(T) == typeid(pa_source_output_info)) {
+            }
+
+            return false;
+        });
     }
 
     void print_info(std::unique_ptr<AppInfo> info) {
