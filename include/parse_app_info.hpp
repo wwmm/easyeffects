@@ -153,13 +153,16 @@ class ParseAppInfo {
 
             ai->connected = is_connected(info);
 
-            // todo: volume section
+            // linear volume
+            ai->volume = 100 * pa_cvolume_max(&info->volume) / PA_VOLUME_NORM;
 
             if (info->resample_method) {
                 ai->resampler = info->resample_method;
             } else {
                 ai->resampler = "null";
             }
+
+            ai->format = pa_sample_format_to_string(info->sample_spec.format);
 
             ai->index = info->index;
             ai->name = app_name;
