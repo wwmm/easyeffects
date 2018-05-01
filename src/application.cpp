@@ -74,6 +74,11 @@ void Application::on_startup() {
     pm->sink_removed.connect(
         [](auto i) { util::debug("removed sink: " + std::to_string(i)); });
 
+    pm->new_default_sink.connect(
+        [](auto i) { util::debug("new default sink: " + i); });
+    pm->new_default_source.connect(
+        [](auto i) { util::debug("new default source: " + i); });
+
     if (get_flags() & Gio::ApplicationFlags::APPLICATION_IS_SERVICE) {
         running_as_service = true;
 

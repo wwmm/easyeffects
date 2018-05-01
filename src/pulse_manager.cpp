@@ -6,8 +6,7 @@
 #include "util.hpp"
 
 PulseManager::PulseManager()
-    : context_ready(false),
-      main_loop(pa_threaded_mainloop_new()),
+    : main_loop(pa_threaded_mainloop_new()),
       main_loop_api(pa_threaded_mainloop_get_api(main_loop)),
       context(pa_context_new(main_loop_api, "PulseEffects")),
       pai(std::unique_ptr<ParseAppInfo>(new ParseAppInfo(this))) {
@@ -209,10 +208,55 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
                     } else if (e == PA_SUBSCRIPTION_EVENT_CHANGE) {
                     } else if (e == PA_SUBSCRIPTION_EVENT_REMOVE) {
                         Glib::signal_idle().connect([pm, idx]() {
-                            std::cout << idx << std::endl;
                             pm->sink_removed.emit(idx);
                             return false;
                         });
+                    }
+                } else if (f == PA_SUBSCRIPTION_EVENT_SERVER) {
+                    auto e = t & PA_SUBSCRIPTION_EVENT_TYPE_MASK;
+
+                    if (e == PA_SUBSCRIPTION_EVENT_CHANGE) {
+                        pa_context_get_server_info(
+                            c,
+                            [](auto cx, auto info, auto d) {
+                                if (info != nullptr) {
+                                    auto pm = static_cast<PulseManager*>(d);
+
+                                    pm->server_info.server_name =
+                                        info->server_name;
+                                    pm->server_info.server_version =
+                                        info->server_version;
+
+                                    auto sink = info->default_sink_name;
+                                    auto source = info->default_source_name;
+
+                                    pm->server_info.default_sink_name = sink;
+                                    pm->server_info.default_source_name =
+                                        source;
+
+                                    if (sink !=
+                                            std::string("PulseEffects_apps") &&
+                                        pm->use_default_sink) {
+                                        Glib::signal_idle().connect(
+                                            [pm, sink]() {
+                                                pm->new_default_sink.emit(sink);
+                                                return false;
+                                            });
+                                    }
+
+                                    if (source !=
+                                            std::string(
+                                                "PulseEffects_mic.monitor") &&
+                                        pm->use_default_source) {
+                                        Glib::signal_idle().connect([pm,
+                                                                     source]() {
+                                            pm->new_default_source.emit(source);
+                                            return false;
+                                        });
+                                    }
+                                }
+                            },
+                            pm);
                     }
                 }
             },

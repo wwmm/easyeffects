@@ -40,6 +40,9 @@ class PulseManager {
     PulseManager();
     ~PulseManager();
 
+    bool use_default_sink = true;
+    bool use_default_source = true;
+
     myServerInfo server_info;
     mySinkInfo apps_sink_info;
     mySinkInfo mic_sink_info;
@@ -49,10 +52,13 @@ class PulseManager {
     sigc::signal<void, std::shared_ptr<mySinkInfo>> sink_added;
     sigc::signal<void, uint> sink_removed;
 
+    sigc::signal<void, std::string> new_default_sink;
+    sigc::signal<void, std::string> new_default_source;
+
    private:
     std::string log_tag = "pulse_manager.cpp: ";
 
-    bool context_ready;
+    bool context_ready = false;
 
     pa_threaded_mainloop* main_loop;
     pa_mainloop_api* main_loop_api;
