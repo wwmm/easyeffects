@@ -69,10 +69,8 @@ void Application::on_startup() {
         [](auto i) { util::debug("added source: " + i->name); });
     pm->source_removed.connect(
         [](auto i) { util::debug("removed source: " + std::to_string(i)); });
-    pm->sink_added.connect([](auto i) {
-        sleep(2);
-        util::debug("added sink: " + i->name);
-    });
+    pm->sink_added.connect(
+        [](auto i) { util::debug("added sink: " + i->name); });
     pm->sink_removed.connect(
         [](auto i) { util::debug("removed sink: " + std::to_string(i)); });
 

@@ -94,7 +94,7 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
                             },
                             pm);
                     } else if (e == PA_SUBSCRIPTION_EVENT_REMOVE) {
-                        Glib::signal_idle().connect([&]() {
+                        Glib::signal_idle().connect([pm, idx]() {
                             util::debug(pm->log_tag +
                                         "removed si: " + std::to_string(idx));
                             return false;
@@ -126,7 +126,7 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
                             },
                             pm);
                     } else if (e == PA_SUBSCRIPTION_EVENT_REMOVE) {
-                        Glib::signal_idle().connect([&]() {
+                        Glib::signal_idle().connect([pm, idx]() {
                             util::debug(pm->log_tag +
                                         "removed so: " + std::to_string(idx));
                             return false;
@@ -159,7 +159,7 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
 
                                         Glib::signal_idle().connect(
                                             [pm, si = move(si)] {
-                                                pm->source_added.emit(si);
+                                                pm->source_added.emit(move(si));
                                                 return false;
                                             });
                                     }
@@ -168,7 +168,7 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
                             pm);
                     } else if (e == PA_SUBSCRIPTION_EVENT_CHANGE) {
                     } else if (e == PA_SUBSCRIPTION_EVENT_REMOVE) {
-                        Glib::signal_idle().connect([&]() {
+                        Glib::signal_idle().connect([pm, idx]() {
                             pm->source_removed.emit(idx);
                             return false;
                         });
@@ -199,8 +199,7 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
 
                                         Glib::signal_idle().connect(
                                             [pm, si = move(si)] {
-                                                pm->sink_added.emit(si);
-                                                util::debug("wwmm");
+                                                pm->sink_added.emit(move(si));
                                                 return false;
                                             });
                                     }
@@ -209,7 +208,8 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
                             pm);
                     } else if (e == PA_SUBSCRIPTION_EVENT_CHANGE) {
                     } else if (e == PA_SUBSCRIPTION_EVENT_REMOVE) {
-                        Glib::signal_idle().connect([&]() {
+                        Glib::signal_idle().connect([pm, idx]() {
+                            std::cout << idx << std::endl;
                             pm->sink_removed.emit(idx);
                             return false;
                         });
