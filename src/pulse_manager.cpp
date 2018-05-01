@@ -1,5 +1,7 @@
 #include <glibmm.h>
 #include <functional>
+#include <memory>
+#include "parse_app_info.hpp"
 #include "pulse_manager.hpp"
 #include "util.hpp"
 
@@ -7,7 +9,8 @@ PulseManager::PulseManager()
     : context_ready(false),
       main_loop(pa_threaded_mainloop_new()),
       main_loop_api(pa_threaded_mainloop_get_api(main_loop)),
-      context(pa_context_new(main_loop_api, "PulseEffects")) {
+      context(pa_context_new(main_loop_api, "PulseEffects")),
+      pai(std::unique_ptr<ParseAppInfo>(new ParseAppInfo(this))) {
     pa_context_set_state_callback(context, &PulseManager::context_state_cb,
                                   this);
 
@@ -73,7 +76,9 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
                             c, idx,
                             [](auto cx, auto info, auto eol, auto d) {
                                 if (eol == 0 && info != nullptr) {
-                                    // this.pai.new_sink_input(info);
+                                    auto pm = static_cast<PulseManager*>(d);
+
+                                    pm->pai->new_app(info);
                                 }
                             },
                             pm);

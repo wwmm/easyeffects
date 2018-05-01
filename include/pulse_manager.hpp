@@ -4,6 +4,7 @@
 #include <pulse/pulseaudio.h>
 #include <pulse/thread-mainloop.h>
 #include <iostream>
+#include <memory>
 
 struct myServerInfo {
     std::string server_name;
@@ -30,6 +31,8 @@ struct mySourceInfo {
     std::string format;
 };
 
+class ParseAppInfo;
+
 class PulseManager {
    public:
     PulseManager();
@@ -47,6 +50,8 @@ class PulseManager {
     pa_threaded_mainloop* main_loop;
     pa_mainloop_api* main_loop_api;
     pa_context* context;
+
+    std::unique_ptr<ParseAppInfo> pai;
 
     static void context_state_cb(pa_context* ctx, void* data);
 
