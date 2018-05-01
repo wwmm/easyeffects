@@ -87,7 +87,9 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
                             c, idx,
                             [](auto cx, auto info, auto eol, auto d) {
                                 if (eol == 0 && info != nullptr) {
-                                    // this.pai.changed_sink_input(info);
+                                    auto pm = static_cast<PulseManager*>(d);
+
+                                    pm->pai->changed_app(info);
                                 }
                             },
                             pm);
@@ -95,6 +97,38 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
                         Glib::signal_idle().connect([&]() {
                             util::debug(pm->log_tag +
                                         "removed si: " + std::to_string(idx));
+                            return false;
+                        });
+                    }
+                } else if (f == PA_SUBSCRIPTION_EVENT_SOURCE_OUTPUT) {
+                    auto e = t & PA_SUBSCRIPTION_EVENT_TYPE_MASK;
+
+                    if (e == PA_SUBSCRIPTION_EVENT_NEW) {
+                        pa_context_get_source_output_info(
+                            c, idx,
+                            [](auto cx, auto info, auto eol, auto d) {
+                                if (eol == 0 && info != nullptr) {
+                                    auto pm = static_cast<PulseManager*>(d);
+
+                                    pm->pai->new_app(info);
+                                }
+                            },
+                            pm);
+                    } else if (e == PA_SUBSCRIPTION_EVENT_CHANGE) {
+                        pa_context_get_source_output_info(
+                            c, idx,
+                            [](auto cx, auto info, auto eol, auto d) {
+                                if (eol == 0 && info != nullptr) {
+                                    auto pm = static_cast<PulseManager*>(d);
+
+                                    pm->pai->changed_app(info);
+                                }
+                            },
+                            pm);
+                    } else if (e == PA_SUBSCRIPTION_EVENT_REMOVE) {
+                        Glib::signal_idle().connect([&]() {
+                            util::debug(pm->log_tag +
+                                        "removed so: " + std::to_string(idx));
                             return false;
                         });
                     }

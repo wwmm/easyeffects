@@ -3,6 +3,7 @@
 
 #include <glibmm.h>
 #include <pulse/pulseaudio.h>
+#include <algorithm>
 #include <iostream>
 #include <memory>
 #include <vector>
@@ -31,7 +32,7 @@ class ParseAppInfo {
     ParseAppInfo(PulseManager* manager) : pm(manager){};
 
     template <typename T>
-    void new_app(T info) {
+    void new_app(const T& info) {
         auto app_info = parse_app_info(info);
 
         if (typeid(T) == typeid(pa_sink_input_info)) {
@@ -40,42 +41,140 @@ class ParseAppInfo {
     }
 
     template <typename T>
-    void changed_app(T info) {
+    void changed_app(const T& info) {
         auto app_info = parse_app_info(info);
 
         if (typeid(T) == typeid(pa_sink_input_info)) {
         } else if (typeid(T) == typeid(pa_source_output_info)) {
         }
+    }
+
+    void print_info(std::unique_ptr<AppInfo> info) {
+        std::cout << info->index << std::endl;
+        std::cout << info->name << std::endl;
+        std::cout << info->icon_name << std::endl;
+        std::cout << info->channels << std::endl;
+        std::cout << info->volume << std::endl;
+        std::cout << info->rate << std::endl;
+        std::cout << info->resampler << std::endl;
+        std::cout << info->format << std::endl;
     }
 
    private:
     PulseManager* pm;
 
-    std::vector<std::string> blacklist_apps;
-    std::vector<std::string> blacklist_media_name;
-    std::vector<std::string> blacklist_media_role;
+    std::vector<std::string> blacklist_apps = {"PulseEffects",
+                                               "pulseeffects",
+                                               "PulseEffectsWebrtcProbe",
+                                               "gsd-media-keys",
+                                               "GNOME Shell",
+                                               "libcanberra",
+                                               "gnome-pomodoro",
+                                               "PulseAudio Volume Control",
+                                               "Screenshot",
+                                               "speech-dispatcher"};
+    std::vector<std::string> blacklist_media_name = {
+        "pulsesink probe", "bell-window-system", "audio-volume-change",
+        "Peak detect", "screen-capture"};
+    std::vector<std::string> blacklist_media_role = {"event"};
+
+    bool is_connected(const pa_sink_input_info* info) {
+        if (info->sink == pm->apps_sink_info.index) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    bool is_connected(const pa_source_output_info* info) {
+        if (info->source == pm->mic_sink_info.index) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    uint get_latency(const pa_sink_input_info* info) { return info->sink_usec; }
+
+    uint get_latency(const pa_source_output_info* info) {
+        return info->source_usec;
+    }
 
     template <typename T>
-    AppInfo parse_app_info(T info) {
-        auto ai = AppInfo();
+    std::unique_ptr<AppInfo> parse_app_info(const T& info) {
+        std::string app_name, media_name, media_role;
+        auto ai = std::make_unique<AppInfo>();
 
-        auto proplist = info->proplist;
+        auto prop = pa_proplist_gets(info->proplist, "application.name");
 
-        std::string app_name = pa_proplist_gets(proplist, "application.name");
-        std::string media_name = pa_proplist_gets(proplist, "media.name");
-        std::string media_role = pa_proplist_gets(proplist, "media.role");
+        if (prop != nullptr) {
+            app_name = prop;
+        }
 
-        for (auto a : blacklist_apps) {
-            if (a == app_name) {
-                // return;
+        prop = pa_proplist_gets(info->proplist, "media.name");
+
+        if (prop != nullptr) {
+            media_name = prop;
+        }
+
+        prop = pa_proplist_gets(info->proplist, "media.role");
+
+        if (prop != nullptr) {
+            media_role = prop;
+        }
+
+        auto forbidden_app =
+            std::find(std::begin(blacklist_apps), std::end(blacklist_apps),
+                      app_name) != std::end(blacklist_apps);
+
+        auto forbidden_media_name =
+            std::find(std::begin(blacklist_media_name),
+                      std::end(blacklist_media_name),
+                      media_name) != std::end(blacklist_media_name);
+
+        auto forbidden_media_role =
+            std::find(std::begin(blacklist_media_role),
+                      std::end(blacklist_media_role),
+                      media_role) != std::end(blacklist_media_role);
+
+        if (forbidden_app || forbidden_media_name || forbidden_media_role) {
+            return nullptr;
+        } else {
+            auto prop =
+                pa_proplist_gets(info->proplist, "application.icon_name");
+
+            std::string icon_name;
+
+            if (prop != nullptr) {
+                icon_name = prop;
+            } else {
+                icon_name = "audio-x-generic-symbolic";
             }
-        }
 
-        if (typeid(T) == typeid(pa_sink_input_info)) {
-        } else if (typeid(T) == typeid(pa_source_output_info)) {
-        }
+            ai->connected = is_connected(info);
 
-        return ai;
+            // todo: volume section
+
+            if (info->resample_method) {
+                ai->resampler = info->resample_method;
+            } else {
+                ai->resampler = "null";
+            }
+
+            ai->index = info->index;
+            ai->name = app_name;
+            ai->icon_name = icon_name;
+            ai->channels = info->volume.channels;
+            ai->rate = info->sample_spec.rate;
+            ai->mute = info->mute;
+            ai->buffer = info->buffer_usec;
+            ai->latency = get_latency(info);
+            ai->corked = info->corked;
+
+            print_info(move(ai));
+
+            return ai;
+        }
     }
 };
 
