@@ -15,16 +15,16 @@ Application::Application()
     Glib::setenv("PULSE_PROP_application.id", "com.github.wwmm.pulseeffects");
     Glib::setenv("PULSE_PROP_application.icon_name", "pulseeffects");
 
-    this->add_main_option_entry(
+    add_main_option_entry(
         Gio::Application::OPTION_TYPE_BOOL, "quit", 'q',
         _("Quit PulseEffects. Useful when running in service mode."));
 
-    this->add_main_option_entry(Gio::Application::OPTION_TYPE_BOOL, "presets",
-                                'p', _("Show available presets."));
+    add_main_option_entry(Gio::Application::OPTION_TYPE_BOOL, "presets", 'p',
+                          _("Show available presets."));
 
-    this->add_main_option_entry(
-        Gio::Application::OPTION_TYPE_STRING, "load-preset", 'l',
-        _("Load a preset. Example: pulseeffects -l music"));
+    add_main_option_entry(Gio::Application::OPTION_TYPE_STRING, "load-preset",
+                          'l',
+                          _("Load a preset. Example: pulseeffects -l music"));
 }
 
 Application::~Application() {}
@@ -34,7 +34,7 @@ Glib::RefPtr<Application> Application::create() {
 }
 
 void Application::on_activate() {
-    if (this->get_active_window() == nullptr) {
+    if (get_active_window() == nullptr) {
         ApplicationWindow(this);
     }
 }
@@ -44,13 +44,13 @@ int Application::on_command_line(
     auto options = command_line->get_options_dict();
 
     if (options->contains("quit")) {
-        this->quit();
+        quit();
     } else if (options->contains("presets")) {
     } else if (options->contains("load-presets")) {
         // var value = options.lookup_value("load-preset",
         // new VariantType("s"));
     } else {
-        this->activate();
+        activate();
     }
 
     return Gtk::Application::on_command_line(command_line);
@@ -61,15 +61,18 @@ void Application::on_startup() {
 
     running_as_service = false;
 
-    if (this->get_flags() & Gio::ApplicationFlags::APPLICATION_IS_SERVICE) {
+    create_appmenu();
+
+    pm->source_added.connect(
+        [](auto i) { util::debug("added source: " + i->name); });
+
+    if (get_flags() & Gio::ApplicationFlags::APPLICATION_IS_SERVICE) {
         running_as_service = true;
 
         util::debug(log_tag + "Running in Background");
 
-        this->hold();
+        hold();
     }
-
-    create_appmenu();
 }
 
 void Application::create_appmenu() {
@@ -79,7 +82,7 @@ void Application::create_appmenu() {
 
         auto dialog = (Gtk::Dialog*)builder->get_object("about_dialog").get();
 
-        dialog->set_transient_for(*this->get_active_window());
+        dialog->set_transient_for(*get_active_window());
 
         dialog->show();
 

@@ -132,6 +132,47 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
                             return false;
                         });
                     }
+                } else if (f == PA_SUBSCRIPTION_EVENT_SOURCE) {
+                    auto e = t & PA_SUBSCRIPTION_EVENT_TYPE_MASK;
+
+                    if (e == PA_SUBSCRIPTION_EVENT_NEW) {
+                        pa_context_get_source_info_by_index(
+                            c, idx,
+                            [](auto cx, auto info, auto eol, auto d) {
+                                if (eol == 0 && info != nullptr) {
+                                    std::string s1 =
+                                        "PulseEffects_apps.monitor";
+                                    std::string s2 = "PulseEffects_mic.monitor";
+
+                                    if (info->name != s1 && info->name != s2) {
+                                        auto pm = static_cast<PulseManager*>(d);
+
+                                        auto si =
+                                            std::make_shared<mySourceInfo>();
+
+                                        si->name = info->name;
+                                        si->index = info->index;
+                                        si->description = info->description;
+                                        si->rate = info->sample_spec.rate;
+                                        si->format = pa_sample_format_to_string(
+                                            info->sample_spec.format);
+
+                                        Glib::signal_idle().connect(
+                                            [pm, si = move(si)] {
+                                                pm->source_added.emit(si);
+                                                return false;
+                                            });
+                                    }
+                                }
+                            },
+                            pm);
+                    } else if (e == PA_SUBSCRIPTION_EVENT_CHANGE) {
+                    } else if (e == PA_SUBSCRIPTION_EVENT_REMOVE) {
+                        Glib::signal_idle().connect([&]() {
+                            pm->source_removed.emit(idx);
+                            return false;
+                        });
+                    }
                 }
             },
             pm);

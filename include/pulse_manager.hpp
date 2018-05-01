@@ -3,6 +3,7 @@
 
 #include <pulse/pulseaudio.h>
 #include <pulse/thread-mainloop.h>
+#include <sigc++/sigc++.h>
 #include <iostream>
 #include <memory>
 
@@ -25,6 +26,7 @@ struct mySinkInfo {
 };
 
 struct mySourceInfo {
+    std::string name;
     uint index;
     std::string description;
     uint rate;
@@ -41,6 +43,9 @@ class PulseManager {
     myServerInfo server_info;
     mySinkInfo apps_sink_info;
     mySinkInfo mic_sink_info;
+
+    sigc::signal<void, std::shared_ptr<mySourceInfo>> source_added;
+    sigc::signal<void, uint> source_removed;
 
    private:
     std::string log_tag = "pulse_manager.cpp: ";
