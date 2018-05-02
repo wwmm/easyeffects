@@ -639,6 +639,56 @@ void PulseManager::remove_sink_input_from_pulseeffects(uint idx) {
         &data);
 }
 
+void PulseManager::move_source_output_to_pulseeffects(uint idx) {
+    struct Data {
+        uint idx;
+        PulseManager* pm;
+    };
+
+    Data data = {idx, this};
+
+    pa_context_move_source_output_by_index(
+        context, idx, mic_sink_info->monitor_source,
+        [](auto c, auto success, auto data) {
+            auto d = static_cast<Data*>(data);
+
+            if (success) {
+                util::debug(d->pm->log_tag + "source output " +
+                            std::to_string(d->idx) + " moved to PE");
+            } else {
+                util::critical(d->pm->log_tag +
+                               "failed to move source output " +
+                               std::to_string(d->idx) + " to PE");
+            }
+        },
+        &data);
+}
+
+void PulseManager::remove_source_output_from_pulseeffects(uint idx) {
+    struct Data {
+        uint idx;
+        PulseManager* pm;
+    };
+
+    Data data = {idx, this};
+
+    pa_context_move_source_output_by_name(
+        context, idx, server_info.default_source_name.c_str(),
+        [](auto c, auto success, auto data) {
+            auto d = static_cast<Data*>(data);
+
+            if (success) {
+                util::debug(d->pm->log_tag + "source output " +
+                            std::to_string(d->idx) + " removed from PE");
+            } else {
+                util::critical(d->pm->log_tag +
+                               "failed to remove source output " +
+                               std::to_string(d->idx) + " from PE");
+            }
+        },
+        &data);
+}
+
 void PulseManager::unload_module(uint idx) {
     struct Data {
         uint idx;
