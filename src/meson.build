@@ -11,7 +11,7 @@ pulseeffects_cpp = configure_file(input: 'pulseeffects.cpp.in',
 pulseeffects_sources = [
 	pulseeffects_cpp,
 	'application.cpp',
-	'application_window.cpp',
+	'application_ui.cpp',
 	'pulse_manager.cpp',
 	'util.cpp',
 	gresources

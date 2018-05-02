@@ -4,7 +4,7 @@
 #include <cstddef>
 #include <iostream>
 #include "application.hpp"
-#include "application_window.hpp"
+#include "application_ui.hpp"
 #include "pulse_manager.hpp"
 #include "util.hpp"
 
