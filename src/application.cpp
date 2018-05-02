@@ -82,6 +82,8 @@ void Application::on_startup() {
 
         pm->find_sink_inputs();
         pm->find_source_outputs();
+        pm->find_sinks();
+        pm->find_sources();
 
         util::debug(log_tag + "Running in Background");
 
@@ -95,6 +97,8 @@ void Application::on_activate() {
 
         pm->find_sink_inputs();
         pm->find_source_outputs();
+        pm->find_sinks();
+        pm->find_sources();
     }
 }
 

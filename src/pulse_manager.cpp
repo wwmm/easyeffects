@@ -591,6 +591,54 @@ void PulseManager::find_sources() {
         this);
 }
 
+void PulseManager::move_sink_input_to_pulseeffects(uint idx) {
+    struct Data {
+        uint idx;
+        PulseManager* pm;
+    };
+
+    Data data = {idx, this};
+
+    pa_context_move_sink_input_by_index(
+        context, idx, apps_sink_info->index,
+        [](auto c, auto success, auto data) {
+            auto d = static_cast<Data*>(data);
+
+            if (success) {
+                util::debug(d->pm->log_tag + "sink input " +
+                            std::to_string(d->idx) + " moved to PE");
+            } else {
+                util::critical(d->pm->log_tag + "failed to move sink input " +
+                               std::to_string(d->idx) + " to PE");
+            }
+        },
+        &data);
+}
+
+void PulseManager::remove_sink_input_from_pulseeffects(uint idx) {
+    struct Data {
+        uint idx;
+        PulseManager* pm;
+    };
+
+    Data data = {idx, this};
+
+    pa_context_move_sink_input_by_name(
+        context, idx, server_info.default_sink_name.c_str(),
+        [](auto c, auto success, auto data) {
+            auto d = static_cast<Data*>(data);
+
+            if (success) {
+                util::debug(d->pm->log_tag + "sink input " +
+                            std::to_string(d->idx) + " removed from PE");
+            } else {
+                util::critical(d->pm->log_tag + "failed to remove sink input " +
+                               std::to_string(d->idx) + " from PE");
+            }
+        },
+        &data);
+}
+
 void PulseManager::unload_module(uint idx) {
     struct Data {
         uint idx;

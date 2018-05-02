@@ -51,6 +51,8 @@ class PulseManager {
     void find_source_outputs();
     void find_sinks();
     void find_sources();
+    void move_sink_input_to_pulseeffects(uint idx);
+    void remove_sink_input_from_pulseeffects(uint idx);
     void quit();
 
     sigc::signal<void, std::shared_ptr<mySourceInfo>> source_added;
