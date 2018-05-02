@@ -25,6 +25,10 @@ PulseManager::PulseManager()
 }
 
 PulseManager::~PulseManager() {
+    quit();
+}
+
+void PulseManager::quit() {
     unload_sinks();
 
     drain_context();
@@ -522,6 +526,66 @@ void PulseManager::find_source_outputs() {
                 auto pm = static_cast<PulseManager*>(d);
 
                 pm->pai->new_app(info);
+            }
+        },
+        this);
+}
+
+void PulseManager::find_sinks() {
+    pa_context_get_sink_info_list(
+        context,
+        [](auto c, auto info, auto eol, auto d) {
+            if (eol == 0 && info != nullptr) {
+                std::string s1 = "PulseEffects_apps";
+                std::string s2 = "PulseEffects_mic";
+
+                if (info->name != s1 && info->name != s2) {
+                    auto pm = static_cast<PulseManager*>(d);
+
+                    auto si = std::make_shared<mySinkInfo>();
+
+                    si->name = info->name;
+                    si->index = info->index;
+                    si->description = info->description;
+                    si->rate = info->sample_spec.rate;
+                    si->format =
+                        pa_sample_format_to_string(info->sample_spec.format);
+
+                    Glib::signal_idle().connect([pm, si = move(si)] {
+                        pm->sink_added.emit(move(si));
+                        return false;
+                    });
+                }
+            }
+        },
+        this);
+}
+
+void PulseManager::find_sources() {
+    pa_context_get_source_info_list(
+        context,
+        [](auto c, auto info, auto eol, auto d) {
+            if (eol == 0 && info != nullptr) {
+                std::string s1 = "PulseEffects_apps.monitor";
+                std::string s2 = "PulseEffects_mic.monitor";
+
+                if (info->name != s1 && info->name != s2) {
+                    auto pm = static_cast<PulseManager*>(d);
+
+                    auto si = std::make_shared<mySourceInfo>();
+
+                    si->name = info->name;
+                    si->index = info->index;
+                    si->description = info->description;
+                    si->rate = info->sample_spec.rate;
+                    si->format =
+                        pa_sample_format_to_string(info->sample_spec.format);
+
+                    Glib::signal_idle().connect([pm, si = move(si)] {
+                        pm->source_added.emit(move(si));
+                        return false;
+                    });
+                }
             }
         },
         this);

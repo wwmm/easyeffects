@@ -81,6 +81,7 @@ void Application::on_startup() {
         running_as_service = true;
 
         pm->find_sink_inputs();
+        pm->find_source_outputs();
 
         util::debug(log_tag + "Running in Background");
 
@@ -93,6 +94,7 @@ void Application::on_activate() {
         ApplicationWindow(this);
 
         pm->find_sink_inputs();
+        pm->find_source_outputs();
     }
 }
 
