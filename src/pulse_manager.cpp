@@ -1,5 +1,4 @@
 #include <glibmm.h>
-#include <functional>
 #include <memory>
 #include "parse_app_info.hpp"
 #include "pulse_manager.hpp"

@@ -1,3 +1,7 @@
+#include <glibmm.h>
+#include <gtkmm/cssprovider.h>
+#include <gtkmm/icontheme.h>
+#include <gtkmm/settings.h>
 #include <iostream>
 #include "application_window.hpp"
 #include "util.hpp"

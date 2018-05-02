@@ -1,7 +1,13 @@
 #ifndef APPLICATION_WINDOW_HPP
 #define APPLICATION_WINDOW_HPP
 
-#include <gtkmm.h>
+#include <gtkmm/applicationwindow.h>
+#include <gtkmm/builder.h>
+#include <gtkmm/button.h>
+#include <gtkmm/combobox.h>
+#include <gtkmm/drawingarea.h>
+#include <gtkmm/switch.h>
+#include <gtkmm/togglebutton.h>
 #include "application.hpp"
 
 class ApplicationWindow {

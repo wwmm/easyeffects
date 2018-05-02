@@ -4,9 +4,9 @@
 #include <glibmm.h>
 #include <pulse/pulseaudio.h>
 #include <algorithm>
+#include <array>
 #include <iostream>
 #include <memory>
-#include <vector>
 #include "pulse_manager.hpp"
 
 struct AppInfo {
@@ -71,20 +71,20 @@ class ParseAppInfo {
    private:
     PulseManager* pm;
 
-    std::vector<std::string> blacklist_apps = {"PulseEffects",
-                                               "pulseeffects",
-                                               "PulseEffectsWebrtcProbe",
-                                               "gsd-media-keys",
-                                               "GNOME Shell",
-                                               "libcanberra",
-                                               "gnome-pomodoro",
-                                               "PulseAudio Volume Control",
-                                               "Screenshot",
-                                               "speech-dispatcher"};
-    std::vector<std::string> blacklist_media_name = {
+    std::array<std::string, 10> blacklist_apps = {"PulseEffects",
+                                                  "pulseeffects",
+                                                  "PulseEffectsWebrtcProbe",
+                                                  "gsd-media-keys",
+                                                  "GNOME Shell",
+                                                  "libcanberra",
+                                                  "gnome-pomodoro",
+                                                  "PulseAudio Volume Control",
+                                                  "Screenshot",
+                                                  "speech-dispatcher"};
+    std::array<std::string, 5> blacklist_media_name = {
         "pulsesink probe", "bell-window-system", "audio-volume-change",
         "Peak detect", "screen-capture"};
-    std::vector<std::string> blacklist_media_role = {"event"};
+    std::array<std::string, 1> blacklist_media_role = {"event"};
 
     bool is_connected(const pa_sink_input_info* info) {
         if (info->sink == pm->apps_sink_info->index) {
