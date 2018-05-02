@@ -1,7 +1,8 @@
 #ifndef APPLICATION_HPP
 #define APPLICATION_HPP
 
-#include <gtkmm.h>
+#include <giomm/settings.h>
+#include <gtkmm/application.h>
 #include <memory>
 #include "pulse_manager.hpp"
 
@@ -29,6 +30,8 @@ class Application : public Gtk::Application {
     bool running_as_service;
 
     void create_appmenu();
+
+    void create_presets_directory();
 };
 
 #endif

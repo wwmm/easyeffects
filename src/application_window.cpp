@@ -114,15 +114,13 @@ void ApplicationWindow::init_autostart_switch() {
     try {
         auto file = Gio::File::create_for_path(path);
 
-        bool exists = file->query_exists();
-
-        if (exists) {
+        if (file->query_exists()) {
             enable_autostart->set_active(true);
         } else {
             enable_autostart->set_active(false);
         }
     } catch (const Glib::Exception& ex) {
-        util::error(log_tag + ex.what());
+        util::warning(log_tag + ex.what());
     }
 }
 
@@ -154,7 +152,7 @@ bool ApplicationWindow::on_enable_autostart(bool state, std::string tag) {
 
             util::debug(tag + "autostart file created");
         } catch (const Glib::Exception& ex) {
-            util::error(tag + ex.what());
+            util::warning(tag + ex.what());
         }
     } else {
         try {
@@ -162,7 +160,7 @@ bool ApplicationWindow::on_enable_autostart(bool state, std::string tag) {
 
             util::debug(tag + "autostart file removed");
         } catch (const Glib::Exception& ex) {
-            util::error(tag + ex.what());
+            util::warning(tag + ex.what());
         }
     }
 

@@ -1,3 +1,4 @@
+#include <giomm/file.h>
 #include <glibmm/i18n.h>
 #include <cstddef>
 #include <iostream>
@@ -63,6 +64,8 @@ void Application::on_startup() {
 
     create_appmenu();
 
+    create_presets_directory();
+
     // just for tests. It will be removed
 
     pm->source_added.connect(
@@ -119,4 +122,18 @@ void Application::create_appmenu() {
     menu->append("Quit", "app.quit");
 
     set_app_menu(menu);
+}
+
+void Application::create_presets_directory() {
+    auto path = Glib::get_user_config_dir() + "/PulseEffects";
+
+    auto file = Gio::File::create_for_path(path);
+
+    if (file->query_exists()) {
+        util::debug(log_tag + "user preset directory already exists");
+    } else {
+        file->make_directory();
+
+        util::debug(log_tag + "user presets directory created: " + path);
+    }
 }

@@ -279,8 +279,8 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
                 auto pm = static_cast<PulseManager*>(d);
 
                 if (success == 0) {
-                    util::critical(pm->log_tag +
-                                   "context event subscribe failed!");
+                    util::error(pm->log_tag +
+                                "context event subscribe failed!");
                 }
             },
             pm);
@@ -420,7 +420,7 @@ std::shared_ptr<mySinkInfo> PulseManager::get_default_sink_info() {
 
         return info;
     } else {
-        util::critical(log_tag + "could not get default sink info");
+        util::error(log_tag + "could not get default sink info");
 
         return nullptr;
     }
@@ -437,7 +437,7 @@ std::shared_ptr<mySourceInfo> PulseManager::get_default_source_info() {
 
         return info;
     } else {
-        util::critical(log_tag + "could not get default source info");
+        util::error(log_tag + "could not get default source info");
 
         return nullptr;
     }

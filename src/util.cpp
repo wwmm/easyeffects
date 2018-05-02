@@ -14,4 +14,8 @@ void critical(const std::string& s) {
     g_critical(s.c_str(), "%s");
 }
 
+void warning(const std::string& s) {
+    g_warning(s.c_str(), "%s");
+}
+
 }  // namespace util
