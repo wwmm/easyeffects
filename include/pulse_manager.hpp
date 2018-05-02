@@ -51,7 +51,6 @@ class PulseManager {
     sigc::signal<void, uint> source_removed;
     sigc::signal<void, std::shared_ptr<mySinkInfo>> sink_added;
     sigc::signal<void, uint> sink_removed;
-
     sigc::signal<void, std::string> new_default_sink;
     sigc::signal<void, std::string> new_default_source;
 
@@ -69,6 +68,18 @@ class PulseManager {
     static void context_state_cb(pa_context* ctx, void* data);
 
     void get_server_info();
+
+    std::shared_ptr<mySinkInfo> get_sink_info(std::string name);
+
+    std::shared_ptr<mySourceInfo> get_source_info(std::string name);
+
+    std::shared_ptr<mySinkInfo> get_default_sink_info();
+
+    std::shared_ptr<mySourceInfo> get_default_source_info();
+
+    void load_apps_sink();
+
+    void load_mic_sink();
 
     void wait_operation(pa_operation* o);
 };

@@ -21,6 +21,8 @@ PulseManager::PulseManager()
     }
 
     get_server_info();
+    load_apps_sink();
+    load_mic_sink();
 }
 
 PulseManager::~PulseManager() {
@@ -314,6 +316,151 @@ void PulseManager::get_server_info() {
         this);
 
     wait_operation(o);
+}
+
+std::shared_ptr<mySinkInfo> PulseManager::get_sink_info(std::string name) {
+    auto si = std::make_shared<mySinkInfo>();
+
+    struct Data {
+        bool failed;
+        PulseManager* pm;
+        std::shared_ptr<mySinkInfo> si;
+    };
+
+    Data data = {false, this, si};
+
+    auto o = pa_context_get_sink_info_by_name(
+        context, name.c_str(),
+        [](auto c, auto info, auto eol, auto data) {
+            auto d = static_cast<Data*>(data);
+
+            if (eol == -1) {
+                d->failed = true;
+
+                pa_threaded_mainloop_signal(d->pm->main_loop, false);
+            } else if (eol == 0 && info != nullptr) {
+                d->si->name = info->name;
+                d->si->index = info->index;
+                d->si->description = info->description;
+                d->si->owner_module = info->owner_module;
+                d->si->monitor_source = info->monitor_source;
+                d->si->monitor_source_name = info->monitor_source_name;
+                d->si->rate = info->sample_spec.rate;
+                d->si->format =
+                    pa_sample_format_to_string(info->sample_spec.format);
+            } else if (eol == 1) {
+                pa_threaded_mainloop_signal(d->pm->main_loop, false);
+            }
+        },
+        &data);
+
+    wait_operation(o);
+
+    if (!data.failed) {
+        return si;
+    } else {
+        return nullptr;
+    }
+}
+
+std::shared_ptr<mySourceInfo> PulseManager::get_source_info(std::string name) {
+    auto si = std::make_shared<mySourceInfo>();
+
+    struct Data {
+        bool failed;
+        PulseManager* pm;
+        std::shared_ptr<mySourceInfo> si;
+    };
+
+    Data data = {false, this, si};
+
+    auto o = pa_context_get_source_info_by_name(
+        context, name.c_str(),
+        [](auto c, auto info, auto eol, auto data) {
+            auto d = static_cast<Data*>(data);
+
+            if (eol == -1) {
+                d->failed = true;
+
+                pa_threaded_mainloop_signal(d->pm->main_loop, false);
+            } else if (eol == 0 && info != nullptr) {
+                d->si->name = info->name;
+                d->si->index = info->index;
+                d->si->description = info->description;
+                d->si->rate = info->sample_spec.rate;
+                d->si->format =
+                    pa_sample_format_to_string(info->sample_spec.format);
+            } else if (eol == 1) {
+                pa_threaded_mainloop_signal(d->pm->main_loop, false);
+            }
+        },
+        &data);
+
+    wait_operation(o);
+
+    if (!data.failed) {
+        return si;
+    } else {
+        return nullptr;
+    }
+}
+
+std::shared_ptr<mySinkInfo> PulseManager::get_default_sink_info() {
+    auto info = get_sink_info(server_info.default_sink_name);
+
+    if (info != nullptr) {
+        util::debug(log_tag + "default pulseaudio sink sampling rate: " +
+                    std::to_string(info->rate) + " Hz");
+        util::debug(log_tag +
+                    "default pulseaudio sink audio format: " + info->format);
+
+        return info;
+    } else {
+        util::critical(log_tag + "could not get default sink info");
+
+        return nullptr;
+    }
+}
+
+std::shared_ptr<mySourceInfo> PulseManager::get_default_source_info() {
+    auto info = get_source_info(server_info.default_source_name);
+
+    if (info != nullptr) {
+        util::debug(log_tag + "default pulseaudio source sampling rate: " +
+                    std::to_string(info->rate) + " Hz");
+        util::debug(log_tag +
+                    "default pulseaudio source audio format: " + info->format);
+
+        return info;
+    } else {
+        util::critical(log_tag + "could not get default source info");
+
+        return nullptr;
+    }
+}
+
+void PulseManager::load_apps_sink() {
+    util::debug(log_tag + "loading Pulseeffects applications output sink...");
+
+    auto info = get_default_sink_info();
+
+    if (info != nullptr) {
+        std::string name = "PulseEffects_apps";
+        std::string description = "device.description=\"PulseEffects(apps)\"";
+        auto rate = info->rate;
+    }
+}
+
+void PulseManager::load_mic_sink() {
+    util::debug(log_tag + "loading Pulseeffects microphone output sink...");
+
+    auto info = get_default_source_info();
+
+    if (info != nullptr) {
+        std::string name = "PulseEffects_mic";
+        std::string description = "device.description=\"PulseEffects(mic)\"";
+        auto rate = info->rate;
+    }
 }
 
 void PulseManager::wait_operation(pa_operation* o) {
