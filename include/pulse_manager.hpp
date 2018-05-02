@@ -60,6 +60,10 @@ class PulseManager {
     void set_source_output_volume(uint idx, uint8_t channels, uint value);
     void set_source_output_mute(uint idx, bool state);
     void get_sink_input_info(uint idx);
+    pa_stream* create_stream(std::string source_name,
+                             uint app_idx,
+                             std::string app_name,
+                             int monitor_idx);
     void quit();
 
     sigc::signal<void, std::shared_ptr<mySourceInfo>> source_added;

@@ -822,6 +822,48 @@ void PulseManager::get_sink_input_info(uint idx) {
                                    this);
 }
 
+pa_stream* PulseManager::create_stream(std::string source_name,
+                                       uint app_idx,
+                                       std::string app_name,
+                                       int monitor_idx) {
+    auto ss = pa_sample_spec();
+
+    ss.channels = 1;
+    ss.rate = 10;
+    ss.format = PA_SAMPLE_FLOAT32LE;
+
+    auto stream_name = app_name + " - Level Meter Stream";
+
+    auto stream = pa_stream_new(context, stream_name.c_str(), &ss, nullptr);
+
+    if (monitor_idx != -1) {
+        pa_stream_set_monitor_stream(stream, monitor_idx);
+    }
+
+    struct Data {
+        std::string app_name;
+        PulseManager* pm;
+    };
+
+    Data data = {app_name, this};
+
+    pa_stream_set_state_callback(
+        stream,
+        [](auto s, auto data) {
+            auto d = static_cast<Data*>(data);
+
+            auto state = pa_stream_get_state(s);
+
+            if (state == PA_STREAM_UNCONNECTED) {
+                util::debug(d->pm->log_tag + d->app_name +
+                            " volume meter stream is unconnected");
+            }
+        },
+        &data);
+
+    return stream;
+}
+
 void PulseManager::unload_module(uint idx) {
     struct Data {
         uint idx;
