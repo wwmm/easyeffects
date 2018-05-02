@@ -89,6 +89,8 @@ class PulseManager {
 
     void unload_sinks();
 
+    void drain_context();
+
     void wait_operation(pa_operation* o);
 };
 

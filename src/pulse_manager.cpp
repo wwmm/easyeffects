@@ -28,6 +28,8 @@ PulseManager::PulseManager()
 PulseManager::~PulseManager() {
     unload_sinks();
 
+    drain_context();
+
     util::debug(log_tag + "disconnecting Pulseaudio context");
     pa_context_disconnect(context);
 
@@ -533,6 +535,27 @@ void PulseManager::unload_sinks() {
 
     unload_module(apps_sink_info->owner_module);
     unload_module(mic_sink_info->owner_module);
+}
+
+void PulseManager::drain_context() {
+    auto o = pa_context_drain(
+        context,
+        [](auto c, auto d) {
+            auto pm = static_cast<PulseManager*>(d);
+
+            if (pa_context_get_state(c) == PA_CONTEXT_READY) {
+                pa_threaded_mainloop_signal(pm->main_loop, false);
+            }
+        },
+        this);
+
+    if (o != nullptr) {
+        wait_operation(o);
+
+        util::debug(log_tag + "Context was drained");
+    } else {
+        util::debug(log_tag + "Context did not need draining");
+    }
 }
 
 void PulseManager::wait_operation(pa_operation* o) {
