@@ -87,7 +87,7 @@ class ParseAppInfo {
     std::vector<std::string> blacklist_media_role = {"event"};
 
     bool is_connected(const pa_sink_input_info* info) {
-        if (info->sink == pm->apps_sink_info.index) {
+        if (info->sink == pm->apps_sink_info->index) {
             return true;
         } else {
             return false;
@@ -95,7 +95,7 @@ class ParseAppInfo {
     }
 
     bool is_connected(const pa_source_output_info* info) {
-        if (info->source == pm->mic_sink_info.index) {
+        if (info->source == pm->mic_sink_info->index) {
             return true;
         } else {
             return false;

@@ -7,7 +7,7 @@
 #include "util.hpp"
 
 Application::Application()
-    : Gtk::Application("com.github.wwmm.pulseeffects2",
+    : Gtk::Application("com.github.wwmm.pulseeffects",
                        Gio::APPLICATION_HANDLES_COMMAND_LINE),
       settings(Gio::Settings::create("com.github.wwmm.pulseeffects")),
       pm(std::unique_ptr<PulseManager>(new PulseManager())) {

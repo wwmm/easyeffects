@@ -26,6 +26,8 @@ PulseManager::PulseManager()
 }
 
 PulseManager::~PulseManager() {
+    unload_sinks();
+
     util::debug(log_tag + "disconnecting Pulseaudio context");
     pa_context_disconnect(context);
 
@@ -439,6 +441,37 @@ std::shared_ptr<mySourceInfo> PulseManager::get_default_source_info() {
     }
 }
 
+std::shared_ptr<mySinkInfo> PulseManager::load_sink(std::string name,
+                                                    std::string description,
+                                                    uint rate) {
+    auto si = get_sink_info(name);
+
+    if (si == nullptr) {  // sink is not loaded
+        std::string argument = "sink_name=" + name + " " +
+                               "sink_properties=" + description +
+                               "device.class=\"sound\"" + " " + "channels=2" +
+                               " " + "rate=" + std::to_string(rate);
+
+        auto o = pa_context_load_module(
+            context, "module-null-sink", argument.c_str(),
+            [](auto c, auto idx, auto d) {
+                auto pm = static_cast<PulseManager*>(d);
+
+                util::debug(pm->log_tag + "sink loaded");
+
+                pa_threaded_mainloop_signal(pm->main_loop, false);
+            },
+            this);
+
+        wait_operation(o);
+
+        // now that the sink is loaded we get its info
+        si = get_sink_info(name);
+    }
+
+    return si;
+}
+
 void PulseManager::load_apps_sink() {
     util::debug(log_tag + "loading Pulseeffects applications output sink...");
 
@@ -448,6 +481,8 @@ void PulseManager::load_apps_sink() {
         std::string name = "PulseEffects_apps";
         std::string description = "device.description=\"PulseEffects(apps)\"";
         auto rate = info->rate;
+
+        apps_sink_info = load_sink(name, description, rate);
     }
 }
 
@@ -460,7 +495,44 @@ void PulseManager::load_mic_sink() {
         std::string name = "PulseEffects_mic";
         std::string description = "device.description=\"PulseEffects(mic)\"";
         auto rate = info->rate;
+
+        mic_sink_info = load_sink(name, description, rate);
     }
+}
+
+void PulseManager::unload_module(uint idx) {
+    struct Data {
+        uint idx;
+        PulseManager* pm;
+    };
+
+    Data data = {idx, this};
+
+    auto o = pa_context_unload_module(
+        context, idx,
+        [](auto c, auto success, auto data) {
+            auto d = static_cast<Data*>(data);
+
+            if (success) {
+                util::debug(d->pm->log_tag + "module " +
+                            std::to_string(d->idx) + " unloaded");
+            } else {
+                util::debug(d->pm->log_tag + "failed to unload module " +
+                            std::to_string(d->idx));
+            }
+
+            pa_threaded_mainloop_signal(d->pm->main_loop, false);
+        },
+        &data);
+
+    wait_operation(o);
+}
+
+void PulseManager::unload_sinks() {
+    util::debug(log_tag + "unloading PulseEffects sinks...");
+
+    unload_module(apps_sink_info->owner_module);
+    unload_module(mic_sink_info->owner_module);
 }
 
 void PulseManager::wait_operation(pa_operation* o) {

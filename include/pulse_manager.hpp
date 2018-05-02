@@ -44,8 +44,8 @@ class PulseManager {
     bool use_default_source = true;
 
     myServerInfo server_info;
-    mySinkInfo apps_sink_info;
-    mySinkInfo mic_sink_info;
+    std::shared_ptr<mySinkInfo> apps_sink_info;
+    std::shared_ptr<mySinkInfo> mic_sink_info;
 
     sigc::signal<void, std::shared_ptr<mySourceInfo>> source_added;
     sigc::signal<void, uint> source_removed;
@@ -77,9 +77,17 @@ class PulseManager {
 
     std::shared_ptr<mySourceInfo> get_default_source_info();
 
+    std::shared_ptr<mySinkInfo> load_sink(std::string name,
+                                          std::string description,
+                                          uint rate);
+
     void load_apps_sink();
 
     void load_mic_sink();
+
+    void unload_module(uint idx);
+
+    void unload_sinks();
 
     void wait_operation(pa_operation* o);
 };
