@@ -35,12 +35,6 @@ Glib::RefPtr<Application> Application::create() {
     return Glib::RefPtr<Application>(new Application());
 }
 
-void Application::on_activate() {
-    if (get_active_window() == nullptr) {
-        ApplicationWindow(this);
-    }
-}
-
 int Application::on_command_line(
     const Glib::RefPtr<Gio::ApplicationCommandLine>& command_line) {
     auto options = command_line->get_options_dict();
@@ -86,9 +80,19 @@ void Application::on_startup() {
     if (get_flags() & Gio::ApplicationFlags::APPLICATION_IS_SERVICE) {
         running_as_service = true;
 
+        pm->find_sink_inputs();
+
         util::debug(log_tag + "Running in Background");
 
         hold();
+    }
+}
+
+void Application::on_activate() {
+    if (get_active_window() == nullptr) {
+        ApplicationWindow(this);
+
+        pm->find_sink_inputs();
     }
 }
 

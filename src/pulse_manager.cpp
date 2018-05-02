@@ -501,6 +501,32 @@ void PulseManager::load_mic_sink() {
     }
 }
 
+void PulseManager::find_sink_inputs() {
+    pa_context_get_sink_input_info_list(
+        context,
+        [](auto c, auto info, auto eol, auto d) {
+            if (eol == 0 && info != nullptr) {
+                auto pm = static_cast<PulseManager*>(d);
+
+                pm->pai->new_app(info);
+            }
+        },
+        this);
+}
+
+void PulseManager::find_source_outputs() {
+    pa_context_get_source_output_info_list(
+        context,
+        [](auto c, auto info, auto eol, auto d) {
+            if (eol == 0 && info != nullptr) {
+                auto pm = static_cast<PulseManager*>(d);
+
+                pm->pai->new_app(info);
+            }
+        },
+        this);
+}
+
 void PulseManager::unload_module(uint idx) {
     struct Data {
         uint idx;

@@ -47,6 +47,9 @@ class PulseManager {
     std::shared_ptr<mySinkInfo> apps_sink_info;
     std::shared_ptr<mySinkInfo> mic_sink_info;
 
+    void find_sink_inputs();
+    void find_source_outputs();
+
     sigc::signal<void, std::shared_ptr<mySourceInfo>> source_added;
     sigc::signal<void, uint> source_removed;
     sigc::signal<void, std::shared_ptr<mySinkInfo>> sink_added;
