@@ -55,6 +55,11 @@ class PulseManager {
     void remove_sink_input_from_pulseeffects(uint idx);
     void move_source_output_to_pulseeffects(uint idx);
     void remove_source_output_from_pulseeffects(uint idx);
+    void set_sink_input_volume(uint idx, uint8_t channels, uint value);
+    void set_sink_input_mute(uint idx, bool state);
+    void set_source_output_volume(uint idx, uint8_t channels, uint value);
+    void set_source_output_mute(uint idx, bool state);
+    void get_sink_input_info(uint idx);
     void quit();
 
     sigc::signal<void, std::shared_ptr<mySourceInfo>> source_added;

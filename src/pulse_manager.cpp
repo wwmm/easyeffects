@@ -689,6 +689,139 @@ void PulseManager::remove_source_output_from_pulseeffects(uint idx) {
         &data);
 }
 
+void PulseManager::set_sink_input_volume(uint idx,
+                                         uint8_t channels,
+                                         uint value) {
+    pa_volume_t raw_value = PA_VOLUME_NORM * value / 100.0;
+
+    auto cvol = pa_cvolume();
+
+    auto cvol_ptr = pa_cvolume_set(&cvol, channels, raw_value);
+
+    if (cvol_ptr != nullptr) {
+        struct Data {
+            uint idx;
+            PulseManager* pm;
+        };
+
+        Data data = {idx, this};
+
+        pa_context_set_sink_input_volume(
+            context, idx, cvol_ptr,
+            [](auto c, auto success, auto data) {
+                auto d = static_cast<Data*>(data);
+
+                if (success == 1) {
+                    util::debug(d->pm->log_tag +
+                                "changed volume of sink input " +
+                                std::to_string(d->idx));
+                } else {
+                    util::debug(d->pm->log_tag +
+                                "failed to change volume of sink input " +
+                                std::to_string(d->idx));
+                }
+            },
+            &data);
+    }
+}
+
+void PulseManager::set_sink_input_mute(uint idx, bool state) {
+    struct Data {
+        uint idx;
+        PulseManager* pm;
+    };
+
+    Data data = {idx, this};
+
+    pa_context_set_sink_input_mute(
+        context, idx, state,
+        [](auto c, auto success, auto data) {
+            auto d = static_cast<Data*>(data);
+
+            if (success == 1) {
+                util::debug(d->pm->log_tag + "sink input " +
+                            std::to_string(d->idx) + " is muted");
+            } else {
+                util::debug(d->pm->log_tag + "failed to mute sink input " +
+                            std::to_string(d->idx));
+            }
+        },
+        &data);
+}
+
+void PulseManager::set_source_output_volume(uint idx,
+                                            uint8_t channels,
+                                            uint value) {
+    pa_volume_t raw_value = PA_VOLUME_NORM * value / 100.0;
+
+    auto cvol = pa_cvolume();
+
+    auto cvol_ptr = pa_cvolume_set(&cvol, channels, raw_value);
+
+    if (cvol_ptr != nullptr) {
+        struct Data {
+            uint idx;
+            PulseManager* pm;
+        };
+
+        Data data = {idx, this};
+
+        pa_context_set_source_output_volume(
+            context, idx, cvol_ptr,
+            [](auto c, auto success, auto data) {
+                auto d = static_cast<Data*>(data);
+
+                if (success == 1) {
+                    util::debug(d->pm->log_tag +
+                                "changed volume of source output " +
+                                std::to_string(d->idx));
+                } else {
+                    util::debug(d->pm->log_tag +
+                                "failed to change volume of source output " +
+                                std::to_string(d->idx));
+                }
+            },
+            &data);
+    }
+}
+
+void PulseManager::set_source_output_mute(uint idx, bool state) {
+    struct Data {
+        uint idx;
+        PulseManager* pm;
+    };
+
+    Data data = {idx, this};
+
+    pa_context_set_source_output_mute(
+        context, idx, state,
+        [](auto c, auto success, auto data) {
+            auto d = static_cast<Data*>(data);
+
+            if (success == 1) {
+                util::debug(d->pm->log_tag + "source output " +
+                            std::to_string(d->idx) + " is muted");
+            } else {
+                util::debug(d->pm->log_tag + "failed to mute source output " +
+                            std::to_string(d->idx));
+            }
+        },
+        &data);
+}
+
+void PulseManager::get_sink_input_info(uint idx) {
+    pa_context_get_sink_input_info(context, idx,
+                                   [](auto c, auto info, auto eol, auto d) {
+                                       if (eol == 0 && info != nullptr) {
+                                           auto pm =
+                                               static_cast<PulseManager*>(d);
+
+                                           pm->pai->changed_app(info);
+                                       }
+                                   },
+                                   this);
+}
+
 void PulseManager::unload_module(uint idx) {
     struct Data {
         uint idx;
