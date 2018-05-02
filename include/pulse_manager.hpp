@@ -72,6 +72,7 @@ class PulseManager {
     sigc::signal<void, uint> sink_removed;
     sigc::signal<void, std::string> new_default_sink;
     sigc::signal<void, std::string> new_default_source;
+    sigc::signal<void, uint, double> stream_level_changed;
 
    private:
     std::string log_tag = "pulse_manager.cpp: ";
