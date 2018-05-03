@@ -11,9 +11,13 @@
 #include <gtkmm/togglebutton.h>
 #include "application.hpp"
 
-class ApplicationUi {
+class ApplicationUi : public Gtk::ApplicationWindow {
    public:
-    ApplicationUi(Application* app);
+    ApplicationUi(BaseObjectType* cobject,
+                  const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                  Application* application);
+
+    static ApplicationUi* create(Application* app);
 
     Gtk::DrawingArea* spectrum;
 
@@ -26,7 +30,6 @@ class ApplicationUi {
 
     Glib::RefPtr<Gio::Settings> settings;
 
-    Gtk::ApplicationWindow* window;
     Gtk::Switch* enable_autostart;
     Gtk::Switch* enable_all_apps;
     Gtk::Switch* theme_switch;
@@ -59,13 +62,14 @@ class ApplicationUi {
 
     void on_reset_settings();
 
-    bool on_draw(const Cairo::RefPtr<Cairo::Context>& ctx);
+    bool on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx);
 
-    bool on_enter_notify_event(GdkEventCrossing* event);
+    bool on_spectrum_enter_notify_event(GdkEventCrossing* event);
 
-    bool on_leave_notify_event(GdkEventCrossing* event);
+    bool on_spectrum_leave_notify_event(GdkEventCrossing* event);
 
-    bool on_motion_notify_event(GdkEventMotion* event, Gtk::DrawingArea* area);
+    bool on_spectrum_motion_notify_event(GdkEventMotion* event,
+                                         Gtk::DrawingArea* area);
 
     void on_sink_added(std::shared_ptr<mySinkInfo> info, ApplicationUi* aw);
 

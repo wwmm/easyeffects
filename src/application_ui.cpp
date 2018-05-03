@@ -7,10 +7,12 @@
 #include "application_ui.hpp"
 #include "util.hpp"
 
-ApplicationUi::ApplicationUi(Application* application)
-    : app(application),
-      builder(Gtk::Builder::create_from_resource(
-          "/com/github/wwmm/pulseeffects/application.glade")),
+ApplicationUi::ApplicationUi(BaseObjectType* cobject,
+                             const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                             Application* application)
+    : Gtk::ApplicationWindow(cobject),
+      app(application),
+      builder(refBuilder),
       settings(app->settings) {
     apply_css_style("listbox.css");
 
@@ -19,7 +21,6 @@ ApplicationUi::ApplicationUi(Application* application)
 
     // loading glade widgets
 
-    builder->get_widget("ApplicationUi", window);
     builder->get_widget("theme_switch", theme_switch);
     builder->get_widget("enable_autostart", enable_autostart);
     builder->get_widget("enable_all_apps", enable_all_apps);
@@ -84,24 +85,29 @@ ApplicationUi::ApplicationUi(Application* application)
         sigc::mem_fun(*this, &ApplicationUi::on_reset_settings));
 
     spectrum->signal_draw().connect(
-        sigc::mem_fun(*this, &ApplicationUi::on_draw));
+        sigc::mem_fun(*this, &ApplicationUi::on_spectrum_draw));
     spectrum->signal_enter_notify_event().connect(
-        sigc::mem_fun(*this, &ApplicationUi::on_enter_notify_event));
+        sigc::mem_fun(*this, &ApplicationUi::on_spectrum_enter_notify_event));
     spectrum->signal_leave_notify_event().connect(
-        sigc::mem_fun(*this, &ApplicationUi::on_leave_notify_event));
+        sigc::mem_fun(*this, &ApplicationUi::on_spectrum_leave_notify_event));
 
-    spectrum->signal_motion_notify_event().connect(
-        sigc::bind(sigc::mem_fun(*this, &ApplicationUi::on_motion_notify_event),
-                   spectrum));
+    spectrum->signal_motion_notify_event().connect(sigc::bind(
+        sigc::mem_fun(*this, &ApplicationUi::on_spectrum_motion_notify_event),
+        spectrum));
 
     app->pm->sink_added.connect(
         sigc::bind(sigc::mem_fun(*this, &ApplicationUi::on_sink_added), this));
+}
 
-    // show main window
+ApplicationUi* ApplicationUi::create(Application* appi) {
+    auto builder = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/application.glade");
 
-    app->add_window(*window);
+    ApplicationUi* window = nullptr;
 
-    window->show();
+    builder->get_widget_derived("ApplicationUi", window, appi);
+
+    return window;
 }
 
 void ApplicationUi::apply_css_style(std::string css_file_name) {
@@ -189,7 +195,7 @@ void ApplicationUi::on_reset_settings() {
     settings->reset("use-default-source");
 }
 
-bool ApplicationUi::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
+bool ApplicationUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
     ctx->paint();
 
     g_debug("draw event");
@@ -197,20 +203,20 @@ bool ApplicationUi::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
     return false;
 }
 
-bool ApplicationUi::on_enter_notify_event(GdkEventCrossing* event) {
+bool ApplicationUi::on_spectrum_enter_notify_event(GdkEventCrossing* event) {
     g_debug("enter event");
 
     return false;
 }
 
-bool ApplicationUi::on_leave_notify_event(GdkEventCrossing* event) {
+bool ApplicationUi::on_spectrum_leave_notify_event(GdkEventCrossing* event) {
     g_debug("leave event");
 
     return false;
 }
 
-bool ApplicationUi::on_motion_notify_event(GdkEventMotion* event,
-                                           Gtk::DrawingArea* area) {
+bool ApplicationUi::on_spectrum_motion_notify_event(GdkEventMotion* event,
+                                                    Gtk::DrawingArea* area) {
     auto allocation = area->get_allocation();
 
     // auto width = allocation.get_width();
