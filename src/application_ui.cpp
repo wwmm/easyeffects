@@ -254,6 +254,7 @@ void ApplicationUi::on_sink_added(std::shared_ptr<mySinkInfo> info) {
 
         if (app->pm->use_default_sink) {
             if (info->name == app->pm->server_info.default_sink_name) {
+                output_device->set_active(row);
             }
         } else {
         }
