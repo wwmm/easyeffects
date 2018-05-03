@@ -27,7 +27,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     Application* app;
 
     Glib::RefPtr<Gtk::Builder> builder;
-
     Glib::RefPtr<Gio::Settings> settings;
 
     Gtk::Switch* enable_autostart;
@@ -58,7 +57,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
     void init_autostart_switch();
 
-    bool on_enable_autostart(bool state, std::string tag);
+    bool on_enable_autostart(bool state);
 
     void on_reset_settings();
 
@@ -71,7 +70,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     bool on_spectrum_motion_notify_event(GdkEventMotion* event,
                                          Gtk::DrawingArea* area);
 
-    void on_sink_added(std::shared_ptr<mySinkInfo> info, ApplicationUi* aw);
+    void on_sink_added(std::shared_ptr<mySinkInfo> info);
 
     void on_sink_removed(uint idx);
 

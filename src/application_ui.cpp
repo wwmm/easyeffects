@@ -77,9 +77,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     // callbacks connection
 
     enable_autostart->signal_state_set().connect(
-        sigc::bind(sigc::mem_fun(*this, &ApplicationUi::on_enable_autostart),
-                   log_tag),
-        false);
+        sigc::mem_fun(*this, &ApplicationUi::on_enable_autostart), false);
 
     reset_settings->signal_clicked().connect(
         sigc::mem_fun(*this, &ApplicationUi::on_reset_settings));
@@ -96,16 +94,16 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
         spectrum));
 
     app->pm->sink_added.connect(
-        sigc::bind(sigc::mem_fun(*this, &ApplicationUi::on_sink_added), this));
+        sigc::mem_fun(*this, &ApplicationUi::on_sink_added));
 }
 
-ApplicationUi* ApplicationUi::create(Application* appi) {
+ApplicationUi* ApplicationUi::create(Application* app_this) {
     auto builder = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/application.glade");
 
     ApplicationUi* window = nullptr;
 
-    builder->get_widget_derived("ApplicationUi", window, appi);
+    builder->get_widget_derived("ApplicationUi", window, app_this);
 
     return window;
 }
@@ -139,7 +137,7 @@ void ApplicationUi::init_autostart_switch() {
     }
 }
 
-bool ApplicationUi::on_enable_autostart(bool state, std::string tag) {
+bool ApplicationUi::on_enable_autostart(bool state) {
     auto path =
         Glib::get_user_config_dir() + "/autostart/pulseeffects-service.desktop";
 
@@ -165,17 +163,17 @@ bool ApplicationUi::on_enable_autostart(bool state, std::string tag) {
             stream->close();
             stream.reset();
 
-            util::debug(tag + "autostart file created");
+            util::debug(log_tag + "autostart file created");
         } catch (const Glib::Exception& ex) {
-            util::warning(tag + ex.what());
+            util::warning(log_tag + ex.what());
         }
     } else {
         try {
             file->remove();
 
-            util::debug(tag + "autostart file removed");
+            util::debug(log_tag + "autostart file removed");
         } catch (const Glib::Exception& ex) {
-            util::warning(tag + ex.what());
+            util::warning(log_tag + ex.what());
         }
     }
 
@@ -229,40 +227,35 @@ bool ApplicationUi::on_spectrum_motion_notify_event(GdkEventMotion* event,
     return false;
 }
 
-void ApplicationUi::on_sink_added(std::shared_ptr<mySinkInfo> info,
-                                  ApplicationUi* aw) {
-    // bool add_to_list = true;
+void ApplicationUi::on_sink_added(std::shared_ptr<mySinkInfo> info) {
+    bool add_to_list = true;
 
-    // std::cout << log_tag << std::endl;
+    auto children = sink_list->children();
 
-    // auto liststore = aw->output_device->get_model();
+    for (auto c : children) {
+        uint i;
+        std::string name;
 
-    // auto children = liststore->children();
+        c.get_value(0, i);
+        c.get_value(1, name);
 
-    // for (auto c : children) {
-    //     uint i;
-    //     std::string name;
-    //
-    //     c.get_value(0, i);
-    //     c.get_value(1, name);
-    //
-    //     if (info->index == i) {
-    //         add_to_list = false;
-    //
-    //         break;
-    //     }
-    // }
+        if (info->index == i) {
+            add_to_list = false;
 
-    // if (add_to_list) {
-    //     Gtk::TreeModel::Row row = *(liststore->append());
-    //
-    //     row->set_value(0, info->index);
-    //     row->set_value(1, info->name);
-    //
-    //     if (aw->app->pm->use_default_sink) {
-    //         if (info->name == aw->app->pm->server_info.default_sink_name) {
-    //         }
-    //     } else {
-    //     }
-    // }
+            break;
+        }
+    }
+
+    if (add_to_list) {
+        Gtk::TreeModel::Row row = *(sink_list->append());
+
+        row->set_value(0, info->index);
+        row->set_value(1, info->name);
+
+        if (app->pm->use_default_sink) {
+            if (info->name == app->pm->server_info.default_sink_name) {
+            }
+        } else {
+        }
+    }
 }
