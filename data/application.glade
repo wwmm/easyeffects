@@ -57,7 +57,7 @@
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
-  <object class="GtkApplicationWindow" id="ApplicationWindow">
+  <object class="GtkApplicationWindow" id="ApplicationUi">
     <property name="can_focus">False</property>
     <child type="titlebar">
       <object class="GtkHeaderBar" id="headerbar">

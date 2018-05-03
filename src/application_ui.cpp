@@ -19,7 +19,7 @@ ApplicationUi::ApplicationUi(Application* application)
 
     // loading glade widgets
 
-    builder->get_widget("ApplicationWindow", window);
+    builder->get_widget("ApplicationUi", window);
     builder->get_widget("theme_switch", theme_switch);
     builder->get_widget("enable_autostart", enable_autostart);
     builder->get_widget("enable_all_apps", enable_all_apps);
