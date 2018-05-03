@@ -54,12 +54,12 @@ ApplicationWindow::ApplicationWindow(Application* application)
 
     settings->bind("use-default-sink", use_default_sink, "active", flag);
 
-    settings->bind("use-default-sink", input_device, "sensitive",
+    settings->bind("use-default-sink", output_device, "sensitive",
                    flag | flag_invert_boolean);
 
     settings->bind("use-default-source", use_default_source, "active", flag);
 
-    settings->bind("use-default-source", output_device, "sensitive",
+    settings->bind("use-default-source", input_device, "sensitive",
                    flag | flag_invert_boolean);
 
     settings->bind("buffer-out", buffer_out, "value", flag);
@@ -95,8 +95,8 @@ ApplicationWindow::ApplicationWindow(Application* application)
         sigc::mem_fun(*this, &ApplicationWindow::on_motion_notify_event),
         spectrum));
 
-    app->pm->sink_added.connect(
-        sigc::mem_fun(*this, &ApplicationWindow::on_sink_added));
+    app->pm->sink_added.connect(sigc::bind(
+        sigc::mem_fun(*this, &ApplicationWindow::on_sink_added), this));
 
     // show main window
 
@@ -224,20 +224,40 @@ bool ApplicationWindow::on_motion_notify_event(GdkEventMotion* event,
     return false;
 }
 
-void ApplicationWindow::on_sink_added(std::shared_ptr<mySinkInfo> info) {
+void ApplicationWindow::on_sink_added(std::shared_ptr<mySinkInfo> info,
+                                      ApplicationWindow* aw) {
     // bool add_to_list = true;
 
-    // Gtk::TreeModel::Row row = *sink_list->append();
+    // std::cout << log_tag << std::endl;
 
-    // row[Gtk::TreeModelColumn<int>()] = 2;
-    // row[Gtk::TreeModelColumn<Glib::ustring>()] = "wwmm";
+    // auto liststore = aw->output_device->get_model();
 
-    // auto children = sink_list->children();
-    //
+    // auto children = liststore->children();
+
     // for (auto c : children) {
-    //     auto idx = c.get_value(Gtk::TreeModelColumn<int>());
-    //     auto name = c.get_value(Gtk::TreeModelColumn<Glib::ustring>());
+    //     uint i;
+    //     std::string name;
     //
-    //     std::cout << idx << name << std::endl;
+    //     c.get_value(0, i);
+    //     c.get_value(1, name);
+    //
+    //     if (info->index == i) {
+    //         add_to_list = false;
+    //
+    //         break;
+    //     }
+    // }
+
+    // if (add_to_list) {
+    //     Gtk::TreeModel::Row row = *(liststore->append());
+    //
+    //     row->set_value(0, info->index);
+    //     row->set_value(1, info->name);
+    //
+    //     if (aw->app->pm->use_default_sink) {
+    //         if (info->name == aw->app->pm->server_info.default_sink_name) {
+    //         }
+    //     } else {
+    //     }
     // }
 }

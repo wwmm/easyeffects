@@ -67,7 +67,7 @@ class ApplicationWindow {
 
     bool on_motion_notify_event(GdkEventMotion* event, Gtk::DrawingArea* area);
 
-    void on_sink_added(std::shared_ptr<mySinkInfo> info);
+    void on_sink_added(std::shared_ptr<mySinkInfo> info, ApplicationWindow* aw);
 
     void on_sink_removed(uint idx);
 
