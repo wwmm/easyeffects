@@ -7,7 +7,7 @@
 #include "application_ui.hpp"
 #include "util.hpp"
 
-ApplicationWindow::ApplicationWindow(Application* application)
+ApplicationUi::ApplicationUi(Application* application)
     : app(application),
       builder(Gtk::Builder::create_from_resource(
           "/com/github/wwmm/pulseeffects/application.glade")),
@@ -76,27 +76,26 @@ ApplicationWindow::ApplicationWindow(Application* application)
     // callbacks connection
 
     enable_autostart->signal_state_set().connect(
-        sigc::bind(
-            sigc::mem_fun(*this, &ApplicationWindow::on_enable_autostart),
-            log_tag),
+        sigc::bind(sigc::mem_fun(*this, &ApplicationUi::on_enable_autostart),
+                   log_tag),
         false);
 
     reset_settings->signal_clicked().connect(
-        sigc::mem_fun(*this, &ApplicationWindow::on_reset_settings));
+        sigc::mem_fun(*this, &ApplicationUi::on_reset_settings));
 
     spectrum->signal_draw().connect(
-        sigc::mem_fun(*this, &ApplicationWindow::on_draw));
+        sigc::mem_fun(*this, &ApplicationUi::on_draw));
     spectrum->signal_enter_notify_event().connect(
-        sigc::mem_fun(*this, &ApplicationWindow::on_enter_notify_event));
+        sigc::mem_fun(*this, &ApplicationUi::on_enter_notify_event));
     spectrum->signal_leave_notify_event().connect(
-        sigc::mem_fun(*this, &ApplicationWindow::on_leave_notify_event));
+        sigc::mem_fun(*this, &ApplicationUi::on_leave_notify_event));
 
-    spectrum->signal_motion_notify_event().connect(sigc::bind(
-        sigc::mem_fun(*this, &ApplicationWindow::on_motion_notify_event),
-        spectrum));
+    spectrum->signal_motion_notify_event().connect(
+        sigc::bind(sigc::mem_fun(*this, &ApplicationUi::on_motion_notify_event),
+                   spectrum));
 
-    app->pm->sink_added.connect(sigc::bind(
-        sigc::mem_fun(*this, &ApplicationWindow::on_sink_added), this));
+    app->pm->sink_added.connect(
+        sigc::bind(sigc::mem_fun(*this, &ApplicationUi::on_sink_added), this));
 
     // show main window
 
@@ -105,7 +104,7 @@ ApplicationWindow::ApplicationWindow(Application* application)
     window->show();
 }
 
-void ApplicationWindow::apply_css_style(std::string css_file_name) {
+void ApplicationUi::apply_css_style(std::string css_file_name) {
     auto provider = Gtk::CssProvider::create();
 
     provider->load_from_resource("/com/github/wwmm/pulseeffects/" +
@@ -117,7 +116,7 @@ void ApplicationWindow::apply_css_style(std::string css_file_name) {
     Gtk::StyleContext::add_provider_for_screen(screen, provider, priority);
 }
 
-void ApplicationWindow::init_autostart_switch() {
+void ApplicationUi::init_autostart_switch() {
     auto path =
         Glib::get_user_config_dir() + "/autostart/pulseeffects-service.desktop";
 
@@ -134,7 +133,7 @@ void ApplicationWindow::init_autostart_switch() {
     }
 }
 
-bool ApplicationWindow::on_enable_autostart(bool state, std::string tag) {
+bool ApplicationUi::on_enable_autostart(bool state, std::string tag) {
     auto path =
         Glib::get_user_config_dir() + "/autostart/pulseeffects-service.desktop";
 
@@ -177,7 +176,7 @@ bool ApplicationWindow::on_enable_autostart(bool state, std::string tag) {
     return false;
 }
 
-void ApplicationWindow::on_reset_settings() {
+void ApplicationUi::on_reset_settings() {
     settings->reset("buffer-in");
     settings->reset("buffer-out");
     settings->reset("latency-in");
@@ -190,7 +189,7 @@ void ApplicationWindow::on_reset_settings() {
     settings->reset("use-default-source");
 }
 
-bool ApplicationWindow::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
+bool ApplicationUi::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
     ctx->paint();
 
     g_debug("draw event");
@@ -198,20 +197,20 @@ bool ApplicationWindow::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
     return false;
 }
 
-bool ApplicationWindow::on_enter_notify_event(GdkEventCrossing* event) {
+bool ApplicationUi::on_enter_notify_event(GdkEventCrossing* event) {
     g_debug("enter event");
 
     return false;
 }
 
-bool ApplicationWindow::on_leave_notify_event(GdkEventCrossing* event) {
+bool ApplicationUi::on_leave_notify_event(GdkEventCrossing* event) {
     g_debug("leave event");
 
     return false;
 }
 
-bool ApplicationWindow::on_motion_notify_event(GdkEventMotion* event,
-                                               Gtk::DrawingArea* area) {
+bool ApplicationUi::on_motion_notify_event(GdkEventMotion* event,
+                                           Gtk::DrawingArea* area) {
     auto allocation = area->get_allocation();
 
     // auto width = allocation.get_width();
@@ -224,8 +223,8 @@ bool ApplicationWindow::on_motion_notify_event(GdkEventMotion* event,
     return false;
 }
 
-void ApplicationWindow::on_sink_added(std::shared_ptr<mySinkInfo> info,
-                                      ApplicationWindow* aw) {
+void ApplicationUi::on_sink_added(std::shared_ptr<mySinkInfo> info,
+                                  ApplicationUi* aw) {
     // bool add_to_list = true;
 
     // std::cout << log_tag << std::endl;

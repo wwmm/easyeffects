@@ -11,9 +11,9 @@
 #include <gtkmm/togglebutton.h>
 #include "application.hpp"
 
-class ApplicationWindow {
+class ApplicationUi {
    public:
-    ApplicationWindow(Application* app);
+    ApplicationUi(Application* app);
 
     Gtk::DrawingArea* spectrum;
 
@@ -67,7 +67,7 @@ class ApplicationWindow {
 
     bool on_motion_notify_event(GdkEventMotion* event, Gtk::DrawingArea* area);
 
-    void on_sink_added(std::shared_ptr<mySinkInfo> info, ApplicationWindow* aw);
+    void on_sink_added(std::shared_ptr<mySinkInfo> info, ApplicationUi* aw);
 
     void on_sink_removed(uint idx);
 
