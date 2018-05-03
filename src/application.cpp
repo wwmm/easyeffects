@@ -93,7 +93,7 @@ void Application::on_startup() {
 
 void Application::on_activate() {
     if (get_active_window() == nullptr) {
-        ApplicationWindow(this);
+        ApplicationUi(this);
 
         pm->find_sink_inputs();
         pm->find_source_outputs();

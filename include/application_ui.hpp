@@ -18,7 +18,7 @@ class ApplicationUi {
     Gtk::DrawingArea* spectrum;
 
    private:
-    std::string log_tag = "application_window.cpp: ";
+    std::string log_tag = "application_ui.cpp: ";
 
     Application* app;
 
