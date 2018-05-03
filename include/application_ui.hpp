@@ -6,6 +6,7 @@
 #include <gtkmm/button.h>
 #include <gtkmm/combobox.h>
 #include <gtkmm/drawingarea.h>
+#include <gtkmm/liststore.h>
 #include <gtkmm/switch.h>
 #include <gtkmm/togglebutton.h>
 #include "application.hpp"
@@ -40,6 +41,8 @@ class ApplicationWindow {
     Gtk::Switch* show_spectrum;
     Gtk::Adjustment* spectrum_n_points;
     Gtk::Button* reset_settings;
+    Gtk::ListStore* sink_list;
+    Gtk::ListStore* source_list;
 
     double mouse_intensity;
 
@@ -63,6 +66,14 @@ class ApplicationWindow {
     bool on_leave_notify_event(GdkEventCrossing* event);
 
     bool on_motion_notify_event(GdkEventMotion* event, Gtk::DrawingArea* area);
+
+    void on_sink_added(std::shared_ptr<mySinkInfo> info);
+
+    void on_sink_removed(uint idx);
+
+    void on_source_added(std::shared_ptr<mySourceInfo> info);
+
+    void on_source_removed(uint idx);
 };
 
 #endif

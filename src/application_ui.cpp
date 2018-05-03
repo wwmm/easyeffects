@@ -3,6 +3,7 @@
 #include <gtkmm/icontheme.h>
 #include <gtkmm/settings.h>
 #include <iostream>
+#include <memory>
 #include "application_ui.hpp"
 #include "util.hpp"
 
@@ -35,6 +36,8 @@ ApplicationWindow::ApplicationWindow(Application* application)
     get_object("latency_in", latency_in);
     get_object("latency_out", latency_out);
     get_object("spectrum_n_points", spectrum_n_points);
+    get_object("sink_list", sink_list);
+    get_object("source_list", source_list);
 
     // binding glade widgets to gsettings keys
 
@@ -91,6 +94,9 @@ ApplicationWindow::ApplicationWindow(Application* application)
     spectrum->signal_motion_notify_event().connect(sigc::bind(
         sigc::mem_fun(*this, &ApplicationWindow::on_motion_notify_event),
         spectrum));
+
+    app->pm->sink_added.connect(
+        sigc::mem_fun(*this, &ApplicationWindow::on_sink_added));
 
     // show main window
 
@@ -216,4 +222,22 @@ bool ApplicationWindow::on_motion_notify_event(GdkEventMotion* event,
     util::debug("mouse intensity: " + std::to_string(mouse_intensity));
 
     return false;
+}
+
+void ApplicationWindow::on_sink_added(std::shared_ptr<mySinkInfo> info) {
+    // bool add_to_list = true;
+
+    // Gtk::TreeModel::Row row = *sink_list->append();
+
+    // row[Gtk::TreeModelColumn<int>()] = 2;
+    // row[Gtk::TreeModelColumn<Glib::ustring>()] = "wwmm";
+
+    // auto children = sink_list->children();
+    //
+    // for (auto c : children) {
+    //     auto idx = c.get_value(Gtk::TreeModelColumn<int>());
+    //     auto name = c.get_value(Gtk::TreeModelColumn<Glib::ustring>());
+    //
+    //     std::cout << idx << name << std::endl;
+    // }
 }
