@@ -6,8 +6,7 @@
 PulseManager::PulseManager()
     : main_loop(pa_threaded_mainloop_new()),
       main_loop_api(pa_threaded_mainloop_get_api(main_loop)),
-      context(pa_context_new(main_loop_api, "PulseEffects")),
-      pai(std::unique_ptr<ParseAppInfo>(new ParseAppInfo(this))) {
+      context(pa_context_new(main_loop_api, "PulseEffects")) {
     pa_context_set_state_callback(context, &PulseManager::context_state_cb,
                                   this);
 
@@ -84,7 +83,7 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
                             [](auto cx, auto info, auto eol, auto d) {
                                 if (eol == 0 && info != nullptr) {
                                     auto pm = static_cast<PulseManager*>(d);
-                                    pm->pai->new_app(info);
+                                    pm->new_app(info);
                                 }
                             },
                             pm);
@@ -94,7 +93,7 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
                             [](auto cx, auto info, auto eol, auto d) {
                                 if (eol == 0 && info != nullptr) {
                                     auto pm = static_cast<PulseManager*>(d);
-                                    pm->pai->changed_app(info);
+                                    pm->changed_app(info);
                                 }
                             },
                             pm);
@@ -113,7 +112,7 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
                             [](auto cx, auto info, auto eol, auto d) {
                                 if (eol == 0 && info != nullptr) {
                                     auto pm = static_cast<PulseManager*>(d);
-                                    pm->pai->new_app(info);
+                                    pm->new_app(info);
                                 }
                             },
                             pm);
@@ -123,7 +122,7 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
                             [](auto cx, auto info, auto eol, auto d) {
                                 if (eol == 0 && info != nullptr) {
                                     auto pm = static_cast<PulseManager*>(d);
-                                    pm->pai->changed_app(info);
+                                    pm->changed_app(info);
                                 }
                             },
                             pm);
@@ -505,7 +504,7 @@ void PulseManager::find_sink_inputs() {
             if (eol == 0 && info != nullptr) {
                 auto pm = static_cast<PulseManager*>(d);
 
-                pm->pai->new_app(info);
+                pm->new_app(info);
             }
         },
         this);
@@ -518,7 +517,7 @@ void PulseManager::find_source_outputs() {
             if (eol == 0 && info != nullptr) {
                 auto pm = static_cast<PulseManager*>(d);
 
-                pm->pai->new_app(info);
+                pm->new_app(info);
             }
         },
         this);
@@ -809,7 +808,7 @@ void PulseManager::get_sink_input_info(uint idx) {
                                            auto pm =
                                                static_cast<PulseManager*>(d);
 
-                                           pm->pai->changed_app(info);
+                                           pm->changed_app(info);
                                        }
                                    },
                                    this);
@@ -988,4 +987,60 @@ void PulseManager::wait_operation(pa_operation* o) {
     }
 
     pa_threaded_mainloop_unlock(main_loop);
+}
+
+void PulseManager::new_app(const pa_sink_input_info* info) {
+    auto app_info = parse_app_info(info);
+
+    if (app_info != nullptr) {
+        Glib::signal_idle().connect([&, app_info = move(app_info)]() {
+            sink_input_added.emit(app_info);
+            return false;
+        });
+    }
+}
+
+void PulseManager::new_app(const pa_source_output_info* info) {
+    auto app_info = parse_app_info(info);
+
+    if (app_info != nullptr) {
+        Glib::signal_idle().connect([&, app_info = move(app_info)]() {
+            source_output_added.emit(app_info);
+            return false;
+        });
+    }
+}
+
+void PulseManager::changed_app(const pa_sink_input_info* info) {
+    auto app_info = parse_app_info(info);
+
+    if (app_info != nullptr) {
+        Glib::signal_idle().connect([&, app_info = move(app_info)]() {
+            sink_input_changed.emit(app_info);
+            return false;
+        });
+    }
+}
+
+void PulseManager::changed_app(const pa_source_output_info* info) {
+    auto app_info = parse_app_info(info);
+
+    if (app_info != nullptr) {
+        Glib::signal_idle().connect([&, app_info = move(app_info)]() {
+            source_output_changed.emit(app_info);
+            return false;
+        });
+    }
+}
+
+void PulseManager::print_app_info(std::shared_ptr<AppInfo> info) {
+    std::cout << "index: " << info->index << std::endl;
+    std::cout << "name: " << info->name << std::endl;
+    std::cout << "icon name: " << info->icon_name << std::endl;
+    std::cout << "channels: " << info->channels << std::endl;
+    std::cout << "volume: " << info->volume << std::endl;
+    std::cout << "rate: " << info->rate << std::endl;
+    std::cout << "resampler: " << info->resampler << std::endl;
+    std::cout << "format: " << info->format << std::endl;
+    std::cout << "wants to play: " << info->wants_to_play << std::endl;
 }

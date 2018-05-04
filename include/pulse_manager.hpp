@@ -109,7 +109,22 @@ class PulseManager {
     pa_mainloop_api* main_loop_api;
     pa_context* context;
 
-    std::unique_ptr<ParseAppInfo> pai;
+    std::array<std::string, 10> blacklist_apps = {"PulseEffects",
+                                                  "pulseeffects",
+                                                  "PulseEffectsWebrtcProbe",
+                                                  "gsd-media-keys",
+                                                  "GNOME Shell",
+                                                  "libcanberra",
+                                                  "gnome-pomodoro",
+                                                  "PulseAudio Volume Control",
+                                                  "Screenshot",
+                                                  "speech-dispatcher"};
+
+    std::array<std::string, 5> blacklist_media_name = {
+        "pulsesink probe", "bell-window-system", "audio-volume-change",
+        "Peak detect", "screen-capture"};
+
+    std::array<std::string, 1> blacklist_media_role = {"event"};
 
     static void context_state_cb(pa_context* ctx, void* data);
 
@@ -138,96 +153,27 @@ class PulseManager {
     void drain_context();
 
     void wait_operation(pa_operation* o);
-};
 
-class ParseAppInfo {
-   public:
-    ParseAppInfo(PulseManager* manager) : pm(manager){};
+    void new_app(const pa_sink_input_info* info);
 
-    void new_app(const pa_sink_input_info* info) {
-        auto app_info = parse_app_info(info);
+    void new_app(const pa_source_output_info* info);
 
-        if (app_info != nullptr) {
-            Glib::signal_idle().connect([&, app_info = move(app_info)]() {
-                pm->sink_input_added.emit(app_info);
-                return false;
-            });
-        }
-    }
+    void changed_app(const pa_sink_input_info* info);
 
-    void new_app(const pa_source_output_info* info) {
-        auto app_info = parse_app_info(info);
+    void changed_app(const pa_source_output_info* info);
 
-        if (app_info != nullptr) {
-            Glib::signal_idle().connect([&, app_info = move(app_info)]() {
-                pm->source_output_added.emit(app_info);
-                return false;
-            });
-        }
-    }
+    void print_app_info(std::shared_ptr<AppInfo> info);
 
-    void changed_app(const pa_sink_input_info* info) {
-        auto app_info = parse_app_info(info);
-
-        if (app_info != nullptr) {
-            Glib::signal_idle().connect([&, app_info = move(app_info)]() {
-                pm->sink_input_changed.emit(app_info);
-                return false;
-            });
-        }
-    }
-
-    void changed_app(const pa_source_output_info* info) {
-        auto app_info = parse_app_info(info);
-
-        if (app_info != nullptr) {
-            Glib::signal_idle().connect([&, app_info = move(app_info)]() {
-                pm->source_output_changed.emit(app_info);
-                return false;
-            });
-        }
-    }
-
-    void print_info(std::shared_ptr<AppInfo> info) {
-        std::cout << "index: " << info->index << std::endl;
-        std::cout << "name: " << info->name << std::endl;
-        std::cout << "icon name: " << info->icon_name << std::endl;
-        std::cout << "channels: " << info->channels << std::endl;
-        std::cout << "volume: " << info->volume << std::endl;
-        std::cout << "rate: " << info->rate << std::endl;
-        std::cout << "resampler: " << info->resampler << std::endl;
-        std::cout << "format: " << info->format << std::endl;
-        std::cout << "wants to play: " << info->wants_to_play << std::endl;
-    }
-
-   private:
-    PulseManager* pm;
-
-    std::array<std::string, 10> blacklist_apps = {"PulseEffects",
-                                                  "pulseeffects",
-                                                  "PulseEffectsWebrtcProbe",
-                                                  "gsd-media-keys",
-                                                  "GNOME Shell",
-                                                  "libcanberra",
-                                                  "gnome-pomodoro",
-                                                  "PulseAudio Volume Control",
-                                                  "Screenshot",
-                                                  "speech-dispatcher"};
-    std::array<std::string, 5> blacklist_media_name = {
-        "pulsesink probe", "bell-window-system", "audio-volume-change",
-        "Peak detect", "screen-capture"};
-    std::array<std::string, 1> blacklist_media_role = {"event"};
-
-    bool is_connected(const pa_sink_input_info* info) {
-        if (info->sink == pm->apps_sink_info->index) {
+    bool app_is_connected(const pa_sink_input_info* info) {
+        if (info->sink == apps_sink_info->index) {
             return true;
         } else {
             return false;
         }
     }
 
-    bool is_connected(const pa_source_output_info* info) {
-        if (info->source == pm->mic_sink_info->index) {
+    bool app_is_connected(const pa_source_output_info* info) {
+        if (info->source == mic_sink_info->index) {
             return true;
         } else {
             return false;
@@ -291,7 +237,7 @@ class ParseAppInfo {
                 icon_name = "audio-x-generic-symbolic";
             }
 
-            ai->connected = is_connected(info);
+            ai->connected = app_is_connected(info);
 
             // linear volume
             ai->volume = 100 * pa_cvolume_max(&info->volume) / PA_VOLUME_NORM;
@@ -314,8 +260,6 @@ class ParseAppInfo {
             ai->latency = get_latency(info);
             ai->corked = info->corked;
             ai->wants_to_play = (ai->connected && !ai->corked) ? true : false;
-
-            // print_info(ai);
 
             return ai;
         }
