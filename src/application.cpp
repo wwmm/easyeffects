@@ -8,8 +8,7 @@
 
 Application::Application()
     : Gtk::Application("com.github.wwmm.pulseeffects",
-                       Gio::APPLICATION_HANDLES_COMMAND_LINE),
-      settings(Gio::Settings::create("com.github.wwmm.pulseeffects")) {
+                       Gio::APPLICATION_HANDLES_COMMAND_LINE) {
     Glib::set_application_name("PulseEffects");
     Glib::setenv("PULSE_PROP_application.id", "com.github.wwmm.pulseeffects");
     Glib::setenv("PULSE_PROP_application.icon_name", "pulseeffects");
@@ -58,6 +57,8 @@ void Application::on_startup() {
 
     create_presets_directory();
 
+    settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
+
     pm = std::shared_ptr<PulseManager>(new PulseManager());
 
     // just for tests. It will be removed
@@ -68,6 +69,8 @@ void Application::on_startup() {
         [](auto i) { util::debug("new default source: " + i); });
 
     ////////
+
+    sie = std::make_shared<SinkInputEffects>(pm);
 
     if (get_flags() & Gio::ApplicationFlags::APPLICATION_IS_SERVICE) {
         running_as_service = true;

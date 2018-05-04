@@ -10,7 +10,10 @@ class SinkInputEffectsUi : public EffectsBaseUi {
                        const Glib::RefPtr<Gtk::Builder>& refBuilder,
                        std::shared_ptr<SinkInputEffects> sie);
 
-    static SinkInputEffectsUi* create(std::shared_ptr<SinkInputEffects> sie);
+    ~SinkInputEffectsUi();
+
+    static std::unique_ptr<SinkInputEffectsUi> create(
+        std::shared_ptr<SinkInputEffects> sie);
 };
 
 #endif

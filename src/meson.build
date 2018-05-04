@@ -15,6 +15,7 @@ pulseeffects_sources = [
 	'pulse_manager.cpp',
 	'effects_base_ui.cpp',
 	'sink_input_effects_ui.cpp',
+	'sink_input_effects.cpp',
 	'util.cpp',
 	gresources
 ]

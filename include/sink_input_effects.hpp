@@ -6,7 +6,7 @@
 class SinkInputEffects {
    public:
     SinkInputEffects(std::shared_ptr<PulseManager> pulse_manager);
-    ~SinkInputEffects();
+    virtual ~SinkInputEffects();
 
    private:
     std::shared_ptr<PulseManager> pm;

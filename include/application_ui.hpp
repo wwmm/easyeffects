@@ -49,7 +49,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     Gtk::ListStore* source_list;
     Gtk::Stack* stack;
 
-    SinkInputEffectsUi* sie_ui;
+    std::unique_ptr<SinkInputEffectsUi> sie_ui;
 
     double mouse_intensity;
 

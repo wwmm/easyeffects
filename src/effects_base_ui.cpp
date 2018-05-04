@@ -27,3 +27,5 @@ EffectsBaseUi::EffectsBaseUi(BaseObjectType* cobject,
 
     listbox->add(row);
 }
+
+EffectsBaseUi::~EffectsBaseUi() {}

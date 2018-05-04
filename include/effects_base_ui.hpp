@@ -12,6 +12,8 @@ class EffectsBaseUi : public Gtk::Box {
     EffectsBaseUi(BaseObjectType* cobject,
                   const Glib::RefPtr<Gtk::Builder>& refBuilder);
 
+    virtual ~EffectsBaseUi();
+
    private:
     Glib::RefPtr<Gtk::Builder> builder;
 
