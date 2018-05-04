@@ -88,10 +88,14 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
         sigc::mem_fun(*this, &ApplicationUi::on_spectrum_enter_notify_event));
     spectrum->signal_leave_notify_event().connect(
         sigc::mem_fun(*this, &ApplicationUi::on_spectrum_leave_notify_event));
+    spectrum->signal_motion_notify_event().connect(
+        sigc::mem_fun(*this, &ApplicationUi::on_spectrum_motion_notify_event));
 
-    spectrum->signal_motion_notify_event().connect(sigc::bind(
-        sigc::mem_fun(*this, &ApplicationUi::on_spectrum_motion_notify_event),
-        spectrum));
+    use_default_sink->signal_toggled().connect(
+        sigc::mem_fun(*this, &ApplicationUi::on_use_default_sink_toggled));
+
+    use_default_source->signal_toggled().connect(
+        sigc::mem_fun(*this, &ApplicationUi::on_use_default_source_toggled));
 
     app->pm->sink_added.connect(
         sigc::mem_fun(*this, &ApplicationUi::on_sink_added));
@@ -219,9 +223,8 @@ bool ApplicationUi::on_spectrum_leave_notify_event(GdkEventCrossing* event) {
     return false;
 }
 
-bool ApplicationUi::on_spectrum_motion_notify_event(GdkEventMotion* event,
-                                                    Gtk::DrawingArea* area) {
-    auto allocation = area->get_allocation();
+bool ApplicationUi::on_spectrum_motion_notify_event(GdkEventMotion* event) {
+    auto allocation = spectrum->get_allocation();
 
     // auto width = allocation.get_width();
     auto height = allocation.get_height();
@@ -272,7 +275,7 @@ void ApplicationUi::on_sink_added(std::shared_ptr<mySinkInfo> info) {
             }
         }
 
-        util::debug(log_tag + " added sink: " + info->name);
+        util::debug(log_tag + "added sink: " + info->name);
     }
 }
 
@@ -302,7 +305,7 @@ void ApplicationUi::on_sink_removed(uint idx) {
 
     sink_list->erase(remove_iter);
 
-    util::debug(log_tag + " removed sink: " + remove_name);
+    util::debug(log_tag + "removed sink: " + remove_name);
 
     auto iter = output_device->get_active();
 
@@ -350,7 +353,7 @@ void ApplicationUi::on_source_added(std::shared_ptr<mySourceInfo> info) {
             }
         }
 
-        util::debug(log_tag + " added source: " + info->name);
+        util::debug(log_tag + "added source: " + info->name);
     }
 }
 
@@ -380,11 +383,43 @@ void ApplicationUi::on_source_removed(uint idx) {
 
     source_list->erase(remove_iter);
 
-    util::debug(log_tag + " removed source: " + remove_name);
+    util::debug(log_tag + "removed source: " + remove_name);
 
     auto iter = input_device->get_active();
 
     if (!iter) {
         input_device->set_active(default_iter);
+    }
+}
+
+void ApplicationUi::on_use_default_sink_toggled() {
+    if (use_default_sink->get_active()) {
+        auto children = sink_list->children();
+
+        for (auto c : children) {
+            std::string name;
+
+            c.get_value(1, name);
+
+            if (name == app->pm->server_info.default_sink_name) {
+                output_device->set_active(c);
+            }
+        }
+    }
+}
+
+void ApplicationUi::on_use_default_source_toggled() {
+    if (use_default_source->get_active()) {
+        auto children = source_list->children();
+
+        for (auto c : children) {
+            std::string name;
+
+            c.get_value(1, name);
+
+            if (name == app->pm->server_info.default_source_name) {
+                input_device->set_active(c);
+            }
+        }
     }
 }

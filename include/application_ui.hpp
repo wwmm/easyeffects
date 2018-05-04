@@ -67,8 +67,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
     bool on_spectrum_leave_notify_event(GdkEventCrossing* event);
 
-    bool on_spectrum_motion_notify_event(GdkEventMotion* event,
-                                         Gtk::DrawingArea* area);
+    bool on_spectrum_motion_notify_event(GdkEventMotion* event);
 
     void on_sink_added(std::shared_ptr<mySinkInfo> info);
 
@@ -77,6 +76,10 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     void on_source_added(std::shared_ptr<mySourceInfo> info);
 
     void on_source_removed(uint idx);
+
+    void on_use_default_sink_toggled();
+
+    void on_use_default_source_toggled();
 };
 
 #endif
