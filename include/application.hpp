@@ -5,6 +5,7 @@
 #include <gtkmm/application.h>
 #include <memory>
 #include "pulse_manager.hpp"
+#include "sink_input_effects.hpp"
 
 class Application : public Gtk::Application {
    public:
@@ -14,7 +15,7 @@ class Application : public Gtk::Application {
     static Glib::RefPtr<Application> create();
     Glib::RefPtr<Gio::Settings> settings;
 
-    std::unique_ptr<PulseManager> pm;
+    std::shared_ptr<PulseManager> pm;
 
    protected:
     void on_activate() override;
@@ -26,6 +27,8 @@ class Application : public Gtk::Application {
 
    private:
     std::string log_tag = "application.cpp: ";
+
+    std::shared_ptr<SinkInputEffects> sie;
 
     bool running_as_service;
 

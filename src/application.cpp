@@ -12,7 +12,7 @@ Application::Application()
     : Gtk::Application("com.github.wwmm.pulseeffects",
                        Gio::APPLICATION_HANDLES_COMMAND_LINE),
       settings(Gio::Settings::create("com.github.wwmm.pulseeffects")),
-      pm(std::unique_ptr<PulseManager>(new PulseManager())) {
+      pm(std::shared_ptr<PulseManager>(new PulseManager())) {
     Glib::set_application_name("PulseEffects");
     Glib::setenv("PULSE_PROP_application.id", "com.github.wwmm.pulseeffects");
     Glib::setenv("PULSE_PROP_application.icon_name", "pulseeffects");
