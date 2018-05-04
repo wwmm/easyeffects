@@ -31,6 +31,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     builder->get_widget("show_spectrum", show_spectrum);
     builder->get_widget("reset_settings", reset_settings);
     builder->get_widget("spectrum", spectrum);
+    builder->get_widget("stack", stack);
 
     get_object("buffer_in", buffer_in);
     get_object("buffer_out", buffer_out);

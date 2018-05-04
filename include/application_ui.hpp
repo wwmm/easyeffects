@@ -7,6 +7,7 @@
 #include <gtkmm/combobox.h>
 #include <gtkmm/drawingarea.h>
 #include <gtkmm/liststore.h>
+#include <gtkmm/stack.h>
 #include <gtkmm/switch.h>
 #include <gtkmm/togglebutton.h>
 #include "application.hpp"
@@ -45,6 +46,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     Gtk::Button* reset_settings;
     Gtk::ListStore* sink_list;
     Gtk::ListStore* source_list;
+    Gtk::Stack* stack;
 
     double mouse_intensity;
 
