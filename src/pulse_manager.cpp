@@ -1044,3 +1044,19 @@ void PulseManager::print_app_info(std::shared_ptr<AppInfo> info) {
     std::cout << "format: " << info->format << std::endl;
     std::cout << "wants to play: " << info->wants_to_play << std::endl;
 }
+
+bool PulseManager::app_is_connected(const pa_sink_input_info* info) {
+    if (info->sink == apps_sink_info->index) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool PulseManager::app_is_connected(const pa_source_output_info* info) {
+    if (info->source == mic_sink_info->index) {
+        return true;
+    } else {
+        return false;
+    }
+}

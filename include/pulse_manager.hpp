@@ -164,21 +164,9 @@ class PulseManager {
 
     void print_app_info(std::shared_ptr<AppInfo> info);
 
-    bool app_is_connected(const pa_sink_input_info* info) {
-        if (info->sink == apps_sink_info->index) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    bool app_is_connected(const pa_sink_input_info* info);
 
-    bool app_is_connected(const pa_source_output_info* info) {
-        if (info->source == mic_sink_info->index) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    bool app_is_connected(const pa_source_output_info* info);
 
     uint get_latency(const pa_sink_input_info* info) { return info->sink_usec; }
 
