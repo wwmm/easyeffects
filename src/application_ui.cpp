@@ -95,8 +95,12 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
     app->pm->sink_added.connect(
         sigc::mem_fun(*this, &ApplicationUi::on_sink_added));
+    app->pm->sink_removed.connect(
+        sigc::mem_fun(*this, &ApplicationUi::on_sink_removed));
     app->pm->source_added.connect(
         sigc::mem_fun(*this, &ApplicationUi::on_source_added));
+    app->pm->source_removed.connect(
+        sigc::mem_fun(*this, &ApplicationUi::on_source_removed));
 }
 
 ApplicationUi* ApplicationUi::create(Application* app_this) {
@@ -267,6 +271,43 @@ void ApplicationUi::on_sink_added(std::shared_ptr<mySinkInfo> info) {
                 }
             }
         }
+
+        util::debug(log_tag + " added sink: " + info->name);
+    }
+}
+
+void ApplicationUi::on_sink_removed(uint idx) {
+    Gtk::TreeIter default_iter;
+    Gtk::TreeIter remove_iter;
+    std::string remove_name;
+
+    auto children = sink_list->children();
+
+    for (auto c : children) {
+        uint i;
+        std::string name;
+
+        c.get_value(0, i);
+        c.get_value(1, name);
+
+        if (idx == i) {
+            remove_iter = c;
+            remove_name = name;
+        }
+
+        if (name == app->pm->server_info.default_sink_name) {
+            default_iter = c;
+        }
+    }
+
+    sink_list->erase(remove_iter);
+
+    util::debug(log_tag + " removed sink: " + remove_name);
+
+    auto iter = output_device->get_active();
+
+    if (!iter) {
+        output_device->set_active(default_iter);
     }
 }
 
@@ -308,5 +349,42 @@ void ApplicationUi::on_source_added(std::shared_ptr<mySourceInfo> info) {
                 }
             }
         }
+
+        util::debug(log_tag + " added source: " + info->name);
+    }
+}
+
+void ApplicationUi::on_source_removed(uint idx) {
+    Gtk::TreeIter default_iter;
+    Gtk::TreeIter remove_iter;
+    std::string remove_name;
+
+    auto children = source_list->children();
+
+    for (auto c : children) {
+        uint i;
+        std::string name;
+
+        c.get_value(0, i);
+        c.get_value(1, name);
+
+        if (idx == i) {
+            remove_iter = c;
+            remove_name = name;
+        }
+
+        if (name == app->pm->server_info.default_source_name) {
+            default_iter = c;
+        }
+    }
+
+    source_list->erase(remove_iter);
+
+    util::debug(log_tag + " removed source: " + remove_name);
+
+    auto iter = input_device->get_active();
+
+    if (!iter) {
+        input_device->set_active(default_iter);
     }
 }

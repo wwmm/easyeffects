@@ -29,3 +29,5 @@ debian/*
 *.directory
 
 *-build-deps*.deb
+
+.build-tools.cson
