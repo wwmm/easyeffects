@@ -42,4 +42,6 @@ void EffectsBaseUi::on_app_changed(std::shared_ptr<AppInfo> app_info) {
     std::cout << "changed: " << app_info->name << std::endl;
 }
 
-void EffectsBaseUi::on_app_removed(uint idx) {}
+void EffectsBaseUi::on_app_removed(uint idx) {
+    std::cout << "removed: " << idx << std::endl;
+}

@@ -117,6 +117,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
         sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_added));
     app->pm->sink_input_changed.connect(
         sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_changed));
+    app->pm->sink_input_removed.connect(
+        sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_removed));
 
     stack->add(*sie_ui, "sink_inputs");
     stack->child_property_icon_name(*sie_ui).set_value(
