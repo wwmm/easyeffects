@@ -109,7 +109,18 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     app->pm->source_removed.connect(
         sigc::mem_fun(*this, &ApplicationUi::on_source_removed));
 
+    // sink inputs interface
+
     sie_ui = SinkInputEffectsUi::create(app->sie);
+
+    stack->add(*sie_ui, "sink_inputs");
+    stack->child_property_icon_name(*sie_ui).set_value(
+        "audio-speakers-symbolic");
+
+    // Gtk::Button* b = new Gtk::Button("wwmm");
+    //
+    // stack->add(*b);
+    // stack->child_property_icon_name(*b).set_value("audio-speakers-symbolic");
 }
 
 ApplicationUi* ApplicationUi::create(Application* app_this) {

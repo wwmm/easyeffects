@@ -14,11 +14,14 @@ class EffectsBaseUi : public Gtk::Box {
 
     virtual ~EffectsBaseUi();
 
+   protected:
+    Gtk::ListBox* listbox;
+
    private:
     Glib::RefPtr<Gtk::Builder> builder;
 
     Gtk::Stack* stack;
-    Gtk::ListBox* listbox;
+
     Gtk::Box* apps_box;
 };
 
