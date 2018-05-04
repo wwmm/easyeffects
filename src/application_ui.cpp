@@ -93,9 +93,13 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
     use_default_sink->signal_toggled().connect(
         sigc::mem_fun(*this, &ApplicationUi::on_use_default_sink_toggled));
-
     use_default_source->signal_toggled().connect(
         sigc::mem_fun(*this, &ApplicationUi::on_use_default_source_toggled));
+
+    input_device->signal_changed().connect(
+        sigc::mem_fun(*this, &ApplicationUi::on_input_device_changed));
+    output_device->signal_changed().connect(
+        sigc::mem_fun(*this, &ApplicationUi::on_output_device_changed));
 
     app->pm->sink_added.connect(
         sigc::mem_fun(*this, &ApplicationUi::on_sink_added));
@@ -421,5 +425,33 @@ void ApplicationUi::on_use_default_source_toggled() {
                 input_device->set_active(c);
             }
         }
+    }
+}
+
+void ApplicationUi::on_input_device_changed() {
+    Gtk::TreeModel::Row row = *(input_device->get_active());
+
+    if (row) {
+        uint index;
+        std::string name;
+
+        row.get_value(0, index);
+        row.get_value(1, name);
+
+        util::debug(log_tag + "input device changed: " + name);
+    }
+}
+
+void ApplicationUi::on_output_device_changed() {
+    Gtk::TreeModel::Row row = *(output_device->get_active());
+
+    if (row) {
+        uint index;
+        std::string name;
+
+        row.get_value(0, index);
+        row.get_value(1, name);
+
+        util::debug(log_tag + "output device changed: " + name);
     }
 }

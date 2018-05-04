@@ -80,6 +80,10 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     void on_use_default_sink_toggled();
 
     void on_use_default_source_toggled();
+
+    void on_input_device_changed();
+
+    void on_output_device_changed();
 };
 
 #endif
