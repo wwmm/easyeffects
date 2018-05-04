@@ -1,6 +1,5 @@
 #include <glibmm.h>
 #include <memory>
-#include "parse_app_info.hpp"
 #include "pulse_manager.hpp"
 #include "util.hpp"
 
@@ -85,7 +84,6 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
                             [](auto cx, auto info, auto eol, auto d) {
                                 if (eol == 0 && info != nullptr) {
                                     auto pm = static_cast<PulseManager*>(d);
-
                                     pm->pai->new_app(info);
                                 }
                             },
@@ -96,15 +94,13 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
                             [](auto cx, auto info, auto eol, auto d) {
                                 if (eol == 0 && info != nullptr) {
                                     auto pm = static_cast<PulseManager*>(d);
-
                                     pm->pai->changed_app(info);
                                 }
                             },
                             pm);
                     } else if (e == PA_SUBSCRIPTION_EVENT_REMOVE) {
                         Glib::signal_idle().connect([pm, idx]() {
-                            util::debug(pm->log_tag +
-                                        "removed si: " + std::to_string(idx));
+                            pm->sink_input_removed.emit(idx);
                             return false;
                         });
                     }
@@ -117,7 +113,6 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
                             [](auto cx, auto info, auto eol, auto d) {
                                 if (eol == 0 && info != nullptr) {
                                     auto pm = static_cast<PulseManager*>(d);
-
                                     pm->pai->new_app(info);
                                 }
                             },
@@ -128,15 +123,13 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
                             [](auto cx, auto info, auto eol, auto d) {
                                 if (eol == 0 && info != nullptr) {
                                     auto pm = static_cast<PulseManager*>(d);
-
                                     pm->pai->changed_app(info);
                                 }
                             },
                             pm);
                     } else if (e == PA_SUBSCRIPTION_EVENT_REMOVE) {
                         Glib::signal_idle().connect([pm, idx]() {
-                            util::debug(pm->log_tag +
-                                        "removed so: " + std::to_string(idx));
+                            pm->source_output_removed.emit(idx);
                             return false;
                         });
                     }

@@ -113,9 +113,17 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
     sie_ui = SinkInputEffectsUi::create(app->sie);
 
+    app->pm->sink_input_added.connect(
+        sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_added));
+    app->pm->sink_input_changed.connect(
+        sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_changed));
+
     stack->add(*sie_ui, "sink_inputs");
     stack->child_property_icon_name(*sie_ui).set_value(
         "audio-speakers-symbolic");
+
+    // source outputs interface
+    //
 }
 
 ApplicationUi* ApplicationUi::create(Application* app_this) {

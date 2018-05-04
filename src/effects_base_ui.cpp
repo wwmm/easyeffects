@@ -33,3 +33,13 @@ EffectsBaseUi::EffectsBaseUi(BaseObjectType* cobject,
 }
 
 EffectsBaseUi::~EffectsBaseUi() {}
+
+void EffectsBaseUi::on_app_added(std::shared_ptr<AppInfo> app_info) {
+    std::cout << "added: " << app_info->name << std::endl;
+}
+
+void EffectsBaseUi::on_app_changed(std::shared_ptr<AppInfo> app_info) {
+    std::cout << "changed: " << app_info->name << std::endl;
+}
+
+void EffectsBaseUi::on_app_removed(uint idx) {}

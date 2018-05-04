@@ -6,6 +6,7 @@
 #include <gtkmm/listbox.h>
 #include <gtkmm/stack.h>
 #include <memory>
+#include "pulse_manager.hpp"
 
 class EffectsBaseUi : public Gtk::Box {
    public:
@@ -13,6 +14,10 @@ class EffectsBaseUi : public Gtk::Box {
                   const Glib::RefPtr<Gtk::Builder>& refBuilder);
 
     virtual ~EffectsBaseUi();
+
+    void on_app_added(std::shared_ptr<AppInfo> app_info);
+    void on_app_changed(std::shared_ptr<AppInfo> app_info);
+    void on_app_removed(uint idx);
 
    protected:
     Gtk::ListBox* listbox;
