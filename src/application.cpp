@@ -9,8 +9,7 @@
 Application::Application()
     : Gtk::Application("com.github.wwmm.pulseeffects",
                        Gio::APPLICATION_HANDLES_COMMAND_LINE),
-      settings(Gio::Settings::create("com.github.wwmm.pulseeffects")),
-      pm(std::shared_ptr<PulseManager>(new PulseManager())) {
+      settings(Gio::Settings::create("com.github.wwmm.pulseeffects")) {
     Glib::set_application_name("PulseEffects");
     Glib::setenv("PULSE_PROP_application.id", "com.github.wwmm.pulseeffects");
     Glib::setenv("PULSE_PROP_application.icon_name", "pulseeffects");
@@ -58,6 +57,8 @@ void Application::on_startup() {
     create_appmenu();
 
     create_presets_directory();
+
+    pm = std::shared_ptr<PulseManager>(new PulseManager());
 
     // just for tests. It will be removed
 

@@ -108,6 +108,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
         sigc::mem_fun(*this, &ApplicationUi::on_source_added));
     app->pm->source_removed.connect(
         sigc::mem_fun(*this, &ApplicationUi::on_source_removed));
+
+    sie_ui = SinkInputEffectsUi::create(app->sie);
 }
 
 ApplicationUi* ApplicationUi::create(Application* app_this) {

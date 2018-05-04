@@ -5,3 +5,15 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     const Glib::RefPtr<Gtk::Builder>& refBuilder,
     std::shared_ptr<SinkInputEffects> sie)
     : EffectsBaseUi(cobject, refBuilder) {}
+
+SinkInputEffectsUi* SinkInputEffectsUi::create(
+    std::shared_ptr<SinkInputEffects> sie) {
+    auto builder = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/effects_base.glade");
+
+    SinkInputEffectsUi* sie_ui = nullptr;
+
+    builder->get_widget_derived("widgets_box", sie_ui, sie);
+
+    return sie_ui;
+}

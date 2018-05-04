@@ -16,6 +16,7 @@ class Application : public Gtk::Application {
     Glib::RefPtr<Gio::Settings> settings;
 
     std::shared_ptr<PulseManager> pm;
+    std::shared_ptr<SinkInputEffects> sie;
 
    protected:
     void on_activate() override;
@@ -27,8 +28,6 @@ class Application : public Gtk::Application {
 
    private:
     std::string log_tag = "application.cpp: ";
-
-    std::shared_ptr<SinkInputEffects> sie;
 
     bool running_as_service;
 
