@@ -116,11 +116,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     stack->add(*sie_ui, "sink_inputs");
     stack->child_property_icon_name(*sie_ui).set_value(
         "audio-speakers-symbolic");
-
-    // Gtk::Button* b = new Gtk::Button("wwmm");
-    //
-    // stack->add(*b);
-    // stack->child_property_icon_name(*b).set_value("audio-speakers-symbolic");
 }
 
 ApplicationUi* ApplicationUi::create(Application* app_this) {

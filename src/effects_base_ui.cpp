@@ -27,6 +27,9 @@ EffectsBaseUi::EffectsBaseUi(BaseObjectType* cobject,
     row->add(*row_label);
 
     listbox->add(*row);
+
+    listbox->signal_row_activated().connect(
+        [&](auto row) { stack->set_visible_child(row->get_name()); });
 }
 
 EffectsBaseUi::~EffectsBaseUi() {}

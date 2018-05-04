@@ -17,6 +17,18 @@ class EffectsBaseUi : public Gtk::Box {
    protected:
     Gtk::ListBox* listbox;
 
+    template <typename T>
+    void add_to_listbox(T p) {
+        auto row = new Gtk::ListBoxRow();
+
+        row->add(p->ui_listbox_control);
+        row->set_name(p->name);
+        row->set_margin_top(6);
+        row->set_margin_bottom(6);
+
+        listbox->add(*row);
+    }
+
    private:
     Glib::RefPtr<Gtk::Builder> builder;
 
