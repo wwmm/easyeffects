@@ -74,7 +74,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
     init_autostart_switch();
 
-    // callbacks connection
+    // signals connection
 
     enable_autostart->signal_state_set().connect(
         sigc::mem_fun(*this, &ApplicationUi::on_enable_autostart), false);
@@ -95,6 +95,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
     app->pm->sink_added.connect(
         sigc::mem_fun(*this, &ApplicationUi::on_sink_added));
+    app->pm->source_added.connect(
+        sigc::mem_fun(*this, &ApplicationUi::on_source_added));
 }
 
 ApplicationUi* ApplicationUi::create(Application* app_this) {
@@ -257,6 +259,54 @@ void ApplicationUi::on_sink_added(std::shared_ptr<mySinkInfo> info) {
                 output_device->set_active(row);
             }
         } else {
+            auto iter = output_device->get_active();
+
+            if (iter) {
+                if (info->name == app->pm->server_info.default_sink_name) {
+                    output_device->set_active(iter);
+                }
+            }
+        }
+    }
+}
+
+void ApplicationUi::on_source_added(std::shared_ptr<mySourceInfo> info) {
+    bool add_to_list = true;
+
+    auto children = source_list->children();
+
+    for (auto c : children) {
+        uint i;
+        std::string name;
+
+        c.get_value(0, i);
+        c.get_value(1, name);
+
+        if (info->index == i) {
+            add_to_list = false;
+
+            break;
+        }
+    }
+
+    if (add_to_list) {
+        Gtk::TreeModel::Row row = *(source_list->append());
+
+        row->set_value(0, info->index);
+        row->set_value(1, info->name);
+
+        if (app->pm->use_default_sink) {
+            if (info->name == app->pm->server_info.default_source_name) {
+                input_device->set_active(row);
+            }
+        } else {
+            auto iter = input_device->get_active();
+
+            if (iter) {
+                if (info->name == app->pm->server_info.default_source_name) {
+                    input_device->set_active(iter);
+                }
+            }
         }
     }
 }

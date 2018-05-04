@@ -38,7 +38,7 @@
   <object class="GtkListStore" id="sink_list">
     <columns>
       <!-- column-name index -->
-      <column type="gint"/>
+      <column type="guint"/>
       <!-- column-name name -->
       <column type="gchararray"/>
     </columns>
@@ -46,7 +46,7 @@
   <object class="GtkListStore" id="source_list">
     <columns>
       <!-- column-name index -->
-      <column type="gint"/>
+      <column type="guint"/>
       <!-- column-name name -->
       <column type="gchararray"/>
     </columns>
