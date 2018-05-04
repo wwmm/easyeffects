@@ -1,12 +1,10 @@
-#ifndef EFFECTS_BASE_UI_HPP
-#define EFFECTS_BASE_UI_HPP
+#ifndef SINK_INPUT_EFFECTS_UI_HPP
+#define SINK_INPUT_EFFECTS_UI_HPP
 
-#include <gtkmm/box.h>
-#include <gtkmm/builder.h>
-#include <memory>
+#include "effects_base_ui.hpp"
 #include "sink_input_effects.hpp"
 
-class SinkInputEffectsUi : public Gtk::Box {
+class SinkInputEffectsUi : public EffectsBaseUi {
    public:
     SinkInputEffectsUi(BaseObjectType* cobject,
                        const Glib::RefPtr<Gtk::Builder>& refBuilder,

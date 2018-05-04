@@ -2,8 +2,6 @@
 #include <gtkmm/cssprovider.h>
 #include <gtkmm/icontheme.h>
 #include <gtkmm/settings.h>
-#include <iostream>
-#include <memory>
 #include "application_ui.hpp"
 #include "util.hpp"
 
