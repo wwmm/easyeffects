@@ -591,7 +591,7 @@ void PulseManager::move_sink_input_to_pulseeffects(uint idx) {
 
     Data data = {idx, this};
 
-    pa_context_move_sink_input_by_index(
+    auto o = pa_context_move_sink_input_by_index(
         context, idx, apps_sink_info->index,
         [](auto c, auto success, auto data) {
             auto d = static_cast<Data*>(data);
@@ -603,8 +603,12 @@ void PulseManager::move_sink_input_to_pulseeffects(uint idx) {
                 util::critical(d->pm->log_tag + "failed to move sink input " +
                                std::to_string(d->idx) + " to PE");
             }
+
+            pa_threaded_mainloop_signal(d->pm->main_loop, false);
         },
         &data);
+
+    wait_operation(o);
 }
 
 void PulseManager::remove_sink_input_from_pulseeffects(uint idx) {
@@ -615,7 +619,7 @@ void PulseManager::remove_sink_input_from_pulseeffects(uint idx) {
 
     Data data = {idx, this};
 
-    pa_context_move_sink_input_by_name(
+    auto o = pa_context_move_sink_input_by_name(
         context, idx, server_info.default_sink_name.c_str(),
         [](auto c, auto success, auto data) {
             auto d = static_cast<Data*>(data);
@@ -627,8 +631,12 @@ void PulseManager::remove_sink_input_from_pulseeffects(uint idx) {
                 util::critical(d->pm->log_tag + "failed to remove sink input " +
                                std::to_string(d->idx) + " from PE");
             }
+
+            pa_threaded_mainloop_signal(d->pm->main_loop, false);
         },
         &data);
+
+    wait_operation(o);
 }
 
 void PulseManager::move_source_output_to_pulseeffects(uint idx) {
@@ -639,7 +647,7 @@ void PulseManager::move_source_output_to_pulseeffects(uint idx) {
 
     Data data = {idx, this};
 
-    pa_context_move_source_output_by_index(
+    auto o = pa_context_move_source_output_by_index(
         context, idx, mic_sink_info->monitor_source,
         [](auto c, auto success, auto data) {
             auto d = static_cast<Data*>(data);
@@ -652,8 +660,12 @@ void PulseManager::move_source_output_to_pulseeffects(uint idx) {
                                "failed to move source output " +
                                std::to_string(d->idx) + " to PE");
             }
+
+            pa_threaded_mainloop_signal(d->pm->main_loop, false);
         },
         &data);
+
+    wait_operation(o);
 }
 
 void PulseManager::remove_source_output_from_pulseeffects(uint idx) {
@@ -664,7 +676,7 @@ void PulseManager::remove_source_output_from_pulseeffects(uint idx) {
 
     Data data = {idx, this};
 
-    pa_context_move_source_output_by_name(
+    auto o = pa_context_move_source_output_by_name(
         context, idx, server_info.default_source_name.c_str(),
         [](auto c, auto success, auto data) {
             auto d = static_cast<Data*>(data);
@@ -677,8 +689,12 @@ void PulseManager::remove_source_output_from_pulseeffects(uint idx) {
                                "failed to remove source output " +
                                std::to_string(d->idx) + " from PE");
             }
+
+            pa_threaded_mainloop_signal(d->pm->main_loop, false);
         },
         &data);
+
+    wait_operation(o);
 }
 
 void PulseManager::set_sink_input_volume(uint idx,
@@ -698,7 +714,7 @@ void PulseManager::set_sink_input_volume(uint idx,
 
         Data data = {idx, this};
 
-        pa_context_set_sink_input_volume(
+        auto o = pa_context_set_sink_input_volume(
             context, idx, cvol_ptr,
             [](auto c, auto success, auto data) {
                 auto d = static_cast<Data*>(data);
@@ -712,8 +728,12 @@ void PulseManager::set_sink_input_volume(uint idx,
                                 "failed to change volume of sink input " +
                                 std::to_string(d->idx));
                 }
+
+                pa_threaded_mainloop_signal(d->pm->main_loop, false);
             },
             &data);
+
+        wait_operation(o);
     }
 }
 
@@ -762,7 +782,7 @@ void PulseManager::set_source_output_volume(uint idx,
 
         Data data = {idx, this};
 
-        pa_context_set_source_output_volume(
+        auto o = pa_context_set_source_output_volume(
             context, idx, cvol_ptr,
             [](auto c, auto success, auto data) {
                 auto d = static_cast<Data*>(data);
@@ -776,8 +796,12 @@ void PulseManager::set_source_output_volume(uint idx,
                                 "failed to change volume of source output " +
                                 std::to_string(d->idx));
                 }
+
+                pa_threaded_mainloop_signal(d->pm->main_loop, false);
             },
             &data);
+
+        wait_operation(o);
     }
 }
 
@@ -789,7 +813,7 @@ void PulseManager::set_source_output_mute(uint idx, bool state) {
 
     Data data = {idx, this};
 
-    pa_context_set_source_output_mute(
+    auto o = pa_context_set_source_output_mute(
         context, idx, state,
         [](auto c, auto success, auto data) {
             auto d = static_cast<Data*>(data);
@@ -801,8 +825,12 @@ void PulseManager::set_source_output_mute(uint idx, bool state) {
                 util::debug(d->pm->log_tag + "failed to mute source output " +
                             std::to_string(d->idx));
             }
+
+            pa_threaded_mainloop_signal(d->pm->main_loop, false);
         },
         &data);
+
+    wait_operation(o);
 }
 
 void PulseManager::get_sink_input_info(uint idx) {

@@ -25,12 +25,12 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
     builder->get_widget("state", state);
     builder->get_widget("level", level);
 
-    // enable->signal_state_set().connect(
-    //     sigc::mem_fun(*this, &AppInfoUi::on_enable_app), false);
-    //
-    // volume->signal_value_changed().connect(
-    //     sigc::mem_fun(*this, &AppInfoUi::on_volume_changed));
-    //
+    enable->signal_state_set().connect(
+        sigc::mem_fun(*this, &AppInfoUi::on_enable_app), false);
+
+    volume->signal_value_changed().connect(
+        sigc::mem_fun(*this, &AppInfoUi::on_volume_changed));
+
     mute->signal_toggled().connect(sigc::mem_fun(*this, &AppInfoUi::on_mute));
 }
 
@@ -91,6 +91,6 @@ void AppInfoUi::on_mute() {
     if (app_info->app_type == "sink_input") {
         pm->set_sink_input_mute(app_info->index, state);
     } else {
-        //     pm->set_source_output_mute(app_info->index, state);
+        pm->set_source_output_mute(app_info->index, state);
     }
 }
