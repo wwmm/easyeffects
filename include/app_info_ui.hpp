@@ -29,6 +29,7 @@ class AppInfoUi : public Gtk::Grid {
     Gtk::Label* app_name;
     Gtk::Scale* volume;
     Gtk::ToggleButton* mute;
+    Gtk::Image* mute_icon;
     Gtk::Label* format;
     Gtk::Label* rate;
     Gtk::Label* channels;
@@ -38,17 +39,17 @@ class AppInfoUi : public Gtk::Grid {
     Gtk::Label* state;
     Gtk::LevelBar* level;
 
-    bool on_enable_app(bool state);
-
-    void on_volume_changed();
-
-    void on_mute();
-
    private:
     Glib::RefPtr<Gtk::Builder> builder;
 
     std::shared_ptr<AppInfo> app_info;
     std::shared_ptr<PulseManager> pm;
+
+    bool on_enable_app(bool state);
+
+    void on_volume_changed();
+
+    void on_mute();
 };
 
 #endif

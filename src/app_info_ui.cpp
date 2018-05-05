@@ -15,6 +15,7 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
     builder->get_widget("app_name", app_name);
     builder->get_widget("volume", volume);
     builder->get_widget("mute", mute);
+    builder->get_widget("mute_icon", mute_icon);
     builder->get_widget("format", format);
     builder->get_widget("rate", rate);
     builder->get_widget("channels", channels);
@@ -30,8 +31,7 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
     // volume->signal_value_changed().connect(
     //     sigc::mem_fun(*this, &AppInfoUi::on_volume_changed));
     //
-    // mute->signal_toggled().connect(sigc::mem_fun(*this,
-    // &AppInfoUi::on_mute));
+    mute->signal_toggled().connect(sigc::mem_fun(*this, &AppInfoUi::on_mute));
 }
 
 AppInfoUi::~AppInfoUi() {}
@@ -81,16 +81,16 @@ void AppInfoUi::on_mute() {
     bool state = mute->get_active();
 
     if (state) {
-        app_icon->set_from_icon_name("audio-volume-muted-symbolic",
-                                     Gtk::ICON_SIZE_BUTTON);
+        mute_icon->set_from_icon_name("audio-volume-muted-symbolic",
+                                      Gtk::ICON_SIZE_BUTTON);
     } else {
-        app_icon->set_from_icon_name("audio-volume-high-symbolic",
-                                     Gtk::ICON_SIZE_BUTTON);
+        mute_icon->set_from_icon_name("audio-volume-high-symbolic",
+                                      Gtk::ICON_SIZE_BUTTON);
     }
 
     if (app_info->app_type == "sink_input") {
         pm->set_sink_input_mute(app_info->index, state);
     } else {
-        pm->set_source_output_mute(app_info->index, state);
+        //     pm->set_source_output_mute(app_info->index, state);
     }
 }

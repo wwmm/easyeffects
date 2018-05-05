@@ -725,7 +725,7 @@ void PulseManager::set_sink_input_mute(uint idx, bool state) {
 
     Data data = {idx, this};
 
-    pa_context_set_sink_input_mute(
+    auto o = pa_context_set_sink_input_mute(
         context, idx, state,
         [](auto c, auto success, auto data) {
             auto d = static_cast<Data*>(data);
@@ -737,8 +737,12 @@ void PulseManager::set_sink_input_mute(uint idx, bool state) {
                 util::debug(d->pm->log_tag + "failed to mute sink input " +
                             std::to_string(d->idx));
             }
+
+            pa_threaded_mainloop_signal(d->pm->main_loop, false);
         },
         &data);
+
+    wait_operation(o);
 }
 
 void PulseManager::set_source_output_volume(uint idx,
