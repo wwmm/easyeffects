@@ -41,6 +41,7 @@ void EffectsBaseUi::on_app_added(std::shared_ptr<AppInfo> app_info) {
     auto appui = AppInfoUi::create(app_info, pm);
 
     apps_box->add(*appui);
+
     apps_list.push_back(move(appui));
 }
 

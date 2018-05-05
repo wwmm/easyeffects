@@ -950,9 +950,17 @@ pa_stream* PulseManager::create_stream(std::string source_name,
     auto flags =
         (pa_stream_flags_t)(PA_STREAM_DONT_MOVE | PA_STREAM_PEAK_DETECT);
 
-    pa_stream_connect_record(stream, source_name.c_str(), nullptr, flags);
+    if (pa_stream_connect_record(stream, source_name.c_str(), nullptr, flags) <
+        0) {
+        util::warning(log_tag + "failed to create level monitor stream " +
+                      "for " + app_name);
 
-    return stream;
+        pa_stream_unref(stream);
+
+        return nullptr;
+    } else {
+        return stream;
+    }
 }
 
 void PulseManager::unload_module(uint idx) {

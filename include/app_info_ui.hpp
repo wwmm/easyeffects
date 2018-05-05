@@ -44,6 +44,8 @@ class AppInfoUi : public Gtk::Grid {
     void update(std::shared_ptr<AppInfo> info);
 
    private:
+    std::string log_tag = "app_info_ui.cpp: ";
+
     Glib::RefPtr<Gtk::Builder> builder;
 
     std::shared_ptr<PulseManager> pm;
