@@ -53,13 +53,11 @@ void EffectsBaseUi::on_app_removed(uint idx) {
         auto n = it - apps_list.begin();
 
         if (apps_list[n]->app_info->index == idx) {
-            std::cout << "removed: " << idx << std::endl;
-
             auto appui = move(apps_list[n]);
 
-            apps_box->remove(*appui);
-
             apps_list.erase(it);
+
+            apps_box->remove(*appui);
 
             break;
         }

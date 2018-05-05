@@ -126,9 +126,13 @@ void AppInfoUi::on_mute() {
     if (state) {
         mute_icon->set_from_icon_name("audio-volume-muted-symbolic",
                                       Gtk::ICON_SIZE_BUTTON);
+
+        volume->set_sensitive(false);
     } else {
         mute_icon->set_from_icon_name("audio-volume-high-symbolic",
                                       Gtk::ICON_SIZE_BUTTON);
+
+        volume->set_sensitive(true);
     }
 
     if (app_info->app_type == "sink_input") {
