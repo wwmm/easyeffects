@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.0 -->
-<interface domain="PulseEffects">
+<!-- Generated with glade 3.22.1 -->
+<interface domain="pulseeffects">
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkImage" id="mute_icon">
     <property name="visible">True</property>
@@ -12,7 +12,7 @@
     <property name="step_increment">1</property>
     <property name="page_increment">5</property>
   </object>
-  <object class="GtkGrid" id="app_box">
+  <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="margin_left">6</property>
@@ -296,7 +296,7 @@
         <property name="can_focus">False</property>
         <property name="hexpand">True</property>
         <child>
-          <object class="GtkScale" id="volume_scale">
+          <object class="GtkScale" id="volume">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="valign">center</property>

@@ -6,6 +6,7 @@
 #include <gtkmm/listbox.h>
 #include <gtkmm/stack.h>
 #include <memory>
+#include <vector>
 #include "pulse_manager.hpp"
 
 class EffectsBaseUi : public Gtk::Box {
@@ -34,12 +35,20 @@ class EffectsBaseUi : public Gtk::Box {
         listbox->add(*row);
     }
 
+    virtual void on_enable_app(bool state) {}
+
+    virtual void on_volume_changed() {}
+
+    virtual void on_mute() {}
+
    private:
     Glib::RefPtr<Gtk::Builder> builder;
 
     Gtk::Stack* stack;
 
     Gtk::Box* apps_box;
+
+    std::vector<std::shared_ptr<AppInfo>> apps_list;
 };
 
 #endif

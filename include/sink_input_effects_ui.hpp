@@ -14,6 +14,13 @@ class SinkInputEffectsUi : public EffectsBaseUi {
 
     static std::unique_ptr<SinkInputEffectsUi> create(
         std::shared_ptr<SinkInputEffects> sie);
+
+   private:
+    void on_enable_app(bool state) override;
+
+    void on_volume_changed() override;
+
+    void on_mute() override;
 };
 
 #endif
