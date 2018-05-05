@@ -50,9 +50,13 @@ class AppInfoUi : public Gtk::Grid {
 
     std::shared_ptr<PulseManager> pm;
 
-    std::string latency_to_str(uint value);
+    pa_stream* stream = nullptr;
 
     void init_widgets();
+
+    std::string latency_to_str(uint value);
+
+    void create_stream();
 
     bool on_enable_app(bool state);
 

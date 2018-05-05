@@ -848,8 +848,7 @@ void PulseManager::get_sink_input_info(uint idx) {
 
 pa_stream* PulseManager::create_stream(std::string source_name,
                                        uint app_idx,
-                                       std::string app_name,
-                                       int monitor_idx) {
+                                       std::string app_name) {
     auto ss = pa_sample_spec();
 
     ss.channels = 1;
@@ -860,107 +859,7 @@ pa_stream* PulseManager::create_stream(std::string source_name,
 
     auto stream = pa_stream_new(context, stream_name.c_str(), &ss, nullptr);
 
-    if (monitor_idx != -1) {
-        pa_stream_set_monitor_stream(stream, monitor_idx);
-    }
-
-    struct Data {
-        std::string app_name;
-        uint app_idx;
-        PulseManager* pm;
-    };
-
-    Data data = {app_name, app_idx, this};
-
-    pa_stream_set_state_callback(
-        stream,
-        [](auto s, auto data) {
-            auto d = static_cast<Data*>(data);
-
-            auto state = pa_stream_get_state(s);
-
-            if (state == PA_STREAM_UNCONNECTED) {
-                util::debug(d->pm->log_tag + d->app_name +
-                            " volume meter stream is unconnected");
-            } else if (state == PA_STREAM_CREATING) {
-                util::debug(d->pm->log_tag + d->app_name +
-                            " volume meter stream is being created");
-            } else if (state == PA_STREAM_READY) {
-                util::debug(d->pm->log_tag + d->app_name +
-                            " volume meter stream is ready");
-            } else if (state == PA_STREAM_FAILED) {
-                util::debug(d->pm->log_tag + d->app_name + " volume meter" +
-                            " stream has failed. Did you disable this app?");
-
-                pa_stream_disconnect(s);
-            } else if (state == PA_STREAM_TERMINATED) {
-                util::debug(d->pm->log_tag + d->app_name +
-                            " volume meter stream was terminated");
-
-                pa_stream_unref(s);
-            }
-        },
-        &data);
-
-    pa_stream_set_read_callback(
-        stream,
-        [](auto s, auto nbytes, auto data) {
-            auto d = static_cast<Data*>(data);
-            const void* sdata;
-            double v;
-
-            if (pa_stream_peek(s, &sdata, &nbytes) < 0) {
-                util::warning(d->pm->log_tag + "Failed to read data from " +
-                              d->app_name + " volume meter stream");
-                return;
-            }
-
-            if (!sdata) {
-                // taken from pavucontrol sources:
-                /* NULL data means either a hole or empty buffer.
-                 * Only drop the stream when there is a hole (length > 0) */
-                if (nbytes)
-                    pa_stream_drop(s);
-                return;
-            }
-
-            if (nbytes > 0) {
-                v = ((const float*)data)[nbytes / sizeof(float) - 1];
-
-                pa_stream_drop(s);
-
-                if (v < 0) {
-                    v = 0;
-                }
-                if (v > 1) {
-                    v = 1;
-                }
-
-                auto pm = d->pm;
-                auto app_idx = d->app_idx;
-
-                Glib::signal_idle().connect([pm, app_idx, v]() {
-                    pm->stream_level_changed.emit(app_idx, v);
-                    return false;
-                });
-            }
-        },
-        &data);
-
-    auto flags =
-        (pa_stream_flags_t)(PA_STREAM_DONT_MOVE | PA_STREAM_PEAK_DETECT);
-
-    if (pa_stream_connect_record(stream, source_name.c_str(), nullptr, flags) <
-        0) {
-        util::warning(log_tag + "failed to create level monitor stream " +
-                      "for " + app_name);
-
-        pa_stream_unref(stream);
-
-        return nullptr;
-    } else {
-        return stream;
-    }
+    return stream;
 }
 
 void PulseManager::unload_module(uint idx) {

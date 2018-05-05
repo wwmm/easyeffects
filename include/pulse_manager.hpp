@@ -83,8 +83,7 @@ class PulseManager {
     void get_sink_input_info(uint idx);
     pa_stream* create_stream(std::string source_name,
                              uint app_idx,
-                             std::string app_name,
-                             int monitor_idx);
+                             std::string app_name);
     void quit();
 
     sigc::signal<void, std::shared_ptr<mySourceInfo>> source_added;
@@ -99,7 +98,6 @@ class PulseManager {
     sigc::signal<void, std::shared_ptr<AppInfo>> source_output_added;
     sigc::signal<void, std::shared_ptr<AppInfo>> source_output_changed;
     sigc::signal<void, uint> source_output_removed;
-    sigc::signal<void, uint, double> stream_level_changed;
 
    private:
     std::string log_tag = "pulse_manager.cpp: ";

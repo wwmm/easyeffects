@@ -36,8 +36,6 @@ EffectsBaseUi::EffectsBaseUi(BaseObjectType* cobject,
 EffectsBaseUi::~EffectsBaseUi() {}
 
 void EffectsBaseUi::on_app_added(std::shared_ptr<AppInfo> app_info) {
-    std::cout << "added: " << app_info->name << std::endl;
-
     auto appui = AppInfoUi::create(app_info, pm);
 
     apps_box->add(*appui);
@@ -46,8 +44,6 @@ void EffectsBaseUi::on_app_added(std::shared_ptr<AppInfo> app_info) {
 }
 
 void EffectsBaseUi::on_app_changed(std::shared_ptr<AppInfo> app_info) {
-    std::cout << "changed: " << app_info->name << std::endl;
-
     for (auto it = apps_list.begin(); it != apps_list.end(); it++) {
         auto n = it - apps_list.begin();
 
