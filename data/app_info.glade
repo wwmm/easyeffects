@@ -137,12 +137,12 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="buffer_latency">
+          <object class="GtkLabel" id="buffer">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
-            <property name="label">bl</property>
+            <property name="label">b</property>
           </object>
           <packing>
             <property name="left_attach">4</property>

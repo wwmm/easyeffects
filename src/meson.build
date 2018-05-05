@@ -14,6 +14,7 @@ pulseeffects_sources = [
 	'application_ui.cpp',
 	'pulse_manager.cpp',
 	'effects_base_ui.cpp',
+	'app_info_ui.cpp',
 	'sink_input_effects_ui.cpp',
 	'sink_input_effects.cpp',
 	'util.cpp',

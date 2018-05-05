@@ -7,6 +7,7 @@
 #include <gtkmm/stack.h>
 #include <memory>
 #include <vector>
+#include "app_info_ui.hpp"
 #include "pulse_manager.hpp"
 
 class EffectsBaseUi : public Gtk::Box {
@@ -48,7 +49,7 @@ class EffectsBaseUi : public Gtk::Box {
 
     Gtk::Box* apps_box;
 
-    std::vector<std::shared_ptr<AppInfo>> apps_list;
+    std::vector<std::unique_ptr<AppInfoUi>> apps_list;
 };
 
 #endif
