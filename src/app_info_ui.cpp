@@ -14,6 +14,7 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
     builder->get_widget("app_icon", app_icon);
     builder->get_widget("app_name", app_name);
     builder->get_widget("volume", volume);
+    builder->get_widget("mute", mute);
     builder->get_widget("format", format);
     builder->get_widget("rate", rate);
     builder->get_widget("channels", channels);
@@ -23,13 +24,14 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
     builder->get_widget("state", state);
     builder->get_widget("level", level);
 
-    enable->signal_state_set().connect(
-        sigc::mem_fun(*this, &AppInfoUi::on_enable_app), false);
-
-    volume->signal_value_changed().connect(
-        sigc::mem_fun(*this, &AppInfoUi::on_volume_changed));
-
-    mute->signal_toggled().connect(sigc::mem_fun(*this, &AppInfoUi::on_mute));
+    // enable->signal_state_set().connect(
+    //     sigc::mem_fun(*this, &AppInfoUi::on_enable_app), false);
+    //
+    // volume->signal_value_changed().connect(
+    //     sigc::mem_fun(*this, &AppInfoUi::on_volume_changed));
+    //
+    // mute->signal_toggled().connect(sigc::mem_fun(*this,
+    // &AppInfoUi::on_mute));
 }
 
 AppInfoUi::~AppInfoUi() {}
