@@ -13,7 +13,8 @@
 class EffectsBaseUi : public Gtk::Box {
    public:
     EffectsBaseUi(BaseObjectType* cobject,
-                  const Glib::RefPtr<Gtk::Builder>& refBuilder);
+                  const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                  std::shared_ptr<PulseManager> pulse_manager);
 
     virtual ~EffectsBaseUi();
 
@@ -36,18 +37,14 @@ class EffectsBaseUi : public Gtk::Box {
         listbox->add(*row);
     }
 
-    virtual void on_enable_app(bool state) {}
-
-    virtual void on_volume_changed() {}
-
-    virtual void on_mute() {}
-
    private:
     Glib::RefPtr<Gtk::Builder> builder;
 
     Gtk::Stack* stack;
 
     Gtk::Box* apps_box;
+
+    std::shared_ptr<PulseManager> pm;
 
     std::vector<std::unique_ptr<AppInfoUi>> apps_list;
 };

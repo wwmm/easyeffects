@@ -9,15 +9,20 @@
 #include <gtkmm/scale.h>
 #include <gtkmm/switch.h>
 #include <gtkmm/togglebutton.h>
+#include "pulse_manager.hpp"
 
 class AppInfoUi : public Gtk::Grid {
    public:
     AppInfoUi(BaseObjectType* cobject,
-              const Glib::RefPtr<Gtk::Builder>& refBuilder);
+              const Glib::RefPtr<Gtk::Builder>& refBuilder,
+              std::shared_ptr<AppInfo> app_info,
+              std::shared_ptr<PulseManager> pm);
 
     virtual ~AppInfoUi();
 
-    static std::unique_ptr<AppInfoUi> create();
+    static std::unique_ptr<AppInfoUi> create(
+        std::shared_ptr<AppInfo> info,
+        std::shared_ptr<PulseManager> pulse_manager);
 
     Gtk::Switch* enable;
     Gtk::Image* app_icon;
@@ -33,8 +38,17 @@ class AppInfoUi : public Gtk::Grid {
     Gtk::Label* state;
     Gtk::LevelBar* level;
 
+    bool on_enable_app(bool state);
+
+    void on_volume_changed();
+
+    void on_mute();
+
    private:
     Glib::RefPtr<Gtk::Builder> builder;
+
+    std::shared_ptr<AppInfo> app_info;
+    std::shared_ptr<PulseManager> pm;
 };
 
 #endif

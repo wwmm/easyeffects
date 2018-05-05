@@ -37,6 +37,7 @@ struct mySourceInfo {
 };
 
 struct AppInfo {
+    std::string app_type;
     uint index;
     std::string name;
     std::string icon_name;

@@ -3,8 +3,8 @@
 SinkInputEffectsUi::SinkInputEffectsUi(
     BaseObjectType* cobject,
     const Glib::RefPtr<Gtk::Builder>& refBuilder,
-    std::shared_ptr<SinkInputEffects> sie)
-    : EffectsBaseUi(cobject, refBuilder) {}
+    std::shared_ptr<SinkInputEffects> sie_ptr)
+    : EffectsBaseUi(cobject, refBuilder, sie_ptr->pm), sie(sie_ptr) {}
 
 SinkInputEffectsUi::~SinkInputEffectsUi() {}
 
@@ -19,9 +19,3 @@ std::unique_ptr<SinkInputEffectsUi> SinkInputEffectsUi::create(
 
     return std::unique_ptr<SinkInputEffectsUi>(sie_ui);
 }
-
-void SinkInputEffectsUi::on_enable_app(bool state) {}
-
-void SinkInputEffectsUi::on_volume_changed() {}
-
-void SinkInputEffectsUi::on_mute() {}

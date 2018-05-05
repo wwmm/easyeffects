@@ -8,7 +8,7 @@ class SinkInputEffectsUi : public EffectsBaseUi {
    public:
     SinkInputEffectsUi(BaseObjectType* cobject,
                        const Glib::RefPtr<Gtk::Builder>& refBuilder,
-                       std::shared_ptr<SinkInputEffects> sie);
+                       std::shared_ptr<SinkInputEffects> sie_ptr);
 
     ~SinkInputEffectsUi();
 
@@ -16,11 +16,7 @@ class SinkInputEffectsUi : public EffectsBaseUi {
         std::shared_ptr<SinkInputEffects> sie);
 
    private:
-    void on_enable_app(bool state) override;
-
-    void on_volume_changed() override;
-
-    void on_mute() override;
+    std::shared_ptr<SinkInputEffects> sie;
 };
 
 #endif

@@ -4,8 +4,9 @@
 #include "effects_base_ui.hpp"
 
 EffectsBaseUi::EffectsBaseUi(BaseObjectType* cobject,
-                             const Glib::RefPtr<Gtk::Builder>& refBuilder)
-    : Gtk::Box(cobject), builder(refBuilder) {
+                             const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                             std::shared_ptr<PulseManager> pulse_manager)
+    : Gtk::Box(cobject), builder(refBuilder), pm(pulse_manager) {
     // loading glade widgets
 
     builder->get_widget("stack", stack);
@@ -36,6 +37,10 @@ EffectsBaseUi::~EffectsBaseUi() {}
 
 void EffectsBaseUi::on_app_added(std::shared_ptr<AppInfo> app_info) {
     std::cout << "added: " << app_info->name << std::endl;
+
+    // auto appui = AppInfoUi::create(app_info, pm);
+
+    // apps_box->add(*appui);
 }
 
 void EffectsBaseUi::on_app_changed(std::shared_ptr<AppInfo> app_info) {
