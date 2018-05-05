@@ -126,6 +126,8 @@ class PulseManager {
 
     static void context_state_cb(pa_context* ctx, void* data);
 
+    void subscribe_to_events();
+
     void get_server_info();
 
     std::shared_ptr<mySinkInfo> get_sink_info(std::string name);

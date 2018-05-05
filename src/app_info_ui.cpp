@@ -45,6 +45,9 @@ AppInfoUi::~AppInfoUi() {
     if (stream != nullptr) {
         // util::warning("test");
         pa_stream_disconnect(stream);
+
+        while (stream != nullptr) {
+        }
     }
 }
 
