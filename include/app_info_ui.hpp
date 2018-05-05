@@ -41,12 +41,16 @@ class AppInfoUi : public Gtk::Grid {
 
     std::shared_ptr<AppInfo> app_info;
 
+    void update(std::shared_ptr<AppInfo> info);
+
    private:
     Glib::RefPtr<Gtk::Builder> builder;
 
     std::shared_ptr<PulseManager> pm;
 
     std::string latency_to_str(uint value);
+
+    void init_widgets();
 
     bool on_enable_app(bool state);
 

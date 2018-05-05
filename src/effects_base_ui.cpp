@@ -46,6 +46,14 @@ void EffectsBaseUi::on_app_added(std::shared_ptr<AppInfo> app_info) {
 
 void EffectsBaseUi::on_app_changed(std::shared_ptr<AppInfo> app_info) {
     std::cout << "changed: " << app_info->name << std::endl;
+
+    for (auto it = apps_list.begin(); it != apps_list.end(); it++) {
+        auto n = it - apps_list.begin();
+
+        if (apps_list[n]->app_info->index == app_info->index) {
+            apps_list[n]->update(app_info);
+        }
+    }
 }
 
 void EffectsBaseUi::on_app_removed(uint idx) {

@@ -37,8 +37,33 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
 
     mute->signal_toggled().connect(sigc::mem_fun(*this, &AppInfoUi::on_mute));
 
-    // initializing widgets
+    init_widgets();
+}
 
+AppInfoUi::~AppInfoUi() {}
+
+std::unique_ptr<AppInfoUi> AppInfoUi::create(std::shared_ptr<AppInfo> app_info,
+                                             std::shared_ptr<PulseManager> pm) {
+    auto builder = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/app_info.glade");
+
+    AppInfoUi* app_info_ui = nullptr;
+
+    builder->get_widget_derived("widgets_grid", app_info_ui, app_info, pm);
+
+    return std::unique_ptr<AppInfoUi>(app_info_ui);
+}
+
+std::string AppInfoUi::latency_to_str(uint value) {
+    std::ostringstream msg;
+
+    msg.precision(1);
+    msg << std::fixed << value / 1000.0 << " ms";
+
+    return msg.str();
+}
+
+void AppInfoUi::init_widgets() {
     enable->set_active(app_info->connected);
 
     app_icon->set_from_icon_name(app_info->icon_name, Gtk::ICON_SIZE_BUTTON);
@@ -66,29 +91,6 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
     } else {
         state->set_text(_("playing"));
     }
-}
-
-AppInfoUi::~AppInfoUi() {}
-
-std::unique_ptr<AppInfoUi> AppInfoUi::create(std::shared_ptr<AppInfo> app_info,
-                                             std::shared_ptr<PulseManager> pm) {
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/app_info.glade");
-
-    AppInfoUi* app_info_ui = nullptr;
-
-    builder->get_widget_derived("widgets_grid", app_info_ui, app_info, pm);
-
-    return std::unique_ptr<AppInfoUi>(app_info_ui);
-}
-
-std::string AppInfoUi::latency_to_str(uint value) {
-    std::ostringstream msg;
-
-    msg.precision(1);
-    msg << std::fixed << value / 1000.0 << " ms";
-
-    return msg.str();
 }
 
 bool AppInfoUi::on_enable_app(bool state) {
@@ -140,4 +142,10 @@ void AppInfoUi::on_mute() {
     } else {
         pm->set_source_output_mute(app_info->index, state);
     }
+}
+
+void AppInfoUi::update(std::shared_ptr<AppInfo> info) {
+    app_info = info;
+
+    init_widgets();
 }
