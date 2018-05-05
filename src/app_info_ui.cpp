@@ -41,7 +41,12 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
     init_widgets();
 }
 
-AppInfoUi::~AppInfoUi() {}
+AppInfoUi::~AppInfoUi() {
+    if (stream != nullptr) {
+        // util::warning("test");
+        pa_stream_disconnect(stream);
+    }
+}
 
 std::unique_ptr<AppInfoUi> AppInfoUi::create(std::shared_ptr<AppInfo> app_info,
                                              std::shared_ptr<PulseManager> pm) {

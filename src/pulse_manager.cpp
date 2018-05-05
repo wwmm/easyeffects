@@ -494,42 +494,56 @@ void PulseManager::load_mic_sink() {
 }
 
 void PulseManager::find_sink_inputs() {
-    pa_context_get_sink_input_info_list(
+    auto o = pa_context_get_sink_input_info_list(
         context,
         [](auto c, auto info, auto eol, auto d) {
-            if (eol == 0 && info != nullptr) {
-                auto pm = static_cast<PulseManager*>(d);
+            auto pm = static_cast<PulseManager*>(d);
 
+            if (eol == -1) {
+                pa_threaded_mainloop_signal(pm->main_loop, false);
+            } else if (eol == 0 && info != nullptr) {
                 pm->new_app(info);
+            } else if (eol == 1) {
+                pa_threaded_mainloop_signal(pm->main_loop, false);
             }
         },
         this);
+
+    wait_operation(o);
 }
 
 void PulseManager::find_source_outputs() {
-    pa_context_get_source_output_info_list(
+    auto o = pa_context_get_source_output_info_list(
         context,
         [](auto c, auto info, auto eol, auto d) {
-            if (eol == 0 && info != nullptr) {
-                auto pm = static_cast<PulseManager*>(d);
+            auto pm = static_cast<PulseManager*>(d);
 
+            if (eol == -1) {
+                pa_threaded_mainloop_signal(pm->main_loop, false);
+            } else if (eol == 0 && info != nullptr) {
                 pm->new_app(info);
+            } else if (eol == 1) {
+                pa_threaded_mainloop_signal(pm->main_loop, false);
             }
         },
         this);
+
+    wait_operation(o);
 }
 
 void PulseManager::find_sinks() {
-    pa_context_get_sink_info_list(
+    auto o = pa_context_get_sink_info_list(
         context,
         [](auto c, auto info, auto eol, auto d) {
-            if (eol == 0 && info != nullptr) {
+            auto pm = static_cast<PulseManager*>(d);
+
+            if (eol == -1) {
+                pa_threaded_mainloop_signal(pm->main_loop, false);
+            } else if (eol == 0 && info != nullptr) {
                 std::string s1 = "PulseEffects_apps";
                 std::string s2 = "PulseEffects_mic";
 
                 if (info->name != s1 && info->name != s2) {
-                    auto pm = static_cast<PulseManager*>(d);
-
                     auto si = std::make_shared<mySinkInfo>();
 
                     si->name = info->name;
@@ -544,22 +558,28 @@ void PulseManager::find_sinks() {
                         return false;
                     });
                 }
+            } else if (eol == 1) {
+                pa_threaded_mainloop_signal(pm->main_loop, false);
             }
         },
         this);
+
+    wait_operation(o);
 }
 
 void PulseManager::find_sources() {
-    pa_context_get_source_info_list(
+    auto o = pa_context_get_source_info_list(
         context,
         [](auto c, auto info, auto eol, auto d) {
-            if (eol == 0 && info != nullptr) {
+            auto pm = static_cast<PulseManager*>(d);
+
+            if (eol == -1) {
+                pa_threaded_mainloop_signal(pm->main_loop, false);
+            } else if (eol == 0 && info != nullptr) {
                 std::string s1 = "PulseEffects_apps.monitor";
                 std::string s2 = "PulseEffects_mic.monitor";
 
                 if (info->name != s1 && info->name != s2) {
-                    auto pm = static_cast<PulseManager*>(d);
-
                     auto si = std::make_shared<mySourceInfo>();
 
                     si->name = info->name;
@@ -574,9 +594,13 @@ void PulseManager::find_sources() {
                         return false;
                     });
                 }
+            } else if (eol == 1) {
+                pa_threaded_mainloop_signal(pm->main_loop, false);
             }
         },
         this);
+
+    wait_operation(o);
 }
 
 void PulseManager::move_sink_input_to_pulseeffects(uint idx) {
