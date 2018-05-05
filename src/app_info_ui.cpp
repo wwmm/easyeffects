@@ -1,3 +1,5 @@
+#include <glibmm/i18n.h>
+#include <sstream>
 #include "app_info_ui.hpp"
 
 AppInfoUi::AppInfoUi(BaseObjectType* cobject,
@@ -25,6 +27,8 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
     builder->get_widget("state", state);
     builder->get_widget("level", level);
 
+    // connecting signals
+
     enable->signal_state_set().connect(
         sigc::mem_fun(*this, &AppInfoUi::on_enable_app), false);
 
@@ -32,6 +36,36 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
         sigc::mem_fun(*this, &AppInfoUi::on_volume_changed));
 
     mute->signal_toggled().connect(sigc::mem_fun(*this, &AppInfoUi::on_mute));
+
+    // initializing widgets
+
+    enable->set_active(app_info->connected);
+
+    app_icon->set_from_icon_name(app_info->icon_name, Gtk::ICON_SIZE_BUTTON);
+
+    app_name->set_text(app_info->name);
+
+    volume->set_value(app_info->volume);
+
+    mute->set_active(app_info->mute);
+
+    format->set_text(app_info->format);
+
+    rate->set_text(std::to_string(app_info->rate) + " Hz");
+
+    channels->set_text(std::to_string(app_info->channels));
+
+    resampler->set_text(app_info->resampler);
+
+    buffer->set_text(latency_to_str(app_info->buffer));
+
+    latency->set_text(latency_to_str(app_info->latency));
+
+    if (app_info->corked) {
+        state->set_text(_("paused"));
+    } else {
+        state->set_text(_("playing"));
+    }
 }
 
 AppInfoUi::~AppInfoUi() {}
@@ -46,6 +80,15 @@ std::unique_ptr<AppInfoUi> AppInfoUi::create(std::shared_ptr<AppInfo> app_info,
     builder->get_widget_derived("widgets_grid", app_info_ui, app_info, pm);
 
     return std::unique_ptr<AppInfoUi>(app_info_ui);
+}
+
+std::string AppInfoUi::latency_to_str(uint value) {
+    std::ostringstream msg;
+
+    msg.precision(1);
+    msg << std::fixed << value / 1000.0 << " ms";
+
+    return msg.str();
 }
 
 bool AppInfoUi::on_enable_app(bool state) {

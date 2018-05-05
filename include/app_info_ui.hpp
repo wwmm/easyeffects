@@ -45,6 +45,8 @@ class AppInfoUi : public Gtk::Grid {
     std::shared_ptr<AppInfo> app_info;
     std::shared_ptr<PulseManager> pm;
 
+    std::string latency_to_str(uint value);
+
     bool on_enable_app(bool state);
 
     void on_volume_changed();
