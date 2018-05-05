@@ -39,10 +39,11 @@ class AppInfoUi : public Gtk::Grid {
     Gtk::Label* state;
     Gtk::LevelBar* level;
 
+    std::shared_ptr<AppInfo> app_info;
+
    private:
     Glib::RefPtr<Gtk::Builder> builder;
 
-    std::shared_ptr<AppInfo> app_info;
     std::shared_ptr<PulseManager> pm;
 
     std::string latency_to_str(uint value);

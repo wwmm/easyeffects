@@ -49,5 +49,19 @@ void EffectsBaseUi::on_app_changed(std::shared_ptr<AppInfo> app_info) {
 }
 
 void EffectsBaseUi::on_app_removed(uint idx) {
-    std::cout << "removed: " << idx << std::endl;
+    for (auto it = apps_list.begin(); it != apps_list.end(); it++) {
+        auto n = it - apps_list.begin();
+
+        if (apps_list[n]->app_info->index == idx) {
+            std::cout << "removed: " << idx << std::endl;
+
+            auto appui = move(apps_list[n]);
+
+            apps_box->remove(*appui);
+
+            apps_list.erase(it);
+
+            break;
+        }
+    }
 }
