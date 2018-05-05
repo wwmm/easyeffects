@@ -23,10 +23,6 @@ PulseManager::PulseManager()
 }
 
 PulseManager::~PulseManager() {
-    quit();
-}
-
-void PulseManager::quit() {
     unload_sinks();
 
     drain_context();

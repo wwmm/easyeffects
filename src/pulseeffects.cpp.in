@@ -1,11 +1,14 @@
 #include <glib-unix.h>
 #include <glibmm/i18n.h>
-#include "application.hpp"
+#include "application_ui.hpp"
 
 bool sigterm(void* data){
     auto app = static_cast<Application*>(data);
 
-    app->pm->quit();
+    for (auto w : app->get_windows()) {
+        w->hide();
+    }
+
     app->quit();
 
     return G_SOURCE_REMOVE;

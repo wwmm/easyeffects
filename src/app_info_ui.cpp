@@ -176,7 +176,10 @@ void AppInfoUi::create_stream() {
                     v = 1;
                 }
 
-                aiu->level->set_value(v);
+                Glib::signal_idle().connect([aiu, v]() {
+                    aiu->level->set_value(v);
+                    return false;
+                });
             }
         },
         this);

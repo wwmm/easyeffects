@@ -25,9 +25,7 @@ Application::Application()
                           _("Load a preset. Example: pulseeffects -l music"));
 }
 
-Application::~Application() {
-    pm->quit();
-}
+Application::~Application() {}
 
 Glib::RefPtr<Application> Application::create() {
     return Glib::RefPtr<Application>(new Application());
@@ -93,6 +91,8 @@ void Application::on_activate() {
         auto window = ApplicationUi::create(this);
 
         add_window(*window);
+
+        window->signal_hide().connect([window]() { delete window; });
 
         window->show_all();
         window->present();

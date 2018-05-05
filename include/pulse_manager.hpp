@@ -84,7 +84,6 @@ class PulseManager {
     pa_stream* create_stream(std::string source_name,
                              uint app_idx,
                              std::string app_name);
-    void quit();
 
     sigc::signal<void, std::shared_ptr<mySourceInfo>> source_added;
     sigc::signal<void, uint> source_removed;
