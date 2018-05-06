@@ -60,9 +60,9 @@ void EffectsBaseUi::on_app_removed(uint idx) {
         if (apps_list[n]->app_info->index == idx) {
             auto appui = move(apps_list[n]);
 
-            apps_list.erase(it);
-
             apps_box->remove(*appui);
+
+            apps_list.erase(it);
 
             break;
         }
