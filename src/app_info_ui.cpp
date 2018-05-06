@@ -28,17 +28,12 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
     builder->get_widget("state", state);
     builder->get_widget("level", level);
 
-    // connecting signals
-
-    enable->signal_state_set().connect(
-        sigc::mem_fun(*this, &AppInfoUi::on_enable_app), false);
-
-    volume_connection = volume->signal_value_changed().connect(
-        sigc::mem_fun(*this, &AppInfoUi::on_volume_changed));
-
-    mute->signal_toggled().connect(sigc::mem_fun(*this, &AppInfoUi::on_mute));
-
     init_widgets();
+    connect_signals();
+
+    if (app_info->app_type == "sink_input") {
+        // Glib::signal_timeout();
+    }
 }
 
 AppInfoUi::~AppInfoUi() {
@@ -136,13 +131,33 @@ void AppInfoUi::init_widgets() {
     }
 }
 
+void AppInfoUi::connect_signals() {
+    enable_connection = enable->signal_state_set().connect(
+        sigc::mem_fun(*this, &AppInfoUi::on_enable_app), false);
+
+    volume_connection = volume->signal_value_changed().connect(
+        sigc::mem_fun(*this, &AppInfoUi::on_volume_changed));
+
+    mute_connection = mute->signal_toggled().connect(
+        sigc::mem_fun(*this, &AppInfoUi::on_mute));
+}
+
 void AppInfoUi::create_stream() {
-    std::string source_name = "PulseEffects_apps.monitor";
+    std::string source_name;
 
-    stream =
-        pm->create_stream(source_name.c_str(), app_info->index, app_info->name);
+    if (app_info->app_type == "sink_input") {
+        source_name = "PulseEffects_apps.monitor";
 
-    pa_stream_set_monitor_stream(stream, app_info->index);
+        stream = pm->create_stream(source_name.c_str(), app_info->index,
+                                   app_info->name);
+
+        pa_stream_set_monitor_stream(stream, app_info->index);
+    } else {
+        source_name = "PulseEffects_mic.monitor";
+
+        stream = pm->create_stream(source_name.c_str(), app_info->index,
+                                   app_info->name);
+    }
 
     pa_stream_set_state_callback(
         stream,
@@ -288,10 +303,10 @@ void AppInfoUi::on_mute() {
 void AppInfoUi::update(std::shared_ptr<AppInfo> info) {
     app_info = info;
 
+    enable_connection.disconnect();
     volume_connection.disconnect();
+    mute_connection.disconnect();
 
     init_widgets();
-
-    volume_connection = volume->signal_value_changed().connect(
-        sigc::mem_fun(*this, &AppInfoUi::on_volume_changed));
+    connect_signals();
 }

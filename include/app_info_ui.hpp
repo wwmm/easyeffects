@@ -48,13 +48,17 @@ class AppInfoUi : public Gtk::Grid {
 
     Glib::RefPtr<Gtk::Builder> builder;
 
+    sigc::connection enable_connection;
     sigc::connection volume_connection;
+    sigc::connection mute_connection;
 
     std::shared_ptr<PulseManager> pm;
 
     pa_stream* stream = nullptr;
 
     void init_widgets();
+
+    void connect_signals();
 
     std::string latency_to_str(uint value);
 
