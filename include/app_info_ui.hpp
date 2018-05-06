@@ -48,6 +48,8 @@ class AppInfoUi : public Gtk::Grid {
 
     Glib::RefPtr<Gtk::Builder> builder;
 
+    sigc::connection volume_connection;
+
     std::shared_ptr<PulseManager> pm;
 
     pa_stream* stream = nullptr;

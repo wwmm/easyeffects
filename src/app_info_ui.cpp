@@ -33,7 +33,7 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
     enable->signal_state_set().connect(
         sigc::mem_fun(*this, &AppInfoUi::on_enable_app), false);
 
-    volume->signal_value_changed().connect(
+    volume_connection = volume->signal_value_changed().connect(
         sigc::mem_fun(*this, &AppInfoUi::on_volume_changed));
 
     mute->signal_toggled().connect(sigc::mem_fun(*this, &AppInfoUi::on_mute));
@@ -43,10 +43,38 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
 
 AppInfoUi::~AppInfoUi() {
     if (stream != nullptr) {
-        // util::warning("test");
-        pa_stream_disconnect(stream);
+        auto o = pa_stream_flush(
+            stream,
+            [](auto s, auto success, auto ptr) {
+                auto aiu = static_cast<AppInfoUi*>(ptr);
 
-        while (stream != nullptr) {
+                if (success) {
+                    util::debug(aiu->log_tag + aiu->app_info->name +
+                                " level meter stream was flushed");
+
+                    pa_stream_disconnect(s);
+                } else {
+                    util::debug(aiu->log_tag + "failed to flush " +
+                                aiu->app_info->name + " level meter stream");
+                }
+
+                pa_threaded_mainloop_signal(aiu->pm->main_loop, false);
+            },
+            this);
+
+        if (o != nullptr) {
+            pm->wait_operation(o);
+
+            while (stream != nullptr) {
+            }
+        } else {
+            util::debug(log_tag + app_info->name +
+                        " level meter stream does not need flushing");
+
+            pa_stream_disconnect(stream);
+
+            while (stream != nullptr) {
+            }
         }
     }
 }
@@ -260,5 +288,10 @@ void AppInfoUi::on_mute() {
 void AppInfoUi::update(std::shared_ptr<AppInfo> info) {
     app_info = info;
 
+    volume_connection.disconnect();
+
     init_widgets();
+
+    volume_connection = volume->signal_value_changed().connect(
+        sigc::mem_fun(*this, &AppInfoUi::on_volume_changed));
 }

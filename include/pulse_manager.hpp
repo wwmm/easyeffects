@@ -64,6 +64,8 @@ class PulseManager {
     bool use_default_sink = true;
     bool use_default_source = true;
 
+    pa_threaded_mainloop* main_loop;
+
     myServerInfo server_info;
     std::shared_ptr<mySinkInfo> apps_sink_info;
     std::shared_ptr<mySinkInfo> mic_sink_info;
@@ -85,6 +87,8 @@ class PulseManager {
                              uint app_idx,
                              std::string app_name);
 
+    void wait_operation(pa_operation* o);
+
     sigc::signal<void, std::shared_ptr<mySourceInfo>> source_added;
     sigc::signal<void, uint> source_removed;
     sigc::signal<void, std::shared_ptr<mySinkInfo>> sink_added;
@@ -103,7 +107,6 @@ class PulseManager {
 
     bool context_ready = false;
 
-    pa_threaded_mainloop* main_loop;
     pa_mainloop_api* main_loop_api;
     pa_context* context;
 
@@ -151,8 +154,6 @@ class PulseManager {
     void unload_sinks();
 
     void drain_context();
-
-    void wait_operation(pa_operation* o);
 
     void new_app(const pa_sink_input_info* info);
 
