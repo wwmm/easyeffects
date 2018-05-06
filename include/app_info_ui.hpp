@@ -48,9 +48,12 @@ class AppInfoUi : public Gtk::Grid {
 
     Glib::RefPtr<Gtk::Builder> builder;
 
+    bool running = true;
+
     sigc::connection enable_connection;
     sigc::connection volume_connection;
     sigc::connection mute_connection;
+    sigc::connection timeout_connection;
 
     std::shared_ptr<PulseManager> pm;
 

@@ -32,11 +32,23 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
     connect_signals();
 
     if (app_info->app_type == "sink_input") {
-        // Glib::signal_timeout();
+        timeout_connection = Glib::signal_timeout().connect_seconds(
+            [&]() {
+                if (app_info != nullptr) {
+                    pm->get_sink_input_info(app_info->index);
+                }
+
+                return running;
+            },
+            5);
     }
 }
 
 AppInfoUi::~AppInfoUi() {
+    running = false;
+
+    timeout_connection.disconnect();
+
     if (stream != nullptr) {
         auto o = pa_stream_flush(
             stream,

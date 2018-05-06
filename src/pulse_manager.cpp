@@ -847,16 +847,22 @@ void PulseManager::set_source_output_mute(uint idx, bool state) {
 }
 
 void PulseManager::get_sink_input_info(uint idx) {
-    pa_context_get_sink_input_info(context, idx,
-                                   [](auto c, auto info, auto eol, auto d) {
-                                       if (eol == 0 && info != nullptr) {
-                                           auto pm =
-                                               static_cast<PulseManager*>(d);
+    auto o = pa_context_get_sink_input_info(
+        context, idx,
+        [](auto c, auto info, auto eol, auto d) {
+            auto pm = static_cast<PulseManager*>(d);
 
-                                           pm->changed_app(info);
-                                       }
-                                   },
-                                   this);
+            if (eol == -1) {
+                pa_threaded_mainloop_signal(pm->main_loop, false);
+            } else if (eol == 0 && info != nullptr) {
+                pm->changed_app(info);
+            } else if (eol == 1) {
+                pa_threaded_mainloop_signal(pm->main_loop, false);
+            }
+        },
+        this);
+
+    wait_operation(o);
 }
 
 pa_stream* PulseManager::create_stream(std::string source_name,
