@@ -487,51 +487,42 @@ void PulseManager::load_mic_sink() {
 }
 
 void PulseManager::find_sink_inputs() {
-    auto o = pa_context_get_sink_input_info_list(
+    pa_context_get_sink_input_info_list(
         context,
         [](auto c, auto info, auto eol, auto d) {
             auto pm = static_cast<PulseManager*>(d);
 
             if (eol == -1) {
-                pa_threaded_mainloop_signal(pm->main_loop, false);
             } else if (eol == 0 && info != nullptr) {
                 pm->new_app(info);
             } else if (eol == 1) {
-                pa_threaded_mainloop_signal(pm->main_loop, false);
             }
         },
         this);
-
-    wait_operation(o);
 }
 
 void PulseManager::find_source_outputs() {
-    auto o = pa_context_get_source_output_info_list(
+    pa_context_get_source_output_info_list(
         context,
         [](auto c, auto info, auto eol, auto d) {
             auto pm = static_cast<PulseManager*>(d);
 
             if (eol == -1) {
-                pa_threaded_mainloop_signal(pm->main_loop, false);
             } else if (eol == 0 && info != nullptr) {
                 pm->new_app(info);
             } else if (eol == 1) {
-                pa_threaded_mainloop_signal(pm->main_loop, false);
             }
         },
         this);
-
-    wait_operation(o);
 }
 
 void PulseManager::find_sinks() {
-    auto o = pa_context_get_sink_info_list(
+    pa_context_get_sink_info_list(
         context,
         [](auto c, auto info, auto eol, auto d) {
             auto pm = static_cast<PulseManager*>(d);
 
             if (eol == -1) {
-                pa_threaded_mainloop_signal(pm->main_loop, false);
             } else if (eol == 0 && info != nullptr) {
                 std::string s1 = "PulseEffects_apps";
                 std::string s2 = "PulseEffects_mic";
@@ -552,22 +543,18 @@ void PulseManager::find_sinks() {
                     });
                 }
             } else if (eol == 1) {
-                pa_threaded_mainloop_signal(pm->main_loop, false);
             }
         },
         this);
-
-    wait_operation(o);
 }
 
 void PulseManager::find_sources() {
-    auto o = pa_context_get_source_info_list(
+    pa_context_get_source_info_list(
         context,
         [](auto c, auto info, auto eol, auto d) {
             auto pm = static_cast<PulseManager*>(d);
 
             if (eol == -1) {
-                pa_threaded_mainloop_signal(pm->main_loop, false);
             } else if (eol == 0 && info != nullptr) {
                 std::string s1 = "PulseEffects_apps.monitor";
                 std::string s2 = "PulseEffects_mic.monitor";
@@ -588,12 +575,9 @@ void PulseManager::find_sources() {
                     });
                 }
             } else if (eol == 1) {
-                pa_threaded_mainloop_signal(pm->main_loop, false);
             }
         },
         this);
-
-    wait_operation(o);
 }
 
 void PulseManager::move_sink_input_to_pulseeffects(uint idx) {
@@ -847,22 +831,17 @@ void PulseManager::set_source_output_mute(uint idx, bool state) {
 }
 
 void PulseManager::get_sink_input_info(uint idx) {
-    auto o = pa_context_get_sink_input_info(
-        context, idx,
-        [](auto c, auto info, auto eol, auto d) {
-            auto pm = static_cast<PulseManager*>(d);
+    pa_context_get_sink_input_info(context, idx,
+                                   [](auto c, auto info, auto eol, auto d) {
+                                       auto pm = static_cast<PulseManager*>(d);
 
-            if (eol == -1) {
-                pa_threaded_mainloop_signal(pm->main_loop, false);
-            } else if (eol == 0 && info != nullptr) {
-                pm->changed_app(info);
-            } else if (eol == 1) {
-                pa_threaded_mainloop_signal(pm->main_loop, false);
-            }
-        },
-        this);
-
-    wait_operation(o);
+                                       if (eol == -1) {
+                                       } else if (eol == 0 && info != nullptr) {
+                                           pm->changed_app(info);
+                                       } else if (eol == 1) {
+                                       }
+                                   },
+                                   this);
 }
 
 pa_stream* PulseManager::create_stream(std::string source_name,
