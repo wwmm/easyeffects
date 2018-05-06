@@ -125,7 +125,19 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
         "audio-speakers-symbolic");
 
     // source outputs interface
-    //
+
+    soe_ui = SourceOutputEffectsUi::create(app->soe);
+
+    app->pm->source_output_added.connect(
+        sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_added));
+    app->pm->source_output_changed.connect(
+        sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_changed));
+    app->pm->source_output_removed.connect(
+        sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_removed));
+
+    stack->add(*soe_ui, "source_outputs");
+    stack->child_property_icon_name(*soe_ui).set_value(
+        "audio-input-microphone-symbolic");
 }
 
 ApplicationUi* ApplicationUi::create(Application* app_this) {
@@ -328,11 +340,11 @@ void ApplicationUi::on_sink_removed(uint idx) {
 
     util::debug(log_tag + "removed sink: " + remove_name);
 
-    auto iter = output_device->get_active();
-
-    if (!iter) {
-        output_device->set_active(default_iter);
-    }
+    // auto iter = output_device->get_active();
+    //
+    // if (!iter) {
+    //     output_device->set_active(default_iter);
+    // }
 }
 
 void ApplicationUi::on_source_added(std::shared_ptr<mySourceInfo> info) {
@@ -406,11 +418,11 @@ void ApplicationUi::on_source_removed(uint idx) {
 
     util::debug(log_tag + "removed source: " + remove_name);
 
-    auto iter = input_device->get_active();
-
-    if (!iter) {
-        input_device->set_active(default_iter);
-    }
+    // auto iter = input_device->get_active();
+    //
+    // if (!iter) {
+    //     input_device->set_active(default_iter);
+    // }
 }
 
 void ApplicationUi::on_use_default_sink_toggled() {

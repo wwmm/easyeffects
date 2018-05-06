@@ -71,6 +71,7 @@ void Application::on_startup() {
     ////////
 
     sie = std::make_shared<SinkInputEffects>(pm);
+    soe = std::make_shared<SourceOutputEffects>(pm);
 
     if (get_flags() & Gio::ApplicationFlags::APPLICATION_IS_SERVICE) {
         running_as_service = true;

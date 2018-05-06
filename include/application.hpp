@@ -6,6 +6,7 @@
 #include <memory>
 #include "pulse_manager.hpp"
 #include "sink_input_effects.hpp"
+#include "source_output_effects.hpp"
 
 class Application : public Gtk::Application {
    public:
@@ -17,6 +18,7 @@ class Application : public Gtk::Application {
 
     std::shared_ptr<PulseManager> pm;
     std::shared_ptr<SinkInputEffects> sie;
+    std::shared_ptr<SourceOutputEffects> soe;
 
    protected:
     void on_activate() override;

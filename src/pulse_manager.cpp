@@ -999,7 +999,7 @@ bool PulseManager::app_is_connected(const pa_sink_input_info* info) {
 }
 
 bool PulseManager::app_is_connected(const pa_source_output_info* info) {
-    if (info->source == mic_sink_info->index) {
+    if (info->source == mic_sink_info->monitor_source) {
         return true;
     } else {
         return false;

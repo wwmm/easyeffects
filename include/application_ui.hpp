@@ -12,6 +12,7 @@
 #include <gtkmm/togglebutton.h>
 #include "application.hpp"
 #include "sink_input_effects_ui.hpp"
+#include "source_output_effects_ui.hpp"
 
 class ApplicationUi : public Gtk::ApplicationWindow {
    public:
@@ -50,6 +51,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     Gtk::Stack* stack;
 
     std::unique_ptr<SinkInputEffectsUi> sie_ui;
+    std::unique_ptr<SourceOutputEffectsUi> soe_ui;
 
     double mouse_intensity;
 
