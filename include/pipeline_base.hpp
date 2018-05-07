@@ -12,7 +12,12 @@ class PipelineBase {
    protected:
     Glib::RefPtr<Gst::Pipeline> pipeline;
 
+    bool on_message(const Glib::RefPtr<Gst::Bus>& gst_bus,
+                    const Glib::RefPtr<Gst::Message>& message);
+
    private:
+    std::string log_tag = "pipeline_base.cpp: ";
+
     Glib::RefPtr<Gst::Bus> bus;
 };
 
