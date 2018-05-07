@@ -19,6 +19,7 @@ pulseeffects_sources = [
 	'sink_input_effects.cpp',
 	'source_output_effects_ui.cpp',
 	'source_output_effects.cpp',
+	'pipeline_base.cpp',
 	'util.cpp',
 	gresources
 ]
@@ -27,7 +28,14 @@ pulseeffects_deps = [
 	dependency('libpulse'),
 	dependency('glibmm-2.4'),
 	dependency('gtk+-3.0', version: '>= 3.20'),
-	dependency('gtkmm-3.0',version: '>= 3.20')
+	dependency('gtkmm-3.0',version: '>= 3.20'),
+	dependency('gstreamer-1.0', version: '>= 1.12'),
+	dependency('gstreamer-plugins-bad-1.0', version: '>= 1.12'),
+	dependency('gstreamer-insertbin-1.0', version: '>= 1.12'),
+	dependency('gstreamer-webrtc-1.0', required: false),
+	dependency('lilv-0', version: '>= 0.22', required: false),
+	dependency('libbs2b', required: false),
+	dependency('gstreamermm-1.0',version: '>= 1.10')
 ]
 
 executable(
