@@ -134,3 +134,29 @@ void PipelineBase::on_message_latency(
         }
     }
 }
+
+void PipelineBase::set_source_monitor_name(std::string name) {
+    std::string current_device;
+
+    source->get_property("current-device", current_device);
+
+    if (name != current_device) {
+        Gst::State state, pending;
+
+        pipeline->get_state(state, pending, Gst::CLOCK_TIME_NONE);
+
+        if (state == Gst::STATE_PLAYING) {
+            pipeline->set_state(Gst::STATE_NULL);
+
+            source->set_property("device", name);
+
+            pipeline->set_state(Gst::STATE_PLAYING);
+        } else {
+            source->set_property("device", name);
+        }
+    }
+}
+
+void PipelineBase::set_output_sink_name(std::string name) {
+    sink->set_property("device", name);
+}

@@ -15,6 +15,9 @@ class PipelineBase {
 
     Glib::RefPtr<Gst::Pipeline> pipeline;
 
+    void set_source_monitor_name(std::string name);
+    void set_output_sink_name(std::string name);
+
    private:
     Glib::RefPtr<Gst::Bus> bus;
 
