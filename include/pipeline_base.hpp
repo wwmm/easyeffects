@@ -11,7 +11,7 @@ class PipelineBase {
 
    protected:
     std::string log_tag;
-    std::string base_tag = "pipeline_base.cpp: ";
+    std::string base_tag = "pipeline_base: ";
 
     Glib::RefPtr<Gst::Pipeline> pipeline;
 
@@ -26,6 +26,12 @@ class PipelineBase {
 
     void on_message_info(const Glib::RefPtr<Gst::Bus>& gst_bus,
                          const Glib::RefPtr<Gst::Message>& message);
+
+    void on_message_state_changed(const Glib::RefPtr<Gst::Bus>& gst_bus,
+                                  const Glib::RefPtr<Gst::Message>& message);
+
+    void on_message_latency(const Glib::RefPtr<Gst::Bus>& gst_bus,
+                            const Glib::RefPtr<Gst::Message>& message);
 };
 
 #endif

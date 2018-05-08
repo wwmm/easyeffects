@@ -29,6 +29,14 @@ bool PipelineBase::on_message(const Glib::RefPtr<Gst::Bus>& gst_bus,
             on_message_info(gst_bus, message);
             break;
         }
+        case Gst::MESSAGE_STATE_CHANGED: {
+            on_message_state_changed(gst_bus, message);
+            break;
+        }
+        case Gst::MESSAGE_LATENCY: {
+            on_message_latency(gst_bus, message);
+            break;
+        }
         default:
             break;
     }
@@ -50,4 +58,21 @@ void PipelineBase::on_message_info(const Glib::RefPtr<Gst::Bus>& gst_bus,
 
     util::critical(log_tag + base_tag + msg->parse_error().what());
     util::debug(log_tag + base_tag + msg->parse_debug());
+}
+
+void PipelineBase::on_message_state_changed(
+    const Glib::RefPtr<Gst::Bus>& gst_bus,
+    const Glib::RefPtr<Gst::Message>& message) {
+    auto msg = Glib::RefPtr<Gst::MessageStateChanged>::cast_static(message);
+
+    util::debug(log_tag + base_tag + "new pipeline state:" +
+                Gst::Enums::get_name(msg->parse_new_state()));
+}
+
+void PipelineBase::on_message_latency(
+    const Glib::RefPtr<Gst::Bus>& gst_bus,
+    const Glib::RefPtr<Gst::Message>& message) {
+    auto msg = Glib::RefPtr<Gst::MessageLatency>::cast_static(message);
+
+    util::debug(log_tag + base_tag + "latency msg");
 }
