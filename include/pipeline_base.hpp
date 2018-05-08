@@ -17,6 +17,7 @@ class PipelineBase {
 
     void set_source_monitor_name(std::string name);
     void set_output_sink_name(std::string name);
+    void set_pulseaudio_props(std::string props);
 
    private:
     Glib::RefPtr<Gst::Bus> bus;

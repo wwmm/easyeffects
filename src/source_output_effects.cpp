@@ -5,6 +5,9 @@ SourceOutputEffects::SourceOutputEffects(
     : PipelineBase(pulse_manager->mic_sink_info->rate), pm(pulse_manager) {
     log_tag = "soe: ";
 
+    set_pulseaudio_props(
+        "application.id=com.github.wwmm.pulseeffects.sourceoutputs");
+
     set_output_sink_name("PulseEffects_mic");
 
     auto PULSE_SOURCE = std::getenv("PULSE_SOURCE");

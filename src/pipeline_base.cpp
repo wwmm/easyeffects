@@ -2,6 +2,7 @@
 #include <gstreamermm/caps.h>
 #include <gstreamermm/elementfactory.h>
 #include <gstreamermm/init.h>
+#include <gstreamermm/structure.h>
 #include "pipeline_base.hpp"
 #include "util.hpp"
 
@@ -159,4 +160,10 @@ void PipelineBase::set_source_monitor_name(std::string name) {
 
 void PipelineBase::set_output_sink_name(std::string name) {
     sink->set_property("device", name);
+}
+
+void PipelineBase::set_pulseaudio_props(std::string props) {
+    auto s = Gst::Structure::create_from_string("props," + props);
+
+    source->set_property("stream-properties", s);
 }

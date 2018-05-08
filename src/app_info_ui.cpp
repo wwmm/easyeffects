@@ -240,7 +240,11 @@ void AppInfoUi::create_stream() {
                 }
 
                 Glib::signal_idle().connect([aiu, v]() {
-                    aiu->level->set_value(v);
+                    if (aiu != nullptr) {
+                        if (aiu->running) {
+                            aiu->level->set_value(v);
+                        }
+                    }
                     return false;
                 });
             }

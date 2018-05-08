@@ -4,6 +4,9 @@ SinkInputEffects::SinkInputEffects(std::shared_ptr<PulseManager> pulse_manager)
     : PipelineBase(pulse_manager->apps_sink_info->rate), pm(pulse_manager) {
     log_tag = "sie: ";
 
+    set_pulseaudio_props(
+        "application.id=com.github.wwmm.pulseeffects.sinkinputs");
+
     set_source_monitor_name(pm->apps_sink_info->monitor_source_name);
 
     auto PULSE_SINK = std::getenv("PULSE_SINK");
