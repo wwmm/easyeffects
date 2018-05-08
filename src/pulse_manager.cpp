@@ -14,8 +14,13 @@ PulseManager::PulseManager()
 
     pa_threaded_mainloop_start(main_loop);
 
+    pa_threaded_mainloop_lock(main_loop);
+
     while (!context_ready) {
+        pa_threaded_mainloop_wait(main_loop);
     }
+
+    pa_threaded_mainloop_unlock(main_loop);
 
     get_server_info();
     load_apps_sink();
@@ -28,17 +33,22 @@ PulseManager::~PulseManager() {
 
     drain_context();
 
+    pa_threaded_mainloop_lock(main_loop);
+
     util::debug(log_tag + "disconnecting Pulseaudio context");
     pa_context_disconnect(context);
 
     while (context_ready) {
+        pa_threaded_mainloop_wait(main_loop);
     }
 
-    util::debug(log_tag + "unreferencing Pulseaudio context");
-    pa_context_unref(context);
+    pa_threaded_mainloop_unlock(main_loop);
 
     util::debug(log_tag + "stopping pulseaudio threaded main loop");
     pa_threaded_mainloop_stop(main_loop);
+
+    util::debug(log_tag + "unreferencing Pulseaudio context");
+    pa_context_unref(context);
 
     util::debug(log_tag + "freeing Pulseaudio threaded main loop");
     pa_threaded_mainloop_free(main_loop);
@@ -65,12 +75,16 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
                     std::to_string(pa_context_get_protocol_version(ctx)));
 
         pm->context_ready = true;
+        pa_threaded_mainloop_signal(pm->main_loop, false);
     } else if (state == PA_CONTEXT_FAILED) {
         util::debug(pm->log_tag + "failed to connect context");
+
+        pa_threaded_mainloop_signal(pm->main_loop, false);
     } else if (state == PA_CONTEXT_TERMINATED) {
         util::debug(pm->log_tag + "context was terminated");
 
         pm->context_ready = false;
+        pa_threaded_mainloop_signal(pm->main_loop, false);
     }
 }
 
