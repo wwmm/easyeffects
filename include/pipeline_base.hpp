@@ -33,6 +33,8 @@ class PipelineBase {
 
     std::vector<std::shared_ptr<AppInfo>> apps_list;
 
+    void update_pipeline_state();
+
     bool on_message(const Glib::RefPtr<Gst::Bus>& gst_bus,
                     const Glib::RefPtr<Gst::Message>& message);
 

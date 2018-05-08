@@ -48,8 +48,6 @@ PipelineBase::PipelineBase(const uint& sampling_rate) {
     } catch (const std::runtime_error& ex) {
         util::error(log_tag + ex.what());
     }
-
-    pipeline->set_state(Gst::STATE_PLAYING);
 }
 
 PipelineBase::~PipelineBase() {
@@ -168,8 +166,32 @@ void PipelineBase::set_pulseaudio_props(std::string props) {
     source->set_property("stream-properties", s);
 }
 
+void PipelineBase::update_pipeline_state() {
+    bool wants_to_play = false;
+
+    for (auto a : apps_list) {
+        if (a->wants_to_play) {
+            wants_to_play = true;
+
+            break;
+        }
+    }
+
+    Gst::State state, pending;
+
+    pipeline->get_state(state, pending, Gst::CLOCK_TIME_NONE);
+
+    if (state != Gst::STATE_PLAYING && wants_to_play) {
+        pipeline->set_state(Gst::STATE_PLAYING);
+    } else if (state == Gst::STATE_PLAYING && !wants_to_play) {
+        pipeline->set_state(Gst::STATE_NULL);
+    }
+}
+
 void PipelineBase::on_app_added(std::shared_ptr<AppInfo> app_info) {
     apps_list.push_back(move(app_info));
+
+    update_pipeline_state();
 }
 
 void PipelineBase::on_app_changed(std::shared_ptr<AppInfo> app_info) {
@@ -177,8 +199,11 @@ void PipelineBase::on_app_changed(std::shared_ptr<AppInfo> app_info) {
         auto n = it - apps_list.begin();
 
         if (apps_list[n]->index == app_info->index) {
+            apps_list[n] = move(app_info);
         }
     }
+
+    update_pipeline_state();
 }
 
 void PipelineBase::on_app_removed(uint idx) {
@@ -193,4 +218,6 @@ void PipelineBase::on_app_removed(uint idx) {
             break;
         }
     }
+
+    update_pipeline_state();
 }
