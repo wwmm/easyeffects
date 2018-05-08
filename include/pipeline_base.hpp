@@ -10,15 +10,22 @@ class PipelineBase {
     virtual ~PipelineBase();
 
    protected:
+    std::string log_tag;
+    std::string base_tag = "pipeline_base.cpp: ";
+
     Glib::RefPtr<Gst::Pipeline> pipeline;
+
+   private:
+    Glib::RefPtr<Gst::Bus> bus;
 
     bool on_message(const Glib::RefPtr<Gst::Bus>& gst_bus,
                     const Glib::RefPtr<Gst::Message>& message);
 
-   private:
-    std::string log_tag = "pipeline_base.cpp: ";
+    void on_message_error(const Glib::RefPtr<Gst::Bus>& gst_bus,
+                          const Glib::RefPtr<Gst::Message>& message);
 
-    Glib::RefPtr<Gst::Bus> bus;
+    void on_message_info(const Glib::RefPtr<Gst::Bus>& gst_bus,
+                         const Glib::RefPtr<Gst::Message>& message);
 };
 
 #endif

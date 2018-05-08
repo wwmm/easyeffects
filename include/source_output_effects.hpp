@@ -10,6 +10,9 @@ class SourceOutputEffects : public PipelineBase {
     virtual ~SourceOutputEffects();
 
     std::shared_ptr<PulseManager> pm;
+
+   protected:
+    std::string log_tag = "source_output_effects: ";
 };
 
 #endif

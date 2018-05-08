@@ -22,11 +22,11 @@ bool PipelineBase::on_message(const Glib::RefPtr<Gst::Bus>& gst_bus,
                               const Glib::RefPtr<Gst::Message>& message) {
     switch (message->get_message_type()) {
         case Gst::MESSAGE_ERROR: {
-            auto msg = Glib::RefPtr<Gst::MessageError>::cast_static(message);
-
-            util::critical(log_tag + msg->parse_error().what());
-            util::debug(log_tag + msg->parse_debug());
-
+            on_message_error(gst_bus, message);
+            break;
+        }
+        case Gst::MESSAGE_INFO: {
+            on_message_info(gst_bus, message);
             break;
         }
         default:
@@ -34,4 +34,20 @@ bool PipelineBase::on_message(const Glib::RefPtr<Gst::Bus>& gst_bus,
     }
 
     return true;
+}
+
+void PipelineBase::on_message_error(const Glib::RefPtr<Gst::Bus>& gst_bus,
+                                    const Glib::RefPtr<Gst::Message>& message) {
+    auto msg = Glib::RefPtr<Gst::MessageError>::cast_static(message);
+
+    util::critical(log_tag + base_tag + msg->parse_error().what());
+    util::debug(log_tag + base_tag + msg->parse_debug());
+}
+
+void PipelineBase::on_message_info(const Glib::RefPtr<Gst::Bus>& gst_bus,
+                                   const Glib::RefPtr<Gst::Message>& message) {
+    auto msg = Glib::RefPtr<Gst::MessageInfo>::cast_static(message);
+
+    util::critical(log_tag + base_tag + msg->parse_error().what());
+    util::debug(log_tag + base_tag + msg->parse_debug());
 }

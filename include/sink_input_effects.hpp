@@ -10,6 +10,9 @@ class SinkInputEffects : public PipelineBase {
     virtual ~SinkInputEffects();
 
     std::shared_ptr<PulseManager> pm;
+
+   protected:
+    std::string log_tag = "sink_input_effects.cpp: ";
 };
 
 #endif

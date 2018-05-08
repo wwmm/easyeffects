@@ -15,6 +15,9 @@ class SinkInputEffectsUi : public EffectsBaseUi {
     static std::unique_ptr<SinkInputEffectsUi> create(
         std::shared_ptr<SinkInputEffects> sie);
 
+   protected:
+    std::string log_tag = "sink_input_effects_ui: ";
+
    private:
     std::shared_ptr<SinkInputEffects> sie;
 };

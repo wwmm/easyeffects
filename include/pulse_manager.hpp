@@ -103,7 +103,7 @@ class PulseManager {
     sigc::signal<void, uint> source_output_removed;
 
    private:
-    std::string log_tag = "pulse_manager.cpp: ";
+    std::string log_tag = "pulse_manager: ";
 
     bool context_ready = false;
 
