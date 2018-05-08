@@ -7,7 +7,7 @@
 
 class PipelineBase {
    public:
-    PipelineBase();
+    PipelineBase(const uint& sampling_rate);
     virtual ~PipelineBase();
 
    protected:
@@ -20,6 +20,7 @@ class PipelineBase {
 
     Glib::RefPtr<Gst::Element> source;
     Glib::RefPtr<Gst::Element> sink;
+    Glib::RefPtr<Gst::Element> spectrum;
 
     bool on_message(const Glib::RefPtr<Gst::Bus>& gst_bus,
                     const Glib::RefPtr<Gst::Message>& message);

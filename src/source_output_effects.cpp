@@ -2,8 +2,8 @@
 
 SourceOutputEffects::SourceOutputEffects(
     std::shared_ptr<PulseManager> pulse_manager)
-    : pm(pulse_manager) {
-    log_tag = "source_output_effects: ";
+    : PipelineBase(pulse_manager->mic_sink_info->rate), pm(pulse_manager) {
+    log_tag = "soe: ";
 }
 
 SourceOutputEffects::~SourceOutputEffects() {}

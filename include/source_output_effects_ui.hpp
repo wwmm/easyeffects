@@ -16,7 +16,7 @@ class SourceOutputEffectsUi : public EffectsBaseUi {
         std::shared_ptr<SourceOutputEffects> soe);
 
    protected:
-    std::string log_tag = "source_output_effects_ui: ";
+    std::string log_tag = "soe_ui: ";
 
    private:
     std::shared_ptr<SourceOutputEffects> soe;

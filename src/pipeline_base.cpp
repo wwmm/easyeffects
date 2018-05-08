@@ -1,9 +1,11 @@
+#include <gstreamermm/audiobasesrc.h>
+#include <gstreamermm/caps.h>
 #include <gstreamermm/elementfactory.h>
 #include <gstreamermm/init.h>
 #include "pipeline_base.hpp"
 #include "util.hpp"
 
-PipelineBase::PipelineBase() {
+PipelineBase::PipelineBase(const uint& sampling_rate) {
     Gst::init();
 
     pipeline = Gst::Pipeline::create();
@@ -14,10 +16,37 @@ PipelineBase::PipelineBase() {
 
     source = Gst::ElementFactory::create_element("pulsesrc", "source");
     sink = Gst::ElementFactory::create_element("pulsesink", "sink");
+    spectrum = Gst::ElementFactory::create_element("spectrum", "spectrum");
 
-    pipeline->add(source)->add(sink);
+    auto capsfilter = Gst::ElementFactory::create_element("capsfilter");
+    auto queue = Gst::ElementFactory::create_element("queue");
 
-    source->link(sink);
+    auto caps = Gst::Caps::create_from_string(
+        "audio/x-raw,format=F32LE,channels=2,rate=" +
+        std::to_string(sampling_rate));
+
+    source->set_property("volume", 1.0);
+    source->set_property("mute", false);
+    source->set_property("provide-clock", false);
+    source->set_property(
+        "slave-method",
+        Gst::AudioBaseSrcSlaveMethod::AUDIO_BASE_SRC_SLAVE_RETIMESTAMP);
+
+    sink->set_property("volume", 1.0);
+    sink->set_property("mute", false);
+    sink->set_property("provide-clock", true);
+
+    capsfilter->set_property("caps", caps);
+
+    queue->set_property("silent", true);
+
+    try {
+        pipeline->add(source)->add(capsfilter)->add(queue)->add(sink);
+
+        source->link(capsfilter)->link(queue)->link(sink);
+    } catch (const std::runtime_error& ex) {
+        util::error(log_tag + ex.what());
+    }
 
     pipeline->set_state(Gst::STATE_PLAYING);
 }
