@@ -2,6 +2,7 @@
 #define PIPELINE_BASE_HPP
 
 #include <gstreamermm/bus.h>
+#include <gstreamermm/element.h>
 #include <gstreamermm/pipeline.h>
 
 class PipelineBase {
@@ -11,12 +12,14 @@ class PipelineBase {
 
    protected:
     std::string log_tag;
-    std::string base_tag = "pipeline_base: ";
 
     Glib::RefPtr<Gst::Pipeline> pipeline;
 
    private:
     Glib::RefPtr<Gst::Bus> bus;
+
+    Glib::RefPtr<Gst::Element> source;
+    Glib::RefPtr<Gst::Element> sink;
 
     bool on_message(const Glib::RefPtr<Gst::Bus>& gst_bus,
                     const Glib::RefPtr<Gst::Message>& message);
