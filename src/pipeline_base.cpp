@@ -167,3 +167,30 @@ void PipelineBase::set_pulseaudio_props(std::string props) {
 
     source->set_property("stream-properties", s);
 }
+
+void PipelineBase::on_app_added(std::shared_ptr<AppInfo> app_info) {
+    apps_list.push_back(move(app_info));
+}
+
+void PipelineBase::on_app_changed(std::shared_ptr<AppInfo> app_info) {
+    for (auto it = apps_list.begin(); it != apps_list.end(); it++) {
+        auto n = it - apps_list.begin();
+
+        if (apps_list[n]->index == app_info->index) {
+        }
+    }
+}
+
+void PipelineBase::on_app_removed(uint idx) {
+    for (auto it = apps_list.begin(); it != apps_list.end(); it++) {
+        auto n = it - apps_list.begin();
+
+        if (apps_list[n]->index == idx) {
+            auto app = move(apps_list[n]);
+
+            apps_list.erase(it);
+
+            break;
+        }
+    }
+}

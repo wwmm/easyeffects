@@ -17,6 +17,13 @@ SourceOutputEffects::SourceOutputEffects(
     } else {
         set_source_monitor_name(pm->server_info.default_source_name);
     }
+
+    pm->source_output_added.connect(
+        sigc::mem_fun(*this, &SourceOutputEffects::on_app_added));
+    pm->source_output_changed.connect(
+        sigc::mem_fun(*this, &SourceOutputEffects::on_app_changed));
+    pm->source_output_removed.connect(
+        sigc::mem_fun(*this, &SourceOutputEffects::on_app_removed));
 }
 
 SourceOutputEffects::~SourceOutputEffects() {}

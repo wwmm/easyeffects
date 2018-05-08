@@ -16,6 +16,13 @@ SinkInputEffects::SinkInputEffects(std::shared_ptr<PulseManager> pulse_manager)
     } else {
         set_output_sink_name(pm->server_info.default_sink_name);
     }
+
+    pm->sink_input_added.connect(
+        sigc::mem_fun(*this, &SinkInputEffects::on_app_added));
+    pm->sink_input_changed.connect(
+        sigc::mem_fun(*this, &SinkInputEffects::on_app_changed));
+    pm->sink_input_removed.connect(
+        sigc::mem_fun(*this, &SinkInputEffects::on_app_removed));
 }
 
 SinkInputEffects::~SinkInputEffects() {}
