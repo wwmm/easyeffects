@@ -1,60 +1,55 @@
-#include <gstreamer-1.0/gst/insertbin/gstinsertbin.h>
-#include <gstreamermm/audiobasesrc.h>
-#include <gstreamermm/caps.h>
-#include <gstreamermm/elementfactory.h>
-#include <gstreamermm/init.h>
-#include <gstreamermm/structure.h>
 #include "pipeline_base.hpp"
 #include "util.hpp"
 
 PipelineBase::PipelineBase(const uint& sampling_rate) {
-    Gst::init();
+    gst_init(nullptr, nullptr);
 
-    pipeline = Gst::Pipeline::create();
+    pipeline = gst_pipeline_new("");
 
-    bus = pipeline->get_bus();
+    bus = gst_element_get_bus(pipeline);
 
-    bus->add_watch(sigc::mem_fun(*this, &PipelineBase::on_message));
+    source = gst_element_factory_make("pulsesrc", "source");
+    sink = gst_element_factory_make("pulsesink", "sink");
+    spectrum = gst_element_factory_make("spectrum", "spectrum");
 
-    source = Gst::ElementFactory::create_element("pulsesrc", "source");
-    sink = Gst::ElementFactory::create_element("pulsesink", "sink");
-    spectrum = Gst::ElementFactory::create_element("spectrum", "spectrum");
+    auto capsfilter = gst_element_factory_make("capsfilter", nullptr);
+    auto queue = gst_element_factory_make("queue", nullptr);
 
-    auto capsfilter = Gst::ElementFactory::create_element("capsfilter");
-    auto queue = Gst::ElementFactory::create_element("queue");
+    auto caps_str = "audio/x-raw,format=F32LE,channels=2,rate=" +
+                    std::to_string(sampling_rate);
 
-    auto caps = Gst::Caps::create_from_string(
-        "audio/x-raw,format=F32LE,channels=2,rate=" +
-        std::to_string(sampling_rate));
+    auto caps = gst_caps_from_string(caps_str.c_str());
 
-    source->set_property("volume", 1.0);
-    source->set_property("mute", false);
-    source->set_property("provide-clock", false);
-    source->set_property(
-        "slave-method",
-        Gst::AudioBaseSrcSlaveMethod::AUDIO_BASE_SRC_SLAVE_RETIMESTAMP);
+    g_object_set(source, "volume", 1.0, nullptr);
+    g_object_set(source, "mute", false, nullptr);
+    g_object_set(source, "provide-clock", false, nullptr);
+    g_object_set(source, "slave-method", 1, nullptr);  // re-timestamp
 
-    sink->set_property("volume", 1.0);
-    sink->set_property("mute", false);
-    sink->set_property("provide-clock", true);
+    g_object_set(sink, "volume", 1.0, nullptr);
+    g_object_set(sink, "mute", false, nullptr);
+    g_object_set(sink, "provide-clock", true, nullptr);
 
-    capsfilter->set_property("caps", caps);
+    g_object_set(capsfilter, "caps", caps, nullptr);
 
-    queue->set_property("silent", true);
+    g_object_set(queue, "silent", true, nullptr);
 
-    try {
-        pipeline->add(source)->add(capsfilter)->add(queue)->add(sink);
+    gst_bin_add_many(GST_BIN(pipeline), source, capsfilter, queue, sink,
+                     nullptr);
 
-        source->link(capsfilter)->link(queue)->link(sink);
-    } catch (const std::runtime_error& ex) {
-        util::error(log_tag + ex.what());
-    }
+    gst_element_link_many(source, capsfilter, queue, sink, nullptr);
+
+    /*
+        bus->add_watch(sigc::mem_fun(*this, &PipelineBase::on_message));
+    */
 }
 
 PipelineBase::~PipelineBase() {
-    pipeline->set_state(Gst::STATE_NULL);
-}
+    gst_element_set_state(pipeline, GST_STATE_NULL);
 
+    gst_object_unref(bus);
+    gst_object_unref(pipeline);
+}
+/*
 bool PipelineBase::on_message(const Glib::RefPtr<Gst::Bus>& gst_bus,
                               const Glib::RefPtr<Gst::Message>& message) {
     switch (message->get_message_type()) {
@@ -134,37 +129,39 @@ void PipelineBase::on_message_latency(
         }
     }
 }
-
+*/
 void PipelineBase::set_source_monitor_name(std::string name) {
     std::string current_device;
 
-    source->get_property("current-device", current_device);
+    g_object_get(source, "current-device", &current_device, nullptr);
 
     if (name != current_device) {
-        Gst::State state, pending;
+        GstState state, pending;
 
-        pipeline->get_state(state, pending, Gst::CLOCK_TIME_NONE);
+        gst_element_get_state(pipeline, &state, &pending, GST_CLOCK_TIME_NONE);
 
-        if (state == Gst::STATE_PLAYING) {
-            pipeline->set_state(Gst::STATE_NULL);
+        if (state == GST_STATE_PLAYING) {
+            gst_element_set_state(pipeline, GST_STATE_NULL);
 
-            source->set_property("device", name);
+            g_object_set(source, "device", name.c_str(), nullptr);
 
-            pipeline->set_state(Gst::STATE_PLAYING);
+            gst_element_set_state(pipeline, GST_STATE_PLAYING);
         } else {
-            source->set_property("device", name);
+            g_object_set(source, "device", name.c_str(), nullptr);
         }
     }
 }
 
 void PipelineBase::set_output_sink_name(std::string name) {
-    sink->set_property("device", name);
+    g_object_set(sink, "device", name.c_str(), nullptr);
 }
 
 void PipelineBase::set_pulseaudio_props(std::string props) {
-    auto s = Gst::Structure::create_from_string("props," + props);
+    auto str = "props," + props;
 
-    source->set_property("stream-properties", s);
+    auto s = gst_structure_from_string(str.c_str(), nullptr);
+
+    g_object_set(source, "stream-properties", s, nullptr);
 }
 
 void PipelineBase::update_pipeline_state() {
@@ -178,14 +175,14 @@ void PipelineBase::update_pipeline_state() {
         }
     }
 
-    Gst::State state, pending;
+    GstState state, pending;
 
-    pipeline->get_state(state, pending, Gst::CLOCK_TIME_NONE);
+    gst_element_get_state(pipeline, &state, &pending, GST_CLOCK_TIME_NONE);
 
-    if (state != Gst::STATE_PLAYING && wants_to_play) {
-        pipeline->set_state(Gst::STATE_PLAYING);
-    } else if (state == Gst::STATE_PLAYING && !wants_to_play) {
-        pipeline->set_state(Gst::STATE_NULL);
+    if (state != GST_STATE_PLAYING && wants_to_play) {
+        gst_element_set_state(pipeline, GST_STATE_PLAYING);
+    } else if (state == GST_STATE_PLAYING && !wants_to_play) {
+        gst_element_set_state(pipeline, GST_STATE_NULL);
     }
 }
 
