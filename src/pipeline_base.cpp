@@ -61,7 +61,8 @@ void on_message_latency(const GstBus* gst_bus,
 
 }  // namespace
 
-PipelineBase::PipelineBase(const uint& sampling_rate) {
+PipelineBase::PipelineBase(const uint& sampling_rate)
+    : settings(g_settings_new("com.github.wwmm.pulseeffects")) {
     gst_init(nullptr, nullptr);
 
     pipeline = gst_pipeline_new("pipeline");

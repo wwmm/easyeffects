@@ -1,6 +1,7 @@
 #ifndef PIPELINE_BASE_HPP
 #define PIPELINE_BASE_HPP
 
+#include <gio/gio.h>
 #include <gst/gst.h>
 #include "pulse_manager.hpp"
 
@@ -15,6 +16,8 @@ class PipelineBase {
     GstBus* bus;
 
    protected:
+    GSettings* settings;
+
     void set_source_monitor_name(std::string name);
     void set_output_sink_name(std::string name);
     void set_pulseaudio_props(std::string props);
