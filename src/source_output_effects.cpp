@@ -36,3 +36,14 @@ SourceOutputEffects::SourceOutputEffects(
 }
 
 SourceOutputEffects::~SourceOutputEffects() {}
+
+void SourceOutputEffects::on_app_added(
+    const std::shared_ptr<AppInfo>& app_info) {
+    PipelineBase::on_app_added(app_info);
+
+    auto enable_all_apps = g_settings_get_boolean(settings, "enable-all-apps");
+
+    if (enable_all_apps && !app_info->connected) {
+        pm->move_source_output_to_pulseeffects(app_info->index);
+    }
+}

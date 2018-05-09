@@ -10,6 +10,9 @@ class SourceOutputEffects : public PipelineBase {
     virtual ~SourceOutputEffects();
 
     std::shared_ptr<PulseManager> pm;
+
+   private:
+    void on_app_added(const std::shared_ptr<AppInfo>& app_info);
 };
 
 #endif

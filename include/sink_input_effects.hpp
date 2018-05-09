@@ -10,6 +10,9 @@ class SinkInputEffects : public PipelineBase {
     virtual ~SinkInputEffects();
 
     std::shared_ptr<PulseManager> pm;
+
+   private:
+    void on_app_added(const std::shared_ptr<AppInfo>& app_info);
 };
 
 #endif
