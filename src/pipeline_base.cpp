@@ -1,12 +1,80 @@
+#include <glib-object.h>
+#include <gobject/gvaluecollector.h>
 #include "pipeline_base.hpp"
 #include "util.hpp"
+
+namespace {
+
+void on_message_error(const GstBus* gst_bus,
+                      GstMessage* message,
+                      PipelineBase* pb) {
+    GError* err;
+    gchar* debug;
+
+    gst_message_parse_error(message, &err, &debug);
+
+    util::critical(pb->log_tag + err->message);
+    util::debug(pb->log_tag + debug);
+
+    g_error_free(err);
+    g_free(debug);
+}
+
+void on_message_state_changed(const GstBus* gst_bus,
+                              GstMessage* message,
+                              PipelineBase* pb) {
+    if (GST_OBJECT_NAME(message->src) == std::string("pipeline")) {
+        GstState old_state, new_state;
+
+        gst_message_parse_state_changed(message, &old_state, &new_state,
+                                        nullptr);
+
+        util::debug(pb->log_tag + gst_element_state_get_name(new_state));
+    }
+}
+
+void on_message_latency(const GstBus* gst_bus,
+                        GstMessage* message,
+                        PipelineBase* pb) {
+    if (GST_OBJECT_NAME(message->src) == std::string("source")) {
+        int latency, buffer;
+
+        g_object_get(pb->source, "latency-time", &latency, nullptr);
+        g_object_get(pb->source, "buffer-time", &buffer, nullptr);
+
+        util::debug(pb->log_tag +
+                    "pulsesrc latency [us]: " + std::to_string(latency));
+        util::debug(pb->log_tag +
+                    "pulsesrc buffer [us]: " + std::to_string(buffer));
+    } else if (GST_OBJECT_NAME(message->src) == std::string("sink")) {
+        int latency, buffer;
+
+        g_object_get(pb->sink, "latency-time", &latency, nullptr);
+        g_object_get(pb->sink, "buffer-time", &buffer, nullptr);
+
+        util::debug(pb->log_tag +
+                    "pulsesink latency [us]: " + std::to_string(latency));
+        util::debug(pb->log_tag +
+                    "pulsesink buffer [us]: " + std::to_string(buffer));
+    }
+}
+
+}  // namespace
 
 PipelineBase::PipelineBase(const uint& sampling_rate) {
     gst_init(nullptr, nullptr);
 
-    pipeline = gst_pipeline_new("");
+    pipeline = gst_pipeline_new("pipeline");
 
     bus = gst_element_get_bus(pipeline);
+
+    gst_bus_add_signal_watch(bus);
+
+    g_signal_connect(bus, "message::error", G_CALLBACK(on_message_error), this);
+    g_signal_connect(bus, "message::state-changed",
+                     G_CALLBACK(on_message_state_changed), this);
+    g_signal_connect(bus, "message::latency", G_CALLBACK(on_message_latency),
+                     this);
 
     source = gst_element_factory_make("pulsesrc", "source");
     sink = gst_element_factory_make("pulsesink", "sink");
@@ -37,10 +105,6 @@ PipelineBase::PipelineBase(const uint& sampling_rate) {
                      nullptr);
 
     gst_element_link_many(source, capsfilter, queue, sink, nullptr);
-
-    /*
-        bus->add_watch(sigc::mem_fun(*this, &PipelineBase::on_message));
-    */
 }
 
 PipelineBase::~PipelineBase() {
@@ -49,87 +113,7 @@ PipelineBase::~PipelineBase() {
     gst_object_unref(bus);
     gst_object_unref(pipeline);
 }
-/*
-bool PipelineBase::on_message(const Glib::RefPtr<Gst::Bus>& gst_bus,
-                              const Glib::RefPtr<Gst::Message>& message) {
-    switch (message->get_message_type()) {
-        case Gst::MESSAGE_ERROR: {
-            on_message_error(gst_bus, message);
-            break;
-        }
-        case Gst::MESSAGE_INFO: {
-            on_message_info(gst_bus, message);
-            break;
-        }
-        case Gst::MESSAGE_STATE_CHANGED: {
-            on_message_state_changed(gst_bus, message);
-            break;
-        }
-        case Gst::MESSAGE_LATENCY: {
-            on_message_latency(gst_bus, message);
-            break;
-        }
-        default:
-            break;
-    }
 
-    return true;
-}
-
-void PipelineBase::on_message_error(const Glib::RefPtr<Gst::Bus>& gst_bus,
-                                    const Glib::RefPtr<Gst::Message>& message) {
-    auto msg = Glib::RefPtr<Gst::MessageError>::cast_static(message);
-
-    util::critical(log_tag + msg->parse_error().what());
-    util::debug(log_tag + msg->parse_debug());
-}
-
-void PipelineBase::on_message_info(const Glib::RefPtr<Gst::Bus>& gst_bus,
-                                   const Glib::RefPtr<Gst::Message>& message) {
-    auto msg = Glib::RefPtr<Gst::MessageInfo>::cast_static(message);
-
-    util::critical(log_tag + msg->parse_error().what());
-    util::debug(log_tag + msg->parse_debug());
-}
-
-void PipelineBase::on_message_state_changed(
-    const Glib::RefPtr<Gst::Bus>& gst_bus,
-    const Glib::RefPtr<Gst::Message>& message) {
-    auto msg = Glib::RefPtr<Gst::MessageStateChanged>::cast_static(message);
-
-    util::debug(log_tag + Gst::Enums::get_name(msg->parse_new_state()));
-}
-
-void PipelineBase::on_message_latency(
-    const Glib::RefPtr<Gst::Bus>& gst_bus,
-    const Glib::RefPtr<Gst::Message>& message) {
-    auto msg = Glib::RefPtr<Gst::MessageLatency>::cast_static(message);
-
-    if (msg->get_source()) {
-        int latency, buffer;
-
-        auto name = msg->get_source()->get_name();
-
-        if (name == "source") {
-            msg->get_source()->get_property("latency-time", latency);
-            msg->get_source()->get_property("buffer-time", buffer);
-
-            util::debug(log_tag +
-                        "pulsesrc latency [us]: " + std::to_string(latency));
-            util::debug(log_tag +
-                        "pulsesrc buffer [us]: " + std::to_string(buffer));
-        } else if (name == "sink") {
-            msg->get_source()->get_property("latency-time", latency);
-            msg->get_source()->get_property("buffer-time", buffer);
-
-            util::debug(log_tag +
-                        "pulsesink latency [us]: " + std::to_string(latency));
-            util::debug(log_tag +
-                        "pulsesink buffer [us]: " + std::to_string(buffer));
-        }
-    }
-}
-*/
 void PipelineBase::set_source_monitor_name(std::string name) {
     std::string current_device;
 
