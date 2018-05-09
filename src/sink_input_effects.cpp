@@ -1,4 +1,4 @@
-#include <giomm/settings.h>
+#include <gio/gio.h>
 #include "sink_input_effects.hpp"
 
 SinkInputEffects::SinkInputEffects(std::shared_ptr<PulseManager> pulse_manager)
@@ -25,12 +25,16 @@ SinkInputEffects::SinkInputEffects(std::shared_ptr<PulseManager> pulse_manager)
     pm->sink_input_removed.connect(
         sigc::mem_fun(*this, &SinkInputEffects::on_app_removed));
 
-    auto app_settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
+    auto app_settings = g_settings_new("com.github.wwmm.pulseeffects");
 
-    auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
-
-    // app_settings->bind("buffer-out", source, "buffer-time", flag);
-    // app_settings->bind("latency-out", source, "latency-time", flag);
+    g_settings_bind(app_settings, "buffer-out", source, "buffer-time",
+                    G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind(app_settings, "latency-out", source, "latency-time",
+                    G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind(app_settings, "buffer-out", sink, "buffer-time",
+                    G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind(app_settings, "latency-out", sink, "latency-time",
+                    G_SETTINGS_BIND_DEFAULT);
 }
 
 SinkInputEffects::~SinkInputEffects() {}

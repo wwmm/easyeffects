@@ -26,6 +26,7 @@ pulseeffects_sources = [
 
 pulseeffects_deps = [
 	dependency('libpulse'),
+	dependency('gio-2.0'),
 	dependency('glibmm-2.4'),
 	dependency('gtk+-3.0', version: '>= 3.20'),
 	dependency('gtkmm-3.0',version: '>= 3.20'),
