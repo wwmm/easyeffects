@@ -1,3 +1,4 @@
+#include <gstreamer-1.0/gst/insertbin/gstinsertbin.h>
 #include <gstreamermm/audiobasesrc.h>
 #include <gstreamermm/caps.h>
 #include <gstreamermm/elementfactory.h>
@@ -188,13 +189,13 @@ void PipelineBase::update_pipeline_state() {
     }
 }
 
-void PipelineBase::on_app_added(std::shared_ptr<AppInfo> app_info) {
+void PipelineBase::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
     apps_list.push_back(move(app_info));
 
     update_pipeline_state();
 }
 
-void PipelineBase::on_app_changed(std::shared_ptr<AppInfo> app_info) {
+void PipelineBase::on_app_changed(const std::shared_ptr<AppInfo>& app_info) {
     for (auto it = apps_list.begin(); it != apps_list.end(); it++) {
         auto n = it - apps_list.begin();
 

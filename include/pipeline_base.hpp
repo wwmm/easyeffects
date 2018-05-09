@@ -14,19 +14,19 @@ class PipelineBase {
    protected:
     std::string log_tag;
 
-    Glib::RefPtr<Gst::Pipeline> pipeline;
+    Glib::RefPtr<Gst::Element> effects_bin;
 
     void set_source_monitor_name(std::string name);
     void set_output_sink_name(std::string name);
     void set_pulseaudio_props(std::string props);
 
-    void on_app_added(std::shared_ptr<AppInfo> app_info);
-    void on_app_changed(std::shared_ptr<AppInfo> app_info);
+    void on_app_added(const std::shared_ptr<AppInfo>& app_info);
+    void on_app_changed(const std::shared_ptr<AppInfo>& app_info);
     void on_app_removed(uint idx);
 
    private:
+    Glib::RefPtr<Gst::Pipeline> pipeline;
     Glib::RefPtr<Gst::Bus> bus;
-
     Glib::RefPtr<Gst::Element> source;
     Glib::RefPtr<Gst::Element> sink;
     Glib::RefPtr<Gst::Element> spectrum;
