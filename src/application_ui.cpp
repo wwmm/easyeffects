@@ -273,7 +273,7 @@ bool ApplicationUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
     if (mouse_inside) {
         std::ostringstream msg;
 
-        msg.precision(2);
+        msg.precision(0);
         msg << std::fixed << mouse_freq << " Hz, ";
         msg << std::fixed << mouse_intensity << " dB";
 

@@ -65,7 +65,8 @@ void on_message_latency(const GstBus* gst_bus,
 void on_message_element(const GstBus* gst_bus,
                         GstMessage* message,
                         PipelineBase* pb) {
-    if (GST_OBJECT_NAME(message->src) == std::string("spectrum")) {
+    if (GST_OBJECT_NAME(message->src) == std::string("spectrum") &&
+        !pb->resizing_spectrum) {
         const GstStructure* s = gst_message_get_structure(message);
 
         const GValue* magnitudes;
@@ -105,12 +106,16 @@ void on_message_element(const GstBus* gst_bus,
 void on_spectrum_n_points_changed(GSettings* settings,
                                   gchar* key,
                                   PipelineBase* pb) {
+    pb->resizing_spectrum = true;
+
     auto npoints = g_settings_get_int(settings, "spectrum-n-points");
 
-    pb->spectrum_mag_tmp.resize(npoints);
+    pb->spectrum_mag.resize(npoints);
 
     pb->spectrum_x_axis = util::logspace(log10(pb->min_spectrum_freq),
                                          log10(pb->max_spectrum_freq), npoints);
+
+    pb->resizing_spectrum = false;
 }
 
 }  // namespace
