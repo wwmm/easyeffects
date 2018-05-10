@@ -138,6 +138,10 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     stack->add(*soe_ui, "source_outputs");
     stack->child_property_icon_name(*soe_ui).set_value(
         "audio-input-microphone-symbolic");
+
+    // temporary spectrum callback
+    app->sie->new_spectrum.connect(
+        sigc::mem_fun(*this, &ApplicationUi::on_new_spectrum));
 }
 
 ApplicationUi* ApplicationUi::create(Application* app_this) {
@@ -234,6 +238,12 @@ void ApplicationUi::on_reset_settings() {
     settings->reset("enable-all-apps");
     settings->reset("use-default-sink");
     settings->reset("use-default-source");
+}
+
+void ApplicationUi::on_new_spectrum(const std::vector<float>& magnitudes) {
+    spectrum_mag = magnitudes;
+
+    spectrum->queue_draw();
 }
 
 bool ApplicationUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {

@@ -54,6 +54,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     std::unique_ptr<SourceOutputEffectsUi> soe_ui;
 
     double mouse_intensity;
+    std::vector<float> spectrum_mag;
 
     template <typename T>
     void get_object(std::string name, T& object) {
@@ -67,6 +68,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     bool on_enable_autostart(bool state);
 
     void on_reset_settings();
+
+    void on_new_spectrum(const std::vector<float>& magnitudes);
 
     bool on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx);
 
