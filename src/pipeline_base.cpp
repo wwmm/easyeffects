@@ -59,10 +59,27 @@ void on_message_latency(const GstBus* gst_bus,
     }
 }
 
+void on_message_element(const GstBus* gst_bus,
+                        GstMessage* message,
+                        PipelineBase* pb) {
+    if (GST_OBJECT_NAME(message->src) == std::string("spectrum")) {
+        const GstStructure* s = gst_message_get_structure(message);
+
+        const GValue* magnitudes;
+
+        magnitudes = gst_structure_get_value(s, "magnitude");
+
+        auto mag = g_value_get_float(gst_value_list_get_value(magnitudes, 0));
+
+        std::cout << mag << std::endl;
+    }
+}
+
 }  // namespace
 
 PipelineBase::PipelineBase(const uint& sampling_rate)
-    : settings(g_settings_new("com.github.wwmm.pulseeffects")) {
+    : settings(g_settings_new("com.github.wwmm.pulseeffects")),
+      rate(sampling_rate) {
     gst_init(nullptr, nullptr);
 
     pipeline = gst_pipeline_new("pipeline");
@@ -76,6 +93,8 @@ PipelineBase::PipelineBase(const uint& sampling_rate)
                      G_CALLBACK(on_message_state_changed), this);
     g_signal_connect(bus, "message::latency", G_CALLBACK(on_message_latency),
                      this);
+    g_signal_connect(bus, "message::element", G_CALLBACK(on_message_element),
+                     this);
 
     source = gst_element_factory_make("pulsesrc", "source");
     sink = gst_element_factory_make("pulsesink", "sink");
@@ -84,8 +103,8 @@ PipelineBase::PipelineBase(const uint& sampling_rate)
     auto capsfilter = gst_element_factory_make("capsfilter", nullptr);
     auto queue = gst_element_factory_make("queue", nullptr);
 
-    auto caps_str = "audio/x-raw,format=F32LE,channels=2,rate=" +
-                    std::to_string(sampling_rate);
+    auto caps_str =
+        "audio/x-raw,format=F32LE,channels=2,rate=" + std::to_string(rate);
 
     auto caps = gst_caps_from_string(caps_str.c_str());
 
@@ -102,10 +121,13 @@ PipelineBase::PipelineBase(const uint& sampling_rate)
 
     g_object_set(queue, "silent", true, nullptr);
 
-    gst_bin_add_many(GST_BIN(pipeline), source, capsfilter, queue, sink,
-                     nullptr);
+    g_object_set(spectrum, "bands", spectrum_nbands, nullptr);
+    g_object_set(spectrum, "threshold", spectrum_threshold, nullptr);
 
-    gst_element_link_many(source, capsfilter, queue, sink, nullptr);
+    gst_bin_add_many(GST_BIN(pipeline), source, capsfilter, queue, spectrum,
+                     sink, nullptr);
+
+    gst_element_link_many(source, capsfilter, queue, spectrum, sink, nullptr);
 }
 
 PipelineBase::~PipelineBase() {
@@ -203,4 +225,18 @@ void PipelineBase::on_app_removed(uint idx) {
     }
 
     update_pipeline_state();
+}
+
+void PipelineBase::calc_spectrum_freqs() {
+    for (uint n = 0; n < spectrum_nbands; n++) {
+        auto f = rate * (0.5 * n + 0.25) / spectrum_nbands;
+
+        if (f > max_spectrum_freq) {
+            break;
+        }
+
+        if (f > min_spectrum_freq) {
+            spectrum_freqs.push_back(f);
+        }
+    }
 }
