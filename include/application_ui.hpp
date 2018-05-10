@@ -53,7 +53,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     std::unique_ptr<SinkInputEffectsUi> sie_ui;
     std::unique_ptr<SourceOutputEffectsUi> soe_ui;
 
-    double mouse_intensity;
+    bool mouse_inside;
+    double mouse_intensity, mouse_freq;
     std::vector<float> spectrum_mag;
 
     template <typename T>
