@@ -145,8 +145,9 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     stack->child_property_icon_name(*soe_ui).set_value(
         "audio-input-microphone-symbolic");
 
-    // temporary spectrum callback
-    app->sie->new_spectrum.connect(
+    // temporary spectrum connection. it changes with the selected stack child
+
+    spectrum_connection = app->sie->new_spectrum.connect(
         sigc::mem_fun(*this, &ApplicationUi::on_new_spectrum));
 }
 
@@ -345,8 +346,18 @@ void ApplicationUi::on_stack_visible_child_changed() {
     auto name = stack->get_visible_child_name();
 
     if (name == std::string("sink_inputs")) {
+        spectrum_connection.disconnect();
+
+        spectrum_connection = app->sie->new_spectrum.connect(
+            sigc::mem_fun(*this, &ApplicationUi::on_new_spectrum));
     } else if (name == std::string("source_outputs")) {
+        spectrum_connection.disconnect();
+
+        spectrum_connection = app->soe->new_spectrum.connect(
+            sigc::mem_fun(*this, &ApplicationUi::on_new_spectrum));
     }
+
+    clear_spectrum();
 }
 
 void ApplicationUi::on_sink_added(std::shared_ptr<mySinkInfo> info) {

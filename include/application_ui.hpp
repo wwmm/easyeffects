@@ -50,6 +50,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     Gtk::ListStore* source_list;
     Gtk::Stack* stack;
 
+    sigc::connection spectrum_connection;
+
     std::unique_ptr<SinkInputEffectsUi> sie_ui;
     std::unique_ptr<SourceOutputEffectsUi> soe_ui;
 
