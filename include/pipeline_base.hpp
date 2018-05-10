@@ -14,7 +14,7 @@ class PipelineBase {
 
     std::string log_tag;
 
-    GstElement *pipeline, *source, *sink, *spectrum;
+    GstElement *pipeline, *source, *sink, *spectrum, *spectrum_wrapper;
     GstBus* bus;
 
     bool resizing_spectrum = false;

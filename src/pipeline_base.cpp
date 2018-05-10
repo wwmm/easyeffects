@@ -1,5 +1,6 @@
 #include <glib-object.h>
 #include <gobject/gvaluecollector.h>
+#include <gst/insertbin/gstinsertbin.h>
 #include <algorithm>
 #include <boost/math/interpolators/cubic_b_spline.hpp>
 #include <cmath>
@@ -118,6 +119,30 @@ void on_spectrum_n_points_changed(GSettings* settings,
     pb->resizing_spectrum = false;
 }
 
+void on_show_spectrum(GSettings* settings, gchar* key, PipelineBase* pb) {
+    auto enabled = g_settings_get_boolean(settings, "show-spectrum");
+
+    if (enabled) {
+        gst_insert_bin_append(GST_INSERT_BIN(pb->spectrum_wrapper),
+                              pb->spectrum,
+                              [](auto bin, auto elem, auto success, auto d) {
+                                  auto pb = static_cast<PipelineBase*>(d);
+
+                                  util::debug(pb->log_tag + "spectrum enabled");
+                              },
+                              pb);
+    } else {
+        gst_insert_bin_append(
+            GST_INSERT_BIN(pb->spectrum_wrapper), pb->spectrum,
+            [](auto bin, auto elem, auto success, auto d) {
+                auto pb = static_cast<PipelineBase*>(d);
+
+                util::debug(pb->log_tag + "spectrum disabled");
+            },
+            pb);
+    }
+}
+
 }  // namespace
 
 PipelineBase::PipelineBase(const uint& sampling_rate)
@@ -146,6 +171,8 @@ PipelineBase::PipelineBase(const uint& sampling_rate)
     auto capsfilter = gst_element_factory_make("capsfilter", nullptr);
     auto queue = gst_element_factory_make("queue", nullptr);
 
+    spectrum_wrapper = gst_insert_bin_new("spectrum_wrapper");
+
     auto caps_str =
         "audio/x-raw,format=F32LE,channels=2,rate=" + std::to_string(rate);
 
@@ -153,10 +180,11 @@ PipelineBase::PipelineBase(const uint& sampling_rate)
 
     // building pipeline
 
-    gst_bin_add_many(GST_BIN(pipeline), source, capsfilter, queue, spectrum,
-                     sink, nullptr);
+    gst_bin_add_many(GST_BIN(pipeline), source, capsfilter, queue,
+                     spectrum_wrapper, sink, nullptr);
 
-    gst_element_link_many(source, capsfilter, queue, spectrum, sink, nullptr);
+    gst_element_link_many(source, capsfilter, queue, spectrum_wrapper, sink,
+                          nullptr);
 
     // initializing properties
 
@@ -180,6 +208,8 @@ PipelineBase::PipelineBase(const uint& sampling_rate)
 
     g_signal_connect(settings, "changed::spectrum-n-points",
                      G_CALLBACK(on_spectrum_n_points_changed), this);
+    g_signal_connect(settings, "changed::show-spectrum",
+                     G_CALLBACK(on_show_spectrum), this);
 
     calc_spectrum_freqs();
 }
