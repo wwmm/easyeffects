@@ -22,8 +22,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
     static ApplicationUi* create(Application* app);
 
-    Gtk::DrawingArea* spectrum;
-
    private:
     std::string log_tag = "application_ui: ";
 
@@ -43,6 +41,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     Gtk::Adjustment* buffer_out;
     Gtk::Adjustment* latency_in;
     Gtk::Adjustment* latency_out;
+    Gtk::DrawingArea* spectrum;
+    Gtk::Box* spectrum_box;
     Gtk::Switch* show_spectrum;
     Gtk::Adjustment* spectrum_n_points;
     Gtk::Button* reset_settings;
@@ -65,6 +65,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     void apply_css_style(std::string css_file_name);
 
     void init_autostart_switch();
+
+    void clear_spectrum();
 
     bool on_enable_autostart(bool state);
 

@@ -26,8 +26,9 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     builder->get_widget("use_default_source", use_default_source);
     builder->get_widget("input_device", input_device);
     builder->get_widget("output_device", output_device);
-    builder->get_widget("show_spectrum", show_spectrum);
     builder->get_widget("reset_settings", reset_settings);
+    builder->get_widget("show_spectrum", show_spectrum);
+    builder->get_widget("spectrum_box", spectrum_box);
     builder->get_widget("spectrum", spectrum);
     builder->get_widget("stack", stack);
 
@@ -69,6 +70,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     settings->bind("latency-in", latency_in, "value", flag);
 
     settings->bind("show-spectrum", show_spectrum, "active", flag);
+    settings->bind("show-spectrum", spectrum_box, "visible", flag);
     settings->bind("spectrum-n-points", spectrum_n_points, "value", flag);
 
     init_autostart_switch();
@@ -184,6 +186,12 @@ void ApplicationUi::init_autostart_switch() {
     }
 }
 
+void ApplicationUi::clear_spectrum() {
+    spectrum_mag.resize(0);
+
+    spectrum->queue_draw();
+}
+
 bool ApplicationUi::on_enable_autostart(bool state) {
     auto path =
         Glib::get_user_config_dir() + "/autostart/pulseeffects-service.desktop";
@@ -249,47 +257,52 @@ void ApplicationUi::on_new_spectrum(const std::vector<float>& magnitudes) {
 bool ApplicationUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
     ctx->paint();
 
-    auto allocation = spectrum->get_allocation();
-    auto width = allocation.get_width();
-    auto height = allocation.get_height();
-    auto style_ctx = spectrum->get_style_context();
     auto n_bars = spectrum_mag.size();
-    auto x = util::linspace(0, width, n_bars);
 
-    for (uint n = 0; n < n_bars; n++) {
-        auto bar_height = spectrum_mag[n] * height;
+    if (n_bars > 0) {
+        auto allocation = spectrum->get_allocation();
+        auto width = allocation.get_width();
+        auto height = allocation.get_height();
+        auto style_ctx = spectrum->get_style_context();
+        auto n_bars = spectrum_mag.size();
+        auto x = util::linspace(0, width, n_bars);
 
-        ctx->rectangle(x[n], height - bar_height, width / n_bars, bar_height);
-    }
+        for (uint n = 0; n < n_bars; n++) {
+            auto bar_height = spectrum_mag[n] * height;
 
-    auto color = Gdk::RGBA();
+            ctx->rectangle(x[n], height - bar_height, width / n_bars,
+                           bar_height);
+        }
 
-    style_ctx->lookup_color("theme_selected_bg_color", color);
-    ctx->set_source_rgba(color.get_red(), color.get_green(), color.get_blue(),
-                         1.0);
-    ctx->set_line_width(1.1);
-    ctx->stroke();
+        auto color = Gdk::RGBA();
 
-    if (mouse_inside) {
-        std::ostringstream msg;
+        style_ctx->lookup_color("theme_selected_bg_color", color);
+        ctx->set_source_rgba(color.get_red(), color.get_green(),
+                             color.get_blue(), 1.0);
+        ctx->set_line_width(1.1);
+        ctx->stroke();
 
-        msg.precision(0);
-        msg << std::fixed << mouse_freq << " Hz, ";
-        msg << std::fixed << mouse_intensity << " dB";
+        if (mouse_inside) {
+            std::ostringstream msg;
 
-        Pango::FontDescription font;
-        font.set_family("Monospace");
-        font.set_weight(Pango::WEIGHT_BOLD);
+            msg.precision(0);
+            msg << std::fixed << mouse_freq << " Hz, ";
+            msg << std::fixed << mouse_intensity << " dB";
 
-        int text_width;
-        int text_height;
-        auto layout = create_pango_layout(msg.str());
-        layout->set_font_description(font);
-        layout->get_pixel_size(text_width, text_height);
+            Pango::FontDescription font;
+            font.set_family("Monospace");
+            font.set_weight(Pango::WEIGHT_BOLD);
 
-        ctx->move_to(width - text_width, 0);
+            int text_width;
+            int text_height;
+            auto layout = create_pango_layout(msg.str());
+            layout->set_font_description(font);
+            layout->get_pixel_size(text_width, text_height);
 
-        layout->show_in_cairo_context(ctx);
+            ctx->move_to(width - text_width, 0);
+
+            layout->show_in_cairo_context(ctx);
+        }
     }
 
     return false;
