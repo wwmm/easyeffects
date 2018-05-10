@@ -76,7 +76,18 @@ void on_message_element(const GstBus* gst_bus,
                 g_value_get_float(gst_value_list_get_value(magnitudes, n));
         }
 
-        // std::cout << pb->spectrum_mag_tmp[1000] << std::endl;
+        boost::math::cubic_b_spline<float> spline(pb->spectrum_mag_tmp.begin(),
+                                                  pb->spectrum_mag_tmp.end(),
+                                                  pb->spline_f0, pb->spline_df);
+
+        for (uint n = 0; n < pb->spectrum_mag.size(); n++) {
+            pb->spectrum_mag[n] = spline(pb->spectrum_x_axis[n]);
+        }
+
+        Glib::signal_idle().connect([pb]() {
+            pb->new_spectrum.emit(pb->spectrum_mag);
+            return false;
+        });
     }
 }
 
@@ -274,5 +285,8 @@ void PipelineBase::calc_spectrum_freqs() {
     spectrum_x_axis = util::logspace(log10(min_spectrum_freq),
                                      log10(max_spectrum_freq), npoints);
 
-    spectrum_mag_tmp.resize(npoints);
+    spectrum_mag.resize(npoints);
+
+    spline_f0 = spectrum_freqs[0];
+    spline_df = spectrum_freqs[1] - spectrum_freqs[0];
 }

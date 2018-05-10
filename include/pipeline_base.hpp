@@ -21,8 +21,11 @@ class PipelineBase {
     int spectrum_threshold = -120;   // dB
     uint spectrum_nbands = 1600;
     uint spectrum_nfreqs;
+    float spline_f0, spline_df;
     std::vector<float> spectrum_freqs, spectrum_x_axis;
     std::vector<float> spectrum_mag_tmp, spectrum_mag;
+
+    sigc::signal<void, std::vector<float>> new_spectrum;
 
    protected:
     GSettings* settings;
