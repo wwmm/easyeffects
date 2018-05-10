@@ -249,9 +249,26 @@ void ApplicationUi::on_new_spectrum(const std::vector<float>& magnitudes) {
 bool ApplicationUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
     ctx->paint();
 
+    auto allocation = spectrum->get_allocation();
+    auto width = allocation.get_width();
+    auto height = allocation.get_height();
+    auto style_ctx = spectrum->get_style_context();
     auto n_bars = spectrum_mag.size();
+    auto x = util::linspace(0, width, n_bars);
 
-    g_debug("draw event");
+    for (uint n = 0; n < n_bars; n++) {
+        auto bar_height = spectrum_mag[n] * height;
+
+        ctx->rectangle(x[n], height - bar_height, width / n_bars, bar_height);
+    }
+
+    auto color = Gdk::RGBA();
+
+    style_ctx->lookup_color("theme_selected_bg_color", color);
+    ctx->set_source_rgba(color.get_red(), color.get_green(), color.get_blue(),
+                         1.0);
+    ctx->set_line_width(1.1);
+    ctx->stroke();
 
     return false;
 }

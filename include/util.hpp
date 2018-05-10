@@ -13,6 +13,7 @@ void critical(const std::string& s);
 void warning(const std::string& s);
 
 std::vector<float> logspace(float start, float stop, uint npoints);
+std::vector<float> linspace(float start, float stop, uint npoints);
 
 }  // namespace util
 
