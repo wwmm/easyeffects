@@ -34,7 +34,8 @@ pulseeffects_deps = [
 	dependency('gstreamer-plugins-bad-1.0', version: '>= 1.12'),
 	dependency('gstreamer-webrtc-1.0', required: false),
 	dependency('lilv-0', version: '>= 0.22', required: false),
-	dependency('libbs2b', required: false)
+	dependency('libbs2b', required: false),
+	dependency('boost')
 ]
 
 executable(

@@ -1,5 +1,7 @@
 #include <glib-object.h>
 #include <gobject/gvaluecollector.h>
+#include <boost/math/interpolators/cubic_b_spline.hpp>
+#include <cmath>
 #include "pipeline_base.hpp"
 #include "util.hpp"
 
@@ -69,10 +71,24 @@ void on_message_element(const GstBus* gst_bus,
 
         magnitudes = gst_structure_get_value(s, "magnitude");
 
-        auto mag = g_value_get_float(gst_value_list_get_value(magnitudes, 0));
+        for (uint n = 0; n < pb->spectrum_freqs.size(); n++) {
+            pb->spectrum_mag_tmp[n] =
+                g_value_get_float(gst_value_list_get_value(magnitudes, n));
+        }
 
-        // std::cout << mag << std::endl;
+        // std::cout << pb->spectrum_mag_tmp[1000] << std::endl;
     }
+}
+
+void on_spectrum_n_points_changed(GSettings* settings,
+                                  gchar* key,
+                                  PipelineBase* pb) {
+    auto npoints = g_settings_get_int(settings, "spectrum-n-points");
+
+    pb->spectrum_mag_tmp.resize(npoints);
+
+    pb->spectrum_x_axis = util::logspace(log10(pb->min_spectrum_freq),
+                                         log10(pb->max_spectrum_freq), npoints);
 }
 
 }  // namespace
@@ -132,6 +148,11 @@ PipelineBase::PipelineBase(const uint& sampling_rate)
 
     g_object_set(spectrum, "bands", spectrum_nbands, nullptr);
     g_object_set(spectrum, "threshold", spectrum_threshold, nullptr);
+
+    // preparing spectrum
+
+    g_signal_connect(settings, "changed::spectrum-n-points",
+                     G_CALLBACK(on_spectrum_n_points_changed), this);
 
     calc_spectrum_freqs();
 }
@@ -246,7 +267,12 @@ void PipelineBase::calc_spectrum_freqs() {
         }
     }
 
+    spectrum_mag_tmp.resize(spectrum_freqs.size());
+
     auto npoints = g_settings_get_int(settings, "spectrum-n-points");
 
-    spectrum_x_axis = util::logspace(1.3, 4.3, npoints);
+    spectrum_x_axis = util::logspace(log10(min_spectrum_freq),
+                                     log10(max_spectrum_freq), npoints);
+
+    spectrum_mag_tmp.resize(npoints);
 }
