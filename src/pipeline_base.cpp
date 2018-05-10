@@ -1,5 +1,6 @@
 #include <glib-object.h>
 #include <gobject/gvaluecollector.h>
+#include <algorithm>
 #include <boost/math/interpolators/cubic_b_spline.hpp>
 #include <cmath>
 #include "pipeline_base.hpp"
@@ -84,10 +85,20 @@ void on_message_element(const GstBus* gst_bus,
             pb->spectrum_mag[n] = spline(pb->spectrum_x_axis[n]);
         }
 
-        Glib::signal_idle().connect([pb]() {
-            pb->new_spectrum.emit(pb->spectrum_mag);
-            return false;
-        });
+        auto min_mag = pb->spectrum_threshold;
+        auto max_mag =
+            *std::max_element(pb->spectrum_mag.begin(), pb->spectrum_mag.end());
+
+        if (max_mag > min_mag) {
+            for (uint n = 0; n < pb->spectrum_mag.size(); n++) {
+                pb->spectrum_mag[n] = (min_mag - pb->spectrum_mag[n]) / min_mag;
+            }
+
+            Glib::signal_idle().connect([pb]() {
+                pb->new_spectrum.emit(pb->spectrum_mag);
+                return false;
+            });
+        }
     }
 }
 

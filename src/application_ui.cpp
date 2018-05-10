@@ -249,6 +249,8 @@ void ApplicationUi::on_new_spectrum(const std::vector<float>& magnitudes) {
 bool ApplicationUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
     ctx->paint();
 
+    auto n_bars = spectrum_mag.size();
+
     g_debug("draw event");
 
     return false;
