@@ -71,7 +71,7 @@ void on_message_element(const GstBus* gst_bus,
 
         auto mag = g_value_get_float(gst_value_list_get_value(magnitudes, 0));
 
-        std::cout << mag << std::endl;
+        // std::cout << mag << std::endl;
     }
 }
 
@@ -108,6 +108,15 @@ PipelineBase::PipelineBase(const uint& sampling_rate)
 
     auto caps = gst_caps_from_string(caps_str.c_str());
 
+    // building pipeline
+
+    gst_bin_add_many(GST_BIN(pipeline), source, capsfilter, queue, spectrum,
+                     sink, nullptr);
+
+    gst_element_link_many(source, capsfilter, queue, spectrum, sink, nullptr);
+
+    // initializing properties
+
     g_object_set(source, "volume", 1.0, nullptr);
     g_object_set(source, "mute", false, nullptr);
     g_object_set(source, "provide-clock", false, nullptr);
@@ -124,10 +133,7 @@ PipelineBase::PipelineBase(const uint& sampling_rate)
     g_object_set(spectrum, "bands", spectrum_nbands, nullptr);
     g_object_set(spectrum, "threshold", spectrum_threshold, nullptr);
 
-    gst_bin_add_many(GST_BIN(pipeline), source, capsfilter, queue, spectrum,
-                     sink, nullptr);
-
-    gst_element_link_many(source, capsfilter, queue, spectrum, sink, nullptr);
+    calc_spectrum_freqs();
 }
 
 PipelineBase::~PipelineBase() {
@@ -239,4 +245,8 @@ void PipelineBase::calc_spectrum_freqs() {
             spectrum_freqs.push_back(f);
         }
     }
+
+    auto npoints = g_settings_get_int(settings, "spectrum-n-points");
+
+    spectrum_x_axis = util::logspace(1.3, 4.3, npoints);
 }
