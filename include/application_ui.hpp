@@ -82,6 +82,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
     bool on_spectrum_motion_notify_event(GdkEventMotion* event);
 
+    void on_stack_visible_child_changed();
+
     void on_sink_added(std::shared_ptr<mySinkInfo> info);
 
     void on_sink_removed(uint idx);

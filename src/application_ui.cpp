@@ -102,6 +102,10 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     output_device->signal_changed().connect(
         sigc::mem_fun(*this, &ApplicationUi::on_output_device_changed));
 
+    stack->connect_property_changed(
+        "visible-child",
+        sigc::mem_fun(*this, &ApplicationUi::on_stack_visible_child_changed));
+
     app->pm->sink_added.connect(
         sigc::mem_fun(*this, &ApplicationUi::on_sink_added));
     app->pm->sink_removed.connect(
@@ -335,6 +339,14 @@ bool ApplicationUi::on_spectrum_motion_notify_event(GdkEventMotion* event) {
     mouse_intensity = -event->y * 120 / height;
 
     return false;
+}
+
+void ApplicationUi::on_stack_visible_child_changed() {
+    auto name = stack->get_visible_child_name();
+
+    if (name == std::string("sink_inputs")) {
+    } else if (name == std::string("source_outputs")) {
+    }
 }
 
 void ApplicationUi::on_sink_added(std::shared_ptr<mySinkInfo> info) {
