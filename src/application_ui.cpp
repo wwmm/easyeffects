@@ -155,7 +155,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
     // visible property is reset by show_all
 
-    spectrum_box->property_visible() = false;
+    spectrum_box->property_visible() = settings->get_boolean("show-spectrum");
 }
 
 ApplicationUi* ApplicationUi::create(Application* app_this) {

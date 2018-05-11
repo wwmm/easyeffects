@@ -31,7 +31,7 @@ PulseManager::PulseManager()
 PulseManager::~PulseManager() {
     unload_sinks();
 
-    drain_context();
+    // drain_context();
 
     pa_threaded_mainloop_lock(main_loop);
 
