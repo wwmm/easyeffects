@@ -32,10 +32,20 @@ SinkInputEffects::SinkInputEffects(std::shared_ptr<PulseManager> pulse_manager)
     g_settings_bind(settings, "latency-out", sink, "latency-time",
                     G_SETTINGS_BIND_DEFAULT);
 
+    // plugins bins
+
+    bins.push_back(GST_INSERT_BIN(gst_insert_bin_new("wrapper0")));
+
+    for (auto b : bins) {
+        gst_insert_bin_append(effects_bin, GST_ELEMENT(b), nullptr, nullptr);
+    }
+
     // plugins
 
     limiter = std::make_unique<Limiter>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.limiter");
+
+    gst_insert_bin_append(bins[0], limiter->bin, nullptr, nullptr);
 }
 
 SinkInputEffects::~SinkInputEffects() {}

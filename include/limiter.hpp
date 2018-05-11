@@ -3,12 +3,15 @@
 
 #include <gio/gio.h>
 #include <gst/gst.h>
+#include <gst/insertbin/gstinsertbin.h>
 #include <iostream>
 
 class Limiter {
    public:
     Limiter(std::string tag, std::string schema);
     ~Limiter();
+
+    GstElement* bin;
 
    private:
     std::string log_tag;

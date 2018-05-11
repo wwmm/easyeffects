@@ -1,6 +1,5 @@
 #include <glib-object.h>
 #include <gobject/gvaluecollector.h>
-#include <gst/insertbin/gstinsertbin.h>
 #include <algorithm>
 #include <boost/math/interpolators/cubic_b_spline.hpp>
 #include <cmath>
@@ -152,8 +151,8 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     auto capsfilter = gst_element_factory_make("capsfilter", nullptr);
     auto queue = gst_element_factory_make("queue", nullptr);
 
-    effects_bin = gst_insert_bin_new("effects_bin");
-    spectrum_wrapper = gst_insert_bin_new("spectrum_wrapper");
+    effects_bin = GST_INSERT_BIN(gst_insert_bin_new("effects_bin"));
+    spectrum_wrapper = GST_INSERT_BIN(gst_insert_bin_new("spectrum_wrapper"));
 
     auto caps_str =
         "audio/x-raw,format=F32LE,channels=2,rate=" + std::to_string(rate);
