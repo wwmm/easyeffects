@@ -129,15 +129,15 @@ msgstr "Стереокорректор"
 
 #: PulseEffects/ui/compressor.glade:174 PulseEffects/ui/gate.glade:175
 msgid "average"
-msgstr ""
+msgstr "средняя"
 
 #: PulseEffects/ui/compressor.glade:190 PulseEffects/ui/gate.glade:191
 msgid "maximum"
-msgstr ""
+msgstr "максимум"
 
 #: PulseEffects/ui/compressor.glade:210
 msgid "Mix"
-msgstr ""
+msgstr "смешать"
 
 #: PulseEffects/ui/compressor.glade:251 PulseEffects/ui/gate.glade:252
 #, fuzzy
@@ -240,7 +240,7 @@ msgstr ""
 
 #: PulseEffects/ui/deesser.glade:185 PulseEffects/ui/webrtc.glade:389
 msgid "Mode"
-msgstr ""
+msgstr "режим"
 
 #: PulseEffects/ui/deesser.glade:195
 msgid "wide"
@@ -686,7 +686,7 @@ msgstr ""
 #: PulseEffects/ui/stereo_spread.glade:124 PulseEffects/ui/webrtc.glade:181
 #: PulseEffects/ui/webrtc.glade:255 PulseEffects/ui/webrtc.glade:578
 msgid "Low"
-msgstr ""
+msgstr "Низкочастотный фильтр"
 
 #: PulseEffects/ui/stereo_spread.glade:136 PulseEffects/ui/webrtc.glade:216
 #: PulseEffects/ui/webrtc.glade:290 PulseEffects/ui/webrtc.glade:613
@@ -714,11 +714,11 @@ msgstr ""
 
 #: PulseEffects/ui/webrtc.glade:116
 msgid "Extended Filter"
-msgstr ""
+msgstr "Расширенный фильтр"
 
 #: PulseEffects/ui/webrtc.glade:129
 msgid "Delay Agnostic"
-msgstr ""
+msgstr "Задержка"
 
 #: PulseEffects/ui/webrtc.glade:141
 #, fuzzy
@@ -752,11 +752,11 @@ msgstr "Компрессор"
 
 #: PulseEffects/ui/webrtc.glade:399
 msgid "Adaptive"
-msgstr ""
+msgstr "Адаптивный"
 
 #: PulseEffects/ui/webrtc.glade:416
 msgid "Fixed"
-msgstr ""
+msgstr "Фиксированный"
 
 #: PulseEffects/ui/webrtc.glade:435
 msgid "Gain Controller"
@@ -778,7 +778,7 @@ msgstr "Затухание"
 
 #: PulseEffects/ui/webrtc.glade:560
 msgid "Very Low"
-msgstr ""
+msgstr "Очень низкий"
 
 # Taking lingual shortcuts to squeeze it in the text box
 #: PulseEffects/ui/webrtc.glade:659
@@ -836,7 +836,7 @@ msgstr " не является файлом!"
 
 #: PulseEffects/presets_manager.py:206
 msgid "Open"
-msgstr ""
+msgstr "Открыть"
 
 #: PulseEffects/presets_manager.py:207
 #, fuzzy
