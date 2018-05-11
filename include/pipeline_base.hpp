@@ -14,7 +14,8 @@ class PipelineBase {
 
     std::string log_tag;
 
-    GstElement *pipeline, *source, *sink, *spectrum, *spectrum_wrapper;
+    GstElement *pipeline, *source, *sink, *spectrum, *effects_bin;
+    GstElement* spectrum_wrapper;
     GstBus* bus;
 
     bool resizing_spectrum = false;
@@ -45,7 +46,7 @@ class PipelineBase {
     std::vector<std::shared_ptr<AppInfo>> apps_list;
 
     void update_pipeline_state();
-    void calc_spectrum_freqs();
+    void init_spectrum();
 };
 
 #endif

@@ -156,6 +156,8 @@ PipelineBase::PipelineBase(const uint& sampling_rate)
 
     gst_bus_add_signal_watch(bus);
 
+    // bus callbacks
+
     g_signal_connect(bus, "message::error", G_CALLBACK(on_message_error), this);
     g_signal_connect(bus, "message::state-changed",
                      G_CALLBACK(on_message_state_changed), this);
@@ -164,6 +166,8 @@ PipelineBase::PipelineBase(const uint& sampling_rate)
     g_signal_connect(bus, "message::element", G_CALLBACK(on_message_element),
                      this);
 
+    // creating elements common to all pipelines
+
     source = gst_element_factory_make("pulsesrc", "source");
     sink = gst_element_factory_make("pulsesink", "sink");
     spectrum = gst_element_factory_make("spectrum", "spectrum");
@@ -171,6 +175,7 @@ PipelineBase::PipelineBase(const uint& sampling_rate)
     auto capsfilter = gst_element_factory_make("capsfilter", nullptr);
     auto queue = gst_element_factory_make("queue", nullptr);
 
+    effects_bin = gst_insert_bin_new("effects_bin");
     spectrum_wrapper = gst_insert_bin_new("spectrum_wrapper");
 
     auto caps_str =
@@ -178,13 +183,13 @@ PipelineBase::PipelineBase(const uint& sampling_rate)
 
     auto caps = gst_caps_from_string(caps_str.c_str());
 
-    // building pipeline
+    // building the pipeline
 
-    gst_bin_add_many(GST_BIN(pipeline), source, capsfilter, queue,
+    gst_bin_add_many(GST_BIN(pipeline), source, capsfilter, queue, effects_bin,
                      spectrum_wrapper, sink, nullptr);
 
-    gst_element_link_many(source, capsfilter, queue, spectrum_wrapper, sink,
-                          nullptr);
+    gst_element_link_many(source, capsfilter, queue, effects_bin,
+                          spectrum_wrapper, sink, nullptr);
 
     // initializing properties
 
@@ -204,14 +209,7 @@ PipelineBase::PipelineBase(const uint& sampling_rate)
     g_object_set(spectrum, "bands", spectrum_nbands, nullptr);
     g_object_set(spectrum, "threshold", spectrum_threshold, nullptr);
 
-    // preparing spectrum
-
-    g_signal_connect(settings, "changed::spectrum-n-points",
-                     G_CALLBACK(on_spectrum_n_points_changed), this);
-    g_signal_connect(settings, "changed::show-spectrum",
-                     G_CALLBACK(on_show_spectrum), this);
-
-    calc_spectrum_freqs();
+    init_spectrum();
 }
 
 PipelineBase::~PipelineBase() {
@@ -311,7 +309,17 @@ void PipelineBase::on_app_removed(uint idx) {
     update_pipeline_state();
 }
 
-void PipelineBase::calc_spectrum_freqs() {
+void PipelineBase::init_spectrum() {
+    g_signal_connect(settings, "changed::spectrum-n-points",
+                     G_CALLBACK(on_spectrum_n_points_changed), this);
+    g_signal_connect(settings, "changed::show-spectrum",
+                     G_CALLBACK(on_show_spectrum), this);
+
+    // useless write just to force on_show_spectrum to be called
+
+    auto state = g_settings_get_boolean(settings, "show-spectrum");
+    g_settings_set_boolean(settings, "show-spectrum", state);
+
     for (uint n = 0; n < spectrum_nbands; n++) {
         auto f = rate * (0.5 * n + 0.25) / spectrum_nbands;
 
