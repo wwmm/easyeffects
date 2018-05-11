@@ -20,6 +20,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
                   const Glib::RefPtr<Gtk::Builder>& refBuilder,
                   Application* application);
 
+    virtual ~ApplicationUi();
+
     static ApplicationUi* create(Application* app);
 
    private:

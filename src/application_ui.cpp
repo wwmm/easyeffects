@@ -161,6 +161,11 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     spectrum_box->property_visible() = settings->get_boolean("show-spectrum");
 }
 
+ApplicationUi::~ApplicationUi() {
+    app->sie->disable_spectrum();
+    app->soe->disable_spectrum();
+}
+
 ApplicationUi* ApplicationUi::create(Application* app_this) {
     auto builder = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/application.glade");
