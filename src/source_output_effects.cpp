@@ -2,9 +2,8 @@
 
 SourceOutputEffects::SourceOutputEffects(
     std::shared_ptr<PulseManager> pulse_manager)
-    : PipelineBase(pulse_manager->mic_sink_info->rate), pm(pulse_manager) {
-    log_tag = "soe: ";
-
+    : PipelineBase("soe: ", pulse_manager->mic_sink_info->rate),
+      pm(pulse_manager) {
     set_pulseaudio_props(
         "application.id=com.github.wwmm.pulseeffects.sourceoutputs");
 

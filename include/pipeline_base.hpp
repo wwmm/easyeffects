@@ -9,7 +9,7 @@
 
 class PipelineBase {
    public:
-    PipelineBase(const uint& sampling_rate);
+    PipelineBase(const std::string& tag, const uint& sampling_rate);
     virtual ~PipelineBase();
 
     std::string log_tag;

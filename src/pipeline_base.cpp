@@ -145,8 +145,9 @@ void on_show_spectrum(GSettings* settings, gchar* key, PipelineBase* pb) {
 
 }  // namespace
 
-PipelineBase::PipelineBase(const uint& sampling_rate)
-    : settings(g_settings_new("com.github.wwmm.pulseeffects")),
+PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
+    : log_tag(tag),
+      settings(g_settings_new("com.github.wwmm.pulseeffects")),
       rate(sampling_rate) {
     gst_init(nullptr, nullptr);
 
@@ -315,11 +316,6 @@ void PipelineBase::init_spectrum() {
     g_signal_connect(settings, "changed::show-spectrum",
                      G_CALLBACK(on_show_spectrum), this);
 
-    // useless write just to force on_show_spectrum to be called
-
-    auto state = g_settings_get_boolean(settings, "show-spectrum");
-    g_settings_set_boolean(settings, "show-spectrum", state);
-
     for (uint n = 0; n < spectrum_nbands; n++) {
         auto f = rate * (0.5 * n + 0.25) / spectrum_nbands;
 
@@ -343,4 +339,9 @@ void PipelineBase::init_spectrum() {
 
     spline_f0 = spectrum_freqs[0];
     spline_df = spectrum_freqs[1] - spectrum_freqs[0];
+
+    // useless write just to force on_show_spectrum to be called
+
+    auto state = g_settings_get_boolean(settings, "show-spectrum");
+    g_settings_set_boolean(settings, "show-spectrum", state);
 }
