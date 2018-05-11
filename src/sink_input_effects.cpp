@@ -31,6 +31,11 @@ SinkInputEffects::SinkInputEffects(std::shared_ptr<PulseManager> pulse_manager)
                     G_SETTINGS_BIND_DEFAULT);
     g_settings_bind(settings, "latency-out", sink, "latency-time",
                     G_SETTINGS_BIND_DEFAULT);
+
+    // plugins
+
+    limiter = std::make_unique<Limiter>(
+        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.limiter");
 }
 
 SinkInputEffects::~SinkInputEffects() {}
