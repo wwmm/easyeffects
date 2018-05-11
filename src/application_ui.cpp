@@ -40,42 +40,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     get_object("sink_list", sink_list);
     get_object("source_list", source_list);
 
-    // binding glade widgets to gsettings keys
-
-    auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
-    auto flag_get = Gio::SettingsBindFlags::SETTINGS_BIND_GET;
-    auto flag_invert_boolean =
-        Gio::SettingsBindFlags::SETTINGS_BIND_INVERT_BOOLEAN;
-
-    settings->bind("use-dark-theme", theme_switch, "active", flag);
-
-    settings->bind("use-dark-theme", Gtk::Settings::get_default().get(),
-                   "gtk_application_prefer_dark_theme", flag);
-
-    settings->bind("enable-all-apps", enable_all_apps, "active", flag);
-
-    settings->bind("use-default-sink", use_default_sink, "active", flag);
-
-    settings->bind("use-default-sink", output_device, "sensitive",
-                   flag | flag_invert_boolean);
-
-    settings->bind("use-default-source", use_default_source, "active", flag);
-
-    settings->bind("use-default-source", input_device, "sensitive",
-                   flag | flag_invert_boolean);
-
-    settings->bind("buffer-out", buffer_out, "value", flag);
-    settings->bind("latency-out", latency_out, "value", flag);
-
-    settings->bind("buffer-in", buffer_in, "value", flag);
-    settings->bind("latency-in", latency_in, "value", flag);
-
-    settings->bind("show-spectrum", show_spectrum, "active", flag);
-    settings->bind("show-spectrum", spectrum_box, "visible", flag_get);
-    settings->bind("spectrum-n-points", spectrum_n_points, "value", flag);
-
-    init_autostart_switch();
-
     // signals connection
 
     enable_autostart->signal_state_set().connect(
@@ -83,6 +47,9 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
     reset_settings->signal_clicked().connect(
         sigc::mem_fun(*this, &ApplicationUi::on_reset_settings));
+
+    show_spectrum->signal_state_set().connect(
+        sigc::mem_fun(*this, &ApplicationUi::on_show_spectrum), false);
 
     spectrum->signal_draw().connect(
         sigc::mem_fun(*this, &ApplicationUi::on_spectrum_draw));
@@ -150,6 +117,42 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
     spectrum_connection = app->sie->new_spectrum.connect(
         sigc::mem_fun(*this, &ApplicationUi::on_new_spectrum));
+
+    // binding glade widgets to gsettings keys
+
+    auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
+    auto flag_get = Gio::SettingsBindFlags::SETTINGS_BIND_GET;
+    auto flag_invert_boolean =
+        Gio::SettingsBindFlags::SETTINGS_BIND_INVERT_BOOLEAN;
+
+    settings->bind("use-dark-theme", theme_switch, "active", flag);
+
+    settings->bind("use-dark-theme", Gtk::Settings::get_default().get(),
+                   "gtk_application_prefer_dark_theme", flag);
+
+    settings->bind("enable-all-apps", enable_all_apps, "active", flag);
+
+    settings->bind("use-default-sink", use_default_sink, "active", flag);
+
+    settings->bind("use-default-sink", output_device, "sensitive",
+                   flag | flag_invert_boolean);
+
+    settings->bind("use-default-source", use_default_source, "active", flag);
+
+    settings->bind("use-default-source", input_device, "sensitive",
+                   flag | flag_invert_boolean);
+
+    settings->bind("buffer-out", buffer_out, "value", flag);
+    settings->bind("latency-out", latency_out, "value", flag);
+
+    settings->bind("buffer-in", buffer_in, "value", flag);
+    settings->bind("latency-in", latency_in, "value", flag);
+
+    settings->bind("show-spectrum", show_spectrum, "active", flag);
+    settings->bind("show-spectrum", spectrum_box, "visible", flag_get);
+    settings->bind("spectrum-n-points", spectrum_n_points, "value", flag);
+
+    init_autostart_switch();
 
     show_all();
 
@@ -258,6 +261,18 @@ void ApplicationUi::on_reset_settings() {
     settings->reset("enable-all-apps");
     settings->reset("use-default-sink");
     settings->reset("use-default-source");
+}
+
+bool ApplicationUi::on_show_spectrum(bool state) {
+    if (state) {
+        app->sie->enable_spectrum();
+        app->soe->enable_spectrum();
+    } else {
+        app->sie->disable_spectrum();
+        app->soe->disable_spectrum();
+    }
+
+    return false;
 }
 
 void ApplicationUi::on_new_spectrum(const std::vector<float>& magnitudes) {

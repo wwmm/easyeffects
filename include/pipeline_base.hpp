@@ -27,6 +27,9 @@ class PipelineBase {
     std::vector<float> spectrum_freqs, spectrum_x_axis;
     std::vector<float> spectrum_mag_tmp, spectrum_mag;
 
+    void enable_spectrum();
+    void disable_spectrum();
+
     sigc::signal<void, std::vector<float>> new_spectrum;
 
    protected:

@@ -119,30 +119,6 @@ void on_spectrum_n_points_changed(GSettings* settings,
     pb->resizing_spectrum = false;
 }
 
-void on_show_spectrum(GSettings* settings, gchar* key, PipelineBase* pb) {
-    auto enabled = g_settings_get_boolean(settings, "show-spectrum");
-
-    if (enabled) {
-        gst_insert_bin_append(GST_INSERT_BIN(pb->spectrum_wrapper),
-                              pb->spectrum,
-                              [](auto bin, auto elem, auto success, auto d) {
-                                  auto pb = static_cast<PipelineBase*>(d);
-
-                                  util::debug(pb->log_tag + "spectrum enabled");
-                              },
-                              pb);
-    } else {
-        gst_insert_bin_append(
-            GST_INSERT_BIN(pb->spectrum_wrapper), pb->spectrum,
-            [](auto bin, auto elem, auto success, auto d) {
-                auto pb = static_cast<PipelineBase*>(d);
-
-                util::debug(pb->log_tag + "spectrum disabled");
-            },
-            pb);
-    }
-}
-
 }  // namespace
 
 PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
@@ -313,8 +289,6 @@ void PipelineBase::on_app_removed(uint idx) {
 void PipelineBase::init_spectrum() {
     g_signal_connect(settings, "changed::spectrum-n-points",
                      G_CALLBACK(on_spectrum_n_points_changed), this);
-    g_signal_connect(settings, "changed::show-spectrum",
-                     G_CALLBACK(on_show_spectrum), this);
 
     for (uint n = 0; n < spectrum_nbands; n++) {
         auto f = rate * (0.5 * n + 0.25) / spectrum_nbands;
@@ -339,9 +313,24 @@ void PipelineBase::init_spectrum() {
 
     spline_f0 = spectrum_freqs[0];
     spline_df = spectrum_freqs[1] - spectrum_freqs[0];
+}
 
-    // useless write just to force on_show_spectrum to be called
+void PipelineBase::enable_spectrum() {
+    gst_insert_bin_append(GST_INSERT_BIN(spectrum_wrapper), spectrum,
+                          [](auto bin, auto elem, auto success, auto d) {
+                              auto pb = static_cast<PipelineBase*>(d);
 
-    auto state = g_settings_get_boolean(settings, "show-spectrum");
-    g_settings_set_boolean(settings, "show-spectrum", state);
+                              util::debug(pb->log_tag + "spectrum enabled");
+                          },
+                          this);
+}
+
+void PipelineBase::disable_spectrum() {
+    gst_insert_bin_append(GST_INSERT_BIN(spectrum_wrapper), spectrum,
+                          [](auto bin, auto elem, auto success, auto d) {
+                              auto pb = static_cast<PipelineBase*>(d);
+
+                              util::debug(pb->log_tag + "spectrum disabled");
+                          },
+                          this);
 }
