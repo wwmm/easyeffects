@@ -43,6 +43,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     // binding glade widgets to gsettings keys
 
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
+    auto flag_get = Gio::SettingsBindFlags::SETTINGS_BIND_GET;
     auto flag_invert_boolean =
         Gio::SettingsBindFlags::SETTINGS_BIND_INVERT_BOOLEAN;
 
@@ -70,7 +71,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     settings->bind("latency-in", latency_in, "value", flag);
 
     settings->bind("show-spectrum", show_spectrum, "active", flag);
-    settings->bind("show-spectrum", spectrum_box, "visible", flag);
+    settings->bind("show-spectrum", spectrum_box, "visible", flag_get);
     settings->bind("spectrum-n-points", spectrum_n_points, "value", flag);
 
     init_autostart_switch();
@@ -149,6 +150,12 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
     spectrum_connection = app->sie->new_spectrum.connect(
         sigc::mem_fun(*this, &ApplicationUi::on_new_spectrum));
+
+    show_all();
+
+    // visible property is reset by show_all
+
+    spectrum_box->property_visible() = false;
 }
 
 ApplicationUi* ApplicationUi::create(Application* app_this) {

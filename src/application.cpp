@@ -95,7 +95,6 @@ void Application::on_activate() {
 
         window->signal_hide().connect([window]() { delete window; });
 
-        window->show_all();
         window->present();
 
         pm->find_sink_inputs();
