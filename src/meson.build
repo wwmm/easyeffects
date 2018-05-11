@@ -20,6 +20,7 @@ pulseeffects_sources = [
 	'source_output_effects_ui.cpp',
 	'source_output_effects.cpp',
 	'pipeline_base.cpp',
+	'limiter.cpp',
 	'util.cpp',
 	gresources
 ]
