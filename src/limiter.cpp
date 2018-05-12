@@ -9,8 +9,11 @@ Limiter::Limiter(std::string tag, std::string schema)
 
     if (limiter != nullptr) {
         is_installed = true;
+
+        enable = g_settings_get_boolean(settings, "state");
     } else {
         is_installed = false;
+        enable = false;
 
         util::warning("Limiter plugin was not found. Disabling it!");
     }

@@ -15,8 +15,11 @@ class SinkInputEffects : public PipelineBase {
    private:
     std::string log_tag = "sie: ";
 
-    std::vector<GstInsertBin*> bins;
+    std::array<GstInsertBin*, 1> wrappers;
+    std::map<std::string, GstElement*> plugins;
     std::unique_ptr<Limiter> limiter;
+
+    void add_plugins_to_pipeline();
 
     void on_app_added(const std::shared_ptr<AppInfo>& app_info);
 };

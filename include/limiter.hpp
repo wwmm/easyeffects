@@ -13,6 +13,8 @@ class Limiter {
 
     GstElement* bin;
 
+    bool enable;
+
    private:
     std::string log_tag;
     bool is_installed;

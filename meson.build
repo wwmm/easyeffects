@@ -2,7 +2,7 @@ project(
 	'pulseeffects',
 	'c',
 	'cpp',
-	default_options : ['cpp_std=c++14'],
+	default_options : ['cpp_std=c++17'],
 	version: '3.3.0',
 	meson_version: '>= 0.40.0'
 )

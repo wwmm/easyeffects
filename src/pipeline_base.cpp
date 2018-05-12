@@ -315,21 +315,30 @@ void PipelineBase::init_spectrum() {
 }
 
 void PipelineBase::enable_spectrum() {
-    gst_insert_bin_append(GST_INSERT_BIN(spectrum_wrapper), spectrum,
-                          [](auto bin, auto elem, auto success, auto d) {
-                              auto pb = static_cast<PipelineBase*>(d);
+    auto plugin = gst_bin_get_by_name(GST_BIN(spectrum_wrapper), "spectrum");
 
-                              util::debug(pb->log_tag + "spectrum enabled");
-                          },
-                          this);
+    if (!plugin) {
+        gst_insert_bin_append(GST_INSERT_BIN(spectrum_wrapper), spectrum,
+                              [](auto bin, auto elem, auto success, auto d) {
+                                  auto pb = static_cast<PipelineBase*>(d);
+
+                                  util::debug(pb->log_tag + "spectrum enabled");
+                              },
+                              this);
+    }
 }
 
 void PipelineBase::disable_spectrum() {
-    gst_insert_bin_append(GST_INSERT_BIN(spectrum_wrapper), spectrum,
-                          [](auto bin, auto elem, auto success, auto d) {
-                              auto pb = static_cast<PipelineBase*>(d);
+    auto plugin = gst_bin_get_by_name(GST_BIN(spectrum_wrapper), "spectrum");
 
-                              util::debug(pb->log_tag + "spectrum disabled");
-                          },
-                          this);
+    if (plugin) {
+        gst_insert_bin_remove(
+            GST_INSERT_BIN(spectrum_wrapper), spectrum,
+            [](auto bin, auto elem, auto success, auto d) {
+                auto pb = static_cast<PipelineBase*>(d);
+
+                util::debug(pb->log_tag + "spectrum disabled");
+            },
+            this);
+    }
 }

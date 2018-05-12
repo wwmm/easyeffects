@@ -32,12 +32,12 @@ SinkInputEffects::SinkInputEffects(std::shared_ptr<PulseManager> pulse_manager)
     g_settings_bind(settings, "latency-out", sink, "latency-time",
                     G_SETTINGS_BIND_DEFAULT);
 
-    // plugins bins
+    // plugins wrappers
 
-    bins.push_back(GST_INSERT_BIN(gst_insert_bin_new("wrapper0")));
+    wrappers[0] = GST_INSERT_BIN(gst_insert_bin_new("wrapper0"));
 
-    for (auto b : bins) {
-        gst_insert_bin_append(effects_bin, GST_ELEMENT(b), nullptr, nullptr);
+    for (auto w : wrappers) {
+        gst_insert_bin_append(effects_bin, GST_ELEMENT(w), nullptr, nullptr);
     }
 
     // plugins
@@ -45,7 +45,9 @@ SinkInputEffects::SinkInputEffects(std::shared_ptr<PulseManager> pulse_manager)
     limiter = std::make_unique<Limiter>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.limiter");
 
-    gst_insert_bin_append(bins[0], limiter->bin, nullptr, nullptr);
+    plugins.insert(std::make_pair("limiter", limiter->bin));
+
+    add_plugins_to_pipeline();
 }
 
 SinkInputEffects::~SinkInputEffects() {}
@@ -57,5 +59,12 @@ void SinkInputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
 
     if (enable_all_apps && !app_info->connected) {
         pm->move_sink_input_to_pulseeffects(app_info->index);
+    }
+}
+
+void SinkInputEffects::add_plugins_to_pipeline() {
+    if (limiter->enable) {
+        gst_insert_bin_append(wrappers[0], plugins["limiter"], nullptr,
+                              nullptr);
     }
 }
