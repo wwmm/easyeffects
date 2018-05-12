@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="com.github.wwmm.pulseeffects.sinkinputs" path="/com/github/wwmm/pulseeffects/sinkinputs/">
+        <key name="plugins" type="as">
+          <default>["limiter"]</default>
+        </key>
+    </schema>
+</schemalist>
