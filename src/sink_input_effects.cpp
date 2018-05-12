@@ -45,7 +45,7 @@ SinkInputEffects::SinkInputEffects(std::shared_ptr<PulseManager> pulse_manager)
     limiter = std::make_unique<Limiter>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.limiter");
 
-    plugins.insert(std::make_pair("limiter", limiter->bin));
+    plugins.insert(std::make_pair("limiter", limiter->plugin));
 
     add_plugins_to_pipeline();
 }
@@ -63,8 +63,5 @@ void SinkInputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
 }
 
 void SinkInputEffects::add_plugins_to_pipeline() {
-    if (limiter->enable) {
-        gst_insert_bin_append(wrappers[0], plugins["limiter"], nullptr,
-                              nullptr);
-    }
+    gst_insert_bin_append(wrappers[0], plugins["limiter"], nullptr, nullptr);
 }

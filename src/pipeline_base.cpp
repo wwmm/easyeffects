@@ -318,13 +318,18 @@ void PipelineBase::enable_spectrum() {
     auto plugin = gst_bin_get_by_name(GST_BIN(spectrum_wrapper), "spectrum");
 
     if (!plugin) {
-        gst_insert_bin_append(GST_INSERT_BIN(spectrum_wrapper), spectrum,
-                              [](auto bin, auto elem, auto success, auto d) {
-                                  auto pb = static_cast<PipelineBase*>(d);
+        gst_insert_bin_append(
+            GST_INSERT_BIN(spectrum_wrapper), spectrum,
+            [](auto bin, auto elem, auto success, auto d) {
+                auto pb = static_cast<PipelineBase*>(d);
 
-                                  util::debug(pb->log_tag + "spectrum enabled");
-                              },
-                              this);
+                if (success) {
+                    util::debug(pb->log_tag + "spectrum enabled");
+                } else {
+                    util::debug(pb->log_tag + "failed to enable the spectrum");
+                }
+            },
+            this);
     }
 }
 
@@ -337,7 +342,11 @@ void PipelineBase::disable_spectrum() {
             [](auto bin, auto elem, auto success, auto d) {
                 auto pb = static_cast<PipelineBase*>(d);
 
-                util::debug(pb->log_tag + "spectrum disabled");
+                if (success) {
+                    util::debug(pb->log_tag + "spectrum disabled");
+                } else {
+                    util::debug(pb->log_tag + "failed to disable the spectrum");
+                }
             },
             this);
     }

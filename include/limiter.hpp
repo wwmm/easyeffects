@@ -11,12 +11,10 @@ class Limiter {
     Limiter(std::string tag, std::string schema);
     ~Limiter();
 
-    GstElement* bin;
-
-    bool enable;
+    std::string log_tag;
+    GstElement *plugin, *bin;
 
    private:
-    std::string log_tag;
     bool is_installed;
 
     GstElement* limiter;
