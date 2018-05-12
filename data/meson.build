@@ -1,6 +1,7 @@
 schemadir = join_paths(datadir, 'glib-2.0', 'schemas')
 install_data([
   'com.github.wwmm.pulseeffects.gschema.xml',
+  'com.github.wwmm.pulseeffects.sinkinputs.gschema.xml',
   'com.github.wwmm.pulseeffects.sinkinputs.limiter.gschema.xml',
   'com.github.wwmm.pulseeffects.sinkinputs.panorama.gschema.xml',
   'com.github.wwmm.pulseeffects.sinkinputs.compressor.gschema.xml',
@@ -16,6 +17,7 @@ install_data([
   'com.github.wwmm.pulseeffects.sinkinputs.crossfeed.gschema.xml',
   'com.github.wwmm.pulseeffects.sinkinputs.maximizer.gschema.xml',
   'com.github.wwmm.pulseeffects.sinkinputs.outputlimiter.gschema.xml',
+  'com.github.wwmm.pulseeffects.sourceoutputs.gschema.xml',
   'com.github.wwmm.pulseeffects.sourceoutputs.limiter.gschema.xml',
   'com.github.wwmm.pulseeffects.sourceoutputs.compressor.gschema.xml',
   'com.github.wwmm.pulseeffects.sourceoutputs.reverb.gschema.xml',
