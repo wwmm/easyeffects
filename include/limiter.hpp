@@ -20,6 +20,8 @@ class Limiter {
     GstElement* limiter;
 
     GSettings* settings;
+
+    void bind_to_gsettings();
 };
 
 #endif

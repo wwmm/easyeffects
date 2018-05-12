@@ -43,6 +43,10 @@ void on_state_changed(GSettings* settings, gchar* key, Limiter* l) {
     }
 }
 
+void on_message(GObject* object, GParamSpec* pspec, Limiter* l) {
+    util::debug(l->log_tag + "oi");
+}
+
 }  // namespace
 
 Limiter::Limiter(std::string tag, std::string schema)
@@ -69,6 +73,8 @@ Limiter::Limiter(std::string tag, std::string schema)
         gst_insert_bin_append(GST_INSERT_BIN(bin), autovolume, nullptr,
                               nullptr);
 
+        bind_to_gsettings();
+
         g_signal_connect(settings, "changed::state",
                          G_CALLBACK(on_state_changed), this);
 
@@ -81,3 +87,11 @@ Limiter::Limiter(std::string tag, std::string schema)
 }
 
 Limiter::~Limiter() {}
+
+void Limiter::bind_to_gsettings() {
+    g_settings_bind(settings, "oversampling", limiter, "oversampling",
+                    G_SETTINGS_BIND_DEFAULT);
+
+    // g_signal_connect(limiter, "notify::meter-inL", G_CALLBACK(on_message),
+    //                  this);
+}
