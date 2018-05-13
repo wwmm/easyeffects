@@ -24,12 +24,13 @@ class EffectsBaseUi : public Gtk::Box {
 
    protected:
     Gtk::ListBox* listbox;
+    Gtk::Stack* stack;
 
     template <typename T>
     void add_to_listbox(T p) {
         auto row = new Gtk::ListBoxRow();
 
-        row->add(p->ui_listbox_control);
+        row->add(*p->listbox_control);
         row->set_name(p->name);
         row->set_margin_top(6);
         row->set_margin_bottom(6);
@@ -39,8 +40,6 @@ class EffectsBaseUi : public Gtk::Box {
 
    private:
     Glib::RefPtr<Gtk::Builder> builder;
-
-    Gtk::Stack* stack;
 
     Gtk::Box* apps_box;
 

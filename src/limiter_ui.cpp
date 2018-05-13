@@ -3,7 +3,11 @@
 LimiterUi::LimiterUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& refBuilder,
                      Glib::RefPtr<Gio::Settings> refSettings)
-    : Gtk::Grid(cobject), builder(refBuilder), settings(refSettings) {}
+    : Gtk::Grid(cobject), builder(refBuilder), settings(refSettings) {
+    // loading glade widgets
+
+    builder->get_widget("listbox_control", listbox_control);
+}
 
 LimiterUi::~LimiterUi() {}
 
