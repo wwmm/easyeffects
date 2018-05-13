@@ -28,13 +28,11 @@ std::unique_ptr<SinkInputEffectsUi> SinkInputEffectsUi::create(
 }
 
 void SinkInputEffectsUi::add_plugins() {
-    auto v_array = Glib::Variant<std::vector<std::string>>();
+    auto plugins_order = Glib::Variant<std::vector<std::string>>();
 
-    settings->get_value("plugins", v_array);
+    settings->get_value("plugins", plugins_order);
 
-    auto plugins_order = v_array.get();
-
-    for (auto name : plugins_order) {
+    for (auto name : plugins_order.get()) {
         if (name == "limiter") {
             add_to_listbox(limiter_ui);
             stack->add(*limiter_ui, std::string("limiter"));

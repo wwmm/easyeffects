@@ -9,6 +9,18 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
     // loading glade widgets
 
     builder->get_widget("listbox_control", listbox_control);
+    builder->get_widget("limiter_enable", limiter_enable);
+    builder->get_widget("controls", controls);
+    builder->get_widget("img_state", img_state);
+
+    // gsettings bindings
+
+    auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
+    auto flag_get = Gio::SettingsBindFlags::SETTINGS_BIND_GET;
+
+    settings->bind("state", limiter_enable, "active", flag);
+    settings->bind("state", controls, "sensitive", flag_get);
+    settings->bind("state", img_state, "visible", flag_get);
 }
 
 LimiterUi::~LimiterUi() {}

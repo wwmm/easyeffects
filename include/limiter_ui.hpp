@@ -5,6 +5,8 @@
 #include <gtkmm/box.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/grid.h>
+#include <gtkmm/image.h>
+#include <gtkmm/switch.h>
 
 class LimiterUi : public Gtk::Grid {
    public:
@@ -22,6 +24,10 @@ class LimiterUi : public Gtk::Grid {
    private:
     Glib::RefPtr<Gtk::Builder> builder;
     Glib::RefPtr<Gio::Settings> settings;
+
+    Gtk::Switch* limiter_enable;
+    Gtk::Box* controls;
+    Gtk::Image* img_state;
 };
 
 #endif
