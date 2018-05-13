@@ -36,7 +36,7 @@ void SinkInputEffectsUi::add_plugins() {
 
     for (auto name : plugins_order) {
         if (name == "limiter") {
-            add_to_listbox(move(limiter_ui));
+            add_to_listbox(limiter_ui);
             stack->add(*limiter_ui, std::string("limiter"));
         }
     }

@@ -2,8 +2,10 @@
 
 LimiterUi::LimiterUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& refBuilder,
-                     Glib::RefPtr<Gio::Settings> refSettings)
-    : Gtk::Grid(cobject), builder(refBuilder), settings(refSettings) {
+                     std::string settings_name)
+    : Gtk::Grid(cobject),
+      builder(refBuilder),
+      settings(Gio::Settings::create(settings_name)) {
     // loading glade widgets
 
     builder->get_widget("listbox_control", listbox_control);
@@ -11,15 +13,13 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
 
 LimiterUi::~LimiterUi() {}
 
-std::unique_ptr<LimiterUi> LimiterUi::create(std::string settings_name) {
+LimiterUi* LimiterUi::create(std::string settings_name) {
     auto builder = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/limiter.glade");
 
-    auto s = Gio::Settings::create(settings_name);
-
     LimiterUi* grid = nullptr;
 
-    builder->get_widget_derived("widgets_grid", grid, s);
+    builder->get_widget_derived("widgets_grid", grid, settings_name);
 
-    return std::unique_ptr<LimiterUi>(grid);
+    return grid;
 }

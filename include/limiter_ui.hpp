@@ -10,10 +10,10 @@ class LimiterUi : public Gtk::Grid {
    public:
     LimiterUi(BaseObjectType* cobject,
               const Glib::RefPtr<Gtk::Builder>& refBuilder,
-              Glib::RefPtr<Gio::Settings> refSettings);
+              std::string settings_name);
     ~LimiterUi();
 
-    static std::unique_ptr<LimiterUi> create(std::string settings_name);
+    static LimiterUi* create(std::string settings_name);
 
     std::string name = "limiter";
 

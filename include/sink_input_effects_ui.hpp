@@ -24,7 +24,7 @@ class SinkInputEffectsUi : public EffectsBaseUi {
 
     Glib::RefPtr<Gio::Settings> settings;
 
-    std::unique_ptr<LimiterUi> limiter_ui;
+    LimiterUi* limiter_ui;
 
     void add_plugins();
 };
