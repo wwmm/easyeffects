@@ -10,7 +10,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(
           Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs")),
       limiter_ui(LimiterUi::create(
           "com.github.wwmm.pulseeffects.sinkinputs.limiter")) {
-    // add_plugins();
+    add_plugins();
 }
 
 SinkInputEffectsUi::~SinkInputEffectsUi() {}
