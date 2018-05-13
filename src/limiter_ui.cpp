@@ -12,6 +12,14 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
     builder->get_widget("limiter_enable", limiter_enable);
     builder->get_widget("controls", controls);
     builder->get_widget("img_state", img_state);
+    builder->get_widget("asc", asc);
+
+    get_object("input_gain", input_gain);
+    get_object("limit", limit);
+    get_object("lookahead", lookahead);
+    get_object("release", release);
+    get_object("oversampling", oversampling);
+    get_object("asc_level", asc_level);
 
     // gsettings bindings
 
@@ -21,6 +29,13 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
     settings->bind("state", limiter_enable, "active", flag);
     settings->bind("state", controls, "sensitive", flag_get);
     settings->bind("state", img_state, "visible", flag_get);
+    settings->bind("input-gain", input_gain, "value", flag);
+    settings->bind("limit", limit, "value", flag);
+    settings->bind("lookahead", lookahead, "value", flag);
+    settings->bind("release", release, "value", flag);
+    settings->bind("oversampling", oversampling, "value", flag);
+    settings->bind("asc", asc, "active", flag);
+    settings->bind("asc-level", asc_level, "value", flag);
 }
 
 LimiterUi::~LimiterUi() {}
