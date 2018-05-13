@@ -13,6 +13,8 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
     builder->get_widget("controls", controls);
     builder->get_widget("img_state", img_state);
     builder->get_widget("asc", asc);
+    builder->get_widget("autovolume_enable", autovolume_enable);
+    builder->get_widget("autovolume_controls", autovolume_controls);
 
     get_object("input_gain", input_gain);
     get_object("limit", limit);
@@ -20,6 +22,10 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
     get_object("release", release);
     get_object("oversampling", oversampling);
     get_object("asc_level", asc_level);
+    get_object("autovolume_window", autovolume_window);
+    get_object("autovolume_target", autovolume_target);
+    get_object("autovolume_tolerance", autovolume_tolerance);
+    get_object("autovolume_threshold", autovolume_threshold);
 
     // gsettings bindings
 
@@ -36,6 +42,14 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
     settings->bind("oversampling", oversampling, "value", flag);
     settings->bind("asc", asc, "active", flag);
     settings->bind("asc-level", asc_level, "value", flag);
+
+    settings->bind("autovolume-state", autovolume_enable, "active", flag);
+    settings->bind("autovolume-state", autovolume_controls, "sensitive",
+                   flag_get);
+    settings->bind("autovolume-window", autovolume_window, "value", flag);
+    settings->bind("autovolume-target", autovolume_target, "value", flag);
+    settings->bind("autovolume-tolerance", autovolume_tolerance, "value", flag);
+    settings->bind("autovolume-threshold", autovolume_threshold, "value", flag);
 }
 
 LimiterUi::~LimiterUi() {}

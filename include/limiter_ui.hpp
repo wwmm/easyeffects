@@ -31,8 +31,10 @@ class LimiterUi : public Gtk::Grid {
     Gtk::Box* controls;
     Gtk::Image* img_state;
     Gtk::Adjustment *input_gain, *limit, *lookahead, *release, *oversampling;
-    Gtk::ToggleButton* asc;
-    Gtk::Adjustment* asc_level;
+    Gtk::ToggleButton *asc, *autovolume_enable;
+    Gtk::Adjustment *asc_level, *autovolume_target, *autovolume_window;
+    Gtk::Adjustment *autovolume_threshold, *autovolume_tolerance;
+    Gtk::Grid* autovolume_controls;
 
     template <typename T>
     void get_object(std::string name, T& object) {
