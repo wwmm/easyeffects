@@ -43,10 +43,6 @@ void on_state_changed(GSettings* settings, gchar* key, Limiter* l) {
     }
 }
 
-void on_message(GObject* object, GParamSpec* pspec, Limiter* l) {
-    util::debug(l->log_tag + "oi");
-}
-
 }  // namespace
 
 Limiter::Limiter(std::string tag, std::string schema)
@@ -89,9 +85,36 @@ Limiter::Limiter(std::string tag, std::string schema)
 Limiter::~Limiter() {}
 
 void Limiter::bind_to_gsettings() {
+    g_settings_bind_with_mapping(settings, "input-gain", limiter, "level-in",
+                                 G_SETTINGS_BIND_GET, util::db_gain_to_linear,
+                                 nullptr, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(settings, "limit", limiter, "limit",
+                                 G_SETTINGS_BIND_GET, util::db_gain_to_linear,
+                                 nullptr, nullptr, nullptr);
+
+    // calf limiter does automatic makeup gain by the same amount given as
+    // limit. See https://github.com/calf-studio-gear/calf/issues/162
+    // that is why we reduce the output level accordingly
+
+    g_settings_bind_with_mapping(settings, "limit", limiter, "level-out",
+                                 G_SETTINGS_BIND_GET, util::db_gain_to_linear,
+                                 nullptr, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(settings, "lookahead", limiter, "attack",
+                                 G_SETTINGS_BIND_GET, util::double_to_float,
+                                 nullptr, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(settings, "release", limiter, "release",
+                                 G_SETTINGS_BIND_GET, util::double_to_float,
+                                 nullptr, nullptr, nullptr);
+
+    g_settings_bind(settings, "asc", limiter, "asc", G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind_with_mapping(settings, "asc-level", limiter, "asc-coeff",
+                                 G_SETTINGS_BIND_GET, util::double_to_float,
+                                 nullptr, nullptr, nullptr);
+
     g_settings_bind(settings, "oversampling", limiter, "oversampling",
                     G_SETTINGS_BIND_DEFAULT);
-
-    // g_signal_connect(limiter, "notify::meter-inL", G_CALLBACK(on_message),
-    //                  this);
 }
