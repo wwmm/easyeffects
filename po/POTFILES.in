@@ -1,3 +1,7 @@
 data/application.glade
+data/about.glade
+data/effects_base.glade
+data/app_info.glade
+data/limiter.glade
 data/com.github.wwmm.pulseeffects.appdata.xml.in
 data/com.github.wwmm.pulseeffects.desktop.in

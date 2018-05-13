@@ -5,6 +5,7 @@
     <file>about.glade</file>
     <file>effects_base.glade</file>
     <file>app_info.glade</file>
+    <file>limiter.glade</file>
     <file>about_icon.png</file>
     <file>listbox.css</file>
     <file>pulseeffects-sine-symbolic.svg</file>
