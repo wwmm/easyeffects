@@ -8,7 +8,9 @@ void on_message_element(const GstBus* gst_bus,
     if (GST_OBJECT_NAME(message->src) == std::string("autovolume")) {
         auto peak = sie->get_peak(message);
 
-        // std::cout << peak[0] << "\t" << peak[1] << std::endl;
+        auto max_value = (peak[0] > peak[1]) ? peak[0] : peak[1];
+
+        std::cout << max_value << std::endl;
     }
 }
 
