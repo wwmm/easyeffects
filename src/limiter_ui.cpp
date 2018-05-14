@@ -68,6 +68,20 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
         release->set_value(window);
     });
 
+    settings->signal_changed("autovolume-target").connect([&](auto key) {
+        auto target = settings->get_int("autovolume-target");
+        auto tolerance = settings->get_int("autovolume-tolerance");
+
+        limit->set_value(target + tolerance);
+    });
+
+    settings->signal_changed("autovolume-tolerance").connect([&](auto key) {
+        auto target = settings->get_int("autovolume-target");
+        auto tolerance = settings->get_int("autovolume-tolerance");
+
+        limit->set_value(target + tolerance);
+    });
+
     init_autovolume();
 }
 
