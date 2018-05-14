@@ -24,6 +24,8 @@ class LimiterUi : public Gtk::Grid {
     Gtk::Box* listbox_control;
 
    private:
+    std::string log_tag = "limiter_ui: ";
+
     Glib::RefPtr<Gtk::Builder> builder;
     Glib::RefPtr<Gio::Settings> settings;
 
@@ -40,6 +42,8 @@ class LimiterUi : public Gtk::Grid {
     void get_object(std::string name, T& object) {
         object = (T)builder->get_object(name).get();
     }
+
+    void init_autovolume();
 };
 
 #endif

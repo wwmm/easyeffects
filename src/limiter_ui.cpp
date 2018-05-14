@@ -57,6 +57,18 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
     settings->bind("autovolume-target", autovolume_target, "value", flag);
     settings->bind("autovolume-tolerance", autovolume_tolerance, "value", flag);
     settings->bind("autovolume-threshold", autovolume_threshold, "value", flag);
+
+    settings->signal_changed("autovolume-state").connect([&](auto key) {
+        init_autovolume();
+    });
+
+    settings->signal_changed("autovolume-window").connect([&](auto key) {
+        auto window = settings->get_double("autovolume-window");
+
+        release->set_value(window);
+    });
+
+    init_autovolume();
 }
 
 LimiterUi::~LimiterUi() {}
@@ -70,4 +82,20 @@ LimiterUi* LimiterUi::create(std::string settings_name) {
     builder->get_widget_derived("widgets_grid", grid, settings_name);
 
     return grid;
+}
+
+void LimiterUi::init_autovolume() {
+    auto enabled = settings->get_boolean("autovolume-state");
+
+    if (enabled) {
+        auto window = settings->get_double("autovolume-window");
+        auto target = settings->get_int("autovolume-target");
+        auto tolerance = settings->get_int("autovolume-tolerance");
+
+        limit->set_value(target + tolerance);
+        release->set_value(window);
+        asc->set_active(true);
+        asc_level->set_value(1.0);
+        lookahead->set_value(10.0);  // 10 ms
+    }
 }
