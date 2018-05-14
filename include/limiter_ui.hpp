@@ -24,8 +24,6 @@ class LimiterUi : public Gtk::Grid {
     Gtk::Box* listbox_control;
 
    private:
-    std::string log_tag = "limiter_ui: ";
-
     Glib::RefPtr<Gtk::Builder> builder;
     Glib::RefPtr<Gio::Settings> settings;
 
