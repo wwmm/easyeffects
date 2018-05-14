@@ -29,6 +29,7 @@ class PipelineBase {
 
     void enable_spectrum();
     void disable_spectrum();
+    std::array<double, 2> get_peak(GstMessage* message);
 
     sigc::signal<void, std::vector<float>> new_spectrum;
 

@@ -351,3 +351,17 @@ void PipelineBase::disable_spectrum() {
             this);
     }
 }
+
+std::array<double, 2> PipelineBase::get_peak(GstMessage* message) {
+    std::array<double, 2> peak;
+
+    const GstStructure* s = gst_message_get_structure(message);
+
+    auto gpeak =
+        (GValueArray*)g_value_get_boxed(gst_structure_get_value(s, "peak"));
+
+    peak[0] = g_value_get_double(gpeak->values);      // right
+    peak[1] = g_value_get_double(gpeak->values + 1);  // left
+
+    return peak;
+}

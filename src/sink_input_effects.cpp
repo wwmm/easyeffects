@@ -1,5 +1,19 @@
 #include "sink_input_effects.hpp"
 
+namespace {
+
+void on_message_element(const GstBus* gst_bus,
+                        GstMessage* message,
+                        SinkInputEffects* sie) {
+    if (GST_OBJECT_NAME(message->src) == std::string("autovolume")) {
+        auto peak = sie->get_peak(message);
+
+        // std::cout << peak[0] << "\t" << peak[1] << std::endl;
+    }
+}
+
+}  // namespace
+
 SinkInputEffects::SinkInputEffects(std::shared_ptr<PulseManager> pulse_manager)
     : PipelineBase("sie: ", pulse_manager->apps_sink_info->rate),
       pm(pulse_manager) {
@@ -31,6 +45,11 @@ SinkInputEffects::SinkInputEffects(std::shared_ptr<PulseManager> pulse_manager)
                     G_SETTINGS_BIND_DEFAULT);
     g_settings_bind(settings, "latency-out", sink, "latency-time",
                     G_SETTINGS_BIND_DEFAULT);
+
+    // element message callback
+
+    g_signal_connect(bus, "message::element", G_CALLBACK(on_message_element),
+                     this);
 
     // plugins wrappers
 
