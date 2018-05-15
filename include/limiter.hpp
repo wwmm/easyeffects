@@ -17,7 +17,7 @@ class Limiter {
    private:
     bool is_installed;
 
-    GstElement* limiter;
+    GstElement *limiter, *autovolume;
 
     GSettings* settings;
 

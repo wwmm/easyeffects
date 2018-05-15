@@ -67,7 +67,8 @@ Limiter::Limiter(std::string tag, std::string schema)
             gst_element_factory_make("level", "limiter_input_level");
         auto output_level =
             gst_element_factory_make("level", "limiter_output_level");
-        auto autovolume = gst_element_factory_make("level", "autovolume");
+
+        autovolume = gst_element_factory_make("level", "autovolume");
 
         gst_insert_bin_append(GST_INSERT_BIN(bin), input_level, nullptr,
                               nullptr);
@@ -125,4 +126,8 @@ void Limiter::bind_to_gsettings() {
 
     g_settings_bind(settings, "oversampling", limiter, "oversampling",
                     G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind_with_mapping(settings, "autovolume-window", autovolume,
+                                 "interval", G_SETTINGS_BIND_GET,
+                                 util::ms_to_ns, nullptr, nullptr, nullptr);
 }

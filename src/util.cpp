@@ -54,7 +54,7 @@ std::vector<float> linspace(float start, float stop, uint npoints) {
 gboolean db20_gain_to_linear(GValue* value,
                              GVariant* variant,
                              gpointer user_data) {
-    auto v_db = g_variant_get_double(variant);
+    double v_db = g_variant_get_double(variant);
 
     auto v_linear = pow(10, v_db / 20.0);
 
@@ -66,7 +66,7 @@ gboolean db20_gain_to_linear(GValue* value,
 gboolean db10_gain_to_linear(GValue* value,
                              GVariant* variant,
                              gpointer user_data) {
-    auto v_db = g_variant_get_double(variant);
+    double v_db = g_variant_get_double(variant);
 
     auto v_linear = pow(10, v_db / 10.0);
 
@@ -76,9 +76,19 @@ gboolean db10_gain_to_linear(GValue* value,
 }
 
 gboolean double_to_float(GValue* value, GVariant* variant, gpointer user_data) {
-    auto v_d = g_variant_get_double(variant);
+    double v_d = g_variant_get_double(variant);
 
     g_value_set_float(value, v_d);
+
+    return true;
+}
+
+gboolean ms_to_ns(GValue* value, GVariant* variant, gpointer user_data) {
+    gint64 v_ns = g_variant_get_double(variant) * 1000000;
+
+    warning(std::to_string(v_ns));
+
+    g_value_set_int64(value, v_ns);
 
     return true;
 }
