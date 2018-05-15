@@ -9,42 +9,32 @@ PluginUiBase::PluginUiBase(const Glib::RefPtr<Gtk::Builder>& refBuilder,
 
     builder->get_widget("input_level_left", input_level_left);
     builder->get_widget("input_level_right", input_level_right);
+    builder->get_widget("input_level_left_label", input_level_left_label);
+    builder->get_widget("input_level_right_label", input_level_right_label);
+
     builder->get_widget("output_level_left", output_level_left);
     builder->get_widget("output_level_right", output_level_right);
+    builder->get_widget("output_level_left_label", output_level_left_label);
+    builder->get_widget("output_level_right_label", output_level_right_label);
 }
 
 PluginUiBase::~PluginUiBase() {}
 
+std::string PluginUiBase::level_to_str(double value) {
+    std::ostringstream msg;
+
+    msg.precision(0);
+    msg << std::fixed << value;
+
+    return msg.str();
+}
+
 void PluginUiBase::on_new_input_level(const std::array<double, 2>& peak) {
-    auto left = peak[0];
-    auto right = peak[1];
-
-    if (left >= -99) {
-        input_level_left->set_value(pow(10, left / 10));
-    } else {
-        input_level_left->set_value(0);
-    }
-
-    if (right >= -99) {
-        input_level_right->set_value(pow(10, left / 10));
-    } else {
-        input_level_right->set_value(0);
-    }
+    update_level(input_level_left, input_level_left_label, input_level_right,
+                 input_level_right_label, peak);
 }
 
 void PluginUiBase::on_new_output_level(const std::array<double, 2>& peak) {
-    auto left = peak[0];
-    auto right = peak[1];
-
-    if (left >= -99) {
-        output_level_left->set_value(pow(10, left / 10));
-    } else {
-        output_level_left->set_value(0);
-    }
-
-    if (right >= -99) {
-        output_level_right->set_value(pow(10, left / 10));
-    } else {
-        output_level_right->set_value(0);
-    }
+    update_level(output_level_left, output_level_left_label, output_level_right,
+                 output_level_right_label, peak);
 }

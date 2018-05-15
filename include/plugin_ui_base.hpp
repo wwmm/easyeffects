@@ -37,6 +37,35 @@ class PluginUiBase {
     void get_object(std::string name, T& object) {
         object = (T)builder->get_object(name).get();
     }
+
+   private:
+    std::string level_to_str(double value);
+
+    template <typename T1, typename T2, typename T3, typename T4>
+    void update_level(const T1& w_left,
+                      const T2& w_left_label,
+                      const T3& w_right,
+                      const T4& w_right_label,
+                      const std::array<double, 2>& peak) {
+        auto left = peak[0];
+        auto right = peak[1];
+
+        if (left >= -99) {
+            w_left->set_value(pow(10, left / 10));
+            w_left_label->set_text(level_to_str(left));
+        } else {
+            w_left->set_value(0);
+            w_left_label->set_text("-99");
+        }
+
+        if (right >= -99) {
+            w_right->set_value(pow(10, right / 10));
+            w_right_label->set_text(level_to_str(right));
+        } else {
+            w_right->set_value(0);
+            w_right_label->set_text("-99");
+        }
+    }
 };
 
 #endif
