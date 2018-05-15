@@ -3,24 +3,14 @@
 LimiterUi::LimiterUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& refBuilder,
                      std::string settings_name)
-    : Gtk::Grid(cobject),
-      builder(refBuilder),
-      settings(Gio::Settings::create(settings_name)) {
+    : Gtk::Grid(cobject), PluginUiBase(refBuilder, settings_name) {
     // loading glade widgets
 
-    builder->get_widget("listbox_control", listbox_control);
-    builder->get_widget("limiter_enable", limiter_enable);
-    builder->get_widget("controls", controls);
-    builder->get_widget("img_state", img_state);
+    builder->get_widget("limiter_enable", enable);
     builder->get_widget("asc", asc);
     builder->get_widget("autovolume_enable", autovolume_enable);
     builder->get_widget("autovolume_controls", autovolume_controls);
     builder->get_widget("limiter_controls", limiter_controls);
-
-    builder->get_widget("input_level_left", input_level_left);
-    builder->get_widget("input_level_right", input_level_right);
-    builder->get_widget("output_level_left", output_level_left);
-    builder->get_widget("output_level_right", output_level_right);
 
     get_object("input_gain", input_gain);
     get_object("limit", limit);
@@ -40,7 +30,7 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
     auto flag_invert_boolean =
         Gio::SettingsBindFlags::SETTINGS_BIND_INVERT_BOOLEAN;
 
-    settings->bind("state", limiter_enable, "active", flag);
+    settings->bind("state", enable, "active", flag);
     settings->bind("state", controls, "sensitive", flag_get);
     settings->bind("state", img_state, "visible", flag_get);
     settings->bind("input-gain", input_gain, "value", flag);
