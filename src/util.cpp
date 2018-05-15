@@ -84,11 +84,9 @@ gboolean double_to_float(GValue* value, GVariant* variant, gpointer user_data) {
 }
 
 gboolean ms_to_ns(GValue* value, GVariant* variant, gpointer user_data) {
-    gint64 v_ns = g_variant_get_double(variant) * 1000000;
+    guint64 v_ns = g_variant_get_double(variant) * 1000000;
 
-    warning(std::to_string(v_ns));
-
-    g_value_set_int64(value, v_ns);
+    g_value_set_uint64(value, v_ns);
 
     return true;
 }
