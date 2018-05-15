@@ -17,6 +17,11 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
     builder->get_widget("autovolume_controls", autovolume_controls);
     builder->get_widget("limiter_controls", limiter_controls);
 
+    builder->get_widget("input_level_left", input_level_left);
+    builder->get_widget("input_level_right", input_level_right);
+    builder->get_widget("output_level_left", output_level_left);
+    builder->get_widget("output_level_right", output_level_right);
+
     get_object("input_gain", input_gain);
     get_object("limit", limit);
     get_object("lookahead", lookahead);

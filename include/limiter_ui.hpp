@@ -7,6 +7,8 @@
 #include <gtkmm/builder.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/image.h>
+#include <gtkmm/label.h>
+#include <gtkmm/levelbar.h>
 #include <gtkmm/switch.h>
 #include <gtkmm/togglebutton.h>
 
@@ -35,6 +37,11 @@ class LimiterUi : public Gtk::Grid {
     Gtk::Adjustment *asc_level, *autovolume_target, *autovolume_window;
     Gtk::Adjustment *autovolume_threshold, *autovolume_tolerance;
     Gtk::Grid *autovolume_controls, *limiter_controls;
+
+    Gtk::LevelBar *input_level_left, *input_level_right;
+    Gtk::LevelBar *output_level_left, *output_level_right;
+    Gtk::Label *input_level_left_label, *input_level_right_label;
+    Gtk::Label *output_level_left_label, *output_level_right_label;
 
     template <typename T>
     void get_object(std::string name, T& object) {

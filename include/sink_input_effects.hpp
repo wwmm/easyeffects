@@ -12,6 +12,9 @@ class SinkInputEffects : public PipelineBase {
 
     std::shared_ptr<PulseManager> pm;
 
+    sigc::signal<void, std::array<double, 2>> limiter_input_level;
+    sigc::signal<void, std::array<double, 2>> limiter_output_level;
+
    private:
     std::string log_tag = "sie: ";
 

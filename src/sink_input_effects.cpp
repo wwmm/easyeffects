@@ -5,12 +5,18 @@ namespace {
 void on_message_element(const GstBus* gst_bus,
                         GstMessage* message,
                         SinkInputEffects* sie) {
-    if (GST_OBJECT_NAME(message->src) == std::string("autovolume")) {
+    auto src_name = GST_OBJECT_NAME(message->src);
+
+    if (src_name == std::string("autovolume")) {
         auto peak = sie->get_peak(message);
 
         auto max_value = (peak[0] > peak[1]) ? peak[0] : peak[1];
 
         std::cout << max_value << std::endl;
+    } else if (src_name == std::string("limiter_input_level")) {
+        sie->limiter_input_level.emit(sie->get_peak(message));
+    } else if (src_name == std::string("limiter_output_level")) {
+        sie->limiter_output_level.emit(sie->get_peak(message));
     }
 }
 
