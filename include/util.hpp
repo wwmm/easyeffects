@@ -20,6 +20,10 @@ gboolean db20_gain_to_linear(GValue* value,
                              GVariant* variant,
                              gpointer user_data);
 
+GVariant* linear_gain_to_db20(const GValue* value,
+                              const GVariantType* expected_type,
+                              gpointer user_data);
+
 gboolean db10_gain_to_linear(GValue* value,
                              GVariant* variant,
                              gpointer user_data);

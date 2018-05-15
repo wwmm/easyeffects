@@ -63,6 +63,16 @@ gboolean db20_gain_to_linear(GValue* value,
     return true;
 }
 
+GVariant* linear_gain_to_db20(const GValue* value,
+                              const GVariantType* expected_type,
+                              gpointer user_data) {
+    double v_linear = g_value_get_float(value);
+
+    auto v_db = 20 * log10(v_linear);
+
+    return g_variant_new_double(v_db);
+}
+
 gboolean db10_gain_to_linear(GValue* value,
                              GVariant* variant,
                              gpointer user_data) {
