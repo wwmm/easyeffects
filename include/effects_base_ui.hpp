@@ -14,7 +14,7 @@ class EffectsBaseUi : public Gtk::Box {
    public:
     EffectsBaseUi(BaseObjectType* cobject,
                   const Glib::RefPtr<Gtk::Builder>& refBuilder,
-                  std::shared_ptr<PulseManager> pulse_manager);
+                  const std::shared_ptr<PulseManager>& pulse_manager);
 
     virtual ~EffectsBaseUi();
 

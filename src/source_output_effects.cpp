@@ -1,7 +1,7 @@
 #include "source_output_effects.hpp"
 
 SourceOutputEffects::SourceOutputEffects(
-    std::shared_ptr<PulseManager> pulse_manager)
+    const std::shared_ptr<PulseManager>& pulse_manager)
     : PipelineBase("soe: ", pulse_manager->mic_sink_info->rate),
       pm(pulse_manager) {
     set_pulseaudio_props(

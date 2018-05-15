@@ -22,7 +22,8 @@ void on_message_element(const GstBus* gst_bus,
 
 }  // namespace
 
-SinkInputEffects::SinkInputEffects(std::shared_ptr<PulseManager> pulse_manager)
+SinkInputEffects::SinkInputEffects(
+    const std::shared_ptr<PulseManager>& pulse_manager)
     : PipelineBase("sie: ", pulse_manager->apps_sink_info->rate),
       pm(pulse_manager) {
     set_pulseaudio_props(

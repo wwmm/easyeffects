@@ -7,7 +7,7 @@
 
 class SinkInputEffects : public PipelineBase {
    public:
-    SinkInputEffects(std::shared_ptr<PulseManager> pulse_manager);
+    SinkInputEffects(const std::shared_ptr<PulseManager>& pulse_manager);
     virtual ~SinkInputEffects();
 
     std::shared_ptr<PulseManager> pm;

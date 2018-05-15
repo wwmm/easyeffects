@@ -15,8 +15,8 @@ class AppInfoUi : public Gtk::Grid {
    public:
     AppInfoUi(BaseObjectType* cobject,
               const Glib::RefPtr<Gtk::Builder>& refBuilder,
-              std::shared_ptr<AppInfo> app_info,
-              std::shared_ptr<PulseManager> pm);
+              const std::shared_ptr<AppInfo>& app_info,
+              const std::shared_ptr<PulseManager>& pm);
 
     virtual ~AppInfoUi();
 

@@ -6,7 +6,7 @@
 
 class SourceOutputEffects : public PipelineBase {
    public:
-    SourceOutputEffects(std::shared_ptr<PulseManager> pulse_manager);
+    SourceOutputEffects(const std::shared_ptr<PulseManager>& pulse_manager);
     virtual ~SourceOutputEffects();
 
     std::shared_ptr<PulseManager> pm;

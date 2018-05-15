@@ -5,7 +5,7 @@
 
 EffectsBaseUi::EffectsBaseUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& refBuilder,
-                             std::shared_ptr<PulseManager> pulse_manager)
+                             const std::shared_ptr<PulseManager>& pulse_manager)
     : Gtk::Box(cobject), builder(refBuilder), pm(pulse_manager) {
     // loading glade widgets
 

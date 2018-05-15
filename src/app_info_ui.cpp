@@ -5,8 +5,8 @@
 
 AppInfoUi::AppInfoUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& refBuilder,
-                     std::shared_ptr<AppInfo> info,
-                     std::shared_ptr<PulseManager> pulse_manager)
+                     const std::shared_ptr<AppInfo>& info,
+                     const std::shared_ptr<PulseManager>& pulse_manager)
     : Gtk::Grid(cobject),
       app_info(info),
       builder(refBuilder),
