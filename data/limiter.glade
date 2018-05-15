@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1 -->
+<!-- Generated with glade 3.21.0 -->
 <interface domain="pulseeffects">
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="asc_level">
@@ -75,6 +75,7 @@
       <object class="GtkImage" id="img_state">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="no_show_all">True</property>
         <property name="halign">center</property>
         <property name="valign">center</property>
         <property name="icon_name">emblem-ok-symbolic</property>
@@ -763,7 +764,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkSwitch" id="limiter_enable">
+      <object class="GtkSwitch" id="enable">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="halign">center</property>

@@ -3,6 +3,7 @@
 PluginUiBase::PluginUiBase(const Glib::RefPtr<Gtk::Builder>& refBuilder,
                            std::string settings_name)
     : builder(refBuilder), settings(Gio::Settings::create(settings_name)) {
+    builder->get_widget("enable", enable);
     builder->get_widget("listbox_control", listbox_control);
     builder->get_widget("controls", controls);
     builder->get_widget("img_state", img_state);
@@ -16,6 +17,15 @@ PluginUiBase::PluginUiBase(const Glib::RefPtr<Gtk::Builder>& refBuilder,
     builder->get_widget("output_level_right", output_level_right);
     builder->get_widget("output_level_left_label", output_level_left_label);
     builder->get_widget("output_level_right_label", output_level_right_label);
+
+    // gsettings bindings
+
+    auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
+    auto flag_get = Gio::SettingsBindFlags::SETTINGS_BIND_GET;
+
+    settings->bind("state", enable, "active", flag);
+    settings->bind("state", controls, "sensitive", flag_get);
+    settings->bind("state", img_state, "visible", flag_get);
 }
 
 PluginUiBase::~PluginUiBase() {}
