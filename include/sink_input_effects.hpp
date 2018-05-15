@@ -12,6 +12,8 @@ class SinkInputEffects : public PipelineBase {
 
     std::shared_ptr<PulseManager> pm;
 
+    std::unique_ptr<Limiter> limiter;
+
     sigc::signal<void, std::array<double, 2>> limiter_input_level;
     sigc::signal<void, std::array<double, 2>> limiter_output_level;
 
@@ -20,7 +22,6 @@ class SinkInputEffects : public PipelineBase {
 
     std::array<GstInsertBin*, 1> wrappers;
     std::map<std::string, GstElement*> plugins;
-    std::unique_ptr<Limiter> limiter;
 
     void add_plugins_to_pipeline();
 

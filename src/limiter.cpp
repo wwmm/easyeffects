@@ -131,3 +131,13 @@ void Limiter::bind_to_gsettings() {
                                  "interval", G_SETTINGS_BIND_GET,
                                  util::ms_to_ns, nullptr, nullptr, nullptr);
 }
+
+void Limiter::on_new_autovolume_level(const std::array<double, 2>& peak) {
+    auto max_value = (peak[0] > peak[1]) ? peak[0] : peak[1];
+
+    float attenuation, target, tolerance;
+
+    // g_object_get(limiter, "att", &attenuation, nullptr);
+    // g_object_get(settings, "autovolume-target", &target, nullptr);
+    // g_object_get(settings, "autovolume-tolerance", &tolerance, nullptr);
+}
