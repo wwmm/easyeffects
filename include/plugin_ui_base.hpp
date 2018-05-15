@@ -18,6 +18,7 @@ class PluginUiBase {
     Gtk::Box* listbox_control;
 
     void on_new_input_level(const std::array<double, 2>& peak);
+    void on_new_output_level(const std::array<double, 2>& peak);
 
    protected:
     Glib::RefPtr<Gtk::Builder> builder;

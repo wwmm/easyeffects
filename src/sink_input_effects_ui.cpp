@@ -10,6 +10,13 @@ SinkInputEffectsUi::SinkInputEffectsUi(
           Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs")),
       limiter_ui(LimiterUi::create(
           "com.github.wwmm.pulseeffects.sinkinputs.limiter")) {
+    // level meters connections
+
+    sie->limiter_input_level.connect(
+        sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_input_level));
+    sie->limiter_output_level.connect(
+        sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_output_level));
+
     add_plugins();
 }
 

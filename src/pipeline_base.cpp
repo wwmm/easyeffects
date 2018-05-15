@@ -360,8 +360,8 @@ std::array<double, 2> PipelineBase::get_peak(GstMessage* message) {
     auto gpeak =
         (GValueArray*)g_value_get_boxed(gst_structure_get_value(s, "peak"));
 
-    peak[0] = g_value_get_double(gpeak->values);      // right
-    peak[1] = g_value_get_double(gpeak->values + 1);  // left
+    peak[0] = g_value_get_double(gpeak->values);      // left
+    peak[1] = g_value_get_double(gpeak->values + 1);  // right
 
     return peak;
 }

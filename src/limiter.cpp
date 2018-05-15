@@ -94,11 +94,11 @@ Limiter::~Limiter() {}
 
 void Limiter::bind_to_gsettings() {
     g_settings_bind_with_mapping(settings, "input-gain", limiter, "level-in",
-                                 G_SETTINGS_BIND_GET, util::db_gain_to_linear,
+                                 G_SETTINGS_BIND_GET, util::db20_gain_to_linear,
                                  nullptr, nullptr, nullptr);
 
     g_settings_bind_with_mapping(settings, "limit", limiter, "limit",
-                                 G_SETTINGS_BIND_GET, util::db_gain_to_linear,
+                                 G_SETTINGS_BIND_GET, util::db20_gain_to_linear,
                                  nullptr, nullptr, nullptr);
 
     // calf limiter does automatic makeup gain by the same amount given as
@@ -106,7 +106,7 @@ void Limiter::bind_to_gsettings() {
     // that is why we reduce the output level accordingly
 
     g_settings_bind_with_mapping(settings, "limit", limiter, "level-out",
-                                 G_SETTINGS_BIND_GET, util::db_gain_to_linear,
+                                 G_SETTINGS_BIND_GET, util::db20_gain_to_linear,
                                  nullptr, nullptr, nullptr);
 
     g_settings_bind_with_mapping(settings, "lookahead", limiter, "attack",

@@ -16,9 +16,13 @@ void warning(const std::string& s);
 std::vector<float> logspace(float start, float stop, uint npoints);
 std::vector<float> linspace(float start, float stop, uint npoints);
 
-gboolean db_gain_to_linear(GValue* value,
-                           GVariant* variant,
-                           gpointer user_data);
+gboolean db20_gain_to_linear(GValue* value,
+                             GVariant* variant,
+                             gpointer user_data);
+
+gboolean db10_gain_to_linear(GValue* value,
+                             GVariant* variant,
+                             gpointer user_data);
 
 gboolean double_to_float(GValue* value, GVariant* variant, gpointer user_data);
 
