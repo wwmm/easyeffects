@@ -268,6 +268,7 @@ void ApplicationUi::on_reset_settings() {
     settings->reset("use-default-source");
 
     sie_ui->reset();
+    soe_ui->reset();
 }
 
 bool ApplicationUi::on_show_spectrum(bool state) {

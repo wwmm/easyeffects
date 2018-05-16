@@ -19,3 +19,5 @@ std::unique_ptr<SourceOutputEffectsUi> SourceOutputEffectsUi::create(
 
     return std::unique_ptr<SourceOutputEffectsUi>(soe_ui);
 }
+
+void SourceOutputEffectsUi::reset() {}

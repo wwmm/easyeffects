@@ -183,18 +183,17 @@ void Limiter::bind_to_gsettings() {
 }
 
 void Limiter::on_new_autovolume_level(const std::array<double, 2>& peak) {
-    float attenuation, gain;
+    float gain;
 
     auto max_value = (peak[0] > peak[1]) ? peak[0] : peak[1];
     auto target = g_settings_get_int(settings, "autovolume-target");
     auto tolerance = g_settings_get_int(settings, "autovolume-tolerance");
 
-    g_object_get(limiter, "att", &attenuation, nullptr);
     g_object_get(limiter, "level-in", &gain, nullptr);
 
     gain = util::linear_to_db(gain);
 
-    if (max_value > target + tolerance || attenuation < 0.9) {
+    if (max_value > target + tolerance) {
         if (gain - 1 >= -36) {  // -36 = minimum input gain
             gain--;
         }
