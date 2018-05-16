@@ -20,6 +20,8 @@ class SourceOutputEffects : public PipelineBase {
     std::array<GstInsertBin*, 1> wrappers;
     std::map<std::string, GstElement*> plugins;
 
+    GSettings* soe_settings;
+
     void add_plugins_to_pipeline();
 
     void on_app_added(const std::shared_ptr<AppInfo>& app_info);
