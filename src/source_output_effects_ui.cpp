@@ -10,6 +10,15 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(
           Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs")),
       limiter_ui(LimiterUi::create(
           "com.github.wwmm.pulseeffects.sourceoutputs.limiter")) {
+    // level meters connections
+
+    connections.push_back(soe->limiter->input_level.connect(
+        sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_input_level)));
+    connections.push_back(soe->limiter->output_level.connect(
+        sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_output_level)));
+    connections.push_back(soe->limiter->attenuation.connect(
+        sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_attenuation)));
+
     add_plugins();
 }
 
