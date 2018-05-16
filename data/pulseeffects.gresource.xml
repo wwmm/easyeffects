@@ -10,5 +10,10 @@
     <file>listbox.css</file>
     <file>pulseeffects-sine-symbolic.svg</file>
     <file>pulseeffects-us-symbolic.svg</file>
+    <file>pulseeffects-db-symbolic.svg</file>
+    <file>pulseeffects-ms-symbolic.svg</file>
+    <file>pulseeffects-s-symbolic.svg</file>
+    <file>pulseeffects-hz-symbolic.svg</file>
+    <file>pulseeffects-celsius-symbolic.svg</file>
   </gresource>
 </gresources>
