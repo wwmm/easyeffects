@@ -51,9 +51,10 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
     settings->bind("autovolume-tolerance", autovolume_tolerance, "value", flag);
     settings->bind("autovolume-threshold", autovolume_threshold, "value", flag);
 
-    settings->signal_changed("autovolume-state").connect([&](auto key) {
-        init_autovolume();
-    });
+    connections.push_back(
+        settings->signal_changed("autovolume-state").connect([&](auto key) {
+            init_autovolume();
+        }));
 
     settings->signal_changed("autovolume-window").connect([&](auto key) {
         auto window = settings->get_double("autovolume-window");
@@ -82,6 +83,10 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
 
 LimiterUi::~LimiterUi() {
     settings->set_boolean("post-messages", false);
+
+    for (auto c : connections) {
+        c.disconnect();
+    }
 }
 
 std::shared_ptr<LimiterUi> LimiterUi::create(std::string settings_name) {
