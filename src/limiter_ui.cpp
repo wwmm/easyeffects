@@ -76,11 +76,15 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
     });
 
     init_autovolume();
+
+    settings->set_boolean("post-messages", true);
 }
 
-LimiterUi::~LimiterUi() {}
+LimiterUi::~LimiterUi() {
+    settings->set_boolean("post-messages", false);
+}
 
-LimiterUi* LimiterUi::create(std::string settings_name) {
+std::shared_ptr<LimiterUi> LimiterUi::create(std::string settings_name) {
     auto builder = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/limiter.glade");
 
@@ -88,7 +92,7 @@ LimiterUi* LimiterUi::create(std::string settings_name) {
 
     builder->get_widget_derived("widgets_grid", grid, settings_name);
 
-    return grid;
+    return std::shared_ptr<LimiterUi>(grid);
 }
 
 void LimiterUi::init_autovolume() {

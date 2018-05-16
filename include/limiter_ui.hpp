@@ -13,7 +13,7 @@ class LimiterUi : public Gtk::Grid, public PluginUiBase {
               std::string settings_name);
     ~LimiterUi();
 
-    static LimiterUi* create(std::string settings_name);
+    static std::shared_ptr<LimiterUi> create(std::string settings_name);
 
     std::string name = "limiter";
 

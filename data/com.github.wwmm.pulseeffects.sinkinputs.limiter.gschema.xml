@@ -41,5 +41,9 @@
         <key name="autovolume-threshold" type="i">
           <default>-50</default>
         </key>
+
+        <key name="post-messages" type="b">
+          <default>false</default>
+        </key>
     </schema>
 </schemalist>
