@@ -1,4 +1,5 @@
 #include <gst/insertbin/gstinsertbin.h>
+#include <cmath>
 #include "limiter.hpp"
 #include "util.hpp"
 
@@ -133,11 +134,28 @@ void Limiter::bind_to_gsettings() {
 }
 
 void Limiter::on_new_autovolume_level(const std::array<double, 2>& peak) {
+    float attenuation, gain;
+
     auto max_value = (peak[0] > peak[1]) ? peak[0] : peak[1];
+    auto target = g_settings_get_int(settings, "autovolume-target");
+    auto tolerance = g_settings_get_int(settings, "autovolume-tolerance");
 
-    float attenuation, target, tolerance;
+    g_object_get(limiter, "att", &attenuation, nullptr);
+    g_object_get(limiter, "level-in", &gain, nullptr);
 
-    // g_object_get(limiter, "att", &attenuation, nullptr);
-    // g_object_get(settings, "autovolume-target", &target, nullptr);
-    // g_object_get(settings, "autovolume-tolerance", &tolerance, nullptr);
+    gain = 20 * log10(gain);
+
+    if (max_value > target + tolerance || attenuation < 1) {
+        if (gain - 1 >= -36) {  // -36 = minimum input gain
+            gain--;
+        }
+    } else if (max_value < target - tolerance) {
+        if (gain + 1 <= 36) {  // 36 = maximum input gain
+            gain++;
+        }
+    }
+
+    gain = pow(10, gain / 20.0);
+
+    g_object_set(limiter, "level-in", gain, nullptr);
 }
