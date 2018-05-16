@@ -52,7 +52,11 @@ std::vector<float> linspace(float start, float stop, uint npoints) {
 }
 
 float linear_to_db(float amp) {
-    return 20 * log10(amp);
+    if (amp >= 0.00001) {
+        return 20 * log10(amp);
+    } else {
+        return -99;
+    }
 }
 
 float db_to_linear(float db) {
