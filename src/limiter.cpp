@@ -117,18 +117,9 @@ Limiter::Limiter(std::string tag, std::string schema)
     if (is_installed) {
         bin = gst_insert_bin_new("limiter_bin");
 
-        auto input_level =
-            gst_element_factory_make("level", "limiter_input_level");
-        auto output_level =
-            gst_element_factory_make("level", "limiter_output_level");
-
         autovolume = gst_element_factory_make("level", "autovolume");
 
-        gst_insert_bin_append(GST_INSERT_BIN(bin), input_level, nullptr,
-                              nullptr);
         gst_insert_bin_append(GST_INSERT_BIN(bin), limiter, nullptr, nullptr);
-        gst_insert_bin_append(GST_INSERT_BIN(bin), output_level, nullptr,
-                              nullptr);
         gst_insert_bin_append(GST_INSERT_BIN(bin), autovolume, nullptr,
                               nullptr);
 
