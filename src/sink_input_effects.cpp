@@ -17,7 +17,8 @@ void on_message_element(const GstBus* gst_bus,
 SinkInputEffects::SinkInputEffects(
     const std::shared_ptr<PulseManager>& pulse_manager)
     : PipelineBase("sie: ", pulse_manager->apps_sink_info->rate),
-      pm(pulse_manager) {
+      pm(pulse_manager),
+      sie_settings(g_settings_new("com.github.wwmm.pulseeffects.sinkinputs")) {
     set_pulseaudio_props(
         "application.id=com.github.wwmm.pulseeffects.sinkinputs");
 
@@ -83,5 +84,17 @@ void SinkInputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
 }
 
 void SinkInputEffects::add_plugins_to_pipeline() {
-    gst_insert_bin_append(wrappers[0], plugins["limiter"], nullptr, nullptr);
+    uint index = 0;
+    gchar* name;
+    GVariantIter* iter;
+
+    g_settings_get(sie_settings, "plugins", "as", &iter);
+
+    while (g_variant_iter_next(iter, "s", &name)) {
+        gst_insert_bin_append(wrappers[index], plugins[name], nullptr, nullptr);
+
+        index++;
+    }
+
+    g_variant_iter_free(iter);
 }
