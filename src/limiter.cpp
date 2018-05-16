@@ -128,6 +128,9 @@ void Limiter::bind_to_gsettings() {
     g_settings_bind(settings, "oversampling", limiter, "oversampling",
                     G_SETTINGS_BIND_DEFAULT);
 
+    g_settings_bind(settings, "autovolume-state", autovolume, "post-messages",
+                    G_SETTINGS_BIND_DEFAULT);
+
     g_settings_bind_with_mapping(settings, "autovolume-window", autovolume,
                                  "interval", G_SETTINGS_BIND_GET,
                                  util::ms_to_ns, nullptr, nullptr, nullptr);
@@ -158,4 +161,12 @@ void Limiter::on_new_autovolume_level(const std::array<double, 2>& peak) {
     gain = pow(10, gain / 20.0);
 
     g_object_set(limiter, "level-in", gain, nullptr);
+}
+
+double Limiter::get_attenuation() {
+    float attenuation;
+
+    g_object_get(limiter, "att", &attenuation, nullptr);
+
+    return attenuation;
 }

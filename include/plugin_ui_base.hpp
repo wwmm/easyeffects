@@ -38,9 +38,9 @@ class PluginUiBase {
         object = (T)builder->get_object(name).get();
     }
 
-   private:
     std::string level_to_str(double value);
 
+   private:
     template <typename T1, typename T2, typename T3, typename T4>
     void update_level(const T1& w_left,
                       const T2& w_left_label,

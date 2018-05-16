@@ -15,6 +15,7 @@ class Limiter {
     std::string log_tag;
     GstElement *plugin, *bin;
 
+    double get_attenuation();
     void on_new_autovolume_level(const std::array<double, 2>& peak);
 
    private:

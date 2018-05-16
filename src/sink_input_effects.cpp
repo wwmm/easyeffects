@@ -13,6 +13,7 @@ void on_message_element(const GstBus* gst_bus,
         sie->limiter_input_level.emit(sie->get_peak(message));
     } else if (src_name == std::string("limiter_output_level")) {
         sie->limiter_output_level.emit(sie->get_peak(message));
+        sie->limiter_attenuation.emit(sie->limiter->get_attenuation());
     }
 }
 

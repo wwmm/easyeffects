@@ -16,6 +16,8 @@ SinkInputEffectsUi::SinkInputEffectsUi(
         sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_input_level));
     sie->limiter_output_level.connect(
         sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_output_level));
+    sie->limiter_attenuation.connect(
+        sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_attenuation));
 
     add_plugins();
 }

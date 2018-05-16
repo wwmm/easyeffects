@@ -10,6 +10,8 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
     builder->get_widget("autovolume_enable", autovolume_enable);
     builder->get_widget("autovolume_controls", autovolume_controls);
     builder->get_widget("limiter_controls", limiter_controls);
+    builder->get_widget("attenuation", attenuation);
+    builder->get_widget("attenuation_label", attenuation_label);
 
     get_object("input_gain", input_gain);
     get_object("limit", limit);
@@ -103,4 +105,10 @@ void LimiterUi::init_autovolume() {
         asc_level->set_value(1.0);
         lookahead->set_value(10.0);  // 10 ms
     }
+}
+
+void LimiterUi::on_new_attenuation(double value) {
+    attenuation->set_value(1 - value);
+
+    attenuation_label->set_text(level_to_str(20 * log10(value)));
 }
