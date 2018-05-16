@@ -194,7 +194,7 @@ void Limiter::on_new_autovolume_level(const std::array<double, 2>& peak) {
 
     gain = util::linear_to_db(gain);
 
-    if (max_value > target + tolerance || attenuation < 1) {
+    if (max_value > target + tolerance || attenuation < 0.9) {
         if (gain - 1 >= -36) {  // -36 = minimum input gain
             gain--;
         }

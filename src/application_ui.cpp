@@ -266,6 +266,8 @@ void ApplicationUi::on_reset_settings() {
     settings->reset("enable-all-apps");
     settings->reset("use-default-sink");
     settings->reset("use-default-source");
+
+    sie_ui->reset();
 }
 
 bool ApplicationUi::on_show_spectrum(bool state) {

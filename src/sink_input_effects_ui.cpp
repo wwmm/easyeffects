@@ -52,3 +52,7 @@ void SinkInputEffectsUi::add_plugins() {
         }
     }
 }
+
+void SinkInputEffectsUi::reset() {
+    limiter_ui->reset();
+}
