@@ -2,6 +2,7 @@
 #define SOURCE_OUTPUT_EFFECTS_UI_HPP
 
 #include "effects_base_ui.hpp"
+#include "limiter_ui.hpp"
 #include "source_output_effects.hpp"
 
 class SourceOutputEffectsUi : public EffectsBaseUi {
@@ -22,6 +23,14 @@ class SourceOutputEffectsUi : public EffectsBaseUi {
 
    private:
     std::shared_ptr<SourceOutputEffects> soe;
+
+    Glib::RefPtr<Gio::Settings> settings;
+
+    std::vector<sigc::connection> connections;
+
+    std::shared_ptr<LimiterUi> limiter_ui;
+
+    void add_plugins();
 };
 
 #endif
