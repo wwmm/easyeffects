@@ -14,7 +14,11 @@ class Limiter {
     ~Limiter();
 
     std::string log_tag;
-    GstElement *plugin, *bin;
+    GstElement *plugin, *bin, *limiter;
+
+    sigc::connection input_level_connection;
+    sigc::connection output_level_connection;
+    sigc::connection attenuation_connection;
 
     double get_attenuation();
     void on_new_autovolume_level(const std::array<double, 2>& peak);
@@ -26,13 +30,9 @@ class Limiter {
    private:
     bool is_installed;
 
-    GstElement *limiter, *autovolume;
+    GstElement* autovolume;
 
     GSettings* settings;
-
-    sigc::connection input_level_connection;
-    sigc::connection output_level_connection;
-    sigc::connection attenuation_connection;
 
     void bind_to_gsettings();
 };

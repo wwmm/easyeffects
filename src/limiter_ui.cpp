@@ -114,5 +114,5 @@ void LimiterUi::init_autovolume() {
 void LimiterUi::on_new_attenuation(double value) {
     attenuation->set_value(1 - value);
 
-    attenuation_label->set_text(level_to_str(20 * log10(value)));
+    attenuation_label->set_text(level_to_str(util::linear_to_db(value)));
 }

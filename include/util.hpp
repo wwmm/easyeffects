@@ -16,6 +16,10 @@ void warning(const std::string& s);
 std::vector<float> logspace(float start, float stop, uint npoints);
 std::vector<float> linspace(float start, float stop, uint npoints);
 
+float linear_to_db(float amp);
+
+float db_to_linear(float db);
+
 gboolean db20_gain_to_linear(GValue* value,
                              GVariant* variant,
                              gpointer user_data);

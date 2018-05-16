@@ -12,11 +12,11 @@ SinkInputEffectsUi::SinkInputEffectsUi(
           "com.github.wwmm.pulseeffects.sinkinputs.limiter")) {
     // level meters connections
 
-    sie->limiter_input_level.connect(
+    sie->limiter->input_level.connect(
         sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_input_level));
-    sie->limiter_output_level.connect(
+    sie->limiter->output_level.connect(
         sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_output_level));
-    sie->limiter_attenuation.connect(
+    sie->limiter->attenuation.connect(
         sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_attenuation));
 
     add_plugins();

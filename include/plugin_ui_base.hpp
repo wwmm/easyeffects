@@ -8,6 +8,7 @@
 #include <gtkmm/label.h>
 #include <gtkmm/levelbar.h>
 #include <gtkmm/switch.h>
+#include "util.hpp"
 
 class PluginUiBase {
    public:
@@ -51,16 +52,16 @@ class PluginUiBase {
         auto right = peak[1];
 
         if (left >= -99) {
-            w_left->set_value(pow(10, left / 10));
-            w_left_label->set_text(level_to_str(left));
+            w_left->set_value(left);
+            w_left_label->set_text(level_to_str(util::linear_to_db(left)));
         } else {
             w_left->set_value(0);
             w_left_label->set_text("-99");
         }
 
         if (right >= -99) {
-            w_right->set_value(pow(10, right / 10));
-            w_right_label->set_text(level_to_str(right));
+            w_right->set_value(right);
+            w_right_label->set_text(level_to_str(util::linear_to_db(right)));
         } else {
             w_right->set_value(0);
             w_right_label->set_text("-99");

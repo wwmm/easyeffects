@@ -14,10 +14,6 @@ class SinkInputEffects : public PipelineBase {
 
     std::unique_ptr<Limiter> limiter;
 
-    sigc::signal<void, std::array<double, 2>> limiter_input_level;
-    sigc::signal<void, std::array<double, 2>> limiter_output_level;
-    sigc::signal<void, double> limiter_attenuation;
-
    private:
     std::string log_tag = "sie: ";
 

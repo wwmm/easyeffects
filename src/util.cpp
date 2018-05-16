@@ -51,6 +51,14 @@ std::vector<float> linspace(float start, float stop, uint npoints) {
     return output;
 }
 
+float linear_to_db(float amp) {
+    return 20 * log10(amp);
+}
+
+float db_to_linear(float db) {
+    return exp((db / 20.0) * log(10.0));
+}
+
 gboolean db20_gain_to_linear(GValue* value,
                              GVariant* variant,
                              gpointer user_data) {

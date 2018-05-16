@@ -1,3 +1,4 @@
+#include <glibmm/main.h>
 #include <gst/insertbin/gstinsertbin.h>
 #include <cmath>
 #include "limiter.hpp"
@@ -6,7 +7,7 @@
 namespace {
 
 void on_state_changed(GSettings* settings, gchar* key, Limiter* l) {
-    auto enable = g_settings_get_boolean(settings, "state");
+    auto enable = g_settings_get_boolean(settings, key);
     auto plugin = gst_bin_get_by_name(GST_BIN(l->plugin), "limiter_bin");
 
     if (enable) {
@@ -41,6 +42,58 @@ void on_state_changed(GSettings* settings, gchar* key, Limiter* l) {
                 },
                 l);
         }
+    }
+}
+
+void on_post_messages_changed(GSettings* settings, gchar* key, Limiter* l) {
+    auto post = g_settings_get_boolean(settings, key);
+
+    if (post) {
+        l->input_level_connection = Glib::signal_timeout().connect(
+            [l]() {
+                float inL, inR;
+
+                g_object_get(l->limiter, "meter-inL", &inL, nullptr);
+                g_object_get(l->limiter, "meter-inR", &inR, nullptr);
+
+                std::array<double, 2> in_peak = {inL, inR};
+
+                l->input_level.emit(in_peak);
+
+                return true;
+            },
+            100);
+
+        l->output_level_connection = Glib::signal_timeout().connect(
+            [l]() {
+                float outL, outR;
+
+                g_object_get(l->limiter, "meter-outL", &outL, nullptr);
+                g_object_get(l->limiter, "meter-outR", &outR, nullptr);
+
+                std::array<double, 2> out_peak = {outL, outR};
+
+                l->output_level.emit(out_peak);
+
+                return true;
+            },
+            100);
+
+        l->attenuation_connection = Glib::signal_timeout().connect(
+            [l]() {
+                float att;
+
+                g_object_get(l->limiter, "att", &att, nullptr);
+
+                l->attenuation.emit(att);
+
+                return true;
+            },
+            100);
+    } else {
+        l->input_level_connection.disconnect();
+        l->output_level_connection.disconnect();
+        l->attenuation_connection.disconnect();
     }
 }
 
@@ -83,6 +136,8 @@ Limiter::Limiter(std::string tag, std::string schema)
 
         g_signal_connect(settings, "changed::state",
                          G_CALLBACK(on_state_changed), this);
+        g_signal_connect(settings, "changed::post-messages",
+                         G_CALLBACK(on_post_messages_changed), this);
 
         // useless write just to force callback call
 
@@ -146,7 +201,7 @@ void Limiter::on_new_autovolume_level(const std::array<double, 2>& peak) {
     g_object_get(limiter, "att", &attenuation, nullptr);
     g_object_get(limiter, "level-in", &gain, nullptr);
 
-    gain = 20 * log10(gain);
+    gain = util::linear_to_db(gain);
 
     if (max_value > target + tolerance || attenuation < 1) {
         if (gain - 1 >= -36) {  // -36 = minimum input gain
@@ -158,7 +213,7 @@ void Limiter::on_new_autovolume_level(const std::array<double, 2>& peak) {
         }
     }
 
-    gain = pow(10, gain / 20.0);
+    gain = util::db_to_linear(gain);
 
     g_object_set(limiter, "level-in", gain, nullptr);
 }
