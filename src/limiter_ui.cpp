@@ -56,25 +56,28 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
             init_autovolume();
         }));
 
-    settings->signal_changed("autovolume-window").connect([&](auto key) {
-        auto window = settings->get_double("autovolume-window");
+    connections.push_back(
+        settings->signal_changed("autovolume-window").connect([&](auto key) {
+            auto window = settings->get_double("autovolume-window");
 
-        release->set_value(window);
-    });
+            release->set_value(window);
+        }));
 
-    settings->signal_changed("autovolume-target").connect([&](auto key) {
-        auto target = settings->get_int("autovolume-target");
-        auto tolerance = settings->get_int("autovolume-tolerance");
+    connections.push_back(
+        settings->signal_changed("autovolume-target").connect([&](auto key) {
+            auto target = settings->get_int("autovolume-target");
+            auto tolerance = settings->get_int("autovolume-tolerance");
 
-        limit->set_value(target + tolerance);
-    });
+            limit->set_value(target + tolerance);
+        }));
 
-    settings->signal_changed("autovolume-tolerance").connect([&](auto key) {
-        auto target = settings->get_int("autovolume-target");
-        auto tolerance = settings->get_int("autovolume-tolerance");
+    connections.push_back(
+        settings->signal_changed("autovolume-tolerance").connect([&](auto key) {
+            auto target = settings->get_int("autovolume-target");
+            auto tolerance = settings->get_int("autovolume-tolerance");
 
-        limit->set_value(target + tolerance);
-    });
+            limit->set_value(target + tolerance);
+        }));
 
     init_autovolume();
 

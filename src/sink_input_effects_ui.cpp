@@ -12,17 +12,21 @@ SinkInputEffectsUi::SinkInputEffectsUi(
           "com.github.wwmm.pulseeffects.sinkinputs.limiter")) {
     // level meters connections
 
-    sie->limiter->input_level.connect(
-        sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_input_level));
-    sie->limiter->output_level.connect(
-        sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_output_level));
-    sie->limiter->attenuation.connect(
-        sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_attenuation));
+    connections.push_back(sie->limiter->input_level.connect(
+        sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_input_level)));
+    connections.push_back(sie->limiter->output_level.connect(
+        sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_output_level)));
+    connections.push_back(sie->limiter->attenuation.connect(
+        sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_attenuation)));
 
     add_plugins();
 }
 
-SinkInputEffectsUi::~SinkInputEffectsUi() {}
+SinkInputEffectsUi::~SinkInputEffectsUi() {
+    for (auto c : connections) {
+        c.disconnect();
+    }
+}
 
 std::unique_ptr<SinkInputEffectsUi> SinkInputEffectsUi::create(
     std::shared_ptr<SinkInputEffects> sie) {
