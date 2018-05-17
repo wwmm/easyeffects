@@ -55,18 +55,23 @@ SinkInputEffects::SinkInputEffects(
 
     // plugins wrappers
 
-    wrappers[0] = GST_INSERT_BIN(gst_insert_bin_new("wrapper0"));
+    for (int n = 0; n < wrappers.size(); n++) {
+        wrappers[n] = GST_INSERT_BIN(gst_insert_bin_new(
+            std::string("wrapper" + std::to_string(n)).c_str()));
 
-    for (auto w : wrappers) {
-        gst_insert_bin_append(effects_bin, GST_ELEMENT(w), nullptr, nullptr);
+        gst_insert_bin_append(effects_bin, GST_ELEMENT(wrappers[n]), nullptr,
+                              nullptr);
     }
 
     // plugins
 
     limiter = std::make_unique<Limiter>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.limiter");
+    compressor = std::make_unique<Compressor>(
+        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.compressor");
 
     plugins.insert(std::make_pair(limiter->name, limiter->plugin));
+    plugins.insert(std::make_pair(compressor->name, compressor->plugin));
 
     add_plugins_to_pipeline();
 }

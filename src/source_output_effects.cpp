@@ -56,10 +56,12 @@ SourceOutputEffects::SourceOutputEffects(
 
     // plugins wrappers
 
-    wrappers[0] = GST_INSERT_BIN(gst_insert_bin_new("wrapper0"));
+    for (int n = 0; n < wrappers.size(); n++) {
+        wrappers[n] = GST_INSERT_BIN(gst_insert_bin_new(
+            std::string("wrapper" + std::to_string(n)).c_str()));
 
-    for (auto w : wrappers) {
-        gst_insert_bin_append(effects_bin, GST_ELEMENT(w), nullptr, nullptr);
+        gst_insert_bin_append(effects_bin, GST_ELEMENT(wrappers[n]), nullptr,
+                              nullptr);
     }
 
     // plugins
