@@ -28,6 +28,8 @@ class SinkInputEffectsUi : public EffectsBaseUi {
 
     std::vector<sigc::connection> connections;
 
+    // std::map<std::string, PluginUiBase*> plugins_ui;
+
     std::shared_ptr<LimiterUi> limiter_ui;
 
     void add_plugins();

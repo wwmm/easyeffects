@@ -16,6 +16,8 @@ class PluginUiBase {
                  std::string settings_name);
     virtual ~PluginUiBase();
 
+    std::string name;
+
     Gtk::Box* listbox_control;
 
     void on_new_input_level(const std::array<double, 2>& peak);

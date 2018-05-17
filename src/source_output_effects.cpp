@@ -67,7 +67,7 @@ SourceOutputEffects::SourceOutputEffects(
     limiter = std::make_unique<Limiter>(
         log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.limiter");
 
-    plugins.insert(std::make_pair("limiter", limiter->plugin));
+    plugins.insert(std::make_pair(limiter->name, limiter->plugin));
 
     add_plugins_to_pipeline();
 }

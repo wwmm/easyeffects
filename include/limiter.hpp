@@ -13,7 +13,7 @@ class Limiter {
     Limiter(std::string tag, std::string schema);
     ~Limiter();
 
-    std::string log_tag;
+    std::string log_tag, name = "limiter";
     GstElement *plugin, *bin, *limiter;
 
     sigc::connection input_level_connection;

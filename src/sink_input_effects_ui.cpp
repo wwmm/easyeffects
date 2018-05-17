@@ -19,6 +19,8 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     connections.push_back(sie->limiter->attenuation.connect(
         sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_attenuation)));
 
+    // plugins.insert(std::make_pair("limiter", limiter_ui.get()));
+
     add_plugins();
 }
 
@@ -50,6 +52,8 @@ void SinkInputEffectsUi::add_plugins() {
             add_to_listbox(limiter_ui);
             stack->add(*limiter_ui, std::string("limiter"));
         }
+        // add_to_listbox(plugins[name]);
+        // stack->add(*plugins[name], std::string("limiter"));
     }
 }
 
