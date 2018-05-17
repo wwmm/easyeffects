@@ -1,5 +1,5 @@
-#ifndef LIMITER_UI_HPP
-#define LIMITER_UI_HPP
+#ifndef COMPRESSOR_UI_HPP
+#define COMPRESSOR_UI_HPP
 
 #include <gtkmm/adjustment.h>
 #include <gtkmm/grid.h>
