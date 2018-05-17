@@ -23,6 +23,7 @@ pulseeffects_sources = [
 	'plugin_ui_base.cpp',
 	'limiter.cpp',
 	'limiter_ui.cpp',
+	'compressor.cpp',
 	'util.cpp',
 	gresources
 ]
