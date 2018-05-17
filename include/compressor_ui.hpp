@@ -19,12 +19,9 @@ class CompressorUi : public Gtk::Grid, public PluginUiBase {
     void on_new_compression(double value);
 
    private:
-    Gtk::Adjustment* release;
-    Gtk::Grid* controls;
+    Gtk::Adjustment *attack, *release, *threshold, *knee, *ratio, *mix, *makeup;
     Gtk::LevelBar* compression;
     Gtk::Label* compression_label;
-
-    std::vector<sigc::connection> connections;
 };
 
 #endif

@@ -11,41 +11,31 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
     builder->get_widget("compression", compression);
     builder->get_widget("compression_label", compression_label);
 
-    get_object("input_gain", input_gain);
-    get_object("limit", limit);
-    get_object("lookahead", lookahead);
+    get_object("attack", attack);
+    get_object("knee", knee);
+    get_object("makeup", makeup);
+    get_object("mix", mix);
+    get_object("ratio", ratio);
     get_object("release", release);
-    get_object("oversampling", oversampling);
-    get_object("asc_level", asc_level);
-    get_object("autovolume_window", autovolume_window);
-    get_object("autovolume_target", autovolume_target);
-    get_object("autovolume_tolerance", autovolume_tolerance);
-    get_object("autovolume_threshold", autovolume_threshold);
+    get_object("threshold", threshold);
 
     // gsettings bindings
 
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
-    auto flag_get = Gio::SettingsBindFlags::SETTINGS_BIND_GET;
-    auto flag_invert_boolean =
-        Gio::SettingsBindFlags::SETTINGS_BIND_INVERT_BOOLEAN;
 
-    settings->bind("input-gain", input_gain, "value", flag);
-    settings->bind("limit", limit, "value", flag);
-    settings->bind("lookahead", lookahead, "value", flag);
+    settings->bind("attack", attack, "value", flag);
+    settings->bind("knee", knee, "value", flag);
+    settings->bind("makeup", makeup, "value", flag);
+    settings->bind("mix", mix, "value", flag);
+    settings->bind("ratio", ratio, "value", flag);
     settings->bind("release", release, "value", flag);
-    settings->bind("oversampling", oversampling, "value", flag);
-    settings->bind("asc", asc, "active", flag);
-    settings->bind("asc-level", asc_level, "value", flag);
+    settings->bind("threshold", threshold, "value", flag);
 
     settings->set_boolean("post-messages", true);
 }
 
 CompressorUi::~CompressorUi() {
     settings->set_boolean("post-messages", false);
-
-    for (auto c : connections) {
-        c.disconnect();
-    }
 }
 
 std::shared_ptr<CompressorUi> CompressorUi::create(std::string settings_name) {
