@@ -139,10 +139,6 @@ Compressor::Compressor(std::string tag, std::string schema)
 Compressor::~Compressor() {}
 
 void Compressor::bind_to_gsettings() {
-    g_settings_bind_with_mapping(
-        settings, "input-gain", compressor, "level-in", G_SETTINGS_BIND_DEFAULT,
-        util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
     g_settings_bind(settings, "detection", compressor, "detection",
                     G_SETTINGS_BIND_DEFAULT);
     g_settings_bind(settings, "stereo-link", compressor, "stereo-link",
@@ -152,24 +148,29 @@ void Compressor::bind_to_gsettings() {
                                  G_SETTINGS_BIND_GET, util::db20_gain_to_linear,
                                  nullptr, nullptr, nullptr);
 
-    // g_settings_bind_with_mapping(settings, "lookahead", compressor, "attack",
-    //                              G_SETTINGS_BIND_GET, util::double_to_float,
-    //                              nullptr, nullptr, nullptr);
-    //
-    // g_settings_bind_with_mapping(settings, "release", compressor, "release",
-    //                              G_SETTINGS_BIND_GET, util::double_to_float,
-    //                              nullptr, nullptr, nullptr);
-    //
-    // g_settings_bind(settings, "asc", compressor, "asc",
-    //                 G_SETTINGS_BIND_DEFAULT);
-    //
-    // g_settings_bind_with_mapping(settings, "asc-level", compressor,
-    // "asc-coeff",
-    //                              G_SETTINGS_BIND_GET, util::double_to_float,
-    //                              nullptr, nullptr, nullptr);
-    //
-    // g_settings_bind(settings, "oversampling", compressor, "oversampling",
-    //                 G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind_with_mapping(settings, "attack", compressor, "attack",
+                                 G_SETTINGS_BIND_GET, util::double_to_float,
+                                 nullptr, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(settings, "release", compressor, "release",
+                                 G_SETTINGS_BIND_GET, util::double_to_float,
+                                 nullptr, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(settings, "ratio", compressor, "ratio",
+                                 G_SETTINGS_BIND_GET, util::double_to_float,
+                                 nullptr, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(
+        settings, "threshold", compressor, "threshold", G_SETTINGS_BIND_DEFAULT,
+        util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(
+        settings, "ratio", compressor, "ratio", G_SETTINGS_BIND_DEFAULT,
+        util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(
+        settings, "makeup", compressor, "makeup", G_SETTINGS_BIND_DEFAULT,
+        util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 }
 
 double Compressor::get_compression() {
