@@ -2,6 +2,7 @@
 #define COMPRESSOR_UI_HPP
 
 #include <gtkmm/adjustment.h>
+#include <gtkmm/comboboxtext.h>
 #include <gtkmm/grid.h>
 #include "plugin_ui_base.hpp"
 
@@ -22,6 +23,7 @@ class CompressorUi : public Gtk::Grid, public PluginUiBase {
     Gtk::Adjustment *attack, *release, *threshold, *knee, *ratio, *mix, *makeup;
     Gtk::LevelBar* compression;
     Gtk::Label* compression_label;
+    Gtk::ComboBoxText *detection, *stereo_link;
 };
 
 #endif

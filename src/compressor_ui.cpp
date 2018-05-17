@@ -8,6 +8,8 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
 
     // loading glade widgets
 
+    builder->get_widget("detection", detection);
+    builder->get_widget("stereo_link", stereo_link);
     builder->get_widget("compression", compression);
     builder->get_widget("compression_label", compression_label);
 
