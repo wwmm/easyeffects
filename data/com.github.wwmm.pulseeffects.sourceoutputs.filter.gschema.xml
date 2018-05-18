@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="com.github.wwmm.pulseeffects.sourceoutputs.filter" path="/com/github/wwmm/pulseeffects/sourceoutputs/filter/">
+        <key name="state" type="b">
+          <default>false</default>
+        </key>
+
+        <key name="post-messages" type="b">
+          <default>false</default>
+        </key>
+    </schema>
+</schemalist>
