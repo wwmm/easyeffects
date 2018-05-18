@@ -31,13 +31,14 @@ class PipelineBase {
     void disable_spectrum();
     std::array<double, 2> get_peak(GstMessage* message);
 
+    void set_source_monitor_name(std::string name);
+    void set_output_sink_name(std::string name);
+
     sigc::signal<void, std::vector<float>> new_spectrum;
 
    protected:
     GSettings* settings;
 
-    void set_source_monitor_name(std::string name);
-    void set_output_sink_name(std::string name);
     void set_pulseaudio_props(std::string props);
 
     void on_app_added(const std::shared_ptr<AppInfo>& app_info);

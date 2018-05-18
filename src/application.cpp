@@ -61,17 +61,18 @@ void Application::on_startup() {
 
     pm = std::shared_ptr<PulseManager>(new PulseManager());
 
-    // just for tests. It will be removed
-
-    pm->new_default_sink.connect(
-        [](auto i) { util::debug("new default sink: " + i); });
-    pm->new_default_source.connect(
-        [](auto i) { util::debug("new default source: " + i); });
-
-    ////////
-
     sie = std::make_shared<SinkInputEffects>(pm);
     soe = std::make_shared<SourceOutputEffects>(pm);
+
+    pm->new_default_sink.connect([&](auto name) {
+        util::debug("new default sink: " + name);
+        sie->set_output_sink_name(name);
+    });
+
+    pm->new_default_source.connect([&](auto name) {
+        util::debug("new default source: " + name);
+        soe->set_source_monitor_name(name);
+    });
 
     if (get_flags() & Gio::ApplicationFlags::APPLICATION_IS_SERVICE) {
         running_as_service = true;
