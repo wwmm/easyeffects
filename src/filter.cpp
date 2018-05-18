@@ -142,6 +142,7 @@ void Filter::bind_to_gsettings() {
 
     g_settings_bind(settings, "mode", filter, "mode", G_SETTINGS_BIND_DEFAULT);
 
-    g_settings_bind(settings, "inertia", filter, "inertia",
-                    G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind_with_mapping(settings, "inertia", filter, "inertia",
+                                 G_SETTINGS_BIND_GET, util::double_to_float,
+                                 nullptr, nullptr, nullptr);
 }

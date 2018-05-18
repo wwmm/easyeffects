@@ -68,8 +68,8 @@
     <property name="lower">-3</property>
     <property name="upper">30</property>
     <property name="value">-3</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">1</property>
+    <property name="step_increment">0.10000000000000001</property>
+    <property name="page_increment">0.10000000000000001</property>
   </object>
   <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
@@ -170,6 +170,7 @@
                 <property name="input_purpose">number</property>
                 <property name="orientation">vertical</property>
                 <property name="adjustment">resonance</property>
+                <property name="digits">1</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
                 <property name="value">2</property>

@@ -73,9 +73,12 @@ SinkInputEffects::SinkInputEffects(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.limiter");
     compressor = std::make_unique<Compressor>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.compressor");
+    filter = std::make_unique<Filter>(
+        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.filter");
 
     plugins.insert(std::make_pair(limiter->name, limiter->plugin));
     plugins.insert(std::make_pair(compressor->name, compressor->plugin));
+    plugins.insert(std::make_pair(filter->name, filter->plugin));
 
     add_plugins_to_pipeline();
 }
