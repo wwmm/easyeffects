@@ -11,7 +11,9 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(
       limiter_ui(LimiterUi::create(
           "com.github.wwmm.pulseeffects.sourceoutputs.limiter")),
       compressor_ui(CompressorUi::create(
-          "com.github.wwmm.pulseeffects.sourceoutputs.compressor")) {
+          "com.github.wwmm.pulseeffects.sourceoutputs.compressor")),
+      filter_ui(FilterUi::create(
+          "com.github.wwmm.pulseeffects.sourceoutputs.filter")) {
     // limiter level meters connections
 
     connections.push_back(soe->limiter->input_level.connect(
@@ -29,6 +31,13 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(
         sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_output_level_db)));
     connections.push_back(soe->compressor->compression.connect(
         sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_compression)));
+
+    // filter level meters connections
+
+    connections.push_back(soe->filter->input_level.connect(
+        sigc::mem_fun(*filter_ui, &FilterUi::on_new_input_level)));
+    connections.push_back(soe->filter->output_level.connect(
+        sigc::mem_fun(*filter_ui, &FilterUi::on_new_output_level)));
 
     add_plugins();
 }
@@ -63,8 +72,15 @@ void SourceOutputEffectsUi::add_plugins() {
         } else if (name == std::string("compressor")) {
             add_to_listbox(compressor_ui);
             stack->add(*compressor_ui, std::string("compressor"));
+        } else if (name == std::string("filter")) {
+            add_to_listbox(filter_ui);
+            stack->add(*filter_ui, std::string("filter"));
         }
     }
 }
 
-void SourceOutputEffectsUi::reset() {}
+void SourceOutputEffectsUi::reset() {
+    limiter_ui->reset();
+    compressor_ui->reset();
+    filter_ui->reset();
+}

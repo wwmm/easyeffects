@@ -74,9 +74,12 @@ SourceOutputEffects::SourceOutputEffects(
         log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.limiter");
     compressor = std::make_unique<Compressor>(
         log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.compressor");
+    filter = std::make_unique<Filter>(
+        log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.filter");
 
     plugins.insert(std::make_pair(limiter->name, limiter->plugin));
     plugins.insert(std::make_pair(compressor->name, compressor->plugin));
+    plugins.insert(std::make_pair(filter->name, filter->plugin));
 
     add_plugins_to_pipeline();
 }

@@ -2,7 +2,7 @@
 <schemalist>
     <schema id="com.github.wwmm.pulseeffects.sourceoutputs" path="/com/github/wwmm/pulseeffects/sourceoutputs/">
         <key name="plugins" type="as">
-          <default>["limiter","compressor"]</default>
+          <default>["limiter","compressor","filter"]</default>
         </key>
     </schema>
 </schemalist>

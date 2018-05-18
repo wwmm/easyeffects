@@ -2,6 +2,7 @@
 #define SOURCE_OUTPUT_EFFECTS_HPP
 
 #include "compressor.hpp"
+#include "filter.hpp"
 #include "limiter.hpp"
 #include "pipeline_base.hpp"
 #include "pulse_manager.hpp"
@@ -15,6 +16,7 @@ class SourceOutputEffects : public PipelineBase {
 
     std::unique_ptr<Limiter> limiter;
     std::unique_ptr<Compressor> compressor;
+    std::unique_ptr<Filter> filter;
 
     sigc::signal<void, std::array<double, 2>> compressor_input_level;
     sigc::signal<void, std::array<double, 2>> compressor_output_level;
@@ -22,7 +24,7 @@ class SourceOutputEffects : public PipelineBase {
    private:
     std::string log_tag = "soe: ";
 
-    std::array<GstInsertBin*, 2> wrappers;
+    std::array<GstInsertBin*, 3> wrappers;
     std::map<std::string, GstElement*> plugins;
 
     GSettings* soe_settings;
