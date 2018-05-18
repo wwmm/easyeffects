@@ -137,7 +137,7 @@ void Filter::bind_to_gsettings() {
                                  nullptr, nullptr, nullptr);
 
     g_settings_bind_with_mapping(
-        settings, "ressonance", filter, "res", G_SETTINGS_BIND_DEFAULT,
+        settings, "resonance", filter, "res", G_SETTINGS_BIND_DEFAULT,
         util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
     g_settings_bind(settings, "mode", filter, "mode", G_SETTINGS_BIND_DEFAULT);

@@ -2,8 +2,17 @@
 <!-- Generated with glade 3.22.1 -->
 <interface domain="pulseeffects">
   <requires lib="gtk+" version="3.18"/>
-  <object class="GtkAdjustment" id="cutoff">
+  <object class="GtkAdjustment" id="frequency">
+    <property name="lower">10</property>
     <property name="upper">20000</property>
+    <property name="value">2000</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="inertia">
+    <property name="lower">5</property>
+    <property name="upper">100</property>
+    <property name="value">20</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
@@ -55,12 +64,12 @@
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
-  <object class="GtkAdjustment" id="poles">
-    <property name="lower">2</property>
-    <property name="upper">32</property>
-    <property name="value">4</property>
-    <property name="step_increment">2</property>
-    <property name="page_increment">2</property>
+  <object class="GtkAdjustment" id="resonance">
+    <property name="lower">-3</property>
+    <property name="upper">30</property>
+    <property name="value">-3</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
   </object>
   <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
@@ -76,6 +85,32 @@
         <property name="orientation">vertical</property>
         <property name="spacing">18</property>
         <child>
+          <object class="GtkComboBoxText" id="mode">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">center</property>
+            <items>
+              <item translatable="yes">12dB/oct Lowpass</item>
+              <item translatable="yes">24dB/oct Lowpass</item>
+              <item translatable="yes">36dB/oct Lowpass</item>
+              <item translatable="yes">12dB/oct Highpass</item>
+              <item translatable="yes">24dB/oct Highpass</item>
+              <item translatable="yes">36dB/oct Highpass</item>
+              <item translatable="yes">6dB/oct Bandpass</item>
+              <item translatable="yes">12dB/oct Bandpass</item>
+              <item translatable="yes">18dB/oct Bandpass</item>
+              <item translatable="yes">6dB/oct Bandreject</item>
+              <item translatable="yes">12dB/oct Bandreject</item>
+              <item translatable="yes">18dB/oct Bandreject</item>
+            </items>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
@@ -87,7 +122,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="label" translatable="yes">Cutoff</property>
+                <property name="label" translatable="yes">Frequency</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -104,7 +139,7 @@
                 <property name="secondary_icon_activatable">False</property>
                 <property name="input_purpose">number</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">cutoff</property>
+                <property name="adjustment">frequency</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
               </object>
@@ -118,7 +153,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="label" translatable="yes">Poles</property>
+                <property name="label" translatable="yes">Resonance</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -131,9 +166,10 @@
                 <property name="can_focus">True</property>
                 <property name="width_chars">10</property>
                 <property name="text">2</property>
+                <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                 <property name="input_purpose">number</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">poles</property>
+                <property name="adjustment">resonance</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
                 <property name="value">2</property>
@@ -143,11 +179,39 @@
                 <property name="top_attach">1</property>
               </packing>
             </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Inertia</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="width_chars">10</property>
+                <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
+                <property name="input_purpose">number</property>
+                <property name="orientation">vertical</property>
+                <property name="adjustment">inertia</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">0</property>
+            <property name="position">1</property>
           </packing>
         </child>
         <child>
@@ -344,7 +408,7 @@
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">1</property>
+            <property name="position">2</property>
           </packing>
         </child>
       </object>

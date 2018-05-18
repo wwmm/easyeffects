@@ -16,7 +16,7 @@
             <range min="10" max="20000"/>
             <default>2000</default>
         </key>
-        <key name="ressonance" type="d">
+        <key name="resonance" type="d">
             <range min="-3.0" max="30.1"/>
             <default>-3.0</default>
         </key>
