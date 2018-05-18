@@ -22,6 +22,8 @@ class PluginUiBase {
 
     void on_new_input_level(const std::array<double, 2>& peak);
     void on_new_output_level(const std::array<double, 2>& peak);
+    void on_new_input_level_db(const std::array<double, 2>& peak);
+    void on_new_output_level_db(const std::array<double, 2>& peak);
 
    protected:
     Glib::RefPtr<Gtk::Builder> builder;
@@ -64,6 +66,32 @@ class PluginUiBase {
         if (right >= -99) {
             w_right->set_value(right);
             w_right_label->set_text(level_to_str(util::linear_to_db(right)));
+        } else {
+            w_right->set_value(0);
+            w_right_label->set_text("-99");
+        }
+    }
+
+    template <typename T1, typename T2, typename T3, typename T4>
+    void update_level_db(const T1& w_left,
+                         const T2& w_left_label,
+                         const T3& w_right,
+                         const T4& w_right_label,
+                         const std::array<double, 2>& peak) {
+        auto left = peak[0];
+        auto right = peak[1];
+
+        if (left >= -99) {
+            w_left->set_value(util::db_to_linear(left));
+            w_left_label->set_text(level_to_str(left));
+        } else {
+            w_left->set_value(0);
+            w_left_label->set_text("-99");
+        }
+
+        if (right >= -99) {
+            w_right->set_value(util::db_to_linear(right));
+            w_right_label->set_text(level_to_str(right));
         } else {
             w_right->set_value(0);
             w_right_label->set_text("-99");

@@ -62,7 +62,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Limiter* l) {
 
                 return true;
             },
-            100);
+            200);
 
         l->output_level_connection = Glib::signal_timeout().connect(
             [l]() {
@@ -77,7 +77,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Limiter* l) {
 
                 return true;
             },
-            100);
+            200);
 
         l->attenuation_connection = Glib::signal_timeout().connect(
             [l]() {
@@ -89,7 +89,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Limiter* l) {
 
                 return true;
             },
-            100);
+            200);
     } else {
         l->input_level_connection.disconnect();
         l->output_level_connection.disconnect();

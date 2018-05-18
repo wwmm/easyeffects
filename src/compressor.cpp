@@ -49,36 +49,6 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Compressor* l) {
     auto post = g_settings_get_boolean(settings, key);
 
     if (post) {
-        l->input_level_connection = Glib::signal_timeout().connect(
-            [l]() {
-                float inL, inR;
-
-                g_object_get(l->compressor, "meter-inL", &inL, nullptr);
-                g_object_get(l->compressor, "meter-inR", &inR, nullptr);
-
-                std::array<double, 2> in_peak = {inL, inR};
-
-                l->input_level.emit(in_peak);
-
-                return true;
-            },
-            100);
-
-        l->output_level_connection = Glib::signal_timeout().connect(
-            [l]() {
-                float outL, outR;
-
-                g_object_get(l->compressor, "meter-outL", &outL, nullptr);
-                g_object_get(l->compressor, "meter-outR", &outR, nullptr);
-
-                std::array<double, 2> out_peak = {outL, outR};
-
-                l->output_level.emit(out_peak);
-
-                return true;
-            },
-            100);
-
         l->compression_connection = Glib::signal_timeout().connect(
             [l]() {
                 float compression;
@@ -90,10 +60,8 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Compressor* l) {
 
                 return true;
             },
-            100);
+            200);
     } else {
-        l->input_level_connection.disconnect();
-        l->output_level_connection.disconnect();
         l->compression_connection.disconnect();
     }
 }
@@ -118,8 +86,15 @@ Compressor::Compressor(std::string tag, std::string schema)
     if (is_installed) {
         bin = gst_insert_bin_new("compressor_bin");
 
+        auto in_level =
+            gst_element_factory_make("level", "compressor_input_level");
+        auto out_level =
+            gst_element_factory_make("level", "compressor_output_level");
+
+        gst_insert_bin_append(GST_INSERT_BIN(bin), in_level, nullptr, nullptr);
         gst_insert_bin_append(GST_INSERT_BIN(bin), compressor, nullptr,
                               nullptr);
+        gst_insert_bin_append(GST_INSERT_BIN(bin), out_level, nullptr, nullptr);
 
         bind_to_gsettings();
 
@@ -127,6 +102,11 @@ Compressor::Compressor(std::string tag, std::string schema)
                          G_CALLBACK(on_state_changed), this);
         g_signal_connect(settings, "changed::post-messages",
                          G_CALLBACK(on_post_messages_changed), this);
+
+        g_settings_bind(settings, "post-messages", in_level, "post-messages",
+                        G_SETTINGS_BIND_DEFAULT);
+        g_settings_bind(settings, "post-messages", out_level, "post-messages",
+                        G_SETTINGS_BIND_DEFAULT);
 
         // useless write just to force callback call
 

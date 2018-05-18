@@ -12,7 +12,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(
           LimiterUi::create("com.github.wwmm.pulseeffects.sinkinputs.limiter")),
       compressor_ui(CompressorUi::create(
           "com.github.wwmm.pulseeffects.sinkinputs.compressor")) {
-    // level meters connections
+    // limiter level meters connections
 
     connections.push_back(sie->limiter->input_level.connect(
         sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_input_level)));
@@ -21,10 +21,12 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     connections.push_back(sie->limiter->attenuation.connect(
         sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_attenuation)));
 
-    connections.push_back(sie->compressor->input_level.connect(
-        sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_input_level)));
-    connections.push_back(sie->compressor->output_level.connect(
-        sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_output_level)));
+    // compressor level meters connections
+
+    connections.push_back(sie->compressor_input_level.connect(
+        sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_input_level_db)));
+    connections.push_back(sie->compressor_output_level.connect(
+        sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_output_level_db)));
     connections.push_back(sie->compressor->compression.connect(
         sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_compression)));
 
@@ -58,12 +60,14 @@ void SinkInputEffectsUi::add_plugins() {
         if (name == std::string("limiter")) {
             add_to_listbox(limiter_ui);
             stack->add(*limiter_ui, std::string("limiter"));
+        } else if (name == std::string("compressor")) {
+            add_to_listbox(compressor_ui);
+            stack->add(*compressor_ui, std::string("compressor"));
         }
-        // add_to_listbox(plugins[name]);
-        // stack->add(*plugins[name], std::string("limiter"));
     }
 }
 
 void SinkInputEffectsUi::reset() {
     limiter_ui->reset();
+    compressor_ui->reset();
 }
