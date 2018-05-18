@@ -19,15 +19,11 @@ class Filter {
     sigc::connection input_level_connection;
     sigc::connection output_level_connection;
 
-    void on_new_autovolume_level(const std::array<double, 2>& peak);
-
     sigc::signal<void, std::array<double, 2>> input_level;
     sigc::signal<void, std::array<double, 2>> output_level;
 
    private:
     bool is_installed;
-
-    GstElement* autovolume;
 
     GSettings* settings;
 

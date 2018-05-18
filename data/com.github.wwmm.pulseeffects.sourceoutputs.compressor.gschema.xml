@@ -2,38 +2,45 @@
 <schemalist>
     <schema id="com.github.wwmm.pulseeffects.sourceoutputs.compressor" path="/com/github/wwmm/pulseeffects/sourceoutputs/compressor/">
         <key name="state" type="b">
-          <default>false</default>
+            <default>false</default>
         </key>
         <key name="detection" enum="com.github.wwmm.pulseeffects.compressor.detection.enum">
-          <default>"RMS"</default>
+            <default>"RMS"</default>
         </key>
         <key name="stereo-link" enum="com.github.wwmm.pulseeffects.compressor.stereo.link.enum">
-          <default>"Average"</default>
+            <default>"Average"</default>
         </key>
         <key name="mix" type="d">
-          <default>0.0</default>
+            <range min="-24.0" max="0"/>
+            <default>0.0</default>
         </key>
         <key name="attack" type="d">
-          <default>20.0</default>
+            <range min="0.1" max="2000"/>
+            <default>20.0</default>
         </key>
         <key name="release" type="d">
-          <default>250.0</default>
+            <range min="0.1" max="2000"/>
+            <default>250.0</default>
         </key>
         <key name="threshold" type="d">
-          <default>-18</default>
+            <range min="-60.0" max="0"/>
+            <default>-18</default>
         </key>
         <key name="ratio" type="d">
-          <default>2</default>
+            <range min="1" max="20"/>
+            <default>2</default>
         </key>
         <key name="knee" type="d">
-          <default>9</default>
+            <range min="0" max="18"/>
+            <default>9</default>
         </key>
         <key name="makeup" type="d">
-          <default>0.0</default>
+            <range min="0" max="36"/>
+            <default>0.0</default>
         </key>
 
         <key name="post-messages" type="b">
-          <default>false</default>
+            <default>false</default>
         </key>
     </schema>
 </schemalist>
