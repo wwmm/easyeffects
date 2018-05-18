@@ -39,5 +39,9 @@
         <key name="makeup" type="d">
           <default>0.0</default>
         </key>
+
+        <key name="post-messages" type="b">
+          <default>false</default>
+        </key>
     </schema>
 </schemalist>

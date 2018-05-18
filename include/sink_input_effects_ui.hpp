@@ -1,6 +1,7 @@
 #ifndef SINK_INPUT_EFFECTS_UI_HPP
 #define SINK_INPUT_EFFECTS_UI_HPP
 
+#include "compressor_ui.hpp"
 #include "effects_base_ui.hpp"
 #include "limiter_ui.hpp"
 #include "sink_input_effects.hpp"
@@ -28,9 +29,8 @@ class SinkInputEffectsUi : public EffectsBaseUi {
 
     std::vector<sigc::connection> connections;
 
-    // std::map<std::string, PluginUiBase*> plugins_ui;
-
     std::shared_ptr<LimiterUi> limiter_ui;
+    std::shared_ptr<CompressorUi> compressor_ui;
 
     void add_plugins();
 };

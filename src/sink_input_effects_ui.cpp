@@ -8,8 +8,10 @@ SinkInputEffectsUi::SinkInputEffectsUi(
       sie(sie_ptr),
       settings(
           Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs")),
-      limiter_ui(LimiterUi::create(
-          "com.github.wwmm.pulseeffects.sinkinputs.limiter")) {
+      limiter_ui(
+          LimiterUi::create("com.github.wwmm.pulseeffects.sinkinputs.limiter")),
+      compressor_ui(CompressorUi::create(
+          "com.github.wwmm.pulseeffects.sinkinputs.compressor")) {
     // level meters connections
 
     connections.push_back(sie->limiter->input_level.connect(
@@ -19,7 +21,12 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     connections.push_back(sie->limiter->attenuation.connect(
         sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_attenuation)));
 
-    // plugins.insert(std::make_pair("limiter", limiter_ui.get()));
+    connections.push_back(sie->compressor->input_level.connect(
+        sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_input_level)));
+    connections.push_back(sie->compressor->output_level.connect(
+        sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_output_level)));
+    connections.push_back(sie->compressor->compression.connect(
+        sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_compression)));
 
     add_plugins();
 }
