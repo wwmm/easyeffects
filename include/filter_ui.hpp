@@ -20,8 +20,6 @@ class FilterUi : public Gtk::Grid, public PluginUiBase {
    private:
     Gtk::Adjustment *input_gain, *output_gain, *frequency, *resonance, *inertia;
     Gtk::ComboBoxText* mode;
-
-    std::vector<sigc::connection> connections;
 };
 
 #endif
