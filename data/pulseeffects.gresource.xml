@@ -7,6 +7,7 @@
     <file>app_info.glade</file>
     <file>limiter.glade</file>
     <file>compressor.glade</file>
+    <file>filter.glade</file>
     <file>about_icon.png</file>
     <file>listbox.css</file>
     <file>pulseeffects-sine-symbolic.svg</file>

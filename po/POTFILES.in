@@ -3,5 +3,7 @@ data/about.glade
 data/effects_base.glade
 data/app_info.glade
 data/limiter.glade
+data/compressor.glade
+data/filter.glade
 data/com.github.wwmm.pulseeffects.appdata.xml.in
 data/com.github.wwmm.pulseeffects.desktop.in
