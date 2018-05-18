@@ -2,48 +2,49 @@
 <schemalist>
     <schema id="com.github.wwmm.pulseeffects.sinkinputs.limiter" path="/com/github/wwmm/pulseeffects/sinkinputs/limiter/">
         <key name="state" type="b">
-          <default>false</default>
+            <default>false</default>
         </key>
         <key name="input-gain" type="d">
-          <default>0.0</default>
+            <range min="-36.1" max="36.1"/>
+            <default>0.0</default>
         </key>
         <key name="limit" type="d">
-          <default>0.0</default>
+            <default>0.0</default>
         </key>
         <key name="lookahead" type="d">
-          <default>5.0</default>
+            <default>5.0</default>
         </key>
         <key name="release" type="d">
-          <default>50.0</default>
+            <default>50.0</default>
         </key>
         <key name="asc" type="b">
-          <default>false</default>
+            <default>false</default>
         </key>
         <key name="asc-level" type="d">
-          <default>0.5</default>
+            <default>0.5</default>
         </key>
         <key name="oversampling" type="i">
-          <default>1</default>
+            <default>1</default>
         </key>
 
         <key name="autovolume-state" type="b">
-          <default>false</default>
+            <default>false</default>
         </key>
         <key name="autovolume-window" type="d">
-          <default>1000.00</default>
+            <default>1000.00</default>
         </key>
         <key name="autovolume-target" type="i">
-          <default>-12</default>
+            <default>-12</default>
         </key>
         <key name="autovolume-tolerance" type="i">
-          <default>1</default>
+            <default>1</default>
         </key>
         <key name="autovolume-threshold" type="i">
-          <default>-50</default>
+            <default>-50</default>
         </key>
 
         <key name="post-messages" type="b">
-          <default>false</default>
+            <default>false</default>
         </key>
     </schema>
 </schemalist>
