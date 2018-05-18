@@ -4,11 +4,11 @@
         <key name="state" type="b">
           <default>false</default>
         </key>
-        <key name="detection-rms" type="b">
-          <default>true</default>
+        <key name="detection" enum="com.github.wwmm.pulseeffects.compressor.detection.enum">
+          <default>"RMS"</default>
         </key>
-        <key name="stereo-link-average" type="b">
-          <default>true</default>
+        <key name="stereo-link" enum="com.github.wwmm.pulseeffects.compressor.stereo.link.enum">
+          <default>"Average"</default>
         </key>
         <key name="mix" type="d">
           <default>0.0</default>
@@ -30,6 +30,10 @@
         </key>
         <key name="makeup" type="d">
           <default>0.0</default>
+        </key>
+
+        <key name="post-messages" type="b">
+          <default>false</default>
         </key>
     </schema>
 </schemalist>

@@ -9,6 +9,10 @@ void on_message_element(const GstBus* gst_bus,
 
     if (src_name == std::string("autovolume")) {
         soe->limiter->on_new_autovolume_level(soe->get_peak(message));
+    } else if (src_name == std::string("compressor_input_level")) {
+        soe->compressor_input_level.emit(soe->get_peak(message));
+    } else if (src_name == std::string("compressor_output_level")) {
+        soe->compressor_output_level.emit(soe->get_peak(message));
     }
 }
 
@@ -56,7 +60,7 @@ SourceOutputEffects::SourceOutputEffects(
 
     // plugins wrappers
 
-    for (int n = 0; n < wrappers.size(); n++) {
+    for (long unsigned int n = 0; n < wrappers.size(); n++) {
         wrappers[n] = GST_INSERT_BIN(gst_insert_bin_new(
             std::string("wrapper" + std::to_string(n)).c_str()));
 
@@ -68,8 +72,11 @@ SourceOutputEffects::SourceOutputEffects(
 
     limiter = std::make_unique<Limiter>(
         log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.limiter");
+    compressor = std::make_unique<Compressor>(
+        log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.compressor");
 
     plugins.insert(std::make_pair(limiter->name, limiter->plugin));
+    plugins.insert(std::make_pair(compressor->name, compressor->plugin));
 
     add_plugins_to_pipeline();
 }

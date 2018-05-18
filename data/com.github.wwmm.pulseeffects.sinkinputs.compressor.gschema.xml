@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-    <enum id="detection.enum">
-        <value nick="RMS" value="0"/>
-        <value nick="Peak" value="1"/>
-    </enum>
-    <enum id="stereo.link.enum">
-        <value nick="Average" value="0"/>
-        <value nick="Maximum" value="1"/>
-    </enum>
     <schema id="com.github.wwmm.pulseeffects.sinkinputs.compressor" path="/com/github/wwmm/pulseeffects/sinkinputs/compressor/">
         <key name="state" type="b">
           <default>false</default>
         </key>
-        <key name="detection" enum="detection.enum">
+        <key name="detection" enum="com.github.wwmm.pulseeffects.compressor.detection.enum">
           <default>"RMS"</default>
         </key>
-        <key name="stereo-link" enum="stereo.link.enum">
+        <key name="stereo-link" enum="com.github.wwmm.pulseeffects.compressor.stereo.link.enum">
           <default>"Average"</default>
         </key>
         <key name="mix" type="d">

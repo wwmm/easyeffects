@@ -60,7 +60,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Compressor* l) {
 
                 return true;
             },
-            200);
+            100);
     } else {
         l->compression_connection.disconnect();
     }

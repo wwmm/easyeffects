@@ -59,7 +59,7 @@ SinkInputEffects::SinkInputEffects(
 
     // plugins wrappers
 
-    for (int n = 0; n < wrappers.size(); n++) {
+    for (long unsigned int n = 0; n < wrappers.size(); n++) {
         wrappers[n] = GST_INSERT_BIN(gst_insert_bin_new(
             std::string("wrapper" + std::to_string(n)).c_str()));
 
