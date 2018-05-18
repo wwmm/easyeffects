@@ -207,11 +207,3 @@ void Limiter::on_new_autovolume_level(const std::array<double, 2>& peak) {
 
     g_object_set(limiter, "level-in", gain, nullptr);
 }
-
-double Limiter::get_attenuation() {
-    float attenuation;
-
-    g_object_get(limiter, "att", &attenuation, nullptr);
-
-    return attenuation;
-}
