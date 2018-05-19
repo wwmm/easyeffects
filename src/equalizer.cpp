@@ -19,9 +19,13 @@ void on_state_changed(GSettings* settings, gchar* key, Equalizer* l) {
 
                     if (success) {
                         util::debug(l->log_tag + "equalizer enabled");
+
+                        l->is_enabled = true;
                     } else {
                         util::debug(l->log_tag +
                                     "failed to enable the equalizer");
+
+                        l->is_enabled = false;
                     }
                 },
                 l);
@@ -35,14 +39,22 @@ void on_state_changed(GSettings* settings, gchar* key, Equalizer* l) {
 
                     if (success) {
                         util::debug(l->log_tag + "equalizer disabled");
+
+                        l->is_enabled = false;
                     } else {
                         util::debug(l->log_tag +
                                     "failed to disable the equalizer");
+
+                        l->is_enabled = true;
                     }
                 },
                 l);
         }
     }
+}
+
+void on_num_bands_changed(GSettings* settings, gchar* key, Equalizer* l) {
+    l->init_equalizer();
 }
 
 }  // namespace
@@ -73,25 +85,66 @@ Equalizer::Equalizer(std::string tag, std::string schema)
         gst_insert_bin_append(GST_INSERT_BIN(bin), equalizer, nullptr, nullptr);
         gst_insert_bin_append(GST_INSERT_BIN(bin), out_level, nullptr, nullptr);
 
-        bind_to_gsettings();
-
         g_signal_connect(settings, "changed::state",
                          G_CALLBACK(on_state_changed), this);
+        g_signal_connect(settings, "changed::num-bands",
+                         G_CALLBACK(on_num_bands_changed), this);
 
         g_settings_bind(settings, "post-messages", in_level, "post-messages",
                         G_SETTINGS_BIND_DEFAULT);
         g_settings_bind(settings, "post-messages", out_level, "post-messages",
                         G_SETTINGS_BIND_DEFAULT);
 
+        init_equalizer();
+
+        bind_to_gsettings();
+
         // useless write just to force callback call
 
-        auto enable = g_settings_get_boolean(settings, "state");
-
-        g_settings_set_boolean(settings, "state", enable);
+        // auto enable = g_settings_get_boolean(settings, "state");
+        //
+        // g_settings_set_boolean(settings, "state", enable);
     }
 }
 
-Equalizer::~Equalizer() {}
+Equalizer::~Equalizer() {
+    for (auto& t : threads) {
+        t.join();
+    }
+}
+
+void Equalizer::init_equalizer() {
+    auto lambda = [&]() {
+        long unsigned int nbands = g_settings_get_int(settings, "num-bands");
+
+        if (nbands != bands.size()) {
+            auto state = g_settings_get_boolean(settings, "state");
+
+            if (is_enabled) {
+                g_settings_set_boolean(settings, "state", false);
+
+                while (is_enabled) {
+                    // util::debug(log_tag + "waiting disable");
+                }
+            }
+
+            util::debug(log_tag + std::to_string(nbands));
+
+            bands.clear();
+
+            for (long unsigned int n = 0; n < nbands; n++) {
+                bands.push_back(gst_child_proxy_get_child_by_index(
+                    GST_CHILD_PROXY(equalizer), n));
+            }
+
+            g_object_set(equalizer, "num-bands", nbands, nullptr);
+
+            g_settings_set_boolean(settings, "state", state);
+        }
+    };
+
+    threads.push_back(std::thread(lambda));
+}
 
 void Equalizer::bind_to_gsettings() {
     g_settings_bind(settings, "num-bands", equalizer, "num-bands",
