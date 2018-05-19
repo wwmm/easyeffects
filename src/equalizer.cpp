@@ -107,46 +107,35 @@ Equalizer::Equalizer(std::string tag, std::string schema)
     }
 }
 
-Equalizer::~Equalizer() {
-    for (auto& t : threads) {
-        t.join();
+Equalizer::~Equalizer() {}
+
+void Equalizer::init_equalizer() {
+    long unsigned int nbands = g_settings_get_int(settings, "num-bands");
+
+    if (nbands != bands.size()) {
+        auto state = g_settings_get_boolean(settings, "state");
+
+        if (is_enabled) {
+            g_settings_set_boolean(settings, "state", false);
+
+            while (is_enabled) {
+            }
+        }
+
+        bands.clear();
+
+        g_object_set(equalizer, "num-bands", nbands, nullptr);
+
+        for (long unsigned int n = 0; n < nbands; n++) {
+            bands.push_back(gst_child_proxy_get_child_by_index(
+                GST_CHILD_PROXY(equalizer), n));
+        }
+
+        g_settings_set_boolean(settings, "state", state);
     }
 }
 
-void Equalizer::init_equalizer() {
-    auto lambda = [&]() {
-        long unsigned int nbands = g_settings_get_int(settings, "num-bands");
-
-        if (nbands != bands.size()) {
-            auto state = g_settings_get_boolean(settings, "state");
-
-            if (is_enabled) {
-                g_settings_set_boolean(settings, "state", false);
-
-                while (is_enabled) {
-                    // util::debug(log_tag + "waiting disable");
-                }
-            }
-
-            util::debug(log_tag + std::to_string(nbands));
-
-            bands.clear();
-
-            for (long unsigned int n = 0; n < nbands; n++) {
-                bands.push_back(gst_child_proxy_get_child_by_index(
-                    GST_CHILD_PROXY(equalizer), n));
-            }
-
-            g_object_set(equalizer, "num-bands", nbands, nullptr);
-
-            g_settings_set_boolean(settings, "state", state);
-        }
-    };
-
-    threads.push_back(std::thread(lambda));
-}
-
 void Equalizer::bind_to_gsettings() {
-    g_settings_bind(settings, "num-bands", equalizer, "num-bands",
-                    G_SETTINGS_BIND_DEFAULT);
+    // g_settings_bind(settings, "num-bands", equalizer, "num-bands",
+    //                 G_SETTINGS_BIND_DEFAULT);
 }

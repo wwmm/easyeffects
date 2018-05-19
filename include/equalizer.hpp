@@ -7,7 +7,6 @@
 #include <sigc++/sigc++.h>
 #include <array>
 #include <iostream>
-#include <thread>
 
 class Equalizer {
    public:
@@ -26,8 +25,6 @@ class Equalizer {
     bool is_installed;
 
     GSettings* settings;
-
-    std::vector<std::thread> threads;
 
     std::vector<GObject*> bands;
 
