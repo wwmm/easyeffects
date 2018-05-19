@@ -57,6 +57,8 @@ void on_num_bands_changed(GSettings* settings, gchar* key, Equalizer* l) {
     l->init_equalizer();
 }
 
+void on_frequency_changed(GSettings* settings, gchar* key, Equalizer* l) {}
+
 }  // namespace
 
 Equalizer::Equalizer(std::string tag, std::string schema)
@@ -82,6 +84,16 @@ Equalizer::Equalizer(std::string tag, std::string schema)
         gst_insert_bin_append(GST_INSERT_BIN(bin), in_level, nullptr, nullptr);
         gst_insert_bin_append(GST_INSERT_BIN(bin), equalizer, nullptr, nullptr);
         gst_insert_bin_append(GST_INSERT_BIN(bin), out_level, nullptr, nullptr);
+
+        auto nbands = g_settings_get_int(settings, "num-bands");
+
+        for (int n = 0; n < nbands; n++) {
+            g_signal_connect(
+                settings,
+                std::string("changed::band" + std::to_string(n) + "-frequency")
+                    .c_str(),
+                G_CALLBACK(on_frequency_changed), this);
+        }
 
         g_signal_connect(settings, "changed::state",
                          G_CALLBACK(on_state_changed), this);
