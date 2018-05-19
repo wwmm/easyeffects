@@ -4,12 +4,6 @@
         <key name="state" type="b">
           <default>false</default>
         </key>
-        <key name="input-gain" type="d">
-          <default>0</default>
-        </key>
-        <key name="output-gain" type="d">
-          <default>0</default>
-        </key>
 
         <key name="band0-gain" type="d">
           <default>0</default>

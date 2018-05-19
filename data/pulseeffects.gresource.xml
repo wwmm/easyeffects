@@ -8,6 +8,8 @@
     <file>limiter.glade</file>
     <file>compressor.glade</file>
     <file>filter.glade</file>
+    <file>equalizer.glade</file>
+    <file>equalizer_band_menu.glade</file>
     <file>about_icon.png</file>
     <file>listbox.css</file>
     <file>pulseeffects-sine-symbolic.svg</file>

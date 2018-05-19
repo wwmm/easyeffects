@@ -27,6 +27,7 @@ pulseeffects_sources = [
 	'compressor_ui.cpp',
 	'filter.cpp',
 	'filter_ui.cpp',
+	'equalizer.cpp',
 	'util.cpp',
 	gresources
 ]

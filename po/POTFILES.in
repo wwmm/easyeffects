@@ -5,5 +5,7 @@ data/app_info.glade
 data/limiter.glade
 data/compressor.glade
 data/filter.glade
+data/equalizer.glade
+data/equalizer_band_menu.glade
 data/com.github.wwmm.pulseeffects.appdata.xml.in
 data/com.github.wwmm.pulseeffects.desktop.in
