@@ -25,6 +25,12 @@
         <value nick="18dB/oct Bandreject" value="11"/>
     </enum>
 
+    <enum id="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
+        <value nick="peak" value="0"/>
+        <value nick="low-shelf" value="1"/>
+        <value nick="high-shelf" value="2"/>
+    </enum>
+
     <schema id="com.github.wwmm.pulseeffects" path="/com/github/wwmm/pulseeffects/">
         <key name="buffer-out" type="i">
           <default>100000</default>
