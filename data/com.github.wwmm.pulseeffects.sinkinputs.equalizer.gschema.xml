@@ -5,7 +5,11 @@
             <default>false</default>
         </key>
 
-        <key name="nbands" type="i">
+        <key name="post-messages" type="b">
+            <default>false</default>
+        </key>
+
+        <key name="num-bands" type="i">
             <range min="1" max="64"/>
             <default>30</default>
         </key>

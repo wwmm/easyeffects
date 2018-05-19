@@ -93,4 +93,7 @@ Equalizer::Equalizer(std::string tag, std::string schema)
 
 Equalizer::~Equalizer() {}
 
-void Equalizer::bind_to_gsettings() {}
+void Equalizer::bind_to_gsettings() {
+    g_settings_bind(settings, "num-bands", equalizer, "num-bands",
+                    G_SETTINGS_BIND_DEFAULT);
+}
