@@ -17,7 +17,7 @@ class Equalizer {
 
     std::string log_tag, name = "equalizer";
 
-    GstElement *plugin, *bin, *equalizer;
+    GstElement *plugin, *bin, *equalizer, *in_level, *out_level;
 
     void init_equalizer();
 

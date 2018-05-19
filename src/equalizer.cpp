@@ -76,10 +76,8 @@ Equalizer::Equalizer(std::string tag, std::string schema)
     if (is_installed) {
         bin = gst_insert_bin_new("equalizer_bin");
 
-        auto in_level =
-            gst_element_factory_make("level", "equalizer_input_level");
-        auto out_level =
-            gst_element_factory_make("level", "equalizer_output_level");
+        in_level = gst_element_factory_make("level", "equalizer_input_level");
+        out_level = gst_element_factory_make("level", "equalizer_output_level");
 
         gst_insert_bin_append(GST_INSERT_BIN(bin), in_level, nullptr, nullptr);
         gst_insert_bin_append(GST_INSERT_BIN(bin), equalizer, nullptr, nullptr);
@@ -113,15 +111,6 @@ void Equalizer::init_equalizer() {
     long unsigned int nbands = g_settings_get_int(settings, "num-bands");
 
     if (nbands != bands.size()) {
-        auto state = g_settings_get_boolean(settings, "state");
-
-        if (is_enabled) {
-            g_settings_set_boolean(settings, "state", false);
-
-            while (is_enabled) {
-            }
-        }
-
         for (auto b : bands) {
             g_object_unref(b);
         }
@@ -139,8 +128,6 @@ void Equalizer::init_equalizer() {
                 std::string("band" + std::to_string(n) + "-gain").c_str(),
                 bands[n], "gain", G_SETTINGS_BIND_DEFAULT);
         }
-
-        g_settings_set_boolean(settings, "state", state);
     }
 }
 
