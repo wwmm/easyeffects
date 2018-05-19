@@ -6,184 +6,244 @@
         </key>
 
         <key name="band0-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band1-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band2-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band3-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band4-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band5-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band6-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band7-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band8-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band9-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band10-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band11-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band12-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band13-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band14-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band15-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band16-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band17-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band18-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band19-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band20-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band21-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band22-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band23-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band24-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band25-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band26-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band27-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band28-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
         <key name="band29-gain" type="d">
+            <range min="-24" max="12"/>
             <default>0</default>
         </key>
 
         <key name="band0-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>22.59</default>
         </key>
         <key name="band1-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>28.44</default>
         </key>
         <key name="band2-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>35.8</default>
         </key>
         <key name="band3-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>45.07</default>
         </key>
         <key name="band4-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>56.74</default>
         </key>
         <key name="band5-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>71.43</default>
         </key>
         <key name="band6-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>89.93</default>
         </key>
         <key name="band7-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>113.21</default>
         </key>
         <key name="band8-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>142.53</default>
         </key>
         <key name="band9-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>179.43</default>
         </key>
         <key name="band10-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>225.89</default>
         </key>
         <key name="band11-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>284.38</default>
         </key>
         <key name="band12-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>358.02</default>
         </key>
         <key name="band13-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>450.72</default>
         </key>
         <key name="band14-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>567.42</default>
         </key>
         <key name="band15-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>714.34</default>
         </key>
         <key name="band16-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>899.29</default>
         </key>
         <key name="band17-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>1132.15</default>
         </key>
         <key name="band18-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>1425.29</default>
         </key>
         <key name="band19-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>1794.33</default>
         </key>
         <key name="band20-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>2258.93</default>
         </key>
         <key name="band21-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>2843.82</default>
         </key>
         <key name="band22-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>3580.16</default>
         </key>
         <key name="band23-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>4507.15</default>
         </key>
         <key name="band24-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>5674.16</default>
         </key>
         <key name="band25-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>7143.35</default>
         </key>
         <key name="band26-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>8992.94</default>
         </key>
         <key name="band27-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>11321.45</default>
         </key>
         <key name="band28-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>14252.86</default>
         </key>
         <key name="band29-frequency" type="d">
+            <range min="20" max="20000"/>
             <default>17943.28</default>
         </key>
 
