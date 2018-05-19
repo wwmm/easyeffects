@@ -5,6 +5,11 @@
             <default>false</default>
         </key>
 
+        <key name="nbands" type="i">
+            <range min="1" max="64"/>
+            <default>30</default>
+        </key>
+
         <key name="band0-gain" type="d">
             <range min="-24" max="12"/>
             <default>0</default>
