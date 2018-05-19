@@ -119,7 +119,6 @@ void Equalizer::init_equalizer() {
             g_settings_set_boolean(settings, "state", false);
 
             while (is_enabled) {
-                util::warning("waiting");
             }
         }
 
@@ -128,15 +127,6 @@ void Equalizer::init_equalizer() {
         }
 
         bands.clear();
-
-        gst_element_set_state(equalizer, GST_STATE_NULL);
-
-        GstState eq_state;
-
-        do {
-            gst_element_get_state(equalizer, &eq_state, nullptr,
-                                  GST_CLOCK_TIME_NONE);
-        } while (eq_state != GST_STATE_NULL);
 
         g_object_set(equalizer, "num-bands", nbands, nullptr);
 
