@@ -119,16 +119,35 @@ void Equalizer::init_equalizer() {
             g_settings_set_boolean(settings, "state", false);
 
             while (is_enabled) {
+                util::warning("waiting");
             }
         }
 
+        for (auto b : bands) {
+            g_object_unref(b);
+        }
+
         bands.clear();
+
+        gst_element_set_state(equalizer, GST_STATE_NULL);
+
+        GstState eq_state;
+
+        do {
+            gst_element_get_state(equalizer, &eq_state, nullptr,
+                                  GST_CLOCK_TIME_NONE);
+        } while (eq_state != GST_STATE_NULL);
 
         g_object_set(equalizer, "num-bands", nbands, nullptr);
 
         for (long unsigned int n = 0; n < nbands; n++) {
             bands.push_back(gst_child_proxy_get_child_by_index(
                 GST_CHILD_PROXY(equalizer), n));
+
+            g_settings_bind(
+                settings,
+                std::string("band" + std::to_string(n) + "-gain").c_str(),
+                bands[n], "gain", G_SETTINGS_BIND_DEFAULT);
         }
 
         g_settings_set_boolean(settings, "state", state);

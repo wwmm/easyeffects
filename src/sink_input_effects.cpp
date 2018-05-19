@@ -115,5 +115,7 @@ void SinkInputEffects::add_plugins_to_pipeline() {
         index++;
     }
 
+    gst_insert_bin_append(wrappers[3], plugins["equalizer"], nullptr, nullptr);
+
     g_variant_iter_free(iter);
 }
