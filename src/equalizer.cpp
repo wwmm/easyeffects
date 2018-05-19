@@ -57,7 +57,9 @@ void on_num_bands_changed(GSettings* settings, gchar* key, Equalizer* l) {
     l->init_equalizer();
 }
 
-void on_frequency_changed(GSettings* settings, gchar* key, Equalizer* l) {}
+void on_frequency_changed(GSettings* settings, gchar* key, Equalizer* l) {
+    util::debug(key);
+}
 
 }  // namespace
 
