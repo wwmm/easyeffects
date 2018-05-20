@@ -21,12 +21,11 @@ class Application : public Gtk::Application {
     std::shared_ptr<SourceOutputEffects> soe;
 
    protected:
-    void on_activate() override;
-
     int on_command_line(
         const Glib::RefPtr<Gio::ApplicationCommandLine>& command_line) override;
 
     void on_startup() override;
+    void on_activate() override;
 
    private:
     std::string log_tag = "application: ";

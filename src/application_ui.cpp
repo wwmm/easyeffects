@@ -153,12 +153,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     settings->bind("spectrum-n-points", spectrum_n_points, "value", flag);
 
     init_autostart_switch();
-
-    show_all();
-
-    // visible property is reset by show_all
-
-    spectrum_box->property_visible() = settings->get_boolean("show-spectrum");
 }
 
 ApplicationUi::~ApplicationUi() {

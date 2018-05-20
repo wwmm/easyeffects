@@ -96,6 +96,7 @@ void Application::on_activate() {
 
         window->signal_hide().connect([window]() { delete window; });
 
+        window->show_all();
         window->present();
 
         pm->find_sink_inputs();
@@ -146,7 +147,7 @@ void Application::create_presets_directory() {
     if (file->query_exists()) {
         util::debug(log_tag + "user preset directory already exists");
     } else {
-        file->make_directory();
+        file->make_directory_with_parents();
 
         util::debug(log_tag + "user presets directory created: " + path);
     }
