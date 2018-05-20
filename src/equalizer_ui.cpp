@@ -202,5 +202,6 @@ void EqualizerUi::reset() {
         settings->reset(std::string("band" + std::to_string(n) + "-gain"));
         settings->reset(std::string("band" + std::to_string(n) + "-frequency"));
         settings->reset(std::string("band" + std::to_string(n) + "-width"));
+        settings->reset(std::string("band" + std::to_string(n) + "-type"));
     }
 }
