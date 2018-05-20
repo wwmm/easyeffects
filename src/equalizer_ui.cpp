@@ -1,4 +1,3 @@
-#include <gtkmm/button.h>
 #include <gtkmm/comboboxtext.h>
 #include "equalizer_ui.hpp"
 
@@ -45,11 +44,15 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
     // loading glade widgets
 
     builder->get_widget("bands_grid", bands_grid);
+    builder->get_widget("reset_eq", reset_eq);
 
     get_object("nbands", nbands);
 
     nbands->signal_value_changed().connect(
         sigc::mem_fun(*this, &EqualizerUi::on_nbands_changed));
+
+    reset_eq->signal_clicked().connect(
+        sigc::mem_fun(*this, &EqualizerUi::reset));
 
     // gsettings bindings
 
