@@ -13,7 +13,9 @@ SinkInputEffectsUi::SinkInputEffectsUi(
       compressor_ui(CompressorUi::create(
           "com.github.wwmm.pulseeffects.sinkinputs.compressor")),
       filter_ui(
-          FilterUi::create("com.github.wwmm.pulseeffects.sinkinputs.filter")) {
+          FilterUi::create("com.github.wwmm.pulseeffects.sinkinputs.filter")),
+      equalizer_ui(EqualizerUi::create(
+          "com.github.wwmm.pulseeffects.sinkinputs.equalizer")) {
     // limiter level meters connections
 
     connections.push_back(sie->limiter->input_level.connect(
@@ -38,6 +40,13 @@ SinkInputEffectsUi::SinkInputEffectsUi(
         sigc::mem_fun(*filter_ui, &FilterUi::on_new_input_level)));
     connections.push_back(sie->filter->output_level.connect(
         sigc::mem_fun(*filter_ui, &FilterUi::on_new_output_level)));
+
+    // equalizer level meters connections
+
+    connections.push_back(sie->equalizer_input_level.connect(
+        sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_input_level_db)));
+    connections.push_back(sie->equalizer_output_level.connect(
+        sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_output_level_db)));
 
     add_plugins();
 }
@@ -75,6 +84,9 @@ void SinkInputEffectsUi::add_plugins() {
         } else if (name == std::string("filter")) {
             add_to_listbox(filter_ui);
             stack->add(*filter_ui, std::string("filter"));
+        } else if (name == std::string("equalizer")) {
+            add_to_listbox(equalizer_ui);
+            stack->add(*equalizer_ui, std::string("equalizer"));
         }
     }
 }
@@ -83,4 +95,5 @@ void SinkInputEffectsUi::reset() {
     limiter_ui->reset();
     compressor_ui->reset();
     filter_ui->reset();
+    equalizer_ui->reset();
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.21.0 -->
-<interface domain="PulseEffects">
+<!-- Generated with glade 3.22.1 -->
+<interface domain="pulseeffects">
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="band0_g">
     <property name="lower">-24</property>
@@ -362,6 +362,7 @@
       <object class="GtkImage" id="img_state">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="no_show_all">True</property>
         <property name="halign">center</property>
         <property name="valign">center</property>
         <property name="icon_name">emblem-ok-symbolic</property>
@@ -381,7 +382,7 @@
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_output_gain_value_changed" swapped="no"/>
   </object>
-  <object class="GtkGrid" id="window">
+  <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="row_spacing">6</property>

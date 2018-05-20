@@ -3,6 +3,7 @@
 
 #include "compressor_ui.hpp"
 #include "effects_base_ui.hpp"
+#include "equalizer_ui.hpp"
 #include "filter_ui.hpp"
 #include "limiter_ui.hpp"
 #include "sink_input_effects.hpp"
@@ -33,6 +34,7 @@ class SinkInputEffectsUi : public EffectsBaseUi {
     std::shared_ptr<LimiterUi> limiter_ui;
     std::shared_ptr<CompressorUi> compressor_ui;
     std::shared_ptr<FilterUi> filter_ui;
+    std::shared_ptr<EqualizerUi> equalizer_ui;
 
     void add_plugins();
 };
