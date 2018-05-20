@@ -95,6 +95,8 @@ void EqualizerUi::on_nbands_changed() {
 
     for (auto c : bands_grid->get_children()) {
         bands_grid->remove(*c);
+
+        delete c;
     }
 
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
