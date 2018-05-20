@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.0 -->
+<!-- Generated with glade 3.22.1 -->
 <interface domain="PulseEffects">
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="band_f">
@@ -8,9 +8,65 @@
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
-  <object class="GtkAdjustment" id="band_q">
-    <property name="lower">0.01</property>
-    <property name="upper">100</property>
+  <object class="GtkAdjustment" id="band_g">
+    <property name="lower">-24</property>
+    <property name="upper">12</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+  </object>
+  <object class="GtkGrid" id="band_widgets">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkButton" id="menu_button">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="halign">center</property>
+        <property name="valign">center</property>
+        <property name="image">menu_image</property>
+        <property name="always_show_image">True</property>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="band_label">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="halign">center</property>
+        <property name="valign">center</property>
+        <property name="label">band</property>
+        <property name="max_width_chars">7</property>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkScale">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="halign">center</property>
+        <property name="vexpand">True</property>
+        <property name="orientation">vertical</property>
+        <property name="adjustment">band_g</property>
+        <property name="inverted">True</property>
+        <property name="round_digits">0</property>
+        <property name="digits">0</property>
+        <property name="value_pos">bottom</property>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">2</property>
+      </packing>
+    </child>
+  </object>
+  <object class="GtkAdjustment" id="band_w">
+    <property name="upper">20000</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.10000000000000001</property>
   </object>
@@ -63,7 +119,7 @@
             <property name="can_focus">False</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
-            <property name="label" translatable="yes">Quality</property>
+            <property name="label" translatable="yes">Width</property>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -99,9 +155,10 @@
             <property name="halign">center</property>
             <property name="valign">center</property>
             <property name="width_chars">10</property>
+            <property name="secondary_icon_name">pulseeffects-hz-symbolic</property>
             <property name="input_purpose">digits</property>
             <property name="orientation">vertical</property>
-            <property name="adjustment">band_q</property>
+            <property name="adjustment">band_w</property>
             <property name="digits">2</property>
             <property name="numeric">True</property>
             <property name="update_policy">if-valid</property>
@@ -127,7 +184,7 @@
         </child>
         <child>
           <object class="GtkButton" id="reset_q">
-            <property name="label" translatable="yes">Reset Quality</property>
+            <property name="label" translatable="yes">Reset Width</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -173,5 +230,10 @@
         </child>
       </object>
     </child>
+  </object>
+  <object class="GtkImage" id="menu_image">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">preferences-system-symbolic</property>
   </object>
 </interface>

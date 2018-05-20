@@ -17,6 +17,7 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
     void reset();
 
    private:
+    Gtk::Grid* bands_grid;
     Gtk::Adjustment* input_gain;
 };
 

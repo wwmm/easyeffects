@@ -8,7 +8,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 
     // loading glade widgets
 
-    // builder->get_widget("mode", mode);
+    builder->get_widget("bands_grid", bands_grid);
 
     // get_object("input_gain", input_gain);
 
