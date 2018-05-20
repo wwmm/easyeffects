@@ -105,41 +105,62 @@ Equalizer::Equalizer(std::string tag, std::string schema)
 
 Equalizer::~Equalizer() {}
 
+void Equalizer::bind_band(const int index) {
+    auto band =
+        gst_child_proxy_get_child_by_index(GST_CHILD_PROXY(equalizer), index);
+
+    g_settings_bind(
+        settings, std::string("band" + std::to_string(index) + "-gain").c_str(),
+        band, "gain", G_SETTINGS_BIND_GET);
+
+    g_settings_bind(
+        settings,
+        std::string("band" + std::to_string(index) + "-frequency").c_str(),
+        band, "freq", G_SETTINGS_BIND_GET);
+
+    g_settings_bind(
+        settings,
+        std::string("band" + std::to_string(index) + "-width").c_str(), band,
+        "bandwidth", G_SETTINGS_BIND_GET);
+
+    g_settings_bind(
+        settings, std::string("band" + std::to_string(index) + "-type").c_str(),
+        band, "type", G_SETTINGS_BIND_GET);
+}
+
+void Equalizer::unbind_band(const int index) {
+    auto band =
+        gst_child_proxy_get_child_by_index(GST_CHILD_PROXY(equalizer), index);
+
+    g_settings_unbind(
+        band, std::string("band" + std::to_string(index) + "-gain").c_str());
+
+    g_settings_unbind(
+        band,
+        std::string("band" + std::to_string(index) + "-frequency").c_str());
+
+    g_settings_unbind(
+        band, std::string("band" + std::to_string(index) + "-width").c_str());
+
+    g_settings_unbind(
+        band, std::string("band" + std::to_string(index) + "-type").c_str());
+}
+
 void Equalizer::init_equalizer() {
-    long unsigned int nbands = g_settings_get_int(settings, "num-bands");
+    int nbands = g_settings_get_int(settings, "num-bands");
+    int current_nbands;
 
-    if (nbands != bands.size()) {
-        for (auto b : bands) {
-            g_object_unref(b);
+    g_object_get(equalizer, "num-bands", &current_nbands, nullptr);
+
+    if (nbands != current_nbands) {
+        for (int n = 0; n < current_nbands; n++) {
+            unbind_band(n);
         }
-
-        bands.clear();
 
         g_object_set(equalizer, "num-bands", nbands, nullptr);
 
-        for (long unsigned int n = 0; n < nbands; n++) {
-            bands.push_back(gst_child_proxy_get_child_by_index(
-                GST_CHILD_PROXY(equalizer), n));
-
-            g_settings_bind(
-                settings,
-                std::string("band" + std::to_string(n) + "-gain").c_str(),
-                bands[n], "gain", G_SETTINGS_BIND_GET);
-
-            g_settings_bind(
-                settings,
-                std::string("band" + std::to_string(n) + "-frequency").c_str(),
-                bands[n], "freq", G_SETTINGS_BIND_GET);
-
-            g_settings_bind(
-                settings,
-                std::string("band" + std::to_string(n) + "-width").c_str(),
-                bands[n], "bandwidth", G_SETTINGS_BIND_GET);
-
-            g_settings_bind(
-                settings,
-                std::string("band" + std::to_string(n) + "-type").c_str(),
-                bands[n], "type", G_SETTINGS_BIND_GET);
+        for (int n = 0; n < nbands; n++) {
+            bind_band(n);
         }
     }
 }
