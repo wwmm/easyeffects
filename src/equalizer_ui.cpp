@@ -1,3 +1,4 @@
+#include <gtkmm/button.h>
 #include <gtkmm/comboboxtext.h>
 #include "equalizer_ui.hpp"
 
@@ -61,6 +62,10 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 
 EqualizerUi::~EqualizerUi() {
     settings->set_boolean("post-messages", false);
+
+    for (auto c : connections) {
+        c.disconnect();
+    }
 }
 
 std::shared_ptr<EqualizerUi> EqualizerUi::create(std::string settings_name) {
@@ -77,6 +82,10 @@ std::shared_ptr<EqualizerUi> EqualizerUi::create(std::string settings_name) {
 void EqualizerUi::on_nbands_changed() {
     int N = nbands->get_value();
 
+    for (auto c : connections) {
+        c.disconnect();
+    }
+
     for (auto c : bands_grid->get_children()) {
         bands_grid->remove(*c);
     }
@@ -89,9 +98,12 @@ void EqualizerUi::on_nbands_changed() {
 
         Gtk::Grid* band_grid;
         Gtk::ComboBoxText* band_t;
+        Gtk::Button *reset_f, *reset_w;
 
         B->get_widget("band_grid", band_grid);
         B->get_widget("band_t", band_t);
+        B->get_widget("reset_f", reset_f);
+        B->get_widget("reset_w", reset_w);
 
         auto band_g = (Gtk::Adjustment*)B->get_object("band_g").get();
         auto band_f = (Gtk::Adjustment*)B->get_object("band_f").get();
@@ -109,6 +121,15 @@ void EqualizerUi::on_nbands_changed() {
             std::string("band" + std::to_string(n) + "-type").c_str(),
             band_t->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
             bandtype_enum_to_int, int_to_bandtype_enum, nullptr, nullptr);
+
+        connections.push_back(reset_f->signal_clicked().connect([=]() {
+            settings->reset(
+                std::string("band" + std::to_string(n) + "-frequency"));
+        }));
+
+        connections.push_back(reset_w->signal_clicked().connect([=]() {
+            settings->reset(std::string("band" + std::to_string(n) + "-width"));
+        }));
 
         bands_grid->add(*band_grid);
     }

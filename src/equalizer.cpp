@@ -95,7 +95,7 @@ Equalizer::Equalizer(std::string tag, std::string schema)
 
         init_equalizer();
 
-        // useless write just to force callback call
+        // useless write just to force on_state_changed callback call
 
         auto enable = g_settings_get_boolean(settings, "state");
 

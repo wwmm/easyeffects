@@ -115,7 +115,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="reset_q">
+          <object class="GtkButton" id="reset_w">
             <property name="label" translatable="yes">Reset Width</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
