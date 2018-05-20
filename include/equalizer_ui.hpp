@@ -20,11 +20,12 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
    private:
     Gtk::Grid* bands_grid;
     Gtk::Adjustment* nbands;
-    Gtk::Button* reset_eq;
+    Gtk::Button *reset_eq, *flat_response;
 
     std::vector<sigc::connection> connections;
 
     void on_nbands_changed();
+    void on_flat_response();
 };
 
 #endif

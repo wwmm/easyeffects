@@ -45,6 +45,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 
     builder->get_widget("bands_grid", bands_grid);
     builder->get_widget("reset_eq", reset_eq);
+    builder->get_widget("flat_response", flat_response);
 
     get_object("nbands", nbands);
 
@@ -53,6 +54,9 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 
     reset_eq->signal_clicked().connect(
         sigc::mem_fun(*this, &EqualizerUi::reset));
+
+    flat_response->signal_clicked().connect(
+        sigc::mem_fun(*this, &EqualizerUi::on_flat_response));
 
     // gsettings bindings
 
@@ -138,6 +142,12 @@ void EqualizerUi::on_nbands_changed() {
     }
 
     bands_grid->show_all();
+}
+
+void EqualizerUi::on_flat_response() {
+    for (int n = 0; n < 30; n++) {
+        settings->reset(std::string("band" + std::to_string(n) + "-gain"));
+    }
 }
 
 void EqualizerUi::reset() {
