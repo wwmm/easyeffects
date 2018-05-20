@@ -126,6 +126,8 @@ void Equalizer::bind_band(const int index) {
     g_settings_bind(
         settings, std::string("band" + std::to_string(index) + "-type").c_str(),
         band, "type", G_SETTINGS_BIND_GET);
+
+    g_object_unref(band);
 }
 
 void Equalizer::unbind_band(const int index) {
@@ -144,6 +146,8 @@ void Equalizer::unbind_band(const int index) {
 
     g_settings_unbind(
         band, std::string("band" + std::to_string(index) + "-type").c_str());
+
+    g_object_unref(band);
 }
 
 void Equalizer::init_equalizer() {
