@@ -124,22 +124,22 @@ void Equalizer::init_equalizer() {
             g_settings_bind(
                 settings,
                 std::string("band" + std::to_string(n) + "-gain").c_str(),
-                bands[n], "gain", G_SETTINGS_BIND_DEFAULT);
+                bands[n], "gain", G_SETTINGS_BIND_GET);
 
             g_settings_bind(
                 settings,
                 std::string("band" + std::to_string(n) + "-frequency").c_str(),
-                bands[n], "freq", G_SETTINGS_BIND_DEFAULT);
+                bands[n], "freq", G_SETTINGS_BIND_GET);
 
             g_settings_bind(
                 settings,
                 std::string("band" + std::to_string(n) + "-width").c_str(),
-                bands[n], "bandwidth", G_SETTINGS_BIND_DEFAULT);
+                bands[n], "bandwidth", G_SETTINGS_BIND_GET);
 
             g_settings_bind(
                 settings,
                 std::string("band" + std::to_string(n) + "-type").c_str(),
-                bands[n], "type", G_SETTINGS_BIND_DEFAULT);
+                bands[n], "type", G_SETTINGS_BIND_GET);
         }
     }
 }
