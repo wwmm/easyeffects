@@ -135,6 +135,11 @@ void Equalizer::init_equalizer() {
                 settings,
                 std::string("band" + std::to_string(n) + "-width").c_str(),
                 bands[n], "bandwidth", G_SETTINGS_BIND_DEFAULT);
+
+            g_settings_bind(
+                settings,
+                std::string("band" + std::to_string(n) + "-type").c_str(),
+                bands[n], "type", G_SETTINGS_BIND_DEFAULT);
         }
     }
 }

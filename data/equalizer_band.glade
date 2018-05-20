@@ -19,23 +19,6 @@
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.10000000000000001</property>
   </object>
-  <object class="GtkListStore" id="liststore1">
-    <columns>
-      <!-- column-name types -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">Peak</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Low Shelf</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">High Shelf</col>
-      </row>
-    </data>
-  </object>
   <object class="GtkPopover" id="menu">
     <property name="can_focus">False</property>
     <child>
@@ -146,26 +129,6 @@
           </packing>
         </child>
         <child>
-          <object class="GtkComboBox" id="band_t">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">center</property>
-            <property name="margin_bottom">12</property>
-            <property name="model">liststore1</property>
-            <child>
-              <object class="GtkCellRendererText" id="cell_type"/>
-              <attributes>
-                <attribute name="text">0</attribute>
-              </attributes>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">1</property>
-            <property name="width">2</property>
-          </packing>
-        </child>
-        <child>
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
@@ -174,6 +137,23 @@
           <packing>
             <property name="left_attach">0</property>
             <property name="top_attach">0</property>
+            <property name="width">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkComboBoxText" id="band_t">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">center</property>
+            <items>
+              <item translatable="yes">Peak</item>
+              <item translatable="yes">Low Shelf</item>
+              <item translatable="yes">High Shelf</item>
+            </items>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
             <property name="width">2</property>
           </packing>
         </child>

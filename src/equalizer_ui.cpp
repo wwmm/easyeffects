@@ -1,4 +1,4 @@
-#include <gtkmm/combobox.h>
+#include <gtkmm/comboboxtext.h>
 #include "equalizer_ui.hpp"
 
 namespace {
@@ -88,7 +88,7 @@ void EqualizerUi::on_nbands_changed() {
             "/com/github/wwmm/pulseeffects/equalizer_band.glade");
 
         Gtk::Grid* band_grid;
-        Gtk::ComboBox* band_t;
+        Gtk::ComboBoxText* band_t;
 
         B->get_widget("band_grid", band_grid);
         B->get_widget("band_t", band_t);
