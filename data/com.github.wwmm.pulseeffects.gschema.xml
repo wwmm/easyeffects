@@ -33,39 +33,40 @@
 
     <schema id="com.github.wwmm.pulseeffects" path="/com/github/wwmm/pulseeffects/">
         <key name="buffer-out" type="i">
-          <default>100000</default>
+            <default>100000</default>
         </key>
         <key name="latency-out" type="i">
-          <default>10000</default>
+            <default>10000</default>
         </key>
 
         <key name="buffer-in" type="i">
-          <default>100000</default>
+            <default>100000</default>
         </key>
         <key name="latency-in" type="i">
-          <default>10000</default>
+            <default>10000</default>
         </key>
 
         <key name="show-spectrum" type="b">
-          <default>true</default>
+            <default>true</default>
         </key>
         <key name="spectrum-n-points" type="i">
-          <default>150</default>
+            <range min="2" max="600"/>
+            <default>150</default>
         </key>
 
         <key name="enable-all-apps" type="b">
-          <default>false</default>
+            <default>false</default>
         </key>
 
         <key name="use-dark-theme" type="b">
-          <default>false</default>
+            <default>false</default>
         </key>
 
         <key name="use-default-sink" type="b">
-          <default>true</default>
+            <default>true</default>
         </key>
         <key name="use-default-source" type="b">
-          <default>true</default>
+            <default>true</default>
         </key>
     </schema>
 </schemalist>
