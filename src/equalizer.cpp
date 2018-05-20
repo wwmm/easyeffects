@@ -57,10 +57,6 @@ void on_num_bands_changed(GSettings* settings, gchar* key, Equalizer* l) {
     l->init_equalizer();
 }
 
-void on_frequency_changed(GSettings* settings, gchar* key, Equalizer* l) {
-    util::debug(key);
-}
-
 }  // namespace
 
 Equalizer::Equalizer(std::string tag, std::string schema)
@@ -87,16 +83,6 @@ Equalizer::Equalizer(std::string tag, std::string schema)
         gst_insert_bin_append(GST_INSERT_BIN(bin), equalizer, nullptr, nullptr);
         gst_insert_bin_append(GST_INSERT_BIN(bin), out_level, nullptr, nullptr);
 
-        auto nbands = g_settings_get_int(settings, "num-bands");
-
-        for (int n = 0; n < nbands; n++) {
-            g_signal_connect(
-                settings,
-                std::string("changed::band" + std::to_string(n) + "-frequency")
-                    .c_str(),
-                G_CALLBACK(on_frequency_changed), this);
-        }
-
         g_signal_connect(settings, "changed::state",
                          G_CALLBACK(on_state_changed), this);
         g_signal_connect(settings, "changed::num-bands",
@@ -109,13 +95,11 @@ Equalizer::Equalizer(std::string tag, std::string schema)
 
         init_equalizer();
 
-        bind_to_gsettings();
-
         // useless write just to force callback call
 
-        // auto enable = g_settings_get_boolean(settings, "state");
-        //
-        // g_settings_set_boolean(settings, "state", enable);
+        auto enable = g_settings_get_boolean(settings, "state");
+
+        g_settings_set_boolean(settings, "state", enable);
     }
 }
 
@@ -141,11 +125,16 @@ void Equalizer::init_equalizer() {
                 settings,
                 std::string("band" + std::to_string(n) + "-gain").c_str(),
                 bands[n], "gain", G_SETTINGS_BIND_DEFAULT);
+
+            g_settings_bind(
+                settings,
+                std::string("band" + std::to_string(n) + "-frequency").c_str(),
+                bands[n], "freq", G_SETTINGS_BIND_DEFAULT);
+
+            g_settings_bind(
+                settings,
+                std::string("band" + std::to_string(n) + "-width").c_str(),
+                bands[n], "bandwidth", G_SETTINGS_BIND_DEFAULT);
         }
     }
-}
-
-void Equalizer::bind_to_gsettings() {
-    // g_settings_bind(settings, "num-bands", equalizer, "num-bands",
-    //                 G_SETTINGS_BIND_DEFAULT);
 }

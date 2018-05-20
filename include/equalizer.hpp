@@ -27,8 +27,6 @@ class Equalizer {
     GSettings* settings;
 
     std::vector<GObject*> bands;
-
-    void bind_to_gsettings();
 };
 
 #endif
