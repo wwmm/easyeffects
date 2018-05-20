@@ -93,6 +93,8 @@ void EqualizerUi::on_nbands_changed() {
         c.disconnect();
     }
 
+    connections.clear();
+
     for (auto c : bands_grid->get_children()) {
         bands_grid->remove(*c);
 
