@@ -59,6 +59,7 @@ ReverbUi::ReverbUi(BaseObjectType* cobject,
     builder->get_widget("preset_room", preset_room);
     builder->get_widget("preset_empty_walls", preset_empty_walls);
     builder->get_widget("preset_ambience", preset_ambience);
+    builder->get_widget("preset_large_empty_hall", preset_large_empty_hall);
 
     get_object("input_gain", input_gain);
     get_object("output_gain", output_gain);
@@ -146,6 +147,18 @@ void ReverbUi::init_presets_buttons() {
         predelay->set_value(6.5);
         bass_cut->set_value(514.079);
         treble_cut->set_value(4064.15);
+    });
+
+    preset_large_empty_hall->signal_clicked().connect([=]() {
+        decay_time->set_value(2.00689);
+        hf_damp->set_value(20000);
+        amount->set_value(util::linear_to_db(0.366022));
+        settings->reset("room-size");
+        settings->reset("diffusion");
+        settings->reset("dry");
+        settings->reset("predelay");
+        settings->reset("bass-cut");
+        settings->reset("treble-cut");
     });
 }
 

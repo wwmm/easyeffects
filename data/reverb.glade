@@ -177,6 +177,22 @@
               </packing>
             </child>
             <child>
+              <object class="GtkButton" id="preset_large_empty_hall">
+                <property name="label" translatable="yes">Large Empty Hall</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="valign">center</property>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
               <placeholder/>
             </child>
             <child>
