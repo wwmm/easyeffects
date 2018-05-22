@@ -144,7 +144,6 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="valign">center</property>
-                <signal name="clicked" handler="on_reverb_preset_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -158,7 +157,6 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="valign">center</property>
-                <signal name="clicked" handler="on_reverb_preset_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -166,13 +164,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="cathedral">
-                <property name="label" translatable="yes">Cathedral</property>
+              <object class="GtkButton" id="preset_room">
+                <property name="label" translatable="yes">Room</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="valign">center</property>
-                <signal name="clicked" handler="on_reverb_preset_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">0</property>

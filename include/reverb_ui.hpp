@@ -2,6 +2,7 @@
 #define REVERB_UI_HPP
 
 #include <gtkmm/adjustment.h>
+#include <gtkmm/button.h>
 #include <gtkmm/comboboxtext.h>
 #include <gtkmm/grid.h>
 #include "plugin_ui_base.hpp"
@@ -21,6 +22,9 @@ class ReverbUi : public Gtk::Grid, public PluginUiBase {
     Gtk::Adjustment *input_gain, *output_gain, *predelay, *decay_time,
         *diffusion, *amount, *dry, *hf_damp, *bass_cut, *treble_cut;
     Gtk::ComboBoxText* room_size;
+    Gtk::Button* preset_room;
+
+    void init_presets_buttons();
 };
 
 #endif

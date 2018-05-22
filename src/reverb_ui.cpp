@@ -1,4 +1,5 @@
 #include "reverb_ui.hpp"
+#include "util.hpp"
 
 namespace {
 
@@ -55,6 +56,7 @@ ReverbUi::ReverbUi(BaseObjectType* cobject,
     // loading glade widgets
 
     builder->get_widget("room_size", room_size);
+    builder->get_widget("preset_room", preset_room);
 
     get_object("input_gain", input_gain);
     get_object("output_gain", output_gain);
@@ -87,6 +89,8 @@ ReverbUi::ReverbUi(BaseObjectType* cobject,
                                  G_SETTINGS_BIND_DEFAULT, room_size_enum_to_int,
                                  int_to_room_size_enum, nullptr, nullptr);
 
+    init_presets_buttons();
+
     settings->set_boolean("post-messages", true);
 }
 
@@ -103,6 +107,20 @@ std::shared_ptr<ReverbUi> ReverbUi::create(std::string settings_name) {
     builder->get_widget_derived("widgets_grid", grid, settings_name);
 
     return std::shared_ptr<ReverbUi>(grid);
+}
+
+void ReverbUi::init_presets_buttons() {
+    preset_room->signal_clicked().connect([=]() {
+        decay_time->set_value(0.445945);
+        hf_damp->set_value(5508.46);
+        room_size->set_active(4);
+        diffusion->set_value(0.54);
+        amount->set_value(util::linear_to_db(0.469761));
+        dry->set_value(util::linear_to_db(1));
+        predelay->set_value(25);
+        bass_cut->set_value(257.65);
+        treble_cut->set_value(20000);
+    });
 }
 
 void ReverbUi::reset() {
