@@ -54,13 +54,15 @@ ReverbUi::ReverbUi(BaseObjectType* cobject,
 
     // loading glade widgets
 
-    // builder->get_widget("room_size", room_size);
+    builder->get_widget("room_size", room_size);
 
     get_object("input_gain", input_gain);
     get_object("output_gain", output_gain);
-    // get_object("frequency", frequency);
-    // get_object("resonance", resonance);
-    // get_object("inertia", inertia);
+    get_object("predelay", predelay);
+    get_object("decay_time", decay_time);
+    get_object("diffusion", diffusion);
+    get_object("amount", amount);
+    get_object("dry", dry);
 
     // gsettings bindings
 
@@ -68,15 +70,16 @@ ReverbUi::ReverbUi(BaseObjectType* cobject,
 
     settings->bind("input-gain", input_gain, "value", flag);
     settings->bind("output-gain", output_gain, "value", flag);
-    // settings->bind("frequency", frequency, "value", flag);
-    // settings->bind("resonance", resonance, "value", flag);
-    // settings->bind("inertia", inertia, "value", flag);
+    settings->bind("predelay", predelay, "value", flag);
+    settings->bind("decay-time", decay_time, "value", flag);
+    settings->bind("diffusion", diffusion, "value", flag);
+    settings->bind("amount", amount, "value", flag);
+    settings->bind("dry", dry, "value", flag);
 
-    // g_settings_bind_with_mapping(settings->gobj(), "room-size",
-    //                              room_size->gobj(), "active",
-    //                              G_SETTINGS_BIND_DEFAULT,
-    //                              room_size_enum_to_int,
-    //                              int_to_room_size_enum, nullptr, nullptr);
+    g_settings_bind_with_mapping(settings->gobj(), "room-size",
+                                 room_size->gobj(), "active",
+                                 G_SETTINGS_BIND_DEFAULT, room_size_enum_to_int,
+                                 int_to_room_size_enum, nullptr, nullptr);
 
     settings->set_boolean("post-messages", true);
 }

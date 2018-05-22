@@ -106,6 +106,8 @@ Reverb::Reverb(std::string tag, std::string schema)
 
         gst_insert_bin_append(GST_INSERT_BIN(bin), reverb, nullptr, nullptr);
 
+        g_object_set(reverb, "on", true, nullptr);
+
         bind_to_gsettings();
 
         g_signal_connect(settings, "changed::state",
