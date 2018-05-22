@@ -57,6 +57,8 @@ ReverbUi::ReverbUi(BaseObjectType* cobject,
 
     builder->get_widget("room_size", room_size);
     builder->get_widget("preset_room", preset_room);
+    builder->get_widget("preset_empty_walls", preset_empty_walls);
+    builder->get_widget("preset_ambience", preset_ambience);
 
     get_object("input_gain", input_gain);
     get_object("output_gain", output_gain);
@@ -120,6 +122,30 @@ void ReverbUi::init_presets_buttons() {
         predelay->set_value(25);
         bass_cut->set_value(257.65);
         treble_cut->set_value(20000);
+    });
+
+    preset_empty_walls->signal_clicked().connect([=]() {
+        decay_time->set_value(0.505687);
+        hf_damp->set_value(3971.64);
+        room_size->set_active(4);
+        diffusion->set_value(0.17);
+        amount->set_value(util::linear_to_db(0.198884));
+        dry->set_value(util::linear_to_db(1));
+        predelay->set_value(13);
+        bass_cut->set_value(240.453);
+        treble_cut->set_value(3303.47);
+    });
+
+    preset_ambience->signal_clicked().connect([=]() {
+        decay_time->set_value(1.10354);
+        hf_damp->set_value(2182.58);
+        room_size->set_active(4);
+        diffusion->set_value(0.69);
+        amount->set_value(util::linear_to_db(0.291183));
+        dry->set_value(util::linear_to_db(1));
+        predelay->set_value(6.5);
+        bass_cut->set_value(514.079);
+        treble_cut->set_value(4064.15);
     });
 }
 

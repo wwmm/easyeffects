@@ -138,8 +138,8 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="small_room">
-                <property name="label" translatable="yes">Small Room</property>
+              <object class="GtkButton" id="preset_ambience">
+                <property name="label" translatable="yes">Ambience</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -151,8 +151,8 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="engine_room">
-                <property name="label" translatable="yes">Engine Room</property>
+              <object class="GtkButton" id="preset_empty_walls">
+                <property name="label" translatable="yes">Empty Walls</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>

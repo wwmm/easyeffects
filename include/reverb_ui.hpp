@@ -22,7 +22,7 @@ class ReverbUi : public Gtk::Grid, public PluginUiBase {
     Gtk::Adjustment *input_gain, *output_gain, *predelay, *decay_time,
         *diffusion, *amount, *dry, *hf_damp, *bass_cut, *treble_cut;
     Gtk::ComboBoxText* room_size;
-    Gtk::Button* preset_room;
+    Gtk::Button *preset_room, *preset_empty_walls, *preset_ambience;
 
     void init_presets_buttons();
 };
