@@ -63,6 +63,9 @@ ReverbUi::ReverbUi(BaseObjectType* cobject,
     get_object("diffusion", diffusion);
     get_object("amount", amount);
     get_object("dry", dry);
+    get_object("hf_damp", hf_damp);
+    get_object("bass_cut", bass_cut);
+    get_object("treble_cut", treble_cut);
 
     // gsettings bindings
 
@@ -75,6 +78,9 @@ ReverbUi::ReverbUi(BaseObjectType* cobject,
     settings->bind("diffusion", diffusion, "value", flag);
     settings->bind("amount", amount, "value", flag);
     settings->bind("dry", dry, "value", flag);
+    settings->bind("hf-damp", hf_damp, "value", flag);
+    settings->bind("bass-cut", bass_cut, "value", flag);
+    settings->bind("treble-cut", treble_cut, "value", flag);
 
     g_settings_bind_with_mapping(settings->gobj(), "room-size",
                                  room_size->gobj(), "active",
