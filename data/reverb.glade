@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.0 -->
-<interface domain="PulseEffects">
+<!-- Generated with glade 3.22.1 -->
+<interface domain="pulseeffects">
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="damping">
     <property name="upper">1</property>
