@@ -61,7 +61,7 @@
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.10000000000000001</property>
   </object>
-  <object class="GtkGrid" id="window">
+  <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="valign">center</property>

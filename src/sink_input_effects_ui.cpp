@@ -15,7 +15,9 @@ SinkInputEffectsUi::SinkInputEffectsUi(
       filter_ui(
           FilterUi::create("com.github.wwmm.pulseeffects.sinkinputs.filter")),
       equalizer_ui(EqualizerUi::create(
-          "com.github.wwmm.pulseeffects.sinkinputs.equalizer")) {
+          "com.github.wwmm.pulseeffects.sinkinputs.equalizer")),
+      reverb_ui(
+          ReverbUi::create("com.github.wwmm.pulseeffects.sinkinputs.reverb")) {
     // limiter level meters connections
 
     connections.push_back(sie->limiter->input_level.connect(
@@ -47,6 +49,13 @@ SinkInputEffectsUi::SinkInputEffectsUi(
         sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_input_level_db)));
     connections.push_back(sie->equalizer_output_level.connect(
         sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_output_level_db)));
+
+    // reverb level meters connections
+
+    connections.push_back(sie->reverb->input_level.connect(
+        sigc::mem_fun(*reverb_ui, &ReverbUi::on_new_input_level)));
+    connections.push_back(sie->reverb->output_level.connect(
+        sigc::mem_fun(*reverb_ui, &ReverbUi::on_new_output_level)));
 
     add_plugins();
 }
@@ -87,6 +96,9 @@ void SinkInputEffectsUi::add_plugins() {
         } else if (name == std::string("equalizer")) {
             add_to_listbox(equalizer_ui);
             stack->add(*equalizer_ui, std::string("equalizer"));
+        } else if (name == std::string("reverb")) {
+            add_to_listbox(reverb_ui);
+            stack->add(*reverb_ui, std::string("reverb"));
         }
     }
 }
@@ -96,4 +108,5 @@ void SinkInputEffectsUi::reset() {
     compressor_ui->reset();
     filter_ui->reset();
     equalizer_ui->reset();
+    reverb_ui->reset();
 }
