@@ -2,23 +2,37 @@
 <!-- Generated with glade 3.22.1 -->
 <interface domain="pulseeffects">
   <requires lib="gtk+" version="3.18"/>
-  <object class="GtkAdjustment" id="damping">
+  <object class="GtkAdjustment" id="amount">
+    <property name="lower">-100</property>
+    <property name="upper">6</property>
+    <property name="value">-12</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="decay_time">
+    <property name="lower">0.40000000000000002</property>
+    <property name="upper">15</property>
+    <property name="value">1.5</property>
+    <property name="step_increment">0.10000000000000001</property>
+    <property name="page_increment">0.10000000000000001</property>
+  </object>
+  <object class="GtkAdjustment" id="diffusion">
     <property name="upper">1</property>
-    <property name="value">0.20000000000000001</property>
+    <property name="value">0.5</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.10000000000000001</property>
+  </object>
+  <object class="GtkAdjustment" id="dry">
+    <property name="lower">-100</property>
+    <property name="upper">6</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="input_gain">
     <property name="lower">-36</property>
     <property name="upper">36</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
-  </object>
-  <object class="GtkAdjustment" id="level">
-    <property name="upper">1</property>
-    <property name="value">0.5</property>
-    <property name="step_increment">0.01</property>
-    <property name="page_increment">0.10000000000000001</property>
   </object>
   <object class="GtkBox" id="listbox_control">
     <property name="visible">True</property>
@@ -61,17 +75,10 @@
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
-  <object class="GtkAdjustment" id="room_size">
-    <property name="upper">1</property>
-    <property name="value">0.5</property>
-    <property name="step_increment">0.01</property>
-    <property name="page_increment">0.10000000000000001</property>
-  </object>
-  <object class="GtkAdjustment" id="width">
-    <property name="upper">1</property>
-    <property name="value">1</property>
-    <property name="step_increment">0.01</property>
-    <property name="page_increment">0.10000000000000001</property>
+  <object class="GtkAdjustment" id="predelay">
+    <property name="upper">500</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
   </object>
   <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
@@ -169,13 +176,13 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
-            <property name="column_spacing">60</property>
+            <property name="column_spacing">40</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="label" translatable="yes">Room Size</property>
+                <property name="label" translatable="yes">Pre Delay</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -189,10 +196,10 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="width_chars">10</property>
+                <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                 <property name="input_purpose">number</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">room_size</property>
-                <property name="digits">2</property>
+                <property name="adjustment">predelay</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
               </object>
@@ -206,7 +213,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="label" translatable="yes">Damping</property>
+                <property name="label" translatable="yes">Decay Time</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -220,10 +227,11 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="width_chars">10</property>
+                <property name="secondary_icon_name">pulseeffects-s-symbolic</property>
                 <property name="input_purpose">number</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">damping</property>
-                <property name="digits">2</property>
+                <property name="adjustment">decay_time</property>
+                <property name="digits">1</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
               </object>
@@ -237,7 +245,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="label" translatable="yes">Width</property>
+                <property name="label" translatable="yes">Diffusion</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -253,7 +261,7 @@
                 <property name="width_chars">10</property>
                 <property name="input_purpose">number</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">width</property>
+                <property name="adjustment">diffusion</property>
                 <property name="digits">2</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
@@ -268,7 +276,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="label" translatable="yes">Level</property>
+                <property name="label" translatable="yes">Amount</property>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -282,15 +290,47 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="width_chars">10</property>
+                <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                 <property name="input_purpose">number</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">level</property>
-                <property name="digits">2</property>
+                <property name="adjustment">amount</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
               </object>
               <packing>
                 <property name="left_attach">3</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="label" translatable="yes">Dry</property>
+              </object>
+              <packing>
+                <property name="left_attach">4</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="width_chars">10</property>
+                <property name="text" translatable="yes">0</property>
+                <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
+                <property name="input_purpose">number</property>
+                <property name="orientation">vertical</property>
+                <property name="adjustment">dry</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
+              </object>
+              <packing>
+                <property name="left_attach">4</property>
                 <property name="top_attach">1</property>
               </packing>
             </child>
