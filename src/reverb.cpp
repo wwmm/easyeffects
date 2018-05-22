@@ -132,17 +132,38 @@ void Reverb::bind_to_gsettings() {
         settings, "output-gain", reverb, "level-out", G_SETTINGS_BIND_DEFAULT,
         util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-    g_settings_bind_with_mapping(settings, "frequency", reverb, "freq",
+    g_settings_bind(settings, "room-size", reverb, "room-size",
+                    G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind_with_mapping(settings, "decay-time", reverb, "decay-time",
+                                 G_SETTINGS_BIND_GET, util::double_to_float,
+                                 nullptr, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(settings, "hf-damp", reverb, "hf-damp",
+                                 G_SETTINGS_BIND_GET, util::double_to_float,
+                                 nullptr, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(settings, "diffusion", reverb, "diffusion",
                                  G_SETTINGS_BIND_GET, util::double_to_float,
                                  nullptr, nullptr, nullptr);
 
     g_settings_bind_with_mapping(
-        settings, "resonance", reverb, "res", G_SETTINGS_BIND_DEFAULT,
+        settings, "amount", reverb, "amount", G_SETTINGS_BIND_DEFAULT,
         util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-    g_settings_bind(settings, "mode", reverb, "mode", G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind_with_mapping(
+        settings, "dry", reverb, "dry", G_SETTINGS_BIND_DEFAULT,
+        util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-    g_settings_bind_with_mapping(settings, "inertia", reverb, "inertia",
+    g_settings_bind_with_mapping(settings, "predelay", reverb, "predelay",
+                                 G_SETTINGS_BIND_GET, util::double_to_float,
+                                 nullptr, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(settings, "bass-cut", reverb, "bass-cut",
+                                 G_SETTINGS_BIND_GET, util::double_to_float,
+                                 nullptr, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(settings, "treble-cut", reverb, "treble-cut",
                                  G_SETTINGS_BIND_GET, util::double_to_float,
                                  nullptr, nullptr, nullptr);
 }

@@ -81,11 +81,14 @@ SinkInputEffects::SinkInputEffects(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.filter");
     equalizer = std::make_unique<Equalizer>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.equalizer");
+    reverb = std::make_unique<Reverb>(
+        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.reverb");
 
     plugins.insert(std::make_pair(limiter->name, limiter->plugin));
     plugins.insert(std::make_pair(compressor->name, compressor->plugin));
     plugins.insert(std::make_pair(filter->name, filter->plugin));
     plugins.insert(std::make_pair(equalizer->name, equalizer->plugin));
+    plugins.insert(std::make_pair(reverb->name, reverb->plugin));
 
     add_plugins_to_pipeline();
 }
