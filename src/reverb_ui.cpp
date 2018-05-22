@@ -66,8 +66,8 @@ ReverbUi::ReverbUi(BaseObjectType* cobject,
 
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
-    // settings->bind("input-gain", input_gain, "value", flag);
-    // settings->bind("output-gain", output_gain, "value", flag);
+    settings->bind("input-gain", input_gain, "value", flag);
+    settings->bind("output-gain", output_gain, "value", flag);
     // settings->bind("frequency", frequency, "value", flag);
     // settings->bind("resonance", resonance, "value", flag);
     // settings->bind("inertia", inertia, "value", flag);
