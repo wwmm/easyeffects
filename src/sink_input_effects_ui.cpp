@@ -23,6 +23,34 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     populate_listbox();
     populate_stack();
     up_down_connections();
+
+    listbox->set_sort_func([=](Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) {
+        auto name1 = row1->get_name();
+        auto name2 = row2->get_name();
+
+        auto order = Glib::Variant<std::vector<std::string>>();
+
+        settings->get_value("plugins", order);
+
+        auto vorder = order.get();
+
+        auto r1 = std::find(std::begin(vorder), std::end(vorder), name1);
+        auto r2 = std::find(std::begin(vorder), std::end(vorder), name2);
+
+        auto idx1 = r1 - vorder.begin();
+        auto idx2 = r2 - vorder.begin();
+
+        if (idx1 < idx2) {
+            return -1;
+        } else if (idx1 > idx2) {
+            return 1;
+        } else {
+            return 0;
+        }
+    });
+
+    connections.push_back(settings->signal_changed("plugins").connect(
+        [=](auto key) { listbox->invalidate_sort(); }));
 }
 
 SinkInputEffectsUi::~SinkInputEffectsUi() {
@@ -145,28 +173,30 @@ void SinkInputEffectsUi::up_down_connections() {
         }
     };
 
-    limiter_ui->plugin_up->signal_clicked().connect(
-        [=]() { on_up(limiter_ui); });
-    limiter_ui->plugin_down->signal_clicked().connect(
-        [=]() { on_down(limiter_ui); });
+    connections.push_back(limiter_ui->plugin_up->signal_clicked().connect(
+        [=]() { on_up(limiter_ui); }));
+    connections.push_back(limiter_ui->plugin_down->signal_clicked().connect(
+        [=]() { on_down(limiter_ui); }));
 
-    compressor_ui->plugin_up->signal_clicked().connect(
-        [=]() { on_up(compressor_ui); });
-    compressor_ui->plugin_down->signal_clicked().connect(
-        [=]() { on_down(compressor_ui); });
+    connections.push_back(compressor_ui->plugin_up->signal_clicked().connect(
+        [=]() { on_up(compressor_ui); }));
+    connections.push_back(compressor_ui->plugin_down->signal_clicked().connect(
+        [=]() { on_down(compressor_ui); }));
 
-    filter_ui->plugin_up->signal_clicked().connect([=]() { on_up(filter_ui); });
-    filter_ui->plugin_down->signal_clicked().connect(
-        [=]() { on_down(filter_ui); });
+    connections.push_back(filter_ui->plugin_up->signal_clicked().connect(
+        [=]() { on_up(filter_ui); }));
+    connections.push_back(filter_ui->plugin_down->signal_clicked().connect(
+        [=]() { on_down(filter_ui); }));
 
-    equalizer_ui->plugin_up->signal_clicked().connect(
-        [=]() { on_up(equalizer_ui); });
-    equalizer_ui->plugin_down->signal_clicked().connect(
-        [=]() { on_down(equalizer_ui); });
+    connections.push_back(equalizer_ui->plugin_up->signal_clicked().connect(
+        [=]() { on_up(equalizer_ui); }));
+    connections.push_back(equalizer_ui->plugin_down->signal_clicked().connect(
+        [=]() { on_down(equalizer_ui); }));
 
-    reverb_ui->plugin_up->signal_clicked().connect([=]() { on_up(reverb_ui); });
-    reverb_ui->plugin_down->signal_clicked().connect(
-        [=]() { on_down(reverb_ui); });
+    connections.push_back(reverb_ui->plugin_up->signal_clicked().connect(
+        [=]() { on_up(reverb_ui); }));
+    connections.push_back(reverb_ui->plugin_down->signal_clicked().connect(
+        [=]() { on_down(reverb_ui); }));
 }
 
 void SinkInputEffectsUi::reset() {
