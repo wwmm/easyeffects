@@ -20,9 +20,8 @@ SinkInputEffectsUi::SinkInputEffectsUi(
       reverb_ui(
           ReverbUi::create("com.github.wwmm.pulseeffects.sinkinputs.reverb")) {
     level_meters_connections();
-
-    add_plugins();
-
+    populate_listbox();
+    populate_stack();
     up_down_connections();
 }
 
@@ -42,31 +41,6 @@ std::unique_ptr<SinkInputEffectsUi> SinkInputEffectsUi::create(
     builder->get_widget_derived("widgets_box", sie_ui, sie);
 
     return std::unique_ptr<SinkInputEffectsUi>(sie_ui);
-}
-
-void SinkInputEffectsUi::add_plugins() {
-    auto plugins_order = Glib::Variant<std::vector<std::string>>();
-
-    settings->get_value("plugins", plugins_order);
-
-    for (auto name : plugins_order.get()) {
-        if (name == std::string("limiter")) {
-            add_to_listbox(limiter_ui);
-            stack->add(*limiter_ui, std::string("limiter"));
-        } else if (name == std::string("compressor")) {
-            add_to_listbox(compressor_ui);
-            stack->add(*compressor_ui, std::string("compressor"));
-        } else if (name == std::string("filter")) {
-            add_to_listbox(filter_ui);
-            stack->add(*filter_ui, std::string("filter"));
-        } else if (name == std::string("equalizer")) {
-            add_to_listbox(equalizer_ui);
-            stack->add(*equalizer_ui, std::string("equalizer"));
-        } else if (name == std::string("reverb")) {
-            add_to_listbox(reverb_ui);
-            stack->add(*reverb_ui, std::string("reverb"));
-        }
-    }
 }
 
 void SinkInputEffectsUi::level_meters_connections() {
@@ -108,6 +82,34 @@ void SinkInputEffectsUi::level_meters_connections() {
         sigc::mem_fun(*reverb_ui, &ReverbUi::on_new_input_level)));
     connections.push_back(sie->reverb->output_level.connect(
         sigc::mem_fun(*reverb_ui, &ReverbUi::on_new_output_level)));
+}
+
+void SinkInputEffectsUi::populate_listbox() {
+    auto plugins_order = Glib::Variant<std::vector<std::string>>();
+
+    settings->get_value("plugins", plugins_order);
+
+    for (auto name : plugins_order.get()) {
+        if (name == std::string("limiter")) {
+            add_to_listbox(limiter_ui);
+        } else if (name == std::string("compressor")) {
+            add_to_listbox(compressor_ui);
+        } else if (name == std::string("filter")) {
+            add_to_listbox(filter_ui);
+        } else if (name == std::string("equalizer")) {
+            add_to_listbox(equalizer_ui);
+        } else if (name == std::string("reverb")) {
+            add_to_listbox(reverb_ui);
+        }
+    }
+}
+
+void SinkInputEffectsUi::populate_stack() {
+    stack->add(*limiter_ui, std::string("limiter"));
+    stack->add(*compressor_ui, std::string("compressor"));
+    stack->add(*filter_ui, std::string("filter"));
+    stack->add(*equalizer_ui, std::string("equalizer"));
+    stack->add(*reverb_ui, std::string("reverb"));
 }
 
 void SinkInputEffectsUi::up_down_connections() {
