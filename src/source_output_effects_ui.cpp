@@ -86,23 +86,11 @@ void SourceOutputEffectsUi::level_meters_connections() {
 }
 
 void SourceOutputEffectsUi::populate_listbox() {
-    auto plugins_order = Glib::Variant<std::vector<std::string>>();
-
-    settings->get_value("plugins", plugins_order);
-
-    for (auto name : plugins_order.get()) {
-        if (name == std::string("limiter")) {
-            add_to_listbox(limiter_ui);
-        } else if (name == std::string("compressor")) {
-            add_to_listbox(compressor_ui);
-        } else if (name == std::string("filter")) {
-            add_to_listbox(filter_ui);
-        } else if (name == std::string("equalizer")) {
-            add_to_listbox(equalizer_ui);
-        } else if (name == std::string("reverb")) {
-            add_to_listbox(reverb_ui);
-        }
-    }
+    add_to_listbox(limiter_ui);
+    add_to_listbox(compressor_ui);
+    add_to_listbox(filter_ui);
+    add_to_listbox(equalizer_ui);
+    add_to_listbox(reverb_ui);
 }
 void SourceOutputEffectsUi::populate_stack() {
     stack->add(*limiter_ui, std::string("limiter"));
