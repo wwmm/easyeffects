@@ -7,6 +7,7 @@
 #include "limiter.hpp"
 #include "pipeline_base.hpp"
 #include "pulse_manager.hpp"
+#include "reverb.hpp"
 
 class SourceOutputEffects : public PipelineBase {
    public:
@@ -19,6 +20,7 @@ class SourceOutputEffects : public PipelineBase {
     std::unique_ptr<Compressor> compressor;
     std::unique_ptr<Filter> filter;
     std::unique_ptr<Equalizer> equalizer;
+    std::unique_ptr<Reverb> reverb;
 
     sigc::signal<void, std::array<double, 2>> compressor_input_level;
     sigc::signal<void, std::array<double, 2>> compressor_output_level;
@@ -30,7 +32,7 @@ class SourceOutputEffects : public PipelineBase {
 
     GSettings* soe_settings;
 
-    std::array<GstInsertBin*, 4> wrappers;
+    std::array<GstInsertBin*, 5> wrappers;
     std::map<std::string, GstElement*> plugins;
 
     void add_plugins_to_pipeline();

@@ -118,7 +118,5 @@ void SinkInputEffects::add_plugins_to_pipeline() {
         index++;
     }
 
-    // gst_insert_bin_append(wrappers[4], plugins["reverb"], nullptr, nullptr);
-
     g_variant_iter_free(iter);
 }
