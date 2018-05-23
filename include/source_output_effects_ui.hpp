@@ -38,7 +38,10 @@ class SourceOutputEffectsUi : public EffectsBaseUi {
     std::shared_ptr<EqualizerUi> equalizer_ui;
     std::shared_ptr<ReverbUi> reverb_ui;
 
-    void add_plugins();
+    void level_meters_connections();
+    void populate_listbox();
+    void populate_stack();
+    void up_down_connections();
 };
 
 #endif
