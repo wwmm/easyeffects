@@ -103,7 +103,6 @@
         <property name="can_focus">False</property>
         <property name="halign">center</property>
         <property name="valign">center</property>
-        <property name="margin_bottom">15</property>
         <property name="row_spacing">12</property>
         <property name="column_spacing">6</property>
         <property name="column_homogeneous">True</property>
