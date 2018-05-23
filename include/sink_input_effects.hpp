@@ -14,7 +14,13 @@ class SinkInputEffects : public PipelineBase {
     SinkInputEffects(const std::shared_ptr<PulseManager>& pulse_manager);
     virtual ~SinkInputEffects();
 
+    std::string log_tag = "sie: ";
+
     std::shared_ptr<PulseManager> pm;
+
+    std::array<GstInsertBin*, 5> wrappers;
+    std::array<std::string, 5> plugins_order;
+    std::map<std::string, GstElement*> plugins;
 
     std::unique_ptr<Limiter> limiter;
     std::unique_ptr<Compressor> compressor;
@@ -28,12 +34,7 @@ class SinkInputEffects : public PipelineBase {
     sigc::signal<void, std::array<double, 2>> equalizer_output_level;
 
    private:
-    std::string log_tag = "sie: ";
-
     GSettings* sie_settings;
-
-    std::array<GstInsertBin*, 5> wrappers;
-    std::map<std::string, GstElement*> plugins;
 
     void add_plugins_to_pipeline();
 
