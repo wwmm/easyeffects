@@ -61,24 +61,66 @@ void on_plugins_order_changed(GSettings* settings,
         // first we remove the two plugins
 
         if (plugin1) {
-            gst_insert_bin_remove(GST_INSERT_BIN(l->wrappers[index]), plugin1,
-                                  nullptr, nullptr);
+            l->moving_plugin = true;
+
+            gst_insert_bin_remove(
+                GST_INSERT_BIN(l->wrappers[index]), plugin1,
+                [](auto bin, auto elem, auto success, auto d) {
+                    auto l = static_cast<SinkInputEffects*>(d);
+
+                    l->moving_plugin = false;
+                },
+                l);
+
+            while (l->moving_plugin) {
+            }
         }
 
         if (plugin2) {
-            gst_insert_bin_remove(GST_INSERT_BIN(l->wrappers[index + 1]),
-                                  plugin2, nullptr, nullptr);
+            l->moving_plugin = true;
+
+            gst_insert_bin_remove(
+                GST_INSERT_BIN(l->wrappers[index + 1]), plugin2,
+                [](auto bin, auto elem, auto success, auto d) {
+                    auto l = static_cast<SinkInputEffects*>(d);
+
+                    l->moving_plugin = false;
+                },
+                l);
+
+            while (l->moving_plugin) {
+            }
         }
 
         // then we readd them in the new positions
 
+        l->moving_plugin = true;
+
         gst_insert_bin_append(GST_INSERT_BIN(l->wrappers[index]),
-                              l->plugins[l->plugins_order[index]], nullptr,
-                              nullptr);
+                              l->plugins[l->plugins_order[index]],
+                              [](auto bin, auto elem, auto success, auto d) {
+                                  auto l = static_cast<SinkInputEffects*>(d);
+
+                                  l->moving_plugin = false;
+                              },
+                              l);
+
+        while (l->moving_plugin) {
+        }
+
+        l->moving_plugin = true;
 
         gst_insert_bin_append(GST_INSERT_BIN(l->wrappers[index + 1]),
-                              l->plugins[l->plugins_order[index + 1]], nullptr,
-                              nullptr);
+                              l->plugins[l->plugins_order[index + 1]],
+                              [](auto bin, auto elem, auto success, auto d) {
+                                  auto l = static_cast<SinkInputEffects*>(d);
+
+                                  l->moving_plugin = false;
+                              },
+                              l);
+
+        while (l->moving_plugin) {
+        }
     }
 }
 

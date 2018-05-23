@@ -18,6 +18,7 @@ class SinkInputEffects : public PipelineBase {
 
     std::shared_ptr<PulseManager> pm;
 
+    bool moving_plugin = false;
     std::array<GstInsertBin*, 5> wrappers;
     std::array<std::string, 5> plugins_order;
     std::map<std::string, GstElement*> plugins;
