@@ -79,6 +79,10 @@ FilterUi::FilterUi(BaseObjectType* cobject,
     // loading glade widgets
 
     builder->get_widget("mode", mode);
+    builder->get_widget("preset_muted", preset_muted);
+    builder->get_widget("preset_disco", preset_disco);
+    builder->get_widget("preset_distant_headphones", preset_distant_headphones);
+    builder->get_widget("preset_default", preset_default);
 
     get_object("input_gain", input_gain);
     get_object("output_gain", output_gain);
@@ -101,6 +105,8 @@ FilterUi::FilterUi(BaseObjectType* cobject,
                                  filter_enum_to_int, int_to_filter_enum,
                                  nullptr, nullptr);
 
+    init_presets_buttons();
+
     settings->set_boolean("post-messages", true);
 }
 
@@ -117,6 +123,36 @@ std::shared_ptr<FilterUi> FilterUi::create(std::string settings_name) {
     builder->get_widget_derived("widgets_grid", grid, settings_name);
 
     return std::shared_ptr<FilterUi>(grid);
+}
+
+void FilterUi::init_presets_buttons() {
+    preset_muted->signal_clicked().connect([=]() {
+        frequency->set_value(10);
+        resonance->set_value(0.707);
+        mode->set_active(2);
+        inertia->set_value(20);
+    });
+
+    preset_disco->signal_clicked().connect([=]() {
+        frequency->set_value(193.821);
+        resonance->set_value(1.37956);
+        mode->set_active(0);
+        inertia->set_value(74);
+    });
+
+    preset_distant_headphones->signal_clicked().connect([=]() {
+        frequency->set_value(305.818);
+        resonance->set_value(0.707);
+        mode->set_active(3);
+        inertia->set_value(74);
+    });
+
+    preset_default->signal_clicked().connect([=]() {
+        settings->reset("frequency");
+        settings->reset("resonance");
+        settings->reset("mode");
+        settings->reset("inertia");
+    });
 }
 
 void FilterUi::reset() {
