@@ -125,9 +125,7 @@ void SinkInputEffectsUi::up_down_connections() {
         if (r != std::begin(vorder)) {
             std::iter_swap(r, r - 1);
 
-            for (auto v : vorder) {
-                std::cout << v << std::endl;
-            }
+            settings->set_string_array("plugins", vorder);
         }
     };
 
@@ -143,9 +141,7 @@ void SinkInputEffectsUi::up_down_connections() {
         if (r != std::end(vorder) - 1) {
             std::iter_swap(r, r + 1);
 
-            for (auto v : vorder) {
-                std::cout << v << std::endl;
-            }
+            settings->set_string_array("plugins", vorder);
         }
     };
 
