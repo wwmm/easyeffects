@@ -228,7 +228,7 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="halign">center</property>
-            <property name="margin_bottom">12</property>
+            <property name="margin_bottom">15</property>
             <property name="popover">presets</property>
             <child>
               <object class="GtkLabel">
@@ -319,41 +319,10 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="label" translatable="yes">Diffusion</property>
-              </object>
-              <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkSpinButton">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="width_chars">10</property>
-                <property name="input_purpose">number</property>
-                <property name="orientation">vertical</property>
-                <property name="adjustment">diffusion</property>
-                <property name="digits">2</property>
-                <property name="numeric">True</property>
-                <property name="update_policy">if-valid</property>
-              </object>
-              <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">3</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">center</property>
                 <property name="label" translatable="yes">Amount</property>
               </object>
               <packing>
-                <property name="left_attach">3</property>
+                <property name="left_attach">2</property>
                 <property name="top_attach">2</property>
               </packing>
             </child>
@@ -372,7 +341,7 @@
                 <property name="update_policy">if-valid</property>
               </object>
               <packing>
-                <property name="left_attach">3</property>
+                <property name="left_attach">2</property>
                 <property name="top_attach">3</property>
               </packing>
             </child>
@@ -384,7 +353,7 @@
                 <property name="label" translatable="yes">Dry</property>
               </object>
               <packing>
-                <property name="left_attach">4</property>
+                <property name="left_attach">3</property>
                 <property name="top_attach">2</property>
               </packing>
             </child>
@@ -404,61 +373,7 @@
                 <property name="update_policy">if-valid</property>
               </object>
               <packing>
-                <property name="left_attach">4</property>
-                <property name="top_attach">3</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkComboBoxText" id="room_size">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="margin_bottom">15</property>
-                <items>
-                  <item translatable="yes">Small</item>
-                  <item translatable="yes">Medium</item>
-                  <item translatable="yes">Large</item>
-                  <item translatable="yes">Tunnel</item>
-                  <item translatable="yes">Large/smooth</item>
-                  <item translatable="yes">Experimental</item>
-                </items>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">1</property>
-                <property name="width">8</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">center</property>
-                <property name="label" translatable="yes">Damping</property>
-              </object>
-              <packing>
-                <property name="left_attach">5</property>
-                <property name="top_attach">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkSpinButton">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="width_chars">10</property>
-                <property name="text" translatable="yes">0</property>
-                <property name="secondary_icon_name">pulseeffects-hz-symbolic</property>
-                <property name="input_purpose">number</property>
-                <property name="orientation">vertical</property>
-                <property name="adjustment">hf_damp</property>
-                <property name="numeric">True</property>
-                <property name="update_policy">if-valid</property>
-              </object>
-              <packing>
-                <property name="left_attach">5</property>
+                <property name="left_attach">3</property>
                 <property name="top_attach">3</property>
               </packing>
             </child>
@@ -470,7 +385,7 @@
                 <property name="label" translatable="yes">Bass Cut</property>
               </object>
               <packing>
-                <property name="left_attach">6</property>
+                <property name="left_attach">4</property>
                 <property name="top_attach">2</property>
               </packing>
             </child>
@@ -482,7 +397,7 @@
                 <property name="label" translatable="yes">Treble Cut</property>
               </object>
               <packing>
-                <property name="left_attach">7</property>
+                <property name="left_attach">5</property>
                 <property name="top_attach">2</property>
               </packing>
             </child>
@@ -502,7 +417,7 @@
                 <property name="update_policy">if-valid</property>
               </object>
               <packing>
-                <property name="left_attach">6</property>
+                <property name="left_attach">4</property>
                 <property name="top_attach">3</property>
               </packing>
             </child>
@@ -522,8 +437,75 @@
                 <property name="update_policy">if-valid</property>
               </object>
               <packing>
-                <property name="left_attach">7</property>
+                <property name="left_attach">5</property>
                 <property name="top_attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="label" translatable="yes">High Frequency Damping</property>
+              </object>
+              <packing>
+                <property name="left_attach">4</property>
+                <property name="top_attach">0</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="margin_bottom">15</property>
+                <property name="width_chars">10</property>
+                <property name="text" translatable="yes">0</property>
+                <property name="secondary_icon_name">pulseeffects-hz-symbolic</property>
+                <property name="input_purpose">number</property>
+                <property name="adjustment">hf_damp</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
+              </object>
+              <packing>
+                <property name="left_attach">4</property>
+                <property name="top_attach">1</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="label" translatable="yes">Diffusion</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="margin_bottom">15</property>
+                <property name="width_chars">10</property>
+                <property name="input_purpose">number</property>
+                <property name="adjustment">diffusion</property>
+                <property name="digits">2</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
+                <property name="width">2</property>
               </packing>
             </child>
             <child>
@@ -534,9 +516,31 @@
                 <property name="label" translatable="yes">Room Size</property>
               </object>
               <packing>
-                <property name="left_attach">0</property>
+                <property name="left_attach">2</property>
                 <property name="top_attach">0</property>
-                <property name="width">8</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkComboBoxText" id="room_size">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="margin_bottom">15</property>
+                <items>
+                  <item translatable="yes">Small</item>
+                  <item translatable="yes">Medium</item>
+                  <item translatable="yes">Large</item>
+                  <item translatable="yes">Tunnel</item>
+                  <item translatable="yes">Large/smooth</item>
+                  <item translatable="yes">Experimental</item>
+                </items>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">1</property>
+                <property name="width">2</property>
               </packing>
             </child>
           </object>
