@@ -68,6 +68,9 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
     builder->get_widget("stereo_link", stereo_link);
     builder->get_widget("compression", compression);
     builder->get_widget("compression_label", compression_label);
+    builder->get_widget("preset_vocal_leveller1", preset_vocal_leveller1);
+    builder->get_widget("preset_vocal_leveller2", preset_vocal_leveller2);
+    builder->get_widget("preset_default", preset_default);
 
     get_object("attack", attack);
     get_object("knee", knee);
@@ -99,6 +102,8 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
         G_SETTINGS_BIND_DEFAULT, stereo_link_enum_to_int,
         int_to_stereo_link_enum, nullptr, nullptr);
 
+    init_presets_buttons();
+
     settings->set_boolean("post-messages", true);
 }
 
@@ -121,6 +126,44 @@ void CompressorUi::on_new_compression(double value) {
     compression->set_value(1 - value);
 
     compression_label->set_text(level_to_str(util::linear_to_db(value)));
+}
+
+void CompressorUi::init_presets_buttons() {
+    preset_vocal_leveller1->signal_clicked().connect([=]() {
+        threshold->set_value(util::linear_to_db(0.0883884));
+        ratio->set_value(4.25008);
+        attack->set_value(3.10087);
+        release->set_value(25.0012);
+        makeup->set_value(util::linear_to_db(4.85678));
+        knee->set_value(util::linear_to_db(8));
+        detection->set_active(0);
+        stereo_link->set_active(0);
+        settings->reset("mix");
+    });
+
+    preset_vocal_leveller2->signal_clicked().connect([=]() {
+        threshold->set_value(util::linear_to_db(0.0883884));
+        ratio->set_value(4.25008);
+        attack->set_value(10.5096);
+        release->set_value(106.852);
+        makeup->set_value(util::linear_to_db(4.85678));
+        knee->set_value(util::linear_to_db(8));
+        detection->set_active(0);
+        stereo_link->set_active(0);
+        settings->reset("mix");
+    });
+
+    preset_default->signal_clicked().connect([=]() {
+        settings->reset("detection");
+        settings->reset("stereo-link");
+        settings->reset("mix");
+        settings->reset("attack");
+        settings->reset("release");
+        settings->reset("threshold");
+        settings->reset("ratio");
+        settings->reset("knee");
+        settings->reset("makeup");
+    });
 }
 
 void CompressorUi::reset() {

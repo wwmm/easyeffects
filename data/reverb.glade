@@ -222,13 +222,13 @@
         <property name="valign">center</property>
         <property name="hexpand">True</property>
         <property name="orientation">vertical</property>
+        <property name="spacing">18</property>
         <child>
           <object class="GtkMenuButton" id="menu_button">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="halign">center</property>
-            <property name="margin_bottom">15</property>
             <property name="popover">presets</property>
             <child>
               <object class="GtkLabel">
