@@ -145,6 +145,20 @@ void SinkInputEffectsUi::up_down_connections() {
         }
     };
 
+    limiter_ui->plugin_up->signal_clicked().connect(
+        [=]() { on_up(limiter_ui); });
+    limiter_ui->plugin_down->signal_clicked().connect(
+        [=]() { on_down(limiter_ui); });
+
+    compressor_ui->plugin_up->signal_clicked().connect(
+        [=]() { on_up(compressor_ui); });
+    compressor_ui->plugin_down->signal_clicked().connect(
+        [=]() { on_down(compressor_ui); });
+
+    filter_ui->plugin_up->signal_clicked().connect([=]() { on_up(filter_ui); });
+    filter_ui->plugin_down->signal_clicked().connect(
+        [=]() { on_down(filter_ui); });
+
     equalizer_ui->plugin_up->signal_clicked().connect(
         [=]() { on_up(equalizer_ui); });
     equalizer_ui->plugin_down->signal_clicked().connect(
