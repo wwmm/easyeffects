@@ -50,38 +50,9 @@ AppInfoUi::~AppInfoUi() {
     timeout_connection.disconnect();
 
     if (stream != nullptr) {
-        auto o = pa_stream_flush(
-            stream,
-            [](auto s, auto success, auto ptr) {
-                auto aiu = static_cast<AppInfoUi*>(ptr);
+        pa_stream_disconnect(stream);
 
-                if (success) {
-                    util::debug(aiu->log_tag + aiu->app_info->name +
-                                " level meter stream was flushed");
-
-                    pa_stream_disconnect(s);
-                } else {
-                    util::debug(aiu->log_tag + "failed to flush " +
-                                aiu->app_info->name + " level meter stream");
-                }
-
-                pa_threaded_mainloop_signal(aiu->pm->main_loop, false);
-            },
-            this);
-
-        if (o != nullptr) {
-            pm->wait_operation(o);
-
-            while (stream != nullptr) {
-            }
-        } else {
-            util::debug(log_tag + app_info->name +
-                        " level meter stream does not need flushing");
-
-            pa_stream_disconnect(stream);
-
-            while (stream != nullptr) {
-            }
+        while (stream != nullptr) {
         }
     }
 }

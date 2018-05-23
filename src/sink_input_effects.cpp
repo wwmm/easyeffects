@@ -24,38 +24,62 @@ void on_message_element(const GstBus* gst_bus,
 void on_plugins_order_changed(GSettings* settings,
                               gchar* key,
                               SinkInputEffects* l) {
-    uint index = 0;
+    bool update_order = false;
+    uint count = 0;
+    int index = -1;
     gchar* name;
     GVariantIter* iter;
+    auto old_order = l->plugins_order;
 
     g_settings_get(settings, "plugins", "as", &iter);
 
+    // update plugins_order and get index of first different element
+
     while (g_variant_iter_next(iter, "s", &name)) {
-        if (l->plugins_order[index] != name) {
-            auto plugin = gst_bin_get_by_name(GST_BIN(l->wrappers[index]),
-                                              l->plugins_order[index].c_str());
+        l->plugins_order[count] = name;
 
-            if (plugin) {
-                gst_insert_bin_remove(
-                    GST_INSERT_BIN(l->wrappers[index]),
-                    l->plugins[l->plugins_order[index]],
-                    [](auto bin, auto elem, auto success, auto d) {
-                        auto l = static_cast<SinkInputEffects*>(d);
+        if (old_order[count] != name) {
+            update_order = true;
 
-                        if (success) {
-                            util::debug(l->log_tag + " disabled");
-                        } else {
-                            util::debug(l->log_tag + "failed to disable");
-                        }
-                    },
-                    l);
-            }
+            index = (index == -1) ? count : index;
         }
 
-        index++;
+        count++;
     }
 
     g_variant_iter_free(iter);
+
+    if (update_order) {
+        auto plugin1 =
+            gst_bin_get_by_name(GST_BIN(l->wrappers[index]),
+                                (old_order[index] + "_plugin").c_str());
+
+        auto plugin2 =
+            gst_bin_get_by_name(GST_BIN(l->wrappers[index + 1]),
+                                (old_order[index + 1] + "_plugin").c_str());
+
+        // first we remove the two plugins
+
+        if (plugin1) {
+            gst_insert_bin_remove(GST_INSERT_BIN(l->wrappers[index]), plugin1,
+                                  nullptr, nullptr);
+        }
+
+        if (plugin2) {
+            gst_insert_bin_remove(GST_INSERT_BIN(l->wrappers[index + 1]),
+                                  plugin2, nullptr, nullptr);
+        }
+
+        // then we readd them in the new positions
+
+        gst_insert_bin_append(GST_INSERT_BIN(l->wrappers[index]),
+                              l->plugins[l->plugins_order[index]], nullptr,
+                              nullptr);
+
+        gst_insert_bin_append(GST_INSERT_BIN(l->wrappers[index + 1]),
+                              l->plugins[l->plugins_order[index + 1]], nullptr,
+                              nullptr);
+    }
 }
 
 }  // namespace
