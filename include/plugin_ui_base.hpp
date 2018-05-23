@@ -4,6 +4,7 @@
 #include <giomm/settings.h>
 #include <gtkmm/box.h>
 #include <gtkmm/builder.h>
+#include <gtkmm/button.h>
 #include <gtkmm/image.h>
 #include <gtkmm/label.h>
 #include <gtkmm/levelbar.h>
@@ -19,6 +20,7 @@ class PluginUiBase {
     std::string name;
 
     Gtk::Box* listbox_control;
+    Gtk::Button *plugin_up, *plugin_down;
 
     void on_new_input_level(const std::array<double, 2>& peak);
     void on_new_output_level(const std::array<double, 2>& peak);

@@ -7,6 +7,8 @@ PluginUiBase::PluginUiBase(const Glib::RefPtr<Gtk::Builder>& refBuilder,
     builder->get_widget("listbox_control", listbox_control);
     builder->get_widget("controls", controls);
     builder->get_widget("img_state", img_state);
+    builder->get_widget("plugin_up", plugin_up);
+    builder->get_widget("plugin_down", plugin_down);
 
     builder->get_widget("input_level_left", input_level_left);
     builder->get_widget("input_level_right", input_level_right);
