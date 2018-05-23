@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "sink_input_effects_ui.hpp"
 
 SinkInputEffectsUi::SinkInputEffectsUi(
@@ -18,46 +19,11 @@ SinkInputEffectsUi::SinkInputEffectsUi(
           "com.github.wwmm.pulseeffects.sinkinputs.equalizer")),
       reverb_ui(
           ReverbUi::create("com.github.wwmm.pulseeffects.sinkinputs.reverb")) {
-    // limiter level meters connections
-
-    connections.push_back(sie->limiter->input_level.connect(
-        sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_input_level)));
-    connections.push_back(sie->limiter->output_level.connect(
-        sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_output_level)));
-    connections.push_back(sie->limiter->attenuation.connect(
-        sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_attenuation)));
-
-    // compressor level meters connections
-
-    connections.push_back(sie->compressor_input_level.connect(
-        sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_input_level_db)));
-    connections.push_back(sie->compressor_output_level.connect(
-        sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_output_level_db)));
-    connections.push_back(sie->compressor->compression.connect(
-        sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_compression)));
-
-    // filter level meters connections
-
-    connections.push_back(sie->filter->input_level.connect(
-        sigc::mem_fun(*filter_ui, &FilterUi::on_new_input_level)));
-    connections.push_back(sie->filter->output_level.connect(
-        sigc::mem_fun(*filter_ui, &FilterUi::on_new_output_level)));
-
-    // equalizer level meters connections
-
-    connections.push_back(sie->equalizer_input_level.connect(
-        sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_input_level_db)));
-    connections.push_back(sie->equalizer_output_level.connect(
-        sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_output_level_db)));
-
-    // reverb level meters connections
-
-    connections.push_back(sie->reverb->input_level.connect(
-        sigc::mem_fun(*reverb_ui, &ReverbUi::on_new_input_level)));
-    connections.push_back(sie->reverb->output_level.connect(
-        sigc::mem_fun(*reverb_ui, &ReverbUi::on_new_output_level)));
+    level_meters_connections();
 
     add_plugins();
+
+    up_down_connections();
 }
 
 SinkInputEffectsUi::~SinkInputEffectsUi() {
@@ -101,6 +67,94 @@ void SinkInputEffectsUi::add_plugins() {
             stack->add(*reverb_ui, std::string("reverb"));
         }
     }
+}
+
+void SinkInputEffectsUi::level_meters_connections() {
+    // limiter level meters connections
+
+    connections.push_back(sie->limiter->input_level.connect(
+        sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_input_level)));
+    connections.push_back(sie->limiter->output_level.connect(
+        sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_output_level)));
+    connections.push_back(sie->limiter->attenuation.connect(
+        sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_attenuation)));
+
+    // compressor level meters connections
+
+    connections.push_back(sie->compressor_input_level.connect(
+        sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_input_level_db)));
+    connections.push_back(sie->compressor_output_level.connect(
+        sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_output_level_db)));
+    connections.push_back(sie->compressor->compression.connect(
+        sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_compression)));
+
+    // filter level meters connections
+
+    connections.push_back(sie->filter->input_level.connect(
+        sigc::mem_fun(*filter_ui, &FilterUi::on_new_input_level)));
+    connections.push_back(sie->filter->output_level.connect(
+        sigc::mem_fun(*filter_ui, &FilterUi::on_new_output_level)));
+
+    // equalizer level meters connections
+
+    connections.push_back(sie->equalizer_input_level.connect(
+        sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_input_level_db)));
+    connections.push_back(sie->equalizer_output_level.connect(
+        sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_output_level_db)));
+
+    // reverb level meters connections
+
+    connections.push_back(sie->reverb->input_level.connect(
+        sigc::mem_fun(*reverb_ui, &ReverbUi::on_new_input_level)));
+    connections.push_back(sie->reverb->output_level.connect(
+        sigc::mem_fun(*reverb_ui, &ReverbUi::on_new_output_level)));
+}
+
+void SinkInputEffectsUi::up_down_connections() {
+    auto on_up = [=](auto p) {
+        auto order = Glib::Variant<std::vector<std::string>>();
+
+        settings->get_value("plugins", order);
+
+        auto vorder = order.get();
+
+        auto r = std::find(std::begin(vorder), std::end(vorder), p->name);
+
+        if (r != std::begin(vorder)) {
+            std::iter_swap(r, r - 1);
+
+            for (auto v : vorder) {
+                std::cout << v << std::endl;
+            }
+        }
+    };
+
+    auto on_down = [=](auto p) {
+        auto order = Glib::Variant<std::vector<std::string>>();
+
+        settings->get_value("plugins", order);
+
+        auto vorder = order.get();
+
+        auto r = std::find(std::begin(vorder), std::end(vorder), p->name);
+
+        if (r != std::end(vorder) - 1) {
+            std::iter_swap(r, r + 1);
+
+            for (auto v : vorder) {
+                std::cout << v << std::endl;
+            }
+        }
+    };
+
+    equalizer_ui->plugin_up->signal_clicked().connect(
+        [=]() { on_up(equalizer_ui); });
+    equalizer_ui->plugin_down->signal_clicked().connect(
+        [=]() { on_down(equalizer_ui); });
+
+    reverb_ui->plugin_up->signal_clicked().connect([=]() { on_up(reverb_ui); });
+    reverb_ui->plugin_down->signal_clicked().connect(
+        [=]() { on_down(reverb_ui); });
 }
 
 void SinkInputEffectsUi::reset() {
