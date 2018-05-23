@@ -40,6 +40,16 @@ SinkInputEffectsUi::SinkInputEffectsUi(
         auto idx1 = r1 - vorder.begin();
         auto idx2 = r2 - vorder.begin();
 
+        // we do not want the applications row to be moved
+
+        if (name1 == std::string("applications")) {
+            return -1;
+        }
+
+        if (name2 == std::string("applications")) {
+            return 1;
+        }
+
         if (idx1 < idx2) {
             return -1;
         } else if (idx1 > idx2) {
