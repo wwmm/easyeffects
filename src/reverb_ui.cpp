@@ -60,6 +60,10 @@ ReverbUi::ReverbUi(BaseObjectType* cobject,
     builder->get_widget("preset_empty_walls", preset_empty_walls);
     builder->get_widget("preset_ambience", preset_ambience);
     builder->get_widget("preset_large_empty_hall", preset_large_empty_hall);
+    builder->get_widget("preset_disco", preset_disco);
+    builder->get_widget("preset_large_occupied_hall",
+                        preset_large_occupied_hall);
+    builder->get_widget("preset_default", preset_default);
 
     get_object("input_gain", input_gain);
     get_object("output_gain", output_gain);
@@ -153,6 +157,42 @@ void ReverbUi::init_presets_buttons() {
         decay_time->set_value(2.00689);
         hf_damp->set_value(20000);
         amount->set_value(util::linear_to_db(0.366022));
+        settings->reset("room-size");
+        settings->reset("diffusion");
+        settings->reset("dry");
+        settings->reset("predelay");
+        settings->reset("bass-cut");
+        settings->reset("treble-cut");
+    });
+
+    preset_disco->signal_clicked().connect([=]() {
+        decay_time->set_value(1);
+        hf_damp->set_value(3396.49);
+        amount->set_value(util::linear_to_db(0.269807));
+        settings->reset("room-size");
+        settings->reset("diffusion");
+        settings->reset("dry");
+        settings->reset("predelay");
+        settings->reset("bass-cut");
+        settings->reset("treble-cut");
+    });
+
+    preset_large_occupied_hall->signal_clicked().connect([=]() {
+        decay_time->set_value(1.45397);
+        hf_damp->set_value(9795.58);
+        amount->set_value(util::linear_to_db(0.184284));
+        settings->reset("room-size");
+        settings->reset("diffusion");
+        settings->reset("dry");
+        settings->reset("predelay");
+        settings->reset("bass-cut");
+        settings->reset("treble-cut");
+    });
+
+    preset_default->signal_clicked().connect([=]() {
+        settings->reset("decay-time");
+        settings->reset("hf-damp");
+        settings->reset("amount");
         settings->reset("room-size");
         settings->reset("diffusion");
         settings->reset("dry");
