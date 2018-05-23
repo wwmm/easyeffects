@@ -13,6 +13,7 @@ class SinkInputEffectsUi : public EffectsBaseUi {
    public:
     SinkInputEffectsUi(BaseObjectType* cobject,
                        const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                       const Glib::RefPtr<Gio::Settings>& refSettings,
                        std::shared_ptr<SinkInputEffects> sie_ptr);
 
     ~SinkInputEffectsUi();
@@ -27,10 +28,6 @@ class SinkInputEffectsUi : public EffectsBaseUi {
 
    private:
     std::shared_ptr<SinkInputEffects> sie;
-
-    Glib::RefPtr<Gio::Settings> settings;
-
-    std::vector<sigc::connection> connections;
 
     std::shared_ptr<LimiterUi> limiter_ui;
     std::shared_ptr<CompressorUi> compressor_ui;

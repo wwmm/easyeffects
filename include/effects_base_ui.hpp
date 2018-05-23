@@ -1,6 +1,7 @@
 #ifndef EFFECTS_BASE_UI_HPP
 #define EFFECTS_BASE_UI_HPP
 
+#include <giomm/settings.h>
 #include <gtkmm/box.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/listbox.h>
@@ -14,6 +15,7 @@ class EffectsBaseUi : public Gtk::Box {
    public:
     EffectsBaseUi(BaseObjectType* cobject,
                   const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                  const Glib::RefPtr<Gio::Settings>& refSettings,
                   const std::shared_ptr<PulseManager>& pulse_manager);
 
     virtual ~EffectsBaseUi();
@@ -23,8 +25,11 @@ class EffectsBaseUi : public Gtk::Box {
     void on_app_removed(uint idx);
 
    protected:
+    Glib::RefPtr<Gio::Settings> settings;
     Gtk::ListBox* listbox;
     Gtk::Stack* stack;
+
+    std::vector<sigc::connection> connections;
 
     template <typename T>
     void add_to_listbox(T p) {
@@ -46,6 +51,8 @@ class EffectsBaseUi : public Gtk::Box {
     std::shared_ptr<PulseManager> pm;
 
     std::vector<std::unique_ptr<AppInfoUi>> apps_list;
+
+    int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
 };
 
 #endif

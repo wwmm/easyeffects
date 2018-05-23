@@ -4,11 +4,10 @@
 SinkInputEffectsUi::SinkInputEffectsUi(
     BaseObjectType* cobject,
     const Glib::RefPtr<Gtk::Builder>& refBuilder,
+    const Glib::RefPtr<Gio::Settings>& refSettings,
     std::shared_ptr<SinkInputEffects> sie_ptr)
-    : EffectsBaseUi(cobject, refBuilder, sie_ptr->pm),
+    : EffectsBaseUi(cobject, refBuilder, refSettings, sie_ptr->pm),
       sie(sie_ptr),
-      settings(
-          Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs")),
       limiter_ui(
           LimiterUi::create("com.github.wwmm.pulseeffects.sinkinputs.limiter")),
       compressor_ui(CompressorUi::create(
@@ -23,44 +22,6 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     populate_listbox();
     populate_stack();
     up_down_connections();
-
-    listbox->set_sort_func([=](Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) {
-        auto name1 = row1->get_name();
-        auto name2 = row2->get_name();
-
-        auto order = Glib::Variant<std::vector<std::string>>();
-
-        settings->get_value("plugins", order);
-
-        auto vorder = order.get();
-
-        auto r1 = std::find(std::begin(vorder), std::end(vorder), name1);
-        auto r2 = std::find(std::begin(vorder), std::end(vorder), name2);
-
-        auto idx1 = r1 - vorder.begin();
-        auto idx2 = r2 - vorder.begin();
-
-        // we do not want the applications row to be moved
-
-        if (name1 == std::string("applications")) {
-            return -1;
-        }
-
-        if (name2 == std::string("applications")) {
-            return 1;
-        }
-
-        if (idx1 < idx2) {
-            return -1;
-        } else if (idx1 > idx2) {
-            return 1;
-        } else {
-            return 0;
-        }
-    });
-
-    connections.push_back(settings->signal_changed("plugins").connect(
-        [=](auto key) { listbox->invalidate_sort(); }));
 }
 
 SinkInputEffectsUi::~SinkInputEffectsUi() {
@@ -74,9 +35,12 @@ std::unique_ptr<SinkInputEffectsUi> SinkInputEffectsUi::create(
     auto builder = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/effects_base.glade");
 
+    auto settings =
+        Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs");
+
     SinkInputEffectsUi* sie_ui = nullptr;
 
-    builder->get_widget_derived("widgets_box", sie_ui, sie);
+    builder->get_widget_derived("widgets_box", sie_ui, settings, sie);
 
     return std::unique_ptr<SinkInputEffectsUi>(sie_ui);
 }

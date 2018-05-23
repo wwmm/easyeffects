@@ -3,11 +3,10 @@
 SourceOutputEffectsUi::SourceOutputEffectsUi(
     BaseObjectType* cobject,
     const Glib::RefPtr<Gtk::Builder>& refBuilder,
+    const Glib::RefPtr<Gio::Settings>& refSettings,
     std::shared_ptr<SourceOutputEffects> soe_ptr)
-    : EffectsBaseUi(cobject, refBuilder, soe_ptr->pm),
+    : EffectsBaseUi(cobject, refBuilder, refSettings, soe_ptr->pm),
       soe(soe_ptr),
-      settings(
-          Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs")),
       limiter_ui(LimiterUi::create(
           "com.github.wwmm.pulseeffects.sourceoutputs.limiter")),
       compressor_ui(CompressorUi::create(
@@ -22,44 +21,6 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(
     populate_listbox();
     populate_stack();
     up_down_connections();
-
-    listbox->set_sort_func([=](Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) {
-        auto name1 = row1->get_name();
-        auto name2 = row2->get_name();
-
-        auto order = Glib::Variant<std::vector<std::string>>();
-
-        settings->get_value("plugins", order);
-
-        auto vorder = order.get();
-
-        auto r1 = std::find(std::begin(vorder), std::end(vorder), name1);
-        auto r2 = std::find(std::begin(vorder), std::end(vorder), name2);
-
-        auto idx1 = r1 - vorder.begin();
-        auto idx2 = r2 - vorder.begin();
-
-        // we do not want the applications row to be moved
-
-        if (name1 == std::string("applications")) {
-            return -1;
-        }
-
-        if (name2 == std::string("applications")) {
-            return 1;
-        }
-
-        if (idx1 < idx2) {
-            return -1;
-        } else if (idx1 > idx2) {
-            return 1;
-        } else {
-            return 0;
-        }
-    });
-
-    connections.push_back(settings->signal_changed("plugins").connect(
-        [=](auto key) { listbox->invalidate_sort(); }));
 }
 
 SourceOutputEffectsUi::~SourceOutputEffectsUi() {
@@ -73,9 +34,12 @@ std::unique_ptr<SourceOutputEffectsUi> SourceOutputEffectsUi::create(
     auto builder = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/effects_base.glade");
 
+    auto settings =
+        Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs");
+
     SourceOutputEffectsUi* soe_ui = nullptr;
 
-    builder->get_widget_derived("widgets_box", soe_ui, soe);
+    builder->get_widget_derived("widgets_box", soe_ui, settings, soe);
 
     return std::unique_ptr<SourceOutputEffectsUi>(soe_ui);
 }
