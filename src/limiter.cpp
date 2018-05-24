@@ -123,6 +123,8 @@ Limiter::Limiter(std::string tag, std::string schema)
         gst_insert_bin_append(GST_INSERT_BIN(bin), autovolume, nullptr,
                               nullptr);
 
+        g_object_set(limiter, "bypass", false, nullptr);
+
         bind_to_gsettings();
 
         g_signal_connect(settings, "changed::state",

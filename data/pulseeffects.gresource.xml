@@ -11,6 +11,7 @@
     <file>equalizer.glade</file>
     <file>equalizer_band.glade</file>
     <file>reverb.glade</file>
+    <file>bass_enhancer.glade</file>
     <file>about_icon.png</file>
     <file>listbox.css</file>
     <file>pulseeffects-sine-symbolic.svg</file>

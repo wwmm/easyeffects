@@ -2,28 +2,31 @@
 <schemalist>
     <schema id="com.github.wwmm.pulseeffects.sinkinputs.bassenhancer" path="/com/github/wwmm/pulseeffects/sinkinputs/bassenhancer/">
         <key name="state" type="b">
-          <default>false</default>
+            <default>false</default>
+        </key>
+        <key name="post-messages" type="b">
+            <default>false</default>
         </key>
         <key name="input-gain" type="d">
-          <default>0</default>
+            <default>0</default>
         </key>
         <key name="output-gain" type="d">
-          <default>0</default>
+            <default>0</default>
         </key>
         <key name="amount" type="d">
-          <default>1</default>
+            <default>1</default>
         </key>
         <key name="harmonics" type="d">
-          <default>8.5</default>
+            <default>8.5</default>
         </key>
         <key name="scope" type="d">
-          <default>100</default>
+            <default>100</default>
         </key>
         <key name="floor" type="d">
-          <default>20</default>
+            <default>20</default>
         </key>
         <key name="blend" type="d">
-          <default>0</default>
+            <default>0</default>
         </key>
     </schema>
 </schemalist>

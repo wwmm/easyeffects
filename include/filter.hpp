@@ -14,7 +14,7 @@ class Filter {
     ~Filter();
 
     std::string log_tag, name = "filter";
-    GstElement *plugin, *bin, *filter;
+    GstElement *plugin, *filter;
 
     sigc::connection input_level_connection;
     sigc::connection output_level_connection;

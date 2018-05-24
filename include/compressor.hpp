@@ -18,8 +18,6 @@ class Compressor {
 
     sigc::connection compression_connection;
 
-    double get_compression();
-
     sigc::signal<void, double> compression;
 
    private:

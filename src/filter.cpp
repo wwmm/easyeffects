@@ -8,12 +8,12 @@ namespace {
 
 void on_state_changed(GSettings* settings, gchar* key, Filter* l) {
     auto enable = g_settings_get_boolean(settings, key);
-    auto plugin = gst_bin_get_by_name(GST_BIN(l->plugin), "filter_bin");
+    auto plugin = gst_bin_get_by_name(GST_BIN(l->plugin), "filter");
 
     if (enable) {
         if (!plugin) {
             gst_insert_bin_append(
-                GST_INSERT_BIN(l->plugin), l->bin,
+                GST_INSERT_BIN(l->plugin), l->filter,
                 [](auto bin, auto elem, auto success, auto d) {
                     auto l = static_cast<Filter*>(d);
 
@@ -28,7 +28,7 @@ void on_state_changed(GSettings* settings, gchar* key, Filter* l) {
     } else {
         if (plugin) {
             gst_insert_bin_remove(
-                GST_INSERT_BIN(l->plugin), l->bin,
+                GST_INSERT_BIN(l->plugin), l->filter,
                 [](auto bin, auto elem, auto success, auto d) {
                     auto l = static_cast<Filter*>(d);
 
@@ -89,7 +89,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Filter* l) {
 Filter::Filter(std::string tag, std::string schema)
     : log_tag(tag), settings(g_settings_new(schema.c_str())) {
     filter = gst_element_factory_make("calf-sourceforge-net-plugins-Filter",
-                                      nullptr);
+                                      "filter");
 
     plugin = gst_insert_bin_new("filter_plugin");
 
@@ -102,9 +102,7 @@ Filter::Filter(std::string tag, std::string schema)
     }
 
     if (is_installed) {
-        bin = gst_insert_bin_new("filter_bin");
-
-        gst_insert_bin_append(GST_INSERT_BIN(bin), filter, nullptr, nullptr);
+        g_object_set(filter, "bypass", false, nullptr);
 
         bind_to_gsettings();
 

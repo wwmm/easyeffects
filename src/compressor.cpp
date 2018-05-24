@@ -96,6 +96,8 @@ Compressor::Compressor(std::string tag, std::string schema)
                               nullptr);
         gst_insert_bin_append(GST_INSERT_BIN(bin), out_level, nullptr, nullptr);
 
+        g_object_set(compressor, "bypass", false, nullptr);
+
         bind_to_gsettings();
 
         g_signal_connect(settings, "changed::state",
@@ -151,12 +153,4 @@ void Compressor::bind_to_gsettings() {
     g_settings_bind_with_mapping(
         settings, "makeup", compressor, "makeup", G_SETTINGS_BIND_DEFAULT,
         util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-}
-
-double Compressor::get_compression() {
-    float compression;
-
-    g_object_get(compressor, "compression", &compression, nullptr);
-
-    return compression;
 }
