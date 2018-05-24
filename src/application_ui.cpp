@@ -454,12 +454,6 @@ void ApplicationUi::on_sink_removed(uint idx) {
     sink_list->erase(remove_iter);
 
     util::debug(log_tag + "removed sink: " + remove_name);
-
-    // auto iter = output_device->get_active();
-    //
-    // if (!iter) {
-    //     output_device->set_active(default_iter);
-    // }
 }
 
 void ApplicationUi::on_source_added(std::shared_ptr<mySourceInfo> info) {
@@ -532,12 +526,6 @@ void ApplicationUi::on_source_removed(uint idx) {
     source_list->erase(remove_iter);
 
     util::debug(log_tag + "removed source: " + remove_name);
-
-    // auto iter = input_device->get_active();
-    //
-    // if (!iter) {
-    //     input_device->set_active(default_iter);
-    // }
 }
 
 void ApplicationUi::on_use_default_sink_toggled() {
@@ -582,6 +570,8 @@ void ApplicationUi::on_input_device_changed() {
         row.get_value(0, index);
         row.get_value(1, name);
 
+        app->soe->set_source_monitor_name(name);
+
         util::debug(log_tag + "input device changed: " + name);
     }
 }
@@ -595,6 +585,8 @@ void ApplicationUi::on_output_device_changed() {
 
         row.get_value(0, index);
         row.get_value(1, name);
+
+        app->sie->set_output_sink_name(name);
 
         util::debug(log_tag + "output device changed: " + name);
     }
