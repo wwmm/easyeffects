@@ -16,6 +16,9 @@ class SourceOutputEffects : public PipelineBase {
 
     std::shared_ptr<PulseManager> pm;
 
+    std::array<std::string, 5> plugins_order;
+    std::map<std::string, GstElement*> plugins;
+
     std::unique_ptr<Limiter> limiter;
     std::unique_ptr<Compressor> compressor;
     std::unique_ptr<Filter> filter;
@@ -31,9 +34,6 @@ class SourceOutputEffects : public PipelineBase {
     std::string log_tag = "soe: ";
 
     GSettings* soe_settings;
-
-    std::array<GstInsertBin*, 5> wrappers;
-    std::map<std::string, GstElement*> plugins;
 
     void add_plugins_to_pipeline();
 

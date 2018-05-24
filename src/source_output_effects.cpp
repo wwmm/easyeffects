@@ -20,6 +20,56 @@ void on_message_element(const GstBus* gst_bus,
     }
 }
 
+void on_plugins_order_changed(GSettings* settings,
+                              gchar* key,
+                              SourceOutputEffects* l) {
+    bool update_order = false;
+    uint count = 0;
+    gchar* name;
+    GVariantIter* iter;
+    auto old_order = l->plugins_order;
+
+    g_settings_get(settings, "plugins", "as", &iter);
+
+    while (g_variant_iter_next(iter, "s", &name)) {
+        l->plugins_order[count] = name;
+
+        if (old_order[count] != name) {
+            update_order = true;
+        }
+
+        count++;
+    }
+
+    g_variant_iter_free(iter);
+
+    if (update_order) {
+        int idx = old_order.size() - 1;
+
+        gst_element_set_state(l->pipeline, GST_STATE_READY);
+
+        do {
+            auto plugin = gst_bin_get_by_name(
+                GST_BIN(l->effects_bin), (old_order[idx] + "_plugin").c_str());
+
+            if (plugin) {
+                gst_insert_bin_remove(GST_INSERT_BIN(l->effects_bin), plugin,
+                                      nullptr, nullptr);
+            }
+
+            idx--;
+        } while (idx >= 0);
+
+        for (long unsigned int n = 0; n < l->plugins_order.size(); n++) {
+            gst_insert_bin_append(GST_INSERT_BIN(l->effects_bin),
+                                  l->plugins[l->plugins_order[n]], nullptr,
+                                  nullptr);
+        }
+
+        l->update_pipeline_state();
+    }
+}
+
 }  // namespace
 
 SourceOutputEffects::SourceOutputEffects(
@@ -62,16 +112,6 @@ SourceOutputEffects::SourceOutputEffects(
     g_signal_connect(bus, "message::element", G_CALLBACK(on_message_element),
                      this);
 
-    // plugins wrappers
-
-    for (long unsigned int n = 0; n < wrappers.size(); n++) {
-        wrappers[n] = GST_INSERT_BIN(gst_insert_bin_new(
-            std::string("wrapper" + std::to_string(n)).c_str()));
-
-        gst_insert_bin_append(effects_bin, GST_ELEMENT(wrappers[n]), nullptr,
-                              nullptr);
-    }
-
     // plugins
 
     limiter = std::make_unique<Limiter>(
@@ -92,6 +132,9 @@ SourceOutputEffects::SourceOutputEffects(
     plugins.insert(std::make_pair(reverb->name, reverb->plugin));
 
     add_plugins_to_pipeline();
+
+    g_signal_connect(soe_settings, "changed::plugins",
+                     G_CALLBACK(on_plugins_order_changed), this);
 }
 
 SourceOutputEffects::~SourceOutputEffects() {}
@@ -115,7 +158,9 @@ void SourceOutputEffects::add_plugins_to_pipeline() {
     g_settings_get(soe_settings, "plugins", "as", &iter);
 
     while (g_variant_iter_next(iter, "s", &name)) {
-        gst_insert_bin_append(wrappers[index], plugins[name], nullptr, nullptr);
+        gst_insert_bin_append(effects_bin, plugins[name], nullptr, nullptr);
+
+        plugins_order[index] = name;
 
         index++;
     }
