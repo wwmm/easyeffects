@@ -19,13 +19,6 @@
     <property name="can_focus">False</property>
     <property name="icon_name">go-down-symbolic</property>
   </object>
-  <object class="GtkAdjustment" id="knee">
-    <property name="upper">18</property>
-    <property name="value">9</property>
-    <property name="step_increment">0.01</property>
-    <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_knee_value_changed" swapped="no"/>
-  </object>
   <object class="GtkBox" id="listbox_control">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -96,6 +89,13 @@
         <property name="position">3</property>
       </packing>
     </child>
+  </object>
+  <object class="GtkAdjustment" id="knee">
+    <property name="upper">18</property>
+    <property name="value">9</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_knee_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="makeup">
     <property name="upper">36</property>
@@ -222,7 +222,8 @@
               <object class="GtkGrid">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="row_spacing">3</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
                 <property name="column_spacing">3</property>
                 <property name="column_homogeneous">True</property>
                 <child>
@@ -230,6 +231,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
+                    <property name="valign">center</property>
                     <property name="label" translatable="yes">Detection</property>
                   </object>
                   <packing>
@@ -243,6 +245,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
+                    <property name="valign">center</property>
                     <property name="label" translatable="yes">Stereo Link</property>
                   </object>
                   <packing>
@@ -256,6 +259,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
+                    <property name="valign">center</property>
                     <property name="label" translatable="yes">Mix</property>
                   </object>
                   <packing>
@@ -267,6 +271,7 @@
                   <object class="GtkSpinButton">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="width_chars">10</property>
                     <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                     <property name="secondary_icon_activatable">False</property>
                     <property name="input_purpose">number</property>
@@ -329,6 +334,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
+                    <property name="valign">center</property>
                     <property name="label" translatable="yes">Attack</property>
                   </object>
                   <packing>
@@ -362,6 +368,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
+                    <property name="valign">center</property>
                     <property name="label" translatable="yes">Release</property>
                   </object>
                   <packing>
@@ -407,6 +414,8 @@
                   <object class="GtkSpinButton">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
                     <property name="width_chars">10</property>
                     <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                     <property name="secondary_icon_activatable">False</property>
@@ -426,6 +435,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
+                    <property name="valign">center</property>
                     <property name="label" translatable="yes">Ratio</property>
                   </object>
                   <packing>
@@ -457,6 +467,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
+                    <property name="valign">center</property>
                     <property name="label" translatable="yes">Knee</property>
                   </object>
                   <packing>
@@ -490,6 +501,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
+                    <property name="valign">center</property>
                     <property name="label" translatable="yes">Makeup</property>
                   </object>
                   <packing>

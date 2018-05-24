@@ -3,6 +3,7 @@
 
 #include <gtkmm/adjustment.h>
 #include <gtkmm/grid.h>
+#include <gtkmm/togglebutton.h>
 #include "plugin_ui_base.hpp"
 
 class BassEnhancerUi : public Gtk::Grid, public PluginUiBase {
@@ -22,7 +23,8 @@ class BassEnhancerUi : public Gtk::Grid, public PluginUiBase {
     Gtk::Adjustment *amount, *blend, *floorv, *harmonics, *input_gain,
         *output_gain, *scope;
     Gtk::LevelBar* harmonics_levelbar;
-    Gtk::Label* harmonics_label;
+    Gtk::Label* harmonics_levelbar_label;
+    Gtk::ToggleButton *floor_active, *listen;
 };
 
 #endif

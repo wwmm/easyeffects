@@ -49,19 +49,6 @@
     <property name="can_focus">False</property>
     <property name="icon_name">go-down-symbolic</property>
   </object>
-  <object class="GtkAdjustment" id="input_gain">
-    <property name="lower">-36</property>
-    <property name="upper">36</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_input_gain_value_changed" swapped="no"/>
-  </object>
-  <object class="GtkAdjustment" id="limit">
-    <property name="lower">-24</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_limit_value_changed" swapped="no"/>
-  </object>
   <object class="GtkBox" id="listbox_control">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -133,6 +120,19 @@
       </packing>
     </child>
   </object>
+  <object class="GtkAdjustment" id="input_gain">
+    <property name="lower">-36</property>
+    <property name="upper">36</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_input_gain_value_changed" swapped="no"/>
+  </object>
+  <object class="GtkAdjustment" id="limit">
+    <property name="lower">-24</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_limit_value_changed" swapped="no"/>
+  </object>
   <object class="GtkAdjustment" id="lookahead">
     <property name="lower">0.10000000000000001</property>
     <property name="upper">10</property>
@@ -181,7 +181,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="stack">stack1</property>
+                <property name="stack">stack</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -190,25 +190,30 @@
               </packing>
             </child>
             <child>
-              <object class="GtkStack" id="stack1">
+              <object class="GtkStack" id="stack">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="transition_duration">250</property>
                 <child>
                   <object class="GtkGrid" id="limiter_controls">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
+                    <property name="row_spacing">3</property>
                     <property name="column_spacing">60</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
+                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Input Gain</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">1</property>
+                        <property name="top_attach">0</property>
                       </packing>
                     </child>
                     <child>
@@ -228,7 +233,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">2</property>
+                        <property name="top_attach">1</property>
                       </packing>
                     </child>
                     <child>
@@ -236,11 +241,12 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
+                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Limit</property>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
-                        <property name="top_attach">1</property>
+                        <property name="top_attach">0</property>
                       </packing>
                     </child>
                     <child>
@@ -260,7 +266,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
-                        <property name="top_attach">2</property>
+                        <property name="top_attach">1</property>
                       </packing>
                     </child>
                     <child>
@@ -282,7 +288,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">3</property>
-                        <property name="top_attach">2</property>
+                        <property name="top_attach">1</property>
                       </packing>
                     </child>
                     <child>
@@ -290,22 +296,25 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
+                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Release</property>
                       </object>
                       <packing>
                         <property name="left_attach">3</property>
-                        <property name="top_attach">1</property>
+                        <property name="top_attach">0</property>
                       </packing>
                     </child>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Lookahead</property>
                       </object>
                       <packing>
                         <property name="left_attach">2</property>
-                        <property name="top_attach">1</property>
+                        <property name="top_attach">0</property>
                       </packing>
                     </child>
                     <child>
@@ -327,24 +336,28 @@
                       </object>
                       <packing>
                         <property name="left_attach">2</property>
-                        <property name="top_attach">2</property>
+                        <property name="top_attach">1</property>
                       </packing>
                     </child>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Oversampling</property>
                       </object>
                       <packing>
                         <property name="left_attach">4</property>
-                        <property name="top_attach">1</property>
+                        <property name="top_attach">0</property>
                       </packing>
                     </child>
                     <child>
                       <object class="GtkSpinButton">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
                         <property name="width_chars">10</property>
                         <property name="input_purpose">number</property>
                         <property name="orientation">vertical</property>
@@ -355,17 +368,6 @@
                       </object>
                       <packing>
                         <property name="left_attach">4</property>
-                        <property name="top_attach">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">ASC Level</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">5</property>
                         <property name="top_attach">1</property>
                       </packing>
                     </child>
@@ -373,6 +375,8 @@
                       <object class="GtkSpinButton">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
                         <property name="width_chars">10</property>
                         <property name="text">1,00</property>
                         <property name="input_purpose">number</property>
@@ -385,7 +389,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">5</property>
-                        <property name="top_attach">2</property>
+                        <property name="top_attach">1</property>
                       </packing>
                     </child>
                     <child>
@@ -396,12 +400,10 @@
                         <property name="receives_default">True</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="margin_bottom">30</property>
                       </object>
                       <packing>
-                        <property name="left_attach">0</property>
+                        <property name="left_attach">5</property>
                         <property name="top_attach">0</property>
-                        <property name="width">6</property>
                       </packing>
                     </child>
                   </object>
@@ -445,6 +447,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
+                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Window</property>
                           </object>
                           <packing>
@@ -457,6 +460,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
+                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Target</property>
                           </object>
                           <packing>
@@ -491,6 +495,8 @@
                           <object class="GtkSpinButton">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="text">-4</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
@@ -511,6 +517,8 @@
                           <object class="GtkSpinButton">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="text">0</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
@@ -530,6 +538,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
+                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Threshold</property>
                           </object>
                           <packing>
@@ -541,6 +550,8 @@
                           <object class="GtkSpinButton">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="text">1</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
@@ -562,6 +573,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
+                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Tolerance</property>
                           </object>
                           <packing>

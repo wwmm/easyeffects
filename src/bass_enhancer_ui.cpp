@@ -9,6 +9,9 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
     // loading glade widgets
 
     builder->get_widget("harmonics_levelbar", harmonics_levelbar);
+    builder->get_widget("harmonics_levelbar_label", harmonics_levelbar_label);
+    builder->get_widget("floor_active", floor_active);
+    builder->get_widget("listen", listen);
 
     get_object("amount", amount);
     get_object("blend", blend);
@@ -29,6 +32,8 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
     settings->bind("blend", blend, "value", flag);
     settings->bind("input-gain", input_gain, "value", flag);
     settings->bind("output-gain", output_gain, "value", flag);
+    settings->bind("listen", listen, "active", flag);
+    settings->bind("floor-active", floor_active, "active", flag);
 
     settings->set_boolean("post-messages", true);
 }
@@ -50,9 +55,9 @@ std::shared_ptr<BassEnhancerUi> BassEnhancerUi::create(
 }
 
 void BassEnhancerUi::on_new_harmonics_level(double value) {
-    harmonics_levelbar->set_value(1 - value);
+    harmonics_levelbar->set_value(value);
 
-    // compression_label->set_text(level_to_str(util::linear_to_db(value)));
+    harmonics_levelbar_label->set_text(level_to_str(util::linear_to_db(value)));
 }
 
 void BassEnhancerUi::reset() {

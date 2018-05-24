@@ -19,19 +19,6 @@
     <property name="can_focus">False</property>
     <property name="icon_name">go-down-symbolic</property>
   </object>
-  <object class="GtkAdjustment" id="inertia">
-    <property name="lower">5</property>
-    <property name="upper">100</property>
-    <property name="value">20</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">1</property>
-  </object>
-  <object class="GtkAdjustment" id="input_gain">
-    <property name="lower">-36</property>
-    <property name="upper">36</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">1</property>
-  </object>
   <object class="GtkBox" id="listbox_control">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -102,6 +89,19 @@
         <property name="position">3</property>
       </packing>
     </child>
+  </object>
+  <object class="GtkAdjustment" id="inertia">
+    <property name="lower">5</property>
+    <property name="upper">100</property>
+    <property name="value">20</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="input_gain">
+    <property name="lower">-36</property>
+    <property name="upper">36</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="output_gain">
     <property name="lower">-36</property>
@@ -248,6 +248,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
+                <property name="valign">center</property>
                 <property name="label" translatable="yes">Frequency</property>
               </object>
               <packing>
@@ -259,6 +260,8 @@
               <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
                 <property name="width_chars">10</property>
                 <property name="text">0</property>
                 <property name="secondary_icon_name">pulseeffects-hz-symbolic</property>
@@ -279,6 +282,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
+                <property name="valign">center</property>
                 <property name="label" translatable="yes">Resonance</property>
               </object>
               <packing>
@@ -290,6 +294,8 @@
               <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
                 <property name="width_chars">10</property>
                 <property name="text">2</property>
                 <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
@@ -310,6 +316,8 @@
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
                 <property name="label" translatable="yes">Inertia</property>
               </object>
               <packing>
@@ -321,6 +329,8 @@
               <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
                 <property name="width_chars">10</property>
                 <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                 <property name="input_purpose">number</property>
@@ -352,7 +362,7 @@
                 <property name="halign">end</property>
                 <property name="valign">center</property>
                 <property name="margin_right">3</property>
-                <property name="label" translatable="yes">Input [dB]</property>
+                <property name="label" translatable="yes">Input</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -367,7 +377,7 @@
                 <property name="halign">end</property>
                 <property name="valign">center</property>
                 <property name="margin_right">3</property>
-                <property name="label" translatable="yes">Output [dB]</property>
+                <property name="label" translatable="yes">Output</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
