@@ -35,6 +35,7 @@ class SinkInputEffectsUi : public EffectsBaseUi {
     std::shared_ptr<FilterUi> filter_ui;
     std::shared_ptr<EqualizerUi> equalizer_ui;
     std::shared_ptr<ReverbUi> reverb_ui;
+    std::shared_ptr<BassEnhancerUi> bass_enhancer_ui;
 
     void level_meters_connections();
     void populate_listbox();

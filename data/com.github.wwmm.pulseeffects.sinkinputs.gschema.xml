@@ -2,7 +2,8 @@
 <schemalist>
     <schema id="com.github.wwmm.pulseeffects.sinkinputs" path="/com/github/wwmm/pulseeffects/sinkinputs/">
         <key name="plugins" type="as">
-          <default>["limiter","compressor","filter","equalizer","reverb"]</default>
+          <default>["limiter","compressor","filter","equalizer","bass_enhancer",
+                    "reverb"]</default>
         </key>
     </schema>
 </schemalist>

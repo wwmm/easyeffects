@@ -19,7 +19,7 @@ class BassEnhancerUi : public Gtk::Grid, public PluginUiBase {
     void on_new_harmonics_level(double value);
 
    private:
-    Gtk::Adjustment *amount, *blend, *floor, *harmonics, *input_gain,
+    Gtk::Adjustment *amount, *blend, *floorv, *harmonics, *input_gain,
         *output_gain, *scope;
     Gtk::LevelBar* harmonics_levelbar;
     Gtk::Label* harmonics_label;

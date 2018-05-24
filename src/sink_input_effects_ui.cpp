@@ -17,7 +17,9 @@ SinkInputEffectsUi::SinkInputEffectsUi(
       equalizer_ui(EqualizerUi::create(
           "com.github.wwmm.pulseeffects.sinkinputs.equalizer")),
       reverb_ui(
-          ReverbUi::create("com.github.wwmm.pulseeffects.sinkinputs.reverb")) {
+          ReverbUi::create("com.github.wwmm.pulseeffects.sinkinputs.reverb")),
+      bass_enhancer_ui(BassEnhancerUi::create(
+          "com.github.wwmm.pulseeffects.sinkinputs.bassenhancer")) {
     level_meters_connections();
     populate_listbox();
     populate_stack();
@@ -84,6 +86,15 @@ void SinkInputEffectsUi::level_meters_connections() {
         sigc::mem_fun(*reverb_ui, &ReverbUi::on_new_input_level)));
     connections.push_back(sie->reverb->output_level.connect(
         sigc::mem_fun(*reverb_ui, &ReverbUi::on_new_output_level)));
+
+    // bass_enhancer level meters connections
+
+    connections.push_back(sie->bass_enhancer_input_level.connect(sigc::mem_fun(
+        *bass_enhancer_ui, &BassEnhancerUi::on_new_input_level_db)));
+    connections.push_back(sie->bass_enhancer_output_level.connect(sigc::mem_fun(
+        *bass_enhancer_ui, &BassEnhancerUi::on_new_output_level_db)));
+    connections.push_back(sie->bass_enhancer->harmonics.connect(sigc::mem_fun(
+        *bass_enhancer_ui, &BassEnhancerUi::on_new_harmonics_level)));
 }
 
 void SinkInputEffectsUi::populate_listbox() {
@@ -92,6 +103,7 @@ void SinkInputEffectsUi::populate_listbox() {
     add_to_listbox(filter_ui);
     add_to_listbox(equalizer_ui);
     add_to_listbox(reverb_ui);
+    add_to_listbox(bass_enhancer_ui);
 }
 
 void SinkInputEffectsUi::populate_stack() {
@@ -100,6 +112,7 @@ void SinkInputEffectsUi::populate_stack() {
     stack->add(*filter_ui, std::string("filter"));
     stack->add(*equalizer_ui, std::string("equalizer"));
     stack->add(*reverb_ui, std::string("reverb"));
+    stack->add(*bass_enhancer_ui, std::string("bass_enhancer"));
 }
 
 void SinkInputEffectsUi::up_down_connections() {
@@ -159,12 +172,21 @@ void SinkInputEffectsUi::up_down_connections() {
         [=]() { on_up(reverb_ui); }));
     connections.push_back(reverb_ui->plugin_down->signal_clicked().connect(
         [=]() { on_down(reverb_ui); }));
+
+    connections.push_back(bass_enhancer_ui->plugin_up->signal_clicked().connect(
+        [=]() { on_up(bass_enhancer_ui); }));
+    connections.push_back(
+        bass_enhancer_ui->plugin_down->signal_clicked().connect(
+            [=]() { on_down(bass_enhancer_ui); }));
 }
 
 void SinkInputEffectsUi::reset() {
+    settings->reset("plugins");
+
     limiter_ui->reset();
     compressor_ui->reset();
     filter_ui->reset();
     equalizer_ui->reset();
     reverb_ui->reset();
+    bass_enhancer_ui->reset();
 }

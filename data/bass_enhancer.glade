@@ -38,12 +38,6 @@
     <property name="can_focus">False</property>
     <property name="icon_name">go-down-symbolic</property>
   </object>
-  <object class="GtkAdjustment" id="input_gain">
-    <property name="lower">-30</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_input_gain_value_changed" swapped="no"/>
-  </object>
   <object class="GtkBox" id="listbox_control">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -115,8 +109,16 @@
       </packing>
     </child>
   </object>
+  <object class="GtkAdjustment" id="input_gain">
+    <property name="lower">-36</property>
+    <property name="upper">36</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_input_gain_value_changed" swapped="no"/>
+  </object>
   <object class="GtkAdjustment" id="output_gain">
-    <property name="lower">-30</property>
+    <property name="lower">-36</property>
+    <property name="upper">36</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_output_gain_value_changed" swapped="no"/>

@@ -160,6 +160,8 @@ void SourceOutputEffectsUi::up_down_connections() {
 }
 
 void SourceOutputEffectsUi::reset() {
+    settings->reset("plugins");
+
     limiter_ui->reset();
     compressor_ui->reset();
     filter_ui->reset();

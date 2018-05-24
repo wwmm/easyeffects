@@ -12,7 +12,7 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
 
     get_object("amount", amount);
     get_object("blend", blend);
-    get_object("floor", floor);
+    get_object("floor", floorv);
     get_object("harmonics", harmonics);
     get_object("scope", scope);
     get_object("input_gain", input_gain);
@@ -23,12 +23,12 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
     settings->bind("amount", amount, "value", flag);
-    // settings->bind("knee", knee, "value", flag);
-    // settings->bind("makeup", makeup, "value", flag);
-    // settings->bind("mix", mix, "value", flag);
-    // settings->bind("ratio", ratio, "value", flag);
-    // settings->bind("release", release, "value", flag);
-    // settings->bind("threshold", threshold, "value", flag);
+    settings->bind("harmonics", harmonics, "value", flag);
+    settings->bind("scope", scope, "value", flag);
+    settings->bind("floor", floorv, "value", flag);
+    settings->bind("blend", blend, "value", flag);
+    settings->bind("input-gain", input_gain, "value", flag);
+    settings->bind("output-gain", output_gain, "value", flag);
 
     settings->set_boolean("post-messages", true);
 }
@@ -57,13 +57,13 @@ void BassEnhancerUi::on_new_harmonics_level(double value) {
 
 void BassEnhancerUi::reset() {
     settings->reset("state");
-    settings->reset("detection");
-    settings->reset("stereo-link");
-    settings->reset("mix");
-    settings->reset("attack");
-    settings->reset("release");
-    settings->reset("threshold");
-    settings->reset("ratio");
-    settings->reset("knee");
-    settings->reset("makeup");
+    settings->reset("input-gain");
+    settings->reset("output-gain");
+    settings->reset("amount");
+    settings->reset("harmonics");
+    settings->reset("scope");
+    settings->reset("floor");
+    settings->reset("blend");
+    settings->reset("floor-active");
+    settings->reset("listen");
 }
