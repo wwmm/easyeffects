@@ -4,6 +4,7 @@
 #include "bass_enhancer.hpp"
 #include "compressor.hpp"
 #include "equalizer.hpp"
+#include "exciter.hpp"
 #include "filter.hpp"
 #include "limiter.hpp"
 #include "pipeline_base.hpp"
@@ -28,6 +29,7 @@ class SinkInputEffects : public PipelineBase {
     std::unique_ptr<Equalizer> equalizer;
     std::unique_ptr<Reverb> reverb;
     std::unique_ptr<BassEnhancer> bass_enhancer;
+    std::unique_ptr<Exciter> exciter;
 
     sigc::signal<void, std::array<double, 2>> compressor_input_level;
     sigc::signal<void, std::array<double, 2>> compressor_output_level;
@@ -35,6 +37,8 @@ class SinkInputEffects : public PipelineBase {
     sigc::signal<void, std::array<double, 2>> equalizer_output_level;
     sigc::signal<void, std::array<double, 2>> bass_enhancer_input_level;
     sigc::signal<void, std::array<double, 2>> bass_enhancer_output_level;
+    sigc::signal<void, std::array<double, 2>> exciter_input_level;
+    sigc::signal<void, std::array<double, 2>> exciter_output_level;
 
    private:
     GSettings* sie_settings;

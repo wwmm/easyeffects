@@ -2,28 +2,44 @@
 <schemalist>
     <schema id="com.github.wwmm.pulseeffects.sinkinputs.exciter" path="/com/github/wwmm/pulseeffects/sinkinputs/exciter/">
         <key name="state" type="b">
-          <default>false</default>
+            <default>false</default>
+        </key>
+        <key name="post-messages" type="b">
+            <default>false</default>
         </key>
         <key name="input-gain" type="d">
-          <default>0</default>
+            <range min="-36.1" max="36.1"/>
+            <default>0.0</default>
         </key>
         <key name="output-gain" type="d">
-          <default>0</default>
+            <range min="-36.1" max="36.1"/>
+            <default>0.0</default>
         </key>
         <key name="amount" type="d">
-          <default>1</default>
+            <range min="-100" max="36.1"/>
+            <default>0</default>
         </key>
         <key name="harmonics" type="d">
-          <default>8.5</default>
+            <range min="0.1" max="10"/>
+            <default>8.5</default>
         </key>
         <key name="scope" type="d">
-          <default>7500</default>
+            <range min="2000" max="12000"/>
+            <default>7500</default>
         </key>
-        <key name="ceiling" type="d">
-          <default>16000</default>
+        <key name="ceil" type="d">
+            <range min="10000" max="20000"/>
+            <default>16000</default>
         </key>
         <key name="blend" type="d">
-          <default>0</default>
+            <range min="-10" max="10"/>
+            <default>0</default>
+        </key>
+        <key name="ceil-active" type="b">
+            <default>false</default>
+        </key>
+        <key name="listen" type="b">
+            <default>false</default>
         </key>
     </schema>
 </schemalist>

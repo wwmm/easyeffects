@@ -1,6 +1,5 @@
 #include <glibmm/main.h>
 #include <gst/insertbin/gstinsertbin.h>
-#include <cmath>
 #include "bass_enhancer.hpp"
 #include "util.hpp"
 

@@ -1,6 +1,5 @@
 #include <glibmm/main.h>
 #include <gst/insertbin/gstinsertbin.h>
-#include <cmath>
 #include "compressor.hpp"
 #include "util.hpp"
 

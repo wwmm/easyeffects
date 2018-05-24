@@ -3,7 +3,6 @@
 
 #include <gio/gio.h>
 #include <gst/gst.h>
-#include <gst/insertbin/gstinsertbin.h>
 #include <sigc++/sigc++.h>
 #include <array>
 #include <iostream>
