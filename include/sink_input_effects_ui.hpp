@@ -5,6 +5,7 @@
 #include "compressor_ui.hpp"
 #include "effects_base_ui.hpp"
 #include "equalizer_ui.hpp"
+#include "exciter_ui.hpp"
 #include "filter_ui.hpp"
 #include "limiter_ui.hpp"
 #include "reverb_ui.hpp"
@@ -36,6 +37,7 @@ class SinkInputEffectsUi : public EffectsBaseUi {
     std::shared_ptr<EqualizerUi> equalizer_ui;
     std::shared_ptr<ReverbUi> reverb_ui;
     std::shared_ptr<BassEnhancerUi> bass_enhancer_ui;
+    std::shared_ptr<ExciterUi> exciter_ui;
 
     void level_meters_connections();
     void populate_listbox();

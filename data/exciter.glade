@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.22.1 -->
-<interface domain="PulseEffects">
+<interface domain="pulseeffects">
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="amount">
-    <property name="upper">64</property>
-    <property name="value">1</property>
-    <property name="step_increment">0.10000000000000001</property>
-    <property name="page_increment">0.10000000000000001</property>
+    <property name="lower">-100</property>
+    <property name="upper">36</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="blend">
     <property name="lower">-10</property>
@@ -14,7 +14,7 @@
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
-  <object class="GtkAdjustment" id="ceiling">
+  <object class="GtkAdjustment" id="ceil">
     <property name="lower">10000</property>
     <property name="upper">20000</property>
     <property name="value">16000</property>
@@ -28,8 +28,19 @@
     <property name="step_increment">0.10000000000000001</property>
     <property name="page_increment">0.10000000000000001</property>
   </object>
+  <object class="GtkImage" id="image1">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">go-up-symbolic</property>
+  </object>
+  <object class="GtkImage" id="image2">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">go-down-symbolic</property>
+  </object>
   <object class="GtkAdjustment" id="input_gain">
     <property name="lower">-36</property>
+    <property name="upper">36</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_input_gain_value_changed" swapped="no"/>
@@ -37,11 +48,12 @@
   <object class="GtkBox" id="listbox_control">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="spacing">6</property>
+    <property name="spacing">3</property>
     <child>
       <object class="GtkLabel">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="valign">center</property>
         <property name="label" translatable="yes">Exciter</property>
         <attributes>
           <attribute name="weight" value="bold"/>
@@ -54,12 +66,14 @@
       </packing>
     </child>
     <child>
-      <object class="GtkImage" id="img_state">
+      <object class="GtkButton" id="plugin_down">
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="halign">center</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="halign">end</property>
         <property name="valign">center</property>
-        <property name="icon_name">emblem-ok-symbolic</property>
+        <property name="image">image2</property>
+        <property name="always_show_image">True</property>
       </object>
       <packing>
         <property name="expand">False</property>
@@ -68,9 +82,43 @@
         <property name="position">1</property>
       </packing>
     </child>
+    <child>
+      <object class="GtkButton" id="plugin_up">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="halign">end</property>
+        <property name="valign">center</property>
+        <property name="image">image1</property>
+        <property name="always_show_image">True</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="pack_type">end</property>
+        <property name="position">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkImage" id="img_state">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="no_show_all">True</property>
+        <property name="halign">end</property>
+        <property name="valign">center</property>
+        <property name="icon_name">emblem-ok-symbolic</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="pack_type">end</property>
+        <property name="position">3</property>
+      </packing>
+    </child>
   </object>
   <object class="GtkAdjustment" id="output_gain">
-    <property name="lower">-30</property>
+    <property name="lower">-36</property>
+    <property name="upper">36</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_output_gain_value_changed" swapped="no"/>
@@ -82,7 +130,7 @@
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
-  <object class="GtkGrid" id="window">
+  <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="valign">center</property>
@@ -96,10 +144,26 @@
         <property name="orientation">vertical</property>
         <property name="spacing">24</property>
         <child>
+          <object class="GtkToggleButton" id="listen">
+            <property name="label" translatable="yes">Listen to Harmonics</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
+            <property name="valign">center</property>
             <property name="row_spacing">6</property>
             <property name="column_spacing">6</property>
             <child>
@@ -164,7 +228,7 @@
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">0</property>
+            <property name="position">1</property>
           </packing>
         </child>
         <child>
@@ -172,6 +236,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
+            <property name="valign">center</property>
             <property name="row_spacing">6</property>
             <property name="column_spacing">60</property>
             <child>
@@ -179,6 +244,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
+                <property name="valign">center</property>
                 <property name="label" translatable="yes">Amount</property>
               </object>
               <packing>
@@ -191,6 +257,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
+                <property name="valign">center</property>
                 <property name="label" translatable="yes">Harmonics</property>
               </object>
               <packing>
@@ -203,18 +270,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="label" translatable="yes">Ceiling</property>
-              </object>
-              <packing>
-                <property name="left_attach">3</property>
-                <property name="top_attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">center</property>
+                <property name="valign">center</property>
                 <property name="label" translatable="yes">Scope</property>
               </object>
               <packing>
@@ -291,7 +347,7 @@
                 <property name="secondary_icon_activatable">False</property>
                 <property name="input_purpose">number</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">ceiling</property>
+                <property name="adjustment">ceil</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
               </object>
@@ -300,11 +356,25 @@
                 <property name="top_attach">1</property>
               </packing>
             </child>
+            <child>
+              <object class="GtkToggleButton" id="ceil_active">
+                <property name="label" translatable="yes">Ceil</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">1</property>
+            <property name="position">2</property>
           </packing>
         </child>
         <child>
@@ -336,7 +406,7 @@
               <packing>
                 <property name="left_attach">1</property>
                 <property name="top_attach">4</property>
-                <property name="width">5</property>
+                <property name="width">2</property>
               </packing>
             </child>
             <child>
@@ -412,7 +482,7 @@
                 <property name="halign">end</property>
                 <property name="valign">center</property>
                 <property name="margin_right">3</property>
-                <property name="label" translatable="yes">Input [dB]</property>
+                <property name="label" translatable="yes">Input</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -444,7 +514,7 @@
                 <property name="halign">end</property>
                 <property name="valign">center</property>
                 <property name="margin_right">3</property>
-                <property name="label" translatable="yes">Output [dB]</property>
+                <property name="label" translatable="yes">Output</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -523,11 +593,31 @@
                 <property name="height">2</property>
               </packing>
             </child>
+            <child>
+              <object class="GtkLabel" id="harmonics_levelbar_label">
+                <property name="visible">True</property>
+                <property name="sensitive">False</property>
+                <property name="can_focus">False</property>
+                <property name="label">0</property>
+                <property name="width_chars">3</property>
+                <property name="max_width_chars">3</property>
+              </object>
+              <packing>
+                <property name="left_attach">4</property>
+                <property name="top_attach">4</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">2</property>
+            <property name="position">3</property>
           </packing>
         </child>
       </object>
