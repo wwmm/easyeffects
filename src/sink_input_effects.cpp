@@ -18,6 +18,10 @@ void on_message_element(const GstBus* gst_bus,
         sie->equalizer_input_level.emit(sie->get_peak(message));
     } else if (src_name == std::string("equalizer_output_level")) {
         sie->equalizer_output_level.emit(sie->get_peak(message));
+    } else if (src_name == std::string("bass_enhancer_input_level")) {
+        sie->bass_enhancer_input_level.emit(sie->get_peak(message));
+    } else if (src_name == std::string("bass_enhancer_output_level")) {
+        sie->bass_enhancer_output_level.emit(sie->get_peak(message));
     }
 }
 
@@ -124,12 +128,15 @@ SinkInputEffects::SinkInputEffects(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.equalizer");
     reverb = std::make_unique<Reverb>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.reverb");
+    bass_enhancer = std::make_unique<BassEnhancer>(
+        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.bassenhancer");
 
     plugins.insert(std::make_pair(limiter->name, limiter->plugin));
     plugins.insert(std::make_pair(compressor->name, compressor->plugin));
     plugins.insert(std::make_pair(filter->name, filter->plugin));
     plugins.insert(std::make_pair(equalizer->name, equalizer->plugin));
     plugins.insert(std::make_pair(reverb->name, reverb->plugin));
+    plugins.insert(std::make_pair(bass_enhancer->name, bass_enhancer->plugin));
 
     add_plugins_to_pipeline();
 

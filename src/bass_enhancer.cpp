@@ -133,37 +133,29 @@ void BassEnhancer::bind_to_gsettings() {
                                  util::db20_gain_to_linear,
                                  util::linear_gain_to_db20, nullptr, nullptr);
 
-    // g_settings_bind_with_mapping(settings, "mix", bass_enhancer, "mix",
-    //                              G_SETTINGS_BIND_GET,
-    //                              util::db20_gain_to_linear, nullptr, nullptr,
-    //                              nullptr);
-    //
-    // g_settings_bind_with_mapping(settings, "attack", bass_enhancer, "attack",
-    //                              G_SETTINGS_BIND_GET, util::double_to_float,
-    //                              nullptr, nullptr, nullptr);
-    //
-    // g_settings_bind_with_mapping(settings, "release", bass_enhancer,
-    // "release",
-    //                              G_SETTINGS_BIND_GET, util::double_to_float,
-    //                              nullptr, nullptr, nullptr);
-    //
-    // g_settings_bind_with_mapping(settings, "ratio", bass_enhancer, "ratio",
-    //                              G_SETTINGS_BIND_GET, util::double_to_float,
-    //                              nullptr, nullptr, nullptr);
-    //
-    // g_settings_bind_with_mapping(settings, "threshold", bass_enhancer,
-    //                              "threshold", G_SETTINGS_BIND_DEFAULT,
-    //                              util::db20_gain_to_linear,
-    //                              util::linear_gain_to_db20, nullptr,
-    //                              nullptr);
-    //
-    // g_settings_bind_with_mapping(
-    //     settings, "ratio", bass_enhancer, "ratio", G_SETTINGS_BIND_DEFAULT,
-    //     util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr,
-    //     nullptr);
-    //
-    // g_settings_bind_with_mapping(
-    //     settings, "makeup", bass_enhancer, "makeup", G_SETTINGS_BIND_DEFAULT,
-    //     util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr,
-    //     nullptr);
+    g_settings_bind_with_mapping(
+        settings, "amount", bass_enhancer, "amount", G_SETTINGS_BIND_DEFAULT,
+        util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(settings, "harmonics", bass_enhancer, "drive",
+                                 G_SETTINGS_BIND_GET, util::double_to_float,
+                                 nullptr, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(settings, "scope", bass_enhancer, "freq",
+                                 G_SETTINGS_BIND_GET, util::double_to_float,
+                                 nullptr, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(settings, "floor", bass_enhancer, "floor",
+                                 G_SETTINGS_BIND_GET, util::double_to_float,
+                                 nullptr, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(settings, "blend", bass_enhancer, "blend",
+                                 G_SETTINGS_BIND_GET, util::double_to_float,
+                                 nullptr, nullptr, nullptr);
+
+    g_settings_bind(settings, "floor-active", bass_enhancer, "floor-active",
+                    G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind(settings, "listen", bass_enhancer, "listen",
+                    G_SETTINGS_BIND_DEFAULT);
 }

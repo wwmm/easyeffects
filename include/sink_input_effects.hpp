@@ -1,6 +1,7 @@
 #ifndef SINK_INPUT_EFFECTS_HPP
 #define SINK_INPUT_EFFECTS_HPP
 
+#include "bass_enhancer.hpp"
 #include "compressor.hpp"
 #include "equalizer.hpp"
 #include "filter.hpp"
@@ -18,7 +19,7 @@ class SinkInputEffects : public PipelineBase {
 
     std::shared_ptr<PulseManager> pm;
 
-    std::array<std::string, 5> plugins_order;
+    std::array<std::string, 6> plugins_order;
     std::map<std::string, GstElement*> plugins;
 
     std::unique_ptr<Limiter> limiter;
@@ -26,11 +27,14 @@ class SinkInputEffects : public PipelineBase {
     std::unique_ptr<Filter> filter;
     std::unique_ptr<Equalizer> equalizer;
     std::unique_ptr<Reverb> reverb;
+    std::unique_ptr<BassEnhancer> bass_enhancer;
 
     sigc::signal<void, std::array<double, 2>> compressor_input_level;
     sigc::signal<void, std::array<double, 2>> compressor_output_level;
     sigc::signal<void, std::array<double, 2>> equalizer_input_level;
     sigc::signal<void, std::array<double, 2>> equalizer_output_level;
+    sigc::signal<void, std::array<double, 2>> bass_enhancer_input_level;
+    sigc::signal<void, std::array<double, 2>> bass_enhancer_output_level;
 
    private:
     GSettings* sie_settings;

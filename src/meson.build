@@ -31,6 +31,7 @@ pulseeffects_sources = [
 	'equalizer_ui.cpp',
 	'reverb.cpp',
 	'reverb_ui.cpp',
+	'bass_enhancer.cpp',
 	'util.cpp',
 	gresources
 ]
