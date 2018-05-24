@@ -45,59 +45,29 @@ void on_plugins_order_changed(GSettings* settings,
     g_variant_iter_free(iter);
 
     if (update_order) {
-        // removing all plugins. For some limitation in Gstreamer we have
-        // non-negotiated crashes when removing/adding while others lv2 plugins
-        // are running.
-
         int idx = old_order.size() - 1;
 
-        do {
-            util::debug("removing " + old_order[idx] + ":" +
-                        std::to_string(idx));
+        gst_element_set_state(l->pipeline, GST_STATE_READY);
 
-            auto plugin =
-                gst_bin_get_by_name(GST_BIN(l->wrappers[idx]),
-                                    (old_order[idx] + "_plugin").c_str());
+        do {
+            auto plugin = gst_bin_get_by_name(
+                GST_BIN(l->effects_bin), (old_order[idx] + "_plugin").c_str());
 
             if (plugin) {
-                l->moving_plugin = true;
-
-                gst_insert_bin_remove(
-                    GST_INSERT_BIN(l->wrappers[idx]), plugin,
-                    [](auto bin, auto elem, auto success, auto d) {
-                        auto l = static_cast<SinkInputEffects*>(d);
-
-                        l->moving_plugin = false;
-                    },
-                    l);
-
-                while (l->moving_plugin) {
-                }
-
-                gst_element_set_state(plugin, GST_STATE_NULL);
+                gst_insert_bin_remove(GST_INSERT_BIN(l->effects_bin), plugin,
+                                      nullptr, nullptr);
             }
 
             idx--;
         } while (idx >= 0);
 
         for (long unsigned int n = 0; n < l->plugins_order.size(); n++) {
-            l->moving_plugin = true;
-
-            util::debug("adding " + l->plugins_order[n] + ":" +
-                        std::to_string(n));
-
-            gst_insert_bin_append(
-                GST_INSERT_BIN(l->wrappers[n]), l->plugins[l->plugins_order[n]],
-                [](auto bin, auto elem, auto success, auto d) {
-                    auto l = static_cast<SinkInputEffects*>(d);
-
-                    l->moving_plugin = false;
-                },
-                l);
-
-            while (l->moving_plugin) {
-            }
+            gst_insert_bin_append(GST_INSERT_BIN(l->effects_bin),
+                                  l->plugins[l->plugins_order[n]], nullptr,
+                                  nullptr);
         }
+
+        l->update_pipeline_state();
     }
 }
 
@@ -141,16 +111,6 @@ SinkInputEffects::SinkInputEffects(
 
     g_signal_connect(bus, "message::element", G_CALLBACK(on_message_element),
                      this);
-
-    // plugins wrappers
-
-    for (long unsigned int n = 0; n < wrappers.size(); n++) {
-        wrappers[n] = GST_INSERT_BIN(gst_insert_bin_new(
-            std::string("wrapper" + std::to_string(n)).c_str()));
-
-        gst_insert_bin_append(effects_bin, GST_ELEMENT(wrappers[n]), nullptr,
-                              nullptr);
-    }
 
     // plugins
 
@@ -197,7 +157,7 @@ void SinkInputEffects::add_plugins_to_pipeline() {
     g_settings_get(sie_settings, "plugins", "as", &iter);
 
     while (g_variant_iter_next(iter, "s", &name)) {
-        gst_insert_bin_append(wrappers[index], plugins[name], nullptr, nullptr);
+        gst_insert_bin_append(effects_bin, plugins[name], nullptr, nullptr);
 
         plugins_order[index] = name;
 
