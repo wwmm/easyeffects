@@ -40,6 +40,14 @@
         <value nick="Experimental" value="5"/>
     </enum>
 
+    <enum id="com.github.wwmm.pulseeffects.stereoenhancer.msource.enum">
+        <value nick="Left" value="0"/>
+        <value nick="Right" value="1"/>
+        <value nick="Mid (L+R)" value="2"/>
+        <value nick="Side (L-R)" value="3"/>
+        <value nick="Mute" value="4"/>
+    </enum>
+
     <schema id="com.github.wwmm.pulseeffects" path="/com/github/wwmm/pulseeffects/">
         <key name="buffer-out" type="i">
             <default>100000</default>
