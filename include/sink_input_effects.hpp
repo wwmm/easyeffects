@@ -10,6 +10,7 @@
 #include "pipeline_base.hpp"
 #include "pulse_manager.hpp"
 #include "reverb.hpp"
+#include "stereo_enhancer.hpp"
 
 class SinkInputEffects : public PipelineBase {
    public:
@@ -20,7 +21,7 @@ class SinkInputEffects : public PipelineBase {
 
     std::shared_ptr<PulseManager> pm;
 
-    std::array<std::string, 7> plugins_order;
+    std::vector<std::string> plugins_order;
     std::map<std::string, GstElement*> plugins;
 
     std::unique_ptr<Limiter> limiter;
@@ -30,6 +31,7 @@ class SinkInputEffects : public PipelineBase {
     std::unique_ptr<Reverb> reverb;
     std::unique_ptr<BassEnhancer> bass_enhancer;
     std::unique_ptr<Exciter> exciter;
+    std::unique_ptr<StereoEnhancer> stereo_enhancer;
 
     sigc::signal<void, std::array<double, 2>> compressor_input_level;
     sigc::signal<void, std::array<double, 2>> compressor_output_level;

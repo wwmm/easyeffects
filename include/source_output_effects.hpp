@@ -16,7 +16,7 @@ class SourceOutputEffects : public PipelineBase {
 
     std::shared_ptr<PulseManager> pm;
 
-    std::array<std::string, 5> plugins_order;
+    std::vector<std::string> plugins_order;
     std::map<std::string, GstElement*> plugins;
 
     std::unique_ptr<Limiter> limiter;

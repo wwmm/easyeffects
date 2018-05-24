@@ -1,5 +1,5 @@
-#ifndef REVERB_HPP
-#define REVERB_HPP
+#ifndef STEREO_ENHANCER_HPP
+#define STEREO_ENHANCER_HPP
 
 #include <gio/gio.h>
 #include <gst/gst.h>
@@ -7,13 +7,13 @@
 #include <array>
 #include <iostream>
 
-class Reverb {
+class StereoEnhancer {
    public:
-    Reverb(std::string tag, std::string schema);
-    ~Reverb();
+    StereoEnhancer(std::string tag, std::string schema);
+    ~StereoEnhancer();
 
-    std::string log_tag, name = "reverb";
-    GstElement *plugin, *reverb;
+    std::string log_tag, name = "stereo_enhancer";
+    GstElement *plugin, *stereo_enhancer;
 
     sigc::connection input_level_connection;
     sigc::connection output_level_connection;

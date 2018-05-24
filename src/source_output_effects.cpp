@@ -76,6 +76,21 @@ SourceOutputEffects::SourceOutputEffects(
     const std::shared_ptr<PulseManager>& pulse_manager)
     : PipelineBase("soe: ", pulse_manager->mic_sink_info->rate),
       pm(pulse_manager),
+      limiter(std::make_unique<Limiter>(
+          log_tag,
+          "com.github.wwmm.pulseeffects.sourceoutputs.limiter")),
+      compressor(std::make_unique<Compressor>(
+          log_tag,
+          "com.github.wwmm.pulseeffects.sourceoutputs.compressor")),
+      filter(std::make_unique<Filter>(
+          log_tag,
+          "com.github.wwmm.pulseeffects.sourceoutputs.filter")),
+      equalizer(std::make_unique<Equalizer>(
+          log_tag,
+          "com.github.wwmm.pulseeffects.sourceoutputs.equalizer")),
+      reverb(std::make_unique<Reverb>(
+          log_tag,
+          "com.github.wwmm.pulseeffects.sourceoutputs.reverb")),
       soe_settings(
           g_settings_new("com.github.wwmm.pulseeffects.sourceoutputs")) {
     set_pulseaudio_props(
@@ -112,25 +127,6 @@ SourceOutputEffects::SourceOutputEffects(
     g_signal_connect(bus, "message::element", G_CALLBACK(on_message_element),
                      this);
 
-    // plugins
-
-    limiter = std::make_unique<Limiter>(
-        log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.limiter");
-    compressor = std::make_unique<Compressor>(
-        log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.compressor");
-    filter = std::make_unique<Filter>(
-        log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.filter");
-    equalizer = std::make_unique<Equalizer>(
-        log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.equalizer");
-    reverb = std::make_unique<Reverb>(
-        log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.reverb");
-
-    plugins.insert(std::make_pair(limiter->name, limiter->plugin));
-    plugins.insert(std::make_pair(compressor->name, compressor->plugin));
-    plugins.insert(std::make_pair(filter->name, filter->plugin));
-    plugins.insert(std::make_pair(equalizer->name, equalizer->plugin));
-    plugins.insert(std::make_pair(reverb->name, reverb->plugin));
-
     add_plugins_to_pipeline();
 
     g_signal_connect(soe_settings, "changed::plugins",
@@ -151,7 +147,12 @@ void SourceOutputEffects::on_app_added(
 }
 
 void SourceOutputEffects::add_plugins_to_pipeline() {
-    uint index = 0;
+    plugins.insert(std::make_pair(limiter->name, limiter->plugin));
+    plugins.insert(std::make_pair(compressor->name, compressor->plugin));
+    plugins.insert(std::make_pair(filter->name, filter->plugin));
+    plugins.insert(std::make_pair(equalizer->name, equalizer->plugin));
+    plugins.insert(std::make_pair(reverb->name, reverb->plugin));
+
     gchar* name;
     GVariantIter* iter;
 
@@ -160,9 +161,7 @@ void SourceOutputEffects::add_plugins_to_pipeline() {
     while (g_variant_iter_next(iter, "s", &name)) {
         gst_insert_bin_append(effects_bin, plugins[name], nullptr, nullptr);
 
-        plugins_order[index] = name;
-
-        index++;
+        plugins_order.push_back(name);
     }
 
     g_variant_iter_free(iter);

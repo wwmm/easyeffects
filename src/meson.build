@@ -35,6 +35,7 @@ pulseeffects_sources = [
 	'bass_enhancer_ui.cpp',
 	'exciter.cpp',
 	'exciter_ui.cpp',
+	'stereo_enhancer.cpp',
 	'util.cpp',
 	gresources
 ]

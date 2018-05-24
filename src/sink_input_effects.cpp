@@ -85,6 +85,30 @@ SinkInputEffects::SinkInputEffects(
     const std::shared_ptr<PulseManager>& pulse_manager)
     : PipelineBase("sie: ", pulse_manager->apps_sink_info->rate),
       pm(pulse_manager),
+      limiter(std::make_unique<Limiter>(
+          log_tag,
+          "com.github.wwmm.pulseeffects.sinkinputs.limiter")),
+      compressor(std::make_unique<Compressor>(
+          log_tag,
+          "com.github.wwmm.pulseeffects.sinkinputs.compressor")),
+      filter(std::make_unique<Filter>(
+          log_tag,
+          "com.github.wwmm.pulseeffects.sinkinputs.filter")),
+      equalizer(std::make_unique<Equalizer>(
+          log_tag,
+          "com.github.wwmm.pulseeffects.sinkinputs.equalizer")),
+      reverb(std::make_unique<Reverb>(
+          log_tag,
+          "com.github.wwmm.pulseeffects.sinkinputs.reverb")),
+      bass_enhancer(std::make_unique<BassEnhancer>(
+          log_tag,
+          "com.github.wwmm.pulseeffects.sinkinputs.bassenhancer")),
+      exciter(std::make_unique<Exciter>(
+          log_tag,
+          "com.github.wwmm.pulseeffects.sinkinputs.exciter")),
+      stereo_enhancer(std::make_unique<StereoEnhancer>(
+          log_tag,
+          "com.github.wwmm.pulseeffects.sinkinputs.stereoenhancer")),
       sie_settings(g_settings_new("com.github.wwmm.pulseeffects.sinkinputs")) {
     set_pulseaudio_props(
         "application.id=com.github.wwmm.pulseeffects.sinkinputs");
@@ -120,31 +144,6 @@ SinkInputEffects::SinkInputEffects(
     g_signal_connect(bus, "message::element", G_CALLBACK(on_message_element),
                      this);
 
-    // plugins
-
-    limiter = std::make_unique<Limiter>(
-        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.limiter");
-    compressor = std::make_unique<Compressor>(
-        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.compressor");
-    filter = std::make_unique<Filter>(
-        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.filter");
-    equalizer = std::make_unique<Equalizer>(
-        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.equalizer");
-    reverb = std::make_unique<Reverb>(
-        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.reverb");
-    bass_enhancer = std::make_unique<BassEnhancer>(
-        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.bassenhancer");
-    exciter = std::make_unique<Exciter>(
-        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.exciter");
-
-    plugins.insert(std::make_pair(limiter->name, limiter->plugin));
-    plugins.insert(std::make_pair(compressor->name, compressor->plugin));
-    plugins.insert(std::make_pair(filter->name, filter->plugin));
-    plugins.insert(std::make_pair(equalizer->name, equalizer->plugin));
-    plugins.insert(std::make_pair(reverb->name, reverb->plugin));
-    plugins.insert(std::make_pair(bass_enhancer->name, bass_enhancer->plugin));
-    plugins.insert(std::make_pair(exciter->name, exciter->plugin));
-
     add_plugins_to_pipeline();
 
     g_signal_connect(sie_settings, "changed::plugins",
@@ -164,7 +163,16 @@ void SinkInputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
 }
 
 void SinkInputEffects::add_plugins_to_pipeline() {
-    uint index = 0;
+    plugins.insert(std::make_pair(limiter->name, limiter->plugin));
+    plugins.insert(std::make_pair(compressor->name, compressor->plugin));
+    plugins.insert(std::make_pair(filter->name, filter->plugin));
+    plugins.insert(std::make_pair(equalizer->name, equalizer->plugin));
+    plugins.insert(std::make_pair(reverb->name, reverb->plugin));
+    plugins.insert(std::make_pair(bass_enhancer->name, bass_enhancer->plugin));
+    plugins.insert(std::make_pair(exciter->name, exciter->plugin));
+    plugins.insert(
+        std::make_pair(stereo_enhancer->name, stereo_enhancer->plugin));
+
     gchar* name;
     GVariantIter* iter;
 
@@ -173,9 +181,7 @@ void SinkInputEffects::add_plugins_to_pipeline() {
     while (g_variant_iter_next(iter, "s", &name)) {
         gst_insert_bin_append(effects_bin, plugins[name], nullptr, nullptr);
 
-        plugins_order[index] = name;
-
-        index++;
+        plugins_order.push_back(name);
     }
 
     g_variant_iter_free(iter);
