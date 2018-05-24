@@ -1,6 +1,7 @@
 #ifndef SINK_INPUT_EFFECTS_UI_HPP
 #define SINK_INPUT_EFFECTS_UI_HPP
 
+#include "bass_enhancer_ui.hpp"
 #include "compressor_ui.hpp"
 #include "effects_base_ui.hpp"
 #include "equalizer_ui.hpp"
