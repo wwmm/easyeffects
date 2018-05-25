@@ -14,5 +14,6 @@ data/stereo_enhancer.glade
 data/panorama.glade
 data/crossfeed.glade
 data/maximizer.glade
+data/gate.glade
 data/com.github.wwmm.pulseeffects.appdata.xml.in
 data/com.github.wwmm.pulseeffects.desktop.in

@@ -38,7 +38,6 @@
             <range min="0" max="36"/>
             <default>0.0</default>
         </key>
-
         <key name="post-messages" type="b">
             <default>false</default>
         </key>
