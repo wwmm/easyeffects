@@ -10,6 +10,7 @@
 #include "limiter_ui.hpp"
 #include "reverb_ui.hpp"
 #include "sink_input_effects.hpp"
+#include "stereo_enhancer_ui.hpp"
 
 class SinkInputEffectsUi : public EffectsBaseUi {
    public:
@@ -38,6 +39,7 @@ class SinkInputEffectsUi : public EffectsBaseUi {
     std::shared_ptr<ReverbUi> reverb_ui;
     std::shared_ptr<BassEnhancerUi> bass_enhancer_ui;
     std::shared_ptr<ExciterUi> exciter_ui;
+    std::shared_ptr<StereoEnhancerUi> stereo_enhancer_ui;
 
     void level_meters_connections();
     void populate_listbox();
