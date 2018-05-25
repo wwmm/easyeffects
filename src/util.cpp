@@ -105,6 +105,16 @@ gboolean double_to_float(GValue* value, GVariant* variant, gpointer user_data) {
     return true;
 }
 
+gboolean double_x10_to_int(GValue* value,
+                           GVariant* variant,
+                           gpointer user_data) {
+    double v_d = g_variant_get_double(variant);
+
+    g_value_set_int(value, v_d * 10);
+
+    return true;
+}
+
 gboolean ms_to_ns(GValue* value, GVariant* variant, gpointer user_data) {
     guint64 v_ns = g_variant_get_double(variant) * 1000000;
 

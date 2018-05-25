@@ -2,22 +2,27 @@
 <schemalist>
     <schema id="com.github.wwmm.pulseeffects.sinkinputs.crossfeed" path="/com/github/wwmm/pulseeffects/sinkinputs/crossfeed/">
         <key name="state" type="b">
-          <default>false</default>
+            <default>false</default>
+        </key>
+        <key name="post-messages" type="b">
+            <default>false</default>
         </key>
         <key name="fcut" type="i">
-          <default>700</default>
+            <range min="300" max="2000"/>
+            <default>700</default>
         </key>
         <key name="feed" type="d">
-          <default>4.5</default>
+            <range min="1" max="15"/>
+            <default>4.5</default>
         </key>
         <key name="default" type="ad">
-          <default>[700, 4.5]</default>
+            <default>[700, 4.5]</default>
         </key>
         <key name="cmoy" type="ad">
-          <default>[700, 6.0]</default>
+            <default>[700, 6.0]</default>
         </key>
         <key name="jmeier" type="ad">
-          <default>[650, 9.0]</default>
+            <default>[650, 9.0]</default>
         </key>
     </schema>
 </schemalist>
