@@ -4,6 +4,7 @@
 #include "compressor.hpp"
 #include "equalizer.hpp"
 #include "filter.hpp"
+#include "gate.hpp"
 #include "limiter.hpp"
 #include "pipeline_base.hpp"
 #include "pulse_manager.hpp"
@@ -24,11 +25,14 @@ class SourceOutputEffects : public PipelineBase {
     std::unique_ptr<Filter> filter;
     std::unique_ptr<Equalizer> equalizer;
     std::unique_ptr<Reverb> reverb;
+    std::unique_ptr<Gate> gate;
 
     sigc::signal<void, std::array<double, 2>> compressor_input_level;
     sigc::signal<void, std::array<double, 2>> compressor_output_level;
     sigc::signal<void, std::array<double, 2>> equalizer_input_level;
     sigc::signal<void, std::array<double, 2>> equalizer_output_level;
+    sigc::signal<void, std::array<double, 2>> gate_input_level;
+    sigc::signal<void, std::array<double, 2>> gate_output_level;
 
    private:
     std::string log_tag = "soe: ";
