@@ -2,10 +2,14 @@
 <schemalist>
     <schema id="com.github.wwmm.pulseeffects.sinkinputs.panorama" path="/com/github/wwmm/pulseeffects/sinkinputs/panorama/">
         <key name="state" type="b">
-          <default>false</default>
+            <default>false</default>
+        </key>
+        <key name="post-messages" type="b">
+            <default>false</default>
         </key>
         <key name="position" type="d">
-          <default>0.0</default>
+            <range min="-1" max="1"/>
+            <default>0.0</default>
         </key>
     </schema>
 </schemalist>

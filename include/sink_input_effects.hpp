@@ -7,6 +7,7 @@
 #include "exciter.hpp"
 #include "filter.hpp"
 #include "limiter.hpp"
+#include "panorama.hpp"
 #include "pipeline_base.hpp"
 #include "pulse_manager.hpp"
 #include "reverb.hpp"
@@ -32,6 +33,7 @@ class SinkInputEffects : public PipelineBase {
     std::unique_ptr<BassEnhancer> bass_enhancer;
     std::unique_ptr<Exciter> exciter;
     std::unique_ptr<StereoEnhancer> stereo_enhancer;
+    std::unique_ptr<Panorama> panorama;
 
     sigc::signal<void, std::array<double, 2>> compressor_input_level;
     sigc::signal<void, std::array<double, 2>> compressor_output_level;
@@ -41,6 +43,8 @@ class SinkInputEffects : public PipelineBase {
     sigc::signal<void, std::array<double, 2>> bass_enhancer_output_level;
     sigc::signal<void, std::array<double, 2>> exciter_input_level;
     sigc::signal<void, std::array<double, 2>> exciter_output_level;
+    sigc::signal<void, std::array<double, 2>> panorama_input_level;
+    sigc::signal<void, std::array<double, 2>> panorama_output_level;
 
    private:
     GSettings* sie_settings;

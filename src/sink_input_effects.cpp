@@ -26,6 +26,10 @@ void on_message_element(const GstBus* gst_bus,
         sie->exciter_input_level.emit(sie->get_peak(message));
     } else if (src_name == std::string("exciter_output_level")) {
         sie->exciter_output_level.emit(sie->get_peak(message));
+    } else if (src_name == std::string("panorama_input_level")) {
+        sie->panorama_input_level.emit(sie->get_peak(message));
+    } else if (src_name == std::string("panorama_output_level")) {
+        sie->panorama_output_level.emit(sie->get_peak(message));
     }
 }
 
@@ -136,6 +140,8 @@ SinkInputEffects::SinkInputEffects(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.exciter");
     stereo_enhancer = std::make_unique<StereoEnhancer>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.stereoenhancer");
+    panorama = std::make_unique<Panorama>(
+        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.panorama");
 
     plugins.insert(std::make_pair(limiter->name, limiter->plugin));
     plugins.insert(std::make_pair(compressor->name, compressor->plugin));
@@ -146,6 +152,7 @@ SinkInputEffects::SinkInputEffects(
     plugins.insert(std::make_pair(exciter->name, exciter->plugin));
     plugins.insert(
         std::make_pair(stereo_enhancer->name, stereo_enhancer->plugin));
+    plugins.insert(std::make_pair(panorama->name, panorama->plugin));
 
     add_plugins_to_pipeline();
 

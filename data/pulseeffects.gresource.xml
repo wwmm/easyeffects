@@ -14,6 +14,7 @@
     <file>bass_enhancer.glade</file>
     <file>exciter.glade</file>
     <file>stereo_enhancer.glade</file>
+    <file>panorama.glade</file>
     <file>about_icon.png</file>
     <file>listbox.css</file>
     <file>pulseeffects-sine-symbolic.svg</file>

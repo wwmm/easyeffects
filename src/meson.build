@@ -37,6 +37,8 @@ pulseeffects_sources = [
 	'exciter_ui.cpp',
 	'stereo_enhancer.cpp',
 	'stereo_enhancer_ui.cpp',
+	'panorama.cpp',
+	'panorama_ui.cpp',
 	'util.cpp',
 	gresources
 ]

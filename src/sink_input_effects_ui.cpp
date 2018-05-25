@@ -23,7 +23,9 @@ SinkInputEffectsUi::SinkInputEffectsUi(
       exciter_ui(
           ExciterUi::create("com.github.wwmm.pulseeffects.sinkinputs.exciter")),
       stereo_enhancer_ui(StereoEnhancerUi::create(
-          "com.github.wwmm.pulseeffects.sinkinputs.stereoenhancer")) {
+          "com.github.wwmm.pulseeffects.sinkinputs.stereoenhancer")),
+      panorama_ui(PanoramaUi::create(
+          "com.github.wwmm.pulseeffects.sinkinputs.panorama")) {
     level_meters_connections();
     populate_listbox();
     populate_stack();
@@ -120,6 +122,13 @@ void SinkInputEffectsUi::level_meters_connections() {
     connections.push_back(
         sie->stereo_enhancer->side_level.connect(sigc::mem_fun(
             *stereo_enhancer_ui, &StereoEnhancerUi::on_new_side_level)));
+
+    // panorama level meters connections
+
+    connections.push_back(sie->panorama_input_level.connect(
+        sigc::mem_fun(*panorama_ui, &PanoramaUi::on_new_input_level_db)));
+    connections.push_back(sie->panorama_output_level.connect(
+        sigc::mem_fun(*panorama_ui, &PanoramaUi::on_new_output_level_db)));
 }
 
 void SinkInputEffectsUi::populate_listbox() {
@@ -131,6 +140,7 @@ void SinkInputEffectsUi::populate_listbox() {
     add_to_listbox(bass_enhancer_ui);
     add_to_listbox(exciter_ui);
     add_to_listbox(stereo_enhancer_ui);
+    add_to_listbox(panorama_ui);
 }
 
 void SinkInputEffectsUi::populate_stack() {
@@ -142,6 +152,7 @@ void SinkInputEffectsUi::populate_stack() {
     stack->add(*bass_enhancer_ui, std::string("bass_enhancer"));
     stack->add(*exciter_ui, std::string("exciter"));
     stack->add(*stereo_enhancer_ui, std::string("stereo_enhancer"));
+    stack->add(*panorama_ui, std::string("panorama"));
 }
 
 void SinkInputEffectsUi::up_down_connections() {
@@ -219,6 +230,11 @@ void SinkInputEffectsUi::up_down_connections() {
     connections.push_back(
         stereo_enhancer_ui->plugin_down->signal_clicked().connect(
             [=]() { on_down(stereo_enhancer_ui); }));
+
+    connections.push_back(panorama_ui->plugin_up->signal_clicked().connect(
+        [=]() { on_up(panorama_ui); }));
+    connections.push_back(panorama_ui->plugin_down->signal_clicked().connect(
+        [=]() { on_down(panorama_ui); }));
 }
 
 void SinkInputEffectsUi::reset() {
@@ -232,4 +248,5 @@ void SinkInputEffectsUi::reset() {
     bass_enhancer_ui->reset();
     exciter_ui->reset();
     stereo_enhancer_ui->reset();
+    panorama_ui->reset();
 }
