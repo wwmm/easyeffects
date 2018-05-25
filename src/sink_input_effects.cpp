@@ -30,57 +30,50 @@ void on_message_element(const GstBus* gst_bus,
         sie->panorama_input_level.emit(sie->get_peak(message));
     } else if (src_name == std::string("panorama_output_level")) {
         sie->panorama_output_level.emit(sie->get_peak(message));
+    } else if (src_name == std::string("crossfeed_input_level")) {
+        sie->crossfeed_input_level.emit(sie->get_peak(message));
+    } else if (src_name == std::string("crossfeed_output_level")) {
+        sie->crossfeed_output_level.emit(sie->get_peak(message));
     }
 }
 
 void on_plugins_order_changed(GSettings* settings,
                               gchar* key,
                               SinkInputEffects* l) {
-    bool update_order = false;
-    uint count = 0;
     gchar* name;
     GVariantIter* iter;
-    auto old_order = l->plugins_order;
+    std::vector<std::string> plugins_order;
 
     g_settings_get(settings, "plugins", "as", &iter);
 
     while (g_variant_iter_next(iter, "s", &name)) {
-        l->plugins_order[count] = name;
-
-        if (old_order[count] != name) {
-            update_order = true;
-        }
-
-        count++;
+        plugins_order.push_back(name);
     }
 
     g_variant_iter_free(iter);
 
-    if (update_order) {
-        int idx = old_order.size() - 1;
+    int idx = plugins_order.size() - 1;
 
-        gst_element_set_state(l->pipeline, GST_STATE_READY);
+    gst_element_set_state(l->pipeline, GST_STATE_READY);
 
-        do {
-            auto plugin = gst_bin_get_by_name(
-                GST_BIN(l->effects_bin), (old_order[idx] + "_plugin").c_str());
+    do {
+        auto plugin = gst_bin_get_by_name(
+            GST_BIN(l->effects_bin), (plugins_order[idx] + "_plugin").c_str());
 
-            if (plugin) {
-                gst_insert_bin_remove(GST_INSERT_BIN(l->effects_bin), plugin,
-                                      nullptr, nullptr);
-            }
-
-            idx--;
-        } while (idx >= 0);
-
-        for (long unsigned int n = 0; n < l->plugins_order.size(); n++) {
-            gst_insert_bin_append(GST_INSERT_BIN(l->effects_bin),
-                                  l->plugins[l->plugins_order[n]], nullptr,
-                                  nullptr);
+        if (plugin) {
+            gst_insert_bin_remove(GST_INSERT_BIN(l->effects_bin), plugin,
+                                  nullptr, nullptr);
         }
 
-        l->update_pipeline_state();
+        idx--;
+    } while (idx >= 0);
+
+    for (long unsigned int n = 0; n < plugins_order.size(); n++) {
+        gst_insert_bin_append(GST_INSERT_BIN(l->effects_bin),
+                              l->plugins[plugins_order[n]], nullptr, nullptr);
     }
+
+    l->update_pipeline_state();
 }
 
 }  // namespace
@@ -142,6 +135,8 @@ SinkInputEffects::SinkInputEffects(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.stereoenhancer");
     panorama = std::make_unique<Panorama>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.panorama");
+    crossfeed = std::make_unique<Crossfeed>(
+        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.crossfeed");
 
     plugins.insert(std::make_pair(limiter->name, limiter->plugin));
     plugins.insert(std::make_pair(compressor->name, compressor->plugin));
@@ -153,6 +148,7 @@ SinkInputEffects::SinkInputEffects(
     plugins.insert(
         std::make_pair(stereo_enhancer->name, stereo_enhancer->plugin));
     plugins.insert(std::make_pair(panorama->name, panorama->plugin));
+    plugins.insert(std::make_pair(crossfeed->name, crossfeed->plugin));
 
     add_plugins_to_pipeline();
 
@@ -180,8 +176,6 @@ void SinkInputEffects::add_plugins_to_pipeline() {
 
     while (g_variant_iter_next(iter, "s", &name)) {
         gst_insert_bin_append(effects_bin, plugins[name], nullptr, nullptr);
-
-        plugins_order.push_back(name);
     }
 
     g_variant_iter_free(iter);

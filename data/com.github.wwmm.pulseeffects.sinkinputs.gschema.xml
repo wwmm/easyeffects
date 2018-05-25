@@ -4,7 +4,7 @@
         <key name="plugins" type="as">
             <default>
               ["limiter","filter","compressor","bass_enhancer","exciter",
-              "stereo_enhancer","reverb","equalizer","panorama"]
+              "stereo_enhancer","reverb","equalizer","panorama","crossfeed"]
             </default>
         </key>
     </schema>

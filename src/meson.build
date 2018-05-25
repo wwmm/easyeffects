@@ -40,6 +40,7 @@ pulseeffects_sources = [
 	'panorama.cpp',
 	'panorama_ui.cpp',
 	'crossfeed.cpp',
+	'crossfeed_ui.cpp',
 	'util.cpp',
 	gresources
 ]

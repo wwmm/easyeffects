@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.0 -->
-<interface domain="PulseEffects">
+<!-- Generated with glade 3.22.1 -->
+<interface domain="pulseeffects">
   <requires lib="gtk+" version="3.18"/>
-  <object class="GtkAdjustment" id="cutoff">
+  <object class="GtkAdjustment" id="fcut">
     <property name="lower">300</property>
     <property name="upper">2000</property>
     <property name="value">700</property>
@@ -17,7 +17,7 @@
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_feed_value_changed" swapped="no"/>
   </object>
-  <object class="GtkGrid" id="window">
+  <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="valign">center</property>
@@ -43,6 +43,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
+                <property name="valign">center</property>
                 <property name="label" translatable="yes">Presets</property>
                 <attributes>
                   <attribute name="weight" value="bold"/>
@@ -54,13 +55,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="jmeier">
+              <object class="GtkButton" id="preset_jmeier">
                 <property name="label" translatable="yes">Jmeier</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="valign">center</property>
-                <signal name="clicked" handler="on_crossfeed_preset_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -68,13 +68,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="default">
+              <object class="GtkButton" id="preset_default">
                 <property name="label" translatable="yes">Default</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="valign">center</property>
-                <signal name="clicked" handler="on_crossfeed_preset_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -82,13 +81,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="cmoy">
+              <object class="GtkButton" id="preset_cmoy">
                 <property name="label" translatable="yes">Cmoy</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="valign">center</property>
-                <signal name="clicked" handler="on_crossfeed_preset_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -119,6 +117,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
+                <property name="valign">center</property>
                 <property name="label" translatable="yes">Cutoff</property>
               </object>
               <packing>
@@ -137,7 +136,7 @@
                 <property name="secondary_icon_activatable">False</property>
                 <property name="input_purpose">number</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">cutoff</property>
+                <property name="adjustment">fcut</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
               </object>
@@ -151,6 +150,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
+                <property name="valign">center</property>
                 <property name="label" translatable="yes">Feed</property>
               </object>
               <packing>
@@ -368,14 +368,25 @@
       </packing>
     </child>
   </object>
+  <object class="GtkImage" id="image1">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">go-up-symbolic</property>
+  </object>
+  <object class="GtkImage" id="image2">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">go-down-symbolic</property>
+  </object>
   <object class="GtkBox" id="listbox_control">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="spacing">6</property>
+    <property name="spacing">3</property>
     <child>
       <object class="GtkLabel">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="valign">center</property>
         <property name="label" translatable="yes">Crossfeed</property>
         <attributes>
           <attribute name="weight" value="bold"/>
@@ -388,10 +399,45 @@
       </packing>
     </child>
     <child>
+      <object class="GtkButton" id="plugin_down">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="halign">end</property>
+        <property name="valign">center</property>
+        <property name="image">image2</property>
+        <property name="always_show_image">True</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="pack_type">end</property>
+        <property name="position">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="plugin_up">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="halign">end</property>
+        <property name="valign">center</property>
+        <property name="image">image1</property>
+        <property name="always_show_image">True</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="pack_type">end</property>
+        <property name="position">2</property>
+      </packing>
+    </child>
+    <child>
       <object class="GtkImage" id="img_state">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="halign">center</property>
+        <property name="no_show_all">True</property>
+        <property name="halign">end</property>
         <property name="valign">center</property>
         <property name="icon_name">emblem-ok-symbolic</property>
       </object>
@@ -399,7 +445,7 @@
         <property name="expand">False</property>
         <property name="fill">True</property>
         <property name="pack_type">end</property>
-        <property name="position">1</property>
+        <property name="position">3</property>
       </packing>
     </child>
   </object>
