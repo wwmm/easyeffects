@@ -40,6 +40,7 @@ void on_message_element(const GstBus* gst_bus,
 void on_plugins_order_changed(GSettings* settings,
                               gchar* key,
                               SinkInputEffects* l) {
+    bool update = false;
     gchar* name;
     GVariantIter* iter;
     std::vector<std::string> plugins_order;
@@ -52,28 +53,43 @@ void on_plugins_order_changed(GSettings* settings,
 
     g_variant_iter_free(iter);
 
-    int idx = plugins_order.size() - 1;
+    if (plugins_order.size() != l->plugins_order.size()) {
+        l->plugins_order = plugins_order;
 
-    gst_element_set_state(l->pipeline, GST_STATE_READY);
+        update = true;
+    } else if (!std::equal(plugins_order.begin(), plugins_order.end(),
+                           l->plugins_order.begin())) {
+        l->plugins_order = plugins_order;
 
-    do {
-        auto plugin = gst_bin_get_by_name(
-            GST_BIN(l->effects_bin), (plugins_order[idx] + "_plugin").c_str());
-
-        if (plugin) {
-            gst_insert_bin_remove(GST_INSERT_BIN(l->effects_bin), plugin,
-                                  nullptr, nullptr);
-        }
-
-        idx--;
-    } while (idx >= 0);
-
-    for (long unsigned int n = 0; n < plugins_order.size(); n++) {
-        gst_insert_bin_append(GST_INSERT_BIN(l->effects_bin),
-                              l->plugins[plugins_order[n]], nullptr, nullptr);
+        update = true;
     }
 
-    l->update_pipeline_state();
+    if (update) {
+        int idx = plugins_order.size() - 1;
+
+        gst_element_set_state(l->pipeline, GST_STATE_READY);
+
+        do {
+            auto plugin =
+                gst_bin_get_by_name(GST_BIN(l->effects_bin),
+                                    (plugins_order[idx] + "_plugin").c_str());
+
+            if (plugin) {
+                gst_insert_bin_remove(GST_INSERT_BIN(l->effects_bin), plugin,
+                                      nullptr, nullptr);
+            }
+
+            idx--;
+        } while (idx >= 0);
+
+        for (long unsigned int n = 0; n < plugins_order.size(); n++) {
+            gst_insert_bin_append(GST_INSERT_BIN(l->effects_bin),
+                                  l->plugins[plugins_order[n]], nullptr,
+                                  nullptr);
+        }
+
+        l->update_pipeline_state();
+    }
 }
 
 }  // namespace
@@ -176,6 +192,8 @@ void SinkInputEffects::add_plugins_to_pipeline() {
 
     while (g_variant_iter_next(iter, "s", &name)) {
         gst_insert_bin_append(effects_bin, plugins[name], nullptr, nullptr);
+
+        plugins_order.push_back(name);
     }
 
     g_variant_iter_free(iter);
