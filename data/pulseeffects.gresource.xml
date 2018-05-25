@@ -16,6 +16,7 @@
     <file>stereo_enhancer.glade</file>
     <file>panorama.glade</file>
     <file>crossfeed.glade</file>
+    <file>maximizer.glade</file>
     <file>about_icon.png</file>
     <file>listbox.css</file>
     <file>pulseeffects-sine-symbolic.svg</file>
