@@ -94,8 +94,6 @@ Maximizer::Maximizer(std::string tag, std::string schema)
         gst_insert_bin_append(GST_INSERT_BIN(bin), maximizer, nullptr, nullptr);
         gst_insert_bin_append(GST_INSERT_BIN(bin), out_level, nullptr, nullptr);
 
-        g_object_set(maximizer, "bypass", false, nullptr);
-
         bind_to_gsettings();
 
         g_signal_connect(settings, "changed::state",

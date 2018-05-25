@@ -9,6 +9,7 @@
 #include "exciter_ui.hpp"
 #include "filter_ui.hpp"
 #include "limiter_ui.hpp"
+#include "maximizer_ui.hpp"
 #include "panorama_ui.hpp"
 #include "reverb_ui.hpp"
 #include "sink_input_effects.hpp"
@@ -44,6 +45,7 @@ class SinkInputEffectsUi : public EffectsBaseUi {
     std::shared_ptr<StereoEnhancerUi> stereo_enhancer_ui;
     std::shared_ptr<PanoramaUi> panorama_ui;
     std::shared_ptr<CrossfeedUi> crossfeed_ui;
+    std::shared_ptr<MaximizerUi> maximizer_ui;
 
     void level_meters_connections();
     void populate_listbox();

@@ -42,6 +42,7 @@ pulseeffects_sources = [
 	'crossfeed.cpp',
 	'crossfeed_ui.cpp',
 	'maximizer.cpp',
+	'maximizer_ui.cpp',
 	'util.cpp',
 	gresources
 ]

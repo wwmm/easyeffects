@@ -27,7 +27,9 @@ SinkInputEffectsUi::SinkInputEffectsUi(
       panorama_ui(PanoramaUi::create(
           "com.github.wwmm.pulseeffects.sinkinputs.panorama")),
       crossfeed_ui(CrossfeedUi::create(
-          "com.github.wwmm.pulseeffects.sinkinputs.crossfeed")) {
+          "com.github.wwmm.pulseeffects.sinkinputs.crossfeed")),
+      maximizer_ui(MaximizerUi::create(
+          "com.github.wwmm.pulseeffects.sinkinputs.maximizer")) {
     level_meters_connections();
     populate_listbox();
     populate_stack();
@@ -138,6 +140,15 @@ void SinkInputEffectsUi::level_meters_connections() {
         sigc::mem_fun(*crossfeed_ui, &CrossfeedUi::on_new_input_level_db)));
     connections.push_back(sie->crossfeed_output_level.connect(
         sigc::mem_fun(*crossfeed_ui, &CrossfeedUi::on_new_output_level_db)));
+
+    // maximizer level meters connections
+
+    connections.push_back(sie->maximizer_input_level.connect(
+        sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_input_level_db)));
+    connections.push_back(sie->maximizer_output_level.connect(
+        sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_output_level_db)));
+    connections.push_back(sie->maximizer->reduction.connect(
+        sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_reduction)));
 }
 
 void SinkInputEffectsUi::populate_listbox() {
@@ -151,6 +162,7 @@ void SinkInputEffectsUi::populate_listbox() {
     add_to_listbox(stereo_enhancer_ui);
     add_to_listbox(panorama_ui);
     add_to_listbox(crossfeed_ui);
+    add_to_listbox(maximizer_ui);
 }
 
 void SinkInputEffectsUi::populate_stack() {
@@ -164,6 +176,7 @@ void SinkInputEffectsUi::populate_stack() {
     stack->add(*stereo_enhancer_ui, std::string("stereo_enhancer"));
     stack->add(*panorama_ui, std::string("panorama"));
     stack->add(*crossfeed_ui, std::string("crossfeed"));
+    stack->add(*maximizer_ui, std::string("maximizer"));
 }
 
 void SinkInputEffectsUi::up_down_connections() {
@@ -251,6 +264,11 @@ void SinkInputEffectsUi::up_down_connections() {
         [=]() { on_up(crossfeed_ui); }));
     connections.push_back(crossfeed_ui->plugin_down->signal_clicked().connect(
         [=]() { on_down(crossfeed_ui); }));
+
+    connections.push_back(maximizer_ui->plugin_up->signal_clicked().connect(
+        [=]() { on_up(maximizer_ui); }));
+    connections.push_back(maximizer_ui->plugin_down->signal_clicked().connect(
+        [=]() { on_down(maximizer_ui); }));
 }
 
 void SinkInputEffectsUi::reset() {
@@ -266,4 +284,5 @@ void SinkInputEffectsUi::reset() {
     stereo_enhancer_ui->reset();
     panorama_ui->reset();
     crossfeed_ui->reset();
+    maximizer_ui->reset();
 }
