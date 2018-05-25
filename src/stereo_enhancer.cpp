@@ -80,9 +80,27 @@ void on_post_messages_changed(GSettings* settings,
             },
             100);
 
+        l->side_level_connection = Glib::signal_timeout().connect(
+            [l]() {
+                float sideL, sideR;
+
+                g_object_get(l->stereo_enhancer, "meter-sideL", &sideL,
+                             nullptr);
+                g_object_get(l->stereo_enhancer, "meter-sideR", &sideR,
+                             nullptr);
+
+                std::array<double, 2> out_peak = {sideL, sideR};
+
+                l->side_level.emit(out_peak);
+
+                return true;
+            },
+            100);
+
     } else {
         l->input_level_connection.disconnect();
         l->output_level_connection.disconnect();
+        l->side_level_connection.disconnect();
     }
 }
 

@@ -54,9 +54,12 @@ StereoEnhancerUi::StereoEnhancerUi(BaseObjectType* cobject,
     builder->get_widget("middle_phase", middle_phase);
     builder->get_widget("left_phase", left_phase);
     builder->get_widget("right_phase", right_phase);
+    builder->get_widget("side_l_levelbar", side_l_levelbar);
+    builder->get_widget("side_r_levelbar", side_r_levelbar);
 
     get_object("input_gain", input_gain);
     get_object("output_gain", output_gain);
+    get_object("side_gain", side_gain);
     get_object("left_balance", left_balance);
     get_object("left_delay", left_delay);
     get_object("left_gain", left_gain);
@@ -70,6 +73,7 @@ StereoEnhancerUi::StereoEnhancerUi(BaseObjectType* cobject,
 
     settings->bind("input-gain", input_gain, "value", flag);
     settings->bind("output-gain", output_gain, "value", flag);
+    settings->bind("side-gain", side_gain, "value", flag);
     settings->bind("middle-phase", middle_phase, "active", flag);
     settings->bind("left-phase", left_phase, "active", flag);
     settings->bind("right-phase", right_phase, "active", flag);
@@ -102,6 +106,11 @@ std::shared_ptr<StereoEnhancerUi> StereoEnhancerUi::create(
     builder->get_widget_derived("widgets_grid", grid, settings_name);
 
     return std::shared_ptr<StereoEnhancerUi>(grid);
+}
+
+void StereoEnhancerUi::on_new_side_level(const std::array<double, 2>& peak) {
+    side_l_levelbar->set_value(peak[0]);
+    side_r_levelbar->set_value(peak[1]);
 }
 
 void StereoEnhancerUi::reset() {

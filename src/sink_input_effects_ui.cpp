@@ -117,6 +117,9 @@ void SinkInputEffectsUi::level_meters_connections() {
     connections.push_back(
         sie->stereo_enhancer->output_level.connect(sigc::mem_fun(
             *stereo_enhancer_ui, &StereoEnhancerUi::on_new_output_level)));
+    connections.push_back(
+        sie->stereo_enhancer->side_level.connect(sigc::mem_fun(
+            *stereo_enhancer_ui, &StereoEnhancerUi::on_new_side_level)));
 }
 
 void SinkInputEffectsUi::populate_listbox() {
