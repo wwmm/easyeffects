@@ -51,9 +51,18 @@ StereoEnhancerUi::StereoEnhancerUi(BaseObjectType* cobject,
     // loading glade widgets
 
     builder->get_widget("middle_source", middle_source);
+    builder->get_widget("middle_phase", middle_phase);
+    builder->get_widget("left_phase", left_phase);
+    builder->get_widget("right_phase", right_phase);
 
     get_object("input_gain", input_gain);
     get_object("output_gain", output_gain);
+    get_object("left_balance", left_balance);
+    get_object("left_delay", left_delay);
+    get_object("left_gain", left_gain);
+    get_object("right_balance", right_balance);
+    get_object("right_delay", right_delay);
+    get_object("right_gain", right_gain);
 
     // gsettings bindings
 
@@ -61,6 +70,15 @@ StereoEnhancerUi::StereoEnhancerUi(BaseObjectType* cobject,
 
     settings->bind("input-gain", input_gain, "value", flag);
     settings->bind("output-gain", output_gain, "value", flag);
+    settings->bind("middle-phase", middle_phase, "active", flag);
+    settings->bind("left-phase", left_phase, "active", flag);
+    settings->bind("right-phase", right_phase, "active", flag);
+    settings->bind("left-balance", left_balance, "value", flag);
+    settings->bind("left-delay", left_delay, "value", flag);
+    settings->bind("left-gain", left_gain, "value", flag);
+    settings->bind("right-balance", right_balance, "value", flag);
+    settings->bind("right-delay", right_delay, "value", flag);
+    settings->bind("right-gain", right_gain, "value", flag);
 
     g_settings_bind_with_mapping(
         settings->gobj(), "middle-source", middle_source->gobj(), "active",

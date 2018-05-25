@@ -84,8 +84,8 @@
     </child>
   </object>
   <object class="GtkAdjustment" id="input_gain">
-    <property name="lower">-30</property>
-    <property name="upper">12</property>
+    <property name="lower">-36</property>
+    <property name="upper">36</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_input_gain_value_changed" swapped="no"/>
@@ -111,8 +111,8 @@
     <signal name="value-changed" handler="on_left_gain_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="output_gain">
-    <property name="lower">-30</property>
-    <property name="upper">12</property>
+    <property name="lower">-36</property>
+    <property name="upper">36</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_output_gain_value_changed" swapped="no"/>
@@ -266,7 +266,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="invert_left_phase">
+              <object class="GtkToggleButton" id="left_phase">
                 <property name="label" translatable="yes">Invert Phase</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -317,7 +317,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="invert_middle_phase">
+              <object class="GtkToggleButton" id="middle_phase">
                 <property name="label" translatable="yes">Invert Middle Phase</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -437,7 +437,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="invert_right_phase">
+              <object class="GtkToggleButton" id="right_phase">
                 <property name="label" translatable="yes">Invert Phase</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -560,7 +560,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
-                <property name="label" translatable="yes">Input [dB]</property>
+                <property name="label" translatable="yes">Input</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -574,7 +574,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
-                <property name="label" translatable="yes">Output [dB]</property>
+                <property name="label" translatable="yes">Output</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>

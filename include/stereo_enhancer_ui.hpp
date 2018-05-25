@@ -5,6 +5,7 @@
 #include <gtkmm/button.h>
 #include <gtkmm/comboboxtext.h>
 #include <gtkmm/grid.h>
+#include <gtkmm/togglebutton.h>
 #include "plugin_ui_base.hpp"
 
 class StereoEnhancerUi : public Gtk::Grid, public PluginUiBase {
@@ -19,8 +20,10 @@ class StereoEnhancerUi : public Gtk::Grid, public PluginUiBase {
     void reset();
 
    private:
-    Gtk::Adjustment *input_gain, *output_gain;
+    Gtk::Adjustment *input_gain, *output_gain, *left_balance, *left_delay,
+        *left_gain, *right_balance, *right_delay, *right_gain;
     Gtk::ComboBoxText* middle_source;
+    Gtk::ToggleButton *middle_phase, *left_phase, *right_phase;
 };
 
 #endif
