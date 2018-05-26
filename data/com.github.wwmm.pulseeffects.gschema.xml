@@ -58,6 +58,16 @@
         <value nick="Maximum" value="1"/>
     </enum>
 
+    <enum id="com.github.wwmm.pulseeffects.deesser.detection.enum">
+        <value nick="RMS" value="0"/>
+        <value nick="Peak" value="1"/>
+    </enum>
+
+    <enum id="com.github.wwmm.pulseeffects.deesser.mode.enum">
+        <value nick="Wide" value="0"/>
+        <value nick="Split" value="1"/>
+    </enum>
+
     <schema id="com.github.wwmm.pulseeffects" path="/com/github/wwmm/pulseeffects/">
         <key name="buffer-out" type="i">
             <default>100000</default>

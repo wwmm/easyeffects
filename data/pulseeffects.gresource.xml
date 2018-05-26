@@ -19,6 +19,7 @@
     <file>maximizer.glade</file>
     <file>delay.glade</file>
     <file>gate.glade</file>
+    <file>deesser.glade</file>
     <file>about_icon.png</file>
     <file>listbox.css</file>
     <file>pulseeffects-sine-symbolic.svg</file>
