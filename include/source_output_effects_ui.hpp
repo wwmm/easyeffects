@@ -2,6 +2,7 @@
 #define SOURCE_OUTPUT_EFFECTS_UI_HPP
 
 #include "compressor_ui.hpp"
+#include "deesser_ui.hpp"
 #include "effects_base_ui.hpp"
 #include "equalizer_ui.hpp"
 #include "filter_ui.hpp"
@@ -36,6 +37,7 @@ class SourceOutputEffectsUi : public EffectsBaseUi {
     std::shared_ptr<EqualizerUi> equalizer_ui;
     std::shared_ptr<ReverbUi> reverb_ui;
     std::shared_ptr<GateUi> gate_ui;
+    std::shared_ptr<DeesserUi> deesser_ui;
 
     void level_meters_connections();
     void populate_listbox();

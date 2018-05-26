@@ -128,6 +128,12 @@ void DeesserUi::on_new_compression(double value) {
     compression_label->set_text(level_to_str(util::linear_to_db(value)));
 }
 
+void DeesserUi::on_new_detected(double value) {
+    detected->set_value(value);
+
+    detected_label->set_text(level_to_str(util::linear_to_db(value)));
+}
+
 void DeesserUi::reset() {
     settings->reset("state");
     settings->reset("detection");

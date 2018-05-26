@@ -2,6 +2,7 @@
 #define SOURCE_OUTPUT_EFFECTS_HPP
 
 #include "compressor.hpp"
+#include "deesser.hpp"
 #include "equalizer.hpp"
 #include "filter.hpp"
 #include "gate.hpp"
@@ -26,6 +27,7 @@ class SourceOutputEffects : public PipelineBase {
     std::unique_ptr<Equalizer> equalizer;
     std::unique_ptr<Reverb> reverb;
     std::unique_ptr<Gate> gate;
+    std::unique_ptr<Deesser> deesser;
 
     sigc::signal<void, std::array<double, 2>> compressor_input_level;
     sigc::signal<void, std::array<double, 2>> compressor_output_level;
@@ -33,6 +35,8 @@ class SourceOutputEffects : public PipelineBase {
     sigc::signal<void, std::array<double, 2>> equalizer_output_level;
     sigc::signal<void, std::array<double, 2>> gate_input_level;
     sigc::signal<void, std::array<double, 2>> gate_output_level;
+    sigc::signal<void, std::array<double, 2>> deesser_input_level;
+    sigc::signal<void, std::array<double, 2>> deesser_output_level;
 
    private:
     std::string log_tag = "soe: ";

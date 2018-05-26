@@ -21,6 +21,10 @@ void on_message_element(const GstBus* gst_bus,
         soe->gate_input_level.emit(soe->get_peak(message));
     } else if (src_name == std::string("gate_output_level")) {
         soe->gate_output_level.emit(soe->get_peak(message));
+    } else if (src_name == std::string("deesser_input_level")) {
+        soe->deesser_input_level.emit(soe->get_peak(message));
+    } else if (src_name == std::string("deesser_output_level")) {
+        soe->deesser_output_level.emit(soe->get_peak(message));
     }
 }
 
@@ -133,6 +137,8 @@ SourceOutputEffects::SourceOutputEffects(
         log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.reverb");
     gate = std::make_unique<Gate>(
         log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.gate");
+    deesser = std::make_unique<Deesser>(
+        log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.deesser");
 
     plugins.insert(std::make_pair(limiter->name, limiter->plugin));
     plugins.insert(std::make_pair(compressor->name, compressor->plugin));
@@ -140,6 +146,7 @@ SourceOutputEffects::SourceOutputEffects(
     plugins.insert(std::make_pair(equalizer->name, equalizer->plugin));
     plugins.insert(std::make_pair(reverb->name, reverb->plugin));
     plugins.insert(std::make_pair(gate->name, gate->plugin));
+    plugins.insert(std::make_pair(deesser->name, deesser->plugin));
 
     add_plugins_to_pipeline();
 

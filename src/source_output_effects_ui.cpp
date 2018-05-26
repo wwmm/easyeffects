@@ -18,7 +18,9 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(
       reverb_ui(ReverbUi::create(
           "com.github.wwmm.pulseeffects.sourceoutputs.reverb")),
       gate_ui(
-          GateUi::create("com.github.wwmm.pulseeffects.sourceoutputs.gate")) {
+          GateUi::create("com.github.wwmm.pulseeffects.sourceoutputs.gate")),
+      deesser_ui(DeesserUi::create(
+          "com.github.wwmm.pulseeffects.sourceoutputs.deesser")) {
     level_meters_connections();
     populate_listbox();
     populate_stack();
@@ -86,7 +88,7 @@ void SourceOutputEffectsUi::level_meters_connections() {
     connections.push_back(soe->reverb->output_level.connect(
         sigc::mem_fun(*reverb_ui, &ReverbUi::on_new_output_level)));
 
-    // compressor level meters connections
+    // gate level meters connections
 
     connections.push_back(soe->gate_input_level.connect(
         sigc::mem_fun(*gate_ui, &GateUi::on_new_input_level_db)));
@@ -94,6 +96,17 @@ void SourceOutputEffectsUi::level_meters_connections() {
         sigc::mem_fun(*gate_ui, &GateUi::on_new_output_level_db)));
     connections.push_back(soe->gate->gating.connect(
         sigc::mem_fun(*gate_ui, &GateUi::on_new_gating)));
+
+    // deesser level meters connections
+
+    connections.push_back(soe->deesser_input_level.connect(
+        sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_input_level_db)));
+    connections.push_back(soe->deesser_output_level.connect(
+        sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_output_level_db)));
+    connections.push_back(soe->deesser->compression.connect(
+        sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_compression)));
+    connections.push_back(soe->deesser->detected.connect(
+        sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_detected)));
 }
 
 void SourceOutputEffectsUi::populate_listbox() {
@@ -103,6 +116,7 @@ void SourceOutputEffectsUi::populate_listbox() {
     add_to_listbox(equalizer_ui);
     add_to_listbox(reverb_ui);
     add_to_listbox(gate_ui);
+    add_to_listbox(deesser_ui);
 }
 void SourceOutputEffectsUi::populate_stack() {
     stack->add(*limiter_ui, std::string("limiter"));
@@ -111,6 +125,7 @@ void SourceOutputEffectsUi::populate_stack() {
     stack->add(*equalizer_ui, std::string("equalizer"));
     stack->add(*reverb_ui, std::string("reverb"));
     stack->add(*gate_ui, std::string("gate"));
+    stack->add(*deesser_ui, std::string("deesser"));
 }
 
 void SourceOutputEffectsUi::up_down_connections() {
@@ -175,6 +190,11 @@ void SourceOutputEffectsUi::up_down_connections() {
         [=]() { on_up(gate_ui); }));
     connections.push_back(gate_ui->plugin_down->signal_clicked().connect(
         [=]() { on_down(gate_ui); }));
+
+    connections.push_back(deesser_ui->plugin_up->signal_clicked().connect(
+        [=]() { on_up(deesser_ui); }));
+    connections.push_back(deesser_ui->plugin_down->signal_clicked().connect(
+        [=]() { on_down(deesser_ui); }));
 }
 
 void SourceOutputEffectsUi::reset() {
@@ -186,4 +206,5 @@ void SourceOutputEffectsUi::reset() {
     equalizer_ui->reset();
     reverb_ui->reset();
     gate_ui->reset();
+    deesser_ui->reset();
 }
