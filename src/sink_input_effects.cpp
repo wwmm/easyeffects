@@ -75,7 +75,7 @@ void on_plugins_order_changed(GSettings* settings,
     if (update) {
         int idx = plugins_order.size() - 1;
 
-        gst_element_set_state(l->pipeline, GST_STATE_READY);
+        gst_element_set_state(l->pipeline, GST_STATE_NULL);
 
         do {
             auto plugin =
