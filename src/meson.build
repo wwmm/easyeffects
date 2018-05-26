@@ -45,6 +45,8 @@ pulseeffects_sources = [
 	'maximizer_ui.cpp',
 	'gate.cpp',
 	'gate_ui.cpp',
+	'delay.cpp',
+	'delay_ui.cpp',
 	'util.cpp',
 	gresources
 ]
