@@ -31,11 +31,11 @@ PulseManager::PulseManager()
 PulseManager::~PulseManager() {
     unload_sinks();
 
-    // drain_context();
+    drain_context();
 
     pa_threaded_mainloop_lock(main_loop);
 
-    util::debug(log_tag + "disconnecting Pulseaudio context");
+    util::debug(log_tag + "disconnecting Pulseaudio context...");
     pa_context_disconnect(context);
 
     while (context_ready) {
@@ -43,6 +43,8 @@ PulseManager::~PulseManager() {
     }
 
     pa_threaded_mainloop_unlock(main_loop);
+
+    util::debug(log_tag + "Pulseaudio context was disconnected");
 
     util::debug(log_tag + "stopping pulseaudio threaded main loop");
     pa_threaded_mainloop_stop(main_loop);
@@ -284,6 +286,8 @@ void PulseManager::subscribe_to_events() {
 }
 
 void PulseManager::get_server_info() {
+    pa_threaded_mainloop_lock(main_loop);
+
     auto o = pa_context_get_server_info(
         context,
         [](auto c, auto info, auto d) {
@@ -307,7 +311,11 @@ void PulseManager::get_server_info() {
         },
         this);
 
-    wait_operation(o);
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+        pa_threaded_mainloop_wait(main_loop);
+    }
+
+    pa_threaded_mainloop_unlock(main_loop);
 }
 
 std::shared_ptr<mySinkInfo> PulseManager::get_sink_info(std::string name) {
@@ -320,6 +328,8 @@ std::shared_ptr<mySinkInfo> PulseManager::get_sink_info(std::string name) {
     };
 
     Data data = {false, this, si};
+
+    pa_threaded_mainloop_lock(main_loop);
 
     auto o = pa_context_get_sink_info_by_name(
         context, name.c_str(),
@@ -346,7 +356,11 @@ std::shared_ptr<mySinkInfo> PulseManager::get_sink_info(std::string name) {
         },
         &data);
 
-    wait_operation(o);
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+        pa_threaded_mainloop_wait(main_loop);
+    }
+
+    pa_threaded_mainloop_unlock(main_loop);
 
     if (!data.failed) {
         return si;
@@ -365,6 +379,8 @@ std::shared_ptr<mySourceInfo> PulseManager::get_source_info(std::string name) {
     };
 
     Data data = {false, this, si};
+
+    pa_threaded_mainloop_lock(main_loop);
 
     auto o = pa_context_get_source_info_by_name(
         context, name.c_str(),
@@ -388,7 +404,11 @@ std::shared_ptr<mySourceInfo> PulseManager::get_source_info(std::string name) {
         },
         &data);
 
-    wait_operation(o);
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+        pa_threaded_mainloop_wait(main_loop);
+    }
+
+    pa_threaded_mainloop_unlock(main_loop);
 
     if (!data.failed) {
         return si;
@@ -442,6 +462,8 @@ std::shared_ptr<mySinkInfo> PulseManager::load_sink(std::string name,
                                "device.class=\"sound\"" + " " + "channels=2" +
                                " " + "rate=" + std::to_string(rate);
 
+        pa_threaded_mainloop_lock(main_loop);
+
         auto o = pa_context_load_module(
             context, "module-null-sink", argument.c_str(),
             [](auto c, auto idx, auto d) {
@@ -453,7 +475,11 @@ std::shared_ptr<mySinkInfo> PulseManager::load_sink(std::string name,
             },
             this);
 
-        wait_operation(o);
+        while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+            pa_threaded_mainloop_wait(main_loop);
+        }
+
+        pa_threaded_mainloop_unlock(main_loop);
 
         // now that the sink is loaded we get its info
         si = get_sink_info(name);
@@ -491,6 +517,8 @@ void PulseManager::load_mic_sink() {
 }
 
 void PulseManager::find_sink_inputs() {
+    pa_threaded_mainloop_lock(main_loop);
+
     auto o = pa_context_get_sink_input_info_list(
         context,
         [](auto c, auto info, auto eol, auto d) {
@@ -506,10 +534,16 @@ void PulseManager::find_sink_inputs() {
         },
         this);
 
-    wait_operation(o);
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+        pa_threaded_mainloop_wait(main_loop);
+    }
+
+    pa_threaded_mainloop_unlock(main_loop);
 }
 
 void PulseManager::find_source_outputs() {
+    pa_threaded_mainloop_lock(main_loop);
+
     auto o = pa_context_get_source_output_info_list(
         context,
         [](auto c, auto info, auto eol, auto d) {
@@ -525,10 +559,16 @@ void PulseManager::find_source_outputs() {
         },
         this);
 
-    wait_operation(o);
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+        pa_threaded_mainloop_wait(main_loop);
+    }
+
+    pa_threaded_mainloop_unlock(main_loop);
 }
 
 void PulseManager::find_sinks() {
+    pa_threaded_mainloop_lock(main_loop);
+
     auto o = pa_context_get_sink_info_list(
         context,
         [](auto c, auto info, auto eol, auto d) {
@@ -559,10 +599,16 @@ void PulseManager::find_sinks() {
         },
         this);
 
-    wait_operation(o);
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+        pa_threaded_mainloop_wait(main_loop);
+    }
+
+    pa_threaded_mainloop_unlock(main_loop);
 }
 
 void PulseManager::find_sources() {
+    pa_threaded_mainloop_lock(main_loop);
+
     auto o = pa_context_get_source_info_list(
         context,
         [](auto c, auto info, auto eol, auto d) {
@@ -594,7 +640,11 @@ void PulseManager::find_sources() {
         },
         this);
 
-    wait_operation(o);
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+        pa_threaded_mainloop_wait(main_loop);
+    }
+
+    pa_threaded_mainloop_unlock(main_loop);
 }
 
 void PulseManager::move_sink_input_to_pulseeffects(uint idx) {
@@ -604,6 +654,8 @@ void PulseManager::move_sink_input_to_pulseeffects(uint idx) {
     };
 
     Data data = {idx, this};
+
+    pa_threaded_mainloop_lock(main_loop);
 
     auto o = pa_context_move_sink_input_by_index(
         context, idx, apps_sink_info->index,
@@ -622,7 +674,11 @@ void PulseManager::move_sink_input_to_pulseeffects(uint idx) {
         },
         &data);
 
-    wait_operation(o);
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+        pa_threaded_mainloop_wait(main_loop);
+    }
+
+    pa_threaded_mainloop_unlock(main_loop);
 }
 
 void PulseManager::remove_sink_input_from_pulseeffects(uint idx) {
@@ -632,6 +688,8 @@ void PulseManager::remove_sink_input_from_pulseeffects(uint idx) {
     };
 
     Data data = {idx, this};
+
+    pa_threaded_mainloop_lock(main_loop);
 
     auto o = pa_context_move_sink_input_by_name(
         context, idx, server_info.default_sink_name.c_str(),
@@ -650,7 +708,11 @@ void PulseManager::remove_sink_input_from_pulseeffects(uint idx) {
         },
         &data);
 
-    wait_operation(o);
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+        pa_threaded_mainloop_wait(main_loop);
+    }
+
+    pa_threaded_mainloop_unlock(main_loop);
 }
 
 void PulseManager::move_source_output_to_pulseeffects(uint idx) {
@@ -660,6 +722,8 @@ void PulseManager::move_source_output_to_pulseeffects(uint idx) {
     };
 
     Data data = {idx, this};
+
+    pa_threaded_mainloop_lock(main_loop);
 
     auto o = pa_context_move_source_output_by_index(
         context, idx, mic_sink_info->monitor_source,
@@ -679,7 +743,11 @@ void PulseManager::move_source_output_to_pulseeffects(uint idx) {
         },
         &data);
 
-    wait_operation(o);
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+        pa_threaded_mainloop_wait(main_loop);
+    }
+
+    pa_threaded_mainloop_unlock(main_loop);
 }
 
 void PulseManager::remove_source_output_from_pulseeffects(uint idx) {
@@ -689,6 +757,8 @@ void PulseManager::remove_source_output_from_pulseeffects(uint idx) {
     };
 
     Data data = {idx, this};
+
+    pa_threaded_mainloop_lock(main_loop);
 
     auto o = pa_context_move_source_output_by_name(
         context, idx, server_info.default_source_name.c_str(),
@@ -708,7 +778,11 @@ void PulseManager::remove_source_output_from_pulseeffects(uint idx) {
         },
         &data);
 
-    wait_operation(o);
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+        pa_threaded_mainloop_wait(main_loop);
+    }
+
+    pa_threaded_mainloop_unlock(main_loop);
 }
 
 void PulseManager::set_sink_input_volume(uint idx,
@@ -727,6 +801,8 @@ void PulseManager::set_sink_input_volume(uint idx,
         };
 
         Data data = {idx, this};
+
+        pa_threaded_mainloop_lock(main_loop);
 
         auto o = pa_context_set_sink_input_volume(
             context, idx, cvol_ptr,
@@ -747,7 +823,11 @@ void PulseManager::set_sink_input_volume(uint idx,
             },
             &data);
 
-        wait_operation(o);
+        while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+            pa_threaded_mainloop_wait(main_loop);
+        }
+
+        pa_threaded_mainloop_unlock(main_loop);
     }
 }
 
@@ -758,6 +838,8 @@ void PulseManager::set_sink_input_mute(uint idx, bool state) {
     };
 
     Data data = {idx, this};
+
+    pa_threaded_mainloop_lock(main_loop);
 
     auto o = pa_context_set_sink_input_mute(
         context, idx, state,
@@ -776,7 +858,11 @@ void PulseManager::set_sink_input_mute(uint idx, bool state) {
         },
         &data);
 
-    wait_operation(o);
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+        pa_threaded_mainloop_wait(main_loop);
+    }
+
+    pa_threaded_mainloop_unlock(main_loop);
 }
 
 void PulseManager::set_source_output_volume(uint idx,
@@ -795,6 +881,8 @@ void PulseManager::set_source_output_volume(uint idx,
         };
 
         Data data = {idx, this};
+
+        pa_threaded_mainloop_lock(main_loop);
 
         auto o = pa_context_set_source_output_volume(
             context, idx, cvol_ptr,
@@ -815,7 +903,11 @@ void PulseManager::set_source_output_volume(uint idx,
             },
             &data);
 
-        wait_operation(o);
+        while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+            pa_threaded_mainloop_wait(main_loop);
+        }
+
+        pa_threaded_mainloop_unlock(main_loop);
     }
 }
 
@@ -826,6 +918,8 @@ void PulseManager::set_source_output_mute(uint idx, bool state) {
     };
 
     Data data = {idx, this};
+
+    pa_threaded_mainloop_lock(main_loop);
 
     auto o = pa_context_set_source_output_mute(
         context, idx, state,
@@ -844,7 +938,11 @@ void PulseManager::set_source_output_mute(uint idx, bool state) {
         },
         &data);
 
-    wait_operation(o);
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+        pa_threaded_mainloop_wait(main_loop);
+    }
+
+    pa_threaded_mainloop_unlock(main_loop);
 }
 
 void PulseManager::get_sink_input_info(uint idx) {
@@ -885,6 +983,8 @@ void PulseManager::unload_module(uint idx) {
 
     Data data = {idx, this};
 
+    pa_threaded_mainloop_lock(main_loop);
+
     auto o = pa_context_unload_module(
         context, idx,
         [](auto c, auto success, auto data) {
@@ -902,7 +1002,11 @@ void PulseManager::unload_module(uint idx) {
         },
         &data);
 
-    wait_operation(o);
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+        pa_threaded_mainloop_wait(main_loop);
+    }
+
+    pa_threaded_mainloop_unlock(main_loop);
 }
 
 void PulseManager::unload_sinks() {
@@ -913,6 +1017,8 @@ void PulseManager::unload_sinks() {
 }
 
 void PulseManager::drain_context() {
+    pa_threaded_mainloop_lock(main_loop);
+
     auto o = pa_context_drain(
         context,
         [](auto c, auto d) {
@@ -925,22 +1031,18 @@ void PulseManager::drain_context() {
         this);
 
     if (o != nullptr) {
-        wait_operation(o);
+        while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+            pa_threaded_mainloop_wait(main_loop);
+        }
+
+        pa_threaded_mainloop_unlock(main_loop);
 
         util::debug(log_tag + "Context was drained");
     } else {
+        pa_threaded_mainloop_unlock(main_loop);
+
         util::debug(log_tag + "Context did not need draining");
     }
-}
-
-void PulseManager::wait_operation(pa_operation* o) {
-    pa_threaded_mainloop_lock(main_loop);
-
-    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-        pa_threaded_mainloop_wait(main_loop);
-    }
-
-    pa_threaded_mainloop_unlock(main_loop);
 }
 
 void PulseManager::new_app(const pa_sink_input_info* info) {

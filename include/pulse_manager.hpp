@@ -87,8 +87,6 @@ class PulseManager {
                              uint app_idx,
                              std::string app_name);
 
-    void wait_operation(pa_operation* o);
-
     sigc::signal<void, std::shared_ptr<mySourceInfo>> source_added;
     sigc::signal<void, uint> source_removed;
     sigc::signal<void, std::shared_ptr<mySinkInfo>> sink_added;
