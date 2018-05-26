@@ -49,13 +49,6 @@
     <property name="can_focus">False</property>
     <property name="icon_name">go-down-symbolic</property>
   </object>
-  <object class="GtkAdjustment" id="laxity">
-    <property name="lower">1</property>
-    <property name="upper">100</property>
-    <property name="value">15</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">1</property>
-  </object>
   <object class="GtkBox" id="listbox_control">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -127,6 +120,13 @@
       </packing>
     </child>
   </object>
+  <object class="GtkAdjustment" id="laxity">
+    <property name="lower">1</property>
+    <property name="upper">100</property>
+    <property name="value">15</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+  </object>
   <object class="GtkAdjustment" id="makeup">
     <property name="upper">36</property>
     <property name="step_increment">1</property>
@@ -147,7 +147,7 @@
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_threshold_value_changed" swapped="no"/>
   </object>
-  <object class="GtkGrid" id="window">
+  <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="valign">center</property>
@@ -713,7 +713,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLevelBar" id="compression_levelbar">
+              <object class="GtkLevelBar" id="compression">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">center</property>
@@ -726,7 +726,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="compression_level_label">
+              <object class="GtkLabel" id="compression_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -768,7 +768,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLevelBar" id="detected_levelbar">
+              <object class="GtkLevelBar" id="detected">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">center</property>
@@ -781,7 +781,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="detected_level_label">
+              <object class="GtkLabel" id="detected_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>

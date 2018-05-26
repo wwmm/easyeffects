@@ -48,6 +48,7 @@ pulseeffects_sources = [
 	'delay.cpp',
 	'delay_ui.cpp',
 	'deesser.cpp',
+	'deesser_ui.cpp',
 	'util.cpp',
 	gresources
 ]
