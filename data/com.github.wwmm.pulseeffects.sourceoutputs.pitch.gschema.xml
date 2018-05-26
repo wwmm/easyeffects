@@ -20,7 +20,7 @@
             <range min="0" max="3"/>
             <default>3</default>
         </key>
-        <key name="preserve-formant" type="b">
+        <key name="formant-preserving" type="b">
             <default>false</default>
         </key>
         <key name="faster" type="b">
