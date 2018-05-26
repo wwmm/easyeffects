@@ -174,7 +174,6 @@ void AppInfoUi::create_stream() {
                 pa_stream_disconnect(aiu->stream);
                 pa_stream_unref(aiu->stream);
                 aiu->stream = nullptr;
-                pa_threaded_mainloop_signal(aiu->pm->main_loop, false);
             } else if (state == PA_STREAM_TERMINATED) {
                 util::debug(aiu->log_tag + aiu->app_info->name +
                             " volume meter stream was terminated");
