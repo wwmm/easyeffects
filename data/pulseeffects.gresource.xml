@@ -17,6 +17,7 @@
     <file>panorama.glade</file>
     <file>crossfeed.glade</file>
     <file>maximizer.glade</file>
+    <file>delay.glade</file>
     <file>gate.glade</file>
     <file>about_icon.png</file>
     <file>listbox.css</file>
