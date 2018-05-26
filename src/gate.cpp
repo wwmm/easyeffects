@@ -67,7 +67,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Gate* l) {
 Gate::Gate(std::string tag, std::string schema)
     : log_tag(tag), settings(g_settings_new(schema.c_str())) {
     gate =
-        gst_element_factory_make("calf-sourceforge-net-plugins-Gate", nullptr);
+        gst_element_factory_make("calf-sourceforge-net-plugins-Gate", "gate");
 
     plugin = gst_insert_bin_new("gate_plugin");
 
@@ -85,7 +85,11 @@ Gate::Gate(std::string tag, std::string schema)
         auto in_level = gst_element_factory_make("level", "gate_input_level");
         auto out_level = gst_element_factory_make("level", "gate_output_level");
 
+        auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
+
         gst_insert_bin_append(GST_INSERT_BIN(bin), in_level, nullptr, nullptr);
+        gst_insert_bin_append(GST_INSERT_BIN(bin), audioconvert, nullptr,
+                              nullptr);
         gst_insert_bin_append(GST_INSERT_BIN(bin), gate, nullptr, nullptr);
         gst_insert_bin_append(GST_INSERT_BIN(bin), out_level, nullptr, nullptr);
 
