@@ -16,7 +16,9 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(
       equalizer_ui(EqualizerUi::create(
           "com.github.wwmm.pulseeffects.sourceoutputs.equalizer")),
       reverb_ui(ReverbUi::create(
-          "com.github.wwmm.pulseeffects.sourceoutputs.reverb")) {
+          "com.github.wwmm.pulseeffects.sourceoutputs.reverb")),
+      gate_ui(
+          GateUi::create("com.github.wwmm.pulseeffects.sourceoutputs.gate")) {
     level_meters_connections();
     populate_listbox();
     populate_stack();
@@ -83,6 +85,15 @@ void SourceOutputEffectsUi::level_meters_connections() {
         sigc::mem_fun(*reverb_ui, &ReverbUi::on_new_input_level)));
     connections.push_back(soe->reverb->output_level.connect(
         sigc::mem_fun(*reverb_ui, &ReverbUi::on_new_output_level)));
+
+    // compressor level meters connections
+
+    connections.push_back(soe->gate_input_level.connect(
+        sigc::mem_fun(*gate_ui, &GateUi::on_new_input_level_db)));
+    connections.push_back(soe->gate_output_level.connect(
+        sigc::mem_fun(*gate_ui, &GateUi::on_new_output_level_db)));
+    connections.push_back(soe->gate->gating.connect(
+        sigc::mem_fun(*gate_ui, &GateUi::on_new_gating)));
 }
 
 void SourceOutputEffectsUi::populate_listbox() {
@@ -91,6 +102,7 @@ void SourceOutputEffectsUi::populate_listbox() {
     add_to_listbox(filter_ui);
     add_to_listbox(equalizer_ui);
     add_to_listbox(reverb_ui);
+    add_to_listbox(gate_ui);
 }
 void SourceOutputEffectsUi::populate_stack() {
     stack->add(*limiter_ui, std::string("limiter"));
@@ -98,6 +110,7 @@ void SourceOutputEffectsUi::populate_stack() {
     stack->add(*filter_ui, std::string("filter"));
     stack->add(*equalizer_ui, std::string("equalizer"));
     stack->add(*reverb_ui, std::string("reverb"));
+    stack->add(*gate_ui, std::string("gate"));
 }
 
 void SourceOutputEffectsUi::up_down_connections() {
@@ -157,6 +170,11 @@ void SourceOutputEffectsUi::up_down_connections() {
         [=]() { on_up(reverb_ui); }));
     connections.push_back(reverb_ui->plugin_down->signal_clicked().connect(
         [=]() { on_down(reverb_ui); }));
+
+    connections.push_back(gate_ui->plugin_up->signal_clicked().connect(
+        [=]() { on_up(gate_ui); }));
+    connections.push_back(gate_ui->plugin_down->signal_clicked().connect(
+        [=]() { on_down(gate_ui); }));
 }
 
 void SourceOutputEffectsUi::reset() {
@@ -167,4 +185,5 @@ void SourceOutputEffectsUi::reset() {
     filter_ui->reset();
     equalizer_ui->reset();
     reverb_ui->reset();
+    gate_ui->reset();
 }

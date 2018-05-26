@@ -5,6 +5,7 @@
 #include "effects_base_ui.hpp"
 #include "equalizer_ui.hpp"
 #include "filter_ui.hpp"
+#include "gate_ui.hpp"
 #include "limiter_ui.hpp"
 #include "reverb_ui.hpp"
 #include "source_output_effects.hpp"
@@ -34,6 +35,7 @@ class SourceOutputEffectsUi : public EffectsBaseUi {
     std::shared_ptr<FilterUi> filter_ui;
     std::shared_ptr<EqualizerUi> equalizer_ui;
     std::shared_ptr<ReverbUi> reverb_ui;
+    std::shared_ptr<GateUi> gate_ui;
 
     void level_meters_connections();
     void populate_listbox();

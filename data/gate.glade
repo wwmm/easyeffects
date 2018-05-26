@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.22.1 -->
-<interface domain="PulseEffects">
+<interface domain="pulseeffects">
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="attack">
     <property name="lower">0.01</property>
@@ -8,6 +8,16 @@
     <property name="value">20</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">10</property>
+  </object>
+  <object class="GtkImage" id="image1">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">go-up-symbolic</property>
+  </object>
+  <object class="GtkImage" id="image2">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">go-down-symbolic</property>
   </object>
   <object class="GtkAdjustment" id="knee">
     <property name="upper">18</property>
@@ -19,11 +29,12 @@
   <object class="GtkBox" id="listbox_control">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="spacing">6</property>
+    <property name="spacing">3</property>
     <child>
       <object class="GtkLabel">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="valign">center</property>
         <property name="label" translatable="yes">Gate</property>
         <attributes>
           <attribute name="weight" value="bold"/>
@@ -36,10 +47,45 @@
       </packing>
     </child>
     <child>
+      <object class="GtkButton" id="plugin_down">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="halign">end</property>
+        <property name="valign">center</property>
+        <property name="image">image2</property>
+        <property name="always_show_image">True</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="pack_type">end</property>
+        <property name="position">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="plugin_up">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="halign">end</property>
+        <property name="valign">center</property>
+        <property name="image">image1</property>
+        <property name="always_show_image">True</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="pack_type">end</property>
+        <property name="position">2</property>
+      </packing>
+    </child>
+    <child>
       <object class="GtkImage" id="img_state">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="halign">center</property>
+        <property name="no_show_all">True</property>
+        <property name="halign">end</property>
         <property name="valign">center</property>
         <property name="icon_name">emblem-ok-symbolic</property>
       </object>
@@ -47,7 +93,7 @@
         <property name="expand">False</property>
         <property name="fill">True</property>
         <property name="pack_type">end</property>
-        <property name="position">1</property>
+        <property name="position">3</property>
       </packing>
     </child>
   </object>
@@ -85,7 +131,7 @@
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_threshold_value_changed" swapped="no"/>
   </object>
-  <object class="GtkGrid" id="window">
+  <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="valign">center</property>
@@ -112,43 +158,11 @@
                 <property name="column_spacing">3</property>
                 <property name="column_homogeneous">True</property>
                 <child>
-                  <object class="GtkRadioButton" id="detection_rms">
-                    <property name="label" translatable="yes">rms</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
-                    <property name="halign">end</property>
-                    <property name="active">True</property>
-                    <property name="draw_indicator">False</property>
-                    <signal name="toggled" handler="on_new_detection_type" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkRadioButton" id="detection_peak">
-                    <property name="label" translatable="yes">peak</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
-                    <property name="halign">start</property>
-                    <property name="active">True</property>
-                    <property name="draw_indicator">False</property>
-                    <property name="group">detection_rms</property>
-                    <signal name="toggled" handler="on_new_detection_type" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">1</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
+                    <property name="valign">center</property>
                     <property name="label" translatable="yes">Detection</property>
                   </object>
                   <packing>
@@ -162,6 +176,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
+                    <property name="valign">center</property>
                     <property name="label" translatable="yes">Stereo Link</property>
                   </object>
                   <packing>
@@ -171,43 +186,11 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkRadioButton" id="stereo_link_average">
-                    <property name="label" translatable="yes">average</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
-                    <property name="halign">end</property>
-                    <property name="active">True</property>
-                    <property name="draw_indicator">False</property>
-                    <signal name="toggled" handler="on_new_stereo_link_type" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="left_attach">3</property>
-                    <property name="top_attach">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkRadioButton" id="stereo_link_maximum">
-                    <property name="label" translatable="yes">maximum</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
-                    <property name="halign">start</property>
-                    <property name="active">True</property>
-                    <property name="draw_indicator">False</property>
-                    <property name="group">stereo_link_average</property>
-                    <signal name="toggled" handler="on_new_stereo_link_type" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="left_attach">4</property>
-                    <property name="top_attach">1</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
+                    <property name="valign">center</property>
                     <property name="label" translatable="yes">Gain Reduction</property>
                   </object>
                   <packing>
@@ -231,6 +214,38 @@
                     <property name="top_attach">1</property>
                   </packing>
                 </child>
+                <child>
+                  <object class="GtkComboBoxText" id="detection">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">center</property>
+                    <items>
+                      <item translatable="yes">RMS</item>
+                      <item translatable="yes">Peak</item>
+                    </items>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                    <property name="width">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBoxText" id="stereo_link">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">center</property>
+                    <items>
+                      <item translatable="yes">Average</item>
+                      <item translatable="yes">Maximum</item>
+                    </items>
+                  </object>
+                  <packing>
+                    <property name="left_attach">3</property>
+                    <property name="top_attach">1</property>
+                    <property name="width">2</property>
+                  </packing>
+                </child>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -249,6 +264,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
+                    <property name="valign">center</property>
                     <property name="label" translatable="yes">Attack</property>
                   </object>
                   <packing>
@@ -282,6 +298,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
+                    <property name="valign">center</property>
                     <property name="label" translatable="yes">Release</property>
                   </object>
                   <packing>
@@ -327,6 +344,8 @@
                   <object class="GtkSpinButton">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
                     <property name="width_chars">10</property>
                     <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                     <property name="secondary_icon_activatable">False</property>
@@ -346,6 +365,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
+                    <property name="valign">center</property>
                     <property name="label" translatable="yes">Ratio</property>
                   </object>
                   <packing>
@@ -376,6 +396,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
+                    <property name="valign">center</property>
                     <property name="label" translatable="yes">Knee</property>
                   </object>
                   <packing>
@@ -409,6 +430,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
+                    <property name="valign">center</property>
                     <property name="label" translatable="yes">Makeup</property>
                   </object>
                   <packing>
@@ -609,7 +631,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLevelBar" id="gating_levelbar">
+              <object class="GtkLevelBar" id="gating">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">center</property>
@@ -622,7 +644,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="gating_level_label">
+              <object class="GtkLabel" id="gating_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
