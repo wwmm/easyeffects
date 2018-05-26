@@ -17,5 +17,6 @@ data/maximizer.glade
 data/delay.glade
 data/gate.glade
 data/deesser.glade
+data/pitch.glade
 data/com.github.wwmm.pulseeffects.appdata.xml.in
 data/com.github.wwmm.pulseeffects.desktop.in

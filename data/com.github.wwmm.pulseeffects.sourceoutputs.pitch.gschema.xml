@@ -2,25 +2,29 @@
 <schemalist>
     <schema id="com.github.wwmm.pulseeffects.sourceoutputs.pitch" path="/com/github/wwmm/pulseeffects/sourceoutputs/pitch/">
         <key name="state" type="b">
-          <default>false</default>
+            <default>false</default>
         </key>
         <key name="cents" type="d">
-          <default>0</default>
+            <range min="-100" max="100"/>
+            <default>0</default>
         </key>
         <key name="semitones" type="i">
-          <default>0</default>
+            <range min="-12" max="12"/>
+            <default>0</default>
         </key>
         <key name="octaves" type="i">
-          <default>0</default>
+            <range min="-3" max="3"/>
+            <default>0</default>
         </key>
         <key name="crispness" type="i">
-          <default>3</default>
+            <range min="0" max="3"/>
+            <default>3</default>
         </key>
         <key name="preserve-formant" type="b">
-          <default>false</default>
+            <default>false</default>
         </key>
         <key name="faster" type="b">
-          <default>false</default>
+            <default>false</default>
         </key>
     </schema>
 </schemalist>
