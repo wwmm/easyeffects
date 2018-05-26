@@ -8,6 +8,7 @@
 #include "filter_ui.hpp"
 #include "gate_ui.hpp"
 #include "limiter_ui.hpp"
+#include "pitch_ui.hpp"
 #include "reverb_ui.hpp"
 #include "source_output_effects.hpp"
 
@@ -38,6 +39,7 @@ class SourceOutputEffectsUi : public EffectsBaseUi {
     std::shared_ptr<ReverbUi> reverb_ui;
     std::shared_ptr<GateUi> gate_ui;
     std::shared_ptr<DeesserUi> deesser_ui;
+    std::shared_ptr<PitchUi> pitch_ui;
 
     void level_meters_connections();
     void populate_listbox();

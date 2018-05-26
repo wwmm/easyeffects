@@ -107,7 +107,7 @@
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
-  <object class="GtkGrid" id="window">
+  <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="valign">center</property>
@@ -268,7 +268,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="preserve_formant">
+              <object class="GtkToggleButton" id="formant_preserving">
                 <property name="label" translatable="yes">Preserve Formant</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>

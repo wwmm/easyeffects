@@ -8,6 +8,7 @@
 #include "gate.hpp"
 #include "limiter.hpp"
 #include "pipeline_base.hpp"
+#include "pitch.hpp"
 #include "pulse_manager.hpp"
 #include "reverb.hpp"
 
@@ -28,6 +29,7 @@ class SourceOutputEffects : public PipelineBase {
     std::unique_ptr<Reverb> reverb;
     std::unique_ptr<Gate> gate;
     std::unique_ptr<Deesser> deesser;
+    std::unique_ptr<Pitch> pitch;
 
     sigc::signal<void, std::array<double, 2>> compressor_input_level;
     sigc::signal<void, std::array<double, 2>> compressor_output_level;
@@ -37,6 +39,8 @@ class SourceOutputEffects : public PipelineBase {
     sigc::signal<void, std::array<double, 2>> gate_output_level;
     sigc::signal<void, std::array<double, 2>> deesser_input_level;
     sigc::signal<void, std::array<double, 2>> deesser_output_level;
+    sigc::signal<void, std::array<double, 2>> pitch_input_level;
+    sigc::signal<void, std::array<double, 2>> pitch_output_level;
 
    private:
     std::string log_tag = "soe: ";
