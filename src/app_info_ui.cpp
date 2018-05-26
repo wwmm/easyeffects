@@ -50,10 +50,18 @@ AppInfoUi::~AppInfoUi() {
     timeout_connection.disconnect();
 
     if (stream != nullptr) {
+        pa_threaded_mainloop_lock(pm->main_loop);
+
+        util::debug(log_tag + "disconnecting " + app_info->name +
+                    " level meter stream...");
+
         pa_stream_disconnect(stream);
 
         while (stream != nullptr) {
+            pa_threaded_mainloop_wait(pm->main_loop);
         }
+
+        pa_threaded_mainloop_unlock(pm->main_loop);
     }
 }
 
@@ -166,12 +174,14 @@ void AppInfoUi::create_stream() {
                 pa_stream_disconnect(aiu->stream);
                 pa_stream_unref(aiu->stream);
                 aiu->stream = nullptr;
+                pa_threaded_mainloop_signal(aiu->pm->main_loop, false);
             } else if (state == PA_STREAM_TERMINATED) {
                 util::debug(aiu->log_tag + aiu->app_info->name +
                             " volume meter stream was terminated");
 
                 pa_stream_unref(aiu->stream);
                 aiu->stream = nullptr;
+                pa_threaded_mainloop_signal(aiu->pm->main_loop, false);
             }
         },
         this);
