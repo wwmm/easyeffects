@@ -4,6 +4,7 @@
 #include "bass_enhancer_ui.hpp"
 #include "compressor_ui.hpp"
 #include "crossfeed_ui.hpp"
+#include "delay_ui.hpp"
 #include "effects_base_ui.hpp"
 #include "equalizer_ui.hpp"
 #include "exciter_ui.hpp"
@@ -46,6 +47,7 @@ class SinkInputEffectsUi : public EffectsBaseUi {
     std::shared_ptr<PanoramaUi> panorama_ui;
     std::shared_ptr<CrossfeedUi> crossfeed_ui;
     std::shared_ptr<MaximizerUi> maximizer_ui;
+    std::shared_ptr<DelayUi> delay_ui;
 
     void level_meters_connections();
     void populate_listbox();

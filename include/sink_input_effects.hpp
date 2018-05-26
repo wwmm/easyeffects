@@ -4,6 +4,7 @@
 #include "bass_enhancer.hpp"
 #include "compressor.hpp"
 #include "crossfeed.hpp"
+#include "delay.hpp"
 #include "equalizer.hpp"
 #include "exciter.hpp"
 #include "filter.hpp"
@@ -38,6 +39,7 @@ class SinkInputEffects : public PipelineBase {
     std::unique_ptr<Panorama> panorama;
     std::unique_ptr<Crossfeed> crossfeed;
     std::unique_ptr<Maximizer> maximizer;
+    std::unique_ptr<Delay> delay;
 
     sigc::signal<void, std::array<double, 2>> compressor_input_level;
     sigc::signal<void, std::array<double, 2>> compressor_output_level;
@@ -53,6 +55,8 @@ class SinkInputEffects : public PipelineBase {
     sigc::signal<void, std::array<double, 2>> crossfeed_output_level;
     sigc::signal<void, std::array<double, 2>> maximizer_input_level;
     sigc::signal<void, std::array<double, 2>> maximizer_output_level;
+    sigc::signal<void, std::array<double, 2>> delay_input_level;
+    sigc::signal<void, std::array<double, 2>> delay_output_level;
 
    private:
     GSettings* sie_settings;

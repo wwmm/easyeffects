@@ -29,7 +29,9 @@ SinkInputEffectsUi::SinkInputEffectsUi(
       crossfeed_ui(CrossfeedUi::create(
           "com.github.wwmm.pulseeffects.sinkinputs.crossfeed")),
       maximizer_ui(MaximizerUi::create(
-          "com.github.wwmm.pulseeffects.sinkinputs.maximizer")) {
+          "com.github.wwmm.pulseeffects.sinkinputs.maximizer")),
+      delay_ui(
+          DelayUi::create("com.github.wwmm.pulseeffects.sinkinputs.delay")) {
     level_meters_connections();
     populate_listbox();
     populate_stack();
@@ -149,6 +151,15 @@ void SinkInputEffectsUi::level_meters_connections() {
         sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_output_level_db)));
     connections.push_back(sie->maximizer->reduction.connect(
         sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_reduction)));
+
+    // delay level meters connections
+
+    connections.push_back(sie->delay_input_level.connect(
+        sigc::mem_fun(*delay_ui, &DelayUi::on_new_input_level_db)));
+    connections.push_back(sie->delay_output_level.connect(
+        sigc::mem_fun(*delay_ui, &DelayUi::on_new_output_level_db)));
+    connections.push_back(sie->delay->tempo.connect(
+        sigc::mem_fun(*delay_ui, &DelayUi::on_new_tempo)));
 }
 
 void SinkInputEffectsUi::populate_listbox() {
@@ -163,6 +174,7 @@ void SinkInputEffectsUi::populate_listbox() {
     add_to_listbox(panorama_ui);
     add_to_listbox(crossfeed_ui);
     add_to_listbox(maximizer_ui);
+    add_to_listbox(delay_ui);
 }
 
 void SinkInputEffectsUi::populate_stack() {
@@ -177,6 +189,7 @@ void SinkInputEffectsUi::populate_stack() {
     stack->add(*panorama_ui, std::string("panorama"));
     stack->add(*crossfeed_ui, std::string("crossfeed"));
     stack->add(*maximizer_ui, std::string("maximizer"));
+    stack->add(*delay_ui, std::string("delay"));
 }
 
 void SinkInputEffectsUi::up_down_connections() {
@@ -269,6 +282,11 @@ void SinkInputEffectsUi::up_down_connections() {
         [=]() { on_up(maximizer_ui); }));
     connections.push_back(maximizer_ui->plugin_down->signal_clicked().connect(
         [=]() { on_down(maximizer_ui); }));
+
+    connections.push_back(delay_ui->plugin_up->signal_clicked().connect(
+        [=]() { on_up(delay_ui); }));
+    connections.push_back(delay_ui->plugin_down->signal_clicked().connect(
+        [=]() { on_down(delay_ui); }));
 }
 
 void SinkInputEffectsUi::reset() {
@@ -285,4 +303,5 @@ void SinkInputEffectsUi::reset() {
     panorama_ui->reset();
     crossfeed_ui->reset();
     maximizer_ui->reset();
+    delay_ui->reset();
 }

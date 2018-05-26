@@ -94,11 +94,13 @@ Delay::Delay(std::string tag, std::string schema)
         gst_insert_bin_append(GST_INSERT_BIN(bin), out_level, nullptr, nullptr);
 
         g_object_set(delay, "bypass", false, nullptr);
-        g_object_set(delay, "g-out", 1, nullptr);
-        g_object_set(delay, "dry-l", 0, nullptr);
-        g_object_set(delay, "wet-l", 1, nullptr);
-        g_object_set(delay, "dry-r", 0, nullptr);
-        g_object_set(delay, "wet-r", 1, nullptr);
+        g_object_set(delay, "mode-l", 1, nullptr);  // Distance
+        g_object_set(delay, "mode-r", 1, nullptr);  // Distance
+        g_object_set(delay, "g-out", 1.0f, nullptr);
+        g_object_set(delay, "dry-l", 0.0f, nullptr);
+        g_object_set(delay, "wet-l", 1.0f, nullptr);
+        g_object_set(delay, "dry-r", 0.0f, nullptr);
+        g_object_set(delay, "wet-r", 1.0f, nullptr);
 
         bind_to_gsettings();
 
@@ -123,15 +125,10 @@ Delay::Delay(std::string tag, std::string schema)
 Delay::~Delay() {}
 
 void Delay::bind_to_gsettings() {
-    g_settings_bind_with_mapping(settings, "m-l", delay, "m-l",
-                                 G_SETTINGS_BIND_GET, util::double_to_float,
-                                 nullptr, nullptr, nullptr);
+    g_settings_bind(settings, "m-l", delay, "m-l", G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind(settings, "m-r", delay, "m-r", G_SETTINGS_BIND_DEFAULT);
 
     g_settings_bind_with_mapping(settings, "cm-l", delay, "cm-l",
-                                 G_SETTINGS_BIND_GET, util::double_to_float,
-                                 nullptr, nullptr, nullptr);
-
-    g_settings_bind_with_mapping(settings, "m-r", delay, "m-r",
                                  G_SETTINGS_BIND_GET, util::double_to_float,
                                  nullptr, nullptr, nullptr);
 

@@ -5,7 +5,7 @@
             <default>
               ["limiter","filter","compressor","bass_enhancer","exciter",
               "stereo_enhancer","reverb","equalizer","panorama","crossfeed",
-              "maximizer"]
+              "delay","maximizer"]
             </default>
         </key>
     </schema>

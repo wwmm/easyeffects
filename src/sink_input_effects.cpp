@@ -38,6 +38,10 @@ void on_message_element(const GstBus* gst_bus,
         sie->maximizer_input_level.emit(sie->get_peak(message));
     } else if (src_name == std::string("maximizer_output_level")) {
         sie->maximizer_output_level.emit(sie->get_peak(message));
+    } else if (src_name == std::string("delay_input_level")) {
+        sie->delay_input_level.emit(sie->get_peak(message));
+    } else if (src_name == std::string("delay_output_level")) {
+        sie->delay_output_level.emit(sie->get_peak(message));
     }
 }
 
@@ -159,6 +163,8 @@ SinkInputEffects::SinkInputEffects(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.crossfeed");
     maximizer = std::make_unique<Maximizer>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.maximizer");
+    delay = std::make_unique<Delay>(
+        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.delay");
 
     plugins.insert(std::make_pair(limiter->name, limiter->plugin));
     plugins.insert(std::make_pair(compressor->name, compressor->plugin));
@@ -172,6 +178,7 @@ SinkInputEffects::SinkInputEffects(
     plugins.insert(std::make_pair(panorama->name, panorama->plugin));
     plugins.insert(std::make_pair(crossfeed->name, crossfeed->plugin));
     plugins.insert(std::make_pair(maximizer->name, maximizer->plugin));
+    plugins.insert(std::make_pair(delay->name, delay->plugin));
 
     add_plugins_to_pipeline();
 
