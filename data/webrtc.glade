@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.22.1 -->
-<interface domain="PulseEffects">
+<interface domain="pulseeffects">
   <requires lib="gtk+" version="3.18"/>
   <object class="GtkAdjustment" id="compression_gain_db">
     <property name="upper">90</property>
@@ -8,15 +8,26 @@
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
+  <object class="GtkImage" id="image1">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">go-up-symbolic</property>
+  </object>
+  <object class="GtkImage" id="image2">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">go-down-symbolic</property>
+  </object>
   <object class="GtkBox" id="listbox_control">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="spacing">6</property>
+    <property name="spacing">3</property>
     <child>
       <object class="GtkLabel">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="label" translatable="yes">Webrtc</property>
+        <property name="valign">center</property>
+        <property name="label" translatable="yes">Pitch</property>
         <attributes>
           <attribute name="weight" value="bold"/>
         </attributes>
@@ -28,10 +39,45 @@
       </packing>
     </child>
     <child>
+      <object class="GtkButton" id="plugin_down">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="halign">end</property>
+        <property name="valign">center</property>
+        <property name="image">image2</property>
+        <property name="always_show_image">True</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="pack_type">end</property>
+        <property name="position">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="plugin_up">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="halign">end</property>
+        <property name="valign">center</property>
+        <property name="image">image1</property>
+        <property name="always_show_image">True</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="pack_type">end</property>
+        <property name="position">2</property>
+      </packing>
+    </child>
+    <child>
       <object class="GtkImage" id="img_state">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="halign">center</property>
+        <property name="no_show_all">True</property>
+        <property name="halign">end</property>
         <property name="valign">center</property>
         <property name="icon_name">emblem-ok-symbolic</property>
       </object>
@@ -39,7 +85,7 @@
         <property name="expand">False</property>
         <property name="fill">True</property>
         <property name="pack_type">end</property>
-        <property name="position">1</property>
+        <property name="position">3</property>
       </packing>
     </child>
   </object>
@@ -159,8 +205,6 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
-                        <property name="row_spacing">30</property>
-                        <property name="column_spacing">12</property>
                         <property name="column_homogeneous">True</property>
                         <child>
                           <object class="GtkLabel">
@@ -173,59 +217,22 @@
                           <packing>
                             <property name="left_attach">0</property>
                             <property name="top_attach">0</property>
-                            <property name="width">3</property>
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkRadioButton" id="echo_suppression_level_low">
-                            <property name="label" translatable="yes">Low</property>
-                            <property name="name">echo_suppression_level_low</property>
+                          <object class="GtkComboBoxText" id="echo_suppression_level">
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">False</property>
+                            <property name="can_focus">False</property>
+                            <property name="halign">center</property>
                             <property name="valign">center</property>
-                            <property name="active">True</property>
-                            <property name="draw_indicator">False</property>
-                            <property name="group">echo_suppression_level_moderate</property>
-                            <signal name="toggled" handler="on_new_echo_suppression_level" swapped="no"/>
+                            <items>
+                              <item translatable="yes">Low</item>
+                              <item translatable="yes">Moderate</item>
+                              <item translatable="yes">High</item>
+                            </items>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkRadioButton" id="echo_suppression_level_moderate">
-                            <property name="label" translatable="yes">Moderate</property>
-                            <property name="name">echo_suppression_level_moderate</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">False</property>
-                            <property name="valign">center</property>
-                            <property name="active">True</property>
-                            <property name="draw_indicator">False</property>
-                            <signal name="toggled" handler="on_new_echo_suppression_level" swapped="no"/>
-                          </object>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkRadioButton" id="echo_suppression_level_high">
-                            <property name="label" translatable="yes">High</property>
-                            <property name="name">echo_suppression_level_high</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">False</property>
-                            <property name="valign">center</property>
-                            <property name="active">True</property>
-                            <property name="draw_indicator">False</property>
-                            <property name="group">echo_suppression_level_moderate</property>
-                            <signal name="toggled" handler="on_new_echo_suppression_level" swapped="no"/>
-                          </object>
-                          <packing>
-                            <property name="left_attach">2</property>
                             <property name="top_attach">1</property>
                           </packing>
                         </child>
@@ -247,80 +254,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <property name="row_spacing">30</property>
-                    <property name="column_spacing">12</property>
                     <property name="column_homogeneous">True</property>
-                    <child>
-                      <object class="GtkRadioButton" id="noise_suppression_level_low">
-                        <property name="label" translatable="yes">Low</property>
-                        <property name="name">noise_suppression_level_low</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">False</property>
-                        <property name="valign">center</property>
-                        <property name="active">True</property>
-                        <property name="draw_indicator">False</property>
-                        <property name="group">noise_suppression_level_moderate</property>
-                        <signal name="toggled" handler="on_new_noise_suppression_level" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkRadioButton" id="noise_suppression_level_moderate">
-                        <property name="label" translatable="yes">Moderate</property>
-                        <property name="name">noise_suppression_level_moderate</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">False</property>
-                        <property name="valign">center</property>
-                        <property name="active">True</property>
-                        <property name="draw_indicator">False</property>
-                        <signal name="toggled" handler="on_new_noise_suppression_level" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkRadioButton" id="noise_suppression_level_high">
-                        <property name="label" translatable="yes">High</property>
-                        <property name="name">noise_suppression_level_high</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">False</property>
-                        <property name="valign">center</property>
-                        <property name="active">True</property>
-                        <property name="draw_indicator">False</property>
-                        <property name="group">noise_suppression_level_moderate</property>
-                        <signal name="toggled" handler="on_new_noise_suppression_level" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="left_attach">2</property>
-                        <property name="top_attach">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkRadioButton" id="noise_suppression_level_very_high">
-                        <property name="label" translatable="yes">Very High</property>
-                        <property name="name">noise_suppression_level_very_high</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">False</property>
-                        <property name="valign">center</property>
-                        <property name="active">True</property>
-                        <property name="draw_indicator">False</property>
-                        <property name="group">noise_suppression_level_moderate</property>
-                        <signal name="toggled" handler="on_new_noise_suppression_level" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="left_attach">3</property>
-                        <property name="top_attach">2</property>
-                      </packing>
-                    </child>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
@@ -332,7 +266,6 @@
                       <packing>
                         <property name="left_attach">0</property>
                         <property name="top_attach">1</property>
-                        <property name="width">4</property>
                       </packing>
                     </child>
                     <child>
@@ -343,11 +276,29 @@
                         <property name="receives_default">True</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
+                        <property name="margin_bottom">30</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
                         <property name="top_attach">0</property>
-                        <property name="width">4</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="noise_suppression_level">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <items>
+                          <item translatable="yes">Low</item>
+                          <item translatable="yes">Moderate</item>
+                          <item translatable="yes">High</item>
+                          <item translatable="yes">Very High</item>
+                        </items>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                   </object>
@@ -362,8 +313,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
-                    <property name="row_spacing">30</property>
-                    <property name="column_spacing">12</property>
                     <property name="column_homogeneous">True</property>
                     <child>
                       <object class="GtkToggleButton" id="gain_control">
@@ -373,11 +322,11 @@
                         <property name="receives_default">True</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
+                        <property name="margin_bottom">30</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
                         <property name="top_attach">0</property>
-                        <property name="width">2</property>
                       </packing>
                     </child>
                     <child>
@@ -391,41 +340,21 @@
                       <packing>
                         <property name="left_attach">0</property>
                         <property name="top_attach">1</property>
-                        <property name="width">2</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkRadioButton" id="gain_control_mode_adaptive">
-                        <property name="label" translatable="yes">Adaptive</property>
-                        <property name="name">gain_control_mode_adaptive</property>
+                      <object class="GtkComboBoxText" id="gain_control_mode">
                         <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">False</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="active">True</property>
-                        <property name="draw_indicator">False</property>
-                        <signal name="toggled" handler="on_new_gain_control_mode" swapped="no"/>
+                        <items>
+                          <item translatable="yes">Adaptive Digital</item>
+                          <item translatable="yes">Fixed Digital</item>
+                        </items>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkRadioButton" id="gain_control_mode_fixed">
-                        <property name="label" translatable="yes">Fixed</property>
-                        <property name="name">gain_control_mode_fixed</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">False</property>
-                        <property name="valign">center</property>
-                        <property name="active">True</property>
-                        <property name="draw_indicator">False</property>
-                        <property name="group">gain_control_mode_adaptive</property>
-                        <signal name="toggled" handler="on_new_gain_control_mode" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
                         <property name="top_attach">2</property>
                       </packing>
                     </child>
@@ -531,107 +460,9 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
-                    <property name="row_spacing">30</property>
+                    <property name="valign">center</property>
                     <property name="column_spacing">12</property>
                     <property name="column_homogeneous">True</property>
-                    <child>
-                      <object class="GtkGrid">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="row_spacing">12</property>
-                        <property name="column_spacing">12</property>
-                        <property name="column_homogeneous">True</property>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="label" translatable="yes">Detection Likelihood</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">0</property>
-                            <property name="width">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkRadioButton" id="voice_detection_likelihood_very_low">
-                            <property name="label" translatable="yes">Very Low</property>
-                            <property name="name">voice_detection_likelihood_very_low</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">False</property>
-                            <property name="valign">center</property>
-                            <property name="active">True</property>
-                            <property name="draw_indicator">False</property>
-                            <property name="group">voice_detection_likelihood_low</property>
-                            <signal name="toggled" handler="on_new_voice_detection_likelihood" swapped="no"/>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkRadioButton" id="voice_detection_likelihood_low">
-                            <property name="label" translatable="yes">Low</property>
-                            <property name="name">voice_detection_likelihood_low</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">False</property>
-                            <property name="valign">center</property>
-                            <property name="active">True</property>
-                            <property name="draw_indicator">False</property>
-                            <signal name="toggled" handler="on_new_voice_detection_likelihood" swapped="no"/>
-                          </object>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkRadioButton" id="voice_detection_likelihood_moderate">
-                            <property name="label" translatable="yes">Moderate</property>
-                            <property name="name">voice_detection_likelihood_moderate</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">False</property>
-                            <property name="valign">center</property>
-                            <property name="active">True</property>
-                            <property name="draw_indicator">False</property>
-                            <property name="group">voice_detection_likelihood_low</property>
-                            <signal name="toggled" handler="on_new_voice_detection_likelihood" swapped="no"/>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkRadioButton" id="voice_detection_likelihood_high">
-                            <property name="label" translatable="yes">High</property>
-                            <property name="name">voice_detection_likelihood_high</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">False</property>
-                            <property name="valign">center</property>
-                            <property name="active">True</property>
-                            <property name="draw_indicator">False</property>
-                            <property name="group">voice_detection_likelihood_low</property>
-                            <signal name="toggled" handler="on_new_voice_detection_likelihood" swapped="no"/>
-                          </object>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">2</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">1</property>
-                      </packing>
-                    </child>
                     <child>
                       <object class="GtkToggleButton" id="voice_detection">
                         <property name="label" translatable="yes">Enable</property>
@@ -640,6 +471,7 @@
                         <property name="receives_default">True</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
+                        <property name="margin_bottom">30</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -648,41 +480,64 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkGrid">
+                      <object class="GtkComboBoxText" id="voice_detection_likelihood">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Frame Size</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkSpinButton">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="width_chars">10</property>
-                            <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
-                            <property name="input_purpose">number</property>
-                            <property name="orientation">vertical</property>
-                            <property name="adjustment">voice_detection_frame_size</property>
-                            <property name="numeric">True</property>
-                            <property name="update_policy">if-valid</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
+                        <property name="valign">center</property>
+                        <items>
+                          <item translatable="yes">Very Low</item>
+                          <item translatable="yes">Low</item>
+                          <item translatable="yes">Moderate</item>
+                          <item translatable="yes">High</item>
+                        </items>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">Frame Size</property>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinButton">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="width_chars">10</property>
+                        <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
+                        <property name="input_purpose">number</property>
+                        <property name="adjustment">voice_detection_frame_size</property>
+                        <property name="numeric">True</property>
+                        <property name="update_policy">if-valid</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">Detection Likelihood</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
                         <property name="top_attach">1</property>
                       </packing>
                     </child>
