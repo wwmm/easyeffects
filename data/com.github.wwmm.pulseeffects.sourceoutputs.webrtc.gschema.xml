@@ -10,6 +10,21 @@
         <key name="high-pass-filter" type="b">
             <default>true</default>
         </key>
+        <key name="echo-cancel" type="b">
+            <default>true</default>
+        </key>
+        <key name="echo-suppression-level" enum="com.github.wwmm.pulseeffects.webrtc.echo.suppression.level.enum">
+            <default>"moderate"</default>
+        </key>
+        <key name="noise-suppression" type="b">
+            <default>true</default>
+        </key>
+        <key name="noise-suppression-level" enum="com.github.wwmm.pulseeffects.webrtc.noise.suppression.level.enum">
+            <default>"moderate"</default>
+        </key>
+        <key name="gain-control" type="b">
+            <default>true</default>
+        </key>
         <key name="extended-filter" type="b">
             <default>true</default>
         </key>
@@ -17,67 +32,28 @@
             <default>false</default>
         </key>
         <key name="target-level-dbfs" type="i">
+            <range min="0" max="31"/>
             <default>3</default>
         </key>
         <key name="compression-gain-db" type="i">
+            <range min="0" max="90"/>
             <default>9</default>
         </key>
         <key name="limiter" type="b">
             <default>true</default>
         </key>
-        <key name="gain-control" type="b">
-            <default>true</default>
-        </key>
-        <key name="gain-control-mode-adaptive" type="b">
-            <default>true</default>
-        </key>
-        <key name="gain-control-mode-fixed" type="b">
-            <default>false</default>
-        </key>
-        <key name="echo-cancel" type="b">
-            <default>true</default>
-        </key>
-        <key name="echo-suppression-level-low" type="b">
-            <default>false</default>
-        </key>
-        <key name="echo-suppression-level-moderate" type="b">
-            <default>true</default>
-        </key>
-        <key name="echo-suppression-level-high" type="b">
-            <default>false</default>
-        </key>
-        <key name="noise-suppression" type="b">
-            <default>true</default>
-        </key>
-        <key name="noise-suppression-level-low" type="b">
-            <default>false</default>
-        </key>
-        <key name="noise-suppression-level-moderate" type="b">
-            <default>true</default>
-        </key>
-        <key name="noise-suppression-level-high" type="b">
-            <default>false</default>
-        </key>
-        <key name="noise-suppression-level-very-high" type="b">
-            <default>false</default>
+        <key name="gain-control-mode" enum="com.github.wwmm.pulseeffects.webrtc.gain.control.mode.enum">
+            <default>"adaptive-digital"</default>
         </key>
         <key name="voice-detection" type="b">
             <default>false</default>
         </key>
         <key name="voice-detection-frame-size-ms" type="i">
+            <range min="10" max="30"/>
             <default>10</default>
         </key>
-        <key name="voice-detection-likelihood-very-low" type="b">
-            <default>false</default>
-        </key>
-        <key name="voice-detection-likelihood-low" type="b">
-            <default>true</default>
-        </key>
-        <key name="voice-detection-likelihood-moderate" type="b">
-            <default>false</default>
-        </key>
-        <key name="voice-detection-likelihood-high" type="b">
-            <default>false</default>
+        <key name="voice-detection-likelihood" enum="com.github.wwmm.pulseeffects.webrtc.voice.detection.likelihood.enum">
+            <default>"low"</default>
         </key>
     </schema>
 </schemalist>
