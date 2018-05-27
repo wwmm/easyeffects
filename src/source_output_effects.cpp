@@ -29,6 +29,10 @@ void on_message_element(const GstBus* gst_bus,
         soe->pitch_input_level.emit(soe->get_peak(message));
     } else if (src_name == std::string("pitch_output_level")) {
         soe->pitch_output_level.emit(soe->get_peak(message));
+    } else if (src_name == std::string("webrtc_input_level")) {
+        soe->webrtc_input_level.emit(soe->get_peak(message));
+    } else if (src_name == std::string("webrtc_output_level")) {
+        soe->webrtc_output_level.emit(soe->get_peak(message));
     }
 }
 
@@ -172,6 +176,8 @@ SourceOutputEffects::SourceOutputEffects(
         log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.deesser");
     pitch = std::make_unique<Pitch>(
         log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.pitch");
+    webrtc = std::make_unique<Webrtc>(
+        log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.webrtc");
 
     plugins.insert(std::make_pair(limiter->name, limiter->plugin));
     plugins.insert(std::make_pair(compressor->name, compressor->plugin));
@@ -181,6 +187,7 @@ SourceOutputEffects::SourceOutputEffects(
     plugins.insert(std::make_pair(gate->name, gate->plugin));
     plugins.insert(std::make_pair(deesser->name, deesser->plugin));
     plugins.insert(std::make_pair(pitch->name, pitch->plugin));
+    plugins.insert(std::make_pair(webrtc->name, webrtc->plugin));
 
     add_plugins_to_pipeline();
 

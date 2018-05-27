@@ -67,6 +67,7 @@ void Application::on_startup() {
     pm->new_default_sink.connect([&](auto name) {
         util::debug("new default sink: " + name);
         sie->set_output_sink_name(name);
+        soe->webrtc->set_probe_src_device(name + ".monitor");
     });
 
     pm->new_default_source.connect([&](auto name) {

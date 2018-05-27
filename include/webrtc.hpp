@@ -15,6 +15,8 @@ class Webrtc {
     std::string log_tag, name = "webrtc";
     GstElement *plugin, *bin, *webrtc, *probe_bin, *probe_src;
 
+    void set_probe_src_device(std::string name);
+
    private:
     bool is_installed;
 
@@ -22,7 +24,6 @@ class Webrtc {
 
     void build_probe_bin();
     void build_dsp_bin();
-    void set_probe_src_device(std::string name);
     void bind_to_gsettings();
 };
 

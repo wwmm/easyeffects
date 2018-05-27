@@ -291,9 +291,9 @@ void PulseManager::get_server_info() {
     auto o = pa_context_get_server_info(
         context,
         [](auto c, auto info, auto d) {
-            if (info != nullptr) {
-                auto pm = static_cast<PulseManager*>(d);
+            auto pm = static_cast<PulseManager*>(d);
 
+            if (info != nullptr) {
                 pm->server_info.server_name = info->server_name;
                 pm->server_info.server_version = info->server_version;
                 pm->server_info.default_sink_name = info->default_sink_name;
@@ -305,9 +305,9 @@ void PulseManager::get_server_info() {
                             info->default_source_name);
                 util::debug(pm->log_tag + "default pulseaudio sink: " +
                             info->default_sink_name);
-
-                pa_threaded_mainloop_signal(pm->main_loop, false);
             }
+
+            pa_threaded_mainloop_signal(pm->main_loop, false);
         },
         this);
 
@@ -946,17 +946,28 @@ void PulseManager::set_source_output_mute(uint idx, bool state) {
 }
 
 void PulseManager::get_sink_input_info(uint idx) {
-    pa_context_get_sink_input_info(context, idx,
-                                   [](auto c, auto info, auto eol, auto d) {
-                                       auto pm = static_cast<PulseManager*>(d);
+    pa_threaded_mainloop_lock(main_loop);
 
-                                       if (eol == -1) {
-                                       } else if (eol == 0 && info != nullptr) {
-                                           pm->changed_app(info);
-                                       } else if (eol == 1) {
-                                       }
-                                   },
-                                   this);
+    auto o = pa_context_get_sink_input_info(
+        context, idx,
+        [](auto c, auto info, auto eol, auto d) {
+            auto pm = static_cast<PulseManager*>(d);
+
+            if (eol == -1) {
+                pa_threaded_mainloop_signal(pm->main_loop, false);
+            } else if (eol == 0 && info != nullptr) {
+                pm->changed_app(info);
+            } else if (eol == 1) {
+                pa_threaded_mainloop_signal(pm->main_loop, false);
+            }
+        },
+        this);
+
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+        pa_threaded_mainloop_wait(main_loop);
+    }
+
+    pa_threaded_mainloop_unlock(main_loop);
 }
 
 pa_stream* PulseManager::create_stream(std::string source_name,

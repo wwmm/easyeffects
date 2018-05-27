@@ -587,6 +587,7 @@ void ApplicationUi::on_output_device_changed() {
         row.get_value(1, name);
 
         app->sie->set_output_sink_name(name);
+        app->soe->webrtc->set_probe_src_device(name + ".monitor");
 
         util::debug(log_tag + "output device changed: " + name);
     }

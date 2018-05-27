@@ -95,6 +95,7 @@ void Webrtc::build_probe_bin() {
     auto caps_str = "audio/x-raw,format=S16LE,channels=2,rate=48000";
 
     g_object_set(probe_src, "stream-properties", props, nullptr);
+    g_object_set(probe_src, "buffer-time", 10000, nullptr);
     g_object_set(capsfilter, "caps", gst_caps_from_string(caps_str), nullptr);
     g_object_set(queue, "silent", true, nullptr);
 
@@ -140,7 +141,9 @@ void Webrtc::build_dsp_bin() {
 }
 
 void Webrtc::set_probe_src_device(std::string name) {
-    g_object_set(probe_src, "device", name.c_str(), nullptr);
+    if (probe_src) {
+        g_object_set(probe_src, "device", name.c_str(), nullptr);
+    }
 }
 
 void Webrtc::bind_to_gsettings() {
