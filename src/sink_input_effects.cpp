@@ -46,34 +46,34 @@ void on_message_element(const GstBus* gst_bus,
 }
 
 void append_element(GstInsertBin* container, GstElement* element) {
-    bool wait_append = true;
-
     if (element) {
+        bool wait_append = true;
+
         gst_insert_bin_append(container, element,
                               [](auto bin, auto elem, auto success, auto d) {
                                   bool* wait = static_cast<bool*>(d);
                                   *wait = false;
                               },
                               &wait_append);
-    }
 
-    while (wait_append) {
+        while (wait_append) {
+        }
     }
 }
 
 void remove_element(GstInsertBin* container, GstElement* element) {
-    bool wait_remove = true;
-
     if (element) {
+        bool wait_remove = true;
+
         gst_insert_bin_remove(container, element,
                               [](auto bin, auto elem, auto success, auto d) {
                                   bool* wait = static_cast<bool*>(d);
                                   *wait = false;
                               },
                               &wait_remove);
-    }
 
-    while (wait_remove) {
+        while (wait_remove) {
+        }
     }
 }
 
