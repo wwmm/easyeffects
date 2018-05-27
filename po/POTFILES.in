@@ -18,5 +18,6 @@ data/delay.glade
 data/gate.glade
 data/deesser.glade
 data/pitch.glade
+data/webrtc.glade
 data/com.github.wwmm.pulseeffects.appdata.xml.in
 data/com.github.wwmm.pulseeffects.desktop.in
