@@ -89,8 +89,11 @@ Compressor::Compressor(std::string tag, std::string schema)
             gst_element_factory_make("level", "compressor_input_level");
         auto out_level =
             gst_element_factory_make("level", "compressor_output_level");
+        auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
 
         gst_insert_bin_append(GST_INSERT_BIN(bin), in_level, nullptr, nullptr);
+        gst_insert_bin_append(GST_INSERT_BIN(bin), audioconvert, nullptr,
+                              nullptr);
         gst_insert_bin_append(GST_INSERT_BIN(bin), compressor, nullptr,
                               nullptr);
         gst_insert_bin_append(GST_INSERT_BIN(bin), out_level, nullptr, nullptr);

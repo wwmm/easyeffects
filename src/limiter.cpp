@@ -117,7 +117,10 @@ Limiter::Limiter(std::string tag, std::string schema)
         bin = gst_insert_bin_new("limiter_bin");
 
         autovolume = gst_element_factory_make("level", "autovolume");
+        auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
 
+        gst_insert_bin_append(GST_INSERT_BIN(bin), audioconvert, nullptr,
+                              nullptr);
         gst_insert_bin_append(GST_INSERT_BIN(bin), limiter, nullptr, nullptr);
         gst_insert_bin_append(GST_INSERT_BIN(bin), autovolume, nullptr,
                               nullptr);

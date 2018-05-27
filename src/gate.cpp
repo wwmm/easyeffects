@@ -84,7 +84,6 @@ Gate::Gate(std::string tag, std::string schema)
 
         auto in_level = gst_element_factory_make("level", "gate_input_level");
         auto out_level = gst_element_factory_make("level", "gate_output_level");
-
         auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
 
         gst_insert_bin_append(GST_INSERT_BIN(bin), in_level, nullptr, nullptr);

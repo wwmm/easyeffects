@@ -122,6 +122,11 @@ StereoEnhancer::StereoEnhancer(std::string tag, std::string schema)
     }
 
     if (is_installed) {
+        auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
+
+        gst_insert_bin_append(GST_INSERT_BIN(plugin), audioconvert, nullptr,
+                              nullptr);
+
         g_object_set(stereo_enhancer, "bypass", false, nullptr);
 
         bind_to_gsettings();
