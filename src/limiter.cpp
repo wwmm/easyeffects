@@ -114,16 +114,23 @@ Limiter::Limiter(std::string tag, std::string schema)
     }
 
     if (is_installed) {
-        bin = gst_insert_bin_new("limiter_bin");
+        bin = gst_bin_new("limiter_bin");
 
         autovolume = gst_element_factory_make("level", "autovolume");
         auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
 
-        gst_insert_bin_append(GST_INSERT_BIN(bin), audioconvert, nullptr,
-                              nullptr);
-        gst_insert_bin_append(GST_INSERT_BIN(bin), limiter, nullptr, nullptr);
-        gst_insert_bin_append(GST_INSERT_BIN(bin), autovolume, nullptr,
-                              nullptr);
+        gst_bin_add_many(GST_BIN(bin), audioconvert, limiter, autovolume,
+                         nullptr);
+        gst_element_link_many(audioconvert, limiter, autovolume, nullptr);
+
+        auto pad_sink = gst_element_get_static_pad(audioconvert, "sink");
+        auto pad_src = gst_element_get_static_pad(autovolume, "src");
+
+        gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
+        gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));
+
+        gst_object_unref(GST_OBJECT(pad_sink));
+        gst_object_unref(GST_OBJECT(pad_src));
 
         g_object_set(limiter, "bypass", false, nullptr);
 

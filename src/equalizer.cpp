@@ -73,14 +73,22 @@ Equalizer::Equalizer(std::string tag, std::string schema)
     }
 
     if (is_installed) {
-        bin = gst_insert_bin_new("equalizer_bin");
+        bin = gst_bin_new("equalizer_bin");
 
         in_level = gst_element_factory_make("level", "equalizer_input_level");
         out_level = gst_element_factory_make("level", "equalizer_output_level");
 
-        gst_insert_bin_append(GST_INSERT_BIN(bin), in_level, nullptr, nullptr);
-        gst_insert_bin_append(GST_INSERT_BIN(bin), equalizer, nullptr, nullptr);
-        gst_insert_bin_append(GST_INSERT_BIN(bin), out_level, nullptr, nullptr);
+        gst_bin_add_many(GST_BIN(bin), in_level, equalizer, out_level, nullptr);
+        gst_element_link_many(in_level, equalizer, out_level, nullptr);
+
+        auto pad_sink = gst_element_get_static_pad(in_level, "sink");
+        auto pad_src = gst_element_get_static_pad(out_level, "src");
+
+        gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
+        gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));
+
+        gst_object_unref(GST_OBJECT(pad_sink));
+        gst_object_unref(GST_OBJECT(pad_src));
 
         g_signal_connect(settings, "changed::state",
                          G_CALLBACK(on_state_changed), this);
