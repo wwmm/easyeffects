@@ -232,7 +232,7 @@ void SinkInputEffects::add_plugins_to_pipeline() {
     g_settings_get(sie_settings, "plugins", "as", &iter);
 
     while (g_variant_iter_next(iter, "s", &name)) {
-        gst_insert_bin_append(effects_bin, plugins[name], nullptr, nullptr);
+        append_element(effects_bin, plugins[name]);
 
         plugins_order.push_back(name);
     }
