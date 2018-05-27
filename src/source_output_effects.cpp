@@ -32,6 +32,38 @@ void on_message_element(const GstBus* gst_bus,
     }
 }
 
+void append_element(GstInsertBin* container, GstElement* element) {
+    bool wait_append = true;
+
+    if (element) {
+        gst_insert_bin_append(container, element,
+                              [](auto bin, auto elem, auto success, auto d) {
+                                  bool* wait = static_cast<bool*>(d);
+                                  *wait = false;
+                              },
+                              &wait_append);
+    }
+
+    while (wait_append) {
+    }
+}
+
+void remove_element(GstInsertBin* container, GstElement* element) {
+    bool wait_remove = true;
+
+    if (element) {
+        gst_insert_bin_remove(container, element,
+                              [](auto bin, auto elem, auto success, auto d) {
+                                  bool* wait = static_cast<bool*>(d);
+                                  *wait = false;
+                              },
+                              &wait_remove);
+    }
+
+    while (wait_remove) {
+    }
+}
+
 void on_plugins_order_changed(GSettings* settings,
                               gchar* key,
                               SourceOutputEffects* l) {
@@ -69,18 +101,13 @@ void on_plugins_order_changed(GSettings* settings,
                 gst_bin_get_by_name(GST_BIN(l->effects_bin),
                                     (plugins_order[idx] + "_plugin").c_str());
 
-            if (plugin) {
-                gst_insert_bin_remove(GST_INSERT_BIN(l->effects_bin), plugin,
-                                      nullptr, nullptr);
-            }
+            remove_element(l->effects_bin, plugin);
 
             idx--;
         } while (idx >= 0);
 
         for (long unsigned int n = 0; n < plugins_order.size(); n++) {
-            gst_insert_bin_append(GST_INSERT_BIN(l->effects_bin),
-                                  l->plugins[plugins_order[n]], nullptr,
-                                  nullptr);
+            append_element(l->effects_bin, l->plugins[plugins_order[n]]);
         }
 
         l->update_pipeline_state();
