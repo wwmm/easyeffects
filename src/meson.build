@@ -52,6 +52,7 @@ pulseeffects_sources = [
 	'pitch.cpp',
 	'pitch_ui.cpp',
 	'webrtc.cpp',
+	'webrtc_ui.cpp',
 	'util.cpp',
 	gresources
 ]
