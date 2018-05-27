@@ -2,20 +2,21 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PulseEffects package.
 # gogo <trebelnik2@gmail.com>, 2017.
+# rooty <cho4oot@gmail.com>, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-20 18:43-0300\n"
-"PO-Revision-Date: 2017-11-08 15:36+0100\n"
+"PO-Revision-Date: 2018-05-27 00:55+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.7\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
@@ -41,7 +42,6 @@ msgstr "Promjena frekvencije"
 
 #: PulseEffects/ui/app_info.glade:156 PulseEffects/ui/main_ui.glade:692
 #: PulseEffects/ui/main_ui.glade:768
-#, fuzzy
 msgid "Buffer"
 msgstr "Latencija međuspremnika"
 
@@ -55,39 +55,38 @@ msgid "State"
 msgstr "Stanje"
 
 #: PulseEffects/ui/bass_enhancer.glade:45
-#, fuzzy
 msgid "Bass Enhancer"
-msgstr "Zvučni poboljšivač"
+msgstr "Pojačanje basa"
 
 #: PulseEffects/ui/bass_enhancer.glade:126 PulseEffects/ui/exciter.glade:126
 msgid "3rd"
-msgstr ""
+msgstr "3."
 
 #: PulseEffects/ui/bass_enhancer.glade:138 PulseEffects/ui/exciter.glade:138
 msgid "2nd"
-msgstr ""
+msgstr "2."
 
 #: PulseEffects/ui/bass_enhancer.glade:150 PulseEffects/ui/exciter.glade:150
 msgid "Blend Harmonics"
-msgstr ""
+msgstr "Spajanje harmonijskog reda"
 
 #: PulseEffects/ui/bass_enhancer.glade:182 PulseEffects/ui/exciter.glade:182
 msgid "Amount"
-msgstr ""
+msgstr "Jačina"
 
 #: PulseEffects/ui/bass_enhancer.glade:194
 #: PulseEffects/ui/bass_enhancer.glade:324 PulseEffects/ui/exciter.glade:194
 #: PulseEffects/ui/exciter.glade:322
 msgid "Harmonics"
-msgstr ""
+msgstr "Harmonijski red"
 
 #: PulseEffects/ui/bass_enhancer.glade:206
 msgid "Floor"
-msgstr ""
+msgstr "Dno"
 
 #: PulseEffects/ui/bass_enhancer.glade:218 PulseEffects/ui/exciter.glade:218
 msgid "Scope"
-msgstr ""
+msgstr "Raspon"
 
 #: PulseEffects/ui/bass_enhancer.glade:417 PulseEffects/ui/equalizer.glade:1847
 #: PulseEffects/ui/exciter.glade:415 PulseEffects/ui/stereo_enhancer.glade:517
@@ -99,7 +98,7 @@ msgstr "Ulaz [dB]"
 #: PulseEffects/ui/exciter.glade:447 PulseEffects/ui/stereo_enhancer.glade:531
 #: PulseEffects/ui/stereo_spread.glade:314
 msgid "Output [dB]"
-msgstr "Izlaz"
+msgstr "Izlaz [dB]"
 
 #: PulseEffects/ui/compressor.glade:27 PulseEffects/ui/webrtc.glade:525
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:52
@@ -109,7 +108,7 @@ msgstr "Kompresor"
 #: PulseEffects/ui/compressor.glade:115 PulseEffects/ui/deesser.glade:131
 #: PulseEffects/ui/gate.glade:116
 msgid "rms"
-msgstr "RMS snaga"
+msgstr "RMS"
 
 #: PulseEffects/ui/compressor.glade:131 PulseEffects/ui/deesser.glade:148
 #: PulseEffects/ui/gate.glade:132
@@ -118,62 +117,56 @@ msgstr "Vršna snaga"
 
 #: PulseEffects/ui/compressor.glade:151 PulseEffects/ui/deesser.glade:171
 #: PulseEffects/ui/gate.glade:152
-#, fuzzy
 msgid "Detection"
-msgstr "Prigušenje"
+msgstr "Detekcija"
 
 #: PulseEffects/ui/compressor.glade:164 PulseEffects/ui/gate.glade:165
-#, fuzzy
 msgid "Stereo Link"
-msgstr "Zvučni poboljšivač"
+msgstr "Stereo veza"
 
 #: PulseEffects/ui/compressor.glade:174 PulseEffects/ui/gate.glade:175
 msgid "average"
-msgstr ""
+msgstr "prosjek"
 
 #: PulseEffects/ui/compressor.glade:190 PulseEffects/ui/gate.glade:191
 msgid "maximum"
-msgstr ""
+msgstr "maksimum"
 
 #: PulseEffects/ui/compressor.glade:210
 msgid "Mix"
-msgstr ""
+msgstr "Miješanje"
 
 #: PulseEffects/ui/compressor.glade:251 PulseEffects/ui/gate.glade:252
-#, fuzzy
 msgid "Attack"
-msgstr "Pokretanje [ms]"
+msgstr "Pokretanje"
 
 #: PulseEffects/ui/compressor.glade:284 PulseEffects/ui/gate.glade:285
 #: PulseEffects/ui/limiter.glade:247 PulseEffects/ui/maximizer.glade:166
 #: PulseEffects/ui/output_limiter.glade:189
-#, fuzzy
 msgid "Release"
-msgstr "Vrijeme prijelaza [s]"
+msgstr "Vrijeme prijelaza"
 
 #: PulseEffects/ui/compressor.glade:318 PulseEffects/ui/deesser.glade:446
 #: PulseEffects/ui/gate.glade:319 PulseEffects/ui/limiter.glade:487
 #: PulseEffects/ui/maximizer.glade:81
-#, fuzzy
 msgid "Threshold"
-msgstr "Prag [dB]"
+msgstr "Prag"
 
 #: PulseEffects/ui/compressor.glade:348 PulseEffects/ui/deesser.glade:479
 #: PulseEffects/ui/gate.glade:349
-#, fuzzy
 msgid "Ratio"
-msgstr "Omjer [n:1]"
+msgstr "Omjer"
 
 #: PulseEffects/ui/compressor.glade:378 PulseEffects/ui/gate.glade:379
 #, fuzzy
 msgid "Knee"
-msgstr "Ulaz [dB]"
+msgstr "Koljeno"
 
 #: PulseEffects/ui/compressor.glade:411 PulseEffects/ui/deesser.glade:510
 #: PulseEffects/ui/gate.glade:412
 #, fuzzy
 msgid "Makeup"
-msgstr "Poboljšanje [dB]"
+msgstr "Dorada"
 
 #: PulseEffects/ui/compressor.glade:465 PulseEffects/ui/crossfeed.glade:200
 #: PulseEffects/ui/deesser.glade:562 PulseEffects/ui/delay.glade:353
@@ -196,9 +189,8 @@ msgid "Output"
 msgstr "Izlaz"
 
 #: PulseEffects/ui/compressor.glade:645 PulseEffects/ui/gate.glade:646
-#, fuzzy
 msgid "Reduction"
-msgstr "Ograničenje pojačanja"
+msgstr "Smanjenje"
 
 #. for some reason when listbox is inside a scrolledwindow
 #. it autoselects a row at startup
@@ -213,68 +205,64 @@ msgstr ""
 
 #: PulseEffects/ui/crossfeed.glade:72
 msgid "Default"
-msgstr ""
+msgstr "Tvorničke postavke"
 
 #: PulseEffects/ui/crossfeed.glade:86
 msgid "Cmoy"
-msgstr ""
+msgstr "Cmoy"
 
 #: PulseEffects/ui/crossfeed.glade:122 PulseEffects/ui/highpass.glade:77
 #: PulseEffects/ui/lowpass.glade:77
-#, fuzzy
 msgid "Cutoff"
-msgstr "Prekid [Hz]"
+msgstr "Prekid"
 
 #: PulseEffects/ui/crossfeed.glade:154
-#, fuzzy
 msgid "Feed"
-msgstr "Ulaz [dB]"
+msgstr "Dovod zvuka"
 
 #: PulseEffects/ui/crossfeed.glade:379
 msgid "Crossfeed"
-msgstr ""
+msgstr "Križno spajanje"
 
 #: PulseEffects/ui/deesser.glade:57
 msgid "Deesser"
-msgstr ""
+msgstr "De-esiranje"
 
 #: PulseEffects/ui/deesser.glade:185 PulseEffects/ui/webrtc.glade:389
 msgid "Mode"
-msgstr ""
+msgstr "Način"
 
 #: PulseEffects/ui/deesser.glade:195
 msgid "wide"
-msgstr ""
+msgstr "široko"
 
 #: PulseEffects/ui/deesser.glade:213
 msgid "split"
-msgstr ""
+msgstr "razdvojeno"
 
 #: PulseEffects/ui/deesser.glade:248
 msgid "F1"
-msgstr ""
+msgstr "F1"
 
 #: PulseEffects/ui/deesser.glade:281
-#, fuzzy
 msgid "F1 Level"
-msgstr "Razina"
+msgstr "F1 Razina"
 
 #: PulseEffects/ui/deesser.glade:314
 msgid "F2"
-msgstr ""
+msgstr "F2"
 
 #: PulseEffects/ui/deesser.glade:367
-#, fuzzy
 msgid "F2 Level"
-msgstr "Razina"
+msgstr "F2 Razina"
 
 #: PulseEffects/ui/deesser.glade:382
 msgid "F2 Q"
-msgstr ""
+msgstr "F2 Q"
 
 #: PulseEffects/ui/deesser.glade:414
 msgid "Laxity"
-msgstr ""
+msgstr "Popustljivost"
 
 #: PulseEffects/ui/deesser.glade:742 PulseEffects/ui/gate.glade:211
 msgid "Gain Reduction"
@@ -288,32 +276,30 @@ msgstr "Prigušenje"
 #: PulseEffects/ui/delay.glade:23 PulseEffects/ui/delay.glade:274
 #: PulseEffects/ui/delay.glade:290 PulseEffects/ui/stereo_enhancer.glade:181
 #: PulseEffects/ui/stereo_enhancer.glade:352
-#, fuzzy
 msgid "Delay"
-msgstr "Završavanje [ms]"
+msgstr "Kašnjenje"
 
 #: PulseEffects/ui/delay.glade:91 PulseEffects/ui/delay.glade:124
-#, fuzzy
 msgid "Meters"
-msgstr "Vrsta filtra"
+msgstr "Metri"
 
 #: PulseEffects/ui/delay.glade:102 PulseEffects/ui/delay.glade:113
 msgid "Centimeters"
-msgstr ""
+msgstr "Centimetri"
 
 #: PulseEffects/ui/delay.glade:206 PulseEffects/ui/stereo_enhancer.glade:243
 #: PulseEffects/ui/stereo_enhancer.glade:446
 msgid "Left"
-msgstr ""
+msgstr "Lijevo"
 
 #: PulseEffects/ui/delay.glade:222 PulseEffects/ui/stereo_enhancer.glade:413
 #: PulseEffects/ui/stereo_enhancer.glade:447
 msgid "Right"
-msgstr ""
+msgstr "Desno"
 
 #: PulseEffects/ui/delay.glade:259
 msgid "Temperature"
-msgstr ""
+msgstr "Temperature"
 
 #: PulseEffects/ui/equalizer.glade:350
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
@@ -322,7 +308,7 @@ msgstr "Ekvalizator"
 
 #: PulseEffects/ui/equalizer.glade:2030
 msgid "Flat Response"
-msgstr "Vrati izvorno"
+msgstr "Ravan izlaz"
 
 #: PulseEffects/ui/equalizer_band_menu.glade:24
 msgid "Peak"
@@ -338,9 +324,8 @@ msgstr "Visok"
 
 #: PulseEffects/ui/equalizer_band_menu.glade:53
 #: PulseEffectsTest/ui/test_signals.glade:158
-#, fuzzy
 msgid "Frequency"
-msgstr "Frekvencija [Hz]"
+msgstr "Frekvencija"
 
 #: PulseEffects/ui/equalizer_band_menu.glade:66
 msgid "Quality"
@@ -360,16 +345,15 @@ msgstr "Vrsta filtra"
 
 #: PulseEffects/ui/exciter.glade:45
 msgid "Exciter"
-msgstr ""
+msgstr "Uzbuđivač"
 
 #: PulseEffects/ui/exciter.glade:206 PulseEffects/ui/maximizer.glade:113
-#, fuzzy
 msgid "Ceiling"
-msgstr "Ograničenje [dB]"
+msgstr "Vrh"
 
 #: PulseEffects/ui/gate.glade:27
 msgid "Gate"
-msgstr ""
+msgstr "Vrata"
 
 #: PulseEffects/ui/highpass.glade:18
 msgid "High Pass"
@@ -385,62 +369,54 @@ msgid "Input Limiter"
 msgstr "Graničnik ulaza"
 
 #: PulseEffects/ui/limiter.glade:161 PulseEffects/ui/output_limiter.glade:104
-#, fuzzy
 msgid "Input Gain"
-msgstr "Pojačanje ulaza"
+msgstr "Ulay"
 
 #: PulseEffects/ui/limiter.glade:193 PulseEffects/ui/output_limiter.glade:136
-#, fuzzy
 msgid "Limit"
-msgstr "Ograničenje [dB]"
+msgstr "Ograničenje"
 
 #: PulseEffects/ui/limiter.glade:258 PulseEffects/ui/output_limiter.glade:200
 msgid "Lookahead"
-msgstr ""
+msgstr "Preduhvatiti"
 
 #: PulseEffects/ui/limiter.glade:291 PulseEffects/ui/output_limiter.glade:234
 msgid "Oversampling"
-msgstr ""
+msgstr "Jaci sampling"
 
 #: PulseEffects/ui/limiter.glade:319 PulseEffects/ui/output_limiter.glade:261
-#, fuzzy
 msgid "ASC Level"
-msgstr "Razina"
+msgstr "ASC Razina"
 
 #: PulseEffects/ui/limiter.glade:347 PulseEffects/ui/output_limiter.glade:289
 msgid "ASC"
-msgstr ""
+msgstr "ASC "
 
 #: PulseEffects/ui/limiter.glade:364 PulseEffects/ui/webrtc.glade:448
-#, fuzzy
 msgid "Limiter"
-msgstr "Ograničenje [dB]"
+msgstr "Ograničenje"
 
 #: PulseEffects/ui/limiter.glade:377 PulseEffects/ui/webrtc.glade:95
 #: PulseEffects/ui/webrtc.glade:340 PulseEffects/ui/webrtc.glade:370
 #: PulseEffects/ui/webrtc.glade:637
-#, fuzzy
 msgid "Enable"
-msgstr "Sinus tablica"
+msgstr "Omogući"
 
 #: PulseEffects/ui/limiter.glade:402 PulseEffectsTest/ui/microphone.glade:35
-#, fuzzy
 msgid "Window"
-msgstr "Prozor [s]"
+msgstr "Prozor"
 
 #: PulseEffects/ui/limiter.glade:414
-#, fuzzy
 msgid "Target"
-msgstr "Meta [dB]"
+msgstr "Meta"
 
 #: PulseEffects/ui/limiter.glade:519
-#, fuzzy
 msgid "Tolerance"
-msgstr "Tolerancija [dB]"
+msgstr "Tolerancija"
 
 #: PulseEffects/ui/limiter.glade:536
 msgid "Auto Volume"
-msgstr "Automatska glasnoća zvuka"
+msgstr "Automatska glasnoća"
 
 #: PulseEffects/ui/limiter.glade:595 PulseEffects/ui/maximizer.glade:221
 #: PulseEffects/ui/output_limiter.glade:351
@@ -452,18 +428,16 @@ msgid "Low Pass"
 msgstr "Nizak prolaz"
 
 #: PulseEffects/ui/main_ui.glade:68
-#, fuzzy
 msgid "Test Signals"
 msgstr "Testni signali"
 
 #: PulseEffects/ui/main_ui.glade:395
 msgid "Start Service at Login"
-msgstr ""
+msgstr "Pokreni pri pokretanju računala"
 
 #: PulseEffects/ui/main_ui.glade:421
-#, fuzzy
 msgid "Enable All Applications"
-msgstr "Aplikacije"
+msgstr "Sve aplikacije"
 
 #: PulseEffects/ui/main_ui.glade:446
 msgid "Use Dark Theme"
@@ -494,33 +468,28 @@ msgid "Spectrum"
 msgstr "Spektar"
 
 #: PulseEffects/ui/main_ui.glade:591
-#, fuzzy
 msgid "Output Device"
-msgstr "Graničnik ulaza"
+msgstr "Izlaz"
 
 #: PulseEffects/ui/main_ui.glade:601 PulseEffects/ui/main_ui.glade:628
 msgid "Use Default"
-msgstr ""
+msgstr "Koristi tvornički"
 
 #: PulseEffects/ui/main_ui.glade:657
-#, fuzzy
 msgid "Input Device"
-msgstr "Graničnik ulaza"
+msgstr "Ulaz"
 
 #: PulseEffects/ui/main_ui.glade:840
-#, fuzzy
 msgid "Output Effects"
-msgstr "Graničnik ulaza"
+msgstr "Izlazni efekti"
 
 #: PulseEffects/ui/main_ui.glade:853
-#, fuzzy
 msgid "Input Effects"
-msgstr "Pulse Efekti"
+msgstr "Ulazni efekti"
 
 #: PulseEffects/ui/main_ui.glade:870
-#, fuzzy
 msgid "Advanced Settings"
-msgstr "Postavke"
+msgstr "Napredne postavke"
 
 #: PulseEffects/ui/main_ui.glade:880
 msgid "Pulseaudio"
@@ -528,10 +497,9 @@ msgstr ""
 
 #: PulseEffects/ui/maximizer.glade:18
 msgid "Maximizer"
-msgstr ""
+msgstr "Maksimizer"
 
 #: PulseEffects/ui/output_limiter.glade:32
-#, fuzzy
 msgid "Output Limiter"
 msgstr "Graničnik ulaza"
 
@@ -549,49 +517,47 @@ msgstr "D"
 
 #: PulseEffects/ui/pitch.glade:25
 msgid "Pitch"
-msgstr ""
+msgstr "Visina"
 
 #: PulseEffects/ui/pitch.glade:160
 msgid "Cents"
-msgstr ""
+msgstr "Centi"
 
 #: PulseEffects/ui/pitch.glade:171
 msgid "Semitones"
-msgstr ""
+msgstr "Polustepeni"
 
 #: PulseEffects/ui/pitch.glade:182
 msgid "Octaves"
-msgstr ""
+msgstr "Oktave"
 
 #: PulseEffects/ui/pitch.glade:193
 msgid "Crispness"
-msgstr ""
+msgstr "Oštrina"
 
 #: PulseEffects/ui/pitch.glade:202
 msgid "Faster"
-msgstr ""
+msgstr "Brže"
 
 #: PulseEffects/ui/pitch.glade:218
 msgid "Preserve Formant"
-msgstr ""
+msgstr "Sačuvaj formant"
 
 #: PulseEffects/ui/presets_menu.glade:33
 msgid "Name"
 msgstr "Naziv"
 
 #: PulseEffects/ui/presets_menu.glade:46
-#, fuzzy
 msgid "Create Preset"
-msgstr "Obriši predložak"
+msgstr "Izradi predložak"
 
 #: PulseEffects/ui/presets_menu.glade:65 PulseEffects/presets_manager.py:203
-#, fuzzy
 msgid "Import Presets"
-msgstr "Učitaj predložak"
+msgstr "Učitaj predloške"
 
 #: PulseEffects/ui/reverb.glade:25
 msgid "Reverberation"
-msgstr "Odjek"
+msgstr "Reverberacija"
 
 #: PulseEffects/ui/reverb.glade:102
 msgid "Small Room"
@@ -622,74 +588,69 @@ msgid "Level"
 msgstr "Razina"
 
 #: PulseEffects/ui/stereo_enhancer.glade:40
-#, fuzzy
 msgid "Stereo Enhancer"
-msgstr "Zvučni poboljšivač"
+msgstr "Pojačanje sterea"
 
 #: PulseEffects/ui/stereo_enhancer.glade:146
 #: PulseEffects/ui/stereo_enhancer.glade:317
-#, fuzzy
 msgid "Balance"
-msgstr "Zvučni poboljšivač"
+msgstr "Ravnoteža"
 
 #: PulseEffects/ui/stereo_enhancer.glade:215
 #: PulseEffects/ui/stereo_enhancer.glade:386
-#, fuzzy
 msgid "Gain"
-msgstr "Pojačanje ulaza"
+msgstr "Ulaz"
 
 #: PulseEffects/ui/stereo_enhancer.glade:224
 #: PulseEffects/ui/stereo_enhancer.glade:395
 msgid "Invert Phase"
-msgstr ""
+msgstr "Inverzija faze"
 
 #: PulseEffects/ui/stereo_enhancer.glade:275
 msgid "Invert Middle Phase"
-msgstr ""
+msgstr "Inverzija srednje faze"
 
 #: PulseEffects/ui/stereo_enhancer.glade:431
-#, fuzzy
 msgid "Side Gain"
-msgstr "Pojačanje ulaza"
+msgstr "Postranični ulaz"
 
 #: PulseEffects/ui/stereo_enhancer.glade:448
 msgid "Mid (L + R)"
-msgstr ""
+msgstr "Sredina (L+R)"
 
 #: PulseEffects/ui/stereo_enhancer.glade:449
 msgid "Side (L - R)"
-msgstr ""
+msgstr "Stranično (L-R)"
 
 #: PulseEffects/ui/stereo_enhancer.glade:450
 msgid "Mute"
-msgstr ""
+msgstr "Bezvučno"
 
 #: PulseEffects/ui/stereo_enhancer.glade:466
 msgid "Middle Source"
-msgstr ""
+msgstr "Srednji izvor"
 
 #: PulseEffects/ui/stereo_spread.glade:54
 msgid "Stereo Spread"
-msgstr ""
+msgstr "Širenje sterea"
 
 #: PulseEffects/ui/stereo_spread.glade:112
 msgid "Sub"
-msgstr ""
+msgstr "Sub"
 
 #: PulseEffects/ui/stereo_spread.glade:124 PulseEffects/ui/webrtc.glade:181
 #: PulseEffects/ui/webrtc.glade:255 PulseEffects/ui/webrtc.glade:578
 msgid "Low"
-msgstr ""
+msgstr "Nisko"
 
 #: PulseEffects/ui/stereo_spread.glade:136 PulseEffects/ui/webrtc.glade:216
 #: PulseEffects/ui/webrtc.glade:290 PulseEffects/ui/webrtc.glade:613
-#, fuzzy
 msgid "High"
-msgstr "Visok prolaz"
+msgstr "Visok"
 
 #: PulseEffects/ui/stereo_spread.glade:148
 msgid "Mid"
-msgstr ""
+msgstr "Srednje"
 
 #: PulseEffects/ui/stereo_spread.glade:230
 #, fuzzy
@@ -697,9 +658,8 @@ msgid "Filter"
 msgstr "Vrsta filtra"
 
 #: PulseEffects/ui/stereo_spread.glade:257
-#, fuzzy
 msgid "Mono Input"
-msgstr "Ulaz"
+msgstr "Mono"
 
 #: PulseEffects/ui/webrtc.glade:19
 msgid "Webrtc"
@@ -707,16 +667,15 @@ msgstr ""
 
 #: PulseEffects/ui/webrtc.glade:116
 msgid "Extended Filter"
-msgstr ""
+msgstr "Prošireni filter"
 
 #: PulseEffects/ui/webrtc.glade:129
 msgid "Delay Agnostic"
-msgstr ""
+msgstr "Delay-agnostic "
 
 #: PulseEffects/ui/webrtc.glade:141
-#, fuzzy
 msgid "High Pass Filter"
-msgstr "Visok prolaz"
+msgstr "Filter visokog prolaza"
 
 #: PulseEffects/ui/webrtc.glade:171 PulseEffects/ui/webrtc.glade:330
 #, fuzzy
@@ -726,12 +685,11 @@ msgstr "Ograničenje pojačanja"
 #: PulseEffects/ui/webrtc.glade:199 PulseEffects/ui/webrtc.glade:273
 #: PulseEffects/ui/webrtc.glade:595
 msgid "Moderate"
-msgstr ""
+msgstr "Umjereno"
 
 #: PulseEffects/ui/webrtc.glade:241
-#, fuzzy
 msgid "Echo Canceller"
-msgstr "Zvučni poboljšivač"
+msgstr "Poništenje jeke"
 
 #: PulseEffects/ui/webrtc.glade:308
 #, fuzzy
@@ -739,65 +697,60 @@ msgid "Very High"
 msgstr "Visok prolaz"
 
 #: PulseEffects/ui/webrtc.glade:356
-#, fuzzy
 msgid "Noise Suppressor"
-msgstr "Kompresor"
+msgstr "Supresija zvuka"
 
 #: PulseEffects/ui/webrtc.glade:399
 msgid "Adaptive"
-msgstr ""
+msgstr "Adaptivno"
 
 #: PulseEffects/ui/webrtc.glade:416
 msgid "Fixed"
-msgstr ""
+msgstr "Čvrsto"
 
 #: PulseEffects/ui/webrtc.glade:435
 msgid "Gain Controller"
-msgstr ""
+msgstr "Kontrola zvuka"
 
 #: PulseEffects/ui/webrtc.glade:468
-#, fuzzy
 msgid "Target Level"
-msgstr "Meta [dB]"
+msgstr "Meta"
 
 #: PulseEffects/ui/webrtc.glade:479
 msgid "Maximum Gain"
-msgstr ""
+msgstr "Najviši zvuk"
 
 #: PulseEffects/ui/webrtc.glade:550
-#, fuzzy
 msgid "Detection Likelihood"
-msgstr "Prigušenje"
+msgstr "Vjerojatnost detekcije"
 
 #: PulseEffects/ui/webrtc.glade:560
 msgid "Very Low"
-msgstr ""
+msgstr "Vrlo nisko"
 
 #: PulseEffects/ui/webrtc.glade:659
-#, fuzzy
 msgid "Frame Size"
-msgstr "Veličina sobe"
+msgstr "Veličina okvira"
 
 #: PulseEffects/ui/webrtc.glade:692
-#, fuzzy
 msgid "Voice Detector"
-msgstr "Prigušenje"
+msgstr "Detektor glasa"
 
 #: PulseEffects/application.py:34
 msgid "Quit PulseEffects. Useful when running in service mode."
-msgstr ""
+msgstr "Zatvori PulseEffects. Korisno pri upotrebi u načinu servisa."
 
 #: PulseEffects/application.py:39
 msgid "Show available presets."
-msgstr ""
+msgstr "Prikaži dostupne predloške."
 
 #: PulseEffects/application.py:44
 msgid "Load a preset. Example: pulseeffects -l music"
-msgstr ""
+msgstr "Učitaj predložak. Primjer: pulseeffects -l music"
 
 #: PulseEffects/application.py:162
 msgid "Running in background"
-msgstr ""
+msgstr "Radi u pozadini"
 
 #: PulseEffects/effects_base.py:76
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
@@ -822,16 +775,15 @@ msgstr "Obriši predložak"
 
 #: PulseEffects/presets_manager.py:162
 msgid " is not a file!"
-msgstr ""
+msgstr "nije datoteka!"
 
 #: PulseEffects/presets_manager.py:206
 msgid "Open"
-msgstr ""
+msgstr "Otvori"
 
 #: PulseEffects/presets_manager.py:207
-#, fuzzy
 msgid "Cancel"
-msgstr "Zvučni poboljšivač"
+msgstr "Poništi"
 
 #: PulseEffects/presets_manager.py:259
 #, fuzzy
@@ -853,7 +805,7 @@ msgstr "Izdvoji šum"
 #: PulseEffectsTest/ui/test_signals.glade:37
 #: PulseEffectsTest/ui/test_signals.glade:80
 msgid "Volume"
-msgstr "Glasnoća zvuka"
+msgstr "Glasnoća"
 
 #: PulseEffectsTest/ui/test_signals.glade:122
 msgid "Equal Loudness Test Signals"
@@ -935,7 +887,7 @@ msgid ""
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"Pulse Efekti je napredan alat za manipulaciju zvukom. Uključuje ekvalizator, "
+"PulseEffects je napredan alat za manipulaciju zvukom. Uključuje ekvalizator, "
 "graničnik, kompresor i alat odjeka, i druge alate. Još sadrži i ugrađeni "
 "analizator spektra."
 
@@ -945,7 +897,7 @@ msgid ""
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"Zato jer Pulse Efekti koriste zadani PulseAudio zvučni poslužitelj radit će "
+"Zato što PulseEffects koristi zadani PulseAudio zvučni poslužitelj radit će "
 "s većinom, ako ne i sa svim aplikacijama koje koristite. Sve podržane "
 "aplikacije su prikazane u glavnom prozoru, gdje se svaka pojedinačno može "
 "omogućiti."
@@ -956,7 +908,7 @@ msgid ""
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
-"Osim manipuliranja izlaza zvuka, Pulse Efekti mogu primijeniti efekte i na "
+"Osim manipuliranja izlaza zvuka, PulseEffects može primijeniti efekte i na "
 "ulazni uređaj, poput mikrofona. To je na primjer, korisno pri snimanju "
 "zvuka, ali isto tako radi i tijekom razgovora."
 
@@ -966,7 +918,7 @@ msgid ""
 "configuration used in the last session. It is also possible to save all the "
 "current settings as profiles."
 msgstr ""
-"Kada je Pulse Efekti pokrenut, upotrijebit će podešavanja od prošlog puta. "
+"Kada je PulseEffects pokrenut, upotrijebit će podešavanja od prošlog puta. "
 "Još je moguće spremiti sve trenutne postavke kao predloške."
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
@@ -975,7 +927,7 @@ msgstr "Kalibracija"
 
 #: data/com.github.wwmm.pulseeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
-msgstr ""
+msgstr "Ekvalizator, kompresor i drugi audio efekti"
 
 #: data/com.github.wwmm.pulseeffects.desktop.in:6
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
