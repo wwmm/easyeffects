@@ -162,14 +162,14 @@ WebrtcUi::WebrtcUi(BaseObjectType* cobject,
     settings->bind("target-level-dbfs", target_level_dbfs, "value", flag);
     settings->bind("voice-detection-frame-size-ms", voice_detection_frame_size,
                    "value", flag);
-    settings->bind("echo-cancel", echo_cancel, "value", flag);
-    settings->bind("extended-filter", extended_filter, "value", flag);
-    settings->bind("high-pass-filter", high_pass_filter, "value", flag);
-    settings->bind("delay-agnostic", delay_agnostic, "value", flag);
-    settings->bind("noise-suppression", noise_suppression, "value", flag);
-    settings->bind("gain-control", gain_control, "value", flag);
-    settings->bind("limiter", limiter, "value", flag);
-    settings->bind("voice-detection", voice_detection, "value", flag);
+    settings->bind("echo-cancel", echo_cancel, "active", flag);
+    settings->bind("extended-filter", extended_filter, "active", flag);
+    settings->bind("high-pass-filter", high_pass_filter, "active", flag);
+    settings->bind("delay-agnostic", delay_agnostic, "active", flag);
+    settings->bind("noise-suppression", noise_suppression, "active", flag);
+    settings->bind("gain-control", gain_control, "active", flag);
+    settings->bind("limiter", limiter, "active", flag);
+    settings->bind("voice-detection", voice_detection, "active", flag);
 
     g_settings_bind_with_mapping(
         settings->gobj(), "echo-suppression-level",

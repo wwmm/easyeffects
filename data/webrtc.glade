@@ -27,7 +27,7 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="valign">center</property>
-        <property name="label" translatable="yes">Pitch</property>
+        <property name="label" translatable="yes">Webrtc</property>
         <attributes>
           <attribute name="weight" value="bold"/>
         </attributes>

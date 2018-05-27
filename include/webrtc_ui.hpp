@@ -1,5 +1,5 @@
-#ifndef PANORAMA_UI_HPP
-#define PANORAMA_UI_HPP
+#ifndef WEBRTC_UI_HPP
+#define WEBRTC_UI_HPP
 
 #include <gtkmm/adjustment.h>
 #include <gtkmm/comboboxtext.h>

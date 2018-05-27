@@ -22,7 +22,9 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(
       deesser_ui(DeesserUi::create(
           "com.github.wwmm.pulseeffects.sourceoutputs.deesser")),
       pitch_ui(
-          PitchUi::create("com.github.wwmm.pulseeffects.sourceoutputs.pitch")) {
+          PitchUi::create("com.github.wwmm.pulseeffects.sourceoutputs.pitch")),
+      webrtc_ui(WebrtcUi::create(
+          "com.github.wwmm.pulseeffects.sourceoutputs.webrtc")) {
     level_meters_connections();
     populate_listbox();
     populate_stack();
@@ -116,6 +118,13 @@ void SourceOutputEffectsUi::level_meters_connections() {
         sigc::mem_fun(*pitch_ui, &PitchUi::on_new_input_level_db)));
     connections.push_back(soe->pitch_output_level.connect(
         sigc::mem_fun(*pitch_ui, &PitchUi::on_new_output_level_db)));
+
+    // webrtc level meters connections
+
+    connections.push_back(soe->webrtc_input_level.connect(
+        sigc::mem_fun(*webrtc_ui, &WebrtcUi::on_new_input_level_db)));
+    connections.push_back(soe->webrtc_output_level.connect(
+        sigc::mem_fun(*webrtc_ui, &WebrtcUi::on_new_output_level_db)));
 }
 
 void SourceOutputEffectsUi::populate_listbox() {
@@ -127,6 +136,7 @@ void SourceOutputEffectsUi::populate_listbox() {
     add_to_listbox(gate_ui);
     add_to_listbox(deesser_ui);
     add_to_listbox(pitch_ui);
+    add_to_listbox(webrtc_ui);
 }
 void SourceOutputEffectsUi::populate_stack() {
     stack->add(*limiter_ui, std::string("limiter"));
@@ -137,6 +147,7 @@ void SourceOutputEffectsUi::populate_stack() {
     stack->add(*gate_ui, std::string("gate"));
     stack->add(*deesser_ui, std::string("deesser"));
     stack->add(*pitch_ui, std::string("pitch"));
+    stack->add(*webrtc_ui, std::string("webrtc"));
 }
 
 void SourceOutputEffectsUi::up_down_connections() {
@@ -211,6 +222,11 @@ void SourceOutputEffectsUi::up_down_connections() {
         [=]() { on_up(pitch_ui); }));
     connections.push_back(pitch_ui->plugin_down->signal_clicked().connect(
         [=]() { on_down(pitch_ui); }));
+
+    connections.push_back(webrtc_ui->plugin_up->signal_clicked().connect(
+        [=]() { on_up(webrtc_ui); }));
+    connections.push_back(webrtc_ui->plugin_down->signal_clicked().connect(
+        [=]() { on_down(webrtc_ui); }));
 }
 
 void SourceOutputEffectsUi::reset() {
@@ -224,4 +240,5 @@ void SourceOutputEffectsUi::reset() {
     gate_ui->reset();
     deesser_ui->reset();
     pitch_ui->reset();
+    webrtc_ui->reset();
 }

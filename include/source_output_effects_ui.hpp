@@ -11,6 +11,7 @@
 #include "pitch_ui.hpp"
 #include "reverb_ui.hpp"
 #include "source_output_effects.hpp"
+#include "webrtc_ui.hpp"
 
 class SourceOutputEffectsUi : public EffectsBaseUi {
    public:
@@ -40,6 +41,7 @@ class SourceOutputEffectsUi : public EffectsBaseUi {
     std::shared_ptr<GateUi> gate_ui;
     std::shared_ptr<DeesserUi> deesser_ui;
     std::shared_ptr<PitchUi> pitch_ui;
+    std::shared_ptr<WebrtcUi> webrtc_ui;
 
     void level_meters_connections();
     void populate_listbox();
