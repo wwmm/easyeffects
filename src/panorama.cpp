@@ -52,6 +52,21 @@ Panorama::Panorama(std::string tag, std::string schema)
 
     plugin = gst_insert_bin_new("panorama_plugin");
 
+    // plugin = gst_bin_new("panorama_plugin");
+    // identity_in = gst_element_factory_make("identity", nullptr);
+    // identity_out = gst_element_factory_make("identity", nullptr);
+    //
+    // gst_bin_add_many(GST_BIN(plugin), identity_in, identity_out, nullptr);
+    // gst_element_link_many(identity_in, identity_out, nullptr);
+    //
+    // gst_element_add_pad(
+    //     plugin, gst_ghost_pad_new(
+    //                 "sink", gst_element_get_static_pad(identity_in,
+    //                 "sink")));
+    // gst_element_add_pad(
+    //     plugin, gst_ghost_pad_new(
+    //                 "src", gst_element_get_static_pad(identity_out, "src")));
+
     if (panorama != nullptr) {
         is_installed = true;
     } else {

@@ -13,7 +13,7 @@ class Panorama {
     ~Panorama();
 
     std::string log_tag, name = "panorama";
-    GstElement *plugin, *bin, *panorama;
+    GstElement *plugin, *bin, *panorama, *identity_in, *identity_out;
 
    private:
     bool is_installed;
