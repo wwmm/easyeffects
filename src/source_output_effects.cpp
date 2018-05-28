@@ -49,12 +49,12 @@ GstPadProbeReturn on_pad_idle(GstPad* pad,
         gst_element_unlink(l->plugins[l->plugins_order_old[n - 1]],
                            l->plugins[l->plugins_order_old[n]]);
 
-        std::cout << l->plugins_order[n - 1] << "->" << l->plugins_order[n]
-                  << std::endl;
+        // std::cout << l->plugins_order[n - 1] << "->" << l->plugins_order[n]
+        //           << std::endl;
     }
 
     gst_element_unlink(
-        l->plugins[l->plugins_order[l->plugins_order_old.size() - 1]],
+        l->plugins[l->plugins_order_old[l->plugins_order_old.size() - 1]],
         l->identity_out);
 
     // syncing elements state with effects_bin

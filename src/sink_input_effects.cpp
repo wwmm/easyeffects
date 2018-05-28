@@ -59,7 +59,7 @@ GstPadProbeReturn on_pad_idle(GstPad* pad,
     }
 
     gst_element_unlink(
-        l->plugins[l->plugins_order[l->plugins_order_old.size() - 1]],
+        l->plugins[l->plugins_order_old[l->plugins_order_old.size() - 1]],
         l->identity_out);
 
     // syncing elements state with effects_bin
