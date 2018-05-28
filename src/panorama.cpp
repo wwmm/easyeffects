@@ -1,6 +1,4 @@
 #include <glibmm/main.h>
-#include <gst/insertbin/gstinsertbin.h>
-#include <mutex>
 #include "panorama.hpp"
 #include "util.hpp"
 
@@ -69,8 +67,6 @@ void on_state_changed(GSettings* settings, gchar* key, Panorama* l) {
 Panorama::Panorama(std::string tag, std::string schema)
     : log_tag(tag), settings(g_settings_new(schema.c_str())) {
     panorama = gst_element_factory_make("audiopanorama", nullptr);
-
-    // plugin = gst_insert_bin_new("panorama_plugin");
 
     plugin = gst_bin_new("panorama_plugin");
     identity_in = gst_element_factory_make("identity", nullptr);
