@@ -36,37 +36,37 @@ void on_message_element(const GstBus* gst_bus,
     }
 }
 
-void append_element(GstInsertBin* container, GstElement* element) {
-    if (element) {
-        bool wait_append = true;
-
-        gst_insert_bin_append(container, element,
-                              [](auto bin, auto elem, auto success, auto d) {
-                                  bool* wait = static_cast<bool*>(d);
-                                  *wait = false;
-                              },
-                              &wait_append);
-
-        while (wait_append) {
-        }
-    }
-}
-
-void remove_element(GstInsertBin* container, GstElement* element) {
-    if (element) {
-        bool wait_remove = true;
-
-        gst_insert_bin_remove(container, element,
-                              [](auto bin, auto elem, auto success, auto d) {
-                                  bool* wait = static_cast<bool*>(d);
-                                  *wait = false;
-                              },
-                              &wait_remove);
-
-        while (wait_remove) {
-        }
-    }
-}
+// void append_element(GstInsertBin* container, GstElement* element) {
+//     if (element) {
+//         bool wait_append = true;
+//
+//         gst_insert_bin_append(container, element,
+//                               [](auto bin, auto elem, auto success, auto d) {
+//                                   bool* wait = static_cast<bool*>(d);
+//                                   *wait = false;
+//                               },
+//                               &wait_append);
+//
+//         while (wait_append) {
+//         }
+//     }
+// }
+//
+// void remove_element(GstInsertBin* container, GstElement* element) {
+//     if (element) {
+//         bool wait_remove = true;
+//
+//         gst_insert_bin_remove(container, element,
+//                               [](auto bin, auto elem, auto success, auto d) {
+//                                   bool* wait = static_cast<bool*>(d);
+//                                   *wait = false;
+//                               },
+//                               &wait_remove);
+//
+//         while (wait_remove) {
+//         }
+//     }
+// }
 
 void on_plugins_order_changed(GSettings* settings,
                               gchar* key,
@@ -101,17 +101,18 @@ void on_plugins_order_changed(GSettings* settings,
         gst_element_set_state(l->pipeline, GST_STATE_NULL);
 
         do {
-            auto plugin =
-                gst_bin_get_by_name(GST_BIN(l->effects_bin),
-                                    (plugins_order[idx] + "_plugin").c_str());
+            // auto plugin =
+            //     gst_bin_get_by_name(GST_BIN(l->effects_bin),
+            //                         (plugins_order[idx] +
+            //                         "_plugin").c_str());
 
-            remove_element(l->effects_bin, plugin);
+            // remove_element(l->effects_bin, plugin);
 
             idx--;
         } while (idx >= 0);
 
         for (long unsigned int n = 0; n < plugins_order.size(); n++) {
-            append_element(l->effects_bin, l->plugins[plugins_order[n]]);
+            // append_element(l->effects_bin, l->plugins[plugins_order[n]]);
         }
 
         l->update_pipeline_state();
@@ -191,8 +192,8 @@ SourceOutputEffects::SourceOutputEffects(
 
     add_plugins_to_pipeline();
 
-    g_signal_connect(soe_settings, "changed::plugins",
-                     G_CALLBACK(on_plugins_order_changed), this);
+    // g_signal_connect(soe_settings, "changed::plugins",
+    //                  G_CALLBACK(on_plugins_order_changed), this);
 }
 
 SourceOutputEffects::~SourceOutputEffects() {}
@@ -215,7 +216,7 @@ void SourceOutputEffects::add_plugins_to_pipeline() {
     g_settings_get(soe_settings, "plugins", "as", &iter);
 
     while (g_variant_iter_next(iter, "s", &name)) {
-        append_element(effects_bin, plugins[name]);
+        // append_element(effects_bin, plugins[name]);
 
         plugins_order.push_back(name);
     }

@@ -160,7 +160,7 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     gst_bin_add_many(GST_BIN(spectrum_bin), spectrum_identity_in,
                      spectrum_identity_out, nullptr);
 
-    gst_element_link_many(spectrum_identity_in, spectrum_identity_out, nullptr);
+    gst_element_link(spectrum_identity_in, spectrum_identity_out);
 
     gst_element_add_pad(
         spectrum_bin,
@@ -173,7 +173,24 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
 
     /////////
 
-    effects_bin = GST_INSERT_BIN(gst_insert_bin_new("effects_bin"));
+    /// preparing effects bin
+
+    effects_bin = gst_bin_new("effects_bin");
+
+    identity_in = gst_element_factory_make("identity", nullptr);
+    identity_out = gst_element_factory_make("identity", nullptr);
+
+    gst_bin_add_many(GST_BIN(effects_bin), identity_in, identity_out, nullptr);
+
+    gst_element_link(identity_in, identity_out);
+
+    gst_element_add_pad(effects_bin,
+                        gst_ghost_pad_new("sink", gst_element_get_static_pad(
+                                                      identity_in, "sink")));
+    gst_element_add_pad(effects_bin,
+                        gst_ghost_pad_new("src", gst_element_get_static_pad(
+                                                     identity_out, "src")));
+    //////////
 
     auto caps_str =
         "audio/x-raw,format=F32LE,channels=2,rate=" + std::to_string(rate);

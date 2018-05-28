@@ -3,7 +3,6 @@
 
 #include <gio/gio.h>
 #include <gst/gst.h>
-#include <gst/insertbin/gstinsertbin.h>
 #include <vector>
 #include "pulse_manager.hpp"
 
@@ -15,8 +14,8 @@ class PipelineBase {
     std::string log_tag;
 
     GstElement *pipeline, *source, *sink, *spectrum, *spectrum_bin,
-        *spectrum_identity_in, *spectrum_identity_out;
-    GstInsertBin* effects_bin;
+        *spectrum_identity_in, *spectrum_identity_out, *effects_bin,
+        *identity_in, *identity_out;
     GstBus* bus;
 
     bool resizing_spectrum = false;
