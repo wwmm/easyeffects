@@ -1,19 +1,16 @@
 #ifndef FILTER_HPP
 #define FILTER_HPP
 
-#include <gio/gio.h>
-#include <gst/gst.h>
 #include <sigc++/sigc++.h>
 #include <array>
-#include <iostream>
+#include "plugin_base.hpp"
 
-class Filter {
+class Filter : public PluginBase {
    public:
     Filter(std::string tag, std::string schema);
     ~Filter();
 
-    std::string log_tag, name = "filter";
-    GstElement *plugin, *filter;
+    GstElement* filter;
 
     sigc::connection input_level_connection;
     sigc::connection output_level_connection;
@@ -22,10 +19,6 @@ class Filter {
     sigc::signal<void, std::array<double, 2>> output_level;
 
    private:
-    bool is_installed;
-
-    GSettings* settings;
-
     void bind_to_gsettings();
 };
 
