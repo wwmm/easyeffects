@@ -1,30 +1,22 @@
 #ifndef EQUALIZER_HPP
 #define EQUALIZER_HPP
 
-#include <gio/gio.h>
-#include <gst/gst.h>
 #include <sigc++/sigc++.h>
 #include <array>
-#include <iostream>
+#include "plugin_base.hpp"
 
-class Equalizer {
+class Equalizer : public PluginBase {
    public:
     Equalizer(std::string tag, std::string schema);
     ~Equalizer();
 
     bool is_enabled = false;
 
-    std::string log_tag, name = "equalizer";
-
-    GstElement *plugin, *bin, *equalizer, *in_level, *out_level;
+    GstElement* equalizer;
 
     void init_equalizer();
 
    private:
-    bool is_installed;
-
-    GSettings* settings;
-
     void bind_band(const int index);
     void unbind_band(const int index);
 };

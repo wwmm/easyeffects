@@ -1,47 +1,8 @@
 #include <glibmm/main.h>
-#include <gst/insertbin/gstinsertbin.h>
 #include "reverb.hpp"
 #include "util.hpp"
 
 namespace {
-
-void on_state_changed(GSettings* settings, gchar* key, Reverb* l) {
-    auto enable = g_settings_get_boolean(settings, key);
-    auto plugin = gst_bin_get_by_name(GST_BIN(l->plugin), "reverb");
-
-    if (enable) {
-        if (!plugin) {
-            gst_insert_bin_append(
-                GST_INSERT_BIN(l->plugin), l->reverb,
-                [](auto bin, auto elem, auto success, auto d) {
-                    auto l = static_cast<Reverb*>(d);
-
-                    if (success) {
-                        util::debug(l->log_tag + "reverb enabled");
-                    } else {
-                        util::debug(l->log_tag + "failed to enable the reverb");
-                    }
-                },
-                l);
-        }
-    } else {
-        if (plugin) {
-            gst_insert_bin_remove(
-                GST_INSERT_BIN(l->plugin), l->reverb,
-                [](auto bin, auto elem, auto success, auto d) {
-                    auto l = static_cast<Reverb*>(d);
-
-                    if (success) {
-                        util::debug(l->log_tag + "reverb disabled");
-                    } else {
-                        util::debug(l->log_tag +
-                                    "failed to disable the reverb");
-                    }
-                },
-                l);
-        }
-    }
-}
 
 void on_post_messages_changed(GSettings* settings, gchar* key, Reverb* l) {
     auto post = g_settings_get_boolean(settings, key);
@@ -86,32 +47,28 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Reverb* l) {
 }  // namespace
 
 Reverb::Reverb(std::string tag, std::string schema)
-    : log_tag(tag), settings(g_settings_new(schema.c_str())) {
+    : PluginBase(tag, "reverb", schema) {
     reverb = gst_element_factory_make("calf-sourceforge-net-plugins-Reverb",
                                       "reverb");
 
-    plugin = gst_insert_bin_new("reverb_plugin");
+    if (is_installed(reverb)) {
+        bin = gst_bin_new("reverb_bin");
 
-    if (reverb != nullptr) {
-        is_installed = true;
-    } else {
-        is_installed = false;
+        gst_bin_add(GST_BIN(bin), reverb);
 
-        util::warning("Reverb plugin was not found!");
-    }
+        auto pad_sink = gst_element_get_static_pad(reverb, "sink");
+        auto pad_src = gst_element_get_static_pad(reverb, "src");
 
-    if (is_installed) {
-        auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
+        gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
+        gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));
 
-        gst_insert_bin_append(GST_INSERT_BIN(plugin), audioconvert, nullptr,
-                              nullptr);
+        gst_object_unref(GST_OBJECT(pad_sink));
+        gst_object_unref(GST_OBJECT(pad_src));
 
         g_object_set(reverb, "on", true, nullptr);
 
         bind_to_gsettings();
 
-        g_signal_connect(settings, "changed::state",
-                         G_CALLBACK(on_state_changed), this);
         g_signal_connect(settings, "changed::post-messages",
                          G_CALLBACK(on_post_messages_changed), this);
 
