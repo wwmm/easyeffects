@@ -1,25 +1,18 @@
 #ifndef PITCH_HPP
 #define PITCH_HPP
 
-#include <gio/gio.h>
-#include <gst/gst.h>
 #include <sigc++/sigc++.h>
 #include <array>
-#include <iostream>
+#include "plugin_base.hpp"
 
-class Pitch {
+class Pitch : public PluginBase {
    public:
     Pitch(std::string tag, std::string schema);
     ~Pitch();
 
-    std::string log_tag, name = "pitch";
-    GstElement *plugin, *bin, *pitch;
+    GstElement* pitch;
 
    private:
-    bool is_installed;
-
-    GSettings* settings;
-
     void bind_to_gsettings();
 };
 
