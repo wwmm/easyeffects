@@ -151,8 +151,29 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     auto capsfilter = gst_element_factory_make("capsfilter", nullptr);
     auto queue = gst_element_factory_make("queue", nullptr);
 
+    // preparing spectrum bin
+
+    spectrum_bin = gst_bin_new("spectrum_bin");
+    spectrum_identity_in = gst_element_factory_make("identity", nullptr);
+    spectrum_identity_out = gst_element_factory_make("identity", nullptr);
+
+    gst_bin_add_many(GST_BIN(spectrum_bin), spectrum_identity_in,
+                     spectrum_identity_out, nullptr);
+
+    gst_element_link_many(spectrum_identity_in, spectrum_identity_out, nullptr);
+
+    gst_element_add_pad(
+        spectrum_bin,
+        gst_ghost_pad_new(
+            "sink", gst_element_get_static_pad(spectrum_identity_in, "sink")));
+    gst_element_add_pad(
+        spectrum_bin,
+        gst_ghost_pad_new(
+            "src", gst_element_get_static_pad(spectrum_identity_out, "src")));
+
+    /////////
+
     effects_bin = GST_INSERT_BIN(gst_insert_bin_new("effects_bin"));
-    spectrum_wrapper = GST_INSERT_BIN(gst_insert_bin_new("spectrum_wrapper"));
 
     auto caps_str =
         "audio/x-raw,format=F32LE,channels=2,rate=" + std::to_string(rate);
@@ -162,10 +183,10 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     // building the pipeline
 
     gst_bin_add_many(GST_BIN(pipeline), source, capsfilter, queue, effects_bin,
-                     spectrum_wrapper, sink, nullptr);
+                     spectrum_bin, sink, nullptr);
 
-    gst_element_link_many(source, capsfilter, queue, effects_bin,
-                          spectrum_wrapper, sink, nullptr);
+    gst_element_link_many(source, capsfilter, queue, effects_bin, spectrum_bin,
+                          sink, nullptr);
 
     // initializing properties
 
@@ -315,41 +336,66 @@ void PipelineBase::init_spectrum() {
 }
 
 void PipelineBase::enable_spectrum() {
-    auto plugin = gst_bin_get_by_name(GST_BIN(spectrum_wrapper), "spectrum");
+    gst_pad_add_probe(
+        gst_element_get_static_pad(spectrum_identity_in, "src"),
+        GST_PAD_PROBE_TYPE_IDLE,
+        [](auto pad, auto info, auto d) {
+            auto l = static_cast<PipelineBase*>(d);
 
-    if (!plugin) {
-        gst_insert_bin_append(
-            GST_INSERT_BIN(spectrum_wrapper), spectrum,
-            [](auto bin, auto elem, auto success, auto d) {
-                auto pb = static_cast<PipelineBase*>(d);
+            auto plugin =
+                gst_bin_get_by_name(GST_BIN(l->spectrum_bin), "spectrum");
 
-                if (success) {
-                    util::debug(pb->log_tag + "spectrum enabled");
-                } else {
-                    util::debug(pb->log_tag + "failed to enable the spectrum");
-                }
-            },
-            this);
-    }
+            if (!plugin) {
+                gst_element_unlink(l->spectrum_identity_in,
+                                   l->spectrum_identity_out);
+
+                gst_bin_add(GST_BIN(l->spectrum_bin), l->spectrum);
+
+                gst_element_sync_state_with_parent(l->spectrum_identity_in);
+                gst_element_sync_state_with_parent(l->spectrum);
+                gst_element_sync_state_with_parent(l->spectrum_identity_out);
+
+                gst_element_link_many(l->spectrum_identity_in, l->spectrum,
+                                      l->spectrum_identity_out, nullptr);
+
+                util::debug(l->log_tag + "spectrum enabled");
+            }
+
+            return GST_PAD_PROBE_REMOVE;
+        },
+        this, nullptr);
 }
 
 void PipelineBase::disable_spectrum() {
-    auto plugin = gst_bin_get_by_name(GST_BIN(spectrum_wrapper), "spectrum");
+    gst_pad_add_probe(
+        gst_element_get_static_pad(spectrum_identity_in, "src"),
+        GST_PAD_PROBE_TYPE_IDLE,
+        [](auto pad, auto info, auto d) {
+            auto l = static_cast<PipelineBase*>(d);
 
-    if (plugin) {
-        gst_insert_bin_remove(
-            GST_INSERT_BIN(spectrum_wrapper), spectrum,
-            [](auto bin, auto elem, auto success, auto d) {
-                auto pb = static_cast<PipelineBase*>(d);
+            auto plugin =
+                gst_bin_get_by_name(GST_BIN(l->spectrum_bin), "spectrum");
 
-                if (success) {
-                    util::debug(pb->log_tag + "spectrum disabled");
-                } else {
-                    util::debug(pb->log_tag + "failed to disable the spectrum");
-                }
-            },
-            this);
-    }
+            if (plugin) {
+                gst_element_unlink_many(l->spectrum_identity_in, l->spectrum,
+                                        l->spectrum_identity_out, nullptr);
+
+                gst_bin_remove(GST_BIN(l->spectrum_bin), l->spectrum);
+
+                gst_element_set_state(l->spectrum, GST_STATE_NULL);
+
+                gst_element_sync_state_with_parent(l->spectrum_identity_in);
+                gst_element_sync_state_with_parent(l->spectrum_identity_out);
+
+                gst_element_link(l->spectrum_identity_in,
+                                 l->spectrum_identity_out);
+
+                util::debug(l->log_tag + "spectrum disabled");
+            }
+
+            return GST_PAD_PROBE_REMOVE;
+        },
+        this, nullptr);
 }
 
 std::array<double, 2> PipelineBase::get_peak(GstMessage* message) {
