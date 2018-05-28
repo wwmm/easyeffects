@@ -368,9 +368,7 @@ void PipelineBase::enable_spectrum() {
 
                 gst_bin_add(GST_BIN(l->spectrum_bin), l->spectrum);
 
-                gst_element_sync_state_with_parent(l->spectrum_identity_in);
-                gst_element_sync_state_with_parent(l->spectrum);
-                gst_element_sync_state_with_parent(l->spectrum_identity_out);
+                gst_bin_sync_children_states(GST_BIN(l->spectrum_bin));
 
                 gst_element_link_many(l->spectrum_identity_in, l->spectrum,
                                       l->spectrum_identity_out, nullptr);
@@ -401,8 +399,7 @@ void PipelineBase::disable_spectrum() {
 
                 gst_element_set_state(l->spectrum, GST_STATE_NULL);
 
-                gst_element_sync_state_with_parent(l->spectrum_identity_in);
-                gst_element_sync_state_with_parent(l->spectrum_identity_out);
+                gst_bin_sync_children_states(GST_BIN(l->spectrum_bin));
 
                 gst_element_link(l->spectrum_identity_in,
                                  l->spectrum_identity_out);

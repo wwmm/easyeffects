@@ -45,37 +45,31 @@ void on_message_element(const GstBus* gst_bus,
     }
 }
 
-// void append_element(GstInsertBin* container, GstElement* element) {
-//     if (element) {
-//         bool wait_append = true;
-//
-//         gst_insert_bin_append(container, element,
-//                               [](auto bin, auto elem, auto success, auto d) {
-//                                   bool* wait = static_cast<bool*>(d);
-//                                   *wait = false;
-//                               },
-//                               &wait_append);
-//
-//         while (wait_append) {
-//         }
-//     }
-// }
+GstPadProbeReturn on_pad_idle(GstPad* pad,
+                              GstPadProbeInfo* info,
+                              gpointer user_data) {
+    auto l = static_cast<SinkInputEffects*>(user_data);
 
-// void remove_element(GstInsertBin* container, GstElement* element) {
-//     if (element) {
-//         bool wait_remove = true;
-//
-//         gst_insert_bin_remove(container, element,
-//                               [](auto bin, auto elem, auto success, auto d) {
-//                                   bool* wait = static_cast<bool*>(d);
-//                                   *wait = false;
-//                               },
-//                               &wait_remove);
-//
-//         while (wait_remove) {
-//         }
-//     }
-// }
+    gst_element_unlink(l->identity_in, l->identity_out);
+
+    for (auto& p : l->plugins) {
+        gst_bin_add(GST_BIN(l->effects_bin), p.second);
+    }
+
+    gst_bin_sync_children_states(GST_BIN(l->effects_bin));
+
+    gst_element_link(l->identity_in, l->plugins[l->plugins_order[0]]);
+
+    for (long unsigned int n = 1; n < l->plugins_order.size(); n++) {
+        gst_element_link(l->plugins[l->plugins_order[n - 1]],
+                         l->plugins[l->plugins_order[n]]);
+    }
+
+    gst_element_link(l->plugins[l->plugins_order[l->plugins_order.size() - 1]],
+                     l->identity_out);
+
+    return GST_PAD_PROBE_REMOVE;
+}
 
 void on_plugins_order_changed(GSettings* settings,
                               gchar* key,
@@ -233,10 +227,11 @@ void SinkInputEffects::add_plugins_to_pipeline() {
     g_settings_get(sie_settings, "plugins", "as", &iter);
 
     while (g_variant_iter_next(iter, "s", &name)) {
-        // append_element(effects_bin, plugins[name]);
-
         plugins_order.push_back(name);
     }
 
     g_variant_iter_free(iter);
+
+    gst_pad_add_probe(gst_element_get_static_pad(identity_in, "src"),
+                      GST_PAD_PROBE_TYPE_IDLE, on_pad_idle, this, nullptr);
 }
