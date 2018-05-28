@@ -25,7 +25,7 @@ class SinkInputEffects : public PipelineBase {
 
     std::shared_ptr<PulseManager> pm;
 
-    std::vector<std::string> plugins_order;
+    std::vector<std::string> plugins_order, plugins_order_old;
     std::map<std::string, GstElement*> plugins;
 
     std::unique_ptr<Limiter> limiter;

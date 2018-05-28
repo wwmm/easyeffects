@@ -50,9 +50,24 @@ GstPadProbeReturn on_pad_idle(GstPad* pad,
                               gpointer user_data) {
     auto l = static_cast<SinkInputEffects*>(user_data);
 
-    gst_element_unlink(l->identity_in, l->identity_out);
+    // unlinking elements using old plugins order
+
+    gst_element_unlink(l->identity_in, l->plugins[l->plugins_order_old[0]]);
+
+    for (long unsigned int n = 1; n < l->plugins_order_old.size(); n++) {
+        gst_element_unlink(l->plugins[l->plugins_order_old[n - 1]],
+                           l->plugins[l->plugins_order_old[n]]);
+    }
+
+    gst_element_unlink(
+        l->plugins[l->plugins_order[l->plugins_order_old.size() - 1]],
+        l->identity_out);
+
+    // syncing elements state with effects_bin
 
     gst_bin_sync_children_states(GST_BIN(l->effects_bin));
+
+    // linking elements using the new plugins order
 
     gst_element_link(l->identity_in, l->plugins[l->plugins_order[0]]);
 
@@ -73,48 +88,28 @@ void on_plugins_order_changed(GSettings* settings,
     bool update = false;
     gchar* name;
     GVariantIter* iter;
-    std::vector<std::string> plugins_order;
 
     g_settings_get(settings, "plugins", "as", &iter);
 
+    l->plugins_order_old = l->plugins_order;
+    l->plugins_order.clear();
+
     while (g_variant_iter_next(iter, "s", &name)) {
-        plugins_order.push_back(name);
+        l->plugins_order.push_back(name);
     }
 
     g_variant_iter_free(iter);
 
-    if (plugins_order.size() != l->plugins_order.size()) {
-        l->plugins_order = plugins_order;
-
+    if (l->plugins_order.size() != l->plugins_order_old.size()) {
         update = true;
-    } else if (!std::equal(plugins_order.begin(), plugins_order.end(),
-                           l->plugins_order.begin())) {
-        l->plugins_order = plugins_order;
-
+    } else if (!std::equal(l->plugins_order.begin(), l->plugins_order.end(),
+                           l->plugins_order_old.begin())) {
         update = true;
     }
 
     if (update) {
-        int idx = plugins_order.size() - 1;
-
-        gst_element_set_state(l->pipeline, GST_STATE_NULL);
-
-        do {
-            // auto plugin =
-            //     gst_bin_get_by_name(GST_BIN(l->effects_bin),
-            //                         (plugins_order[idx] +
-            //                         "_plugin").c_str());
-
-            // remove_element(l->effects_bin, plugin);
-
-            idx--;
-        } while (idx >= 0);
-
-        for (long unsigned int n = 0; n < plugins_order.size(); n++) {
-            // append_element(l->effects_bin, l->plugins[plugins_order[n]]);
-        }
-
-        l->update_pipeline_state();
+        gst_pad_add_probe(gst_element_get_static_pad(l->identity_in, "src"),
+                          GST_PAD_PROBE_TYPE_IDLE, on_pad_idle, l, nullptr);
     }
 }
 
@@ -263,7 +258,4 @@ void SinkInputEffects::add_plugins_to_pipeline() {
 
     gst_element_link(plugins[plugins_order[plugins_order.size() - 1]],
                      identity_out);
-
-    // gst_pad_add_probe(gst_element_get_static_pad(identity_in, "src"),
-    //                   GST_PAD_PROBE_TYPE_IDLE, on_pad_idle, this, nullptr);
 }
