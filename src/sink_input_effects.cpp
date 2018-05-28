@@ -52,10 +52,6 @@ GstPadProbeReturn on_pad_idle(GstPad* pad,
 
     gst_element_unlink(l->identity_in, l->identity_out);
 
-    for (auto& p : l->plugins) {
-        gst_bin_add(GST_BIN(l->effects_bin), p.second);
-    }
-
     gst_bin_sync_children_states(GST_BIN(l->effects_bin));
 
     gst_element_link(l->identity_in, l->plugins[l->plugins_order[0]]);
@@ -223,6 +219,7 @@ void SinkInputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
 void SinkInputEffects::add_plugins_to_pipeline() {
     gchar* name;
     GVariantIter* iter;
+    std::vector<std::string> default_order;
 
     g_settings_get(sie_settings, "plugins", "as", &iter);
 
@@ -230,8 +227,43 @@ void SinkInputEffects::add_plugins_to_pipeline() {
         plugins_order.push_back(name);
     }
 
+    g_variant_get(g_settings_get_default_value(sie_settings, "plugins"), "as",
+                  &iter);
+
+    while (g_variant_iter_next(iter, "s", &name)) {
+        default_order.push_back(name);
+    }
+
     g_variant_iter_free(iter);
 
-    gst_pad_add_probe(gst_element_get_static_pad(identity_in, "src"),
-                      GST_PAD_PROBE_TYPE_IDLE, on_pad_idle, this, nullptr);
+    // updating user list if there is any new plugin
+
+    if (plugins_order.size() != default_order.size()) {
+        plugins_order = default_order;
+
+        g_settings_reset(sie_settings, "plugins");
+    }
+
+    // adding plugins to effects_bin
+
+    for (auto& p : plugins) {
+        gst_bin_add(GST_BIN(effects_bin), p.second);
+    }
+
+    // linking plugins
+
+    gst_element_unlink(identity_in, identity_out);
+
+    gst_element_link(identity_in, plugins[plugins_order[0]]);
+
+    for (long unsigned int n = 1; n < plugins_order.size(); n++) {
+        gst_element_link(plugins[plugins_order[n - 1]],
+                         plugins[plugins_order[n]]);
+    }
+
+    gst_element_link(plugins[plugins_order[plugins_order.size() - 1]],
+                     identity_out);
+
+    // gst_pad_add_probe(gst_element_get_static_pad(identity_in, "src"),
+    //                   GST_PAD_PROBE_TYPE_IDLE, on_pad_idle, this, nullptr);
 }

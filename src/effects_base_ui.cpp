@@ -41,18 +41,6 @@ EffectsBaseUi::EffectsBaseUi(BaseObjectType* cobject,
 
     connections.push_back(settings->signal_changed("plugins").connect(
         [=](auto key) { listbox->invalidate_sort(); }));
-
-    // checking if plugin list is missing any plugin
-
-    auto plugins = Glib::Variant<std::vector<std::string>>();
-    auto default_plugins = Glib::Variant<std::vector<std::string>>();
-
-    settings->get_value("plugins", plugins);
-    settings->get_default_value("plugins", default_plugins);
-
-    if (plugins.get().size() != default_plugins.get().size()) {
-        settings->reset("plugins");
-    }
 }
 
 EffectsBaseUi::~EffectsBaseUi() {}
