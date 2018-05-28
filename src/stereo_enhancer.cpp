@@ -1,48 +1,8 @@
 #include <glibmm/main.h>
-#include <gst/insertbin/gstinsertbin.h>
 #include "stereo_enhancer.hpp"
 #include "util.hpp"
 
 namespace {
-
-void on_state_changed(GSettings* settings, gchar* key, StereoEnhancer* l) {
-    auto enable = g_settings_get_boolean(settings, key);
-    auto plugin = gst_bin_get_by_name(GST_BIN(l->plugin), "stereo_enhancer");
-
-    if (enable) {
-        if (!plugin) {
-            gst_insert_bin_append(
-                GST_INSERT_BIN(l->plugin), l->stereo_enhancer,
-                [](auto bin, auto elem, auto success, auto d) {
-                    auto l = static_cast<StereoEnhancer*>(d);
-
-                    if (success) {
-                        util::debug(l->log_tag + "stereo_enhancer enabled");
-                    } else {
-                        util::debug(l->log_tag +
-                                    "failed to enable the stereo_enhancer");
-                    }
-                },
-                l);
-        }
-    } else {
-        if (plugin) {
-            gst_insert_bin_remove(
-                GST_INSERT_BIN(l->plugin), l->stereo_enhancer,
-                [](auto bin, auto elem, auto success, auto d) {
-                    auto l = static_cast<StereoEnhancer*>(d);
-
-                    if (success) {
-                        util::debug(l->log_tag + "stereo_enhancer disabled");
-                    } else {
-                        util::debug(l->log_tag +
-                                    "failed to disable the stereo_enhancer");
-                    }
-                },
-                l);
-        }
-    }
-}
 
 void on_post_messages_changed(GSettings* settings,
                               gchar* key,
@@ -107,32 +67,28 @@ void on_post_messages_changed(GSettings* settings,
 }  // namespace
 
 StereoEnhancer::StereoEnhancer(std::string tag, std::string schema)
-    : log_tag(tag), settings(g_settings_new(schema.c_str())) {
+    : PluginBase(tag, "stereo_enhancer", schema) {
     stereo_enhancer = gst_element_factory_make(
         "calf-sourceforge-net-plugins-HaasEnhancer", "stereo_enhancer");
 
-    plugin = gst_insert_bin_new("stereo_enhancer_plugin");
+    if (is_installed(stereo_enhancer)) {
+        bin = gst_bin_new("stereo_enhancer_bin");
 
-    if (stereo_enhancer != nullptr) {
-        is_installed = true;
-    } else {
-        is_installed = false;
+        gst_bin_add(GST_BIN(bin), stereo_enhancer);
 
-        util::warning("StereoEnhancer plugin was not found!");
-    }
+        auto pad_sink = gst_element_get_static_pad(stereo_enhancer, "sink");
+        auto pad_src = gst_element_get_static_pad(stereo_enhancer, "src");
 
-    if (is_installed) {
-        auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
+        gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
+        gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));
 
-        gst_insert_bin_append(GST_INSERT_BIN(plugin), audioconvert, nullptr,
-                              nullptr);
+        gst_object_unref(GST_OBJECT(pad_sink));
+        gst_object_unref(GST_OBJECT(pad_src));
 
         g_object_set(stereo_enhancer, "bypass", false, nullptr);
 
         bind_to_gsettings();
 
-        g_signal_connect(settings, "changed::state",
-                         G_CALLBACK(on_state_changed), this);
         g_signal_connect(settings, "changed::post-messages",
                          G_CALLBACK(on_post_messages_changed), this);
 
