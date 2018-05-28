@@ -1,5 +1,4 @@
 #include "sink_input_effects.hpp"
-#include "util.hpp"
 
 namespace {
 

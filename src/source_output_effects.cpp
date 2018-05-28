@@ -36,37 +36,48 @@ void on_message_element(const GstBus* gst_bus,
     }
 }
 
-// void append_element(GstInsertBin* container, GstElement* element) {
-//     if (element) {
-//         bool wait_append = true;
-//
-//         gst_insert_bin_append(container, element,
-//                               [](auto bin, auto elem, auto success, auto d) {
-//                                   bool* wait = static_cast<bool*>(d);
-//                                   *wait = false;
-//                               },
-//                               &wait_append);
-//
-//         while (wait_append) {
-//         }
-//     }
-// }
-//
-// void remove_element(GstInsertBin* container, GstElement* element) {
-//     if (element) {
-//         bool wait_remove = true;
-//
-//         gst_insert_bin_remove(container, element,
-//                               [](auto bin, auto elem, auto success, auto d) {
-//                                   bool* wait = static_cast<bool*>(d);
-//                                   *wait = false;
-//                               },
-//                               &wait_remove);
-//
-//         while (wait_remove) {
-//         }
-//     }
-// }
+GstPadProbeReturn on_pad_idle(GstPad* pad,
+                              GstPadProbeInfo* info,
+                              gpointer user_data) {
+    auto l = static_cast<SourceOutputEffects*>(user_data);
+
+    // unlinking elements using old plugins order
+
+    gst_element_unlink(l->identity_in, l->plugins[l->plugins_order_old[0]]);
+
+    for (long unsigned int n = 1; n < l->plugins_order_old.size(); n++) {
+        gst_element_unlink(l->plugins[l->plugins_order_old[n - 1]],
+                           l->plugins[l->plugins_order_old[n]]);
+
+        std::cout << l->plugins_order[n - 1] << "->" << l->plugins_order[n]
+                  << std::endl;
+    }
+
+    gst_element_unlink(
+        l->plugins[l->plugins_order[l->plugins_order_old.size() - 1]],
+        l->identity_out);
+
+    // syncing elements state with effects_bin
+
+    gst_bin_sync_children_states(GST_BIN(l->effects_bin));
+
+    // linking elements using the new plugins order
+
+    gst_element_link(l->identity_in, l->plugins[l->plugins_order[0]]);
+
+    for (long unsigned int n = 1; n < l->plugins_order.size(); n++) {
+        gst_element_link(l->plugins[l->plugins_order[n - 1]],
+                         l->plugins[l->plugins_order[n]]);
+
+        // std::cout << l->plugins_order[n - 1] << "->" << l->plugins_order[n]
+        //           << std::endl;
+    }
+
+    gst_element_link(l->plugins[l->plugins_order[l->plugins_order.size() - 1]],
+                     l->identity_out);
+
+    return GST_PAD_PROBE_REMOVE;
+}
 
 void on_plugins_order_changed(GSettings* settings,
                               gchar* key,
@@ -74,48 +85,28 @@ void on_plugins_order_changed(GSettings* settings,
     bool update = false;
     gchar* name;
     GVariantIter* iter;
-    std::vector<std::string> plugins_order;
 
     g_settings_get(settings, "plugins", "as", &iter);
 
+    l->plugins_order_old = l->plugins_order;
+    l->plugins_order.clear();
+
     while (g_variant_iter_next(iter, "s", &name)) {
-        plugins_order.push_back(name);
+        l->plugins_order.push_back(name);
     }
 
     g_variant_iter_free(iter);
 
-    if (plugins_order.size() != l->plugins_order.size()) {
-        l->plugins_order = plugins_order;
-
+    if (l->plugins_order.size() != l->plugins_order_old.size()) {
         update = true;
-    } else if (!std::equal(plugins_order.begin(), plugins_order.end(),
-                           l->plugins_order.begin())) {
-        l->plugins_order = plugins_order;
-
+    } else if (!std::equal(l->plugins_order.begin(), l->plugins_order.end(),
+                           l->plugins_order_old.begin())) {
         update = true;
     }
 
     if (update) {
-        int idx = plugins_order.size() - 1;
-
-        gst_element_set_state(l->pipeline, GST_STATE_NULL);
-
-        do {
-            // auto plugin =
-            //     gst_bin_get_by_name(GST_BIN(l->effects_bin),
-            //                         (plugins_order[idx] +
-            //                         "_plugin").c_str());
-
-            // remove_element(l->effects_bin, plugin);
-
-            idx--;
-        } while (idx >= 0);
-
-        for (long unsigned int n = 0; n < plugins_order.size(); n++) {
-            // append_element(l->effects_bin, l->plugins[plugins_order[n]]);
-        }
-
-        l->update_pipeline_state();
+        gst_pad_add_probe(gst_element_get_static_pad(l->identity_in, "src"),
+                          GST_PAD_PROBE_TYPE_IDLE, on_pad_idle, l, nullptr);
     }
 }
 
@@ -192,8 +183,8 @@ SourceOutputEffects::SourceOutputEffects(
 
     add_plugins_to_pipeline();
 
-    // g_signal_connect(soe_settings, "changed::plugins",
-    //                  G_CALLBACK(on_plugins_order_changed), this);
+    g_signal_connect(soe_settings, "changed::plugins",
+                     G_CALLBACK(on_plugins_order_changed), this);
 }
 
 SourceOutputEffects::~SourceOutputEffects() {}
@@ -212,14 +203,48 @@ void SourceOutputEffects::on_app_added(
 void SourceOutputEffects::add_plugins_to_pipeline() {
     gchar* name;
     GVariantIter* iter;
+    std::vector<std::string> default_order;
 
     g_settings_get(soe_settings, "plugins", "as", &iter);
 
     while (g_variant_iter_next(iter, "s", &name)) {
-        // append_element(effects_bin, plugins[name]);
-
         plugins_order.push_back(name);
     }
 
+    g_variant_get(g_settings_get_default_value(soe_settings, "plugins"), "as",
+                  &iter);
+
+    while (g_variant_iter_next(iter, "s", &name)) {
+        default_order.push_back(name);
+    }
+
     g_variant_iter_free(iter);
+
+    // updating user list if there is any new plugin
+
+    if (plugins_order.size() != default_order.size()) {
+        plugins_order = default_order;
+
+        g_settings_reset(soe_settings, "plugins");
+    }
+
+    // adding plugins to effects_bin
+
+    for (auto& p : plugins) {
+        gst_bin_add(GST_BIN(effects_bin), p.second);
+    }
+
+    // linking plugins
+
+    gst_element_unlink(identity_in, identity_out);
+
+    gst_element_link(identity_in, plugins[plugins_order[0]]);
+
+    for (long unsigned int n = 1; n < plugins_order.size(); n++) {
+        gst_element_link(plugins[plugins_order[n - 1]],
+                         plugins[plugins_order[n]]);
+    }
+
+    gst_element_link(plugins[plugins_order[plugins_order.size() - 1]],
+                     identity_out);
 }
