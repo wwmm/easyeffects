@@ -1,5 +1,4 @@
 #include <glibmm/main.h>
-#include <gst/insertbin/gstinsertbin.h>
 #include "util.hpp"
 #include "webrtc.hpp"
 
@@ -7,39 +6,67 @@ namespace {
 
 void on_state_changed(GSettings* settings, gchar* key, Webrtc* l) {
     auto enable = g_settings_get_boolean(settings, key);
-    auto plugin = gst_bin_get_by_name(GST_BIN(l->plugin), "webrtc_bin");
 
     if (enable) {
-        if (!plugin) {
-            gst_insert_bin_append(
-                GST_INSERT_BIN(l->plugin), l->bin,
-                [](auto bin, auto elem, auto success, auto d) {
-                    auto l = static_cast<Webrtc*>(d);
+        gst_pad_add_probe(
+            gst_element_get_static_pad(l->identity_in, "sink"),
+            GST_PAD_PROBE_TYPE_IDLE,
+            [](auto pad, auto info, auto d) {
+                auto l = static_cast<Webrtc*>(d);
 
-                    if (success) {
-                        util::debug(l->log_tag + "webrtc enabled");
-                    } else {
-                        util::debug(l->log_tag + "failed to enable the webrtc");
-                    }
-                },
-                l);
-        }
+                auto plugin = gst_bin_get_by_name(
+                    GST_BIN(l->plugin), std::string(l->name + "_bin").c_str());
+
+                if (!plugin) {
+                    gst_element_unlink(l->identity_in, l->identity_out);
+
+                    gst_bin_add(GST_BIN(l->plugin), l->bin);
+
+                    gst_element_sync_state_with_parent(l->identity_in);
+                    gst_element_sync_state_with_parent(l->bin);
+                    gst_element_sync_state_with_parent(l->identity_out);
+
+                    gst_element_link_many(l->identity_in, l->bin,
+                                          l->identity_out, nullptr);
+
+                    gst_element_set_state(l->probe_bin, GST_STATE_PLAYING);
+
+                    util::debug(l->log_tag + l->name + " enabled");
+                }
+
+                return GST_PAD_PROBE_REMOVE;
+            },
+            l, nullptr);
     } else {
-        if (plugin) {
-            gst_insert_bin_remove(
-                GST_INSERT_BIN(l->plugin), l->bin,
-                [](auto bin, auto elem, auto success, auto d) {
-                    auto l = static_cast<Webrtc*>(d);
+        gst_pad_add_probe(
+            gst_element_get_static_pad(l->identity_in, "sink"),
+            GST_PAD_PROBE_TYPE_IDLE,
+            [](auto pad, auto info, auto d) {
+                auto l = static_cast<Webrtc*>(d);
 
-                    if (success) {
-                        util::debug(l->log_tag + "webrtc disabled");
-                    } else {
-                        util::debug(l->log_tag +
-                                    "failed to disable the webrtc");
-                    }
-                },
-                l);
-        }
+                auto plugin = gst_bin_get_by_name(
+                    GST_BIN(l->plugin), std::string(l->name + "_bin").c_str());
+
+                if (plugin) {
+                    gst_element_unlink_many(l->identity_in, l->bin,
+                                            l->identity_out, nullptr);
+
+                    gst_bin_remove(GST_BIN(l->plugin), l->bin);
+
+                    gst_element_set_state(l->probe_bin, GST_STATE_NULL);
+                    gst_element_set_state(l->bin, GST_STATE_NULL);
+
+                    gst_element_sync_state_with_parent(l->identity_in);
+                    gst_element_sync_state_with_parent(l->identity_out);
+
+                    gst_element_link(l->identity_in, l->identity_out);
+
+                    util::debug(l->log_tag + l->name + " disabled");
+                }
+
+                return GST_PAD_PROBE_REMOVE;
+            },
+            l, nullptr);
     }
 }
 
@@ -47,19 +74,23 @@ void on_state_changed(GSettings* settings, gchar* key, Webrtc* l) {
 
 Webrtc::Webrtc(std::string tag, std::string schema)
     : log_tag(tag), settings(g_settings_new(schema.c_str())) {
+    plugin = gst_bin_new(std::string(name + "_plugin").c_str());
+    identity_in = gst_element_factory_make("identity", nullptr);
+    identity_out = gst_element_factory_make("identity", nullptr);
+
+    gst_bin_add_many(GST_BIN(plugin), identity_in, identity_out, nullptr);
+    gst_element_link_many(identity_in, identity_out, nullptr);
+
+    gst_element_add_pad(
+        plugin, gst_ghost_pad_new(
+                    "sink", gst_element_get_static_pad(identity_in, "sink")));
+    gst_element_add_pad(
+        plugin, gst_ghost_pad_new(
+                    "src", gst_element_get_static_pad(identity_out, "src")));
+
     webrtc = gst_element_factory_make("webrtcdsp", nullptr);
 
-    plugin = gst_insert_bin_new("webrtc_plugin");
-
-    if (webrtc != nullptr) {
-        is_installed = true;
-    } else {
-        is_installed = false;
-
-        util::warning("Webrtc plugin was not found!");
-    }
-
-    if (is_installed) {
+    if (is_installed(webrtc)) {
         build_probe_bin();
         build_dsp_bin();
 
@@ -78,6 +109,16 @@ Webrtc::Webrtc(std::string tag, std::string schema)
 
 Webrtc::~Webrtc() {}
 
+bool Webrtc::is_installed(GstElement* e) {
+    if (e != nullptr) {
+        return true;
+    } else {
+        util::warning(name + " plugin was not found!");
+
+        return false;
+    }
+}
+
 void Webrtc::build_probe_bin() {
     probe_bin = gst_bin_new("probe_bin");
 
@@ -87,7 +128,7 @@ void Webrtc::build_probe_bin() {
     auto audioresample = gst_element_factory_make("audioresample", nullptr);
     auto capsfilter = gst_element_factory_make("capsfilter", nullptr);
     auto probe = gst_element_factory_make("webrtcechoprobe", nullptr);
-    auto sink = gst_element_factory_make("pulsesink", nullptr);
+    auto sink = gst_element_factory_make("fakesink", nullptr);
 
     auto props = gst_structure_from_string(
         "props,application.name=PulseEffectsWebrtcProbe", nullptr);
@@ -107,7 +148,7 @@ void Webrtc::build_probe_bin() {
 }
 
 void Webrtc::build_dsp_bin() {
-    bin = gst_insert_bin_new("webrtc_bin");
+    bin = gst_bin_new("webrtc_bin");
 
     auto in_level = gst_element_factory_make("level", "webrtc_input_level");
     auto audioconvert_in = gst_element_factory_make("audioconvert", nullptr);
@@ -121,18 +162,22 @@ void Webrtc::build_dsp_bin() {
 
     g_object_set(capsfilter, "caps", gst_caps_from_string(caps_str), nullptr);
 
-    gst_insert_bin_append(GST_INSERT_BIN(bin), in_level, nullptr, nullptr);
-    gst_insert_bin_append(GST_INSERT_BIN(bin), audioconvert_in, nullptr,
-                          nullptr);
-    gst_insert_bin_append(GST_INSERT_BIN(bin), audioresample_in, nullptr,
-                          nullptr);
-    gst_insert_bin_append(GST_INSERT_BIN(bin), capsfilter, nullptr, nullptr);
-    gst_insert_bin_append(GST_INSERT_BIN(bin), webrtc, nullptr, nullptr);
-    gst_insert_bin_append(GST_INSERT_BIN(bin), audioconvert_out, nullptr,
-                          nullptr);
-    gst_insert_bin_append(GST_INSERT_BIN(bin), audioresample_out, nullptr,
-                          nullptr);
-    gst_insert_bin_append(GST_INSERT_BIN(bin), out_level, nullptr, nullptr);
+    gst_bin_add_many(GST_BIN(bin), probe_bin, in_level, audioconvert_in,
+                     audioresample_in, capsfilter, webrtc, audioconvert_out,
+                     audioresample_out, out_level, nullptr);
+
+    gst_element_link_many(in_level, audioconvert_in, audioresample_in,
+                          capsfilter, webrtc, audioconvert_out,
+                          audioresample_out, out_level, nullptr);
+
+    auto pad_sink = gst_element_get_static_pad(in_level, "sink");
+    auto pad_src = gst_element_get_static_pad(out_level, "src");
+
+    gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
+    gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));
+
+    gst_object_unref(GST_OBJECT(pad_sink));
+    gst_object_unref(GST_OBJECT(pad_src));
 
     g_settings_bind(settings, "post-messages", in_level, "post-messages",
                     G_SETTINGS_BIND_DEFAULT);

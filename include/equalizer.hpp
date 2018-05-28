@@ -10,8 +10,6 @@ class Equalizer : public PluginBase {
     Equalizer(std::string tag, std::string schema);
     ~Equalizer();
 
-    bool is_enabled = false;
-
     GstElement* equalizer;
 
     void init_equalizer();
