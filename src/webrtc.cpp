@@ -65,9 +65,11 @@ void Webrtc::build_dsp_bin() {
 
     g_object_set(capsfilter, "caps", gst_caps_from_string(caps_str), nullptr);
 
-    gst_bin_add_many(GST_BIN(bin), probe_bin, in_level, audioconvert_in,
-                     audioresample_in, capsfilter, webrtc, audioconvert_out,
-                     audioresample_out, out_level, nullptr);
+    gst_bin_add(GST_BIN(bin), probe_bin);
+
+    gst_bin_add_many(GST_BIN(bin), in_level, audioconvert_in, audioresample_in,
+                     capsfilter, webrtc, audioconvert_out, audioresample_out,
+                     out_level, nullptr);
 
     gst_element_link_many(in_level, audioconvert_in, audioresample_in,
                           capsfilter, webrtc, audioconvert_out,
