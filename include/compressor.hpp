@@ -1,29 +1,22 @@
 #ifndef COMPRESSOR_HPP
 #define COMPRESSOR_HPP
 
-#include <gio/gio.h>
-#include <gst/gst.h>
 #include <sigc++/sigc++.h>
 #include <array>
-#include <iostream>
+#include "plugin_base.hpp"
 
-class Compressor {
+class Compressor : public PluginBase {
    public:
     Compressor(std::string tag, std::string schema);
     ~Compressor();
 
-    std::string log_tag, name = "compressor";
-    GstElement *plugin, *bin, *compressor;
+    GstElement* compressor;
 
     sigc::connection compression_connection;
 
     sigc::signal<void, double> compression;
 
    private:
-    bool is_installed;
-
-    GSettings* settings;
-
     void bind_to_gsettings();
 };
 
