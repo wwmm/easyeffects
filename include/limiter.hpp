@@ -1,19 +1,16 @@
 #ifndef LIMITER_HPP
 #define LIMITER_HPP
 
-#include <gio/gio.h>
-#include <gst/gst.h>
 #include <sigc++/sigc++.h>
 #include <array>
-#include <iostream>
+#include "plugin_base.hpp"
 
-class Limiter {
+class Limiter : public PluginBase {
    public:
     Limiter(std::string tag, std::string schema);
     ~Limiter();
 
-    std::string log_tag, name = "limiter";
-    GstElement *plugin, *bin, *limiter, *identity_in, *identity_out;
+    GstElement* limiter;
 
     sigc::connection input_level_connection;
     sigc::connection output_level_connection;
@@ -26,11 +23,7 @@ class Limiter {
     sigc::signal<void, double> attenuation;
 
    private:
-    bool is_installed;
-
     GstElement* autovolume;
-
-    GSettings* settings;
 
     void bind_to_gsettings();
 };
