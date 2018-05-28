@@ -28,6 +28,8 @@ void on_state_changed(GSettings* settings, gchar* key, Panorama* l) {
 
                     gst_element_link_many(l->identity_in, l->bin,
                                           l->identity_out, nullptr);
+
+                    util::debug(l->log_tag + "panorama enabled");
                 }
 
                 return GST_PAD_PROBE_REMOVE;
@@ -54,6 +56,8 @@ void on_state_changed(GSettings* settings, gchar* key, Panorama* l) {
                     gst_element_sync_state_with_parent(l->identity_out);
 
                     gst_element_link(l->identity_in, l->identity_out);
+
+                    util::debug(l->log_tag + "panorama disabled");
                 }
 
                 return GST_PAD_PROBE_REMOVE;
