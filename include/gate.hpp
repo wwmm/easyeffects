@@ -1,29 +1,22 @@
 #ifndef GATE_HPP
 #define GATE_HPP
 
-#include <gio/gio.h>
-#include <gst/gst.h>
 #include <sigc++/sigc++.h>
 #include <array>
-#include <iostream>
+#include "plugin_base.hpp"
 
-class Gate {
+class Gate : public PluginBase {
    public:
     Gate(std::string tag, std::string schema);
     ~Gate();
 
-    std::string log_tag, name = "gate";
-    GstElement *plugin, *bin, *gate;
+    GstElement* gate;
 
     sigc::connection gating_connection;
 
     sigc::signal<void, double> gating;
 
    private:
-    bool is_installed;
-
-    GSettings* settings;
-
     void bind_to_gsettings();
 };
 
