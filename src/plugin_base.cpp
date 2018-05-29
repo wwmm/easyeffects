@@ -38,8 +38,6 @@ void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
             gst_element_get_static_pad(l->identity_in, "src"),
             GST_PAD_PROBE_TYPE_IDLE,
             [](auto pad, auto info, auto d) {
-                gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
-
                 auto l = static_cast<PluginBase*>(d);
 
                 auto plugin = gst_bin_get_by_name(
@@ -50,10 +48,10 @@ void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
                                             l->identity_out, nullptr);
 
                     gst_bin_remove(GST_BIN(l->plugin), l->bin);
+
                     gst_element_set_state(l->bin, GST_STATE_NULL);
 
-                    gst_element_sync_state_with_parent(l->identity_in);
-                    gst_element_sync_state_with_parent(l->identity_out);
+                    gst_bin_sync_children_states(GST_BIN(l->plugin));
 
                     gst_element_link(l->identity_in, l->identity_out);
 

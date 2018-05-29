@@ -48,14 +48,15 @@ GstPadProbeReturn on_pad_idle(GstPad* pad,
     for (long unsigned int n = 1; n < l->plugins_order_old.size(); n++) {
         gst_element_unlink(l->plugins[l->plugins_order_old[n - 1]],
                            l->plugins[l->plugins_order_old[n]]);
-
-        // std::cout << l->plugins_order[n - 1] << "->" << l->plugins_order[n]
-        //           << std::endl;
     }
 
     gst_element_unlink(
         l->plugins[l->plugins_order_old[l->plugins_order_old.size() - 1]],
         l->identity_out);
+
+    for (auto& p : l->plugins) {
+        gst_element_set_state(p.second, GST_STATE_NULL);
+    }
 
     // syncing elements state with effects_bin
 
@@ -68,9 +69,6 @@ GstPadProbeReturn on_pad_idle(GstPad* pad,
     for (long unsigned int n = 1; n < l->plugins_order.size(); n++) {
         gst_element_link(l->plugins[l->plugins_order[n - 1]],
                          l->plugins[l->plugins_order[n]]);
-
-        // std::cout << l->plugins_order[n - 1] << "->" << l->plugins_order[n]
-        //           << std::endl;
     }
 
     gst_element_link(l->plugins[l->plugins_order[l->plugins_order.size() - 1]],

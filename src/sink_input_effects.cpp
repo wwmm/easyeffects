@@ -62,6 +62,10 @@ GstPadProbeReturn on_pad_idle(GstPad* pad,
         l->plugins[l->plugins_order_old[l->plugins_order_old.size() - 1]],
         l->identity_out);
 
+    for (auto& p : l->plugins) {
+        gst_element_set_state(p.second, GST_STATE_NULL);
+    }
+
     // syncing elements state with effects_bin
 
     gst_bin_sync_children_states(GST_BIN(l->effects_bin));
