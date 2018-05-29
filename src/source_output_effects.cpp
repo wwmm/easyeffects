@@ -111,7 +111,8 @@ void on_plugins_order_changed(GSettings* settings,
         }
 
         gst_pad_add_probe(gst_element_get_static_pad(l->identity_in, "src"),
-                          GST_PAD_PROBE_TYPE_IDLE, on_pad_idle, l, nullptr);
+                          GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM, on_pad_idle, l,
+                          nullptr);
     }
 }
 

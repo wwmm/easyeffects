@@ -12,7 +12,7 @@ void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
 
         gst_pad_add_probe(
             gst_element_get_static_pad(l->identity_in, "src"),
-            GST_PAD_PROBE_TYPE_IDLE,
+            GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
             [](auto pad, auto info, auto d) {
                 auto l = static_cast<PluginBase*>(d);
 
@@ -46,7 +46,7 @@ void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
 
         gst_pad_add_probe(
             gst_element_get_static_pad(l->identity_in, "src"),
-            GST_PAD_PROBE_TYPE_IDLE,
+            GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
             [](auto pad, auto info, auto d) {
                 auto l = static_cast<PluginBase*>(d);
 
