@@ -55,6 +55,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     reset_settings->signal_clicked().connect(
         sigc::mem_fun(*this, &ApplicationUi::on_reset_settings));
 
+    // spectrum
+
     show_spectrum->signal_state_set().connect(
         sigc::mem_fun(*this, &ApplicationUi::on_show_spectrum), false);
 
@@ -66,6 +68,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
         sigc::mem_fun(*this, &ApplicationUi::on_spectrum_leave_notify_event));
     spectrum->signal_motion_notify_event().connect(
         sigc::mem_fun(*this, &ApplicationUi::on_spectrum_motion_notify_event));
+
+    // pulseaudio device selection
 
     use_default_sink->signal_toggled().connect(
         sigc::mem_fun(*this, &ApplicationUi::on_use_default_sink_toggled));
@@ -81,8 +85,13 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
         "visible-child",
         sigc::mem_fun(*this, &ApplicationUi::on_stack_visible_child_changed));
 
+    // presets widgets callbacks
+
     presets_menu_button->signal_clicked().connect(
         sigc::mem_fun(*this, &ApplicationUi::on_presets_menu_button_clicked));
+
+    presets_listbox->set_sort_func(
+        sigc::mem_fun(*this, &ApplicationUi::on_listbox_sort));
 
     presets_listbox->signal_row_activated().connect([&](auto row) {
         presets_menu_label->set_text(row->get_name());
@@ -645,12 +654,15 @@ void ApplicationUi::populate_presets_listbox() {
 
         Gtk::ListBoxRow* row;
         Gtk::Button *save_btn, *remove_btn;
+        Gtk::Label* label;
 
         b->get_widget("preset_row", row);
         b->get_widget("save", save_btn);
         b->get_widget("remove", remove_btn);
+        b->get_widget("name", label);
 
         row->set_name(name);
+        label->set_text(name);
 
         save_btn->signal_clicked().connect(
             [=]() { app->presets_manager->save(name); });
