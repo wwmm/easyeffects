@@ -33,6 +33,8 @@ class SourceOutputEffects : public PipelineBase {
     std::unique_ptr<Pitch> pitch;
     std::unique_ptr<Webrtc> webrtc;
 
+    bool in_pad_cb = false;
+
     sigc::signal<void, std::array<double, 2>> compressor_input_level;
     sigc::signal<void, std::array<double, 2>> compressor_output_level;
     sigc::signal<void, std::array<double, 2>> equalizer_input_level;

@@ -21,8 +21,6 @@ class SinkInputEffects : public PipelineBase {
     SinkInputEffects(const std::shared_ptr<PulseManager>& pulse_manager);
     virtual ~SinkInputEffects();
 
-    std::string log_tag = "sie: ";
-
     std::shared_ptr<PulseManager> pm;
 
     std::vector<std::string> plugins_order, plugins_order_old;
@@ -40,6 +38,8 @@ class SinkInputEffects : public PipelineBase {
     std::unique_ptr<Crossfeed> crossfeed;
     std::unique_ptr<Maximizer> maximizer;
     std::unique_ptr<Delay> delay;
+
+    bool in_pad_cb = false;
 
     sigc::signal<void, std::array<double, 2>> compressor_input_level;
     sigc::signal<void, std::array<double, 2>> compressor_output_level;
@@ -59,6 +59,8 @@ class SinkInputEffects : public PipelineBase {
     sigc::signal<void, std::array<double, 2>> delay_output_level;
 
    private:
+    std::string log_tag = "sie: ";
+
     GSettings* sie_settings;
 
     void add_plugins_to_pipeline();

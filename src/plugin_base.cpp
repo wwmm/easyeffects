@@ -7,11 +7,16 @@ void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
     auto enable = g_settings_get_boolean(settings, key);
 
     if (enable) {
+        while (l->in_pad_cb) {
+        }
+
         gst_pad_add_probe(
             gst_element_get_static_pad(l->identity_in, "src"),
             GST_PAD_PROBE_TYPE_IDLE,
             [](auto pad, auto info, auto d) {
                 auto l = static_cast<PluginBase*>(d);
+
+                l->in_pad_cb = true;
 
                 auto plugin = gst_bin_get_by_name(
                     GST_BIN(l->plugin), std::string(l->name + "_bin").c_str());
@@ -29,16 +34,23 @@ void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
                     util::debug(l->log_tag + l->name + " enabled");
                 }
 
+                l->in_pad_cb = false;
+
                 return GST_PAD_PROBE_REMOVE;
             },
             l, nullptr);
 
     } else {
+        while (l->in_pad_cb) {
+        }
+
         gst_pad_add_probe(
             gst_element_get_static_pad(l->identity_in, "src"),
             GST_PAD_PROBE_TYPE_IDLE,
             [](auto pad, auto info, auto d) {
                 auto l = static_cast<PluginBase*>(d);
+
+                l->in_pad_cb = true;
 
                 auto plugin = gst_bin_get_by_name(
                     GST_BIN(l->plugin), std::string(l->name + "_bin").c_str());
@@ -57,6 +69,8 @@ void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
 
                     util::debug(l->log_tag + l->name + " disabled");
                 }
+
+                l->in_pad_cb = false;
 
                 return GST_PAD_PROBE_REMOVE;
             },

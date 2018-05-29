@@ -15,6 +15,8 @@ class PluginBase {
     std::string log_tag, name;
     GstElement *plugin, *bin, *identity_in, *identity_out;
 
+    bool in_pad_cb = false;
+
    protected:
     GSettings* settings;
 

@@ -41,6 +41,8 @@ GstPadProbeReturn on_pad_idle(GstPad* pad,
                               gpointer user_data) {
     auto l = static_cast<SourceOutputEffects*>(user_data);
 
+    l->in_pad_cb = true;
+
     // unlinking elements using old plugins order
 
     gst_element_unlink(l->identity_in, l->plugins[l->plugins_order_old[0]]);
@@ -74,6 +76,8 @@ GstPadProbeReturn on_pad_idle(GstPad* pad,
     gst_element_link(l->plugins[l->plugins_order[l->plugins_order.size() - 1]],
                      l->identity_out);
 
+    l->in_pad_cb = false;
+
     return GST_PAD_PROBE_REMOVE;
 }
 
@@ -103,6 +107,9 @@ void on_plugins_order_changed(GSettings* settings,
     }
 
     if (update) {
+        while (l->in_pad_cb) {
+        }
+
         gst_pad_add_probe(gst_element_get_static_pad(l->identity_in, "src"),
                           GST_PAD_PROBE_TYPE_IDLE, on_pad_idle, l, nullptr);
     }
