@@ -58,7 +58,7 @@ GVariant* int_to_stereo_link_enum(const GValue* value,
 
 CompressorUi::CompressorUi(BaseObjectType* cobject,
                            const Glib::RefPtr<Gtk::Builder>& refBuilder,
-                           std::string settings_name)
+                           const std::string& settings_name)
     : Gtk::Grid(cobject), PluginUiBase(refBuilder, settings_name) {
     name = "compressor";
 

@@ -11,7 +11,7 @@ class DeesserUi : public Gtk::Grid, public PluginUiBase {
    public:
     DeesserUi(BaseObjectType* cobject,
               const Glib::RefPtr<Gtk::Builder>& refBuilder,
-              std::string settings_name);
+              const std::string& settings_name);
     ~DeesserUi();
 
     static std::shared_ptr<DeesserUi> create(std::string settings_name);

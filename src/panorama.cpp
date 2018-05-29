@@ -2,7 +2,7 @@
 #include "panorama.hpp"
 #include "util.hpp"
 
-Panorama::Panorama(std::string tag, std::string schema)
+Panorama::Panorama(const std::string& tag, const std::string& schema)
     : PluginBase(tag, "panorama", schema) {
     panorama = gst_element_factory_make("audiopanorama", nullptr);
 

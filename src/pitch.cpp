@@ -2,7 +2,7 @@
 #include "pitch.hpp"
 #include "util.hpp"
 
-Pitch::Pitch(std::string tag, std::string schema)
+Pitch::Pitch(const std::string& tag, const std::string& schema)
     : PluginBase(tag, "pitch", schema) {
     pitch = gst_element_factory_make(
         "ladspa-ladspa-rubberband-so-rubberband-pitchshifter-stereo", "pitch");
@@ -13,9 +13,12 @@ Pitch::Pitch(std::string tag, std::string schema)
         auto in_level = gst_element_factory_make("level", "pitch_input_level");
         auto out_level =
             gst_element_factory_make("level", "pitch_output_level");
+        auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
 
-        gst_bin_add_many(GST_BIN(bin), in_level, pitch, out_level, nullptr);
-        gst_element_link_many(in_level, pitch, out_level, nullptr);
+        gst_bin_add_many(GST_BIN(bin), in_level, audioconvert, pitch, out_level,
+                         nullptr);
+        gst_element_link_many(in_level, audioconvert, pitch, out_level,
+                              nullptr);
 
         auto pad_sink = gst_element_get_static_pad(in_level, "sink");
         auto pad_src = gst_element_get_static_pad(out_level, "src");

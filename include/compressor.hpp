@@ -7,7 +7,7 @@
 
 class Compressor : public PluginBase {
    public:
-    Compressor(std::string tag, std::string schema);
+    Compressor(const std::string& tag, const std::string& schema);
     ~Compressor();
 
     GstElement* compressor;

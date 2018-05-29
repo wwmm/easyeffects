@@ -7,7 +7,7 @@
 
 class Crossfeed : public PluginBase {
    public:
-    Crossfeed(std::string tag, std::string schema);
+    Crossfeed(const std::string& tag, const std::string& schema);
     ~Crossfeed();
 
     GstElement* crossfeed;

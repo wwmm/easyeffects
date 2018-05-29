@@ -46,7 +46,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Reverb* l) {
 
 }  // namespace
 
-Reverb::Reverb(std::string tag, std::string schema)
+Reverb::Reverb(const std::string& tag, const std::string& schema)
     : PluginBase(tag, "reverb", schema) {
     reverb = gst_element_factory_make("calf-sourceforge-net-plugins-Reverb",
                                       "reverb");

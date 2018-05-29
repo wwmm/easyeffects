@@ -10,7 +10,7 @@ class PitchUi : public Gtk::Grid, public PluginUiBase {
    public:
     PitchUi(BaseObjectType* cobject,
             const Glib::RefPtr<Gtk::Builder>& refBuilder,
-            std::string settings_name);
+            const std::string& settings_name);
     ~PitchUi();
 
     static std::shared_ptr<PitchUi> create(std::string settings_name);

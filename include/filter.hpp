@@ -7,7 +7,7 @@
 
 class Filter : public PluginBase {
    public:
-    Filter(std::string tag, std::string schema);
+    Filter(const std::string& tag, const std::string& schema);
     ~Filter();
 
     GstElement* filter;

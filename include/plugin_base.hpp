@@ -9,7 +9,9 @@
 
 class PluginBase {
    public:
-    PluginBase(std::string tag, std::string plugin_name, std::string schema);
+    PluginBase(const std::string& tag,
+               const std::string& plugin_name,
+               const std::string& schema);
     ~PluginBase();
 
     std::string log_tag, name;

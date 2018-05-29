@@ -7,7 +7,7 @@
 
 class Exciter : public PluginBase {
    public:
-    Exciter(std::string tag, std::string schema);
+    Exciter(const std::string& tag, const std::string& schema);
     ~Exciter();
 
     GstElement* exciter;

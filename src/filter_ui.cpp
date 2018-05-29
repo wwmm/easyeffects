@@ -72,7 +72,7 @@ GVariant* int_to_filter_enum(const GValue* value,
 
 FilterUi::FilterUi(BaseObjectType* cobject,
                    const Glib::RefPtr<Gtk::Builder>& refBuilder,
-                   std::string settings_name)
+                   const std::string& settings_name)
     : Gtk::Grid(cobject), PluginUiBase(refBuilder, settings_name) {
     name = "filter";
 

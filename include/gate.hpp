@@ -7,7 +7,7 @@
 
 class Gate : public PluginBase {
    public:
-    Gate(std::string tag, std::string schema);
+    Gate(const std::string& tag, const std::string& schema);
     ~Gate();
 
     GstElement* gate;

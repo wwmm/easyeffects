@@ -7,7 +7,7 @@
 
 class Equalizer : public PluginBase {
    public:
-    Equalizer(std::string tag, std::string schema);
+    Equalizer(const std::string& tag, const std::string& schema);
     ~Equalizer();
 
     GstElement* equalizer;

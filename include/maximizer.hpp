@@ -7,7 +7,7 @@
 
 class Maximizer : public PluginBase {
    public:
-    Maximizer(std::string tag, std::string schema);
+    Maximizer(const std::string& tag, const std::string& schema);
     ~Maximizer();
 
     GstElement* maximizer;

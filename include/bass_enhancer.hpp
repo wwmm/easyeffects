@@ -7,7 +7,7 @@
 
 class BassEnhancer : public PluginBase {
    public:
-    BassEnhancer(std::string tag, std::string schema);
+    BassEnhancer(const std::string& tag, const std::string& schema);
     ~BassEnhancer();
 
     GstElement* bass_enhancer;

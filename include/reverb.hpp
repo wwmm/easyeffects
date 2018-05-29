@@ -7,7 +7,7 @@
 
 class Reverb : public PluginBase {
    public:
-    Reverb(std::string tag, std::string schema);
+    Reverb(const std::string& tag, const std::string& schema);
     ~Reverb();
 
     GstElement* reverb;

@@ -14,7 +14,7 @@
 class PluginUiBase {
    public:
     PluginUiBase(const Glib::RefPtr<Gtk::Builder>& refBuilder,
-                 std::string settings_name);
+                 const std::string& settings_name);
     virtual ~PluginUiBase();
 
     std::string name;

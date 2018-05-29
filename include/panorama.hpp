@@ -5,7 +5,7 @@
 
 class Panorama : public PluginBase {
    public:
-    Panorama(std::string tag, std::string schema);
+    Panorama(const std::string& tag, const std::string& schema);
     ~Panorama();
 
     GstElement* panorama;

@@ -7,7 +7,7 @@
 
 class Pitch : public PluginBase {
    public:
-    Pitch(std::string tag, std::string schema);
+    Pitch(const std::string& tag, const std::string& schema);
     ~Pitch();
 
     GstElement* pitch;

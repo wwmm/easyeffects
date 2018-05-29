@@ -10,7 +10,7 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
    public:
     EqualizerUi(BaseObjectType* cobject,
                 const Glib::RefPtr<Gtk::Builder>& refBuilder,
-                std::string settings_name);
+                const std::string& settings_name);
     ~EqualizerUi();
 
     static std::shared_ptr<EqualizerUi> create(std::string settings_name);

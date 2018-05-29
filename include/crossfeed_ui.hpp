@@ -10,7 +10,7 @@ class CrossfeedUi : public Gtk::Grid, public PluginUiBase {
    public:
     CrossfeedUi(BaseObjectType* cobject,
                 const Glib::RefPtr<Gtk::Builder>& refBuilder,
-                std::string settings_name);
+                const std::string& settings_name);
     ~CrossfeedUi();
 
     static std::shared_ptr<CrossfeedUi> create(std::string settings_name);

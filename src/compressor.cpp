@@ -27,7 +27,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Compressor* l) {
 
 }  // namespace
 
-Compressor::Compressor(std::string tag, std::string schema)
+Compressor::Compressor(const std::string& tag, const std::string& schema)
     : PluginBase(tag, "compressor", schema) {
     compressor = gst_element_factory_make(
         "calf-sourceforge-net-plugins-Compressor", nullptr);

@@ -7,7 +7,7 @@
 
 class StereoEnhancer : public PluginBase {
    public:
-    StereoEnhancer(std::string tag, std::string schema);
+    StereoEnhancer(const std::string& tag, const std::string& schema);
     ~StereoEnhancer();
 
     GstElement* stereo_enhancer;

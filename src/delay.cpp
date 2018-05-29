@@ -29,7 +29,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Delay* l) {
 
 }  // namespace
 
-Delay::Delay(std::string tag, std::string schema)
+Delay::Delay(const std::string& tag, const std::string& schema)
     : PluginBase(tag, "delay", schema) {
     delay = gst_element_factory_make(
         "lsp-plug-in-plugins-lv2-comp-delay-x2-stereo", nullptr);
@@ -40,9 +40,12 @@ Delay::Delay(std::string tag, std::string schema)
         auto in_level = gst_element_factory_make("level", "delay_input_level");
         auto out_level =
             gst_element_factory_make("level", "delay_output_level");
+        auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
 
-        gst_bin_add_many(GST_BIN(bin), in_level, delay, out_level, nullptr);
-        gst_element_link_many(in_level, delay, out_level, nullptr);
+        gst_bin_add_many(GST_BIN(bin), in_level, audioconvert, delay, out_level,
+                         nullptr);
+        gst_element_link_many(in_level, audioconvert, delay, out_level,
+                              nullptr);
 
         auto pad_sink = gst_element_get_static_pad(in_level, "sink");
         auto pad_src = gst_element_get_static_pad(out_level, "src");

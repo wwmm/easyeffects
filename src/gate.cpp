@@ -26,7 +26,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Gate* l) {
 
 }  // namespace
 
-Gate::Gate(std::string tag, std::string schema)
+Gate::Gate(const std::string& tag, const std::string& schema)
     : PluginBase(tag, "gate", schema) {
     gate =
         gst_element_factory_make("calf-sourceforge-net-plugins-Gate", "gate");

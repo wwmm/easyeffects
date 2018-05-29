@@ -7,7 +7,7 @@
 
 class Limiter : public PluginBase {
    public:
-    Limiter(std::string tag, std::string schema);
+    Limiter(const std::string& tag, const std::string& schema);
     ~Limiter();
 
     GstElement* limiter;

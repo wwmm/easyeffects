@@ -10,7 +10,7 @@ class GateUi : public Gtk::Grid, public PluginUiBase {
    public:
     GateUi(BaseObjectType* cobject,
            const Glib::RefPtr<Gtk::Builder>& refBuilder,
-           std::string settings_name);
+           const std::string& settings_name);
     ~GateUi();
 
     static std::shared_ptr<GateUi> create(std::string settings_name);

@@ -7,7 +7,7 @@
 
 class Deesser : public PluginBase {
    public:
-    Deesser(std::string tag, std::string schema);
+    Deesser(const std::string& tag, const std::string& schema);
     ~Deesser();
 
     GstElement* deesser;

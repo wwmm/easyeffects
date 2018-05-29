@@ -58,7 +58,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Limiter* l) {
 
 }  // namespace
 
-Limiter::Limiter(std::string tag, std::string schema)
+Limiter::Limiter(const std::string& tag, const std::string& schema)
     : PluginBase(tag, "limiter", schema) {
     limiter = gst_element_factory_make("calf-sourceforge-net-plugins-Limiter",
                                        nullptr);

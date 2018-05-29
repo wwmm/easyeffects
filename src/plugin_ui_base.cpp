@@ -1,7 +1,7 @@
 #include "plugin_ui_base.hpp"
 
 PluginUiBase::PluginUiBase(const Glib::RefPtr<Gtk::Builder>& refBuilder,
-                           std::string settings_name)
+                           const std::string& settings_name)
     : builder(refBuilder), settings(Gio::Settings::create(settings_name)) {
     builder->get_widget("enable", enable);
     builder->get_widget("listbox_control", listbox_control);

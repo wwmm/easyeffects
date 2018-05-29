@@ -10,7 +10,7 @@ void on_num_bands_changed(GSettings* settings, gchar* key, Equalizer* l) {
 
 }  // namespace
 
-Equalizer::Equalizer(std::string tag, std::string schema)
+Equalizer::Equalizer(const std::string& tag, const std::string& schema)
     : PluginBase(tag, "equalizer", schema) {
     equalizer = gst_element_factory_make("equalizer-nbands", nullptr);
 

@@ -2,7 +2,7 @@
 #include "crossfeed.hpp"
 #include "util.hpp"
 
-Crossfeed::Crossfeed(std::string tag, std::string schema)
+Crossfeed::Crossfeed(const std::string& tag, const std::string& schema)
     : PluginBase(tag, "crossfeed", schema) {
     crossfeed = gst_element_factory_make("bs2b", nullptr);
 

@@ -66,7 +66,8 @@ void on_post_messages_changed(GSettings* settings,
 
 }  // namespace
 
-StereoEnhancer::StereoEnhancer(std::string tag, std::string schema)
+StereoEnhancer::StereoEnhancer(const std::string& tag,
+                               const std::string& schema)
     : PluginBase(tag, "stereo_enhancer", schema) {
     stereo_enhancer = gst_element_factory_make(
         "calf-sourceforge-net-plugins-HaasEnhancer", "stereo_enhancer");

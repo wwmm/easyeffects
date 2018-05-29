@@ -12,7 +12,7 @@ class StereoEnhancerUi : public Gtk::Grid, public PluginUiBase {
    public:
     StereoEnhancerUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& refBuilder,
-                     std::string settings_name);
+                     const std::string& settings_name);
     ~StereoEnhancerUi();
 
     static std::shared_ptr<StereoEnhancerUi> create(std::string settings_name);

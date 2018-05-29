@@ -10,7 +10,7 @@ class LimiterUi : public Gtk::Grid, public PluginUiBase {
    public:
     LimiterUi(BaseObjectType* cobject,
               const Glib::RefPtr<Gtk::Builder>& refBuilder,
-              std::string settings_name);
+              const std::string& settings_name);
     ~LimiterUi();
 
     static std::shared_ptr<LimiterUi> create(std::string settings_name);

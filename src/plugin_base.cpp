@@ -80,9 +80,9 @@ void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
 
 }  // namespace
 
-PluginBase::PluginBase(std::string tag,
-                       std::string plugin_name,
-                       std::string schema)
+PluginBase::PluginBase(const std::string& tag,
+                       const std::string& plugin_name,
+                       const std::string& schema)
     : log_tag(tag),
       name(plugin_name),
       settings(g_settings_new(schema.c_str())) {

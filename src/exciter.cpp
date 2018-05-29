@@ -26,7 +26,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Exciter* l) {
 
 }  // namespace
 
-Exciter::Exciter(std::string tag, std::string schema)
+Exciter::Exciter(const std::string& tag, const std::string& schema)
     : PluginBase(tag, "exciter", schema) {
     exciter = gst_element_factory_make("calf-sourceforge-net-plugins-Exciter",
                                        nullptr);

@@ -11,7 +11,7 @@ class ReverbUi : public Gtk::Grid, public PluginUiBase {
    public:
     ReverbUi(BaseObjectType* cobject,
              const Glib::RefPtr<Gtk::Builder>& refBuilder,
-             std::string settings_name);
+             const std::string& settings_name);
     ~ReverbUi();
 
     static std::shared_ptr<ReverbUi> create(std::string settings_name);

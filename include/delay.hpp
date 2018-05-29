@@ -7,7 +7,7 @@
 
 class Delay : public PluginBase {
    public:
-    Delay(std::string tag, std::string schema);
+    Delay(const std::string& tag, const std::string& schema);
     ~Delay();
 
     GstElement* delay;

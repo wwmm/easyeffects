@@ -2,7 +2,7 @@
 
 BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
                                const Glib::RefPtr<Gtk::Builder>& refBuilder,
-                               std::string settings_name)
+                               const std::string& settings_name)
     : Gtk::Grid(cobject), PluginUiBase(refBuilder, settings_name) {
     name = "bass_enhancer";
 
