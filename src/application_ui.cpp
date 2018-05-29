@@ -1,6 +1,7 @@
 #include <glibmm.h>
 #include <gtkmm/cssprovider.h>
 #include <gtkmm/icontheme.h>
+#include <gtkmm/listboxrow.h>
 #include <gtkmm/settings.h>
 #include "application_ui.hpp"
 #include "util.hpp"
@@ -32,6 +33,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     builder->get_widget("spectrum", spectrum);
     builder->get_widget("stack", stack);
     builder->get_widget("presets_listbox", presets_listbox);
+    builder->get_widget("presets_menu_button", presets_menu_button);
 
     get_object("buffer_in", buffer_in);
     get_object("buffer_out", buffer_out);
@@ -74,6 +76,9 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     stack->connect_property_changed(
         "visible-child",
         sigc::mem_fun(*this, &ApplicationUi::on_stack_visible_child_changed));
+
+    presets_menu_button->signal_clicked().connect(
+        sigc::mem_fun(*this, &ApplicationUi::on_presets_menu_button_clicked));
 
     app->pm->sink_added.connect(
         sigc::mem_fun(*this, &ApplicationUi::on_sink_added));
@@ -609,5 +614,31 @@ int ApplicationUi::on_listbox_sort(Gtk::ListBoxRow* row1,
         return 1;
     } else {
         return 0;
+    }
+}
+
+void ApplicationUi::on_presets_menu_button_clicked() {
+    populate_presets_listbox();
+}
+
+void ApplicationUi::populate_presets_listbox() {
+    auto children = presets_listbox->get_children();
+
+    for (auto c : children) {
+        presets_listbox->remove(*c);
+    }
+
+    auto names = app->presets_manager->get_names();
+
+    for (auto name : names) {
+        auto b = Gtk::Builder::create_from_resource(
+            "/com/github/wwmm/pulseeffects/preset_row.glade");
+
+        Gtk::ListBoxRow* row;
+
+        b->get_widget("preset_row", row);
+
+        presets_listbox->add(*row);
+        presets_listbox->show_all();
     }
 }

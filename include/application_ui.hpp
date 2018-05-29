@@ -8,6 +8,7 @@
 #include <gtkmm/drawingarea.h>
 #include <gtkmm/listbox.h>
 #include <gtkmm/liststore.h>
+#include <gtkmm/menubutton.h>
 #include <gtkmm/stack.h>
 #include <gtkmm/switch.h>
 #include <gtkmm/togglebutton.h>
@@ -53,6 +54,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     Gtk::ListStore* source_list;
     Gtk::Stack* stack;
     Gtk::ListBox* presets_listbox;
+    Gtk::MenuButton* presets_menu_button;
 
     sigc::connection spectrum_connection;
 
@@ -73,6 +75,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     void init_autostart_switch();
 
     void clear_spectrum();
+
+    void populate_presets_listbox();
 
     bool on_enable_autostart(bool state);
 
@@ -109,6 +113,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     void on_output_device_changed();
 
     int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
+
+    void on_presets_menu_button_clicked();
 };
 
 #endif
