@@ -25,7 +25,7 @@
         <property name="valign">center</property>
         <property name="spacing">6</property>
         <child>
-          <object class="GtkLabel" id="preset_row_label">
+          <object class="GtkLabel" id="name">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">start</property>
@@ -39,7 +39,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="delete_preset">
+          <object class="GtkButton" id="remove">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -59,7 +59,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton">
+          <object class="GtkButton" id="save">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>

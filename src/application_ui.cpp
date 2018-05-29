@@ -34,6 +34,10 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     builder->get_widget("stack", stack);
     builder->get_widget("presets_listbox", presets_listbox);
     builder->get_widget("presets_menu_button", presets_menu_button);
+    builder->get_widget("presets_menu_label", presets_menu_label);
+    builder->get_widget("preset_name", preset_name);
+    builder->get_widget("add_preset", add_preset);
+    builder->get_widget("import_preset", import_preset);
 
     get_object("buffer_in", buffer_in);
     get_object("buffer_out", buffer_out);
@@ -79,6 +83,11 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
     presets_menu_button->signal_clicked().connect(
         sigc::mem_fun(*this, &ApplicationUi::on_presets_menu_button_clicked));
+
+    presets_listbox->signal_row_activated().connect([&](auto row) {
+        presets_menu_label->set_text(row->get_name());
+        app->presets_manager->load(row->get_name());
+    });
 
     app->pm->sink_added.connect(
         sigc::mem_fun(*this, &ApplicationUi::on_sink_added));
@@ -635,8 +644,18 @@ void ApplicationUi::populate_presets_listbox() {
             "/com/github/wwmm/pulseeffects/preset_row.glade");
 
         Gtk::ListBoxRow* row;
+        Gtk::Button *save_btn, *remove_btn;
 
         b->get_widget("preset_row", row);
+        b->get_widget("save", save_btn);
+        b->get_widget("remove", remove_btn);
+
+        row->set_name(name);
+
+        save_btn->signal_clicked().connect(
+            [=]() { app->presets_manager->save(name); });
+        remove_btn->signal_clicked().connect(
+            [=]() { app->presets_manager->remove(name); });
 
         presets_listbox->add(*row);
         presets_listbox->show_all();

@@ -9,6 +9,9 @@ class PresetsManager {
     virtual ~PresetsManager();
 
     std::vector<std::string> get_names();
+    void save(const std::string& name);
+    void remove(const std::string& name);
+    void load(const std::string& name);
 
    private:
     std::string log_tag = "presets_manager: ";

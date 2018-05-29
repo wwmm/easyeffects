@@ -36,7 +36,7 @@ std::vector<std::string> PresetsManager::get_names() {
     while (it != fs::directory_iterator{}) {
         if (fs::is_regular_file(it->status())) {
             if (it->path().extension().string() == ".json") {
-                names.push_back(it->path().filename().string());
+                names.push_back(it->path().stem().string());
             }
         }
 
@@ -44,4 +44,16 @@ std::vector<std::string> PresetsManager::get_names() {
     }
 
     return names;
+}
+
+void PresetsManager::save(const std::string& name) {
+    util::debug("save: " + name);
+}
+
+void PresetsManager::remove(const std::string& name) {
+    util::debug("remove: " + name);
+}
+
+void PresetsManager::load(const std::string& name) {
+    util::debug("load: " + name);
 }

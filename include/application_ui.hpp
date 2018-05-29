@@ -6,6 +6,8 @@
 #include <gtkmm/button.h>
 #include <gtkmm/combobox.h>
 #include <gtkmm/drawingarea.h>
+#include <gtkmm/entry.h>
+#include <gtkmm/label.h>
 #include <gtkmm/listbox.h>
 #include <gtkmm/liststore.h>
 #include <gtkmm/menubutton.h>
@@ -55,6 +57,9 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     Gtk::Stack* stack;
     Gtk::ListBox* presets_listbox;
     Gtk::MenuButton* presets_menu_button;
+    Gtk::Label* presets_menu_label;
+    Gtk::Entry* preset_name;
+    Gtk::Button *add_preset, *import_preset;
 
     sigc::connection spectrum_connection;
 
