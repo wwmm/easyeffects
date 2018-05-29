@@ -74,9 +74,12 @@ StereoEnhancer::StereoEnhancer(std::string tag, std::string schema)
     if (is_installed(stereo_enhancer)) {
         bin = gst_bin_new("stereo_enhancer_bin");
 
-        gst_bin_add(GST_BIN(bin), stereo_enhancer);
+        auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
 
-        auto pad_sink = gst_element_get_static_pad(stereo_enhancer, "sink");
+        gst_bin_add_many(GST_BIN(bin), audioconvert, stereo_enhancer, nullptr);
+        gst_element_link(audioconvert, stereo_enhancer);
+
+        auto pad_sink = gst_element_get_static_pad(audioconvert, "sink");
         auto pad_src = gst_element_get_static_pad(stereo_enhancer, "src");
 
         gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));

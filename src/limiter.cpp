@@ -66,12 +66,14 @@ Limiter::Limiter(std::string tag, std::string schema)
     if (is_installed(limiter)) {
         bin = gst_bin_new("limiter_bin");
 
+        auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
         autovolume = gst_element_factory_make("level", "autovolume");
 
-        gst_bin_add_many(GST_BIN(bin), limiter, autovolume, nullptr);
-        gst_element_link(limiter, autovolume);
+        gst_bin_add_many(GST_BIN(bin), audioconvert, limiter, autovolume,
+                         nullptr);
+        gst_element_link_many(audioconvert, limiter, autovolume, nullptr);
 
-        auto pad_sink = gst_element_get_static_pad(limiter, "sink");
+        auto pad_sink = gst_element_get_static_pad(audioconvert, "sink");
         auto pad_src = gst_element_get_static_pad(autovolume, "src");
 
         gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));

@@ -38,9 +38,12 @@ Exciter::Exciter(std::string tag, std::string schema)
             gst_element_factory_make("level", "exciter_input_level");
         auto out_level =
             gst_element_factory_make("level", "exciter_output_level");
+        auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
 
-        gst_bin_add_many(GST_BIN(bin), in_level, exciter, out_level, nullptr);
-        gst_element_link_many(in_level, exciter, out_level, nullptr);
+        gst_bin_add_many(GST_BIN(bin), in_level, audioconvert, exciter,
+                         out_level, nullptr);
+        gst_element_link_many(in_level, audioconvert, exciter, out_level,
+                              nullptr);
 
         auto pad_sink = gst_element_get_static_pad(in_level, "sink");
         auto pad_src = gst_element_get_static_pad(out_level, "src");
