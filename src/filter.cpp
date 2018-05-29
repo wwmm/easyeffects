@@ -54,9 +54,12 @@ Filter::Filter(std::string tag, std::string schema)
     if (is_installed(filter)) {
         bin = gst_bin_new("filter_bin");
 
-        gst_bin_add(GST_BIN(bin), filter);
+        auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
 
-        auto pad_sink = gst_element_get_static_pad(filter, "sink");
+        gst_bin_add_many(GST_BIN(bin), audioconvert, filter, nullptr);
+        gst_element_link(audioconvert, filter);
+
+        auto pad_sink = gst_element_get_static_pad(audioconvert, "sink");
         auto pad_src = gst_element_get_static_pad(filter, "src");
 
         gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
