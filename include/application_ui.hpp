@@ -6,6 +6,7 @@
 #include <gtkmm/button.h>
 #include <gtkmm/combobox.h>
 #include <gtkmm/drawingarea.h>
+#include <gtkmm/listbox.h>
 #include <gtkmm/liststore.h>
 #include <gtkmm/stack.h>
 #include <gtkmm/switch.h>
@@ -51,6 +52,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     Gtk::ListStore* sink_list;
     Gtk::ListStore* source_list;
     Gtk::Stack* stack;
+    Gtk::ListBox* presets_listbox;
 
     sigc::connection spectrum_connection;
 
@@ -105,6 +107,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     void on_input_device_changed();
 
     void on_output_device_changed();
+
+    int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
 };
 
 #endif

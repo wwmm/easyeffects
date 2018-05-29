@@ -55,14 +55,13 @@ void Application::on_startup() {
 
     create_appmenu();
 
-    create_presets_directory();
-
     settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
 
     pm = std::shared_ptr<PulseManager>(new PulseManager());
 
     sie = std::make_shared<SinkInputEffects>(pm);
     soe = std::make_shared<SourceOutputEffects>(pm);
+    presets_manager = std::make_shared<PresetsManager>();
 
     pm->new_default_sink.connect([&](auto name) {
         util::debug("new default sink: " + name);
@@ -138,18 +137,4 @@ void Application::create_appmenu() {
     menu->append("Quit", "app.quit");
 
     set_app_menu(menu);
-}
-
-void Application::create_presets_directory() {
-    auto path = Glib::get_user_config_dir() + "/PulseEffects";
-
-    auto file = Gio::File::create_for_path(path);
-
-    if (file->query_exists()) {
-        util::debug(log_tag + "user preset directory already exists");
-    } else {
-        file->make_directory_with_parents();
-
-        util::debug(log_tag + "user presets directory created: " + path);
-    }
 }

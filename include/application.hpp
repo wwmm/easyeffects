@@ -4,6 +4,7 @@
 #include <giomm/settings.h>
 #include <gtkmm/application.h>
 #include <memory>
+#include "presets_manager.hpp"
 #include "pulse_manager.hpp"
 #include "sink_input_effects.hpp"
 #include "source_output_effects.hpp"
@@ -19,6 +20,7 @@ class Application : public Gtk::Application {
     std::shared_ptr<PulseManager> pm;
     std::shared_ptr<SinkInputEffects> sie;
     std::shared_ptr<SourceOutputEffects> soe;
+    std::shared_ptr<PresetsManager> presets_manager;
 
    protected:
     int on_command_line(
@@ -33,8 +35,6 @@ class Application : public Gtk::Application {
     bool running_as_service;
 
     void create_appmenu();
-
-    void create_presets_directory();
 };
 
 #endif

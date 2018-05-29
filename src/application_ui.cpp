@@ -31,6 +31,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     builder->get_widget("spectrum_box", spectrum_box);
     builder->get_widget("spectrum", spectrum);
     builder->get_widget("stack", stack);
+    builder->get_widget("presets_listbox", presets_listbox);
 
     get_object("buffer_in", buffer_in);
     get_object("buffer_out", buffer_out);
@@ -590,5 +591,23 @@ void ApplicationUi::on_output_device_changed() {
         app->soe->webrtc->set_probe_src_device(name + ".monitor");
 
         util::debug(log_tag + "output device changed: " + name);
+    }
+}
+
+int ApplicationUi::on_listbox_sort(Gtk::ListBoxRow* row1,
+                                   Gtk::ListBoxRow* row2) {
+    auto name1 = row1->get_name();
+    auto name2 = row2->get_name();
+
+    std::vector<std::string> names = {name1, name2};
+
+    std::sort(names.begin(), names.end());
+
+    if (name1 == names[0]) {
+        return -1;
+    } else if (name2 == names[0]) {
+        return 1;
+    } else {
+        return 0;
     }
 }

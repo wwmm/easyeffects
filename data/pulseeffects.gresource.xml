@@ -22,6 +22,7 @@
     <file>deesser.glade</file>
     <file>pitch.glade</file>
     <file>webrtc.glade</file>
+    <file>preset_row.glade</file>
     <file>about_icon.png</file>
     <file>listbox.css</file>
     <file>pulseeffects-sine-symbolic.svg</file>

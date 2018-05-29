@@ -54,6 +54,7 @@ pulseeffects_sources = [
 	'pitch_ui.cpp',
 	'webrtc.cpp',
 	'webrtc_ui.cpp',
+	'presets_manager.cpp',
 	'util.cpp',
 	gresources
 ]
@@ -69,7 +70,7 @@ pulseeffects_deps = [
 	dependency('gstreamer-webrtc-1.0', required: false),
 	dependency('lilv-0', version: '>= 0.22', required: false),
 	dependency('libbs2b', required: false),
-	dependency('boost')
+	dependency('boost', modules:['system','filesystem'])
 ]
 
 executable(

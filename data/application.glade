@@ -16,6 +16,16 @@
     <property name="step_increment">1</property>
     <property name="page_increment">1000</property>
   </object>
+  <object class="GtkImage" id="image_add_preset">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">list-add-symbolic</property>
+  </object>
+  <object class="GtkImage" id="image_import_preset">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">document-open-symbolic</property>
+  </object>
   <object class="GtkImage" id="image_test">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -34,6 +44,93 @@
     <property name="value">10000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1000</property>
+  </object>
+  <object class="GtkPopover" id="presets_menu">
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkGrid">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin_top">6</property>
+        <property name="margin_bottom">6</property>
+        <property name="row_spacing">6</property>
+        <property name="column_spacing">3</property>
+        <child>
+          <object class="GtkEntry" id="new_preset_name">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="valign">center</property>
+            <property name="hexpand">True</property>
+            <property name="placeholder_text" translatable="yes">Name</property>
+            <property name="input_purpose">name</property>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="add_preset">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">Create Preset</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="image">image_add_preset</property>
+            <style>
+              <class name="suggested-action"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="import_preset">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">Import Presets</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="image">image_import_preset</property>
+            <property name="always_show_image">True</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow" id="scrolled_window">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="propagate_natural_width">True</property>
+            <property name="propagate_natural_height">True</property>
+            <child>
+              <object class="GtkViewport">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkListBox" id="presets_listbox">
+                    <property name="name">listbox_presets</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
+            <property name="width">3</property>
+          </packing>
+        </child>
+      </object>
+    </child>
   </object>
   <object class="GtkListStore" id="sink_list">
     <columns>
@@ -113,17 +210,24 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="presets_popover_button">
-            <property name="label" translatable="yes">Presets</property>
+          <object class="GtkMenuButton" id="presets_menu_button">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
+            <property name="popover">presets_menu</property>
+            <child>
+              <object class="GtkLabel" id="presets_menu_label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Presets</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="pack_type">end</property>
-            <property name="position">5</property>
+            <property name="position">3</property>
           </packing>
         </child>
       </object>
