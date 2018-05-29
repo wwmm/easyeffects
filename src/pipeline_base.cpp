@@ -353,11 +353,16 @@ void PipelineBase::init_spectrum() {
 }
 
 void PipelineBase::enable_spectrum() {
+    while (in_pad_cb) {
+    }
+
     gst_pad_add_probe(
         gst_element_get_static_pad(spectrum_identity_in, "src"),
-        GST_PAD_PROBE_TYPE_IDLE,
+        GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
         [](auto pad, auto info, auto d) {
             auto l = static_cast<PipelineBase*>(d);
+
+            l->in_pad_cb = true;
 
             auto plugin =
                 gst_bin_get_by_name(GST_BIN(l->spectrum_bin), "spectrum");
@@ -368,13 +373,15 @@ void PipelineBase::enable_spectrum() {
 
                 gst_bin_add(GST_BIN(l->spectrum_bin), l->spectrum);
 
-                gst_bin_sync_children_states(GST_BIN(l->spectrum_bin));
-
                 gst_element_link_many(l->spectrum_identity_in, l->spectrum,
                                       l->spectrum_identity_out, nullptr);
 
+                gst_bin_sync_children_states(GST_BIN(l->spectrum_bin));
+
                 util::debug(l->log_tag + "spectrum enabled");
             }
+
+            l->in_pad_cb = false;
 
             return GST_PAD_PROBE_REMOVE;
         },
@@ -382,11 +389,16 @@ void PipelineBase::enable_spectrum() {
 }
 
 void PipelineBase::disable_spectrum() {
+    while (in_pad_cb) {
+    }
+
     gst_pad_add_probe(
         gst_element_get_static_pad(spectrum_identity_in, "src"),
-        GST_PAD_PROBE_TYPE_IDLE,
+        GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
         [](auto pad, auto info, auto d) {
             auto l = static_cast<PipelineBase*>(d);
+
+            l->in_pad_cb = true;
 
             auto plugin =
                 gst_bin_get_by_name(GST_BIN(l->spectrum_bin), "spectrum");
@@ -399,13 +411,15 @@ void PipelineBase::disable_spectrum() {
 
                 gst_element_set_state(l->spectrum, GST_STATE_NULL);
 
-                gst_bin_sync_children_states(GST_BIN(l->spectrum_bin));
-
                 gst_element_link(l->spectrum_identity_in,
                                  l->spectrum_identity_out);
 
+                gst_bin_sync_children_states(GST_BIN(l->spectrum_bin));
+
                 util::debug(l->log_tag + "spectrum disabled");
             }
+
+            l->in_pad_cb = false;
 
             return GST_PAD_PROBE_REMOVE;
         },

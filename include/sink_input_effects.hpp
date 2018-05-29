@@ -39,8 +39,6 @@ class SinkInputEffects : public PipelineBase {
     std::unique_ptr<Maximizer> maximizer;
     std::unique_ptr<Delay> delay;
 
-    bool in_pad_cb = false;
-
     sigc::signal<void, std::array<double, 2>> compressor_input_level;
     sigc::signal<void, std::array<double, 2>> compressor_output_level;
     sigc::signal<void, std::array<double, 2>> equalizer_input_level;
