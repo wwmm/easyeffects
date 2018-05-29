@@ -21,7 +21,7 @@ class SinkInputEffectsUi : public EffectsBaseUi {
     SinkInputEffectsUi(BaseObjectType* cobject,
                        const Glib::RefPtr<Gtk::Builder>& refBuilder,
                        const Glib::RefPtr<Gio::Settings>& refSettings,
-                       std::shared_ptr<SinkInputEffects> sie_ptr);
+                       const std::shared_ptr<SinkInputEffects>& sie_ptr);
 
     ~SinkInputEffectsUi();
 

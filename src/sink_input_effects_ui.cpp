@@ -5,7 +5,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     BaseObjectType* cobject,
     const Glib::RefPtr<Gtk::Builder>& refBuilder,
     const Glib::RefPtr<Gio::Settings>& refSettings,
-    std::shared_ptr<SinkInputEffects> sie_ptr)
+    const std::shared_ptr<SinkInputEffects>& sie_ptr)
     : EffectsBaseUi(cobject, refBuilder, refSettings, sie_ptr->pm),
       sie(sie_ptr),
       limiter_ui(

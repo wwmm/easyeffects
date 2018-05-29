@@ -4,7 +4,7 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(
     BaseObjectType* cobject,
     const Glib::RefPtr<Gtk::Builder>& refBuilder,
     const Glib::RefPtr<Gio::Settings>& refSettings,
-    std::shared_ptr<SourceOutputEffects> soe_ptr)
+    const std::shared_ptr<SourceOutputEffects>& soe_ptr)
     : EffectsBaseUi(cobject, refBuilder, refSettings, soe_ptr->pm),
       soe(soe_ptr),
       limiter_ui(LimiterUi::create(
