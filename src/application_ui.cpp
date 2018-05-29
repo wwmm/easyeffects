@@ -98,6 +98,11 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
         app->presets_manager->load(row->get_name());
     });
 
+    add_preset->signal_clicked().connect(
+        [=]() { app->presets_manager->add(preset_name->get_text()); });
+
+    // pulseaudio signals
+
     app->pm->sink_added.connect(
         sigc::mem_fun(*this, &ApplicationUi::on_sink_added));
     app->pm->sink_removed.connect(
@@ -182,6 +187,12 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 ApplicationUi::~ApplicationUi() {
     app->sie->disable_spectrum();
     app->soe->disable_spectrum();
+
+    for (auto c : connections) {
+        c.disconnect();
+    }
+
+    spectrum_connection.disconnect();
 }
 
 ApplicationUi* ApplicationUi::create(Application* app_this) {
@@ -664,10 +675,10 @@ void ApplicationUi::populate_presets_listbox() {
         row->set_name(name);
         label->set_text(name);
 
-        save_btn->signal_clicked().connect(
-            [=]() { app->presets_manager->save(name); });
-        remove_btn->signal_clicked().connect(
-            [=]() { app->presets_manager->remove(name); });
+        connections.push_back(save_btn->signal_clicked().connect(
+            [=]() { app->presets_manager->save(name); }));
+        connections.push_back(remove_btn->signal_clicked().connect(
+            [=]() { app->presets_manager->remove(name); }));
 
         presets_listbox->add(*row);
         presets_listbox->show_all();

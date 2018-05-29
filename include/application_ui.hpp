@@ -62,6 +62,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     Gtk::Button *add_preset, *import_preset;
 
     sigc::connection spectrum_connection;
+    std::vector<sigc::connection> connections;
 
     std::unique_ptr<SinkInputEffectsUi> sie_ui;
     std::unique_ptr<SourceOutputEffectsUi> soe_ui;

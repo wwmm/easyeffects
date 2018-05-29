@@ -46,6 +46,10 @@ std::vector<std::string> PresetsManager::get_names() {
     return names;
 }
 
+void PresetsManager::add(const std::string& name) {
+    util::debug("add: " + name);
+}
+
 void PresetsManager::save(const std::string& name) {
     util::debug("save: " + name);
 }
