@@ -175,7 +175,8 @@ SourceOutputEffects::SourceOutputEffects(
     pitch = std::make_unique<Pitch>(
         log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.pitch");
     webrtc = std::make_unique<Webrtc>(
-        log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.webrtc");
+        log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.webrtc",
+        pm->mic_sink_info->rate);
 
     plugins.insert(std::make_pair(limiter->name, limiter->plugin));
     plugins.insert(std::make_pair(compressor->name, compressor->plugin));

@@ -5,10 +5,14 @@
 
 class Webrtc : public PluginBase {
    public:
-    Webrtc(std::string tag, std::string schema);
+    Webrtc(const std::string& tag,
+           const std::string& schema,
+           const int& sampling_rate);
     ~Webrtc();
 
     GstElement *webrtc, *probe_bin, *probe_src;
+
+    int rate;
 
     void set_probe_src_device(std::string name);
 

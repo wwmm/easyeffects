@@ -2,8 +2,10 @@
 #include "util.hpp"
 #include "webrtc.hpp"
 
-Webrtc::Webrtc(std::string tag, std::string schema)
-    : PluginBase(tag, "webrtc", schema) {
+Webrtc::Webrtc(const std::string& tag,
+               const std::string& schema,
+               const int& sampling_rate)
+    : PluginBase(tag, "webrtc", schema), rate(sampling_rate) {
     webrtc = gst_element_factory_make("webrtcdsp", nullptr);
 
     if (is_installed(webrtc)) {
@@ -56,24 +58,31 @@ void Webrtc::build_dsp_bin() {
     auto in_level = gst_element_factory_make("level", "webrtc_input_level");
     auto audioconvert_in = gst_element_factory_make("audioconvert", nullptr);
     auto audioresample_in = gst_element_factory_make("audioresample", nullptr);
-    auto capsfilter = gst_element_factory_make("capsfilter", nullptr);
+    auto caps_in = gst_element_factory_make("capsfilter", nullptr);
     auto audioconvert_out = gst_element_factory_make("audioconvert", nullptr);
     auto audioresample_out = gst_element_factory_make("audioresample", nullptr);
+    auto caps_out = gst_element_factory_make("capsfilter", nullptr);
     auto out_level = gst_element_factory_make("level", "webrtc_output_level");
 
-    auto caps_str = "audio/x-raw,format=S16LE,channels=2,rate=48000";
+    g_object_set(caps_in, "caps",
+                 gst_caps_from_string("audio/x-raw,format=S16LE,rate=48000"),
+                 nullptr);
 
-    g_object_set(capsfilter, "caps", gst_caps_from_string(caps_str), nullptr);
+    g_object_set(
+        caps_out, "caps",
+        gst_caps_from_string(
+            ("audio/x-raw,format=F32LE,rate=" + std::to_string(rate)).c_str()),
+        nullptr);
 
     gst_bin_add(GST_BIN(bin), probe_bin);
 
     gst_bin_add_many(GST_BIN(bin), in_level, audioconvert_in, audioresample_in,
-                     capsfilter, webrtc, audioconvert_out, audioresample_out,
-                     out_level, nullptr);
+                     caps_in, webrtc, audioconvert_out, audioresample_out,
+                     caps_out, out_level, nullptr);
 
-    gst_element_link_many(in_level, audioconvert_in, audioresample_in,
-                          capsfilter, webrtc, audioconvert_out,
-                          audioresample_out, out_level, nullptr);
+    gst_element_link_many(in_level, audioconvert_in, audioresample_in, caps_in,
+                          webrtc, audioconvert_out, audioresample_out, caps_out,
+                          out_level, nullptr);
 
     auto pad_sink = gst_element_get_static_pad(in_level, "sink");
     auto pad_src = gst_element_get_static_pad(out_level, "src");
