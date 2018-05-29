@@ -68,10 +68,6 @@ GstPadProbeReturn on_pad_idle(GstPad* pad,
         gst_element_set_state(p.second, GST_STATE_NULL);
     }
 
-    // syncing elements state with effects_bin
-
-    gst_bin_sync_children_states(GST_BIN(l->effects_bin));
-
     // linking elements using the new plugins order
 
     gst_element_link(l->identity_in, l->plugins[l->plugins_order[0]]);
@@ -83,6 +79,10 @@ GstPadProbeReturn on_pad_idle(GstPad* pad,
 
     gst_element_link(l->plugins[l->plugins_order[l->plugins_order.size() - 1]],
                      l->identity_out);
+
+    // syncing elements state with effects_bin
+
+    gst_bin_sync_children_states(GST_BIN(l->effects_bin));
 
     l->in_pad_cb = false;
 
