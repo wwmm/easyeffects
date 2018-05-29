@@ -13,12 +13,16 @@ void error(const std::string& s);
 void critical(const std::string& s);
 void warning(const std::string& s);
 
-std::vector<float> logspace(float start, float stop, uint npoints);
-std::vector<float> linspace(float start, float stop, uint npoints);
+std::vector<float> logspace(const float& start,
+                            const float& stop,
+                            const uint& npoints);
+std::vector<float> linspace(const float& start,
+                            const float& stop,
+                            const uint& npoints);
 
-float linear_to_db(float amp);
+float linear_to_db(const float& amp);
 
-float db_to_linear(float db);
+float db_to_linear(const float& db);
 
 gboolean db20_gain_to_linear(GValue* value,
                              GVariant* variant,

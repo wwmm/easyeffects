@@ -19,7 +19,9 @@ void warning(const std::string& s) {
     g_warning(s.c_str(), "%s");
 }
 
-std::vector<float> logspace(float start, float stop, uint npoints) {
+std::vector<float> logspace(const float& start,
+                            const float& stop,
+                            const uint& npoints) {
     std::vector<float> output;
 
     float delta = (stop - start) / npoints;
@@ -35,7 +37,9 @@ std::vector<float> logspace(float start, float stop, uint npoints) {
     return output;
 }
 
-std::vector<float> linspace(float start, float stop, uint npoints) {
+std::vector<float> linspace(const float& start,
+                            const float& stop,
+                            const uint& npoints) {
     std::vector<float> output;
 
     float delta = (stop - start) / npoints;
@@ -51,7 +55,7 @@ std::vector<float> linspace(float start, float stop, uint npoints) {
     return output;
 }
 
-float linear_to_db(float amp) {
+float linear_to_db(const float& amp) {
     if (amp >= 0.00001) {
         return 20 * log10(amp);
     } else {
@@ -59,7 +63,7 @@ float linear_to_db(float amp) {
     }
 }
 
-float db_to_linear(float db) {
+float db_to_linear(const float& db) {
     return exp((db / 20.0) * log(10.0));
 }
 
