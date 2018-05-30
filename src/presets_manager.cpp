@@ -111,10 +111,22 @@ void PresetsManager::remove(const std::string& name) {
 
 void PresetsManager::load(const std::string& name) {
     boost::property_tree::ptree root;
+    std::vector<std::string> input_plugins, output_plugins;
 
     auto input_file = presets_dir / fs::path{name + ".json"};
 
     boost::property_tree::read_json(input_file.string(), root);
+
+    for (auto& p : root.get_child("input.plugins_order")) {
+        input_plugins.push_back(p.second.data());
+    }
+
+    for (auto& p : root.get_child("output.plugins_order")) {
+        output_plugins.push_back(p.second.data());
+    }
+
+    soe_settings->set_string_array("plugins", input_plugins);
+    sie_settings->set_string_array("plugins", output_plugins);
 
     limiter->read(root);
 
