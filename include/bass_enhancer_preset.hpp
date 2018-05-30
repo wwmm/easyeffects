@@ -1,17 +1,17 @@
-#ifndef LIMITER_PRESET_HPP
-#define LIMITER_PRESET_HPP
+#ifndef BASS_ENHANCER_PRESET_HPP
+#define BASS_ENHANCER_PRESET_HPP
 
 #include "plugin_preset_base.hpp"
 
-class LimiterPreset : public PluginPresetBase {
+class BassEnhancerPreset : public PluginPresetBase {
    public:
-    LimiterPreset();
+    BassEnhancerPreset();
 
     void write(boost::property_tree::ptree& root) override;
     void read(boost::property_tree::ptree& root) override;
 
    private:
-    Glib::RefPtr<Gio::Settings> input_settings, output_settings;
+    Glib::RefPtr<Gio::Settings> output_settings;
 
     void save(boost::property_tree::ptree& root,
               const std::string& section,

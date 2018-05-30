@@ -1,15 +1,17 @@
 #include "limiter_preset.hpp"
 
 LimiterPreset::LimiterPreset()
-    : PluginPresetBase("com.github.wwmm.pulseeffects.sourceoutputs.limiter",
-                       "com.github.wwmm.pulseeffects.sinkinputs.limiter") {}
+    : input_settings(Gio::Settings::create(
+          "com.github.wwmm.pulseeffects.sourceoutputs.limiter")),
+      output_settings(Gio::Settings::create(
+          "com.github.wwmm.pulseeffects.sinkinputs.limiter")) {}
 
 void LimiterPreset::save(boost::property_tree::ptree& root,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {
     root.put(section + ".limiter.state", settings->get_boolean("state"));
 
-    root.put(section + ".limiter.input_gain",
+    root.put(section + ".limiter.input-gain",
              settings->get_double("input-gain"));
 
     root.put(section + ".limiter.limit", settings->get_double("limit"));
@@ -20,7 +22,7 @@ void LimiterPreset::save(boost::property_tree::ptree& root,
 
     root.put(section + ".limiter.asc", settings->get_boolean("asc"));
 
-    root.put(section + ".limiter.asc_level", settings->get_double("asc-level"));
+    root.put(section + ".limiter.asc-level", settings->get_double("asc-level"));
 
     root.put(section + ".limiter.oversampling",
              settings->get_int("oversampling"));
@@ -52,7 +54,7 @@ void LimiterPreset::load(boost::property_tree::ptree& root,
 
     settings->set_double(
         "input-gain",
-        root.get<double>(section + ".limiter.input_gain",
+        root.get<double>(section + ".limiter.input-gain",
                          get_default<double>(settings, "input-gain")));
 
     settings->set_double(
@@ -74,7 +76,7 @@ void LimiterPreset::load(boost::property_tree::ptree& root,
 
     settings->set_double(
         "asc-level",
-        root.get<double>(section + ".limiter.asc_level",
+        root.get<double>(section + ".limiter.asc-level",
                          get_default<double>(settings, "asc-level")));
 
     settings->set_int(
@@ -108,4 +110,14 @@ void LimiterPreset::load(boost::property_tree::ptree& root,
         "autovolume-threshold",
         root.get<int>(section + ".limiter.autovolume.threshold",
                       get_default<int>(settings, "autovolume-threshold")));
+}
+
+void LimiterPreset::write(boost::property_tree::ptree& root) {
+    save(root, "input", input_settings);
+    save(root, "output", output_settings);
+}
+
+void LimiterPreset::read(boost::property_tree::ptree& root) {
+    load(root, "input", input_settings);
+    load(root, "output", output_settings);
 }

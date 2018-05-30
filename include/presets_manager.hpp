@@ -4,6 +4,7 @@
 #include <giomm/settings.h>
 #include <boost/filesystem.hpp>
 #include <memory>
+#include "bass_enhancer_preset.hpp"
 #include "limiter_preset.hpp"
 
 class PresetsManager {
@@ -26,6 +27,7 @@ class PresetsManager {
     Glib::RefPtr<Gio::Settings> sie_settings, soe_settings;
 
     std::unique_ptr<LimiterPreset> limiter;
+    std::unique_ptr<BassEnhancerPreset> bass_enhancer;
 };
 
 #endif
