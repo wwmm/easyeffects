@@ -1,4 +1,5 @@
 #include <glibmm.h>
+#include <glibmm/i18n.h>
 #include <gtkmm/cssprovider.h>
 #include <gtkmm/icontheme.h>
 #include <gtkmm/listboxrow.h>
@@ -103,6 +104,9 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
         app->presets_manager->add(preset_name->get_text());
         preset_name->set_text("");
     });
+
+    import_preset->signal_clicked().connect(
+        sigc::mem_fun(*this, &ApplicationUi::on_import_preset_clicked));
 
     // pulseaudio signals
 
@@ -648,6 +652,40 @@ int ApplicationUi::on_listbox_sort(Gtk::ListBoxRow* row1,
 
 void ApplicationUi::on_presets_menu_button_clicked() {
     populate_presets_listbox();
+}
+
+void ApplicationUi::on_import_preset_clicked() {
+    // gtkmm 3.22 does not have FileChooseNative
+
+    GtkFileChooserNative* native;
+    GtkFileChooserAction action = GTK_FILE_CHOOSER_ACTION_OPEN;
+    gint res;
+
+    native = gtk_file_chooser_native_new(_("Import Presets"),
+                                         (GtkWindow*)this->gobj(), action,
+                                         _("Open"), _("Cancel"));
+
+    res = gtk_native_dialog_run(GTK_NATIVE_DIALOG(native));
+
+    if (res == GTK_RESPONSE_ACCEPT) {
+        GtkFileChooser* chooser = GTK_FILE_CHOOSER(native);
+
+        auto file_list = gtk_file_chooser_get_filenames(chooser);
+
+        g_slist_foreach(file_list,
+                        [](auto data, auto user_data) {
+                            auto aui = static_cast<ApplicationUi*>(user_data);
+
+                            auto name = static_cast<char*>(data);
+
+                            std::cout << name << std::endl;
+                        },
+                        this);
+
+        g_slist_free(file_list);
+    }
+
+    g_object_unref(native);
 }
 
 void ApplicationUi::populate_presets_listbox() {

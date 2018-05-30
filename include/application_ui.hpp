@@ -121,6 +121,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
 
     void on_presets_menu_button_clicked();
+
+    void on_import_preset_clicked();
 };
 
 #endif
