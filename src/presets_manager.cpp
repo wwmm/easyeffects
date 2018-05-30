@@ -14,7 +14,8 @@ PresetsManager::PresetsManager()
       soe_settings(
           Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs")),
       limiter(std::make_unique<LimiterPreset>()),
-      bass_enhancer(std::make_unique<BassEnhancerPreset>()) {
+      bass_enhancer(std::make_unique<BassEnhancerPreset>()),
+      compressor(std::make_unique<CompressorPreset>()) {
     auto dir_exists = fs::is_directory(presets_dir);
 
     if (!dir_exists) {
@@ -92,6 +93,7 @@ void PresetsManager::save(const std::string& name) {
 
     limiter->write(root);
     bass_enhancer->write(root);
+    compressor->write(root);
 
     auto output_file = presets_dir / fs::path{name + ".json"};
 
@@ -132,6 +134,7 @@ void PresetsManager::load(const std::string& name) {
 
     limiter->read(root);
     bass_enhancer->read(root);
+    compressor->read(root);
 
     util::debug(log_tag + "loaded preset: " + input_file.string());
 }

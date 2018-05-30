@@ -57,6 +57,7 @@ pulseeffects_sources = [
 	'presets_manager.cpp',
 	'limiter_preset.cpp',
 	'bass_enhancer_preset.cpp',
+	'compressor_preset.cpp',
 	'util.cpp',
 	gresources
 ]
