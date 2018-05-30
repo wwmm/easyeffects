@@ -47,7 +47,9 @@ void LimiterPreset::save(boost::property_tree::ptree& root,
 
 void LimiterPreset::load(boost::property_tree::ptree& root,
                          const std::string& section,
-                         const Glib::RefPtr<Gio::Settings>& settings) {}
+                         const Glib::RefPtr<Gio::Settings>& settings) {
+    settings->set_boolean("state", root.get<bool>(section + ".limiter.state"));
+}
 
 void LimiterPreset::write(boost::property_tree::ptree& root) {
     save(root, "input", input_settings);
