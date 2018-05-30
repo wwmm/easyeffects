@@ -22,6 +22,16 @@ class PluginPresetBase {
     virtual void load(boost::property_tree::ptree& root,
                       const std::string& section,
                       const Glib::RefPtr<Gio::Settings>& settings) = 0;
+
+    template <typename T>
+    T get_default(const Glib::RefPtr<Gio::Settings>& settings,
+                  const std::string& key) {
+        Glib::Variant<T> value;
+
+        settings->get_default_value(key, value);
+
+        return value.get();
+    }
 };
 
 #endif

@@ -46,5 +46,66 @@ void LimiterPreset::save(boost::property_tree::ptree& root,
 void LimiterPreset::load(boost::property_tree::ptree& root,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {
-    settings->set_boolean("state", root.get<bool>(section + ".limiter.state"));
+    settings->set_boolean("state",
+                          root.get<bool>(section + ".limiter.state",
+                                         get_default<bool>(settings, "state")));
+
+    settings->set_double(
+        "input-gain",
+        root.get<double>(section + ".limiter.input_gain",
+                         get_default<double>(settings, "input-gain")));
+
+    settings->set_double(
+        "limit", root.get<double>(section + ".limiter.limit",
+                                  get_default<double>(settings, "limit")));
+
+    settings->set_double(
+        "lookahead",
+        root.get<double>(section + ".limiter.lookahead",
+                         get_default<double>(settings, "lookahead")));
+
+    settings->set_double(
+        "release", root.get<double>(section + ".limiter.release",
+                                    get_default<double>(settings, "release")));
+
+    settings->set_boolean("asc",
+                          root.get<bool>(section + ".limiter.asc",
+                                         get_default<bool>(settings, "asc")));
+
+    settings->set_double(
+        "asc-level",
+        root.get<double>(section + ".limiter.asc_level",
+                         get_default<double>(settings, "asc-level")));
+
+    settings->set_int(
+        "oversampling",
+        root.get<int>(section + ".limiter.oversampling",
+                      get_default<int>(settings, "oversampling")));
+
+    // autovolume
+
+    settings->set_boolean(
+        "autovolume-state",
+        root.get<bool>(section + ".limiter.autovolume.state",
+                       get_default<bool>(settings, "autovolume-state")));
+
+    settings->set_double(
+        "autovolume-window",
+        root.get<double>(section + ".limiter.autovolume.window",
+                         get_default<double>(settings, "autovolume-window")));
+
+    settings->set_int(
+        "autovolume-target",
+        root.get<int>(section + ".limiter.autovolume.target",
+                      get_default<int>(settings, "autovolume-target")));
+
+    settings->set_int(
+        "autovolume-tolerance",
+        root.get<int>(section + ".limiter.autovolume.tolerance",
+                      get_default<int>(settings, "autovolume-tolerance")));
+
+    settings->set_int(
+        "autovolume-threshold",
+        root.get<int>(section + ".limiter.autovolume.threshold",
+                      get_default<int>(settings, "autovolume-threshold")));
 }
