@@ -17,14 +17,14 @@ EffectsBaseUi::EffectsBaseUi(BaseObjectType* cobject,
     builder->get_widget("listbox", listbox);
     builder->get_widget("apps_box", apps_box);
 
-    auto row = new Gtk::ListBoxRow();
+    auto row = Gtk::manage(new Gtk::ListBoxRow());
 
     row->set_name("applications");
     row->set_margin_top(6);
     row->set_margin_bottom(6);
 
-    auto row_label = new Gtk::Label(std::string("<b>") + _("Applications") +
-                                    std::string("</b>"));
+    auto row_label = Gtk::manage(new Gtk::Label(
+        std::string("<b>") + _("Applications") + std::string("</b>")));
 
     row_label->set_halign(Gtk::Align::ALIGN_START);
     row_label->set_use_markup(true);
