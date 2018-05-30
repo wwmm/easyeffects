@@ -33,7 +33,7 @@ class EffectsBaseUi : public Gtk::Box {
 
     template <typename T>
     void add_to_listbox(T p) {
-        auto row = new Gtk::ListBoxRow();
+        auto row = Gtk::manage(new Gtk::ListBoxRow());
 
         row->add(*p->listbox_control);
         row->set_name(p->name);
