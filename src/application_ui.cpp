@@ -3,6 +3,7 @@
 #include <gtkmm/icontheme.h>
 #include <gtkmm/listboxrow.h>
 #include <gtkmm/settings.h>
+#include <boost/filesystem.hpp>
 #include "application_ui.hpp"
 #include "util.hpp"
 
@@ -242,42 +243,39 @@ void ApplicationUi::clear_spectrum() {
 }
 
 bool ApplicationUi::on_enable_autostart(bool state) {
-    auto path =
-        Glib::get_user_config_dir() + "/autostart/pulseeffects-service.desktop";
+    namespace fs = boost::filesystem;
 
-    auto file = Gio::File::create_for_path(path);
+    fs::path autostart_dir{Glib::get_user_config_dir() + "/autostart"};
+
+    if (!fs::is_directory(autostart_dir)) {
+        fs::create_directories(autostart_dir);
+    }
+
+    fs::path autostart_file{Glib::get_user_config_dir() +
+                            "/autostart/pulseeffects-service.desktop"};
 
     if (state) {
-        try {
-            Glib::RefPtr<Gio::FileOutputStream> stream;
+        if (!fs::exists(autostart_file)) {
+            fs::ofstream ofs{autostart_file};
 
-            if (file->query_exists())
-                stream = file->replace();
-            else
-                stream = file->create_file();
+            ofs << "[Desktop Entry]\n";
+            ofs << "Name=PulseEffects\n";
+            ofs << "Comment=PulseEffects Service\n";
+            ofs << "Exec=pulseeffects --gapplication-service\n";
+            ofs << "Icon=pulseeffects\n";
+            ofs << "StartupNotify=false\n";
+            ofs << "Terminal=false\n";
+            ofs << "Type=Application\n";
 
-            stream->write("[Desktop Entry]\n");
-            stream->write("Name=PulseEffects\n");
-            stream->write("Comment=PulseEffects Service\n");
-            stream->write("Exec=pulseeffects --gapplication-service\n");
-            stream->write("Icon=pulseeffects\n");
-            stream->write("StartupNotify=false\n");
-            stream->write("Terminal=false\n");
-            stream->write("Type=Application\n");
-            stream->close();
-            stream.reset();
+            ofs.close();
 
             util::debug(log_tag + "autostart file created");
-        } catch (const Glib::Exception& ex) {
-            util::warning(log_tag + ex.what());
         }
     } else {
-        try {
-            file->remove();
+        if (fs::exists(autostart_file)) {
+            fs::remove(autostart_file);
 
             util::debug(log_tag + "autostart file removed");
-        } catch (const Glib::Exception& ex) {
-            util::warning(log_tag + ex.what());
         }
     }
 
