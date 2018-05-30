@@ -55,6 +55,7 @@ pulseeffects_sources = [
 	'webrtc.cpp',
 	'webrtc_ui.cpp',
 	'presets_manager.cpp',
+	'plugin_preset_base.cpp',
 	'limiter_preset.cpp',
 	'util.cpp',
 	gresources

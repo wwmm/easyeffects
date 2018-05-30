@@ -1,10 +1,8 @@
 #include "limiter_preset.hpp"
 
 LimiterPreset::LimiterPreset()
-    : input_settings(Gio::Settings::create(
-          "com.github.wwmm.pulseeffects.sourceoutputs.limiter")),
-      output_settings(Gio::Settings::create(
-          "com.github.wwmm.pulseeffects.sinkinputs.limiter")) {}
+    : PluginPresetBase("com.github.wwmm.pulseeffects.sourceoutputs.limiter",
+                       "com.github.wwmm.pulseeffects.sinkinputs.limiter") {}
 
 void LimiterPreset::save(boost::property_tree::ptree& root,
                          const std::string& section,
@@ -49,14 +47,4 @@ void LimiterPreset::load(boost::property_tree::ptree& root,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {
     settings->set_boolean("state", root.get<bool>(section + ".limiter.state"));
-}
-
-void LimiterPreset::write(boost::property_tree::ptree& root) {
-    save(root, "input", input_settings);
-    save(root, "output", output_settings);
-}
-
-void LimiterPreset::read(boost::property_tree::ptree& root) {
-    load(root, "input", input_settings);
-    load(root, "output", output_settings);
 }
