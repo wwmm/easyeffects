@@ -66,11 +66,11 @@ void PresetsManager::save(const std::string& name) {
 
     limiter->write(root);
 
-    auto out_file = presets_dir / fs::path{name + ".json"};
+    auto output_file = presets_dir / fs::path{name + ".json"};
 
-    boost::property_tree::write_json(out_file.string(), root);
+    boost::property_tree::write_json(output_file.string(), root);
 
-    util::debug(log_tag + "saved preset: " + out_file.string());
+    util::debug(log_tag + "saved preset: " + output_file.string());
 }
 
 void PresetsManager::remove(const std::string& name) {
@@ -85,7 +85,15 @@ void PresetsManager::remove(const std::string& name) {
 }
 
 void PresetsManager::load(const std::string& name) {
-    util::debug("load: " + name);
+    boost::property_tree::ptree root;
+
+    auto input_file = presets_dir / fs::path{name + ".json"};
+
+    boost::property_tree::write_json(input_file.string(), root);
+
+    limiter->read(root);
+
+    util::debug(log_tag + "loaded preset: " + input_file.string());
 }
 
 void PresetsManager::import(const std::string& name) {
