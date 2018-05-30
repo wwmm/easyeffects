@@ -9,6 +9,10 @@ namespace fs = boost::filesystem;
 
 PresetsManager::PresetsManager()
     : presets_dir(Glib::get_user_config_dir() + "/PulseEffects"),
+      sie_settings(
+          Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs")),
+      soe_settings(
+          Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs")),
       limiter(std::make_unique<LimiterPreset>()) {
     auto dir_exists = fs::is_directory(presets_dir);
 
@@ -62,7 +66,28 @@ void PresetsManager::add(const std::string& name) {
 }
 
 void PresetsManager::save(const std::string& name) {
-    boost::property_tree::ptree root;
+    boost::property_tree::ptree root, node_in, node_out;
+
+    std::vector<std::string> input_plugins =
+        soe_settings->get_string_array("plugins");
+
+    std::vector<std::string> output_plugins =
+        sie_settings->get_string_array("plugins");
+
+    for (auto& p : input_plugins) {
+        boost::property_tree::ptree node;
+        node.put("", p);
+        node_in.push_back(std::make_pair("", node));
+    }
+
+    for (auto& p : output_plugins) {
+        boost::property_tree::ptree node;
+        node.put("", p);
+        node_out.push_back(std::make_pair("", node));
+    }
+
+    root.add_child("input.plugins_order", node_in);
+    root.add_child("output.plugins_order", node_out);
 
     limiter->write(root);
 
@@ -89,7 +114,7 @@ void PresetsManager::load(const std::string& name) {
 
     auto input_file = presets_dir / fs::path{name + ".json"};
 
-    boost::property_tree::write_json(input_file.string(), root);
+    boost::property_tree::read_json(input_file.string(), root);
 
     limiter->read(root);
 

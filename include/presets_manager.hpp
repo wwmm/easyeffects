@@ -1,6 +1,7 @@
 #ifndef PRESETS_MANAGER_HPP
 #define PRESETS_MANAGER_HPP
 
+#include <giomm/settings.h>
 #include <boost/filesystem.hpp>
 #include <memory>
 #include "limiter_preset.hpp"
@@ -21,6 +22,8 @@ class PresetsManager {
     std::string log_tag = "presets_manager: ";
 
     boost::filesystem::path presets_dir;
+
+    Glib::RefPtr<Gio::Settings> sie_settings, soe_settings;
 
     std::unique_ptr<LimiterPreset> limiter;
 };
