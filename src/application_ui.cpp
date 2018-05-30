@@ -103,6 +103,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     add_preset->signal_clicked().connect([=]() {
         app->presets_manager->add(preset_name->get_text());
         preset_name->set_text("");
+        populate_presets_listbox();
     });
 
     import_preset->signal_clicked().connect(
@@ -715,8 +716,10 @@ void ApplicationUi::populate_presets_listbox() {
 
         connections.push_back(save_btn->signal_clicked().connect(
             [=]() { app->presets_manager->save(name); }));
-        connections.push_back(remove_btn->signal_clicked().connect(
-            [=]() { app->presets_manager->remove(name); }));
+        connections.push_back(remove_btn->signal_clicked().connect([=]() {
+            app->presets_manager->remove(name);
+            populate_presets_listbox();
+        }));
 
         presets_listbox->add(*row);
         presets_listbox->show_all();

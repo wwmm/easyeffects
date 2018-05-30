@@ -47,8 +47,6 @@ std::vector<std::string> PresetsManager::get_names() {
 }
 
 void PresetsManager::add(const std::string& name) {
-    util::debug("add: " + name);
-
     bool add_preset = true;
 
     for (auto p : get_names()) {
@@ -58,24 +56,29 @@ void PresetsManager::add(const std::string& name) {
     }
 
     if (add_preset) {
-        // save(name);
+        save(name);
     }
 }
 
 void PresetsManager::save(const std::string& name) {
-    util::debug("save: " + name);
-
     boost::property_tree::ptree root;
 
     auto out_file = presets_dir / fs::path{name + ".json"};
 
-    util::debug(out_file.string());
+    boost::property_tree::write_json(out_file.string(), root);
 
-    // boost::property_tree::write_json(const std::string &filename, root);
+    util::debug(log_tag + "saved preset: " + out_file.string());
 }
 
 void PresetsManager::remove(const std::string& name) {
-    util::debug("remove: " + name);
+    auto preset_file = presets_dir / fs::path{name + ".json"};
+
+    if (fs::exists(preset_file)) {
+        fs::remove(preset_file);
+
+        util::debug(log_tag +
+                    "preset file file removed: " + preset_file.string());
+    }
 }
 
 void PresetsManager::load(const std::string& name) {
