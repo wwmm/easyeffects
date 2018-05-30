@@ -99,8 +99,10 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
         app->presets_manager->load(row->get_name());
     });
 
-    add_preset->signal_clicked().connect(
-        [=]() { app->presets_manager->add(preset_name->get_text()); });
+    add_preset->signal_clicked().connect([=]() {
+        app->presets_manager->add(preset_name->get_text());
+        preset_name->set_text("");
+    });
 
     // pulseaudio signals
 
