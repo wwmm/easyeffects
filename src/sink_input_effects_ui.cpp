@@ -38,13 +38,9 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     up_down_connections();
 }
 
-SinkInputEffectsUi::~SinkInputEffectsUi() {
-    for (auto c : connections) {
-        c.disconnect();
-    }
-}
+SinkInputEffectsUi::~SinkInputEffectsUi() {}
 
-std::unique_ptr<SinkInputEffectsUi> SinkInputEffectsUi::create(
+std::shared_ptr<SinkInputEffectsUi> SinkInputEffectsUi::create(
     std::shared_ptr<SinkInputEffects> sie) {
     auto builder = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/effects_base.glade");
@@ -56,7 +52,7 @@ std::unique_ptr<SinkInputEffectsUi> SinkInputEffectsUi::create(
 
     builder->get_widget_derived("widgets_box", sie_ui, settings, sie);
 
-    return std::unique_ptr<SinkInputEffectsUi>(sie_ui);
+    return std::shared_ptr<SinkInputEffectsUi>(sie_ui);
 }
 
 void SinkInputEffectsUi::level_meters_connections() {

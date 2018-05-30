@@ -43,7 +43,11 @@ EffectsBaseUi::EffectsBaseUi(BaseObjectType* cobject,
         [=](auto key) { listbox->invalidate_sort(); }));
 }
 
-EffectsBaseUi::~EffectsBaseUi() {}
+EffectsBaseUi::~EffectsBaseUi() {
+    for (auto c : connections) {
+        c.disconnect();
+    }
+}
 
 void EffectsBaseUi::on_app_added(std::shared_ptr<AppInfo> app_info) {
     auto appui = AppInfoUi::create(app_info, pm);

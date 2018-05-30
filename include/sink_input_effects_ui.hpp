@@ -25,7 +25,7 @@ class SinkInputEffectsUi : public EffectsBaseUi {
 
     ~SinkInputEffectsUi();
 
-    static std::unique_ptr<SinkInputEffectsUi> create(
+    static std::shared_ptr<SinkInputEffectsUi> create(
         std::shared_ptr<SinkInputEffects> sie);
 
     void reset();

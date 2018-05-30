@@ -64,8 +64,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     sigc::connection spectrum_connection;
     std::vector<sigc::connection> connections;
 
-    std::unique_ptr<SinkInputEffectsUi> sie_ui;
-    std::unique_ptr<SourceOutputEffectsUi> soe_ui;
+    std::shared_ptr<SinkInputEffectsUi> sie_ui;
+    std::shared_ptr<SourceOutputEffectsUi> soe_ui;
 
     bool mouse_inside;
     double mouse_intensity, mouse_freq;
