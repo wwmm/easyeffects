@@ -2,6 +2,8 @@
 #define PRESETS_MANAGER_HPP
 
 #include <boost/filesystem.hpp>
+#include <memory>
+#include "limiter_preset.hpp"
 
 class PresetsManager {
    public:
@@ -19,6 +21,8 @@ class PresetsManager {
     std::string log_tag = "presets_manager: ";
 
     boost::filesystem::path presets_dir;
+
+    std::unique_ptr<LimiterPreset> limiter;
 };
 
 #endif

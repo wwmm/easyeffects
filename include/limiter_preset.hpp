@@ -6,19 +6,20 @@
 
 class LimiterPreset {
    public:
-    LimiterPreset(const boost::property_tree::ptree& treeroot);
+    LimiterPreset();
 
-    void save();
-    void load();
+    void write(boost::property_tree::ptree& root);
+    void read(boost::property_tree::ptree& root);
 
    private:
-    boost::property_tree::ptree root;
     Glib::RefPtr<Gio::Settings> input_settings, output_settings;
 
-    void save_input_settings();
-    void save_output_settings();
-    void load_input_settings();
-    void load_output_settings();
+    void save(boost::property_tree::ptree& root,
+              const std::string& section,
+              const Glib::RefPtr<Gio::Settings>& settings);
+    void load(boost::property_tree::ptree& root,
+              const std::string& section,
+              const Glib::RefPtr<Gio::Settings>& settings);
 };
 
 #endif

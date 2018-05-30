@@ -8,7 +8,8 @@
 namespace fs = boost::filesystem;
 
 PresetsManager::PresetsManager()
-    : presets_dir(Glib::get_user_config_dir() + "/PulseEffects") {
+    : presets_dir(Glib::get_user_config_dir() + "/PulseEffects"),
+      limiter(std::make_unique<LimiterPreset>()) {
     auto dir_exists = fs::is_directory(presets_dir);
 
     if (!dir_exists) {
@@ -62,6 +63,8 @@ void PresetsManager::add(const std::string& name) {
 
 void PresetsManager::save(const std::string& name) {
     boost::property_tree::ptree root;
+
+    limiter->write(root);
 
     auto out_file = presets_dir / fs::path{name + ".json"};
 
