@@ -1,4 +1,6 @@
 #include <glibmm.h>
+#include <boost/property_tree/json_parser.hpp>
+#include <boost/property_tree/ptree.hpp>
 #include <iostream>
 #include "presets_manager.hpp"
 #include "util.hpp"
@@ -23,8 +25,6 @@ PresetsManager::PresetsManager()
         util::debug(log_tag + "user preset directory already exists: " +
                     presets_dir.string());
     }
-
-    get_names();
 }
 
 PresetsManager::~PresetsManager() {}
@@ -48,10 +48,30 @@ std::vector<std::string> PresetsManager::get_names() {
 
 void PresetsManager::add(const std::string& name) {
     util::debug("add: " + name);
+
+    bool add_preset = true;
+
+    for (auto p : get_names()) {
+        if (p == name) {
+            add_preset = false;
+        }
+    }
+
+    if (add_preset) {
+        // save(name);
+    }
 }
 
 void PresetsManager::save(const std::string& name) {
     util::debug("save: " + name);
+
+    boost::property_tree::ptree root;
+
+    auto out_file = presets_dir / fs::path{name + ".json"};
+
+    util::debug(out_file.string());
+
+    // boost::property_tree::write_json(const std::string &filename, root);
 }
 
 void PresetsManager::remove(const std::string& name) {
