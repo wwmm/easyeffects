@@ -61,3 +61,7 @@ void PresetsManager::remove(const std::string& name) {
 void PresetsManager::load(const std::string& name) {
     util::debug("load: " + name);
 }
+
+void PresetsManager::import(const std::string& name) {
+    util::debug("import: " + name);
+}

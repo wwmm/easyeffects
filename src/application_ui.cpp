@@ -655,7 +655,7 @@ void ApplicationUi::on_presets_menu_button_clicked() {
 }
 
 void ApplicationUi::on_import_preset_clicked() {
-    // gtkmm 3.22 does not have FileChooseNative
+    // gtkmm 3.22 does not have FileChooseNative so we have to use C api :-(
 
     GtkFileChooserNative* native;
     GtkFileChooserAction action = GTK_FILE_CHOOSER_ACTION_OPEN;
@@ -676,9 +676,9 @@ void ApplicationUi::on_import_preset_clicked() {
                         [](auto data, auto user_data) {
                             auto aui = static_cast<ApplicationUi*>(user_data);
 
-                            auto name = static_cast<char*>(data);
+                            auto file_path = static_cast<char*>(data);
 
-                            std::cout << name << std::endl;
+                            aui->app->presets_manager->import(file_path);
                         },
                         this);
 
