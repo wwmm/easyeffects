@@ -19,6 +19,10 @@ void warning(const std::string& s) {
     g_warning(s.c_str(), "%s");
 }
 
+void info(const std::string& s) {
+    g_info(s.c_str(), "%s");
+}
+
 std::vector<float> logspace(const float& start,
                             const float& stop,
                             const uint& npoints) {

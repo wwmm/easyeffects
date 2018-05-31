@@ -12,6 +12,7 @@ void debug(const std::string& s);
 void error(const std::string& s);
 void critical(const std::string& s);
 void warning(const std::string& s);
+void info(const std::string& s);
 
 std::vector<float> logspace(const float& start,
                             const float& stop,

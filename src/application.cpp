@@ -38,9 +38,21 @@ int Application::on_command_line(
     if (options->contains("quit")) {
         quit();
     } else if (options->contains("presets")) {
-    } else if (options->contains("load-presets")) {
-        // var value = options.lookup_value("load-preset",
-        // new VariantType("s"));
+        std::string list;
+
+        for (auto name : presets_manager->get_names()) {
+            list += name + ",";
+        }
+
+        util::info(log_tag + _("Presets: ") + list);
+    } else if (options->contains("load-preset")) {
+        Glib::ustring name;
+
+        if (!options->lookup_value("load-preset", name)) {
+            util::debug(log_tag + "failed to load preset: " + name);
+        } else {
+            presets_manager->load(name);
+        }
     } else {
         activate();
     }
