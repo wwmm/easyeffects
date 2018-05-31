@@ -68,6 +68,7 @@ pulseeffects_sources = [
 	'maximizer_preset.cpp',
 	'panorama_preset.cpp',
 	'pitch_preset.cpp',
+	'reverb_preset.cpp',
 	'util.cpp',
 	gresources
 ]
