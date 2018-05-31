@@ -22,3 +22,6 @@ data/webrtc.glade
 data/preset_row.glade
 data/com.github.wwmm.pulseeffects.appdata.xml.in
 data/com.github.wwmm.pulseeffects.desktop.in
+src/application.cpp
+src/effects_base_ui.cpp
+src/app_info_ui.cpp

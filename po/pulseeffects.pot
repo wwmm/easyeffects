@@ -1,46 +1,42 @@
-# Slovak translation for Pulseeffects.
+# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# Dušan Kazik <prescott66@gmail.com>, 2017.
+# This file is distributed under the same license as the pulseeffects package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: pulseeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-31 20:19-0300\n"
-"PO-Revision-Date: 2017-06-11 22:19+0200\n"
-"Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
-"Language-Team: \n"
-"Language: sk\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.1\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: data/application.glade:45
 msgid "Name"
 msgstr ""
 
 #: data/application.glade:58
-#, fuzzy
 msgid "Create Preset"
-msgstr "Uložiť predvoľbu"
+msgstr ""
 
 #: data/application.glade:76
-#, fuzzy
 msgid "Import Presets"
-msgstr "Načítať predvoľbu"
+msgstr ""
 
 #: data/application.glade:180
-#, fuzzy
 msgid "Test Signals"
-msgstr "Skúšobný signál"
+msgstr ""
 
 #: data/application.glade:224 data/compressor.glade:205 data/filter.glade:203
 #: data/reverb.glade:283 data/crossfeed.glade:47
 msgid "Presets"
-msgstr "Predvoľby"
+msgstr ""
 
 #: data/application.glade:514
 msgid "Start Service at Login"
@@ -60,9 +56,8 @@ msgstr ""
 
 #: data/application.glade:598 data/equalizer_band.glade:105
 #: data/equalizer_band.glade:120
-#, fuzzy
 msgid "Reset"
-msgstr "Predvoľby"
+msgstr ""
 
 #: data/application.glade:613
 msgid "General"
@@ -77,24 +72,20 @@ msgid "Points"
 msgstr ""
 
 #: data/application.glade:684
-#, fuzzy
 msgid "Spectrum"
-msgstr "Zobraziť spektrum"
+msgstr ""
 
 #: data/application.glade:707
-#, fuzzy
 msgid "Output Device"
-msgstr "Vstupný obmedzovač"
+msgstr ""
 
 #: data/application.glade:717 data/application.glade:730
-#, fuzzy
 msgid "Use Default"
-msgstr "Predvolený"
+msgstr ""
 
 #: data/application.glade:746
-#, fuzzy
 msgid "Input Device"
-msgstr "Vstupný obmedzovač"
+msgstr ""
 
 #: data/application.glade:816 data/application.glade:892
 #: data/app_info.glade:156
@@ -107,14 +98,12 @@ msgid "Latency"
 msgstr ""
 
 #: data/application.glade:964
-#, fuzzy
 msgid "Output Effects"
-msgstr "Vstupný obmedzovač"
+msgstr ""
 
 #: data/application.glade:977
-#, fuzzy
 msgid "Input Effects"
-msgstr "Vstupný obmedzovač"
+msgstr ""
 
 #: data/application.glade:994
 msgid "Advanced Settings"
@@ -126,7 +115,7 @@ msgstr ""
 
 #: data/about.glade:11
 msgid "Audio Effects for Pulseaudio Applications"
-msgstr "Zvukové efekty pre aplikácie využívajúce Pulseaudio"
+msgstr ""
 
 #: data/app_info.glade:48
 msgid "Format"
@@ -149,25 +138,21 @@ msgid "State"
 msgstr ""
 
 #: data/limiter.glade:61 data/limiter.glade:412 data/webrtc.glade:377
-#, fuzzy
 msgid "Limiter"
-msgstr "Obmedzenie [dB]"
+msgstr ""
 
 #: data/limiter.glade:212
-#, fuzzy
 msgid "Input Gain"
-msgstr "Vstupné zosilnenie [dB]"
+msgstr ""
 
 #: data/limiter.glade:245
-#, fuzzy
 msgid "Limit"
-msgstr "Obmedzenie [dB]"
+msgstr ""
 
 #: data/limiter.glade:300 data/compressor.glade:372 data/maximizer.glade:215
 #: data/gate.glade:302
-#, fuzzy
 msgid "Release"
-msgstr "Uvoľnenie [s]"
+msgstr ""
 
 #: data/limiter.glade:313
 msgid "Lookahead"
@@ -191,24 +176,21 @@ msgid "Window"
 msgstr ""
 
 #: data/limiter.glade:464
-#, fuzzy
 msgid "Target"
-msgstr "Prah [dB]"
+msgstr ""
 
 #: data/limiter.glade:542 data/compressor.glade:406 data/maximizer.glade:128
 #: data/gate.glade:336 data/deesser.glade:463
-#, fuzzy
 msgid "Threshold"
-msgstr "Prah [dB]"
+msgstr ""
 
 #: data/limiter.glade:577
-#, fuzzy
 msgid "Tolerance"
-msgstr "Koleno [dB]"
+msgstr ""
 
 #: data/limiter.glade:594
 msgid "Auto Volume"
-msgstr "Automatická hlasitosť"
+msgstr ""
 
 #: data/limiter.glade:623 data/compressor.glade:559 data/filter.glade:365
 #: data/equalizer.glade:279 data/reverb.glade:612 data/bass_enhancer.glade:482
@@ -217,7 +199,7 @@ msgstr "Automatická hlasitosť"
 #: data/delay.glade:409 data/gate.glade:488 data/deesser.glade:572
 #: data/pitch.glade:304 data/webrtc.glade:586
 msgid "Input"
-msgstr "Vstup"
+msgstr ""
 
 #: data/limiter.glade:638 data/compressor.glade:574 data/filter.glade:380
 #: data/equalizer.glade:294 data/reverb.glade:627 data/bass_enhancer.glade:514
@@ -226,16 +208,16 @@ msgstr "Vstup"
 #: data/delay.glade:424 data/gate.glade:503 data/deesser.glade:587
 #: data/pitch.glade:319 data/webrtc.glade:601
 msgid "Output"
-msgstr "Výstup"
+msgstr ""
 
 #: data/limiter.glade:653
 msgid "Attenuation"
-msgstr "Zoslabenie"
+msgstr ""
 
 #: data/compressor.glade:31 data/webrtc.glade:454
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:52
 msgid "Compressor"
-msgstr "Kompresor"
+msgstr ""
 
 #: data/compressor.glade:122
 msgid "Vocal Leveller 1"
@@ -247,14 +229,12 @@ msgstr ""
 
 #: data/compressor.glade:146 data/filter.glade:158 data/reverb.glade:234
 #: data/crossfeed.glade:72
-#, fuzzy
 msgid "Default"
-msgstr "Predvolený"
+msgstr ""
 
 #: data/compressor.glade:235 data/gate.glade:166 data/deesser.glade:192
-#, fuzzy
 msgid "Detection"
-msgstr "Zoslabenie"
+msgstr ""
 
 #: data/compressor.glade:249 data/gate.glade:180
 msgid "Stereo Link"
@@ -282,35 +262,29 @@ msgid "Maximum"
 msgstr ""
 
 #: data/compressor.glade:338 data/gate.glade:268
-#, fuzzy
 msgid "Attack"
-msgstr "Nábeh [ms]"
+msgstr ""
 
 #: data/compressor.glade:439 data/gate.glade:369 data/deesser.glade:496
-#, fuzzy
 msgid "Ratio"
-msgstr "Pomer [n:1]"
+msgstr ""
 
 #: data/compressor.glade:471 data/gate.glade:400
-#, fuzzy
 msgid "Knee"
-msgstr "Koleno [dB]"
+msgstr ""
 
 #: data/compressor.glade:505 data/gate.glade:434 data/deesser.glade:527
-#, fuzzy
 msgid "Makeup"
-msgstr "Výstupné zosilnenie [dB]"
+msgstr ""
 
 #: data/compressor.glade:739 data/maximizer.glade:270 data/gate.glade:668
 #: data/deesser.glade:752
-#, fuzzy
 msgid "Reduction"
-msgstr "Redukcia zosilnenia"
+msgstr ""
 
 #: data/filter.glade:31
-#, fuzzy
 msgid "Filter"
-msgstr "Vstupné filtre"
+msgstr ""
 
 #: data/filter.glade:122
 msgid "Muted"
@@ -386,16 +360,15 @@ msgstr ""
 
 #: data/equalizer.glade:24 data/com.github.wwmm.pulseeffects.appdata.xml.in:44
 msgid "Equalizer"
-msgstr "Ekvalizér"
+msgstr ""
 
 #: data/equalizer.glade:103
 msgid "Flat Response"
 msgstr ""
 
 #: data/equalizer.glade:119
-#, fuzzy
 msgid "Reset Equalizer"
-msgstr "Ekvalizér"
+msgstr ""
 
 #: data/equalizer.glade:135
 msgid "Bands"
@@ -407,7 +380,7 @@ msgstr ""
 
 #: data/equalizer_band.glade:54
 msgid "Width"
-msgstr "Šírka"
+msgstr ""
 
 #: data/equalizer_band.glade:137
 msgid "Filter Type"
@@ -427,7 +400,7 @@ msgstr ""
 
 #: data/reverb.glade:64
 msgid "Reverberation"
-msgstr "Ozvena"
+msgstr ""
 
 #: data/reverb.glade:156
 msgid "Ambience"
@@ -438,9 +411,8 @@ msgid "Empty Walls"
 msgstr ""
 
 #: data/reverb.glade:182
-#, fuzzy
 msgid "Room"
-msgstr "Veľkosť miestnosti"
+msgstr ""
 
 #: data/reverb.glade:195
 msgid "Large Empty Hall"
@@ -451,9 +423,8 @@ msgid "Large Occupied Hall"
 msgstr ""
 
 #: data/reverb.glade:306
-#, fuzzy
 msgid "Pre Delay"
-msgstr "Uvoľnenie [ms]"
+msgstr ""
 
 #: data/reverb.glade:338
 msgid "Decay Time"
@@ -485,21 +456,19 @@ msgstr ""
 
 #: data/reverb.glade:564
 msgid "Room Size"
-msgstr "Veľkosť miestnosti"
+msgstr ""
 
 #: data/reverb.glade:580
-#, fuzzy
 msgid "Small"
-msgstr "Malá miestnosť"
+msgstr ""
 
 #: data/reverb.glade:581
 msgid "Medium"
 msgstr ""
 
 #: data/reverb.glade:582
-#, fuzzy
 msgid "Large"
-msgstr "Prah [dB]"
+msgstr ""
 
 #: data/reverb.glade:583
 msgid "Tunnel"
@@ -539,9 +508,8 @@ msgid "Harmonics"
 msgstr ""
 
 #: data/bass_enhancer.glade:269 data/exciter.glade:274
-#, fuzzy
 msgid "Scope"
-msgstr "Zrezanie [Hz]"
+msgstr ""
 
 #: data/bass_enhancer.glade:358
 msgid "Floor"
@@ -552,9 +520,8 @@ msgid "Exciter"
 msgstr ""
 
 #: data/exciter.glade:360 data/maximizer.glade:161
-#, fuzzy
 msgid "Ceiling"
-msgstr "Obmedzenie [dB]"
+msgstr ""
 
 #: data/stereo_enhancer.glade:24
 msgid "Stereo Enhancer"
@@ -566,15 +533,13 @@ msgstr ""
 
 #: data/stereo_enhancer.glade:227 data/stereo_enhancer.glade:378
 #: data/delay.glade:34 data/delay.glade:330 data/delay.glade:346
-#, fuzzy
 msgid "Delay"
-msgstr "Uvoľnenie [ms]"
+msgstr ""
 
 #: data/stereo_enhancer.glade:261 data/stereo_enhancer.glade:412
 #: data/deesser.glade:298
-#, fuzzy
 msgid "Gain"
-msgstr "Vstupné zosilnenie [dB]"
+msgstr ""
 
 #: data/stereo_enhancer.glade:270 data/stereo_enhancer.glade:421
 msgid "Invert Phase"
@@ -611,9 +576,8 @@ msgid "Middle Source"
 msgstr ""
 
 #: data/stereo_enhancer.glade:516
-#, fuzzy
 msgid "Side Gain"
-msgstr "Vstupné zosilnenie [dB]"
+msgstr ""
 
 #: data/panorama.glade:24
 msgid "Panorama"
@@ -621,11 +585,11 @@ msgstr ""
 
 #: data/panorama.glade:116
 msgid "L"
-msgstr "Ľ"
+msgstr ""
 
 #: data/panorama.glade:128
 msgid "R"
-msgstr "P"
+msgstr ""
 
 #: data/crossfeed.glade:59
 msgid "Jmeier"
@@ -636,14 +600,12 @@ msgid "Cmoy"
 msgstr ""
 
 #: data/crossfeed.glade:121
-#, fuzzy
 msgid "Cutoff"
-msgstr "Zrezanie [Hz]"
+msgstr ""
 
 #: data/crossfeed.glade:154
-#, fuzzy
 msgid "Feed"
-msgstr "Koleno [dB]"
+msgstr ""
 
 #: data/crossfeed.glade:390
 msgid "Crossfeed"
@@ -654,9 +616,8 @@ msgid "Maximizer"
 msgstr ""
 
 #: data/delay.glade:139 data/delay.glade:178
-#, fuzzy
 msgid "Meters"
-msgstr "Vstupné filtre"
+msgstr ""
 
 #: data/delay.glade:152 data/delay.glade:165
 msgid "Centimeters"
@@ -672,7 +633,7 @@ msgstr ""
 
 #: data/gate.glade:194
 msgid "Gain Reduction"
-msgstr "Redukcia zosilnenia"
+msgstr ""
 
 #: data/deesser.glade:61
 msgid "Deesser"
@@ -692,7 +653,7 @@ msgstr ""
 
 #: data/deesser.glade:384
 msgid "Level"
-msgstr "Úroveň"
+msgstr ""
 
 #: data/deesser.glade:399
 msgid "Peak Q"
@@ -703,9 +664,8 @@ msgid "Laxity"
 msgstr ""
 
 #: data/deesser.glade:765
-#, fuzzy
 msgid "Detected"
-msgstr "Zoslabenie"
+msgstr ""
 
 #: data/pitch.glade:36
 msgid "Pitch"
@@ -748,14 +708,12 @@ msgid "Delay Agnostic"
 msgstr ""
 
 #: data/webrtc.glade:187
-#, fuzzy
 msgid "High Pass Filter"
-msgstr "Horný prechod"
+msgstr ""
 
 #: data/webrtc.glade:215 data/webrtc.glade:264
-#, fuzzy
 msgid "Suppresion Level"
-msgstr "Redukcia zosilnenia"
+msgstr ""
 
 #: data/webrtc.glade:229 data/webrtc.glade:293 data/webrtc.glade:490
 msgid "Low"
@@ -766,23 +724,20 @@ msgid "Moderate"
 msgstr ""
 
 #: data/webrtc.glade:231 data/webrtc.glade:295 data/webrtc.glade:492
-#, fuzzy
 msgid "High"
-msgstr "Horný prechod"
+msgstr ""
 
 #: data/webrtc.glade:248
 msgid "Echo Canceller"
 msgstr ""
 
 #: data/webrtc.glade:296
-#, fuzzy
 msgid "Very High"
-msgstr "Horný prechod"
+msgstr ""
 
 #: data/webrtc.glade:307
-#, fuzzy
 msgid "Noise Suppressor"
-msgstr "Kompresor"
+msgstr ""
 
 #: data/webrtc.glade:352
 msgid "Adaptive Digital"
@@ -797,9 +752,8 @@ msgid "Gain Controller"
 msgstr ""
 
 #: data/webrtc.glade:397
-#, fuzzy
 msgid "Target Level"
-msgstr "Prah [dB]"
+msgstr ""
 
 #: data/webrtc.glade:408
 msgid "Maximum Gain"
@@ -810,19 +764,16 @@ msgid "Very Low"
 msgstr ""
 
 #: data/webrtc.glade:506
-#, fuzzy
 msgid "Frame Size"
-msgstr "Veľkosť miestnosti"
+msgstr ""
 
 #: data/webrtc.glade:537
-#, fuzzy
 msgid "Detection Likelihood"
-msgstr "Zoslabenie"
+msgstr ""
 
 #: data/webrtc.glade:547
-#, fuzzy
 msgid "Voice Detector"
-msgstr "Zoslabenie"
+msgstr ""
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
 #: data/com.github.wwmm.pulseeffects.desktop.in:3
@@ -831,9 +782,8 @@ msgstr ""
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:8
 #: data/com.github.wwmm.pulseeffects.desktop.in:5
-#, fuzzy
 msgid "Audio Effects for PulseAudio Applications"
-msgstr "Zvukové efekty pre aplikácie využívajúce Pulseaudio"
+msgstr ""
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:9
 msgid "Wellington Wallace"
@@ -874,7 +824,7 @@ msgstr ""
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:48
 msgid "Input Limiter"
-msgstr "Vstupný obmedzovač"
+msgstr ""
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
 msgid "Calibration"
@@ -906,9 +856,8 @@ msgid "Load a preset. Example: pulseeffects -l music"
 msgstr ""
 
 #: src/application.cpp:47
-#, fuzzy
 msgid "Presets: "
-msgstr "Predvoľby"
+msgstr ""
 
 #: src/app_info_ui.cpp:142
 msgid "paused"
@@ -917,163 +866,3 @@ msgstr ""
 #: src/app_info_ui.cpp:144
 msgid "playing"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Ceil"
-#~ msgstr "Obmedzenie [dB]"
-
-#~ msgid "Input [dB]"
-#~ msgstr "Vstup [dB]"
-
-#~ msgid "Output [dB]"
-#~ msgstr "Výstup [dB]"
-
-#~ msgid "rms"
-#~ msgstr "RMS"
-
-#~ msgid "peak"
-#~ msgstr "Špičkový"
-
-#, fuzzy
-#~ msgid "F1 Level"
-#~ msgstr "Úroveň"
-
-#, fuzzy
-#~ msgid "F2 Level"
-#~ msgstr "Úroveň"
-
-#~ msgid "High Pass"
-#~ msgstr "Horný prechod"
-
-#, fuzzy
-#~ msgid "Poles"
-#~ msgstr "Póly"
-
-#, fuzzy
-#~ msgid "ASC Level"
-#~ msgstr "Úroveň"
-
-#~ msgid "Low Pass"
-#~ msgstr "Dolný prechod"
-
-#, fuzzy
-#~ msgid "Output Limiter"
-#~ msgstr "Vstupný obmedzovač"
-
-#, fuzzy
-#~ msgid "Engine Room"
-#~ msgstr "Strojovňa"
-
-#, fuzzy
-#~ msgid "Cathedral"
-#~ msgstr "Chrám"
-
-#~ msgid "Damping"
-#~ msgstr "Tlmenie"
-
-#, fuzzy
-#~ msgid "Mono Input"
-#~ msgstr "Vstup"
-
-#, fuzzy
-#~ msgid "Delete Preset"
-#~ msgstr "Uložiť predvoľbu"
-
-#, fuzzy
-#~ msgid "Volume"
-#~ msgstr "Automatická hlasitosť"
-
-#~ msgid "Test Signal"
-#~ msgstr "Skúšobný signál"
-
-#, fuzzy
-#~ msgid "Reduction Level"
-#~ msgstr "Redukcia zosilnenia"
-
-#, fuzzy
-#~ msgid "Latency [ms]"
-#~ msgstr "Uvoľnenie [ms]"
-
-#~ msgid "Threshold [dB]"
-#~ msgstr "Prah [dB]"
-
-#~ msgid "Makeup [dB]"
-#~ msgstr "Výstupné zosilnenie [dB]"
-
-#, fuzzy
-#~ msgid "F1 Level [dB]"
-#~ msgstr "Koleno [dB]"
-
-#, fuzzy
-#~ msgid "F2 Level [dB]"
-#~ msgstr "Koleno [dB]"
-
-#~ msgid "Release [ms]"
-#~ msgstr "Uvoľnenie [ms]"
-
-#, fuzzy
-#~ msgid "Delay [ms]"
-#~ msgstr "Uvoľnenie [ms]"
-
-#, fuzzy
-#~ msgid "Gain Reduction [dB]"
-#~ msgstr "Redukcia zosilnenia"
-
-#, fuzzy
-#~ msgid "Sub [dB]"
-#~ msgstr "Vstup [dB]"
-
-#, fuzzy
-#~ msgid "Low [dB]"
-#~ msgstr "Obmedzenie [dB]"
-
-#, fuzzy
-#~ msgid "High [dB]"
-#~ msgstr "Obmedzenie [dB]"
-
-#, fuzzy
-#~ msgid "Mid [dB]"
-#~ msgstr "Vstupné zosilnenie [dB]"
-
-#, fuzzy
-#~ msgid "Input Gate"
-#~ msgstr "Vstupný obmedzovač"
-
-#, fuzzy
-#~ msgid "buffer-time"
-#~ msgstr "Čas zásobníka [ms]"
-
-#, fuzzy
-#~ msgid "latency-time"
-#~ msgstr "Čas oneskorenia [ms]"
-
-#, fuzzy
-#~ msgid "Preset Name"
-#~ msgstr "Predvoľby"
-
-#~ msgid "Sensing Type"
-#~ msgstr "Typ snímania"
-
-#~ msgid "equal loudness 20"
-#~ msgstr "Rovnaká hlasitosť 20"
-
-#~ msgid "equal loudness 40"
-#~ msgstr "Rovnaká hlasitosť 40"
-
-#~ msgid "equal loudness 60"
-#~ msgstr "Rovnaká hlasitosť 60"
-
-#~ msgid "equal loudness 80"
-#~ msgstr "Rovnaká hlasitosť 80"
-
-#~ msgid "equal loudness 100"
-#~ msgstr "Rovnaká hlasitosť 100"
-
-#~ msgid "flat"
-#~ msgstr "Plochý"
-
-#~ msgid "no compression"
-#~ msgstr "Bez kompresie"
-
-#~ msgid "no reverberation"
-#~ msgstr "Bez ozveny"
