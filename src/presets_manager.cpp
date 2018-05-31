@@ -16,7 +16,8 @@ PresetsManager::PresetsManager()
       limiter(std::make_unique<LimiterPreset>()),
       bass_enhancer(std::make_unique<BassEnhancerPreset>()),
       compressor(std::make_unique<CompressorPreset>()),
-      crossfeed(std::make_unique<CrossfeedPreset>()) {
+      crossfeed(std::make_unique<CrossfeedPreset>()),
+      deesser(std::make_unique<DeesserPreset>()) {
     auto dir_exists = fs::is_directory(presets_dir);
 
     if (!dir_exists) {
@@ -96,6 +97,7 @@ void PresetsManager::save(const std::string& name) {
     bass_enhancer->write(root);
     compressor->write(root);
     crossfeed->write(root);
+    deesser->write(root);
 
     auto output_file = presets_dir / fs::path{name + ".json"};
 
@@ -138,6 +140,7 @@ void PresetsManager::load(const std::string& name) {
     bass_enhancer->read(root);
     compressor->read(root);
     crossfeed->read(root);
+    deesser->read(root);
 
     util::debug(log_tag + "loaded preset: " + input_file.string());
 }

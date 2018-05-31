@@ -59,6 +59,7 @@ pulseeffects_sources = [
 	'bass_enhancer_preset.cpp',
 	'compressor_preset.cpp',
 	'crossfeed_preset.cpp',
+	'deesser_preset.cpp',
 	'util.cpp',
 	gresources
 ]
