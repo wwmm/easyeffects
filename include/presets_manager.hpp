@@ -8,6 +8,7 @@
 #include "compressor_preset.hpp"
 #include "crossfeed_preset.hpp"
 #include "deesser_preset.hpp"
+#include "delay_preset.hpp"
 #include "limiter_preset.hpp"
 
 class PresetsManager {
@@ -34,6 +35,7 @@ class PresetsManager {
     std::unique_ptr<CompressorPreset> compressor;
     std::unique_ptr<CrossfeedPreset> crossfeed;
     std::unique_ptr<DeesserPreset> deesser;
+    std::unique_ptr<DelayPreset> delay;
 };
 
 #endif
