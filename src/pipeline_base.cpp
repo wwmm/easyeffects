@@ -19,6 +19,18 @@ void on_message_error(const GstBus* gst_bus,
     util::critical(pb->log_tag + err->message);
     util::debug(pb->log_tag + debug);
 
+    if (err->message == std::string("Internal data stream error.")) {
+        gst_element_set_state(pb->pipeline, GST_STATE_NULL);
+
+        // As far as I know only a bad latency or buffer value causes this error
+        // in PE pipeline
+
+        g_object_set(pb->source, "buffer-time", (int)100000, nullptr);
+        g_object_set(pb->source, "latency-time", (int)10000, nullptr);
+
+        pb->update_pipeline_state();
+    }
+
     g_error_free(err);
     g_free(debug);
 }
@@ -116,6 +128,28 @@ void on_spectrum_n_points_changed(GSettings* settings,
                                          log10(pb->max_spectrum_freq), npoints);
 
     pb->resizing_spectrum = false;
+}
+
+void on_buffer_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
+    GstState state;
+
+    gst_element_get_state(pb->pipeline, &state, nullptr, GST_CLOCK_TIME_NONE);
+
+    if (state == GST_STATE_PLAYING) {
+        gst_element_set_state(pb->pipeline, GST_STATE_NULL);
+        pb->update_pipeline_state();
+    }
+}
+
+void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
+    GstState state;
+
+    gst_element_get_state(pb->pipeline, &state, nullptr, GST_CLOCK_TIME_NONE);
+
+    if (state == GST_STATE_PLAYING) {
+        gst_element_set_state(pb->pipeline, GST_STATE_NULL);
+        pb->update_pipeline_state();
+    }
 }
 
 }  // namespace
@@ -222,6 +256,11 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
 
     g_object_set(spectrum, "bands", spectrum_nbands, nullptr);
     g_object_set(spectrum, "threshold", spectrum_threshold, nullptr);
+
+    g_signal_connect(source, "notify::buffer-time",
+                     G_CALLBACK(on_buffer_changed), this);
+    g_signal_connect(source, "notify::latency-time",
+                     G_CALLBACK(on_latency_changed), this);
 
     init_spectrum();
 }
