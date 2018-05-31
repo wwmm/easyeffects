@@ -158,8 +158,8 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="update_freqs">
-            <property name="label" translatable="yes">Update Frequencies</property>
+          <object class="GtkButton" id="calculate_freqs">
+            <property name="label" translatable="yes">Calculate Frequencies</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>

@@ -47,7 +47,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
     builder->get_widget("bands_grid", bands_grid);
     builder->get_widget("reset_eq", reset_eq);
     builder->get_widget("flat_response", flat_response);
-    builder->get_widget("update_freqs", update_freqs);
+    builder->get_widget("calculate_freqs", calculate_freqs);
 
     get_object("nbands", nbands);
 
@@ -60,8 +60,8 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
     flat_response->signal_clicked().connect(
         sigc::mem_fun(*this, &EqualizerUi::on_flat_response));
 
-    update_freqs->signal_clicked().connect(
-        sigc::mem_fun(*this, &EqualizerUi::on_update_frequencies));
+    calculate_freqs->signal_clicked().connect(
+        sigc::mem_fun(*this, &EqualizerUi::on_calculate_frequencies));
 
     // gsettings bindings
 
@@ -198,7 +198,7 @@ void EqualizerUi::on_flat_response() {
     }
 }
 
-void EqualizerUi::on_update_frequencies() {
+void EqualizerUi::on_calculate_frequencies() {
     const double min_freq = 20.0;
     const double max_freq = 20000.0;
     double freq0, freq1, step;
@@ -216,6 +216,8 @@ void EqualizerUi::on_update_frequencies() {
 
         double freq = freq0 + ((freq1 - freq0) / 2.0);
         double width = freq1 - freq0;
+
+        // std::cout << n << "\t" << freq << "\t" << width << std::endl;
 
         settings->set_double(
             std::string("band" + std::to_string(n) + "-frequency"), freq);
