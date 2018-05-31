@@ -21,7 +21,8 @@ PresetsManager::PresetsManager()
       delay(std::make_unique<DelayPreset>()),
       equalizer(std::make_unique<EqualizerPreset>()),
       exciter(std::make_unique<ExciterPreset>()),
-      filter(std::make_unique<FilterPreset>()) {
+      filter(std::make_unique<FilterPreset>()),
+      gate(std::make_unique<GatePreset>()) {
     auto dir_exists = fs::is_directory(presets_dir);
 
     if (!dir_exists) {
@@ -106,6 +107,7 @@ void PresetsManager::save(const std::string& name) {
     equalizer->write(root);
     exciter->write(root);
     filter->write(root);
+    gate->write(root);
 
     auto output_file = presets_dir / fs::path{name + ".json"};
 
@@ -165,6 +167,7 @@ void PresetsManager::load(const std::string& name) {
     equalizer->read(root);
     exciter->read(root);
     filter->read(root);
+    gate->read(root);
 
     util::debug(log_tag + "loaded preset: " + input_file.string());
 }

@@ -64,6 +64,7 @@ pulseeffects_sources = [
 	'equalizer_preset.cpp',
 	'exciter_preset.cpp',
 	'filter_preset.cpp',
+	'gate_preset.cpp',
 	'util.cpp',
 	gresources
 ]
