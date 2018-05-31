@@ -23,7 +23,8 @@ PresetsManager::PresetsManager()
       exciter(std::make_unique<ExciterPreset>()),
       filter(std::make_unique<FilterPreset>()),
       gate(std::make_unique<GatePreset>()),
-      maximizer(std::make_unique<MaximizerPreset>()) {
+      maximizer(std::make_unique<MaximizerPreset>()),
+      panorama(std::make_unique<PanoramaPreset>()) {
     auto dir_exists = fs::is_directory(presets_dir);
 
     if (!dir_exists) {
@@ -110,6 +111,7 @@ void PresetsManager::save(const std::string& name) {
     filter->write(root);
     gate->write(root);
     maximizer->write(root);
+    panorama->write(root);
 
     auto output_file = presets_dir / fs::path{name + ".json"};
 
@@ -171,6 +173,7 @@ void PresetsManager::load(const std::string& name) {
     filter->read(root);
     gate->read(root);
     maximizer->read(root);
+    panorama->read(root);
 
     util::debug(log_tag + "loaded preset: " + input_file.string());
 }
