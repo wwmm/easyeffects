@@ -69,6 +69,7 @@ pulseeffects_sources = [
 	'panorama_preset.cpp',
 	'pitch_preset.cpp',
 	'reverb_preset.cpp',
+	'stereo_enhancer_preset.cpp',
 	'util.cpp',
 	gresources
 ]

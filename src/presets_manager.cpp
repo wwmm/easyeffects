@@ -26,7 +26,8 @@ PresetsManager::PresetsManager()
       maximizer(std::make_unique<MaximizerPreset>()),
       panorama(std::make_unique<PanoramaPreset>()),
       pitch(std::make_unique<PitchPreset>()),
-      reverb(std::make_unique<ReverbPreset>()) {
+      reverb(std::make_unique<ReverbPreset>()),
+      stereo_enhancer(std::make_unique<StereoEnhancerPreset>()) {
     auto dir_exists = fs::is_directory(presets_dir);
 
     if (!dir_exists) {
@@ -115,7 +116,7 @@ void PresetsManager::save(const std::string& name) {
     maximizer->write(root);
     panorama->write(root);
     pitch->write(root);
-    reverb->write(root);
+    stereo_enhancer->write(root);
 
     auto output_file = presets_dir / fs::path{name + ".json"};
 
@@ -130,8 +131,7 @@ void PresetsManager::remove(const std::string& name) {
     if (fs::exists(preset_file)) {
         fs::remove(preset_file);
 
-        util::debug(log_tag +
-                    "preset file file removed: " + preset_file.string());
+        util::debug(log_tag + "removed preset: " + preset_file.string());
     }
 }
 
@@ -180,6 +180,7 @@ void PresetsManager::load(const std::string& name) {
     panorama->read(root);
     pitch->read(root);
     reverb->read(root);
+    stereo_enhancer->read(root);
 
     util::debug(log_tag + "loaded preset: " + input_file.string());
 }
