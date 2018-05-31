@@ -19,6 +19,7 @@
 #include "pitch_preset.hpp"
 #include "reverb_preset.hpp"
 #include "stereo_enhancer_preset.hpp"
+#include "webrtc_preset.hpp"
 
 class PresetsManager {
    public:
@@ -54,6 +55,7 @@ class PresetsManager {
     std::unique_ptr<PitchPreset> pitch;
     std::unique_ptr<ReverbPreset> reverb;
     std::unique_ptr<StereoEnhancerPreset> stereo_enhancer;
+    std::unique_ptr<WebrtcPreset> webrtc;
 };
 
 #endif

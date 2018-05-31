@@ -70,6 +70,7 @@ pulseeffects_sources = [
 	'pitch_preset.cpp',
 	'reverb_preset.cpp',
 	'stereo_enhancer_preset.cpp',
+	'webrtc_preset.cpp',
 	'util.cpp',
 	gresources
 ]
