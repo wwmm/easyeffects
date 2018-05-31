@@ -47,6 +47,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
     builder->get_widget("bands_grid", bands_grid);
     builder->get_widget("reset_eq", reset_eq);
     builder->get_widget("flat_response", flat_response);
+    builder->get_widget("update_freqs", update_freqs);
 
     get_object("nbands", nbands);
 
@@ -58,6 +59,9 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 
     flat_response->signal_clicked().connect(
         sigc::mem_fun(*this, &EqualizerUi::on_flat_response));
+
+    update_freqs->signal_clicked().connect(
+        sigc::mem_fun(*this, &EqualizerUi::on_update_frequencies));
 
     // gsettings bindings
 
@@ -191,6 +195,35 @@ void EqualizerUi::on_nbands_changed() {
 void EqualizerUi::on_flat_response() {
     for (int n = 0; n < 30; n++) {
         settings->reset(std::string("band" + std::to_string(n) + "-gain"));
+    }
+}
+
+void EqualizerUi::on_update_frequencies() {
+    const double min_freq = 20.0;
+    const double max_freq = 20000.0;
+    double freq0, freq1, step;
+
+    int nbands = settings->get_int("num-bands");
+
+    // code taken from gstreamer equalizer sources: gstiirequalizer.c
+    // function: gst_iir_equalizer_compute_frequencies
+
+    step = pow(max_freq / min_freq, 1.0 / nbands);
+    freq0 = min_freq;
+
+    for (int n = 0; n < nbands; n++) {
+        freq1 = freq0 * step;
+
+        double freq = freq0 + ((freq1 - freq0) / 2.0);
+        double width = freq1 - freq0;
+
+        settings->set_double(
+            std::string("band" + std::to_string(n) + "-frequency"), freq);
+
+        settings->set_double(std::string("band" + std::to_string(n) + "-width"),
+                             width);
+
+        freq0 = freq1;
     }
 }
 

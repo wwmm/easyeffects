@@ -96,8 +96,7 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="halign">center</property>
-        <property name="row_spacing">3</property>
-        <property name="column_spacing">4</property>
+        <property name="column_spacing">3</property>
         <property name="column_homogeneous">True</property>
         <child>
           <object class="GtkButton" id="flat_response">
@@ -105,6 +104,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="valign">center</property>
             <property name="margin_left">3</property>
             <property name="margin_right">3</property>
             <signal name="clicked" handler="on_flat_response_button_clicked" swapped="no"/>
@@ -120,9 +120,10 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="valign">center</property>
           </object>
           <packing>
-            <property name="left_attach">1</property>
+            <property name="left_attach">2</property>
             <property name="top_attach">2</property>
           </packing>
         </child>
@@ -136,7 +137,7 @@
           <packing>
             <property name="left_attach">0</property>
             <property name="top_attach">0</property>
-            <property name="width">2</property>
+            <property name="width">3</property>
           </packing>
         </child>
         <child>
@@ -144,6 +145,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="halign">center</property>
+            <property name="margin_bottom">12</property>
             <property name="input_purpose">number</property>
             <property name="adjustment">nbands</property>
             <property name="numeric">True</property>
@@ -152,7 +154,20 @@
           <packing>
             <property name="left_attach">0</property>
             <property name="top_attach">1</property>
-            <property name="width">2</property>
+            <property name="width">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="update_freqs">
+            <property name="label" translatable="yes">Update Frequencies</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="valign">center</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">2</property>
           </packing>
         </child>
       </object>
