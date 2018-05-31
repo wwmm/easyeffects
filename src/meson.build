@@ -61,6 +61,7 @@ pulseeffects_sources = [
 	'crossfeed_preset.cpp',
 	'deesser_preset.cpp',
 	'delay_preset.cpp',
+	'equalizer_preset.cpp',
 	'util.cpp',
 	gresources
 ]
