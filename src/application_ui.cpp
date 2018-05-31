@@ -687,6 +687,8 @@ void ApplicationUi::on_import_preset_clicked() {
     }
 
     g_object_unref(native);
+
+    populate_presets_listbox();
 }
 
 void ApplicationUi::populate_presets_listbox() {

@@ -104,7 +104,6 @@ void PresetsManager::save(const std::string& name) {
     root.add_child("input.plugins_order", node_in);
     root.add_child("output.plugins_order", node_out);
 
-    limiter->write(root);
     bass_enhancer->write(root);
     compressor->write(root);
     crossfeed->write(root);
@@ -114,9 +113,11 @@ void PresetsManager::save(const std::string& name) {
     exciter->write(root);
     filter->write(root);
     gate->write(root);
+    limiter->write(root);
     maximizer->write(root);
     panorama->write(root);
     pitch->write(root);
+    reverb->write(root);
     stereo_enhancer->write(root);
     webrtc->write(root);
 
@@ -168,7 +169,6 @@ void PresetsManager::load(const std::string& name) {
     soe_settings->set_string_array("plugins", input_plugins);
     sie_settings->set_string_array("plugins", output_plugins);
 
-    limiter->read(root);
     bass_enhancer->read(root);
     compressor->read(root);
     crossfeed->read(root);
@@ -178,6 +178,7 @@ void PresetsManager::load(const std::string& name) {
     exciter->read(root);
     filter->read(root);
     gate->read(root);
+    limiter->read(root);
     maximizer->read(root);
     panorama->read(root);
     pitch->read(root);
@@ -188,6 +189,18 @@ void PresetsManager::load(const std::string& name) {
     util::debug(log_tag + "loaded preset: " + input_file.string());
 }
 
-void PresetsManager::import(const std::string& name) {
-    util::debug("import: " + name);
+void PresetsManager::import(const std::string& file_path) {
+    fs::path p{file_path};
+
+    if (fs::is_regular_file(p)) {
+        if (p.extension().string() == ".json") {
+            auto out_path = presets_dir / p.filename();
+
+            fs::copy_file(p, out_path, fs::copy_option::overwrite_if_exists);
+
+            util::debug(log_tag + "imported preset to: " + out_path.string());
+        }
+    } else {
+        util::warning(log_tag + p.string() + " is not a file!");
+    }
 }

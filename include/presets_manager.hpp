@@ -31,7 +31,7 @@ class PresetsManager {
     void save(const std::string& name);
     void remove(const std::string& name);
     void load(const std::string& name);
-    void import(const std::string& name);
+    void import(const std::string& file_path);
 
    private:
     std::string log_tag = "presets_manager: ";
