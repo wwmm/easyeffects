@@ -16,6 +16,7 @@
 #include "limiter_preset.hpp"
 #include "maximizer_preset.hpp"
 #include "panorama_preset.hpp"
+#include "pitch_preset.hpp"
 
 class PresetsManager {
    public:
@@ -48,6 +49,7 @@ class PresetsManager {
     std::unique_ptr<GatePreset> gate;
     std::unique_ptr<MaximizerPreset> maximizer;
     std::unique_ptr<PanoramaPreset> panorama;
+    std::unique_ptr<PitchPreset> pitch;
 };
 
 #endif
