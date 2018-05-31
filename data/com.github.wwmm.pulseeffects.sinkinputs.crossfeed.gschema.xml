@@ -15,14 +15,5 @@
             <range min="1" max="15"/>
             <default>4.5</default>
         </key>
-        <key name="default" type="ad">
-            <default>[700, 4.5]</default>
-        </key>
-        <key name="cmoy" type="ad">
-            <default>[700, 6.0]</default>
-        </key>
-        <key name="jmeier" type="ad">
-            <default>[650, 9.0]</default>
-        </key>
     </schema>
 </schemalist>

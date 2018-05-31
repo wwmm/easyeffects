@@ -50,6 +50,35 @@ AppInfoUi::~AppInfoUi() {
     timeout_connection.disconnect();
 
     if (stream != nullptr) {
+        // pausing stream
+
+        pa_threaded_mainloop_lock(pm->main_loop);
+
+        auto o = pa_stream_cork(
+            stream, 1,
+            [](auto s, auto success, auto d) {
+                auto aui = static_cast<AppInfoUi*>(d);
+
+                if (success) {
+                    util::debug(aui->log_tag + "paused " + aui->app_info->name +
+                                " level meter stream");
+                } else {
+                    util::warning(aui->log_tag + "failed to pause " +
+                                  aui->app_info->name + " level meter stream");
+                }
+
+                pa_threaded_mainloop_signal(aui->pm->main_loop, false);
+            },
+            this);
+
+        while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+            pa_threaded_mainloop_wait(pm->main_loop);
+        }
+
+        pa_threaded_mainloop_unlock(pm->main_loop);
+
+        // disconnecting stream
+
         pa_threaded_mainloop_lock(pm->main_loop);
 
         util::debug(log_tag + "disconnecting " + app_info->name +

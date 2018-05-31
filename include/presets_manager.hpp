@@ -6,6 +6,7 @@
 #include <memory>
 #include "bass_enhancer_preset.hpp"
 #include "compressor_preset.hpp"
+#include "crossfeed_preset.hpp"
 #include "limiter_preset.hpp"
 
 class PresetsManager {
@@ -30,6 +31,7 @@ class PresetsManager {
     std::unique_ptr<LimiterPreset> limiter;
     std::unique_ptr<BassEnhancerPreset> bass_enhancer;
     std::unique_ptr<CompressorPreset> compressor;
+    std::unique_ptr<CrossfeedPreset> crossfeed;
 };
 
 #endif
