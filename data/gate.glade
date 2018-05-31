@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.22.1 -->
 <interface domain="pulseeffects">
-  <requires lib="gtk+" version="3.18"/>
+  <requires lib="gtk+" version="3.20"/>
   <object class="GtkAdjustment" id="attack">
     <property name="lower">0.01</property>
     <property name="upper">2000</property>
@@ -18,13 +18,6 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="icon_name">go-down-symbolic</property>
-  </object>
-  <object class="GtkAdjustment" id="knee">
-    <property name="upper">18</property>
-    <property name="value">9</property>
-    <property name="step_increment">0.01</property>
-    <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_knee_value_changed" swapped="no"/>
   </object>
   <object class="GtkBox" id="listbox_control">
     <property name="visible">True</property>
@@ -96,6 +89,13 @@
         <property name="position">3</property>
       </packing>
     </child>
+  </object>
+  <object class="GtkAdjustment" id="knee">
+    <property name="upper">18</property>
+    <property name="value">9</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">1</property>
+    <signal name="value-changed" handler="on_knee_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="makeup">
     <property name="upper">36</property>

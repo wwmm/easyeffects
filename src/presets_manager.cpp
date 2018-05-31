@@ -20,7 +20,8 @@ PresetsManager::PresetsManager()
       deesser(std::make_unique<DeesserPreset>()),
       delay(std::make_unique<DelayPreset>()),
       equalizer(std::make_unique<EqualizerPreset>()),
-      exciter(std::make_unique<ExciterPreset>()) {
+      exciter(std::make_unique<ExciterPreset>()),
+      filter(std::make_unique<FilterPreset>()) {
     auto dir_exists = fs::is_directory(presets_dir);
 
     if (!dir_exists) {
@@ -104,6 +105,7 @@ void PresetsManager::save(const std::string& name) {
     delay->write(root);
     equalizer->write(root);
     exciter->write(root);
+    filter->write(root);
 
     auto output_file = presets_dir / fs::path{name + ".json"};
 
@@ -131,12 +133,24 @@ void PresetsManager::load(const std::string& name) {
 
     boost::property_tree::read_json(input_file.string(), root);
 
-    for (auto& p : root.get_child("input.plugins_order")) {
-        input_plugins.push_back(p.second.data());
+    try {
+        for (auto& p : root.get_child("input.plugins_order")) {
+            input_plugins.push_back(p.second.data());
+        }
+    } catch (const boost::property_tree::ptree_error& e) {
+        Glib::Variant<std::vector<std::string>> aux;
+        soe_settings->get_default_value("plugins", aux);
+        input_plugins = aux.get();
     }
 
-    for (auto& p : root.get_child("output.plugins_order")) {
-        output_plugins.push_back(p.second.data());
+    try {
+        for (auto& p : root.get_child("output.plugins_order")) {
+            output_plugins.push_back(p.second.data());
+        }
+    } catch (const boost::property_tree::ptree_error& e) {
+        Glib::Variant<std::vector<std::string>> aux;
+        sie_settings->get_default_value("plugins", aux);
+        output_plugins = aux.get();
     }
 
     soe_settings->set_string_array("plugins", input_plugins);
@@ -150,6 +164,7 @@ void PresetsManager::load(const std::string& name) {
     delay->read(root);
     equalizer->read(root);
     exciter->read(root);
+    filter->read(root);
 
     util::debug(log_tag + "loaded preset: " + input_file.string());
 }

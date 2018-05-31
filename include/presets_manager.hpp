@@ -11,6 +11,7 @@
 #include "delay_preset.hpp"
 #include "equalizer_preset.hpp"
 #include "exciter_preset.hpp"
+#include "filter_preset.hpp"
 #include "limiter_preset.hpp"
 
 class PresetsManager {
@@ -40,6 +41,7 @@ class PresetsManager {
     std::unique_ptr<DelayPreset> delay;
     std::unique_ptr<EqualizerPreset> equalizer;
     std::unique_ptr<ExciterPreset> exciter;
+    std::unique_ptr<FilterPreset> filter;
 };
 
 #endif
