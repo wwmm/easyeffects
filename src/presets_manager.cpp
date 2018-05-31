@@ -19,7 +19,8 @@ PresetsManager::PresetsManager()
       crossfeed(std::make_unique<CrossfeedPreset>()),
       deesser(std::make_unique<DeesserPreset>()),
       delay(std::make_unique<DelayPreset>()),
-      equalizer(std::make_unique<EqualizerPreset>()) {
+      equalizer(std::make_unique<EqualizerPreset>()),
+      exciter(std::make_unique<ExciterPreset>()) {
     auto dir_exists = fs::is_directory(presets_dir);
 
     if (!dir_exists) {
@@ -102,6 +103,7 @@ void PresetsManager::save(const std::string& name) {
     deesser->write(root);
     delay->write(root);
     equalizer->write(root);
+    exciter->write(root);
 
     auto output_file = presets_dir / fs::path{name + ".json"};
 
@@ -147,6 +149,7 @@ void PresetsManager::load(const std::string& name) {
     deesser->read(root);
     delay->read(root);
     equalizer->read(root);
+    exciter->read(root);
 
     util::debug(log_tag + "loaded preset: " + input_file.string());
 }
