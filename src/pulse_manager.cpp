@@ -105,7 +105,7 @@ void PulseManager::subscribe_to_events() {
                     pa_context_get_sink_input_info(
                         c, idx,
                         [](auto cx, auto info, auto eol, auto d) {
-                            if (eol == 0 && info != nullptr) {
+                            if (info != nullptr) {
                                 auto pm = static_cast<PulseManager*>(d);
                                 pm->new_app(info);
                             }
@@ -115,7 +115,7 @@ void PulseManager::subscribe_to_events() {
                     pa_context_get_sink_input_info(
                         c, idx,
                         [](auto cx, auto info, auto eol, auto d) {
-                            if (eol == 0 && info != nullptr) {
+                            if (info != nullptr) {
                                 auto pm = static_cast<PulseManager*>(d);
                                 pm->changed_app(info);
                             }
@@ -132,7 +132,7 @@ void PulseManager::subscribe_to_events() {
                     pa_context_get_source_output_info(
                         c, idx,
                         [](auto cx, auto info, auto eol, auto d) {
-                            if (eol == 0 && info != nullptr) {
+                            if (info != nullptr) {
                                 auto pm = static_cast<PulseManager*>(d);
                                 pm->new_app(info);
                             }
@@ -142,7 +142,7 @@ void PulseManager::subscribe_to_events() {
                     pa_context_get_source_output_info(
                         c, idx,
                         [](auto cx, auto info, auto eol, auto d) {
-                            if (eol == 0 && info != nullptr) {
+                            if (info != nullptr) {
                                 auto pm = static_cast<PulseManager*>(d);
                                 pm->changed_app(info);
                             }
@@ -159,7 +159,7 @@ void PulseManager::subscribe_to_events() {
                     pa_context_get_source_info_by_index(
                         c, idx,
                         [](auto cx, auto info, auto eol, auto d) {
-                            if (eol == 0 && info != nullptr) {
+                            if (info != nullptr) {
                                 std::string s1 = "PulseEffects_apps.monitor";
                                 std::string s2 = "PulseEffects_mic.monitor";
 
@@ -195,7 +195,7 @@ void PulseManager::subscribe_to_events() {
                     pa_context_get_sink_info_by_index(
                         c, idx,
                         [](auto cx, auto info, auto eol, auto d) {
-                            if (eol == 0 && info != nullptr) {
+                            if (info != nullptr) {
                                 std::string s1 = "PulseEffects_apps";
                                 std::string s2 = "PulseEffects_mic";
 
@@ -336,11 +336,12 @@ std::shared_ptr<mySinkInfo> PulseManager::get_sink_info(std::string name) {
         [](auto c, auto info, auto eol, auto data) {
             auto d = static_cast<Data*>(data);
 
-            if (eol == -1) {
+            if (eol < 0) {
                 d->failed = true;
-
                 pa_threaded_mainloop_signal(d->pm->main_loop, false);
-            } else if (eol == 0 && info != nullptr) {
+            } else if (eol > 0) {
+                pa_threaded_mainloop_signal(d->pm->main_loop, false);
+            } else if (info != nullptr) {
                 d->si->name = info->name;
                 d->si->index = info->index;
                 d->si->description = info->description;
@@ -350,8 +351,6 @@ std::shared_ptr<mySinkInfo> PulseManager::get_sink_info(std::string name) {
                 d->si->rate = info->sample_spec.rate;
                 d->si->format =
                     pa_sample_format_to_string(info->sample_spec.format);
-            } else if (eol == 1) {
-                pa_threaded_mainloop_signal(d->pm->main_loop, false);
             }
         },
         &data);
@@ -387,19 +386,18 @@ std::shared_ptr<mySourceInfo> PulseManager::get_source_info(std::string name) {
         [](auto c, auto info, auto eol, auto data) {
             auto d = static_cast<Data*>(data);
 
-            if (eol == -1) {
+            if (eol < 0) {
                 d->failed = true;
-
                 pa_threaded_mainloop_signal(d->pm->main_loop, false);
-            } else if (eol == 0 && info != nullptr) {
+            } else if (eol > 0) {
+                pa_threaded_mainloop_signal(d->pm->main_loop, false);
+            } else if (info != nullptr) {
                 d->si->name = info->name;
                 d->si->index = info->index;
                 d->si->description = info->description;
                 d->si->rate = info->sample_spec.rate;
                 d->si->format =
                     pa_sample_format_to_string(info->sample_spec.format);
-            } else if (eol == 1) {
-                pa_threaded_mainloop_signal(d->pm->main_loop, false);
             }
         },
         &data);
@@ -524,12 +522,12 @@ void PulseManager::find_sink_inputs() {
         [](auto c, auto info, auto eol, auto d) {
             auto pm = static_cast<PulseManager*>(d);
 
-            if (eol == -1) {
+            if (eol < 0) {
                 pa_threaded_mainloop_signal(pm->main_loop, false);
-            } else if (eol == 0 && info != nullptr) {
+            } else if (eol > 0) {
+                pa_threaded_mainloop_signal(pm->main_loop, false);
+            } else if (info != nullptr) {
                 pm->new_app(info);
-            } else if (eol == 1) {
-                pa_threaded_mainloop_signal(pm->main_loop, false);
             }
         },
         this);
@@ -549,12 +547,12 @@ void PulseManager::find_source_outputs() {
         [](auto c, auto info, auto eol, auto d) {
             auto pm = static_cast<PulseManager*>(d);
 
-            if (eol == -1) {
+            if (eol < 0) {
                 pa_threaded_mainloop_signal(pm->main_loop, false);
-            } else if (eol == 0 && info != nullptr) {
+            } else if (eol > 0) {
+                pa_threaded_mainloop_signal(pm->main_loop, false);
+            } else if (info != nullptr) {
                 pm->new_app(info);
-            } else if (eol == 1) {
-                pa_threaded_mainloop_signal(pm->main_loop, false);
             }
         },
         this);
@@ -574,9 +572,11 @@ void PulseManager::find_sinks() {
         [](auto c, auto info, auto eol, auto d) {
             auto pm = static_cast<PulseManager*>(d);
 
-            if (eol == -1) {
+            if (eol < 0) {
                 pa_threaded_mainloop_signal(pm->main_loop, false);
-            } else if (eol == 0 && info != nullptr) {
+            } else if (eol > 0) {
+                pa_threaded_mainloop_signal(pm->main_loop, false);
+            } else if (info != nullptr) {
                 std::string s1 = "PulseEffects_apps";
                 std::string s2 = "PulseEffects_mic";
 
@@ -593,8 +593,6 @@ void PulseManager::find_sinks() {
                     Glib::signal_idle().connect_once(
                         [pm, si = move(si)] { pm->sink_added.emit(move(si)); });
                 }
-            } else if (eol == 1) {
-                pa_threaded_mainloop_signal(pm->main_loop, false);
             }
         },
         this);
@@ -614,9 +612,11 @@ void PulseManager::find_sources() {
         [](auto c, auto info, auto eol, auto d) {
             auto pm = static_cast<PulseManager*>(d);
 
-            if (eol == -1) {
+            if (eol < 0) {
                 pa_threaded_mainloop_signal(pm->main_loop, false);
-            } else if (eol == 0 && info != nullptr) {
+            } else if (eol > 0) {
+                pa_threaded_mainloop_signal(pm->main_loop, false);
+            } else if (info != nullptr) {
                 std::string s1 = "PulseEffects_apps.monitor";
                 std::string s2 = "PulseEffects_mic.monitor";
 
@@ -634,8 +634,6 @@ void PulseManager::find_sources() {
                         pm->source_added.emit(move(si));
                     });
                 }
-            } else if (eol == 1) {
-                pa_threaded_mainloop_signal(pm->main_loop, false);
             }
         },
         this);
@@ -953,12 +951,12 @@ void PulseManager::get_sink_input_info(uint idx) {
         [](auto c, auto info, auto eol, auto d) {
             auto pm = static_cast<PulseManager*>(d);
 
-            if (eol == -1) {
+            if (eol < 0) {
                 pa_threaded_mainloop_signal(pm->main_loop, false);
-            } else if (eol == 0 && info != nullptr) {
+            } else if (eol > 0) {
+                pa_threaded_mainloop_signal(pm->main_loop, false);
+            } else if (info != nullptr) {
                 pm->changed_app(info);
-            } else if (eol == 1) {
-                pa_threaded_mainloop_signal(pm->main_loop, false);
             }
         },
         this);
