@@ -5,7 +5,6 @@
 #include <gtkmm/grid.h>
 #include <gtkmm/image.h>
 #include <gtkmm/label.h>
-#include <gtkmm/levelbar.h>
 #include <gtkmm/scale.h>
 #include <gtkmm/switch.h>
 #include <gtkmm/togglebutton.h>
@@ -37,7 +36,6 @@ class AppInfoUi : public Gtk::Grid {
     Gtk::Label* buffer;
     Gtk::Label* latency;
     Gtk::Label* state;
-    Gtk::LevelBar* level;
 
     std::shared_ptr<AppInfo> app_info;
 
@@ -57,15 +55,11 @@ class AppInfoUi : public Gtk::Grid {
 
     std::shared_ptr<PulseManager> pm;
 
-    pa_stream* stream = nullptr;
-
     void init_widgets();
 
     void connect_signals();
 
     std::string latency_to_str(uint value);
-
-    void create_stream();
 
     bool on_enable_app(bool state);
 

@@ -968,22 +968,6 @@ void PulseManager::get_sink_input_info(uint idx) {
     pa_threaded_mainloop_unlock(main_loop);
 }
 
-pa_stream* PulseManager::create_stream(std::string source_name,
-                                       uint app_idx,
-                                       std::string app_name) {
-    auto ss = pa_sample_spec();
-
-    ss.channels = 1;
-    ss.rate = 10;
-    ss.format = PA_SAMPLE_FLOAT32LE;
-
-    auto stream_name = app_name + " - Level Meter Stream";
-
-    auto stream = pa_stream_new(context, stream_name.c_str(), &ss, nullptr);
-
-    return stream;
-}
-
 void PulseManager::unload_module(uint idx) {
     struct Data {
         uint idx;

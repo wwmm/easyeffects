@@ -26,7 +26,6 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
     builder->get_widget("buffer", buffer);
     builder->get_widget("latency", latency);
     builder->get_widget("state", state);
-    builder->get_widget("level", level);
 
     init_widgets();
     connect_signals();
@@ -35,7 +34,9 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
         timeout_connection = Glib::signal_timeout().connect_seconds(
             [&]() {
                 if (app_info != nullptr) {
-                    pm->get_sink_input_info(app_info->index);
+                    if (app_info->wants_to_play) {
+                        pm->get_sink_input_info(app_info->index);
+                    }
                 }
 
                 return running;
@@ -46,52 +47,7 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
 
 AppInfoUi::~AppInfoUi() {
     running = false;
-
     timeout_connection.disconnect();
-
-    if (stream != nullptr) {
-        // pausing stream
-
-        pa_threaded_mainloop_lock(pm->main_loop);
-
-        auto o = pa_stream_cork(
-            stream, 1,
-            [](auto s, auto success, auto d) {
-                auto aui = static_cast<AppInfoUi*>(d);
-
-                if (success) {
-                    util::debug(aui->log_tag + "paused " + aui->app_info->name +
-                                " level meter stream");
-                } else {
-                    util::warning(aui->log_tag + "failed to pause " +
-                                  aui->app_info->name + " level meter stream");
-                }
-
-                pa_threaded_mainloop_signal(aui->pm->main_loop, false);
-            },
-            this);
-
-        while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-            pa_threaded_mainloop_wait(pm->main_loop);
-        }
-
-        pa_threaded_mainloop_unlock(pm->main_loop);
-
-        // disconnecting stream
-
-        pa_threaded_mainloop_lock(pm->main_loop);
-
-        util::debug(log_tag + "disconnecting " + app_info->name +
-                    " level meter stream...");
-
-        pa_stream_disconnect(stream);
-
-        while (stream != nullptr) {
-            pa_threaded_mainloop_wait(pm->main_loop);
-        }
-
-        pa_threaded_mainloop_unlock(pm->main_loop);
-    }
 }
 
 std::unique_ptr<AppInfoUi> AppInfoUi::create(std::shared_ptr<AppInfo> app_info,
@@ -143,12 +99,6 @@ void AppInfoUi::init_widgets() {
     } else {
         state->set_text(_("playing"));
     }
-
-    if (app_info->wants_to_play && stream == nullptr) {
-        create_stream();
-    } else if (!app_info->wants_to_play && stream != nullptr) {
-        pa_stream_disconnect(stream);
-    }
 }
 
 void AppInfoUi::connect_signals() {
@@ -160,117 +110,6 @@ void AppInfoUi::connect_signals() {
 
     mute_connection = mute->signal_toggled().connect(
         sigc::mem_fun(*this, &AppInfoUi::on_mute));
-}
-
-void AppInfoUi::create_stream() {
-    std::string source_name;
-
-    if (app_info->app_type == "sink_input") {
-        source_name = "PulseEffects_apps.monitor";
-
-        stream = pm->create_stream(source_name.c_str(), app_info->index,
-                                   app_info->name);
-
-        pa_stream_set_monitor_stream(stream, app_info->index);
-    } else {
-        source_name = "PulseEffects_mic.monitor";
-
-        stream = pm->create_stream(source_name.c_str(), app_info->index,
-                                   app_info->name);
-    }
-
-    pa_stream_set_state_callback(
-        stream,
-        [](auto s, auto data) {
-            auto aiu = static_cast<AppInfoUi*>(data);
-
-            auto state = pa_stream_get_state(s);
-
-            if (state == PA_STREAM_UNCONNECTED) {
-                util::debug(aiu->log_tag + aiu->app_info->name +
-                            " volume meter stream is unconnected");
-            } else if (state == PA_STREAM_CREATING) {
-                util::debug(aiu->log_tag + aiu->app_info->name +
-                            " volume meter stream is being created");
-            } else if (state == PA_STREAM_READY) {
-                util::debug(aiu->log_tag + aiu->app_info->name +
-                            " volume meter stream is ready");
-            } else if (state == PA_STREAM_FAILED) {
-                util::debug(aiu->log_tag + aiu->app_info->name +
-                            " volume meter" +
-                            " stream has failed. Did you disable this app?");
-
-                pa_stream_disconnect(aiu->stream);
-                pa_stream_unref(aiu->stream);
-                aiu->stream = nullptr;
-            } else if (state == PA_STREAM_TERMINATED) {
-                util::debug(aiu->log_tag + aiu->app_info->name +
-                            " volume meter stream was terminated");
-
-                pa_stream_unref(aiu->stream);
-                aiu->stream = nullptr;
-                pa_threaded_mainloop_signal(aiu->pm->main_loop, false);
-            }
-        },
-        this);
-
-    pa_stream_set_read_callback(
-        stream,
-        [](auto s, auto nbytes, auto class_ptr) {
-            auto aiu = static_cast<AppInfoUi*>(class_ptr);
-            const void* sdata;
-            double v;
-
-            if (pa_stream_peek(s, &sdata, &nbytes) < 0) {
-                util::warning(aiu->log_tag + "Failed to read data from " +
-                              aiu->app_info->name + " volume meter stream");
-                return;
-            }
-
-            if (!sdata) {
-                // taken from pavucontrol sources:
-                /* NULL data means either a hole or empty buffer.
-                 * Only drop the stream when there is a hole (length > 0) */
-                if (nbytes)
-                    pa_stream_drop(s);
-                return;
-            }
-
-            if (nbytes > 0) {
-                v = ((const float*)sdata)[nbytes / sizeof(float) - 1];
-
-                pa_stream_drop(s);
-
-                if (v < 0) {
-                    v = 0;
-                }
-                if (v > 1) {
-                    v = 1;
-                }
-
-                Glib::signal_idle().connect_once([aiu, v]() {
-                    if (aiu != nullptr) {
-                        if (aiu->running) {
-                            aiu->level->set_value(v);
-                        }
-                    }
-                });
-            }
-        },
-        this);
-
-    auto flags =
-        (pa_stream_flags_t)(PA_STREAM_DONT_MOVE | PA_STREAM_PEAK_DETECT);
-
-    if (pa_stream_connect_record(stream, source_name.c_str(), nullptr, flags) <
-        0) {
-        util::warning(log_tag + "failed to create level monitor stream " +
-                      "for " + app_info->name);
-
-        pa_stream_unref(stream);
-
-        stream = nullptr;
-    }
 }
 
 bool AppInfoUi::on_enable_app(bool state) {
