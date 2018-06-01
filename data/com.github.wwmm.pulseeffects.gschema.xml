@@ -115,6 +115,12 @@
             <range min="2" max="600"/>
             <default>150</default>
         </key>
+        <key name="use-custom-color" type="b">
+            <default>false</default>
+        </key>
+        <key name="spectrum-color" type="ad">
+            <default>[1.0,1.0,1.0,1.0]</default>
+        </key>
 
         <key name="enable-all-apps" type="b">
             <default>false</default>

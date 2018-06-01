@@ -4,6 +4,7 @@
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/button.h>
+#include <gtkmm/colorbutton.h>
 #include <gtkmm/combobox.h>
 #include <gtkmm/drawingarea.h>
 #include <gtkmm/entry.h>
@@ -36,30 +37,23 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     Glib::RefPtr<Gtk::Builder> builder;
     Glib::RefPtr<Gio::Settings> settings;
 
-    Gtk::Switch* enable_autostart;
-    Gtk::Switch* enable_all_apps;
-    Gtk::Switch* theme_switch;
-    Gtk::ToggleButton* use_default_sink;
-    Gtk::ToggleButton* use_default_source;
-    Gtk::ComboBox* input_device;
-    Gtk::ComboBox* output_device;
-    Gtk::Adjustment* buffer_in;
-    Gtk::Adjustment* buffer_out;
-    Gtk::Adjustment* latency_in;
-    Gtk::Adjustment* latency_out;
+    Gtk::Switch *enable_autostart, *enable_all_apps, *theme_switch,
+        *show_spectrum, *use_custom_color;
+    Gtk::ToggleButton *use_default_sink, *use_default_source;
+    Gtk::ComboBox *input_device, *output_device;
+    Gtk::Adjustment *buffer_in, *buffer_out, *latency_in, *latency_out,
+        *spectrum_n_points;
     Gtk::DrawingArea* spectrum;
     Gtk::Box* spectrum_box;
-    Gtk::Switch* show_spectrum;
-    Gtk::Adjustment* spectrum_n_points;
-    Gtk::Button* reset_settings;
-    Gtk::ListStore* sink_list;
-    Gtk::ListStore* source_list;
+    Gtk::Button *reset_settings, *add_preset, *import_preset;
+    Gtk::ListStore *sink_list, *source_list;
     Gtk::Stack* stack;
     Gtk::ListBox* presets_listbox;
     Gtk::MenuButton* presets_menu_button;
     Gtk::Label* presets_menu_label;
     Gtk::Entry* preset_name;
-    Gtk::Button *add_preset, *import_preset;
+    Gtk::ColorButton* spectrum_color_button;
+    Gdk::RGBA spectrum_color;
 
     sigc::connection spectrum_connection;
     std::vector<sigc::connection> connections;
@@ -89,6 +83,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     void on_reset_settings();
 
     bool on_show_spectrum(bool state);
+
+    bool on_use_custom_color(bool state);
 
     void on_new_spectrum(const std::vector<float>& magnitudes);
 

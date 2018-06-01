@@ -40,6 +40,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     builder->get_widget("preset_name", preset_name);
     builder->get_widget("add_preset", add_preset);
     builder->get_widget("import_preset", import_preset);
+    builder->get_widget("use_custom_color", use_custom_color);
+    builder->get_widget("spectrum_color_button", spectrum_color_button);
 
     get_object("buffer_in", buffer_in);
     get_object("buffer_out", buffer_out);
@@ -70,6 +72,19 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
         sigc::mem_fun(*this, &ApplicationUi::on_spectrum_leave_notify_event));
     spectrum->signal_motion_notify_event().connect(
         sigc::mem_fun(*this, &ApplicationUi::on_spectrum_motion_notify_event));
+
+    spectrum_color_button->signal_color_set().connect([=]() {
+        spectrum_color = spectrum_color_button->get_rgba();
+
+        auto v = Glib::Variant<std::vector<double>>::create(std::vector<double>{
+            spectrum_color.get_red(), spectrum_color.get_green(),
+            spectrum_color.get_blue(), spectrum_color.get_alpha()});
+
+        settings->set_value("spectrum-color", v);
+    });
+
+    use_custom_color->signal_state_set().connect(
+        sigc::mem_fun(*this, &ApplicationUi::on_use_custom_color), false);
 
     // pulseaudio device selection
 
@@ -188,6 +203,9 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     settings->bind("show-spectrum", show_spectrum, "active", flag);
     settings->bind("show-spectrum", spectrum_box, "visible", flag_get);
     settings->bind("spectrum-n-points", spectrum_n_points, "value", flag);
+    settings->bind("use-custom-color", use_custom_color, "active", flag);
+    settings->bind("use-custom-color", spectrum_color_button, "sensitive",
+                   flag);
 
     init_autostart_switch();
 }
@@ -317,6 +335,22 @@ bool ApplicationUi::on_show_spectrum(bool state) {
     return false;
 }
 
+bool ApplicationUi::on_use_custom_color(bool state) {
+    if (state) {
+        Glib::Variant<std::vector<double>> v;
+
+        settings->get_value("spectrum-color", v);
+
+        auto rgba = v.get();
+
+        spectrum_color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
+
+        spectrum_color_button->set_rgba(spectrum_color);
+    }
+
+    return false;
+}
+
 void ApplicationUi::on_new_spectrum(const std::vector<float>& magnitudes) {
     spectrum_mag = magnitudes;
 
@@ -332,7 +366,6 @@ bool ApplicationUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
         auto allocation = spectrum->get_allocation();
         auto width = allocation.get_width();
         auto height = allocation.get_height();
-        auto style_ctx = spectrum->get_style_context();
         auto n_bars = spectrum_mag.size();
         auto x = util::linspace(0, width, n_bars);
 
@@ -343,11 +376,20 @@ bool ApplicationUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
                            bar_height);
         }
 
-        auto color = Gdk::RGBA();
+        if (settings->get_boolean("use-custom-color")) {
+            ctx->set_source_rgba(
+                spectrum_color.get_red(), spectrum_color.get_green(),
+                spectrum_color.get_blue(), spectrum_color.get_alpha());
+        } else {
+            auto color = Gdk::RGBA();
+            auto style_ctx = spectrum->get_style_context();
 
-        style_ctx->lookup_color("theme_selected_bg_color", color);
-        ctx->set_source_rgba(color.get_red(), color.get_green(),
-                             color.get_blue(), 1.0);
+            style_ctx->lookup_color("theme_selected_bg_color", color);
+
+            ctx->set_source_rgba(color.get_red(), color.get_green(),
+                                 color.get_blue(), 1.0);
+        }
+
         ctx->set_line_width(1.1);
         ctx->stroke();
 
