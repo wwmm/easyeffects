@@ -54,7 +54,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkButton" id="measure_ambient_noise">
+      <object class="GtkButton" id="measure_noise">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">True</property>
@@ -95,7 +95,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkToggleButton" id="subtract_ambient_noise">
+      <object class="GtkToggleButton" id="subtract_noise">
         <property name="label" translatable="yes">Subtract Noise</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>

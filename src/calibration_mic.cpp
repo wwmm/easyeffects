@@ -143,6 +143,8 @@ CalibrationMic::CalibrationMic() {
 
     spline_f0 = spectrum_freqs[0];
     spline_df = spectrum_freqs[1] - spectrum_freqs[0];
+
+    gst_element_set_state(pipeline, GST_STATE_PLAYING);
 }
 
 CalibrationMic::~CalibrationMic() {
@@ -150,14 +152,6 @@ CalibrationMic::~CalibrationMic() {
 
     gst_object_unref(bus);
     gst_object_unref(pipeline);
-}
-
-void CalibrationMic::start() {
-    gst_element_set_state(pipeline, GST_STATE_PLAYING);
-}
-
-void CalibrationMic::stop() {
-    gst_element_set_state(pipeline, GST_STATE_NULL);
 }
 
 void CalibrationMic::set_window(const double& value) {

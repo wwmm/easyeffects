@@ -28,8 +28,6 @@ class CalibrationMic {
     sigc::signal<void, std::vector<float>> new_spectrum;
     sigc::signal<void> noise_measured;
 
-    void start();
-    void stop();
     void set_window(const double& value);
 
    private:
