@@ -71,6 +71,7 @@ pulseeffects_sources = [
 	'reverb_preset.cpp',
 	'stereo_enhancer_preset.cpp',
 	'webrtc_preset.cpp',
+	'calibration_ui.cpp',
 	'util.cpp',
 	gresources
 ]

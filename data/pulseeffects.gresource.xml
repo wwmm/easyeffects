@@ -23,6 +23,9 @@
     <file>pitch.glade</file>
     <file>webrtc.glade</file>
     <file>preset_row.glade</file>
+    <file>calibration.glade</file>
+    <file>calibration_signals.glade</file>
+    <file>calibration_microphone.glade</file>
     <file>about_icon.png</file>
     <file>listbox.css</file>
     <file>pulseeffects-sine-symbolic.svg</file>

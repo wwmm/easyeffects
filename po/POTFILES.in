@@ -20,6 +20,9 @@ data/deesser.glade
 data/pitch.glade
 data/webrtc.glade
 data/preset_row.glade
+data/calibration.glade
+data/calibration_signals.glade
+data/calibration_microphone.glade
 data/com.github.wwmm.pulseeffects.appdata.xml.in
 data/com.github.wwmm.pulseeffects.desktop.in
 src/application.cpp

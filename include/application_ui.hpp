@@ -16,6 +16,7 @@
 #include <gtkmm/switch.h>
 #include <gtkmm/togglebutton.h>
 #include "application.hpp"
+#include "calibration_ui.hpp"
 #include "sink_input_effects_ui.hpp"
 #include "source_output_effects_ui.hpp"
 
@@ -45,7 +46,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
         *spectrum_n_points;
     Gtk::DrawingArea* spectrum;
     Gtk::Box* spectrum_box;
-    Gtk::Button *reset_settings, *add_preset, *import_preset;
+    Gtk::Button *reset_settings, *add_preset, *import_preset,
+        *calibration_button;
     Gtk::ListStore *sink_list, *source_list;
     Gtk::Stack* stack;
     Gtk::ListBox* presets_listbox;
@@ -60,6 +62,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
     std::shared_ptr<SinkInputEffectsUi> sie_ui;
     std::shared_ptr<SourceOutputEffectsUi> soe_ui;
+    std::unique_ptr<CalibrationUi> calibration_ui;
 
     bool mouse_inside;
     double mouse_intensity, mouse_freq;

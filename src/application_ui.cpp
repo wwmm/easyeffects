@@ -42,6 +42,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     builder->get_widget("import_preset", import_preset);
     builder->get_widget("use_custom_color", use_custom_color);
     builder->get_widget("spectrum_color_button", spectrum_color_button);
+    builder->get_widget("calibration_button", calibration_button);
 
     get_object("buffer_in", buffer_in);
     get_object("buffer_out", buffer_out);
@@ -123,6 +124,13 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
     import_preset->signal_clicked().connect(
         sigc::mem_fun(*this, &ApplicationUi::on_import_preset_clicked));
+
+    // calibration
+
+    calibration_button->signal_clicked().connect([=]() {
+        calibration_ui = CalibrationUi::create();
+        calibration_ui->show_all();
+    });
 
     // pulseaudio signals
 

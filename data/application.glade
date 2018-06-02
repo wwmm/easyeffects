@@ -173,7 +173,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkButton" id="test">
+          <object class="GtkButton" id="calibration_button">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -182,7 +182,6 @@
             <property name="valign">center</property>
             <property name="image">image_test</property>
             <property name="always_show_image">True</property>
-            <signal name="clicked" handler="on_test_clicked" swapped="no"/>
           </object>
           <packing>
             <property name="position">3</property>
