@@ -9,7 +9,7 @@
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_time_window_value_changed" swapped="no"/>
   </object>
-  <object class="GtkGrid" id="window">
+  <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="halign">center</property>

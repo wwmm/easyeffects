@@ -5,6 +5,7 @@
 #include <gtkmm/drawingarea.h>
 #include <gtkmm/stack.h>
 #include <gtkmm/window.h>
+#include "calibration_signals_ui.hpp"
 
 class CalibrationUi : public Gtk::Window {
    public:
@@ -18,6 +19,8 @@ class CalibrationUi : public Gtk::Window {
     void set_source_monitor_name(std::string name);
 
    private:
+    std::string log_tag = "calibration_ui: ";
+
     Glib::RefPtr<Gtk::Builder> builder;
 
     Gtk::Stack* stack;
@@ -28,6 +31,8 @@ class CalibrationUi : public Gtk::Window {
     bool mouse_inside;
     double mouse_intensity, mouse_freq;
     std::vector<float> spectrum_mag;
+
+    std::shared_ptr<CalibrationSignalsUi> calibration_signals;
 
     void on_new_spectrum(const std::vector<float>& magnitudes);
 

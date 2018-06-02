@@ -21,6 +21,12 @@ CalibrationUi::CalibrationUi(BaseObjectType* cobject,
     stack->connect_property_changed(
         "visible-child",
         sigc::mem_fun(*this, &CalibrationUi::on_stack_visible_child_changed));
+
+    calibration_signals = CalibrationSignalsUi::create();
+
+    stack->add(*calibration_signals, "signals");
+    stack->child_property_icon_name(*calibration_signals)
+        .set_value("pulseeffects-sine-symbolic");
 }
 
 CalibrationUi::~CalibrationUi() {}
