@@ -3,7 +3,13 @@
 CalibrationSignalsUi::CalibrationSignalsUi(
     BaseObjectType* cobject,
     const Glib::RefPtr<Gtk::Builder>& refBuilder)
-    : Gtk::Grid(cobject), builder(refBuilder) {}
+    : Gtk::Grid(cobject), builder(refBuilder) {
+    // loading glade widgets
+
+    builder->get_widget("enable", enable);
+    builder->get_widget("volume", volume);
+    builder->get_widget("frequency", frequency);
+}
 
 CalibrationSignalsUi::~CalibrationSignalsUi() {}
 

@@ -2,13 +2,13 @@
 <!-- Generated with glade 3.22.1 -->
 <interface domain="pulseeffects">
   <requires lib="gtk+" version="3.20"/>
-  <object class="GtkAdjustment" id="wave_freq_adjustment">
+  <object class="GtkAdjustment" id="frequency_adjustment">
     <property name="upper">20000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_wave1_freq_value_changed" swapped="no"/>
   </object>
-  <object class="GtkAdjustment" id="wave_volume_adjustment">
+  <object class="GtkAdjustment" id="volume_adjustment">
     <property name="upper">1</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.050000000000000003</property>
@@ -36,12 +36,12 @@
       </packing>
     </child>
     <child>
-      <object class="GtkScale" id="wave_volume">
+      <object class="GtkScale" id="volume">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="valign">center</property>
         <property name="hexpand">True</property>
-        <property name="adjustment">wave_volume_adjustment</property>
+        <property name="adjustment">volume_adjustment</property>
         <property name="round_digits">1</property>
         <property name="digits">2</property>
         <property name="value_pos">right</property>
@@ -52,7 +52,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkSwitch" id="wave_switch">
+      <object class="GtkSwitch" id="enable">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="halign">end</property>
@@ -99,7 +99,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkSpinButton" id="wave_freq">
+      <object class="GtkSpinButton" id="frequency">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="halign">center</property>
@@ -109,7 +109,7 @@
         <property name="secondary_icon_activatable">False</property>
         <property name="input_purpose">number</property>
         <property name="orientation">vertical</property>
-        <property name="adjustment">wave_freq_adjustment</property>
+        <property name="adjustment">frequency_adjustment</property>
         <property name="numeric">True</property>
         <property name="update_policy">if-valid</property>
       </object>

@@ -3,6 +3,8 @@
 
 #include <gtkmm/builder.h>
 #include <gtkmm/grid.h>
+#include <gtkmm/scale.h>
+#include <gtkmm/spinbutton.h>
 #include <gtkmm/switch.h>
 
 class CalibrationSignalsUi : public Gtk::Grid {
@@ -18,6 +20,10 @@ class CalibrationSignalsUi : public Gtk::Grid {
     std::string log_tag = "calibration_signals_ui: ";
 
     Glib::RefPtr<Gtk::Builder> builder;
+
+    Gtk::Switch* enable;
+    Gtk::Scale* volume;
+    Gtk::SpinButton* frequency;
 };
 
 #endif
