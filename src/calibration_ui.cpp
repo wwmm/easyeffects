@@ -159,9 +159,10 @@ void CalibrationUi::on_stack_visible_child_changed() {
     } else if (name == std::string("mic")) {
         spectrum_connection.disconnect();
 
-        // spectrum_connection = app->soe->new_spectrum.connect(
-        //     sigc::mem_fun(*this, &ApplicationUi::on_new_spectrum));
+        spectrum_connection = calibration_mic_ui->cm->new_spectrum.connect(
+            sigc::mem_fun(*this, &CalibrationUi::on_new_spectrum));
     }
 
-    // clear_spectrum();
+    spectrum_mag.clear();
+    spectrum->queue_draw();
 }

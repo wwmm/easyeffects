@@ -4,6 +4,7 @@
 #include <gtkmm/builder.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/switch.h>
+#include "calibration_mic.hpp"
 
 class CalibrationMicUi : public Gtk::Grid {
    public:
@@ -13,6 +14,8 @@ class CalibrationMicUi : public Gtk::Grid {
     virtual ~CalibrationMicUi();
 
     static std::shared_ptr<CalibrationMicUi> create();
+
+    std::unique_ptr<CalibrationMic> cm;
 
    private:
     std::string log_tag = "calibration_mic_ui: ";
