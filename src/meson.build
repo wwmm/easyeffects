@@ -73,6 +73,7 @@ pulseeffects_sources = [
 	'webrtc_preset.cpp',
 	'calibration_ui.cpp',
 	'calibration_signals_ui.cpp',
+	'calibration_mic_ui.cpp',
 	'util.cpp',
 	gresources
 ]

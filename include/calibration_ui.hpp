@@ -5,6 +5,7 @@
 #include <gtkmm/drawingarea.h>
 #include <gtkmm/stack.h>
 #include <gtkmm/window.h>
+#include "calibration_mic_ui.hpp"
 #include "calibration_signals_ui.hpp"
 
 class CalibrationUi : public Gtk::Window {
@@ -32,7 +33,8 @@ class CalibrationUi : public Gtk::Window {
     double mouse_intensity, mouse_freq;
     std::vector<float> spectrum_mag;
 
-    std::shared_ptr<CalibrationSignalsUi> calibration_signals;
+    std::shared_ptr<CalibrationSignalsUi> calibration_signals_ui;
+    std::shared_ptr<CalibrationMicUi> calibration_mic_ui;
 
     void on_new_spectrum(const std::vector<float>& magnitudes);
 

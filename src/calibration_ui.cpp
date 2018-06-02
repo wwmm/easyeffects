@@ -22,11 +22,16 @@ CalibrationUi::CalibrationUi(BaseObjectType* cobject,
         "visible-child",
         sigc::mem_fun(*this, &CalibrationUi::on_stack_visible_child_changed));
 
-    calibration_signals = CalibrationSignalsUi::create();
+    calibration_signals_ui = CalibrationSignalsUi::create();
+    calibration_mic_ui = CalibrationMicUi::create();
 
-    stack->add(*calibration_signals, "signals");
-    stack->child_property_icon_name(*calibration_signals)
+    stack->add(*calibration_signals_ui, "signals");
+    stack->child_property_icon_name(*calibration_signals_ui)
         .set_value("pulseeffects-sine-symbolic");
+
+    stack->add(*calibration_mic_ui, "mic");
+    stack->child_property_icon_name(*calibration_mic_ui)
+        .set_value("audio-input-microphone-symbolic");
 }
 
 CalibrationUi::~CalibrationUi() {}
@@ -143,7 +148,7 @@ void CalibrationUi::on_stack_visible_child_changed() {
 
         // spectrum_connection = app->sie->new_spectrum.connect(
         //     sigc::mem_fun(*this, &ApplicationUi::on_new_spectrum));
-    } else if (name == std::string("microphone")) {
+    } else if (name == std::string("mic")) {
         spectrum_connection.disconnect();
 
         // spectrum_connection = app->soe->new_spectrum.connect(
