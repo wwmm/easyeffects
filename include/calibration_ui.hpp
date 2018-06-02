@@ -15,6 +15,8 @@ class CalibrationUi : public Gtk::Window {
 
     static std::unique_ptr<CalibrationUi> create();
 
+    void set_source_monitor_name(std::string name);
+
    private:
     Glib::RefPtr<Gtk::Builder> builder;
 

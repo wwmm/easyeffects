@@ -36,6 +36,8 @@ std::unique_ptr<CalibrationUi> CalibrationUi::create() {
     return std::unique_ptr<CalibrationUi>(window);
 }
 
+void CalibrationUi::set_source_monitor_name(std::string name) {}
+
 void CalibrationUi::on_new_spectrum(const std::vector<float>& magnitudes) {
     spectrum_mag = magnitudes;
 

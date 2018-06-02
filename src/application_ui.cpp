@@ -130,6 +130,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     calibration_button->signal_clicked().connect([=]() {
         calibration_ui = CalibrationUi::create();
         calibration_ui->show_all();
+        app->pm->new_default_source.connect(
+            [=](auto name) { calibration_ui->set_source_monitor_name(name); });
     });
 
     // pulseaudio signals
