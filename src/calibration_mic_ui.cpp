@@ -2,7 +2,9 @@
 
 CalibrationMicUi::CalibrationMicUi(BaseObjectType* cobject,
                                    const Glib::RefPtr<Gtk::Builder>& refBuilder)
-    : Gtk::Grid(cobject), builder(refBuilder) {}
+    : Gtk::Grid(cobject),
+      cm(std::make_unique<CalibrationMic>()),
+      builder(refBuilder) {}
 
 CalibrationMicUi::~CalibrationMicUi() {}
 
