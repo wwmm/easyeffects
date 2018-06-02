@@ -32,11 +32,16 @@ CalibrationUi::CalibrationUi(BaseObjectType* cobject,
     stack->add(*calibration_mic_ui, "mic");
     stack->child_property_icon_name(*calibration_mic_ui)
         .set_value("audio-input-microphone-symbolic");
+
+    // default spectrum connection
+
+    spectrum_connection = calibration_signals_ui->cs->new_spectrum.connect(
+        sigc::mem_fun(*this, &CalibrationUi::on_new_spectrum));
 }
 
 CalibrationUi::~CalibrationUi() {}
 
-std::unique_ptr<CalibrationUi> CalibrationUi::create() {
+CalibrationUi* CalibrationUi::create() {
     auto builder = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/calibration.glade");
 
@@ -44,7 +49,7 @@ std::unique_ptr<CalibrationUi> CalibrationUi::create() {
 
     builder->get_widget_derived("window", window);
 
-    return std::unique_ptr<CalibrationUi>(window);
+    return window;
 }
 
 void CalibrationUi::set_source_monitor_name(std::string name) {}
@@ -67,11 +72,14 @@ bool CalibrationUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
         auto n_bars = spectrum_mag.size();
         auto x = util::linspace(0, width, n_bars);
 
-        for (uint n = 0; n < n_bars; n++) {
+        for (uint n = 0; n < n_bars - 1; n++) {
             auto bar_height = spectrum_mag[n] * height;
 
-            ctx->rectangle(x[n], height - bar_height, width / n_bars,
-                           bar_height);
+            ctx->move_to(x[n], height - bar_height);
+
+            bar_height = spectrum_mag[n + 1] * height;
+
+            ctx->line_to(x[n + 1], height - bar_height);
         }
 
         auto color = Gdk::RGBA();
@@ -146,8 +154,8 @@ void CalibrationUi::on_stack_visible_child_changed() {
     if (name == std::string("signals")) {
         spectrum_connection.disconnect();
 
-        // spectrum_connection = app->sie->new_spectrum.connect(
-        //     sigc::mem_fun(*this, &ApplicationUi::on_new_spectrum));
+        spectrum_connection = calibration_signals_ui->cs->new_spectrum.connect(
+            sigc::mem_fun(*this, &CalibrationUi::on_new_spectrum));
     } else if (name == std::string("mic")) {
         spectrum_connection.disconnect();
 

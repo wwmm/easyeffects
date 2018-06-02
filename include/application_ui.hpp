@@ -62,7 +62,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
     std::shared_ptr<SinkInputEffectsUi> sie_ui;
     std::shared_ptr<SourceOutputEffectsUi> soe_ui;
-    std::unique_ptr<CalibrationUi> calibration_ui;
 
     bool mouse_inside;
     double mouse_intensity, mouse_freq;

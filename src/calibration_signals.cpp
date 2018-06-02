@@ -92,18 +92,42 @@ CalibrationSignals::CalibrationSignals() {
 
     // setting a few parameters
 
-    auto props = gst_structure_from_string(
-        "props,application.name=PulseEffectsCalibration", nullptr);
+    // auto props = gst_structure_from_string(
+    //     "props,application.name=PulseEffectsCalibration", nullptr);
+    // g_object_set(source, "stream-properties", props, nullptr);
 
     auto caps =
         gst_caps_from_string("audio/x-raw,format=F32LE,channels=2,rate=48000");
 
-    g_object_set(source, "stream-properties", props, nullptr);
     g_object_set(source, "wave", 0, nullptr);  // sine
     g_object_set(capsfilter, "caps", caps, nullptr);
     g_object_set(queue, "silent", true, nullptr);
     g_object_set(spectrum, "bands", spectrum_nbands, nullptr);
     g_object_set(spectrum, "threshold", spectrum_threshold, nullptr);
+
+    // init spectrum
+
+    for (uint n = 0; n < spectrum_nbands; n++) {
+        auto f = 48000 * (0.5 * n + 0.25) / spectrum_nbands;
+
+        if (f > max_spectrum_freq) {
+            break;
+        }
+
+        if (f > min_spectrum_freq) {
+            spectrum_freqs.push_back(f);
+        }
+    }
+
+    spectrum_mag_tmp.resize(spectrum_freqs.size());
+
+    spectrum_x_axis = util::logspace(
+        log10(min_spectrum_freq), log10(max_spectrum_freq), spectrum_npoints);
+
+    spectrum_mag.resize(spectrum_npoints);
+
+    spline_f0 = spectrum_freqs[0];
+    spline_df = spectrum_freqs[1] - spectrum_freqs[0];
 }
 
 CalibrationSignals::~CalibrationSignals() {
@@ -119,4 +143,12 @@ void CalibrationSignals::start() {
 
 void CalibrationSignals::stop() {
     gst_element_set_state(pipeline, GST_STATE_NULL);
+}
+
+void CalibrationSignals::set_freq(const double& value) {
+    g_object_set(source, "freq", value, nullptr);
+}
+
+void CalibrationSignals::set_volume(const double& value) {
+    g_object_set(source, "volume", value, nullptr);
 }
