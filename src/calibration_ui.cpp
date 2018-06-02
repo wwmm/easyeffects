@@ -90,7 +90,7 @@ bool CalibrationUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
         ctx->set_source_rgba(color.get_red(), color.get_green(),
                              color.get_blue(), 1.0);
 
-        ctx->set_line_width(1.1);
+        ctx->set_line_width(1.5);
         ctx->stroke();
 
         if (mouse_inside) {

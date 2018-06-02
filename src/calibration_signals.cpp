@@ -92,9 +92,8 @@ CalibrationSignals::CalibrationSignals() {
 
     // setting a few parameters
 
-    // auto props = gst_structure_from_string(
-    //     "props,application.name=PulseEffectsCalibration", nullptr);
-    // g_object_set(source, "stream-properties", props, nullptr);
+    auto props = gst_structure_from_string(
+        "props,application.name=PulseEffectsCalibration", nullptr);
 
     auto caps =
         gst_caps_from_string("audio/x-raw,format=F32LE,channels=2,rate=48000");
@@ -104,6 +103,7 @@ CalibrationSignals::CalibrationSignals() {
     g_object_set(queue, "silent", true, nullptr);
     g_object_set(spectrum, "bands", spectrum_nbands, nullptr);
     g_object_set(spectrum, "threshold", spectrum_threshold, nullptr);
+    g_object_set(sink, "stream-properties", props, nullptr);
 
     // init spectrum
 
