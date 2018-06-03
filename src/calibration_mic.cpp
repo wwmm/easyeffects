@@ -55,13 +55,15 @@ void on_message_element(const GstBus* gst_bus,
             }
         }
 
-        auto min_mag = cs->spectrum_threshold;
+        auto min_mag =
+            *std::min_element(cs->spectrum_mag.begin(), cs->spectrum_mag.end());
         auto max_mag =
             *std::max_element(cs->spectrum_mag.begin(), cs->spectrum_mag.end());
 
         if (max_mag > min_mag) {
             for (uint n = 0; n < cs->spectrum_mag.size(); n++) {
-                cs->spectrum_mag[n] = (min_mag - cs->spectrum_mag[n]) / min_mag;
+                cs->spectrum_mag[n] =
+                    (cs->spectrum_mag[n] - min_mag) / (max_mag - min_mag);
             }
 
             Glib::signal_idle().connect_once(
@@ -91,7 +93,7 @@ CalibrationMic::CalibrationMic() {
     // creating elements
 
     source = gst_element_factory_make("pulsesrc", "source");
-    sink = gst_element_factory_make("pulsesink", "sink");
+    sink = gst_element_factory_make("fakesink", "sink");
     spectrum = gst_element_factory_make("spectrum", "spectrum");
 
     auto capsfilter = gst_element_factory_make("capsfilter", nullptr);

@@ -2,8 +2,11 @@
 #define CALIBRATION_MIC_UI_HPP
 
 #include <gtkmm/builder.h>
+#include <gtkmm/button.h>
 #include <gtkmm/grid.h>
-#include <gtkmm/switch.h>
+#include <gtkmm/spinbutton.h>
+#include <gtkmm/spinner.h>
+#include <gtkmm/togglebutton.h>
 #include "calibration_mic.hpp"
 
 class CalibrationMicUi : public Gtk::Grid {
@@ -21,6 +24,11 @@ class CalibrationMicUi : public Gtk::Grid {
     std::string log_tag = "calibration_mic_ui: ";
 
     Glib::RefPtr<Gtk::Builder> builder;
+
+    Gtk::Button* measure_noise;
+    Gtk::ToggleButton* subtract_noise;
+    Gtk::Spinner* spinner;
+    Gtk::SpinButton* time_window;
 };
 
 #endif

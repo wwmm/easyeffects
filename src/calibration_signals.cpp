@@ -47,7 +47,8 @@ void on_message_element(const GstBus* gst_bus,
 
         if (max_mag > min_mag) {
             for (uint n = 0; n < cs->spectrum_mag.size(); n++) {
-                cs->spectrum_mag[n] = (min_mag - cs->spectrum_mag[n]) / min_mag;
+                cs->spectrum_mag[n] =
+                    (cs->spectrum_mag[n] - min_mag) / (max_mag - min_mag);
             }
 
             Glib::signal_idle().connect_once(
