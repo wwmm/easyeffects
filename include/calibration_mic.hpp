@@ -29,6 +29,7 @@ class CalibrationMic {
     sigc::signal<void> noise_measured;
 
     void set_window(const double& value);
+    void set_source_monitor_name(const std::string& name);
 
    private:
     GstBus* bus;

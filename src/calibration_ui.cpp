@@ -52,7 +52,9 @@ CalibrationUi* CalibrationUi::create() {
     return window;
 }
 
-void CalibrationUi::set_source_monitor_name(std::string name) {}
+void CalibrationUi::set_source_monitor_name(const std::string& name) {
+    calibration_mic_ui->cm->set_source_monitor_name(name);
+}
 
 void CalibrationUi::on_new_spectrum(const std::vector<float>& magnitudes) {
     spectrum_mag = magnitudes;

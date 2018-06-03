@@ -17,7 +17,7 @@ class CalibrationUi : public Gtk::Window {
 
     static CalibrationUi* create();
 
-    void set_source_monitor_name(std::string name);
+    void set_source_monitor_name(const std::string& name);
 
    private:
     std::string log_tag = "calibration_ui: ";

@@ -156,7 +156,10 @@ CalibrationMic::~CalibrationMic() {
     gst_object_unref(pipeline);
 }
 
+void CalibrationMic::set_source_monitor_name(const std::string& name) {
+    g_object_set(source, "device", name.c_str(), nullptr);
+}
+
 void CalibrationMic::set_window(const double& value) {
-    std::cout << (int64_t)(value * 1000000000) << std::endl;
     g_object_set(spectrum, "interval", (int64_t)(value * 1000000000), nullptr);
 }
