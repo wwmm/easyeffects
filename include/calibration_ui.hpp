@@ -32,7 +32,7 @@ class CalibrationUi : public Gtk::Window {
     sigc::connection spectrum_connection;
 
     bool mouse_inside;
-    double mouse_intensity, mouse_freq;
+    double mouse_intensity, mouse_freq, min_mag, max_mag;
     std::vector<float> spectrum_mag;
 
     std::shared_ptr<CalibrationSignalsUi> calibration_signals_ui;

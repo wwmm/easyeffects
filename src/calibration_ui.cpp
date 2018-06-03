@@ -63,6 +63,9 @@ void CalibrationUi::set_source_monitor_name(const std::string& name) {
 void CalibrationUi::on_new_spectrum(const std::vector<float>& magnitudes) {
     spectrum_mag = magnitudes;
 
+    min_mag = *std::min_element(spectrum_mag.begin(), spectrum_mag.end());
+    max_mag = *std::max_element(spectrum_mag.begin(), spectrum_mag.end());
+
     spectrum->queue_draw();
 }
 
@@ -149,7 +152,7 @@ bool CalibrationUi::on_spectrum_motion_notify_event(GdkEventMotion* event) {
     // intensity scale is in decibel
     // minimum intensity is -120 dB and maximum is 0 dB
 
-    mouse_intensity = -event->y * 120 / height;
+    mouse_intensity = max_mag - event->y * (max_mag - min_mag) / height;
 
     return false;
 }

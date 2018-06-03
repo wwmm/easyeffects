@@ -30,7 +30,7 @@ std::vector<float> logspace(const float& start,
 
     float delta = (stop - start) / npoints;
 
-    float v = 0.0f;
+    float v = start;
 
     while (v < stop) {
         output.push_back(pow(10, v));
@@ -48,7 +48,7 @@ std::vector<float> linspace(const float& start,
 
     float delta = (stop - start) / npoints;
 
-    float v = 0.0f;
+    float v = start;
 
     while (v < stop) {
         output.push_back(v);

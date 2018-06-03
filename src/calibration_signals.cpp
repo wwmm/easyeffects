@@ -41,7 +41,8 @@ void on_message_element(const GstBus* gst_bus,
             cs->spectrum_mag[n] = spline(cs->spectrum_x_axis[n]);
         }
 
-        auto min_mag = cs->spectrum_threshold;
+        auto min_mag =
+            *std::min_element(cs->spectrum_mag.begin(), cs->spectrum_mag.end());
         auto max_mag =
             *std::max_element(cs->spectrum_mag.begin(), cs->spectrum_mag.end());
 
