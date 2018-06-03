@@ -4,8 +4,7 @@ conf_pulseeffects.set('PROJECT_NAME', meson.project_name())
 
 pulseeffects_cpp = configure_file(input: 'pulseeffects.cpp.in',
 							 output: 'pulseeffects.cpp',
-							 configuration: conf_pulseeffects,
-							 install_dir: bindir)
+							 configuration: conf_pulseeffects)
 
 
 pulseeffects_sources = [
