@@ -5,7 +5,7 @@ Audio effects for Pulseaudio applications
 ![](images/pulseeffects.png)
 ![](images/equalizer1.png)
 ![](images/equalizer2.png)
-![](images/pulseeffects_test.png)
+![](images/test_signals.png)
 
 ## Installation
 
