@@ -157,5 +157,6 @@ CalibrationMic::~CalibrationMic() {
 }
 
 void CalibrationMic::set_window(const double& value) {
-    g_object_set(spectrum, "interval", (int)(value * 1000000000), nullptr);
+    std::cout << (int64_t)(value * 1000000000) << std::endl;
+    g_object_set(spectrum, "interval", (int64_t)(value * 1000000000), nullptr);
 }
