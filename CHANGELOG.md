@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+
+## [4.0.0]
 ### Added
 - Users can change effects order. This information is saved in the user preset
 like most of the other settings exposed by PulseEffects.
