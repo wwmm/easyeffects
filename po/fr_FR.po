@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-03 01:09-0300\n"
+"POT-Creation-Date: 2018-06-03 01:49-0300\n"
 "PO-Revision-Date: 2017-08-29 11:00+0200\n"
 "Last-Translator: Nathan Graule <solarliner@gmail.com>\n"
 "Language-Team: \n"
@@ -32,7 +32,8 @@ msgstr "Sauvegarder préglage"
 msgid "Import Presets"
 msgstr "Ouvrir préréglage"
 
-#: data/application.glade:180
+#: data/application.glade:180 src/calibration_ui.cpp:43
+#: src/calibration_ui.cpp:163
 #, fuzzy
 msgid "Test Signals"
 msgstr "Signal de test"
@@ -1017,6 +1018,11 @@ msgstr ""
 msgid "playing"
 msgstr ""
 
+#: src/calibration_ui.cpp:170
+#, fuzzy
+msgid "Calibration Microphone"
+msgstr "Calibration de la correction microphone"
+
 #, fuzzy
 #~ msgid "Ceil"
 #~ msgstr "Limite [dB]"
@@ -1188,9 +1194,6 @@ msgstr ""
 
 #~ msgid "Vlc"
 #~ msgstr "VLC"
-
-#~ msgid "Calibration Microphone Correction"
-#~ msgstr "Calibration de la correction microphone"
 
 #, fuzzy
 #~ msgid "Sink Latency"

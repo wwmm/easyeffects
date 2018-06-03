@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-03 01:09-0300\n"
+"POT-Creation-Date: 2018-06-03 01:49-0300\n"
 "PO-Revision-Date: 2018-02-06 20:54+0100\n"
 "Last-Translator: Pavel Fric <pavelfric@seznam.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -31,7 +31,8 @@ msgstr "Smazat přednastavení"
 msgid "Import Presets"
 msgstr "Nahrát přednastavení"
 
-#: data/application.glade:180
+#: data/application.glade:180 src/calibration_ui.cpp:43
+#: src/calibration_ui.cpp:163
 msgid "Test Signals"
 msgstr "Zkušební signály"
 
@@ -1008,6 +1009,11 @@ msgstr "Pozastaveno"
 msgid "playing"
 msgstr "Přehrává se"
 
+#: src/calibration_ui.cpp:170
+#, fuzzy
+msgid "Calibration Microphone"
+msgstr "Oprava kalibrace mikrofonu"
+
 #, fuzzy
 #~ msgid "Ceil"
 #~ msgstr "Strop [Hz]"
@@ -1187,9 +1193,6 @@ msgstr "Přehrává se"
 #, fuzzy
 #~ msgid "Right Channel"
 #~ msgstr "Kanály"
-
-#~ msgid "Calibration Microphone Correction"
-#~ msgstr "Oprava kalibrace mikrofonu"
 
 #, fuzzy
 #~ msgid "Sink Latency"

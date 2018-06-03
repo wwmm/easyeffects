@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-03 01:09-0300\n"
+"POT-Creation-Date: 2018-06-03 01:49-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,8 @@ msgstr ""
 msgid "Import Presets"
 msgstr ""
 
-#: data/application.glade:180
+#: data/application.glade:180 src/calibration_ui.cpp:43
+#: src/calibration_ui.cpp:163
 msgid "Test Signals"
 msgstr ""
 
@@ -938,4 +939,8 @@ msgstr ""
 
 #: src/app_info_ui.cpp:100
 msgid "playing"
+msgstr ""
+
+#: src/calibration_ui.cpp:170
+msgid "Calibration Microphone"
 msgstr ""

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-03 01:09-0300\n"
-"PO-Revision-Date: 2018-06-03 01:10-0300\n"
+"POT-Creation-Date: 2018-06-03 01:49-0300\n"
+"PO-Revision-Date: 2018-06-03 01:50-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
@@ -32,7 +32,8 @@ msgstr "Criar Predefinição"
 msgid "Import Presets"
 msgstr "Importar Predefinições"
 
-#: data/application.glade:180
+#: data/application.glade:180 src/calibration_ui.cpp:43
+#: src/calibration_ui.cpp:163
 msgid "Test Signals"
 msgstr "Sinais de Teste"
 
@@ -957,6 +958,10 @@ msgstr "pausado"
 msgid "playing"
 msgstr "tocando"
 
+#: src/calibration_ui.cpp:170
+msgid "Calibration Microphone"
+msgstr "Microfone de Calibração"
+
 #, fuzzy
 #~ msgid "Ceil"
 #~ msgstr "Teto"
@@ -1166,9 +1171,6 @@ msgstr "tocando"
 #, fuzzy
 #~ msgid "Right Channel"
 #~ msgstr "Canais"
-
-#~ msgid "Calibration Microphone Correction"
-#~ msgstr "Correção do Microfone de Calibração"
 
 #~ msgid "<b>Applications</b>"
 #~ msgstr "<b>Aplicativos</b>"

@@ -28,3 +28,4 @@ data/com.github.wwmm.pulseeffects.desktop.in
 src/application.cpp
 src/effects_base_ui.cpp
 src/app_info_ui.cpp
+src/calibration_ui.cpp

@@ -3,6 +3,7 @@
 
 #include <gtkmm/builder.h>
 #include <gtkmm/drawingarea.h>
+#include <gtkmm/headerbar.h>
 #include <gtkmm/stack.h>
 #include <gtkmm/window.h>
 #include "calibration_mic_ui.hpp"
@@ -26,6 +27,7 @@ class CalibrationUi : public Gtk::Window {
 
     Gtk::Stack* stack;
     Gtk::DrawingArea* spectrum;
+    Gtk::HeaderBar* headerbar;
 
     sigc::connection spectrum_connection;
 

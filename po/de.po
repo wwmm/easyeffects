@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-03 01:09-0300\n"
+"POT-Creation-Date: 2018-06-03 01:49-0300\n"
 "PO-Revision-Date: 2017-10-14 18:40+0200\n"
 "Last-Translator: Bleuzen <supgesu@gmail.com>\n"
 "Language-Team: \n"
@@ -32,7 +32,8 @@ msgstr "Preset löschen"
 msgid "Import Presets"
 msgstr "Preset laden"
 
-#: data/application.glade:180
+#: data/application.glade:180 src/calibration_ui.cpp:43
+#: src/calibration_ui.cpp:163
 #, fuzzy
 msgid "Test Signals"
 msgstr "Testsignal"
@@ -1007,6 +1008,11 @@ msgstr "pausiert"
 msgid "playing"
 msgstr ""
 
+#: src/calibration_ui.cpp:170
+#, fuzzy
+msgid "Calibration Microphone"
+msgstr "Kalibrierung der Mikrofonkorrektur"
+
 #, fuzzy
 #~ msgid "Ceil"
 #~ msgstr "Grenze [dB]"
@@ -1146,9 +1152,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Right Channel"
 #~ msgstr "Kanäle"
-
-#~ msgid "Calibration Microphone Correction"
-#~ msgstr "Kalibrierung der Mikrofonkorrektur"
 
 #~ msgid "<b>Applications</b>"
 #~ msgstr "<b>Anwendungen</b>"

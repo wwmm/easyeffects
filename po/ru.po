@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-03 01:09-0300\n"
+"POT-Creation-Date: 2018-06-03 01:49-0300\n"
 "PO-Revision-Date: 2018-03-09 01:34+0300\n"
 "Last-Translator: Михаил <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -31,7 +31,8 @@ msgstr "Создать новый набор предустановок"
 msgid "Import Presets"
 msgstr "Импортировать предустановки"
 
-#: data/application.glade:180
+#: data/application.glade:180 src/calibration_ui.cpp:43
+#: src/calibration_ui.cpp:163
 #, fuzzy
 msgid "Test Signals"
 msgstr "Проверочный сигнал"
@@ -1027,6 +1028,11 @@ msgstr "на паузе"
 msgid "playing"
 msgstr "воспроизводится"
 
+#: src/calibration_ui.cpp:170
+#, fuzzy
+msgid "Calibration Microphone"
+msgstr "Калибровка корректировки микрофона"
+
 #, fuzzy
 #~ msgid "Ceil"
 #~ msgstr "Верхний порог (Гц)"
@@ -1242,9 +1248,6 @@ msgstr "воспроизводится"
 #, fuzzy
 #~ msgid "Right Channel"
 #~ msgstr "Правый канал"
-
-#~ msgid "Calibration Microphone Correction"
-#~ msgstr "Калибровка корректировки микрофона"
 
 #, fuzzy
 #~ msgid "Sink Latency"

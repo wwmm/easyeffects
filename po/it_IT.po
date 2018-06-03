@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-03 01:09-0300\n"
+"POT-Creation-Date: 2018-06-03 01:49-0300\n"
 "PO-Revision-Date: 2018-02-10 15:25+0100\n"
 "Last-Translator: Matteo Iervasi <matteoiervasi@gmail.com>\n"
 "Language-Team: \n"
@@ -32,7 +32,8 @@ msgstr "Cancella preset"
 msgid "Import Presets"
 msgstr "Carica Preset"
 
-#: data/application.glade:180
+#: data/application.glade:180 src/calibration_ui.cpp:43
+#: src/calibration_ui.cpp:163
 msgid "Test Signals"
 msgstr "Segnali di test"
 
@@ -1009,6 +1010,11 @@ msgstr "in pausa"
 #: src/app_info_ui.cpp:100
 msgid "playing"
 msgstr "in riproduzione"
+
+#: src/calibration_ui.cpp:170
+#, fuzzy
+msgid "Calibration Microphone"
+msgstr "Calibrazione"
 
 #, fuzzy
 #~ msgid "Ceil"

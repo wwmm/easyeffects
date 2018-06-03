@@ -1,3 +1,4 @@
+#include <glibmm/i18n.h>
 #include "calibration_ui.hpp"
 #include "util.hpp"
 
@@ -8,6 +9,7 @@ CalibrationUi::CalibrationUi(BaseObjectType* cobject,
 
     builder->get_widget("stack", stack);
     builder->get_widget("spectrum", spectrum);
+    builder->get_widget("headerbar", headerbar);
 
     spectrum->signal_draw().connect(
         sigc::mem_fun(*this, &CalibrationUi::on_spectrum_draw));
@@ -37,6 +39,8 @@ CalibrationUi::CalibrationUi(BaseObjectType* cobject,
 
     spectrum_connection = calibration_signals_ui->cs->new_spectrum.connect(
         sigc::mem_fun(*this, &CalibrationUi::on_new_spectrum));
+
+    headerbar->set_subtitle(_("Test Signals"));
 }
 
 CalibrationUi::~CalibrationUi() {}
@@ -156,10 +160,14 @@ void CalibrationUi::on_stack_visible_child_changed() {
     if (name == std::string("signals")) {
         spectrum_connection.disconnect();
 
+        headerbar->set_subtitle(_("Test Signals"));
+
         spectrum_connection = calibration_signals_ui->cs->new_spectrum.connect(
             sigc::mem_fun(*this, &CalibrationUi::on_new_spectrum));
     } else if (name == std::string("mic")) {
         spectrum_connection.disconnect();
+
+        headerbar->set_subtitle(_("Calibration Microphone"));
 
         spectrum_connection = calibration_mic_ui->cm->new_spectrum.connect(
             sigc::mem_fun(*this, &CalibrationUi::on_new_spectrum));

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-03 01:09-0300\n"
+"POT-Creation-Date: 2018-06-03 01:49-0300\n"
 "PO-Revision-Date: 2018-05-27 00:55+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -32,7 +32,8 @@ msgstr "Izradi predložak"
 msgid "Import Presets"
 msgstr "Učitaj predloške"
 
-#: data/application.glade:180
+#: data/application.glade:180 src/calibration_ui.cpp:43
+#: src/calibration_ui.cpp:163
 msgid "Test Signals"
 msgstr "Testni signali"
 
@@ -976,6 +977,11 @@ msgstr "pauzirano"
 msgid "playing"
 msgstr "reprodukcija"
 
+#: src/calibration_ui.cpp:170
+#, fuzzy
+msgid "Calibration Microphone"
+msgstr "Kalibracija ispravljanja mikrofona"
+
 #, fuzzy
 #~ msgid "Ceil"
 #~ msgstr "Vrh"
@@ -1172,9 +1178,6 @@ msgstr "reprodukcija"
 #, fuzzy
 #~ msgid "Right Channel"
 #~ msgstr "Kanali"
-
-#~ msgid "Calibration Microphone Correction"
-#~ msgstr "Kalibracija ispravljanja mikrofona"
 
 #, fuzzy
 #~ msgid "Sink Latency"
