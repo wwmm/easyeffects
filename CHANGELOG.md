@@ -25,7 +25,9 @@ fix. As it is not a mandatory feature it was best to remove.
 ### Note for packagers
 - PE 4.0.0 marks the move from Python to C++. So Python packages like Numpy
 and Scipy are not a dependency anymore. Gstreamer Insertbin is also not used.
-C++ Boost is now a dependency.
+C++ Boost is now a dependency. I will leave a python branch on github in case
+some bug fix is needed for the 3.x series. But my focus from now on will be
+on the 4.x series.
 
 ## [3.2.3]
 ### Fixed
