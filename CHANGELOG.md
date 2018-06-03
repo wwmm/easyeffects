@@ -8,7 +8,8 @@ like most of the other settings exposed by PulseEffects.
 - Users can change the number of equalizer bands in the equalizer menu settings.
 This configuration is also saved to the user preset. In the same menu there is
 also a facility to calculate the corresponding frequencies of a graphic
- equalizer with the same number of bands.
+ equalizer with the same number of bands. Users with weak processors will
+ benefit a lot from this setting as the more bands you have the more cpu is used
 - Calf Filter plugin replaces the high pass and low pass filters from previous
 PE versions.
 
