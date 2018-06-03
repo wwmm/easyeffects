@@ -1,0 +1,61 @@
+providers: [
+  {
+    key: "bt"
+    config:
+      commands: [
+        {
+          project: "/home/wallace/myfiles/code/python/pulseeffects"
+          source: "/home/wallace/myfiles/code/python/pulseeffects/.build-tools.cson"
+          name: "Compile"
+          command: "ninja"
+          wd: "_build"
+          env: {}
+          modifier: {}
+          environment:
+            name: "child_process"
+            config:
+              stdoe: "both"
+          stdout:
+            pipeline: []
+          stderr:
+            pipeline: []
+          output:
+            console:
+              close_success: true
+              queue_in_buffer: true
+              colors: false
+              stdin: false
+            linter:
+              no_trace: false
+              immediate: false
+          version: 2
+        }
+        {
+          project: "/home/wallace/myfiles/code/python/pulseeffects"
+          source: "/home/wallace/myfiles/code/python/pulseeffects/.build-tools.cson"
+          name: "Run"
+          command: "./src/pulseeffects"
+          wd: "_build"
+          env: {}
+          modifier:
+            env:
+              G_MESSAGES_DEBUG: "pulseeffects"
+          environment:
+            name: "child_process"
+            config:
+              stdoe: "both"
+          stdout:
+            pipeline: []
+          stderr:
+            pipeline: []
+          output:
+            console:
+              close_success: false
+              queue_in_buffer: true
+              colors: false
+              stdin: false
+          version: 2
+        }
+      ]
+  }
+]
