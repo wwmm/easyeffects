@@ -1,6 +1,31 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- Users can change effects order. This information is saved in the user preset
+like most of the other settings exposed by PulseEffects.
+- Users can choose a custom color for the spectrum.
+- Users can change the number of equalizer bands in the equalizer menu settings.
+This configuration is also saved to the user preset. In the same menu there is
+also a facility to calculate the corresponding frequencies of a graphic
+ equalizer with the same number of bands.
+- Calf Filter plugin replaces the high pass and low pass filters from previous
+PE versions.
+
+### Changed
+- From PulseEffects 4.0.0 onwards the presets files uses a completely different
+format(we moved from ini to json). This means users will have to create new
+presets. I know it sucks but it was necessary.
+
+### Removed
+- Calf Stereo Spread
+- Per app level meters. They were the source of many bugs that I could never
+fix. As it is not a mandatory feature it was best to remove.
+
+### Note for packagers
+- PE 4.0.0 marks the move from Python to C++. So Python packages like Numpy
+and Scipy are not a dependency anymore. Gstreamer Insertbin is also not used.
+C++ Boost is now a dependency.
 
 ## [3.2.3]
 ### Fixed
