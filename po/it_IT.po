@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-31 20:19-0300\n"
+"POT-Creation-Date: 2018-06-03 01:09-0300\n"
 "PO-Revision-Date: 2018-02-10 15:25+0100\n"
 "Last-Translator: Matteo Iervasi <matteoiervasi@gmail.com>\n"
 "Language-Team: \n"
@@ -36,89 +36,98 @@ msgstr "Carica Preset"
 msgid "Test Signals"
 msgstr "Segnali di test"
 
-#: data/application.glade:224 data/compressor.glade:205 data/filter.glade:203
+#: data/application.glade:223 data/compressor.glade:205 data/filter.glade:203
 #: data/reverb.glade:283 data/crossfeed.glade:47
 msgid "Presets"
 msgstr "Presets"
 
-#: data/application.glade:514
+#: data/application.glade:513
 msgid "Start Service at Login"
 msgstr "Avvio servizio al login"
 
-#: data/application.glade:539
+#: data/application.glade:538
 msgid "Enable All Applications"
 msgstr "Abilita per tutte le applicazioni"
 
-#: data/application.glade:564
+#: data/application.glade:563
 msgid "Use Dark Theme"
 msgstr "Usa tema scuro"
 
-#: data/application.glade:589
+#: data/application.glade:588
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: data/application.glade:598 data/equalizer_band.glade:105
+#: data/application.glade:597 data/equalizer_band.glade:105
 #: data/equalizer_band.glade:120
 msgid "Reset"
 msgstr "Resetta"
 
-#: data/application.glade:613
+#: data/application.glade:612
 msgid "General"
 msgstr "Generale"
 
-#: data/application.glade:631
+#: data/application.glade:630
 msgid "Show"
 msgstr "Mostra"
 
-#: data/application.glade:657
+#: data/application.glade:656
 msgid "Points"
 msgstr "Punti"
 
-#: data/application.glade:684
+#: data/application.glade:686
+msgid "Use Custom Color"
+msgstr ""
+
+#: data/application.glade:711
+#, fuzzy
+msgid "Spectrum Color"
+msgstr "Spettro"
+
+#: data/application.glade:735
 msgid "Spectrum"
 msgstr "Spettro"
 
-#: data/application.glade:707
+#: data/application.glade:758
 #, fuzzy
 msgid "Output Device"
 msgstr "Output"
 
-#: data/application.glade:717 data/application.glade:730
+#: data/application.glade:768 data/application.glade:781
 #, fuzzy
 msgid "Use Default"
 msgstr "Default"
 
-#: data/application.glade:746
+#: data/application.glade:797
 #, fuzzy
 msgid "Input Device"
 msgstr "Input Limiter"
 
-#: data/application.glade:816 data/application.glade:892
+#: data/application.glade:867 data/application.glade:943
 #: data/app_info.glade:156
 msgid "Buffer"
 msgstr "Buffer"
 
-#: data/application.glade:829 data/application.glade:905
+#: data/application.glade:880 data/application.glade:956
 #: data/app_info.glade:183
 msgid "Latency"
 msgstr "Latenza"
 
-#: data/application.glade:964
+#: data/application.glade:1015
 #, fuzzy
 msgid "Output Effects"
 msgstr "Output"
 
-#: data/application.glade:977
+#: data/application.glade:1028
 #, fuzzy
 msgid "Input Effects"
 msgstr "PulseEffects"
 
-#: data/application.glade:994
+#: data/application.glade:1045
 #, fuzzy
 msgid "Advanced Settings"
 msgstr "Impostazioni"
 
-#: data/application.glade:1004
+#: data/application.glade:1055
 msgid "Pulseaudio"
 msgstr ""
 
@@ -185,7 +194,7 @@ msgstr ""
 msgid "Enable"
 msgstr "Tabella sinusoidale"
 
-#: data/limiter.glade:451
+#: data/limiter.glade:451 data/calibration_mic.glade:29
 #, fuzzy
 msgid "Window"
 msgstr "Finestra [s]"
@@ -373,6 +382,7 @@ msgid "18dB/oct Bandreject"
 msgstr ""
 
 #: data/filter.glade:252 data/equalizer_band.glade:41
+#: data/calibration_signals.glade:32
 #, fuzzy
 msgid "Frequency"
 msgstr "Frequenza [Hz]"
@@ -827,6 +837,71 @@ msgstr "Attenuazione"
 msgid "Voice Detector"
 msgstr "Attenuazione"
 
+#: data/calibration_signals.glade:64
+msgid "Volume"
+msgstr "Volume"
+
+#: data/calibration_signals.glade:108
+msgid "Sine"
+msgstr "Sinusoidale"
+
+#: data/calibration_signals.glade:109
+msgid "Square"
+msgstr "Quadra"
+
+#: data/calibration_signals.glade:110
+msgid "Saw"
+msgstr "Sega"
+
+#: data/calibration_signals.glade:111
+msgid "Triangle"
+msgstr "Triangolare"
+
+#: data/calibration_signals.glade:112
+#, fuzzy
+msgid "Silence"
+msgstr "Silenzio"
+
+#: data/calibration_signals.glade:113
+msgid "White Noise"
+msgstr "Rumore bianco"
+
+#: data/calibration_signals.glade:114
+msgid "Pink Noise"
+msgstr "Rumore rosa"
+
+#: data/calibration_signals.glade:115
+msgid "Sine Table"
+msgstr "Tabella sinusoidale"
+
+#: data/calibration_signals.glade:116
+msgid "Ticks"
+msgstr "Battiti"
+
+#: data/calibration_signals.glade:117
+msgid "Gaussian Noise"
+msgstr "Rumore gaussiano"
+
+#: data/calibration_signals.glade:118
+msgid "Red Noise"
+msgstr "Rumore rosso"
+
+#: data/calibration_signals.glade:119
+msgid "Blue Noise"
+msgstr "Rumore blu"
+
+#: data/calibration_signals.glade:120
+msgid "Violet Noise"
+msgstr "Rumore viola"
+
+#: data/calibration_mic.glade:70
+msgid "Measure Noise"
+msgstr "Misura rumore"
+
+#: data/calibration_mic.glade:99
+msgid "Subtract Noise"
+msgstr "Sottrai rumore"
+
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
 #: data/com.github.wwmm.pulseeffects.desktop.in:3
 msgid "PulseEffects"
@@ -927,11 +1002,11 @@ msgstr ""
 msgid "Presets: "
 msgstr "Presets"
 
-#: src/app_info_ui.cpp:142
+#: src/app_info_ui.cpp:98
 msgid "paused"
 msgstr "in pausa"
 
-#: src/app_info_ui.cpp:144
+#: src/app_info_ui.cpp:100
 msgid "playing"
 msgstr "in riproduzione"
 
@@ -1003,56 +1078,11 @@ msgstr "in riproduzione"
 #~ msgid "Cancel"
 #~ msgstr "Bilancio"
 
-#~ msgid "Measure Noise"
-#~ msgstr "Misura rumore"
-
-#~ msgid "Subtract Noise"
-#~ msgstr "Sottrai rumore"
-
-#~ msgid "Volume"
-#~ msgstr "Volume"
-
 #~ msgid "Equal Loudness Test Signals"
 #~ msgstr "Segnali di test per stessa intensità"
 
 #~ msgid "Test Signal"
 #~ msgstr "Segnale di Test"
-
-#~ msgid "Sine"
-#~ msgstr "Sinusoidale"
-
-#~ msgid "Square"
-#~ msgstr "Quadra"
-
-#~ msgid "Saw"
-#~ msgstr "Sega"
-
-#~ msgid "Triangle"
-#~ msgstr "Triangolare"
-
-#~ msgid "Pink Noise"
-#~ msgstr "Rumore rosa"
-
-#~ msgid "White Noise"
-#~ msgstr "Rumore bianco"
-
-#~ msgid "Sine Table"
-#~ msgstr "Tabella sinusoidale"
-
-#~ msgid "Ticks"
-#~ msgstr "Battiti"
-
-#~ msgid "Gaussian Noise"
-#~ msgstr "Rumore gaussiano"
-
-#~ msgid "Red Noise"
-#~ msgstr "Rumore rosso"
-
-#~ msgid "Blue Noise"
-#~ msgstr "Rumore blu"
-
-#~ msgid "Violet Noise"
-#~ msgstr "Rumore viola"
 
 #, fuzzy
 #~ msgid "Reduction Level"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-31 20:19-0300\n"
+"POT-Creation-Date: 2018-06-03 01:09-0300\n"
 "PO-Revision-Date: 2017-06-11 22:19+0200\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: \n"
@@ -37,90 +37,99 @@ msgstr "Načítať predvoľbu"
 msgid "Test Signals"
 msgstr "Skúšobný signál"
 
-#: data/application.glade:224 data/compressor.glade:205 data/filter.glade:203
+#: data/application.glade:223 data/compressor.glade:205 data/filter.glade:203
 #: data/reverb.glade:283 data/crossfeed.glade:47
 msgid "Presets"
 msgstr "Predvoľby"
 
-#: data/application.glade:514
+#: data/application.glade:513
 msgid "Start Service at Login"
 msgstr ""
 
-#: data/application.glade:539
+#: data/application.glade:538
 msgid "Enable All Applications"
 msgstr ""
 
-#: data/application.glade:564
+#: data/application.glade:563
 msgid "Use Dark Theme"
 msgstr ""
 
-#: data/application.glade:589
+#: data/application.glade:588
 msgid "Settings"
 msgstr ""
 
-#: data/application.glade:598 data/equalizer_band.glade:105
+#: data/application.glade:597 data/equalizer_band.glade:105
 #: data/equalizer_band.glade:120
 #, fuzzy
 msgid "Reset"
 msgstr "Predvoľby"
 
-#: data/application.glade:613
+#: data/application.glade:612
 msgid "General"
 msgstr ""
 
-#: data/application.glade:631
+#: data/application.glade:630
 msgid "Show"
 msgstr ""
 
-#: data/application.glade:657
+#: data/application.glade:656
 msgid "Points"
 msgstr ""
 
-#: data/application.glade:684
+#: data/application.glade:686
+msgid "Use Custom Color"
+msgstr ""
+
+#: data/application.glade:711
+#, fuzzy
+msgid "Spectrum Color"
+msgstr "Zobraziť spektrum"
+
+#: data/application.glade:735
 #, fuzzy
 msgid "Spectrum"
 msgstr "Zobraziť spektrum"
 
-#: data/application.glade:707
+#: data/application.glade:758
 #, fuzzy
 msgid "Output Device"
 msgstr "Vstupný obmedzovač"
 
-#: data/application.glade:717 data/application.glade:730
+#: data/application.glade:768 data/application.glade:781
 #, fuzzy
 msgid "Use Default"
 msgstr "Predvolený"
 
-#: data/application.glade:746
+#: data/application.glade:797
 #, fuzzy
 msgid "Input Device"
 msgstr "Vstupný obmedzovač"
 
-#: data/application.glade:816 data/application.glade:892
+#: data/application.glade:867 data/application.glade:943
 #: data/app_info.glade:156
 msgid "Buffer"
 msgstr ""
 
-#: data/application.glade:829 data/application.glade:905
+#: data/application.glade:880 data/application.glade:956
 #: data/app_info.glade:183
 msgid "Latency"
 msgstr ""
 
-#: data/application.glade:964
+#: data/application.glade:1015
 #, fuzzy
 msgid "Output Effects"
 msgstr "Vstupný obmedzovač"
 
-#: data/application.glade:977
+#: data/application.glade:1028
 #, fuzzy
 msgid "Input Effects"
 msgstr "Vstupný obmedzovač"
 
-#: data/application.glade:994
+#: data/application.glade:1045
 msgid "Advanced Settings"
 msgstr ""
 
-#: data/application.glade:1004
+#: data/application.glade:1055
 msgid "Pulseaudio"
 msgstr ""
 
@@ -186,7 +195,7 @@ msgstr ""
 msgid "Enable"
 msgstr ""
 
-#: data/limiter.glade:451
+#: data/limiter.glade:451 data/calibration_mic.glade:29
 msgid "Window"
 msgstr ""
 
@@ -373,6 +382,7 @@ msgid "18dB/oct Bandreject"
 msgstr ""
 
 #: data/filter.glade:252 data/equalizer_band.glade:41
+#: data/calibration_signals.glade:32
 msgid "Frequency"
 msgstr ""
 
@@ -824,6 +834,71 @@ msgstr "Zoslabenie"
 msgid "Voice Detector"
 msgstr "Zoslabenie"
 
+#: data/calibration_signals.glade:64
+#, fuzzy
+msgid "Volume"
+msgstr "Automatická hlasitosť"
+
+#: data/calibration_signals.glade:108
+msgid "Sine"
+msgstr ""
+
+#: data/calibration_signals.glade:109
+msgid "Square"
+msgstr ""
+
+#: data/calibration_signals.glade:110
+msgid "Saw"
+msgstr ""
+
+#: data/calibration_signals.glade:111
+msgid "Triangle"
+msgstr ""
+
+#: data/calibration_signals.glade:112
+msgid "Silence"
+msgstr ""
+
+#: data/calibration_signals.glade:113
+msgid "White Noise"
+msgstr ""
+
+#: data/calibration_signals.glade:114
+msgid "Pink Noise"
+msgstr ""
+
+#: data/calibration_signals.glade:115
+msgid "Sine Table"
+msgstr ""
+
+#: data/calibration_signals.glade:116
+msgid "Ticks"
+msgstr ""
+
+#: data/calibration_signals.glade:117
+msgid "Gaussian Noise"
+msgstr ""
+
+#: data/calibration_signals.glade:118
+msgid "Red Noise"
+msgstr ""
+
+#: data/calibration_signals.glade:119
+msgid "Blue Noise"
+msgstr ""
+
+#: data/calibration_signals.glade:120
+msgid "Violet Noise"
+msgstr ""
+
+#: data/calibration_mic.glade:70
+msgid "Measure Noise"
+msgstr ""
+
+#: data/calibration_mic.glade:99
+msgid "Subtract Noise"
+msgstr ""
+
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
 #: data/com.github.wwmm.pulseeffects.desktop.in:3
 msgid "PulseEffects"
@@ -910,11 +985,11 @@ msgstr ""
 msgid "Presets: "
 msgstr "Predvoľby"
 
-#: src/app_info_ui.cpp:142
+#: src/app_info_ui.cpp:98
 msgid "paused"
 msgstr ""
 
-#: src/app_info_ui.cpp:144
+#: src/app_info_ui.cpp:100
 msgid "playing"
 msgstr ""
 
@@ -978,10 +1053,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Delete Preset"
 #~ msgstr "Uložiť predvoľbu"
-
-#, fuzzy
-#~ msgid "Volume"
-#~ msgstr "Automatická hlasitosť"
 
 #~ msgid "Test Signal"
 #~ msgstr "Skúšobný signál"

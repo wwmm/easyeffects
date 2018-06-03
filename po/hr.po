@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-31 20:19-0300\n"
+"POT-Creation-Date: 2018-06-03 01:09-0300\n"
 "PO-Revision-Date: 2018-05-27 00:55+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -36,83 +36,92 @@ msgstr "Učitaj predloške"
 msgid "Test Signals"
 msgstr "Testni signali"
 
-#: data/application.glade:224 data/compressor.glade:205 data/filter.glade:203
+#: data/application.glade:223 data/compressor.glade:205 data/filter.glade:203
 #: data/reverb.glade:283 data/crossfeed.glade:47
 msgid "Presets"
 msgstr "Predlošci"
 
-#: data/application.glade:514
+#: data/application.glade:513
 msgid "Start Service at Login"
 msgstr "Pokreni pri pokretanju računala"
 
-#: data/application.glade:539
+#: data/application.glade:538
 msgid "Enable All Applications"
 msgstr "Sve aplikacije"
 
-#: data/application.glade:564
+#: data/application.glade:563
 msgid "Use Dark Theme"
 msgstr "Koristi tamnu temu"
 
-#: data/application.glade:589
+#: data/application.glade:588
 msgid "Settings"
 msgstr "Postavke"
 
-#: data/application.glade:598 data/equalizer_band.glade:105
+#: data/application.glade:597 data/equalizer_band.glade:105
 #: data/equalizer_band.glade:120
 msgid "Reset"
 msgstr "Vrati izvorno"
 
-#: data/application.glade:613
+#: data/application.glade:612
 msgid "General"
 msgstr "Općenito"
 
-#: data/application.glade:631
+#: data/application.glade:630
 msgid "Show"
 msgstr "Prikaži"
 
-#: data/application.glade:657
+#: data/application.glade:656
 msgid "Points"
 msgstr "Traka"
 
-#: data/application.glade:684
+#: data/application.glade:686
+msgid "Use Custom Color"
+msgstr ""
+
+#: data/application.glade:711
+#, fuzzy
+msgid "Spectrum Color"
+msgstr "Spektar"
+
+#: data/application.glade:735
 msgid "Spectrum"
 msgstr "Spektar"
 
-#: data/application.glade:707
+#: data/application.glade:758
 msgid "Output Device"
 msgstr "Izlaz"
 
-#: data/application.glade:717 data/application.glade:730
+#: data/application.glade:768 data/application.glade:781
 msgid "Use Default"
 msgstr "Koristi tvornički"
 
-#: data/application.glade:746
+#: data/application.glade:797
 msgid "Input Device"
 msgstr "Ulaz"
 
-#: data/application.glade:816 data/application.glade:892
+#: data/application.glade:867 data/application.glade:943
 #: data/app_info.glade:156
 msgid "Buffer"
 msgstr "Latencija međuspremnika"
 
-#: data/application.glade:829 data/application.glade:905
+#: data/application.glade:880 data/application.glade:956
 #: data/app_info.glade:183
 msgid "Latency"
 msgstr "Latencija"
 
-#: data/application.glade:964
+#: data/application.glade:1015
 msgid "Output Effects"
 msgstr "Izlazni efekti"
 
-#: data/application.glade:977
+#: data/application.glade:1028
 msgid "Input Effects"
 msgstr "Ulazni efekti"
 
-#: data/application.glade:994
+#: data/application.glade:1045
 msgid "Advanced Settings"
 msgstr "Napredne postavke"
 
-#: data/application.glade:1004
+#: data/application.glade:1055
 msgid "Pulseaudio"
 msgstr ""
 
@@ -174,7 +183,7 @@ msgstr "ASC "
 msgid "Enable"
 msgstr "Omogući"
 
-#: data/limiter.glade:451
+#: data/limiter.glade:451 data/calibration_mic.glade:29
 msgid "Window"
 msgstr "Prozor"
 
@@ -356,6 +365,7 @@ msgid "18dB/oct Bandreject"
 msgstr ""
 
 #: data/filter.glade:252 data/equalizer_band.glade:41
+#: data/calibration_signals.glade:32
 msgid "Frequency"
 msgstr "Frekvencija"
 
@@ -796,6 +806,71 @@ msgstr "Vjerojatnost detekcije"
 msgid "Voice Detector"
 msgstr "Detektor glasa"
 
+#: data/calibration_signals.glade:64
+msgid "Volume"
+msgstr "Glasnoća"
+
+#: data/calibration_signals.glade:108
+msgid "Sine"
+msgstr "Sinus"
+
+#: data/calibration_signals.glade:109
+msgid "Square"
+msgstr "Kvadrat"
+
+#: data/calibration_signals.glade:110
+msgid "Saw"
+msgstr "Pila"
+
+#: data/calibration_signals.glade:111
+msgid "Triangle"
+msgstr "Trokut"
+
+#: data/calibration_signals.glade:112
+#, fuzzy
+msgid "Silence"
+msgstr "Tišina"
+
+#: data/calibration_signals.glade:113
+msgid "White Noise"
+msgstr "Bijeli šum"
+
+#: data/calibration_signals.glade:114
+msgid "Pink Noise"
+msgstr "Rozi šum"
+
+#: data/calibration_signals.glade:115
+msgid "Sine Table"
+msgstr "Sinus tablica"
+
+#: data/calibration_signals.glade:116
+msgid "Ticks"
+msgstr "Otkucaji"
+
+#: data/calibration_signals.glade:117
+msgid "Gaussian Noise"
+msgstr "Gaussov šum"
+
+#: data/calibration_signals.glade:118
+msgid "Red Noise"
+msgstr "Bijeli šum"
+
+#: data/calibration_signals.glade:119
+msgid "Blue Noise"
+msgstr "Plavi šum"
+
+#: data/calibration_signals.glade:120
+msgid "Violet Noise"
+msgstr "Ljubičasti šum"
+
+#: data/calibration_mic.glade:70
+msgid "Measure Noise"
+msgstr "Izmjeri šum"
+
+#: data/calibration_mic.glade:99
+msgid "Subtract Noise"
+msgstr "Izdvoji šum"
+
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
 #: data/com.github.wwmm.pulseeffects.desktop.in:3
 msgid "PulseEffects"
@@ -893,11 +968,11 @@ msgstr "Učitaj predložak. Primjer: pulseeffects -l music"
 msgid "Presets: "
 msgstr "Predlošci"
 
-#: src/app_info_ui.cpp:142
+#: src/app_info_ui.cpp:98
 msgid "paused"
 msgstr "pauzirano"
 
-#: src/app_info_ui.cpp:144
+#: src/app_info_ui.cpp:100
 msgid "playing"
 msgstr "reprodukcija"
 
@@ -1004,56 +1079,11 @@ msgstr "reprodukcija"
 #~ msgid "Guideline Position"
 #~ msgstr "Položaj smjernice"
 
-#~ msgid "Measure Noise"
-#~ msgstr "Izmjeri šum"
-
-#~ msgid "Subtract Noise"
-#~ msgstr "Izdvoji šum"
-
-#~ msgid "Volume"
-#~ msgstr "Glasnoća"
-
 #~ msgid "Equal Loudness Test Signals"
 #~ msgstr "Testni signali jednake glasnoće"
 
 #~ msgid "Test Signal"
 #~ msgstr "Testni signali"
-
-#~ msgid "Sine"
-#~ msgstr "Sinus"
-
-#~ msgid "Square"
-#~ msgstr "Kvadrat"
-
-#~ msgid "Saw"
-#~ msgstr "Pila"
-
-#~ msgid "Triangle"
-#~ msgstr "Trokut"
-
-#~ msgid "Pink Noise"
-#~ msgstr "Rozi šum"
-
-#~ msgid "White Noise"
-#~ msgstr "Bijeli šum"
-
-#~ msgid "Sine Table"
-#~ msgstr "Sinus tablica"
-
-#~ msgid "Ticks"
-#~ msgstr "Otkucaji"
-
-#~ msgid "Gaussian Noise"
-#~ msgstr "Gaussov šum"
-
-#~ msgid "Red Noise"
-#~ msgstr "Bijeli šum"
-
-#~ msgid "Blue Noise"
-#~ msgstr "Plavi šum"
-
-#~ msgid "Violet Noise"
-#~ msgstr "Ljubičasti šum"
 
 #, fuzzy
 #~ msgid "Reduction Level"
