@@ -2,13 +2,13 @@ Source: pulseeffects
 Section: sound
 Priority: optional
 Maintainer: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>
-Build-Depends: debhelper (>=10), python3-cairo-dev, python-gi-dev, libgstreamer1.0-dev (>= 1.12), libgstreamer-plugins-bad1.0-dev (>=1.12), libpulse-dev, libpango1.0-dev, libgtk-3-dev (>= 3.18), meson (>=0.40), ninja-build, pkg-config
+Build-Depends: debhelper (>=10), python3-cairo-dev, python-gi-dev, libgstreamer1.0-dev (>= 1.12), libgstreamer-plugins-bad1.0-dev (>=1.12), libpulse-dev, libpango1.0-dev, libgtk-3-dev (>= 3.18), meson (>=0.40), ninja-build, pkg-config, libglibmm-2.4-dev
 Standards-Version: 3.9.6
 Homepage: https://github.com/wwmm/pulseeffects
 
 Package: pulseeffects
 Architecture: all
-Depends: ${misc:Depends}, pulseaudio, python3, libgtk-3-0 (>= 3.18), python3-gi, python3-gi-cairo, gstreamer1.0-plugins-bad (>= 1.12), gstreamer1.0-plugins-good (>= 1.12), swh-plugins, python3-scipy (>= 0.18), python3-gst-1.0, gir1.2-gst-plugins-bad-1.0, gstreamer1.0-pulseaudio
+Depends: ${misc:Depends}, ${shlibs:Depends}, pulseaudio, libgtk-3-0 (>= 3.18), python3-gi-cairo, gstreamer1.0-plugins-bad (>= 1.12), gstreamer1.0-plugins-good (>= 1.12), swh-plugins, python3-scipy (>= 0.18), python3-gst-1.0, gir1.2-gst-plugins-bad-1.0, gstreamer1.0-pulseaudio
 Recommends: liblilv-0-0, calf-plugins, zam-plugins, rubberband-ladspa
 Description: Sound input and output effects for PulseAudio
  Many sound effects for PulseAudio input and output.
