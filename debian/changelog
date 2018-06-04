@@ -1,4 +1,4 @@
-pulseeffects (4.0-3) unstable; urgency=low
+pulseeffects (4.0.0-3) unstable; urgency=low
 
   * update to version 4.0 upstream
   * transition from Python to C++
