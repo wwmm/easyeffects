@@ -26,7 +26,6 @@ Depends: ${misc:Depends},
          pulseaudio,
          gstreamer1.0-plugins-bad,
          gstreamer1.0-plugins-good,
-         swh-plugins,
          gir1.2-gst-plugins-bad-1.0,
          gstreamer1.0-pulseaudio
 Recommends: calf-plugins,
