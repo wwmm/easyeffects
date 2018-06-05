@@ -84,6 +84,7 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
 
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
+    settings->bind("installed", this, "sensitive", flag);
     settings->bind("attack", attack, "value", flag);
     settings->bind("knee", knee, "value", flag);
     settings->bind("makeup", makeup, "value", flag);

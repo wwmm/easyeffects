@@ -19,6 +19,7 @@ CrossfeedUi::CrossfeedUi(BaseObjectType* cobject,
 
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
+    settings->bind("installed", this, "sensitive", flag);
     settings->bind("fcut", fcut, "value", flag);
     settings->bind("feed", feed, "value", flag);
 

@@ -94,6 +94,7 @@ FilterUi::FilterUi(BaseObjectType* cobject,
 
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
+    settings->bind("installed", this, "sensitive", flag);
     settings->bind("input-gain", input_gain, "value", flag);
     settings->bind("output-gain", output_gain, "value", flag);
     settings->bind("frequency", frequency, "value", flag);

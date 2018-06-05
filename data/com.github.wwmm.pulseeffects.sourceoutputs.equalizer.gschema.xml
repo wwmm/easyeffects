@@ -5,6 +5,10 @@
             <default>false</default>
         </key>
 
+        <key name="installed" type="b">
+            <default>false</default>
+        </key>
+
         <key name="post-messages" type="b">
             <default>false</default>
         </key>

@@ -158,6 +158,8 @@ WebrtcUi::WebrtcUi(BaseObjectType* cobject,
 
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
+    settings->bind("installed", this, "sensitive", flag);
+
     settings->bind("compression-gain-db", compression_gain_db, "value", flag);
     settings->bind("target-level-dbfs", target_level_dbfs, "value", flag);
     settings->bind("voice-detection-frame-size-ms", voice_detection_frame_size,

@@ -4,6 +4,12 @@
         <key name="state" type="b">
             <default>false</default>
         </key>
+        <key name="installed" type="b">
+            <default>false</default>
+        </key>
+        <key name="post-messages" type="b">
+            <default>false</default>
+        </key>
         <key name="input-gain" type="d">
             <range min="-36.1" max="36.1"/>
             <default>0.0</default>
@@ -26,9 +32,6 @@
         <key name="inertia" type="d">
             <range min="5" max="100"/>
             <default>20.0</default>
-        </key>
-        <key name="post-messages" type="b">
-            <default>false</default>
         </key>
     </schema>
 </schemalist>

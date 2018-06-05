@@ -20,6 +20,7 @@ PitchUi::PitchUi(BaseObjectType* cobject,
 
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
+    settings->bind("installed", this, "sensitive", flag);
     settings->bind("cents", cents, "value", flag);
     settings->bind("crispness", crispness, "value", flag);
     settings->bind("semitones", semitones, "value", flag);

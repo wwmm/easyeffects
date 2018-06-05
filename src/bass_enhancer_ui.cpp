@@ -25,6 +25,7 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
 
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
+    settings->bind("installed", this, "sensitive", flag);
     settings->bind("amount", amount, "value", flag);
     settings->bind("harmonics", harmonics, "value", flag);
     settings->bind("scope", scope, "value", flag);

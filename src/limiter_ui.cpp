@@ -33,6 +33,8 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
     auto flag_invert_boolean =
         Gio::SettingsBindFlags::SETTINGS_BIND_INVERT_BOOLEAN;
 
+    settings->bind("installed", this, "sensitive", flag);
+
     settings->bind("input-gain", input_gain, "value", flag);
     settings->bind("limit", limit, "value", flag);
     settings->bind("lookahead", lookahead, "value", flag);

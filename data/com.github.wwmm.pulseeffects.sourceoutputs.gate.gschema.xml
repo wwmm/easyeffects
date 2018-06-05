@@ -4,6 +4,12 @@
         <key name="state" type="b">
             <default>false</default>
         </key>
+        <key name="installed" type="b">
+            <default>false</default>
+        </key>
+        <key name="post-messages" type="b">
+            <default>false</default>
+        </key>
         <key name="detection" enum="com.github.wwmm.pulseeffects.gate.detection.enum">
             <default>"RMS"</default>
         </key>
@@ -37,9 +43,6 @@
         <key name="makeup" type="d">
             <range min="0" max="36"/>
             <default>0.0</default>
-        </key>
-        <key name="post-messages" type="b">
-            <default>false</default>
         </key>
     </schema>
 </schemalist>

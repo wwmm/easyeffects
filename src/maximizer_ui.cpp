@@ -19,6 +19,7 @@ MaximizerUi::MaximizerUi(BaseObjectType* cobject,
 
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
+    settings->bind("installed", this, "sensitive", flag);
     settings->bind("ceiling", ceiling, "value", flag);
     settings->bind("release", release, "value", flag);
     settings->bind("threshold", threshold, "value", flag);

@@ -105,11 +105,15 @@ PluginBase::~PluginBase() {}
 
 bool PluginBase::is_installed(GstElement* e) {
     if (e != nullptr) {
+        g_settings_set_boolean(settings, "installed", true);
+
         g_signal_connect(settings, "changed::state",
                          G_CALLBACK(on_state_changed), this);
 
         return true;
     } else {
+        g_settings_set_boolean(settings, "installed", false);
+
         util::warning(name + " plugin was not found!");
 
         return false;
