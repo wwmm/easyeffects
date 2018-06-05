@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased]
+## [4.0.1]
 ### Fixed
-- No more crashes when the user tries to enable un optional plugin that is no
+- No more crashes when the user tries to enable an optional plugin that is not
 installed
 
 ## [4.0.0]
