@@ -99,15 +99,15 @@ PluginBase::PluginBase(const std::string& tag,
     gst_element_add_pad(
         plugin, gst_ghost_pad_new(
                     "src", gst_element_get_static_pad(identity_out, "src")));
-
-    g_signal_connect(settings, "changed::state", G_CALLBACK(on_state_changed),
-                     this);
 }
 
 PluginBase::~PluginBase() {}
 
 bool PluginBase::is_installed(GstElement* e) {
     if (e != nullptr) {
+        g_signal_connect(settings, "changed::state",
+                         G_CALLBACK(on_state_changed), this);
+
         return true;
     } else {
         util::warning(name + " plugin was not found!");
