@@ -7,6 +7,45 @@ Audio effects for Pulseaudio applications
 ![](images/equalizer2.png)
 ![](images/test_signals.png)
 
+## Effects Available
+
+### Applications Output
+
+- Limiter
+- Compressor
+- Equalizer
+- Bass Enhancer
+- Exciter
+- Reverberation
+- Delay
+- Crossfeed
+- Filter (Lowpass, Highpass, Bandpass and Bandreject modes)
+- Stereo Enhancer
+- Maximizer
+
+### Applications input
+
+- Gate
+- Webrtc
+- Limiter
+- Compressor
+- Equalizer
+- Reverberation
+- Pitch
+- Filter (Lowpass, Highpass, Bandpass and Bandreject modes)
+- Deesser
+
+The user has full control over the effect order. Just use the up/down arrows
+next to the plugin label at the left side. In order to have all the plugins you
+ must have the following installed in your system:
+
+- [GStreamer Plugins Good](https://github.com/GStreamer/gst-plugins-good).
+Version `1.12.5` or higher
+- [GStreamer Plugins Bad](https://github.com/GStreamer/gst-plugins-bad).
+Version `1.12.5` or higher
+- [Calf Studio Plugins](https://calf-studio-gear.org/). Version `0.90` or higher.
+- [Linux Studio Plugins](http://lsp-plug.in/)
+
 ## Installation
 
 ### GNU/Linux Packages
