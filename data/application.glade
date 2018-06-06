@@ -242,6 +242,7 @@
           <object class="GtkBox" id="spectrum_box">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="no_show_all">True</property>
             <property name="hexpand">True</property>
             <property name="orientation">vertical</property>
             <child>

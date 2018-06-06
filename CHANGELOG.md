@@ -1,5 +1,9 @@
 # Changelog
 
+## [Unreleased]
+### Fixed
+- Spectrum widget being shown even when it is disabled
+
 ## [4.0.1]
 ### Fixed
 - No more crashes when the user tries to enable an optional plugin that is not
