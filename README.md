@@ -40,6 +40,11 @@ flatpak install flathub com.github.wwmm.pulseeffects
 
 See the wiki: [Installing from Source](https://github.com/wwmm/pulseeffects/wiki/Installation-from-Source), for detailed instructions.
 
+## Frequently asked Questions
+
+Take a look at our [FAQ](https://github.com/wwmm/pulseeffects/wiki/FAQ) to see
+if you are facing a known problem.
+
 ## Command Line Options
 
 See the wiki: [Command Line Options](https://github.com/wwmm/pulseeffects/wiki/Command-Line-Options)
