@@ -36,25 +36,16 @@ void on_message_element(const GstBus* gst_bus,
     }
 }
 
-GstPadProbeReturn on_pad_idle(GstPad* pad,
-                              GstPadProbeInfo* info,
-                              gpointer user_data) {
+GstPadProbeReturn event_cb(GstPad* pad,
+                           GstPadProbeInfo* info,
+                           gpointer user_data) {
     auto l = static_cast<SourceOutputEffects*>(user_data);
 
-    bool changing = false;
-
-    // if l->in_pad_cb = false it will be set to true
-    // and changing variable remains false. If
-    // l->in_pad_cb = true then changing is set to true
-    // With this we protect the callback from multiples calls
-    // while its action was not done yet:
-    // https://coaxion.net/blog/2014/01/gstreamer-dynamic-pipelines/
-
-    l->in_pad_cb.compare_exchange_strong(changing, true);
-
-    if (changing) {
-        return GST_PAD_PROBE_REMOVE;
+    if (GST_EVENT_TYPE(GST_PAD_PROBE_INFO_DATA(info)) != GST_EVENT_EOS) {
+        return GST_PAD_PROBE_PASS;
     }
+
+    gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
 
     // unlinking elements using old plugins order
 
@@ -89,7 +80,39 @@ GstPadProbeReturn on_pad_idle(GstPad* pad,
 
     gst_bin_sync_children_states(GST_BIN(l->effects_bin));
 
-    return GST_PAD_PROBE_REMOVE;
+    return GST_PAD_PROBE_DROP;
+}
+
+GstPadProbeReturn on_pad_idle(GstPad* pad,
+                              GstPadProbeInfo* info,
+                              gpointer user_data) {
+    auto l = static_cast<SourceOutputEffects*>(user_data);
+
+    gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
+
+    // install new probe for EOS
+
+    auto srcpad = gst_element_get_static_pad(l->identity_out, "src");
+
+    gst_pad_add_probe(
+        srcpad,
+        static_cast<GstPadProbeType>(GST_PAD_PROBE_TYPE_BLOCK |
+                                     GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM),
+        event_cb, user_data, NULL);
+
+    gst_object_unref(srcpad);
+
+    // push EOS into the first element of the chain, the probe will be fired
+    // when the EOS leaves the effect and it has thus drained all of its data
+
+    auto sinkpad =
+        gst_element_get_static_pad(l->plugins[l->plugins_order_old[0]], "sink");
+
+    gst_pad_send_event(sinkpad, gst_event_new_eos());
+
+    gst_object_unref(sinkpad);
+
+    return GST_PAD_PROBE_OK;
 }
 
 void on_plugins_order_changed(GSettings* settings,
@@ -118,8 +141,6 @@ void on_plugins_order_changed(GSettings* settings,
     }
 
     if (update) {
-        l->in_pad_cb = false;
-
         gst_pad_add_probe(gst_element_get_static_pad(l->identity_in, "src"),
                           GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM, on_pad_idle, l,
                           nullptr);
