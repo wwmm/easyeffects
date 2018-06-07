@@ -49,7 +49,20 @@ GstPadProbeReturn on_pad_idle(GstPad* pad,
                               gpointer user_data) {
     auto l = static_cast<SinkInputEffects*>(user_data);
 
-    l->in_pad_cb = true;
+    bool changing = false;
+
+    // if l->in_pad_cb = false it will be set to true
+    // and changing variable remains false. If
+    // l->in_pad_cb = true then changing is set to true
+    // With this we protect the callback from multiples calls
+    // while its action was not done yet:
+    // https://coaxion.net/blog/2014/01/gstreamer-dynamic-pipelines/
+
+    l->in_pad_cb.compare_exchange_strong(changing, true);
+
+    if (changing) {
+        return GST_PAD_PROBE_REMOVE;
+    }
 
     // unlinking elements using old plugins order
 
@@ -84,8 +97,6 @@ GstPadProbeReturn on_pad_idle(GstPad* pad,
 
     gst_bin_sync_children_states(GST_BIN(l->effects_bin));
 
-    l->in_pad_cb = false;
-
     return GST_PAD_PROBE_REMOVE;
 }
 
@@ -115,8 +126,7 @@ void on_plugins_order_changed(GSettings* settings,
     }
 
     if (update) {
-        while (l->in_pad_cb) {
-        }
+        l->in_pad_cb = false;
 
         gst_pad_add_probe(gst_element_get_static_pad(l->identity_in, "src"),
                           GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM, on_pad_idle, l,

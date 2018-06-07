@@ -7,21 +7,34 @@ void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
     auto enable = g_settings_get_boolean(settings, key);
 
     if (enable) {
-        while (l->in_pad_cb) {
-        }
+        auto plugin = gst_bin_get_by_name(
+            GST_BIN(l->plugin), std::string(l->name + "_bin").c_str());
 
-        gst_pad_add_probe(
-            gst_element_get_static_pad(l->identity_in, "src"),
-            GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
-            [](auto pad, auto info, auto d) {
-                auto l = static_cast<PluginBase*>(d);
+        if (!plugin) {
+            l->changing_pipeline = false;
 
-                l->in_pad_cb = true;
+            gst_pad_add_probe(
+                gst_element_get_static_pad(l->identity_in, "src"),
+                GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+                [](auto pad, auto info, auto d) {
+                    auto l = static_cast<PluginBase*>(d);
 
-                auto plugin = gst_bin_get_by_name(
-                    GST_BIN(l->plugin), std::string(l->name + "_bin").c_str());
+                    bool changing = false;
 
-                if (!plugin) {
+                    // if l->changing_pipeline = false it will be set to true
+                    // and changing variable remains false. If
+                    // l->changing_pipeline = true then changing is set to true
+                    // With this we protect the callback from multiples calls
+                    // while its action was not done yet:
+                    // https://coaxion.net/blog/2014/01/gstreamer-dynamic-pipelines/
+
+                    l->changing_pipeline.compare_exchange_strong(changing,
+                                                                 true);
+
+                    if (changing) {
+                        return GST_PAD_PROBE_REMOVE;
+                    }
+
                     gst_element_unlink(l->identity_in, l->identity_out);
 
                     gst_bin_add(GST_BIN(l->plugin), l->bin);
@@ -32,30 +45,34 @@ void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
                     gst_bin_sync_children_states(GST_BIN(l->plugin));
 
                     util::debug(l->log_tag + l->name + " enabled");
-                }
 
-                l->in_pad_cb = false;
-
-                return GST_PAD_PROBE_REMOVE;
-            },
-            l, nullptr);
-
-    } else {
-        while (l->in_pad_cb) {
+                    return GST_PAD_PROBE_REMOVE;
+                },
+                l, nullptr);
         }
 
-        gst_pad_add_probe(
-            gst_element_get_static_pad(l->identity_in, "src"),
-            GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
-            [](auto pad, auto info, auto d) {
-                auto l = static_cast<PluginBase*>(d);
+    } else {
+        auto plugin = gst_bin_get_by_name(
+            GST_BIN(l->plugin), std::string(l->name + "_bin").c_str());
 
-                l->in_pad_cb = true;
+        if (plugin) {
+            l->changing_pipeline = false;
 
-                auto plugin = gst_bin_get_by_name(
-                    GST_BIN(l->plugin), std::string(l->name + "_bin").c_str());
+            gst_pad_add_probe(
+                gst_element_get_static_pad(l->identity_in, "src"),
+                GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+                [](auto pad, auto info, auto d) {
+                    auto l = static_cast<PluginBase*>(d);
 
-                if (plugin) {
+                    bool changing = false;
+
+                    l->changing_pipeline.compare_exchange_strong(changing,
+                                                                 true);
+
+                    if (changing) {
+                        return GST_PAD_PROBE_REMOVE;
+                    }
+
                     gst_element_unlink_many(l->identity_in, l->bin,
                                             l->identity_out, nullptr);
 
@@ -68,13 +85,11 @@ void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
                     gst_bin_sync_children_states(GST_BIN(l->plugin));
 
                     util::debug(l->log_tag + l->name + " disabled");
-                }
 
-                l->in_pad_cb = false;
-
-                return GST_PAD_PROBE_REMOVE;
-            },
-            l, nullptr);
+                    return GST_PAD_PROBE_REMOVE;
+                },
+                l, nullptr);
+        }
     }
 }
 
@@ -85,6 +100,7 @@ PluginBase::PluginBase(const std::string& tag,
                        const std::string& schema)
     : log_tag(tag),
       name(plugin_name),
+      changing_pipeline(false),
       settings(g_settings_new(schema.c_str())) {
     plugin = gst_bin_new(std::string(name + "_plugin").c_str());
     identity_in = gst_element_factory_make("identity", nullptr);

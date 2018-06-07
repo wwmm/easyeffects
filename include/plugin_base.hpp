@@ -5,6 +5,7 @@
 #include <gst/gst.h>
 #include <sigc++/sigc++.h>
 #include <array>
+#include <atomic>
 #include <iostream>
 
 class PluginBase {
@@ -17,7 +18,7 @@ class PluginBase {
     std::string log_tag, name;
     GstElement *plugin, *bin, *identity_in, *identity_out;
 
-    bool in_pad_cb = false;
+    std::atomic<bool> changing_pipeline;
 
    protected:
     GSettings* settings;

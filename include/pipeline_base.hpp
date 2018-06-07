@@ -3,6 +3,7 @@
 
 #include <gio/gio.h>
 #include <gst/gst.h>
+#include <atomic>
 #include <vector>
 #include "pulse_manager.hpp"
 
@@ -18,7 +19,8 @@ class PipelineBase {
         *identity_in, *identity_out;
     GstBus* bus;
 
-    bool in_pad_cb = false;
+    // bool in_pad_cb;
+    std::atomic<bool> in_pad_cb, in_spectrum_pad_cb;
 
     bool resizing_spectrum = false;
     uint min_spectrum_freq = 20;     // Hz
