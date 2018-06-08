@@ -116,16 +116,19 @@ void on_message_element(const GstBus* gst_bus,
 void on_spectrum_n_points_changed(GSettings* settings,
                                   gchar* key,
                                   PipelineBase* pb) {
-    pb->resizing_spectrum = true;
-
     auto npoints = g_settings_get_int(settings, "spectrum-n-points");
 
-    pb->spectrum_mag.resize(npoints);
+    if (npoints != pb->spectrum_mag.size()) {
+        pb->resizing_spectrum = true;
 
-    pb->spectrum_x_axis = util::logspace(log10(pb->min_spectrum_freq),
-                                         log10(pb->max_spectrum_freq), npoints);
+        pb->spectrum_mag.resize(npoints);
 
-    pb->resizing_spectrum = false;
+        pb->spectrum_x_axis =
+            util::logspace(log10(pb->min_spectrum_freq),
+                           log10(pb->max_spectrum_freq), npoints);
+
+        pb->resizing_spectrum = false;
+    }
 }
 
 void on_buffer_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
