@@ -4,6 +4,16 @@
 
 namespace {
 
+void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
+    bool enable = g_settings_get_boolean(settings, key);
+
+    if (enable) {
+        l->enable();
+    } else {
+        l->disable();
+    }
+}
+
 void on_post_messages_changed(GSettings* settings, gchar* key, Limiter* l) {
     auto post = g_settings_get_boolean(settings, key);
 
@@ -86,6 +96,8 @@ Limiter::Limiter(const std::string& tag, const std::string& schema)
 
         bind_to_gsettings();
 
+        g_signal_connect(settings, "changed::state",
+                         G_CALLBACK(on_state_changed), this);
         g_signal_connect(settings, "changed::post-messages",
                          G_CALLBACK(on_post_messages_changed), this);
 

@@ -82,15 +82,16 @@ pulseeffects_sources = [
 pulseeffects_deps = [
 	dependency('libpulse'),
 	dependency('glib-2.0', version: '>=2.56'),
-	dependency('glibmm-2.4', version: '>= 2.56'),
-	dependency('gtk+-3.0', version: '>= 3.20'),
-	dependency('gtkmm-3.0',version: '>= 3.20'),
-	dependency('gstreamer-1.0', version: '>= 1.12.5'),
-	dependency('gstreamer-plugins-bad-1.0', version: '>= 1.12.5'),
+	dependency('glibmm-2.4', version: '>=2.56'),
+	dependency('gtk+-3.0', version: '>=3.20'),
+	dependency('gtkmm-3.0', version: '>=3.20'),
+	dependency('sigc++-2.0', version: '>=2.10'),
+	dependency('gstreamer-1.0', version: '>=1.12.5'),
+	dependency('gstreamer-plugins-bad-1.0', version: '>=1.12.5'),
 	dependency('gstreamer-webrtc-1.0', required: false),
-	dependency('lilv-0', version: '>= 0.22', required: false),
+	dependency('lilv-0', version: '>=0.22', required: false),
 	dependency('libbs2b', required: false),
-	dependency('boost', modules:['system','filesystem'])
+	dependency('boost', version: '>=1.41', modules:['system','filesystem'])
 ]
 
 executable(

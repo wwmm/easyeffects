@@ -2,6 +2,20 @@
 #include "util.hpp"
 #include "webrtc.hpp"
 
+namespace {
+
+void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
+    bool enable = g_settings_get_boolean(settings, key);
+
+    if (enable) {
+        l->enable();
+    } else {
+        l->disable();
+    }
+}
+
+}  // namespace
+
 Webrtc::Webrtc(const std::string& tag,
                const std::string& schema,
                const int& sampling_rate)
@@ -13,6 +27,9 @@ Webrtc::Webrtc(const std::string& tag,
         build_dsp_bin();
 
         bind_to_gsettings();
+
+        g_signal_connect(settings, "changed::state",
+                         G_CALLBACK(on_state_changed), this);
 
         // useless write just to force callback call
 

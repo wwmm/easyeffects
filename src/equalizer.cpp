@@ -4,6 +4,16 @@
 
 namespace {
 
+void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
+    bool enable = g_settings_get_boolean(settings, key);
+
+    if (enable) {
+        l->enable();
+    } else {
+        l->disable();
+    }
+}
+
 void on_num_bands_changed(GSettings* settings, gchar* key, Equalizer* l) {
     l->init_equalizer();
 }
@@ -36,6 +46,9 @@ Equalizer::Equalizer(const std::string& tag, const std::string& schema)
 
         g_signal_connect(settings, "changed::num-bands",
                          G_CALLBACK(on_num_bands_changed), this);
+
+        g_signal_connect(settings, "changed::state",
+                         G_CALLBACK(on_state_changed), this);
 
         g_settings_bind(settings, "post-messages", in_level, "post-messages",
                         G_SETTINGS_BIND_DEFAULT);
