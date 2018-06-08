@@ -8,36 +8,39 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Reverb* l) {
     auto post = g_settings_get_boolean(settings, key);
 
     if (post) {
-        l->input_level_connection = Glib::signal_timeout().connect(
-            [l]() {
-                float inL, inR;
+        if (!l->input_level_connection.connected()) {
+            l->input_level_connection = Glib::signal_timeout().connect(
+                [l]() {
+                    float inL, inR;
 
-                g_object_get(l->reverb, "meter-inL", &inL, nullptr);
-                g_object_get(l->reverb, "meter-inR", &inR, nullptr);
+                    g_object_get(l->reverb, "meter-inL", &inL, nullptr);
+                    g_object_get(l->reverb, "meter-inR", &inR, nullptr);
 
-                std::array<double, 2> in_peak = {inL, inR};
+                    std::array<double, 2> in_peak = {inL, inR};
 
-                l->input_level.emit(in_peak);
+                    l->input_level.emit(in_peak);
 
-                return true;
-            },
-            100);
+                    return true;
+                },
+                100);
+        }
 
-        l->output_level_connection = Glib::signal_timeout().connect(
-            [l]() {
-                float outL, outR;
+        if (!l->output_level_connection.connected()) {
+            l->output_level_connection = Glib::signal_timeout().connect(
+                [l]() {
+                    float outL, outR;
 
-                g_object_get(l->reverb, "meter-outL", &outL, nullptr);
-                g_object_get(l->reverb, "meter-outR", &outR, nullptr);
+                    g_object_get(l->reverb, "meter-outL", &outL, nullptr);
+                    g_object_get(l->reverb, "meter-outR", &outR, nullptr);
 
-                std::array<double, 2> out_peak = {outL, outR};
+                    std::array<double, 2> out_peak = {outL, outR};
 
-                l->output_level.emit(out_peak);
+                    l->output_level.emit(out_peak);
 
-                return true;
-            },
-            100);
-
+                    return true;
+                },
+                100);
+        }
     } else {
         l->input_level_connection.disconnect();
         l->output_level_connection.disconnect();

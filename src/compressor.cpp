@@ -8,18 +8,20 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Compressor* l) {
     auto post = g_settings_get_boolean(settings, key);
 
     if (post) {
-        l->compression_connection = Glib::signal_timeout().connect(
-            [l]() {
-                float compression;
+        if (!l->compression_connection.connected()) {
+            l->compression_connection = Glib::signal_timeout().connect(
+                [l]() {
+                    float compression;
 
-                g_object_get(l->compressor, "compression", &compression,
-                             nullptr);
+                    g_object_get(l->compressor, "compression", &compression,
+                                 nullptr);
 
-                l->compression.emit(compression);
+                    l->compression.emit(compression);
 
-                return true;
-            },
-            100);
+                    return true;
+                },
+                100);
+        }
     } else {
         l->compression_connection.disconnect();
     }

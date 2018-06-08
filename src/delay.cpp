@@ -8,20 +8,22 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Delay* l) {
     auto post = g_settings_get_boolean(settings, key);
 
     if (post) {
-        l->tempo_connection = Glib::signal_timeout().connect_seconds(
-            [l]() {
-                float L, R;
+        if (!l->tempo_connection.connected()) {
+            l->tempo_connection = Glib::signal_timeout().connect_seconds(
+                [l]() {
+                    float L, R;
 
-                g_object_get(l->delay, "d-t-l", &L, nullptr);
-                g_object_get(l->delay, "d-t-r", &R, nullptr);
+                    g_object_get(l->delay, "d-t-l", &L, nullptr);
+                    g_object_get(l->delay, "d-t-r", &R, nullptr);
 
-                std::array<double, 2> tempo = {L, R};
+                    std::array<double, 2> tempo = {L, R};
 
-                l->tempo.emit(tempo);
+                    l->tempo.emit(tempo);
 
-                return true;
-            },
-            1);
+                    return true;
+                },
+                1);
+        }
     } else {
         l->tempo_connection.disconnect();
     }

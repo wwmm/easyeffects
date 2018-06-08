@@ -8,17 +8,19 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Gate* l) {
     auto post = g_settings_get_boolean(settings, key);
 
     if (post) {
-        l->gating_connection = Glib::signal_timeout().connect(
-            [l]() {
-                float gating;
+        if (!l->gating_connection.connected()) {
+            l->gating_connection = Glib::signal_timeout().connect(
+                [l]() {
+                    float gating;
 
-                g_object_get(l->gate, "gating", &gating, nullptr);
+                    g_object_get(l->gate, "gating", &gating, nullptr);
 
-                l->gating.emit(gating);
+                    l->gating.emit(gating);
 
-                return true;
-            },
-            100);
+                    return true;
+                },
+                100);
+        }
     } else {
         l->gating_connection.disconnect();
     }

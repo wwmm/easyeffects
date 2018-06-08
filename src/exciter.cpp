@@ -8,17 +8,20 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Exciter* l) {
     auto post = g_settings_get_boolean(settings, key);
 
     if (post) {
-        l->harmonics_connection = Glib::signal_timeout().connect(
-            [l]() {
-                float harmonics;
+        if (!l->harmonics_connection.connected()) {
+            l->harmonics_connection = Glib::signal_timeout().connect(
+                [l]() {
+                    float harmonics;
 
-                g_object_get(l->exciter, "meter-drive", &harmonics, nullptr);
+                    g_object_get(l->exciter, "meter-drive", &harmonics,
+                                 nullptr);
 
-                l->harmonics.emit(harmonics);
+                    l->harmonics.emit(harmonics);
 
-                return true;
-            },
-            100);
+                    return true;
+                },
+                100);
+        }
     } else {
         l->harmonics_connection.disconnect();
     }

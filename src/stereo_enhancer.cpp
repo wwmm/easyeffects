@@ -10,53 +10,62 @@ void on_post_messages_changed(GSettings* settings,
     auto post = g_settings_get_boolean(settings, key);
 
     if (post) {
-        l->input_level_connection = Glib::signal_timeout().connect(
-            [l]() {
-                float inL, inR;
+        if (!l->input_level_connection.connected()) {
+            l->input_level_connection = Glib::signal_timeout().connect(
+                [l]() {
+                    float inL, inR;
 
-                g_object_get(l->stereo_enhancer, "meter-inL", &inL, nullptr);
-                g_object_get(l->stereo_enhancer, "meter-inR", &inR, nullptr);
+                    g_object_get(l->stereo_enhancer, "meter-inL", &inL,
+                                 nullptr);
+                    g_object_get(l->stereo_enhancer, "meter-inR", &inR,
+                                 nullptr);
 
-                std::array<double, 2> in_peak = {inL, inR};
+                    std::array<double, 2> in_peak = {inL, inR};
 
-                l->input_level.emit(in_peak);
+                    l->input_level.emit(in_peak);
 
-                return true;
-            },
-            100);
+                    return true;
+                },
+                100);
+        }
 
-        l->output_level_connection = Glib::signal_timeout().connect(
-            [l]() {
-                float outL, outR;
+        if (!l->output_level_connection.connected()) {
+            l->output_level_connection = Glib::signal_timeout().connect(
+                [l]() {
+                    float outL, outR;
 
-                g_object_get(l->stereo_enhancer, "meter-outL", &outL, nullptr);
-                g_object_get(l->stereo_enhancer, "meter-outR", &outR, nullptr);
+                    g_object_get(l->stereo_enhancer, "meter-outL", &outL,
+                                 nullptr);
+                    g_object_get(l->stereo_enhancer, "meter-outR", &outR,
+                                 nullptr);
 
-                std::array<double, 2> out_peak = {outL, outR};
+                    std::array<double, 2> out_peak = {outL, outR};
 
-                l->output_level.emit(out_peak);
+                    l->output_level.emit(out_peak);
 
-                return true;
-            },
-            100);
+                    return true;
+                },
+                100);
+        }
 
-        l->side_level_connection = Glib::signal_timeout().connect(
-            [l]() {
-                float sideL, sideR;
+        if (!l->side_level_connection.connected()) {
+            l->side_level_connection = Glib::signal_timeout().connect(
+                [l]() {
+                    float sideL, sideR;
 
-                g_object_get(l->stereo_enhancer, "meter-sideL", &sideL,
-                             nullptr);
-                g_object_get(l->stereo_enhancer, "meter-sideR", &sideR,
-                             nullptr);
+                    g_object_get(l->stereo_enhancer, "meter-sideL", &sideL,
+                                 nullptr);
+                    g_object_get(l->stereo_enhancer, "meter-sideR", &sideR,
+                                 nullptr);
 
-                std::array<double, 2> out_peak = {sideL, sideR};
+                    std::array<double, 2> out_peak = {sideL, sideR};
 
-                l->side_level.emit(out_peak);
+                    l->side_level.emit(out_peak);
 
-                return true;
-            },
-            100);
-
+                    return true;
+                },
+                100);
+        }
     } else {
         l->input_level_connection.disconnect();
         l->output_level_connection.disconnect();

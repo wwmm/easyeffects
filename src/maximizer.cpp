@@ -8,18 +8,20 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Maximizer* l) {
     auto post = g_settings_get_boolean(settings, key);
 
     if (post) {
-        l->reduction_connection = Glib::signal_timeout().connect(
-            [l]() {
-                float reduction;
+        if (!l->reduction_connection.connected()) {
+            l->reduction_connection = Glib::signal_timeout().connect(
+                [l]() {
+                    float reduction;
 
-                g_object_get(l->maximizer, "gain-reduction", &reduction,
-                             nullptr);
+                    g_object_get(l->maximizer, "gain-reduction", &reduction,
+                                 nullptr);
 
-                l->reduction.emit(reduction);
+                    l->reduction.emit(reduction);
 
-                return true;
-            },
-            100);
+                    return true;
+                },
+                100);
+        }
     } else {
         l->reduction_connection.disconnect();
     }

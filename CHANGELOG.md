@@ -5,9 +5,13 @@
 - Spectrum widget being shown even when it is disabled
 
 ## [4.0.1]
+### Added
+- improved the algorithm used to enable/disable/reorder plugins.
+
 ### Fixed
 - No more crashes when the user tries to enable an optional plugin that is not
-installed
+installed.
+- Fixed excessive level meters readings.
 
 ## [4.0.0]
 ### Added
