@@ -54,6 +54,8 @@ class PipelineBase {
 
     std::vector<std::shared_ptr<AppInfo>> apps_list;
 
+    void init_spectrum_bin();
+    void init_effects_bin();
     void init_spectrum();
 };
 

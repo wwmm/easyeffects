@@ -185,46 +185,8 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     auto capsfilter = gst_element_factory_make("capsfilter", nullptr);
     auto queue = gst_element_factory_make("queue", nullptr);
 
-    // preparing spectrum bin
-
-    spectrum_bin = gst_bin_new("spectrum_bin");
-    spectrum_identity_in = gst_element_factory_make("identity", nullptr);
-    spectrum_identity_out = gst_element_factory_make("identity", nullptr);
-
-    gst_bin_add_many(GST_BIN(spectrum_bin), spectrum_identity_in,
-                     spectrum_identity_out, nullptr);
-
-    gst_element_link(spectrum_identity_in, spectrum_identity_out);
-
-    gst_element_add_pad(
-        spectrum_bin,
-        gst_ghost_pad_new(
-            "sink", gst_element_get_static_pad(spectrum_identity_in, "sink")));
-    gst_element_add_pad(
-        spectrum_bin,
-        gst_ghost_pad_new(
-            "src", gst_element_get_static_pad(spectrum_identity_out, "src")));
-
-    /////////
-
-    /// preparing effects bin
-
-    effects_bin = gst_bin_new("effects_bin");
-
-    identity_in = gst_element_factory_make("identity", nullptr);
-    identity_out = gst_element_factory_make("identity", nullptr);
-
-    gst_bin_add_many(GST_BIN(effects_bin), identity_in, identity_out, nullptr);
-
-    gst_element_link(identity_in, identity_out);
-
-    gst_element_add_pad(effects_bin,
-                        gst_ghost_pad_new("sink", gst_element_get_static_pad(
-                                                      identity_in, "sink")));
-    gst_element_add_pad(effects_bin,
-                        gst_ghost_pad_new("src", gst_element_get_static_pad(
-                                                     identity_out, "src")));
-    //////////
+    init_spectrum_bin();
+    init_effects_bin();
 
     auto caps_str =
         "audio/x-raw,format=F32LE,channels=2,rate=" + std::to_string(rate);
@@ -270,6 +232,46 @@ PipelineBase::~PipelineBase() {
 
     gst_object_unref(bus);
     gst_object_unref(pipeline);
+}
+
+void PipelineBase::init_spectrum_bin() {
+    spectrum_bin = gst_bin_new("spectrum_bin");
+    spectrum_identity_in = gst_element_factory_make("identity", nullptr);
+    spectrum_identity_out = gst_element_factory_make("identity", nullptr);
+
+    gst_bin_add_many(GST_BIN(spectrum_bin), spectrum_identity_in,
+                     spectrum_identity_out, nullptr);
+
+    gst_element_link(spectrum_identity_in, spectrum_identity_out);
+
+    auto sinkpad = gst_element_get_static_pad(spectrum_identity_in, "sink");
+    auto srcpad = gst_element_get_static_pad(spectrum_identity_out, "src");
+
+    gst_element_add_pad(spectrum_bin, gst_ghost_pad_new("sink", sinkpad));
+    gst_element_add_pad(spectrum_bin, gst_ghost_pad_new("src", srcpad));
+
+    g_object_unref(sinkpad);
+    g_object_unref(srcpad);
+}
+
+void PipelineBase::init_effects_bin() {
+    effects_bin = gst_bin_new("effects_bin");
+
+    identity_in = gst_element_factory_make("identity", nullptr);
+    identity_out = gst_element_factory_make("identity", nullptr);
+
+    gst_bin_add_many(GST_BIN(effects_bin), identity_in, identity_out, nullptr);
+
+    gst_element_link(identity_in, identity_out);
+
+    auto sinkpad = gst_element_get_static_pad(identity_in, "sink");
+    auto srcpad = gst_element_get_static_pad(identity_out, "src");
+
+    gst_element_add_pad(effects_bin, gst_ghost_pad_new("sink", sinkpad));
+    gst_element_add_pad(effects_bin, gst_ghost_pad_new("src", srcpad));
+
+    g_object_unref(sinkpad);
+    g_object_unref(srcpad);
 }
 
 void PipelineBase::set_source_monitor_name(std::string name) {
