@@ -1,18 +1,20 @@
 # Changelog
 
 ## [Unreleased]
-### Fixed
-- Spectrum widget being shown even when it is disabled
 
-## [4.0.1]
+## [4.0.2]
 ### Added
 - improved the algorithm used to enable/disable/reorder plugins.
 
 ### Fixed
-- No more crashes when the user tries to enable an optional plugin that is not
-installed.
+- Spectrum widget being shown even when it is disabled
 - Fixed excessive level meters readings.
 - Mouse motion over spectrum updates the displayed magnitude and frequency.
+
+## [4.0.1]
+### Fixed
+- No more crashes when the user tries to enable an optional plugin that is not
+installed.
 
 ## [4.0.0]
 ### Added
