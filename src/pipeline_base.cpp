@@ -397,44 +397,33 @@ void PipelineBase::enable_spectrum() {
     auto plugin = gst_bin_get_by_name(GST_BIN(spectrum_bin), "spectrum");
 
     if (!plugin) {
-        in_spectrum_pad_cb = false;
+        bool changing = in_spectrum_pad_cb.exchange(true);
 
-        gst_pad_add_probe(
-            gst_element_get_static_pad(spectrum_identity_in, "src"),
-            GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
-            [](auto pad, auto info, auto d) {
-                auto l = static_cast<PipelineBase*>(d);
+        if (!changing) {
+            gst_pad_add_probe(
+                gst_element_get_static_pad(spectrum_identity_in, "src"),
+                GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+                [](auto pad, auto info, auto d) {
+                    auto l = static_cast<PipelineBase*>(d);
 
-                bool changing = false;
+                    gst_element_unlink(l->spectrum_identity_in,
+                                       l->spectrum_identity_out);
 
-                // if l->in_spectrum_pad_cb = false it will be set to true
-                // and changing variable remains false. If
-                // l->in_spectrum_pad_cb = true then changing is set to true
-                // With this we protect the callback from multiples calls
-                // while its action was not done yet:
-                // https://coaxion.net/blog/2014/01/gstreamer-dynamic-pipelines/
+                    gst_bin_add(GST_BIN(l->spectrum_bin), l->spectrum);
 
-                l->in_spectrum_pad_cb.compare_exchange_strong(changing, true);
+                    gst_element_link_many(l->spectrum_identity_in, l->spectrum,
+                                          l->spectrum_identity_out, nullptr);
 
-                if (changing) {
+                    gst_bin_sync_children_states(GST_BIN(l->spectrum_bin));
+
+                    util::debug(l->log_tag + "spectrum enabled");
+
+                    l->in_spectrum_pad_cb = false;
+
                     return GST_PAD_PROBE_REMOVE;
-                }
-
-                gst_element_unlink(l->spectrum_identity_in,
-                                   l->spectrum_identity_out);
-
-                gst_bin_add(GST_BIN(l->spectrum_bin), l->spectrum);
-
-                gst_element_link_many(l->spectrum_identity_in, l->spectrum,
-                                      l->spectrum_identity_out, nullptr);
-
-                gst_bin_sync_children_states(GST_BIN(l->spectrum_bin));
-
-                util::debug(l->log_tag + "spectrum enabled");
-
-                return GST_PAD_PROBE_REMOVE;
-            },
-            this, nullptr);
+                },
+                this, nullptr);
+        }
     }
 }
 
@@ -442,46 +431,36 @@ void PipelineBase::disable_spectrum() {
     auto plugin = gst_bin_get_by_name(GST_BIN(spectrum_bin), "spectrum");
 
     if (plugin) {
-        in_spectrum_pad_cb = false;
+        bool changing = in_spectrum_pad_cb.exchange(true);
 
-        gst_pad_add_probe(
-            gst_element_get_static_pad(spectrum_identity_in, "src"),
-            GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
-            [](auto pad, auto info, auto d) {
-                auto l = static_cast<PipelineBase*>(d);
+        if (!changing) {
+            gst_pad_add_probe(
+                gst_element_get_static_pad(spectrum_identity_in, "src"),
+                GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+                [](auto pad, auto info, auto d) {
+                    auto l = static_cast<PipelineBase*>(d);
 
-                bool changing = false;
+                    gst_element_unlink_many(l->spectrum_identity_in,
+                                            l->spectrum,
+                                            l->spectrum_identity_out, nullptr);
 
-                // if l->in_spectrum_pad_cb = false it will be set to true
-                // and changing variable remains false. If
-                // l->in_spectrum_pad_cb = true then changing is set to true
-                // With this we protect the callback from multiples calls
-                // while its action was not done yet:
-                // https://coaxion.net/blog/2014/01/gstreamer-dynamic-pipelines/
+                    gst_bin_remove(GST_BIN(l->spectrum_bin), l->spectrum);
 
-                l->in_spectrum_pad_cb.compare_exchange_strong(changing, true);
+                    gst_element_set_state(l->spectrum, GST_STATE_NULL);
 
-                if (changing) {
+                    gst_element_link(l->spectrum_identity_in,
+                                     l->spectrum_identity_out);
+
+                    gst_bin_sync_children_states(GST_BIN(l->spectrum_bin));
+
+                    util::debug(l->log_tag + "spectrum disabled");
+
+                    l->in_spectrum_pad_cb = false;
+
                     return GST_PAD_PROBE_REMOVE;
-                }
-
-                gst_element_unlink_many(l->spectrum_identity_in, l->spectrum,
-                                        l->spectrum_identity_out, nullptr);
-
-                gst_bin_remove(GST_BIN(l->spectrum_bin), l->spectrum);
-
-                gst_element_set_state(l->spectrum, GST_STATE_NULL);
-
-                gst_element_link(l->spectrum_identity_in,
-                                 l->spectrum_identity_out);
-
-                gst_bin_sync_children_states(GST_BIN(l->spectrum_bin));
-
-                util::debug(l->log_tag + "spectrum disabled");
-
-                return GST_PAD_PROBE_REMOVE;
-            },
-            this, nullptr);
+                },
+                this, nullptr);
+        }
     }
 }
 
