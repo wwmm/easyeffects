@@ -20,6 +20,9 @@ class PluginBase {
 
     std::atomic<bool> changing_pipeline;
 
+    void enable();
+    void disable();
+
    protected:
     GSettings* settings;
 
