@@ -12,6 +12,7 @@
 - No more crashes when the user tries to enable an optional plugin that is not
 installed.
 - Fixed excessive level meters readings.
+- Mouse motion over spectrum updates the displayed magnitude and frequency.
 
 ## [4.0.0]
 ### Added

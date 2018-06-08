@@ -460,6 +460,8 @@ bool ApplicationUi::on_spectrum_motion_notify_event(GdkEventMotion* event) {
 
     mouse_intensity = -event->y * 120 / height;
 
+    spectrum->queue_draw();
+
     return false;
 }
 

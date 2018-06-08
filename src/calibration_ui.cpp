@@ -154,6 +154,8 @@ bool CalibrationUi::on_spectrum_motion_notify_event(GdkEventMotion* event) {
 
     mouse_intensity = max_mag - event->y * (max_mag - min_mag) / height;
 
+    spectrum->queue_draw();
+
     return false;
 }
 
