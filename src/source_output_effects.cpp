@@ -187,7 +187,9 @@ SourceOutputEffects::SourceOutputEffects(
                      G_CALLBACK(on_plugins_order_changed), this);
 }
 
-SourceOutputEffects::~SourceOutputEffects() {}
+SourceOutputEffects::~SourceOutputEffects() {
+    g_object_unref(soe_settings);
+}
 
 void SourceOutputEffects::on_app_added(
     const std::shared_ptr<AppInfo>& app_info) {

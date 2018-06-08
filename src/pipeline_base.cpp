@@ -235,6 +235,7 @@ PipelineBase::~PipelineBase() {
 
     gst_object_unref(bus);
     gst_object_unref(pipeline);
+    g_object_unref(settings);
 }
 
 void PipelineBase::init_spectrum_bin() {

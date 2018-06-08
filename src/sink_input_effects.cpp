@@ -203,7 +203,9 @@ SinkInputEffects::SinkInputEffects(
                      G_CALLBACK(on_plugins_order_changed), this);
 }
 
-SinkInputEffects::~SinkInputEffects() {}
+SinkInputEffects::~SinkInputEffects() {
+    g_object_unref(sie_settings);
+}
 
 void SinkInputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
     PipelineBase::on_app_added(app_info);
