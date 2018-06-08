@@ -1,6 +1,20 @@
 #include "plugin_base.hpp"
 #include "util.hpp"
 
+namespace {
+
+void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
+    bool enable = g_settings_get_boolean(settings, key);
+
+    if (enable) {
+        l->enable();
+    } else {
+        l->disable();
+    }
+}
+
+}  // namespace
+
 PluginBase::PluginBase(const std::string& tag,
                        const std::string& plugin_name,
                        const std::string& schema)
@@ -28,6 +42,9 @@ PluginBase::~PluginBase() {}
 bool PluginBase::is_installed(GstElement* e) {
     if (e != nullptr) {
         g_settings_set_boolean(settings, "installed", true);
+
+        g_signal_connect(settings, "changed::state",
+                         G_CALLBACK(on_state_changed), this);
 
         return true;
     } else {

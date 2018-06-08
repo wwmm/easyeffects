@@ -2,20 +2,6 @@
 #include "crossfeed.hpp"
 #include "util.hpp"
 
-namespace {
-
-void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
-    bool enable = g_settings_get_boolean(settings, key);
-
-    if (enable) {
-        l->enable();
-    } else {
-        l->disable();
-    }
-}
-
-}  // namespace
-
 Crossfeed::Crossfeed(const std::string& tag, const std::string& schema)
     : PluginBase(tag, "crossfeed", schema) {
     crossfeed = gst_element_factory_make("bs2b", nullptr);
@@ -41,9 +27,6 @@ Crossfeed::Crossfeed(const std::string& tag, const std::string& schema)
         gst_object_unref(GST_OBJECT(pad_src));
 
         bind_to_gsettings();
-
-        g_signal_connect(settings, "changed::state",
-                         G_CALLBACK(on_state_changed), this);
 
         g_settings_bind(settings, "post-messages", in_level, "post-messages",
                         G_SETTINGS_BIND_DEFAULT);
