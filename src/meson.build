@@ -81,8 +81,8 @@ pulseeffects_sources = [
 
 pulseeffects_deps = [
 	dependency('libpulse'),
-	dependency('glib-2.0'),
-	dependency('glibmm-2.4'),
+	dependency('glib-2.0', version: '>=2.56'),
+	dependency('glibmm-2.4', version: '>= 2.56'),
 	dependency('gtk+-3.0', version: '>= 3.20'),
 	dependency('gtkmm-3.0',version: '>= 3.20'),
 	dependency('gstreamer-1.0', version: '>= 1.12.5'),
