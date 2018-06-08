@@ -29,15 +29,19 @@ PluginBase::PluginBase(const std::string& tag,
     gst_bin_add_many(GST_BIN(plugin), identity_in, identity_out, nullptr);
     gst_element_link_many(identity_in, identity_out, nullptr);
 
-    gst_element_add_pad(
-        plugin, gst_ghost_pad_new(
-                    "sink", gst_element_get_static_pad(identity_in, "sink")));
-    gst_element_add_pad(
-        plugin, gst_ghost_pad_new(
-                    "src", gst_element_get_static_pad(identity_out, "src")));
+    auto sinkpad = gst_element_get_static_pad(identity_in, "sink");
+    auto srcpad = gst_element_get_static_pad(identity_out, "src");
+
+    gst_element_add_pad(plugin, gst_ghost_pad_new("sink", sinkpad));
+    gst_element_add_pad(plugin, gst_ghost_pad_new("src", srcpad));
+
+    g_object_unref(sinkpad);
+    g_object_unref(srcpad);
 }
 
-PluginBase::~PluginBase() {}
+PluginBase::~PluginBase() {
+    g_object_unref(settings);
+}
 
 bool PluginBase::is_installed(GstElement* e) {
     if (e != nullptr) {

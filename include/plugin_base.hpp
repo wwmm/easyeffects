@@ -13,7 +13,7 @@ class PluginBase {
     PluginBase(const std::string& tag,
                const std::string& plugin_name,
                const std::string& schema);
-    ~PluginBase();
+    virtual ~PluginBase();
 
     std::string log_tag, name;
     GstElement *plugin, *bin, *identity_in, *identity_out;
