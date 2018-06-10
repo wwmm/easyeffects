@@ -35,8 +35,6 @@ Maximizer::Maximizer(const std::string& tag, const std::string& schema)
                                          nullptr);
 
     if (is_installed(maximizer)) {
-        bin = gst_bin_new("maximizer_bin");
-
         auto in_level =
             gst_element_factory_make("level", "maximizer_input_level");
         auto out_level =

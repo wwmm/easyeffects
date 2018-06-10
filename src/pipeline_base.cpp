@@ -281,7 +281,7 @@ void PipelineBase::init_effects_bin() {
 }
 
 void PipelineBase::set_source_monitor_name(std::string name) {
-    std::string current_device;
+    gchar* current_device;
 
     g_object_get(source, "current-device", &current_device, nullptr);
 
@@ -300,6 +300,8 @@ void PipelineBase::set_source_monitor_name(std::string name) {
             g_object_set(source, "device", name.c_str(), nullptr);
         }
     }
+
+    g_free(current_device);
 }
 
 void PipelineBase::set_output_sink_name(std::string name) {

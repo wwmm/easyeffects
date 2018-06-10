@@ -37,8 +37,6 @@ Delay::Delay(const std::string& tag, const std::string& schema)
         "lsp-plug-in-plugins-lv2-comp-delay-x2-stereo", nullptr);
 
     if (is_installed(delay)) {
-        bin = gst_bin_new("delay_bin");
-
         auto in_level = gst_element_factory_make("level", "delay_input_level");
         auto out_level =
             gst_element_factory_make("level", "delay_output_level");

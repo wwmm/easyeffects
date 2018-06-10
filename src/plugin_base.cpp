@@ -37,10 +37,18 @@ PluginBase::PluginBase(const std::string& tag,
 
     g_object_unref(sinkpad);
     g_object_unref(srcpad);
+
+    bin = gst_bin_new((name + "_bin").c_str());
 }
 
 PluginBase::~PluginBase() {
     g_object_unref(settings);
+
+    auto enable = g_settings_get_boolean(settings, "state");
+
+    if (!enable) {
+        gst_object_unref(bin);
+    }
 }
 
 bool PluginBase::is_installed(GstElement* e) {

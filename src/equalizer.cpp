@@ -15,8 +15,6 @@ Equalizer::Equalizer(const std::string& tag, const std::string& schema)
     equalizer = gst_element_factory_make("equalizer-nbands", nullptr);
 
     if (is_installed(equalizer)) {
-        bin = gst_bin_new("equalizer_bin");
-
         auto in_level =
             gst_element_factory_make("level", "equalizer_input_level");
         auto out_level =

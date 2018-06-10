@@ -57,8 +57,6 @@ void Webrtc::build_probe_bin() {
 }
 
 void Webrtc::build_dsp_bin() {
-    bin = gst_bin_new("webrtc_bin");
-
     auto in_level = gst_element_factory_make("level", "webrtc_input_level");
     auto audioconvert_in = gst_element_factory_make("audioconvert", nullptr);
     auto audioresample_in = gst_element_factory_make("audioresample", nullptr);

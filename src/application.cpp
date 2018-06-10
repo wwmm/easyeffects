@@ -106,10 +106,9 @@ void Application::on_activate() {
 
         add_window(*window);
 
-        window->signal_hide().connect([window]() { delete window; });
+        window->signal_hide().connect([&, window]() { delete window; });
 
         window->show_all();
-        window->present();
 
         pm->find_sink_inputs();
         pm->find_source_outputs();

@@ -34,8 +34,6 @@ Gate::Gate(const std::string& tag, const std::string& schema)
         gst_element_factory_make("calf-sourceforge-net-plugins-Gate", "gate");
 
     if (is_installed(gate)) {
-        bin = gst_bin_new("gate_bin");
-
         auto in_level = gst_element_factory_make("level", "gate_input_level");
         auto out_level = gst_element_factory_make("level", "gate_output_level");
         auto audioconvert = gst_element_factory_make("audioconvert", nullptr);

@@ -82,8 +82,6 @@ StereoEnhancer::StereoEnhancer(const std::string& tag,
         "calf-sourceforge-net-plugins-HaasEnhancer", "stereo_enhancer");
 
     if (is_installed(stereo_enhancer)) {
-        bin = gst_bin_new("stereo_enhancer_bin");
-
         auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
 
         gst_bin_add_many(GST_BIN(bin), audioconvert, stereo_enhancer, nullptr);

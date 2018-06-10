@@ -71,8 +71,6 @@ Limiter::Limiter(const std::string& tag, const std::string& schema)
                                        nullptr);
 
     if (is_installed(limiter)) {
-        bin = gst_bin_new("limiter_bin");
-
         auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
         autovolume = gst_element_factory_make("level", "autovolume");
 

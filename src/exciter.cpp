@@ -35,8 +35,6 @@ Exciter::Exciter(const std::string& tag, const std::string& schema)
                                        nullptr);
 
     if (is_installed(exciter)) {
-        bin = gst_bin_new("exciter_bin");
-
         auto in_level =
             gst_element_factory_make("level", "exciter_input_level");
         auto out_level =

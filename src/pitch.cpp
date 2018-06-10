@@ -8,8 +8,6 @@ Pitch::Pitch(const std::string& tag, const std::string& schema)
         "ladspa-ladspa-rubberband-so-rubberband-pitchshifter-stereo", "pitch");
 
     if (is_installed(pitch)) {
-        bin = gst_bin_new("pitch_bin");
-
         auto in_level = gst_element_factory_make("level", "pitch_input_level");
         auto out_level =
             gst_element_factory_make("level", "pitch_output_level");

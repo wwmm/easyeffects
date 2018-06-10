@@ -7,8 +7,6 @@ Crossfeed::Crossfeed(const std::string& tag, const std::string& schema)
     crossfeed = gst_element_factory_make("bs2b", nullptr);
 
     if (is_installed(crossfeed)) {
-        bin = gst_bin_new("crossfeed_bin");
-
         auto in_level =
             gst_element_factory_make("level", "crossfeed_input_level");
         auto out_level =

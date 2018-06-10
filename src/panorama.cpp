@@ -7,8 +7,6 @@ Panorama::Panorama(const std::string& tag, const std::string& schema)
     panorama = gst_element_factory_make("audiopanorama", nullptr);
 
     if (is_installed(panorama)) {
-        bin = gst_bin_new("panorama_bin");
-
         auto in_level =
             gst_element_factory_make("level", "panorama_input_level");
         auto out_level =

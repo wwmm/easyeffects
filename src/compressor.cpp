@@ -35,8 +35,6 @@ Compressor::Compressor(const std::string& tag, const std::string& schema)
         "calf-sourceforge-net-plugins-Compressor", nullptr);
 
     if (is_installed(compressor)) {
-        bin = gst_bin_new("compressor_bin");
-
         auto in_level =
             gst_element_factory_make("level", "compressor_input_level");
         auto out_level =

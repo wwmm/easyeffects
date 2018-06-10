@@ -55,8 +55,6 @@ Filter::Filter(const std::string& tag, const std::string& schema)
                                       "filter");
 
     if (is_installed(filter)) {
-        bin = gst_bin_new("filter_bin");
-
         auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
 
         gst_bin_add_many(GST_BIN(bin), audioconvert, filter, nullptr);

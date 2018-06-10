@@ -55,8 +55,6 @@ Reverb::Reverb(const std::string& tag, const std::string& schema)
                                       "reverb");
 
     if (is_installed(reverb)) {
-        bin = gst_bin_new("reverb_bin");
-
         auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
 
         gst_bin_add_many(GST_BIN(bin), audioconvert, reverb, nullptr);
