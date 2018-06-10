@@ -22,7 +22,7 @@ class SourceOutputEffectsUi : public EffectsBaseUi {
 
     ~SourceOutputEffectsUi();
 
-    static std::shared_ptr<SourceOutputEffectsUi> create(
+    static std::unique_ptr<SourceOutputEffectsUi> create(
         std::shared_ptr<SourceOutputEffects> soe);
 
     void reset();
