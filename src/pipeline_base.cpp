@@ -39,10 +39,9 @@ void on_message_state_changed(const GstBus* gst_bus,
                               GstMessage* message,
                               PipelineBase* pb) {
     if (GST_OBJECT_NAME(message->src) == std::string("pipeline")) {
-        GstState old_state, new_state;
+        GstState new_state;
 
-        gst_message_parse_state_changed(message, &old_state, &new_state,
-                                        nullptr);
+        gst_message_parse_state_changed(message, nullptr, &new_state, nullptr);
 
         util::debug(pb->log_tag + gst_element_state_get_name(new_state));
     }
@@ -116,7 +115,8 @@ void on_message_element(const GstBus* gst_bus,
 void on_spectrum_n_points_changed(GSettings* settings,
                                   gchar* key,
                                   PipelineBase* pb) {
-    auto npoints = g_settings_get_int(settings, "spectrum-n-points");
+    long unsigned int npoints =
+        g_settings_get_int(settings, "spectrum-n-points");
 
     if (npoints != pb->spectrum_mag.size()) {
         pb->resizing_spectrum = true;
@@ -323,9 +323,9 @@ void PipelineBase::update_pipeline_state() {
         }
     }
 
-    GstState state, pending;
+    GstState state;
 
-    gst_element_get_state(pipeline, &state, &pending, GST_CLOCK_TIME_NONE);
+    gst_element_get_state(pipeline, &state, nullptr, GST_CLOCK_TIME_NONE);
 
     if (state != GST_STATE_PLAYING && wants_to_play) {
         gst_element_set_state(pipeline, GST_STATE_PLAYING);
@@ -353,17 +353,9 @@ void PipelineBase::on_app_changed(const std::shared_ptr<AppInfo>& app_info) {
 }
 
 void PipelineBase::on_app_removed(uint idx) {
-    for (auto it = apps_list.begin(); it != apps_list.end(); it++) {
-        auto n = it - apps_list.begin();
-
-        if (apps_list[n]->index == idx) {
-            auto app = move(apps_list[n]);
-
-            apps_list.erase(it);
-
-            break;
-        }
-    }
+    apps_list.erase(std::remove_if(apps_list.begin(), apps_list.end(),
+                                   [=](auto a) { return a->index == idx; }),
+                    apps_list.end());
 
     update_pipeline_state();
 }
