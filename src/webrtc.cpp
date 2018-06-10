@@ -39,11 +39,15 @@ void Webrtc::build_probe_bin() {
         "props,application.name=PulseEffectsWebrtcProbe", nullptr);
 
     auto caps_str = "audio/x-raw,format=S16LE,channels=2,rate=48000";
+    auto caps = gst_caps_from_string(caps_str);
 
     g_object_set(probe_src, "stream-properties", props, nullptr);
     g_object_set(probe_src, "buffer-time", 10000, nullptr);
-    g_object_set(capsfilter, "caps", gst_caps_from_string(caps_str), nullptr);
+    g_object_set(capsfilter, "caps", caps, nullptr);
     g_object_set(queue, "silent", true, nullptr);
+
+    gst_structure_free(props);
+    gst_caps_unref(caps);
 
     gst_bin_add_many(GST_BIN(probe_bin), probe_src, queue, audioconvert,
                      audioresample, capsfilter, probe, sink, nullptr);
@@ -64,15 +68,15 @@ void Webrtc::build_dsp_bin() {
     auto caps_out = gst_element_factory_make("capsfilter", nullptr);
     auto out_level = gst_element_factory_make("level", "webrtc_output_level");
 
-    g_object_set(caps_in, "caps",
-                 gst_caps_from_string("audio/x-raw,format=S16LE,rate=48000"),
-                 nullptr);
+    auto capsin = gst_caps_from_string("audio/x-raw,format=S16LE,rate=48000");
+    auto capsout = gst_caps_from_string(
+        ("audio/x-raw,format=F32LE,rate=" + std::to_string(rate)).c_str());
 
-    g_object_set(
-        caps_out, "caps",
-        gst_caps_from_string(
-            ("audio/x-raw,format=F32LE,rate=" + std::to_string(rate)).c_str()),
-        nullptr);
+    g_object_set(caps_in, "caps", capsin, nullptr);
+    g_object_set(caps_out, "caps", capsout, nullptr);
+
+    gst_caps_unref(capsin);
+    gst_caps_unref(capsout);
 
     gst_bin_add(GST_BIN(bin), probe_bin);
 

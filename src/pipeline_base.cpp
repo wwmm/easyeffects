@@ -217,6 +217,8 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
 
     g_object_set(capsfilter, "caps", caps, nullptr);
 
+    gst_caps_unref(caps);
+
     g_object_set(queue, "silent", true, nullptr);
 
     g_object_set(spectrum, "bands", spectrum_nbands, nullptr);
@@ -284,9 +286,9 @@ void PipelineBase::set_source_monitor_name(std::string name) {
     g_object_get(source, "current-device", &current_device, nullptr);
 
     if (name != current_device) {
-        GstState state, pending;
+        GstState state;
 
-        gst_element_get_state(pipeline, &state, &pending, GST_CLOCK_TIME_NONE);
+        gst_element_get_state(pipeline, &state, nullptr, GST_CLOCK_TIME_NONE);
 
         if (state == GST_STATE_PLAYING) {
             gst_element_set_state(pipeline, GST_STATE_NULL);
@@ -310,12 +312,14 @@ void PipelineBase::set_pulseaudio_props(std::string props) {
     auto s = gst_structure_from_string(str.c_str(), nullptr);
 
     g_object_set(source, "stream-properties", s, nullptr);
+
+    gst_structure_free(s);
 }
 
 void PipelineBase::update_pipeline_state() {
     bool wants_to_play = false;
 
-    for (auto a : apps_list) {
+    for (auto& a : apps_list) {
         if (a->wants_to_play) {
             wants_to_play = true;
 
@@ -341,20 +345,16 @@ void PipelineBase::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
 }
 
 void PipelineBase::on_app_changed(const std::shared_ptr<AppInfo>& app_info) {
-    for (auto it = apps_list.begin(); it != apps_list.end(); it++) {
-        auto n = it - apps_list.begin();
-
-        if (apps_list[n]->index == app_info->index) {
-            apps_list[n] = move(app_info);
-        }
-    }
+    std::replace_copy_if(apps_list.begin(), apps_list.end(), apps_list.begin(),
+                         [=](auto& a) { return a->index == app_info->index; },
+                         move(app_info));
 
     update_pipeline_state();
 }
 
 void PipelineBase::on_app_removed(uint idx) {
     apps_list.erase(std::remove_if(apps_list.begin(), apps_list.end(),
-                                   [=](auto a) { return a->index == idx; }),
+                                   [=](auto& a) { return a->index == idx; }),
                     apps_list.end());
 
     update_pipeline_state();

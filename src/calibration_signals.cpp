@@ -107,6 +107,9 @@ CalibrationSignals::CalibrationSignals() {
     g_object_set(spectrum, "threshold", spectrum_threshold, nullptr);
     g_object_set(sink, "stream-properties", props, nullptr);
 
+    gst_structure_free(props);
+    gst_caps_unref(caps);
+
     // init spectrum
 
     for (uint n = 0; n < spectrum_nbands; n++) {

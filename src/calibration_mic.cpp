@@ -122,6 +122,9 @@ CalibrationMic::CalibrationMic() {
     g_object_set(spectrum, "bands", spectrum_nbands, nullptr);
     g_object_set(spectrum, "threshold", spectrum_threshold, nullptr);
 
+    gst_structure_free(props);
+    gst_caps_unref(caps);
+
     // init spectrum
 
     for (uint n = 0; n < spectrum_nbands; n++) {
