@@ -1,4 +1,5 @@
 #include "source_output_effects.hpp"
+#include "util.hpp"
 
 namespace {
 
@@ -74,6 +75,14 @@ GstPadProbeReturn on_pad_idle(GstPad* pad,
 
     gst_bin_sync_children_states(GST_BIN(l->effects_bin));
 
+    std::string list;
+
+    for (auto name : l->plugins_order) {
+        list += name + ",";
+    }
+
+    util::debug(l->log_tag + "new plugins order: [" + list + "]");
+
     return GST_PAD_PROBE_REMOVE;
 }
 
@@ -114,6 +123,7 @@ void on_plugins_order_changed(GSettings* settings,
 SourceOutputEffects::SourceOutputEffects(
     const std::shared_ptr<PulseManager>& pulse_manager)
     : PipelineBase("soe: ", pulse_manager->mic_sink_info->rate),
+      log_tag("soe: "),
       pm(pulse_manager),
       soe_settings(
           g_settings_new("com.github.wwmm.pulseeffects.sourceoutputs")) {

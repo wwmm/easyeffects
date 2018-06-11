@@ -1,6 +1,9 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- improved the algorithm used to enable/disable/reorder plugins.
+
 ### Fixed
 - Removed a few memory leaks
 

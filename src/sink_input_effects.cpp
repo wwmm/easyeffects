@@ -1,4 +1,5 @@
 #include "sink_input_effects.hpp"
+#include "util.hpp"
 
 namespace {
 
@@ -82,6 +83,14 @@ GstPadProbeReturn on_pad_idle(GstPad* pad,
 
     gst_bin_sync_children_states(GST_BIN(l->effects_bin));
 
+    std::string list;
+
+    for (auto name : l->plugins_order) {
+        list += name + ",";
+    }
+
+    util::debug(l->log_tag + "new plugins order: [" + list + "]");
+
     return GST_PAD_PROBE_REMOVE;
 }
 
@@ -122,6 +131,7 @@ void on_plugins_order_changed(GSettings* settings,
 SinkInputEffects::SinkInputEffects(
     const std::shared_ptr<PulseManager>& pulse_manager)
     : PipelineBase("sie: ", pulse_manager->apps_sink_info->rate),
+      log_tag("sie: "),
       pm(pulse_manager),
       sie_settings(g_settings_new("com.github.wwmm.pulseeffects.sinkinputs")) {
     set_pulseaudio_props(

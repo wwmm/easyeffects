@@ -1,3 +1,5 @@
+#include <chrono>
+#include <thread>
 #include "plugin_base.hpp"
 #include "util.hpp"
 
@@ -73,12 +75,18 @@ void PluginBase::enable() {
                                  std::string(name + "_bin").c_str());
 
     if (!b) {
-        bool changing = changing_pipeline.exchange(true);
+        bool changing;
+
+        do {
+            changing = changing_pipeline.exchange(true);
+
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        } while (changing);
 
         if (!changing) {
             gst_pad_add_probe(
                 gst_element_get_static_pad(identity_in, "src"),
-                GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+                GST_PAD_PROBE_TYPE_IDLE,
                 [](auto pad, auto info, auto d) {
                     auto l = static_cast<PluginBase*>(d);
 
@@ -107,12 +115,18 @@ void PluginBase::disable() {
                                  std::string(name + "_bin").c_str());
 
     if (b) {
-        bool changing = changing_pipeline.exchange(true);
+        bool changing;
+
+        do {
+            changing = changing_pipeline.exchange(true);
+
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        } while (changing);
 
         if (!changing) {
             gst_pad_add_probe(
                 gst_element_get_static_pad(identity_in, "src"),
-                GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+                GST_PAD_PROBE_TYPE_IDLE,
                 [](auto pad, auto info, auto d) {
                     auto l = static_cast<PluginBase*>(d);
 
