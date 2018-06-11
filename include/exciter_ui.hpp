@@ -10,7 +10,7 @@ class ExciterUi : public Gtk::Grid, public PluginUiBase {
     ExciterUi(BaseObjectType* cobject,
               const Glib::RefPtr<Gtk::Builder>& refBuilder,
               const std::string& settings_name);
-    ~ExciterUi();
+    virtual ~ExciterUi();
 
     static std::shared_ptr<ExciterUi> create(std::string settings_name);
 

@@ -9,7 +9,7 @@ class PanoramaUi : public Gtk::Grid, public PluginUiBase {
     PanoramaUi(BaseObjectType* cobject,
                const Glib::RefPtr<Gtk::Builder>& refBuilder,
                const std::string& settings_name);
-    ~PanoramaUi();
+    virtual ~PanoramaUi();
 
     static std::shared_ptr<PanoramaUi> create(std::string settings_name);
 

@@ -11,7 +11,7 @@ class FilterUi : public Gtk::Grid, public PluginUiBase {
     FilterUi(BaseObjectType* cobject,
              const Glib::RefPtr<Gtk::Builder>& refBuilder,
              const std::string& settings_name);
-    ~FilterUi();
+    virtual ~FilterUi();
 
     static std::shared_ptr<FilterUi> create(std::string settings_name);
 

@@ -9,7 +9,7 @@ class MaximizerUi : public Gtk::Grid, public PluginUiBase {
     MaximizerUi(BaseObjectType* cobject,
                 const Glib::RefPtr<Gtk::Builder>& refBuilder,
                 const std::string& settings_name);
-    ~MaximizerUi();
+    virtual ~MaximizerUi();
 
     static std::shared_ptr<MaximizerUi> create(std::string settings_name);
 

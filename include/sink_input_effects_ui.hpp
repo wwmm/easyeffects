@@ -23,7 +23,7 @@ class SinkInputEffectsUi : public EffectsBaseUi {
                        const Glib::RefPtr<Gio::Settings>& refSettings,
                        const std::shared_ptr<SinkInputEffects>& sie_ptr);
 
-    ~SinkInputEffectsUi();
+    virtual ~SinkInputEffectsUi();
 
     static std::unique_ptr<SinkInputEffectsUi> create(
         std::shared_ptr<SinkInputEffects> sie);

@@ -9,7 +9,7 @@ class DelayUi : public Gtk::Grid, public PluginUiBase {
     DelayUi(BaseObjectType* cobject,
             const Glib::RefPtr<Gtk::Builder>& refBuilder,
             const std::string& settings_name);
-    ~DelayUi();
+    virtual ~DelayUi();
 
     static std::shared_ptr<DelayUi> create(std::string settings_name);
 

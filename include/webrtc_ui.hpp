@@ -11,7 +11,7 @@ class WebrtcUi : public Gtk::Grid, public PluginUiBase {
     WebrtcUi(BaseObjectType* cobject,
              const Glib::RefPtr<Gtk::Builder>& refBuilder,
              const std::string& settings_name);
-    ~WebrtcUi();
+    virtual ~WebrtcUi();
 
     static std::shared_ptr<WebrtcUi> create(std::string settings_name);
 

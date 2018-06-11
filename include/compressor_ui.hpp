@@ -11,7 +11,7 @@ class CompressorUi : public Gtk::Grid, public PluginUiBase {
     CompressorUi(BaseObjectType* cobject,
                  const Glib::RefPtr<Gtk::Builder>& refBuilder,
                  const std::string& settings_name);
-    ~CompressorUi();
+    virtual ~CompressorUi();
 
     static std::shared_ptr<CompressorUi> create(std::string settings_name);
 

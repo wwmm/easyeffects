@@ -20,7 +20,7 @@ class SourceOutputEffectsUi : public EffectsBaseUi {
                           const Glib::RefPtr<Gio::Settings>& refSettings,
                           const std::shared_ptr<SourceOutputEffects>& soe_ptr);
 
-    ~SourceOutputEffectsUi();
+    virtual ~SourceOutputEffectsUi();
 
     static std::unique_ptr<SourceOutputEffectsUi> create(
         std::shared_ptr<SourceOutputEffects> soe);
