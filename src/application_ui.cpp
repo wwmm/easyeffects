@@ -14,7 +14,9 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     : Gtk::ApplicationWindow(cobject),
       app(application),
       builder(refBuilder),
-      settings(app->settings) {
+      settings(app->settings),
+      sie_ui(SinkInputEffectsUi::create(app->sie)),
+      soe_ui(SourceOutputEffectsUi::create(app->soe)) {
     apply_css_style("listbox.css");
 
     Gtk::IconTheme::get_default()->add_resource_path(
@@ -154,8 +156,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
     // sink inputs interface
 
-    sie_ui = SinkInputEffectsUi::create(app->sie);
-
     app->pm->sink_input_added.connect(
         sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_added));
     app->pm->sink_input_changed.connect(
@@ -168,8 +168,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
         "audio-speakers-symbolic");
 
     // source outputs interface
-
-    soe_ui = SourceOutputEffectsUi::create(app->soe);
 
     app->pm->source_output_added.connect(
         sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_added));
@@ -236,6 +234,9 @@ ApplicationUi::~ApplicationUi() {
     }
 
     spectrum_connection.disconnect();
+
+    delete sie_ui;
+    delete soe_ui;
 }
 
 ApplicationUi* ApplicationUi::create(Application* app_this) {

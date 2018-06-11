@@ -33,7 +33,7 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(
 
 SourceOutputEffectsUi::~SourceOutputEffectsUi() {}
 
-std::unique_ptr<SourceOutputEffectsUi> SourceOutputEffectsUi::create(
+SourceOutputEffectsUi* SourceOutputEffectsUi::create(
     std::shared_ptr<SourceOutputEffects> soe) {
     auto builder = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/effects_base.glade");
@@ -45,7 +45,7 @@ std::unique_ptr<SourceOutputEffectsUi> SourceOutputEffectsUi::create(
 
     builder->get_widget_derived("widgets_box", soe_ui, settings, soe);
 
-    return std::unique_ptr<SourceOutputEffectsUi>(soe_ui);
+    return soe_ui;
 }
 
 void SourceOutputEffectsUi::level_meters_connections() {
