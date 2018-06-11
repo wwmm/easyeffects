@@ -1,7 +1,6 @@
 #ifndef WEBRTC_UI_HPP
 #define WEBRTC_UI_HPP
 
-#include <gtkmm/adjustment.h>
 #include <gtkmm/comboboxtext.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/togglebutton.h>
@@ -19,8 +18,8 @@ class WebrtcUi : public Gtk::Grid, public PluginUiBase {
     void reset();
 
    private:
-    Gtk::Adjustment *compression_gain_db, *target_level_dbfs,
-        *voice_detection_frame_size;
+    Glib::RefPtr<Gtk::Adjustment> compression_gain_db, target_level_dbfs,
+        voice_detection_frame_size;
     Gtk::ToggleButton *echo_cancel, *extended_filter, *high_pass_filter,
         *delay_agnostic, *noise_suppression, *gain_control, *limiter,
         *voice_detection;

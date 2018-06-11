@@ -160,10 +160,11 @@ WebrtcUi::WebrtcUi(BaseObjectType* cobject,
 
     settings->bind("installed", this, "sensitive", flag);
 
-    settings->bind("compression-gain-db", compression_gain_db, "value", flag);
-    settings->bind("target-level-dbfs", target_level_dbfs, "value", flag);
-    settings->bind("voice-detection-frame-size-ms", voice_detection_frame_size,
-                   "value", flag);
+    settings->bind("compression-gain-db", compression_gain_db.get(), "value",
+                   flag);
+    settings->bind("target-level-dbfs", target_level_dbfs.get(), "value", flag);
+    settings->bind("voice-detection-frame-size-ms",
+                   voice_detection_frame_size.get(), "value", flag);
     settings->bind("echo-cancel", echo_cancel, "active", flag);
     settings->bind("extended-filter", extended_filter, "active", flag);
     settings->bind("high-pass-filter", high_pass_filter, "active", flag);

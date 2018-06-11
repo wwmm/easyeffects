@@ -72,18 +72,18 @@ StereoEnhancerUi::StereoEnhancerUi(BaseObjectType* cobject,
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
     settings->bind("installed", this, "sensitive", flag);
-    settings->bind("input-gain", input_gain, "value", flag);
-    settings->bind("output-gain", output_gain, "value", flag);
-    settings->bind("side-gain", side_gain, "value", flag);
+    settings->bind("input-gain", input_gain.get(), "value", flag);
+    settings->bind("output-gain", output_gain.get(), "value", flag);
+    settings->bind("side-gain", side_gain.get(), "value", flag);
     settings->bind("middle-phase", middle_phase, "active", flag);
     settings->bind("left-phase", left_phase, "active", flag);
     settings->bind("right-phase", right_phase, "active", flag);
-    settings->bind("left-balance", left_balance, "value", flag);
-    settings->bind("left-delay", left_delay, "value", flag);
-    settings->bind("left-gain", left_gain, "value", flag);
-    settings->bind("right-balance", right_balance, "value", flag);
-    settings->bind("right-delay", right_delay, "value", flag);
-    settings->bind("right-gain", right_gain, "value", flag);
+    settings->bind("left-balance", left_balance.get(), "value", flag);
+    settings->bind("left-delay", left_delay.get(), "value", flag);
+    settings->bind("left-gain", left_gain.get(), "value", flag);
+    settings->bind("right-balance", right_balance.get(), "value", flag);
+    settings->bind("right-delay", right_delay.get(), "value", flag);
+    settings->bind("right-gain", right_gain.get(), "value", flag);
 
     g_settings_bind_with_mapping(
         settings->gobj(), "middle-source", middle_source->gobj(), "active",

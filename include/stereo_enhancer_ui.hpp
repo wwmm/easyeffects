@@ -1,7 +1,6 @@
 #ifndef STEREO_ENHANCER_UI_HPP
 #define STEREO_ENHANCER_UI_HPP
 
-#include <gtkmm/adjustment.h>
 #include <gtkmm/button.h>
 #include <gtkmm/comboboxtext.h>
 #include <gtkmm/grid.h>
@@ -22,8 +21,9 @@ class StereoEnhancerUi : public Gtk::Grid, public PluginUiBase {
     void on_new_side_level(const std::array<double, 2>& peak);
 
    private:
-    Gtk::Adjustment *input_gain, *output_gain, *side_gain, *left_balance,
-        *left_delay, *left_gain, *right_balance, *right_delay, *right_gain;
+    Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, side_gain,
+        left_balance, left_delay, left_gain, right_balance, right_delay,
+        right_gain;
     Gtk::ComboBoxText* middle_source;
     Gtk::ToggleButton *middle_phase, *left_phase, *right_phase;
     Gtk::LevelBar *side_l_levelbar, *side_r_levelbar;
