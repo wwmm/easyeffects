@@ -1,7 +1,6 @@
 #ifndef FILTER_UI_HPP
 #define FILTER_UI_HPP
 
-#include <gtkmm/adjustment.h>
 #include <gtkmm/button.h>
 #include <gtkmm/comboboxtext.h>
 #include <gtkmm/grid.h>
@@ -19,7 +18,9 @@ class FilterUi : public Gtk::Grid, public PluginUiBase {
     void reset();
 
    private:
-    Gtk::Adjustment *input_gain, *output_gain, *frequency, *resonance, *inertia;
+    Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, frequency, resonance,
+        inertia;
+
     Gtk::ComboBoxText* mode;
     Gtk::Button *preset_muted, *preset_disco, *preset_distant_headphones,
         *preset_default;

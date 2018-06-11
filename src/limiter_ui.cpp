@@ -35,13 +35,13 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
 
     settings->bind("installed", this, "sensitive", flag);
 
-    settings->bind("input-gain", input_gain, "value", flag);
-    settings->bind("limit", limit, "value", flag);
-    settings->bind("lookahead", lookahead, "value", flag);
-    settings->bind("release", release, "value", flag);
-    settings->bind("oversampling", oversampling, "value", flag);
+    settings->bind("input-gain", input_gain.get(), "value", flag);
+    settings->bind("limit", limit.get(), "value", flag);
+    settings->bind("lookahead", lookahead.get(), "value", flag);
+    settings->bind("release", release.get(), "value", flag);
+    settings->bind("oversampling", oversampling.get(), "value", flag);
     settings->bind("asc", asc, "active", flag);
-    settings->bind("asc-level", asc_level, "value", flag);
+    settings->bind("asc-level", asc_level.get(), "value", flag);
 
     settings->bind("autovolume-state", autovolume_enable, "active", flag);
     settings->bind("autovolume-state", autovolume_controls, "sensitive",
@@ -50,10 +50,12 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
     settings->bind("autovolume-state", limiter_controls, "sensitive",
                    flag_get | flag_invert_boolean);
 
-    settings->bind("autovolume-window", autovolume_window, "value", flag);
-    settings->bind("autovolume-target", autovolume_target, "value", flag);
-    settings->bind("autovolume-tolerance", autovolume_tolerance, "value", flag);
-    settings->bind("autovolume-threshold", autovolume_threshold, "value", flag);
+    settings->bind("autovolume-window", autovolume_window.get(), "value", flag);
+    settings->bind("autovolume-target", autovolume_target.get(), "value", flag);
+    settings->bind("autovolume-tolerance", autovolume_tolerance.get(), "value",
+                   flag);
+    settings->bind("autovolume-threshold", autovolume_threshold.get(), "value",
+                   flag);
 
     connections.push_back(
         settings->signal_changed("autovolume-state").connect([&](auto key) {

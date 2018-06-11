@@ -1,7 +1,6 @@
 #ifndef EXCITER_UI_HPP
 #define EXCITER_UI_HPP
 
-#include <gtkmm/adjustment.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/togglebutton.h>
 #include "plugin_ui_base.hpp"
@@ -20,8 +19,9 @@ class ExciterUi : public Gtk::Grid, public PluginUiBase {
     void on_new_harmonics_level(double value);
 
    private:
-    Gtk::Adjustment *amount, *blend, *ceilv, *harmonics, *input_gain,
-        *output_gain, *scope;
+    Glib::RefPtr<Gtk::Adjustment> amount, blend, ceilv, harmonics, input_gain,
+        output_gain, scope;
+
     Gtk::LevelBar* harmonics_levelbar;
     Gtk::Label* harmonics_levelbar_label;
     Gtk::ToggleButton *ceil_active, *listen;

@@ -1,7 +1,6 @@
 #ifndef EQUALIZER_UI_HPP
 #define EQUALIZER_UI_HPP
 
-#include <gtkmm/adjustment.h>
 #include <gtkmm/button.h>
 #include <gtkmm/grid.h>
 #include "plugin_ui_base.hpp"
@@ -19,7 +18,7 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
 
    private:
     Gtk::Grid* bands_grid;
-    Gtk::Adjustment* nbands;
+    Glib::RefPtr<Gtk::Adjustment> nbands;
     Gtk::Button *reset_eq, *flat_response, *calculate_freqs;
 
     std::vector<sigc::connection> connections;

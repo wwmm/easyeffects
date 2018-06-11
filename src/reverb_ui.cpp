@@ -81,16 +81,16 @@ ReverbUi::ReverbUi(BaseObjectType* cobject,
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
     settings->bind("installed", this, "sensitive", flag);
-    settings->bind("input-gain", input_gain, "value", flag);
-    settings->bind("output-gain", output_gain, "value", flag);
-    settings->bind("predelay", predelay, "value", flag);
-    settings->bind("decay-time", decay_time, "value", flag);
-    settings->bind("diffusion", diffusion, "value", flag);
-    settings->bind("amount", amount, "value", flag);
-    settings->bind("dry", dry, "value", flag);
-    settings->bind("hf-damp", hf_damp, "value", flag);
-    settings->bind("bass-cut", bass_cut, "value", flag);
-    settings->bind("treble-cut", treble_cut, "value", flag);
+    settings->bind("input-gain", input_gain.get(), "value", flag);
+    settings->bind("output-gain", output_gain.get(), "value", flag);
+    settings->bind("predelay", predelay.get(), "value", flag);
+    settings->bind("decay-time", decay_time.get(), "value", flag);
+    settings->bind("diffusion", diffusion.get(), "value", flag);
+    settings->bind("amount", amount.get(), "value", flag);
+    settings->bind("dry", dry.get(), "value", flag);
+    settings->bind("hf-damp", hf_damp.get(), "value", flag);
+    settings->bind("bass-cut", bass_cut.get(), "value", flag);
+    settings->bind("treble-cut", treble_cut.get(), "value", flag);
 
     g_settings_bind_with_mapping(settings->gobj(), "room-size",
                                  room_size->gobj(), "active",

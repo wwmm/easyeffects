@@ -15,7 +15,7 @@ PanoramaUi::PanoramaUi(BaseObjectType* cobject,
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
     settings->bind("installed", this, "sensitive", flag);
-    settings->bind("position", position, "value", flag);
+    settings->bind("position", position.get(), "value", flag);
 
     settings->set_boolean("post-messages", true);
 }

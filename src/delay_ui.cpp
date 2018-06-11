@@ -22,11 +22,11 @@ DelayUi::DelayUi(BaseObjectType* cobject,
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
     settings->bind("installed", this, "sensitive", flag);
-    settings->bind("m-l", m_l, "value", flag);
-    settings->bind("m-r", m_r, "value", flag);
-    settings->bind("cm-l", cm_l, "value", flag);
-    settings->bind("cm-r", cm_r, "value", flag);
-    settings->bind("temperature", temperature, "value", flag);
+    settings->bind("m-l", m_l.get(), "value", flag);
+    settings->bind("m-r", m_r.get(), "value", flag);
+    settings->bind("cm-l", cm_l.get(), "value", flag);
+    settings->bind("cm-r", cm_r.get(), "value", flag);
+    settings->bind("temperature", temperature.get(), "value", flag);
 
     settings->set_boolean("post-messages", true);
 }

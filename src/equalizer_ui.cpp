@@ -68,7 +68,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
     settings->bind("installed", this, "sensitive", flag);
-    settings->bind("num-bands", nbands, "value", flag);
+    settings->bind("num-bands", nbands.get(), "value", flag);
 
     settings->set_boolean("post-messages", true);
 }
@@ -125,9 +125,12 @@ void EqualizerUi::on_nbands_changed() {
         B->get_widget("reset_f", reset_f);
         B->get_widget("reset_w", reset_w);
 
-        auto band_g = (Gtk::Adjustment*)B->get_object("band_g").get();
-        auto band_f = (Gtk::Adjustment*)B->get_object("band_f").get();
-        auto band_w = (Gtk::Adjustment*)B->get_object("band_w").get();
+        auto band_g = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(
+            B->get_object("band_g"));
+        auto band_f = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(
+            B->get_object("band_f"));
+        auto band_w = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(
+            B->get_object("band_w"));
 
         auto update_q = [=]() {
             auto w = band_w->get_value();
@@ -166,11 +169,11 @@ void EqualizerUi::on_nbands_changed() {
         connections.push_back(band_w->signal_value_changed().connect(update_q));
 
         settings->bind(std::string("band" + std::to_string(n) + "-gain"),
-                       band_g, "value", flag);
+                       band_g.get(), "value", flag);
         settings->bind(std::string("band" + std::to_string(n) + "-frequency"),
-                       band_f, "value", flag);
+                       band_f.get(), "value", flag);
         settings->bind(std::string("band" + std::to_string(n) + "-width"),
-                       band_w, "value", flag);
+                       band_w.get(), "value", flag);
 
         g_settings_bind_with_mapping(
             settings->gobj(),

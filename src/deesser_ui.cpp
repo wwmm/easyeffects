@@ -86,14 +86,14 @@ DeesserUi::DeesserUi(BaseObjectType* cobject,
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
     settings->bind("installed", this, "sensitive", flag);
-    settings->bind("makeup", makeup, "value", flag);
-    settings->bind("ratio", ratio, "value", flag);
-    settings->bind("threshold", threshold, "value", flag);
-    settings->bind("f1-freq", f1_freq, "value", flag);
-    settings->bind("f2-freq", f2_freq, "value", flag);
-    settings->bind("f1-level", f1_level, "value", flag);
-    settings->bind("f2-level", f2_level, "value", flag);
-    settings->bind("f2-q", f2_q, "value", flag);
+    settings->bind("makeup", makeup.get(), "value", flag);
+    settings->bind("ratio", ratio.get(), "value", flag);
+    settings->bind("threshold", threshold.get(), "value", flag);
+    settings->bind("f1-freq", f1_freq.get(), "value", flag);
+    settings->bind("f2-freq", f2_freq.get(), "value", flag);
+    settings->bind("f1-level", f1_level.get(), "value", flag);
+    settings->bind("f2-level", f2_level.get(), "value", flag);
+    settings->bind("f2-q", f2_q.get(), "value", flag);
 
     g_settings_bind_with_mapping(settings->gobj(), "detection",
                                  detection->gobj(), "active",

@@ -1,7 +1,6 @@
 #ifndef MAXIMIZER_UI_HPP
 #define MAXIMIZER_UI_HPP
 
-#include <gtkmm/adjustment.h>
 #include <gtkmm/grid.h>
 #include "plugin_ui_base.hpp"
 

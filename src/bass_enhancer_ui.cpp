@@ -26,13 +26,13 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
     settings->bind("installed", this, "sensitive", flag);
-    settings->bind("amount", amount, "value", flag);
-    settings->bind("harmonics", harmonics, "value", flag);
-    settings->bind("scope", scope, "value", flag);
-    settings->bind("floor", floorv, "value", flag);
-    settings->bind("blend", blend, "value", flag);
-    settings->bind("input-gain", input_gain, "value", flag);
-    settings->bind("output-gain", output_gain, "value", flag);
+    settings->bind("amount", amount.get(), "value", flag);
+    settings->bind("harmonics", harmonics.get(), "value", flag);
+    settings->bind("scope", scope.get(), "value", flag);
+    settings->bind("floor", floorv.get(), "value", flag);
+    settings->bind("blend", blend.get(), "value", flag);
+    settings->bind("input-gain", input_gain.get(), "value", flag);
+    settings->bind("output-gain", output_gain.get(), "value", flag);
     settings->bind("listen", listen, "active", flag);
     settings->bind("floor-active", floor_active, "active", flag);
 

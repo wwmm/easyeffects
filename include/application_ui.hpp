@@ -42,13 +42,10 @@ class ApplicationUi : public Gtk::ApplicationWindow {
         *show_spectrum, *use_custom_color;
     Gtk::ToggleButton *use_default_sink, *use_default_source;
     Gtk::ComboBox *input_device, *output_device;
-    Gtk::Adjustment *buffer_in, *buffer_out, *latency_in, *latency_out,
-        *spectrum_n_points;
     Gtk::DrawingArea* spectrum;
     Gtk::Box* spectrum_box;
     Gtk::Button *reset_settings, *add_preset, *import_preset,
         *calibration_button;
-    Gtk::ListStore *sink_list, *source_list;
     Gtk::Stack* stack;
     Gtk::ListBox* presets_listbox;
     Gtk::MenuButton* presets_menu_button;
@@ -56,6 +53,10 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     Gtk::Entry* preset_name;
     Gtk::ColorButton* spectrum_color_button;
     Gdk::RGBA spectrum_color;
+
+    Glib::RefPtr<Gtk::Adjustment> buffer_in, buffer_out, latency_in,
+        latency_out, spectrum_n_points;
+    Glib::RefPtr<Gtk::ListStore> sink_list, source_list;
 
     sigc::connection spectrum_connection;
     std::vector<sigc::connection> connections;
@@ -67,9 +68,14 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     double mouse_intensity, mouse_freq;
     std::vector<float> spectrum_mag;
 
-    template <typename T>
-    void get_object(std::string name, T& object) {
-        object = (T)builder->get_object(name).get();
+    void get_object(std::string name, Glib::RefPtr<Gtk::Adjustment>& object) {
+        object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(
+            builder->get_object(name));
+    }
+
+    void get_object(std::string name, Glib::RefPtr<Gtk::ListStore>& object) {
+        object = Glib::RefPtr<Gtk::ListStore>::cast_dynamic(
+            builder->get_object(name));
     }
 
     void apply_css_style(std::string css_file_name);

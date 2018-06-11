@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+### Fixed
+- Removed a few memory leaks
 
 ## [4.0.2]
 ### Added

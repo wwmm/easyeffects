@@ -2,6 +2,7 @@
 #define PLUGIN_UI_BASE_HPP
 
 #include <giomm/settings.h>
+#include <gtkmm/adjustment.h>
 #include <gtkmm/box.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/button.h>
@@ -43,6 +44,11 @@ class PluginUiBase {
     template <typename T>
     void get_object(std::string name, T& object) {
         object = (T)builder->get_object(name).get();
+    }
+
+    void get_object(std::string name, Glib::RefPtr<Gtk::Adjustment>& object) {
+        object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(
+            builder->get_object(name));
     }
 
     std::string level_to_str(double value);

@@ -211,15 +211,15 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     settings->bind("use-default-source", input_device, "sensitive",
                    flag | flag_invert_boolean);
 
-    settings->bind("buffer-out", buffer_out, "value", flag);
-    settings->bind("latency-out", latency_out, "value", flag);
+    settings->bind("buffer-out", buffer_out.get(), "value", flag);
+    settings->bind("latency-out", latency_out.get(), "value", flag);
 
-    settings->bind("buffer-in", buffer_in, "value", flag);
-    settings->bind("latency-in", latency_in, "value", flag);
+    settings->bind("buffer-in", buffer_in.get(), "value", flag);
+    settings->bind("latency-in", latency_in.get(), "value", flag);
 
     settings->bind("show-spectrum", show_spectrum, "active", flag);
     settings->bind("show-spectrum", spectrum_box, "visible", flag_get);
-    settings->bind("spectrum-n-points", spectrum_n_points, "value", flag);
+    settings->bind("spectrum-n-points", spectrum_n_points.get(), "value", flag);
     settings->bind("use-custom-color", use_custom_color, "active", flag);
     settings->bind("use-custom-color", spectrum_color_button, "sensitive",
                    flag);

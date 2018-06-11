@@ -1,7 +1,6 @@
 #ifndef PANORAMA_UI_HPP
 #define PANORAMA_UI_HPP
 
-#include <gtkmm/adjustment.h>
 #include <gtkmm/grid.h>
 #include "plugin_ui_base.hpp"
 
@@ -17,7 +16,7 @@ class PanoramaUi : public Gtk::Grid, public PluginUiBase {
     void reset();
 
    private:
-    Gtk::Adjustment* position;
+    Glib::RefPtr<Gtk::Adjustment> position;
 };
 
 #endif

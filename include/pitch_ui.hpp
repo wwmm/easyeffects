@@ -1,7 +1,6 @@
 #ifndef PITCH_UI_HPP
 #define PITCH_UI_HPP
 
-#include <gtkmm/adjustment.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/togglebutton.h>
 #include "plugin_ui_base.hpp"
@@ -18,7 +17,7 @@ class PitchUi : public Gtk::Grid, public PluginUiBase {
     void reset();
 
    private:
-    Gtk::Adjustment *cents, *crispness, *semitones, *octaves;
+    Glib::RefPtr<Gtk::Adjustment> cents, crispness, semitones, octaves;
     Gtk::ToggleButton *faster, *formant_preserving;
 };
 

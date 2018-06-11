@@ -82,13 +82,13 @@ GateUi::GateUi(BaseObjectType* cobject,
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
     settings->bind("installed", this, "sensitive", flag);
-    settings->bind("attack", attack, "value", flag);
-    settings->bind("knee", knee, "value", flag);
-    settings->bind("makeup", makeup, "value", flag);
-    settings->bind("range", range, "value", flag);
-    settings->bind("ratio", ratio, "value", flag);
-    settings->bind("release", release, "value", flag);
-    settings->bind("threshold", threshold, "value", flag);
+    settings->bind("attack", attack.get(), "value", flag);
+    settings->bind("knee", knee.get(), "value", flag);
+    settings->bind("makeup", makeup.get(), "value", flag);
+    settings->bind("range", range.get(), "value", flag);
+    settings->bind("ratio", ratio.get(), "value", flag);
+    settings->bind("release", release.get(), "value", flag);
+    settings->bind("threshold", threshold.get(), "value", flag);
 
     g_settings_bind_with_mapping(settings->gobj(), "detection",
                                  detection->gobj(), "active",

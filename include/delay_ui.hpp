@@ -1,7 +1,6 @@
 #ifndef DELAY_UI_HPP
 #define DELAY_UI_HPP
 
-#include <gtkmm/adjustment.h>
 #include <gtkmm/grid.h>
 #include "plugin_ui_base.hpp"
 
@@ -19,7 +18,7 @@ class DelayUi : public Gtk::Grid, public PluginUiBase {
     void on_new_tempo(std::array<double, 2> value);
 
    private:
-    Gtk::Adjustment *m_l, *m_r, *cm_l, *cm_r, *temperature;
+    Glib::RefPtr<Gtk::Adjustment> m_l, m_r, cm_l, cm_r, temperature;
     Gtk::Label *d_l, *d_r;
 };
 
