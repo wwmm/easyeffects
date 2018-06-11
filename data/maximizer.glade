@@ -2,7 +2,7 @@
 <!-- Generated with glade 3.22.1 -->
 <interface domain="pulseeffects">
   <requires lib="gtk+" version="3.20"/>
-  <object class="GtkAdjustment" id="ceiling_adjustment">
+  <object class="GtkAdjustment" id="ceiling">
     <property name="lower">-30</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
@@ -88,14 +88,14 @@
       </packing>
     </child>
   </object>
-  <object class="GtkAdjustment" id="release_adjustment">
+  <object class="GtkAdjustment" id="release">
     <property name="lower">1</property>
     <property name="upper">100</property>
     <property name="value">3.1600000000000001</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">1</property>
   </object>
-  <object class="GtkAdjustment" id="threshold_adjustment">
+  <object class="GtkAdjustment" id="threshold">
     <property name="lower">-30</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
@@ -133,7 +133,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkSpinButton" id="threshold">
+              <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -143,7 +143,7 @@
                 <property name="secondary_icon_activatable">False</property>
                 <property name="input_purpose">number</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">threshold_adjustment</property>
+                <property name="adjustment">threshold</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
               </object>
@@ -166,7 +166,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkSpinButton" id="ceiling">
+              <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -176,7 +176,7 @@
                 <property name="secondary_icon_activatable">False</property>
                 <property name="input_purpose">number</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">ceiling_adjustment</property>
+                <property name="adjustment">ceiling</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
               </object>
@@ -186,7 +186,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkSpinButton" id="release">
+              <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="halign">center</property>
@@ -196,7 +196,7 @@
                 <property name="secondary_icon_activatable">False</property>
                 <property name="input_purpose">number</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">release_adjustment</property>
+                <property name="adjustment">release</property>
                 <property name="digits">2</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>

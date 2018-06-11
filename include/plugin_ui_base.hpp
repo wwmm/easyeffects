@@ -41,11 +41,6 @@ class PluginUiBase {
     Gtk::Label *input_level_left_label, *input_level_right_label;
     Gtk::Label *output_level_left_label, *output_level_right_label;
 
-    template <typename T>
-    void get_object(std::string name, T& object) {
-        object = (T)builder->get_object(name).get();
-    }
-
     void get_object(std::string name, Glib::RefPtr<Gtk::Adjustment>& object) {
         object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(
             builder->get_object(name));
