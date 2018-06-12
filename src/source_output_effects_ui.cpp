@@ -5,7 +5,8 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(
     const Glib::RefPtr<Gtk::Builder>& refBuilder,
     const Glib::RefPtr<Gio::Settings>& refSettings,
     const std::shared_ptr<SourceOutputEffects>& soe_ptr)
-    : EffectsBaseUi(cobject, refBuilder, refSettings, soe_ptr->pm),
+    : Gtk::Box(cobject),
+      EffectsBaseUi(refBuilder, refSettings, soe_ptr->pm),
       soe(soe_ptr),
       limiter_ui(LimiterUi::create(
           "com.github.wwmm.pulseeffects.sourceoutputs.limiter")),
@@ -44,6 +45,8 @@ SourceOutputEffectsUi* SourceOutputEffectsUi::create(
     SourceOutputEffectsUi* soe_ui = nullptr;
 
     builder->get_widget_derived("widgets_box", soe_ui, settings, soe);
+
+    soe_ui->reference();
 
     return soe_ui;
 }

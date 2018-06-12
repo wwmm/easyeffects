@@ -9,11 +9,10 @@
 #include "util.hpp"
 
 ApplicationUi::ApplicationUi(BaseObjectType* cobject,
-                             const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                             const Glib::RefPtr<Gtk::Builder>& builder,
                              Application* application)
     : Gtk::ApplicationWindow(cobject),
       app(application),
-      builder(refBuilder),
       settings(app->settings),
       sie_ui(SinkInputEffectsUi::create(app->sie)),
       soe_ui(SourceOutputEffectsUi::create(app->soe)) {
@@ -46,13 +45,13 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     builder->get_widget("spectrum_color_button", spectrum_color_button);
     builder->get_widget("calibration_button", calibration_button);
 
-    get_object("buffer_in", buffer_in);
-    get_object("buffer_out", buffer_out);
-    get_object("latency_in", latency_in);
-    get_object("latency_out", latency_out);
-    get_object("spectrum_n_points", spectrum_n_points);
-    get_object("sink_list", sink_list);
-    get_object("source_list", source_list);
+    get_object(builder, "buffer_in", buffer_in);
+    get_object(builder, "buffer_out", buffer_out);
+    get_object(builder, "latency_in", latency_in);
+    get_object(builder, "latency_out", latency_out);
+    get_object(builder, "spectrum_n_points", spectrum_n_points);
+    get_object(builder, "sink_list", sink_list);
+    get_object(builder, "source_list", source_list);
 
     // signals connection
 

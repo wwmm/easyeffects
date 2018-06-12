@@ -11,10 +11,9 @@
 #include "app_info_ui.hpp"
 #include "pulse_manager.hpp"
 
-class EffectsBaseUi : public Gtk::Box {
+class EffectsBaseUi {
    public:
-    EffectsBaseUi(BaseObjectType* cobject,
-                  const Glib::RefPtr<Gtk::Builder>& refBuilder,
+    EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& refBuilder,
                   const Glib::RefPtr<Gio::Settings>& refSettings,
                   const std::shared_ptr<PulseManager>& pulse_manager);
 
@@ -44,8 +43,6 @@ class EffectsBaseUi : public Gtk::Box {
     }
 
    private:
-    Glib::RefPtr<Gtk::Builder> builder;
-
     Gtk::Box* apps_box;
 
     std::shared_ptr<PulseManager> pm;

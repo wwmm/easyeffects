@@ -3,14 +3,10 @@
 #include <gtkmm/label.h>
 #include "effects_base_ui.hpp"
 
-EffectsBaseUi::EffectsBaseUi(BaseObjectType* cobject,
-                             const Glib::RefPtr<Gtk::Builder>& refBuilder,
+EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
                              const Glib::RefPtr<Gio::Settings>& refSettings,
                              const std::shared_ptr<PulseManager>& pulse_manager)
-    : Gtk::Box(cobject),
-      settings(refSettings),
-      builder(refBuilder),
-      pm(pulse_manager) {
+    : settings(refSettings), pm(pulse_manager) {
     // loading glade widgets
 
     builder->get_widget("stack", stack);

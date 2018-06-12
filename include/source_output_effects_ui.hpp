@@ -13,7 +13,7 @@
 #include "source_output_effects.hpp"
 #include "webrtc_ui.hpp"
 
-class SourceOutputEffectsUi : public EffectsBaseUi {
+class SourceOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
    public:
     SourceOutputEffectsUi(BaseObjectType* cobject,
                           const Glib::RefPtr<Gtk::Builder>& refBuilder,

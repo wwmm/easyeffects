@@ -6,7 +6,8 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     const Glib::RefPtr<Gtk::Builder>& refBuilder,
     const Glib::RefPtr<Gio::Settings>& refSettings,
     const std::shared_ptr<SinkInputEffects>& sie_ptr)
-    : EffectsBaseUi(cobject, refBuilder, refSettings, sie_ptr->pm),
+    : Gtk::Box(cobject),
+      EffectsBaseUi(refBuilder, refSettings, sie_ptr->pm),
       sie(sie_ptr),
       limiter_ui(
           LimiterUi::create("com.github.wwmm.pulseeffects.sinkinputs.limiter")),
@@ -38,7 +39,9 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     up_down_connections();
 }
 
-SinkInputEffectsUi::~SinkInputEffectsUi() {}
+SinkInputEffectsUi::~SinkInputEffectsUi() {
+    // util::warning("destructor");
+}
 
 SinkInputEffectsUi* SinkInputEffectsUi::create(
     std::shared_ptr<SinkInputEffects> sie) {
@@ -51,6 +54,8 @@ SinkInputEffectsUi* SinkInputEffectsUi::create(
     SinkInputEffectsUi* sie_ui = nullptr;
 
     builder->get_widget_derived("widgets_box", sie_ui, settings, sie);
+
+    sie_ui->reference();
 
     return sie_ui;
 }

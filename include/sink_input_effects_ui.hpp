@@ -16,7 +16,7 @@
 #include "sink_input_effects.hpp"
 #include "stereo_enhancer_ui.hpp"
 
-class SinkInputEffectsUi : public EffectsBaseUi {
+class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
    public:
     SinkInputEffectsUi(BaseObjectType* cobject,
                        const Glib::RefPtr<Gtk::Builder>& refBuilder,

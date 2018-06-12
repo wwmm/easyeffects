@@ -23,7 +23,7 @@
 class ApplicationUi : public Gtk::ApplicationWindow {
    public:
     ApplicationUi(BaseObjectType* cobject,
-                  const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                  const Glib::RefPtr<Gtk::Builder>& builder,
                   Application* application);
 
     virtual ~ApplicationUi();
@@ -35,7 +35,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
     Application* app;
 
-    Glib::RefPtr<Gtk::Builder> builder;
     Glib::RefPtr<Gio::Settings> settings;
 
     Gtk::Switch *enable_autostart, *enable_all_apps, *theme_switch,
@@ -68,12 +67,16 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     double mouse_intensity, mouse_freq;
     std::vector<float> spectrum_mag;
 
-    void get_object(std::string name, Glib::RefPtr<Gtk::Adjustment>& object) {
+    void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
+                    const std::string& name,
+                    Glib::RefPtr<Gtk::Adjustment>& object) {
         object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(
             builder->get_object(name));
     }
 
-    void get_object(std::string name, Glib::RefPtr<Gtk::ListStore>& object) {
+    void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
+                    const std::string& name,
+                    Glib::RefPtr<Gtk::ListStore>& object) {
         object = Glib::RefPtr<Gtk::ListStore>::cast_dynamic(
             builder->get_object(name));
     }
