@@ -57,9 +57,9 @@ GVariant* int_to_stereo_link_enum(const GValue* value,
 }  // namespace
 
 GateUi::GateUi(BaseObjectType* cobject,
-               const Glib::RefPtr<Gtk::Builder>& refBuilder,
+               const Glib::RefPtr<Gtk::Builder>& builder,
                const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(refBuilder, settings_name) {
+    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
     name = "gate";
 
     // loading glade widgets
@@ -69,13 +69,13 @@ GateUi::GateUi(BaseObjectType* cobject,
     builder->get_widget("gating", gating);
     builder->get_widget("gating_label", gating_label);
 
-    get_object("attack", attack);
-    get_object("knee", knee);
-    get_object("makeup", makeup);
-    get_object("range", range);
-    get_object("ratio", ratio);
-    get_object("release", release);
-    get_object("threshold", threshold);
+    get_object(builder, "attack", attack);
+    get_object(builder, "knee", knee);
+    get_object(builder, "makeup", makeup);
+    get_object(builder, "range", range);
+    get_object(builder, "ratio", ratio);
+    get_object(builder, "release", release);
+    get_object(builder, "threshold", threshold);
 
     // gsettings bindings
 
@@ -114,6 +114,8 @@ std::shared_ptr<GateUi> GateUi::create(std::string settings_name) {
     GateUi* grid = nullptr;
 
     builder->get_widget_derived("widgets_grid", grid, settings_name);
+
+    grid->reference();
 
     return std::shared_ptr<GateUi>(grid);
 }

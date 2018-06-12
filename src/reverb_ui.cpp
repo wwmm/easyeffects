@@ -48,9 +48,9 @@ GVariant* int_to_room_size_enum(const GValue* value,
 }  // namespace
 
 ReverbUi::ReverbUi(BaseObjectType* cobject,
-                   const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                   const Glib::RefPtr<Gtk::Builder>& builder,
                    const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(refBuilder, settings_name) {
+    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
     name = "reverb";
 
     // loading glade widgets
@@ -65,16 +65,16 @@ ReverbUi::ReverbUi(BaseObjectType* cobject,
                         preset_large_occupied_hall);
     builder->get_widget("preset_default", preset_default);
 
-    get_object("input_gain", input_gain);
-    get_object("output_gain", output_gain);
-    get_object("predelay", predelay);
-    get_object("decay_time", decay_time);
-    get_object("diffusion", diffusion);
-    get_object("amount", amount);
-    get_object("dry", dry);
-    get_object("hf_damp", hf_damp);
-    get_object("bass_cut", bass_cut);
-    get_object("treble_cut", treble_cut);
+    get_object(builder, "input_gain", input_gain);
+    get_object(builder, "output_gain", output_gain);
+    get_object(builder, "predelay", predelay);
+    get_object(builder, "decay_time", decay_time);
+    get_object(builder, "diffusion", diffusion);
+    get_object(builder, "amount", amount);
+    get_object(builder, "dry", dry);
+    get_object(builder, "hf_damp", hf_damp);
+    get_object(builder, "bass_cut", bass_cut);
+    get_object(builder, "treble_cut", treble_cut);
 
     // gsettings bindings
 
@@ -113,6 +113,8 @@ std::shared_ptr<ReverbUi> ReverbUi::create(std::string settings_name) {
     ReverbUi* grid = nullptr;
 
     builder->get_widget_derived("widgets_grid", grid, settings_name);
+
+    grid->reference();
 
     return std::shared_ptr<ReverbUi>(grid);
 }

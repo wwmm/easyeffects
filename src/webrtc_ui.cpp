@@ -129,9 +129,9 @@ GVariant* int_to_voice_detection_likelihood(const GValue* value,
 }  // namespace
 
 WebrtcUi::WebrtcUi(BaseObjectType* cobject,
-                   const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                   const Glib::RefPtr<Gtk::Builder>& builder,
                    const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(refBuilder, settings_name) {
+    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
     name = "webrtc";
 
     // loading glade widgets
@@ -150,9 +150,10 @@ WebrtcUi::WebrtcUi(BaseObjectType* cobject,
     builder->get_widget("voice_detection_likelihood",
                         voice_detection_likelihood);
 
-    get_object("compression_gain_db", compression_gain_db);
-    get_object("target_level_dbfs", target_level_dbfs);
-    get_object("voice_detection_frame_size", voice_detection_frame_size);
+    get_object(builder, "compression_gain_db", compression_gain_db);
+    get_object(builder, "target_level_dbfs", target_level_dbfs);
+    get_object(builder, "voice_detection_frame_size",
+               voice_detection_frame_size);
 
     // gsettings bindings
 
@@ -211,6 +212,8 @@ std::shared_ptr<WebrtcUi> WebrtcUi::create(std::string settings_name) {
     WebrtcUi* grid = nullptr;
 
     builder->get_widget_derived("widgets_grid", grid, settings_name);
+
+    grid->reference();
 
     return std::shared_ptr<WebrtcUi>(grid);
 }

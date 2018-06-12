@@ -7,29 +7,59 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(
     const std::shared_ptr<SourceOutputEffects>& soe_ptr)
     : Gtk::Box(cobject),
       EffectsBaseUi(refBuilder, refSettings, soe_ptr->pm),
-      soe(soe_ptr),
-      limiter_ui(LimiterUi::create(
-          "com.github.wwmm.pulseeffects.sourceoutputs.limiter")),
-      compressor_ui(CompressorUi::create(
-          "com.github.wwmm.pulseeffects.sourceoutputs.compressor")),
-      filter_ui(FilterUi::create(
-          "com.github.wwmm.pulseeffects.sourceoutputs.filter")),
-      equalizer_ui(EqualizerUi::create(
-          "com.github.wwmm.pulseeffects.sourceoutputs.equalizer")),
-      reverb_ui(ReverbUi::create(
-          "com.github.wwmm.pulseeffects.sourceoutputs.reverb")),
-      gate_ui(
-          GateUi::create("com.github.wwmm.pulseeffects.sourceoutputs.gate")),
-      deesser_ui(DeesserUi::create(
-          "com.github.wwmm.pulseeffects.sourceoutputs.deesser")),
-      pitch_ui(
-          PitchUi::create("com.github.wwmm.pulseeffects.sourceoutputs.pitch")),
-      webrtc_ui(WebrtcUi::create(
-          "com.github.wwmm.pulseeffects.sourceoutputs.webrtc")) {
-    level_meters_connections();
-    populate_listbox();
-    populate_stack();
-    up_down_connections();
+      soe(soe_ptr) {
+    // limiter_ui(LimiterUi::create(
+    //     "com.github.wwmm.pulseeffects.sourceoutputs.limiter")),
+    // compressor_ui(CompressorUi::create(
+    //     "com.github.wwmm.pulseeffects.sourceoutputs.compressor")),
+    // filter_ui(FilterUi::create(
+    //     "com.github.wwmm.pulseeffects.sourceoutputs.filter")),
+    // equalizer_ui(EqualizerUi::create(
+    //     "com.github.wwmm.pulseeffects.sourceoutputs.equalizer")),
+    // reverb_ui(ReverbUi::create(
+    //     "com.github.wwmm.pulseeffects.sourceoutputs.reverb")),
+    // gate_ui(
+    //     GateUi::create("com.github.wwmm.pulseeffects.sourceoutputs.gate")),
+    // deesser_ui(DeesserUi::create(
+    //     "com.github.wwmm.pulseeffects.sourceoutputs.deesser")),
+    // pitch_ui(
+    //     PitchUi::create("com.github.wwmm.pulseeffects.sourceoutputs.pitch")),
+    // webrtc_ui(WebrtcUi::create(
+    //     "com.github.wwmm.pulseeffects.sourceoutputs.webrtc")) {
+
+    auto builder = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/limiter.glade");
+
+    builder->get_widget_derived(
+        "widgets_grid", limiter_ui,
+        "com.github.wwmm.pulseeffects.sourceoutputs.limiter");
+
+    // populate stack
+
+    stack->add(*limiter_ui, limiter_ui->name);
+    // stack->add(*compressor_ui, compressor_ui->name);
+    // stack->add(*filter_ui, filter_ui->name);
+    // stack->add(*equalizer_ui, equalizer_ui->name);
+    // stack->add(*reverb_ui, reverb_ui->name);
+    // stack->add(*gate_ui, gate_ui->name);
+    // stack->add(*deesser_ui, deesser_ui->name);
+    // stack->add(*pitch_ui, pitch_ui->name);
+    // stack->add(*webrtc_ui, webrtc_ui->name);
+
+    // populate listbox
+
+    add_to_listbox(limiter_ui);
+    // add_to_listbox(compressor_ui);
+    // add_to_listbox(filter_ui);
+    // add_to_listbox(equalizer_ui);
+    // add_to_listbox(reverb_ui);
+    // add_to_listbox(gate_ui);
+    // add_to_listbox(deesser_ui);
+    // add_to_listbox(pitch_ui);
+    // add_to_listbox(webrtc_ui);
+
+    // level_meters_connections();
+    // up_down_connections();
 }
 
 SourceOutputEffectsUi::~SourceOutputEffectsUi() {}
@@ -124,29 +154,6 @@ void SourceOutputEffectsUi::level_meters_connections() {
         sigc::mem_fun(*webrtc_ui, &WebrtcUi::on_new_input_level_db)));
     connections.push_back(soe->webrtc_output_level.connect(
         sigc::mem_fun(*webrtc_ui, &WebrtcUi::on_new_output_level_db)));
-}
-
-void SourceOutputEffectsUi::populate_listbox() {
-    add_to_listbox(limiter_ui);
-    add_to_listbox(compressor_ui);
-    add_to_listbox(filter_ui);
-    add_to_listbox(equalizer_ui);
-    add_to_listbox(reverb_ui);
-    add_to_listbox(gate_ui);
-    add_to_listbox(deesser_ui);
-    add_to_listbox(pitch_ui);
-    add_to_listbox(webrtc_ui);
-}
-void SourceOutputEffectsUi::populate_stack() {
-    stack->add(*limiter_ui, limiter_ui->name);
-    stack->add(*compressor_ui, compressor_ui->name);
-    stack->add(*filter_ui, filter_ui->name);
-    stack->add(*equalizer_ui, equalizer_ui->name);
-    stack->add(*reverb_ui, reverb_ui->name);
-    stack->add(*gate_ui, gate_ui->name);
-    stack->add(*deesser_ui, deesser_ui->name);
-    stack->add(*pitch_ui, pitch_ui->name);
-    stack->add(*webrtc_ui, webrtc_ui->name);
 }
 
 void SourceOutputEffectsUi::up_down_connections() {

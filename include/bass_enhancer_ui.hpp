@@ -8,7 +8,7 @@
 class BassEnhancerUi : public Gtk::Grid, public PluginUiBase {
    public:
     BassEnhancerUi(BaseObjectType* cobject,
-                   const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                   const Glib::RefPtr<Gtk::Builder>& builder,
                    const std::string& settings_name);
     virtual ~BassEnhancerUi();
 

@@ -57,9 +57,9 @@ GVariant* int_to_mode_enum(const GValue* value,
 }  // namespace
 
 DeesserUi::DeesserUi(BaseObjectType* cobject,
-                     const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                     const Glib::RefPtr<Gtk::Builder>& builder,
                      const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(refBuilder, settings_name) {
+    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
     name = "deesser";
 
     // loading glade widgets
@@ -72,14 +72,14 @@ DeesserUi::DeesserUi(BaseObjectType* cobject,
     builder->get_widget("detected_label", detected_label);
     builder->get_widget("sc_listen", sc_listen);
 
-    get_object("makeup", makeup);
-    get_object("ratio", ratio);
-    get_object("threshold", threshold);
-    get_object("f1_freq", f1_freq);
-    get_object("f2_freq", f2_freq);
-    get_object("f1_level", f1_level);
-    get_object("f2_level", f2_level);
-    get_object("f2_q", f2_q);
+    get_object(builder, "makeup", makeup);
+    get_object(builder, "ratio", ratio);
+    get_object(builder, "threshold", threshold);
+    get_object(builder, "f1_freq", f1_freq);
+    get_object(builder, "f2_freq", f2_freq);
+    get_object(builder, "f1_level", f1_level);
+    get_object(builder, "f2_level", f2_level);
+    get_object(builder, "f2_q", f2_q);
 
     // gsettings bindings
 
@@ -119,6 +119,8 @@ std::shared_ptr<DeesserUi> DeesserUi::create(std::string settings_name) {
     DeesserUi* grid = nullptr;
 
     builder->get_widget_derived("widgets_grid", grid, settings_name);
+
+    grid->reference();
 
     return std::shared_ptr<DeesserUi>(grid);
 }

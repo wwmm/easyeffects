@@ -1,9 +1,9 @@
 #include "pitch_ui.hpp"
 
 PitchUi::PitchUi(BaseObjectType* cobject,
-                 const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                 const Glib::RefPtr<Gtk::Builder>& builder,
                  const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(refBuilder, settings_name) {
+    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
     name = "pitch";
 
     // loading glade widgets
@@ -11,10 +11,10 @@ PitchUi::PitchUi(BaseObjectType* cobject,
     builder->get_widget("faster", faster);
     builder->get_widget("formant_preserving", formant_preserving);
 
-    get_object("cents", cents);
-    get_object("crispness", crispness);
-    get_object("semitones", semitones);
-    get_object("octaves", octaves);
+    get_object(builder, "cents", cents);
+    get_object(builder, "crispness", crispness);
+    get_object(builder, "semitones", semitones);
+    get_object(builder, "octaves", octaves);
 
     // gsettings bindings
 
@@ -42,6 +42,8 @@ std::shared_ptr<PitchUi> PitchUi::create(std::string settings_name) {
     PitchUi* grid = nullptr;
 
     builder->get_widget_derived("widgets_grid", grid, settings_name);
+
+    grid->reference();
 
     return std::shared_ptr<PitchUi>(grid);
 }

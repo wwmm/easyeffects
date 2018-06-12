@@ -1,14 +1,14 @@
 #include "panorama_ui.hpp"
 
 PanoramaUi::PanoramaUi(BaseObjectType* cobject,
-                       const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                       const Glib::RefPtr<Gtk::Builder>& builder,
                        const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(refBuilder, settings_name) {
+    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
     name = "panorama";
 
     // loading glade widgets
 
-    get_object("position", position);
+    get_object(builder, "position", position);
 
     // gsettings bindings
 
@@ -31,6 +31,8 @@ std::shared_ptr<PanoramaUi> PanoramaUi::create(std::string settings_name) {
     PanoramaUi* grid = nullptr;
 
     builder->get_widget_derived("widgets_grid", grid, settings_name);
+
+    grid->reference();
 
     return std::shared_ptr<PanoramaUi>(grid);
 }

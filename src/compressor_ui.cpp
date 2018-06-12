@@ -57,9 +57,9 @@ GVariant* int_to_stereo_link_enum(const GValue* value,
 }  // namespace
 
 CompressorUi::CompressorUi(BaseObjectType* cobject,
-                           const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                           const Glib::RefPtr<Gtk::Builder>& builder,
                            const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(refBuilder, settings_name) {
+    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
     name = "compressor";
 
     // loading glade widgets
@@ -72,13 +72,13 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
     builder->get_widget("preset_vocal_leveller2", preset_vocal_leveller2);
     builder->get_widget("preset_default", preset_default);
 
-    get_object("attack", attack);
-    get_object("knee", knee);
-    get_object("makeup", makeup);
-    get_object("mix", mix);
-    get_object("ratio", ratio);
-    get_object("release", release);
-    get_object("threshold", threshold);
+    get_object(builder, "attack", attack);
+    get_object(builder, "knee", knee);
+    get_object(builder, "makeup", makeup);
+    get_object(builder, "mix", mix);
+    get_object(builder, "ratio", ratio);
+    get_object(builder, "release", release);
+    get_object(builder, "threshold", threshold);
 
     // gsettings bindings
 
@@ -119,6 +119,8 @@ std::shared_ptr<CompressorUi> CompressorUi::create(std::string settings_name) {
     CompressorUi* grid = nullptr;
 
     builder->get_widget_derived("widgets_grid", grid, settings_name);
+
+    grid->reference();
 
     return std::shared_ptr<CompressorUi>(grid);
 }

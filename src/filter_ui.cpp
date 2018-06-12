@@ -71,9 +71,9 @@ GVariant* int_to_filter_enum(const GValue* value,
 }  // namespace
 
 FilterUi::FilterUi(BaseObjectType* cobject,
-                   const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                   const Glib::RefPtr<Gtk::Builder>& builder,
                    const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(refBuilder, settings_name) {
+    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
     name = "filter";
 
     // loading glade widgets
@@ -84,11 +84,11 @@ FilterUi::FilterUi(BaseObjectType* cobject,
     builder->get_widget("preset_distant_headphones", preset_distant_headphones);
     builder->get_widget("preset_default", preset_default);
 
-    get_object("input_gain", input_gain);
-    get_object("output_gain", output_gain);
-    get_object("frequency", frequency);
-    get_object("resonance", resonance);
-    get_object("inertia", inertia);
+    get_object(builder, "input_gain", input_gain);
+    get_object(builder, "output_gain", output_gain);
+    get_object(builder, "frequency", frequency);
+    get_object(builder, "resonance", resonance);
+    get_object(builder, "inertia", inertia);
 
     // gsettings bindings
 
@@ -115,7 +115,7 @@ FilterUi::~FilterUi() {
     settings->set_boolean("post-messages", false);
 }
 
-std::shared_ptr<FilterUi> FilterUi::create(std::string settings_name) {
+FilterUi* FilterUi::create(std::string settings_name) {
     auto builder = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/filter.glade");
 
@@ -123,7 +123,9 @@ std::shared_ptr<FilterUi> FilterUi::create(std::string settings_name) {
 
     builder->get_widget_derived("widgets_grid", grid, settings_name);
 
-    return std::shared_ptr<FilterUi>(grid);
+    grid->reference();
+
+    return grid;
 }
 
 void FilterUi::init_presets_buttons() {

@@ -1,9 +1,9 @@
 #include "maximizer_ui.hpp"
 
 MaximizerUi::MaximizerUi(BaseObjectType* cobject,
-                         const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                         const Glib::RefPtr<Gtk::Builder>& builder,
                          const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(refBuilder, settings_name) {
+    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
     name = "maximizer";
 
     // loading glade widgets
@@ -11,9 +11,9 @@ MaximizerUi::MaximizerUi(BaseObjectType* cobject,
     builder->get_widget("reduction", reduction);
     builder->get_widget("reduction_label", reduction_label);
 
-    get_object("ceiling", ceiling);
-    get_object("release", release);
-    get_object("threshold", threshold);
+    get_object(builder, "ceiling", ceiling);
+    get_object(builder, "release", release);
+    get_object(builder, "threshold", threshold);
 
     // gsettings bindings
 
@@ -38,6 +38,8 @@ std::shared_ptr<MaximizerUi> MaximizerUi::create(std::string settings_name) {
     MaximizerUi* grid = nullptr;
 
     builder->get_widget_derived("widgets_grid", grid, settings_name);
+
+    grid->reference();
 
     return std::shared_ptr<MaximizerUi>(grid);
 }

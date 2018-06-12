@@ -33,9 +33,9 @@ class SourceOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
    private:
     std::shared_ptr<SourceOutputEffects> soe;
 
-    std::shared_ptr<LimiterUi> limiter_ui;
+    LimiterUi* limiter_ui;
     std::shared_ptr<CompressorUi> compressor_ui;
-    std::shared_ptr<FilterUi> filter_ui;
+    FilterUi* filter_ui;
     std::shared_ptr<EqualizerUi> equalizer_ui;
     std::shared_ptr<ReverbUi> reverb_ui;
     std::shared_ptr<GateUi> gate_ui;
@@ -44,8 +44,6 @@ class SourceOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
     std::shared_ptr<WebrtcUi> webrtc_ui;
 
     void level_meters_connections();
-    void populate_listbox();
-    void populate_stack();
     void up_down_connections();
 };
 

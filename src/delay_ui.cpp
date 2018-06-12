@@ -1,9 +1,9 @@
 #include "delay_ui.hpp"
 
 DelayUi::DelayUi(BaseObjectType* cobject,
-                 const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                 const Glib::RefPtr<Gtk::Builder>& builder,
                  const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(refBuilder, settings_name) {
+    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
     name = "delay";
 
     // loading glade widgets
@@ -11,11 +11,11 @@ DelayUi::DelayUi(BaseObjectType* cobject,
     builder->get_widget("d_l", d_l);
     builder->get_widget("d_r", d_r);
 
-    get_object("m_l", m_l);
-    get_object("m_r", m_r);
-    get_object("cm_l", cm_l);
-    get_object("cm_r", cm_r);
-    get_object("temperature", temperature);
+    get_object(builder, "m_l", m_l);
+    get_object(builder, "m_r", m_r);
+    get_object(builder, "cm_l", cm_l);
+    get_object(builder, "cm_r", cm_r);
+    get_object(builder, "temperature", temperature);
 
     // gsettings bindings
 
@@ -42,6 +42,8 @@ std::shared_ptr<DelayUi> DelayUi::create(std::string settings_name) {
     DelayUi* grid = nullptr;
 
     builder->get_widget_derived("widgets_grid", grid, settings_name);
+
+    grid->reference();
 
     return std::shared_ptr<DelayUi>(grid);
 }

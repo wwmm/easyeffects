@@ -43,9 +43,9 @@ GVariant* int_to_stereo_enhancer_enum(const GValue* value,
 }  // namespace
 
 StereoEnhancerUi::StereoEnhancerUi(BaseObjectType* cobject,
-                                   const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                                   const Glib::RefPtr<Gtk::Builder>& builder,
                                    const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(refBuilder, settings_name) {
+    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
     name = "stereo_enhancer";
 
     // loading glade widgets
@@ -57,15 +57,15 @@ StereoEnhancerUi::StereoEnhancerUi(BaseObjectType* cobject,
     builder->get_widget("side_l_levelbar", side_l_levelbar);
     builder->get_widget("side_r_levelbar", side_r_levelbar);
 
-    get_object("input_gain", input_gain);
-    get_object("output_gain", output_gain);
-    get_object("side_gain", side_gain);
-    get_object("left_balance", left_balance);
-    get_object("left_delay", left_delay);
-    get_object("left_gain", left_gain);
-    get_object("right_balance", right_balance);
-    get_object("right_delay", right_delay);
-    get_object("right_gain", right_gain);
+    get_object(builder, "input_gain", input_gain);
+    get_object(builder, "output_gain", output_gain);
+    get_object(builder, "side_gain", side_gain);
+    get_object(builder, "left_balance", left_balance);
+    get_object(builder, "left_delay", left_delay);
+    get_object(builder, "left_gain", left_gain);
+    get_object(builder, "right_balance", right_balance);
+    get_object(builder, "right_delay", right_delay);
+    get_object(builder, "right_gain", right_gain);
 
     // gsettings bindings
 
@@ -105,6 +105,8 @@ std::shared_ptr<StereoEnhancerUi> StereoEnhancerUi::create(
     StereoEnhancerUi* grid = nullptr;
 
     builder->get_widget_derived("widgets_grid", grid, settings_name);
+
+    grid->reference();
 
     return std::shared_ptr<StereoEnhancerUi>(grid);
 }

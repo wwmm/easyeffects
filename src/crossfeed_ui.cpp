@@ -1,9 +1,9 @@
 #include "crossfeed_ui.hpp"
 
 CrossfeedUi::CrossfeedUi(BaseObjectType* cobject,
-                         const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                         const Glib::RefPtr<Gtk::Builder>& builder,
                          const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(refBuilder, settings_name) {
+    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
     name = "crossfeed";
 
     // loading glade widgets
@@ -12,8 +12,8 @@ CrossfeedUi::CrossfeedUi(BaseObjectType* cobject,
     builder->get_widget("preset_default", preset_default);
     builder->get_widget("preset_jmeier", preset_jmeier);
 
-    get_object("fcut", fcut);
-    get_object("feed", feed);
+    get_object(builder, "fcut", fcut);
+    get_object(builder, "feed", feed);
 
     // gsettings bindings
 
@@ -39,6 +39,8 @@ std::shared_ptr<CrossfeedUi> CrossfeedUi::create(std::string settings_name) {
     CrossfeedUi* grid = nullptr;
 
     builder->get_widget_derived("widgets_grid", grid, settings_name);
+
+    grid->reference();
 
     return std::shared_ptr<CrossfeedUi>(grid);
 }

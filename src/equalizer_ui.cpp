@@ -37,9 +37,9 @@ GVariant* int_to_bandtype_enum(const GValue* value,
 }  // namespace
 
 EqualizerUi::EqualizerUi(BaseObjectType* cobject,
-                         const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                         const Glib::RefPtr<Gtk::Builder>& builder,
                          const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(refBuilder, settings_name) {
+    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
     name = "equalizer";
 
     // loading glade widgets
@@ -49,7 +49,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
     builder->get_widget("flat_response", flat_response);
     builder->get_widget("calculate_freqs", calculate_freqs);
 
-    get_object("nbands", nbands);
+    get_object(builder, "nbands", nbands);
 
     nbands->signal_value_changed().connect(
         sigc::mem_fun(*this, &EqualizerUi::on_nbands_changed));
@@ -88,6 +88,8 @@ std::shared_ptr<EqualizerUi> EqualizerUi::create(std::string settings_name) {
     EqualizerUi* grid = nullptr;
 
     builder->get_widget_derived("widgets_grid", grid, settings_name);
+
+    grid->reference();
 
     return std::shared_ptr<EqualizerUi>(grid);
 }

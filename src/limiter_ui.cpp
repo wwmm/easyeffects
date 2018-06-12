@@ -1,9 +1,9 @@
 #include "limiter_ui.hpp"
 
 LimiterUi::LimiterUi(BaseObjectType* cobject,
-                     const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                     const Glib::RefPtr<Gtk::Builder>& builder,
                      const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(refBuilder, settings_name) {
+    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
     name = "limiter";
 
     // loading glade widgets
@@ -15,16 +15,16 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
     builder->get_widget("attenuation", attenuation);
     builder->get_widget("attenuation_label", attenuation_label);
 
-    get_object("input_gain", input_gain);
-    get_object("limit", limit);
-    get_object("lookahead", lookahead);
-    get_object("release", release);
-    get_object("oversampling", oversampling);
-    get_object("asc_level", asc_level);
-    get_object("autovolume_window", autovolume_window);
-    get_object("autovolume_target", autovolume_target);
-    get_object("autovolume_tolerance", autovolume_tolerance);
-    get_object("autovolume_threshold", autovolume_threshold);
+    get_object(builder, "input_gain", input_gain);
+    get_object(builder, "limit", limit);
+    get_object(builder, "lookahead", lookahead);
+    get_object(builder, "release", release);
+    get_object(builder, "oversampling", oversampling);
+    get_object(builder, "asc_level", asc_level);
+    get_object(builder, "autovolume_window", autovolume_window);
+    get_object(builder, "autovolume_target", autovolume_target);
+    get_object(builder, "autovolume_tolerance", autovolume_tolerance);
+    get_object(builder, "autovolume_threshold", autovolume_threshold);
 
     // gsettings bindings
 
@@ -96,9 +96,11 @@ LimiterUi::~LimiterUi() {
     for (auto c : connections) {
         c.disconnect();
     }
+
+    util::warning("destructor");
 }
 
-std::shared_ptr<LimiterUi> LimiterUi::create(std::string settings_name) {
+LimiterUi* LimiterUi::create(std::string settings_name) {
     auto builder = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/limiter.glade");
 
@@ -106,7 +108,9 @@ std::shared_ptr<LimiterUi> LimiterUi::create(std::string settings_name) {
 
     builder->get_widget_derived("widgets_grid", grid, settings_name);
 
-    return std::shared_ptr<LimiterUi>(grid);
+    // grid->reference();
+
+    return grid;
 }
 
 void LimiterUi::init_autovolume() {

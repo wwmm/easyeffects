@@ -13,7 +13,7 @@
 
 class EffectsBaseUi {
    public:
-    EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& refBuilder,
+    EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
                   const Glib::RefPtr<Gio::Settings>& refSettings,
                   const std::shared_ptr<PulseManager>& pulse_manager);
 

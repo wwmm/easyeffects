@@ -1,9 +1,9 @@
 #include "exciter_ui.hpp"
 
 ExciterUi::ExciterUi(BaseObjectType* cobject,
-                     const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                     const Glib::RefPtr<Gtk::Builder>& builder,
                      const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(refBuilder, settings_name) {
+    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
     name = "exciter";
 
     // loading glade widgets
@@ -13,13 +13,13 @@ ExciterUi::ExciterUi(BaseObjectType* cobject,
     builder->get_widget("ceil_active", ceil_active);
     builder->get_widget("listen", listen);
 
-    get_object("amount", amount);
-    get_object("blend", blend);
-    get_object("ceil", ceilv);
-    get_object("harmonics", harmonics);
-    get_object("scope", scope);
-    get_object("input_gain", input_gain);
-    get_object("output_gain", output_gain);
+    get_object(builder, "amount", amount);
+    get_object(builder, "blend", blend);
+    get_object(builder, "ceil", ceilv);
+    get_object(builder, "harmonics", harmonics);
+    get_object(builder, "scope", scope);
+    get_object(builder, "input_gain", input_gain);
+    get_object(builder, "output_gain", output_gain);
 
     // gsettings bindings
 
@@ -50,6 +50,8 @@ std::shared_ptr<ExciterUi> ExciterUi::create(std::string settings_name) {
     ExciterUi* grid = nullptr;
 
     builder->get_widget_derived("widgets_grid", grid, settings_name);
+
+    grid->reference();
 
     return std::shared_ptr<ExciterUi>(grid);
 }

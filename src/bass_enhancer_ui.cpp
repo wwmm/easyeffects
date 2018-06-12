@@ -1,9 +1,9 @@
 #include "bass_enhancer_ui.hpp"
 
 BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
-                               const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                               const Glib::RefPtr<Gtk::Builder>& builder,
                                const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(refBuilder, settings_name) {
+    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
     name = "bass_enhancer";
 
     // loading glade widgets
@@ -13,13 +13,13 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
     builder->get_widget("floor_active", floor_active);
     builder->get_widget("listen", listen);
 
-    get_object("amount", amount);
-    get_object("blend", blend);
-    get_object("floor", floorv);
-    get_object("harmonics", harmonics);
-    get_object("scope", scope);
-    get_object("input_gain", input_gain);
-    get_object("output_gain", output_gain);
+    get_object(builder, "amount", amount);
+    get_object(builder, "blend", blend);
+    get_object(builder, "floor", floorv);
+    get_object(builder, "harmonics", harmonics);
+    get_object(builder, "scope", scope);
+    get_object(builder, "input_gain", input_gain);
+    get_object(builder, "output_gain", output_gain);
 
     // gsettings bindings
 

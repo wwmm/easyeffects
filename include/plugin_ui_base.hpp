@@ -14,7 +14,7 @@
 
 class PluginUiBase {
    public:
-    PluginUiBase(const Glib::RefPtr<Gtk::Builder>& refBuilder,
+    PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder,
                  const std::string& settings_name);
     virtual ~PluginUiBase();
 
@@ -29,7 +29,6 @@ class PluginUiBase {
     void on_new_output_level_db(const std::array<double, 2>& peak);
 
    protected:
-    Glib::RefPtr<Gtk::Builder> builder;
     Glib::RefPtr<Gio::Settings> settings;
 
     Gtk::Switch* enable;
@@ -41,7 +40,9 @@ class PluginUiBase {
     Gtk::Label *input_level_left_label, *input_level_right_label;
     Gtk::Label *output_level_left_label, *output_level_right_label;
 
-    void get_object(std::string name, Glib::RefPtr<Gtk::Adjustment>& object) {
+    void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
+                    const std::string& name,
+                    Glib::RefPtr<Gtk::Adjustment>& object) {
         object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(
             builder->get_object(name));
     }
