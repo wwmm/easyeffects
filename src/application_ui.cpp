@@ -13,9 +13,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
                              Application* application)
     : Gtk::ApplicationWindow(cobject),
       app(application),
-      settings(app->settings),
-      sie_ui(SinkInputEffectsUi::create(app->sie)),
-      soe_ui(SourceOutputEffectsUi::create(app->soe)) {
+      settings(app->settings) {
     apply_css_style("listbox.css");
 
     Gtk::IconTheme::get_default()->add_resource_path(
@@ -155,6 +153,15 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
     // sink inputs interface
 
+    auto b_sie_ui = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/effects_base.glade");
+
+    auto settings_sie_ui =
+        Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs");
+
+    b_sie_ui->get_widget_derived("widgets_box", sie_ui, settings_sie_ui,
+                                 app->sie);
+
     app->pm->sink_input_added.connect(
         sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_added));
     app->pm->sink_input_changed.connect(
@@ -167,6 +174,15 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
         "audio-speakers-symbolic");
 
     // source outputs interface
+
+    auto b_soe_ui = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/effects_base.glade");
+
+    auto settings_soe_ui =
+        Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs");
+
+    b_soe_ui->get_widget_derived("widgets_box", soe_ui, settings_soe_ui,
+                                 app->soe);
 
     app->pm->source_output_added.connect(
         sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_added));
@@ -233,9 +249,6 @@ ApplicationUi::~ApplicationUi() {
     }
 
     spectrum_connection.disconnect();
-
-    delete sie_ui;
-    delete soe_ui;
 }
 
 ApplicationUi* ApplicationUi::create(Application* app_this) {

@@ -83,23 +83,8 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(
     up_down_connections();
 }
 
-SourceOutputEffectsUi::~SourceOutputEffectsUi() {}
-
-SourceOutputEffectsUi* SourceOutputEffectsUi::create(
-    std::shared_ptr<SourceOutputEffects> soe) {
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/effects_base.glade");
-
-    auto settings =
-        Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs");
-
-    SourceOutputEffectsUi* soe_ui = nullptr;
-
-    builder->get_widget_derived("widgets_box", soe_ui, settings, soe);
-
-    soe_ui->reference();
-
-    return soe_ui;
+SourceOutputEffectsUi::~SourceOutputEffectsUi() {
+    util::warning("destructor_soe");
 }
 
 void SourceOutputEffectsUi::level_meters_connections() {

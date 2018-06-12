@@ -106,24 +106,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(
 }
 
 SinkInputEffectsUi::~SinkInputEffectsUi() {
-    // util::warning("destructor_sie");
-}
-
-SinkInputEffectsUi* SinkInputEffectsUi::create(
-    std::shared_ptr<SinkInputEffects> sie) {
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/effects_base.glade");
-
-    auto settings =
-        Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs");
-
-    SinkInputEffectsUi* sie_ui = nullptr;
-
-    builder->get_widget_derived("widgets_box", sie_ui, settings, sie);
-
-    sie_ui->reference();
-
-    return sie_ui;
+    util::warning("destructor_sie");
 }
 
 void SinkInputEffectsUi::level_meters_connections() {

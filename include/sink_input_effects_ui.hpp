@@ -25,8 +25,6 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
 
     virtual ~SinkInputEffectsUi();
 
-    static SinkInputEffectsUi* create(std::shared_ptr<SinkInputEffects> sie);
-
     void reset();
 
    protected:

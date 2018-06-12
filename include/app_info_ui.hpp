@@ -19,10 +19,6 @@ class AppInfoUi : public Gtk::Grid {
 
     virtual ~AppInfoUi();
 
-    static std::unique_ptr<AppInfoUi> create(
-        std::shared_ptr<AppInfo> info,
-        std::shared_ptr<PulseManager> pulse_manager);
-
     Gtk::Switch* enable;
     Gtk::Image* app_icon;
     Gtk::Label* app_name;

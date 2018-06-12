@@ -47,7 +47,7 @@ class EffectsBaseUi {
 
     std::shared_ptr<PulseManager> pm;
 
-    std::vector<std::unique_ptr<AppInfoUi>> apps_list;
+    std::vector<AppInfoUi*> apps_list;
 
     int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
 };

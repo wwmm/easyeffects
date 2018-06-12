@@ -50,18 +50,6 @@ AppInfoUi::~AppInfoUi() {
     timeout_connection.disconnect();
 }
 
-std::unique_ptr<AppInfoUi> AppInfoUi::create(std::shared_ptr<AppInfo> app_info,
-                                             std::shared_ptr<PulseManager> pm) {
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/app_info.glade");
-
-    AppInfoUi* app_info_ui = nullptr;
-
-    builder->get_widget_derived("widgets_grid", app_info_ui, app_info, pm);
-
-    return std::unique_ptr<AppInfoUi>(app_info_ui);
-}
-
 std::string AppInfoUi::latency_to_str(uint value) {
     std::ostringstream msg;
 

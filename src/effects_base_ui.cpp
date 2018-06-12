@@ -46,11 +46,16 @@ EffectsBaseUi::~EffectsBaseUi() {
 }
 
 void EffectsBaseUi::on_app_added(std::shared_ptr<AppInfo> app_info) {
-    auto appui = AppInfoUi::create(app_info, pm);
+    auto builder = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/app_info.glade");
+
+    AppInfoUi* appui = nullptr;
+
+    builder->get_widget_derived("widgets_grid", appui, app_info, pm);
 
     apps_box->add(*appui);
 
-    apps_list.push_back(move(appui));
+    apps_list.push_back(appui);
 }
 
 void EffectsBaseUi::on_app_changed(std::shared_ptr<AppInfo> app_info) {
@@ -68,7 +73,7 @@ void EffectsBaseUi::on_app_removed(uint idx) {
         auto n = it - apps_list.begin();
 
         if (apps_list[n]->app_info->index == idx) {
-            auto appui = move(apps_list[n]);
+            auto appui = apps_list[n];
 
             apps_box->remove(*appui);
 

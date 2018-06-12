@@ -22,9 +22,6 @@ class SourceOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
 
     virtual ~SourceOutputEffectsUi();
 
-    static SourceOutputEffectsUi* create(
-        std::shared_ptr<SourceOutputEffects> soe);
-
     void reset();
 
    protected:
