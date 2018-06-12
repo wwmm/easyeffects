@@ -174,18 +174,18 @@ void SinkInputEffectsUi::populate_listbox() {
 }
 
 void SinkInputEffectsUi::populate_stack() {
-    stack->add(*limiter_ui, std::string("limiter"));
-    stack->add(*compressor_ui, std::string("compressor"));
-    stack->add(*filter_ui, std::string("filter"));
-    stack->add(*equalizer_ui, std::string("equalizer"));
-    stack->add(*reverb_ui, std::string("reverb"));
-    stack->add(*bass_enhancer_ui, std::string("bass_enhancer"));
-    stack->add(*exciter_ui, std::string("exciter"));
-    stack->add(*stereo_enhancer_ui, std::string("stereo_enhancer"));
-    stack->add(*panorama_ui, std::string("panorama"));
-    stack->add(*crossfeed_ui, std::string("crossfeed"));
-    stack->add(*maximizer_ui, std::string("maximizer"));
-    stack->add(*delay_ui, std::string("delay"));
+    stack->add(*limiter_ui, limiter_ui->name);
+    stack->add(*compressor_ui, compressor_ui->name);
+    stack->add(*filter_ui, filter_ui->name);
+    stack->add(*equalizer_ui, equalizer_ui->name);
+    stack->add(*reverb_ui, reverb_ui->name);
+    stack->add(*bass_enhancer_ui, bass_enhancer_ui->name);
+    stack->add(*exciter_ui, exciter_ui->name);
+    stack->add(*stereo_enhancer_ui, stereo_enhancer_ui->name);
+    stack->add(*panorama_ui, panorama_ui->name);
+    stack->add(*crossfeed_ui, crossfeed_ui->name);
+    stack->add(*maximizer_ui, maximizer_ui->name);
+    stack->add(*delay_ui, delay_ui->name);
 }
 
 void SinkInputEffectsUi::up_down_connections() {

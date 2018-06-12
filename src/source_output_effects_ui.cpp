@@ -135,15 +135,15 @@ void SourceOutputEffectsUi::populate_listbox() {
     add_to_listbox(webrtc_ui);
 }
 void SourceOutputEffectsUi::populate_stack() {
-    stack->add(*limiter_ui, std::string("limiter"));
-    stack->add(*compressor_ui, std::string("compressor"));
-    stack->add(*filter_ui, std::string("filter"));
-    stack->add(*equalizer_ui, std::string("equalizer"));
-    stack->add(*reverb_ui, std::string("reverb"));
-    stack->add(*gate_ui, std::string("gate"));
-    stack->add(*deesser_ui, std::string("deesser"));
-    stack->add(*pitch_ui, std::string("pitch"));
-    stack->add(*webrtc_ui, std::string("webrtc"));
+    stack->add(*limiter_ui, limiter_ui->name);
+    stack->add(*compressor_ui, compressor_ui->name);
+    stack->add(*filter_ui, filter_ui->name);
+    stack->add(*equalizer_ui, equalizer_ui->name);
+    stack->add(*reverb_ui, reverb_ui->name);
+    stack->add(*gate_ui, gate_ui->name);
+    stack->add(*deesser_ui, deesser_ui->name);
+    stack->add(*pitch_ui, pitch_ui->name);
+    stack->add(*webrtc_ui, webrtc_ui->name);
 }
 
 void SourceOutputEffectsUi::up_down_connections() {
