@@ -105,9 +105,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     up_down_connections();
 }
 
-SinkInputEffectsUi::~SinkInputEffectsUi() {
-    util::warning("destructor_sie");
-}
+SinkInputEffectsUi::~SinkInputEffectsUi() {}
 
 void SinkInputEffectsUi::level_meters_connections() {
     // limiter level meters connections

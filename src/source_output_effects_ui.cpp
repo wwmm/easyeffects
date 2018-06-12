@@ -83,9 +83,7 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(
     up_down_connections();
 }
 
-SourceOutputEffectsUi::~SourceOutputEffectsUi() {
-    util::warning("destructor_soe");
-}
+SourceOutputEffectsUi::~SourceOutputEffectsUi() {}
 
 void SourceOutputEffectsUi::level_meters_connections() {
     // limiter level meters connections
