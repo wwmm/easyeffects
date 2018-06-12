@@ -5,7 +5,9 @@
 - improved the algorithm used to enable/disable/reorder plugins.
 
 ### Fixed
-- Removed a few memory leaks
+- Removed a lot of potential memory leaks. I had a few misconceptions about how
+GTK builder is supposed to be used in GTKMM. I did a code refactoring to use
+ the api in a more memory safe way.
 
 ## [4.0.2]
 ### Added
