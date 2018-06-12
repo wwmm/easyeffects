@@ -12,8 +12,6 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
                 const std::string& settings_name);
     virtual ~EqualizerUi();
 
-    static std::shared_ptr<EqualizerUi> create(std::string settings_name);
-
     void reset();
 
    private:

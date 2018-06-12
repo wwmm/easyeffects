@@ -112,19 +112,6 @@ CompressorUi::~CompressorUi() {
     settings->set_boolean("post-messages", false);
 }
 
-std::shared_ptr<CompressorUi> CompressorUi::create(std::string settings_name) {
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/compressor.glade");
-
-    CompressorUi* grid = nullptr;
-
-    builder->get_widget_derived("widgets_grid", grid, settings_name);
-
-    grid->reference();
-
-    return std::shared_ptr<CompressorUi>(grid);
-}
-
 void CompressorUi::on_new_compression(double value) {
     compression->set_value(1 - value);
 

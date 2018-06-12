@@ -36,10 +36,10 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
     std::shared_ptr<SinkInputEffects> sie;
 
     LimiterUi* limiter_ui;
-    std::shared_ptr<CompressorUi> compressor_ui;
+    CompressorUi* compressor_ui;
     FilterUi* filter_ui;
-    std::shared_ptr<EqualizerUi> equalizer_ui;
-    std::shared_ptr<ReverbUi> reverb_ui;
+    EqualizerUi* equalizer_ui;
+    ReverbUi* reverb_ui;
     std::shared_ptr<BassEnhancerUi> bass_enhancer_ui;
     std::shared_ptr<ExciterUi> exciter_ui;
     std::shared_ptr<StereoEnhancerUi> stereo_enhancer_ui;

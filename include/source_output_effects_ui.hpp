@@ -34,14 +34,14 @@ class SourceOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
     std::shared_ptr<SourceOutputEffects> soe;
 
     LimiterUi* limiter_ui;
-    std::shared_ptr<CompressorUi> compressor_ui;
+    CompressorUi* compressor_ui;
     FilterUi* filter_ui;
-    std::shared_ptr<EqualizerUi> equalizer_ui;
-    std::shared_ptr<ReverbUi> reverb_ui;
-    std::shared_ptr<GateUi> gate_ui;
-    std::shared_ptr<DeesserUi> deesser_ui;
-    std::shared_ptr<PitchUi> pitch_ui;
-    std::shared_ptr<WebrtcUi> webrtc_ui;
+    EqualizerUi* equalizer_ui;
+    ReverbUi* reverb_ui;
+    GateUi* gate_ui;
+    DeesserUi* deesser_ui;
+    PitchUi* pitch_ui;
+    WebrtcUi* webrtc_ui;
 
     void level_meters_connections();
     void up_down_connections();

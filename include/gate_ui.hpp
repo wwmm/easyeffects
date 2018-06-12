@@ -12,8 +12,6 @@ class GateUi : public Gtk::Grid, public PluginUiBase {
            const std::string& settings_name);
     virtual ~GateUi();
 
-    static std::shared_ptr<GateUi> create(std::string settings_name);
-
     void reset();
 
     void on_new_gating(double value);

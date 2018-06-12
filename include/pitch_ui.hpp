@@ -12,8 +12,6 @@ class PitchUi : public Gtk::Grid, public PluginUiBase {
             const std::string& settings_name);
     virtual ~PitchUi();
 
-    static std::shared_ptr<PitchUi> create(std::string settings_name);
-
     void reset();
 
    private:

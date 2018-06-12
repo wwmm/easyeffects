@@ -12,8 +12,6 @@ class LimiterUi : public Gtk::Grid, public PluginUiBase {
               const std::string& settings_name);
     virtual ~LimiterUi();
 
-    static LimiterUi* create(std::string settings_name);
-
     void reset();
 
     void on_new_attenuation(double value);

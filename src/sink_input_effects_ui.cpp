@@ -9,16 +9,6 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     : Gtk::Box(cobject),
       EffectsBaseUi(refBuilder, refSettings, sie_ptr->pm),
       sie(sie_ptr) {
-    // limiter_ui(LimiterUi::create(
-    //     "com.github.wwmm.pulseeffects.sinkinputs.limiter")),
-    // compressor_ui(CompressorUi::create(
-    //     "com.github.wwmm.pulseeffects.sinkinputs.compressor")),
-    // filter_ui(
-    //     FilterUi::create("com.github.wwmm.pulseeffects.sinkinputs.filter")),
-    // equalizer_ui(EqualizerUi::create(
-    //     "com.github.wwmm.pulseeffects.sinkinputs.equalizer")),
-    // reverb_ui(
-    //     ReverbUi::create("com.github.wwmm.pulseeffects.sinkinputs.reverb")),
     // bass_enhancer_ui(BassEnhancerUi::create(
     //     "com.github.wwmm.pulseeffects.sinkinputs.bassenhancer")),
     // exciter_ui(
@@ -35,18 +25,38 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     //     DelayUi::create("com.github.wwmm.pulseeffects.sinkinputs.delay")) {
     // populate stack
 
-    auto builder = Gtk::Builder::create_from_resource(
+    auto b_limiter = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/limiter.glade");
+    auto b_compressor = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/compressor.glade");
+    auto b_filter = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/filter.glade");
+    auto b_equalizer = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/equalizer.glade");
+    auto b_reverb = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/reverb.glade");
 
-    builder->get_widget_derived(
+    b_limiter->get_widget_derived(
         "widgets_grid", limiter_ui,
         "com.github.wwmm.pulseeffects.sinkinputs.limiter");
+    b_compressor->get_widget_derived(
+        "widgets_grid", compressor_ui,
+        "com.github.wwmm.pulseeffects.sinkinputs.compressor");
+    b_filter->get_widget_derived(
+        "widgets_grid", filter_ui,
+        "com.github.wwmm.pulseeffects.sinkinputs.filter");
+    b_equalizer->get_widget_derived(
+        "widgets_grid", equalizer_ui,
+        "com.github.wwmm.pulseeffects.sinkinputs.equalizer");
+    b_reverb->get_widget_derived(
+        "widgets_grid", reverb_ui,
+        "com.github.wwmm.pulseeffects.sinkinputs.reverb");
 
     stack->add(*limiter_ui, limiter_ui->name);
-    // stack->add(*compressor_ui, compressor_ui->name);
-    // stack->add(*filter_ui, filter_ui->name);
-    // stack->add(*equalizer_ui, equalizer_ui->name);
-    // stack->add(*reverb_ui, reverb_ui->name);
+    stack->add(*compressor_ui, compressor_ui->name);
+    stack->add(*filter_ui, filter_ui->name);
+    stack->add(*equalizer_ui, equalizer_ui->name);
+    stack->add(*reverb_ui, reverb_ui->name);
     // stack->add(*bass_enhancer_ui, bass_enhancer_ui->name);
     // stack->add(*exciter_ui, exciter_ui->name);
     // stack->add(*stereo_enhancer_ui, stereo_enhancer_ui->name);
@@ -58,10 +68,10 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     // populate_listbox
 
     add_to_listbox(limiter_ui);
-    // add_to_listbox(compressor_ui);
-    // add_to_listbox(filter_ui);
-    // add_to_listbox(equalizer_ui);
-    // add_to_listbox(reverb_ui);
+    add_to_listbox(compressor_ui);
+    add_to_listbox(filter_ui);
+    add_to_listbox(equalizer_ui);
+    add_to_listbox(reverb_ui);
     // add_to_listbox(bass_enhancer_ui);
     // add_to_listbox(exciter_ui);
     // add_to_listbox(stereo_enhancer_ui);
@@ -75,7 +85,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(
 }
 
 SinkInputEffectsUi::~SinkInputEffectsUi() {
-    util::warning("destructor_sie");
+    // util::warning("destructor_sie");
 }
 
 SinkInputEffectsUi* SinkInputEffectsUi::create(

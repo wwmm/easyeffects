@@ -115,19 +115,6 @@ FilterUi::~FilterUi() {
     settings->set_boolean("post-messages", false);
 }
 
-FilterUi* FilterUi::create(std::string settings_name) {
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/filter.glade");
-
-    FilterUi* grid = nullptr;
-
-    builder->get_widget_derived("widgets_grid", grid, settings_name);
-
-    grid->reference();
-
-    return grid;
-}
-
 void FilterUi::init_presets_buttons() {
     preset_muted->signal_clicked().connect([=]() {
         frequency->set_value(10);

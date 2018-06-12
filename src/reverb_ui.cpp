@@ -106,19 +106,6 @@ ReverbUi::~ReverbUi() {
     settings->set_boolean("post-messages", false);
 }
 
-std::shared_ptr<ReverbUi> ReverbUi::create(std::string settings_name) {
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/reverb.glade");
-
-    ReverbUi* grid = nullptr;
-
-    builder->get_widget_derived("widgets_grid", grid, settings_name);
-
-    grid->reference();
-
-    return std::shared_ptr<ReverbUi>(grid);
-}
-
 void ReverbUi::init_presets_buttons() {
     preset_room->signal_clicked().connect([=]() {
         decay_time->set_value(0.445945);

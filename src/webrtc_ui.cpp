@@ -205,19 +205,6 @@ WebrtcUi::~WebrtcUi() {
     settings->set_boolean("post-messages", false);
 }
 
-std::shared_ptr<WebrtcUi> WebrtcUi::create(std::string settings_name) {
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/webrtc.glade");
-
-    WebrtcUi* grid = nullptr;
-
-    builder->get_widget_derived("widgets_grid", grid, settings_name);
-
-    grid->reference();
-
-    return std::shared_ptr<WebrtcUi>(grid);
-}
-
 void WebrtcUi::reset() {
     settings->reset("state");
     settings->reset("compression_gain_db");

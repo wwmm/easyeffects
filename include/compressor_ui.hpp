@@ -13,8 +13,6 @@ class CompressorUi : public Gtk::Grid, public PluginUiBase {
                  const std::string& settings_name);
     virtual ~CompressorUi();
 
-    static std::shared_ptr<CompressorUi> create(std::string settings_name);
-
     void reset();
 
     void on_new_compression(double value);

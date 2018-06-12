@@ -13,8 +13,6 @@ class WebrtcUi : public Gtk::Grid, public PluginUiBase {
              const std::string& settings_name);
     virtual ~WebrtcUi();
 
-    static std::shared_ptr<WebrtcUi> create(std::string settings_name);
-
     void reset();
 
    private:

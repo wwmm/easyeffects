@@ -13,8 +13,6 @@ class FilterUi : public Gtk::Grid, public PluginUiBase {
              const std::string& settings_name);
     virtual ~FilterUi();
 
-    static FilterUi* create(std::string settings_name);
-
     void reset();
 
    private:

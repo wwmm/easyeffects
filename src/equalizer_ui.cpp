@@ -81,19 +81,6 @@ EqualizerUi::~EqualizerUi() {
     }
 }
 
-std::shared_ptr<EqualizerUi> EqualizerUi::create(std::string settings_name) {
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/equalizer.glade");
-
-    EqualizerUi* grid = nullptr;
-
-    builder->get_widget_derived("widgets_grid", grid, settings_name);
-
-    grid->reference();
-
-    return std::shared_ptr<EqualizerUi>(grid);
-}
-
 void EqualizerUi::on_nbands_changed() {
     int N = nbands->get_value();
 

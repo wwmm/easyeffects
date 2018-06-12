@@ -35,19 +35,6 @@ PitchUi::~PitchUi() {
     settings->set_boolean("post-messages", false);
 }
 
-std::shared_ptr<PitchUi> PitchUi::create(std::string settings_name) {
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/pitch.glade");
-
-    PitchUi* grid = nullptr;
-
-    builder->get_widget_derived("widgets_grid", grid, settings_name);
-
-    grid->reference();
-
-    return std::shared_ptr<PitchUi>(grid);
-}
-
 void PitchUi::reset() {
     settings->reset("state");
     settings->reset("cents");

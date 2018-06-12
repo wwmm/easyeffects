@@ -8,58 +8,79 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(
     : Gtk::Box(cobject),
       EffectsBaseUi(refBuilder, refSettings, soe_ptr->pm),
       soe(soe_ptr) {
-    // limiter_ui(LimiterUi::create(
-    //     "com.github.wwmm.pulseeffects.sourceoutputs.limiter")),
-    // compressor_ui(CompressorUi::create(
-    //     "com.github.wwmm.pulseeffects.sourceoutputs.compressor")),
-    // filter_ui(FilterUi::create(
-    //     "com.github.wwmm.pulseeffects.sourceoutputs.filter")),
-    // equalizer_ui(EqualizerUi::create(
-    //     "com.github.wwmm.pulseeffects.sourceoutputs.equalizer")),
-    // reverb_ui(ReverbUi::create(
-    //     "com.github.wwmm.pulseeffects.sourceoutputs.reverb")),
-    // gate_ui(
-    //     GateUi::create("com.github.wwmm.pulseeffects.sourceoutputs.gate")),
-    // deesser_ui(DeesserUi::create(
-    //     "com.github.wwmm.pulseeffects.sourceoutputs.deesser")),
-    // pitch_ui(
-    //     PitchUi::create("com.github.wwmm.pulseeffects.sourceoutputs.pitch")),
-    // webrtc_ui(WebrtcUi::create(
-    //     "com.github.wwmm.pulseeffects.sourceoutputs.webrtc")) {
-
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/limiter.glade");
-
-    builder->get_widget_derived(
-        "widgets_grid", limiter_ui,
-        "com.github.wwmm.pulseeffects.sourceoutputs.limiter");
-
     // populate stack
 
+    auto b_limiter = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/limiter.glade");
+    auto b_compressor = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/compressor.glade");
+    auto b_filter = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/filter.glade");
+    auto b_equalizer = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/equalizer.glade");
+    auto b_reverb = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/reverb.glade");
+    auto b_gate = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/gate.glade");
+    auto b_deesser = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/deesser.glade");
+    auto b_pitch = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/pitch.glade");
+    auto b_webrtc = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/webrtc.glade");
+
+    b_limiter->get_widget_derived(
+        "widgets_grid", limiter_ui,
+        "com.github.wwmm.pulseeffects.sourceoutputs.limiter");
+    b_compressor->get_widget_derived(
+        "widgets_grid", compressor_ui,
+        "com.github.wwmm.pulseeffects.sourceoutputs.compressor");
+    b_filter->get_widget_derived(
+        "widgets_grid", filter_ui,
+        "com.github.wwmm.pulseeffects.sourceoutputs.filter");
+    b_equalizer->get_widget_derived(
+        "widgets_grid", equalizer_ui,
+        "com.github.wwmm.pulseeffects.sourceoutputs.equalizer");
+    b_reverb->get_widget_derived(
+        "widgets_grid", reverb_ui,
+        "com.github.wwmm.pulseeffects.sourceoutputs.reverb");
+    b_gate->get_widget_derived(
+        "widgets_grid", gate_ui,
+        "com.github.wwmm.pulseeffects.sourceoutputs.gate");
+    b_deesser->get_widget_derived(
+        "widgets_grid", deesser_ui,
+        "com.github.wwmm.pulseeffects.sourceoutputs.deesser");
+    b_pitch->get_widget_derived(
+        "widgets_grid", pitch_ui,
+        "com.github.wwmm.pulseeffects.sourceoutputs.pitch");
+    b_webrtc->get_widget_derived(
+        "widgets_grid", webrtc_ui,
+        "com.github.wwmm.pulseeffects.sourceoutputs.webrtc");
+
     stack->add(*limiter_ui, limiter_ui->name);
-    // stack->add(*compressor_ui, compressor_ui->name);
-    // stack->add(*filter_ui, filter_ui->name);
-    // stack->add(*equalizer_ui, equalizer_ui->name);
-    // stack->add(*reverb_ui, reverb_ui->name);
-    // stack->add(*gate_ui, gate_ui->name);
-    // stack->add(*deesser_ui, deesser_ui->name);
-    // stack->add(*pitch_ui, pitch_ui->name);
-    // stack->add(*webrtc_ui, webrtc_ui->name);
+    stack->add(*compressor_ui, compressor_ui->name);
+    stack->add(*filter_ui, filter_ui->name);
+    stack->add(*equalizer_ui, equalizer_ui->name);
+    stack->add(*reverb_ui, reverb_ui->name);
+    stack->add(*gate_ui, gate_ui->name);
+    stack->add(*deesser_ui, deesser_ui->name);
+    stack->add(*pitch_ui, pitch_ui->name);
+    stack->add(*webrtc_ui, webrtc_ui->name);
 
     // populate listbox
 
     add_to_listbox(limiter_ui);
-    // add_to_listbox(compressor_ui);
-    // add_to_listbox(filter_ui);
-    // add_to_listbox(equalizer_ui);
-    // add_to_listbox(reverb_ui);
-    // add_to_listbox(gate_ui);
-    // add_to_listbox(deesser_ui);
-    // add_to_listbox(pitch_ui);
-    // add_to_listbox(webrtc_ui);
+    add_to_listbox(compressor_ui);
+    add_to_listbox(filter_ui);
+    add_to_listbox(equalizer_ui);
+    add_to_listbox(reverb_ui);
+    add_to_listbox(gate_ui);
+    add_to_listbox(deesser_ui);
+    add_to_listbox(pitch_ui);
+    add_to_listbox(webrtc_ui);
 
-    // level_meters_connections();
-    // up_down_connections();
+    level_meters_connections();
+    up_down_connections();
 }
 
 SourceOutputEffectsUi::~SourceOutputEffectsUi() {}

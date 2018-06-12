@@ -96,21 +96,6 @@ LimiterUi::~LimiterUi() {
     for (auto c : connections) {
         c.disconnect();
     }
-
-    util::warning("destructor");
-}
-
-LimiterUi* LimiterUi::create(std::string settings_name) {
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/limiter.glade");
-
-    LimiterUi* grid = nullptr;
-
-    builder->get_widget_derived("widgets_grid", grid, settings_name);
-
-    // grid->reference();
-
-    return grid;
 }
 
 void LimiterUi::init_autovolume() {

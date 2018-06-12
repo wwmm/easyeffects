@@ -112,19 +112,6 @@ DeesserUi::~DeesserUi() {
     settings->set_boolean("post-messages", false);
 }
 
-std::shared_ptr<DeesserUi> DeesserUi::create(std::string settings_name) {
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/deesser.glade");
-
-    DeesserUi* grid = nullptr;
-
-    builder->get_widget_derived("widgets_grid", grid, settings_name);
-
-    grid->reference();
-
-    return std::shared_ptr<DeesserUi>(grid);
-}
-
 void DeesserUi::on_new_compression(double value) {
     compression->set_value(1 - value);
 

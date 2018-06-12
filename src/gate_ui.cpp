@@ -107,19 +107,6 @@ GateUi::~GateUi() {
     settings->set_boolean("post-messages", false);
 }
 
-std::shared_ptr<GateUi> GateUi::create(std::string settings_name) {
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/gate.glade");
-
-    GateUi* grid = nullptr;
-
-    builder->get_widget_derived("widgets_grid", grid, settings_name);
-
-    grid->reference();
-
-    return std::shared_ptr<GateUi>(grid);
-}
-
 void GateUi::on_new_gating(double value) {
     gating->set_value(1 - value);
 
