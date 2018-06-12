@@ -7,7 +7,7 @@
 ### Fixed
 - Removed a lot of potential memory leaks. I had a few misconceptions about how
 GTK builder is supposed to be used in GTKMM. I did a code refactoring to use
- the api in a more memory safe way.
+ the api in a safer way.
 
 ## [4.0.2]
 ### Added
