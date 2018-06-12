@@ -12,8 +12,6 @@ class CrossfeedUi : public Gtk::Grid, public PluginUiBase {
                 const std::string& settings_name);
     virtual ~CrossfeedUi();
 
-    static std::shared_ptr<CrossfeedUi> create(std::string settings_name);
-
     void reset();
 
    private:

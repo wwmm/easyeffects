@@ -12,8 +12,6 @@ class BassEnhancerUi : public Gtk::Grid, public PluginUiBase {
                    const std::string& settings_name);
     virtual ~BassEnhancerUi();
 
-    static std::shared_ptr<BassEnhancerUi> create(std::string settings_name);
-
     void reset();
 
     void on_new_harmonics_level(double value);

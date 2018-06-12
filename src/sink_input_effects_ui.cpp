@@ -9,20 +9,6 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     : Gtk::Box(cobject),
       EffectsBaseUi(refBuilder, refSettings, sie_ptr->pm),
       sie(sie_ptr) {
-    // bass_enhancer_ui(BassEnhancerUi::create(
-    //     "com.github.wwmm.pulseeffects.sinkinputs.bassenhancer")),
-    // exciter_ui(
-    //     ExciterUi::create("com.github.wwmm.pulseeffects.sinkinputs.exciter")),
-    // stereo_enhancer_ui(StereoEnhancerUi::create(
-    //     "com.github.wwmm.pulseeffects.sinkinputs.stereoenhancer")),
-    // panorama_ui(PanoramaUi::create(
-    //     "com.github.wwmm.pulseeffects.sinkinputs.panorama")),
-    // crossfeed_ui(CrossfeedUi::create(
-    //     "com.github.wwmm.pulseeffects.sinkinputs.crossfeed")),
-    // maximizer_ui(MaximizerUi::create(
-    //     "com.github.wwmm.pulseeffects.sinkinputs.maximizer")),
-    // delay_ui(
-    //     DelayUi::create("com.github.wwmm.pulseeffects.sinkinputs.delay")) {
     // populate stack
 
     auto b_limiter = Gtk::Builder::create_from_resource(
@@ -35,6 +21,20 @@ SinkInputEffectsUi::SinkInputEffectsUi(
         "/com/github/wwmm/pulseeffects/equalizer.glade");
     auto b_reverb = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/reverb.glade");
+    auto b_bass_enhancer = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/bass_enhancer.glade");
+    auto b_exciter = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/exciter.glade");
+    auto b_stereo_enhancer = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/stereo_enhancer.glade");
+    auto b_panorama = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/panorama.glade");
+    auto b_crossfeed = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/crossfeed.glade");
+    auto b_maximizer = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/maximizer.glade");
+    auto b_delay = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/delay.glade");
 
     b_limiter->get_widget_derived(
         "widgets_grid", limiter_ui,
@@ -51,19 +51,40 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     b_reverb->get_widget_derived(
         "widgets_grid", reverb_ui,
         "com.github.wwmm.pulseeffects.sinkinputs.reverb");
+    b_bass_enhancer->get_widget_derived(
+        "widgets_grid", bass_enhancer_ui,
+        "com.github.wwmm.pulseeffects.sinkinputs.bassenhancer");
+    b_exciter->get_widget_derived(
+        "widgets_grid", exciter_ui,
+        "com.github.wwmm.pulseeffects.sinkinputs.exciter");
+    b_stereo_enhancer->get_widget_derived(
+        "widgets_grid", stereo_enhancer_ui,
+        "com.github.wwmm.pulseeffects.sinkinputs.stereoenhancer");
+    b_panorama->get_widget_derived(
+        "widgets_grid", panorama_ui,
+        "com.github.wwmm.pulseeffects.sinkinputs.panorama");
+    b_crossfeed->get_widget_derived(
+        "widgets_grid", crossfeed_ui,
+        "com.github.wwmm.pulseeffects.sinkinputs.crossfeed");
+    b_maximizer->get_widget_derived(
+        "widgets_grid", maximizer_ui,
+        "com.github.wwmm.pulseeffects.sinkinputs.maximizer");
+    b_delay->get_widget_derived(
+        "widgets_grid", delay_ui,
+        "com.github.wwmm.pulseeffects.sinkinputs.delay");
 
     stack->add(*limiter_ui, limiter_ui->name);
     stack->add(*compressor_ui, compressor_ui->name);
     stack->add(*filter_ui, filter_ui->name);
     stack->add(*equalizer_ui, equalizer_ui->name);
     stack->add(*reverb_ui, reverb_ui->name);
-    // stack->add(*bass_enhancer_ui, bass_enhancer_ui->name);
-    // stack->add(*exciter_ui, exciter_ui->name);
-    // stack->add(*stereo_enhancer_ui, stereo_enhancer_ui->name);
-    // stack->add(*panorama_ui, panorama_ui->name);
-    // stack->add(*crossfeed_ui, crossfeed_ui->name);
-    // stack->add(*maximizer_ui, maximizer_ui->name);
-    // stack->add(*delay_ui, delay_ui->name);
+    stack->add(*bass_enhancer_ui, bass_enhancer_ui->name);
+    stack->add(*exciter_ui, exciter_ui->name);
+    stack->add(*stereo_enhancer_ui, stereo_enhancer_ui->name);
+    stack->add(*panorama_ui, panorama_ui->name);
+    stack->add(*crossfeed_ui, crossfeed_ui->name);
+    stack->add(*maximizer_ui, maximizer_ui->name);
+    stack->add(*delay_ui, delay_ui->name);
 
     // populate_listbox
 
@@ -72,16 +93,16 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     add_to_listbox(filter_ui);
     add_to_listbox(equalizer_ui);
     add_to_listbox(reverb_ui);
-    // add_to_listbox(bass_enhancer_ui);
-    // add_to_listbox(exciter_ui);
-    // add_to_listbox(stereo_enhancer_ui);
-    // add_to_listbox(panorama_ui);
-    // add_to_listbox(crossfeed_ui);
-    // add_to_listbox(maximizer_ui);
-    // add_to_listbox(delay_ui);
+    add_to_listbox(bass_enhancer_ui);
+    add_to_listbox(exciter_ui);
+    add_to_listbox(stereo_enhancer_ui);
+    add_to_listbox(panorama_ui);
+    add_to_listbox(crossfeed_ui);
+    add_to_listbox(maximizer_ui);
+    add_to_listbox(delay_ui);
 
-    // level_meters_connections();
-    // up_down_connections();
+    level_meters_connections();
+    up_down_connections();
 }
 
 SinkInputEffectsUi::~SinkInputEffectsUi() {

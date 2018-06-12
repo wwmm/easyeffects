@@ -11,8 +11,6 @@ class PanoramaUi : public Gtk::Grid, public PluginUiBase {
                const std::string& settings_name);
     virtual ~PanoramaUi();
 
-    static std::shared_ptr<PanoramaUi> create(std::string settings_name);
-
     void reset();
 
    private:

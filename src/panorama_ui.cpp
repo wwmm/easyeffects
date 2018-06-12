@@ -24,19 +24,6 @@ PanoramaUi::~PanoramaUi() {
     settings->set_boolean("post-messages", false);
 }
 
-std::shared_ptr<PanoramaUi> PanoramaUi::create(std::string settings_name) {
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/panorama.glade");
-
-    PanoramaUi* grid = nullptr;
-
-    builder->get_widget_derived("widgets_grid", grid, settings_name);
-
-    grid->reference();
-
-    return std::shared_ptr<PanoramaUi>(grid);
-}
-
 void PanoramaUi::reset() {
     settings->reset("state");
     settings->reset("position");

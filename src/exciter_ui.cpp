@@ -43,19 +43,6 @@ ExciterUi::~ExciterUi() {
     settings->set_boolean("post-messages", false);
 }
 
-std::shared_ptr<ExciterUi> ExciterUi::create(std::string settings_name) {
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/exciter.glade");
-
-    ExciterUi* grid = nullptr;
-
-    builder->get_widget_derived("widgets_grid", grid, settings_name);
-
-    grid->reference();
-
-    return std::shared_ptr<ExciterUi>(grid);
-}
-
 void ExciterUi::on_new_harmonics_level(double value) {
     harmonics_levelbar->set_value(value);
 

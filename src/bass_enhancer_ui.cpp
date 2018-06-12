@@ -43,18 +43,6 @@ BassEnhancerUi::~BassEnhancerUi() {
     settings->set_boolean("post-messages", false);
 }
 
-std::shared_ptr<BassEnhancerUi> BassEnhancerUi::create(
-    std::string settings_name) {
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/bass_enhancer.glade");
-
-    BassEnhancerUi* grid = nullptr;
-
-    builder->get_widget_derived("widgets_grid", grid, settings_name);
-
-    return std::shared_ptr<BassEnhancerUi>(grid);
-}
-
 void BassEnhancerUi::on_new_harmonics_level(double value) {
     harmonics_levelbar->set_value(value);
 

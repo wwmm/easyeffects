@@ -40,13 +40,13 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
     FilterUi* filter_ui;
     EqualizerUi* equalizer_ui;
     ReverbUi* reverb_ui;
-    std::shared_ptr<BassEnhancerUi> bass_enhancer_ui;
-    std::shared_ptr<ExciterUi> exciter_ui;
-    std::shared_ptr<StereoEnhancerUi> stereo_enhancer_ui;
-    std::shared_ptr<PanoramaUi> panorama_ui;
-    std::shared_ptr<CrossfeedUi> crossfeed_ui;
-    std::shared_ptr<MaximizerUi> maximizer_ui;
-    std::shared_ptr<DelayUi> delay_ui;
+    BassEnhancerUi* bass_enhancer_ui;
+    ExciterUi* exciter_ui;
+    StereoEnhancerUi* stereo_enhancer_ui;
+    PanoramaUi* panorama_ui;
+    CrossfeedUi* crossfeed_ui;
+    MaximizerUi* maximizer_ui;
+    DelayUi* delay_ui;
 
     void level_meters_connections();
     void up_down_connections();

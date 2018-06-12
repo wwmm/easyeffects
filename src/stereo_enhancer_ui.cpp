@@ -97,20 +97,6 @@ StereoEnhancerUi::~StereoEnhancerUi() {
     settings->set_boolean("post-messages", false);
 }
 
-std::shared_ptr<StereoEnhancerUi> StereoEnhancerUi::create(
-    std::string settings_name) {
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/stereo_enhancer.glade");
-
-    StereoEnhancerUi* grid = nullptr;
-
-    builder->get_widget_derived("widgets_grid", grid, settings_name);
-
-    grid->reference();
-
-    return std::shared_ptr<StereoEnhancerUi>(grid);
-}
-
 void StereoEnhancerUi::on_new_side_level(const std::array<double, 2>& peak) {
     side_l_levelbar->set_value(peak[0]);
     side_r_levelbar->set_value(peak[1]);

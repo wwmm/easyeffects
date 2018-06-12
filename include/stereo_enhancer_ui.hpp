@@ -14,8 +14,6 @@ class StereoEnhancerUi : public Gtk::Grid, public PluginUiBase {
                      const std::string& settings_name);
     virtual ~StereoEnhancerUi();
 
-    static std::shared_ptr<StereoEnhancerUi> create(std::string settings_name);
-
     void reset();
 
     void on_new_side_level(const std::array<double, 2>& peak);

@@ -31,19 +31,6 @@ MaximizerUi::~MaximizerUi() {
     settings->set_boolean("post-messages", false);
 }
 
-std::shared_ptr<MaximizerUi> MaximizerUi::create(std::string settings_name) {
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/maximizer.glade");
-
-    MaximizerUi* grid = nullptr;
-
-    builder->get_widget_derived("widgets_grid", grid, settings_name);
-
-    grid->reference();
-
-    return std::shared_ptr<MaximizerUi>(grid);
-}
-
 void MaximizerUi::on_new_reduction(double value) {
     reduction->set_value(value);
 

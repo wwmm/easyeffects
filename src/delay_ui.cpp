@@ -35,19 +35,6 @@ DelayUi::~DelayUi() {
     settings->set_boolean("post-messages", false);
 }
 
-std::shared_ptr<DelayUi> DelayUi::create(std::string settings_name) {
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/delay.glade");
-
-    DelayUi* grid = nullptr;
-
-    builder->get_widget_derived("widgets_grid", grid, settings_name);
-
-    grid->reference();
-
-    return std::shared_ptr<DelayUi>(grid);
-}
-
 void DelayUi::on_new_tempo(std::array<double, 2> value) {
     std::ostringstream msg_l, msg_r;
 

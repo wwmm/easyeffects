@@ -32,19 +32,6 @@ CrossfeedUi::~CrossfeedUi() {
     settings->set_boolean("post-messages", false);
 }
 
-std::shared_ptr<CrossfeedUi> CrossfeedUi::create(std::string settings_name) {
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/crossfeed.glade");
-
-    CrossfeedUi* grid = nullptr;
-
-    builder->get_widget_derived("widgets_grid", grid, settings_name);
-
-    grid->reference();
-
-    return std::shared_ptr<CrossfeedUi>(grid);
-}
-
 void CrossfeedUi::init_presets_buttons() {
     preset_cmoy->signal_clicked().connect([=]() {
         fcut->set_value(700);
