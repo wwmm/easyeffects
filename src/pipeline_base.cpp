@@ -25,7 +25,7 @@ void on_message_error(const GstBus* gst_bus,
         // As far as I know only a bad latency or buffer value causes this error
         // in PE pipeline
 
-        g_object_set(pb->source, "buffer-time", (int)100000, nullptr);
+        g_object_set(pb->source, "buffer-time", (int)200000, nullptr);
         g_object_set(pb->source, "latency-time", (int)10000, nullptr);
 
         pb->update_pipeline_state();
