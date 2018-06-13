@@ -2,12 +2,12 @@
 
 ## [Unreleased]
 
-# [4.0.3]
+## [4.0.4]
 ### Fixed
 - Fixed a bug introduced in the last update. Applications widget were not being
 removed from PE when they were closed
 
-# [4.0.3]
+## [4.0.3]
 ### Added
 - improved the algorithm used to enable/disable/reorder plugins.
 
