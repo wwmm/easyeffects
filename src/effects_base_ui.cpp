@@ -54,8 +54,6 @@ void EffectsBaseUi::on_app_added(std::shared_ptr<AppInfo> app_info) {
     builder->get_widget_derived("widgets_grid", appui, app_info, pm);
 
     apps_box->add(*appui);
-
-    apps_list.push_back(appui);
 }
 
 void EffectsBaseUi::on_app_changed(std::shared_ptr<AppInfo> app_info) {

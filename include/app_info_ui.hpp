@@ -13,7 +13,7 @@
 class AppInfoUi : public Gtk::Grid {
    public:
     AppInfoUi(BaseObjectType* cobject,
-              const Glib::RefPtr<Gtk::Builder>& refBuilder,
+              const Glib::RefPtr<Gtk::Builder>& builder,
               const std::shared_ptr<AppInfo>& app_info,
               const std::shared_ptr<PulseManager>& pm);
 
@@ -39,8 +39,6 @@ class AppInfoUi : public Gtk::Grid {
 
    private:
     std::string log_tag = "app_info_ui: ";
-
-    Glib::RefPtr<Gtk::Builder> builder;
 
     bool running = true;
 
