@@ -1,8 +1,16 @@
 # Changelog
 
 ## [Unreleased]
+
+# [4.0.3]
 ### Added
 - improved the algorithm used to enable/disable/reorder plugins.
+
+### Changed
+- The default buffer values were increased from 100 ms to 200 ms. Reason: I
+noticed that the audio of a few devices like bluetooth headphones have noises
+when the buffer value is too low. Users who want to lower the values can do so
+in the main settings menu.
 
 ### Fixed
 - Removed a lot of potential memory leaks. I had a few misconceptions about how
