@@ -6,7 +6,7 @@
 dir0="$(pwd)"
 old_header=$(head -1 ./changelog)
 
-for i in artful bionic cosmic
+for i in bionic cosmic
 do
 	old_version="$(cat ./changelog | head -n 1 | awk -F "(" '{print $2}' | awk -F ")" '{print $1}')"
 	new_version="${old_version}~${i}1"
