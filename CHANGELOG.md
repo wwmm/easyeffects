@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- Expander plugin from Linux Studio
 
 ## [4.0.4]
 ### Fixed
