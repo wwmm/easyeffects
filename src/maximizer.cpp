@@ -75,8 +75,6 @@ Maximizer::Maximizer(const std::string& tag, const std::string& schema)
 
 Maximizer::~Maximizer() {
     util::debug(log_tag + name + " destroyed");
-
-    util::debug(name + " ui destroyed");
 }
 
 void Maximizer::bind_to_gsettings() {

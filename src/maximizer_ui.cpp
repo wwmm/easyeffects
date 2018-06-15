@@ -29,6 +29,8 @@ MaximizerUi::MaximizerUi(BaseObjectType* cobject,
 
 MaximizerUi::~MaximizerUi() {
     settings->set_boolean("post-messages", false);
+
+    util::debug(name + " ui destroyed");
 }
 
 void MaximizerUi::on_new_reduction(double value) {
