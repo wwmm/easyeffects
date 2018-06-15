@@ -111,7 +111,9 @@ StereoEnhancer::StereoEnhancer(const std::string& tag,
     }
 }
 
-StereoEnhancer::~StereoEnhancer() {}
+StereoEnhancer::~StereoEnhancer() {
+    util::debug(log_tag + name + " destroyed");
+}
 
 void StereoEnhancer::bind_to_gsettings() {
     g_settings_bind_with_mapping(settings, "input-gain", stereo_enhancer,

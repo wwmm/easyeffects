@@ -42,7 +42,9 @@ Pitch::Pitch(const std::string& tag, const std::string& schema)
     }
 }
 
-Pitch::~Pitch() {}
+Pitch::~Pitch() {
+    util::debug(log_tag + name + " destroyed");
+}
 
 void Pitch::bind_to_gsettings() {
     g_settings_bind_with_mapping(settings, "cents", pitch, "cents",

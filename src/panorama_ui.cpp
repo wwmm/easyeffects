@@ -22,6 +22,8 @@ PanoramaUi::PanoramaUi(BaseObjectType* cobject,
 
 PanoramaUi::~PanoramaUi() {
     settings->set_boolean("post-messages", false);
+
+    util::debug(name + " ui destroyed");
 }
 
 void PanoramaUi::reset() {

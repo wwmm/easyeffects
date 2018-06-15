@@ -93,6 +93,25 @@
         <value nick="high" value="3"/>
     </enum>
 
+    <enum id="com.github.wwmm.pulseeffects.expander.sidechain.mode.enum">
+        <value nick="Peak" value="0"/>
+        <value nick="RMS" value="1"/>
+        <value nick="Low-Pass" value="2"/>
+        <value nick="Uniform" value="3"/>
+    </enum>
+
+    <enum id="com.github.wwmm.pulseeffects.expander.sidechain.source.enum">
+        <value nick="Middle" value="0"/>
+        <value nick="Side" value="1"/>
+        <value nick="Left" value="2"/>
+        <value nick="Right" value="3"/>
+    </enum>
+
+    <enum id="com.github.wwmm.pulseeffects.expander.mode.enum">
+        <value nick="Down" value="0"/>
+        <value nick="Up" value="1"/>
+    </enum>
+
     <schema id="com.github.wwmm.pulseeffects" path="/com/github/wwmm/pulseeffects/">
         <key name="buffer-out" type="i">
             <default>200000</default>

@@ -203,6 +203,8 @@ WebrtcUi::WebrtcUi(BaseObjectType* cobject,
 
 WebrtcUi::~WebrtcUi() {
     settings->set_boolean("post-messages", false);
+
+    util::debug(name + " ui destroyed");
 }
 
 void WebrtcUi::reset() {

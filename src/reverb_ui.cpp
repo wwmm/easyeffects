@@ -104,6 +104,8 @@ ReverbUi::ReverbUi(BaseObjectType* cobject,
 
 ReverbUi::~ReverbUi() {
     settings->set_boolean("post-messages", false);
+
+    util::debug(name + " ui destroyed");
 }
 
 void ReverbUi::init_presets_buttons() {

@@ -39,7 +39,9 @@ Crossfeed::Crossfeed(const std::string& tag, const std::string& schema)
     }
 }
 
-Crossfeed::~Crossfeed() {}
+Crossfeed::~Crossfeed() {
+    util::debug(log_tag + name + " destroyed");
+}
 
 void Crossfeed::bind_to_gsettings() {
     g_settings_bind(settings, "fcut", crossfeed, "fcut",

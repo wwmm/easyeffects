@@ -45,6 +45,8 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
 AppInfoUi::~AppInfoUi() {
     running = false;
     timeout_connection.disconnect();
+
+    util::debug(log_tag + app_info->name + " info ui destroyed");
 }
 
 std::string AppInfoUi::latency_to_str(uint value) {

@@ -47,7 +47,9 @@ PresetsManager::PresetsManager()
     }
 }
 
-PresetsManager::~PresetsManager() {}
+PresetsManager::~PresetsManager() {
+    util::debug(log_tag + "destroyed");
+}
 
 std::vector<std::string> PresetsManager::get_names() {
     fs::directory_iterator it{presets_dir};

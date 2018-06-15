@@ -75,7 +75,9 @@ Exciter::Exciter(const std::string& tag, const std::string& schema)
     }
 }
 
-Exciter::~Exciter() {}
+Exciter::~Exciter() {
+    util::debug(log_tag + name + " destroyed");
+}
 
 void Exciter::bind_to_gsettings() {
     g_settings_bind_with_mapping(

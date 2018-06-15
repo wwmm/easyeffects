@@ -95,6 +95,8 @@ StereoEnhancerUi::StereoEnhancerUi(BaseObjectType* cobject,
 
 StereoEnhancerUi::~StereoEnhancerUi() {
     settings->set_boolean("post-messages", false);
+
+    util::debug(name + " ui destroyed");
 }
 
 void StereoEnhancerUi::on_new_side_level(const std::array<double, 2>& peak) {

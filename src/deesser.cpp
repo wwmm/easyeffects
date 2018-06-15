@@ -90,7 +90,9 @@ Deesser::Deesser(const std::string& tag, const std::string& schema)
     }
 }
 
-Deesser::~Deesser() {}
+Deesser::~Deesser() {
+    util::debug(log_tag + name + " destroyed");
+}
 
 void Deesser::bind_to_gsettings() {
     g_settings_bind(settings, "detection", deesser, "detection",

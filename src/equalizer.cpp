@@ -50,7 +50,9 @@ Equalizer::Equalizer(const std::string& tag, const std::string& schema)
     }
 }
 
-Equalizer::~Equalizer() {}
+Equalizer::~Equalizer() {
+    util::debug(log_tag + name + " destroyed");
+}
 
 void Equalizer::bind_band(const int index) {
     auto band =

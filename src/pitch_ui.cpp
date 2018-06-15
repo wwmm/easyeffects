@@ -33,6 +33,8 @@ PitchUi::PitchUi(BaseObjectType* cobject,
 
 PitchUi::~PitchUi() {
     settings->set_boolean("post-messages", false);
+
+    util::debug(name + " ui destroyed");
 }
 
 void PitchUi::reset() {

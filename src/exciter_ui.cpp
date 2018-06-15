@@ -41,6 +41,8 @@ ExciterUi::ExciterUi(BaseObjectType* cobject,
 
 ExciterUi::~ExciterUi() {
     settings->set_boolean("post-messages", false);
+
+    util::debug(name + " ui destroyed");
 }
 
 void ExciterUi::on_new_harmonics_level(double value) {

@@ -35,6 +35,8 @@ SinkInputEffectsUi::SinkInputEffectsUi(
         "/com/github/wwmm/pulseeffects/maximizer.glade");
     auto b_delay = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/delay.glade");
+    auto b_expander = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/expander.glade");
 
     b_limiter->get_widget_derived(
         "widgets_grid", limiter_ui,
@@ -72,6 +74,9 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     b_delay->get_widget_derived(
         "widgets_grid", delay_ui,
         "com.github.wwmm.pulseeffects.sinkinputs.delay");
+    b_expander->get_widget_derived(
+        "widgets_grid", expander_ui,
+        "com.github.wwmm.pulseeffects.sinkinputs.expander");
 
     stack->add(*limiter_ui, limiter_ui->name);
     stack->add(*compressor_ui, compressor_ui->name);
@@ -85,6 +90,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     stack->add(*crossfeed_ui, crossfeed_ui->name);
     stack->add(*maximizer_ui, maximizer_ui->name);
     stack->add(*delay_ui, delay_ui->name);
+    stack->add(*expander_ui, expander_ui->name);
 
     // populate_listbox
 
@@ -100,12 +106,15 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     add_to_listbox(crossfeed_ui);
     add_to_listbox(maximizer_ui);
     add_to_listbox(delay_ui);
+    add_to_listbox(expander_ui);
 
     level_meters_connections();
     up_down_connections();
 }
 
-SinkInputEffectsUi::~SinkInputEffectsUi() {}
+SinkInputEffectsUi::~SinkInputEffectsUi() {
+    util::debug(log_tag + "destroyed");
+}
 
 void SinkInputEffectsUi::level_meters_connections() {
     // limiter level meters connections
@@ -208,6 +217,13 @@ void SinkInputEffectsUi::level_meters_connections() {
         sigc::mem_fun(*delay_ui, &DelayUi::on_new_output_level_db)));
     connections.push_back(sie->delay->tempo.connect(
         sigc::mem_fun(*delay_ui, &DelayUi::on_new_tempo)));
+
+    // expander level meters connections
+
+    connections.push_back(sie->expander->input_level.connect(
+        sigc::mem_fun(*expander_ui, &ExpanderUi::on_new_input_level)));
+    connections.push_back(sie->expander->output_level.connect(
+        sigc::mem_fun(*expander_ui, &ExpanderUi::on_new_output_level)));
 }
 
 void SinkInputEffectsUi::up_down_connections() {

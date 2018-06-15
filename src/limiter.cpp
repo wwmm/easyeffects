@@ -102,7 +102,9 @@ Limiter::Limiter(const std::string& tag, const std::string& schema)
     }
 }
 
-Limiter::~Limiter() {}
+Limiter::~Limiter() {
+    util::debug(log_tag + name + " destroyed");
+}
 
 void Limiter::bind_to_gsettings() {
     g_settings_bind_with_mapping(

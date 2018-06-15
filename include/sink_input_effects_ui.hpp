@@ -8,6 +8,7 @@
 #include "effects_base_ui.hpp"
 #include "equalizer_ui.hpp"
 #include "exciter_ui.hpp"
+#include "expander_ui.hpp"
 #include "filter_ui.hpp"
 #include "limiter_ui.hpp"
 #include "maximizer_ui.hpp"
@@ -45,6 +46,7 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
     CrossfeedUi* crossfeed_ui;
     MaximizerUi* maximizer_ui;
     DelayUi* delay_ui;
+    ExpanderUi* expander_ui;
 
     void level_meters_connections();
     void up_down_connections();

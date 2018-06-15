@@ -30,6 +30,8 @@ CrossfeedUi::CrossfeedUi(BaseObjectType* cobject,
 
 CrossfeedUi::~CrossfeedUi() {
     settings->set_boolean("post-messages", false);
+
+    util::debug(name + " ui destroyed");
 }
 
 void CrossfeedUi::init_presets_buttons() {

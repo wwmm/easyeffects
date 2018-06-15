@@ -75,7 +75,9 @@ Compressor::Compressor(const std::string& tag, const std::string& schema)
     }
 }
 
-Compressor::~Compressor() {}
+Compressor::~Compressor() {
+    util::debug(log_tag + name + " destroyed");
+}
 
 void Compressor::bind_to_gsettings() {
     g_settings_bind(settings, "detection", compressor, "detection",

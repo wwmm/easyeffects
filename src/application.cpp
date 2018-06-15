@@ -25,7 +25,9 @@ Application::Application()
                           _("Load a preset. Example: pulseeffects -l music"));
 }
 
-Application::~Application() {}
+Application::~Application() {
+    util::debug(log_tag + " destroyed");
+}
 
 Glib::RefPtr<Application> Application::create() {
     return Glib::RefPtr<Application>(new Application());

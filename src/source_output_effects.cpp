@@ -199,6 +199,8 @@ SourceOutputEffects::SourceOutputEffects(
 
 SourceOutputEffects::~SourceOutputEffects() {
     g_object_unref(soe_settings);
+
+    util::debug(log_tag + "destroyed");
 }
 
 void SourceOutputEffects::on_app_added(

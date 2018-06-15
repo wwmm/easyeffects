@@ -105,6 +105,8 @@ GateUi::GateUi(BaseObjectType* cobject,
 
 GateUi::~GateUi() {
     settings->set_boolean("post-messages", false);
+
+    util::debug(name + " ui destroyed");
 }
 
 void GateUi::on_new_gating(double value) {

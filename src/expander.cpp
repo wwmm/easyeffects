@@ -1,10 +1,10 @@
 #include <glibmm/main.h>
-#include "reverb.hpp"
+#include "expander.hpp"
 #include "util.hpp"
 
 namespace {
 
-void on_post_messages_changed(GSettings* settings, gchar* key, Reverb* l) {
+void on_post_messages_changed(GSettings* settings, gchar* key, Expander* l) {
     auto post = g_settings_get_boolean(settings, key);
 
     if (post) {
@@ -13,8 +13,8 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Reverb* l) {
                 [l]() {
                     float inL, inR;
 
-                    g_object_get(l->reverb, "meter-inL", &inL, nullptr);
-                    g_object_get(l->reverb, "meter-inR", &inR, nullptr);
+                    g_object_get(l->expander, "ilm-l", &inL, nullptr);
+                    g_object_get(l->expander, "ilm-r", &inR, nullptr);
 
                     std::array<double, 2> in_peak = {inL, inR};
 
@@ -30,8 +30,8 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Reverb* l) {
                 [l]() {
                     float outL, outR;
 
-                    g_object_get(l->reverb, "meter-outL", &outL, nullptr);
-                    g_object_get(l->reverb, "meter-outR", &outR, nullptr);
+                    g_object_get(l->expander, "olm-l", &outL, nullptr);
+                    g_object_get(l->expander, "olm-r", &outR, nullptr);
 
                     std::array<double, 2> out_peak = {outL, outR};
 
@@ -49,19 +49,19 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Reverb* l) {
 
 }  // namespace
 
-Reverb::Reverb(const std::string& tag, const std::string& schema)
-    : PluginBase(tag, "reverb", schema) {
-    reverb = gst_element_factory_make("calf-sourceforge-net-plugins-Reverb",
-                                      "reverb");
+Expander::Expander(const std::string& tag, const std::string& schema)
+    : PluginBase(tag, "expander", schema) {
+    expander = gst_element_factory_make(
+        "lsp-plug-in-plugins-lv2-expander-stereo", nullptr);
 
-    if (is_installed(reverb)) {
+    if (is_installed(expander)) {
         auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
 
-        gst_bin_add_many(GST_BIN(bin), audioconvert, reverb, nullptr);
-        gst_element_link(audioconvert, reverb);
+        gst_bin_add_many(GST_BIN(bin), audioconvert, expander, nullptr);
+        gst_element_link_many(audioconvert, expander, nullptr);
 
         auto pad_sink = gst_element_get_static_pad(audioconvert, "sink");
-        auto pad_src = gst_element_get_static_pad(reverb, "src");
+        auto pad_src = gst_element_get_static_pad(expander, "src");
 
         gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
         gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));
@@ -69,7 +69,12 @@ Reverb::Reverb(const std::string& tag, const std::string& schema)
         gst_object_unref(GST_OBJECT(pad_sink));
         gst_object_unref(GST_OBJECT(pad_src));
 
-        g_object_set(reverb, "on", true, nullptr);
+        g_object_set(expander, "bypass", false, nullptr);
+        g_object_set(expander, "pause", true, nullptr);  // Pause graph analysis
+        g_object_set(expander, "g-in", 1.0f, nullptr);
+        g_object_set(expander, "g-out", 1.0f, nullptr);
+        g_object_set(expander, "cdr", 0.0f, nullptr);
+        g_object_set(expander, "cwt", 1.0f, nullptr);
 
         bind_to_gsettings();
 
@@ -84,51 +89,56 @@ Reverb::Reverb(const std::string& tag, const std::string& schema)
     }
 }
 
-Reverb::~Reverb() {
+Expander::~Expander() {
     util::debug(log_tag + name + " destroyed");
 }
 
-void Reverb::bind_to_gsettings() {
-    g_settings_bind_with_mapping(
-        settings, "input-gain", reverb, "level-in", G_SETTINGS_BIND_DEFAULT,
-        util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+void Expander::bind_to_gsettings() {
+    g_settings_bind(settings, "scm", expander, "scm", G_SETTINGS_BIND_DEFAULT);
 
-    g_settings_bind_with_mapping(
-        settings, "output-gain", reverb, "level-out", G_SETTINGS_BIND_DEFAULT,
-        util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-    g_settings_bind(settings, "room-size", reverb, "room-size",
-                    G_SETTINGS_BIND_DEFAULT);
-
-    g_settings_bind_with_mapping(settings, "decay-time", reverb, "decay-time",
+    g_settings_bind_with_mapping(settings, "sla", expander, "sla",
                                  G_SETTINGS_BIND_GET, util::double_to_float,
                                  nullptr, nullptr, nullptr);
 
-    g_settings_bind_with_mapping(settings, "hf-damp", reverb, "hf-damp",
-                                 G_SETTINGS_BIND_GET, util::double_to_float,
-                                 nullptr, nullptr, nullptr);
+    g_settings_bind(settings, "scl", expander, "scl", G_SETTINGS_BIND_DEFAULT);
 
-    g_settings_bind_with_mapping(settings, "diffusion", reverb, "diffusion",
+    g_settings_bind(settings, "scs", expander, "scs", G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind_with_mapping(settings, "scr", expander, "scr",
                                  G_SETTINGS_BIND_GET, util::double_to_float,
                                  nullptr, nullptr, nullptr);
 
     g_settings_bind_with_mapping(
-        settings, "amount", reverb, "amount", G_SETTINGS_BIND_DEFAULT,
+        settings, "scp", expander, "scp", G_SETTINGS_BIND_DEFAULT,
+        util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+
+    g_settings_bind(settings, "em", expander, "em", G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind_with_mapping(
+        settings, "al", expander, "al", G_SETTINGS_BIND_DEFAULT,
+        util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(settings, "at", expander, "at",
+                                 G_SETTINGS_BIND_GET, util::double_to_float,
+                                 nullptr, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(
+        settings, "rrl", expander, "rrl", G_SETTINGS_BIND_DEFAULT,
+        util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(settings, "rt", expander, "rt",
+                                 G_SETTINGS_BIND_GET, util::double_to_float,
+                                 nullptr, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(settings, "cr", expander, "cr",
+                                 G_SETTINGS_BIND_GET, util::double_to_float,
+                                 nullptr, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(
+        settings, "kn", expander, "kn", G_SETTINGS_BIND_DEFAULT,
         util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
     g_settings_bind_with_mapping(
-        settings, "dry", reverb, "dry", G_SETTINGS_BIND_DEFAULT,
+        settings, "mk", expander, "mk", G_SETTINGS_BIND_DEFAULT,
         util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-    g_settings_bind_with_mapping(settings, "predelay", reverb, "predelay",
-                                 G_SETTINGS_BIND_GET, util::double_to_float,
-                                 nullptr, nullptr, nullptr);
-
-    g_settings_bind_with_mapping(settings, "bass-cut", reverb, "bass-cut",
-                                 G_SETTINGS_BIND_GET, util::double_to_float,
-                                 nullptr, nullptr, nullptr);
-
-    g_settings_bind_with_mapping(settings, "treble-cut", reverb, "treble-cut",
-                                 G_SETTINGS_BIND_GET, util::double_to_float,
-                                 nullptr, nullptr, nullptr);
 }

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="com.github.wwmm.pulseeffects.sinkinputs.expander" path="/com/github/wwmm/pulseeffects/sinkinputs/expander/">
+        <key name="state" type="b">
+            <default>false</default>
+        </key>
+        <key name="installed" type="b">
+            <default>false</default>
+        </key>
+        <key name="post-messages" type="b">
+            <default>false</default>
+        </key>
+        <key name="scm" enum="com.github.wwmm.pulseeffects.expander.sidechain.mode.enum">
+            <default>"RMS"</default>
+        </key>
+        <key name="sla" type="d">
+            <range min="0" max="20"/>
+            <default>0.0</default>
+        </key>
+        <key name="scl" type="b">
+            <default>false</default>
+        </key>
+        <key name="scs" enum="com.github.wwmm.pulseeffects.expander.sidechain.source.enum">
+            <default>"Middle"</default>
+        </key>
+        <key name="scr" type="d">
+            <range min="0" max="250"/>
+            <default>10.0</default>
+        </key>
+        <key name="scp" type="d">
+            <range min="-40" max="40"/>
+            <default>0.0</default>
+        </key>
+        <key name="em" enum="com.github.wwmm.pulseeffects.expander.mode.enum">
+            <default>"Up"</default>
+        </key>
+        <key name="al" type="d">
+            <range min="-60" max="0"/>
+            <default>-12.0</default>
+        </key>
+        <key name="at" type="d">
+            <range min="0" max="2000"/>
+            <default>20.0</default>
+        </key>
+        <key name="rrl" type="d">
+            <range min="-100" max="35.9"/>
+            <default>-100.0</default>
+        </key>
+        <key name="rt" type="d">
+            <range min="0" max="5000"/>
+            <default>100.0</default>
+        </key>
+        <key name="cr" type="d">
+            <range min="1" max="100"/>
+            <default>4</default>
+        </key>
+        <key name="kn" type="d">
+            <range min="-23" max="0"/>
+            <default>-6</default>
+        </key>
+        <key name="mk" type="d">
+            <range min="-60" max="60"/>
+            <default>0.0</default>
+        </key>
+    </schema>
+</schemalist>

@@ -22,7 +22,9 @@ Webrtc::Webrtc(const std::string& tag,
     }
 }
 
-Webrtc::~Webrtc() {}
+Webrtc::~Webrtc() {
+    util::debug(log_tag + name + " destroyed");
+}
 
 void Webrtc::build_probe_bin() {
     probe_bin = gst_bin_new("probe_bin");

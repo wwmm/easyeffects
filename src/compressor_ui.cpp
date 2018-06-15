@@ -110,6 +110,8 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
 
 CompressorUi::~CompressorUi() {
     settings->set_boolean("post-messages", false);
+
+    util::debug(name + " ui destroyed");
 }
 
 void CompressorUi::on_new_compression(double value) {

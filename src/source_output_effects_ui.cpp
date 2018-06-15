@@ -83,7 +83,9 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(
     up_down_connections();
 }
 
-SourceOutputEffectsUi::~SourceOutputEffectsUi() {}
+SourceOutputEffectsUi::~SourceOutputEffectsUi() {
+    util::debug(log_tag + "destroyed");
+}
 
 void SourceOutputEffectsUi::level_meters_connections() {
     // limiter level meters connections

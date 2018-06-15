@@ -249,6 +249,8 @@ ApplicationUi::~ApplicationUi() {
     }
 
     spectrum_connection.disconnect();
+
+    util::debug(log_tag + "destroyed");
 }
 
 ApplicationUi* ApplicationUi::create(Application* app_this) {

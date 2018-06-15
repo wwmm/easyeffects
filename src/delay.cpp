@@ -83,7 +83,9 @@ Delay::Delay(const std::string& tag, const std::string& schema)
     }
 }
 
-Delay::~Delay() {}
+Delay::~Delay() {
+    util::debug(log_tag + name + " destroyed");
+}
 
 void Delay::bind_to_gsettings() {
     g_settings_bind(settings, "m-l", delay, "m-l", G_SETTINGS_BIND_DEFAULT);

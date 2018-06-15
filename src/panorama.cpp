@@ -41,7 +41,9 @@ Panorama::Panorama(const std::string& tag, const std::string& schema)
     }
 }
 
-Panorama::~Panorama() {}
+Panorama::~Panorama() {
+    util::debug(log_tag + name + " destroyed");
+}
 
 void Panorama::bind_to_gsettings() {
     g_settings_bind_with_mapping(settings, "position", panorama, "panorama",

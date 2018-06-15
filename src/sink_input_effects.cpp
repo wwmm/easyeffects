@@ -192,6 +192,8 @@ SinkInputEffects::SinkInputEffects(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.maximizer");
     delay = std::make_unique<Delay>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.delay");
+    expander = std::make_unique<Expander>(
+        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.expander");
 
     plugins.insert(std::make_pair(limiter->name, limiter->plugin));
     plugins.insert(std::make_pair(compressor->name, compressor->plugin));
@@ -206,6 +208,7 @@ SinkInputEffects::SinkInputEffects(
     plugins.insert(std::make_pair(crossfeed->name, crossfeed->plugin));
     plugins.insert(std::make_pair(maximizer->name, maximizer->plugin));
     plugins.insert(std::make_pair(delay->name, delay->plugin));
+    plugins.insert(std::make_pair(expander->name, expander->plugin));
 
     add_plugins_to_pipeline();
 
@@ -215,6 +218,8 @@ SinkInputEffects::SinkInputEffects(
 
 SinkInputEffects::~SinkInputEffects() {
     g_object_unref(sie_settings);
+
+    util::debug(log_tag + "destroyed");
 }
 
 void SinkInputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info) {

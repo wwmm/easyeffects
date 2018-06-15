@@ -41,6 +41,8 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
 
 BassEnhancerUi::~BassEnhancerUi() {
     settings->set_boolean("post-messages", false);
+
+    util::debug(name + " ui destroyed");
 }
 
 void BassEnhancerUi::on_new_harmonics_level(double value) {

@@ -7,6 +7,7 @@
 #include "delay.hpp"
 #include "equalizer.hpp"
 #include "exciter.hpp"
+#include "expander.hpp"
 #include "filter.hpp"
 #include "limiter.hpp"
 #include "maximizer.hpp"
@@ -40,6 +41,7 @@ class SinkInputEffects : public PipelineBase {
     std::unique_ptr<Crossfeed> crossfeed;
     std::unique_ptr<Maximizer> maximizer;
     std::unique_ptr<Delay> delay;
+    std::unique_ptr<Expander> expander;
 
     sigc::signal<void, std::array<double, 2>> compressor_input_level;
     sigc::signal<void, std::array<double, 2>> compressor_output_level;

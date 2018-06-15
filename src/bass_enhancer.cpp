@@ -77,7 +77,9 @@ BassEnhancer::BassEnhancer(const std::string& tag, const std::string& schema)
     }
 }
 
-BassEnhancer::~BassEnhancer() {}
+BassEnhancer::~BassEnhancer() {
+    util::debug(log_tag + name + " destroyed");
+}
 
 void BassEnhancer::bind_to_gsettings() {
     g_settings_bind_with_mapping(settings, "input-gain", bass_enhancer,

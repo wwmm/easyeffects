@@ -110,6 +110,8 @@ DeesserUi::DeesserUi(BaseObjectType* cobject,
 
 DeesserUi::~DeesserUi() {
     settings->set_boolean("post-messages", false);
+
+    util::debug(name + " ui destroyed");
 }
 
 void DeesserUi::on_new_compression(double value) {

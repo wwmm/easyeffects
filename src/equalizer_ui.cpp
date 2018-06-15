@@ -79,6 +79,8 @@ EqualizerUi::~EqualizerUi() {
     for (auto c : connections) {
         c.disconnect();
     }
+
+    util::debug(name + " ui destroyed");
 }
 
 void EqualizerUi::on_nbands_changed() {

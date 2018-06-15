@@ -33,6 +33,8 @@ DelayUi::DelayUi(BaseObjectType* cobject,
 
 DelayUi::~DelayUi() {
     settings->set_boolean("post-messages", false);
+
+    util::debug(name + " ui destroyed");
 }
 
 void DelayUi::on_new_tempo(std::array<double, 2> value) {

@@ -14,6 +14,7 @@ install_data([
   'com.github.wwmm.pulseeffects.sinkinputs.stereoenhancer.gschema.xml',
   'com.github.wwmm.pulseeffects.sinkinputs.crossfeed.gschema.xml',
   'com.github.wwmm.pulseeffects.sinkinputs.maximizer.gschema.xml',
+  'com.github.wwmm.pulseeffects.sinkinputs.expander.gschema.xml',
   'com.github.wwmm.pulseeffects.sourceoutputs.gschema.xml',
   'com.github.wwmm.pulseeffects.sourceoutputs.limiter.gschema.xml',
   'com.github.wwmm.pulseeffects.sourceoutputs.compressor.gschema.xml',

@@ -96,6 +96,8 @@ LimiterUi::~LimiterUi() {
     for (auto c : connections) {
         c.disconnect();
     }
+
+    util::debug(name + " ui destroyed");
 }
 
 void LimiterUi::init_autovolume() {

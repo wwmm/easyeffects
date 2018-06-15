@@ -84,7 +84,9 @@ Filter::Filter(const std::string& tag, const std::string& schema)
     }
 }
 
-Filter::~Filter() {}
+Filter::~Filter() {
+    util::debug(log_tag + name + " destroyed");
+}
 
 void Filter::bind_to_gsettings() {
     g_settings_bind_with_mapping(
