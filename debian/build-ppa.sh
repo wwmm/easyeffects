@@ -20,7 +20,10 @@ do
 	# change ppa:mikhailnov/pulseeffects to your PPA at Launchpad.net
 	# you must add your public GPG key to Launchpad
 	# and add your public SSH key to Launchpad before running dput
-	dput -f ppa:mikhailnov/pulseeffects "$(ls -tr pulseeffects_*_source.changes | tail -n 1)" || exit 1
+	for ppa_name in ppa:mikhailnov/pulseeffects ppa:mikhailnov/utils
+	do
+		dput -f "$ppa_name" "$(/bin/ls -tr pulseeffects_*_source.changes | tail -n 1)"
+	done
 	cd "${dir0}"
 	sleep 1
 done
