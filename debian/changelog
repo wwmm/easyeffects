@@ -1,4 +1,10 @@
-pulseeffects (4.0.0-3) unstable; urgency=low
+pulseeffects (4.0.4-1) unstable; urgency=low
+
+  * update to version 4.0.4 upstream
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Fri, 15 Jun 2018 12:27:00 +0300
+
+pulseeffects (4.0.0-4) unstable; urgency=low
 
   * update to version 4.0 upstream
   * transition from Python to C++
