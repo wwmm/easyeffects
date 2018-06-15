@@ -11,6 +11,7 @@
 #include "delay_preset.hpp"
 #include "equalizer_preset.hpp"
 #include "exciter_preset.hpp"
+#include "expander_preset.hpp"
 #include "filter_preset.hpp"
 #include "gate_preset.hpp"
 #include "limiter_preset.hpp"
@@ -56,6 +57,7 @@ class PresetsManager {
     std::unique_ptr<ReverbPreset> reverb;
     std::unique_ptr<StereoEnhancerPreset> stereo_enhancer;
     std::unique_ptr<WebrtcPreset> webrtc;
+    std::unique_ptr<ExpanderPreset> expander;
 };
 
 #endif

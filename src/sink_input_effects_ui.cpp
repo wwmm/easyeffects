@@ -321,6 +321,11 @@ void SinkInputEffectsUi::up_down_connections() {
         [=]() { on_up(delay_ui); }));
     connections.push_back(delay_ui->plugin_down->signal_clicked().connect(
         [=]() { on_down(delay_ui); }));
+
+    connections.push_back(expander_ui->plugin_up->signal_clicked().connect(
+        [=]() { on_up(expander_ui); }));
+    connections.push_back(expander_ui->plugin_down->signal_clicked().connect(
+        [=]() { on_down(expander_ui); }));
 }
 
 void SinkInputEffectsUi::reset() {
@@ -338,4 +343,5 @@ void SinkInputEffectsUi::reset() {
     crossfeed_ui->reset();
     maximizer_ui->reset();
     delay_ui->reset();
+    expander_ui->reset();
 }

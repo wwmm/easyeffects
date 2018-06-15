@@ -77,6 +77,7 @@ pulseeffects_sources = [
 	'calibration_mic.cpp',
 	'expander.cpp',
 	'expander_ui.cpp',
+	'expander_preset.cpp',
 	'util.cpp',
 	gresources
 ]
