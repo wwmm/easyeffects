@@ -28,6 +28,74 @@ GVariant* int_to_expander_mode_enum(const GValue* value,
     }
 }
 
+gboolean sidechain_mode_enum_to_int(GValue* value,
+                                    GVariant* variant,
+                                    gpointer user_data) {
+    auto v = g_variant_get_string(variant, nullptr);
+
+    if (v == std::string("Peak")) {
+        g_value_set_int(value, 0);
+    } else if (v == std::string("RMS")) {
+        g_value_set_int(value, 1);
+    } else if (v == std::string("Low-Pass")) {
+        g_value_set_int(value, 2);
+    } else if (v == std::string("Uniform")) {
+        g_value_set_int(value, 3);
+    }
+
+    return true;
+}
+
+GVariant* int_to_sidechain_mode_enum(const GValue* value,
+                                     const GVariantType* expected_type,
+                                     gpointer user_data) {
+    int v = g_value_get_int(value);
+
+    if (v == 0) {
+        return g_variant_new_string("Peak");
+    } else if (v == 1) {
+        return g_variant_new_string("RMS");
+    } else if (v == 2) {
+        return g_variant_new_string("Low-Pass");
+    } else {
+        return g_variant_new_string("Uniform");
+    }
+}
+
+gboolean sidechain_source_enum_to_int(GValue* value,
+                                      GVariant* variant,
+                                      gpointer user_data) {
+    auto v = g_variant_get_string(variant, nullptr);
+
+    if (v == std::string("Middle")) {
+        g_value_set_int(value, 0);
+    } else if (v == std::string("Side")) {
+        g_value_set_int(value, 1);
+    } else if (v == std::string("Left")) {
+        g_value_set_int(value, 2);
+    } else if (v == std::string("Right")) {
+        g_value_set_int(value, 3);
+    }
+
+    return true;
+}
+
+GVariant* int_to_sidechain_source_enum(const GValue* value,
+                                       const GVariantType* expected_type,
+                                       gpointer user_data) {
+    int v = g_value_get_int(value);
+
+    if (v == 0) {
+        return g_variant_new_string("Middle");
+    } else if (v == 1) {
+        return g_variant_new_string("Side");
+    } else if (v == 2) {
+        return g_variant_new_string("Left");
+    } else {
+        return g_variant_new_string("Right");
+    }
+}
+
 }  // namespace
 
 ExpanderUi::ExpanderUi(BaseObjectType* cobject,
@@ -38,21 +106,51 @@ ExpanderUi::ExpanderUi(BaseObjectType* cobject,
 
     // loading glade widgets
 
-    builder->get_widget("expander_mode", expander_mode);
+    builder->get_widget("em", em);
+    builder->get_widget("scm", scm);
+    builder->get_widget("scs", scs);
+    builder->get_widget("scl", scl);
 
-    // get_object(builder, "lookahead", lookahead);
+    get_object(builder, "scr", scr);
+    get_object(builder, "scp", scp);
+    get_object(builder, "sla", sla);
+    get_object(builder, "cr", cr);
+    get_object(builder, "kn", kn);
+    get_object(builder, "mk", mk);
+    get_object(builder, "al", al);
+    get_object(builder, "at", at);
+    get_object(builder, "rrl", rrl);
+    get_object(builder, "rt", rt);
 
     // gsettings bindings
 
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
-    auto flag_get = Gio::SettingsBindFlags::SETTINGS_BIND_GET;
-    auto flag_invert_boolean =
-        Gio::SettingsBindFlags::SETTINGS_BIND_INVERT_BOOLEAN;
 
-    g_settings_bind_with_mapping(settings->gobj(), "em", expander_mode->gobj(),
-                                 "active", G_SETTINGS_BIND_DEFAULT,
-                                 expander_mode_enum_to_int,
-                                 int_to_expander_mode_enum, nullptr, nullptr);
+    settings->bind("scl", scl, "active", flag);
+    settings->bind("scr", scr.get(), "value", flag);
+    settings->bind("scp", scp.get(), "value", flag);
+    settings->bind("sla", sla.get(), "value", flag);
+    settings->bind("cr", cr.get(), "value", flag);
+    settings->bind("kn", kn.get(), "value", flag);
+    settings->bind("mk", mk.get(), "value", flag);
+    settings->bind("al", al.get(), "value", flag);
+    settings->bind("at", at.get(), "value", flag);
+    settings->bind("rrl", rrl.get(), "value", flag);
+    settings->bind("rt", rt.get(), "value", flag);
+
+    g_settings_bind_with_mapping(
+        settings->gobj(), "em", em->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+        expander_mode_enum_to_int, int_to_expander_mode_enum, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(settings->gobj(), "scm", scm->gobj(), "active",
+                                 G_SETTINGS_BIND_DEFAULT,
+                                 sidechain_mode_enum_to_int,
+                                 int_to_sidechain_mode_enum, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(
+        settings->gobj(), "scs", scs->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+        sidechain_source_enum_to_int, int_to_sidechain_source_enum, nullptr,
+        nullptr);
 
     settings->bind("installed", this, "sensitive", flag);
 

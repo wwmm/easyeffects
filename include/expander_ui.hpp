@@ -16,10 +16,9 @@ class ExpanderUi : public Gtk::Grid, public PluginUiBase {
     void reset();
 
    private:
-    Gtk::ComboBoxText* expander_mode;
-    // Glib::RefPtr<Gtk::Adjustment> input_gain, limit, lookahead, release,
-    //     oversampling;
-    // Gtk::ToggleButton *asc, *autovolume_enable;
+    Gtk::ComboBoxText *em, *scm, *scs;
+    Glib::RefPtr<Gtk::Adjustment> scr, scp, sla, cr, kn, mk, al, at, rrl, rt;
+    Gtk::ToggleButton* scl;
     // Glib::RefPtr<Gtk::Adjustment> asc_level, autovolume_target,
     //     autovolume_window;
     // Glib::RefPtr<Gtk::Adjustment> autovolume_threshold, autovolume_tolerance;
