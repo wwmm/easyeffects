@@ -9,6 +9,7 @@ namespace fs = boost::filesystem;
 
 PresetsManager::PresetsManager()
     : presets_dir(Glib::get_user_config_dir() + "/PulseEffects"),
+      settings(Gio::Settings::create("com.github.wwmm.pulseeffects")),
       sie_settings(
           Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs")),
       soe_settings(
@@ -83,8 +84,144 @@ void PresetsManager::add(const std::string& name) {
     }
 }
 
+void PresetsManager::save_general_settings(boost::property_tree::ptree& root) {
+    boost::property_tree::ptree node_in;
+    Glib::Variant<std::vector<double>> aux;
+
+    root.put("general.enable-all-apps",
+             settings->get_boolean("enable-all-apps"));
+
+    root.put("general.use-dark-theme", settings->get_boolean("use-dark-theme"));
+
+    root.put("spectrum.show", settings->get_boolean("show-spectrum"));
+
+    root.put("spectrum.n-points", settings->get_int("spectrum-n-points"));
+
+    root.put("spectrum.height", settings->get_int("spectrum-height"));
+
+    root.put("spectrum.use-custom-color",
+             settings->get_boolean("use-custom-color"));
+
+    settings->get_value("spectrum-color", aux);
+
+    for (auto& p : aux.get()) {
+        boost::property_tree::ptree node;
+        node.put("", p);
+        node_in.push_back(std::make_pair("", node));
+    }
+
+    root.add_child("spectrum.color", node_in);
+
+    root.put("pulseaudio.use-default-sink",
+             settings->get_boolean("use-default-sink"));
+
+    root.put("pulseaudio.use-default-source",
+             settings->get_boolean("use-default-source"));
+
+    root.put("pulseaudio.buffer-out", settings->get_int("buffer-out"));
+
+    root.put("pulseaudio.latency-out", settings->get_int("latency-out"));
+
+    root.put("pulseaudio.buffer-in", settings->get_int("buffer-in"));
+
+    root.put("pulseaudio.latency-in", settings->get_int("latency-in"));
+}
+
+void PresetsManager::load_general_settings(boost::property_tree::ptree& root) {
+    settings->set_boolean(
+        "enable-all-apps",
+        root.get<bool>("general.enable-all-apps",
+                       get_default<bool>(settings, "enable-all-apps")));
+
+    settings->set_boolean(
+        "use-dark-theme",
+        root.get<bool>("general.use-dark-theme",
+                       get_default<bool>(settings, "use-dark-theme")));
+
+    settings->set_boolean(
+        "show-spectrum",
+        root.get<bool>("spectrum.show",
+                       get_default<bool>(settings, "show-spectrum")));
+
+    settings->set_int(
+        "spectrum-n-points",
+        root.get<int>("spectrum.n-points",
+                      get_default<int>(settings, "spectrum-n-points")));
+
+    settings->set_int(
+        "spectrum-height",
+        root.get<int>("spectrum.height",
+                      get_default<int>(settings, "spectrum-height")));
+
+    settings->set_boolean(
+        "use-custom-color",
+        root.get<bool>("spectrum.use-custom-color",
+                       get_default<bool>(settings, "use-custom-color")));
+
+    try {
+        std::vector<double> spectrum_color;
+
+        for (auto& p : root.get_child("spectrum.color")) {
+            spectrum_color.push_back(p.second.get<double>(""));
+        }
+
+        auto v = Glib::Variant<std::vector<double>>::create(spectrum_color);
+
+        settings->set_value("spectrum-color", v);
+    } catch (const boost::property_tree::ptree_error& e) {
+        settings->reset("spectrum-color");
+    }
+
+    settings->set_boolean(
+        "use-default-sink",
+        root.get<bool>("pulseaudio.use-default-sink",
+                       get_default<bool>(settings, "use-default-sink")));
+
+    settings->set_boolean(
+        "use-default-source",
+        root.get<bool>("pulseaudio.use-default-source",
+                       get_default<bool>(settings, "use-default-source")));
+
+    /*
+    we handle buffer and latency in a different way because whenever their
+    gsettings keys are touched changed the pipeline will be put in the null
+    state and then back to the paying state if necessary. Sometimes the
+    interface freezes when GStreamer alternates states.
+    */
+
+    auto buffer_out = root.get<int>("pulseaudio.buffer-out",
+                                    get_default<int>(settings, "buffer-out"));
+
+    auto latency_out = root.get<int>("pulseaudio.latency-out",
+                                     get_default<int>(settings, "latency-out"));
+
+    auto buffer_in = root.get<int>("pulseaudio.buffer-in",
+                                   get_default<int>(settings, "buffer-in"));
+
+    auto latency_in = root.get<int>("pulseaudio.latency-in",
+                                    get_default<int>(settings, "latency-in"));
+
+    if (settings->get_int("buffer-out") != buffer_out) {
+        settings->set_int("buffer-out", buffer_out);
+    }
+
+    if (settings->get_int("latency-out") != latency_out) {
+        settings->set_int("latency-out", latency_out);
+    }
+
+    if (settings->get_int("buffer-in") != buffer_in) {
+        settings->set_int("buffer-in", buffer_in);
+    }
+
+    if (settings->get_int("latency-in") != latency_in) {
+        settings->set_int("latency-in", latency_in);
+    }
+}
+
 void PresetsManager::save(const std::string& name) {
     boost::property_tree::ptree root, node_in, node_out;
+
+    save_general_settings(root);
 
     std::vector<std::string> input_plugins =
         soe_settings->get_string_array("plugins");
@@ -149,6 +286,8 @@ void PresetsManager::load(const std::string& name) {
     auto input_file = presets_dir / fs::path{name + ".json"};
 
     boost::property_tree::read_json(input_file.string(), root);
+
+    load_general_settings(root);
 
     try {
         for (auto& p : root.get_child("input.plugins_order")) {

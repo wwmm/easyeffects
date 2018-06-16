@@ -1,8 +1,12 @@
 # Changelog
 
 ## [Unreleased]
+
+## [4.0.6]
 ### Added
 - The user can change the spectrum height
+- More parameters are saved to the user preset: buffer, latency, spectrum
+parameters, enable_all_apps and use_dark_theme.
 
 ### Fixed
 - When the user loaded a preset after upgrading to a PulseEffects version that

@@ -74,13 +74,20 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     spectrum->signal_motion_notify_event().connect(
         sigc::mem_fun(*this, &ApplicationUi::on_spectrum_motion_notify_event));
 
+    connections.push_back(
+        settings->signal_changed("spectrum-color").connect([&](auto key) {
+            Glib::Variant<std::vector<double>> v;
+            settings->get_value("spectrum-color", v);
+            auto rgba = v.get();
+            spectrum_color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
+            spectrum_color_button->set_rgba(spectrum_color);
+        }));
+
     spectrum_color_button->signal_color_set().connect([=]() {
         spectrum_color = spectrum_color_button->get_rgba();
-
         auto v = Glib::Variant<std::vector<double>>::create(std::vector<double>{
             spectrum_color.get_red(), spectrum_color.get_green(),
             spectrum_color.get_blue(), spectrum_color.get_alpha()});
-
         settings->set_value("spectrum-color", v);
     });
 
@@ -133,15 +140,12 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
     calibration_button->signal_clicked().connect([=]() {
         auto calibration_ui = CalibrationUi::create();
-
         auto c = app->pm->new_default_source.connect(
             [=](auto name) { calibration_ui->set_source_monitor_name(name); });
-
         calibration_ui->signal_hide().connect([calibration_ui, c]() {
             c->disconnect();
             delete calibration_ui;
         });
-
         calibration_ui->show_all();
     });
 

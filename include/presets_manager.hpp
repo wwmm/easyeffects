@@ -39,7 +39,7 @@ class PresetsManager {
 
     boost::filesystem::path presets_dir;
 
-    Glib::RefPtr<Gio::Settings> sie_settings, soe_settings;
+    Glib::RefPtr<Gio::Settings> settings, sie_settings, soe_settings;
 
     std::unique_ptr<LimiterPreset> limiter;
     std::unique_ptr<BassEnhancerPreset> bass_enhancer;
@@ -58,6 +58,20 @@ class PresetsManager {
     std::unique_ptr<StereoEnhancerPreset> stereo_enhancer;
     std::unique_ptr<WebrtcPreset> webrtc;
     std::unique_ptr<ExpanderPreset> expander;
+
+    template <typename T>
+    T get_default(const Glib::RefPtr<Gio::Settings>& settings,
+                  const std::string& key) {
+        Glib::Variant<T> value;
+
+        settings->get_default_value(key, value);
+
+        return value.get();
+    }
+
+    void save_general_settings(boost::property_tree::ptree& root);
+
+    void load_general_settings(boost::property_tree::ptree& root);
 };
 
 #endif
