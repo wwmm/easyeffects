@@ -15,7 +15,7 @@ class EffectsBaseUi {
    public:
     EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
                   const Glib::RefPtr<Gio::Settings>& refSettings,
-                  const std::shared_ptr<PulseManager>& pulse_manager);
+                  PulseManager* pulse_manager);
 
     virtual ~EffectsBaseUi();
 
@@ -45,7 +45,7 @@ class EffectsBaseUi {
    private:
     Gtk::Box* apps_box;
 
-    std::shared_ptr<PulseManager> pm;
+    PulseManager* pm;
 
     std::vector<AppInfoUi*> apps_list;
 

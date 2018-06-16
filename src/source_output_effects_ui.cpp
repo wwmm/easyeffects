@@ -4,7 +4,7 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(
     BaseObjectType* cobject,
     const Glib::RefPtr<Gtk::Builder>& refBuilder,
     const Glib::RefPtr<Gio::Settings>& refSettings,
-    const std::shared_ptr<SourceOutputEffects>& soe_ptr)
+    SourceOutputEffects* soe_ptr)
     : Gtk::Box(cobject),
       EffectsBaseUi(refBuilder, refSettings, soe_ptr->pm),
       soe(soe_ptr) {

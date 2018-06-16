@@ -160,7 +160,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
         Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs");
 
     b_sie_ui->get_widget_derived("widgets_box", sie_ui, settings_sie_ui,
-                                 app->sie);
+                                 app->sie.get());
 
     app->pm->sink_input_added.connect(
         sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_added));
@@ -182,7 +182,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
         Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs");
 
     b_soe_ui->get_widget_derived("widgets_box", soe_ui, settings_soe_ui,
-                                 app->soe);
+                                 app->soe.get());
 
     app->pm->source_output_added.connect(
         sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_added));

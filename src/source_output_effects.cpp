@@ -120,8 +120,7 @@ void on_plugins_order_changed(GSettings* settings,
 
 }  // namespace
 
-SourceOutputEffects::SourceOutputEffects(
-    const std::shared_ptr<PulseManager>& pulse_manager)
+SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager)
     : PipelineBase("soe: ", pulse_manager->mic_sink_info->rate),
       log_tag("soe: "),
       pm(pulse_manager),

@@ -12,6 +12,7 @@ Audio effects for Pulseaudio applications
 ### Applications Output
 
 - Limiter
+- Expander
 - Compressor
 - Equalizer
 - Bass Enhancer

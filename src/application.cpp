@@ -71,11 +71,10 @@ void Application::on_startup() {
 
     settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
 
-    pm = std::shared_ptr<PulseManager>(new PulseManager());
-
-    sie = std::make_shared<SinkInputEffects>(pm);
-    soe = std::make_shared<SourceOutputEffects>(pm);
-    presets_manager = std::make_shared<PresetsManager>();
+    pm = std::make_unique<PulseManager>();
+    sie = std::make_unique<SinkInputEffects>(pm.get());
+    soe = std::make_unique<SourceOutputEffects>(pm.get());
+    presets_manager = std::make_unique<PresetsManager>();
 
     pm->new_default_sink.connect([&](auto name) {
         util::debug("new default sink: " + name);

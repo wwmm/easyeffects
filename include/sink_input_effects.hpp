@@ -19,12 +19,12 @@
 
 class SinkInputEffects : public PipelineBase {
    public:
-    SinkInputEffects(const std::shared_ptr<PulseManager>& pulse_manager);
+    SinkInputEffects(PulseManager* pulse_manager);
     virtual ~SinkInputEffects();
 
     std::string log_tag;
 
-    std::shared_ptr<PulseManager> pm;
+    PulseManager* pm;
 
     std::vector<std::string> plugins_order, plugins_order_old;
     std::map<std::string, GstElement*> plugins;

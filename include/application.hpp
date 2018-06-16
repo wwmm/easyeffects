@@ -17,10 +17,10 @@ class Application : public Gtk::Application {
     static Glib::RefPtr<Application> create();
     Glib::RefPtr<Gio::Settings> settings;
 
-    std::shared_ptr<PulseManager> pm;
-    std::shared_ptr<SinkInputEffects> sie;
-    std::shared_ptr<SourceOutputEffects> soe;
-    std::shared_ptr<PresetsManager> presets_manager;
+    std::unique_ptr<PulseManager> pm;
+    std::unique_ptr<SinkInputEffects> sie;
+    std::unique_ptr<SourceOutputEffects> soe;
+    std::unique_ptr<PresetsManager> presets_manager;
 
    protected:
     int on_command_line(

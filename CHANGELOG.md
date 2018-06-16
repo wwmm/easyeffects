@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 ### Added
-- Expander plugin from Linux Studio
+- Expander from Linux Studio Plugins
 
 ## [4.0.4]
 ### Fixed

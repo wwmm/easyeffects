@@ -18,7 +18,7 @@ class SourceOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
     SourceOutputEffectsUi(BaseObjectType* cobject,
                           const Glib::RefPtr<Gtk::Builder>& refBuilder,
                           const Glib::RefPtr<Gio::Settings>& refSettings,
-                          const std::shared_ptr<SourceOutputEffects>& soe_ptr);
+                          SourceOutputEffects* soe_ptr);
 
     virtual ~SourceOutputEffectsUi();
 
@@ -28,7 +28,7 @@ class SourceOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
     std::string log_tag = "soe_ui: ";
 
    private:
-    std::shared_ptr<SourceOutputEffects> soe;
+    SourceOutputEffects* soe;
 
     LimiterUi* limiter_ui;
     CompressorUi* compressor_ui;

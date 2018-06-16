@@ -22,7 +22,7 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
     SinkInputEffectsUi(BaseObjectType* cobject,
                        const Glib::RefPtr<Gtk::Builder>& refBuilder,
                        const Glib::RefPtr<Gio::Settings>& refSettings,
-                       const std::shared_ptr<SinkInputEffects>& sie_ptr);
+                       SinkInputEffects* sie_ptr);
 
     virtual ~SinkInputEffectsUi();
 
@@ -32,7 +32,7 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
     std::string log_tag = "sie_ui: ";
 
    private:
-    std::shared_ptr<SinkInputEffects> sie;
+    SinkInputEffects* sie;
 
     LimiterUi* limiter_ui;
     CompressorUi* compressor_ui;

@@ -15,7 +15,7 @@ class AppInfoUi : public Gtk::Grid {
     AppInfoUi(BaseObjectType* cobject,
               const Glib::RefPtr<Gtk::Builder>& builder,
               const std::shared_ptr<AppInfo>& app_info,
-              const std::shared_ptr<PulseManager>& pm);
+              PulseManager* pm);
 
     virtual ~AppInfoUi();
 
@@ -47,7 +47,7 @@ class AppInfoUi : public Gtk::Grid {
     sigc::connection mute_connection;
     sigc::connection timeout_connection;
 
-    std::shared_ptr<PulseManager> pm;
+    PulseManager* pm;
 
     void init_widgets();
 
