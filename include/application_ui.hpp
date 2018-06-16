@@ -54,7 +54,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     Gdk::RGBA spectrum_color;
 
     Glib::RefPtr<Gtk::Adjustment> buffer_in, buffer_out, latency_in,
-        latency_out, spectrum_n_points;
+        latency_out, spectrum_n_points, spectrum_height;
     Glib::RefPtr<Gtk::ListStore> sink_list, source_list;
 
     sigc::connection spectrum_connection;

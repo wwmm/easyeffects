@@ -47,9 +47,10 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     get_object(builder, "buffer_out", buffer_out);
     get_object(builder, "latency_in", latency_in);
     get_object(builder, "latency_out", latency_out);
-    get_object(builder, "spectrum_n_points", spectrum_n_points);
     get_object(builder, "sink_list", sink_list);
     get_object(builder, "source_list", source_list);
+    get_object(builder, "spectrum_n_points", spectrum_n_points);
+    get_object(builder, "spectrum_height", spectrum_height);
 
     // signals connection
 
@@ -85,6 +86,10 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
     use_custom_color->signal_state_set().connect(
         sigc::mem_fun(*this, &ApplicationUi::on_use_custom_color), false);
+
+    spectrum_height->signal_value_changed().connect([=]() {
+        spectrum->set_size_request(-1, spectrum_height->get_value());
+    });
 
     // pulseaudio device selection
 
@@ -233,6 +238,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     settings->bind("show-spectrum", show_spectrum, "active", flag);
     settings->bind("show-spectrum", spectrum_box, "visible", flag_get);
     settings->bind("spectrum-n-points", spectrum_n_points.get(), "value", flag);
+    settings->bind("spectrum-height", spectrum_height.get(), "value", flag);
     settings->bind("use-custom-color", use_custom_color, "active", flag);
     settings->bind("use-custom-color", spectrum_color_button, "sensitive",
                    flag);
@@ -346,6 +352,8 @@ void ApplicationUi::on_reset_settings() {
     settings->reset("latency-out");
     settings->reset("show-spectrum");
     settings->reset("spectrum-n-points");
+    settings->reset("spectrum-height");
+    settings->reset("use-custom-color");
     settings->reset("use-dark-theme");
     settings->reset("enable-all-apps");
     settings->reset("use-default-sink");

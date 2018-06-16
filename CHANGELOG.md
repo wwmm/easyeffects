@@ -1,13 +1,16 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- The user can change the spectrum height
+
 ### Fixed
 - When the user loaded a preset after upgrading to a PulseEffects version that
 had a new plugin (not present in the preset) a crash could happen in a few
 situations. I fixed that. Once the user saves the preset its plugin list will
 be updated with the new plugin.
 - Sometimes when the user opened PE window while running in service mode the
-spectrum was not enabled. Fixed that.
+spectrum was not enabled. I fixed that.
 
 ## [4.0.5]
 ### Added

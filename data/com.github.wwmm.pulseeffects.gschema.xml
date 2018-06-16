@@ -140,6 +140,9 @@
         <key name="spectrum-color" type="ad">
             <default>[1.0,1.0,1.0,1.0]</default>
         </key>
+        <key name="spectrum-height" type="i">
+            <default>100</default>
+        </key>
 
         <key name="enable-all-apps" type="b">
             <default>false</default>
