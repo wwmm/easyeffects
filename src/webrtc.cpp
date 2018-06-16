@@ -68,9 +68,11 @@ void Webrtc::build_dsp_bin() {
     auto caps_out = gst_element_factory_make("capsfilter", nullptr);
     auto out_level = gst_element_factory_make("level", "webrtc_output_level");
 
-    auto capsin = gst_caps_from_string("audio/x-raw,format=S16LE,rate=48000");
+    auto capsin =
+        gst_caps_from_string("audio/x-raw,channels=2,format=S16LE,rate=48000");
     auto capsout = gst_caps_from_string(
-        ("audio/x-raw,format=F32LE,rate=" + std::to_string(rate)).c_str());
+        ("audio/x-raw,channels=2,format=F32LE,rate=" + std::to_string(rate))
+            .c_str());
 
     g_object_set(caps_in, "caps", capsin, nullptr);
     g_object_set(caps_out, "caps", capsout, nullptr);
