@@ -1,8 +1,16 @@
 # Changelog
 
 ## [Unreleased]
+
+## [4.0.5]
 ### Added
 - Expander from Linux Studio Plugins
+
+### Fixed
+- Replaced a few C++ shared_ptr by unique_ptr. This should lead to less
+memory overhead. The code refactoring that done for this fixed a bug where
+sometimes PE did not freed a few resources when closing.
+- fixed a bug where PE crashed when the pitch plugin was put before the webrtc
 
 ## [4.0.4]
 ### Fixed
