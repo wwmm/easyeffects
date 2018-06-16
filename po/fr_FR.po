@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-15 19:20-0300\n"
+"POT-Creation-Date: 2018-06-16 16:53-0300\n"
 "PO-Revision-Date: 2017-08-29 11:00+0200\n"
 "Last-Translator: Nathan Graule <solarliner@gmail.com>\n"
 "Language-Team: \n"
@@ -32,106 +32,110 @@ msgstr "Sauvegarder préglage"
 msgid "Import Presets"
 msgstr "Ouvrir préréglage"
 
-#: data/application.glade:180 src/calibration_ui.cpp:43
+#: data/application.glade:187 src/calibration_ui.cpp:43
 #: src/calibration_ui.cpp:168
 #, fuzzy
 msgid "Test Signals"
 msgstr "Signal de test"
 
-#: data/application.glade:223 data/compressor.glade:205 data/filter.glade:203
+#: data/application.glade:230 data/compressor.glade:205 data/filter.glade:203
 #: data/reverb.glade:283 data/crossfeed.glade:47
 msgid "Presets"
 msgstr "Préréglage"
 
-#: data/application.glade:514
+#: data/application.glade:521
 msgid "Start Service at Login"
 msgstr ""
 
-#: data/application.glade:539
+#: data/application.glade:546
 #, fuzzy
 msgid "Enable All Applications"
 msgstr "Calibration"
 
-#: data/application.glade:564
+#: data/application.glade:571
 msgid "Use Dark Theme"
 msgstr "Utiliser thème sombre"
 
-#: data/application.glade:589
+#: data/application.glade:596
 msgid "Settings"
 msgstr "Paramètres"
 
-#: data/application.glade:598 data/equalizer_band.glade:105
+#: data/application.glade:605 data/equalizer_band.glade:105
 #: data/equalizer_band.glade:120
 msgid "Reset"
 msgstr "Remettre à zéro"
 
-#: data/application.glade:613
+#: data/application.glade:620
 msgid "General"
 msgstr "Général"
 
-#: data/application.glade:631
+#: data/application.glade:638
 msgid "Show"
 msgstr "Montrer"
 
-#: data/application.glade:657
+#: data/application.glade:664
 #, fuzzy
 msgid "Points"
 msgstr "Points"
 
-#: data/application.glade:687
+#: data/application.glade:695
 msgid "Use Custom Color"
 msgstr ""
 
-#: data/application.glade:712
+#: data/application.glade:720
 #, fuzzy
 msgid "Spectrum Color"
 msgstr "Spectromètre"
 
-#: data/application.glade:736
+#: data/application.glade:747
+msgid "Height"
+msgstr ""
+
+#: data/application.glade:775
 msgid "Spectrum"
 msgstr "Spectromètre"
 
-#: data/application.glade:759
+#: data/application.glade:798
 #, fuzzy
 msgid "Output Device"
 msgstr "Limiteur d'entrée"
 
-#: data/application.glade:769 data/application.glade:782
+#: data/application.glade:808 data/application.glade:821
 msgid "Use Default"
 msgstr ""
 
-#: data/application.glade:798
+#: data/application.glade:837
 #, fuzzy
 msgid "Input Device"
 msgstr "Limiteur d'entrée"
 
-#: data/application.glade:868 data/application.glade:944
+#: data/application.glade:907 data/application.glade:983
 #: data/app_info.glade:156
 #, fuzzy
 msgid "Buffer"
 msgstr "Latence"
 
-#: data/application.glade:881 data/application.glade:957
+#: data/application.glade:920 data/application.glade:996
 #: data/app_info.glade:183
 msgid "Latency"
 msgstr "Latence"
 
-#: data/application.glade:1016
+#: data/application.glade:1055
 #, fuzzy
 msgid "Output Effects"
 msgstr "Limiteur d'entrée"
 
-#: data/application.glade:1029
+#: data/application.glade:1068
 #, fuzzy
 msgid "Input Effects"
 msgstr "PulseEffects"
 
-#: data/application.glade:1046
+#: data/application.glade:1085
 #, fuzzy
 msgid "Advanced Settings"
 msgstr "Paramètres"
 
-#: data/application.glade:1056
+#: data/application.glade:1095
 msgid "Pulseaudio"
 msgstr ""
 
@@ -241,7 +245,7 @@ msgstr "Entrée"
 msgid "Output"
 msgstr "Sortie"
 
-#: data/limiter.glade:653 data/expander.glade:695
+#: data/limiter.glade:653
 msgid "Attenuation"
 msgstr "Atténuation"
 

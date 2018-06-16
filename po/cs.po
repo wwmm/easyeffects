@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-15 19:20-0300\n"
+"POT-Creation-Date: 2018-06-16 16:53-0300\n"
 "PO-Revision-Date: 2018-02-06 20:54+0100\n"
 "Last-Translator: Pavel Fric <pavelfric@seznam.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -31,103 +31,108 @@ msgstr "Smazat přednastavení"
 msgid "Import Presets"
 msgstr "Nahrát přednastavení"
 
-#: data/application.glade:180 src/calibration_ui.cpp:43
+#: data/application.glade:187 src/calibration_ui.cpp:43
 #: src/calibration_ui.cpp:168
 msgid "Test Signals"
 msgstr "Zkušební signály"
 
-#: data/application.glade:223 data/compressor.glade:205 data/filter.glade:203
+#: data/application.glade:230 data/compressor.glade:205 data/filter.glade:203
 #: data/reverb.glade:283 data/crossfeed.glade:47
 msgid "Presets"
 msgstr "Přednastavení"
 
-#: data/application.glade:514
+#: data/application.glade:521
 msgid "Start Service at Login"
 msgstr "Spustit službu při přihlášení"
 
-#: data/application.glade:539
+#: data/application.glade:546
 msgid "Enable All Applications"
 msgstr "Povolit všechny programy"
 
-#: data/application.glade:564
+#: data/application.glade:571
 msgid "Use Dark Theme"
 msgstr "Použít tmavý vzhled"
 
-#: data/application.glade:589
+#: data/application.glade:596
 msgid "Settings"
 msgstr "Nastavení"
 
-#: data/application.glade:598 data/equalizer_band.glade:105
+#: data/application.glade:605 data/equalizer_band.glade:105
 #: data/equalizer_band.glade:120
 msgid "Reset"
 msgstr "Vrátit na výchozí"
 
-#: data/application.glade:613
+#: data/application.glade:620
 msgid "General"
 msgstr "Obecné"
 
-#: data/application.glade:631
+#: data/application.glade:638
 msgid "Show"
 msgstr "Ukázat"
 
-#: data/application.glade:657
+#: data/application.glade:664
 msgid "Points"
 msgstr "Body"
 
-#: data/application.glade:687
+#: data/application.glade:695
 msgid "Use Custom Color"
 msgstr ""
 
-#: data/application.glade:712
+#: data/application.glade:720
 #, fuzzy
 msgid "Spectrum Color"
 msgstr "Spektrum"
 
-#: data/application.glade:736
+#: data/application.glade:747
+#, fuzzy
+msgid "Height"
+msgstr "Pravý"
+
+#: data/application.glade:775
 msgid "Spectrum"
 msgstr "Spektrum"
 
-#: data/application.glade:759
+#: data/application.glade:798
 #, fuzzy
 msgid "Output Device"
 msgstr "Omezovač výstupu"
 
-#: data/application.glade:769 data/application.glade:782
+#: data/application.glade:808 data/application.glade:821
 #, fuzzy
 msgid "Use Default"
 msgstr "Výchozí"
 
-#: data/application.glade:798
+#: data/application.glade:837
 #, fuzzy
 msgid "Input Device"
 msgstr "Omezovač vstupu"
 
-#: data/application.glade:868 data/application.glade:944
+#: data/application.glade:907 data/application.glade:983
 #: data/app_info.glade:156
 msgid "Buffer"
 msgstr "Vyrovnávací paměť"
 
-#: data/application.glade:881 data/application.glade:957
+#: data/application.glade:920 data/application.glade:996
 #: data/app_info.glade:183
 msgid "Latency"
 msgstr "Prodleva"
 
-#: data/application.glade:1016
+#: data/application.glade:1055
 #, fuzzy
 msgid "Output Effects"
 msgstr "Omezovač výstupu"
 
-#: data/application.glade:1029
+#: data/application.glade:1068
 #, fuzzy
 msgid "Input Effects"
 msgstr "PulseEffects"
 
-#: data/application.glade:1046
+#: data/application.glade:1085
 #, fuzzy
 msgid "Advanced Settings"
 msgstr "Nastavení"
 
-#: data/application.glade:1056
+#: data/application.glade:1095
 msgid "Pulseaudio"
 msgstr ""
 
@@ -237,7 +242,7 @@ msgstr "Vstup"
 msgid "Output"
 msgstr "Výstup"
 
-#: data/limiter.glade:653 data/expander.glade:695
+#: data/limiter.glade:653
 msgid "Attenuation"
 msgstr "Zeslabování"
 
