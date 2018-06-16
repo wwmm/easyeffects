@@ -1,6 +1,11 @@
 # Changelog
 
 ## [Unreleased]
+### Fixed
+- When the user loaded a preset after upgrading to a PulseEffects version that
+had a new plugin (not present in the preset) a crash could happen in a few
+situations. I fixed that. Once the user saves the preset its plugin list will
+be updated with the new plugin.
 
 ## [4.0.5]
 ### Added

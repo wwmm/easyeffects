@@ -154,6 +154,16 @@ void PresetsManager::load(const std::string& name) {
         for (auto& p : root.get_child("input.plugins_order")) {
             input_plugins.push_back(p.second.data());
         }
+
+        Glib::Variant<std::vector<std::string>> aux;
+        soe_settings->get_default_value("plugins", aux);
+
+        for (auto v : aux.get()) {
+            if (std::find(input_plugins.begin(), input_plugins.end(), v) ==
+                input_plugins.end()) {
+                input_plugins.push_back(v);
+            }
+        }
     } catch (const boost::property_tree::ptree_error& e) {
         Glib::Variant<std::vector<std::string>> aux;
         soe_settings->get_default_value("plugins", aux);
@@ -163,6 +173,16 @@ void PresetsManager::load(const std::string& name) {
     try {
         for (auto& p : root.get_child("output.plugins_order")) {
             output_plugins.push_back(p.second.data());
+        }
+
+        Glib::Variant<std::vector<std::string>> aux;
+        sie_settings->get_default_value("plugins", aux);
+
+        for (auto v : aux.get()) {
+            if (std::find(output_plugins.begin(), output_plugins.end(), v) ==
+                output_plugins.end()) {
+                output_plugins.push_back(v);
+            }
         }
     } catch (const boost::property_tree::ptree_error& e) {
         Glib::Variant<std::vector<std::string>> aux;
