@@ -88,11 +88,6 @@ void PresetsManager::save_general_settings(boost::property_tree::ptree& root) {
     boost::property_tree::ptree node_in;
     Glib::Variant<std::vector<double>> aux;
 
-    root.put("general.enable-all-apps",
-             settings->get_boolean("enable-all-apps"));
-
-    root.put("general.use-dark-theme", settings->get_boolean("use-dark-theme"));
-
     root.put("spectrum.show", settings->get_boolean("show-spectrum"));
 
     root.put("spectrum.n-points", settings->get_int("spectrum-n-points"));
@@ -128,16 +123,6 @@ void PresetsManager::save_general_settings(boost::property_tree::ptree& root) {
 }
 
 void PresetsManager::load_general_settings(boost::property_tree::ptree& root) {
-    settings->set_boolean(
-        "enable-all-apps",
-        root.get<bool>("general.enable-all-apps",
-                       get_default<bool>(settings, "enable-all-apps")));
-
-    settings->set_boolean(
-        "use-dark-theme",
-        root.get<bool>("general.use-dark-theme",
-                       get_default<bool>(settings, "use-dark-theme")));
-
     settings->set_boolean(
         "show-spectrum",
         root.get<bool>("spectrum.show",

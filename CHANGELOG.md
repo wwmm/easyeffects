@@ -5,11 +5,10 @@
 ## [4.0.6]
 ### Added
 - The user can change the spectrum height
-- More parameters are saved to the user preset: buffer, latency, spectrum
-parameters, enable_all_apps and use_dark_theme. It is particularly useful to
-have the buffer value saved to the preset because a few devices like bluetooth
-headphones need values that are very different than the ones used in
-soundcards.
+- More parameters are saved to the user preset: buffer, latency and spectrum
+parameters. It is particularly useful to have the buffer value saved to the
+preset because a few devices like bluetooth headphones need values that are
+very different than the ones used in soundcards.
 
 ### Fixed
 - When the user loaded a preset after upgrading to a PulseEffects version that
