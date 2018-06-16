@@ -6,6 +6,8 @@
 had a new plugin (not present in the preset) a crash could happen in a few
 situations. I fixed that. Once the user saves the preset its plugin list will
 be updated with the new plugin.
+- Sometimes when the user opened PE window while running in service mode the
+spectrum was not enabled. Fixed that.
 
 ## [4.0.5]
 ### Added

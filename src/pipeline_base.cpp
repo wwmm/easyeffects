@@ -3,10 +3,13 @@
 #include <algorithm>
 #include <boost/math/interpolators/cubic_b_spline.hpp>
 #include <cmath>
+#include <mutex>
 #include "pipeline_base.hpp"
 #include "util.hpp"
 
 namespace {
+
+std::mutex spectrum_mtx;
 
 void on_message_error(const GstBus* gst_bus,
                       GstMessage* message,
@@ -157,8 +160,6 @@ void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
 
 PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     : log_tag(tag),
-      in_pad_cb(false),
-      in_spectrum_pad_cb(false),
       settings(g_settings_new("com.github.wwmm.pulseeffects")),
       rate(sampling_rate) {
     gst_init(nullptr, nullptr);
@@ -392,74 +393,67 @@ void PipelineBase::init_spectrum() {
 }
 
 void PipelineBase::enable_spectrum() {
-    auto plugin = gst_bin_get_by_name(GST_BIN(spectrum_bin), "spectrum");
+    gst_pad_add_probe(
+        gst_element_get_static_pad(spectrum_identity_in, "src"),
+        GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+        [](auto pad, auto info, auto d) {
+            auto l = static_cast<PipelineBase*>(d);
 
-    if (!plugin) {
-        bool changing = in_spectrum_pad_cb.exchange(true);
+            std::lock_guard<std::mutex> lock(spectrum_mtx);
 
-        if (!changing) {
-            gst_pad_add_probe(
-                gst_element_get_static_pad(spectrum_identity_in, "src"),
-                GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
-                [](auto pad, auto info, auto d) {
-                    auto l = static_cast<PipelineBase*>(d);
+            auto plugin =
+                gst_bin_get_by_name(GST_BIN(l->spectrum_bin), "spectrum");
 
-                    gst_element_unlink(l->spectrum_identity_in,
-                                       l->spectrum_identity_out);
+            if (!plugin) {
+                gst_element_unlink(l->spectrum_identity_in,
+                                   l->spectrum_identity_out);
 
-                    gst_bin_add(GST_BIN(l->spectrum_bin), l->spectrum);
+                gst_bin_add(GST_BIN(l->spectrum_bin), l->spectrum);
 
-                    gst_element_link_many(l->spectrum_identity_in, l->spectrum,
-                                          l->spectrum_identity_out, nullptr);
+                gst_element_link_many(l->spectrum_identity_in, l->spectrum,
+                                      l->spectrum_identity_out, nullptr);
 
-                    gst_bin_sync_children_states(GST_BIN(l->spectrum_bin));
+                gst_bin_sync_children_states(GST_BIN(l->spectrum_bin));
 
-                    util::debug(l->log_tag + "spectrum enabled");
+                util::debug(l->log_tag + "spectrum enabled");
+            }
 
-                    l->in_spectrum_pad_cb = false;
-
-                    return GST_PAD_PROBE_REMOVE;
-                },
-                this, nullptr);
-        }
-    }
+            return GST_PAD_PROBE_REMOVE;
+        },
+        this, nullptr);
 }
 
 void PipelineBase::disable_spectrum() {
-    auto plugin = gst_bin_get_by_name(GST_BIN(spectrum_bin), "spectrum");
+    gst_pad_add_probe(
+        gst_element_get_static_pad(spectrum_identity_in, "src"),
+        GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+        [](auto pad, auto info, auto d) {
+            auto l = static_cast<PipelineBase*>(d);
 
-    if (plugin) {
-        bool changing = in_spectrum_pad_cb.exchange(true);
+            std::lock_guard<std::mutex> lock(spectrum_mtx);
 
-        if (!changing) {
-            gst_pad_add_probe(
-                gst_element_get_static_pad(spectrum_identity_in, "src"),
-                GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
-                [](auto pad, auto info, auto d) {
-                    auto l = static_cast<PipelineBase*>(d);
+            auto plugin =
+                gst_bin_get_by_name(GST_BIN(l->spectrum_bin), "spectrum");
 
-                    gst_element_unlink_many(l->spectrum_identity_in,
-                                            l->spectrum,
-                                            l->spectrum_identity_out, nullptr);
+            if (plugin) {
+                gst_element_unlink_many(l->spectrum_identity_in, l->spectrum,
+                                        l->spectrum_identity_out, nullptr);
 
-                    gst_bin_remove(GST_BIN(l->spectrum_bin), l->spectrum);
+                gst_bin_remove(GST_BIN(l->spectrum_bin), l->spectrum);
 
-                    gst_element_set_state(l->spectrum, GST_STATE_NULL);
+                gst_element_set_state(l->spectrum, GST_STATE_NULL);
 
-                    gst_element_link(l->spectrum_identity_in,
-                                     l->spectrum_identity_out);
+                gst_element_link(l->spectrum_identity_in,
+                                 l->spectrum_identity_out);
 
-                    gst_bin_sync_children_states(GST_BIN(l->spectrum_bin));
+                gst_bin_sync_children_states(GST_BIN(l->spectrum_bin));
 
-                    util::debug(l->log_tag + "spectrum disabled");
+                util::debug(l->log_tag + "spectrum disabled");
+            }
 
-                    l->in_spectrum_pad_cb = false;
-
-                    return GST_PAD_PROBE_REMOVE;
-                },
-                this, nullptr);
-        }
-    }
+            return GST_PAD_PROBE_REMOVE;
+        },
+        this, nullptr);
 }
 
 std::array<double, 2> PipelineBase::get_peak(GstMessage* message) {
