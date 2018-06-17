@@ -26,6 +26,42 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
     get_object(builder, "autovolume_tolerance", autovolume_tolerance);
     get_object(builder, "autovolume_threshold", autovolume_threshold);
 
+    // callback connections
+
+    autovolume_enable->signal_toggled().connect([=]() { init_autovolume(); });
+
+    autovolume_window->signal_value_changed().connect([=]() {
+        auto enabled = settings->get_boolean("autovolume-state");
+
+        if (enabled) {
+            auto window = autovolume_window->get_value();
+
+            release->set_value(window);
+        }
+    });
+
+    autovolume_target->signal_value_changed().connect([=]() {
+        auto enabled = settings->get_boolean("autovolume-state");
+
+        if (enabled) {
+            auto target = autovolume_target->get_value();
+            auto tolerance = autovolume_tolerance->get_value();
+
+            limit->set_value(target + tolerance);
+        }
+    });
+
+    autovolume_tolerance->signal_value_changed().connect([=]() {
+        auto enabled = settings->get_boolean("autovolume-state");
+
+        if (enabled) {
+            auto target = autovolume_target->get_value();
+            auto tolerance = autovolume_tolerance->get_value();
+
+            limit->set_value(target + tolerance);
+        }
+    });
+
     // gsettings bindings
 
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
@@ -56,36 +92,6 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
                    flag);
     settings->bind("autovolume-threshold", autovolume_threshold.get(), "value",
                    flag);
-
-    connections.push_back(
-        settings->signal_changed("autovolume-state").connect([&](auto key) {
-            init_autovolume();
-        }));
-
-    connections.push_back(
-        settings->signal_changed("autovolume-window").connect([&](auto key) {
-            auto window = settings->get_double("autovolume-window");
-
-            release->set_value(window);
-        }));
-
-    connections.push_back(
-        settings->signal_changed("autovolume-target").connect([&](auto key) {
-            auto target = settings->get_int("autovolume-target");
-            auto tolerance = settings->get_int("autovolume-tolerance");
-
-            limit->set_value(target + tolerance);
-        }));
-
-    connections.push_back(
-        settings->signal_changed("autovolume-tolerance").connect([&](auto key) {
-            auto target = settings->get_int("autovolume-target");
-            auto tolerance = settings->get_int("autovolume-tolerance");
-
-            limit->set_value(target + tolerance);
-        }));
-
-    init_autovolume();
 
     settings->set_boolean("post-messages", true);
 }

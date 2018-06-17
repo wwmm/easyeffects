@@ -86,30 +86,36 @@ void LimiterPreset::load(boost::property_tree::ptree& root,
 
     // autovolume
 
-    settings->set_boolean(
-        "autovolume-state",
+    bool enable_autovolume =
         root.get<bool>(section + ".limiter.autovolume.state",
-                       get_default<bool>(settings, "autovolume-state")));
+                       get_default<bool>(settings, "autovolume-state"));
 
-    settings->set_double(
-        "autovolume-window",
+    double autovolume_window =
         root.get<double>(section + ".limiter.autovolume.window",
-                         get_default<double>(settings, "autovolume-window")));
+                         get_default<double>(settings, "autovolume-window"));
 
-    settings->set_int(
-        "autovolume-target",
+    int autovolume_target =
         root.get<int>(section + ".limiter.autovolume.target",
-                      get_default<int>(settings, "autovolume-target")));
+                      get_default<int>(settings, "autovolume-target"));
 
-    settings->set_int(
-        "autovolume-tolerance",
+    int autovolume_tolerance =
         root.get<int>(section + ".limiter.autovolume.tolerance",
-                      get_default<int>(settings, "autovolume-tolerance")));
+                      get_default<int>(settings, "autovolume-tolerance"));
 
-    settings->set_int(
-        "autovolume-threshold",
+    int autovolume_threshold =
         root.get<int>(section + ".limiter.autovolume.threshold",
-                      get_default<int>(settings, "autovolume-threshold")));
+                      get_default<int>(settings, "autovolume-threshold"));
+
+    settings->set_boolean("autovolume-state", enable_autovolume);
+    settings->set_double("autovolume-window", autovolume_window);
+    settings->set_int("autovolume-target", autovolume_target);
+    settings->set_int("autovolume-tolerance", autovolume_tolerance);
+    settings->set_int("autovolume-threshold", autovolume_threshold);
+
+    if (enable_autovolume) {
+        settings->set_double("release", autovolume_window);
+        settings->set_double("limit", autovolume_target + autovolume_tolerance);
+    }
 }
 
 void LimiterPreset::write(boost::property_tree::ptree& root) {

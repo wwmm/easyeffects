@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [4.0.7]
+### Fixed
+- Fixed Limit Parameter of the Limiter plugin being reset to -11 dB whenever a
+preset was loaded. Now the user value saved in the preset is correctly loaded
+
 ## [4.0.6]
 ### Added
 - The user can change the spectrum height
