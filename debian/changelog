@@ -1,3 +1,9 @@
+pulseeffects (4.0.7-1) unstable; urgency=low
+
+  * update to version 4.0.7 upstream
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 18 Jun 2018 11:30:00 +0300 
+ 
 pulseeffects (4.0.4-3) unstable; urgency=low
 
   * update to version 4.0.4 upstream
