@@ -315,6 +315,8 @@ void PulseManager::get_server_info() {
         pa_threaded_mainloop_wait(main_loop);
     }
 
+    pa_operation_unref(o);
+
     pa_threaded_mainloop_unlock(main_loop);
 }
 
@@ -358,6 +360,8 @@ std::shared_ptr<mySinkInfo> PulseManager::get_sink_info(std::string name) {
     while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
         pa_threaded_mainloop_wait(main_loop);
     }
+
+    pa_operation_unref(o);
 
     pa_threaded_mainloop_unlock(main_loop);
 
@@ -405,6 +409,8 @@ std::shared_ptr<mySourceInfo> PulseManager::get_source_info(std::string name) {
     while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
         pa_threaded_mainloop_wait(main_loop);
     }
+
+    pa_operation_unref(o);
 
     pa_threaded_mainloop_unlock(main_loop);
 
@@ -477,6 +483,8 @@ std::shared_ptr<mySinkInfo> PulseManager::load_sink(std::string name,
             pa_threaded_mainloop_wait(main_loop);
         }
 
+        pa_operation_unref(o);
+
         pa_threaded_mainloop_unlock(main_loop);
 
         // now that the sink is loaded we get its info
@@ -536,6 +544,8 @@ void PulseManager::find_sink_inputs() {
         pa_threaded_mainloop_wait(main_loop);
     }
 
+    pa_operation_unref(o);
+
     pa_threaded_mainloop_unlock(main_loop);
 }
 
@@ -560,6 +570,8 @@ void PulseManager::find_source_outputs() {
     while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
         pa_threaded_mainloop_wait(main_loop);
     }
+
+    pa_operation_unref(o);
 
     pa_threaded_mainloop_unlock(main_loop);
 }
@@ -600,6 +612,8 @@ void PulseManager::find_sinks() {
     while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
         pa_threaded_mainloop_wait(main_loop);
     }
+
+    pa_operation_unref(o);
 
     pa_threaded_mainloop_unlock(main_loop);
 }
@@ -642,6 +656,8 @@ void PulseManager::find_sources() {
         pa_threaded_mainloop_wait(main_loop);
     }
 
+    pa_operation_unref(o);
+
     pa_threaded_mainloop_unlock(main_loop);
 }
 
@@ -676,6 +692,8 @@ void PulseManager::move_sink_input_to_pulseeffects(uint idx) {
         pa_threaded_mainloop_wait(main_loop);
     }
 
+    pa_operation_unref(o);
+
     pa_threaded_mainloop_unlock(main_loop);
 }
 
@@ -709,6 +727,8 @@ void PulseManager::remove_sink_input_from_pulseeffects(uint idx) {
     while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
         pa_threaded_mainloop_wait(main_loop);
     }
+
+    pa_operation_unref(o);
 
     pa_threaded_mainloop_unlock(main_loop);
 }
@@ -745,6 +765,8 @@ void PulseManager::move_source_output_to_pulseeffects(uint idx) {
         pa_threaded_mainloop_wait(main_loop);
     }
 
+    pa_operation_unref(o);
+
     pa_threaded_mainloop_unlock(main_loop);
 }
 
@@ -779,6 +801,8 @@ void PulseManager::remove_source_output_from_pulseeffects(uint idx) {
     while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
         pa_threaded_mainloop_wait(main_loop);
     }
+
+    pa_operation_unref(o);
 
     pa_threaded_mainloop_unlock(main_loop);
 }
@@ -825,6 +849,8 @@ void PulseManager::set_sink_input_volume(uint idx,
             pa_threaded_mainloop_wait(main_loop);
         }
 
+        pa_operation_unref(o);
+
         pa_threaded_mainloop_unlock(main_loop);
     }
 }
@@ -859,6 +885,8 @@ void PulseManager::set_sink_input_mute(uint idx, bool state) {
     while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
         pa_threaded_mainloop_wait(main_loop);
     }
+
+    pa_operation_unref(o);
 
     pa_threaded_mainloop_unlock(main_loop);
 }
@@ -905,6 +933,8 @@ void PulseManager::set_source_output_volume(uint idx,
             pa_threaded_mainloop_wait(main_loop);
         }
 
+        pa_operation_unref(o);
+
         pa_threaded_mainloop_unlock(main_loop);
     }
 }
@@ -940,6 +970,8 @@ void PulseManager::set_source_output_mute(uint idx, bool state) {
         pa_threaded_mainloop_wait(main_loop);
     }
 
+    pa_operation_unref(o);
+
     pa_threaded_mainloop_unlock(main_loop);
 }
 
@@ -964,6 +996,8 @@ void PulseManager::get_sink_input_info(uint idx) {
     while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
         pa_threaded_mainloop_wait(main_loop);
     }
+
+    pa_operation_unref(o);
 
     pa_threaded_mainloop_unlock(main_loop);
 }
@@ -999,6 +1033,8 @@ void PulseManager::unload_module(uint idx) {
         pa_threaded_mainloop_wait(main_loop);
     }
 
+    pa_operation_unref(o);
+
     pa_threaded_mainloop_unlock(main_loop);
 }
 
@@ -1027,6 +1063,8 @@ void PulseManager::drain_context() {
         while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
             pa_threaded_mainloop_wait(main_loop);
         }
+
+        pa_operation_unref(o);
 
         pa_threaded_mainloop_unlock(main_loop);
 
