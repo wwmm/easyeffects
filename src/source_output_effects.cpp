@@ -112,9 +112,12 @@ void on_plugins_order_changed(GSettings* settings,
     }
 
     if (update) {
-        gst_pad_add_probe(gst_element_get_static_pad(l->identity_in, "src"),
-                          GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM, on_pad_idle, l,
-                          nullptr);
+        auto srcpad = gst_element_get_static_pad(l->identity_in, "src");
+
+        gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+                          on_pad_idle, l, nullptr);
+
+        g_object_unref(srcpad);
     }
 }
 
@@ -222,13 +225,18 @@ void SourceOutputEffects::add_plugins_to_pipeline() {
 
     while (g_variant_iter_next(iter, "s", &name)) {
         plugins_order.push_back(name);
+        g_free(name);
     }
 
-    g_variant_get(g_settings_get_default_value(soe_settings, "plugins"), "as",
-                  &iter);
+    auto gvariant = g_settings_get_default_value(soe_settings, "plugins");
+
+    g_variant_get(gvariant, "as", &iter);
+
+    g_variant_unref(gvariant);
 
     while (g_variant_iter_next(iter, "s", &name)) {
         default_order.push_back(name);
+        g_free(name);
     }
 
     g_variant_iter_free(iter);

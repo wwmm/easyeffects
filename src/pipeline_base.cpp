@@ -393,9 +393,10 @@ void PipelineBase::init_spectrum() {
 }
 
 void PipelineBase::enable_spectrum() {
+    auto srcpad = gst_element_get_static_pad(spectrum_identity_in, "src");
+
     gst_pad_add_probe(
-        gst_element_get_static_pad(spectrum_identity_in, "src"),
-        GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+        srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
         [](auto pad, auto info, auto d) {
             auto l = static_cast<PipelineBase*>(d);
 
@@ -421,12 +422,15 @@ void PipelineBase::enable_spectrum() {
             return GST_PAD_PROBE_REMOVE;
         },
         this, nullptr);
+
+    g_object_unref(srcpad);
 }
 
 void PipelineBase::disable_spectrum() {
+    auto srcpad = gst_element_get_static_pad(spectrum_identity_in, "src");
+
     gst_pad_add_probe(
-        gst_element_get_static_pad(spectrum_identity_in, "src"),
-        GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+        srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
         [](auto pad, auto info, auto d) {
             auto l = static_cast<PipelineBase*>(d);
 
@@ -454,6 +458,8 @@ void PipelineBase::disable_spectrum() {
             return GST_PAD_PROBE_REMOVE;
         },
         this, nullptr);
+
+    g_object_unref(srcpad);
 }
 
 std::array<double, 2> PipelineBase::get_peak(GstMessage* message) {

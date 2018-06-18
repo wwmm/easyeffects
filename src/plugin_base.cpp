@@ -72,9 +72,10 @@ bool PluginBase::is_installed(GstElement* e) {
 }
 
 void PluginBase::enable() {
+    auto srcpad = gst_element_get_static_pad(identity_in, "src");
+
     gst_pad_add_probe(
-        gst_element_get_static_pad(identity_in, "src"),
-        GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+        srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
         [](auto pad, auto info, auto d) {
             auto l = static_cast<PluginBase*>(d);
 
@@ -99,11 +100,14 @@ void PluginBase::enable() {
             return GST_PAD_PROBE_REMOVE;
         },
         this, nullptr);
+
+    g_object_unref(srcpad);
 }
 
 void PluginBase::disable() {
-    gst_pad_add_probe(gst_element_get_static_pad(identity_in, "src"),
-                      GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+    auto srcpad = gst_element_get_static_pad(identity_in, "src");
+
+    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
                       [](auto pad, auto info, auto d) {
                           auto l = static_cast<PluginBase*>(d);
 
@@ -131,4 +135,6 @@ void PluginBase::disable() {
                           return GST_PAD_PROBE_REMOVE;
                       },
                       this, nullptr);
+
+    g_object_unref(srcpad);
 }
