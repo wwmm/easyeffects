@@ -36,6 +36,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     builder->get_widget("presets_listbox", presets_listbox);
     builder->get_widget("presets_menu_button", presets_menu_button);
     builder->get_widget("presets_menu_label", presets_menu_label);
+    builder->get_widget("presets_scrolled_window", presets_scrolled_window);
     builder->get_widget("preset_name", preset_name);
     builder->get_widget("add_preset", add_preset);
     builder->get_widget("import_preset", import_preset);
@@ -128,9 +129,12 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     });
 
     add_preset->signal_clicked().connect([=]() {
-        app->presets_manager->add(preset_name->get_text());
-        preset_name->set_text("");
-        populate_presets_listbox();
+        auto name = preset_name->get_text();
+        if (!name.empty()) {
+            app->presets_manager->add(name);
+            preset_name->set_text("");
+            populate_presets_listbox();
+        }
     });
 
     import_preset->signal_clicked().connect(
@@ -740,6 +744,10 @@ int ApplicationUi::on_listbox_sort(Gtk::ListBoxRow* row1,
 }
 
 void ApplicationUi::on_presets_menu_button_clicked() {
+    int height = 0.7 * get_allocated_height();
+
+    presets_scrolled_window->set_max_content_height(height);
+
     populate_presets_listbox();
 }
 
