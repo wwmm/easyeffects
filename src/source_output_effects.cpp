@@ -100,6 +100,7 @@ void on_plugins_order_changed(GSettings* settings,
 
     while (g_variant_iter_next(iter, "s", &name)) {
         l->plugins_order.push_back(name);
+        g_free(name);
     }
 
     g_variant_iter_free(iter);
