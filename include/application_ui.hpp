@@ -12,6 +12,7 @@
 #include <gtkmm/listbox.h>
 #include <gtkmm/liststore.h>
 #include <gtkmm/menubutton.h>
+#include <gtkmm/scrolledwindow.h>
 #include <gtkmm/stack.h>
 #include <gtkmm/switch.h>
 #include <gtkmm/togglebutton.h>
@@ -51,6 +52,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     Gtk::Label* presets_menu_label;
     Gtk::Entry* preset_name;
     Gtk::ColorButton* spectrum_color_button;
+    Gtk::ScrolledWindow* presets_scrolled_window;
     Gdk::RGBA spectrum_color;
 
     Glib::RefPtr<Gtk::Adjustment> buffer_in, buffer_out, latency_in,

@@ -85,7 +85,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkScrolledWindow" id="scrolled_window">
+          <object class="GtkScrolledWindow" id="presets_scrolled_window">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="propagate_natural_width">True</property>

@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [4.0.8]
+### Fixed
+- Removed more memory leaks(nothing critical)
+- The presets menu list is scrollable again.
+
 ## [4.0.7]
 ### Fixed
 - Fixed Limit Parameter of the Limiter plugin being reset to -11 dB whenever a
