@@ -16,7 +16,7 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
 
    private:
     Gtk::Grid* bands_grid;
-    Glib::RefPtr<Gtk::Adjustment> nbands;
+    Glib::RefPtr<Gtk::Adjustment> nbands, input_gain, output_gain;
     Gtk::Button *reset_eq, *flat_response, *calculate_freqs;
 
     std::vector<sigc::connection> connections;

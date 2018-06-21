@@ -50,6 +50,8 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
     builder->get_widget("calculate_freqs", calculate_freqs);
 
     get_object(builder, "nbands", nbands);
+    get_object(builder, "input_gain", input_gain);
+    get_object(builder, "output_gain", output_gain);
 
     nbands->signal_value_changed().connect(
         sigc::mem_fun(*this, &EqualizerUi::on_nbands_changed));
@@ -69,6 +71,8 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 
     settings->bind("installed", this, "sensitive", flag);
     settings->bind("num-bands", nbands.get(), "value", flag);
+    settings->bind("input-gain", input_gain.get(), "value", flag);
+    settings->bind("output-gain", output_gain.get(), "value", flag);
 
     settings->set_boolean("post-messages", true);
 }
