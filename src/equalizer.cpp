@@ -15,15 +15,19 @@ Equalizer::Equalizer(const std::string& tag, const std::string& schema)
     equalizer = gst_element_factory_make("equalizer-nbands", nullptr);
 
     if (is_installed(equalizer)) {
+        auto input_gain = gst_element_factory_make("volume", nullptr);
         auto in_level =
             gst_element_factory_make("level", "equalizer_input_level");
         auto out_level =
             gst_element_factory_make("level", "equalizer_output_level");
+        auto output_gain = gst_element_factory_make("volume", nullptr);
 
-        gst_bin_add_many(GST_BIN(bin), in_level, equalizer, out_level, nullptr);
-        gst_element_link_many(in_level, equalizer, out_level, nullptr);
+        gst_bin_add_many(GST_BIN(bin), input_gain, in_level, equalizer,
+                         output_gain, out_level, nullptr);
+        gst_element_link_many(input_gain, in_level, equalizer, output_gain,
+                              out_level, nullptr);
 
-        auto pad_sink = gst_element_get_static_pad(in_level, "sink");
+        auto pad_sink = gst_element_get_static_pad(input_gain, "sink");
         auto pad_src = gst_element_get_static_pad(out_level, "src");
 
         gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
@@ -39,6 +43,16 @@ Equalizer::Equalizer(const std::string& tag, const std::string& schema)
                         G_SETTINGS_BIND_DEFAULT);
         g_settings_bind(settings, "post-messages", out_level, "post-messages",
                         G_SETTINGS_BIND_DEFAULT);
+
+        g_settings_bind_with_mapping(
+            settings, "input-gain", input_gain, "volume",
+            G_SETTINGS_BIND_DEFAULT, util::db20_gain_to_linear_double,
+            util::linear_double_gain_to_db20, nullptr, nullptr);
+
+        g_settings_bind_with_mapping(
+            settings, "output-gain", output_gain, "volume",
+            G_SETTINGS_BIND_DEFAULT, util::db20_gain_to_linear_double,
+            util::linear_double_gain_to_db20, nullptr, nullptr);
 
         init_equalizer();
 

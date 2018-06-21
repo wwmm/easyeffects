@@ -39,6 +39,14 @@ gboolean db10_gain_to_linear(GValue* value,
 
 gboolean double_to_float(GValue* value, GVariant* variant, gpointer user_data);
 
+gboolean db20_gain_to_linear_double(GValue* value,
+                                    GVariant* variant,
+                                    gpointer user_data);
+
+GVariant* linear_double_gain_to_db20(const GValue* value,
+                                     const GVariantType* expected_type,
+                                     gpointer user_data);
+
 gboolean double_x10_to_int(GValue* value,
                            GVariant* variant,
                            gpointer user_data);

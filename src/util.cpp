@@ -113,6 +113,28 @@ gboolean double_to_float(GValue* value, GVariant* variant, gpointer user_data) {
     return true;
 }
 
+gboolean db20_gain_to_linear_double(GValue* value,
+                                    GVariant* variant,
+                                    gpointer user_data) {
+    double v_db = g_variant_get_double(variant);
+
+    auto v_linear = pow(10, v_db / 20.0);
+
+    g_value_set_double(value, v_linear);
+
+    return true;
+}
+
+GVariant* linear_double_gain_to_db20(const GValue* value,
+                                     const GVariantType* expected_type,
+                                     gpointer user_data) {
+    double v_linear = g_value_get_double(value);
+
+    auto v_db = 20 * log10(v_linear);
+
+    return g_variant_new_double(v_db);
+}
+
 gboolean double_x10_to_int(GValue* value,
                            GVariant* variant,
                            gpointer user_data) {
