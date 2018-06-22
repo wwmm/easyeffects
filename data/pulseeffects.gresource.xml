@@ -3,7 +3,7 @@
   <gresource prefix="/com/github/wwmm/pulseeffects">
     <file>ui/application.glade</file>
     <file>ui/about.glade</file>
-    <file>effects_base.glade</file>
+    <file>ui/effects_base.glade</file>
     <file>app_info.glade</file>
     <file>limiter.glade</file>
     <file>compressor.glade</file>
@@ -22,12 +22,12 @@
     <file>deesser.glade</file>
     <file>pitch.glade</file>
     <file>webrtc.glade</file>
-    <file>preset_row.glade</file>
+    <file>ui/preset_row.glade</file>
     <file>calibration.glade</file>
     <file>calibration_signals.glade</file>
     <file>calibration_mic.glade</file>
     <file>expander.glade</file>
-    <file>listbox.css</file>
+    <file>ui/listbox.css</file>
     <file>ui/about_icon.png</file>
     <file>icons/pulseeffects-sine-symbolic.svg</file>
     <file>icons/pulseeffects-us-symbolic.svg</file>

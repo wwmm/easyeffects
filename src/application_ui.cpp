@@ -167,7 +167,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     // sink inputs interface
 
     auto b_sie_ui = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/effects_base.glade");
+        "/com/github/wwmm/pulseeffects/ui/effects_base.glade");
 
     auto settings_sie_ui =
         Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs");
@@ -189,7 +189,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     // source outputs interface
 
     auto b_soe_ui = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/effects_base.glade");
+        "/com/github/wwmm/pulseeffects/ui/effects_base.glade");
 
     auto settings_soe_ui =
         Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs");
@@ -281,7 +281,7 @@ ApplicationUi* ApplicationUi::create(Application* app_this) {
 void ApplicationUi::apply_css_style(std::string css_file_name) {
     auto provider = Gtk::CssProvider::create();
 
-    provider->load_from_resource("/com/github/wwmm/pulseeffects/" +
+    provider->load_from_resource("/com/github/wwmm/pulseeffects/ui/" +
                                  css_file_name);
 
     auto screen = Gdk::Screen::get_default();
@@ -798,7 +798,7 @@ void ApplicationUi::populate_presets_listbox() {
 
     for (auto name : names) {
         auto b = Gtk::Builder::create_from_resource(
-            "/com/github/wwmm/pulseeffects/preset_row.glade");
+            "/com/github/wwmm/pulseeffects/ui/preset_row.glade");
 
         Gtk::ListBoxRow* row;
         Gtk::Button *save_btn, *remove_btn;
