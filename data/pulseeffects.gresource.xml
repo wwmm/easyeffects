@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/com/github/wwmm/pulseeffects">
-    <file>application.glade</file>
-    <file>about.glade</file>
+    <file>ui/application.glade</file>
+    <file>ui/about.glade</file>
     <file>effects_base.glade</file>
     <file>app_info.glade</file>
     <file>limiter.glade</file>
@@ -27,8 +27,8 @@
     <file>calibration_signals.glade</file>
     <file>calibration_mic.glade</file>
     <file>expander.glade</file>
-    <file>about_icon.png</file>
     <file>listbox.css</file>
+    <file>ui/about_icon.png</file>
     <file>icons/pulseeffects-sine-symbolic.svg</file>
     <file>icons/pulseeffects-us-symbolic.svg</file>
     <file>icons/pulseeffects-db-symbolic.svg</file>

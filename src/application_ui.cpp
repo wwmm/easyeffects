@@ -269,7 +269,7 @@ ApplicationUi::~ApplicationUi() {
 
 ApplicationUi* ApplicationUi::create(Application* app_this) {
     auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/application.glade");
+        "/com/github/wwmm/pulseeffects/ui/application.glade");
 
     ApplicationUi* window = nullptr;
 
