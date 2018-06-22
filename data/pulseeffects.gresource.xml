@@ -40,5 +40,9 @@
     <file>presets/gstreamer_classic.json</file>
     <file>presets/gstreamer_club.json</file>
     <file>presets/gstreamer_dance.json</file>
+    <file>presets/gstreamer_pop.json</file>
+    <file>presets/gstreamer_reggae.json</file>
+    <file>presets/gstreamer_rock.json</file>
+    <file>presets/gstreamer_ska.json</file>
   </gresource>
 </gresources>
