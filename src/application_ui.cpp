@@ -142,16 +142,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
     // calibration
 
-    calibration_button->signal_clicked().connect([=]() {
-        auto calibration_ui = CalibrationUi::create();
-        auto c = app->pm->new_default_source.connect(
-            [=](auto name) { calibration_ui->set_source_monitor_name(name); });
-        calibration_ui->signal_hide().connect([calibration_ui, c]() {
-            c->disconnect();
-            delete calibration_ui;
-        });
-        calibration_ui->show_all();
-    });
+    calibration_button->signal_clicked().connect(
+        sigc::mem_fun(*this, &ApplicationUi::on_calibration_button_clicked));
 
     // pulseaudio signals
 
@@ -822,4 +814,18 @@ void ApplicationUi::populate_presets_listbox() {
         presets_listbox->add(*row);
         presets_listbox->show_all();
     }
+}
+
+void ApplicationUi::on_calibration_button_clicked() {
+    auto calibration_ui = CalibrationUi::create();
+
+    auto c = app->pm->new_default_source.connect(
+        [=](auto name) { calibration_ui->set_source_monitor_name(name); });
+
+    calibration_ui->signal_hide().connect([calibration_ui, c]() {
+        c->disconnect();
+        delete calibration_ui;
+    });
+
+    calibration_ui->show_all();
 }

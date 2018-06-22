@@ -11,23 +11,23 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(
     // populate stack
 
     auto b_limiter = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/limiter.glade");
+        "/com/github/wwmm/pulseeffects/ui/limiter.glade");
     auto b_compressor = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/compressor.glade");
+        "/com/github/wwmm/pulseeffects/ui/compressor.glade");
     auto b_filter = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/filter.glade");
+        "/com/github/wwmm/pulseeffects/ui/filter.glade");
     auto b_equalizer = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/equalizer.glade");
+        "/com/github/wwmm/pulseeffects/ui/equalizer.glade");
     auto b_reverb = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/reverb.glade");
+        "/com/github/wwmm/pulseeffects/ui/reverb.glade");
     auto b_gate = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/gate.glade");
+        "/com/github/wwmm/pulseeffects/ui/gate.glade");
     auto b_deesser = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/deesser.glade");
+        "/com/github/wwmm/pulseeffects/ui/deesser.glade");
     auto b_pitch = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/pitch.glade");
+        "/com/github/wwmm/pulseeffects/ui/pitch.glade");
     auto b_webrtc = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/webrtc.glade");
+        "/com/github/wwmm/pulseeffects/ui/webrtc.glade");
 
     b_limiter->get_widget_derived(
         "widgets_grid", limiter_ui,

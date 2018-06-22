@@ -132,6 +132,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     void on_presets_menu_button_clicked();
 
     void on_import_preset_clicked();
+
+    void on_calibration_button_clicked();
 };
 
 #endif

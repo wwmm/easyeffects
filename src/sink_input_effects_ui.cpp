@@ -12,31 +12,31 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     // populate stack
 
     auto b_limiter = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/limiter.glade");
+        "/com/github/wwmm/pulseeffects/ui/limiter.glade");
     auto b_compressor = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/compressor.glade");
+        "/com/github/wwmm/pulseeffects/ui/compressor.glade");
     auto b_filter = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/filter.glade");
+        "/com/github/wwmm/pulseeffects/ui/filter.glade");
     auto b_equalizer = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/equalizer.glade");
+        "/com/github/wwmm/pulseeffects/ui/equalizer.glade");
     auto b_reverb = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/reverb.glade");
+        "/com/github/wwmm/pulseeffects/ui/reverb.glade");
     auto b_bass_enhancer = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/bass_enhancer.glade");
+        "/com/github/wwmm/pulseeffects/ui/bass_enhancer.glade");
     auto b_exciter = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/exciter.glade");
+        "/com/github/wwmm/pulseeffects/ui/exciter.glade");
     auto b_stereo_enhancer = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/stereo_enhancer.glade");
+        "/com/github/wwmm/pulseeffects/ui/stereo_enhancer.glade");
     auto b_panorama = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/panorama.glade");
+        "/com/github/wwmm/pulseeffects/ui/panorama.glade");
     auto b_crossfeed = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/crossfeed.glade");
+        "/com/github/wwmm/pulseeffects/ui/crossfeed.glade");
     auto b_maximizer = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/maximizer.glade");
+        "/com/github/wwmm/pulseeffects/ui/maximizer.glade");
     auto b_delay = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/delay.glade");
+        "/com/github/wwmm/pulseeffects/ui/delay.glade");
     auto b_expander = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/expander.glade");
+        "/com/github/wwmm/pulseeffects/ui/expander.glade");
 
     b_limiter->get_widget_derived(
         "widgets_grid", limiter_ui,

@@ -1,11 +1,10 @@
 #include "calibration_signals_ui.hpp"
+#include "util.hpp"
 
 CalibrationSignalsUi::CalibrationSignalsUi(
     BaseObjectType* cobject,
-    const Glib::RefPtr<Gtk::Builder>& refBuilder)
-    : Gtk::Grid(cobject),
-      cs(std::make_unique<CalibrationSignals>()),
-      builder(refBuilder) {
+    const Glib::RefPtr<Gtk::Builder>& builder)
+    : Gtk::Grid(cobject), cs(std::make_unique<CalibrationSignals>()) {
     // loading glade widgets
 
     builder->get_widget("enable", enable);
@@ -41,15 +40,6 @@ CalibrationSignalsUi::CalibrationSignalsUi(
     volume->set_value(1.0);
 }
 
-CalibrationSignalsUi::~CalibrationSignalsUi() {}
-
-std::shared_ptr<CalibrationSignalsUi> CalibrationSignalsUi::create() {
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/calibration_signals.glade");
-
-    CalibrationSignalsUi* window = nullptr;
-
-    builder->get_widget_derived("widgets_grid", window);
-
-    return std::shared_ptr<CalibrationSignalsUi>(window);
+CalibrationSignalsUi::~CalibrationSignalsUi() {
+    util::debug(log_tag + "destroyed");
 }
