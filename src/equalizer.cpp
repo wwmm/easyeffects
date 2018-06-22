@@ -1,11 +1,8 @@
 #include <glibmm/main.h>
-#include <mutex>
 #include "equalizer.hpp"
 #include "util.hpp"
 
 namespace {
-
-std::mutex nbands_mtx;
 
 void on_num_bands_changed(GSettings* settings, gchar* key, Equalizer* l) {
     l->init_equalizer();
@@ -117,8 +114,6 @@ void Equalizer::unbind_band(const int index) {
 }
 
 void Equalizer::init_equalizer() {
-    std::lock_guard<std::mutex> lock(nbands_mtx);
-
     int nbands = g_settings_get_int(settings, "num-bands");
     int current_nbands;
 
