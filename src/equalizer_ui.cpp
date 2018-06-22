@@ -326,6 +326,7 @@ void EqualizerUi::populate_presets_listbox() {
 
         row->set_name(name);
         label->set_text(name);
+        label->set_halign(Gtk::ALIGN_START);
 
         row->add(*label);
 

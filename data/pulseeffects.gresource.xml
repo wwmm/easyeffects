@@ -38,5 +38,7 @@
     <file>icons/pulseeffects-celsius-symbolic.svg</file>
     <file>presets/gstreamer_ballad.json</file>
     <file>presets/gstreamer_classic.json</file>
+    <file>presets/gstreamer_club.json</file>
+    <file>presets/gstreamer_dance.json</file>
   </gresource>
 </gresources>
