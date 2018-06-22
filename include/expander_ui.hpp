@@ -19,12 +19,6 @@ class ExpanderUi : public Gtk::Grid, public PluginUiBase {
     Gtk::ComboBoxText *em, *scm, *scs;
     Glib::RefPtr<Gtk::Adjustment> scr, scp, sla, cr, kn, mk, al, at, rrl, rt;
     Gtk::ToggleButton* scl;
-    // Glib::RefPtr<Gtk::Adjustment> asc_level, autovolume_target,
-    //     autovolume_window;
-    // Glib::RefPtr<Gtk::Adjustment> autovolume_threshold, autovolume_tolerance;
-    // Gtk::Grid *autovolume_controls, *limiter_controls;
-    // Gtk::LevelBar* attenuation;
-    // Gtk::Label* attenuation_label;
 
     std::vector<sigc::connection> connections;
 };

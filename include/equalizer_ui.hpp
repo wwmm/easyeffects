@@ -21,6 +21,10 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
 
     std::vector<sigc::connection> connections;
 
+    std::string presets_path = "/com/github/wwmm/pulseeffects/presets/";
+
+    void load_preset(const std::string& name);
+
     void on_nbands_changed();
     void on_flat_response();
     void on_calculate_frequencies();

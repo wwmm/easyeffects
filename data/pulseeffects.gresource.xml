@@ -36,5 +36,7 @@
     <file>pulseeffects-s-symbolic.svg</file>
     <file>pulseeffects-hz-symbolic.svg</file>
     <file>pulseeffects-celsius-symbolic.svg</file>
+    <file>presets/gstreamer_ballad.json</file>
+    <file>presets/gstreamer_classic.json</file>
   </gresource>
 </gresources>

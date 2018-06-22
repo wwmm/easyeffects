@@ -1,5 +1,7 @@
 #include <gtkmm/comboboxtext.h>
 #include <gtkmm/label.h>
+#include <boost/property_tree/json_parser.hpp>
+#include <boost/property_tree/ptree.hpp>
 #include "equalizer_ui.hpp"
 
 namespace {
@@ -75,6 +77,15 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
     settings->bind("output-gain", output_gain.get(), "value", flag);
 
     settings->set_boolean("post-messages", true);
+
+    // auto names = Gio::Resource::enumerate_children_global(presets_path);
+    //
+    // for (auto name : names) {
+    //     // auto s = name.substr(0, name.find("."));
+    //     //
+    //     // std::cout << s << std::endl;
+    //     // load_preset(name);
+    // }
 }
 
 EqualizerUi::~EqualizerUi() {
@@ -225,6 +236,54 @@ void EqualizerUi::on_calculate_frequencies() {
                              width);
 
         freq0 = freq1;
+    }
+}
+
+void EqualizerUi::load_preset(const std::string& name) {
+    gsize dsize;
+    std::stringstream ss;
+    boost::property_tree::ptree root;
+
+    auto bytes = Gio::Resource::lookup_data_global(presets_path + name);
+
+    auto rdata = static_cast<const char*>(bytes->get_data(dsize));
+
+    auto file_contents = std::string(rdata);
+
+    // std::cout << file_contents << std::endl;
+
+    ss << file_contents;
+
+    boost::property_tree::read_json(ss, root);
+
+    int nbands = root.get<int>("equalizer.num-bands");
+
+    settings->set_int("num-bands", nbands);
+
+    settings->set_double("input-gain",
+                         root.get<double>("equalizer.input-gain"));
+
+    settings->set_double("output-gain",
+                         root.get<double>("equalizer.output-gain"));
+
+    for (int n = 0; n < nbands; n++) {
+        settings->set_double(
+            std::string("band" + std::to_string(n) + "-gain"),
+            root.get<double>("equalizer.band" + std::to_string(n) + ".gain"));
+
+        settings->set_double(
+            std::string("band" + std::to_string(n) + "-frequency"),
+            root.get<double>("equalizer.band" + std::to_string(n) +
+                             ".frequency"));
+
+        settings->set_double(
+            std::string("band" + std::to_string(n) + "-width"),
+            root.get<double>("equalizer.band" + std::to_string(n) + ".width"));
+
+        settings->set_string(
+            std::string("band" + std::to_string(n) + "-type"),
+            root.get<std::string>("equalizer.band" + std::to_string(n) +
+                                  ".type"));
     }
 }
 

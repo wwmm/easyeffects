@@ -3,7 +3,7 @@
 ## [Unreleased]
 ### Added
 - Input gain and output gain controls for the equalizer.
-- Removed more memory leaks(nothing critical)
+- Removed a small memory leak(nothing critical).
 
 ### General notes
 - The limiter plugin in latest Calf Studio release (0.90) has a memory leak.
