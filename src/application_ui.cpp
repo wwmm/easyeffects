@@ -17,7 +17,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     apply_css_style("listbox.css");
 
     Gtk::IconTheme::get_default()->add_resource_path(
-        "/com/github/wwmm/pulseeffects/");
+        "/com/github/wwmm/pulseeffects/icons");
 
     // loading glade widgets
 

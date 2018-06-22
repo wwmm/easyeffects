@@ -29,13 +29,13 @@
     <file>expander.glade</file>
     <file>about_icon.png</file>
     <file>listbox.css</file>
-    <file>pulseeffects-sine-symbolic.svg</file>
-    <file>pulseeffects-us-symbolic.svg</file>
-    <file>pulseeffects-db-symbolic.svg</file>
-    <file>pulseeffects-ms-symbolic.svg</file>
-    <file>pulseeffects-s-symbolic.svg</file>
-    <file>pulseeffects-hz-symbolic.svg</file>
-    <file>pulseeffects-celsius-symbolic.svg</file>
+    <file>icons/pulseeffects-sine-symbolic.svg</file>
+    <file>icons/pulseeffects-us-symbolic.svg</file>
+    <file>icons/pulseeffects-db-symbolic.svg</file>
+    <file>icons/pulseeffects-ms-symbolic.svg</file>
+    <file>icons/pulseeffects-s-symbolic.svg</file>
+    <file>icons/pulseeffects-hz-symbolic.svg</file>
+    <file>icons/pulseeffects-celsius-symbolic.svg</file>
     <file>presets/gstreamer_ballad.json</file>
     <file>presets/gstreamer_classic.json</file>
   </gresource>
