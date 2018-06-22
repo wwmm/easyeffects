@@ -117,7 +117,7 @@ void EqualizerUi::on_nbands_changed() {
 
     for (int n = 0; n < N; n++) {
         auto B = Gtk::Builder::create_from_resource(
-            "/com/github/wwmm/pulseeffects/equalizer_band.glade");
+            "/com/github/wwmm/pulseeffects/ui/equalizer_band.glade");
 
         Gtk::Grid* band_grid;
         Gtk::ComboBoxText* band_t;
