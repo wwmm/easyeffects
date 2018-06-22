@@ -44,5 +44,9 @@
     <file>presets/gstreamer_reggae.json</file>
     <file>presets/gstreamer_rock.json</file>
     <file>presets/gstreamer_ska.json</file>
+    <file>presets/gstreamer_soft.json</file>
+    <file>presets/gstreamer_techno.json</file>
+    <file>presets/gstreamer_party.json</file>
+    <file>presets/gstreamer_more_bass.json</file>
   </gresource>
 </gresources>
