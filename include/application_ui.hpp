@@ -65,8 +65,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     SinkInputEffectsUi* sie_ui;
     SourceOutputEffectsUi* soe_ui;
 
-    bool mouse_inside;
-    double mouse_intensity, mouse_freq;
+    bool mouse_inside = false;
+    double mouse_intensity = 0, mouse_freq = 0;
     std::vector<float> spectrum_mag;
 
     void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
