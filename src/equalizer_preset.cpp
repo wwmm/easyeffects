@@ -15,6 +15,12 @@ void EqualizerPreset::save(boost::property_tree::ptree& root,
 
     root.put(section + ".equalizer.num-bands", nbands);
 
+    root.put(section + ".equalizer.input-gain",
+             settings->get_double("input-gain"));
+
+    root.put(section + ".equalizer.output-gain",
+             settings->get_double("output-gain"));
+
     for (int n = 0; n < nbands; n++) {
         root.put(section + ".equalizer.band" + std::to_string(n) + ".gain",
                  settings->get_double(
@@ -45,6 +51,16 @@ void EqualizerPreset::load(boost::property_tree::ptree& root,
                                get_default<int>(settings, "num-bands"));
 
     settings->set_int("num-bands", nbands);
+
+    settings->set_double(
+        "input-gain",
+        root.get<double>(section + ".equalizer.input-gain",
+                         get_default<double>(settings, "input-gain")));
+
+    settings->set_double(
+        "output-gain",
+        root.get<double>(section + ".equalizer.output-gain",
+                         get_default<double>(settings, "output-gain")));
 
     for (int n = 0; n < nbands; n++) {
         settings->set_double(
