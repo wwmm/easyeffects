@@ -29,6 +29,7 @@ pulseeffects_sources = [
 	'compressor.cpp',
 	'compressor_ui.cpp',
 	'multiband_compressor.cpp',
+	'multiband_compressor_ui.cpp',
 	'filter.cpp',
 	'filter_ui.cpp',
 	'equalizer.cpp',

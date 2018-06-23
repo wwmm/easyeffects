@@ -6,7 +6,9 @@
     <file>ui/effects_base.glade</file>
     <file>ui/app_info.glade</file>
     <file>ui/limiter.glade</file>
+    <file>ui/expander.glade</file>
     <file>ui/compressor.glade</file>
+    <file>ui/multiband_compressor.glade</file>
     <file>ui/filter.glade</file>
     <file>ui/equalizer.glade</file>
     <file>ui/equalizer_band.glade</file>
@@ -26,7 +28,6 @@
     <file>ui/calibration.glade</file>
     <file>ui/calibration_signals.glade</file>
     <file>ui/calibration_mic.glade</file>
-    <file>ui/expander.glade</file>
     <file>ui/listbox.css</file>
     <file>ui/about_icon.png</file>
     <file>icons/pulseeffects-sine-symbolic.svg</file>
