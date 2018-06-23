@@ -4,6 +4,7 @@
 #include <gtkmm/button.h>
 #include <gtkmm/comboboxtext.h>
 #include <gtkmm/grid.h>
+#include <gtkmm/togglebutton.h>
 #include "plugin_ui_base.hpp"
 
 class MultibandCompressorUi : public Gtk::Grid, public PluginUiBase {
@@ -29,12 +30,12 @@ class MultibandCompressorUi : public Gtk::Grid, public PluginUiBase {
         makeup2;
     Glib::RefPtr<Gtk::Adjustment> attack3, release3, threshold3, knee3, ratio3,
         makeup3;
-    Gtk::LevelBar *compression0, compression1, compression2, compression3;
-    Gtk::Label *compression0_label, compression1_label, compression2_label,
-        compression3_label;
+    Gtk::LevelBar *compression0, *compression1, *compression2, *compression3;
+    Gtk::Label *compression0_label, *compression1_label, *compression2_label,
+        *compression3_label;
     Gtk::ComboBoxText *mode, *detection0, *detection1, *detection2, *detection3;
-
-    void init_presets_buttons();
+    Gtk::ToggleButton *bypass0, *bypass1, *bypass2, *bypass3, *solo0, *solo1,
+        *solo2, *solo3;
 };
 
 #endif

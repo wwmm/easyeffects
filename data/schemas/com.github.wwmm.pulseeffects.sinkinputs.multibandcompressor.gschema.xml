@@ -169,10 +169,5 @@
         <key name="solo3" type="b">
             <default>false</default>
         </key>
-
-        <key name="notebook" type="i">
-            <range min="0" max="3"/>
-            <default>0</default>
-        </key>
     </schema>
 </schemalist>

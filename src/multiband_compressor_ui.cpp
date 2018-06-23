@@ -65,46 +65,108 @@ MultibandCompressorUi::MultibandCompressorUi(
 
     // loading glade widgets
 
-    builder->get_widget("detection", detection);
-    builder->get_widget("stereo_link", stereo_link);
-    builder->get_widget("compression", compression);
-    builder->get_widget("compression_label", compression_label);
-    builder->get_widget("preset_vocal_leveller1", preset_vocal_leveller1);
-    builder->get_widget("preset_vocal_leveller2", preset_vocal_leveller2);
-    builder->get_widget("preset_default", preset_default);
+    builder->get_widget("mode", mode);
+    builder->get_widget("bypass0", bypass0);
+    builder->get_widget("bypass1", bypass1);
+    builder->get_widget("bypass2", bypass2);
+    builder->get_widget("bypass3", bypass3);
+    builder->get_widget("solo0", solo0);
+    builder->get_widget("solo1", solo1);
+    builder->get_widget("solo2", solo2);
+    builder->get_widget("solo3", solo3);
+    builder->get_widget("detection0", detection0);
+    builder->get_widget("detection1", detection1);
+    builder->get_widget("detection2", detection2);
+    builder->get_widget("detection3", detection3);
+    builder->get_widget("compression0", compression0);
+    builder->get_widget("compression0_label", compression0_label);
+    builder->get_widget("compression1", compression1);
+    builder->get_widget("compression1_label", compression1_label);
+    builder->get_widget("compression2", compression2);
+    builder->get_widget("compression2_label", compression2_label);
+    builder->get_widget("compression3", compression3);
+    builder->get_widget("compression3_label", compression3_label);
 
-    get_object(builder, "attack", attack);
-    get_object(builder, "knee", knee);
-    get_object(builder, "makeup", makeup);
-    get_object(builder, "mix", mix);
-    get_object(builder, "ratio", ratio);
-    get_object(builder, "release", release);
-    get_object(builder, "threshold", threshold);
+    get_object(builder, "threshold0", threshold0);
+    get_object(builder, "threshold1", threshold1);
+    get_object(builder, "threshold2", threshold2);
+    get_object(builder, "threshold3", threshold3);
+    get_object(builder, "ratio0", ratio0);
+    get_object(builder, "ratio1", ratio1);
+    get_object(builder, "ratio2", ratio2);
+    get_object(builder, "ratio3", ratio3);
+    get_object(builder, "attack0", attack0);
+    get_object(builder, "attack1", attack1);
+    get_object(builder, "attack2", attack2);
+    get_object(builder, "attack3", attack3);
+    get_object(builder, "release0", release0);
+    get_object(builder, "release1", release1);
+    get_object(builder, "release2", release2);
+    get_object(builder, "release3", release3);
+    get_object(builder, "makeup0", makeup0);
+    get_object(builder, "makeup1", makeup1);
+    get_object(builder, "makeup2", makeup2);
+    get_object(builder, "makeup3", makeup3);
+    get_object(builder, "knee0", knee0);
+    get_object(builder, "knee1", knee1);
+    get_object(builder, "knee2", knee2);
+    get_object(builder, "knee3", knee3);
 
     // gsettings bindings
 
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
     settings->bind("installed", this, "sensitive", flag);
-    settings->bind("attack", attack.get(), "value", flag);
-    settings->bind("knee", knee.get(), "value", flag);
-    settings->bind("makeup", makeup.get(), "value", flag);
-    settings->bind("mix", mix.get(), "value", flag);
-    settings->bind("ratio", ratio.get(), "value", flag);
-    settings->bind("release", release.get(), "value", flag);
-    settings->bind("threshold", threshold.get(), "value", flag);
 
-    g_settings_bind_with_mapping(settings->gobj(), "detection",
-                                 detection->gobj(), "active",
+    settings->bind("threshold0", threshold0.get(), "value", flag);
+    settings->bind("threshold1", threshold1.get(), "value", flag);
+    settings->bind("threshold2", threshold2.get(), "value", flag);
+    settings->bind("threshold3", threshold3.get(), "value", flag);
+    settings->bind("ratio0", ratio0.get(), "value", flag);
+    settings->bind("ratio1", ratio1.get(), "value", flag);
+    settings->bind("ratio2", ratio2.get(), "value", flag);
+    settings->bind("ratio3", ratio3.get(), "value", flag);
+    settings->bind("attack0", attack0.get(), "value", flag);
+    settings->bind("attack1", attack1.get(), "value", flag);
+    settings->bind("attack2", attack2.get(), "value", flag);
+    settings->bind("attack3", attack3.get(), "value", flag);
+    settings->bind("release0", release0.get(), "value", flag);
+    settings->bind("release1", release1.get(), "value", flag);
+    settings->bind("release2", release2.get(), "value", flag);
+    settings->bind("release3", release3.get(), "value", flag);
+    settings->bind("makeup0", makeup0.get(), "value", flag);
+    settings->bind("makeup1", makeup1.get(), "value", flag);
+    settings->bind("makeup2", makeup2.get(), "value", flag);
+    settings->bind("makeup3", makeup3.get(), "value", flag);
+    settings->bind("knee0", knee0.get(), "value", flag);
+    settings->bind("knee1", knee1.get(), "value", flag);
+    settings->bind("knee2", knee2.get(), "value", flag);
+    settings->bind("knee3", knee3.get(), "value", flag);
+
+    g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(),
+                                 "active", G_SETTINGS_BIND_DEFAULT,
+                                 mode_enum_to_int, int_to_mode_enum, nullptr,
+                                 nullptr);
+
+    g_settings_bind_with_mapping(settings->gobj(), "detection0",
+                                 detection0->gobj(), "active",
                                  G_SETTINGS_BIND_DEFAULT, detection_enum_to_int,
                                  int_to_detection_enum, nullptr, nullptr);
 
-    g_settings_bind_with_mapping(
-        settings->gobj(), "stereo-link", stereo_link->gobj(), "active",
-        G_SETTINGS_BIND_DEFAULT, stereo_link_enum_to_int,
-        int_to_stereo_link_enum, nullptr, nullptr);
+    g_settings_bind_with_mapping(settings->gobj(), "detection1",
+                                 detection1->gobj(), "active",
+                                 G_SETTINGS_BIND_DEFAULT, detection_enum_to_int,
+                                 int_to_detection_enum, nullptr, nullptr);
 
-    init_presets_buttons();
+    g_settings_bind_with_mapping(settings->gobj(), "detection2",
+                                 detection2->gobj(), "active",
+                                 G_SETTINGS_BIND_DEFAULT, detection_enum_to_int,
+                                 int_to_detection_enum, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(settings->gobj(), "detection3",
+                                 detection3->gobj(), "active",
+                                 G_SETTINGS_BIND_DEFAULT, detection_enum_to_int,
+                                 int_to_detection_enum, nullptr, nullptr);
 
     settings->set_boolean("post-messages", true);
 }
@@ -115,59 +177,76 @@ MultibandCompressorUi::~MultibandCompressorUi() {
     util::debug(name + " ui destroyed");
 }
 
-void MultibandCompressorUi::on_new_compression(double value) {
-    compression->set_value(1 - value);
+void MultibandCompressorUi::on_new_compression0(double value) {
+    compression0->set_value(1 - value);
 
-    compression_label->set_text(level_to_str(util::linear_to_db(value)));
+    compression0_label->set_text(level_to_str(util::linear_to_db(value)));
 }
 
-void MultibandCompressorUi::init_presets_buttons() {
-    preset_vocal_leveller1->signal_clicked().connect([=]() {
-        threshold->set_value(util::linear_to_db(0.0883884));
-        ratio->set_value(4.25008);
-        attack->set_value(3.10087);
-        release->set_value(25.0012);
-        makeup->set_value(util::linear_to_db(4.85678));
-        knee->set_value(util::linear_to_db(8));
-        detection->set_active(0);
-        stereo_link->set_active(0);
-        settings->reset("mix");
-    });
+void MultibandCompressorUi::on_new_compression1(double value) {
+    compression1->set_value(1 - value);
 
-    preset_vocal_leveller2->signal_clicked().connect([=]() {
-        threshold->set_value(util::linear_to_db(0.0883884));
-        ratio->set_value(4.25008);
-        attack->set_value(10.5096);
-        release->set_value(106.852);
-        makeup->set_value(util::linear_to_db(4.85678));
-        knee->set_value(util::linear_to_db(8));
-        detection->set_active(0);
-        stereo_link->set_active(0);
-        settings->reset("mix");
-    });
+    compression1_label->set_text(level_to_str(util::linear_to_db(value)));
+}
 
-    preset_default->signal_clicked().connect([=]() {
-        settings->reset("detection");
-        settings->reset("stereo-link");
-        settings->reset("mix");
-        settings->reset("attack");
-        settings->reset("release");
-        settings->reset("threshold");
-        settings->reset("ratio");
-        settings->reset("knee");
-        settings->reset("makeup");
-    });
+void MultibandCompressorUi::on_new_compression2(double value) {
+    compression2->set_value(1 - value);
+
+    compression2_label->set_text(level_to_str(util::linear_to_db(value)));
+}
+
+void MultibandCompressorUi::on_new_compression3(double value) {
+    compression3->set_value(1 - value);
+
+    compression3_label->set_text(level_to_str(util::linear_to_db(value)));
 }
 
 void MultibandCompressorUi::reset() {
     settings->reset("state");
-    settings->reset("detection");
-    settings->reset("stereo-link");
-    settings->reset("mix");
-    settings->reset("attack");
-    settings->reset("release");
-    settings->reset("threshold");
-    settings->reset("ratio");
-    settings->reset("knee");
-    settings->reset("makeup");
+    settings->reset("input-gain");
+    settings->reset("output-gain");
+    settings->reset("freq0");
+    settings->reset("freq1");
+    settings->reset("freq2");
+    settings->reset("mode");
+
+    settings->reset("threshold0");
+    settings->reset("ratio0");
+    settings->reset("attack0");
+    settings->reset("release0");
+    settings->reset("makeup0");
+    settings->reset("knee0");
+    settings->reset("detection0");
+    settings->reset("bypass0");
+    settings->reset("solo0");
+
+    settings->reset("threshold1");
+    settings->reset("ratio1");
+    settings->reset("attack1");
+    settings->reset("release1");
+    settings->reset("makeup1");
+    settings->reset("knee1");
+    settings->reset("detection1");
+    settings->reset("bypass1");
+    settings->reset("solo1");
+
+    settings->reset("threshold2");
+    settings->reset("ratio2");
+    settings->reset("attack2");
+    settings->reset("release2");
+    settings->reset("makeup2");
+    settings->reset("knee2");
+    settings->reset("detection2");
+    settings->reset("bypass2");
+    settings->reset("solo2");
+
+    settings->reset("threshold3");
+    settings->reset("ratio3");
+    settings->reset("attack3");
+    settings->reset("release3");
+    settings->reset("makeup3");
+    settings->reset("knee3");
+    settings->reset("detection3");
+    settings->reset("bypass3");
+    settings->reset("solo3");
 }

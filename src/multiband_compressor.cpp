@@ -335,7 +335,4 @@ void MultibandCompressor::bind_to_gsettings() {
 
     g_settings_bind(settings, "solo3", multiband_compressor, "solo3",
                     G_SETTINGS_BIND_DEFAULT);
-
-    g_settings_bind(settings, "notebook", multiband_compressor, "notebook",
-                    G_SETTINGS_BIND_DEFAULT);
 }
