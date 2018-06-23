@@ -106,6 +106,10 @@ void Compressor::bind_to_gsettings() {
         util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
     g_settings_bind_with_mapping(
+        settings, "knee", compressor, "knee", G_SETTINGS_BIND_DEFAULT,
+        util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(
         settings, "makeup", compressor, "makeup", G_SETTINGS_BIND_DEFAULT,
         util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 }
