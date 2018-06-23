@@ -5,7 +5,25 @@
   <object class="GtkAdjustment" id="attack0">
     <property name="lower">0.01</property>
     <property name="upper">2000</property>
-    <property name="value">20</property>
+    <property name="value">150</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">0.01</property>
+  </object>
+  <object class="GtkAdjustment" id="attack1">
+    <property name="lower">0.01</property>
+    <property name="upper">2000</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">0.01</property>
+  </object>
+  <object class="GtkAdjustment" id="attack2">
+    <property name="lower">0.01</property>
+    <property name="upper">2000</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">0.01</property>
+  </object>
+  <object class="GtkAdjustment" id="attack3">
+    <property name="lower">0.01</property>
+    <property name="upper">2000</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.01</property>
   </object>
@@ -97,11 +115,41 @@
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_knee_value_changed" swapped="no"/>
   </object>
+  <object class="GtkAdjustment" id="knee1">
+    <property name="upper">18</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="knee2">
+    <property name="upper">18</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="knee3">
+    <property name="upper">18</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">1</property>
+  </object>
   <object class="GtkAdjustment" id="makeup0">
     <property name="upper">36</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_makeup_value_changed" swapped="no"/>
+  </object>
+  <object class="GtkAdjustment" id="makeup1">
+    <property name="upper">36</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="makeup2">
+    <property name="upper">36</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="makeup3">
+    <property name="upper">36</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="ratio0">
     <property name="lower">1</property>
@@ -110,16 +158,52 @@
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.10000000000000001</property>
   </object>
+  <object class="GtkAdjustment" id="ratio1">
+    <property name="lower">1</property>
+    <property name="upper">20</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">0.10000000000000001</property>
+  </object>
+  <object class="GtkAdjustment" id="ratio2">
+    <property name="lower">1</property>
+    <property name="upper">20</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">0.10000000000000001</property>
+  </object>
+  <object class="GtkAdjustment" id="ratio3">
+    <property name="lower">1</property>
+    <property name="upper">20</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">0.10000000000000001</property>
+  </object>
   <object class="GtkAdjustment" id="release0">
     <property name="lower">0.01</property>
     <property name="upper">2000</property>
-    <property name="value">250</property>
+    <property name="value">300</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">0.01</property>
+  </object>
+  <object class="GtkAdjustment" id="release1">
+    <property name="lower">0.01</property>
+    <property name="upper">2000</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">0.01</property>
+  </object>
+  <object class="GtkAdjustment" id="release2">
+    <property name="lower">0.01</property>
+    <property name="upper">2000</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">0.01</property>
+  </object>
+  <object class="GtkAdjustment" id="release3">
+    <property name="lower">0.01</property>
+    <property name="upper">2000</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.01</property>
   </object>
   <object class="GtkAdjustment" id="threshold0">
     <property name="lower">-60</property>
-    <property name="value">-18</property>
+    <property name="value">-12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_threshold_value_changed" swapped="no"/>
@@ -226,7 +310,7 @@
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
-                            <property name="top_attach">0</property>
+                            <property name="top_attach">1</property>
                           </packing>
                         </child>
                         <child>
@@ -240,21 +324,9 @@
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
-                            <property name="top_attach">0</property>
+                            <property name="top_attach">1</property>
                           </packing>
                         </child>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkGrid">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
@@ -264,7 +336,7 @@
                             <property name="label" translatable="yes">Detection</property>
                           </object>
                           <packing>
-                            <property name="left_attach">0</property>
+                            <property name="left_attach">2</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -279,14 +351,20 @@
                             </items>
                           </object>
                           <packing>
-                            <property name="left_attach">0</property>
+                            <property name="left_attach">2</property>
                             <property name="top_attach">1</property>
                           </packing>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
                         </child>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">1</property>
+                        <property name="top_attach">0</property>
                       </packing>
                     </child>
                     <child>
@@ -500,7 +578,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">2</property>
+                        <property name="top_attach">1</property>
                       </packing>
                     </child>
                   </object>
@@ -508,6 +586,9 @@
                     <property name="name">sub_band</property>
                     <property name="title" translatable="yes">Sub Band</property>
                   </packing>
+                </child>
+                <child>
+                  <placeholder/>
                 </child>
               </object>
               <packing>
@@ -703,5 +784,20 @@
         <property name="top_attach">0</property>
       </packing>
     </child>
+  </object>
+  <object class="GtkAdjustment" id="threshold1">
+    <property name="lower">-60</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="threshold2">
+    <property name="lower">-60</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="threshold3">
+    <property name="lower">-60</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
   </object>
 </interface>
