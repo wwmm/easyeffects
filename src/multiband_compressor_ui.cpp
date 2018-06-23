@@ -153,6 +153,15 @@ MultibandCompressorUi::MultibandCompressorUi(
     settings->bind("knee2", knee2.get(), "value", flag);
     settings->bind("knee3", knee3.get(), "value", flag);
 
+    settings->bind("bypass0", bypass0, "active", flag);
+    settings->bind("bypass1", bypass1, "active", flag);
+    settings->bind("bypass2", bypass2, "active", flag);
+    settings->bind("bypass3", bypass3, "active", flag);
+    settings->bind("solo0", solo0, "active", flag);
+    settings->bind("solo1", solo1, "active", flag);
+    settings->bind("solo2", solo2, "active", flag);
+    settings->bind("solo3", solo3, "active", flag);
+
     g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(),
                                  "active", G_SETTINGS_BIND_DEFAULT,
                                  mode_enum_to_int, int_to_mode_enum, nullptr,
