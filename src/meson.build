@@ -23,8 +23,12 @@ pulseeffects_sources = [
 	'plugin_ui_base.cpp',
 	'limiter.cpp',
 	'limiter_ui.cpp',
+	'expander.cpp',
+	'expander_ui.cpp',
+	'expander_preset.cpp',
 	'compressor.cpp',
 	'compressor_ui.cpp',
+	'multiband_compressor.cpp',
 	'filter.cpp',
 	'filter_ui.cpp',
 	'equalizer.cpp',
@@ -75,9 +79,6 @@ pulseeffects_sources = [
 	'calibration_signals.cpp',
 	'calibration_mic_ui.cpp',
 	'calibration_mic.cpp',
-	'expander.cpp',
-	'expander_ui.cpp',
-	'expander_preset.cpp',
 	'util.cpp',
 	gresources
 ]
