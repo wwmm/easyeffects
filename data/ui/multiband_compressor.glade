@@ -480,7 +480,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkComboBoxText" id="detection">
+                          <object class="GtkComboBoxText" id="detection0">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
@@ -1108,7 +1108,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="compression0_label1">
+                          <object class="GtkLabel" id="compression1_label">
                             <property name="visible">True</property>
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
@@ -1468,7 +1468,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="compression0_label2">
+                          <object class="GtkLabel" id="compression2_label">
                             <property name="visible">True</property>
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
@@ -1828,7 +1828,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="compression0_label3">
+                          <object class="GtkLabel" id="compression3_label">
                             <property name="visible">True</property>
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>

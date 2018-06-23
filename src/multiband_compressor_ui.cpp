@@ -123,6 +123,8 @@ MultibandCompressorUi::MultibandCompressorUi(
 
     settings->bind("installed", this, "sensitive", flag);
 
+    settings->bind("input-gain", input_gain.get(), "value", flag);
+    settings->bind("output-gain", output_gain.get(), "value", flag);
     settings->bind("freq0", freq0.get(), "value", flag);
     settings->bind("freq1", freq1.get(), "value", flag);
     settings->bind("freq2", freq2.get(), "value", flag);
