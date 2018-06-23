@@ -78,6 +78,14 @@ MultibandCompressorUi::MultibandCompressorUi(
     builder->get_widget("detection1", detection1);
     builder->get_widget("detection2", detection2);
     builder->get_widget("detection3", detection3);
+    builder->get_widget("output0", output0);
+    builder->get_widget("output0_label", output0_label);
+    builder->get_widget("output1", output1);
+    builder->get_widget("output1_label", output1_label);
+    builder->get_widget("output2", output2);
+    builder->get_widget("output2_label", output2_label);
+    builder->get_widget("output3", output3);
+    builder->get_widget("output3_label", output3_label);
     builder->get_widget("compression0", compression0);
     builder->get_widget("compression0_label", compression0_label);
     builder->get_widget("compression1", compression1);
@@ -194,6 +202,30 @@ MultibandCompressorUi::~MultibandCompressorUi() {
     settings->set_boolean("post-messages", false);
 
     util::debug(name + " ui destroyed");
+}
+
+void MultibandCompressorUi::on_new_output0(double value) {
+    output0->set_value(value);
+
+    output0_label->set_text(level_to_str(util::linear_to_db(value)));
+}
+
+void MultibandCompressorUi::on_new_output1(double value) {
+    output1->set_value(value);
+
+    output1_label->set_text(level_to_str(util::linear_to_db(value)));
+}
+
+void MultibandCompressorUi::on_new_output2(double value) {
+    output2->set_value(value);
+
+    output2_label->set_text(level_to_str(util::linear_to_db(value)));
+}
+
+void MultibandCompressorUi::on_new_output3(double value) {
+    output3->set_value(value);
+
+    output3_label->set_text(level_to_str(util::linear_to_db(value)));
 }
 
 void MultibandCompressorUi::on_new_compression0(double value) {

@@ -16,6 +16,11 @@ class MultibandCompressorUi : public Gtk::Grid, public PluginUiBase {
 
     void reset();
 
+    void on_new_output0(double value);
+    void on_new_output1(double value);
+    void on_new_output2(double value);
+    void on_new_output3(double value);
+
     void on_new_compression0(double value);
     void on_new_compression1(double value);
     void on_new_compression2(double value);
@@ -31,6 +36,8 @@ class MultibandCompressorUi : public Gtk::Grid, public PluginUiBase {
         makeup2;
     Glib::RefPtr<Gtk::Adjustment> attack3, release3, threshold3, knee3, ratio3,
         makeup3;
+    Gtk::LevelBar *output0, *output1, *output2, *output3;
+    Gtk::Label *output0_label, *output1_label, *output2_label, *output3_label;
     Gtk::LevelBar *compression0, *compression1, *compression2, *compression3;
     Gtk::Label *compression0_label, *compression1_label, *compression2_label,
         *compression3_label;

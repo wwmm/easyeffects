@@ -240,6 +240,20 @@ void SinkInputEffectsUi::level_meters_connections() {
     connections.push_back(sie->multiband_compressor->output_level.connect(
         sigc::mem_fun(*multiband_compressor_ui,
                       &MultibandCompressorUi::on_new_output_level)));
+
+    connections.push_back(
+        sie->multiband_compressor->output0.connect(sigc::mem_fun(
+            *multiband_compressor_ui, &MultibandCompressorUi::on_new_output0)));
+    connections.push_back(
+        sie->multiband_compressor->output1.connect(sigc::mem_fun(
+            *multiband_compressor_ui, &MultibandCompressorUi::on_new_output1)));
+    connections.push_back(
+        sie->multiband_compressor->output2.connect(sigc::mem_fun(
+            *multiband_compressor_ui, &MultibandCompressorUi::on_new_output2)));
+    connections.push_back(
+        sie->multiband_compressor->output3.connect(sigc::mem_fun(
+            *multiband_compressor_ui, &MultibandCompressorUi::on_new_output3)));
+
     connections.push_back(sie->multiband_compressor->compression0.connect(
         sigc::mem_fun(*multiband_compressor_ui,
                       &MultibandCompressorUi::on_new_compression0)));

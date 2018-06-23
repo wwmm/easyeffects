@@ -48,6 +48,66 @@ void on_post_messages_changed(GSettings* settings,
                 100);
         }
 
+        if (!l->output0_connection.connected()) {
+            l->output0_connection = Glib::signal_timeout().connect(
+                [l]() {
+                    float output;
+
+                    g_object_get(l->multiband_compressor, "output0", &output,
+                                 nullptr);
+
+                    l->output0.emit(output);
+
+                    return true;
+                },
+                100);
+        }
+
+        if (!l->output1_connection.connected()) {
+            l->output1_connection = Glib::signal_timeout().connect(
+                [l]() {
+                    float output;
+
+                    g_object_get(l->multiband_compressor, "output1", &output,
+                                 nullptr);
+
+                    l->output1.emit(output);
+
+                    return true;
+                },
+                100);
+        }
+
+        if (!l->output2_connection.connected()) {
+            l->output2_connection = Glib::signal_timeout().connect(
+                [l]() {
+                    float output;
+
+                    g_object_get(l->multiband_compressor, "output2", &output,
+                                 nullptr);
+
+                    l->output2.emit(output);
+
+                    return true;
+                },
+                100);
+        }
+
+        if (!l->output3_connection.connected()) {
+            l->output3_connection = Glib::signal_timeout().connect(
+                [l]() {
+                    float output;
+
+                    g_object_get(l->multiband_compressor, "output3", &output,
+                                 nullptr);
+
+                    l->output3.emit(output);
+
+                    return true;
+                },
+                100);
+        }
+
         if (!l->compression0_connection.connected()) {
             l->compression0_connection = Glib::signal_timeout().connect(
                 [l]() {
@@ -108,6 +168,11 @@ void on_post_messages_changed(GSettings* settings,
                 100);
         }
     } else {
+        l->output0_connection.disconnect();
+        l->output1_connection.disconnect();
+        l->output2_connection.disconnect();
+        l->output3_connection.disconnect();
+
         l->compression0_connection.disconnect();
         l->compression1_connection.disconnect();
         l->compression2_connection.disconnect();
