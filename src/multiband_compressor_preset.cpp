@@ -156,44 +156,196 @@ void MultibandCompressorPreset::load(
         "state", root.get<bool>(section + ".multiband_compressor.state",
                                 get_default<bool>(settings, "state")));
 
+    settings->set_double(
+        "input-gain",
+        root.get<double>(section + ".multiband_compressor.input-gain",
+                         get_default<double>(settings, "input-gain")));
+
+    settings->set_double(
+        "output-gain",
+        root.get<double>(section + ".multiband_compressor.output-gain",
+                         get_default<double>(settings, "output-gain")));
+
+    settings->set_double(
+        "freq0", root.get<double>(section + ".multiband_compressor.freq0",
+                                  get_default<double>(settings, "freq0")));
+
+    settings->set_double(
+        "freq1", root.get<double>(section + ".multiband_compressor.freq1",
+                                  get_default<double>(settings, "freq1")));
+
+    settings->set_double(
+        "freq2", root.get<double>(section + ".multiband_compressor.freq2",
+                                  get_default<double>(settings, "freq2")));
+
     settings->set_string(
-        "detection",
-        root.get<std::string>(section + ".multiband_compressor.detection",
-                              get_default<std::string>(settings, "detection")));
+        "mode",
+        root.get<std::string>(section + ".multiband_compressor.mode",
+                              get_default<std::string>(settings, "mode")));
 
-    settings->set_string(
-        "stereo-link", root.get<std::string>(
-                           section + ".multiband_compressor.stereo-link",
-                           get_default<std::string>(settings, "stereo-link")));
+    // sub band
 
     settings->set_double(
-        "mix", root.get<double>(section + ".multiband_compressor.mix",
-                                get_default<double>(settings, "mix")));
+        "threshold0",
+        root.get<double>(section + ".multiband_compressor.threshold0",
+                         get_default<double>(settings, "threshold0")));
 
     settings->set_double(
-        "attack", root.get<double>(section + ".multiband_compressor.attack",
-                                   get_default<double>(settings, "attack")));
+        "ratio0", root.get<double>(section + ".multiband_compressor.ratio0",
+                                   get_default<double>(settings, "ratio0")));
 
     settings->set_double(
-        "release", root.get<double>(section + ".multiband_compressor.release",
-                                    get_default<double>(settings, "release")));
+        "attack0", root.get<double>(section + ".multiband_compressor.attack0",
+                                    get_default<double>(settings, "attack0")));
 
     settings->set_double(
-        "threshold",
-        root.get<double>(section + ".multiband_compressor.threshold",
-                         get_default<double>(settings, "threshold")));
+        "release0",
+        root.get<double>(section + ".multiband_compressor.release0",
+                         get_default<double>(settings, "release0")));
 
     settings->set_double(
-        "ratio", root.get<double>(section + ".multiband_compressor.ratio",
-                                  get_default<double>(settings, "ratio")));
+        "makeup0", root.get<double>(section + ".multiband_compressor.makeup0",
+                                    get_default<double>(settings, "makeup0")));
 
     settings->set_double(
-        "knee", root.get<double>(section + ".multiband_compressor.knee",
-                                 get_default<double>(settings, "knee")));
+        "knee0", root.get<double>(section + ".multiband_compressor.knee0",
+                                  get_default<double>(settings, "knee0")));
+
+    settings->set_string("detection0",
+                         root.get<std::string>(
+                             section + ".multiband_compressor.detection0",
+                             get_default<std::string>(settings, "detection0")));
+
+    settings->set_boolean(
+        "bypass0", root.get<bool>(section + ".multiband_compressor.bypass0",
+                                  get_default<bool>(settings, "bypass0")));
+
+    settings->set_boolean(
+        "solo0", root.get<bool>(section + ".multiband_compressor.solo0",
+                                get_default<bool>(settings, "solo0")));
+
+    // low band
 
     settings->set_double(
-        "makeup", root.get<double>(section + ".multiband_compressor.makeup",
-                                   get_default<double>(settings, "makeup")));
+        "threshold1",
+        root.get<double>(section + ".multiband_compressor.threshold1",
+                         get_default<double>(settings, "threshold1")));
+
+    settings->set_double(
+        "ratio1", root.get<double>(section + ".multiband_compressor.ratio1",
+                                   get_default<double>(settings, "ratio1")));
+
+    settings->set_double(
+        "attack1", root.get<double>(section + ".multiband_compressor.attack1",
+                                    get_default<double>(settings, "attack1")));
+
+    settings->set_double(
+        "release1",
+        root.get<double>(section + ".multiband_compressor.release1",
+                         get_default<double>(settings, "release1")));
+
+    settings->set_double(
+        "makeup1", root.get<double>(section + ".multiband_compressor.makeup1",
+                                    get_default<double>(settings, "makeup1")));
+
+    settings->set_double(
+        "knee1", root.get<double>(section + ".multiband_compressor.knee1",
+                                  get_default<double>(settings, "knee1")));
+
+    settings->set_string("detection1",
+                         root.get<std::string>(
+                             section + ".multiband_compressor.detection1",
+                             get_default<std::string>(settings, "detection1")));
+
+    settings->set_boolean(
+        "bypass1", root.get<bool>(section + ".multiband_compressor.bypass1",
+                                  get_default<bool>(settings, "bypass1")));
+
+    settings->set_boolean(
+        "solo1", root.get<bool>(section + ".multiband_compressor.solo1",
+                                get_default<bool>(settings, "solo1")));
+
+    // mid band
+
+    settings->set_double(
+        "threshold2",
+        root.get<double>(section + ".multiband_compressor.threshold2",
+                         get_default<double>(settings, "threshold2")));
+
+    settings->set_double(
+        "ratio2", root.get<double>(section + ".multiband_compressor.ratio2",
+                                   get_default<double>(settings, "ratio2")));
+
+    settings->set_double(
+        "attack0", root.get<double>(section + ".multiband_compressor.attack0",
+                                    get_default<double>(settings, "attack0")));
+
+    settings->set_double(
+        "release2",
+        root.get<double>(section + ".multiband_compressor.release2",
+                         get_default<double>(settings, "release2")));
+
+    settings->set_double(
+        "makeup2", root.get<double>(section + ".multiband_compressor.makeup2",
+                                    get_default<double>(settings, "makeup2")));
+
+    settings->set_double(
+        "knee2", root.get<double>(section + ".multiband_compressor.knee2",
+                                  get_default<double>(settings, "knee2")));
+
+    settings->set_string("detection2",
+                         root.get<std::string>(
+                             section + ".multiband_compressor.detection2",
+                             get_default<std::string>(settings, "detection2")));
+
+    settings->set_boolean(
+        "bypass2", root.get<bool>(section + ".multiband_compressor.bypass2",
+                                  get_default<bool>(settings, "bypass2")));
+
+    settings->set_boolean(
+        "solo2", root.get<bool>(section + ".multiband_compressor.solo2",
+                                get_default<bool>(settings, "solo2")));
+
+    // high band
+
+    settings->set_double(
+        "threshold3",
+        root.get<double>(section + ".multiband_compressor.threshold3",
+                         get_default<double>(settings, "threshold3")));
+
+    settings->set_double(
+        "ratio3", root.get<double>(section + ".multiband_compressor.ratio3",
+                                   get_default<double>(settings, "ratio3")));
+
+    settings->set_double(
+        "attack3", root.get<double>(section + ".multiband_compressor.attack3",
+                                    get_default<double>(settings, "attack3")));
+
+    settings->set_double(
+        "release3",
+        root.get<double>(section + ".multiband_compressor.release3",
+                         get_default<double>(settings, "release3")));
+
+    settings->set_double(
+        "makeup3", root.get<double>(section + ".multiband_compressor.makeup3",
+                                    get_default<double>(settings, "makeup3")));
+
+    settings->set_double(
+        "knee3", root.get<double>(section + ".multiband_compressor.knee3",
+                                  get_default<double>(settings, "knee3")));
+
+    settings->set_string("detection3",
+                         root.get<std::string>(
+                             section + ".multiband_compressor.detection3",
+                             get_default<std::string>(settings, "detection3")));
+
+    settings->set_boolean(
+        "bypass3", root.get<bool>(section + ".multiband_compressor.bypass3",
+                                  get_default<bool>(settings, "bypass3")));
+
+    settings->set_boolean(
+        "solo3", root.get<bool>(section + ".multiband_compressor.solo3",
+                                get_default<bool>(settings, "solo3")));
 }
 
 void MultibandCompressorPreset::write(boost::property_tree::ptree& root) {

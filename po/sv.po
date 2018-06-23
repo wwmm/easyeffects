@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-16 16:53-0300\n"
+"POT-Creation-Date: 2018-06-23 20:41-0300\n"
 "PO-Revision-Date: 2017-10-14 10:20+0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: \n"
@@ -17,947 +17,1056 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.4\n"
 
-#: data/application.glade:45
+#: data/ui/application.glade:45
 msgid "Name"
 msgstr "Namn"
 
-#: data/application.glade:58
+#: data/ui/application.glade:58
 #, fuzzy
 msgid "Create Preset"
 msgstr "Ta bort profil"
 
-#: data/application.glade:76
+#: data/ui/application.glade:76
 #, fuzzy
 msgid "Import Presets"
 msgstr "Öppna förinställning"
 
-#: data/application.glade:187 src/calibration_ui.cpp:43
-#: src/calibration_ui.cpp:168
+#: data/ui/application.glade:187 src/calibration_ui.cpp:48
+#: src/calibration_ui.cpp:175
 #, fuzzy
 msgid "Test Signals"
 msgstr "Testsignal"
 
-#: data/application.glade:230 data/compressor.glade:205 data/filter.glade:203
-#: data/reverb.glade:283 data/crossfeed.glade:47
+#: data/ui/application.glade:230 data/ui/compressor.glade:205
+#: data/ui/filter.glade:203 data/ui/equalizer.glade:280
+#: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
 msgid "Presets"
 msgstr "Profiler"
 
-#: data/application.glade:521
+#: data/ui/application.glade:521
 msgid "Start Service at Login"
 msgstr ""
 
-#: data/application.glade:546
+#: data/ui/application.glade:546
 #, fuzzy
 msgid "Enable All Applications"
 msgstr "Program"
 
-#: data/application.glade:571
+#: data/ui/application.glade:571
 msgid "Use Dark Theme"
 msgstr "Använd mörkt tema"
 
-#: data/application.glade:596
+#: data/ui/application.glade:596
 msgid "Settings"
 msgstr "Inställningar"
 
-#: data/application.glade:605 data/equalizer_band.glade:105
-#: data/equalizer_band.glade:120
+#: data/ui/application.glade:605 data/ui/equalizer_band.glade:105
+#: data/ui/equalizer_band.glade:120
 msgid "Reset"
 msgstr "Återställ"
 
-#: data/application.glade:620
+#: data/ui/application.glade:620
 msgid "General"
 msgstr "Allmänt"
 
-#: data/application.glade:638
+#: data/ui/application.glade:638
 msgid "Show"
 msgstr "Visa"
 
-#: data/application.glade:664
+#: data/ui/application.glade:664
 msgid "Points"
 msgstr "Punkter"
 
-#: data/application.glade:695
+#: data/ui/application.glade:695
 msgid "Use Custom Color"
 msgstr ""
 
-#: data/application.glade:720
+#: data/ui/application.glade:720
 #, fuzzy
 msgid "Spectrum Color"
 msgstr "Spektrum"
 
-#: data/application.glade:747
+#: data/ui/application.glade:747
 msgid "Height"
 msgstr ""
 
-#: data/application.glade:775
+#: data/ui/application.glade:775
 msgid "Spectrum"
 msgstr "Spektrum"
 
-#: data/application.glade:798
+#: data/ui/application.glade:798
 #, fuzzy
 msgid "Output Device"
 msgstr "Ingångs-begränsning"
 
-#: data/application.glade:808 data/application.glade:821
+#: data/ui/application.glade:808 data/ui/application.glade:821
 msgid "Use Default"
 msgstr ""
 
-#: data/application.glade:837
+#: data/ui/application.glade:837
 #, fuzzy
 msgid "Input Device"
 msgstr "Ingångs-begränsning"
 
-#: data/application.glade:907 data/application.glade:983
-#: data/app_info.glade:156
+#: data/ui/application.glade:907 data/ui/application.glade:983
+#: data/ui/app_info.glade:156
 #, fuzzy
 msgid "Buffer"
 msgstr "Latens"
 
-#: data/application.glade:920 data/application.glade:996
-#: data/app_info.glade:183
+#: data/ui/application.glade:920 data/ui/application.glade:996
+#: data/ui/app_info.glade:183
 msgid "Latency"
 msgstr "Latens"
 
-#: data/application.glade:1055
+#: data/ui/application.glade:1055
 #, fuzzy
 msgid "Output Effects"
 msgstr "Ingångs-begränsning"
 
-#: data/application.glade:1068
+#: data/ui/application.glade:1068
 #, fuzzy
 msgid "Input Effects"
 msgstr "PulseEffects"
 
-#: data/application.glade:1085
+#: data/ui/application.glade:1085
 #, fuzzy
 msgid "Advanced Settings"
 msgstr "Inställningar"
 
-#: data/application.glade:1095
+#: data/ui/application.glade:1095
 msgid "Pulseaudio"
 msgstr ""
 
-#: data/about.glade:11
+#: data/ui/about.glade:11
 msgid "Audio Effects for Pulseaudio Applications"
 msgstr "Ljudeffekter för PulseAudio applikationer"
 
-#: data/app_info.glade:48
+#: data/ui/app_info.glade:48
 msgid "Format"
 msgstr "Format"
 
-#: data/app_info.glade:75
+#: data/ui/app_info.glade:75
 msgid "Rate"
 msgstr "Takt"
 
-#: data/app_info.glade:102
+#: data/ui/app_info.glade:102
 msgid "Channels"
 msgstr "Kanaler"
 
-#: data/app_info.glade:129
+#: data/ui/app_info.glade:129
 msgid "Resampler"
 msgstr "Resampler"
 
-#: data/app_info.glade:210
+#: data/ui/app_info.glade:210
 msgid "State"
 msgstr ""
 
-#: data/limiter.glade:61 data/limiter.glade:412 data/webrtc.glade:377
+#: data/ui/limiter.glade:61 data/ui/limiter.glade:412 data/ui/webrtc.glade:377
 #, fuzzy
 msgid "Limiter"
 msgstr "Gränsvärde (dB)"
 
-#: data/limiter.glade:212
+#: data/ui/limiter.glade:212
 #, fuzzy
 msgid "Input Gain"
 msgstr "Ingångsförstärkning (dB)"
 
-#: data/limiter.glade:245
+#: data/ui/limiter.glade:245
 #, fuzzy
 msgid "Limit"
 msgstr "Gränsvärde (dB)"
 
-#: data/limiter.glade:300 data/compressor.glade:372 data/maximizer.glade:215
-#: data/gate.glade:302 data/expander.glade:370
+#: data/ui/limiter.glade:300 data/ui/compressor.glade:372
+#: data/ui/multiband_compressor.glade:534
+#: data/ui/multiband_compressor.glade:906
+#: data/ui/multiband_compressor.glade:1283
+#: data/ui/multiband_compressor.glade:1660 data/ui/maximizer.glade:215
+#: data/ui/gate.glade:302 data/ui/expander.glade:370
 #, fuzzy
 msgid "Release"
 msgstr "Release (s)"
 
-#: data/limiter.glade:313 data/expander.glade:512
+#: data/ui/limiter.glade:313 data/ui/expander.glade:512
 msgid "Lookahead"
 msgstr ""
 
-#: data/limiter.glade:348
+#: data/ui/limiter.glade:348
 msgid "Oversampling"
 msgstr ""
 
-#: data/limiter.glade:397
+#: data/ui/limiter.glade:397
 msgid "ASC"
 msgstr ""
 
-#: data/limiter.glade:425 data/webrtc.glade:141 data/webrtc.glade:273
-#: data/webrtc.glade:319 data/webrtc.glade:468
+#: data/ui/limiter.glade:425 data/ui/webrtc.glade:141 data/ui/webrtc.glade:273
+#: data/ui/webrtc.glade:319 data/ui/webrtc.glade:468
 #, fuzzy
 msgid "Enable"
 msgstr "Sinustabell"
 
-#: data/limiter.glade:451 data/calibration_mic.glade:29
+#: data/ui/limiter.glade:451 data/ui/calibration_mic.glade:29
 #, fuzzy
 msgid "Window"
 msgstr "Mellanrum (s)"
 
-#: data/limiter.glade:464
+#: data/ui/limiter.glade:464
 #, fuzzy
 msgid "Target"
 msgstr "Målvärde (dB)"
 
-#: data/limiter.glade:542 data/compressor.glade:406 data/maximizer.glade:128
-#: data/gate.glade:336 data/deesser.glade:463
+#: data/ui/limiter.glade:542 data/ui/compressor.glade:406
+#: data/ui/multiband_compressor.glade:568
+#: data/ui/multiband_compressor.glade:941
+#: data/ui/multiband_compressor.glade:1318
+#: data/ui/multiband_compressor.glade:1695 data/ui/maximizer.glade:128
+#: data/ui/gate.glade:336 data/ui/deesser.glade:463
 #, fuzzy
 msgid "Threshold"
 msgstr "Tröskelvärde (dB)"
 
-#: data/limiter.glade:577
+#: data/ui/limiter.glade:577
 #, fuzzy
 msgid "Tolerance"
 msgstr "Tolerans (dB)"
 
-#: data/limiter.glade:594
+#: data/ui/limiter.glade:594
 msgid "Auto Volume"
 msgstr "Automatisk volym"
 
-#: data/limiter.glade:623 data/compressor.glade:559 data/filter.glade:365
-#: data/equalizer.glade:279 data/reverb.glade:612 data/bass_enhancer.glade:482
-#: data/exciter.glade:484 data/stereo_enhancer.glade:590
-#: data/panorama.glade:168 data/crossfeed.glade:200 data/maximizer.glade:240
-#: data/delay.glade:409 data/gate.glade:488 data/deesser.glade:572
-#: data/pitch.glade:304 data/webrtc.glade:586 data/expander.glade:665
+#: data/ui/limiter.glade:623 data/ui/compressor.glade:559
+#: data/ui/multiband_compressor.glade:1953 data/ui/filter.glade:365
+#: data/ui/equalizer.glade:366 data/ui/reverb.glade:612
+#: data/ui/bass_enhancer.glade:482 data/ui/exciter.glade:484
+#: data/ui/stereo_enhancer.glade:590 data/ui/panorama.glade:168
+#: data/ui/crossfeed.glade:200 data/ui/maximizer.glade:240
+#: data/ui/delay.glade:409 data/ui/gate.glade:488 data/ui/deesser.glade:572
+#: data/ui/pitch.glade:304 data/ui/webrtc.glade:586 data/ui/expander.glade:665
 msgid "Input"
 msgstr "Ingång"
 
-#: data/limiter.glade:638 data/compressor.glade:574 data/filter.glade:380
-#: data/equalizer.glade:294 data/reverb.glade:627 data/bass_enhancer.glade:514
-#: data/exciter.glade:516 data/stereo_enhancer.glade:604
-#: data/panorama.glade:183 data/crossfeed.glade:215 data/maximizer.glade:255
-#: data/delay.glade:424 data/gate.glade:503 data/deesser.glade:587
-#: data/pitch.glade:319 data/webrtc.glade:601 data/expander.glade:680
+#: data/ui/limiter.glade:638 data/ui/compressor.glade:574
+#: data/ui/multiband_compressor.glade:752
+#: data/ui/multiband_compressor.glade:1128
+#: data/ui/multiband_compressor.glade:1505
+#: data/ui/multiband_compressor.glade:1882
+#: data/ui/multiband_compressor.glade:1968 data/ui/filter.glade:380
+#: data/ui/equalizer.glade:381 data/ui/reverb.glade:627
+#: data/ui/bass_enhancer.glade:514 data/ui/exciter.glade:516
+#: data/ui/stereo_enhancer.glade:604 data/ui/panorama.glade:183
+#: data/ui/crossfeed.glade:215 data/ui/maximizer.glade:255
+#: data/ui/delay.glade:424 data/ui/gate.glade:503 data/ui/deesser.glade:587
+#: data/ui/pitch.glade:319 data/ui/webrtc.glade:601 data/ui/expander.glade:680
 msgid "Output"
 msgstr "Utgång"
 
-#: data/limiter.glade:653
+#: data/ui/limiter.glade:653
 msgid "Attenuation"
 msgstr "Försvagning"
 
-#: data/compressor.glade:31 data/webrtc.glade:454
+#: data/ui/compressor.glade:31 data/ui/webrtc.glade:454
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:52
 msgid "Compressor"
 msgstr "Kompressor"
 
-#: data/compressor.glade:122
+#: data/ui/compressor.glade:122
 msgid "Vocal Leveller 1"
 msgstr ""
 
-#: data/compressor.glade:134
+#: data/ui/compressor.glade:134
 msgid "Vocal Leveller 2"
 msgstr ""
 
-#: data/compressor.glade:146 data/filter.glade:158 data/reverb.glade:234
-#: data/crossfeed.glade:72
+#: data/ui/compressor.glade:146 data/ui/filter.glade:158
+#: data/ui/reverb.glade:234 data/ui/crossfeed.glade:72
 msgid "Default"
 msgstr ""
 
-#: data/compressor.glade:235 data/gate.glade:166 data/deesser.glade:192
+#: data/ui/compressor.glade:235 data/ui/gate.glade:166
+#: data/ui/deesser.glade:192
 #, fuzzy
 msgid "Detection"
 msgstr "Försvagning"
 
-#: data/compressor.glade:249 data/gate.glade:180
+#: data/ui/compressor.glade:249 data/ui/gate.glade:180
 #, fuzzy
 msgid "Stereo Link"
 msgstr "Ljudförstärkare"
 
-#: data/compressor.glade:263
+#: data/ui/compressor.glade:263
 msgid "Mix"
 msgstr ""
 
-#: data/compressor.glade:293 data/gate.glade:223 data/deesser.glade:220
-#: data/expander.glade:585
+#: data/ui/compressor.glade:293 data/ui/multiband_compressor.glade:473
+#: data/ui/multiband_compressor.glade:844
+#: data/ui/multiband_compressor.glade:1221
+#: data/ui/multiband_compressor.glade:1598 data/ui/gate.glade:223
+#: data/ui/deesser.glade:220 data/ui/expander.glade:585
 msgid "RMS"
 msgstr ""
 
-#: data/compressor.glade:294 data/equalizer_band.glade:152 data/gate.glade:224
-#: data/deesser.glade:221 data/deesser.glade:331 data/expander.glade:584
+#: data/ui/compressor.glade:294 data/ui/multiband_compressor.glade:474
+#: data/ui/multiband_compressor.glade:845
+#: data/ui/multiband_compressor.glade:1222
+#: data/ui/multiband_compressor.glade:1599 data/ui/equalizer_band.glade:152
+#: data/ui/gate.glade:224 data/ui/deesser.glade:221 data/ui/deesser.glade:331
+#: data/ui/expander.glade:584
 msgid "Peak"
 msgstr "Peak"
 
-#: data/compressor.glade:309 data/gate.glade:239
+#: data/ui/compressor.glade:309 data/ui/gate.glade:239
 msgid "Average"
 msgstr ""
 
-#: data/compressor.glade:310 data/gate.glade:240
+#: data/ui/compressor.glade:310 data/ui/gate.glade:240
 msgid "Maximum"
 msgstr ""
 
-#: data/compressor.glade:338 data/gate.glade:268 data/expander.glade:356
+#: data/ui/compressor.glade:338 data/ui/multiband_compressor.glade:500
+#: data/ui/multiband_compressor.glade:871
+#: data/ui/multiband_compressor.glade:1248
+#: data/ui/multiband_compressor.glade:1625 data/ui/gate.glade:268
+#: data/ui/expander.glade:356
 #, fuzzy
 msgid "Attack"
 msgstr "Attack (ms)"
 
-#: data/compressor.glade:439 data/gate.glade:369 data/deesser.glade:496
-#: data/expander.glade:330
+#: data/ui/compressor.glade:439 data/ui/multiband_compressor.glade:601
+#: data/ui/multiband_compressor.glade:975
+#: data/ui/multiband_compressor.glade:1352
+#: data/ui/multiband_compressor.glade:1729 data/ui/gate.glade:369
+#: data/ui/deesser.glade:496 data/ui/expander.glade:330
 #, fuzzy
 msgid "Ratio"
 msgstr "Förhållande (n:1)"
 
-#: data/compressor.glade:471 data/gate.glade:400 data/expander.glade:343
+#: data/ui/compressor.glade:471 data/ui/multiband_compressor.glade:633
+#: data/ui/multiband_compressor.glade:1008
+#: data/ui/multiband_compressor.glade:1385
+#: data/ui/multiband_compressor.glade:1762 data/ui/gate.glade:400
+#: data/ui/expander.glade:343
 #, fuzzy
 msgid "Knee"
 msgstr "Knee-värde (dB)"
 
-#: data/compressor.glade:505 data/gate.glade:434 data/deesser.glade:527
-#: data/expander.glade:384
+#: data/ui/compressor.glade:505 data/ui/multiband_compressor.glade:667
+#: data/ui/multiband_compressor.glade:1043
+#: data/ui/multiband_compressor.glade:1420
+#: data/ui/multiband_compressor.glade:1797 data/ui/gate.glade:434
+#: data/ui/deesser.glade:527 data/ui/expander.glade:384
 #, fuzzy
 msgid "Makeup"
 msgstr "Makeup (dB)"
 
-#: data/compressor.glade:739 data/maximizer.glade:270 data/gate.glade:668
-#: data/deesser.glade:752
+#: data/ui/compressor.glade:739 data/ui/maximizer.glade:270
+#: data/ui/gate.glade:668 data/ui/deesser.glade:752
 #, fuzzy
 msgid "Reduction"
 msgstr "Förstärkningsreducering"
 
-#: data/filter.glade:31
+#: data/ui/multiband_compressor.glade:70
+#, fuzzy
+msgid "Multiband Compressor"
+msgstr "Kompressor"
+
+#: data/ui/multiband_compressor.glade:285 data/ui/deesser.glade:206
+#: data/ui/webrtc.glade:338 data/ui/expander.glade:415
+#: data/ui/expander.glade:570
+msgid "Mode"
+msgstr ""
+
+#: data/ui/multiband_compressor.glade:299
+msgid "LR4"
+msgstr ""
+
+#: data/ui/multiband_compressor.glade:300
+msgid "LR8"
+msgstr ""
+
+#: data/ui/multiband_compressor.glade:314
+msgid "Split 1/2"
+msgstr ""
+
+#: data/ui/multiband_compressor.glade:327
+msgid "Split 2/3"
+msgstr ""
+
+#: data/ui/multiband_compressor.glade:340
+msgid "Split 3/4"
+msgstr ""
+
+#: data/ui/multiband_compressor.glade:441
+#: data/ui/multiband_compressor.glade:812
+#: data/ui/multiband_compressor.glade:1189
+#: data/ui/multiband_compressor.glade:1566
+msgid "Bypass"
+msgstr ""
+
+#: data/ui/multiband_compressor.glade:455
+#: data/ui/multiband_compressor.glade:826
+#: data/ui/multiband_compressor.glade:1203
+#: data/ui/multiband_compressor.glade:1580
+msgid "Solo"
+msgstr ""
+
+#: data/ui/multiband_compressor.glade:712
+#: data/ui/multiband_compressor.glade:1088
+#: data/ui/multiband_compressor.glade:1465
+#: data/ui/multiband_compressor.glade:1842
+#, fuzzy
+msgid "Compression"
+msgstr "Ingen komprimering"
+
+#: data/ui/multiband_compressor.glade:795
+#, fuzzy
+msgid "Sub Band"
+msgstr "Ljudstyrka (dB) (in)"
+
+#: data/ui/multiband_compressor.glade:1171
+#, fuzzy
+msgid "Low Band"
+msgstr "Lågpass"
+
+#: data/ui/multiband_compressor.glade:1548
+#, fuzzy
+msgid "Mid Band"
+msgstr "Ingångsförstärkning (dB)"
+
+#: data/ui/multiband_compressor.glade:1925
+#, fuzzy
+msgid "High Band"
+msgstr "Högpass"
+
+#: data/ui/filter.glade:31
 #, fuzzy
 msgid "Filter"
 msgstr "Filter typ"
 
-#: data/filter.glade:122
+#: data/ui/filter.glade:122
 msgid "Muted"
 msgstr ""
 
-#: data/filter.glade:134 data/reverb.glade:208
+#: data/ui/filter.glade:134 data/ui/reverb.glade:208
 msgid "Disco"
 msgstr ""
 
-#: data/filter.glade:146
+#: data/ui/filter.glade:146
 msgid "Distant Headphones"
 msgstr ""
 
-#: data/filter.glade:219
+#: data/ui/filter.glade:219
 msgid "12dB/oct Lowpass"
 msgstr ""
 
-#: data/filter.glade:220
+#: data/ui/filter.glade:220
 msgid "24dB/oct Lowpass"
 msgstr ""
 
-#: data/filter.glade:221
+#: data/ui/filter.glade:221
 msgid "36dB/oct Lowpass"
 msgstr ""
 
-#: data/filter.glade:222
+#: data/ui/filter.glade:222
 msgid "12dB/oct Highpass"
 msgstr ""
 
-#: data/filter.glade:223
+#: data/ui/filter.glade:223
 msgid "24dB/oct Highpass"
 msgstr ""
 
-#: data/filter.glade:224
+#: data/ui/filter.glade:224
 msgid "36dB/oct Highpass"
 msgstr ""
 
-#: data/filter.glade:225
+#: data/ui/filter.glade:225
 msgid "6dB/oct Bandpass"
 msgstr ""
 
-#: data/filter.glade:226
+#: data/ui/filter.glade:226
 msgid "12dB/oct Bandpass"
 msgstr ""
 
-#: data/filter.glade:227
+#: data/ui/filter.glade:227
 msgid "18dB/oct Bandpass"
 msgstr ""
 
-#: data/filter.glade:228
+#: data/ui/filter.glade:228
 msgid "6dB/oct Bandreject"
 msgstr ""
 
-#: data/filter.glade:229
+#: data/ui/filter.glade:229
 msgid "12dB/oct Bandreject"
 msgstr ""
 
-#: data/filter.glade:230
+#: data/ui/filter.glade:230
 msgid "18dB/oct Bandreject"
 msgstr ""
 
-#: data/filter.glade:252 data/equalizer_band.glade:41
-#: data/calibration_signals.glade:32
+#: data/ui/filter.glade:252 data/ui/equalizer_band.glade:41
+#: data/ui/calibration_signals.glade:32
 #, fuzzy
 msgid "Frequency"
 msgstr "Frekvens (Hz)"
 
-#: data/filter.glade:286
+#: data/ui/filter.glade:286
 msgid "Resonance"
 msgstr ""
 
-#: data/filter.glade:321
+#: data/ui/filter.glade:321
 msgid "Inertia"
 msgstr ""
 
-#: data/equalizer.glade:24 data/com.github.wwmm.pulseeffects.appdata.xml.in:44
+#: data/ui/equalizer.glade:24
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
 msgid "Equalizer"
 msgstr "Utjämnare"
 
-#: data/equalizer.glade:103
+#: data/ui/equalizer.glade:109
 msgid "Flat Response"
 msgstr "Platt respons"
 
-#: data/equalizer.glade:119
+#: data/ui/equalizer.glade:125
 #, fuzzy
 msgid "Reset Equalizer"
 msgstr "Utjämnare"
 
-#: data/equalizer.glade:135
+#: data/ui/equalizer.glade:141
 msgid "Bands"
 msgstr ""
 
-#: data/equalizer.glade:162
+#: data/ui/equalizer.glade:168
 msgid "Calculate Frequencies"
 msgstr ""
 
-#: data/equalizer_band.glade:54
+#: data/ui/equalizer_band.glade:54
 msgid "Width"
 msgstr "Bredd"
 
-#: data/equalizer_band.glade:137
+#: data/ui/equalizer_band.glade:137
 msgid "Filter Type"
 msgstr "Filter typ"
 
-#: data/equalizer_band.glade:153
+#: data/ui/equalizer_band.glade:153
 msgid "Low Shelf"
 msgstr "Low Shelf"
 
-#: data/equalizer_band.glade:154
+#: data/ui/equalizer_band.glade:154
 msgid "High Shelf"
 msgstr "High Shelf"
 
-#: data/equalizer_band.glade:169 data/equalizer_band.glade:182
+#: data/ui/equalizer_band.glade:169 data/ui/equalizer_band.glade:182
 msgid "Q"
 msgstr "Q"
 
-#: data/reverb.glade:64
+#: data/ui/reverb.glade:64
 msgid "Reverberation"
 msgstr "Efterljud (eko)"
 
-#: data/reverb.glade:156
+#: data/ui/reverb.glade:156
 #, fuzzy
 msgid "Ambience"
 msgstr "Tystnad"
 
-#: data/reverb.glade:169
+#: data/ui/reverb.glade:169
 msgid "Empty Walls"
 msgstr ""
 
-#: data/reverb.glade:182
+#: data/ui/reverb.glade:182
 #, fuzzy
 msgid "Room"
 msgstr "Rumsstorlek"
 
-#: data/reverb.glade:195
+#: data/ui/reverb.glade:195
 msgid "Large Empty Hall"
 msgstr ""
 
-#: data/reverb.glade:221
+#: data/ui/reverb.glade:221
 msgid "Large Occupied Hall"
 msgstr ""
 
-#: data/reverb.glade:306
+#: data/ui/reverb.glade:306
 #, fuzzy
 msgid "Pre Delay"
 msgstr "Release (ms)"
 
-#: data/reverb.glade:338
+#: data/ui/reverb.glade:338
 msgid "Decay Time"
 msgstr ""
 
-#: data/reverb.glade:371 data/bass_enhancer.glade:245 data/exciter.glade:248
+#: data/ui/reverb.glade:371 data/ui/bass_enhancer.glade:245
+#: data/ui/exciter.glade:248
 msgid "Amount"
 msgstr ""
 
-#: data/reverb.glade:403
+#: data/ui/reverb.glade:403
 msgid "Dry"
 msgstr ""
 
-#: data/reverb.glade:435
+#: data/ui/reverb.glade:435
 msgid "Bass Cut"
 msgstr ""
 
-#: data/reverb.glade:448
+#: data/ui/reverb.glade:448
 msgid "Treble Cut"
 msgstr ""
 
-#: data/reverb.glade:498
+#: data/ui/reverb.glade:498
 msgid "High Frequency Damping"
 msgstr ""
 
-#: data/reverb.glade:531
+#: data/ui/reverb.glade:531
 msgid "Diffusion"
 msgstr ""
 
-#: data/reverb.glade:564
+#: data/ui/reverb.glade:564
 msgid "Room Size"
 msgstr "Rumsstorlek"
 
-#: data/reverb.glade:580
+#: data/ui/reverb.glade:580
 #, fuzzy
 msgid "Small"
 msgstr "Litet rum"
 
-#: data/reverb.glade:581
+#: data/ui/reverb.glade:581
 msgid "Medium"
 msgstr ""
 
-#: data/reverb.glade:582
+#: data/ui/reverb.glade:582
 #, fuzzy
 msgid "Large"
 msgstr "Målvärde (dB)"
 
-#: data/reverb.glade:583
+#: data/ui/reverb.glade:583
 msgid "Tunnel"
 msgstr ""
 
-#: data/reverb.glade:584
+#: data/ui/reverb.glade:584
 msgid "Large/smooth"
 msgstr ""
 
-#: data/reverb.glade:585
+#: data/ui/reverb.glade:585
 msgid "Experimental"
 msgstr ""
 
-#: data/bass_enhancer.glade:50
+#: data/ui/bass_enhancer.glade:50
 #, fuzzy
 msgid "Bass Enhancer"
 msgstr "Ljudförstärkare"
 
-#: data/bass_enhancer.glade:148 data/exciter.glade:148 data/deesser.glade:165
-#: data/expander.glade:542
+#: data/ui/bass_enhancer.glade:148 data/ui/exciter.glade:148
+#: data/ui/deesser.glade:165 data/ui/expander.glade:542
 msgid "Listen"
 msgstr ""
 
-#: data/bass_enhancer.glade:189 data/exciter.glade:190
+#: data/ui/bass_enhancer.glade:189 data/ui/exciter.glade:190
 msgid "3rd"
 msgstr ""
 
-#: data/bass_enhancer.glade:201 data/exciter.glade:202
+#: data/ui/bass_enhancer.glade:201 data/ui/exciter.glade:202
 msgid "2nd"
 msgstr ""
 
-#: data/bass_enhancer.glade:213 data/exciter.glade:214
+#: data/ui/bass_enhancer.glade:213 data/ui/exciter.glade:214
 msgid "Blend Harmonics"
 msgstr ""
 
-#: data/bass_enhancer.glade:257 data/bass_enhancer.glade:389
-#: data/exciter.glade:261 data/exciter.glade:391
+#: data/ui/bass_enhancer.glade:257 data/ui/bass_enhancer.glade:389
+#: data/ui/exciter.glade:261 data/ui/exciter.glade:391
 msgid "Harmonics"
 msgstr ""
 
-#: data/bass_enhancer.glade:269 data/exciter.glade:274
+#: data/ui/bass_enhancer.glade:269 data/ui/exciter.glade:274
 msgid "Scope"
 msgstr ""
 
-#: data/bass_enhancer.glade:358
+#: data/ui/bass_enhancer.glade:358
 msgid "Floor"
 msgstr ""
 
-#: data/exciter.glade:50
+#: data/ui/exciter.glade:50
 msgid "Exciter"
 msgstr ""
 
-#: data/exciter.glade:360 data/maximizer.glade:161
+#: data/ui/exciter.glade:360 data/ui/maximizer.glade:161
 #, fuzzy
 msgid "Ceiling"
 msgstr "Gränsvärde (dB)"
 
-#: data/stereo_enhancer.glade:24
+#: data/ui/stereo_enhancer.glade:24
 #, fuzzy
 msgid "Stereo Enhancer"
 msgstr "Ljudförstärkare"
 
-#: data/stereo_enhancer.glade:192 data/stereo_enhancer.glade:343
+#: data/ui/stereo_enhancer.glade:192 data/ui/stereo_enhancer.glade:343
 #, fuzzy
 msgid "Balance"
 msgstr "Ljudförstärkare"
 
-#: data/stereo_enhancer.glade:227 data/stereo_enhancer.glade:378
-#: data/delay.glade:34 data/delay.glade:330 data/delay.glade:346
+#: data/ui/stereo_enhancer.glade:227 data/ui/stereo_enhancer.glade:378
+#: data/ui/delay.glade:34 data/ui/delay.glade:330 data/ui/delay.glade:346
 #, fuzzy
 msgid "Delay"
 msgstr "Release (ms)"
 
-#: data/stereo_enhancer.glade:261 data/stereo_enhancer.glade:412
-#: data/deesser.glade:298
+#: data/ui/stereo_enhancer.glade:261 data/ui/stereo_enhancer.glade:412
+#: data/ui/deesser.glade:298
 #, fuzzy
 msgid "Gain"
 msgstr "Ingångsförstärkning (dB)"
 
-#: data/stereo_enhancer.glade:270 data/stereo_enhancer.glade:421
+#: data/ui/stereo_enhancer.glade:270 data/ui/stereo_enhancer.glade:421
 msgid "Invert Phase"
 msgstr ""
 
-#: data/stereo_enhancer.glade:289 data/stereo_enhancer.glade:457
-#: data/delay.glade:260 data/expander.glade:617
+#: data/ui/stereo_enhancer.glade:289 data/ui/stereo_enhancer.glade:457
+#: data/ui/delay.glade:260 data/ui/expander.glade:617
 msgid "Left"
 msgstr ""
 
-#: data/stereo_enhancer.glade:301
+#: data/ui/stereo_enhancer.glade:301
 msgid "Invert Middle Phase"
 msgstr ""
 
-#: data/stereo_enhancer.glade:439 data/stereo_enhancer.glade:458
-#: data/delay.glade:276 data/expander.glade:618
+#: data/ui/stereo_enhancer.glade:439 data/ui/stereo_enhancer.glade:458
+#: data/ui/delay.glade:276 data/ui/expander.glade:618
 msgid "Right"
 msgstr ""
 
-#: data/stereo_enhancer.glade:459
+#: data/ui/stereo_enhancer.glade:459
 msgid "Mid (L + R)"
 msgstr ""
 
-#: data/stereo_enhancer.glade:460
+#: data/ui/stereo_enhancer.glade:460
 msgid "Side (L - R)"
 msgstr ""
 
-#: data/stereo_enhancer.glade:461
+#: data/ui/stereo_enhancer.glade:461
 msgid "Mute"
 msgstr ""
 
-#: data/stereo_enhancer.glade:477
+#: data/ui/stereo_enhancer.glade:477
 msgid "Middle Source"
 msgstr ""
 
-#: data/stereo_enhancer.glade:516
+#: data/ui/stereo_enhancer.glade:516
 #, fuzzy
 msgid "Side Gain"
 msgstr "Ingångsförstärkning (dB)"
 
-#: data/panorama.glade:24
+#: data/ui/panorama.glade:24
 msgid "Panorama"
 msgstr "Panorama"
 
-#: data/panorama.glade:116
+#: data/ui/panorama.glade:116
 msgid "L"
 msgstr "V"
 
-#: data/panorama.glade:128
+#: data/ui/panorama.glade:128
 msgid "R"
 msgstr "H"
 
-#: data/crossfeed.glade:59
+#: data/ui/crossfeed.glade:59
 msgid "Jmeier"
 msgstr ""
 
-#: data/crossfeed.glade:85
+#: data/ui/crossfeed.glade:85
 msgid "Cmoy"
 msgstr ""
 
-#: data/crossfeed.glade:121
+#: data/ui/crossfeed.glade:121
 #, fuzzy
 msgid "Cutoff"
 msgstr "Cut-off (Hz)"
 
-#: data/crossfeed.glade:154
+#: data/ui/crossfeed.glade:154
 #, fuzzy
 msgid "Feed"
 msgstr "Knee-värde (dB)"
 
-#: data/crossfeed.glade:390
+#: data/ui/crossfeed.glade:390
 msgid "Crossfeed"
 msgstr ""
 
-#: data/maximizer.glade:29
+#: data/ui/maximizer.glade:29
 msgid "Maximizer"
 msgstr ""
 
-#: data/delay.glade:139 data/delay.glade:178
+#: data/ui/delay.glade:139 data/ui/delay.glade:178
 #, fuzzy
 msgid "Meters"
 msgstr "Filter typ"
 
-#: data/delay.glade:152 data/delay.glade:165
+#: data/ui/delay.glade:152 data/ui/delay.glade:165
 msgid "Centimeters"
 msgstr ""
 
-#: data/delay.glade:315
+#: data/ui/delay.glade:315
 msgid "Temperature"
 msgstr ""
 
-#: data/gate.glade:31
+#: data/ui/gate.glade:31
 msgid "Gate"
 msgstr ""
 
-#: data/gate.glade:194
+#: data/ui/gate.glade:194
 msgid "Gain Reduction"
 msgstr "Förstärkningsreducering"
 
-#: data/deesser.glade:61
+#: data/ui/deesser.glade:61
 msgid "Deesser"
 msgstr ""
 
-#: data/deesser.glade:206 data/webrtc.glade:338 data/expander.glade:415
-#: data/expander.glade:570
-msgid "Mode"
-msgstr ""
-
-#: data/deesser.glade:236
+#: data/ui/deesser.glade:236
 msgid "Wide"
 msgstr ""
 
-#: data/deesser.glade:237 data/deesser.glade:265
+#: data/ui/deesser.glade:237 data/ui/deesser.glade:265
 msgid "Split"
 msgstr ""
 
-#: data/deesser.glade:384
+#: data/ui/deesser.glade:384
 msgid "Level"
 msgstr "Nivå"
 
-#: data/deesser.glade:399
+#: data/ui/deesser.glade:399
 #, fuzzy
 msgid "Peak Q"
 msgstr "Peak"
 
-#: data/deesser.glade:431
+#: data/ui/deesser.glade:431
 msgid "Laxity"
 msgstr ""
 
-#: data/deesser.glade:765
+#: data/ui/deesser.glade:765
 #, fuzzy
 msgid "Detected"
 msgstr "Försvagning"
 
-#: data/pitch.glade:36
+#: data/ui/pitch.glade:36
 msgid "Pitch"
 msgstr ""
 
-#: data/pitch.glade:208
+#: data/ui/pitch.glade:208
 msgid "Cents"
 msgstr ""
 
-#: data/pitch.glade:221
+#: data/ui/pitch.glade:221
 msgid "Semitones"
 msgstr ""
 
-#: data/pitch.glade:234
+#: data/ui/pitch.glade:234
 msgid "Octaves"
 msgstr ""
 
-#: data/pitch.glade:247
+#: data/ui/pitch.glade:247
 msgid "Crispness"
 msgstr ""
 
-#: data/pitch.glade:256
+#: data/ui/pitch.glade:256
 msgid "Faster"
 msgstr ""
 
-#: data/pitch.glade:272
+#: data/ui/pitch.glade:272
 msgid "Preserve Formant"
 msgstr ""
 
-#: data/webrtc.glade:30
+#: data/ui/webrtc.glade:30
 msgid "Webrtc"
 msgstr ""
 
-#: data/webrtc.glade:162
+#: data/ui/webrtc.glade:162
 msgid "Extended Filter"
 msgstr ""
 
-#: data/webrtc.glade:175
+#: data/ui/webrtc.glade:175
 msgid "Delay Agnostic"
 msgstr ""
 
-#: data/webrtc.glade:187
+#: data/ui/webrtc.glade:187
 #, fuzzy
 msgid "High Pass Filter"
 msgstr "Högpass"
 
-#: data/webrtc.glade:215 data/webrtc.glade:264
+#: data/ui/webrtc.glade:215 data/ui/webrtc.glade:264
 #, fuzzy
 msgid "Suppresion Level"
 msgstr "Förstärkningsreducering"
 
-#: data/webrtc.glade:229 data/webrtc.glade:293 data/webrtc.glade:490
+#: data/ui/webrtc.glade:229 data/ui/webrtc.glade:293 data/ui/webrtc.glade:490
 msgid "Low"
 msgstr ""
 
-#: data/webrtc.glade:230 data/webrtc.glade:294 data/webrtc.glade:491
+#: data/ui/webrtc.glade:230 data/ui/webrtc.glade:294 data/ui/webrtc.glade:491
 msgid "Moderate"
 msgstr ""
 
-#: data/webrtc.glade:231 data/webrtc.glade:295 data/webrtc.glade:492
+#: data/ui/webrtc.glade:231 data/ui/webrtc.glade:295 data/ui/webrtc.glade:492
 #, fuzzy
 msgid "High"
 msgstr "Högpass"
 
-#: data/webrtc.glade:248
+#: data/ui/webrtc.glade:248
 #, fuzzy
 msgid "Echo Canceller"
 msgstr "Ljudförstärkare"
 
-#: data/webrtc.glade:296
+#: data/ui/webrtc.glade:296
 #, fuzzy
 msgid "Very High"
 msgstr "Högpass"
 
-#: data/webrtc.glade:307
+#: data/ui/webrtc.glade:307
 #, fuzzy
 msgid "Noise Suppressor"
 msgstr "Kompressor"
 
-#: data/webrtc.glade:352
+#: data/ui/webrtc.glade:352
 msgid "Adaptive Digital"
 msgstr ""
 
-#: data/webrtc.glade:353
+#: data/ui/webrtc.glade:353
 msgid "Fixed Digital"
 msgstr ""
 
-#: data/webrtc.glade:364
+#: data/ui/webrtc.glade:364
 msgid "Gain Controller"
 msgstr ""
 
-#: data/webrtc.glade:397
+#: data/ui/webrtc.glade:397
 #, fuzzy
 msgid "Target Level"
 msgstr "Målvärde (dB)"
 
-#: data/webrtc.glade:408
+#: data/ui/webrtc.glade:408
 msgid "Maximum Gain"
 msgstr ""
 
-#: data/webrtc.glade:489
+#: data/ui/webrtc.glade:489
 msgid "Very Low"
 msgstr ""
 
-#: data/webrtc.glade:506
+#: data/ui/webrtc.glade:506
 #, fuzzy
 msgid "Frame Size"
 msgstr "Rumsstorlek"
 
-#: data/webrtc.glade:537
+#: data/ui/webrtc.glade:537
 #, fuzzy
 msgid "Detection Likelihood"
 msgstr "Försvagning"
 
-#: data/webrtc.glade:547
+#: data/ui/webrtc.glade:547
 #, fuzzy
 msgid "Voice Detector"
 msgstr "Försvagning"
 
-#: data/calibration_signals.glade:64
+#: data/ui/calibration_signals.glade:64
 msgid "Volume"
 msgstr "Volym"
 
-#: data/calibration_signals.glade:108
+#: data/ui/calibration_signals.glade:108
 msgid "Sine"
 msgstr "Sinus"
 
-#: data/calibration_signals.glade:109
+#: data/ui/calibration_signals.glade:109
 msgid "Square"
 msgstr "Fyrkant"
 
-#: data/calibration_signals.glade:110
+#: data/ui/calibration_signals.glade:110
 msgid "Saw"
 msgstr "Sågtand"
 
-#: data/calibration_signals.glade:111
+#: data/ui/calibration_signals.glade:111
 msgid "Triangle"
 msgstr "Triangel"
 
-#: data/calibration_signals.glade:112
+#: data/ui/calibration_signals.glade:112
 #, fuzzy
 msgid "Silence"
 msgstr "Tystnad"
 
-#: data/calibration_signals.glade:113
+#: data/ui/calibration_signals.glade:113
 msgid "White Noise"
 msgstr "Vitt brus"
 
-#: data/calibration_signals.glade:114
+#: data/ui/calibration_signals.glade:114
 msgid "Pink Noise"
 msgstr "Skärt brus"
 
-#: data/calibration_signals.glade:115
+#: data/ui/calibration_signals.glade:115
 msgid "Sine Table"
 msgstr "Sinustabell"
 
-#: data/calibration_signals.glade:116
+#: data/ui/calibration_signals.glade:116
 msgid "Ticks"
 msgstr "Tickande"
 
-#: data/calibration_signals.glade:117
+#: data/ui/calibration_signals.glade:117
 msgid "Gaussian Noise"
 msgstr "Gaussiskt brus"
 
-#: data/calibration_signals.glade:118
+#: data/ui/calibration_signals.glade:118
 msgid "Red Noise"
 msgstr "Rött brus"
 
-#: data/calibration_signals.glade:119
+#: data/ui/calibration_signals.glade:119
 msgid "Blue Noise"
 msgstr "Blått brus"
 
-#: data/calibration_signals.glade:120
+#: data/ui/calibration_signals.glade:120
 msgid "Violet Noise"
 msgstr "Violett brus"
 
-#: data/calibration_mic.glade:70
+#: data/ui/calibration_mic.glade:70
 msgid "Measure Noise"
 msgstr "Mät brus"
 
-#: data/calibration_mic.glade:99
+#: data/ui/calibration_mic.glade:99
 msgid "Subtract Noise"
 msgstr "Ta bort brus"
 
-#: data/expander.glade:44 data/expander.glade:426
+#: data/ui/expander.glade:44 data/ui/expander.glade:426
 msgid "Expander"
 msgstr ""
 
-#: data/expander.glade:399
+#: data/ui/expander.glade:399
 msgid "Down"
 msgstr ""
 
-#: data/expander.glade:400
+#: data/ui/expander.glade:400
 msgid "Up"
 msgstr ""
 
-#: data/expander.glade:441
+#: data/ui/expander.glade:441
 msgid "Pre Amplifier"
 msgstr ""
 
-#: data/expander.glade:477
+#: data/ui/expander.glade:477
 msgid "Reactivity"
 msgstr ""
 
-#: data/expander.glade:586
+#: data/ui/expander.glade:586
 msgid "Low Pass"
 msgstr "Lågpass"
 
-#: data/expander.glade:587
+#: data/ui/expander.glade:587
 msgid "Uniform"
 msgstr ""
 
-#: data/expander.glade:601
+#: data/ui/expander.glade:601
 msgid "Source"
 msgstr ""
 
-#: data/expander.glade:615
+#: data/ui/expander.glade:615
 msgid "Middle"
 msgstr ""
 
-#: data/expander.glade:616
+#: data/ui/expander.glade:616
 #, fuzzy
 msgid "Side"
 msgstr "Ingångsförstärkning (dB)"
 
-#: data/expander.glade:636
+#: data/ui/expander.glade:636
 #, fuzzy
 msgid "Sidechain"
 msgstr "Ingångsförstärkning (dB)"
@@ -1070,7 +1179,7 @@ msgstr ""
 msgid "playing"
 msgstr ""
 
-#: src/calibration_ui.cpp:175
+#: src/calibration_ui.cpp:182
 #, fuzzy
 msgid "Calibration Microphone"
 msgstr "Kalibrering och mikrofon korrigering"
@@ -1115,9 +1224,6 @@ msgstr "Kalibrering och mikrofon korrigering"
 
 #~ msgid "Reset Quality"
 #~ msgstr "Återställ kvalitet"
-
-#~ msgid "High Pass"
-#~ msgstr "Högpass"
 
 #~ msgid "Poles"
 #~ msgstr "Poler"
@@ -1210,20 +1316,12 @@ msgstr "Kalibrering och mikrofon korrigering"
 #~ msgstr "Förstärkningsreducering"
 
 #, fuzzy
-#~ msgid "Sub [dB]"
-#~ msgstr "Ljudstyrka (dB) (in)"
-
-#, fuzzy
 #~ msgid "Low [dB]"
 #~ msgstr "Gränsvärde (dB)"
 
 #, fuzzy
 #~ msgid "High [dB]"
 #~ msgstr "Gränsvärde (dB)"
-
-#, fuzzy
-#~ msgid "Mid [dB]"
-#~ msgstr "Ingångsförstärkning (dB)"
 
 #, fuzzy
 #~ msgid "Input Gate"
@@ -1271,9 +1369,6 @@ msgstr "Kalibrering och mikrofon korrigering"
 
 #~ msgid "Equalizer - Output"
 #~ msgstr "Ljudutjämnare - Utgång"
-
-#~ msgid "No Compression"
-#~ msgstr "Ingen komprimering"
 
 #~ msgid "No Reverberation"
 #~ msgstr "Inget eko"

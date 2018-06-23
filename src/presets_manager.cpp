@@ -30,7 +30,8 @@ PresetsManager::PresetsManager()
       reverb(std::make_unique<ReverbPreset>()),
       stereo_enhancer(std::make_unique<StereoEnhancerPreset>()),
       webrtc(std::make_unique<WebrtcPreset>()),
-      expander(std::make_unique<ExpanderPreset>()) {
+      expander(std::make_unique<ExpanderPreset>()),
+      multiband_compressor(std::make_unique<MultibandCompressorPreset>()) {
     auto dir_exists = fs::is_directory(presets_dir);
 
     if (!dir_exists) {
@@ -246,6 +247,7 @@ void PresetsManager::save(const std::string& name) {
     stereo_enhancer->write(root);
     webrtc->write(root);
     expander->write(root);
+    multiband_compressor->write(root);
 
     auto output_file = presets_dir / fs::path{name + ".json"};
 
@@ -334,6 +336,7 @@ void PresetsManager::load(const std::string& name) {
     stereo_enhancer->read(root);
     webrtc->read(root);
     expander->read(root);
+    multiband_compressor->read(root);
 
     util::debug(log_tag + "loaded preset: " + input_file.string());
 }
