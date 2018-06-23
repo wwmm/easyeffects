@@ -87,6 +87,11 @@ MultibandCompressorUi::MultibandCompressorUi(
     builder->get_widget("compression3", compression3);
     builder->get_widget("compression3_label", compression3_label);
 
+    get_object(builder, "input_gain", input_gain);
+    get_object(builder, "output_gain", output_gain);
+    get_object(builder, "freq0", freq0);
+    get_object(builder, "freq1", freq1);
+    get_object(builder, "freq2", freq2);
     get_object(builder, "threshold0", threshold0);
     get_object(builder, "threshold1", threshold1);
     get_object(builder, "threshold2", threshold2);
@@ -118,6 +123,9 @@ MultibandCompressorUi::MultibandCompressorUi(
 
     settings->bind("installed", this, "sensitive", flag);
 
+    settings->bind("freq0", freq0.get(), "value", flag);
+    settings->bind("freq1", freq1.get(), "value", flag);
+    settings->bind("freq2", freq2.get(), "value", flag);
     settings->bind("threshold0", threshold0.get(), "value", flag);
     settings->bind("threshold1", threshold1.get(), "value", flag);
     settings->bind("threshold2", threshold2.get(), "value", flag);
