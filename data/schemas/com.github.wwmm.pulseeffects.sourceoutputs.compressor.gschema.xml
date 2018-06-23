@@ -21,11 +21,11 @@
             <default>0.0</default>
         </key>
         <key name="attack" type="d">
-            <range min="0.1" max="2000"/>
+            <range min="0.01" max="2000"/>
             <default>20.0</default>
         </key>
         <key name="release" type="d">
-            <range min="0.1" max="2000"/>
+            <range min="0.01" max="2000"/>
             <default>250.0</default>
         </key>
         <key name="threshold" type="d">

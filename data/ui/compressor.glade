@@ -7,7 +7,7 @@
     <property name="upper">2000</property>
     <property name="value">20</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">10</property>
+    <property name="page_increment">0.01</property>
   </object>
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>
@@ -168,7 +168,7 @@
     <property name="upper">2000</property>
     <property name="value">250</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">10</property>
+    <property name="page_increment">0.01</property>
   </object>
   <object class="GtkAdjustment" id="threshold">
     <property name="lower">-60</property>

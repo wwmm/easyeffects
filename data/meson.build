@@ -6,6 +6,7 @@ install_data([
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.limiter.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.panorama.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.compressor.gschema.xml',
+  'schemas/com.github.wwmm.pulseeffects.sinkinputs.multibandcompressor.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.reverb.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.filter.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.equalizer.gschema.xml',
