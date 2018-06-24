@@ -20,6 +20,7 @@ install_data([
   'schemas/com.github.wwmm.pulseeffects.sourceoutputs.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sourceoutputs.limiter.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sourceoutputs.compressor.gschema.xml',
+  'schemas/com.github.wwmm.pulseeffects.sourceoutputs.multibandcompressor.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sourceoutputs.reverb.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sourceoutputs.filter.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sourceoutputs.equalizer.gschema.xml',

@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+## [4.1.0]
+- Fixed multiband compressor schema not being installed.
 
 ## [4.0.9]
 ### Added
