@@ -196,6 +196,7 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="transition_duration">250</property>
+                <property name="transition_type">slide-right</property>
                 <child>
                   <object class="GtkGrid" id="limiter_controls">
                     <property name="visible">True</property>
