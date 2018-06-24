@@ -14,6 +14,7 @@ Audio effects for Pulseaudio applications
 - Limiter
 - Expander
 - Compressor
+- Multiband Compressor
 - Equalizer
 - Bass Enhancer
 - Exciter
@@ -30,6 +31,7 @@ Audio effects for Pulseaudio applications
 - Webrtc
 - Limiter
 - Compressor
+- Multiband Compressor
 - Equalizer
 - Reverberation
 - Pitch
