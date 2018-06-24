@@ -4,13 +4,14 @@
 ### Added
 - GStreamer 10 bands equalizer presets: rock, soft, pop, etc.
 - Input gain and output gain controls for the equalizer.
-- Removed a small memory leak(nothing critical).
+- Added Calf Multiband compressor
 
 ### Fixed
 - Compressor and gate plugins knee parameter was always at its default value.
  Fixed that.
+ - Removed a small memory leak(nothing critical).
 
-### General notes
+### Information for packagers
 - The limiter plugin in latest Calf Studio release (0.90) has a memory leak.
 I reported it to Calf developers and it was fixed. See
 https://github.com/calf-studio-gear/calf/issues/180. But as it may take sometime
