@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+
+## [4.0.9]
 ### Added
 - GStreamer 10 bands equalizer presets: rock, soft, pop, etc.
 - Input gain and output gain controls for the equalizer.
