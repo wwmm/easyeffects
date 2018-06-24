@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-    <schema id="com.github.wwmm.pulseeffects.sourceoutputs.gate" path="/com/github/wwmm/pulseeffects/sourceoutputs/gate/">
+    <schema id="com.github.wwmm.pulseeffects.sourceoutputs.compressor" path="/com/github/wwmm/pulseeffects/sourceoutputs/compressor/">
         <key name="state" type="b">
             <default>false</default>
         </key>
@@ -10,22 +10,22 @@
         <key name="post-messages" type="b">
             <default>false</default>
         </key>
-        <key name="detection" enum="com.github.wwmm.pulseeffects.gate.detection.enum">
+        <key name="detection" enum="com.github.wwmm.pulseeffects.compressor.detection.enum">
             <default>"RMS"</default>
         </key>
-        <key name="stereo-link" enum="com.github.wwmm.pulseeffects.gate.stereo.link.enum">
+        <key name="stereo-link" enum="com.github.wwmm.pulseeffects.compressor.stereo.link.enum">
             <default>"Average"</default>
         </key>
-        <key name="range" type="d">
-            <range min="-95.0" max="0"/>
-            <default>-24</default>
+        <key name="mix" type="d">
+            <range min="-24.0" max="0"/>
+            <default>0.0</default>
         </key>
         <key name="attack" type="d">
-            <range min="0.1" max="2000"/>
+            <range min="0.01" max="2000"/>
             <default>20.0</default>
         </key>
         <key name="release" type="d">
-            <range min="0.1" max="2000"/>
+            <range min="0.01" max="2000"/>
             <default>250.0</default>
         </key>
         <key name="threshold" type="d">

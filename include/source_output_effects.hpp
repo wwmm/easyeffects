@@ -7,6 +7,7 @@
 #include "filter.hpp"
 #include "gate.hpp"
 #include "limiter.hpp"
+#include "multiband_compressor.hpp"
 #include "pipeline_base.hpp"
 #include "pitch.hpp"
 #include "pulse_manager.hpp"
@@ -34,6 +35,7 @@ class SourceOutputEffects : public PipelineBase {
     std::unique_ptr<Deesser> deesser;
     std::unique_ptr<Pitch> pitch;
     std::unique_ptr<Webrtc> webrtc;
+    std::unique_ptr<MultibandCompressor> multiband_compressor;
 
     sigc::signal<void, std::array<double, 2>> compressor_input_level;
     sigc::signal<void, std::array<double, 2>> compressor_output_level;

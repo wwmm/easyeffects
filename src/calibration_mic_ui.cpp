@@ -1,10 +1,9 @@
 #include "calibration_mic_ui.hpp"
+#include "util.hpp"
 
 CalibrationMicUi::CalibrationMicUi(BaseObjectType* cobject,
-                                   const Glib::RefPtr<Gtk::Builder>& refBuilder)
-    : Gtk::Grid(cobject),
-      cm(std::make_unique<CalibrationMic>()),
-      builder(refBuilder) {
+                                   const Glib::RefPtr<Gtk::Builder>& builder)
+    : Gtk::Grid(cobject), cm(std::make_unique<CalibrationMic>()) {
     // loading glade widgets
 
     builder->get_widget("measure_noise", measure_noise);
@@ -28,15 +27,6 @@ CalibrationMicUi::CalibrationMicUi(BaseObjectType* cobject,
     time_window->set_value(2.0);
 }
 
-CalibrationMicUi::~CalibrationMicUi() {}
-
-std::shared_ptr<CalibrationMicUi> CalibrationMicUi::create() {
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/calibration_mic.glade");
-
-    CalibrationMicUi* window = nullptr;
-
-    builder->get_widget_derived("widgets_grid", window);
-
-    return std::shared_ptr<CalibrationMicUi>(window);
+CalibrationMicUi::~CalibrationMicUi() {
+    util::debug(log_tag + "destroyed");
 }

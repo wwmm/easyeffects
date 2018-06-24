@@ -1,6 +1,30 @@
 # Changelog
 
 ## [Unreleased]
+## [4.1.0]
+- Fixed multiband compressor schema not being installed.
+
+## [4.0.9]
+### Added
+- GStreamer 10 bands equalizer presets: rock, soft, pop, etc.
+- Input gain and output gain controls for the equalizer.
+- Added Calf Multiband compressor
+
+### Fixed
+- Compressor and gate plugins knee parameter was always at its default value.
+ Fixed that.
+ - Removed a small memory leak(nothing critical).
+
+### Information for packagers
+- The limiter plugin in latest Calf Studio release (0.90) has a memory leak.
+I reported it to Calf developers and it was fixed. See
+https://github.com/calf-studio-gear/calf/issues/180. But as it may take sometime
+till the next Calf is released I suggest that everybody using the limiter plugin
+in PulseEffects either install a Calf package built from git master or backport
+the bug fix (3 lines) to 0.90 somehow. For most users it is not a critical leak.
+But people that do not turn off their computers everyday should be concerned as
+the leak is triggered whenever PulseEffects alternates between the playing
+ and paused state.
 
 ## [4.0.8]
 ### Fixed

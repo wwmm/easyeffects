@@ -35,8 +35,8 @@ class CalibrationUi : public Gtk::Window {
     double mouse_intensity, mouse_freq, min_mag, max_mag;
     std::vector<float> spectrum_mag;
 
-    std::shared_ptr<CalibrationSignalsUi> calibration_signals_ui;
-    std::shared_ptr<CalibrationMicUi> calibration_mic_ui;
+    CalibrationSignalsUi* calibration_signals_ui;
+    CalibrationMicUi* calibration_mic_ui;
 
     void on_new_spectrum(const std::vector<float>& magnitudes);
 

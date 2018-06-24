@@ -47,7 +47,7 @@ EffectsBaseUi::~EffectsBaseUi() {
 
 void EffectsBaseUi::on_app_added(std::shared_ptr<AppInfo> app_info) {
     auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/app_info.glade");
+        "/com/github/wwmm/pulseeffects/ui/app_info.glade");
 
     AppInfoUi* appui = nullptr;
 

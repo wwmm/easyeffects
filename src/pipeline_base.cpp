@@ -236,6 +236,15 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
 PipelineBase::~PipelineBase() {
     gst_element_set_state(pipeline, GST_STATE_NULL);
 
+    // avoinding memory leak. If the spectrum is not in a bin we have to unref
+    // it
+
+    auto s = gst_bin_get_by_name(GST_BIN(spectrum_bin), "spectrum");
+
+    if (!s) {
+        gst_object_unref(spectrum);
+    }
+
     gst_object_unref(bus);
     gst_object_unref(pipeline);
     g_object_unref(settings);

@@ -12,18 +12,14 @@
 class CalibrationSignalsUi : public Gtk::Grid {
    public:
     CalibrationSignalsUi(BaseObjectType* cobject,
-                         const Glib::RefPtr<Gtk::Builder>& refBuilder);
+                         const Glib::RefPtr<Gtk::Builder>& builder);
 
     virtual ~CalibrationSignalsUi();
-
-    static std::shared_ptr<CalibrationSignalsUi> create();
 
     std::unique_ptr<CalibrationSignals> cs;
 
    private:
     std::string log_tag = "calibration_signals_ui: ";
-
-    Glib::RefPtr<Gtk::Builder> builder;
 
     Gtk::Switch* enable;
     Gtk::Scale* volume;

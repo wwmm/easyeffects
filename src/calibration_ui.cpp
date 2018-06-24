@@ -24,8 +24,13 @@ CalibrationUi::CalibrationUi(BaseObjectType* cobject,
         "visible-child",
         sigc::mem_fun(*this, &CalibrationUi::on_stack_visible_child_changed));
 
-    calibration_signals_ui = CalibrationSignalsUi::create();
-    calibration_mic_ui = CalibrationMicUi::create();
+    auto builder_signals = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/ui/calibration_signals.glade");
+    auto builder_mic = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/ui/calibration_mic.glade");
+
+    builder_signals->get_widget_derived("widgets_grid", calibration_signals_ui);
+    builder_mic->get_widget_derived("widgets_grid", calibration_mic_ui);
 
     stack->add(*calibration_signals_ui, "signals");
     stack->child_property_icon_name(*calibration_signals_ui)
@@ -43,11 +48,13 @@ CalibrationUi::CalibrationUi(BaseObjectType* cobject,
     headerbar->set_subtitle(_("Test Signals"));
 }
 
-CalibrationUi::~CalibrationUi() {}
+CalibrationUi::~CalibrationUi() {
+    util::debug(log_tag + "destroyed");
+}
 
 CalibrationUi* CalibrationUi::create() {
     auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/calibration.glade");
+        "/com/github/wwmm/pulseeffects/ui/calibration.glade");
 
     CalibrationUi* window = nullptr;
 

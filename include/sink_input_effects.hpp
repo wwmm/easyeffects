@@ -11,6 +11,7 @@
 #include "filter.hpp"
 #include "limiter.hpp"
 #include "maximizer.hpp"
+#include "multiband_compressor.hpp"
 #include "panorama.hpp"
 #include "pipeline_base.hpp"
 #include "pulse_manager.hpp"
@@ -42,6 +43,7 @@ class SinkInputEffects : public PipelineBase {
     std::unique_ptr<Maximizer> maximizer;
     std::unique_ptr<Delay> delay;
     std::unique_ptr<Expander> expander;
+    std::unique_ptr<MultibandCompressor> multiband_compressor;
 
     sigc::signal<void, std::array<double, 2>> compressor_input_level;
     sigc::signal<void, std::array<double, 2>> compressor_output_level;

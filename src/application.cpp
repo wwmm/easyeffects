@@ -121,7 +121,7 @@ void Application::on_activate() {
 void Application::create_appmenu() {
     add_action("about", [&]() {
         auto builder = Gtk::Builder::create_from_resource(
-            "/com/github/wwmm/pulseeffects/about.glade");
+            "/com/github/wwmm/pulseeffects/ui/about.glade");
 
         auto dialog = (Gtk::Dialog*)builder->get_object("about_dialog").get();
 

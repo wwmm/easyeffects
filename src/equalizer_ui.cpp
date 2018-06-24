@@ -1,5 +1,7 @@
 #include <gtkmm/comboboxtext.h>
 #include <gtkmm/label.h>
+#include <boost/property_tree/json_parser.hpp>
+#include <boost/property_tree/ptree.hpp>
 #include "equalizer_ui.hpp"
 
 namespace {
@@ -48,8 +50,13 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
     builder->get_widget("reset_eq", reset_eq);
     builder->get_widget("flat_response", flat_response);
     builder->get_widget("calculate_freqs", calculate_freqs);
+    builder->get_widget("presets_listbox", presets_listbox);
+    builder->get_widget("presets_menu_button", presets_menu_button);
+    builder->get_widget("presets_scrolled_window", presets_scrolled_window);
 
     get_object(builder, "nbands", nbands);
+    get_object(builder, "input_gain", input_gain);
+    get_object(builder, "output_gain", output_gain);
 
     nbands->signal_value_changed().connect(
         sigc::mem_fun(*this, &EqualizerUi::on_nbands_changed));
@@ -63,14 +70,27 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
     calculate_freqs->signal_clicked().connect(
         sigc::mem_fun(*this, &EqualizerUi::on_calculate_frequencies));
 
+    presets_menu_button->signal_clicked().connect(
+        sigc::mem_fun(*this, &EqualizerUi::on_presets_menu_button_clicked));
+
+    presets_listbox->set_sort_func(
+        sigc::mem_fun(*this, &EqualizerUi::on_listbox_sort));
+
+    presets_listbox->signal_row_activated().connect(
+        [&](auto row) { load_preset(row->get_name() + ".json"); });
+
     // gsettings bindings
 
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
     settings->bind("installed", this, "sensitive", flag);
     settings->bind("num-bands", nbands.get(), "value", flag);
+    settings->bind("input-gain", input_gain.get(), "value", flag);
+    settings->bind("output-gain", output_gain.get(), "value", flag);
 
     settings->set_boolean("post-messages", true);
+
+    populate_presets_listbox();
 }
 
 EqualizerUi::~EqualizerUi() {
@@ -102,7 +122,7 @@ void EqualizerUi::on_nbands_changed() {
 
     for (int n = 0; n < N; n++) {
         auto B = Gtk::Builder::create_from_resource(
-            "/com/github/wwmm/pulseeffects/equalizer_band.glade");
+            "/com/github/wwmm/pulseeffects/ui/equalizer_band.glade");
 
         Gtk::Grid* band_grid;
         Gtk::ComboBoxText* band_t;
@@ -222,6 +242,103 @@ void EqualizerUi::on_calculate_frequencies() {
 
         freq0 = freq1;
     }
+}
+
+void EqualizerUi::load_preset(const std::string& file_name) {
+    gsize dsize;
+    std::stringstream ss;
+    boost::property_tree::ptree root;
+
+    auto bytes = Gio::Resource::lookup_data_global(presets_path + file_name);
+
+    auto rdata = static_cast<const char*>(bytes->get_data(dsize));
+
+    auto file_contents = std::string(rdata);
+
+    // std::cout << file_contents << std::endl;
+
+    ss << file_contents;
+
+    boost::property_tree::read_json(ss, root);
+
+    int nbands = root.get<int>("equalizer.num-bands");
+
+    settings->set_int("num-bands", nbands);
+
+    settings->set_double("input-gain",
+                         root.get<double>("equalizer.input-gain"));
+
+    settings->set_double("output-gain",
+                         root.get<double>("equalizer.output-gain"));
+
+    for (int n = 0; n < nbands; n++) {
+        settings->set_double(
+            std::string("band" + std::to_string(n) + "-gain"),
+            root.get<double>("equalizer.band" + std::to_string(n) + ".gain"));
+
+        settings->set_double(
+            std::string("band" + std::to_string(n) + "-frequency"),
+            root.get<double>("equalizer.band" + std::to_string(n) +
+                             ".frequency"));
+
+        settings->set_double(
+            std::string("band" + std::to_string(n) + "-width"),
+            root.get<double>("equalizer.band" + std::to_string(n) + ".width"));
+
+        settings->set_string(
+            std::string("band" + std::to_string(n) + "-type"),
+            root.get<std::string>("equalizer.band" + std::to_string(n) +
+                                  ".type"));
+    }
+}
+
+int EqualizerUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) {
+    auto name1 = row1->get_name();
+    auto name2 = row2->get_name();
+
+    std::vector<std::string> names = {name1, name2};
+
+    std::sort(names.begin(), names.end());
+
+    if (name1 == names[0]) {
+        return -1;
+    } else if (name2 == names[0]) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+void EqualizerUi::populate_presets_listbox() {
+    auto children = presets_listbox->get_children();
+
+    for (auto c : children) {
+        presets_listbox->remove(*c);
+    }
+
+    auto names = Gio::Resource::enumerate_children_global(presets_path);
+
+    for (auto file_name : names) {
+        Gtk::ListBoxRow* row = Gtk::manage(new Gtk::ListBoxRow());
+        Gtk::Label* label = Gtk::manage(new Gtk::Label());
+
+        auto name = file_name.substr(0, file_name.find("."));
+
+        row->set_name(name);
+        label->set_text(name);
+        label->set_halign(Gtk::ALIGN_START);
+
+        row->add(*label);
+
+        presets_listbox->add(*row);
+        presets_listbox->show_all();
+    }
+}
+
+void EqualizerUi::on_presets_menu_button_clicked() {
+    int height = get_allocated_height();
+
+    presets_scrolled_window->set_max_content_height(height);
 }
 
 void EqualizerUi::reset() {

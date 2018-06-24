@@ -83,6 +83,12 @@
       </packing>
     </child>
   </object>
+  <object class="GtkAdjustment" id="input_gain">
+    <property name="lower">-20</property>
+    <property name="upper">20</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">0.01</property>
+  </object>
   <object class="GtkAdjustment" id="nbands">
     <property name="lower">1</property>
     <property name="upper">30</property>
@@ -173,6 +179,50 @@
       </object>
     </child>
   </object>
+  <object class="GtkAdjustment" id="output_gain">
+    <property name="lower">-20</property>
+    <property name="upper">20</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">0.01</property>
+  </object>
+  <object class="GtkPopover" id="presets_menu">
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkGrid">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin_left">6</property>
+        <property name="margin_right">6</property>
+        <property name="margin_top">6</property>
+        <property name="margin_bottom">6</property>
+        <child>
+          <object class="GtkScrolledWindow" id="presets_scrolled_window">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="propagate_natural_width">True</property>
+            <property name="propagate_natural_height">True</property>
+            <child>
+              <object class="GtkViewport">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkListBox" id="presets_listbox">
+                    <property name="name">listbox_presets</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
   <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -185,20 +235,56 @@
         <property name="vexpand">True</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkMenuButton" id="menu_button">
+          <object class="GtkGrid">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
+            <property name="can_focus">False</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
-            <property name="margin_bottom">12</property>
-            <property name="popover">menu</property>
+            <property name="margin_bottom">15</property>
+            <property name="column_spacing">6</property>
             <child>
-              <object class="GtkImage">
+              <object class="GtkMenuButton" id="menu_button">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">preferences-system-symbolic</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="popover">menu</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="icon_name">preferences-system-symbolic</property>
+                  </object>
+                </child>
               </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkMenuButton" id="presets_menu_button">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="popover">presets_menu</property>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="label" translatable="yes">Presets</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
             </child>
           </object>
           <packing>
@@ -276,6 +362,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
+                <property name="margin_bottom">3</property>
                 <property name="label" translatable="yes">Input</property>
               </object>
               <packing>
@@ -310,7 +397,7 @@
                 <property name="max_width_chars">3</property>
               </object>
               <packing>
-                <property name="left_attach">2</property>
+                <property name="left_attach">3</property>
                 <property name="top_attach">0</property>
                 <property name="height">2</property>
               </packing>
@@ -326,7 +413,7 @@
                 <property name="max_width_chars">3</property>
               </object>
               <packing>
-                <property name="left_attach">4</property>
+                <property name="left_attach">5</property>
                 <property name="top_attach">0</property>
                 <property name="height">2</property>
               </packing>
@@ -342,7 +429,7 @@
                 <property name="max_width_chars">3</property>
               </object>
               <packing>
-                <property name="left_attach">2</property>
+                <property name="left_attach">3</property>
                 <property name="top_attach">2</property>
                 <property name="height">2</property>
               </packing>
@@ -358,7 +445,7 @@
                 <property name="max_width_chars">3</property>
               </object>
               <packing>
-                <property name="left_attach">4</property>
+                <property name="left_attach">5</property>
                 <property name="top_attach">2</property>
                 <property name="height">2</property>
               </packing>
@@ -370,7 +457,7 @@
                 <property name="halign">center</property>
               </object>
               <packing>
-                <property name="left_attach">3</property>
+                <property name="left_attach">4</property>
                 <property name="top_attach">0</property>
                 <property name="height">4</property>
               </packing>
@@ -383,7 +470,7 @@
                 <property name="hexpand">True</property>
               </object>
               <packing>
-                <property name="left_attach">1</property>
+                <property name="left_attach">2</property>
                 <property name="top_attach">1</property>
               </packing>
             </child>
@@ -395,7 +482,7 @@
                 <property name="hexpand">True</property>
               </object>
               <packing>
-                <property name="left_attach">1</property>
+                <property name="left_attach">2</property>
                 <property name="top_attach">3</property>
               </packing>
             </child>
@@ -407,7 +494,7 @@
                 <property name="hexpand">True</property>
               </object>
               <packing>
-                <property name="left_attach">1</property>
+                <property name="left_attach">2</property>
                 <property name="top_attach">0</property>
               </packing>
             </child>
@@ -419,8 +506,42 @@
                 <property name="hexpand">True</property>
               </object>
               <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScale">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="valign">center</property>
+                <property name="hexpand">True</property>
+                <property name="adjustment">output_gain</property>
+                <property name="round_digits">2</property>
+                <property name="digits">2</property>
+                <property name="value_pos">right</property>
+              </object>
+              <packing>
                 <property name="left_attach">1</property>
                 <property name="top_attach">2</property>
+                <property name="height">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScale">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="valign">center</property>
+                <property name="hexpand">True</property>
+                <property name="adjustment">input_gain</property>
+                <property name="round_digits">2</property>
+                <property name="digits">2</property>
+                <property name="value_pos">right</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+                <property name="height">2</property>
               </packing>
             </child>
           </object>

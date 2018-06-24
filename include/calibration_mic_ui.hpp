@@ -12,18 +12,14 @@
 class CalibrationMicUi : public Gtk::Grid {
    public:
     CalibrationMicUi(BaseObjectType* cobject,
-                     const Glib::RefPtr<Gtk::Builder>& refBuilder);
+                     const Glib::RefPtr<Gtk::Builder>& builder);
 
     virtual ~CalibrationMicUi();
-
-    static std::shared_ptr<CalibrationMicUi> create();
 
     std::unique_ptr<CalibrationMic> cm;
 
    private:
     std::string log_tag = "calibration_mic_ui: ";
-
-    Glib::RefPtr<Gtk::Builder> builder;
 
     Gtk::Button* measure_noise;
     Gtk::ToggleButton* subtract_noise;
