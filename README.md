@@ -72,7 +72,8 @@ find more information about these in the
 
 [Flatpak](https://flatpak.org) packages support multiple distributions and are sandboxed.
 
-Stable releases are hosted on [Flathub](https://flathub.org):
+Stable releases are hosted on
+[Flathub](https://flathub.org/apps/details/com.github.wwmm.pulseeffects):
 
 ```
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
