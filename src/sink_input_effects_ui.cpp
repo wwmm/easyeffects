@@ -39,6 +39,8 @@ SinkInputEffectsUi::SinkInputEffectsUi(
         "/com/github/wwmm/pulseeffects/ui/expander.glade");
     auto b_multiband_compressor = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/ui/multiband_compressor.glade");
+    auto b_loudness = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/ui/loudness.glade");
 
     b_limiter->get_widget_derived(
         "widgets_grid", limiter_ui,
@@ -82,6 +84,9 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     b_multiband_compressor->get_widget_derived(
         "widgets_grid", multiband_compressor_ui,
         "com.github.wwmm.pulseeffects.sinkinputs.multibandcompressor");
+    b_loudness->get_widget_derived(
+        "widgets_grid", loudness_ui,
+        "com.github.wwmm.pulseeffects.sinkinputs.loudness");
 
     stack->add(*limiter_ui, limiter_ui->name);
     stack->add(*compressor_ui, compressor_ui->name);
@@ -97,6 +102,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     stack->add(*delay_ui, delay_ui->name);
     stack->add(*expander_ui, expander_ui->name);
     stack->add(*multiband_compressor_ui, multiband_compressor_ui->name);
+    stack->add(*loudness_ui, loudness_ui->name);
 
     // populate_listbox
 
@@ -114,6 +120,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     add_to_listbox(delay_ui);
     add_to_listbox(expander_ui);
     add_to_listbox(multiband_compressor_ui);
+    add_to_listbox(loudness_ui);
 
     level_meters_connections();
     up_down_connections();
@@ -266,6 +273,13 @@ void SinkInputEffectsUi::level_meters_connections() {
     connections.push_back(sie->multiband_compressor->compression3.connect(
         sigc::mem_fun(*multiband_compressor_ui,
                       &MultibandCompressorUi::on_new_compression3)));
+
+    // loudness level meters connections
+
+    connections.push_back(sie->loudness_input_level.connect(
+        sigc::mem_fun(*loudness_ui, &LoudnessUi::on_new_input_level_db)));
+    connections.push_back(sie->loudness_output_level.connect(
+        sigc::mem_fun(*loudness_ui, &LoudnessUi::on_new_output_level_db)));
 }
 
 void SinkInputEffectsUi::up_down_connections() {
@@ -375,6 +389,11 @@ void SinkInputEffectsUi::up_down_connections() {
     connections.push_back(
         multiband_compressor_ui->plugin_down->signal_clicked().connect(
             [=]() { on_down(multiband_compressor_ui); }));
+
+    connections.push_back(loudness_ui->plugin_up->signal_clicked().connect(
+        [=]() { on_up(loudness_ui); }));
+    connections.push_back(loudness_ui->plugin_down->signal_clicked().connect(
+        [=]() { on_down(loudness_ui); }));
 }
 
 void SinkInputEffectsUi::reset() {
@@ -394,4 +413,5 @@ void SinkInputEffectsUi::reset() {
     delay_ui->reset();
     expander_ui->reset();
     multiband_compressor_ui->reset();
+    loudness_ui->reset();
 }

@@ -42,6 +42,10 @@ void on_message_element(const GstBus* gst_bus,
         sie->delay_input_level.emit(sie->get_peak(message));
     } else if (src_name == std::string("delay_output_level")) {
         sie->delay_output_level.emit(sie->get_peak(message));
+    } else if (src_name == std::string("loudness_input_level")) {
+        sie->loudness_input_level.emit(sie->get_peak(message));
+    } else if (src_name == std::string("loudness_output_level")) {
+        sie->loudness_output_level.emit(sie->get_peak(message));
     }
 }
 
@@ -199,6 +203,8 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.expander");
     multiband_compressor = std::make_unique<MultibandCompressor>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.multibandcompressor");
+    loudness = std::make_unique<Loudness>(
+        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.loudness");
 
     plugins.insert(std::make_pair(limiter->name, limiter->plugin));
     plugins.insert(std::make_pair(compressor->name, compressor->plugin));
@@ -216,6 +222,7 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
     plugins.insert(std::make_pair(expander->name, expander->plugin));
     plugins.insert(std::make_pair(multiband_compressor->name,
                                   multiband_compressor->plugin));
+    plugins.insert(std::make_pair(loudness->name, loudness->plugin));
 
     add_plugins_to_pipeline();
 

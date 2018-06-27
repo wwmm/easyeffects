@@ -11,6 +11,7 @@
 #include "expander_ui.hpp"
 #include "filter_ui.hpp"
 #include "limiter_ui.hpp"
+#include "loudness_ui.hpp"
 #include "maximizer_ui.hpp"
 #include "multiband_compressor_ui.hpp"
 #include "panorama_ui.hpp"
@@ -49,6 +50,7 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
     DelayUi* delay_ui;
     ExpanderUi* expander_ui;
     MultibandCompressorUi* multiband_compressor_ui;
+    LoudnessUi* loudness_ui;
 
     void level_meters_connections();
     void up_down_connections();

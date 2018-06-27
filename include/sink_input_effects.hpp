@@ -10,6 +10,7 @@
 #include "expander.hpp"
 #include "filter.hpp"
 #include "limiter.hpp"
+#include "loudness.hpp"
 #include "maximizer.hpp"
 #include "multiband_compressor.hpp"
 #include "panorama.hpp"
@@ -44,6 +45,7 @@ class SinkInputEffects : public PipelineBase {
     std::unique_ptr<Delay> delay;
     std::unique_ptr<Expander> expander;
     std::unique_ptr<MultibandCompressor> multiband_compressor;
+    std::unique_ptr<Loudness> loudness;
 
     sigc::signal<void, std::array<double, 2>> compressor_input_level;
     sigc::signal<void, std::array<double, 2>> compressor_output_level;
@@ -61,6 +63,8 @@ class SinkInputEffects : public PipelineBase {
     sigc::signal<void, std::array<double, 2>> maximizer_output_level;
     sigc::signal<void, std::array<double, 2>> delay_input_level;
     sigc::signal<void, std::array<double, 2>> delay_output_level;
+    sigc::signal<void, std::array<double, 2>> loudness_input_level;
+    sigc::signal<void, std::array<double, 2>> loudness_output_level;
 
    private:
     GSettings* sie_settings;

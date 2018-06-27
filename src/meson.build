@@ -45,6 +45,8 @@ pulseeffects_sources = [
 	'panorama_ui.cpp',
 	'crossfeed.cpp',
 	'crossfeed_ui.cpp',
+	'loudness.cpp',
+	'loudness_ui.cpp',
 	'maximizer.cpp',
 	'maximizer_ui.cpp',
 	'gate.cpp',
