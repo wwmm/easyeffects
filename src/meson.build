@@ -74,6 +74,7 @@ pulseeffects_sources = [
 	'gate_preset.cpp',
 	'maximizer_preset.cpp',
 	'panorama_preset.cpp',
+	'loudness_preset.cpp',
 	'pitch_preset.cpp',
 	'reverb_preset.cpp',
 	'stereo_enhancer_preset.cpp',

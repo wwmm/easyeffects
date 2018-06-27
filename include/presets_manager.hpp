@@ -15,6 +15,7 @@
 #include "filter_preset.hpp"
 #include "gate_preset.hpp"
 #include "limiter_preset.hpp"
+#include "loudness_preset.hpp"
 #include "maximizer_preset.hpp"
 #include "multiband_compressor_preset.hpp"
 #include "panorama_preset.hpp"
@@ -60,6 +61,7 @@ class PresetsManager {
     std::unique_ptr<WebrtcPreset> webrtc;
     std::unique_ptr<ExpanderPreset> expander;
     std::unique_ptr<MultibandCompressorPreset> multiband_compressor;
+    std::unique_ptr<LoudnessPreset> loudness;
 
     template <typename T>
     T get_default(const Glib::RefPtr<Gio::Settings>& settings,

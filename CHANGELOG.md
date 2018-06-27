@@ -1,6 +1,9 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- Added loudness plugin from MDA.LV2
+
 ## [4.1.0]
 - Fixed multiband compressor schema not being installed.
 

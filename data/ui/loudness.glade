@@ -209,7 +209,6 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="width_chars">10</property>
-                <property name="text" translatable="yes">4,5</property>
                 <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                 <property name="secondary_icon_activatable">False</property>
                 <property name="input_purpose">number</property>

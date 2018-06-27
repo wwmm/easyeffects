@@ -16,6 +16,8 @@ data/ui/panorama.glade
 data/ui/crossfeed.glade
 data/ui/maximizer.glade
 data/ui/delay.glade
+data/ui/expander.glade
+data/ui/loudness.glade
 data/ui/gate.glade
 data/ui/deesser.glade
 data/ui/pitch.glade
@@ -24,7 +26,6 @@ data/ui/preset_row.glade
 data/ui/calibration.glade
 data/ui/calibration_signals.glade
 data/ui/calibration_mic.glade
-data/ui/expander.glade
 data/com.github.wwmm.pulseeffects.appdata.xml.in
 data/com.github.wwmm.pulseeffects.desktop.in
 src/application.cpp
