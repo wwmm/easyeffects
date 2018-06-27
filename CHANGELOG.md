@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+
+## [4.1.1]
 ### Added
 - Added loudness plugin from MDA.LV2
 
