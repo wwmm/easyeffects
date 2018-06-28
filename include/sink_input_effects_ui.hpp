@@ -9,6 +9,7 @@
 #include "equalizer_ui.hpp"
 #include "exciter_ui.hpp"
 #include "filter_ui.hpp"
+#include "gate_ui.hpp"
 #include "limiter_ui.hpp"
 #include "loudness_ui.hpp"
 #include "maximizer_ui.hpp"
@@ -49,6 +50,7 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
     DelayUi* delay_ui;
     MultibandCompressorUi* multiband_compressor_ui;
     LoudnessUi* loudness_ui;
+    GateUi* gate_ui;
 
     void level_meters_connections();
     void up_down_connections();

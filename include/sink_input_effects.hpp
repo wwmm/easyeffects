@@ -8,6 +8,7 @@
 #include "equalizer.hpp"
 #include "exciter.hpp"
 #include "filter.hpp"
+#include "gate.hpp"
 #include "limiter.hpp"
 #include "loudness.hpp"
 #include "maximizer.hpp"
@@ -44,6 +45,7 @@ class SinkInputEffects : public PipelineBase {
     std::unique_ptr<Delay> delay;
     std::unique_ptr<MultibandCompressor> multiband_compressor;
     std::unique_ptr<Loudness> loudness;
+    std::unique_ptr<Gate> gate;
 
     sigc::signal<void, std::array<double, 2>> compressor_input_level;
     sigc::signal<void, std::array<double, 2>> compressor_output_level;
@@ -63,6 +65,8 @@ class SinkInputEffects : public PipelineBase {
     sigc::signal<void, std::array<double, 2>> delay_output_level;
     sigc::signal<void, std::array<double, 2>> loudness_input_level;
     sigc::signal<void, std::array<double, 2>> loudness_output_level;
+    sigc::signal<void, std::array<double, 2>> gate_input_level;
+    sigc::signal<void, std::array<double, 2>> gate_output_level;
 
    private:
     GSettings* sie_settings;

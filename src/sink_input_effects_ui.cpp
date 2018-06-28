@@ -39,6 +39,8 @@ SinkInputEffectsUi::SinkInputEffectsUi(
         "/com/github/wwmm/pulseeffects/ui/multiband_compressor.glade");
     auto b_loudness = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/ui/loudness.glade");
+    auto b_gate = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/ui/gate.glade");
 
     b_limiter->get_widget_derived(
         "widgets_grid", limiter_ui,
@@ -82,6 +84,8 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     b_loudness->get_widget_derived(
         "widgets_grid", loudness_ui,
         "com.github.wwmm.pulseeffects.sinkinputs.loudness");
+    b_gate->get_widget_derived("widgets_grid", gate_ui,
+                               "com.github.wwmm.pulseeffects.sinkinputs.gate");
 
     stack->add(*limiter_ui, limiter_ui->name);
     stack->add(*compressor_ui, compressor_ui->name);
@@ -97,6 +101,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     stack->add(*delay_ui, delay_ui->name);
     stack->add(*multiband_compressor_ui, multiband_compressor_ui->name);
     stack->add(*loudness_ui, loudness_ui->name);
+    stack->add(*gate_ui, gate_ui->name);
 
     // populate_listbox
 
@@ -114,6 +119,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     add_to_listbox(delay_ui);
     add_to_listbox(multiband_compressor_ui);
     add_to_listbox(loudness_ui);
+    add_to_listbox(gate_ui);
 
     level_meters_connections();
     up_down_connections();
@@ -266,6 +272,15 @@ void SinkInputEffectsUi::level_meters_connections() {
         sigc::mem_fun(*loudness_ui, &LoudnessUi::on_new_input_level_db)));
     connections.push_back(sie->loudness_output_level.connect(
         sigc::mem_fun(*loudness_ui, &LoudnessUi::on_new_output_level_db)));
+
+    // gate level meters connections
+
+    connections.push_back(sie->gate_input_level.connect(
+        sigc::mem_fun(*gate_ui, &GateUi::on_new_input_level_db)));
+    connections.push_back(sie->gate_output_level.connect(
+        sigc::mem_fun(*gate_ui, &GateUi::on_new_output_level_db)));
+    connections.push_back(sie->gate->gating.connect(
+        sigc::mem_fun(*gate_ui, &GateUi::on_new_gating)));
 }
 
 void SinkInputEffectsUi::up_down_connections() {
@@ -375,6 +390,11 @@ void SinkInputEffectsUi::up_down_connections() {
         [=]() { on_up(loudness_ui); }));
     connections.push_back(loudness_ui->plugin_down->signal_clicked().connect(
         [=]() { on_down(loudness_ui); }));
+
+    connections.push_back(gate_ui->plugin_up->signal_clicked().connect(
+        [=]() { on_up(gate_ui); }));
+    connections.push_back(gate_ui->plugin_down->signal_clicked().connect(
+        [=]() { on_down(gate_ui); }));
 }
 
 void SinkInputEffectsUi::reset() {
@@ -394,4 +414,5 @@ void SinkInputEffectsUi::reset() {
     delay_ui->reset();
     multiband_compressor_ui->reset();
     loudness_ui->reset();
+    gate_ui->reset();
 }
