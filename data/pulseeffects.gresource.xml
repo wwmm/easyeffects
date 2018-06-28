@@ -6,7 +6,6 @@
     <file>ui/effects_base.glade</file>
     <file>ui/app_info.glade</file>
     <file>ui/limiter.glade</file>
-    <file>ui/expander.glade</file>
     <file>ui/compressor.glade</file>
     <file>ui/multiband_compressor.glade</file>
     <file>ui/filter.glade</file>

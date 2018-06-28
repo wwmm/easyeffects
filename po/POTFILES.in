@@ -16,7 +16,6 @@ data/ui/panorama.glade
 data/ui/crossfeed.glade
 data/ui/maximizer.glade
 data/ui/delay.glade
-data/ui/expander.glade
 data/ui/loudness.glade
 data/ui/gate.glade
 data/ui/deesser.glade

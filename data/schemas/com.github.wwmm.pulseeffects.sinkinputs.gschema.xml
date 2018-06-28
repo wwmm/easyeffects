@@ -3,7 +3,7 @@
     <schema id="com.github.wwmm.pulseeffects.sinkinputs" path="/com/github/wwmm/pulseeffects/sinkinputs/">
         <key name="plugins" type="as">
             <default>
-              ["limiter","filter","expander","compressor","multiband_compressor",
+              ["limiter","filter","compressor","multiband_compressor",
               "bass_enhancer","exciter","stereo_enhancer","reverb","equalizer",
               "panorama","crossfeed","delay","loudness","maximizer"]
             </default>

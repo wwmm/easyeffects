@@ -7,7 +7,6 @@
 #include "delay.hpp"
 #include "equalizer.hpp"
 #include "exciter.hpp"
-#include "expander.hpp"
 #include "filter.hpp"
 #include "limiter.hpp"
 #include "loudness.hpp"
@@ -43,7 +42,6 @@ class SinkInputEffects : public PipelineBase {
     std::unique_ptr<Crossfeed> crossfeed;
     std::unique_ptr<Maximizer> maximizer;
     std::unique_ptr<Delay> delay;
-    std::unique_ptr<Expander> expander;
     std::unique_ptr<MultibandCompressor> multiband_compressor;
     std::unique_ptr<Loudness> loudness;
 

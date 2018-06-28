@@ -199,8 +199,6 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.maximizer");
     delay = std::make_unique<Delay>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.delay");
-    expander = std::make_unique<Expander>(
-        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.expander");
     multiband_compressor = std::make_unique<MultibandCompressor>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.multibandcompressor");
     loudness = std::make_unique<Loudness>(
@@ -219,7 +217,6 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
     plugins.insert(std::make_pair(crossfeed->name, crossfeed->plugin));
     plugins.insert(std::make_pair(maximizer->name, maximizer->plugin));
     plugins.insert(std::make_pair(delay->name, delay->plugin));
-    plugins.insert(std::make_pair(expander->name, expander->plugin));
     plugins.insert(std::make_pair(multiband_compressor->name,
                                   multiband_compressor->plugin));
     plugins.insert(std::make_pair(loudness->name, loudness->plugin));
