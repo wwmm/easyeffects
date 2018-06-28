@@ -50,5 +50,6 @@
     <file>presets/gstreamer_party.json</file>
     <file>presets/gstreamer_more_bass.json</file>
     <file>presets/gstreamer_more_bass_and_treble.json</file>
+    <file>presets/zihad_perfecteq.json</file>
   </gresource>
 </gresources>
