@@ -178,5 +178,9 @@
         <key name="use-default-source" type="b">
             <default>true</default>
         </key>
+
+        <key name="last-used-preset" type="s">
+            <default>""</default>
+        </key>
     </schema>
 </schemalist>

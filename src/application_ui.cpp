@@ -126,6 +126,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     presets_listbox->signal_row_activated().connect([&](auto row) {
         presets_menu_label->set_text(row->get_name());
         app->presets_manager->load(row->get_name());
+        settings->set_string("last-used-preset", row->get_name());
     });
 
     add_preset->signal_clicked().connect([=]() {
@@ -242,6 +243,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     settings->bind("use-custom-color", use_custom_color, "active", flag);
     settings->bind("use-custom-color", spectrum_color_button, "sensitive",
                    flag);
+
+    settings->bind("last-used-preset", presets_menu_label, "label", flag);
 
     init_autostart_switch();
 }
@@ -786,6 +789,8 @@ void ApplicationUi::populate_presets_listbox() {
         presets_listbox->remove(*c);
     }
 
+    bool reset_menu_button_label = true;
+
     auto names = app->presets_manager->get_names();
 
     for (auto name : names) {
@@ -813,6 +818,17 @@ void ApplicationUi::populate_presets_listbox() {
 
         presets_listbox->add(*row);
         presets_listbox->show_all();
+
+        /*if the preset with the name in the button label still exists we do
+        not reset the label to "Presets"
+        */
+        if (name == presets_menu_label->get_text()) {
+            reset_menu_button_label = false;
+        }
+    }
+
+    if (reset_menu_button_label) {
+        presets_menu_label->set_text(_("Presets"));
     }
 }
 
