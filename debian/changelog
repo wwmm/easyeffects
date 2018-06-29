@@ -1,3 +1,33 @@
+pulseeffects (4.1.1-3) unstable; urgency=low
+
+  * version dependency 'calf-plugins (>= 0.90.0)' to fix https://github.com/wwmm/pulseeffects/issues/227
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Fri, 29 Jun 2018 18:45:00 +0300 
+ 
+pulseeffects (4.1.1-2) unstable; urgency=low
+
+  * update to version 4.1.1 upstream
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Fri, 29 Jun 2018 18:08:00 +0300 
+ 
+pulseeffects (4.1.0-1) unstable; urgency=low
+
+  * update to version 4.1.0 upstream
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Fri, 22 Jun 2018 00:43:00 +0300 
+ 
+pulseeffects (4.0.8-1) unstable; urgency=low
+
+  * update to version 4.0.8 upstream
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 20 Jun 2018 15:55:00 +0300 
+ 
+pulseeffects (4.0.7-1) unstable; urgency=low
+
+  * update to version 4.0.7 upstream
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 18 Jun 2018 11:30:00 +0300 
+ 
 pulseeffects (4.0.4-3) unstable; urgency=low
 
   * update to version 4.0.4 upstream
