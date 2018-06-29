@@ -35,10 +35,14 @@ SinkInputEffectsUi::SinkInputEffectsUi(
         "/com/github/wwmm/pulseeffects/ui/maximizer.glade");
     auto b_delay = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/ui/delay.glade");
-    auto b_expander = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/ui/expander.glade");
     auto b_multiband_compressor = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/ui/multiband_compressor.glade");
+    auto b_loudness = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/ui/loudness.glade");
+    auto b_gate = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/ui/gate.glade");
+    auto b_multiband_gate = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/ui/multiband_gate.glade");
 
     b_limiter->get_widget_derived(
         "widgets_grid", limiter_ui,
@@ -76,12 +80,17 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     b_delay->get_widget_derived(
         "widgets_grid", delay_ui,
         "com.github.wwmm.pulseeffects.sinkinputs.delay");
-    b_expander->get_widget_derived(
-        "widgets_grid", expander_ui,
-        "com.github.wwmm.pulseeffects.sinkinputs.expander");
     b_multiband_compressor->get_widget_derived(
         "widgets_grid", multiband_compressor_ui,
         "com.github.wwmm.pulseeffects.sinkinputs.multibandcompressor");
+    b_loudness->get_widget_derived(
+        "widgets_grid", loudness_ui,
+        "com.github.wwmm.pulseeffects.sinkinputs.loudness");
+    b_gate->get_widget_derived("widgets_grid", gate_ui,
+                               "com.github.wwmm.pulseeffects.sinkinputs.gate");
+    b_multiband_gate->get_widget_derived(
+        "widgets_grid", multiband_gate_ui,
+        "com.github.wwmm.pulseeffects.sinkinputs.multibandgate");
 
     stack->add(*limiter_ui, limiter_ui->name);
     stack->add(*compressor_ui, compressor_ui->name);
@@ -95,8 +104,10 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     stack->add(*crossfeed_ui, crossfeed_ui->name);
     stack->add(*maximizer_ui, maximizer_ui->name);
     stack->add(*delay_ui, delay_ui->name);
-    stack->add(*expander_ui, expander_ui->name);
     stack->add(*multiband_compressor_ui, multiband_compressor_ui->name);
+    stack->add(*loudness_ui, loudness_ui->name);
+    stack->add(*gate_ui, gate_ui->name);
+    stack->add(*multiband_gate_ui, multiband_gate_ui->name);
 
     // populate_listbox
 
@@ -112,8 +123,10 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     add_to_listbox(crossfeed_ui);
     add_to_listbox(maximizer_ui);
     add_to_listbox(delay_ui);
-    add_to_listbox(expander_ui);
     add_to_listbox(multiband_compressor_ui);
+    add_to_listbox(loudness_ui);
+    add_to_listbox(gate_ui);
+    add_to_listbox(multiband_gate_ui);
 
     level_meters_connections();
     up_down_connections();
@@ -225,13 +238,6 @@ void SinkInputEffectsUi::level_meters_connections() {
     connections.push_back(sie->delay->tempo.connect(
         sigc::mem_fun(*delay_ui, &DelayUi::on_new_tempo)));
 
-    // expander level meters connections
-
-    connections.push_back(sie->expander->input_level.connect(
-        sigc::mem_fun(*expander_ui, &ExpanderUi::on_new_input_level)));
-    connections.push_back(sie->expander->output_level.connect(
-        sigc::mem_fun(*expander_ui, &ExpanderUi::on_new_output_level)));
-
     // multiband_compressor level meters connections
 
     connections.push_back(sie->multiband_compressor->input_level.connect(
@@ -266,6 +272,49 @@ void SinkInputEffectsUi::level_meters_connections() {
     connections.push_back(sie->multiband_compressor->compression3.connect(
         sigc::mem_fun(*multiband_compressor_ui,
                       &MultibandCompressorUi::on_new_compression3)));
+
+    // loudness level meters connections
+
+    connections.push_back(sie->loudness_input_level.connect(
+        sigc::mem_fun(*loudness_ui, &LoudnessUi::on_new_input_level_db)));
+    connections.push_back(sie->loudness_output_level.connect(
+        sigc::mem_fun(*loudness_ui, &LoudnessUi::on_new_output_level_db)));
+
+    // gate level meters connections
+
+    connections.push_back(sie->gate_input_level.connect(
+        sigc::mem_fun(*gate_ui, &GateUi::on_new_input_level_db)));
+    connections.push_back(sie->gate_output_level.connect(
+        sigc::mem_fun(*gate_ui, &GateUi::on_new_output_level_db)));
+    connections.push_back(sie->gate->gating.connect(
+        sigc::mem_fun(*gate_ui, &GateUi::on_new_gating)));
+
+    // multiband_gate level meters connections
+
+    connections.push_back(
+        sie->multiband_gate->input_level.connect(sigc::mem_fun(
+            *multiband_gate_ui, &MultibandGateUi::on_new_input_level)));
+    connections.push_back(
+        sie->multiband_gate->output_level.connect(sigc::mem_fun(
+            *multiband_gate_ui, &MultibandGateUi::on_new_output_level)));
+
+    connections.push_back(sie->multiband_gate->output0.connect(
+        sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_output0)));
+    connections.push_back(sie->multiband_gate->output1.connect(
+        sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_output1)));
+    connections.push_back(sie->multiband_gate->output2.connect(
+        sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_output2)));
+    connections.push_back(sie->multiband_gate->output3.connect(
+        sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_output3)));
+
+    connections.push_back(sie->multiband_gate->gating0.connect(
+        sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating0)));
+    connections.push_back(sie->multiband_gate->gating1.connect(
+        sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating1)));
+    connections.push_back(sie->multiband_gate->gating2.connect(
+        sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating2)));
+    connections.push_back(sie->multiband_gate->gating3.connect(
+        sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating3)));
 }
 
 void SinkInputEffectsUi::up_down_connections() {
@@ -364,17 +413,29 @@ void SinkInputEffectsUi::up_down_connections() {
     connections.push_back(delay_ui->plugin_down->signal_clicked().connect(
         [=]() { on_down(delay_ui); }));
 
-    connections.push_back(expander_ui->plugin_up->signal_clicked().connect(
-        [=]() { on_up(expander_ui); }));
-    connections.push_back(expander_ui->plugin_down->signal_clicked().connect(
-        [=]() { on_down(expander_ui); }));
-
     connections.push_back(
         multiband_compressor_ui->plugin_up->signal_clicked().connect(
             [=]() { on_up(multiband_compressor_ui); }));
     connections.push_back(
         multiband_compressor_ui->plugin_down->signal_clicked().connect(
             [=]() { on_down(multiband_compressor_ui); }));
+
+    connections.push_back(loudness_ui->plugin_up->signal_clicked().connect(
+        [=]() { on_up(loudness_ui); }));
+    connections.push_back(loudness_ui->plugin_down->signal_clicked().connect(
+        [=]() { on_down(loudness_ui); }));
+
+    connections.push_back(gate_ui->plugin_up->signal_clicked().connect(
+        [=]() { on_up(gate_ui); }));
+    connections.push_back(gate_ui->plugin_down->signal_clicked().connect(
+        [=]() { on_down(gate_ui); }));
+
+    connections.push_back(
+        multiband_gate_ui->plugin_up->signal_clicked().connect(
+            [=]() { on_up(multiband_gate_ui); }));
+    connections.push_back(
+        multiband_gate_ui->plugin_down->signal_clicked().connect(
+            [=]() { on_down(multiband_gate_ui); }));
 }
 
 void SinkInputEffectsUi::reset() {
@@ -392,6 +453,8 @@ void SinkInputEffectsUi::reset() {
     crossfeed_ui->reset();
     maximizer_ui->reset();
     delay_ui->reset();
-    expander_ui->reset();
     multiband_compressor_ui->reset();
+    loudness_ui->reset();
+    gate_ui->reset();
+    multiband_gate_ui->reset();
 }

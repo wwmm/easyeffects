@@ -45,13 +45,13 @@ PluginBase::PluginBase(const std::string& tag,
 }
 
 PluginBase::~PluginBase() {
-    g_object_unref(settings);
-
     auto enable = g_settings_get_boolean(settings, "state");
 
     if (!enable) {
         gst_object_unref(bin);
     }
+
+    g_object_unref(settings);
 }
 
 bool PluginBase::is_installed(GstElement* e) {

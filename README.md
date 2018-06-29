@@ -23,6 +23,7 @@ Audio effects for Pulseaudio applications
 - Crossfeed
 - Filter (Lowpass, Highpass, Bandpass and Bandreject modes)
 - Stereo Enhancer
+- Loudness
 - Maximizer
 
 ### Applications input
@@ -49,6 +50,7 @@ Version `1.12.5` or higher
 - [Calf Studio Plugins](https://calf-studio-gear.org/). Version `0.90` or higher.
 - [Linux Studio Plugins](http://lsp-plug.in/)
 - [ZamAudio Plugins](http://www.zamaudio.com/)
+- [MDA.LV2](https://git.drobilla.net/cgit.cgi/mda.lv2.git/about/)
 
 ## Installation
 
@@ -72,12 +74,22 @@ find more information about these in the
 
 [Flatpak](https://flatpak.org) packages support multiple distributions and are sandboxed.
 
-Stable releases are hosted on [Flathub](https://flathub.org):
+Stable releases are hosted on
+[Flathub](https://flathub.org/apps/details/com.github.wwmm.pulseeffects):
 
 ```
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install flathub com.github.wwmm.pulseeffects
 ```
+
+To use the [LSP](http://lsp-plug.in) Expander and Delay plugins an extension is required:
+
+```
+flatpak install flathub com.github.wwmm.pulseeffects.plugin.lsp-plugins
+```
+
+*Note! that the lsp-plugins extension is only availble for x86 (32-bit) and x86_64 (64-bit)
+Intel/AMD architectures. ARM architectures is not supported by lsp-plugins.*
 
 #### Installing from Source
 

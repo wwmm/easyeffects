@@ -42,6 +42,14 @@ void on_message_element(const GstBus* gst_bus,
         sie->delay_input_level.emit(sie->get_peak(message));
     } else if (src_name == std::string("delay_output_level")) {
         sie->delay_output_level.emit(sie->get_peak(message));
+    } else if (src_name == std::string("loudness_input_level")) {
+        sie->loudness_input_level.emit(sie->get_peak(message));
+    } else if (src_name == std::string("loudness_output_level")) {
+        sie->loudness_output_level.emit(sie->get_peak(message));
+    } else if (src_name == std::string("gate_input_level")) {
+        sie->gate_input_level.emit(sie->get_peak(message));
+    } else if (src_name == std::string("gate_output_level")) {
+        sie->gate_output_level.emit(sie->get_peak(message));
     }
 }
 
@@ -195,10 +203,14 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.maximizer");
     delay = std::make_unique<Delay>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.delay");
-    expander = std::make_unique<Expander>(
-        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.expander");
     multiband_compressor = std::make_unique<MultibandCompressor>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.multibandcompressor");
+    loudness = std::make_unique<Loudness>(
+        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.loudness");
+    gate = std::make_unique<Gate>(
+        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.gate");
+    multiband_gate = std::make_unique<MultibandGate>(
+        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.multibandgate");
 
     plugins.insert(std::make_pair(limiter->name, limiter->plugin));
     plugins.insert(std::make_pair(compressor->name, compressor->plugin));
@@ -213,9 +225,12 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
     plugins.insert(std::make_pair(crossfeed->name, crossfeed->plugin));
     plugins.insert(std::make_pair(maximizer->name, maximizer->plugin));
     plugins.insert(std::make_pair(delay->name, delay->plugin));
-    plugins.insert(std::make_pair(expander->name, expander->plugin));
     plugins.insert(std::make_pair(multiband_compressor->name,
                                   multiband_compressor->plugin));
+    plugins.insert(std::make_pair(loudness->name, loudness->plugin));
+    plugins.insert(std::make_pair(gate->name, gate->plugin));
+    plugins.insert(
+        std::make_pair(multiband_gate->name, multiband_gate->plugin));
 
     add_plugins_to_pipeline();
 

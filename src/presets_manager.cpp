@@ -30,8 +30,9 @@ PresetsManager::PresetsManager()
       reverb(std::make_unique<ReverbPreset>()),
       stereo_enhancer(std::make_unique<StereoEnhancerPreset>()),
       webrtc(std::make_unique<WebrtcPreset>()),
-      expander(std::make_unique<ExpanderPreset>()),
-      multiband_compressor(std::make_unique<MultibandCompressorPreset>()) {
+      multiband_compressor(std::make_unique<MultibandCompressorPreset>()),
+      loudness(std::make_unique<LoudnessPreset>()),
+      multiband_gate(std::make_unique<MultibandGatePreset>()) {
     auto dir_exists = fs::is_directory(presets_dir);
 
     if (!dir_exists) {
@@ -246,8 +247,9 @@ void PresetsManager::save(const std::string& name) {
     reverb->write(root);
     stereo_enhancer->write(root);
     webrtc->write(root);
-    expander->write(root);
     multiband_compressor->write(root);
+    loudness->write(root);
+    multiband_gate->write(root);
 
     auto output_file = presets_dir / fs::path{name + ".json"};
 
@@ -277,12 +279,20 @@ void PresetsManager::load(const std::string& name) {
     load_general_settings(root);
 
     try {
-        for (auto& p : root.get_child("input.plugins_order")) {
-            input_plugins.push_back(p.second.data());
-        }
-
         Glib::Variant<std::vector<std::string>> aux;
         soe_settings->get_default_value("plugins", aux);
+
+        for (auto& p : root.get_child("input.plugins_order")) {
+            auto value = p.second.data();
+
+            for (auto v : aux.get()) {
+                if (v == value) {
+                    input_plugins.push_back(value);
+
+                    break;
+                }
+            }
+        }
 
         for (auto v : aux.get()) {
             if (std::find(input_plugins.begin(), input_plugins.end(), v) ==
@@ -297,12 +307,20 @@ void PresetsManager::load(const std::string& name) {
     }
 
     try {
-        for (auto& p : root.get_child("output.plugins_order")) {
-            output_plugins.push_back(p.second.data());
-        }
-
         Glib::Variant<std::vector<std::string>> aux;
         sie_settings->get_default_value("plugins", aux);
+
+        for (auto& p : root.get_child("output.plugins_order")) {
+            auto value = p.second.data();
+
+            for (auto v : aux.get()) {
+                if (v == value) {
+                    output_plugins.push_back(value);
+
+                    break;
+                }
+            }
+        }
 
         for (auto v : aux.get()) {
             if (std::find(output_plugins.begin(), output_plugins.end(), v) ==
@@ -335,8 +353,9 @@ void PresetsManager::load(const std::string& name) {
     reverb->read(root);
     stereo_enhancer->read(root);
     webrtc->read(root);
-    expander->read(root);
     multiband_compressor->read(root);
+    loudness->read(root);
+    multiband_gate->read(root);
 
     util::debug(log_tag + "loaded preset: " + input_file.string());
 }

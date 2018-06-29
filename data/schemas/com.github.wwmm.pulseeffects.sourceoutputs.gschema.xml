@@ -3,8 +3,9 @@
     <schema id="com.github.wwmm.pulseeffects.sourceoutputs" path="/com/github/wwmm/pulseeffects/sourceoutputs/">
         <key name="plugins" type="as">
           <default>
-              ["gate","webrtc","limiter","compressor","multiband_compressor",
-              "filter","equalizer","deesser","reverb","pitch"]
+              ["gate","multiband_gate","webrtc","limiter","compressor",
+               "multiband_compressor","filter","equalizer","deesser","reverb",
+               "pitch"]
           </default>
         </key>
     </schema>

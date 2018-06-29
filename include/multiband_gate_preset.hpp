@@ -1,11 +1,11 @@
-#ifndef GATE_PRESET_HPP
-#define GATE_PRESET_HPP
+#ifndef MULTIBAND_GATE_PRESET_HPP
+#define MULTIBAND_GATE_PRESET_HPP
 
 #include "plugin_preset_base.hpp"
 
-class GatePreset : public PluginPresetBase {
+class MultibandGatePreset : public PluginPresetBase {
    public:
-    GatePreset();
+    MultibandGatePreset();
 
     void write(boost::property_tree::ptree& root) override;
     void read(boost::property_tree::ptree& root) override;

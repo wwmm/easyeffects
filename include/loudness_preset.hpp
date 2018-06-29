@@ -1,11 +1,11 @@
-#ifndef EXPANDER_PRESET_HPP
-#define EXPANDER_PRESET_HPP
+#ifndef LOUDNESS_PRESET_HPP
+#define LOUDNESS_PRESET_HPP
 
 #include "plugin_preset_base.hpp"
 
-class ExpanderPreset : public PluginPresetBase {
+class LoudnessPreset : public PluginPresetBase {
    public:
-    ExpanderPreset();
+    LoudnessPreset();
 
     void write(boost::property_tree::ptree& root) override;
     void read(boost::property_tree::ptree& root) override;

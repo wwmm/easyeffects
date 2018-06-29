@@ -114,8 +114,8 @@
     <property name="lower">1</property>
     <property name="upper">20</property>
     <property name="value">2</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">1</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">0.01</property>
   </object>
   <object class="GtkAdjustment" id="release">
     <property name="lower">0.01</property>
@@ -383,6 +383,7 @@
                     <property name="input_purpose">number</property>
                     <property name="orientation">vertical</property>
                     <property name="adjustment">ratio</property>
+                    <property name="digits">2</property>
                     <property name="numeric">True</property>
                     <property name="update_policy">if-valid</property>
                   </object>
@@ -665,7 +666,7 @@
                 <property name="halign">end</property>
                 <property name="valign">center</property>
                 <property name="margin_right">3</property>
-                <property name="label" translatable="yes">Reduction</property>
+                <property name="label" translatable="yes">Gating</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>

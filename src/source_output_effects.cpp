@@ -186,6 +186,8 @@ SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager)
     multiband_compressor = std::make_unique<MultibandCompressor>(
         log_tag,
         "com.github.wwmm.pulseeffects.sourceoutputs.multibandcompressor");
+    multiband_gate = std::make_unique<MultibandGate>(
+        log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.multibandgate");
 
     plugins.insert(std::make_pair(limiter->name, limiter->plugin));
     plugins.insert(std::make_pair(compressor->name, compressor->plugin));
@@ -198,6 +200,8 @@ SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager)
     plugins.insert(std::make_pair(webrtc->name, webrtc->plugin));
     plugins.insert(std::make_pair(multiband_compressor->name,
                                   multiband_compressor->plugin));
+    plugins.insert(
+        std::make_pair(multiband_gate->name, multiband_gate->plugin));
 
     add_plugins_to_pipeline();
 

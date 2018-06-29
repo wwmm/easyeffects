@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-23 20:41-0300\n"
+"POT-Creation-Date: 2018-06-28 23:33-0300\n"
 "PO-Revision-Date: 2018-02-10 15:25+0100\n"
 "Last-Translator: Matteo Iervasi <matteoiervasi@gmail.com>\n"
 "Language-Team: \n"
@@ -162,105 +162,114 @@ msgstr "Campionatore"
 msgid "State"
 msgstr "Stato"
 
-#: data/ui/limiter.glade:61 data/ui/limiter.glade:412 data/ui/webrtc.glade:377
+#: data/ui/limiter.glade:61 data/ui/limiter.glade:413 data/ui/webrtc.glade:377
 #, fuzzy
 msgid "Limiter"
 msgstr "Limite [dB]"
 
-#: data/ui/limiter.glade:212
+#: data/ui/limiter.glade:213
 #, fuzzy
 msgid "Input Gain"
 msgstr "Guadagno in input [dB]"
 
-#: data/ui/limiter.glade:245
+#: data/ui/limiter.glade:246
 #, fuzzy
 msgid "Limit"
 msgstr "Limite [dB]"
 
-#: data/ui/limiter.glade:300 data/ui/compressor.glade:372
-#: data/ui/multiband_compressor.glade:534
-#: data/ui/multiband_compressor.glade:906
-#: data/ui/multiband_compressor.glade:1283
-#: data/ui/multiband_compressor.glade:1660 data/ui/maximizer.glade:215
-#: data/ui/gate.glade:302 data/ui/expander.glade:370
+#: data/ui/limiter.glade:301 data/ui/compressor.glade:372
+#: data/ui/multiband_compressor.glade:537
+#: data/ui/multiband_compressor.glade:910
+#: data/ui/multiband_compressor.glade:1288
+#: data/ui/multiband_compressor.glade:1666 data/ui/maximizer.glade:215
+#: data/ui/gate.glade:302 data/ui/multiband_gate.glade:557
+#: data/ui/multiband_gate.glade:964 data/ui/multiband_gate.glade:1375
+#: data/ui/multiband_gate.glade:1786
 #, fuzzy
 msgid "Release"
 msgstr "Rilascio [s]"
 
-#: data/ui/limiter.glade:313 data/ui/expander.glade:512
+#: data/ui/limiter.glade:314
 msgid "Lookahead"
 msgstr ""
 
-#: data/ui/limiter.glade:348
+#: data/ui/limiter.glade:349
 msgid "Oversampling"
 msgstr ""
 
-#: data/ui/limiter.glade:397
+#: data/ui/limiter.glade:398
 msgid "ASC"
 msgstr ""
 
-#: data/ui/limiter.glade:425 data/ui/webrtc.glade:141 data/ui/webrtc.glade:273
+#: data/ui/limiter.glade:426 data/ui/webrtc.glade:141 data/ui/webrtc.glade:273
 #: data/ui/webrtc.glade:319 data/ui/webrtc.glade:468
 #, fuzzy
 msgid "Enable"
 msgstr "Tabella sinusoidale"
 
-#: data/ui/limiter.glade:451 data/ui/calibration_mic.glade:29
+#: data/ui/limiter.glade:452 data/ui/calibration_mic.glade:29
 #, fuzzy
 msgid "Window"
 msgstr "Finestra [s]"
 
-#: data/ui/limiter.glade:464
+#: data/ui/limiter.glade:465
 #, fuzzy
 msgid "Target"
 msgstr "Soglia [dB]"
 
-#: data/ui/limiter.glade:542 data/ui/compressor.glade:406
-#: data/ui/multiband_compressor.glade:568
-#: data/ui/multiband_compressor.glade:941
-#: data/ui/multiband_compressor.glade:1318
-#: data/ui/multiband_compressor.glade:1695 data/ui/maximizer.glade:128
-#: data/ui/gate.glade:336 data/ui/deesser.glade:463
+#: data/ui/limiter.glade:543 data/ui/compressor.glade:406
+#: data/ui/multiband_compressor.glade:571
+#: data/ui/multiband_compressor.glade:945
+#: data/ui/multiband_compressor.glade:1323
+#: data/ui/multiband_compressor.glade:1701 data/ui/maximizer.glade:128
+#: data/ui/gate.glade:336 data/ui/multiband_gate.glade:591
+#: data/ui/multiband_gate.glade:999 data/ui/multiband_gate.glade:1410
+#: data/ui/multiband_gate.glade:1821 data/ui/deesser.glade:463
 #, fuzzy
 msgid "Threshold"
 msgstr "Soglia [dB]"
 
-#: data/ui/limiter.glade:577
+#: data/ui/limiter.glade:578
 #, fuzzy
 msgid "Tolerance"
 msgstr "Tolleranza [dB]"
 
-#: data/ui/limiter.glade:594
+#: data/ui/limiter.glade:595
 msgid "Auto Volume"
 msgstr "Auto Volume"
 
-#: data/ui/limiter.glade:623 data/ui/compressor.glade:559
-#: data/ui/multiband_compressor.glade:1953 data/ui/filter.glade:365
+#: data/ui/limiter.glade:624 data/ui/compressor.glade:559
+#: data/ui/multiband_compressor.glade:1959 data/ui/filter.glade:365
 #: data/ui/equalizer.glade:366 data/ui/reverb.glade:612
 #: data/ui/bass_enhancer.glade:482 data/ui/exciter.glade:484
 #: data/ui/stereo_enhancer.glade:590 data/ui/panorama.glade:168
 #: data/ui/crossfeed.glade:200 data/ui/maximizer.glade:240
-#: data/ui/delay.glade:409 data/ui/gate.glade:488 data/ui/deesser.glade:572
-#: data/ui/pitch.glade:304 data/ui/webrtc.glade:586 data/ui/expander.glade:665
+#: data/ui/delay.glade:409 data/ui/loudness.glade:245 data/ui/gate.glade:489
+#: data/ui/multiband_gate.glade:2112 data/ui/deesser.glade:572
+#: data/ui/pitch.glade:304 data/ui/webrtc.glade:586
 msgid "Input"
 msgstr "Input"
 
-#: data/ui/limiter.glade:638 data/ui/compressor.glade:574
-#: data/ui/multiband_compressor.glade:752
-#: data/ui/multiband_compressor.glade:1128
-#: data/ui/multiband_compressor.glade:1505
-#: data/ui/multiband_compressor.glade:1882
-#: data/ui/multiband_compressor.glade:1968 data/ui/filter.glade:380
+#: data/ui/limiter.glade:639 data/ui/compressor.glade:574
+#: data/ui/multiband_compressor.glade:755
+#: data/ui/multiband_compressor.glade:1132
+#: data/ui/multiband_compressor.glade:1510
+#: data/ui/multiband_compressor.glade:1888
+#: data/ui/multiband_compressor.glade:1974 data/ui/filter.glade:380
 #: data/ui/equalizer.glade:381 data/ui/reverb.glade:627
 #: data/ui/bass_enhancer.glade:514 data/ui/exciter.glade:516
 #: data/ui/stereo_enhancer.glade:604 data/ui/panorama.glade:183
 #: data/ui/crossfeed.glade:215 data/ui/maximizer.glade:255
-#: data/ui/delay.glade:424 data/ui/gate.glade:503 data/ui/deesser.glade:587
-#: data/ui/pitch.glade:319 data/ui/webrtc.glade:601 data/ui/expander.glade:680
+#: data/ui/delay.glade:424 data/ui/loudness.glade:164
+#: data/ui/loudness.glade:260 data/ui/gate.glade:504
+#: data/ui/multiband_gate.glade:809 data/ui/multiband_gate.glade:1219
+#: data/ui/multiband_gate.glade:1630 data/ui/multiband_gate.glade:2041
+#: data/ui/multiband_gate.glade:2127 data/ui/deesser.glade:587
+#: data/ui/pitch.glade:319 data/ui/webrtc.glade:601
 msgid "Output"
 msgstr "Output"
 
-#: data/ui/limiter.glade:653
+#: data/ui/limiter.glade:654
 msgid "Attenuation"
 msgstr "Attenuazione"
 
@@ -296,20 +305,24 @@ msgstr ""
 msgid "Mix"
 msgstr ""
 
-#: data/ui/compressor.glade:293 data/ui/multiband_compressor.glade:473
-#: data/ui/multiband_compressor.glade:844
-#: data/ui/multiband_compressor.glade:1221
-#: data/ui/multiband_compressor.glade:1598 data/ui/gate.glade:223
-#: data/ui/deesser.glade:220 data/ui/expander.glade:585
+#: data/ui/compressor.glade:293 data/ui/multiband_compressor.glade:476
+#: data/ui/multiband_compressor.glade:848
+#: data/ui/multiband_compressor.glade:1226
+#: data/ui/multiband_compressor.glade:1604 data/ui/gate.glade:223
+#: data/ui/multiband_gate.glade:496 data/ui/multiband_gate.glade:902
+#: data/ui/multiband_gate.glade:1313 data/ui/multiband_gate.glade:1724
+#: data/ui/deesser.glade:220
 msgid "RMS"
 msgstr ""
 
-#: data/ui/compressor.glade:294 data/ui/multiband_compressor.glade:474
-#: data/ui/multiband_compressor.glade:845
-#: data/ui/multiband_compressor.glade:1222
-#: data/ui/multiband_compressor.glade:1599 data/ui/equalizer_band.glade:152
-#: data/ui/gate.glade:224 data/ui/deesser.glade:221 data/ui/deesser.glade:331
-#: data/ui/expander.glade:584
+#: data/ui/compressor.glade:294 data/ui/multiband_compressor.glade:477
+#: data/ui/multiband_compressor.glade:849
+#: data/ui/multiband_compressor.glade:1227
+#: data/ui/multiband_compressor.glade:1605 data/ui/equalizer_band.glade:152
+#: data/ui/gate.glade:224 data/ui/multiband_gate.glade:497
+#: data/ui/multiband_gate.glade:903 data/ui/multiband_gate.glade:1314
+#: data/ui/multiband_gate.glade:1725 data/ui/deesser.glade:221
+#: data/ui/deesser.glade:331
 msgid "Peak"
 msgstr "Picco"
 
@@ -321,44 +334,52 @@ msgstr ""
 msgid "Maximum"
 msgstr ""
 
-#: data/ui/compressor.glade:338 data/ui/multiband_compressor.glade:500
-#: data/ui/multiband_compressor.glade:871
-#: data/ui/multiband_compressor.glade:1248
-#: data/ui/multiband_compressor.glade:1625 data/ui/gate.glade:268
-#: data/ui/expander.glade:356
+#: data/ui/compressor.glade:338 data/ui/multiband_compressor.glade:503
+#: data/ui/multiband_compressor.glade:875
+#: data/ui/multiband_compressor.glade:1253
+#: data/ui/multiband_compressor.glade:1631 data/ui/gate.glade:268
+#: data/ui/multiband_gate.glade:523 data/ui/multiband_gate.glade:929
+#: data/ui/multiband_gate.glade:1340 data/ui/multiband_gate.glade:1751
 #, fuzzy
 msgid "Attack"
 msgstr "Attacco [ms]"
 
-#: data/ui/compressor.glade:439 data/ui/multiband_compressor.glade:601
-#: data/ui/multiband_compressor.glade:975
-#: data/ui/multiband_compressor.glade:1352
-#: data/ui/multiband_compressor.glade:1729 data/ui/gate.glade:369
-#: data/ui/deesser.glade:496 data/ui/expander.glade:330
+#: data/ui/compressor.glade:439 data/ui/multiband_compressor.glade:604
+#: data/ui/multiband_compressor.glade:979
+#: data/ui/multiband_compressor.glade:1357
+#: data/ui/multiband_compressor.glade:1735 data/ui/gate.glade:369
+#: data/ui/multiband_gate.glade:624 data/ui/multiband_gate.glade:1033
+#: data/ui/multiband_gate.glade:1444 data/ui/multiband_gate.glade:1855
+#: data/ui/deesser.glade:496
 #, fuzzy
 msgid "Ratio"
 msgstr "Rapporto [n:1]"
 
-#: data/ui/compressor.glade:471 data/ui/multiband_compressor.glade:633
-#: data/ui/multiband_compressor.glade:1008
-#: data/ui/multiband_compressor.glade:1385
-#: data/ui/multiband_compressor.glade:1762 data/ui/gate.glade:400
-#: data/ui/expander.glade:343
+#: data/ui/compressor.glade:471 data/ui/multiband_compressor.glade:636
+#: data/ui/multiband_compressor.glade:1012
+#: data/ui/multiband_compressor.glade:1390
+#: data/ui/multiband_compressor.glade:1768 data/ui/gate.glade:401
+#: data/ui/multiband_gate.glade:656 data/ui/multiband_gate.glade:1066
+#: data/ui/multiband_gate.glade:1477 data/ui/multiband_gate.glade:1888
 #, fuzzy
 msgid "Knee"
 msgstr "Passaggio [dB]"
 
-#: data/ui/compressor.glade:505 data/ui/multiband_compressor.glade:667
-#: data/ui/multiband_compressor.glade:1043
-#: data/ui/multiband_compressor.glade:1420
-#: data/ui/multiband_compressor.glade:1797 data/ui/gate.glade:434
-#: data/ui/deesser.glade:527 data/ui/expander.glade:384
+#: data/ui/compressor.glade:505 data/ui/multiband_compressor.glade:670
+#: data/ui/multiband_compressor.glade:1047
+#: data/ui/multiband_compressor.glade:1425
+#: data/ui/multiband_compressor.glade:1803 data/ui/gate.glade:435
+#: data/ui/multiband_gate.glade:690 data/ui/multiband_gate.glade:1101
+#: data/ui/multiband_gate.glade:1512 data/ui/multiband_gate.glade:1923
+#: data/ui/deesser.glade:527
 #, fuzzy
 msgid "Makeup"
 msgstr "Makeup [dB]"
 
 #: data/ui/compressor.glade:739 data/ui/maximizer.glade:270
-#: data/ui/gate.glade:668 data/ui/deesser.glade:752
+#: data/ui/multiband_gate.glade:725 data/ui/multiband_gate.glade:1156
+#: data/ui/multiband_gate.glade:1567 data/ui/multiband_gate.glade:1978
+#: data/ui/deesser.glade:752
 #, fuzzy
 msgid "Reduction"
 msgstr "Riduzione guadagno"
@@ -368,68 +389,71 @@ msgstr "Riduzione guadagno"
 msgid "Multiband Compressor"
 msgstr "Compressore"
 
-#: data/ui/multiband_compressor.glade:285 data/ui/deesser.glade:206
-#: data/ui/webrtc.glade:338 data/ui/expander.glade:415
-#: data/ui/expander.glade:570
+#: data/ui/multiband_compressor.glade:285 data/ui/multiband_gate.glade:305
+#: data/ui/deesser.glade:206 data/ui/webrtc.glade:338
 msgid "Mode"
 msgstr ""
 
-#: data/ui/multiband_compressor.glade:299
+#: data/ui/multiband_compressor.glade:299 data/ui/multiband_gate.glade:319
 msgid "LR4"
 msgstr ""
 
-#: data/ui/multiband_compressor.glade:300
+#: data/ui/multiband_compressor.glade:300 data/ui/multiband_gate.glade:320
 msgid "LR8"
 msgstr ""
 
-#: data/ui/multiband_compressor.glade:314
+#: data/ui/multiband_compressor.glade:314 data/ui/multiband_gate.glade:334
 msgid "Split 1/2"
 msgstr ""
 
-#: data/ui/multiband_compressor.glade:327
+#: data/ui/multiband_compressor.glade:327 data/ui/multiband_gate.glade:347
 msgid "Split 2/3"
 msgstr ""
 
-#: data/ui/multiband_compressor.glade:340
+#: data/ui/multiband_compressor.glade:340 data/ui/multiband_gate.glade:360
 msgid "Split 3/4"
 msgstr ""
 
-#: data/ui/multiband_compressor.glade:441
-#: data/ui/multiband_compressor.glade:812
-#: data/ui/multiband_compressor.glade:1189
-#: data/ui/multiband_compressor.glade:1566
+#: data/ui/multiband_compressor.glade:443
+#: data/ui/multiband_compressor.glade:815
+#: data/ui/multiband_compressor.glade:1193
+#: data/ui/multiband_compressor.glade:1571 data/ui/multiband_gate.glade:463
+#: data/ui/multiband_gate.glade:869 data/ui/multiband_gate.glade:1280
+#: data/ui/multiband_gate.glade:1691
 msgid "Bypass"
 msgstr ""
 
-#: data/ui/multiband_compressor.glade:455
-#: data/ui/multiband_compressor.glade:826
-#: data/ui/multiband_compressor.glade:1203
-#: data/ui/multiband_compressor.glade:1580
+#: data/ui/multiband_compressor.glade:457
+#: data/ui/multiband_compressor.glade:829
+#: data/ui/multiband_compressor.glade:1207
+#: data/ui/multiband_compressor.glade:1585 data/ui/multiband_gate.glade:477
+#: data/ui/multiband_gate.glade:883 data/ui/multiband_gate.glade:1294
+#: data/ui/multiband_gate.glade:1705
 msgid "Solo"
 msgstr ""
 
-#: data/ui/multiband_compressor.glade:712
-#: data/ui/multiband_compressor.glade:1088
-#: data/ui/multiband_compressor.glade:1465
-#: data/ui/multiband_compressor.glade:1842
+#: data/ui/multiband_compressor.glade:715
+#: data/ui/multiband_compressor.glade:1092
+#: data/ui/multiband_compressor.glade:1470
+#: data/ui/multiband_compressor.glade:1848
 #, fuzzy
 msgid "Compression"
 msgstr "Nessuna Compressione"
 
-#: data/ui/multiband_compressor.glade:795
+#: data/ui/multiband_compressor.glade:798 data/ui/multiband_gate.glade:852
 msgid "Sub Band"
 msgstr ""
 
-#: data/ui/multiband_compressor.glade:1171
+#: data/ui/multiband_compressor.glade:1175 data/ui/multiband_gate.glade:1262
 #, fuzzy
 msgid "Low Band"
 msgstr "Passa-basso"
 
-#: data/ui/multiband_compressor.glade:1548
+#: data/ui/multiband_compressor.glade:1553 data/ui/multiband_gate.glade:1673
 msgid "Mid Band"
 msgstr ""
 
-#: data/ui/multiband_compressor.glade:1925
+#: data/ui/multiband_compressor.glade:1931 data/ui/multiband_gate.glade:2084
 #, fuzzy
 msgid "High Band"
 msgstr "Passa-alto"
@@ -651,7 +675,7 @@ msgid "Bass Enhancer"
 msgstr "Bass Enhancer"
 
 #: data/ui/bass_enhancer.glade:148 data/ui/exciter.glade:148
-#: data/ui/deesser.glade:165 data/ui/expander.glade:542
+#: data/ui/deesser.glade:165
 msgid "Listen"
 msgstr ""
 
@@ -715,7 +739,7 @@ msgid "Invert Phase"
 msgstr "Inverti fase"
 
 #: data/ui/stereo_enhancer.glade:289 data/ui/stereo_enhancer.glade:457
-#: data/ui/delay.glade:260 data/ui/expander.glade:617
+#: data/ui/delay.glade:260
 msgid "Left"
 msgstr "Sinistra"
 
@@ -724,7 +748,7 @@ msgid "Invert Middle Phase"
 msgstr "Inverti fase medi"
 
 #: data/ui/stereo_enhancer.glade:439 data/ui/stereo_enhancer.glade:458
-#: data/ui/delay.glade:276 data/ui/expander.glade:618
+#: data/ui/delay.glade:276
 msgid "Right"
 msgstr "Destra"
 
@@ -799,6 +823,15 @@ msgstr "Centimetri"
 msgid "Temperature"
 msgstr "Temperatura"
 
+#: data/ui/loudness.glade:24 data/ui/loudness.glade:130
+#, fuzzy
+msgid "Loudness"
+msgstr "Stessa Intensità 40"
+
+#: data/ui/loudness.glade:198
+msgid "Link"
+msgstr ""
+
 #: data/ui/gate.glade:31
 msgid "Gate"
 msgstr ""
@@ -806,6 +839,17 @@ msgstr ""
 #: data/ui/gate.glade:194
 msgid "Gain Reduction"
 msgstr "Riduzione guadagno"
+
+#: data/ui/gate.glade:669 data/ui/multiband_gate.glade:769
+#: data/ui/multiband_gate.glade:1179 data/ui/multiband_gate.glade:1590
+#: data/ui/multiband_gate.glade:2001
+msgid "Gating"
+msgstr ""
+
+#: data/ui/multiband_gate.glade:70
+#, fuzzy
+msgid "Multiband Gate"
+msgstr "Compressore"
 
 #: data/ui/deesser.glade:61
 msgid "Deesser"
@@ -1020,54 +1064,6 @@ msgstr "Misura rumore"
 msgid "Subtract Noise"
 msgstr "Sottrai rumore"
 
-#: data/ui/expander.glade:44 data/ui/expander.glade:426
-msgid "Expander"
-msgstr ""
-
-#: data/ui/expander.glade:399
-msgid "Down"
-msgstr ""
-
-#: data/ui/expander.glade:400
-msgid "Up"
-msgstr ""
-
-#: data/ui/expander.glade:441
-msgid "Pre Amplifier"
-msgstr ""
-
-#: data/ui/expander.glade:477
-msgid "Reactivity"
-msgstr ""
-
-#: data/ui/expander.glade:586
-msgid "Low Pass"
-msgstr "Passa-basso"
-
-#: data/ui/expander.glade:587
-msgid "Uniform"
-msgstr ""
-
-#: data/ui/expander.glade:601
-#, fuzzy
-msgid "Source"
-msgstr "Sorgente medi"
-
-#: data/ui/expander.glade:615
-#, fuzzy
-msgid "Middle"
-msgstr "Sorgente medi"
-
-#: data/ui/expander.glade:616
-#, fuzzy
-msgid "Side"
-msgstr "Guadagno laterale [dB]"
-
-#: data/ui/expander.glade:636
-#, fuzzy
-msgid "Sidechain"
-msgstr "Guadagno laterale [dB]"
-
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
 #: data/com.github.wwmm.pulseeffects.desktop.in:3
 msgid "PulseEffects"
@@ -1180,6 +1176,25 @@ msgstr "in riproduzione"
 #, fuzzy
 msgid "Calibration Microphone"
 msgstr "Calibrazione"
+
+#~ msgid "Low Pass"
+#~ msgstr "Passa-basso"
+
+#, fuzzy
+#~ msgid "Source"
+#~ msgstr "Sorgente medi"
+
+#, fuzzy
+#~ msgid "Middle"
+#~ msgstr "Sorgente medi"
+
+#, fuzzy
+#~ msgid "Side"
+#~ msgstr "Guadagno laterale [dB]"
+
+#, fuzzy
+#~ msgid "Sidechain"
+#~ msgstr "Guadagno laterale [dB]"
 
 #, fuzzy
 #~ msgid "Ceil"
@@ -1336,9 +1351,6 @@ msgstr "Calibrazione"
 
 #~ msgid "Cuttoff [Hz]"
 #~ msgstr "Troncamento [Hz]"
-
-#~ msgid "Equal Loudness 40"
-#~ msgstr "Stessa Intensità 40"
 
 #~ msgid "Equal Loudness 60"
 #~ msgstr "Stessa Intensità 60"

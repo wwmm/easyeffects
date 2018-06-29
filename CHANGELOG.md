@@ -1,6 +1,21 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- Multiband gate plugin from Calf Studio
+- The so called "perfect eq" preset. Not that there really is something we can
+call perfect equalizer preset. But people like to use it as a starting point.
+So I added it.
+
+### Removed
+- Expander plugin. Reason: I thought it was open source but it is proprietary.
+As Calf Gate can be used as an expander it now replaces the plugin from
+Linux Studio
+
+## [4.1.1]
+### Added
+- Added loudness plugin from MDA.LV2
+
 ## [4.1.0]
 - Fixed multiband compressor schema not being installed.
 

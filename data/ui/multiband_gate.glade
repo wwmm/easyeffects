@@ -67,7 +67,7 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="valign">center</property>
-        <property name="label" translatable="yes">Multiband Compressor</property>
+        <property name="label" translatable="yes">Multiband Gate</property>
         <attributes>
           <attribute name="weight" value="bold"/>
         </attributes>
@@ -181,6 +181,26 @@
   <object class="GtkAdjustment" id="output_gain">
     <property name="lower">-36</property>
     <property name="upper">36</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="range0">
+    <property name="lower">-95</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="range1">
+    <property name="lower">-95</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="range2">
+    <property name="lower">-95</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="range3">
+    <property name="lower">-95</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
@@ -571,7 +591,7 @@
                             <property name="label" translatable="yes">Threshold</property>
                           </object>
                           <packing>
-                            <property name="left_attach">2</property>
+                            <property name="left_attach">3</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -591,7 +611,7 @@
                             <property name="update_policy">if-valid</property>
                           </object>
                           <packing>
-                            <property name="left_attach">2</property>
+                            <property name="left_attach">3</property>
                             <property name="top_attach">1</property>
                           </packing>
                         </child>
@@ -604,7 +624,7 @@
                             <property name="label" translatable="yes">Ratio</property>
                           </object>
                           <packing>
-                            <property name="left_attach">3</property>
+                            <property name="left_attach">4</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -623,7 +643,7 @@
                             <property name="update_policy">if-valid</property>
                           </object>
                           <packing>
-                            <property name="left_attach">3</property>
+                            <property name="left_attach">4</property>
                             <property name="top_attach">1</property>
                           </packing>
                         </child>
@@ -636,7 +656,7 @@
                             <property name="label" translatable="yes">Knee</property>
                           </object>
                           <packing>
-                            <property name="left_attach">4</property>
+                            <property name="left_attach">5</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -657,7 +677,7 @@
                             <property name="update_policy">if-valid</property>
                           </object>
                           <packing>
-                            <property name="left_attach">4</property>
+                            <property name="left_attach">5</property>
                             <property name="top_attach">1</property>
                           </packing>
                         </child>
@@ -670,7 +690,7 @@
                             <property name="label" translatable="yes">Makeup</property>
                           </object>
                           <packing>
-                            <property name="left_attach">5</property>
+                            <property name="left_attach">6</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -692,7 +712,41 @@
                             <property name="update_policy">if-valid</property>
                           </object>
                           <packing>
-                            <property name="left_attach">5</property>
+                            <property name="left_attach">6</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
+                            <property name="label" translatable="yes">Reduction</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">2</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkSpinButton">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
+                            <property name="width_chars">10</property>
+                            <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
+                            <property name="secondary_icon_activatable">False</property>
+                            <property name="input_purpose">number</property>
+                            <property name="orientation">vertical</property>
+                            <property name="adjustment">range0</property>
+                            <property name="numeric">True</property>
+                            <property name="update_policy">if-valid</property>
+                            <property name="value">300</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">2</property>
                             <property name="top_attach">1</property>
                           </packing>
                         </child>
@@ -712,7 +766,7 @@
                             <property name="can_focus">False</property>
                             <property name="halign">end</property>
                             <property name="valign">center</property>
-                            <property name="label" translatable="yes">Compression</property>
+                            <property name="label" translatable="yes">Gating</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -720,7 +774,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLevelBar" id="compression0">
+                          <object class="GtkLevelBar" id="gating0">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="valign">center</property>
@@ -733,7 +787,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="compression0_label">
+                          <object class="GtkLabel" id="gating0_label">
                             <property name="visible">True</property>
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
@@ -945,7 +999,7 @@
                             <property name="label" translatable="yes">Threshold</property>
                           </object>
                           <packing>
-                            <property name="left_attach">2</property>
+                            <property name="left_attach">3</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -966,7 +1020,7 @@
                             <property name="value">-12</property>
                           </object>
                           <packing>
-                            <property name="left_attach">2</property>
+                            <property name="left_attach">3</property>
                             <property name="top_attach">1</property>
                           </packing>
                         </child>
@@ -979,7 +1033,7 @@
                             <property name="label" translatable="yes">Ratio</property>
                           </object>
                           <packing>
-                            <property name="left_attach">3</property>
+                            <property name="left_attach">4</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -999,7 +1053,7 @@
                             <property name="value">2</property>
                           </object>
                           <packing>
-                            <property name="left_attach">3</property>
+                            <property name="left_attach">4</property>
                             <property name="top_attach">1</property>
                           </packing>
                         </child>
@@ -1012,7 +1066,7 @@
                             <property name="label" translatable="yes">Knee</property>
                           </object>
                           <packing>
-                            <property name="left_attach">4</property>
+                            <property name="left_attach">5</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -1034,7 +1088,7 @@
                             <property name="value">9</property>
                           </object>
                           <packing>
-                            <property name="left_attach">4</property>
+                            <property name="left_attach">5</property>
                             <property name="top_attach">1</property>
                           </packing>
                         </child>
@@ -1047,7 +1101,7 @@
                             <property name="label" translatable="yes">Makeup</property>
                           </object>
                           <packing>
-                            <property name="left_attach">5</property>
+                            <property name="left_attach">6</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -1069,8 +1123,41 @@
                             <property name="update_policy">if-valid</property>
                           </object>
                           <packing>
-                            <property name="left_attach">5</property>
+                            <property name="left_attach">6</property>
                             <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkSpinButton">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
+                            <property name="width_chars">10</property>
+                            <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
+                            <property name="secondary_icon_activatable">False</property>
+                            <property name="input_purpose">number</property>
+                            <property name="orientation">vertical</property>
+                            <property name="adjustment">range1</property>
+                            <property name="numeric">True</property>
+                            <property name="update_policy">if-valid</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">2</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
+                            <property name="label" translatable="yes">Reduction</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">2</property>
+                            <property name="top_attach">0</property>
                           </packing>
                         </child>
                       </object>
@@ -1089,7 +1176,7 @@
                             <property name="can_focus">False</property>
                             <property name="halign">end</property>
                             <property name="valign">center</property>
-                            <property name="label" translatable="yes">Compression</property>
+                            <property name="label" translatable="yes">Gating</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -1097,7 +1184,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLevelBar" id="compression1">
+                          <object class="GtkLevelBar" id="gating1">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="valign">center</property>
@@ -1110,7 +1197,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="compression1_label">
+                          <object class="GtkLabel" id="gating1_label">
                             <property name="visible">True</property>
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
@@ -1323,7 +1410,7 @@
                             <property name="label" translatable="yes">Threshold</property>
                           </object>
                           <packing>
-                            <property name="left_attach">2</property>
+                            <property name="left_attach">3</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -1344,7 +1431,7 @@
                             <property name="value">-12</property>
                           </object>
                           <packing>
-                            <property name="left_attach">2</property>
+                            <property name="left_attach">3</property>
                             <property name="top_attach">1</property>
                           </packing>
                         </child>
@@ -1357,7 +1444,7 @@
                             <property name="label" translatable="yes">Ratio</property>
                           </object>
                           <packing>
-                            <property name="left_attach">3</property>
+                            <property name="left_attach">4</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -1377,7 +1464,7 @@
                             <property name="value">2</property>
                           </object>
                           <packing>
-                            <property name="left_attach">3</property>
+                            <property name="left_attach">4</property>
                             <property name="top_attach">1</property>
                           </packing>
                         </child>
@@ -1390,7 +1477,7 @@
                             <property name="label" translatable="yes">Knee</property>
                           </object>
                           <packing>
-                            <property name="left_attach">4</property>
+                            <property name="left_attach">5</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -1412,7 +1499,7 @@
                             <property name="value">9</property>
                           </object>
                           <packing>
-                            <property name="left_attach">4</property>
+                            <property name="left_attach">5</property>
                             <property name="top_attach">1</property>
                           </packing>
                         </child>
@@ -1425,7 +1512,7 @@
                             <property name="label" translatable="yes">Makeup</property>
                           </object>
                           <packing>
-                            <property name="left_attach">5</property>
+                            <property name="left_attach">6</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -1447,8 +1534,41 @@
                             <property name="update_policy">if-valid</property>
                           </object>
                           <packing>
-                            <property name="left_attach">5</property>
+                            <property name="left_attach">6</property>
                             <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkSpinButton">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
+                            <property name="width_chars">10</property>
+                            <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
+                            <property name="secondary_icon_activatable">False</property>
+                            <property name="input_purpose">number</property>
+                            <property name="orientation">vertical</property>
+                            <property name="adjustment">range2</property>
+                            <property name="numeric">True</property>
+                            <property name="update_policy">if-valid</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">2</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
+                            <property name="label" translatable="yes">Reduction</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">2</property>
+                            <property name="top_attach">0</property>
                           </packing>
                         </child>
                       </object>
@@ -1467,7 +1587,7 @@
                             <property name="can_focus">False</property>
                             <property name="halign">end</property>
                             <property name="valign">center</property>
-                            <property name="label" translatable="yes">Compression</property>
+                            <property name="label" translatable="yes">Gating</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -1475,7 +1595,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLevelBar" id="compression2">
+                          <object class="GtkLevelBar" id="gating2">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="valign">center</property>
@@ -1488,7 +1608,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="compression2_label">
+                          <object class="GtkLabel" id="gating2_label">
                             <property name="visible">True</property>
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
@@ -1701,7 +1821,7 @@
                             <property name="label" translatable="yes">Threshold</property>
                           </object>
                           <packing>
-                            <property name="left_attach">2</property>
+                            <property name="left_attach">3</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -1722,7 +1842,7 @@
                             <property name="value">-12</property>
                           </object>
                           <packing>
-                            <property name="left_attach">2</property>
+                            <property name="left_attach">3</property>
                             <property name="top_attach">1</property>
                           </packing>
                         </child>
@@ -1735,7 +1855,7 @@
                             <property name="label" translatable="yes">Ratio</property>
                           </object>
                           <packing>
-                            <property name="left_attach">3</property>
+                            <property name="left_attach">4</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -1755,7 +1875,7 @@
                             <property name="value">2</property>
                           </object>
                           <packing>
-                            <property name="left_attach">3</property>
+                            <property name="left_attach">4</property>
                             <property name="top_attach">1</property>
                           </packing>
                         </child>
@@ -1768,7 +1888,7 @@
                             <property name="label" translatable="yes">Knee</property>
                           </object>
                           <packing>
-                            <property name="left_attach">4</property>
+                            <property name="left_attach">5</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -1790,7 +1910,7 @@
                             <property name="value">9</property>
                           </object>
                           <packing>
-                            <property name="left_attach">4</property>
+                            <property name="left_attach">5</property>
                             <property name="top_attach">1</property>
                           </packing>
                         </child>
@@ -1803,7 +1923,7 @@
                             <property name="label" translatable="yes">Makeup</property>
                           </object>
                           <packing>
-                            <property name="left_attach">5</property>
+                            <property name="left_attach">6</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -1825,8 +1945,41 @@
                             <property name="update_policy">if-valid</property>
                           </object>
                           <packing>
-                            <property name="left_attach">5</property>
+                            <property name="left_attach">6</property>
                             <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkSpinButton">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
+                            <property name="width_chars">10</property>
+                            <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
+                            <property name="secondary_icon_activatable">False</property>
+                            <property name="input_purpose">number</property>
+                            <property name="orientation">vertical</property>
+                            <property name="adjustment">range3</property>
+                            <property name="numeric">True</property>
+                            <property name="update_policy">if-valid</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">2</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
+                            <property name="label" translatable="yes">Reduction</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">2</property>
+                            <property name="top_attach">0</property>
                           </packing>
                         </child>
                       </object>
@@ -1845,7 +1998,7 @@
                             <property name="can_focus">False</property>
                             <property name="halign">end</property>
                             <property name="valign">center</property>
-                            <property name="label" translatable="yes">Compression</property>
+                            <property name="label" translatable="yes">Gating</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -1853,7 +2006,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLevelBar" id="compression3">
+                          <object class="GtkLevelBar" id="gating3">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="valign">center</property>
@@ -1866,7 +2019,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="compression3_label">
+                          <object class="GtkLabel" id="gating3_label">
                             <property name="visible">True</property>
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>

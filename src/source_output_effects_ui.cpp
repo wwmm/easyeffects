@@ -30,6 +30,8 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(
         "/com/github/wwmm/pulseeffects/ui/webrtc.glade");
     auto b_multiband_compressor = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/ui/multiband_compressor.glade");
+    auto b_multiband_gate = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/ui/multiband_gate.glade");
 
     b_limiter->get_widget_derived(
         "widgets_grid", limiter_ui,
@@ -61,6 +63,9 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(
     b_multiband_compressor->get_widget_derived(
         "widgets_grid", multiband_compressor_ui,
         "com.github.wwmm.pulseeffects.sourceoutputs.multibandcompressor");
+    b_multiband_gate->get_widget_derived(
+        "widgets_grid", multiband_gate_ui,
+        "com.github.wwmm.pulseeffects.sourceoutputs.multibandgate");
 
     stack->add(*limiter_ui, limiter_ui->name);
     stack->add(*compressor_ui, compressor_ui->name);
@@ -72,6 +77,7 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(
     stack->add(*pitch_ui, pitch_ui->name);
     stack->add(*webrtc_ui, webrtc_ui->name);
     stack->add(*multiband_compressor_ui, multiband_compressor_ui->name);
+    stack->add(*multiband_gate_ui, multiband_gate_ui->name);
 
     // populate listbox
 
@@ -85,6 +91,7 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(
     add_to_listbox(pitch_ui);
     add_to_listbox(webrtc_ui);
     add_to_listbox(multiband_compressor_ui);
+    add_to_listbox(multiband_gate_ui);
 
     level_meters_connections();
     up_down_connections();
@@ -202,6 +209,33 @@ void SourceOutputEffectsUi::level_meters_connections() {
     connections.push_back(soe->multiband_compressor->compression3.connect(
         sigc::mem_fun(*multiband_compressor_ui,
                       &MultibandCompressorUi::on_new_compression3)));
+
+    // multiband_gate level meters connections
+
+    connections.push_back(
+        soe->multiband_gate->input_level.connect(sigc::mem_fun(
+            *multiband_gate_ui, &MultibandGateUi::on_new_input_level)));
+    connections.push_back(
+        soe->multiband_gate->output_level.connect(sigc::mem_fun(
+            *multiband_gate_ui, &MultibandGateUi::on_new_output_level)));
+
+    connections.push_back(soe->multiband_gate->output0.connect(
+        sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_output0)));
+    connections.push_back(soe->multiband_gate->output1.connect(
+        sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_output1)));
+    connections.push_back(soe->multiband_gate->output2.connect(
+        sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_output2)));
+    connections.push_back(soe->multiband_gate->output3.connect(
+        sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_output3)));
+
+    connections.push_back(soe->multiband_gate->gating0.connect(
+        sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating0)));
+    connections.push_back(soe->multiband_gate->gating1.connect(
+        sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating1)));
+    connections.push_back(soe->multiband_gate->gating2.connect(
+        sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating2)));
+    connections.push_back(soe->multiband_gate->gating3.connect(
+        sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating3)));
 }
 
 void SourceOutputEffectsUi::up_down_connections() {
@@ -288,6 +322,13 @@ void SourceOutputEffectsUi::up_down_connections() {
     connections.push_back(
         multiband_compressor_ui->plugin_down->signal_clicked().connect(
             [=]() { on_down(multiband_compressor_ui); }));
+
+    connections.push_back(
+        multiband_gate_ui->plugin_up->signal_clicked().connect(
+            [=]() { on_up(multiband_gate_ui); }));
+    connections.push_back(
+        multiband_gate_ui->plugin_down->signal_clicked().connect(
+            [=]() { on_down(multiband_gate_ui); }));
 }
 
 void SourceOutputEffectsUi::reset() {
@@ -303,4 +344,5 @@ void SourceOutputEffectsUi::reset() {
     pitch_ui->reset();
     webrtc_ui->reset();
     multiband_compressor_ui->reset();
+    multiband_gate_ui->reset();
 }

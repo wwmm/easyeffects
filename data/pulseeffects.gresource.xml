@@ -6,7 +6,6 @@
     <file>ui/effects_base.glade</file>
     <file>ui/app_info.glade</file>
     <file>ui/limiter.glade</file>
-    <file>ui/expander.glade</file>
     <file>ui/compressor.glade</file>
     <file>ui/multiband_compressor.glade</file>
     <file>ui/filter.glade</file>
@@ -18,9 +17,11 @@
     <file>ui/stereo_enhancer.glade</file>
     <file>ui/panorama.glade</file>
     <file>ui/crossfeed.glade</file>
+    <file>ui/loudness.glade</file>
     <file>ui/maximizer.glade</file>
     <file>ui/delay.glade</file>
     <file>ui/gate.glade</file>
+    <file>ui/multiband_gate.glade</file>
     <file>ui/deesser.glade</file>
     <file>ui/pitch.glade</file>
     <file>ui/webrtc.glade</file>
@@ -50,5 +51,6 @@
     <file>presets/gstreamer_party.json</file>
     <file>presets/gstreamer_more_bass.json</file>
     <file>presets/gstreamer_more_bass_and_treble.json</file>
+    <file>presets/ziyad_perfecteq.json</file>
   </gresource>
 </gresources>

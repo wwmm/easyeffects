@@ -9,6 +9,7 @@
 #include "gate_ui.hpp"
 #include "limiter_ui.hpp"
 #include "multiband_compressor_ui.hpp"
+#include "multiband_gate_ui.hpp"
 #include "pitch_ui.hpp"
 #include "reverb_ui.hpp"
 #include "source_output_effects.hpp"
@@ -41,6 +42,7 @@ class SourceOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
     PitchUi* pitch_ui;
     WebrtcUi* webrtc_ui;
     MultibandCompressorUi* multiband_compressor_ui;
+    MultibandGateUi* multiband_gate_ui;
 
     void level_meters_connections();
     void up_down_connections();

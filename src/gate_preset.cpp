@@ -2,7 +2,9 @@
 
 GatePreset::GatePreset()
     : input_settings(Gio::Settings::create(
-          "com.github.wwmm.pulseeffects.sourceoutputs.gate")) {}
+          "com.github.wwmm.pulseeffects.sourceoutputs.gate")),
+      output_settings(Gio::Settings::create(
+          "com.github.wwmm.pulseeffects.sinkinputs.gate")) {}
 
 void GatePreset::save(boost::property_tree::ptree& root,
                       const std::string& section,
@@ -78,8 +80,10 @@ void GatePreset::load(boost::property_tree::ptree& root,
 
 void GatePreset::write(boost::property_tree::ptree& root) {
     save(root, "input", input_settings);
+    save(root, "output", output_settings);
 }
 
 void GatePreset::read(boost::property_tree::ptree& root) {
     load(root, "input", input_settings);
+    load(root, "output", output_settings);
 }
