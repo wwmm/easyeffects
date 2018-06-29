@@ -209,6 +209,8 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.loudness");
     gate = std::make_unique<Gate>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.gate");
+    multiband_gate = std::make_unique<MultibandGate>(
+        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.multibandgate");
 
     plugins.insert(std::make_pair(limiter->name, limiter->plugin));
     plugins.insert(std::make_pair(compressor->name, compressor->plugin));
@@ -227,6 +229,8 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
                                   multiband_compressor->plugin));
     plugins.insert(std::make_pair(loudness->name, loudness->plugin));
     plugins.insert(std::make_pair(gate->name, gate->plugin));
+    plugins.insert(
+        std::make_pair(multiband_gate->name, multiband_gate->plugin));
 
     add_plugins_to_pipeline();
 
