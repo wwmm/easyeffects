@@ -14,6 +14,7 @@
 #include "loudness_ui.hpp"
 #include "maximizer_ui.hpp"
 #include "multiband_compressor_ui.hpp"
+#include "multiband_gate_ui.hpp"
 #include "panorama_ui.hpp"
 #include "reverb_ui.hpp"
 #include "sink_input_effects.hpp"
@@ -51,6 +52,7 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
     MultibandCompressorUi* multiband_compressor_ui;
     LoudnessUi* loudness_ui;
     GateUi* gate_ui;
+    MultibandGateUi* multiband_gate_ui;
 
     void level_meters_connections();
     void up_down_connections();

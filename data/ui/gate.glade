@@ -666,7 +666,7 @@
                 <property name="halign">end</property>
                 <property name="valign">center</property>
                 <property name="margin_right">3</property>
-                <property name="label" translatable="yes">Reduction</property>
+                <property name="label" translatable="yes">Gating</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>

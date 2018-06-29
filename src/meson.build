@@ -49,6 +49,8 @@ pulseeffects_sources = [
 	'maximizer_ui.cpp',
 	'gate.cpp',
 	'gate_ui.cpp',
+	'multiband_gate.cpp',
+	'multiband_gate_ui.cpp',
 	'delay.cpp',
 	'delay_ui.cpp',
 	'deesser.cpp',
