@@ -4,7 +4,7 @@
 ### Added
 - Multiband gate plugin from Calf Studio
 - The so called "perfect eq" preset. Not that there really is something we can
-call perfect equalizer settings. But people like to use it as a starting point.
+call perfect equalizer preset. But people like to use it as a starting point.
 So I added it.
 
 ### Removed
