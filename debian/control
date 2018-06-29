@@ -29,7 +29,7 @@ Depends: ${misc:Depends},
          gstreamer1.0-plugins-good,
          gir1.2-gst-plugins-bad-1.0,
          gstreamer1.0-pulseaudio
-Recommends: calf-plugins,
+Recommends: calf-plugins (>= 0.90.0),
             zam-plugins,
             rubberband-ladspa,
             liblilv-0-0
