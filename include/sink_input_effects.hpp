@@ -20,6 +20,7 @@
 #include "pulse_manager.hpp"
 #include "reverb.hpp"
 #include "stereo_enhancer.hpp"
+#include "stereo_tools.hpp"
 
 class SinkInputEffects : public PipelineBase {
    public:
@@ -50,6 +51,7 @@ class SinkInputEffects : public PipelineBase {
     std::unique_ptr<Gate> gate;
     std::unique_ptr<MultibandGate> multiband_gate;
     std::unique_ptr<Deesser> deesser;
+    std::unique_ptr<StereoTools> stereo_tools;
 
     sigc::signal<void, std::array<double, 2>> compressor_input_level;
     sigc::signal<void, std::array<double, 2>> compressor_output_level;

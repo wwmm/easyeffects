@@ -5,8 +5,8 @@
             <default>
               ["limiter","gate","multiband_gate","filter","compressor",
               "multiband_compressor","bass_enhancer","exciter",
-              "stereo_enhancer","reverb","equalizer","deesser","panorama","crossfeed",
-              "delay","loudness","maximizer"]
+              "stereo_enhancer","stereo_tools","reverb","equalizer","deesser",
+              "panorama","crossfeed","delay","loudness","maximizer"]
             </default>
         </key>
     </schema>

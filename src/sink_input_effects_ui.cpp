@@ -45,6 +45,8 @@ SinkInputEffectsUi::SinkInputEffectsUi(
         "/com/github/wwmm/pulseeffects/ui/multiband_gate.glade");
     auto b_deesser = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/ui/deesser.glade");
+    auto b_stereo_tools = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/ui/stereo_tools.glade");
 
     b_limiter->get_widget_derived(
         "widgets_grid", limiter_ui,
@@ -96,6 +98,9 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     b_deesser->get_widget_derived(
         "widgets_grid", deesser_ui,
         "com.github.wwmm.pulseeffects.sinkinputs.deesser");
+    b_stereo_tools->get_widget_derived(
+        "widgets_grid", stereo_tools_ui,
+        "com.github.wwmm.pulseeffects.sinkinputs.stereotools");
 
     stack->add(*limiter_ui, limiter_ui->name);
     stack->add(*compressor_ui, compressor_ui->name);
@@ -114,6 +119,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     stack->add(*gate_ui, gate_ui->name);
     stack->add(*multiband_gate_ui, multiband_gate_ui->name);
     stack->add(*deesser_ui, deesser_ui->name);
+    stack->add(*stereo_tools_ui, stereo_tools_ui->name);
 
     // populate_listbox
 
@@ -134,6 +140,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     add_to_listbox(gate_ui);
     add_to_listbox(multiband_gate_ui);
     add_to_listbox(deesser_ui);
+    add_to_listbox(stereo_tools_ui);
 
     level_meters_connections();
     up_down_connections();
@@ -333,6 +340,13 @@ void SinkInputEffectsUi::level_meters_connections() {
         sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_compression)));
     connections.push_back(sie->deesser->detected.connect(
         sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_detected)));
+
+    // stereo_tools level meters connections
+
+    connections.push_back(sie->stereo_tools->input_level.connect(
+        sigc::mem_fun(*stereo_tools_ui, &StereoToolsUi::on_new_input_level)));
+    connections.push_back(sie->stereo_tools->output_level.connect(
+        sigc::mem_fun(*stereo_tools_ui, &StereoToolsUi::on_new_output_level)));
 }
 
 void SinkInputEffectsUi::up_down_connections() {
@@ -459,6 +473,12 @@ void SinkInputEffectsUi::up_down_connections() {
         [=]() { on_up(deesser_ui); }));
     connections.push_back(deesser_ui->plugin_down->signal_clicked().connect(
         [=]() { on_down(deesser_ui); }));
+
+    connections.push_back(stereo_tools_ui->plugin_up->signal_clicked().connect(
+        [=]() { on_up(stereo_tools_ui); }));
+    connections.push_back(
+        stereo_tools_ui->plugin_down->signal_clicked().connect(
+            [=]() { on_down(stereo_tools_ui); }));
 }
 
 void SinkInputEffectsUi::reset() {
@@ -481,4 +501,5 @@ void SinkInputEffectsUi::reset() {
     gate_ui->reset();
     multiband_gate_ui->reset();
     deesser_ui->reset();
+    stereo_tools_ui->reset();
 }

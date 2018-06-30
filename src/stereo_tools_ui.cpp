@@ -63,6 +63,7 @@ StereoToolsUi::StereoToolsUi(BaseObjectType* cobject,
     builder->get_widget("muter", muter);
     builder->get_widget("phasel", phasel);
     builder->get_widget("phaser", phaser);
+    builder->get_widget("mode", mode);
 
     get_object(builder, "input_gain", input_gain);
     get_object(builder, "output_gain", output_gain);
@@ -90,16 +91,16 @@ StereoToolsUi::StereoToolsUi(BaseObjectType* cobject,
     settings->bind("phaser", phaser, "active", flag);
     settings->bind("input-gain", input_gain.get(), "value", flag);
     settings->bind("output-gain", output_gain.get(), "value", flag);
-    settings->bind("balance_in", balance_in.get(), "value", flag);
-    settings->bind("balance_out", balance_out.get(), "active", flag);
-    settings->bind("slev", slev.get(), "active", flag);
-    settings->bind("sbal", sbal.get(), "active", flag);
+    settings->bind("balance-in", balance_in.get(), "value", flag);
+    settings->bind("balance-out", balance_out.get(), "value", flag);
+    settings->bind("slev", slev.get(), "value", flag);
+    settings->bind("sbal", sbal.get(), "value", flag);
     settings->bind("mlev", mlev.get(), "value", flag);
     settings->bind("mpan", mpan.get(), "value", flag);
-    settings->bind("stereo_base", stereo_base.get(), "value", flag);
+    settings->bind("stereo-base", stereo_base.get(), "value", flag);
     settings->bind("delay", delay.get(), "value", flag);
-    settings->bind("sc_level", sc_level.get(), "value", flag);
-    settings->bind("stereo_phase", stereo_phase.get(), "value", flag);
+    settings->bind("sc-level", sc_level.get(), "value", flag);
+    settings->bind("stereo-phase", stereo_phase.get(), "value", flag);
 
     g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(),
                                  "active", G_SETTINGS_BIND_DEFAULT,

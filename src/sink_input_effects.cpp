@@ -217,6 +217,8 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.multibandgate");
     deesser = std::make_unique<Deesser>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.deesser");
+    stereo_tools = std::make_unique<StereoTools>(
+        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.stereotools");
 
     plugins.insert(std::make_pair(limiter->name, limiter->plugin));
     plugins.insert(std::make_pair(compressor->name, compressor->plugin));
@@ -238,6 +240,7 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
     plugins.insert(
         std::make_pair(multiband_gate->name, multiband_gate->plugin));
     plugins.insert(std::make_pair(deesser->name, deesser->plugin));
+    plugins.insert(std::make_pair(stereo_tools->name, stereo_tools->plugin));
 
     add_plugins_to_pipeline();
 

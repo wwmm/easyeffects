@@ -20,6 +20,7 @@
 #include "reverb_ui.hpp"
 #include "sink_input_effects.hpp"
 #include "stereo_enhancer_ui.hpp"
+#include "stereo_tools_ui.hpp"
 
 class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
    public:
@@ -55,6 +56,7 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
     GateUi* gate_ui;
     MultibandGateUi* multiband_gate_ui;
     DeesserUi* deesser_ui;
+    StereoToolsUi* stereo_tools_ui;
 
     void level_meters_connections();
     void up_down_connections();
