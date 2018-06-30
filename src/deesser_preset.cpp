@@ -2,7 +2,9 @@
 
 DeesserPreset::DeesserPreset()
     : input_settings(Gio::Settings::create(
-          "com.github.wwmm.pulseeffects.sourceoutputs.deesser")) {}
+          "com.github.wwmm.pulseeffects.sourceoutputs.deesser")),
+      output_settings(Gio::Settings::create(
+          "com.github.wwmm.pulseeffects.sinkinputs.deesser")) {}
 
 void DeesserPreset::save(boost::property_tree::ptree& root,
                          const std::string& section,
@@ -98,8 +100,10 @@ void DeesserPreset::load(boost::property_tree::ptree& root,
 
 void DeesserPreset::write(boost::property_tree::ptree& root) {
     save(root, "input", input_settings);
+    save(root, "output", output_settings);
 }
 
 void DeesserPreset::read(boost::property_tree::ptree& root) {
     load(root, "input", input_settings);
+    load(root, "output", output_settings);
 }

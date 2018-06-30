@@ -4,6 +4,7 @@
 #include "bass_enhancer_ui.hpp"
 #include "compressor_ui.hpp"
 #include "crossfeed_ui.hpp"
+#include "deesser_ui.hpp"
 #include "delay_ui.hpp"
 #include "effects_base_ui.hpp"
 #include "equalizer_ui.hpp"
@@ -53,6 +54,7 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
     LoudnessUi* loudness_ui;
     GateUi* gate_ui;
     MultibandGateUi* multiband_gate_ui;
+    DeesserUi* deesser_ui;
 
     void level_meters_connections();
     void up_down_connections();

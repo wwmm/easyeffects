@@ -86,6 +86,7 @@ DeesserUi::DeesserUi(BaseObjectType* cobject,
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
     settings->bind("installed", this, "sensitive", flag);
+    settings->bind("sc-listen", sc_listen, "active", flag);
     settings->bind("makeup", makeup.get(), "value", flag);
     settings->bind("ratio", ratio.get(), "value", flag);
     settings->bind("threshold", threshold.get(), "value", flag);

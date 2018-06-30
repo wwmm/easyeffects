@@ -43,6 +43,8 @@ SinkInputEffectsUi::SinkInputEffectsUi(
         "/com/github/wwmm/pulseeffects/ui/gate.glade");
     auto b_multiband_gate = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/ui/multiband_gate.glade");
+    auto b_deesser = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/ui/deesser.glade");
 
     b_limiter->get_widget_derived(
         "widgets_grid", limiter_ui,
@@ -91,6 +93,9 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     b_multiband_gate->get_widget_derived(
         "widgets_grid", multiband_gate_ui,
         "com.github.wwmm.pulseeffects.sinkinputs.multibandgate");
+    b_deesser->get_widget_derived(
+        "widgets_grid", deesser_ui,
+        "com.github.wwmm.pulseeffects.sinkinputs.deesser");
 
     stack->add(*limiter_ui, limiter_ui->name);
     stack->add(*compressor_ui, compressor_ui->name);
@@ -108,6 +113,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     stack->add(*loudness_ui, loudness_ui->name);
     stack->add(*gate_ui, gate_ui->name);
     stack->add(*multiband_gate_ui, multiband_gate_ui->name);
+    stack->add(*deesser_ui, deesser_ui->name);
 
     // populate_listbox
 
@@ -127,6 +133,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     add_to_listbox(loudness_ui);
     add_to_listbox(gate_ui);
     add_to_listbox(multiband_gate_ui);
+    add_to_listbox(deesser_ui);
 
     level_meters_connections();
     up_down_connections();
@@ -315,6 +322,17 @@ void SinkInputEffectsUi::level_meters_connections() {
         sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating2)));
     connections.push_back(sie->multiband_gate->gating3.connect(
         sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating3)));
+
+    // deesser level meters connections
+
+    connections.push_back(sie->deesser_input_level.connect(
+        sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_input_level_db)));
+    connections.push_back(sie->deesser_output_level.connect(
+        sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_output_level_db)));
+    connections.push_back(sie->deesser->compression.connect(
+        sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_compression)));
+    connections.push_back(sie->deesser->detected.connect(
+        sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_detected)));
 }
 
 void SinkInputEffectsUi::up_down_connections() {
@@ -436,6 +454,11 @@ void SinkInputEffectsUi::up_down_connections() {
     connections.push_back(
         multiband_gate_ui->plugin_down->signal_clicked().connect(
             [=]() { on_down(multiband_gate_ui); }));
+
+    connections.push_back(deesser_ui->plugin_up->signal_clicked().connect(
+        [=]() { on_up(deesser_ui); }));
+    connections.push_back(deesser_ui->plugin_down->signal_clicked().connect(
+        [=]() { on_down(deesser_ui); }));
 }
 
 void SinkInputEffectsUi::reset() {
@@ -457,4 +480,5 @@ void SinkInputEffectsUi::reset() {
     loudness_ui->reset();
     gate_ui->reset();
     multiband_gate_ui->reset();
+    deesser_ui->reset();
 }

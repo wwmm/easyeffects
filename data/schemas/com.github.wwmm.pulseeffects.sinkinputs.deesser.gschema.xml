@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="com.github.wwmm.pulseeffects.sinkinputs.deesser" path="/com/github/wwmm/pulseeffects/sinkinputs/deesser/">
+        <key name="state" type="b">
+            <default>false</default>
+        </key>
+        <key name="installed" type="b">
+            <default>false</default>
+        </key>
+        <key name="post-messages" type="b">
+            <default>false</default>
+        </key>
+        <key name="detection" enum="com.github.wwmm.pulseeffects.deesser.detection.enum">
+            <default>"RMS"</default>
+        </key>
+        <key name="mode" enum="com.github.wwmm.pulseeffects.deesser.mode.enum">
+            <default>"Wide"</default>
+        </key>
+        <key name="threshold" type="d">
+            <range min="-60.0" max="0"/>
+            <default>-18</default>
+        </key>
+        <key name="ratio" type="d">
+            <range min="1" max="20"/>
+            <default>3</default>
+        </key>
+        <key name="laxity" type="i">
+            <range min="1" max="100"/>
+            <default>15</default>
+        </key>
+        <key name="makeup" type="d">
+            <range min="0" max="36"/>
+            <default>0.0</default>
+        </key>
+        <key name="f1-freq" type="d">
+            <range min="10" max="18000"/>
+            <default>6000</default>
+        </key>
+        <key name="f2-freq" type="d">
+            <range min="10" max="18000"/>
+            <default>4500</default>
+        </key>
+        <key name="f1-level" type="d">
+            <range min="-24" max="24"/>
+            <default>0.0</default>
+        </key>
+        <key name="f2-level" type="d">
+            <range min="-24" max="24"/>
+            <default>12</default>
+        </key>
+        <key name="f2-q" type="d">
+            <default>1</default>
+        </key>
+        <key name="sc-listen" type="b">
+            <default>false</default>
+        </key>
+    </schema>
+</schemalist>

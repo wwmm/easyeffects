@@ -4,6 +4,7 @@
 #include "bass_enhancer.hpp"
 #include "compressor.hpp"
 #include "crossfeed.hpp"
+#include "deesser.hpp"
 #include "delay.hpp"
 #include "equalizer.hpp"
 #include "exciter.hpp"
@@ -48,6 +49,7 @@ class SinkInputEffects : public PipelineBase {
     std::unique_ptr<Loudness> loudness;
     std::unique_ptr<Gate> gate;
     std::unique_ptr<MultibandGate> multiband_gate;
+    std::unique_ptr<Deesser> deesser;
 
     sigc::signal<void, std::array<double, 2>> compressor_input_level;
     sigc::signal<void, std::array<double, 2>> compressor_output_level;
@@ -69,6 +71,8 @@ class SinkInputEffects : public PipelineBase {
     sigc::signal<void, std::array<double, 2>> loudness_output_level;
     sigc::signal<void, std::array<double, 2>> gate_input_level;
     sigc::signal<void, std::array<double, 2>> gate_output_level;
+    sigc::signal<void, std::array<double, 2>> deesser_input_level;
+    sigc::signal<void, std::array<double, 2>> deesser_output_level;
 
    private:
     GSettings* sie_settings;

@@ -50,6 +50,10 @@ void on_message_element(const GstBus* gst_bus,
         sie->gate_input_level.emit(sie->get_peak(message));
     } else if (src_name == std::string("gate_output_level")) {
         sie->gate_output_level.emit(sie->get_peak(message));
+    } else if (src_name == std::string("deesser_input_level")) {
+        sie->deesser_input_level.emit(sie->get_peak(message));
+    } else if (src_name == std::string("deesser_output_level")) {
+        sie->deesser_output_level.emit(sie->get_peak(message));
     }
 }
 
@@ -211,6 +215,8 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.gate");
     multiband_gate = std::make_unique<MultibandGate>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.multibandgate");
+    deesser = std::make_unique<Deesser>(
+        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.deesser");
 
     plugins.insert(std::make_pair(limiter->name, limiter->plugin));
     plugins.insert(std::make_pair(compressor->name, compressor->plugin));
@@ -231,6 +237,7 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
     plugins.insert(std::make_pair(gate->name, gate->plugin));
     plugins.insert(
         std::make_pair(multiband_gate->name, multiband_gate->plugin));
+    plugins.insert(std::make_pair(deesser->name, deesser->plugin));
 
     add_plugins_to_pipeline();
 
