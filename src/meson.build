@@ -54,6 +54,7 @@ pulseeffects_sources = [
 	'delay.cpp',
 	'delay_ui.cpp',
 	'stereo_tools.cpp',
+	'stereo_tools_ui.cpp',
 	'deesser.cpp',
 	'deesser_ui.cpp',
 	'pitch.cpp',

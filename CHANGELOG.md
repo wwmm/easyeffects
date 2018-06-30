@@ -8,6 +8,7 @@ call perfect equalizer preset. But people like to use it as a starting point.
 So I added it.
 - Presets menu label shows the last selected preset when PulseEffects is
 restarted.
+- The Deesser can be used be used in both pipelines.
 
 ### Removed
 - Expander plugin. Reason: I thought it was open source but it is proprietary.
