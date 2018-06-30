@@ -44,9 +44,7 @@ void on_message_element(const GstBus* gst_bus,
         if (cs->measure_noise) {
             cs->noise = cs->spectrum_mag;
             cs->measure_noise = false;
-
-            Glib::signal_idle().connect_once(
-                [cs]() { cs->noise_measured.emit(); });
+            cs->noise_measured.emit();
         }
 
         if (cs->subtract_noise) {
