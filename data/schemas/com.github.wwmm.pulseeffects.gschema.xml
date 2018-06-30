@@ -132,6 +132,16 @@
         <value nick="Peak" value="1"/>
     </enum>
 
+    <enum id="com.github.wwmm.pulseeffects.stereotools.mode.enum">
+        <value nick="LR > LR (Stereo Default)" value="0"/>
+        <value nick="LR > MS (Stereo to Mid-Side)" value="1"/>
+        <value nick="MS > LR (Mid-Side to Stereo)" value="2"/>
+        <value nick="LR > LL (Mono Left Channel)" value="3"/>
+        <value nick="LR > RR (Mono Right Channel)" value="4"/>
+        <value nick="LR > L+R (Mono Sum L+R)" value="5"/>
+        <value nick="LR > RL (Stereo Flip Channels)" value="6"/>
+    </enum>
+
     <schema id="com.github.wwmm.pulseeffects" path="/com/github/wwmm/pulseeffects/">
         <key name="buffer-out" type="i">
             <default>200000</default>
