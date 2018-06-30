@@ -21,7 +21,7 @@ class CalibrationMic {
     uint spectrum_nbands = 3200, spectrum_nfreqs;
     uint spectrum_npoints = 300;  // number of points displayed
     float spline_f0, spline_df;
-    bool measure_noise, subtract_noise;
+    bool measure_noise = false, subtract_noise = false;
     std::vector<float> spectrum_freqs, spectrum_x_axis;
     std::vector<float> spectrum_mag_tmp, spectrum_mag, noise;
 

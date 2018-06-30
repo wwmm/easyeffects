@@ -66,8 +66,7 @@ void on_message_element(const GstBus* gst_bus,
                     (cs->spectrum_mag[n] - min_mag) / (max_mag - min_mag);
             }
 
-            Glib::signal_idle().connect_once(
-                [cs]() { cs->new_spectrum.emit(cs->spectrum_mag); });
+            cs->new_spectrum.emit(cs->spectrum_mag);
         }
     }
 }
@@ -157,6 +156,8 @@ CalibrationMic::~CalibrationMic() {
 
     gst_object_unref(bus);
     gst_object_unref(pipeline);
+
+    util::debug(log_tag + "destroyed");
 }
 
 void CalibrationMic::set_source_monitor_name(const std::string& name) {
