@@ -53,6 +53,7 @@ pulseeffects_sources = [
 	'multiband_gate_ui.cpp',
 	'delay.cpp',
 	'delay_ui.cpp',
+	'stereo_tools.cpp',
 	'deesser.cpp',
 	'deesser_ui.cpp',
 	'pitch.cpp',
