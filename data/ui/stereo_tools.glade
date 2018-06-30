@@ -196,8 +196,6 @@
               <object class="GtkStack" id="stack">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="hhomogeneous">False</property>
-                <property name="vhomogeneous">False</property>
                 <property name="transition_duration">250</property>
                 <property name="transition_type">slide-right</property>
                 <child>
@@ -263,6 +261,7 @@
                         <property name="input_purpose">number</property>
                         <property name="orientation">vertical</property>
                         <property name="adjustment">sc_level</property>
+                        <property name="digits">2</property>
                         <property name="numeric">True</property>
                         <property name="update_policy">if-valid</property>
                       </object>
