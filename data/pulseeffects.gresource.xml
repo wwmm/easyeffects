@@ -20,6 +20,7 @@
     <file>ui/loudness.glade</file>
     <file>ui/maximizer.glade</file>
     <file>ui/delay.glade</file>
+    <file>ui/stereo_tools.glade</file>
     <file>ui/gate.glade</file>
     <file>ui/multiband_gate.glade</file>
     <file>ui/deesser.glade</file>

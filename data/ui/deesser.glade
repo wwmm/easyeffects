@@ -394,8 +394,6 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="margin_left">30</property>
-                <property name="margin_right">30</property>
                 <property name="label" translatable="yes">Peak Q</property>
               </object>
               <packing>
