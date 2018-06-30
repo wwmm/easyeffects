@@ -23,6 +23,7 @@ Audio effects for Pulseaudio applications
 - Crossfeed
 - Filter (Lowpass, Highpass, Bandpass and Bandreject modes)
 - Stereo Enhancer
+- Stereo Tools
 - Loudness
 - Maximizer
 
