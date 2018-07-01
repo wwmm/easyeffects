@@ -80,6 +80,7 @@ pulseeffects_sources = [
 	'pitch_preset.cpp',
 	'reverb_preset.cpp',
 	'stereo_enhancer_preset.cpp',
+	'stereo_tools_preset.cpp',
 	'webrtc_preset.cpp',
 	'calibration_ui.cpp',
 	'calibration_signals_ui.cpp',

@@ -15,6 +15,10 @@ restarted.
 - Expander plugin. Reason: I thought it was open source but it is proprietary.
 As Calf Gate can be used as an expander it now replaces the plugin from
 Linux Studio
+- Delay plugin. Although its source is distributed its license has very annoying
+restriction that prohibits packagers to apply patches without the plugin author
+permission. As Calf Stereo Tools can be used to apply delays between the left
+and the right channels it now replaces the delay plugin from Linux Studio.
 
 ## [4.1.1]
 ### Added

@@ -447,7 +447,7 @@
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
                             <property name="valign">center</property>
-                            <property name="label" translatable="yes">Middle Pan</property>
+                            <property name="label" translatable="yes">Middle Panorama</property>
                           </object>
                           <packing>
                             <property name="left_attach">3</property>

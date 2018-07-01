@@ -22,6 +22,7 @@
 #include "pitch_preset.hpp"
 #include "reverb_preset.hpp"
 #include "stereo_enhancer_preset.hpp"
+#include "stereo_tools_preset.hpp"
 #include "webrtc_preset.hpp"
 
 class PresetsManager {
@@ -62,6 +63,7 @@ class PresetsManager {
     std::unique_ptr<MultibandCompressorPreset> multiband_compressor;
     std::unique_ptr<LoudnessPreset> loudness;
     std::unique_ptr<MultibandGatePreset> multiband_gate;
+    std::unique_ptr<StereoToolsPreset> stereo_tools;
 
     template <typename T>
     T get_default(const Glib::RefPtr<Gio::Settings>& settings,
