@@ -8,7 +8,7 @@
 - Stereo Tools plugin from Calf Studio
 - Presets menu label shows the last selected preset when PulseEffects is
 restarted.
-- The Deesser can be used be used in both pipelines.
+- The Deesser can be used in both pipelines.
 - The so called "perfect eq" preset. Not that there is something we can call
 a perfect equalizer preset. But people like to use it as a starting point.So I
 added it.
