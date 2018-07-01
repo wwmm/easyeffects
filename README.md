@@ -19,17 +19,20 @@ Audio effects for Pulseaudio applications
 - Bass Enhancer
 - Exciter
 - Reverberation
-- Delay
 - Crossfeed
 - Filter (Lowpass, Highpass, Bandpass and Bandreject modes)
 - Stereo Enhancer
 - Stereo Tools
 - Loudness
 - Maximizer
+- Gate
+- Multiband Gate
+- Deesser
 
 ### Applications input
 
 - Gate
+- Multiband Gate
 - Webrtc
 - Limiter
 - Compressor
