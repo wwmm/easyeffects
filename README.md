@@ -49,7 +49,6 @@ Version `1.12.5` or higher
 - [GStreamer Plugins Bad](https://github.com/GStreamer/gst-plugins-bad).
 Version `1.12.5` or higher
 - [Calf Studio Plugins](https://calf-studio-gear.org/). Version `0.90` or higher.
-- [Linux Studio Plugins](http://lsp-plug.in/)
 - [ZamAudio Plugins](http://www.zamaudio.com/)
 - [MDA.LV2](https://git.drobilla.net/cgit.cgi/mda.lv2.git/about/)
 

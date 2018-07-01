@@ -1,15 +1,20 @@
 # Changelog
 
 ## [Unreleased]
+
+## [4.1.2]
 ### Added
 - Multiband gate plugin from Calf Studio
 - Stereo Tools plugin from Calf Studio
-- The so called "perfect eq" preset. Not that there really is something we can
-call perfect equalizer preset. But people like to use it as a starting point.
-So I added it.
 - Presets menu label shows the last selected preset when PulseEffects is
 restarted.
 - The Deesser can be used be used in both pipelines.
+- The so called "perfect eq" preset. Not that there is something we can call
+a perfect equalizer preset. But people like to use it as a starting point.So I
+added it.
+
+### Fixed
+- Deesser "listen" control was not working.  
 
 ### Removed
 - Expander plugin. Reason: I thought it was open source but it is proprietary.
@@ -21,6 +26,10 @@ restriction that prohibits packagers to apply patches without the plugin author
 permission. As Calf Stereo Tools can be used to apply delays between the left
 and the right channels it now replaces the delay plugin from Linux Studio.
 - Panorama plugin. Its functionality is also offered by Calf Stereo Tools.
+
+### Packagers
+- For all the reasons explained above Linux Studio Plugins is not a dependency
+anymore and can be safely removed from the build scripts.
 
 ## [4.1.1]
 ### Added
