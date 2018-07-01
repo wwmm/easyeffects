@@ -13,10 +13,8 @@ data/ui/bass_enhancer.glade
 data/ui/exciter.glade
 data/ui/stereo_enhancer.glade
 data/ui/stereo_tools.glade
-data/ui/panorama.glade
 data/ui/crossfeed.glade
 data/ui/maximizer.glade
-data/ui/delay.glade
 data/ui/loudness.glade
 data/ui/gate.glade
 data/ui/multiband_gate.glade

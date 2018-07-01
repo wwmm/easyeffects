@@ -19,13 +19,11 @@ PresetsManager::PresetsManager()
       compressor(std::make_unique<CompressorPreset>()),
       crossfeed(std::make_unique<CrossfeedPreset>()),
       deesser(std::make_unique<DeesserPreset>()),
-      delay(std::make_unique<DelayPreset>()),
       equalizer(std::make_unique<EqualizerPreset>()),
       exciter(std::make_unique<ExciterPreset>()),
       filter(std::make_unique<FilterPreset>()),
       gate(std::make_unique<GatePreset>()),
       maximizer(std::make_unique<MaximizerPreset>()),
-      panorama(std::make_unique<PanoramaPreset>()),
       pitch(std::make_unique<PitchPreset>()),
       reverb(std::make_unique<ReverbPreset>()),
       stereo_enhancer(std::make_unique<StereoEnhancerPreset>()),
@@ -236,14 +234,12 @@ void PresetsManager::save(const std::string& name) {
     compressor->write(root);
     crossfeed->write(root);
     deesser->write(root);
-    delay->write(root);
     equalizer->write(root);
     exciter->write(root);
     filter->write(root);
     gate->write(root);
     limiter->write(root);
     maximizer->write(root);
-    panorama->write(root);
     pitch->write(root);
     reverb->write(root);
     stereo_enhancer->write(root);
@@ -343,14 +339,12 @@ void PresetsManager::load(const std::string& name) {
     compressor->read(root);
     crossfeed->read(root);
     deesser->read(root);
-    delay->read(root);
     equalizer->read(root);
     exciter->read(root);
     filter->read(root);
     gate->read(root);
     limiter->read(root);
     maximizer->read(root);
-    panorama->read(root);
     pitch->read(root);
     reverb->read(root);
     stereo_enhancer->read(root);

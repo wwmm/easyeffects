@@ -15,11 +15,9 @@
     <file>ui/bass_enhancer.glade</file>
     <file>ui/exciter.glade</file>
     <file>ui/stereo_enhancer.glade</file>
-    <file>ui/panorama.glade</file>
     <file>ui/crossfeed.glade</file>
     <file>ui/loudness.glade</file>
     <file>ui/maximizer.glade</file>
-    <file>ui/delay.glade</file>
     <file>ui/stereo_tools.glade</file>
     <file>ui/gate.glade</file>
     <file>ui/multiband_gate.glade</file>

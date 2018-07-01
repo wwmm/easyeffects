@@ -5,7 +5,6 @@
 #include "compressor_ui.hpp"
 #include "crossfeed_ui.hpp"
 #include "deesser_ui.hpp"
-#include "delay_ui.hpp"
 #include "effects_base_ui.hpp"
 #include "equalizer_ui.hpp"
 #include "exciter_ui.hpp"
@@ -16,7 +15,6 @@
 #include "maximizer_ui.hpp"
 #include "multiband_compressor_ui.hpp"
 #include "multiband_gate_ui.hpp"
-#include "panorama_ui.hpp"
 #include "reverb_ui.hpp"
 #include "sink_input_effects.hpp"
 #include "stereo_enhancer_ui.hpp"
@@ -47,10 +45,8 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
     BassEnhancerUi* bass_enhancer_ui;
     ExciterUi* exciter_ui;
     StereoEnhancerUi* stereo_enhancer_ui;
-    PanoramaUi* panorama_ui;
     CrossfeedUi* crossfeed_ui;
     MaximizerUi* maximizer_ui;
-    DelayUi* delay_ui;
     MultibandCompressorUi* multiband_compressor_ui;
     LoudnessUi* loudness_ui;
     GateUi* gate_ui;

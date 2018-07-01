@@ -27,14 +27,10 @@ SinkInputEffectsUi::SinkInputEffectsUi(
         "/com/github/wwmm/pulseeffects/ui/exciter.glade");
     auto b_stereo_enhancer = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/ui/stereo_enhancer.glade");
-    auto b_panorama = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/ui/panorama.glade");
     auto b_crossfeed = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/ui/crossfeed.glade");
     auto b_maximizer = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/ui/maximizer.glade");
-    auto b_delay = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/ui/delay.glade");
     auto b_multiband_compressor = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/ui/multiband_compressor.glade");
     auto b_loudness = Gtk::Builder::create_from_resource(
@@ -72,18 +68,12 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     b_stereo_enhancer->get_widget_derived(
         "widgets_grid", stereo_enhancer_ui,
         "com.github.wwmm.pulseeffects.sinkinputs.stereoenhancer");
-    b_panorama->get_widget_derived(
-        "widgets_grid", panorama_ui,
-        "com.github.wwmm.pulseeffects.sinkinputs.panorama");
     b_crossfeed->get_widget_derived(
         "widgets_grid", crossfeed_ui,
         "com.github.wwmm.pulseeffects.sinkinputs.crossfeed");
     b_maximizer->get_widget_derived(
         "widgets_grid", maximizer_ui,
         "com.github.wwmm.pulseeffects.sinkinputs.maximizer");
-    b_delay->get_widget_derived(
-        "widgets_grid", delay_ui,
-        "com.github.wwmm.pulseeffects.sinkinputs.delay");
     b_multiband_compressor->get_widget_derived(
         "widgets_grid", multiband_compressor_ui,
         "com.github.wwmm.pulseeffects.sinkinputs.multibandcompressor");
@@ -110,10 +100,8 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     stack->add(*bass_enhancer_ui, bass_enhancer_ui->name);
     stack->add(*exciter_ui, exciter_ui->name);
     stack->add(*stereo_enhancer_ui, stereo_enhancer_ui->name);
-    stack->add(*panorama_ui, panorama_ui->name);
     stack->add(*crossfeed_ui, crossfeed_ui->name);
     stack->add(*maximizer_ui, maximizer_ui->name);
-    stack->add(*delay_ui, delay_ui->name);
     stack->add(*multiband_compressor_ui, multiband_compressor_ui->name);
     stack->add(*loudness_ui, loudness_ui->name);
     stack->add(*gate_ui, gate_ui->name);
@@ -131,10 +119,8 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     add_to_listbox(bass_enhancer_ui);
     add_to_listbox(exciter_ui);
     add_to_listbox(stereo_enhancer_ui);
-    add_to_listbox(panorama_ui);
     add_to_listbox(crossfeed_ui);
     add_to_listbox(maximizer_ui);
-    add_to_listbox(delay_ui);
     add_to_listbox(multiband_compressor_ui);
     add_to_listbox(loudness_ui);
     add_to_listbox(gate_ui);
@@ -220,13 +206,6 @@ void SinkInputEffectsUi::level_meters_connections() {
         sie->stereo_enhancer->side_level.connect(sigc::mem_fun(
             *stereo_enhancer_ui, &StereoEnhancerUi::on_new_side_level)));
 
-    // panorama level meters connections
-
-    connections.push_back(sie->panorama_input_level.connect(
-        sigc::mem_fun(*panorama_ui, &PanoramaUi::on_new_input_level_db)));
-    connections.push_back(sie->panorama_output_level.connect(
-        sigc::mem_fun(*panorama_ui, &PanoramaUi::on_new_output_level_db)));
-
     // crossfeed level meters connections
 
     connections.push_back(sie->crossfeed_input_level.connect(
@@ -242,15 +221,6 @@ void SinkInputEffectsUi::level_meters_connections() {
         sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_output_level_db)));
     connections.push_back(sie->maximizer->reduction.connect(
         sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_reduction)));
-
-    // delay level meters connections
-
-    connections.push_back(sie->delay_input_level.connect(
-        sigc::mem_fun(*delay_ui, &DelayUi::on_new_input_level_db)));
-    connections.push_back(sie->delay_output_level.connect(
-        sigc::mem_fun(*delay_ui, &DelayUi::on_new_output_level_db)));
-    connections.push_back(sie->delay->tempo.connect(
-        sigc::mem_fun(*delay_ui, &DelayUi::on_new_tempo)));
 
     // multiband_compressor level meters connections
 
@@ -425,11 +395,6 @@ void SinkInputEffectsUi::up_down_connections() {
         stereo_enhancer_ui->plugin_down->signal_clicked().connect(
             [=]() { on_down(stereo_enhancer_ui); }));
 
-    connections.push_back(panorama_ui->plugin_up->signal_clicked().connect(
-        [=]() { on_up(panorama_ui); }));
-    connections.push_back(panorama_ui->plugin_down->signal_clicked().connect(
-        [=]() { on_down(panorama_ui); }));
-
     connections.push_back(crossfeed_ui->plugin_up->signal_clicked().connect(
         [=]() { on_up(crossfeed_ui); }));
     connections.push_back(crossfeed_ui->plugin_down->signal_clicked().connect(
@@ -439,11 +404,6 @@ void SinkInputEffectsUi::up_down_connections() {
         [=]() { on_up(maximizer_ui); }));
     connections.push_back(maximizer_ui->plugin_down->signal_clicked().connect(
         [=]() { on_down(maximizer_ui); }));
-
-    connections.push_back(delay_ui->plugin_up->signal_clicked().connect(
-        [=]() { on_up(delay_ui); }));
-    connections.push_back(delay_ui->plugin_down->signal_clicked().connect(
-        [=]() { on_down(delay_ui); }));
 
     connections.push_back(
         multiband_compressor_ui->plugin_up->signal_clicked().connect(
@@ -492,10 +452,8 @@ void SinkInputEffectsUi::reset() {
     bass_enhancer_ui->reset();
     exciter_ui->reset();
     stereo_enhancer_ui->reset();
-    panorama_ui->reset();
     crossfeed_ui->reset();
     maximizer_ui->reset();
-    delay_ui->reset();
     multiband_compressor_ui->reset();
     loudness_ui->reset();
     gate_ui->reset();

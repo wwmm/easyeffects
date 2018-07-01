@@ -8,7 +8,6 @@
 #include "compressor_preset.hpp"
 #include "crossfeed_preset.hpp"
 #include "deesser_preset.hpp"
-#include "delay_preset.hpp"
 #include "equalizer_preset.hpp"
 #include "exciter_preset.hpp"
 #include "filter_preset.hpp"
@@ -18,7 +17,6 @@
 #include "maximizer_preset.hpp"
 #include "multiband_compressor_preset.hpp"
 #include "multiband_gate_preset.hpp"
-#include "panorama_preset.hpp"
 #include "pitch_preset.hpp"
 #include "reverb_preset.hpp"
 #include "stereo_enhancer_preset.hpp"
@@ -49,13 +47,11 @@ class PresetsManager {
     std::unique_ptr<CompressorPreset> compressor;
     std::unique_ptr<CrossfeedPreset> crossfeed;
     std::unique_ptr<DeesserPreset> deesser;
-    std::unique_ptr<DelayPreset> delay;
     std::unique_ptr<EqualizerPreset> equalizer;
     std::unique_ptr<ExciterPreset> exciter;
     std::unique_ptr<FilterPreset> filter;
     std::unique_ptr<GatePreset> gate;
     std::unique_ptr<MaximizerPreset> maximizer;
-    std::unique_ptr<PanoramaPreset> panorama;
     std::unique_ptr<PitchPreset> pitch;
     std::unique_ptr<ReverbPreset> reverb;
     std::unique_ptr<StereoEnhancerPreset> stereo_enhancer;

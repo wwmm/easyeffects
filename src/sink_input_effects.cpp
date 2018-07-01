@@ -26,10 +26,6 @@ void on_message_element(const GstBus* gst_bus,
         sie->exciter_input_level.emit(sie->get_peak(message));
     } else if (src_name == std::string("exciter_output_level")) {
         sie->exciter_output_level.emit(sie->get_peak(message));
-    } else if (src_name == std::string("panorama_input_level")) {
-        sie->panorama_input_level.emit(sie->get_peak(message));
-    } else if (src_name == std::string("panorama_output_level")) {
-        sie->panorama_output_level.emit(sie->get_peak(message));
     } else if (src_name == std::string("crossfeed_input_level")) {
         sie->crossfeed_input_level.emit(sie->get_peak(message));
     } else if (src_name == std::string("crossfeed_output_level")) {
@@ -38,10 +34,6 @@ void on_message_element(const GstBus* gst_bus,
         sie->maximizer_input_level.emit(sie->get_peak(message));
     } else if (src_name == std::string("maximizer_output_level")) {
         sie->maximizer_output_level.emit(sie->get_peak(message));
-    } else if (src_name == std::string("delay_input_level")) {
-        sie->delay_input_level.emit(sie->get_peak(message));
-    } else if (src_name == std::string("delay_output_level")) {
-        sie->delay_output_level.emit(sie->get_peak(message));
     } else if (src_name == std::string("loudness_input_level")) {
         sie->loudness_input_level.emit(sie->get_peak(message));
     } else if (src_name == std::string("loudness_output_level")) {
@@ -199,14 +191,10 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.exciter");
     stereo_enhancer = std::make_unique<StereoEnhancer>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.stereoenhancer");
-    panorama = std::make_unique<Panorama>(
-        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.panorama");
     crossfeed = std::make_unique<Crossfeed>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.crossfeed");
     maximizer = std::make_unique<Maximizer>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.maximizer");
-    delay = std::make_unique<Delay>(
-        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.delay");
     multiband_compressor = std::make_unique<MultibandCompressor>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.multibandcompressor");
     loudness = std::make_unique<Loudness>(
@@ -229,10 +217,8 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
     plugins.insert(std::make_pair(exciter->name, exciter->plugin));
     plugins.insert(
         std::make_pair(stereo_enhancer->name, stereo_enhancer->plugin));
-    plugins.insert(std::make_pair(panorama->name, panorama->plugin));
     plugins.insert(std::make_pair(crossfeed->name, crossfeed->plugin));
     plugins.insert(std::make_pair(maximizer->name, maximizer->plugin));
-    plugins.insert(std::make_pair(delay->name, delay->plugin));
     plugins.insert(std::make_pair(multiband_compressor->name,
                                   multiband_compressor->plugin));
     plugins.insert(std::make_pair(loudness->name, loudness->plugin));
