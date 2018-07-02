@@ -4,7 +4,7 @@ Format: http://dep.debian.net/deps/dep5
 Upstream-Name: pulseeffects
 Upstream-Contact: Wellington Wallace <wellingtonwallace@gmail.com>
 Source: https://github.com/wwmm/pulseeffects
-Debianized by Mikhail Novosyolov <mikhailnov@nixtux.ru>
+Debianized by Mikhail Novosyolov <mikhailnov@dumalogiya.ru>
 
 License: GPL-3.0+
  This program is free software: you can redistribute it and/or modify
