@@ -6,7 +6,7 @@
               ["limiter","gate","multiband_gate","filter","compressor",
               "multiband_compressor","bass_enhancer","exciter",
               "stereo_enhancer","stereo_tools","reverb","equalizer","deesser",
-              "crossfeed","loudness","maximizer"]
+              "crossfeed","loudness","convolver","maximizer"]
             </default>
         </key>
     </schema>

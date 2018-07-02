@@ -22,7 +22,7 @@ Convolver::Convolver(const std::string& tag, const std::string& schema)
         gst_element_link_many(input_gain, in_level, audioconvert, convolver,
                               output_gain, out_level, nullptr);
 
-        auto pad_sink = gst_element_get_static_pad(in_level, "sink");
+        auto pad_sink = gst_element_get_static_pad(input_gain, "sink");
         auto pad_src = gst_element_get_static_pad(out_level, "src");
 
         gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
@@ -30,8 +30,6 @@ Convolver::Convolver(const std::string& tag, const std::string& schema)
 
         gst_object_unref(GST_OBJECT(pad_sink));
         gst_object_unref(GST_OBJECT(pad_src));
-
-        g_object_set(convolver, "bypass", false, nullptr);
 
         bind_to_gsettings();
 
