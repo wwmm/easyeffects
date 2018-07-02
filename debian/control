@@ -2,9 +2,9 @@ Source: pulseeffects
 Section: sound
 Priority: optional
 Maintainer: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>
-Standards-Version: 3.9.6
+Standards-Version: 4.1.4
 Homepage: https://github.com/wwmm/pulseeffects
-Build-Depends: debhelper (>=10),
+Build-Depends: debhelper (>=11),
                meson (>=0.40),
                pkg-config,
                libgstreamer1.0-dev (>= 1.12.5),

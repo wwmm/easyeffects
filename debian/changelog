@@ -1,3 +1,12 @@
+pulseeffects (4.1.2-1) unstable; urgency=low
+
+  * update to version 4.1.2 upstream
+  * Preparing to get this package into Debian repository
+  * debian/compat: bump version 10 to 11
+  * debian/control: bump Standards-Version from 3.9.6 to 4.1.4
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Fri, 29 Jun 2018 18:45:00 +0300 
+ 
 pulseeffects (4.1.1-3) unstable; urgency=low
 
   * version dependency 'calf-plugins (>= 0.90.0)' to fix https://github.com/wwmm/pulseeffects/issues/227
