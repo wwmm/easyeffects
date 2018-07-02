@@ -1,11 +1,10 @@
+Copyright 2017-2018 Wellington Wallace <wellingtonwallace@gmail.com>
+
 Format: http://dep.debian.net/deps/dep5
 Upstream-Name: pulseeffects
 Upstream-Contact: Wellington Wallace <wellingtonwallace@gmail.com>
 Source: https://github.com/wwmm/pulseeffects
-
-Files: *
-Copyright: Wellington Wallace
-License: GPL-3.0+
+Debianized by Mikhail Novosyolov <mikhailnov@nixtux.ru>
 
 License: GPL-3.0+
  This program is free software: you can redistribute it and/or modify
