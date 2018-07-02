@@ -46,6 +46,10 @@ void on_message_element(const GstBus* gst_bus,
         sie->deesser_input_level.emit(sie->get_peak(message));
     } else if (src_name == std::string("deesser_output_level")) {
         sie->deesser_output_level.emit(sie->get_peak(message));
+    } else if (src_name == std::string("convolver_input_level")) {
+        sie->convolver_input_level.emit(sie->get_peak(message));
+    } else if (src_name == std::string("convolver_output_level")) {
+        sie->convolver_output_level.emit(sie->get_peak(message));
     }
 }
 
@@ -207,6 +211,8 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.deesser");
     stereo_tools = std::make_unique<StereoTools>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.stereotools");
+    convolver = std::make_unique<Convolver>(
+        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.convolver");
 
     plugins.insert(std::make_pair(limiter->name, limiter->plugin));
     plugins.insert(std::make_pair(compressor->name, compressor->plugin));
@@ -227,6 +233,7 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
         std::make_pair(multiband_gate->name, multiband_gate->plugin));
     plugins.insert(std::make_pair(deesser->name, deesser->plugin));
     plugins.insert(std::make_pair(stereo_tools->name, stereo_tools->plugin));
+    plugins.insert(std::make_pair(convolver->name, convolver->plugin));
 
     add_plugins_to_pipeline();
 

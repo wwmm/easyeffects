@@ -1,5 +1,5 @@
-#ifndef FILTER_UI_HPP
-#define FILTER_UI_HPP
+#ifndef CONVOLVER_UI_HPP
+#define CONVOLVER_UI_HPP
 
 #include <gtkmm/grid.h>
 #include "plugin_ui_base.hpp"
