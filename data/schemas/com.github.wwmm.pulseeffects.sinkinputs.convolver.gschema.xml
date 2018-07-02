@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-    <schema id="com.github.wwmm.pulseeffects.sinkinputs.panorama" path="/com/github/wwmm/pulseeffects/sinkinputs/panorama/">
+    <schema id="com.github.wwmm.pulseeffects.sinkinputs.convolver" path="/com/github/wwmm/pulseeffects/sinkinputs/convolver/">
         <key name="state" type="b">
             <default>false</default>
         </key>
@@ -10,8 +10,12 @@
         <key name="post-messages" type="b">
             <default>false</default>
         </key>
-        <key name="position" type="d">
-            <range min="-1" max="1"/>
+        <key name="input-gain" type="d">
+            <range min="-36.1" max="36.1"/>
+            <default>0.0</default>
+        </key>
+        <key name="output-gain" type="d">
+            <range min="-36.1" max="36.1"/>
             <default>0.0</default>
         </key>
     </schema>

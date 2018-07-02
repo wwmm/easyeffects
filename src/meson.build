@@ -53,6 +53,7 @@ pulseeffects_sources = [
 	'stereo_tools_ui.cpp',
 	'deesser.cpp',
 	'deesser_ui.cpp',
+	'convolver.cpp',
 	'pitch.cpp',
 	'pitch_ui.cpp',
 	'webrtc.cpp',
