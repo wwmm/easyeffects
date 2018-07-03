@@ -84,14 +84,14 @@
     </child>
   </object>
   <object class="GtkAdjustment" id="input_gain">
-    <property name="lower">-36</property>
-    <property name="upper">36</property>
+    <property name="lower">-20</property>
+    <property name="upper">20</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="output_gain">
-    <property name="lower">-36</property>
-    <property name="upper">36</property>
+    <property name="lower">-20</property>
+    <property name="upper">20</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
