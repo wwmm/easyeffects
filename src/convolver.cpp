@@ -5,7 +5,7 @@
 
 namespace {
 
-int k_size = 32;
+int k_size = 1024;
 
 static void on_rate_changed(GstElement* element, gint rate, Convolver* l) {
     GValueArray* va;
@@ -25,7 +25,7 @@ static void on_rate_changed(GstElement* element, gint rate, Convolver* l) {
     /* Create the frequency response: zero outside
      * a small frequency band */
     for (i = 0; i < k_size / 2 + 1; i++) {
-        if (i >= k_size / 2)
+        if (i >= k_size / 4)
             frequency_response[i].r = 0.0;
         else
             frequency_response[i].r = 1.0;
@@ -35,7 +35,7 @@ static void on_rate_changed(GstElement* element, gint rate, Convolver* l) {
     }
 
     /* Calculate the inverse FT of the frequency response */
-    fft = gst_fft_f32_new(k_size, TRUE);
+    fft = gst_fft_f32_new(k_size, true);
     gst_fft_f32_inverse_fft(fft, frequency_response, tmp);
     gst_fft_f32_free(fft);
 
@@ -62,12 +62,12 @@ static void on_rate_changed(GstElement* element, gint rate, Convolver* l) {
         g_value_reset(&v);
     }
 
-    g_object_set(G_OBJECT(element), "kernel", va, NULL);
+    g_object_set(G_OBJECT(element), "kernel", va, nullptr);
 
     /* Latency is 1/2 of the kernel length for this method of
      * calculating a filter kernel from the frequency response
      */
-    g_object_set(G_OBJECT(element), "latency", (gint64)(k_size / 2), NULL);
+    g_object_set(G_OBJECT(element), "latency", (gint64)(k_size / 2), nullptr);
     g_value_array_free(va);
 }
 
@@ -84,16 +84,11 @@ Convolver::Convolver(const std::string& tag, const std::string& schema)
         auto out_level =
             gst_element_factory_make("level", "convolver_output_level");
         auto output_gain = gst_element_factory_make("volume", nullptr);
-        auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
-        auto audioresample_out =
-            gst_element_factory_make("audioresample", nullptr);
 
-        gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert,
-                         convolver, audioresample_out, output_gain, out_level,
-                         nullptr);
-        gst_element_link_many(input_gain, in_level, audioconvert, convolver,
-                              output_gain, audioresample_out, out_level,
-                              nullptr);
+        gst_bin_add_many(GST_BIN(bin), input_gain, in_level, convolver,
+                         output_gain, out_level, nullptr);
+        gst_element_link_many(input_gain, in_level, convolver, output_gain,
+                              out_level, nullptr);
 
         auto pad_sink = gst_element_get_static_pad(input_gain, "sink");
         auto pad_src = gst_element_get_static_pad(out_level, "src");
@@ -106,7 +101,7 @@ Convolver::Convolver(const std::string& tag, const std::string& schema)
 
         bind_to_gsettings();
 
-        g_object_set(convolver, "low-latency", false, NULL);
+        // g_object_set(convolver, "low-latency", true, NULL);
 
         g_signal_connect(convolver, "rate-changed", G_CALLBACK(on_rate_changed),
                          this);
