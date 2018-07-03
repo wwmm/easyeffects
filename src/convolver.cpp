@@ -5,7 +5,7 @@
 
 namespace {
 
-int k_size = 1024;
+int k_size = 2048;
 
 static void on_rate_changed(GstElement* element, gint rate, Convolver* l) {
     GValueArray* va;
@@ -25,10 +25,10 @@ static void on_rate_changed(GstElement* element, gint rate, Convolver* l) {
     /* Create the frequency response: zero outside
      * a small frequency band */
     for (i = 0; i < k_size / 2 + 1; i++) {
-        if (i >= k_size / 4)
+        if (i <= 128)
             frequency_response[i].r = 0.0;
         else
-            frequency_response[i].r = 1.0;
+            frequency_response[i].r = 0.001;
 
         // frequency_response[i].r = 1.0;
         frequency_response[i].i = 0.0;
