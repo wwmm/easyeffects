@@ -15,7 +15,7 @@
 #include <gst/audio/gstaudiofilter.h>
 #include <gst/gst.h>
 #include <stdio.h>
-#include "convolver/gstpeconvolver.h"
+#include "convolver/gstpeconvolver.hpp"
 
 GST_DEBUG_CATEGORY_STATIC(gst_peconvolver_debug_category);
 #define GST_CAT_DEFAULT gst_peconvolver_debug_category
@@ -114,7 +114,9 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
     g_object_class_install_property(
         gobject_class, PROP_KERNEL,
         g_param_spec_string("kernel", "Kernel", "Full path to kernel file",
-                            NULL, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+                            NULL,
+                            static_cast<GParamFlags>(G_PARAM_READWRITE |
+                                                     G_PARAM_STATIC_STRINGS)));
 }
 
 static void gst_peconvolver_init(GstPeconvolver* peconvolver) {}
@@ -193,8 +195,6 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
     GstPeconvolver* peconvolver = GST_PECONVOLVER(trans);
 
     GST_DEBUG_OBJECT(peconvolver, "transform");
-
-    // g_print("buffer\n");
 
     GstMapInfo info_in, info_out;
 

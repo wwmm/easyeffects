@@ -1,7 +1,7 @@
 plugins_install_dir = '@0@/gstreamer-1.0'.format(get_option('libdir'))
 
 plugin_sources = [
-	'gstpeconvolver.c'
+	'gstpeconvolver.cpp'
 ]
 
 plugin_deps = [
