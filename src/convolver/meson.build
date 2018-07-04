@@ -9,6 +9,8 @@ plugin_deps = [
 	dependency('gstreamer-base-1.0'),
 	dependency('gstreamer-controller-1.0'),
 	dependency('gstreamer-audio-1.0'),
+	dependency('sndfile'),
+	dependency('speex', version: '>=1.2')
 ]
 
 library(

@@ -14,8 +14,9 @@
 
 #include <gst/audio/gstaudiofilter.h>
 #include <gst/gst.h>
-#include <stdio.h>
-#include "convolver/gstpeconvolver.hpp"
+#include <iostream>
+#include "gstpeconvolver.hpp"
+#include "read_kernel.hpp"
 
 GST_DEBUG_CATEGORY_STATIC(gst_peconvolver_debug_category);
 #define GST_CAT_DEFAULT gst_peconvolver_debug_category
@@ -43,7 +44,7 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
                                                GstBuffer* inbuf,
                                                GstBuffer* outbuf);
 
-enum { PROP_0, PROP_KERNEL };
+enum { PROP_0, PROP_KERNEL_PATH };
 
 /* pad templates */
 
@@ -112,9 +113,9 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
     /* define properties */
 
     g_object_class_install_property(
-        gobject_class, PROP_KERNEL,
-        g_param_spec_string("kernel", "Kernel", "Full path to kernel file",
-                            NULL,
+        gobject_class, PROP_KERNEL_PATH,
+        g_param_spec_string("kernelpath", "Kernel Path",
+                            "Full path to kernel file", nullptr,
                             static_cast<GParamFlags>(G_PARAM_READWRITE |
                                                      G_PARAM_STATIC_STRINGS)));
 }
@@ -130,8 +131,8 @@ void gst_peconvolver_set_property(GObject* object,
     GST_DEBUG_OBJECT(peconvolver, "set_property");
 
     switch (property_id) {
-        case PROP_KERNEL:
-            peconvolver->kernel = g_value_dup_string(value);
+        case PROP_KERNEL_PATH:
+            peconvolver->kernel_path = g_value_dup_string(value);
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -148,8 +149,8 @@ void gst_peconvolver_get_property(GObject* object,
     GST_DEBUG_OBJECT(peconvolver, "get_property");
 
     switch (property_id) {
-        case PROP_KERNEL:
-            g_value_set_string(value, peconvolver->kernel);
+        case PROP_KERNEL_PATH:
+            g_value_set_string(value, peconvolver->kernel_path);
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -183,9 +184,11 @@ static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
 
     GST_DEBUG_OBJECT(peconvolver, "setup");
 
-    printf("%d\n", info->rate);
+    peconvolver->rate = info->rate;
 
-    return TRUE;
+    rk::read_file(peconvolver->kernel_path, info->rate);
+
+    return true;
 }
 
 /* transform */

@@ -22,9 +22,9 @@ typedef struct _GstPeconvolverClass GstPeconvolverClass;
 struct _GstPeconvolver {
     GstAudioFilter base_peconvolver;
 
-    GstAudioInfo info;
+    int rate;
 
-    gchar* kernel;
+    gchar* kernel_path;
 };
 
 struct _GstPeconvolverClass {
