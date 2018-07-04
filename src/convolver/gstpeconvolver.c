@@ -1,21 +1,3 @@
-/* GStreamer
- * Copyright (C) 2018 FIXME <fixme@example.com>
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Library General Public
- * License as published by the Free Software Foundation; either
- * version 2 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Library General Public License for more details.
- *
- * You should have received a copy of the GNU Library General Public
- * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 51 Franklin Street, Suite 500,
- * Boston, MA 02110-1335, USA.
- */
 /**
  * SECTION:element-gstpeconvolver
  *
@@ -30,13 +12,10 @@
  * </refsect2>
  */
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
-
 #include <gst/audio/gstaudiofilter.h>
 #include <gst/gst.h>
-#include "gstpeconvolver.h"
+#include <stdio.h>
+#include "convolver/gstpeconvolver.h"
 
 GST_DEBUG_CATEGORY_STATIC(gst_peconvolver_debug_category);
 #define GST_CAT_DEFAULT gst_peconvolver_debug_category
@@ -47,22 +26,24 @@ static void gst_peconvolver_set_property(GObject* object,
                                          guint property_id,
                                          const GValue* value,
                                          GParamSpec* pspec);
+
 static void gst_peconvolver_get_property(GObject* object,
                                          guint property_id,
                                          GValue* value,
                                          GParamSpec* pspec);
+
 static void gst_peconvolver_dispose(GObject* object);
+
 static void gst_peconvolver_finalize(GObject* object);
 
 static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
                                       const GstAudioInfo* info);
+
 static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
                                                GstBuffer* inbuf,
                                                GstBuffer* outbuf);
-static GstFlowReturn gst_peconvolver_transform_ip(GstBaseTransform* trans,
-                                                  GstBuffer* buf);
 
-enum { PROP_0 };
+enum { PROP_0, PROP_KERNEL };
 
 /* pad templates */
 
@@ -97,12 +78,15 @@ G_DEFINE_TYPE_WITH_CODE(
 
 static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
     GObjectClass* gobject_class = G_OBJECT_CLASS(klass);
+
     GstBaseTransformClass* base_transform_class =
         GST_BASE_TRANSFORM_CLASS(klass);
+
     GstAudioFilterClass* audio_filter_class = GST_AUDIO_FILTER_CLASS(klass);
 
     /* Setting up pads and setting metadata should be moved to
        base_class_init if you intend to subclass this class. */
+
     gst_element_class_add_static_pad_template(GST_ELEMENT_CLASS(klass),
                                               &gst_peconvolver_src_template);
     gst_element_class_add_static_pad_template(GST_ELEMENT_CLASS(klass),
@@ -112,15 +96,25 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
         GST_ELEMENT_CLASS(klass), "PulseEffects Convolver", "Generic",
         "PulseEffects Convolver", "Wellington <wellingtonwallace@gmail.com>");
 
+    /* define virtual function pointers */
+
     gobject_class->set_property = gst_peconvolver_set_property;
     gobject_class->get_property = gst_peconvolver_get_property;
+
     gobject_class->dispose = gst_peconvolver_dispose;
     gobject_class->finalize = gst_peconvolver_finalize;
+
     audio_filter_class->setup = GST_DEBUG_FUNCPTR(gst_peconvolver_setup);
+
     base_transform_class->transform =
         GST_DEBUG_FUNCPTR(gst_peconvolver_transform);
-    base_transform_class->transform_ip =
-        GST_DEBUG_FUNCPTR(gst_peconvolver_transform_ip);
+
+    /* define properties */
+
+    g_object_class_install_property(
+        gobject_class, PROP_KERNEL,
+        g_param_spec_string("kernel", "Kernel", "Full path to kernel file",
+                            NULL, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 }
 
 static void gst_peconvolver_init(GstPeconvolver* peconvolver) {}
@@ -134,6 +128,9 @@ void gst_peconvolver_set_property(GObject* object,
     GST_DEBUG_OBJECT(peconvolver, "set_property");
 
     switch (property_id) {
+        case PROP_KERNEL:
+            peconvolver->kernel = g_value_dup_string(value);
+            break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
             break;
@@ -149,6 +146,9 @@ void gst_peconvolver_get_property(GObject* object,
     GST_DEBUG_OBJECT(peconvolver, "get_property");
 
     switch (property_id) {
+        case PROP_KERNEL:
+            g_value_set_string(value, peconvolver->kernel);
+            break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
             break;
@@ -181,6 +181,8 @@ static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
 
     GST_DEBUG_OBJECT(peconvolver, "setup");
 
+    printf("%d\n", info->rate);
+
     return TRUE;
 }
 
@@ -192,14 +194,23 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
 
     GST_DEBUG_OBJECT(peconvolver, "transform");
 
-    return GST_FLOW_OK;
-}
+    // g_print("buffer\n");
 
-static GstFlowReturn gst_peconvolver_transform_ip(GstBaseTransform* trans,
-                                                  GstBuffer* buf) {
-    GstPeconvolver* peconvolver = GST_PECONVOLVER(trans);
+    GstMapInfo info_in, info_out;
 
-    GST_DEBUG_OBJECT(peconvolver, "transform_ip");
+    gst_buffer_map(inbuf, &info_in, GST_MAP_READ);
+    gst_buffer_map(outbuf, &info_out, GST_MAP_WRITE);
+
+    memcpy(info_out.data, info_in.data, info_in.size);
+
+    // printf("data:%f\n", (double)info_in.data[0]);
+    // for (int n = 0; n < info_in.size; n++) {
+    //     printf("d:%f\t", (double)info_in.data[n]);
+    // }
+    // printf("size:%d\n", (int)info_in.size);
+
+    gst_buffer_unmap(inbuf, &info_in);
+    gst_buffer_unmap(outbuf, &info_out);
 
     return GST_FLOW_OK;
 }

@@ -3,79 +3,11 @@
 #include "convolver.hpp"
 #include "util.hpp"
 
-namespace {
-
-int k_size = 2048;
-
-static void on_rate_changed(GstElement* element, gint rate, Convolver* l) {
-    GValueArray* va;
-
-    GValue v = {
-        0,
-    };
-
-    GstFFTF32* fft;
-    GstFFTF32Complex frequency_response[k_size / 2 + 1];
-    gfloat tmp[k_size];
-    gfloat filter_kernel[k_size];
-    guint i;
-
-    std::cout << rate << std::endl;
-
-    /* Create the frequency response: zero outside
-     * a small frequency band */
-    for (i = 0; i < k_size / 2 + 1; i++) {
-        if (i <= 128)
-            frequency_response[i].r = 0.0;
-        else
-            frequency_response[i].r = 0.001;
-
-        // frequency_response[i].r = 1.0;
-        frequency_response[i].i = 0.0;
-    }
-
-    /* Calculate the inverse FT of the frequency response */
-    fft = gst_fft_f32_new(k_size, true);
-    gst_fft_f32_inverse_fft(fft, frequency_response, tmp);
-    gst_fft_f32_free(fft);
-
-    /* Shift the inverse FT of the frequency response by 16,
-     * i.e. the half of the kernel length to get the
-     * impulse response. See http://www.dspguide.com/ch17/1.htm
-     * for more information.
-     */
-    for (i = 0; i < k_size; i++)
-        filter_kernel[i] = tmp[(i + k_size / 2) % k_size];
-
-    /* Apply the hamming window to the impulse response to get
-     * a better result than given from the rectangular window
-     */
-    for (i = 0; i < k_size; i++)
-        filter_kernel[i] *= (0.54 - 0.46 * cos(2 * G_PI * i / k_size));
-
-    va = g_value_array_new(k_size);
-
-    g_value_init(&v, G_TYPE_DOUBLE);
-    for (i = 0; i < k_size; i++) {
-        g_value_set_double(&v, filter_kernel[i]);
-        g_value_array_append(va, &v);
-        g_value_reset(&v);
-    }
-
-    g_object_set(G_OBJECT(element), "kernel", va, nullptr);
-
-    /* Latency is 1/2 of the kernel length for this method of
-     * calculating a filter kernel from the frequency response
-     */
-    g_object_set(G_OBJECT(element), "latency", (gint64)(k_size / 2), nullptr);
-    g_value_array_free(va);
-}
-
-}  // namespace
+namespace {}  // namespace
 
 Convolver::Convolver(const std::string& tag, const std::string& schema)
     : PluginBase(tag, "convolver", schema) {
-    convolver = gst_element_factory_make("audiofirfilter", "convolver");
+    convolver = gst_element_factory_make("peconvolver", "convolver");
 
     if (is_installed(convolver)) {
         auto input_gain = gst_element_factory_make("volume", nullptr);
@@ -84,11 +16,12 @@ Convolver::Convolver(const std::string& tag, const std::string& schema)
         auto out_level =
             gst_element_factory_make("level", "convolver_output_level");
         auto output_gain = gst_element_factory_make("volume", nullptr);
+        auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
 
-        gst_bin_add_many(GST_BIN(bin), input_gain, in_level, convolver,
-                         output_gain, out_level, nullptr);
-        gst_element_link_many(input_gain, in_level, convolver, output_gain,
-                              out_level, nullptr);
+        gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert,
+                         convolver, output_gain, out_level, nullptr);
+        gst_element_link_many(input_gain, in_level, audioconvert, convolver,
+                              output_gain, out_level, nullptr);
 
         auto pad_sink = gst_element_get_static_pad(input_gain, "sink");
         auto pad_src = gst_element_get_static_pad(out_level, "src");
@@ -101,10 +34,6 @@ Convolver::Convolver(const std::string& tag, const std::string& schema)
 
         bind_to_gsettings();
 
-        // g_object_set(convolver, "low-latency", true, NULL);
-
-        g_signal_connect(convolver, "rate-changed", G_CALLBACK(on_rate_changed),
-                         this);
         // g_signal_connect(settings, "changed::post-messages",
         //                  G_CALLBACK(on_post_messages_changed), this);
 
