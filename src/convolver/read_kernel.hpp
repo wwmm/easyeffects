@@ -19,7 +19,7 @@ void read_file(const char* path,
     SndfileHandle file = SndfileHandle(path);
 
     std::cout << "Opened file: " << path << std::endl;
-    std::cout << "rate: " << rate << std::endl;
+    std::cout << "rate: " << file.samplerate() << std::endl;
     std::cout << "channels: " << file.channels() << std::endl;
 
     // for now only stere irs are supported
@@ -69,7 +69,7 @@ void read_file(const char* path,
             std::memcpy(kernel, buffer, frames_in * sizeof(float));
         }
 
-        delete buffer;
+        delete[] buffer;
     } else {
     }
 }

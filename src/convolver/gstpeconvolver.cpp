@@ -173,7 +173,7 @@ void gst_peconvolver_finalize(GObject* object) {
 
     GST_DEBUG_OBJECT(peconvolver, "finalize");
 
-    // delete peconvolver->kernel;
+    delete[] peconvolver->kernel;
 
     /* clean up object here */
 
