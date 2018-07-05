@@ -15,6 +15,8 @@ std::string log_tag = "convolver_plugin: ";
 void read_file(const char* path,
                float*& kernel,
                int& kernel_size,
+               int& kernel_n_frames,
+               int& kernel_n_channels,
                const int& rate) {
     SndfileHandle file = SndfileHandle(path);
 
@@ -22,13 +24,15 @@ void read_file(const char* path,
     std::cout << "rate: " << file.samplerate() << std::endl;
     std::cout << "channels: " << file.channels() << std::endl;
 
-    // for now only stere irs are supported
+    // for now only stereo irs files are supported
 
     if (file.channels() == 2) {
         bool resample = false;
         float resample_ratio = 1.0;
         int frames_in = file.channels() * file.frames();
         float* buffer = new float[frames_in];
+
+        kernel_n_channels = file.channels();
 
         file.readf(buffer, file.frames());
 
@@ -42,9 +46,11 @@ void read_file(const char* path,
 
             kernel = new float[frames_out];
             kernel_size = frames_out;
+            kernel_n_frames = file.frames();
         } else {
             kernel = new float[frames_in];
             kernel_size = frames_in;
+            kernel_n_frames = file.frames() * resample_ratio;
         }
 
         if (resample) {

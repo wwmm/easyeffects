@@ -17,6 +17,7 @@
 #include <iostream>
 #include "gstpeconvolver.hpp"
 #include "read_kernel.hpp"
+#include "zita.hpp"
 
 GST_DEBUG_CATEGORY_STATIC(gst_peconvolver_debug_category);
 #define GST_CAT_DEFAULT gst_peconvolver_debug_category
@@ -189,7 +190,8 @@ static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
     peconvolver->rate = info->rate;
 
     rk::read_file(peconvolver->kernel_path, peconvolver->kernel,
-                  peconvolver->kernel_size, info->rate);
+                  peconvolver->kernel_size, peconvolver->kernel_n_frames,
+                  peconvolver->kernel_n_channels, info->rate);
 
     // for (int n = 0; n < peconvolver->kernel_size; n++) {
     //     std::cout << peconvolver->kernel[n] << std::endl;
