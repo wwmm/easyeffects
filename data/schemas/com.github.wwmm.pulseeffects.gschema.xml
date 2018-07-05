@@ -190,7 +190,7 @@
         </key>
 
         <key name="last-used-preset" type="s">
-            <default>""</default>
+            <default>"Presets"</default>
         </key>
     </schema>
 </schemalist>

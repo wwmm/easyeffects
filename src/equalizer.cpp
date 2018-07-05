@@ -7,7 +7,7 @@
 namespace {
 
 void on_num_bands_changed(GSettings* settings, gchar* key, Equalizer* l) {
-    l->init_equalizer();
+    l->update_equalizer();
 }
 
 }  // namespace
@@ -38,6 +38,16 @@ Equalizer::Equalizer(const std::string& tag, const std::string& schema)
         gst_object_unref(GST_OBJECT(pad_sink));
         gst_object_unref(GST_OBJECT(pad_src));
 
+        // init
+
+        int nbands = g_settings_get_int(settings, "num-bands");
+
+        g_object_set(equalizer, "num-bands", nbands, nullptr);
+
+        for (int n = 0; n < nbands; n++) {
+            bind_band(n);
+        }
+
         g_signal_connect(settings, "changed::num-bands",
                          G_CALLBACK(on_num_bands_changed), this);
 
@@ -55,8 +65,6 @@ Equalizer::Equalizer(const std::string& tag, const std::string& schema)
             settings, "output-gain", output_gain, "volume",
             G_SETTINGS_BIND_DEFAULT, util::db20_gain_to_linear_double,
             util::linear_double_gain_to_db20, nullptr, nullptr);
-
-        init_equalizer();
 
         // useless write just to force on_state_changed callback call
 
@@ -115,7 +123,7 @@ void Equalizer::unbind_band(const int index) {
     g_object_unref(band);
 }
 
-void Equalizer::init_equalizer() {
+void Equalizer::update_equalizer() {
     int nbands = g_settings_get_int(settings, "num-bands");
     int current_nbands;
 
