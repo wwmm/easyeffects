@@ -23,6 +23,8 @@ struct _GstPeconvolver {
     GstAudioFilter base_peconvolver;
 
     int rate;
+    float* kernel;
+    int kernel_size;
 
     gchar* kernel_path;
 };

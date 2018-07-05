@@ -173,6 +173,8 @@ void gst_peconvolver_finalize(GObject* object) {
 
     GST_DEBUG_OBJECT(peconvolver, "finalize");
 
+    // delete peconvolver->kernel;
+
     /* clean up object here */
 
     G_OBJECT_CLASS(gst_peconvolver_parent_class)->finalize(object);
@@ -186,7 +188,12 @@ static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
 
     peconvolver->rate = info->rate;
 
-    rk::read_file(peconvolver->kernel_path, info->rate);
+    rk::read_file(peconvolver->kernel_path, peconvolver->kernel,
+                  peconvolver->kernel_size, info->rate);
+
+    // for (int n = 0; n < peconvolver->kernel_size; n++) {
+    //     std::cout << peconvolver->kernel[n] << std::endl;
+    // }
 
     return true;
 }
