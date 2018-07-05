@@ -2,6 +2,7 @@
 #define _GST_PECONVOLVER_H_
 
 #include <gst/audio/gstaudiofilter.h>
+#include <zita-convolver.h>
 
 G_BEGIN_DECLS
 
@@ -24,6 +25,8 @@ struct _GstPeconvolver {
 
     int rate, kernel_size, kernel_n_frames, kernel_n_channels;
     float* kernel;
+
+    Convproc* conv;
 
     gchar* kernel_path;
 };

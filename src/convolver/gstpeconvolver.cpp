@@ -17,7 +17,6 @@
 #include <iostream>
 #include "gstpeconvolver.hpp"
 #include "read_kernel.hpp"
-#include "zita.hpp"
 
 GST_DEBUG_CATEGORY_STATIC(gst_peconvolver_debug_category);
 #define GST_CAT_DEFAULT gst_peconvolver_debug_category
@@ -174,6 +173,7 @@ void gst_peconvolver_finalize(GObject* object) {
 
     GST_DEBUG_OBJECT(peconvolver, "finalize");
 
+    delete peconvolver->conv;
     delete[] peconvolver->kernel;
 
     /* clean up object here */
@@ -196,6 +196,16 @@ static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
     // for (int n = 0; n < peconvolver->kernel_size; n++) {
     //     std::cout << peconvolver->kernel[n] << std::endl;
     // }
+
+    peconvolver->conv = new Convproc();
+
+    float density = 0.0f;
+
+    peconvolver->conv->configure(
+        2, 2, peconvolver->kernel_n_frames, peconvolver->kernel_size,
+        peconvolver->kernel_size, peconvolver->kernel_size, density);
+
+    // peconvolver->conv->impdata_create
 
     return true;
 }
