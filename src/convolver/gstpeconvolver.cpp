@@ -174,7 +174,8 @@ void gst_peconvolver_finalize(GObject* object) {
     GST_DEBUG_OBJECT(peconvolver, "finalize");
 
     delete peconvolver->conv;
-    delete[] peconvolver->kernel;
+    delete[] peconvolver->kernel_L;
+    delete[] peconvolver->kernel_R;
 
     /* clean up object here */
 
@@ -190,23 +191,22 @@ static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
     peconvolver->rate = info->rate;
     peconvolver->bps = GST_AUDIO_INFO_BPS(info);
 
-    rk::read_file(peconvolver->kernel_path, peconvolver->kernel,
-                  peconvolver->kernel_size, peconvolver->kernel_n_frames,
-                  peconvolver->kernel_n_channels, info->rate);
+    rk::read_file(peconvolver);
+
+    float density = 0.0f;
+    int kernel_size = 2 * peconvolver->kernel_n_frames;  // 2 channels
+
+    peconvolver->conv = new Convproc();
+
+    peconvolver->conv->configure(2, 2, peconvolver->kernel_n_frames,
+                                 kernel_size, kernel_size, kernel_size,
+                                 density);
+
+    // peconvolver->conv->impdata_create
 
     // for (int n = 0; n < peconvolver->kernel_size; n++) {
     //     std::cout << peconvolver->kernel[n] << std::endl;
     // }
-
-    peconvolver->conv = new Convproc();
-
-    float density = 0.0f;
-
-    peconvolver->conv->configure(
-        2, 2, peconvolver->kernel_n_frames, peconvolver->kernel_size,
-        peconvolver->kernel_size, peconvolver->kernel_size, density);
-
-    // peconvolver->conv->impdata_create
 
     return true;
 }

@@ -7,20 +7,16 @@
 #include <cstring>
 #include <iostream>
 #include <sndfile.hh>
+#include "gstpeconvolver.hpp"
 
 namespace rk {
 
 std::string log_tag = "convolver_plugin: ";
 
-void read_file(const char* path,
-               float*& kernel,
-               int& kernel_size,
-               int& kernel_n_frames,
-               int& kernel_n_channels,
-               const int& rate) {
-    SndfileHandle file = SndfileHandle(path);
+void read_file(_GstPeconvolver* peconvolver) {
+    SndfileHandle file = SndfileHandle(peconvolver->kernel_path);
 
-    std::cout << "Opened file: " << path << std::endl;
+    std::cout << "Opened file: " << peconvolver->kernel_path << std::endl;
     std::cout << "rate: " << file.samplerate() << std::endl;
     std::cout << "channels: " << file.channels() << std::endl;
 
@@ -28,29 +24,36 @@ void read_file(const char* path,
 
     if (file.channels() == 2) {
         bool resample = false;
-        float resample_ratio = 1.0;
-        int frames_in = file.channels() * file.frames();
-        float* buffer = new float[frames_in];
+        float resample_ratio = 1.0, *buffer, *kernel;
+        int total_frames_in, total_frames_out, frames_in, frames_out;
 
-        kernel_n_channels = file.channels();
+        frames_in = file.frames();
+        total_frames_in = file.channels() * frames_in;
 
-        file.readf(buffer, file.frames());
+        buffer = new float[total_frames_in];
 
-        if (file.samplerate() != rate) {
+        file.readf(buffer, frames_in);
+
+        if (file.samplerate() != peconvolver->rate) {
             resample = true;
 
-            resample_ratio = (float)rate / file.samplerate();
+            resample_ratio = (float)peconvolver->rate / file.samplerate();
 
-            int frames_out =
-                file.channels() * ceil(file.frames() * resample_ratio);
+            frames_out = ceil(file.frames() * resample_ratio);
+            total_frames_out = file.channels() * frames_out;
 
-            kernel = new float[frames_out];
-            kernel_size = frames_out;
-            kernel_n_frames = file.frames();
+            kernel = new float[total_frames_out];
+            peconvolver->kernel_L = new float[frames_out];
+            peconvolver->kernel_R = new float[frames_out];
+            peconvolver->kernel_n_frames = frames_out;
         } else {
-            kernel = new float[frames_in];
-            kernel_size = frames_in;
-            kernel_n_frames = file.frames() * resample_ratio;
+            frames_out = frames_in;
+            total_frames_out = file.channels() * frames_out;
+
+            kernel = new float[total_frames_in];
+            peconvolver->kernel_L = new float[frames_out];
+            peconvolver->kernel_R = new float[frames_out];
+            peconvolver->kernel_n_frames = frames_out;
         }
 
         if (resample) {
@@ -59,8 +62,8 @@ void read_file(const char* path,
 
             SRC_DATA src_data;
 
-            src_data.input_frames = file.frames();
-            src_data.output_frames = file.frames() * resample_ratio;
+            src_data.input_frames = frames_in;
+            src_data.output_frames = frames_out;
             src_data.end_of_input = 1;
             src_data.src_ratio = resample_ratio;
             src_data.input_frames_used = 0;
@@ -72,10 +75,11 @@ void read_file(const char* path,
 
             src_delete(src_state);
         } else {
-            std::memcpy(kernel, buffer, frames_in * sizeof(float));
+            std::memcpy(kernel, buffer, total_frames_in * sizeof(float));
         }
 
         delete[] buffer;
+        delete[] kernel;
     } else {
     }
 }

@@ -29,8 +29,8 @@ struct _GstPeconvolver {
 
     /* < private > */
 
-    int rate, bps, kernel_size, kernel_n_frames, kernel_n_channels;
-    float* kernel;
+    int rate, bps, kernel_n_frames;
+    float *kernel_L, *kernel_R;  // left and right channels buffers
 
     Convproc* conv;
 };
