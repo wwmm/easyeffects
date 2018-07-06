@@ -173,6 +173,12 @@ void gst_peconvolver_finalize(GObject* object) {
 
     GST_DEBUG_OBJECT(peconvolver, "finalize");
 
+    if (peconvolver->conv->state() != Convproc::ST_STOP) {
+        peconvolver->conv->stop_process();
+    }
+
+    peconvolver->conv->cleanup();
+
     delete peconvolver->conv;
     delete[] peconvolver->kernel_L;
     delete[] peconvolver->kernel_R;
@@ -194,25 +200,43 @@ static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
     rk::read_file(peconvolver);
 
     float density = 0.0f;
-    int kernel_size = 2 * peconvolver->kernel_n_frames;  // 2 channels
+    int max_size, buffer_size = 1024;
 
     peconvolver->conv = new Convproc();
 
-    peconvolver->conv->configure(2, 2, peconvolver->kernel_n_frames,
-                                 kernel_size, kernel_size, kernel_size,
-                                 density);
+    if (peconvolver->kernel_n_frames > Convproc::MAXPART) {
+        max_size = Convproc::MAXPART;
+    } else {
+        max_size = peconvolver->kernel_n_frames;
+    }
 
-    peconvolver->conv->impdata_create(0, 0, 1, peconvolver->kernel_L, 0,
-                                      peconvolver->kernel_n_frames);
+    int ret = peconvolver->conv->configure(
+        2, 2, max_size, buffer_size, buffer_size, Convproc::MAXPART, density);
 
-    peconvolver->conv->impdata_create(1, 1, 1, peconvolver->kernel_R, 0,
-                                      peconvolver->kernel_n_frames);
+    if (ret != 0) {
+        std::cout << "IR: can't initialise zita-convolver engine: " << ret
+                  << std::endl;
+    }
 
-    peconvolver->conv->start_process(0, 0);
+    ret = peconvolver->conv->impdata_create(0, 0, 1, peconvolver->kernel_L, 0,
+                                            peconvolver->kernel_n_frames);
 
-    // for (int n = 0; n < peconvolver->kernel_size; n++) {
-    //     std::cout << peconvolver->kernel[n] << std::endl;
-    // }
+    if (ret != 0) {
+        std::cout << "IR: left impdata_create failed: " << ret << std::endl;
+    }
+
+    ret = peconvolver->conv->impdata_create(1, 1, 1, peconvolver->kernel_R, 0,
+                                            peconvolver->kernel_n_frames);
+
+    if (ret != 0) {
+        std::cout << "IR: right impdata_create failed: " << ret << std::endl;
+    }
+
+    ret = peconvolver->conv->start_process(0, 0);
+
+    if (ret != 0) {
+        std::cout << "IR: start_process failed: " << ret << std::endl;
+    }
 
     return true;
 }
@@ -230,6 +254,23 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
     gst_buffer_map(inbuf, &map_in, GST_MAP_READ);
     gst_buffer_map(outbuf, &map_out, GST_MAP_WRITE);
 
+    /* output is always stereo. That is why we divide by 2 */
+    guint num_samples = map_out.size / (2 * peconvolver->bps);
+
+    std::cout << "num_samples: " << num_samples << std::endl;
+
+    // deinterleave
+    for (unsigned int n = 0; n < num_samples; n += 2) {
+        peconvolver->conv->inpdata(0)[n] = ((float*)map_in.data)[n];
+        peconvolver->conv->inpdata(1)[n] = ((float*)map_in.data)[n + 1];
+    }
+
+    int ret = peconvolver->conv->process(true);
+
+    if (ret != 0) {
+        std::cout << "IR: process failed: " << ret << std::endl;
+    }
+
     memcpy(map_out.data, map_in.data, map_in.size);
 
     // printf("data:%f\n", (double)map_in.data[0]);
@@ -237,11 +278,6 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
     //     printf("d:%f\t", (double)map_in.data[n]);
     // }
     // printf("size:%d\n", (int)map_in.size);
-
-    /* output is always stereo. That is why we dived by 2 */
-    guint num_samples = map_out.size / (2 * peconvolver->bps);
-
-    std::cout << "num_samples: " << num_samples << std::endl;
 
     gst_buffer_unmap(inbuf, &map_in);
     gst_buffer_unmap(outbuf, &map_out);
