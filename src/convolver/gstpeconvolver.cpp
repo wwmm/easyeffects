@@ -188,6 +188,7 @@ static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
     GST_DEBUG_OBJECT(peconvolver, "setup");
 
     peconvolver->rate = info->rate;
+    peconvolver->bps = GST_AUDIO_INFO_BPS(info);
 
     rk::read_file(peconvolver->kernel_path, peconvolver->kernel,
                   peconvolver->kernel_size, peconvolver->kernel_n_frames,
@@ -218,21 +219,26 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
 
     GST_DEBUG_OBJECT(peconvolver, "transform");
 
-    GstMapInfo info_in, info_out;
+    GstMapInfo map_in, map_out;
 
-    gst_buffer_map(inbuf, &info_in, GST_MAP_READ);
-    gst_buffer_map(outbuf, &info_out, GST_MAP_WRITE);
+    gst_buffer_map(inbuf, &map_in, GST_MAP_READ);
+    gst_buffer_map(outbuf, &map_out, GST_MAP_WRITE);
 
-    memcpy(info_out.data, info_in.data, info_in.size);
+    memcpy(map_out.data, map_in.data, map_in.size);
 
-    // printf("data:%f\n", (double)info_in.data[0]);
-    // for (int n = 0; n < info_in.size; n++) {
-    //     printf("d:%f\t", (double)info_in.data[n]);
+    // printf("data:%f\n", (double)map_in.data[0]);
+    // for (int n = 0; n < map_in.size; n++) {
+    //     printf("d:%f\t", (double)map_in.data[n]);
     // }
-    // printf("size:%d\n", (int)info_in.size);
+    // printf("size:%d\n", (int)map_in.size);
 
-    gst_buffer_unmap(inbuf, &info_in);
-    gst_buffer_unmap(outbuf, &info_out);
+    /* output is always stereo. That is why we dived by 2 */
+    guint num_samples = map_out.size / (2 * peconvolver->bps);
+
+    std::cout << "num_samples: " << num_samples << std::endl;
+
+    gst_buffer_unmap(inbuf, &map_in);
+    gst_buffer_unmap(outbuf, &map_out);
 
     return GST_FLOW_OK;
 }
