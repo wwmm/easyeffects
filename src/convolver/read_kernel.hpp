@@ -78,6 +78,12 @@ void read_file(_GstPeconvolver* peconvolver) {
             std::memcpy(kernel, buffer, total_frames_in * sizeof(float));
         }
 
+        // deinterleave
+        for (int n = 0; n < frames_out; n += 2) {
+            peconvolver->kernel_L[n] = kernel[n];
+            peconvolver->kernel_R[n] = kernel[n + 1];
+        }
+
         delete[] buffer;
         delete[] kernel;
     } else {

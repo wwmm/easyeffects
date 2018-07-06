@@ -202,7 +202,13 @@ static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
                                  kernel_size, kernel_size, kernel_size,
                                  density);
 
-    // peconvolver->conv->impdata_create
+    peconvolver->conv->impdata_create(0, 0, 1, peconvolver->kernel_L, 0,
+                                      peconvolver->kernel_n_frames);
+
+    peconvolver->conv->impdata_create(1, 1, 1, peconvolver->kernel_R, 0,
+                                      peconvolver->kernel_n_frames);
+
+    peconvolver->conv->start_process(0, 0);
 
     // for (int n = 0; n < peconvolver->kernel_size; n++) {
     //     std::cout << peconvolver->kernel[n] << std::endl;
