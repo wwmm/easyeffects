@@ -120,7 +120,9 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
                                                      G_PARAM_STATIC_STRINGS)));
 }
 
-static void gst_peconvolver_init(GstPeconvolver* peconvolver) {}
+static void gst_peconvolver_init(GstPeconvolver* peconvolver) {
+    peconvolver->conv_buffer_size = 1024;
+}
 
 void gst_peconvolver_set_property(GObject* object,
                                   guint property_id,
@@ -200,7 +202,7 @@ static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
     rk::read_file(peconvolver);
 
     float density = 0.0f;
-    int max_size, buffer_size = 1024;
+    int max_size;
 
     peconvolver->conv = new Convproc();
 
@@ -213,8 +215,9 @@ static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
     // std::cout << "num_samples: " << peconvolver->kernel_n_frames <<
     // std::endl;
 
-    int ret = peconvolver->conv->configure(2, 2, max_size, buffer_size,
-                                           buffer_size, buffer_size, density);
+    int ret = peconvolver->conv->configure(
+        2, 2, max_size, peconvolver->conv_buffer_size,
+        peconvolver->conv_buffer_size, peconvolver->conv_buffer_size, density);
 
     if (ret != 0) {
         std::cout << "IR: can't initialise zita-convolver engine: " << ret
@@ -260,12 +263,17 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
     /* output is always stereo. That is why we divide by 2 */
     guint num_samples = map_out.size / (2 * peconvolver->bps);
 
-    // std::cout << "gst buffer samples: " << num_samples << std::endl;
+    std::cout << "gst buffer samples: " << num_samples << std::endl;
 
     // deinterleave
-    for (unsigned int n = 0; n < num_samples; n++) {
-        peconvolver->conv->inpdata(0)[n] = ((float*)map_in.data)[2 * n];
-        peconvolver->conv->inpdata(1)[n] = ((float*)map_in.data)[2 * n + 1];
+    for (unsigned int n = 0; n < peconvolver->conv_buffer_size; n++) {
+        if (n < num_samples) {
+            peconvolver->conv->inpdata(0)[n] = ((float*)map_in.data)[2 * n];
+            peconvolver->conv->inpdata(1)[n] = ((float*)map_in.data)[2 * n + 1];
+        } else {
+            peconvolver->conv->inpdata(0)[n] = 0;
+            peconvolver->conv->inpdata(1)[n] = 0;
+        }
     }
 
     int ret = peconvolver->conv->process(true);
