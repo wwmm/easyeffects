@@ -204,8 +204,8 @@ static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
 
     peconvolver->conv = new Convproc();
 
-    if (peconvolver->kernel_n_frames > Convproc::MAXPART) {
-        max_size = Convproc::MAXPART;
+    if (peconvolver->kernel_n_frames > 0x00100000) {
+        max_size = 0x00100000;
     } else {
         max_size = peconvolver->kernel_n_frames;
     }
@@ -213,8 +213,8 @@ static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
     // std::cout << "num_samples: " << peconvolver->kernel_n_frames <<
     // std::endl;
 
-    int ret = peconvolver->conv->configure(
-        2, 2, max_size, buffer_size, buffer_size, Convproc::MAXPART, density);
+    int ret = peconvolver->conv->configure(2, 2, max_size, buffer_size,
+                                           buffer_size, buffer_size, density);
 
     if (ret != 0) {
         std::cout << "IR: can't initialise zita-convolver engine: " << ret
@@ -260,7 +260,7 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
     /* output is always stereo. That is why we divide by 2 */
     guint num_samples = map_out.size / (2 * peconvolver->bps);
 
-    std::cout << "gst buffer samples: " << num_samples << std::endl;
+    // std::cout << "gst buffer samples: " << num_samples << std::endl;
 
     // deinterleave
     for (unsigned int n = 0; n < num_samples; n++) {
