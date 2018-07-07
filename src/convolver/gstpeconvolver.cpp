@@ -266,14 +266,9 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
     std::cout << "gst buffer samples: " << num_samples << std::endl;
 
     // deinterleave
-    for (unsigned int n = 0; n < peconvolver->conv_buffer_size; n++) {
-        if (n < num_samples) {
-            peconvolver->conv->inpdata(0)[n] = ((float*)map_in.data)[2 * n];
-            peconvolver->conv->inpdata(1)[n] = ((float*)map_in.data)[2 * n + 1];
-        } else {
-            peconvolver->conv->inpdata(0)[n] = 0;
-            peconvolver->conv->inpdata(1)[n] = 0;
-        }
+    for (unsigned int n = 0; n < num_samples; n++) {
+        peconvolver->conv->inpdata(0)[n] = ((float*)map_in.data)[2 * n];
+        peconvolver->conv->inpdata(1)[n] = ((float*)map_in.data)[2 * n + 1];
     }
 
     int ret = peconvolver->conv->process(true);
