@@ -1,8 +1,7 @@
 #ifndef _GST_PECONVOLVER_H_
 #define _GST_PECONVOLVER_H_
 
-#include <gst/base/gstadapter.h>
-#include <gst/base/gstbasetransform.h>
+#include <gst/audio/gstaudiofilter.h>
 #include <zita-convolver.h>
 
 G_BEGIN_DECLS
@@ -22,9 +21,7 @@ typedef struct _GstPeconvolver GstPeconvolver;
 typedef struct _GstPeconvolverClass GstPeconvolverClass;
 
 struct _GstPeconvolver {
-    GstBaseTransform base_peconvolver;
-
-    GstPad *sinkpad, *srcpad;
+    GstAudioFilter base_peconvolver;
 
     /* properties */
 
@@ -42,7 +39,7 @@ struct _GstPeconvolver {
 };
 
 struct _GstPeconvolverClass {
-    GstBaseTransformClass base_peconvolver_class;
+    GstAudioFilterClass base_peconvolver_class;
 };
 
 GType gst_peconvolver_get_type(void);
