@@ -12,11 +12,7 @@
  * </refsect2>
  */
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
-
-#include <gst/base/gstbasetransform.h>
+#include <gst/audio/gstaudiofilter.h>
 #include <gst/gst.h>
 #include <iostream>
 #include "gstpeconvolver.hpp"
@@ -41,14 +37,22 @@ static void gst_peconvolver_dispose(GObject* object);
 
 static void gst_peconvolver_finalize(GObject* object);
 
-static GstFlowReturn gst_peconvolver_chain(GstPad* pad,
-                                           GstObject* parent,
-                                           GstBuffer* buf);
+static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
+                                      const GstAudioInfo* info);
+
+static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
+                                               GstBuffer* inbuf,
+                                               GstBuffer* outbuf);
+
+static void process(GstPeconvolver* peconvolver,
+                    GstBuffer* inbuf,
+                    GstBuffer* outbuf);
 
 enum { PROP_0, PROP_KERNEL_PATH };
 
 /* pad templates */
 
+/* FIXME add/remove the formats that you want to support */
 static GstStaticPadTemplate gst_peconvolver_src_template =
     GST_STATIC_PAD_TEMPLATE(
         "src",
@@ -57,6 +61,7 @@ static GstStaticPadTemplate gst_peconvolver_src_template =
         GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=[1,max],"
                         "channels=2,layout=interleaved"));
 
+/* FIXME add/remove the formats that you want to support */
 static GstStaticPadTemplate gst_peconvolver_sink_template =
     GST_STATIC_PAD_TEMPLATE(
         "sink",
@@ -70,7 +75,7 @@ static GstStaticPadTemplate gst_peconvolver_sink_template =
 G_DEFINE_TYPE_WITH_CODE(
     GstPeconvolver,
     gst_peconvolver,
-    GST_TYPE_BASE_TRANSFORM,
+    GST_TYPE_AUDIO_FILTER,
     GST_DEBUG_CATEGORY_INIT(gst_peconvolver_debug_category,
                             "peconvolver",
                             0,
@@ -79,8 +84,10 @@ G_DEFINE_TYPE_WITH_CODE(
 static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
     GObjectClass* gobject_class = G_OBJECT_CLASS(klass);
 
-    // GstBaseTransformClass* base_transform_class =
-    //     GST_BASE_TRANSFORM_CLASS(klass);
+    GstBaseTransformClass* base_transform_class =
+        GST_BASE_TRANSFORM_CLASS(klass);
+
+    GstAudioFilterClass* audio_filter_class = GST_AUDIO_FILTER_CLASS(klass);
 
     /* Setting up pads and setting metadata should be moved to
        base_class_init if you intend to subclass this class. */
@@ -102,6 +109,11 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
     gobject_class->dispose = gst_peconvolver_dispose;
     gobject_class->finalize = gst_peconvolver_finalize;
 
+    audio_filter_class->setup = GST_DEBUG_FUNCPTR(gst_peconvolver_setup);
+
+    base_transform_class->transform =
+        GST_DEBUG_FUNCPTR(gst_peconvolver_transform);
+
     /* define properties */
 
     g_object_class_install_property(
@@ -113,27 +125,9 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
 }
 
 static void gst_peconvolver_init(GstPeconvolver* peconvolver) {
-    // add sinkpad
-
-    peconvolver->sinkpad = gst_pad_new_from_static_template(
-        &gst_peconvolver_sink_template, nullptr);
-
-    /* configure chain function on the pad before adding
-     * the pad to the element */
-    gst_pad_set_chain_function(peconvolver->sinkpad, gst_peconvolver_chain);
-
-    gst_element_add_pad(GST_ELEMENT(peconvolver), peconvolver->sinkpad);
-
-    // add source pad
-
-    peconvolver->srcpad = gst_pad_new_from_static_template(
-        &gst_peconvolver_src_template, nullptr);
-
-    gst_element_add_pad(GST_ELEMENT(peconvolver), peconvolver->srcpad);
-
     peconvolver->conv_buffer_size = 1024;
 
-    // peconvolver->adapter = gst_adapter_new();
+    peconvolver->adapter = gst_adapter_new();
 }
 
 void gst_peconvolver_set_property(GObject* object,
@@ -187,29 +181,146 @@ void gst_peconvolver_finalize(GObject* object) {
 
     GST_DEBUG_OBJECT(peconvolver, "finalize");
 
-    /* clean up object here */
+    if (peconvolver->conv->state() != Convproc::ST_STOP) {
+        peconvolver->conv->stop_process();
+    }
 
-    // if (peconvolver->conv->state() != Convproc::ST_STOP) {
-    //     peconvolver->conv->stop_process();
-    // }
-    //
-    // peconvolver->conv->cleanup();
-    //
-    // g_object_unref(peconvolver->adapter);
-    //
-    // delete peconvolver->conv;
-    // delete[] peconvolver->kernel_L;
-    // delete[] peconvolver->kernel_R;
+    peconvolver->conv->cleanup();
+
+    g_object_unref(peconvolver->adapter);
+
+    delete peconvolver->conv;
+    delete[] peconvolver->kernel_L;
+    delete[] peconvolver->kernel_R;
+
+    /* clean up object here */
 
     G_OBJECT_CLASS(gst_peconvolver_parent_class)->finalize(object);
 }
 
-static GstFlowReturn gst_peconvolver_chain(GstPad* pad,
-                                           GstObject* parent,
-                                           GstBuffer* buf) {
-    GstPeconvolver* peconvolver = GST_PECONVOLVER(parent);
+static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
+                                      const GstAudioInfo* info) {
+    GstPeconvolver* peconvolver = GST_PECONVOLVER(filter);
 
-    return gst_pad_push(peconvolver->srcpad, buf);
+    GST_DEBUG_OBJECT(peconvolver, "setup");
+
+    peconvolver->rate = info->rate;
+    peconvolver->bps = GST_AUDIO_INFO_BPS(info);
+
+    rk::read_file(peconvolver);
+
+    float density = 0.0f;
+    int max_size;
+
+    peconvolver->conv = new Convproc();
+
+    if (peconvolver->kernel_n_frames > 0x00100000) {
+        max_size = 0x00100000;
+    } else {
+        max_size = peconvolver->kernel_n_frames;
+    }
+
+    // std::cout << "num_samples: " << peconvolver->kernel_n_frames <<
+    // std::endl;
+
+    int ret = peconvolver->conv->configure(
+        2, 2, max_size, peconvolver->conv_buffer_size,
+        peconvolver->conv_buffer_size, peconvolver->conv_buffer_size, density);
+
+    if (ret != 0) {
+        std::cout << "IR: can't initialise zita-convolver engine: " << ret
+                  << std::endl;
+    }
+
+    ret = peconvolver->conv->impdata_create(0, 0, 1, peconvolver->kernel_L, 0,
+                                            peconvolver->kernel_n_frames);
+
+    if (ret != 0) {
+        std::cout << "IR: left impdata_create failed: " << ret << std::endl;
+    }
+
+    ret = peconvolver->conv->impdata_create(1, 1, 1, peconvolver->kernel_R, 0,
+                                            peconvolver->kernel_n_frames);
+
+    if (ret != 0) {
+        std::cout << "IR: right impdata_create failed: " << ret << std::endl;
+    }
+
+    ret = peconvolver->conv->start_process(0, 0);
+
+    if (ret != 0) {
+        std::cout << "IR: start_process failed: " << ret << std::endl;
+    }
+
+    return true;
+}
+
+/* transform */
+static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
+                                               GstBuffer* inbuf,
+                                               GstBuffer* outbuf) {
+    GstPeconvolver* peconvolver = GST_PECONVOLVER(trans);
+
+    GST_DEBUG_OBJECT(peconvolver, "transform");
+
+    gst_buffer_resize(outbuf, 0, 0);
+
+    // gst_adapter_push(peconvolver->adapter, inbuf);
+
+    process(peconvolver, inbuf, outbuf);
+
+    // unsigned int conv_nbytes =
+    //     1 * peconvolver->conv_buffer_size * sizeof(float);
+    //
+    // while (gst_adapter_available(peconvolver->adapter) >= conv_nbytes) {
+    //     std::cout << "loop" << std::endl;
+    //
+    //     GstBuffer* buffer =
+    //         gst_adapter_take_buffer(peconvolver->adapter, conv_nbytes);
+    //
+    //     gst_buffer_resize(outbuf, 0, conv_nbytes);
+    //
+    //     process(peconvolver, buffer, outbuf);
+    // }
+
+    return GST_FLOW_OK;
+}
+
+static void process(GstPeconvolver* peconvolver,
+                    GstBuffer* inbuf,
+                    GstBuffer* outbuf) {
+    GstMapInfo map_in, map_out;
+
+    gst_buffer_map(inbuf, &map_in, GST_MAP_READ);
+    gst_buffer_map(outbuf, &map_out, GST_MAP_WRITE);
+
+    // output is always stereo. That is why we divide by 2
+    guint num_samples = map_in.size / (2 * peconvolver->bps);
+
+    std::cout << "gst buffer samples: " << num_samples << std::endl;
+
+    // deinterleave
+    for (unsigned int n = 0; n < num_samples; n++) {
+        peconvolver->conv->inpdata(0)[n] = ((float*)map_in.data)[2 * n];
+        peconvolver->conv->inpdata(1)[n] = ((float*)map_in.data)[2 * n + 1];
+    }
+
+    int ret = peconvolver->conv->process(true);
+
+    if (ret != 0) {
+        std::cout << "IR: process failed: " << ret << std::endl;
+    }
+
+    // interleave
+    for (unsigned int n = 0; n < num_samples; n++) {
+        ((float*)map_out.data)[2 * n] = peconvolver->conv->outdata(0)[n];
+        ((float*)map_out.data)[2 * n + 1] = peconvolver->conv->outdata(1)[n];
+    }
+
+    // memcpy(map_out.data, map_in.data, map_in.size);
+
+    gst_buffer_unmap(inbuf, &map_in);
+    gst_buffer_unmap(outbuf, &map_out);
 }
 
 static gboolean plugin_init(GstPlugin* plugin) {
@@ -218,11 +329,6 @@ static gboolean plugin_init(GstPlugin* plugin) {
     return gst_element_register(plugin, "peconvolver", GST_RANK_NONE,
                                 GST_TYPE_PECONVOLVER);
 }
-
-/* FIXME: these are normally defined by the GStreamer build system.
-   If you are creating an element to be included in gst-plugins-*,
-   remove these, as they're always defined.  Otherwise, edit as
-   appropriate for your external plugin package. */
 
 #ifndef PACKAGE
 #define PACKAGE "PulseEffects"
@@ -235,5 +341,5 @@ GST_PLUGIN_DEFINE(GST_VERSION_MAJOR,
                   plugin_init,
                   "0.1",
                   "LGPL",
-                  "PulseEffects",
+                  PACKAGE,
                   "https://github.com/wwmm/pulseeffects")
