@@ -44,9 +44,7 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
                                                GstBuffer* inbuf,
                                                GstBuffer* outbuf);
 
-static void process(GstPeconvolver* peconvolver,
-                    GstBuffer* inbuf,
-                    GstBuffer* outbuf);
+static void process(GstPeconvolver* peconvolver, GstBuffer* buffer);
 
 enum { PROP_0, PROP_KERNEL_PATH };
 
@@ -181,17 +179,29 @@ void gst_peconvolver_finalize(GObject* object) {
 
     GST_DEBUG_OBJECT(peconvolver, "finalize");
 
-    if (peconvolver->conv->state() != Convproc::ST_STOP) {
-        peconvolver->conv->stop_process();
+    if (peconvolver->conv) {
+        if (peconvolver->conv->state() != Convproc::ST_STOP) {
+            peconvolver->conv->stop_process();
+        }
+
+        peconvolver->conv->cleanup();
+
+        delete peconvolver->conv;
     }
 
-    peconvolver->conv->cleanup();
+    if (peconvolver->kernel_L) {
+        delete[] peconvolver->kernel_L;
+    }
 
-    g_object_unref(peconvolver->adapter);
+    if (peconvolver->kernel_R) {
+        delete[] peconvolver->kernel_R;
+    }
 
-    delete peconvolver->conv;
-    delete[] peconvolver->kernel_L;
-    delete[] peconvolver->kernel_R;
+    if (peconvolver->adapter) {
+        g_object_unref(peconvolver->adapter);
+    }
+
+    std::cout << "cleaning" << std::endl;
 
     /* clean up object here */
 
@@ -263,46 +273,42 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
 
     GST_DEBUG_OBJECT(peconvolver, "transform");
 
+    gst_buffer_ref(inbuf);
+    gst_adapter_push(peconvolver->adapter, inbuf);
+
+    unsigned int conv_nbytes =
+        2 * peconvolver->conv_buffer_size * peconvolver->bps;
+
     gst_buffer_resize(outbuf, 0, 0);
 
-    // gst_adapter_push(peconvolver->adapter, inbuf);
+    if (gst_adapter_available(peconvolver->adapter) >= conv_nbytes) {
+        GstBuffer* buffer =
+            gst_adapter_take_buffer(peconvolver->adapter, conv_nbytes);
 
-    process(peconvolver, inbuf, outbuf);
+        gst_buffer_append(outbuf, buffer);
 
-    // unsigned int conv_nbytes =
-    //     1 * peconvolver->conv_buffer_size * sizeof(float);
-    //
-    // while (gst_adapter_available(peconvolver->adapter) >= conv_nbytes) {
-    //     std::cout << "loop" << std::endl;
-    //
-    //     GstBuffer* buffer =
-    //         gst_adapter_take_buffer(peconvolver->adapter, conv_nbytes);
-    //
-    //     gst_buffer_resize(outbuf, 0, conv_nbytes);
-    //
-    //     process(peconvolver, buffer, outbuf);
-    // }
+        process(peconvolver, outbuf);
+
+        // gst_buffer_unref(buffer);
+    }
 
     return GST_FLOW_OK;
 }
 
-static void process(GstPeconvolver* peconvolver,
-                    GstBuffer* inbuf,
-                    GstBuffer* outbuf) {
-    GstMapInfo map_in, map_out;
+static void process(GstPeconvolver* peconvolver, GstBuffer* buffer) {
+    GstMapInfo map;
 
-    gst_buffer_map(inbuf, &map_in, GST_MAP_READ);
-    gst_buffer_map(outbuf, &map_out, GST_MAP_WRITE);
+    gst_buffer_map(buffer, &map, GST_MAP_READWRITE);
 
     // output is always stereo. That is why we divide by 2
-    guint num_samples = map_in.size / (2 * peconvolver->bps);
+    guint num_samples = map.size / (2 * peconvolver->bps);
 
-    std::cout << "gst buffer samples: " << num_samples << std::endl;
+    // std::cout << "gst buffer samples: " << num_samples << std::endl;
 
     // deinterleave
     for (unsigned int n = 0; n < num_samples; n++) {
-        peconvolver->conv->inpdata(0)[n] = ((float*)map_in.data)[2 * n];
-        peconvolver->conv->inpdata(1)[n] = ((float*)map_in.data)[2 * n + 1];
+        peconvolver->conv->inpdata(0)[n] = ((float*)map.data)[2 * n];
+        peconvolver->conv->inpdata(1)[n] = ((float*)map.data)[2 * n + 1];
     }
 
     int ret = peconvolver->conv->process(true);
@@ -313,14 +319,13 @@ static void process(GstPeconvolver* peconvolver,
 
     // interleave
     for (unsigned int n = 0; n < num_samples; n++) {
-        ((float*)map_out.data)[2 * n] = peconvolver->conv->outdata(0)[n];
-        ((float*)map_out.data)[2 * n + 1] = peconvolver->conv->outdata(1)[n];
+        ((float*)map.data)[2 * n] = peconvolver->conv->outdata(0)[n];
+        ((float*)map.data)[2 * n + 1] = peconvolver->conv->outdata(1)[n];
     }
 
     // memcpy(map_out.data, map_in.data, map_in.size);
 
-    gst_buffer_unmap(inbuf, &map_in);
-    gst_buffer_unmap(outbuf, &map_out);
+    gst_buffer_unmap(buffer, &map);
 }
 
 static gboolean plugin_init(GstPlugin* plugin) {
