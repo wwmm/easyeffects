@@ -210,6 +210,9 @@ static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
         max_size = peconvolver->kernel_n_frames;
     }
 
+    // std::cout << "num_samples: " << peconvolver->kernel_n_frames <<
+    // std::endl;
+
     int ret = peconvolver->conv->configure(
         2, 2, max_size, buffer_size, buffer_size, Convproc::MAXPART, density);
 
@@ -257,12 +260,12 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
     /* output is always stereo. That is why we divide by 2 */
     guint num_samples = map_out.size / (2 * peconvolver->bps);
 
-    std::cout << "num_samples: " << num_samples << std::endl;
+    std::cout << "gst buffer samples: " << num_samples << std::endl;
 
     // deinterleave
-    for (unsigned int n = 0; n < num_samples; n += 2) {
-        peconvolver->conv->inpdata(0)[n] = ((float*)map_in.data)[n];
-        peconvolver->conv->inpdata(1)[n] = ((float*)map_in.data)[n + 1];
+    for (unsigned int n = 0; n < num_samples; n++) {
+        peconvolver->conv->inpdata(0)[n] = ((float*)map_in.data)[2 * n];
+        peconvolver->conv->inpdata(1)[n] = ((float*)map_in.data)[2 * n + 1];
     }
 
     int ret = peconvolver->conv->process(true);
@@ -271,13 +274,13 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
         std::cout << "IR: process failed: " << ret << std::endl;
     }
 
-    memcpy(map_out.data, map_in.data, map_in.size);
+    // interleave
+    for (unsigned int n = 0; n < num_samples; n++) {
+        ((float*)map_out.data)[2 * n] = peconvolver->conv->outdata(0)[n];
+        ((float*)map_out.data)[2 * n + 1] = peconvolver->conv->outdata(1)[n];
+    }
 
-    // printf("data:%f\n", (double)map_in.data[0]);
-    // for (int n = 0; n < map_in.size; n++) {
-    //     printf("d:%f\t", (double)map_in.data[n]);
-    // }
-    // printf("size:%d\n", (int)map_in.size);
+    // memcpy(map_out.data, map_in.data, map_in.size);
 
     gst_buffer_unmap(inbuf, &map_in);
     gst_buffer_unmap(outbuf, &map_out);
