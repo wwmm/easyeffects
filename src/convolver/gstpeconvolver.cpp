@@ -46,6 +46,10 @@ static GstStateChangeReturn gst_peconvolver_change_state(
     GstElement* element,
     GstStateChange transition);
 
+static gboolean gst_peconvolver_query(GstBaseTransform* trans,
+                                      GstPadDirection direction,
+                                      GstQuery* query);
+
 static void process(GstPeconvolver* peconvolver, GstBuffer* buffer);
 
 static void setup_convolver(GstPeconvolver* peconvolver);
@@ -137,6 +141,8 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
         GST_DEBUG_FUNCPTR(gst_peconvolver_transform);
 
     element_class->change_state = gst_peconvolver_change_state;
+
+    base_transform_class->query = GST_DEBUG_FUNCPTR(gst_peconvolver_query);
 
     /* define properties */
 
@@ -299,6 +305,65 @@ static GstStateChangeReturn gst_peconvolver_change_state(
     }
 
     return ret;
+}
+
+static gboolean gst_peconvolver_query(GstBaseTransform* trans,
+                                      GstPadDirection direction,
+                                      GstQuery* query) {
+    GstPeconvolver* peconvolver = GST_PECONVOLVER(trans);
+    gboolean res = true;
+
+    /*
+    most of this code was taken from
+    https://github.com/Kurento/gst-plugins-good/blob/master/gst/audiofx/audiofxbasefirfilter.c
+    */
+
+    switch (GST_QUERY_TYPE(query)) {
+        case GST_QUERY_LATENCY: {
+            GstClockTime min, max;
+            gboolean live;
+            guint64 latency = peconvolver->conv_buffer_size;
+            gint rate = GST_AUDIO_FILTER_RATE(peconvolver);
+
+            if (rate == 0) {
+                res = false;
+            } else if ((res = gst_pad_peer_query(
+                            GST_BASE_TRANSFORM(peconvolver)->sinkpad, query))) {
+                gst_query_parse_latency(query, &live, &min, &max);
+
+                GST_DEBUG_OBJECT(peconvolver,
+                                 "Peer latency: min %" GST_TIME_FORMAT
+                                 " max %" GST_TIME_FORMAT,
+                                 GST_TIME_ARGS(min), GST_TIME_ARGS(max));
+
+                /* add our own latency */
+                latency =
+                    gst_util_uint64_scale_round(latency, GST_SECOND, rate);
+
+                GST_DEBUG_OBJECT(peconvolver, "Our latency: %" GST_TIME_FORMAT,
+                                 GST_TIME_ARGS(latency));
+
+                min += latency;
+                if (max != GST_CLOCK_TIME_NONE)
+                    max += latency;
+
+                GST_DEBUG_OBJECT(
+                    peconvolver,
+                    "Calculated total latency : min %" GST_TIME_FORMAT
+                    " max %" GST_TIME_FORMAT,
+                    GST_TIME_ARGS(min), GST_TIME_ARGS(max));
+
+                gst_query_set_latency(query, live, min, max);
+            }
+            break;
+        }
+        default:
+            res = GST_BASE_TRANSFORM_CLASS(gst_peconvolver_parent_class)
+                      ->query(trans, direction, query);
+            break;
+    }
+
+    return res;
 }
 
 static void setup_convolver(GstPeconvolver* peconvolver) {
