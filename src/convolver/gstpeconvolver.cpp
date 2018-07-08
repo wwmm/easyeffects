@@ -134,6 +134,7 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
 }
 
 static void gst_peconvolver_init(GstPeconvolver* peconvolver) {
+    peconvolver->rate = 0;
     peconvolver->conv_buffer_size = 1024;
 }
 
@@ -194,6 +195,10 @@ static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
     peconvolver->rate = info->rate;
     peconvolver->bps = GST_AUDIO_INFO_BPS(info);
 
+    if (!peconvolver->ready) {
+        setup_convolver(peconvolver);
+    }
+
     return true;
 }
 
@@ -251,8 +256,10 @@ static GstStateChangeReturn gst_peconvolver_change_state(
     // upwards state changes here
 
     switch (transition) {
-        case GST_STATE_CHANGE_NULL_TO_READY:
-            setup_convolver(peconvolver);
+        case GST_STATE_CHANGE_PAUSED_TO_PLAYING:
+            if (!peconvolver->ready && peconvolver->rate != 0) {
+                setup_convolver(peconvolver);
+            }
             break;
         default:
             break;
@@ -267,7 +274,7 @@ static GstStateChangeReturn gst_peconvolver_change_state(
     // downwards state changes here
 
     switch (transition) {
-        case GST_STATE_CHANGE_READY_TO_NULL:
+        case GST_STATE_CHANGE_PLAYING_TO_PAUSED:
             finish_convolver(peconvolver);
             break;
         default:

@@ -8,6 +8,7 @@
 #include <iostream>
 #include <sndfile.hh>
 #include "gstpeconvolver.hpp"
+#include "util.hpp"
 
 namespace rk {
 
@@ -16,9 +17,11 @@ std::string log_tag = "convolver_plugin: ";
 void read_file(_GstPeconvolver* peconvolver) {
     SndfileHandle file = SndfileHandle(peconvolver->kernel_path);
 
-    std::cout << "Opened file: " << peconvolver->kernel_path << std::endl;
-    std::cout << "rate: " << file.samplerate() << std::endl;
-    std::cout << "channels: " << file.channels() << std::endl;
+    util::debug(log_tag + "irs file: " + peconvolver->kernel_path);
+    util::debug(log_tag + "irs rate: " + std::to_string(file.samplerate()) +
+                " Hz");
+    util::debug(log_tag + "irs channels: " + std::to_string(file.channels()));
+    util::debug(log_tag + "irs frames: " + std::to_string(file.frames()));
 
     // for now only stereo irs files are supported
 
@@ -57,6 +60,9 @@ void read_file(_GstPeconvolver* peconvolver) {
         }
 
         if (resample) {
+            util::debug(log_tag + "resampling irs file to " +
+                        std::to_string(peconvolver->rate) + " Hz");
+
             SRC_STATE* src_state =
                 src_new(SRC_SINC_BEST_QUALITY, file.channels(), nullptr);
 
@@ -77,6 +83,8 @@ void read_file(_GstPeconvolver* peconvolver) {
 
             src_delete(src_state);
         } else {
+            util::debug(log_tag + "irs file does not need resampling");
+
             std::memcpy(kernel, buffer, total_frames_in * sizeof(float));
         }
 
@@ -111,6 +119,7 @@ void read_file(_GstPeconvolver* peconvolver) {
         delete[] buffer;
         delete[] kernel;
     } else {
+        util::warning(log_tag + "only stereo impulse responses are supported");
     }
 }
 

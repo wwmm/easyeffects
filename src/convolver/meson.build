@@ -1,6 +1,7 @@
 plugin_sources = [
 	'gstpeconvolver.cpp',
-	'zita-convolver.cc'
+	'zita-convolver.cc',
+	'../util.cpp'
 ]
 
 plugin_deps = [
