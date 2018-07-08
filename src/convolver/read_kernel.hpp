@@ -12,7 +12,7 @@
 
 namespace rk {
 
-std::string log_tag = "convolver_plugin: ";
+std::string log_tag = "convolver: ";
 
 void read_file(_GstPeconvolver* peconvolver) {
     SndfileHandle file = SndfileHandle(peconvolver->kernel_path);
@@ -44,23 +44,22 @@ void read_file(_GstPeconvolver* peconvolver) {
 
             frames_out = ceil(file.frames() * resample_ratio);
             total_frames_out = file.channels() * frames_out;
-
-            kernel = new float[total_frames_out];
-            peconvolver->kernel_L = new float[frames_out];
-            peconvolver->kernel_R = new float[frames_out];
-            peconvolver->kernel_n_frames = frames_out;
         } else {
             frames_out = frames_in;
             total_frames_out = file.channels() * frames_out;
-
-            kernel = new float[total_frames_in];
-            peconvolver->kernel_L = new float[frames_out];
-            peconvolver->kernel_R = new float[frames_out];
-            peconvolver->kernel_n_frames = frames_out;
         }
 
+        // allocate arrays
+
+        kernel = new float[total_frames_out];
+        peconvolver->kernel_L = new float[frames_out];
+        peconvolver->kernel_R = new float[frames_out];
+        peconvolver->kernel_n_frames = frames_out;
+
+        // resample if necessary
+
         if (resample) {
-            util::debug(log_tag + "resampling irs file to " +
+            util::debug(log_tag + "resampling irs to " +
                         std::to_string(peconvolver->rate) + " Hz");
 
             SRC_STATE* src_state =
@@ -89,9 +88,9 @@ void read_file(_GstPeconvolver* peconvolver) {
         }
 
         // deinterleave
-        for (int n = 0; n < frames_out; n += 2) {
-            peconvolver->kernel_L[n] = kernel[n];
-            peconvolver->kernel_R[n] = kernel[n + 1];
+        for (int n = 0; n < frames_out; n++) {
+            peconvolver->kernel_L[n] = kernel[2 * n];
+            peconvolver->kernel_R[n] = kernel[2 * n + 1];
         }
 
         // auto gain
@@ -107,9 +106,10 @@ void read_file(_GstPeconvolver* peconvolver) {
         power /= 2;  // 2 channels
 
         float autogain = (power > 1.0f) ? log10f(power) : 1.0f;
+        autogain = (autogain > 1) ? autogain : 1.0f;
 
-        std::cout << "power: " << power << std::endl;
-        std::cout << "autogain: " << autogain << std::endl;
+        // util::debug(log_tag + "power: " + std::to_string(power));
+        util::debug(log_tag + "autogain: " + std::to_string(autogain));
 
         for (int n = 0; n < frames_out; n++) {
             peconvolver->kernel_L[n] /= autogain;
