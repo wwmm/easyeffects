@@ -92,12 +92,17 @@ void on_message_element(const GstBus* gst_bus,
                 g_value_get_float(gst_value_list_get_value(magnitudes, n));
         }
 
-        boost::math::cubic_b_spline<float> spline(pb->spectrum_mag_tmp.begin(),
-                                                  pb->spectrum_mag_tmp.end(),
-                                                  pb->spline_f0, pb->spline_df);
+        try {
+            boost::math::cubic_b_spline<float> spline(
+                pb->spectrum_mag_tmp.begin(), pb->spectrum_mag_tmp.end(),
+                pb->spline_f0, pb->spline_df);
 
-        for (uint n = 0; n < pb->spectrum_mag.size(); n++) {
-            pb->spectrum_mag[n] = spline(pb->spectrum_x_axis[n]);
+            for (uint n = 0; n < pb->spectrum_mag.size(); n++) {
+                pb->spectrum_mag[n] = spline(pb->spectrum_x_axis[n]);
+            }
+        } catch (const std::exception& e) {
+            util::debug(std::string("Message from thrown exception was: ") +
+                        e.what());
         }
 
         auto min_mag = pb->spectrum_threshold;

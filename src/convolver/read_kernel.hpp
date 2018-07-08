@@ -62,6 +62,8 @@ void read_file(_GstPeconvolver* peconvolver) {
 
             SRC_DATA src_data;
 
+            // from https://github.com/x42/convoLV2/blob/master/convolution.cc
+
             src_data.input_frames = frames_in;
             src_data.output_frames = frames_out;
             src_data.end_of_input = 1;
@@ -82,6 +84,28 @@ void read_file(_GstPeconvolver* peconvolver) {
         for (int n = 0; n < frames_out; n += 2) {
             peconvolver->kernel_L[n] = kernel[n];
             peconvolver->kernel_R[n] = kernel[n + 1];
+        }
+
+        // auto gain
+        // https://github.com/tomszilagyi/ir.lv2/blob/automatable/ir.cc
+
+        float power = 0.0f;
+
+        for (int n = 0; n < frames_out; n++) {
+            power += peconvolver->kernel_L[n] * peconvolver->kernel_L[n];
+            power += peconvolver->kernel_R[n] * peconvolver->kernel_R[n];
+        }
+
+        power /= 2;  // 2 channels
+
+        float autogain = (power > 1.0f) ? log10f(power) : 1.0f;
+
+        std::cout << "power: " << power << std::endl;
+        std::cout << "autogain: " << autogain << std::endl;
+
+        for (int n = 0; n < frames_out; n++) {
+            peconvolver->kernel_L[n] /= autogain;
+            peconvolver->kernel_R[n] /= autogain;
         }
 
         delete[] buffer;
