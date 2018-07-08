@@ -98,21 +98,22 @@ bool read_file(_GstPeconvolver* peconvolver) {
         }
 
         // auto gain
-        // https://github.com/tomszilagyi/ir.lv2/blob/automatable/ir.cc
 
-        float power = 0.0f;
+        float peak = 0.0f, target_peak = pow(10.0f, -10.0f / 20.0f);
 
         for (int n = 0; n < frames_out; n++) {
-            power += peconvolver->kernel_L[n] * peconvolver->kernel_L[n];
-            power += peconvolver->kernel_R[n] * peconvolver->kernel_R[n];
+            float tmpl = fabsf(peconvolver->kernel_L[n]);
+            float tmpr = fabsf(peconvolver->kernel_R[n]);
+
+            peak = (tmpl > peak) ? tmpl : peak;
+            peak = (tmpr > peak) ? tmpr : peak;
         }
 
-        power /= 2;  // 2 channels
+        float autogain = peak / target_peak;
 
-        float autogain = (power > 1.0f) ? log10f(power) : 1.0f;
-        autogain = (autogain > 1) ? autogain : 1.0f;
-
-        // util::debug(log_tag + "power: " + std::to_string(power));
+        util::debug(log_tag +
+                    "irs peak: " + std::to_string(util::linear_to_db(peak)));
+        util::debug(log_tag + "target irs peak: " + std::to_string(-12.0f));
         util::debug(log_tag + "autogain: " + std::to_string(autogain));
 
         for (int n = 0; n < frames_out; n++) {
