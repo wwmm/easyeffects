@@ -12,7 +12,7 @@ class Equalizer : public PluginBase {
 
     GstElement* equalizer;
 
-    void init_equalizer();
+    void update_equalizer();
 
    private:
     void bind_band(const int index);

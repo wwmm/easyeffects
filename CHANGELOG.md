@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [4.1.3]
+### Fixed
+- The equalizer presets were not being applied in a few situations
+
 ## [4.1.2]
 ### Added
 - Multiband gate plugin from Calf Studio
