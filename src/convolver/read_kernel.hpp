@@ -113,7 +113,7 @@ bool read_file(_GstPeconvolver* peconvolver) {
 
         util::debug(log_tag +
                     "irs peak: " + std::to_string(util::linear_to_db(peak)));
-        util::debug(log_tag + "target irs peak: " + std::to_string(-12.0f));
+        util::debug(log_tag + "target irs peak: " + std::to_string(-10.0f));
         util::debug(log_tag + "autogain: " + std::to_string(autogain));
 
         for (int n = 0; n < frames_out; n++) {
