@@ -1,14 +1,14 @@
 /**
  * SECTION:element-gstpeconvolver
  *
- * The peconvolver element does FIXME stuff.
+ * The peconvolver element does convolution with inpulse responses.
  *
  * <refsect2>
  * <title>Example launch line</title>
  * |[
- * gst-launch-1.0 -v fakesrc ! peconvolver ! FIXME ! fakesink
+ * gst-launch-1.0 -v audiotestsrc ! peconvolver ! pulsesink
  * ]|
- * FIXME Describe what the pipeline does.
+ * The peconvolver element does convolution with inpulse responses.
  * </refsect2>
  */
 
@@ -33,8 +33,6 @@ static void gst_peconvolver_get_property(GObject* object,
                                          GValue* value,
                                          GParamSpec* pspec);
 
-static void gst_peconvolver_dispose(GObject* object);
-
 static void gst_peconvolver_finalize(GObject* object);
 
 static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
@@ -44,7 +42,17 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
                                                GstBuffer* inbuf,
                                                GstBuffer* outbuf);
 
+static GstStateChangeReturn gst_peconvolver_change_state(
+    GstElement* element,
+    GstStateChange transition);
+
 static void process(GstPeconvolver* peconvolver, GstBuffer* buffer);
+
+static void setup_convolver(GstPeconvolver* peconvolver);
+
+static void finish_convolver(GstPeconvolver* peconvolver);
+
+/*global variables*/
 
 enum { PROP_0, PROP_KERNEL_PATH };
 
@@ -87,6 +95,8 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
 
     GstAudioFilterClass* audio_filter_class = GST_AUDIO_FILTER_CLASS(klass);
 
+    GstElementClass* element_class = GST_ELEMENT_CLASS(klass);
+
     /* Setting up pads and setting metadata should be moved to
        base_class_init if you intend to subclass this class. */
 
@@ -104,13 +114,14 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
     gobject_class->set_property = gst_peconvolver_set_property;
     gobject_class->get_property = gst_peconvolver_get_property;
 
-    gobject_class->dispose = gst_peconvolver_dispose;
     gobject_class->finalize = gst_peconvolver_finalize;
 
     audio_filter_class->setup = GST_DEBUG_FUNCPTR(gst_peconvolver_setup);
 
     base_transform_class->transform =
         GST_DEBUG_FUNCPTR(gst_peconvolver_transform);
+
+    element_class->change_state = gst_peconvolver_change_state;
 
     /* define properties */
 
@@ -124,8 +135,6 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
 
 static void gst_peconvolver_init(GstPeconvolver* peconvolver) {
     peconvolver->conv_buffer_size = 1024;
-
-    peconvolver->adapter = gst_adapter_new();
 }
 
 void gst_peconvolver_set_property(GObject* object,
@@ -164,44 +173,12 @@ void gst_peconvolver_get_property(GObject* object,
     }
 }
 
-void gst_peconvolver_dispose(GObject* object) {
-    GstPeconvolver* peconvolver = GST_PECONVOLVER(object);
-
-    GST_DEBUG_OBJECT(peconvolver, "dispose");
-
-    /* clean up as possible.  may be called multiple times */
-
-    G_OBJECT_CLASS(gst_peconvolver_parent_class)->dispose(object);
-}
-
 void gst_peconvolver_finalize(GObject* object) {
     GstPeconvolver* peconvolver = GST_PECONVOLVER(object);
 
     GST_DEBUG_OBJECT(peconvolver, "finalize");
 
-    if (peconvolver->conv) {
-        if (peconvolver->conv->state() != Convproc::ST_STOP) {
-            peconvolver->conv->stop_process();
-        }
-
-        peconvolver->conv->cleanup();
-
-        delete peconvolver->conv;
-    }
-
-    if (peconvolver->kernel_L) {
-        delete[] peconvolver->kernel_L;
-    }
-
-    if (peconvolver->kernel_R) {
-        delete[] peconvolver->kernel_R;
-    }
-
-    if (peconvolver->adapter) {
-        g_object_unref(peconvolver->adapter);
-    }
-
-    std::cout << "cleaning" << std::endl;
+    finish_convolver(peconvolver);
 
     /* clean up object here */
 
@@ -217,51 +194,6 @@ static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
     peconvolver->rate = info->rate;
     peconvolver->bps = GST_AUDIO_INFO_BPS(info);
 
-    rk::read_file(peconvolver);
-
-    float density = 0.0f;
-    int max_size;
-
-    peconvolver->conv = new Convproc();
-
-    if (peconvolver->kernel_n_frames > 0x00100000) {
-        max_size = 0x00100000;
-    } else {
-        max_size = peconvolver->kernel_n_frames;
-    }
-
-    // std::cout << "num_samples: " << peconvolver->kernel_n_frames <<
-    // std::endl;
-
-    int ret = peconvolver->conv->configure(
-        2, 2, max_size, peconvolver->conv_buffer_size,
-        peconvolver->conv_buffer_size, peconvolver->conv_buffer_size, density);
-
-    if (ret != 0) {
-        std::cout << "IR: can't initialise zita-convolver engine: " << ret
-                  << std::endl;
-    }
-
-    ret = peconvolver->conv->impdata_create(0, 0, 1, peconvolver->kernel_L, 0,
-                                            peconvolver->kernel_n_frames);
-
-    if (ret != 0) {
-        std::cout << "IR: left impdata_create failed: " << ret << std::endl;
-    }
-
-    ret = peconvolver->conv->impdata_create(1, 1, 1, peconvolver->kernel_R, 0,
-                                            peconvolver->kernel_n_frames);
-
-    if (ret != 0) {
-        std::cout << "IR: right impdata_create failed: " << ret << std::endl;
-    }
-
-    ret = peconvolver->conv->start_process(0, 0);
-
-    if (ret != 0) {
-        std::cout << "IR: start_process failed: " << ret << std::endl;
-    }
-
     return true;
 }
 
@@ -273,26 +205,76 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
 
     GST_DEBUG_OBJECT(peconvolver, "transform");
 
-    gst_buffer_ref(inbuf);
-    gst_adapter_push(peconvolver->adapter, inbuf);
+    if (peconvolver->ready) {
+        gst_buffer_ref(inbuf);
+        gst_adapter_push(peconvolver->adapter, inbuf);
 
-    unsigned int conv_nbytes =
-        2 * peconvolver->conv_buffer_size * peconvolver->bps;
+        unsigned int conv_nbytes =
+            2 * peconvolver->conv_buffer_size * peconvolver->bps;
 
-    gst_buffer_resize(outbuf, 0, 0);
+        gst_buffer_resize(outbuf, 0, 0);
 
-    if (gst_adapter_available(peconvolver->adapter) >= conv_nbytes) {
-        GstBuffer* buffer =
-            gst_adapter_take_buffer(peconvolver->adapter, conv_nbytes);
+        if (gst_adapter_available(peconvolver->adapter) >= conv_nbytes) {
+            GstBuffer* buffer =
+                gst_adapter_take_buffer(peconvolver->adapter, conv_nbytes);
 
-        gst_buffer_append(outbuf, buffer);
+            gst_buffer_append(outbuf, buffer);
 
-        process(peconvolver, outbuf);
+            process(peconvolver, outbuf);
 
-        // gst_buffer_unref(buffer);
+            // I think I should do this. But there is a crash if I do so.
+            // gst_buffer_unref(buffer);
+        }
+    } else {
+        // passthrough
+
+        GstMapInfo map_in, map_out;
+
+        gst_buffer_map(inbuf, &map_in, GST_MAP_READ);
+        gst_buffer_map(outbuf, &map_out, GST_MAP_WRITE);
+
+        memcpy(map_out.data, map_in.data, map_in.size);
+
+        gst_buffer_unmap(inbuf, &map_in);
+        gst_buffer_unmap(outbuf, &map_out);
     }
 
     return GST_FLOW_OK;
+}
+
+static GstStateChangeReturn gst_peconvolver_change_state(
+    GstElement* element,
+    GstStateChange transition) {
+    GstPeconvolver* peconvolver = GST_PECONVOLVER(element);
+    GstStateChangeReturn ret = GST_STATE_CHANGE_SUCCESS;
+
+    // upwards state changes here
+
+    switch (transition) {
+        case GST_STATE_CHANGE_NULL_TO_READY:
+            setup_convolver(peconvolver);
+            break;
+        default:
+            break;
+    }
+
+    ret = GST_ELEMENT_CLASS(gst_peconvolver_parent_class)
+              ->change_state(element, transition);
+
+    if (ret == GST_STATE_CHANGE_FAILURE)
+        return ret;
+
+    // downwards state changes here
+
+    switch (transition) {
+        case GST_STATE_CHANGE_READY_TO_NULL:
+            finish_convolver(peconvolver);
+            break;
+        default:
+            break;
+    }
+
+    return ret;
 }
 
 static void process(GstPeconvolver* peconvolver, GstBuffer* buffer) {
@@ -323,9 +305,94 @@ static void process(GstPeconvolver* peconvolver, GstBuffer* buffer) {
         ((float*)map.data)[2 * n + 1] = peconvolver->conv->outdata(1)[n];
     }
 
-    // memcpy(map_out.data, map_in.data, map_in.size);
-
     gst_buffer_unmap(buffer, &map);
+}
+
+static void setup_convolver(GstPeconvolver* peconvolver) {
+    bool failed = false;
+
+    rk::read_file(peconvolver);
+
+    float density = 0.0f;
+    int max_size;
+
+    peconvolver->conv = new Convproc();
+
+    if (peconvolver->kernel_n_frames > 0x00100000) {
+        max_size = 0x00100000;
+    } else {
+        max_size = peconvolver->kernel_n_frames;
+    }
+
+    // std::cout << "num_samples: " << peconvolver->kernel_n_frames <<
+    // std::endl;
+
+    int ret = peconvolver->conv->configure(
+        2, 2, max_size, peconvolver->conv_buffer_size,
+        peconvolver->conv_buffer_size, peconvolver->conv_buffer_size, density);
+
+    if (ret != 0) {
+        failed = true;
+        std::cout << "IR: can't initialise zita-convolver engine: " << ret
+                  << std::endl;
+    }
+
+    ret = peconvolver->conv->impdata_create(0, 0, 1, peconvolver->kernel_L, 0,
+                                            peconvolver->kernel_n_frames);
+
+    if (ret != 0) {
+        failed = true;
+        std::cout << "IR: left impdata_create failed: " << ret << std::endl;
+    }
+
+    ret = peconvolver->conv->impdata_create(1, 1, 1, peconvolver->kernel_R, 0,
+                                            peconvolver->kernel_n_frames);
+
+    if (ret != 0) {
+        failed = true;
+        std::cout << "IR: right impdata_create failed: " << ret << std::endl;
+    }
+
+    ret = peconvolver->conv->start_process(0, 0);
+
+    if (ret != 0) {
+        failed = true;
+        std::cout << "IR: start_process failed: " << ret << std::endl;
+    }
+
+    peconvolver->adapter = gst_adapter_new();
+
+    peconvolver->ready = (failed) ? false : true;
+}
+
+static void finish_convolver(GstPeconvolver* peconvolver) {
+    peconvolver->ready = false;
+
+    if (peconvolver->conv) {
+        if (peconvolver->conv->state() != Convproc::ST_STOP) {
+            peconvolver->conv->stop_process();
+        }
+
+        peconvolver->conv->cleanup();
+
+        delete peconvolver->conv;
+    }
+
+    if (peconvolver->kernel_L) {
+        delete[] peconvolver->kernel_L;
+    }
+
+    if (peconvolver->kernel_R) {
+        delete[] peconvolver->kernel_R;
+    }
+
+    if (peconvolver->adapter) {
+        gst_adapter_clear(peconvolver->adapter);
+
+        g_object_unref(peconvolver->adapter);
+    }
+
+    std::cout << "finishing convolver" << std::endl;
 }
 
 static gboolean plugin_init(GstPlugin* plugin) {

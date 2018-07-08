@@ -29,6 +29,7 @@ struct _GstPeconvolver {
 
     /* < private > */
 
+    bool ready = false;
     int rate, bps, kernel_n_frames;
     float *kernel_L, *kernel_R;  // left and right channels buffers
     unsigned int conv_buffer_size;
@@ -39,7 +40,7 @@ struct _GstPeconvolver {
 };
 
 struct _GstPeconvolverClass {
-    GstAudioFilterClass base_peconvolver_class;
+    GstAudioFilterClass base_peconvolve_class;
 };
 
 GType gst_peconvolver_get_type(void);
