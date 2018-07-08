@@ -152,7 +152,7 @@ static void gst_peconvolver_init(GstPeconvolver* peconvolver) {
     peconvolver->log_tag = "convolver: ";
     peconvolver->ready = false;
     peconvolver->rate = 0;
-    peconvolver->conv_buffer_size = 512;
+    peconvolver->conv_buffer_size = 256;
 }
 
 void gst_peconvolver_set_property(GObject* object,
