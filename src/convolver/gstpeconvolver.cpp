@@ -52,7 +52,25 @@ static void setup_convolver(GstPeconvolver* peconvolver);
 
 static void finish_convolver(GstPeconvolver* peconvolver);
 
-/*global variables*/
+/*global variables and my defines*/
+
+#define MAX_IRS_FRAMES 0x00100000
+
+// taken from https://github.com/x42/convoLV2/blob/master/convolution.cc
+/*
+ * Priority should match -P parameter passed to jackd.
+ * Sched.class: either SCHED_FIFO or SCHED_RR (I think Jack uses SCHED_FIFO).
+ *
+ * THREAD_SYNC_MODE must be true if you want to use the plugin in Jack
+ * freewheeling mode (eg. while exporting in Ardour). You may only use
+ * false if you *only* run the plugin realtime.
+ */
+#define CONVPROC_SCHEDULER_PRIORITY 0
+#define CONVPROC_SCHEDULER_CLASS SCHED_FIFO
+#define THREAD_SYNC_MODE true
+#define CONVPROC_SCHEDULER_PRIORITY 0
+#define CONVPROC_SCHEDULER_CLASS SCHED_FIFO
+#define THREAD_SYNC_MODE true
 
 enum { PROP_0, PROP_KERNEL_PATH };
 
@@ -134,6 +152,8 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
 }
 
 static void gst_peconvolver_init(GstPeconvolver* peconvolver) {
+    peconvolver->log_tag = "convolver: ";
+    peconvolver->ready = false;
     peconvolver->rate = 0;
     peconvolver->conv_buffer_size = 1024;
 }
@@ -284,39 +304,11 @@ static GstStateChangeReturn gst_peconvolver_change_state(
     return ret;
 }
 
-static void process(GstPeconvolver* peconvolver, GstBuffer* buffer) {
-    GstMapInfo map;
-
-    gst_buffer_map(buffer, &map, GST_MAP_READWRITE);
-
-    // output is always stereo. That is why we divide by 2
-    guint num_samples = map.size / (2 * peconvolver->bps);
-
-    // std::cout << "gst buffer samples: " << num_samples << std::endl;
-
-    // deinterleave
-    for (unsigned int n = 0; n < num_samples; n++) {
-        peconvolver->conv->inpdata(0)[n] = ((float*)map.data)[2 * n];
-        peconvolver->conv->inpdata(1)[n] = ((float*)map.data)[2 * n + 1];
-    }
-
-    int ret = peconvolver->conv->process(true);
-
-    if (ret != 0) {
-        std::cout << "IR: process failed: " << ret << std::endl;
-    }
-
-    // interleave
-    for (unsigned int n = 0; n < num_samples; n++) {
-        ((float*)map.data)[2 * n] = peconvolver->conv->outdata(0)[n];
-        ((float*)map.data)[2 * n + 1] = peconvolver->conv->outdata(1)[n];
-    }
-
-    gst_buffer_unmap(buffer, &map);
-}
-
 static void setup_convolver(GstPeconvolver* peconvolver) {
     bool failed = false;
+
+    util::debug(peconvolver->log_tag + "maximum irs frames supported: " +
+                std::to_string(MAX_IRS_FRAMES));
 
     rk::read_file(peconvolver);
 
@@ -325,18 +317,15 @@ static void setup_convolver(GstPeconvolver* peconvolver) {
 
     peconvolver->conv = new Convproc();
 
-    if (peconvolver->kernel_n_frames > 0x00100000) {
-        max_size = 0x00100000;
+    if (peconvolver->kernel_n_frames > MAX_IRS_FRAMES) {
+        max_size = MAX_IRS_FRAMES;
     } else {
         max_size = peconvolver->kernel_n_frames;
     }
 
-    // std::cout << "num_samples: " << peconvolver->kernel_n_frames <<
-    // std::endl;
-
     int ret = peconvolver->conv->configure(
         2, 2, max_size, peconvolver->conv_buffer_size,
-        peconvolver->conv_buffer_size, peconvolver->conv_buffer_size, density);
+        peconvolver->conv_buffer_size, Convproc::MAXPART, density);
 
     if (ret != 0) {
         failed = true;
@@ -360,7 +349,8 @@ static void setup_convolver(GstPeconvolver* peconvolver) {
         std::cout << "IR: right impdata_create failed: " << ret << std::endl;
     }
 
-    ret = peconvolver->conv->start_process(0, 0);
+    ret = peconvolver->conv->start_process(CONVPROC_SCHEDULER_PRIORITY,
+                                           CONVPROC_SCHEDULER_CLASS);
 
     if (ret != 0) {
         failed = true;
@@ -370,6 +360,37 @@ static void setup_convolver(GstPeconvolver* peconvolver) {
     peconvolver->adapter = gst_adapter_new();
 
     peconvolver->ready = (failed) ? false : true;
+}
+
+static void process(GstPeconvolver* peconvolver, GstBuffer* buffer) {
+    GstMapInfo map;
+
+    gst_buffer_map(buffer, &map, GST_MAP_READWRITE);
+
+    // output is always stereo. That is why we divide by 2
+    guint num_samples = map.size / (2 * peconvolver->bps);
+
+    // std::cout << "gst buffer samples: " << num_samples << std::endl;
+
+    // deinterleave
+    for (unsigned int n = 0; n < num_samples; n++) {
+        peconvolver->conv->inpdata(0)[n] = ((float*)map.data)[2 * n];
+        peconvolver->conv->inpdata(1)[n] = ((float*)map.data)[2 * n + 1];
+    }
+
+    int ret = peconvolver->conv->process(THREAD_SYNC_MODE);
+
+    if (ret != 0) {
+        std::cout << "IR: process failed: " << ret << std::endl;
+    }
+
+    // interleave
+    for (unsigned int n = 0; n < num_samples; n++) {
+        ((float*)map.data)[2 * n] = peconvolver->conv->outdata(0)[n];
+        ((float*)map.data)[2 * n + 1] = peconvolver->conv->outdata(1)[n];
+    }
+
+    gst_buffer_unmap(buffer, &map);
 }
 
 static void finish_convolver(GstPeconvolver* peconvolver) {
@@ -398,8 +419,6 @@ static void finish_convolver(GstPeconvolver* peconvolver) {
 
         g_object_unref(peconvolver->adapter);
     }
-
-    std::cout << "finishing convolver" << std::endl;
 }
 
 static gboolean plugin_init(GstPlugin* plugin) {

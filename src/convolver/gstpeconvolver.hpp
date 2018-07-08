@@ -3,6 +3,7 @@
 
 #include <gst/audio/gstaudiofilter.h>
 #include <zita-convolver.h>
+#include <iostream>
 
 G_BEGIN_DECLS
 
@@ -29,10 +30,12 @@ struct _GstPeconvolver {
 
     /* < private > */
 
-    bool ready = false;
+    bool ready;
     int rate, bps, kernel_n_frames;
     float *kernel_L, *kernel_R;  // left and right channels buffers
     unsigned int conv_buffer_size;
+
+    std::string log_tag;
 
     GstAdapter* adapter;
 
