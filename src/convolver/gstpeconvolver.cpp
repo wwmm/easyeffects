@@ -68,9 +68,6 @@ static void finish_convolver(GstPeconvolver* peconvolver);
 #define CONVPROC_SCHEDULER_PRIORITY 0
 #define CONVPROC_SCHEDULER_CLASS SCHED_FIFO
 #define THREAD_SYNC_MODE true
-#define CONVPROC_SCHEDULER_PRIORITY 0
-#define CONVPROC_SCHEDULER_CLASS SCHED_FIFO
-#define THREAD_SYNC_MODE true
 
 enum { PROP_0, PROP_KERNEL_PATH };
 
@@ -322,6 +319,13 @@ static void setup_convolver(GstPeconvolver* peconvolver) {
     } else {
         max_size = peconvolver->kernel_n_frames;
     }
+
+    unsigned int options = 0;
+
+    options |= Convproc::OPT_FFTW_MEASURE;
+    options |= Convproc::OPT_VECTOR_MODE;
+
+    peconvolver->conv->set_options(options);
 
     int ret = peconvolver->conv->configure(
         2, 2, max_size, peconvolver->conv_buffer_size,
