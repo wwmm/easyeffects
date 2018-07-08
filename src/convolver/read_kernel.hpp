@@ -14,8 +14,12 @@ namespace rk {
 
 std::string log_tag = "convolver: ";
 
-void read_file(_GstPeconvolver* peconvolver) {
+bool read_file(_GstPeconvolver* peconvolver) {
     SndfileHandle file = SndfileHandle(peconvolver->kernel_path);
+
+    if (file.channels() == 0 || file.frames() == 0) {
+        return false;
+    }
 
     util::debug(log_tag + "irs file: " + peconvolver->kernel_path);
     util::debug(log_tag + "irs rate: " + std::to_string(file.samplerate()) +
@@ -122,6 +126,8 @@ void read_file(_GstPeconvolver* peconvolver) {
         util::warning(log_tag + "Only stereo impulse responses are supported." +
                       "Impulse file was not loaded!");
     }
+
+    return true;
 }
 
 }  // namespace rk
