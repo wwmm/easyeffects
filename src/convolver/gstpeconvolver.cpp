@@ -411,30 +411,32 @@ static void process(GstPeconvolver* peconvolver, GstBuffer* buffer) {
 }
 
 static void finish_convolver(GstPeconvolver* peconvolver) {
-    peconvolver->ready = false;
+    if (peconvolver->ready) {
+        peconvolver->ready = false;
 
-    if (peconvolver->conv) {
-        if (peconvolver->conv->state() != Convproc::ST_STOP) {
-            peconvolver->conv->stop_process();
+        if (peconvolver->conv) {
+            if (peconvolver->conv->state() != Convproc::ST_STOP) {
+                peconvolver->conv->stop_process();
+            }
+
+            peconvolver->conv->cleanup();
+
+            delete peconvolver->conv;
         }
 
-        peconvolver->conv->cleanup();
+        if (peconvolver->kernel_L) {
+            delete[] peconvolver->kernel_L;
+        }
 
-        delete peconvolver->conv;
-    }
+        if (peconvolver->kernel_R) {
+            delete[] peconvolver->kernel_R;
+        }
 
-    if (peconvolver->kernel_L) {
-        delete[] peconvolver->kernel_L;
-    }
+        if (peconvolver->adapter) {
+            gst_adapter_clear(peconvolver->adapter);
 
-    if (peconvolver->kernel_R) {
-        delete[] peconvolver->kernel_R;
-    }
-
-    if (peconvolver->adapter) {
-        gst_adapter_clear(peconvolver->adapter);
-
-        g_object_unref(peconvolver->adapter);
+            g_object_unref(peconvolver->adapter);
+        }
     }
 }
 
