@@ -119,7 +119,8 @@ void read_file(_GstPeconvolver* peconvolver) {
         delete[] buffer;
         delete[] kernel;
     } else {
-        util::warning(log_tag + "only stereo impulse responses are supported");
+        util::warning(log_tag + "Only stereo impulse responses are supported." +
+                      "Impulse file was not loaded!");
     }
 }
 

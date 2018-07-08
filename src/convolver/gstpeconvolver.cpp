@@ -155,7 +155,7 @@ static void gst_peconvolver_init(GstPeconvolver* peconvolver) {
     peconvolver->log_tag = "convolver: ";
     peconvolver->ready = false;
     peconvolver->rate = 0;
-    peconvolver->conv_buffer_size = 1024;
+    peconvolver->conv_buffer_size = 512;
 }
 
 void gst_peconvolver_set_property(GObject* object,
@@ -239,13 +239,13 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
 
         gst_buffer_resize(outbuf, 0, 0);
 
-        if (gst_adapter_available(peconvolver->adapter) >= conv_nbytes) {
+        while (gst_adapter_available(peconvolver->adapter) >= conv_nbytes) {
             GstBuffer* buffer =
                 gst_adapter_take_buffer(peconvolver->adapter, conv_nbytes);
 
-            gst_buffer_append(outbuf, buffer);
+            process(peconvolver, buffer);
 
-            process(peconvolver, outbuf);
+            gst_buffer_append(outbuf, buffer);
 
             // I think I should do this. But there is a crash if I do so.
             // gst_buffer_unref(buffer);
@@ -329,8 +329,9 @@ static void setup_convolver(GstPeconvolver* peconvolver) {
 
     if (ret != 0) {
         failed = true;
-        std::cout << "IR: can't initialise zita-convolver engine: " << ret
-                  << std::endl;
+        util::warning(
+            peconvolver->log_tag +
+            "can't initialise zita-convolver engine: " + std::to_string(ret));
     }
 
     ret = peconvolver->conv->impdata_create(0, 0, 1, peconvolver->kernel_L, 0,
@@ -338,7 +339,8 @@ static void setup_convolver(GstPeconvolver* peconvolver) {
 
     if (ret != 0) {
         failed = true;
-        std::cout << "IR: left impdata_create failed: " << ret << std::endl;
+        util::warning(peconvolver->log_tag +
+                      "left impdata_create failed: " + std::to_string(ret));
     }
 
     ret = peconvolver->conv->impdata_create(1, 1, 1, peconvolver->kernel_R, 0,
@@ -346,7 +348,8 @@ static void setup_convolver(GstPeconvolver* peconvolver) {
 
     if (ret != 0) {
         failed = true;
-        std::cout << "IR: right impdata_create failed: " << ret << std::endl;
+        util::warning(peconvolver->log_tag +
+                      "right impdata_create failed: " + std::to_string(ret));
     }
 
     ret = peconvolver->conv->start_process(CONVPROC_SCHEDULER_PRIORITY,
@@ -354,7 +357,8 @@ static void setup_convolver(GstPeconvolver* peconvolver) {
 
     if (ret != 0) {
         failed = true;
-        std::cout << "IR: start_process failed: " << ret << std::endl;
+        util::warning(peconvolver->log_tag +
+                      "start_process failed: " + std::to_string(ret));
     }
 
     peconvolver->adapter = gst_adapter_new();
@@ -370,8 +374,6 @@ static void process(GstPeconvolver* peconvolver, GstBuffer* buffer) {
     // output is always stereo. That is why we divide by 2
     guint num_samples = map.size / (2 * peconvolver->bps);
 
-    // std::cout << "gst buffer samples: " << num_samples << std::endl;
-
     // deinterleave
     for (unsigned int n = 0; n < num_samples; n++) {
         peconvolver->conv->inpdata(0)[n] = ((float*)map.data)[2 * n];
@@ -381,7 +383,8 @@ static void process(GstPeconvolver* peconvolver, GstBuffer* buffer) {
     int ret = peconvolver->conv->process(THREAD_SYNC_MODE);
 
     if (ret != 0) {
-        std::cout << "IR: process failed: " << ret << std::endl;
+        util::warning(peconvolver->log_tag +
+                      "IR: process failed: " + std::to_string(ret));
     }
 
     // interleave
