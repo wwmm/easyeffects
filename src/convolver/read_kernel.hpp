@@ -99,7 +99,7 @@ bool read_file(_GstPeconvolver* peconvolver) {
 
         // auto gain
 
-        float peak = 0.0f, target_peak = pow(10.0f, -10.0f / 20.0f);
+        float peak = 0.0f, target_peak = powf(10.0f, -10.0f / 20.0f);
 
         for (int n = 0; n < frames_out; n++) {
             float tmpl = fabsf(peconvolver->kernel_L[n]);
@@ -124,8 +124,8 @@ bool read_file(_GstPeconvolver* peconvolver) {
         delete[] buffer;
         delete[] kernel;
     } else {
-        util::warning(log_tag + "Only stereo impulse responses are supported." +
-                      "Impulse file was not loaded!");
+        util::warning(log_tag + "only stereo impulse responses are supported." +
+                      "The impulse file was not loaded!");
     }
 
     return true;
