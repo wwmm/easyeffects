@@ -173,7 +173,7 @@ void ConvolverUi::populate_irs_listbox() {
 }
 
 void ConvolverUi::on_irs_menu_button_clicked() {
-    int height = 0.7 * get_allocated_height();
+    int height = 0.7 * this->get_toplevel()->get_allocated_height();
 
     irs_scrolled_window->set_max_content_height(height);
 
