@@ -34,8 +34,8 @@ Convolver::Convolver(const std::string& tag, const std::string& schema)
 
         bind_to_gsettings();
 
-        g_object_set(convolver, "kernelpath", "/home/wallace/dolby.irs",
-                     nullptr);
+        // g_object_set(convolver, "kernelpath", "/home/wallace/dolby.irs",
+        //              nullptr);
 
         // g_signal_connect(settings, "changed::post-messages",
         //                  G_CALLBACK(on_post_messages_changed), this);

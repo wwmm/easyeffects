@@ -408,10 +408,6 @@ static void setup_convolver(GstPeconvolver* peconvolver) {
 
         peconvolver->ready = (failed) ? false : true;
     } else {
-        util::warning(peconvolver->log_tag +
-                      "irs file does not exists or it is empty: " +
-                      peconvolver->kernel_path);
-
         util::warning(peconvolver->log_tag + "we will just passthrough data.");
 
         peconvolver->ready = false;

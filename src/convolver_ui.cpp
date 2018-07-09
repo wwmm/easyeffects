@@ -27,7 +27,10 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
         sigc::mem_fun(*this, &ConvolverUi::on_listbox_sort));
 
     irs_listbox->signal_row_activated().connect([&](auto row) {
+        auto irs_file =
+            irs_dir / boost::filesystem::path{row->get_name() + ".irs"};
 
+        settings->set_string("kernel-path", irs_file.string());
     });
 
     import_irs->signal_clicked().connect(
