@@ -243,8 +243,6 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
 
     GST_DEBUG_OBJECT(peconvolver, "transform");
 
-    std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
-
     if (peconvolver->ready) {
         gst_buffer_ref(inbuf);
         gst_adapter_push(peconvolver->adapter, inbuf);
@@ -258,7 +256,7 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
             GstBuffer* buffer =
                 gst_adapter_take_buffer(peconvolver->adapter, conv_nbytes);
 
-            // std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
+            std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
 
             process(peconvolver, buffer);
 
@@ -432,32 +430,34 @@ static void setup_convolver(GstPeconvolver* peconvolver) {
 }
 
 static void process(GstPeconvolver* peconvolver, GstBuffer* buffer) {
-    GstMapInfo map;
+    if (peconvolver->ready) {
+        GstMapInfo map;
 
-    gst_buffer_map(buffer, &map, GST_MAP_READWRITE);
+        gst_buffer_map(buffer, &map, GST_MAP_READWRITE);
 
-    guint num_samples = map.size / peconvolver->bpf;
+        guint num_samples = map.size / peconvolver->bpf;
 
-    // deinterleave
-    for (unsigned int n = 0; n < num_samples; n++) {
-        peconvolver->conv->inpdata(0)[n] = ((float*)map.data)[2 * n];
-        peconvolver->conv->inpdata(1)[n] = ((float*)map.data)[2 * n + 1];
+        // deinterleave
+        for (unsigned int n = 0; n < num_samples; n++) {
+            peconvolver->conv->inpdata(0)[n] = ((float*)map.data)[2 * n];
+            peconvolver->conv->inpdata(1)[n] = ((float*)map.data)[2 * n + 1];
+        }
+
+        int ret = peconvolver->conv->process(THREAD_SYNC_MODE);
+
+        if (ret != 0) {
+            util::warning(peconvolver->log_tag +
+                          "IR: process failed: " + std::to_string(ret));
+        }
+
+        // interleave
+        for (unsigned int n = 0; n < num_samples; n++) {
+            ((float*)map.data)[2 * n] = peconvolver->conv->outdata(0)[n];
+            ((float*)map.data)[2 * n + 1] = peconvolver->conv->outdata(1)[n];
+        }
+
+        gst_buffer_unmap(buffer, &map);
     }
-
-    int ret = peconvolver->conv->process(THREAD_SYNC_MODE);
-
-    if (ret != 0) {
-        util::warning(peconvolver->log_tag +
-                      "IR: process failed: " + std::to_string(ret));
-    }
-
-    // interleave
-    for (unsigned int n = 0; n < num_samples; n++) {
-        ((float*)map.data)[2 * n] = peconvolver->conv->outdata(0)[n];
-        ((float*)map.data)[2 * n + 1] = peconvolver->conv->outdata(1)[n];
-    }
-
-    gst_buffer_unmap(buffer, &map);
 }
 
 static void finish_convolver(GstPeconvolver* peconvolver) {
