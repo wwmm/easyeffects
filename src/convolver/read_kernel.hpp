@@ -99,7 +99,7 @@ bool read_file(_GstPeconvolver* peconvolver) {
 
         // auto gain
 
-        float rms = 0.0f, target_rms = powf(10.0f, -25.0f / 10.0f);
+        float rms = 0.0f, target_rms = powf(10.0f, -20.0f / 10.0f);
 
         for (int n = 0; n < frames_out; n++) {
             rms += peconvolver->kernel_L[n] * peconvolver->kernel_L[n];
@@ -113,7 +113,7 @@ bool read_file(_GstPeconvolver* peconvolver) {
 
         util::debug(log_tag +
                     "irs rms: " + std::to_string(10.0f * log10f(rms)));
-        util::debug(log_tag + "target irs rms: " + std::to_string(-25.0f));
+        util::debug(log_tag + "target irs rms: " + std::to_string(-20.0f));
         util::debug(log_tag + "autogain: " + std::to_string(autogain));
 
         for (int n = 0; n < frames_out; n++) {
