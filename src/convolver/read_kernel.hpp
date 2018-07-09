@@ -108,22 +108,22 @@ bool read_file(_GstPeconvolver* peconvolver) {
 
         // auto gain
 
-        float rms = 0.0f, target_rms = powf(10.0f, -25.0f / 10.0f);
+        float peak = 0.0f, target_peak = powf(10.0f, -12.0f / 20.0f);
 
         for (int n = 0; n < frames_out; n++) {
-            rms += peconvolver->kernel_L[n] * peconvolver->kernel_L[n];
-            rms += peconvolver->kernel_R[n] * peconvolver->kernel_R[n];
+            float tmpl = fabsf(peconvolver->kernel_L[n]);
+            float tmpr = fabsf(peconvolver->kernel_R[n]);
+
+            peak = (tmpl > peak) ? tmpl : peak;
+            peak = (tmpr > peak) ? tmpr : peak;
         }
 
-        rms /= (2.0f * frames_out);
-        rms = sqrtf(rms);
-
-        float autogain = rms / target_rms;
+        float autogain = peak / target_peak;
 
         util::debug(log_tag +
-                    "irs rms: " + std::to_string(10.0f * log10f(rms)));
-        util::debug(log_tag + "target irs rms: " + std::to_string(-25.0f));
-        util::debug(log_tag + "autogain: " + std::to_string(autogain));
+                    "irs peak: " + std::to_string(10.0f * log10f(peak)));
+        util::debug(log_tag + "target irs peak: " + std::to_string(-12.0f));
+        util::debug(log_tag + "autogain factor: " + std::to_string(autogain));
 
         for (int n = 0; n < frames_out; n++) {
             peconvolver->kernel_L[n] /= autogain;

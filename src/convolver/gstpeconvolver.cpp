@@ -243,6 +243,8 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
 
     GST_DEBUG_OBJECT(peconvolver, "transform");
 
+    std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
+
     if (peconvolver->ready) {
         gst_buffer_ref(inbuf);
         gst_adapter_push(peconvolver->adapter, inbuf);
@@ -255,8 +257,6 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
         while (gst_adapter_available(peconvolver->adapter) >= conv_nbytes) {
             GstBuffer* buffer =
                 gst_adapter_take_buffer(peconvolver->adapter, conv_nbytes);
-
-            std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
 
             process(peconvolver, buffer);
 
@@ -281,6 +281,8 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
 
 static gboolean gst_peconvolver_stop(GstBaseTransform* base) {
     GstPeconvolver* peconvolver = GST_PECONVOLVER(base);
+
+    std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
 
     finish_convolver(peconvolver);
 
