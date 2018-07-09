@@ -100,6 +100,7 @@
         <property name="column_spacing">3</property>
         <child>
           <object class="GtkButton" id="import_irs">
+            <property name="label" translatable="yes">Import File</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>

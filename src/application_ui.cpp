@@ -309,20 +309,20 @@ void ApplicationUi::clear_spectrum() {
 }
 
 bool ApplicationUi::on_enable_autostart(bool state) {
-    namespace fs = boost::filesystem;
+    boost::filesystem::path autostart_dir{Glib::get_user_config_dir() +
+                                          "/autostart"};
 
-    fs::path autostart_dir{Glib::get_user_config_dir() + "/autostart"};
-
-    if (!fs::is_directory(autostart_dir)) {
-        fs::create_directories(autostart_dir);
+    if (!boost::filesystem::is_directory(autostart_dir)) {
+        boost::filesystem::create_directories(autostart_dir);
     }
 
-    fs::path autostart_file{Glib::get_user_config_dir() +
-                            "/autostart/pulseeffects-service.desktop"};
+    boost::filesystem::path autostart_file{
+        Glib::get_user_config_dir() +
+        "/autostart/pulseeffects-service.desktop"};
 
     if (state) {
-        if (!fs::exists(autostart_file)) {
-            fs::ofstream ofs{autostart_file};
+        if (!boost::filesystem::exists(autostart_file)) {
+            boost::filesystem::ofstream ofs{autostart_file};
 
             ofs << "[Desktop Entry]\n";
             ofs << "Name=PulseEffects\n";
@@ -338,8 +338,8 @@ bool ApplicationUi::on_enable_autostart(bool state) {
             util::debug(log_tag + "autostart file created");
         }
     } else {
-        if (fs::exists(autostart_file)) {
-            fs::remove(autostart_file);
+        if (boost::filesystem::exists(autostart_file)) {
+            boost::filesystem::remove(autostart_file);
 
             util::debug(log_tag + "autostart file removed");
         }

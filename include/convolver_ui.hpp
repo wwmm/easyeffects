@@ -27,7 +27,17 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
     Gtk::ScrolledWindow* irs_scrolled_window;
     Gtk::Button* import_irs;
 
+    std::vector<sigc::connection> connections;
+
     boost::filesystem::path irs_dir;
+
+    std::vector<std::string> get_irs_names();
+
+    void import_irs_file(const std::string& file_path);
+
+    void remove_irs_file(const std::string& name);
+
+    void populate_irs_listbox();
 
     int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
 

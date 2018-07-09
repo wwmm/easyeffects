@@ -69,7 +69,56 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 ConvolverUi::~ConvolverUi() {
     settings->set_boolean("post-messages", false);
 
+    for (auto c : connections) {
+        c.disconnect();
+    }
+
     util::debug(name + " ui destroyed");
+}
+
+std::vector<std::string> ConvolverUi::get_irs_names() {
+    boost::filesystem::directory_iterator it{irs_dir};
+    std::vector<std::string> names;
+
+    while (it != boost::filesystem::directory_iterator{}) {
+        if (boost::filesystem::is_regular_file(it->status())) {
+            if (it->path().extension().string() == ".irs") {
+                names.push_back(it->path().stem().string());
+            }
+        }
+
+        it++;
+    }
+
+    return names;
+}
+
+void ConvolverUi::import_irs_file(const std::string& file_path) {
+    boost::filesystem::path p{file_path};
+
+    if (boost::filesystem::is_regular_file(p)) {
+        if (p.extension().string() == ".irs") {
+            auto out_path = irs_dir / p.filename();
+
+            boost::filesystem::copy_file(
+                p, out_path,
+                boost::filesystem::copy_option::overwrite_if_exists);
+
+            util::debug(log_tag + "imported irs file to: " + out_path.string());
+        }
+    } else {
+        util::warning(log_tag + p.string() + " is not a file!");
+    }
+}
+
+void ConvolverUi::remove_irs_file(const std::string& name) {
+    auto irs_file = irs_dir / boost::filesystem::path{name + ".irs"};
+
+    if (boost::filesystem::exists(irs_file)) {
+        boost::filesystem::remove(irs_file);
+
+        util::debug(log_tag + "removed irs file: " + irs_file.string());
+    }
 }
 
 int ConvolverUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) {
@@ -89,12 +138,46 @@ int ConvolverUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) {
     }
 }
 
+void ConvolverUi::populate_irs_listbox() {
+    auto children = irs_listbox->get_children();
+
+    for (auto c : children) {
+        irs_listbox->remove(*c);
+    }
+
+    auto names = get_irs_names();
+
+    for (auto name : names) {
+        auto b = Gtk::Builder::create_from_resource(
+            "/com/github/wwmm/pulseeffects/ui/irs_row.glade");
+
+        Gtk::ListBoxRow* row;
+        Gtk::Button* remove_btn;
+        Gtk::Label* label;
+
+        b->get_widget("irs_row", row);
+        b->get_widget("remove", remove_btn);
+        b->get_widget("name", label);
+
+        row->set_name(name);
+        label->set_text(name);
+
+        connections.push_back(remove_btn->signal_clicked().connect([=]() {
+            remove_irs_file(name);
+            populate_irs_listbox();
+        }));
+
+        irs_listbox->add(*row);
+        irs_listbox->show_all();
+    }
+}
+
 void ConvolverUi::on_irs_menu_button_clicked() {
     int height = 0.7 * get_allocated_height();
 
     irs_scrolled_window->set_max_content_height(height);
 
-    // populate_irs_listbox();
+    populate_irs_listbox();
 }
 
 void ConvolverUi::on_import_irs_clicked() {
@@ -104,9 +187,10 @@ void ConvolverUi::on_import_irs_clicked() {
     GtkFileChooserAction action = GTK_FILE_CHOOSER_ACTION_OPEN;
     gint res;
 
-    native = gtk_file_chooser_native_new(_("Import Impulse Response File"),
-                                         (GtkWindow*)this->gobj(), action,
-                                         _("Open"), _("Cancel"));
+    native =
+        gtk_file_chooser_native_new(_("Import Impulse Response File"),
+                                    (GtkWindow*)this->get_toplevel()->gobj(),
+                                    action, _("Open"), _("Cancel"));
 
     res = gtk_native_dialog_run(GTK_NATIVE_DIALOG(native));
 
@@ -117,11 +201,11 @@ void ConvolverUi::on_import_irs_clicked() {
 
         g_slist_foreach(file_list,
                         [](auto data, auto user_data) {
-                            // auto cui = static_cast<ConvolverUi*>(user_data);
+                            auto cui = static_cast<ConvolverUi*>(user_data);
 
-                            // auto file_path = static_cast<char*>(data);
+                            auto file_path = static_cast<char*>(data);
 
-                            // aui->app->irs_manager->import(file_path);
+                            cui->import_irs_file(file_path);
                         },
                         this);
 
@@ -130,7 +214,7 @@ void ConvolverUi::on_import_irs_clicked() {
 
     g_object_unref(native);
 
-    // populate_irs_listbox();
+    populate_irs_listbox();
 }
 
 void ConvolverUi::reset() {

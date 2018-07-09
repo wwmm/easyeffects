@@ -20,6 +20,7 @@ data/ui/gate.glade
 data/ui/multiband_gate.glade
 data/ui/deesser.glade
 data/ui/convolver.glade
+data/ui/irs_row.glade
 data/ui/pitch.glade
 data/ui/webrtc.glade
 data/ui/preset_row.glade
