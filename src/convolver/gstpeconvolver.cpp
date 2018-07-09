@@ -147,7 +147,7 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
 
     g_object_class_install_property(
         gobject_class, PROP_KERNEL_PATH,
-        g_param_spec_string("kernelpath", "Kernel Path",
+        g_param_spec_string("kernel-path", "Kernel Path",
                             "Full path to kernel file", nullptr,
                             static_cast<GParamFlags>(G_PARAM_READWRITE |
                                                      G_PARAM_STATIC_STRINGS)));

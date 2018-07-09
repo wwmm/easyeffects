@@ -55,6 +55,9 @@ Convolver::Convolver(const std::string& tag, const std::string& schema)
             G_SETTINGS_BIND_DEFAULT, util::db20_gain_to_linear_double,
             util::linear_double_gain_to_db20, nullptr, nullptr);
 
+        g_settings_bind(settings, "kernel-path", convolver, "kernel-path",
+                        G_SETTINGS_BIND_DEFAULT);
+
         // useless write just to force callback call
 
         auto enable = g_settings_get_boolean(settings, "state");
