@@ -216,7 +216,7 @@ static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
     GST_DEBUG_OBJECT(peconvolver, "setup");
 
     peconvolver->rate = info->rate;
-    peconvolver->bps = GST_AUDIO_INFO_BPS(info);
+    peconvolver->bpf = GST_AUDIO_INFO_BPF(info);
 
     if (!peconvolver->ready) {
         setup_convolver(peconvolver);
@@ -237,8 +237,7 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
         gst_buffer_ref(inbuf);
         gst_adapter_push(peconvolver->adapter, inbuf);
 
-        unsigned int conv_nbytes =
-            2 * peconvolver->conv_buffer_size * peconvolver->bps;
+        uint conv_nbytes = peconvolver->conv_buffer_size * peconvolver->bpf;
 
         gst_buffer_resize(outbuf, 0, 0);
 
@@ -450,8 +449,7 @@ static void process(GstPeconvolver* peconvolver, GstBuffer* buffer) {
 
     gst_buffer_map(buffer, &map, GST_MAP_READWRITE);
 
-    // output is always stereo. That is why we divide by 2
-    guint num_samples = map.size / (2 * peconvolver->bps);
+    guint num_samples = map.size / peconvolver->bpf;
 
     // deinterleave
     for (unsigned int n = 0; n < num_samples; n++) {

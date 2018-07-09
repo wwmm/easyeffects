@@ -31,7 +31,8 @@ struct _GstPeconvolver {
     /* < private > */
 
     bool ready;
-    int rate, bps, kernel_n_frames;
+    int rate, kernel_n_frames;
+    int bpf;                     // bytes per frame : channels * bps
     float *kernel_L, *kernel_R;  // left and right channels buffers
     unsigned int conv_buffer_size;
 
