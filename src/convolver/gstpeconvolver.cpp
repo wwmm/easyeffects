@@ -170,7 +170,21 @@ void gst_peconvolver_set_property(GObject* object,
 
     switch (property_id) {
         case PROP_KERNEL_PATH:
-            peconvolver->kernel_path = g_value_dup_string(value);
+            if (peconvolver->kernel_path != nullptr) {
+                std::string old_path = peconvolver->kernel_path;
+
+                peconvolver->kernel_path = g_value_dup_string(value);
+
+                if (old_path != peconvolver->kernel_path) {
+                    finish_convolver(peconvolver);
+                    setup_convolver(peconvolver);
+                }
+            } else {
+                // plugin is being initialized
+
+                peconvolver->kernel_path = g_value_dup_string(value);
+            }
+
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -219,11 +233,7 @@ static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
     peconvolver->rate = info->rate;
     peconvolver->bpf = GST_AUDIO_INFO_BPF(info);
 
-    std::lock_guard<std::mutex> lock(lock_guard_zita);
-
-    if (!peconvolver->ready) {
-        setup_convolver(peconvolver);
-    }
+    setup_convolver(peconvolver);
 
     return true;
 }
@@ -340,77 +350,85 @@ static gboolean gst_peconvolver_query(GstBaseTransform* trans,
 }
 
 static void setup_convolver(GstPeconvolver* peconvolver) {
-    util::debug(peconvolver->log_tag + "maximum irs frames supported: " +
-                std::to_string(MAX_IRS_FRAMES));
+    std::lock_guard<std::mutex> lock(lock_guard_zita);
 
-    bool irs_ok = rk::read_file(peconvolver);
+    if (!peconvolver->ready) {
+        util::debug(peconvolver->log_tag + "maximum irs frames supported: " +
+                    std::to_string(MAX_IRS_FRAMES));
 
-    if (irs_ok) {
-        bool failed = false;
-        float density = 0.0f;
-        int max_size;
+        bool irs_ok = rk::read_file(peconvolver);
 
-        peconvolver->conv = new Convproc();
+        if (irs_ok) {
+            bool failed = false;
+            float density = 0.0f;
+            int max_size;
 
-        if (peconvolver->kernel_n_frames > MAX_IRS_FRAMES) {
-            max_size = MAX_IRS_FRAMES;
+            peconvolver->conv = new Convproc();
+
+            if (peconvolver->kernel_n_frames > MAX_IRS_FRAMES) {
+                max_size = MAX_IRS_FRAMES;
+            } else {
+                max_size = peconvolver->kernel_n_frames;
+            }
+
+            unsigned int options = 0;
+
+            options |= Convproc::OPT_FFTW_MEASURE;
+            options |= Convproc::OPT_VECTOR_MODE;
+
+            peconvolver->conv->set_options(options);
+
+            int ret = peconvolver->conv->configure(
+                2, 2, max_size, peconvolver->conv_buffer_size,
+                peconvolver->conv_buffer_size, Convproc::MAXPART, density);
+
+            if (ret != 0) {
+                failed = true;
+                util::warning(peconvolver->log_tag +
+                              "can't initialise zita-convolver engine: " +
+                              std::to_string(ret));
+            }
+
+            ret = peconvolver->conv->impdata_create(
+                0, 0, 1, peconvolver->kernel_L, 0,
+                peconvolver->kernel_n_frames);
+
+            if (ret != 0) {
+                failed = true;
+                util::warning(
+                    peconvolver->log_tag +
+                    "left impdata_create failed: " + std::to_string(ret));
+            }
+
+            ret = peconvolver->conv->impdata_create(
+                1, 1, 1, peconvolver->kernel_R, 0,
+                peconvolver->kernel_n_frames);
+
+            if (ret != 0) {
+                failed = true;
+                util::warning(
+                    peconvolver->log_tag +
+                    "right impdata_create failed: " + std::to_string(ret));
+            }
+
+            ret = peconvolver->conv->start_process(CONVPROC_SCHEDULER_PRIORITY,
+                                                   CONVPROC_SCHEDULER_CLASS);
+
+            if (ret != 0) {
+                failed = true;
+                util::warning(peconvolver->log_tag +
+                              "start_process failed: " + std::to_string(ret));
+            }
+
+            peconvolver->adapter = gst_adapter_new();
+
+            peconvolver->ready = (failed) ? false : true;
         } else {
-            max_size = peconvolver->kernel_n_frames;
-        }
-
-        unsigned int options = 0;
-
-        options |= Convproc::OPT_FFTW_MEASURE;
-        options |= Convproc::OPT_VECTOR_MODE;
-
-        peconvolver->conv->set_options(options);
-
-        int ret = peconvolver->conv->configure(
-            2, 2, max_size, peconvolver->conv_buffer_size,
-            peconvolver->conv_buffer_size, Convproc::MAXPART, density);
-
-        if (ret != 0) {
-            failed = true;
             util::warning(peconvolver->log_tag +
-                          "can't initialise zita-convolver engine: " +
-                          std::to_string(ret));
+                          "we will just passthrough data.");
+
+            peconvolver->ready = false;
         }
-
-        ret = peconvolver->conv->impdata_create(
-            0, 0, 1, peconvolver->kernel_L, 0, peconvolver->kernel_n_frames);
-
-        if (ret != 0) {
-            failed = true;
-            util::warning(peconvolver->log_tag +
-                          "left impdata_create failed: " + std::to_string(ret));
-        }
-
-        ret = peconvolver->conv->impdata_create(
-            1, 1, 1, peconvolver->kernel_R, 0, peconvolver->kernel_n_frames);
-
-        if (ret != 0) {
-            failed = true;
-            util::warning(
-                peconvolver->log_tag +
-                "right impdata_create failed: " + std::to_string(ret));
-        }
-
-        ret = peconvolver->conv->start_process(CONVPROC_SCHEDULER_PRIORITY,
-                                               CONVPROC_SCHEDULER_CLASS);
-
-        if (ret != 0) {
-            failed = true;
-            util::warning(peconvolver->log_tag +
-                          "start_process failed: " + std::to_string(ret));
-        }
-
-        peconvolver->adapter = gst_adapter_new();
-
-        peconvolver->ready = (failed) ? false : true;
-    } else {
-        util::warning(peconvolver->log_tag + "we will just passthrough data.");
-
-        peconvolver->ready = false;
     }
 }
 
