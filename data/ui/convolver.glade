@@ -169,7 +169,7 @@
         <property name="orientation">vertical</property>
         <property name="spacing">18</property>
         <child>
-          <object class="GtkMenuButton">
+          <object class="GtkMenuButton" id="irs_menu_button">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>

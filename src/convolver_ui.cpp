@@ -1,10 +1,13 @@
+#include <glibmm.h>
 #include <glibmm/i18n.h>
 #include "convolver_ui.hpp"
 
 ConvolverUi::ConvolverUi(BaseObjectType* cobject,
                          const Glib::RefPtr<Gtk::Builder>& builder,
                          const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
+    : Gtk::Grid(cobject),
+      PluginUiBase(builder, settings_name),
+      irs_dir(Glib::get_user_config_dir() + "/PulseEffects/irs") {
     name = "convolver";
 
     // loading glade widgets
@@ -44,6 +47,23 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
     //                              int_to_convolver_enum, nullptr, nullptr);
 
     settings->set_boolean("post-messages", true);
+
+    // irs dir
+
+    auto dir_exists = boost::filesystem::is_directory(irs_dir);
+
+    if (!dir_exists) {
+        if (boost::filesystem::create_directories(irs_dir)) {
+            util::debug(log_tag + "irs directory created: " + irs_dir.string());
+        } else {
+            util::warning(log_tag + "failed to create irs directory: " +
+                          irs_dir.string());
+        }
+
+    } else {
+        util::debug(log_tag +
+                    "irs directory already exists: " + irs_dir.string());
+    }
 }
 
 ConvolverUi::~ConvolverUi() {
@@ -84,7 +104,7 @@ void ConvolverUi::on_import_irs_clicked() {
     GtkFileChooserAction action = GTK_FILE_CHOOSER_ACTION_OPEN;
     gint res;
 
-    native = gtk_file_chooser_native_new(_("Import Presets"),
+    native = gtk_file_chooser_native_new(_("Import Impulse Response File"),
                                          (GtkWindow*)this->gobj(), action,
                                          _("Open"), _("Cancel"));
 
