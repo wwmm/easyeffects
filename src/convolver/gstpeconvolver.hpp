@@ -4,6 +4,7 @@
 #include <gst/audio/gstaudiofilter.h>
 #include <zita-convolver.h>
 #include <iostream>
+#include <mutex>
 
 G_BEGIN_DECLS
 
@@ -41,6 +42,8 @@ struct _GstPeconvolver {
     GstAdapter* adapter;
 
     Convproc* conv;
+
+    std::mutex lock_guard_zita;
 };
 
 struct _GstPeconvolverClass {

@@ -15,7 +15,6 @@
 #include <gst/audio/gstaudiofilter.h>
 #include <gst/gst.h>
 #include <iostream>
-#include <mutex>
 #include "gstpeconvolver.hpp"
 #include "read_kernel.hpp"
 
@@ -56,8 +55,6 @@ static void setup_convolver(GstPeconvolver* peconvolver);
 static void finish_convolver(GstPeconvolver* peconvolver);
 
 /*global variables and my defines*/
-
-std::mutex lock_guard_zita;
 
 #define MAX_IRS_FRAMES 0x00100000
 
@@ -215,7 +212,7 @@ void gst_peconvolver_finalize(GObject* object) {
 
     GST_DEBUG_OBJECT(peconvolver, "finalize");
 
-    std::lock_guard<std::mutex> lock(lock_guard_zita);
+    std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
 
     finish_convolver(peconvolver);
 
@@ -246,6 +243,8 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
 
     GST_DEBUG_OBJECT(peconvolver, "transform");
 
+    std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
+
     if (peconvolver->ready) {
         gst_buffer_ref(inbuf);
         gst_adapter_push(peconvolver->adapter, inbuf);
@@ -259,7 +258,7 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
             GstBuffer* buffer =
                 gst_adapter_take_buffer(peconvolver->adapter, conv_nbytes);
 
-            std::lock_guard<std::mutex> lock(lock_guard_zita);
+            // std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
 
             process(peconvolver, buffer);
 
@@ -350,7 +349,7 @@ static gboolean gst_peconvolver_query(GstBaseTransform* trans,
 }
 
 static void setup_convolver(GstPeconvolver* peconvolver) {
-    std::lock_guard<std::mutex> lock(lock_guard_zita);
+    std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
 
     if (!peconvolver->ready) {
         util::debug(peconvolver->log_tag + "maximum irs frames supported: " +
