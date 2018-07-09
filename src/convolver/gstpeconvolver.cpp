@@ -240,6 +240,7 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
         uint conv_nbytes = peconvolver->conv_buffer_size * peconvolver->bpf;
 
         gst_buffer_resize(outbuf, 0, 0);
+        gst_buffer_remove_all_memory(outbuf);
 
         while (gst_adapter_available(peconvolver->adapter) >= conv_nbytes) {
             GstBuffer* buffer =
@@ -247,10 +248,7 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
 
             process(peconvolver, buffer);
 
-            gst_buffer_append(outbuf, buffer);
-
-            // I think I should do this. But there is a crash if I do so.
-            // gst_buffer_unref(buffer);
+            outbuf = gst_buffer_append(outbuf, buffer);
         }
     } else {
         // passthrough
