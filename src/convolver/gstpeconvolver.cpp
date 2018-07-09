@@ -15,6 +15,7 @@
 #include <gst/audio/gstaudiofilter.h>
 #include <gst/gst.h>
 #include <iostream>
+#include <mutex>
 #include "gstpeconvolver.hpp"
 #include "read_kernel.hpp"
 
@@ -42,9 +43,7 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
                                                GstBuffer* inbuf,
                                                GstBuffer* outbuf);
 
-static GstStateChangeReturn gst_peconvolver_change_state(
-    GstElement* element,
-    GstStateChange transition);
+static gboolean gst_peconvolver_stop(GstBaseTransform* base);
 
 static gboolean gst_peconvolver_query(GstBaseTransform* trans,
                                       GstPadDirection direction,
@@ -57,6 +56,8 @@ static void setup_convolver(GstPeconvolver* peconvolver);
 static void finish_convolver(GstPeconvolver* peconvolver);
 
 /*global variables and my defines*/
+
+std::mutex lock_guard_zita;
 
 #define MAX_IRS_FRAMES 0x00100000
 
@@ -114,8 +115,6 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
 
     GstAudioFilterClass* audio_filter_class = GST_AUDIO_FILTER_CLASS(klass);
 
-    GstElementClass* element_class = GST_ELEMENT_CLASS(klass);
-
     /* Setting up pads and setting metadata should be moved to
        base_class_init if you intend to subclass this class. */
 
@@ -140,7 +139,7 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
     base_transform_class->transform =
         GST_DEBUG_FUNCPTR(gst_peconvolver_transform);
 
-    element_class->change_state = gst_peconvolver_change_state;
+    base_transform_class->stop = GST_DEBUG_FUNCPTR(gst_peconvolver_stop);
 
     base_transform_class->query = GST_DEBUG_FUNCPTR(gst_peconvolver_query);
 
@@ -202,6 +201,8 @@ void gst_peconvolver_finalize(GObject* object) {
 
     GST_DEBUG_OBJECT(peconvolver, "finalize");
 
+    std::lock_guard<std::mutex> lock(lock_guard_zita);
+
     finish_convolver(peconvolver);
 
     /* clean up object here */
@@ -217,6 +218,8 @@ static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
 
     peconvolver->rate = info->rate;
     peconvolver->bpf = GST_AUDIO_INFO_BPF(info);
+
+    std::lock_guard<std::mutex> lock(lock_guard_zita);
 
     if (!peconvolver->ready) {
         setup_convolver(peconvolver);
@@ -246,6 +249,8 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
             GstBuffer* buffer =
                 gst_adapter_take_buffer(peconvolver->adapter, conv_nbytes);
 
+            std::lock_guard<std::mutex> lock(lock_guard_zita);
+
             process(peconvolver, buffer);
 
             outbuf = gst_buffer_append(outbuf, buffer);
@@ -267,41 +272,12 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
     return GST_FLOW_OK;
 }
 
-static GstStateChangeReturn gst_peconvolver_change_state(
-    GstElement* element,
-    GstStateChange transition) {
-    GstPeconvolver* peconvolver = GST_PECONVOLVER(element);
-    GstStateChangeReturn ret = GST_STATE_CHANGE_SUCCESS;
+static gboolean gst_peconvolver_stop(GstBaseTransform* base) {
+    GstPeconvolver* peconvolver = GST_PECONVOLVER(base);
 
-    // upwards state changes here
+    finish_convolver(peconvolver);
 
-    switch (transition) {
-        case GST_STATE_CHANGE_PAUSED_TO_PLAYING:
-            if (!peconvolver->ready && peconvolver->rate != 0) {
-                setup_convolver(peconvolver);
-            }
-            break;
-        default:
-            break;
-    }
-
-    ret = GST_ELEMENT_CLASS(gst_peconvolver_parent_class)
-              ->change_state(element, transition);
-
-    if (ret == GST_STATE_CHANGE_FAILURE)
-        return ret;
-
-    // downwards state changes here
-
-    switch (transition) {
-        case GST_STATE_CHANGE_PLAYING_TO_PAUSED:
-            finish_convolver(peconvolver);
-            break;
-        default:
-            break;
-    }
-
-    return ret;
+    return true;
 }
 
 static gboolean gst_peconvolver_query(GstBaseTransform* trans,
@@ -475,7 +451,7 @@ static void finish_convolver(GstPeconvolver* peconvolver) {
     if (peconvolver->ready) {
         peconvolver->ready = false;
 
-        if (peconvolver->conv) {
+        if (peconvolver->conv != nullptr) {
             if (peconvolver->conv->state() != Convproc::ST_STOP) {
                 peconvolver->conv->stop_process();
             }
@@ -485,15 +461,15 @@ static void finish_convolver(GstPeconvolver* peconvolver) {
             delete peconvolver->conv;
         }
 
-        if (peconvolver->kernel_L) {
+        if (peconvolver->kernel_L != nullptr) {
             delete[] peconvolver->kernel_L;
         }
 
-        if (peconvolver->kernel_R) {
+        if (peconvolver->kernel_R != nullptr) {
             delete[] peconvolver->kernel_R;
         }
 
-        if (peconvolver->adapter) {
+        if (peconvolver->adapter != nullptr) {
             gst_adapter_clear(peconvolver->adapter);
 
             g_object_unref(peconvolver->adapter);
