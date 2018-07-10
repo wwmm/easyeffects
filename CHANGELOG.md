@@ -3,6 +3,7 @@
 ## [Unreleased]
 ### Added
 - A convolver plugin.
+- Import presets dialog now has filters to show only presets files (json)
 
 ## [4.1.3]
 ### Fixed

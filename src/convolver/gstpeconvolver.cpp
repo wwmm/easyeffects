@@ -191,7 +191,7 @@ static void gst_peconvolver_init(GstPeconvolver* peconvolver) {
     peconvolver->log_tag = "convolver: ";
     peconvolver->ready = false;
     peconvolver->rate = 0;
-    peconvolver->conv_buffer_size = GST_PECONVOLVER_BUFFER_SIZE_DEFAULT;
+    peconvolver->buffer_size = GST_PECONVOLVER_BUFFER_SIZE_DEFAULT;
     peconvolver->kernel_path = nullptr;
 }
 
@@ -248,7 +248,7 @@ void gst_peconvolver_get_property(GObject* object,
             g_value_set_string(value, peconvolver->kernel_path);
             break;
         case PROP_BUFFER_SIZE:
-            g_value_set_enum(value, peconvolver->conv_buffer_size);
+            g_value_set_enum(value, peconvolver->buffer_size);
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -300,7 +300,7 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
         gst_buffer_ref(inbuf);
         gst_adapter_push(peconvolver->adapter, inbuf);
 
-        uint conv_nbytes = peconvolver->conv_buffer_size * peconvolver->bpf;
+        uint conv_nbytes = peconvolver->buffer_size * peconvolver->bpf;
 
         gst_buffer_resize(outbuf, 0, 0);
         gst_buffer_remove_all_memory(outbuf);
@@ -355,7 +355,7 @@ static gboolean gst_peconvolver_query(GstBaseTransform* trans,
         case GST_QUERY_LATENCY: {
             GstClockTime min, max;
             gboolean live;
-            guint64 latency = peconvolver->conv_buffer_size;
+            guint64 latency = peconvolver->buffer_size;
             gint rate = GST_AUDIO_FILTER_RATE(peconvolver);
 
             if (rate == 0) {
@@ -401,10 +401,10 @@ static gboolean gst_peconvolver_query(GstBaseTransform* trans,
 
 static void gst_peconvolver_set_buffersize(GstPeconvolver* peconvolver,
                                            const uint& value) {
-    if (value != peconvolver->conv_buffer_size) {
+    if (value != peconvolver->buffer_size) {
         std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
 
-        peconvolver->conv_buffer_size = value;
+        peconvolver->buffer_size = value;
 
         if (peconvolver->ready) {
             gst_peconvolver_finish_convolver(peconvolver);
@@ -441,8 +441,8 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver) {
             peconvolver->conv->set_options(options);
 
             int ret = peconvolver->conv->configure(
-                2, 2, max_size, peconvolver->conv_buffer_size,
-                peconvolver->conv_buffer_size, Convproc::MAXPART, density);
+                2, 2, max_size, peconvolver->buffer_size,
+                peconvolver->buffer_size, Convproc::MAXPART, density);
 
             if (ret != 0) {
                 failed = true;

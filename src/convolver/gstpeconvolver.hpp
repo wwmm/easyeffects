@@ -45,6 +45,7 @@ struct _GstPeconvolver {
     /* properties */
 
     gchar* kernel_path;
+    unsigned int buffer_size;
 
     /* < private > */
 
@@ -52,7 +53,6 @@ struct _GstPeconvolver {
     int rate, kernel_n_frames;
     int bpf;                     // bytes per frame : channels * bps
     float *kernel_L, *kernel_R;  // left and right channels buffers
-    unsigned int conv_buffer_size;
 
     std::string log_tag;
 
