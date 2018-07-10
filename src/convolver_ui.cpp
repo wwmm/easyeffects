@@ -71,6 +71,8 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
     builder->get_widget("irs_scrolled_window", irs_scrolled_window);
     builder->get_widget("import_irs", import_irs);
     builder->get_widget("buffersize", buffersize);
+    builder->get_widget("left_plot", left_plot);
+    builder->get_widget("right_plot", right_plot);
 
     get_object(builder, "input_gain", input_gain);
     get_object(builder, "output_gain", output_gain);
@@ -91,6 +93,26 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
     import_irs->signal_clicked().connect(
         sigc::mem_fun(*this, &ConvolverUi::on_import_irs_clicked));
+
+    // drawing area callbacks
+
+    left_plot->signal_draw().connect(
+        sigc::mem_fun(*this, &ConvolverUi::on_left_draw));
+    left_plot->signal_motion_notify_event().connect(
+        sigc::mem_fun(*this, &ConvolverUi::on_left_motion_notify_event));
+    left_plot->signal_enter_notify_event().connect(
+        sigc::mem_fun(*this, &ConvolverUi::on_mouse_enter_notify_event));
+    left_plot->signal_leave_notify_event().connect(
+        sigc::mem_fun(*this, &ConvolverUi::on_mouse_leave_notify_event));
+
+    right_plot->signal_draw().connect(
+        sigc::mem_fun(*this, &ConvolverUi::on_right_draw));
+    right_plot->signal_motion_notify_event().connect(
+        sigc::mem_fun(*this, &ConvolverUi::on_right_motion_notify_event));
+    right_plot->signal_enter_notify_event().connect(
+        sigc::mem_fun(*this, &ConvolverUi::on_mouse_enter_notify_event));
+    right_plot->signal_leave_notify_event().connect(
+        sigc::mem_fun(*this, &ConvolverUi::on_mouse_leave_notify_event));
 
     // gsettings bindings
 
@@ -278,6 +300,117 @@ void ConvolverUi::on_import_irs_clicked() {
     g_object_unref(dialog);
 
     populate_irs_listbox();
+}
+
+void ConvolverUi::draw_channel(Gtk::DrawingArea* da,
+                               const Cairo::RefPtr<Cairo::Context>& ctx,
+                               const std::vector<float>& magnitudes) {
+    auto n_bars = magnitudes.size();
+
+    if (n_bars > 0) {
+        auto allocation = da->get_allocation();
+        auto width = allocation.get_width();
+        auto height = allocation.get_height();
+        auto n_bars = magnitudes.size();
+        auto x = util::linspace(0, width, n_bars);
+
+        for (uint n = 0; n < n_bars; n++) {
+            auto bar_height = magnitudes[n] * height;
+
+            ctx->rectangle(x[n], height - bar_height, width / n_bars,
+                           bar_height);
+        }
+
+        auto color = Gdk::RGBA();
+        auto style_ctx = da->get_style_context();
+
+        style_ctx->lookup_color("theme_selected_bg_color", color);
+
+        ctx->set_source_rgba(color.get_red(), color.get_green(),
+                             color.get_blue(), 1.0);
+
+        ctx->set_line_width(1.1);
+        ctx->stroke();
+
+        if (mouse_inside) {
+            std::ostringstream msg;
+
+            msg.precision(0);
+            msg << std::fixed << mouse_freq << " Hz, ";
+            msg << std::fixed << mouse_intensity << " dB";
+
+            Pango::FontDescription font;
+            font.set_family("Monospace");
+            font.set_weight(Pango::WEIGHT_BOLD);
+
+            int text_width;
+            int text_height;
+            auto layout = create_pango_layout(msg.str());
+            layout->set_font_description(font);
+            layout->get_pixel_size(text_width, text_height);
+
+            ctx->move_to(width - text_width, 0);
+
+            layout->show_in_cairo_context(ctx);
+        }
+    }
+}
+
+void ConvolverUi::update_mouse_info(GdkEventMotion* event,
+                                    const int& height,
+                                    const int& width) {
+    mouse_freq = pow(10, 1.3 + event->x * 3.0 / width);
+
+    // intensity scale is in decibel
+    // minimum intensity is -120 dB and maximum is 0 dB
+
+    mouse_intensity = -event->y * 120 / height;
+}
+
+bool ConvolverUi::on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
+    ctx->paint();
+
+    draw_channel(left_plot, ctx, left_mag);
+
+    return false;
+}
+
+bool ConvolverUi::on_left_motion_notify_event(GdkEventMotion* event) {
+    auto allocation = left_plot->get_allocation();
+
+    update_mouse_info(event, allocation.get_width(), allocation.get_height());
+
+    left_plot->queue_draw();
+
+    return false;
+}
+
+bool ConvolverUi::on_right_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
+    ctx->paint();
+
+    draw_channel(right_plot, ctx, right_mag);
+
+    return false;
+}
+
+bool ConvolverUi::on_right_motion_notify_event(GdkEventMotion* event) {
+    auto allocation = right_plot->get_allocation();
+
+    update_mouse_info(event, allocation.get_width(), allocation.get_height());
+
+    right_plot->queue_draw();
+
+    return false;
+}
+
+bool ConvolverUi::on_mouse_enter_notify_event(GdkEventCrossing* event) {
+    mouse_inside = true;
+    return false;
+}
+
+bool ConvolverUi::on_mouse_leave_notify_event(GdkEventCrossing* event) {
+    mouse_inside = false;
+    return false;
 }
 
 void ConvolverUi::reset() {

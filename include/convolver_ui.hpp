@@ -3,6 +3,7 @@
 
 #include <gtkmm/button.h>
 #include <gtkmm/comboboxtext.h>
+#include <gtkmm/drawingarea.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/listbox.h>
 #include <gtkmm/menubutton.h>
@@ -28,10 +29,15 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
     Gtk::ScrolledWindow* irs_scrolled_window;
     Gtk::Button* import_irs;
     Gtk::ComboBoxText* buffersize;
+    Gtk::DrawingArea *left_plot, *right_plot;
 
     std::vector<sigc::connection> connections;
 
     boost::filesystem::path irs_dir;
+
+    bool mouse_inside = false;
+    double mouse_intensity = 0, mouse_freq = 0;
+    std::vector<float> left_mag, right_mag;
 
     std::vector<std::string> get_irs_names();
 
@@ -46,6 +52,26 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
     void on_irs_menu_button_clicked();
 
     void on_import_irs_clicked();
+
+    void draw_channel(Gtk::DrawingArea* da,
+                      const Cairo::RefPtr<Cairo::Context>& ctx,
+                      const std::vector<float>& magnitudes);
+
+    void update_mouse_info(GdkEventMotion* event,
+                           const int& height,
+                           const int& width);
+
+    bool on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx);
+
+    bool on_left_motion_notify_event(GdkEventMotion* event);
+
+    bool on_right_draw(const Cairo::RefPtr<Cairo::Context>& ctx);
+
+    bool on_right_motion_notify_event(GdkEventMotion* event);
+
+    bool on_mouse_enter_notify_event(GdkEventCrossing* event);
+
+    bool on_mouse_leave_notify_event(GdkEventCrossing* event);
 };
 
 #endif

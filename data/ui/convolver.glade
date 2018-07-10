@@ -278,6 +278,68 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="valign">center</property>
+            <property name="row_spacing">6</property>
+            <child>
+              <object class="GtkStackSwitcher">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="stack">stack</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkStack" id="stack">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="hexpand">True</property>
+                <property name="transition_duration">250</property>
+                <property name="transition_type">slide-right</property>
+                <child>
+                  <object class="GtkDrawingArea" id="right_plot">
+                    <property name="height_request">100</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
+                  </object>
+                  <packing>
+                    <property name="name">left_channel</property>
+                    <property name="title" translatable="yes">Left Channel</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkDrawingArea" id="left_plot">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                  </object>
+                  <packing>
+                    <property name="name">right_channel</property>
+                    <property name="title" translatable="yes">Right Channel</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
@@ -468,7 +530,7 @@
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">2</property>
+            <property name="position">3</property>
           </packing>
         </child>
       </object>
