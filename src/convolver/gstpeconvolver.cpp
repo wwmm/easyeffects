@@ -71,7 +71,7 @@ static void finish_convolver(GstPeconvolver* peconvolver);
 #define CONVPROC_SCHEDULER_CLASS SCHED_FIFO
 #define THREAD_SYNC_MODE true
 
-enum { PROP_0, PROP_KERNEL_PATH };
+enum { PROP_0, PROP_KERNEL_PATH, PROP_BLOCK_SIZE };
 
 /* pad templates */
 
@@ -148,6 +148,13 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
                             "Full path to kernel file", nullptr,
                             static_cast<GParamFlags>(G_PARAM_READWRITE |
                                                      G_PARAM_STATIC_STRINGS)));
+
+    g_object_class_install_property(
+        gobject_class, PROP_BLOCK_SIZE,
+        g_param_spec_int("blocksize", "Block Size",
+                         "Zita Convolver Partition Size", 64, 8192, 256,
+                         static_cast<GParamFlags>(G_PARAM_READWRITE |
+                                                  G_PARAM_STATIC_STRINGS)));
 }
 
 static void gst_peconvolver_init(GstPeconvolver* peconvolver) {
@@ -155,6 +162,7 @@ static void gst_peconvolver_init(GstPeconvolver* peconvolver) {
     peconvolver->ready = false;
     peconvolver->rate = 0;
     peconvolver->conv_buffer_size = 256;
+    peconvolver->kernel_path = nullptr;
 }
 
 void gst_peconvolver_set_property(GObject* object,
