@@ -75,6 +75,10 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
     builder->get_widget("buffersize", buffersize);
     builder->get_widget("left_plot", left_plot);
     builder->get_widget("right_plot", right_plot);
+    builder->get_widget("file_name", file_name);
+    builder->get_widget("sampling_rate", sampling_rate);
+    builder->get_widget("samples", samples);
+    builder->get_widget("duration", duration);
 
     get_object(builder, "input_gain", input_gain);
     get_object(builder, "output_gain", output_gain);

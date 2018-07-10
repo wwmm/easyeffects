@@ -5,6 +5,7 @@
 #include <gtkmm/comboboxtext.h>
 #include <gtkmm/drawingarea.h>
 #include <gtkmm/grid.h>
+#include <gtkmm/label.h>
 #include <gtkmm/listbox.h>
 #include <gtkmm/menubutton.h>
 #include <gtkmm/scrolledwindow.h>
@@ -31,6 +32,7 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
     Gtk::Button* import_irs;
     Gtk::ComboBoxText* buffersize;
     Gtk::DrawingArea *left_plot, *right_plot;
+    Gtk::Label *file_name, *sampling_rate, *samples, *duration;
 
     std::vector<sigc::connection> connections;
 
