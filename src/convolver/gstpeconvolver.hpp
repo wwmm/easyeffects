@@ -22,6 +22,23 @@ G_BEGIN_DECLS
 typedef struct _GstPeconvolver GstPeconvolver;
 typedef struct _GstPeconvolverClass GstPeconvolverClass;
 
+/**
+ * GstPeconvolverBufferSize:
+ * @GST_PECONVOLVER_BUFFER_SIZE_DEFAULT: 256 partition size
+ * Zita Convolver Partition Size.
+ */
+typedef enum {
+    GST_PECONVOLVER_BUFFER_SIZE_DEFAULT = 256,
+    GST_PECONVOLVER_BUFFER_SIZE_64 = 64,
+    GST_PECONVOLVER_BUFFER_SIZE_128 = 128,
+    GST_PECONVOLVER_BUFFER_SIZE_256 = 256,
+    GST_PECONVOLVER_BUFFER_SIZE_512 = 512,
+    GST_PECONVOLVER_BUFFER_SIZE_1024 = 1024,
+    GST_PECONVOLVER_BUFFER_SIZE_2048 = 2048,
+    GST_PECONVOLVER_BUFFER_SIZE_4096 = 4096,
+    GST_PECONVOLVER_BUFFER_SIZE_8192 = 8192
+} GstPeconvolverBufferSize;
+
 struct _GstPeconvolver {
     GstAudioFilter base_peconvolver;
 

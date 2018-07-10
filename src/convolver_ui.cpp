@@ -2,6 +2,60 @@
 #include <glibmm/i18n.h>
 #include "convolver_ui.hpp"
 
+namespace {
+
+gboolean buffersize_enum_to_int(GValue* value,
+                                GVariant* variant,
+                                gpointer user_data) {
+    auto v = g_variant_get_string(variant, nullptr);
+
+    if (v == std::string("64")) {
+        g_value_set_int(value, 0);
+    } else if (v == std::string("128")) {
+        g_value_set_int(value, 1);
+    } else if (v == std::string("256")) {
+        g_value_set_int(value, 2);
+    } else if (v == std::string("512")) {
+        g_value_set_int(value, 3);
+    } else if (v == std::string("1024")) {
+        g_value_set_int(value, 4);
+    } else if (v == std::string("2048")) {
+        g_value_set_int(value, 5);
+    } else if (v == std::string("4096")) {
+        g_value_set_int(value, 6);
+    } else if (v == std::string("8192")) {
+        g_value_set_int(value, 7);
+    }
+
+    return true;
+}
+
+GVariant* int_to_buffersize_enum(const GValue* value,
+                                 const GVariantType* expected_type,
+                                 gpointer user_data) {
+    int v = g_value_get_int(value);
+
+    if (v == 0) {
+        return g_variant_new_string("64");
+    } else if (v == 1) {
+        return g_variant_new_string("128");
+    } else if (v == 2) {
+        return g_variant_new_string("256");
+    } else if (v == 3) {
+        return g_variant_new_string("512");
+    } else if (v == 4) {
+        return g_variant_new_string("1024");
+    } else if (v == 5) {
+        return g_variant_new_string("2048");
+    } else if (v == 6) {
+        return g_variant_new_string("4096");
+    } else {
+        return g_variant_new_string("8192");
+    }
+}
+
+}  // namespace
+
 ConvolverUi::ConvolverUi(BaseObjectType* cobject,
                          const Glib::RefPtr<Gtk::Builder>& builder,
                          const std::string& settings_name)
@@ -16,6 +70,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
     builder->get_widget("irs_menu_button", irs_menu_button);
     builder->get_widget("irs_scrolled_window", irs_scrolled_window);
     builder->get_widget("import_irs", import_irs);
+    builder->get_widget("buffersize", buffersize);
 
     get_object(builder, "input_gain", input_gain);
     get_object(builder, "output_gain", output_gain);
@@ -44,10 +99,10 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
     settings->bind("input-gain", input_gain.get(), "value", flag);
     settings->bind("output-gain", output_gain.get(), "value", flag);
 
-    // g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(),
-    //                              "active", G_SETTINGS_BIND_DEFAULT,
-    //                              convolver_enum_to_int,
-    //                              int_to_convolver_enum, nullptr, nullptr);
+    g_settings_bind_with_mapping(
+        settings->gobj(), "buffersize", buffersize->gobj(), "active",
+        G_SETTINGS_BIND_DEFAULT, buffersize_enum_to_int, int_to_buffersize_enum,
+        nullptr, nullptr);
 
     settings->set_boolean("post-messages", true);
 

@@ -2,6 +2,7 @@
 #define CONVOLVER_UI_HPP
 
 #include <gtkmm/button.h>
+#include <gtkmm/comboboxtext.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/listbox.h>
 #include <gtkmm/menubutton.h>
@@ -26,6 +27,7 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
     Gtk::MenuButton* irs_menu_button;
     Gtk::ScrolledWindow* irs_scrolled_window;
     Gtk::Button* import_irs;
+    Gtk::ComboBoxText* buffersize;
 
     std::vector<sigc::connection> connections;
 

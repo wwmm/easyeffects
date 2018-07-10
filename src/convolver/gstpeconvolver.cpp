@@ -48,8 +48,8 @@ static gboolean gst_peconvolver_query(GstBaseTransform* trans,
                                       GstPadDirection direction,
                                       GstQuery* query);
 
-static void gst_peconvolver_set_blocksize(GstPeconvolver* peconvolver,
-                                          const uint& value);
+static void gst_peconvolver_set_buffersize(GstPeconvolver* peconvolver,
+                                           const uint& value);
 
 static void gst_peconvolver_process(GstPeconvolver* peconvolver,
                                     GstBuffer* buffer);
@@ -75,7 +75,31 @@ static void gst_peconvolver_finish_convolver(GstPeconvolver* peconvolver);
 #define CONVPROC_SCHEDULER_CLASS SCHED_FIFO
 #define THREAD_SYNC_MODE true
 
-enum { PROP_0, PROP_KERNEL_PATH, PROP_BLOCK_SIZE };
+#define GST_TYPE_PECONVOLVER_BUFFER_SIZE \
+    (gst_peconvolver_buffer_size_get_type())
+static GType gst_peconvolver_buffer_size_get_type(void) {
+    static GType buffer_size_type = 0;
+    static const GEnumValue buffer_size[] = {
+        {GST_PECONVOLVER_BUFFER_SIZE_DEFAULT, "Default size", "256"},
+        {GST_PECONVOLVER_BUFFER_SIZE_64, "64", "64"},
+        {GST_PECONVOLVER_BUFFER_SIZE_128, "128", "128"},
+        {GST_PECONVOLVER_BUFFER_SIZE_256, "256", "256"},
+        {GST_PECONVOLVER_BUFFER_SIZE_512, "512", "512"},
+        {GST_PECONVOLVER_BUFFER_SIZE_1024, "1024", "1024"},
+        {GST_PECONVOLVER_BUFFER_SIZE_2048, "2048", "2048"},
+        {GST_PECONVOLVER_BUFFER_SIZE_4096, "4096", "4096"},
+        {GST_PECONVOLVER_BUFFER_SIZE_8192, "8192", "8192"},
+        {0, NULL, NULL},
+    };
+
+    if (!buffer_size_type) {
+        buffer_size_type =
+            g_enum_register_static("GstPeconvolverBufferSize", buffer_size);
+    }
+    return buffer_size_type;
+}
+
+enum { PROP_0, PROP_KERNEL_PATH, PROP_BUFFER_SIZE };
 
 /* pad templates */
 
@@ -154,18 +178,20 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
                                                      G_PARAM_STATIC_STRINGS)));
 
     g_object_class_install_property(
-        gobject_class, PROP_BLOCK_SIZE,
-        g_param_spec_int("blocksize", "Block Size",
-                         "Zita Convolver Partition Size", 64, 8192, 256,
-                         static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                                  G_PARAM_STATIC_STRINGS)));
+        gobject_class, PROP_BUFFER_SIZE,
+        g_param_spec_enum("buffersize", "Buffer Size",
+                          "Zita Convolver Partition Size",
+                          GST_TYPE_PECONVOLVER_BUFFER_SIZE,
+                          GST_PECONVOLVER_BUFFER_SIZE_DEFAULT,
+                          static_cast<GParamFlags>(G_PARAM_READWRITE |
+                                                   G_PARAM_STATIC_STRINGS)));
 }
 
 static void gst_peconvolver_init(GstPeconvolver* peconvolver) {
     peconvolver->log_tag = "convolver: ";
     peconvolver->ready = false;
     peconvolver->rate = 0;
-    peconvolver->conv_buffer_size = 256;
+    peconvolver->conv_buffer_size = GST_PECONVOLVER_BUFFER_SIZE_DEFAULT;
     peconvolver->kernel_path = nullptr;
 }
 
@@ -201,8 +227,9 @@ void gst_peconvolver_set_property(GObject* object,
             }
 
             break;
-        case PROP_BLOCK_SIZE:
-            gst_peconvolver_set_blocksize(peconvolver, g_value_get_int(value));
+        case PROP_BUFFER_SIZE:
+            gst_peconvolver_set_buffersize(peconvolver,
+                                           g_value_get_enum(value));
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -221,6 +248,9 @@ void gst_peconvolver_get_property(GObject* object,
     switch (property_id) {
         case PROP_KERNEL_PATH:
             g_value_set_string(value, peconvolver->kernel_path);
+            break;
+        case PROP_BUFFER_SIZE:
+            g_value_set_enum(value, peconvolver->conv_buffer_size);
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -371,8 +401,8 @@ static gboolean gst_peconvolver_query(GstBaseTransform* trans,
     return res;
 }
 
-static void gst_peconvolver_set_blocksize(GstPeconvolver* peconvolver,
-                                          const uint& value) {
+static void gst_peconvolver_set_buffersize(GstPeconvolver* peconvolver,
+                                           const uint& value) {
     if (value != peconvolver->conv_buffer_size) {
         std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
 

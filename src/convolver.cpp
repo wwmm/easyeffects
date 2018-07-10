@@ -50,7 +50,7 @@ Convolver::Convolver(const std::string& tag, const std::string& schema)
         g_settings_bind(settings, "kernel-path", convolver, "kernel-path",
                         G_SETTINGS_BIND_DEFAULT);
 
-        g_settings_bind(settings, "blocksize", convolver, "blocksize",
+        g_settings_bind(settings, "buffersize", convolver, "buffersize",
                         G_SETTINGS_BIND_DEFAULT);
 
         // useless write just to force callback call
