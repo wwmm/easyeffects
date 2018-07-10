@@ -48,11 +48,15 @@ static gboolean gst_peconvolver_query(GstBaseTransform* trans,
                                       GstPadDirection direction,
                                       GstQuery* query);
 
-static void process(GstPeconvolver* peconvolver, GstBuffer* buffer);
+static void gst_peconvolver_set_blocksize(GstPeconvolver* peconvolver,
+                                          const uint& value);
 
-static void setup_convolver(GstPeconvolver* peconvolver);
+static void gst_peconvolver_process(GstPeconvolver* peconvolver,
+                                    GstBuffer* buffer);
 
-static void finish_convolver(GstPeconvolver* peconvolver);
+static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver);
+
+static void gst_peconvolver_finish_convolver(GstPeconvolver* peconvolver);
 
 /*global variables and my defines*/
 
@@ -178,11 +182,17 @@ void gst_peconvolver_set_property(GObject* object,
             if (peconvolver->kernel_path != nullptr) {
                 std::string old_path = peconvolver->kernel_path;
 
+                g_free(peconvolver->kernel_path);
+
                 peconvolver->kernel_path = g_value_dup_string(value);
 
-                if (old_path != peconvolver->kernel_path) {
-                    finish_convolver(peconvolver);
-                    setup_convolver(peconvolver);
+                if (peconvolver->kernel_path != nullptr) {
+                    if (old_path != peconvolver->kernel_path) {
+                        if (peconvolver->ready) {
+                            gst_peconvolver_finish_convolver(peconvolver);
+                            gst_peconvolver_setup_convolver(peconvolver);
+                        }
+                    }
                 }
             } else {
                 // plugin is being initialized
@@ -190,6 +200,9 @@ void gst_peconvolver_set_property(GObject* object,
                 peconvolver->kernel_path = g_value_dup_string(value);
             }
 
+            break;
+        case PROP_BLOCK_SIZE:
+            gst_peconvolver_set_blocksize(peconvolver, g_value_get_int(value));
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -222,7 +235,7 @@ void gst_peconvolver_finalize(GObject* object) {
 
     std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
 
-    finish_convolver(peconvolver);
+    gst_peconvolver_finish_convolver(peconvolver);
 
     /* clean up object here */
 
@@ -238,7 +251,9 @@ static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
     peconvolver->rate = info->rate;
     peconvolver->bpf = GST_AUDIO_INFO_BPF(info);
 
-    setup_convolver(peconvolver);
+    std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
+
+    gst_peconvolver_setup_convolver(peconvolver);
 
     return true;
 }
@@ -266,7 +281,7 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
             GstBuffer* buffer =
                 gst_adapter_take_buffer(peconvolver->adapter, conv_nbytes);
 
-            process(peconvolver, buffer);
+            gst_peconvolver_process(peconvolver, buffer);
 
             outbuf = gst_buffer_append(outbuf, buffer);
         }
@@ -292,7 +307,7 @@ static gboolean gst_peconvolver_stop(GstBaseTransform* base) {
 
     std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
 
-    finish_convolver(peconvolver);
+    gst_peconvolver_finish_convolver(peconvolver);
 
     return true;
 }
@@ -356,9 +371,21 @@ static gboolean gst_peconvolver_query(GstBaseTransform* trans,
     return res;
 }
 
-static void setup_convolver(GstPeconvolver* peconvolver) {
-    std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
+static void gst_peconvolver_set_blocksize(GstPeconvolver* peconvolver,
+                                          const uint& value) {
+    if (value != peconvolver->conv_buffer_size) {
+        std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
 
+        peconvolver->conv_buffer_size = value;
+
+        if (peconvolver->ready) {
+            gst_peconvolver_finish_convolver(peconvolver);
+            gst_peconvolver_setup_convolver(peconvolver);
+        }
+    }
+}
+
+static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver) {
     if (!peconvolver->ready) {
         util::debug(peconvolver->log_tag + "maximum irs frames supported: " +
                     std::to_string(MAX_IRS_FRAMES));
@@ -439,7 +466,8 @@ static void setup_convolver(GstPeconvolver* peconvolver) {
     }
 }
 
-static void process(GstPeconvolver* peconvolver, GstBuffer* buffer) {
+static void gst_peconvolver_process(GstPeconvolver* peconvolver,
+                                    GstBuffer* buffer) {
     if (peconvolver->ready) {
         GstMapInfo map;
 
@@ -470,7 +498,7 @@ static void process(GstPeconvolver* peconvolver, GstBuffer* buffer) {
     }
 }
 
-static void finish_convolver(GstPeconvolver* peconvolver) {
+static void gst_peconvolver_finish_convolver(GstPeconvolver* peconvolver) {
     if (peconvolver->ready) {
         peconvolver->ready = false;
 

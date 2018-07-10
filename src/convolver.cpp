@@ -3,8 +3,6 @@
 #include "convolver.hpp"
 #include "util.hpp"
 
-namespace {}  // namespace
-
 Convolver::Convolver(const std::string& tag, const std::string& schema)
     : PluginBase(tag, "convolver", schema) {
     convolver = gst_element_factory_make("peconvolver", "convolver");
@@ -34,12 +32,6 @@ Convolver::Convolver(const std::string& tag, const std::string& schema)
 
         bind_to_gsettings();
 
-        // g_object_set(convolver, "kernelpath", "/home/wallace/dolby.irs",
-        //              nullptr);
-
-        // g_signal_connect(settings, "changed::post-messages",
-        //                  G_CALLBACK(on_post_messages_changed), this);
-
         g_settings_bind(settings, "post-messages", in_level, "post-messages",
                         G_SETTINGS_BIND_DEFAULT);
         g_settings_bind(settings, "post-messages", out_level, "post-messages",
@@ -56,6 +48,9 @@ Convolver::Convolver(const std::string& tag, const std::string& schema)
             util::linear_double_gain_to_db20, nullptr, nullptr);
 
         g_settings_bind(settings, "kernel-path", convolver, "kernel-path",
+                        G_SETTINGS_BIND_DEFAULT);
+
+        g_settings_bind(settings, "blocksize", convolver, "blocksize",
                         G_SETTINGS_BIND_DEFAULT);
 
         // useless write just to force callback call
