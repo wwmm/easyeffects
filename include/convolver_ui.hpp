@@ -22,7 +22,7 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
    private:
     std::string log_tag = "convolver_ui: ";
 
-    Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain;
+    Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, ir_width;
     Gtk::ListBox* irs_listbox;
     Gtk::MenuButton* irs_menu_button;
     Gtk::ScrolledWindow* irs_scrolled_window;

@@ -14,6 +14,45 @@ namespace rk {
 
 std::string log_tag = "convolver: ";
 
+void autogain(float* left, float* right, int length) {
+    float peak = 0.0f, target_peak = powf(10.0f, -12.0f / 20.0f);
+
+    for (int n = 0; n < length; n++) {
+        float tmpl = fabsf(left[n]);
+        float tmpr = fabsf(right[n]);
+
+        peak = (tmpl > peak) ? tmpl : peak;
+        peak = (tmpr > peak) ? tmpr : peak;
+    }
+
+    float autogain = peak / target_peak;
+
+    util::debug(log_tag + "irs peak: " + std::to_string(10.0f * log10f(peak)));
+    util::debug(log_tag + "target irs peak: " + std::to_string(-12.0f));
+    util::debug(log_tag + "autogain factor: " + std::to_string(autogain));
+
+    for (int n = 0; n < length; n++) {
+        left[n] /= autogain;
+        right[n] /= autogain;
+    }
+}
+
+/* Mid-Side based Stereo width effect
+   taken from https://github.com/tomszilagyi/ir.lv2/blob/automatable/ir.cc
+*/
+void ms_stereo(float width, float* left, float* right, int length) {
+    float w = width / 100.0f;
+    float x = (1.0 - w) /
+              (1.0 + w); /* M-S coeff.; L_out = L + x*R; R_out = x*L + R */
+
+    for (int i = 0; i < length; i++) {
+        float L = left[i], R = right[i];
+
+        left[i] = L + x * R;
+        right[i] = R + x * L;
+    }
+}
+
 bool read_file(_GstPeconvolver* peconvolver) {
     if (peconvolver->kernel_path == nullptr) {
         util::warning(log_tag + "irs file path is null");
@@ -94,6 +133,9 @@ bool read_file(_GstPeconvolver* peconvolver) {
             src_process(src_state, &src_data);
 
             src_delete(src_state);
+
+            util::debug(log_tag + "irs frames after resampling " +
+                        std::to_string(frames_out));
         } else {
             util::debug(log_tag + "irs file does not need resampling");
 
@@ -106,29 +148,10 @@ bool read_file(_GstPeconvolver* peconvolver) {
             peconvolver->kernel_R[n] = kernel[2 * n + 1];
         }
 
-        // auto gain
+        autogain(peconvolver->kernel_L, peconvolver->kernel_R, frames_out);
 
-        float peak = 0.0f, target_peak = powf(10.0f, -12.0f / 20.0f);
-
-        for (int n = 0; n < frames_out; n++) {
-            float tmpl = fabsf(peconvolver->kernel_L[n]);
-            float tmpr = fabsf(peconvolver->kernel_R[n]);
-
-            peak = (tmpl > peak) ? tmpl : peak;
-            peak = (tmpr > peak) ? tmpr : peak;
-        }
-
-        float autogain = peak / target_peak;
-
-        util::debug(log_tag +
-                    "irs peak: " + std::to_string(10.0f * log10f(peak)));
-        util::debug(log_tag + "target irs peak: " + std::to_string(-12.0f));
-        util::debug(log_tag + "autogain factor: " + std::to_string(autogain));
-
-        for (int n = 0; n < frames_out; n++) {
-            peconvolver->kernel_L[n] /= autogain;
-            peconvolver->kernel_R[n] /= autogain;
-        }
+        ms_stereo(peconvolver->ir_width, peconvolver->kernel_L,
+                  peconvolver->kernel_R, frames_out);
 
         delete[] buffer;
         delete[] kernel;

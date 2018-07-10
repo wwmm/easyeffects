@@ -74,6 +74,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
     get_object(builder, "input_gain", input_gain);
     get_object(builder, "output_gain", output_gain);
+    get_object(builder, "ir_width", ir_width);
 
     irs_menu_button->signal_clicked().connect(
         sigc::mem_fun(*this, &ConvolverUi::on_irs_menu_button_clicked));
@@ -98,6 +99,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
     settings->bind("installed", this, "sensitive", flag);
     settings->bind("input-gain", input_gain.get(), "value", flag);
     settings->bind("output-gain", output_gain.get(), "value", flag);
+    settings->bind("ir-width", ir_width.get(), "value", flag);
 
     g_settings_bind_with_mapping(
         settings->gobj(), "buffersize", buffersize->gobj(), "active",
@@ -284,4 +286,5 @@ void ConvolverUi::reset() {
     settings->reset("output-gain");
     settings->reset("kernel-path");
     settings->reset("buffersize");
+    settings->reset("ir-width");
 }

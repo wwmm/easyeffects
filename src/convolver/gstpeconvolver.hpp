@@ -46,6 +46,7 @@ struct _GstPeconvolver {
 
     gchar* kernel_path;
     unsigned int buffer_size;
+    unsigned int ir_width;
 
     /* < private > */
 

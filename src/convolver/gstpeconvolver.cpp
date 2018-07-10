@@ -51,6 +51,9 @@ static gboolean gst_peconvolver_query(GstBaseTransform* trans,
 static void gst_peconvolver_set_buffersize(GstPeconvolver* peconvolver,
                                            const uint& value);
 
+static void gst_peconvolver_set_ir_width(GstPeconvolver* peconvolver,
+                                         const uint& value);
+
 static void gst_peconvolver_process(GstPeconvolver* peconvolver,
                                     GstBuffer* buffer);
 
@@ -99,7 +102,7 @@ static GType gst_peconvolver_buffer_size_get_type(void) {
     return buffer_size_type;
 }
 
-enum { PROP_0, PROP_KERNEL_PATH, PROP_BUFFER_SIZE };
+enum { PROP_0, PROP_KERNEL_PATH, PROP_BUFFER_SIZE, PROP_IR_WIDTH };
 
 /* pad templates */
 
@@ -185,6 +188,13 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
                           GST_PECONVOLVER_BUFFER_SIZE_DEFAULT,
                           static_cast<GParamFlags>(G_PARAM_READWRITE |
                                                    G_PARAM_STATIC_STRINGS)));
+
+    g_object_class_install_property(
+        gobject_class, PROP_IR_WIDTH,
+        g_param_spec_int("ir-width", "IR Width", "ImpulseResponse Stereo Width",
+                         0, 200, 100,
+                         static_cast<GParamFlags>(G_PARAM_READWRITE |
+                                                  G_PARAM_STATIC_STRINGS)));
 }
 
 static void gst_peconvolver_init(GstPeconvolver* peconvolver) {
@@ -193,6 +203,7 @@ static void gst_peconvolver_init(GstPeconvolver* peconvolver) {
     peconvolver->rate = 0;
     peconvolver->buffer_size = GST_PECONVOLVER_BUFFER_SIZE_DEFAULT;
     peconvolver->kernel_path = nullptr;
+    peconvolver->ir_width = 100;
 }
 
 void gst_peconvolver_set_property(GObject* object,
@@ -229,6 +240,9 @@ void gst_peconvolver_set_property(GObject* object,
             gst_peconvolver_set_buffersize(peconvolver,
                                            g_value_get_enum(value));
             break;
+        case PROP_IR_WIDTH:
+            gst_peconvolver_set_ir_width(peconvolver, g_value_get_int(value));
+            break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
             break;
@@ -249,6 +263,9 @@ void gst_peconvolver_get_property(GObject* object,
             break;
         case PROP_BUFFER_SIZE:
             g_value_set_enum(value, peconvolver->buffer_size);
+            break;
+        case PROP_IR_WIDTH:
+            g_value_set_int(value, peconvolver->ir_width);
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -405,6 +422,20 @@ static void gst_peconvolver_set_buffersize(GstPeconvolver* peconvolver,
         std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
 
         peconvolver->buffer_size = value;
+
+        if (peconvolver->ready) {
+            gst_peconvolver_finish_convolver(peconvolver);
+            gst_peconvolver_setup_convolver(peconvolver);
+        }
+    }
+}
+
+static void gst_peconvolver_set_ir_width(GstPeconvolver* peconvolver,
+                                         const uint& value) {
+    if (value != peconvolver->ir_width) {
+        std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
+
+        peconvolver->ir_width = value;
 
         if (peconvolver->ready) {
             gst_peconvolver_finish_convolver(peconvolver);
