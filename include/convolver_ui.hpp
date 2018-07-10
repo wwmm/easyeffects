@@ -37,9 +37,10 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
     boost::filesystem::path irs_dir;
 
     bool mouse_inside = false;
-    int max_plot_points = 300;
-    float mouse_intensity = 0, mouse_freq = 0;
+    int max_plot_points = 500;
+    float mouse_intensity = 0.0f, mouse_time = 0.0f;
     float min_left = 0.0f, max_left = 0.0f, min_right = 0.0f, max_right = 0.0f;
+    float max_time = 0.0f;
     std::vector<float> left_mag, right_mag, time_axis;
 
     std::vector<std::thread> mythreads;
@@ -64,9 +65,9 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
                       const Cairo::RefPtr<Cairo::Context>& ctx,
                       const std::vector<float>& magnitudes);
 
-    void update_mouse_info(GdkEventMotion* event,
-                           const int& height,
-                           const int& width);
+    void update_mouse_info_L(GdkEventMotion* event);
+
+    void update_mouse_info_R(GdkEventMotion* event);
 
     bool on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx);
 

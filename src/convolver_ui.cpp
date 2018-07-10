@@ -343,6 +343,8 @@ void ConvolverUi::get_irs_info() {
         time_axis.push_back(n * plot_dt);
     }
 
+    max_time = *std::max_element(time_axis.begin(), time_axis.end());
+
     // deinterleaving channels and calculating each amplitude in decibel
 
     left_mag.clear();
@@ -384,8 +386,6 @@ void ConvolverUi::get_irs_info() {
         for (int n = 0; n < max_plot_points; n++) {
             left_mag[n] = spline_L(time_axis[n]);
             right_mag[n] = spline_R(time_axis[n]);
-
-            // std::cout << left_mag[n] << std::endl;
         }
     } catch (const std::exception& e) {
         util::debug(std::string("Message from thrown exception was: ") +
@@ -425,14 +425,14 @@ void ConvolverUi::draw_channel(Gtk::DrawingArea* da,
         ctx->set_source_rgba(color.get_red(), color.get_green(),
                              color.get_blue(), 1.0);
 
-        // ctx->set_line_width(1.1);
         ctx->fill();
 
         if (mouse_inside) {
             std::ostringstream msg;
 
+            msg.precision(3);
+            msg << std::fixed << mouse_time << " s, ";
             msg.precision(0);
-            msg << std::fixed << mouse_freq << " Hz, ";
             msg << std::fixed << mouse_intensity << " dB";
 
             Pango::FontDescription font;
@@ -452,15 +452,30 @@ void ConvolverUi::draw_channel(Gtk::DrawingArea* da,
     }
 }
 
-void ConvolverUi::update_mouse_info(GdkEventMotion* event,
-                                    const int& height,
-                                    const int& width) {
-    mouse_freq = pow(10, 1.3 + event->x * 3.0 / width);
+void ConvolverUi::update_mouse_info_L(GdkEventMotion* event) {
+    auto allocation = left_plot->get_allocation();
+
+    auto width = allocation.get_width();
+    auto height = allocation.get_height();
+
+    mouse_time = event->x * max_time / width;
 
     // intensity scale is in decibel
-    // minimum intensity is -120 dB and maximum is 0 dB
 
-    mouse_intensity = -event->y * 120 / height;
+    mouse_intensity = max_left - event->y * (max_left - min_left) / height;
+}
+
+void ConvolverUi::update_mouse_info_R(GdkEventMotion* event) {
+    auto allocation = left_plot->get_allocation();
+
+    auto width = allocation.get_width();
+    auto height = allocation.get_height();
+
+    mouse_time = event->x * max_time / width;
+
+    // intensity scale is in decibel
+
+    mouse_intensity = max_left - event->y * (max_left - min_left) / height;
 }
 
 bool ConvolverUi::on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
@@ -472,9 +487,7 @@ bool ConvolverUi::on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
 }
 
 bool ConvolverUi::on_left_motion_notify_event(GdkEventMotion* event) {
-    auto allocation = left_plot->get_allocation();
-
-    update_mouse_info(event, allocation.get_width(), allocation.get_height());
+    update_mouse_info_L(event);
 
     left_plot->queue_draw();
 
@@ -484,15 +497,13 @@ bool ConvolverUi::on_left_motion_notify_event(GdkEventMotion* event) {
 bool ConvolverUi::on_right_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
     ctx->paint();
 
-    // draw_channel(right_plot, ctx, right_mag);
+    draw_channel(right_plot, ctx, right_mag);
 
     return false;
 }
 
 bool ConvolverUi::on_right_motion_notify_event(GdkEventMotion* event) {
-    auto allocation = right_plot->get_allocation();
-
-    update_mouse_info(event, allocation.get_width(), allocation.get_height());
+    update_mouse_info_R(event);
 
     right_plot->queue_draw();
 

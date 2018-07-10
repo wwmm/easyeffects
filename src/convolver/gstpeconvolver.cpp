@@ -48,6 +48,9 @@ static gboolean gst_peconvolver_query(GstBaseTransform* trans,
                                       GstPadDirection direction,
                                       GstQuery* query);
 
+static void gst_peconvolver_set_kernel_path(GstPeconvolver* peconvolver,
+                                            gchar* value);
+
 static void gst_peconvolver_set_buffersize(GstPeconvolver* peconvolver,
                                            const uint& value);
 
@@ -216,24 +219,8 @@ void gst_peconvolver_set_property(GObject* object,
 
     switch (property_id) {
         case PROP_KERNEL_PATH:
-            if (peconvolver->kernel_path != nullptr) {
-                std::string old_path = peconvolver->kernel_path;
-
-                g_free(peconvolver->kernel_path);
-
-                peconvolver->kernel_path = g_value_dup_string(value);
-
-                if (peconvolver->kernel_path != nullptr) {
-                    if (old_path != peconvolver->kernel_path) {
-                        gst_peconvolver_finish_convolver(peconvolver);
-                        gst_peconvolver_setup_convolver(peconvolver);
-                    }
-                }
-            } else {
-                // plugin is being initialized
-
-                peconvolver->kernel_path = g_value_dup_string(value);
-            }
+            gst_peconvolver_set_kernel_path(peconvolver,
+                                            g_value_dup_string(value));
 
             break;
         case PROP_BUFFER_SIZE:
@@ -414,6 +401,32 @@ static gboolean gst_peconvolver_query(GstBaseTransform* trans,
     }
 
     return res;
+}
+
+static void gst_peconvolver_set_kernel_path(GstPeconvolver* peconvolver,
+                                            gchar* value) {
+    if (value != nullptr) {
+        if (peconvolver->kernel_path != nullptr) {
+            std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
+
+            std::string old_path = peconvolver->kernel_path;
+
+            g_free(peconvolver->kernel_path);
+
+            peconvolver->kernel_path = value;
+
+            if (peconvolver->kernel_path != nullptr) {
+                if (old_path != peconvolver->kernel_path) {
+                    gst_peconvolver_finish_convolver(peconvolver);
+                    gst_peconvolver_setup_convolver(peconvolver);
+                }
+            }
+        } else {
+            // plugin is being initialized
+
+            peconvolver->kernel_path = value;
+        }
+    }
 }
 
 static void gst_peconvolver_set_buffersize(GstPeconvolver* peconvolver,
