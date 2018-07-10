@@ -156,6 +156,12 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
         util::debug(log_tag +
                     "irs directory already exists: " + irs_dir.string());
     }
+
+    // reading current configured irs file
+
+    auto f = [=]() { get_irs_info(); };
+
+    mythreads.push_back(std::thread(f));
 }
 
 ConvolverUi::~ConvolverUi() {
@@ -355,20 +361,6 @@ void ConvolverUi::get_irs_info() {
         right_mag.push_back(util::linear_to_db(kernel[2 * n + 1]));
     }
 
-    // find min and max values
-
-    min_left = *std::min_element(left_mag.begin(), left_mag.end());
-    max_left = *std::max_element(left_mag.begin(), left_mag.end());
-    min_right = *std::min_element(right_mag.begin(), right_mag.end());
-    max_right = *std::max_element(right_mag.begin(), right_mag.end());
-
-    // rescaling between 0 and 1
-
-    for (int n = 0; n < frames_in; n++) {
-        left_mag[n] = (left_mag[n] - min_left) / (max_left - min_left);
-        right_mag[n] = (right_mag[n] - min_right) / (max_right - min_right);
-    }
-
     /*interpolating because we can not plot all the data in the irs file. It
       would be too slow
     */
@@ -392,6 +384,20 @@ void ConvolverUi::get_irs_info() {
                     e.what());
     }
 
+    // find min and max values
+
+    min_left = *std::min_element(left_mag.begin(), left_mag.end());
+    max_left = *std::max_element(left_mag.begin(), left_mag.end());
+    min_right = *std::min_element(right_mag.begin(), right_mag.end());
+    max_right = *std::max_element(right_mag.begin(), right_mag.end());
+
+    // rescaling between 0 and 1
+
+    for (int n = 0; n < frames_in; n++) {
+        left_mag[n] = (left_mag[n] - min_left) / (max_left - min_left);
+        right_mag[n] = (right_mag[n] - min_right) / (max_right - min_right);
+    }
+
     left_plot->queue_draw();
     right_plot->queue_draw();
 
@@ -410,11 +416,14 @@ void ConvolverUi::draw_channel(Gtk::DrawingArea* da,
         auto n_bars = magnitudes.size();
         auto x = util::linspace(0, width, n_bars);
 
-        for (uint n = 0; n < n_bars; n++) {
+        for (uint n = 0; n < n_bars - 1; n++) {
             auto bar_height = magnitudes[n] * height;
 
-            ctx->rectangle(x[n], height - bar_height, width / n_bars,
-                           bar_height);
+            ctx->move_to(x[n], height - bar_height);
+
+            bar_height = magnitudes[n + 1] * height;
+
+            ctx->line_to(x[n + 1], height - bar_height);
         }
 
         auto color = Gdk::RGBA();
@@ -425,7 +434,8 @@ void ConvolverUi::draw_channel(Gtk::DrawingArea* da,
         ctx->set_source_rgba(color.get_red(), color.get_green(),
                              color.get_blue(), 1.0);
 
-        ctx->fill();
+        ctx->set_line_width(2.0);
+        ctx->stroke();
 
         if (mouse_inside) {
             std::ostringstream msg;
