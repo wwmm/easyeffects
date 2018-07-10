@@ -113,18 +113,16 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
             irs_dir / boost::filesystem::path{row->get_name() + ".irs"};
 
         settings->set_string("kernel-path", irs_file.string());
+
+        auto f = [=]() { get_irs_info(); };
+
+        mythreads.push_back(std::thread(f));
     });
 
     import_irs->signal_clicked().connect(
         sigc::mem_fun(*this, &ConvolverUi::on_import_irs_clicked));
 
     // gsettings bindings
-
-    settings->signal_changed("kernel-path").connect([=](auto key) {
-        auto f = [=]() { get_irs_info(); };
-
-        mythreads.push_back(std::thread(f));
-    });
 
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
