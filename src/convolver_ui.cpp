@@ -80,22 +80,6 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
     get_object(builder, "output_gain", output_gain);
     get_object(builder, "ir_width", ir_width);
 
-    irs_menu_button->signal_clicked().connect(
-        sigc::mem_fun(*this, &ConvolverUi::on_irs_menu_button_clicked));
-
-    irs_listbox->set_sort_func(
-        sigc::mem_fun(*this, &ConvolverUi::on_listbox_sort));
-
-    irs_listbox->signal_row_activated().connect([&](auto row) {
-        auto irs_file =
-            irs_dir / boost::filesystem::path{row->get_name() + ".irs"};
-
-        settings->set_string("kernel-path", irs_file.string());
-    });
-
-    import_irs->signal_clicked().connect(
-        sigc::mem_fun(*this, &ConvolverUi::on_import_irs_clicked));
-
     // drawing area callbacks
 
     left_plot->signal_draw().connect(
@@ -116,10 +100,30 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
     right_plot->signal_leave_notify_event().connect(
         sigc::mem_fun(*this, &ConvolverUi::on_mouse_leave_notify_event));
 
+    // impulse response import and selection callbacks
+
+    irs_menu_button->signal_clicked().connect(
+        sigc::mem_fun(*this, &ConvolverUi::on_irs_menu_button_clicked));
+
+    irs_listbox->set_sort_func(
+        sigc::mem_fun(*this, &ConvolverUi::on_listbox_sort));
+
+    irs_listbox->signal_row_activated().connect([&](auto row) {
+        auto irs_file =
+            irs_dir / boost::filesystem::path{row->get_name() + ".irs"};
+
+        settings->set_string("kernel-path", irs_file.string());
+    });
+
+    import_irs->signal_clicked().connect(
+        sigc::mem_fun(*this, &ConvolverUi::on_import_irs_clicked));
+
     // gsettings bindings
 
     settings->signal_changed("kernel-path").connect([=](auto key) {
-        get_irs_info();
+        auto f = [=]() { get_irs_info(); };
+
+        mythreads.push_back(std::thread(f));
     });
 
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
@@ -159,6 +163,10 @@ ConvolverUi::~ConvolverUi() {
 
     for (auto c : connections) {
         c.disconnect();
+    }
+
+    for (auto& t : mythreads) {
+        t.join();
     }
 
     util::debug(name + " ui destroyed");
@@ -324,30 +332,60 @@ void ConvolverUi::get_irs_info() {
 
     file.readf(kernel, frames_in);
 
+    // build plot time axis
+
     float dt = 1.0f / file.samplerate();
+    float plot_dt = (frames_in - 1) * dt / max_plot_points;
+
+    time_axis.clear();
+
+    for (int n = 0; n < max_plot_points; n++) {
+        time_axis.push_back(n * plot_dt);
+    }
+
+    // deinterleaving channels and calculating each amplitude in decibel
 
     left_mag.clear();
     right_mag.clear();
 
     for (int n = 0; n < frames_in; n++) {
-        time_axis.push_back(n * dt);
-        left_mag.push_back(kernel[2 * n]);
-        right_mag.push_back(kernel[2 * n + 1]);
+        left_mag.push_back(util::linear_to_db(kernel[2 * n]));
+        right_mag.push_back(util::linear_to_db(kernel[2 * n + 1]));
     }
+
+    // find min and max values
+
+    min_left = *std::min_element(left_mag.begin(), left_mag.end());
+    max_left = *std::max_element(left_mag.begin(), left_mag.end());
+    min_right = *std::min_element(right_mag.begin(), right_mag.end());
+    max_right = *std::max_element(right_mag.begin(), right_mag.end());
+
+    // rescaling between 0 and 1
+
+    for (int n = 0; n < frames_in; n++) {
+        left_mag[n] = (left_mag[n] - min_left) / (max_left - min_left);
+        right_mag[n] = (right_mag[n] - min_right) / (max_right - min_right);
+    }
+
+    /*interpolating because we can not plot all the data in the irs file. It
+      would be too slow
+    */
 
     try {
         boost::math::cubic_b_spline<float> spline_L(left_mag.begin(),
-                                                    right_mag.end(), 0.0f, dt);
+                                                    left_mag.end(), 0.0f, dt);
 
-        boost::math::cubic_b_spline<float> spline_R(left_mag.begin(),
+        boost::math::cubic_b_spline<float> spline_R(right_mag.begin(),
                                                     right_mag.end(), 0.0f, dt);
 
         left_mag.resize(max_plot_points);
         right_mag.resize(max_plot_points);
 
-        for (uint n = 0; n < max_plot_points; n++) {
+        for (int n = 0; n < max_plot_points; n++) {
             left_mag[n] = spline_L(time_axis[n]);
             right_mag[n] = spline_R(time_axis[n]);
+
+            // std::cout << left_mag[n] << std::endl;
         }
     } catch (const std::exception& e) {
         util::debug(std::string("Message from thrown exception was: ") +
@@ -428,7 +466,7 @@ void ConvolverUi::update_mouse_info(GdkEventMotion* event,
 bool ConvolverUi::on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
     ctx->paint();
 
-    // draw_channel(left_plot, ctx, left_mag);
+    draw_channel(left_plot, ctx, left_mag);
 
     return false;
 }

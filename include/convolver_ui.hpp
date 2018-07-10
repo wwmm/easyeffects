@@ -9,6 +9,7 @@
 #include <gtkmm/menubutton.h>
 #include <gtkmm/scrolledwindow.h>
 #include <boost/filesystem.hpp>
+#include <thread>
 #include "plugin_ui_base.hpp"
 
 class ConvolverUi : public Gtk::Grid, public PluginUiBase {
@@ -37,8 +38,11 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
 
     bool mouse_inside = false;
     int max_plot_points = 300;
-    double mouse_intensity = 0, mouse_freq = 0;
+    float mouse_intensity = 0, mouse_freq = 0;
+    float min_left = 0.0f, max_left = 0.0f, min_right = 0.0f, max_right = 0.0f;
     std::vector<float> left_mag, right_mag, time_axis;
+
+    std::vector<std::thread> mythreads;
 
     std::vector<std::string> get_irs_names();
 
