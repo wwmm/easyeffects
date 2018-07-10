@@ -214,10 +214,8 @@ void gst_peconvolver_set_property(GObject* object,
 
                 if (peconvolver->kernel_path != nullptr) {
                     if (old_path != peconvolver->kernel_path) {
-                        if (peconvolver->ready) {
-                            gst_peconvolver_finish_convolver(peconvolver);
-                            gst_peconvolver_setup_convolver(peconvolver);
-                        }
+                        gst_peconvolver_finish_convolver(peconvolver);
+                        gst_peconvolver_setup_convolver(peconvolver);
                     }
                 }
             } else {

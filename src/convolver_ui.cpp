@@ -279,4 +279,6 @@ void ConvolverUi::reset() {
     settings->reset("state");
     settings->reset("input-gain");
     settings->reset("output-gain");
+    settings->reset("kernel-path");
+    settings->reset("buffersize");
 }

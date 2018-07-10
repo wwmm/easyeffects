@@ -73,6 +73,7 @@ pulseeffects_sources = [
 	'multiband_gate_preset.cpp',
 	'maximizer_preset.cpp',
 	'loudness_preset.cpp',
+	'convolver_preset.cpp',
 	'pitch_preset.cpp',
 	'reverb_preset.cpp',
 	'stereo_enhancer_preset.cpp',

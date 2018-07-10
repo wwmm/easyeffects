@@ -6,6 +6,7 @@
 #include <memory>
 #include "bass_enhancer_preset.hpp"
 #include "compressor_preset.hpp"
+#include "convolver_preset.hpp"
 #include "crossfeed_preset.hpp"
 #include "deesser_preset.hpp"
 #include "equalizer_preset.hpp"
@@ -60,6 +61,7 @@ class PresetsManager {
     std::unique_ptr<LoudnessPreset> loudness;
     std::unique_ptr<MultibandGatePreset> multiband_gate;
     std::unique_ptr<StereoToolsPreset> stereo_tools;
+    std::unique_ptr<ConvolverPreset> convolver;
 
     template <typename T>
     T get_default(const Glib::RefPtr<Gio::Settings>& settings,
