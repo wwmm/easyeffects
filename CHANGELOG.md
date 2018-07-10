@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- A convolver plugin.
 
 ## [4.1.3]
 ### Fixed

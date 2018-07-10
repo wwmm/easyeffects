@@ -749,18 +749,22 @@ void ApplicationUi::on_presets_menu_button_clicked() {
 void ApplicationUi::on_import_preset_clicked() {
     // gtkmm 3.22 does not have FileChooseNative so we have to use C api :-(
 
-    GtkFileChooserNative* native;
-    GtkFileChooserAction action = GTK_FILE_CHOOSER_ACTION_OPEN;
     gint res;
 
-    native = gtk_file_chooser_native_new(_("Import Presets"),
-                                         (GtkWindow*)this->gobj(), action,
-                                         _("Open"), _("Cancel"));
+    auto dialog = gtk_file_chooser_native_new(
+        _("Import Presets"), (GtkWindow*)this->gobj(),
+        GTK_FILE_CHOOSER_ACTION_OPEN, _("Open"), _("Cancel"));
 
-    res = gtk_native_dialog_run(GTK_NATIVE_DIALOG(native));
+    auto filter = gtk_file_filter_new();
+
+    gtk_file_filter_set_name(filter, _("Presets"));
+    gtk_file_filter_add_pattern(filter, "*.json");
+    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(dialog), filter);
+
+    res = gtk_native_dialog_run(GTK_NATIVE_DIALOG(dialog));
 
     if (res == GTK_RESPONSE_ACCEPT) {
-        GtkFileChooser* chooser = GTK_FILE_CHOOSER(native);
+        GtkFileChooser* chooser = GTK_FILE_CHOOSER(dialog);
 
         auto file_list = gtk_file_chooser_get_filenames(chooser);
 
@@ -777,7 +781,7 @@ void ApplicationUi::on_import_preset_clicked() {
         g_slist_free(file_list);
     }
 
-    g_object_unref(native);
+    g_object_unref(dialog);
 
     populate_presets_listbox();
 }
