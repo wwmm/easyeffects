@@ -36,8 +36,9 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
     boost::filesystem::path irs_dir;
 
     bool mouse_inside = false;
+    int max_plot_points = 300;
     double mouse_intensity = 0, mouse_freq = 0;
-    std::vector<float> left_mag, right_mag;
+    std::vector<float> left_mag, right_mag, time_axis;
 
     std::vector<std::string> get_irs_names();
 
@@ -52,6 +53,8 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
     void on_irs_menu_button_clicked();
 
     void on_import_irs_clicked();
+
+    void get_irs_info();
 
     void draw_channel(Gtk::DrawingArea* da,
                       const Cairo::RefPtr<Cairo::Context>& ctx,

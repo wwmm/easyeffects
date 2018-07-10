@@ -1,5 +1,7 @@
 #include <glibmm.h>
 #include <glibmm/i18n.h>
+#include <boost/math/interpolators/cubic_b_spline.hpp>
+#include <sndfile.hh>
 #include "convolver_ui.hpp"
 
 namespace {
@@ -115,6 +117,10 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
         sigc::mem_fun(*this, &ConvolverUi::on_mouse_leave_notify_event));
 
     // gsettings bindings
+
+    settings->signal_changed("kernel-path").connect([=](auto key) {
+        get_irs_info();
+    });
 
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
@@ -302,6 +308,58 @@ void ConvolverUi::on_import_irs_clicked() {
     populate_irs_listbox();
 }
 
+void ConvolverUi::get_irs_info() {
+    auto path = settings->get_string("kernel-path");
+
+    SndfileHandle file = SndfileHandle(path);
+
+    if (file.channels() != 2 || file.frames() == 0) {
+        return;
+    }
+
+    int frames_in = file.frames();
+    int total_frames_in = file.channels() * frames_in;
+
+    float* kernel = new float[total_frames_in];
+
+    file.readf(kernel, frames_in);
+
+    float dt = 1.0f / file.samplerate();
+
+    left_mag.clear();
+    right_mag.clear();
+
+    for (int n = 0; n < frames_in; n++) {
+        time_axis.push_back(n * dt);
+        left_mag.push_back(kernel[2 * n]);
+        right_mag.push_back(kernel[2 * n + 1]);
+    }
+
+    try {
+        boost::math::cubic_b_spline<float> spline_L(left_mag.begin(),
+                                                    right_mag.end(), 0.0f, dt);
+
+        boost::math::cubic_b_spline<float> spline_R(left_mag.begin(),
+                                                    right_mag.end(), 0.0f, dt);
+
+        left_mag.resize(max_plot_points);
+        right_mag.resize(max_plot_points);
+
+        for (uint n = 0; n < max_plot_points; n++) {
+            left_mag[n] = spline_L(time_axis[n]);
+            right_mag[n] = spline_R(time_axis[n]);
+        }
+    } catch (const std::exception& e) {
+        util::debug(std::string("Message from thrown exception was: ") +
+                    e.what());
+    }
+
+    left_plot->queue_draw();
+    right_plot->queue_draw();
+
+    delete[] kernel;
+}
+
 void ConvolverUi::draw_channel(Gtk::DrawingArea* da,
                                const Cairo::RefPtr<Cairo::Context>& ctx,
                                const std::vector<float>& magnitudes) {
@@ -329,8 +387,8 @@ void ConvolverUi::draw_channel(Gtk::DrawingArea* da,
         ctx->set_source_rgba(color.get_red(), color.get_green(),
                              color.get_blue(), 1.0);
 
-        ctx->set_line_width(1.1);
-        ctx->stroke();
+        // ctx->set_line_width(1.1);
+        ctx->fill();
 
         if (mouse_inside) {
             std::ostringstream msg;
@@ -370,7 +428,7 @@ void ConvolverUi::update_mouse_info(GdkEventMotion* event,
 bool ConvolverUi::on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
     ctx->paint();
 
-    draw_channel(left_plot, ctx, left_mag);
+    // draw_channel(left_plot, ctx, left_mag);
 
     return false;
 }
@@ -388,7 +446,7 @@ bool ConvolverUi::on_left_motion_notify_event(GdkEventMotion* event) {
 bool ConvolverUi::on_right_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
     ctx->paint();
 
-    draw_channel(right_plot, ctx, right_mag);
+    // draw_channel(right_plot, ctx, right_mag);
 
     return false;
 }
