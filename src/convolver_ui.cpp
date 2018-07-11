@@ -117,10 +117,6 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
             irs_dir / boost::filesystem::path{row->get_name() + ".irs"};
 
         settings->set_string("kernel-path", irs_file.string());
-
-        auto f = [=]() { get_irs_info(); };
-
-        mythreads.push_back(std::thread(f));
     });
 
     import_irs->signal_clicked().connect(
