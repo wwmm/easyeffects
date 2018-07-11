@@ -164,6 +164,15 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
     auto f = [=]() { get_irs_info(); };
 
     mythreads.push_back(std::thread(f));
+
+    /* this is necessary to update the interface with the irs info when a preset
+       is loaded
+    */
+
+    settings->signal_changed("kernel-path").connect([=](auto key) {
+        auto f = [=]() { get_irs_info(); };
+        mythreads.push_back(std::thread(f));
+    });
 }
 
 ConvolverUi::~ConvolverUi() {
