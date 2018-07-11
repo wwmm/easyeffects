@@ -309,8 +309,7 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
     gst_peconvolver_setup_convolver(peconvolver);
 
     if (peconvolver->ready) {
-        gst_buffer_ref(inbuf);
-        gst_adapter_push(peconvolver->adapter, inbuf);
+        gst_adapter_push(peconvolver->adapter, gst_buffer_ref(inbuf));
 
         uint conv_nbytes = peconvolver->buffer_size * peconvolver->bpf;
 
