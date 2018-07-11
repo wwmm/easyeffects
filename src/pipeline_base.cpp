@@ -215,7 +215,8 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     g_object_set(source, "mute", false, nullptr);
     g_object_set(source, "provide-clock", false, nullptr);
     g_object_set(source, "slave-method", 1, nullptr);  // re-timestamp
-    g_object_set(source, "blocksize", 256 * 2 * sizeof(float), nullptr);
+    // 512 samples and 2 channels per buffer
+    g_object_set(source, "blocksize", 512 * 2 * sizeof(float), nullptr);
 
     g_object_set(sink, "volume", 1.0, nullptr);
     g_object_set(sink, "mute", false, nullptr);
