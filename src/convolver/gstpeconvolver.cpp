@@ -204,6 +204,7 @@ static void gst_peconvolver_init(GstPeconvolver* peconvolver) {
     peconvolver->log_tag = "convolver: ";
     peconvolver->ready = false;
     peconvolver->rate = 0;
+    peconvolver->bpf = 0;
     peconvolver->buffer_size = GST_PECONVOLVER_BUFFER_SIZE_DEFAULT;
     peconvolver->kernel_path = nullptr;
     peconvolver->ir_width = 100;
@@ -283,9 +284,14 @@ static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
     peconvolver->rate = info->rate;
     peconvolver->bpf = GST_AUDIO_INFO_BPF(info);
 
+    /*
+    this function is called whenever there is a format change. So we reset the
+    zita convolver. Setup will reinitialize zita when necessary.
+    */
+
     std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
 
-    gst_peconvolver_setup_convolver(peconvolver);
+    gst_peconvolver_finish_convolver(peconvolver);
 
     return true;
 }
@@ -299,6 +305,8 @@ static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
     GST_DEBUG_OBJECT(peconvolver, "transform");
 
     std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
+
+    gst_peconvolver_setup_convolver(peconvolver);
 
     if (peconvolver->ready) {
         gst_buffer_ref(inbuf);
@@ -417,8 +425,8 @@ static void gst_peconvolver_set_kernel_path(GstPeconvolver* peconvolver,
 
             if (peconvolver->kernel_path != nullptr) {
                 if (old_path != peconvolver->kernel_path) {
+                    // resetting zita
                     gst_peconvolver_finish_convolver(peconvolver);
-                    gst_peconvolver_setup_convolver(peconvolver);
                 }
             }
         } else {
@@ -437,8 +445,8 @@ static void gst_peconvolver_set_buffersize(GstPeconvolver* peconvolver,
         peconvolver->buffer_size = value;
 
         if (peconvolver->ready) {
+            // resetting zita
             gst_peconvolver_finish_convolver(peconvolver);
-            gst_peconvolver_setup_convolver(peconvolver);
         }
     }
 }
@@ -451,14 +459,15 @@ static void gst_peconvolver_set_ir_width(GstPeconvolver* peconvolver,
         peconvolver->ir_width = value;
 
         if (peconvolver->ready) {
+            // resetting zita
             gst_peconvolver_finish_convolver(peconvolver);
-            gst_peconvolver_setup_convolver(peconvolver);
         }
     }
 }
 
 static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver) {
-    if (!peconvolver->ready) {
+    if (!peconvolver->ready && peconvolver->rate != 0 &&
+        peconvolver->bpf != 0) {
         util::debug(peconvolver->log_tag + "maximum irs frames supported: " +
                     std::to_string(MAX_IRS_FRAMES));
 
