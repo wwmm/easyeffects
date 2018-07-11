@@ -32,7 +32,8 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
     Gtk::Button* import_irs;
     Gtk::ComboBoxText* buffersize;
     Gtk::DrawingArea *left_plot, *right_plot;
-    Gtk::Label *file_name, *sampling_rate, *samples, *duration;
+    Gtk::Label *label_file_name, *label_sampling_rate, *label_samples,
+        *label_duration;
 
     std::vector<sigc::connection> connections;
 

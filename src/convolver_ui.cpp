@@ -75,10 +75,10 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
     builder->get_widget("buffersize", buffersize);
     builder->get_widget("left_plot", left_plot);
     builder->get_widget("right_plot", right_plot);
-    builder->get_widget("file_name", file_name);
-    builder->get_widget("sampling_rate", sampling_rate);
-    builder->get_widget("samples", samples);
-    builder->get_widget("duration", duration);
+    builder->get_widget("file_name", label_file_name);
+    builder->get_widget("sampling_rate", label_sampling_rate);
+    builder->get_widget("samples", label_samples);
+    builder->get_widget("duration", label_duration);
 
     get_object(builder, "input_gain", input_gain);
     get_object(builder, "output_gain", output_gain);
@@ -115,6 +115,8 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
     irs_listbox->signal_row_activated().connect([&](auto row) {
         auto irs_file =
             irs_dir / boost::filesystem::path{row->get_name() + ".irs"};
+
+        label_file_name->set_text(row->get_name());
 
         settings->set_string("kernel-path", irs_file.string());
 
@@ -335,6 +337,7 @@ void ConvolverUi::get_irs_info() {
 
     int frames_in = file.frames();
     int total_frames_in = file.channels() * frames_in;
+    int rate = file.samplerate();
 
     float* kernel = new float[total_frames_in];
 
@@ -342,8 +345,9 @@ void ConvolverUi::get_irs_info() {
 
     // build plot time axis
 
-    float dt = 1.0f / file.samplerate();
-    float plot_dt = (frames_in - 1) * dt / max_plot_points;
+    float dt = 1.0f / rate;
+    float duration = (frames_in - 1) * dt;
+    float plot_dt = duration / max_plot_points;
 
     time_axis.clear();
 
@@ -402,6 +406,20 @@ void ConvolverUi::get_irs_info() {
 
     left_plot->queue_draw();
     right_plot->queue_draw();
+
+    // updating interface with ir file info
+
+    Glib::signal_idle().connect_once([=]() {
+        label_sampling_rate->set_text(std::to_string(rate) + " Hz");
+        label_samples->set_text(std::to_string(frames_in));
+
+        std::ostringstream msg;
+
+        msg.precision(3);
+        msg << duration << " s";
+
+        label_duration->set_text(msg.str());
+    });
 
     delete[] kernel;
 }
