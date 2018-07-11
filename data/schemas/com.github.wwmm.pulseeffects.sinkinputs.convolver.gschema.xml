@@ -21,9 +21,6 @@
         <key name="kernel-path" type="s">
             <default>""</default>
         </key>
-        <key name="buffersize" enum="com.github.wwmm.pulseeffects.convolver.buffersize.enum">
-            <default>"256"</default>
-        </key>
         <key name="ir-width" type="i">
             <range min="0" max="200"/>
             <default>100</default>

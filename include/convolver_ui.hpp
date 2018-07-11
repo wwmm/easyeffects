@@ -30,7 +30,6 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
     Gtk::MenuButton* irs_menu_button;
     Gtk::ScrolledWindow* irs_scrolled_window;
     Gtk::Button* import_irs;
-    Gtk::ComboBoxText* buffersize;
     Gtk::DrawingArea *left_plot, *right_plot;
     Gtk::Label *label_file_name, *label_sampling_rate, *label_samples,
         *label_duration;

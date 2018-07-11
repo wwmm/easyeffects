@@ -38,21 +38,13 @@ static void gst_peconvolver_finalize(GObject* object);
 static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
                                       const GstAudioInfo* info);
 
-static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
-                                               GstBuffer* inbuf,
-                                               GstBuffer* outbuf);
+static GstFlowReturn gst_peconvolver_transform_ip(GstBaseTransform* trans,
+                                                  GstBuffer* buffer);
 
 static gboolean gst_peconvolver_stop(GstBaseTransform* base);
 
-static gboolean gst_peconvolver_query(GstBaseTransform* trans,
-                                      GstPadDirection direction,
-                                      GstQuery* query);
-
 static void gst_peconvolver_set_kernel_path(GstPeconvolver* peconvolver,
                                             gchar* value);
-
-static void gst_peconvolver_set_buffersize(GstPeconvolver* peconvolver,
-                                           const uint& value);
 
 static void gst_peconvolver_set_ir_width(GstPeconvolver* peconvolver,
                                          const uint& value);
@@ -60,7 +52,8 @@ static void gst_peconvolver_set_ir_width(GstPeconvolver* peconvolver,
 static void gst_peconvolver_process(GstPeconvolver* peconvolver,
                                     GstBuffer* buffer);
 
-static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver);
+static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver,
+                                            GstBuffer* buffer);
 
 static void gst_peconvolver_finish_convolver(GstPeconvolver* peconvolver);
 
@@ -81,31 +74,7 @@ static void gst_peconvolver_finish_convolver(GstPeconvolver* peconvolver);
 #define CONVPROC_SCHEDULER_CLASS SCHED_FIFO
 #define THREAD_SYNC_MODE true
 
-#define GST_TYPE_PECONVOLVER_BUFFER_SIZE \
-    (gst_peconvolver_buffer_size_get_type())
-static GType gst_peconvolver_buffer_size_get_type(void) {
-    static GType buffer_size_type = 0;
-    static const GEnumValue buffer_size[] = {
-        {GST_PECONVOLVER_BUFFER_SIZE_DEFAULT, "Default size", "256"},
-        {GST_PECONVOLVER_BUFFER_SIZE_64, "64", "64"},
-        {GST_PECONVOLVER_BUFFER_SIZE_128, "128", "128"},
-        {GST_PECONVOLVER_BUFFER_SIZE_256, "256", "256"},
-        {GST_PECONVOLVER_BUFFER_SIZE_512, "512", "512"},
-        {GST_PECONVOLVER_BUFFER_SIZE_1024, "1024", "1024"},
-        {GST_PECONVOLVER_BUFFER_SIZE_2048, "2048", "2048"},
-        {GST_PECONVOLVER_BUFFER_SIZE_4096, "4096", "4096"},
-        {GST_PECONVOLVER_BUFFER_SIZE_8192, "8192", "8192"},
-        {0, NULL, NULL},
-    };
-
-    if (!buffer_size_type) {
-        buffer_size_type =
-            g_enum_register_static("GstPeconvolverBufferSize", buffer_size);
-    }
-    return buffer_size_type;
-}
-
-enum { PROP_0, PROP_KERNEL_PATH, PROP_BUFFER_SIZE, PROP_IR_WIDTH };
+enum { PROP_0, PROP_KERNEL_PATH, PROP_IR_WIDTH };
 
 /* pad templates */
 
@@ -167,12 +136,15 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
 
     audio_filter_class->setup = GST_DEBUG_FUNCPTR(gst_peconvolver_setup);
 
-    base_transform_class->transform =
-        GST_DEBUG_FUNCPTR(gst_peconvolver_transform);
+    base_transform_class->transform_ip =
+        GST_DEBUG_FUNCPTR(gst_peconvolver_transform_ip);
+
+    base_transform_class->transform_ip_on_passthrough = false;
+
+    // base_transform_class->transform =
+    //     GST_DEBUG_FUNCPTR(gst_peconvolver_transform);
 
     base_transform_class->stop = GST_DEBUG_FUNCPTR(gst_peconvolver_stop);
-
-    base_transform_class->query = GST_DEBUG_FUNCPTR(gst_peconvolver_query);
 
     /* define properties */
 
@@ -182,15 +154,6 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
                             "Full path to kernel file", nullptr,
                             static_cast<GParamFlags>(G_PARAM_READWRITE |
                                                      G_PARAM_STATIC_STRINGS)));
-
-    g_object_class_install_property(
-        gobject_class, PROP_BUFFER_SIZE,
-        g_param_spec_enum("buffersize", "Buffer Size",
-                          "Zita Convolver Partition Size",
-                          GST_TYPE_PECONVOLVER_BUFFER_SIZE,
-                          GST_PECONVOLVER_BUFFER_SIZE_DEFAULT,
-                          static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                                   G_PARAM_STATIC_STRINGS)));
 
     g_object_class_install_property(
         gobject_class, PROP_IR_WIDTH,
@@ -205,9 +168,10 @@ static void gst_peconvolver_init(GstPeconvolver* peconvolver) {
     peconvolver->ready = false;
     peconvolver->rate = 0;
     peconvolver->bpf = 0;
-    peconvolver->buffer_size = GST_PECONVOLVER_BUFFER_SIZE_DEFAULT;
     peconvolver->kernel_path = nullptr;
     peconvolver->ir_width = 100;
+
+    gst_base_transform_set_in_place(GST_BASE_TRANSFORM(peconvolver), true);
 }
 
 void gst_peconvolver_set_property(GObject* object,
@@ -222,11 +186,6 @@ void gst_peconvolver_set_property(GObject* object,
         case PROP_KERNEL_PATH:
             gst_peconvolver_set_kernel_path(peconvolver,
                                             g_value_dup_string(value));
-
-            break;
-        case PROP_BUFFER_SIZE:
-            gst_peconvolver_set_buffersize(peconvolver,
-                                           g_value_get_enum(value));
             break;
         case PROP_IR_WIDTH:
             gst_peconvolver_set_ir_width(peconvolver, g_value_get_int(value));
@@ -248,9 +207,6 @@ void gst_peconvolver_get_property(GObject* object,
     switch (property_id) {
         case PROP_KERNEL_PATH:
             g_value_set_string(value, peconvolver->kernel_path);
-            break;
-        case PROP_BUFFER_SIZE:
-            g_value_set_enum(value, peconvolver->buffer_size);
             break;
         case PROP_IR_WIDTH:
             g_value_set_int(value, peconvolver->ir_width);
@@ -296,47 +252,16 @@ static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
     return true;
 }
 
-/* transform */
-static GstFlowReturn gst_peconvolver_transform(GstBaseTransform* trans,
-                                               GstBuffer* inbuf,
-                                               GstBuffer* outbuf) {
+static GstFlowReturn gst_peconvolver_transform_ip(GstBaseTransform* trans,
+                                                  GstBuffer* buffer) {
     GstPeconvolver* peconvolver = GST_PECONVOLVER(trans);
 
     GST_DEBUG_OBJECT(peconvolver, "transform");
 
     std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
 
-    gst_peconvolver_setup_convolver(peconvolver);
-
-    if (peconvolver->ready) {
-        gst_adapter_push(peconvolver->adapter, gst_buffer_ref(inbuf));
-
-        uint conv_nbytes = peconvolver->buffer_size * peconvolver->bpf;
-
-        gst_buffer_resize(outbuf, 0, 0);
-        gst_buffer_remove_all_memory(outbuf);
-
-        while (gst_adapter_available(peconvolver->adapter) >= conv_nbytes) {
-            GstBuffer* buffer =
-                gst_adapter_take_buffer(peconvolver->adapter, conv_nbytes);
-
-            gst_peconvolver_process(peconvolver, buffer);
-
-            outbuf = gst_buffer_append(outbuf, buffer);
-        }
-    } else {
-        // passthrough
-
-        GstMapInfo map_in, map_out;
-
-        gst_buffer_map(inbuf, &map_in, GST_MAP_READ);
-        gst_buffer_map(outbuf, &map_out, GST_MAP_WRITE);
-
-        memcpy(map_out.data, map_in.data, map_in.size);
-
-        gst_buffer_unmap(inbuf, &map_in);
-        gst_buffer_unmap(outbuf, &map_out);
-    }
+    gst_peconvolver_setup_convolver(peconvolver, buffer);
+    gst_peconvolver_process(peconvolver, buffer);
 
     return GST_FLOW_OK;
 }
@@ -349,65 +274,6 @@ static gboolean gst_peconvolver_stop(GstBaseTransform* base) {
     gst_peconvolver_finish_convolver(peconvolver);
 
     return true;
-}
-
-static gboolean gst_peconvolver_query(GstBaseTransform* trans,
-                                      GstPadDirection direction,
-                                      GstQuery* query) {
-    GstPeconvolver* peconvolver = GST_PECONVOLVER(trans);
-    gboolean res = true;
-
-    /*
-    most of this code was taken from
-    https://github.com/Kurento/gst-plugins-good/blob/master/gst/audiofx/audiofxbasefirfilter.c
-    */
-
-    switch (GST_QUERY_TYPE(query)) {
-        case GST_QUERY_LATENCY: {
-            GstClockTime min, max;
-            gboolean live;
-            guint64 latency = peconvolver->buffer_size;
-            gint rate = GST_AUDIO_FILTER_RATE(peconvolver);
-
-            if (rate == 0) {
-                res = false;
-            } else if ((res = gst_pad_peer_query(
-                            GST_BASE_TRANSFORM(peconvolver)->sinkpad, query))) {
-                gst_query_parse_latency(query, &live, &min, &max);
-
-                GST_DEBUG_OBJECT(peconvolver,
-                                 "Peer latency: min %" GST_TIME_FORMAT
-                                 " max %" GST_TIME_FORMAT,
-                                 GST_TIME_ARGS(min), GST_TIME_ARGS(max));
-
-                /* add our own latency */
-                latency =
-                    gst_util_uint64_scale_round(latency, GST_SECOND, rate);
-
-                GST_DEBUG_OBJECT(peconvolver, "Our latency: %" GST_TIME_FORMAT,
-                                 GST_TIME_ARGS(latency));
-
-                min += latency;
-                if (max != GST_CLOCK_TIME_NONE)
-                    max += latency;
-
-                GST_DEBUG_OBJECT(
-                    peconvolver,
-                    "Calculated total latency : min %" GST_TIME_FORMAT
-                    " max %" GST_TIME_FORMAT,
-                    GST_TIME_ARGS(min), GST_TIME_ARGS(max));
-
-                gst_query_set_latency(query, live, min, max);
-            }
-            break;
-        }
-        default:
-            res = GST_BASE_TRANSFORM_CLASS(gst_peconvolver_parent_class)
-                      ->query(trans, direction, query);
-            break;
-    }
-
-    return res;
 }
 
 static void gst_peconvolver_set_kernel_path(GstPeconvolver* peconvolver,
@@ -436,20 +302,6 @@ static void gst_peconvolver_set_kernel_path(GstPeconvolver* peconvolver,
     }
 }
 
-static void gst_peconvolver_set_buffersize(GstPeconvolver* peconvolver,
-                                           const uint& value) {
-    if (value != peconvolver->buffer_size) {
-        std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
-
-        peconvolver->buffer_size = value;
-
-        if (peconvolver->ready) {
-            // resetting zita
-            gst_peconvolver_finish_convolver(peconvolver);
-        }
-    }
-}
-
 static void gst_peconvolver_set_ir_width(GstPeconvolver* peconvolver,
                                          const uint& value) {
     if (value != peconvolver->ir_width) {
@@ -464,7 +316,8 @@ static void gst_peconvolver_set_ir_width(GstPeconvolver* peconvolver,
     }
 }
 
-static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver) {
+static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver,
+                                            GstBuffer* buffer) {
     if (!peconvolver->ready && peconvolver->rate != 0 &&
         peconvolver->bpf != 0) {
         util::debug(peconvolver->log_tag + "maximum irs frames supported: " +
@@ -492,9 +345,17 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver) {
 
             peconvolver->conv->set_options(options);
 
-            int ret = peconvolver->conv->configure(
-                2, 2, max_size, peconvolver->buffer_size,
-                peconvolver->buffer_size, Convproc::MAXPART, density);
+            GstMapInfo map;
+
+            gst_buffer_map(buffer, &map, GST_MAP_READ);
+
+            guint num_samples = map.size / peconvolver->bpf;
+
+            gst_buffer_unmap(buffer, &map);
+
+            int ret = peconvolver->conv->configure(2, 2, max_size, num_samples,
+                                                   num_samples,
+                                                   Convproc::MAXPART, density);
 
             if (ret != 0) {
                 failed = true;

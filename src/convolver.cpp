@@ -50,9 +50,6 @@ Convolver::Convolver(const std::string& tag, const std::string& schema)
         g_settings_bind(settings, "kernel-path", convolver, "kernel-path",
                         G_SETTINGS_BIND_DEFAULT);
 
-        g_settings_bind(settings, "buffersize", convolver, "buffersize",
-                        G_SETTINGS_BIND_DEFAULT);
-
         g_settings_bind(settings, "ir-width", convolver, "ir-width",
                         G_SETTINGS_BIND_DEFAULT);
 

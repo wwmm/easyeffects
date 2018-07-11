@@ -18,9 +18,6 @@ void ConvolverPreset::save(boost::property_tree::ptree& root,
     root.put(section + ".convolver.kernel-path",
              settings->get_string("kernel-path"));
 
-    root.put(section + ".convolver.buffersize",
-             settings->get_string("buffersize"));
-
     root.put(section + ".convolver.ir-width", settings->get_int("ir-width"));
 }
 
@@ -45,11 +42,6 @@ void ConvolverPreset::load(boost::property_tree::ptree& root,
         "kernel-path", root.get<std::string>(
                            section + ".convolver.kernel-path",
                            get_default<std::string>(settings, "kernel-path")));
-
-    settings->set_string("buffersize",
-                         root.get<std::string>(
-                             section + ".convolver.buffersize",
-                             get_default<std::string>(settings, "buffersize")));
 
     settings->set_int("ir-width",
                       root.get<int>(section + ".convolver.ir-width",

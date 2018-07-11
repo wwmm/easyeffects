@@ -142,17 +142,6 @@
         <value nick="LR > RL (Stereo Flip Channels)" value="6"/>
     </enum>
 
-    <enum id="com.github.wwmm.pulseeffects.convolver.buffersize.enum">
-        <value nick="64" value="64"/>
-        <value nick="128" value="128"/>
-        <value nick="256" value="256"/>
-        <value nick="512" value="512"/>
-        <value nick="1024" value="1024"/>
-        <value nick="2048" value="2048"/>
-        <value nick="4096" value="4096"/>
-        <value nick="8192" value="8192"/>
-    </enum>
-
     <schema id="com.github.wwmm.pulseeffects" path="/com/github/wwmm/pulseeffects/">
         <key name="buffer-out" type="i">
             <default>200000</default>
