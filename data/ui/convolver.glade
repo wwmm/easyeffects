@@ -410,7 +410,8 @@
                   <object class="GtkSpinButton">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="width_chars">0</property>
+                    <property name="width_chars">10</property>
+                    <property name="secondary_icon_name">pulseeffects-percent-symbolic</property>
                     <property name="input_purpose">number</property>
                     <property name="orientation">vertical</property>
                     <property name="adjustment">ir_width</property>
