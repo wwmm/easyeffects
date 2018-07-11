@@ -116,8 +116,6 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
         auto irs_file =
             irs_dir / boost::filesystem::path{row->get_name() + ".irs"};
 
-        label_file_name->set_text(row->get_name());
-
         settings->set_string("kernel-path", irs_file.string());
 
         auto f = [=]() { get_irs_info(); };
@@ -419,6 +417,10 @@ void ConvolverUi::get_irs_info() {
         msg << duration << " s";
 
         label_duration->set_text(msg.str());
+
+        auto fpath = boost::filesystem::path{path};
+
+        label_file_name->set_text(fpath.stem().string());
     });
 
     delete[] kernel;
