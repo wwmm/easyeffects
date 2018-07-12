@@ -100,7 +100,7 @@
         <property name="column_spacing">3</property>
         <child>
           <object class="GtkButton" id="import_irs">
-            <property name="label" translatable="yes">Import File</property>
+            <property name="label" translatable="yes">Import Impulse</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -321,7 +321,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="label">file name</property>
+                <property name="label" translatable="yes">Impulse Response</property>
                 <property name="ellipsize">end</property>
               </object>
               <packing>
