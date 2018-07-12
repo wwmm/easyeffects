@@ -372,14 +372,16 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
+                    <property name="tooltip_text" translatable="yes">Select the impulse Response File</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
                     <property name="popover">menu</property>
                     <child>
-                      <object class="GtkLabel">
+                      <object class="GtkImage">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Impulse Response</property>
+                        <property name="icon_name">pulseeffects-irs-symbolic</property>
+                        <property name="icon_size">3</property>
                       </object>
                     </child>
                   </object>

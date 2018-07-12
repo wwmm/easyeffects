@@ -42,6 +42,7 @@
     <file>icons/pulseeffects-zero-symbolic.svg</file>
     <file>icons/pulseeffects-one-symbolic.svg</file>
     <file>icons/pulseeffects-percent-symbolic.svg</file>
+    <file>icons/pulseeffects-irs-symbolic.svg</file>
     <file>presets/gstreamer_ballad.json</file>
     <file>presets/gstreamer_classic.json</file>
     <file>presets/gstreamer_club.json</file>
