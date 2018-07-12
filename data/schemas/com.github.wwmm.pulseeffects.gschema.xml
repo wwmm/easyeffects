@@ -149,7 +149,6 @@
         <value nick="512" value="512"/>
         <value nick="1024" value="1024"/>
         <value nick="2048" value="2048"/>
-        <value nick="4096" value="4096"/>
     </enum>
 
     <schema id="com.github.wwmm.pulseeffects" path="/com/github/wwmm/pulseeffects/">
@@ -160,7 +159,7 @@
             <default>10000</default>
         </key>
         <key name="blocksize-out" enum="com.github.wwmm.pulseeffects.blocksize.enum">
-            <default>"512"</default>
+            <default>"1024"</default>
         </key>
 
         <key name="buffer-in" type="i">
@@ -170,7 +169,7 @@
             <default>10000</default>
         </key>
         <key name="blocksize-in" enum="com.github.wwmm.pulseeffects.blocksize.enum">
-            <default>"512"</default>
+            <default>"1024"</default>
         </key>
 
         <key name="show-spectrum" type="b">

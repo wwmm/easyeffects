@@ -142,7 +142,6 @@ void on_blocksize_changed(GSettings* settings,
                           gchar* key,
                           SinkInputEffects* l) {
     int value = g_settings_get_enum(settings, key);
-
     int old_value;
 
     g_object_get(l->source, "blocksize", &old_value, nullptr);

@@ -924,7 +924,6 @@
                               <item translatable="yes">512</item>
                               <item translatable="yes">1024</item>
                               <item translatable="yes">2048</item>
-                              <item translatable="yes">4096</item>
                             </items>
                           </object>
                           <packing>
@@ -1068,7 +1067,6 @@
                               <item translatable="yes">512</item>
                               <item translatable="yes">1024</item>
                               <item translatable="yes">2048</item>
-                              <item translatable="yes">4096</item>
                             </items>
                           </object>
                           <packing>
