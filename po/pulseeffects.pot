@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-01 12:44-0300\n"
+"POT-Creation-Date: 2018-07-11 22:29-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Create Preset"
 msgstr ""
 
-#: data/ui/application.glade:76 src/application_ui.cpp:756
+#: data/ui/application.glade:76 src/application_ui.cpp:813
 msgid "Import Presets"
 msgstr ""
 
@@ -37,7 +37,7 @@ msgstr ""
 #: data/ui/application.glade:230 data/ui/compressor.glade:205
 #: data/ui/filter.glade:203 data/ui/equalizer.glade:280
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
-#: src/application_ui.cpp:831
+#: src/application_ui.cpp:818 src/application_ui.cpp:893
 msgid "Presets"
 msgstr ""
 
@@ -90,41 +90,33 @@ msgstr ""
 msgid "Spectrum"
 msgstr ""
 
-#: data/ui/application.glade:798
-msgid "Output Device"
-msgstr ""
-
-#: data/ui/application.glade:808 data/ui/application.glade:821
+#: data/ui/application.glade:803 data/ui/application.glade:949
 msgid "Use Default"
 msgstr ""
 
-#: data/ui/application.glade:837
-msgid "Input Device"
-msgstr ""
-
-#: data/ui/application.glade:907 data/ui/application.glade:983
+#: data/ui/application.glade:841 data/ui/application.glade:986
 #: data/ui/app_info.glade:156
 msgid "Buffer"
 msgstr ""
 
-#: data/ui/application.glade:920 data/ui/application.glade:996
+#: data/ui/application.glade:874 data/ui/application.glade:1018
 #: data/ui/app_info.glade:183
 msgid "Latency"
 msgstr ""
 
-#: data/ui/application.glade:1055
-msgid "Output Effects"
+#: data/ui/application.glade:907 data/ui/application.glade:1050
+msgid "Block Size"
 msgstr ""
 
-#: data/ui/application.glade:1068
+#: data/ui/application.glade:937
 msgid "Input Effects"
 msgstr ""
 
-#: data/ui/application.glade:1085
-msgid "Advanced Settings"
+#: data/ui/application.glade:1080
+msgid "Output Effects"
 msgstr ""
 
-#: data/ui/application.glade:1095
+#: data/ui/application.glade:1107
 msgid "Pulseaudio"
 msgstr ""
 
@@ -136,7 +128,7 @@ msgstr ""
 msgid "Format"
 msgstr ""
 
-#: data/ui/app_info.glade:75
+#: data/ui/app_info.glade:75 data/ui/convolver.glade:260
 msgid "Rate"
 msgstr ""
 
@@ -227,7 +219,8 @@ msgstr ""
 #: data/ui/stereo_tools.glade:784 data/ui/crossfeed.glade:200
 #: data/ui/maximizer.glade:240 data/ui/loudness.glade:245
 #: data/ui/gate.glade:489 data/ui/multiband_gate.glade:2112
-#: data/ui/deesser.glade:570 data/ui/pitch.glade:304 data/ui/webrtc.glade:586
+#: data/ui/deesser.glade:570 data/ui/convolver.glade:430
+#: data/ui/pitch.glade:304 data/ui/webrtc.glade:586
 msgid "Input"
 msgstr ""
 
@@ -246,7 +239,7 @@ msgstr ""
 #: data/ui/multiband_gate.glade:809 data/ui/multiband_gate.glade:1219
 #: data/ui/multiband_gate.glade:1630 data/ui/multiband_gate.glade:2041
 #: data/ui/multiband_gate.glade:2127 data/ui/deesser.glade:585
-#: data/ui/pitch.glade:319 data/ui/webrtc.glade:601
+#: data/ui/convolver.glade:445 data/ui/pitch.glade:319 data/ui/webrtc.glade:601
 msgid "Output"
 msgstr ""
 
@@ -883,6 +876,42 @@ msgstr ""
 msgid "Detected"
 msgstr ""
 
+#: data/ui/convolver.glade:24
+msgid "Convolver"
+msgstr ""
+
+#: data/ui/convolver.glade:103
+msgid "Import File"
+msgstr ""
+
+#: data/ui/convolver.glade:107
+msgid "Import Impulse Response File"
+msgstr ""
+
+#: data/ui/convolver.glade:190 src/convolver_ui.cpp:243
+msgid "Impulse Response"
+msgstr ""
+
+#: data/ui/convolver.glade:226
+msgid "L"
+msgstr ""
+
+#: data/ui/convolver.glade:239
+msgid "R"
+msgstr ""
+
+#: data/ui/convolver.glade:298
+msgid "Duration"
+msgstr ""
+
+#: data/ui/convolver.glade:312
+msgid "Samples"
+msgstr ""
+
+#: data/ui/convolver.glade:366
+msgid "Stereo Width"
+msgstr ""
+
 #: data/ui/pitch.glade:36
 msgid "Pitch"
 msgstr ""
@@ -1139,11 +1168,11 @@ msgstr ""
 msgid "Presets: "
 msgstr ""
 
-#: src/application_ui.cpp:758
+#: src/application_ui.cpp:814 src/convolver_ui.cpp:239
 msgid "Open"
 msgstr ""
 
-#: src/application_ui.cpp:758
+#: src/application_ui.cpp:814 src/convolver_ui.cpp:239
 msgid "Cancel"
 msgstr ""
 
@@ -1157,4 +1186,8 @@ msgstr ""
 
 #: src/calibration_ui.cpp:182
 msgid "Calibration Microphone"
+msgstr ""
+
+#: src/convolver_ui.cpp:238
+msgid "Import Impulse Response"
 msgstr ""

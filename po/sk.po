@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-01 12:44-0300\n"
+"POT-Creation-Date: 2018-07-11 22:29-0300\n"
 "PO-Revision-Date: 2017-06-11 22:19+0200\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: \n"
@@ -27,7 +27,7 @@ msgstr ""
 msgid "Create Preset"
 msgstr "Uložiť predvoľbu"
 
-#: data/ui/application.glade:76 src/application_ui.cpp:756
+#: data/ui/application.glade:76 src/application_ui.cpp:813
 #, fuzzy
 msgid "Import Presets"
 msgstr "Načítať predvoľbu"
@@ -41,7 +41,7 @@ msgstr "Skúšobný signál"
 #: data/ui/application.glade:230 data/ui/compressor.glade:205
 #: data/ui/filter.glade:203 data/ui/equalizer.glade:280
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
-#: src/application_ui.cpp:831
+#: src/application_ui.cpp:818 src/application_ui.cpp:893
 msgid "Presets"
 msgstr "Predvoľby"
 
@@ -97,46 +97,37 @@ msgstr ""
 msgid "Spectrum"
 msgstr "Zobraziť spektrum"
 
-#: data/ui/application.glade:798
-#, fuzzy
-msgid "Output Device"
-msgstr "Vstupný obmedzovač"
-
-#: data/ui/application.glade:808 data/ui/application.glade:821
+#: data/ui/application.glade:803 data/ui/application.glade:949
 #, fuzzy
 msgid "Use Default"
 msgstr "Predvolený"
 
-#: data/ui/application.glade:837
-#, fuzzy
-msgid "Input Device"
-msgstr "Vstupný obmedzovač"
-
-#: data/ui/application.glade:907 data/ui/application.glade:983
+#: data/ui/application.glade:841 data/ui/application.glade:986
 #: data/ui/app_info.glade:156
 msgid "Buffer"
 msgstr ""
 
-#: data/ui/application.glade:920 data/ui/application.glade:996
+#: data/ui/application.glade:874 data/ui/application.glade:1018
 #: data/ui/app_info.glade:183
 msgid "Latency"
 msgstr ""
 
-#: data/ui/application.glade:1055
+#: data/ui/application.glade:907 data/ui/application.glade:1050
 #, fuzzy
-msgid "Output Effects"
-msgstr "Vstupný obmedzovač"
+msgid "Block Size"
+msgstr "Veľkosť miestnosti"
 
-#: data/ui/application.glade:1068
+#: data/ui/application.glade:937
 #, fuzzy
 msgid "Input Effects"
 msgstr "Vstupný obmedzovač"
 
-#: data/ui/application.glade:1085
-msgid "Advanced Settings"
-msgstr ""
+#: data/ui/application.glade:1080
+#, fuzzy
+msgid "Output Effects"
+msgstr "Vstupný obmedzovač"
 
-#: data/ui/application.glade:1095
+#: data/ui/application.glade:1107
 msgid "Pulseaudio"
 msgstr ""
 
@@ -148,7 +139,7 @@ msgstr "Zvukové efekty pre aplikácie využívajúce Pulseaudio"
 msgid "Format"
 msgstr ""
 
-#: data/ui/app_info.glade:75
+#: data/ui/app_info.glade:75 data/ui/convolver.glade:260
 msgid "Rate"
 msgstr ""
 
@@ -246,7 +237,8 @@ msgstr "Automatická hlasitosť"
 #: data/ui/stereo_tools.glade:784 data/ui/crossfeed.glade:200
 #: data/ui/maximizer.glade:240 data/ui/loudness.glade:245
 #: data/ui/gate.glade:489 data/ui/multiband_gate.glade:2112
-#: data/ui/deesser.glade:570 data/ui/pitch.glade:304 data/ui/webrtc.glade:586
+#: data/ui/deesser.glade:570 data/ui/convolver.glade:430
+#: data/ui/pitch.glade:304 data/ui/webrtc.glade:586
 msgid "Input"
 msgstr "Vstup"
 
@@ -265,7 +257,7 @@ msgstr "Vstup"
 #: data/ui/multiband_gate.glade:809 data/ui/multiband_gate.glade:1219
 #: data/ui/multiband_gate.glade:1630 data/ui/multiband_gate.glade:2041
 #: data/ui/multiband_gate.glade:2127 data/ui/deesser.glade:585
-#: data/ui/pitch.glade:319 data/ui/webrtc.glade:601
+#: data/ui/convolver.glade:445 data/ui/pitch.glade:319 data/ui/webrtc.glade:601
 msgid "Output"
 msgstr "Výstup"
 
@@ -935,6 +927,44 @@ msgstr ""
 msgid "Detected"
 msgstr "Zoslabenie"
 
+#: data/ui/convolver.glade:24
+msgid "Convolver"
+msgstr ""
+
+#: data/ui/convolver.glade:103
+#, fuzzy
+msgid "Import File"
+msgstr "Načítať predvoľbu"
+
+#: data/ui/convolver.glade:107
+msgid "Import Impulse Response File"
+msgstr ""
+
+#: data/ui/convolver.glade:190 src/convolver_ui.cpp:243
+msgid "Impulse Response"
+msgstr ""
+
+#: data/ui/convolver.glade:226
+msgid "L"
+msgstr "Ľ"
+
+#: data/ui/convolver.glade:239
+msgid "R"
+msgstr "P"
+
+#: data/ui/convolver.glade:298
+#, fuzzy
+msgid "Duration"
+msgstr "Zoslabenie"
+
+#: data/ui/convolver.glade:312
+msgid "Samples"
+msgstr ""
+
+#: data/ui/convolver.glade:366
+msgid "Stereo Width"
+msgstr ""
+
 #: data/ui/pitch.glade:36
 msgid "Pitch"
 msgstr ""
@@ -1203,11 +1233,11 @@ msgstr ""
 msgid "Presets: "
 msgstr "Predvoľby"
 
-#: src/application_ui.cpp:758
+#: src/application_ui.cpp:814 src/convolver_ui.cpp:239
 msgid "Open"
 msgstr ""
 
-#: src/application_ui.cpp:758
+#: src/application_ui.cpp:814 src/convolver_ui.cpp:239
 msgid "Cancel"
 msgstr ""
 
@@ -1223,11 +1253,17 @@ msgstr ""
 msgid "Calibration Microphone"
 msgstr ""
 
-#~ msgid "L"
-#~ msgstr "Ľ"
+#: src/convolver_ui.cpp:238
+msgid "Import Impulse Response"
+msgstr ""
 
-#~ msgid "R"
-#~ msgstr "P"
+#, fuzzy
+#~ msgid "Output Device"
+#~ msgstr "Vstupný obmedzovač"
+
+#, fuzzy
+#~ msgid "Input Device"
+#~ msgstr "Vstupný obmedzovač"
 
 #, fuzzy
 #~ msgid "Meters"

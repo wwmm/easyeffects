@@ -28,6 +28,7 @@ Audio effects for Pulseaudio applications
 - Gate
 - Multiband Gate
 - Deesser
+- Convolver
 
 ### Applications input
 

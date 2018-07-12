@@ -2,8 +2,27 @@
 
 ## [Unreleased]
 ### Added
-- A convolver plugin.
-- Import presets dialog now has filters to show only presets files (json)
+- A convolver plugin. It is the first plugin I have written :D :-) As audio
+processing is not my original field of expertise I prefer to use plugins from
+mature projects like Calf. But GStreamer support for LV2 plugins is limited and
+none of the available convolvers work in it. You can see more details here
+https://github.com/wwmm/pulseeffects/issues/164. As this situation will not
+change any time soon I had to put my hands in the dirty. The plugin is based on
+zita-convolver library and while writing it I took inspiration in the work of
+other people you can find here https://github.com/tomszilagyi/ir.lv2/ and here
+ https://github.com/x42/convoLV2. For now only stereo impulse response files
+encoded as wav are supported.
+- Import presets dialog now has filters to show only presets files (.json).
+- The impulse response file import dialog also has a filter (.irs). In case your
+response file is *.wav just rename it to *.irs.
+- User can change Pulseaudio blocksize. This can help him/her to fine tune the
+latency and in case the convolver is being used its cpu usage.
+
+### Note for packagers
+- There is no need to add the zita-convolver library as dependency. Its source
+is shipped with PulseEffects and compiled with PulseEffects. This means that
+the library fftw3f that is a Zita dependency is now also a PulseEffects
+dependency.
 
 ## [4.1.3]
 ### Fixed
