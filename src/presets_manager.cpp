@@ -108,20 +108,6 @@ void PresetsManager::save_general_settings(boost::property_tree::ptree& root) {
     }
 
     root.add_child("spectrum.color", node_in);
-
-    root.put("pulseaudio.use-default-sink",
-             settings->get_boolean("use-default-sink"));
-
-    root.put("pulseaudio.use-default-source",
-             settings->get_boolean("use-default-source"));
-
-    root.put("pulseaudio.buffer-out", settings->get_int("buffer-out"));
-
-    root.put("pulseaudio.latency-out", settings->get_int("latency-out"));
-
-    root.put("pulseaudio.buffer-in", settings->get_int("buffer-in"));
-
-    root.put("pulseaudio.latency-in", settings->get_int("latency-in"));
 }
 
 void PresetsManager::load_general_settings(boost::property_tree::ptree& root) {
@@ -157,51 +143,6 @@ void PresetsManager::load_general_settings(boost::property_tree::ptree& root) {
         settings->set_value("spectrum-color", v);
     } catch (const boost::property_tree::ptree_error& e) {
         settings->reset("spectrum-color");
-    }
-
-    settings->set_boolean(
-        "use-default-sink",
-        root.get<bool>("pulseaudio.use-default-sink",
-                       get_default<bool>(settings, "use-default-sink")));
-
-    settings->set_boolean(
-        "use-default-source",
-        root.get<bool>("pulseaudio.use-default-source",
-                       get_default<bool>(settings, "use-default-source")));
-
-    /*
-    we handle buffer and latency in a different way because whenever their
-    gsettings keys are touched changed the pipeline will be put in the null
-    state and then back to the paying state if necessary. Sometimes the
-    interface freezes when GStreamer alternates states.
-    */
-
-    auto buffer_out = root.get<int>("pulseaudio.buffer-out",
-                                    get_default<int>(settings, "buffer-out"));
-
-    auto latency_out = root.get<int>("pulseaudio.latency-out",
-                                     get_default<int>(settings, "latency-out"));
-
-    auto buffer_in = root.get<int>("pulseaudio.buffer-in",
-                                   get_default<int>(settings, "buffer-in"));
-
-    auto latency_in = root.get<int>("pulseaudio.latency-in",
-                                    get_default<int>(settings, "latency-in"));
-
-    if (settings->get_int("buffer-out") != buffer_out) {
-        settings->set_int("buffer-out", buffer_out);
-    }
-
-    if (settings->get_int("latency-out") != latency_out) {
-        settings->set_int("latency-out", latency_out);
-    }
-
-    if (settings->get_int("buffer-in") != buffer_in) {
-        settings->set_int("buffer-in", buffer_in);
-    }
-
-    if (settings->get_int("latency-in") != latency_in) {
-        settings->set_int("latency-in", latency_in);
     }
 }
 
