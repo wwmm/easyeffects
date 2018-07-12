@@ -500,8 +500,6 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="hexpand">True</property>
-            <property name="hhomogeneous">False</property>
-            <property name="vhomogeneous">False</property>
             <property name="transition_duration">250</property>
             <property name="transition_type">crossfade</property>
             <child>
@@ -789,13 +787,14 @@
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <property name="hhomogeneous">False</property>
                     <property name="transition_duration">250</property>
                     <property name="transition_type">slide-right</property>
                     <child>
                       <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
                         <property name="row_spacing">6</property>
                         <property name="column_spacing">6</property>
                         <child>
@@ -942,6 +941,8 @@
                       <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
                         <property name="row_spacing">6</property>
                         <property name="column_spacing">6</property>
                         <child>

@@ -6,7 +6,7 @@
  * <refsect2>
  * <title>Example launch line</title>
  * |[
- * gst-launch-1.0 -v audiotestsrc ! peconvolver ! pulsesink
+ * gst-launch-1.0 -v audiotestsrc blocksize=512 ! peconvolver ! pulsesink
  * ]|
  * The peconvolver element does convolution with inpulse responses.
  * </refsect2>
@@ -78,7 +78,6 @@ enum { PROP_0, PROP_KERNEL_PATH, PROP_IR_WIDTH };
 
 /* pad templates */
 
-/* FIXME add/remove the formats that you want to support */
 static GstStaticPadTemplate gst_peconvolver_src_template =
     GST_STATIC_PAD_TEMPLATE(
         "src",
@@ -87,7 +86,6 @@ static GstStaticPadTemplate gst_peconvolver_src_template =
         GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=[1,max],"
                         "channels=2,layout=interleaved"));
 
-/* FIXME add/remove the formats that you want to support */
 static GstStaticPadTemplate gst_peconvolver_sink_template =
     GST_STATIC_PAD_TEMPLATE(
         "sink",
