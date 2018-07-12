@@ -8,6 +8,56 @@
 #include "application_ui.hpp"
 #include "util.hpp"
 
+namespace {
+
+gboolean blocksize_enum_to_int(GValue* value,
+                               GVariant* variant,
+                               gpointer user_data) {
+    auto v = g_variant_get_string(variant, nullptr);
+
+    if (v == std::string("64")) {
+        g_value_set_int(value, 0);
+    } else if (v == std::string("128")) {
+        g_value_set_int(value, 1);
+    } else if (v == std::string("256")) {
+        g_value_set_int(value, 2);
+    } else if (v == std::string("512")) {
+        g_value_set_int(value, 3);
+    } else if (v == std::string("1024")) {
+        g_value_set_int(value, 4);
+    } else if (v == std::string("2048")) {
+        g_value_set_int(value, 5);
+    } else if (v == std::string("4096")) {
+        g_value_set_int(value, 6);
+    }
+
+    return true;
+}
+
+GVariant* int_to_blocksize_enum(const GValue* value,
+                                const GVariantType* expected_type,
+                                gpointer user_data) {
+    int v = g_value_get_int(value);
+
+    if (v == 0) {
+        return g_variant_new_string("64");
+    } else if (v == 1) {
+        return g_variant_new_string("128");
+    } else if (v == 2) {
+        return g_variant_new_string("256");
+    } else if (v == 3) {
+        return g_variant_new_string("512");
+    } else if (v == 4) {
+        return g_variant_new_string("1024");
+    } else if (v == 5) {
+        return g_variant_new_string("2048");
+    } else {
+        return g_variant_new_string("4096");
+    }
+}
+
+}  // namespace
+
 ApplicationUi::ApplicationUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& builder,
                              Application* application)
@@ -43,6 +93,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     builder->get_widget("use_custom_color", use_custom_color);
     builder->get_widget("spectrum_color_button", spectrum_color_button);
     builder->get_widget("calibration_button", calibration_button);
+    builder->get_widget("blocksize_in", blocksize_in);
+    builder->get_widget("blocksize_out", blocksize_out);
 
     get_object(builder, "buffer_in", buffer_in);
     get_object(builder, "buffer_out", buffer_out);
@@ -245,6 +297,16 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
                    flag);
 
     settings->bind("last-used-preset", presets_menu_label, "label", flag);
+
+    g_settings_bind_with_mapping(settings->gobj(), "blocksize-in",
+                                 blocksize_in->gobj(), "active",
+                                 G_SETTINGS_BIND_DEFAULT, blocksize_enum_to_int,
+                                 int_to_blocksize_enum, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(settings->gobj(), "blocksize-out",
+                                 blocksize_out->gobj(), "active",
+                                 G_SETTINGS_BIND_DEFAULT, blocksize_enum_to_int,
+                                 int_to_blocksize_enum, nullptr, nullptr);
 
     init_autostart_switch();
 }

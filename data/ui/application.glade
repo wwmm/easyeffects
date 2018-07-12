@@ -789,6 +789,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
+                    <property name="hhomogeneous">False</property>
                     <property name="transition_duration">250</property>
                     <property name="transition_type">slide-right</property>
                     <child>
@@ -815,6 +816,8 @@
                           <object class="GtkComboBox" id="input_device">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="valign">center</property>
                             <property name="hexpand">True</property>
                             <property name="model">source_list</property>
                             <child>
@@ -895,6 +898,40 @@
                             <property name="top_attach">2</property>
                           </packing>
                         </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="halign">end</property>
+                            <property name="valign">center</property>
+                            <property name="label" translatable="yes">Block Size</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">3</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkComboBoxText" id="blocksize_in">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="valign">center</property>
+                            <items>
+                              <item translatable="yes">64</item>
+                              <item translatable="yes">128</item>
+                              <item translatable="yes">256</item>
+                              <item translatable="yes">512</item>
+                              <item translatable="yes">1024</item>
+                              <item translatable="yes">2048</item>
+                              <item translatable="yes">4096</item>
+                            </items>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">3</property>
+                          </packing>
+                        </child>
                       </object>
                       <packing>
                         <property name="name">pulse_input</property>
@@ -925,6 +962,8 @@
                           <object class="GtkComboBox" id="output_device">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="valign">center</property>
                             <property name="hexpand">True</property>
                             <property name="model">sink_list</property>
                             <child>
@@ -1001,6 +1040,40 @@
                           <packing>
                             <property name="left_attach">1</property>
                             <property name="top_attach">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="halign">end</property>
+                            <property name="valign">center</property>
+                            <property name="label" translatable="yes">Block Size</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">3</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkComboBoxText" id="blocksize_out">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="valign">center</property>
+                            <items>
+                              <item translatable="yes">64</item>
+                              <item translatable="yes">128</item>
+                              <item translatable="yes">256</item>
+                              <item translatable="yes">512</item>
+                              <item translatable="yes">1024</item>
+                              <item translatable="yes">2048</item>
+                              <item translatable="yes">4096</item>
+                            </items>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">3</property>
                           </packing>
                         </child>
                       </object>
