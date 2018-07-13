@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+
+## [4.1.4]
 ### Added
 - A convolver plugin. It is the first plugin I have written :D :-) As audio
 processing is not my original field of expertise I prefer to use plugins from
