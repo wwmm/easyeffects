@@ -491,6 +491,8 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
     }
 
     gst_fft_f32_free(fft_ctx);
+    g_free(freqdata_l);
+    g_free(freqdata_r);
 }
 
 void ConvolverUi::draw_channel(Gtk::DrawingArea* da,
