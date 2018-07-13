@@ -14,9 +14,12 @@ other people you can find here https://github.com/tomszilagyi/ir.lv2/ and here
 encoded as wav are supported.
 - Import presets dialog now has filters to show only presets files (.json).
 - The impulse response file import dialog also has a filter (.irs). In case your
-response file is *.wav just rename it to *.irs.
-- User can change Pulseaudio blocksize. This can help him/her to fine tune the
-latency and in case the convolver is being used its cpu usage.
+response file is "*.wav" just rename it to "*.irs".
+- User can change Pulseaudio blocksize. In order to implement the convolver I
+had to force Pulseaudio block size to be a power of 2. As I am not sure if the
+move from an automatic size to a fixed size is going to bring problems to the
+users I decided to expose this setting so that the user can fine tune it in case
+there is any noise or other problem related to this parameter.
 
 ### Note for packagers
 - There is no need to add the zita-convolver library as dependency. Its source
