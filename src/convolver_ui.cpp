@@ -1,5 +1,6 @@
 #include <glibmm.h>
 #include <glibmm/i18n.h>
+#include <gst/fft/gstfftf32.h>
 #include <boost/math/interpolators/cubic_b_spline.hpp>
 #include <sndfile.hh>
 #include "convolver_ui.hpp"
@@ -24,6 +25,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
     builder->get_widget("sampling_rate", label_sampling_rate);
     builder->get_widget("samples", label_samples);
     builder->get_widget("duration", label_duration);
+    builder->get_widget("show_fft", show_fft);
 
     get_object(builder, "input_gain", input_gain);
     get_object(builder, "output_gain", output_gain);
@@ -66,6 +68,14 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
     import_irs->signal_clicked().connect(
         sigc::mem_fun(*this, &ConvolverUi::on_import_irs_clicked));
+
+    // show fft toggle button callback
+
+    show_fft->signal_toggled().connect([=]() {
+        show_fft_spectrum = show_fft->get_active();
+        left_plot->queue_draw();
+        right_plot->queue_draw();
+    });
 
     // gsettings bindings
 
@@ -294,7 +304,7 @@ void ConvolverUi::get_irs_info() {
 
     time_axis.clear();
 
-    for (int n = 0; n < max_plot_points; n++) {
+    for (uint n = 0; n < max_plot_points; n++) {
         time_axis.push_back(n * plot_dt);
     }
 
@@ -324,7 +334,7 @@ void ConvolverUi::get_irs_info() {
         left_mag.resize(max_plot_points);
         right_mag.resize(max_plot_points);
 
-        for (int n = 0; n < max_plot_points; n++) {
+        for (uint n = 0; n < max_plot_points; n++) {
             left_mag[n] = spline_L(time_axis[n]);
             right_mag[n] = spline_R(time_axis[n]);
         }
@@ -346,6 +356,8 @@ void ConvolverUi::get_irs_info() {
         left_mag[n] = (left_mag[n] - min_left) / (max_left - min_left);
         right_mag[n] = (right_mag[n] - min_right) / (max_right - min_right);
     }
+
+    get_irs_spectrum(rate);
 
     left_plot->queue_draw();
     right_plot->queue_draw();
@@ -369,6 +381,116 @@ void ConvolverUi::get_irs_info() {
     });
 
     delete[] kernel;
+}
+
+void ConvolverUi::get_irs_spectrum(const int& rate) {
+    int nfft = left_mag.size();  // right_mag.size() should have the same value
+
+    GstFFTF32* fft_ctx = gst_fft_f32_new(nfft, false);
+    GstFFTF32Complex* freqdata_l = g_new0(GstFFTF32Complex, nfft / 2 + 1);
+    GstFFTF32Complex* freqdata_r = g_new0(GstFFTF32Complex, nfft / 2 + 1);
+
+    std::vector<float> tmp_l, tmp_r;
+
+    tmp_l.resize(nfft);
+    tmp_r.resize(nfft);
+
+    std::copy(left_mag.begin(), left_mag.end(), tmp_l.begin());
+    std::copy(right_mag.begin(), right_mag.end(), tmp_r.begin());
+
+    gst_fft_f32_window(fft_ctx, tmp_l.data(), GST_FFT_WINDOW_HAMMING);
+    gst_fft_f32_window(fft_ctx, tmp_r.data(), GST_FFT_WINDOW_HAMMING);
+
+    gst_fft_f32_fft(fft_ctx, tmp_l.data(), freqdata_l);
+    gst_fft_f32_fft(fft_ctx, tmp_r.data(), freqdata_r);
+
+    left_spectrum.resize(nfft / 2 + 1);
+    right_spectrum.resize(nfft / 2 + 1);
+
+    /* Calculate magnitude in db */
+    for (int i = 0; i < nfft / 2 + 1; i++) {
+        float v_l, v_r;
+
+        // left
+        v_l = freqdata_l[i].r * freqdata_l[i].r;
+        v_l += freqdata_l[i].i * freqdata_l[i].i;
+        v_l /= nfft * nfft;
+        v_l = 10.0 * log10(v_l);
+        v_l = (v_l > -120) ? v_l : -120;
+
+        left_spectrum[i] = v_l;
+
+        // right
+        v_r = freqdata_r[i].r * freqdata_r[i].r;
+        v_r += freqdata_r[i].i * freqdata_r[i].i;
+        v_r /= nfft * nfft;
+        v_r = 10.0 * log10(v_r);
+        v_r = (v_r > -120) ? v_r : -120;
+
+        right_spectrum[i] = v_r;
+    }
+
+    uint max_points;
+
+    if (left_spectrum.size() > max_plot_points) {
+        max_points = max_plot_points;
+    } else {
+        max_points = left_spectrum.size();
+    }
+
+    fft_min_freq = rate * (0.5f * 0 + 0.25f) / left_spectrum.size();
+    fft_max_freq = rate * (0.5f * (left_spectrum.size() - 1) + 0.25f) /
+                   left_spectrum.size();
+
+    freq_axis =
+        util::logspace(log10(fft_min_freq), log10(fft_max_freq), max_points);
+
+    /*interpolating because we can not plot all the data in the irs file. It
+      would be too slow
+    */
+
+    try {
+        float dF = 0.5f * (rate / left_spectrum.size());
+
+        boost::math::cubic_b_spline<float> spline_L(
+            left_spectrum.begin(), left_spectrum.end(), 0.0f, dF);
+
+        boost::math::cubic_b_spline<float> spline_R(
+            right_spectrum.begin(), right_spectrum.end(), 0.0f, dF);
+
+        left_spectrum.resize(max_points);
+        right_spectrum.resize(max_points);
+
+        for (uint n = 0; n < max_points; n++) {
+            left_spectrum[n] = spline_L(freq_axis[n]);
+            right_spectrum[n] = spline_R(freq_axis[n]);
+        }
+    } catch (const std::exception& e) {
+        util::debug(std::string("Message from thrown exception was: ") +
+                    e.what());
+    }
+
+    // find min and max values
+
+    fft_min_left =
+        *std::min_element(left_spectrum.begin(), left_spectrum.end());
+    fft_max_left =
+        *std::max_element(left_spectrum.begin(), left_spectrum.end());
+    fft_min_right =
+        *std::min_element(right_spectrum.begin(), right_spectrum.end());
+    fft_max_right =
+        *std::max_element(right_spectrum.begin(), right_spectrum.end());
+
+    // rescaling between 0 and 1
+
+    for (unsigned int n = 0; n < left_spectrum.size(); n++) {
+        left_spectrum[n] =
+            (left_spectrum[n] - fft_min_left) / (fft_max_left - fft_min_left);
+        right_spectrum[n] = (right_spectrum[n] - fft_min_right) /
+                            (fft_max_right - fft_min_right);
+    }
+
+    gst_fft_f32_free(fft_ctx);
 }
 
 void ConvolverUi::draw_channel(Gtk::DrawingArea* da,
@@ -407,8 +529,14 @@ void ConvolverUi::draw_channel(Gtk::DrawingArea* da,
         if (mouse_inside) {
             std::ostringstream msg;
 
-            msg.precision(3);
-            msg << std::fixed << mouse_time << " s, ";
+            if (show_fft_spectrum) {
+                msg.precision(0);
+                msg << std::fixed << mouse_freq << " Hz, ";
+            } else {
+                msg.precision(3);
+                msg << std::fixed << mouse_time << " s, ";
+            }
+
             msg.precision(0);
             msg << std::fixed << mouse_intensity << " dB";
 
@@ -435,11 +563,20 @@ void ConvolverUi::update_mouse_info_L(GdkEventMotion* event) {
     auto width = allocation.get_width();
     auto height = allocation.get_height();
 
-    mouse_time = event->x * max_time / width;
+    if (show_fft_spectrum) {
+        mouse_freq = event->x * fft_max_freq / width;
 
-    // intensity scale is in decibel
+        // intensity scale is in decibel
 
-    mouse_intensity = max_left - event->y * (max_left - min_left) / height;
+        mouse_intensity =
+            fft_max_left - event->y * (fft_max_left - fft_min_left) / height;
+    } else {
+        mouse_time = event->x * max_time / width;
+
+        // intensity scale is in decibel
+
+        mouse_intensity = max_left - event->y * (max_left - min_left) / height;
+    }
 }
 
 void ConvolverUi::update_mouse_info_R(GdkEventMotion* event) {
@@ -448,17 +585,31 @@ void ConvolverUi::update_mouse_info_R(GdkEventMotion* event) {
     auto width = allocation.get_width();
     auto height = allocation.get_height();
 
-    mouse_time = event->x * max_time / width;
+    if (show_fft_spectrum) {
+        mouse_freq = event->x * fft_max_freq / width;
 
-    // intensity scale is in decibel
+        // intensity scale is in decibel
 
-    mouse_intensity = max_left - event->y * (max_left - min_left) / height;
+        mouse_intensity =
+            fft_max_right - event->y * (fft_max_right - fft_min_right) / height;
+    } else {
+        mouse_time = event->x * max_time / width;
+
+        // intensity scale is in decibel
+
+        mouse_intensity =
+            max_right - event->y * (max_right - min_right) / height;
+    }
 }
 
 bool ConvolverUi::on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
     ctx->paint();
 
-    draw_channel(left_plot, ctx, left_mag);
+    if (show_fft_spectrum) {
+        draw_channel(left_plot, ctx, left_spectrum);
+    } else {
+        draw_channel(left_plot, ctx, left_mag);
+    }
 
     return false;
 }
@@ -474,7 +625,11 @@ bool ConvolverUi::on_left_motion_notify_event(GdkEventMotion* event) {
 bool ConvolverUi::on_right_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
     ctx->paint();
 
-    draw_channel(right_plot, ctx, right_mag);
+    if (show_fft_spectrum) {
+        draw_channel(right_plot, ctx, right_spectrum);
+    } else {
+        draw_channel(right_plot, ctx, right_mag);
+    }
 
     return false;
 }
@@ -502,6 +657,5 @@ void ConvolverUi::reset() {
     settings->reset("input-gain");
     settings->reset("output-gain");
     settings->reset("kernel-path");
-    settings->reset("buffersize");
     settings->reset("ir-width");
 }

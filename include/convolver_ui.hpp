@@ -9,6 +9,7 @@
 #include <gtkmm/listbox.h>
 #include <gtkmm/menubutton.h>
 #include <gtkmm/scrolledwindow.h>
+#include <gtkmm/togglebutton.h>
 #include <boost/filesystem.hpp>
 #include <thread>
 #include "plugin_ui_base.hpp"
@@ -33,17 +34,22 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
     Gtk::DrawingArea *left_plot, *right_plot;
     Gtk::Label *label_file_name, *label_sampling_rate, *label_samples,
         *label_duration;
+    Gtk::ToggleButton* show_fft;
 
     std::vector<sigc::connection> connections;
 
     boost::filesystem::path irs_dir;
 
-    bool mouse_inside = false;
-    int max_plot_points = 200;
-    float mouse_intensity = 0.0f, mouse_time = 0.0f;
+    bool mouse_inside = false, show_fft_spectrum = false;
+    unsigned int max_plot_points = 200;
+    float mouse_intensity = 0.0f, mouse_time = 0.0f, mouse_freq = 0.0f;
     float min_left = 0.0f, max_left = 0.0f, min_right = 0.0f, max_right = 0.0f;
     float max_time = 0.0f;
+    float fft_min_left = 0.0f, fft_max_left = 0.0f, fft_min_right = 0.0f,
+          fft_max_right = 0.0f;
+    float fft_max_freq = 0.0f, fft_min_freq = 0.0f;
     std::vector<float> left_mag, right_mag, time_axis;
+    std::vector<float> left_spectrum, right_spectrum, freq_axis;
 
     std::vector<std::thread> mythreads;
 
@@ -62,6 +68,8 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
     void on_import_irs_clicked();
 
     void get_irs_info();
+
+    void get_irs_spectrum(const int& rate);
 
     void draw_channel(Gtk::DrawingArea* da,
                       const Cairo::RefPtr<Cairo::Context>& ctx,
