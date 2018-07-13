@@ -10,7 +10,8 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
                          const std::string& settings_name)
     : Gtk::Grid(cobject),
       PluginUiBase(builder, settings_name),
-      irs_dir(Glib::get_user_config_dir() + "/PulseEffects/irs") {
+      irs_dir(Glib::get_user_config_dir() + "/PulseEffects/irs"),
+      global_settings(Gio::Settings::create("com.github.wwmm.pulseeffects")) {
     name = "convolver";
 
     // loading glade widgets
@@ -517,13 +518,21 @@ void ConvolverUi::draw_channel(Gtk::DrawingArea* da,
             ctx->line_to(x[n + 1], height - bar_height);
         }
 
-        auto color = Gdk::RGBA();
-        auto style_ctx = da->get_style_context();
+        if (global_settings->get_boolean("use-custom-color")) {
+            Glib::Variant<std::vector<double>> v;
+            global_settings->get_value("spectrum-color", v);
+            auto rgba = v.get();
 
-        style_ctx->lookup_color("theme_selected_bg_color", color);
+            ctx->set_source_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
+        } else {
+            auto color = Gdk::RGBA();
+            auto style_ctx = da->get_style_context();
 
-        ctx->set_source_rgba(color.get_red(), color.get_green(),
-                             color.get_blue(), 1.0);
+            style_ctx->lookup_color("theme_selected_bg_color", color);
+
+            ctx->set_source_rgba(color.get_red(), color.get_green(),
+                                 color.get_blue(), 1.0);
+        }
 
         ctx->set_line_width(2.0);
         ctx->stroke();

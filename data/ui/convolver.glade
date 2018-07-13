@@ -190,7 +190,7 @@
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="transition_duration">250</property>
-                <property name="transition_type">slide-right</property>
+                <property name="transition_type">slide-up-down</property>
                 <child>
                   <object class="GtkDrawingArea" id="left_plot">
                     <property name="visible">True</property>

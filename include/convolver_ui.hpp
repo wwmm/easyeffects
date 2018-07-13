@@ -51,6 +51,8 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
     std::vector<float> left_mag, right_mag, time_axis;
     std::vector<float> left_spectrum, right_spectrum, freq_axis;
 
+    Glib::RefPtr<Gio::Settings> global_settings;
+
     std::vector<std::thread> mythreads;
 
     std::vector<std::string> get_irs_names();

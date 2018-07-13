@@ -173,7 +173,7 @@
             <default>10000</default>
         </key>
         <key name="blocksize-in" enum="com.github.wwmm.pulseeffects.blocksize.enum">
-            <default>"256"</default>
+            <default>"512"</default>
         </key>
 
         <key name="show-spectrum" type="b">

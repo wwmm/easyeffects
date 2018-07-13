@@ -5,7 +5,7 @@
 - A convolver plugin. It is the first plugin I have written :D :-) As audio
 processing is not my original field of expertise I prefer to use plugins from
 mature projects like Calf. But GStreamer support for LV2 plugins is limited and
-none of the available convolvers work in it. You can see more details here
+none of the available convolvers work with it. You can see more details here
 https://github.com/wwmm/pulseeffects/issues/164. As this situation will not
 change any time soon I had to put my hands in the dirty. The plugin is based on
 zita-convolver library and while writing it I took inspiration in the work of
@@ -15,17 +15,26 @@ encoded as wav are supported.
 - Import presets dialog now has filters to show only presets files (.json).
 - The impulse response file import dialog also has a filter (.irs). In case your
 response file is "*.wav" just rename it to "*.irs".
-- User can change Pulseaudio blocksize. In order to implement the convolver I
+- User can change Pulseaudio block size. In order to implement the convolver I
 had to force Pulseaudio block size to be a power of 2. As I am not sure if the
 move from an automatic size to a fixed size is going to bring problems to the
 users I decided to expose this setting so that the user can fine tune it in case
-there is any noise or other problem related to this parameter.
+there is any noise or other problem related to this parameter. It is also
+possible to set different block size values for the input effects pipeline and
+for the output effects pipeline. For some reason I don't know GStreamer's
+webrtcdsp plugin does not work with block sizes smaller than 512. So users
+applying effects for microphones while using webrtc should use 512 or above for
+ this parameter.
+- The convolver spectrum plot color follows the global spectrum color chosen by
+the user.
 
 ### Note for packagers
-- There is no need to add the zita-convolver library as dependency. Its source
-is shipped with PulseEffects and compiled with PulseEffects. This means that
-the library fftw3f that is a Zita dependency is now also a PulseEffects
-dependency.
+- There is no need to add zita-convolver library as dependency. Its source
+is shipped with PulseEffects and compiled by PulseEffects scripts. But zita
+dependencies should still be installed in the system. This means that the
+library fftw3f that is a Zita dependency is now also a PulseEffects dependency.
+- gstreamer-fft-1.0 is now a dependency (impulse response file spectrum
+calculation).
 
 ## [4.1.3]
 ### Fixed
