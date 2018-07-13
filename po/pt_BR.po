@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-11 22:29-0300\n"
-"PO-Revision-Date: 2018-07-11 22:29-0300\n"
+"POT-Creation-Date: 2018-07-13 16:55-0300\n"
+"PO-Revision-Date: 2018-07-13 16:56-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
@@ -44,82 +44,82 @@ msgstr "Sinais de Teste"
 msgid "Presets"
 msgstr "Predefinições"
 
-#: data/ui/application.glade:521
+#: data/ui/application.glade:519
 msgid "Start Service at Login"
 msgstr "Inicializar Serviço no Login"
 
-#: data/ui/application.glade:546
+#: data/ui/application.glade:544
 msgid "Enable All Applications"
 msgstr "Habilitar Todos os Aplicativos"
 
-#: data/ui/application.glade:571
+#: data/ui/application.glade:569
 msgid "Use Dark Theme"
 msgstr "Usar Tema Escuro"
 
-#: data/ui/application.glade:596
+#: data/ui/application.glade:594
 msgid "Settings"
 msgstr "Configurações"
 
-#: data/ui/application.glade:605 data/ui/equalizer_band.glade:105
+#: data/ui/application.glade:603 data/ui/equalizer_band.glade:105
 #: data/ui/equalizer_band.glade:120
 msgid "Reset"
 msgstr "Resetar"
 
-#: data/ui/application.glade:620
+#: data/ui/application.glade:618
 msgid "General"
 msgstr "Geral"
 
-#: data/ui/application.glade:638
+#: data/ui/application.glade:636
 msgid "Show"
 msgstr "Mostrar"
 
-#: data/ui/application.glade:664
+#: data/ui/application.glade:662
 msgid "Points"
 msgstr "Pontos"
 
-#: data/ui/application.glade:695
+#: data/ui/application.glade:693
 msgid "Use Custom Color"
 msgstr "Usar Cor Customizada"
 
-#: data/ui/application.glade:720
+#: data/ui/application.glade:718
 msgid "Spectrum Color"
 msgstr "Cor do Espectro"
 
-#: data/ui/application.glade:747
+#: data/ui/application.glade:745
 msgid "Height"
 msgstr "Altura"
 
-#: data/ui/application.glade:775
+#: data/ui/application.glade:773 data/ui/convolver.glade:396
 msgid "Spectrum"
 msgstr "Espectro"
 
-#: data/ui/application.glade:803 data/ui/application.glade:949
+#: data/ui/application.glade:802 data/ui/application.glade:950
 msgid "Use Default"
 msgstr "Usar Padrão"
 
-#: data/ui/application.glade:841 data/ui/application.glade:986
+#: data/ui/application.glade:840 data/ui/application.glade:987
 #: data/ui/app_info.glade:156
 msgid "Buffer"
 msgstr "Buffer"
 
-#: data/ui/application.glade:874 data/ui/application.glade:1018
+#: data/ui/application.glade:873 data/ui/application.glade:1019
 #: data/ui/app_info.glade:183
 msgid "Latency"
 msgstr "Latência"
 
-#: data/ui/application.glade:907 data/ui/application.glade:1050
+#: data/ui/application.glade:906 data/ui/application.glade:1051
 msgid "Block Size"
 msgstr "Tamanho do Bloco"
 
-#: data/ui/application.glade:937
+#: data/ui/application.glade:936
 msgid "Input Effects"
 msgstr "Efeitos de Entrada"
 
-#: data/ui/application.glade:1080
+#: data/ui/application.glade:1081
 msgid "Output Effects"
 msgstr "Efeitos de Saída"
 
-#: data/ui/application.glade:1107
+#: data/ui/application.glade:1108
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
 
@@ -131,7 +131,7 @@ msgstr "Efeitos de Áudio para Programas que Utilizam Pulseaudio"
 msgid "Format"
 msgstr "Formato"
 
-#: data/ui/app_info.glade:75 data/ui/convolver.glade:260
+#: data/ui/app_info.glade:75 data/ui/convolver.glade:239
 msgid "Rate"
 msgstr "Taxa"
 
@@ -222,7 +222,7 @@ msgstr "Volume Automático"
 #: data/ui/stereo_tools.glade:784 data/ui/crossfeed.glade:200
 #: data/ui/maximizer.glade:240 data/ui/loudness.glade:245
 #: data/ui/gate.glade:489 data/ui/multiband_gate.glade:2112
-#: data/ui/deesser.glade:570 data/ui/convolver.glade:430
+#: data/ui/deesser.glade:570 data/ui/convolver.glade:449
 #: data/ui/pitch.glade:304 data/ui/webrtc.glade:586
 msgid "Input"
 msgstr "Entrada"
@@ -242,7 +242,7 @@ msgstr "Entrada"
 #: data/ui/multiband_gate.glade:809 data/ui/multiband_gate.glade:1219
 #: data/ui/multiband_gate.glade:1630 data/ui/multiband_gate.glade:2041
 #: data/ui/multiband_gate.glade:2127 data/ui/deesser.glade:585
-#: data/ui/convolver.glade:445 data/ui/pitch.glade:319 data/ui/webrtc.glade:601
+#: data/ui/convolver.glade:464 data/ui/pitch.glade:319 data/ui/webrtc.glade:601
 msgid "Output"
 msgstr "Saída"
 
@@ -884,36 +884,40 @@ msgid "Convolver"
 msgstr "Convolver"
 
 #: data/ui/convolver.glade:103
-msgid "Import File"
-msgstr "Importar Arquivo"
+msgid "Import Impulse"
+msgstr "Importar Impulso"
 
 #: data/ui/convolver.glade:107
 msgid "Import Impulse Response File"
 msgstr "Arquivo da Resposta de Impulso"
 
-#: data/ui/convolver.glade:190 src/convolver_ui.cpp:243
-msgid "Impulse Response"
-msgstr "Resposta de Impulso"
-
-#: data/ui/convolver.glade:226
+#: data/ui/convolver.glade:204
 msgid "L"
 msgstr "L"
 
-#: data/ui/convolver.glade:239
+#: data/ui/convolver.glade:218
 msgid "R"
 msgstr "R"
 
-#: data/ui/convolver.glade:298
+#: data/ui/convolver.glade:277
 msgid "Duration"
 msgstr "Duração"
 
-#: data/ui/convolver.glade:312
+#: data/ui/convolver.glade:291
 msgid "Samples"
 msgstr "Amostras"
 
-#: data/ui/convolver.glade:366
+#: data/ui/convolver.glade:324 src/convolver_ui.cpp:253
+msgid "Impulse Response"
+msgstr "Resposta de Impulso"
+
+#: data/ui/convolver.glade:346
 msgid "Stereo Width"
 msgstr "Largura do Stereo"
+
+#: data/ui/convolver.glade:376
+msgid "Select the impulse Response File"
+msgstr "Selecione o Arquivo com a Resposta de Impulso"
 
 #: data/ui/pitch.glade:36
 msgid "Pitch"
@@ -1185,11 +1189,11 @@ msgstr "Carregar uma predefinição. Exemplo: pulseeffects -l musica"
 msgid "Presets: "
 msgstr "Predefinições: "
 
-#: src/application_ui.cpp:814 src/convolver_ui.cpp:239
+#: src/application_ui.cpp:814 src/convolver_ui.cpp:249
 msgid "Open"
 msgstr "Abrir"
 
-#: src/application_ui.cpp:814 src/convolver_ui.cpp:239
+#: src/application_ui.cpp:814 src/convolver_ui.cpp:249
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -1205,9 +1209,12 @@ msgstr "tocando"
 msgid "Calibration Microphone"
 msgstr "Microfone de Calibração"
 
-#: src/convolver_ui.cpp:238
+#: src/convolver_ui.cpp:248
 msgid "Import Impulse Response"
 msgstr "Importar Resposta de Impulso"
+
+#~ msgid "Import File"
+#~ msgstr "Importar Arquivo"
 
 #~ msgid "Output Device"
 #~ msgstr "Dispositivo de Saída"

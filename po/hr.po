@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-11 22:29-0300\n"
+"POT-Creation-Date: 2018-07-13 16:55-0300\n"
 "PO-Revision-Date: 2018-05-27 00:55+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -44,85 +44,85 @@ msgstr "Testni signali"
 msgid "Presets"
 msgstr "Predlošci"
 
-#: data/ui/application.glade:521
+#: data/ui/application.glade:519
 msgid "Start Service at Login"
 msgstr "Pokreni pri pokretanju računala"
 
-#: data/ui/application.glade:546
+#: data/ui/application.glade:544
 msgid "Enable All Applications"
 msgstr "Sve aplikacije"
 
-#: data/ui/application.glade:571
+#: data/ui/application.glade:569
 msgid "Use Dark Theme"
 msgstr "Koristi tamnu temu"
 
-#: data/ui/application.glade:596
+#: data/ui/application.glade:594
 msgid "Settings"
 msgstr "Postavke"
 
-#: data/ui/application.glade:605 data/ui/equalizer_band.glade:105
+#: data/ui/application.glade:603 data/ui/equalizer_band.glade:105
 #: data/ui/equalizer_band.glade:120
 msgid "Reset"
 msgstr "Vrati izvorno"
 
-#: data/ui/application.glade:620
+#: data/ui/application.glade:618
 msgid "General"
 msgstr "Općenito"
 
-#: data/ui/application.glade:638
+#: data/ui/application.glade:636
 msgid "Show"
 msgstr "Prikaži"
 
-#: data/ui/application.glade:664
+#: data/ui/application.glade:662
 msgid "Points"
 msgstr "Traka"
 
-#: data/ui/application.glade:695
+#: data/ui/application.glade:693
 msgid "Use Custom Color"
 msgstr ""
 
-#: data/ui/application.glade:720
+#: data/ui/application.glade:718
 #, fuzzy
 msgid "Spectrum Color"
 msgstr "Spektar"
 
-#: data/ui/application.glade:747
+#: data/ui/application.glade:745
 #, fuzzy
 msgid "Height"
 msgstr "Desno"
 
-#: data/ui/application.glade:775
+#: data/ui/application.glade:773 data/ui/convolver.glade:396
 msgid "Spectrum"
 msgstr "Spektar"
 
-#: data/ui/application.glade:803 data/ui/application.glade:949
+#: data/ui/application.glade:802 data/ui/application.glade:950
 msgid "Use Default"
 msgstr "Koristi tvornički"
 
-#: data/ui/application.glade:841 data/ui/application.glade:986
+#: data/ui/application.glade:840 data/ui/application.glade:987
 #: data/ui/app_info.glade:156
 msgid "Buffer"
 msgstr "Latencija međuspremnika"
 
-#: data/ui/application.glade:874 data/ui/application.glade:1018
+#: data/ui/application.glade:873 data/ui/application.glade:1019
 #: data/ui/app_info.glade:183
 msgid "Latency"
 msgstr "Latencija"
 
-#: data/ui/application.glade:907 data/ui/application.glade:1050
+#: data/ui/application.glade:906 data/ui/application.glade:1051
 #, fuzzy
 msgid "Block Size"
 msgstr "Veličina sobe"
 
-#: data/ui/application.glade:937
+#: data/ui/application.glade:936
 msgid "Input Effects"
 msgstr "Ulazni efekti"
 
-#: data/ui/application.glade:1080
+#: data/ui/application.glade:1081
 msgid "Output Effects"
 msgstr "Izlazni efekti"
 
-#: data/ui/application.glade:1107
+#: data/ui/application.glade:1108
 msgid "Pulseaudio"
 msgstr ""
 
@@ -134,7 +134,7 @@ msgstr "Zvučni efekti za Pulseaudio aplikacije"
 msgid "Format"
 msgstr "Format"
 
-#: data/ui/app_info.glade:75 data/ui/convolver.glade:260
+#: data/ui/app_info.glade:75 data/ui/convolver.glade:239
 msgid "Rate"
 msgstr "Frekvencija"
 
@@ -225,7 +225,7 @@ msgstr "Automatska glasnoća"
 #: data/ui/stereo_tools.glade:784 data/ui/crossfeed.glade:200
 #: data/ui/maximizer.glade:240 data/ui/loudness.glade:245
 #: data/ui/gate.glade:489 data/ui/multiband_gate.glade:2112
-#: data/ui/deesser.glade:570 data/ui/convolver.glade:430
+#: data/ui/deesser.glade:570 data/ui/convolver.glade:449
 #: data/ui/pitch.glade:304 data/ui/webrtc.glade:586
 msgid "Input"
 msgstr "Ulaz"
@@ -245,7 +245,7 @@ msgstr "Ulaz"
 #: data/ui/multiband_gate.glade:809 data/ui/multiband_gate.glade:1219
 #: data/ui/multiband_gate.glade:1630 data/ui/multiband_gate.glade:2041
 #: data/ui/multiband_gate.glade:2127 data/ui/deesser.glade:585
-#: data/ui/convolver.glade:445 data/ui/pitch.glade:319 data/ui/webrtc.glade:601
+#: data/ui/convolver.glade:464 data/ui/pitch.glade:319 data/ui/webrtc.glade:601
 msgid "Output"
 msgstr "Izlaz"
 
@@ -925,40 +925,45 @@ msgstr ""
 
 #: data/ui/convolver.glade:103
 #, fuzzy
-msgid "Import File"
-msgstr "Učitaj predloške"
+msgid "Import Impulse"
+msgstr "Ravan izlaz"
 
 #: data/ui/convolver.glade:107
 msgid "Import Impulse Response File"
 msgstr ""
 
-#: data/ui/convolver.glade:190 src/convolver_ui.cpp:243
-#, fuzzy
-msgid "Impulse Response"
-msgstr "Ravan izlaz"
-
-#: data/ui/convolver.glade:226
+#: data/ui/convolver.glade:204
 msgid "L"
 msgstr "L"
 
-#: data/ui/convolver.glade:239
+#: data/ui/convolver.glade:218
 msgid "R"
 msgstr "D"
 
-#: data/ui/convolver.glade:298
+#: data/ui/convolver.glade:277
 #, fuzzy
 msgid "Duration"
 msgstr "Kalibracija"
 
-#: data/ui/convolver.glade:312
+#: data/ui/convolver.glade:291
 #, fuzzy
 msgid "Samples"
 msgstr "Promjena frekvencije"
 
-#: data/ui/convolver.glade:366
+#: data/ui/convolver.glade:324 src/convolver_ui.cpp:253
+#, fuzzy
+msgid "Impulse Response"
+msgstr "Ravan izlaz"
+
+#: data/ui/convolver.glade:346
 #, fuzzy
 msgid "Stereo Width"
 msgstr "Stereo veza"
+
+#: data/ui/convolver.glade:376
+#, fuzzy
+msgid "Select the impulse Response File"
+msgstr "Ravan izlaz"
 
 #: data/ui/pitch.glade:36
 msgid "Pitch"
@@ -1233,11 +1238,11 @@ msgstr "Učitaj predložak. Primjer: pulseeffects -l music"
 msgid "Presets: "
 msgstr "Predlošci"
 
-#: src/application_ui.cpp:814 src/convolver_ui.cpp:239
+#: src/application_ui.cpp:814 src/convolver_ui.cpp:249
 msgid "Open"
 msgstr "Otvori"
 
-#: src/application_ui.cpp:814 src/convolver_ui.cpp:239
+#: src/application_ui.cpp:814 src/convolver_ui.cpp:249
 msgid "Cancel"
 msgstr "Poništi"
 
@@ -1254,10 +1259,14 @@ msgstr "reprodukcija"
 msgid "Calibration Microphone"
 msgstr "Kalibracija ispravljanja mikrofona"
 
-#: src/convolver_ui.cpp:238
+#: src/convolver_ui.cpp:248
 #, fuzzy
 msgid "Import Impulse Response"
 msgstr "Ravan izlaz"
+
+#, fuzzy
+#~ msgid "Import File"
+#~ msgstr "Učitaj predloške"
 
 #~ msgid "Output Device"
 #~ msgstr "Izlaz"
