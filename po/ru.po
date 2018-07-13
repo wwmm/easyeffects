@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-13 16:55-0300\n"
+"POT-Creation-Date: 2018-07-13 20:10-0300\n"
 "PO-Revision-Date: 2018-03-09 01:34+0300\n"
 "Last-Translator: Михаил <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -981,7 +981,7 @@ msgstr "Калибровка"
 msgid "Samples"
 msgstr "Ресемплер"
 
-#: data/ui/convolver.glade:324 src/convolver_ui.cpp:253
+#: data/ui/convolver.glade:324 src/convolver_ui.cpp:254
 #, fuzzy
 msgid "Impulse Response"
 msgstr "Плоская АЧХ"
@@ -1283,11 +1283,11 @@ msgstr "Загрузить пресет. Пример: pulseeffects -l music"
 msgid "Presets: "
 msgstr "Предустановки: "
 
-#: src/application_ui.cpp:814 src/convolver_ui.cpp:249
+#: src/application_ui.cpp:814 src/convolver_ui.cpp:250
 msgid "Open"
 msgstr "Открыть"
 
-#: src/application_ui.cpp:814 src/convolver_ui.cpp:249
+#: src/application_ui.cpp:814 src/convolver_ui.cpp:250
 #, fuzzy
 msgid "Cancel"
 msgstr "Баланс"
@@ -1305,7 +1305,7 @@ msgstr "воспроизводится"
 msgid "Calibration Microphone"
 msgstr "Калибровка корректировки микрофона"
 
-#: src/convolver_ui.cpp:248
+#: src/convolver_ui.cpp:249
 #, fuzzy
 msgid "Import Impulse Response"
 msgstr "Плоская АЧХ"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-13 16:55-0300\n"
+"POT-Creation-Date: 2018-07-13 20:10-0300\n"
 "PO-Revision-Date: 2018-05-27 00:55+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -950,7 +950,7 @@ msgstr "Kalibracija"
 msgid "Samples"
 msgstr "Promjena frekvencije"
 
-#: data/ui/convolver.glade:324 src/convolver_ui.cpp:253
+#: data/ui/convolver.glade:324 src/convolver_ui.cpp:254
 #, fuzzy
 msgid "Impulse Response"
 msgstr "Ravan izlaz"
@@ -1238,11 +1238,11 @@ msgstr "Učitaj predložak. Primjer: pulseeffects -l music"
 msgid "Presets: "
 msgstr "Predlošci"
 
-#: src/application_ui.cpp:814 src/convolver_ui.cpp:249
+#: src/application_ui.cpp:814 src/convolver_ui.cpp:250
 msgid "Open"
 msgstr "Otvori"
 
-#: src/application_ui.cpp:814 src/convolver_ui.cpp:249
+#: src/application_ui.cpp:814 src/convolver_ui.cpp:250
 msgid "Cancel"
 msgstr "Poništi"
 
@@ -1259,7 +1259,7 @@ msgstr "reprodukcija"
 msgid "Calibration Microphone"
 msgstr "Kalibracija ispravljanja mikrofona"
 
-#: src/convolver_ui.cpp:248
+#: src/convolver_ui.cpp:249
 #, fuzzy
 msgid "Import Impulse Response"
 msgstr "Ravan izlaz"

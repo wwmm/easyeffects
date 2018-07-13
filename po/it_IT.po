@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-13 16:55-0300\n"
+"POT-Creation-Date: 2018-07-13 20:10-0300\n"
 "PO-Revision-Date: 2018-02-10 15:25+0100\n"
 "Last-Translator: Matteo Iervasi <matteoiervasi@gmail.com>\n"
 "Language-Team: \n"
@@ -962,7 +962,7 @@ msgstr "Calibrazione"
 msgid "Samples"
 msgstr "Campionatore"
 
-#: data/ui/convolver.glade:324 src/convolver_ui.cpp:253
+#: data/ui/convolver.glade:324 src/convolver_ui.cpp:254
 #, fuzzy
 msgid "Impulse Response"
 msgstr "Risposta piatta"
@@ -1260,11 +1260,11 @@ msgstr ""
 msgid "Presets: "
 msgstr "Presets"
 
-#: src/application_ui.cpp:814 src/convolver_ui.cpp:249
+#: src/application_ui.cpp:814 src/convolver_ui.cpp:250
 msgid "Open"
 msgstr ""
 
-#: src/application_ui.cpp:814 src/convolver_ui.cpp:249
+#: src/application_ui.cpp:814 src/convolver_ui.cpp:250
 #, fuzzy
 msgid "Cancel"
 msgstr "Bilancio"
@@ -1282,7 +1282,7 @@ msgstr "in riproduzione"
 msgid "Calibration Microphone"
 msgstr "Calibrazione"
 
-#: src/convolver_ui.cpp:248
+#: src/convolver_ui.cpp:249
 #, fuzzy
 msgid "Import Impulse Response"
 msgstr "Risposta piatta"

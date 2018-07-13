@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-13 16:55-0300\n"
+"POT-Creation-Date: 2018-07-13 20:10-0300\n"
 "PO-Revision-Date: 2017-06-11 22:19+0200\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: \n"
@@ -957,7 +957,7 @@ msgstr "Zoslabenie"
 msgid "Samples"
 msgstr ""
 
-#: data/ui/convolver.glade:324 src/convolver_ui.cpp:253
+#: data/ui/convolver.glade:324 src/convolver_ui.cpp:254
 msgid "Impulse Response"
 msgstr ""
 
@@ -1237,11 +1237,11 @@ msgstr ""
 msgid "Presets: "
 msgstr "Predvoľby"
 
-#: src/application_ui.cpp:814 src/convolver_ui.cpp:249
+#: src/application_ui.cpp:814 src/convolver_ui.cpp:250
 msgid "Open"
 msgstr ""
 
-#: src/application_ui.cpp:814 src/convolver_ui.cpp:249
+#: src/application_ui.cpp:814 src/convolver_ui.cpp:250
 msgid "Cancel"
 msgstr ""
 
@@ -1257,7 +1257,7 @@ msgstr ""
 msgid "Calibration Microphone"
 msgstr ""
 
-#: src/convolver_ui.cpp:248
+#: src/convolver_ui.cpp:249
 msgid "Import Impulse Response"
 msgstr ""
 

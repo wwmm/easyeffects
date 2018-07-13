@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-13 16:55-0300\n"
+"POT-Creation-Date: 2018-07-13 20:10-0300\n"
 "PO-Revision-Date: 2018-07-13 16:56-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
@@ -907,7 +907,7 @@ msgstr "Duração"
 msgid "Samples"
 msgstr "Amostras"
 
-#: data/ui/convolver.glade:324 src/convolver_ui.cpp:253
+#: data/ui/convolver.glade:324 src/convolver_ui.cpp:254
 msgid "Impulse Response"
 msgstr "Resposta de Impulso"
 
@@ -1189,11 +1189,11 @@ msgstr "Carregar uma predefinição. Exemplo: pulseeffects -l musica"
 msgid "Presets: "
 msgstr "Predefinições: "
 
-#: src/application_ui.cpp:814 src/convolver_ui.cpp:249
+#: src/application_ui.cpp:814 src/convolver_ui.cpp:250
 msgid "Open"
 msgstr "Abrir"
 
-#: src/application_ui.cpp:814 src/convolver_ui.cpp:249
+#: src/application_ui.cpp:814 src/convolver_ui.cpp:250
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -1209,7 +1209,7 @@ msgstr "tocando"
 msgid "Calibration Microphone"
 msgstr "Microfone de Calibração"
 
-#: src/convolver_ui.cpp:248
+#: src/convolver_ui.cpp:249
 msgid "Import Impulse Response"
 msgstr "Importar Resposta de Impulso"
 
