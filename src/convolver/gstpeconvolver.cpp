@@ -326,7 +326,7 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver,
         if (irs_ok) {
             bool failed = false;
             float density = 0.0f;
-            int max_size;
+            int max_size, ret;
 
             peconvolver->conv = new Convproc();
 
@@ -351,9 +351,18 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver,
 
             gst_buffer_unmap(buffer, &map);
 
-            int ret = peconvolver->conv->configure(2, 2, max_size, num_samples,
-                                                   num_samples,
-                                                   Convproc::MAXPART, density);
+#if ZITA_CONVOLVER_MAJOR_VERSION == 3
+            peconvolver->conv->set_density(density);
+
+            ret = peconvolver->conv->configure(2, 2, max_size, num_samples,
+                                               num_samples, Convproc::MAXPART);
+#endif
+
+#if ZITA_CONVOLVER_MAJOR_VERSION == 4
+            ret = peconvolver->conv->configure(2, 2, max_size, num_samples,
+                                               num_samples, Convproc::MAXPART,
+                                               density);
+#endif
 
             if (ret != 0) {
                 failed = true;

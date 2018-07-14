@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+## [4.1.6]
+### Fixed
+- PulseEffects now uses the system zita-convolver library. This was request by
+package managers and after a few exchange of ideas that can be seen here
+https://github.com/wwmm/pulseeffects/issues/262 I was able to make this move.
+Zita-convolver version 3 and 4 should work. With this fftwl is not a Pulseeffects
+dependency anymore but as the zita package needs it users will have to have it
+anyway.
+
 ## [4.1.5]
 ### Fixed
 - Fixed a bug that would crash PulseEffects whenever the user tried to load an

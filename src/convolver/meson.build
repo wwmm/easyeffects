@@ -1,6 +1,17 @@
+cxx = meson.get_compiler('cpp')
+
+zita_convolver = cxx.find_library('zita-convolver')
+
+if cxx.compiles(
+'''
+#include <zita-convolver.h>
+#if ZITA_CONVOLVER_MAJOR_VERSION != 3 && ZITA_CONVOLVER_MAJOR_VERSION != 4
+    #error "This programs requires zita-convolver 3 or 4"
+#endif
+''', dependencies: [zita_convolver])
+
 plugin_sources = [
 	'gstpeconvolver.cpp',
-	'zita-convolver.cc',
 	'../util.cpp'
 ]
 
@@ -11,14 +22,11 @@ plugin_deps = [
 	dependency('gstreamer-audio-1.0'),
 	dependency('sndfile'),
 	dependency('samplerate'),
-	dependency('fftw3f'),
-	dependency('threads')
+	dependency('threads'),
+	zita_convolver
 ]
 
 plugins_install_dir = '@0@/gstreamer-1.0'.format(get_option('libdir'))
-
-zita_cpp_args = '-D_POSIX_PTHREAD_SEMANTICS -DENABLE_VECTOR_MODE '
-zita_cpp_args += '-fPIC -Wall -ffast-math -funroll-loops -O3'
 
 library(
 	'gstpeconvolver',
@@ -26,6 +34,10 @@ library(
 	include_directories : include_dir,
 	dependencies : plugin_deps,
 	install: true,
-	install_dir : plugins_install_dir,
-	cpp_args: zita_cpp_args
+	install_dir : plugins_install_dir
 )
+
+else
+	message('Missing dependency zita-convolver = 3.x.x or zita-convolver = 4.x.x')
+	message('Convolver plugin will not be built')
+endif
