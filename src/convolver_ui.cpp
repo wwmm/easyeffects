@@ -108,7 +108,10 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
     // reading current configured irs file
 
-    auto f = [=]() { get_irs_info(); };
+    auto f = [=]() {
+        std::lock_guard<std::mutex> lock(lock_guard_irs_info);
+        get_irs_info();
+    };
 
     mythreads.push_back(std::thread(f));
 
@@ -117,7 +120,11 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
     */
 
     settings->signal_changed("kernel-path").connect([=](auto key) {
-        auto f = [=]() { get_irs_info(); };
+        auto f = [=]() {
+            std::lock_guard<std::mutex> lock(lock_guard_irs_info);
+            get_irs_info();
+        };
+
         mythreads.push_back(std::thread(f));
     });
 }
@@ -311,11 +318,13 @@ void ConvolverUi::get_irs_info() {
 
     float dt = 1.0f / rate;
     float duration = (frames_in - 1) * dt;
-    float plot_dt = duration / max_plot_points;
+    uint max_points =
+        (frames_in > max_plot_points) ? max_plot_points : frames_in;
+    float plot_dt = duration / max_points;
 
     time_axis.clear();
 
-    for (uint n = 0; n < max_plot_points; n++) {
+    for (uint n = 0; n < max_points; n++) {
         time_axis.push_back(n * plot_dt);
     }
 
@@ -342,10 +351,10 @@ void ConvolverUi::get_irs_info() {
         boost::math::cubic_b_spline<float> spline_R(right_mag.begin(),
                                                     right_mag.end(), 0.0f, dt);
 
-        left_mag.resize(max_plot_points);
-        right_mag.resize(max_plot_points);
+        left_mag.resize(max_points);
+        right_mag.resize(max_points);
 
-        for (uint n = 0; n < max_plot_points; n++) {
+        for (uint n = 0; n < max_points; n++) {
             left_mag[n] = spline_L(time_axis[n]);
             right_mag[n] = spline_R(time_axis[n]);
         }

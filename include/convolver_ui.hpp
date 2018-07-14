@@ -11,6 +11,7 @@
 #include <gtkmm/scrolledwindow.h>
 #include <gtkmm/togglebutton.h>
 #include <boost/filesystem.hpp>
+#include <mutex>
 #include <thread>
 #include "plugin_ui_base.hpp"
 
@@ -54,6 +55,8 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
     Glib::RefPtr<Gio::Settings> global_settings;
 
     std::vector<std::thread> mythreads;
+
+    std::mutex lock_guard_irs_info;
 
     std::vector<std::string> get_irs_names();
 
