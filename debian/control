@@ -18,7 +18,8 @@ Build-Depends: debhelper (>=11),
                libboost-filesystem-dev,
                libbs2b-dev,
                liblilv-dev,
-               librubberband-dev
+               librubberband-dev,
+               libzita-convolver-dev
 
 Package: pulseeffects
 Architecture: any
