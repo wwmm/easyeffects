@@ -56,6 +56,10 @@ Version `1.12.5` or higher
 - [ZamAudio Plugins](http://www.zamaudio.com/)
 - [MDA.LV2](https://git.drobilla.net/cgit.cgi/mda.lv2.git/about/)
 
+## Changelog
+- For information about changes between versions take a look at our
+[changelog](https://github.com/wwmm/pulseeffects/blob/master/CHANGELOG.md)
+
 ## Installation
 
 ### GNU/Linux Packages
