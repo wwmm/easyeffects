@@ -1,3 +1,31 @@
+pulseeffects (4.1.6-2) unstable; urgency=low
+
+  * Fixed Russian localization a bit (still requires a lot of work and fixes of regressions)
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sun, 15 Jul 2018 01:24:00 +0300 
+ 
+pulseeffects (4.1.6-1) unstable; urgency=low
+
+  * update to version 4.1.6 upstream
+  * add libzita-convolver-dev build dependency
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sat, 14 Jul 2018 20:56:00 +0300 
+ 
+pulseeffects (4.1.3-1) unstable; urgency=low
+
+  * update to version 4.1.3 upstream
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sun, 08 Jul 2018 23:10:00 +0300 
+ 
+pulseeffects (4.1.2-2) unstable; urgency=low
+
+  * update to version 4.1.2 upstream
+  * Preparing to get this package into Debian repository
+  * debian/compat: bump version 10 to 11
+  * debian/control: bump Standards-Version from 3.9.6 to 4.1.4
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 02 Jul 2018 09:10:00 +0300 
+ 
 pulseeffects (4.1.1-3) unstable; urgency=low
 
   * version dependency 'calf-plugins (>= 0.90.0)' to fix https://github.com/wwmm/pulseeffects/issues/227
