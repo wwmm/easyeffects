@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+## [4.1.7]
+### Added
+- Improved Russian translations
+
+### Fixed
+- Using a secondary thread to load the impulse response file in the plugin. This
+avoid playback stalls when the impulse file is large.
+
 ## [4.1.6]
 ### Fixed
 - PulseEffects now uses the system zita-convolver library. This was request by

@@ -15,6 +15,7 @@
 #include <gst/audio/gstaudiofilter.h>
 #include <gst/gst.h>
 #include <iostream>
+#include <thread>
 #include "gstpeconvolver.hpp"
 #include "read_kernel.hpp"
 
@@ -53,7 +54,7 @@ static void gst_peconvolver_process(GstPeconvolver* peconvolver,
                                     GstBuffer* buffer);
 
 static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver,
-                                            GstBuffer* buffer);
+                                            const int& num_samples);
 
 static void gst_peconvolver_finish_convolver(GstPeconvolver* peconvolver);
 
@@ -256,10 +257,27 @@ static GstFlowReturn gst_peconvolver_transform_ip(GstBaseTransform* trans,
 
     GST_DEBUG_OBJECT(peconvolver, "transform");
 
-    std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
+    if (!peconvolver->ready) {
+        GstMapInfo map;
 
-    gst_peconvolver_setup_convolver(peconvolver, buffer);
-    gst_peconvolver_process(peconvolver, buffer);
+        gst_buffer_map(buffer, &map, GST_MAP_READ);
+
+        guint num_samples = map.size / peconvolver->bpf;
+
+        gst_buffer_unmap(buffer, &map);
+
+        auto f = [=]() {
+            std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
+            gst_peconvolver_setup_convolver(peconvolver, num_samples);
+        };
+
+        std::thread t(f);
+        t.detach();
+    } else {
+        std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
+
+        gst_peconvolver_process(peconvolver, buffer);
+    }
 
     return GST_FLOW_OK;
 }
@@ -315,7 +333,7 @@ static void gst_peconvolver_set_ir_width(GstPeconvolver* peconvolver,
 }
 
 static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver,
-                                            GstBuffer* buffer) {
+                                            const int& num_samples) {
     if (!peconvolver->ready && peconvolver->rate != 0 &&
         peconvolver->bpf != 0) {
         util::debug(peconvolver->log_tag + "maximum irs frames supported: " +
@@ -342,14 +360,6 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver,
             options |= Convproc::OPT_VECTOR_MODE;
 
             peconvolver->conv->set_options(options);
-
-            GstMapInfo map;
-
-            gst_buffer_map(buffer, &map, GST_MAP_READ);
-
-            guint num_samples = map.size / peconvolver->bpf;
-
-            gst_buffer_unmap(buffer, &map);
 
 #if ZITA_CONVOLVER_MAJOR_VERSION == 3
             peconvolver->conv->set_density(density);

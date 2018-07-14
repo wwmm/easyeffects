@@ -5,6 +5,7 @@
 #include <zita-convolver.h>
 #include <iostream>
 #include <mutex>
+#include <vector>
 
 G_BEGIN_DECLS
 

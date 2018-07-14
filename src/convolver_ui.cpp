@@ -306,9 +306,9 @@ void ConvolverUi::get_irs_info() {
         return;
     }
 
-    int frames_in = file.frames();
-    int total_frames_in = file.channels() * frames_in;
-    int rate = file.samplerate();
+    uint frames_in = file.frames();
+    uint total_frames_in = file.channels() * frames_in;
+    uint rate = file.samplerate();
 
     float* kernel = new float[total_frames_in];
 
@@ -335,7 +335,7 @@ void ConvolverUi::get_irs_info() {
     left_mag.clear();
     right_mag.clear();
 
-    for (int n = 0; n < frames_in; n++) {
+    for (uint n = 0; n < frames_in; n++) {
         left_mag.push_back(util::linear_to_db(kernel[2 * n]));
         right_mag.push_back(util::linear_to_db(kernel[2 * n + 1]));
     }
@@ -372,7 +372,7 @@ void ConvolverUi::get_irs_info() {
 
     // rescaling between 0 and 1
 
-    for (int n = 0; n < frames_in; n++) {
+    for (uint n = 0; n < frames_in; n++) {
         left_mag[n] = (left_mag[n] - min_left) / (max_left - min_left);
         right_mag[n] = (right_mag[n] - min_right) / (max_right - min_right);
     }
