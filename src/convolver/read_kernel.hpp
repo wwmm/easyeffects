@@ -155,12 +155,14 @@ bool read_file(_GstPeconvolver* peconvolver) {
 
         delete[] buffer;
         delete[] kernel;
+
+        return true;
     } else {
         util::warning(log_tag + "only stereo impulse responses are supported." +
                       "The impulse file was not loaded!");
-    }
 
-    return true;
+        return false;
+    }
 }
 
 }  // namespace rk

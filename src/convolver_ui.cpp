@@ -157,6 +157,16 @@ void ConvolverUi::import_irs_file(const std::string& file_path) {
     boost::filesystem::path p{file_path};
 
     if (boost::filesystem::is_regular_file(p)) {
+        SndfileHandle file = SndfileHandle(file_path);
+
+        if (file.channels() != 2 || file.frames() == 0) {
+            util::warning(log_tag +
+                          " Only stereo impulse files are supported!");
+            util::warning(log_tag + file_path + " loading failed");
+
+            return;
+        }
+
         if (p.extension().string() == ".irs") {
             auto out_path = irs_dir / p.filename();
 

@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [4.1.5]
+### Fixed
+- Fixed a bug that would crash PulseEffects whenever the user tried to load an
+impulse response file with more than 2 channels(only stereo is supported).
+
 ## [4.1.4]
 ### Added
 - A convolver plugin. It is the first plugin I have written :D :-) As audio
