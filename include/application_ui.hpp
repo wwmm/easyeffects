@@ -6,6 +6,7 @@
 #include <gtkmm/button.h>
 #include <gtkmm/colorbutton.h>
 #include <gtkmm/combobox.h>
+#include <gtkmm/comboboxtext.h>
 #include <gtkmm/drawingarea.h>
 #include <gtkmm/entry.h>
 #include <gtkmm/label.h>
@@ -53,6 +54,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     Gtk::Entry* preset_name;
     Gtk::ColorButton* spectrum_color_button;
     Gtk::ScrolledWindow* presets_scrolled_window;
+    Gtk::ComboBoxText *blocksize_in, *blocksize_out;
     Gdk::RGBA spectrum_color;
 
     Glib::RefPtr<Gtk::Adjustment> buffer_in, buffer_out, latency_in,

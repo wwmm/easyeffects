@@ -5,3 +5,7 @@ list#listbox_plugins {
 list#listbox_presets {
     background-color: transparent;
 }
+
+list#listbox_irs {
+    background-color: transparent;
+}

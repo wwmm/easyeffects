@@ -142,19 +142,38 @@
         <value nick="LR > RL (Stereo Flip Channels)" value="6"/>
     </enum>
 
+    <enum id="com.github.wwmm.pulseeffects.blocksize.enum">
+        <value nick="64" value="64"/>
+        <value nick="128" value="128"/>
+        <value nick="256" value="256"/>
+        <value nick="512" value="512"/>
+        <value nick="1024" value="1024"/>
+        <value nick="2048" value="2048"/>
+    </enum>
+
     <schema id="com.github.wwmm.pulseeffects" path="/com/github/wwmm/pulseeffects/">
         <key name="buffer-out" type="i">
+            <range min="1000" max="1000000"/>
             <default>200000</default>
         </key>
         <key name="latency-out" type="i">
+            <range min="100" max="100000"/>
             <default>10000</default>
+        </key>
+        <key name="blocksize-out" enum="com.github.wwmm.pulseeffects.blocksize.enum">
+            <default>"256"</default>
         </key>
 
         <key name="buffer-in" type="i">
+            <range min="1000" max="1000000"/>
             <default>200000</default>
         </key>
         <key name="latency-in" type="i">
+            <range min="100" max="100000"/>
             <default>10000</default>
+        </key>
+        <key name="blocksize-in" enum="com.github.wwmm.pulseeffects.blocksize.enum">
+            <default>"512"</default>
         </key>
 
         <key name="show-spectrum" type="b">

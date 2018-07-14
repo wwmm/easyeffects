@@ -92,12 +92,17 @@ void on_message_element(const GstBus* gst_bus,
                 g_value_get_float(gst_value_list_get_value(magnitudes, n));
         }
 
-        boost::math::cubic_b_spline<float> spline(pb->spectrum_mag_tmp.begin(),
-                                                  pb->spectrum_mag_tmp.end(),
-                                                  pb->spline_f0, pb->spline_df);
+        try {
+            boost::math::cubic_b_spline<float> spline(
+                pb->spectrum_mag_tmp.begin(), pb->spectrum_mag_tmp.end(),
+                pb->spline_f0, pb->spline_df);
 
-        for (uint n = 0; n < pb->spectrum_mag.size(); n++) {
-            pb->spectrum_mag[n] = spline(pb->spectrum_x_axis[n]);
+            for (uint n = 0; n < pb->spectrum_mag.size(); n++) {
+                pb->spectrum_mag[n] = spline(pb->spectrum_x_axis[n]);
+            }
+        } catch (const std::exception& e) {
+            util::debug(std::string("Message from thrown exception was: ") +
+                        e.what());
         }
 
         auto min_mag = pb->spectrum_threshold;
@@ -136,7 +141,7 @@ void on_spectrum_n_points_changed(GSettings* settings,
 void on_buffer_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
     GstState state;
 
-    gst_element_get_state(pb->pipeline, &state, nullptr, GST_CLOCK_TIME_NONE);
+    gst_element_get_state(pb->pipeline, &state, nullptr, 0);
 
     if (state == GST_STATE_PLAYING) {
         gst_element_set_state(pb->pipeline, GST_STATE_NULL);
@@ -147,7 +152,7 @@ void on_buffer_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
 void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
     GstState state;
 
-    gst_element_get_state(pb->pipeline, &state, nullptr, GST_CLOCK_TIME_NONE);
+    gst_element_get_state(pb->pipeline, &state, nullptr, 0);
 
     if (state == GST_STATE_PLAYING) {
         gst_element_set_state(pb->pipeline, GST_STATE_NULL);
@@ -210,6 +215,13 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     g_object_set(source, "mute", false, nullptr);
     g_object_set(source, "provide-clock", false, nullptr);
     g_object_set(source, "slave-method", 1, nullptr);  // re-timestamp
+
+    /*1024 samples and 2 channels per buffer. This is just a default value so
+    that the convolver can be initialized. It neeeds power of two block size.
+    I noticed that webrtcdsp plugin does not work with blocksize=256. So I chose
+    a higher value as default
+    */
+    g_object_set(source, "blocksize", 1024 * 2 * sizeof(float), nullptr);
 
     g_object_set(sink, "volume", 1.0, nullptr);
     g_object_set(sink, "mute", false, nullptr);
@@ -297,7 +309,7 @@ void PipelineBase::set_source_monitor_name(std::string name) {
     if (name != current_device) {
         GstState state;
 
-        gst_element_get_state(pipeline, &state, nullptr, GST_CLOCK_TIME_NONE);
+        gst_element_get_state(pipeline, &state, nullptr, 0);
 
         if (state == GST_STATE_PLAYING) {
             gst_element_set_state(pipeline, GST_STATE_NULL);
@@ -340,7 +352,7 @@ void PipelineBase::update_pipeline_state() {
 
     GstState state;
 
-    gst_element_get_state(pipeline, &state, nullptr, GST_CLOCK_TIME_NONE);
+    gst_element_get_state(pipeline, &state, nullptr, 0);
 
     if (state != GST_STATE_PLAYING && wants_to_play) {
         gst_element_set_state(pipeline, GST_STATE_PLAYING);

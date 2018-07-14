@@ -8,6 +8,52 @@
 #include "application_ui.hpp"
 #include "util.hpp"
 
+namespace {
+
+gboolean blocksize_enum_to_int(GValue* value,
+                               GVariant* variant,
+                               gpointer user_data) {
+    auto v = g_variant_get_string(variant, nullptr);
+
+    if (v == std::string("64")) {
+        g_value_set_int(value, 0);
+    } else if (v == std::string("128")) {
+        g_value_set_int(value, 1);
+    } else if (v == std::string("256")) {
+        g_value_set_int(value, 2);
+    } else if (v == std::string("512")) {
+        g_value_set_int(value, 3);
+    } else if (v == std::string("1024")) {
+        g_value_set_int(value, 4);
+    } else if (v == std::string("2048")) {
+        g_value_set_int(value, 5);
+    }
+
+    return true;
+}
+
+GVariant* int_to_blocksize_enum(const GValue* value,
+                                const GVariantType* expected_type,
+                                gpointer user_data) {
+    int v = g_value_get_int(value);
+
+    if (v == 0) {
+        return g_variant_new_string("64");
+    } else if (v == 1) {
+        return g_variant_new_string("128");
+    } else if (v == 2) {
+        return g_variant_new_string("256");
+    } else if (v == 3) {
+        return g_variant_new_string("512");
+    } else if (v == 4) {
+        return g_variant_new_string("1024");
+    } else {
+        return g_variant_new_string("2048");
+    }
+}
+
+}  // namespace
+
 ApplicationUi::ApplicationUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& builder,
                              Application* application)
@@ -43,6 +89,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     builder->get_widget("use_custom_color", use_custom_color);
     builder->get_widget("spectrum_color_button", spectrum_color_button);
     builder->get_widget("calibration_button", calibration_button);
+    builder->get_widget("blocksize_in", blocksize_in);
+    builder->get_widget("blocksize_out", blocksize_out);
 
     get_object(builder, "buffer_in", buffer_in);
     get_object(builder, "buffer_out", buffer_out);
@@ -246,6 +294,16 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
     settings->bind("last-used-preset", presets_menu_label, "label", flag);
 
+    g_settings_bind_with_mapping(settings->gobj(), "blocksize-in",
+                                 blocksize_in->gobj(), "active",
+                                 G_SETTINGS_BIND_DEFAULT, blocksize_enum_to_int,
+                                 int_to_blocksize_enum, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(settings->gobj(), "blocksize-out",
+                                 blocksize_out->gobj(), "active",
+                                 G_SETTINGS_BIND_DEFAULT, blocksize_enum_to_int,
+                                 int_to_blocksize_enum, nullptr, nullptr);
+
     init_autostart_switch();
 }
 
@@ -309,20 +367,20 @@ void ApplicationUi::clear_spectrum() {
 }
 
 bool ApplicationUi::on_enable_autostart(bool state) {
-    namespace fs = boost::filesystem;
+    boost::filesystem::path autostart_dir{Glib::get_user_config_dir() +
+                                          "/autostart"};
 
-    fs::path autostart_dir{Glib::get_user_config_dir() + "/autostart"};
-
-    if (!fs::is_directory(autostart_dir)) {
-        fs::create_directories(autostart_dir);
+    if (!boost::filesystem::is_directory(autostart_dir)) {
+        boost::filesystem::create_directories(autostart_dir);
     }
 
-    fs::path autostart_file{Glib::get_user_config_dir() +
-                            "/autostart/pulseeffects-service.desktop"};
+    boost::filesystem::path autostart_file{
+        Glib::get_user_config_dir() +
+        "/autostart/pulseeffects-service.desktop"};
 
     if (state) {
-        if (!fs::exists(autostart_file)) {
-            fs::ofstream ofs{autostart_file};
+        if (!boost::filesystem::exists(autostart_file)) {
+            boost::filesystem::ofstream ofs{autostart_file};
 
             ofs << "[Desktop Entry]\n";
             ofs << "Name=PulseEffects\n";
@@ -338,8 +396,8 @@ bool ApplicationUi::on_enable_autostart(bool state) {
             util::debug(log_tag + "autostart file created");
         }
     } else {
-        if (fs::exists(autostart_file)) {
-            fs::remove(autostart_file);
+        if (boost::filesystem::exists(autostart_file)) {
+            boost::filesystem::remove(autostart_file);
 
             util::debug(log_tag + "autostart file removed");
         }
@@ -749,18 +807,22 @@ void ApplicationUi::on_presets_menu_button_clicked() {
 void ApplicationUi::on_import_preset_clicked() {
     // gtkmm 3.22 does not have FileChooseNative so we have to use C api :-(
 
-    GtkFileChooserNative* native;
-    GtkFileChooserAction action = GTK_FILE_CHOOSER_ACTION_OPEN;
     gint res;
 
-    native = gtk_file_chooser_native_new(_("Import Presets"),
-                                         (GtkWindow*)this->gobj(), action,
-                                         _("Open"), _("Cancel"));
+    auto dialog = gtk_file_chooser_native_new(
+        _("Import Presets"), (GtkWindow*)this->gobj(),
+        GTK_FILE_CHOOSER_ACTION_OPEN, _("Open"), _("Cancel"));
 
-    res = gtk_native_dialog_run(GTK_NATIVE_DIALOG(native));
+    auto filter = gtk_file_filter_new();
+
+    gtk_file_filter_set_name(filter, _("Presets"));
+    gtk_file_filter_add_pattern(filter, "*.json");
+    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(dialog), filter);
+
+    res = gtk_native_dialog_run(GTK_NATIVE_DIALOG(dialog));
 
     if (res == GTK_RESPONSE_ACCEPT) {
-        GtkFileChooser* chooser = GTK_FILE_CHOOSER(native);
+        GtkFileChooser* chooser = GTK_FILE_CHOOSER(dialog);
 
         auto file_list = gtk_file_chooser_get_filenames(chooser);
 
@@ -777,7 +839,7 @@ void ApplicationUi::on_import_preset_clicked() {
         g_slist_free(file_list);
     }
 
-    g_object_unref(native);
+    g_object_unref(dialog);
 
     populate_presets_listbox();
 }

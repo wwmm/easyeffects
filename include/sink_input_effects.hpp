@@ -3,6 +3,7 @@
 
 #include "bass_enhancer.hpp"
 #include "compressor.hpp"
+#include "convolver.hpp"
 #include "crossfeed.hpp"
 #include "deesser.hpp"
 #include "equalizer.hpp"
@@ -48,6 +49,7 @@ class SinkInputEffects : public PipelineBase {
     std::unique_ptr<MultibandGate> multiband_gate;
     std::unique_ptr<Deesser> deesser;
     std::unique_ptr<StereoTools> stereo_tools;
+    std::unique_ptr<Convolver> convolver;
 
     sigc::signal<void, std::array<double, 2>> compressor_input_level;
     sigc::signal<void, std::array<double, 2>> compressor_output_level;
@@ -67,6 +69,8 @@ class SinkInputEffects : public PipelineBase {
     sigc::signal<void, std::array<double, 2>> gate_output_level;
     sigc::signal<void, std::array<double, 2>> deesser_input_level;
     sigc::signal<void, std::array<double, 2>> deesser_output_level;
+    sigc::signal<void, std::array<double, 2>> convolver_input_level;
+    sigc::signal<void, std::array<double, 2>> convolver_output_level;
 
    private:
     GSettings* sie_settings;

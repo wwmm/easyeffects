@@ -43,6 +43,8 @@ SinkInputEffectsUi::SinkInputEffectsUi(
         "/com/github/wwmm/pulseeffects/ui/deesser.glade");
     auto b_stereo_tools = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/ui/stereo_tools.glade");
+    auto b_convolver = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/ui/convolver.glade");
 
     b_limiter->get_widget_derived(
         "widgets_grid", limiter_ui,
@@ -91,6 +93,9 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     b_stereo_tools->get_widget_derived(
         "widgets_grid", stereo_tools_ui,
         "com.github.wwmm.pulseeffects.sinkinputs.stereotools");
+    b_convolver->get_widget_derived(
+        "widgets_grid", convolver_ui,
+        "com.github.wwmm.pulseeffects.sinkinputs.convolver");
 
     stack->add(*limiter_ui, limiter_ui->name);
     stack->add(*compressor_ui, compressor_ui->name);
@@ -108,6 +113,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     stack->add(*multiband_gate_ui, multiband_gate_ui->name);
     stack->add(*deesser_ui, deesser_ui->name);
     stack->add(*stereo_tools_ui, stereo_tools_ui->name);
+    stack->add(*convolver_ui, convolver_ui->name);
 
     // populate_listbox
 
@@ -127,6 +133,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     add_to_listbox(multiband_gate_ui);
     add_to_listbox(deesser_ui);
     add_to_listbox(stereo_tools_ui);
+    add_to_listbox(convolver_ui);
 
     level_meters_connections();
     up_down_connections();
@@ -317,6 +324,13 @@ void SinkInputEffectsUi::level_meters_connections() {
         sigc::mem_fun(*stereo_tools_ui, &StereoToolsUi::on_new_input_level)));
     connections.push_back(sie->stereo_tools->output_level.connect(
         sigc::mem_fun(*stereo_tools_ui, &StereoToolsUi::on_new_output_level)));
+
+    // convolver level meters connections
+
+    connections.push_back(sie->convolver_input_level.connect(
+        sigc::mem_fun(*convolver_ui, &ConvolverUi::on_new_input_level_db)));
+    connections.push_back(sie->convolver_output_level.connect(
+        sigc::mem_fun(*convolver_ui, &ConvolverUi::on_new_output_level_db)));
 }
 
 void SinkInputEffectsUi::up_down_connections() {
@@ -439,6 +453,11 @@ void SinkInputEffectsUi::up_down_connections() {
     connections.push_back(
         stereo_tools_ui->plugin_down->signal_clicked().connect(
             [=]() { on_down(stereo_tools_ui); }));
+
+    connections.push_back(convolver_ui->plugin_up->signal_clicked().connect(
+        [=]() { on_up(convolver_ui); }));
+    connections.push_back(convolver_ui->plugin_down->signal_clicked().connect(
+        [=]() { on_down(convolver_ui); }));
 }
 
 void SinkInputEffectsUi::reset() {
@@ -460,4 +479,5 @@ void SinkInputEffectsUi::reset() {
     multiband_gate_ui->reset();
     deesser_ui->reset();
     stereo_tools_ui->reset();
+    convolver_ui->reset();
 }

@@ -122,6 +122,35 @@ void on_plugins_order_changed(GSettings* settings,
     }
 }
 
+void on_blocksize_changed(GSettings* settings,
+                          gchar* key,
+                          SourceOutputEffects* l) {
+    int value = g_settings_get_enum(settings, key);
+    int old_value;
+
+    g_object_get(l->source, "blocksize", &old_value, nullptr);
+
+    if (value != old_value) {
+        GstState state;
+
+        gst_element_get_state(l->pipeline, &state, nullptr, 0);
+
+        if (state == GST_STATE_PLAYING) {
+            gst_element_set_state(l->pipeline, GST_STATE_NULL);
+
+            // 2 channels per buffer
+            g_object_set(l->source, "blocksize", value * 2 * sizeof(float),
+                         nullptr);
+
+            l->update_pipeline_state();
+        } else {
+            // 2 channels per buffer
+            g_object_set(l->source, "blocksize", value * 2 * sizeof(float),
+                         nullptr);
+        }
+    }
+}
+
 }  // namespace
 
 SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager)
@@ -163,6 +192,9 @@ SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager)
 
     g_signal_connect(bus, "message::element", G_CALLBACK(on_message_element),
                      this);
+
+    g_signal_connect(settings, "changed::blocksize-in",
+                     G_CALLBACK(on_blocksize_changed), this);
 
     limiter = std::make_unique<Limiter>(
         log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.limiter");

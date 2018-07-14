@@ -19,6 +19,8 @@ data/ui/loudness.glade
 data/ui/gate.glade
 data/ui/multiband_gate.glade
 data/ui/deesser.glade
+data/ui/convolver.glade
+data/ui/irs_row.glade
 data/ui/pitch.glade
 data/ui/webrtc.glade
 data/ui/preset_row.glade
@@ -32,3 +34,4 @@ src/application_ui.cpp
 src/effects_base_ui.cpp
 src/app_info_ui.cpp
 src/calibration_ui.cpp
+src/convolver_ui.cpp

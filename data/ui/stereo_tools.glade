@@ -197,7 +197,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="transition_duration">250</property>
-                <property name="transition_type">slide-right</property>
+                <property name="transition_type">slide-left-right</property>
                 <child>
                   <object class="GtkGrid">
                     <property name="visible">True</property>
