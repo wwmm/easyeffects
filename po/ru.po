@@ -22,18 +22,15 @@ msgid "Name"
 msgstr "Название"
 
 #: data/ui/application.glade:58
-#, fuzzy
 msgid "Create Preset"
 msgstr "Создать новый набор предустановок"
 
 #: data/ui/application.glade:76 src/application_ui.cpp:813
-#, fuzzy
 msgid "Import Presets"
 msgstr "Импортировать предустановки"
 
 #: data/ui/application.glade:187 src/calibration_ui.cpp:48
 #: src/calibration_ui.cpp:175
-#, fuzzy
 msgid "Test Signals"
 msgstr "Проверочный сигнал"
 
@@ -49,9 +46,8 @@ msgid "Start Service at Login"
 msgstr "Запуск службы при запуске"
 
 #: data/ui/application.glade:544
-#, fuzzy
 msgid "Enable All Applications"
-msgstr "Приложения"
+msgstr "Включить для всех приложений"
 
 #: data/ui/application.glade:569
 msgid "Use Dark Theme"
@@ -59,7 +55,7 @@ msgstr "Исп. тёмную тему"
 
 #: data/ui/application.glade:594
 msgid "Settings"
-msgstr "Параметры"
+msgstr "Настройки"
 
 #: data/ui/application.glade:603 data/ui/equalizer_band.glade:105
 #: data/ui/equalizer_band.glade:120
@@ -75,38 +71,33 @@ msgid "Show"
 msgstr "Показать"
 
 #: data/ui/application.glade:662
-#, fuzzy
 msgid "Points"
 msgstr "Точки"
 
 #: data/ui/application.glade:693
 msgid "Use Custom Color"
-msgstr ""
+msgstr "Использовать свой цвет"
 
 #: data/ui/application.glade:718
-#, fuzzy
 msgid "Spectrum Color"
-msgstr "Спектр"
+msgstr "Цвет спектра"
 
 #: data/ui/application.glade:745
-#, fuzzy
 msgid "Height"
-msgstr "Правый"
+msgstr "Высота"
 
 #: data/ui/application.glade:773 data/ui/convolver.glade:396
 msgid "Spectrum"
 msgstr "Спектр"
 
 #: data/ui/application.glade:802 data/ui/application.glade:950
-#, fuzzy
 msgid "Use Default"
 msgstr "По умолчанию"
 
 #: data/ui/application.glade:840 data/ui/application.glade:987
 #: data/ui/app_info.glade:156
-#, fuzzy
 msgid "Buffer"
-msgstr "Буферизация"
+msgstr "Буфер"
 
 #: data/ui/application.glade:873 data/ui/application.glade:1019
 #: data/ui/app_info.glade:183
@@ -115,19 +106,16 @@ msgstr "Задержка"
 
 # Taking lingual shortcuts to squeeze it in the text box
 #: data/ui/application.glade:906 data/ui/application.glade:1051
-#, fuzzy
 msgid "Block Size"
-msgstr "Глубина"
+msgstr "Размер блока"
 
 #: data/ui/application.glade:936
-#, fuzzy
 msgid "Input Effects"
-msgstr "PulseEffects"
+msgstr "Эффекты для ввода звука"
 
 #: data/ui/application.glade:1081
-#, fuzzy
 msgid "Output Effects"
-msgstr "Ограничитель ввода"
+msgstr "Эффекты для вывода звука"
 
 #: data/ui/application.glade:1108
 msgid "Pulseaudio"
@@ -158,19 +146,16 @@ msgid "State"
 msgstr "Состояние"
 
 #: data/ui/limiter.glade:61 data/ui/limiter.glade:413 data/ui/webrtc.glade:377
-#, fuzzy
 msgid "Limiter"
-msgstr "Ограничение [dB]"
+msgstr "Ограничитель"
 
 #: data/ui/limiter.glade:213
-#, fuzzy
 msgid "Input Gain"
-msgstr "Усиление ввода [dB]"
+msgstr "Усиление ввода"
 
 #: data/ui/limiter.glade:246
-#, fuzzy
 msgid "Limit"
-msgstr "Ограничение [dB]"
+msgstr "Ограничение"
 
 #: data/ui/limiter.glade:301 data/ui/compressor.glade:372
 #: data/ui/multiband_compressor.glade:537
@@ -180,9 +165,8 @@ msgstr "Ограничение [dB]"
 #: data/ui/gate.glade:302 data/ui/multiband_gate.glade:557
 #: data/ui/multiband_gate.glade:964 data/ui/multiband_gate.glade:1375
 #: data/ui/multiband_gate.glade:1786
-#, fuzzy
 msgid "Release"
-msgstr "Высвобождение [s]"
+msgstr "Высвобождение"
 
 #: data/ui/limiter.glade:314
 msgid "Lookahead"
@@ -198,19 +182,16 @@ msgstr ""
 
 #: data/ui/limiter.glade:426 data/ui/webrtc.glade:141 data/ui/webrtc.glade:273
 #: data/ui/webrtc.glade:319 data/ui/webrtc.glade:468
-#, fuzzy
 msgid "Enable"
-msgstr "Таблица синусоид"
+msgstr "Включить"
 
 #: data/ui/limiter.glade:452 data/ui/calibration_mic.glade:29
-#, fuzzy
 msgid "Window"
-msgstr "Окно [s]"
+msgstr "Окно"
 
 #: data/ui/limiter.glade:465
-#, fuzzy
 msgid "Target"
-msgstr "Целевой результат [dB]"
+msgstr "Целевой результат"
 
 #: data/ui/limiter.glade:543 data/ui/compressor.glade:406
 #: data/ui/multiband_compressor.glade:571
@@ -220,14 +201,12 @@ msgstr "Целевой результат [dB]"
 #: data/ui/gate.glade:336 data/ui/multiband_gate.glade:591
 #: data/ui/multiband_gate.glade:999 data/ui/multiband_gate.glade:1410
 #: data/ui/multiband_gate.glade:1821 data/ui/deesser.glade:461
-#, fuzzy
 msgid "Threshold"
-msgstr "Порог [дБ]"
+msgstr "Порог"
 
 #: data/ui/limiter.glade:578
-#, fuzzy
 msgid "Tolerance"
-msgstr "Допуск [dB]"
+msgstr "Допуск"
 
 #: data/ui/limiter.glade:595
 msgid "Auto Volume"
@@ -289,18 +268,16 @@ msgstr "По умолчанию"
 
 #: data/ui/compressor.glade:235 data/ui/gate.glade:166
 #: data/ui/deesser.glade:192
-#, fuzzy
 msgid "Detection"
-msgstr "Затухание"
+msgstr "Определение"
 
 #: data/ui/compressor.glade:249 data/ui/gate.glade:180
-#, fuzzy
 msgid "Stereo Link"
 msgstr "Стереокорректор"
 
 #: data/ui/compressor.glade:263
 msgid "Mix"
-msgstr "смешать"
+msgstr "Смешать"
 
 #: data/ui/compressor.glade:293 data/ui/multiband_compressor.glade:476
 #: data/ui/multiband_compressor.glade:848
@@ -324,14 +301,12 @@ msgid "Peak"
 msgstr "Пик"
 
 #: data/ui/compressor.glade:309 data/ui/gate.glade:239
-#, fuzzy
 msgid "Average"
-msgstr "средняя"
+msgstr "Средняя"
 
 #: data/ui/compressor.glade:310 data/ui/gate.glade:240
-#, fuzzy
 msgid "Maximum"
-msgstr "максимум"
+msgstr "Максимум"
 
 #: data/ui/compressor.glade:338 data/ui/multiband_compressor.glade:503
 #: data/ui/multiband_compressor.glade:875
@@ -339,9 +314,8 @@ msgstr "максимум"
 #: data/ui/multiband_compressor.glade:1631 data/ui/gate.glade:268
 #: data/ui/multiband_gate.glade:523 data/ui/multiband_gate.glade:929
 #: data/ui/multiband_gate.glade:1340 data/ui/multiband_gate.glade:1751
-#, fuzzy
 msgid "Attack"
-msgstr "Атака [мс]"
+msgstr "Атака"
 
 #: data/ui/compressor.glade:439 data/ui/multiband_compressor.glade:604
 #: data/ui/multiband_compressor.glade:979
@@ -350,9 +324,8 @@ msgstr "Атака [мс]"
 #: data/ui/multiband_gate.glade:624 data/ui/multiband_gate.glade:1033
 #: data/ui/multiband_gate.glade:1444 data/ui/multiband_gate.glade:1855
 #: data/ui/deesser.glade:494
-#, fuzzy
 msgid "Ratio"
-msgstr "Отношение [n:1]"
+msgstr "Отношение"
 
 #: data/ui/compressor.glade:471 data/ui/multiband_compressor.glade:636
 #: data/ui/multiband_compressor.glade:1012
@@ -360,9 +333,8 @@ msgstr "Отношение [n:1]"
 #: data/ui/multiband_compressor.glade:1768 data/ui/gate.glade:401
 #: data/ui/multiband_gate.glade:656 data/ui/multiband_gate.glade:1066
 #: data/ui/multiband_gate.glade:1477 data/ui/multiband_gate.glade:1888
-#, fuzzy
 msgid "Knee"
-msgstr "Излом [дБ]"
+msgstr "Излом"
 
 #: data/ui/compressor.glade:505 data/ui/multiband_compressor.glade:670
 #: data/ui/multiband_compressor.glade:1047
@@ -371,28 +343,25 @@ msgstr "Излом [дБ]"
 #: data/ui/multiband_gate.glade:690 data/ui/multiband_gate.glade:1101
 #: data/ui/multiband_gate.glade:1512 data/ui/multiband_gate.glade:1923
 #: data/ui/deesser.glade:525
-#, fuzzy
 msgid "Makeup"
-msgstr "Компенсирование [дБ]"
+msgstr "Компенсирование"
 
 #: data/ui/compressor.glade:739 data/ui/maximizer.glade:270
 #: data/ui/multiband_gate.glade:725 data/ui/multiband_gate.glade:1156
 #: data/ui/multiband_gate.glade:1567 data/ui/multiband_gate.glade:1978
 #: data/ui/deesser.glade:750
-#, fuzzy
 msgid "Reduction"
 msgstr "Увеличение ослабления"
 
 #: data/ui/multiband_compressor.glade:70
-#, fuzzy
 msgid "Multiband Compressor"
-msgstr "Компрессор"
+msgstr "Многополосный компрессор"
 
 #: data/ui/multiband_compressor.glade:285 data/ui/stereo_tools.glade:309
 #: data/ui/multiband_gate.glade:305 data/ui/deesser.glade:206
 #: data/ui/webrtc.glade:338
 msgid "Mode"
-msgstr "режим"
+msgstr "Режим"
 
 #: data/ui/multiband_compressor.glade:299 data/ui/multiband_gate.glade:319
 msgid "LR4"
@@ -436,47 +405,40 @@ msgstr ""
 #: data/ui/multiband_compressor.glade:1092
 #: data/ui/multiband_compressor.glade:1470
 #: data/ui/multiband_compressor.glade:1848
-#, fuzzy
 msgid "Compression"
-msgstr "Без сжатия"
+msgstr "Сжатие"
 
 #: data/ui/multiband_compressor.glade:798 data/ui/multiband_gate.glade:852
-#, fuzzy
 msgid "Sub Band"
-msgstr "Басы [дБ]"
+msgstr "Поддиапазон"
 
 #: data/ui/multiband_compressor.glade:1175 data/ui/multiband_gate.glade:1262
-#, fuzzy
 msgid "Low Band"
 msgstr "Фильтр низких частот"
 
 #: data/ui/multiband_compressor.glade:1553 data/ui/multiband_gate.glade:1673
-#, fuzzy
 msgid "Mid Band"
-msgstr "Средние частоты [дБ]"
+msgstr "Средние частоты"
 
 #: data/ui/multiband_compressor.glade:1931 data/ui/multiband_gate.glade:2084
-#, fuzzy
 msgid "High Band"
-msgstr "Высокачастотный фильтр"
+msgstr "Высокие частоты"
 
 #: data/ui/filter.glade:31
-#, fuzzy
 msgid "Filter"
-msgstr "Фильтры"
+msgstr "Фильтр"
 
 #: data/ui/filter.glade:122
-#, fuzzy
 msgid "Muted"
-msgstr "Приглушить"
+msgstr "Приглушенный"
 
 #: data/ui/filter.glade:134 data/ui/reverb.glade:208
 msgid "Disco"
-msgstr ""
+msgstr "Диско"
 
 #: data/ui/filter.glade:146
 msgid "Distant Headphones"
-msgstr ""
+msgstr "Находящиеся далеко наушники"
 
 #: data/ui/filter.glade:219
 msgid "12dB/oct Lowpass"
@@ -530,15 +492,15 @@ msgstr ""
 #: data/ui/calibration_signals.glade:32
 #, fuzzy
 msgid "Frequency"
-msgstr "Частота [Hz]"
+msgstr "Частота"
 
 #: data/ui/filter.glade:286
 msgid "Resonance"
-msgstr ""
+msgstr "Резонансы"
 
 #: data/ui/filter.glade:321
 msgid "Inertia"
-msgstr ""
+msgstr "Инертность"
 
 #: data/ui/equalizer.glade:24
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
@@ -550,17 +512,16 @@ msgid "Flat Response"
 msgstr "Плоская АЧХ"
 
 #: data/ui/equalizer.glade:125
-#, fuzzy
 msgid "Reset Equalizer"
-msgstr "Эквалайзер"
+msgstr "Сбросить эквалайзер"
 
 #: data/ui/equalizer.glade:141
 msgid "Bands"
-msgstr ""
+msgstr "Частоты"
 
 #: data/ui/equalizer.glade:168
 msgid "Calculate Frequencies"
-msgstr ""
+msgstr "Подсчитать частоты"
 
 #: data/ui/equalizer_band.glade:54
 msgid "Width"
@@ -587,36 +548,33 @@ msgid "Reverberation"
 msgstr "Ревербация"
 
 #: data/ui/reverb.glade:156
-#, fuzzy
 msgid "Ambience"
-msgstr "Тишина"
+msgstr ""
 
 #: data/ui/reverb.glade:169
 msgid "Empty Walls"
-msgstr ""
+msgstr "Пустые стены"
 
 # Taking lingual shortcuts to squeeze it in the text box
 #: data/ui/reverb.glade:182
-#, fuzzy
 msgid "Room"
-msgstr "Глубина"
+msgstr "Комната"
 
 #: data/ui/reverb.glade:195
 msgid "Large Empty Hall"
-msgstr ""
+msgstr "Большой пустой зал"
 
 #: data/ui/reverb.glade:221
 msgid "Large Occupied Hall"
-msgstr ""
+msgstr "Большой занятый чем-то зал"
 
 #: data/ui/reverb.glade:306
-#, fuzzy
 msgid "Pre Delay"
-msgstr "Задержка [ms]"
+msgstr "Предзадержка"
 
 #: data/ui/reverb.glade:338
 msgid "Decay Time"
-msgstr ""
+msgstr "Время распада"
 
 #: data/ui/reverb.glade:371 data/ui/bass_enhancer.glade:245
 #: data/ui/exciter.glade:248
@@ -629,42 +587,40 @@ msgstr ""
 
 #: data/ui/reverb.glade:435
 msgid "Bass Cut"
-msgstr ""
+msgstr "Обрезка басов"
 
 #: data/ui/reverb.glade:448
 msgid "Treble Cut"
-msgstr ""
+msgstr "Обрезка тембра"
 
 #: data/ui/reverb.glade:498
 msgid "High Frequency Damping"
-msgstr ""
+msgstr "Высокочастотное демпфирование"
 
 #: data/ui/reverb.glade:531
 msgid "Diffusion"
-msgstr ""
+msgstr "Диффузия"
 
 # Taking lingual shortcuts to squeeze it in the text box
 #: data/ui/reverb.glade:564
 msgid "Room Size"
-msgstr "Глубина"
+msgstr "Размер комнаты"
 
 #: data/ui/reverb.glade:580
-#, fuzzy
 msgid "Small"
-msgstr "Маленькая комната"
+msgstr "Маленькая"
 
 #: data/ui/reverb.glade:581
 msgid "Medium"
-msgstr ""
+msgstr "Средняя"
 
 #: data/ui/reverb.glade:582
-#, fuzzy
 msgid "Large"
-msgstr "Целевой результат [dB]"
+msgstr "Огромная"
 
 #: data/ui/reverb.glade:583
 msgid "Tunnel"
-msgstr ""
+msgstr "Туннель"
 
 #: data/ui/reverb.glade:584
 msgid "Large/smooth"
@@ -672,17 +628,16 @@ msgstr ""
 
 #: data/ui/reverb.glade:585
 msgid "Experimental"
-msgstr ""
+msgstr "Экспериментальный"
 
 #: data/ui/bass_enhancer.glade:50
-#, fuzzy
 msgid "Bass Enhancer"
 msgstr "Усиление басов"
 
 #: data/ui/bass_enhancer.glade:148 data/ui/exciter.glade:148
 #: data/ui/deesser.glade:165
 msgid "Listen"
-msgstr ""
+msgstr "Прослушать"
 
 #: data/ui/bass_enhancer.glade:189 data/ui/exciter.glade:190
 msgid "3rd"
@@ -702,45 +657,38 @@ msgid "Harmonics"
 msgstr "Гармоники"
 
 #: data/ui/bass_enhancer.glade:269 data/ui/exciter.glade:274
-#, fuzzy
 msgid "Scope"
-msgstr "Размах [Гц]"
+msgstr "Размах"
 
 #: data/ui/bass_enhancer.glade:358
-#, fuzzy
 msgid "Floor"
-msgstr "Шум [Гц]"
+msgstr "Нижний порог"
 
 #: data/ui/exciter.glade:50
 msgid "Exciter"
 msgstr "Генератор"
 
 #: data/ui/exciter.glade:360 data/ui/maximizer.glade:161
-#, fuzzy
 msgid "Ceiling"
-msgstr "Верхний порог (Гц)"
+msgstr "Верхний порог"
 
 #: data/ui/stereo_enhancer.glade:24
-#, fuzzy
 msgid "Stereo Enhancer"
 msgstr "Стереокорректор"
 
 #: data/ui/stereo_enhancer.glade:192 data/ui/stereo_enhancer.glade:343
 #: data/ui/stereo_tools.glade:214 data/ui/stereo_tools.glade:628
-#, fuzzy
 msgid "Balance"
 msgstr "Баланс"
 
 #: data/ui/stereo_enhancer.glade:227 data/ui/stereo_enhancer.glade:378
-#, fuzzy
 msgid "Delay"
-msgstr "Задержка [ms]"
+msgstr "Задержка"
 
 #: data/ui/stereo_enhancer.glade:261 data/ui/stereo_enhancer.glade:412
 #: data/ui/deesser.glade:298
-#, fuzzy
 msgid "Gain"
-msgstr "Усилить [дБ]"
+msgstr "Усиление"
 
 #: data/ui/stereo_enhancer.glade:270 data/ui/stereo_enhancer.glade:421
 #: data/ui/stereo_tools.glade:520 data/ui/stereo_tools.glade:560
@@ -784,14 +732,12 @@ msgid "Side Gain"
 msgstr "Усиление ввода [дБ]"
 
 #: data/ui/stereo_tools.glade:42
-#, fuzzy
 msgid "Stereo Tools"
-msgstr "Стереокорректор"
+msgstr "Стереокорректоры"
 
 #: data/ui/stereo_tools.glade:246
-#, fuzzy
 msgid "S/C Level"
-msgstr "Уровень"
+msgstr ""
 
 #: data/ui/stereo_tools.glade:275
 msgid "Softclip"
@@ -810,14 +756,12 @@ msgid "MS > LR (Mid-Side to Stereo)"
 msgstr ""
 
 #: data/ui/stereo_tools.glade:328
-#, fuzzy
 msgid "LR > LL (Mono Left Channel)"
-msgstr "Левый канал"
+msgstr ""
 
 #: data/ui/stereo_tools.glade:329
-#, fuzzy
 msgid "LR > RR (Mono Right Channel)"
-msgstr "Правый канал"
+msgstr ""
 
 #: data/ui/stereo_tools.glade:330
 msgid "LR > L+R (Mono Sum L+R)"
@@ -828,44 +772,36 @@ msgid "LR > RL (Stereo Flip Channels)"
 msgstr ""
 
 #: data/ui/stereo_tools.glade:351
-#, fuzzy
 msgid "Side Level"
-msgstr "Уровень"
+msgstr "Боковой уровень"
 
 #: data/ui/stereo_tools.glade:402
-#, fuzzy
 msgid "Side Balance"
-msgstr "Баланс"
+msgstr "Боковой баланс"
 
 #: data/ui/stereo_tools.glade:434
-#, fuzzy
 msgid "Middle Level"
-msgstr "Средний источник"
+msgstr "Средний уровень"
 
 #: data/ui/stereo_tools.glade:447
-#, fuzzy
 msgid "Middle Panorama"
-msgstr "Панорама"
+msgstr "Срединная панорама"
 
 #: data/ui/stereo_tools.glade:482
-#, fuzzy
 msgid "Stereo Matrix"
-msgstr "Стереокорректор"
+msgstr "Стерео матрица"
 
 #: data/ui/stereo_tools.glade:660
-#, fuzzy
 msgid "Delay L/R"
-msgstr "Задержка [ms]"
+msgstr "Задержка Л/П"
 
 #: data/ui/stereo_tools.glade:694
-#, fuzzy
 msgid "Stereo Base"
-msgstr "Стереокорректор"
+msgstr ""
 
 #: data/ui/stereo_tools.glade:727
-#, fuzzy
 msgid "Stereo Phase"
-msgstr "Стереокорректор"
+msgstr ""
 
 #: data/ui/crossfeed.glade:59
 msgid "Jmeier"
@@ -876,18 +812,16 @@ msgid "Cmoy"
 msgstr ""
 
 #: data/ui/crossfeed.glade:121
-#, fuzzy
 msgid "Cutoff"
-msgstr "Усечение [Гц]"
+msgstr "Усечение"
 
 #: data/ui/crossfeed.glade:154
-#, fuzzy
 msgid "Feed"
-msgstr "Подача [дБ]"
+msgstr "Подача"
 
 #: data/ui/crossfeed.glade:390
 msgid "Crossfeed"
-msgstr "Кроссфейд"
+msgstr "Перекрестаня подача"
 
 #: data/ui/maximizer.glade:29
 msgid "Maximizer"
@@ -895,7 +829,7 @@ msgstr "Максимизатор"
 
 #: data/ui/loudness.glade:24 data/ui/loudness.glade:130
 msgid "Loudness"
-msgstr ""
+msgstr "Громкость"
 
 #: data/ui/loudness.glade:198
 msgid "Link"
@@ -916,9 +850,8 @@ msgid "Gating"
 msgstr ""
 
 #: data/ui/multiband_gate.glade:70
-#, fuzzy
 msgid "Multiband Gate"
-msgstr "Компрессор"
+msgstr ""
 
 #: data/ui/deesser.glade:61
 msgid "Deesser"
@@ -937,64 +870,56 @@ msgid "Level"
 msgstr "Уровень"
 
 #: data/ui/deesser.glade:397
-#, fuzzy
 msgid "Peak Q"
-msgstr "Пик"
+msgstr "Пик Q"
 
 #: data/ui/deesser.glade:429
 msgid "Laxity"
 msgstr ""
 
 #: data/ui/deesser.glade:763
-#, fuzzy
 msgid "Detected"
-msgstr "Затухание"
+msgstr ""
 
 #: data/ui/convolver.glade:24
 msgid "Convolver"
 msgstr ""
 
 #: data/ui/convolver.glade:103
-#, fuzzy
 msgid "Import Impulse"
-msgstr "Плоская АЧХ"
+msgstr "Импортировать импульс"
 
 #: data/ui/convolver.glade:107
 msgid "Import Impulse Response File"
-msgstr ""
+msgstr "Импортировать файл импульсной реакции"
 
 #: data/ui/convolver.glade:204
 msgid "L"
-msgstr "L"
+msgstr "Л"
 
 #: data/ui/convolver.glade:218
 msgid "R"
-msgstr "R"
+msgstr "П"
 
 #: data/ui/convolver.glade:277
-#, fuzzy
 msgid "Duration"
-msgstr "Калибровка"
+msgstr "Продолжительность"
 
 #: data/ui/convolver.glade:291
-#, fuzzy
 msgid "Samples"
-msgstr "Ресемплер"
+msgstr "Образцы"
 
 #: data/ui/convolver.glade:324 src/convolver_ui.cpp:254
-#, fuzzy
 msgid "Impulse Response"
-msgstr "Плоская АЧХ"
+msgstr "Импульсная реакция"
 
 #: data/ui/convolver.glade:346
-#, fuzzy
 msgid "Stereo Width"
-msgstr "Стереокорректор"
+msgstr "Ширина стерео"
 
 #: data/ui/convolver.glade:376
-#, fuzzy
 msgid "Select the impulse Response File"
-msgstr "Плоская АЧХ"
+msgstr "Выбрать файл с импульсной реакцией"
 
 #: data/ui/pitch.glade:36
 msgid "Pitch"
@@ -1026,7 +951,7 @@ msgstr "Сохранить формат"
 
 #: data/ui/webrtc.glade:30
 msgid "Webrtc"
-msgstr ""
+msgstr "Webrtc"
 
 #: data/ui/webrtc.glade:162
 msgid "Extended Filter"
@@ -1037,14 +962,12 @@ msgid "Delay Agnostic"
 msgstr "Задержка"
 
 #: data/ui/webrtc.glade:187
-#, fuzzy
 msgid "High Pass Filter"
 msgstr "Высокачастотный фильтр"
 
 #: data/ui/webrtc.glade:215 data/ui/webrtc.glade:264
-#, fuzzy
 msgid "Suppresion Level"
-msgstr "Увеличение ослабления"
+msgstr "Уровень подавления"
 
 #: data/ui/webrtc.glade:229 data/ui/webrtc.glade:293 data/ui/webrtc.glade:490
 msgid "Low"
@@ -1055,29 +978,24 @@ msgid "Moderate"
 msgstr ""
 
 #: data/ui/webrtc.glade:231 data/ui/webrtc.glade:295 data/ui/webrtc.glade:492
-#, fuzzy
 msgid "High"
-msgstr "Высокачастотный фильтр"
+msgstr "Высокий"
 
 #: data/ui/webrtc.glade:248
-#, fuzzy
 msgid "Echo Canceller"
-msgstr "Баланс"
+msgstr "Шумодав"
 
 #: data/ui/webrtc.glade:296
-#, fuzzy
 msgid "Very High"
-msgstr "Высокачастотный фильтр"
+msgstr "Очень высокий"
 
 #: data/ui/webrtc.glade:307
-#, fuzzy
 msgid "Noise Suppressor"
-msgstr "Компрессор"
+msgstr "Компрессор шума"
 
 #: data/ui/webrtc.glade:352
-#, fuzzy
 msgid "Adaptive Digital"
-msgstr "Адаптивный"
+msgstr ""
 
 #: data/ui/webrtc.glade:353
 msgid "Fixed Digital"
@@ -1088,13 +1006,12 @@ msgid "Gain Controller"
 msgstr ""
 
 #: data/ui/webrtc.glade:397
-#, fuzzy
 msgid "Target Level"
-msgstr "Целевой результат [dB]"
+msgstr "Целевой результат"
 
 #: data/ui/webrtc.glade:408
 msgid "Maximum Gain"
-msgstr ""
+msgstr "Максимальное увеличение"
 
 #: data/ui/webrtc.glade:489
 msgid "Very Low"
@@ -1102,19 +1019,16 @@ msgstr "Очень низкий"
 
 # Taking lingual shortcuts to squeeze it in the text box
 #: data/ui/webrtc.glade:506
-#, fuzzy
 msgid "Frame Size"
-msgstr "Глубина"
+msgstr "Размер кадра"
 
 #: data/ui/webrtc.glade:537
-#, fuzzy
 msgid "Detection Likelihood"
-msgstr "Затухание"
+msgstr "ЗВероятность обнаружения"
 
 #: data/ui/webrtc.glade:547
-#, fuzzy
 msgid "Voice Detector"
-msgstr "Затухание"
+msgstr "Обнаруживатель голоса"
 
 #: data/ui/calibration_signals.glade:64
 msgid "Volume"
@@ -1137,7 +1051,6 @@ msgid "Triangle"
 msgstr "Треугольный"
 
 #: data/ui/calibration_signals.glade:112
-#, fuzzy
 msgid "Silence"
 msgstr "Тишина"
 
@@ -1239,7 +1152,6 @@ msgstr ""
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
 #: src/effects_base_ui.cpp:23
-#, fuzzy
 msgid "Applications"
 msgstr "Приложения"
 
@@ -1256,15 +1168,13 @@ msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Эквалайзер, Компрессор и другие аудиоэффекты"
 
 #: data/com.github.wwmm.pulseeffects.desktop.in:6
-#, fuzzy
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr "лимитер;компрессор;ребербатор;эквалайзер;автогромкость;"
 
 #. Translators: This is an icon name, don't translate!
 #: data/com.github.wwmm.pulseeffects.desktop.in:10
-#, fuzzy
 msgid "pulseeffects"
-msgstr "pulseeffects"
+msgstr ""
 
 #: src/application.cpp:18
 msgid "Quit PulseEffects. Useful when running in service mode."
@@ -1279,7 +1189,6 @@ msgid "Load a preset. Example: pulseeffects -l music"
 msgstr "Загрузить пресет. Пример: pulseeffects -l music"
 
 #: src/application.cpp:49
-#, fuzzy
 msgid "Presets: "
 msgstr "Предустановки: "
 
@@ -1288,9 +1197,8 @@ msgid "Open"
 msgstr "Открыть"
 
 #: src/application_ui.cpp:814 src/convolver_ui.cpp:250
-#, fuzzy
 msgid "Cancel"
-msgstr "Баланс"
+msgstr "Отмена"
 
 #: src/app_info_ui.cpp:85
 msgid "paused"
@@ -1301,14 +1209,12 @@ msgid "playing"
 msgstr "воспроизводится"
 
 #: src/calibration_ui.cpp:182
-#, fuzzy
 msgid "Calibration Microphone"
 msgstr "Калибровка корректировки микрофона"
 
 #: src/convolver_ui.cpp:249
-#, fuzzy
 msgid "Import Impulse Response"
-msgstr "Плоская АЧХ"
+msgstr "Импортировать импульсную реакцию"
 
 #, fuzzy
 #~ msgid "Import File"
