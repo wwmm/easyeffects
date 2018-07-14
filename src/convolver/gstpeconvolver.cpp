@@ -357,9 +357,9 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver,
 
             if (ret != 0) {
                 failed = true;
-                util::warning(peconvolver->log_tag +
-                              "can't initialise zita-convolver engine: " +
-                              std::to_string(ret));
+                util::debug(peconvolver->log_tag +
+                            "can't initialise zita-convolver engine: " +
+                            std::to_string(ret));
             }
 
             ret = peconvolver->conv->impdata_create(
@@ -368,7 +368,7 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver,
 
             if (ret != 0) {
                 failed = true;
-                util::warning(
+                util::debug(
                     peconvolver->log_tag +
                     "left impdata_create failed: " + std::to_string(ret));
             }
@@ -379,7 +379,7 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver,
 
             if (ret != 0) {
                 failed = true;
-                util::warning(
+                util::debug(
                     peconvolver->log_tag +
                     "right impdata_create failed: " + std::to_string(ret));
             }
@@ -389,16 +389,16 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver,
 
             if (ret != 0) {
                 failed = true;
-                util::warning(peconvolver->log_tag +
-                              "start_process failed: " + std::to_string(ret));
+                util::debug(peconvolver->log_tag +
+                            "start_process failed: " + std::to_string(ret));
             }
 
             peconvolver->adapter = gst_adapter_new();
 
             peconvolver->ready = (failed) ? false : true;
         } else {
-            util::warning(peconvolver->log_tag +
-                          "we will just passthrough data.");
+            util::debug(peconvolver->log_tag +
+                        "we will just passthrough data.");
 
             peconvolver->ready = false;
         }
@@ -423,8 +423,8 @@ static void gst_peconvolver_process(GstPeconvolver* peconvolver,
         int ret = peconvolver->conv->process(THREAD_SYNC_MODE);
 
         if (ret != 0) {
-            util::warning(peconvolver->log_tag +
-                          "IR: process failed: " + std::to_string(ret));
+            util::debug(peconvolver->log_tag +
+                        "IR: process failed: " + std::to_string(ret));
         }
 
         // interleave
