@@ -1,8 +1,9 @@
-pulseeffects (4.1.7-4) unstable; urgency=low
+pulseeffects (4.1.7-2) unstable; urgency=low
 
-  * package gstreamer plugin peconvolver as a separate package gstreamer1.0-convolver-pulseeffects
+  * package gstreamer plugin peconvolver as a separate package
+  gstreamer1.0-convolver-pulseeffects
   
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 16 Jul 2018 01:36:00 +0300 
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 16 Jul 2018 02:20:00 +0300 
  
 pulseeffects (4.1.7-1) unstable; urgency=low
 
