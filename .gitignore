@@ -24,6 +24,10 @@ debian/*
 !debian/rules
 !debian/source/format
 !debian/build-ppa.sh
+!debian/*.install
+!debian/lintian-overrides
+
+build-ppa.sh
 
 # Dolphin file manager creates the file .directory to save some folder-specific settings
 *.directory

@@ -1,3 +1,16 @@
+pulseeffects (4.1.7-3) unstable; urgency=low
+
+  * package gstreamer plugin peconvolver as a separate package
+  gstreamer1.0-convolver-pulseeffects
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 16 Jul 2018 02:20:00 +0300 
+ 
+pulseeffects (4.1.7-1) unstable; urgency=low
+
+  * update to version 4.1.7 upstream
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sun, 15 Jul 2018 12:13:00 +0300 
+ 
 pulseeffects (4.1.6-2) unstable; urgency=low
 
   * Fixed Russian localization a bit (still requires a lot of work and fixes of regressions)

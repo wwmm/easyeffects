@@ -35,6 +35,19 @@ Depends: ${misc:Depends},
 Recommends: calf-plugins (>= 0.90.0),
             zam-plugins,
             rubberband-ladspa,
-            liblilv-0-0
+            liblilv-0-0,
+            gstreamer1.0-convolver-pulseeffects
 Description: Sound input and output effects for PulseAudio
  Many sound effects for PulseAudio input and output.
+
+Package: gstreamer1.0-convolver-pulseeffects
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Provides: peconvolver, gstreamer1.0-convolver
+Replaces: pulseeffects (<< 4.1.7-3)
+Description: Gstreamer convolver
+ Gstreamer convolver plugin from PulseEffects.
+ .
+ Example command-line:
+ gst-launch-1.0 audiotestsrc blocksize=512 ! peconvolver kernel-path=full_path_to_file ! pulsesink

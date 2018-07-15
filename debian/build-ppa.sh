@@ -11,6 +11,7 @@ if [ "$(basename "${dir_start}")" = 'debian' ]; then
 	cd ..
 fi
 
+debian/rules clean
 dir0="$(pwd)"
 old_header=$(head -1 ./debian/changelog)
 old_format_source=$(cat ./debian/source/format)
@@ -38,4 +39,5 @@ do
 	sleep 1
 done
 
+debian/rules clean
 cd "$dir_start"
