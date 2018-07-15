@@ -45,6 +45,7 @@ Architecture: any
 Depends: ${misc:Depends},
          ${shlibs:Depends}
 Provides: peconvolver, gstreamer1.0-convolver
+Replaces: pulseeffects (<< 4.1.7-3)
 Description: Gstreamer convolver
  Gstreamer convolver plugin from PulseEffects.
  .
