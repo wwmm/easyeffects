@@ -3,6 +3,7 @@
 #include <gst/fft/gstfftf32.h>
 #include <boost/math/interpolators/cubic_b_spline.hpp>
 #include <sndfile.hh>
+#include <thread>
 #include "convolver_ui.hpp"
 
 ConvolverUi::ConvolverUi(BaseObjectType* cobject,
@@ -113,7 +114,8 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
         get_irs_info();
     };
 
-    mythreads.push_back(std::thread(f));
+    std::thread t(f);
+    t.detach();
 
     /* this is necessary to update the interface with the irs info when a preset
        is loaded
@@ -125,7 +127,8 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
             get_irs_info();
         };
 
-        mythreads.push_back(std::thread(f));
+        std::thread t(f);
+        t.detach();
     });
 }
 
@@ -134,10 +137,6 @@ ConvolverUi::~ConvolverUi() {
 
     for (auto c : connections) {
         c.disconnect();
-    }
-
-    for (auto& t : mythreads) {
-        t.join();
     }
 
     util::debug(name + " ui destroyed");
@@ -322,22 +321,22 @@ void ConvolverUi::get_irs_info() {
         (frames_in > max_plot_points) ? max_plot_points : frames_in;
     float plot_dt = duration / max_points;
 
-    time_axis.clear();
+    time_axis.resize(max_points);
 
     for (uint n = 0; n < max_points; n++) {
-        time_axis.push_back(n * plot_dt);
+        time_axis[n] = n * plot_dt;
     }
 
     max_time = *std::max_element(time_axis.begin(), time_axis.end());
 
     // deinterleaving channels and calculating each amplitude in decibel
 
-    left_mag.clear();
-    right_mag.clear();
+    left_mag.resize(frames_in);
+    right_mag.resize(frames_in);
 
     for (uint n = 0; n < frames_in; n++) {
-        left_mag.push_back(util::linear_to_db(kernel[2 * n]));
-        right_mag.push_back(util::linear_to_db(kernel[2 * n + 1]));
+        left_mag[n] = util::linear_to_db(kernel[2 * n]);
+        right_mag[n] = util::linear_to_db(kernel[2 * n + 1]);
     }
 
     /*interpolating because we can not plot all the data in the irs file. It
@@ -372,15 +371,10 @@ void ConvolverUi::get_irs_info() {
 
     // rescaling between 0 and 1
 
-    for (uint n = 0; n < frames_in; n++) {
+    for (uint n = 0; n < max_points; n++) {
         left_mag[n] = (left_mag[n] - min_left) / (max_left - min_left);
         right_mag[n] = (right_mag[n] - min_right) / (max_right - min_right);
     }
-
-    get_irs_spectrum(rate);
-
-    left_plot->queue_draw();
-    right_plot->queue_draw();
 
     // updating interface with ir file info
 
@@ -399,6 +393,11 @@ void ConvolverUi::get_irs_info() {
 
         label_file_name->set_text(fpath.stem().string());
     });
+
+    get_irs_spectrum(rate);
+
+    left_plot->queue_draw();
+    right_plot->queue_draw();
 
     delete[] kernel;
 }

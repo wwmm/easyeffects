@@ -5,10 +5,14 @@
 ## [4.1.7]
 ### Added
 - Improved Russian translations
+- Using a background thread to load the impulse response file in the plugin.
+This avoids playback stalls when the impulse file is large.
 
 ### Fixed
-- Using a secondary thread to load the impulse response file in the plugin. This
-avoid playback stalls when the impulse file is large.
+- Fixed the meson scripts so that the convolver is optional. This would allow
+compilation in system that do not have zita-convolver.
+- Removed a potential crash when the impulse response file was too small.
+- Removed memory leaks in the convolver interface
 
 ## [4.1.6]
 ### Fixed

@@ -12,7 +12,6 @@
 #include <gtkmm/togglebutton.h>
 #include <boost/filesystem.hpp>
 #include <mutex>
-#include <thread>
 #include "plugin_ui_base.hpp"
 
 class ConvolverUi : public Gtk::Grid, public PluginUiBase {
@@ -53,8 +52,6 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
     std::vector<float> left_spectrum, right_spectrum, freq_axis;
 
     Glib::RefPtr<Gio::Settings> global_settings;
-
-    std::vector<std::thread> mythreads;
 
     std::mutex lock_guard_irs_info;
 

@@ -1,6 +1,6 @@
 cxx = meson.get_compiler('cpp')
 
-zita_convolver = cxx.find_library('zita-convolver')
+zita_convolver = cxx.find_library('zita-convolver', required: false)
 
 if cxx.compiles(
 '''

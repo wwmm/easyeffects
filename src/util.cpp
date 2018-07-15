@@ -33,7 +33,7 @@ std::vector<float> logspace(const float& start,
     float v = start;
 
     while (v < stop) {
-        output.push_back(pow(10, v));
+        output.push_back(powf(10.0f, v));
 
         v += delta;
     }
@@ -60,15 +60,15 @@ std::vector<float> linspace(const float& start,
 }
 
 float linear_to_db(const float& amp) {
-    if (amp >= 0.00001) {
-        return 20 * log10(amp);
+    if (amp >= 0.00001f) {
+        return 20.0f * log10f(amp);
     } else {
-        return -99;
+        return -99.0f;
     }
 }
 
 float db_to_linear(const float& db) {
-    return exp((db / 20.0) * log(10.0));
+    return expf((db / 20.0f) * logf(10.0f));
 }
 
 gboolean db20_gain_to_linear(GValue* value,
@@ -76,7 +76,7 @@ gboolean db20_gain_to_linear(GValue* value,
                              gpointer user_data) {
     double v_db = g_variant_get_double(variant);
 
-    auto v_linear = pow(10, v_db / 20.0);
+    float v_linear = powf(10.0f, (float)v_db / 20.0f);
 
     g_value_set_float(value, v_linear);
 
@@ -86,9 +86,9 @@ gboolean db20_gain_to_linear(GValue* value,
 GVariant* linear_gain_to_db20(const GValue* value,
                               const GVariantType* expected_type,
                               gpointer user_data) {
-    double v_linear = g_value_get_float(value);
+    float v_linear = g_value_get_float(value);
 
-    auto v_db = 20 * log10(v_linear);
+    double v_db = 20 * log10f(v_linear);
 
     return g_variant_new_double(v_db);
 }
@@ -98,7 +98,7 @@ gboolean db10_gain_to_linear(GValue* value,
                              gpointer user_data) {
     double v_db = g_variant_get_double(variant);
 
-    auto v_linear = pow(10, v_db / 10.0);
+    float v_linear = powf(10.0f, (float)v_db / 10.0f);
 
     g_value_set_float(value, v_linear);
 
@@ -106,7 +106,7 @@ gboolean db10_gain_to_linear(GValue* value,
 }
 
 gboolean double_to_float(GValue* value, GVariant* variant, gpointer user_data) {
-    double v_d = g_variant_get_double(variant);
+    float v_d = g_variant_get_double(variant);
 
     g_value_set_float(value, v_d);
 
@@ -118,7 +118,7 @@ gboolean db20_gain_to_linear_double(GValue* value,
                                     gpointer user_data) {
     double v_db = g_variant_get_double(variant);
 
-    auto v_linear = pow(10, v_db / 20.0);
+    double v_linear = pow(10, v_db / 20.0);
 
     g_value_set_double(value, v_linear);
 
@@ -130,7 +130,7 @@ GVariant* linear_double_gain_to_db20(const GValue* value,
                                      gpointer user_data) {
     double v_linear = g_value_get_double(value);
 
-    auto v_db = 20 * log10(v_linear);
+    double v_db = 20 * log10(v_linear);
 
     return g_variant_new_double(v_db);
 }
