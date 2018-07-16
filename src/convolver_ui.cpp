@@ -302,6 +302,17 @@ void ConvolverUi::get_irs_info() {
     SndfileHandle file = SndfileHandle(path);
 
     if (file.channels() != 2 || file.frames() == 0) {
+        // warning user that there is a problem
+
+        Glib::signal_idle().connect_once([=]() {
+            label_sampling_rate->set_text(_("failed"));
+            label_samples->set_text(_("failed"));
+
+            label_duration->set_text(_("failed"));
+
+            label_file_name->set_text(_("failed to load the impulse file"));
+        });
+
         return;
     }
 

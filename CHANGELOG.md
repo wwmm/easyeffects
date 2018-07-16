@@ -1,6 +1,10 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- A warning is shown in the convolver interface when the user loads a preset
+that points to an impulse file that does not exists in PulseEffects folder
+anymore.
 
 ## [4.1.7]
 ### Added
