@@ -5,6 +5,7 @@ Audio effects for Pulseaudio applications
 ![](images/pulseeffects.png)
 ![](images/equalizer1.png)
 ![](images/equalizer2.png)
+![](images/convolver.png)
 ![](images/test_signals.png)
 
 ## Effects Available
@@ -55,6 +56,9 @@ Version `1.12.5` or higher
 - [Calf Studio Plugins](https://calf-studio-gear.org/). Version `0.90` or higher.
 - [ZamAudio Plugins](http://www.zamaudio.com/)
 - [MDA.LV2](https://git.drobilla.net/cgit.cgi/mda.lv2.git/about/)
+- [libsamplerate](http://www.mega-nerd.com/SRC/index.html)
+- [libsndfile](http://www.mega-nerd.com/libsndfile/)
+- [zita-convolver](https://kokkinizita.linuxaudio.org/linuxaudio/)
 
 ## Changelog
 - For information about changes between versions take a look at our
