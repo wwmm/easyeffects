@@ -33,6 +33,9 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
     get_object(builder, "output_gain", output_gain);
     get_object(builder, "ir_width", ir_width);
 
+    font.set_family("Monospace");
+    font.set_weight(Pango::WEIGHT_BOLD);
+
     // drawing area callbacks
 
     left_plot->signal_draw().connect(
@@ -333,6 +336,7 @@ void ConvolverUi::get_irs_info() {
     float plot_dt = duration / max_points;
 
     time_axis.resize(max_points);
+    time_axis.shrink_to_fit();
 
     for (uint n = 0; n < max_points; n++) {
         time_axis[n] = n * plot_dt;
@@ -344,6 +348,9 @@ void ConvolverUi::get_irs_info() {
 
     left_mag.resize(frames_in);
     right_mag.resize(frames_in);
+
+    left_mag.shrink_to_fit();
+    right_mag.shrink_to_fit();
 
     for (uint n = 0; n < frames_in; n++) {
         left_mag[n] = util::linear_to_db(kernel[2 * n]);
@@ -363,6 +370,9 @@ void ConvolverUi::get_irs_info() {
 
         left_mag.resize(max_points);
         right_mag.resize(max_points);
+
+        left_mag.shrink_to_fit();
+        right_mag.shrink_to_fit();
 
         for (uint n = 0; n < max_points; n++) {
             left_mag[n] = spline_L(time_axis[n]);
@@ -424,6 +434,9 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
     tmp_l.resize(nfft);
     tmp_r.resize(nfft);
+
+    tmp_l.shrink_to_fit();
+    tmp_r.shrink_to_fit();
 
     std::copy(left_mag.begin(), left_mag.end(), tmp_l.begin());
     std::copy(right_mag.begin(), right_mag.end(), tmp_r.begin());
@@ -490,6 +503,9 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
         left_spectrum.resize(max_points);
         right_spectrum.resize(max_points);
+
+        left_spectrum.shrink_to_fit();
+        right_spectrum.shrink_to_fit();
 
         for (uint n = 0; n < max_points; n++) {
             left_spectrum[n] = spline_L(freq_axis[n]);
@@ -580,10 +596,6 @@ void ConvolverUi::draw_channel(Gtk::DrawingArea* da,
             msg.precision(0);
             msg << std::fixed << mouse_intensity << " dB";
 
-            Pango::FontDescription font;
-            font.set_family("Monospace");
-            font.set_weight(Pango::WEIGHT_BOLD);
-
             int text_width;
             int text_height;
             auto layout = create_pango_layout(msg.str());
@@ -643,6 +655,8 @@ void ConvolverUi::update_mouse_info_R(GdkEventMotion* event) {
 }
 
 bool ConvolverUi::on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
+    std::lock_guard<std::mutex> lock(lock_guard_irs_info);
+
     ctx->paint();
 
     if (show_fft_spectrum) {
@@ -663,6 +677,8 @@ bool ConvolverUi::on_left_motion_notify_event(GdkEventMotion* event) {
 }
 
 bool ConvolverUi::on_right_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
+    std::lock_guard<std::mutex> lock(lock_guard_irs_info);
+
     ctx->paint();
 
     if (show_fft_spectrum) {
