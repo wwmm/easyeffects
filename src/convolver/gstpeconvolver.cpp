@@ -502,7 +502,7 @@ GST_PLUGIN_DEFINE(GST_VERSION_MAJOR,
                   peconvolver,
                   "PulseEffects Convolver",
                   plugin_init,
-                  "4.1.4",
+                  "4.1.8",
                   "LGPL",
                   PACKAGE,
                   "https://github.com/wwmm/pulseeffects")

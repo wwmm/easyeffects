@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-13 20:10-0300\n"
+"POT-Creation-Date: 2018-07-16 11:58-0300\n"
 "PO-Revision-Date: 2017-08-29 11:00+0200\n"
 "Last-Translator: Nathan Graule <solarliner@gmail.com>\n"
 "Language-Team: \n"
@@ -970,7 +970,7 @@ msgstr "Calibration"
 msgid "Samples"
 msgstr ""
 
-#: data/ui/convolver.glade:324 src/convolver_ui.cpp:254
+#: data/ui/convolver.glade:324 src/convolver_ui.cpp:270
 #, fuzzy
 msgid "Impulse Response"
 msgstr "Réponse plane"
@@ -1270,11 +1270,11 @@ msgstr ""
 msgid "Presets: "
 msgstr "Préréglage"
 
-#: src/application_ui.cpp:814 src/convolver_ui.cpp:250
+#: src/application_ui.cpp:814 src/convolver_ui.cpp:266
 msgid "Open"
 msgstr ""
 
-#: src/application_ui.cpp:814 src/convolver_ui.cpp:250
+#: src/application_ui.cpp:814 src/convolver_ui.cpp:266
 #, fuzzy
 msgid "Cancel"
 msgstr "Amélioration audio"
@@ -1292,10 +1292,18 @@ msgstr ""
 msgid "Calibration Microphone"
 msgstr "Calibration de la correction microphone"
 
-#: src/convolver_ui.cpp:249
+#: src/convolver_ui.cpp:265
 #, fuzzy
 msgid "Import Impulse Response"
 msgstr "Réponse plane"
+
+#: src/convolver_ui.cpp:308 src/convolver_ui.cpp:309 src/convolver_ui.cpp:311
+msgid "Failed"
+msgstr ""
+
+#: src/convolver_ui.cpp:313
+msgid "Could Not Load The Impulse File"
+msgstr ""
 
 #, fuzzy
 #~ msgid "Import File"

@@ -15,25 +15,33 @@ namespace rk {
 std::string log_tag = "convolver: ";
 
 void autogain(float* left, float* right, int length) {
-    float peak = 0.0f, target_peak = powf(10.0f, -12.0f / 20.0f);
+    float power = 0.0f, peak = 0.0f;
 
     for (int n = 0; n < length; n++) {
-        float tmpl = fabsf(left[n]);
-        float tmpr = fabsf(right[n]);
-
-        peak = (tmpl > peak) ? tmpl : peak;
-        peak = (tmpr > peak) ? tmpr : peak;
+        peak = (left[n] > peak) ? left[n] : peak;
+        peak = (right[n] > peak) ? right[n] : peak;
     }
 
-    float autogain = peak / target_peak;
+    // normalize
+    for (int n = 0; n < length; n++) {
+        left[n] /= peak;
+        right[n] /= peak;
+    }
 
-    util::debug(log_tag + "irs peak: " + std::to_string(10.0f * log10f(peak)));
-    util::debug(log_tag + "target irs peak: " + std::to_string(-12.0f));
+    // find average power
+    for (int n = 0; n < length; n++) {
+        power += left[n] * left[n] + right[n] * right[n];
+    }
+
+    power *= 0.5f;
+
+    float autogain = std::min(1.0f, 1.0f / sqrtf(power));
+
     util::debug(log_tag + "autogain factor: " + std::to_string(autogain));
 
     for (int n = 0; n < length; n++) {
-        left[n] /= autogain;
-        right[n] /= autogain;
+        left[n] *= autogain;
+        right[n] *= autogain;
     }
 }
 

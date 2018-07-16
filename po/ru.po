@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-13 20:10-0300\n"
+"POT-Creation-Date: 2018-07-16 11:58-0300\n"
 "PO-Revision-Date: 2018-03-09 01:34+0300\n"
 "Last-Translator: Михаил <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -909,7 +909,7 @@ msgstr "Продолжительность"
 msgid "Samples"
 msgstr "Образцы"
 
-#: data/ui/convolver.glade:324 src/convolver_ui.cpp:254
+#: data/ui/convolver.glade:324 src/convolver_ui.cpp:270
 msgid "Impulse Response"
 msgstr "Импульсная реакция"
 
@@ -1192,11 +1192,11 @@ msgstr "Загрузить пресет. Пример: pulseeffects -l music"
 msgid "Presets: "
 msgstr "Предустановки: "
 
-#: src/application_ui.cpp:814 src/convolver_ui.cpp:250
+#: src/application_ui.cpp:814 src/convolver_ui.cpp:266
 msgid "Open"
 msgstr "Открыть"
 
-#: src/application_ui.cpp:814 src/convolver_ui.cpp:250
+#: src/application_ui.cpp:814 src/convolver_ui.cpp:266
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -1212,9 +1212,17 @@ msgstr "воспроизводится"
 msgid "Calibration Microphone"
 msgstr "Калибровка корректировки микрофона"
 
-#: src/convolver_ui.cpp:249
+#: src/convolver_ui.cpp:265
 msgid "Import Impulse Response"
 msgstr "Импортировать импульсную реакцию"
+
+#: src/convolver_ui.cpp:308 src/convolver_ui.cpp:309 src/convolver_ui.cpp:311
+msgid "Failed"
+msgstr ""
+
+#: src/convolver_ui.cpp:313
+msgid "Could Not Load The Impulse File"
+msgstr ""
 
 #, fuzzy
 #~ msgid "Import File"

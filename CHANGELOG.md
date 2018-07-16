@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 ### Added
+- Improved convolver impulse response autogain calculation. Changing impulse
+responses should result in less abrupt volume changes now.
 - A warning is shown in the convolver interface when the user loads a preset
 that points to an impulse file that does not exists in PulseEffects folder
 anymore.

@@ -305,12 +305,12 @@ void ConvolverUi::get_irs_info() {
         // warning user that there is a problem
 
         Glib::signal_idle().connect_once([=]() {
-            label_sampling_rate->set_text(_("failed"));
-            label_samples->set_text(_("failed"));
+            label_sampling_rate->set_text(_("Failed"));
+            label_samples->set_text(_("Failed"));
 
-            label_duration->set_text(_("failed"));
+            label_duration->set_text(_("Failed"));
 
-            label_file_name->set_text(_("failed to load the impulse file"));
+            label_file_name->set_text(_("Could Not Load The Impulse File"));
         });
 
         return;

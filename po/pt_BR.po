@@ -8,15 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-13 20:10-0300\n"
-"PO-Revision-Date: 2018-07-13 16:56-0300\n"
+"POT-Creation-Date: 2018-07-16 11:58-0300\n"
+"PO-Revision-Date: 2018-07-16 11:59-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Poedit 2.0.9\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
@@ -907,7 +907,7 @@ msgstr "Duração"
 msgid "Samples"
 msgstr "Amostras"
 
-#: data/ui/convolver.glade:324 src/convolver_ui.cpp:254
+#: data/ui/convolver.glade:324 src/convolver_ui.cpp:270
 msgid "Impulse Response"
 msgstr "Resposta de Impulso"
 
@@ -1189,11 +1189,11 @@ msgstr "Carregar uma predefinição. Exemplo: pulseeffects -l musica"
 msgid "Presets: "
 msgstr "Predefinições: "
 
-#: src/application_ui.cpp:814 src/convolver_ui.cpp:250
+#: src/application_ui.cpp:814 src/convolver_ui.cpp:266
 msgid "Open"
 msgstr "Abrir"
 
-#: src/application_ui.cpp:814 src/convolver_ui.cpp:250
+#: src/application_ui.cpp:814 src/convolver_ui.cpp:266
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -1209,9 +1209,17 @@ msgstr "tocando"
 msgid "Calibration Microphone"
 msgstr "Microfone de Calibração"
 
-#: src/convolver_ui.cpp:249
+#: src/convolver_ui.cpp:265
 msgid "Import Impulse Response"
 msgstr "Importar Resposta de Impulso"
+
+#: src/convolver_ui.cpp:308 src/convolver_ui.cpp:309 src/convolver_ui.cpp:311
+msgid "Failed"
+msgstr "Falhou"
+
+#: src/convolver_ui.cpp:313
+msgid "Could Not Load The Impulse File"
+msgstr "Não Foi Possível Carregar o Arquivo com o Impulso"
 
 #~ msgid "Import File"
 #~ msgstr "Importar Arquivo"
