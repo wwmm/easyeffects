@@ -60,8 +60,6 @@ static void gst_peconvolver_finish_convolver(GstPeconvolver* peconvolver);
 
 /*global variables and my defines*/
 
-#define MAX_IRS_FRAMES 0x00100000
-
 // taken from https://github.com/x42/convoLV2/blob/master/convolution.cc
 /*
  * Priority should match -P parameter passed to jackd.
@@ -336,23 +334,14 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver,
                                             const int& num_samples) {
     if (!peconvolver->ready && peconvolver->rate != 0 &&
         peconvolver->bpf != 0) {
-        util::debug(peconvolver->log_tag + "maximum irs frames supported: " +
-                    std::to_string(MAX_IRS_FRAMES));
-
         bool irs_ok = rk::read_file(peconvolver);
 
         if (irs_ok) {
             bool failed = false;
             float density = 0.0f;
-            int max_size, ret;
+            int max_size = peconvolver->kernel_n_frames, ret;
 
             peconvolver->conv = new Convproc();
-
-            if (peconvolver->kernel_n_frames > MAX_IRS_FRAMES) {
-                max_size = MAX_IRS_FRAMES;
-            } else {
-                max_size = peconvolver->kernel_n_frames;
-            }
 
             unsigned int options = 0;
 

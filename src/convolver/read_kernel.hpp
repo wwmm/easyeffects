@@ -87,7 +87,7 @@ bool read_file(_GstPeconvolver* peconvolver) {
 
     if (file.channels() == 2) {
         bool resample = false;
-        float resample_ratio = 1.0, *buffer, *kernel;
+        float resample_ratio = 1.0f, *buffer, *kernel;
         int total_frames_in, total_frames_out, frames_in, frames_out;
 
         frames_in = file.frames();
@@ -127,16 +127,27 @@ bool read_file(_GstPeconvolver* peconvolver) {
 
             SRC_DATA src_data;
 
-            // from https://github.com/x42/convoLV2/blob/master/convolution.cc
+            /* code from
+             * https://github.com/x42/convoLV2/blob/master/convolution.cc
+             */
 
+            // The number of frames of data pointed to by data_in
             src_data.input_frames = frames_in;
-            src_data.output_frames = frames_out;
-            src_data.end_of_input = 1;
-            src_data.src_ratio = resample_ratio;
-            src_data.input_frames_used = 0;
-            src_data.output_frames_gen = 0;
+
+            // A pointer to the input data samples
             src_data.data_in = buffer;
+
+            // Maximum number of frames pointer to by data_out
+            src_data.output_frames = frames_out;
+
+            // A pointer to the output data samples
             src_data.data_out = kernel;
+
+            // Equal to output_sample_rate / input_sample_rate
+            src_data.src_ratio = resample_ratio;
+
+            // Equal to 0 if more input data is available and 1 otherwise
+            src_data.end_of_input = 1;
 
             src_process(src_state, &src_data);
 
