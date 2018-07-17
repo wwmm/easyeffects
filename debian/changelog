@@ -1,3 +1,9 @@
+pulseeffects (4.1.8-1) unstable; urgency=low
+
+  * update to version 4.1.8 upstream
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Tue, 17 Jul 2018 11:28:00 +0300 
+ 
 pulseeffects (4.1.7-3) unstable; urgency=low
 
   * package gstreamer plugin peconvolver as a separate package
