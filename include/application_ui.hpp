@@ -9,6 +9,7 @@
 #include <gtkmm/comboboxtext.h>
 #include <gtkmm/drawingarea.h>
 #include <gtkmm/entry.h>
+#include <gtkmm/headerbar.h>
 #include <gtkmm/label.h>
 #include <gtkmm/listbox.h>
 #include <gtkmm/liststore.h>
@@ -55,6 +56,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     Gtk::ColorButton* spectrum_color_button;
     Gtk::ScrolledWindow* presets_scrolled_window;
     Gtk::ComboBoxText *blocksize_in, *blocksize_out;
+    Gtk::HeaderBar* headerbar;
     Gdk::RGBA spectrum_color;
 
     Glib::RefPtr<Gtk::Adjustment> buffer_in, buffer_out, latency_in,
@@ -84,6 +86,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
         object = Glib::RefPtr<Gtk::ListStore>::cast_dynamic(
             builder->get_object(name));
     }
+
+    void update_headerbar_subtitle(const int& index);
 
     void apply_css_style(std::string css_file_name);
 
