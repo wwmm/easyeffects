@@ -14,7 +14,6 @@
 
 #include <gst/audio/gstaudiofilter.h>
 #include <gst/gst.h>
-#include <iostream>
 #include <thread>
 #include "gstpeconvolver.hpp"
 #include "read_kernel.hpp"
@@ -137,9 +136,6 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
         GST_DEBUG_FUNCPTR(gst_peconvolver_transform_ip);
 
     base_transform_class->transform_ip_on_passthrough = false;
-
-    // base_transform_class->transform =
-    //     GST_DEBUG_FUNCPTR(gst_peconvolver_transform);
 
     base_transform_class->stop = GST_DEBUG_FUNCPTR(gst_peconvolver_stop);
 
@@ -401,8 +397,6 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver,
                             "start_process failed: " + std::to_string(ret));
             }
 
-            peconvolver->adapter = gst_adapter_new();
-
             peconvolver->ready = (failed) ? false : true;
         } else {
             util::debug(peconvolver->log_tag +
@@ -466,12 +460,6 @@ static void gst_peconvolver_finish_convolver(GstPeconvolver* peconvolver) {
         if (peconvolver->kernel_R != nullptr) {
             delete[] peconvolver->kernel_R;
         }
-
-        if (peconvolver->adapter != nullptr) {
-            gst_adapter_clear(peconvolver->adapter);
-
-            g_object_unref(peconvolver->adapter);
-        }
     }
 }
 
@@ -491,7 +479,7 @@ GST_PLUGIN_DEFINE(GST_VERSION_MAJOR,
                   peconvolver,
                   "PulseEffects Convolver",
                   plugin_init,
-                  "4.1.8",
+                  "4.1.9",
                   "LGPL",
                   PACKAGE,
                   "https://github.com/wwmm/pulseeffects")

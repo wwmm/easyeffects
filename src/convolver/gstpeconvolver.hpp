@@ -3,9 +3,7 @@
 
 #include <gst/audio/gstaudiofilter.h>
 #include <zita-convolver.h>
-#include <iostream>
 #include <mutex>
-#include <vector>
 
 G_BEGIN_DECLS
 
@@ -40,15 +38,13 @@ struct _GstPeconvolver {
 
     std::string log_tag;
 
-    GstAdapter* adapter;
-
     Convproc* conv;
 
     std::mutex lock_guard_zita;
 };
 
 struct _GstPeconvolverClass {
-    GstAudioFilterClass base_peconvolve_class;
+    GstAudioFilterClass base_peconvolver_class;
 };
 
 GType gst_peconvolver_get_type(void);

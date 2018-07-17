@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+### Added
+- Audio format and sampling rate conversion steps are shown in the GTK headerbar
+subtitle(below the title). The first info is about the null sinks loaded by
+PulseEffects. They are the place applications are redirected to. The second
+information shows the format and sampling rate used by the plugins and
+PulseEffects pipeline. The third information shown is from the current default
+output or input device.
+
+
 ## [4.1.8]
 ### Added
 - Improved convolver impulse response autogain calculation. Changing impulse

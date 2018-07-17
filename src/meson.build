@@ -115,3 +115,4 @@ executable(
 )
 
 subdir('convolver')
+subdir('crystalizer')
