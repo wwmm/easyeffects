@@ -583,10 +583,10 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 
         current_dev_rate << std::fixed << sink->rate / 1000.0f << "kHz";
 
-        std::string title = "[" + app->pm->apps_sink_info->format + "," +
-                            null_sink_rate.str() + "] -> [F32LE," +
-                            null_sink_rate.str() + "] -> [" + sink->format +
-                            "," + current_dev_rate.str() + "]";
+        std::string title = "(" + app->pm->apps_sink_info->format + "," +
+                            null_sink_rate.str() + ") --> (F32LE," +
+                            null_sink_rate.str() + ") --> (" + sink->format +
+                            "," + current_dev_rate.str() + ")";
 
         headerbar->set_subtitle(title);
     } else {  // soe
@@ -598,10 +598,10 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 
         current_dev_rate << std::fixed << source->rate / 1000.0f << "kHz";
 
-        std::string title = "[" + app->pm->mic_sink_info->format + "," +
-                            null_sink_rate.str() + "] -> [F32LE," +
-                            null_sink_rate.str() + "] -> [" + source->format +
-                            "," + current_dev_rate.str() + "]";
+        std::string title = "(" + app->pm->mic_sink_info->format + "," +
+                            null_sink_rate.str() + ") --> (F32LE," +
+                            null_sink_rate.str() + ") --> (" + source->format +
+                            "," + current_dev_rate.str() + ")";
 
         headerbar->set_subtitle(title);
     }
