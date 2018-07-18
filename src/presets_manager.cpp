@@ -32,7 +32,8 @@ PresetsManager::PresetsManager()
       loudness(std::make_unique<LoudnessPreset>()),
       multiband_gate(std::make_unique<MultibandGatePreset>()),
       stereo_tools(std::make_unique<StereoToolsPreset>()),
-      convolver(std::make_unique<ConvolverPreset>()) {
+      convolver(std::make_unique<ConvolverPreset>()),
+      crystalizer(std::make_unique<CrystalizerPreset>()) {
     auto dir_exists = fs::is_directory(presets_dir);
 
     if (!dir_exists) {
@@ -191,6 +192,7 @@ void PresetsManager::save(const std::string& name) {
     multiband_gate->write(root);
     stereo_tools->write(root);
     convolver->write(root);
+    crystalizer->write(root);
 
     auto output_file = presets_dir / fs::path{name + ".json"};
 
@@ -297,6 +299,7 @@ void PresetsManager::load(const std::string& name) {
     multiband_gate->read(root);
     stereo_tools->read(root);
     convolver->read(root);
+    crystalizer->read(root);
 
     util::debug(log_tag + "loaded preset: " + input_file.string());
 }

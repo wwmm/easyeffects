@@ -1,23 +1,23 @@
 #include <glibmm/main.h>
-#include "convolver.hpp"
+#include "crystalizer.hpp"
 #include "util.hpp"
 
-Convolver::Convolver(const std::string& tag, const std::string& schema)
-    : PluginBase(tag, "convolver", schema) {
-    convolver = gst_element_factory_make("peconvolver", "convolver");
+Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
+    : PluginBase(tag, "crystalizer", schema) {
+    crystalizer = gst_element_factory_make("pecrystalizer", nullptr);
 
-    if (is_installed(convolver)) {
+    if (is_installed(crystalizer)) {
         auto input_gain = gst_element_factory_make("volume", nullptr);
         auto in_level =
-            gst_element_factory_make("level", "convolver_input_level");
-        auto out_level =
-            gst_element_factory_make("level", "convolver_output_level");
+            gst_element_factory_make("level", "crystalizer_input_level");
         auto output_gain = gst_element_factory_make("volume", nullptr);
+        auto out_level =
+            gst_element_factory_make("level", "crystalizer_output_level");
         auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
 
         gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert,
-                         convolver, output_gain, out_level, nullptr);
-        gst_element_link_many(input_gain, in_level, audioconvert, convolver,
+                         crystalizer, output_gain, out_level, nullptr);
+        gst_element_link_many(input_gain, in_level, audioconvert, crystalizer,
                               output_gain, out_level, nullptr);
 
         auto pad_sink = gst_element_get_static_pad(input_gain, "sink");
@@ -54,14 +54,12 @@ Convolver::Convolver(const std::string& tag, const std::string& schema)
     }
 }
 
-Convolver::~Convolver() {
+Crystalizer::~Crystalizer() {
     util::debug(log_tag + name + " destroyed");
 }
 
-void Convolver::bind_to_gsettings() {
-    g_settings_bind(settings, "kernel-path", convolver, "kernel-path",
-                    G_SETTINGS_BIND_DEFAULT);
-
-    g_settings_bind(settings, "ir-width", convolver, "ir-width",
-                    G_SETTINGS_BIND_DEFAULT);
+void Crystalizer::bind_to_gsettings() {
+    g_settings_bind_with_mapping(
+        settings, "intensity", crystalizer, "intensity", G_SETTINGS_BIND_GET,
+        util::double_to_float, nullptr, nullptr, nullptr);
 }

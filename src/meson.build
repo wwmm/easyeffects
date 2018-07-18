@@ -59,6 +59,8 @@ pulseeffects_sources = [
 	'pitch_ui.cpp',
 	'webrtc.cpp',
 	'webrtc_ui.cpp',
+	'crystalizer.cpp',
+	'crystalizer_ui.cpp',
 	'presets_manager.cpp',
 	'limiter_preset.cpp',
 	'compressor_preset.cpp',
@@ -79,6 +81,7 @@ pulseeffects_sources = [
 	'stereo_enhancer_preset.cpp',
 	'stereo_tools_preset.cpp',
 	'webrtc_preset.cpp',
+	'crystalizer_preset.cpp',
 	'calibration_ui.cpp',
 	'calibration_signals_ui.cpp',
 	'calibration_signals.cpp',
@@ -115,3 +118,4 @@ executable(
 )
 
 subdir('convolver')
+subdir('crystalizer')

@@ -8,6 +8,7 @@
 #include "compressor_preset.hpp"
 #include "convolver_preset.hpp"
 #include "crossfeed_preset.hpp"
+#include "crystalizer_preset.hpp"
 #include "deesser_preset.hpp"
 #include "equalizer_preset.hpp"
 #include "exciter_preset.hpp"
@@ -62,6 +63,7 @@ class PresetsManager {
     std::unique_ptr<MultibandGatePreset> multiband_gate;
     std::unique_ptr<StereoToolsPreset> stereo_tools;
     std::unique_ptr<ConvolverPreset> convolver;
+    std::unique_ptr<CrystalizerPreset> crystalizer;
 
     template <typename T>
     T get_default(const Glib::RefPtr<Gio::Settings>& settings,

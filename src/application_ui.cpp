@@ -65,7 +65,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     Gtk::IconTheme::get_default()->add_resource_path(
         "/com/github/wwmm/pulseeffects/icons");
 
-    // loading glade widgets
+    /*loading glade widgets*/
 
     builder->get_widget("theme_switch", theme_switch);
     builder->get_widget("enable_autostart", enable_autostart);
@@ -91,6 +91,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     builder->get_widget("calibration_button", calibration_button);
     builder->get_widget("blocksize_in", blocksize_in);
     builder->get_widget("blocksize_out", blocksize_out);
+    builder->get_widget("headerbar", headerbar);
 
     get_object(builder, "buffer_in", buffer_in);
     get_object(builder, "buffer_out", buffer_out);
@@ -101,7 +102,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     get_object(builder, "spectrum_n_points", spectrum_n_points);
     get_object(builder, "spectrum_height", spectrum_height);
 
-    // signals connection
+    /*signals connection*/
 
     enable_autostart->signal_state_set().connect(
         sigc::mem_fun(*this, &ApplicationUi::on_enable_autostart), false);
@@ -205,7 +206,19 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     app->pm->source_removed.connect(
         sigc::mem_fun(*this, &ApplicationUi::on_source_removed));
 
-    // sink inputs interface
+    app->pm->new_default_sink.connect([&](auto name) {
+        if (stack->get_visible_child_name() == "sink_inputs") {
+            update_headerbar_subtitle(0);
+        }
+    });
+
+    app->pm->new_default_source.connect([&](auto name) {
+        if (stack->get_visible_child_name() == "source_outputs") {
+            update_headerbar_subtitle(1);
+        }
+    });
+
+    /*sink inputs interface*/
 
     auto b_sie_ui = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/ui/effects_base.glade");
@@ -227,7 +240,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     stack->child_property_icon_name(*sie_ui).set_value(
         "audio-speakers-symbolic");
 
-    // source outputs interface
+    /*source outputs interface*/
 
     auto b_soe_ui = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/ui/effects_base.glade");
@@ -254,7 +267,11 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     spectrum_connection = app->sie->new_spectrum.connect(
         sigc::mem_fun(*this, &ApplicationUi::on_new_spectrum));
 
-    // binding glade widgets to gsettings keys
+    // updating headerbar info
+
+    update_headerbar_subtitle(0);
+
+    /*binding glade widgets to gsettings keys*/
 
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
     auto flag_get = Gio::SettingsBindFlags::SETTINGS_BIND_GET;
@@ -551,6 +568,45 @@ bool ApplicationUi::on_spectrum_motion_notify_event(GdkEventMotion* event) {
     return false;
 }
 
+void ApplicationUi::update_headerbar_subtitle(const int& index) {
+    std::ostringstream null_sink_rate, current_dev_rate;
+
+    null_sink_rate.precision(1);
+    current_dev_rate.precision(1);
+
+    if (index == 0) {  // sie
+        null_sink_rate << std::fixed << app->pm->apps_sink_info->rate / 1000.0f
+                       << "kHz";
+
+        auto sink =
+            app->pm->get_sink_info(app->pm->server_info.default_sink_name);
+
+        current_dev_rate << std::fixed << sink->rate / 1000.0f << "kHz";
+
+        std::string title = "(" + app->pm->apps_sink_info->format + "," +
+                            null_sink_rate.str() + ") ⟶ (F32LE," +
+                            null_sink_rate.str() + ") ⟶ (" + sink->format +
+                            "," + current_dev_rate.str() + ")";
+
+        headerbar->set_subtitle(title);
+    } else {  // soe
+        null_sink_rate << std::fixed << app->pm->mic_sink_info->rate / 1000.0f
+                       << "kHz";
+
+        auto source =
+            app->pm->get_source_info(app->pm->server_info.default_source_name);
+
+        current_dev_rate << std::fixed << source->rate / 1000.0f << "kHz";
+
+        std::string title =
+            "(" + source->format + "," + current_dev_rate.str() +
+            ") ⟶ (F32LE," + null_sink_rate.str() + ") ⟶ (" +
+            app->pm->mic_sink_info->format + "," + null_sink_rate.str() + ")";
+
+        headerbar->set_subtitle(title);
+    }
+}
+
 void ApplicationUi::on_stack_visible_child_changed() {
     auto name = stack->get_visible_child_name();
 
@@ -559,11 +615,16 @@ void ApplicationUi::on_stack_visible_child_changed() {
 
         spectrum_connection = app->sie->new_spectrum.connect(
             sigc::mem_fun(*this, &ApplicationUi::on_new_spectrum));
+
+        update_headerbar_subtitle(0);
+
     } else if (name == std::string("source_outputs")) {
         spectrum_connection.disconnect();
 
         spectrum_connection = app->soe->new_spectrum.connect(
             sigc::mem_fun(*this, &ApplicationUi::on_new_spectrum));
+
+        update_headerbar_subtitle(1);
     }
 
     clear_spectrum();

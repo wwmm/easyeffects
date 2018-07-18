@@ -3,7 +3,7 @@ project(
 	'c',
 	'cpp',
 	default_options : ['cpp_std=c++17'],
-	version: '4.1.8',
+	version: '4.1.9',
 	meson_version: '>= 0.40.0'
 )
 

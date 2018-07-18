@@ -19,6 +19,7 @@ Audio effects for Pulseaudio applications
 - Equalizer
 - Bass Enhancer
 - Exciter
+- Crystalizer
 - Reverberation
 - Crossfeed
 - Filter (Lowpass, Highpass, Bandpass and Bandreject modes)

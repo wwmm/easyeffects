@@ -5,6 +5,7 @@
 #include "compressor.hpp"
 #include "convolver.hpp"
 #include "crossfeed.hpp"
+#include "crystalizer.hpp"
 #include "deesser.hpp"
 #include "equalizer.hpp"
 #include "exciter.hpp"
@@ -50,6 +51,7 @@ class SinkInputEffects : public PipelineBase {
     std::unique_ptr<Deesser> deesser;
     std::unique_ptr<StereoTools> stereo_tools;
     std::unique_ptr<Convolver> convolver;
+    std::unique_ptr<Crystalizer> crystalizer;
 
     sigc::signal<void, std::array<double, 2>> compressor_input_level;
     sigc::signal<void, std::array<double, 2>> compressor_output_level;
@@ -71,6 +73,8 @@ class SinkInputEffects : public PipelineBase {
     sigc::signal<void, std::array<double, 2>> deesser_output_level;
     sigc::signal<void, std::array<double, 2>> convolver_input_level;
     sigc::signal<void, std::array<double, 2>> convolver_output_level;
+    sigc::signal<void, std::array<double, 2>> crystalizer_input_level;
+    sigc::signal<void, std::array<double, 2>> crystalizer_output_level;
 
    private:
     GSettings* sie_settings;

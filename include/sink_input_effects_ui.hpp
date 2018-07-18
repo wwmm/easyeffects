@@ -5,6 +5,7 @@
 #include "compressor_ui.hpp"
 #include "convolver_ui.hpp"
 #include "crossfeed_ui.hpp"
+#include "crystalizer_ui.hpp"
 #include "deesser_ui.hpp"
 #include "effects_base_ui.hpp"
 #include "equalizer_ui.hpp"
@@ -55,6 +56,7 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
     DeesserUi* deesser_ui;
     StereoToolsUi* stereo_tools_ui;
     ConvolverUi* convolver_ui;
+    CrystalizerUi* crystalizer_ui;
 
     void level_meters_connections();
     void up_down_connections();

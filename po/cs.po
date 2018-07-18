@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-16 11:58-0300\n"
+"POT-Creation-Date: 2018-07-18 12:15-0300\n"
 "PO-Revision-Date: 2018-02-06 20:54+0100\n"
 "Last-Translator: Pavel Fric <pavelfric@seznam.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -26,105 +26,105 @@ msgstr "Název"
 msgid "Create Preset"
 msgstr "Smazat přednastavení"
 
-#: data/ui/application.glade:76 src/application_ui.cpp:813
+#: data/ui/application.glade:76 src/application_ui.cpp:874
 #, fuzzy
 msgid "Import Presets"
 msgstr "Nahrát přednastavení"
 
-#: data/ui/application.glade:187 src/calibration_ui.cpp:48
+#: data/ui/application.glade:186 src/calibration_ui.cpp:48
 #: src/calibration_ui.cpp:175
 msgid "Test Signals"
 msgstr "Zkušební signály"
 
-#: data/ui/application.glade:230 data/ui/compressor.glade:205
+#: data/ui/application.glade:229 data/ui/compressor.glade:205
 #: data/ui/filter.glade:203 data/ui/equalizer.glade:280
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
-#: src/application_ui.cpp:818 src/application_ui.cpp:893
+#: src/application_ui.cpp:879 src/application_ui.cpp:954
 msgid "Presets"
 msgstr "Přednastavení"
 
-#: data/ui/application.glade:519
+#: data/ui/application.glade:518
 msgid "Start Service at Login"
 msgstr "Spustit službu při přihlášení"
 
-#: data/ui/application.glade:544
+#: data/ui/application.glade:543
 msgid "Enable All Applications"
 msgstr "Povolit všechny programy"
 
-#: data/ui/application.glade:569
+#: data/ui/application.glade:568
 msgid "Use Dark Theme"
 msgstr "Použít tmavý vzhled"
 
-#: data/ui/application.glade:594
+#: data/ui/application.glade:593
 msgid "Settings"
 msgstr "Nastavení"
 
-#: data/ui/application.glade:603 data/ui/equalizer_band.glade:105
+#: data/ui/application.glade:602 data/ui/equalizer_band.glade:105
 #: data/ui/equalizer_band.glade:120
 msgid "Reset"
 msgstr "Vrátit na výchozí"
 
-#: data/ui/application.glade:618
+#: data/ui/application.glade:617
 msgid "General"
 msgstr "Obecné"
 
-#: data/ui/application.glade:636
+#: data/ui/application.glade:635
 msgid "Show"
 msgstr "Ukázat"
 
-#: data/ui/application.glade:662
+#: data/ui/application.glade:661
 msgid "Points"
 msgstr "Body"
 
-#: data/ui/application.glade:693
+#: data/ui/application.glade:692
 msgid "Use Custom Color"
 msgstr ""
 
-#: data/ui/application.glade:718
+#: data/ui/application.glade:717
 #, fuzzy
 msgid "Spectrum Color"
 msgstr "Spektrum"
 
-#: data/ui/application.glade:745
+#: data/ui/application.glade:744
 #, fuzzy
 msgid "Height"
 msgstr "Pravý"
 
-#: data/ui/application.glade:773 data/ui/convolver.glade:396
+#: data/ui/application.glade:772 data/ui/convolver.glade:396
 msgid "Spectrum"
 msgstr "Spektrum"
 
-#: data/ui/application.glade:802 data/ui/application.glade:950
+#: data/ui/application.glade:801 data/ui/application.glade:949
 #, fuzzy
 msgid "Use Default"
 msgstr "Výchozí"
 
-#: data/ui/application.glade:840 data/ui/application.glade:987
+#: data/ui/application.glade:839 data/ui/application.glade:986
 #: data/ui/app_info.glade:156
 msgid "Buffer"
 msgstr "Vyrovnávací paměť"
 
-#: data/ui/application.glade:873 data/ui/application.glade:1019
+#: data/ui/application.glade:872 data/ui/application.glade:1018
 #: data/ui/app_info.glade:183
 msgid "Latency"
 msgstr "Prodleva"
 
-#: data/ui/application.glade:906 data/ui/application.glade:1051
+#: data/ui/application.glade:905 data/ui/application.glade:1050
 #, fuzzy
 msgid "Block Size"
 msgstr "Velikost prostoru"
 
-#: data/ui/application.glade:936
+#: data/ui/application.glade:935
 #, fuzzy
 msgid "Input Effects"
 msgstr "PulseEffects"
 
-#: data/ui/application.glade:1081
+#: data/ui/application.glade:1080
 #, fuzzy
 msgid "Output Effects"
 msgstr "Omezovač výstupu"
 
-#: data/ui/application.glade:1108
+#: data/ui/application.glade:1107
 msgid "Pulseaudio"
 msgstr ""
 
@@ -237,7 +237,8 @@ msgstr "Hlasitost automaticky"
 #: data/ui/maximizer.glade:240 data/ui/loudness.glade:245
 #: data/ui/gate.glade:489 data/ui/multiband_gate.glade:2112
 #: data/ui/deesser.glade:570 data/ui/convolver.glade:449
-#: data/ui/pitch.glade:304 data/ui/webrtc.glade:586
+#: data/ui/crystalizer.glade:168 data/ui/pitch.glade:304
+#: data/ui/webrtc.glade:586
 msgid "Input"
 msgstr "Vstup"
 
@@ -256,7 +257,8 @@ msgstr "Vstup"
 #: data/ui/multiband_gate.glade:809 data/ui/multiband_gate.glade:1219
 #: data/ui/multiband_gate.glade:1630 data/ui/multiband_gate.glade:2041
 #: data/ui/multiband_gate.glade:2127 data/ui/deesser.glade:585
-#: data/ui/convolver.glade:464 data/ui/pitch.glade:319 data/ui/webrtc.glade:601
+#: data/ui/convolver.glade:464 data/ui/crystalizer.glade:183
+#: data/ui/pitch.glade:319 data/ui/webrtc.glade:601
 msgid "Output"
 msgstr "Výstup"
 
@@ -969,7 +971,7 @@ msgstr "Kalibrace"
 msgid "Samples"
 msgstr "Převzorkovač"
 
-#: data/ui/convolver.glade:324 src/convolver_ui.cpp:270
+#: data/ui/convolver.glade:324 src/convolver_ui.cpp:273
 #, fuzzy
 msgid "Impulse Response"
 msgstr "Odpověď pod tónem"
@@ -983,6 +985,15 @@ msgstr "Zlepšovač sterea"
 #, fuzzy
 msgid "Select the impulse Response File"
 msgstr "Odpověď pod tónem"
+
+#: data/ui/crystalizer.glade:24
+#, fuzzy
+msgid "Crystalizer"
+msgstr "Ekvalizér"
+
+#: data/ui/crystalizer.glade:123
+msgid "Intensity"
+msgstr ""
 
 #: data/ui/pitch.glade:36
 msgid "Pitch"
@@ -1264,11 +1275,11 @@ msgstr ""
 msgid "Presets: "
 msgstr "Přednastavení"
 
-#: src/application_ui.cpp:814 src/convolver_ui.cpp:266
+#: src/application_ui.cpp:875 src/convolver_ui.cpp:269
 msgid "Open"
 msgstr ""
 
-#: src/application_ui.cpp:814 src/convolver_ui.cpp:266
+#: src/application_ui.cpp:875 src/convolver_ui.cpp:269
 #, fuzzy
 msgid "Cancel"
 msgstr "Vyvážení"
@@ -1286,16 +1297,16 @@ msgstr "Přehrává se"
 msgid "Calibration Microphone"
 msgstr "Oprava kalibrace mikrofonu"
 
-#: src/convolver_ui.cpp:265
+#: src/convolver_ui.cpp:268
 #, fuzzy
 msgid "Import Impulse Response"
 msgstr "Odpověď pod tónem"
 
-#: src/convolver_ui.cpp:308 src/convolver_ui.cpp:309 src/convolver_ui.cpp:311
+#: src/convolver_ui.cpp:311 src/convolver_ui.cpp:312 src/convolver_ui.cpp:314
 msgid "Failed"
 msgstr ""
 
-#: src/convolver_ui.cpp:313
+#: src/convolver_ui.cpp:316
 msgid "Could Not Load The Impulse File"
 msgstr ""
 

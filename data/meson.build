@@ -20,6 +20,7 @@ install_data([
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.stereotools.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.deesser.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.convolver.gschema.xml',
+  'schemas/com.github.wwmm.pulseeffects.sinkinputs.crystalizer.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sourceoutputs.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sourceoutputs.limiter.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sourceoutputs.compressor.gschema.xml',
