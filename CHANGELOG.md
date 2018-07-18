@@ -7,12 +7,16 @@
 compressed songs. It is a port I made of the algorithm in FFMPEG crystalizer
 plugin to the GStreamer framework. So all the credits should go to the FFMPEG
 developers.
-- Audio format and sampling rate conversion steps are shown in the GTK headerbar
-subtitle(below the title). The first info is about the null sinks loaded by
-PulseEffects. They are the place applications are redirected to. The second
-information shows the format and sampling rate used by the plugins and
-PulseEffects pipeline. The third information shown is from the current default
-output or input device.
+- Audio format and sampling rate of the main processing stages are shown in the
+GTK headerbar subtitle(below the title). In the section that applies effects for
+applications output the first info is about the null sink PulseEffects(apps).
+this is the place applications output are redirected to. The second information
+shows the format and sampling rate used by the plugins and PulseEffects pipeline.
+The third information shown is from the current default output device. In the
+section that applies effects for microphones the idea is the same but the first
+information show is the one from the source and the last one is about
+PulseEffects(mic) null sink. Applications like skype will record processed audio
+from this null sink monitor.
 
 ### Note for Packagers
 - There is no need to add ffmpeg as dependency.
