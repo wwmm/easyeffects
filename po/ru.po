@@ -519,7 +519,7 @@ msgstr "Сбросить эквалайзер"
 
 #: data/ui/equalizer.glade:141
 msgid "Bands"
-msgstr "Частоты"
+msgstr "Кол-во частот"
 
 #: data/ui/equalizer.glade:168
 msgid "Calculate Frequencies"
