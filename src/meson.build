@@ -81,6 +81,7 @@ pulseeffects_sources = [
 	'stereo_enhancer_preset.cpp',
 	'stereo_tools_preset.cpp',
 	'webrtc_preset.cpp',
+	'crystalizer_preset.cpp',
 	'calibration_ui.cpp',
 	'calibration_signals_ui.cpp',
 	'calibration_signals.cpp',
