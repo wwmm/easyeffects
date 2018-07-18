@@ -2,7 +2,6 @@
 #define _GST_PECRYSTALIZER_H_
 
 #include <gst/audio/gstaudiofilter.h>
-#include <zita-convolver.h>
 
 G_BEGIN_DECLS
 

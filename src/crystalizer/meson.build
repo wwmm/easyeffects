@@ -1,6 +1,5 @@
 plugin_sources = [
 	'gstpecrystalizer.cpp',
-	'../util.cpp'
 ]
 
 plugin_deps = [
