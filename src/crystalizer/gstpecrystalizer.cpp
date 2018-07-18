@@ -86,7 +86,8 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
 
     gst_element_class_set_static_metadata(
         GST_ELEMENT_CLASS(klass), "PulseEffects Crystalizer", "Generic",
-        "PulseEffects Crystalizer", "Wellington <wellingtonwallace@gmail.com>");
+        "PulseEffects Crystalizer is a port of FFMPEG crystalizer",
+        "Wellington <wellingtonwallace@gmail.com>");
 
     /* define virtual function pointers */
 
@@ -114,8 +115,8 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
     pecrystalizer->ready = false;
     pecrystalizer->bpf = 0;
     pecrystalizer->intensity = 2.0f;
-    pecrystalizer->last_L = -1.0f;
-    pecrystalizer->last_R = -1.0f;
+    pecrystalizer->last_L = 0.0f;
+    pecrystalizer->last_R = 0.0f;
 
     gst_base_transform_set_in_place(GST_BASE_TRANSFORM(pecrystalizer), true);
 }
@@ -186,6 +187,10 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
         pecrystalizer->last_R = data[1];
         pecrystalizer->ready = true;
     }
+
+    /*Code taken from FFMPEG crystalizer plugin
+     *https://git.ffmpeg.org/gitweb/ffmpeg.git/blob_plain/HEAD:/libavfilter/af_crystalizer.c
+     */
 
     for (unsigned int n = 0; n < num_samples; n++) {
         float L = data[2 * n], R = data[2 * n + 1];
