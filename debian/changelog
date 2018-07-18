@@ -1,3 +1,23 @@
+pulseeffects (4.1.9-2) unstable; urgency=low
+
+  * updated Russian translation
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 18 Jul 2018 21:40:00 +0300 
+
+pulseeffects (4.1.9-1) unstable; urgency=low
+
+  * update to version 4.1.9 upstream
+  * package crystalizer gstreamer plugin as
+  gstreamer1.0-crystalizer-pulseeffects
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 18 Jul 2018 20:26:00 +0300 
+ 
+pulseeffects (4.1.8-1) unstable; urgency=low
+
+  * update to version 4.1.8 upstream
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Tue, 17 Jul 2018 11:28:00 +0300 
+ 
 pulseeffects (4.1.7-3) unstable; urgency=low
 
   * package gstreamer plugin peconvolver as a separate package
