@@ -1229,11 +1229,11 @@ msgstr "Импортировать импульсную реакцию"
 
 #: src/convolver_ui.cpp:311 src/convolver_ui.cpp:312 src/convolver_ui.cpp:314
 msgid "Failed"
-msgstr ""
+msgstr "Не получилось"
 
 #: src/convolver_ui.cpp:316
 msgid "Could Not Load The Impulse File"
-msgstr ""
+msgstr "Не смогли загрузить файл с импульсными реакциями"
 
 #, fuzzy
 #~ msgid "Import File"
