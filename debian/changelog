@@ -1,3 +1,9 @@
+pulseeffects (4.1.9-2) unstable; urgency=low
+
+  * updated Russian translation
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 18 Jul 2018 21:40:00 +0300 
+
 pulseeffects (4.1.9-1) unstable; urgency=low
 
   * update to version 4.1.9 upstream

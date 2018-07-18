@@ -147,7 +147,7 @@ msgstr "Состояние"
 
 #: data/ui/limiter.glade:61 data/ui/limiter.glade:413 data/ui/webrtc.glade:377
 msgid "Limiter"
-msgstr "Ограничитель"
+msgstr "Подстройка уровня звука (лимитер)"
 
 #: data/ui/limiter.glade:213
 msgid "Input Gain"
@@ -174,11 +174,11 @@ msgstr ""
 
 #: data/ui/limiter.glade:349
 msgid "Oversampling"
-msgstr ""
+msgstr "Передискретизация"
 
 #: data/ui/limiter.glade:398
 msgid "ASC"
-msgstr ""
+msgstr "Адаптивное управление наклоном"
 
 #: data/ui/limiter.glade:426 data/ui/webrtc.glade:141 data/ui/webrtc.glade:273
 #: data/ui/webrtc.glade:319 data/ui/webrtc.glade:468
@@ -289,7 +289,7 @@ msgstr "Смешать"
 #: data/ui/multiband_gate.glade:1313 data/ui/multiband_gate.glade:1724
 #: data/ui/deesser.glade:220
 msgid "RMS"
-msgstr ""
+msgstr "Среднеквадратичное"
 
 #: data/ui/compressor.glade:294 data/ui/multiband_compressor.glade:477
 #: data/ui/multiband_compressor.glade:849
@@ -375,15 +375,15 @@ msgstr ""
 
 #: data/ui/multiband_compressor.glade:314 data/ui/multiband_gate.glade:334
 msgid "Split 1/2"
-msgstr ""
+msgstr "Разделение 1/2"
 
 #: data/ui/multiband_compressor.glade:327 data/ui/multiband_gate.glade:347
 msgid "Split 2/3"
-msgstr ""
+msgstr "Разделение 2/3"
 
 #: data/ui/multiband_compressor.glade:340 data/ui/multiband_gate.glade:360
 msgid "Split 3/4"
-msgstr ""
+msgstr "Разделение 3/4"
 
 #: data/ui/multiband_compressor.glade:443
 #: data/ui/multiband_compressor.glade:815
@@ -401,7 +401,7 @@ msgstr ""
 #: data/ui/multiband_gate.glade:883 data/ui/multiband_gate.glade:1294
 #: data/ui/multiband_gate.glade:1705
 msgid "Solo"
-msgstr ""
+msgstr "Соло"
 
 #: data/ui/multiband_compressor.glade:715
 #: data/ui/multiband_compressor.glade:1092
@@ -492,7 +492,6 @@ msgstr ""
 
 #: data/ui/filter.glade:252 data/ui/equalizer_band.glade:41
 #: data/ui/calibration_signals.glade:32
-#, fuzzy
 msgid "Frequency"
 msgstr "Частота"
 
@@ -551,7 +550,7 @@ msgstr "Ревербация"
 
 #: data/ui/reverb.glade:156
 msgid "Ambience"
-msgstr ""
+msgstr "Окр. среда"
 
 #: data/ui/reverb.glade:169
 msgid "Empty Walls"
@@ -585,7 +584,7 @@ msgstr "Величина"
 
 #: data/ui/reverb.glade:403
 msgid "Dry"
-msgstr ""
+msgstr "Влажность"
 
 #: data/ui/reverb.glade:435
 msgid "Bass Cut"
@@ -626,7 +625,7 @@ msgstr "Туннель"
 
 #: data/ui/reverb.glade:584
 msgid "Large/smooth"
-msgstr ""
+msgstr "Большой/плавный"
 
 #: data/ui/reverb.glade:585
 msgid "Experimental"
@@ -729,9 +728,8 @@ msgid "Middle Source"
 msgstr "Средний источник"
 
 #: data/ui/stereo_enhancer.glade:516
-#, fuzzy
 msgid "Side Gain"
-msgstr "Усиление ввода [дБ]"
+msgstr "Боковое усиление"
 
 #: data/ui/stereo_tools.glade:42
 msgid "Stereo Tools"
@@ -798,12 +796,12 @@ msgid "Delay L/R"
 msgstr "Задержка Л/П"
 
 #: data/ui/stereo_tools.glade:694
-msgid "Stereo Base"
-msgstr ""
+msgid "Стерео база"
+msgstr "Сетерео база"
 
 #: data/ui/stereo_tools.glade:727
 msgid "Stereo Phase"
-msgstr ""
+msgstr "Стерео фаза"
 
 #: data/ui/crossfeed.glade:59
 msgid "Jmeier"
@@ -823,7 +821,7 @@ msgstr "Подача"
 
 #: data/ui/crossfeed.glade:390
 msgid "Crossfeed"
-msgstr "Перекрестаня подача"
+msgstr "Перекрестная подача"
 
 #: data/ui/maximizer.glade:29
 msgid "Maximizer"
@@ -838,8 +836,9 @@ msgid "Link"
 msgstr ""
 
 #: data/ui/gate.glade:31
+# http://wikisound.org/Гейт: шумовой гейт или просто гейт — это электронное устройство или плагин динамической обработки, который используется для контроля уровня звукового сигнала. Гейт пропускает или глушит сигнал в зависимости от установленного порогового значения. Он очень часто используется для подавления шума в паузах.
 msgid "Gate"
-msgstr ""
+msgstr "Шумовые ворота (гейт)"
 
 #: data/ui/gate.glade:194
 msgid "Gain Reduction"
@@ -853,11 +852,12 @@ msgstr ""
 
 #: data/ui/multiband_gate.glade:70
 msgid "Multiband Gate"
-msgstr ""
+msgstr "Многополосные шумовые ворота"
 
 #: data/ui/deesser.glade:61
+# http://wikisound.org/Деэссер; предназначен для уменьшения или устранения избыточно шипящих звуков в записи человеческого голоса
 msgid "Deesser"
-msgstr ""
+msgstr "Антишипение (деэссер)"
 
 #: data/ui/deesser.glade:236
 msgid "Wide"
@@ -881,11 +881,11 @@ msgstr ""
 
 #: data/ui/deesser.glade:763
 msgid "Detected"
-msgstr ""
+msgstr "Определено"
 
 #: data/ui/convolver.glade:24
 msgid "Convolver"
-msgstr ""
+msgstr "Конвольвер"
 
 #: data/ui/convolver.glade:103
 msgid "Import Impulse"
@@ -901,7 +901,7 @@ msgstr "Л"
 
 #: data/ui/convolver.glade:218
 msgid "R"
-msgstr "П"
+msgstr "Пр"
 
 #: data/ui/convolver.glade:277
 msgid "Duration"
@@ -924,13 +924,12 @@ msgid "Select the impulse Response File"
 msgstr "Выбрать файл с импульсной реакцией"
 
 #: data/ui/crystalizer.glade:24
-#, fuzzy
 msgid "Crystalizer"
-msgstr "Сбросить эквалайзер"
+msgstr "Кристаллизатор"
 
 #: data/ui/crystalizer.glade:123
 msgid "Intensity"
-msgstr ""
+msgstr "Интенсивность"
 
 #: data/ui/pitch.glade:36
 msgid "Pitch"
@@ -986,7 +985,7 @@ msgstr "Низкочастотный фильтр"
 
 #: data/ui/webrtc.glade:230 data/ui/webrtc.glade:294 data/ui/webrtc.glade:491
 msgid "Moderate"
-msgstr ""
+msgstr "Средний"
 
 #: data/ui/webrtc.glade:231 data/ui/webrtc.glade:295 data/ui/webrtc.glade:492
 msgid "High"
@@ -1035,7 +1034,7 @@ msgstr "Размер кадра"
 
 #: data/ui/webrtc.glade:537
 msgid "Detection Likelihood"
-msgstr "ЗВероятность обнаружения"
+msgstr "Вероятность обнаружения"
 
 #: data/ui/webrtc.glade:547
 msgid "Voice Detector"
