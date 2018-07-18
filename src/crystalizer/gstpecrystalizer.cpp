@@ -31,6 +31,9 @@ static void gst_pecrystalizer_get_property(GObject* object,
                                            GValue* value,
                                            GParamSpec* pspec);
 
+static gboolean gst_pecrystalizer_setup(GstAudioFilter* filter,
+                                        const GstAudioInfo* info);
+
 static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
                                                     GstBuffer* buffer);
 
@@ -74,6 +77,8 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
     GstBaseTransformClass* base_transform_class =
         GST_BASE_TRANSFORM_CLASS(klass);
 
+    GstAudioFilterClass* audio_filter_class = GST_AUDIO_FILTER_CLASS(klass);
+
     /* Setting up pads and setting metadata should be moved to
        base_class_init if you intend to subclass this class. */
 
@@ -90,6 +95,8 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
 
     gobject_class->set_property = gst_pecrystalizer_set_property;
     gobject_class->get_property = gst_pecrystalizer_get_property;
+
+    audio_filter_class->setup = GST_DEBUG_FUNCPTR(gst_pecrystalizer_setup);
 
     base_transform_class->transform_ip =
         GST_DEBUG_FUNCPTR(gst_pecrystalizer_transform_ip);
@@ -150,6 +157,17 @@ void gst_pecrystalizer_get_property(GObject* object,
     }
 }
 
+static gboolean gst_pecrystalizer_setup(GstAudioFilter* filter,
+                                        const GstAudioInfo* info) {
+    GstPecrystalizer* pecrystalizer = GST_PECRYSTALIZER(filter);
+
+    GST_DEBUG_OBJECT(pecrystalizer, "setup");
+
+    pecrystalizer->bpf = GST_AUDIO_INFO_BPF(info);
+
+    return true;
+}
+
 static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
                                                     GstBuffer* buffer) {
     GstPecrystalizer* pecrystalizer = GST_PECRYSTALIZER(trans);
@@ -165,7 +183,7 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
     // deinterleave
     for (unsigned int n = 0; n < num_samples; n++) {
         // pecrystalizer->conv->inpdata(0)[n] = ((float*)map.data)[2 * n];
-        // pecrystalizer->conv->inpdata(1)[n] = ((float*)map.data)[2 * n + 1];
+        // pecrystalizer->conv->inpdata(1)[n] = ((float*)map.data)[2 * n +1];
     }
 
     gst_buffer_unmap(buffer, &map);
