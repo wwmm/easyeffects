@@ -37,6 +37,8 @@ static gboolean gst_pecrystalizer_setup(GstAudioFilter* filter,
 static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
                                                     GstBuffer* buffer);
 
+static gboolean gst_pecrystalizer_stop(GstBaseTransform* base);
+
 enum { PROP_0, PROP_INTENSITY };
 
 /* pad templates */
@@ -100,6 +102,8 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
         GST_DEBUG_FUNCPTR(gst_pecrystalizer_transform_ip);
 
     base_transform_class->transform_ip_on_passthrough = false;
+
+    base_transform_class->stop = GST_DEBUG_FUNCPTR(gst_pecrystalizer_stop);
 
     /* define properties */
 
@@ -208,6 +212,14 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
     gst_buffer_unmap(buffer, &map);
 
     return GST_FLOW_OK;
+}
+
+static gboolean gst_pecrystalizer_stop(GstBaseTransform* base) {
+    GstPecrystalizer* pecrystalizer = GST_PECRYSTALIZER(base);
+
+    pecrystalizer->ready = false;
+
+    return true;
 }
 
 static gboolean plugin_init(GstPlugin* plugin) {
