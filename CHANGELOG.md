@@ -3,6 +3,10 @@
 ## [Unreleased]
 
 ### Added
+- A crystalizer plugin. Useful to add a little of dynamic range to overly
+compressed songs. It is a port I made of the algorithm in FFMPEG crystalizer
+plugin to the GStreamer framework. So all the credits should go to the FFMPEG
+developers.
 - Audio format and sampling rate conversion steps are shown in the GTK headerbar
 subtitle(below the title). The first info is about the null sinks loaded by
 PulseEffects. They are the place applications are redirected to. The second
@@ -10,6 +14,8 @@ information shows the format and sampling rate used by the plugins and
 PulseEffects pipeline. The third information shown is from the current default
 output or input device.
 
+### Note for Packagers
+- There is no need to add ffmpeg as dependency.
 
 ## [4.1.8]
 ### Added
