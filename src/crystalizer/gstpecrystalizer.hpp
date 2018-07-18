@@ -30,7 +30,9 @@ struct _GstPecrystalizer {
 
     /* < private > */
 
+    bool ready;
     int bpf;  // bytes per frame : channels * bps
+    float last_L, last_R;
 };
 
 struct _GstPecrystalizerClass {

@@ -37,9 +37,6 @@ static gboolean gst_pecrystalizer_setup(GstAudioFilter* filter,
 static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
                                                     GstBuffer* buffer);
 
-static void gst_pecrystalizer_set_intensity(GstPecrystalizer* pecrystalizer,
-                                            const uint& value);
-
 enum { PROP_0, PROP_INTENSITY };
 
 /* pad templates */
@@ -114,8 +111,11 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
 }
 
 static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
+    pecrystalizer->ready = false;
     pecrystalizer->bpf = 0;
     pecrystalizer->intensity = 2.0f;
+    pecrystalizer->last_L = -1.0f;
+    pecrystalizer->last_R = -1.0f;
 
     gst_base_transform_set_in_place(GST_BASE_TRANSFORM(pecrystalizer), true);
 }
@@ -130,8 +130,7 @@ void gst_pecrystalizer_set_property(GObject* object,
 
     switch (property_id) {
         case PROP_INTENSITY:
-            gst_pecrystalizer_set_intensity(pecrystalizer,
-                                            g_value_get_float(value));
+            pecrystalizer->intensity = g_value_get_float(value);
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -180,22 +179,30 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
 
     guint num_samples = map.size / pecrystalizer->bpf;
 
-    // deinterleave
+    float* data = (float*)map.data;
+
+    if (!pecrystalizer->ready) {
+        pecrystalizer->last_L = data[0];
+        pecrystalizer->last_R = data[1];
+        pecrystalizer->ready = true;
+    }
+
     for (unsigned int n = 0; n < num_samples; n++) {
-        // pecrystalizer->conv->inpdata(0)[n] = ((float*)map.data)[2 * n];
-        // pecrystalizer->conv->inpdata(1)[n] = ((float*)map.data)[2 * n +1];
+        float L = data[2 * n], R = data[2 * n + 1];
+
+        data[2 * n] =
+            L + (L - pecrystalizer->last_L) * pecrystalizer->intensity;
+
+        data[2 * n + 1] =
+            R + (R - pecrystalizer->last_R) * pecrystalizer->intensity;
+
+        pecrystalizer->last_L = L;
+        pecrystalizer->last_R = R;
     }
 
     gst_buffer_unmap(buffer, &map);
 
     return GST_FLOW_OK;
-}
-
-static void gst_pecrystalizer_set_intensity(GstPecrystalizer* pecrystalizer,
-                                            const uint& value) {
-    if (value != pecrystalizer->intensity) {
-        pecrystalizer->intensity = value;
-    }
 }
 
 static gboolean plugin_init(GstPlugin* plugin) {
