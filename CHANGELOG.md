@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 
+## [4.1.9]
 ### Added
 - A crystalizer plugin. Useful to add a little of dynamic range to overly
 compressed songs. It is a port I made of the algorithm in FFMPEG crystalizer
