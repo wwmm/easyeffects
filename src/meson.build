@@ -59,6 +59,7 @@ pulseeffects_sources = [
 	'pitch_ui.cpp',
 	'webrtc.cpp',
 	'webrtc_ui.cpp',
+	'crystalizer.cpp',
 	'presets_manager.cpp',
 	'limiter_preset.cpp',
 	'compressor_preset.cpp',
