@@ -14,7 +14,7 @@ class CrystalizerUi : public Gtk::Grid, public PluginUiBase {
     void reset();
 
    private:
-    Glib::RefPtr<Gtk::Adjustment> intensity;
+    Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, intensity;
 };
 
 #endif

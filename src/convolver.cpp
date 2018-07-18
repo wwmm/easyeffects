@@ -46,12 +46,6 @@ Convolver::Convolver(const std::string& tag, const std::string& schema)
             G_SETTINGS_BIND_DEFAULT, util::db20_gain_to_linear_double,
             util::linear_double_gain_to_db20, nullptr, nullptr);
 
-        g_settings_bind(settings, "kernel-path", convolver, "kernel-path",
-                        G_SETTINGS_BIND_DEFAULT);
-
-        g_settings_bind(settings, "ir-width", convolver, "ir-width",
-                        G_SETTINGS_BIND_DEFAULT);
-
         // useless write just to force callback call
 
         auto enable = g_settings_get_boolean(settings, "state");
@@ -65,14 +59,9 @@ Convolver::~Convolver() {
 }
 
 void Convolver::bind_to_gsettings() {
-    // g_settings_bind_with_mapping(
-    //     settings, "input-gain", convolver, "level-in",
-    //     G_SETTINGS_BIND_DEFAULT, util::db20_gain_to_linear,
-    //     util::linear_gain_to_db20, nullptr, nullptr);
-    //
-    // g_settings_bind_with_mapping(settings, "output-gain", convolver,
-    //                              "level-out", G_SETTINGS_BIND_DEFAULT,
-    //                              util::db20_gain_to_linear,
-    //                              util::linear_gain_to_db20, nullptr,
-    //                              nullptr);
+    g_settings_bind(settings, "kernel-path", convolver, "kernel-path",
+                    G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind(settings, "ir-width", convolver, "ir-width",
+                    G_SETTINGS_BIND_DEFAULT);
 }
