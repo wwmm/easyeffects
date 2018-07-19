@@ -1,0 +1,14 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      type="guide"
+      id="index">
+
+	<info>
+		<credit type="author">
+			<name>Wellington Wallace</name>
+			<email>wellingtonwallace@gmail.com</email>
+		</credit>
+	</info>
+
+	<title><media type="image" src="figures/logo.png" its:translate="no" /> PulseEffects</title>
+
+</page>

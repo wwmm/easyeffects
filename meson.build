@@ -25,6 +25,7 @@ include_dir = include_directories('include')
 
 subdir('data')
 subdir('po')
+subdir('help')
 subdir('src')
 
 meson.add_install_script('meson_post_install.py')
