@@ -1,0 +1,125 @@
+<page xmlns="http://projectmallard.org/1.0/" type="guide" id="limiter">
+
+    <info>
+        <link type="guide" xref="index#plugins"/>
+    </info>
+
+    <title>Limiter and Auto Volume</title>
+
+    <p>
+        PulseEffects uses the limiter plugin developed by
+        <link href="https://calf-studio-gear.org">Calf Studio</link>. We only attached to it a routine to automatically set its input gain. This is what we call auto volume.
+    </p>
+
+    <section>
+        <title>Limiter</title>
+        <terms>
+            <item>
+                <title>
+                    <em style="strong">Input Gain</em>
+                </title>
+                <p>
+                    Raise audio volume before it is sent ot the compression stage
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong">Limit</em>
+                </title>
+                <p>
+                    No signal above this level will pass through the limiter
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong">Lookahead</em>
+                </title>
+                <p>
+                    The Limiter will reach its attenuation level in this amount of time (output will be delayed two times this time)
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong">Release</em>
+                </title>
+                <p>
+                    Come back from limiting to attenuation 1.0 in this amount of milliseconds
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong">Oversampling</em>
+                </title>
+                <p>Increase the signal sampling to better detect the peaks. The signal is downsampled after processing.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong">ASC</em>
+                </title>
+                <p>
+                    When gain reduction is always needed ASC takes care of releasing to an average reduction level rather than reaching a reduction of 0 in the release time
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong">ASC Level</em>
+                </title>
+                <p>
+                    Select how much the release time is affected by ASC, 0 means nearly no changes in release time while 1 produces higher release times
+                </p>
+            </item>
+        </terms>
+    </section>
+
+    <section>
+        <title>Auto Volume</title>
+        <terms>
+            <item>
+                <title>
+                    <em style="strong">Window</em>
+                </title>
+                <p>
+                    The amount of time taken to measure the maximum audio peak.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong">Target</em>
+                </title>
+                <p>
+                    The desired peak level.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong">Tolerance</em>
+                </title>
+                <p>
+                    Maximum tolerated difference between the target level and the current peak level.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong">Threshold</em>
+                </title>
+                <p>
+                    Auto volume works only when the audio level is above the threshold.
+                </p>
+            </item>
+        </terms>
+    </section>
+
+    <section>
+        <title>References</title>
+        <list>
+            <item>
+                <p>
+                    <link href="https://calf-studio-gear.org/doc/Limiter.html">
+                        https://calf-studio-gear.org/doc/Limiter.html
+                    </link>
+                </p>
+            </item>
+        </list>
+    </section>
+
+</page>
