@@ -1,0 +1,80 @@
+<page xmlns="http://projectmallard.org/1.0/" type="guide" id="exciter">
+    <info>
+        <link type="guide" xref="index#plugins"/>
+    </info>
+    <title>Exciter</title>
+    <p>
+        PulseEffects uses the exciter plugin developed by
+        <link href="https://calf-studio-gear.org">Calf Studio</link>.
+    </p>
+    <terms>
+        <item>
+            <title>
+                <em style="strong">Amount</em>
+            </title>
+            <p>
+                The amount of harmonics added to the original signal
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Harmonics</em>
+            </title>
+            <p>
+                The amount of newly created harmonics
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Scope</em>
+            </title>
+            <p>
+                The frequency harmonics are produced above
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Ceiling(Button)</em>
+            </title>
+            <p>
+                Constrain the excitement on the upper end
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Ceiling(value)</em>
+            </title>
+            <p>
+                The frequency no harmonics are produced above
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Blend Harmonics</em>
+            </title>
+            <p>
+                The "colour" (or octave) of the harmonics
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Listen</em>
+            </title>
+            <p>
+                Mute the original signal and listen to the harmonics exclusively
+            </p>
+        </item>
+    </terms>
+    <section>
+        <title>References</title>
+        <list>
+            <item>
+                <p>
+                    <link href="https://calf-studio-gear.org/doc/Exciter.html">
+                        https://calf-studio-gear.org/doc/Exciter.html
+                    </link>
+                </p>
+            </item>
+        </list>
+    </section>
+</page>

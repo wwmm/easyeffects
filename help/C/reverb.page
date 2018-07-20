@@ -1,23 +1,20 @@
 <page xmlns="http://projectmallard.org/1.0/" type="guide" id="reverb">
-
     <info>
         <link type="guide" xref="index#plugins"/>
     </info>
-
     <title>Reverberation</title>
-
     <p>
         PulseEffects uses the reverberation plugin developed by
         <link href="https://calf-studio-gear.org">Calf Studio</link>.
     </p>
-
     <terms>
         <item>
             <title>
                 <em style="strong">Pre Delay</em>
             </title>
             <p>
-                Additional delay - corresponds to a distance between sound source and the nearest wall
+                Additional delay - corresponds to a distance between sound source and the
+                nearest wall
             </p>
         </item>
         <item>
@@ -73,7 +70,8 @@
                 <em style="strong">Room Size</em>
             </title>
             <p>
-                Size of the space that simulated reverberation occurs in - determines times between reflections
+                Size of the space that simulated reverberation occurs in - determines times
+                between reflections
             </p>
         </item>
         <item>
@@ -81,11 +79,11 @@
                 <em style="strong">High Frequency Damping</em>
             </title>
             <p>
-                Cutoff high reflections high frequencies - causes higher frequencies to decay faster
+                Cutoff high reflections high frequencies - causes higher frequencies to decay
+                faster
             </p>
         </item>
     </terms>
-
     <section>
         <title>References</title>
         <list>
@@ -98,5 +96,4 @@
             </item>
         </list>
     </section>
-
 </page>

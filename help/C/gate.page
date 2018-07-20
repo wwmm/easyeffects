@@ -1,23 +1,20 @@
 <page xmlns="http://projectmallard.org/1.0/" type="guide" id="gate">
-
     <info>
         <link type="guide" xref="index#plugins"/>
     </info>
-
     <title>Gate</title>
-
     <p>
         PulseEffects uses the gate plugin developed by
         <link href="https://calf-studio-gear.org">Calf Studio</link>.
     </p>
-
     <terms>
         <item>
             <title>
                 <em style="strong">Attack</em>
             </title>
             <p>
-                Amount of milliseconds the signal has to rise above the threshold before gain reduction starts
+                Amount of milliseconds the signal has to rise above the threshold before gain
+                reduction starts
             </p>
         </item>
         <item>
@@ -25,7 +22,8 @@
                 <em style="strong">Release</em>
             </title>
             <p>
-                Amount of milliseconds the signal has to fall below the threshold before the reduction is decreased again
+                Amount of milliseconds the signal has to fall below the threshold before the
+                reduction is decreased again
             </p>
         </item>
         <item>
@@ -41,7 +39,8 @@
                 <em style="strong">Ratio</em>
             </title>
             <p>
-                Set a ratio about which the signal is reduced. 1:2 means that if the level rises 4dB above the threshold, it will be only 2dB above after the reduction.
+                Set a ratio about which the signal is reduced. 1:2 means that if the level rises
+                4dB above the threshold, it will be only 2dB above after the reduction.
             </p>
         </item>
         <item>
@@ -65,7 +64,8 @@
                 <em style="strong">Stereo Link</em>
             </title>
             <p>
-                Choose if the average level between both channels or the louder channel affects the reduction
+                Choose if the average level between both channels or the louder channel affects
+                the reduction
             </p>
         </item>
         <item>
@@ -73,7 +73,8 @@
                 <em style="strong">Detection</em>
             </title>
             <p>
-                Choose if the gate should take the signal peak for detection or an RMS like one (it's mainly smoother)
+                Choose if the gate should take the signal peak for detection or an RMS like one
+                (it's mainly smoother)
             </p>
         </item>
         <item>
@@ -85,7 +86,6 @@
             </p>
         </item>
     </terms>
-
     <section>
         <title>References</title>
         <list>
@@ -98,5 +98,4 @@
             </item>
         </list>
     </section>
-
 </page>
