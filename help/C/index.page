@@ -19,7 +19,13 @@
     <section id="ui" style="2column">
         <title>User Interface</title>
     </section>
+    <section id="generalsettings" style="2column">
+        <title>General Settings</title>
+    </section>
     <section id="plugins" style="2column">
-        <title>Plugins Documentation</title>
+        <title>Plugins</title>
+    </section>
+    <section id="testsignals" style="2column">
+        <title>Test Signals</title>
     </section>
 </page>
