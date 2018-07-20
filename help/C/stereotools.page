@@ -1,0 +1,103 @@
+<page xmlns="http://projectmallard.org/1.0/" type="guide" id="stereotools">
+    <info>
+        <link type="guide" xref="index#plugins"/>
+    </info>
+    <title>Stereo Tools</title>
+    <p>
+        PulseEffects uses the stereo tools plugin developed by
+        <link href="https://calf-studio-gear.org">Calf Studio</link>.
+    </p>
+    <terms>
+        <item>
+            <title>
+                <em style="strong">Softclip</em>
+            </title>
+            <p>
+                Do kind of analog distortion instead of harsh digital 0db clipping
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Balance</em>
+            </title>
+            <p>
+                Set the balance between both channels
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">S/C Level</em>
+            </title>
+            <p></p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Mode</em>
+            </title>
+            <p>
+                Choose normal stereo behavior (LR - LR) or convert between MS and LR
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Side Level</em>
+            </title>
+            <p>
+                The level of the side signal
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Side Balance</em>
+            </title>
+            <p>
+                The balance of the side signal
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Middle Level</em>
+            </title>
+            <p>
+                Middle signal position in the stereo panorama.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Delay L/R</em>
+            </title>
+            <p>
+                Delay the left or the right channel (milliseconds). Negative values delay the
+                left channel and positive values the right channel.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Stereo Base</em>
+            </title>
+            <p>
+                Set the stereo base of your material seamless between Mono and inversed Channels
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Stereo Phase</em>
+            </title>
+            <p>
+                Set the stereo phase of your material
+            </p>
+        </item>
+    </terms>
+    <section>
+        <title>References</title>
+        <list>
+            <item>
+                <p>
+                    <link href="https://calf-studio-gear.org/doc/Stereo%20Tools.html">
+                        https://calf-studio-gear.org/doc/Stereo%20Tools.html
+                    </link>
+                </p>
+            </item>
+        </list>
+    </section>
+</page>
