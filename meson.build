@@ -3,8 +3,8 @@ project(
 	'c',
 	'cpp',
 	default_options : ['cpp_std=c++17'],
-	version: '4.1.9',
-	meson_version: '>= 0.40.0'
+	version: '4.2.0',
+	meson_version: '>= 0.46.0'
 )
 
 add_global_arguments('-DG_LOG_DOMAIN="pulseeffects"', language : 'c')
