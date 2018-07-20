@@ -1,0 +1,56 @@
+<page xmlns="http://projectmallard.org/1.0/" type="guide" id="stereoenhancer">
+    <info>
+        <link type="guide" xref="index#plugins"/>
+    </info>
+    <title>Stereo Enhancer</title>
+    <p>
+        PulseEffects uses the stereo enhancer plugin developed by
+        <link href="https://calf-studio-gear.org">Calf Studio</link>. It uses Haas effect to improve the stereo signal.
+    </p>
+    <terms>
+        <item>
+            <title>
+                <em style="strong">Balance</em>
+            </title>
+            <p>
+                Set the balance between both channels
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Delay</em>
+            </title>
+            <p>
+                Channel delay
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Mode</em>
+            </title>
+            <p>
+                Choose how the middle signal is generated
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Side Gain</em>
+            </title>
+            <p>
+                The level of the side signal
+            </p>
+        </item>
+    </terms>
+    <section>
+        <title>References</title>
+        <list>
+            <item>
+                <p>
+                    <link href="https://calf-studio-gear.org/doc/Stereo%20Enhancer.html">
+                        https://calf-studio-gear.org/doc/Stereo%20Enhancer.html
+                    </link>
+                </p>
+            </item>
+        </list>
+    </section>
+</page>

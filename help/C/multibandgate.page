@@ -1,0 +1,145 @@
+<page xmlns="http://projectmallard.org/1.0/" type="guide" id="multibandgate">
+    <info>
+        <link type="guide" xref="index#plugins"/>
+    </info>
+    <title>Multiband Gate</title>
+    <p>
+        PulseEffects uses the multiband gate plugin developed by
+        <link href="https://calf-studio-gear.org">Calf Studio</link>.
+    </p>
+    <terms>
+        <item>
+            <title>
+                <em style="strong">Attack</em>
+            </title>
+            <p>
+                Amount of milliseconds the signal has to rise above the threshold before gain
+                reduction starts
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Release</em>
+            </title>
+            <p>
+                Amount of milliseconds the signal has to fall below the threshold before the
+                reduction is decreased again
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Reduction</em>
+            </title>
+            <p>
+                The level of reduction in this strip
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Threshold</em>
+            </title>
+            <p>
+                If a signal rises above this level it will affect the gain reduction
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Ratio</em>
+            </title>
+            <p>
+                Set a ratio about which the signal is reduced. 1:2 means that if the level rises
+                4dB above the threshold, it will be only 2dB above after the reduction.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Knee</em>
+            </title>
+            <p>
+                Curve the sharp knee around the threshold to enter gain reduction more softly
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Makeup</em>
+            </title>
+            <p>
+                Amplify your signal after processing
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Bypass</em>
+            </title>
+            <p>
+                Don't process anything, just bypass the signal of this strip
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Detection</em>
+            </title>
+            <p>
+                Choose if the multibandgate should take the signal peak for detection or an RMS
+                like one (it's mainly smoother)
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Solo</em>
+            </title>
+            <p>
+                Mute all strips not set to solo
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Mode</em>
+            </title>
+            <p>
+                The crossover mode. You can choose between the fourth order Linkwitz–Riley(LR4)
+                and the eighth order Linkwitz–Riley(LR8). You can see more info about them in
+                this wikipedia link
+                <link href="https://en.wikipedia.org/wiki/Linkwitz%E2%80%93Riley_filter">
+                    Linkwitz–Riley filter
+                </link>
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Split 1/2</em>
+            </title>
+            <p>
+                Frequency that separates the sub band and the low band
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Split 2/3</em>
+            </title>
+            <p>
+                Frequency that separates the low band and the mid band
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Split 3/4</em>
+            </title>
+            <p>
+                Frequency that separates the mid band and the high band
+            </p>
+        </item>
+    </terms>
+    <section>
+        <title>References</title>
+        <list>
+            <item>
+                <p>
+                    <link href="https://calf-studio-gear.org/doc/Multiband Gate.html">
+                        https://calf-studio-gear.org/doc/Multiband Gate.html
+                    </link>
+                </p>
+            </item>
+        </list>
+    </section>
+</page>
