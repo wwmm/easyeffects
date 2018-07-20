@@ -1,0 +1,100 @@
+<page xmlns="http://projectmallard.org/1.0/" type="guide" id="compressor">
+
+    <info>
+        <link type="guide" xref="index#plugins"/>
+    </info>
+
+    <title>Compressor</title>
+
+    <p>
+        PulseEffects uses the compressor plugin developed by
+        <link href="https://calf-studio-gear.org">Calf Studio</link>.
+    </p>
+
+    <terms>
+        <item>
+            <title>
+                <em style="strong">Attack</em>
+            </title>
+            <p>
+                Amount of milliseconds the signal has to rise above the threshold before gain reduction starts
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Release</em>
+            </title>
+            <p>
+                Amount of milliseconds the signal has to fall below the threshold before the reduction is decreased again
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Threshold</em>
+            </title>
+            <p>
+                If a signal rises above this level it will affect the gain reduction
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Ratio</em>
+            </title>
+            <p>
+                Set a ratio about which the signal is reduced. 1:2 means that if the level rises 4dB above the threshold, it will be only 2dB above after the reduction.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Knee</em>
+            </title>
+            <p>
+                Curve the sharp knee around the threshold to enter gain reduction more softly
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Makeup</em>
+            </title>
+            <p>
+                Amplify your signal after processing
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Stereo Link</em>
+            </title>
+            <p>
+                Choose if the average level between both channels or the louder channel affects the reduction
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Detection</em>
+            </title>
+            <p>
+                Choose if the compressor should take the signal peak for detection or an RMS like one (it's mainly smoother)
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Mix</em>
+            </title>
+            <p></p>
+        </item>
+    </terms>
+
+    <section>
+        <title>References</title>
+        <list>
+            <item>
+                <p>
+                    <link href="https://calf-studio-gear.org/doc/Compressor.html">
+                        https://calf-studio-gear.org/doc/Compressor.html
+                    </link>
+                </p>
+            </item>
+        </list>
+    </section>
+
+</page>

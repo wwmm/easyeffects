@@ -50,7 +50,9 @@
                 <title>
                     <em style="strong">Oversampling</em>
                 </title>
-                <p>Increase the signal sampling to better detect the peaks. The signal is downsampled after processing.</p>
+                <p>
+                    Increase the signal sampling to better detect the peaks. The signal is downsampled after processing.
+                </p>
             </item>
             <item>
                 <title>
