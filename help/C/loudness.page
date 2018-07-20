@@ -1,0 +1,54 @@
+<page xmlns="http://projectmallard.org/1.0/" type="guide" id="loudness">
+
+    <info>
+        <link type="guide" xref="index#plugins"/>
+    </info>
+
+    <title>Loudness</title>
+
+    <p>
+        PulseEffects uses the loudness plugin from
+        <link href="https://git.drobilla.net/cgit.cgi/mda.lv2.git/about/">MDA.LV2</link>. The ear is less sensitive to low frequencies when listening at low volume. This plug-in is based on the Stevens-Davis equal loudness contours and allows the bass level to be adjusted to simulate or correct for this effect.
+    </p>
+
+    <terms>
+        <item>
+            <title>
+                <em style="strong">Loudness</em>
+            </title>
+            <p>
+                Source level relative to listening level (based on a 100 dB SPL maximum level)
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Output</em>
+            </title>
+            <p>
+                Level trim
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Link</em>
+            </title>
+            <p>
+                Automatically adjusts Output to maintain a consistent tonal balance at all levels
+            </p>
+        </item>
+    </terms>
+
+    <section>
+        <title>References</title>
+        <list>
+            <item>
+                <p>
+                    <link href="http://mda.smartelectronix.com/vst/help/loudness.htm">
+                        http://mda.smartelectronix.com/vst/help/loudness.htm
+                    </link>
+                </p>
+            </item>
+        </list>
+    </section>
+
+</page>
