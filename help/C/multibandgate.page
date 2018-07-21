@@ -97,12 +97,8 @@
                 <em style="strong">Mode</em>
             </title>
             <p>
-                The crossover mode. You can choose between the fourth order Linkwitz–Riley(LR4)
-                and the eighth order Linkwitz–Riley(LR8). You can see more info about them in
-                this wikipedia link
-                <link href="https://en.wikipedia.org/wiki/Linkwitz%E2%80%93Riley_filter">
-                    Linkwitz–Riley filter
-                </link>
+                The crossover mode. You can choose between the fourth order Linkwitz-Riley(LR4)
+                and the eighth order Linkwitz-Riley(LR8).
             </p>
         </item>
         <item>
