@@ -1,0 +1,44 @@
+<page xmlns="http://projectmallard.org/1.0/" type="guide" id="crystalizer">
+    <info>
+        <link type="guide" xref="index#plugins"/>
+    </info>
+    <title>Crystalizer</title>
+    <p>
+        PulseEffects crystalizer is a port of the
+        <link
+            href="https://github.com/FFmpeg/FFmpeg/blob/master/libavfilter/af_crystalizer.c">FFMPEG rystalizer</link>
+        plugin code to the GStreamer framework. This plugin can be used to add
+        <link href="https://en.wikipedia.org/wiki/Dynamic_range">dynamic range</link>
+        to songs that were overly compressed
+    </p>
+    <terms>
+        <item>
+            <title>
+                <em style="strong">Intensity</em>
+            </title>
+            <p>
+                The higher the value the higher is the difference in magnitude between loudest
+                and the quiestest sections of the music.
+            </p>
+        </item>
+    </terms>
+    <section>
+        <title>References</title>
+        <list>
+            <item>
+                <p>
+                    <link href="https://ffmpeg.org/ffmpeg-filters.html#crystalizer">
+                        https://ffmpeg.org/ffmpeg-filters.html#crystalizer
+                    </link>
+                </p>
+            </item>
+            <item>
+                <p>
+                    <link href="https://en.wikipedia.org/wiki/Dynamic_range">
+                        https://en.wikipedia.org/wiki/Dynamic_range
+                    </link>
+                </p>
+            </item>
+        </list>
+    </section>
+</page>
