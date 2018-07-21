@@ -40,7 +40,7 @@ msgstr "Проверочный сигнал"
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
 #: src/application_ui.cpp:879 src/application_ui.cpp:954
 msgid "Presets"
-msgstr "Преднастройки"
+msgstr "Предустановки"
 
 #: data/ui/application.glade:518
 msgid "Start Service at Login"
@@ -148,11 +148,11 @@ msgstr "Состояние"
 
 #: data/ui/limiter.glade:61 data/ui/limiter.glade:413 data/ui/webrtc.glade:377
 msgid "Limiter"
-msgstr "Подстройка уровня звука (лимитер)"
+msgstr "Ограничитель уровня звука (лимитер)"
 
 #: data/ui/limiter.glade:213
 msgid "Input Gain"
-msgstr "Усиление ввода"
+msgstr "Уровень предусиления"
 
 #: data/ui/limiter.glade:246
 msgid "Limit"
@@ -167,7 +167,7 @@ msgstr "Ограничение"
 #: data/ui/multiband_gate.glade:964 data/ui/multiband_gate.glade:1375
 #: data/ui/multiband_gate.glade:1786
 msgid "Release"
-msgstr "Высвобождение"
+msgstr "Восстановление"
 
 #: data/ui/limiter.glade:314
 msgid "Lookahead"
@@ -192,7 +192,7 @@ msgstr "Окно"
 
 #: data/ui/limiter.glade:465
 msgid "Target"
-msgstr "Целевой результат"
+msgstr "Целевой уровень громкости"
 
 #: data/ui/limiter.glade:543 data/ui/compressor.glade:406
 #: data/ui/multiband_compressor.glade:571
@@ -225,7 +225,7 @@ msgstr "Автоподстройка уровня звука"
 #: data/ui/crystalizer.glade:168 data/ui/pitch.glade:304
 #: data/ui/webrtc.glade:586
 msgid "Input"
-msgstr "Ввод"
+msgstr "Вход"
 
 #: data/ui/limiter.glade:639 data/ui/compressor.glade:574
 #: data/ui/multiband_compressor.glade:755
@@ -245,7 +245,7 @@ msgstr "Ввод"
 #: data/ui/convolver.glade:464 data/ui/crystalizer.glade:183
 #: data/ui/pitch.glade:319 data/ui/webrtc.glade:601
 msgid "Output"
-msgstr "Вывод"
+msgstr "Выход"
 
 #: data/ui/limiter.glade:654
 msgid "Attenuation"
@@ -258,11 +258,11 @@ msgstr "Компрессор"
 
 #: data/ui/compressor.glade:122
 msgid "Vocal Leveller 1"
-msgstr ""
+msgstr "Выравниевание уровня речи 1"
 
 #: data/ui/compressor.glade:134
 msgid "Vocal Leveller 2"
-msgstr ""
+msgstr "Выравниевание уровня речи 2"
 
 #: data/ui/compressor.glade:146 data/ui/filter.glade:158
 #: data/ui/reverb.glade:234 data/ui/crossfeed.glade:72
@@ -276,7 +276,7 @@ msgstr "Определение"
 
 #: data/ui/compressor.glade:249 data/ui/gate.glade:180
 msgid "Stereo Link"
-msgstr "Стереокорректор"
+msgstr "Стереосвязка"
 
 #: data/ui/compressor.glade:263
 msgid "Mix"
@@ -290,7 +290,7 @@ msgstr "Смешать"
 #: data/ui/multiband_gate.glade:1313 data/ui/multiband_gate.glade:1724
 #: data/ui/deesser.glade:220
 msgid "RMS"
-msgstr "Среднеквадратичное"
+msgstr "RMS (среднеквадратичный уровень сигнала)"
 
 #: data/ui/compressor.glade:294 data/ui/multiband_compressor.glade:477
 #: data/ui/multiband_compressor.glade:849
