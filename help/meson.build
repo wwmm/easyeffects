@@ -1,6 +1,20 @@
 help_pages = [
+  'bassenhancer.page',
+  'compressor.page',
+  'deesser.page',
+  'exciter.page',
+  'filter.page',
+  'gate.page',
   'index.page',
-  'limiter.page'
+  'limiter.page',
+  'loudness.page',
+  'multibandcompressor.page',
+  'multibandgate.page',
+  'reverb.page',
+  'stereoenhancer.page',
+  'stereotools.page',
+  'maximizer.page',
+  'crossfeed.page'
 ]
 
 help_media = [

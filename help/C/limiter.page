@@ -42,7 +42,7 @@
                     <em style="strong">Release</em>
                 </title>
                 <p>
-                    Come back from limiting to attenuation 1.0 in this amount of milliseconds
+                    Stop the attenuation after this amount of milliseconds
                 </p>
             </item>
             <item>

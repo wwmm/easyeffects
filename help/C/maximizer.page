@@ -1,0 +1,39 @@
+<page xmlns="http://projectmallard.org/1.0/" type="guide" id="maximizer">
+    <info>
+        <link type="guide" xref="index#plugins"/>
+    </info>
+    <title>Maximizer</title>
+    <p>
+        PulseEffects uses the maximizer plugin from
+        <link href="http://www.zamaudio.com">ZamAudio</link>.
+    </p>
+    <terms>
+        <item>
+            <title>
+                <em style="strong">Threshold</em>
+            </title>
+            <p>
+                If a signal rises above this level it will affect the gain reduction
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Ceiling</em>
+            </title>
+            <p>
+                Maximum allowd peak.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Release</em>
+            </title>
+            <p>
+                Stop the attenuation after this amount of seconds
+            </p>
+        </item>
+    </terms>
+    <!-- <section> <title>References</title> <list> <item> <p> <link
+    href="http://www.zamaudio.com"> http://www.zamaudio.com </link> </p> </item>
+    </list> </section> -->
+</page>

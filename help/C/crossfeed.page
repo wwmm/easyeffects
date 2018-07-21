@@ -1,0 +1,52 @@
+<page xmlns="http://projectmallard.org/1.0/" type="guide" id="crossfeed">
+    <info>
+        <link type="guide" xref="index#plugins"/>
+    </info>
+    <title>Crossfeed</title>
+    <p>
+        PulseEffects uses the crossfeed plugin from
+        <link
+            href="https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-bad/html/gst-plugins-bad-plugins-bs2b.html">GStreamer</link>.
+        This plugin is based on the bs2b library and can be used to improve headphone
+        listening of stereo audio records. It does so by mixing the left and right
+        channel in a way that simulates a stereo speaker setup while using headphones.
+    </p>
+    <terms>
+        <item>
+            <title>
+                <em style="strong">Cutoff</em>
+            </title>
+            <p>
+                Low-pass filter cut frequency
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Feed</em>
+            </title>
+            <p>
+                The amount of signal from a channel that is sent to the other.
+            </p>
+        </item>
+    </terms>
+    <section>
+        <title>References</title>
+        <list>
+            <item>
+                <p>
+                    <link href="http://bs2b.sourceforge.net/">
+                        http://bs2b.sourceforge.net/
+                    </link>
+                </p>
+            </item>
+            <item>
+                <p>
+                    <link
+                        href="https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-bad/html/gst-plugins-bad-plugins-bs2b.html">
+                        https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-bad/html/gst-plugins-bad-plugins-bs2b.html
+                    </link>
+                </p>
+            </item>
+        </list>
+    </section>
+</page>
