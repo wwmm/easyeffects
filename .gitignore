@@ -35,3 +35,5 @@ build-ppa.sh
 *-build-deps*.deb
 
 .build-tools.cson
+
+ppastats

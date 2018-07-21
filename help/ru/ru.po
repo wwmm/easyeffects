@@ -139,7 +139,7 @@ msgstr "Компрессор"
 #. (itstool) path: page/p
 #: C/compressor.page:6
 msgid "PulseEffects uses the compressor plugin developed by <link href=\"https://calf-studio-gear.org\">Calf Studio</link>."
-msgstr "PulseEffects использует плагин компроссор, разработанный <link href=\"https://calf-studio-gear.org\">Calf Studio</link>."
+msgstr "PulseEffects использует плагин компрессор, разработанный <link href=\"https://calf-studio-gear.org\">Calf Studio</link>."
 
 #. (itstool) path: item/title
 #: C/compressor.page:12
