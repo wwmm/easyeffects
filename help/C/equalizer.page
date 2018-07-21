@@ -1,0 +1,99 @@
+<page xmlns="http://projectmallard.org/1.0/" type="guide" id="equalizer">
+    <info>
+        <link type="guide" xref="index#plugins"/>
+    </info>
+    <title>Equalizer</title>
+    <p>
+        PulseEffects uses the parametric equalizer plugin from
+        <link
+            href="https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good/html/gst-plugins-good-plugins-equalizer-nbands.html">GStreamer</link>.
+        You can choose between 1 and 30 bands. You also can change the cernter frequency
+        and the width of each band as needed. There are a few presets but at this moment
+        all of them have only 10 bands. Presets with other number of bands may be added
+        in the future.
+    </p>
+    <terms>
+        <item>
+            <title>
+                <em style="strong">Bands</em>
+            </title>
+            <p>
+                The number of equalizer bands
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Flat Response</em>
+            </title>
+            <p>
+                This function sets each band gain to 0.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Calculate Frequencies</em>
+            </title>
+            <p>
+                This function can be used to calculate the center frequencies and bandwidth of a
+                graphic equalizer with the current number of selected bands. Useful when the
+                user does not want the default number of 30 bands but has no idea about which
+                frequencies and bandwidth he/she should choose.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Reset Equalizer</em>
+            </title>
+            <p>
+                Reset the equalizer to its default settings.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Reset Equalizer</em>
+            </title>
+            <p>
+                Reset the equalizer to its default settings.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Filter Type</em>
+            </title>
+            <p>
+                Choose between Peak, Low Shelf and High Shelf. Usually you would set the band
+                with the lowest frequency to Low Shelf, the one with the highest frequency to
+                High Shelf and the others to Peak.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Frequency</em>
+            </title>
+            <p>
+                Band center frequency.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Width</em>
+            </title>
+            <p>
+                Bandwidth
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Q</em>
+            </title>
+            <p>
+                Quality factor. Calculated as
+                <code>Q = frequency / width</code>
+            </p>
+        </item>
+    </terms>
+    <!-- <section> <title>References</title> <list> <item> <p> <link
+    href="https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good/html/gst-plugins-good-plugins-equalizer-nbands.html">
+    https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good/html/gst-plugins-good-plugins-equalizer-nbands.html
+    </link> </p> </item> </list> </section> -->
+</page>

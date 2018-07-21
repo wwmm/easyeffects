@@ -14,7 +14,9 @@ help_pages = [
   'stereoenhancer.page',
   'stereotools.page',
   'maximizer.page',
-  'crossfeed.page'
+  'crossfeed.page',
+  'equalizer.page',
+  'pitch.page'
 ]
 
 help_media = [

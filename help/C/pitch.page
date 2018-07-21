@@ -1,0 +1,98 @@
+<page xmlns="http://projectmallard.org/1.0/" type="guide" id="pitch">
+    <info>
+        <link type="guide" xref="index#plugins"/>
+    </info>
+    <title>Pitch</title>
+    <p>
+        PulseEffects uses the pitch shifter plugin from
+        <link href="https://breakfastquay.com/rubberband/">RubberBand</link>.
+    </p>
+    <terms>
+        <item>
+            <title>
+                <em style="strong">Faster</em>
+            </title>
+            <p></p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Preserve Formant</em>
+            </title>
+            <p>
+                Enable formant preservation when pitch shifting
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Cents</em>
+            </title>
+            <p>
+                Number of cents the pitch will increased or decreased
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Semitones</em>
+            </title>
+            <p>
+                Number of semitones the pitch will increased or decreased
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Octaves</em>
+            </title>
+            <p>
+                Number of octaves the pitch will increased or decreased
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Crispness</em>
+            </title>
+            <list type="none">
+                <item>
+                    <p>
+                        0 - Disable phase resynchronisation at transients, phase lamination and use
+                        longer processing window
+                    </p>
+                </item>
+                <item>
+                    <p>
+                        1 - Use soft transient detector, disable phase lamination and use longer
+                        processing window
+                    </p>
+                </item>
+                <item>
+                    <p>
+                        2 - Disable phase resynchronisation at transients and phase lamination
+                    </p>
+                </item>
+                <item>
+                    <p>
+                        3 - Disable phase resynchronisation at transients
+                    </p>
+                </item>
+            </list>
+        </item>
+    </terms>
+    <section>
+        <title>References</title>
+        <list>
+            <item>
+                <p>
+                    <link href="https://breakfastquay.com/rubberband/">
+                        https://breakfastquay.com/rubberband/
+                    </link>
+                </p>
+            </item>
+            <item>
+                <p>
+                    <link href="https://breakfastquay.com/rubberband/usage.txt">
+                        https://breakfastquay.com/rubberband/usage.txt
+                    </link>
+                </p>
+            </item>
+        </list>
+    </section>
+</page>
