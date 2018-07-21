@@ -9,7 +9,7 @@ obj-*-linux-gnu
 *.pyc
 
 # binary language files
-po/*.mo
+*.mo
 
 \.python-version
 

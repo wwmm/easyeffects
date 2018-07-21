@@ -1,3 +1,16 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"X-Generator: Poedit 2.0.9\n"
+
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
@@ -6,7 +19,7 @@ msgstr ""
 #. (itstool) path: page/title
 #: C/bassenhancer.page:5
 msgid "Bass Enhancer"
-msgstr ""
+msgstr "Reforçador de Graves"
 
 #. (itstool) path: page/p
 #: C/bassenhancer.page:6
@@ -14,6 +27,8 @@ msgid ""
 "PulseEffects uses the bass enhancer plugin developed by <link href=\"https://"
 "calf-studio-gear.org\">Calf Studio</link>."
 msgstr ""
+"PulseEffects usa o plugin reforçador de grave desenvolvido por <link href="
+"\"https://calf-studio-gear.org\">Calf Studio</link>."
 
 #. (itstool) path: item/title
 #: C/bassenhancer.page:12 C/exciter.page:12 C/reverb.page:29
