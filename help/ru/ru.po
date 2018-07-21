@@ -56,7 +56,7 @@ msgstr "Величина вновь созданных гармоник"
 #: C/bassenhancer.page:28
 #: C/exciter.page:28
 msgid "<em style=\"strong\">Scope</em>"
-msgstr ""
+msgstr "<em style=\"strong\">Размах</em>"
 
 #. (itstool) path: item/p
 #: C/bassenhancer.page:31
@@ -94,7 +94,7 @@ msgstr ""
 #: C/bassenhancer.page:55
 #: C/exciter.page:55
 msgid "The \"colour\" (or octave) of the harmonics"
-msgstr ""
+msgstr "\"Цвет\" (тлт октава) гармоник"
 
 #. (itstool) path: item/title
 #: C/bassenhancer.page:60
@@ -106,7 +106,7 @@ msgstr ""
 #: C/bassenhancer.page:63
 #: C/exciter.page:63
 msgid "Mute the original signal and listen to the harmonics exclusively"
-msgstr ""
+msgstr "Выключить исходный сигнал и прослушать только гармоники"
 
 #. (itstool) path: section/title
 #: C/bassenhancer.page:69
@@ -134,12 +134,12 @@ msgstr ""
 #. (itstool) path: page/title
 #: C/compressor.page:5
 msgid "Compressor"
-msgstr ""
+msgstr "Компрессор"
 
 #. (itstool) path: page/p
 #: C/compressor.page:6
 msgid "PulseEffects uses the compressor plugin developed by <link href=\"https://calf-studio-gear.org\">Calf Studio</link>."
-msgstr ""
+msgstr "PulseEffects использует плагин компроссор, разработанный <link href=\"https://calf-studio-gear.org\">Calf Studio</link>."
 
 #. (itstool) path: item/title
 #: C/compressor.page:12
@@ -147,7 +147,7 @@ msgstr ""
 #: C/multibandcompressor.page:15
 #: C/multibandgate.page:12
 msgid "<em style=\"strong\">Attack</em>"
-msgstr ""
+msgstr "<em style=\"strong\">Атака</em>"
 
 #. (itstool) path: item/p
 #: C/compressor.page:15
@@ -165,7 +165,7 @@ msgstr ""
 #: C/multibandgate.page:21
 #: C/maximizer.page:28
 msgid "<em style=\"strong\">Release</em>"
-msgstr ""
+msgstr "<em style=\"strong\">Восстановление</em>"
 
 #. (itstool) path: item/p
 #: C/compressor.page:24
@@ -184,7 +184,7 @@ msgstr ""
 #: C/multibandgate.page:38
 #: C/maximizer.page:12
 msgid "<em style=\"strong\">Threshold</em>"
-msgstr ""
+msgstr "<em style=\"strong\">Порог</em>"
 
 #. (itstool) path: item/p
 #: C/compressor.page:33
@@ -203,7 +203,7 @@ msgstr ""
 #: C/multibandcompressor.page:41
 #: C/multibandgate.page:46
 msgid "<em style=\"strong\">Ratio</em>"
-msgstr ""
+msgstr "<em style=\"strong\">Отношение</em>"
 
 #. (itstool) path: item/p
 #: C/compressor.page:41
@@ -220,7 +220,7 @@ msgstr ""
 #: C/multibandcompressor.page:50
 #: C/multibandgate.page:55
 msgid "<em style=\"strong\">Knee</em>"
-msgstr ""
+msgstr "<em style=\"strong\">Излом</em>"
 
 #. (itstool) path: item/p
 #: C/compressor.page:50
