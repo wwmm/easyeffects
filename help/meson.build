@@ -16,7 +16,8 @@ help_pages = [
   'maximizer.page',
   'crossfeed.page',
   'equalizer.page',
-  'pitch.page'
+  'pitch.page',
+  'webrtc.page'
 ]
 
 help_media = [

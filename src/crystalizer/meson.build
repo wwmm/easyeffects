@@ -1,20 +1,12 @@
 cxx = meson.get_compiler('cpp')
 
-cxx_args = ''
-
-if cxx.has_link_argument('-Wl,-Bsymbolic-functions')
-  cxx_args += '-Wl,-Bsymbolic-functions'
-endif
+cxx_args = '-Wl,-Bsymbolic-functions'
 
 # Symbol visibility
-if cxx.has_argument('-fvisibility=hidden')
-	cxx_args += '-fvisibility=hidden'
-endif
+cxx_args += '-fvisibility=hidden'
 
 # Disable strict aliasing
-if cxx.has_argument('-fno-strict-aliasing')
-  cxx_args += '-fno-strict-aliasing'
-endif
+cxx_args += '-fno-strict-aliasing'
 
 plugin_sources = [
 	'gstpecrystalizer.cpp',

@@ -1,0 +1,150 @@
+<page xmlns="http://projectmallard.org/1.0/" type="guide" id="webrtc">
+    <info>
+        <link type="guide" xref="index#plugins"/>
+    </info>
+    <title>Webrtc</title>
+    <p>
+        PulseEffects uses the webrtc plugin from
+        <link
+            href="https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-bad/html/gst-plugins-bad-plugins-webrtcdsp.html">GStreamer</link>.
+        This plugin offers a voice enhancement filter based on WebRTC Audio Processing
+        library. This library provides a whide variety of enhancement algorithms. This
+        element tries to enable as much as possible. The currently enabled enhancements
+        are High Pass Filter, Echo Canceller, Noise Suppression, Automatic Gain Control,
+        and some extended filters.
+    </p>
+    <section>
+        <title>Echo Canceller</title>
+        <terms>
+            <item>
+                <title>
+                    <em style="strong">Extended Filter</em>
+                </title>
+                <p>
+                    Enabled or disables the extended filter
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong">High Pass Filter</em>
+                </title>
+                <p>
+                    Enables or disables the high pass filter
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong">Delay Agnostic</em>
+                </title>
+                <p>
+                    Enables or disables the delay agnostic mode
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong">Suppression Level</em>
+                </title>
+                <p>
+                    Controls the aggressiveness of the suppressor. A higher level trades off
+                    double-talk performance for increased echo suppression.
+                </p>
+            </item>
+        </terms>
+    </section>
+    <section>
+        <title>Noise Suppressor</title>
+        <terms>
+            <item>
+                <title>
+                    <em style="strong">Suppression Level</em>
+                </title>
+                <p>
+                    Controls the aggressiveness of the suppression. Increasing the level will reduce
+                    the noise level at the expense of a higher speech distortion.
+                </p>
+            </item>
+        </terms>
+    </section>
+    <section>
+        <title>Gain Controller</title>
+        <terms>
+            <item>
+                <title>
+                    <em style="strong">Mode</em>
+                </title>
+                <p>
+                    Controls the mode of the compression stage.
+                </p>
+            </item>
+        </terms>
+    </section>
+    <section>
+        <title>Compressor</title>
+        <terms>
+            <item>
+                <title>
+                    <em style="strong">Limiter</em>
+                </title>
+                <p>
+                    When enabled, the compression stage will hard limit the signal to the target
+                    level. Otherwise, the signal will be compressed but not limited above the target
+                    level.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong">Target Level</em>
+                </title>
+                <p>
+                    Sets the target peak |level| (or envelope) of the gain control in dBFS (decibels
+                    from digital full-scale).
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong">Maximum Gain</em>
+                </title>
+                <p>
+                    Sets the maximum |gain| the digital compression stage may apply, in dB.
+                </p>
+            </item>
+        </terms>
+    </section>
+    <section>
+        <title>Voice Detector</title>
+        <terms>
+            <item>
+                <title>
+                    <em style="strong">Detection Likelihood</em>
+                </title>
+                <p>
+                    Specifies the likelihood that a frame will be declared to contain voice.
+                </p>
+            </item>
+        </terms>
+        <terms>
+            <item>
+                <title>
+                    <em style="strong">Frame Size</em>
+                </title>
+                <p>
+                    Sets the |size| of the frames in ms on which the VAD will operate. Larger frames
+                    will improve detection accuracy, but reduce the frequency of updates.
+                </p>
+            </item>
+        </terms>
+    </section>
+    <section>
+        <title>References</title>
+        <list>
+            <item>
+                <p>
+                    <link
+                        href="https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-bad/html/gst-plugins-bad-plugins-webrtcdsp.html">
+                        https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-bad/html/gst-plugins-bad-plugins-webrtcdsp.html
+                    </link>
+                </p>
+            </item>
+        </list>
+    </section>
+</page>

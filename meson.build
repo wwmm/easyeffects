@@ -4,7 +4,7 @@ project(
 	'cpp',
 	default_options : ['cpp_std=c++17','buildtype=debugoptimized'],
 	version: '4.2.0',
-	meson_version: '>= 0.46.0'
+	meson_version: '>= 0.40.0'
 )
 
 add_global_arguments('-DG_LOG_DOMAIN="pulseeffects"', language : 'c')
