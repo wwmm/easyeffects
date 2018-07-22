@@ -7,6 +7,10 @@
     </info>
     <title>Multiband Compressor</title>
     <p>
+        This kind of compressor splits the signal in four different frequency ranges.
+        These ranges are compressed separately and mixed together afterwards again.
+    </p>
+    <p>
         PulseEffects uses the multiband compressor plugin developed by
         <link href="https://calf-studio-gear.org">Calf Studio</link>.
     </p>
@@ -128,6 +132,13 @@
                 <p>
                     <link href="https://calf-studio-gear.org/doc/Multiband Compressor.html">
                         https://calf-studio-gear.org/doc/Multiband Compressor.html
+                    </link>
+                </p>
+            </item>
+            <item>
+                <p>
+                    <link href="https://en.wikipedia.org/wiki/Dynamic_range_compression">
+                        https://en.wikipedia.org/wiki/Dynamic_range_compression
                     </link>
                 </p>
             </item>

@@ -50,14 +50,6 @@
         </item>
         <item>
             <title>
-                <em style="strong">Reset Equalizer</em>
-            </title>
-            <p>
-                Reset the equalizer to its default settings.
-            </p>
-        </item>
-        <item>
-            <title>
                 <em style="strong">Filter Type</em>
             </title>
             <p>
@@ -92,8 +84,31 @@
             </p>
         </item>
     </terms>
-    <!-- <section> <title>References</title> <list> <item> <p> <link
-    href="https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good/html/gst-plugins-good-plugins-equalizer-nbands.html">
-    https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good/html/gst-plugins-good-plugins-equalizer-nbands.html
-    </link> </p> </item> </list> </section> -->
+    <section>
+        <title>References</title>
+        <list>
+            <item>
+                <p>
+                    <link href="https://en.wikipedia.org/wiki/Equalization_(audio)">
+                        https://en.wikipedia.org/wiki/Equalization_(audio)
+                    </link>
+                </p>
+            </item>
+            <item>
+                <p>
+                    <link href="https://en.wikipedia.org/wiki/Q_factor">
+                        https://en.wikipedia.org/wiki/Q_factor
+                    </link>
+                </p>
+            </item>
+            <item>
+                <p>
+                    <link
+                        href="https://howtoeq.wordpress.com/2010/10/07/q-factor-and-bandwidth-in-eq-what-it-all-means/">
+                        https://howtoeq.wordpress.com/2010/10/07/q-factor-and-bandwidth-in-eq-what-it-all-means/
+                    </link>
+                </p>
+            </item>
+        </list>
+    </section>
 </page>

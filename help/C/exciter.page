@@ -4,6 +4,11 @@
     </info>
     <title>Exciter</title>
     <p>
+        An exciter is used to enhance a signal by dynamic equalization, phase
+        manipulation, harmonic synthesis of high frequency signals, and through the
+        addition of subtle harmonic distortion.
+    </p>
+    <p>
         PulseEffects uses the exciter plugin developed by
         <link href="https://calf-studio-gear.org">Calf Studio</link>.
     </p>
@@ -72,6 +77,13 @@
                 <p>
                     <link href="https://calf-studio-gear.org/doc/Exciter.html">
                         https://calf-studio-gear.org/doc/Exciter.html
+                    </link>
+                </p>
+            </item>
+            <item>
+                <p>
+                    <link href="https://en.wikipedia.org/wiki/Exciter_(effect)">
+                        https://en.wikipedia.org/wiki/Exciter_(effect)
                     </link>
                 </p>
             </item>

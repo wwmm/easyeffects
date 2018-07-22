@@ -4,6 +4,13 @@
     </info>
     <title>Stereo Enhancer</title>
     <p>
+        The precedence effect (popularly called Haas Effects) is a binaural
+        psychoacoustic effect. When a sound is followed by another sound separated by a
+        sufficiently short time delay listeners perceive a single auditory event. Its
+        perceived spatial location is dominated by the location of the first-arriving
+        sound
+    </p>
+    <p>
         PulseEffects uses the stereo enhancer plugin developed by
         <link href="https://calf-studio-gear.org">Calf Studio</link>. It uses Haas effect to improve the stereo signal.
     </p>
@@ -44,6 +51,13 @@
     <section>
         <title>References</title>
         <list>
+            <item>
+                <p>
+                    <link href="https://en.wikipedia.org/wiki/Precedence_effect">
+                        https://en.wikipedia.org/wiki/Precedence_effect
+                    </link>
+                </p>
+            </item>
             <item>
                 <p>
                     <link href="https://calf-studio-gear.org/doc/Stereo%20Enhancer.html">

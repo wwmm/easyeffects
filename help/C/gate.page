@@ -4,6 +4,10 @@
     </info>
     <title>Gate</title>
     <p>
+        Gates attenuate signals that register below the threshold. This kind of signal
+        processing reduces disturbing noise between useful signals.
+    </p>
+    <p>
         PulseEffects uses the gate plugin developed by
         <link href="https://calf-studio-gear.org">Calf Studio</link>.
     </p>
@@ -93,6 +97,13 @@
                 <p>
                     <link href="https://calf-studio-gear.org/doc/Gate.html">
                         https://calf-studio-gear.org/doc/Gate.html
+                    </link>
+                </p>
+            </item>
+            <item>
+                <p>
+                    <link href="https://en.wikipedia.org/wiki/Noise_gate">
+                        https://en.wikipedia.org/wiki/Noise_gate
                     </link>
                 </p>
             </item>

@@ -4,6 +4,10 @@
     </info>
     <title>Pitch</title>
     <p>
+        Pitch shifting is a sound recording technique in which the original pitch of a
+        sound is raised or lowered.
+    </p>
+    <p>
         PulseEffects uses the pitch shifter plugin from
         <link href="https://breakfastquay.com/rubberband/">RubberBand</link>.
     </p>
@@ -79,6 +83,13 @@
     <section>
         <title>References</title>
         <list>
+            <item>
+                <p>
+                    <link href="https://en.wikipedia.org/wiki/Pitch_shift">
+                        https://en.wikipedia.org/wiki/Pitch_shift
+                    </link>
+                </p>
+            </item>
             <item>
                 <p>
                     <link href="https://breakfastquay.com/rubberband/">

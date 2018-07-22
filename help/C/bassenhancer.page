@@ -4,6 +4,12 @@
     </info>
     <title>Bass Enhancer</title>
     <p>
+        The brain perceives the pitch of a tone not only by its fundamental frequency
+        but also by the periodicity implied by the relationship between the higher
+        harmonics. We may perceive the same pitch even if the fundamental frequency is
+        missing from a tone.
+    </p>
+    <p>
         PulseEffects uses the bass enhancer plugin developed by
         <link href="https://calf-studio-gear.org">Calf Studio</link>.
     </p>
@@ -72,6 +78,13 @@
                 <p>
                     <link href="https://calf-studio-gear.org/doc/Bass%20Enhancer.html">
                         https://calf-studio-gear.org/doc/Bass%20Enhancer.html
+                    </link>
+                </p>
+            </item>
+            <item>
+                <p>
+                    <link href="https://en.wikipedia.org/wiki/Missing_fundamental">
+                        https://en.wikipedia.org/wiki/Missing_fundamental
                     </link>
                 </p>
             </item>

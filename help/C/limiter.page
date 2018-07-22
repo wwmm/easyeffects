@@ -4,6 +4,11 @@
     </info>
     <title>Limiter and Auto Volume</title>
     <p>
+        A limiter allows signals below a specified input power or level to pass
+        unaffected while attenuating (lowering) the peaks of stronger signals that
+        exceed this threshold.
+    </p>
+    <p>
         PulseEffects uses the limiter plugin developed by
         <link href="https://calf-studio-gear.org">Calf Studio</link>. We only attached
         to it a routine to automatically set its input gain. This is what we call auto
@@ -115,6 +120,13 @@
     <section>
         <title>References</title>
         <list>
+            <item>
+                <p>
+                    <link href="https://en.wikipedia.org/wiki/Limiter">
+                        https://en.wikipedia.org/wiki/Limiter
+                    </link>
+                </p>
+            </item>
             <item>
                 <p>
                     <link href="https://calf-studio-gear.org/doc/Limiter.html">

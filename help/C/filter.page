@@ -4,6 +4,10 @@
     </info>
     <title>Filter</title>
     <p>
+        Audio filters can amplify (boost), pass or attenuate (cut) some frequency
+        ranges.
+    </p>
+    <p>
         PulseEffects uses the filter plugin from
         <link href="https://calf-studio-gear.org">Calf Studio</link>. It can be used to remove defined parts of a frequency spectrum.
     </p>
@@ -38,6 +42,13 @@
     <section>
         <title>References</title>
         <list>
+            <item>
+                <p>
+                    <link href="https://en.wikipedia.org/wiki/Audio_filter">
+                        https://en.wikipedia.org/wiki/Audio_filter
+                    </link>
+                </p>
+            </item>
             <item>
                 <p>
                     <link href="https://calf-studio-gear.org/doc/Filter.html">

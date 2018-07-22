@@ -4,6 +4,9 @@
     </info>
     <title>Compressor</title>
     <p>
+        A compressor is used to reduce the audio signal dynamic range.
+    </p>
+    <p>
         PulseEffects uses the compressor plugin developed by
         <link href="https://calf-studio-gear.org">Calf Studio</link>.
     </p>
@@ -91,6 +94,13 @@
                 <p>
                     <link href="https://calf-studio-gear.org/doc/Compressor.html">
                         https://calf-studio-gear.org/doc/Compressor.html
+                    </link>
+                </p>
+            </item>
+            <item>
+                <p>
+                    <link href="https://en.wikipedia.org/wiki/Dynamic_range_compression">
+                        https://en.wikipedia.org/wiki/Dynamic_range_compression
                     </link>
                 </p>
             </item>

@@ -4,6 +4,11 @@
     </info>
     <title>Maximizer</title>
     <p>
+        A maximizer is similar to a limiter. It attenuates peaks above the limit(ceiling
+        in our case) but it also boosts peaks that are between the limit and the
+        threshold.
+    </p>
+    <p>
         PulseEffects uses the maximizer plugin from
         <link href="http://www.zamaudio.com">ZamAudio</link>.
     </p>
@@ -21,7 +26,7 @@
                 <em style="strong">Ceiling</em>
             </title>
             <p>
-                Maximum allowd peak.
+                Maximum allowed peak.
             </p>
         </item>
         <item>
