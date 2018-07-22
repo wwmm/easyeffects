@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-07-22 14:01-0300\n"
+"POT-Creation-Date: 2018-07-22 20:30-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -567,11 +567,11 @@ msgstr ""
 
 #. (itstool) path: page/title
 #: C/index.page:12
-msgid "<_:media-1/> PulseEffects"
+msgid "PulseEffects"
 msgstr ""
 
 #. (itstool) path: page/p
-#: C/index.page:14
+#: C/index.page:16
 msgid ""
 "PulseEffects applies audio effects to Pulseaudio applications. You can apply "
 "effects to applications output or to your microphone before sending its "
@@ -579,22 +579,17 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: section/title
-#: C/index.page:20
+#: C/index.page:22
 msgid "User Interface"
 msgstr ""
 
 #. (itstool) path: section/title
-#: C/index.page:23
-msgid "Settings Menu"
-msgstr ""
-
-#. (itstool) path: section/title
-#: C/index.page:26
+#: C/index.page:25
 msgid "Plugins"
 msgstr ""
 
 #. (itstool) path: section/title
-#: C/index.page:29
+#: C/index.page:28
 msgid "Calibration"
 msgstr ""
 
@@ -1831,6 +1826,11 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: page/title
+#: C/settingsmenu.page:10
+msgid "Settings Menu"
+msgstr ""
+
+#. (itstool) path: page/title
 #: C/general.page:5
 msgid "General"
 msgstr ""
@@ -1988,7 +1988,7 @@ msgstr ""
 #: C/pulseaudio.page:40
 msgid ""
 "This controls the size of the buffer that are used by the plugins when "
-"applied effects."
+"applying effects."
 msgstr ""
 
 #. (itstool) path: page/title
@@ -2042,4 +2042,51 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/calibrationmic.page:32
 msgid "Subtract the stored background noise from the measurement."
+msgstr ""
+
+#. (itstool) path: page/title
+#: C/enableapp.page:10
+msgid "Enable or Disable an Application"
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/enableapp.page:12
+msgid ""
+"You can choose which applications have effects applied through the switch "
+"next to its name. If you always want to apply effects to all applications "
+"take a look at <link xref=\"general#title_enable_all_apps\">Enable All "
+"Applications</link>"
+msgstr ""
+
+#. (itstool) path: page/title
+#: C/effectsorder.page:10
+msgid "Changing Effects Order"
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/effectsorder.page:12
+msgid ""
+"You can change the plugins order in the effects chain. Just click on the up "
+"and down arrows next to the plugin name. The first plugin from top to bottom "
+"is the first to receive the audio signal."
+msgstr ""
+
+#. (itstool) path: page/title
+#: C/userpresets.page:10
+msgid "Creating and Importing User Presets"
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/userpresets.page:12
+msgid ""
+"You can save your own presets. Just add write a name and click on the add "
+"button. Presets can be imported clicking on the button nto the left."
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/userpresets.page:16
+msgid ""
+"When you save a preset the current configuration of all plugins is saved to "
+"its file. This means you can have presets that combine the effects of "
+"different plugins."
 msgstr ""
