@@ -37,7 +37,7 @@ help_media = [
   'figures/effectsorder.png',
   'figures/enableapp.png',
   'figures/settingsmenu.png',
-  'figures/userpresets.png'
+  'figures/userpresets.png',
   'figures/advancedinfo.png'
 ]
 
