@@ -28,7 +28,8 @@ help_pages = [
   'calibrationmic.page',
   'enableapp.page',
   'effectsorder.page',
-  'userpresets.page'
+  'userpresets.page',
+  'advancedinfo.page'
 ]
 
 help_media = [
@@ -37,6 +38,7 @@ help_media = [
   'figures/enableapp.png',
   'figures/settingsmenu.png',
   'figures/userpresets.png'
+  'figures/advancedinfo.png'
 ]
 
 gnome_mod.yelp(meson.project_name(),
