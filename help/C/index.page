@@ -9,8 +9,10 @@
             <email>wellingtonwallace@gmail.com</email>
         </credit>
     </info>
-    <title><media type="image" src="figures/logo.png" its:translate="no"/>
-        PulseEffects</title>
+    <title>
+        PulseEffects
+    </title>
+    <media type="image" src="figures/mainwindow.png" its:translate="no"/>
     <p>
         PulseEffects applies audio effects to Pulseaudio applications. You can apply
         effects to applications output or to your microphone before sending its audio to
@@ -18,9 +20,6 @@
     </p>
     <section id="ui" style="2column">
         <title>User Interface</title>
-    </section>
-    <section id="settingsmenu" style="2column">
-        <title>Settings Menu</title>
     </section>
     <section id="plugins" style="2column">
         <title>Plugins</title>

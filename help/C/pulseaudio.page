@@ -1,6 +1,6 @@
 <page xmlns="http://projectmallard.org/1.0/" type="guide" id="pulseaudio">
     <info>
-        <link type="guide" xref="index#settingsmenu"/>
+        <link type="guide" xref="settingsmenu"/>
     </info>
     <title>Pulseaudio</title>
     <p>
@@ -38,7 +38,7 @@
                 <em style="strong">Block Size</em>
             </title>
             <p>
-                This controls the size of the buffer that are used by the plugins when applied
+                This controls the size of the buffer that are used by the plugins when applying
                 effects.
             </p>
         </item>

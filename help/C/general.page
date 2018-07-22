@@ -1,6 +1,6 @@
 <page xmlns="http://projectmallard.org/1.0/" type="guide" id="general">
     <info>
-        <link type="guide" xref="index#settingsmenu"/>
+        <link type="guide" xref="settingsmenu"/>
     </info>
     <title>General</title>
     <terms>
@@ -15,7 +15,7 @@
             </p>
         </item>
         <item>
-            <title>
+            <title id="title_enable_all_apps">
                 <em style="strong">Enable All Applications</em>
             </title>
             <p>

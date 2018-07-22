@@ -20,11 +20,15 @@ help_pages = [
   'webrtc.page',
   'crystalizer.page',
   'convolver.page',
+  'settingsmenu.page',
   'general.page',
   'spectrum.page',
   'pulseaudio.page',
   'testsignals.page',
-  'calibrationmic.page'
+  'calibrationmic.page',
+  'enableapp.page',
+  'effectsorder.page',
+  'userpresets.page'
 ]
 
 help_media = [

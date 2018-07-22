@@ -1,6 +1,6 @@
 <page xmlns="http://projectmallard.org/1.0/" type="guide" id="spectrum">
     <info>
-        <link type="guide" xref="index#settingsmenu"/>
+        <link type="guide" xref="settingsmenu"/>
     </info>
     <title>Spectrum</title>
     <terms>
