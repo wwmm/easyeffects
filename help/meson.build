@@ -32,7 +32,11 @@ help_pages = [
 ]
 
 help_media = [
-  'figures/logo.png',
+  'figures/mainwindow.png',
+  'figures/effectsorder.png',
+  'figures/enableapp.png',
+  'figures/settingsmenu.png',
+  'figures/userpresets.png'
 ]
 
 gnome_mod.yelp(meson.project_name(),
