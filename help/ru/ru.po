@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-07-22 13:29-0300\n"
+"POT-Creation-Date: 2018-07-22 14:01-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "MIME-Version: 1.0\n"
@@ -598,7 +598,7 @@ msgstr ""
 
 #. (itstool) path: section/title
 #: C/index.page:29
-msgid "Test Signals"
+msgid "Calibration"
 msgstr ""
 
 #. (itstool) path: page/title
@@ -707,7 +707,7 @@ msgid "Auto Volume"
 msgstr ""
 
 #. (itstool) path: item/title
-#: C/limiter.page:86
+#: C/limiter.page:86 C/calibrationmic.page:11
 msgid "<em style=\"strong\">Window</em>"
 msgstr ""
 
@@ -2032,4 +2032,59 @@ msgstr "<em style=\"strong\">Излом</em>"
 msgid ""
 "This controls the size of the buffer that are used by the plugins when "
 "applied effects."
+msgstr ""
+
+#. (itstool) path: page/title
+#: C/testsignals.page:5
+msgid "Test Signals"
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/testsignals.page:6
+msgid ""
+"These signals can be used to test the frequency response of your speakers."
+msgstr ""
+
+#. (itstool) path: page/title
+#: C/calibrationmic.page:5
+msgid "Microphone"
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/calibrationmic.page:6
+msgid ""
+"If you have a reasonably flat microphone you can use it together with a pink "
+"noise test signal to estimate how flat is your audio setup frequency "
+"response."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/calibrationmic.page:14
+msgid ""
+"The amount of time the microphone signal will be measured. Higher values "
+"will reduce noises."
+msgstr ""
+
+#. (itstool) path: item/title
+#: C/calibrationmic.page:20
+#, fuzzy
+msgid "<em style=\"strong\">Measure Noise</em>"
+msgstr "Гармоники"
+
+#. (itstool) path: item/p
+#: C/calibrationmic.page:23
+msgid ""
+"Saves the last measurement to be uased as background noise. Usually you "
+"would use this before turning on the pink noise."
+msgstr ""
+
+#. (itstool) path: item/title
+#: C/calibrationmic.page:29
+#, fuzzy
+msgid "<em style=\"strong\">Subtract Noise</em>"
+msgstr "<em style=\"strong\">Размах</em>"
+
+#. (itstool) path: item/p
+#: C/calibrationmic.page:32
+msgid "Subtract the stored background noise from the measurement."
 msgstr ""

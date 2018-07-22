@@ -25,7 +25,7 @@
     <section id="plugins" style="2column">
         <title>Plugins</title>
     </section>
-    <section id="testsignals" style="2column">
-        <title>Test Signals</title>
+    <section id="calibration" style="2column">
+        <title>Calibration</title>
     </section>
 </page>

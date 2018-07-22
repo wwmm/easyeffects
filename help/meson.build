@@ -22,7 +22,9 @@ help_pages = [
   'convolver.page',
   'general.page',
   'spectrum.page',
-  'pulseaudio.page'
+  'pulseaudio.page',
+  'testsignals.page',
+  'calibrationmic.page'
 ]
 
 help_media = [
