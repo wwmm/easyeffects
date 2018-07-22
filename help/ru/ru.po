@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-07-22 12:35-0300\n"
+"POT-Creation-Date: 2018-07-22 13:29-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "MIME-Version: 1.0\n"
@@ -588,7 +588,7 @@ msgstr ""
 
 #. (itstool) path: section/title
 #: C/index.page:23
-msgid "General Settings"
+msgid "Settings Menu"
 msgstr ""
 
 #. (itstool) path: section/title
@@ -1858,4 +1858,178 @@ msgstr ""
 msgid ""
 "<link href=\"https://en.wikipedia.org/wiki/Convolution_reverb\"> https://en."
 "wikipedia.org/wiki/Convolution_reverb </link>"
+msgstr ""
+
+#. (itstool) path: page/title
+#: C/general.page:5
+msgid "General"
+msgstr ""
+
+#. (itstool) path: item/title
+#: C/general.page:8
+#, fuzzy
+msgid "<em style=\"strong\">Start Service at Login</em>"
+msgstr "<em style=\"strong\">Размах</em>"
+
+#. (itstool) path: item/p
+#: C/general.page:11
+msgid ""
+"Start PulseEffects as a service in the next login. This is done by creating "
+"an autostart file at <cmd>~/.config/autostart</cmd>"
+msgstr ""
+
+#. (itstool) path: item/title
+#: C/general.page:18
+#, fuzzy
+msgid "<em style=\"strong\">Enable All Applications</em>"
+msgstr "<em style=\"strong\">Размах</em>"
+
+#. (itstool) path: item/p
+#: C/general.page:21
+msgid ""
+"Apply effects to all audio applications. This will automatically switch on "
+"the per application switch that can be seen in the Applications entry."
+msgstr ""
+
+#. (itstool) path: item/title
+#: C/general.page:27
+#, fuzzy
+msgid "<em style=\"strong\">Use Dark Theme</em>"
+msgstr "<em style=\"strong\">Излом</em>"
+
+#. (itstool) path: item/p
+#: C/general.page:30
+msgid "Use the dark GTK theme variant"
+msgstr ""
+
+#. (itstool) path: item/title
+#: C/general.page:35
+#, fuzzy
+msgid "<em style=\"strong\">Reset</em>"
+msgstr "<em style=\"strong\">Восстановление</em>"
+
+#. (itstool) path: item/p
+#: C/general.page:38
+msgid ""
+"Reset all parameters to their default values. This will reset the plugins "
+"too."
+msgstr ""
+
+#. (itstool) path: page/title
+#: C/spectrum.page:5
+msgid "Spectrum"
+msgstr ""
+
+#. (itstool) path: item/title
+#: C/spectrum.page:8
+#, fuzzy
+msgid "<em style=\"strong\">Show</em>"
+msgstr "<em style=\"strong\">Размах</em>"
+
+#. (itstool) path: item/p
+#: C/spectrum.page:11
+msgid "Hide or show the spectrum."
+msgstr ""
+
+#. (itstool) path: item/title
+#: C/spectrum.page:16
+#, fuzzy
+msgid "<em style=\"strong\">Points</em>"
+msgstr "Величина"
+
+#. (itstool) path: item/p
+#: C/spectrum.page:19
+msgid "Number of points displayed"
+msgstr ""
+
+#. (itstool) path: item/title
+#: C/spectrum.page:24
+#, fuzzy
+msgid "<em style=\"strong\">Height</em>"
+msgstr "<em style=\"strong\">Отношение</em>"
+
+#. (itstool) path: item/p
+#: C/spectrum.page:27
+msgid "Spectrum height"
+msgstr ""
+
+#. (itstool) path: item/title
+#: C/spectrum.page:32
+#, fuzzy
+msgid "<em style=\"strong\">Use Custom Color</em>"
+msgstr "<em style=\"strong\">Восстановление</em>"
+
+#. (itstool) path: item/p
+#: C/spectrum.page:35
+msgid "Use a user defined color or the GTK theme color"
+msgstr ""
+
+#. (itstool) path: item/title
+#: C/spectrum.page:40
+#, fuzzy
+msgid "<em style=\"strong\">Spectrum Color</em>"
+msgstr "<em style=\"strong\">Размах</em>"
+
+#. (itstool) path: item/p
+#: C/spectrum.page:43
+msgid "User defined color."
+msgstr ""
+
+#. (itstool) path: page/title
+#: C/pulseaudio.page:5
+msgid "Pulseaudio"
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/pulseaudio.page:6
+msgid ""
+"PulseEffects has two GStreamer pipelines. One that applies effects for "
+"applications output and other that applies effects for microphone. Here the "
+"user can tweak a few advanced parameters for both pipelines."
+msgstr ""
+
+#. (itstool) path: item/title
+#: C/pulseaudio.page:13
+#, fuzzy
+msgid "<em style=\"strong\">Use Default</em>"
+msgstr "<em style=\"strong\">Излом</em>"
+
+#. (itstool) path: item/p
+#: C/pulseaudio.page:16
+msgid "Use default input or output device."
+msgstr ""
+
+#. (itstool) path: item/title
+#: C/pulseaudio.page:21
+#, fuzzy
+msgid "<em style=\"strong\">Buffer</em>"
+msgstr "<em style=\"strong\">Излом</em>"
+
+#. (itstool) path: item/p
+#: C/pulseaudio.page:24
+msgid "Gstreamer's pulsesrc buffer size. It affects latency"
+msgstr ""
+
+#. (itstool) path: item/title
+#: C/pulseaudio.page:29
+#, fuzzy
+msgid "<em style=\"strong\">Latency</em>"
+msgstr "<em style=\"strong\">Восстановление</em>"
+
+#. (itstool) path: item/p
+#: C/pulseaudio.page:32
+msgid "Gstreamer's pulsesrc latency value."
+msgstr ""
+
+#. (itstool) path: item/title
+#: C/pulseaudio.page:37
+#, fuzzy
+msgid "<em style=\"strong\">Block Size</em>"
+msgstr "<em style=\"strong\">Излом</em>"
+
+#. (itstool) path: item/p
+#: C/pulseaudio.page:40
+msgid ""
+"This controls the size of the buffer that are used by the plugins when "
+"applied effects."
 msgstr ""

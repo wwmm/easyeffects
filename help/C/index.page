@@ -19,8 +19,8 @@
     <section id="ui" style="2column">
         <title>User Interface</title>
     </section>
-    <section id="generalsettings" style="2column">
-        <title>General Settings</title>
+    <section id="settingsmenu" style="2column">
+        <title>Settings Menu</title>
     </section>
     <section id="plugins" style="2column">
         <title>Plugins</title>

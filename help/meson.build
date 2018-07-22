@@ -19,7 +19,10 @@ help_pages = [
   'pitch.page',
   'webrtc.page',
   'crystalizer.page',
-  'convolver.page'
+  'convolver.page',
+  'general.page',
+  'spectrum.page',
+  'pulseaudio.page'
 ]
 
 help_media = [
