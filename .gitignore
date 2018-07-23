@@ -28,7 +28,7 @@ debian/*
 !debian/*lintian-overrides
 !debian/watch
 
-build-ppa.sh
+/build-ppa.sh
 
 # Dolphin file manager creates the file .directory to save some folder-specific settings
 *.directory
