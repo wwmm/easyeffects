@@ -1,0 +1,62 @@
+Source: pulseeffects
+Section: sound
+Priority: optional
+Maintainer: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>
+Standards-Version: 4.1.4
+Homepage: https://github.com/wwmm/pulseeffects
+Build-Depends: debhelper (>=11),
+               meson (>=0.40),
+               pkg-config,
+               libgstreamer1.0-dev (>= 1.12.5),
+               libgstreamer-plugins-bad1.0-dev,
+               libpulse-dev,
+               libpango1.0-dev,
+               libgtk-3-dev,
+               libglibmm-2.4-dev,
+               libgtkmm-3.0-dev,
+               libboost-system-dev,
+               libboost-filesystem-dev,
+               libbs2b-dev,
+               liblilv-dev,
+               librubberband-dev,
+               libzita-convolver-dev,
+               libsndfile1-dev,
+               libsamplerate0-dev
+
+Package: pulseeffects
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         pulseaudio,
+         gstreamer1.0-plugins-bad,
+         gstreamer1.0-plugins-good,
+         gir1.2-gst-plugins-bad-1.0,
+         gstreamer1.0-pulseaudio
+Recommends: calf-plugins (>= 0.90.0),
+            zam-plugins,
+            rubberband-ladspa,
+            liblilv-0-0,
+            gstreamer1.0-convolver-pulseeffects,
+            gstreamer1.0-crystalizer-pulseeffects
+Description: Sound input and output effects for PulseAudio
+ Many sound effects for PulseAudio input and output.
+
+Package: gstreamer1.0-convolver-pulseeffects
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Provides: peconvolver, gstreamer1.0-convolver
+Replaces: pulseeffects (<< 4.1.7-3)
+Description: Gstreamer convolver
+ Gstreamer convolver plugin from PulseEffects.
+ .
+ Example command-line:
+ gst-launch-1.0 audiotestsrc blocksize=512 ! peconvolver kernel-path=full_path_to_file ! pulsesink
+ 
+Package: gstreamer1.0-crystalizer-pulseeffects
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Provides: pecrystalizer, gstreamer1.0-crystalizer
+Description: Gstreamer crystalizer
+ Gstreamer crystalizer plugin from PulseEffects.
