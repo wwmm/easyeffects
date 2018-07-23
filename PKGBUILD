@@ -13,7 +13,7 @@ optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
             'zam-plugins: maximizer'
             'rubberband: pitch shifting'
             'mda.lv2: loudness')
-makedepends=('meson' 'boost')
+makedepends=('meson' 'boost' 'itstool')
 options=(!emptydirs)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
