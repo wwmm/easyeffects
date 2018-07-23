@@ -1,3 +1,9 @@
+itstool = find_program('itstool', required: true)
+
+if not itstool.found()
+  error('itstool not found.')
+endif
+
 help_pages = [
   'bassenhancer.page',
   'compressor.page',
