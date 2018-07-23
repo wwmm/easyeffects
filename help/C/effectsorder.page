@@ -1,0 +1,17 @@
+<page
+    xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
+    type="guide"
+    id="effectsorder"
+    style="2column">
+    <info>
+        <link type="guide" xref="index#ui"/>
+    </info>
+    <title>Changing Effects Order</title>
+    <media type="image" src="figures/effectsorder.png" its:translate="no"/>
+    <p>
+        You can change the plugins order in the effects chain. Just click on the up and
+        down arrows next to the plugin name. The first plugin from top to bottom is the
+        first to receive the audio signal.
+    </p>
+</page>

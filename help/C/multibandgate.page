@@ -4,6 +4,10 @@
     </info>
     <title>Multiband Gate</title>
     <p>
+        This kind of gate splits the signal in four different frequency ranges. These
+        ranges are processed separately and mixed together afterwards again.
+    </p>
+    <p>
         PulseEffects uses the multiband gate plugin developed by
         <link href="https://calf-studio-gear.org">Calf Studio</link>.
     </p>
@@ -133,6 +137,13 @@
                 <p>
                     <link href="https://calf-studio-gear.org/doc/Multiband Gate.html">
                         https://calf-studio-gear.org/doc/Multiband Gate.html
+                    </link>
+                </p>
+            </item>
+            <item>
+                <p>
+                    <link href="https://en.wikipedia.org/wiki/Noise_gate">
+                        https://en.wikipedia.org/wiki/Noise_gate
                     </link>
                 </p>
             </item>

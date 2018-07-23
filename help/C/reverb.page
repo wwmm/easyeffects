@@ -4,6 +4,13 @@
     </info>
     <title>Reverberation</title>
     <p>
+        Reverberation, in psychoacoustics and acoustics, is a persistence of sound after
+        the sound is produced. A reverberation, or reverb, is created when a sound or
+        signal is reflected causing a large number of reflections to build up and then
+        decay as the sound is absorbed by the surfaces of objects in the space.
+        Reverberation plugins can be used to artificially produce this effect.
+    </p>
+    <p>
         PulseEffects uses the reverberation plugin developed by
         <link href="https://calf-studio-gear.org">Calf Studio</link>.
     </p>
@@ -87,6 +94,13 @@
     <section>
         <title>References</title>
         <list>
+            <item>
+                <p>
+                    <link href="https://en.wikipedia.org/wiki/Reverberation">
+                        https://en.wikipedia.org/wiki/Reverberation
+                    </link>
+                </p>
+            </item>
             <item>
                 <p>
                     <link href="https://calf-studio-gear.org/doc/Reverb.html">

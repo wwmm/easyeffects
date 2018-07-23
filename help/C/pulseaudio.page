@@ -1,0 +1,46 @@
+<page xmlns="http://projectmallard.org/1.0/" type="guide" id="pulseaudio">
+    <info>
+        <link type="guide" xref="settingsmenu"/>
+    </info>
+    <title>Pulseaudio</title>
+    <p>
+        PulseEffects has two GStreamer pipelines. One that applies effects for
+        applications output and other that applies effects for microphone. Here the user
+        can tweak a few advanced parameters for both pipelines.
+    </p>
+    <terms>
+        <item>
+            <title>
+                <em style="strong">Use Default</em>
+            </title>
+            <p>
+                Use default input or output device.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Buffer</em>
+            </title>
+            <p>
+                Gstreamer's pulsesrc buffer size. It affects latency
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Latency</em>
+            </title>
+            <p>
+                Gstreamer's pulsesrc latency value.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Block Size</em>
+            </title>
+            <p>
+                This controls the size of the buffer that are used by the plugins when applying
+                effects.
+            </p>
+        </item>
+    </terms>
+</page>

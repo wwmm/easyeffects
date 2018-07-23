@@ -1,0 +1,9 @@
+<page xmlns="http://projectmallard.org/1.0/" type="guide" id="testsignals">
+    <info>
+        <link type="guide" xref="index#calibration"/>
+    </info>
+    <title>Test Signals</title>
+    <p>
+        These signals can be used to test the frequency response of your speakers.
+    </p>
+</page>

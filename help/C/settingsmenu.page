@@ -1,0 +1,12 @@
+<page
+    xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
+    type="guide"
+    id="settingsmenu"
+    style="2column">
+    <info>
+        <link type="guide" xref="index#ui"/>
+    </info>
+    <title>Settings Menu</title>
+    <media type="image" src="figures/settingsmenu.png" its:translate="no"/>
+</page>

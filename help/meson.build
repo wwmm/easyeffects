@@ -19,11 +19,26 @@ help_pages = [
   'pitch.page',
   'webrtc.page',
   'crystalizer.page',
-  'convolver.page'
+  'convolver.page',
+  'settingsmenu.page',
+  'general.page',
+  'spectrum.page',
+  'pulseaudio.page',
+  'testsignals.page',
+  'calibrationmic.page',
+  'enableapp.page',
+  'effectsorder.page',
+  'userpresets.page',
+  'advancedinfo.page'
 ]
 
 help_media = [
-  'figures/logo.png',
+  'figures/mainwindow.png',
+  'figures/effectsorder.png',
+  'figures/enableapp.png',
+  'figures/settingsmenu.png',
+  'figures/userpresets.png',
+  'figures/advancedinfo.png'
 ]
 
 gnome_mod.yelp(meson.project_name(),

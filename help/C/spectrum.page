@@ -1,0 +1,48 @@
+<page xmlns="http://projectmallard.org/1.0/" type="guide" id="spectrum">
+    <info>
+        <link type="guide" xref="settingsmenu"/>
+    </info>
+    <title>Spectrum</title>
+    <terms>
+        <item>
+            <title>
+                <em style="strong">Show</em>
+            </title>
+            <p>
+                Hide or show the spectrum.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Points</em>
+            </title>
+            <p>
+                Number of points displayed
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Height</em>
+            </title>
+            <p>
+                Spectrum height
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Use Custom Color</em>
+            </title>
+            <p>
+                Use a user defined color or the GTK theme color
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong">Spectrum Color</em>
+            </title>
+            <p>
+                User defined color.
+            </p>
+        </item>
+    </terms>
+</page>

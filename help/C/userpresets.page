@@ -1,0 +1,21 @@
+<page
+    xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
+    type="guide"
+    id="userpresets"
+    style="2column">
+    <info>
+        <link type="guide" xref="index#ui"/>
+    </info>
+    <title>Creating and Importing User Presets</title>
+    <media type="image" src="figures/userpresets.png" its:translate="no"/>
+    <p>
+        You can save your own presets. Just add write a name and click on the add
+        button. Presets can be imported clicking on the button nto the left.
+    </p>
+    <p>
+        When you save a preset the current configuration of all plugins is saved to its
+        file. This means you can have presets that combine the effects of different
+        plugins.
+    </p>
+</page>
