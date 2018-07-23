@@ -92,6 +92,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     builder->get_widget("blocksize_in", blocksize_in);
     builder->get_widget("blocksize_out", blocksize_out);
     builder->get_widget("headerbar", headerbar);
+    builder->get_widget("help_button", help_button);
 
     get_object(builder, "buffer_in", buffer_in);
     get_object(builder, "buffer_out", buffer_out);
@@ -217,6 +218,11 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
             update_headerbar_subtitle(1);
         }
     });
+
+    // help button
+
+    help_button->signal_clicked().connect(
+        [=]() { app->activate_action("help"); });
 
     /*sink inputs interface*/
 

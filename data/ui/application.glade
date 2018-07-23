@@ -21,6 +21,11 @@
     <property name="can_focus">False</property>
     <property name="icon_name">list-add-symbolic</property>
   </object>
+  <object class="GtkImage" id="image_help">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">help-faq-symbolic</property>
+  </object>
   <object class="GtkImage" id="image_import_preset">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -190,7 +195,7 @@
             <property name="always_show_image">True</property>
           </object>
           <packing>
-            <property name="position">3</property>
+            <property name="position">1</property>
           </packing>
         </child>
         <child>
@@ -198,6 +203,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">Settings</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
             <property name="popover">settings_menu</property>
@@ -212,6 +218,22 @@
           <packing>
             <property name="pack_type">end</property>
             <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="help_button">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">Help</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="image">image_help</property>
+            <property name="always_show_image">True</property>
+          </object>
+          <packing>
+            <property name="pack_type">end</property>
+            <property name="position">3</property>
           </packing>
         </child>
         <child>
@@ -232,7 +254,7 @@
           </object>
           <packing>
             <property name="pack_type">end</property>
-            <property name="position">3</property>
+            <property name="position">4</property>
           </packing>
         </child>
       </object>

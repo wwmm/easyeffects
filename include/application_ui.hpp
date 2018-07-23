@@ -47,7 +47,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     Gtk::DrawingArea* spectrum;
     Gtk::Box* spectrum_box;
     Gtk::Button *reset_settings, *add_preset, *import_preset,
-        *calibration_button;
+        *calibration_button, *help_button;
     Gtk::Stack* stack;
     Gtk::ListBox* presets_listbox;
     Gtk::MenuButton* presets_menu_button;

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-07-22 20:30-0300\n"
+"POT-Creation-Date: 2018-07-23 14:36-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "MIME-Version: 1.0\n"
@@ -72,8 +72,9 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: C/bassenhancer.page:42
-msgid "<em style=\"strong\">Floor(Button)</em>"
-msgstr ""
+#, fuzzy
+msgid "<em style=\"strong\">Floor(button)</em>"
+msgstr "Величина"
 
 #. (itstool) path: item/p
 #: C/bassenhancer.page:45
@@ -414,8 +415,9 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: C/exciter.page:41
-msgid "<em style=\"strong\">Ceiling(Button)</em>"
-msgstr ""
+#, fuzzy
+msgid "<em style=\"strong\">Ceiling(button)</em>"
+msgstr "Величина"
 
 #. (itstool) path: item/p
 #: C/exciter.page:44
@@ -574,7 +576,7 @@ msgid "PulseEffects"
 msgstr ""
 
 #. (itstool) path: page/p
-#: C/index.page:16
+#: C/index.page:15
 msgid ""
 "PulseEffects applies audio effects to Pulseaudio applications. You can apply "
 "effects to applications output or to your microphone before sending its "
@@ -582,17 +584,17 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: section/title
-#: C/index.page:22
+#: C/index.page:21
 msgid "User Interface"
 msgstr ""
 
 #. (itstool) path: section/title
-#: C/index.page:25
+#: C/index.page:24
 msgid "Plugins"
 msgstr ""
 
 #. (itstool) path: section/title
-#: C/index.page:28
+#: C/index.page:27
 msgid "Calibration"
 msgstr ""
 
@@ -2074,8 +2076,8 @@ msgstr "Гармоники"
 #. (itstool) path: item/p
 #: C/calibrationmic.page:23
 msgid ""
-"Saves the last measurement to be uased as background noise. Usually you "
-"would use this before turning on the pink noise."
+"Saves the last measurement to be used as background noise. Usually you would "
+"use this before turning on the pink noise."
 msgstr ""
 
 #. (itstool) path: item/title
@@ -2134,4 +2136,17 @@ msgid ""
 "When you save a preset the current configuration of all plugins is saved to "
 "its file. This means you can have presets that combine the effects of "
 "different plugins."
+msgstr ""
+
+#. (itstool) path: page/title
+#: C/advancedinfo.page:10
+msgid "Advanced Information"
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/advancedinfo.page:12
+msgid ""
+"PulseEffects audio processing is composed by 3 main stages. Each of them "
+"needs a specific audio format and sampling rate. This information is show in "
+"the headerbar subtitle"
 msgstr ""

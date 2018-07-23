@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-07-22 20:30-0300\n"
+"POT-Creation-Date: 2018-07-23 14:36-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -29,6 +29,10 @@ msgid ""
 "the higher harmonics. We may perceive the same pitch even if the fundamental "
 "frequency is missing from a tone."
 msgstr ""
+"O cérebro interpreta a frequência de um som baseado não apenas na frequência "
+"fundamental mas também na periodicidade vinda da relação desta frequência "
+"com seus harmônicos superiores. Nós podemos ter a sensação de ouvir uma "
+"frequência ainda que ela esteja ausente no som ouvido."
 
 #. (itstool) path: page/p
 #: C/bassenhancer.page:12
@@ -36,53 +40,54 @@ msgid ""
 "PulseEffects uses the bass enhancer plugin developed by <link href=\"https://"
 "calf-studio-gear.org\">Calf Studio</link>."
 msgstr ""
-"PulseEffects usa o plugin reforçador de grave desenvolvido por <link href="
-"\"https://calf-studio-gear.org\">Calf Studio</link>."
+"PulseEffects usa o reforçador de grave desenvolvido por <link href=\"https://"
+"calf-studio-gear.org\">Calf Studio</link>."
 
 #. (itstool) path: item/title
 #: C/bassenhancer.page:18 C/exciter.page:17 C/reverb.page:36
 msgid "<em style=\"strong\">Amount</em>"
-msgstr ""
+msgstr "<em style=\"strong\">Quantidade</em>"
 
 #. (itstool) path: item/p
 #: C/bassenhancer.page:21 C/exciter.page:20
 msgid "The amount of harmonics added to the original signal"
-msgstr ""
+msgstr "A quantidade de harmônicos adicionada ao som original"
 
 #. (itstool) path: item/title
 #: C/bassenhancer.page:26 C/exciter.page:25
 msgid "<em style=\"strong\">Harmonics</em>"
-msgstr ""
+msgstr "<em style=\"strong\">Harmônicos</em>"
 
 #. (itstool) path: item/p
 #: C/bassenhancer.page:29 C/exciter.page:28
 msgid "The amount of newly created harmonics"
-msgstr ""
+msgstr "A quantidade de novos harmônicos"
 
 #. (itstool) path: item/title
 #: C/bassenhancer.page:34 C/exciter.page:33
 msgid "<em style=\"strong\">Scope</em>"
-msgstr ""
+msgstr "<em style=\"strong\">Escopo</em>"
 
 #. (itstool) path: item/p
 #: C/bassenhancer.page:37 C/exciter.page:36
 msgid "The frequency harmonics are produced above"
-msgstr ""
+msgstr "A frequência acima da qual harmônicos são produzidos"
 
 #. (itstool) path: item/title
 #: C/bassenhancer.page:42
-msgid "<em style=\"strong\">Floor(Button)</em>"
-msgstr ""
+#, fuzzy
+msgid "<em style=\"strong\">Floor(button)</em>"
+msgstr "<em style=\"strong\">Piso(Botão)</em>"
 
 #. (itstool) path: item/p
 #: C/bassenhancer.page:45
 msgid "Constrain the enhancement on the lower end"
-msgstr ""
+msgstr "Restringir o reforço à extremidade inferior"
 
 #. (itstool) path: item/title
 #: C/bassenhancer.page:50
 msgid "<em style=\"strong\">Floor(value)</em>"
-msgstr ""
+msgstr "<em style=\"strong\">Piso(value)</em>"
 
 #. (itstool) path: item/p
 #: C/bassenhancer.page:53
@@ -411,8 +416,9 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: C/exciter.page:41
-msgid "<em style=\"strong\">Ceiling(Button)</em>"
-msgstr ""
+#, fuzzy
+msgid "<em style=\"strong\">Ceiling(button)</em>"
+msgstr "<em style=\"strong\">Piso(Botão)</em>"
 
 #. (itstool) path: item/p
 #: C/exciter.page:44
@@ -571,7 +577,7 @@ msgid "PulseEffects"
 msgstr ""
 
 #. (itstool) path: page/p
-#: C/index.page:16
+#: C/index.page:15
 msgid ""
 "PulseEffects applies audio effects to Pulseaudio applications. You can apply "
 "effects to applications output or to your microphone before sending its "
@@ -579,17 +585,17 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: section/title
-#: C/index.page:22
+#: C/index.page:21
 msgid "User Interface"
 msgstr ""
 
 #. (itstool) path: section/title
-#: C/index.page:25
+#: C/index.page:24
 msgid "Plugins"
 msgstr ""
 
 #. (itstool) path: section/title
-#: C/index.page:28
+#: C/index.page:27
 msgid "Calibration"
 msgstr ""
 
@@ -2030,8 +2036,8 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/calibrationmic.page:23
 msgid ""
-"Saves the last measurement to be uased as background noise. Usually you "
-"would use this before turning on the pink noise."
+"Saves the last measurement to be used as background noise. Usually you would "
+"use this before turning on the pink noise."
 msgstr ""
 
 #. (itstool) path: item/title
@@ -2089,4 +2095,17 @@ msgid ""
 "When you save a preset the current configuration of all plugins is saved to "
 "its file. This means you can have presets that combine the effects of "
 "different plugins."
+msgstr ""
+
+#. (itstool) path: page/title
+#: C/advancedinfo.page:10
+msgid "Advanced Information"
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/advancedinfo.page:12
+msgid ""
+"PulseEffects audio processing is composed by 3 main stages. Each of them "
+"needs a specific audio format and sampling rate. This information is show in "
+"the headerbar subtitle"
 msgstr ""
