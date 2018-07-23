@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-07-23 15:40-0300\n"
+"POT-Creation-Date: 2018-07-23 15:47-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -121,7 +121,7 @@ msgstr ""
 #: C/loudness.page:47
 #: C/multibandcompressor.page:130
 #: C/multibandgate.page:138
-#: C/reverb.page:99
+#: C/reverb.page:98
 #: C/stereoenhancer.page:56
 #: C/stereotools.page:96
 #: C/crossfeed.page:38
@@ -665,7 +665,7 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/loudness.page:32
-msgid "Level trim"
+msgid "Change output level."
 msgstr ""
 
 #. (itstool) path: title/em
@@ -891,7 +891,7 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/reverb.page:92
-msgid "Cutoff high reflections high frequencies - causes higher frequencies to decay faster"
+msgid "Cutoff reflections high frequencies - causes higher frequencies to decay faster"
 msgstr ""
 
 #. (itstool) path: page/title

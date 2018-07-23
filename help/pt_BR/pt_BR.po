@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2018-07-23 15:40-0300\n"
+"POT-Creation-Date: 2018-07-23 15:47-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -114,7 +114,7 @@ msgstr "Silenciar o sinal original e escutar exclusivamente aos harmônicos"
 #: C/bassenhancer.page:79 C/compressor.page:95 C/deesser.page:113
 #: C/exciter.page:78 C/filter.page:47 C/gate.page:98 C/limiter.page:125
 #: C/loudness.page:47 C/multibandcompressor.page:130 C/multibandgate.page:138
-#: C/reverb.page:99 C/stereoenhancer.page:56 C/stereotools.page:96
+#: C/reverb.page:98 C/stereoenhancer.page:56 C/stereotools.page:96
 #: C/crossfeed.page:38 C/equalizer.page:93 C/pitch.page:88 C/webrtc.page:143
 #: C/crystalizer.page:31 C/convolver.page:42
 msgid "References"
@@ -365,27 +365,23 @@ msgstr "PulseEffects usa o excitador desenvolvido por <_:link-1/>."
 
 #. (itstool) path: title/em
 #: C/exciter.page:46
-#, fuzzy
 msgid "Ceiling(button)"
-msgstr "<em style=\"strong\">Piso(botão)</em>"
+msgstr "Piso(botão)"
 
 #. (itstool) path: item/p
 #: C/exciter.page:48
-#, fuzzy
 msgid "Constrain the excitement on the upper end"
 msgstr "Restringir o reforço à extremidade inferior"
 
 #. (itstool) path: title/em
 #: C/exciter.page:54
-#, fuzzy
 msgid "Ceiling(value)"
-msgstr "Teto"
+msgstr "Teto(valor)"
 
 #. (itstool) path: item/p
 #: C/exciter.page:56
-#, fuzzy
 msgid "The frequency no harmonics are produced above"
-msgstr "A frequência acima da qual harmônicos são produzidos"
+msgstr "A frequência acima da qual harmônicos não são produzidos"
 
 #. (itstool) path: page/title
 #: C/filter.page:9
@@ -437,7 +433,7 @@ msgstr "Inércia"
 #. (itstool) path: item/p
 #: C/filter.page:41
 msgid "Smooths jumps between frequencies."
-msgstr ""
+msgstr "Saltos suaves entre as frequências."
 
 #. (itstool) path: page/title
 #: C/gate.page:9
@@ -493,11 +489,8 @@ msgstr "Interface do Usuário"
 
 #. (itstool) path: section/title
 #: C/index.page:24
-#, fuzzy
 msgid "Plugins"
-msgstr ""
-"Isto controla o tamanho do buffer que é usado pelos plugins quando eles "
-"aplicam efeitos."
+msgstr "Plugins"
 
 #. (itstool) path: section/title
 #: C/index.page:27
@@ -676,9 +669,8 @@ msgstr "Saída"
 
 #. (itstool) path: item/p
 #: C/loudness.page:32
-#, fuzzy
-msgid "Level trim"
-msgstr "Nível"
+msgid "Change output level."
+msgstr "Mudar nível de saída."
 
 #. (itstool) path: title/em
 #: C/loudness.page:38
@@ -800,9 +792,8 @@ msgstr "Redução"
 
 #. (itstool) path: item/p
 #: C/multibandgate.page:41
-#, fuzzy
 msgid "The level of reduction in this strip"
-msgstr "Nível da Redução"
+msgstr "O nível de redução nesta faixa"
 
 #. (itstool) path: item/p
 #: C/multibandgate.page:90
@@ -856,7 +847,7 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/reverb.page:43
 msgid "Amount of processed signal (reverberation) in the output"
-msgstr ""
+msgstr "A quantidade de sinal processado(reverberação) na saída"
 
 #. (itstool) path: title/em
 #: C/reverb.page:49
@@ -865,9 +856,8 @@ msgstr "Seco"
 
 #. (itstool) path: item/p
 #: C/reverb.page:51
-#, fuzzy
 msgid "Amount of unprocessed signal in the output"
-msgstr "A quantidade de harmônicos adicionada ao som original"
+msgstr "A quantidade de sinal não processado na saída"
 
 #. (itstool) path: title/em
 #: C/reverb.page:57
@@ -877,7 +867,7 @@ msgstr "Corte de Grave"
 #. (itstool) path: item/p
 #: C/reverb.page:59
 msgid "Removes low frequencies from the reverberation"
-msgstr ""
+msgstr "Remove baixas frequências da reverberação"
 
 #. (itstool) path: title/em
 #: C/reverb.page:65
@@ -887,7 +877,7 @@ msgstr "Corte de Agudo"
 #. (itstool) path: item/p
 #: C/reverb.page:67
 msgid "Removes high frequencies from the reverberation"
-msgstr ""
+msgstr "Remove altas frequências da reverberação"
 
 #. (itstool) path: title/em
 #: C/reverb.page:73
@@ -897,7 +887,7 @@ msgstr "Difusão"
 #. (itstool) path: item/p
 #: C/reverb.page:75
 msgid "Increase its value for less uniform reverberation"
-msgstr ""
+msgstr "Aumente seu valor para uma reverberação menos uniforme"
 
 #. (itstool) path: title/em
 #: C/reverb.page:81
@@ -910,6 +900,8 @@ msgid ""
 "Size of the space that simulated reverberation occurs in - determines times "
 "between reflections"
 msgstr ""
+"Tamanho do espaço no qual a reverberação ocorre - determina os tempos entre "
+"as reflecções"
 
 #. (itstool) path: title/em
 #: C/reverb.page:90
@@ -919,8 +911,8 @@ msgstr "Amortecimento de Alta Frequência"
 #. (itstool) path: item/p
 #: C/reverb.page:92
 msgid ""
-"Cutoff high reflections high frequencies - causes higher frequencies to "
-"decay faster"
+"Cutoff reflections high frequencies - causes higher frequencies to decay "
+"faster"
 msgstr ""
 
 #. (itstool) path: page/title
@@ -964,9 +956,8 @@ msgstr "Atraso"
 
 #. (itstool) path: item/p
 #: C/stereoenhancer.page:34
-#, fuzzy
 msgid "Channel delay"
-msgstr "Atraso"
+msgstr "Atraso do canal"
 
 #. (itstool) path: item/p
 #: C/stereoenhancer.page:42
@@ -980,9 +971,8 @@ msgstr "Ganho Lateral"
 
 #. (itstool) path: item/p
 #: C/stereoenhancer.page:50 C/stereotools.page:49
-#, fuzzy
 msgid "The level of the side signal"
-msgstr "Nível Lateral"
+msgstr "Nível do sinal lateral"
 
 #. (itstool) path: page/title
 #: C/stereotools.page:9
@@ -1026,9 +1016,8 @@ msgstr "Balanço Lateral"
 
 #. (itstool) path: item/p
 #: C/stereotools.page:57
-#, fuzzy
 msgid "The balance of the side signal"
-msgstr "Balanço Lateral"
+msgstr "Balanço do sinal Lateral"
 
 #. (itstool) path: title/em
 #: C/stereotools.page:63
@@ -1104,9 +1093,8 @@ msgstr "Teto"
 
 #. (itstool) path: item/p
 #: C/maximizer.page:32
-#, fuzzy
 msgid "Maximum allowed peak value."
-msgstr "O valor de pico desejado."
+msgstr "Máximo valor de pico permitido."
 
 #. (itstool) path: item/p
 #: C/maximizer.page:40
@@ -1169,9 +1157,8 @@ msgstr "Bandas"
 
 #. (itstool) path: item/p
 #: C/equalizer.page:25
-#, fuzzy
 msgid "The number of equalizer bands"
-msgstr "Equalizador"
+msgstr "O número de bandas do equalizador"
 
 #. (itstool) path: title/em
 #: C/equalizer.page:31
@@ -1364,9 +1351,8 @@ msgstr "Filtro Estendido"
 
 #. (itstool) path: item/p
 #: C/webrtc.page:28
-#, fuzzy
 msgid "Enabled or disables the extended filter"
-msgstr "Filtro Estendido"
+msgstr "Habilita ou desabilita o filtro extendido"
 
 #. (itstool) path: title/em
 #: C/webrtc.page:34
@@ -1375,9 +1361,8 @@ msgstr "Filtro Passa-Alta"
 
 #. (itstool) path: item/p
 #: C/webrtc.page:36
-#, fuzzy
 msgid "Enables or disables the high pass filter"
-msgstr "Filtro Passa-Alta"
+msgstr "Habilita ou desabilita o filtro passa altas"
 
 #. (itstool) path: title/em
 #: C/webrtc.page:42
@@ -1391,9 +1376,8 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/webrtc.page:50 C/webrtc.page:64
-#, fuzzy
 msgid "Suppression Level"
-msgstr "Nível"
+msgstr "Nível de Supressão"
 
 #. (itstool) path: item/p
 #: C/webrtc.page:52
@@ -1554,9 +1538,8 @@ msgstr ""
 
 #. (itstool) path: page/title
 #: C/settingsmenu.page:10
-#, fuzzy
 msgid "Settings Menu"
-msgstr "Configurações"
+msgstr "Menu de Configurações"
 
 #. (itstool) path: page/title
 #: C/general.page:9
@@ -1594,9 +1577,8 @@ msgstr "Usar Tema Escuro"
 
 #. (itstool) path: item/p
 #: C/general.page:34
-#, fuzzy
 msgid "Use the dark GTK theme variant"
-msgstr "Usar Tema Escuro"
+msgstr "Usar a variante escura do tema GTK"
 
 #. (itstool) path: title/em
 #: C/general.page:40
@@ -1627,9 +1609,8 @@ msgstr "Pontos"
 
 #. (itstool) path: item/p
 #: C/spectrum.page:23
-#, fuzzy
 msgid "Number of points displayed"
-msgstr "Pontos"
+msgstr "Número de pontos exibidos"
 
 #. (itstool) path: title/em
 #: C/spectrum.page:29
@@ -1638,9 +1619,8 @@ msgstr "Altura"
 
 #. (itstool) path: item/p
 #: C/spectrum.page:31
-#, fuzzy
 msgid "Spectrum height"
-msgstr "Altura"
+msgstr "Altura do espectro"
 
 #. (itstool) path: title/em
 #: C/spectrum.page:37
@@ -1682,9 +1662,8 @@ msgstr "Usar Padrão"
 
 #. (itstool) path: item/p
 #: C/pulseaudio.page:20
-#, fuzzy
 msgid "Use default input or output device."
-msgstr "Usar Dispositivo de Entrada Padrão"
+msgstr "Usar dispositivo de entrada ou saída padrão."
 
 #. (itstool) path: title/em
 #: C/pulseaudio.page:26
@@ -1834,6 +1813,10 @@ msgid ""
 "needs a specific audio format and sampling rate. This information is show in "
 "the headerbar subtitle"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Level trim"
+#~ msgstr "Nível"
 
 #, fuzzy
 #~ msgid "<em style=\"strong\">Window</em>"

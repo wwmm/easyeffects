@@ -90,8 +90,7 @@
                 <em style="strong" its:withinText="nested">High Frequency Damping</em>
             </title>
             <p>
-                Cutoff high reflections high frequencies - causes higher frequencies to decay
-                faster
+                Cutoff reflections high frequencies - causes higher frequencies to decay faster
             </p>
         </item>
     </terms>

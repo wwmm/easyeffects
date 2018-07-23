@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-07-23 15:40-0300\n"
+"POT-Creation-Date: 2018-07-23 15:47-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "MIME-Version: 1.0\n"
@@ -113,7 +113,7 @@ msgstr "Выключить исходный сигнал и прослушать
 #: C/bassenhancer.page:79 C/compressor.page:95 C/deesser.page:113
 #: C/exciter.page:78 C/filter.page:47 C/gate.page:98 C/limiter.page:125
 #: C/loudness.page:47 C/multibandcompressor.page:130 C/multibandgate.page:138
-#: C/reverb.page:99 C/stereoenhancer.page:56 C/stereotools.page:96
+#: C/reverb.page:98 C/stereoenhancer.page:56 C/stereotools.page:96
 #: C/crossfeed.page:38 C/equalizer.page:93 C/pitch.page:88 C/webrtc.page:143
 #: C/crystalizer.page:31 C/convolver.page:42
 msgid "References"
@@ -677,7 +677,7 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/loudness.page:32
-msgid "Level trim"
+msgid "Change output level."
 msgstr ""
 
 #. (itstool) path: title/em
@@ -925,8 +925,8 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/reverb.page:92
 msgid ""
-"Cutoff high reflections high frequencies - causes higher frequencies to "
-"decay faster"
+"Cutoff reflections high frequencies - causes higher frequencies to decay "
+"faster"
 msgstr ""
 
 #. (itstool) path: page/title

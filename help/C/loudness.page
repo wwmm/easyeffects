@@ -30,7 +30,7 @@
                 <em style="strong" its:withinText="nested">Output</em>
             </title>
             <p>
-                Level trim
+                Change output level.
             </p>
         </item>
         <item>
