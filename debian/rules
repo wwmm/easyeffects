@@ -1,8 +1,0 @@
-#!/usr/bin/make -f
-# ignore the .git directory and do not include into the source code tarball
-#export DH_ALWAYS_EXCLUDE=.git
-#Wow, I've commented out 'export DH_ALWAYS_EXCLUDE=.git' and now .desktop and other files do not mysteriously disappear when building the package
-#I have no idea why this works)
-export DH_VERBOSE=255
-%:
-	dh $@
