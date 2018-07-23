@@ -1,10 +1,10 @@
-pulseeffects (4.1.9-4-git20180721) unstable; urgency=low
+pulseeffects (4.1.9-5-git20180723) unstable; urgency=low
 
   * git code between v4.1.9 and v4.2
   * fixes in Russian translation
   * Started Russian translation of help
   
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sat, 21 Jul 2018 19:02:00 +0300 
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sat, 23 Jul 2018 15:02:00 +0300 
  
 pulseeffects (4.1.9-3) unstable; urgency=low
 
