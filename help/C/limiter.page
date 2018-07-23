@@ -23,7 +23,7 @@
         <terms>
             <item>
                 <title>
-                    <em style="strong">Input Gain</em>
+                    <em style="strong" its:withinText="nested">Input Gain</em>
                 </title>
                 <p>
                     Raise audio volume before it is sent ot the compression stage
@@ -31,7 +31,7 @@
             </item>
             <item>
                 <title>
-                    <em style="strong">Limit</em>
+                    <em style="strong" its:withinText="nested">Limit</em>
                 </title>
                 <p>
                     No signal above this level will pass through the limiter
@@ -39,7 +39,7 @@
             </item>
             <item>
                 <title>
-                    <em style="strong">Lookahead</em>
+                    <em style="strong" its:withinText="nested">Lookahead</em>
                 </title>
                 <p>
                     The Limiter will reach its attenuation level in this amount of time (output will
@@ -48,7 +48,7 @@
             </item>
             <item>
                 <title>
-                    <em style="strong">Release</em>
+                    <em style="strong" its:withinText="nested">Release</em>
                 </title>
                 <p>
                     Stop the attenuation after this amount of milliseconds
@@ -56,7 +56,7 @@
             </item>
             <item>
                 <title>
-                    <em style="strong">Oversampling</em>
+                    <em style="strong" its:withinText="nested">Oversampling</em>
                 </title>
                 <p>
                     Increase the signal sampling to better detect the peaks. The signal is
@@ -65,7 +65,7 @@
             </item>
             <item>
                 <title>
-                    <em style="strong">ASC</em>
+                    <em style="strong" its:withinText="nested">ASC</em>
                 </title>
                 <p>
                     When gain reduction is always needed ASC takes care of releasing to an average
@@ -74,7 +74,7 @@
             </item>
             <item>
                 <title>
-                    <em style="strong">ASC Level</em>
+                    <em style="strong" its:withinText="nested">ASC Level</em>
                 </title>
                 <p>
                     Select how much the release time is affected by ASC, 0 means nearly no changes
@@ -88,7 +88,7 @@
         <terms>
             <item>
                 <title>
-                    <em style="strong">Window</em>
+                    <em style="strong" its:withinText="nested">Window</em>
                 </title>
                 <p>
                     The amount of time taken to measure the maximum audio peak.
@@ -96,15 +96,15 @@
             </item>
             <item>
                 <title>
-                    <em style="strong">Target</em>
+                    <em style="strong" its:withinText="nested">Target</em>
                 </title>
                 <p>
-                    The desired peak level.
+                    The desired peak value.
                 </p>
             </item>
             <item>
                 <title>
-                    <em style="strong">Tolerance</em>
+                    <em style="strong" its:withinText="nested">Tolerance</em>
                 </title>
                 <p>
                     Maximum tolerated difference between the target level and the current peak
@@ -113,7 +113,7 @@
             </item>
             <item>
                 <title>
-                    <em style="strong">Threshold</em>
+                    <em style="strong" its:withinText="nested">Threshold</em>
                 </title>
                 <p>
                     Auto volume works only when the audio level is above the threshold.

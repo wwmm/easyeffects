@@ -18,7 +18,7 @@
     <terms>
         <item>
             <title>
-                <em style="strong">Attack</em>
+                <em style="strong" its:withinText="nested">Attack</em>
             </title>
             <p>
                 Amount of milliseconds the signal has to rise above the threshold before gain
@@ -27,7 +27,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Release</em>
+                <em style="strong" its:withinText="nested">Release</em>
             </title>
             <p>
                 Amount of milliseconds the signal has to fall below the threshold before the
@@ -36,7 +36,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Threshold</em>
+                <em style="strong" its:withinText="nested">Threshold</em>
             </title>
             <p>
                 If a signal rises above this level it will affect the gain reduction
@@ -44,7 +44,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Ratio</em>
+                <em style="strong" its:withinText="nested">Ratio</em>
             </title>
             <p>
                 Set a ratio about which the signal is reduced. 1:2 means that if the level rises
@@ -53,7 +53,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Knee</em>
+                <em style="strong" its:withinText="nested">Knee</em>
             </title>
             <p>
                 Curve the sharp knee around the threshold to enter gain reduction more softly
@@ -61,7 +61,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Makeup</em>
+                <em style="strong" its:withinText="nested">Makeup</em>
             </title>
             <p>
                 Amplify your signal after processing
@@ -69,7 +69,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Stereo Link</em>
+                <em style="strong" its:withinText="nested">Stereo Link</em>
             </title>
             <p>
                 Choose if the average level between both channels or the louder channel affects
@@ -78,7 +78,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Detection</em>
+                <em style="strong" its:withinText="nested">Detection</em>
             </title>
             <p>
                 Choose if the gate should take the signal peak for detection or an RMS like one
@@ -87,7 +87,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Gain Reduction</em>
+                <em style="strong" its:withinText="nested">Gain Reduction</em>
             </title>
             <p>
                 The level of gain reduction when the signal is below the threshold

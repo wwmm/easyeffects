@@ -20,7 +20,7 @@
     <terms>
         <item>
             <title>
-                <em style="strong">Bands</em>
+                <em style="strong" its:withinText="nested">Bands</em>
             </title>
             <p>
                 The number of equalizer bands
@@ -28,7 +28,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Flat Response</em>
+                <em style="strong" its:withinText="nested">Flat Response</em>
             </title>
             <p>
                 This function sets each band gain to 0.
@@ -36,7 +36,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Calculate Frequencies</em>
+                <em style="strong" its:withinText="nested">Calculate Frequencies</em>
             </title>
             <p>
                 This function can be used to calculate the center frequencies and bandwidth of a
@@ -47,7 +47,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Reset Equalizer</em>
+                <em style="strong" its:withinText="nested">Reset Equalizer</em>
             </title>
             <p>
                 Reset the equalizer to its default settings.
@@ -55,7 +55,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Filter Type</em>
+                <em style="strong" its:withinText="nested">Filter Type</em>
             </title>
             <p>
                 Choose between Peak, Low Shelf and High Shelf. Usually you would set the band
@@ -65,7 +65,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Frequency</em>
+                <em style="strong" its:withinText="nested">Frequency</em>
             </title>
             <p>
                 Band center frequency.
@@ -73,7 +73,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Width</em>
+                <em style="strong" its:withinText="nested">Width</em>
             </title>
             <p>
                 Bandwidth
@@ -81,7 +81,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Q</em>
+                <em style="strong" its:withinText="nested">Q</em>
             </title>
             <p>
                 Quality factor. Calculated as

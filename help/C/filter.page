@@ -18,7 +18,7 @@
     <terms>
         <item>
             <title>
-                <em style="strong">Frequency</em>
+                <em style="strong" its:withinText="nested">Frequency</em>
             </title>
             <p>
                 The center or cut-off frequency of the filter
@@ -26,7 +26,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Resonance</em>
+                <em style="strong" its:withinText="nested">Resonance</em>
             </title>
             <p>
                 Add an accentuation to the center frequency. When used on a bandpass the
@@ -36,7 +36,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Inertia</em>
+                <em style="strong" its:withinText="nested">Inertia</em>
             </title>
             <p>
                 Smooths jumps between frequencies.

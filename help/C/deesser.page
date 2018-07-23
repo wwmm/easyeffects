@@ -16,7 +16,7 @@
     <terms>
         <item>
             <title>
-                <em style="strong">Laxity</em>
+                <em style="strong" its:withinText="nested">Laxity</em>
             </title>
             <p>
                 The reaction of the deesser. Higher values won't affect really short peaks.
@@ -24,7 +24,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Threshold</em>
+                <em style="strong" its:withinText="nested">Threshold</em>
             </title>
             <p>
                 If a signal rises above this level it will affect the gain reduction
@@ -32,7 +32,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Ratio</em>
+                <em style="strong" its:withinText="nested">Ratio</em>
             </title>
             <p>
                 Set a ratio about which the signal is reduced. 1:2 means that if the level rises
@@ -41,7 +41,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Makeup</em>
+                <em style="strong" its:withinText="nested">Makeup</em>
             </title>
             <p>
                 Amplify your signal after processing
@@ -49,7 +49,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Split</em>
+                <em style="strong" its:withinText="nested">Split</em>
             </title>
             <p>
                 The split frequency. All signals above this frequency will affect the gain
@@ -58,7 +58,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Gain</em>
+                <em style="strong" its:withinText="nested">Gain</em>
             </title>
             <p>
                 It shifts the volume of the higher band. In wideband mode it affects the
@@ -67,7 +67,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Peak</em>
+                <em style="strong" its:withinText="nested">Peak</em>
             </title>
             <p>
                 Center frequency of the bell filter. It allows a more precise selection of the
@@ -76,7 +76,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Level</em>
+                <em style="strong" its:withinText="nested">Level</em>
             </title>
             <p>
                 Increase or decrease the frequencies around the center bell frequency
@@ -84,7 +84,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Peak Q</em>
+                <em style="strong" its:withinText="nested">Peak Q</em>
             </title>
             <p>
                 Set the quality of the bell. Higher values will affect a narrower frequency
@@ -93,7 +93,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Detection</em>
+                <em style="strong" its:withinText="nested">Detection</em>
             </title>
             <p>
                 Choose if the deesser should take the signal peak for detection or an RMS like
@@ -102,7 +102,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Mode</em>
+                <em style="strong" its:withinText="nested">Mode</em>
             </title>
             <p>
                 Select your operation mode between wideband or split

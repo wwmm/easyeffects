@@ -19,7 +19,7 @@
     <terms>
         <item>
             <title>
-                <em style="strong">Cutoff</em>
+                <em style="strong" its:withinText="nested">Cutoff</em>
             </title>
             <p>
                 Low-pass filter cut frequency
@@ -27,7 +27,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Feed</em>
+                <em style="strong" its:withinText="nested">Feed</em>
             </title>
             <p>
                 The amount of signal from a channel that is sent to the other.

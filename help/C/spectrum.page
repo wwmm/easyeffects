@@ -1,4 +1,8 @@
-<page xmlns="http://projectmallard.org/1.0/" type="guide" id="spectrum">
+<page
+    xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
+    type="guide"
+    id="spectrum">
     <info>
         <link type="guide" xref="settingsmenu"/>
     </info>
@@ -6,7 +10,7 @@
     <terms>
         <item>
             <title>
-                <em style="strong">Show</em>
+                <em style="strong" its:withinText="nested">Show</em>
             </title>
             <p>
                 Hide or show the spectrum.
@@ -14,7 +18,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Points</em>
+                <em style="strong" its:withinText="nested">Points</em>
             </title>
             <p>
                 Number of points displayed
@@ -22,7 +26,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Height</em>
+                <em style="strong" its:withinText="nested">Height</em>
             </title>
             <p>
                 Spectrum height
@@ -30,7 +34,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Use Custom Color</em>
+                <em style="strong" its:withinText="nested">Use Custom Color</em>
             </title>
             <p>
                 Use a user defined color or the GTK theme color
@@ -38,7 +42,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Spectrum Color</em>
+                <em style="strong" its:withinText="nested">Spectrum Color</em>
             </title>
             <p>
                 User defined color.

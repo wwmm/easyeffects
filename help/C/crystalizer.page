@@ -19,7 +19,7 @@
     <terms>
         <item>
             <title>
-                <em style="strong">Intensity</em>
+                <em style="strong" its:withinText="nested">Intensity</em>
             </title>
             <p>
                 The higher the value the higher is the difference in magnitude between loudest

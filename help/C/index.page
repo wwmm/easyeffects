@@ -5,8 +5,8 @@
     id="index">
     <info>
         <credit type="author">
-            <name>Wellington Wallace</name>
-            <email>wellingtonwallace@gmail.com</email>
+            <name its:translate="no">Wellington Wallace</name>
+            <email its:translate="no">wellingtonwallace@gmail.com</email>
         </credit>
     </info>
     <title>

@@ -20,7 +20,7 @@
     <terms>
         <item>
             <title>
-                <em style="strong">Amount</em>
+                <em style="strong" its:withinText="nested">Amount</em>
             </title>
             <p>
                 The amount of harmonics added to the original signal
@@ -28,7 +28,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Harmonics</em>
+                <em style="strong" its:withinText="nested">Harmonics</em>
             </title>
             <p>
                 The amount of newly created harmonics
@@ -36,7 +36,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Scope</em>
+                <em style="strong" its:withinText="nested">Scope</em>
             </title>
             <p>
                 The frequency harmonics are produced above
@@ -44,7 +44,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Floor(button)</em>
+                <em style="strong" its:withinText="nested">Floor(button)</em>
             </title>
             <p>
                 Constrain the enhancement on the lower end
@@ -52,7 +52,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Floor(value)</em>
+                <em style="strong" its:withinText="nested">Floor(value)</em>
             </title>
             <p>
                 The frequency no harmonics are produced below
@@ -60,7 +60,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Blend Harmonics</em>
+                <em style="strong" its:withinText="nested">Blend Harmonics</em>
             </title>
             <p>
                 The "colour" (or octave) of the harmonics
@@ -68,7 +68,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Listen</em>
+                <em style="strong" its:withinText="nested">Listen</em>
             </title>
             <p>
                 Mute the original signal and listen to the harmonics exclusively

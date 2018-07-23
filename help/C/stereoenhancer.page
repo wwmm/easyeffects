@@ -21,7 +21,7 @@
     <terms>
         <item>
             <title>
-                <em style="strong">Balance</em>
+                <em style="strong" its:withinText="nested">Balance</em>
             </title>
             <p>
                 Set the balance between both channels
@@ -29,7 +29,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Delay</em>
+                <em style="strong" its:withinText="nested">Delay</em>
             </title>
             <p>
                 Channel delay
@@ -37,7 +37,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Mode</em>
+                <em style="strong" its:withinText="nested">Mode</em>
             </title>
             <p>
                 Choose how the middle signal is generated
@@ -45,7 +45,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Side Gain</em>
+                <em style="strong" its:withinText="nested">Side Gain</em>
             </title>
             <p>
                 The level of the side signal

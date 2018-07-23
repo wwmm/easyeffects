@@ -19,7 +19,7 @@
     <terms>
         <item>
             <title>
-                <em style="strong">Loudness</em>
+                <em style="strong" its:withinText="nested">Loudness</em>
             </title>
             <p>
                 Source level relative to listening level (based on a 100 dB SPL maximum level)
@@ -27,7 +27,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Output</em>
+                <em style="strong" its:withinText="nested">Output</em>
             </title>
             <p>
                 Level trim
@@ -35,7 +35,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Link</em>
+                <em style="strong" its:withinText="nested">Link</em>
             </title>
             <p>
                 Automatically adjusts Output to maintain a consistent tonal balance at all

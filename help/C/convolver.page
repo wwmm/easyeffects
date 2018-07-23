@@ -15,7 +15,7 @@
     <terms>
         <item>
             <title>
-                <em style="strong">Import Impulse</em>
+                <em style="strong" its:withinText="nested">Import Impulse</em>
             </title>
             <p>
                 Import an impulse response file to PulseEffects configuration directory
@@ -23,7 +23,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Stereo Width</em>
+                <em style="strong" its:withinText="nested">Stereo Width</em>
             </title>
             <p>
                 Modify the impulse response stereo image width.
@@ -31,7 +31,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Spectrum</em>
+                <em style="strong" its:withinText="nested">Spectrum</em>
             </title>
             <p>
                 Visualize the frequency spectrum of the selected channel.

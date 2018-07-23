@@ -23,7 +23,7 @@
         <terms>
             <item>
                 <title>
-                    <em style="strong">Extended Filter</em>
+                    <em style="strong" its:withinText="nested">Extended Filter</em>
                 </title>
                 <p>
                     Enabled or disables the extended filter
@@ -31,7 +31,7 @@
             </item>
             <item>
                 <title>
-                    <em style="strong">High Pass Filter</em>
+                    <em style="strong" its:withinText="nested">High Pass Filter</em>
                 </title>
                 <p>
                     Enables or disables the high pass filter
@@ -39,7 +39,7 @@
             </item>
             <item>
                 <title>
-                    <em style="strong">Delay Agnostic</em>
+                    <em style="strong" its:withinText="nested">Delay Agnostic</em>
                 </title>
                 <p>
                     Enables or disables the delay agnostic mode
@@ -47,7 +47,7 @@
             </item>
             <item>
                 <title>
-                    <em style="strong">Suppression Level</em>
+                    <em style="strong" its:withinText="nested">Suppression Level</em>
                 </title>
                 <p>
                     Controls the aggressiveness of the suppressor. A higher level trades off
@@ -61,7 +61,7 @@
         <terms>
             <item>
                 <title>
-                    <em style="strong">Suppression Level</em>
+                    <em style="strong" its:withinText="nested">Suppression Level</em>
                 </title>
                 <p>
                     Controls the aggressiveness of the suppression. Increasing the level will reduce
@@ -75,7 +75,7 @@
         <terms>
             <item>
                 <title>
-                    <em style="strong">Mode</em>
+                    <em style="strong" its:withinText="nested">Mode</em>
                 </title>
                 <p>
                     Controls the mode of the compression stage.
@@ -88,7 +88,7 @@
         <terms>
             <item>
                 <title>
-                    <em style="strong">Limiter</em>
+                    <em style="strong" its:withinText="nested">Limiter</em>
                 </title>
                 <p>
                     When enabled, the compression stage will hard limit the signal to the target
@@ -98,7 +98,7 @@
             </item>
             <item>
                 <title>
-                    <em style="strong">Target Level</em>
+                    <em style="strong" its:withinText="nested">Target Level</em>
                 </title>
                 <p>
                     Sets the target peak |level| (or envelope) of the gain control in dBFS (decibels
@@ -107,7 +107,7 @@
             </item>
             <item>
                 <title>
-                    <em style="strong">Maximum Gain</em>
+                    <em style="strong" its:withinText="nested">Maximum Gain</em>
                 </title>
                 <p>
                     Sets the maximum |gain| the digital compression stage may apply, in dB.
@@ -120,7 +120,7 @@
         <terms>
             <item>
                 <title>
-                    <em style="strong">Detection Likelihood</em>
+                    <em style="strong" its:withinText="nested">Detection Likelihood</em>
                 </title>
                 <p>
                     Specifies the likelihood that a frame will be declared to contain voice.
@@ -130,7 +130,7 @@
         <terms>
             <item>
                 <title>
-                    <em style="strong">Frame Size</em>
+                    <em style="strong" its:withinText="nested">Frame Size</em>
                 </title>
                 <p>
                     Sets the |size| of the frames in ms on which the VAD will operate. Larger frames
