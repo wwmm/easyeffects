@@ -26,6 +26,7 @@ debian/*
 !debian/build-ppa.sh
 !debian/*.install
 !debian/lintian-overrides
+!debian/watch
 
 build-ppa.sh
 
