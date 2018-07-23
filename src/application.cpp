@@ -143,10 +143,27 @@ void Application::create_appmenu() {
         quit();
     });
 
+    add_action("help", [&] {
+        auto window = get_active_window();
+
+        /*GTKMM 3.22 does not have a wrapper for gtk_show_uri_on_window.
+         *So we have to use the C api :-(
+         */
+
+        if (!gtk_show_uri_on_window(window->gobj(), "help:pulseeffects",
+                                    gtk_get_current_event_time(), nullptr)) {
+            util::warning("Failed to open help!");
+        }
+    });
+
     auto menu = Gio::Menu::create();
 
     menu->append("About", "app.about");
+    menu->append("Help", "app.help");
     menu->append("Quit", "app.quit");
 
     set_app_menu(menu);
+
+    set_accel_for_action("app.help", "F1");
+    set_accel_for_action("app.quit", "<Ctrl>Q");
 }

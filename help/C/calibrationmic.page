@@ -21,8 +21,8 @@
             <em style="strong">Measure Noise</em>
         </title>
         <p>
-            Saves the last measurement to be uased as background noise. Usually you would
-            use this before turning on the pink noise.
+            Saves the last measurement to be used as background noise. Usually you would use
+            this before turning on the pink noise.
         </p>
     </item>
     <item>
