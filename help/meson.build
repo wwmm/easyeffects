@@ -33,7 +33,6 @@ help_pages = [
 ]
 
 help_media = [
-  'figures/mainwindow.png',
   'figures/effectsorder.png',
   'figures/enableapp.png',
   'figures/settingsmenu.png',
