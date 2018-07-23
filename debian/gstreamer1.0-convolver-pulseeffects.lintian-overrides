@@ -1,0 +1,4 @@
+# The long line is a command-line example
+# so it should not be splitted into two or more lines
+# for convinience of copy-paste
+gstreamer1.0-convolver-pulseeffects: extended-description-line-too-long

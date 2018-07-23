@@ -21,7 +21,8 @@ Build-Depends: debhelper (>=11),
                librubberband-dev,
                libzita-convolver-dev,
                libsndfile1-dev,
-               libsamplerate0-dev
+               libsamplerate0-dev,
+               itstool
 
 Package: pulseeffects
 Architecture: any

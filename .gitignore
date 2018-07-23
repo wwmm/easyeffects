@@ -25,9 +25,10 @@ debian/*
 !debian/source/format
 !debian/build-ppa.sh
 !debian/*.install
-!debian/lintian-overrides
+!debian/*lintian-overrides
+!debian/watch
 
-build-ppa.sh
+/build-ppa.sh
 
 # Dolphin file manager creates the file .directory to save some folder-specific settings
 *.directory
@@ -35,3 +36,5 @@ build-ppa.sh
 *-build-deps*.deb
 
 .build-tools.cson
+
+ppastats
