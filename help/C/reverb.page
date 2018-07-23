@@ -1,4 +1,8 @@
-<page xmlns="http://projectmallard.org/1.0/" type="guide" id="reverb">
+<page
+    xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
+    type="guide"
+    id="reverb">
     <info>
         <link type="guide" xref="index#plugins"/>
     </info>
@@ -12,7 +16,7 @@
     </p>
     <p>
         PulseEffects uses the reverberation plugin developed by
-        <link href="https://calf-studio-gear.org">Calf Studio</link>.
+        <link href="https://calf-studio-gear.org" its:translate="no">Calf Studio</link>.
     </p>
     <terms>
         <item>
@@ -96,14 +100,14 @@
         <list>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Reverberation">
+                    <link href="https://en.wikipedia.org/wiki/Reverberation" its:translate="no">
                         https://en.wikipedia.org/wiki/Reverberation
                     </link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://calf-studio-gear.org/doc/Reverb.html">
+                    <link href="https://calf-studio-gear.org/doc/Reverb.html" its:translate="no">
                         https://calf-studio-gear.org/doc/Reverb.html
                     </link>
                 </p>

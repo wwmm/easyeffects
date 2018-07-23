@@ -1,4 +1,8 @@
-<page xmlns="http://projectmallard.org/1.0/" type="guide" id="webrtc">
+<page
+    xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
+    type="guide"
+    id="webrtc">
     <info>
         <link type="guide" xref="index#plugins"/>
     </info>
@@ -6,7 +10,8 @@
     <p>
         PulseEffects uses the webrtc plugin from
         <link
-            href="https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-bad/html/gst-plugins-bad-plugins-webrtcdsp.html">GStreamer</link>.
+            href="https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-bad/html/gst-plugins-bad-plugins-webrtcdsp.html"
+            its:translate="no">GStreamer</link>.
         This plugin offers a voice enhancement filter based on WebRTC Audio Processing
         library. This library provides a whide variety of enhancement algorithms. This
         element tries to enable as much as possible. The currently enabled enhancements
@@ -140,7 +145,8 @@
             <item>
                 <p>
                     <link
-                        href="https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-bad/html/gst-plugins-bad-plugins-webrtcdsp.html">
+                        href="https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-bad/html/gst-plugins-bad-plugins-webrtcdsp.html"
+                        its:translate="no">
                         https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-bad/html/gst-plugins-bad-plugins-webrtcdsp.html
                     </link>
                 </p>

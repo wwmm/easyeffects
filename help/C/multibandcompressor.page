@@ -1,5 +1,6 @@
 <page
     xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
     type="guide"
     id="multibandcompressor">
     <info>
@@ -12,7 +13,7 @@
     </p>
     <p>
         PulseEffects uses the multiband compressor plugin developed by
-        <link href="https://calf-studio-gear.org">Calf Studio</link>.
+        <link href="https://calf-studio-gear.org" its:translate="no">Calf Studio</link>.
     </p>
     <terms>
         <item>
@@ -130,14 +131,18 @@
         <list>
             <item>
                 <p>
-                    <link href="https://calf-studio-gear.org/doc/Multiband Compressor.html">
+                    <link
+                        href="https://calf-studio-gear.org/doc/Multiband Compressor.html"
+                        its:translate="no">
                         https://calf-studio-gear.org/doc/Multiband Compressor.html
                     </link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Dynamic_range_compression">
+                    <link
+                        href="https://en.wikipedia.org/wiki/Dynamic_range_compression"
+                        its:translate="no">
                         https://en.wikipedia.org/wiki/Dynamic_range_compression
                     </link>
                 </p>

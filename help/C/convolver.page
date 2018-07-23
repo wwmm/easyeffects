@@ -1,4 +1,8 @@
-<page xmlns="http://projectmallard.org/1.0/" type="guide" id="convolver">
+<page
+    xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
+    type="guide"
+    id="convolver">
     <info>
         <link type="guide" xref="index#plugins"/>
     </info>
@@ -39,7 +43,9 @@
         <list>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Convolution_reverb">
+                    <link
+                        href="https://en.wikipedia.org/wiki/Convolution_reverb"
+                        its:translate="no">
                         https://en.wikipedia.org/wiki/Convolution_reverb
                     </link>
                 </p>

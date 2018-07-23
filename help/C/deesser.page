@@ -1,13 +1,17 @@
-<page xmlns="http://projectmallard.org/1.0/" type="guide" id="deesser">
+<page
+    xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
+    type="guide"
+    id="deesser">
     <info>
         <link type="guide" xref="index#plugins"/>
     </info>
     <title>Deesser</title>
     <p>
         PulseEffects uses the deesser plugin developed by
-        <link href="https://calf-studio-gear.org">Calf Studio</link>. A Deesser is used
-        to dynamically reduce high frequencies. The standard field of use is the
-        reduction of "sssss" and "shhhh" in vocal tracks.
+        <link href="https://calf-studio-gear.org" its:translate="no">Calf Studio</link>.
+        A Deesser is used to dynamically reduce high frequencies. The standard field of
+        use is the reduction of "sssss" and "shhhh" in vocal tracks.
     </p>
     <terms>
         <item>
@@ -110,14 +114,14 @@
         <list>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/De-essing">
+                    <link href="https://en.wikipedia.org/wiki/De-essing" its:translate="no">
                         https://en.wikipedia.org/wiki/De-essing
                     </link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://calf-studio-gear.org/doc/Deesser.html">
+                    <link href="https://calf-studio-gear.org/doc/Deesser.html" its:translate="no">
                         https://calf-studio-gear.org/doc/Deesser.html
                     </link>
                 </p>

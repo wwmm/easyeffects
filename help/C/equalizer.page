@@ -1,4 +1,8 @@
-<page xmlns="http://projectmallard.org/1.0/" type="guide" id="equalizer">
+<page
+    xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
+    type="guide"
+    id="equalizer">
     <info>
         <link type="guide" xref="index#plugins"/>
     </info>
@@ -6,7 +10,8 @@
     <p>
         PulseEffects uses the parametric equalizer plugin from
         <link
-            href="https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good/html/gst-plugins-good-plugins-equalizer-nbands.html">GStreamer</link>.
+            href="https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good/html/gst-plugins-good-plugins-equalizer-nbands.html"
+            its:translate="no">GStreamer</link>.
         You can choose between 1 and 30 bands. You also can change the cernter frequency
         and the width of each band as needed. There are a few presets but at this moment
         all of them have only 10 bands. Presets with other number of bands may be added
@@ -89,14 +94,16 @@
         <list>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Equalization_(audio)">
+                    <link
+                        href="https://en.wikipedia.org/wiki/Equalization_(audio)"
+                        its:translate="no">
                         https://en.wikipedia.org/wiki/Equalization_(audio)
                     </link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Q_factor">
+                    <link href="https://en.wikipedia.org/wiki/Q_factor" its:translate="no">
                         https://en.wikipedia.org/wiki/Q_factor
                     </link>
                 </p>
@@ -104,7 +111,8 @@
             <item>
                 <p>
                     <link
-                        href="https://howtoeq.wordpress.com/2010/10/07/q-factor-and-bandwidth-in-eq-what-it-all-means/">
+                        href="https://howtoeq.wordpress.com/2010/10/07/q-factor-and-bandwidth-in-eq-what-it-all-means/"
+                        its:translate="no">
                         https://howtoeq.wordpress.com/2010/10/07/q-factor-and-bandwidth-in-eq-what-it-all-means/
                     </link>
                 </p>

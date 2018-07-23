@@ -1,4 +1,8 @@
-<page xmlns="http://projectmallard.org/1.0/" type="guide" id="limiter">
+<page
+    xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
+    type="guide"
+    id="limiter">
     <info>
         <link type="guide" xref="index#plugins"/>
     </info>
@@ -10,9 +14,9 @@
     </p>
     <p>
         PulseEffects uses the limiter plugin developed by
-        <link href="https://calf-studio-gear.org">Calf Studio</link>. We only attached
-        to it a routine to automatically set its input gain. This is what we call auto
-        volume.
+        <link href="https://calf-studio-gear.org" its:translate="no">Calf Studio</link>.
+        We only attached to it a routine to automatically set its input gain. This is
+        what we call auto volume.
     </p>
     <section>
         <title>Limiter</title>
@@ -122,14 +126,14 @@
         <list>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Limiter">
+                    <link href="https://en.wikipedia.org/wiki/Limiter" its:translate="no">
                         https://en.wikipedia.org/wiki/Limiter
                     </link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://calf-studio-gear.org/doc/Limiter.html">
+                    <link href="https://calf-studio-gear.org/doc/Limiter.html" its:translate="no">
                         https://calf-studio-gear.org/doc/Limiter.html
                     </link>
                 </p>

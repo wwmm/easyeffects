@@ -1,4 +1,8 @@
-<page xmlns="http://projectmallard.org/1.0/" type="guide" id="bassenhancer">
+<page
+    xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
+    type="guide"
+    id="bassenhancer">
     <info>
         <link type="guide" xref="index#plugins"/>
     </info>
@@ -11,7 +15,7 @@
     </p>
     <p>
         PulseEffects uses the bass enhancer plugin developed by
-        <link href="https://calf-studio-gear.org">Calf Studio</link>.
+        <link href="https://calf-studio-gear.org" its:translate="no">Calf Studio</link>.
     </p>
     <terms>
         <item>
@@ -76,14 +80,18 @@
         <list>
             <item>
                 <p>
-                    <link href="https://calf-studio-gear.org/doc/Bass%20Enhancer.html">
+                    <link
+                        href="https://calf-studio-gear.org/doc/Bass%20Enhancer.html"
+                        its:translate="no">
                         https://calf-studio-gear.org/doc/Bass%20Enhancer.html
                     </link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Missing_fundamental">
+                    <link
+                        href="https://en.wikipedia.org/wiki/Missing_fundamental"
+                        its:translate="no">
                         https://en.wikipedia.org/wiki/Missing_fundamental
                     </link>
                 </p>

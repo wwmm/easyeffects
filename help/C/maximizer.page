@@ -1,4 +1,8 @@
-<page xmlns="http://projectmallard.org/1.0/" type="guide" id="maximizer">
+<page
+    xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
+    type="guide"
+    id="maximizer">
     <info>
         <link type="guide" xref="index#plugins"/>
     </info>
@@ -10,7 +14,7 @@
     </p>
     <p>
         PulseEffects uses the maximizer plugin from
-        <link href="http://www.zamaudio.com">ZamAudio</link>.
+        <link href="http://www.zamaudio.com" its:translate="no">ZamAudio</link>.
     </p>
     <terms>
         <item>
