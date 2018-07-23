@@ -1,7 +1,7 @@
 # Maintainer: Wellington <wellingtonwallace@gmail.com>
 _pkgname=pulseeffects
 pkgname="${_pkgname}-git"
-pkgver=4.1.9
+pkgver=v4.1.9.r53.g24d322a
 pkgrel=1
 pkgdesc="Audio Effects for Pulseaudio Applications"
 arch=(any)
@@ -15,18 +15,25 @@ optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
             'mda.lv2: loudness')
 makedepends=('meson' 'boost')
 options=(!emptydirs)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wwmm/pulseeffects/archive/v$pkgver.tar.gz")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}::git+https://github.com/wwmm/pulseeffects.git")
 sha256sums=('SKIP')
 
+pkgver() {
+    cd "${srcdir}/${_pkgname}"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${_pkgname}"
   # Remove any potential residual build files
   rm -rf _build
   meson _build --prefix=/usr --buildtype=release
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/_build"
+  cd "${srcdir}/${_pkgname}/_build"
   env DESTDIR="$pkgdir" ninja install
 }
 
