@@ -12,7 +12,6 @@
     <title>
         PulseEffects
     </title>
-    <media type="image" src="figures/mainwindow.png" its:translate="no"/>
     <p>
         PulseEffects applies audio effects to Pulseaudio applications. You can apply
         effects to applications output or to your microphone before sending its audio to
