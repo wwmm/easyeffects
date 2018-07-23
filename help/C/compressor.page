@@ -1,4 +1,8 @@
-<page xmlns="http://projectmallard.org/1.0/" type="guide" id="compressor">
+<page
+    xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
+    type="guide"
+    id="compressor">
     <info>
         <link type="guide" xref="index#plugins"/>
     </info>
@@ -8,12 +12,12 @@
     </p>
     <p>
         PulseEffects uses the compressor plugin developed by
-        <link href="https://calf-studio-gear.org">Calf Studio</link>.
+        <link href="https://calf-studio-gear.org" its:translate="no">Calf Studio</link>.
     </p>
     <terms>
         <item>
             <title>
-                <em style="strong">Attack</em>
+                <em style="strong" its:withinText="nested">Attack</em>
             </title>
             <p>
                 Amount of milliseconds the signal has to rise above the threshold before gain
@@ -22,7 +26,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Release</em>
+                <em style="strong" its:withinText="nested">Release</em>
             </title>
             <p>
                 Amount of milliseconds the signal has to fall below the threshold before the
@@ -31,7 +35,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Threshold</em>
+                <em style="strong" its:withinText="nested">Threshold</em>
             </title>
             <p>
                 If a signal rises above this level it will affect the gain reduction
@@ -39,7 +43,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Ratio</em>
+                <em style="strong" its:withinText="nested">Ratio</em>
             </title>
             <p>
                 Set a ratio about which the signal is reduced. 1:2 means that if the level rises
@@ -48,7 +52,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Knee</em>
+                <em style="strong" its:withinText="nested">Knee</em>
             </title>
             <p>
                 Curve the sharp knee around the threshold to enter gain reduction more softly
@@ -56,7 +60,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Makeup</em>
+                <em style="strong" its:withinText="nested">Makeup</em>
             </title>
             <p>
                 Amplify your signal after processing
@@ -64,7 +68,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Stereo Link</em>
+                <em style="strong" its:withinText="nested">Stereo Link</em>
             </title>
             <p>
                 Choose if the average level between both channels or the louder channel affects
@@ -73,7 +77,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Detection</em>
+                <em style="strong" its:withinText="nested">Detection</em>
             </title>
             <p>
                 Choose if the compressor should take the signal peak for detection or an RMS
@@ -82,7 +86,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Mix</em>
+                <em style="strong" its:withinText="nested">Mix</em>
             </title>
             <p></p>
         </item>
@@ -92,14 +96,18 @@
         <list>
             <item>
                 <p>
-                    <link href="https://calf-studio-gear.org/doc/Compressor.html">
+                    <link
+                        href="https://calf-studio-gear.org/doc/Compressor.html"
+                        its:translate="no">
                         https://calf-studio-gear.org/doc/Compressor.html
                     </link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Dynamic_range_compression">
+                    <link
+                        href="https://en.wikipedia.org/wiki/Dynamic_range_compression"
+                        its:translate="no">
                         https://en.wikipedia.org/wiki/Dynamic_range_compression
                     </link>
                 </p>

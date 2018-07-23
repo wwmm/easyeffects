@@ -1,15 +1,20 @@
-<page xmlns="http://projectmallard.org/1.0/" type="guide" id="calibrationmic">
+<page
+    xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
+    type="guide"
+    id="calibrationmic">
     <info>
         <link type="guide" xref="index#calibration"/>
     </info>
     <title>Microphone</title>
     <p>
-        If you have a reasonably flat microphone you can use it together with a pink
-        noise test signal to estimate how flat is your audio setup frequency response.
+        If you have a microphone with reasonably flat response you can use it together
+        with a pink noise test signal to estimate how flat is your audio setup frequency
+        response.
     </p>
     <item>
         <title>
-            <em style="strong">Window</em>
+            <em style="strong" its:withinText="nested">Window</em>
         </title>
         <p>
             The amount of time the microphone signal will be measured. Higher values will
@@ -18,16 +23,16 @@
     </item>
     <item>
         <title>
-            <em style="strong">Measure Noise</em>
+            <em style="strong" its:withinText="nested">Measure Noise</em>
         </title>
         <p>
-            Saves the last measurement to be uased as background noise. Usually you would
-            use this before turning on the pink noise.
+            Saves the last measurement to be used as background noise. Usually you would use
+            this before turning on the pink noise.
         </p>
     </item>
     <item>
         <title>
-            <em style="strong">Subtract Noise</em>
+            <em style="strong" its:withinText="nested">Subtract Noise</em>
         </title>
         <p>
             Subtract the stored background noise from the measurement.

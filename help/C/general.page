@@ -1,4 +1,8 @@
-<page xmlns="http://projectmallard.org/1.0/" type="guide" id="general">
+<page
+    xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
+    type="guide"
+    id="general">
     <info>
         <link type="guide" xref="settingsmenu"/>
     </info>
@@ -6,7 +10,7 @@
     <terms>
         <item>
             <title>
-                <em style="strong">Start Service at Login</em>
+                <em style="strong" its:withinText="nested">Start Service at Login</em>
             </title>
             <p>
                 Start PulseEffects as a service in the next login. This is done by creating an
@@ -16,7 +20,7 @@
         </item>
         <item>
             <title id="title_enable_all_apps">
-                <em style="strong">Enable All Applications</em>
+                <em style="strong" its:withinText="nested">Enable All Applications</em>
             </title>
             <p>
                 Apply effects to all audio applications. This will automatically switch on the
@@ -25,7 +29,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Use Dark Theme</em>
+                <em style="strong" its:withinText="nested">Use Dark Theme</em>
             </title>
             <p>
                 Use the dark GTK theme variant
@@ -33,7 +37,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Reset</em>
+                <em style="strong" its:withinText="nested">Reset</em>
             </title>
             <p>
                 Reset all parameters to their default values. This will reset the plugins too.

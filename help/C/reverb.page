@@ -1,4 +1,8 @@
-<page xmlns="http://projectmallard.org/1.0/" type="guide" id="reverb">
+<page
+    xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
+    type="guide"
+    id="reverb">
     <info>
         <link type="guide" xref="index#plugins"/>
     </info>
@@ -12,12 +16,12 @@
     </p>
     <p>
         PulseEffects uses the reverberation plugin developed by
-        <link href="https://calf-studio-gear.org">Calf Studio</link>.
+        <link href="https://calf-studio-gear.org" its:translate="no">Calf Studio</link>.
     </p>
     <terms>
         <item>
             <title>
-                <em style="strong">Pre Delay</em>
+                <em style="strong" its:withinText="nested">Pre Delay</em>
             </title>
             <p>
                 Additional delay - corresponds to a distance between sound source and the
@@ -26,7 +30,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Decay Time</em>
+                <em style="strong" its:withinText="nested">Decay Time</em>
             </title>
             <p>
                 Time it takes for reverberation to fade out
@@ -34,7 +38,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Amount</em>
+                <em style="strong" its:withinText="nested">Amount</em>
             </title>
             <p>
                 Amount of processed signal (reverberation) in the output
@@ -42,7 +46,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Dry</em>
+                <em style="strong" its:withinText="nested">Dry</em>
             </title>
             <p>
                 Amount of unprocessed signal in the output
@@ -50,7 +54,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Bass Cut</em>
+                <em style="strong" its:withinText="nested">Bass Cut</em>
             </title>
             <p>
                 Removes low frequencies from the reverberation
@@ -58,7 +62,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Treble Cut</em>
+                <em style="strong" its:withinText="nested">Treble Cut</em>
             </title>
             <p>
                 Removes high frequencies from the reverberation
@@ -66,7 +70,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Diffusion</em>
+                <em style="strong" its:withinText="nested">Diffusion</em>
             </title>
             <p>
                 Increase its value for less uniform reverberation
@@ -74,7 +78,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Room Size</em>
+                <em style="strong" its:withinText="nested">Room Size</em>
             </title>
             <p>
                 Size of the space that simulated reverberation occurs in - determines times
@@ -83,11 +87,10 @@
         </item>
         <item>
             <title>
-                <em style="strong">High Frequency Damping</em>
+                <em style="strong" its:withinText="nested">High Frequency Damping</em>
             </title>
             <p>
-                Cutoff high reflections high frequencies - causes higher frequencies to decay
-                faster
+                Cutoff reflections high frequencies - causes higher frequencies to decay faster
             </p>
         </item>
     </terms>
@@ -96,14 +99,14 @@
         <list>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Reverberation">
+                    <link href="https://en.wikipedia.org/wiki/Reverberation" its:translate="no">
                         https://en.wikipedia.org/wiki/Reverberation
                     </link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://calf-studio-gear.org/doc/Reverb.html">
+                    <link href="https://calf-studio-gear.org/doc/Reverb.html" its:translate="no">
                         https://calf-studio-gear.org/doc/Reverb.html
                     </link>
                 </p>

@@ -1,4 +1,8 @@
-<page xmlns="http://projectmallard.org/1.0/" type="guide" id="pulseaudio">
+<page
+    xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
+    type="guide"
+    id="pulseaudio">
     <info>
         <link type="guide" xref="settingsmenu"/>
     </info>
@@ -11,7 +15,7 @@
     <terms>
         <item>
             <title>
-                <em style="strong">Use Default</em>
+                <em style="strong" its:withinText="nested">Use Default</em>
             </title>
             <p>
                 Use default input or output device.
@@ -19,7 +23,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Buffer</em>
+                <em style="strong" its:withinText="nested">Buffer</em>
             </title>
             <p>
                 Gstreamer's pulsesrc buffer size. It affects latency
@@ -27,7 +31,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Latency</em>
+                <em style="strong" its:withinText="nested">Latency</em>
             </title>
             <p>
                 Gstreamer's pulsesrc latency value.
@@ -35,7 +39,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Block Size</em>
+                <em style="strong" its:withinText="nested">Block Size</em>
             </title>
             <p>
                 This controls the size of the buffer that are used by the plugins when applying

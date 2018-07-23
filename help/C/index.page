@@ -5,14 +5,13 @@
     id="index">
     <info>
         <credit type="author">
-            <name>Wellington Wallace</name>
-            <email>wellingtonwallace@gmail.com</email>
+            <name its:translate="no">Wellington Wallace</name>
+            <email its:translate="no">wellingtonwallace@gmail.com</email>
         </credit>
     </info>
     <title>
         PulseEffects
     </title>
-    <media type="image" src="figures/mainwindow.png" its:translate="no"/>
     <p>
         PulseEffects applies audio effects to Pulseaudio applications. You can apply
         effects to applications output or to your microphone before sending its audio to

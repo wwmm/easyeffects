@@ -1,4 +1,8 @@
-<page xmlns="http://projectmallard.org/1.0/" type="guide" id="stereoenhancer">
+<page
+    xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
+    type="guide"
+    id="stereoenhancer">
     <info>
         <link type="guide" xref="index#plugins"/>
     </info>
@@ -12,12 +16,12 @@
     </p>
     <p>
         PulseEffects uses the stereo enhancer plugin developed by
-        <link href="https://calf-studio-gear.org">Calf Studio</link>. It uses Haas effect to improve the stereo signal.
+        <link href="https://calf-studio-gear.org" its:translate="no">Calf Studio</link>. It uses Haas effect to improve the stereo signal.
     </p>
     <terms>
         <item>
             <title>
-                <em style="strong">Balance</em>
+                <em style="strong" its:withinText="nested">Balance</em>
             </title>
             <p>
                 Set the balance between both channels
@@ -25,7 +29,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Delay</em>
+                <em style="strong" its:withinText="nested">Delay</em>
             </title>
             <p>
                 Channel delay
@@ -33,7 +37,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Mode</em>
+                <em style="strong" its:withinText="nested">Mode</em>
             </title>
             <p>
                 Choose how the middle signal is generated
@@ -41,7 +45,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Side Gain</em>
+                <em style="strong" its:withinText="nested">Side Gain</em>
             </title>
             <p>
                 The level of the side signal
@@ -53,14 +57,16 @@
         <list>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Precedence_effect">
+                    <link href="https://en.wikipedia.org/wiki/Precedence_effect" its:translate="no">
                         https://en.wikipedia.org/wiki/Precedence_effect
                     </link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://calf-studio-gear.org/doc/Stereo%20Enhancer.html">
+                    <link
+                        href="https://calf-studio-gear.org/doc/Stereo%20Enhancer.html"
+                        its:translate="no">
                         https://calf-studio-gear.org/doc/Stereo%20Enhancer.html
                     </link>
                 </p>

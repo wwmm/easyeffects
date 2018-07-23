@@ -1,11 +1,17 @@
-<page xmlns="http://projectmallard.org/1.0/" type="guide" id="loudness">
+<page
+    xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
+    type="guide"
+    id="loudness">
     <info>
         <link type="guide" xref="index#plugins"/>
     </info>
     <title>Loudness</title>
     <p>
         PulseEffects uses the loudness plugin from
-        <link href="https://git.drobilla.net/cgit.cgi/mda.lv2.git/about/">MDA.LV2</link>.
+        <link
+            href="https://git.drobilla.net/cgit.cgi/mda.lv2.git/about/"
+            its:translate="no">MDA.LV2</link>.
         The ear is less sensitive to low frequencies when listening at low volume. This
         plug-in is based on the Stevens-Davis equal loudness contours and allows the
         bass level to be adjusted to simulate or correct for this effect.
@@ -13,7 +19,7 @@
     <terms>
         <item>
             <title>
-                <em style="strong">Loudness</em>
+                <em style="strong" its:withinText="nested">Loudness</em>
             </title>
             <p>
                 Source level relative to listening level (based on a 100 dB SPL maximum level)
@@ -21,15 +27,15 @@
         </item>
         <item>
             <title>
-                <em style="strong">Output</em>
+                <em style="strong" its:withinText="nested">Output</em>
             </title>
             <p>
-                Level trim
+                Change output level.
             </p>
         </item>
         <item>
             <title>
-                <em style="strong">Link</em>
+                <em style="strong" its:withinText="nested">Link</em>
             </title>
             <p>
                 Automatically adjusts Output to maintain a consistent tonal balance at all
@@ -42,14 +48,16 @@
         <list>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Loudness">
+                    <link href="https://en.wikipedia.org/wiki/Loudness" its:translate="no">
                         https://en.wikipedia.org/wiki/Loudness
                     </link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="http://mda.smartelectronix.com/vst/help/loudness.htm">
+                    <link
+                        href="http://mda.smartelectronix.com/vst/help/loudness.htm"
+                        its:translate="no">
                         http://mda.smartelectronix.com/vst/help/loudness.htm
                     </link>
                 </p>

@@ -1,4 +1,8 @@
-<page xmlns="http://projectmallard.org/1.0/" type="guide" id="pitch">
+<page
+    xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
+    type="guide"
+    id="pitch">
     <info>
         <link type="guide" xref="index#plugins"/>
     </info>
@@ -9,18 +13,18 @@
     </p>
     <p>
         PulseEffects uses the pitch shifter plugin from
-        <link href="https://breakfastquay.com/rubberband/">RubberBand</link>.
+        <link href="https://breakfastquay.com/rubberband/" its:translate="no">RubberBand</link>.
     </p>
     <terms>
         <item>
             <title>
-                <em style="strong">Faster</em>
+                <em style="strong" its:withinText="nested">Faster</em>
             </title>
             <p></p>
         </item>
         <item>
             <title>
-                <em style="strong">Preserve Formant</em>
+                <em style="strong" its:withinText="nested">Preserve Formant</em>
             </title>
             <p>
                 Enable formant preservation when pitch shifting
@@ -28,7 +32,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Cents</em>
+                <em style="strong" its:withinText="nested">Cents</em>
             </title>
             <p>
                 Number of cents the pitch will increased or decreased
@@ -36,7 +40,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Semitones</em>
+                <em style="strong" its:withinText="nested">Semitones</em>
             </title>
             <p>
                 Number of semitones the pitch will increased or decreased
@@ -44,7 +48,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Octaves</em>
+                <em style="strong" its:withinText="nested">Octaves</em>
             </title>
             <p>
                 Number of octaves the pitch will increased or decreased
@@ -52,7 +56,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Crispness</em>
+                <em style="strong" its:withinText="nested">Crispness</em>
             </title>
             <list type="none">
                 <item>
@@ -85,21 +89,21 @@
         <list>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Pitch_shift">
+                    <link href="https://en.wikipedia.org/wiki/Pitch_shift" its:translate="no">
                         https://en.wikipedia.org/wiki/Pitch_shift
                     </link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://breakfastquay.com/rubberband/">
+                    <link href="https://breakfastquay.com/rubberband/" its:translate="no">
                         https://breakfastquay.com/rubberband/
                     </link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://breakfastquay.com/rubberband/usage.txt">
+                    <link href="https://breakfastquay.com/rubberband/usage.txt" its:translate="no">
                         https://breakfastquay.com/rubberband/usage.txt
                     </link>
                 </p>

@@ -92,6 +92,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     builder->get_widget("blocksize_in", blocksize_in);
     builder->get_widget("blocksize_out", blocksize_out);
     builder->get_widget("headerbar", headerbar);
+    builder->get_widget("help_button", help_button);
 
     get_object(builder, "buffer_in", buffer_in);
     get_object(builder, "buffer_out", buffer_out);
@@ -217,6 +218,11 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
             update_headerbar_subtitle(1);
         }
     });
+
+    // help button
+
+    help_button->signal_clicked().connect(
+        [=]() { app->activate_action("help"); });
 
     /*sink inputs interface*/
 
@@ -583,10 +589,10 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 
         current_dev_rate << std::fixed << sink->rate / 1000.0f << "kHz";
 
-        std::string title = "💻 ⟶ " + app->pm->apps_sink_info->format + "," +
+        std::string title = "♫ ⟶ " + app->pm->apps_sink_info->format + "," +
                             null_sink_rate.str() + " ⟶ F32LE," +
                             null_sink_rate.str() + " ⟶ " + sink->format + "," +
-                            current_dev_rate.str() + " ⟶ 🔊";
+                            current_dev_rate.str() + " ⟶ 🔈";
 
         headerbar->set_subtitle(title);
     } else {  // soe
@@ -602,7 +608,7 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
                             current_dev_rate.str() + " ⟶ F32LE," +
                             null_sink_rate.str() + " ⟶ " +
                             app->pm->mic_sink_info->format + "," +
-                            null_sink_rate.str() + " ⟶ 💻";
+                            null_sink_rate.str() + " ⟶ ♫";
 
         headerbar->set_subtitle(title);
     }

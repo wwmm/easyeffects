@@ -1,4 +1,8 @@
-<page xmlns="http://projectmallard.org/1.0/" type="guide" id="filter">
+<page
+    xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
+    type="guide"
+    id="filter">
     <info>
         <link type="guide" xref="index#plugins"/>
     </info>
@@ -9,12 +13,12 @@
     </p>
     <p>
         PulseEffects uses the filter plugin from
-        <link href="https://calf-studio-gear.org">Calf Studio</link>. It can be used to remove defined parts of a frequency spectrum.
+        <link href="https://calf-studio-gear.org" its:translate="no">Calf Studio</link>. It can be used to remove defined parts of a frequency spectrum.
     </p>
     <terms>
         <item>
             <title>
-                <em style="strong">Frequency</em>
+                <em style="strong" its:withinText="nested">Frequency</em>
             </title>
             <p>
                 The center or cut-off frequency of the filter
@@ -22,7 +26,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Resonance</em>
+                <em style="strong" its:withinText="nested">Resonance</em>
             </title>
             <p>
                 Add an accentuation to the center frequency. When used on a bandpass the
@@ -32,7 +36,7 @@
         </item>
         <item>
             <title>
-                <em style="strong">Inertia</em>
+                <em style="strong" its:withinText="nested">Inertia</em>
             </title>
             <p>
                 Smooths jumps between frequencies.
@@ -44,14 +48,14 @@
         <list>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Audio_filter">
+                    <link href="https://en.wikipedia.org/wiki/Audio_filter" its:translate="no">
                         https://en.wikipedia.org/wiki/Audio_filter
                     </link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://calf-studio-gear.org/doc/Filter.html">
+                    <link href="https://calf-studio-gear.org/doc/Filter.html" its:translate="no">
                         https://calf-studio-gear.org/doc/Filter.html
                     </link>
                 </p>
