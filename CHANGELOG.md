@@ -1,10 +1,12 @@
 # Changelog
 
 ## [Unreleased]
+
+## [4.2.0]
 ### Added
 - We finally have plugins documentation and a few basic explanations about some
 sections of the user interface. They can be accessed by clicking in the new help
-button next o the setting menu or by clicking the F1 key.
+button next to the settings menu button or by clicking the F1 key.
 - The interface shows a warning when the plugin input is saturated
 (you really do not want this to happen). The check mark next to the plugin label
 is temporarily switched to an exclamation mark while the input is saturated.
@@ -12,6 +14,9 @@ is temporarily switched to an exclamation mark while the input is saturated.
 ### Removed
 - Removed the stereo enhancer. It is a little buggy and most if not all of what
 it does can be accomplished with the stereo tools.
+
+### Note for Packagers
+- itstool is now a build time dependency.
 
 ## [4.1.9]
 ### Added
