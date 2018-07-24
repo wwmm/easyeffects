@@ -12,8 +12,8 @@
         ranges.
     </p>
     <p>
-        PulseEffects uses the filter plugin from
-        <link href="https://calf-studio-gear.org" its:translate="no">Calf Studio</link>. It can be used to remove defined parts of a frequency spectrum.
+        PulseEffects uses the filter from Calf Studio. It can be used to remove defined
+        parts of a frequency spectrum.
     </p>
     <terms>
         <item>
@@ -21,7 +21,7 @@
                 <em style="strong" its:withinText="nested">Frequency</em>
             </title>
             <p>
-                The center or cut-off frequency of the filter
+                The center or cut-off frequency of the filter.
             </p>
         </item>
         <item>
@@ -31,7 +31,7 @@
             <p>
                 Add an accentuation to the center frequency. When used on a bandpass the
                 surrounding frequencies are decreased in level and the band gets more narrow, a
-                bandreject is narrowed down to a thin needle
+                bandreject is narrowed down to a thin needle.
             </p>
         </item>
         <item>
@@ -39,7 +39,7 @@
                 <em style="strong" its:withinText="nested">Inertia</em>
             </title>
             <p>
-                Smooths jumps between frequencies.
+                Smooths the jumps between frequencies.
             </p>
         </item>
     </terms>

@@ -12,6 +12,6 @@
     <p>
         PulseEffects audio processing is composed by 3 main stages. Each of them needs a
         specific audio format and sampling rate. This information is show in the
-        headerbar subtitle
+        headerbar subtitle.
     </p>
 </page>

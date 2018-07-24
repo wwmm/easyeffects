@@ -15,7 +15,7 @@
             <p>
                 Start PulseEffects as a service in the next login. This is done by creating an
                 autostart file at
-                <cmd>~/.config/autostart</cmd>
+                <cmd its:withinText="yes">~/.config/autostart</cmd>
             </p>
         </item>
         <item>
@@ -32,7 +32,7 @@
                 <em style="strong" its:withinText="nested">Use Dark Theme</em>
             </title>
             <p>
-                Use the dark GTK theme variant
+                Use the dark version of the GTK theme.
             </p>
         </item>
         <item>

@@ -8,8 +8,7 @@
     </info>
     <title>Stereo Tools</title>
     <p>
-        PulseEffects uses the stereo tools plugin developed by
-        <link href="https://calf-studio-gear.org" its:translate="no">Calf Studio</link>.
+        PulseEffects uses the stereo tools developed by Calf Studio.
     </p>
     <terms>
         <item>
@@ -17,7 +16,7 @@
                 <em style="strong" its:withinText="nested">Softclip</em>
             </title>
             <p>
-                Do kind of analog distortion instead of harsh digital 0db clipping
+                Do kind of analog distortion instead of harsh digital 0db clipping.
             </p>
         </item>
         <item>
@@ -25,7 +24,7 @@
                 <em style="strong" its:withinText="nested">Balance</em>
             </title>
             <p>
-                Set the balance between both channels
+                Set the balance between both channels.
             </p>
         </item>
         <item>
@@ -39,7 +38,7 @@
                 <em style="strong" its:withinText="nested">Mode</em>
             </title>
             <p>
-                Choose normal stereo behavior (LR - LR) or convert between MS and LR
+                Choose normal stereo behavior (LR - LR) or convert between MS and LR.
             </p>
         </item>
         <item>
@@ -47,7 +46,7 @@
                 <em style="strong" its:withinText="nested">Side Level</em>
             </title>
             <p>
-                The level of the side signal
+                The level of the side signal.
             </p>
         </item>
         <item>
@@ -55,7 +54,7 @@
                 <em style="strong" its:withinText="nested">Side Balance</em>
             </title>
             <p>
-                The balance of the side signal
+                The balance of the side signal.
             </p>
         </item>
         <item>
@@ -80,7 +79,8 @@
                 <em style="strong" its:withinText="nested">Stereo Base</em>
             </title>
             <p>
-                Set the stereo base of your material seamless between Mono and inversed Channels
+                Set the stereo base of your material seamless between Mono and inverted
+                Channels.
             </p>
         </item>
         <item>
@@ -88,7 +88,7 @@
                 <em style="strong" its:withinText="nested">Stereo Phase</em>
             </title>
             <p>
-                Set the stereo phase of your material
+                Set the stereo phase of your material.
             </p>
         </item>
     </terms>

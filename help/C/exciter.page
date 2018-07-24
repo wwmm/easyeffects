@@ -13,8 +13,7 @@
         addition of subtle harmonic distortion.
     </p>
     <p>
-        PulseEffects uses the exciter plugin developed by
-        <link href="https://calf-studio-gear.org" its:translate="no">Calf Studio</link>.
+        PulseEffects uses the exciter developed by Calf Studio.
     </p>
     <terms>
         <item>
@@ -22,7 +21,7 @@
                 <em style="strong" its:withinText="nested">Amount</em>
             </title>
             <p>
-                The amount of harmonics added to the original signal
+                Amount of harmonics added to the original signal.
             </p>
         </item>
         <item>
@@ -30,7 +29,7 @@
                 <em style="strong" its:withinText="nested">Harmonics</em>
             </title>
             <p>
-                The amount of newly created harmonics
+                Amount of newly created harmonics.
             </p>
         </item>
         <item>
@@ -38,7 +37,7 @@
                 <em style="strong" its:withinText="nested">Scope</em>
             </title>
             <p>
-                The frequency harmonics are produced above
+                The frequency harmonics are produced above.
             </p>
         </item>
         <item>
@@ -46,7 +45,7 @@
                 <em style="strong" its:withinText="nested">Ceiling(button)</em>
             </title>
             <p>
-                Constrain the excitement on the upper end
+                Constrain the excitement on the upper end.
             </p>
         </item>
         <item>
@@ -54,7 +53,7 @@
                 <em style="strong" its:withinText="nested">Ceiling(value)</em>
             </title>
             <p>
-                The frequency no harmonics are produced above
+                The frequency no harmonics are produced above.
             </p>
         </item>
         <item>
@@ -62,7 +61,7 @@
                 <em style="strong" its:withinText="nested">Blend Harmonics</em>
             </title>
             <p>
-                The "colour" (or octave) of the harmonics
+                The "colour" (or octave) of the harmonics.
             </p>
         </item>
         <item>
@@ -70,7 +69,7 @@
                 <em style="strong" its:withinText="nested">Listen</em>
             </title>
             <p>
-                Mute the original signal and listen to the harmonics exclusively
+                Mute the original signal and listen to the harmonics exclusively.
             </p>
         </item>
     </terms>

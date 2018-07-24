@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-    <schema id="com.github.wwmm.pulseeffects.sinkinputs" path="/com/github/wwmm/pulseeffects/sinkinputs/">
+    <schema
+        id="com.github.wwmm.pulseeffects.sinkinputs"
+        path="/com/github/wwmm/pulseeffects/sinkinputs/">
         <key name="plugins" type="as">
             <default>
-              ["limiter","gate","multiband_gate","compressor",
-               "multiband_compressor","convolver","bass_enhancer","exciter",
-               "crystalizer","stereo_enhancer","stereo_tools","reverb",
-               "equalizer","deesser","crossfeed","loudness","maximizer",
-               "filter"]
+                ["limiter","gate","multiband_gate","compressor",
+                "multiband_compressor","convolver","bass_enhancer","exciter",
+                "crystalizer","stereo_tools","reverb","equalizer","deesser",
+                "crossfeed","loudness","maximizer","filter"]
             </default>
         </key>
     </schema>

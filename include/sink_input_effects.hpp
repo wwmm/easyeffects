@@ -19,7 +19,6 @@
 #include "pipeline_base.hpp"
 #include "pulse_manager.hpp"
 #include "reverb.hpp"
-#include "stereo_enhancer.hpp"
 #include "stereo_tools.hpp"
 
 class SinkInputEffects : public PipelineBase {
@@ -41,7 +40,6 @@ class SinkInputEffects : public PipelineBase {
     std::unique_ptr<Reverb> reverb;
     std::unique_ptr<BassEnhancer> bass_enhancer;
     std::unique_ptr<Exciter> exciter;
-    std::unique_ptr<StereoEnhancer> stereo_enhancer;
     std::unique_ptr<Crossfeed> crossfeed;
     std::unique_ptr<Maximizer> maximizer;
     std::unique_ptr<MultibandCompressor> multiband_compressor;

@@ -13,10 +13,8 @@
         exceed this threshold.
     </p>
     <p>
-        PulseEffects uses the limiter plugin developed by
-        <link href="https://calf-studio-gear.org" its:translate="no">Calf Studio</link>.
-        We only attached to it a routine to automatically set its input gain. This is
-        what we call auto volume.
+        PulseEffects uses the limiter developed by Calf Studio. We only attached to it a
+        routine to automatically set its input gain. This is what we call auto volume.
     </p>
     <section>
         <title>Limiter</title>
@@ -26,7 +24,7 @@
                     <em style="strong" its:withinText="nested">Input Gain</em>
                 </title>
                 <p>
-                    Raise audio volume before it is sent ot the compression stage
+                    Raises audio volume before it is sent ot the compression stage.
                 </p>
             </item>
             <item>
@@ -34,7 +32,7 @@
                     <em style="strong" its:withinText="nested">Limit</em>
                 </title>
                 <p>
-                    No signal above this level will pass through the limiter
+                    No signal above this level will pass through the limiter.
                 </p>
             </item>
             <item>
@@ -43,7 +41,7 @@
                 </title>
                 <p>
                     The Limiter will reach its attenuation level in this amount of time (output will
-                    be delayed two times this time)
+                    be delayed two times this time).
                 </p>
             </item>
             <item>
@@ -51,7 +49,7 @@
                     <em style="strong" its:withinText="nested">Release</em>
                 </title>
                 <p>
-                    Stop the attenuation after this amount of milliseconds
+                    Stop the attenuation after this amount of milliseconds.
                 </p>
             </item>
             <item>
@@ -69,7 +67,7 @@
                 </title>
                 <p>
                     When gain reduction is always needed ASC takes care of releasing to an average
-                    reduction level rather than reaching a reduction of 0 in the release time
+                    reduction level rather than reaching a reduction of 0 in the release time.
                 </p>
             </item>
             <item>
@@ -78,7 +76,7 @@
                 </title>
                 <p>
                     Select how much the release time is affected by ASC, 0 means nearly no changes
-                    in release time while 1 produces higher release times
+                    in release time while 1 produces higher release times.
                 </p>
             </item>
         </terms>

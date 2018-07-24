@@ -21,7 +21,7 @@
                 <em style="strong" its:withinText="nested">Points</em>
             </title>
             <p>
-                Number of points displayed
+                Number of points displayed.
             </p>
         </item>
         <item>
@@ -29,7 +29,7 @@
                 <em style="strong" its:withinText="nested">Height</em>
             </title>
             <p>
-                Spectrum height
+                Spectrum height.
             </p>
         </item>
         <item>
@@ -37,7 +37,7 @@
                 <em style="strong" its:withinText="nested">Use Custom Color</em>
             </title>
             <p>
-                Use a user defined color or the GTK theme color
+                Use a user defined color or the GTK theme color.
             </p>
         </item>
         <item>

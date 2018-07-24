@@ -8,13 +8,10 @@
     </info>
     <title>Loudness</title>
     <p>
-        PulseEffects uses the loudness plugin from
-        <link
-            href="https://git.drobilla.net/cgit.cgi/mda.lv2.git/about/"
-            its:translate="no">MDA.LV2</link>.
-        The ear is less sensitive to low frequencies when listening at low volume. This
-        plug-in is based on the Stevens-Davis equal loudness contours and allows the
-        bass level to be adjusted to simulate or correct for this effect.
+        PulseEffects uses the loudness from MDA.LV2. The ear is less sensitive to low
+        frequencies when listening at low volume. This plug-in is based on the
+        Stevens-Davis equal loudness contours and allows the bass level to be adjusted
+        to simulate or correct for this effect.
     </p>
     <terms>
         <item>
@@ -22,7 +19,7 @@
                 <em style="strong" its:withinText="nested">Loudness</em>
             </title>
             <p>
-                Source level relative to listening level (based on a 100 dB SPL maximum level)
+                Source level relative to listening level (based on a 100 dB SPL maximum level).
             </p>
         </item>
         <item>
@@ -39,7 +36,7 @@
             </title>
             <p>
                 Automatically adjusts Output to maintain a consistent tonal balance at all
-                levels
+                levels.
             </p>
         </item>
     </terms>

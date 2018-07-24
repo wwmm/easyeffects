@@ -265,7 +265,7 @@ void ConvolverUi::on_import_irs_clicked() {
     gint res;
 
     auto dialog = gtk_file_chooser_native_new(
-        _("Import Impulse Response"), (GtkWindow*)this->get_toplevel()->gobj(),
+        _("Import Impulse File"), (GtkWindow*)this->get_toplevel()->gobj(),
         GTK_FILE_CHOOSER_ACTION_OPEN, _("Open"), _("Cancel"));
 
     auto filter = gtk_file_filter_new();

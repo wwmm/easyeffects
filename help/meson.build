@@ -1,3 +1,9 @@
+itstool = find_program('itstool', required: true)
+
+if not itstool.found()
+  error('itstool not found.')
+endif
+
 help_pages = [
   'bassenhancer.page',
   'compressor.page',
@@ -11,7 +17,6 @@ help_pages = [
   'multibandcompressor.page',
   'multibandgate.page',
   'reverb.page',
-  'stereoenhancer.page',
   'stereotools.page',
   'maximizer.page',
   'crossfeed.page',
@@ -29,7 +34,8 @@ help_pages = [
   'enableapp.page',
   'effectsorder.page',
   'userpresets.page',
-  'advancedinfo.page'
+  'advancedinfo.page',
+  'saturated.page'
 ]
 
 help_media = [
@@ -37,7 +43,8 @@ help_media = [
   'figures/enableapp.png',
   'figures/settingsmenu.png',
   'figures/userpresets.png',
-  'figures/advancedinfo.png'
+  'figures/advancedinfo.png',
+  'figures/saturated.png'
 ]
 
 gnome_mod.yelp(meson.project_name(),

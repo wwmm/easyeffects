@@ -8,13 +8,10 @@
     </info>
     <title>Crossfeed</title>
     <p>
-        PulseEffects uses the crossfeed plugin from
-        <link
-            href="https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-bad/html/gst-plugins-bad-plugins-bs2b.html"
-            its:translate="no">GStreamer</link>.
-        This plugin is based on the bs2b library and can be used to improve headphone
-        listening of stereo audio records. It does so by mixing the left and right
-        channel in a way that simulates a stereo speaker setup while using headphones.
+        PulseEffects uses the crossfeed from GStreamer. This plugin is based on the bs2b
+        library and can be used to improve headphone listening of stereo audio records.
+        It does so by mixing the left and right channel in a way that simulates a stereo
+        speaker setup while using headphones.
     </p>
     <terms>
         <item>
@@ -22,7 +19,7 @@
                 <em style="strong" its:withinText="nested">Cutoff</em>
             </title>
             <p>
-                Low-pass filter cut frequency
+                Low-pass filter cutoff frequency.
             </p>
         </item>
         <item>
@@ -30,7 +27,7 @@
                 <em style="strong" its:withinText="nested">Feed</em>
             </title>
             <p>
-                The amount of signal from a channel that is sent to the other.
+                Amount of signal from a channel that is sent to the other.
             </p>
         </item>
     </terms>

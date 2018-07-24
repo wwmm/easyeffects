@@ -25,8 +25,6 @@ SinkInputEffectsUi::SinkInputEffectsUi(
         "/com/github/wwmm/pulseeffects/ui/bass_enhancer.glade");
     auto b_exciter = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/ui/exciter.glade");
-    auto b_stereo_enhancer = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/ui/stereo_enhancer.glade");
     auto b_crossfeed = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/ui/crossfeed.glade");
     auto b_maximizer = Gtk::Builder::create_from_resource(
@@ -69,9 +67,6 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     b_exciter->get_widget_derived(
         "widgets_grid", exciter_ui,
         "com.github.wwmm.pulseeffects.sinkinputs.exciter");
-    b_stereo_enhancer->get_widget_derived(
-        "widgets_grid", stereo_enhancer_ui,
-        "com.github.wwmm.pulseeffects.sinkinputs.stereoenhancer");
     b_crossfeed->get_widget_derived(
         "widgets_grid", crossfeed_ui,
         "com.github.wwmm.pulseeffects.sinkinputs.crossfeed");
@@ -109,7 +104,6 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     stack->add(*reverb_ui, reverb_ui->name);
     stack->add(*bass_enhancer_ui, bass_enhancer_ui->name);
     stack->add(*exciter_ui, exciter_ui->name);
-    stack->add(*stereo_enhancer_ui, stereo_enhancer_ui->name);
     stack->add(*crossfeed_ui, crossfeed_ui->name);
     stack->add(*maximizer_ui, maximizer_ui->name);
     stack->add(*multiband_compressor_ui, multiband_compressor_ui->name);
@@ -130,7 +124,6 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     add_to_listbox(reverb_ui);
     add_to_listbox(bass_enhancer_ui);
     add_to_listbox(exciter_ui);
-    add_to_listbox(stereo_enhancer_ui);
     add_to_listbox(crossfeed_ui);
     add_to_listbox(maximizer_ui);
     add_to_listbox(multiband_compressor_ui);
@@ -207,18 +200,6 @@ void SinkInputEffectsUi::level_meters_connections() {
         sigc::mem_fun(*exciter_ui, &ExciterUi::on_new_output_level_db)));
     connections.push_back(sie->exciter->harmonics.connect(
         sigc::mem_fun(*exciter_ui, &ExciterUi::on_new_harmonics_level)));
-
-    // stereo_enhancer level meters connections
-
-    connections.push_back(
-        sie->stereo_enhancer->input_level.connect(sigc::mem_fun(
-            *stereo_enhancer_ui, &StereoEnhancerUi::on_new_input_level)));
-    connections.push_back(
-        sie->stereo_enhancer->output_level.connect(sigc::mem_fun(
-            *stereo_enhancer_ui, &StereoEnhancerUi::on_new_output_level)));
-    connections.push_back(
-        sie->stereo_enhancer->side_level.connect(sigc::mem_fun(
-            *stereo_enhancer_ui, &StereoEnhancerUi::on_new_side_level)));
 
     // crossfeed level meters connections
 
@@ -416,13 +397,6 @@ void SinkInputEffectsUi::up_down_connections() {
     connections.push_back(exciter_ui->plugin_down->signal_clicked().connect(
         [=]() { on_down(exciter_ui); }));
 
-    connections.push_back(
-        stereo_enhancer_ui->plugin_up->signal_clicked().connect(
-            [=]() { on_up(stereo_enhancer_ui); }));
-    connections.push_back(
-        stereo_enhancer_ui->plugin_down->signal_clicked().connect(
-            [=]() { on_down(stereo_enhancer_ui); }));
-
     connections.push_back(crossfeed_ui->plugin_up->signal_clicked().connect(
         [=]() { on_up(crossfeed_ui); }));
     connections.push_back(crossfeed_ui->plugin_down->signal_clicked().connect(
@@ -489,7 +463,6 @@ void SinkInputEffectsUi::reset() {
     reverb_ui->reset();
     bass_enhancer_ui->reset();
     exciter_ui->reset();
-    stereo_enhancer_ui->reset();
     crossfeed_ui->reset();
     maximizer_ui->reset();
     multiband_compressor_ui->reset();

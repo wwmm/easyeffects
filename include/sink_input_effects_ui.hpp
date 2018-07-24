@@ -19,7 +19,6 @@
 #include "multiband_gate_ui.hpp"
 #include "reverb_ui.hpp"
 #include "sink_input_effects.hpp"
-#include "stereo_enhancer_ui.hpp"
 #include "stereo_tools_ui.hpp"
 
 class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
@@ -46,7 +45,6 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
     ReverbUi* reverb_ui;
     BassEnhancerUi* bass_enhancer_ui;
     ExciterUi* exciter_ui;
-    StereoEnhancerUi* stereo_enhancer_ui;
     CrossfeedUi* crossfeed_ui;
     MaximizerUi* maximizer_ui;
     MultibandCompressorUi* multiband_compressor_ui;

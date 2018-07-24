@@ -11,7 +11,7 @@
     <media type="image" src="figures/userpresets.png" its:translate="no"/>
     <p>
         You can save your own presets. Just add write a name and click on the add
-        button. Presets can be imported clicking on the button nto the left.
+        button. Presets can be imported clicking on the button to the left.
     </p>
     <p>
         When you save a preset the current configuration of all plugins is saved to its

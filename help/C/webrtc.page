@@ -8,15 +8,12 @@
     </info>
     <title>Webrtc</title>
     <p>
-        PulseEffects uses the webrtc plugin from
-        <link
-            href="https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-bad/html/gst-plugins-bad-plugins-webrtcdsp.html"
-            its:translate="no">GStreamer</link>.
-        This plugin offers a voice enhancement filter based on WebRTC Audio Processing
-        library. This library provides a whide variety of enhancement algorithms. This
-        element tries to enable as much as possible. The currently enabled enhancements
-        are High Pass Filter, Echo Canceller, Noise Suppression, Automatic Gain Control,
-        and some extended filters.
+        PulseEffects uses the webrtc from GStreamer. This plugin offers a voice
+        enhancement filter based on WebRTC Audio Processing library. This library
+        provides a whide variety of enhancement algorithms. This element tries to enable
+        as much as possible. The currently enabled enhancements are High Pass Filter,
+        Echo Canceller, Noise Suppression, Automatic Gain Control, and some extended
+        filters.
     </p>
     <section>
         <title>Echo Canceller</title>
@@ -26,7 +23,7 @@
                     <em style="strong" its:withinText="nested">Extended Filter</em>
                 </title>
                 <p>
-                    Enabled or disables the extended filter
+                    Enabled or disables the extended filter.
                 </p>
             </item>
             <item>
@@ -34,7 +31,7 @@
                     <em style="strong" its:withinText="nested">High Pass Filter</em>
                 </title>
                 <p>
-                    Enables or disables the high pass filter
+                    Enables or disables the high pass filter.
                 </p>
             </item>
             <item>
@@ -42,7 +39,7 @@
                     <em style="strong" its:withinText="nested">Delay Agnostic</em>
                 </title>
                 <p>
-                    Enables or disables the delay agnostic mode
+                    Enables or disables the delay agnostic mode.
                 </p>
             </item>
             <item>
@@ -101,8 +98,8 @@
                     <em style="strong" its:withinText="nested">Target Level</em>
                 </title>
                 <p>
-                    Sets the target peak |level| (or envelope) of the gain control in dBFS (decibels
-                    from digital full-scale).
+                    Sets the target peak level of the gain control in dBFS (decibels from digital
+                    full-scale).
                 </p>
             </item>
             <item>
@@ -110,7 +107,7 @@
                     <em style="strong" its:withinText="nested">Maximum Gain</em>
                 </title>
                 <p>
-                    Sets the maximum |gain| the digital compression stage may apply, in dB.
+                    Sets the maximum gain the digital compression stage may apply.
                 </p>
             </item>
         </terms>
@@ -133,7 +130,7 @@
                     <em style="strong" its:withinText="nested">Frame Size</em>
                 </title>
                 <p>
-                    Sets the |size| of the frames in ms on which the VAD will operate. Larger frames
+                    Sets the size of the frames in ms on which the VAD will operate. Larger frames
                     will improve detection accuracy, but reduce the frequency of updates.
                 </p>
             </item>

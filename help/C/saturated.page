@@ -1,0 +1,17 @@
+<page
+    xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
+    type="guide"
+    id="saturated"
+    style="2column">
+    <info>
+        <link type="guide" xref="index#ui"/>
+    </info>
+    <title>Saturation Warning</title>
+    <media type="image" src="figures/saturated.png" its:translate="no"/>
+    <p>
+        If the audio signal arriving at the plugin input is too high very unpleasent
+        noises will be produced. In case this happens the warning in the image above is
+        shown so that the user can reduce the audio level.
+    </p>
+</page>
