@@ -198,8 +198,6 @@ static gboolean gst_peebur_setup(GstAudioFilter* filter,
 
     gst_peebur_recalc_interval_frames(peebur);
 
-    std::cout << peebur->bpf << std::endl;
-
     return true;
 }
 
