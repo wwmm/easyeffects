@@ -14,6 +14,7 @@
 
 #include <gst/audio/gstaudiofilter.h>
 #include <gst/gst.h>
+#include <iostream>
 #include "gstpeebur.hpp"
 
 GST_DEBUG_CATEGORY_STATIC(gst_peebur_debug_category);
@@ -130,6 +131,7 @@ static void gst_peebur_init(GstPeebur* peebur) {
     peebur->bpf = 0;
     peebur->post_messages = true;
     peebur->interval = GST_SECOND / 10;
+    peebur->adapter = gst_adapter_new();
 
     gst_base_transform_set_in_place(GST_BASE_TRANSFORM(peebur), true);
 }
@@ -184,6 +186,8 @@ static gboolean gst_peebur_setup(GstAudioFilter* filter,
 
     peebur->bpf = GST_AUDIO_INFO_BPF(info);
 
+    peebur->ebur_state = ebur128_init(2, info->rate, EBUR128_MODE_I);
+
     return true;
 }
 
@@ -193,6 +197,9 @@ static GstFlowReturn gst_peebur_transform_ip(GstBaseTransform* trans,
 
     GST_DEBUG_OBJECT(peebur, "transform");
 
+    // gst_buffer_ref(buffer);
+    // gst_adapter_push(peebur->adapter, buffer);
+
     GstMapInfo map;
 
     gst_buffer_map(buffer, &map, GST_MAP_READWRITE);
@@ -201,9 +208,15 @@ static GstFlowReturn gst_peebur_transform_ip(GstBaseTransform* trans,
 
     float* data = (float*)map.data;
 
-    if (!peebur->ready) {
-        peebur->ready = true;
-    }
+    ebur128_add_frames_float(peebur->ebur_state, data, num_samples);
+
+    ebur128_loudness_global(peebur->ebur_state, &peebur->loudness);
+
+    std::cout << peebur->loudness << std::endl;
+
+    // if (!peebur->ready) {
+    //     peebur->ready = true;
+    // }
 
     gst_buffer_unmap(buffer, &map);
 
@@ -214,6 +227,12 @@ static gboolean gst_peebur_stop(GstBaseTransform* base) {
     GstPeebur* peebur = GST_PEEBUR(base);
 
     peebur->ready = false;
+
+    ebur128_destroy(&peebur->ebur_state);
+    free(peebur->ebur_state);
+
+    gst_adapter_clear(peebur->adapter);
+    g_object_unref(peebur->adapter);
 
     return true;
 }

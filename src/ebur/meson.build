@@ -23,7 +23,7 @@ plugin_deps = [
 plugins_install_dir = '@0@/gstreamer-1.0'.format(get_option('libdir'))
 
 library(
-	'gstpecrystalizer',
+	'gstpeebur',
 	plugin_sources,
 	include_directories : include_dir,
 	dependencies : plugin_deps,

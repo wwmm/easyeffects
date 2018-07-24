@@ -1,6 +1,7 @@
 #ifndef _GST_PEEBUR_H_
 #define _GST_PEEBUR_H_
 
+#include <ebur128.h>
 #include <gst/audio/gstaudiofilter.h>
 
 G_BEGIN_DECLS
@@ -27,8 +28,11 @@ struct _GstPeebur {
 
     /* < private > */
 
+    GstAdapter* adapter;
     bool ready;
     int bpf;  // bytes per frame : channels * bps
+    ebur128_state* ebur_state;
+    double loudness;
 };
 
 struct _GstPeeburClass {
