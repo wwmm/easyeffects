@@ -257,7 +257,6 @@ msgstr "Deesser"
 
 #. (itstool) path: page/p
 #: C/deesser.page:10
-#, fuzzy
 msgid ""
 "PulseEffects uses the deesser developed by <_:link-1/>. A deesser is used to "
 "dynamically reduce high frequencies. The standard field of use is the "
@@ -430,9 +429,8 @@ msgstr "Frequência"
 
 #. (itstool) path: item/p
 #: C/filter.page:23
-#, fuzzy
 msgid "The center or cut-off frequency of the filter."
-msgstr "A frequência central ou de corte do filtro"
+msgstr "A frequência central ou de corte do filtro."
 
 #. (itstool) path: title/em
 #: C/filter.page:29
