@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-23 14:27-0300\n"
+"POT-Creation-Date: 2018-07-24 11:37-0300\n"
 "PO-Revision-Date: 2018-07-18 22:14+0300\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -1229,8 +1229,9 @@ msgid "Calibration Microphone"
 msgstr "Калибровка корректировки микрофона"
 
 #: src/convolver_ui.cpp:268
-msgid "Import Impulse Response"
-msgstr "Импортировать импульсную реакцию"
+#, fuzzy
+msgid "Import"
+msgstr "Импортировать предустановки"
 
 #: src/convolver_ui.cpp:311 src/convolver_ui.cpp:312 src/convolver_ui.cpp:314
 msgid "Failed"
@@ -1240,12 +1241,11 @@ msgstr "Не получилось"
 msgid "Could Not Load The Impulse File"
 msgstr "Не смогли загрузить файл с импульсными реакциями"
 
+#~ msgid "Import Impulse Response"
+#~ msgstr "Импортировать импульсную реакцию"
+
 #~ msgid "Стерео база"
 #~ msgstr "Сетерео база"
-
-#, fuzzy
-#~ msgid "Import File"
-#~ msgstr "Импортировать предустановки"
 
 #, fuzzy
 #~ msgid "Output Device"

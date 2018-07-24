@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-23 14:27-0300\n"
-"PO-Revision-Date: 2018-07-23 14:27-0300\n"
+"POT-Creation-Date: 2018-07-24 11:37-0300\n"
+"PO-Revision-Date: 2018-07-24 11:37-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
@@ -1224,8 +1224,8 @@ msgid "Calibration Microphone"
 msgstr "Microfone de Calibração"
 
 #: src/convolver_ui.cpp:268
-msgid "Import Impulse Response"
-msgstr "Importar Resposta de Impulso"
+msgid "Import"
+msgstr "Importar"
 
 #: src/convolver_ui.cpp:311 src/convolver_ui.cpp:312 src/convolver_ui.cpp:314
 msgid "Failed"
@@ -1235,8 +1235,8 @@ msgstr "Falhou"
 msgid "Could Not Load The Impulse File"
 msgstr "Não Foi Possível Carregar o Arquivo com o Impulso"
 
-#~ msgid "Import File"
-#~ msgstr "Importar Arquivo"
+#~ msgid "Import Impulse Response"
+#~ msgstr "Importar Resposta de Impulso"
 
 #~ msgid "Output Device"
 #~ msgstr "Dispositivo de Saída"
