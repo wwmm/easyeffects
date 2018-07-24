@@ -21,7 +21,7 @@
                 <em style="strong" its:withinText="nested">Frequency</em>
             </title>
             <p>
-                The center or cut-off frequency of the filter
+                The center or cut-off frequency of the filter.
             </p>
         </item>
         <item>
@@ -31,7 +31,7 @@
             <p>
                 Add an accentuation to the center frequency. When used on a bandpass the
                 surrounding frequencies are decreased in level and the band gets more narrow, a
-                bandreject is narrowed down to a thin needle
+                bandreject is narrowed down to a thin needle.
             </p>
         </item>
         <item>

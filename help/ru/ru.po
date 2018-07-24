@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-07-23 22:30-0300\n"
+"POT-Creation-Date: 2018-07-23 22:44-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "MIME-Version: 1.0\n"
@@ -256,7 +256,7 @@ msgstr ""
 #. (itstool) path: page/p
 #: C/deesser.page:10
 msgid ""
-"PulseEffects uses the deesser developed by <_:link-1/>. A Deesser is used to "
+"PulseEffects uses the deesser developed by <_:link-1/>. A deesser is used to "
 "dynamically reduce high frequencies. The standard field of use is the "
 "reduction of \"sssss\" and \"shhhh\" in vocal tracks."
 msgstr ""
@@ -415,7 +415,7 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/filter.page:23
-msgid "The center or cut-off frequency of the filter"
+msgid "The center or cut-off frequency of the filter."
 msgstr ""
 
 #. (itstool) path: title/em
@@ -428,7 +428,7 @@ msgstr ""
 msgid ""
 "Add an accentuation to the center frequency. When used on a bandpass the "
 "surrounding frequencies are decreased in level and the band gets more "
-"narrow, a bandreject is narrowed down to a thin needle"
+"narrow, a bandreject is narrowed down to a thin needle."
 msgstr ""
 
 #. (itstool) path: title/em
