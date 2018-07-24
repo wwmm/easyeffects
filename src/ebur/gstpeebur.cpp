@@ -40,6 +40,8 @@ static GstFlowReturn gst_peebur_transform_ip(GstBaseTransform* trans,
 
 static gboolean gst_peebur_stop(GstBaseTransform* base);
 
+static void gst_peebur_recalc_interval_frames(GstPeebur* peebur);
+
 enum { PROP_0, PROP_POST_MESSAGES, PROP_INTERVAL };
 
 /* pad templates */
@@ -129,6 +131,7 @@ static void gst_peebur_class_init(GstPeeburClass* klass) {
 static void gst_peebur_init(GstPeebur* peebur) {
     peebur->ready = false;
     peebur->bpf = 0;
+    peebur->rate = 0;
     peebur->post_messages = true;
     peebur->interval = GST_SECOND / 10;
     peebur->adapter = gst_adapter_new();
@@ -150,6 +153,11 @@ void gst_peebur_set_property(GObject* object,
             break;
         case PROP_INTERVAL:
             peebur->interval = g_value_get_uint64(value);
+
+            if (peebur->rate > 0) {
+                gst_peebur_recalc_interval_frames(peebur);
+            }
+
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -184,9 +192,13 @@ static gboolean gst_peebur_setup(GstAudioFilter* filter,
 
     GST_DEBUG_OBJECT(peebur, "setup");
 
-    peebur->bpf = GST_AUDIO_INFO_BPF(info);
-
+    peebur->bpf = info->bpf;
+    peebur->rate = info->rate;
     peebur->ebur_state = ebur128_init(2, info->rate, EBUR128_MODE_I);
+
+    gst_peebur_recalc_interval_frames(peebur);
+
+    std::cout << peebur->bpf << std::endl;
 
     return true;
 }
@@ -197,28 +209,24 @@ static GstFlowReturn gst_peebur_transform_ip(GstBaseTransform* trans,
 
     GST_DEBUG_OBJECT(peebur, "transform");
 
-    // gst_buffer_ref(buffer);
-    // gst_adapter_push(peebur->adapter, buffer);
+    gst_buffer_ref(buffer);
+    gst_adapter_push(peebur->adapter, buffer);
 
-    GstMapInfo map;
+    gsize nbytes = peebur->interval_frames * peebur->bpf;
 
-    gst_buffer_map(buffer, &map, GST_MAP_READWRITE);
+    while (gst_adapter_available(peebur->adapter) >= nbytes) {
+        const float* data = (float*)gst_adapter_map(peebur->adapter, nbytes);
 
-    guint num_samples = map.size / peebur->bpf;
+        ebur128_add_frames_float(peebur->ebur_state, data,
+                                 peebur->interval_frames);
 
-    float* data = (float*)map.data;
+        ebur128_loudness_global(peebur->ebur_state, &peebur->loudness);
 
-    ebur128_add_frames_float(peebur->ebur_state, data, num_samples);
+        std::cout << peebur->loudness << std::endl;
 
-    ebur128_loudness_global(peebur->ebur_state, &peebur->loudness);
-
-    std::cout << peebur->loudness << std::endl;
-
-    // if (!peebur->ready) {
-    //     peebur->ready = true;
-    // }
-
-    gst_buffer_unmap(buffer, &map);
+        gst_adapter_unmap(peebur->adapter);
+        gst_adapter_flush(peebur->adapter, nbytes);
+    }
 
     return GST_FLOW_OK;
 }
@@ -235,6 +243,19 @@ static gboolean gst_peebur_stop(GstBaseTransform* base) {
     g_object_unref(peebur->adapter);
 
     return true;
+}
+
+static void gst_peebur_recalc_interval_frames(GstPeebur* peebur) {
+    GstClockTime interval = peebur->interval;
+    guint interval_frames;
+
+    interval_frames = GST_CLOCK_TIME_TO_FRAMES(interval, peebur->rate);
+
+    if (interval_frames == 0) {
+        interval_frames = 1;
+    }
+
+    peebur->interval_frames = interval_frames;
 }
 
 static gboolean plugin_init(GstPlugin* plugin) {

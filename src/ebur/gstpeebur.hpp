@@ -33,6 +33,8 @@ struct _GstPeebur {
     int bpf;  // bytes per frame : channels * bps
     ebur128_state* ebur_state;
     double loudness;
+    int rate;            /*sampling rate*/
+    int interval_frames; /* after how many frame to sent a message */
 };
 
 struct _GstPeeburClass {
