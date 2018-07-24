@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-07-24 01:54-0300\n"
+"POT-Creation-Date: 2018-07-24 13:05-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "MIME-Version: 1.0\n"
@@ -1846,6 +1846,19 @@ msgid ""
 "PulseEffects audio processing is composed by 3 main stages. Each of them "
 "needs a specific audio format and sampling rate. This information is show in "
 "the headerbar subtitle."
+msgstr ""
+
+#. (itstool) path: page/title
+#: C/saturated.page:10
+msgid "Saturation Warning"
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/saturated.page:12
+msgid ""
+"If the audio signal arriving at the plugin input is too high very unpleasent "
+"noises will be produced. In case this happens the warning in the image above "
+"is shown so that the user can reduce the audio level."
 msgstr ""
 
 #, fuzzy

@@ -40,6 +40,8 @@ class PluginUiBase {
     Gtk::Label *input_level_left_label, *input_level_right_label;
     Gtk::Label *output_level_left_label, *output_level_right_label;
 
+    bool input_saturated = false;
+
     void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
                     const std::string& name,
                     Glib::RefPtr<Gtk::Adjustment>& object) {
@@ -58,18 +60,20 @@ class PluginUiBase {
                       const std::array<double, 2>& peak) {
         auto left = peak[0];
         auto right = peak[1];
+        auto left_db = util::linear_to_db(left);
+        auto right_db = util::linear_to_db(right);
 
-        if (left >= -99) {
+        if (left_db >= -99) {
             w_left->set_value(left);
-            w_left_label->set_text(level_to_str(util::linear_to_db(left)));
+            w_left_label->set_text(level_to_str(left_db));
         } else {
             w_left->set_value(0);
             w_left_label->set_text("-99");
         }
 
-        if (right >= -99) {
+        if (right_db >= -99) {
             w_right->set_value(right);
-            w_right_label->set_text(level_to_str(util::linear_to_db(right)));
+            w_right_label->set_text(level_to_str(right_db));
         } else {
             w_right->set_value(0);
             w_right_label->set_text("-99");

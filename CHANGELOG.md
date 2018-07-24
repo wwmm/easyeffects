@@ -5,6 +5,9 @@
 - We finally have plugins documentation and a few basic explanations about some
 sections of the user interface. They can be accessed by clicking in the new help
 button next o the setting menu or by clicking the F1 key.
+- The interface shows a warning when the plugin input is saturated
+(you really do not want this to happen). The check mark next to the plugin label
+is temporarily switched to an exclamation mark while the input is saturated.
 
 ## [4.1.9]
 ### Added
