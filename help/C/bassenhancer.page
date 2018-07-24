@@ -23,7 +23,7 @@
                 <em style="strong" its:withinText="nested">Amount</em>
             </title>
             <p>
-                The amount of harmonics added to the original signal
+                Amount of harmonics added to the original signal.
             </p>
         </item>
         <item>
@@ -31,7 +31,7 @@
                 <em style="strong" its:withinText="nested">Harmonics</em>
             </title>
             <p>
-                The amount of newly created harmonics
+                Amount of newly created harmonics.
             </p>
         </item>
         <item>
@@ -39,7 +39,7 @@
                 <em style="strong" its:withinText="nested">Scope</em>
             </title>
             <p>
-                The frequency harmonics are produced above
+                The frequency harmonics are produced above.
             </p>
         </item>
         <item>
@@ -47,7 +47,7 @@
                 <em style="strong" its:withinText="nested">Floor(button)</em>
             </title>
             <p>
-                Constrain the enhancement on the lower end
+                Constrain the enhancement on the lower end.
             </p>
         </item>
         <item>
@@ -55,7 +55,7 @@
                 <em style="strong" its:withinText="nested">Floor(value)</em>
             </title>
             <p>
-                The frequency no harmonics are produced below
+                The frequency no harmonics are produced below.
             </p>
         </item>
         <item>
@@ -63,7 +63,7 @@
                 <em style="strong" its:withinText="nested">Blend Harmonics</em>
             </title>
             <p>
-                The "colour" (or octave) of the harmonics
+                The "colour" (or octave) of the harmonics.
             </p>
         </item>
         <item>
@@ -71,7 +71,7 @@
                 <em style="strong" its:withinText="nested">Listen</em>
             </title>
             <p>
-                Mute the original signal and listen to the harmonics exclusively
+                Mute the original signal and listen to the harmonics exclusively.
             </p>
         </item>
     </terms>

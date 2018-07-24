@@ -22,7 +22,7 @@
             </title>
             <p>
                 Amount of milliseconds the signal has to rise above the threshold before gain
-                reduction starts
+                reduction starts.
             </p>
         </item>
         <item>
@@ -31,7 +31,7 @@
             </title>
             <p>
                 Amount of milliseconds the signal has to fall below the threshold before the
-                reduction is decreased again
+                reduction is decreased again.
             </p>
         </item>
         <item>
@@ -39,7 +39,7 @@
                 <em style="strong" its:withinText="nested">Reduction</em>
             </title>
             <p>
-                The level of reduction in this strip
+                The level of reduction in this strip.
             </p>
         </item>
         <item>
@@ -47,7 +47,7 @@
                 <em style="strong" its:withinText="nested">Threshold</em>
             </title>
             <p>
-                If a signal rises above this level it will affect the gain reduction
+                If a signal rises above this level it will affect the gain reduction.
             </p>
         </item>
         <item>
@@ -55,8 +55,7 @@
                 <em style="strong" its:withinText="nested">Ratio</em>
             </title>
             <p>
-                Set a ratio about which the signal is reduced. 1:2 means that if the level rises
-                4dB above the threshold, it will be only 2dB above after the reduction.
+                Set the ratio by which the signal will be reduced.
             </p>
         </item>
         <item>
@@ -64,7 +63,7 @@
                 <em style="strong" its:withinText="nested">Knee</em>
             </title>
             <p>
-                Curve the sharp knee around the threshold to enter gain reduction more softly
+                Controls how smooth is the entrance in the gain reduction phase.
             </p>
         </item>
         <item>
@@ -72,7 +71,7 @@
                 <em style="strong" its:withinText="nested">Makeup</em>
             </title>
             <p>
-                Amplify your signal after processing
+                It amplifies your signal after processing.
             </p>
         </item>
         <item>
@@ -80,7 +79,7 @@
                 <em style="strong" its:withinText="nested">Bypass</em>
             </title>
             <p>
-                Don't process anything, just bypass the signal of this strip
+                Don't process anything, just bypass the signal of this strip.
             </p>
         </item>
         <item>
@@ -88,8 +87,8 @@
                 <em style="strong" its:withinText="nested">Detection</em>
             </title>
             <p>
-                Choose if the multibandgate should take the signal peak for detection or an RMS
-                like one (it's mainly smoother)
+                Choose if the multibandgate should take the signal peak for detection or the RMS
+                value (it is smoother).
             </p>
         </item>
         <item>
@@ -97,7 +96,7 @@
                 <em style="strong" its:withinText="nested">Solo</em>
             </title>
             <p>
-                Mute all strips not set to solo
+                Mute all strips not set to solo.
             </p>
         </item>
         <item>
@@ -114,7 +113,7 @@
                 <em style="strong" its:withinText="nested">Split 1/2</em>
             </title>
             <p>
-                Frequency that separates the sub band and the low band
+                Frequency that separates the sub band and the low band.
             </p>
         </item>
         <item>
@@ -122,7 +121,7 @@
                 <em style="strong" its:withinText="nested">Split 2/3</em>
             </title>
             <p>
-                Frequency that separates the low band and the mid band
+                Frequency that separates the low band and the mid band.
             </p>
         </item>
         <item>
@@ -130,7 +129,7 @@
                 <em style="strong" its:withinText="nested">Split 3/4</em>
             </title>
             <p>
-                Frequency that separates the mid band and the high band
+                Frequency that separates the mid band and the high band.
             </p>
         </item>
     </terms>

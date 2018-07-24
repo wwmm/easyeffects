@@ -22,7 +22,7 @@
                 <em style="strong" its:withinText="nested">Loudness</em>
             </title>
             <p>
-                Source level relative to listening level (based on a 100 dB SPL maximum level)
+                Source level relative to listening level (based on a 100 dB SPL maximum level).
             </p>
         </item>
         <item>
@@ -39,7 +39,7 @@
             </title>
             <p>
                 Automatically adjusts Output to maintain a consistent tonal balance at all
-                levels
+                levels.
             </p>
         </item>
     </terms>

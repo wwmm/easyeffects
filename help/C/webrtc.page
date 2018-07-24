@@ -26,7 +26,7 @@
                     <em style="strong" its:withinText="nested">Extended Filter</em>
                 </title>
                 <p>
-                    Enabled or disables the extended filter
+                    Enabled or disables the extended filter.
                 </p>
             </item>
             <item>
@@ -34,7 +34,7 @@
                     <em style="strong" its:withinText="nested">High Pass Filter</em>
                 </title>
                 <p>
-                    Enables or disables the high pass filter
+                    Enables or disables the high pass filter.
                 </p>
             </item>
             <item>
@@ -42,7 +42,7 @@
                     <em style="strong" its:withinText="nested">Delay Agnostic</em>
                 </title>
                 <p>
-                    Enables or disables the delay agnostic mode
+                    Enables or disables the delay agnostic mode.
                 </p>
             </item>
             <item>

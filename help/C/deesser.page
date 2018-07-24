@@ -27,7 +27,7 @@
                 <em style="strong" its:withinText="nested">Threshold</em>
             </title>
             <p>
-                If a signal rises above this level it will affect the gain reduction
+                If a signal rises above this level it will affect the gain reduction.
             </p>
         </item>
         <item>
@@ -35,8 +35,7 @@
                 <em style="strong" its:withinText="nested">Ratio</em>
             </title>
             <p>
-                Set a ratio about which the signal is reduced. 1:2 means that if the level rises
-                4dB above the threshold, it will be only 2dB above after the reduction.
+                Set the ratio by which the signal will be reduced.
             </p>
         </item>
         <item>
@@ -44,7 +43,7 @@
                 <em style="strong" its:withinText="nested">Makeup</em>
             </title>
             <p>
-                Amplify your signal after processing
+                It amplifies your signal after processing.
             </p>
         </item>
         <item>
@@ -53,7 +52,7 @@
             </title>
             <p>
                 The split frequency. All signals above this frequency will affect the gain
-                reduction (and are affected in split mode, too)
+                reduction (and in split mode they are affected by the reduction too).
             </p>
         </item>
         <item>
@@ -62,7 +61,7 @@
             </title>
             <p>
                 It shifts the volume of the higher band. In wideband mode it affects the
-                sidechain, in split mode it also affects the processed high frequencies.
+                sidechain. In split mode it also affects the processed high frequencies.
             </p>
         </item>
         <item>
@@ -79,7 +78,7 @@
                 <em style="strong" its:withinText="nested">Level</em>
             </title>
             <p>
-                Increase or decrease the frequencies around the center bell frequency
+                Increase or decrease the frequencies around the center bell frequency.
             </p>
         </item>
         <item>
@@ -88,7 +87,7 @@
             </title>
             <p>
                 Set the quality of the bell. Higher values will affect a narrower frequency
-                range. Higher values will affect a wider band
+                range. Higher values will affect a wider band.
             </p>
         </item>
         <item>
@@ -96,8 +95,8 @@
                 <em style="strong" its:withinText="nested">Detection</em>
             </title>
             <p>
-                Choose if the deesser should take the signal peak for detection or an RMS like
-                one (it's mainly smoother)
+                Choose if the deesser should take the signal peak for detection or the RMS value
+                (it is smoother).
             </p>
         </item>
         <item>

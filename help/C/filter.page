@@ -39,7 +39,7 @@
                 <em style="strong" its:withinText="nested">Inertia</em>
             </title>
             <p>
-                Smooths jumps between frequencies.
+                Smooths the jumps between frequencies.
             </p>
         </item>
     </terms>

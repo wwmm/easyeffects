@@ -23,7 +23,7 @@
                 <em style="strong" its:withinText="nested">Bands</em>
             </title>
             <p>
-                The number of equalizer bands
+                The number of equalizer bands.
             </p>
         </item>
         <item>
@@ -76,7 +76,7 @@
                 <em style="strong" its:withinText="nested">Width</em>
             </title>
             <p>
-                Bandwidth
+                Bandwidth.
             </p>
         </item>
         <item>
@@ -85,7 +85,7 @@
             </title>
             <p>
                 Quality factor. Calculated as
-                <code>Q = frequency / width</code>
+                <code>Q = frequency / width</code>.
             </p>
         </item>
     </terms>

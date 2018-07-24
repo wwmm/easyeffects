@@ -22,7 +22,7 @@
                 <em style="strong" its:withinText="nested">Cutoff</em>
             </title>
             <p>
-                Low-pass filter cut frequency
+                Low-pass filter cutoff frequency.
             </p>
         </item>
         <item>
@@ -30,7 +30,7 @@
                 <em style="strong" its:withinText="nested">Feed</em>
             </title>
             <p>
-                The amount of signal from a channel that is sent to the other.
+                Amount of signal from a channel that is sent to the other.
             </p>
         </item>
     </terms>

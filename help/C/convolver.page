@@ -18,7 +18,7 @@
                 <em style="strong" its:withinText="nested">Import Impulse</em>
             </title>
             <p>
-                Import an impulse response file to PulseEffects configuration directory
+                Import an impulse response file to PulseEffects configuration directory.
             </p>
         </item>
         <item>
