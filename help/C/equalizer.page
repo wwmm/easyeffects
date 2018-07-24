@@ -85,7 +85,7 @@
             </title>
             <p>
                 Quality factor. Calculated as
-                <code>Q = frequency / width</code>.
+                <code its:withinText="nested">Q = frequency / width</code>.
             </p>
         </item>
     </terms>

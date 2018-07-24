@@ -87,7 +87,7 @@
             </title>
             <p>
                 Set the quality of the bell. Higher values will affect a narrower frequency
-                range. Higher values will affect a wider band.
+                range. Lower values will affect a wider band.
             </p>
         </item>
         <item>

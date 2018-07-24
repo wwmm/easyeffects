@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-07-23 22:55-0300\n"
+"POT-Creation-Date: 2018-07-24 01:54-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -354,7 +354,7 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/deesser.page:88
-msgid "Set the quality of the bell. Higher values will affect a narrower frequency range. Higher values will affect a wider band."
+msgid "Set the quality of the bell. Higher values will affect a narrower frequency range. Lower values will affect a wider band."
 msgstr ""
 
 #. (itstool) path: item/p
@@ -490,7 +490,7 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gate.page:91
-msgid "The level of gain reduction when the signal is below the threshold"
+msgid "The level of gain reduction when the signal is below the threshold."
 msgstr ""
 
 #. (itstool) path: page/title
@@ -547,7 +547,7 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/limiter.page:28
-msgid "Raise audio volume before it is sent ot the compression stage."
+msgid "Raises audio volume before it is sent ot the compression stage."
 msgstr ""
 
 #. (itstool) path: title/em
@@ -1024,7 +1024,7 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/stereotools.page:82
-msgid "Set the stereo base of your material seamless between Mono and inversed Channels."
+msgid "Set the stereo base of your material seamless between Mono and inverted Channels."
 msgstr ""
 
 #. (itstool) path: title/em
@@ -1177,9 +1177,16 @@ msgstr ""
 msgid "Q"
 msgstr ""
 
+#. (itstool) path: p/code
+#: C/equalizer.page:88
+#, no-wrap
+msgid ""
+"Q = frequency / width"
+msgstr ""
+
 #. (itstool) path: item/p
 #: C/equalizer.page:86
-msgid "Quality factor. Calculated as <code>Q = frequency / width</code>."
+msgid "Quality factor. Calculated as <_:code-1/>."
 msgstr ""
 
 #. (itstool) path: page/title
@@ -1355,7 +1362,7 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/webrtc.page:103
-msgid "Sets the target peak |level| (or envelope) of the gain control in dBFS (decibels from digital full-scale)."
+msgid "Sets the target peak level of the gain control in dBFS (decibels from digital full-scale)."
 msgstr ""
 
 #. (itstool) path: title/em
@@ -1365,7 +1372,7 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/webrtc.page:112
-msgid "Sets the maximum |gain| the digital compression stage may apply, in dB."
+msgid "Sets the maximum gain the digital compression stage may apply."
 msgstr ""
 
 #. (itstool) path: section/title
@@ -1390,7 +1397,7 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/webrtc.page:135
-msgid "Sets the |size| of the frames in ms on which the VAD will operate. Larger frames will improve detection accuracy, but reduce the frequency of updates."
+msgid "Sets the size of the frames in ms on which the VAD will operate. Larger frames will improve detection accuracy, but reduce the frequency of updates."
 msgstr ""
 
 #. (itstool) path: page/title
@@ -1400,7 +1407,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/crystalizer.page:10
-msgid "PulseEffects crystalizer is a port of the <_:link-1/> code to the GStreamer framework. This plugin can be used to add <link href=\"https://en.wikipedia.org/wiki/Dynamic_range\">dynamic range</link> to songs that were overly compressed"
+msgid "PulseEffects crystalizer is a port of the <_:link-1/> code to the GStreamer framework. This plugin can be used to add <_:link-2/> to songs that were overly compressed"
 msgstr ""
 
 #. (itstool) path: title/em
@@ -1472,7 +1479,7 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/general.page:15
-msgid "Start PulseEffects as a service in the next login. This is done by creating an autostart file at <cmd>~/.config/autostart</cmd>"
+msgid "Start PulseEffects as a service in the next login. This is done by creating an autostart file at <_:cmd-1/>"
 msgstr ""
 
 #. (itstool) path: title/em
@@ -1584,7 +1591,7 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/pulseaudio.page:28
-msgid "Gstreamer's pulsesrc buffer size. It affects latency"
+msgid "Pulsesrc plugin buffer size. It affects latency"
 msgstr ""
 
 #. (itstool) path: title/em
@@ -1594,7 +1601,7 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/pulseaudio.page:36
-msgid "Gstreamer's pulsesrc latency value."
+msgid "Pulsesrc plugin latency value."
 msgstr ""
 
 #. (itstool) path: title/em
@@ -1604,7 +1611,7 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/pulseaudio.page:44
-msgid "This controls the size of the buffer that are used by the plugins when applying effects."
+msgid "This controls the size of the buffer that is used by the plugins when applying effects."
 msgstr ""
 
 #. (itstool) path: page/title

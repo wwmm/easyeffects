@@ -80,7 +80,7 @@
                 <em style="strong" its:withinText="nested">Stereo Base</em>
             </title>
             <p>
-                Set the stereo base of your material seamless between Mono and inversed
+                Set the stereo base of your material seamless between Mono and inverted
                 Channels.
             </p>
         </item>

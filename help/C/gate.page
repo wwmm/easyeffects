@@ -89,7 +89,7 @@
                 <em style="strong" its:withinText="nested">Gain Reduction</em>
             </title>
             <p>
-                The level of gain reduction when the signal is below the threshold
+                The level of gain reduction when the signal is below the threshold.
             </p>
         </item>
     </terms>

@@ -101,8 +101,8 @@
                     <em style="strong" its:withinText="nested">Target Level</em>
                 </title>
                 <p>
-                    Sets the target peak |level| (or envelope) of the gain control in dBFS (decibels
-                    from digital full-scale).
+                    Sets the target peak level of the gain control in dBFS (decibels from digital
+                    full-scale).
                 </p>
             </item>
             <item>
@@ -110,7 +110,7 @@
                     <em style="strong" its:withinText="nested">Maximum Gain</em>
                 </title>
                 <p>
-                    Sets the maximum |gain| the digital compression stage may apply, in dB.
+                    Sets the maximum gain the digital compression stage may apply.
                 </p>
             </item>
         </terms>
@@ -133,7 +133,7 @@
                     <em style="strong" its:withinText="nested">Frame Size</em>
                 </title>
                 <p>
-                    Sets the |size| of the frames in ms on which the VAD will operate. Larger frames
+                    Sets the size of the frames in ms on which the VAD will operate. Larger frames
                     will improve detection accuracy, but reduce the frequency of updates.
                 </p>
             </item>
