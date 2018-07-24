@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-24 13:18-0300\n"
+"POT-Creation-Date: 2018-07-24 15:15-0300\n"
 "PO-Revision-Date: 2017-06-11 22:19+0200\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: \n"
@@ -1236,7 +1236,7 @@ msgstr ""
 
 #: src/convolver_ui.cpp:268
 #, fuzzy
-msgid "Import"
+msgid "Import Impulse File"
 msgstr "Načítať predvoľbu"
 
 #: src/convolver_ui.cpp:311 src/convolver_ui.cpp:312 src/convolver_ui.cpp:314
@@ -1246,6 +1246,10 @@ msgstr ""
 #: src/convolver_ui.cpp:316
 msgid "Could Not Load The Impulse File"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Import"
+#~ msgstr "Načítať predvoľbu"
 
 #, fuzzy
 #~ msgid "Delay"

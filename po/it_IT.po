@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-24 13:18-0300\n"
+"POT-Creation-Date: 2018-07-24 15:15-0300\n"
 "PO-Revision-Date: 2018-02-10 15:25+0100\n"
 "Last-Translator: Matteo Iervasi <matteoiervasi@gmail.com>\n"
 "Language-Team: \n"
@@ -1262,8 +1262,8 @@ msgstr "Calibrazione"
 
 #: src/convolver_ui.cpp:268
 #, fuzzy
-msgid "Import"
-msgstr "Carica Preset"
+msgid "Import Impulse File"
+msgstr "Risposta piatta"
 
 #: src/convolver_ui.cpp:311 src/convolver_ui.cpp:312 src/convolver_ui.cpp:314
 msgid "Failed"
@@ -1272,6 +1272,10 @@ msgstr ""
 #: src/convolver_ui.cpp:316
 msgid "Could Not Load The Impulse File"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Import"
+#~ msgstr "Carica Preset"
 
 #~ msgid "Delay"
 #~ msgstr "Ritardo"

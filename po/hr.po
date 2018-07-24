@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-24 13:18-0300\n"
+"POT-Creation-Date: 2018-07-24 15:15-0300\n"
 "PO-Revision-Date: 2018-05-27 00:55+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -1240,8 +1240,8 @@ msgstr "Kalibracija ispravljanja mikrofona"
 
 #: src/convolver_ui.cpp:268
 #, fuzzy
-msgid "Import"
-msgstr "Učitaj predloške"
+msgid "Import Impulse File"
+msgstr "Ravan izlaz"
 
 #: src/convolver_ui.cpp:311 src/convolver_ui.cpp:312 src/convolver_ui.cpp:314
 msgid "Failed"
@@ -1250,6 +1250,10 @@ msgstr ""
 #: src/convolver_ui.cpp:316
 msgid "Could Not Load The Impulse File"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Import"
+#~ msgstr "Učitaj predloške"
 
 #~ msgid "Stereo Enhancer"
 #~ msgstr "Pojačanje sterea"

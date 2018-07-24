@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-24 13:18-0300\n"
+"POT-Creation-Date: 2018-07-24 15:15-0300\n"
 "PO-Revision-Date: 2017-10-14 10:20+0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: \n"
@@ -1268,8 +1268,8 @@ msgstr "Kalibrering och mikrofon korrigering"
 
 #: src/convolver_ui.cpp:268
 #, fuzzy
-msgid "Import"
-msgstr "Öppna förinställning"
+msgid "Import Impulse File"
+msgstr "Platt respons"
 
 #: src/convolver_ui.cpp:311 src/convolver_ui.cpp:312 src/convolver_ui.cpp:314
 msgid "Failed"
@@ -1278,6 +1278,10 @@ msgstr ""
 #: src/convolver_ui.cpp:316
 msgid "Could Not Load The Impulse File"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Import"
+#~ msgstr "Öppna förinställning"
 
 #, fuzzy
 #~ msgid "Stereo Enhancer"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-24 13:18-0300\n"
+"POT-Creation-Date: 2018-07-24 15:15-0300\n"
 "PO-Revision-Date: 2017-10-14 18:40+0200\n"
 "Last-Translator: Bleuzen <supgesu@gmail.com>\n"
 "Language-Team: \n"
@@ -1260,8 +1260,8 @@ msgstr "Kalibrierung der Mikrofonkorrektur"
 
 #: src/convolver_ui.cpp:268
 #, fuzzy
-msgid "Import"
-msgstr "Preset laden"
+msgid "Import Impulse File"
+msgstr "Glätten"
 
 #: src/convolver_ui.cpp:311 src/convolver_ui.cpp:312 src/convolver_ui.cpp:314
 msgid "Failed"
@@ -1270,6 +1270,10 @@ msgstr ""
 #: src/convolver_ui.cpp:316
 msgid "Could Not Load The Impulse File"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Import"
+#~ msgstr "Preset laden"
 
 #, fuzzy
 #~ msgid "Stereo Enhancer"
