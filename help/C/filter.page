@@ -12,7 +12,7 @@
         ranges.
     </p>
     <p>
-        PulseEffects uses the filter plugin from
+        PulseEffects uses the filter from
         <link href="https://calf-studio-gear.org" its:translate="no">Calf Studio</link>. It can be used to remove defined parts of a frequency spectrum.
     </p>
     <terms>

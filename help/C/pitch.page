@@ -12,7 +12,7 @@
         sound is raised or lowered.
     </p>
     <p>
-        PulseEffects uses the pitch shifter plugin from
+        PulseEffects uses the pitch shifter from
         <link href="https://breakfastquay.com/rubberband/" its:translate="no">RubberBand</link>.
     </p>
     <terms>

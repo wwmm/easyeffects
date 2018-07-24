@@ -8,7 +8,7 @@
     </info>
     <title>Crossfeed</title>
     <p>
-        PulseEffects uses the crossfeed plugin from
+        PulseEffects uses the crossfeed from
         <link
             href="https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-bad/html/gst-plugins-bad-plugins-bs2b.html"
             its:translate="no">GStreamer</link>.

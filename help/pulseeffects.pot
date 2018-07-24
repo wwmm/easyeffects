@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-07-23 15:47-0300\n"
+"POT-Creation-Date: 2018-07-23 22:01-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1104,7 +1104,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/equalizer.page:10
-msgid "PulseEffects uses the parametric equalizer plugin from <_:link-1/>. You can choose between 1 and 30 bands. You also can change the cernter frequency and the width of each band as needed. There are a few presets but at this moment all of them have only 10 bands. Presets with other number of bands may be added in the future."
+msgid "PulseEffects uses the parametric equalizer from <_:link-1/>. You can choose between 1 and 30 bands. You also can change the center frequency and the width of each band as needed. There are a few presets but at this moment all of them have only 10 bands. Presets with other number of bands may be added in the future."
 msgstr ""
 
 #. (itstool) path: title/em

@@ -11,7 +11,7 @@
         A compressor is used to reduce the audio signal dynamic range.
     </p>
     <p>
-        PulseEffects uses the compressor plugin developed by
+        PulseEffects uses the compressor developed by
         <link href="https://calf-studio-gear.org" its:translate="no">Calf Studio</link>.
     </p>
     <terms>

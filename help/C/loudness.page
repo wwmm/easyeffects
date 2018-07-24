@@ -8,7 +8,7 @@
     </info>
     <title>Loudness</title>
     <p>
-        PulseEffects uses the loudness plugin from
+        PulseEffects uses the loudness from
         <link
             href="https://git.drobilla.net/cgit.cgi/mda.lv2.git/about/"
             its:translate="no">MDA.LV2</link>.

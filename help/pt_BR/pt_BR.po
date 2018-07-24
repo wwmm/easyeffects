@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2018-07-23 15:47-0300\n"
+"POT-Creation-Date: 2018-07-23 22:01-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -149,6 +149,8 @@ msgid ""
 "Amount of milliseconds the signal has to rise above the threshold before "
 "gain reduction starts"
 msgstr ""
+"Quantidade de milissegundos que o sinal deve passar acima do limiar para que "
+"a redução de ganho comece"
 
 #. (itstool) path: title/em
 #: C/compressor.page:29 C/gate.page:30 C/limiter.page:51
@@ -163,6 +165,8 @@ msgid ""
 "Amount of milliseconds the signal has to fall below the threshold before the "
 "reduction is decreased again"
 msgstr ""
+"Quantidade de milissegundos que o sinal tem que passar abaixo do limar antes "
+"que a magnitude da redução seja novamente diminuída"
 
 #. (itstool) path: title/em
 #: C/compressor.page:38 C/deesser.page:27 C/gate.page:39 C/limiter.page:116
@@ -174,7 +178,7 @@ msgstr "Limiar"
 #: C/compressor.page:40 C/deesser.page:29 C/gate.page:41
 #: C/multibandcompressor.page:41 C/multibandgate.page:49
 msgid "If a signal rises above this level it will affect the gain reduction"
-msgstr ""
+msgstr "Se um sinal subir acima deste nível ele afetará a redução de ganho"
 
 #. (itstool) path: title/em
 #: C/compressor.page:46 C/deesser.page:35 C/gate.page:47
@@ -189,6 +193,8 @@ msgid ""
 "Set a ratio about which the signal is reduced. 1:2 means that if the level "
 "rises 4dB above the threshold, it will be only 2dB above after the reduction."
 msgstr ""
+"Configura uma razão sobre a qual o sinal é reduzido. 1:2 significa que se o "
+"nível subir 4dB acima do limiar ele estará apenas 2dB acima após a redução."
 
 #. (itstool) path: title/em
 #: C/compressor.page:55 C/gate.page:56 C/multibandcompressor.page:56
@@ -202,6 +208,8 @@ msgstr "Joelho"
 msgid ""
 "Curve the sharp knee around the threshold to enter gain reduction more softly"
 msgstr ""
+"Curva o joelho em torno do limiar para que a entrada na redução de ganho "
+"seja mais suave"
 
 #. (itstool) path: title/em
 #: C/compressor.page:63 C/deesser.page:44 C/gate.page:64
@@ -213,7 +221,7 @@ msgstr "Ganho de Saída"
 #: C/compressor.page:65 C/deesser.page:46 C/gate.page:66
 #: C/multibandcompressor.page:66 C/multibandgate.page:74
 msgid "Amplify your signal after processing"
-msgstr ""
+msgstr "Amplifique seu sinal após o processamento"
 
 #. (itstool) path: title/em
 #: C/compressor.page:71 C/gate.page:72
@@ -226,6 +234,8 @@ msgid ""
 "Choose if the average level between both channels or the louder channel "
 "affects the reduction"
 msgstr ""
+"Escolha se a redução será afetada pelo nível médio entre os canais ou pelo "
+"canal mais alto"
 
 #. (itstool) path: title/em
 #: C/compressor.page:80 C/deesser.page:96 C/gate.page:81
@@ -239,6 +249,8 @@ msgid ""
 "Choose if the compressor should take the signal peak for detection or an RMS "
 "like one (it's mainly smoother)"
 msgstr ""
+"Escolha se o compressor deve tomar o pico do sinal para detecção ou o valor "
+"RMS(é mais suave)"
 
 #. (itstool) path: title/em
 #: C/compressor.page:89
@@ -257,6 +269,9 @@ msgid ""
 "used to dynamically reduce high frequencies. The standard field of use is "
 "the reduction of \"sssss\" and \"shhhh\" in vocal tracks."
 msgstr ""
+"PulseEffects usa o plugin deesser desenvolvido por <_: link-1 />. Um Deesser "
+"é usado para reduzir dinamicamente altas freqüências. O campo padrão de uso "
+"é a redução de \"sssss\" e \"shhhh\" em trilhas vocais."
 
 #. (itstool) path: title/em
 #: C/deesser.page:19
@@ -268,6 +283,7 @@ msgstr "Frouxidão"
 msgid ""
 "The reaction of the deesser. Higher values won't affect really short peaks."
 msgstr ""
+"A reação do deesser. Valores maiores não afetarão picos realmente curtos."
 
 #. (itstool) path: title/em
 #: C/deesser.page:52
@@ -280,6 +296,9 @@ msgid ""
 "The split frequency. All signals above this frequency will affect the gain "
 "reduction (and are affected in split mode, too)"
 msgstr ""
+"A frequência de separação. todos os sinais acima desta frequência afetarão a "
+"redução de ganho(a também serão afetados se o modo de operação for o "
+"separado)"
 
 #. (itstool) path: title/em
 #: C/deesser.page:61
@@ -292,6 +311,9 @@ msgid ""
 "It shifts the volume of the higher band. In wideband mode it affects the "
 "sidechain, in split mode it also affects the processed high frequencies."
 msgstr ""
+"Desloca o volume da banda mais alta. Em modo de banda ampla ele afeta a "
+"cadeia lateral, em modo separado ele também afeta as altas frequências "
+"processadas."
 
 #. (itstool) path: title/em
 #: C/deesser.page:70
@@ -304,6 +326,8 @@ msgid ""
 "Center frequency of the bell filter. It allows a more precise selection of "
 "the sidechain signal."
 msgstr ""
+"Frequência central do filtro de sino. Permite uma seleção mais precisa do "
+"sinal da cadeia lateral."
 
 #. (itstool) path: title/em
 #: C/deesser.page:79
@@ -314,6 +338,8 @@ msgstr "Nível"
 #: C/deesser.page:81
 msgid "Increase or decrease the frequencies around the center bell frequency"
 msgstr ""
+"Aumenta ou diminui a amplitude das frequências em torno da frequência "
+"central do sino"
 
 #. (itstool) path: title/em
 #: C/deesser.page:87
@@ -333,6 +359,8 @@ msgid ""
 "Choose if the deesser should take the signal peak for detection or an RMS "
 "like one (it's mainly smoother)"
 msgstr ""
+"Escolha se o compressor deve tomar o pico do sinal para detecção ou o valor "
+"RMS (é mais suave)"
 
 #. (itstool) path: title/em
 #: C/deesser.page:105 C/multibandcompressor.page:97 C/multibandgate.page:105
@@ -409,8 +437,9 @@ msgstr "Frequência"
 
 #. (itstool) path: item/p
 #: C/filter.page:23
+#, fuzzy
 msgid "The center or cut-off frequency of the filter"
-msgstr ""
+msgstr "Frequência de corte do filtro passa baixas"
 
 #. (itstool) path: title/em
 #: C/filter.page:29
@@ -454,10 +483,13 @@ msgstr "PulseEffects usa o gate desenvolvido por <_:link-1/>."
 
 #. (itstool) path: item/p
 #: C/gate.page:83
+#, fuzzy
 msgid ""
 "Choose if the gate should take the signal peak for detection or an RMS like "
 "one (it's mainly smoother)"
 msgstr ""
+"Escolha se o compressor deve tomar o pico do sinal para detecção ou o valor "
+"RMS (é mais suave)"
 
 #. (itstool) path: title/em
 #: C/gate.page:90
@@ -558,8 +590,9 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/limiter.page:53
+#, fuzzy
 msgid "Stop the attenuation after this amount of milliseconds"
-msgstr ""
+msgstr "Pare a atenuação após esta quantidade de segundos."
 
 #. (itstool) path: title/em
 #: C/limiter.page:59
@@ -716,10 +749,13 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/multibandcompressor.page:82
+#, fuzzy
 msgid ""
 "Choose if the multibandcompressor should take the signal peak for detection "
 "or an RMS like one (it's mainly smoother)"
 msgstr ""
+"Escolha se o compressor deve tomar o pico do sinal para detecção ou o valor "
+"RMS(é mais suave)"
 
 #. (itstool) path: title/em
 #: C/multibandcompressor.page:89 C/multibandgate.page:97
@@ -797,10 +833,13 @@ msgstr "O nível de redução nesta faixa"
 
 #. (itstool) path: item/p
 #: C/multibandgate.page:90
+#, fuzzy
 msgid ""
 "Choose if the multibandgate should take the signal peak for detection or an "
 "RMS like one (it's mainly smoother)"
 msgstr ""
+"Escolha se o compressor deve tomar o pico do sinal para detecção ou o valor "
+"RMS(é mais suave)"
 
 #. (itstool) path: page/title
 #: C/reverb.page:9
@@ -1084,7 +1123,7 @@ msgstr "PulseEffects usa o maximizador desenvolvido por <_:link-1/>."
 #. (itstool) path: item/p
 #: C/maximizer.page:24
 msgid "If a signal rises above this level it will affect the gain reduction."
-msgstr ""
+msgstr "Se um sinal subir acima deste nível ele afetará a redução de ganho."
 
 #. (itstool) path: title/em
 #: C/maximizer.page:30
@@ -1099,7 +1138,7 @@ msgstr "Máximo valor de pico permitido."
 #. (itstool) path: item/p
 #: C/maximizer.page:40
 msgid "Stop the attenuation after this amount of seconds."
-msgstr ""
+msgstr "Pare a atenuação após esta quantidade de segundos."
 
 #. (itstool) path: page/title
 #: C/crossfeed.page:9
@@ -1114,6 +1153,11 @@ msgid ""
 "stereo audio records. It does so by mixing the left and right channel in a "
 "way that simulates a stereo speaker setup while using headphones."
 msgstr ""
+"O PulseEffects usa o plugin de crossfeed do <_: link-1 />. Este plugin é "
+"baseado na biblioteca bs2b e pode ser usado para melhorar a audição de áudio "
+"estéreo via fones de ouvido. Ele faz isso misturando os canais esquerdo e "
+"direito de uma forma que simula a configuração de um alto-falante estéreo "
+"durante o uso de fones de ouvido."
 
 #. (itstool) path: title/em
 #: C/crossfeed.page:22
@@ -1123,7 +1167,7 @@ msgstr "Corte"
 #. (itstool) path: item/p
 #: C/crossfeed.page:24
 msgid "Low-pass filter cut frequency"
-msgstr ""
+msgstr "Frequência de corte do filtro passa baixas"
 
 #. (itstool) path: title/em
 #: C/crossfeed.page:30
@@ -1133,7 +1177,7 @@ msgstr "Alimentação"
 #. (itstool) path: item/p
 #: C/crossfeed.page:32
 msgid "The amount of signal from a channel that is sent to the other."
-msgstr ""
+msgstr "A quantidade de sinal de um canal que enviada para o outro."
 
 #. (itstool) path: page/title
 #: C/equalizer.page:9
@@ -1142,13 +1186,19 @@ msgstr "Equalizador"
 
 #. (itstool) path: page/p
 #: C/equalizer.page:10
+#, fuzzy
 msgid ""
-"PulseEffects uses the parametric equalizer plugin from <_:link-1/>. You can "
-"choose between 1 and 30 bands. You also can change the cernter frequency and "
-"the width of each band as needed. There are a few presets but at this moment "
-"all of them have only 10 bands. Presets with other number of bands may be "
-"added in the future."
+"PulseEffects uses the parametric equalizer from <_:link-1/>. You can choose "
+"between 1 and 30 bands. You also can change the center frequency and the "
+"width of each band as needed. There are a few presets but at this moment all "
+"of them have only 10 bands. Presets with other number of bands may be added "
+"in the future."
 msgstr ""
+"O PulseEffects usa o equalizador paramétrico do <_: link-1 />. Você pode "
+"escolher entre 1 e 30 bandas. Você também pode alterar a frequência central "
+"e a largura de cada banda conforme necessário. Há alguns presets, mas neste "
+"momento todos eles têm apenas 10 bandas. Presets com outro número de bandas "
+"podem ser adicionados no futuro."
 
 #. (itstool) path: title/em
 #: C/equalizer.page:23
