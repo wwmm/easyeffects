@@ -238,7 +238,7 @@ GST_PLUGIN_DEFINE(GST_VERSION_MAJOR,
                   pecrystalizer,
                   "PulseEffects Crystalizer",
                   plugin_init,
-                  "4.1.9",
+                  "4.2.1",
                   "LGPL",
                   PACKAGE,
                   "https://github.com/wwmm/pulseeffects")

@@ -116,3 +116,4 @@ executable(
 
 subdir('convolver')
 subdir('crystalizer')
+subdir('ebur')
