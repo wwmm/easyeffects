@@ -12,8 +12,7 @@
         These ranges are compressed separately and mixed together afterwards again.
     </p>
     <p>
-        PulseEffects uses the multiband compressor developed by
-        <link href="https://calf-studio-gear.org" its:translate="no">Calf Studio</link>.
+        PulseEffects uses the multiband compressor developed by Calf Studio.
     </p>
     <terms>
         <item>

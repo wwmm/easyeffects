@@ -14,7 +14,6 @@
     <file>ui/reverb.glade</file>
     <file>ui/bass_enhancer.glade</file>
     <file>ui/exciter.glade</file>
-    <file>ui/stereo_enhancer.glade</file>
     <file>ui/crossfeed.glade</file>
     <file>ui/loudness.glade</file>
     <file>ui/maximizer.glade</file>

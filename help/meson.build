@@ -17,7 +17,6 @@ help_pages = [
   'multibandcompressor.page',
   'multibandgate.page',
   'reverb.page',
-  'stereoenhancer.page',
   'stereotools.page',
   'maximizer.page',
   'crossfeed.page',

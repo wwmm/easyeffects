@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-24 11:37-0300\n"
+"POT-Creation-Date: 2018-07-24 13:18-0300\n"
 "PO-Revision-Date: 2017-08-29 11:00+0200\n"
 "Last-Translator: Nathan Graule <solarliner@gmail.com>\n"
 "Language-Team: \n"
@@ -240,13 +240,12 @@ msgstr "Volume automatique"
 #: data/ui/multiband_compressor.glade:1959 data/ui/filter.glade:365
 #: data/ui/equalizer.glade:366 data/ui/reverb.glade:612
 #: data/ui/bass_enhancer.glade:482 data/ui/exciter.glade:484
-#: data/ui/stereo_enhancer.glade:590 data/ui/stereo_tools.glade:292
-#: data/ui/stereo_tools.glade:784 data/ui/crossfeed.glade:200
-#: data/ui/maximizer.glade:240 data/ui/loudness.glade:245
-#: data/ui/gate.glade:489 data/ui/multiband_gate.glade:2112
-#: data/ui/deesser.glade:570 data/ui/convolver.glade:449
-#: data/ui/crystalizer.glade:168 data/ui/pitch.glade:304
-#: data/ui/webrtc.glade:586
+#: data/ui/stereo_tools.glade:292 data/ui/stereo_tools.glade:784
+#: data/ui/crossfeed.glade:200 data/ui/maximizer.glade:240
+#: data/ui/loudness.glade:245 data/ui/gate.glade:489
+#: data/ui/multiband_gate.glade:2112 data/ui/deesser.glade:570
+#: data/ui/convolver.glade:449 data/ui/crystalizer.glade:168
+#: data/ui/pitch.glade:304 data/ui/webrtc.glade:586
 msgid "Input"
 msgstr "Entrée"
 
@@ -258,10 +257,9 @@ msgstr "Entrée"
 #: data/ui/multiband_compressor.glade:1974 data/ui/filter.glade:380
 #: data/ui/equalizer.glade:381 data/ui/reverb.glade:627
 #: data/ui/bass_enhancer.glade:514 data/ui/exciter.glade:516
-#: data/ui/stereo_enhancer.glade:604 data/ui/stereo_tools.glade:757
-#: data/ui/stereo_tools.glade:798 data/ui/crossfeed.glade:215
-#: data/ui/maximizer.glade:255 data/ui/loudness.glade:164
-#: data/ui/loudness.glade:260 data/ui/gate.glade:504
+#: data/ui/stereo_tools.glade:757 data/ui/stereo_tools.glade:798
+#: data/ui/crossfeed.glade:215 data/ui/maximizer.glade:255
+#: data/ui/loudness.glade:164 data/ui/loudness.glade:260 data/ui/gate.glade:504
 #: data/ui/multiband_gate.glade:809 data/ui/multiband_gate.glade:1219
 #: data/ui/multiband_gate.glade:1630 data/ui/multiband_gate.glade:2041
 #: data/ui/multiband_gate.glade:2127 data/ui/deesser.glade:585
@@ -719,72 +717,14 @@ msgstr ""
 msgid "Ceiling"
 msgstr "Limite [dB]"
 
-#: data/ui/stereo_enhancer.glade:24
-#, fuzzy
-msgid "Stereo Enhancer"
-msgstr "Amélioration audio"
-
-#: data/ui/stereo_enhancer.glade:192 data/ui/stereo_enhancer.glade:343
-#: data/ui/stereo_tools.glade:214 data/ui/stereo_tools.glade:628
-#, fuzzy
-msgid "Balance"
-msgstr "Amélioration audio"
-
-#: data/ui/stereo_enhancer.glade:227 data/ui/stereo_enhancer.glade:378
-#, fuzzy
-msgid "Delay"
-msgstr "Relâche [ms]"
-
-#: data/ui/stereo_enhancer.glade:261 data/ui/stereo_enhancer.glade:412
-#: data/ui/deesser.glade:298
-#, fuzzy
-msgid "Gain"
-msgstr "Gain d'entrée [dB]"
-
-#: data/ui/stereo_enhancer.glade:270 data/ui/stereo_enhancer.glade:421
-#: data/ui/stereo_tools.glade:520 data/ui/stereo_tools.glade:560
-msgid "Invert Phase"
-msgstr ""
-
-#: data/ui/stereo_enhancer.glade:289 data/ui/stereo_enhancer.glade:457
-#: data/ui/stereo_tools.glade:507
-msgid "Left"
-msgstr ""
-
-#: data/ui/stereo_enhancer.glade:301
-msgid "Invert Middle Phase"
-msgstr ""
-
-#: data/ui/stereo_enhancer.glade:439 data/ui/stereo_enhancer.glade:458
-#: data/ui/stereo_tools.glade:578
-msgid "Right"
-msgstr ""
-
-#: data/ui/stereo_enhancer.glade:459
-msgid "Mid (L + R)"
-msgstr ""
-
-#: data/ui/stereo_enhancer.glade:460
-msgid "Side (L - R)"
-msgstr ""
-
-#: data/ui/stereo_enhancer.glade:461 data/ui/stereo_tools.glade:533
-#: data/ui/stereo_tools.glade:591
-msgid "Mute"
-msgstr ""
-
-#: data/ui/stereo_enhancer.glade:477
-msgid "Middle Source"
-msgstr ""
-
-#: data/ui/stereo_enhancer.glade:516
-#, fuzzy
-msgid "Side Gain"
-msgstr "Gain d'entrée [dB]"
-
 #: data/ui/stereo_tools.glade:42
 #, fuzzy
 msgid "Stereo Tools"
+msgstr "Amélioration audio"
+
+#: data/ui/stereo_tools.glade:214 data/ui/stereo_tools.glade:628
+#, fuzzy
+msgid "Balance"
 msgstr "Amélioration audio"
 
 #: data/ui/stereo_tools.glade:246
@@ -848,6 +788,22 @@ msgstr "Panorama"
 #, fuzzy
 msgid "Stereo Matrix"
 msgstr "Amélioration audio"
+
+#: data/ui/stereo_tools.glade:507
+msgid "Left"
+msgstr ""
+
+#: data/ui/stereo_tools.glade:520 data/ui/stereo_tools.glade:560
+msgid "Invert Phase"
+msgstr ""
+
+#: data/ui/stereo_tools.glade:533 data/ui/stereo_tools.glade:591
+msgid "Mute"
+msgstr ""
+
+#: data/ui/stereo_tools.glade:578
+msgid "Right"
+msgstr ""
 
 #: data/ui/stereo_tools.glade:660
 #, fuzzy
@@ -928,6 +884,11 @@ msgstr ""
 #: data/ui/deesser.glade:237 data/ui/deesser.glade:265
 msgid "Split"
 msgstr ""
+
+#: data/ui/deesser.glade:298
+#, fuzzy
+msgid "Gain"
+msgstr "Gain d'entrée [dB]"
 
 #: data/ui/deesser.glade:384
 msgid "Level"
@@ -1319,6 +1280,18 @@ msgstr ""
 #: src/convolver_ui.cpp:316
 msgid "Could Not Load The Impulse File"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Stereo Enhancer"
+#~ msgstr "Amélioration audio"
+
+#, fuzzy
+#~ msgid "Delay"
+#~ msgstr "Relâche [ms]"
+
+#, fuzzy
+#~ msgid "Side Gain"
+#~ msgstr "Gain d'entrée [dB]"
 
 #, fuzzy
 #~ msgid "Import Impulse Response"

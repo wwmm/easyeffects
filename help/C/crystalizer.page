@@ -8,13 +8,9 @@
     </info>
     <title>Crystalizer</title>
     <p>
-        PulseEffects crystalizer is a port of the
-        <link
-            href="https://github.com/FFmpeg/FFmpeg/blob/master/libavfilter/af_crystalizer.c"
-            its:translate="no">FFMPEG crystalizer</link>
-        code to the GStreamer framework. This plugin can be used to add
-        <link href="https://en.wikipedia.org/wiki/Dynamic_range" its:translate="no">dynamic range</link>
-        to songs that were overly compressed
+        PulseEffects crystalizer is a port of the FFMPEG crystalizer code to the
+        GStreamer framework. This plugin can be used to add dynamic range to songs that
+        were overly compressed
     </p>
     <terms>
         <item>

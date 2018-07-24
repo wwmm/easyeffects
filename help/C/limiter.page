@@ -13,10 +13,8 @@
         exceed this threshold.
     </p>
     <p>
-        PulseEffects uses the limiter developed by
-        <link href="https://calf-studio-gear.org" its:translate="no">Calf Studio</link>.
-        We only attached to it a routine to automatically set its input gain. This is
-        what we call auto volume.
+        PulseEffects uses the limiter developed by Calf Studio. We only attached to it a
+        routine to automatically set its input gain. This is what we call auto volume.
     </p>
     <section>
         <title>Limiter</title>

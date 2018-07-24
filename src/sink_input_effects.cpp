@@ -229,8 +229,6 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.bassenhancer");
     exciter = std::make_unique<Exciter>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.exciter");
-    stereo_enhancer = std::make_unique<StereoEnhancer>(
-        log_tag, "com.github.wwmm.pulseeffects.sinkinputs.stereoenhancer");
     crossfeed = std::make_unique<Crossfeed>(
         log_tag, "com.github.wwmm.pulseeffects.sinkinputs.crossfeed");
     maximizer = std::make_unique<Maximizer>(
@@ -259,8 +257,6 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
     plugins.insert(std::make_pair(reverb->name, reverb->plugin));
     plugins.insert(std::make_pair(bass_enhancer->name, bass_enhancer->plugin));
     plugins.insert(std::make_pair(exciter->name, exciter->plugin));
-    plugins.insert(
-        std::make_pair(stereo_enhancer->name, stereo_enhancer->plugin));
     plugins.insert(std::make_pair(crossfeed->name, crossfeed->plugin));
     plugins.insert(std::make_pair(maximizer->name, maximizer->plugin));
     plugins.insert(std::make_pair(multiband_compressor->name,

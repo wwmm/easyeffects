@@ -9,6 +9,10 @@ button next o the setting menu or by clicking the F1 key.
 (you really do not want this to happen). The check mark next to the plugin label
 is temporarily switched to an exclamation mark while the input is saturated.
 
+### Removed
+- Removed the stereo enhancer. It is a little buggy and most if not all of what
+it does can be accomplished with the stereo tools.
+
 ## [4.1.9]
 ### Added
 - A crystalizer plugin. Useful to add a little of dynamic range to overly

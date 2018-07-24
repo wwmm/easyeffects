@@ -15,7 +15,7 @@
             <p>
                 Start PulseEffects as a service in the next login. This is done by creating an
                 autostart file at
-                <cmd its:translate="no">~/.config/autostart</cmd>
+                <cmd its:withinText="yes">~/.config/autostart</cmd>
             </p>
         </item>
         <item>

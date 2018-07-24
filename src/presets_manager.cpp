@@ -26,7 +26,6 @@ PresetsManager::PresetsManager()
       maximizer(std::make_unique<MaximizerPreset>()),
       pitch(std::make_unique<PitchPreset>()),
       reverb(std::make_unique<ReverbPreset>()),
-      stereo_enhancer(std::make_unique<StereoEnhancerPreset>()),
       webrtc(std::make_unique<WebrtcPreset>()),
       multiband_compressor(std::make_unique<MultibandCompressorPreset>()),
       loudness(std::make_unique<LoudnessPreset>()),
@@ -185,7 +184,6 @@ void PresetsManager::save(const std::string& name) {
     maximizer->write(root);
     pitch->write(root);
     reverb->write(root);
-    stereo_enhancer->write(root);
     webrtc->write(root);
     multiband_compressor->write(root);
     loudness->write(root);
@@ -292,7 +290,6 @@ void PresetsManager::load(const std::string& name) {
     maximizer->read(root);
     pitch->read(root);
     reverb->read(root);
-    stereo_enhancer->read(root);
     webrtc->read(root);
     multiband_compressor->read(root);
     loudness->read(root);
