@@ -1638,6 +1638,8 @@ msgid ""
 "Reset all parameters to their default values. This will reset the plugins "
 "too."
 msgstr ""
+"Redefine todos os parâmetros para seus valores padrões. Isto redefinirá os "
+"plugins também."
 
 #. (itstool) path: title/em
 #: C/spectrum.page:13
@@ -1701,6 +1703,10 @@ msgid ""
 "applications output and other that applies effects for microphone. Here the "
 "user can tweak a few advanced parameters for both pipelines."
 msgstr ""
+"O PulseEffects possui duas pipelines do GStreamer. Uma que aplica efeitos "
+"para a saída de aplicativos e outra que aplica efeitos para o microfone. "
+"Aqui o usuário pode ajustar alguns parâmetros avançados para ambas as "
+"pipelines."
 
 #. (itstool) path: title/em
 #: C/pulseaudio.page:18
@@ -1771,6 +1777,9 @@ msgid ""
 "together with a pink noise test signal to estimate how flat is your audio "
 "setup frequency response."
 msgstr ""
+"Se você tiver um microfone com resposta razoavelmente plana, poderá usá-lo "
+"junto com um sinal de teste do tipo ruído rosa para estimar o quão plana é a "
+"resposta em frequência da sua configuração de áudio."
 
 #. (itstool) path: item/p
 #: C/calibrationmic.page:19
@@ -1778,6 +1787,8 @@ msgid ""
 "The amount of time the microphone signal will be measured. Higher values "
 "will reduce noises."
 msgstr ""
+"A quantidade de tempo pelo qual o microfone será medido. Valores mais altos "
+"reduzirão ruído."
 
 #. (itstool) path: title/em
 #: C/calibrationmic.page:26
@@ -1790,6 +1801,8 @@ msgid ""
 "Saves the last measurement to be used as background noise. Usually you would "
 "use this before turning on the pink noise."
 msgstr ""
+"Salva a última medição para ser usada como ruído de fundo. Normalmente você "
+"usaria isso antes de ligar o ruído rosa."
 
 #. (itstool) path: title/em
 #: C/calibrationmic.page:35
@@ -1799,7 +1812,7 @@ msgstr "Subtrair Ruído"
 #. (itstool) path: item/p
 #: C/calibrationmic.page:37
 msgid "Subtract the stored background noise from the measurement."
-msgstr ""
+msgstr "Subtrai o ruído de fundo armazenado do resultado da medida."
 
 #. (itstool) path: page/title
 #: C/enableapp.page:10
@@ -1813,6 +1826,9 @@ msgid ""
 "next to its name. If you always want to apply effects to all applications "
 "take a look at <_:link-1/>."
 msgstr ""
+"Você pode escolher quais aplicativos têm efeitos aplicados por meio do "
+"interruptor ao lado de seu nome. Se você sempre quiser aplicar efeitos a "
+"todos os aplicativos, dê uma olhada em <_: link-1 />."
 
 #. (itstool) path: page/title
 #: C/effectsorder.page:10
@@ -1837,14 +1853,13 @@ msgstr "Criando e Importando Predefinições do Usuário"
 
 #. (itstool) path: page/p
 #: C/userpresets.page:12
-#, fuzzy
 msgid ""
 "You can save your own presets. Just add write a name and click on the add "
 "button. Presets can be imported clicking on the button to the left."
 msgstr ""
-"Você pode salvar suas próprias predefinições. Basta adicionar escrever um "
-"nome e clicar no botão Adicionar. As predefinições podem ser importadas "
-"clicando no botão à esquerda."
+"Você pode salvar suas próprias predefinições. Basta escrever um nome e "
+"clicar no botão adicionar. As predefinições podem ser importadas clicando no "
+"botão à esquerda."
 
 #. (itstool) path: page/p
 #: C/userpresets.page:16
