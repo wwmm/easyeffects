@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2018-07-23 22:44-0300\n"
+"POT-Creation-Date: 2018-07-23 22:55-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -202,7 +202,7 @@ msgstr "Joelho"
 #: C/compressor.page:56 C/gate.page:57 C/multibandcompressor.page:57
 #: C/multibandgate.page:65
 msgid "Controls how smooth is the entrance in the gain reduction phase."
-msgstr ""
+msgstr "Controla o quão suave é a entrada na fase de redução de ganho."
 
 #. (itstool) path: title/em
 #: C/compressor.page:62 C/deesser.page:43 C/gate.page:63
@@ -586,6 +586,8 @@ msgid ""
 "The Limiter will reach its attenuation level in this amount of time (output "
 "will be delayed two times this time)."
 msgstr ""
+"O Limitador alcançará seu nível de atenuação neste período de tempo (a saída "
+"será atrasada duas vezes neste momento)."
 
 #. (itstool) path: item/p
 #: C/limiter.page:53
@@ -603,6 +605,8 @@ msgid ""
 "Increase the signal sampling to better detect the peaks. The signal is "
 "downsampled after processing."
 msgstr ""
+"Aumenta a amostragem do sinal para detectar melhor os picos. A taxa de "
+"amostragem é reduzida após o processamento."
 
 #. (itstool) path: title/em
 #: C/limiter.page:68
@@ -1454,6 +1458,8 @@ msgid ""
 "level. Otherwise, the signal will be compressed but not limited above the "
 "target level."
 msgstr ""
+"Quando ativado, o estágio de compactação limitará o sinal ao nível alvo. "
+"Caso contrário, o sinal será comprimido mas não limitado acima do nível alvo."
 
 #. (itstool) path: title/em
 #: C/webrtc.page:101
@@ -1599,7 +1605,8 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/general.page:23
+#. (itstool) path: p/link
+#: C/general.page:23 C/enableapp.page:16
 msgid "Enable All Applications"
 msgstr "Habilitar Todos os Aplicativos"
 
@@ -1804,8 +1811,7 @@ msgstr "Habilitar ou Desabilitar uma Aplicação"
 msgid ""
 "You can choose which applications have effects applied through the switch "
 "next to its name. If you always want to apply effects to all applications "
-"take a look at <link xref=\"general#title_enable_all_apps\">Enable All "
-"Applications</link>."
+"take a look at <_:link-1/>."
 msgstr ""
 
 #. (itstool) path: page/title
@@ -1820,18 +1826,25 @@ msgid ""
 "and down arrows next to the plugin name. The first plugin from top to bottom "
 "is the first to receive the audio signal."
 msgstr ""
+"Você pode alterar a ordem dos plugins na cadeia de efeitos. Basta clicar nas "
+"setas para cima e para baixo ao lado do nome do plugin. O primeiro plugin de "
+"cima para baixo é o primeiro a receber o sinal de áudio."
 
 #. (itstool) path: page/title
 #: C/userpresets.page:10
 msgid "Creating and Importing User Presets"
-msgstr ""
+msgstr "Criando e Importando Predefinições do Usuário"
 
 #. (itstool) path: page/p
 #: C/userpresets.page:12
+#, fuzzy
 msgid ""
 "You can save your own presets. Just add write a name and click on the add "
-"button. Presets can be imported clicking on the button nto the left."
+"button. Presets can be imported clicking on the button to the left."
 msgstr ""
+"Você pode salvar suas próprias predefinições. Basta adicionar escrever um "
+"nome e clicar no botão Adicionar. As predefinições podem ser importadas "
+"clicando no botão à esquerda."
 
 #. (itstool) path: page/p
 #: C/userpresets.page:16
@@ -1840,6 +1853,9 @@ msgid ""
 "its file. This means you can have presets that combine the effects of "
 "different plugins."
 msgstr ""
+"Quando você salva uma predefinição, a configuração atual de todos os plugins "
+"é salva em seu arquivo. Isso significa que você pode ter predefinições que "
+"combinam os efeitos de diferentes plugins."
 
 #. (itstool) path: page/title
 #: C/advancedinfo.page:10
@@ -1853,6 +1869,9 @@ msgid ""
 "needs a specific audio format and sampling rate. This information is show in "
 "the headerbar subtitle."
 msgstr ""
+"O processamento de áudio do PulseEffects é composto por 3 etapas principais. "
+"Cada uma delas precisa de um formato de áudio e taxa de amostragem "
+"específicos. Esta informação é mostrada na legenda da barra de cabeçalho."
 
 #~ msgid "If a signal rises above this level it will affect the gain reduction"
 #~ msgstr "Se um sinal subir acima deste nível ele afetará a redução de ganho"

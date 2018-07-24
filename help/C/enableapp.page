@@ -13,6 +13,6 @@
         You can choose which applications have effects applied through the switch next
         to its name. If you always want to apply effects to all applications take a look
         at
-        <link xref="general#title_enable_all_apps">Enable All Applications</link>.
+        <link xref="general#title_enable_all_apps" its:withinText="nested">Enable All Applications</link>.
     </p>
 </page>

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-07-23 22:44-0300\n"
+"POT-Creation-Date: 2018-07-23 22:55-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1476,7 +1476,9 @@ msgid "Start PulseEffects as a service in the next login. This is done by creati
 msgstr ""
 
 #. (itstool) path: title/em
+#. (itstool) path: p/link
 #: C/general.page:23
+#: C/enableapp.page:16
 msgid "Enable All Applications"
 msgstr ""
 
@@ -1657,7 +1659,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/enableapp.page:12
-msgid "You can choose which applications have effects applied through the switch next to its name. If you always want to apply effects to all applications take a look at <link xref=\"general#title_enable_all_apps\">Enable All Applications</link>."
+msgid "You can choose which applications have effects applied through the switch next to its name. If you always want to apply effects to all applications take a look at <_:link-1/>."
 msgstr ""
 
 #. (itstool) path: page/title
@@ -1677,7 +1679,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/userpresets.page:12
-msgid "You can save your own presets. Just add write a name and click on the add button. Presets can be imported clicking on the button nto the left."
+msgid "You can save your own presets. Just add write a name and click on the add button. Presets can be imported clicking on the button to the left."
 msgstr ""
 
 #. (itstool) path: page/p
