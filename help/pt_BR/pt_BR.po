@@ -1323,6 +1323,9 @@ msgid ""
 "band with the lowest frequency to Low Shelf, the one with the highest "
 "frequency to High Shelf and the others to Peak."
 msgstr ""
+"Escolha entre Peak, Low Shelf e High Shelf. Normalmente você ajustaria a "
+"banda com a menor frequência para Low Shelf, aquela com a maior frequência "
+"para High Shelf e as outras para Pico."
 
 #. (itstool) path: item/p
 #: C/equalizer.page:70
@@ -1348,12 +1351,12 @@ msgstr "Q"
 #: C/equalizer.page:88
 #, no-wrap
 msgid "Q = frequency / width"
-msgstr ""
+msgstr "Q = frequência / largura"
 
 #. (itstool) path: item/p
 #: C/equalizer.page:86
 msgid "Quality factor. Calculated as <_:code-1/>."
-msgstr ""
+msgstr "Fator de qualidade. Calculado a partir de <_:code-1/>."
 
 #. (itstool) path: page/title
 #: C/pitch.page:9
@@ -1366,6 +1369,8 @@ msgid ""
 "Pitch shifting is a sound recording technique in which the original pitch of "
 "a sound is raised or lowered."
 msgstr ""
+"Deslocamento de altura é uma técnica de gravação de som em que o tom "
+"original de um som é aumentado ou diminuído."
 
 #. (itstool) path: page/p
 #: C/pitch.page:14
@@ -1428,6 +1433,8 @@ msgid ""
 "0 - Disable phase resynchronisation at transients, phase lamination and use "
 "longer processing window."
 msgstr ""
+"0 - Desativa a ressincronização de fase em transientes, a laminação de fase "
+"e usa uma janela de processamento mais longa."
 
 #. (itstool) path: item/p
 #: C/pitch.page:69
@@ -1435,6 +1442,8 @@ msgid ""
 "1 - Use soft transient detector, disable phase lamination and use longer "
 "processing window."
 msgstr ""
+"1 - Use um detector de transiente suave, desative a laminação de fase e use "
+"uma janela de processamento mais longa."
 
 #. (itstool) path: item/p
 #: C/pitch.page:75
@@ -1463,6 +1472,12 @@ msgid ""
 "Filter, Echo Canceller, Noise Suppression, Automatic Gain Control, and some "
 "extended filters."
 msgstr ""
+"O PulseEffects usa o webrtc do <_: link-1 />. Este plugin oferece um filtro "
+"de aprimoramento de voz baseado na biblioteca WebRTC Audio Processing. Esta "
+"biblioteca fornece uma grande variedade de algoritmos de aprimoramento. Este "
+"elemento tenta habilitar o máximo possível. Os aprimoramentos atualmente "
+"ativados são o Filtro Passa Alta, o Cancelamento de Eco, a Supressão de "
+"Ruído, o Controle de Ganho Automático e alguns filtros estendidos."
 
 #. (itstool) path: section/title
 #: C/webrtc.page:22
@@ -1615,6 +1630,9 @@ msgid ""
 "framework. This plugin can be used to add <_:link-2/> to songs that were "
 "overly compressed"
 msgstr ""
+"O crystalizer PulseEffects é uma adaptação do código do <_: link-1 /> para a "
+"estrutura do GStreamer. Este plugin pode ser usado para adicionar <_: "
+"link-2 /> a músicas que foram excessivamente compactadas"
 
 #. (itstool) path: title/em
 #: C/crystalizer.page:22
