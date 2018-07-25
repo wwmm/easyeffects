@@ -26,13 +26,13 @@ struct _GstPeebur {
 
     bool post_messages; /* whether or not to post messages */
     guint64 interval;   /* how many nanoseconds between emits */
+    double loudness, max_peak;
 
     /* < private > */
 
     bool ready;
     GstAdapter* adapter;
-    int bpf;  // bytes per frame : channels * bps
-    double loudness, peak_L, peak_R;
+    int bpf;             // bytes per frame : channels * bps
     int rate;            /*sampling rate*/
     int interval_frames; /* after how many frame to sent a message */
     ebur128_state* ebur_state;
