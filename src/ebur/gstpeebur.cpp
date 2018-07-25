@@ -259,45 +259,111 @@ static GstFlowReturn gst_peebur_transform_ip(GstBaseTransform* trans,
 
     std::lock_guard<std::mutex> lock(peebur->lock_guard_ebu);
 
-    if (peebur->post_messages && peebur->ready) {
-        gst_buffer_ref(buffer);
-        gst_adapter_push(peebur->adapter, buffer);
+    GstMapInfo map;
 
-        gsize nbytes = peebur->interval_frames * peebur->bpf;
+    gst_buffer_map(buffer, &map, GST_MAP_READWRITE);
 
-        while (gst_adapter_available(peebur->adapter) >= nbytes) {
-            double relative, global_loudness;
+    float* data = (float*)map.data;
 
-            const float* data =
-                (float*)gst_adapter_map(peebur->adapter, nbytes);
+    guint num_samples = map.size / peebur->bpf;
 
-            ebur128_add_frames_float(peebur->ebur_state, data,
-                                     peebur->interval_frames);
+    ebur128_add_frames_float(peebur->ebur_state, data, num_samples);
 
-            gst_adapter_unmap(peebur->adapter);
-            gst_adapter_flush(peebur->adapter, nbytes);
+    double relative, momentary, shortterm, global;
+    bool failed = false;
 
-            // ebur128_loudness_shortterm(peebur->ebur_state,
-            // &peebur->loudness);
-            ebur128_loudness_momentary(peebur->ebur_state, &peebur->loudness);
-            ebur128_loudness_global(peebur->ebur_state, &global_loudness);
-            ebur128_relative_threshold(peebur->ebur_state, &relative);
+    if (EBUR128_SUCCESS !=
+        ebur128_loudness_momentary(peebur->ebur_state, &momentary)) {
+        momentary = 0.0;
+        failed = true;
+    }
 
-            gst_peebur_get_max_peak(peebur);
+    // if (EBUR128_SUCCESS !=
+    //     ebur128_loudness_shortterm(peebur->ebur_state, &shortterm)) {
+    //     shortterm = 0.0;
+    //     failed = true;
+    // }
+    //
+    // if (EBUR128_SUCCESS !=
+    //     ebur128_loudness_global(peebur->ebur_state, &global)) {
+    //     global = 0.0;
+    //     failed = true;
+    // }
 
-            int diff = fabs(-23 - peebur->loudness);
+    if (EBUR128_SUCCESS !=
+        ebur128_relative_threshold(peebur->ebur_state, &relative)) {
+        relative = 0.0;
+        failed = true;
+    }
 
-            if (peebur->max_peak > relative && diff > 1) {
-                std::cout << "relative: " << relative << std::endl;
-                std::cout << "global loudness: " << global_loudness
-                          << std::endl;
+    // gst_peebur_get_max_peak(peebur);
 
-                g_object_notify(G_OBJECT(peebur), "loudness");
-                g_object_notify(G_OBJECT(peebur), "max-peak");
-            }
+    if (momentary > relative && relative != -70 && !failed) {
+        double gain = pow(10, (-23.0 - momentary) / 20.0);
+
+        // std::cout << "gain: " << gain << std::endl;
+        // std::cout << "relative: " << relative << std::endl;
+        // std::cout << "global: " << global << std::endl;
+
+        for (unsigned int n = 0; n < 2 * num_samples; n++) {
+            data[n] = data[n] * gain;
         }
     }
 
+    gst_buffer_unmap(buffer, &map);
+    /*
+        if (peebur->post_messages && peebur->ready) {
+            gst_buffer_ref(buffer);
+            gst_adapter_push(peebur->adapter, buffer);
+
+            // gsize nbytes = peebur->interval_frames * peebur->bpf;
+            gsize nbytes = 256 * peebur->bpf;
+
+            while (gst_adapter_available(peebur->adapter) >= nbytes) {
+                double relative, global_loudness, short_loudness, loudness;
+
+                const float* data =
+                    (float*)gst_adapter_map(peebur->adapter, nbytes);
+
+                ebur128_add_frames_float(peebur->ebur_state, data,
+                                         peebur->interval_frames);
+
+                gst_adapter_unmap(peebur->adapter);
+                gst_adapter_flush(peebur->adapter, nbytes);
+
+                ebur128_loudness_shortterm(peebur->ebur_state, &short_loudness);
+                ebur128_loudness_momentary(peebur->ebur_state, &loudness);
+                ebur128_loudness_global(peebur->ebur_state, &global_loudness);
+                ebur128_relative_threshold(peebur->ebur_state, &relative);
+
+                peebur->loudness =
+                    (global_loudness + short_loudness + loudness) / 3.0;
+
+                gst_peebur_get_max_peak(peebur);
+
+                double gain = pow(10, (-23 - peebur->loudness) / 20);
+
+                int diff = fabs(-23 - peebur->loudness);
+
+                std::cout << "gain: " << gain << std::endl;
+                std::cout << "relative: " << relative << std::endl;
+                std::cout << "loudness: " << peebur->loudness << std::endl;
+                std::cout << "global loudness: " << global_loudness <<
+       std::endl;
+
+                if (peebur->loudness > relative && diff > 1) {
+                    // std::cout << "relative: " << relative << std::endl;
+                    // std::cout << "loudness: " << peebur->loudness <<
+       std::endl;
+                    // std::cout << "global loudness: " << global_loudness
+                    //           << std::endl;
+
+                    // g_object_notify(G_OBJECT(peebur), "loudness");
+                    // g_object_notify(G_OBJECT(peebur), "max-peak");
+                }
+            }
+        }
+    */
     return GST_FLOW_OK;
 }
 

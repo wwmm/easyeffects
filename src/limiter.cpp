@@ -68,19 +68,7 @@ void on_loudness_changed(GObject* gobject, GParamSpec* pspec, Limiter* l) {
 
     g_object_get(l->ebur, "loudness", &loudness, nullptr);
 
-    std::cout << "loudness: " << loudness << std::endl;
-
     l->on_new_sample_peak(loudness);
-}
-
-void on_max_peak_changed(GObject* gobject, GParamSpec* pspec, Limiter* l) {
-    double peak;
-
-    g_object_get(l->ebur, "max-peak", &peak, nullptr);
-
-    // l->on_new_sample_peak(peak);
-
-    std::cout << "max peak: " << peak << std::endl;
 }
 
 }  // namespace
@@ -115,8 +103,6 @@ Limiter::Limiter(const std::string& tag, const std::string& schema)
 
         g_signal_connect(ebur, "notify::loudness",
                          G_CALLBACK(on_loudness_changed), this);
-        g_signal_connect(ebur, "notify::max-peak",
-                         G_CALLBACK(on_max_peak_changed), this);
 
         // useless write just to force callback call
 
