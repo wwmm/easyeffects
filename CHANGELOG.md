@@ -1,6 +1,10 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- Added an auto gain plugin based on libebur128. It replaces the previous
+auto volume feature. It has the advantage of targeting the perceived loudness
+level. 
 
 ## [4.2.0]
 ### Added
