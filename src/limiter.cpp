@@ -63,6 +63,14 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Limiter* l) {
     }
 }
 
+void on_loudness_changed(GObject* gobject, GParamSpec* pspec, Limiter* l) {
+    double loudness;
+
+    g_object_get(l->ebur, "loudness", &loudness, nullptr);
+
+    std::cout << loudness << std::endl;
+}
+
 }  // namespace
 
 Limiter::Limiter(const std::string& tag, const std::string& schema)
@@ -73,10 +81,18 @@ Limiter::Limiter(const std::string& tag, const std::string& schema)
     if (is_installed(limiter)) {
         auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
         autovolume = gst_element_factory_make("level", "autovolume");
+        ebur = gst_element_factory_make("peebur", nullptr);
 
-        gst_bin_add_many(GST_BIN(bin), audioconvert, limiter, autovolume,
-                         nullptr);
-        gst_element_link_many(audioconvert, limiter, autovolume, nullptr);
+        if (ebur) {
+            gst_bin_add_many(GST_BIN(bin), audioconvert, limiter, ebur,
+                             autovolume, nullptr);
+            gst_element_link_many(audioconvert, limiter, ebur, autovolume,
+                                  nullptr);
+        } else {
+            gst_bin_add_many(GST_BIN(bin), audioconvert, limiter, autovolume,
+                             nullptr);
+            gst_element_link_many(audioconvert, limiter, autovolume, nullptr);
+        }
 
         auto pad_sink = gst_element_get_static_pad(audioconvert, "sink");
         auto pad_src = gst_element_get_static_pad(autovolume, "src");
@@ -93,6 +109,9 @@ Limiter::Limiter(const std::string& tag, const std::string& schema)
 
         g_signal_connect(settings, "changed::post-messages",
                          G_CALLBACK(on_post_messages_changed), this);
+
+        g_signal_connect(ebur, "notify::loudness",
+                         G_CALLBACK(on_loudness_changed), this);
 
         // useless write just to force callback call
 
@@ -144,6 +163,15 @@ void Limiter::bind_to_gsettings() {
                     G_SETTINGS_BIND_DEFAULT);
 
     g_settings_bind_with_mapping(settings, "autovolume-window", autovolume,
+                                 "interval", G_SETTINGS_BIND_GET,
+                                 util::ms_to_ns, nullptr, nullptr, nullptr);
+
+    // ebur
+
+    g_settings_bind(settings, "autovolume-state", ebur, "post-messages",
+                    G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind_with_mapping(settings, "autovolume-window", ebur,
                                  "interval", G_SETTINGS_BIND_GET,
                                  util::ms_to_ns, nullptr, nullptr, nullptr);
 }

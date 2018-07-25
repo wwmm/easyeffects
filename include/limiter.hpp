@@ -10,7 +10,7 @@ class Limiter : public PluginBase {
     Limiter(const std::string& tag, const std::string& schema);
     ~Limiter();
 
-    GstElement* limiter;
+    GstElement *limiter, *ebur;
 
     sigc::connection input_level_connection;
     sigc::connection output_level_connection;

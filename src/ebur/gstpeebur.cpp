@@ -230,10 +230,12 @@ static GstFlowReturn gst_peebur_transform_ip(GstBaseTransform* trans,
 
         ebur128_loudness_global(peebur->ebur_state, &peebur->loudness);
 
-        std::cout << peebur->loudness << std::endl;
-
         gst_adapter_unmap(peebur->adapter);
         gst_adapter_flush(peebur->adapter, nbytes);
+
+        if (peebur->post_messages) {
+            g_object_notify(G_OBJECT(peebur), "loudness");
+        }
     }
 
     return GST_FLOW_OK;
