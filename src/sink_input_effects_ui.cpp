@@ -45,6 +45,8 @@ SinkInputEffectsUi::SinkInputEffectsUi(
         "/com/github/wwmm/pulseeffects/ui/convolver.glade");
     auto b_crystalizer = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/ui/crystalizer.glade");
+    auto b_autogain = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/ui/autogain.glade");
 
     b_limiter->get_widget_derived(
         "widgets_grid", limiter_ui,
@@ -96,6 +98,9 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     b_crystalizer->get_widget_derived(
         "widgets_grid", crystalizer_ui,
         "com.github.wwmm.pulseeffects.sinkinputs.crystalizer");
+    b_autogain->get_widget_derived(
+        "widgets_grid", autogain_ui,
+        "com.github.wwmm.pulseeffects.sinkinputs.autogain");
 
     stack->add(*limiter_ui, limiter_ui->name);
     stack->add(*compressor_ui, compressor_ui->name);
@@ -114,6 +119,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     stack->add(*stereo_tools_ui, stereo_tools_ui->name);
     stack->add(*convolver_ui, convolver_ui->name);
     stack->add(*crystalizer_ui, crystalizer_ui->name);
+    stack->add(*autogain_ui, autogain_ui->name);
 
     // populate_listbox
 
@@ -134,6 +140,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(
     add_to_listbox(stereo_tools_ui);
     add_to_listbox(convolver_ui);
     add_to_listbox(crystalizer_ui);
+    add_to_listbox(autogain_ui);
 
     level_meters_connections();
     up_down_connections();
@@ -326,6 +333,13 @@ void SinkInputEffectsUi::level_meters_connections() {
         sigc::mem_fun(*crystalizer_ui, &CrystalizerUi::on_new_input_level_db)));
     connections.push_back(sie->crystalizer_output_level.connect(sigc::mem_fun(
         *crystalizer_ui, &CrystalizerUi::on_new_output_level_db)));
+
+    // autogain level meters connections
+
+    connections.push_back(sie->autogain_input_level.connect(
+        sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_input_level_db)));
+    connections.push_back(sie->autogain_output_level.connect(
+        sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_output_level_db)));
 }
 
 void SinkInputEffectsUi::up_down_connections() {
@@ -451,6 +465,11 @@ void SinkInputEffectsUi::up_down_connections() {
         [=]() { on_up(crystalizer_ui); }));
     connections.push_back(crystalizer_ui->plugin_down->signal_clicked().connect(
         [=]() { on_down(crystalizer_ui); }));
+
+    connections.push_back(autogain_ui->plugin_up->signal_clicked().connect(
+        [=]() { on_up(autogain_ui); }));
+    connections.push_back(autogain_ui->plugin_down->signal_clicked().connect(
+        [=]() { on_down(autogain_ui); }));
 }
 
 void SinkInputEffectsUi::reset() {
@@ -473,4 +492,5 @@ void SinkInputEffectsUi::reset() {
     stereo_tools_ui->reset();
     convolver_ui->reset();
     crystalizer_ui->reset();
+    autogain_ui->reset();
 }

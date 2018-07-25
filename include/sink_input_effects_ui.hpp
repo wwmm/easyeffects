@@ -1,6 +1,7 @@
 #ifndef SINK_INPUT_EFFECTS_UI_HPP
 #define SINK_INPUT_EFFECTS_UI_HPP
 
+#include "autogain_ui.hpp"
 #include "bass_enhancer_ui.hpp"
 #include "compressor_ui.hpp"
 #include "convolver_ui.hpp"
@@ -55,6 +56,7 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
     StereoToolsUi* stereo_tools_ui;
     ConvolverUi* convolver_ui;
     CrystalizerUi* crystalizer_ui;
+    AutoGainUi* autogain_ui;
 
     void level_meters_connections();
     void up_down_connections();

@@ -1,6 +1,7 @@
 #ifndef SINK_INPUT_EFFECTS_HPP
 #define SINK_INPUT_EFFECTS_HPP
 
+#include "autogain.hpp"
 #include "bass_enhancer.hpp"
 #include "compressor.hpp"
 #include "convolver.hpp"
@@ -50,6 +51,7 @@ class SinkInputEffects : public PipelineBase {
     std::unique_ptr<StereoTools> stereo_tools;
     std::unique_ptr<Convolver> convolver;
     std::unique_ptr<Crystalizer> crystalizer;
+    std::unique_ptr<AutoGain> autogain;
 
     sigc::signal<void, std::array<double, 2>> compressor_input_level;
     sigc::signal<void, std::array<double, 2>> compressor_output_level;
@@ -73,6 +75,8 @@ class SinkInputEffects : public PipelineBase {
     sigc::signal<void, std::array<double, 2>> convolver_output_level;
     sigc::signal<void, std::array<double, 2>> crystalizer_input_level;
     sigc::signal<void, std::array<double, 2>> crystalizer_output_level;
+    sigc::signal<void, std::array<double, 2>> autogain_input_level;
+    sigc::signal<void, std::array<double, 2>> autogain_output_level;
 
    private:
     GSettings* sie_settings;

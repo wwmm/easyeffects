@@ -62,6 +62,7 @@ pulseeffects_sources = [
 	'crystalizer.cpp',
 	'crystalizer_ui.cpp',
 	'presets_manager.cpp',
+	'autogain_preset.cpp',
 	'limiter_preset.cpp',
 	'compressor_preset.cpp',
 	'multiband_compressor_preset.cpp',
