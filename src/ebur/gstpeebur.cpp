@@ -14,6 +14,7 @@
 
 #include <gst/audio/gstaudiofilter.h>
 #include <gst/gst.h>
+#include <cmath>
 #include <iostream>
 #include "gstpeebur.hpp"
 
@@ -39,6 +40,8 @@ static GstFlowReturn gst_peebur_transform_ip(GstBaseTransform* trans,
                                              GstBuffer* buffer);
 
 static gboolean gst_peebur_stop(GstBaseTransform* base);
+
+static void gst_peebur_finalize(GObject* object);
 
 static void gst_peebur_recalc_interval_frames(GstPeebur* peebur);
 
@@ -106,6 +109,8 @@ static void gst_peebur_class_init(GstPeeburClass* klass) {
 
     base_transform_class->stop = GST_DEBUG_FUNCPTR(gst_peebur_stop);
 
+    gobject_class->finalize = gst_peebur_finalize;
+
     /* define properties */
 
     g_object_class_install_property(
@@ -157,6 +162,11 @@ void gst_peebur_set_property(GObject* object,
     switch (property_id) {
         case PROP_POST_MESSAGES:
             peebur->post_messages = g_value_get_boolean(value);
+
+            if (!peebur->post_messages) {
+                gst_adapter_clear(peebur->adapter);
+            }
+
             break;
         case PROP_INTERVAL:
             peebur->interval = g_value_get_uint64(value);
@@ -202,11 +212,21 @@ static gboolean gst_peebur_setup(GstAudioFilter* filter,
 
     GST_DEBUG_OBJECT(peebur, "setup");
 
+    std::lock_guard<std::mutex> lock(peebur->lock_guard_ebu);
+
     peebur->bpf = info->bpf;
     peebur->rate = info->rate;
-    peebur->ebur_state = ebur128_init(2, info->rate, EBUR128_MODE_I);
+    peebur->ebur_state =
+        ebur128_init(2, info->rate, EBUR128_MODE_I | EBUR128_MODE_SAMPLE_PEAK);
+
+    ebur128_set_channel(peebur->ebur_state, 0, EBUR128_LEFT);
+    ebur128_set_channel(peebur->ebur_state, 1, EBUR128_RIGHT);
 
     gst_peebur_recalc_interval_frames(peebur);
+
+    ebur128_set_max_window(peebur->ebur_state, 10000);  // ms
+
+    peebur->ready = true;
 
     return true;
 }
@@ -217,23 +237,36 @@ static GstFlowReturn gst_peebur_transform_ip(GstBaseTransform* trans,
 
     GST_DEBUG_OBJECT(peebur, "transform");
 
-    gst_buffer_ref(buffer);
-    gst_adapter_push(peebur->adapter, buffer);
+    std::lock_guard<std::mutex> lock(peebur->lock_guard_ebu);
 
-    gsize nbytes = peebur->interval_frames * peebur->bpf;
+    if (peebur->post_messages && peebur->ready) {
+        gst_buffer_ref(buffer);
+        gst_adapter_push(peebur->adapter, buffer);
 
-    while (gst_adapter_available(peebur->adapter) >= nbytes) {
-        const float* data = (float*)gst_adapter_map(peebur->adapter, nbytes);
+        gsize nbytes = peebur->interval_frames * peebur->bpf;
 
-        ebur128_add_frames_float(peebur->ebur_state, data,
-                                 peebur->interval_frames);
+        while (gst_adapter_available(peebur->adapter) >= nbytes) {
+            const float* data =
+                (float*)gst_adapter_map(peebur->adapter, nbytes);
 
-        ebur128_loudness_global(peebur->ebur_state, &peebur->loudness);
+            ebur128_add_frames_float(peebur->ebur_state, data,
+                                     peebur->interval_frames);
 
-        gst_adapter_unmap(peebur->adapter);
-        gst_adapter_flush(peebur->adapter, nbytes);
+            ebur128_loudness_window(peebur->ebur_state,
+                                    (int)(peebur->interval / 1000000.0),
+                                    &peebur->loudness);
+            ebur128_prev_sample_peak(peebur->ebur_state, 0, &peebur->peak_L);
+            ebur128_prev_sample_peak(peebur->ebur_state, 1, &peebur->peak_R);
 
-        if (peebur->post_messages) {
+            peebur->peak_L = 20 * log10(peebur->peak_L);
+            peebur->peak_R = 20 * log10(peebur->peak_R);
+
+            std::cout << "left: " << peebur->peak_L << "\t"
+                      << "right :" << peebur->peak_R << std::endl;
+
+            gst_adapter_unmap(peebur->adapter);
+            gst_adapter_flush(peebur->adapter, nbytes);
+
             g_object_notify(G_OBJECT(peebur), "loudness");
         }
     }
@@ -242,17 +275,27 @@ static GstFlowReturn gst_peebur_transform_ip(GstBaseTransform* trans,
 }
 
 static gboolean gst_peebur_stop(GstBaseTransform* base) {
-    GstPeebur* peebur = GST_PEEBUR(base);
+    // GstPeebur* peebur = GST_PEEBUR(base);
+
+    return true;
+}
+
+void gst_peebur_finalize(GObject* object) {
+    GstPeebur* peebur = GST_PEEBUR(object);
+
+    GST_DEBUG_OBJECT(peebur, "finalize");
+
+    std::lock_guard<std::mutex> lock(peebur->lock_guard_ebu);
 
     peebur->ready = false;
 
-    ebur128_destroy(&peebur->ebur_state);
-    free(peebur->ebur_state);
+    // ebur128_destroy(&peebur->ebur_state);
+    // free(peebur->ebur_state);
 
     gst_adapter_clear(peebur->adapter);
     g_object_unref(peebur->adapter);
 
-    return true;
+    G_OBJECT_CLASS(gst_peebur_parent_class)->finalize(object);
 }
 
 static void gst_peebur_recalc_interval_frames(GstPeebur* peebur) {

@@ -3,6 +3,7 @@
 
 #include <ebur128.h>
 #include <gst/audio/gstaudiofilter.h>
+#include <mutex>
 
 G_BEGIN_DECLS
 
@@ -28,13 +29,15 @@ struct _GstPeebur {
 
     /* < private > */
 
-    GstAdapter* adapter;
     bool ready;
+    GstAdapter* adapter;
     int bpf;  // bytes per frame : channels * bps
-    ebur128_state* ebur_state;
-    double loudness;
+    double loudness, peak_L, peak_R;
     int rate;            /*sampling rate*/
     int interval_frames; /* after how many frame to sent a message */
+    ebur128_state* ebur_state;
+
+    std::mutex lock_guard_ebu;
 };
 
 struct _GstPeeburClass {
