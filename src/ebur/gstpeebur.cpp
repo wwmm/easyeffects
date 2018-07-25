@@ -45,6 +45,8 @@ static void gst_peebur_finalize(GObject* object);
 
 static void gst_peebur_recalc_interval_frames(GstPeebur* peebur);
 
+static void gst_peebur_get_max_peak(GstPeebur* peebur);
+
 enum {
     PROP_0,
     PROP_POST_MESSAGES,
@@ -147,11 +149,12 @@ static void gst_peebur_class_init(GstPeeburClass* klass) {
 
     g_object_class_install_property(
         gobject_class, PROP_MAX_PEAK,
-        g_param_spec_double("max-peak", "Maximum Peak",
-                            "Maximum Peak Between the channels", -G_MAXDOUBLE,
-                            G_MAXDOUBLE, 0,
-                            static_cast<GParamFlags>(G_PARAM_READABLE |
-                                                     G_PARAM_STATIC_STRINGS)));
+        g_param_spec_double(
+            "max-peak", "Maximum Peak",
+            "Maximum sample peak from the last call to add_frames()",
+            -G_MAXDOUBLE, G_MAXDOUBLE, 0,
+            static_cast<GParamFlags>(G_PARAM_READABLE |
+                                     G_PARAM_STATIC_STRINGS)));
 }
 
 static void gst_peebur_init(GstPeebur* peebur) {
@@ -160,6 +163,8 @@ static void gst_peebur_init(GstPeebur* peebur) {
     peebur->rate = 0;
     peebur->post_messages = true;
     peebur->interval = GST_SECOND / 10;
+    peebur->loudness = 0.0;
+    peebur->max_peak = 0.0;
     peebur->adapter = gst_adapter_new();
 
     gst_base_transform_set_in_place(GST_BASE_TRANSFORM(peebur), true);
@@ -234,14 +239,12 @@ static gboolean gst_peebur_setup(GstAudioFilter* filter,
     peebur->bpf = info->bpf;
     peebur->rate = info->rate;
     peebur->ebur_state = ebur128_init(
-        2, info->rate, EBUR128_MODE_HISTOGRAM | EBUR128_MODE_SAMPLE_PEAK);
-
-    ebur128_set_channel(peebur->ebur_state, 0, EBUR128_LEFT);
-    ebur128_set_channel(peebur->ebur_state, 1, EBUR128_RIGHT);
+        2, info->rate,
+        EBUR128_MODE_HISTOGRAM | EBUR128_MODE_SAMPLE_PEAK | EBUR128_MODE_I);
 
     gst_peebur_recalc_interval_frames(peebur);
 
-    ebur128_set_max_window(peebur->ebur_state, 10000);  // ms
+    ebur128_set_max_window(peebur->ebur_state, 60000);  // ms
 
     peebur->ready = true;
 
@@ -263,7 +266,7 @@ static GstFlowReturn gst_peebur_transform_ip(GstBaseTransform* trans,
         gsize nbytes = peebur->interval_frames * peebur->bpf;
 
         while (gst_adapter_available(peebur->adapter) >= nbytes) {
-            double peak_L, peak_R;
+            double relative, global_loudness;
 
             const float* data =
                 (float*)gst_adapter_map(peebur->adapter, nbytes);
@@ -271,23 +274,27 @@ static GstFlowReturn gst_peebur_transform_ip(GstBaseTransform* trans,
             ebur128_add_frames_float(peebur->ebur_state, data,
                                      peebur->interval_frames);
 
-            ebur128_loudness_shortterm(peebur->ebur_state, &peebur->loudness);
-            ebur128_prev_sample_peak(peebur->ebur_state, 0, &peak_L);
-            ebur128_prev_sample_peak(peebur->ebur_state, 1, &peak_R);
-
-            peak_L = 20 * log10(peak_L);
-            peak_R = 20 * log10(peak_R);
-
-            peebur->max_peak = (peak_L > peak_R) ? peak_L : peak_R;
-
-            // std::cout << "left: " << peak_L << "\t"
-            //           << "right :" << peak_R << std::endl;
-
             gst_adapter_unmap(peebur->adapter);
             gst_adapter_flush(peebur->adapter, nbytes);
 
-            g_object_notify(G_OBJECT(peebur), "loudness");
-            g_object_notify(G_OBJECT(peebur), "max-peak");
+            // ebur128_loudness_shortterm(peebur->ebur_state,
+            // &peebur->loudness);
+            ebur128_loudness_momentary(peebur->ebur_state, &peebur->loudness);
+            ebur128_loudness_global(peebur->ebur_state, &global_loudness);
+            ebur128_relative_threshold(peebur->ebur_state, &relative);
+
+            gst_peebur_get_max_peak(peebur);
+
+            int diff = fabs(-23 - peebur->loudness);
+
+            if (peebur->max_peak > relative && diff > 1) {
+                std::cout << "relative: " << relative << std::endl;
+                std::cout << "global loudness: " << global_loudness
+                          << std::endl;
+
+                g_object_notify(G_OBJECT(peebur), "loudness");
+                g_object_notify(G_OBJECT(peebur), "max-peak");
+            }
         }
     }
 
@@ -329,6 +336,21 @@ static void gst_peebur_recalc_interval_frames(GstPeebur* peebur) {
     }
 
     peebur->interval_frames = interval_frames;
+}
+
+static void gst_peebur_get_max_peak(GstPeebur* peebur) {
+    double peak_L, peak_R;
+
+    ebur128_prev_sample_peak(peebur->ebur_state, 0, &peak_L);
+    ebur128_prev_sample_peak(peebur->ebur_state, 1, &peak_R);
+
+    peak_L = 20 * log10(peak_L);
+    peak_R = 20 * log10(peak_R);
+
+    peebur->max_peak = (peak_L > peak_R) ? peak_L : peak_R;
+
+    // std::cout << "left: " << peak_L << "\t"
+    //           << "right :" << peak_R << std::endl;
 }
 
 static gboolean plugin_init(GstPlugin* plugin) {

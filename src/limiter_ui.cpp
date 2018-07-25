@@ -47,7 +47,7 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
             auto target = autovolume_target->get_value();
             auto tolerance = autovolume_tolerance->get_value();
 
-            limit->set_value(target + tolerance);
+            // limit->set_value(target + tolerance);
         }
     });
 
@@ -58,7 +58,7 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
             auto target = autovolume_target->get_value();
             auto tolerance = autovolume_tolerance->get_value();
 
-            limit->set_value(target + tolerance);
+            // limit->set_value(target + tolerance);
         }
     });
 
@@ -111,10 +111,10 @@ void LimiterUi::init_autovolume() {
 
     if (enabled) {
         auto window = settings->get_double("autovolume-window");
-        auto target = settings->get_int("autovolume-target");
-        auto tolerance = settings->get_int("autovolume-tolerance");
+        // auto target = settings->get_int("autovolume-target");
+        // auto tolerance = settings->get_int("autovolume-tolerance");
 
-        limit->set_value(target + tolerance);
+        // limit->set_value(target + tolerance);
         release->set_value(window);
         asc->set_active(true);
         asc_level->set_value(1.0);

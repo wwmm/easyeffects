@@ -8,9 +8,7 @@ void on_message_element(const GstBus* gst_bus,
                         SinkInputEffects* sie) {
     auto src_name = GST_OBJECT_NAME(message->src);
 
-    if (src_name == std::string("autovolume")) {
-        sie->limiter->on_new_autovolume_level(sie->get_peak(message));
-    } else if (src_name == std::string("compressor_input_level")) {
+    if (src_name == std::string("compressor_input_level")) {
         sie->compressor_input_level.emit(sie->get_peak(message));
     } else if (src_name == std::string("compressor_output_level")) {
         sie->compressor_output_level.emit(sie->get_peak(message));

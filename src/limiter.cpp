@@ -69,14 +69,18 @@ void on_loudness_changed(GObject* gobject, GParamSpec* pspec, Limiter* l) {
     g_object_get(l->ebur, "loudness", &loudness, nullptr);
 
     std::cout << "loudness: " << loudness << std::endl;
+
+    l->on_new_sample_peak(loudness);
 }
 
 void on_max_peak_changed(GObject* gobject, GParamSpec* pspec, Limiter* l) {
-    double max_peak;
+    double peak;
 
-    g_object_get(l->ebur, "max-peak", &max_peak, nullptr);
+    g_object_get(l->ebur, "max-peak", &peak, nullptr);
 
-    std::cout << "max peak: " << max_peak << std::endl;
+    // l->on_new_sample_peak(peak);
+
+    std::cout << "max peak: " << peak << std::endl;
 }
 
 }  // namespace
@@ -88,22 +92,13 @@ Limiter::Limiter(const std::string& tag, const std::string& schema)
 
     if (is_installed(limiter)) {
         auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
-        autovolume = gst_element_factory_make("level", "autovolume");
         ebur = gst_element_factory_make("peebur", nullptr);
 
-        if (ebur) {
-            gst_bin_add_many(GST_BIN(bin), audioconvert, limiter, ebur,
-                             autovolume, nullptr);
-            gst_element_link_many(audioconvert, limiter, ebur, autovolume,
-                                  nullptr);
-        } else {
-            gst_bin_add_many(GST_BIN(bin), audioconvert, limiter, autovolume,
-                             nullptr);
-            gst_element_link_many(audioconvert, limiter, autovolume, nullptr);
-        }
+        gst_bin_add_many(GST_BIN(bin), audioconvert, limiter, ebur, nullptr);
+        gst_element_link_many(audioconvert, limiter, ebur, nullptr);
 
         auto pad_sink = gst_element_get_static_pad(audioconvert, "sink");
-        auto pad_src = gst_element_get_static_pad(autovolume, "src");
+        auto pad_src = gst_element_get_static_pad(ebur, "src");
 
         gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
         gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));
@@ -169,13 +164,6 @@ void Limiter::bind_to_gsettings() {
     g_settings_bind(settings, "oversampling", limiter, "oversampling",
                     G_SETTINGS_BIND_DEFAULT);
 
-    g_settings_bind(settings, "autovolume-state", autovolume, "post-messages",
-                    G_SETTINGS_BIND_DEFAULT);
-
-    g_settings_bind_with_mapping(settings, "autovolume-window", autovolume,
-                                 "interval", G_SETTINGS_BIND_GET,
-                                 util::ms_to_ns, nullptr, nullptr, nullptr);
-
     // ebur
 
     g_settings_bind(settings, "autovolume-state", ebur, "post-messages",
@@ -186,22 +174,21 @@ void Limiter::bind_to_gsettings() {
                                  util::ms_to_ns, nullptr, nullptr, nullptr);
 }
 
-void Limiter::on_new_autovolume_level(const std::array<double, 2>& peak) {
+void Limiter::on_new_sample_peak(const double& peak) {
     float gain;
 
-    auto max_value = (peak[0] > peak[1]) ? peak[0] : peak[1];
     auto target = g_settings_get_int(settings, "autovolume-target");
-    auto tolerance = g_settings_get_int(settings, "autovolume-tolerance");
+    // auto tolerance = g_settings_get_int(settings, "autovolume-tolerance");
 
     g_object_get(limiter, "level-in", &gain, nullptr);
 
     gain = util::linear_to_db(gain);
 
-    if (max_value > target + tolerance) {
+    if (peak > target) {
         if (gain - 1 >= -36) {  // -36 = minimum input gain
             gain--;
         }
-    } else if (max_value < target - tolerance) {
+    } else if (peak < target) {
         if (gain + 1 <= 36) {  // 36 = maximum input gain
             gain++;
         }
