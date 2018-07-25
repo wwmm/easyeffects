@@ -234,8 +234,7 @@ static gboolean gst_peebur_setup(GstAudioFilter* filter,
     peebur->bpf = info->bpf;
     peebur->rate = info->rate;
     peebur->ebur_state = ebur128_init(
-        2, info->rate,
-        EBUR128_MODE_HISTOGRAM | EBUR128_MODE_S | EBUR128_MODE_SAMPLE_PEAK);
+        2, info->rate, EBUR128_MODE_HISTOGRAM | EBUR128_MODE_SAMPLE_PEAK);
 
     ebur128_set_channel(peebur->ebur_state, 0, EBUR128_LEFT);
     ebur128_set_channel(peebur->ebur_state, 1, EBUR128_RIGHT);
