@@ -1,14 +1,14 @@
 /**
  * SECTION:element-gstpeautogain
  *
- * The peautogain element is a level meter based on libebur128.
+ * The peautogain element does auto volume and is based on libebur128.
  *
  * <refsect2>
  * <title>Example launch line</title>
  * |[
  * gst-launch-1.0 -v audiotestsrc ! peautogain ! pulsesink
  * ]|
- * The peautogain element is a level meter based on libebur128.
+ * The peautogain element does auto volume and is based on libebur128.
  * </refsect2>
  */
 
