@@ -17,7 +17,7 @@ void AutoGainPreset::save(boost::property_tree::ptree& root,
 
     root.put(section + ".autogain.target", settings->get_double("target"));
 
-    root.put(section + ".autogain.window", settings->get_double("window"));
+    root.put(section + ".autogain.window", settings->get_int("window"));
 }
 
 void AutoGainPreset::load(boost::property_tree::ptree& root,
@@ -41,9 +41,9 @@ void AutoGainPreset::load(boost::property_tree::ptree& root,
         "target", root.get<double>(section + ".autogain.target",
                                    get_default<double>(settings, "target")));
 
-    settings->set_double(
-        "window", root.get<double>(section + ".autogain.window",
-                                   get_default<double>(settings, "window")));
+    settings->set_int("window",
+                      root.get<int>(section + ".autogain.window",
+                                    get_default<int>(settings, "window")));
 }
 
 void AutoGainPreset::write(boost::property_tree::ptree& root) {
