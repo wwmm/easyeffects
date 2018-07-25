@@ -63,14 +63,6 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Limiter* l) {
     }
 }
 
-void on_loudness_changed(GObject* gobject, GParamSpec* pspec, Limiter* l) {
-    double loudness;
-
-    g_object_get(l->ebur, "loudness", &loudness, nullptr);
-
-    l->on_new_sample_peak(loudness);
-}
-
 }  // namespace
 
 Limiter::Limiter(const std::string& tag, const std::string& schema)
@@ -80,7 +72,7 @@ Limiter::Limiter(const std::string& tag, const std::string& schema)
 
     if (is_installed(limiter)) {
         auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
-        ebur = gst_element_factory_make("peebur", nullptr);
+        ebur = gst_element_factory_make("peautogain", nullptr);
 
         gst_bin_add_many(GST_BIN(bin), audioconvert, limiter, ebur, nullptr);
         gst_element_link_many(audioconvert, limiter, ebur, nullptr);
@@ -100,9 +92,6 @@ Limiter::Limiter(const std::string& tag, const std::string& schema)
 
         g_signal_connect(settings, "changed::post-messages",
                          G_CALLBACK(on_post_messages_changed), this);
-
-        g_signal_connect(ebur, "notify::loudness",
-                         G_CALLBACK(on_loudness_changed), this);
 
         // useless write just to force callback call
 
@@ -152,12 +141,8 @@ void Limiter::bind_to_gsettings() {
 
     // ebur
 
-    g_settings_bind(settings, "autovolume-state", ebur, "post-messages",
+    g_settings_bind(settings, "autovolume-window", ebur, "window",
                     G_SETTINGS_BIND_DEFAULT);
-
-    g_settings_bind_with_mapping(settings, "autovolume-window", ebur,
-                                 "interval", G_SETTINGS_BIND_GET,
-                                 util::ms_to_ns, nullptr, nullptr, nullptr);
 }
 
 void Limiter::on_new_sample_peak(const double& peak) {
