@@ -281,7 +281,8 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
     }
 
     if (relative > -70 && !failed) {
-        double gain = pow(10, (-23.0 - loudness) / 20.0);
+        float gain =
+            powf(10.0f, (peautogain->target - (float)loudness) / 20.0f);
 
         // std::cout << "gain: " << gain << std::endl;
         // std::cout << "relative: " << relative << std::endl;
