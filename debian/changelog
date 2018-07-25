@@ -1,3 +1,10 @@
+pulseeffects (4.2.0-1) unstable; urgency=low
+
+  * update to version 4.2.0 upstream
+  * fixed Russian localization
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 25 Jul 2018 03:13:00 +0300 
+ 
 pulseeffects (4.1.9-6-git20180723) unstable; urgency=low
 
   * git code between v4.1.9 and v4.2

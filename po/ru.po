@@ -761,9 +761,8 @@ msgid "Delay L/R"
 msgstr "Задержка Л/П"
 
 #: data/ui/stereo_tools.glade:694
-#, fuzzy
 msgid "Stereo Base"
-msgstr "Стерео фаза"
+msgstr "Стерео база"
 
 #: data/ui/stereo_tools.glade:727
 msgid "Stereo Phase"
@@ -1193,7 +1192,6 @@ msgid "Calibration Microphone"
 msgstr "Калибровка корректировки микрофона"
 
 #: src/convolver_ui.cpp:268
-#, fuzzy
 msgid "Import Impulse File"
 msgstr "Импортировать импульс"
 
