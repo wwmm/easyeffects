@@ -42,7 +42,7 @@ static gboolean gst_peebur_stop(GstBaseTransform* base);
 
 static void gst_peebur_recalc_interval_frames(GstPeebur* peebur);
 
-enum { PROP_0, PROP_POST_MESSAGES, PROP_INTERVAL };
+enum { PROP_0, PROP_POST_MESSAGES, PROP_INTERVAL, PROP_LOUDNESS };
 
 /* pad templates */
 
@@ -126,6 +126,13 @@ static void gst_peebur_class_init(GstPeeburClass* klass) {
             G_MAXUINT64, GST_SECOND / 10,
             static_cast<GParamFlags>(G_PARAM_READWRITE |
                                      G_PARAM_STATIC_STRINGS)));
+
+    g_object_class_install_property(
+        gobject_class, PROP_LOUDNESS,
+        g_param_spec_double("loudness", "Loudness", "Measured loudness",
+                            -G_MAXDOUBLE, G_MAXDOUBLE, 0,
+                            static_cast<GParamFlags>(G_PARAM_READABLE |
+                                                     G_PARAM_STATIC_STRINGS)));
 }
 
 static void gst_peebur_init(GstPeebur* peebur) {
@@ -179,6 +186,9 @@ void gst_peebur_get_property(GObject* object,
             break;
         case PROP_INTERVAL:
             g_value_set_uint64(value, peebur->interval);
+            break;
+        case PROP_LOUDNESS:
+            g_value_set_double(value, peebur->loudness);
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
