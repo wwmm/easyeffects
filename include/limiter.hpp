@@ -10,13 +10,11 @@ class Limiter : public PluginBase {
     Limiter(const std::string& tag, const std::string& schema);
     ~Limiter();
 
-    GstElement *limiter, *ebur;
+    GstElement* limiter;
 
     sigc::connection input_level_connection;
     sigc::connection output_level_connection;
     sigc::connection attenuation_connection;
-
-    void on_new_sample_peak(const double& peak);
 
     sigc::signal<void, std::array<double, 2>> input_level;
     sigc::signal<void, std::array<double, 2>> output_level;

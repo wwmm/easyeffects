@@ -19,17 +19,13 @@ class LimiterUi : public Gtk::Grid, public PluginUiBase {
    private:
     Glib::RefPtr<Gtk::Adjustment> input_gain, limit, lookahead, release,
         oversampling;
-    Gtk::ToggleButton *asc, *autovolume_enable;
-    Glib::RefPtr<Gtk::Adjustment> asc_level, autovolume_target,
-        autovolume_window;
-    Glib::RefPtr<Gtk::Adjustment> autovolume_threshold, autovolume_tolerance;
-    Gtk::Grid *autovolume_controls, *limiter_controls;
+    Gtk::ToggleButton* asc;
+    Glib::RefPtr<Gtk::Adjustment> asc_level;
+
     Gtk::LevelBar* attenuation;
     Gtk::Label* attenuation_label;
 
     std::vector<sigc::connection> connections;
-
-    void init_autovolume();
 };
 
 #endif

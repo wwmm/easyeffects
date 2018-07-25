@@ -9,9 +9,6 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
     // loading glade widgets
 
     builder->get_widget("asc", asc);
-    builder->get_widget("autovolume_enable", autovolume_enable);
-    builder->get_widget("autovolume_controls", autovolume_controls);
-    builder->get_widget("limiter_controls", limiter_controls);
     builder->get_widget("attenuation", attenuation);
     builder->get_widget("attenuation_label", attenuation_label);
 
@@ -21,53 +18,10 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
     get_object(builder, "release", release);
     get_object(builder, "oversampling", oversampling);
     get_object(builder, "asc_level", asc_level);
-    get_object(builder, "autovolume_window", autovolume_window);
-    get_object(builder, "autovolume_target", autovolume_target);
-    get_object(builder, "autovolume_tolerance", autovolume_tolerance);
-    get_object(builder, "autovolume_threshold", autovolume_threshold);
-
-    // callback connections
-
-    autovolume_enable->signal_toggled().connect([=]() { init_autovolume(); });
-
-    autovolume_window->signal_value_changed().connect([=]() {
-        auto enabled = settings->get_boolean("autovolume-state");
-
-        if (enabled) {
-            auto window = autovolume_window->get_value();
-
-            release->set_value(window);
-        }
-    });
-
-    autovolume_target->signal_value_changed().connect([=]() {
-        auto enabled = settings->get_boolean("autovolume-state");
-
-        if (enabled) {
-            auto target = autovolume_target->get_value();
-            auto tolerance = autovolume_tolerance->get_value();
-
-            // limit->set_value(target + tolerance);
-        }
-    });
-
-    autovolume_tolerance->signal_value_changed().connect([=]() {
-        auto enabled = settings->get_boolean("autovolume-state");
-
-        if (enabled) {
-            auto target = autovolume_target->get_value();
-            auto tolerance = autovolume_tolerance->get_value();
-
-            // limit->set_value(target + tolerance);
-        }
-    });
 
     // gsettings bindings
 
     auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
-    auto flag_get = Gio::SettingsBindFlags::SETTINGS_BIND_GET;
-    auto flag_invert_boolean =
-        Gio::SettingsBindFlags::SETTINGS_BIND_INVERT_BOOLEAN;
 
     settings->bind("installed", this, "sensitive", flag);
 
@@ -78,20 +32,6 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
     settings->bind("oversampling", oversampling.get(), "value", flag);
     settings->bind("asc", asc, "active", flag);
     settings->bind("asc-level", asc_level.get(), "value", flag);
-
-    settings->bind("autovolume-state", autovolume_enable, "active", flag);
-    settings->bind("autovolume-state", autovolume_controls, "sensitive",
-                   flag_get);
-
-    settings->bind("autovolume-state", limiter_controls, "sensitive",
-                   flag_get | flag_invert_boolean);
-
-    settings->bind("autovolume-window", autovolume_window.get(), "value", flag);
-    settings->bind("autovolume-target", autovolume_target.get(), "value", flag);
-    settings->bind("autovolume-tolerance", autovolume_tolerance.get(), "value",
-                   flag);
-    settings->bind("autovolume-threshold", autovolume_threshold.get(), "value",
-                   flag);
 
     settings->set_boolean("post-messages", true);
 }
@@ -104,22 +44,6 @@ LimiterUi::~LimiterUi() {
     }
 
     util::debug(name + " ui destroyed");
-}
-
-void LimiterUi::init_autovolume() {
-    auto enabled = settings->get_boolean("autovolume-state");
-
-    if (enabled) {
-        auto window = settings->get_double("autovolume-window");
-        // auto target = settings->get_int("autovolume-target");
-        // auto tolerance = settings->get_int("autovolume-tolerance");
-
-        // limit->set_value(target + tolerance);
-        release->set_value(window);
-        asc->set_active(true);
-        asc_level->set_value(1.0);
-        lookahead->set_value(10.0);  // 10 ms
-    }
 }
 
 void LimiterUi::on_new_attenuation(double value) {
@@ -137,9 +61,4 @@ void LimiterUi::reset() {
     settings->reset("oversampling");
     settings->reset("asc");
     settings->reset("asc-level");
-    settings->reset("autovolume-state");
-    settings->reset("autovolume-window");
-    settings->reset("autovolume-target");
-    settings->reset("autovolume-tolerance");
-    settings->reset("autovolume-threshold");
 }

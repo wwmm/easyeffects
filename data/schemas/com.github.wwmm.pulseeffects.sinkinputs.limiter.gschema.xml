@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-    <schema id="com.github.wwmm.pulseeffects.sinkinputs.limiter" path="/com/github/wwmm/pulseeffects/sinkinputs/limiter/">
+    <schema
+        id="com.github.wwmm.pulseeffects.sinkinputs.limiter"
+        path="/com/github/wwmm/pulseeffects/sinkinputs/limiter/">
         <key name="state" type="b">
             <default>false</default>
         </key>
@@ -36,26 +38,6 @@
         <key name="oversampling" type="i">
             <range min="1" max="4"/>
             <default>1</default>
-        </key>
-
-        <key name="autovolume-state" type="b">
-            <default>false</default>
-        </key>
-        <key name="autovolume-window" type="d">
-            <range min="1" max="1000"/>
-            <default>1000.00</default>
-        </key>
-        <key name="autovolume-target" type="i">
-            <range min="-99" max="-4"/>
-            <default>-12</default>
-        </key>
-        <key name="autovolume-tolerance" type="i">
-            <range min="1" max="4"/>
-            <default>1</default>
-        </key>
-        <key name="autovolume-threshold" type="i">
-            <range min="-99" max="0"/>
-            <default>-50</default>
         </key>
     </schema>
 </schemalist>
