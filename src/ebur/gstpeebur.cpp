@@ -233,8 +233,9 @@ static gboolean gst_peebur_setup(GstAudioFilter* filter,
 
     peebur->bpf = info->bpf;
     peebur->rate = info->rate;
-    peebur->ebur_state =
-        ebur128_init(2, info->rate, EBUR128_MODE_S | EBUR128_MODE_SAMPLE_PEAK);
+    peebur->ebur_state = ebur128_init(
+        2, info->rate,
+        EBUR128_MODE_HISTOGRAM | EBUR128_MODE_S | EBUR128_MODE_SAMPLE_PEAK);
 
     ebur128_set_channel(peebur->ebur_state, 0, EBUR128_LEFT);
     ebur128_set_channel(peebur->ebur_state, 1, EBUR128_RIGHT);
@@ -271,9 +272,7 @@ static GstFlowReturn gst_peebur_transform_ip(GstBaseTransform* trans,
             ebur128_add_frames_float(peebur->ebur_state, data,
                                      peebur->interval_frames);
 
-            ebur128_loudness_window(peebur->ebur_state,
-                                    (int)(peebur->interval / 1000000.0),
-                                    &peebur->loudness);
+            ebur128_loudness_shortterm(peebur->ebur_state, &peebur->loudness);
             ebur128_prev_sample_peak(peebur->ebur_state, 0, &peak_L);
             ebur128_prev_sample_peak(peebur->ebur_state, 1, &peak_R);
 

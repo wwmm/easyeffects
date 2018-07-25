@@ -17,7 +17,7 @@ plugin_deps = [
 	dependency('gstreamer-base-1.0'),
 	dependency('gstreamer-controller-1.0'),
 	dependency('gstreamer-audio-1.0'),
-	dependency('libebur128')
+	dependency('libebur128',version: '>=1.2.0')
 ]
 
 plugins_install_dir = '@0@/gstreamer-1.0'.format(get_option('libdir'))
