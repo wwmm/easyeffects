@@ -278,17 +278,17 @@ static GstFlowReturn gst_peebur_transform_ip(GstBaseTransform* trans,
         failed = true;
     }
 
-    // if (EBUR128_SUCCESS !=
-    //     ebur128_loudness_shortterm(peebur->ebur_state, &shortterm)) {
-    //     shortterm = 0.0;
-    //     failed = true;
-    // }
-    //
-    // if (EBUR128_SUCCESS !=
-    //     ebur128_loudness_global(peebur->ebur_state, &global)) {
-    //     global = 0.0;
-    //     failed = true;
-    // }
+    if (EBUR128_SUCCESS !=
+        ebur128_loudness_shortterm(peebur->ebur_state, &shortterm)) {
+        shortterm = 0.0;
+        failed = true;
+    }
+
+    if (EBUR128_SUCCESS !=
+        ebur128_loudness_global(peebur->ebur_state, &global)) {
+        global = 0.0;
+        failed = true;
+    }
 
     if (EBUR128_SUCCESS !=
         ebur128_relative_threshold(peebur->ebur_state, &relative)) {
@@ -298,12 +298,12 @@ static GstFlowReturn gst_peebur_transform_ip(GstBaseTransform* trans,
 
     // gst_peebur_get_max_peak(peebur);
 
-    if (momentary > relative && relative != -70 && !failed) {
+    if (relative > -70 && !failed) {
         double gain = pow(10, (-23.0 - momentary) / 20.0);
 
-        // std::cout << "gain: " << gain << std::endl;
-        // std::cout << "relative: " << relative << std::endl;
-        // std::cout << "global: " << global << std::endl;
+        std::cout << "gain: " << gain << std::endl;
+        std::cout << "relative: " << relative << std::endl;
+        std::cout << "global: " << global << std::endl;
 
         for (unsigned int n = 0; n < 2 * num_samples; n++) {
             data[n] = data[n] * gain;
