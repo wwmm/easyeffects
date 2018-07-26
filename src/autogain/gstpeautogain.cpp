@@ -119,7 +119,7 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
     g_object_class_install_property(
         gobject_class, PROP_WINDOW,
         g_param_spec_int("window", "Window", "ebur128 window (in milliseconds)",
-                         1, 60000, 400,
+                         1, 3000, 400,
                          static_cast<GParamFlags>(G_PARAM_READWRITE |
                                                   G_PARAM_STATIC_STRINGS)));
 
@@ -212,7 +212,10 @@ static GstFlowReturn gst_peautogain_transform_ip(GstBaseTransform* trans,
             2, peautogain->rate,
             EBUR128_MODE_HISTOGRAM | EBUR128_MODE_I | EBUR128_MODE_SAMPLE_PEAK);
 
-        ebur128_set_max_window(peautogain->ebur_state, 60000);  // ms
+        ebur128_set_channel(peautogain->ebur_state, 0, EBUR128_LEFT);
+        ebur128_set_channel(peautogain->ebur_state, 1, EBUR128_RIGHT);
+
+        ebur128_set_max_window(peautogain->ebur_state, 3000);  // ms
 
         peautogain->ready = true;
     }
@@ -283,7 +286,7 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
     }
 
     if (loudness > relative && relative > -70 && !failed) {
-        double peak, peak_L, peak_R, gain;
+        double peak, peak_L, peak_R;
 
         if (EBUR128_SUCCESS !=
             ebur128_prev_sample_peak(peautogain->ebur_state, 0, &peak_L)) {
@@ -302,21 +305,18 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
 
             float diff = peautogain->target - (float)loudness;
 
-            if (fabsf(diff) > 1) {
-                // 10^(diff/20)
-                gain = expf((diff / 20.0f) * logf(10.0f));
+            // 10^(diff/20). The way below should be faster than using pow
+            float gain = expf((diff / 20.0f) * logf(10.0f));
 
-                if (gain * peak < 1) {
-                    peautogain->gain = gain;
-                } else {
-                    peautogain->gain = fabsf(1.0f / (float)peak);
-                }
-
-                // std::cout << "gain: " << gain << std::endl;
-                // std::cout << "relative: " << relative << std::endl;
-                // std::cout << "peak: " << peak << std::endl;
-                // std::cout << "gain: " << peautogain->gain << std::endl;
+            if (gain * peak < 1) {
+                peautogain->gain = gain;
+            } else {
+                peautogain->gain = fabsf(1.0f / (float)peak);
             }
+
+            // std::cout << "relative: " << relative << std::endl;
+            // std::cout << "loudness: " << loudness << std::endl;
+            // std::cout << "gain: " << peautogain->gain << std::endl;
         }
     }
 

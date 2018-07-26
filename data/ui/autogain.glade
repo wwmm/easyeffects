@@ -103,7 +103,7 @@
   </object>
   <object class="GtkAdjustment" id="window">
     <property name="lower">1</property>
-    <property name="upper">60000</property>
+    <property name="upper">3000</property>
     <property name="value">400</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
