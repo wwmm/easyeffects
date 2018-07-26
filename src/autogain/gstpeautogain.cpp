@@ -191,8 +191,6 @@ static gboolean gst_peautogain_setup(GstAudioFilter* filter,
 
     GST_DEBUG_OBJECT(peautogain, "setup");
 
-    std::lock_guard<std::mutex> lock(peautogain->lock_guard_ebu);
-
     peautogain->bpf = info->bpf;
     peautogain->rate = info->rate;
 
@@ -311,7 +309,7 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
         if (gain * peak < -1) {
             peautogain->gain = gain;
         } else {
-            peautogain->gain = fabsf(-1 / (float)peak);
+            peautogain->gain = fabsf(-1.0f / (float)peak);
         }
 
         // std::cout << "gain: " << gain << std::endl;
