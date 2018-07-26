@@ -208,14 +208,15 @@ static GstFlowReturn gst_peautogain_transform_ip(GstBaseTransform* trans,
     if (peautogain->ready) {
         gst_peautogain_process(peautogain, buffer);
     } else {
-        peautogain->ebur_state = ebur128_init(
-            2, peautogain->rate,
-            EBUR128_MODE_HISTOGRAM | EBUR128_MODE_I | EBUR128_MODE_SAMPLE_PEAK);
+        peautogain->ebur_state =
+            ebur128_init(2, peautogain->rate,
+                         EBUR128_MODE_HISTOGRAM | EBUR128_MODE_I |
+                             EBUR128_MODE_S | EBUR128_MODE_SAMPLE_PEAK);
 
         ebur128_set_channel(peautogain->ebur_state, 0, EBUR128_LEFT);
         ebur128_set_channel(peautogain->ebur_state, 1, EBUR128_RIGHT);
 
-        ebur128_set_max_window(peautogain->ebur_state, 3000);  // ms
+        // ebur128_set_max_window(peautogain->ebur_state, 3000);  // ms
 
         peautogain->ready = true;
     }
@@ -231,7 +232,7 @@ static gboolean gst_peautogain_stop(GstBaseTransform* base) {
     peautogain->ready = false;
     peautogain->gain = 1.0f;
 
-    if (peautogain->ebur_state) {
+    if (peautogain->ebur_state != nullptr) {
         ebur128_destroy(&peautogain->ebur_state);
         free(peautogain->ebur_state);
     }
@@ -249,7 +250,7 @@ void gst_peautogain_finalize(GObject* object) {
     peautogain->ready = false;
     peautogain->gain = 1.0f;
 
-    if (peautogain->ebur_state) {
+    if (peautogain->ebur_state != nullptr) {
         ebur128_destroy(&peautogain->ebur_state);
         free(peautogain->ebur_state);
     }
@@ -269,15 +270,15 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
 
     ebur128_add_frames_float(peautogain->ebur_state, data, num_samples);
 
-    double relative, loudness;
+    double relative, loudness, shortterm, momentary, global;
     bool failed = false;
 
-    if (EBUR128_SUCCESS != ebur128_loudness_window(peautogain->ebur_state,
-                                                   peautogain->window,
-                                                   &loudness)) {
-        loudness = 0.0;
-        failed = true;
-    }
+    // if (EBUR128_SUCCESS != ebur128_loudness_window(peautogain->ebur_state,
+    //                                                peautogain->window,
+    //                                                &loudness)) {
+    //     loudness = 0.0;
+    //     failed = true;
+    // }
 
     if (EBUR128_SUCCESS !=
         ebur128_relative_threshold(peautogain->ebur_state, &relative)) {
@@ -285,7 +286,27 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
         failed = true;
     }
 
-    if (loudness > relative && relative > -70 && !failed) {
+    if (EBUR128_SUCCESS !=
+        ebur128_loudness_momentary(peautogain->ebur_state, &momentary)) {
+        momentary = 0.0;
+        failed = true;
+    }
+
+    if (EBUR128_SUCCESS !=
+        ebur128_loudness_shortterm(peautogain->ebur_state, &shortterm)) {
+        shortterm = 0.0;
+        failed = true;
+    }
+
+    if (EBUR128_SUCCESS !=
+        ebur128_loudness_global(peautogain->ebur_state, &global)) {
+        global = 0.0;
+        failed = true;
+    }
+
+    loudness = (momentary + shortterm + global) / 3.0f;
+
+    if (momentary > relative && relative > -70 && !failed) {
         double peak, peak_L, peak_R;
 
         if (EBUR128_SUCCESS !=
@@ -314,9 +335,12 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
                 peautogain->gain = fabsf(1.0f / (float)peak);
             }
 
-            // std::cout << "relative: " << relative << std::endl;
-            // std::cout << "loudness: " << loudness << std::endl;
-            // std::cout << "gain: " << peautogain->gain << std::endl;
+            std::cout << "relative: " << relative << std::endl;
+            std::cout << "momentary: " << momentary << std::endl;
+            std::cout << "shortterm: " << shortterm << std::endl;
+            std::cout << "global: " << global << std::endl;
+            std::cout << "loudness: " << loudness << std::endl;
+            std::cout << "gain: " << gain << std::endl;
         }
     }
 
