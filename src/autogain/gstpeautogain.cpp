@@ -296,21 +296,25 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
             failed = true;
         }
 
-        peak = (peak_L > peak_R) ? peak_L : peak_R;
+        if (!failed) {
+            peak = (peak_L > peak_R) ? peak_L : peak_R;
 
-        float diff = peautogain->target - (float)loudness;
+            float diff = peautogain->target - (float)loudness;
 
-        // 10^(diff/20)
-        gain = expf((diff / 20.0f) * logf(10.0f));
+            // 10^(diff/20)
+            gain = expf((diff / 20.0f) * logf(10.0f));
 
-        if (gain * peak < 1) {
-            peautogain->gain = gain;
-        } else {
-            peautogain->gain = fabsf(1.0f / (float)peak);
+            if (gain * peak < 1) {
+                peautogain->gain = gain;
+            } else {
+                peautogain->gain = fabsf(1.0f / (float)peak);
+            }
+
+            // std::cout << "gain: " << gain << std::endl;
+            // std::cout << "relative: " << relative << std::endl;
+            // std::cout << "peak: " << peak << std::endl;
+            // std::cout << "gain: " << peautogain->gain << std::endl;
         }
-
-        // std::cout << "gain: " << gain << std::endl;
-        // std::cout << "relative: " << relative << std::endl;
     }
 
     for (unsigned int n = 0; n < 2 * num_samples; n++) {
