@@ -296,9 +296,6 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
             failed = true;
         }
 
-        peak_L = 20 * log10(peak_L);
-        peak_R = 20 * log10(peak_R);
-
         peak = (peak_L > peak_R) ? peak_L : peak_R;
 
         float diff = peautogain->target - (float)loudness;
@@ -306,10 +303,10 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
         // 10^(diff/20)
         gain = expf((diff / 20.0f) * logf(10.0f));
 
-        if (gain * peak < -1) {
+        if (gain * peak < 1) {
             peautogain->gain = gain;
         } else {
-            peautogain->gain = fabsf(-1.0f / (float)peak);
+            peautogain->gain = fabsf(1.0f / (float)peak);
         }
 
         // std::cout << "gain: " << gain << std::endl;
