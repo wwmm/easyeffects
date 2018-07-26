@@ -46,7 +46,7 @@ static void gst_peautogain_finalize(GObject* object);
 static void gst_peautogain_process(GstPeautogain* peautogain,
                                    GstBuffer* buffer);
 
-enum { PROP_0, PROP_WINDOW, PROP_TARGET };
+enum { PROP_0, PROP_WINDOW, PROP_TARGET, PROP_GLOBAL_LOUDNESS };
 
 /* pad templates */
 
@@ -130,6 +130,14 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
                            -23.0f,
                            static_cast<GParamFlags>(G_PARAM_READWRITE |
                                                     G_PARAM_STATIC_STRINGS)));
+
+    g_object_class_install_property(
+        gobject_class, PROP_GLOBAL_LOUDNESS,
+        g_param_spec_float("global-loudness", "Global Loudness Level",
+                           "Integrated loudness (in LUFS)", -G_MAXFLOAT,
+                           G_MAXFLOAT, 0.0f,
+                           static_cast<GParamFlags>(G_PARAM_READABLE |
+                                                    G_PARAM_STATIC_STRINGS)));
 }
 
 static void gst_peautogain_init(GstPeautogain* peautogain) {
@@ -139,6 +147,9 @@ static void gst_peautogain_init(GstPeautogain* peautogain) {
     peautogain->window = 400;     // ms
     peautogain->target = -23.0f;  // LUFS
     peautogain->gain = 1.0f;
+    peautogain->global_loudness = 0.0f;
+    peautogain->notify_n_samples = G_MAXINT32;
+    peautogain->sample_count = 0;
 
     gst_base_transform_set_in_place(GST_BASE_TRANSFORM(peautogain), true);
 }
@@ -179,6 +190,9 @@ void gst_peautogain_get_property(GObject* object,
         case PROP_TARGET:
             g_value_set_float(value, peautogain->target);
             break;
+        case PROP_GLOBAL_LOUDNESS:
+            g_value_set_float(value, peautogain->global_loudness);
+            break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
             break;
@@ -193,6 +207,8 @@ static gboolean gst_peautogain_setup(GstAudioFilter* filter,
 
     peautogain->bpf = info->bpf;
     peautogain->rate = info->rate;
+    peautogain->notify_n_samples =
+        GST_CLOCK_TIME_TO_FRAMES(GST_SECOND, info->rate);
 
     return true;
 }
@@ -227,6 +243,7 @@ static gboolean gst_peautogain_stop(GstBaseTransform* base) {
 
     peautogain->ready = false;
     peautogain->gain = 1.0f;
+    peautogain->sample_count = 0;
 
     if (peautogain->ebur_state) {
         ebur128_destroy(&peautogain->ebur_state);
@@ -243,12 +260,14 @@ void gst_peautogain_finalize(GObject* object) {
 
     std::lock_guard<std::mutex> lock(peautogain->lock_guard_ebu);
 
+    peautogain->ready = false;
+    peautogain->gain = 1.0f;
+    peautogain->sample_count = 0;
+
     if (peautogain->ebur_state) {
         ebur128_destroy(&peautogain->ebur_state);
         free(peautogain->ebur_state);
     }
-
-    peautogain->ready = false;
 
     G_OBJECT_CLASS(gst_peautogain_parent_class)->finalize(object);
 }
@@ -265,7 +284,7 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
 
     ebur128_add_frames_float(peautogain->ebur_state, data, num_samples);
 
-    double relative, loudness;
+    double relative, loudness, global;
     bool failed = false;
 
     if (EBUR128_SUCCESS != ebur128_loudness_window(peautogain->ebur_state,
@@ -279,6 +298,14 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
         ebur128_relative_threshold(peautogain->ebur_state, &relative)) {
         relative = 0.0;
         failed = true;
+    }
+
+    if (EBUR128_SUCCESS !=
+        ebur128_loudness_global(peautogain->ebur_state, &global)) {
+        global = 0.0;
+        failed = true;
+    } else {
+        peautogain->global_loudness = (float)global;
     }
 
     if (loudness > relative && relative > -70 && !failed) {

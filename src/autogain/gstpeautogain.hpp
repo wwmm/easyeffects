@@ -25,15 +25,18 @@ struct _GstPeautogain {
 
     /* properties */
 
-    int window;
-    float target;
+    int window;             // ebur128_loudness_window window
+    float target;           // target loudness level
+    float global_loudness;  // ebur128_loudness_global output
 
     /* < private > */
 
     bool ready;
-    int bpf;  // bytes per frame : channels * bps
-    int rate; /*sampling rate*/
+    int bpf;   // bytes per frame : channels * bps
+    int rate;  // sampling rate
     float gain;
+    int notify_n_samples;  // number of frames to wait to notify value changes
+    int sample_count;
     ebur128_state* ebur_state;
 
     std::mutex lock_guard_ebu;
