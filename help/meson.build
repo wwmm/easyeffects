@@ -35,7 +35,8 @@ help_pages = [
   'effectsorder.page',
   'userpresets.page',
   'advancedinfo.page',
-  'saturated.page'
+  'saturated.page',
+  'autogain.page'
 ]
 
 help_media = [

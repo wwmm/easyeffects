@@ -1,0 +1,44 @@
+<page
+    xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
+    type="guide"
+    id="autogain">
+    <info>
+        <link type="guide" xref="index#plugins"/>
+    </info>
+    <title>Auto Gain</title>
+    <p>
+        PulseEffects auto gain is based on the library libebur128. It changes the audio
+        volume to a perceived loudness level that can be tweaked by the user.
+    </p>
+    <terms>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Target</em>
+            </title>
+            <p>
+                Loudness level.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Window</em>
+            </title>
+            <p>
+                Time window used to measure the loudness level.
+            </p>
+        </item>
+    </terms>
+    <section>
+        <title>References</title>
+        <list>
+            <item>
+                <p>
+                    <link href="https://tech.ebu.ch/loudness#tab" its:translate="no">
+                        https://tech.ebu.ch/loudness#tab
+                    </link>
+                </p>
+            </item>
+        </list>
+    </section>
+</page>
