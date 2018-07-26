@@ -308,19 +308,21 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
 
             float diff = peautogain->target - (float)loudness;
 
-            // 10^(diff/20)
-            gain = expf((diff / 20.0f) * logf(10.0f));
+            if (fabsf(diff) > 1) {
+                // 10^(diff/20)
+                gain = expf((diff / 20.0f) * logf(10.0f));
 
-            if (gain * peak < 1) {
-                peautogain->gain = gain;
-            } else {
-                peautogain->gain = fabsf(1.0f / (float)peak);
+                if (gain * peak < 1) {
+                    peautogain->gain = gain;
+                } else {
+                    peautogain->gain = fabsf(1.0f / (float)peak);
+                }
+
+                // std::cout << "gain: " << gain << std::endl;
+                // std::cout << "relative: " << relative << std::endl;
+                // std::cout << "peak: " << peak << std::endl;
+                // std::cout << "gain: " << peautogain->gain << std::endl;
             }
-
-            // std::cout << "gain: " << gain << std::endl;
-            // std::cout << "relative: " << relative << std::endl;
-            // std::cout << "peak: " << peak << std::endl;
-            // std::cout << "gain: " << peautogain->gain << std::endl;
         }
     }
 
