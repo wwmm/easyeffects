@@ -266,7 +266,7 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
 
     ebur128_add_frames_float(peautogain->ebur_state, data, num_samples);
 
-    double relative, loudness, global;
+    double relative, loudness;
     bool failed = false;
 
     if (EBUR128_SUCCESS != ebur128_loudness_window(peautogain->ebur_state,
@@ -279,12 +279,6 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
     if (EBUR128_SUCCESS !=
         ebur128_relative_threshold(peautogain->ebur_state, &relative)) {
         relative = 0.0;
-        failed = true;
-    }
-
-    if (EBUR128_SUCCESS !=
-        ebur128_loudness_global(peautogain->ebur_state, &global)) {
-        global = 0.0;
         failed = true;
     }
 
