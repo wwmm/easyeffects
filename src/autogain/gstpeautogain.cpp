@@ -211,7 +211,8 @@ static GstFlowReturn gst_peautogain_transform_ip(GstBaseTransform* trans,
         gst_peautogain_process(peautogain, buffer);
     } else {
         peautogain->ebur_state = ebur128_init(
-            2, peautogain->rate, EBUR128_MODE_HISTOGRAM | EBUR128_MODE_I);
+            2, peautogain->rate,
+            EBUR128_MODE_HISTOGRAM | EBUR128_MODE_I | EBUR128_MODE_SAMPLE_PEAK);
 
         ebur128_set_max_window(peautogain->ebur_state, 60000);  // ms
 
@@ -283,8 +284,35 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
     }
 
     if (loudness > relative && relative > -70 && !failed) {
-        peautogain->gain =
-            powf(10.0f, (peautogain->target - (float)loudness) / 20.0f);
+        double peak, peak_L, peak_R, gain;
+
+        if (EBUR128_SUCCESS !=
+            ebur128_prev_sample_peak(peautogain->ebur_state, 0, &peak_L)) {
+            peak_L = 0.0;
+            failed = true;
+        }
+
+        if (EBUR128_SUCCESS !=
+            ebur128_prev_sample_peak(peautogain->ebur_state, 1, &peak_R)) {
+            peak_R = 0.0;
+            failed = true;
+        }
+
+        peak_L = 20 * log10(peak_L);
+        peak_R = 20 * log10(peak_R);
+
+        peak = (peak_L > peak_R) ? peak_L : peak_R;
+
+        float diff = peautogain->target - (float)loudness;
+
+        // 10^(diff/20)
+        gain = expf((diff / 20.0f) * logf(10.0f));
+
+        if (gain * peak < -1) {
+            peautogain->gain = gain;
+        } else {
+            peautogain->gain = fabsf(-1 / (float)peak);
+        }
 
         // std::cout << "gain: " << gain << std::endl;
         // std::cout << "relative: " << relative << std::endl;
