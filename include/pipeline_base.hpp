@@ -18,6 +18,8 @@ class PipelineBase {
         *identity_in, *identity_out;
     GstBus* bus;
 
+    GstClockTime state_check_timeout = 5 * GST_SECOND;
+
     bool resizing_spectrum = false;
     uint min_spectrum_freq = 20;     // Hz
     uint max_spectrum_freq = 20000;  // Hz

@@ -42,11 +42,14 @@ void on_message_state_changed(const GstBus* gst_bus,
                               GstMessage* message,
                               PipelineBase* pb) {
     if (GST_OBJECT_NAME(message->src) == std::string("pipeline")) {
-        GstState new_state;
+        GstState old_state, new_state, pending;
 
-        gst_message_parse_state_changed(message, nullptr, &new_state, nullptr);
+        gst_message_parse_state_changed(message, &old_state, &new_state,
+                                        &pending);
 
-        util::debug(pb->log_tag + gst_element_state_get_name(new_state));
+        util::debug(pb->log_tag + gst_element_state_get_name(old_state) +
+                    " -> " + gst_element_state_get_name(new_state) + " -> " +
+                    gst_element_state_get_name(pending));
     }
 }
 
@@ -141,7 +144,8 @@ void on_spectrum_n_points_changed(GSettings* settings,
 void on_buffer_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
     GstState state;
 
-    gst_element_get_state(pb->pipeline, &state, nullptr, 0);
+    gst_element_get_state(pb->pipeline, &state, nullptr,
+                          pb->state_check_timeout);
 
     if (state == GST_STATE_PLAYING) {
         gst_element_set_state(pb->pipeline, GST_STATE_NULL);
@@ -152,7 +156,8 @@ void on_buffer_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
 void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
     GstState state;
 
-    gst_element_get_state(pb->pipeline, &state, nullptr, 0);
+    gst_element_get_state(pb->pipeline, &state, nullptr,
+                          pb->state_check_timeout);
 
     if (state == GST_STATE_PLAYING) {
         gst_element_set_state(pb->pipeline, GST_STATE_NULL);
@@ -309,7 +314,7 @@ void PipelineBase::set_source_monitor_name(std::string name) {
     if (name != current_device) {
         GstState state;
 
-        gst_element_get_state(pipeline, &state, nullptr, 0);
+        gst_element_get_state(pipeline, &state, nullptr, state_check_timeout);
 
         if (state == GST_STATE_PLAYING) {
             gst_element_set_state(pipeline, GST_STATE_NULL);
@@ -350,14 +355,19 @@ void PipelineBase::update_pipeline_state() {
         }
     }
 
-    GstState state;
+    GstState state, pending;
 
-    gst_element_get_state(pipeline, &state, nullptr, 0);
+    gst_element_get_state(pipeline, &state, &pending, state_check_timeout);
 
     if (state != GST_STATE_PLAYING && wants_to_play) {
         gst_element_set_state(pipeline, GST_STATE_PLAYING);
     } else if (state == GST_STATE_PLAYING && !wants_to_play) {
         gst_element_set_state(pipeline, GST_STATE_NULL);
+
+        gst_element_get_state(pipeline, &state, &pending, state_check_timeout);
+
+        util::debug(log_tag + gst_element_state_get_name(state) + " -> " +
+                    gst_element_state_get_name(pending));
     }
 }
 
