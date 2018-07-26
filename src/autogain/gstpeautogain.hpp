@@ -33,6 +33,7 @@ struct _GstPeautogain {
     bool ready;
     int bpf;  // bytes per frame : channels * bps
     int rate; /*sampling rate*/
+    float gain;
     ebur128_state* ebur_state;
 
     std::mutex lock_guard_ebu;

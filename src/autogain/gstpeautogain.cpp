@@ -138,6 +138,7 @@ static void gst_peautogain_init(GstPeautogain* peautogain) {
     peautogain->rate = 0;
     peautogain->window = 400;     // ms
     peautogain->target = -23.0f;  // LUFS
+    peautogain->gain = 1.0f;
 
     gst_base_transform_set_in_place(GST_BASE_TRANSFORM(peautogain), true);
 }
@@ -225,12 +226,13 @@ static gboolean gst_peautogain_stop(GstBaseTransform* base) {
 
     std::lock_guard<std::mutex> lock(peautogain->lock_guard_ebu);
 
+    peautogain->ready = false;
+    peautogain->gain = 1.0f;
+
     if (peautogain->ebur_state) {
         ebur128_destroy(&peautogain->ebur_state);
         free(peautogain->ebur_state);
     }
-
-    peautogain->ready = false;
 
     return true;
 }
@@ -280,16 +282,16 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
         failed = true;
     }
 
-    if (relative > -70 && !failed) {
-        float gain =
+    if (loudness > relative && relative > -70 && !failed) {
+        peautogain->gain =
             powf(10.0f, (peautogain->target - (float)loudness) / 20.0f);
 
         // std::cout << "gain: " << gain << std::endl;
         // std::cout << "relative: " << relative << std::endl;
+    }
 
-        for (unsigned int n = 0; n < 2 * num_samples; n++) {
-            data[n] = data[n] * gain;
-        }
+    for (unsigned int n = 0; n < 2 * num_samples; n++) {
+        data[n] = data[n] * peautogain->gain;
     }
 
     gst_buffer_unmap(buffer, &map);
