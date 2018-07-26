@@ -335,12 +335,12 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
                 peautogain->gain = fabsf(1.0f / (float)peak);
             }
 
-            std::cout << "relative: " << relative << std::endl;
-            std::cout << "momentary: " << momentary << std::endl;
-            std::cout << "shortterm: " << shortterm << std::endl;
-            std::cout << "global: " << global << std::endl;
-            std::cout << "loudness: " << loudness << std::endl;
-            std::cout << "gain: " << gain << std::endl;
+            // std::cout << "relative: " << relative << std::endl;
+            // std::cout << "momentary: " << momentary << std::endl;
+            // std::cout << "shortterm: " << shortterm << std::endl;
+            // std::cout << "global: " << global << std::endl;
+            // std::cout << "loudness: " << loudness << std::endl;
+            // std::cout << "gain: " << gain << std::endl;
         }
     }
 
