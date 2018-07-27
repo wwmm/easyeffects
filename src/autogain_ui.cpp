@@ -13,11 +13,13 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
     builder->get_widget("i_level", i_level);
     builder->get_widget("r_level", r_level);
     builder->get_widget("g_level", g_level);
+    builder->get_widget("l_level", l_level);
     builder->get_widget("m_label", m_label);
     builder->get_widget("s_label", s_label);
     builder->get_widget("i_label", i_label);
     builder->get_widget("r_label", r_label);
     builder->get_widget("g_label", g_label);
+    builder->get_widget("l_label", l_label);
 
     get_object(builder, "input_gain", input_gain);
     get_object(builder, "output_gain", output_gain);
