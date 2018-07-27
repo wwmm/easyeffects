@@ -13,6 +13,13 @@ class AutoGainUi : public Gtk::Grid, public PluginUiBase {
 
     void reset();
 
+    void on_new_momentary(const float& value);
+    void on_new_shortterm(const float& value);
+    void on_new_integrated(const float& value);
+    void on_new_relative(const float& value);
+    void on_new_loudness(const float& value);
+    void on_new_gain(const float& value);
+
    private:
     Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, target, weight_m,
         weight_s, weight_i;
