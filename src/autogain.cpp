@@ -2,6 +2,16 @@
 #include "autogain.hpp"
 #include "util.hpp"
 
+namespace {
+
+void on_m_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
+    float m;
+
+    g_object_get(a->autogain, "m", &m, nullptr);
+}
+
+}  // namespace
+
 AutoGain::AutoGain(const std::string& tag, const std::string& schema)
     : PluginBase(tag, "autogain", schema) {
     autogain = gst_element_factory_make("peautogain", nullptr);
@@ -35,6 +45,8 @@ AutoGain::AutoGain(const std::string& tag, const std::string& schema)
                         G_SETTINGS_BIND_DEFAULT);
         g_settings_bind(settings, "post-messages", out_level, "post-messages",
                         G_SETTINGS_BIND_DEFAULT);
+
+        g_signal_connect(autogain, "notify::m", G_CALLBACK(on_m_changed), this);
 
         g_settings_bind_with_mapping(
             settings, "input-gain", input_gain, "volume",

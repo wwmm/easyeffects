@@ -54,6 +54,7 @@ enum {
     PROP_S,
     PROP_I,
     PROP_R,
+    PROP_L,
     PROP_G
 };
 
@@ -182,6 +183,14 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
                                                     G_PARAM_STATIC_STRINGS)));
 
     g_object_class_install_property(
+        gobject_class, PROP_L,
+        g_param_spec_float("l", "Loudness Level",
+                           "Estimated Loudness level (in LUFS)", -G_MAXFLOAT,
+                           G_MAXFLOAT, 0.0f,
+                           static_cast<GParamFlags>(G_PARAM_READABLE |
+                                                    G_PARAM_STATIC_STRINGS)));
+
+    g_object_class_install_property(
         gobject_class, PROP_G,
         g_param_spec_float("g", "Gain", "Correction gain", -G_MAXFLOAT,
                            G_MAXFLOAT, 0.0f,
@@ -201,6 +210,7 @@ static void gst_peautogain_init(GstPeautogain* peautogain) {
     peautogain->shortterm = 0.0f;
     peautogain->global = 0.0f;
     peautogain->relative = 0.0f;
+    peautogain->loudness = 0.0f;
     peautogain->gain = 1.0f;
     peautogain->notify_samples = 0;
     peautogain->sample_count = 0;
@@ -268,6 +278,9 @@ void gst_peautogain_get_property(GObject* object,
             break;
         case PROP_R:
             g_value_set_float(value, peautogain->relative);
+            break;
+        case PROP_L:
+            g_value_set_float(value, peautogain->loudness);
             break;
         case PROP_G:
             g_value_set_float(value, peautogain->gain);
@@ -346,6 +359,8 @@ void gst_peautogain_finalize(GObject* object) {
 static void gst_peautogain_process(GstPeautogain* peautogain,
                                    GstBuffer* buffer) {
     GstMapInfo map;
+    double relative, momentary;
+    bool failed = false;
 
     gst_buffer_map(buffer, &map, GST_MAP_READWRITE);
 
@@ -354,9 +369,6 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
     guint num_samples = map.size / peautogain->bpf;
 
     ebur128_add_frames_float(peautogain->ebur_state, data, num_samples);
-
-    double relative, shortterm, momentary, global;
-    bool failed = false;
 
     if (EBUR128_SUCCESS !=
         ebur128_relative_threshold(peautogain->ebur_state, &relative)) {
@@ -370,35 +382,41 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
         failed = true;
     }
 
-    if (EBUR128_SUCCESS !=
-        ebur128_loudness_shortterm(peautogain->ebur_state, &shortterm)) {
-        shortterm = 0.0;
-        failed = true;
-    }
-
-    if (EBUR128_SUCCESS !=
-        ebur128_loudness_global(peautogain->ebur_state, &global)) {
-        global = 0.0;
-        failed = true;
-    }
-
     peautogain->momentary = (float)momentary;
-    peautogain->shortterm = (float)shortterm;
-    peautogain->global = (float)global;
     peautogain->relative = (float)relative;
-
-    float loudness =
-        (peautogain->weight_m * peautogain->momentary +
-         peautogain->weight_s * peautogain->shortterm +
-         peautogain->weight_i * peautogain->global) /
-        (peautogain->weight_m + peautogain->weight_s + peautogain->weight_i);
 
     if (peautogain->momentary > peautogain->relative &&
         peautogain->relative > -70 && !failed) {
-        float diff = peautogain->target - loudness;
+        double shortterm, global;
 
-        // 10^(diff/20). The way below should be faster than using pow
-        peautogain->gain = expf((diff / 20.0f) * logf(10.0f));
+        if (EBUR128_SUCCESS !=
+            ebur128_loudness_shortterm(peautogain->ebur_state, &shortterm)) {
+            shortterm = 0.0;
+            failed = true;
+        }
+
+        if (EBUR128_SUCCESS !=
+            ebur128_loudness_global(peautogain->ebur_state, &global)) {
+            global = 0.0;
+            failed = true;
+        }
+
+        if (!failed) {
+            peautogain->shortterm = (float)shortterm;
+            peautogain->global = (float)global;
+
+            peautogain->loudness =
+                (peautogain->weight_m * peautogain->momentary +
+                 peautogain->weight_s * peautogain->shortterm +
+                 peautogain->weight_i * peautogain->global) /
+                (peautogain->weight_m + peautogain->weight_s +
+                 peautogain->weight_i);
+
+            float diff = peautogain->target - peautogain->loudness;
+
+            // 10^(diff/20). The way below should be faster than using pow
+            peautogain->gain = expf((diff / 20.0f) * logf(10.0f));
+        }
     }
 
     for (unsigned int n = 0; n < 2 * num_samples; n++) {
@@ -409,20 +427,21 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
 
     peautogain->sample_count += num_samples;
 
-    if (peautogain->sample_count >= peautogain->notify_samples) {
+    if (peautogain->sample_count >= peautogain->notify_samples && !failed) {
         peautogain->sample_count = 0;
 
         // std::cout << "relative: " << relative << std::endl;
         // std::cout << "momentary: " << momentary << std::endl;
         // std::cout << "shortterm: " << shortterm << std::endl;
         // std::cout << "global: " << global << std::endl;
-        // std::cout << "loudness: " << loudness << std::endl;
+        // std::cout << "loudness: " << peautogain->loudness << std::endl;
         // std::cout << "gain: " << peautogain->gain << std::endl;
 
         g_object_notify(G_OBJECT(peautogain), "m");
         g_object_notify(G_OBJECT(peautogain), "s");
         g_object_notify(G_OBJECT(peautogain), "i");
         g_object_notify(G_OBJECT(peautogain), "r");
+        g_object_notify(G_OBJECT(peautogain), "l");
         g_object_notify(G_OBJECT(peautogain), "g");
     }
 }

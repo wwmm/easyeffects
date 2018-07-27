@@ -33,13 +33,15 @@ struct _GstPeautogain {
     float shortterm;  // short term value
     float global;     // integrated value
     float relative;   // relative threshold
+    float loudness;   // estimated loudness
+    float gain;       // correction gain
 
     /* < private > */
 
     bool ready;
     int bpf;   // bytes per frame : channels * bps
     int rate;  // sampling rate
-    float gain;
+
     int notify_samples;  // number of samples to count before emit a notify
     int sample_count;
     ebur128_state* ebur_state;

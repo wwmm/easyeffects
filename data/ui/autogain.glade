@@ -535,7 +535,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="label" translatable="yes">m</property>
+                <property name="label" translatable="yes">0</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -572,7 +572,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="label" translatable="yes">s</property>
+                <property name="label" translatable="yes">0</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -585,7 +585,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="label" translatable="yes">i</property>
+                <property name="label" translatable="yes">0</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -648,7 +648,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="label" translatable="yes">r</property>
+                <property name="label" translatable="yes">0</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -661,7 +661,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="label" translatable="yes">g</property>
+                <property name="label" translatable="yes">0</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -699,7 +699,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="label" translatable="yes">l</property>
+                <property name="label" translatable="yes">0</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
