@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-07-26 13:13-0300\n"
+"POT-Creation-Date: 2018-07-26 22:46-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -129,7 +129,7 @@ msgstr ""
 #: C/webrtc.page:140
 #: C/crystalizer.page:27
 #: C/convolver.page:42
-#: C/autogain.page:33
+#: C/autogain.page:49
 msgid "References"
 msgstr ""
 
@@ -612,7 +612,6 @@ msgstr ""
 #. (itstool) path: title/em
 #: C/limiter.page:89
 #: C/calibrationmic.page:17
-#: C/autogain.page:25
 msgid "Window"
 msgstr ""
 
@@ -1690,8 +1689,33 @@ msgstr ""
 msgid "Loudness level."
 msgstr ""
 
+#. (itstool) path: title/em
+#: C/autogain.page:25
+msgid "Momentary"
+msgstr ""
+
 #. (itstool) path: item/p
 #: C/autogain.page:27
-msgid "Time window used to measure the loudness level."
+msgid "Weight of the momentary term in the loudness level estimation."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/autogain.page:33
+msgid "Short Term"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/autogain.page:35
+msgid "Weight of the short term in the loudness level estimation."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/autogain.page:41
+msgid "Integrated"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/autogain.page:43
+msgid "Weight of the integrated term in the loudness level estimation."
 msgstr ""
 

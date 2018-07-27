@@ -22,10 +22,26 @@
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Window</em>
+                <em style="strong" its:withinText="nested">Momentary</em>
             </title>
             <p>
-                Time window used to measure the loudness level.
+                Weight of the momentary term in the loudness level estimation.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Short Term</em>
+            </title>
+            <p>
+                Weight of the short term in the loudness level estimation.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Integrated</em>
+            </title>
+            <p>
+                Weight of the integrated term in the loudness level estimation.
             </p>
         </item>
     </terms>
