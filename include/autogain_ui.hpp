@@ -16,6 +16,8 @@ class AutoGainUi : public Gtk::Grid, public PluginUiBase {
    private:
     Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, target, weight_m,
         weight_s, weight_i;
+    Gtk::LevelBar *m_level, *s_level, *i_level, *r_level, *g_level;
+    Gtk::Label *m_label, *s_label, *i_label, *r_label, *g_label;
 };
 
 #endif
