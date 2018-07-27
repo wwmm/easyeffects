@@ -15,7 +15,7 @@
 #include <gst/audio/gstaudiofilter.h>
 #include <gst/gst.h>
 #include <cmath>
-// #include <iostream>
+#include <iostream>
 #include "gstpeautogain.hpp"
 
 GST_DEBUG_CATEGORY_STATIC(gst_peautogain_debug_category);
@@ -53,7 +53,8 @@ enum {
     PROP_M,
     PROP_S,
     PROP_I,
-    PROP_R
+    PROP_R,
+    PROP_G
 };
 
 /* pad templates */
@@ -179,6 +180,13 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
                            G_MAXFLOAT, 0.0f,
                            static_cast<GParamFlags>(G_PARAM_READABLE |
                                                     G_PARAM_STATIC_STRINGS)));
+
+    g_object_class_install_property(
+        gobject_class, PROP_G,
+        g_param_spec_float("g", "Gain", "Correction gain", -G_MAXFLOAT,
+                           G_MAXFLOAT, 0.0f,
+                           static_cast<GParamFlags>(G_PARAM_READABLE |
+                                                    G_PARAM_STATIC_STRINGS)));
 }
 
 static void gst_peautogain_init(GstPeautogain* peautogain) {
@@ -194,6 +202,8 @@ static void gst_peautogain_init(GstPeautogain* peautogain) {
     peautogain->global = 0.0f;
     peautogain->relative = 0.0f;
     peautogain->gain = 1.0f;
+    peautogain->notify_samples = 0;
+    peautogain->sample_count = 0;
     peautogain->ebur_state = nullptr;
 
     gst_base_transform_set_in_place(GST_BASE_TRANSFORM(peautogain), true);
@@ -259,6 +269,9 @@ void gst_peautogain_get_property(GObject* object,
         case PROP_R:
             g_value_set_float(value, peautogain->relative);
             break;
+        case PROP_G:
+            g_value_set_float(value, peautogain->gain);
+            break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
             break;
@@ -283,6 +296,11 @@ static gboolean gst_peautogain_setup(GstAudioFilter* filter,
 
         ebur128_set_channel(peautogain->ebur_state, 0, EBUR128_LEFT);
         ebur128_set_channel(peautogain->ebur_state, 1, EBUR128_RIGHT);
+
+        /*notify every 0.2 seconds*/
+
+        peautogain->notify_samples =
+            GST_CLOCK_TIME_TO_FRAMES(2 * GST_SECOND / 10, info->rate);
 
         peautogain->ready = true;
     }
@@ -381,13 +399,6 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
 
         // 10^(diff/20). The way below should be faster than using pow
         peautogain->gain = expf((diff / 20.0f) * logf(10.0f));
-
-        // std::cout << "relative: " << relative << std::endl;
-        // std::cout << "momentary: " << momentary << std::endl;
-        // std::cout << "shortterm: " << shortterm << std::endl;
-        // std::cout << "global: " << global << std::endl;
-        // std::cout << "loudness: " << loudness << std::endl;
-        // std::cout << "gain: " << gain << std::endl;
     }
 
     for (unsigned int n = 0; n < 2 * num_samples; n++) {
@@ -395,6 +406,25 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
     }
 
     gst_buffer_unmap(buffer, &map);
+
+    peautogain->sample_count += num_samples;
+
+    if (peautogain->sample_count >= peautogain->notify_samples) {
+        peautogain->sample_count = 0;
+
+        // std::cout << "relative: " << relative << std::endl;
+        // std::cout << "momentary: " << momentary << std::endl;
+        // std::cout << "shortterm: " << shortterm << std::endl;
+        // std::cout << "global: " << global << std::endl;
+        // std::cout << "loudness: " << loudness << std::endl;
+        // std::cout << "gain: " << peautogain->gain << std::endl;
+
+        g_object_notify(G_OBJECT(peautogain), "m");
+        g_object_notify(G_OBJECT(peautogain), "s");
+        g_object_notify(G_OBJECT(peautogain), "i");
+        g_object_notify(G_OBJECT(peautogain), "r");
+        g_object_notify(G_OBJECT(peautogain), "g");
+    }
 }
 
 static gboolean plugin_init(GstPlugin* plugin) {
