@@ -25,10 +25,14 @@ struct _GstPeautogain {
 
     /* properties */
 
-    float target;  // target loudness level
-    int weight_m;  // momentary loudness weight
-    int weight_s;  // short term loudness weight
-    int weight_i;  // integrated loudness weight
+    float target;     // target loudness level
+    int weight_m;     // momentary loudness weight
+    int weight_s;     // short term loudness weight
+    int weight_i;     // integrated loudness weight
+    float momentary;  // momentary value
+    float shortterm;  // short term value
+    float global;     // integrated value
+    float relative;   // relative threshold
 
     /* < private > */
 
