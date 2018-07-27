@@ -1,12 +1,10 @@
 cxx = meson.get_compiler('cpp')
 
-cxx_args = '-Wl,-Bsymbolic-functions'
-
-# Symbol visibility
-cxx_args += '-fvisibility=hidden'
-
-# Disable strict aliasing
-cxx_args += '-fno-strict-aliasing'
+cxx_args = [
+	'-Wl,-Bsymbolic-functions',
+	'-fvisibility=hidden',
+	'-fno-strict-aliasing'
+]
 
 zita_convolver = cxx.find_library('zita-convolver', required: false)
 
@@ -43,7 +41,7 @@ library(
 	dependencies : plugin_deps,
 	install: true,
 	install_dir : plugins_install_dir,
-  c_args: cxx_args
+  cpp_args: cxx_args
 )
 
 else
