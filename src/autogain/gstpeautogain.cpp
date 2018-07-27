@@ -55,7 +55,8 @@ enum {
     PROP_I,
     PROP_R,
     PROP_L,
-    PROP_G
+    PROP_G,
+    PROP_NOTIFY
 };
 
 /* pad templates */
@@ -196,6 +197,13 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
                            G_MAXFLOAT, 0.0f,
                            static_cast<GParamFlags>(G_PARAM_READABLE |
                                                     G_PARAM_STATIC_STRINGS)));
+
+    g_object_class_install_property(
+        gobject_class, PROP_NOTIFY,
+        g_param_spec_boolean("notify-host", "Notify Host",
+                             "Notify host of variable changes", true,
+                             static_cast<GParamFlags>(G_PARAM_READWRITE |
+                                                      G_PARAM_STATIC_STRINGS)));
 }
 
 static void gst_peautogain_init(GstPeautogain* peautogain) {
@@ -214,6 +222,7 @@ static void gst_peautogain_init(GstPeautogain* peautogain) {
     peautogain->gain = 1.0f;
     peautogain->notify_samples = 0;
     peautogain->sample_count = 0;
+    peautogain->notify = true;
     peautogain->ebur_state = nullptr;
 
     gst_base_transform_set_in_place(GST_BASE_TRANSFORM(peautogain), true);
@@ -239,6 +248,9 @@ void gst_peautogain_set_property(GObject* object,
             break;
         case PROP_WEIGHT_I:
             peautogain->weight_i = g_value_get_int(value);
+            break;
+        case PROP_NOTIFY:
+            peautogain->notify = g_value_get_boolean(value);
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -284,6 +296,9 @@ void gst_peautogain_get_property(GObject* object,
             break;
         case PROP_G:
             g_value_set_float(value, peautogain->gain);
+            break;
+        case PROP_NOTIFY:
+            g_value_set_boolean(value, peautogain->notify);
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -431,7 +446,8 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
 
     peautogain->sample_count += num_samples;
 
-    if (peautogain->sample_count >= peautogain->notify_samples && !failed) {
+    if (peautogain->sample_count >= peautogain->notify_samples && !failed &&
+        peautogain->notify) {
         peautogain->sample_count = 0;
 
         // std::cout << "relative: " << relative << std::endl;

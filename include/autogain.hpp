@@ -12,6 +12,13 @@ class AutoGain : public PluginBase {
 
     GstElement* autogain;
 
+    sigc::signal<void, float> momentary;
+    sigc::signal<void, float> shortterm;
+    sigc::signal<void, float> integrated;
+    sigc::signal<void, float> relative;
+    sigc::signal<void, float> loudness;
+    sigc::signal<void, float> gain;
+
    private:
     void bind_to_gsettings();
 };

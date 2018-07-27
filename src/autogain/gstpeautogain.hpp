@@ -38,7 +38,7 @@ struct _GstPeautogain {
 
     /* < private > */
 
-    bool ready;
+    bool ready, notify;
     int bpf;   // bytes per frame : channels * bps
     int rate;  // sampling rate
 

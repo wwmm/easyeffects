@@ -45,6 +45,8 @@ AutoGain::AutoGain(const std::string& tag, const std::string& schema)
                         G_SETTINGS_BIND_DEFAULT);
         g_settings_bind(settings, "post-messages", out_level, "post-messages",
                         G_SETTINGS_BIND_DEFAULT);
+        g_settings_bind(settings, "post-messages", autogain, "notify-host",
+                        G_SETTINGS_BIND_DEFAULT);
 
         g_signal_connect(autogain, "notify::m", G_CALLBACK(on_m_changed), this);
 
