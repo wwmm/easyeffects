@@ -5,11 +5,51 @@
 namespace {
 
 void on_m_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
-    float m;
+    float v;
 
-    g_object_get(a->autogain, "m", &m, nullptr);
+    g_object_get(a->autogain, "m", &v, nullptr);
 
-    Glib::signal_idle().connect_once([=] { a->momentary.emit(m); });
+    Glib::signal_idle().connect_once([=] { a->momentary.emit(v); });
+}
+
+void on_s_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
+    float v;
+
+    g_object_get(a->autogain, "s", &v, nullptr);
+
+    Glib::signal_idle().connect_once([=] { a->shortterm.emit(v); });
+}
+
+void on_i_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
+    float v;
+
+    g_object_get(a->autogain, "i", &v, nullptr);
+
+    Glib::signal_idle().connect_once([=] { a->integrated.emit(v); });
+}
+
+void on_r_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
+    float v;
+
+    g_object_get(a->autogain, "r", &v, nullptr);
+
+    Glib::signal_idle().connect_once([=] { a->relative.emit(v); });
+}
+
+void on_l_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
+    float v;
+
+    g_object_get(a->autogain, "l", &v, nullptr);
+
+    Glib::signal_idle().connect_once([=] { a->loudness.emit(v); });
+}
+
+void on_g_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
+    float v;
+
+    g_object_get(a->autogain, "g", &v, nullptr);
+
+    Glib::signal_idle().connect_once([=] { a->gain.emit(v); });
 }
 
 }  // namespace
@@ -51,6 +91,11 @@ AutoGain::AutoGain(const std::string& tag, const std::string& schema)
                         G_SETTINGS_BIND_DEFAULT);
 
         g_signal_connect(autogain, "notify::m", G_CALLBACK(on_m_changed), this);
+        g_signal_connect(autogain, "notify::s", G_CALLBACK(on_s_changed), this);
+        g_signal_connect(autogain, "notify::i", G_CALLBACK(on_i_changed), this);
+        g_signal_connect(autogain, "notify::r", G_CALLBACK(on_r_changed), this);
+        g_signal_connect(autogain, "notify::l", G_CALLBACK(on_l_changed), this);
+        g_signal_connect(autogain, "notify::g", G_CALLBACK(on_g_changed), this);
 
         g_settings_bind_with_mapping(
             settings, "input-gain", input_gain, "volume",
