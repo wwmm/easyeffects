@@ -25,8 +25,10 @@ struct _GstPeautogain {
 
     /* properties */
 
-    int window;    // ebur128_loudness_window window
     float target;  // target loudness level
+    int weight_m;  // momentary loudness weight
+    int weight_s;  // short term loudness weight
+    int weight_i;  // integrated loudness weight
 
     /* < private > */
 

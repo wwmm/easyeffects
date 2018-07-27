@@ -17,7 +17,11 @@ void AutoGainPreset::save(boost::property_tree::ptree& root,
 
     root.put(section + ".autogain.target", settings->get_double("target"));
 
-    root.put(section + ".autogain.window", settings->get_int("window"));
+    root.put(section + ".autogain.weight_m", settings->get_int("weight_m"));
+
+    root.put(section + ".autogain.weight_s", settings->get_int("weight_s"));
+
+    root.put(section + ".autogain.weight_i", settings->get_int("weight_i"));
 }
 
 void AutoGainPreset::load(boost::property_tree::ptree& root,
@@ -41,9 +45,17 @@ void AutoGainPreset::load(boost::property_tree::ptree& root,
         "target", root.get<double>(section + ".autogain.target",
                                    get_default<double>(settings, "target")));
 
-    settings->set_int("window",
-                      root.get<int>(section + ".autogain.window",
-                                    get_default<int>(settings, "window")));
+    settings->set_int("weight_m",
+                      root.get<int>(section + ".autogain.weight_m",
+                                    get_default<int>(settings, "weight_m")));
+
+    settings->set_int("weight_s",
+                      root.get<int>(section + ".autogain.weight_s",
+                                    get_default<int>(settings, "weight_s")));
+
+    settings->set_int("weight_i",
+                      root.get<int>(section + ".autogain.weight_i",
+                                    get_default<int>(settings, "weight_i")));
 }
 
 void AutoGainPreset::write(boost::property_tree::ptree& root) {

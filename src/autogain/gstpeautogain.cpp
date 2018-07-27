@@ -39,14 +39,12 @@ static gboolean gst_peautogain_setup(GstAudioFilter* filter,
 static GstFlowReturn gst_peautogain_transform_ip(GstBaseTransform* trans,
                                                  GstBuffer* buffer);
 
-static gboolean gst_peautogain_stop(GstBaseTransform* base);
-
 static void gst_peautogain_finalize(GObject* object);
 
 static void gst_peautogain_process(GstPeautogain* peautogain,
                                    GstBuffer* buffer);
 
-enum { PROP_0, PROP_WINDOW, PROP_TARGET };
+enum { PROP_0, PROP_TARGET, PROP_WEIGHT_M, PROP_WEIGHT_S, PROP_WEIGHT_I };
 
 /* pad templates */
 
@@ -102,26 +100,14 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
 
     gobject_class->set_property = gst_peautogain_set_property;
     gobject_class->get_property = gst_peautogain_get_property;
-
-    audio_filter_class->setup = GST_DEBUG_FUNCPTR(gst_peautogain_setup);
-
-    base_transform_class->transform_ip =
-        GST_DEBUG_FUNCPTR(gst_peautogain_transform_ip);
-
-    base_transform_class->transform_ip_on_passthrough = false;
-
-    base_transform_class->stop = GST_DEBUG_FUNCPTR(gst_peautogain_stop);
-
     gobject_class->finalize = gst_peautogain_finalize;
 
-    /* define properties */
+    audio_filter_class->setup = GST_DEBUG_FUNCPTR(gst_peautogain_setup);
+    base_transform_class->transform_ip =
+        GST_DEBUG_FUNCPTR(gst_peautogain_transform_ip);
+    base_transform_class->transform_ip_on_passthrough = false;
 
-    g_object_class_install_property(
-        gobject_class, PROP_WINDOW,
-        g_param_spec_int("window", "Window", "ebur128 window (in milliseconds)",
-                         1, 3000, 400,
-                         static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                                  G_PARAM_STATIC_STRINGS)));
+    /* define properties */
 
     g_object_class_install_property(
         gobject_class, PROP_TARGET,
@@ -130,15 +116,39 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
                            -23.0f,
                            static_cast<GParamFlags>(G_PARAM_READWRITE |
                                                     G_PARAM_STATIC_STRINGS)));
+
+    g_object_class_install_property(
+        gobject_class, PROP_WEIGHT_M,
+        g_param_spec_int("weight-m", "Weight 0", "Momentary loudness weight", 0,
+                         100, 1,
+                         static_cast<GParamFlags>(G_PARAM_READWRITE |
+                                                  G_PARAM_STATIC_STRINGS)));
+
+    g_object_class_install_property(
+        gobject_class, PROP_WEIGHT_S,
+        g_param_spec_int("weight-s", "Weight 1", "Short term loudness weight",
+                         0, 100, 1,
+                         static_cast<GParamFlags>(G_PARAM_READWRITE |
+                                                  G_PARAM_STATIC_STRINGS)));
+
+    g_object_class_install_property(
+        gobject_class, PROP_WEIGHT_I,
+        g_param_spec_int("weight-i", "Weight 2", "Integrated loudness weight",
+                         0, 100, 1,
+                         static_cast<GParamFlags>(G_PARAM_READWRITE |
+                                                  G_PARAM_STATIC_STRINGS)));
 }
 
 static void gst_peautogain_init(GstPeautogain* peautogain) {
     peautogain->ready = false;
     peautogain->bpf = 0;
     peautogain->rate = 0;
-    peautogain->window = 400;     // ms
     peautogain->target = -23.0f;  // LUFS
+    peautogain->weight_m = 1;
+    peautogain->weight_s = 1;
+    peautogain->weight_i = 1;
     peautogain->gain = 1.0f;
+    peautogain->ebur_state = nullptr;
 
     gst_base_transform_set_in_place(GST_BASE_TRANSFORM(peautogain), true);
 }
@@ -152,11 +162,17 @@ void gst_peautogain_set_property(GObject* object,
     GST_DEBUG_OBJECT(peautogain, "set_property");
 
     switch (property_id) {
-        case PROP_WINDOW:
-            peautogain->window = g_value_get_int(value);
-            break;
         case PROP_TARGET:
             peautogain->target = g_value_get_float(value);
+            break;
+        case PROP_WEIGHT_M:
+            peautogain->weight_m = g_value_get_int(value);
+            break;
+        case PROP_WEIGHT_S:
+            peautogain->weight_s = g_value_get_int(value);
+            break;
+        case PROP_WEIGHT_I:
+            peautogain->weight_i = g_value_get_int(value);
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -173,11 +189,17 @@ void gst_peautogain_get_property(GObject* object,
     GST_DEBUG_OBJECT(peautogain, "get_property");
 
     switch (property_id) {
-        case PROP_WINDOW:
-            g_value_set_int(value, peautogain->window);
-            break;
         case PROP_TARGET:
             g_value_set_float(value, peautogain->target);
+            break;
+        case PROP_WEIGHT_M:
+            g_value_set_int(value, peautogain->weight_m);
+            break;
+        case PROP_WEIGHT_S:
+            g_value_set_int(value, peautogain->weight_s);
+            break;
+        case PROP_WEIGHT_I:
+            g_value_set_int(value, peautogain->weight_i);
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -191,8 +213,21 @@ static gboolean gst_peautogain_setup(GstAudioFilter* filter,
 
     GST_DEBUG_OBJECT(peautogain, "setup");
 
+    std::lock_guard<std::mutex> lock(peautogain->lock_guard_ebu);
+
     peautogain->bpf = info->bpf;
     peautogain->rate = info->rate;
+
+    if (!peautogain->ready) {
+        peautogain->ebur_state = ebur128_init(
+            2, peautogain->rate,
+            EBUR128_MODE_S | EBUR128_MODE_I | EBUR128_MODE_HISTOGRAM);
+
+        ebur128_set_channel(peautogain->ebur_state, 0, EBUR128_LEFT);
+        ebur128_set_channel(peautogain->ebur_state, 1, EBUR128_RIGHT);
+
+        peautogain->ready = true;
+    }
 
     return true;
 }
@@ -207,37 +242,9 @@ static GstFlowReturn gst_peautogain_transform_ip(GstBaseTransform* trans,
 
     if (peautogain->ready) {
         gst_peautogain_process(peautogain, buffer);
-    } else {
-        peautogain->ebur_state =
-            ebur128_init(2, peautogain->rate,
-                         EBUR128_MODE_HISTOGRAM | EBUR128_MODE_I |
-                             EBUR128_MODE_S | EBUR128_MODE_SAMPLE_PEAK);
-
-        ebur128_set_channel(peautogain->ebur_state, 0, EBUR128_LEFT);
-        ebur128_set_channel(peautogain->ebur_state, 1, EBUR128_RIGHT);
-
-        // ebur128_set_max_window(peautogain->ebur_state, 3000);  // ms
-
-        peautogain->ready = true;
     }
 
     return GST_FLOW_OK;
-}
-
-static gboolean gst_peautogain_stop(GstBaseTransform* base) {
-    GstPeautogain* peautogain = GST_PEAUTOGAIN(base);
-
-    std::lock_guard<std::mutex> lock(peautogain->lock_guard_ebu);
-
-    peautogain->ready = false;
-    peautogain->gain = 1.0f;
-
-    if (peautogain->ebur_state != nullptr) {
-        ebur128_destroy(&peautogain->ebur_state);
-        free(peautogain->ebur_state);
-    }
-
-    return true;
 }
 
 void gst_peautogain_finalize(GObject* object) {
@@ -245,6 +252,8 @@ void gst_peautogain_finalize(GObject* object) {
 
     GST_DEBUG_OBJECT(peautogain, "finalize");
 
+    // std::cout << "\nfinalizing\n" << std::endl;
+
     std::lock_guard<std::mutex> lock(peautogain->lock_guard_ebu);
 
     peautogain->ready = false;
@@ -252,7 +261,7 @@ void gst_peautogain_finalize(GObject* object) {
 
     if (peautogain->ebur_state != nullptr) {
         ebur128_destroy(&peautogain->ebur_state);
-        free(peautogain->ebur_state);
+        peautogain->ebur_state = nullptr;
     }
 
     G_OBJECT_CLASS(gst_peautogain_parent_class)->finalize(object);
@@ -272,13 +281,6 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
 
     double relative, loudness, shortterm, momentary, global;
     bool failed = false;
-
-    // if (EBUR128_SUCCESS != ebur128_loudness_window(peautogain->ebur_state,
-    //                                                peautogain->window,
-    //                                                &loudness)) {
-    //     loudness = 0.0;
-    //     failed = true;
-    // }
 
     if (EBUR128_SUCCESS !=
         ebur128_relative_threshold(peautogain->ebur_state, &relative)) {
@@ -304,44 +306,23 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
         failed = true;
     }
 
-    loudness = (momentary + shortterm + global) / 3.0f;
+    loudness =
+        (peautogain->weight_m * momentary + peautogain->weight_s * shortterm +
+         peautogain->weight_i * global) /
+        (peautogain->weight_m + peautogain->weight_s + peautogain->weight_i);
 
     if (momentary > relative && relative > -70 && !failed) {
-        double peak, peak_L, peak_R;
+        float diff = peautogain->target - (float)loudness;
 
-        if (EBUR128_SUCCESS !=
-            ebur128_prev_sample_peak(peautogain->ebur_state, 0, &peak_L)) {
-            peak_L = 0.0;
-            failed = true;
-        }
+        // 10^(diff/20). The way below should be faster than using pow
+        peautogain->gain = expf((diff / 20.0f) * logf(10.0f));
 
-        if (EBUR128_SUCCESS !=
-            ebur128_prev_sample_peak(peautogain->ebur_state, 1, &peak_R)) {
-            peak_R = 0.0;
-            failed = true;
-        }
-
-        if (!failed) {
-            peak = (peak_L > peak_R) ? peak_L : peak_R;
-
-            float diff = peautogain->target - (float)loudness;
-
-            // 10^(diff/20). The way below should be faster than using pow
-            float gain = expf((diff / 20.0f) * logf(10.0f));
-
-            if (gain * peak < 1) {
-                peautogain->gain = gain;
-            } else {
-                peautogain->gain = fabsf(1.0f / (float)peak);
-            }
-
-            // std::cout << "relative: " << relative << std::endl;
-            // std::cout << "momentary: " << momentary << std::endl;
-            // std::cout << "shortterm: " << shortterm << std::endl;
-            // std::cout << "global: " << global << std::endl;
-            // std::cout << "loudness: " << loudness << std::endl;
-            // std::cout << "gain: " << gain << std::endl;
-        }
+        // std::cout << "relative: " << relative << std::endl;
+        // std::cout << "momentary: " << momentary << std::endl;
+        // std::cout << "shortterm: " << shortterm << std::endl;
+        // std::cout << "global: " << global << std::endl;
+        // std::cout << "loudness: " << loudness << std::endl;
+        // std::cout << "gain: " << gain << std::endl;
     }
 
     for (unsigned int n = 0; n < 2 * num_samples; n++) {

@@ -59,10 +59,16 @@ AutoGain::~AutoGain() {
 }
 
 void AutoGain::bind_to_gsettings() {
-    g_settings_bind(settings, "window", autogain, "window",
-                    G_SETTINGS_BIND_DEFAULT);
-
     g_settings_bind_with_mapping(settings, "target", autogain, "target",
                                  G_SETTINGS_BIND_GET, util::double_to_float,
                                  nullptr, nullptr, nullptr);
+
+    g_settings_bind(settings, "weight-m", autogain, "weight-m",
+                    G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind(settings, "weight-s", autogain, "weight-s",
+                    G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind(settings, "weight-i", autogain, "weight-i",
+                    G_SETTINGS_BIND_DEFAULT);
 }
