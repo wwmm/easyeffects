@@ -340,6 +340,8 @@ void SinkInputEffectsUi::level_meters_connections() {
         sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_input_level_db)));
     connections.push_back(sie->autogain_output_level.connect(
         sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_output_level_db)));
+    connections.push_back(sie->autogain->momentary.connect(
+        sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_momentary)));
 }
 
 void SinkInputEffectsUi::up_down_connections() {

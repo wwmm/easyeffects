@@ -8,6 +8,8 @@ void on_m_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
     float m;
 
     g_object_get(a->autogain, "m", &m, nullptr);
+
+    Glib::signal_idle().connect_once([=] { a->momentary.emit(m); });
 }
 
 }  // namespace

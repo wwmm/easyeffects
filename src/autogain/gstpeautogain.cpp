@@ -15,7 +15,7 @@
 #include <gst/audio/gstaudiofilter.h>
 #include <gst/gst.h>
 #include <cmath>
-#include <iostream>
+// #include <iostream>
 #include "gstpeautogain.hpp"
 
 GST_DEBUG_CATEGORY_STATIC(gst_peautogain_debug_category);
@@ -328,7 +328,7 @@ static gboolean gst_peautogain_setup(GstAudioFilter* filter,
         /*notify every 0.2 seconds*/
 
         peautogain->notify_samples =
-            GST_CLOCK_TIME_TO_FRAMES(2 * GST_SECOND / 10, info->rate);
+            GST_CLOCK_TIME_TO_FRAMES(GST_SECOND / 10, info->rate);
 
         peautogain->ready = true;
     }

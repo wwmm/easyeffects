@@ -117,7 +117,8 @@ void on_message_element(const GstBus* gst_bus,
                 pb->spectrum_mag[n] = (min_mag - pb->spectrum_mag[n]) / min_mag;
             }
 
-            pb->new_spectrum.emit(pb->spectrum_mag);
+            Glib::signal_idle().connect_once(
+                [=] { pb->new_spectrum.emit(pb->spectrum_mag); });
         }
     }
 }
