@@ -466,7 +466,7 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
 
             float peak = (peak_L > peak_R) ? peak_L : peak_R;
 
-            if (gain * peak < 2) {
+            if (gain * peak < 1.0f) {
                 peautogain->gain = gain;
             }
         }
