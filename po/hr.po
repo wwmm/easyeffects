@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-25 22:55-0300\n"
+"POT-Creation-Date: 2018-07-28 01:29-0300\n"
 "PO-Revision-Date: 2018-05-27 00:55+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -159,15 +159,23 @@ msgstr "Stanje"
 msgid "Auto Gain"
 msgstr "Ulay"
 
-#: data/ui/autogain.glade:136
+#: data/ui/autogain.glade:146 data/ui/autogain.glade:487
+msgid "Momentary"
+msgstr ""
+
+#: data/ui/autogain.glade:159 data/ui/autogain.glade:500
+msgid "Short Term"
+msgstr ""
+
+#: data/ui/autogain.glade:172 data/ui/autogain.glade:513
+msgid "Integrated"
+msgstr ""
+
+#: data/ui/autogain.glade:185
 msgid "Target"
 msgstr "Meta"
 
-#: data/ui/autogain.glade:169 data/ui/calibration_mic.glade:29
-msgid "Window"
-msgstr "Prozor"
-
-#: data/ui/autogain.glade:214 data/ui/limiter.glade:367
+#: data/ui/autogain.glade:289 data/ui/limiter.glade:367
 #: data/ui/compressor.glade:559 data/ui/multiband_compressor.glade:1959
 #: data/ui/filter.glade:365 data/ui/equalizer.glade:366
 #: data/ui/reverb.glade:612 data/ui/bass_enhancer.glade:482
@@ -181,7 +189,7 @@ msgstr "Prozor"
 msgid "Input"
 msgstr "Ulaz"
 
-#: data/ui/autogain.glade:229 data/ui/limiter.glade:382
+#: data/ui/autogain.glade:304 data/ui/limiter.glade:382
 #: data/ui/compressor.glade:574 data/ui/multiband_compressor.glade:755
 #: data/ui/multiband_compressor.glade:1132
 #: data/ui/multiband_compressor.glade:1510
@@ -199,6 +207,25 @@ msgstr "Ulaz"
 #: data/ui/pitch.glade:319 data/ui/webrtc.glade:601
 msgid "Output"
 msgstr "Izlaz"
+
+#: data/ui/autogain.glade:538 data/ui/autogain.glade:575
+#: data/ui/autogain.glade:588 data/ui/autogain.glade:652
+#: data/ui/autogain.glade:665 data/ui/autogain.glade:703
+msgid "0"
+msgstr ""
+
+#: data/ui/autogain.glade:601
+msgid "Relative"
+msgstr ""
+
+#: data/ui/autogain.glade:614 data/ui/deesser.glade:298
+msgid "Gain"
+msgstr "Ulaz"
+
+#: data/ui/autogain.glade:678 data/ui/loudness.glade:24
+#: data/ui/loudness.glade:130
+msgid "Loudness"
+msgstr ""
 
 #: data/ui/limiter.glade:30 data/ui/webrtc.glade:377
 msgid "Limiter"
@@ -819,10 +846,6 @@ msgstr "Križno spajanje"
 msgid "Maximizer"
 msgstr "Maksimizer"
 
-#: data/ui/loudness.glade:24 data/ui/loudness.glade:130
-msgid "Loudness"
-msgstr ""
-
 #: data/ui/loudness.glade:198
 msgid "Link"
 msgstr ""
@@ -858,10 +881,6 @@ msgstr ""
 #, fuzzy
 msgid "Split"
 msgstr "razdvojeno"
-
-#: data/ui/deesser.glade:298
-msgid "Gain"
-msgstr "Ulaz"
 
 #: data/ui/deesser.glade:384
 msgid "Level"
@@ -1108,6 +1127,10 @@ msgstr "Plavi šum"
 #: data/ui/calibration_signals.glade:120
 msgid "Violet Noise"
 msgstr "Ljubičasti šum"
+
+#: data/ui/calibration_mic.glade:29
+msgid "Window"
+msgstr "Prozor"
 
 #: data/ui/calibration_mic.glade:70
 msgid "Measure Noise"
