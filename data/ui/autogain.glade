@@ -636,6 +636,7 @@
                 <property name="can_focus">False</property>
                 <property name="valign">center</property>
                 <property name="hexpand">True</property>
+                <property name="max_value">10</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
