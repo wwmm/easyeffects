@@ -425,7 +425,7 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
 
     if (peautogain->momentary > peautogain->relative &&
         peautogain->relative > -70 && !failed) {
-        double shortterm, global;
+        double shortterm, global, peak_L, peak_R;
 
         if (EBUR128_SUCCESS !=
             ebur128_loudness_shortterm(peautogain->ebur_state, &shortterm)) {
@@ -441,6 +441,16 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
             peautogain->global = (float)global;
         }
 
+        if (EBUR128_SUCCESS !=
+            ebur128_prev_sample_peak(peautogain->ebur_state, 0, &peak_L)) {
+            failed = true;
+        }
+
+        if (EBUR128_SUCCESS !=
+            ebur128_prev_sample_peak(peautogain->ebur_state, 1, &peak_R)) {
+            failed = true;
+        }
+
         if (!failed) {
             peautogain->loudness =
                 (peautogain->weight_m * peautogain->momentary +
@@ -452,7 +462,13 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
             float diff = peautogain->target - peautogain->loudness;
 
             // 10^(diff/20). The way below should be faster than using pow
-            peautogain->gain = expf((diff / 20.0f) * logf(10.0f));
+            float gain = expf((diff / 20.0f) * logf(10.0f));
+
+            float peak = (peak_L > peak_R) ? peak_L : peak_R;
+
+            if (gain * peak < 1) {
+                peautogain->gain = gain;
+            }
         }
     }
 
