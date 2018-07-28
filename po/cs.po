@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-28 01:29-0300\n"
+"POT-Creation-Date: 2018-07-28 12:15-0300\n"
 "PO-Revision-Date: 2018-02-06 20:54+0100\n"
 "Last-Translator: Pavel Fric <pavelfric@seznam.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -161,15 +161,15 @@ msgstr "Stav"
 msgid "Auto Gain"
 msgstr "Vstupní zesílení [dB]"
 
-#: data/ui/autogain.glade:146 data/ui/autogain.glade:487
+#: data/ui/autogain.glade:146 data/ui/autogain.glade:496
 msgid "Momentary"
 msgstr ""
 
-#: data/ui/autogain.glade:159 data/ui/autogain.glade:500
+#: data/ui/autogain.glade:159 data/ui/autogain.glade:509
 msgid "Short Term"
 msgstr ""
 
-#: data/ui/autogain.glade:172 data/ui/autogain.glade:513
+#: data/ui/autogain.glade:172 data/ui/autogain.glade:522
 msgid "Integrated"
 msgstr ""
 
@@ -178,22 +178,23 @@ msgstr ""
 msgid "Target"
 msgstr "Cíl [dB]"
 
-#: data/ui/autogain.glade:289 data/ui/limiter.glade:367
-#: data/ui/compressor.glade:559 data/ui/multiband_compressor.glade:1959
-#: data/ui/filter.glade:365 data/ui/equalizer.glade:366
-#: data/ui/reverb.glade:612 data/ui/bass_enhancer.glade:482
-#: data/ui/exciter.glade:484 data/ui/stereo_tools.glade:292
-#: data/ui/stereo_tools.glade:784 data/ui/crossfeed.glade:200
-#: data/ui/maximizer.glade:240 data/ui/loudness.glade:245
-#: data/ui/gate.glade:489 data/ui/multiband_gate.glade:2112
-#: data/ui/deesser.glade:570 data/ui/convolver.glade:449
-#: data/ui/crystalizer.glade:168 data/ui/pitch.glade:304
-#: data/ui/webrtc.glade:586
+#: data/ui/autogain.glade:284 data/ui/autogain.glade:476
+#: data/ui/limiter.glade:367 data/ui/compressor.glade:559
+#: data/ui/multiband_compressor.glade:1959 data/ui/filter.glade:365
+#: data/ui/equalizer.glade:366 data/ui/reverb.glade:612
+#: data/ui/bass_enhancer.glade:482 data/ui/exciter.glade:484
+#: data/ui/stereo_tools.glade:292 data/ui/stereo_tools.glade:784
+#: data/ui/crossfeed.glade:200 data/ui/maximizer.glade:240
+#: data/ui/loudness.glade:245 data/ui/gate.glade:489
+#: data/ui/multiband_gate.glade:2112 data/ui/deesser.glade:570
+#: data/ui/convolver.glade:449 data/ui/crystalizer.glade:168
+#: data/ui/pitch.glade:304 data/ui/webrtc.glade:586
 msgid "Input"
 msgstr "Vstup"
 
-#: data/ui/autogain.glade:304 data/ui/limiter.glade:382
-#: data/ui/compressor.glade:574 data/ui/multiband_compressor.glade:755
+#: data/ui/autogain.glade:299 data/ui/autogain.glade:725
+#: data/ui/limiter.glade:382 data/ui/compressor.glade:574
+#: data/ui/multiband_compressor.glade:755
 #: data/ui/multiband_compressor.glade:1132
 #: data/ui/multiband_compressor.glade:1510
 #: data/ui/multiband_compressor.glade:1888
@@ -211,24 +212,22 @@ msgstr "Vstup"
 msgid "Output"
 msgstr "Výstup"
 
-#: data/ui/autogain.glade:538 data/ui/autogain.glade:575
-#: data/ui/autogain.glade:588 data/ui/autogain.glade:652
-#: data/ui/autogain.glade:665 data/ui/autogain.glade:703
-msgid "0"
-msgstr ""
-
-#: data/ui/autogain.glade:601
+#: data/ui/autogain.glade:610
 msgid "Relative"
 msgstr ""
 
-#: data/ui/autogain.glade:614 data/ui/deesser.glade:298
+#: data/ui/autogain.glade:623 data/ui/deesser.glade:298
 #, fuzzy
 msgid "Gain"
 msgstr "Zesílení [dB]"
 
-#: data/ui/autogain.glade:678 data/ui/loudness.glade:24
+#: data/ui/autogain.glade:687 data/ui/loudness.glade:24
 #: data/ui/loudness.glade:130
 msgid "Loudness"
+msgstr ""
+
+#: data/ui/autogain.glade:739
+msgid "Range"
 msgstr ""
 
 #: data/ui/limiter.glade:30 data/ui/webrtc.glade:377

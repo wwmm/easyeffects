@@ -44,6 +44,14 @@ void on_l_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
     Glib::signal_idle().connect_once([=] { a->loudness.emit(v); });
 }
 
+void on_lra_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
+    float v;
+
+    g_object_get(a->autogain, "lra", &v, nullptr);
+
+    Glib::signal_idle().connect_once([=] { a->range.emit(v); });
+}
+
 void on_g_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
     float v;
 
@@ -95,6 +103,8 @@ AutoGain::AutoGain(const std::string& tag, const std::string& schema)
         g_signal_connect(autogain, "notify::i", G_CALLBACK(on_i_changed), this);
         g_signal_connect(autogain, "notify::r", G_CALLBACK(on_r_changed), this);
         g_signal_connect(autogain, "notify::l", G_CALLBACK(on_l_changed), this);
+        g_signal_connect(autogain, "notify::lra", G_CALLBACK(on_lra_changed),
+                         this);
         g_signal_connect(autogain, "notify::g", G_CALLBACK(on_g_changed), this);
 
         g_settings_bind_with_mapping(

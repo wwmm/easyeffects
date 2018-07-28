@@ -18,13 +18,16 @@ class AutoGainUi : public Gtk::Grid, public PluginUiBase {
     void on_new_integrated(const float& value);
     void on_new_relative(const float& value);
     void on_new_loudness(const float& value);
+    void on_new_range(const float& value);
     void on_new_gain(const float& value);
 
    private:
     Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, target, weight_m,
         weight_s, weight_i;
-    Gtk::LevelBar *m_level, *s_level, *i_level, *r_level, *g_level, *l_level;
-    Gtk::Label *m_label, *s_label, *i_label, *r_label, *g_label, *l_label;
+    Gtk::LevelBar *m_level, *s_level, *i_level, *r_level, *g_level, *l_level,
+        *lra_level;
+    Gtk::Label *m_label, *s_label, *i_label, *r_label, *g_label, *l_label,
+        *lra_label;
 };
 
 #endif

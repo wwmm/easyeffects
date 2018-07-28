@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-07-26 22:46-0300\n"
+"POT-Creation-Date: 2018-07-28 12:22-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -129,7 +129,7 @@ msgstr ""
 #: C/webrtc.page:140
 #: C/crystalizer.page:27
 #: C/convolver.page:42
-#: C/autogain.page:49
+#: C/autogain.page:87
 msgid "References"
 msgstr ""
 
@@ -319,6 +319,7 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:59
+#: C/autogain.page:78
 msgid "Gain"
 msgstr ""
 
@@ -650,6 +651,7 @@ msgstr ""
 #. (itstool) path: title/em
 #: C/loudness.page:9
 #: C/loudness.page:19
+#: C/autogain.page:61
 msgid "Loudness"
 msgstr ""
 
@@ -1696,26 +1698,56 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/autogain.page:27
-msgid "Weight of the momentary term in the loudness level estimation."
+msgid "Controls how much the momentary term will influence the loudness level estimation."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/autogain.page:33
+#: C/autogain.page:34
 msgid "Short Term"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/autogain.page:35
-msgid "Weight of the short term in the loudness level estimation."
+#: C/autogain.page:36
+msgid "Controls how much the short term measure will influence the loudness level estimation."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/autogain.page:41
+#: C/autogain.page:43
 msgid "Integrated"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/autogain.page:43
-msgid "Weight of the integrated term in the loudness level estimation."
+#: C/autogain.page:45
+msgid "Controls how much the integrated term will influence the loudness level estimation."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/autogain.page:52
+msgid "Relative"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/autogain.page:54
+msgid "Relative threshold. It is used to detect silence. Whenever the momentary term is below this threshold modifications to the output gain will be disabled."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/autogain.page:63
+msgid "Estimated input loudness. The difference between its value and the target loudness determines the output gain."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/autogain.page:70
+msgid "Range"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/autogain.page:72
+msgid "Loudness range. Indicates how large is the material dynamic range."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/autogain.page:80
+msgid "Output gain value. The input signal will be multiplied by this correction gain to bring its loudness to the target value."
 msgstr ""
 

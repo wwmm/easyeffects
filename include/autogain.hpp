@@ -17,6 +17,7 @@ class AutoGain : public PluginBase {
     sigc::signal<void, float> integrated;
     sigc::signal<void, float> relative;
     sigc::signal<void, float> loudness;
+    sigc::signal<void, float> range;
     sigc::signal<void, float> gain;
 
    private:

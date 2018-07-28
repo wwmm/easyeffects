@@ -35,6 +35,7 @@ struct _GstPeautogain {
     float relative;   // relative threshold
     float loudness;   // estimated loudness
     float gain;       // correction gain
+    float range;      // loudness range
 
     /* < private > */
 

@@ -56,6 +56,7 @@ enum {
     PROP_R,
     PROP_L,
     PROP_G,
+    PROP_LRA,
     PROP_NOTIFY
 };
 
@@ -204,6 +205,13 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
                              "Notify host of variable changes", true,
                              static_cast<GParamFlags>(G_PARAM_READWRITE |
                                                       G_PARAM_STATIC_STRINGS)));
+
+    g_object_class_install_property(
+        gobject_class, PROP_LRA,
+        g_param_spec_float("lra", "Loudness Range", "Loudness Range (in LUFS)",
+                           -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
+                           static_cast<GParamFlags>(G_PARAM_READABLE |
+                                                    G_PARAM_STATIC_STRINGS)));
 }
 
 static void gst_peautogain_init(GstPeautogain* peautogain) {
@@ -220,6 +228,7 @@ static void gst_peautogain_init(GstPeautogain* peautogain) {
     peautogain->relative = 0.0f;
     peautogain->loudness = 0.0f;
     peautogain->gain = 1.0f;
+    peautogain->range = 0.0f;
     peautogain->notify_samples = 0;
     peautogain->sample_count = 0;
     peautogain->notify = true;
@@ -297,6 +306,9 @@ void gst_peautogain_get_property(GObject* object,
         case PROP_G:
             g_value_set_float(value, peautogain->gain);
             break;
+        case PROP_LRA:
+            g_value_set_float(value, peautogain->range);
+            break;
         case PROP_NOTIFY:
             g_value_set_boolean(value, peautogain->notify);
             break;
@@ -318,9 +330,10 @@ static gboolean gst_peautogain_setup(GstAudioFilter* filter,
     peautogain->rate = info->rate;
 
     if (!peautogain->ready) {
-        peautogain->ebur_state = ebur128_init(
-            2, peautogain->rate,
-            EBUR128_MODE_S | EBUR128_MODE_I | EBUR128_MODE_HISTOGRAM);
+        peautogain->ebur_state =
+            ebur128_init(2, peautogain->rate,
+                         EBUR128_MODE_S | EBUR128_MODE_I | EBUR128_MODE_LRA |
+                             EBUR128_MODE_SAMPLE_PEAK | EBUR128_MODE_HISTOGRAM);
 
         ebur128_set_channel(peautogain->ebur_state, 0, EBUR128_LEFT);
         ebur128_set_channel(peautogain->ebur_state, 1, EBUR128_RIGHT);
@@ -378,7 +391,7 @@ void gst_peautogain_finalize(GObject* object) {
 static void gst_peautogain_process(GstPeautogain* peautogain,
                                    GstBuffer* buffer) {
     GstMapInfo map;
-    double relative, momentary;
+    double relative, momentary, range;
     bool failed = false;
 
     gst_buffer_map(buffer, &map, GST_MAP_READWRITE);
@@ -391,18 +404,24 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
 
     if (EBUR128_SUCCESS !=
         ebur128_relative_threshold(peautogain->ebur_state, &relative)) {
-        relative = 0.0;
         failed = true;
+    } else {
+        peautogain->relative = (float)relative;
     }
 
     if (EBUR128_SUCCESS !=
         ebur128_loudness_momentary(peautogain->ebur_state, &momentary)) {
-        momentary = 0.0;
         failed = true;
+    } else {
+        peautogain->momentary = (float)momentary;
     }
 
-    peautogain->momentary = (float)momentary;
-    peautogain->relative = (float)relative;
+    if (EBUR128_SUCCESS !=
+        ebur128_loudness_range(peautogain->ebur_state, &range)) {
+        failed = true;
+    } else {
+        peautogain->range = (float)range;
+    }
 
     if (peautogain->momentary > peautogain->relative &&
         peautogain->relative > -70 && !failed) {
@@ -410,20 +429,19 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
 
         if (EBUR128_SUCCESS !=
             ebur128_loudness_shortterm(peautogain->ebur_state, &shortterm)) {
-            shortterm = 0.0;
             failed = true;
+        } else {
+            peautogain->shortterm = (float)shortterm;
         }
 
         if (EBUR128_SUCCESS !=
             ebur128_loudness_global(peautogain->ebur_state, &global)) {
-            global = 0.0;
             failed = true;
+        } else {
+            peautogain->global = (float)global;
         }
 
         if (!failed) {
-            peautogain->shortterm = (float)shortterm;
-            peautogain->global = (float)global;
-
             peautogain->loudness =
                 (peautogain->weight_m * peautogain->momentary +
                  peautogain->weight_s * peautogain->shortterm +
@@ -444,25 +462,28 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
 
     gst_buffer_unmap(buffer, &map);
 
-    peautogain->sample_count += num_samples;
+    if (!failed && peautogain->notify) {
+        peautogain->sample_count += num_samples;
 
-    if (peautogain->sample_count >= peautogain->notify_samples && !failed &&
-        peautogain->notify) {
-        peautogain->sample_count = 0;
+        if (peautogain->sample_count >= peautogain->notify_samples) {
+            peautogain->sample_count = 0;
 
-        // std::cout << "relative: " << relative << std::endl;
-        // std::cout << "momentary: " << momentary << std::endl;
-        // std::cout << "shortterm: " << shortterm << std::endl;
-        // std::cout << "global: " << global << std::endl;
-        // std::cout << "loudness: " << peautogain->loudness << std::endl;
-        // std::cout << "gain: " << peautogain->gain << std::endl;
+            // std::cout << "relative: " << relative << std::endl;
+            // std::cout << "momentary: " << momentary << std::endl;
+            // std::cout << "shortterm: " << shortterm << std::endl;
+            // std::cout << "global: " << global << std::endl;
+            // std::cout << "loudness: " << peautogain->loudness << std::endl;
+            // std::cout << "range: " << peautogain->range << std::endl;
+            // std::cout << "gain: " << peautogain->gain << std::endl;
 
-        g_object_notify(G_OBJECT(peautogain), "m");
-        g_object_notify(G_OBJECT(peautogain), "s");
-        g_object_notify(G_OBJECT(peautogain), "i");
-        g_object_notify(G_OBJECT(peautogain), "r");
-        g_object_notify(G_OBJECT(peautogain), "l");
-        g_object_notify(G_OBJECT(peautogain), "g");
+            g_object_notify(G_OBJECT(peautogain), "m");
+            g_object_notify(G_OBJECT(peautogain), "s");
+            g_object_notify(G_OBJECT(peautogain), "i");
+            g_object_notify(G_OBJECT(peautogain), "r");
+            g_object_notify(G_OBJECT(peautogain), "l");
+            g_object_notify(G_OBJECT(peautogain), "lra");
+            g_object_notify(G_OBJECT(peautogain), "g");
+        }
     }
 }
 

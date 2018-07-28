@@ -350,6 +350,8 @@ void SinkInputEffectsUi::level_meters_connections() {
         sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_relative)));
     connections.push_back(sie->autogain->loudness.connect(
         sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_loudness)));
+    connections.push_back(sie->autogain->range.connect(
+        sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_range)));
     connections.push_back(sie->autogain->gain.connect(
         sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_gain)));
 }

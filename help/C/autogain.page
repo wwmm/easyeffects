@@ -25,7 +25,8 @@
                 <em style="strong" its:withinText="nested">Momentary</em>
             </title>
             <p>
-                Weight of the momentary term in the loudness level estimation.
+                Controls how much the momentary term will influence the loudness level
+                estimation.
             </p>
         </item>
         <item>
@@ -33,7 +34,8 @@
                 <em style="strong" its:withinText="nested">Short Term</em>
             </title>
             <p>
-                Weight of the short term in the loudness level estimation.
+                Controls how much the short term measure will influence the loudness level
+                estimation.
             </p>
         </item>
         <item>
@@ -41,7 +43,43 @@
                 <em style="strong" its:withinText="nested">Integrated</em>
             </title>
             <p>
-                Weight of the integrated term in the loudness level estimation.
+                Controls how much the integrated term will influence the loudness level
+                estimation.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Relative</em>
+            </title>
+            <p>
+                Relative threshold. It is used to detect silence. Whenever the momentary term is
+                below this threshold modifications to the output gain will be disabled.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Loudness</em>
+            </title>
+            <p>
+                Estimated input loudness. The difference between its value and the target
+                loudness determines the output gain.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Range</em>
+            </title>
+            <p>
+                Loudness range. Indicates how large is the material dynamic range.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Gain</em>
+            </title>
+            <p>
+                Output gain value. The input signal will be multiplied by this correction gain
+                to bring its loudness to the target value.
             </p>
         </item>
     </terms>
