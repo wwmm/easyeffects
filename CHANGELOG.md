@@ -1,10 +1,16 @@
 # Changelog
 
 ## [Unreleased]
+
+## [4.2.1]
 ### Added
 - Added an auto gain plugin based on libebur128. It replaces the previous
 auto volume feature. It has the advantage of targeting the perceived loudness
-level. 
+level.
+
+### Fixed
+- Sometimes PulseEffects was not paused when there was no application playing
+audio. Fixed that.
 
 ## [4.2.0]
 ### Added
