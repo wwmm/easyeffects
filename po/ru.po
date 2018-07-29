@@ -41,7 +41,7 @@ msgstr "Настройки"
 
 #: data/ui/application.glade:228
 msgid "Help"
-msgstr ""
+msgstr "Справка"
 
 #: data/ui/application.glade:251 data/ui/compressor.glade:205
 #: data/ui/filter.glade:203 data/ui/equalizer.glade:280
@@ -151,21 +151,37 @@ msgid "State"
 msgstr "Состояние"
 
 #: data/ui/autogain.glade:24
-#, fuzzy
 msgid "Auto Gain"
-msgstr "Уровень предусиления"
+msgstr "Контроль громкости по EBU R 128"
 
-#: data/ui/autogain.glade:146 data/ui/autogain.glade:496
+#: data/ui/autogain.glade:146
+# Время интеграции — это величина, характеризующая быстродействие измерителя.
+# https://tech.ebu.ch/docs/factsheets/Factsheet-R128-2011-RUS.pdf
+# В документе выше переводчик перевел 'Integrated' как 'Интегрированные',
+# хотя сам же написал, что это "измерения от начала до конца"
+# Яндекс.Переводчик перевел лучше — "Комплексные измерения"
+msgid "Influence of measurements with momentary integration time"
+msgstr "Влияние измерений с моментальным временем интеграции"
+
+#: data/ui/autogain.glade:159
+msgid "Influence of measurements with short integration time"
+msgstr "Влияние измерений с малым временем интеграции"
+
+#: data/ui/autogain.glade:172
+msgid "Influence of integrated measurements"
+msgstr "Влияние комплексных измерений"
+
+#: data/ui/autogain.glade:496
 msgid "Momentary"
-msgstr ""
+msgstr "Моментальные измерения"
 
-#: data/ui/autogain.glade:159 data/ui/autogain.glade:509
+#: data/ui/autogain.glade:509
 msgid "Short Term"
-msgstr ""
+msgstr "Короткие измерения"
 
-#: data/ui/autogain.glade:172 data/ui/autogain.glade:522
+#: data/ui/autogain.glade:522
 msgid "Integrated"
-msgstr ""
+msgstr "Комплексные измерения"
 
 #: data/ui/autogain.glade:185
 msgid "Target"
@@ -207,7 +223,7 @@ msgstr "Выход"
 
 #: data/ui/autogain.glade:610
 msgid "Relative"
-msgstr ""
+msgstr "Относительное значение"
 
 #: data/ui/autogain.glade:623 data/ui/deesser.glade:298
 msgid "Gain"
@@ -219,8 +235,9 @@ msgid "Loudness"
 msgstr "Громкость"
 
 #: data/ui/autogain.glade:739
+# ??? не уверен в переводе
 msgid "Range"
-msgstr ""
+msgstr "Диапазон"
 
 #: data/ui/limiter.glade:30 data/ui/webrtc.glade:377
 msgid "Limiter"
@@ -704,7 +721,7 @@ msgstr "Баланс"
 
 #: data/ui/stereo_tools.glade:246
 msgid "S/C Level"
-msgstr ""
+msgstr "Уровень Раздельный/Центр"
 
 #: data/ui/stereo_tools.glade:275
 msgid "Softclip"
@@ -712,31 +729,31 @@ msgstr ""
 
 #: data/ui/stereo_tools.glade:325
 msgid "LR > LR (Stereo Default)"
-msgstr ""
+msgstr "Стерео"
 
 #: data/ui/stereo_tools.glade:326
 msgid "LR > MS (Stereo to Mid-Side)"
-msgstr ""
+msgstr "Стерео > Моно-Раздельно"
 
 #: data/ui/stereo_tools.glade:327
 msgid "MS > LR (Mid-Side to Stereo)"
-msgstr ""
+msgstr "Моно-Разделно > Стерео"
 
 #: data/ui/stereo_tools.glade:328
 msgid "LR > LL (Mono Left Channel)"
-msgstr ""
+msgstr "Стерео > Моно левый канал"
 
 #: data/ui/stereo_tools.glade:329
 msgid "LR > RR (Mono Right Channel)"
-msgstr ""
+msgstr "Стерео > Моно правый канал"
 
 #: data/ui/stereo_tools.glade:330
 msgid "LR > L+R (Mono Sum L+R)"
-msgstr ""
+msgstr "Стерео > Моно левый+правый каналы"
 
 #: data/ui/stereo_tools.glade:331
 msgid "LR > RL (Stereo Flip Channels)"
-msgstr ""
+msgstr "Стерео > Поменять каналы местами"
 
 #: data/ui/stereo_tools.glade:351
 msgid "Side Level"

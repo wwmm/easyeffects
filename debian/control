@@ -22,7 +22,8 @@ Build-Depends: debhelper (>=11),
                libzita-convolver-dev,
                libsndfile1-dev,
                libsamplerate0-dev,
-               itstool
+               itstool,
+               libebur128-dev
 
 Package: pulseeffects
 Architecture: any
@@ -49,10 +50,8 @@ Depends: ${misc:Depends},
 Provides: peconvolver, gstreamer1.0-convolver
 Replaces: pulseeffects (<< 4.1.7-3)
 Description: Gstreamer convolver
- Gstreamer convolver plugin from PulseEffects.
- .
- Example command-line:
- gst-launch-1.0 audiotestsrc blocksize=512 ! peconvolver kernel-path=full_path_to_file ! pulsesink
+ Simple Gstreamer crystalizer plugin based on
+ the library Zita-convolver.
  
 Package: gstreamer1.0-crystalizer-pulseeffects
 Architecture: any
@@ -60,4 +59,14 @@ Depends: ${misc:Depends},
          ${shlibs:Depends}
 Provides: pecrystalizer, gstreamer1.0-crystalizer
 Description: Gstreamer crystalizer
- Gstreamer crystalizer plugin from PulseEffects.
+ Simple Gstreamer plugin useful to add more dynamic range
+ to songs that were overly compressed.
+ 
+Package: gstreamer1.0-autogain-pulseeffects
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Provides: peautogain, gstreamer1.0-autogain
+Description: Gstreamer crystalizer
+ Simple Gstreamer plugin that changes audio gain
+ to match the levels recommended by the ebur128 standard.
