@@ -151,9 +151,8 @@ msgid "State"
 msgstr "Состояние"
 
 #: data/ui/autogain.glade:24
-#, fuzzy
 msgid "Auto Gain"
-msgstr "Уровень предусиления"
+msgstr "Авто предусиление"
 
 #: data/ui/autogain.glade:146 data/ui/autogain.glade:496
 msgid "Momentary"
