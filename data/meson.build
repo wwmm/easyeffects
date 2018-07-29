@@ -57,8 +57,16 @@ install_data('pulseeffects.svg',
   install_dir: join_paths(icondir, 'scalable', 'apps')
 )
 
+conf_glade = configuration_data()
+conf_glade.set('PROJECT_VERSION', meson.project_version())
+
+glade_about = configure_file(input: 'ui/about.glade.in',
+               output: 'about.glade',
+               configuration: conf_glade)
+
 gresources = gnome_mod.compile_resources(
 	'pulseeffects-resources',
 	'pulseeffects.gresource.xml',
-	c_name: meson.project_name()
+	c_name: meson.project_name(),
+  dependencies: [glade_about]
 )

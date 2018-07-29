@@ -91,7 +91,6 @@ pulseeffects_deps = [
 	dependency('sigc++-2.0', version: ['>=2.10', '<3']),
 	dependency('gstreamer-1.0', version: '>=1.12.5'),
 	dependency('gstreamer-plugins-bad-1.0', version: '>=1.12.5'),
-	dependency('gstreamer-webrtc-1.0', required: false),
 	dependency('gstreamer-fft-1.0'),
 	dependency('lilv-0', version: '>=0.22', required: false),
 	dependency('libbs2b', required: false),
