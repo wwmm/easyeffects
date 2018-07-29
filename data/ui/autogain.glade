@@ -143,7 +143,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="label" translatable="yes">Influence of measurements with momentary integration time</property>
+                <property name="label" translatable="yes">Influence of measurements\nwith momentary\nintegration time</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
