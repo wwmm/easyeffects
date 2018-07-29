@@ -1,14 +1,5 @@
-conf_pulseeffects = configuration_data()
-conf_pulseeffects.set('LOCALEDIR', localedir)
-conf_pulseeffects.set('PROJECT_NAME', meson.project_name())
-
-pulseeffects_cpp = configure_file(input: 'pulseeffects.cpp.in',
-							 output: 'pulseeffects.cpp',
-							 configuration: conf_pulseeffects)
-
-
 pulseeffects_sources = [
-	pulseeffects_cpp,
+	'pulseeffects.cpp',
 	'application.cpp',
 	'application_ui.cpp',
 	'pulse_manager.cpp',
@@ -112,7 +103,7 @@ pulseeffects_deps = [
 executable(
 	meson.project_name(),
 	pulseeffects_sources,
-	include_directories : include_dir,
+	include_directories : [include_dir,config_h_dir],
 	dependencies : pulseeffects_deps,
 	install: true
 )
