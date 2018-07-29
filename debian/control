@@ -38,6 +38,7 @@ Recommends: calf-plugins (>= 0.90.0),
             zam-plugins,
             rubberband-ladspa,
             liblilv-0-0,
+            mda-lv2,
             gstreamer1.0-convolver-pulseeffects,
             gstreamer1.0-crystalizer-pulseeffects
 Description: Sound input and output effects for PulseAudio
