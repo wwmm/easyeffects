@@ -102,18 +102,23 @@
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="weight_i">
+    <property name="lower">1</property>
     <property name="upper">100</property>
+    <property name="value">1</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="weight_m">
+    <property name="lower">1</property>
     <property name="upper">100</property>
     <property name="value">1</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="weight_s">
+    <property name="lower">1</property>
     <property name="upper">100</property>
+    <property name="value">1</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>

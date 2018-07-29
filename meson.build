@@ -3,7 +3,7 @@ project(
 	'c',
 	'cpp',
 	default_options : ['cpp_std=c++17','buildtype=debugoptimized'],
-	version: '4.2.1',
+	version: '4.2.2',
 	meson_version: '>= 0.40.0'
 )
 
@@ -22,6 +22,26 @@ datadir = join_paths(prefix, get_option('datadir'))
 localedir = join_paths(prefix, get_option('localedir'))
 
 include_dir = include_directories('include')
+
+# Configuration
+conf = configuration_data()
+
+conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
+conf.set_quoted('LOCALE_DIR', localedir)
+conf.set_quoted('VERSION', meson.project_version())
+conf.set_quoted('PACKAGE', 'PulseEffects')
+
+configure_file(output: 'config.h', configuration: conf)
+
+config_h_dir = include_directories('.')
+
+plugins_install_dir = '@0@/gstreamer-1.0'.format(get_option('libdir'))
+
+plugins_cxx_args = [
+	'-Wl,-Bsymbolic-functions',
+	'-fvisibility=hidden',
+	'-fno-strict-aliasing'
+]
 
 subdir('data')
 subdir('po')

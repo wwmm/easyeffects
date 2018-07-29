@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+### Fixed
+- Fixed a bug where the interface allowed the user to choose zero weights in
+the auto gain. The zero value was not passed to the plugin because of a few
+protections. So this bug did not affected plugin operation. But it makes
+gsettings crash and this leads to core dump when PE is closed.
+
 ## [4.2.1]
 ### Added
 - Added an auto gain plugin based on libebur128. It replaces the previous
