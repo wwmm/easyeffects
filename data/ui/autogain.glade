@@ -143,7 +143,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="label" translatable="yes">Momentary</property>
+                <property name="label" translatable="yes">Influence of measurements with momentary integration time</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -156,7 +156,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="label" translatable="yes">Short Term</property>
+                <property name="label" translatable="yes">Influence of measurements with short integration time</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -169,7 +169,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="label" translatable="yes">Integrated</property>
+                <property name="label" translatable="yes">Influence of integrated measurements</property>
               </object>
               <packing>
                 <property name="left_attach">3</property>
