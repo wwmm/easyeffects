@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-28 12:15-0300\n"
+"POT-Creation-Date: 2018-07-29 15:07-0300\n"
 "PO-Revision-Date: 2018-07-18 22:14+0300\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -154,23 +154,28 @@ msgstr "Состояние"
 msgid "Auto Gain"
 msgstr "Авто предусиление"
 
-#: data/ui/autogain.glade:146 data/ui/autogain.glade:496
+#: data/ui/autogain.glade:151 data/ui/autogain.glade:520
 msgid "Momentary"
 msgstr ""
 
-#: data/ui/autogain.glade:159 data/ui/autogain.glade:509
+#: data/ui/autogain.glade:164 data/ui/autogain.glade:533
 msgid "Short Term"
 msgstr ""
 
-#: data/ui/autogain.glade:172 data/ui/autogain.glade:522
+#: data/ui/autogain.glade:177 data/ui/autogain.glade:546
 msgid "Integrated"
 msgstr ""
 
-#: data/ui/autogain.glade:185
+#: data/ui/autogain.glade:191
 msgid "Target"
 msgstr "Целевой уровень громкости"
 
-#: data/ui/autogain.glade:284 data/ui/autogain.glade:476
+#: data/ui/autogain.glade:279
+#, fuzzy
+msgid "Weights"
+msgstr "Высота"
+
+#: data/ui/autogain.glade:308 data/ui/autogain.glade:500
 #: data/ui/limiter.glade:367 data/ui/compressor.glade:559
 #: data/ui/multiband_compressor.glade:1959 data/ui/filter.glade:365
 #: data/ui/equalizer.glade:366 data/ui/reverb.glade:612
@@ -184,7 +189,7 @@ msgstr "Целевой уровень громкости"
 msgid "Input"
 msgstr "Вход"
 
-#: data/ui/autogain.glade:299 data/ui/autogain.glade:725
+#: data/ui/autogain.glade:323 data/ui/autogain.glade:749
 #: data/ui/limiter.glade:382 data/ui/compressor.glade:574
 #: data/ui/multiband_compressor.glade:755
 #: data/ui/multiband_compressor.glade:1132
@@ -204,20 +209,20 @@ msgstr "Вход"
 msgid "Output"
 msgstr "Выход"
 
-#: data/ui/autogain.glade:610
+#: data/ui/autogain.glade:634
 msgid "Relative"
 msgstr ""
 
-#: data/ui/autogain.glade:623 data/ui/deesser.glade:298
+#: data/ui/autogain.glade:647 data/ui/deesser.glade:298
 msgid "Gain"
 msgstr "Усиление"
 
-#: data/ui/autogain.glade:687 data/ui/loudness.glade:24
+#: data/ui/autogain.glade:711 data/ui/loudness.glade:24
 #: data/ui/loudness.glade:130
 msgid "Loudness"
 msgstr "Громкость"
 
-#: data/ui/autogain.glade:739
+#: data/ui/autogain.glade:763
 msgid "Range"
 msgstr ""
 
