@@ -235,8 +235,8 @@ msgid "Loudness"
 msgstr "Громкость"
 
 #: data/ui/autogain.glade:739
-msgid "Range"
 # ??? не уверен в переводе
+msgid "Range"
 msgstr "Диапазон"
 
 #: data/ui/limiter.glade:30 data/ui/webrtc.glade:377
