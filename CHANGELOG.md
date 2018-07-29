@@ -12,6 +12,9 @@ level.
 - Sometimes PulseEffects was not paused when there was no application playing
 audio. Fixed that.
 
+### Note for Packagers
+- 	libebur128-dev is now a build time dependency.
+
 ## [4.2.0]
 ### Added
 - We finally have plugins documentation and a few basic explanations about some
