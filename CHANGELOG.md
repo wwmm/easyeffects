@@ -13,7 +13,7 @@ level.
 audio. Fixed that.
 
 ### Note for Packagers
-- 	libebur128-dev is now a build time dependency.
+- libebur128-dev is now a build time dependency.
 
 ## [4.2.0]
 ### Added
