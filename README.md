@@ -13,6 +13,7 @@ Audio effects for Pulseaudio applications
 ### Applications Output
 
 - Limiter
+- Auto Gain
 - Expander
 - Compressor
 - Multiband Compressor
@@ -59,6 +60,7 @@ Version `1.12.5` or higher
 - [libsamplerate](http://www.mega-nerd.com/SRC/index.html)
 - [libsndfile](http://www.mega-nerd.com/libsndfile/)
 - [zita-convolver](https://kokkinizita.linuxaudio.org/linuxaudio/)
+- [libebur128](https://github.com/jiixyj/libebur128)
 
 ## Changelog
 - For information about changes between versions take a look at our
