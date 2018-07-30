@@ -149,6 +149,8 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="label" translatable="yes">Momentary</property>
+                <property name="justify">center</property>
+                <property name="wrap">True</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -162,6 +164,8 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="label" translatable="yes">Short Term</property>
+                <property name="justify">center</property>
+                <property name="wrap">True</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -175,6 +179,8 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="label" translatable="yes">Integrated</property>
+                <property name="justify">center</property>
+                <property name="wrap">True</property>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -189,6 +195,8 @@
                 <property name="valign">center</property>
                 <property name="margin_right">30</property>
                 <property name="label" translatable="yes">Target</property>
+                <property name="justify">center</property>
+                <property name="wrap">True</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
