@@ -15,6 +15,7 @@
 #include <gst/audio/gstaudiofilter.h>
 #include <gst/gst.h>
 #include <cmath>
+#include "config.h"
 // #include <iostream>
 #include "gstpeautogain.hpp"
 
@@ -486,8 +487,8 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
 
             // std::cout << "relative: " << relative << std::endl;
             // std::cout << "momentary: " << momentary << std::endl;
-            // std::cout << "shortterm: " << shortterm << std::endl;
-            // std::cout << "global: " << global << std::endl;
+            // std::cout << "shortterm: " << peautogain->shortterm << std::endl;
+            // std::cout << "global: " << peautogain->global << std::endl;
             // std::cout << "loudness: " << peautogain->loudness << std::endl;
             // std::cout << "range: " << peautogain->range << std::endl;
             // std::cout << "gain: " << peautogain->gain << std::endl;
@@ -510,16 +511,12 @@ static gboolean plugin_init(GstPlugin* plugin) {
                                 GST_TYPE_PEAUTOGAIN);
 }
 
-#ifndef PACKAGE
-#define PACKAGE "PulseEffects"
-#endif
-
 GST_PLUGIN_DEFINE(GST_VERSION_MAJOR,
                   GST_VERSION_MINOR,
                   peautogain,
                   "PulseEffects autogain based on libebur128",
                   plugin_init,
-                  "4.2.1",
+                  VERSION,
                   "LGPL",
                   PACKAGE,
                   "https://github.com/wwmm/pulseeffects")

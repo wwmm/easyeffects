@@ -15,6 +15,7 @@
 #include <gst/audio/gstaudiofilter.h>
 #include <gst/gst.h>
 #include <thread>
+#include "config.h"
 #include "gstpeconvolver.hpp"
 #include "read_kernel.hpp"
 
@@ -474,16 +475,12 @@ static gboolean plugin_init(GstPlugin* plugin) {
                                 GST_TYPE_PECONVOLVER);
 }
 
-#ifndef PACKAGE
-#define PACKAGE "PulseEffects"
-#endif
-
 GST_PLUGIN_DEFINE(GST_VERSION_MAJOR,
                   GST_VERSION_MINOR,
                   peconvolver,
                   "PulseEffects Convolver",
                   plugin_init,
-                  "4.2.1",
+                  VERSION,
                   "LGPL",
                   PACKAGE,
                   "https://github.com/wwmm/pulseeffects")

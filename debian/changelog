@@ -1,3 +1,9 @@
+pulseeffects (4.2.2-1) unstable; urgency=low
+
+  * version 4.2.2 upstream
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 30 Jul 2018 03:31:00 +0300 
+
 pulseeffects (4.2.1-3) unstable; urgency=low
 
   * add mda-lv2 optional dependency

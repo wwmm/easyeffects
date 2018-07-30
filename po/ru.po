@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-28 12:15-0300\n"
+"POT-Creation-Date: 2018-07-29 15:07-0300\n"
 "PO-Revision-Date: 2018-07-18 22:14+0300\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -154,40 +154,49 @@ msgstr "Состояние"
 msgid "Auto Gain"
 msgstr "Контроль громкости по EBU R 128"
 
-#: data/ui/autogain.glade:146
+#: data/ui/autogain.glade:151 data/ui/autogain.glade:520
+msgid "Momentary"
+msgstr "Моментальные измерения"
+
+#: data/ui/autogain.glade:164 data/ui/autogain.glade:533
+msgid "Short Term"
+msgstr "Короткие измерения"
+
+#: data/ui/autogain.glade:177 data/ui/autogain.glade:546
 # Время интеграции — это величина, характеризующая быстродействие измерителя.
 # https://tech.ebu.ch/docs/factsheets/Factsheet-R128-2011-RUS.pdf
 # В документе выше переводчик перевел 'Integrated' как 'Интегрированные',
 # хотя сам же написал, что это "измерения от начала до конца"
 # Яндекс.Переводчик перевел лучше — "Комплексные измерения"
-msgid "Influence of measurements with momentary integration time"
-msgstr "Влияние измерений с моментальным временем интеграции"
-
-#: data/ui/autogain.glade:159
-msgid "Influence of measurements with short integration time"
-msgstr "Влияние измерений с малым временем интеграции"
-
-#: data/ui/autogain.glade:172
-msgid "Influence of integrated measurements"
-msgstr "Влияние комплексных измерений"
-
-#: data/ui/autogain.glade:496
-msgid "Momentary"
-msgstr "Моментальные измерения"
-
-#: data/ui/autogain.glade:509
-msgid "Short Term"
-msgstr "Короткие измерения"
-
-#: data/ui/autogain.glade:522
 msgid "Integrated"
 msgstr "Комплексные измерения"
 
-#: data/ui/autogain.glade:185
+#: data/ui/autogain.glade:191
 msgid "Target"
 msgstr "Целевой уровень громкости"
 
-#: data/ui/autogain.glade:284 data/ui/autogain.glade:476
+#: data/ui/autogain.glade:279
+msgid "Weights"
+msgstr "Вес в расчете громкости"
+
+################################################
+# https://github.com/wwmm/pulseeffects/pull/289
+# Left here for future thinking
+
+#: data/ui/autogain.glade:146
+#msgid "Influence of measurements with momentary integration time"
+#msgstr "Влияние измерений с моментальным временем интеграции"
+
+#: data/ui/autogain.glade:159
+#msgid "Influence of measurements with short integration time"
+#msgstr "Влияние измерений с малым временем интеграции"
+
+#: data/ui/autogain.glade:172
+#msgid "Influence of integrated measurements"
+#msgstr "Влияние комплексных измерений"
+################################################
+
+#: data/ui/autogain.glade:308 data/ui/autogain.glade:500
 #: data/ui/limiter.glade:367 data/ui/compressor.glade:559
 #: data/ui/multiband_compressor.glade:1959 data/ui/filter.glade:365
 #: data/ui/equalizer.glade:366 data/ui/reverb.glade:612
@@ -201,7 +210,7 @@ msgstr "Целевой уровень громкости"
 msgid "Input"
 msgstr "Вход"
 
-#: data/ui/autogain.glade:299 data/ui/autogain.glade:725
+#: data/ui/autogain.glade:323 data/ui/autogain.glade:749
 #: data/ui/limiter.glade:382 data/ui/compressor.glade:574
 #: data/ui/multiband_compressor.glade:755
 #: data/ui/multiband_compressor.glade:1132
@@ -221,21 +230,21 @@ msgstr "Вход"
 msgid "Output"
 msgstr "Выход"
 
-#: data/ui/autogain.glade:610
+#: data/ui/autogain.glade:634
 msgid "Relative"
 msgstr "Относительное значение"
 
-#: data/ui/autogain.glade:623 data/ui/deesser.glade:298
+#: data/ui/autogain.glade:647 data/ui/deesser.glade:298
 msgid "Gain"
 msgstr "Усиление"
 
-#: data/ui/autogain.glade:687 data/ui/loudness.glade:24
+#: data/ui/autogain.glade:711 data/ui/loudness.glade:24
 #: data/ui/loudness.glade:130
 msgid "Loudness"
 msgstr "Громкость"
 
-#: data/ui/autogain.glade:739
-# ??? не уверен в переводе
+#: data/ui/autogain.glade:763
+# ??? Не уверен в переводе
 msgid "Range"
 msgstr "Диапазон"
 

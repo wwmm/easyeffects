@@ -14,6 +14,7 @@
 
 #include <gst/audio/gstaudiofilter.h>
 #include <gst/gst.h>
+#include "config.h"
 #include "gstpecrystalizer.hpp"
 
 GST_DEBUG_CATEGORY_STATIC(gst_pecrystalizer_debug_category);
@@ -233,16 +234,12 @@ static gboolean plugin_init(GstPlugin* plugin) {
                                 GST_TYPE_PECRYSTALIZER);
 }
 
-#ifndef PACKAGE
-#define PACKAGE "PulseEffects"
-#endif
-
 GST_PLUGIN_DEFINE(GST_VERSION_MAJOR,
                   GST_VERSION_MINOR,
                   pecrystalizer,
                   "PulseEffects Crystalizer",
                   plugin_init,
-                  "4.2.1",
+                  VERSION,
                   "LGPL",
                   PACKAGE,
                   "https://github.com/wwmm/pulseeffects")

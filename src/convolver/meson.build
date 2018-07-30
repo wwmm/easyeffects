@@ -1,11 +1,5 @@
 cxx = meson.get_compiler('cpp')
 
-cxx_args = [
-	'-Wl,-Bsymbolic-functions',
-	'-fvisibility=hidden',
-	'-fno-strict-aliasing'
-]
-
 zita_convolver = cxx.find_library('zita-convolver', required: false)
 
 if cxx.compiles(
@@ -37,11 +31,11 @@ plugins_install_dir = '@0@/gstreamer-1.0'.format(get_option('libdir'))
 library(
 	'gstpeconvolver',
 	plugin_sources,
-	include_directories : include_dir,
+	include_directories : [include_dir,config_h_dir],
 	dependencies : plugin_deps,
 	install: true,
 	install_dir : plugins_install_dir,
-  cpp_args: cxx_args
+  cpp_args: plugins_cxx_args
 )
 
 else
