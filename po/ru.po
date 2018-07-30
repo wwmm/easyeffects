@@ -746,7 +746,7 @@ msgstr "Стерео > Моно-Раздельно"
 
 #: data/ui/stereo_tools.glade:327
 msgid "MS > LR (Mid-Side to Stereo)"
-msgstr "Моно-Разделно > Стерео"
+msgstr "Моно-Раздельно > Стерео"
 
 #: data/ui/stereo_tools.glade:328
 msgid "LR > LL (Mono Left Channel)"
