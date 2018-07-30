@@ -1003,7 +1003,7 @@ msgstr "Высокий"
 
 #: data/ui/webrtc.glade:248
 msgid "Echo Canceller"
-msgstr "Шумодав"
+msgstr "Эхо и шумо подавление"
 
 #: data/ui/webrtc.glade:296
 msgid "Very High"
@@ -1011,19 +1011,20 @@ msgstr "Очень высокий"
 
 #: data/ui/webrtc.glade:307
 msgid "Noise Suppressor"
-msgstr "Компрессор шума"
-
-#: data/ui/webrtc.glade:352
-msgid "Adaptive Digital"
-msgstr ""
-
-#: data/ui/webrtc.glade:353
-msgid "Fixed Digital"
-msgstr ""
+msgstr "Простой шумодав"
 
 #: data/ui/webrtc.glade:364
 msgid "Gain Controller"
-msgstr ""
+msgstr "Автоконтроль усиления (AGC)"
+
+#: data/ui/webrtc.glade:352
+## TODO: Mode/Режим заменить на "Режим сжатия"
+msgid "Adaptive Digital"
+msgstr "Адаптивное цифровое сжатие"
+
+#: data/ui/webrtc.glade:353
+msgid "Fixed Digital"
+msgstr "Фиксированное цифровое сжатие"
 
 #: data/ui/webrtc.glade:397
 msgid "Target Level"

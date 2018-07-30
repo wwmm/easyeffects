@@ -1,6 +1,7 @@
-pulseeffects (4.2.2-1) unstable; urgency=low
+pulseeffects (4.2.2-2) unstable; urgency=low
 
   * version 4.2.2 upstream
+  * small fixes to Russian localization
   
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 30 Jul 2018 03:31:00 +0300 
 
