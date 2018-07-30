@@ -141,10 +141,16 @@ void on_blocksize_changed(GSettings* settings,
             g_object_set(l->source, "blocksize", value * 2 * sizeof(float),
                          nullptr);
 
+            g_object_set(l->sink, "blocksize", value * 2 * sizeof(float),
+                         nullptr);
+
             l->update_pipeline_state();
         } else {
             // 2 channels per buffer
             g_object_set(l->source, "blocksize", value * 2 * sizeof(float),
+                         nullptr);
+
+            g_object_set(l->sink, "blocksize", value * 2 * sizeof(float),
                          nullptr);
         }
     }

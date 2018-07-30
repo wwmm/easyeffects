@@ -220,7 +220,8 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     g_object_set(source, "volume", 1.0, nullptr);
     g_object_set(source, "mute", false, nullptr);
     g_object_set(source, "provide-clock", false, nullptr);
-    g_object_set(source, "slave-method", 1, nullptr);  // re-timestamp
+    g_object_set(source, "slave-method", 1, nullptr);     // re-timestamp
+    g_object_set(source, "do-timestamp", true, nullptr);  // redundant?
 
     /*1024 samples and 2 channels per buffer. This is just a default value so
     that the convolver can be initialized. It neeeds power of two block size.
