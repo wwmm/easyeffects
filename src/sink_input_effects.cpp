@@ -153,12 +153,7 @@ void on_blocksize_changed(GSettings* settings,
     g_object_get(l->source, "blocksize", &old_value, nullptr);
 
     if (value != old_value) {
-        GstState state;
-
-        gst_element_get_state(l->pipeline, &state, nullptr,
-                              l->state_check_timeout);
-
-        if (state == GST_STATE_PLAYING) {
+        if (l->playing) {
             gst_element_set_state(l->pipeline, GST_STATE_NULL);
 
             // 2 channels per buffer

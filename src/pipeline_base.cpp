@@ -50,6 +50,12 @@ void on_message_state_changed(const GstBus* gst_bus,
         util::debug(pb->log_tag + gst_element_state_get_name(old_state) +
                     " -> " + gst_element_state_get_name(new_state) + " -> " +
                     gst_element_state_get_name(pending));
+
+        if (new_state == GST_STATE_PLAYING) {
+            pb->playing = true;
+        } else {
+            pb->playing = false;
+        }
     }
 }
 
@@ -143,24 +149,14 @@ void on_spectrum_n_points_changed(GSettings* settings,
 }
 
 void on_buffer_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
-    GstState state;
-
-    gst_element_get_state(pb->pipeline, &state, nullptr,
-                          pb->state_check_timeout);
-
-    if (state == GST_STATE_PLAYING) {
+    if (pb->playing) {
         gst_element_set_state(pb->pipeline, GST_STATE_NULL);
         pb->update_pipeline_state();
     }
 }
 
 void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
-    GstState state;
-
-    gst_element_get_state(pb->pipeline, &state, nullptr,
-                          pb->state_check_timeout);
-
-    if (state == GST_STATE_PLAYING) {
+    if (pb->playing) {
         gst_element_set_state(pb->pipeline, GST_STATE_NULL);
         pb->update_pipeline_state();
     }
@@ -314,11 +310,7 @@ void PipelineBase::set_source_monitor_name(std::string name) {
     g_object_get(source, "current-device", &current_device, nullptr);
 
     if (name != current_device) {
-        GstState state;
-
-        gst_element_get_state(pipeline, &state, nullptr, state_check_timeout);
-
-        if (state == GST_STATE_PLAYING) {
+        if (playing) {
             gst_element_set_state(pipeline, GST_STATE_NULL);
 
             g_object_set(source, "device", name.c_str(), nullptr);
@@ -357,16 +349,22 @@ void PipelineBase::update_pipeline_state() {
         }
     }
 
-    GstState state, pending;
-
-    gst_element_get_state(pipeline, &state, &pending, state_check_timeout);
-
-    if (state != GST_STATE_PLAYING && wants_to_play) {
+    if (!playing && wants_to_play) {
         gst_element_set_state(pipeline, GST_STATE_PLAYING);
-    } else if (state == GST_STATE_PLAYING && !wants_to_play) {
+    } else if (playing && !wants_to_play) {
         gst_element_set_state(pipeline, GST_STATE_NULL);
 
+        GstState state, pending;
+
         gst_element_get_state(pipeline, &state, &pending, state_check_timeout);
+
+        /*on_message_state is not called when going to null. I don't know why.
+         *so we have to update the variable manually after setting to null.
+         */
+
+        if (state == GST_STATE_NULL) {
+            playing = false;
+        }
 
         util::debug(log_tag + gst_element_state_get_name(state) + " -> " +
                     gst_element_state_get_name(pending));

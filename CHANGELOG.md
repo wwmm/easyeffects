@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Added
+- Improved the routine responsible to enable or disable audio processing
+depending on whether there is an audio application playing or not. The previous
+code wasted cpu resources and on rare occasions could freeze the interface.
+
 ## [4.2.2]
 ### Fixed
 - Fixed a bug where the interface allowed the user to choose zero weights in

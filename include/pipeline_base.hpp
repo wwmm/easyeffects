@@ -11,6 +11,7 @@ class PipelineBase {
     PipelineBase(const std::string& tag, const uint& sampling_rate);
     virtual ~PipelineBase();
 
+    bool playing = false;
     std::string log_tag;
 
     GstElement *pipeline, *source, *sink, *spectrum, *spectrum_bin,
