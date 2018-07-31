@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 
+## [4.2.3]
 ### Added
 - Improved the routine responsible to enable or disable audio processing
 depending on whether there is an audio application playing or not. The previous

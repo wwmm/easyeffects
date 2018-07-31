@@ -36,6 +36,7 @@ class PipelineBase {
 
     void set_source_monitor_name(std::string name);
     void set_output_sink_name(std::string name);
+    void set_null_pipeline();
     void update_pipeline_state();
 
     sigc::signal<void, std::vector<float>> new_spectrum;

@@ -130,7 +130,7 @@ void on_blocksize_changed(GSettings* settings,
 
     if (value != old_value) {
         if (l->playing) {
-            gst_element_set_state(l->pipeline, GST_STATE_NULL);
+            l->set_null_pipeline();
 
             // 2 channels per buffer
             g_object_set(l->source, "blocksize", value * 2 * sizeof(float),
