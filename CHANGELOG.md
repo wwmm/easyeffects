@@ -6,6 +6,9 @@
 - Improved the routine responsible to enable or disable audio processing
 depending on whether there is an audio application playing or not. The previous
 code wasted cpu resources and on rare occasions could freeze the interface.
+- The sample format and sampling rate info shown in the headerbar had a few
+unicode characters replaced by icons. Some fonts do not have the characters that
+ were being used.
 
 ## [4.2.2]
 ### Fixed

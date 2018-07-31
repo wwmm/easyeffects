@@ -10,6 +10,7 @@
 #include <gtkmm/drawingarea.h>
 #include <gtkmm/entry.h>
 #include <gtkmm/headerbar.h>
+#include <gtkmm/image.h>
 #include <gtkmm/label.h>
 #include <gtkmm/listbox.h>
 #include <gtkmm/liststore.h>
@@ -51,12 +52,13 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     Gtk::Stack* stack;
     Gtk::ListBox* presets_listbox;
     Gtk::MenuButton* presets_menu_button;
-    Gtk::Label* presets_menu_label;
+    Gtk::Label *presets_menu_label, *headerbar_info;
     Gtk::Entry* preset_name;
     Gtk::ColorButton* spectrum_color_button;
     Gtk::ScrolledWindow* presets_scrolled_window;
     Gtk::ComboBoxText *blocksize_in, *blocksize_out;
     Gtk::HeaderBar* headerbar;
+    Gtk::Image *headerbar_icon1, *headerbar_icon2;
     Gdk::RGBA spectrum_color;
 
     Glib::RefPtr<Gtk::Adjustment> buffer_in, buffer_out, latency_in,

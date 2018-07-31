@@ -93,6 +93,9 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     builder->get_widget("blocksize_out", blocksize_out);
     builder->get_widget("headerbar", headerbar);
     builder->get_widget("help_button", help_button);
+    builder->get_widget("headerbar_icon1", headerbar_icon1);
+    builder->get_widget("headerbar_icon2", headerbar_icon2);
+    builder->get_widget("headerbar_info", headerbar_info);
 
     get_object(builder, "buffer_in", buffer_in);
     get_object(builder, "buffer_out", buffer_out);
@@ -581,6 +584,12 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
     current_dev_rate.precision(1);
 
     if (index == 0) {  // sie
+        headerbar_icon1->set_from_icon_name("emblem-music-symbolic",
+                                            Gtk::ICON_SIZE_MENU);
+
+        headerbar_icon2->set_from_icon_name("audio-speakers-symbolic",
+                                            Gtk::ICON_SIZE_MENU);
+
         null_sink_rate << std::fixed << app->pm->apps_sink_info->rate / 1000.0f
                        << "kHz";
 
@@ -589,13 +598,18 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 
         current_dev_rate << std::fixed << sink->rate / 1000.0f << "kHz";
 
-        std::string title = "♫ ⟶ " + app->pm->apps_sink_info->format + "," +
-                            null_sink_rate.str() + " ⟶ F32LE," +
-                            null_sink_rate.str() + " ⟶ " + sink->format + "," +
-                            current_dev_rate.str() + " ⟶ 🔈";
+        headerbar_info->set_text(" ⟶ " + app->pm->apps_sink_info->format + "," +
+                                 null_sink_rate.str() + " ⟶ F32LE," +
+                                 null_sink_rate.str() + " ⟶ " + sink->format +
+                                 "," + current_dev_rate.str() + " ⟶ ");
 
-        headerbar->set_subtitle(title);
     } else {  // soe
+        headerbar_icon1->set_from_icon_name("audio-input-microphone-symbolic",
+                                            Gtk::ICON_SIZE_MENU);
+
+        headerbar_icon2->set_from_icon_name("emblem-music-symbolic",
+                                            Gtk::ICON_SIZE_MENU);
+
         null_sink_rate << std::fixed << app->pm->mic_sink_info->rate / 1000.0f
                        << "kHz";
 
@@ -604,13 +618,11 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 
         current_dev_rate << std::fixed << source->rate / 1000.0f << "kHz";
 
-        std::string title = "🎙 ⟶ " + source->format + "," +
-                            current_dev_rate.str() + " ⟶ F32LE," +
-                            null_sink_rate.str() + " ⟶ " +
-                            app->pm->mic_sink_info->format + "," +
-                            null_sink_rate.str() + " ⟶ ♫";
-
-        headerbar->set_subtitle(title);
+        headerbar_info->set_text(" ⟶ " + source->format + "," +
+                                 current_dev_rate.str() + " ⟶ F32LE," +
+                                 null_sink_rate.str() + " ⟶ " +
+                                 app->pm->mic_sink_info->format + "," +
+                                 null_sink_rate.str() + " ⟶ ");
     }
 }
 
