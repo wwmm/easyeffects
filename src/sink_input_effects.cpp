@@ -152,25 +152,19 @@ void on_blocksize_changed(GSettings* settings,
 
     g_object_get(l->source, "blocksize", &old_value, nullptr);
 
-    if (value != old_value) {
+    int nbytes = value * 2 * sizeof(float);  // 2 channels per buffer
+
+    if (nbytes != old_value) {
         if (l->playing) {
             l->set_null_pipeline();
 
-            // 2 channels per buffer
-            g_object_set(l->source, "blocksize", value * 2 * sizeof(float),
-                         nullptr);
-
-            g_object_set(l->sink, "blocksize", value * 2 * sizeof(float),
-                         nullptr);
+            g_object_set(l->source, "blocksize", nbytes, nullptr);
+            g_object_set(l->sink, "blocksize", nbytes, nullptr);
 
             l->update_pipeline_state();
         } else {
-            // 2 channels per buffer
-            g_object_set(l->source, "blocksize", value * 2 * sizeof(float),
-                         nullptr);
-
-            g_object_set(l->sink, "blocksize", value * 2 * sizeof(float),
-                         nullptr);
+            g_object_set(l->source, "blocksize", nbytes, nullptr);
+            g_object_set(l->sink, "blocksize", nbytes, nullptr);
         }
     }
 }

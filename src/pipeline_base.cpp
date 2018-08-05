@@ -211,10 +211,10 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
 
     // building the pipeline
 
-    gst_bin_add_many(GST_BIN(pipeline), source, capsfilter, queue, effects_bin,
+    gst_bin_add_many(GST_BIN(pipeline), source, queue, capsfilter, effects_bin,
                      spectrum_bin, sink, nullptr);
 
-    gst_element_link_many(source, capsfilter, queue, effects_bin, spectrum_bin,
+    gst_element_link_many(source, queue, capsfilter, effects_bin, spectrum_bin,
                           sink, nullptr);
 
     // initializing properties
@@ -222,8 +222,7 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     g_object_set(source, "volume", 1.0, nullptr);
     g_object_set(source, "mute", false, nullptr);
     g_object_set(source, "provide-clock", false, nullptr);
-    g_object_set(source, "slave-method", 1, nullptr);     // re-timestamp
-    g_object_set(source, "do-timestamp", true, nullptr);  // redundant?
+    g_object_set(source, "slave-method", 1, nullptr);  // re-timestamp
 
     /*512 samples and 2 channels per buffer. This is just a default value so
     that the convolver can be initialized. It neeeds power of two block size.
@@ -241,7 +240,6 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     gst_caps_unref(caps);
 
     g_object_set(queue, "silent", true, nullptr);
-    g_object_set(queue, "flush-on-eos", true, nullptr);
 
     g_object_set(spectrum, "bands", spectrum_nbands, nullptr);
     g_object_set(spectrum, "threshold", spectrum_threshold, nullptr);
