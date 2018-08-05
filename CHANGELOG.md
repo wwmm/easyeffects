@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [4.2.4]
+### Added
+- New application icon created by ZenCubic(https://github.com/zencubic).
+
 ## [4.2.3]
 ### Added
 - Improved the routine responsible to enable or disable audio processing

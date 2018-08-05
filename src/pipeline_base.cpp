@@ -199,7 +199,8 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     spectrum = gst_element_factory_make("spectrum", "spectrum");
 
     auto capsfilter = gst_element_factory_make("capsfilter", nullptr);
-    auto queue = gst_element_factory_make("queue", nullptr);
+    auto queue_src = gst_element_factory_make("queue", nullptr);
+    auto queue_sink = gst_element_factory_make("queue", nullptr);
 
     init_spectrum_bin();
     init_effects_bin();
@@ -211,11 +212,11 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
 
     // building the pipeline
 
-    gst_bin_add_many(GST_BIN(pipeline), source, queue, capsfilter, effects_bin,
-                     spectrum_bin, sink, nullptr);
+    gst_bin_add_many(GST_BIN(pipeline), source, queue_src, capsfilter,
+                     effects_bin, spectrum_bin, queue_sink, sink, nullptr);
 
-    gst_element_link_many(source, queue, capsfilter, effects_bin, spectrum_bin,
-                          sink, nullptr);
+    gst_element_link_many(source, queue_src, capsfilter, effects_bin,
+                          spectrum_bin, queue_sink, sink, nullptr);
 
     // initializing properties
 
@@ -239,7 +240,8 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
 
     gst_caps_unref(caps);
 
-    g_object_set(queue, "silent", true, nullptr);
+    g_object_set(queue_src, "silent", true, nullptr);
+    g_object_set(queue_sink, "silent", true, nullptr);
 
     g_object_set(spectrum, "bands", spectrum_nbands, nullptr);
     g_object_set(spectrum, "threshold", spectrum_threshold, nullptr);
