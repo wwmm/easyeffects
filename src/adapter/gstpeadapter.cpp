@@ -1,17 +1,4 @@
-/**
- * SECTION:element-peadapter
- * @title: peadapter
- *
- * The peadapter is a simple element that drops buffers when the
- * #GstPeadapter:drop property is set to %TRUE and lets then through otherwise.
- *
- * Any downstream error received while the #GstPeadapter:drop property is %TRUE
- * is ignored. So downstream element can be set to  %GST_STATE_NULL and removed,
- * without using pad blocking.
- */
-
-#include <string.h>
-#include <iostream>
+// #include <iostream>
 #include "config.h"
 #include "gstpeadapter.hpp"
 
@@ -170,8 +157,6 @@ static gboolean gst_peadapter_sink_event(GstPad* pad,
     GstPeadapter* peadapter = GST_PEADAPTER(parent);
     gboolean ret = true;
 
-    ret = gst_pad_event_default(pad, parent, event);
-
     switch (GST_EVENT_TYPE(event)) {
         case GST_EVENT_CAPS:
             /* we should handle the format here */
@@ -213,7 +198,7 @@ static GstStateChangeReturn gst_peadapter_change_state(
         return ret;
 
     switch (transition) {
-        case GST_STATE_CHANGE_PLAYING_TO_PAUSED:
+        case GST_STATE_CHANGE_READY_TO_NULL:
             gst_adapter_clear(peadapter->adapter);
             break;
         default:
