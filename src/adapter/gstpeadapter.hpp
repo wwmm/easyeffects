@@ -1,10 +1,11 @@
 #ifndef __GST_PEADAPTER_H__
 #define __GST_PEADAPTER_H__
 
+#include <gst/base/gstadapter.h>
 #include <gst/gst.h>
 
 G_BEGIN_DECLS
-/* #define's don't like whitespacey bits */
+
 #define GST_TYPE_PEADAPTER (gst_peadapter_get_type())
 #define GST_PEADAPTER(obj) \
     (G_TYPE_CHECK_INSTANCE_CAST((obj), GST_TYPE_PEADAPTER, GstPeadapter))
@@ -24,16 +25,15 @@ typedef struct _GstPeadapterClass GstPeadapterClass;
  * The private peadapter structure
  */
 struct _GstPeadapter {
-    /*< private >*/
     GstElement parent;
 
-    /* atomic boolean */
-    volatile gint drop;
+    /* properties */
 
-    /* Protected by the stream lock */
-    gboolean discont;
-    gboolean need_repush_sticky;
+    int blocksize;
 
+    /*< private >*/
+
+    GstAdapter* adapter;
     GstPad* srcpad;
     GstPad* sinkpad;
 };

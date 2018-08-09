@@ -17,24 +17,6 @@
 GST_DEBUG_CATEGORY_STATIC(peadapter_debug);
 #define GST_CAT_DEFAULT (peadapter_debug)
 
-static GstStaticPadTemplate sinktemplate = GST_STATIC_PAD_TEMPLATE(
-    "sink",
-    GST_PAD_SINK,
-    GST_PAD_ALWAYS,
-    GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=[1,max],"
-                    "channels=2,layout=interleaved"));
-
-static GstStaticPadTemplate srctemplate = GST_STATIC_PAD_TEMPLATE(
-    "src",
-    GST_PAD_SRC,
-    GST_PAD_ALWAYS,
-    GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=[1,max],"
-                    "channels=2,layout=interleaved"));
-
-enum { PROP_0, PROP_DROP };
-
-#define DEFAULT_DROP FALSE
-
 static void gst_peadapter_set_property(GObject* object,
                                        guint prop_id,
                                        const GValue* value,
@@ -51,13 +33,28 @@ static gboolean gst_peadapter_sink_event(GstPad* pad,
                                          GstObject* parent,
                                          GstEvent* event);
 
-#define _do_init \
-    GST_DEBUG_CATEGORY_INIT(peadapter_debug, "peadapter", 0, "Peadapter");
+static GstStaticPadTemplate sinktemplate = GST_STATIC_PAD_TEMPLATE(
+    "sink",
+    GST_PAD_SINK,
+    GST_PAD_ALWAYS,
+    GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=[1,max],"
+                    "channels=2,layout=interleaved"));
+
+static GstStaticPadTemplate srctemplate = GST_STATIC_PAD_TEMPLATE(
+    "src",
+    GST_PAD_SRC,
+    GST_PAD_ALWAYS,
+    GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=[1,max],"
+                    "channels=2,layout=interleaved"));
+
+enum { PROP_0, PROP_BLOCKSIZE };
+
 #define gst_peadapter_parent_class parent_class
-G_DEFINE_TYPE_WITH_CODE(GstPeadapter,
-                        gst_peadapter,
-                        GST_TYPE_ELEMENT,
-                        _do_init);
+G_DEFINE_TYPE_WITH_CODE(
+    GstPeadapter,
+    gst_peadapter,
+    GST_TYPE_ELEMENT,
+    GST_DEBUG_CATEGORY_INIT(peadapter_debug, "peadapter", 0, "Peadapter"));
 
 static void gst_peadapter_class_init(GstPeadapterClass* klass) {
     GObjectClass* gobject_class;
@@ -69,16 +66,6 @@ static void gst_peadapter_class_init(GstPeadapterClass* klass) {
     gobject_class->set_property = gst_peadapter_set_property;
     gobject_class->get_property = gst_peadapter_get_property;
 
-    g_object_class_install_property(
-        gobject_class, PROP_DROP,
-        g_param_spec_boolean(
-            "drop", "Drop buffers and events",
-            "Whether to drop buffers and events or let them through",
-            DEFAULT_DROP,
-            static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                     GST_PARAM_MUTABLE_PLAYING |
-                                     G_PARAM_STATIC_STRINGS)));
-
     gst_element_class_add_static_pad_template(gstelement_class, &srctemplate);
     gst_element_class_add_static_pad_template(gstelement_class, &sinktemplate);
 
@@ -86,11 +73,18 @@ static void gst_peadapter_class_init(GstPeadapterClass* klass) {
         gstelement_class, "Peadapter element", "Filter",
         "Gives output buffers in the desired size",
         "Wellington <wellingtonwallace@gmail.com>");
+
+    g_object_class_install_property(
+        gobject_class, PROP_BLOCKSIZE,
+        g_param_spec_int("blocksize", "Block Size",
+                         "Number of Samples in the buffer", 0, 2048, 256,
+                         static_cast<GParamFlags>(G_PARAM_READWRITE |
+                                                  G_PARAM_STATIC_STRINGS)));
 }
 
 static void gst_peadapter_init(GstPeadapter* peadapter) {
-    peadapter->drop = FALSE;
-    peadapter->discont = FALSE;
+    peadapter->blocksize = 256;
+    peadapter->adapter = gst_adapter_new();
 
     peadapter->srcpad = gst_pad_new_from_static_template(&srctemplate, "src");
 
@@ -115,8 +109,8 @@ static void gst_peadapter_set_property(GObject* object,
     GstPeadapter* peadapter = GST_PEADAPTER(object);
 
     switch (prop_id) {
-        case PROP_DROP:
-            peadapter->drop = g_value_get_boolean(value);
+        case PROP_BLOCKSIZE:
+            peadapter->blocksize = g_value_get_int(value);
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -131,8 +125,8 @@ static void gst_peadapter_get_property(GObject* object,
     GstPeadapter* peadapter = GST_PEADAPTER(object);
 
     switch (prop_id) {
-        case PROP_DROP:
-            g_value_set_boolean(value, peadapter->drop);
+        case PROP_BLOCKSIZE:
+            g_value_set_int(value, peadapter->blocksize);
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -144,15 +138,18 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
                                          GstObject* parent,
                                          GstBuffer* buffer) {
     GstPeadapter* peadapter = GST_PEADAPTER(parent);
-    GstFlowReturn ret = GST_FLOW_OK;
 
-    if (peadapter->drop) {
-        gst_buffer_unref(buffer);
+    gst_adapter_push(peadapter->adapter, buffer);
+
+    gsize nbytes = 2 * peadapter->blocksize * sizeof(float);
+
+    if (gst_adapter_available(peadapter->adapter) >= nbytes) {
+        GstBuffer* b = gst_adapter_take_buffer(peadapter->adapter, nbytes);
+
+        return gst_pad_push(peadapter->srcpad, b);
     } else {
-        ret = gst_pad_push(peadapter->srcpad, buffer);
+        return GST_FLOW_OK;
     }
-
-    return ret;
 }
 
 static gboolean gst_peadapter_sink_event(GstPad* pad,
@@ -161,7 +158,6 @@ static gboolean gst_peadapter_sink_event(GstPad* pad,
     GstPeadapter* peadapter = GST_PEADAPTER(parent);
     gboolean ret = true;
 
-    // gst_event_unref(event);
     ret = gst_pad_event_default(pad, parent, event);
 
     switch (GST_EVENT_TYPE(event)) {
