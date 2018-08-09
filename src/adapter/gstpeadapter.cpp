@@ -170,6 +170,14 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
     GstPeadapter* peadapter = GST_PEADAPTER(parent);
     GstFlowReturn ret = GST_FLOW_OK;
 
+    if (GST_BUFFER_FLAG_IS_SET(buffer, GST_BUFFER_FLAG_GAP)) {
+        return GST_FLOW_OK;
+    }
+
+    if (GST_BUFFER_FLAG_IS_SET(buffer, GST_BUFFER_FLAG_DISCONT)) {
+        gst_adapter_clear(peadapter->adapter);
+    }
+
     gst_adapter_push(peadapter->adapter, buffer);
 
     gsize nbytes = 2 * peadapter->blocksize * sizeof(float);  // 2 channels
@@ -196,6 +204,9 @@ static gboolean gst_peadapter_sink_event(GstPad* pad,
             ret = gst_pad_push_event(peadapter->srcpad, event);
             break;
         case GST_EVENT_EOS:
+            gst_adapter_clear(peadapter->adapter);
+            break;
+        case GST_EVENT_FLUSH_STOP:
             gst_adapter_clear(peadapter->adapter);
             break;
         default:
@@ -230,7 +241,7 @@ static GstStateChangeReturn gst_peadapter_change_state(
         return ret;
 
     switch (transition) {
-        case GST_STATE_CHANGE_READY_TO_NULL:
+        case GST_STATE_CHANGE_PAUSED_TO_READY:
             gst_adapter_clear(peadapter->adapter);
             break;
         default:
