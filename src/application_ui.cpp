@@ -27,6 +27,8 @@ gboolean blocksize_enum_to_int(GValue* value,
         g_value_set_int(value, 4);
     } else if (v == std::string("2048")) {
         g_value_set_int(value, 5);
+    } else if (v == std::string("4096")) {
+        g_value_set_int(value, 6);
     }
 
     return true;
@@ -47,8 +49,10 @@ GVariant* int_to_blocksize_enum(const GValue* value,
         return g_variant_new_string("512");
     } else if (v == 4) {
         return g_variant_new_string("1024");
-    } else {
+    } else if (v == 5) {
         return g_variant_new_string("2048");
+    } else {
+        return g_variant_new_string("4096");
     }
 }
 

@@ -50,8 +50,7 @@ enum {
     BLOCKSIZE_512 = 512,
     BLOCKSIZE_1024 = 1024,
     BLOCKSIZE_2048 = 2048,
-    BLOCKSIZE_4096 = 4096,
-    BLOCKSIZE_8192 = 8192
+    BLOCKSIZE_4096 = 4096
 };
 
 #define GST_TYPE_PEADAPTER_BLOCKSIZE (gst_peadapter_blocksize_get_type())
@@ -67,7 +66,6 @@ static GType gst_peadapter_blocksize_get_type(void) {
             {BLOCKSIZE_1024, "Block size 1024", "1024"},
             {BLOCKSIZE_2048, "Block size 2048", "2048"},
             {BLOCKSIZE_4096, "Block size 4096", "4096"},
-            {BLOCKSIZE_8192, "Block size 8192", "8192"},
             {0, NULL, NULL}};
 
         gtype = g_enum_register_static("GstPeadapterBlockSize", values);

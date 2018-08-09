@@ -128,7 +128,6 @@
         <value nick="1024" value="1024"/>
         <value nick="2048" value="2048"/>
         <value nick="4096" value="4096"/>
-        <value nick="8192" value="8192"/>
     </enum>
     <schema id="com.github.wwmm.pulseeffects" path="/com/github/wwmm/pulseeffects/">
         <key name="buffer-out" type="i">

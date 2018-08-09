@@ -10,7 +10,8 @@ working well. Sometimes Pulseaudio was not able to give a buffer with the size
 we needed and some noises were created because of GStreamer buffer under flows.
 Now it should be possible to use higher block sizes without noises. A larger
 block may be interesting to users using weak processors as a few plugins use
-less CPU with larger block sizes.
+less CPU with larger block sizes. As always there is a trade-off. Large blocks
+increase latency.
 
 ## [4.2.4]
 ### Added
