@@ -1022,6 +1022,8 @@
                               <item>512</item>
                               <item>1024</item>
                               <item id="&lt;Enter ID&gt;">2048</item>
+                              <item translatable="yes">4096</item>
+                              <item translatable="yes">8192</item>
                             </items>
                           </object>
                           <packing>
@@ -1167,6 +1169,8 @@
                               <item>512</item>
                               <item>1024</item>
                               <item>2048</item>
+                              <item translatable="yes">4096</item>
+                              <item translatable="yes">8192</item>
                             </items>
                           </object>
                           <packing>

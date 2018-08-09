@@ -43,6 +43,39 @@ static GstStaticPadTemplate srctemplate = GST_STATIC_PAD_TEMPLATE(
 
 enum { PROP_0, PROP_BLOCKSIZE };
 
+enum {
+    BLOCKSIZE_64 = 64,
+    BLOCKSIZE_128 = 128,
+    BLOCKSIZE_256 = 256,
+    BLOCKSIZE_512 = 512,
+    BLOCKSIZE_1024 = 1024,
+    BLOCKSIZE_2048 = 2048,
+    BLOCKSIZE_4096 = 4096,
+    BLOCKSIZE_8192 = 8192
+};
+
+#define GST_TYPE_PEADAPTER_BLOCKSIZE (gst_peadapter_blocksize_get_type())
+static GType gst_peadapter_blocksize_get_type(void) {
+    static GType gtype = 0;
+
+    if (gtype == 0) {
+        static const GEnumValue values[] = {
+            {BLOCKSIZE_64, "Block size 64", "64"},
+            {BLOCKSIZE_128, "Block size 128", "128"},
+            {BLOCKSIZE_256, "Block size 256", "256"},
+            {BLOCKSIZE_512, "Block size 512 (default)", "512"},
+            {BLOCKSIZE_1024, "Block size 1024", "1024"},
+            {BLOCKSIZE_2048, "Block size 2048", "2048"},
+            {BLOCKSIZE_4096, "Block size 4096", "4096"},
+            {BLOCKSIZE_8192, "Block size 8192", "8192"},
+            {0, NULL, NULL}};
+
+        gtype = g_enum_register_static("GstPeadapterBlockSize", values);
+    }
+
+    return gtype;
+}
+
 #define gst_peadapter_parent_class parent_class
 G_DEFINE_TYPE_WITH_CODE(
     GstPeadapter,
@@ -69,19 +102,20 @@ static void gst_peadapter_class_init(GstPeadapterClass* klass) {
 
     gst_element_class_set_static_metadata(
         gstelement_class, "Peadapter element", "Filter",
-        "Gives output buffers in the desired size",
+        "Gives output buffers sizes that are a power of 2",
         "Wellington <wellingtonwallace@gmail.com>");
 
     g_object_class_install_property(
         gobject_class, PROP_BLOCKSIZE,
-        g_param_spec_int("blocksize", "Block Size",
-                         "Number of Samples in the buffer", 0, 2048, 256,
-                         static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                                  G_PARAM_STATIC_STRINGS)));
+        g_param_spec_enum("blocksize", "Block Size",
+                          "Number of Samples in the Audio Buffer",
+                          GST_TYPE_PEADAPTER_BLOCKSIZE, BLOCKSIZE_512,
+                          static_cast<GParamFlags>(G_PARAM_READWRITE |
+                                                   G_PARAM_STATIC_STRINGS)));
 }
 
 static void gst_peadapter_init(GstPeadapter* peadapter) {
-    peadapter->blocksize = 256;
+    peadapter->blocksize = 512;
     peadapter->adapter = gst_adapter_new();
 
     peadapter->srcpad = gst_pad_new_from_static_template(&srctemplate, "src");
@@ -108,7 +142,7 @@ static void gst_peadapter_set_property(GObject* object,
 
     switch (prop_id) {
         case PROP_BLOCKSIZE:
-            peadapter->blocksize = g_value_get_int(value);
+            peadapter->blocksize = g_value_get_enum(value);
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -124,7 +158,7 @@ static void gst_peadapter_get_property(GObject* object,
 
     switch (prop_id) {
         case PROP_BLOCKSIZE:
-            g_value_set_int(value, peadapter->blocksize);
+            g_value_set_enum(value, peadapter->blocksize);
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);

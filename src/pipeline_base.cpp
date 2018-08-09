@@ -195,12 +195,12 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     // creating elements common to all pipelines
 
     source = gst_element_factory_make("pulsesrc", "source");
+    adapter = gst_element_factory_make("peadapter", nullptr);
     sink = gst_element_factory_make("pulsesink", "sink");
     spectrum = gst_element_factory_make("spectrum", "spectrum");
 
     auto capsfilter = gst_element_factory_make("capsfilter", nullptr);
     auto queue_src = gst_element_factory_make("queue", nullptr);
-    auto adapter = gst_element_factory_make("peadapter", nullptr);
 
     init_spectrum_bin();
     init_effects_bin();
@@ -225,13 +225,6 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     g_object_set(source, "provide-clock", false, nullptr);
     g_object_set(source, "slave-method", 1, nullptr);  // re-timestamp
 
-    /*512 samples and 2 channels per buffer. This is just a default value so
-    that the convolver can be initialized. It neeeds power of two block size.
-    I noticed that webrtcdsp plugin does not work with blocksize=256. So I chose
-    a higher value as default
-    */
-    // g_object_set(source, "blocksize", 512 * 2 * sizeof(float), nullptr);
-
     g_object_set(sink, "volume", 1.0, nullptr);
     g_object_set(sink, "mute", false, nullptr);
     g_object_set(sink, "provide-clock", true, nullptr);
@@ -241,8 +234,6 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     gst_caps_unref(caps);
 
     g_object_set(queue_src, "silent", true, nullptr);
-
-    g_object_set(adapter, "blocksize", 512, nullptr);
 
     g_object_set(spectrum, "bands", spectrum_nbands, nullptr);
     g_object_set(spectrum, "threshold", spectrum_threshold, nullptr);

@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+## [4.2.5]
+### Added
+- Added a plugin that adapts the audio buffer size to a power of 2 value. We
+were using the block size property of the pulsesrc plugin before but it was not
+working well. Sometimes Pulseaudio was not able to give a buffer with the size
+we needed and some noises were created because of GStreamer buffer under flows.
+Now it should be possible to use higher block sizes without noises. A larger
+block may be interesting to users using weak processors as a few plugins use
+less CPU with larger block sizes.
+
 ## [4.2.4]
 ### Added
 - New application icon created by ZenCubic(https://github.com/zencubic).

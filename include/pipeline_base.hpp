@@ -14,7 +14,7 @@ class PipelineBase {
     bool playing = false;
     std::string log_tag;
 
-    GstElement *pipeline, *source, *sink, *spectrum, *spectrum_bin,
+    GstElement *pipeline, *source, *adapter, *sink, *spectrum, *spectrum_bin,
         *spectrum_identity_in, *spectrum_identity_out, *effects_bin,
         *identity_in, *identity_out;
     GstBus* bus;

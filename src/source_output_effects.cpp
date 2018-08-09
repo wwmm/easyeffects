@@ -123,25 +123,9 @@ void on_plugins_order_changed(GSettings* settings,
 void on_blocksize_changed(GSettings* settings,
                           gchar* key,
                           SourceOutputEffects* l) {
-    int value = g_settings_get_enum(settings, key);
-    int old_value;
-
-    g_object_get(l->source, "blocksize", &old_value, nullptr);
-
-    int nbytes = value * 2 * sizeof(float);  // 2 channels per buffer
-
-    if (nbytes != old_value) {
-        if (l->playing) {
-            l->set_null_pipeline();
-
-            // g_object_set(l->source, "blocksize", nbytes, nullptr);
-            // g_object_set(l->sink, "blocksize", nbytes, nullptr);
-
-            l->update_pipeline_state();
-        } else {
-            // g_object_set(l->source, "blocksize", nbytes, nullptr);
-            // g_object_set(l->sink, "blocksize", nbytes, nullptr);
-        }
+    if (l->playing) {
+        l->set_null_pipeline();
+        l->update_pipeline_state();
     }
 }
 
@@ -180,6 +164,8 @@ SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager)
     g_settings_bind(settings, "buffer-in", sink, "buffer-time",
                     G_SETTINGS_BIND_DEFAULT);
     g_settings_bind(settings, "latency-in", sink, "latency-time",
+                    G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind(settings, "blocksize-in", adapter, "blocksize",
                     G_SETTINGS_BIND_DEFAULT);
 
     // element message callback

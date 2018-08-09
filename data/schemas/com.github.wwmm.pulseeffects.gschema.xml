@@ -4,12 +4,10 @@
         <value nick="RMS" value="0"/>
         <value nick="Peak" value="1"/>
     </enum>
-
     <enum id="com.github.wwmm.pulseeffects.compressor.stereo.link.enum">
         <value nick="Average" value="0"/>
         <value nick="Maximum" value="1"/>
     </enum>
-
     <enum id="com.github.wwmm.pulseeffects.filter.enum">
         <value nick="12dB/oct Lowpass" value="0"/>
         <value nick="24dB/oct Lowpass" value="1"/>
@@ -24,13 +22,11 @@
         <value nick="12dB/oct Bandreject" value="10"/>
         <value nick="18dB/oct Bandreject" value="11"/>
     </enum>
-
     <enum id="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
         <value nick="peak" value="0"/>
         <value nick="low-shelf" value="1"/>
         <value nick="high-shelf" value="2"/>
     </enum>
-
     <enum id="com.github.wwmm.pulseeffects.reverb.roomsize.enum">
         <value nick="Small" value="0"/>
         <value nick="Medium" value="1"/>
@@ -39,7 +35,6 @@
         <value nick="Large/smooth" value="4"/>
         <value nick="Experimental" value="5"/>
     </enum>
-
     <enum id="com.github.wwmm.pulseeffects.stereoenhancer.msource.enum">
         <value nick="Left" value="0"/>
         <value nick="Right" value="1"/>
@@ -47,91 +42,75 @@
         <value nick="Side (L-R)" value="3"/>
         <value nick="Mute" value="4"/>
     </enum>
-
     <enum id="com.github.wwmm.pulseeffects.gate.detection.enum">
         <value nick="RMS" value="0"/>
         <value nick="Peak" value="1"/>
     </enum>
-
     <enum id="com.github.wwmm.pulseeffects.gate.stereo.link.enum">
         <value nick="Average" value="0"/>
         <value nick="Maximum" value="1"/>
     </enum>
-
     <enum id="com.github.wwmm.pulseeffects.deesser.detection.enum">
         <value nick="RMS" value="0"/>
         <value nick="Peak" value="1"/>
     </enum>
-
     <enum id="com.github.wwmm.pulseeffects.deesser.mode.enum">
         <value nick="Wide" value="0"/>
         <value nick="Split" value="1"/>
     </enum>
-
     <enum id="com.github.wwmm.pulseeffects.webrtc.echo.suppression.level.enum">
         <value nick="low" value="0"/>
         <value nick="moderate" value="1"/>
         <value nick="high" value="2"/>
     </enum>
-
     <enum id="com.github.wwmm.pulseeffects.webrtc.noise.suppression.level.enum">
         <value nick="low" value="0"/>
         <value nick="moderate" value="1"/>
         <value nick="high" value="2"/>
         <value nick="very-high" value="3"/>
     </enum>
-
     <enum id="com.github.wwmm.pulseeffects.webrtc.gain.control.mode.enum">
         <value nick="adaptive-digital" value="1"/>
         <value nick="fixed-digital" value="2"/>
     </enum>
-
     <enum id="com.github.wwmm.pulseeffects.webrtc.voice.detection.likelihood.enum">
         <value nick="very-low" value="0"/>
         <value nick="low" value="1"/>
         <value nick="moderate" value="2"/>
         <value nick="high" value="3"/>
     </enum>
-
     <enum id="com.github.wwmm.pulseeffects.expander.sidechain.mode.enum">
         <value nick="Peak" value="0"/>
         <value nick="RMS" value="1"/>
         <value nick="Low-Pass" value="2"/>
         <value nick="Uniform" value="3"/>
     </enum>
-
     <enum id="com.github.wwmm.pulseeffects.expander.sidechain.source.enum">
         <value nick="Middle" value="0"/>
         <value nick="Side" value="1"/>
         <value nick="Left" value="2"/>
         <value nick="Right" value="3"/>
     </enum>
-
     <enum id="com.github.wwmm.pulseeffects.expander.mode.enum">
         <value nick="Down" value="0"/>
         <value nick="Up" value="1"/>
     </enum>
-
     <enum id="com.github.wwmm.pulseeffects.multibandcompressor.mode.enum">
         <value nick="LR4" value="0"/>
         <value nick="LR8" value="1"/>
     </enum>
-
     <enum id="com.github.wwmm.pulseeffects.multibandcompressor.detection.enum">
         <value nick="RMS" value="0"/>
         <value nick="Peak" value="1"/>
     </enum>
-
     <enum id="com.github.wwmm.pulseeffects.multibandgate.mode.enum">
         <value nick="LR4" value="0"/>
         <value nick="LR8" value="1"/>
     </enum>
-
     <enum id="com.github.wwmm.pulseeffects.multibandgate.detection.enum">
         <value nick="RMS" value="0"/>
         <value nick="Peak" value="1"/>
     </enum>
-
     <enum id="com.github.wwmm.pulseeffects.stereotools.mode.enum">
         <value nick="LR > LR (Stereo Default)" value="0"/>
         <value nick="LR > MS (Stereo to Mid-Side)" value="1"/>
@@ -141,7 +120,6 @@
         <value nick="LR > L+R (Mono Sum L+R)" value="5"/>
         <value nick="LR > RL (Stereo Flip Channels)" value="6"/>
     </enum>
-
     <enum id="com.github.wwmm.pulseeffects.blocksize.enum">
         <value nick="64" value="64"/>
         <value nick="128" value="128"/>
@@ -149,8 +127,9 @@
         <value nick="512" value="512"/>
         <value nick="1024" value="1024"/>
         <value nick="2048" value="2048"/>
+        <value nick="4096" value="4096"/>
+        <value nick="8192" value="8192"/>
     </enum>
-
     <schema id="com.github.wwmm.pulseeffects" path="/com/github/wwmm/pulseeffects/">
         <key name="buffer-out" type="i">
             <range min="1000" max="1000000"/>
@@ -161,9 +140,8 @@
             <default>10000</default>
         </key>
         <key name="blocksize-out" enum="com.github.wwmm.pulseeffects.blocksize.enum">
-            <default>"256"</default>
+            <default>"512"</default>
         </key>
-
         <key name="buffer-in" type="i">
             <range min="1000" max="1000000"/>
             <default>200000</default>
@@ -175,7 +153,6 @@
         <key name="blocksize-in" enum="com.github.wwmm.pulseeffects.blocksize.enum">
             <default>"512"</default>
         </key>
-
         <key name="show-spectrum" type="b">
             <default>true</default>
         </key>
@@ -192,22 +169,18 @@
         <key name="spectrum-height" type="i">
             <default>100</default>
         </key>
-
         <key name="enable-all-apps" type="b">
             <default>false</default>
         </key>
-
         <key name="use-dark-theme" type="b">
             <default>false</default>
         </key>
-
         <key name="use-default-sink" type="b">
             <default>true</default>
         </key>
         <key name="use-default-source" type="b">
             <default>true</default>
         </key>
-
         <key name="last-used-preset" type="s">
             <default>"Presets"</default>
         </key>
