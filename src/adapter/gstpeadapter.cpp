@@ -11,6 +11,7 @@
  */
 
 #include <string.h>
+#include <iostream>
 #include "config.h"
 #include "gstpeadapter.hpp"
 
@@ -32,6 +33,12 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
 static gboolean gst_peadapter_sink_event(GstPad* pad,
                                          GstObject* parent,
                                          GstEvent* event);
+
+static GstStateChangeReturn gst_peadapter_change_state(
+    GstElement* element,
+    GstStateChange transition);
+
+static void gst_peadapter_finalize(GObject* object);
 
 static GstStaticPadTemplate sinktemplate = GST_STATIC_PAD_TEMPLATE(
     "sink",
@@ -68,6 +75,10 @@ static void gst_peadapter_class_init(GstPeadapterClass* klass) {
 
     gst_element_class_add_static_pad_template(gstelement_class, &srctemplate);
     gst_element_class_add_static_pad_template(gstelement_class, &sinktemplate);
+
+    gstelement_class->change_state = gst_peadapter_change_state;
+
+    gobject_class->finalize = gst_peadapter_finalize;
 
     gst_element_class_set_static_metadata(
         gstelement_class, "Peadapter element", "Filter",
@@ -138,18 +149,19 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
                                          GstObject* parent,
                                          GstBuffer* buffer) {
     GstPeadapter* peadapter = GST_PEADAPTER(parent);
+    GstFlowReturn ret = GST_FLOW_OK;
 
     gst_adapter_push(peadapter->adapter, buffer);
 
-    gsize nbytes = 2 * peadapter->blocksize * sizeof(float);
+    gsize nbytes = 2 * peadapter->blocksize * sizeof(float);  // 2 channels
 
-    if (gst_adapter_available(peadapter->adapter) >= nbytes) {
+    while (gst_adapter_available(peadapter->adapter) >= nbytes) {
         GstBuffer* b = gst_adapter_take_buffer(peadapter->adapter, nbytes);
 
-        return gst_pad_push(peadapter->srcpad, b);
-    } else {
-        return GST_FLOW_OK;
+        ret = gst_pad_push(peadapter->srcpad, b);
     }
+
+    return ret;
 }
 
 static gboolean gst_peadapter_sink_event(GstPad* pad,
@@ -166,6 +178,9 @@ static gboolean gst_peadapter_sink_event(GstPad* pad,
             /* push the event downstream */
             ret = gst_pad_push_event(peadapter->srcpad, event);
             break;
+        case GST_EVENT_EOS:
+            gst_adapter_clear(peadapter->adapter);
+            break;
         default:
             /* just call the default handler */
             ret = gst_pad_event_default(pad, parent, event);
@@ -173,6 +188,52 @@ static gboolean gst_peadapter_sink_event(GstPad* pad,
     }
 
     return ret;
+}
+
+static GstStateChangeReturn gst_peadapter_change_state(
+    GstElement* element,
+    GstStateChange transition) {
+    GstStateChangeReturn ret = GST_STATE_CHANGE_SUCCESS;
+    GstPeadapter* peadapter = GST_PEADAPTER(element);
+
+    /*up changes*/
+
+    switch (transition) {
+        case GST_STATE_CHANGE_NULL_TO_READY:
+            break;
+        default:
+            break;
+    }
+
+    /*down changes*/
+
+    ret = GST_ELEMENT_CLASS(parent_class)->change_state(element, transition);
+
+    if (ret == GST_STATE_CHANGE_FAILURE)
+        return ret;
+
+    switch (transition) {
+        case GST_STATE_CHANGE_PLAYING_TO_PAUSED:
+            gst_adapter_clear(peadapter->adapter);
+            break;
+        default:
+            break;
+    }
+
+    return ret;
+}
+
+void gst_peadapter_finalize(GObject* object) {
+    GstPeadapter* peadapter = GST_PEADAPTER(object);
+
+    GST_DEBUG_OBJECT(peadapter, "finalize");
+
+    gst_adapter_clear(peadapter->adapter);
+    g_object_unref(peadapter->adapter);
+
+    /* clean up object here */
+
+    G_OBJECT_CLASS(gst_peadapter_parent_class)->finalize(object);
 }
 
 static gboolean plugin_init(GstPlugin* plugin) {

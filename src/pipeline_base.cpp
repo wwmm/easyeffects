@@ -200,7 +200,7 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
 
     auto capsfilter = gst_element_factory_make("capsfilter", nullptr);
     auto queue_src = gst_element_factory_make("queue", nullptr);
-    auto queue_sink = gst_element_factory_make("queue", nullptr);
+    auto adapter = gst_element_factory_make("peadapter", nullptr);
 
     init_spectrum_bin();
     init_effects_bin();
@@ -212,11 +212,11 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
 
     // building the pipeline
 
-    gst_bin_add_many(GST_BIN(pipeline), source, queue_src, capsfilter,
-                     effects_bin, spectrum_bin, queue_sink, sink, nullptr);
+    gst_bin_add_many(GST_BIN(pipeline), source, queue_src, capsfilter, adapter,
+                     effects_bin, spectrum_bin, sink, nullptr);
 
-    gst_element_link_many(source, queue_src, capsfilter, effects_bin,
-                          spectrum_bin, queue_sink, sink, nullptr);
+    gst_element_link_many(source, queue_src, capsfilter, adapter, effects_bin,
+                          spectrum_bin, sink, nullptr);
 
     // initializing properties
 
@@ -230,7 +230,7 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     I noticed that webrtcdsp plugin does not work with blocksize=256. So I chose
     a higher value as default
     */
-    g_object_set(source, "blocksize", 512 * 2 * sizeof(float), nullptr);
+    // g_object_set(source, "blocksize", 512 * 2 * sizeof(float), nullptr);
 
     g_object_set(sink, "volume", 1.0, nullptr);
     g_object_set(sink, "mute", false, nullptr);
@@ -241,7 +241,8 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     gst_caps_unref(caps);
 
     g_object_set(queue_src, "silent", true, nullptr);
-    g_object_set(queue_sink, "silent", true, nullptr);
+
+    g_object_set(adapter, "blocksize", 256, nullptr);
 
     g_object_set(spectrum, "bands", spectrum_nbands, nullptr);
     g_object_set(spectrum, "threshold", spectrum_threshold, nullptr);

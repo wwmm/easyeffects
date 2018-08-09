@@ -158,13 +158,13 @@ void on_blocksize_changed(GSettings* settings,
         if (l->playing) {
             l->set_null_pipeline();
 
-            g_object_set(l->source, "blocksize", nbytes, nullptr);
-            g_object_set(l->sink, "blocksize", nbytes, nullptr);
+            // g_object_set(l->source, "blocksize", nbytes, nullptr);
+            // g_object_set(l->sink, "blocksize", nbytes, nullptr);
 
             l->update_pipeline_state();
         } else {
-            g_object_set(l->source, "blocksize", nbytes, nullptr);
-            g_object_set(l->sink, "blocksize", nbytes, nullptr);
+            // g_object_set(l->source, "blocksize", nbytes, nullptr);
+            // g_object_set(l->sink, "blocksize", nbytes, nullptr);
         }
     }
 }
