@@ -451,11 +451,13 @@ static void gst_peconvolver_finish_convolver(GstPeconvolver* peconvolver) {
         if (peconvolver->conv != nullptr) {
             if (peconvolver->conv->state() != Convproc::ST_STOP) {
                 peconvolver->conv->stop_process();
+
+                peconvolver->conv->cleanup();
+
+                delete peconvolver->conv;
+
+                peconvolver->conv = nullptr;
             }
-
-            peconvolver->conv->cleanup();
-
-            delete peconvolver->conv;
         }
 
         if (peconvolver->kernel_L != nullptr) {

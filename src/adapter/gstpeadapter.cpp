@@ -1,4 +1,5 @@
-// #include <iostream>
+#include <gst/audio/audio.h>
+#include <iostream>
 #include "config.h"
 #include "gstpeadapter.hpp"
 
@@ -113,6 +114,8 @@ static void gst_peadapter_class_init(GstPeadapterClass* klass) {
 }
 
 static void gst_peadapter_init(GstPeadapter* peadapter) {
+    peadapter->rate = -1;
+    peadapter->bpf = -1;
     peadapter->blocksize = 512;
     peadapter->adapter = gst_adapter_new();
 
@@ -180,10 +183,37 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
 
     gst_adapter_push(peadapter->adapter, buffer);
 
-    gsize nbytes = 2 * peadapter->blocksize * sizeof(float);  // 2 channels
+    gsize nbytes = peadapter->blocksize * peadapter->bpf;
 
     while (gst_adapter_available(peadapter->adapter) >= nbytes) {
+        GstClockTime pts, dts;
+        guint64 offset;
+
+        pts = gst_adapter_prev_pts(peadapter->adapter, nullptr);
+        dts = gst_adapter_prev_dts(peadapter->adapter, nullptr);
+        offset = gst_adapter_prev_offset(peadapter->adapter, nullptr);
+
         GstBuffer* b = gst_adapter_take_buffer(peadapter->adapter, nbytes);
+
+        b = gst_buffer_make_writable(b);
+
+        // std::cout << peadapter->rate << std::endl;
+
+        // GST_BUFFER_PTS(b) = pts;
+        // GST_BUFFER_DTS(b) = dts;
+        // GST_BUFFER_OFFSET(b) = offset;
+        GST_BUFFER_DURATION(b) =
+            GST_FRAMES_TO_CLOCK_TIME(peadapter->blocksize, peadapter->rate);
+
+        // std::cout << GST_BUFFER_DURATION_IS_VALID(b) << std::endl;
+        // std::cout << GST_BUFFER_DURATION(b) << "\t" << GST_CLOCK_TIME_NONE
+        //           << std::endl;
+
+        // std::cout << GST_BUFFER_PTS(b) << "\t" << GST_CLOCK_TIME_NONE
+        //           << std::endl;
+
+        // std::cout << GST_BUFFER_OFFSET(b) << "\t" << GST_CLOCK_TIME_NONE
+        //           << std::endl;
 
         ret = gst_pad_push(peadapter->srcpad, b);
     }
@@ -199,9 +229,20 @@ static gboolean gst_peadapter_sink_event(GstPad* pad,
 
     switch (GST_EVENT_TYPE(event)) {
         case GST_EVENT_CAPS:
-            /* we should handle the format here */
+            GstCaps* caps;
+            GstAudioInfo info;
+
+            gst_event_parse_caps(event, &caps);
+
+            gst_audio_info_from_caps(&info, caps);
+
+            peadapter->rate = GST_AUDIO_INFO_RATE(&info);
+            peadapter->bpf = GST_AUDIO_INFO_BPF(&info);
+
             /* push the event downstream */
+
             ret = gst_pad_push_event(peadapter->srcpad, event);
+
             break;
         case GST_EVENT_EOS:
             gst_adapter_clear(peadapter->adapter);

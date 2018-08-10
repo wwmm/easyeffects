@@ -33,6 +33,9 @@ struct _GstPeadapter {
 
     /*< private >*/
 
+    int rate;  // sampling rate
+    int bpf;   // bytes per frame : channels * bps
+
     GstAdapter* adapter;
     GstPad* srcpad;
     GstPad* sinkpad;
