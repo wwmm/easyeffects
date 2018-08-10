@@ -213,6 +213,8 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
                 GST_FRAMES_TO_CLOCK_TIME(peadapter->blocksize, peadapter->rate);
 
             ret = gst_pad_push(peadapter->srcpad, b);
+        } else {
+            gst_buffer_unref(b);
         }
     }
 
