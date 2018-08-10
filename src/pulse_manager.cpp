@@ -661,13 +661,15 @@ void PulseManager::find_sources() {
     pa_threaded_mainloop_unlock(main_loop);
 }
 
-void PulseManager::move_sink_input_to_pulseeffects(uint idx) {
+void PulseManager::move_sink_input_to_pulseeffects(const std::string& name,
+                                                   uint idx) {
     struct Data {
+        std::string name;
         uint idx;
         PulseManager* pm;
     };
 
-    Data data = {idx, this};
+    Data data = {name, idx, this};
 
     pa_threaded_mainloop_lock(main_loop);
 
@@ -677,11 +679,13 @@ void PulseManager::move_sink_input_to_pulseeffects(uint idx) {
             auto d = static_cast<Data*>(data);
 
             if (success) {
-                util::debug(d->pm->log_tag + "sink input " +
-                            std::to_string(d->idx) + " moved to PE");
+                util::debug(d->pm->log_tag + "sink input: " + d->name +
+                            ", idx = " + std::to_string(d->idx) +
+                            " moved to PE");
             } else {
-                util::critical(d->pm->log_tag + "failed to move sink input " +
-                               std::to_string(d->idx) + " to PE");
+                util::critical(d->pm->log_tag +
+                               "failed to move sink input: " + d->name +
+                               ", idx = " + std::to_string(d->idx) + " to PE");
             }
 
             pa_threaded_mainloop_signal(d->pm->main_loop, false);
@@ -697,13 +701,15 @@ void PulseManager::move_sink_input_to_pulseeffects(uint idx) {
     pa_threaded_mainloop_unlock(main_loop);
 }
 
-void PulseManager::remove_sink_input_from_pulseeffects(uint idx) {
+void PulseManager::remove_sink_input_from_pulseeffects(const std::string& name,
+                                                       uint idx) {
     struct Data {
+        std::string name;
         uint idx;
         PulseManager* pm;
     };
 
-    Data data = {idx, this};
+    Data data = {name, idx, this};
 
     pa_threaded_mainloop_lock(main_loop);
 
@@ -713,11 +719,13 @@ void PulseManager::remove_sink_input_from_pulseeffects(uint idx) {
             auto d = static_cast<Data*>(data);
 
             if (success) {
-                util::debug(d->pm->log_tag + "sink input " +
-                            std::to_string(d->idx) + " removed from PE");
+                util::debug(d->pm->log_tag + "sink input: " + d->name +
+                            ", idx = " + std::to_string(d->idx) +
+                            " removed from PE");
             } else {
-                util::critical(d->pm->log_tag + "failed to remove sink input " +
-                               std::to_string(d->idx) + " from PE");
+                util::critical(
+                    d->pm->log_tag + "failed to remove sink input: " + d->name +
+                    ", idx = " + std::to_string(d->idx) + " from PE");
             }
 
             pa_threaded_mainloop_signal(d->pm->main_loop, false);
@@ -733,13 +741,15 @@ void PulseManager::remove_sink_input_from_pulseeffects(uint idx) {
     pa_threaded_mainloop_unlock(main_loop);
 }
 
-void PulseManager::move_source_output_to_pulseeffects(uint idx) {
+void PulseManager::move_source_output_to_pulseeffects(const std::string& name,
+                                                      uint idx) {
     struct Data {
+        std::string name;
         uint idx;
         PulseManager* pm;
     };
 
-    Data data = {idx, this};
+    Data data = {name, idx, this};
 
     pa_threaded_mainloop_lock(main_loop);
 
@@ -749,12 +759,13 @@ void PulseManager::move_source_output_to_pulseeffects(uint idx) {
             auto d = static_cast<Data*>(data);
 
             if (success) {
-                util::debug(d->pm->log_tag + "source output " +
-                            std::to_string(d->idx) + " moved to PE");
+                util::debug(d->pm->log_tag + "source output: " + d->name +
+                            ", idx = " + std::to_string(d->idx) +
+                            " moved to PE");
             } else {
                 util::critical(d->pm->log_tag +
-                               "failed to move source output " +
-                               std::to_string(d->idx) + " to PE");
+                               "failed to move source output " + d->name +
+                               ", idx = " + " to PE");
             }
 
             pa_threaded_mainloop_signal(d->pm->main_loop, false);
@@ -770,13 +781,16 @@ void PulseManager::move_source_output_to_pulseeffects(uint idx) {
     pa_threaded_mainloop_unlock(main_loop);
 }
 
-void PulseManager::remove_source_output_from_pulseeffects(uint idx) {
+void PulseManager::remove_source_output_from_pulseeffects(
+    const std::string& name,
+    uint idx) {
     struct Data {
+        std::string name;
         uint idx;
         PulseManager* pm;
     };
 
-    Data data = {idx, this};
+    Data data = {name, idx, this};
 
     pa_threaded_mainloop_lock(main_loop);
 
@@ -786,12 +800,12 @@ void PulseManager::remove_source_output_from_pulseeffects(uint idx) {
             auto d = static_cast<Data*>(data);
 
             if (success) {
-                util::debug(d->pm->log_tag + "source output " +
-                            std::to_string(d->idx) + " removed from PE");
+                util::debug(d->pm->log_tag + "source output: " + d->name +
+                            ", idx = " + " removed from PE");
             } else {
                 util::critical(d->pm->log_tag +
-                               "failed to remove source output " +
-                               std::to_string(d->idx) + " from PE");
+                               "failed to remove source output: " + d->name +
+                               ", idx = " + " from PE");
             }
 
             pa_threaded_mainloop_signal(d->pm->main_loop, false);
@@ -807,7 +821,8 @@ void PulseManager::remove_source_output_from_pulseeffects(uint idx) {
     pa_threaded_mainloop_unlock(main_loop);
 }
 
-void PulseManager::set_sink_input_volume(uint idx,
+void PulseManager::set_sink_input_volume(const std::string& name,
+                                         uint idx,
                                          uint8_t channels,
                                          uint value) {
     pa_volume_t raw_value = PA_VOLUME_NORM * value / 100.0;
@@ -818,11 +833,12 @@ void PulseManager::set_sink_input_volume(uint idx,
 
     if (cvol_ptr != nullptr) {
         struct Data {
+            std::string name;
             uint idx;
             PulseManager* pm;
         };
 
-        Data data = {idx, this};
+        Data data = {name, idx, this};
 
         pa_threaded_mainloop_lock(main_loop);
 
@@ -833,12 +849,12 @@ void PulseManager::set_sink_input_volume(uint idx,
 
                 if (success == 1) {
                     util::debug(d->pm->log_tag +
-                                "changed volume of sink input " +
-                                std::to_string(d->idx));
+                                "changed volume of sink input: " + d->name +
+                                ", idx = " + std::to_string(d->idx));
                 } else {
                     util::debug(d->pm->log_tag +
-                                "failed to change volume of sink input " +
-                                std::to_string(d->idx));
+                                "failed to change volume of sink input: " +
+                                d->name + ", idx = " + std::to_string(d->idx));
                 }
 
                 pa_threaded_mainloop_signal(d->pm->main_loop, false);
@@ -855,13 +871,16 @@ void PulseManager::set_sink_input_volume(uint idx,
     }
 }
 
-void PulseManager::set_sink_input_mute(uint idx, bool state) {
+void PulseManager::set_sink_input_mute(const std::string& name,
+                                       uint idx,
+                                       bool state) {
     struct Data {
+        std::string name;
         uint idx;
         PulseManager* pm;
     };
 
-    Data data = {idx, this};
+    Data data = {name, idx, this};
 
     pa_threaded_mainloop_lock(main_loop);
 
@@ -871,11 +890,11 @@ void PulseManager::set_sink_input_mute(uint idx, bool state) {
             auto d = static_cast<Data*>(data);
 
             if (success == 1) {
-                util::debug(d->pm->log_tag + "sink input " +
-                            std::to_string(d->idx) + " is muted");
+                util::debug(d->pm->log_tag + "sink input: " + d->name +
+                            ", idx = " + std::to_string(d->idx) + " is muted");
             } else {
-                util::debug(d->pm->log_tag + "failed to mute sink input " +
-                            std::to_string(d->idx));
+                util::debug(d->pm->log_tag + "failed to mute sink input: " +
+                            d->name + ", idx = " + std::to_string(d->idx));
             }
 
             pa_threaded_mainloop_signal(d->pm->main_loop, false);
@@ -891,7 +910,8 @@ void PulseManager::set_sink_input_mute(uint idx, bool state) {
     pa_threaded_mainloop_unlock(main_loop);
 }
 
-void PulseManager::set_source_output_volume(uint idx,
+void PulseManager::set_source_output_volume(const std::string& name,
+                                            uint idx,
                                             uint8_t channels,
                                             uint value) {
     pa_volume_t raw_value = PA_VOLUME_NORM * value / 100.0;
@@ -902,11 +922,12 @@ void PulseManager::set_source_output_volume(uint idx,
 
     if (cvol_ptr != nullptr) {
         struct Data {
+            std::string name;
             uint idx;
             PulseManager* pm;
         };
 
-        Data data = {idx, this};
+        Data data = {name, idx, this};
 
         pa_threaded_mainloop_lock(main_loop);
 
@@ -917,12 +938,12 @@ void PulseManager::set_source_output_volume(uint idx,
 
                 if (success == 1) {
                     util::debug(d->pm->log_tag +
-                                "changed volume of source output " +
-                                std::to_string(d->idx));
+                                "changed volume of source output: " + d->name +
+                                ", idx = " + std::to_string(d->idx));
                 } else {
                     util::debug(d->pm->log_tag +
-                                "failed to change volume of source output " +
-                                std::to_string(d->idx));
+                                "failed to change volume of source output: " +
+                                d->name + ", idx = " + std::to_string(d->idx));
                 }
 
                 pa_threaded_mainloop_signal(d->pm->main_loop, false);
@@ -939,13 +960,16 @@ void PulseManager::set_source_output_volume(uint idx,
     }
 }
 
-void PulseManager::set_source_output_mute(uint idx, bool state) {
+void PulseManager::set_source_output_mute(const std::string& name,
+                                          uint idx,
+                                          bool state) {
     struct Data {
+        std::string name;
         uint idx;
         PulseManager* pm;
     };
 
-    Data data = {idx, this};
+    Data data = {name, idx, this};
 
     pa_threaded_mainloop_lock(main_loop);
 
@@ -955,11 +979,11 @@ void PulseManager::set_source_output_mute(uint idx, bool state) {
             auto d = static_cast<Data*>(data);
 
             if (success == 1) {
-                util::debug(d->pm->log_tag + "source output " +
-                            std::to_string(d->idx) + " is muted");
+                util::debug(d->pm->log_tag + "source output: " + d->name +
+                            ", idx = " + std::to_string(d->idx) + " is muted");
             } else {
-                util::debug(d->pm->log_tag + "failed to mute source output " +
-                            std::to_string(d->idx));
+                util::debug(d->pm->log_tag + "failed to mute source output: " +
+                            d->name + ", idx = " + std::to_string(d->idx));
             }
 
             pa_threaded_mainloop_signal(d->pm->main_loop, false);

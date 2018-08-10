@@ -275,7 +275,7 @@ void SinkInputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
     auto enable_all_apps = g_settings_get_boolean(settings, "enable-all-apps");
 
     if (enable_all_apps && !app_info->connected) {
-        pm->move_sink_input_to_pulseeffects(app_info->index);
+        pm->move_sink_input_to_pulseeffects(app_info->name, app_info->index);
     }
 }
 

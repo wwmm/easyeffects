@@ -102,15 +102,19 @@ void AppInfoUi::connect_signals() {
 bool AppInfoUi::on_enable_app(bool state) {
     if (state) {
         if (app_info->app_type == "sink_input") {
-            pm->move_sink_input_to_pulseeffects(app_info->index);
+            pm->move_sink_input_to_pulseeffects(app_info->name,
+                                                app_info->index);
         } else {
-            pm->move_source_output_to_pulseeffects(app_info->index);
+            pm->move_source_output_to_pulseeffects(app_info->name,
+                                                   app_info->index);
         }
     } else {
         if (app_info->app_type == "sink_input") {
-            pm->remove_sink_input_from_pulseeffects(app_info->index);
+            pm->remove_sink_input_from_pulseeffects(app_info->name,
+                                                    app_info->index);
         } else {
-            pm->remove_source_output_from_pulseeffects(app_info->index);
+            pm->remove_source_output_from_pulseeffects(app_info->name,
+                                                       app_info->index);
         }
     }
 
@@ -121,10 +125,11 @@ void AppInfoUi::on_volume_changed() {
     auto value = volume->get_value();
 
     if (app_info->app_type == "sink_input") {
-        pm->set_sink_input_volume(app_info->index, app_info->channels, value);
+        pm->set_sink_input_volume(app_info->name, app_info->index,
+                                  app_info->channels, value);
     } else {
-        pm->set_source_output_volume(app_info->index, app_info->channels,
-                                     value);
+        pm->set_source_output_volume(app_info->name, app_info->index,
+                                     app_info->channels, value);
     }
 }
 
@@ -144,9 +149,9 @@ void AppInfoUi::on_mute() {
     }
 
     if (app_info->app_type == "sink_input") {
-        pm->set_sink_input_mute(app_info->index, state);
+        pm->set_sink_input_mute(app_info->name, app_info->index, state);
     } else {
-        pm->set_source_output_mute(app_info->index, state);
+        pm->set_source_output_mute(app_info->name, app_info->index, state);
     }
 }
 
