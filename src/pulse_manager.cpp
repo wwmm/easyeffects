@@ -861,13 +861,20 @@ void PulseManager::set_sink_input_volume(const std::string& name,
             },
             &data);
 
-        while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-            pa_threaded_mainloop_wait(main_loop);
+        if (o) {
+            while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+                pa_threaded_mainloop_wait(main_loop);
+            }
+
+            pa_operation_unref(o);
+
+            pa_threaded_mainloop_unlock(main_loop);
+        } else {
+            util::warning(log_tag + "failed to change volume of sink input: " +
+                          name + ", idx = " + std::to_string(idx));
+
+            pa_threaded_mainloop_unlock(main_loop);
         }
-
-        pa_operation_unref(o);
-
-        pa_threaded_mainloop_unlock(main_loop);
     }
 }
 
@@ -950,13 +957,20 @@ void PulseManager::set_source_output_volume(const std::string& name,
             },
             &data);
 
-        while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-            pa_threaded_mainloop_wait(main_loop);
+        if (o) {
+            while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+                pa_threaded_mainloop_wait(main_loop);
+            }
+
+            pa_operation_unref(o);
+
+            pa_threaded_mainloop_unlock(main_loop);
+        } else {
+            util::debug(log_tag + "failed to change volume of source output: " +
+                        name + ", idx = " + std::to_string(idx));
+
+            pa_threaded_mainloop_unlock(main_loop);
         }
-
-        pa_operation_unref(o);
-
-        pa_threaded_mainloop_unlock(main_loop);
     }
 }
 

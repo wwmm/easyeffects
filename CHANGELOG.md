@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- Improved log messages.
 
 ## [4.2.5]
 ### Added
