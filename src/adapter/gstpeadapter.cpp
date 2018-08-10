@@ -187,7 +187,7 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
 
     while (gst_adapter_available(peadapter->adapter) >= nbytes) {
         bool valid = true;
-        guint64 offset, distance;
+        guint64 distance;
 
         GstBuffer* b = gst_adapter_take_buffer(peadapter->adapter, nbytes);
 
@@ -204,22 +204,6 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
         } else {
             valid = false;
         }
-
-        offset = gst_adapter_prev_offset(peadapter->adapter, nullptr);
-
-        // std::cout << peadapter->rate << std::endl;
-
-        // GST_BUFFER_OFFSET(b) = offset;
-
-        // std::cout << GST_BUFFER_DURATION_IS_VALID(b) << std::endl;
-        // std::cout << GST_BUFFER_DURATION(b) << "\t" << GST_CLOCK_TIME_NONE
-        //           << std::endl;
-
-        // std::cout << GST_BUFFER_PTS(b) << "\t" << GST_CLOCK_TIME_NONE
-        //           << std::endl;
-
-        // std::cout << GST_BUFFER_OFFSET(b) << "\t" << GST_CLOCK_TIME_NONE
-        //           << std::endl;
 
         if (valid) {
             b = gst_buffer_make_writable(b);
