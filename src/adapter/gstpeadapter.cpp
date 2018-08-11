@@ -1,5 +1,5 @@
 #include <gst/audio/audio.h>
-#include <iostream>
+// #include <iostream>
 #include "config.h"
 #include "gstpeadapter.hpp"
 
@@ -233,8 +233,6 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
 
             gst_buffer_set_flags(b, GST_BUFFER_FLAG_NON_DROPPABLE);
             gst_buffer_set_flags(b, GST_BUFFER_FLAG_LIVE);
-
-            // std::cout << GST_BUFFER_OFFSET(b) << std::endl;
 
             ret = gst_pad_push(peadapter->srcpad, b);
         } else {
