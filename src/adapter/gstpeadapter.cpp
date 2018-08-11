@@ -217,8 +217,7 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
 
             if (flag_discont) {
                 gst_buffer_set_flags(b, GST_BUFFER_FLAG_DISCONT);
-
-                // std::cout << "discont" << std::endl;
+                gst_buffer_set_flags(b, GST_BUFFER_FLAG_RESYNC);
 
                 flag_discont = false;
             }
