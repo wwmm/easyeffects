@@ -41,7 +41,8 @@ Recommends: calf-plugins (>= 0.90.0),
             mda-lv2,
             gstreamer1.0-convolver-pulseeffects,
             gstreamer1.0-crystalizer-pulseeffects,
-            gstreamer1.0-autogain-pulseeffects
+            gstreamer1.0-autogain-pulseeffects,
+            gstreamer1.0-adapter-pulseeffects
 Description: Sound input and output effects for PulseAudio
  Many sound effects for PulseAudio input and output.
 
@@ -72,3 +73,16 @@ Provides: peautogain, gstreamer1.0-autogain
 Description: Gstreamer crystalizer
  Simple Gstreamer plugin that changes audio gain
  to match the levels recommended by the ebur128 standard.
+ 
+Package: gstreamer1.0-adapter-pulseeffects
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Provides: peadapter, gstreamer1.0-adapter
+Description: Gstreamer adapter
+ Simple plugin that gives output buffers
+ with the desired number of samples.
+ .
+ It is used in PulseEffects to ensure that
+ the number of audio samples in the buffer
+ is a power of 2. The convolver needs this.

@@ -1,3 +1,11 @@
+pulseeffects (4.2.6-1) unstable; urgency=low
+
+  * version 4.2.6 upstream
+  * package adapter gstreamer plugin as
+  gstreamer1.0-adapter-pulseeffects
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sat, 11 Aug 2018 18:35:00 +0300
+ 
 pulseeffects (4.2.2-2) unstable; urgency=low
 
   * version 4.2.2 upstream
