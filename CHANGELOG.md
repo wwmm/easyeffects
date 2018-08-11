@@ -1,8 +1,12 @@
 # Changelog
 
 ## [Unreleased]
+
+## [4.2.6]
 ### Added
-- Improved log messages.
+- Improved the plugin that adapts the size of the buffer given by pulsesrc.
+- Improved log messages. The name of the audio app related to the failures will
+be printed together with the error messages.
 
 ## [4.2.5]
 ### Added
