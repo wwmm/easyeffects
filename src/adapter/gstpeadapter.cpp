@@ -208,9 +208,18 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
             valid = false;
         }
 
+        auto offset = gst_adapter_prev_offset(peadapter->adapter, &distance);
+
+        if (GST_CLOCK_TIME_IS_VALID(offset)) {
+            offset += distance / peadapter->bpf;
+        } else {
+            valid = false;
+        }
+
         if (valid) {
             b = gst_buffer_make_writable(b);
 
+            GST_BUFFER_OFFSET(b) = offset;
             GST_BUFFER_PTS(b) = pts;
             GST_BUFFER_DURATION(b) =
                 GST_FRAMES_TO_CLOCK_TIME(peadapter->blocksize, peadapter->rate);
@@ -224,6 +233,8 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
 
             gst_buffer_set_flags(b, GST_BUFFER_FLAG_NON_DROPPABLE);
             gst_buffer_set_flags(b, GST_BUFFER_FLAG_LIVE);
+
+            // std::cout << GST_BUFFER_OFFSET(b) << std::endl;
 
             ret = gst_pad_push(peadapter->srcpad, b);
         } else {
