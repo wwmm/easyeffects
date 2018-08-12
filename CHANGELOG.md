@@ -2,6 +2,17 @@
 
 ## [Unreleased]
 
+## [4.2.7]
+### Added
+- The adapter plugin used internally by PE reports the latency that it may
+introduce(proportional to the block size) to GStreamer. Latency is only added
+when the block size s larger than the number o samples per buffer in Pulseaudio
+buffer.
+
+### Fixed
+- Fixed a regression that could cause severe noises when multiple audio apps
+were playing at the same time.
+
 ## [4.2.6]
 ### Added
 - Improved the plugin that adapts the size of the buffer given by pulsesrc.

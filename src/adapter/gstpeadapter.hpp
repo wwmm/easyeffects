@@ -29,12 +29,13 @@ struct _GstPeadapter {
 
     /* properties */
 
-    int blocksize;
+    int blocksize;  // number of samples in the outout buffer
 
     /*< private >*/
 
-    int rate;  // sampling rate
-    int bpf;   // bytes per frame : channels * bps
+    int rate;             // sampling rate
+    int bpf;              // bytes per frame : channels * bps
+    int inbuf_n_samples;  // number of samples in the input buffer
 
     GstAdapter* adapter;
     GstPad* srcpad;

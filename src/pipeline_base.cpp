@@ -223,13 +223,12 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     g_object_set(source, "volume", 1.0, nullptr);
     g_object_set(source, "mute", false, nullptr);
     g_object_set(source, "provide-clock", false, nullptr);
-    // g_object_set(source, "slave-method", 1, nullptr);  // re-timestamp
+    g_object_set(source, "slave-method", 1, nullptr);  // re-timestamp
     g_object_set(source, "do-timestamp", true, nullptr);
 
     g_object_set(sink, "volume", 1.0, nullptr);
     g_object_set(sink, "mute", false, nullptr);
     g_object_set(sink, "provide-clock", true, nullptr);
-    g_object_set(sink, "qos", true, nullptr);
 
     g_object_set(capsfilter, "caps", caps, nullptr);
 
