@@ -53,6 +53,7 @@ void on_message_state_changed(const GstBus* gst_bus,
 
         if (new_state == GST_STATE_PLAYING) {
             pb->playing = true;
+            pb->get_latency();
         } else {
             pb->playing = false;
         }
@@ -373,6 +374,26 @@ void PipelineBase::update_pipeline_state() {
     } else if (playing && !wants_to_play) {
         set_null_pipeline();
     }
+}
+
+void PipelineBase::get_latency() {
+    GstQuery* q = gst_query_new_latency();
+
+    if (gst_element_query(pipeline, q)) {
+        gboolean live;
+        GstClockTime min, max;
+
+        gst_query_parse_latency(q, &live, &min, &max);
+
+        int latency = GST_TIME_AS_MSECONDS(min);
+
+        util::debug(log_tag + "total latency: " + std::to_string(latency) +
+                    " ms");
+
+        Glib::signal_idle().connect_once([=] { new_latency.emit(latency); });
+    }
+
+    gst_query_unref(q);
 }
 
 void PipelineBase::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
