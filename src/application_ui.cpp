@@ -253,12 +253,14 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     stack->child_property_icon_name(*sie_ui).set_value(
         "audio-speakers-symbolic");
 
-    app->sie->new_latency.connect([=](int latency) {
+    connections.push_back(app->sie->new_latency.connect([=](int latency) {
         sie_latency = latency;
         update_headerbar_subtitle(0);
-    });
+    }));
 
-    app->sie->get_latency();
+    if (app->sie->playing) {
+        app->sie->get_latency();
+    }
 
     /*source outputs interface*/
 
@@ -282,12 +284,14 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     stack->child_property_icon_name(*soe_ui).set_value(
         "audio-input-microphone-symbolic");
 
-    app->soe->new_latency.connect([=](int latency) {
+    connections.push_back(app->soe->new_latency.connect([=](int latency) {
         soe_latency = latency;
         update_headerbar_subtitle(1);
-    });
+    }));
 
-    app->soe->get_latency();
+    if (app->soe->playing) {
+        app->soe->get_latency();
+    }
 
     // temporary spectrum connection. it changes with the selected stack child
 
