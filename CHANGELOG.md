@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [4.2.8]
+### Added
+- The latency introduced by the Gstreamer pipeline is displayed in the headerbar.
+
 ## [4.2.7]
 ### Added
 - The adapter plugin used internally by PE reports the latency that it may
