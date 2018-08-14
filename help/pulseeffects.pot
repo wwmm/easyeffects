@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-07-28 12:22-0300\n"
+"POT-Creation-Date: 2018-08-14 13:16-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1664,6 +1664,11 @@ msgstr ""
 #. (itstool) path: page/p
 #: C/advancedinfo.page:12
 msgid "PulseEffects audio processing is composed by 3 main stages. Each of them needs a specific audio format and sampling rate. This information is show in the headerbar subtitle."
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/advancedinfo.page:17
+msgid "Another important information is the latency introduced by the audio processing. This the the last information shown. The displayed value is in milliseconds."
 msgstr ""
 
 #. (itstool) path: page/title

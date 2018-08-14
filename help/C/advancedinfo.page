@@ -14,4 +14,8 @@
         specific audio format and sampling rate. This information is show in the
         headerbar subtitle.
     </p>
+    <p>
+        Another important information is the latency introduced by the audio processing.
+        This the the last information shown. The displayed value is in milliseconds.
+    </p>
 </page>
