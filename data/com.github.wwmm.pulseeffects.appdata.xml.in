@@ -56,6 +56,36 @@
       <caption>Calibration</caption>
     </screenshot>
   </screenshots>
+  <releases>
+    <release version="4.2.8" date="2018-08-14">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>The latency introduced by the Gstreamer pipeline is displayed in the headerbar.</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.2.7" date="2018-08-12">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>The adapter plugin used internally by PE reports the latency that it may introduce(proportional to the block size) to GStreamer. Latency is only added when the block size s larger than the number o samples per buffer in Pulseaudio buffer.</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>Fixed a regression that could cause severe noises when multiple audio apps were playing at the same time.</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.2.6" date="2018-08-11" />
+    <release version="4.2.5" date="2018-08-09" />
+    <release version="4.2.4" date="2018-08-05" />
+    <release version="4.2.3" date="2018-07-31" />
+    <release version="4.2.2" date="2018-07-29" />
+    <release version="4.2.1" date="2018-07-28" />
+    <release version="4.2.0" date="2018-07-24" />
+  </releases>
+  <content_rating type="oars-1.1" />
   <update_contact>contact_AT_hembas.se</update_contact>
   <translation type="gettext">PulseEffects</translation>
 </component>
