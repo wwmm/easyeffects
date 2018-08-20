@@ -11,6 +11,9 @@ obj-*-linux-gnu
 # binary language files
 *.mo
 
+# patches
+*.patch
+
 \.python-version
 
 # exclude debian building logs and other junk
