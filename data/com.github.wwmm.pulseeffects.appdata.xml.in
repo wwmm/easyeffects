@@ -23,7 +23,7 @@
       Besides manipulating sound output, PulseEffects is able to apply effects
       to an input device, such as a microphone. This is, for example, useful in
       audio recording, but it also works well during voice conversations.
-    </p> 
+    </p>
     <p>
       When PulseEffects is launched it will conveniently remember the
       configuration used in the last session. It is also possible to save
@@ -57,14 +57,6 @@
     </screenshot>
   </screenshots>
   <releases>
-    <release version="4.2.8" date="2018-08-14">
-      <description>
-        <p>Added:</p>
-        <ul>
-          <li>Any latency introduced by the Gstreamer pipeline is now displayed in the headerbar</li>
-        </ul>
-      </description>
-    </release>
     <release version="4.2.7" date="2018-08-12"/>
     <release version="4.2.6" date="2018-08-10"/>
     <release version="4.2.5" date="2018-08-09"/>
