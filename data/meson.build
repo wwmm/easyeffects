@@ -35,7 +35,7 @@ install_data([
   'schemas/com.github.wwmm.pulseeffects.sourceoutputs.multibandgate.gschema.xml'
 ], install_dir: schemadir)
 
-i18n_mod.merge_file(
+appdata_file = i18n_mod.merge_file(
   input: 'com.github.wwmm.pulseeffects.appdata.xml.in',
   output: 'com.github.wwmm.pulseeffects.appdata.xml',
   po_dir: '../po',
@@ -43,7 +43,15 @@ i18n_mod.merge_file(
   install_dir: join_paths(datadir, 'metainfo')
 )
 
-i18n_mod.merge_file(
+# Validate merged AppStream appdata file
+appstream_util = find_program('appstream-util', required: false)
+if appstream_util.found()
+  test('Validate appstream file', appstream_util,
+    args: ['validate-strict', appdata_file]
+  )
+endif
+
+desktop_file = i18n_mod.merge_file(
   input: 'com.github.wwmm.pulseeffects.desktop.in',
   output: 'com.github.wwmm.pulseeffects.desktop',
   type: 'desktop',
@@ -51,6 +59,14 @@ i18n_mod.merge_file(
   install: true,
   install_dir: join_paths(datadir, 'applications')
 )
+
+# Validate merged desktop entry file
+desktop_utils = find_program('desktop-file-validate', required: false)
+if desktop_utils.found()
+  test('Validate desktop file', desktop_utils,
+    args: [desktop_file]
+  )
+endif
 
 icondir = join_paths(datadir, 'icons', 'hicolor')
 install_data('pulseeffects.svg',
