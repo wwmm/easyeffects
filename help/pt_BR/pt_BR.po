@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2018-07-28 12:22-0300\n"
+"POT-Creation-Date: 2018-08-14 13:16-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.9\n"
+"X-Generator: Poedit 2.1.1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
@@ -1962,6 +1962,17 @@ msgstr ""
 "O processamento de áudio do PulseEffects é composto por 3 etapas principais. "
 "Cada uma delas precisa de um formato de áudio e taxa de amostragem "
 "específicos. Esta informação é mostrada na legenda da barra de cabeçalho."
+
+#. (itstool) path: page/p
+#: C/advancedinfo.page:17
+msgid ""
+"Another important information is the latency introduced by the audio "
+"processing. This the the last information shown. The displayed value is in "
+"milliseconds."
+msgstr ""
+"Outra informação importante é a latência introduzida pelo processamento de "
+"áudio. Esta é a última informação mostrada. O valor exibido está em "
+"milissegundos."
 
 #. (itstool) path: page/title
 #: C/saturated.page:10

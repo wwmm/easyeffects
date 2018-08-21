@@ -253,6 +253,15 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     stack->child_property_icon_name(*sie_ui).set_value(
         "audio-speakers-symbolic");
 
+    connections.push_back(app->sie->new_latency.connect([=](int latency) {
+        sie_latency = latency;
+        update_headerbar_subtitle(0);
+    }));
+
+    if (app->sie->playing) {
+        app->sie->get_latency();
+    }
+
     /*source outputs interface*/
 
     auto b_soe_ui = Gtk::Builder::create_from_resource(
@@ -274,6 +283,15 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     stack->add(*soe_ui, "source_outputs");
     stack->child_property_icon_name(*soe_ui).set_value(
         "audio-input-microphone-symbolic");
+
+    connections.push_back(app->soe->new_latency.connect([=](int latency) {
+        soe_latency = latency;
+        update_headerbar_subtitle(1);
+    }));
+
+    if (app->soe->playing) {
+        app->soe->get_latency();
+    }
 
     // temporary spectrum connection. it changes with the selected stack child
 
@@ -605,7 +623,8 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
         headerbar_info->set_text(" ⟶ " + app->pm->apps_sink_info->format + "," +
                                  null_sink_rate.str() + " ⟶ F32LE," +
                                  null_sink_rate.str() + " ⟶ " + sink->format +
-                                 "," + current_dev_rate.str() + " ⟶ ");
+                                 "," + current_dev_rate.str() + " ⟶ " +
+                                 std::to_string(sie_latency) + "ms ⟶ ");
 
     } else {  // soe
         headerbar_icon1->set_from_icon_name("audio-input-microphone-symbolic",
@@ -622,11 +641,11 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 
         current_dev_rate << std::fixed << source->rate / 1000.0f << "kHz";
 
-        headerbar_info->set_text(" ⟶ " + source->format + "," +
-                                 current_dev_rate.str() + " ⟶ F32LE," +
-                                 null_sink_rate.str() + " ⟶ " +
-                                 app->pm->mic_sink_info->format + "," +
-                                 null_sink_rate.str() + " ⟶ ");
+        headerbar_info->set_text(
+            " ⟶ " + source->format + "," + current_dev_rate.str() +
+            " ⟶ F32LE," + null_sink_rate.str() + " ⟶ " +
+            app->pm->mic_sink_info->format + "," + null_sink_rate.str() +
+            " ⟶ " + std::to_string(soe_latency) + "ms ⟶ ");
     }
 }
 

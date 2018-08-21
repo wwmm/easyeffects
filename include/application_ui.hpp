@@ -71,6 +71,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     SinkInputEffectsUi* sie_ui;
     SourceOutputEffectsUi* soe_ui;
 
+    int sie_latency = 0, soe_latency = 0;
+
     bool mouse_inside = false;
     double mouse_intensity = 0, mouse_freq = 0;
     std::vector<float> spectrum_mag;
