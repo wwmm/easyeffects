@@ -24,7 +24,8 @@ Build-Depends: debhelper (>=11),
                libsamplerate0-dev,
                itstool,
                libebur128-dev,
-               appstream-util
+               appstream-util,
+               desktop-file-utils
 
 Package: pulseeffects
 Architecture: any
