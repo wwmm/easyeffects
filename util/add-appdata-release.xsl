@@ -21,8 +21,6 @@
       <release>
         <xsl:attribute name="version"><xsl:value-of select="$version"/></xsl:attribute>
         <xsl:attribute name="date"><xsl:value-of select="$date"/></xsl:attribute>
-        <description>
-        </description>
       </release>
       <xsl:apply-templates select="node()|@*"/>
     </releases>
