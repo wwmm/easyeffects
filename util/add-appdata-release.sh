@@ -10,7 +10,7 @@ set -o noclobber
 # -----------------------------------------------------------------------------
 
 readonly APP_ID='com.github.wwmm.pulseeffects'
-readonly SCRIPT_DEPS='dirname fgrep realpath xmllint xsltproc'
+readonly SCRIPT_DEPS='date dirname realpath xmllint xsltproc'
 
 BASE_DIR='.'
 CMD_DIR=''
@@ -83,30 +83,29 @@ check_appdata_releases() {
 }
 
 get_version() {
+  local file=''
   local version=''
 
-  version="$(git describe --tags --abbrev=0 --match 'v[0-9].*')"
+  # Read main project meson.build file
+  file="${REPO_DIR}/$(< meson.build)"
   if [[ "$?" -ne 0 ]]; then
-    exit_err 'Failed to get the version of the latest git tag.'
+    exit_err 'Failed to read meson.build file.'
   fi
-
-  version="${version#v}"
+  # Extract version string
+  # Works as long as "meson_version:" is defined bellow "version:"
+  file="${file#*version:*\'}"
+  version="${file%%\'*}"
 
   printf "${version}\n"
 }
 
 get_date() {
-  local version="$1"
   local date=''
 
-  date="$(git log --tags --simplify-by-decoration --pretty='format:%ad %d' \
-    --date=iso | fgrep "${version}")"
-  if [[ "${PIPESTATUS[0]-0}" -ne 0 || "${PIPESTATUS[1]-0}" -ne 0 ]]; then
-    exit_err 'Failed to get the date of latest git tag.'
+  date="$(date --utc +%F)"
+  if [[ "$?" -ne 0 ]]; then
+    exit_err 'Failed to get the current date.'
   fi
-
-  # Substring removal (extracts the date)
-  date="${date%% *}"
 
   printf "${date}\n"
 }
@@ -118,9 +117,9 @@ add_new_release() {
 
   version="$(get_version)" || exit 1
   check_appdata_releases "${version}"
-  date="$(get_date "${version}")" || exit 1
+  date="$(get_date)" || exit 1
 
-  log_info 'Applying changes to appdata file.'
+  log_info "Adding release information for ${version} to appdata file."
   xsltproc \
     --stringparam version "${version}" \
     --stringparam date "${date}" \
