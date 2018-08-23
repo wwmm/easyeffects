@@ -35,7 +35,10 @@ Depends: ${misc:Depends},
          gstreamer1.0-plugins-bad,
          gstreamer1.0-plugins-good,
          gir1.2-gst-plugins-bad-1.0,
-         gstreamer1.0-pulseaudio
+         gstreamer1.0-pulseaudio,
+         gstreamer1.0-adapter-pulseeffects
+# gstreamer1.0-adapter-pulseeffects is a strict dependency, not recommended
+# see https://github.com/wwmm/pulseeffects/issues/307#issuecomment-415078508
 Recommends: calf-plugins (>= 0.90.0),
             zam-plugins,
             rubberband-ladspa,
@@ -43,8 +46,7 @@ Recommends: calf-plugins (>= 0.90.0),
             mda-lv2,
             gstreamer1.0-convolver-pulseeffects,
             gstreamer1.0-crystalizer-pulseeffects,
-            gstreamer1.0-autogain-pulseeffects,
-            gstreamer1.0-adapter-pulseeffects
+            gstreamer1.0-autogain-pulseeffects
 Description: Sound input and output effects for PulseAudio
  Many sound effects for PulseAudio input and output.
 
