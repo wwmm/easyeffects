@@ -183,5 +183,11 @@
         <key name="last-used-preset" type="s">
             <default>"Presets"</default>
         </key>
+        <key name="custom-sink" type="s">
+            <default>""</default>
+        </key>
+        <key name="custom-source" type="s">
+            <default>""</default>
+        </key>
     </schema>
 </schemalist>

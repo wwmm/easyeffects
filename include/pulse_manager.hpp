@@ -61,9 +61,6 @@ class PulseManager {
     PulseManager();
     ~PulseManager();
 
-    bool use_default_sink = true;
-    bool use_default_source = true;
-
     pa_threaded_mainloop* main_loop;
 
     myServerInfo server_info;

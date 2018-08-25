@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Added
+- PulseEffects now remembers the custom input and output device selected by the
+user. In case it does not exists in the next start we fallback to the default
+device.
+
 ## [4.2.8]
 ### Added
 - The latency introduced by the Gstreamer pipeline is displayed in the headerbar.

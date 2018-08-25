@@ -697,17 +697,15 @@ void ApplicationUi::on_sink_added(std::shared_ptr<mySinkInfo> info) {
         row->set_value(0, info->index);
         row->set_value(1, info->name);
 
-        if (app->pm->use_default_sink) {
+        if (use_default_sink->get_active()) {
             if (info->name == app->pm->server_info.default_sink_name) {
                 output_device->set_active(row);
             }
         } else {
-            auto iter = output_device->get_active();
+            auto custom_sink = settings->get_string("custom-sink");
 
-            if (iter) {
-                if (info->name == app->pm->server_info.default_sink_name) {
-                    output_device->set_active(iter);
-                }
+            if (info->name == custom_sink) {
+                output_device->set_active(row);
             }
         }
 
@@ -716,7 +714,6 @@ void ApplicationUi::on_sink_added(std::shared_ptr<mySinkInfo> info) {
 }
 
 void ApplicationUi::on_sink_removed(uint idx) {
-    Gtk::TreeIter default_iter;
     Gtk::TreeIter remove_iter;
     std::string remove_name;
 
@@ -732,10 +729,6 @@ void ApplicationUi::on_sink_removed(uint idx) {
         if (idx == i) {
             remove_iter = c;
             remove_name = name;
-        }
-
-        if (name == app->pm->server_info.default_sink_name) {
-            default_iter = c;
         }
     }
 
@@ -769,17 +762,15 @@ void ApplicationUi::on_source_added(std::shared_ptr<mySourceInfo> info) {
         row->set_value(0, info->index);
         row->set_value(1, info->name);
 
-        if (app->pm->use_default_sink) {
+        if (use_default_source->get_active()) {
             if (info->name == app->pm->server_info.default_source_name) {
                 input_device->set_active(row);
             }
         } else {
-            auto iter = input_device->get_active();
+            auto custom_source = settings->get_string("custom-source");
 
-            if (iter) {
-                if (info->name == app->pm->server_info.default_source_name) {
-                    input_device->set_active(iter);
-                }
+            if (info->name == custom_source) {
+                input_device->set_active(row);
             }
         }
 
@@ -788,7 +779,6 @@ void ApplicationUi::on_source_added(std::shared_ptr<mySourceInfo> info) {
 }
 
 void ApplicationUi::on_source_removed(uint idx) {
-    Gtk::TreeIter default_iter;
     Gtk::TreeIter remove_iter;
     std::string remove_name;
 
@@ -804,10 +794,6 @@ void ApplicationUi::on_source_removed(uint idx) {
         if (idx == i) {
             remove_iter = c;
             remove_name = name;
-        }
-
-        if (name == app->pm->server_info.default_source_name) {
-            default_iter = c;
         }
     }
 
@@ -860,6 +846,8 @@ void ApplicationUi::on_input_device_changed() {
 
         app->soe->set_source_monitor_name(name);
 
+        settings->set_string("custom-source", name);
+
         util::debug(log_tag + "input device changed: " + name);
     }
 }
@@ -876,6 +864,8 @@ void ApplicationUi::on_output_device_changed() {
 
         app->sie->set_output_sink_name(name);
         app->soe->webrtc->set_probe_src_device(name + ".monitor");
+
+        settings->set_string("custom-sink", name);
 
         util::debug(log_tag + "output device changed: " + name);
     }

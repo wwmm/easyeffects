@@ -1,3 +1,4 @@
+#include <giomm/settings.h>
 #include "sink_input_effects.hpp"
 #include "util.hpp"
 
@@ -165,12 +166,29 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
 
     set_source_monitor_name(pm->apps_sink_info->monitor_source_name);
 
+    auto global_settings =
+        Gio::Settings::create("com.github.wwmm.pulseeffects");
+
     auto PULSE_SINK = std::getenv("PULSE_SINK");
 
     if (PULSE_SINK) {
-        set_output_sink_name(PULSE_SINK);
+        if (pm->get_sink_info(PULSE_SINK)) {
+            set_output_sink_name(PULSE_SINK);
+        } else {
+            set_output_sink_name(pm->server_info.default_sink_name);
+        }
     } else {
-        set_output_sink_name(pm->server_info.default_sink_name);
+        if (global_settings->get_boolean("use-default-sink")) {
+            set_output_sink_name(pm->server_info.default_sink_name);
+        } else {
+            auto custom_sink = global_settings->get_string("custom-sink");
+
+            if (pm->get_sink_info(custom_sink)) {
+                set_output_sink_name(custom_sink);
+            } else {
+                set_output_sink_name(pm->server_info.default_sink_name);
+            }
+        }
     }
 
     pm->sink_input_added.connect(
