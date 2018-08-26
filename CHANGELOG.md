@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 
+## [4.2.9]
 ### Added
 - PulseEffects now remembers the custom input and output device selected by the
 user. In case it does not exists in the next start we fallback to the default
