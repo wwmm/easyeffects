@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-07-28 12:22-0300\n"
+"POT-Creation-Date: 2018-08-24 11:09-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "MIME-Version: 1.0\n"
@@ -1294,10 +1294,10 @@ msgstr ""
 msgid ""
 "PulseEffects uses the webrtc from GStreamer. This plugin offers a voice "
 "enhancement filter based on WebRTC Audio Processing library. This library "
-"provides a whide variety of enhancement algorithms. This element tries to "
-"enable as much as possible. The currently enabled enhancements are High Pass "
-"Filter, Echo Canceller, Noise Suppression, Automatic Gain Control, and some "
-"extended filters."
+"provides a broad variety of enhancement algorithms. This plugin tries to "
+"enable as many of those as possible. The currently enabled enhancements are "
+"High Pass Filter, Echo Canceller, Noise Suppression, Automatic Gain Control, "
+"and some extended filters."
 msgstr ""
 
 #. (itstool) path: section/title
@@ -1769,6 +1769,14 @@ msgid ""
 "PulseEffects audio processing is composed by 3 main stages. Each of them "
 "needs a specific audio format and sampling rate. This information is show in "
 "the headerbar subtitle."
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/advancedinfo.page:17
+msgid ""
+"Another important information is the latency introduced by the audio "
+"processing. This the the last information shown. The displayed value is in "
+"milliseconds."
 msgstr ""
 
 #. (itstool) path: page/title

@@ -1,5 +1,5 @@
 #include <gst/audio/audio.h>
-// #include <iostream>
+#include <iostream>
 #include "config.h"
 #include "gstpeadapter.hpp"
 
@@ -25,6 +25,10 @@ static gboolean gst_peadapter_sink_event(GstPad* pad,
 static GstStateChangeReturn gst_peadapter_change_state(
     GstElement* element,
     GstStateChange transition);
+
+static gboolean gst_peadapter_src_query(GstPad* pad,
+                                        GstObject* parent,
+                                        GstQuery* query);
 
 static void gst_peadapter_finalize(GObject* object);
 
@@ -117,9 +121,14 @@ static void gst_peadapter_init(GstPeadapter* peadapter) {
     peadapter->rate = -1;
     peadapter->bpf = -1;
     peadapter->blocksize = 512;
+    peadapter->inbuf_n_samples = -1;
     peadapter->adapter = gst_adapter_new();
 
     peadapter->srcpad = gst_pad_new_from_static_template(&srctemplate, "src");
+
+    /* configure event function on the pad before adding the pad to the element
+     */
+    gst_pad_set_query_function(peadapter->srcpad, gst_peadapter_src_query);
 
     gst_element_add_pad(GST_ELEMENT(peadapter), peadapter->srcpad);
 
@@ -182,6 +191,16 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
         gst_adapter_clear(peadapter->adapter);
 
         flag_discont = true;
+    }
+
+    if (peadapter->inbuf_n_samples == -1) {
+        GstMapInfo map;
+
+        gst_buffer_map(buffer, &map, GST_MAP_READ);
+
+        peadapter->inbuf_n_samples = map.size / peadapter->bpf;
+
+        gst_buffer_unmap(buffer, &map);
     }
 
     gst_adapter_push(peadapter->adapter, buffer);
@@ -308,6 +327,61 @@ static GstStateChangeReturn gst_peadapter_change_state(
             gst_adapter_clear(peadapter->adapter);
             break;
         default:
+            break;
+    }
+
+    return ret;
+}
+
+static gboolean gst_peadapter_src_query(GstPad* pad,
+                                        GstObject* parent,
+                                        GstQuery* query) {
+    GstPeadapter* peadapter = GST_PEADAPTER(parent);
+    bool ret = true;
+
+    switch (GST_QUERY_TYPE(query)) {
+        case GST_QUERY_LATENCY:
+            if (peadapter->rate > 0) {
+                ret = gst_pad_peer_query(peadapter->sinkpad, query);
+
+                if (ret && peadapter->inbuf_n_samples != -1 &&
+                    peadapter->inbuf_n_samples < peadapter->blocksize) {
+                    GstClockTime min, max;
+                    gboolean live;
+                    guint64 latency;
+
+                    gst_query_parse_latency(query, &live, &min, &max);
+
+                    /* add our own latency */
+
+                    latency = gst_util_uint64_scale_round(
+                        peadapter->blocksize - peadapter->inbuf_n_samples,
+                        GST_SECOND, peadapter->rate);
+
+                    // std::cout << "latency: " << latency << std::endl;
+                    // std::cout << "n: " << peadapter->inbuf_n_samples
+                    //           << std::endl;
+
+                    min += latency;
+
+                    if (max != GST_CLOCK_TIME_NONE) {
+                        max += latency;
+                    }
+
+                    // std::cout << min << "\t" << max << "\t" << live
+                    //           << std::endl;
+
+                    gst_query_set_latency(query, live, min, max);
+                }
+
+            } else {
+                ret = false;
+            }
+
+            break;
+        default:
+            /* just call the default handler */
+            ret = gst_pad_query_default(pad, parent, query);
             break;
     }
 

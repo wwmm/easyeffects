@@ -23,7 +23,7 @@
       Besides manipulating sound output, PulseEffects is able to apply effects
       to an input device, such as a microphone. This is, for example, useful in
       audio recording, but it also works well during voice conversations.
-    </p> 
+    </p>
     <p>
       When PulseEffects is launched it will conveniently remember the
       configuration used in the last session. It is also possible to save
@@ -37,11 +37,11 @@
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/wwmm/pulseeffects/master/images/appdata-screenshot-01.png</image>
-      <caption>Applications</caption>
+      <caption>Set the volume and turn on/off effects</caption>
     </screenshot>
     <screenshot>
       <image>https://raw.githubusercontent.com/wwmm/pulseeffects/master/images/appdata-screenshot-02.png</image>
-      <caption>Equalizer</caption>
+      <caption>Includes an equalizer with built-in presets</caption>
     </screenshot>
     <screenshot>
       <image>https://raw.githubusercontent.com/wwmm/pulseeffects/master/images/appdata-screenshot-03.png</image>
@@ -56,6 +56,568 @@
       <caption>Calibration</caption>
     </screenshot>
   </screenshots>
+  <releases>
+    <release version="4.2.9" date="2018-08-26"/>
+    <release version="4.2.8" date="2018-08-14">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>Latency introduced by the GStreamer pipeline is now displayed in the headerbar</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.2.7" date="2018-08-12"/>
+    <release version="4.2.6" date="2018-08-10"/>
+    <release version="4.2.5" date="2018-08-09"/>
+    <release version="4.2.4" date="2018-08-05"/>
+    <release version="4.2.3" date="2018-07-30"/>
+    <release version="4.2.2" date="2018-07-29"/>
+    <release version="4.2.1" date="2018-07-28"/>
+    <release version="4.2.0" date="2018-07-24"/>
+    <release version="4.1.9" date="2018-07-18">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>A crystalizer plugin, provided by PulseEffects</li>
+          <li>Audio format and sampling rate is displayed in the header bar</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.1.8" date="2018-07-16">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>Improved convolver impulse response autogain calculation</li>
+          <li>A warning when the convolver uses a preset that refers to a an impulse file that does not exist</li>
+          <li>No limit on the number of frames used from impulse response file</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.1.7" date="2018-07-14">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>Improved Russian translations</li>
+          <li>Optimizations to impulse response file handling, which avoids playback stalls with large files</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>Convolver is now optional at build time</li>
+          <li>Potential crash when the impulse response file was too small</li>
+          <li>Memory leaks in the convolver interface</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.1.6" date="2018-07-14">
+      <description>
+        <p>Fixed:</p>
+        <ul>
+          <li>PulseEffects now uses the system zita-convolver library</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.1.5" date="2018-07-13">
+      <description>
+        <p>Fixed:</p>
+        <ul>
+          <li>Crash caused by loading an impulse response file with more than 2 channels</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.1.4" date="2018-07-13">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>Convolver plugin, provided by PulseEffects</li>
+          <li>Import presets dialog now has filters to show only presets files (.json)</li>
+          <li>Filter for ".irs" files to the impulse response import dialog</li>
+          <li>Ability to customize the convolver spectrum plot color</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.1.3" date="2018-07-06">
+      <description>
+        <p>Fixed:</p>
+        <ul>
+          <li>Equalizer presets occasionally not being applied</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.1.2" date="2018-07-01">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>Multiband gate plugin from Calf Studio</li>
+          <li>Stereo Tools plugin from Calf Studio</li>
+          <li>The Presets menu is now labeled, using the name of the last selected preset</li>
+          <li>The Deesser can be used in both pipelines</li>
+          <li>The so called "perfect eq" preset (no such thing as actually perfect)</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>Deesser "listen" control was not working</li>
+        </ul>
+        <p>Changed:</p>
+        <ul>
+          <li>Expander plugin has been replaced by Calf Gate from Calf Studio, due to being proprietary</li>
+          <li>Delay plugin has been replaced by Calf Sterio Tools from Calf Studio, due to unpermissive licensing</li>
+          <li>Panorama plugin, uses functionality which is also offered by Calf Stereo Tools</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.1.1" date="2018-06-27">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>Loudness plugin from MDA.LV2</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.1.0" date="2018-06-24">
+      <description>
+        <p>Fixed:</p>
+        <ul>
+          <li>Multiband compressor schema not being installed</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.0.9" date="2018-06-24">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>GStreamer 10 bands equalizer presets: rock, soft, pop, etc</li>
+          <li>Input gain and output gain controls for the equalizer</li>
+          <li>Calf Multiband compressor</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>The compressor and gate plugin knee parameter was always at its default value</li>
+          <li>Bug fixes (minor memory leaks)</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.0.8" date="2018-06-19">
+      <description>
+        <p>Fixed:</p>
+        <ul>
+          <li>Bug fixes (minor memory leaks)</li>
+          <li>The presets menu list is scrollable again</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.0.7" date="2018-06-17">
+      <description>
+        <p>Fixed:</p>
+        <ul>
+          <li>The limit parameter of the limiter plugin is no longer reset to default upon loading a preset</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.0.6" date="2018-06-16">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>Users can change the height of the spectrum</li>
+        </ul>
+        <p>
+          More parameters are saved to the user preset: buffer, latency and spectrum parameters.
+          It is particularly useful to have the buffer value saved to the preset because a few devices
+          like bluetooth headphones need values that are very different than the ones used in soundcards.
+        </p>
+        <p>Fixed:</p>
+        <ul>
+          <li>Crashes upon loading a preset not containing features present in newer versions of PulseEffects</li>
+          <li>Spectrum not being enabled upon launching PulseEffects, while service mode is running</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.0.5" date="2018-06-15">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>Expander from Linux Studio Plugins (Proprietary)</li>
+          <li>Optimizations to memory usage</li>
+        </ul>
+        <p>
+          Note that the Expander plugin is proprietary and due to license issues and Flathub
+          policies it cannot be included in the Flatpak release.
+        </p>
+        <p>Fixed:</p>
+        <ul>
+          <li>Some system memory not being freed upon closing PulseEffects</li>
+          <li>Crashes when the pitch plugin was re-ordered, with the webrtc plugin bellow it</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.0.4" date="2018-06-12">
+      <description>
+        <p>Fixed:</p>
+        <ul>
+          <li>Applications not being removed from PulseEffects after having been closed</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.0.3" date="2018-06-12">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>Optimizations to how plugins are enabled, disabled, or re-ordered</li>
+        </ul>
+        <p>Changes:</p>
+        <ul>
+          <li>Default buffer values increased from 100 ms to 200 ms, due to distortions with bluetooth headphones</li>
+        </ul>
+        <p>Fixes:</p>
+        <ul>
+          <li>Bug fixes (potential memory leaks)</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.0.2" date="2018-06-08">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>Optimizations to how plugins are enabled, disabled, or re-ordered</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>Spectrum widget being shown even when it is disabled</li>
+          <li>Excessive level meters readings</li>
+          <li>Hovering the mouse pointer over the spectrum, now updates the magnitude and frequency values</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.0.1" date="2018-06-04">
+      <description>
+        <p>Fixed:</p>
+        <ul>
+          <li>PulseEffects no longer crashes upon enabling a plugin whose dependencies are not installed</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.0.0" date="2018-06-03">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>Users can change the order that plugins are displayed, in the left menu bar</li>
+          <li>Users can select custom colors for the spectrum</li>
+          <li>In the equalizer menu, users can now change the number of equalizer bands</li>
+          <li>Most of these new settings can be saved as user presets</li>
+          <li>Calf Filter plugin, which replaces the previous high pass and low pass filters</li>
+        </ul>
+        <p>
+          The equalizer menu also contains a new facility to calculate the corresponding
+          frequencies of a graphic equalizer with the same number of bands. Users with weak
+          processors will benefit a lot from this setting as the more bands you have the more
+          CPU resources are use.
+        </p>
+        <p>Changed:</p>
+        <ul>
+          <li>Preset files uses a new format, which means presets must be re-created to be compatible</li>
+          <li>Removed the Calf Stereo Spread plugin</li>
+          <li>Removed per app level meters, because they were the source of many unfixable bugs</li>
+        </ul>
+      </description>
+    </release>
+    <release version="3.2.3" date="2018-04-21">
+      <description>
+        <p>Fixed:</p>
+        <ul>
+          <li>Input and output limiter settings not working with presets</li>
+        </ul>
+      </description>
+    </release>
+    <release version="3.2.2" date="2018-04-20">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>GStreamer WebRTC plugin</li>
+          <li>Gate and Deesser plugins from Calf Studio</li>
+          <li>Calf Studio compressor plugin, which replaces the one from swh-plugins</li>
+          <li>User selectable input and output devices for the current session (not saved on exit)</li>
+          <li>Level meter for recording applications</li>
+        </ul>
+        <p>Changed:</p>
+        <ul>
+          <li>Buffer and latency of input and output effects can now be configured independant of each other</li>
+          <li>Application buffer and latency values displayed in the main window are now updated every 5 seconds</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>The PulseEffects Flatpak can now import presets from files</li>
+          <li>No longer shows too many decimals when hovering the mouse pointer above the spectrum</li>
+          <li>CPU usage optimizations to service mode</li>
+        </ul>
+      </description>
+    </release>
+    <release version="3.2.1" date="2018-03-01">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>Updated Czech and Italian translations</li>
+          <li>Presets can be loaded from the command line</li>
+          <li>Presets can be imported using a presets menu</li>
+        </ul>
+      </description>
+    </release>
+    <release version="3.2.0" date="2018-02-04">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>Crossfeed plugin from bs2b library</li>
+          <li>Optimize CPU usage when PulseEffects is paused or all applications are switched off</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>Cleaner log output (only visible on a command line)</li>
+        </ul>
+      </description>
+    </release>
+    <release version="3.1.9" date="2018-01-30">
+      <description>
+        <p>Fixed:</p>
+        <ul>
+          <li>Exciter ceiling parameter not working with user presets</li>
+        </ul>
+      </description>
+    </release>
+    <release version="3.1.8" date="2018-01-30">
+      <description>
+        <p>Fixed:</p>
+        <ul>
+          <li>Removing and re-inserting a usb microphone multiple times no longer break PulseEffects</li>
+        </ul>
+      </description>
+    </release>
+    <release version="3.1.7" date="2018-01-23">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>Delay Compensator plugin from Linux Studio Plugins</li>
+          <li>Pitch Shifting plugin from Rubber Band library</li>
+          <li>New and better organized settings menu</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>No longer forces the global applications switch to True in service mode</li>
+          <li>Differing frequency values in band label and frequency menu</li>
+          <li>The test signal application now automatically switches to the default microphone</li>
+          <li>Equal loudness test signal frequencies now match the equalizer default frequencies</li>
+        </ul>
+      </description>
+    </release>
+    <release version="3.1.6" date="2017-12-31">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>MultiSpread plugin from Calf Studio</li>
+        </ul>
+      </description>
+    </release>
+    <release version="3.1.5" date="2017-12-25">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>Stereo Enhancer plugin from Calf Studio</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>Visual indicators (check marks) are no longer shown for unavailable plugins</li>
+          <li>Volume meter now properly updates with applications like the game XCOM</li>
+        </ul>
+      </description>
+    </release>
+    <release version="3.1.4" date="2017-12-18">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>Maximizer plugin from ZamAudio</li>
+        </ul>
+      </description>
+    </release>
+    <release version="3.1.3" date="2017-12-13">
+      <description>
+        <p>Fixed:</p>
+        <ul>
+          <li>Auto volume now works in service mode and it no longer resets the limiter gain</li>
+          <li>The PulseEffects window now uses a little less screen space</li>
+        </ul>
+      </description>
+    </release>
+    <release version="3.1.2" date="2017-12-12">
+      <description>
+        <p>Fixed:</p>
+        <ul>
+          <li>Bug with pipeline being put out of playing state when running in service mode</li>
+          <li>Performance issues with service mode and slower CPU's</li>
+        </ul>
+      </description>
+    </release>
+    <release version="3.1.1" date="2017-12-09">
+      <description>
+        <p>Fixed:</p>
+        <ul>
+          <li>Missing Calf Studio plugins no longer causes PulseEffects to crash; they are now optional</li>
+        </ul>
+      </description>
+    </release>
+    <release version="3.1.0" date="2017-12-09">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>Bass Enhancer and Exciter plugins from Calf Studio</li>
+          <li>Option to autostart PulseEffects (service mode). This feature does not work with Flatpak.</li>
+        </ul>
+        <p>Changed:</p>
+        <ul>
+          <li>Plugin on/off switches are now located at their respective plugin sections</li>
+          <li>Added a visual indicator (check mark) where the plugin on/off switches used to be</li>
+        </ul>
+        <p>Fixed:</p>
+        <ul>
+          <li>The global applications switch now properly resets to "True" when closing the window</li>
+        </ul>
+      </description>
+    </release>
+    <release version="3.0.9" date="2017-11-28">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>30 user configurable bands to the equalizer</li>
+          <li>Global on/off switch, that enables effects for all applications</li>
+        </ul>
+        <p>Changed:</p>
+        <ul>
+          <li>Per app on/off switches have been moved to a more obvious location</li>
+        </ul>
+      </description>
+    </release>
+    <release version="3.0.8" date="2017-11-16"/>
+    <release version="3.0.7" date="2017-11-11"/>
+    <release version="3.0.6" date="2017-10-31"/>
+    <release version="3.0.5" date="2017-10-22"/>
+    <release version="3.0.4" date="2017-10-22"/>
+    <release version="3.0.3" date="2017-10-21"/>
+    <release version="3.0.2" date="2017-10-21"/>
+    <release version="3.0.1" date="2017-10-14"/>
+    <release version="3.0.0" date="2017-09-21"/>
+    <release version="2.3.6" date="2017-09-01"/>
+    <release version="2.3.5" date="2017-08-25"/>
+    <release version="2.3.4" date="2017-08-25"/>
+    <release version="2.3.3" date="2017-08-22"/>
+    <release version="2.3.2" date="2017-08-21"/>
+    <release version="2.3.1" date="2017-08-20"/>
+    <release version="2.3.0" date="2017-08-20"/>
+    <release version="2.2.1" date="2017-08-15"/>
+    <release version="2.2.0" date="2017-08-15"/>
+    <release version="2.1.2" date="2017-07-29"/>
+    <release version="2.1.1" date="2017-07-23"/>
+    <release version="2.1.0" date="2017-07-17"/>
+    <release version="2.0.9" date="2017-07-16"/>
+    <release version="2.0.8" date="2017-07-15"/>
+    <release version="2.0.7" date="2017-07-11"/>
+    <release version="2.0.6" date="2017-07-08"/>
+    <release version="2.0.5" date="2017-07-07"/>
+    <release version="2.0.4" date="2017-07-07"/>
+    <release version="2.0.3" date="2017-07-04"/>
+    <release version="2.0.2" date="2017-07-02"/>
+    <release version="2.0.1" date="2017-07-01"/>
+    <release version="2.0.0" date="2017-06-30"/>
+    <release version="1.6.7" date="2017-06-26"/>
+    <release version="1.6.6" date="2017-06-25"/>
+    <release version="1.6.5" date="2017-06-24"/>
+    <release version="1.6.4" date="2017-06-22"/>
+    <release version="1.6.3" date="2017-06-20"/>
+    <release version="1.6.2" date="2017-06-18"/>
+    <release version="1.6.1" date="2017-06-17"/>
+    <release version="1.6.0" date="2017-06-15"/>
+    <release version="1.5.8" date="2017-06-13"/>
+    <release version="1.5.7" date="2017-06-11"/>
+    <release version="1.5.6" date="2017-06-10"/>
+    <release version="1.5.5" date="2017-06-08"/>
+    <release version="1.5.4" date="2017-06-08"/>
+    <release version="1.5.3" date="2017-06-06"/>
+    <release version="1.5.2" date="2017-06-06"/>
+    <release version="1.5.1" date="2017-06-04"/>
+    <release version="1.5.0" date="2017-06-04"/>
+    <release version="1.4.8" date="2017-06-03"/>
+    <release version="1.4.7" date="2017-06-01"/>
+    <release version="1.4.6" date="2017-05-30"/>
+    <release version="1.4.5" date="2017-05-30"/>
+    <release version="1.4.4" date="2017-05-28"/>
+    <release version="1.4.3" date="2017-05-27"/>
+    <release version="1.4.2" date="2017-05-27"/>
+    <release version="1.4.1" date="2017-05-25"/>
+    <release version="1.4.0" date="2017-05-23"/>
+    <release version="1.3.6" date="2017-05-20"/>
+    <release version="1.3.5" date="2017-05-20"/>
+    <release version="1.3.4" date="2017-05-20"/>
+    <release version="1.3.3" date="2017-05-18"/>
+    <release version="1.3.2" date="2017-05-16"/>
+    <release version="1.3.1" date="2017-05-12"/>
+    <release version="1.3.0" date="2017-05-10"/>
+    <release version="1.2.9" date="2017-05-09"/>
+    <release version="1.2.8" date="2017-05-06"/>
+    <release version="1.2.7" date="2017-05-02"/>
+    <release version="1.2.6" date="2017-05-01"/>
+    <release version="1.2.5" date="2017-04-25"/>
+    <release version="1.2.4" date="2017-04-23"/>
+    <release version="1.2.3" date="2017-04-23"/>
+    <release version="1.2.2" date="2017-04-23"/>
+    <release version="1.2.1" date="2017-04-22"/>
+    <release version="1.2.0" date="2017-04-21"/>
+    <release version="1.1.9" date="2017-04-21"/>
+    <release version="1.1.8" date="2017-04-20"/>
+    <release version="1.1.7" date="2017-04-20"/>
+    <release version="1.1.6" date="2017-04-19"/>
+    <release version="1.1.5" date="2017-04-18"/>
+    <release version="1.1.4" date="2017-04-17"/>
+    <release version="1.1.3" date="2017-04-14"/>
+    <release version="1.1.2" date="2017-04-14"/>
+    <release version="1.1.1" date="2017-04-13"/>
+    <release version="1.1.0" date="2017-04-11"/>
+    <release version="1.0.9" date="2017-04-09"/>
+    <release version="1.0.8" date="2017-04-07"/>
+    <release version="1.0.7" date="2017-03-28"/>
+    <release version="1.0.6" date="2017-03-28"/>
+    <release version="1.0.5" date="2017-03-28"/>
+    <release version="1.0.4" date="2017-03-27"/>
+    <release version="1.0.3" date="2017-03-27"/>
+    <release version="1.0.2" date="2017-03-25"/>
+    <release version="1.0.1" date="2017-03-25"/>
+    <release version="1.0" date="2017-03-25"/>
+    <release version="0.9" date="2017-03-24"/>
+    <release version="0.8" date="2017-03-23"/>
+    <release version="0.7" date="2017-03-23"/>
+    <release version="0.6" date="2017-03-23"/>
+    <release version="0.5" date="2017-03-23"/>
+    <release version="0.4" date="2017-03-23"/>
+    <release version="0.3" date="2017-03-23"/>
+    <release version="0.2" date="2017-03-23"/>
+    <release version="0.1" date="2017-03-21"/>
+  </releases>
+  <content_rating type="oars-1.0">
+    <content_attribute id="violence-cartoon">none</content_attribute>
+    <content_attribute id="violence-fantasy">none</content_attribute>
+    <content_attribute id="violence-realistic">none</content_attribute>
+    <content_attribute id="violence-bloodshed">none</content_attribute>
+    <content_attribute id="violence-sexual">none</content_attribute>
+    <content_attribute id="drugs-alcohol">none</content_attribute>
+    <content_attribute id="drugs-narcotics">none</content_attribute>
+    <content_attribute id="drugs-tobacco">none</content_attribute>
+    <content_attribute id="sex-nudity">none</content_attribute>
+    <content_attribute id="sex-themes">none</content_attribute>
+    <content_attribute id="language-profanity">none</content_attribute>
+    <content_attribute id="language-humor">none</content_attribute>
+    <content_attribute id="language-discrimination">none</content_attribute>
+    <content_attribute id="social-chat">none</content_attribute>
+    <content_attribute id="social-info">none</content_attribute>
+    <content_attribute id="social-audio">none</content_attribute>
+    <content_attribute id="social-location">none</content_attribute>
+    <content_attribute id="social-contacts">none</content_attribute>
+    <content_attribute id="money-purchasing">none</content_attribute>
+    <content_attribute id="money-gambling">none</content_attribute>
+  </content_rating>
   <update_contact>contact_AT_hembas.se</update_contact>
   <translation type="gettext">PulseEffects</translation>
 </component>

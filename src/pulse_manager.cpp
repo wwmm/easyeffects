@@ -244,17 +244,15 @@ void PulseManager::subscribe_to_events() {
                                 pm->server_info.default_sink_name = sink;
                                 pm->server_info.default_source_name = source;
 
-                                if (sink != std::string("PulseEffects_apps") &&
-                                    pm->use_default_sink) {
+                                if (sink != std::string("PulseEffects_apps")) {
                                     Glib::signal_idle().connect_once(
                                         [pm, sink]() {
                                             pm->new_default_sink.emit(sink);
                                         });
                                 }
 
-                                if (source != std::string(
-                                                  "PulseEffects_mic.monitor") &&
-                                    pm->use_default_source) {
+                                if (source !=
+                                    std::string("PulseEffects_mic.monitor")) {
                                     Glib::signal_idle().connect_once(
                                         [pm, source]() {
                                             pm->new_default_source.emit(source);

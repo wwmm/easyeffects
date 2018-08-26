@@ -253,6 +253,15 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     stack->child_property_icon_name(*sie_ui).set_value(
         "audio-speakers-symbolic");
 
+    connections.push_back(app->sie->new_latency.connect([=](int latency) {
+        sie_latency = latency;
+        update_headerbar_subtitle(0);
+    }));
+
+    if (app->sie->playing) {
+        app->sie->get_latency();
+    }
+
     /*source outputs interface*/
 
     auto b_soe_ui = Gtk::Builder::create_from_resource(
@@ -274,6 +283,15 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     stack->add(*soe_ui, "source_outputs");
     stack->child_property_icon_name(*soe_ui).set_value(
         "audio-input-microphone-symbolic");
+
+    connections.push_back(app->soe->new_latency.connect([=](int latency) {
+        soe_latency = latency;
+        update_headerbar_subtitle(1);
+    }));
+
+    if (app->soe->playing) {
+        app->soe->get_latency();
+    }
 
     // temporary spectrum connection. it changes with the selected stack child
 
@@ -605,7 +623,8 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
         headerbar_info->set_text(" ⟶ " + app->pm->apps_sink_info->format + "," +
                                  null_sink_rate.str() + " ⟶ F32LE," +
                                  null_sink_rate.str() + " ⟶ " + sink->format +
-                                 "," + current_dev_rate.str() + " ⟶ ");
+                                 "," + current_dev_rate.str() + " ⟶ " +
+                                 std::to_string(sie_latency) + "ms ⟶ ");
 
     } else {  // soe
         headerbar_icon1->set_from_icon_name("audio-input-microphone-symbolic",
@@ -622,11 +641,11 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 
         current_dev_rate << std::fixed << source->rate / 1000.0f << "kHz";
 
-        headerbar_info->set_text(" ⟶ " + source->format + "," +
-                                 current_dev_rate.str() + " ⟶ F32LE," +
-                                 null_sink_rate.str() + " ⟶ " +
-                                 app->pm->mic_sink_info->format + "," +
-                                 null_sink_rate.str() + " ⟶ ");
+        headerbar_info->set_text(
+            " ⟶ " + source->format + "," + current_dev_rate.str() +
+            " ⟶ F32LE," + null_sink_rate.str() + " ⟶ " +
+            app->pm->mic_sink_info->format + "," + null_sink_rate.str() +
+            " ⟶ " + std::to_string(soe_latency) + "ms ⟶ ");
     }
 }
 
@@ -678,17 +697,15 @@ void ApplicationUi::on_sink_added(std::shared_ptr<mySinkInfo> info) {
         row->set_value(0, info->index);
         row->set_value(1, info->name);
 
-        if (app->pm->use_default_sink) {
+        if (use_default_sink->get_active()) {
             if (info->name == app->pm->server_info.default_sink_name) {
                 output_device->set_active(row);
             }
         } else {
-            auto iter = output_device->get_active();
+            auto custom_sink = settings->get_string("custom-sink");
 
-            if (iter) {
-                if (info->name == app->pm->server_info.default_sink_name) {
-                    output_device->set_active(iter);
-                }
+            if (info->name == custom_sink) {
+                output_device->set_active(row);
             }
         }
 
@@ -697,7 +714,6 @@ void ApplicationUi::on_sink_added(std::shared_ptr<mySinkInfo> info) {
 }
 
 void ApplicationUi::on_sink_removed(uint idx) {
-    Gtk::TreeIter default_iter;
     Gtk::TreeIter remove_iter;
     std::string remove_name;
 
@@ -713,10 +729,6 @@ void ApplicationUi::on_sink_removed(uint idx) {
         if (idx == i) {
             remove_iter = c;
             remove_name = name;
-        }
-
-        if (name == app->pm->server_info.default_sink_name) {
-            default_iter = c;
         }
     }
 
@@ -750,17 +762,15 @@ void ApplicationUi::on_source_added(std::shared_ptr<mySourceInfo> info) {
         row->set_value(0, info->index);
         row->set_value(1, info->name);
 
-        if (app->pm->use_default_sink) {
+        if (use_default_source->get_active()) {
             if (info->name == app->pm->server_info.default_source_name) {
                 input_device->set_active(row);
             }
         } else {
-            auto iter = input_device->get_active();
+            auto custom_source = settings->get_string("custom-source");
 
-            if (iter) {
-                if (info->name == app->pm->server_info.default_source_name) {
-                    input_device->set_active(iter);
-                }
+            if (info->name == custom_source) {
+                input_device->set_active(row);
             }
         }
 
@@ -769,7 +779,6 @@ void ApplicationUi::on_source_added(std::shared_ptr<mySourceInfo> info) {
 }
 
 void ApplicationUi::on_source_removed(uint idx) {
-    Gtk::TreeIter default_iter;
     Gtk::TreeIter remove_iter;
     std::string remove_name;
 
@@ -785,10 +794,6 @@ void ApplicationUi::on_source_removed(uint idx) {
         if (idx == i) {
             remove_iter = c;
             remove_name = name;
-        }
-
-        if (name == app->pm->server_info.default_source_name) {
-            default_iter = c;
         }
     }
 
@@ -841,6 +846,8 @@ void ApplicationUi::on_input_device_changed() {
 
         app->soe->set_source_monitor_name(name);
 
+        settings->set_string("custom-source", name);
+
         util::debug(log_tag + "input device changed: " + name);
     }
 }
@@ -857,6 +864,8 @@ void ApplicationUi::on_output_device_changed() {
 
         app->sie->set_output_sink_name(name);
         app->soe->webrtc->set_probe_src_device(name + ".monitor");
+
+        settings->set_string("custom-sink", name);
 
         util::debug(log_tag + "output device changed: " + name);
     }

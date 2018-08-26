@@ -1,4 +1,3 @@
-#include <algorithm>
 #include "sink_input_effects_ui.hpp"
 
 SinkInputEffectsUi::SinkInputEffectsUi(

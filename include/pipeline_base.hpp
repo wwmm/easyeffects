@@ -38,8 +38,10 @@ class PipelineBase {
     void set_output_sink_name(std::string name);
     void set_null_pipeline();
     void update_pipeline_state();
+    void get_latency();
 
     sigc::signal<void, std::vector<float>> new_spectrum;
+    sigc::signal<void, int> new_latency;
 
    protected:
     GSettings* settings;

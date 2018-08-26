@@ -2,6 +2,27 @@
 
 ## [Unreleased]
 
+## [4.2.9]
+### Added
+- PulseEffects now remembers the custom input and output device selected by the
+user. In case it does not exists in the next start we fallback to the default
+device.
+
+## [4.2.8]
+### Added
+- The latency introduced by the Gstreamer pipeline is displayed in the headerbar.
+
+## [4.2.7]
+### Added
+- The adapter plugin used internally by PE reports the latency that it may
+introduce(proportional to the block size) to GStreamer. Latency is only added
+when the block size s larger than the number o samples per buffer in Pulseaudio
+buffer.
+
+### Fixed
+- Fixed a regression that could cause severe noises when multiple audio apps
+were playing at the same time.
+
 ## [4.2.6]
 ### Added
 - Improved the plugin that adapts the size of the buffer given by pulsesrc.
