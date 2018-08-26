@@ -5,6 +5,7 @@ Maintainer: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>
 Standards-Version: 4.1.4
 Homepage: https://github.com/wwmm/pulseeffects
 Build-Depends: debhelper (>=11),
+               scour,
                meson (>=0.40),
                pkg-config,
                libgstreamer1.0-dev (>= 1.12.5),
@@ -23,7 +24,9 @@ Build-Depends: debhelper (>=11),
                libsndfile1-dev,
                libsamplerate0-dev,
                itstool,
-               libebur128-dev
+               libebur128-dev,
+               appstream-util,
+               desktop-file-utils
 
 Package: pulseeffects
 Architecture: any
@@ -33,7 +36,10 @@ Depends: ${misc:Depends},
          gstreamer1.0-plugins-bad,
          gstreamer1.0-plugins-good,
          gir1.2-gst-plugins-bad-1.0,
-         gstreamer1.0-pulseaudio
+         gstreamer1.0-pulseaudio,
+         gstreamer1.0-adapter-pulseeffects
+# gstreamer1.0-adapter-pulseeffects is a strict dependency, not recommended
+# see https://github.com/wwmm/pulseeffects/issues/307#issuecomment-415078508
 Recommends: calf-plugins (>= 0.90.0),
             zam-plugins,
             rubberband-ladspa,
@@ -41,8 +47,7 @@ Recommends: calf-plugins (>= 0.90.0),
             mda-lv2,
             gstreamer1.0-convolver-pulseeffects,
             gstreamer1.0-crystalizer-pulseeffects,
-            gstreamer1.0-autogain-pulseeffects,
-            gstreamer1.0-adapter-pulseeffects
+            gstreamer1.0-autogain-pulseeffects
 Description: Sound input and output effects for PulseAudio
  Many sound effects for PulseAudio input and output.
 
