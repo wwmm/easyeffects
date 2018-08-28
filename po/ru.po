@@ -1176,11 +1176,11 @@ msgstr ""
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
 msgid "Set the volume and turn on/off effects"
-msgstr ""
+msgstr "Настройка громкости и вкл/откл эффектов"
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
 msgid "Includes an equalizer with built-in presets"
-msgstr ""
+msgstr "Содержит эквалайзер с предустановками"
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:48
 msgid "Input Limiter"
@@ -1213,7 +1213,7 @@ msgstr "Калибровка"
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:466
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:484
 msgid "Added:"
-msgstr ""
+msgstr "Добавлено:"
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:65
 msgid ""
@@ -1278,9 +1278,8 @@ msgstr ""
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:449
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:458
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:476
-#, fuzzy
 msgid "Fixed:"
-msgstr "Фиксированный"
+msgstr "Исправлено:"
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:105
 msgid "Convolver is now optional at build time"
@@ -1354,9 +1353,8 @@ msgstr ""
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:340
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:471
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:489
-#, fuzzy
 msgid "Changed:"
-msgstr "Каналы"
+msgstr "Изменилось:"
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:162
 msgid ""
@@ -1393,9 +1391,8 @@ msgid "Input gain and output gain controls for the equalizer"
 msgstr ""
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:190
-#, fuzzy
 msgid "Calf Multiband compressor"
-msgstr "Многополосный компрессор"
+msgstr "Многополосный компрессор Calf"
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:194
 msgid ""
@@ -1476,9 +1473,8 @@ msgid "Optimizations to how plugins are enabled, disabled, or re-ordered"
 msgstr ""
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:266
-#, fuzzy
 msgid "Changes:"
-msgstr "Каналы"
+msgstr "Изменения:"
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:268
 msgid ""
@@ -1487,9 +1483,8 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:270
-#, fuzzy
 msgid "Fixes:"
-msgstr "Фиксированный"
+msgstr "Исправления:"
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:272
 msgid "Bug fixes (potential memory leaks)"
@@ -1715,10 +1710,8 @@ msgid "The PulseEffects window now uses a little less screen space"
 msgstr ""
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:451
-#, fuzzy
-msgid ""
-"Bug with pipeline being put out of playing state when running in service mode"
-msgstr "Выйти из PulseEffects. Полезно при запуске в режиме отладки."
+msgid "Bug with pipeline being put out of playing state when running in service mode"
+msgstr ""
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:452
 msgid "Performance issues with service mode and slower CPU's"
