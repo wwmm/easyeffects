@@ -163,8 +163,6 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
     std::string pulse_props =
         "application.id=com.github.wwmm.pulseeffects.sinkinputs";
 
-    pulse_props += ",media.role=production";
-
     set_pulseaudio_props(pulse_props);
 
     set_source_monitor_name(pm->apps_sink_info->monitor_source_name);

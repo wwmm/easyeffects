@@ -140,8 +140,6 @@ SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager)
     std::string pulse_props =
         "application.id=com.github.wwmm.pulseeffects.sourceoutputs";
 
-    pulse_props += ",media.role=production";
-
     set_pulseaudio_props(pulse_props);
 
     set_output_sink_name("PulseEffects_mic");
