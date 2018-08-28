@@ -57,6 +57,16 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="4.3.0" date="2018-08-28"/>
+    <release version="4.2.9" date="2018-08-26"/>
+    <release version="4.2.8" date="2018-08-14">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>Latency introduced by the GStreamer pipeline is now displayed in the headerbar</li>
+        </ul>
+      </description>
+    </release>
     <release version="4.2.7" date="2018-08-12"/>
     <release version="4.2.6" date="2018-08-10"/>
     <release version="4.2.5" date="2018-08-09"/>

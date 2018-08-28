@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-08-14 13:16-0300\n"
+"POT-Creation-Date: 2018-08-28 16:54-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1245,7 +1245,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/webrtc.page:10
-msgid "PulseEffects uses the webrtc from GStreamer. This plugin offers a voice enhancement filter based on WebRTC Audio Processing library. This library provides a whide variety of enhancement algorithms. This element tries to enable as much as possible. The currently enabled enhancements are High Pass Filter, Echo Canceller, Noise Suppression, Automatic Gain Control, and some extended filters."
+msgid "PulseEffects uses the webrtc from GStreamer. This plugin offers a voice enhancement filter based on WebRTC Audio Processing library. This library provides a broad variety of enhancement algorithms. This plugin tries to enable as many of those as possible. The currently enabled enhancements are High Pass Filter, Echo Canceller, Noise Suppression, Automatic Gain Control, and some extended filters."
 msgstr ""
 
 #. (itstool) path: section/title
@@ -1754,5 +1754,15 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/autogain.page:80
 msgid "Output gain value. The input signal will be multiplied by this correction gain to bring its loudness to the target value."
+msgstr ""
+
+#. (itstool) path: page/title
+#: C/blacklist.page:9
+msgid "Applications Blacklist"
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/blacklist.page:11
+msgid "In the settings menu there is an option that allows the user to apply effects to all applications without the need to switch each one on individually. But there are cases where the user wants a specific application to be excluded from the \"Enable All\" functionality. This can be done by using a blacklist. Just add the application name exactly as it is shown in the \"Applications\" entry."
 msgstr ""
 

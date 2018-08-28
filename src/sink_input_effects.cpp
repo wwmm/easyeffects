@@ -160,17 +160,38 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
       log_tag("sie: "),
       pm(pulse_manager),
       sie_settings(g_settings_new("com.github.wwmm.pulseeffects.sinkinputs")) {
-    set_pulseaudio_props(
-        "application.id=com.github.wwmm.pulseeffects.sinkinputs");
+    std::string pulse_props =
+        "application.id=com.github.wwmm.pulseeffects.sinkinputs";
+
+    set_pulseaudio_props(pulse_props);
 
     set_source_monitor_name(pm->apps_sink_info->monitor_source_name);
 
     auto PULSE_SINK = std::getenv("PULSE_SINK");
 
     if (PULSE_SINK) {
-        set_output_sink_name(PULSE_SINK);
+        if (pm->get_sink_info(PULSE_SINK)) {
+            set_output_sink_name(PULSE_SINK);
+        } else {
+            set_output_sink_name(pm->server_info.default_sink_name);
+        }
     } else {
-        set_output_sink_name(pm->server_info.default_sink_name);
+        bool use_default_sink =
+            g_settings_get_boolean(settings, "use-default-sink");
+
+        if (use_default_sink) {
+            set_output_sink_name(pm->server_info.default_sink_name);
+        } else {
+            gchar* custom_sink = g_settings_get_string(settings, "custom-sink");
+
+            if (pm->get_sink_info(custom_sink)) {
+                set_output_sink_name(custom_sink);
+            } else {
+                set_output_sink_name(pm->server_info.default_sink_name);
+            }
+
+            g_free(custom_sink);
+        }
     }
 
     pm->sink_input_added.connect(

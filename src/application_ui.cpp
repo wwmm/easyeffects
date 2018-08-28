@@ -100,6 +100,16 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     builder->get_widget("headerbar_icon1", headerbar_icon1);
     builder->get_widget("headerbar_icon2", headerbar_icon2);
     builder->get_widget("headerbar_info", headerbar_info);
+    builder->get_widget("blacklist_in_scrolled_window",
+                        blacklist_in_scrolled_window);
+    builder->get_widget("blacklist_out_scrolled_window",
+                        blacklist_out_scrolled_window);
+    builder->get_widget("add_blacklist_in", add_blacklist_in);
+    builder->get_widget("add_blacklist_out", add_blacklist_out);
+    builder->get_widget("blacklist_in_listbox", blacklist_in_listbox);
+    builder->get_widget("blacklist_out_listbox", blacklist_out_listbox);
+    builder->get_widget("blacklist_in_name", blacklist_in_name);
+    builder->get_widget("blacklist_out_name", blacklist_out_name);
 
     get_object(builder, "buffer_in", buffer_in);
     get_object(builder, "buffer_out", buffer_out);
@@ -189,6 +199,16 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     add_preset->signal_clicked().connect([=]() {
         auto name = preset_name->get_text();
         if (!name.empty()) {
+            std::string illegalChars = "\\/:?\"<>|";
+
+            for (auto it = name.begin(); it < name.end(); ++it) {
+                bool found = illegalChars.find(*it) != std::string::npos;
+                if (found) {
+                    preset_name->set_text("");
+                    return;
+                }
+            }
+
             app->presets_manager->add(name);
             preset_name->set_text("");
             populate_presets_listbox();
@@ -197,6 +217,42 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
     import_preset->signal_clicked().connect(
         sigc::mem_fun(*this, &ApplicationUi::on_import_preset_clicked));
+
+    // blacklist widgets callbacks
+
+    blacklist_in_listbox->set_sort_func(
+        sigc::mem_fun(*this, &ApplicationUi::on_listbox_sort));
+
+    blacklist_out_listbox->set_sort_func(
+        sigc::mem_fun(*this, &ApplicationUi::on_listbox_sort));
+
+    add_blacklist_in->signal_clicked().connect([=]() {
+        auto name = blacklist_in_name->get_text();
+
+        if (!name.empty()) {
+            std::vector<std::string> bl =
+                settings->get_string_array("blacklist-in");
+            bl.push_back(name);
+            settings->set_string_array("blacklist-in", bl);
+            blacklist_in_name->set_text("");
+            populate_blacklist_in_listbox();
+        }
+    });
+
+    add_blacklist_out->signal_clicked().connect([=]() {
+        auto name = blacklist_out_name->get_text();
+        if (!name.empty()) {
+            std::vector<std::string> bl =
+                settings->get_string_array("blacklist-out");
+            bl.push_back(name);
+            settings->set_string_array("blacklist-out", bl);
+            blacklist_out_name->set_text("");
+            populate_blacklist_out_listbox();
+        }
+    });
+
+    populate_blacklist_in_listbox();
+    populate_blacklist_out_listbox();
 
     // calibration
 
@@ -467,6 +523,8 @@ void ApplicationUi::on_reset_settings() {
     settings->reset("enable-all-apps");
     settings->reset("use-default-sink");
     settings->reset("use-default-source");
+    settings->reset("blacklist-in");
+    settings->reset("blacklist-out");
 
     sie_ui->reset();
     soe_ui->reset();
@@ -697,17 +755,15 @@ void ApplicationUi::on_sink_added(std::shared_ptr<mySinkInfo> info) {
         row->set_value(0, info->index);
         row->set_value(1, info->name);
 
-        if (app->pm->use_default_sink) {
+        if (use_default_sink->get_active()) {
             if (info->name == app->pm->server_info.default_sink_name) {
                 output_device->set_active(row);
             }
         } else {
-            auto iter = output_device->get_active();
+            auto custom_sink = settings->get_string("custom-sink");
 
-            if (iter) {
-                if (info->name == app->pm->server_info.default_sink_name) {
-                    output_device->set_active(iter);
-                }
+            if (info->name == custom_sink) {
+                output_device->set_active(row);
             }
         }
 
@@ -716,7 +772,6 @@ void ApplicationUi::on_sink_added(std::shared_ptr<mySinkInfo> info) {
 }
 
 void ApplicationUi::on_sink_removed(uint idx) {
-    Gtk::TreeIter default_iter;
     Gtk::TreeIter remove_iter;
     std::string remove_name;
 
@@ -732,10 +787,6 @@ void ApplicationUi::on_sink_removed(uint idx) {
         if (idx == i) {
             remove_iter = c;
             remove_name = name;
-        }
-
-        if (name == app->pm->server_info.default_sink_name) {
-            default_iter = c;
         }
     }
 
@@ -769,17 +820,15 @@ void ApplicationUi::on_source_added(std::shared_ptr<mySourceInfo> info) {
         row->set_value(0, info->index);
         row->set_value(1, info->name);
 
-        if (app->pm->use_default_sink) {
+        if (use_default_source->get_active()) {
             if (info->name == app->pm->server_info.default_source_name) {
                 input_device->set_active(row);
             }
         } else {
-            auto iter = input_device->get_active();
+            auto custom_source = settings->get_string("custom-source");
 
-            if (iter) {
-                if (info->name == app->pm->server_info.default_source_name) {
-                    input_device->set_active(iter);
-                }
+            if (info->name == custom_source) {
+                input_device->set_active(row);
             }
         }
 
@@ -788,7 +837,6 @@ void ApplicationUi::on_source_added(std::shared_ptr<mySourceInfo> info) {
 }
 
 void ApplicationUi::on_source_removed(uint idx) {
-    Gtk::TreeIter default_iter;
     Gtk::TreeIter remove_iter;
     std::string remove_name;
 
@@ -804,10 +852,6 @@ void ApplicationUi::on_source_removed(uint idx) {
         if (idx == i) {
             remove_iter = c;
             remove_name = name;
-        }
-
-        if (name == app->pm->server_info.default_source_name) {
-            default_iter = c;
         }
     }
 
@@ -860,6 +904,8 @@ void ApplicationUi::on_input_device_changed() {
 
         app->soe->set_source_monitor_name(name);
 
+        settings->set_string("custom-source", name);
+
         util::debug(log_tag + "input device changed: " + name);
     }
 }
@@ -876,6 +922,8 @@ void ApplicationUi::on_output_device_changed() {
 
         app->sie->set_output_sink_name(name);
         app->soe->webrtc->set_probe_src_device(name + ".monitor");
+
+        settings->set_string("custom-sink", name);
 
         util::debug(log_tag + "output device changed: " + name);
     }
@@ -994,6 +1042,91 @@ void ApplicationUi::populate_presets_listbox() {
 
     if (reset_menu_button_label) {
         presets_menu_label->set_text(_("Presets"));
+    }
+}
+
+void ApplicationUi::populate_blacklist_in_listbox() {
+    auto children = blacklist_in_listbox->get_children();
+
+    for (auto c : children) {
+        blacklist_in_listbox->remove(*c);
+    }
+
+    std::vector<std::string> names = settings->get_string_array("blacklist-in");
+
+    for (auto name : names) {
+        auto b = Gtk::Builder::create_from_resource(
+            "/com/github/wwmm/pulseeffects/ui/blacklist_row.glade");
+
+        Gtk::ListBoxRow* row;
+        Gtk::Button* remove_btn;
+        Gtk::Label* label;
+
+        b->get_widget("blacklist_row", row);
+        b->get_widget("remove", remove_btn);
+        b->get_widget("name", label);
+
+        row->set_name(name);
+        label->set_text(name);
+
+        connections.push_back(remove_btn->signal_clicked().connect([=]() {
+            std::vector<std::string> bl =
+                settings->get_string_array("blacklist-in");
+
+            bl.erase(std::remove_if(bl.begin(), bl.end(),
+                                    [=](auto& a) { return a == name; }),
+                     bl.end());
+
+            settings->set_string_array("blacklist-in", bl);
+
+            populate_blacklist_in_listbox();
+        }));
+
+        blacklist_in_listbox->add(*row);
+        blacklist_in_listbox->show_all();
+    }
+}
+
+void ApplicationUi::populate_blacklist_out_listbox() {
+    auto children = blacklist_out_listbox->get_children();
+
+    for (auto c : children) {
+        blacklist_out_listbox->remove(*c);
+    }
+
+    std::vector<std::string> names =
+        settings->get_string_array("blacklist-out");
+
+    for (auto name : names) {
+        auto b = Gtk::Builder::create_from_resource(
+            "/com/github/wwmm/pulseeffects/ui/blacklist_row.glade");
+
+        Gtk::ListBoxRow* row;
+        Gtk::Button* remove_btn;
+        Gtk::Label* label;
+
+        b->get_widget("blacklist_row", row);
+        b->get_widget("remove", remove_btn);
+        b->get_widget("name", label);
+
+        row->set_name(name);
+        label->set_text(name);
+
+        connections.push_back(remove_btn->signal_clicked().connect([=]() {
+            std::vector<std::string> bl =
+                settings->get_string_array("blacklist-out");
+
+            bl.erase(std::remove_if(bl.begin(), bl.end(),
+                                    [=](auto& a) { return a == name; }),
+                     bl.end());
+
+            settings->set_string_array("blacklist-out", bl);
+
+            populate_blacklist_out_listbox();
+        }));
+
+        blacklist_out_listbox->add(*row);
+        blacklist_out_listbox->show_all();
     }
 }
 

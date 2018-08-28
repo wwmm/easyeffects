@@ -76,6 +76,9 @@ void Application::on_startup() {
     soe = std::make_unique<SourceOutputEffects>(pm.get());
     presets_manager = std::make_unique<PresetsManager>();
 
+    pm->blacklist_in = settings->get_string_array("blacklist-in");
+    pm->blacklist_out = settings->get_string_array("blacklist-out");
+
     pm->new_default_sink.connect([&](auto name) {
         util::debug("new default sink: " + name);
         sie->set_output_sink_name(name);
@@ -85,6 +88,14 @@ void Application::on_startup() {
     pm->new_default_source.connect([&](auto name) {
         util::debug("new default source: " + name);
         soe->set_source_monitor_name(name);
+    });
+
+    settings->signal_changed("blacklist-in").connect([=](auto key) {
+        pm->blacklist_in = settings->get_string_array("blacklist-in");
+    });
+
+    settings->signal_changed("blacklist-out").connect([=](auto key) {
+        pm->blacklist_out = settings->get_string_array("blacklist-out");
     });
 
     if (get_flags() & Gio::ApplicationFlags::APPLICATION_IS_SERVICE) {
@@ -124,6 +135,20 @@ void Application::create_appmenu() {
             "/com/github/wwmm/pulseeffects/about.glade");
 
         auto dialog = (Gtk::Dialog*)builder->get_object("about_dialog").get();
+
+        dialog->signal_response().connect([=](auto response_id) {
+            switch (response_id) {
+                case Gtk::RESPONSE_CLOSE:
+                case Gtk::RESPONSE_CANCEL:
+                case Gtk::RESPONSE_DELETE_EVENT:
+                    dialog->hide();
+                    util::debug(log_tag + "hiding the about dialog window");
+                    break;
+                default:
+                    util::debug(log_tag + "unexpected about dialog response!");
+                    break;
+            }
+        });
 
         dialog->set_transient_for(*get_active_window());
 

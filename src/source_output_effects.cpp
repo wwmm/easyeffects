@@ -137,17 +137,39 @@ SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager)
       pm(pulse_manager),
       soe_settings(
           g_settings_new("com.github.wwmm.pulseeffects.sourceoutputs")) {
-    set_pulseaudio_props(
-        "application.id=com.github.wwmm.pulseeffects.sourceoutputs");
+    std::string pulse_props =
+        "application.id=com.github.wwmm.pulseeffects.sourceoutputs";
+
+    set_pulseaudio_props(pulse_props);
 
     set_output_sink_name("PulseEffects_mic");
 
     auto PULSE_SOURCE = std::getenv("PULSE_SOURCE");
 
     if (PULSE_SOURCE) {
-        set_source_monitor_name(PULSE_SOURCE);
+        if (pm->get_source_info(PULSE_SOURCE)) {
+            set_source_monitor_name(PULSE_SOURCE);
+        } else {
+            set_source_monitor_name(pm->server_info.default_source_name);
+        }
     } else {
-        set_source_monitor_name(pm->server_info.default_source_name);
+        bool use_default_source =
+            g_settings_get_boolean(settings, "use-default-source");
+
+        if (use_default_source) {
+            set_source_monitor_name(pm->server_info.default_source_name);
+        } else {
+            gchar* custom_source =
+                g_settings_get_string(settings, "custom-source");
+
+            if (pm->get_source_info(custom_source)) {
+                set_source_monitor_name(custom_source);
+            } else {
+                set_source_monitor_name(pm->server_info.default_source_name);
+            }
+
+            g_free(custom_source);
+        }
     }
 
     pm->source_output_added.connect(

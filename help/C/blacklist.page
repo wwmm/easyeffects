@@ -1,0 +1,18 @@
+<page
+    xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
+    type="guide"
+    id="blacklist">
+    <info>
+        <link type="guide" xref="settingsmenu"/>
+    </info>
+    <title>Applications Blacklist</title>
+    <media type="image" src="figures/blacklist.png" its:translate="no"/>
+    <p>
+        In the settings menu there is an option that allows the user to apply effects to
+        all applications without the need to switch each one on individually. But there
+        are cases where the user wants a specific application to be excluded from the
+        "Enable All" functionality. This can be done by using a blacklist. Just add the
+        application name exactly as it is shown in the "Applications" entry.
+    </p>
+</page>

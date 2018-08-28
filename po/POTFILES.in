@@ -1,5 +1,5 @@
 data/ui/application.glade
-data/ui/about.glade
+data/ui/about.glade.in
 data/ui/effects_base.glade
 data/ui/app_info.glade
 data/ui/autogain.glade
@@ -25,6 +25,7 @@ data/ui/crystalizer.glade
 data/ui/pitch.glade
 data/ui/webrtc.glade
 data/ui/preset_row.glade
+data/ui/blacklist_row.glade
 data/ui/calibration.glade
 data/ui/calibration_signals.glade
 data/ui/calibration_mic.glade
