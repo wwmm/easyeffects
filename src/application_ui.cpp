@@ -467,6 +467,8 @@ void ApplicationUi::on_reset_settings() {
     settings->reset("enable-all-apps");
     settings->reset("use-default-sink");
     settings->reset("use-default-source");
+    settings->reset("blacklist-in");
+    settings->reset("blacklist-out");
 
     sie_ui->reset();
     soe_ui->reset();
