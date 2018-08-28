@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 
+## [4.3.0]
 ### Added
 - The about dialog window "hide" method is explicitly called now. This may fix
 an issue where this window was not closed for users not using gnome
