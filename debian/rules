@@ -1,8 +1,14 @@
 #!/usr/bin/make -f
-# ignore the .git directory and do not include into the source code tarball
-#export DH_ALWAYS_EXCLUDE=.git
-#Wow, I've commented out 'export DH_ALWAYS_EXCLUDE=.git' and now .desktop and other files do not mysteriously disappear when building the package
-#I have no idea why this works)
+export DH_ALWAYS_EXCLUDE=.git:_build:*.deb
 export DH_VERBOSE=255
+
+# Fail the build if some produced files
+# are not included in neither of multiple packages
+override_dh_missing:
+	dh_missing --fail-missing
+
+override_dh_auto_test:
+	echo "Auto-tests are disabled due to a very strange issue https://github.com/wwmm/pulseeffects/issues/304"
+	
 %:
-	dh $@
+	dh $@ --with scour

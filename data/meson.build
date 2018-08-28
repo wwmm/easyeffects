@@ -47,7 +47,7 @@ appdata_file = i18n_mod.merge_file(
 appstream_util = find_program('appstream-util', required: false)
 if appstream_util.found()
   test('Validate appstream file', appstream_util,
-    args: ['validate-strict', appdata_file]
+    args: ['validate-strict', '--nonet', appdata_file]
   )
 endif
 
