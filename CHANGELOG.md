@@ -2,10 +2,10 @@
 
 ## [Unreleased]
 
-## [4.2.9]
 ### Added
 - The about dialog window "hide" method is explicitly called now. This may fix
-an issue where this window was not closed for users not using gnome 
+an issue where this window was not closed for users not using gnome
+- The user can blacklist applications he/she does not want effects being applied.
 
 ## [4.2.9]
 ### Added
