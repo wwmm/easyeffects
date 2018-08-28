@@ -1,4 +1,3 @@
-#include <giomm/settings.h>
 #include "source_output_effects.hpp"
 #include "util.hpp"
 
@@ -143,9 +142,6 @@ SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager)
 
     set_output_sink_name("PulseEffects_mic");
 
-    auto global_settings =
-        Gio::Settings::create("com.github.wwmm.pulseeffects");
-
     auto PULSE_SOURCE = std::getenv("PULSE_SOURCE");
 
     if (PULSE_SOURCE) {
@@ -155,16 +151,22 @@ SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager)
             set_source_monitor_name(pm->server_info.default_source_name);
         }
     } else {
-        if (global_settings->get_boolean("use-default-source")) {
+        bool use_default_source =
+            g_settings_get_boolean(settings, "use-default-source");
+
+        if (use_default_source) {
             set_source_monitor_name(pm->server_info.default_source_name);
         } else {
-            auto custom_source = global_settings->get_string("custom-source");
+            gchar* custom_source =
+                g_settings_get_string(settings, "custom-source");
 
             if (pm->get_source_info(custom_source)) {
                 set_source_monitor_name(custom_source);
             } else {
                 set_source_monitor_name(pm->server_info.default_source_name);
             }
+
+            g_free(custom_source);
         }
     }
 

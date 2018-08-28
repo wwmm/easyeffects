@@ -4,6 +4,11 @@
 
 ## [4.2.9]
 ### Added
+- The about dialog window "hide" method is explicitly called now. This may fix
+an issue where this window was not closed for users not using gnome 
+
+## [4.2.9]
+### Added
 - PulseEffects now remembers the custom input and output device selected by the
 user. In case it does not exists in the next start we fallback to the default
 device.

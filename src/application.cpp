@@ -125,6 +125,20 @@ void Application::create_appmenu() {
 
         auto dialog = (Gtk::Dialog*)builder->get_object("about_dialog").get();
 
+        dialog->signal_response().connect([=](auto response_id) {
+            switch (response_id) {
+                case Gtk::RESPONSE_CLOSE:
+                case Gtk::RESPONSE_CANCEL:
+                case Gtk::RESPONSE_DELETE_EVENT:
+                    dialog->hide();
+                    util::debug(log_tag + "hiding the about dialog window");
+                    break;
+                default:
+                    util::debug(log_tag + "unexpected about dialog response!");
+                    break;
+            }
+        });
+
         dialog->set_transient_for(*get_active_window());
 
         dialog->show();
