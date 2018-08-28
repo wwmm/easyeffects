@@ -199,6 +199,16 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     add_preset->signal_clicked().connect([=]() {
         auto name = preset_name->get_text();
         if (!name.empty()) {
+            std::string illegalChars = "\\/:?\"<>|";
+
+            for (auto it = name.begin(); it < name.end(); ++it) {
+                bool found = illegalChars.find(*it) != std::string::npos;
+                if (found) {
+                    preset_name->set_text("");
+                    return;
+                }
+            }
+
             app->presets_manager->add(name);
             preset_name->set_text("");
             populate_presets_listbox();

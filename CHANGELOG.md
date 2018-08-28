@@ -6,6 +6,9 @@
 - The about dialog window "hide" method is explicitly called now. This may fix
 an issue where this window was not closed for users not using gnome
 - The user can blacklist applications he/she does not want effects being applied.
+- We check if there is any forbidden character in the name of the preset that
+the user is adding. If there is we just clear the field and do not try to add
+the preset.
 
 ## [4.2.9]
 ### Added
