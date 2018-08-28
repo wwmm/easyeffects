@@ -241,6 +241,9 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
         }
     });
 
+    populate_blacklist_in_listbox();
+    populate_blacklist_out_listbox();
+
     // calibration
 
     calibration_button->signal_clicked().connect(
