@@ -95,7 +95,7 @@ void Application::on_startup() {
     });
 
     settings->signal_changed("blacklist-out").connect([=](auto key) {
-        pm->blacklist_in = settings->get_string_array("blacklist-out");
+        pm->blacklist_out = settings->get_string_array("blacklist-out");
     });
 
     if (get_flags() & Gio::ApplicationFlags::APPLICATION_IS_SERVICE) {

@@ -9,3 +9,7 @@ list#listbox_presets {
 list#listbox_irs {
     background-color: transparent;
 }
+
+list#listbox_blacklist {
+    background-color: transparent;
+}

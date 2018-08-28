@@ -48,14 +48,17 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     Gtk::DrawingArea* spectrum;
     Gtk::Box* spectrum_box;
     Gtk::Button *reset_settings, *add_preset, *import_preset,
-        *calibration_button, *help_button;
+        *calibration_button, *help_button, *add_blacklist_in,
+        *add_blacklist_out;
     Gtk::Stack* stack;
-    Gtk::ListBox* presets_listbox;
+    Gtk::ListBox *presets_listbox, *blacklist_in_listbox,
+        *blacklist_out_listbox;
     Gtk::MenuButton* presets_menu_button;
     Gtk::Label *presets_menu_label, *headerbar_info;
     Gtk::Entry* preset_name;
     Gtk::ColorButton* spectrum_color_button;
-    Gtk::ScrolledWindow* presets_scrolled_window;
+    Gtk::ScrolledWindow *presets_scrolled_window, *blacklist_in_scrolled_window,
+        *blacklist_out_scrolled_window;
     Gtk::ComboBoxText *blocksize_in, *blocksize_out;
     Gtk::HeaderBar* headerbar;
     Gtk::Image *headerbar_icon1, *headerbar_icon2;
@@ -100,6 +103,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     void clear_spectrum();
 
     void populate_presets_listbox();
+
+    void populate_blacklist_listbox();
 
     bool on_enable_autostart(bool state);
 

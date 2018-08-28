@@ -100,6 +100,14 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     builder->get_widget("headerbar_icon1", headerbar_icon1);
     builder->get_widget("headerbar_icon2", headerbar_icon2);
     builder->get_widget("headerbar_info", headerbar_info);
+    builder->get_widget("blacklist_in_scrolled_window",
+                        blacklist_in_scrolled_window);
+    builder->get_widget("blacklist_out_scrolled_window",
+                        blacklist_out_scrolled_window);
+    builder->get_widget("add_blacklist_in", add_blacklist_in);
+    builder->get_widget("add_blacklist_out", add_blacklist_out);
+    builder->get_widget("blacklist_in_listbox", blacklist_in_listbox);
+    builder->get_widget("blacklist_out_listbox", blacklist_out_listbox);
 
     get_object(builder, "buffer_in", buffer_in);
     get_object(builder, "buffer_out", buffer_out);
