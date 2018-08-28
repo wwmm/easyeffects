@@ -46,7 +46,8 @@ help_media = [
   'figures/settingsmenu.png',
   'figures/userpresets.png',
   'figures/advancedinfo.png',
-  'figures/saturated.png'
+  'figures/saturated.png',
+  'figures/blacklist.png'
 ]
 
 gnome_mod.yelp(meson.project_name(),
