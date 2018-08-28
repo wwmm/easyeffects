@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [4.3.1]
+### Fixed
+- One of the help images was not being installed
+
 ## [4.3.0]
 ### Added
 - The about dialog window "hide" method is explicitly called now. This may fix
