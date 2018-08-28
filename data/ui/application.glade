@@ -1280,7 +1280,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkButton" id="add_blacklist_out">
+                          <object class="GtkButton" id="add_blacklist_in">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
@@ -1352,7 +1352,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkButton" id="add_blacklist_in">
+                          <object class="GtkButton" id="add_blacklist_out">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>

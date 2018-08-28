@@ -25,6 +25,7 @@ data/ui/crystalizer.glade
 data/ui/pitch.glade
 data/ui/webrtc.glade
 data/ui/preset_row.glade
+data/ui/blacklist_row.glade
 data/ui/calibration.glade
 data/ui/calibration_signals.glade
 data/ui/calibration_mic.glade

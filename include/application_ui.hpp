@@ -55,7 +55,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
         *blacklist_out_listbox;
     Gtk::MenuButton* presets_menu_button;
     Gtk::Label *presets_menu_label, *headerbar_info;
-    Gtk::Entry* preset_name;
+    Gtk::Entry *preset_name, *blacklist_in_name, *blacklist_out_name;
     Gtk::ColorButton* spectrum_color_button;
     Gtk::ScrolledWindow *presets_scrolled_window, *blacklist_in_scrolled_window,
         *blacklist_out_scrolled_window;
@@ -104,7 +104,9 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
     void populate_presets_listbox();
 
-    void populate_blacklist_listbox();
+    void populate_blacklist_in_listbox();
+
+    void populate_blacklist_out_listbox();
 
     bool on_enable_autostart(bool state);
 
