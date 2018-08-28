@@ -69,6 +69,10 @@ class PulseManager {
 
     std::shared_ptr<mySinkInfo> get_sink_info(std::string name);
     std::shared_ptr<mySourceInfo> get_source_info(std::string name);
+
+    std::vector<std::string> blacklist_in;   // for input effects
+    std::vector<std::string> blacklist_out;  // for output effects
+
     void find_sink_inputs();
     void find_source_outputs();
     void find_sinks();

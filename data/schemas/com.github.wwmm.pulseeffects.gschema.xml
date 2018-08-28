@@ -189,5 +189,15 @@
         <key name="custom-source" type="s">
             <default>""</default>
         </key>
+        <key name="blacklist-in" type="as">
+            <default>
+                []
+            </default>
+        </key>
+        <key name="blacklist-out" type="as">
+            <default>
+                []
+            </default>
+        </key>
     </schema>
 </schemalist>

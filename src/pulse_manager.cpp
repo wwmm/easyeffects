@@ -1116,11 +1116,19 @@ void PulseManager::new_app(const pa_sink_input_info* info) {
     auto app_info = parse_app_info(info);
 
     if (app_info != nullptr) {
-        app_info->app_type = "sink_input";
+        // checking if the user blacklisted this app
 
-        Glib::signal_idle().connect_once([&, app_info = move(app_info)]() {
-            sink_input_added.emit(app_info);
-        });
+        auto forbidden_app =
+            std::find(std::begin(blacklist_out), std::end(blacklist_out),
+                      app_info->name) != std::end(blacklist_out);
+
+        if (!forbidden_app) {
+            app_info->app_type = "sink_input";
+
+            Glib::signal_idle().connect_once([&, app_info = move(app_info)]() {
+                sink_input_added.emit(app_info);
+            });
+        }
     }
 }
 
@@ -1128,11 +1136,19 @@ void PulseManager::new_app(const pa_source_output_info* info) {
     auto app_info = parse_app_info(info);
 
     if (app_info != nullptr) {
-        app_info->app_type = "source_output";
+        // checking if the user blacklisted this app
 
-        Glib::signal_idle().connect_once([&, app_info = move(app_info)]() {
-            source_output_added.emit(app_info);
-        });
+        auto forbidden_app =
+            std::find(std::begin(blacklist_in), std::end(blacklist_in),
+                      app_info->name) != std::end(blacklist_in);
+
+        if (!forbidden_app) {
+            app_info->app_type = "source_output";
+
+            Glib::signal_idle().connect_once([&, app_info = move(app_info)]() {
+                source_output_added.emit(app_info);
+            });
+        }
     }
 }
 
@@ -1140,11 +1156,19 @@ void PulseManager::changed_app(const pa_sink_input_info* info) {
     auto app_info = parse_app_info(info);
 
     if (app_info != nullptr) {
-        app_info->app_type = "sink_input";
+        // checking if the user blacklisted this app
 
-        Glib::signal_idle().connect_once([&, app_info = move(app_info)]() {
-            sink_input_changed.emit(app_info);
-        });
+        auto forbidden_app =
+            std::find(std::begin(blacklist_out), std::end(blacklist_out),
+                      app_info->name) != std::end(blacklist_out);
+
+        if (!forbidden_app) {
+            app_info->app_type = "sink_input";
+
+            Glib::signal_idle().connect_once([&, app_info = move(app_info)]() {
+                sink_input_changed.emit(app_info);
+            });
+        }
     }
 }
 
@@ -1152,11 +1176,19 @@ void PulseManager::changed_app(const pa_source_output_info* info) {
     auto app_info = parse_app_info(info);
 
     if (app_info != nullptr) {
-        app_info->app_type = "source_output";
+        // checking if the user blacklisted this app
 
-        Glib::signal_idle().connect_once([&, app_info = move(app_info)]() {
-            source_output_changed.emit(app_info);
-        });
+        auto forbidden_app =
+            std::find(std::begin(blacklist_in), std::end(blacklist_in),
+                      app_info->name) != std::end(blacklist_in);
+
+        if (!forbidden_app) {
+            app_info->app_type = "source_output";
+
+            Glib::signal_idle().connect_once([&, app_info = move(app_info)]() {
+                source_output_changed.emit(app_info);
+            });
+        }
     }
 }
 
