@@ -335,6 +335,7 @@ void PipelineBase::set_pulseaudio_props(std::string props) {
     auto s = gst_structure_from_string(str.c_str(), nullptr);
 
     g_object_set(source, "stream-properties", s, nullptr);
+    g_object_set(sink, "stream-properties", s, nullptr);
 
     gst_structure_free(s);
 }
