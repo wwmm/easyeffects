@@ -1,5 +1,5 @@
 data/ui/application.glade
-data/ui/about.glade
+data/ui/about.glade.in
 data/ui/effects_base.glade
 data/ui/app_info.glade
 data/ui/autogain.glade

@@ -36,7 +36,8 @@ help_pages = [
   'userpresets.page',
   'advancedinfo.page',
   'saturated.page',
-  'autogain.page'
+  'autogain.page',
+  'blacklist.page'
 ]
 
 help_media = [

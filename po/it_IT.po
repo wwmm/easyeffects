@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-29 15:07-0300\n"
+"POT-Creation-Date: 2018-08-28 16:59-0300\n"
 "PO-Revision-Date: 2018-02-10 15:25+0100\n"
 "Last-Translator: Matteo Iervasi <matteoiervasi@gmail.com>\n"
 "Language-Team: \n"
@@ -18,122 +18,134 @@ msgstr ""
 "X-Generator: Poedit 2.0.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/ui/application.glade:50
+#: data/ui/application.glade:60 data/ui/application.glade:1306
+#: data/ui/application.glade:1378
 msgid "Name"
 msgstr "Nome"
 
-#: data/ui/application.glade:63
+#: data/ui/application.glade:73 data/ui/application.glade:1287
+#: data/ui/application.glade:1359
 #, fuzzy
 msgid "Create Preset"
 msgstr "Cancella preset"
 
-#: data/ui/application.glade:81 src/application_ui.cpp:881
+#: data/ui/application.glade:91 src/application_ui.cpp:954
 #, fuzzy
 msgid "Import Presets"
 msgstr "Carica Preset"
 
-#: data/ui/application.glade:191 src/calibration_ui.cpp:48
+#: data/ui/application.glade:200 src/calibration_ui.cpp:48
 #: src/calibration_ui.cpp:175
 msgid "Test Signals"
 msgstr "Segnali di test"
 
-#: data/ui/application.glade:206 data/ui/application.glade:615
+#: data/ui/application.glade:222
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
+#: data/com.github.wwmm.pulseeffects.desktop.in:3
+msgid "PulseEffects"
+msgstr "PulseEffects"
+
+#: data/ui/application.glade:294 data/ui/application.glade:703
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: data/ui/application.glade:228
+#: data/ui/application.glade:316
 msgid "Help"
 msgstr ""
 
-#: data/ui/application.glade:251 data/ui/compressor.glade:205
+#: data/ui/application.glade:339 data/ui/compressor.glade:205
 #: data/ui/filter.glade:203 data/ui/equalizer.glade:280
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
-#: src/application_ui.cpp:886 src/application_ui.cpp:961
+#: src/application_ui.cpp:959 src/application_ui.cpp:1034
 msgid "Presets"
 msgstr "Presets"
 
-#: data/ui/application.glade:540
+#: data/ui/application.glade:628
 msgid "Start Service at Login"
 msgstr "Avvio servizio al login"
 
-#: data/ui/application.glade:565
+#: data/ui/application.glade:653
 msgid "Enable All Applications"
 msgstr "Abilita per tutte le applicazioni"
 
-#: data/ui/application.glade:590
+#: data/ui/application.glade:678
 msgid "Use Dark Theme"
 msgstr "Usa tema scuro"
 
-#: data/ui/application.glade:624 data/ui/equalizer_band.glade:105
+#: data/ui/application.glade:712 data/ui/equalizer_band.glade:105
 #: data/ui/equalizer_band.glade:120
 msgid "Reset"
 msgstr "Resetta"
 
-#: data/ui/application.glade:639
+#: data/ui/application.glade:727
 msgid "General"
 msgstr "Generale"
 
-#: data/ui/application.glade:657
+#: data/ui/application.glade:745
 msgid "Show"
 msgstr "Mostra"
 
-#: data/ui/application.glade:683
+#: data/ui/application.glade:771
 msgid "Points"
 msgstr "Punti"
 
-#: data/ui/application.glade:714
+#: data/ui/application.glade:802
 msgid "Use Custom Color"
 msgstr ""
 
-#: data/ui/application.glade:739
+#: data/ui/application.glade:827
 #, fuzzy
 msgid "Spectrum Color"
 msgstr "Spettro"
 
-#: data/ui/application.glade:766
+#: data/ui/application.glade:854
 #, fuzzy
 msgid "Height"
 msgstr "Destra"
 
-#: data/ui/application.glade:794 data/ui/convolver.glade:396
+#: data/ui/application.glade:882 data/ui/convolver.glade:396
 msgid "Spectrum"
 msgstr "Spettro"
 
-#: data/ui/application.glade:823 data/ui/application.glade:971
+#: data/ui/application.glade:911 data/ui/application.glade:1060
 #, fuzzy
 msgid "Use Default"
 msgstr "Default"
 
-#: data/ui/application.glade:861 data/ui/application.glade:1008
+#: data/ui/application.glade:949 data/ui/application.glade:1097
 #: data/ui/app_info.glade:156
 msgid "Buffer"
 msgstr "Buffer"
 
-#: data/ui/application.glade:894 data/ui/application.glade:1040
+#: data/ui/application.glade:982 data/ui/application.glade:1129
 #: data/ui/app_info.glade:183
 msgid "Latency"
 msgstr "Latenza"
 
-#: data/ui/application.glade:927 data/ui/application.glade:1072
+#: data/ui/application.glade:1015 data/ui/application.glade:1161
 #, fuzzy
 msgid "Block Size"
 msgstr "Dimensione stanza"
 
-#: data/ui/application.glade:957
+#: data/ui/application.glade:1046 data/ui/application.glade:1317
 #, fuzzy
 msgid "Input Effects"
 msgstr "PulseEffects"
 
-#: data/ui/application.glade:1102
+#: data/ui/application.glade:1192 data/ui/application.glade:1389
 #, fuzzy
 msgid "Output Effects"
 msgstr "Output"
 
-#: data/ui/application.glade:1129
+#: data/ui/application.glade:1219
 msgid "Pulseaudio"
 msgstr ""
 
-#: data/ui/about.glade:11
+#: data/ui/application.glade:1403
+msgid "Blacklist"
+msgstr ""
+
+#: data/ui/about.glade.in:11
 msgid "Audio Effects for Pulseaudio Applications"
 msgstr "Effetti Audio per le applicazioni Pulseaudio"
 
@@ -162,29 +174,29 @@ msgstr "Stato"
 msgid "Auto Gain"
 msgstr "Guadagno in input [dB]"
 
-#: data/ui/autogain.glade:151 data/ui/autogain.glade:520
+#: data/ui/autogain.glade:151 data/ui/autogain.glade:528
 msgid "Momentary"
 msgstr ""
 
-#: data/ui/autogain.glade:164 data/ui/autogain.glade:533
+#: data/ui/autogain.glade:166 data/ui/autogain.glade:541
 msgid "Short Term"
 msgstr ""
 
-#: data/ui/autogain.glade:177 data/ui/autogain.glade:546
+#: data/ui/autogain.glade:181 data/ui/autogain.glade:554
 msgid "Integrated"
 msgstr ""
 
-#: data/ui/autogain.glade:191
+#: data/ui/autogain.glade:197
 #, fuzzy
 msgid "Target"
 msgstr "Soglia [dB]"
 
-#: data/ui/autogain.glade:279
+#: data/ui/autogain.glade:287
 #, fuzzy
 msgid "Weights"
 msgstr "Destra"
 
-#: data/ui/autogain.glade:308 data/ui/autogain.glade:500
+#: data/ui/autogain.glade:316 data/ui/autogain.glade:508
 #: data/ui/limiter.glade:367 data/ui/compressor.glade:559
 #: data/ui/multiband_compressor.glade:1959 data/ui/filter.glade:365
 #: data/ui/equalizer.glade:366 data/ui/reverb.glade:612
@@ -198,7 +210,7 @@ msgstr "Destra"
 msgid "Input"
 msgstr "Input"
 
-#: data/ui/autogain.glade:323 data/ui/autogain.glade:749
+#: data/ui/autogain.glade:331 data/ui/autogain.glade:757
 #: data/ui/limiter.glade:382 data/ui/compressor.glade:574
 #: data/ui/multiband_compressor.glade:755
 #: data/ui/multiband_compressor.glade:1132
@@ -218,22 +230,22 @@ msgstr "Input"
 msgid "Output"
 msgstr "Output"
 
-#: data/ui/autogain.glade:634
+#: data/ui/autogain.glade:642
 msgid "Relative"
 msgstr ""
 
-#: data/ui/autogain.glade:647 data/ui/deesser.glade:298
+#: data/ui/autogain.glade:655 data/ui/deesser.glade:298
 #, fuzzy
 msgid "Gain"
 msgstr "Guadagno [dB]"
 
-#: data/ui/autogain.glade:711 data/ui/loudness.glade:24
+#: data/ui/autogain.glade:719 data/ui/loudness.glade:24
 #: data/ui/loudness.glade:130
 #, fuzzy
 msgid "Loudness"
 msgstr "Stessa Intensità 40"
 
-#: data/ui/autogain.glade:763
+#: data/ui/autogain.glade:771
 msgid "Range"
 msgstr ""
 
@@ -558,7 +570,6 @@ msgid "Inertia"
 msgstr ""
 
 #: data/ui/equalizer.glade:24
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
 msgid "Equalizer"
 msgstr "Equalizzatore\t"
 
@@ -1161,11 +1172,6 @@ msgstr "Misura rumore"
 msgid "Subtract Noise"
 msgstr "Sottrai rumore"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
-#: data/com.github.wwmm.pulseeffects.desktop.in:3
-msgid "PulseEffects"
-msgstr "PulseEffects"
-
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:8
 #: data/com.github.wwmm.pulseeffects.desktop.in:5
 msgid "Audio Effects for PulseAudio Applications"
@@ -1219,9 +1225,12 @@ msgstr ""
 "correnti come un preset."
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
-#: src/effects_base_ui.cpp:23
-msgid "Applications"
-msgstr "Applicazioni"
+msgid "Set the volume and turn on/off effects"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
+msgid "Includes an equalizer with built-in presets"
+msgstr ""
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:48
 msgid "Input Limiter"
@@ -1230,6 +1239,582 @@ msgstr "Input Limiter"
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
 msgid "Calibration"
 msgstr "Calibrazione"
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:63
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:79
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:88
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:98
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:129
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:148
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:170
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:186
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:218
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:236
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:262
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:278
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:300
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:332
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:355
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:365
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:394
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:411
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:419
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:432
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:466
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:484
+msgid "Added:"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:65
+msgid ""
+"Latency introduced by the GStreamer pipeline is now displayed in the "
+"headerbar"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:81
+msgid "A crystalizer plugin, provided by PulseEffects"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:82
+msgid "Audio format and sampling rate is displayed in the header bar"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:90
+msgid "Improved convolver impulse response autogain calculation"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:91
+msgid ""
+"A warning when the convolver uses a preset that refers to a an impulse file "
+"that does not exist"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:92
+msgid "No limit on the number of frames used from impulse response file"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:100
+msgid "Improved Russian translations"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:101
+msgid ""
+"Optimizations to impulse response file handling, which avoids playback "
+"stalls with large files"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:103
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:113
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:121
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:140
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:156
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:178
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:192
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:201
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:210
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:227
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:245
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:254
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:282
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:292
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:324
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:345
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:370
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:378
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:386
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:400
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:423
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:440
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:449
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:458
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:476
+msgid "Fixed:"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:105
+msgid "Convolver is now optional at build time"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:106
+msgid "Potential crash when the impulse response file was too small"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:107
+msgid "Memory leaks in the convolver interface"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:115
+msgid "PulseEffects now uses the system zita-convolver library"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:123
+msgid ""
+"Crash caused by loading an impulse response file with more than 2 channels"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:131
+msgid "Convolver plugin, provided by PulseEffects"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:132
+msgid ""
+"Import presets dialog now has filters to show only presets files (.json)"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:133
+msgid "Filter for \".irs\" files to the impulse response import dialog"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:134
+msgid "Ability to customize the convolver spectrum plot color"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:142
+msgid "Equalizer presets occasionally not being applied"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:150
+msgid "Multiband gate plugin from Calf Studio"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:151
+msgid "Stereo Tools plugin from Calf Studio"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:152
+msgid ""
+"The Presets menu is now labeled, using the name of the last selected preset"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:153
+msgid "The Deesser can be used in both pipelines"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:154
+msgid "The so called \"perfect eq\" preset (no such thing as actually perfect)"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:158
+msgid "Deesser \"listen\" control was not working"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:160
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:314
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:340
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:471
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:489
+#, fuzzy
+msgid "Changed:"
+msgstr "Canali"
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:162
+msgid ""
+"Expander plugin has been replaced by Calf Gate from Calf Studio, due to "
+"being proprietary"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:163
+msgid ""
+"Delay plugin has been replaced by Calf Sterio Tools from Calf Studio, due to "
+"unpermissive licensing"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:164
+msgid ""
+"Panorama plugin, uses functionality which is also offered by Calf Stereo "
+"Tools"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:172
+msgid "Loudness plugin from MDA.LV2"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:180
+msgid "Multiband compressor schema not being installed"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:188
+msgid "GStreamer 10 bands equalizer presets: rock, soft, pop, etc"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:189
+msgid "Input gain and output gain controls for the equalizer"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:190
+#, fuzzy
+msgid "Calf Multiband compressor"
+msgstr "Compressore"
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:194
+msgid ""
+"The compressor and gate plugin knee parameter was always at its default value"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:195
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:203
+msgid "Bug fixes (minor memory leaks)"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:204
+msgid "The presets menu list is scrollable again"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:212
+msgid ""
+"The limit parameter of the limiter plugin is no longer reset to default upon "
+"loading a preset"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:220
+msgid "Users can change the height of the spectrum"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:222
+msgid ""
+"More parameters are saved to the user preset: buffer, latency and spectrum "
+"parameters. It is particularly useful to have the buffer value saved to the "
+"preset because a few devices like bluetooth headphones need values that are "
+"very different than the ones used in soundcards."
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:229
+msgid ""
+"Crashes upon loading a preset not containing features present in newer "
+"versions of PulseEffects"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:230
+msgid ""
+"Spectrum not being enabled upon launching PulseEffects, while service mode "
+"is running"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:238
+msgid "Expander from Linux Studio Plugins (Proprietary)"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:239
+msgid "Optimizations to memory usage"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:241
+msgid ""
+"Note that the Expander plugin is proprietary and due to license issues and "
+"Flathub policies it cannot be included in the Flatpak release."
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:247
+msgid "Some system memory not being freed upon closing PulseEffects"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:248
+msgid ""
+"Crashes when the pitch plugin was re-ordered, with the webrtc plugin bellow "
+"it"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:256
+msgid ""
+"Applications not being removed from PulseEffects after having been closed"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:264
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:280
+msgid "Optimizations to how plugins are enabled, disabled, or re-ordered"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:266
+#, fuzzy
+msgid "Changes:"
+msgstr "Canali"
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:268
+msgid ""
+"Default buffer values increased from 100 ms to 200 ms, due to distortions "
+"with bluetooth headphones"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:270
+msgid "Fixes:"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:272
+msgid "Bug fixes (potential memory leaks)"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:284
+msgid "Spectrum widget being shown even when it is disabled"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:285
+msgid "Excessive level meters readings"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:286
+msgid ""
+"Hovering the mouse pointer over the spectrum, now updates the magnitude and "
+"frequency values"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:294
+msgid ""
+"PulseEffects no longer crashes upon enabling a plugin whose dependencies are "
+"not installed"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:302
+msgid ""
+"Users can change the order that plugins are displayed, in the left menu bar"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:303
+msgid "Users can select custom colors for the spectrum"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:304
+msgid ""
+"In the equalizer menu, users can now change the number of equalizer bands"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:305
+msgid "Most of these new settings can be saved as user presets"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:306
+msgid ""
+"Calf Filter plugin, which replaces the previous high pass and low pass "
+"filters"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:308
+msgid ""
+"The equalizer menu also contains a new facility to calculate the "
+"corresponding frequencies of a graphic equalizer with the same number of "
+"bands. Users with weak processors will benefit a lot from this setting as "
+"the more bands you have the more CPU resources are use."
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:316
+msgid ""
+"Preset files uses a new format, which means presets must be re-created to be "
+"compatible"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:317
+msgid "Removed the Calf Stereo Spread plugin"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:318
+msgid ""
+"Removed per app level meters, because they were the source of many unfixable "
+"bugs"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:326
+msgid "Input and output limiter settings not working with presets"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:334
+msgid "GStreamer WebRTC plugin"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:335
+msgid "Gate and Deesser plugins from Calf Studio"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:336
+msgid "Calf Studio compressor plugin, which replaces the one from swh-plugins"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:337
+msgid ""
+"User selectable input and output devices for the current session (not saved "
+"on exit)"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:338
+msgid "Level meter for recording applications"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:342
+msgid ""
+"Buffer and latency of input and output effects can now be configured "
+"independant of each other"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:343
+msgid ""
+"Application buffer and latency values displayed in the main window are now "
+"updated every 5 seconds"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:347
+msgid "The PulseEffects Flatpak can now import presets from files"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:348
+msgid ""
+"No longer shows too many decimals when hovering the mouse pointer above the "
+"spectrum"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:349
+msgid "CPU usage optimizations to service mode"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:357
+msgid "Updated Czech and Italian translations"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:358
+msgid "Presets can be loaded from the command line"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:359
+msgid "Presets can be imported using a presets menu"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:367
+msgid "Crossfeed plugin from bs2b library"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:368
+msgid ""
+"Optimize CPU usage when PulseEffects is paused or all applications are "
+"switched off"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:372
+msgid "Cleaner log output (only visible on a command line)"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:380
+msgid "Exciter ceiling parameter not working with user presets"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:388
+msgid ""
+"Removing and re-inserting a usb microphone multiple times no longer break "
+"PulseEffects"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:396
+msgid "Delay Compensator plugin from Linux Studio Plugins"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:397
+msgid "Pitch Shifting plugin from Rubber Band library"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:398
+msgid "New and better organized settings menu"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:402
+msgid "No longer forces the global applications switch to True in service mode"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:403
+msgid "Differing frequency values in band label and frequency menu"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:404
+msgid ""
+"The test signal application now automatically switches to the default "
+"microphone"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:405
+msgid ""
+"Equal loudness test signal frequencies now match the equalizer default "
+"frequencies"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:413
+msgid "MultiSpread plugin from Calf Studio"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:421
+msgid "Stereo Enhancer plugin from Calf Studio"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:425
+msgid ""
+"Visual indicators (check marks) are no longer shown for unavailable plugins"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:426
+msgid "Volume meter now properly updates with applications like the game XCOM"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:434
+msgid "Maximizer plugin from ZamAudio"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:442
+msgid ""
+"Auto volume now works in service mode and it no longer resets the limiter "
+"gain"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:443
+msgid "The PulseEffects window now uses a little less screen space"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:451
+msgid ""
+"Bug with pipeline being put out of playing state when running in service mode"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:452
+msgid "Performance issues with service mode and slower CPU's"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:460
+msgid ""
+"Missing Calf Studio plugins no longer causes PulseEffects to crash; they are "
+"now optional"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:468
+msgid "Bass Enhancer and Exciter plugins from Calf Studio"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:469
+msgid ""
+"Option to autostart PulseEffects (service mode). This feature does not work "
+"with Flatpak."
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:473
+msgid ""
+"Plugin on/off switches are now located at their respective plugin sections"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:474
+msgid ""
+"Added a visual indicator (check mark) where the plugin on/off switches used "
+"to be"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:478
+msgid ""
+"The global applications switch now properly resets to \"True\" when closing "
+"the window"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:486
+msgid "30 user configurable bands to the equalizer"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:487
+msgid "Global on/off switch, that enables effects for all applications"
+msgstr ""
+
+#: data/com.github.wwmm.pulseeffects.appdata.xml.in:491
+msgid "Per app on/off switches have been moved to a more obvious location"
+msgstr ""
 
 #: data/com.github.wwmm.pulseeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
@@ -1261,14 +1846,18 @@ msgstr ""
 msgid "Presets: "
 msgstr "Presets"
 
-#: src/application_ui.cpp:882 src/convolver_ui.cpp:269
+#: src/application_ui.cpp:955 src/convolver_ui.cpp:269
 msgid "Open"
 msgstr ""
 
-#: src/application_ui.cpp:882 src/convolver_ui.cpp:269
+#: src/application_ui.cpp:955 src/convolver_ui.cpp:269
 #, fuzzy
 msgid "Cancel"
 msgstr "Bilancio"
+
+#: src/effects_base_ui.cpp:23
+msgid "Applications"
+msgstr "Applicazioni"
 
 #: src/app_info_ui.cpp:85
 msgid "paused"

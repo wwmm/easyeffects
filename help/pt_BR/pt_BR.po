@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2018-08-24 11:09-0300\n"
+"POT-Creation-Date: 2018-08-28 16:54-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -2096,6 +2096,28 @@ msgid ""
 msgstr ""
 "Valor do ganho de saída. O sinal de entrada será multiplicado por este ganho "
 "de correção para trazer sua sonoridade para o valor alvo."
+
+#. (itstool) path: page/title
+#: C/blacklist.page:9
+msgid "Applications Blacklist"
+msgstr "Lista Negra de Aplicativos"
+
+#. (itstool) path: page/p
+#: C/blacklist.page:11
+msgid ""
+"In the settings menu there is an option that allows the user to apply "
+"effects to all applications without the need to switch each one on "
+"individually. But there are cases where the user wants a specific "
+"application to be excluded from the \"Enable All\" functionality. This can "
+"be done by using a blacklist. Just add the application name exactly as it is "
+"shown in the \"Applications\" entry."
+msgstr ""
+"No menu de configurações há uma opção que permite ao usuário aplicar efeitos "
+"a todos os aplicativos sem a necessidade de habilitar cada um "
+"individualmente. Mas há casos em que o usuário deseja que um aplicativo "
+"específico seja excluído da funcionalidade \"Ativar tudo\". Isso pode ser "
+"feito usando uma lista negra. Basta adicionar o nome do aplicativo "
+"exatamente como é mostrado na entrada \"Aplicativos\"."
 
 #~ msgid "Time window used to measure the loudness level."
 #~ msgstr "Janela de tempo utilizada para medir o nível de sonoridade."
