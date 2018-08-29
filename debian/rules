@@ -1,5 +1,4 @@
 #!/usr/bin/make -f
-export DH_ALWAYS_EXCLUDE=.git:_build:*.deb
 export DH_VERBOSE=255
 
 # Fail the build if some produced files

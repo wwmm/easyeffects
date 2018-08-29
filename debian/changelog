@@ -1,3 +1,9 @@
+pulseeffects (4.3.1-2) unstable; urgency=low
+
+  * Fix https://github.com/wwmm/pulseeffects/issues/324
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 29 Aug 2018 04:35:00 +0300
+ 
 pulseeffects (4.3.1-1) unstable; urgency=low
 
   * version 4.3.1 upstream
