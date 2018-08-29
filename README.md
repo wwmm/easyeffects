@@ -71,7 +71,7 @@ Version `1.12.5` or higher
 ### GNU/Linux Packages
 
 - [Arch Linux](https://aur.archlinux.org/packages/pulseeffects/)
-- [Void Linux](https://github.com/voidlinux/void-packages/blob/master/srcpkgs/pulseeffects/template)
+- [Void Linux](https://github.com/void-linux/void-packages/blob/master/srcpkgs/pulseeffects/template)
 - [Gentoo](https://packages.gentoo.org/packages/media-sound/pulseeffects/)
 - [ROSA](https://abf.io/import/pulseeffects/)
 - [ALT Linux](https://packages.altlinux.org/Sisyphus/srpms/pulseeffects/)
