@@ -2,6 +2,18 @@
 
 ## [Unreleased]
 
+## [4.3.2]
+### Added
+- Settings are automatically reset after an upgrade. If you want to know the
+reason why take a look at the issues #327, #318 and #293 in PulseEffects github
+page. A few users have configuration problems after an upgrade that are only
+solved after resetting PulseEffects settings. In all of the cases I could not
+reproduce the issue they had in my computers. As in some of the cases the crash
+was so severe that the only way to reset was using dconf in command line I
+decided to implement an automatic reset after upgrades or downgrades. As almost
+all PulseEffects settings are saved to the presets file this shouldn't be too
+annoying for the users
+
 ## [4.3.1]
 ### Fixed
 - One of the help images was not being installed

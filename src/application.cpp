@@ -3,6 +3,7 @@
 #include <gtkmm/dialog.h>
 #include "application.hpp"
 #include "application_ui.hpp"
+#include "config.h"
 #include "pulse_manager.hpp"
 #include "util.hpp"
 
@@ -70,6 +71,21 @@ void Application::on_startup() {
     create_appmenu();
 
     settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
+
+    std::string saved_version = settings->get_string("version");
+
+    if (saved_version != std::string(VERSION)) {
+        util::debug(log_tag +
+                    "PE was upgraded or downgraded. Resetting configurations ");
+
+        settings->reset("");
+
+        saved_version = std::string(VERSION);
+
+        settings->set_string("version", saved_version);
+    }
+
+    util::debug(log_tag + "PE version: " + saved_version);
 
     pm = std::make_unique<PulseManager>();
     sie = std::make_unique<SinkInputEffects>(pm.get());

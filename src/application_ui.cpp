@@ -888,7 +888,9 @@ void ApplicationUi::on_input_device_changed() {
 
         app->soe->set_source_monitor_name(name);
 
-        settings->set_string("custom-source", name);
+        if (!use_default_source->get_active()) {
+            settings->set_string("custom-source", name);
+        }
 
         util::debug(log_tag + "input device changed: " + name);
     }
@@ -907,7 +909,9 @@ void ApplicationUi::on_output_device_changed() {
         app->sie->set_output_sink_name(name);
         app->soe->webrtc->set_probe_src_device(name + ".monitor");
 
-        settings->set_string("custom-sink", name);
+        if (!use_default_sink->get_active()) {
+            settings->set_string("custom-sink", name);
+        }
 
         util::debug(log_tag + "output device changed: " + name);
     }

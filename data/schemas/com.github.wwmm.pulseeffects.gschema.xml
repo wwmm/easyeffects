@@ -130,6 +130,9 @@
         <value nick="4096" value="4096"/>
     </enum>
     <schema id="com.github.wwmm.pulseeffects" path="/com/github/wwmm/pulseeffects/">
+        <key name="version" type="s">
+            <default>""</default>
+        </key>
         <key name="buffer-out" type="i">
             <range min="1000" max="1000000"/>
             <default>200000</default>
