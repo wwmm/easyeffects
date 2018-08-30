@@ -1,6 +1,8 @@
 pulseeffects (4.3.2-1) unstable; urgency=low
 
   * Version 4.3.2 upstream
+  * Fixed libboost-*-dev build dependencies to fix building on Debian Sid
+    Debian Sid defaults to older libboost version 1.62, while we need >= 1.65
   * dconf settings will be reset, see upstream changelog:
     "Settings are automatically reset after an upgrade. If you want to know the reason why take a look at the issues #327, #318 and #293 in PulseEffects github page. A few users have configuration problems after an upgrade that are only solved after resetting PulseEffects settings. In all of the cases I could not reproduce the issue they had in my computers. As in some of the cases the crash was so severe that the only way to reset was using dconf in command line I decided to implement an automatic reset after upgrades or downgrades. As almost all PulseEffects settings are saved to the presets file this shouldn't be too annoying for the users."
   
