@@ -1,4 +1,4 @@
-pulseeffects (4.3.2-1) unstable; urgency=low
+pulseeffects (4.3.2-2) unstable; urgency=low
 
   * Version 4.3.2 upstream
   * Fixed libboost-*-dev build dependencies to fix building on Debian Sid
