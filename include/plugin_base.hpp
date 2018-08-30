@@ -20,6 +20,8 @@ class PluginBase {
 
     std::atomic<bool> changing_pipeline;
 
+    bool plugin_is_installed = false;
+
     void enable();
     void disable();
 

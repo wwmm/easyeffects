@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-    <schema id="com.github.wwmm.pulseeffects.sourceoutputs.gate" path="/com/github/wwmm/pulseeffects/sourceoutputs/gate/">
+    <schema
+        id="com.github.wwmm.pulseeffects.sourceoutputs.gate"
+        path="/com/github/wwmm/pulseeffects/sourceoutputs/gate/">
         <key name="state" type="b">
             <default>false</default>
         </key>
         <key name="installed" type="b">
-            <default>false</default>
+            <default>true</default>
         </key>
         <key name="post-messages" type="b">
             <default>false</default>
@@ -13,7 +15,9 @@
         <key name="detection" enum="com.github.wwmm.pulseeffects.gate.detection.enum">
             <default>"RMS"</default>
         </key>
-        <key name="stereo-link" enum="com.github.wwmm.pulseeffects.gate.stereo.link.enum">
+        <key
+            name="stereo-link"
+            enum="com.github.wwmm.pulseeffects.gate.stereo.link.enum">
             <default>"Average"</default>
         </key>
         <key name="range" type="d">

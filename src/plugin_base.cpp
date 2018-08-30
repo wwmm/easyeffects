@@ -9,10 +9,14 @@ std::mutex mtx;
 void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
     bool enable = g_settings_get_boolean(settings, key);
 
-    if (enable) {
-        l->enable();
+    if (l->plugin_is_installed) {
+        if (enable) {
+            l->enable();
+        } else {
+            l->disable();
+        }
     } else {
-        l->disable();
+        g_settings_set_boolean(settings, "installed", false);
     }
 }
 
@@ -56,6 +60,8 @@ PluginBase::~PluginBase() {
 
 bool PluginBase::is_installed(GstElement* e) {
     if (e != nullptr) {
+        plugin_is_installed = true;
+
         g_settings_set_boolean(settings, "installed", true);
 
         g_signal_connect(settings, "changed::state",
@@ -63,6 +69,8 @@ bool PluginBase::is_installed(GstElement* e) {
 
         return true;
     } else {
+        plugin_is_installed = false;
+
         g_settings_set_boolean(settings, "installed", false);
 
         util::warning(name + " plugin was not found!");

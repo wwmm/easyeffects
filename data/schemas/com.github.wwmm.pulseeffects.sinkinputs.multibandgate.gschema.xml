@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-    <schema id="com.github.wwmm.pulseeffects.sinkinputs.multibandgate" path="/com/github/wwmm/pulseeffects/sinkinputs/multibandgate/">
+    <schema
+        id="com.github.wwmm.pulseeffects.sinkinputs.multibandgate"
+        path="/com/github/wwmm/pulseeffects/sinkinputs/multibandgate/">
         <key name="state" type="b">
             <default>false</default>
         </key>
         <key name="installed" type="b">
-            <default>false</default>
+            <default>true</default>
         </key>
         <key name="post-messages" type="b">
             <default>false</default>
@@ -33,7 +35,6 @@
         <key name="mode" enum="com.github.wwmm.pulseeffects.multibandgate.mode.enum">
             <default>"LR8"</default>
         </key>
-
         <key name="range0" type="d">
             <range min="-95.0" max="0"/>
             <default>-24</default>
@@ -71,7 +72,6 @@
         <key name="solo0" type="b">
             <default>false</default>
         </key>
-
         <key name="range1" type="d">
             <range min="-95.0" max="0"/>
             <default>-24</default>
@@ -109,7 +109,6 @@
         <key name="solo1" type="b">
             <default>false</default>
         </key>
-
         <key name="range2" type="d">
             <range min="-95.0" max="0"/>
             <default>-24</default>
@@ -147,7 +146,6 @@
         <key name="solo2" type="b">
             <default>false</default>
         </key>
-
         <key name="range3" type="d">
             <range min="-95.0" max="0"/>
             <default>-24</default>

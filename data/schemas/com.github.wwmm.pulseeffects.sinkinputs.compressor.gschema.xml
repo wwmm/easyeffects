@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-    <schema id="com.github.wwmm.pulseeffects.sinkinputs.compressor" path="/com/github/wwmm/pulseeffects/sinkinputs/compressor/">
+    <schema
+        id="com.github.wwmm.pulseeffects.sinkinputs.compressor"
+        path="/com/github/wwmm/pulseeffects/sinkinputs/compressor/">
         <key name="state" type="b">
             <default>false</default>
         </key>
         <key name="installed" type="b">
-            <default>false</default>
+            <default>true</default>
         </key>
         <key name="post-messages" type="b">
             <default>false</default>
         </key>
-        <key name="detection" enum="com.github.wwmm.pulseeffects.compressor.detection.enum">
+        <key
+            name="detection"
+            enum="com.github.wwmm.pulseeffects.compressor.detection.enum">
             <default>"RMS"</default>
         </key>
-        <key name="stereo-link" enum="com.github.wwmm.pulseeffects.compressor.stereo.link.enum">
+        <key
+            name="stereo-link"
+            enum="com.github.wwmm.pulseeffects.compressor.stereo.link.enum">
             <default>"Average"</default>
         </key>
         <key name="mix" type="d">

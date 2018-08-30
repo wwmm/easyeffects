@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-    <schema id="com.github.wwmm.pulseeffects.sinkinputs.deesser" path="/com/github/wwmm/pulseeffects/sinkinputs/deesser/">
+    <schema
+        id="com.github.wwmm.pulseeffects.sinkinputs.deesser"
+        path="/com/github/wwmm/pulseeffects/sinkinputs/deesser/">
         <key name="state" type="b">
             <default>false</default>
         </key>
         <key name="installed" type="b">
-            <default>false</default>
+            <default>true</default>
         </key>
         <key name="post-messages" type="b">
             <default>false</default>
         </key>
-        <key name="detection" enum="com.github.wwmm.pulseeffects.deesser.detection.enum">
+        <key
+            name="detection"
+            enum="com.github.wwmm.pulseeffects.deesser.detection.enum">
             <default>"RMS"</default>
         </key>
         <key name="mode" enum="com.github.wwmm.pulseeffects.deesser.mode.enum">
