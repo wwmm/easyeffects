@@ -10,7 +10,7 @@
             <default>true</default>
         </key>
         <key name="post-messages" type="b">
-            <default>false</default>
+            <default>true</default>
         </key>
         <key name="detection" enum="com.github.wwmm.pulseeffects.gate.detection.enum">
             <default>"RMS"</default>

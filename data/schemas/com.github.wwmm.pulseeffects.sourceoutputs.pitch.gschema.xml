@@ -10,7 +10,7 @@
             <default>true</default>
         </key>
         <key name="post-messages" type="b">
-            <default>false</default>
+            <default>true</default>
         </key>
         <key name="cents" type="d">
             <range min="-100" max="100"/>
