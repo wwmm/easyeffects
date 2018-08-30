@@ -12,7 +12,7 @@ reproduce the issue they had in my computers. As in some of the cases the crash
 was so severe that the only way to reset was using dconf in command line I
 decided to implement an automatic reset after upgrades or downgrades. As almost
 all PulseEffects settings are saved to the presets file this shouldn't be too
-annoying for the users
+annoying for the users.
 
 ## [4.3.1]
 ### Fixed
