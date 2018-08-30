@@ -11,8 +11,6 @@ class AutoGainUi : public Gtk::Grid, public PluginUiBase {
                const std::string& settings_name);
     virtual ~AutoGainUi();
 
-    void reset();
-
     void on_new_momentary(const float& value);
     void on_new_shortterm(const float& value);
     void on_new_integrated(const float& value);

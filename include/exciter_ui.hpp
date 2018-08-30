@@ -12,8 +12,6 @@ class ExciterUi : public Gtk::Grid, public PluginUiBase {
               const std::string& settings_name);
     virtual ~ExciterUi();
 
-    void reset();
-
     void on_new_harmonics_level(double value);
 
    private:

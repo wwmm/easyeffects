@@ -36,13 +36,3 @@ PitchUi::~PitchUi() {
 
     util::debug(name + " ui destroyed");
 }
-
-void PitchUi::reset() {
-    settings->reset("state");
-    settings->reset("cents");
-    settings->reset("crispness");
-    settings->reset("semitones");
-    settings->reset("octaves");
-    settings->reset("faster");
-    settings->reset("formant_preserving");
-}

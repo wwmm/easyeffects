@@ -13,8 +13,6 @@ class ReverbUi : public Gtk::Grid, public PluginUiBase {
              const std::string& settings_name);
     virtual ~ReverbUi();
 
-    void reset();
-
    private:
     Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, predelay, decay_time,
         diffusion, amount, dry, hf_damp, bass_cut, treble_cut;

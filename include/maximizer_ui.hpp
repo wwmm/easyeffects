@@ -11,8 +11,6 @@ class MaximizerUi : public Gtk::Grid, public PluginUiBase {
                 const std::string& settings_name);
     virtual ~MaximizerUi();
 
-    void reset();
-
     void on_new_reduction(double value);
 
    private:

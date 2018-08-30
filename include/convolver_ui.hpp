@@ -21,8 +21,6 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
                 const std::string& settings_name);
     virtual ~ConvolverUi();
 
-    void reset();
-
    private:
     std::string log_tag = "convolver_ui: ";
 

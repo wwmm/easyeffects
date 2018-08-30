@@ -512,24 +512,6 @@ bool ApplicationUi::on_enable_autostart(bool state) {
 
 void ApplicationUi::on_reset_settings() {
     settings->reset("");
-
-    // settings->reset("buffer-in");
-    // settings->reset("buffer-out");
-    // settings->reset("latency-in");
-    // settings->reset("latency-out");
-    // settings->reset("show-spectrum");
-    // settings->reset("spectrum-n-points");
-    // settings->reset("spectrum-height");
-    // settings->reset("use-custom-color");
-    // settings->reset("use-dark-theme");
-    // settings->reset("enable-all-apps");
-    // settings->reset("use-default-sink");
-    // settings->reset("use-default-source");
-    // settings->reset("blacklist-in");
-    // settings->reset("blacklist-out");
-    //
-    // sie_ui->reset();
-    // soe_ui->reset();
 }
 
 bool ApplicationUi::on_show_spectrum(bool state) {

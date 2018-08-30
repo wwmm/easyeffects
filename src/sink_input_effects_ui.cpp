@@ -484,26 +484,3 @@ void SinkInputEffectsUi::up_down_connections() {
     connections.push_back(autogain_ui->plugin_down->signal_clicked().connect(
         [=]() { on_down(autogain_ui); }));
 }
-
-void SinkInputEffectsUi::reset() {
-    settings->reset("plugins");
-
-    limiter_ui->reset();
-    compressor_ui->reset();
-    filter_ui->reset();
-    equalizer_ui->reset();
-    reverb_ui->reset();
-    bass_enhancer_ui->reset();
-    exciter_ui->reset();
-    crossfeed_ui->reset();
-    maximizer_ui->reset();
-    multiband_compressor_ui->reset();
-    loudness_ui->reset();
-    gate_ui->reset();
-    multiband_gate_ui->reset();
-    deesser_ui->reset();
-    stereo_tools_ui->reset();
-    convolver_ui->reset();
-    crystalizer_ui->reset();
-    autogain_ui->reset();
-}

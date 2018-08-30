@@ -114,16 +114,3 @@ void GateUi::on_new_gating(double value) {
 
     gating_label->set_text(level_to_str(util::linear_to_db(value)));
 }
-
-void GateUi::reset() {
-    settings->reset("state");
-    settings->reset("detection");
-    settings->reset("stereo-link");
-    settings->reset("range");
-    settings->reset("attack");
-    settings->reset("release");
-    settings->reset("threshold");
-    settings->reset("ratio");
-    settings->reset("knee");
-    settings->reset("makeup");
-}

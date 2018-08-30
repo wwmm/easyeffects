@@ -24,8 +24,6 @@ class SourceOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
 
     virtual ~SourceOutputEffectsUi();
 
-    void reset();
-
    protected:
     std::string log_tag = "soe_ui: ";
 

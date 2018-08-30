@@ -13,8 +13,6 @@ class FilterUi : public Gtk::Grid, public PluginUiBase {
              const std::string& settings_name);
     virtual ~FilterUi();
 
-    void reset();
-
    private:
     Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, frequency, resonance,
         inertia;

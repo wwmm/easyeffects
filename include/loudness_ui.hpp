@@ -12,8 +12,6 @@ class LoudnessUi : public Gtk::Grid, public PluginUiBase {
                const std::string& settings_name);
     virtual ~LoudnessUi();
 
-    void reset();
-
    private:
     Glib::RefPtr<Gtk::Adjustment> loudness, output, link;
 };

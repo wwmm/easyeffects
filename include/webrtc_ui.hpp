@@ -13,8 +13,6 @@ class WebrtcUi : public Gtk::Grid, public PluginUiBase {
              const std::string& settings_name);
     virtual ~WebrtcUi();
 
-    void reset();
-
    private:
     Glib::RefPtr<Gtk::Adjustment> compression_gain_db, target_level_dbfs,
         voice_detection_frame_size;

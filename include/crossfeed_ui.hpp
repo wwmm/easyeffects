@@ -12,8 +12,6 @@ class CrossfeedUi : public Gtk::Grid, public PluginUiBase {
                 const std::string& settings_name);
     virtual ~CrossfeedUi();
 
-    void reset();
-
    private:
     Glib::RefPtr<Gtk::Adjustment> fcut, feed;
 

@@ -206,8 +206,3 @@ WebrtcUi::~WebrtcUi() {
 
     util::debug(name + " ui destroyed");
 }
-
-void WebrtcUi::reset() {
-    settings->reset("state");
-    settings->reset("compression_gain_db");
-}

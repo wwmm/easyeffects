@@ -146,13 +146,3 @@ void FilterUi::init_presets_buttons() {
         settings->reset("inertia");
     });
 }
-
-void FilterUi::reset() {
-    settings->reset("state");
-    settings->reset("input-gain");
-    settings->reset("output-gain");
-    settings->reset("frequency");
-    settings->reset("resonance");
-    settings->reset("mode");
-    settings->reset("inertia");
-}

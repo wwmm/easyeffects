@@ -126,18 +126,3 @@ void DeesserUi::on_new_detected(double value) {
 
     detected_label->set_text(level_to_str(util::linear_to_db(value)));
 }
-
-void DeesserUi::reset() {
-    settings->reset("state");
-    settings->reset("detection");
-    settings->reset("mode");
-    settings->reset("threshold");
-    settings->reset("ratio");
-    settings->reset("makeup");
-    settings->reset("f1-freq");
-    settings->reset("f2-freq");
-    settings->reset("f1-level");
-    settings->reset("f2-level");
-    settings->reset("f2-q");
-    settings->reset("sc-listen");
-}

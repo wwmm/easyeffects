@@ -38,10 +38,3 @@ void MaximizerUi::on_new_reduction(double value) {
 
     reduction_label->set_text(level_to_str(value));
 }
-
-void MaximizerUi::reset() {
-    settings->reset("state");
-    settings->reset("release");
-    settings->reset("threshold");
-    settings->reset("ceiling");
-}

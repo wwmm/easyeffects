@@ -29,10 +29,3 @@ CrystalizerUi::~CrystalizerUi() {
 
     util::debug(name + " ui destroyed");
 }
-
-void CrystalizerUi::reset() {
-    settings->reset("state");
-    settings->reset("input-gain");
-    settings->reset("output-gain");
-    settings->reset("intensity");
-}

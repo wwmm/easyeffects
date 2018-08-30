@@ -50,16 +50,3 @@ void BassEnhancerUi::on_new_harmonics_level(double value) {
 
     harmonics_levelbar_label->set_text(level_to_str(util::linear_to_db(value)));
 }
-
-void BassEnhancerUi::reset() {
-    settings->reset("state");
-    settings->reset("input-gain");
-    settings->reset("output-gain");
-    settings->reset("amount");
-    settings->reset("harmonics");
-    settings->reset("scope");
-    settings->reset("floor");
-    settings->reset("blend");
-    settings->reset("floor-active");
-    settings->reset("listen");
-}

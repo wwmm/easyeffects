@@ -31,8 +31,6 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
 
     virtual ~SinkInputEffectsUi();
 
-    void reset();
-
    protected:
     std::string log_tag = "sie_ui: ";
 

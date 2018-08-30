@@ -193,18 +193,3 @@ void ReverbUi::init_presets_buttons() {
         settings->reset("treble-cut");
     });
 }
-
-void ReverbUi::reset() {
-    settings->reset("state");
-    settings->reset("input-gain");
-    settings->reset("output-gain");
-    settings->reset("room-size");
-    settings->reset("decay-time");
-    settings->reset("hf-damp");
-    settings->reset("diffusion");
-    settings->reset("amount");
-    settings->reset("dry");
-    settings->reset("predelay");
-    settings->reset("bass-cut");
-    settings->reset("treble-cut");
-}

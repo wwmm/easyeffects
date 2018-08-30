@@ -115,25 +115,3 @@ StereoToolsUi::~StereoToolsUi() {
 
     util::debug(name + " ui destroyed");
 }
-
-void StereoToolsUi::reset() {
-    settings->reset("state");
-    settings->reset("input-gain");
-    settings->reset("output-gain");
-    settings->reset("balance-in");
-    settings->reset("balance-out");
-    settings->reset("softclip");
-    settings->reset("mutel");
-    settings->reset("muter");
-    settings->reset("phasel");
-    settings->reset("phaser");
-    settings->reset("mode");
-    settings->reset("slev");
-    settings->reset("sbal");
-    settings->reset("mlev");
-    settings->reset("mpan");
-    settings->reset("stereo-base");
-    settings->reset("delay");
-    settings->reset("sc-level");
-    settings->reset("stereo-phase");
-}

@@ -29,10 +29,3 @@ LoudnessUi::~LoudnessUi() {
 
     util::debug(name + " ui destroyed");
 }
-
-void LoudnessUi::reset() {
-    settings->reset("state");
-    settings->reset("loudness");
-    settings->reset("output");
-    settings->reset("link");
-}

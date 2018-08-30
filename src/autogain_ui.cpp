@@ -87,13 +87,3 @@ void AutoGainUi::on_new_gain(const float& value) {
     g_level->set_value(value);
     g_label->set_text(level_to_str(util::linear_to_db(value)));
 }
-
-void AutoGainUi::reset() {
-    settings->reset("state");
-    settings->reset("input-gain");
-    settings->reset("output-gain");
-    settings->reset("target");
-    settings->reset("weight_m");
-    settings->reset("weight_s");
-    settings->reset("weight_i");
-}

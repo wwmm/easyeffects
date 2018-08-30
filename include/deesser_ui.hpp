@@ -13,8 +13,6 @@ class DeesserUi : public Gtk::Grid, public PluginUiBase {
               const std::string& settings_name);
     virtual ~DeesserUi();
 
-    void reset();
-
     void on_new_compression(double value);
     void on_new_detected(double value);
 

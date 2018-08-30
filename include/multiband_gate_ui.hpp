@@ -14,8 +14,6 @@ class MultibandGateUi : public Gtk::Grid, public PluginUiBase {
                     const std::string& settings_name);
     virtual ~MultibandGateUi();
 
-    void reset();
-
     void on_new_output0(double value);
     void on_new_output1(double value);
     void on_new_output2(double value);

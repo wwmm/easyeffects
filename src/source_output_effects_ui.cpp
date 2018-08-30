@@ -330,19 +330,3 @@ void SourceOutputEffectsUi::up_down_connections() {
         multiband_gate_ui->plugin_down->signal_clicked().connect(
             [=]() { on_down(multiband_gate_ui); }));
 }
-
-void SourceOutputEffectsUi::reset() {
-    settings->reset("plugins");
-
-    limiter_ui->reset();
-    compressor_ui->reset();
-    filter_ui->reset();
-    equalizer_ui->reset();
-    reverb_ui->reset();
-    gate_ui->reset();
-    deesser_ui->reset();
-    pitch_ui->reset();
-    webrtc_ui->reset();
-    multiband_compressor_ui->reset();
-    multiband_gate_ui->reset();
-}

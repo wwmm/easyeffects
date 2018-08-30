@@ -707,11 +707,3 @@ bool ConvolverUi::on_mouse_leave_notify_event(GdkEventCrossing* event) {
     mouse_inside = false;
     return false;
 }
-
-void ConvolverUi::reset() {
-    settings->reset("state");
-    settings->reset("input-gain");
-    settings->reset("output-gain");
-    settings->reset("kernel-path");
-    settings->reset("ir-width");
-}

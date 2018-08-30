@@ -51,14 +51,3 @@ void LimiterUi::on_new_attenuation(double value) {
 
     attenuation_label->set_text(level_to_str(util::linear_to_db(value)));
 }
-
-void LimiterUi::reset() {
-    settings->reset("state");
-    settings->reset("input-gain");
-    settings->reset("limit");
-    settings->reset("lookahead");
-    settings->reset("release");
-    settings->reset("oversampling");
-    settings->reset("asc");
-    settings->reset("asc-level");
-}

@@ -14,8 +14,6 @@ class StereoToolsUi : public Gtk::Grid, public PluginUiBase {
                   const std::string& settings_name);
     virtual ~StereoToolsUi();
 
-    void reset();
-
    private:
     Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, balance_in,
         balance_out, slev, sbal, mlev, mpan, stereo_base, delay, sc_level,

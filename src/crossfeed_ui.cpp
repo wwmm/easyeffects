@@ -50,9 +50,3 @@ void CrossfeedUi::init_presets_buttons() {
         feed->set_value(9);
     });
 }
-
-void CrossfeedUi::reset() {
-    settings->reset("state");
-    settings->reset("fcut");
-    settings->reset("feed");
-}

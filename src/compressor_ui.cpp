@@ -157,16 +157,3 @@ void CompressorUi::init_presets_buttons() {
         settings->reset("makeup");
     });
 }
-
-void CompressorUi::reset() {
-    settings->reset("state");
-    settings->reset("detection");
-    settings->reset("stereo-link");
-    settings->reset("mix");
-    settings->reset("attack");
-    settings->reset("release");
-    settings->reset("threshold");
-    settings->reset("ratio");
-    settings->reset("knee");
-    settings->reset("makeup");
-}
