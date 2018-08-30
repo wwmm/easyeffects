@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-28 16:59-0300\n"
+"POT-Creation-Date: 2018-08-29 22:21-0300\n"
 "PO-Revision-Date: 2018-08-28 17:20-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
@@ -30,7 +30,7 @@ msgstr "Nome"
 msgid "Create Preset"
 msgstr "Criar Predefinição"
 
-#: data/ui/application.glade:91 src/application_ui.cpp:954
+#: data/ui/application.glade:91 src/application_ui.cpp:964
 msgid "Import Presets"
 msgstr "Importar Predefinições"
 
@@ -56,7 +56,7 @@ msgstr "Ajuda"
 #: data/ui/application.glade:339 data/ui/compressor.glade:205
 #: data/ui/filter.glade:203 data/ui/equalizer.glade:280
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
-#: src/application_ui.cpp:959 src/application_ui.cpp:1034
+#: src/application_ui.cpp:969 src/application_ui.cpp:1044
 msgid "Presets"
 msgstr "Predefinições"
 
@@ -1169,690 +1169,6 @@ msgstr "Limitador de Entrada"
 msgid "Calibration"
 msgstr "Calibração"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:63
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:79
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:88
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:98
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:129
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:148
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:170
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:186
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:218
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:236
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:262
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:278
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:300
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:332
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:355
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:365
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:394
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:411
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:419
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:432
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:466
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:484
-msgid "Added:"
-msgstr "Adicionado:"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:65
-msgid ""
-"Latency introduced by the GStreamer pipeline is now displayed in the "
-"headerbar"
-msgstr ""
-"A latência introduzida pelo pipeline do GStreamer agora é exibida na barra "
-"de cabeçalho"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:81
-msgid "A crystalizer plugin, provided by PulseEffects"
-msgstr "Um plugin de cristalizador, fornecido por PulseEffects"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:82
-msgid "Audio format and sampling rate is displayed in the header bar"
-msgstr "Formato de áudio e taxa de amostragem é exibido na barra de cabeçalho"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:90
-msgid "Improved convolver impulse response autogain calculation"
-msgstr "Cálculo melhorado da resposta automática ao impulso do convolver"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:91
-msgid ""
-"A warning when the convolver uses a preset that refers to a an impulse file "
-"that does not exist"
-msgstr ""
-"Um aviso quando o convolver usa uma predefinição que se refere a um arquivo "
-"de impulso que não existe"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:92
-msgid "No limit on the number of frames used from impulse response file"
-msgstr ""
-"Não há limite no número de quadros usados a partir do arquivo de resposta ao "
-"impulso"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:100
-msgid "Improved Russian translations"
-msgstr "Traduções russas aprimoradas"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:101
-msgid ""
-"Optimizations to impulse response file handling, which avoids playback "
-"stalls with large files"
-msgstr ""
-"Otimizações para lidar com arquivos de resposta por impulso, o que evita "
-"bloqueios de reprodução com arquivos grandes"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:103
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:113
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:121
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:140
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:156
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:178
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:192
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:201
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:210
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:227
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:245
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:254
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:282
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:292
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:324
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:345
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:370
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:378
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:386
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:400
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:423
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:440
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:449
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:458
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:476
-msgid "Fixed:"
-msgstr "Corrigido:"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:105
-msgid "Convolver is now optional at build time"
-msgstr "O convolver agora é opcional no momento da compilação"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:106
-msgid "Potential crash when the impulse response file was too small"
-msgstr ""
-"Falha potencial quando o arquivo de resposta ao impulso era muito pequeno"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:107
-msgid "Memory leaks in the convolver interface"
-msgstr "Vazamentos de memória na interface do convolver"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:115
-msgid "PulseEffects now uses the system zita-convolver library"
-msgstr "PulseEffects agora usa a biblioteca zita-convolver do sistema"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:123
-msgid ""
-"Crash caused by loading an impulse response file with more than 2 channels"
-msgstr ""
-"Falha causada pelo carregamento de um arquivo de resposta ao impulso com "
-"mais de 2 canais"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:131
-msgid "Convolver plugin, provided by PulseEffects"
-msgstr "Um plugin de convolver, fornecido por PulseEffects"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:132
-msgid ""
-"Import presets dialog now has filters to show only presets files (.json)"
-msgstr ""
-"A caixa de diálogo Predefinições de importação agora possui filtros para "
-"mostrar apenas arquivos de predefinições (.json)"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:133
-msgid "Filter for \".irs\" files to the impulse response import dialog"
-msgstr ""
-"Filtrar por arquivos \".irs\" para a caixa de diálogo de importação de "
-"resposta ao impulso"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:134
-msgid "Ability to customize the convolver spectrum plot color"
-msgstr "Capacidade de personalizar a cor da plotagem do espectro do convolver"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:142
-msgid "Equalizer presets occasionally not being applied"
-msgstr "Predefinições de equalizador não são aplicadas ocasionalmente"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:150
-msgid "Multiband gate plugin from Calf Studio"
-msgstr "Gate multibandas do Calf Studio"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:151
-msgid "Stereo Tools plugin from Calf Studio"
-msgstr "Ferramentas stereo do Calf Studio"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:152
-msgid ""
-"The Presets menu is now labeled, using the name of the last selected preset"
-msgstr ""
-"O menu Predefinições agora é rotulado, usando o nome da última predefinição "
-"selecionada"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:153
-msgid "The Deesser can be used in both pipelines"
-msgstr "O Deesser pode ser usado em ambos os pipelines"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:154
-msgid "The so called \"perfect eq\" preset (no such thing as actually perfect)"
-msgstr "O chamado \"eq perfeito\" predefinido (não é realmente perfeito)"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:158
-msgid "Deesser \"listen\" control was not working"
-msgstr "Deesser \"ouvir\" controle não estava funcionando"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:160
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:314
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:340
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:471
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:489
-msgid "Changed:"
-msgstr "Alterado:"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:162
-msgid ""
-"Expander plugin has been replaced by Calf Gate from Calf Studio, due to "
-"being proprietary"
-msgstr ""
-"Plugin Expander foi substituído por Calf Gate do Calf Studio, devido a ser "
-"proprietário"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:163
-msgid ""
-"Delay plugin has been replaced by Calf Sterio Tools from Calf Studio, due to "
-"unpermissive licensing"
-msgstr ""
-"Plugin de atraso foi substituído por Calf Sterio Tools do Calf Studio, "
-"devido ao licenciamento não permissivo"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:164
-msgid ""
-"Panorama plugin, uses functionality which is also offered by Calf Stereo "
-"Tools"
-msgstr ""
-"Plugin Panorama, usa a funcionalidade que também é oferecida pelas "
-"ferramentas estéreo de bezerro"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:172
-msgid "Loudness plugin from MDA.LV2"
-msgstr "Plugin de sonoridade da MDA.LV2"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:180
-msgid "Multiband compressor schema not being installed"
-msgstr "Esquema do compressor multi bandas não estava sendo instalado"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:188
-msgid "GStreamer 10 bands equalizer presets: rock, soft, pop, etc"
-msgstr ""
-"Predefinições do equalizador de 10 bandas do GStreamer: rock, soft, pop, etc."
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:189
-msgid "Input gain and output gain controls for the equalizer"
-msgstr "Controles de ganho de entrada e ganho de saída para o equalizador"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:190
-msgid "Calf Multiband compressor"
-msgstr "Compressor Multibandas do Calf"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:194
-msgid ""
-"The compressor and gate plugin knee parameter was always at its default value"
-msgstr ""
-"O parâmetro knee do compressor e do plugin do gate estava sempre no valor "
-"padrão"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:195
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:203
-msgid "Bug fixes (minor memory leaks)"
-msgstr "Correções de bugs (vazamentos de memória menores)"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:204
-msgid "The presets menu list is scrollable again"
-msgstr "A lista de menu de predefinições é rolável novamente"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:212
-msgid ""
-"The limit parameter of the limiter plugin is no longer reset to default upon "
-"loading a preset"
-msgstr ""
-"O parâmetro limite do plug-in do limitador não é mais redefinido para o "
-"padrão ao carregar uma predefinição"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:220
-msgid "Users can change the height of the spectrum"
-msgstr "Os usuários podem alterar a altura do espectro"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:222
-msgid ""
-"More parameters are saved to the user preset: buffer, latency and spectrum "
-"parameters. It is particularly useful to have the buffer value saved to the "
-"preset because a few devices like bluetooth headphones need values that are "
-"very different than the ones used in soundcards."
-msgstr ""
-"Mais parâmetros são salvos na predefinição do usuário: parâmetros de buffer, "
-"latência e espectro. É particularmente útil ter o valor do buffer salvo na "
-"predefinição porque alguns dispositivos, como os fones de ouvido Bluetooth, "
-"precisam de valores muito diferentes dos usados em placas de som."
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:229
-msgid ""
-"Crashes upon loading a preset not containing features present in newer "
-"versions of PulseEffects"
-msgstr ""
-"Trava ao carregar uma predefinição que não contém recursos presentes em "
-"versões mais recentes do PulseEffects"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:230
-msgid ""
-"Spectrum not being enabled upon launching PulseEffects, while service mode "
-"is running"
-msgstr ""
-"Spectrum não está habilitado ao iniciar o PulseEffects, enquanto o modo de "
-"serviço está em execução"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:238
-msgid "Expander from Linux Studio Plugins (Proprietary)"
-msgstr "Expansor dos Plug-ins do Linux Studio (Proprietários)"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:239
-msgid "Optimizations to memory usage"
-msgstr "Otimizações de uso de memória"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:241
-msgid ""
-"Note that the Expander plugin is proprietary and due to license issues and "
-"Flathub policies it cannot be included in the Flatpak release."
-msgstr ""
-"Observe que o plug-in do Expander é proprietário e, devido a problemas de "
-"licença e políticas do Flathub, não pode ser incluído na versão do Flatpak."
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:247
-msgid "Some system memory not being freed upon closing PulseEffects"
-msgstr ""
-"Alguma memória do sistema não está sendo liberada ao fechar o PulseEffects"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:248
-msgid ""
-"Crashes when the pitch plugin was re-ordered, with the webrtc plugin bellow "
-"it"
-msgstr ""
-"Falha quando o plug-in de pitch foi reordenado, com o plug-in webrtc abaixo "
-"dele"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:256
-msgid ""
-"Applications not being removed from PulseEffects after having been closed"
-msgstr ""
-"Aplicativos não sendo removidos do PulseEffects após terem sido fechados"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:264
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:280
-msgid "Optimizations to how plugins are enabled, disabled, or re-ordered"
-msgstr ""
-"Otimizações para como os plug-ins são ativados, desativados ou reordenados"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:266
-msgid "Changes:"
-msgstr "Mudanças:"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:268
-msgid ""
-"Default buffer values increased from 100 ms to 200 ms, due to distortions "
-"with bluetooth headphones"
-msgstr ""
-"Valores de buffer padrão aumentados de 100 ms para 200 ms, devido a "
-"distorções com fones de ouvido bluetooth"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:270
-msgid "Fixes:"
-msgstr "Correções:"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:272
-msgid "Bug fixes (potential memory leaks)"
-msgstr "Correções de bugs (possíveis vazamentos de memória)"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:284
-msgid "Spectrum widget being shown even when it is disabled"
-msgstr "Widget de espectro sendo mostrado mesmo quando está desabilitado"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:285
-msgid "Excessive level meters readings"
-msgstr "Leituras excessivas de medidores de nível"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:286
-msgid ""
-"Hovering the mouse pointer over the spectrum, now updates the magnitude and "
-"frequency values"
-msgstr ""
-"Passando o ponteiro do mouse sobre o espectro, agora atualiza os valores de "
-"magnitude e frequência"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:294
-msgid ""
-"PulseEffects no longer crashes upon enabling a plugin whose dependencies are "
-"not installed"
-msgstr ""
-"PulseEffects não trava mais ao ativar um plug-in cujas dependências não "
-"estão instaladas"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:302
-msgid ""
-"Users can change the order that plugins are displayed, in the left menu bar"
-msgstr ""
-"Os usuários podem alterar a ordem em que os plugins são exibidos, na barra "
-"de menu à esquerda"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:303
-msgid "Users can select custom colors for the spectrum"
-msgstr "Os usuários podem selecionar cores personalizadas para o espectro"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:304
-msgid ""
-"In the equalizer menu, users can now change the number of equalizer bands"
-msgstr ""
-"No menu do equalizador, os usuários podem agora alterar o número de bandas "
-"do equalizador"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:305
-msgid "Most of these new settings can be saved as user presets"
-msgstr ""
-"A maioria dessas novas configurações pode ser salva como predefinições do "
-"usuário"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:306
-msgid ""
-"Calf Filter plugin, which replaces the previous high pass and low pass "
-"filters"
-msgstr ""
-"Plugin do filtro de panturrilha, que substitui os filtros passa alta e passa "
-"baixa anteriores"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:308
-msgid ""
-"The equalizer menu also contains a new facility to calculate the "
-"corresponding frequencies of a graphic equalizer with the same number of "
-"bands. Users with weak processors will benefit a lot from this setting as "
-"the more bands you have the more CPU resources are use."
-msgstr ""
-"O menu equalizador também contém um novo recurso para calcular as "
-"freqüências correspondentes de um equalizador gráfico com o mesmo número de "
-"bandas. Os usuários com processadores fracos se beneficiarão muito dessa "
-"configuração, pois quanto mais bandas você tiver, mais recursos da CPU serão "
-"usados."
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:316
-msgid ""
-"Preset files uses a new format, which means presets must be re-created to be "
-"compatible"
-msgstr ""
-"Os arquivos predefinidos usam um novo formato, o que significa que as "
-"predefinições devem ser recriadas para serem compatíveis"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:317
-msgid "Removed the Calf Stereo Spread plugin"
-msgstr "Removido o plug-in Estéreo de propagação de bezerro"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:318
-msgid ""
-"Removed per app level meters, because they were the source of many unfixable "
-"bugs"
-msgstr ""
-"Removido por medidores de nível de aplicativo, porque eles eram a fonte de "
-"muitos bugs não corrigíveis"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:326
-msgid "Input and output limiter settings not working with presets"
-msgstr ""
-"Configurações do limitador de entrada e saída que não funcionam com "
-"predefinições"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:334
-msgid "GStreamer WebRTC plugin"
-msgstr "Plugin Webrtc do GStreamer"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:335
-msgid "Gate and Deesser plugins from Calf Studio"
-msgstr "Plugins Gate e Deesser da Calf Studio"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:336
-msgid "Calf Studio compressor plugin, which replaces the one from swh-plugins"
-msgstr ""
-"Plugin compressor compressor Calf Studio, que substitui o de swh-plugins"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:337
-msgid ""
-"User selectable input and output devices for the current session (not saved "
-"on exit)"
-msgstr ""
-"Dispositivos de entrada e saída selecionáveis pelo usuário para a sessão "
-"atual (não salvos na saída)"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:338
-msgid "Level meter for recording applications"
-msgstr "Medidor de nível para gravação de aplicativos"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:342
-msgid ""
-"Buffer and latency of input and output effects can now be configured "
-"independant of each other"
-msgstr ""
-"O buffer e a latência dos efeitos de entrada e saída agora podem ser "
-"configurados independentemente um do outro"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:343
-msgid ""
-"Application buffer and latency values displayed in the main window are now "
-"updated every 5 seconds"
-msgstr ""
-"O buffer de aplicativo e os valores de latência exibidos na janela principal "
-"são atualizados a cada 5 segundos"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:347
-msgid "The PulseEffects Flatpak can now import presets from files"
-msgstr "O PulseEffects Flatpak agora pode importar presets de arquivos"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:348
-msgid ""
-"No longer shows too many decimals when hovering the mouse pointer above the "
-"spectrum"
-msgstr ""
-"Não mostra mais números decimais ao passar o ponteiro do mouse acima do "
-"espectro"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:349
-msgid "CPU usage optimizations to service mode"
-msgstr "Otimizações de uso da CPU para o modo de serviço"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:357
-msgid "Updated Czech and Italian translations"
-msgstr "Traduções atualizadas de tcheco e italiano"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:358
-msgid "Presets can be loaded from the command line"
-msgstr "Presets podem ser carregados a partir da linha de comando"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:359
-msgid "Presets can be imported using a presets menu"
-msgstr "As predefinições podem ser importadas usando um menu de predefinições"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:367
-msgid "Crossfeed plugin from bs2b library"
-msgstr "Plugin Crossfeed da biblioteca bs2b"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:368
-msgid ""
-"Optimize CPU usage when PulseEffects is paused or all applications are "
-"switched off"
-msgstr ""
-"Otimizar o uso da CPU quando o PulseEffects é pausado ou todos os "
-"aplicativos são desativados"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:372
-msgid "Cleaner log output (only visible on a command line)"
-msgstr "Saída de log mais limpa (visível apenas em uma linha de comando)"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:380
-msgid "Exciter ceiling parameter not working with user presets"
-msgstr ""
-"Parâmetro de teto do excitador não funciona com predefinições de usuário"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:388
-msgid ""
-"Removing and re-inserting a usb microphone multiple times no longer break "
-"PulseEffects"
-msgstr ""
-"Remover e reinserir um microfone usb várias vezes não interrompe mais o "
-"PulseEffects"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:396
-msgid "Delay Compensator plugin from Linux Studio Plugins"
-msgstr ""
-"Removing and re-inserting a usb microphone multiple times no longer break "
-"PulseEffects"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:397
-msgid "Pitch Shifting plugin from Rubber Band library"
-msgstr "Pitch Shifting plugin da biblioteca do Rubber Band"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:398
-msgid "New and better organized settings menu"
-msgstr "Menu de configurações novo e melhor organizado"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:402
-msgid "No longer forces the global applications switch to True in service mode"
-msgstr ""
-"Não força mais os aplicativos globais alternarem para True no modo de serviço"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:403
-msgid "Differing frequency values in band label and frequency menu"
-msgstr ""
-"Valores de frequência diferentes no rótulo de banda e no menu de frequência"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:404
-msgid ""
-"The test signal application now automatically switches to the default "
-"microphone"
-msgstr ""
-"O aplicativo de sinal de teste agora muda automaticamente para o microfone "
-"padrão"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:405
-msgid ""
-"Equal loudness test signal frequencies now match the equalizer default "
-"frequencies"
-msgstr ""
-"Freqüências de sinal de teste de intensidade igual agora correspondem às "
-"freqüências padrão do equalizador"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:413
-msgid "MultiSpread plugin from Calf Studio"
-msgstr "Plugin MultiSpread do Calf Studio"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:421
-msgid "Stereo Enhancer plugin from Calf Studio"
-msgstr "Plugin Stereo Enhancer do Calf Studio"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:425
-msgid ""
-"Visual indicators (check marks) are no longer shown for unavailable plugins"
-msgstr ""
-"Indicadores visuais (marcas de seleção) não são mais mostrados para plug-ins "
-"indisponíveis"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:426
-msgid "Volume meter now properly updates with applications like the game XCOM"
-msgstr ""
-"Medidor de volume agora atualiza corretamente com aplicativos como o jogo "
-"XCOM"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:434
-msgid "Maximizer plugin from ZamAudio"
-msgstr "MAximizador do ZamAudio"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:442
-msgid ""
-"Auto volume now works in service mode and it no longer resets the limiter "
-"gain"
-msgstr ""
-"O volume automático agora funciona no modo de serviço e não redefine mais o "
-"ganho do limitador"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:443
-msgid "The PulseEffects window now uses a little less screen space"
-msgstr "A janela PulseEffects agora usa um pouco menos espaço na tela"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:451
-msgid ""
-"Bug with pipeline being put out of playing state when running in service mode"
-msgstr ""
-"Bug com a pipeline sendo colocado fora do estado de execução ao executar no "
-"modo de serviço"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:452
-msgid "Performance issues with service mode and slower CPU's"
-msgstr "Problemas de desempenho com o modo de serviço e CPUs mais lentas"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:460
-msgid ""
-"Missing Calf Studio plugins no longer causes PulseEffects to crash; they are "
-"now optional"
-msgstr ""
-"Os plug-ins do Studio Calf ausentes não causam mais falhas no PulseEffects; "
-"eles agora são opcionais"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:468
-msgid "Bass Enhancer and Exciter plugins from Calf Studio"
-msgstr "Plug-ins para intensificador de graves e excitador da Calf Studio"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:469
-msgid ""
-"Option to autostart PulseEffects (service mode). This feature does not work "
-"with Flatpak."
-msgstr ""
-"Opção para iniciar automaticamente PulseEffects (modo de serviço). Esse "
-"recurso não funciona com o Flatpak."
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:473
-msgid ""
-"Plugin on/off switches are now located at their respective plugin sections"
-msgstr ""
-"Os interruptores on / off de plugins estão agora localizados nas suas "
-"respectivas secções de plugins"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:474
-msgid ""
-"Added a visual indicator (check mark) where the plugin on/off switches used "
-"to be"
-msgstr ""
-"Adicionado um indicador visual (marca de seleção) onde os interruptores on / "
-"off do plugin costumavam"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:478
-msgid ""
-"The global applications switch now properly resets to \"True\" when closing "
-"the window"
-msgstr ""
-"A troca de aplicativos globais agora é redefinida corretamente para \"True\" "
-"ao fechar a janela"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:486
-msgid "30 user configurable bands to the equalizer"
-msgstr "30 bandas configuráveis pelo usuário para o equalizador"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:487
-msgid "Global on/off switch, that enables effects for all applications"
-msgstr ""
-"Interruptor on / off global, que permite efeitos para todas as aplicações"
-
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:491
-msgid "Per app on/off switches have been moved to a more obvious location"
-msgstr ""
-"A chave que habilita/desabilita o applicativo foi movido para um local mais "
-"óbvio"
-
 #: data/com.github.wwmm.pulseeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Equalizador, Compressor e Outros Efeitos de Áudio"
@@ -1882,11 +1198,11 @@ msgstr "Carregar uma predefinição. Exemplo: pulseeffects -l musica"
 msgid "Presets: "
 msgstr "Predefinições: "
 
-#: src/application_ui.cpp:955 src/convolver_ui.cpp:269
+#: src/application_ui.cpp:965 src/convolver_ui.cpp:269
 msgid "Open"
 msgstr "Abrir"
 
-#: src/application_ui.cpp:955 src/convolver_ui.cpp:269
+#: src/application_ui.cpp:965 src/convolver_ui.cpp:269
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -1917,6 +1233,545 @@ msgstr "Falhou"
 #: src/convolver_ui.cpp:316
 msgid "Could Not Load The Impulse File"
 msgstr "Não Foi Possível Carregar o Arquivo com o Impulso"
+
+#~ msgid "Added:"
+#~ msgstr "Adicionado:"
+
+#~ msgid ""
+#~ "Latency introduced by the GStreamer pipeline is now displayed in the "
+#~ "headerbar"
+#~ msgstr ""
+#~ "A latência introduzida pelo pipeline do GStreamer agora é exibida na "
+#~ "barra de cabeçalho"
+
+#~ msgid "A crystalizer plugin, provided by PulseEffects"
+#~ msgstr "Um plugin de cristalizador, fornecido por PulseEffects"
+
+#~ msgid "Audio format and sampling rate is displayed in the header bar"
+#~ msgstr ""
+#~ "Formato de áudio e taxa de amostragem é exibido na barra de cabeçalho"
+
+#~ msgid "Improved convolver impulse response autogain calculation"
+#~ msgstr "Cálculo melhorado da resposta automática ao impulso do convolver"
+
+#~ msgid ""
+#~ "A warning when the convolver uses a preset that refers to a an impulse "
+#~ "file that does not exist"
+#~ msgstr ""
+#~ "Um aviso quando o convolver usa uma predefinição que se refere a um "
+#~ "arquivo de impulso que não existe"
+
+#~ msgid "No limit on the number of frames used from impulse response file"
+#~ msgstr ""
+#~ "Não há limite no número de quadros usados a partir do arquivo de resposta "
+#~ "ao impulso"
+
+#~ msgid "Improved Russian translations"
+#~ msgstr "Traduções russas aprimoradas"
+
+#~ msgid ""
+#~ "Optimizations to impulse response file handling, which avoids playback "
+#~ "stalls with large files"
+#~ msgstr ""
+#~ "Otimizações para lidar com arquivos de resposta por impulso, o que evita "
+#~ "bloqueios de reprodução com arquivos grandes"
+
+#~ msgid "Fixed:"
+#~ msgstr "Corrigido:"
+
+#~ msgid "Convolver is now optional at build time"
+#~ msgstr "O convolver agora é opcional no momento da compilação"
+
+#~ msgid "Potential crash when the impulse response file was too small"
+#~ msgstr ""
+#~ "Falha potencial quando o arquivo de resposta ao impulso era muito pequeno"
+
+#~ msgid "Memory leaks in the convolver interface"
+#~ msgstr "Vazamentos de memória na interface do convolver"
+
+#~ msgid "PulseEffects now uses the system zita-convolver library"
+#~ msgstr "PulseEffects agora usa a biblioteca zita-convolver do sistema"
+
+#~ msgid ""
+#~ "Crash caused by loading an impulse response file with more than 2 channels"
+#~ msgstr ""
+#~ "Falha causada pelo carregamento de um arquivo de resposta ao impulso com "
+#~ "mais de 2 canais"
+
+#~ msgid "Convolver plugin, provided by PulseEffects"
+#~ msgstr "Um plugin de convolver, fornecido por PulseEffects"
+
+#~ msgid ""
+#~ "Import presets dialog now has filters to show only presets files (.json)"
+#~ msgstr ""
+#~ "A caixa de diálogo Predefinições de importação agora possui filtros para "
+#~ "mostrar apenas arquivos de predefinições (.json)"
+
+#~ msgid "Filter for \".irs\" files to the impulse response import dialog"
+#~ msgstr ""
+#~ "Filtrar por arquivos \".irs\" para a caixa de diálogo de importação de "
+#~ "resposta ao impulso"
+
+#~ msgid "Ability to customize the convolver spectrum plot color"
+#~ msgstr ""
+#~ "Capacidade de personalizar a cor da plotagem do espectro do convolver"
+
+#~ msgid "Equalizer presets occasionally not being applied"
+#~ msgstr "Predefinições de equalizador não são aplicadas ocasionalmente"
+
+#~ msgid "Multiband gate plugin from Calf Studio"
+#~ msgstr "Gate multibandas do Calf Studio"
+
+#~ msgid "Stereo Tools plugin from Calf Studio"
+#~ msgstr "Ferramentas stereo do Calf Studio"
+
+#~ msgid ""
+#~ "The Presets menu is now labeled, using the name of the last selected "
+#~ "preset"
+#~ msgstr ""
+#~ "O menu Predefinições agora é rotulado, usando o nome da última "
+#~ "predefinição selecionada"
+
+#~ msgid "The Deesser can be used in both pipelines"
+#~ msgstr "O Deesser pode ser usado em ambos os pipelines"
+
+#~ msgid ""
+#~ "The so called \"perfect eq\" preset (no such thing as actually perfect)"
+#~ msgstr "O chamado \"eq perfeito\" predefinido (não é realmente perfeito)"
+
+#~ msgid "Deesser \"listen\" control was not working"
+#~ msgstr "Deesser \"ouvir\" controle não estava funcionando"
+
+#~ msgid "Changed:"
+#~ msgstr "Alterado:"
+
+#~ msgid ""
+#~ "Expander plugin has been replaced by Calf Gate from Calf Studio, due to "
+#~ "being proprietary"
+#~ msgstr ""
+#~ "Plugin Expander foi substituído por Calf Gate do Calf Studio, devido a "
+#~ "ser proprietário"
+
+#~ msgid ""
+#~ "Delay plugin has been replaced by Calf Sterio Tools from Calf Studio, due "
+#~ "to unpermissive licensing"
+#~ msgstr ""
+#~ "Plugin de atraso foi substituído por Calf Sterio Tools do Calf Studio, "
+#~ "devido ao licenciamento não permissivo"
+
+#~ msgid ""
+#~ "Panorama plugin, uses functionality which is also offered by Calf Stereo "
+#~ "Tools"
+#~ msgstr ""
+#~ "Plugin Panorama, usa a funcionalidade que também é oferecida pelas "
+#~ "ferramentas estéreo de bezerro"
+
+#~ msgid "Loudness plugin from MDA.LV2"
+#~ msgstr "Plugin de sonoridade da MDA.LV2"
+
+#~ msgid "Multiband compressor schema not being installed"
+#~ msgstr "Esquema do compressor multi bandas não estava sendo instalado"
+
+#~ msgid "GStreamer 10 bands equalizer presets: rock, soft, pop, etc"
+#~ msgstr ""
+#~ "Predefinições do equalizador de 10 bandas do GStreamer: rock, soft, pop, "
+#~ "etc."
+
+#~ msgid "Input gain and output gain controls for the equalizer"
+#~ msgstr "Controles de ganho de entrada e ganho de saída para o equalizador"
+
+#~ msgid "Calf Multiband compressor"
+#~ msgstr "Compressor Multibandas do Calf"
+
+#~ msgid ""
+#~ "The compressor and gate plugin knee parameter was always at its default "
+#~ "value"
+#~ msgstr ""
+#~ "O parâmetro knee do compressor e do plugin do gate estava sempre no valor "
+#~ "padrão"
+
+#~ msgid "Bug fixes (minor memory leaks)"
+#~ msgstr "Correções de bugs (vazamentos de memória menores)"
+
+#~ msgid "The presets menu list is scrollable again"
+#~ msgstr "A lista de menu de predefinições é rolável novamente"
+
+#~ msgid ""
+#~ "The limit parameter of the limiter plugin is no longer reset to default "
+#~ "upon loading a preset"
+#~ msgstr ""
+#~ "O parâmetro limite do plug-in do limitador não é mais redefinido para o "
+#~ "padrão ao carregar uma predefinição"
+
+#~ msgid "Users can change the height of the spectrum"
+#~ msgstr "Os usuários podem alterar a altura do espectro"
+
+#~ msgid ""
+#~ "More parameters are saved to the user preset: buffer, latency and "
+#~ "spectrum parameters. It is particularly useful to have the buffer value "
+#~ "saved to the preset because a few devices like bluetooth headphones need "
+#~ "values that are very different than the ones used in soundcards."
+#~ msgstr ""
+#~ "Mais parâmetros são salvos na predefinição do usuário: parâmetros de "
+#~ "buffer, latência e espectro. É particularmente útil ter o valor do buffer "
+#~ "salvo na predefinição porque alguns dispositivos, como os fones de ouvido "
+#~ "Bluetooth, precisam de valores muito diferentes dos usados em placas de "
+#~ "som."
+
+#~ msgid ""
+#~ "Crashes upon loading a preset not containing features present in newer "
+#~ "versions of PulseEffects"
+#~ msgstr ""
+#~ "Trava ao carregar uma predefinição que não contém recursos presentes em "
+#~ "versões mais recentes do PulseEffects"
+
+#~ msgid ""
+#~ "Spectrum not being enabled upon launching PulseEffects, while service "
+#~ "mode is running"
+#~ msgstr ""
+#~ "Spectrum não está habilitado ao iniciar o PulseEffects, enquanto o modo "
+#~ "de serviço está em execução"
+
+#~ msgid "Expander from Linux Studio Plugins (Proprietary)"
+#~ msgstr "Expansor dos Plug-ins do Linux Studio (Proprietários)"
+
+#~ msgid "Optimizations to memory usage"
+#~ msgstr "Otimizações de uso de memória"
+
+#~ msgid ""
+#~ "Note that the Expander plugin is proprietary and due to license issues "
+#~ "and Flathub policies it cannot be included in the Flatpak release."
+#~ msgstr ""
+#~ "Observe que o plug-in do Expander é proprietário e, devido a problemas de "
+#~ "licença e políticas do Flathub, não pode ser incluído na versão do "
+#~ "Flatpak."
+
+#~ msgid "Some system memory not being freed upon closing PulseEffects"
+#~ msgstr ""
+#~ "Alguma memória do sistema não está sendo liberada ao fechar o PulseEffects"
+
+#~ msgid ""
+#~ "Crashes when the pitch plugin was re-ordered, with the webrtc plugin "
+#~ "bellow it"
+#~ msgstr ""
+#~ "Falha quando o plug-in de pitch foi reordenado, com o plug-in webrtc "
+#~ "abaixo dele"
+
+#~ msgid ""
+#~ "Applications not being removed from PulseEffects after having been closed"
+#~ msgstr ""
+#~ "Aplicativos não sendo removidos do PulseEffects após terem sido fechados"
+
+#~ msgid "Optimizations to how plugins are enabled, disabled, or re-ordered"
+#~ msgstr ""
+#~ "Otimizações para como os plug-ins são ativados, desativados ou reordenados"
+
+#~ msgid "Changes:"
+#~ msgstr "Mudanças:"
+
+#~ msgid ""
+#~ "Default buffer values increased from 100 ms to 200 ms, due to distortions "
+#~ "with bluetooth headphones"
+#~ msgstr ""
+#~ "Valores de buffer padrão aumentados de 100 ms para 200 ms, devido a "
+#~ "distorções com fones de ouvido bluetooth"
+
+#~ msgid "Fixes:"
+#~ msgstr "Correções:"
+
+#~ msgid "Bug fixes (potential memory leaks)"
+#~ msgstr "Correções de bugs (possíveis vazamentos de memória)"
+
+#~ msgid "Spectrum widget being shown even when it is disabled"
+#~ msgstr "Widget de espectro sendo mostrado mesmo quando está desabilitado"
+
+#~ msgid "Excessive level meters readings"
+#~ msgstr "Leituras excessivas de medidores de nível"
+
+#~ msgid ""
+#~ "Hovering the mouse pointer over the spectrum, now updates the magnitude "
+#~ "and frequency values"
+#~ msgstr ""
+#~ "Passando o ponteiro do mouse sobre o espectro, agora atualiza os valores "
+#~ "de magnitude e frequência"
+
+#~ msgid ""
+#~ "PulseEffects no longer crashes upon enabling a plugin whose dependencies "
+#~ "are not installed"
+#~ msgstr ""
+#~ "PulseEffects não trava mais ao ativar um plug-in cujas dependências não "
+#~ "estão instaladas"
+
+#~ msgid ""
+#~ "Users can change the order that plugins are displayed, in the left menu "
+#~ "bar"
+#~ msgstr ""
+#~ "Os usuários podem alterar a ordem em que os plugins são exibidos, na "
+#~ "barra de menu à esquerda"
+
+#~ msgid "Users can select custom colors for the spectrum"
+#~ msgstr "Os usuários podem selecionar cores personalizadas para o espectro"
+
+#~ msgid ""
+#~ "In the equalizer menu, users can now change the number of equalizer bands"
+#~ msgstr ""
+#~ "No menu do equalizador, os usuários podem agora alterar o número de "
+#~ "bandas do equalizador"
+
+#~ msgid "Most of these new settings can be saved as user presets"
+#~ msgstr ""
+#~ "A maioria dessas novas configurações pode ser salva como predefinições do "
+#~ "usuário"
+
+#~ msgid ""
+#~ "Calf Filter plugin, which replaces the previous high pass and low pass "
+#~ "filters"
+#~ msgstr ""
+#~ "Plugin do filtro de panturrilha, que substitui os filtros passa alta e "
+#~ "passa baixa anteriores"
+
+#~ msgid ""
+#~ "The equalizer menu also contains a new facility to calculate the "
+#~ "corresponding frequencies of a graphic equalizer with the same number of "
+#~ "bands. Users with weak processors will benefit a lot from this setting as "
+#~ "the more bands you have the more CPU resources are use."
+#~ msgstr ""
+#~ "O menu equalizador também contém um novo recurso para calcular as "
+#~ "freqüências correspondentes de um equalizador gráfico com o mesmo número "
+#~ "de bandas. Os usuários com processadores fracos se beneficiarão muito "
+#~ "dessa configuração, pois quanto mais bandas você tiver, mais recursos da "
+#~ "CPU serão usados."
+
+#~ msgid ""
+#~ "Preset files uses a new format, which means presets must be re-created to "
+#~ "be compatible"
+#~ msgstr ""
+#~ "Os arquivos predefinidos usam um novo formato, o que significa que as "
+#~ "predefinições devem ser recriadas para serem compatíveis"
+
+#~ msgid "Removed the Calf Stereo Spread plugin"
+#~ msgstr "Removido o plug-in Estéreo de propagação de bezerro"
+
+#~ msgid ""
+#~ "Removed per app level meters, because they were the source of many "
+#~ "unfixable bugs"
+#~ msgstr ""
+#~ "Removido por medidores de nível de aplicativo, porque eles eram a fonte "
+#~ "de muitos bugs não corrigíveis"
+
+#~ msgid "Input and output limiter settings not working with presets"
+#~ msgstr ""
+#~ "Configurações do limitador de entrada e saída que não funcionam com "
+#~ "predefinições"
+
+#~ msgid "GStreamer WebRTC plugin"
+#~ msgstr "Plugin Webrtc do GStreamer"
+
+#~ msgid "Gate and Deesser plugins from Calf Studio"
+#~ msgstr "Plugins Gate e Deesser da Calf Studio"
+
+#~ msgid ""
+#~ "Calf Studio compressor plugin, which replaces the one from swh-plugins"
+#~ msgstr ""
+#~ "Plugin compressor compressor Calf Studio, que substitui o de swh-plugins"
+
+#~ msgid ""
+#~ "User selectable input and output devices for the current session (not "
+#~ "saved on exit)"
+#~ msgstr ""
+#~ "Dispositivos de entrada e saída selecionáveis pelo usuário para a sessão "
+#~ "atual (não salvos na saída)"
+
+#~ msgid "Level meter for recording applications"
+#~ msgstr "Medidor de nível para gravação de aplicativos"
+
+#~ msgid ""
+#~ "Buffer and latency of input and output effects can now be configured "
+#~ "independant of each other"
+#~ msgstr ""
+#~ "O buffer e a latência dos efeitos de entrada e saída agora podem ser "
+#~ "configurados independentemente um do outro"
+
+#~ msgid ""
+#~ "Application buffer and latency values displayed in the main window are "
+#~ "now updated every 5 seconds"
+#~ msgstr ""
+#~ "O buffer de aplicativo e os valores de latência exibidos na janela "
+#~ "principal são atualizados a cada 5 segundos"
+
+#~ msgid "The PulseEffects Flatpak can now import presets from files"
+#~ msgstr "O PulseEffects Flatpak agora pode importar presets de arquivos"
+
+#~ msgid ""
+#~ "No longer shows too many decimals when hovering the mouse pointer above "
+#~ "the spectrum"
+#~ msgstr ""
+#~ "Não mostra mais números decimais ao passar o ponteiro do mouse acima do "
+#~ "espectro"
+
+#~ msgid "CPU usage optimizations to service mode"
+#~ msgstr "Otimizações de uso da CPU para o modo de serviço"
+
+#~ msgid "Updated Czech and Italian translations"
+#~ msgstr "Traduções atualizadas de tcheco e italiano"
+
+#~ msgid "Presets can be loaded from the command line"
+#~ msgstr "Presets podem ser carregados a partir da linha de comando"
+
+#~ msgid "Presets can be imported using a presets menu"
+#~ msgstr ""
+#~ "As predefinições podem ser importadas usando um menu de predefinições"
+
+#~ msgid "Crossfeed plugin from bs2b library"
+#~ msgstr "Plugin Crossfeed da biblioteca bs2b"
+
+#~ msgid ""
+#~ "Optimize CPU usage when PulseEffects is paused or all applications are "
+#~ "switched off"
+#~ msgstr ""
+#~ "Otimizar o uso da CPU quando o PulseEffects é pausado ou todos os "
+#~ "aplicativos são desativados"
+
+#~ msgid "Cleaner log output (only visible on a command line)"
+#~ msgstr "Saída de log mais limpa (visível apenas em uma linha de comando)"
+
+#~ msgid "Exciter ceiling parameter not working with user presets"
+#~ msgstr ""
+#~ "Parâmetro de teto do excitador não funciona com predefinições de usuário"
+
+#~ msgid ""
+#~ "Removing and re-inserting a usb microphone multiple times no longer break "
+#~ "PulseEffects"
+#~ msgstr ""
+#~ "Remover e reinserir um microfone usb várias vezes não interrompe mais o "
+#~ "PulseEffects"
+
+#~ msgid "Delay Compensator plugin from Linux Studio Plugins"
+#~ msgstr ""
+#~ "Removing and re-inserting a usb microphone multiple times no longer break "
+#~ "PulseEffects"
+
+#~ msgid "Pitch Shifting plugin from Rubber Band library"
+#~ msgstr "Pitch Shifting plugin da biblioteca do Rubber Band"
+
+#~ msgid "New and better organized settings menu"
+#~ msgstr "Menu de configurações novo e melhor organizado"
+
+#~ msgid ""
+#~ "No longer forces the global applications switch to True in service mode"
+#~ msgstr ""
+#~ "Não força mais os aplicativos globais alternarem para True no modo de "
+#~ "serviço"
+
+#~ msgid "Differing frequency values in band label and frequency menu"
+#~ msgstr ""
+#~ "Valores de frequência diferentes no rótulo de banda e no menu de "
+#~ "frequência"
+
+#~ msgid ""
+#~ "The test signal application now automatically switches to the default "
+#~ "microphone"
+#~ msgstr ""
+#~ "O aplicativo de sinal de teste agora muda automaticamente para o "
+#~ "microfone padrão"
+
+#~ msgid ""
+#~ "Equal loudness test signal frequencies now match the equalizer default "
+#~ "frequencies"
+#~ msgstr ""
+#~ "Freqüências de sinal de teste de intensidade igual agora correspondem às "
+#~ "freqüências padrão do equalizador"
+
+#~ msgid "MultiSpread plugin from Calf Studio"
+#~ msgstr "Plugin MultiSpread do Calf Studio"
+
+#~ msgid "Stereo Enhancer plugin from Calf Studio"
+#~ msgstr "Plugin Stereo Enhancer do Calf Studio"
+
+#~ msgid ""
+#~ "Visual indicators (check marks) are no longer shown for unavailable "
+#~ "plugins"
+#~ msgstr ""
+#~ "Indicadores visuais (marcas de seleção) não são mais mostrados para plug-"
+#~ "ins indisponíveis"
+
+#~ msgid ""
+#~ "Volume meter now properly updates with applications like the game XCOM"
+#~ msgstr ""
+#~ "Medidor de volume agora atualiza corretamente com aplicativos como o jogo "
+#~ "XCOM"
+
+#~ msgid "Maximizer plugin from ZamAudio"
+#~ msgstr "MAximizador do ZamAudio"
+
+#~ msgid ""
+#~ "Auto volume now works in service mode and it no longer resets the limiter "
+#~ "gain"
+#~ msgstr ""
+#~ "O volume automático agora funciona no modo de serviço e não redefine mais "
+#~ "o ganho do limitador"
+
+#~ msgid "The PulseEffects window now uses a little less screen space"
+#~ msgstr "A janela PulseEffects agora usa um pouco menos espaço na tela"
+
+#~ msgid ""
+#~ "Bug with pipeline being put out of playing state when running in service "
+#~ "mode"
+#~ msgstr ""
+#~ "Bug com a pipeline sendo colocado fora do estado de execução ao executar "
+#~ "no modo de serviço"
+
+#~ msgid "Performance issues with service mode and slower CPU's"
+#~ msgstr "Problemas de desempenho com o modo de serviço e CPUs mais lentas"
+
+#~ msgid ""
+#~ "Missing Calf Studio plugins no longer causes PulseEffects to crash; they "
+#~ "are now optional"
+#~ msgstr ""
+#~ "Os plug-ins do Studio Calf ausentes não causam mais falhas no "
+#~ "PulseEffects; eles agora são opcionais"
+
+#~ msgid "Bass Enhancer and Exciter plugins from Calf Studio"
+#~ msgstr "Plug-ins para intensificador de graves e excitador da Calf Studio"
+
+#~ msgid ""
+#~ "Option to autostart PulseEffects (service mode). This feature does not "
+#~ "work with Flatpak."
+#~ msgstr ""
+#~ "Opção para iniciar automaticamente PulseEffects (modo de serviço). Esse "
+#~ "recurso não funciona com o Flatpak."
+
+#~ msgid ""
+#~ "Plugin on/off switches are now located at their respective plugin sections"
+#~ msgstr ""
+#~ "Os interruptores on / off de plugins estão agora localizados nas suas "
+#~ "respectivas secções de plugins"
+
+#~ msgid ""
+#~ "Added a visual indicator (check mark) where the plugin on/off switches "
+#~ "used to be"
+#~ msgstr ""
+#~ "Adicionado um indicador visual (marca de seleção) onde os interruptores "
+#~ "on / off do plugin costumavam"
+
+#~ msgid ""
+#~ "The global applications switch now properly resets to \"True\" when "
+#~ "closing the window"
+#~ msgstr ""
+#~ "A troca de aplicativos globais agora é redefinida corretamente para \"True"
+#~ "\" ao fechar a janela"
+
+#~ msgid "30 user configurable bands to the equalizer"
+#~ msgstr "30 bandas configuráveis pelo usuário para o equalizador"
+
+#~ msgid "Global on/off switch, that enables effects for all applications"
+#~ msgstr ""
+#~ "Interruptor on / off global, que permite efeitos para todas as aplicações"
+
+#~ msgid "Per app on/off switches have been moved to a more obvious location"
+#~ msgstr ""
+#~ "A chave que habilita/desabilita o applicativo foi movido para um local "
+#~ "mais óbvio"
 
 #, fuzzy
 #~ msgid "0"
