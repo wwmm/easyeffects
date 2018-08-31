@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-29 22:21-0300\n"
+"POT-Creation-Date: 2018-08-30 23:20-0300\n"
 "PO-Revision-Date: 2017-06-11 22:19+0200\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: \n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "Create Preset"
 msgstr "Uložiť predvoľbu"
 
-#: data/ui/application.glade:91 src/application_ui.cpp:964
+#: data/ui/application.glade:91 src/application_ui.cpp:952
 #, fuzzy
 msgid "Import Presets"
 msgstr "Načítať predvoľbu"
@@ -57,7 +57,7 @@ msgstr ""
 #: data/ui/application.glade:339 data/ui/compressor.glade:205
 #: data/ui/filter.glade:203 data/ui/equalizer.glade:280
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
-#: src/application_ui.cpp:969 src/application_ui.cpp:1044
+#: src/application_ui.cpp:957 src/application_ui.cpp:1032
 msgid "Presets"
 msgstr "Predvoľby"
 
@@ -1228,28 +1228,46 @@ msgstr ""
 msgid "pulseeffects"
 msgstr ""
 
-#: src/application.cpp:18
+#: src/application.cpp:20
 msgid "Quit PulseEffects. Useful when running in service mode."
 msgstr ""
 
-#: src/application.cpp:21
+#: src/application.cpp:23
 msgid "Show available presets."
 msgstr ""
 
-#: src/application.cpp:25
+#: src/application.cpp:27
 msgid "Load a preset. Example: pulseeffects -l music"
 msgstr ""
 
-#: src/application.cpp:49
+#: src/application.cpp:51
 #, fuzzy
 msgid "Presets: "
 msgstr "Predvoľby"
 
-#: src/application_ui.cpp:965 src/convolver_ui.cpp:269
+#: src/application.cpp:209
+msgid "PulseEffects was updated"
+msgstr ""
+
+#: src/application.cpp:212
+msgid ""
+"It is recommended to reset its configuration after an update. Do you want to "
+"do this?"
+msgstr ""
+
+#: src/application.cpp:215
+msgid "Yes"
+msgstr ""
+
+#: src/application.cpp:216
+msgid "No"
+msgstr ""
+
+#: src/application_ui.cpp:953 src/convolver_ui.cpp:269
 msgid "Open"
 msgstr ""
 
-#: src/application_ui.cpp:965 src/convolver_ui.cpp:269
+#: src/application_ui.cpp:953 src/convolver_ui.cpp:269
 msgid "Cancel"
 msgstr ""
 

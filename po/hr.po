@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-29 22:21-0300\n"
+"POT-Creation-Date: 2018-08-30 23:20-0300\n"
 "PO-Revision-Date: 2018-05-27 00:55+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -30,7 +30,7 @@ msgstr "Naziv"
 msgid "Create Preset"
 msgstr "Izradi predložak"
 
-#: data/ui/application.glade:91 src/application_ui.cpp:964
+#: data/ui/application.glade:91 src/application_ui.cpp:952
 msgid "Import Presets"
 msgstr "Učitaj predloške"
 
@@ -56,7 +56,7 @@ msgstr ""
 #: data/ui/application.glade:339 data/ui/compressor.glade:205
 #: data/ui/filter.glade:203 data/ui/equalizer.glade:280
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
-#: src/application_ui.cpp:969 src/application_ui.cpp:1044
+#: src/application_ui.cpp:957 src/application_ui.cpp:1032
 msgid "Presets"
 msgstr "Predlošci"
 
@@ -1233,28 +1233,47 @@ msgstr "graničnik;kompresor;odjek;ekvalizator;automatska glasnoća zvuka;"
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
-#: src/application.cpp:18
+#: src/application.cpp:20
 msgid "Quit PulseEffects. Useful when running in service mode."
 msgstr "Zatvori PulseEffects. Korisno pri upotrebi u načinu servisa."
 
-#: src/application.cpp:21
+#: src/application.cpp:23
 msgid "Show available presets."
 msgstr "Prikaži dostupne predloške."
 
-#: src/application.cpp:25
+#: src/application.cpp:27
 msgid "Load a preset. Example: pulseeffects -l music"
 msgstr "Učitaj predložak. Primjer: pulseeffects -l music"
 
-#: src/application.cpp:49
+#: src/application.cpp:51
 #, fuzzy
 msgid "Presets: "
 msgstr "Predlošci"
 
-#: src/application_ui.cpp:965 src/convolver_ui.cpp:269
+#: src/application.cpp:209
+#, fuzzy
+msgid "PulseEffects was updated"
+msgstr "Pulse Efekti"
+
+#: src/application.cpp:212
+msgid ""
+"It is recommended to reset its configuration after an update. Do you want to "
+"do this?"
+msgstr ""
+
+#: src/application.cpp:215
+msgid "Yes"
+msgstr ""
+
+#: src/application.cpp:216
+msgid "No"
+msgstr ""
+
+#: src/application_ui.cpp:953 src/convolver_ui.cpp:269
 msgid "Open"
 msgstr "Otvori"
 
-#: src/application_ui.cpp:965 src/convolver_ui.cpp:269
+#: src/application_ui.cpp:953 src/convolver_ui.cpp:269
 msgid "Cancel"
 msgstr "Poništi"
 

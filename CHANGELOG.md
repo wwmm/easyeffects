@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [4.3.3]
+### Added
+- A system notification (gnotification) is show to the user asking if he/she
+wants to reset PulseEffects settings after an update.
+
 ## [4.3.2]
 ### Added
 - Settings are automatically reset after an upgrade. If you want to know the

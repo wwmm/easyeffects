@@ -32,7 +32,11 @@ class Application : public Gtk::Application {
    private:
     std::string log_tag = "application: ";
 
-    bool running_as_service;
+    bool running_as_service = false;
+
+    void create_actions();
+
+    void check_version();
 
     void create_appmenu();
 };

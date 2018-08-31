@@ -1,6 +1,7 @@
 #include <glibmm.h>
 #include <glibmm/i18n.h>
 #include <gtkmm/dialog.h>
+#include <gtkmm/messagedialog.h>
 #include "application.hpp"
 #include "application_ui.hpp"
 #include "config.h"
@@ -66,26 +67,15 @@ int Application::on_command_line(
 void Application::on_startup() {
     Gtk::Application::on_startup();
 
-    running_as_service = false;
-
-    create_appmenu();
-
     settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
 
-    std::string saved_version = settings->get_string("version");
-
-    if (saved_version != std::string(VERSION)) {
-        util::debug(log_tag +
-                    "PE was upgraded or downgraded. Resetting configurations ");
-
-        settings->reset("");
-
-        saved_version = std::string(VERSION);
-
-        settings->set_string("version", saved_version);
+    if (get_flags() & Gio::ApplicationFlags::APPLICATION_IS_SERVICE) {
+        running_as_service = true;
     }
 
-    util::debug(log_tag + "PE version: " + saved_version);
+    create_actions();
+    check_version();
+    create_appmenu();
 
     pm = std::make_unique<PulseManager>();
     sie = std::make_unique<SinkInputEffects>(pm.get());
@@ -114,9 +104,7 @@ void Application::on_startup() {
         pm->blacklist_out = settings->get_string_array("blacklist-out");
     });
 
-    if (get_flags() & Gio::ApplicationFlags::APPLICATION_IS_SERVICE) {
-        running_as_service = true;
-
+    if (running_as_service) {
         pm->find_sink_inputs();
         pm->find_source_outputs();
         pm->find_sinks();
@@ -145,7 +133,7 @@ void Application::on_activate() {
     }
 }
 
-void Application::create_appmenu() {
+void Application::create_actions() {
     add_action("about", [&]() {
         auto builder = Gtk::Builder::create_from_resource(
             "/com/github/wwmm/pulseeffects/about.glade");
@@ -197,6 +185,41 @@ void Application::create_appmenu() {
         }
     });
 
+    add_action("resetyes", [&] {
+        util::debug(log_tag + "Resetting configurations");
+
+        settings->reset("");
+
+        settings->set_string("version", std::string(VERSION));
+
+        withdraw_notification("reset");
+    });
+
+    add_action("resetno", [&] {
+        settings->set_string("version", std::string(VERSION));
+
+        withdraw_notification("reset");
+    });
+}
+
+void Application::check_version() {
+    util::debug(log_tag + "PE version: " + std::string(VERSION));
+
+    if (settings->get_string("version") != std::string(VERSION)) {
+        auto note = Gio::Notification::create(_("PulseEffects was updated"));
+
+        note->set_body(
+            _("It is recommended to reset its configuration after an "
+              "update. Do you want to do this?"));
+
+        note->add_button(_("Yes"), "app.resetyes");
+        note->add_button(_("No"), "app.resetno");
+
+        send_notification("reset", note);
+    }
+}
+
+void Application::create_appmenu() {
     auto menu = Gio::Menu::create();
 
     menu->append("About", "app.about");
