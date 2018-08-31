@@ -333,6 +333,19 @@ void SinkInputEffects::add_plugins_to_pipeline() {
         g_settings_reset(sie_settings, "plugins");
     }
 
+    for (auto v : plugins_order) {
+        // checking if the plugin exists. If not we reset the list to default
+
+        if (std::find(default_order.begin(), default_order.end(), v) ==
+            default_order.end()) {
+            plugins_order = default_order;
+
+            g_settings_reset(sie_settings, "plugins");
+
+            break;
+        }
+    }
+
     // adding plugins to effects_bin
 
     for (auto& p : plugins) {
