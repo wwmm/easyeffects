@@ -8,5 +8,7 @@ Exec=pulseeffects
 # Translators: This is an icon name, don't translate!
 Icon=pulseeffects
 StartupNotify=true
+DBusActivatable=true
+X-GNOME-UsesNotifications=true
 Terminal=false
 Type=Application

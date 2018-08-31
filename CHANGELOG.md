@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### Added
+- PulseEffects is now dbus activatable.
 - A check was added to verify if the current plugin list has any invalid
 plugin name. If there is the list is reset to its default value.
 
