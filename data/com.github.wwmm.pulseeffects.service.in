@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=com.github.wwmm.pulseeffects
+Exec=@bindir@/pulseeffects --gapplication-service
