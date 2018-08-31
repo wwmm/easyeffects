@@ -1220,23 +1220,24 @@ msgid "Presets: "
 msgstr "Предустановки: "
 
 #: src/application.cpp:209
-#, fuzzy
 msgid "PulseEffects was updated"
-msgstr "PulseEffects"
+msgstr "Программа PulseEffects была обновлена"
 
 #: src/application.cpp:212
 msgid ""
 "It is recommended to reset its configuration after an update. Do you want to "
 "do this?"
 msgstr ""
+"После обновления рекомендуется сбросить настройки PulseEffects. Хотите ли вы "
+"это сделать?"
 
 #: src/application.cpp:215
 msgid "Yes"
-msgstr ""
+msgstr "Да"
 
 #: src/application.cpp:216
 msgid "No"
-msgstr ""
+msgstr "Нет"
 
 #: src/application_ui.cpp:953 src/convolver_ui.cpp:269
 msgid "Open"

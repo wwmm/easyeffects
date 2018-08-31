@@ -1,3 +1,9 @@
+pulseeffects (4.3.3-1) unstable; urgency=low
+
+  * Version 4.3.3 upstream
+  * Translated new language strings to Russian
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Fri, 31 Aug 2018 16:32:00 +0300
+ 
 pulseeffects (4.3.2-2) unstable; urgency=low
 
   * Version 4.3.2 upstream
