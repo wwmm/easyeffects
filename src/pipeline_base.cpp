@@ -398,6 +398,13 @@ void PipelineBase::get_latency() {
 }
 
 void PipelineBase::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
+    for (auto a : apps_list) {
+        if (a->index == app_info->index) {
+            // do not add the same app two times in the interface
+            return;
+        }
+    }
+
     apps_list.push_back(move(app_info));
 
     update_pipeline_state();

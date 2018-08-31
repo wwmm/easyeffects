@@ -46,6 +46,13 @@ EffectsBaseUi::~EffectsBaseUi() {
 }
 
 void EffectsBaseUi::on_app_added(std::shared_ptr<AppInfo> app_info) {
+    for (auto a : apps_list) {
+        if (a->app_info->index == app_info->index) {
+            // do not add the same app two times in the interface
+            return;
+        }
+    }
+
     auto builder = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/ui/app_info.glade");
 
