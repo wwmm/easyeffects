@@ -40,6 +40,10 @@ int Application::on_command_line(
     auto options = command_line->get_options_dict();
 
     if (options->contains("quit")) {
+        for (auto w : get_windows()) {
+            w->hide();
+        }
+
         quit();
     } else if (options->contains("presets")) {
         std::string list;
