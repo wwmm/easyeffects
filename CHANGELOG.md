@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 
+## [4.3.4]
 ### Added
 - PulseEffects is now dbus activatable. Besides improving user experience with
 gnotifications this also brings the benefit of making the first contact of the
@@ -12,7 +13,7 @@ dbus activatable PE will be launched as service and show its window when the
 user clicks in the PE icon. Effects will remain when the window is closed. But
 note that enabling "Start Service at Login" is still necessary for autostarting
 PE in the next login.
-- A check was added to verify if the current plugin list has any invalid
+- A verification was added to verify if the current plugin list has any invalid
 plugin name. If there is the list is reset to its default value.
 
 ## [4.3.3]
