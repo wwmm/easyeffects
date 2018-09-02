@@ -83,6 +83,10 @@ ppa(){
 	popd
 }
 
+git_push(){
+	git commit -m "autobuild: ${new_version}" && git push
+}
+
 case "$1" in
 	nv|nw|new_version )
 		new_version
@@ -93,6 +97,7 @@ case "$1" in
 	full )
 		new_version
 		ppa
+		git_push
 	;;
 	* )
 		echo_help
