@@ -19,7 +19,7 @@ fi
 dir0="$(pwd)"
 
 echo_help(){
-	echo "Usage: nv|nw|new_version , ppa, full"
+	echo "Usage: nv|nw|new_version, ppa, lc|local_test, full"
 }
 
 git_sync_upstream(){
@@ -87,6 +87,16 @@ git_push(){
 	git commit -m "autobuild: ${new_version}" && git push
 }
 
+local_test(){
+	dpkg-buildpackage
+	sudo apt install ../*${new_version}*.deb -y
+	debian/rules clean
+	if pulseeffects
+		then return 0
+		else return 1
+	fi
+}
+
 case "$1" in
 	nv|nw|new_version )
 		new_version
@@ -96,10 +106,17 @@ case "$1" in
 	;;
 	full )
 		new_version
-		ppa
-		git_push
+		if local_test; then
+			ppa
+			git_push
+		fi
+	;;
+	lc|local_test )
+		new_version
+		local_test
 	;;
 	* )
+		echo "Current dir is: $(pwd) ."
 		echo_help
 	;;
 esac
