@@ -22,11 +22,11 @@ do
 	new_version="${old_version}~${i}1"
 	sed -i -re "s/${old_version}/${new_version}/g" ./debian/changelog
 	sed -i -re "1s/unstable/$i/" ./debian/changelog
-	rm -fv ./debian/source/format
+	#rm -fv ./debian/source/format
 	# -I to exclude .git; -d to allow building .changes file without build dependencies installed
 	dpkg-buildpackage -I -S -sa -d
 	sed  -i -re "1s/.*/${old_header}/" ./debian/changelog
-	echo "$old_format_source" >./debian/source/format
+	#echo "$old_format_source" >./debian/source/format
 	cd ..
 	
 	# change PPA names to yours, you may leave only one PPA; I upload hw-probe to 2 different PPAs at the same time

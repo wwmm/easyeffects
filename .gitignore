@@ -19,6 +19,7 @@ obj-*-linux-gnu
 # exclude debian building logs and other junk
 debian/*
 !debian/changelog
+!debian/changelog.tpl
 !debian/compat
 !debian/control
 !debian/copyright
