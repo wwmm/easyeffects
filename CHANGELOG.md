@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 
+## [4.3.5]
 ### Added
 - More space at the right of the up/down buttons used to change effects order.
 In a few systems GTK is configured to always show the scrollbar. In this case
