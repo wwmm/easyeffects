@@ -25,6 +25,9 @@ Application::Application()
     add_main_option_entry(Gio::Application::OPTION_TYPE_STRING, "load-preset",
                           'l',
                           _("Load a preset. Example: pulseeffects -l music"));
+
+    add_main_option_entry(Gio::Application::OPTION_TYPE_BOOL, "reset", 'r',
+                          _("Reset PulseEffects."));
 }
 
 Application::~Application() {
@@ -61,6 +64,12 @@ int Application::on_command_line(
         } else {
             presets_manager->load(name);
         }
+    } else if (options->contains("reset")) {
+        settings->reset("");
+
+        settings->set_string("version", std::string(VERSION));
+
+        util::info(log_tag + "All settings were reset");
     } else {
         activate();
     }
