@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Added
+- More space at the right of the up/down buttons used to change effects order.
+In a few systems GTK is configured to always show the scrollbar. In this case
+the down button would be partially hidden.
+
 ## [4.3.4]
 ### Added
 - PulseEffects is now dbus activatable. Besides improving user experience with
