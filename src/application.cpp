@@ -79,7 +79,6 @@ void Application::on_startup() {
 
     create_actions();
     check_version();
-    create_appmenu();
 
     pm = std::make_unique<PulseManager>();
     sie = std::make_unique<SinkInputEffects>(pm.get());
@@ -166,16 +165,6 @@ void Application::create_actions() {
         dialog->present();
     });
 
-    add_action("quit", [&] {
-        auto windows = get_windows();
-
-        for (auto w : windows) {
-            w->hide();
-        }
-
-        quit();
-    });
-
     add_action("help", [&] {
         auto window = get_active_window();
 
@@ -204,6 +193,8 @@ void Application::create_actions() {
 
         withdraw_notification("reset");
     });
+
+    set_accel_for_action("app.help", "F1");
 }
 
 void Application::check_version() {
@@ -221,17 +212,4 @@ void Application::check_version() {
 
         send_notification("reset", note);
     }
-}
-
-void Application::create_appmenu() {
-    auto menu = Gio::Menu::create();
-
-    menu->append("About", "app.about");
-    menu->append("Help", "app.help");
-    menu->append("Quit", "app.quit");
-
-    set_app_menu(menu);
-
-    set_accel_for_action("app.help", "F1");
-    set_accel_for_action("app.quit", "<Ctrl>Q");
 }

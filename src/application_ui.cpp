@@ -110,6 +110,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     builder->get_widget("blacklist_out_listbox", blacklist_out_listbox);
     builder->get_widget("blacklist_in_name", blacklist_in_name);
     builder->get_widget("blacklist_out_name", blacklist_out_name);
+    builder->get_widget("about_button", about_button);
 
     get_object(builder, "buffer_in", buffer_in);
     get_object(builder, "buffer_out", buffer_out);
@@ -286,6 +287,11 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
     help_button->signal_clicked().connect(
         [=]() { app->activate_action("help"); });
+
+    // about button
+
+    about_button->signal_clicked().connect(
+        [=]() { app->activate_action("about"); });
 
     /*sink inputs interface*/
 
