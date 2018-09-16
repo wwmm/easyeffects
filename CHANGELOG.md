@@ -7,6 +7,11 @@
 In a few systems GTK is configured to always show the scrollbar. In this case
 the down button would be partially hidden.
 
+### Removed
+- The app menu with the entries quit, about and help was removed. This menu was
+deprecated by GTK developers so we are just following their guideline. The about
+button can be found in the general section of the main menu (hamburger).
+
 ## [4.3.4]
 ### Added
 - PulseEffects is now dbus activatable. Besides improving user experience with
