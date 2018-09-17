@@ -2,6 +2,18 @@
 
 ## [Unreleased]
 
+## [4.3.5]
+### Added
+- More space at the right of the up/down buttons used to change effects order.
+In a few systems GTK is configured to always show the scrollbar. In this case
+the down button would be partially hidden.
+- PulseEffects can be reset from the command line "pulseeffects -r".
+
+### Removed
+- The app menu with the entries quit, about and help was removed. This menu was
+deprecated by GTK developers so we are just following their guideline. The about
+button can be found in the general section of the main menu (hamburger).
+
 ## [4.3.4]
 ### Added
 - PulseEffects is now dbus activatable. Besides improving user experience with

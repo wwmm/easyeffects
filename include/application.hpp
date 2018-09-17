@@ -37,8 +37,6 @@ class Application : public Gtk::Application {
     void create_actions();
 
     void check_version();
-
-    void create_appmenu();
 };
 
 #endif

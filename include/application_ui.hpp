@@ -49,7 +49,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
     Gtk::Box* spectrum_box;
     Gtk::Button *reset_settings, *add_preset, *import_preset,
         *calibration_button, *help_button, *add_blacklist_in,
-        *add_blacklist_out;
+        *add_blacklist_out, *about_button;
     Gtk::Stack* stack;
     Gtk::ListBox *presets_listbox, *blacklist_in_listbox,
         *blacklist_out_listbox;

@@ -25,6 +25,9 @@ Application::Application()
     add_main_option_entry(Gio::Application::OPTION_TYPE_STRING, "load-preset",
                           'l',
                           _("Load a preset. Example: pulseeffects -l music"));
+
+    add_main_option_entry(Gio::Application::OPTION_TYPE_BOOL, "reset", 'r',
+                          _("Reset PulseEffects."));
 }
 
 Application::~Application() {
@@ -61,6 +64,12 @@ int Application::on_command_line(
         } else {
             presets_manager->load(name);
         }
+    } else if (options->contains("reset")) {
+        settings->reset("");
+
+        settings->set_string("version", std::string(VERSION));
+
+        util::info(log_tag + "All settings were reset");
     } else {
         activate();
     }
@@ -79,7 +88,6 @@ void Application::on_startup() {
 
     create_actions();
     check_version();
-    create_appmenu();
 
     pm = std::make_unique<PulseManager>();
     sie = std::make_unique<SinkInputEffects>(pm.get());
@@ -166,16 +174,6 @@ void Application::create_actions() {
         dialog->present();
     });
 
-    add_action("quit", [&] {
-        auto windows = get_windows();
-
-        for (auto w : windows) {
-            w->hide();
-        }
-
-        quit();
-    });
-
     add_action("help", [&] {
         auto window = get_active_window();
 
@@ -204,6 +202,8 @@ void Application::create_actions() {
 
         withdraw_notification("reset");
     });
+
+    set_accel_for_action("app.help", "F1");
 }
 
 void Application::check_version() {
@@ -221,17 +221,4 @@ void Application::check_version() {
 
         send_notification("reset", note);
     }
-}
-
-void Application::create_appmenu() {
-    auto menu = Gio::Menu::create();
-
-    menu->append("About", "app.about");
-    menu->append("Help", "app.help");
-    menu->append("Quit", "app.quit");
-
-    set_app_menu(menu);
-
-    set_accel_for_action("app.help", "F1");
-    set_accel_for_action("app.quit", "<Ctrl>Q");
 }
