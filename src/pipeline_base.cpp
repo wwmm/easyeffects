@@ -23,8 +23,6 @@ void on_message_error(const GstBus* gst_bus,
     util::debug(pb->log_tag + debug);
 
     if (err->message == std::string("Internal data stream error.")) {
-        pb->set_null_pipeline();
-
         // As far as I know only a bad latency or buffer value causes this error
         // in PE pipeline
 
@@ -154,7 +152,6 @@ void on_buffer_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
         /*when we are playing it is necessary to reset the pipeline for the new
          * value to take effect
          */
-        pb->set_null_pipeline();
         pb->update_pipeline_state();
     }
 }
@@ -164,7 +161,6 @@ void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
         /*when we are playing it is necessary to reset the pipeline for the new
          * value to take effect
          */
-        pb->set_null_pipeline();
         pb->update_pipeline_state();
     }
 }
@@ -249,8 +245,6 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
 }
 
 PipelineBase::~PipelineBase() {
-    set_null_pipeline();
-
     // avoinding memory leak. If the spectrum is not in a bin we have to unref
     // it
 
@@ -312,8 +306,6 @@ void PipelineBase::set_source_monitor_name(std::string name) {
 
     if (name != current_device) {
         if (playing) {
-            set_null_pipeline();
-
             g_object_set(source, "device", name.c_str(), nullptr);
 
             gst_element_set_state(pipeline, GST_STATE_PLAYING);
@@ -340,25 +332,6 @@ void PipelineBase::set_pulseaudio_props(std::string props) {
     gst_structure_free(s);
 }
 
-void PipelineBase::set_null_pipeline() {
-    gst_element_set_state(pipeline, GST_STATE_NULL);
-
-    GstState state, pending;
-
-    gst_element_get_state(pipeline, &state, &pending, state_check_timeout);
-
-    /*on_message_state is not called when going to null. I don't know why.
-     *so we have to update the variable manually after setting to null.
-     */
-
-    if (state == GST_STATE_NULL) {
-        playing = false;
-    }
-
-    util::debug(log_tag + gst_element_state_get_name(state) + " -> " +
-                gst_element_state_get_name(pending));
-}
-
 void PipelineBase::update_pipeline_state() {
     bool wants_to_play = false;
 
@@ -370,10 +343,8 @@ void PipelineBase::update_pipeline_state() {
         }
     }
 
-    if (!playing && wants_to_play) {
+    if (wants_to_play) {
         gst_element_set_state(pipeline, GST_STATE_PLAYING);
-    } else if (playing && !wants_to_play) {
-        set_null_pipeline();
     }
 }
 
