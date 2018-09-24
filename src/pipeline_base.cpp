@@ -150,6 +150,19 @@ void on_spectrum_n_points_changed(GSettings* settings,
     }
 }
 
+void on_src_type_changed(GstElement* typefind,
+                         guint probability,
+                         GstCaps* caps,
+                         PipelineBase* pb) {
+    GstStructure* structure = gst_caps_get_structure(caps, 0);
+
+    int rate;
+
+    gst_structure_get_int(structure, "rate", &rate);
+
+    std::cout << rate << std::endl;
+}
+
 void on_buffer_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
     if (pb->playing) {
         /*when we are playing it is necessary to reset the pipeline for the new
@@ -203,6 +216,7 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
 
     auto capsfilter = gst_element_factory_make("capsfilter", nullptr);
     auto queue_src = gst_element_factory_make("queue", nullptr);
+    auto src_type = gst_element_factory_make("typefind", nullptr);
 
     init_spectrum_bin();
     init_effects_bin();
@@ -214,11 +228,11 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
 
     // building the pipeline
 
-    gst_bin_add_many(GST_BIN(pipeline), source, queue_src, capsfilter, adapter,
-                     effects_bin, spectrum_bin, sink, nullptr);
+    gst_bin_add_many(GST_BIN(pipeline), source, queue_src, capsfilter, src_type,
+                     adapter, effects_bin, spectrum_bin, sink, nullptr);
 
-    gst_element_link_many(source, queue_src, capsfilter, adapter, effects_bin,
-                          spectrum_bin, sink, nullptr);
+    gst_element_link_many(source, queue_src, capsfilter, src_type, adapter,
+                          effects_bin, spectrum_bin, sink, nullptr);
 
     // initializing properties
 
@@ -241,6 +255,8 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     g_object_set(spectrum, "bands", spectrum_nbands, nullptr);
     g_object_set(spectrum, "threshold", spectrum_threshold, nullptr);
 
+    g_signal_connect(src_type, "have-type", G_CALLBACK(on_src_type_changed),
+                     this);
     g_signal_connect(source, "notify::buffer-time",
                      G_CALLBACK(on_buffer_changed), this);
     g_signal_connect(source, "notify::latency-time",
