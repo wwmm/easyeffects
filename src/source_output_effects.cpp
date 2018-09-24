@@ -124,7 +124,6 @@ void on_blocksize_changed(GSettings* settings,
                           gchar* key,
                           SourceOutputEffects* l) {
     if (l->playing) {
-        l->set_null_pipeline();
         l->update_pipeline_state();
     }
 }
