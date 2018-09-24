@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Added
+- When no application is playing audio our GStreamer pipeline is put in the
+paused state instead of the null state. This should remove undesired choppy
+sounds whenever we restart the audio processing.
+
 ## [4.3.5]
 ### Added
 - More space at the right of the up/down buttons used to change effects order.

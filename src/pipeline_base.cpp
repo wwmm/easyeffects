@@ -22,17 +22,18 @@ void on_message_error(const GstBus* gst_bus,
     util::critical(pb->log_tag + err->message);
     util::debug(pb->log_tag + debug);
 
-    if (err->message == std::string("Internal data stream error.")) {
-        pb->set_null_pipeline();
-
-        // As far as I know only a bad latency or buffer value causes this error
-        // in PE pipeline
-
-        g_object_set(pb->source, "buffer-time", (int)200000, nullptr);
-        g_object_set(pb->source, "latency-time", (int)10000, nullptr);
-
-        pb->update_pipeline_state();
-    }
+    // if (err->message == std::string("Internal data stream error.")) {
+    //     pb->set_null_pipeline();
+    //
+    //     // As far as I know only a bad latency or buffer value causes this
+    //     error
+    //     // in PE pipeline
+    //
+    //     g_object_set(pb->source, "buffer-time", (int)200000, nullptr);
+    //     g_object_set(pb->source, "latency-time", (int)10000, nullptr);
+    //
+    //     pb->update_pipeline_state();
+    // }
 
     g_error_free(err);
     g_free(debug);
@@ -373,7 +374,13 @@ void PipelineBase::update_pipeline_state() {
     if (!playing && wants_to_play) {
         gst_element_set_state(pipeline, GST_STATE_PLAYING);
     } else if (playing && !wants_to_play) {
-        set_null_pipeline();
+        gst_element_send_event(GST_ELEMENT(pipeline),
+                               gst_event_new_flush_start());
+
+        gst_element_set_state(pipeline, GST_STATE_PAUSED);
+
+        gst_element_send_event(GST_ELEMENT(pipeline),
+                               gst_event_new_flush_stop(true));
     }
 }
 
