@@ -137,8 +137,8 @@ void on_plugins_order_changed(GSettings* settings,
     if (update) {
         auto srcpad = gst_element_get_static_pad(l->identity_in, "src");
 
-        gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
-                          on_pad_idle, l, nullptr);
+        gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE, on_pad_idle, l,
+                          nullptr);
 
         g_object_unref(srcpad);
     }

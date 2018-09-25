@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [4.3.7]
+### Fixed
+- Using GST_PAD_PROBE_TYPE_IDLE instead of GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM.
+This seems to fix a rare and hard to find bug where our pipeline crashed with
+a no linked error when the user switched presets while PulseEffects was paused.
+
 ## [4.3.6]
 ### Added
 - When no application is playing audio our GStreamer pipeline is now put in the

@@ -388,8 +388,8 @@ void PipelineBase::update_pipeline_state() {
         gst_element_set_state(pipeline, GST_STATE_PLAYING);
     } else if (playing && !wants_to_play) {
         gst_element_send_event(pipeline, gst_event_new_flush_start());
-        gst_element_send_event(pipeline, gst_event_new_flush_stop(true));
         gst_element_set_state(pipeline, GST_STATE_PAUSED);
+        gst_element_send_event(pipeline, gst_event_new_flush_stop(true));
     }
 }
 
@@ -477,7 +477,7 @@ void PipelineBase::enable_spectrum() {
     auto srcpad = gst_element_get_static_pad(spectrum_identity_in, "src");
 
     gst_pad_add_probe(
-        srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+        srcpad, GST_PAD_PROBE_TYPE_IDLE,
         [](auto pad, auto info, auto d) {
             auto l = static_cast<PipelineBase*>(d);
 
@@ -511,7 +511,7 @@ void PipelineBase::disable_spectrum() {
     auto srcpad = gst_element_get_static_pad(spectrum_identity_in, "src");
 
     gst_pad_add_probe(
-        srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+        srcpad, GST_PAD_PROBE_TYPE_IDLE,
         [](auto pad, auto info, auto d) {
             auto l = static_cast<PipelineBase*>(d);
 
