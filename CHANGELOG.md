@@ -2,8 +2,9 @@
 
 ## [Unreleased]
 
+## [4.3.6]
 ### Added
-- When no application is playing audio our GStreamer pipeline is put in the
+- When no application is playing audio our GStreamer pipeline is now put in the
 paused state instead of the null state. This should remove undesired choppy
 sounds that could be listened whenever we restarted the audio processing.
 
