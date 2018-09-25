@@ -5,7 +5,11 @@
 ### Added
 - When no application is playing audio our GStreamer pipeline is put in the
 paused state instead of the null state. This should remove undesired choppy
-sounds whenever we restart the audio processing.
+sounds that could be listened whenever we restarted the audio processing.
+
+### Fixed
+- Sometimes the wrong sampling rate could be shown in the headerbar info. It was
+fixed.
 
 ## [4.3.5]
 ### Added
