@@ -39,6 +39,7 @@ class PipelineBase {
     void set_null_pipeline();
     void update_pipeline_state();
     void get_latency();
+    void init_spectrum(const uint& sampling_rate);
 
     sigc::signal<void, std::vector<float>> new_spectrum;
     sigc::signal<void, int> new_latency;
@@ -59,7 +60,6 @@ class PipelineBase {
 
     void init_spectrum_bin();
     void init_effects_bin();
-    void init_spectrum();
 };
 
 #endif

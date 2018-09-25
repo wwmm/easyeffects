@@ -160,7 +160,9 @@ void on_src_type_changed(GstElement* typefind,
 
     gst_structure_get_int(structure, "rate", &rate);
 
-    std::cout << rate << std::endl;
+    // pb->init_spectrum(rate);
+
+    util::debug(pb->log_tag + "sampling rate: " + std::to_string(rate) + " Hz");
 }
 
 void on_buffer_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
@@ -168,7 +170,11 @@ void on_buffer_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
         /*when we are playing it is necessary to reset the pipeline for the new
          * value to take effect
          */
-        pb->set_null_pipeline();
+
+        gst_element_send_event(pb->pipeline, gst_event_new_flush_start());
+        gst_element_set_state(pb->pipeline, GST_STATE_READY);
+        gst_element_send_event(pb->pipeline, gst_event_new_flush_stop(true));
+
         pb->update_pipeline_state();
     }
 }
@@ -178,7 +184,11 @@ void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
         /*when we are playing it is necessary to reset the pipeline for the new
          * value to take effect
          */
-        pb->set_null_pipeline();
+
+        gst_element_send_event(pb->pipeline, gst_event_new_flush_start());
+        gst_element_set_state(pb->pipeline, GST_STATE_READY);
+        gst_element_send_event(pb->pipeline, gst_event_new_flush_stop(true));
+
         pb->update_pipeline_state();
     }
 }
@@ -262,7 +272,7 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     g_signal_connect(source, "notify::latency-time",
                      G_CALLBACK(on_latency_changed), this);
 
-    init_spectrum();
+    init_spectrum(rate);
 }
 
 PipelineBase::~PipelineBase() {
@@ -390,13 +400,9 @@ void PipelineBase::update_pipeline_state() {
     if (!playing && wants_to_play) {
         gst_element_set_state(pipeline, GST_STATE_PLAYING);
     } else if (playing && !wants_to_play) {
-        gst_element_send_event(GST_ELEMENT(pipeline),
-                               gst_event_new_flush_start());
-
+        gst_element_send_event(pipeline, gst_event_new_flush_start());
         gst_element_set_state(pipeline, GST_STATE_PAUSED);
-
-        gst_element_send_event(GST_ELEMENT(pipeline),
-                               gst_event_new_flush_stop(true));
+        gst_element_send_event(pipeline, gst_event_new_flush_stop(true));
     }
 }
 
@@ -449,12 +455,12 @@ void PipelineBase::on_app_removed(uint idx) {
     update_pipeline_state();
 }
 
-void PipelineBase::init_spectrum() {
+void PipelineBase::init_spectrum(const uint& sampling_rate) {
     g_signal_connect(settings, "changed::spectrum-n-points",
                      G_CALLBACK(on_spectrum_n_points_changed), this);
 
     for (uint n = 0; n < spectrum_nbands; n++) {
-        auto f = rate * (0.5 * n + 0.25) / spectrum_nbands;
+        auto f = sampling_rate * (0.5 * n + 0.25) / spectrum_nbands;
 
         if (f > max_spectrum_freq) {
             break;
