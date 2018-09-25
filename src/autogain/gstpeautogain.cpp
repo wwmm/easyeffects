@@ -339,6 +339,8 @@ static gboolean gst_peautogain_setup(GstAudioFilter* filter,
         ebur128_set_channel(peautogain->ebur_state, 0, EBUR128_LEFT);
         ebur128_set_channel(peautogain->ebur_state, 1, EBUR128_RIGHT);
 
+        ebur128_set_max_history(peautogain->ebur_state, 30 * 1000);  // ms
+
         /*notify every 0.2 seconds*/
 
         peautogain->notify_samples =
@@ -373,8 +375,6 @@ void gst_peautogain_finalize(GObject* object) {
     GstPeautogain* peautogain = GST_PEAUTOGAIN(object);
 
     GST_DEBUG_OBJECT(peautogain, "finalize");
-
-    // std::cout << "\nfinalizing\n" << std::endl;
 
     std::lock_guard<std::mutex> lock(peautogain->lock_guard_ebu);
 

@@ -160,7 +160,7 @@ void on_src_type_changed(GstElement* typefind,
 
     gst_structure_get_int(structure, "rate", &rate);
 
-    // pb->init_spectrum(rate);
+    pb->init_spectrum(rate);
 
     util::debug(pb->log_tag + "sampling rate: " + std::to_string(rate) + " Hz");
 }
@@ -272,7 +272,7 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     g_signal_connect(source, "notify::latency-time",
                      G_CALLBACK(on_latency_changed), this);
 
-    init_spectrum(rate);
+    // init_spectrum(rate);
 }
 
 PipelineBase::~PipelineBase() {
@@ -458,6 +458,8 @@ void PipelineBase::on_app_removed(uint idx) {
 void PipelineBase::init_spectrum(const uint& sampling_rate) {
     g_signal_connect(settings, "changed::spectrum-n-points",
                      G_CALLBACK(on_spectrum_n_points_changed), this);
+
+    spectrum_freqs.clear();
 
     for (uint n = 0; n < spectrum_nbands; n++) {
         auto f = sampling_rate * (0.5 * n + 0.25) / spectrum_nbands;
