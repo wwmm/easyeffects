@@ -22,19 +22,6 @@ void on_message_error(const GstBus* gst_bus,
     util::critical(pb->log_tag + err->message);
     util::debug(pb->log_tag + debug);
 
-    // if (err->message == std::string("Internal data stream error.")) {
-    //     pb->set_null_pipeline();
-    //
-    //     // As far as I know only a bad latency or buffer value causes this
-    //     error
-    //     // in PE pipeline
-    //
-    //     g_object_set(pb->source, "buffer-time", (int)200000, nullptr);
-    //     g_object_set(pb->source, "latency-time", (int)10000, nullptr);
-    //
-    //     pb->update_pipeline_state();
-    // }
-
     g_error_free(err);
     g_free(debug);
 }
@@ -196,9 +183,7 @@ void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
 }  // namespace
 
 PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
-    : log_tag(tag),
-      settings(g_settings_new("com.github.wwmm.pulseeffects")),
-      rate(sampling_rate) {
+    : log_tag(tag), settings(g_settings_new("com.github.wwmm.pulseeffects")) {
     gst_init(nullptr, nullptr);
 
     pipeline = gst_pipeline_new("pipeline");
@@ -220,21 +205,16 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     // creating elements common to all pipelines
 
     source = gst_element_factory_make("pulsesrc", "source");
+    capsfilter = gst_element_factory_make("capsfilter", nullptr);
     adapter = gst_element_factory_make("peadapter", nullptr);
     sink = gst_element_factory_make("pulsesink", "sink");
     spectrum = gst_element_factory_make("spectrum", "spectrum");
 
-    auto capsfilter = gst_element_factory_make("capsfilter", nullptr);
     auto queue_src = gst_element_factory_make("queue", nullptr);
     auto src_type = gst_element_factory_make("typefind", nullptr);
 
     init_spectrum_bin();
     init_effects_bin();
-
-    auto caps_str =
-        "audio/x-raw,format=F32LE,channels=2,rate=" + std::to_string(rate);
-
-    auto caps = gst_caps_from_string(caps_str.c_str());
 
     // building the pipeline
 
@@ -256,14 +236,12 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     g_object_set(sink, "mute", false, nullptr);
     g_object_set(sink, "provide-clock", true, nullptr);
 
-    g_object_set(capsfilter, "caps", caps, nullptr);
-
-    gst_caps_unref(caps);
-
     g_object_set(queue_src, "silent", true, nullptr);
 
     g_object_set(spectrum, "bands", spectrum_nbands, nullptr);
     g_object_set(spectrum, "threshold", spectrum_threshold, nullptr);
+
+    set_caps(sampling_rate);
 
     g_signal_connect(src_type, "have-type", G_CALLBACK(on_src_type_changed),
                      this);
@@ -271,8 +249,6 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
                      G_CALLBACK(on_buffer_changed), this);
     g_signal_connect(source, "notify::latency-time",
                      G_CALLBACK(on_latency_changed), this);
-
-    // init_spectrum(rate);
 }
 
 PipelineBase::~PipelineBase() {
@@ -290,6 +266,17 @@ PipelineBase::~PipelineBase() {
     gst_object_unref(bus);
     gst_object_unref(pipeline);
     g_object_unref(settings);
+}
+
+void PipelineBase::set_caps(const uint& sampling_rate) {
+    auto caps_str = "audio/x-raw,format=F32LE,channels=2,rate=" +
+                    std::to_string(sampling_rate);
+
+    auto caps = gst_caps_from_string(caps_str.c_str());
+
+    g_object_set(capsfilter, "caps", caps, nullptr);
+
+    gst_caps_unref(caps);
 }
 
 void PipelineBase::init_spectrum_bin() {

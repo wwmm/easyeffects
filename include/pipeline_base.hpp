@@ -54,10 +54,11 @@ class PipelineBase {
     void on_app_removed(uint idx);
 
    private:
-    uint rate;
+    GstElement* capsfilter;
 
     std::vector<std::shared_ptr<AppInfo>> apps_list;
 
+    void set_caps(const uint& sampling_rate);
     void init_spectrum_bin();
     void init_effects_bin();
 };
