@@ -1299,7 +1299,7 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Auto Volume"
 #~ msgstr "Автоподстройка уровня звука"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Import"
 #~ msgstr "Импортировать предустановки"
 
@@ -1330,19 +1330,19 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Стерео база"
 #~ msgstr "Сетерео база"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Output Device"
 #~ msgstr "Ограничитель ввода"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Input Device"
 #~ msgstr "Ограничитель ввода"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Advanced Settings"
 #~ msgstr "Параметры"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Meters"
 #~ msgstr "Тип фильтра"
 
@@ -1355,19 +1355,19 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Low Pass"
 #~ msgstr "Фильтр низких частот"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Source"
 #~ msgstr "Средний источник"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Side"
 #~ msgstr "Усиление ввода [дБ]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Sidechain"
 #~ msgstr "Усиление ввода [дБ]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Ceil"
 #~ msgstr "Верхний порог (Гц)"
 
@@ -1383,37 +1383,37 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "peak"
 #~ msgstr "пик"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "F1"
 #~ msgstr "F"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "F1 Level"
 #~ msgstr "Уровень"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "F2"
 #~ msgstr "F"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "F2 Level"
 #~ msgstr "Уровень"
 
 #~ msgid "Quality"
 #~ msgstr "Качество"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Reset Frequency"
 #~ msgstr "Сброс частоты"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Reset Quality"
 #~ msgstr "Сброс качества"
 
 #~ msgid "Poles"
 #~ msgstr "Полюса"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Output Limiter"
 #~ msgstr "Ограничитель ввода"
 
@@ -1429,7 +1429,7 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Stereo Spread"
 #~ msgstr "Рассеивание стерео"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Mono Input"
 #~ msgstr "Моноввод"
 
@@ -1439,7 +1439,7 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Save Current Settings to Preset"
 #~ msgstr "Сохранить текущие настройки в набор преднастроек"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Delete Preset"
 #~ msgstr "Удалить набор предустановок"
 
@@ -1455,11 +1455,11 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Test Signal"
 #~ msgstr "Проверочный сигнал"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "1"
 #~ msgstr "F"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Reduction Level"
 #~ msgstr "Увеличение ослабления"
 
@@ -1469,11 +1469,11 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Frequency [Hz]"
 #~ msgstr "Частота [Hz]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Buffer [ms]"
 #~ msgstr "Буферизация"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Latency [ms]"
 #~ msgstr "Задержка"
 
@@ -1483,46 +1483,46 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Makeup [dB]"
 #~ msgstr "Компенсирование [дБ]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "F1 [Hz]"
 #~ msgstr "Шум [Гц]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "F1 Level [dB]"
 #~ msgstr "Подача [дБ]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "F2 [Hz]"
 #~ msgstr "Шум [Гц]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "F2 Level [dB]"
 #~ msgstr "Подача [дБ]"
 
 #~ msgid "Release [ms]"
 #~ msgstr "Высвобождение [мс]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Delay [ms]"
 #~ msgstr "Задержка [ms]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Gain Reduction [dB]"
 #~ msgstr "Увеличение ослабления"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Ceiling [dB]"
 #~ msgstr "Ограничение [dB]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Low [dB]"
 #~ msgstr "Низкие частоты [дБ]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "High [dB]"
 #~ msgstr "Высокие частоты [дБ]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Input Gate"
 #~ msgstr "Ограничитель ввода"
 
@@ -1532,26 +1532,26 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Audio Enhancer"
 #~ msgstr "Усилитель аудио"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Buffer Latency"
 #~ msgstr "Задержка буферизации"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "buffer-time"
 #~ msgstr "Время буферизации [ms]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "latency-time"
 #~ msgstr "Задержка [ms]"
 
 #~ msgid "Vlc"
 #~ msgstr "VLC"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Sink Latency"
 #~ msgstr "Задержка затухания"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Preset Name"
 #~ msgstr "Название предустановки"
 
