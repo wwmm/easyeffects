@@ -288,7 +288,7 @@ static gboolean gst_peadapter_sink_event(GstPad* pad,
         case GST_EVENT_EOS:
             gst_adapter_clear(peadapter->adapter);
             break;
-        case GST_EVENT_FLUSH_STOP:
+        case GST_EVENT_FLUSH_START:
             gst_adapter_clear(peadapter->adapter);
             break;
         default:

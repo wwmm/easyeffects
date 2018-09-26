@@ -317,7 +317,10 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
     connections.push_back(app->sie->new_latency.connect([=](int latency) {
         sie_latency = latency;
-        update_headerbar_subtitle(0);
+
+        if (stack->get_visible_child_name() == "sink_inputs") {
+            update_headerbar_subtitle(0);
+        }
     }));
 
     if (app->sie->playing) {
@@ -348,7 +351,10 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
     connections.push_back(app->soe->new_latency.connect([=](int latency) {
         soe_latency = latency;
-        update_headerbar_subtitle(1);
+
+        if (stack->get_visible_child_name() == "source_outputs") {
+            update_headerbar_subtitle(1);
+        }
     }));
 
     if (app->soe->playing) {

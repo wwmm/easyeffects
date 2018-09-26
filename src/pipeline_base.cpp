@@ -22,18 +22,6 @@ void on_message_error(const GstBus* gst_bus,
     util::critical(pb->log_tag + err->message);
     util::debug(pb->log_tag + debug);
 
-    if (err->message == std::string("Internal data stream error.")) {
-        pb->set_null_pipeline();
-
-        // As far as I know only a bad latency or buffer value causes this error
-        // in PE pipeline
-
-        g_object_set(pb->source, "buffer-time", (int)200000, nullptr);
-        g_object_set(pb->source, "latency-time", (int)10000, nullptr);
-
-        pb->update_pipeline_state();
-    }
-
     g_error_free(err);
     g_free(debug);
 }
@@ -149,12 +137,31 @@ void on_spectrum_n_points_changed(GSettings* settings,
     }
 }
 
+void on_src_type_changed(GstElement* typefind,
+                         guint probability,
+                         GstCaps* caps,
+                         PipelineBase* pb) {
+    GstStructure* structure = gst_caps_get_structure(caps, 0);
+
+    int rate;
+
+    gst_structure_get_int(structure, "rate", &rate);
+
+    pb->init_spectrum(rate);
+
+    util::debug(pb->log_tag + "sampling rate: " + std::to_string(rate) + " Hz");
+}
+
 void on_buffer_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
     if (pb->playing) {
         /*when we are playing it is necessary to reset the pipeline for the new
          * value to take effect
          */
-        pb->set_null_pipeline();
+
+        gst_element_set_state(pb->pipeline, GST_STATE_READY);
+        gst_element_send_event(pb->pipeline, gst_event_new_flush_start());
+        gst_element_send_event(pb->pipeline, gst_event_new_flush_stop(true));
+
         pb->update_pipeline_state();
     }
 }
@@ -164,7 +171,11 @@ void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
         /*when we are playing it is necessary to reset the pipeline for the new
          * value to take effect
          */
-        pb->set_null_pipeline();
+
+        gst_element_set_state(pb->pipeline, GST_STATE_READY);
+        gst_element_send_event(pb->pipeline, gst_event_new_flush_start());
+        gst_element_send_event(pb->pipeline, gst_event_new_flush_stop(true));
+
         pb->update_pipeline_state();
     }
 }
@@ -172,9 +183,7 @@ void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
 }  // namespace
 
 PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
-    : log_tag(tag),
-      settings(g_settings_new("com.github.wwmm.pulseeffects")),
-      rate(sampling_rate) {
+    : log_tag(tag), settings(g_settings_new("com.github.wwmm.pulseeffects")) {
     gst_init(nullptr, nullptr);
 
     pipeline = gst_pipeline_new("pipeline");
@@ -196,28 +205,24 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     // creating elements common to all pipelines
 
     source = gst_element_factory_make("pulsesrc", "source");
+    capsfilter = gst_element_factory_make("capsfilter", nullptr);
     adapter = gst_element_factory_make("peadapter", nullptr);
     sink = gst_element_factory_make("pulsesink", "sink");
     spectrum = gst_element_factory_make("spectrum", "spectrum");
 
-    auto capsfilter = gst_element_factory_make("capsfilter", nullptr);
     auto queue_src = gst_element_factory_make("queue", nullptr);
+    auto src_type = gst_element_factory_make("typefind", nullptr);
 
     init_spectrum_bin();
     init_effects_bin();
 
-    auto caps_str =
-        "audio/x-raw,format=F32LE,channels=2,rate=" + std::to_string(rate);
-
-    auto caps = gst_caps_from_string(caps_str.c_str());
-
     // building the pipeline
 
-    gst_bin_add_many(GST_BIN(pipeline), source, queue_src, capsfilter, adapter,
-                     effects_bin, spectrum_bin, sink, nullptr);
+    gst_bin_add_many(GST_BIN(pipeline), source, queue_src, capsfilter, src_type,
+                     adapter, effects_bin, spectrum_bin, sink, nullptr);
 
-    gst_element_link_many(source, queue_src, capsfilter, adapter, effects_bin,
-                          spectrum_bin, sink, nullptr);
+    gst_element_link_many(source, queue_src, capsfilter, src_type, adapter,
+                          effects_bin, spectrum_bin, sink, nullptr);
 
     // initializing properties
 
@@ -231,21 +236,19 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     g_object_set(sink, "mute", false, nullptr);
     g_object_set(sink, "provide-clock", true, nullptr);
 
-    g_object_set(capsfilter, "caps", caps, nullptr);
-
-    gst_caps_unref(caps);
-
     g_object_set(queue_src, "silent", true, nullptr);
 
     g_object_set(spectrum, "bands", spectrum_nbands, nullptr);
     g_object_set(spectrum, "threshold", spectrum_threshold, nullptr);
 
+    set_caps(sampling_rate);
+
+    g_signal_connect(src_type, "have-type", G_CALLBACK(on_src_type_changed),
+                     this);
     g_signal_connect(source, "notify::buffer-time",
                      G_CALLBACK(on_buffer_changed), this);
     g_signal_connect(source, "notify::latency-time",
                      G_CALLBACK(on_latency_changed), this);
-
-    init_spectrum();
 }
 
 PipelineBase::~PipelineBase() {
@@ -263,6 +266,17 @@ PipelineBase::~PipelineBase() {
     gst_object_unref(bus);
     gst_object_unref(pipeline);
     g_object_unref(settings);
+}
+
+void PipelineBase::set_caps(const uint& sampling_rate) {
+    auto caps_str = "audio/x-raw,format=F32LE,channels=2,rate=" +
+                    std::to_string(sampling_rate);
+
+    auto caps = gst_caps_from_string(caps_str.c_str());
+
+    g_object_set(capsfilter, "caps", caps, nullptr);
+
+    gst_caps_unref(caps);
 }
 
 void PipelineBase::init_spectrum_bin() {
@@ -373,7 +387,9 @@ void PipelineBase::update_pipeline_state() {
     if (!playing && wants_to_play) {
         gst_element_set_state(pipeline, GST_STATE_PLAYING);
     } else if (playing && !wants_to_play) {
-        set_null_pipeline();
+        gst_element_send_event(pipeline, gst_event_new_flush_start());
+        gst_element_set_state(pipeline, GST_STATE_PAUSED);
+        gst_element_send_event(pipeline, gst_event_new_flush_stop(true));
     }
 }
 
@@ -426,12 +442,14 @@ void PipelineBase::on_app_removed(uint idx) {
     update_pipeline_state();
 }
 
-void PipelineBase::init_spectrum() {
+void PipelineBase::init_spectrum(const uint& sampling_rate) {
     g_signal_connect(settings, "changed::spectrum-n-points",
                      G_CALLBACK(on_spectrum_n_points_changed), this);
 
+    spectrum_freqs.clear();
+
     for (uint n = 0; n < spectrum_nbands; n++) {
-        auto f = rate * (0.5 * n + 0.25) / spectrum_nbands;
+        auto f = sampling_rate * (0.5 * n + 0.25) / spectrum_nbands;
 
         if (f > max_spectrum_freq) {
             break;
@@ -459,7 +477,7 @@ void PipelineBase::enable_spectrum() {
     auto srcpad = gst_element_get_static_pad(spectrum_identity_in, "src");
 
     gst_pad_add_probe(
-        srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+        srcpad, GST_PAD_PROBE_TYPE_IDLE,
         [](auto pad, auto info, auto d) {
             auto l = static_cast<PipelineBase*>(d);
 
@@ -493,7 +511,7 @@ void PipelineBase::disable_spectrum() {
     auto srcpad = gst_element_get_static_pad(spectrum_identity_in, "src");
 
     gst_pad_add_probe(
-        srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+        srcpad, GST_PAD_PROBE_TYPE_IDLE,
         [](auto pad, auto info, auto d) {
             auto l = static_cast<PipelineBase*>(d);
 

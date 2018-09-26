@@ -137,8 +137,8 @@ void on_plugins_order_changed(GSettings* settings,
     if (update) {
         auto srcpad = gst_element_get_static_pad(l->identity_in, "src");
 
-        gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
-                          on_pad_idle, l, nullptr);
+        gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE, on_pad_idle, l,
+                          nullptr);
 
         g_object_unref(srcpad);
     }
@@ -148,7 +148,10 @@ void on_blocksize_changed(GSettings* settings,
                           gchar* key,
                           SinkInputEffects* l) {
     if (l->playing) {
-        l->set_null_pipeline();
+        gst_element_set_state(l->pipeline, GST_STATE_READY);
+        gst_element_send_event(l->pipeline, gst_event_new_flush_start());
+        gst_element_send_event(l->pipeline, gst_event_new_flush_stop(true));
+
         l->update_pipeline_state();
     }
 }

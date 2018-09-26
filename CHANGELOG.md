@@ -2,6 +2,22 @@
 
 ## [Unreleased]
 
+## [4.3.7]
+### Fixed
+- Using GST_PAD_PROBE_TYPE_IDLE instead of GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM.
+This seems to fix a rare and hard to find bug where our pipeline crashed with
+a no linked error when the user switched presets while PulseEffects was paused.
+
+## [4.3.6]
+### Added
+- When no application is playing audio our GStreamer pipeline is now put in the
+paused state instead of the null state. This should remove undesired choppy
+sounds that could be listened whenever we restarted the audio processing.
+
+### Fixed
+- Sometimes the wrong sampling rate could be shown in the headerbar info. It was
+fixed.
+
 ## [4.3.5]
 ### Added
 - More space at the right of the up/down buttons used to change effects order.
