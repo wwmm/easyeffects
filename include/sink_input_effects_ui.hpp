@@ -23,41 +23,41 @@
 #include "stereo_tools_ui.hpp"
 
 class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
-   public:
-    SinkInputEffectsUi(BaseObjectType* cobject,
-                       const Glib::RefPtr<Gtk::Builder>& refBuilder,
-                       const Glib::RefPtr<Gio::Settings>& refSettings,
-                       SinkInputEffects* sie_ptr);
+ public:
+  SinkInputEffectsUi(BaseObjectType* cobject,
+                     const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                     const Glib::RefPtr<Gio::Settings>& refSettings,
+                     SinkInputEffects* sie_ptr);
 
-    virtual ~SinkInputEffectsUi();
+  virtual ~SinkInputEffectsUi();
 
-   protected:
-    std::string log_tag = "sie_ui: ";
+ protected:
+  std::string log_tag = "sie_ui: ";
 
-   private:
-    SinkInputEffects* sie;
+ private:
+  SinkInputEffects* sie;
 
-    LimiterUi* limiter_ui;
-    CompressorUi* compressor_ui;
-    FilterUi* filter_ui;
-    EqualizerUi* equalizer_ui;
-    ReverbUi* reverb_ui;
-    BassEnhancerUi* bass_enhancer_ui;
-    ExciterUi* exciter_ui;
-    CrossfeedUi* crossfeed_ui;
-    MaximizerUi* maximizer_ui;
-    MultibandCompressorUi* multiband_compressor_ui;
-    LoudnessUi* loudness_ui;
-    GateUi* gate_ui;
-    MultibandGateUi* multiband_gate_ui;
-    DeesserUi* deesser_ui;
-    StereoToolsUi* stereo_tools_ui;
-    ConvolverUi* convolver_ui;
-    CrystalizerUi* crystalizer_ui;
-    AutoGainUi* autogain_ui;
+  LimiterUi* limiter_ui;
+  CompressorUi* compressor_ui;
+  FilterUi* filter_ui;
+  EqualizerUi* equalizer_ui;
+  ReverbUi* reverb_ui;
+  BassEnhancerUi* bass_enhancer_ui;
+  ExciterUi* exciter_ui;
+  CrossfeedUi* crossfeed_ui;
+  MaximizerUi* maximizer_ui;
+  MultibandCompressorUi* multiband_compressor_ui;
+  LoudnessUi* loudness_ui;
+  GateUi* gate_ui;
+  MultibandGateUi* multiband_gate_ui;
+  DeesserUi* deesser_ui;
+  StereoToolsUi* stereo_tools_ui;
+  ConvolverUi* convolver_ui;
+  CrystalizerUi* crystalizer_ui;
+  AutoGainUi* autogain_ui;
 
-    void level_meters_connections();
-    void up_down_connections();
+  void level_meters_connections();
+  void up_down_connections();
 };
 
 #endif

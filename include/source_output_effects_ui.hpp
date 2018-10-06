@@ -16,34 +16,34 @@
 #include "webrtc_ui.hpp"
 
 class SourceOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
-   public:
-    SourceOutputEffectsUi(BaseObjectType* cobject,
-                          const Glib::RefPtr<Gtk::Builder>& refBuilder,
-                          const Glib::RefPtr<Gio::Settings>& refSettings,
-                          SourceOutputEffects* soe_ptr);
+ public:
+  SourceOutputEffectsUi(BaseObjectType* cobject,
+                        const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                        const Glib::RefPtr<Gio::Settings>& refSettings,
+                        SourceOutputEffects* soe_ptr);
 
-    virtual ~SourceOutputEffectsUi();
+  virtual ~SourceOutputEffectsUi();
 
-   protected:
-    std::string log_tag = "soe_ui: ";
+ protected:
+  std::string log_tag = "soe_ui: ";
 
-   private:
-    SourceOutputEffects* soe;
+ private:
+  SourceOutputEffects* soe;
 
-    LimiterUi* limiter_ui;
-    CompressorUi* compressor_ui;
-    FilterUi* filter_ui;
-    EqualizerUi* equalizer_ui;
-    ReverbUi* reverb_ui;
-    GateUi* gate_ui;
-    DeesserUi* deesser_ui;
-    PitchUi* pitch_ui;
-    WebrtcUi* webrtc_ui;
-    MultibandCompressorUi* multiband_compressor_ui;
-    MultibandGateUi* multiband_gate_ui;
+  LimiterUi* limiter_ui;
+  CompressorUi* compressor_ui;
+  FilterUi* filter_ui;
+  EqualizerUi* equalizer_ui;
+  ReverbUi* reverb_ui;
+  GateUi* gate_ui;
+  DeesserUi* deesser_ui;
+  PitchUi* pitch_ui;
+  WebrtcUi* webrtc_ui;
+  MultibandCompressorUi* multiband_compressor_ui;
+  MultibandGateUi* multiband_gate_ui;
 
-    void level_meters_connections();
-    void up_down_connections();
+  void level_meters_connections();
+  void up_down_connections();
 };
 
 #endif

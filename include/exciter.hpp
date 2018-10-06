@@ -6,18 +6,18 @@
 #include "plugin_base.hpp"
 
 class Exciter : public PluginBase {
-   public:
-    Exciter(const std::string& tag, const std::string& schema);
-    ~Exciter();
+ public:
+  Exciter(const std::string& tag, const std::string& schema);
+  ~Exciter();
 
-    GstElement* exciter;
+  GstElement* exciter;
 
-    sigc::connection harmonics_connection;
+  sigc::connection harmonics_connection;
 
-    sigc::signal<void, double> harmonics;
+  sigc::signal<void, double> harmonics;
 
-   private:
-    void bind_to_gsettings();
+ private:
+  void bind_to_gsettings();
 };
 
 #endif

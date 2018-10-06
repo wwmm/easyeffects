@@ -6,18 +6,18 @@
 #include "plugin_base.hpp"
 
 class BassEnhancer : public PluginBase {
-   public:
-    BassEnhancer(const std::string& tag, const std::string& schema);
-    ~BassEnhancer();
+ public:
+  BassEnhancer(const std::string& tag, const std::string& schema);
+  ~BassEnhancer();
 
-    GstElement* bass_enhancer;
+  GstElement* bass_enhancer;
 
-    sigc::connection harmonics_connection;
+  sigc::connection harmonics_connection;
 
-    sigc::signal<void, double> harmonics;
+  sigc::signal<void, double> harmonics;
 
-   private:
-    void bind_to_gsettings();
+ private:
+  void bind_to_gsettings();
 };
 
 #endif

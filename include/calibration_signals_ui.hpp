@@ -10,21 +10,21 @@
 #include "calibration_signals.hpp"
 
 class CalibrationSignalsUi : public Gtk::Grid {
-   public:
-    CalibrationSignalsUi(BaseObjectType* cobject,
-                         const Glib::RefPtr<Gtk::Builder>& builder);
+ public:
+  CalibrationSignalsUi(BaseObjectType* cobject,
+                       const Glib::RefPtr<Gtk::Builder>& builder);
 
-    virtual ~CalibrationSignalsUi();
+  virtual ~CalibrationSignalsUi();
 
-    std::unique_ptr<CalibrationSignals> cs;
+  std::unique_ptr<CalibrationSignals> cs;
 
-   private:
-    std::string log_tag = "calibration_signals_ui: ";
+ private:
+  std::string log_tag = "calibration_signals_ui: ";
 
-    Gtk::Switch* enable;
-    Gtk::Scale* volume;
-    Gtk::SpinButton* frequency;
-    Gtk::ComboBoxText* wave;
+  Gtk::Switch* enable;
+  Gtk::Scale* volume;
+  Gtk::SpinButton* frequency;
+  Gtk::ComboBoxText* wave;
 };
 
 #endif

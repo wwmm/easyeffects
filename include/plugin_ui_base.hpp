@@ -13,98 +13,98 @@
 #include "util.hpp"
 
 class PluginUiBase {
-   public:
-    PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder,
-                 const std::string& settings_name);
-    virtual ~PluginUiBase();
+ public:
+  PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder,
+               const std::string& settings_name);
+  virtual ~PluginUiBase();
 
-    std::string name;
+  std::string name;
 
-    Gtk::Box* listbox_control;
-    Gtk::Button *plugin_up, *plugin_down;
+  Gtk::Box* listbox_control;
+  Gtk::Button *plugin_up, *plugin_down;
 
-    void on_new_input_level(const std::array<double, 2>& peak);
-    void on_new_output_level(const std::array<double, 2>& peak);
-    void on_new_input_level_db(const std::array<double, 2>& peak);
-    void on_new_output_level_db(const std::array<double, 2>& peak);
+  void on_new_input_level(const std::array<double, 2>& peak);
+  void on_new_output_level(const std::array<double, 2>& peak);
+  void on_new_input_level_db(const std::array<double, 2>& peak);
+  void on_new_output_level_db(const std::array<double, 2>& peak);
 
-   protected:
-    Glib::RefPtr<Gio::Settings> settings;
+ protected:
+  Glib::RefPtr<Gio::Settings> settings;
 
-    Gtk::Switch* enable;
-    Gtk::Box* controls;
-    Gtk::Image* img_state;
+  Gtk::Switch* enable;
+  Gtk::Box* controls;
+  Gtk::Image* img_state;
 
-    Gtk::LevelBar *input_level_left, *input_level_right;
-    Gtk::LevelBar *output_level_left, *output_level_right;
-    Gtk::Label *input_level_left_label, *input_level_right_label;
-    Gtk::Label *output_level_left_label, *output_level_right_label;
+  Gtk::LevelBar *input_level_left, *input_level_right;
+  Gtk::LevelBar *output_level_left, *output_level_right;
+  Gtk::Label *input_level_left_label, *input_level_right_label;
+  Gtk::Label *output_level_left_label, *output_level_right_label;
 
-    bool input_saturated = false;
+  bool input_saturated = false;
 
-    void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
-                    const std::string& name,
-                    Glib::RefPtr<Gtk::Adjustment>& object) {
-        object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(
-            builder->get_object(name));
+  void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
+                  const std::string& name,
+                  Glib::RefPtr<Gtk::Adjustment>& object) {
+    object =
+        Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
+  }
+
+  std::string level_to_str(double value);
+
+ private:
+  template <typename T1, typename T2, typename T3, typename T4>
+  void update_level(const T1& w_left,
+                    const T2& w_left_label,
+                    const T3& w_right,
+                    const T4& w_right_label,
+                    const std::array<double, 2>& peak) {
+    auto left = peak[0];
+    auto right = peak[1];
+    auto left_db = util::linear_to_db(left);
+    auto right_db = util::linear_to_db(right);
+
+    if (left_db >= -99) {
+      w_left->set_value(left);
+      w_left_label->set_text(level_to_str(left_db));
+    } else {
+      w_left->set_value(0);
+      w_left_label->set_text("-99");
     }
 
-    std::string level_to_str(double value);
+    if (right_db >= -99) {
+      w_right->set_value(right);
+      w_right_label->set_text(level_to_str(right_db));
+    } else {
+      w_right->set_value(0);
+      w_right_label->set_text("-99");
+    }
+  }
 
-   private:
-    template <typename T1, typename T2, typename T3, typename T4>
-    void update_level(const T1& w_left,
-                      const T2& w_left_label,
-                      const T3& w_right,
-                      const T4& w_right_label,
-                      const std::array<double, 2>& peak) {
-        auto left = peak[0];
-        auto right = peak[1];
-        auto left_db = util::linear_to_db(left);
-        auto right_db = util::linear_to_db(right);
+  template <typename T1, typename T2, typename T3, typename T4>
+  void update_level_db(const T1& w_left,
+                       const T2& w_left_label,
+                       const T3& w_right,
+                       const T4& w_right_label,
+                       const std::array<double, 2>& peak) {
+    auto left = peak[0];
+    auto right = peak[1];
 
-        if (left_db >= -99) {
-            w_left->set_value(left);
-            w_left_label->set_text(level_to_str(left_db));
-        } else {
-            w_left->set_value(0);
-            w_left_label->set_text("-99");
-        }
-
-        if (right_db >= -99) {
-            w_right->set_value(right);
-            w_right_label->set_text(level_to_str(right_db));
-        } else {
-            w_right->set_value(0);
-            w_right_label->set_text("-99");
-        }
+    if (left >= -99) {
+      w_left->set_value(util::db_to_linear(left));
+      w_left_label->set_text(level_to_str(left));
+    } else {
+      w_left->set_value(0);
+      w_left_label->set_text("-99");
     }
 
-    template <typename T1, typename T2, typename T3, typename T4>
-    void update_level_db(const T1& w_left,
-                         const T2& w_left_label,
-                         const T3& w_right,
-                         const T4& w_right_label,
-                         const std::array<double, 2>& peak) {
-        auto left = peak[0];
-        auto right = peak[1];
-
-        if (left >= -99) {
-            w_left->set_value(util::db_to_linear(left));
-            w_left_label->set_text(level_to_str(left));
-        } else {
-            w_left->set_value(0);
-            w_left_label->set_text("-99");
-        }
-
-        if (right >= -99) {
-            w_right->set_value(util::db_to_linear(right));
-            w_right_label->set_text(level_to_str(right));
-        } else {
-            w_right->set_value(0);
-            w_right_label->set_text("-99");
-        }
+    if (right >= -99) {
+      w_right->set_value(util::db_to_linear(right));
+      w_right_label->set_text(level_to_str(right));
+    } else {
+      w_right->set_value(0);
+      w_right_label->set_text("-99");
     }
+  }
 };
 
 #endif

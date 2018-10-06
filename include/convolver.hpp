@@ -6,14 +6,14 @@
 #include "plugin_base.hpp"
 
 class Convolver : public PluginBase {
-   public:
-    Convolver(const std::string& tag, const std::string& schema);
-    ~Convolver();
+ public:
+  Convolver(const std::string& tag, const std::string& schema);
+  ~Convolver();
 
-    GstElement* convolver;
+  GstElement* convolver;
 
-   private:
-    void bind_to_gsettings();
+ private:
+  void bind_to_gsettings();
 };
 
 #endif

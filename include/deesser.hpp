@@ -6,18 +6,18 @@
 #include "plugin_base.hpp"
 
 class Deesser : public PluginBase {
-   public:
-    Deesser(const std::string& tag, const std::string& schema);
-    ~Deesser();
+ public:
+  Deesser(const std::string& tag, const std::string& schema);
+  ~Deesser();
 
-    GstElement* deesser;
+  GstElement* deesser;
 
-    sigc::connection compression_connection, detected_connection;
+  sigc::connection compression_connection, detected_connection;
 
-    sigc::signal<void, double> compression, detected;
+  sigc::signal<void, double> compression, detected;
 
-   private:
-    void bind_to_gsettings();
+ private:
+  void bind_to_gsettings();
 };
 
 #endif

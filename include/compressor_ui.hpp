@@ -7,25 +7,24 @@
 #include "plugin_ui_base.hpp"
 
 class CompressorUi : public Gtk::Grid, public PluginUiBase {
-   public:
-    CompressorUi(BaseObjectType* cobject,
-                 const Glib::RefPtr<Gtk::Builder>& builder,
-                 const std::string& settings_name);
-    virtual ~CompressorUi();
+ public:
+  CompressorUi(BaseObjectType* cobject,
+               const Glib::RefPtr<Gtk::Builder>& builder,
+               const std::string& settings_name);
+  virtual ~CompressorUi();
 
-    void on_new_compression(double value);
+  void on_new_compression(double value);
 
-   private:
-    Glib::RefPtr<Gtk::Adjustment> attack, release, threshold, knee, ratio, mix,
-        makeup;
+ private:
+  Glib::RefPtr<Gtk::Adjustment> attack, release, threshold, knee, ratio, mix,
+      makeup;
 
-    Gtk::LevelBar* compression;
-    Gtk::Label* compression_label;
-    Gtk::ComboBoxText *detection, *stereo_link;
-    Gtk::Button *preset_vocal_leveller1, *preset_vocal_leveller2,
-        *preset_default;
+  Gtk::LevelBar* compression;
+  Gtk::Label* compression_label;
+  Gtk::ComboBoxText *detection, *stereo_link;
+  Gtk::Button *preset_vocal_leveller1, *preset_vocal_leveller2, *preset_default;
 
-    void init_presets_buttons();
+  void init_presets_buttons();
 };
 
 #endif

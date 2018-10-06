@@ -6,17 +6,17 @@
 #include "plugin_base.hpp"
 
 class Equalizer : public PluginBase {
-   public:
-    Equalizer(const std::string& tag, const std::string& schema);
-    ~Equalizer();
+ public:
+  Equalizer(const std::string& tag, const std::string& schema);
+  ~Equalizer();
 
-    GstElement* equalizer;
+  GstElement* equalizer;
 
-    void update_equalizer();
+  void update_equalizer();
 
-   private:
-    void bind_band(const int index);
-    void unbind_band(const int index);
+ private:
+  void bind_band(const int index);
+  void unbind_band(const int index);
 };
 
 #endif
