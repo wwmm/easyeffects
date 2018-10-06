@@ -122,8 +122,8 @@ void AppInfoUi::on_volume_changed() {
   auto value = volume->get_value();
 
   if (app_info->app_type == "sink_input") {
-    // pm->set_sink_input_volume(app_info->name, app_info->index,
-    //                           app_info->channels, value);
+    pm->set_sink_input_volume(app_info->name, app_info->index,
+                              app_info->channels, value);
   } else {
     pm->set_source_output_volume(app_info->name, app_info->index,
                                  app_info->channels, value);
