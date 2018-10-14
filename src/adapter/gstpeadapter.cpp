@@ -194,15 +194,13 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
     peadapter->flag_discont = true;
   }
 
-  if (peadapter->inbuf_n_samples == -1) {
-    GstMapInfo map;
+  GstMapInfo map;
 
-    gst_buffer_map(buffer, &map, GST_MAP_READ);
+  gst_buffer_map(buffer, &map, GST_MAP_READ);
 
-    peadapter->inbuf_n_samples = map.size / peadapter->bpf;
+  peadapter->inbuf_n_samples = map.size / peadapter->bpf;
 
-    gst_buffer_unmap(buffer, &map);
-  }
+  gst_buffer_unmap(buffer, &map);
 
   gst_adapter_push(peadapter->adapter, buffer);
 
