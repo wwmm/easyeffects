@@ -1,7 +1,7 @@
 #include <gst/audio/audio.h>
-#include <iostream>
 #include "config.h"
 #include "gstpeadapter.hpp"
+#include "util.hpp"
 
 GST_DEBUG_CATEGORY_STATIC(peadapter_debug);
 #define GST_CAT_DEFAULT (peadapter_debug)
@@ -194,13 +194,18 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
     peadapter->flag_discont = true;
   }
 
-  GstMapInfo map;
+  if (peadapter->inbuf_n_samples == -1) {
+    GstMapInfo map;
 
-  gst_buffer_map(buffer, &map, GST_MAP_READ);
+    gst_buffer_map(buffer, &map, GST_MAP_READ);
 
-  peadapter->inbuf_n_samples = map.size / peadapter->bpf;
+    peadapter->inbuf_n_samples = map.size / peadapter->bpf;
 
-  gst_buffer_unmap(buffer, &map);
+    util::debug("peadapter: pulseaudio block size " +
+                std::to_string(peadapter->inbuf_n_samples) + " samples");
+
+    gst_buffer_unmap(buffer, &map);
+  }
 
   gst_adapter_push(peadapter->adapter, buffer);
 
@@ -312,6 +317,9 @@ static GstStateChangeReturn gst_peadapter_change_state(
   switch (transition) {
     case GST_STATE_CHANGE_PLAYING_TO_PAUSED:
       gst_adapter_clear(peadapter->adapter);
+
+      peadapter->inbuf_n_samples = -1;
+
       break;
     default:
       break;
