@@ -210,34 +210,21 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
 
   while (gst_adapter_available(peadapter->adapter) >= nbytes &&
          (ret == GST_FLOW_OK)) {
-    bool valid = true;
     guint64 distance;
 
     auto pts = gst_adapter_prev_pts(peadapter->adapter, &distance);
 
-    if (GST_CLOCK_TIME_IS_VALID(pts)) {
-      /* convert bytes to time */
-      pts += gst_util_uint64_scale_int(distance, GST_SECOND,
-                                       peadapter->rate * peadapter->bpf);
-
-      if (!GST_CLOCK_TIME_IS_VALID(pts)) {
-        valid = false;
-      }
-    } else {
-      valid = false;
-    }
+    /* convert bytes to time */
+    pts += gst_util_uint64_scale_int(distance, GST_SECOND,
+                                     peadapter->rate * peadapter->bpf);
 
     auto offset = gst_adapter_prev_offset(peadapter->adapter, &distance);
 
-    if (GST_CLOCK_TIME_IS_VALID(offset)) {
-      offset += distance / peadapter->bpf;
-    } else {
-      valid = false;
-    }
+    offset += distance / peadapter->bpf;
 
-    if (valid) {
-      GstBuffer* b = gst_adapter_take_buffer_fast(peadapter->adapter, nbytes);
+    GstBuffer* b = gst_adapter_take_buffer_fast(peadapter->adapter, nbytes);
 
+    if (b != nullptr) {
       b = gst_buffer_make_writable(b);
 
       GST_BUFFER_OFFSET(b) = offset;
