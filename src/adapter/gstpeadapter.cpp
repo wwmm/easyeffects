@@ -206,7 +206,7 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
 
   gsize nbytes = peadapter->blocksize * peadapter->bpf;
 
-  while (gst_adapter_available(peadapter->adapter) >= nbytes &&
+  while (gst_adapter_available(peadapter->adapter) > nbytes &&
          (ret == GST_FLOW_OK)) {
     guint64 distance;
 
