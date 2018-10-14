@@ -208,11 +208,10 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
 
   gsize nbytes = peadapter->blocksize * peadapter->bpf;
 
-  while (gst_adapter_available(peadapter->adapter) >= nbytes) {
+  while (gst_adapter_available(peadapter->adapter) >= nbytes &&
+         (ret == GST_FLOW_OK)) {
     bool valid = true;
     guint64 distance;
-
-    GstBuffer* b = gst_adapter_take_buffer_fast(peadapter->adapter, nbytes);
 
     auto pts = gst_adapter_prev_pts(peadapter->adapter, &distance);
 
@@ -237,6 +236,8 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
     }
 
     if (valid) {
+      GstBuffer* b = gst_adapter_take_buffer_fast(peadapter->adapter, nbytes);
+
       b = gst_buffer_make_writable(b);
 
       GST_BUFFER_OFFSET(b) = offset;
@@ -249,14 +250,14 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
         gst_buffer_set_flags(b, GST_BUFFER_FLAG_RESYNC);
 
         peadapter->flag_discont = false;
+      } else {
+        gst_buffer_unset_flags(b, GST_BUFFER_FLAG_DISCONT);
       }
 
       gst_buffer_set_flags(b, GST_BUFFER_FLAG_NON_DROPPABLE);
       gst_buffer_set_flags(b, GST_BUFFER_FLAG_LIVE);
 
       ret = gst_pad_push(peadapter->srcpad, b);
-    } else {
-      gst_buffer_unref(b);
     }
   }
 
