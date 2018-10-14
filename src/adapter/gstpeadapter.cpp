@@ -192,8 +192,6 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
     gst_adapter_clear(peadapter->adapter);
 
     peadapter->flag_discont = true;
-
-    std::cout << "discont" << std::endl;
   }
 
   if (peadapter->inbuf_n_samples == -1) {
@@ -250,8 +248,6 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
         gst_buffer_set_flags(b, GST_BUFFER_FLAG_DISCONT);
         gst_buffer_set_flags(b, GST_BUFFER_FLAG_RESYNC);
 
-        std::cout << "discont flag" << std::endl;
-
         peadapter->flag_discont = false;
       }
 
@@ -260,7 +256,6 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
 
       ret = gst_pad_push(peadapter->srcpad, b);
     } else {
-      std::cout << "invalid buffer" << std::endl;
       gst_buffer_unref(b);
     }
   }
