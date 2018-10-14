@@ -191,6 +191,8 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
   if (GST_BUFFER_FLAG_IS_SET(buffer, GST_BUFFER_FLAG_DISCONT)) {
     gst_adapter_clear(peadapter->adapter);
 
+    // std::cout << "discont" << std::endl;
+
     flag_discont = true;
   }
 
@@ -212,7 +214,7 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
     bool valid = true;
     guint64 distance;
 
-    GstBuffer* b = gst_adapter_take_buffer(peadapter->adapter, nbytes);
+    GstBuffer* b = gst_adapter_take_buffer_fast(peadapter->adapter, nbytes);
 
     auto pts = gst_adapter_prev_pts(peadapter->adapter, &distance);
 
