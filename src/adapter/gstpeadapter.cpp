@@ -122,6 +122,7 @@ static void gst_peadapter_init(GstPeadapter* peadapter) {
   peadapter->bpf = -1;
   peadapter->blocksize = 512;
   peadapter->inbuf_n_samples = -1;
+  peadapter->flag_discont = false;
   peadapter->adapter = gst_adapter_new();
 
   peadapter->srcpad = gst_pad_new_from_static_template(&srctemplate, "src");
@@ -180,7 +181,6 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
                                          GstBuffer* buffer) {
   GstPeadapter* peadapter = GST_PEADAPTER(parent);
   GstFlowReturn ret = GST_FLOW_OK;
-  bool flag_discont = false;
 
   if (GST_BUFFER_FLAG_IS_SET(buffer, GST_BUFFER_FLAG_GAP)) {
     gst_adapter_clear(peadapter->adapter);
@@ -191,9 +191,9 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
   if (GST_BUFFER_FLAG_IS_SET(buffer, GST_BUFFER_FLAG_DISCONT)) {
     gst_adapter_clear(peadapter->adapter);
 
-    // std::cout << "discont" << std::endl;
+    peadapter->flag_discont = true;
 
-    flag_discont = true;
+    std::cout << "discont" << std::endl;
   }
 
   if (peadapter->inbuf_n_samples == -1) {
@@ -246,11 +246,13 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
       GST_BUFFER_DURATION(b) =
           GST_FRAMES_TO_CLOCK_TIME(peadapter->blocksize, peadapter->rate);
 
-      if (flag_discont) {
+      if (peadapter->flag_discont) {
         gst_buffer_set_flags(b, GST_BUFFER_FLAG_DISCONT);
         gst_buffer_set_flags(b, GST_BUFFER_FLAG_RESYNC);
 
-        flag_discont = false;
+        std::cout << "discont flag" << std::endl;
+
+        peadapter->flag_discont = false;
       }
 
       gst_buffer_set_flags(b, GST_BUFFER_FLAG_NON_DROPPABLE);
@@ -258,6 +260,7 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
 
       ret = gst_pad_push(peadapter->srcpad, b);
     } else {
+      std::cout << "invalid buffer" << std::endl;
       gst_buffer_unref(b);
     }
   }

@@ -36,6 +36,7 @@ struct _GstPeadapter {
   int rate;             // sampling rate
   int bpf;              // bytes per frame : channels * bps
   int inbuf_n_samples;  // number of samples in the input buffer
+  bool flag_discont;
 
   GstAdapter* adapter;
   GstPad* srcpad;
