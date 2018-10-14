@@ -183,7 +183,9 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
   bool flag_discont = false;
 
   if (GST_BUFFER_FLAG_IS_SET(buffer, GST_BUFFER_FLAG_GAP)) {
-    return GST_FLOW_OK;
+    gst_adapter_clear(peadapter->adapter);
+
+    return ret = gst_pad_push(peadapter->srcpad, buffer);
   }
 
   if (GST_BUFFER_FLAG_IS_SET(buffer, GST_BUFFER_FLAG_DISCONT)) {
@@ -322,7 +324,7 @@ static GstStateChangeReturn gst_peadapter_change_state(
     return ret;
 
   switch (transition) {
-    case GST_STATE_CHANGE_PAUSED_TO_READY:
+    case GST_STATE_CHANGE_PLAYING_TO_PAUSED:
       gst_adapter_clear(peadapter->adapter);
       break;
     default:
