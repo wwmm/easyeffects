@@ -155,9 +155,9 @@ void on_buffer_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
      * value to take effect
      */
 
-    gst_element_set_state(pb->pipeline, GST_STATE_READY);
     gst_element_send_event(pb->pipeline, gst_event_new_flush_start());
     gst_element_send_event(pb->pipeline, gst_event_new_flush_stop(true));
+    gst_element_set_state(pb->pipeline, GST_STATE_READY);
 
     pb->update_pipeline_state();
   }
@@ -169,9 +169,9 @@ void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
      * value to take effect
      */
 
-    gst_element_set_state(pb->pipeline, GST_STATE_READY);
     gst_element_send_event(pb->pipeline, gst_event_new_flush_start());
     gst_element_send_event(pb->pipeline, gst_event_new_flush_stop(true));
+    gst_element_set_state(pb->pipeline, GST_STATE_READY);
 
     pb->update_pipeline_state();
   }
