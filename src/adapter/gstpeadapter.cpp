@@ -282,9 +282,15 @@ static gboolean gst_peadapter_sink_event(GstPad* pad,
       break;
     case GST_EVENT_EOS:
       gst_adapter_clear(peadapter->adapter);
+
+      peadapter->inbuf_n_samples = -1;
+
       break;
     case GST_EVENT_FLUSH_START:
       gst_adapter_clear(peadapter->adapter);
+
+      peadapter->inbuf_n_samples = -1;
+
       break;
     default:
       /* just call the default handler */
