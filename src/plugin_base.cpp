@@ -82,7 +82,7 @@ bool PluginBase::is_installed(GstElement* e) {
 void PluginBase::enable() {
   auto srcpad = gst_element_get_static_pad(identity_in, "src");
 
-  gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
+  gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
                     [](auto pad, auto info, auto d) {
                       auto l = static_cast<PluginBase*>(d);
 
@@ -115,7 +115,7 @@ void PluginBase::enable() {
 void PluginBase::disable() {
   auto srcpad = gst_element_get_static_pad(identity_in, "src");
 
-  gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
+  gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
                     [](auto pad, auto info, auto d) {
                       auto l = static_cast<PluginBase*>(d);
 

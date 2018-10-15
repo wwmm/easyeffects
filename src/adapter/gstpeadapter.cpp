@@ -226,29 +226,31 @@ static GstFlowReturn gst_peadapter_process(GstPeadapter* peadapter) {
 
   while (gst_adapter_available(peadapter->adapter) > nbytes &&
          (ret == GST_FLOW_OK)) {
-    GstBuffer* b = gst_adapter_take_buffer_fast(peadapter->adapter, nbytes);
+    GstBuffer* b = gst_adapter_take_buffer(peadapter->adapter, nbytes);
 
-    b = gst_buffer_make_writable(b);
+    if (b != nullptr) {
+      b = gst_buffer_make_writable(b);
 
-    GST_BUFFER_OFFSET(b) = gst_adapter_prev_offset(peadapter->adapter, nullptr);
-    GST_BUFFER_PTS(b) = gst_adapter_prev_pts(peadapter->adapter, nullptr);
-    GST_BUFFER_DTS(b) = gst_adapter_prev_dts(peadapter->adapter, nullptr);
-    GST_BUFFER_DURATION(b) =
-        GST_FRAMES_TO_CLOCK_TIME(peadapter->blocksize, peadapter->rate);
+      GST_BUFFER_OFFSET(b) =
+          gst_adapter_prev_offset(peadapter->adapter, nullptr);
+      GST_BUFFER_PTS(b) = gst_adapter_prev_pts(peadapter->adapter, nullptr);
+      GST_BUFFER_DURATION(b) =
+          GST_FRAMES_TO_CLOCK_TIME(peadapter->blocksize, peadapter->rate);
 
-    if (peadapter->flag_discont) {
-      gst_buffer_set_flags(b, GST_BUFFER_FLAG_DISCONT);
-      gst_buffer_set_flags(b, GST_BUFFER_FLAG_RESYNC);
+      if (peadapter->flag_discont) {
+        gst_buffer_set_flags(b, GST_BUFFER_FLAG_DISCONT);
+        gst_buffer_set_flags(b, GST_BUFFER_FLAG_RESYNC);
 
-      peadapter->flag_discont = false;
-    } else {
-      gst_buffer_unset_flags(b, GST_BUFFER_FLAG_DISCONT);
+        peadapter->flag_discont = false;
+      } else {
+        gst_buffer_unset_flags(b, GST_BUFFER_FLAG_DISCONT);
+      }
+
+      gst_buffer_set_flags(b, GST_BUFFER_FLAG_NON_DROPPABLE);
+      gst_buffer_set_flags(b, GST_BUFFER_FLAG_LIVE);
+
+      ret = gst_pad_push(peadapter->srcpad, b);
     }
-
-    gst_buffer_set_flags(b, GST_BUFFER_FLAG_NON_DROPPABLE);
-    gst_buffer_set_flags(b, GST_BUFFER_FLAG_LIVE);
-
-    ret = gst_pad_push(peadapter->srcpad, b);
   }
 
   return ret;
@@ -323,13 +325,9 @@ static GstStateChangeReturn gst_peadapter_change_state(
 
   switch (transition) {
     case GST_STATE_CHANGE_PLAYING_TO_PAUSED:
-      GST_OBJECT_LOCK(peadapter);
-
       gst_adapter_clear(peadapter->adapter);
 
       peadapter->inbuf_n_samples = -1;
-
-      GST_OBJECT_UNLOCK(peadapter);
 
       break;
     default:
