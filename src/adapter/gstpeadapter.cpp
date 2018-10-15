@@ -204,10 +204,10 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
     peadapter->inbuf_n_samples = map.size / peadapter->bpf;
 
     util::debug("peadapter: pulseaudio block size " +
-                std::to_string(peadapter->inbuf_n_samples) + " samples");
+                std::to_string(peadapter->inbuf_n_samples) + " frames");
 
     util::debug("peadapter: we will read in chunks of " +
-                std::to_string(peadapter->blocksize) + " samples");
+                std::to_string(peadapter->blocksize) + " frames");
 
     gst_buffer_unmap(buffer, &map);
   }
