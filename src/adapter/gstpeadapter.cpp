@@ -218,6 +218,8 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
          (ret == GST_FLOW_OK)) {
     guint64 distance;
 
+    GstBuffer* b = gst_adapter_take_buffer_fast(peadapter->adapter, nbytes);
+
     auto pts = gst_adapter_prev_pts(peadapter->adapter, &distance);
 
     /* convert bytes to time */
@@ -227,8 +229,6 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
     auto offset = gst_adapter_prev_offset(peadapter->adapter, &distance);
 
     offset += distance / peadapter->bpf;
-
-    GstBuffer* b = gst_adapter_take_buffer_fast(peadapter->adapter, nbytes);
 
     if (b != nullptr) {
       b = gst_buffer_make_writable(b);
