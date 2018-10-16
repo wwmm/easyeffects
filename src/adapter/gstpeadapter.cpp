@@ -184,6 +184,12 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
   GstPeadapter* peadapter = GST_PEADAPTER(parent);
   GstFlowReturn ret = GST_FLOW_OK;
 
+  if (buffer == nullptr) {
+    util::debug("peadapter: gstreamer sent us a null buffer! Ignoring it");
+
+    return ret;
+  }
+
   if (GST_BUFFER_FLAG_IS_SET(buffer, GST_BUFFER_FLAG_GAP)) {
     gst_adapter_clear(peadapter->adapter);
 
