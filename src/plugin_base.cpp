@@ -126,13 +126,27 @@ bool PluginBase::is_installed(GstElement* e) {
 void PluginBase::enable() {
   auto srcpad = gst_element_get_static_pad(identity_in, "src");
 
-  gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
-                    [](auto pad, auto info, auto d) {
-                      on_enable(d);
+  GstState state, pending;
 
-                      return GST_PAD_PROBE_REMOVE;
-                    },
-                    this, nullptr);
+  gst_element_get_state(bin, &state, &pending, 5 * GST_SECOND);
+
+  if (state == GST_STATE_PLAYING) {
+    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+                      [](auto pad, auto info, auto d) {
+                        on_enable(d);
+
+                        return GST_PAD_PROBE_REMOVE;
+                      },
+                      this, nullptr);
+  } else {
+    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
+                      [](auto pad, auto info, auto d) {
+                        on_enable(d);
+
+                        return GST_PAD_PROBE_REMOVE;
+                      },
+                      this, nullptr);
+  }
 
   g_object_unref(srcpad);
 }
