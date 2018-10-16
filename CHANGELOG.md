@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [4.3.8]
+### Fixed
+- Fixed a few sources of segmentation faults I could verify and hopefully a few
+others that do not happen in my computer. 
+
 ## [4.3.7]
 ### Fixed
 - Using GST_PAD_PROBE_TYPE_IDLE instead of GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM.
