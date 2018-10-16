@@ -186,12 +186,7 @@ void on_plugins_order_changed(GSettings* settings,
   if (update) {
     auto srcpad = gst_element_get_static_pad(l->identity_in, "src");
 
-    GstState state, pending;
-
-    gst_element_get_state(l->pipeline, &state, &pending,
-                          l->state_check_timeout);
-
-    if (state == GST_STATE_PLAYING) {
+    if (l->playing) {
       gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
                         on_pad_block, l, nullptr);
     } else {
