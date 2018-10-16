@@ -3,6 +3,8 @@
 
 namespace {
 
+std::mutex mtx;
+
 void on_message_element(const GstBus* gst_bus,
                         GstMessage* message,
                         SinkInputEffects* sie) {
@@ -61,6 +63,8 @@ void on_message_element(const GstBus* gst_bus,
 
 void update_order(gpointer user_data) {
   auto l = static_cast<SinkInputEffects*>(user_data);
+
+  std::lock_guard<std::mutex> lock(mtx);
 
   // unlinking elements using old plugins order
 
