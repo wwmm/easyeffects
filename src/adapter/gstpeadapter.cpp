@@ -193,11 +193,15 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
   if (GST_BUFFER_FLAG_IS_SET(buffer, GST_BUFFER_FLAG_GAP)) {
     gst_adapter_clear(peadapter->adapter);
 
+    peadapter->inbuf_n_samples = -1;
+
     return ret = gst_pad_push(peadapter->srcpad, buffer);
   }
 
   if (GST_BUFFER_FLAG_IS_SET(buffer, GST_BUFFER_FLAG_DISCONT)) {
     gst_adapter_clear(peadapter->adapter);
+
+    peadapter->inbuf_n_samples = -1;
 
     peadapter->flag_discont = true;
   }

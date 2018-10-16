@@ -135,7 +135,7 @@ GstPadProbeReturn on_pad_block(GstPad* pad,
       srcpad,
       static_cast<GstPadProbeType>(GST_PAD_PROBE_TYPE_BLOCK |
                                    GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM),
-      event_probe_cb, user_data, NULL);
+      event_probe_cb, user_data, nullptr);
 
   gst_object_unref(srcpad);
 
