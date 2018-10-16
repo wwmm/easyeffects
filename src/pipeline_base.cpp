@@ -155,8 +155,6 @@ void on_buffer_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
      * value to take effect
      */
 
-    gst_element_send_event(pb->pipeline, gst_event_new_flush_start());
-    gst_element_send_event(pb->pipeline, gst_event_new_flush_stop(true));
     gst_element_set_state(pb->pipeline, GST_STATE_READY);
 
     pb->update_pipeline_state();
@@ -169,8 +167,6 @@ void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
      * value to take effect
      */
 
-    gst_element_send_event(pb->pipeline, gst_event_new_flush_start());
-    gst_element_send_event(pb->pipeline, gst_event_new_flush_stop(true));
     gst_element_set_state(pb->pipeline, GST_STATE_READY);
 
     pb->update_pipeline_state();
@@ -386,9 +382,7 @@ void PipelineBase::update_pipeline_state() {
   if (!playing && wants_to_play) {
     gst_element_set_state(pipeline, GST_STATE_PLAYING);
   } else if (playing && !wants_to_play) {
-    gst_element_send_event(pipeline, gst_event_new_flush_start());
-    gst_element_send_event(pipeline, gst_event_new_flush_stop(true));
-    gst_element_set_state(pipeline, GST_STATE_PAUSED);
+    gst_element_set_state(pipeline, GST_STATE_READY);
   }
 }
 

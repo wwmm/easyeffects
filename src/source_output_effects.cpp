@@ -178,8 +178,6 @@ void on_blocksize_changed(GSettings* settings,
                           gchar* key,
                           SourceOutputEffects* l) {
   if (l->playing) {
-    gst_element_send_event(l->pipeline, gst_event_new_flush_start());
-    gst_element_send_event(l->pipeline, gst_event_new_flush_stop(true));
     gst_element_set_state(l->pipeline, GST_STATE_READY);
 
     l->update_pipeline_state();
