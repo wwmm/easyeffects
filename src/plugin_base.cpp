@@ -20,6 +20,27 @@ void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
   }
 }
 
+void on_enable(gpointer user_data) {
+  auto l = static_cast<PluginBase*>(user_data);
+
+  std::lock_guard<std::mutex> lock(mtx);
+
+  auto b = gst_bin_get_by_name(GST_BIN(l->plugin),
+                               std::string(l->name + "_bin").c_str());
+
+  if (!b) {
+    gst_element_unlink(l->identity_in, l->identity_out);
+
+    gst_bin_add(GST_BIN(l->plugin), l->bin);
+
+    gst_element_link_many(l->identity_in, l->bin, l->identity_out, nullptr);
+
+    gst_bin_sync_children_states(GST_BIN(l->plugin));
+
+    util::debug(l->log_tag + l->name + " enabled");
+  }
+}
+
 void on_disable(gpointer user_data) {
   auto l = static_cast<PluginBase*>(user_data);
 
@@ -105,32 +126,27 @@ bool PluginBase::is_installed(GstElement* e) {
 void PluginBase::enable() {
   auto srcpad = gst_element_get_static_pad(identity_in, "src");
 
-  gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
-                    [](auto pad, auto info, auto d) {
-                      auto l = static_cast<PluginBase*>(d);
+  GstState state, pending;
 
-                      std::lock_guard<std::mutex> lock(mtx);
+  gst_element_get_state(bin, &state, &pending, 5 * GST_SECOND);
 
-                      auto b = gst_bin_get_by_name(
-                          GST_BIN(l->plugin),
-                          std::string(l->name + "_bin").c_str());
+  if (state == GST_STATE_PLAYING) {
+    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+                      [](auto pad, auto info, auto d) {
+                        on_enable(d);
 
-                      if (!b) {
-                        gst_element_unlink(l->identity_in, l->identity_out);
+                        return GST_PAD_PROBE_REMOVE;
+                      },
+                      this, nullptr);
+  } else {
+    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
+                      [](auto pad, auto info, auto d) {
+                        on_enable(d);
 
-                        gst_bin_add(GST_BIN(l->plugin), l->bin);
-
-                        gst_element_link_many(l->identity_in, l->bin,
-                                              l->identity_out, nullptr);
-
-                        gst_bin_sync_children_states(GST_BIN(l->plugin));
-
-                        util::debug(l->log_tag + l->name + " enabled");
-                      }
-
-                      return GST_PAD_PROBE_REMOVE;
-                    },
-                    this, nullptr);
+                        return GST_PAD_PROBE_REMOVE;
+                      },
+                      this, nullptr);
+  }
 
   g_object_unref(srcpad);
 }
