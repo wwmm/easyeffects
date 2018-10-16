@@ -268,17 +268,17 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   app->pm->source_removed.connect(
       sigc::mem_fun(*this, &ApplicationUi::on_source_removed));
 
-  app->pm->new_default_sink.connect([&](auto name) {
+  connections.push_back(app->pm->new_default_sink.connect([&](auto name) {
     if (stack->get_visible_child_name() == "sink_inputs") {
       update_headerbar_subtitle(0);
     }
-  });
+  }));
 
-  app->pm->new_default_source.connect([&](auto name) {
+  connections.push_back(app->pm->new_default_source.connect([&](auto name) {
     if (stack->get_visible_child_name() == "source_outputs") {
       update_headerbar_subtitle(1);
     }
-  });
+  }));
 
   // help button
 
