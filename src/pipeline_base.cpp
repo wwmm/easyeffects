@@ -231,6 +231,8 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
 
   g_object_set(queue_src, "silent", true, nullptr);
   g_object_set(queue_src, "max-size-buffers", 0, nullptr);
+  g_object_set(queue_src, "max-size-bytes", 0, nullptr);
+  g_object_set(queue_src, "max-size-time", 0, nullptr);
 
   g_object_set(spectrum, "bands", spectrum_nbands, nullptr);
   g_object_set(spectrum, "threshold", spectrum_threshold, nullptr);
