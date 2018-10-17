@@ -6,18 +6,18 @@
 #include "plugin_base.hpp"
 
 class Gate : public PluginBase {
-   public:
-    Gate(const std::string& tag, const std::string& schema);
-    ~Gate();
+ public:
+  Gate(const std::string& tag, const std::string& schema);
+  ~Gate();
 
-    GstElement* gate;
+  GstElement* gate;
 
-    sigc::connection gating_connection;
+  sigc::connection gating_connection;
 
-    sigc::signal<void, double> gating;
+  sigc::signal<void, double> gating;
 
-   private:
-    void bind_to_gsettings();
+ private:
+  void bind_to_gsettings();
 };
 
 #endif

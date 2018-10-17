@@ -7,33 +7,33 @@
 #include <vector>
 
 class CalibrationSignals {
-   public:
-    CalibrationSignals();
+ public:
+  CalibrationSignals();
 
-    ~CalibrationSignals();
+  ~CalibrationSignals();
 
-    std::string log_tag = "calibration_signals: ";
+  std::string log_tag = "calibration_signals: ";
 
-    GstElement *pipeline, *source, *sink, *spectrum;
+  GstElement *pipeline, *source, *sink, *spectrum;
 
-    uint min_spectrum_freq = 20;     // Hz
-    uint max_spectrum_freq = 20000;  // Hz
-    int spectrum_threshold = -120;   // dB
-    uint spectrum_nbands = 3200, spectrum_nfreqs;
-    uint spectrum_npoints = 300;  // number of points displayed
-    float spline_f0, spline_df;
-    std::vector<float> spectrum_freqs, spectrum_x_axis;
-    std::vector<float> spectrum_mag_tmp, spectrum_mag;
+  uint min_spectrum_freq = 20;     // Hz
+  uint max_spectrum_freq = 20000;  // Hz
+  int spectrum_threshold = -120;   // dB
+  uint spectrum_nbands = 3200, spectrum_nfreqs;
+  uint spectrum_npoints = 300;  // number of points displayed
+  float spline_f0, spline_df;
+  std::vector<float> spectrum_freqs, spectrum_x_axis;
+  std::vector<float> spectrum_mag_tmp, spectrum_mag;
 
-    sigc::signal<void, std::vector<float>> new_spectrum;
+  sigc::signal<void, std::vector<float>> new_spectrum;
 
-    void start();
-    void stop();
-    void set_freq(const double& value);
-    void set_volume(const double& value);
+  void start();
+  void stop();
+  void set_freq(const double& value);
+  void set_volume(const double& value);
 
-   private:
-    GstBus* bus;
+ private:
+  GstBus* bus;
 };
 
 #endif

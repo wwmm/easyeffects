@@ -6,14 +6,14 @@
 #include "plugin_base.hpp"
 
 class Loudness : public PluginBase {
-   public:
-    Loudness(const std::string& tag, const std::string& schema);
-    ~Loudness();
+ public:
+  Loudness(const std::string& tag, const std::string& schema);
+  ~Loudness();
 
-    GstElement* loudness;
+  GstElement* loudness;
 
-   private:
-    void bind_to_gsettings();
+ private:
+  void bind_to_gsettings();
 };
 
 #endif

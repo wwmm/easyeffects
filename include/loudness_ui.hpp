@@ -6,14 +6,14 @@
 #include "plugin_ui_base.hpp"
 
 class LoudnessUi : public Gtk::Grid, public PluginUiBase {
-   public:
-    LoudnessUi(BaseObjectType* cobject,
-               const Glib::RefPtr<Gtk::Builder>& builder,
-               const std::string& settings_name);
-    virtual ~LoudnessUi();
+ public:
+  LoudnessUi(BaseObjectType* cobject,
+             const Glib::RefPtr<Gtk::Builder>& builder,
+             const std::string& settings_name);
+  virtual ~LoudnessUi();
 
-   private:
-    Glib::RefPtr<Gtk::Adjustment> loudness, output, link;
+ private:
+  Glib::RefPtr<Gtk::Adjustment> loudness, output, link;
 };
 
 #endif

@@ -4,28 +4,28 @@ LoudnessUi::LoudnessUi(BaseObjectType* cobject,
                        const Glib::RefPtr<Gtk::Builder>& builder,
                        const std::string& settings_name)
     : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
-    name = "loudness";
+  name = "loudness";
 
-    // loading glade widgets
+  // loading glade widgets
 
-    get_object(builder, "loudness", loudness);
-    get_object(builder, "output", output);
-    get_object(builder, "link", link);
+  get_object(builder, "loudness", loudness);
+  get_object(builder, "output", output);
+  get_object(builder, "link", link);
 
-    // gsettings bindings
+  // gsettings bindings
 
-    auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
+  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
-    settings->bind("installed", this, "sensitive", flag);
-    settings->bind("loudness", loudness.get(), "value", flag);
-    settings->bind("output", output.get(), "value", flag);
-    settings->bind("link", link.get(), "value", flag);
+  settings->bind("installed", this, "sensitive", flag);
+  settings->bind("loudness", loudness.get(), "value", flag);
+  settings->bind("output", output.get(), "value", flag);
+  settings->bind("link", link.get(), "value", flag);
 
-    settings->set_boolean("post-messages", true);
+  settings->set_boolean("post-messages", true);
 }
 
 LoudnessUi::~LoudnessUi() {
-    settings->set_boolean("post-messages", false);
+  settings->set_boolean("post-messages", false);
 
-    util::debug(name + " ui destroyed");
+  util::debug(name + " ui destroyed");
 }

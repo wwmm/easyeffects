@@ -9,26 +9,26 @@
 #include <iostream>
 
 class PluginBase {
-   public:
-    PluginBase(const std::string& tag,
-               const std::string& plugin_name,
-               const std::string& schema);
-    virtual ~PluginBase();
+ public:
+  PluginBase(const std::string& tag,
+             const std::string& plugin_name,
+             const std::string& schema);
+  virtual ~PluginBase();
 
-    std::string log_tag, name;
-    GstElement *plugin, *bin, *identity_in, *identity_out;
+  std::string log_tag, name;
+  GstElement *plugin, *bin, *identity_in, *identity_out;
 
-    std::atomic<bool> changing_pipeline;
+  std::atomic<bool> changing_pipeline;
 
-    bool plugin_is_installed = false;
+  bool plugin_is_installed = false;
 
-    void enable();
-    void disable();
+  void enable();
+  void disable();
 
-   protected:
-    GSettings* settings;
+ protected:
+  GSettings* settings;
 
-    bool is_installed(GstElement* e);
+  bool is_installed(GstElement* e);
 };
 
 #endif

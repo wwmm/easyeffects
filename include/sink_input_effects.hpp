@@ -23,67 +23,67 @@
 #include "stereo_tools.hpp"
 
 class SinkInputEffects : public PipelineBase {
-   public:
-    SinkInputEffects(PulseManager* pulse_manager);
-    virtual ~SinkInputEffects();
+ public:
+  SinkInputEffects(PulseManager* pulse_manager);
+  virtual ~SinkInputEffects();
 
-    std::string log_tag;
+  std::string log_tag;
 
-    PulseManager* pm;
+  PulseManager* pm;
 
-    std::vector<std::string> plugins_order, plugins_order_old;
-    std::map<std::string, GstElement*> plugins;
+  std::vector<std::string> plugins_order, plugins_order_old;
+  std::map<std::string, GstElement*> plugins;
 
-    std::unique_ptr<Limiter> limiter;
-    std::unique_ptr<Compressor> compressor;
-    std::unique_ptr<Filter> filter;
-    std::unique_ptr<Equalizer> equalizer;
-    std::unique_ptr<Reverb> reverb;
-    std::unique_ptr<BassEnhancer> bass_enhancer;
-    std::unique_ptr<Exciter> exciter;
-    std::unique_ptr<Crossfeed> crossfeed;
-    std::unique_ptr<Maximizer> maximizer;
-    std::unique_ptr<MultibandCompressor> multiband_compressor;
-    std::unique_ptr<Loudness> loudness;
-    std::unique_ptr<Gate> gate;
-    std::unique_ptr<MultibandGate> multiband_gate;
-    std::unique_ptr<Deesser> deesser;
-    std::unique_ptr<StereoTools> stereo_tools;
-    std::unique_ptr<Convolver> convolver;
-    std::unique_ptr<Crystalizer> crystalizer;
-    std::unique_ptr<AutoGain> autogain;
+  std::unique_ptr<Limiter> limiter;
+  std::unique_ptr<Compressor> compressor;
+  std::unique_ptr<Filter> filter;
+  std::unique_ptr<Equalizer> equalizer;
+  std::unique_ptr<Reverb> reverb;
+  std::unique_ptr<BassEnhancer> bass_enhancer;
+  std::unique_ptr<Exciter> exciter;
+  std::unique_ptr<Crossfeed> crossfeed;
+  std::unique_ptr<Maximizer> maximizer;
+  std::unique_ptr<MultibandCompressor> multiband_compressor;
+  std::unique_ptr<Loudness> loudness;
+  std::unique_ptr<Gate> gate;
+  std::unique_ptr<MultibandGate> multiband_gate;
+  std::unique_ptr<Deesser> deesser;
+  std::unique_ptr<StereoTools> stereo_tools;
+  std::unique_ptr<Convolver> convolver;
+  std::unique_ptr<Crystalizer> crystalizer;
+  std::unique_ptr<AutoGain> autogain;
 
-    sigc::signal<void, std::array<double, 2>> compressor_input_level;
-    sigc::signal<void, std::array<double, 2>> compressor_output_level;
-    sigc::signal<void, std::array<double, 2>> equalizer_input_level;
-    sigc::signal<void, std::array<double, 2>> equalizer_output_level;
-    sigc::signal<void, std::array<double, 2>> bass_enhancer_input_level;
-    sigc::signal<void, std::array<double, 2>> bass_enhancer_output_level;
-    sigc::signal<void, std::array<double, 2>> exciter_input_level;
-    sigc::signal<void, std::array<double, 2>> exciter_output_level;
-    sigc::signal<void, std::array<double, 2>> crossfeed_input_level;
-    sigc::signal<void, std::array<double, 2>> crossfeed_output_level;
-    sigc::signal<void, std::array<double, 2>> maximizer_input_level;
-    sigc::signal<void, std::array<double, 2>> maximizer_output_level;
-    sigc::signal<void, std::array<double, 2>> loudness_input_level;
-    sigc::signal<void, std::array<double, 2>> loudness_output_level;
-    sigc::signal<void, std::array<double, 2>> gate_input_level;
-    sigc::signal<void, std::array<double, 2>> gate_output_level;
-    sigc::signal<void, std::array<double, 2>> deesser_input_level;
-    sigc::signal<void, std::array<double, 2>> deesser_output_level;
-    sigc::signal<void, std::array<double, 2>> convolver_input_level;
-    sigc::signal<void, std::array<double, 2>> convolver_output_level;
-    sigc::signal<void, std::array<double, 2>> crystalizer_input_level;
-    sigc::signal<void, std::array<double, 2>> crystalizer_output_level;
-    sigc::signal<void, std::array<double, 2>> autogain_input_level;
-    sigc::signal<void, std::array<double, 2>> autogain_output_level;
+  sigc::signal<void, std::array<double, 2>> compressor_input_level;
+  sigc::signal<void, std::array<double, 2>> compressor_output_level;
+  sigc::signal<void, std::array<double, 2>> equalizer_input_level;
+  sigc::signal<void, std::array<double, 2>> equalizer_output_level;
+  sigc::signal<void, std::array<double, 2>> bass_enhancer_input_level;
+  sigc::signal<void, std::array<double, 2>> bass_enhancer_output_level;
+  sigc::signal<void, std::array<double, 2>> exciter_input_level;
+  sigc::signal<void, std::array<double, 2>> exciter_output_level;
+  sigc::signal<void, std::array<double, 2>> crossfeed_input_level;
+  sigc::signal<void, std::array<double, 2>> crossfeed_output_level;
+  sigc::signal<void, std::array<double, 2>> maximizer_input_level;
+  sigc::signal<void, std::array<double, 2>> maximizer_output_level;
+  sigc::signal<void, std::array<double, 2>> loudness_input_level;
+  sigc::signal<void, std::array<double, 2>> loudness_output_level;
+  sigc::signal<void, std::array<double, 2>> gate_input_level;
+  sigc::signal<void, std::array<double, 2>> gate_output_level;
+  sigc::signal<void, std::array<double, 2>> deesser_input_level;
+  sigc::signal<void, std::array<double, 2>> deesser_output_level;
+  sigc::signal<void, std::array<double, 2>> convolver_input_level;
+  sigc::signal<void, std::array<double, 2>> convolver_output_level;
+  sigc::signal<void, std::array<double, 2>> crystalizer_input_level;
+  sigc::signal<void, std::array<double, 2>> crystalizer_output_level;
+  sigc::signal<void, std::array<double, 2>> autogain_input_level;
+  sigc::signal<void, std::array<double, 2>> autogain_output_level;
 
-   private:
-    GSettings* sie_settings;
+ private:
+  GSettings* sie_settings;
 
-    void add_plugins_to_pipeline();
+  void add_plugins_to_pipeline();
 
-    void on_app_added(const std::shared_ptr<AppInfo>& app_info);
+  void on_app_added(const std::shared_ptr<AppInfo>& app_info);
 };
 
 #endif

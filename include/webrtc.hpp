@@ -4,22 +4,22 @@
 #include "plugin_base.hpp"
 
 class Webrtc : public PluginBase {
-   public:
-    Webrtc(const std::string& tag,
-           const std::string& schema,
-           const int& sampling_rate);
-    ~Webrtc();
+ public:
+  Webrtc(const std::string& tag,
+         const std::string& schema,
+         const int& sampling_rate);
+  ~Webrtc();
 
-    GstElement *webrtc, *probe_bin, *probe_src;
+  GstElement *webrtc, *probe_bin, *probe_src;
 
-    int rate;
+  int rate;
 
-    void set_probe_src_device(std::string name);
+  void set_probe_src_device(std::string name);
 
-   private:
-    void build_probe_bin();
-    void build_dsp_bin();
-    void bind_to_gsettings();
+ private:
+  void build_probe_bin();
+  void build_dsp_bin();
+  void bind_to_gsettings();
 };
 
 #endif

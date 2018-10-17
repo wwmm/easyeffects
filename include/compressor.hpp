@@ -6,18 +6,18 @@
 #include "plugin_base.hpp"
 
 class Compressor : public PluginBase {
-   public:
-    Compressor(const std::string& tag, const std::string& schema);
-    ~Compressor();
+ public:
+  Compressor(const std::string& tag, const std::string& schema);
+  ~Compressor();
 
-    GstElement* compressor;
+  GstElement* compressor;
 
-    sigc::connection compression_connection;
+  sigc::connection compression_connection;
 
-    sigc::signal<void, double> compression;
+  sigc::signal<void, double> compression;
 
-   private:
-    void bind_to_gsettings();
+ private:
+  void bind_to_gsettings();
 };
 
 #endif

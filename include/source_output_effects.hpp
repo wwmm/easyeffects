@@ -16,48 +16,48 @@
 #include "webrtc.hpp"
 
 class SourceOutputEffects : public PipelineBase {
-   public:
-    SourceOutputEffects(PulseManager* pulse_manager);
-    virtual ~SourceOutputEffects();
+ public:
+  SourceOutputEffects(PulseManager* pulse_manager);
+  virtual ~SourceOutputEffects();
 
-    std::string log_tag;
+  std::string log_tag;
 
-    PulseManager* pm;
+  PulseManager* pm;
 
-    std::vector<std::string> plugins_order, plugins_order_old;
-    std::map<std::string, GstElement*> plugins;
+  std::vector<std::string> plugins_order, plugins_order_old;
+  std::map<std::string, GstElement*> plugins;
 
-    std::unique_ptr<Limiter> limiter;
-    std::unique_ptr<Compressor> compressor;
-    std::unique_ptr<Filter> filter;
-    std::unique_ptr<Equalizer> equalizer;
-    std::unique_ptr<Reverb> reverb;
-    std::unique_ptr<Gate> gate;
-    std::unique_ptr<Deesser> deesser;
-    std::unique_ptr<Pitch> pitch;
-    std::unique_ptr<Webrtc> webrtc;
-    std::unique_ptr<MultibandCompressor> multiband_compressor;
-    std::unique_ptr<MultibandGate> multiband_gate;
+  std::unique_ptr<Limiter> limiter;
+  std::unique_ptr<Compressor> compressor;
+  std::unique_ptr<Filter> filter;
+  std::unique_ptr<Equalizer> equalizer;
+  std::unique_ptr<Reverb> reverb;
+  std::unique_ptr<Gate> gate;
+  std::unique_ptr<Deesser> deesser;
+  std::unique_ptr<Pitch> pitch;
+  std::unique_ptr<Webrtc> webrtc;
+  std::unique_ptr<MultibandCompressor> multiband_compressor;
+  std::unique_ptr<MultibandGate> multiband_gate;
 
-    sigc::signal<void, std::array<double, 2>> compressor_input_level;
-    sigc::signal<void, std::array<double, 2>> compressor_output_level;
-    sigc::signal<void, std::array<double, 2>> equalizer_input_level;
-    sigc::signal<void, std::array<double, 2>> equalizer_output_level;
-    sigc::signal<void, std::array<double, 2>> gate_input_level;
-    sigc::signal<void, std::array<double, 2>> gate_output_level;
-    sigc::signal<void, std::array<double, 2>> deesser_input_level;
-    sigc::signal<void, std::array<double, 2>> deesser_output_level;
-    sigc::signal<void, std::array<double, 2>> pitch_input_level;
-    sigc::signal<void, std::array<double, 2>> pitch_output_level;
-    sigc::signal<void, std::array<double, 2>> webrtc_input_level;
-    sigc::signal<void, std::array<double, 2>> webrtc_output_level;
+  sigc::signal<void, std::array<double, 2>> compressor_input_level;
+  sigc::signal<void, std::array<double, 2>> compressor_output_level;
+  sigc::signal<void, std::array<double, 2>> equalizer_input_level;
+  sigc::signal<void, std::array<double, 2>> equalizer_output_level;
+  sigc::signal<void, std::array<double, 2>> gate_input_level;
+  sigc::signal<void, std::array<double, 2>> gate_output_level;
+  sigc::signal<void, std::array<double, 2>> deesser_input_level;
+  sigc::signal<void, std::array<double, 2>> deesser_output_level;
+  sigc::signal<void, std::array<double, 2>> pitch_input_level;
+  sigc::signal<void, std::array<double, 2>> pitch_output_level;
+  sigc::signal<void, std::array<double, 2>> webrtc_input_level;
+  sigc::signal<void, std::array<double, 2>> webrtc_output_level;
 
-   private:
-    GSettings* soe_settings;
+ private:
+  GSettings* soe_settings;
 
-    void add_plugins_to_pipeline();
+  void add_plugins_to_pipeline();
 
-    void on_app_added(const std::shared_ptr<AppInfo>& app_info);
+  void on_app_added(const std::shared_ptr<AppInfo>& app_info);
 };
 
 #endif

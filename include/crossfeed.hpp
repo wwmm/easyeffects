@@ -6,14 +6,14 @@
 #include "plugin_base.hpp"
 
 class Crossfeed : public PluginBase {
-   public:
-    Crossfeed(const std::string& tag, const std::string& schema);
-    ~Crossfeed();
+ public:
+  Crossfeed(const std::string& tag, const std::string& schema);
+  ~Crossfeed();
 
-    GstElement* crossfeed;
+  GstElement* crossfeed;
 
-   private:
-    void bind_to_gsettings();
+ private:
+  void bind_to_gsettings();
 };
 
 #endif

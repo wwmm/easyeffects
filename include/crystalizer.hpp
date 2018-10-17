@@ -6,14 +6,14 @@
 #include "plugin_base.hpp"
 
 class Crystalizer : public PluginBase {
-   public:
-    Crystalizer(const std::string& tag, const std::string& schema);
-    ~Crystalizer();
+ public:
+  Crystalizer(const std::string& tag, const std::string& schema);
+  ~Crystalizer();
 
-    GstElement* crystalizer;
+  GstElement* crystalizer;
 
-   private:
-    void bind_to_gsettings();
+ private:
+  void bind_to_gsettings();
 };
 
 #endif

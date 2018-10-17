@@ -7,33 +7,32 @@ CrossfeedPreset::CrossfeedPreset()
 void CrossfeedPreset::save(boost::property_tree::ptree& root,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {
-    root.put(section + ".crossfeed.state", settings->get_boolean("state"));
+  root.put(section + ".crossfeed.state", settings->get_boolean("state"));
 
-    root.put(section + ".crossfeed.fcut", settings->get_int("fcut"));
+  root.put(section + ".crossfeed.fcut", settings->get_int("fcut"));
 
-    root.put(section + ".crossfeed.feed", settings->get_double("feed"));
+  root.put(section + ".crossfeed.feed", settings->get_double("feed"));
 }
 
 void CrossfeedPreset::load(boost::property_tree::ptree& root,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {
-    settings->set_boolean("state",
-                          root.get<bool>(section + ".crossfeed.state",
-                                         get_default<bool>(settings, "state")));
+  settings->set_boolean("state",
+                        root.get<bool>(section + ".crossfeed.state",
+                                       get_default<bool>(settings, "state")));
 
-    settings->set_int("fcut",
-                      root.get<int>(section + ".crossfeed.fcut",
-                                    get_default<int>(settings, "fcut")));
+  settings->set_int("fcut", root.get<int>(section + ".crossfeed.fcut",
+                                          get_default<int>(settings, "fcut")));
 
-    settings->set_double(
-        "feed", root.get<double>(section + ".crossfeed.feed",
-                                 get_default<double>(settings, "feed")));
+  settings->set_double("feed",
+                       root.get<double>(section + ".crossfeed.feed",
+                                        get_default<double>(settings, "feed")));
 }
 
 void CrossfeedPreset::write(boost::property_tree::ptree& root) {
-    save(root, "output", output_settings);
+  save(root, "output", output_settings);
 }
 
 void CrossfeedPreset::read(boost::property_tree::ptree& root) {
-    load(root, "output", output_settings);
+  load(root, "output", output_settings);
 }

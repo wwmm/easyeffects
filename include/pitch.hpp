@@ -6,14 +6,14 @@
 #include "plugin_base.hpp"
 
 class Pitch : public PluginBase {
-   public:
-    Pitch(const std::string& tag, const std::string& schema);
-    ~Pitch();
+ public:
+  Pitch(const std::string& tag, const std::string& schema);
+  ~Pitch();
 
-    GstElement* pitch;
+  GstElement* pitch;
 
-   private:
-    void bind_to_gsettings();
+ private:
+  void bind_to_gsettings();
 };
 
 #endif

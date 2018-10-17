@@ -6,18 +6,18 @@
 #include "plugin_base.hpp"
 
 class Maximizer : public PluginBase {
-   public:
-    Maximizer(const std::string& tag, const std::string& schema);
-    ~Maximizer();
+ public:
+  Maximizer(const std::string& tag, const std::string& schema);
+  ~Maximizer();
 
-    GstElement* maximizer;
+  GstElement* maximizer;
 
-    sigc::connection reduction_connection;
+  sigc::connection reduction_connection;
 
-    sigc::signal<void, double> reduction;
+  sigc::signal<void, double> reduction;
 
-   private:
-    void bind_to_gsettings();
+ private:
+  void bind_to_gsettings();
 };
 
 #endif
