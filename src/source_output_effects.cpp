@@ -180,7 +180,11 @@ void on_plugins_order_changed(GSettings* settings,
 void on_blocksize_changed(GSettings* settings,
                           gchar* key,
                           SourceOutputEffects* l) {
-  if (l->playing) {
+  GstState state, pending;
+
+  gst_element_get_state(l->pipeline, &state, &pending, l->state_check_timeout);
+
+  if (state == GST_STATE_PLAYING || state == GST_STATE_PAUSED) {
     gst_element_set_state(l->pipeline, GST_STATE_READY);
 
     l->update_pipeline_state();

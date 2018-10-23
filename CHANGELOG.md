@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 
+## [4.3.9]
 ### Fixed
 - Fixed a bug that could cause our pipeline to crash when changing the effects
 order.

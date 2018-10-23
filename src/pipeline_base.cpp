@@ -150,7 +150,12 @@ void on_src_type_changed(GstElement* typefind,
 }
 
 void on_buffer_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
-  if (pb->playing) {
+  GstState state, pending;
+
+  gst_element_get_state(pb->pipeline, &state, &pending,
+                        pb->state_check_timeout);
+
+  if (state == GST_STATE_PLAYING || state == GST_STATE_PAUSED) {
     /*when we are playing it is necessary to reset the pipeline for the new
      * value to take effect
      */
@@ -162,7 +167,12 @@ void on_buffer_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
 }
 
 void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
-  if (pb->playing) {
+  GstState state, pending;
+
+  gst_element_get_state(pb->pipeline, &state, &pending,
+                        pb->state_check_timeout);
+
+  if (state == GST_STATE_PLAYING || state == GST_STATE_PAUSED) {
     /*when we are playing it is necessary to reset the pipeline for the new
      * value to take effect
      */
@@ -380,9 +390,13 @@ void PipelineBase::update_pipeline_state() {
     }
   }
 
-  if (!playing && wants_to_play) {
+  GstState state, pending;
+
+  gst_element_get_state(pipeline, &state, &pending, state_check_timeout);
+
+  if (state != GST_STATE_PLAYING && wants_to_play) {
     gst_element_set_state(pipeline, GST_STATE_PLAYING);
-  } else if (playing && !wants_to_play) {
+  } else if (state == GST_STATE_PLAYING && !wants_to_play) {
     gst_element_set_state(pipeline, GST_STATE_READY);
   }
 }
