@@ -165,7 +165,7 @@ void on_plugins_order_changed(GSettings* settings,
 
     gst_element_get_state(l->effects_bin, &state, &pending, 5 * GST_SECOND);
 
-    if (state) {
+    if (state == GST_STATE_PLAYING) {
       gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
                         on_pad_block, l, nullptr);
     } else {
