@@ -97,7 +97,14 @@ void update_order(gpointer user_data) {
 
   // syncing elements state with effects_bin
 
-  gst_bin_sync_children_states(GST_BIN(l->effects_bin));
+  auto success = gst_bin_sync_children_states(GST_BIN(l->effects_bin));
+
+  if (!success) {
+    util::debug(l->log_tag + "failed to sync children states");
+    util::debug(l->log_tag + "restarting the pipeline");
+
+    l->update_pipeline_state();
+  }
 
   std::string list;
 
@@ -108,53 +115,14 @@ void update_order(gpointer user_data) {
   util::debug(l->log_tag + "new plugins order: [" + list + "]");
 }
 
-GstPadProbeReturn event_probe_cb(GstPad* pad,
-                                 GstPadProbeInfo* info,
-                                 gpointer user_data) {
-  if (GST_EVENT_TYPE(GST_PAD_PROBE_INFO_DATA(info)) != GST_EVENT_EOS) {
-    return GST_PAD_PROBE_PASS;
-  }
-
+GstPadProbeReturn on_pad_idle(GstPad* pad,
+                              GstPadProbeInfo* info,
+                              gpointer user_data) {
   gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
 
   update_order(user_data);
 
   return GST_PAD_PROBE_DROP;
-}
-
-GstPadProbeReturn on_pad_block(GstPad* pad,
-                               GstPadProbeInfo* info,
-                               gpointer user_data) {
-  auto l = static_cast<SinkInputEffects*>(user_data);
-
-  gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
-
-  auto srcpad = gst_element_get_static_pad(l->identity_out, "src");
-
-  gst_pad_add_probe(
-      srcpad,
-      static_cast<GstPadProbeType>(GST_PAD_PROBE_TYPE_BLOCK |
-                                   GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM),
-      event_probe_cb, user_data, nullptr);
-
-  gst_object_unref(srcpad);
-
-  auto sinkpad =
-      gst_element_get_static_pad(l->plugins[l->plugins_order_old[0]], "sink");
-
-  gst_pad_send_event(sinkpad, gst_event_new_eos());
-
-  gst_object_unref(sinkpad);
-
-  return GST_PAD_PROBE_OK;
-}
-
-GstPadProbeReturn on_pad_idle(GstPad* pad,
-                              GstPadProbeInfo* info,
-                              gpointer user_data) {
-  update_order(user_data);
-
-  return GST_PAD_PROBE_REMOVE;
 }
 
 void on_plugins_order_changed(GSettings* settings,
@@ -186,13 +154,7 @@ void on_plugins_order_changed(GSettings* settings,
   if (update) {
     auto srcpad = gst_element_get_static_pad(l->identity_in, "src");
 
-    if (l->playing) {
-      gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
-                        on_pad_block, l, nullptr);
-    } else {
-      gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE, on_pad_idle, l,
-                        nullptr);
-    }
+    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE, on_pad_idle, l, nullptr);
 
     g_object_unref(srcpad);
   }
@@ -201,7 +163,11 @@ void on_plugins_order_changed(GSettings* settings,
 void on_blocksize_changed(GSettings* settings,
                           gchar* key,
                           SinkInputEffects* l) {
-  if (l->playing) {
+  GstState state, pending;
+
+  gst_element_get_state(l->pipeline, &state, &pending, l->state_check_timeout);
+
+  if (state == GST_STATE_PLAYING || state == GST_STATE_PAUSED) {
     gst_element_set_state(l->pipeline, GST_STATE_READY);
 
     l->update_pipeline_state();

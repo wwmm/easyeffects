@@ -126,27 +126,15 @@ bool PluginBase::is_installed(GstElement* e) {
 void PluginBase::enable() {
   auto srcpad = gst_element_get_static_pad(identity_in, "src");
 
-  GstState state, pending;
+  gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
+                    [](auto pad, auto info, auto d) {
+                      gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
 
-  gst_element_get_state(bin, &state, &pending, 5 * GST_SECOND);
+                      on_enable(d);
 
-  if (state == GST_STATE_PLAYING) {
-    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
-                      [](auto pad, auto info, auto d) {
-                        on_enable(d);
-
-                        return GST_PAD_PROBE_REMOVE;
-                      },
-                      this, nullptr);
-  } else {
-    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
-                      [](auto pad, auto info, auto d) {
-                        on_enable(d);
-
-                        return GST_PAD_PROBE_REMOVE;
-                      },
-                      this, nullptr);
-  }
+                      return GST_PAD_PROBE_DROP;
+                    },
+                    this, nullptr);
 
   g_object_unref(srcpad);
 }
@@ -154,27 +142,15 @@ void PluginBase::enable() {
 void PluginBase::disable() {
   auto srcpad = gst_element_get_static_pad(identity_in, "src");
 
-  GstState state, pending;
+  gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
+                    [](auto pad, auto info, auto d) {
+                      gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
 
-  gst_element_get_state(bin, &state, &pending, 5 * GST_SECOND);
+                      on_disable(d);
 
-  if (state == GST_STATE_PLAYING) {
-    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
-                      [](auto pad, auto info, auto d) {
-                        on_disable(d);
-
-                        return GST_PAD_PROBE_REMOVE;
-                      },
-                      this, nullptr);
-  } else {
-    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
-                      [](auto pad, auto info, auto d) {
-                        on_disable(d);
-
-                        return GST_PAD_PROBE_REMOVE;
-                      },
-                      this, nullptr);
-  }
+                      return GST_PAD_PROBE_DROP;
+                    },
+                    this, nullptr);
 
   g_object_unref(srcpad);
 }

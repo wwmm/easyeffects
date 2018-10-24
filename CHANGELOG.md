@@ -2,10 +2,15 @@
 
 ## [Unreleased]
 
+## [4.3.9]
+### Fixed
+- Fixed a bug that could cause our pipeline to crash when changing the effects
+order.
+
 ## [4.3.8]
 ### Fixed
 - Fixed a few sources of segmentation faults I could verify and hopefully a few
-others that do not happen in my computer. 
+others that do not happen in my computer.
 
 ## [4.3.7]
 ### Fixed
