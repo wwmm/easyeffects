@@ -73,7 +73,14 @@ void update_order(gpointer user_data) {
 
   // syncing elements state with effects_bin
 
-  gst_bin_sync_children_states(GST_BIN(l->effects_bin));
+  auto success = gst_bin_sync_children_states(GST_BIN(l->effects_bin));
+
+  if (!success) {
+    util::debug(l->log_tag + "failed to sync children states");
+    util::debug(l->log_tag + "restarting the pipeline");
+
+    l->update_pipeline_state();
+  }
 
   std::string list;
 
