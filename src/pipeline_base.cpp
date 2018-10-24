@@ -484,9 +484,11 @@ void PipelineBase::enable_spectrum() {
   auto srcpad = gst_element_get_static_pad(spectrum_identity_in, "src");
 
   gst_pad_add_probe(
-      srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+      srcpad, GST_PAD_PROBE_TYPE_IDLE,
       [](auto pad, auto info, auto d) {
         auto l = static_cast<PipelineBase*>(d);
+
+        gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
 
         std::lock_guard<std::mutex> lock(spectrum_mtx);
 
@@ -505,7 +507,7 @@ void PipelineBase::enable_spectrum() {
           util::debug(l->log_tag + "spectrum enabled");
         }
 
-        return GST_PAD_PROBE_REMOVE;
+        return GST_PAD_PROBE_DROP;
       },
       this, nullptr);
 
@@ -516,9 +518,11 @@ void PipelineBase::disable_spectrum() {
   auto srcpad = gst_element_get_static_pad(spectrum_identity_in, "src");
 
   gst_pad_add_probe(
-      srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+      srcpad, GST_PAD_PROBE_TYPE_IDLE,
       [](auto pad, auto info, auto d) {
         auto l = static_cast<PipelineBase*>(d);
+
+        gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
 
         std::lock_guard<std::mutex> lock(spectrum_mtx);
 
@@ -539,7 +543,7 @@ void PipelineBase::disable_spectrum() {
           util::debug(l->log_tag + "spectrum disabled");
         }
 
-        return GST_PAD_PROBE_REMOVE;
+        return GST_PAD_PROBE_DROP;
       },
       this, nullptr);
 
