@@ -138,7 +138,7 @@ void Equalizer::update_equalizer() {
 
     gst_element_get_state(equalizer, &state, nullptr, GST_CLOCK_TIME_NONE);
 
-    if (state == GST_STATE_PLAYING) {
+    if (state != GST_STATE_NULL) {
       is_enabled = true;
 
       disable();
@@ -147,7 +147,7 @@ void Equalizer::update_equalizer() {
         gst_element_get_state(equalizer, &state, nullptr, GST_CLOCK_TIME_NONE);
 
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
-      } while (state == GST_STATE_PLAYING);
+      } while (state != GST_STATE_NULL);
     }
 
     for (int n = 0; n < current_nbands; n++) {
