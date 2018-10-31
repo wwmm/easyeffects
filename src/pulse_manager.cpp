@@ -268,7 +268,7 @@ void PulseManager::subscribe_to_events() {
         auto pm = static_cast<PulseManager*>(d);
 
         if (success == 0) {
-          util::error(pm->log_tag + "context event subscribe failed!");
+          util::critical(pm->log_tag + "context event subscribe failed!");
         }
       },
       this);
@@ -307,7 +307,7 @@ void PulseManager::get_server_info() {
 
     pa_operation_unref(o);
   } else {
-    util::error(log_tag + " failed to get server info");
+    util::critical(log_tag + " failed to get server info");
   }
 
   pa_threaded_mainloop_unlock(main_loop);
@@ -356,7 +356,7 @@ std::shared_ptr<mySinkInfo> PulseManager::get_sink_info(std::string name) {
 
     pa_operation_unref(o);
   } else {
-    util::error(log_tag + " failed to get sink info: " + name);
+    util::critical(log_tag + " failed to get sink info: " + name);
   }
 
   pa_threaded_mainloop_unlock(main_loop);
@@ -408,7 +408,7 @@ std::shared_ptr<mySourceInfo> PulseManager::get_source_info(std::string name) {
 
     pa_operation_unref(o);
   } else {
-    util::error(log_tag + " failed to get source info:" + name);
+    util::critical(log_tag + " failed to get source info:" + name);
   }
 
   pa_threaded_mainloop_unlock(main_loop);
@@ -431,7 +431,7 @@ std::shared_ptr<mySinkInfo> PulseManager::get_default_sink_info() {
 
     return info;
   } else {
-    util::error(log_tag + "could not get default sink info");
+    util::critical(log_tag + "could not get default sink info");
 
     return nullptr;
   }
@@ -448,7 +448,7 @@ std::shared_ptr<mySourceInfo> PulseManager::get_default_source_info() {
 
     return info;
   } else {
-    util::error(log_tag + "could not get default source info");
+    util::critical(log_tag + "could not get default source info");
 
     return nullptr;
   }
@@ -485,7 +485,7 @@ std::shared_ptr<mySinkInfo> PulseManager::load_sink(std::string name,
 
       pa_operation_unref(o);
     } else {
-      util::error(log_tag + " failed to load sink:" + name);
+      util::critical(log_tag + " failed to load sink:" + name);
     }
 
     pa_threaded_mainloop_unlock(main_loop);
