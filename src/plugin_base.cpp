@@ -152,7 +152,7 @@ void PluginBase::enable() {
 
                       on_enable(d);
 
-                      return GST_PAD_PROBE_DROP;
+                      return GST_PAD_PROBE_OK;
                     },
                     this, nullptr);
 
@@ -168,7 +168,7 @@ void PluginBase::disable() {
 
                       on_disable(d);
 
-                      return GST_PAD_PROBE_DROP;
+                      return GST_PAD_PROBE_OK;
                     },
                     this, nullptr);
 
