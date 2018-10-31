@@ -340,6 +340,8 @@ void PipelineBase::set_source_monitor_name(std::string name) {
     } else {
       g_object_set(source, "device", name.c_str(), nullptr);
     }
+
+    util::debug(log_tag + "using input device: " + name);
   }
 
   g_free(current_device);
@@ -347,6 +349,8 @@ void PipelineBase::set_source_monitor_name(std::string name) {
 
 void PipelineBase::set_output_sink_name(std::string name) {
   g_object_set(sink, "device", name.c_str(), nullptr);
+
+  util::debug(log_tag + "using output device: " + name);
 }
 
 void PipelineBase::set_pulseaudio_props(std::string props) {
