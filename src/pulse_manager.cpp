@@ -550,7 +550,7 @@ void PulseManager::find_sink_inputs() {
 
     pa_operation_unref(o);
   } else {
-    util::error(log_tag + " failed to find sink inputs");
+    util::warning(log_tag + " failed to find sink inputs");
   }
 
   pa_threaded_mainloop_unlock(main_loop);
@@ -581,7 +581,7 @@ void PulseManager::find_source_outputs() {
 
     pa_operation_unref(o);
   } else {
-    util::error(log_tag + " failed to find source outputs");
+    util::warning(log_tag + " failed to find source outputs");
   }
 
   pa_threaded_mainloop_unlock(main_loop);
@@ -626,7 +626,7 @@ void PulseManager::find_sinks() {
 
     pa_operation_unref(o);
   } else {
-    util::error(log_tag + " failed to find sinks");
+    util::warning(log_tag + " failed to find sinks");
   }
 
   pa_threaded_mainloop_unlock(main_loop);
@@ -671,7 +671,7 @@ void PulseManager::find_sources() {
 
     pa_operation_unref(o);
   } else {
-    util::error(log_tag + " failed to find sources");
+    util::warning(log_tag + " failed to find sources");
   }
 
   pa_threaded_mainloop_unlock(main_loop);
@@ -945,8 +945,8 @@ void PulseManager::set_sink_input_mute(const std::string& name,
 
     pa_operation_unref(o);
   } else {
-    util::critical(log_tag + "failed to mute set sink input: " + name +
-                   ", idx = " + std::to_string(idx) + " to PE");
+    util::warning(log_tag + "failed to mute set sink input: " + name +
+                  ", idx = " + std::to_string(idx) + " to PE");
   }
 
   pa_threaded_mainloop_unlock(main_loop);
@@ -1000,8 +1000,8 @@ void PulseManager::set_source_output_volume(const std::string& name,
 
       pa_threaded_mainloop_unlock(main_loop);
     } else {
-      util::debug(log_tag + "failed to change volume of source output: " +
-                  name + ", idx = " + std::to_string(idx));
+      util::warning(log_tag + "failed to change volume of source output: " +
+                    name + ", idx = " + std::to_string(idx));
 
       pa_threaded_mainloop_unlock(main_loop);
     }
@@ -1045,8 +1045,8 @@ void PulseManager::set_source_output_mute(const std::string& name,
 
     pa_operation_unref(o);
   } else {
-    util::critical(log_tag + "failed to mute source output: " + name +
-                   ", idx = " + std::to_string(idx) + " to PE");
+    util::warning(log_tag + "failed to mute source output: " + name +
+                  ", idx = " + std::to_string(idx) + " to PE");
   }
 
   pa_threaded_mainloop_unlock(main_loop);
