@@ -511,7 +511,7 @@ void PipelineBase::enable_spectrum() {
           util::debug(l->log_tag + "spectrum enabled");
         }
 
-        return GST_PAD_PROBE_DROP;
+        return GST_PAD_PROBE_OK;
       },
       this, nullptr);
 
@@ -547,7 +547,7 @@ void PipelineBase::disable_spectrum() {
           util::debug(l->log_tag + "spectrum disabled");
         }
 
-        return GST_PAD_PROBE_DROP;
+        return GST_PAD_PROBE_OK;
       },
       this, nullptr);
 
