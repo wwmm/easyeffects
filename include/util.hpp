@@ -5,6 +5,7 @@
 #include <glib.h>
 #include <iostream>
 #include <vector>
+#include <array>
 
 namespace util {
 
