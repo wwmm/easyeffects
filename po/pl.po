@@ -29,7 +29,7 @@ msgstr "Utwórz profil"
 
 #: data/application.glade:76
 msgid "Import Presets"
-msgstr "Importuj rrofile"
+msgstr "Importuj profile"
 
 #: data/application.glade:187 src/calibration_ui.cpp:43
 #: src/calibration_ui.cpp:168
@@ -155,7 +155,7 @@ msgstr "Stan"
 
 #: data/limiter.glade:61 data/limiter.glade:412 data/webrtc.glade:377
 msgid "Limiter"
-msgstr "Ogranicznik"
+msgstr "Limiter"
 
 #: data/limiter.glade:212
 msgid "Input Gain"
