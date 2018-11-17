@@ -35,9 +35,19 @@ void on_enable(gpointer user_data) {
 
     gst_element_link_many(l->identity_in, l->bin, l->identity_out, nullptr);
 
-    gst_bin_sync_children_states(GST_BIN(l->plugin));
+    auto success = gst_bin_sync_children_states(GST_BIN(l->plugin));
 
-    util::debug(l->log_tag + l->name + " enabled");
+    if (success) {
+      GstState state, pending;
+
+      gst_element_get_state(l->bin, &state, &pending, 5 * GST_SECOND);
+
+      util::debug(l->log_tag + l->name +
+                  " enabled: " + gst_element_state_get_name(state) + " -> " +
+                  gst_element_state_get_name(pending));
+    } else {
+      util::warning(l->log_tag + l->name + " failed to sync children state");
+    }
   }
 }
 
@@ -58,9 +68,19 @@ void on_disable(gpointer user_data) {
 
     gst_element_link(l->identity_in, l->identity_out);
 
-    gst_bin_sync_children_states(GST_BIN(l->plugin));
+    auto success = gst_bin_sync_children_states(GST_BIN(l->plugin));
 
-    util::debug(l->log_tag + l->name + " disabled");
+    if (success) {
+      GstState state, pending;
+
+      gst_element_get_state(l->bin, &state, &pending, 5 * GST_SECOND);
+
+      util::debug(l->log_tag + l->name +
+                  " disabled: " + gst_element_state_get_name(state) + " -> " +
+                  gst_element_state_get_name(pending));
+    } else {
+      util::warning(l->log_tag + l->name + " failed to sync children state");
+    }
   }
 }
 
@@ -132,7 +152,7 @@ void PluginBase::enable() {
 
                       on_enable(d);
 
-                      return GST_PAD_PROBE_DROP;
+                      return GST_PAD_PROBE_OK;
                     },
                     this, nullptr);
 
@@ -148,7 +168,7 @@ void PluginBase::disable() {
 
                       on_disable(d);
 
-                      return GST_PAD_PROBE_DROP;
+                      return GST_PAD_PROBE_OK;
                     },
                     this, nullptr);
 

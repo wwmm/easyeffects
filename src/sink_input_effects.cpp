@@ -122,7 +122,7 @@ GstPadProbeReturn on_pad_idle(GstPad* pad,
 
   update_order(user_data);
 
-  return GST_PAD_PROBE_DROP;
+  return GST_PAD_PROBE_OK;
 }
 
 void on_plugins_order_changed(GSettings* settings,

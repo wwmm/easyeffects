@@ -268,7 +268,7 @@ void PulseManager::subscribe_to_events() {
         auto pm = static_cast<PulseManager*>(d);
 
         if (success == 0) {
-          util::error(pm->log_tag + "context event subscribe failed!");
+          util::critical(pm->log_tag + "context event subscribe failed!");
         }
       },
       this);
@@ -300,11 +300,15 @@ void PulseManager::get_server_info() {
       },
       this);
 
-  while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-    pa_threaded_mainloop_wait(main_loop);
-  }
+  if (o != nullptr) {
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+      pa_threaded_mainloop_wait(main_loop);
+    }
 
-  pa_operation_unref(o);
+    pa_operation_unref(o);
+  } else {
+    util::critical(log_tag + " failed to get server info");
+  }
 
   pa_threaded_mainloop_unlock(main_loop);
 }
@@ -345,11 +349,15 @@ std::shared_ptr<mySinkInfo> PulseManager::get_sink_info(std::string name) {
       },
       &data);
 
-  while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-    pa_threaded_mainloop_wait(main_loop);
-  }
+  if (o != nullptr) {
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+      pa_threaded_mainloop_wait(main_loop);
+    }
 
-  pa_operation_unref(o);
+    pa_operation_unref(o);
+  } else {
+    util::critical(log_tag + " failed to get sink info: " + name);
+  }
 
   pa_threaded_mainloop_unlock(main_loop);
 
@@ -393,11 +401,15 @@ std::shared_ptr<mySourceInfo> PulseManager::get_source_info(std::string name) {
       },
       &data);
 
-  while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-    pa_threaded_mainloop_wait(main_loop);
-  }
+  if (o != nullptr) {
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+      pa_threaded_mainloop_wait(main_loop);
+    }
 
-  pa_operation_unref(o);
+    pa_operation_unref(o);
+  } else {
+    util::critical(log_tag + " failed to get source info:" + name);
+  }
 
   pa_threaded_mainloop_unlock(main_loop);
 
@@ -419,7 +431,7 @@ std::shared_ptr<mySinkInfo> PulseManager::get_default_sink_info() {
 
     return info;
   } else {
-    util::error(log_tag + "could not get default sink info");
+    util::critical(log_tag + "could not get default sink info");
 
     return nullptr;
   }
@@ -436,7 +448,7 @@ std::shared_ptr<mySourceInfo> PulseManager::get_default_source_info() {
 
     return info;
   } else {
-    util::error(log_tag + "could not get default source info");
+    util::critical(log_tag + "could not get default source info");
 
     return nullptr;
   }
@@ -466,11 +478,15 @@ std::shared_ptr<mySinkInfo> PulseManager::load_sink(std::string name,
         },
         this);
 
-    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-      pa_threaded_mainloop_wait(main_loop);
-    }
+    if (o != nullptr) {
+      while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+        pa_threaded_mainloop_wait(main_loop);
+      }
 
-    pa_operation_unref(o);
+      pa_operation_unref(o);
+    } else {
+      util::critical(log_tag + " failed to load sink:" + name);
+    }
 
     pa_threaded_mainloop_unlock(main_loop);
 
@@ -527,11 +543,15 @@ void PulseManager::find_sink_inputs() {
       },
       this);
 
-  while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-    pa_threaded_mainloop_wait(main_loop);
-  }
+  if (o != nullptr) {
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+      pa_threaded_mainloop_wait(main_loop);
+    }
 
-  pa_operation_unref(o);
+    pa_operation_unref(o);
+  } else {
+    util::warning(log_tag + " failed to find sink inputs");
+  }
 
   pa_threaded_mainloop_unlock(main_loop);
 }
@@ -554,11 +574,15 @@ void PulseManager::find_source_outputs() {
       },
       this);
 
-  while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-    pa_threaded_mainloop_wait(main_loop);
-  }
+  if (o != nullptr) {
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+      pa_threaded_mainloop_wait(main_loop);
+    }
 
-  pa_operation_unref(o);
+    pa_operation_unref(o);
+  } else {
+    util::warning(log_tag + " failed to find source outputs");
+  }
 
   pa_threaded_mainloop_unlock(main_loop);
 }
@@ -595,11 +619,15 @@ void PulseManager::find_sinks() {
       },
       this);
 
-  while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-    pa_threaded_mainloop_wait(main_loop);
-  }
+  if (o != nullptr) {
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+      pa_threaded_mainloop_wait(main_loop);
+    }
 
-  pa_operation_unref(o);
+    pa_operation_unref(o);
+  } else {
+    util::warning(log_tag + " failed to find sinks");
+  }
 
   pa_threaded_mainloop_unlock(main_loop);
 }
@@ -636,11 +664,15 @@ void PulseManager::find_sources() {
       },
       this);
 
-  while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-    pa_threaded_mainloop_wait(main_loop);
-  }
+  if (o != nullptr) {
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+      pa_threaded_mainloop_wait(main_loop);
+    }
 
-  pa_operation_unref(o);
+    pa_operation_unref(o);
+  } else {
+    util::warning(log_tag + " failed to find sources");
+  }
 
   pa_threaded_mainloop_unlock(main_loop);
 }
@@ -675,11 +707,16 @@ void PulseManager::move_sink_input_to_pulseeffects(const std::string& name,
       },
       &data);
 
-  while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-    pa_threaded_mainloop_wait(main_loop);
-  }
+  if (o != nullptr) {
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+      pa_threaded_mainloop_wait(main_loop);
+    }
 
-  pa_operation_unref(o);
+    pa_operation_unref(o);
+  } else {
+    util::critical(log_tag + "failed to move sink input: " + name +
+                   ", idx = " + std::to_string(idx) + " to PE");
+  }
 
   pa_threaded_mainloop_unlock(main_loop);
 }
@@ -714,11 +751,16 @@ void PulseManager::remove_sink_input_from_pulseeffects(const std::string& name,
       },
       &data);
 
-  while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-    pa_threaded_mainloop_wait(main_loop);
-  }
+  if (o != nullptr) {
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+      pa_threaded_mainloop_wait(main_loop);
+    }
 
-  pa_operation_unref(o);
+    pa_operation_unref(o);
+  } else {
+    util::critical(log_tag + "failed to remove sink input: " + name +
+                   ", idx = " + std::to_string(idx) + " from PE");
+  }
 
   pa_threaded_mainloop_unlock(main_loop);
 }
@@ -752,11 +794,16 @@ void PulseManager::move_source_output_to_pulseeffects(const std::string& name,
       },
       &data);
 
-  while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-    pa_threaded_mainloop_wait(main_loop);
-  }
+  if (o != nullptr) {
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+      pa_threaded_mainloop_wait(main_loop);
+    }
 
-  pa_operation_unref(o);
+    pa_operation_unref(o);
+  } else {
+    util::critical(log_tag + "failed to move source output: " + name +
+                   ", idx = " + std::to_string(idx) + " to PE");
+  }
 
   pa_threaded_mainloop_unlock(main_loop);
 }
@@ -791,11 +838,16 @@ void PulseManager::remove_source_output_from_pulseeffects(
       },
       &data);
 
-  while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-    pa_threaded_mainloop_wait(main_loop);
-  }
+  if (o != nullptr) {
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+      pa_threaded_mainloop_wait(main_loop);
+    }
 
-  pa_operation_unref(o);
+    pa_operation_unref(o);
+  } else {
+    util::critical(log_tag + "failed to remove source output: " + name +
+                   ", idx = " + std::to_string(idx) + " from PE");
+  }
 
   pa_threaded_mainloop_unlock(main_loop);
 }
@@ -830,9 +882,9 @@ void PulseManager::set_sink_input_volume(const std::string& name,
             util::debug(d->pm->log_tag + "changed volume of sink input: " +
                         d->name + ", idx = " + std::to_string(d->idx));
           } else {
-            util::debug(d->pm->log_tag +
-                        "failed to change volume of sink input: " + d->name +
-                        ", idx = " + std::to_string(d->idx));
+            util::critical(d->pm->log_tag +
+                           "failed to change volume of sink input: " + d->name +
+                           ", idx = " + std::to_string(d->idx));
           }
 
           pa_threaded_mainloop_signal(d->pm->main_loop, false);
@@ -878,19 +930,24 @@ void PulseManager::set_sink_input_mute(const std::string& name,
           util::debug(d->pm->log_tag + "sink input: " + d->name +
                       ", idx = " + std::to_string(d->idx) + " is muted");
         } else {
-          util::debug(d->pm->log_tag + "failed to mute sink input: " + d->name +
-                      ", idx = " + std::to_string(d->idx));
+          util::critical(d->pm->log_tag + "failed to mute sink input: " +
+                         d->name + ", idx = " + std::to_string(d->idx));
         }
 
         pa_threaded_mainloop_signal(d->pm->main_loop, false);
       },
       &data);
 
-  while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-    pa_threaded_mainloop_wait(main_loop);
-  }
+  if (o != nullptr) {
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+      pa_threaded_mainloop_wait(main_loop);
+    }
 
-  pa_operation_unref(o);
+    pa_operation_unref(o);
+  } else {
+    util::warning(log_tag + "failed to mute set sink input: " + name +
+                  ", idx = " + std::to_string(idx) + " to PE");
+  }
 
   pa_threaded_mainloop_unlock(main_loop);
 }
@@ -943,8 +1000,8 @@ void PulseManager::set_source_output_volume(const std::string& name,
 
       pa_threaded_mainloop_unlock(main_loop);
     } else {
-      util::debug(log_tag + "failed to change volume of source output: " +
-                  name + ", idx = " + std::to_string(idx));
+      util::warning(log_tag + "failed to change volume of source output: " +
+                    name + ", idx = " + std::to_string(idx));
 
       pa_threaded_mainloop_unlock(main_loop);
     }
@@ -973,19 +1030,24 @@ void PulseManager::set_source_output_mute(const std::string& name,
           util::debug(d->pm->log_tag + "source output: " + d->name +
                       ", idx = " + std::to_string(d->idx) + " is muted");
         } else {
-          util::debug(d->pm->log_tag + "failed to mute source output: " +
-                      d->name + ", idx = " + std::to_string(d->idx));
+          util::critical(d->pm->log_tag + "failed to mute source output: " +
+                         d->name + ", idx = " + std::to_string(d->idx));
         }
 
         pa_threaded_mainloop_signal(d->pm->main_loop, false);
       },
       &data);
 
-  while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-    pa_threaded_mainloop_wait(main_loop);
-  }
+  if (o != nullptr) {
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+      pa_threaded_mainloop_wait(main_loop);
+    }
 
-  pa_operation_unref(o);
+    pa_operation_unref(o);
+  } else {
+    util::warning(log_tag + "failed to mute source output: " + name +
+                  ", idx = " + std::to_string(idx) + " to PE");
+  }
 
   pa_threaded_mainloop_unlock(main_loop);
 }
@@ -1008,11 +1070,16 @@ void PulseManager::get_sink_input_info(uint idx) {
       },
       this);
 
-  while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-    pa_threaded_mainloop_wait(main_loop);
-  }
+  if (o != nullptr) {
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+      pa_threaded_mainloop_wait(main_loop);
+    }
 
-  pa_operation_unref(o);
+    pa_operation_unref(o);
+  } else {
+    util::critical(log_tag +
+                   "failed to get sink input info: " + std::to_string(idx));
+  }
 
   pa_threaded_mainloop_unlock(main_loop);
 }
@@ -1036,19 +1103,23 @@ void PulseManager::unload_module(uint idx) {
           util::debug(d->pm->log_tag + "module " + std::to_string(d->idx) +
                       " unloaded");
         } else {
-          util::debug(d->pm->log_tag + "failed to unload module " +
-                      std::to_string(d->idx));
+          util::critical(d->pm->log_tag + "failed to unload module " +
+                         std::to_string(d->idx));
         }
 
         pa_threaded_mainloop_signal(d->pm->main_loop, false);
       },
       &data);
 
-  while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-    pa_threaded_mainloop_wait(main_loop);
-  }
+  if (o != nullptr) {
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+      pa_threaded_mainloop_wait(main_loop);
+    }
 
-  pa_operation_unref(o);
+    pa_operation_unref(o);
+  } else {
+    util::critical(log_tag + "failed to unload module: " + std::to_string(idx));
+  }
 
   pa_threaded_mainloop_unlock(main_loop);
 }

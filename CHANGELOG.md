@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [4.4.0]
+### Added
+- Better error handling and logs. This will help to remove to remove the
+segmentation faults a few people were having and with lucky it will be easier
+to find the source of others.
+
 ## [4.3.9]
 ### Fixed
 - Fixed a bug that could cause our pipeline to crash when changing the effects

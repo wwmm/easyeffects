@@ -127,8 +127,7 @@ void Equalizer::update_equalizer() {
   g_object_get(equalizer, "num-bands", &current_nbands, nullptr);
 
   if (nbands != current_nbands) {
-    bool is_enabled = false;
-    GstState state;
+    GstState state, pending;
 
     /*Sometimes the equalizer crashes when its number of bands is changed
     while it is running. I don't know if this is a bug or not. Maybe we are
@@ -136,18 +135,16 @@ void Equalizer::update_equalizer() {
     does no harm to disable it before doing this change.
     */
 
-    gst_element_get_state(equalizer, &state, nullptr, GST_CLOCK_TIME_NONE);
+    gst_element_get_state(equalizer, &state, &pending, GST_CLOCK_TIME_NONE);
 
-    if (state == GST_STATE_PLAYING) {
-      is_enabled = true;
-
+    if (state != GST_STATE_NULL) {
       disable();
 
       do {
         gst_element_get_state(equalizer, &state, nullptr, GST_CLOCK_TIME_NONE);
 
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
-      } while (state == GST_STATE_PLAYING);
+      } while (state != GST_STATE_NULL && pending != GST_STATE_VOID_PENDING);
     }
 
     for (int n = 0; n < current_nbands; n++) {
@@ -159,6 +156,8 @@ void Equalizer::update_equalizer() {
     for (int n = 0; n < nbands; n++) {
       bind_band(n);
     }
+
+    bool is_enabled = g_settings_get_boolean(settings, "state");
 
     if (is_enabled) {
       enable();
