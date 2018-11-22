@@ -50,8 +50,6 @@ void on_enable(gpointer user_data) {
       util::debug(l->log_tag + l->name +
                   " enabled: " + gst_element_state_get_name(state) + " -> " +
                   gst_element_state_get_name(pending));
-
-      gst_bin_sync_children_states(GST_BIN(l->bin));
     } else {
       util::warning(l->log_tag + l->name + " failed to sync children state");
     }
@@ -72,8 +70,6 @@ void on_disable(gpointer user_data) {
     gst_bin_remove(GST_BIN(l->plugin), l->bin);
 
     gst_element_set_state(l->bin, GST_STATE_NULL);
-
-    gst_bin_sync_children_states(GST_BIN(l->bin));
 
     auto link_success = gst_element_link(l->identity_in, l->identity_out);
 

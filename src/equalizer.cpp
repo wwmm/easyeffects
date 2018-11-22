@@ -1,6 +1,5 @@
 #include <glibmm/main.h>
 #include <chrono>
-#include <thread>
 #include "equalizer.hpp"
 #include "util.hpp"
 
@@ -127,7 +126,7 @@ void Equalizer::update_equalizer() {
   g_object_get(equalizer, "num-bands", &current_nbands, nullptr);
 
   if (nbands != current_nbands) {
-    GstState state, pending;
+    GstState state;
 
     /*Sometimes the equalizer crashes when its number of bands is changed
     while it is running. I don't know if this is a bug or not. Maybe we are
@@ -135,7 +134,7 @@ void Equalizer::update_equalizer() {
     does no harm to disable it before doing this change.
     */
 
-    auto res = gst_element_get_state(equalizer, &state, &pending, 0);
+    auto res = gst_element_get_state(bin, &state, nullptr, 0);
 
     if (res == GST_STATE_CHANGE_SUCCESS) {
       util::debug(
@@ -146,38 +145,34 @@ void Equalizer::update_equalizer() {
       disable();
 
       do {
-        res = gst_element_get_state(equalizer, &state, nullptr, 0);
+        res = gst_element_get_state(bin, &state, nullptr, 0);
 
         if (res == GST_STATE_CHANGE_FAILURE) {
           util::warning(log_tag + name + ": failed to disable the equalizer");
+
+          break;
         }
 
-        break;
-
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
-      } while (res != GST_STATE_CHANGE_SUCCESS);
-
-      gst_element_set_state(equalizer, GST_STATE_NULL);
+      } while (state != GST_STATE_NULL);
     } else if (res == GST_STATE_CHANGE_ASYNC) {
       do {
-        res = gst_element_get_state(equalizer, &state, nullptr, 0);
+        res = gst_element_get_state(bin, &state, nullptr, 0);
 
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
       } while (res != GST_STATE_CHANGE_SUCCESS);
 
       do {
-        res = gst_element_get_state(equalizer, &state, nullptr, 0);
+        res = gst_element_get_state(bin, &state, nullptr, 0);
 
         if (res == GST_STATE_CHANGE_FAILURE) {
           util::warning(log_tag + name + ": failed to disable the equalizer");
+
+          break;
         }
 
-        break;
-
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
-      } while (res != GST_STATE_CHANGE_SUCCESS);
-
-      gst_element_set_state(equalizer, GST_STATE_NULL);
+      } while (state != GST_STATE_NULL);
     } else if (res == GST_STATE_CHANGE_FAILURE) {
       util::warning(log_tag + name + ": failed to get the equalizer state");
     }
