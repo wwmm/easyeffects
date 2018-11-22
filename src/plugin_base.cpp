@@ -23,8 +23,6 @@ void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
 void on_enable(gpointer user_data) {
   auto l = static_cast<PluginBase*>(user_data);
 
-  std::lock_guard<std::mutex> lock(mtx);
-
   auto b = gst_bin_get_by_name(GST_BIN(l->plugin),
                                std::string(l->name + "_bin").c_str());
 
@@ -58,8 +56,6 @@ void on_enable(gpointer user_data) {
 
 void on_disable(gpointer user_data) {
   auto l = static_cast<PluginBase*>(user_data);
-
-  std::lock_guard<std::mutex> lock(mtx);
 
   auto b = gst_bin_get_by_name(GST_BIN(l->plugin),
                                std::string(l->name + "_bin").c_str());
@@ -158,6 +154,8 @@ void PluginBase::enable() {
 
   gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
                     [](auto pad, auto info, auto d) {
+                      std::lock_guard<std::mutex> lock(mtx);
+
                       gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
 
                       on_enable(d);
@@ -174,6 +172,8 @@ void PluginBase::disable() {
 
   gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
                     [](auto pad, auto info, auto d) {
+                      std::lock_guard<std::mutex> lock(mtx);
+
                       gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
 
                       on_disable(d);
