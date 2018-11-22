@@ -33,11 +33,16 @@ void on_enable(gpointer user_data) {
 
     gst_bin_add(GST_BIN(l->plugin), l->bin);
 
-    gst_element_link_many(l->identity_in, l->bin, l->identity_out, nullptr);
+    auto link_success =
+        gst_element_link_many(l->identity_in, l->bin, l->identity_out, nullptr);
 
-    auto success = gst_bin_sync_children_states(GST_BIN(l->plugin));
+    if (!link_success) {
+      util::warning(l->log_tag + l->name + " failed to link after enable");
+    }
 
-    if (success) {
+    auto sync_success = gst_bin_sync_children_states(GST_BIN(l->plugin));
+
+    if (sync_success) {
       GstState state, pending;
 
       gst_element_get_state(l->bin, &state, &pending, 5 * GST_SECOND);
@@ -66,11 +71,15 @@ void on_disable(gpointer user_data) {
 
     gst_element_set_state(l->bin, GST_STATE_NULL);
 
-    gst_element_link(l->identity_in, l->identity_out);
+    auto link_success = gst_element_link(l->identity_in, l->identity_out);
 
-    auto success = gst_bin_sync_children_states(GST_BIN(l->plugin));
+    if (!link_success) {
+      util::warning(l->log_tag + l->name + " failed to link after disable");
+    }
 
-    if (success) {
+    auto sync_success = gst_bin_sync_children_states(GST_BIN(l->plugin));
+
+    if (sync_success) {
       GstState state, pending;
 
       gst_element_get_state(l->bin, &state, &pending, 5 * GST_SECOND);

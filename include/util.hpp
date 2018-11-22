@@ -4,6 +4,7 @@
 #include <glib-object.h>
 #include <glib.h>
 #include <iostream>
+#include <thread>
 #include <vector>
 
 namespace util {
@@ -52,6 +53,8 @@ gboolean double_x10_to_int(GValue* value,
                            gpointer user_data);
 
 gboolean ms_to_ns(GValue* value, GVariant* variant, gpointer user_data);
+
+void print_thread_id();
 
 }  // namespace util
 
