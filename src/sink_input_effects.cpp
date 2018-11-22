@@ -85,21 +85,35 @@ void update_order(gpointer user_data) {
 
   // linking elements using the new plugins order
 
-  gst_element_link(l->identity_in, l->plugins[l->plugins_order[0]]);
+  auto link_success =
+      gst_element_link(l->identity_in, l->plugins[l->plugins_order[0]]);
 
-  for (long unsigned int n = 1; n < l->plugins_order.size(); n++) {
-    gst_element_link(l->plugins[l->plugins_order[n - 1]],
-                     l->plugins[l->plugins_order[n]]);
+  if (!link_success) {
+    util::warning(l->log_tag + " failed to link after chaging effects order");
   }
 
-  gst_element_link(l->plugins[l->plugins_order[l->plugins_order.size() - 1]],
-                   l->identity_out);
+  for (long unsigned int n = 1; n < l->plugins_order.size(); n++) {
+    link_success = gst_element_link(l->plugins[l->plugins_order[n - 1]],
+                                    l->plugins[l->plugins_order[n]]);
+
+    if (!link_success) {
+      util::warning(l->log_tag + " failed to link after chaging effects order");
+    }
+  }
+
+  link_success = gst_element_link(
+      l->plugins[l->plugins_order[l->plugins_order.size() - 1]],
+      l->identity_out);
+
+  if (!link_success) {
+    util::warning(l->log_tag + " failed to link after chaging effects order");
+  }
 
   // syncing elements state with effects_bin
 
-  auto success = gst_bin_sync_children_states(GST_BIN(l->effects_bin));
+  auto sync_success = gst_bin_sync_children_states(GST_BIN(l->effects_bin));
 
-  if (!success) {
+  if (!sync_success) {
     util::debug(l->log_tag + "failed to sync children states");
     util::debug(l->log_tag + "restarting the pipeline");
 
