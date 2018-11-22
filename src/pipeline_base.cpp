@@ -509,6 +509,8 @@ void PipelineBase::enable_spectrum() {
           gst_bin_sync_children_states(GST_BIN(l->spectrum_bin));
 
           util::debug(l->log_tag + "spectrum enabled");
+        } else {
+          util::debug(l->log_tag + "spectrum is already enabled");
         }
 
         return GST_PAD_PROBE_OK;
@@ -545,6 +547,8 @@ void PipelineBase::disable_spectrum() {
           gst_bin_sync_children_states(GST_BIN(l->spectrum_bin));
 
           util::debug(l->log_tag + "spectrum disabled");
+        } else {
+          util::debug(l->log_tag + "spectrum is already disabled");
         }
 
         return GST_PAD_PROBE_OK;
