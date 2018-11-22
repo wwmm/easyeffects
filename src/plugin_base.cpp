@@ -51,6 +51,8 @@ void on_enable(gpointer user_data) {
     } else {
       util::warning(l->log_tag + l->name + " failed to sync children state");
     }
+  } else {
+    util::debug(l->log_tag + l->name + " is already enabled");
   }
 }
 
@@ -87,6 +89,8 @@ void on_disable(gpointer user_data) {
     } else {
       util::warning(l->log_tag + l->name + " failed to sync children state");
     }
+  } else {
+    util::debug(l->log_tag + l->name + " is already disabled");
   }
 }
 

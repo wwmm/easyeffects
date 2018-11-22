@@ -566,7 +566,7 @@ std::array<double, 2> PipelineBase::get_peak(GstMessage* message) {
     if (gpeak->n_values == 2) {
       if (gpeak->values != nullptr) {
         peak[0] = g_value_get_double(gpeak->values);      // left
-        peak[1] = g_value_get_double(gpeak->values + 1);  // right}
+        peak[1] = g_value_get_double(gpeak->values + 1);  // right
       }
     }
   }
