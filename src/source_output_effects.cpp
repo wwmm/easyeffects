@@ -40,8 +40,6 @@ void on_message_element(const GstBus* gst_bus,
 void update_order(gpointer user_data) {
   auto l = static_cast<SourceOutputEffects*>(user_data);
 
-  std::lock_guard<std::mutex> lock(mtx);
-
   // unlinking elements using old plugins order
 
   gst_element_unlink(l->identity_in, l->plugins[l->plugins_order_old[0]]);
@@ -108,6 +106,8 @@ void update_order(gpointer user_data) {
 GstPadProbeReturn on_pad_idle(GstPad* pad,
                               GstPadProbeInfo* info,
                               gpointer user_data) {
+  std::lock_guard<std::mutex> lock(mtx);
+
   gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
 
   update_order(user_data);
