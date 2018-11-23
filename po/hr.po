@@ -518,7 +518,7 @@ msgstr "12dB/oct visoki prolaz"
 
 #: data/ui/filter.glade:223
 msgid "24dB/oct Highpass"
-msgstr "24dB/oct" visoki prolaz
+msgstr "24dB/oct visoki prolaz"
 
 #: data/ui/filter.glade:224
 msgid "36dB/oct Highpass"
