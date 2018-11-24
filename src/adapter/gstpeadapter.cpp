@@ -336,8 +336,18 @@ static gboolean gst_peadapter_src_event(GstPad* pad,
                                         GstObject* parent,
                                         GstEvent* event) {
   GstPeadapter* peadapter = GST_PEADAPTER(parent);
+  gboolean ret = true;
 
-  return gst_pad_push_event(peadapter->sinkpad, event);
+  switch (GST_EVENT_TYPE(event)) {
+    case GST_EVENT_SEEK:
+      ret = gst_pad_push_event(peadapter->sinkpad, event);
+      break;
+    default:
+      ret = gst_pad_push_event(peadapter->sinkpad, event);
+      break;
+  }
+
+  return ret;
 }
 
 static GstStateChangeReturn gst_peadapter_change_state(
