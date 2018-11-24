@@ -24,10 +24,6 @@ static gboolean gst_peadapter_sink_event(GstPad* pad,
                                          GstObject* parent,
                                          GstEvent* event);
 
-static gboolean gst_peadapter_src_event(GstPad* pad,
-                                        GstObject* parent,
-                                        GstEvent* event);
-
 static GstStateChangeReturn gst_peadapter_change_state(
     GstElement* element,
     GstStateChange transition);
@@ -137,9 +133,6 @@ static void gst_peadapter_init(GstPeadapter* peadapter) {
 
   /* configure event function on the pad before adding the pad to the element
    */
-
-  gst_pad_set_event_function(peadapter->srcpad,
-                             GST_DEBUG_FUNCPTR(gst_peadapter_src_event));
 
   gst_pad_set_query_function(peadapter->srcpad, gst_peadapter_src_query);
 
@@ -297,53 +290,24 @@ static gboolean gst_peadapter_sink_event(GstPad* pad,
       /* push the event downstream */
 
       ret = gst_pad_push_event(peadapter->srcpad, event);
+      // ret = gst_pad_event_default(pad, parent, event);
 
       break;
     case GST_EVENT_EOS:
+      GST_OBJECT_LOCK(peadapter);
+
       gst_peadapter_process(peadapter);
       gst_adapter_clear(peadapter->adapter);
 
       peadapter->inbuf_n_samples = -1;
 
-      ret = gst_pad_push_event(peadapter->srcpad, event);
+      GST_OBJECT_UNLOCK(peadapter);
 
-      break;
-    case GST_EVENT_FLUSH_START:
-      ret = gst_pad_push_event(peadapter->srcpad, event);
-
-      break;
-    case GST_EVENT_FLUSH_STOP:
-      gst_adapter_clear(peadapter->adapter);
-
-      peadapter->inbuf_n_samples = -1;
-
-      ret = gst_pad_push_event(peadapter->srcpad, event);
-
-      break;
-    case GST_EVENT_SEGMENT:
-      ret = gst_pad_push_event(peadapter->srcpad, event);
+      ret = gst_pad_event_default(pad, parent, event);
 
       break;
     default:
-      ret = gst_pad_push_event(peadapter->srcpad, event);
-      break;
-  }
-
-  return ret;
-}
-
-static gboolean gst_peadapter_src_event(GstPad* pad,
-                                        GstObject* parent,
-                                        GstEvent* event) {
-  GstPeadapter* peadapter = GST_PEADAPTER(parent);
-  gboolean ret = true;
-
-  switch (GST_EVENT_TYPE(event)) {
-    case GST_EVENT_SEEK:
-      ret = gst_pad_push_event(peadapter->sinkpad, event);
-      break;
-    default:
-      ret = gst_pad_push_event(peadapter->sinkpad, event);
+      ret = gst_pad_event_default(pad, parent, event);
       break;
   }
 
@@ -374,9 +338,13 @@ static GstStateChangeReturn gst_peadapter_change_state(
 
   switch (transition) {
     case GST_STATE_CHANGE_PAUSED_TO_READY:
+      GST_OBJECT_LOCK(peadapter);
+
       gst_adapter_clear(peadapter->adapter);
 
       peadapter->inbuf_n_samples = -1;
+
+      GST_OBJECT_UNLOCK(peadapter);
 
       break;
     default:
@@ -446,8 +414,12 @@ void gst_peadapter_finalize(GObject* object) {
 
   GST_DEBUG_OBJECT(peadapter, "finalize");
 
+  GST_OBJECT_LOCK(peadapter);
+
   gst_adapter_clear(peadapter->adapter);
   g_object_unref(peadapter->adapter);
+
+  GST_OBJECT_UNLOCK(peadapter);
 
   /* clean up object here */
 
