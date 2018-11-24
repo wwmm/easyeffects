@@ -40,6 +40,12 @@ void on_message_element(const GstBus* gst_bus,
 void update_order(gpointer user_data) {
   auto l = static_cast<SourceOutputEffects*>(user_data);
 
+  // setting null state
+
+  for (auto& p : l->plugins) {
+    gst_element_set_state(p.second, GST_STATE_NULL);
+  }
+
   // unlinking elements using old plugins order
 
   gst_element_unlink(l->identity_in, l->plugins[l->plugins_order_old[0]]);
@@ -52,12 +58,6 @@ void update_order(gpointer user_data) {
   gst_element_unlink(
       l->plugins[l->plugins_order_old[l->plugins_order_old.size() - 1]],
       l->identity_out);
-
-  // setting state
-
-  for (auto& p : l->plugins) {
-    gst_element_set_state(p.second, GST_STATE_NULL);
-  }
 
   // linking elements using the new plugins order
 

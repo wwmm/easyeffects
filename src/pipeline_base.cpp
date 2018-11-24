@@ -22,6 +22,8 @@ void on_message_error(const GstBus* gst_bus,
   util::critical(pb->log_tag + err->message);
   util::debug(pb->log_tag + debug);
 
+  pb->set_null_pipeline();
+
   g_error_free(err);
   g_free(debug);
 }
@@ -531,10 +533,10 @@ void PipelineBase::disable_spectrum() {
         auto plugin = gst_bin_get_by_name(GST_BIN(l->spectrum_bin), "spectrum");
 
         if (plugin) {
+          gst_element_set_state(l->spectrum, GST_STATE_NULL);
+
           gst_element_unlink_many(l->spectrum_identity_in, l->spectrum,
                                   l->spectrum_identity_out, nullptr);
-
-          gst_element_set_state(l->spectrum, GST_STATE_NULL);
 
           gst_bin_remove(GST_BIN(l->spectrum_bin), l->spectrum);
 
