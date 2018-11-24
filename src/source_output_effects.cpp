@@ -1,6 +1,8 @@
 #include "source_output_effects.hpp"
 #include "util.hpp"
 
+extern std::mutex pipeline_mutex;
+
 namespace {
 
 void on_message_element(const GstBus* gst_bus,
@@ -87,6 +89,8 @@ static GstPadProbeReturn event_probe_cb(GstPad* pad,
   }
 
   gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
+
+  std::lock_guard<std::mutex> lock(pipeline_mutex);
 
   update_order(user_data);
 

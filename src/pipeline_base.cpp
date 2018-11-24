@@ -7,6 +7,8 @@
 #include "pipeline_base.hpp"
 #include "util.hpp"
 
+std::mutex pipeline_mutex;
+
 namespace {
 
 std::mutex spectrum_mtx;

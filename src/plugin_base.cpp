@@ -2,9 +2,9 @@
 #include "plugin_base.hpp"
 #include "util.hpp"
 
-namespace {
+extern std::mutex pipeline_mutex;
 
-std::mutex mtx;
+namespace {
 
 void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
   bool enable = g_settings_get_boolean(settings, key);
@@ -75,6 +75,44 @@ void on_disable(gpointer user_data) {
   }
 }
 
+GstPadProbeReturn on_pad_blocked(GstPad* pad,
+                                 GstPadProbeInfo* info,
+                                 gpointer user_data) {
+  gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
+
+  auto l = static_cast<PluginBase*>(user_data);
+
+  auto srcpad = gst_element_get_static_pad(l->bin, "src");
+
+  gst_pad_add_probe(
+      srcpad,
+      static_cast<GstPadProbeType>(GST_PAD_PROBE_TYPE_BLOCK |
+                                   GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM),
+      [](auto pad, auto info, auto d) {
+        if (GST_EVENT_TYPE(GST_PAD_PROBE_INFO_DATA(info)) != GST_EVENT_EOS) {
+          return GST_PAD_PROBE_PASS;
+        }
+
+        gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
+
+        std::lock_guard<std::mutex> lock(pipeline_mutex);
+
+        on_disable(d);
+
+        return GST_PAD_PROBE_DROP;
+      },
+      user_data, nullptr);
+
+  auto sinkpad = gst_element_get_static_pad(l->bin, "sink");
+
+  gst_pad_send_event(sinkpad, gst_event_new_eos());
+
+  gst_object_unref(sinkpad);
+  gst_object_unref(srcpad);
+
+  return GST_PAD_PROBE_OK;
+}
+
 }  // namespace
 
 PluginBase::PluginBase(const std::string& tag,
@@ -137,17 +175,33 @@ bool PluginBase::is_installed(GstElement* e) {
 void PluginBase::enable() {
   auto srcpad = gst_element_get_static_pad(identity_in, "src");
 
-  gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
-                    [](auto pad, auto info, auto d) {
-                      std::lock_guard<std::mutex> lock(mtx);
+  GstState state, pending;
 
-                      gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
+  gst_element_get_state(bin, &state, &pending, 5 * GST_SECOND);
 
-                      on_enable(d);
+  if (state != GST_STATE_PLAYING) {
+    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
+                      [](auto pad, auto info, auto d) {
+                        gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
 
-                      return GST_PAD_PROBE_OK;
-                    },
-                    this, nullptr);
+                        on_enable(d);
+
+                        return GST_PAD_PROBE_OK;
+                      },
+                      this, nullptr);
+  } else {
+    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+                      [](auto pad, auto info, auto d) {
+                        std::lock_guard<std::mutex> lock(pipeline_mutex);
+
+                        gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
+
+                        on_enable(d);
+
+                        return GST_PAD_PROBE_OK;
+                      },
+                      this, nullptr);
+  }
 
   g_object_unref(srcpad);
 }
@@ -155,17 +209,24 @@ void PluginBase::enable() {
 void PluginBase::disable() {
   auto srcpad = gst_element_get_static_pad(identity_in, "src");
 
-  gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
-                    [](auto pad, auto info, auto d) {
-                      std::lock_guard<std::mutex> lock(mtx);
+  GstState state, pending;
 
-                      gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
+  gst_element_get_state(bin, &state, &pending, 5 * GST_SECOND);
 
-                      on_disable(d);
+  if (state != GST_STATE_PLAYING) {
+    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
+                      [](auto pad, auto info, auto d) {
+                        gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
 
-                      return GST_PAD_PROBE_OK;
-                    },
-                    this, nullptr);
+                        on_disable(d);
+
+                        return GST_PAD_PROBE_OK;
+                      },
+                      this, nullptr);
+  } else {
+    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+                      on_pad_blocked, this, nullptr);
+  }
 
   g_object_unref(srcpad);
 }
