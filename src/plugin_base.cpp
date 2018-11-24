@@ -7,9 +7,9 @@ extern std::mutex pipeline_mutex;
 namespace {
 
 void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
-  bool enable = g_settings_get_boolean(settings, key);
-
   if (l->plugin_is_installed) {
+    bool enable = g_settings_get_boolean(settings, key);
+
     if (enable) {
       l->enable();
     } else {
