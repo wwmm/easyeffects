@@ -24,6 +24,11 @@ void on_message_error(const GstBus* gst_bus,
   util::critical(pb->log_tag + err->message);
   util::debug(pb->log_tag + debug);
 
+  if (err->message == std::string("Internal data stream error")) {
+    pb->set_null_pipeline();
+    pb->update_pipeline_state();
+  }
+
   g_error_free(err);
   g_free(debug);
 }

@@ -194,9 +194,9 @@ void PluginBase::enable() {
   } else {
     gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
                       [](auto pad, auto info, auto d) {
-                        std::lock_guard<std::mutex> lock(pipeline_mutex);
-
                         gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
+
+                        std::lock_guard<std::mutex> lock(pipeline_mutex);
 
                         on_enable(d);
 
