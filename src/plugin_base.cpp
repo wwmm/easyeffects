@@ -59,9 +59,9 @@ void on_disable(gpointer user_data) {
   if (b) {
     gst_element_unlink_many(l->identity_in, l->bin, l->identity_out, nullptr);
 
-    gst_bin_remove(GST_BIN(l->plugin), l->bin);
-
     gst_element_set_state(l->bin, GST_STATE_NULL);
+
+    gst_bin_remove(GST_BIN(l->plugin), l->bin);
 
     gst_element_link(l->identity_in, l->identity_out);
 
