@@ -53,10 +53,6 @@ void update_order(gpointer user_data) {
       l->plugins[l->plugins_order_old[l->plugins_order_old.size() - 1]],
       l->identity_out);
 
-  for (auto& p : l->plugins) {
-    gst_element_set_state(p.second, GST_STATE_NULL);
-  }
-
   // linking elements using the new plugins order
 
   auto link_success =
@@ -81,17 +77,6 @@ void update_order(gpointer user_data) {
 
   if (!link_success) {
     util::warning(l->log_tag + " failed to link after chaging effects order");
-  }
-
-  // syncing elements state with effects_bin
-
-  auto success = gst_bin_sync_children_states(GST_BIN(l->effects_bin));
-
-  if (!success) {
-    util::debug(l->log_tag + "failed to sync children states");
-    util::debug(l->log_tag + "restarting the pipeline");
-
-    l->update_pipeline_state();
   }
 
   std::string list;

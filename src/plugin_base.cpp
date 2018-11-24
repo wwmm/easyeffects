@@ -31,6 +31,8 @@ void on_enable(gpointer user_data) {
 
     gst_bin_add(GST_BIN(l->plugin), l->bin);
 
+    auto sync_success = gst_element_sync_state_with_parent(l->bin);
+
     auto link_success =
         gst_element_link_many(l->identity_in, l->bin, l->identity_out, nullptr);
 
@@ -38,7 +40,7 @@ void on_enable(gpointer user_data) {
       util::warning(l->log_tag + l->name + " failed to link after enable");
     }
 
-    auto sync_success = gst_bin_sync_children_states(GST_BIN(l->plugin));
+    // auto sync_success = gst_element_sync_state_with_parent(l->bin);
 
     if (sync_success) {
       GstState state, pending;
@@ -75,20 +77,13 @@ void on_disable(gpointer user_data) {
       util::warning(l->log_tag + l->name + " failed to link after disable");
     }
 
-    auto sync_success = gst_bin_sync_children_states(GST_BIN(l->plugin));
+    GstState state, pending;
 
-    if (sync_success) {
-      GstState state, pending;
+    gst_element_get_state(l->bin, &state, &pending, 5 * GST_SECOND);
 
-      gst_element_get_state(l->bin, &state, &pending, 5 * GST_SECOND);
-
-      util::debug(l->log_tag + l->name +
-                  " disabled: " + gst_element_state_get_name(state) + " -> " +
-                  gst_element_state_get_name(pending));
-
-    } else {
-      util::warning(l->log_tag + l->name + " failed to sync children state");
-    }
+    util::debug(l->log_tag + l->name +
+                " disabled: " + gst_element_state_get_name(state) + " -> " +
+                gst_element_state_get_name(pending));
   } else {
     util::debug(l->log_tag + l->name + " is already disabled");
   }
