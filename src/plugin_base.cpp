@@ -184,23 +184,21 @@ void PluginBase::enable() {
   if (state != GST_STATE_PLAYING) {
     gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
                       [](auto pad, auto info, auto d) {
-                        gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
+                        std::lock_guard<std::mutex> lock(pipeline_mutex);
 
                         on_enable(d);
 
-                        return GST_PAD_PROBE_OK;
+                        return GST_PAD_PROBE_REMOVE;
                       },
                       this, nullptr);
   } else {
     gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
                       [](auto pad, auto info, auto d) {
-                        gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
-
                         std::lock_guard<std::mutex> lock(pipeline_mutex);
 
                         on_enable(d);
 
-                        return GST_PAD_PROBE_OK;
+                        return GST_PAD_PROBE_REMOVE;
                       },
                       this, nullptr);
   }
@@ -218,11 +216,11 @@ void PluginBase::disable() {
   if (state != GST_STATE_PLAYING) {
     gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
                       [](auto pad, auto info, auto d) {
-                        gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
+                        std::lock_guard<std::mutex> lock(pipeline_mutex);
 
                         on_disable(d);
 
-                        return GST_PAD_PROBE_OK;
+                        return GST_PAD_PROBE_REMOVE;
                       },
                       this, nullptr);
   } else {

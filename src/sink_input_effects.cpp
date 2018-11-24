@@ -154,11 +154,11 @@ GstPadProbeReturn on_pad_blocked(GstPad* pad,
 GstPadProbeReturn on_pad_idle(GstPad* pad,
                               GstPadProbeInfo* info,
                               gpointer user_data) {
-  gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
+  std::lock_guard<std::mutex> lock(pipeline_mutex);
 
   update_order(user_data);
 
-  return GST_PAD_PROBE_OK;
+  return GST_PAD_PROBE_REMOVE;
 }
 
 void on_plugins_order_changed(GSettings* settings,
