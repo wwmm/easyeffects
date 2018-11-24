@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Added
+- Updated translations
+- Improved dynamic pipeline. Alternating presets while playing should cause a
+little less noises and less crashes.
+
 ## [4.4.0]
 ### Added
 - Better error handling and logs. This will help to remove to remove the
