@@ -289,8 +289,7 @@ static gboolean gst_peadapter_sink_event(GstPad* pad,
 
       /* push the event downstream */
 
-      ret = gst_pad_push_event(peadapter->srcpad, event);
-      // ret = gst_pad_event_default(pad, parent, event);
+      gst_pad_push_event(peadapter->srcpad, event);
 
       break;
     case GST_EVENT_EOS:
