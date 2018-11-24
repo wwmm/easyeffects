@@ -55,12 +55,9 @@ Reverb::Reverb(const std::string& tag, const std::string& schema)
       gst_element_factory_make("calf-sourceforge-net-plugins-Reverb", "reverb");
 
   if (is_installed(reverb)) {
-    auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
+    gst_bin_add(GST_BIN(bin), reverb);
 
-    gst_bin_add_many(GST_BIN(bin), audioconvert, reverb, nullptr);
-    gst_element_link(audioconvert, reverb);
-
-    auto pad_sink = gst_element_get_static_pad(audioconvert, "sink");
+    auto pad_sink = gst_element_get_static_pad(reverb, "sink");
     auto pad_src = gst_element_get_static_pad(reverb, "src");
 
     gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));

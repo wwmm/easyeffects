@@ -217,17 +217,19 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
 
   auto queue_src = gst_element_factory_make("queue", nullptr);
   auto src_type = gst_element_factory_make("typefind", nullptr);
+  auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
 
   init_spectrum_bin();
   init_effects_bin();
 
   // building the pipeline
 
-  gst_bin_add_many(GST_BIN(pipeline), source, queue_src, capsfilter, src_type,
-                   adapter, effects_bin, spectrum_bin, sink, nullptr);
+  gst_bin_add_many(GST_BIN(pipeline), source, queue_src, capsfilter,
+                   audioconvert, adapter, src_type, effects_bin, spectrum_bin,
+                   sink, nullptr);
 
-  gst_element_link_many(source, queue_src, capsfilter, src_type, adapter,
-                        effects_bin, spectrum_bin, sink, nullptr);
+  gst_element_link_many(source, queue_src, capsfilter, audioconvert, adapter,
+                        src_type, effects_bin, spectrum_bin, sink, nullptr);
 
   // initializing properties
 
