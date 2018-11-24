@@ -168,8 +168,6 @@ void on_plugins_order_changed(GSettings* settings,
   gchar* name;
   GVariantIter* iter;
 
-  std::lock_guard<std::mutex> lock(pipeline_mutex);
-
   g_settings_get(settings, "plugins", "as", &iter);
 
   l->plugins_order_old = l->plugins_order;
