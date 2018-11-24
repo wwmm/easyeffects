@@ -31,9 +31,11 @@ void on_enable(gpointer user_data) {
 
     gst_bin_add(GST_BIN(l->plugin), l->bin);
 
-    gst_element_sync_state_with_parent(l->bin);
+    gst_element_set_state(l->bin, GST_STATE_NULL);
 
     gst_element_link_many(l->identity_in, l->bin, l->identity_out, nullptr);
+
+    gst_element_sync_state_with_parent(l->bin);
 
     GstState state, pending;
 

@@ -81,7 +81,6 @@ void update_order(gpointer user_data) {
 
   for (auto& p : l->plugins) {
     gst_element_set_state(p.second, GST_STATE_NULL);
-    gst_element_sync_state_with_parent(p.second);
   }
 
   // linking elements using the new plugins order
@@ -95,6 +94,10 @@ void update_order(gpointer user_data) {
 
   gst_element_link(l->plugins[l->plugins_order[l->plugins_order.size() - 1]],
                    l->identity_out);
+
+  for (auto& p : l->plugins) {
+    gst_element_sync_state_with_parent(p.second);
+  }
 
   std::string list;
 
