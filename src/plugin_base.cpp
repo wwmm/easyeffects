@@ -40,8 +40,6 @@ void on_enable(gpointer user_data) {
       util::warning(l->log_tag + l->name + " failed to link after enable");
     }
 
-    // auto sync_success = gst_element_sync_state_with_parent(l->bin);
-
     if (sync_success) {
       GstState state, pending;
 
