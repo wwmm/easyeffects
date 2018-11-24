@@ -315,6 +315,8 @@ static gboolean gst_peadapter_sink_event(GstPad* pad,
     case GST_EVENT_FLUSH_STOP:
       gst_adapter_clear(peadapter->adapter);
 
+      peadapter->inbuf_n_samples = -1;
+
       ret = gst_pad_push_event(peadapter->srcpad, event);
 
       break;

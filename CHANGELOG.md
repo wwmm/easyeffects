@@ -6,6 +6,7 @@
 - Updated translations
 - Improved dynamic pipeline. Alternating presets while playing should cause a
 little less noises and less crashes.
+- Improved the adapter plugin used internally by PulseEffects
 
 ## [4.4.0]
 ### Added
