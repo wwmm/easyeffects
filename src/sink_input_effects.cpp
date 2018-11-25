@@ -1,9 +1,9 @@
 #include "sink_input_effects.hpp"
 #include "util.hpp"
 
-namespace {
+extern std::mutex pipeline_mutex;
 
-std::mutex mtx;
+namespace {
 
 void on_message_element(const GstBus* gst_bus,
                         GstMessage* message,
@@ -64,7 +64,11 @@ void on_message_element(const GstBus* gst_bus,
 void update_order(gpointer user_data) {
   auto l = static_cast<SinkInputEffects*>(user_data);
 
-  std::lock_guard<std::mutex> lock(mtx);
+  // setting null state
+
+  for (auto& p : l->plugins) {
+    gst_element_set_state(p.second, GST_STATE_NULL);
+  }
 
   // unlinking elements using old plugins order
 
@@ -79,10 +83,6 @@ void update_order(gpointer user_data) {
       l->plugins[l->plugins_order_old[l->plugins_order_old.size() - 1]],
       l->identity_out);
 
-  for (auto& p : l->plugins) {
-    gst_element_set_state(p.second, GST_STATE_NULL);
-  }
-
   // linking elements using the new plugins order
 
   gst_element_link(l->identity_in, l->plugins[l->plugins_order[0]]);
@@ -95,15 +95,8 @@ void update_order(gpointer user_data) {
   gst_element_link(l->plugins[l->plugins_order[l->plugins_order.size() - 1]],
                    l->identity_out);
 
-  // syncing elements state with effects_bin
-
-  auto success = gst_bin_sync_children_states(GST_BIN(l->effects_bin));
-
-  if (!success) {
-    util::debug(l->log_tag + "failed to sync children states");
-    util::debug(l->log_tag + "restarting the pipeline");
-
-    l->update_pipeline_state();
+  for (auto& p : l->plugins) {
+    gst_element_sync_state_with_parent(p.second);
   }
 
   std::string list;
@@ -115,14 +108,57 @@ void update_order(gpointer user_data) {
   util::debug(l->log_tag + "new plugins order: [" + list + "]");
 }
 
-GstPadProbeReturn on_pad_idle(GstPad* pad,
-                              GstPadProbeInfo* info,
-                              gpointer user_data) {
+static GstPadProbeReturn event_probe_cb(GstPad* pad,
+                                        GstPadProbeInfo* info,
+                                        gpointer user_data) {
+  if (GST_EVENT_TYPE(GST_PAD_PROBE_INFO_DATA(info)) != GST_EVENT_EOS) {
+    return GST_PAD_PROBE_PASS;
+  }
+
   gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
+
+  std::lock_guard<std::mutex> lock(pipeline_mutex);
 
   update_order(user_data);
 
+  return GST_PAD_PROBE_DROP;
+}
+
+GstPadProbeReturn on_pad_blocked(GstPad* pad,
+                                 GstPadProbeInfo* info,
+                                 gpointer user_data) {
+  gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
+
+  auto l = static_cast<SinkInputEffects*>(user_data);
+
+  auto srcpad = gst_element_get_static_pad(
+      l->plugins[l->plugins_order_old[l->plugins_order_old.size() - 1]], "src");
+
+  gst_pad_add_probe(
+      srcpad,
+      static_cast<GstPadProbeType>(GST_PAD_PROBE_TYPE_BLOCK |
+                                   GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM),
+      event_probe_cb, user_data, nullptr);
+
+  auto sinkpad =
+      gst_element_get_static_pad(l->plugins[l->plugins_order_old[0]], "sink");
+
+  gst_pad_send_event(sinkpad, gst_event_new_eos());
+
+  gst_object_unref(sinkpad);
+  gst_object_unref(srcpad);
+
   return GST_PAD_PROBE_OK;
+}
+
+GstPadProbeReturn on_pad_idle(GstPad* pad,
+                              GstPadProbeInfo* info,
+                              gpointer user_data) {
+  std::lock_guard<std::mutex> lock(pipeline_mutex);
+
+  update_order(user_data);
+
+  return GST_PAD_PROBE_REMOVE;
 }
 
 void on_plugins_order_changed(GSettings* settings,
@@ -154,7 +190,18 @@ void on_plugins_order_changed(GSettings* settings,
   if (update) {
     auto srcpad = gst_element_get_static_pad(l->identity_in, "src");
 
-    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE, on_pad_idle, l, nullptr);
+    GstState state, pending;
+
+    gst_element_get_state(l->effects_bin, &state, &pending,
+                          l->state_check_timeout);
+
+    if (state != GST_STATE_PLAYING) {
+      gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE, on_pad_idle, l,
+                        nullptr);
+    } else {
+      gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+                        on_pad_blocked, l, nullptr);
+    }
 
     g_object_unref(srcpad);
   }

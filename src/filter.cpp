@@ -55,12 +55,9 @@ Filter::Filter(const std::string& tag, const std::string& schema)
       gst_element_factory_make("calf-sourceforge-net-plugins-Filter", "filter");
 
   if (is_installed(filter)) {
-    auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
+    gst_bin_add(GST_BIN(bin), filter);
 
-    gst_bin_add_many(GST_BIN(bin), audioconvert, filter, nullptr);
-    gst_element_link(audioconvert, filter);
-
-    auto pad_sink = gst_element_get_static_pad(audioconvert, "sink");
+    auto pad_sink = gst_element_get_static_pad(filter, "sink");
     auto pad_src = gst_element_get_static_pad(filter, "src");
 
     gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));

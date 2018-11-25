@@ -23,6 +23,10 @@ void info(const std::string& s) {
   g_info(s.c_str(), "%s");
 }
 
+void print_thread_id() {
+  std::cout << "thread id: " << std::this_thread::get_id() << std::endl;
+}
+
 std::vector<float> logspace(const float& start,
                             const float& stop,
                             const uint& npoints) {

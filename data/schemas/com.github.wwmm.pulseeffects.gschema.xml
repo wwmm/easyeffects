@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schemalist>
+<schemalist gettext-domain="pulseeffects">
     <enum id="com.github.wwmm.pulseeffects.compressor.detection.enum">
         <value nick="RMS" value="0"/>
         <value nick="Peak" value="1"/>
@@ -184,7 +184,7 @@
             <default>true</default>
         </key>
         <key name="last-used-preset" type="s">
-            <default>"Presets"</default>
+            <default l10n="messages">"Presets"</default>
         </key>
         <key name="custom-sink" type="s">
             <default>""</default>

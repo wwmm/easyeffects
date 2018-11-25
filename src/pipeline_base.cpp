@@ -7,9 +7,9 @@
 #include "pipeline_base.hpp"
 #include "util.hpp"
 
-namespace {
+std::mutex pipeline_mutex;
 
-std::mutex spectrum_mtx;
+namespace {
 
 void on_message_error(const GstBus* gst_bus,
                       GstMessage* message,
@@ -21,6 +21,8 @@ void on_message_error(const GstBus* gst_bus,
 
   util::critical(pb->log_tag + err->message);
   util::debug(pb->log_tag + debug);
+
+  pb->set_null_pipeline();
 
   g_error_free(err);
   g_free(debug);
@@ -215,17 +217,19 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
 
   auto queue_src = gst_element_factory_make("queue", nullptr);
   auto src_type = gst_element_factory_make("typefind", nullptr);
+  auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
 
   init_spectrum_bin();
   init_effects_bin();
 
   // building the pipeline
 
-  gst_bin_add_many(GST_BIN(pipeline), source, queue_src, capsfilter, src_type,
-                   adapter, effects_bin, spectrum_bin, sink, nullptr);
+  gst_bin_add_many(GST_BIN(pipeline), source, queue_src, capsfilter,
+                   audioconvert, adapter, src_type, effects_bin, spectrum_bin,
+                   sink, nullptr);
 
-  gst_element_link_many(source, queue_src, capsfilter, src_type, adapter,
-                        effects_bin, spectrum_bin, sink, nullptr);
+  gst_element_link_many(source, queue_src, capsfilter, audioconvert, adapter,
+                        src_type, effects_bin, spectrum_bin, sink, nullptr);
 
   // initializing properties
 
@@ -492,9 +496,7 @@ void PipelineBase::enable_spectrum() {
       [](auto pad, auto info, auto d) {
         auto l = static_cast<PipelineBase*>(d);
 
-        gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
-
-        std::lock_guard<std::mutex> lock(spectrum_mtx);
+        std::lock_guard<std::mutex> lock(pipeline_mutex);
 
         auto plugin = gst_bin_get_by_name(GST_BIN(l->spectrum_bin), "spectrum");
 
@@ -506,12 +508,14 @@ void PipelineBase::enable_spectrum() {
           gst_element_link_many(l->spectrum_identity_in, l->spectrum,
                                 l->spectrum_identity_out, nullptr);
 
-          gst_bin_sync_children_states(GST_BIN(l->spectrum_bin));
+          gst_element_sync_state_with_parent(l->spectrum);
 
           util::debug(l->log_tag + "spectrum enabled");
+        } else {
+          util::debug(l->log_tag + "spectrum is already enabled");
         }
 
-        return GST_PAD_PROBE_OK;
+        return GST_PAD_PROBE_REMOVE;
       },
       this, nullptr);
 
@@ -526,28 +530,26 @@ void PipelineBase::disable_spectrum() {
       [](auto pad, auto info, auto d) {
         auto l = static_cast<PipelineBase*>(d);
 
-        gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
-
-        std::lock_guard<std::mutex> lock(spectrum_mtx);
+        std::lock_guard<std::mutex> lock(pipeline_mutex);
 
         auto plugin = gst_bin_get_by_name(GST_BIN(l->spectrum_bin), "spectrum");
 
         if (plugin) {
+          gst_element_set_state(l->spectrum, GST_STATE_NULL);
+
           gst_element_unlink_many(l->spectrum_identity_in, l->spectrum,
                                   l->spectrum_identity_out, nullptr);
 
           gst_bin_remove(GST_BIN(l->spectrum_bin), l->spectrum);
 
-          gst_element_set_state(l->spectrum, GST_STATE_NULL);
-
           gst_element_link(l->spectrum_identity_in, l->spectrum_identity_out);
 
-          gst_bin_sync_children_states(GST_BIN(l->spectrum_bin));
-
           util::debug(l->log_tag + "spectrum disabled");
+        } else {
+          util::debug(l->log_tag + "spectrum is already disabled");
         }
 
-        return GST_PAD_PROBE_OK;
+        return GST_PAD_PROBE_REMOVE;
       },
       this, nullptr);
 
@@ -566,7 +568,7 @@ std::array<double, 2> PipelineBase::get_peak(GstMessage* message) {
     if (gpeak->n_values == 2) {
       if (gpeak->values != nullptr) {
         peak[0] = g_value_get_double(gpeak->values);      // left
-        peak[1] = g_value_get_double(gpeak->values + 1);  // right}
+        peak[1] = g_value_get_double(gpeak->values + 1);  // right
       }
     }
   }

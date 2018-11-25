@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-30 23:20-0300\n"
+"POT-Creation-Date: 2018-11-25 13:09-0200\n"
 "PO-Revision-Date: 2017-06-11 22:19+0200\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: \n"
@@ -18,18 +18,18 @@ msgstr ""
 "X-Generator: Poedit 2.0.1\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: data/ui/application.glade:60 data/ui/application.glade:1306
-#: data/ui/application.glade:1378
+#: data/ui/application.glade:60 data/ui/application.glade:1323
+#: data/ui/application.glade:1395
 msgid "Name"
 msgstr ""
 
-#: data/ui/application.glade:73 data/ui/application.glade:1287
-#: data/ui/application.glade:1359
+#: data/ui/application.glade:73 data/ui/application.glade:1304
+#: data/ui/application.glade:1376
 #, fuzzy
 msgid "Create Preset"
 msgstr "Uložiť predvoľbu"
 
-#: data/ui/application.glade:91 src/application_ui.cpp:952
+#: data/ui/application.glade:91 src/application_ui.cpp:954
 #, fuzzy
 msgid "Import Presets"
 msgstr "Načítať predvoľbu"
@@ -57,7 +57,7 @@ msgstr ""
 #: data/ui/application.glade:339 data/ui/compressor.glade:205
 #: data/ui/filter.glade:203 data/ui/equalizer.glade:280
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
-#: src/application_ui.cpp:957 src/application_ui.cpp:1032
+#: src/application_ui.cpp:959 src/application_ui.cpp:1034
 msgid "Presets"
 msgstr "Predvoľby"
 
@@ -79,71 +79,75 @@ msgstr ""
 msgid "Reset"
 msgstr "Predvoľby"
 
-#: data/ui/application.glade:727
+#: data/ui/application.glade:726
+msgid "About"
+msgstr ""
+
+#: data/ui/application.glade:744
 msgid "General"
 msgstr ""
 
-#: data/ui/application.glade:745
+#: data/ui/application.glade:762
 msgid "Show"
 msgstr ""
 
-#: data/ui/application.glade:771
+#: data/ui/application.glade:788
 msgid "Points"
 msgstr ""
 
-#: data/ui/application.glade:802
+#: data/ui/application.glade:819
 msgid "Use Custom Color"
 msgstr ""
 
-#: data/ui/application.glade:827
+#: data/ui/application.glade:844
 #, fuzzy
 msgid "Spectrum Color"
 msgstr "Zobraziť spektrum"
 
-#: data/ui/application.glade:854
+#: data/ui/application.glade:871
 msgid "Height"
 msgstr ""
 
-#: data/ui/application.glade:882 data/ui/convolver.glade:396
+#: data/ui/application.glade:899 data/ui/convolver.glade:396
 #, fuzzy
 msgid "Spectrum"
 msgstr "Zobraziť spektrum"
 
-#: data/ui/application.glade:911 data/ui/application.glade:1060
+#: data/ui/application.glade:928 data/ui/application.glade:1077
 #, fuzzy
 msgid "Use Default"
 msgstr "Predvolený"
 
-#: data/ui/application.glade:949 data/ui/application.glade:1097
+#: data/ui/application.glade:966 data/ui/application.glade:1114
 #: data/ui/app_info.glade:156
 msgid "Buffer"
 msgstr ""
 
-#: data/ui/application.glade:982 data/ui/application.glade:1129
+#: data/ui/application.glade:999 data/ui/application.glade:1146
 #: data/ui/app_info.glade:183
 msgid "Latency"
 msgstr ""
 
-#: data/ui/application.glade:1015 data/ui/application.glade:1161
+#: data/ui/application.glade:1032 data/ui/application.glade:1178
 #, fuzzy
 msgid "Block Size"
 msgstr "Veľkosť miestnosti"
 
-#: data/ui/application.glade:1046 data/ui/application.glade:1317
+#: data/ui/application.glade:1063 data/ui/application.glade:1334
 #, fuzzy
 msgid "Input Effects"
 msgstr "Vstupný obmedzovač"
 
-#: data/ui/application.glade:1192 data/ui/application.glade:1389
+#: data/ui/application.glade:1209 data/ui/application.glade:1406
 #, fuzzy
 msgid "Output Effects"
 msgstr "Vstupný obmedzovač"
 
-#: data/ui/application.glade:1219
+#: data/ui/application.glade:1236
 msgid "Pulseaudio"
 msgstr ""
 
-#: data/ui/application.glade:1403
+#: data/ui/application.glade:1420
 msgid "Blacklist"
 msgstr ""
 
@@ -949,7 +953,7 @@ msgstr "Zoslabenie"
 msgid "Samples"
 msgstr ""
 
-#: data/ui/convolver.glade:324 src/convolver_ui.cpp:273
+#: data/ui/convolver.glade:324 src/convolver_ui.cpp:269
 msgid "Impulse Response"
 msgstr ""
 
@@ -1228,6 +1232,11 @@ msgstr ""
 msgid "pulseeffects"
 msgstr ""
 
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:187
+#, fuzzy
+msgid "\"Presets\""
+msgstr "Predvoľby"
+
 #: src/application.cpp:20
 msgid "Quit PulseEffects. Useful when running in service mode."
 msgstr ""
@@ -1240,34 +1249,38 @@ msgstr ""
 msgid "Load a preset. Example: pulseeffects -l music"
 msgstr ""
 
-#: src/application.cpp:51
+#: src/application.cpp:30
+msgid "Reset PulseEffects."
+msgstr ""
+
+#: src/application.cpp:58
 #, fuzzy
 msgid "Presets: "
 msgstr "Predvoľby"
 
-#: src/application.cpp:209
+#: src/application.cpp:213
 msgid "PulseEffects was updated"
 msgstr ""
 
-#: src/application.cpp:212
+#: src/application.cpp:216
 msgid ""
 "It is recommended to reset its configuration after an update. Do you want to "
 "do this?"
 msgstr ""
 
-#: src/application.cpp:215
+#: src/application.cpp:219
 msgid "Yes"
 msgstr ""
 
-#: src/application.cpp:216
+#: src/application.cpp:220
 msgid "No"
 msgstr ""
 
-#: src/application_ui.cpp:953 src/convolver_ui.cpp:269
+#: src/application_ui.cpp:955 src/convolver_ui.cpp:265
 msgid "Open"
 msgstr ""
 
-#: src/application_ui.cpp:953 src/convolver_ui.cpp:269
+#: src/application_ui.cpp:955 src/convolver_ui.cpp:265
 msgid "Cancel"
 msgstr ""
 
@@ -1287,16 +1300,16 @@ msgstr ""
 msgid "Calibration Microphone"
 msgstr ""
 
-#: src/convolver_ui.cpp:268
+#: src/convolver_ui.cpp:264
 #, fuzzy
 msgid "Import Impulse File"
 msgstr "Načítať predvoľbu"
 
-#: src/convolver_ui.cpp:311 src/convolver_ui.cpp:312 src/convolver_ui.cpp:314
+#: src/convolver_ui.cpp:307 src/convolver_ui.cpp:308 src/convolver_ui.cpp:310
 msgid "Failed"
 msgstr ""
 
-#: src/convolver_ui.cpp:316
+#: src/convolver_ui.cpp:312
 msgid "Could Not Load The Impulse File"
 msgstr ""
 

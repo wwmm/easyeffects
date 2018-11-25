@@ -10,6 +10,7 @@ static void gst_peadapter_set_property(GObject* object,
                                        guint prop_id,
                                        const GValue* value,
                                        GParamSpec* pspec);
+
 static void gst_peadapter_get_property(GObject* object,
                                        guint prop_id,
                                        GValue* value,
@@ -18,6 +19,7 @@ static void gst_peadapter_get_property(GObject* object,
 static GstFlowReturn gst_peadapter_chain(GstPad* pad,
                                          GstObject* parent,
                                          GstBuffer* buffer);
+
 static gboolean gst_peadapter_sink_event(GstPad* pad,
                                          GstObject* parent,
                                          GstEvent* event);
@@ -131,6 +133,7 @@ static void gst_peadapter_init(GstPeadapter* peadapter) {
 
   /* configure event function on the pad before adding the pad to the element
    */
+
   gst_pad_set_query_function(peadapter->srcpad, gst_peadapter_src_query);
 
   gst_element_add_pad(GST_ELEMENT(peadapter), peadapter->srcpad);
@@ -286,20 +289,24 @@ static gboolean gst_peadapter_sink_event(GstPad* pad,
 
       /* push the event downstream */
 
-      ret = gst_pad_push_event(peadapter->srcpad, event);
+      gst_pad_push_event(peadapter->srcpad, event);
 
       break;
     case GST_EVENT_EOS:
+      GST_OBJECT_LOCK(peadapter);
+
       gst_peadapter_process(peadapter);
       gst_adapter_clear(peadapter->adapter);
 
       peadapter->inbuf_n_samples = -1;
 
-      ret = gst_pad_push_event(peadapter->srcpad, event);
+      GST_OBJECT_UNLOCK(peadapter);
+
+      ret = gst_pad_event_default(pad, parent, event);
 
       break;
     default:
-      ret = gst_pad_push_event(peadapter->srcpad, event);
+      ret = gst_pad_event_default(pad, parent, event);
       break;
   }
 
@@ -330,9 +337,13 @@ static GstStateChangeReturn gst_peadapter_change_state(
 
   switch (transition) {
     case GST_STATE_CHANGE_PAUSED_TO_READY:
+      GST_OBJECT_LOCK(peadapter);
+
       gst_adapter_clear(peadapter->adapter);
 
       peadapter->inbuf_n_samples = -1;
+
+      GST_OBJECT_UNLOCK(peadapter);
 
       break;
     default:
@@ -402,8 +413,12 @@ void gst_peadapter_finalize(GObject* object) {
 
   GST_DEBUG_OBJECT(peadapter, "finalize");
 
+  GST_OBJECT_LOCK(peadapter);
+
   gst_adapter_clear(peadapter->adapter);
   g_object_unref(peadapter->adapter);
+
+  GST_OBJECT_UNLOCK(peadapter);
 
   /* clean up object here */
 
