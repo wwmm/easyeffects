@@ -77,7 +77,7 @@ msgstr "Сбросить"
 
 #: data/ui/application.glade:726
 msgid "About"
-msgstr ""
+msgstr "О программе"
 
 #: data/ui/application.glade:744
 msgid "General"
@@ -140,7 +140,7 @@ msgstr ""
 
 #: data/ui/application.glade:1420
 msgid "Blacklist"
-msgstr ""
+msgstr "Черный список"
 
 #: data/ui/about.glade.in:11
 msgid "Audio Effects for Pulseaudio Applications"
@@ -319,6 +319,7 @@ msgstr "По умолчанию"
 msgid "Detection"
 msgstr "Определение"
 
+# В данном режиме «Компрессор» обрабатывает сигналы сразу двух каналов (стерео), уравнивая их уровни.
 #: data/ui/compressor.glade:249 data/ui/gate.glade:180
 msgid "Stereo Link"
 msgstr "Стереосвязка"
@@ -373,7 +374,7 @@ msgstr "Атака"
 #: data/ui/multiband_gate.glade:999 data/ui/multiband_gate.glade:1410
 #: data/ui/multiband_gate.glade:1821 data/ui/deesser.glade:461
 msgid "Threshold"
-msgstr "Порог"
+msgstr "Порог срабатывания"
 
 #: data/ui/compressor.glade:439 data/ui/multiband_compressor.glade:604
 #: data/ui/multiband_compressor.glade:979
@@ -383,7 +384,7 @@ msgstr "Порог"
 #: data/ui/multiband_gate.glade:1444 data/ui/multiband_gate.glade:1855
 #: data/ui/deesser.glade:494
 msgid "Ratio"
-msgstr "Отношение"
+msgstr "Степень сжатия"
 
 #: data/ui/compressor.glade:471 data/ui/multiband_compressor.glade:636
 #: data/ui/multiband_compressor.glade:1012
@@ -392,7 +393,7 @@ msgstr "Отношение"
 #: data/ui/multiband_gate.glade:656 data/ui/multiband_gate.glade:1066
 #: data/ui/multiband_gate.glade:1477 data/ui/multiband_gate.glade:1888
 msgid "Knee"
-msgstr "Излом"
+msgstr "Колено (излом)"
 
 #: data/ui/compressor.glade:505 data/ui/multiband_compressor.glade:670
 #: data/ui/multiband_compressor.glade:1047
@@ -686,9 +687,11 @@ msgstr "Большой/плавный"
 msgid "Experimental"
 msgstr "Экспериментальный"
 
+# Энхансер (он же Эксайтер) — это прибор, который генерирует высшие гармоники низких частот, благодаря чему повышается локализация низких частот и их «читаемость».
+# «Бас-Энхансер» или «Глубокий бас» 
 #: data/ui/bass_enhancer.glade:50
 msgid "Bass Enhancer"
-msgstr "Усиление басов"
+msgstr "Глубокий бас (бас-энхансер)"
 
 #: data/ui/bass_enhancer.glade:148 data/ui/exciter.glade:148
 #: data/ui/deesser.glade:165
@@ -705,7 +708,7 @@ msgstr "2-ой"
 
 #: data/ui/bass_enhancer.glade:213 data/ui/exciter.glade:214
 msgid "Blend Harmonics"
-msgstr "Смешивание гармоник"
+msgstr "Смешение гармоник"
 
 #: data/ui/bass_enhancer.glade:257 data/ui/bass_enhancer.glade:389
 #: data/ui/exciter.glade:261 data/ui/exciter.glade:391
@@ -714,7 +717,7 @@ msgstr "Гармоники"
 
 #: data/ui/bass_enhancer.glade:269 data/ui/exciter.glade:274
 msgid "Scope"
-msgstr "Размах"
+msgstr "Диапазон частот"
 
 #: data/ui/bass_enhancer.glade:358
 msgid "Floor"
@@ -878,7 +881,7 @@ msgstr ""
 
 #: data/ui/deesser.glade:237 data/ui/deesser.glade:265
 msgid "Split"
-msgstr ""
+msgstr "Частота раздела"
 
 #: data/ui/deesser.glade:384
 msgid "Level"
@@ -886,11 +889,11 @@ msgstr "Уровень"
 
 #: data/ui/deesser.glade:397
 msgid "Peak Q"
-msgstr "Пик Q"
+msgstr "Добротность (Q)"
 
 #: data/ui/deesser.glade:429
 msgid "Laxity"
-msgstr ""
+msgstr "Допуск на срабатывание"
 
 #: data/ui/deesser.glade:763
 msgid "Detected"
@@ -1208,9 +1211,8 @@ msgid "pulseeffects"
 msgstr ""
 
 #: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:187
-#, fuzzy
 msgid "\"Presets\""
-msgstr "Предустановки"
+msgstr "\"Предустановки\""
 
 #: src/application.cpp:20
 msgid "Quit PulseEffects. Useful when running in service mode."
@@ -1225,9 +1227,8 @@ msgid "Load a preset. Example: pulseeffects -l music"
 msgstr "Загрузить пресет. Пример: pulseeffects -l music"
 
 #: src/application.cpp:30
-#, fuzzy
 msgid "Reset PulseEffects."
-msgstr "PulseEffects"
+msgstr "Сбросить настройки PulseEffects"
 
 #: src/application.cpp:58
 msgid "Presets: "
@@ -1313,7 +1314,7 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Auto Volume"
 #~ msgstr "Автоподстройка уровня звука"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Import"
 #~ msgstr "Импортировать предустановки"
 
@@ -1344,19 +1345,19 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Стерео база"
 #~ msgstr "Сетерео база"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Output Device"
 #~ msgstr "Ограничитель ввода"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Input Device"
 #~ msgstr "Ограничитель ввода"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Advanced Settings"
 #~ msgstr "Параметры"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Meters"
 #~ msgstr "Тип фильтра"
 
@@ -1369,19 +1370,19 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Low Pass"
 #~ msgstr "Фильтр низких частот"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Source"
 #~ msgstr "Средний источник"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Side"
 #~ msgstr "Усиление ввода [дБ]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Sidechain"
 #~ msgstr "Усиление ввода [дБ]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Ceil"
 #~ msgstr "Верхний порог (Гц)"
 
@@ -1397,37 +1398,37 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "peak"
 #~ msgstr "пик"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "F1"
 #~ msgstr "F"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "F1 Level"
 #~ msgstr "Уровень"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "F2"
 #~ msgstr "F"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "F2 Level"
 #~ msgstr "Уровень"
 
 #~ msgid "Quality"
 #~ msgstr "Качество"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Reset Frequency"
 #~ msgstr "Сброс частоты"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Reset Quality"
 #~ msgstr "Сброс качества"
 
 #~ msgid "Poles"
 #~ msgstr "Полюса"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Output Limiter"
 #~ msgstr "Ограничитель ввода"
 
@@ -1443,7 +1444,7 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Stereo Spread"
 #~ msgstr "Рассеивание стерео"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Mono Input"
 #~ msgstr "Моноввод"
 
@@ -1453,7 +1454,7 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Save Current Settings to Preset"
 #~ msgstr "Сохранить текущие настройки в набор преднастроек"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Delete Preset"
 #~ msgstr "Удалить набор предустановок"
 
@@ -1469,11 +1470,11 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Test Signal"
 #~ msgstr "Проверочный сигнал"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "1"
 #~ msgstr "F"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Reduction Level"
 #~ msgstr "Увеличение ослабления"
 
@@ -1483,11 +1484,11 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Frequency [Hz]"
 #~ msgstr "Частота [Hz]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Buffer [ms]"
 #~ msgstr "Буферизация"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Latency [ms]"
 #~ msgstr "Задержка"
 
@@ -1497,46 +1498,46 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Makeup [dB]"
 #~ msgstr "Компенсирование [дБ]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "F1 [Hz]"
 #~ msgstr "Шум [Гц]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "F1 Level [dB]"
 #~ msgstr "Подача [дБ]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "F2 [Hz]"
 #~ msgstr "Шум [Гц]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "F2 Level [dB]"
 #~ msgstr "Подача [дБ]"
 
 #~ msgid "Release [ms]"
 #~ msgstr "Высвобождение [мс]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Delay [ms]"
 #~ msgstr "Задержка [ms]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Gain Reduction [dB]"
 #~ msgstr "Увеличение ослабления"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Ceiling [dB]"
 #~ msgstr "Ограничение [dB]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Low [dB]"
 #~ msgstr "Низкие частоты [дБ]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "High [dB]"
 #~ msgstr "Высокие частоты [дБ]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Input Gate"
 #~ msgstr "Ограничитель ввода"
 
@@ -1546,26 +1547,26 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Audio Enhancer"
 #~ msgstr "Усилитель аудио"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Buffer Latency"
 #~ msgstr "Задержка буферизации"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "buffer-time"
 #~ msgstr "Время буферизации [ms]"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "latency-time"
 #~ msgstr "Задержка [ms]"
 
 #~ msgid "Vlc"
 #~ msgstr "VLC"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Sink Latency"
 #~ msgstr "Задержка затухания"
 
-#, fuzzy
+##, fuzzy
 #~ msgid "Preset Name"
 #~ msgstr "Название предустановки"
 

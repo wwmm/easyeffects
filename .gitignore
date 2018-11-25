@@ -44,3 +44,4 @@ debian/*
 .build-tools.cson
 
 ppastats
+.autobuild

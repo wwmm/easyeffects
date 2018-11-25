@@ -3,6 +3,7 @@
 # Currently for DEB package only
 # Author: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>
 
+pkg_name="pulseeffects"
 git_upstream_url="https://github.com/wwmm/pulseeffects.git"
 stdate="$(date +%s)"
 day_name="$(env LANG=c date --date="@${stdate}" +%a)"
@@ -19,7 +20,7 @@ fi
 dir0="$(pwd)"
 
 echo_help(){
-	echo "Usage: nv|nw|new_version , ppa, full"
+	echo "Usage: nv|nw|new_version, ppa, lc|local_test, check_fuzzy|check_fuzzy_po|cf, full"
 }
 
 git_sync_upstream(){
@@ -62,19 +63,39 @@ debian_changelog_new_entry(){
 	rm -f debian/changelog.new debian/changelog.old
 }
 
+check_fuzzy_po(){
+	for lang in ru
+	do
+		if grep -q "^#, fuzzy" "po/${lang}.po"
+			then
+				echo "No fuzzies found in localization ${lang}"
+			else
+				read -p "Fuzzies FOUND in localization ${lang}"
+		fi
+		
+		if grep -q "^#, fuzzy" "help/${lang}/${lang}.po"
+			then
+				echo "No fuzzies found in help ${lang}"
+			else
+				read -p "Fuzzies FOUND in help ${lang}"
+		fi
+	done
+}
+
 new_version(){
 	# env USCAN=0 util/autobuild.sh
 	if [ ! "$USCAN" = '0' ]
 		then
 			if env LANG=c uscan | grep -qi 'Newer package available'; then
 				new_version="$(env LANG=c uscan --no-download | grep 'Newest version of' | awk -F ', ' '{print $1}' | awk -F ' ' '{print $NF}')"
-				git_sync_upstream
 			fi
 		else
-			git_sync_upstream
+			:
 	fi
-	
+	git_sync_upstream
+	git commit -m "Updated to ${new_version} (autobuild)" debian/changelog
 	debian_changelog_new_entry
+	check_fuzzy_po
 }
 
 ppa(){
@@ -84,7 +105,18 @@ ppa(){
 }
 
 git_push(){
-	git commit -m "autobuild: ${new_version}" && git push
+	git push
+}
+
+local_test(){
+	dpkg-buildpackage
+	last_version="$(head -n 1 debian/changelog | tr -d "()" | awk -F ' ' '{print $2}')"
+	sudo apt install ../*${pkg_name}*${last_version}*.deb -y && \
+	if pulseeffects
+		then return 0
+		else return 1
+	fi
+	debian/rules clean
 }
 
 case "$1" in
@@ -96,10 +128,20 @@ case "$1" in
 	;;
 	full )
 		new_version
-		ppa
-		git_push
+		if local_test; then
+			ppa
+			git_push
+		fi
+	;;
+	lc|local_test )
+		#new_version
+		local_test
+	;;
+	check_fuzzy|check_fuzzy_po|cf )
+		check_fuzzy_po
 	;;
 	* )
+		echo "Current dir is: $(pwd) ."
 		echo_help
 	;;
 esac
