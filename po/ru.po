@@ -77,7 +77,7 @@ msgstr "Сбросить"
 
 #: data/ui/application.glade:726
 msgid "About"
-msgstr ""
+msgstr "О программе"
 
 #: data/ui/application.glade:744
 msgid "General"
@@ -140,7 +140,7 @@ msgstr ""
 
 #: data/ui/application.glade:1420
 msgid "Blacklist"
-msgstr ""
+msgstr "Черный список"
 
 #: data/ui/about.glade.in:11
 msgid "Audio Effects for Pulseaudio Applications"
@@ -1208,9 +1208,8 @@ msgid "pulseeffects"
 msgstr ""
 
 #: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:187
-#, fuzzy
 msgid "\"Presets\""
-msgstr "Предустановки"
+msgstr "\"Предустановки\""
 
 #: src/application.cpp:20
 msgid "Quit PulseEffects. Useful when running in service mode."
@@ -1225,9 +1224,8 @@ msgid "Load a preset. Example: pulseeffects -l music"
 msgstr "Загрузить пресет. Пример: pulseeffects -l music"
 
 #: src/application.cpp:30
-#, fuzzy
 msgid "Reset PulseEffects."
-msgstr "PulseEffects"
+msgstr "Сбросить настройки PulseEffects"
 
 #: src/application.cpp:58
 msgid "Presets: "
