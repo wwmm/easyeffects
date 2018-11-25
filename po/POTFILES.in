@@ -31,6 +31,7 @@ data/ui/calibration_signals.glade
 data/ui/calibration_mic.glade
 data/com.github.wwmm.pulseeffects.appdata.xml.in
 data/com.github.wwmm.pulseeffects.desktop.in
+data/schemas/com.github.wwmm.pulseeffects.gschema.xml
 src/application.cpp
 src/application_ui.cpp
 src/effects_base_ui.cpp

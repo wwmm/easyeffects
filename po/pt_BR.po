@@ -8,29 +8,29 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-30 23:20-0300\n"
-"PO-Revision-Date: 2018-08-30 23:03-0300\n"
+"POT-Creation-Date: 2018-11-25 13:09-0200\n"
+"PO-Revision-Date: 2018-11-25 13:11-0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: data/ui/application.glade:60 data/ui/application.glade:1306
-#: data/ui/application.glade:1378
+#: data/ui/application.glade:60 data/ui/application.glade:1323
+#: data/ui/application.glade:1395
 msgid "Name"
 msgstr "Nome"
 
-#: data/ui/application.glade:73 data/ui/application.glade:1287
-#: data/ui/application.glade:1359
+#: data/ui/application.glade:73 data/ui/application.glade:1304
+#: data/ui/application.glade:1376
 msgid "Create Preset"
 msgstr "Criar Predefinição"
 
-#: data/ui/application.glade:91 src/application_ui.cpp:952
+#: data/ui/application.glade:91 src/application_ui.cpp:954
 msgid "Import Presets"
 msgstr "Importar Predefinições"
 
@@ -56,7 +56,7 @@ msgstr "Ajuda"
 #: data/ui/application.glade:339 data/ui/compressor.glade:205
 #: data/ui/filter.glade:203 data/ui/equalizer.glade:280
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
-#: src/application_ui.cpp:957 src/application_ui.cpp:1032
+#: src/application_ui.cpp:959 src/application_ui.cpp:1034
 msgid "Presets"
 msgstr "Predefinições"
 
@@ -77,65 +77,69 @@ msgstr "Usar Tema Escuro"
 msgid "Reset"
 msgstr "Resetar"
 
-#: data/ui/application.glade:727
+#: data/ui/application.glade:726
+msgid "About"
+msgstr "Sobre"
+
+#: data/ui/application.glade:744
 msgid "General"
 msgstr "Geral"
 
-#: data/ui/application.glade:745
+#: data/ui/application.glade:762
 msgid "Show"
 msgstr "Mostrar"
 
-#: data/ui/application.glade:771
+#: data/ui/application.glade:788
 msgid "Points"
 msgstr "Pontos"
 
-#: data/ui/application.glade:802
+#: data/ui/application.glade:819
 msgid "Use Custom Color"
 msgstr "Usar Cor Customizada"
 
-#: data/ui/application.glade:827
+#: data/ui/application.glade:844
 msgid "Spectrum Color"
 msgstr "Cor do Espectro"
 
-#: data/ui/application.glade:854
+#: data/ui/application.glade:871
 msgid "Height"
 msgstr "Altura"
 
-#: data/ui/application.glade:882 data/ui/convolver.glade:396
+#: data/ui/application.glade:899 data/ui/convolver.glade:396
 msgid "Spectrum"
 msgstr "Espectro"
 
-#: data/ui/application.glade:911 data/ui/application.glade:1060
+#: data/ui/application.glade:928 data/ui/application.glade:1077
 msgid "Use Default"
 msgstr "Usar Padrão"
 
-#: data/ui/application.glade:949 data/ui/application.glade:1097
+#: data/ui/application.glade:966 data/ui/application.glade:1114
 #: data/ui/app_info.glade:156
 msgid "Buffer"
 msgstr "Buffer"
 
-#: data/ui/application.glade:982 data/ui/application.glade:1129
+#: data/ui/application.glade:999 data/ui/application.glade:1146
 #: data/ui/app_info.glade:183
 msgid "Latency"
 msgstr "Latência"
 
-#: data/ui/application.glade:1015 data/ui/application.glade:1161
+#: data/ui/application.glade:1032 data/ui/application.glade:1178
 msgid "Block Size"
 msgstr "Tamanho do Bloco"
 
-#: data/ui/application.glade:1046 data/ui/application.glade:1317
+#: data/ui/application.glade:1063 data/ui/application.glade:1334
 msgid "Input Effects"
 msgstr "Efeitos de Entrada"
 
-#: data/ui/application.glade:1192 data/ui/application.glade:1389
+#: data/ui/application.glade:1209 data/ui/application.glade:1406
 msgid "Output Effects"
 msgstr "Efeitos de Saída"
 
-#: data/ui/application.glade:1219
+#: data/ui/application.glade:1236
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
 
-#: data/ui/application.glade:1403
+#: data/ui/application.glade:1420
 msgid "Blacklist"
 msgstr "Lista Negra"
 
@@ -901,7 +905,7 @@ msgstr "Duração"
 msgid "Samples"
 msgstr "Amostras"
 
-#: data/ui/convolver.glade:324 src/convolver_ui.cpp:273
+#: data/ui/convolver.glade:324 src/convolver_ui.cpp:269
 msgid "Impulse Response"
 msgstr "Resposta de Impulso"
 
@@ -1182,6 +1186,10 @@ msgstr "limitador;compressor;reverberação;equalizador;autovolume;"
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:187
+msgid "\"Presets\""
+msgstr "\"Predefinições\""
+
 #: src/application.cpp:20
 msgid "Quit PulseEffects. Useful when running in service mode."
 msgstr "Sair do PulseEffects. Útil quando executando em modo de serviço."
@@ -1194,15 +1202,19 @@ msgstr "Mostrar predefinições disponíveis."
 msgid "Load a preset. Example: pulseeffects -l music"
 msgstr "Carregar uma predefinição. Exemplo: pulseeffects -l musica"
 
-#: src/application.cpp:51
+#: src/application.cpp:30
+msgid "Reset PulseEffects."
+msgstr "Redefinir o PulseEffects."
+
+#: src/application.cpp:58
 msgid "Presets: "
 msgstr "Predefinições: "
 
-#: src/application.cpp:209
+#: src/application.cpp:213
 msgid "PulseEffects was updated"
 msgstr "PulseEffects foi atualizado"
 
-#: src/application.cpp:212
+#: src/application.cpp:216
 msgid ""
 "It is recommended to reset its configuration after an update. Do you want to "
 "do this?"
@@ -1210,19 +1222,19 @@ msgstr ""
 "É recomendável redefinir as configurações dele após uma atualização. Você "
 "quer fazer isto?"
 
-#: src/application.cpp:215
+#: src/application.cpp:219
 msgid "Yes"
 msgstr "Sim"
 
-#: src/application.cpp:216
+#: src/application.cpp:220
 msgid "No"
 msgstr "Não"
 
-#: src/application_ui.cpp:953 src/convolver_ui.cpp:269
+#: src/application_ui.cpp:955 src/convolver_ui.cpp:265
 msgid "Open"
 msgstr "Abrir"
 
-#: src/application_ui.cpp:953 src/convolver_ui.cpp:269
+#: src/application_ui.cpp:955 src/convolver_ui.cpp:265
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -1242,15 +1254,15 @@ msgstr "tocando"
 msgid "Calibration Microphone"
 msgstr "Microfone de Calibração"
 
-#: src/convolver_ui.cpp:268
+#: src/convolver_ui.cpp:264
 msgid "Import Impulse File"
 msgstr "Importar Arquivo com a Resposta de Impulso"
 
-#: src/convolver_ui.cpp:311 src/convolver_ui.cpp:312 src/convolver_ui.cpp:314
+#: src/convolver_ui.cpp:307 src/convolver_ui.cpp:308 src/convolver_ui.cpp:310
 msgid "Failed"
 msgstr "Falhou"
 
-#: src/convolver_ui.cpp:316
+#: src/convolver_ui.cpp:312
 msgid "Could Not Load The Impulse File"
 msgstr "Não Foi Possível Carregar o Arquivo com o Impulso"
 

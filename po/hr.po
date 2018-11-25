@@ -4,12 +4,11 @@
 # gogo <trebelnik2@gmail.com>, 2017.
 # rooty <cho4oot@gmail.com>, 2018.
 # flipwise <tyx027@gmail.com>, 2018.
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-30 23:20-0300\n"
+"POT-Creation-Date: 2018-11-25 13:09-0200\n"
 "PO-Revision-Date: 2018-11-22 20:12+0200\n"
 "Last-Translator: flipwise <tyx027@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -21,17 +20,17 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: data/ui/application.glade:60 data/ui/application.glade:1306
-#: data/ui/application.glade:1378
+#: data/ui/application.glade:60 data/ui/application.glade:1323
+#: data/ui/application.glade:1395
 msgid "Name"
 msgstr "Naziv"
 
-#: data/ui/application.glade:73 data/ui/application.glade:1287
-#: data/ui/application.glade:1359
+#: data/ui/application.glade:73 data/ui/application.glade:1304
+#: data/ui/application.glade:1376
 msgid "Create Preset"
 msgstr "Stvori predložak"
 
-#: data/ui/application.glade:91 src/application_ui.cpp:952
+#: data/ui/application.glade:91 src/application_ui.cpp:954
 msgid "Import Presets"
 msgstr "Učitaj predloške"
 
@@ -57,7 +56,7 @@ msgstr "Pomoć"
 #: data/ui/application.glade:339 data/ui/compressor.glade:205
 #: data/ui/filter.glade:203 data/ui/equalizer.glade:280
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
-#: src/application_ui.cpp:957 src/application_ui.cpp:1032
+#: src/application_ui.cpp:959 src/application_ui.cpp:1034
 msgid "Presets"
 msgstr "Predlošci"
 
@@ -78,68 +77,72 @@ msgstr "Koristi tamnu temu"
 msgid "Reset"
 msgstr "Vrati na tvorničke postavke"
 
-#: data/ui/application.glade:727
+#: data/ui/application.glade:726
+msgid "About"
+msgstr ""
+
+#: data/ui/application.glade:744
 msgid "General"
 msgstr "Općenito"
 
-#: data/ui/application.glade:745
+#: data/ui/application.glade:762
 msgid "Show"
 msgstr "Prikaži"
 
-#: data/ui/application.glade:771
+#: data/ui/application.glade:788
 msgid "Points"
 msgstr "Broj traka"
 
-#: data/ui/application.glade:802
+#: data/ui/application.glade:819
 msgid "Use Custom Color"
 msgstr "Koristi vlastitu boju"
 
-#: data/ui/application.glade:827
+#: data/ui/application.glade:844
 #, fuzzy
 msgid "Spectrum Color"
 msgstr "Boja spektra"
 
-#: data/ui/application.glade:854
+#: data/ui/application.glade:871
 #, fuzzy
 msgid "Height"
 msgstr "Visina"
 
-#: data/ui/application.glade:882 data/ui/convolver.glade:396
+#: data/ui/application.glade:899 data/ui/convolver.glade:396
 msgid "Spectrum"
 msgstr "Spektar"
 
-#: data/ui/application.glade:911 data/ui/application.glade:1060
+#: data/ui/application.glade:928 data/ui/application.glade:1077
 msgid "Use Default"
 msgstr "Koristi tvorničke postavke"
 
-#: data/ui/application.glade:949 data/ui/application.glade:1097
+#: data/ui/application.glade:966 data/ui/application.glade:1114
 #: data/ui/app_info.glade:156
 msgid "Buffer"
 msgstr "Latencija međuspremnika"
 
-#: data/ui/application.glade:982 data/ui/application.glade:1129
+#: data/ui/application.glade:999 data/ui/application.glade:1146
 #: data/ui/app_info.glade:183
 msgid "Latency"
 msgstr "Latencija"
 
-#: data/ui/application.glade:1015 data/ui/application.glade:1161
+#: data/ui/application.glade:1032 data/ui/application.glade:1178
 #, fuzzy
 msgid "Block Size"
 msgstr "Veličina bloka"
 
-#: data/ui/application.glade:1046 data/ui/application.glade:1317
+#: data/ui/application.glade:1063 data/ui/application.glade:1334
 msgid "Input Effects"
 msgstr "Ulazni efekti"
 
-#: data/ui/application.glade:1192 data/ui/application.glade:1389
+#: data/ui/application.glade:1209 data/ui/application.glade:1406
 msgid "Output Effects"
 msgstr "Izlazni efekti"
 
-#: data/ui/application.glade:1219
+#: data/ui/application.glade:1236
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
 
-#: data/ui/application.glade:1403
+#: data/ui/application.glade:1420
 msgid "Blacklist"
 msgstr "Crna lista"
 
@@ -765,12 +768,10 @@ msgid "MS > LR (Mid-Side to Stereo)"
 msgstr ""
 
 #: data/ui/stereo_tools.glade:328
-#, fuzzy
 msgid "LR > LL (Mono Left Channel)"
 msgstr ""
 
 #: data/ui/stereo_tools.glade:329
-#, fuzzy
 msgid "LR > RR (Mono Right Channel)"
 msgstr ""
 
@@ -947,7 +948,7 @@ msgstr "Trajanje"
 msgid "Samples"
 msgstr "Semplovi"
 
-#: data/ui/convolver.glade:324 src/convolver_ui.cpp:273
+#: data/ui/convolver.glade:324 src/convolver_ui.cpp:269
 #, fuzzy
 msgid "Impulse Response"
 msgstr "Reakcija impulsa"
@@ -1051,7 +1052,6 @@ msgid "Noise Suppressor"
 msgstr "Supresija buke"
 
 #: data/ui/webrtc.glade:352
-#, fuzzy
 msgid "Adaptive Digital"
 msgstr ""
 
@@ -1172,8 +1172,8 @@ msgid ""
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
 "PulseEffects je napredan alat za manipulaciju zvukom. Uključuje ekvalizator, "
-"graničnik, kompresor, alat odjeka te mnoge druge druge alate. Još sadrži i ugrađeni "
-"analizator spektra."
+"graničnik, kompresor, alat odjeka te mnoge druge druge alate. Još sadrži i "
+"ugrađeni analizator spektra."
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:16
 msgid ""
@@ -1193,8 +1193,8 @@ msgid ""
 "recording, but it also works well during voice conversations."
 msgstr ""
 "Osim manipuliranja izlaza zvuka, PulseEffects može primijeniti efekte i na "
-"ulazni uređaj, poput mikrofona. To je na primjer korisno pri snimanju "
-"zvuka, ali isto tako funkcionira dobro i tijekom glasovnih razgovora."
+"ulazni uređaj, poput mikrofona. To je na primjer korisno pri snimanju zvuka, "
+"ali isto tako funkcionira dobro i tijekom glasovnih razgovora."
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:27
 msgid ""
@@ -1234,9 +1234,15 @@ msgstr "graničnik;kompresor;odjek;ekvalizator;automatska glasnoća zvuka;"
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:187
+#, fuzzy
+msgid "\"Presets\""
+msgstr "Predlošci"
+
 #: src/application.cpp:20
 msgid "Quit PulseEffects. Useful when running in service mode."
-msgstr "Zatvori PulseEffects. Korisno pri upotrebi u servisnom načinu pokretanja."
+msgstr ""
+"Zatvori PulseEffects. Korisno pri upotrebi u servisnom načinu pokretanja."
 
 #: src/application.cpp:23
 msgid "Show available presets."
@@ -1246,35 +1252,42 @@ msgstr "Prikaži dostupne predloške."
 msgid "Load a preset. Example: pulseeffects -l music"
 msgstr "Učitaj predložak. Primjer: pulseeffects -l music"
 
-#: src/application.cpp:51
+#: src/application.cpp:30
+#, fuzzy
+msgid "Reset PulseEffects."
+msgstr "PulseEffects"
+
+#: src/application.cpp:58
 #, fuzzy
 msgid "Presets: "
 msgstr "Predlošci: "
 
-#: src/application.cpp:209
+#: src/application.cpp:213
 #, fuzzy
 msgid "PulseEffects was updated"
 msgstr "PulseEffects je bio nadograđen"
 
-#: src/application.cpp:212
+#: src/application.cpp:216
 msgid ""
 "It is recommended to reset its configuration after an update. Do you want to "
 "do this?"
-msgstr "Nakon nadogradnje preporučeno je vratiti njegovu konfiguraciju na tvorničke postavke. Želite li to učiniti?"
+msgstr ""
+"Nakon nadogradnje preporučeno je vratiti njegovu konfiguraciju na tvorničke "
+"postavke. Želite li to učiniti?"
 
-#: src/application.cpp:215
+#: src/application.cpp:219
 msgid "Yes"
 msgstr "Da"
 
-#: src/application.cpp:216
+#: src/application.cpp:220
 msgid "No"
 msgstr "Ne"
 
-#: src/application_ui.cpp:953 src/convolver_ui.cpp:269
+#: src/application_ui.cpp:955 src/convolver_ui.cpp:265
 msgid "Open"
 msgstr "Otvori"
 
-#: src/application_ui.cpp:953 src/convolver_ui.cpp:269
+#: src/application_ui.cpp:955 src/convolver_ui.cpp:265
 msgid "Cancel"
 msgstr "Poništi"
 
@@ -1295,16 +1308,16 @@ msgstr "reprodukcija"
 msgid "Calibration Microphone"
 msgstr "Kalibracija mikrofona"
 
-#: src/convolver_ui.cpp:268
+#: src/convolver_ui.cpp:264
 #, fuzzy
 msgid "Import Impulse File"
 msgstr "Učitaj impuls datoteku"
 
-#: src/convolver_ui.cpp:311 src/convolver_ui.cpp:312 src/convolver_ui.cpp:314
+#: src/convolver_ui.cpp:307 src/convolver_ui.cpp:308 src/convolver_ui.cpp:310
 msgid "Failed"
 msgstr "Nije uspjelo"
 
-#: src/convolver_ui.cpp:316
+#: src/convolver_ui.cpp:312
 msgid "Could Not Load The Impulse File"
 msgstr "Nije bilo moguće učitati impuls datoteku"
 
@@ -1332,7 +1345,9 @@ msgstr "Nije bilo moguće učitati impuls datoteku"
 #~ msgid ""
 #~ "Bug with pipeline being put out of playing state when running in service "
 #~ "mode"
-#~ msgstr "Bug sa izbacivanjem cijevi iz reprodukcije kad je program pokrenut u načinu servisa."
+#~ msgstr ""
+#~ "Bug sa izbacivanjem cijevi iz reprodukcije kad je program pokrenut u "
+#~ "načinu servisa."
 
 #~ msgid "Tolerance"
 #~ msgstr "Tolerancija"
@@ -1397,10 +1412,6 @@ msgstr "Nije bilo moguće učitati impuls datoteku"
 #, fuzzy
 #~ msgid "Side"
 #~ msgstr "Strana"
-
-#, fuzzy
-#~ msgid "Sidechain"
-#~ msgstr ""
 
 #, fuzzy
 #~ msgid "Ceil"

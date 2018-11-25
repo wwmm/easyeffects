@@ -8,6 +8,10 @@
 little less noises and less crashes.
 - Improved the adapter plugin used internally by PulseEffects
 
+### Fixed
+- Fixed presets menu button label not being translated after a reset. It was
+always being changed to the english label "Presets"
+
 ## [4.4.0]
 ### Added
 - Better error handling and logs. This will help to remove to remove the
