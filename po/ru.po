@@ -319,6 +319,7 @@ msgstr "По умолчанию"
 msgid "Detection"
 msgstr "Определение"
 
+# В данном режиме «Компрессор» обрабатывает сигналы сразу двух каналов (стерео), уравнивая их уровни.
 #: data/ui/compressor.glade:249 data/ui/gate.glade:180
 msgid "Stereo Link"
 msgstr "Стереосвязка"
@@ -373,7 +374,7 @@ msgstr "Атака"
 #: data/ui/multiband_gate.glade:999 data/ui/multiband_gate.glade:1410
 #: data/ui/multiband_gate.glade:1821 data/ui/deesser.glade:461
 msgid "Threshold"
-msgstr "Порог"
+msgstr "Порог срабатывания"
 
 #: data/ui/compressor.glade:439 data/ui/multiband_compressor.glade:604
 #: data/ui/multiband_compressor.glade:979
@@ -383,7 +384,7 @@ msgstr "Порог"
 #: data/ui/multiband_gate.glade:1444 data/ui/multiband_gate.glade:1855
 #: data/ui/deesser.glade:494
 msgid "Ratio"
-msgstr "Отношение"
+msgstr "Степень сжатия"
 
 #: data/ui/compressor.glade:471 data/ui/multiband_compressor.glade:636
 #: data/ui/multiband_compressor.glade:1012
@@ -392,7 +393,7 @@ msgstr "Отношение"
 #: data/ui/multiband_gate.glade:656 data/ui/multiband_gate.glade:1066
 #: data/ui/multiband_gate.glade:1477 data/ui/multiband_gate.glade:1888
 msgid "Knee"
-msgstr "Излом"
+msgstr "Колено (излом)"
 
 #: data/ui/compressor.glade:505 data/ui/multiband_compressor.glade:670
 #: data/ui/multiband_compressor.glade:1047
@@ -686,9 +687,11 @@ msgstr "Большой/плавный"
 msgid "Experimental"
 msgstr "Экспериментальный"
 
+# Энхансер (он же Эксайтер) — это прибор, который генерирует высшие гармоники низких частот, благодаря чему повышается локализация низких частот и их «читаемость».
+# «Бас-Энхансер» или «Глубокий бас» 
 #: data/ui/bass_enhancer.glade:50
 msgid "Bass Enhancer"
-msgstr "Усиление басов"
+msgstr "Глубокий бас (бас-энхансер)"
 
 #: data/ui/bass_enhancer.glade:148 data/ui/exciter.glade:148
 #: data/ui/deesser.glade:165
@@ -705,7 +708,7 @@ msgstr "2-ой"
 
 #: data/ui/bass_enhancer.glade:213 data/ui/exciter.glade:214
 msgid "Blend Harmonics"
-msgstr "Смешивание гармоник"
+msgstr "Смешение гармоник"
 
 #: data/ui/bass_enhancer.glade:257 data/ui/bass_enhancer.glade:389
 #: data/ui/exciter.glade:261 data/ui/exciter.glade:391
@@ -714,7 +717,7 @@ msgstr "Гармоники"
 
 #: data/ui/bass_enhancer.glade:269 data/ui/exciter.glade:274
 msgid "Scope"
-msgstr "Размах"
+msgstr "Диапазон частот"
 
 #: data/ui/bass_enhancer.glade:358
 msgid "Floor"
@@ -878,7 +881,7 @@ msgstr ""
 
 #: data/ui/deesser.glade:237 data/ui/deesser.glade:265
 msgid "Split"
-msgstr ""
+msgstr "Частота раздела"
 
 #: data/ui/deesser.glade:384
 msgid "Level"
@@ -886,11 +889,11 @@ msgstr "Уровень"
 
 #: data/ui/deesser.glade:397
 msgid "Peak Q"
-msgstr "Пик Q"
+msgstr "Добротность (Q)"
 
 #: data/ui/deesser.glade:429
 msgid "Laxity"
-msgstr ""
+msgstr "Допуск на срабатывание"
 
 #: data/ui/deesser.glade:763
 msgid "Detected"
