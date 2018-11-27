@@ -691,7 +691,7 @@ msgstr "Экспериментальный"
 # «Бас-Энхансер» или «Глубокий бас» 
 #: data/ui/bass_enhancer.glade:50
 msgid "Bass Enhancer"
-msgstr "Глубокий бас (бас-энхансер)"
+msgstr "Усиление басов (бас-энхансер)"
 
 #: data/ui/bass_enhancer.glade:148 data/ui/exciter.glade:148
 #: data/ui/deesser.glade:165
