@@ -141,6 +141,8 @@ ConvolverUi::~ConvolverUi() {
     c.disconnect();
   }
 
+  futures.clear();
+
   util::debug(name + " ui destroyed");
 }
 

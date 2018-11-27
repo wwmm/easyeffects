@@ -195,10 +195,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     presets_menu_label->set_text(row->get_name());
     settings->set_string("last-used-preset", row->get_name());
     app->presets_manager->load(row->get_name());
-
-    // auto f = [=]() { app->presets_manager->load(row->get_name()); };
-    //
-    // std::async(std::launch::async, f);
   });
 
   add_preset->signal_clicked().connect([=]() {
