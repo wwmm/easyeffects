@@ -2,8 +2,8 @@
 #include <glibmm/i18n.h>
 #include <gst/fft/gstfftf32.h>
 #include <boost/math/interpolators/cubic_b_spline.hpp>
+#include <future>
 #include <sndfile.hh>
-#include <thread>
 #include "convolver_ui.hpp"
 
 ConvolverUi::ConvolverUi(BaseObjectType* cobject,
@@ -115,8 +115,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
     get_irs_info();
   };
 
-  std::thread t(f);
-  t.detach();
+  std::async(std::launch::async, f);
 
   /* this is necessary to update the interface with the irs info when a preset
      is loaded
@@ -128,8 +127,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
       get_irs_info();
     };
 
-    std::thread t(f);
-    t.detach();
+    std::async(std::launch::async, f);
   });
 }
 
