@@ -54,6 +54,8 @@ PresetsManager::PresetsManager()
 }
 
 PresetsManager::~PresetsManager() {
+  futures.clear();
+
   util::debug(log_tag + "destroyed");
 }
 
