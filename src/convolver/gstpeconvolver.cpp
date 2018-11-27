@@ -14,7 +14,7 @@
 
 #include <gst/audio/gstaudiofilter.h>
 #include <gst/gst.h>
-#include <thread>
+#include <future>
 #include "config.h"
 #include "gstpeconvolver.hpp"
 #include "read_kernel.hpp"
@@ -254,7 +254,13 @@ static GstFlowReturn gst_peconvolver_transform_ip(GstBaseTransform* trans,
     return GST_FLOW_OK;
   }
 
-  if (!peconvolver->ready) {
+  peconvolver->lock_guard_zita.lock();
+
+  if (peconvolver->ready) {
+    gst_peconvolver_process(peconvolver, buffer);
+
+    peconvolver->lock_guard_zita.unlock();
+  } else {
     GstMapInfo map;
 
     gst_buffer_map(buffer, &map, GST_MAP_READ);
@@ -263,17 +269,15 @@ static GstFlowReturn gst_peconvolver_transform_ip(GstBaseTransform* trans,
 
     gst_buffer_unmap(buffer, &map);
 
+    peconvolver->lock_guard_zita.unlock();
+
     auto f = [=]() {
-      std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
+      peconvolver->lock_guard_zita.lock();
       gst_peconvolver_setup_convolver(peconvolver, num_samples);
+      peconvolver->lock_guard_zita.unlock();
     };
 
-    std::thread t(f);
-    t.detach();
-  } else {
-    std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
-
-    gst_peconvolver_process(peconvolver, buffer);
+    std::async(std::launch::async, f);
   }
 
   return GST_FLOW_OK;
