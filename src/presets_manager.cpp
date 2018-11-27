@@ -218,6 +218,8 @@ void PresetsManager::load(const std::string& name) {
 
   boost::property_tree::read_json(input_file.string(), root);
 
+  g_settings_sync();
+
   load_general_settings(root);
 
   try {

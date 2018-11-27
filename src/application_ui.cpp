@@ -5,6 +5,7 @@
 #include <gtkmm/listboxrow.h>
 #include <gtkmm/settings.h>
 #include <boost/filesystem.hpp>
+#include <future>
 #include "application_ui.hpp"
 #include "util.hpp"
 
@@ -190,10 +191,14 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   presets_listbox->set_sort_func(
       sigc::mem_fun(*this, &ApplicationUi::on_listbox_sort));
 
-  presets_listbox->signal_row_activated().connect([&](auto row) {
+  presets_listbox->signal_row_activated().connect([=](auto row) {
     presets_menu_label->set_text(row->get_name());
-    app->presets_manager->load(row->get_name());
     settings->set_string("last-used-preset", row->get_name());
+    app->presets_manager->load(row->get_name());
+
+    // auto f = [=]() { app->presets_manager->load(row->get_name()); };
+    //
+    // std::async(std::launch::async, f);
   });
 
   add_preset->signal_clicked().connect([=]() {
