@@ -10,6 +10,7 @@
 #include <gtkmm/label.h>
 #include <gtkmm/levelbar.h>
 #include <gtkmm/switch.h>
+#include <array>
 #include "util.hpp"
 
 class PluginUiBase {
