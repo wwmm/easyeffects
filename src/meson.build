@@ -105,8 +105,6 @@ executable(
 	include_directories : [include_dir,config_h_dir],
 	dependencies : pulseeffects_deps,
 	install: true
-	# cpp_args:'-fsanitize=thread',
-	# link_args : '-fsanitize=thread'
 )
 
 subdir('convolver')
