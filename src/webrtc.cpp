@@ -106,7 +106,7 @@ void Webrtc::build_dsp_bin() {
 }
 
 void Webrtc::set_probe_src_device(std::string name) {
-  if (probe_src) {
+  if (probe_src != nullptr) {
     g_object_set(probe_src, "device", name.c_str(), nullptr);
   }
 }

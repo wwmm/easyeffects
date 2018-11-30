@@ -225,7 +225,7 @@ void PresetsManager::load(const std::string& name) {
 
     g_settings_sync();
 
-    std::lock_guard<std::mutex> lock(pipeline_mutex);
+    // std::lock_guard<std::mutex> lock(pipeline_mutex);
 
     load_general_settings(root);
 

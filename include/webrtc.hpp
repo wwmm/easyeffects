@@ -10,7 +10,7 @@ class Webrtc : public PluginBase {
          const int& sampling_rate);
   ~Webrtc();
 
-  GstElement *webrtc, *probe_bin, *probe_src;
+  GstElement *webrtc = nullptr, *probe_bin = nullptr, *probe_src = nullptr;
 
   int rate;
 
