@@ -10,7 +10,7 @@ class Maximizer : public PluginBase {
   Maximizer(const std::string& tag, const std::string& schema);
   ~Maximizer();
 
-  GstElement* maximizer;
+  GstElement* maximizer = nullptr;
 
   sigc::connection reduction_connection;
 

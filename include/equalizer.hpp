@@ -10,7 +10,7 @@ class Equalizer : public PluginBase {
   Equalizer(const std::string& tag, const std::string& schema);
   ~Equalizer();
 
-  GstElement* equalizer;
+  GstElement* equalizer = nullptr;
 
   void update_equalizer();
 

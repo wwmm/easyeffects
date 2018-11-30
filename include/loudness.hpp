@@ -10,7 +10,7 @@ class Loudness : public PluginBase {
   Loudness(const std::string& tag, const std::string& schema);
   ~Loudness();
 
-  GstElement* loudness;
+  GstElement* loudness = nullptr;
 
  private:
   void bind_to_gsettings();

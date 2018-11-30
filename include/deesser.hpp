@@ -10,7 +10,7 @@ class Deesser : public PluginBase {
   Deesser(const std::string& tag, const std::string& schema);
   ~Deesser();
 
-  GstElement* deesser;
+  GstElement* deesser = nullptr;
 
   sigc::connection compression_connection, detected_connection;
 

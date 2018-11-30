@@ -10,7 +10,7 @@ class MultibandGate : public PluginBase {
   MultibandGate(const std::string& tag, const std::string& schema);
   ~MultibandGate();
 
-  GstElement* multiband_gate;
+  GstElement* multiband_gate = nullptr;
 
   sigc::connection input_level_connection;
   sigc::connection output_level_connection;

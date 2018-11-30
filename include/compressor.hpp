@@ -10,7 +10,7 @@ class Compressor : public PluginBase {
   Compressor(const std::string& tag, const std::string& schema);
   ~Compressor();
 
-  GstElement* compressor;
+  GstElement* compressor = nullptr;
 
   sigc::connection compression_connection;
 

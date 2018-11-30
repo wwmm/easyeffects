@@ -10,7 +10,7 @@ class Crystalizer : public PluginBase {
   Crystalizer(const std::string& tag, const std::string& schema);
   ~Crystalizer();
 
-  GstElement* crystalizer;
+  GstElement* crystalizer = nullptr;
 
  private:
   void bind_to_gsettings();

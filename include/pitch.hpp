@@ -10,7 +10,7 @@ class Pitch : public PluginBase {
   Pitch(const std::string& tag, const std::string& schema);
   ~Pitch();
 
-  GstElement* pitch;
+  GstElement* pitch = nullptr;
 
  private:
   void bind_to_gsettings();

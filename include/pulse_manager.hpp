@@ -61,7 +61,7 @@ class PulseManager {
   PulseManager();
   ~PulseManager();
 
-  pa_threaded_mainloop* main_loop;
+  pa_threaded_mainloop* main_loop = nullptr;
 
   myServerInfo server_info;
   std::shared_ptr<mySinkInfo> apps_sink_info;
@@ -112,8 +112,8 @@ class PulseManager {
 
   bool context_ready = false;
 
-  pa_mainloop_api* main_loop_api;
-  pa_context* context;
+  pa_mainloop_api* main_loop_api = nullptr;
+  pa_context* context = nullptr;
 
   std::array<std::string, 10> blacklist_apps = {"PulseEffects",
                                                 "pulseeffects",

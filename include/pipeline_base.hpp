@@ -14,10 +14,13 @@ class PipelineBase {
   bool playing = false;
   std::string log_tag;
 
-  GstElement *pipeline, *source, *adapter, *sink, *spectrum, *spectrum_bin,
-      *spectrum_identity_in, *spectrum_identity_out, *effects_bin, *identity_in,
-      *identity_out;
-  GstBus* bus;
+  GstElement *pipeline = nullptr, *source = nullptr, *adapter = nullptr,
+             *sink = nullptr, *spectrum = nullptr, *spectrum_bin = nullptr,
+             *spectrum_identity_in = nullptr, *spectrum_identity_out = nullptr,
+             *effects_bin = nullptr, *identity_in = nullptr,
+             *identity_out = nullptr;
+
+  GstBus* bus = nullptr;
 
   GstClockTime state_check_timeout = 5 * GST_SECOND;
 
@@ -45,7 +48,7 @@ class PipelineBase {
   sigc::signal<void, int> new_latency;
 
  protected:
-  GSettings* settings;
+  GSettings* settings = nullptr;
 
   void set_pulseaudio_props(std::string props);
 
@@ -54,7 +57,7 @@ class PipelineBase {
   void on_app_removed(uint idx);
 
  private:
-  GstElement* capsfilter;
+  GstElement* capsfilter = nullptr;
 
   std::vector<std::shared_ptr<AppInfo>> apps_list;
 

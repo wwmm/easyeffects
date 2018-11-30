@@ -10,7 +10,7 @@ class Exciter : public PluginBase {
   Exciter(const std::string& tag, const std::string& schema);
   ~Exciter();
 
-  GstElement* exciter;
+  GstElement* exciter = nullptr;
 
   sigc::connection harmonics_connection;
 

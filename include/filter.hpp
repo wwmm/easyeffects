@@ -10,7 +10,7 @@ class Filter : public PluginBase {
   Filter(const std::string& tag, const std::string& schema);
   ~Filter();
 
-  GstElement* filter;
+  GstElement* filter = nullptr;
 
   sigc::connection input_level_connection;
   sigc::connection output_level_connection;

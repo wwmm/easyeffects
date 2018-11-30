@@ -14,7 +14,8 @@ class CalibrationSignals {
 
   std::string log_tag = "calibration_signals: ";
 
-  GstElement *pipeline, *source, *sink, *spectrum;
+  GstElement *pipeline = nullptr, *source = nullptr, *sink = nullptr,
+             *spectrum = nullptr;
 
   uint min_spectrum_freq = 20;     // Hz
   uint max_spectrum_freq = 20000;  // Hz
@@ -33,7 +34,7 @@ class CalibrationSignals {
   void set_volume(const double& value);
 
  private:
-  GstBus* bus;
+  GstBus* bus = nullptr;
 };
 
 #endif

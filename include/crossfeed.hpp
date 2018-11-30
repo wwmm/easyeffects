@@ -10,7 +10,7 @@ class Crossfeed : public PluginBase {
   Crossfeed(const std::string& tag, const std::string& schema);
   ~Crossfeed();
 
-  GstElement* crossfeed;
+  GstElement* crossfeed = nullptr;
 
  private:
   void bind_to_gsettings();

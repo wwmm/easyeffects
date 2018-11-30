@@ -10,7 +10,7 @@ class MultibandCompressor : public PluginBase {
   MultibandCompressor(const std::string& tag, const std::string& schema);
   ~MultibandCompressor();
 
-  GstElement* multiband_compressor;
+  GstElement* multiband_compressor = nullptr;
 
   sigc::connection input_level_connection;
   sigc::connection output_level_connection;

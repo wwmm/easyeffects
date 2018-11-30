@@ -16,7 +16,8 @@ class PluginBase {
   virtual ~PluginBase();
 
   std::string log_tag, name;
-  GstElement *plugin, *bin, *identity_in, *identity_out;
+  GstElement *plugin = nullptr, *bin = nullptr, *identity_in = nullptr,
+             *identity_out = nullptr;
 
   std::atomic<bool> changing_pipeline;
 
@@ -26,7 +27,7 @@ class PluginBase {
   void disable();
 
  protected:
-  GSettings* settings;
+  GSettings* settings = nullptr;
 
   bool is_installed(GstElement* e);
 };

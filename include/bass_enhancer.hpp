@@ -10,7 +10,7 @@ class BassEnhancer : public PluginBase {
   BassEnhancer(const std::string& tag, const std::string& schema);
   ~BassEnhancer();
 
-  GstElement* bass_enhancer;
+  GstElement* bass_enhancer = nullptr;
 
   sigc::connection harmonics_connection;
 

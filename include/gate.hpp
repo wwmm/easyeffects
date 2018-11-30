@@ -10,7 +10,7 @@ class Gate : public PluginBase {
   Gate(const std::string& tag, const std::string& schema);
   ~Gate();
 
-  GstElement* gate;
+  GstElement* gate = nullptr;
 
   sigc::connection gating_connection;
 

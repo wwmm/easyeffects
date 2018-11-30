@@ -10,7 +10,7 @@ class Reverb : public PluginBase {
   Reverb(const std::string& tag, const std::string& schema);
   ~Reverb();
 
-  GstElement* reverb;
+  GstElement* reverb = nullptr;
 
   sigc::connection input_level_connection;
   sigc::connection output_level_connection;

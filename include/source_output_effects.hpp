@@ -22,7 +22,7 @@ class SourceOutputEffects : public PipelineBase {
 
   std::string log_tag;
 
-  PulseManager* pm;
+  PulseManager* pm = nullptr;
 
   std::vector<std::string> plugins_order, plugins_order_old;
   std::map<std::string, GstElement*> plugins;
@@ -53,7 +53,7 @@ class SourceOutputEffects : public PipelineBase {
   sigc::signal<void, std::array<double, 2>> webrtc_output_level;
 
  private:
-  GSettings* soe_settings;
+  GSettings* soe_settings = nullptr;
 
   void add_plugins_to_pipeline();
 

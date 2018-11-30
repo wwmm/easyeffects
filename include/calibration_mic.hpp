@@ -13,7 +13,8 @@ class CalibrationMic {
 
   std::string log_tag = "calibration_mic: ";
 
-  GstElement *pipeline, *source, *sink, *spectrum;
+  GstElement *pipeline = nullptr, *source = nullptr, *sink = nullptr,
+             *spectrum = nullptr;
 
   uint min_spectrum_freq = 20;     // Hz
   uint max_spectrum_freq = 20000;  // Hz
@@ -32,7 +33,7 @@ class CalibrationMic {
   void set_source_monitor_name(const std::string& name);
 
  private:
-  GstBus* bus;
+  GstBus* bus = nullptr;
 };
 
 #endif

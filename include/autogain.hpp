@@ -10,7 +10,7 @@ class AutoGain : public PluginBase {
   AutoGain(const std::string& tag, const std::string& schema);
   ~AutoGain();
 
-  GstElement* autogain;
+  GstElement* autogain = nullptr;
 
   sigc::signal<void, float> momentary;
   sigc::signal<void, float> shortterm;
