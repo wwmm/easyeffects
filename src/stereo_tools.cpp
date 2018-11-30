@@ -55,10 +55,17 @@ StereoTools::StereoTools(const std::string& tag, const std::string& schema)
       "calf-sourceforge-net-plugins-StereoTools", "stereo_tools");
 
   if (is_installed(stereo_tools)) {
-    gst_bin_add(GST_BIN(bin), stereo_tools);
+    auto audioconvert_in = gst_element_factory_make("audioconvert", nullptr);
+    auto audioconvert_out = gst_element_factory_make("audioconvert", nullptr);
 
-    auto pad_sink = gst_element_get_static_pad(stereo_tools, "sink");
-    auto pad_src = gst_element_get_static_pad(stereo_tools, "src");
+    gst_bin_add_many(GST_BIN(bin), audioconvert_in, stereo_tools,
+                     audioconvert_out, nullptr);
+
+    gst_element_link_many(audioconvert_in, stereo_tools, audioconvert_out,
+                          nullptr);
+
+    auto pad_sink = gst_element_get_static_pad(audioconvert_in, "sink");
+    auto pad_src = gst_element_get_static_pad(audioconvert_out, "src");
 
     gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
     gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));

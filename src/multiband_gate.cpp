@@ -176,13 +176,16 @@ MultibandGate::MultibandGate(const std::string& tag, const std::string& schema)
       "calf-sourceforge-net-plugins-MultibandGate", nullptr);
 
   if (is_installed(multiband_gate)) {
-    auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
+    auto audioconvert_in = gst_element_factory_make("audioconvert", nullptr);
+    auto audioconvert_out = gst_element_factory_make("audioconvert", nullptr);
 
-    gst_bin_add_many(GST_BIN(bin), audioconvert, multiband_gate, nullptr);
-    gst_element_link_many(audioconvert, multiband_gate, nullptr);
+    gst_bin_add_many(GST_BIN(bin), audioconvert_in, multiband_gate,
+                     audioconvert_out, nullptr);
+    gst_element_link_many(audioconvert_in, multiband_gate, audioconvert_out,
+                          nullptr);
 
-    auto pad_sink = gst_element_get_static_pad(audioconvert, "sink");
-    auto pad_src = gst_element_get_static_pad(multiband_gate, "src");
+    auto pad_sink = gst_element_get_static_pad(audioconvert_in, "sink");
+    auto pad_src = gst_element_get_static_pad(audioconvert_out, "src");
 
     gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
     gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));
