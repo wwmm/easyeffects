@@ -178,10 +178,6 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
 
   GST_DEBUG_OBJECT(pecrystalizer, "transform");
 
-  if (GST_BUFFER_FLAG_IS_SET(buffer, GST_BUFFER_FLAG_GAP)) {
-    return GST_FLOW_OK;
-  }
-
   GstMapInfo map;
 
   gst_buffer_map(buffer, &map, GST_MAP_READWRITE);

@@ -2,8 +2,6 @@
 #include "plugin_base.hpp"
 #include "util.hpp"
 
-extern std::mutex pipeline_mutex;
-
 namespace {
 
 void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {

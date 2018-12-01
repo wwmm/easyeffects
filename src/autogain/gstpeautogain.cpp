@@ -351,10 +351,6 @@ static GstFlowReturn gst_peautogain_transform_ip(GstBaseTransform* trans,
 
   GST_DEBUG_OBJECT(peautogain, "transform");
 
-  if (GST_BUFFER_FLAG_IS_SET(buffer, GST_BUFFER_FLAG_GAP)) {
-    return GST_FLOW_OK;
-  }
-
   std::lock_guard<std::mutex> lock(peautogain->lock_guard_ebu);
 
   if (peautogain->ready) {

@@ -249,10 +249,6 @@ static GstFlowReturn gst_peconvolver_transform_ip(GstBaseTransform* trans,
 
   GST_DEBUG_OBJECT(peconvolver, "transform");
 
-  if (GST_BUFFER_FLAG_IS_SET(buffer, GST_BUFFER_FLAG_GAP)) {
-    return GST_FLOW_OK;
-  }
-
   std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
 
   if (peconvolver->ready) {
