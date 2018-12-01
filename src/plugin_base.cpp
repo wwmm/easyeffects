@@ -27,19 +27,23 @@ void on_enable(gpointer user_data) {
                                std::string(l->name + "_bin").c_str());
 
   if (!b) {
-    gst_element_set_locked_state(l->plugin, true);
+    if (!gst_element_is_locked_state(l->plugin)) {
+      if (!gst_element_set_locked_state(l->plugin, true)) {
+        util::debug(l->log_tag + l->name + " could not lock state changes");
+      }
+    }
 
     gst_element_unlink(l->identity_in, l->identity_out);
 
     gst_bin_add(GST_BIN(l->plugin), l->bin);
-
-    gst_element_set_state(l->bin, GST_STATE_NULL);
 
     gst_element_link_many(l->identity_in, l->bin, l->identity_out, nullptr);
 
     gst_element_sync_state_with_parent(l->bin);
 
     gst_element_set_locked_state(l->plugin, false);
+
+    gst_element_sync_state_with_parent(l->plugin);
 
     util::debug(l->log_tag + l->name + " is enabled");
   } else {
@@ -54,7 +58,11 @@ void on_disable(gpointer user_data) {
                                std::string(l->name + "_bin").c_str());
 
   if (b) {
-    gst_element_set_locked_state(l->plugin, true);
+    if (!gst_element_is_locked_state(l->plugin)) {
+      if (!gst_element_set_locked_state(l->plugin, true)) {
+        util::debug(l->log_tag + l->name + " could not lock state changes");
+      }
+    }
 
     gst_element_set_state(l->bin, GST_STATE_NULL);
 
@@ -65,6 +73,8 @@ void on_disable(gpointer user_data) {
     gst_element_link(l->identity_in, l->identity_out);
 
     gst_element_set_locked_state(l->plugin, false);
+
+    gst_element_sync_state_with_parent(l->plugin);
 
     util::debug(l->log_tag + l->name + " is disabled");
   } else {

@@ -38,7 +38,11 @@ void on_message_element(const GstBus* gst_bus,
 void update_order(gpointer user_data) {
   auto l = static_cast<SourceOutputEffects*>(user_data);
 
-  gst_element_set_locked_state(l->effects_bin, true);
+  if (!gst_element_is_locked_state(l->effects_bin)) {
+    if (!gst_element_set_locked_state(l->effects_bin, true)) {
+      util::debug(l->log_tag + " could not lock state changes");
+    }
+  }
 
   // setting null state
 

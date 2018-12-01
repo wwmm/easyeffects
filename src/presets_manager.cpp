@@ -5,8 +5,6 @@
 #include "presets_manager.hpp"
 #include "util.hpp"
 
-extern std::mutex pipeline_mutex;
-
 namespace fs = boost::filesystem;
 
 PresetsManager::PresetsManager()
@@ -223,10 +221,6 @@ void PresetsManager::load(const std::string& name) {
 
     boost::property_tree::read_json(input_file.string(), root);
 
-    g_settings_sync();
-
-    // std::lock_guard<std::mutex> lock(pipeline_mutex);
-
     load_general_settings(root);
 
     try {
@@ -287,6 +281,8 @@ void PresetsManager::load(const std::string& name) {
 
     soe_settings->set_string_array("plugins", input_plugins);
     sie_settings->set_string_array("plugins", output_plugins);
+
+    g_settings_sync();
 
     bass_enhancer->read(root);
     compressor->read(root);
