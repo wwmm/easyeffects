@@ -41,14 +41,7 @@ void on_enable(gpointer user_data) {
 
     gst_element_set_locked_state(l->plugin, false);
 
-    GstState state, pending;
-
-    gst_element_get_state(l->bin, &state, &pending, 5 * GST_SECOND);
-
-    util::debug(l->log_tag + l->name +
-                " enabled: " + gst_element_state_get_name(state) + " -> " +
-                gst_element_state_get_name(pending));
-
+    util::debug(l->log_tag + l->name + " is enabled");
   } else {
     util::debug(l->log_tag + l->name + " is already enabled");
   }
@@ -73,13 +66,7 @@ void on_disable(gpointer user_data) {
 
     gst_element_set_locked_state(l->plugin, false);
 
-    GstState state, pending;
-
-    gst_element_get_state(l->bin, &state, &pending, 5 * GST_SECOND);
-
-    util::debug(l->log_tag + l->name +
-                " disabled: " + gst_element_state_get_name(state) + " -> " +
-                gst_element_state_get_name(pending));
+    util::debug(l->log_tag + l->name + " is disabled");
   } else {
     util::debug(l->log_tag + l->name + " is already disabled");
   }
@@ -105,7 +92,9 @@ GstPadProbeReturn on_pad_blocked(GstPad* pad,
 
         gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
 
-        // std::lock_guard<std::mutex> lock(pipeline_mutex);
+        auto pb = static_cast<PluginBase*>(d);
+
+        std::lock_guard<std::mutex> lock(pb->plugin_mutex);
 
         on_disable(d);
 
@@ -130,7 +119,6 @@ PluginBase::PluginBase(const std::string& tag,
                        const std::string& schema)
     : log_tag(tag),
       name(plugin_name),
-      changing_pipeline(false),
       settings(g_settings_new(schema.c_str())) {
   plugin = gst_bin_new(std::string(name + "_plugin").c_str());
   identity_in = gst_element_factory_make("identity", nullptr);
@@ -192,7 +180,9 @@ void PluginBase::enable() {
   if (state != GST_STATE_PLAYING) {
     gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
                       [](auto pad, auto info, auto d) {
-                        // std::lock_guard<std::mutex> lock(pipeline_mutex);
+                        auto pb = static_cast<PluginBase*>(d);
+
+                        std::lock_guard<std::mutex> lock(pb->plugin_mutex);
 
                         on_enable(d);
 
@@ -202,7 +192,9 @@ void PluginBase::enable() {
   } else {
     gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
                       [](auto pad, auto info, auto d) {
-                        // std::lock_guard<std::mutex> lock(pipeline_mutex);
+                        auto pb = static_cast<PluginBase*>(d);
+
+                        std::lock_guard<std::mutex> lock(pb->plugin_mutex);
 
                         on_enable(d);
 
@@ -224,7 +216,9 @@ void PluginBase::disable() {
   if (state != GST_STATE_PLAYING) {
     gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
                       [](auto pad, auto info, auto d) {
-                        // std::lock_guard<std::mutex> lock(pipeline_mutex);
+                        auto pb = static_cast<PluginBase*>(d);
+
+                        std::lock_guard<std::mutex> lock(pb->plugin_mutex);
 
                         on_disable(d);
 

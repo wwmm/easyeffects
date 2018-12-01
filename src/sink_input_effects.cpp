@@ -1,8 +1,6 @@
 #include "sink_input_effects.hpp"
 #include "util.hpp"
 
-extern std::mutex pipeline_mutex;
-
 namespace {
 
 void on_message_element(const GstBus* gst_bus,
@@ -64,6 +62,8 @@ void on_message_element(const GstBus* gst_bus,
 void update_order(gpointer user_data) {
   auto l = static_cast<SinkInputEffects*>(user_data);
 
+  gst_element_set_locked_state(l->effects_bin, true);
+
   // setting null state
 
   for (auto& p : l->plugins) {
@@ -99,6 +99,8 @@ void update_order(gpointer user_data) {
     gst_element_sync_state_with_parent(p.second);
   }
 
+  gst_element_set_locked_state(l->effects_bin, false);
+
   std::string list;
 
   for (auto name : l->plugins_order) {
@@ -117,7 +119,9 @@ static GstPadProbeReturn event_probe_cb(GstPad* pad,
 
   gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
 
-  // std::lock_guard<std::mutex> lock(pipeline_mutex);
+  auto l = static_cast<SinkInputEffects*>(user_data);
+
+  std::lock_guard<std::mutex> lock(l->pipeline_mutex);
 
   update_order(user_data);
 
@@ -154,7 +158,9 @@ GstPadProbeReturn on_pad_blocked(GstPad* pad,
 GstPadProbeReturn on_pad_idle(GstPad* pad,
                               GstPadProbeInfo* info,
                               gpointer user_data) {
-  // std::lock_guard<std::mutex> lock(pipeline_mutex);
+  auto l = static_cast<SinkInputEffects*>(user_data);
+
+  std::lock_guard<std::mutex> lock(l->pipeline_mutex);
 
   update_order(user_data);
 

@@ -5,8 +5,8 @@
 #include <gst/gst.h>
 #include <sigc++/sigc++.h>
 #include <array>
-#include <atomic>
 #include <iostream>
+#include <mutex>
 
 class PluginBase {
  public:
@@ -19,7 +19,7 @@ class PluginBase {
   GstElement *plugin = nullptr, *bin = nullptr, *identity_in = nullptr,
              *identity_out = nullptr;
 
-  std::atomic<bool> changing_pipeline;
+  std::mutex plugin_mutex;
 
   bool plugin_is_installed = false;
 

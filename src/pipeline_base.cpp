@@ -7,8 +7,6 @@
 #include "pipeline_base.hpp"
 #include "util.hpp"
 
-std::mutex pipeline_mutex;
-
 namespace {
 
 void on_message_error(const GstBus* gst_bus,
@@ -496,7 +494,7 @@ void PipelineBase::enable_spectrum() {
       [](auto pad, auto info, auto d) {
         auto l = static_cast<PipelineBase*>(d);
 
-        // std::lock_guard<std::mutex> lock(pipeline_mutex);
+        std::lock_guard<std::mutex> lock(l->pipeline_mutex);
 
         auto plugin = gst_bin_get_by_name(GST_BIN(l->spectrum_bin), "spectrum");
 
@@ -530,7 +528,7 @@ void PipelineBase::disable_spectrum() {
       [](auto pad, auto info, auto d) {
         auto l = static_cast<PipelineBase*>(d);
 
-        // std::lock_guard<std::mutex> lock(pipeline_mutex);
+        std::lock_guard<std::mutex> lock(l->pipeline_mutex);
 
         auto plugin = gst_bin_get_by_name(GST_BIN(l->spectrum_bin), "spectrum");
 

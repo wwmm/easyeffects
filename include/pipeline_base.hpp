@@ -3,6 +3,7 @@
 
 #include <gio/gio.h>
 #include <gst/gst.h>
+#include <mutex>
 #include <vector>
 #include "pulse_manager.hpp"
 
@@ -21,6 +22,8 @@ class PipelineBase {
              *identity_out = nullptr;
 
   GstBus* bus = nullptr;
+
+  std::mutex pipeline_mutex;
 
   GstClockTime state_check_timeout = 5 * GST_SECOND;
 
