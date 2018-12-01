@@ -293,14 +293,10 @@ static gboolean gst_peadapter_sink_event(GstPad* pad,
 
       break;
     case GST_EVENT_EOS:
-      GST_OBJECT_LOCK(peadapter);
-
       gst_peadapter_process(peadapter);
       gst_adapter_clear(peadapter->adapter);
 
       peadapter->inbuf_n_samples = -1;
-
-      GST_OBJECT_UNLOCK(peadapter);
 
       ret = gst_pad_event_default(pad, parent, event);
 
@@ -337,13 +333,9 @@ static GstStateChangeReturn gst_peadapter_change_state(
 
   switch (transition) {
     case GST_STATE_CHANGE_PAUSED_TO_READY:
-      GST_OBJECT_LOCK(peadapter);
-
       gst_adapter_clear(peadapter->adapter);
 
       peadapter->inbuf_n_samples = -1;
-
-      GST_OBJECT_UNLOCK(peadapter);
 
       break;
     default:
@@ -413,12 +405,8 @@ void gst_peadapter_finalize(GObject* object) {
 
   GST_DEBUG_OBJECT(peadapter, "finalize");
 
-  GST_OBJECT_LOCK(peadapter);
-
   gst_adapter_clear(peadapter->adapter);
   g_object_unref(peadapter->adapter);
-
-  GST_OBJECT_UNLOCK(peadapter);
 
   /* clean up object here */
 
