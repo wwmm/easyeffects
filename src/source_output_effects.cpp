@@ -38,6 +38,8 @@ void on_message_element(const GstBus* gst_bus,
 void update_order(gpointer user_data) {
   auto l = static_cast<SourceOutputEffects*>(user_data);
 
+  gst_element_set_locked_state(l->effects_bin, true);
+
   // setting null state
 
   for (auto& p : l->plugins) {
@@ -72,6 +74,8 @@ void update_order(gpointer user_data) {
   for (auto& p : l->plugins) {
     gst_element_sync_state_with_parent(p.second);
   }
+
+  gst_element_set_locked_state(l->effects_bin, false);
 
   std::string list;
 

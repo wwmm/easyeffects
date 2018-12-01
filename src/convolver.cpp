@@ -12,11 +12,15 @@ Convolver::Convolver(const std::string& tag, const std::string& schema)
     auto out_level =
         gst_element_factory_make("level", "convolver_output_level");
     auto output_gain = gst_element_factory_make("volume", nullptr);
+    auto audioconvert_in = gst_element_factory_make("audioconvert", nullptr);
+    auto audioconvert_out = gst_element_factory_make("audioconvert", nullptr);
 
-    gst_bin_add_many(GST_BIN(bin), input_gain, in_level, convolver, output_gain,
-                     out_level, nullptr);
-    gst_element_link_many(input_gain, in_level, convolver, output_gain,
-                          out_level, nullptr);
+    gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in,
+                     convolver, audioconvert_out, output_gain, out_level,
+                     nullptr);
+
+    gst_element_link_many(input_gain, in_level, audioconvert_in, convolver,
+                          audioconvert_out, output_gain, out_level, nullptr);
 
     auto pad_sink = gst_element_get_static_pad(input_gain, "sink");
     auto pad_src = gst_element_get_static_pad(out_level, "src");
