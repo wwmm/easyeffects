@@ -81,6 +81,8 @@ void update_order(gpointer user_data) {
 
   gst_element_set_locked_state(l->effects_bin, false);
 
+  gst_element_sync_state_with_parent(l->effects_bin);
+
   std::string list;
 
   for (auto name : l->plugins_order) {
