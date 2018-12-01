@@ -27,6 +27,8 @@ void on_enable(gpointer user_data) {
                                std::string(l->name + "_bin").c_str());
 
   if (!b) {
+    gst_element_set_locked_state(l->plugin, true);
+
     gst_element_unlink(l->identity_in, l->identity_out);
 
     gst_bin_add(GST_BIN(l->plugin), l->bin);
@@ -36,6 +38,8 @@ void on_enable(gpointer user_data) {
     gst_element_link_many(l->identity_in, l->bin, l->identity_out, nullptr);
 
     gst_element_sync_state_with_parent(l->bin);
+
+    gst_element_set_locked_state(l->plugin, false);
 
     GstState state, pending;
 
@@ -57,6 +61,8 @@ void on_disable(gpointer user_data) {
                                std::string(l->name + "_bin").c_str());
 
   if (b) {
+    gst_element_set_locked_state(l->plugin, true);
+
     gst_element_set_state(l->bin, GST_STATE_NULL);
 
     gst_element_unlink_many(l->identity_in, l->bin, l->identity_out, nullptr);
@@ -64,6 +70,8 @@ void on_disable(gpointer user_data) {
     gst_bin_remove(GST_BIN(l->plugin), l->bin);
 
     gst_element_link(l->identity_in, l->identity_out);
+
+    gst_element_set_locked_state(l->plugin, false);
 
     GstState state, pending;
 
