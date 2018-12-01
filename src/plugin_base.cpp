@@ -198,7 +198,7 @@ void PluginBase::enable() {
                       },
                       this, nullptr);
   } else {
-    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
                       [](auto pad, auto info, auto d) {
                         auto pb = static_cast<PluginBase*>(d);
 
@@ -234,8 +234,8 @@ void PluginBase::disable() {
                       },
                       this, nullptr);
   } else {
-    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
-                      on_pad_blocked, this, nullptr);
+    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE, on_pad_blocked, this,
+                      nullptr);
   }
 
   g_object_unref(srcpad);

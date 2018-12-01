@@ -186,8 +186,8 @@ void on_plugins_order_changed(GSettings* settings,
       gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE, on_pad_idle, l,
                         nullptr);
     } else {
-      gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
-                        on_pad_blocked, l, nullptr);
+      gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE, on_pad_blocked, l,
+                        nullptr);
     }
 
     g_object_unref(srcpad);
