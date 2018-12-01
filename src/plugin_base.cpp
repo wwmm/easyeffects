@@ -97,7 +97,7 @@ GstPadProbeReturn on_pad_blocked(GstPad* pad,
 
         gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
 
-        std::lock_guard<std::mutex> lock(pipeline_mutex);
+        // std::lock_guard<std::mutex> lock(pipeline_mutex);
 
         on_disable(d);
 

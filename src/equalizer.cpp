@@ -126,58 +126,9 @@ void Equalizer::update_equalizer() {
   g_object_get(equalizer, "num-bands", &current_nbands, nullptr);
 
   if (nbands != current_nbands) {
-    GstState state;
-
-    /*Sometimes the equalizer crashes when its number of bands is changed
-    while it is running. I don't know if this is a bug or not. Maybe we are
-    not supposed to change the number of bands on the fly. In any case it
-    does no harm to disable it before doing this change.
-    */
-
-    auto res = gst_element_get_state(bin, &state, nullptr, 0);
-
-    if (res == GST_STATE_CHANGE_SUCCESS) {
-      util::debug(
-          log_tag + name +
-          ": trying to disable the equalizer before changing its number "
-          "of bands");
-
-      disable();
-
-      do {
-        res = gst_element_get_state(bin, &state, nullptr, 0);
-
-        if (res == GST_STATE_CHANGE_FAILURE) {
-          util::warning(log_tag + name + ": failed to disable the equalizer");
-
-          break;
-        }
-
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));
-      } while (state != GST_STATE_NULL);
-    } else if (res == GST_STATE_CHANGE_ASYNC) {
-      do {
-        res = gst_element_get_state(bin, &state, nullptr, 0);
-
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));
-      } while (res != GST_STATE_CHANGE_SUCCESS);
-
-      do {
-        res = gst_element_get_state(bin, &state, nullptr, 0);
-
-        if (res == GST_STATE_CHANGE_FAILURE) {
-          util::warning(log_tag + name + ": failed to disable the equalizer");
-
-          break;
-        }
-
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));
-      } while (state != GST_STATE_NULL);
-    } else if (res == GST_STATE_CHANGE_FAILURE) {
-      util::warning(log_tag + name + ": failed to get the equalizer state");
-    }
-
     util::debug(log_tag + name + ": unbinding bands");
+
+    // gst_element_set_state(equalizer, GST_STATE_NULL);
 
     for (int n = 0; n < current_nbands; n++) {
       unbind_band(n);
@@ -193,14 +144,6 @@ void Equalizer::update_equalizer() {
       bind_band(n);
     }
 
-    bool is_enabled = g_settings_get_boolean(settings, "state");
-
-    if (is_enabled) {
-      util::debug(log_tag + name +
-                  ": trying to enable the equalizer after changing its number "
-                  "of bands");
-
-      enable();
-    }
+    // gst_element_sync_state_with_parent(equalizer);
   }
 }
