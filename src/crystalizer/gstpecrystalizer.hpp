@@ -2,6 +2,7 @@
 #define _GST_PECRYSTALIZER_H_
 
 #include <gst/audio/gstaudiofilter.h>
+#include <mutex>
 
 G_BEGIN_DECLS
 
@@ -31,6 +32,8 @@ struct _GstPecrystalizer {
   bool ready;
   int bpf;  // bytes per frame : channels * bps
   float last_L, last_R;
+
+  std::mutex mutex;
 };
 
 struct _GstPecrystalizerClass {

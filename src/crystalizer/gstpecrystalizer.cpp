@@ -190,6 +190,8 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
 
   float* data = (float*)map.data;
 
+  std::lock_guard<std::mutex> lock(pecrystalizer->mutex);
+
   if (!pecrystalizer->ready) {
     pecrystalizer->last_L = data[0];
     pecrystalizer->last_R = data[1];
@@ -219,6 +221,8 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
 
 static gboolean gst_pecrystalizer_stop(GstBaseTransform* base) {
   GstPecrystalizer* pecrystalizer = GST_PECRYSTALIZER(base);
+
+  std::lock_guard<std::mutex> lock(pecrystalizer->mutex);
 
   pecrystalizer->ready = false;
 
