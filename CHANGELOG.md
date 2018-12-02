@@ -4,8 +4,8 @@
 
 ### Added
 - Updated translations
-- Improved dynamic pipeline. Alternating presets while playing should cause a
-little less noises and less crashes.
+- Improved dynamic pipeline. Alternating presets while playing should cause
+less crashes.
 - Improved the adapter plugin used internally by PulseEffects
 - Using std::async instead of std::thread to do a few background tasks like
 loading an impulse response file
