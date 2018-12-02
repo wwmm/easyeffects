@@ -491,7 +491,7 @@ void PipelineBase::init_spectrum(const uint& sampling_rate) {
 void PipelineBase::enable_spectrum() {
   auto srcpad = gst_element_get_static_pad(spectrum_identity_in, "src");
 
-  gst_pad_add_probe(
+  auto id = gst_pad_add_probe(
       srcpad, GST_PAD_PROBE_TYPE_IDLE,
       [](auto pad, auto info, auto d) {
         auto l = static_cast<PipelineBase*>(d);
@@ -519,13 +519,17 @@ void PipelineBase::enable_spectrum() {
       },
       this, nullptr);
 
+  if (id != 0) {
+    util::debug(log_tag + " spectrum will be enabled in another thread");
+  }
+
   g_object_unref(srcpad);
 }
 
 void PipelineBase::disable_spectrum() {
   auto srcpad = gst_element_get_static_pad(spectrum_identity_in, "src");
 
-  gst_pad_add_probe(
+  auto id = gst_pad_add_probe(
       srcpad, GST_PAD_PROBE_TYPE_IDLE,
       [](auto pad, auto info, auto d) {
         auto l = static_cast<PipelineBase*>(d);
@@ -552,6 +556,10 @@ void PipelineBase::disable_spectrum() {
         return GST_PAD_PROBE_REMOVE;
       },
       this, nullptr);
+
+  if (id != 0) {
+    util::debug(log_tag + " spectrum will be disabled in another thread");
+  }
 
   g_object_unref(srcpad);
 }
