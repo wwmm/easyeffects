@@ -80,46 +80,6 @@ void on_disable(gpointer user_data) {
   }
 }
 
-GstPadProbeReturn on_pad_blocked(GstPad* pad,
-                                 GstPadProbeInfo* info,
-                                 gpointer user_data) {
-  gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
-
-  auto l = static_cast<PluginBase*>(user_data);
-
-  auto srcpad = gst_element_get_static_pad(l->bin, "src");
-
-  gst_pad_add_probe(
-      srcpad,
-      static_cast<GstPadProbeType>(GST_PAD_PROBE_TYPE_BLOCK |
-                                   GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM),
-      [](auto pad, auto info, auto d) {
-        if (GST_EVENT_TYPE(GST_PAD_PROBE_INFO_DATA(info)) != GST_EVENT_EOS) {
-          return GST_PAD_PROBE_PASS;
-        }
-
-        gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
-
-        auto pb = static_cast<PluginBase*>(d);
-
-        std::lock_guard<std::mutex> lock(pb->plugin_mutex);
-
-        on_disable(d);
-
-        return GST_PAD_PROBE_DROP;
-      },
-      user_data, nullptr);
-
-  auto sinkpad = gst_element_get_static_pad(l->bin, "sink");
-
-  gst_pad_send_event(sinkpad, gst_event_new_eos());
-
-  gst_object_unref(sinkpad);
-  gst_object_unref(srcpad);
-
-  return GST_PAD_PROBE_OK;
-}
-
 }  // namespace
 
 PluginBase::PluginBase(const std::string& tag,
@@ -181,35 +141,17 @@ bool PluginBase::is_installed(GstElement* e) {
 void PluginBase::enable() {
   auto srcpad = gst_element_get_static_pad(identity_in, "src");
 
-  GstState state, pending;
+  gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
+                    [](auto pad, auto info, auto d) {
+                      auto pb = static_cast<PluginBase*>(d);
 
-  gst_element_get_state(bin, &state, &pending, 5 * GST_SECOND);
+                      std::lock_guard<std::mutex> lock(pb->plugin_mutex);
 
-  if (state != GST_STATE_PLAYING) {
-    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
-                      [](auto pad, auto info, auto d) {
-                        auto pb = static_cast<PluginBase*>(d);
+                      on_enable(d);
 
-                        std::lock_guard<std::mutex> lock(pb->plugin_mutex);
-
-                        on_enable(d);
-
-                        return GST_PAD_PROBE_REMOVE;
-                      },
-                      this, nullptr);
-  } else {
-    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
-                      [](auto pad, auto info, auto d) {
-                        auto pb = static_cast<PluginBase*>(d);
-
-                        std::lock_guard<std::mutex> lock(pb->plugin_mutex);
-
-                        on_enable(d);
-
-                        return GST_PAD_PROBE_REMOVE;
-                      },
-                      this, nullptr);
-  }
+                      return GST_PAD_PROBE_REMOVE;
+                    },
+                    this, nullptr);
 
   g_object_unref(srcpad);
 }
@@ -217,26 +159,17 @@ void PluginBase::enable() {
 void PluginBase::disable() {
   auto srcpad = gst_element_get_static_pad(identity_in, "src");
 
-  GstState state, pending;
+  gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
+                    [](auto pad, auto info, auto d) {
+                      auto pb = static_cast<PluginBase*>(d);
 
-  gst_element_get_state(bin, &state, &pending, 5 * GST_SECOND);
+                      std::lock_guard<std::mutex> lock(pb->plugin_mutex);
 
-  if (state != GST_STATE_PLAYING) {
-    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
-                      [](auto pad, auto info, auto d) {
-                        auto pb = static_cast<PluginBase*>(d);
+                      on_disable(d);
 
-                        std::lock_guard<std::mutex> lock(pb->plugin_mutex);
-
-                        on_disable(d);
-
-                        return GST_PAD_PROBE_REMOVE;
-                      },
-                      this, nullptr);
-  } else {
-    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE, on_pad_blocked, this,
-                      nullptr);
-  }
+                      return GST_PAD_PROBE_REMOVE;
+                    },
+                    this, nullptr);
 
   g_object_unref(srcpad);
 }

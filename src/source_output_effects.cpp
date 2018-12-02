@@ -110,9 +110,9 @@ static GstPadProbeReturn event_probe_cb(GstPad* pad,
   return GST_PAD_PROBE_DROP;
 }
 
-GstPadProbeReturn on_pad_blocked(GstPad* pad,
-                                 GstPadProbeInfo* info,
-                                 gpointer user_data) {
+GstPadProbeReturn on_pad_blocked_eos(GstPad* pad,
+                                     GstPadProbeInfo* info,
+                                     gpointer user_data) {
   gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
 
   auto l = static_cast<SourceOutputEffects*>(user_data);
@@ -186,7 +186,7 @@ void on_plugins_order_changed(GSettings* settings,
       gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE, on_pad_idle, l,
                         nullptr);
     } else {
-      gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE, on_pad_blocked, l,
+      gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE, on_pad_blocked_eos, l,
                         nullptr);
     }
 
