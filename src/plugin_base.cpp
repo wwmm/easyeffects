@@ -141,17 +141,22 @@ bool PluginBase::is_installed(GstElement* e) {
 void PluginBase::enable() {
   auto srcpad = gst_element_get_static_pad(identity_in, "src");
 
-  gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
-                    [](auto pad, auto info, auto d) {
-                      auto pb = static_cast<PluginBase*>(d);
+  auto id =
+      gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
+                        [](auto pad, auto info, auto d) {
+                          auto pb = static_cast<PluginBase*>(d);
 
-                      std::lock_guard<std::mutex> lock(pb->plugin_mutex);
+                          std::lock_guard<std::mutex> lock(pb->plugin_mutex);
 
-                      on_enable(d);
+                          on_enable(d);
 
-                      return GST_PAD_PROBE_REMOVE;
-                    },
-                    this, nullptr);
+                          return GST_PAD_PROBE_REMOVE;
+                        },
+                        this, nullptr);
+
+  if (id != 0) {
+    util::debug(log_tag + name + " will be enabled in another thread");
+  }
 
   g_object_unref(srcpad);
 }
@@ -159,17 +164,22 @@ void PluginBase::enable() {
 void PluginBase::disable() {
   auto srcpad = gst_element_get_static_pad(identity_in, "src");
 
-  gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
-                    [](auto pad, auto info, auto d) {
-                      auto pb = static_cast<PluginBase*>(d);
+  auto id =
+      gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
+                        [](auto pad, auto info, auto d) {
+                          auto pb = static_cast<PluginBase*>(d);
 
-                      std::lock_guard<std::mutex> lock(pb->plugin_mutex);
+                          std::lock_guard<std::mutex> lock(pb->plugin_mutex);
 
-                      on_disable(d);
+                          on_disable(d);
 
-                      return GST_PAD_PROBE_REMOVE;
-                    },
-                    this, nullptr);
+                          return GST_PAD_PROBE_REMOVE;
+                        },
+                        this, nullptr);
+
+  if (id != 0) {
+    util::debug(log_tag + name + " will be disabled in another thread");
+  }
 
   g_object_unref(srcpad);
 }

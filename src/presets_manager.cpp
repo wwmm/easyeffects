@@ -282,8 +282,6 @@ void PresetsManager::load(const std::string& name) {
     soe_settings->set_string_array("plugins", input_plugins);
     sie_settings->set_string_array("plugins", output_plugins);
 
-    g_settings_sync();
-
     bass_enhancer->read(root);
     compressor->read(root);
     crossfeed->read(root);
