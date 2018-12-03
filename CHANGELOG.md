@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 
+## [4.4.1]
 ### Added
 - Updated translations
 - Improved dynamic pipeline. Alternating presets while playing should cause
