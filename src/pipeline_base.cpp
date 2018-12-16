@@ -6,6 +6,7 @@
 #include <mutex>
 #include "pipeline_base.hpp"
 #include "util.hpp"
+#include "config.h"
 
 namespace {
 
@@ -206,6 +207,8 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
                    this);
 
   // creating elements common to all pipelines
+
+  gst_registry_scan_path(gst_registry_get(), PLUGINS_INSTALL_DIR);
 
   source = gst_element_factory_make("pulsesrc", "source");
   capsfilter = gst_element_factory_make("capsfilter", nullptr);
