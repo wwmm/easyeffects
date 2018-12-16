@@ -67,6 +67,8 @@ class PipelineBase {
   void set_caps(const uint& sampling_rate);
   void init_spectrum_bin();
   void init_effects_bin();
+
+  static GstElement *get_required_plugin(const gchar *factoryname, const gchar *name);
 };
 
 #endif
