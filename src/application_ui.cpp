@@ -585,7 +585,7 @@ bool ApplicationUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
     for (uint n = 0; n < n_bars; n++) {
       auto bar_height = height * std::min(1.,
         std::pow(
-          scale * double(std::abs(spectrum_mag[n])),
+          scale * std::max(0., double(spectrum_mag[n])),
                          // somehow, negative magnitudes seem to occur...
           exponent));
 
