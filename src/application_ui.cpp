@@ -6,6 +6,7 @@
 #include <gtkmm/settings.h>
 #include <boost/filesystem.hpp>
 #include <future>
+#include <algorithm>
 #include "application_ui.hpp"
 #include "util.hpp"
 
@@ -81,6 +82,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   builder->get_widget("output_device", output_device);
   builder->get_widget("reset_settings", reset_settings);
   builder->get_widget("show_spectrum", show_spectrum);
+  builder->get_widget("spectrum_fill", spectrum_fill);
   builder->get_widget("spectrum_box", spectrum_box);
   builder->get_widget("spectrum", spectrum);
   builder->get_widget("stack", stack);
@@ -121,6 +123,9 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   get_object(builder, "source_list", source_list);
   get_object(builder, "spectrum_n_points", spectrum_n_points);
   get_object(builder, "spectrum_height", spectrum_height);
+  get_object(builder, "spectrum_scale", spectrum_scale);
+  get_object(builder, "spectrum_exponent", spectrum_exponent);
+  get_object(builder, "spectrum_sampling_freq", spectrum_sampling_freq);
 
   /*signals connection*/
 
@@ -166,6 +171,10 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   spectrum_height->signal_value_changed().connect(
       [=]() { spectrum->set_size_request(-1, spectrum_height->get_value()); });
+
+  spectrum_sampling_freq->signal_value_changed().connect(
+      sigc::mem_fun(*this, &ApplicationUi::on_spectrum_sampling_freq_set), false);
+
 
   // pulseaudio device selection
 
@@ -399,8 +408,12 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   settings->bind("show-spectrum", show_spectrum, "active", flag);
   settings->bind("show-spectrum", spectrum_box, "visible", flag_get);
+  settings->bind("spectrum-fill", spectrum_fill, "active", flag);
   settings->bind("spectrum-n-points", spectrum_n_points.get(), "value", flag);
   settings->bind("spectrum-height", spectrum_height.get(), "value", flag);
+  settings->bind("spectrum-scale", spectrum_scale.get(), "value", flag);
+  settings->bind("spectrum-exponent", spectrum_exponent.get(), "value", flag);
+  settings->bind("spectrum-sampling-freq", spectrum_sampling_freq.get(), "value", flag);
   settings->bind("use-custom-color", use_custom_color, "active", flag);
   settings->bind("use-custom-color", spectrum_color_button, "sensitive", flag);
 
@@ -566,9 +579,15 @@ bool ApplicationUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
     auto height = allocation.get_height();
     auto n_bars = spectrum_mag.size();
     auto x = util::linspace(0, width, n_bars);
+    double scale = spectrum_scale.get()->get_value();
+    double exponent = spectrum_exponent.get()->get_value();
 
     for (uint n = 0; n < n_bars; n++) {
-      auto bar_height = spectrum_mag[n] * height;
+      auto bar_height = height * std::min(1.,
+        std::pow(
+          scale * double(std::abs(spectrum_mag[n])),
+                         // somehow, negative magnitudes seem to occur...
+          exponent));
 
       ctx->rectangle(x[n], height - bar_height, width / n_bars, bar_height);
     }
@@ -588,7 +607,11 @@ bool ApplicationUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
     }
 
     ctx->set_line_width(1.1);
-    ctx->stroke();
+
+    if (spectrum_fill->get_active())
+      ctx->fill();
+    else
+      ctx->stroke();
 
     if (mouse_inside) {
       std::ostringstream msg;
@@ -614,6 +637,11 @@ bool ApplicationUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
   }
 
   return false;
+}
+
+void ApplicationUi::on_spectrum_sampling_freq_set() {
+  app->sie->spectrum_interval = guint64(1000000000. / spectrum_sampling_freq->get_value());
+  app->sie->update_spectrum_interval();
 }
 
 bool ApplicationUi::on_spectrum_enter_notify_event(GdkEventCrossing* event) {

@@ -101,6 +101,11 @@ void PresetsManager::save_general_settings(boost::property_tree::ptree& root) {
   root.put("spectrum.use-custom-color",
            settings->get_boolean("use-custom-color"));
 
+  root.put("spectrum.fill", settings->get_boolean("spectrum-fill"));
+  root.put("spectrum.scale", settings->get_double("spectrum-scale"));
+  root.put("spectrum.exponent", settings->get_double("spectrum-exponent"));
+  root.put("spectrum.sampling-freq", settings->get_int("spectrum-sampling-freq"));
+
   settings->get_value("spectrum-color", aux);
 
   for (auto& p : aux.get()) {
@@ -132,6 +137,27 @@ void PresetsManager::load_general_settings(boost::property_tree::ptree& root) {
       "use-custom-color",
       root.get<bool>("spectrum.use-custom-color",
                      get_default<bool>(settings, "use-custom-color")));
+
+  settings->set_boolean(
+      "spectrum-fill",
+      root.get<bool>("spectrum.fill",
+                     get_default<bool>(settings, "spectrum-fill")));
+
+  settings->set_double(
+      "spectrum-scale",
+      root.get<double>("spectrum.scale",
+                       get_default<double>(settings, "spectrum-scale")));
+
+  settings->set_double(
+      "spectrum-exponent",
+      root.get<double>("spectrum.exponent",
+                       get_default<double>(settings, "spectrum-exponent")));
+
+  settings->set_int(
+      "spectrum-sampling-freq",
+      root.get<int>("spectrum.sampling-freq",
+                    get_default<int>(settings, "spectrum-sampling-freq")));
+
 
   try {
     std::vector<double> spectrum_color;

@@ -42,7 +42,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   Glib::RefPtr<Gio::Settings> settings;
 
   Gtk::Switch *enable_autostart, *enable_all_apps, *theme_switch,
-      *show_spectrum, *use_custom_color;
+      *show_spectrum, *use_custom_color, *spectrum_fill;
   Gtk::ToggleButton *use_default_sink, *use_default_source;
   Gtk::ComboBox *input_device, *output_device;
   Gtk::DrawingArea* spectrum;
@@ -63,7 +63,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   Gdk::RGBA spectrum_color;
 
   Glib::RefPtr<Gtk::Adjustment> buffer_in, buffer_out, latency_in, latency_out,
-      spectrum_n_points, spectrum_height;
+      spectrum_n_points, spectrum_height, spectrum_scale, spectrum_exponent, spectrum_sampling_freq;
   Glib::RefPtr<Gtk::ListStore> sink_list, source_list;
 
   sigc::connection spectrum_connection;
@@ -111,6 +111,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   void on_reset_settings();
 
   bool on_show_spectrum(bool state);
+
+  void on_spectrum_sampling_freq_set();
 
   bool on_use_custom_color(bool state);
 
