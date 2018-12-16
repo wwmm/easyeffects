@@ -68,7 +68,7 @@ class PipelineBase {
   void init_spectrum_bin();
   void init_effects_bin();
 
-  static GstElement *get_required_plugin(const gchar *factoryname, const gchar *name);
+  GstElement* get_required_plugin(const gchar* factoryname, const gchar* name);
 };
 
 #endif

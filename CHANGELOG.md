@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Fixed
+- When installed under /usr/local PulseEffects would crash because of not found
+plugins. This was fixed.
+
 ## [4.4.1]
 ### Added
 - Updated translations

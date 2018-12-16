@@ -1,12 +1,12 @@
+#include "pipeline_base.hpp"
 #include <glib-object.h>
 #include <gobject/gvaluecollector.h>
 #include <algorithm>
 #include <boost/math/interpolators/cubic_b_spline.hpp>
 #include <cmath>
 #include <mutex>
-#include "pipeline_base.hpp"
-#include "util.hpp"
 #include "config.h"
+#include "util.hpp"
 
 namespace {
 
@@ -379,7 +379,7 @@ void PipelineBase::set_null_pipeline() {
   gst_element_get_state(pipeline, &state, &pending, state_check_timeout);
 
   /*on_message_state is not called when going to null. I don't know why.
-   *so we have to update the variable manually after setting to null.
+   * so we have to update the variable manually after setting to null.
    */
 
   if (state == GST_STATE_NULL) {
@@ -587,11 +587,13 @@ std::array<double, 2> PipelineBase::get_peak(GstMessage* message) {
   return peak;
 }
 
-GstElement *PipelineBase::get_required_plugin(const gchar *factoryname, const gchar *name) {
-  GstElement *plugin = gst_element_factory_make(factoryname, name);
+GstElement* PipelineBase::get_required_plugin(const gchar* factoryname,
+                                              const gchar* name) {
+  GstElement* plugin = gst_element_factory_make(factoryname, name);
 
   if (!plugin)
-    throw std::runtime_error(std::string("Failed to get required plugin: ") + factoryname);
+    throw std::runtime_error(
+        log_tag + std::string("Failed to get required plugin: ") + factoryname);
 
   return plugin;
 }
