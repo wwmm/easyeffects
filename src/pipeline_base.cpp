@@ -210,16 +210,16 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
 
   gst_registry_scan_path(gst_registry_get(), PLUGINS_INSTALL_DIR);
 
-  source = gst_element_factory_make("pulsesrc", "source");
-  capsfilter = gst_element_factory_make("capsfilter", nullptr);
-  adapter = gst_element_factory_make("peadapter", nullptr);
-  sink = gst_element_factory_make("pulsesink", "sink");
-  spectrum = gst_element_factory_make("spectrum", "spectrum");
+  source = get_required_plugin("pulsesrc", "source");
+  capsfilter = get_required_plugin("capsfilter", nullptr);
+  adapter = get_required_plugin("peadapter", nullptr);
+  sink = get_required_plugin("pulsesink", "sink");
+  spectrum = get_required_plugin("spectrum", "spectrum");
 
-  auto queue_src = gst_element_factory_make("queue", nullptr);
-  auto src_type = gst_element_factory_make("typefind", nullptr);
-  auto audioconvert_in = gst_element_factory_make("audioconvert", nullptr);
-  auto audioconvert_out = gst_element_factory_make("audioconvert", nullptr);
+  auto queue_src = get_required_plugin("queue", nullptr);
+  auto src_type = get_required_plugin("typefind", nullptr);
+  auto audioconvert_in = get_required_plugin("audioconvert", nullptr);
+  auto audioconvert_out = get_required_plugin("audioconvert", nullptr);
 
   init_spectrum_bin();
   init_effects_bin();
@@ -585,4 +585,13 @@ std::array<double, 2> PipelineBase::get_peak(GstMessage* message) {
   }
 
   return peak;
+}
+
+GstElement *PipelineBase::get_required_plugin(const gchar *factoryname, const gchar *name) {
+  GstElement *plugin = gst_element_factory_make(factoryname, name);
+
+  if (!plugin)
+    throw std::runtime_error(std::string("Failed to get required plugin: ") + factoryname);
+
+  return plugin;
 }
