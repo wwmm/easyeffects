@@ -33,6 +33,9 @@ static void on_stream_status(GstBus* bus,
                              PipelineBase* pb) {
   GstStreamStatusType type;
   GstElement* owner;
+  gchar* path;
+  std::string path_str, source_name;
+  std::size_t idx;
 
   gst_message_parse_stream_status(message, &type, &owner);
 
@@ -40,10 +43,18 @@ static void on_stream_status(GstBus* bus,
     case GST_STREAM_STATUS_TYPE_CREATE:
       break;
     case GST_STREAM_STATUS_TYPE_ENTER:
-      util::debug(pb->log_tag + " changing thread priority");
+      path = gst_object_get_path_string(GST_OBJECT(owner));
 
-      pb->rtkit->set_priority(5);
-      pb->rtkit->set_nice(-11);
+      path_str = path;
+
+      idx = path_str.find_last_of("/");
+
+      source_name = path_str.substr(idx + 1);
+
+      g_free(path);
+
+      pb->rtkit->set_priority(source_name, 4);
+      pb->rtkit->set_nice(source_name, -11);
 
       break;
     case GST_STREAM_STATUS_TYPE_LEAVE:
@@ -218,7 +229,7 @@ void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
 
 PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     : log_tag(tag),
-      rtkit(std::make_unique<RealtimeKit>()),
+      rtkit(std::make_unique<RealtimeKit>(tag)),
       settings(g_settings_new("com.github.wwmm.pulseeffects")) {
   gst_init(nullptr, nullptr);
 

@@ -5,7 +5,9 @@
 #include <unistd.h>
 #include "util.hpp"
 
-RealtimeKit::RealtimeKit() {
+RealtimeKit::RealtimeKit(const std::string& tag) {
+  log_tag = tag + "rtkit: ";
+
   DBusError error;
 
   dbus_error_init(&error);
@@ -88,7 +90,8 @@ long long RealtimeKit::get_int_property(const char* propname) {
   return propval;
 }
 
-void RealtimeKit::make_realtime(const int& priority) {
+void RealtimeKit::make_realtime(const std::string& source_name,
+                                const int& priority) {
   DBusMessage *m = nullptr, *r = nullptr;
   dbus_uint64_t u64;
   dbus_uint32_t u32;
@@ -112,6 +115,10 @@ void RealtimeKit::make_realtime(const int& priority) {
 
   if (!(r = dbus_connection_send_with_reply_and_block(bus, m, -1, &error))) {
     util::warning(log_tag + error.name + " : " + error.message);
+  } else {
+    util::debug(log_tag + "changed " + source_name +
+                " thread real-time priority value to " +
+                std::to_string(priority));
   }
 
   if (m) {
@@ -125,7 +132,8 @@ void RealtimeKit::make_realtime(const int& priority) {
   dbus_error_free(&error);
 }
 
-void RealtimeKit::make_high_priority(const int& nice_value) {
+void RealtimeKit::make_high_priority(const std::string& source_name,
+                                     const int& nice_value) {
   DBusMessage *m = nullptr, *r = nullptr;
   dbus_uint64_t u64;
   dbus_int32_t u32;
@@ -149,6 +157,9 @@ void RealtimeKit::make_high_priority(const int& nice_value) {
 
   if (!(r = dbus_connection_send_with_reply_and_block(bus, m, -1, &error))) {
     util::warning(log_tag + error.name + " : " + error.message);
+  } else {
+    util::debug(log_tag + "changed " + source_name + " thread nice value to " +
+                std::to_string(nice_value));
   }
 
   if (m) {
@@ -162,7 +173,8 @@ void RealtimeKit::make_high_priority(const int& nice_value) {
   dbus_error_free(&error);
 }
 
-void RealtimeKit::set_priority(const int& priority) {
+void RealtimeKit::set_priority(const std::string& source_name,
+                               const int& priority) {
   struct rlimit rl;
   long long rttime;
 
@@ -178,9 +190,10 @@ void RealtimeKit::set_priority(const int& priority) {
     util::warning(log_tag + "failed to get rlimit value");
   }
 
-  make_realtime(priority);
+  make_realtime(source_name, priority);
 }
 
-void RealtimeKit::set_nice(const int& nice_value) {
-  make_high_priority(nice_value);
+void RealtimeKit::set_nice(const std::string& source_name,
+                           const int& nice_value) {
+  make_high_priority(source_name, nice_value);
 }
