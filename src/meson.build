@@ -98,7 +98,7 @@ pulseeffects_deps = [
 	dependency('boost', version: '>=1.65', modules:['system','filesystem']),
 	dependency('sndfile'),
 	dependency('threads'),
-	dependency('dbus-1', required : true)
+	dependency('dbus-c++-1', required : true)
 ]
 
 executable(
