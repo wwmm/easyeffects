@@ -13,22 +13,16 @@ RealtimeKit::RealtimeKit() {
   if (!(bus = dbus_bus_get_private(DBUS_BUS_SYSTEM, &error))) {
     util::warning(log_tag +
                   "Failed to connect to system bus: " + error.message);
-
-    failed = true;
   }
 
-  if (!failed) {
-    dbus_connection_set_exit_on_disconnect(bus, false);
-  }
+  dbus_connection_set_exit_on_disconnect(bus, false);
 
   dbus_error_free(&error);
 }
 
 RealtimeKit::~RealtimeKit() {
-  if (!failed) {
-    dbus_connection_close(bus);
-    dbus_connection_unref(bus);
-  }
+  dbus_connection_close(bus);
+  dbus_connection_unref(bus);
 }
 
 /*
@@ -94,58 +88,99 @@ long long RealtimeKit::get_int_property(const char* propname) {
   return propval;
 }
 
-void RealtimeKit::make_realtime() {
-  if (!failed) {
-    DBusMessage *m = nullptr, *r = nullptr;
-    dbus_uint64_t u64;
-    dbus_uint32_t u32;
-    DBusError error;
-    struct rlimit rl;
-    long long rttime;
-    int nice_level = 12;
+void RealtimeKit::make_realtime(const int& priority) {
+  DBusMessage *m = nullptr, *r = nullptr;
+  dbus_uint64_t u64;
+  dbus_uint32_t u32;
+  DBusError error;
 
-    rttime = get_int_property("RTTimeUSecMax");
+  pid_t thread = (pid_t)syscall(SYS_gettid);
 
-    std::cout << rttime << std::endl;
+  u64 = (dbus_uint64_t)thread;
+  u32 = (dbus_uint32_t)priority;
 
-    if (getrlimit(RLIMIT_RTTIME, &rl) >= 0) {
-      rl.rlim_cur = rl.rlim_max = rttime;
-
-      if (setrlimit(RLIMIT_RTTIME, &rl) < 0) {
-        util::warning(log_tag + "failed to set rlimit value");
-      }
-    } else {
-      util::warning(log_tag + "failed to get rlimit value");
-    }
-
-    pid_t thread = (pid_t)syscall(SYS_gettid);
-
-    u64 = (dbus_uint64_t)thread;
-    u32 = (dbus_uint32_t)nice_level;
-
-    if (!(m = dbus_message_new_method_call(
-              RTKIT_SERVICE_NAME, RTKIT_OBJECT_PATH,
-              "org.freedesktop.RealtimeKit1", "MakeThreadRealtime"))) {
-    }
-
-    if (!dbus_message_append_args(m, DBUS_TYPE_UINT64, &u64, DBUS_TYPE_UINT32,
-                                  &u32, DBUS_TYPE_INVALID)) {
-    }
-
-    dbus_error_init(&error);
-
-    if (!(r = dbus_connection_send_with_reply_and_block(bus, m, -1, &error))) {
-      util::warning(log_tag + error.name + " : " + error.message);
-    }
-
-    if (m) {
-      dbus_message_unref(m);
-    }
-
-    if (r) {
-      dbus_message_unref(r);
-    }
-
-    dbus_error_free(&error);
+  if (!(m = dbus_message_new_method_call(RTKIT_SERVICE_NAME, RTKIT_OBJECT_PATH,
+                                         "org.freedesktop.RealtimeKit1",
+                                         "MakeThreadRealtime"))) {
   }
+
+  if (!dbus_message_append_args(m, DBUS_TYPE_UINT64, &u64, DBUS_TYPE_UINT32,
+                                &u32, DBUS_TYPE_INVALID)) {
+  }
+
+  dbus_error_init(&error);
+
+  if (!(r = dbus_connection_send_with_reply_and_block(bus, m, -1, &error))) {
+    util::warning(log_tag + error.name + " : " + error.message);
+  }
+
+  if (m) {
+    dbus_message_unref(m);
+  }
+
+  if (r) {
+    dbus_message_unref(r);
+  }
+
+  dbus_error_free(&error);
+}
+
+void RealtimeKit::make_high_priority(const int& nice_value) {
+  DBusMessage *m = nullptr, *r = nullptr;
+  dbus_uint64_t u64;
+  dbus_int32_t u32;
+  DBusError error;
+
+  pid_t thread = (pid_t)syscall(SYS_gettid);
+
+  u64 = (dbus_uint64_t)thread;
+  u32 = (dbus_int32_t)nice_value;
+
+  if (!(m = dbus_message_new_method_call(RTKIT_SERVICE_NAME, RTKIT_OBJECT_PATH,
+                                         "org.freedesktop.RealtimeKit1",
+                                         "MakeThreadHighPriority"))) {
+  }
+
+  if (!dbus_message_append_args(m, DBUS_TYPE_UINT64, &u64, DBUS_TYPE_INT32,
+                                &u32, DBUS_TYPE_INVALID)) {
+  }
+
+  dbus_error_init(&error);
+
+  if (!(r = dbus_connection_send_with_reply_and_block(bus, m, -1, &error))) {
+    util::warning(log_tag + error.name + " : " + error.message);
+  }
+
+  if (m) {
+    dbus_message_unref(m);
+  }
+
+  if (r) {
+    dbus_message_unref(r);
+  }
+
+  dbus_error_free(&error);
+}
+
+void RealtimeKit::set_priority(const int& priority) {
+  struct rlimit rl;
+  long long rttime;
+
+  rttime = get_int_property("RTTimeUSecMax");
+
+  if (getrlimit(RLIMIT_RTTIME, &rl) >= 0) {
+    rl.rlim_cur = rl.rlim_max = rttime;
+
+    if (setrlimit(RLIMIT_RTTIME, &rl) < 0) {
+      util::warning(log_tag + "failed to set rlimit value");
+    }
+  } else {
+    util::warning(log_tag + "failed to get rlimit value");
+  }
+
+  make_realtime(priority);
+}
+
+void RealtimeKit::set_nice(const int& nice_value) {
+  make_high_priority(nice_value);
 }

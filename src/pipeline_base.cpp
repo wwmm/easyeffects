@@ -42,7 +42,8 @@ static void on_stream_status(GstBus* bus,
     case GST_STREAM_STATUS_TYPE_ENTER:
       util::debug(pb->log_tag + " changing thread priority");
 
-      pb->rtkit->make_realtime();
+      pb->rtkit->set_priority(5);
+      pb->rtkit->set_nice(-11);
 
       break;
     case GST_STREAM_STATUS_TYPE_LEAVE:
