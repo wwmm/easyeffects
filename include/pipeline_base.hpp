@@ -3,6 +3,7 @@
 
 #include <gio/gio.h>
 #include <gst/gst.h>
+#include <memory>
 #include <mutex>
 #include <vector>
 #include "pulse_manager.hpp"
@@ -23,6 +24,8 @@ class PipelineBase {
              *identity_out = nullptr;
 
   GstBus* bus = nullptr;
+
+  std::unique_ptr<RealtimeKit> rtkit;
 
   std::mutex pipeline_mutex;
 

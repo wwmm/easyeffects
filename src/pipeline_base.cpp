@@ -222,7 +222,9 @@ void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
 }  // namespace
 
 PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
-    : log_tag(tag), settings(g_settings_new("com.github.wwmm.pulseeffects")) {
+    : log_tag(tag),
+      rtkit(std::make_unique<RealtimeKit>()),
+      settings(g_settings_new("com.github.wwmm.pulseeffects")) {
   gst_init(nullptr, nullptr);
 
   pipeline = gst_pipeline_new("pipeline");
