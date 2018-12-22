@@ -33,7 +33,6 @@ static void on_stream_status(GstBus* bus,
                              PipelineBase* pb) {
   GstStreamStatusType type;
   GstElement* owner;
-  // int prio_result = 0, priority_value = 0;
 
   gst_message_parse_stream_status(message, &type, &owner);
 
@@ -44,13 +43,6 @@ static void on_stream_status(GstBus* bus,
       util::debug(pb->log_tag + " changing thread priority");
 
       pb->rtkit->make_realtime();
-
-      // prio_result = setpriority(PRIO_PROCESS, 0, priority_value);
-      //
-      // if (prio_result != 0) {
-      //   util::warning(pb->log_tag + " failed to set priority to " +
-      //                 std::to_string(priority_value));
-      // }
 
       break;
     case GST_STREAM_STATUS_TYPE_LEAVE:

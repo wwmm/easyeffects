@@ -138,10 +138,6 @@ void RealtimeKit::make_realtime() {
       util::warning(log_tag + error.name + " : " + error.message);
     }
 
-    // if (dbus_set_error_from_message(&error, r)) {
-    //   util::warning(log_tag + error.name);
-    // }
-
     if (m) {
       dbus_message_unref(m);
     }
