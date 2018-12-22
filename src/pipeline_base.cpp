@@ -54,7 +54,7 @@ static void on_stream_status(GstBus* bus,
       g_free(path);
 
       pb->rtkit->set_priority(source_name, 4);
-      pb->rtkit->set_nice(source_name, -11);
+      pb->rtkit->set_nice(source_name, -10);
 
       break;
     case GST_STREAM_STATUS_TYPE_LEAVE:
