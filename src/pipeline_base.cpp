@@ -39,12 +39,8 @@ static void on_stream_status(GstBus* bus,
 
   switch (type) {
     case GST_STREAM_STATUS_TYPE_CREATE:
-      // g_message("created task %p", task);
       break;
     case GST_STREAM_STATUS_TYPE_ENTER:
-      /* g_message ("raising task priority"); */
-      /* setpriority (PRIO_PROCESS, 0, -10); */
-
       util::debug(pb->log_tag + " changing thread priority");
 
       prio_result = setpriority(PRIO_PROCESS, 0, priority_value);
