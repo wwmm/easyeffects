@@ -13,6 +13,8 @@ class RealtimeKit {
  private:
   std::string log_tag = "rtkit: ";
 
+  bool failed = false;
+
   DBusError error;
   DBusConnection* bus;
 };

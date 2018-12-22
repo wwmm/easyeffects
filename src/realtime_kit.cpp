@@ -2,8 +2,6 @@
 #include "util.hpp"
 
 RealtimeKit::RealtimeKit() {
-  bool failed = false;
-
   dbus_error_init(&error);
 
   if (!(bus = dbus_bus_get_private(DBUS_BUS_SYSTEM, &error))) {
@@ -21,6 +19,9 @@ RealtimeKit::RealtimeKit() {
 
 RealtimeKit::~RealtimeKit() {
   dbus_error_free(&error);
-  dbus_connection_close(bus);
-  dbus_connection_unref(bus);
+
+  if (!failed) {
+    dbus_connection_close(bus);
+    dbus_connection_unref(bus);
+  }
 }
