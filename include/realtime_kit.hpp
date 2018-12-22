@@ -21,6 +21,8 @@ class RealtimeKit {
   bool failed = false;
 
   DBusConnection* bus;
+
+  long long get_int_property(const char* propname);
 };
 
 #endif
