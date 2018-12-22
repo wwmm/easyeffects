@@ -1,6 +1,7 @@
 #include "pipeline_base.hpp"
 #include <glib-object.h>
 #include <gobject/gvaluecollector.h>
+#include <sys/resource.h>
 #include <algorithm>
 #include <boost/math/interpolators/cubic_b_spline.hpp>
 #include <cmath>
@@ -25,6 +26,40 @@ void on_message_error(const GstBus* gst_bus,
 
   g_error_free(err);
   g_free(debug);
+}
+
+static void on_stream_status(GstBus* bus,
+                             GstMessage* message,
+                             PipelineBase* pb) {
+  GstStreamStatusType type;
+  GstElement* owner;
+  int prio_result = 0, priority_value = 0;
+
+  gst_message_parse_stream_status(message, &type, &owner);
+
+  switch (type) {
+    case GST_STREAM_STATUS_TYPE_CREATE:
+      // g_message("created task %p", task);
+      break;
+    case GST_STREAM_STATUS_TYPE_ENTER:
+      /* g_message ("raising task priority"); */
+      /* setpriority (PRIO_PROCESS, 0, -10); */
+
+      util::debug(pb->log_tag + " changing thread priority");
+
+      prio_result = setpriority(PRIO_PROCESS, 0, priority_value);
+
+      if (prio_result != 0) {
+        util::warning(pb->log_tag + " failed to set priority to " +
+                      std::to_string(priority_value));
+      }
+
+      break;
+    case GST_STREAM_STATUS_TYPE_LEAVE:
+      break;
+    default:
+      break;
+  }
 }
 
 void on_message_state_changed(const GstBus* gst_bus,
@@ -198,11 +233,14 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
 
   bus = gst_element_get_bus(pipeline);
 
+  gst_bus_enable_sync_message_emission(bus);
   gst_bus_add_signal_watch(bus);
 
   // bus callbacks
 
   g_signal_connect(bus, "message::error", G_CALLBACK(on_message_error), this);
+  g_signal_connect(bus, "sync-message::stream-status",
+                   GCallback(on_stream_status), this);
   g_signal_connect(bus, "message::state-changed",
                    G_CALLBACK(on_message_state_changed), this);
   g_signal_connect(bus, "message::latency", G_CALLBACK(on_message_latency),
