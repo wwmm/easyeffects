@@ -6,6 +6,7 @@
 #include <mutex>
 #include <vector>
 #include "pulse_manager.hpp"
+#include "realtime_kit.hpp"
 
 class PipelineBase {
  public:

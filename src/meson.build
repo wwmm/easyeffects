@@ -78,6 +78,7 @@ pulseeffects_sources = [
 	'calibration_signals.cpp',
 	'calibration_mic_ui.cpp',
 	'calibration_mic.cpp',
+	'realtime_kit.cpp',
 	'util.cpp',
 	gresources
 ]
@@ -96,7 +97,8 @@ pulseeffects_deps = [
 	dependency('libbs2b', required: false),
 	dependency('boost', version: '>=1.65', modules:['system','filesystem']),
 	dependency('sndfile'),
-	dependency('threads')
+	dependency('threads'),
+	dependency('dbus-1', required : true)
 ]
 
 executable(
