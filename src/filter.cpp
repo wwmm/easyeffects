@@ -1,5 +1,5 @@
-#include <glibmm/main.h>
 #include "filter.hpp"
+#include <glibmm/main.h>
 #include "util.hpp"
 
 namespace {

@@ -1,5 +1,5 @@
-#include <glibmm/main.h>
 #include "loudness.hpp"
+#include <glibmm/main.h>
 #include "util.hpp"
 
 Loudness::Loudness(const std::string& tag, const std::string& schema)

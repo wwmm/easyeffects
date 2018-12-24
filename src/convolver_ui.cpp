@@ -1,9 +1,9 @@
+#include "convolver_ui.hpp"
 #include <glibmm.h>
 #include <glibmm/i18n.h>
 #include <gst/fft/gstfftf32.h>
 #include <boost/math/interpolators/cubic_b_spline.hpp>
 #include <sndfile.hh>
-#include "convolver_ui.hpp"
 
 ConvolverUi::ConvolverUi(BaseObjectType* cobject,
                          const Glib::RefPtr<Gtk::Builder>& builder,

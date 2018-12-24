@@ -1,6 +1,6 @@
+#include "app_info_ui.hpp"
 #include <glibmm/i18n.h>
 #include <sstream>
-#include "app_info_ui.hpp"
 #include "util.hpp"
 
 AppInfoUi::AppInfoUi(BaseObjectType* cobject,

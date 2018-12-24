@@ -1,8 +1,8 @@
+#include "equalizer_ui.hpp"
 #include <gtkmm/comboboxtext.h>
 #include <gtkmm/label.h>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
-#include "equalizer_ui.hpp"
 
 namespace {
 
