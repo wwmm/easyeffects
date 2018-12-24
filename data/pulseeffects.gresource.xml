@@ -3,6 +3,7 @@
     <gresource prefix="/com/github/wwmm/pulseeffects">
         <file>about.glade</file>
         <file>ui/application.glade</file>
+        <file>ui/spectrum.glade</file>
         <file>ui/effects_base.glade</file>
         <file>ui/app_info.glade</file>
         <file>ui/autogain.glade</file>

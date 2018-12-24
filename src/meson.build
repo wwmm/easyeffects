@@ -2,6 +2,7 @@ pulseeffects_sources = [
 	'pulseeffects.cpp',
 	'application.cpp',
 	'application_ui.cpp',
+	'spectrum_ui.cpp',
 	'pulse_manager.cpp',
 	'effects_base_ui.cpp',
 	'app_info_ui.cpp',
