@@ -1,3 +1,4 @@
+#include "application_ui.hpp"
 #include <glibmm.h>
 #include <glibmm/i18n.h>
 #include <gtkmm/cssprovider.h>
@@ -5,9 +6,8 @@
 #include <gtkmm/listboxrow.h>
 #include <gtkmm/settings.h>
 #include <boost/filesystem.hpp>
-#include <future>
 #include <algorithm>
-#include "application_ui.hpp"
+#include <future>
 #include "util.hpp"
 
 namespace {

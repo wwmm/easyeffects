@@ -1,8 +1,8 @@
+#include "application.hpp"
 #include <glibmm.h>
 #include <glibmm/i18n.h>
 #include <gtkmm/dialog.h>
 #include <gtkmm/messagedialog.h>
-#include "application.hpp"
 #include "application_ui.hpp"
 #include "config.h"
 #include "pulse_manager.hpp"

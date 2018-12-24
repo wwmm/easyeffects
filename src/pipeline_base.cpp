@@ -1,6 +1,7 @@
 #include "pipeline_base.hpp"
 #include <glib-object.h>
 #include <gobject/gvaluecollector.h>
+#include <sys/resource.h>
 #include <algorithm>
 #include <boost/math/interpolators/cubic_b_spline.hpp>
 #include <cmath>
@@ -25,6 +26,42 @@ void on_message_error(const GstBus* gst_bus,
 
   g_error_free(err);
   g_free(debug);
+}
+
+static void on_stream_status(GstBus* bus,
+                             GstMessage* message,
+                             PipelineBase* pb) {
+  GstStreamStatusType type;
+  GstElement* owner;
+  gchar* path;
+  std::string path_str, source_name;
+  std::size_t idx;
+
+  gst_message_parse_stream_status(message, &type, &owner);
+
+  switch (type) {
+    case GST_STREAM_STATUS_TYPE_CREATE:
+      break;
+    case GST_STREAM_STATUS_TYPE_ENTER:
+      path = gst_object_get_path_string(GST_OBJECT(owner));
+
+      path_str = path;
+
+      idx = path_str.find_last_of("/");
+
+      source_name = path_str.substr(idx + 1);
+
+      g_free(path);
+
+      pb->rtkit->set_priority(source_name, 4);
+      pb->rtkit->set_nice(source_name, -10);
+
+      break;
+    case GST_STREAM_STATUS_TYPE_LEAVE:
+      break;
+    default:
+      break;
+  }
 }
 
 void on_message_state_changed(const GstBus* gst_bus,
@@ -109,7 +146,11 @@ void on_message_element(const GstBus* gst_bus,
 
     if (max_mag > min_mag) {
       for (uint n = 0; n < pb->spectrum_mag.size(); n++) {
-        pb->spectrum_mag[n] = (min_mag - pb->spectrum_mag[n]) / min_mag;
+        if (min_mag < pb->spectrum_mag[n]) {
+          pb->spectrum_mag[n] = (min_mag - pb->spectrum_mag[n]) / min_mag;
+        } else {
+          pb->spectrum_mag[n] = 0.0f;
+        }
       }
 
       Glib::signal_idle().connect_once(
@@ -187,18 +228,23 @@ void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
 }  // namespace
 
 PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
-    : log_tag(tag), settings(g_settings_new("com.github.wwmm.pulseeffects")) {
+    : log_tag(tag),
+      rtkit(std::make_unique<RealtimeKit>(tag)),
+      settings(g_settings_new("com.github.wwmm.pulseeffects")) {
   gst_init(nullptr, nullptr);
 
   pipeline = gst_pipeline_new("pipeline");
 
   bus = gst_element_get_bus(pipeline);
 
+  gst_bus_enable_sync_message_emission(bus);
   gst_bus_add_signal_watch(bus);
 
   // bus callbacks
 
   g_signal_connect(bus, "message::error", G_CALLBACK(on_message_error), this);
+  g_signal_connect(bus, "sync-message::stream-status",
+                   GCallback(on_stream_status), this);
   g_signal_connect(bus, "message::state-changed",
                    G_CALLBACK(on_message_state_changed), this);
   g_signal_connect(bus, "message::latency", G_CALLBACK(on_message_latency),

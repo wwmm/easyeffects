@@ -1,5 +1,5 @@
-#include <glibmm/main.h>
 #include "convolver.hpp"
+#include <glibmm/main.h>
 #include "util.hpp"
 
 Convolver::Convolver(const std::string& tag, const std::string& schema)

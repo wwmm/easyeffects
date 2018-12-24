@@ -1,6 +1,6 @@
+#include "calibration_mic.hpp"
 #include <glibmm/main.h>
 #include <boost/math/interpolators/cubic_b_spline.hpp>
-#include "calibration_mic.hpp"
 #include "util.hpp"
 
 namespace {

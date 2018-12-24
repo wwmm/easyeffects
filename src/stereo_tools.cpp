@@ -1,5 +1,5 @@
-#include <glibmm/main.h>
 #include "stereo_tools.hpp"
+#include <glibmm/main.h>
 #include "util.hpp"
 
 namespace {

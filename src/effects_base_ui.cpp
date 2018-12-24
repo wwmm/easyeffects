@@ -1,7 +1,7 @@
+#include "effects_base_ui.hpp"
 #include <glibmm/i18n.h>
 #include <gtkmm/button.h>
 #include <gtkmm/label.h>
-#include "effects_base_ui.hpp"
 
 EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
                              const Glib::RefPtr<Gio::Settings>& refSettings,

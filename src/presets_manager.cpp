@@ -1,8 +1,8 @@
+#include "presets_manager.hpp"
 #include <glibmm.h>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <iostream>
-#include "presets_manager.hpp"
 #include "util.hpp"
 
 namespace fs = boost::filesystem;

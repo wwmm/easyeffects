@@ -1,5 +1,5 @@
-#include <glibmm/main.h>
 #include "crystalizer.hpp"
+#include <glibmm/main.h>
 #include "util.hpp"
 
 Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)

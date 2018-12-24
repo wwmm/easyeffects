@@ -1,6 +1,6 @@
+#include "pulse_manager.hpp"
 #include <glibmm.h>
 #include <memory>
-#include "pulse_manager.hpp"
 #include "util.hpp"
 
 PulseManager::PulseManager()
