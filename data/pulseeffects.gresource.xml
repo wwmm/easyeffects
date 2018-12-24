@@ -5,6 +5,7 @@
         <file>ui/application.glade</file>
         <file>ui/spectrum.glade</file>
         <file>ui/spectrum_settings.glade</file>
+        <file>ui/pulse_settings.glade</file>
         <file>ui/effects_base.glade</file>
         <file>ui/app_info.glade</file>
         <file>ui/autogain.glade</file>

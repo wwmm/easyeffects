@@ -76,10 +76,12 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   builder->get_widget("theme_switch", theme_switch);
   builder->get_widget("enable_autostart", enable_autostart);
   builder->get_widget("enable_all_apps", enable_all_apps);
+
   builder->get_widget("use_default_sink", use_default_sink);
   builder->get_widget("use_default_source", use_default_source);
   builder->get_widget("input_device", input_device);
   builder->get_widget("output_device", output_device);
+
   builder->get_widget("reset_settings", reset_settings);
   builder->get_widget("placeholder_spectrum", placeholder_spectrum);
   builder->get_widget("stack", stack);

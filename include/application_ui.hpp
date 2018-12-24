@@ -19,6 +19,7 @@
 #include <gtkmm/togglebutton.h>
 #include "application.hpp"
 #include "calibration_ui.hpp"
+#include "pulse_settings_ui.hpp"
 #include "sink_input_effects_ui.hpp"
 #include "source_output_effects_ui.hpp"
 #include "spectrum_settings_ui.hpp"
@@ -42,8 +43,10 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   Glib::RefPtr<Gio::Settings> settings;
 
   Gtk::Switch *enable_autostart, *enable_all_apps, *theme_switch;
+
   Gtk::ToggleButton *use_default_sink, *use_default_source;
   Gtk::ComboBox *input_device, *output_device;
+
   Gtk::Box* placeholder_spectrum;
   Gtk::Button *reset_settings, *add_preset, *import_preset, *calibration_button,
       *help_button, *add_blacklist_in, *add_blacklist_out, *about_button;
@@ -54,7 +57,9 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   Gtk::Entry *preset_name, *blacklist_in_name, *blacklist_out_name;
   Gtk::ScrolledWindow *presets_scrolled_window, *blacklist_in_scrolled_window,
       *blacklist_out_scrolled_window;
+
   Gtk::ComboBoxText *blocksize_in, *blocksize_out;
+
   Gtk::HeaderBar* headerbar;
   Gtk::Image *headerbar_icon1, *headerbar_icon2;
 
@@ -66,6 +71,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   SpectrumUi* spectrum_ui;
   SpectrumSettingsUi* spectrum_settings_ui;
+  PulseSettingsUi* pulse_settings_ui;
   SinkInputEffectsUi* sie_ui;
   SourceOutputEffectsUi* soe_ui;
 
