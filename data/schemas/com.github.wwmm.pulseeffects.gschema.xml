@@ -158,9 +158,9 @@
         <key name="show-spectrum" type="b">
             <default>true</default>
         </key>
-	<key name="spectrum-fill" type="b">
-	    <default>false</default>
-	</key>
+        <key name="spectrum-fill" type="b">
+            <default>false</default>
+        </key>
         <key name="spectrum-n-points" type="i">
             <range min="2" max="600"/>
             <default>150</default>
@@ -174,18 +174,18 @@
         <key name="spectrum-height" type="i">
             <default>100</default>
         </key>
-	<key name="spectrum-scale" type="d">
-	    <range min="0.0" max="10.0"/>
-	    <default>1.0</default>
-	</key>
-	<key name="spectrum-exponent" type="d">
-	    <range min="0.0" max="10.0"/>
-	    <default>1.0</default>
-	</key>
-	<key name="spectrum-sampling-freq" type="i">
-	    <range min="1" max="200"/>
-	    <default>10</default>
-	</key>
+        <key name="spectrum-scale" type="d">
+            <range min="0.0" max="10.0"/>
+            <default>1.0</default>
+        </key>
+        <key name="spectrum-exponent" type="d">
+            <range min="0.0" max="10.0"/>
+            <default>1.0</default>
+        </key>
+        <key name="spectrum-sampling-freq" type="i">
+            <range min="1" max="200"/>
+            <default>10</default>
+        </key>
         <key name="enable-all-apps" type="b">
             <default>false</default>
         </key>

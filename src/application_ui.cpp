@@ -5,8 +5,8 @@
 #include <gtkmm/icontheme.h>
 #include <gtkmm/listboxrow.h>
 #include <gtkmm/settings.h>
-#include <boost/filesystem.hpp>
 #include <algorithm>
+#include <boost/filesystem.hpp>
 #include <future>
 #include "util.hpp"
 
@@ -173,8 +173,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
       [=]() { spectrum->set_size_request(-1, spectrum_height->get_value()); });
 
   spectrum_sampling_freq->signal_value_changed().connect(
-      sigc::mem_fun(*this, &ApplicationUi::on_spectrum_sampling_freq_set), false);
-
+      sigc::mem_fun(*this, &ApplicationUi::on_spectrum_sampling_freq_set),
+      false);
 
   // pulseaudio device selection
 
@@ -413,7 +413,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   settings->bind("spectrum-height", spectrum_height.get(), "value", flag);
   settings->bind("spectrum-scale", spectrum_scale.get(), "value", flag);
   settings->bind("spectrum-exponent", spectrum_exponent.get(), "value", flag);
-  settings->bind("spectrum-sampling-freq", spectrum_sampling_freq.get(), "value", flag);
+  settings->bind("spectrum-sampling-freq", spectrum_sampling_freq.get(),
+                 "value", flag);
   settings->bind("use-custom-color", use_custom_color, "active", flag);
   settings->bind("use-custom-color", spectrum_color_button, "sensitive", flag);
 
@@ -583,11 +584,10 @@ bool ApplicationUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
     double exponent = spectrum_exponent.get()->get_value();
 
     for (uint n = 0; n < n_bars; n++) {
-      auto bar_height = height * std::min(1.,
-        std::pow(
-          scale * std::max(0., double(spectrum_mag[n])),
-                         // somehow, negative magnitudes seem to occur...
-          exponent));
+      auto bar_height =
+          height *
+          std::min(1., std::pow(scale * std::max(0., double(spectrum_mag[n])),
+                                exponent));
 
       ctx->rectangle(x[n], height - bar_height, width / n_bars, bar_height);
     }
@@ -640,8 +640,8 @@ bool ApplicationUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
 }
 
 void ApplicationUi::on_spectrum_sampling_freq_set() {
-  app->sie->spectrum_interval = guint64(1000000000. / spectrum_sampling_freq->get_value());
-  app->sie->update_spectrum_interval();
+  app->sie->update_spectrum_interval(spectrum_sampling_freq->get_value());
+  app->soe->update_spectrum_interval(spectrum_sampling_freq->get_value());
 }
 
 bool ApplicationUi::on_spectrum_enter_notify_event(GdkEventCrossing* event) {
