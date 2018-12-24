@@ -6,7 +6,8 @@
 - We now use RealtimeKit to change GStreamer threads realtime priority and
 niceness to values closer to the ones used by Pulseaudio. By a default a nice
 value of -10 and a priority of 4 are used. In other wrods our priorites
-requirements are slightly below the ones used by pulseaudio. 
+requirements are slightly below the ones used by pulseaudio.
+- The spectrum has more customization options. 
 
 ### Fixed
 - When installed under /usr/local PulseEffects would crash because of not found
