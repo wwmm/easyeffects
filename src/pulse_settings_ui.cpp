@@ -1,6 +1,56 @@
 #include "pulse_settings_ui.hpp"
 #include "util.hpp"
 
+namespace {
+
+gboolean blocksize_enum_to_int(GValue* value,
+                               GVariant* variant,
+                               gpointer user_data) {
+  auto v = g_variant_get_string(variant, nullptr);
+
+  if (v == std::string("64")) {
+    g_value_set_int(value, 0);
+  } else if (v == std::string("128")) {
+    g_value_set_int(value, 1);
+  } else if (v == std::string("256")) {
+    g_value_set_int(value, 2);
+  } else if (v == std::string("512")) {
+    g_value_set_int(value, 3);
+  } else if (v == std::string("1024")) {
+    g_value_set_int(value, 4);
+  } else if (v == std::string("2048")) {
+    g_value_set_int(value, 5);
+  } else if (v == std::string("4096")) {
+    g_value_set_int(value, 6);
+  }
+
+  return true;
+}
+
+GVariant* int_to_blocksize_enum(const GValue* value,
+                                const GVariantType* expected_type,
+                                gpointer user_data) {
+  int v = g_value_get_int(value);
+
+  if (v == 0) {
+    return g_variant_new_string("64");
+  } else if (v == 1) {
+    return g_variant_new_string("128");
+  } else if (v == 2) {
+    return g_variant_new_string("256");
+  } else if (v == 3) {
+    return g_variant_new_string("512");
+  } else if (v == 4) {
+    return g_variant_new_string("1024");
+  } else if (v == 5) {
+    return g_variant_new_string("2048");
+  } else {
+    return g_variant_new_string("4096");
+  }
+}
+
+}  // namespace
+
 PulseSettingsUi::PulseSettingsUi(BaseObjectType* cobject,
                                  const Glib::RefPtr<Gtk::Builder>& builder,
                                  const Glib::RefPtr<Gio::Settings>& refSettings,
@@ -44,8 +94,34 @@ PulseSettingsUi::PulseSettingsUi(BaseObjectType* cobject,
       sigc::mem_fun(*this, &PulseSettingsUi::on_source_removed));
 
   auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
+  auto flag_invert_boolean =
+      Gio::SettingsBindFlags::SETTINGS_BIND_INVERT_BOOLEAN;
 
-  // settings->bind("show-spectrum", show_spectrum, "active", flag);
+  settings->bind("use-default-sink", use_default_sink, "active", flag);
+
+  settings->bind("use-default-sink", output_device, "sensitive",
+                 flag | flag_invert_boolean);
+
+  settings->bind("use-default-source", use_default_source, "active", flag);
+
+  settings->bind("use-default-source", input_device, "sensitive",
+                 flag | flag_invert_boolean);
+
+  settings->bind("buffer-out", buffer_out.get(), "value", flag);
+  settings->bind("latency-out", latency_out.get(), "value", flag);
+
+  settings->bind("buffer-in", buffer_in.get(), "value", flag);
+  settings->bind("latency-in", latency_in.get(), "value", flag);
+
+  g_settings_bind_with_mapping(settings->gobj(), "blocksize-in",
+                               blocksize_in->gobj(), "active",
+                               G_SETTINGS_BIND_DEFAULT, blocksize_enum_to_int,
+                               int_to_blocksize_enum, nullptr, nullptr);
+
+  g_settings_bind_with_mapping(settings->gobj(), "blocksize-out",
+                               blocksize_out->gobj(), "active",
+                               G_SETTINGS_BIND_DEFAULT, blocksize_enum_to_int,
+                               int_to_blocksize_enum, nullptr, nullptr);
 }
 
 PulseSettingsUi::~PulseSettingsUi() {

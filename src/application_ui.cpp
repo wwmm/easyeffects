@@ -94,8 +94,10 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   builder->get_widget("add_preset", add_preset);
   builder->get_widget("import_preset", import_preset);
   builder->get_widget("calibration_button", calibration_button);
+
   builder->get_widget("blocksize_in", blocksize_in);
   builder->get_widget("blocksize_out", blocksize_out);
+
   builder->get_widget("headerbar", headerbar);
   builder->get_widget("help_button", help_button);
   builder->get_widget("headerbar_icon1", headerbar_icon1);
@@ -271,6 +273,17 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   stack_menu_settings->add(*spectrum_settings_ui, "settings_spectrum",
                            _("Spectrum"));
+
+  // Pulseaudio settings interface
+
+  auto b_pulse_settings = Gtk::Builder::create_from_resource(
+      "/com/github/wwmm/pulseeffects/ui/pulse_settings.glade");
+
+  b_pulse_settings->get_widget_derived("widgets_grid", pulse_settings_ui,
+                                       settings, app);
+
+  stack_menu_settings->add(*pulse_settings_ui, "settings_pulse",
+                           _("Pulseaudio"));
 
   // sink inputs interface
 
