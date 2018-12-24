@@ -537,6 +537,10 @@ void PipelineBase::init_spectrum(const uint& sampling_rate) {
   spline_df = spectrum_freqs[1] - spectrum_freqs[0];
 }
 
+void PipelineBase::update_spectrum_interval() {
+  g_object_set(spectrum, "interval", spectrum_interval, nullptr);
+}
+
 void PipelineBase::enable_spectrum() {
   auto srcpad = gst_element_get_static_pad(spectrum_identity_in, "src");
 

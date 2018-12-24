@@ -35,6 +35,7 @@ class PipelineBase {
   uint min_spectrum_freq = 20;     // Hz
   uint max_spectrum_freq = 20000;  // Hz
   int spectrum_threshold = -120;   // dB
+  guint64 spectrum_interval = 100000000; // ns
   uint spectrum_nbands = 1600, spectrum_nfreqs;
   float spline_f0, spline_df;
   std::vector<float> spectrum_freqs, spectrum_x_axis;
@@ -50,6 +51,7 @@ class PipelineBase {
   void update_pipeline_state();
   void get_latency();
   void init_spectrum(const uint& sampling_rate);
+  void update_spectrum_interval();
 
   sigc::signal<void, std::vector<float>> new_spectrum;
   sigc::signal<void, int> new_latency;
