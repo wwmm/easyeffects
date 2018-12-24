@@ -1,23 +1,23 @@
-#ifndef SPECTRUM_UI_HPP
-#define SPECTRUM_UI_HPP
+#ifndef SPECTRUM_SETTINGS_UI_HPP
+#define SPECTRUM_SETTINGS_UI_HPP
 
+#include <giomm/settings.h>
+#include <gtkmm/adjustment.h>
+#include <gtkmm/box.h>
 #include <gtkmm/builder.h>
-#include <gtkmm/drawingarea.h>
-#include <gtkmm/grid.h>
-#include <gtkmm/switch.h>
-#include "application.hpp"
+#include <gtkmm/colorbutton.h>
 
-class SpectrumUi : public Gtk::Grid {
+class SpectrumSettingsUi : public Gtk::Grid {
  public:
-  SpectrumUi(BaseObjectType* cobject,
-             const Glib::RefPtr<Gtk::Builder>& builder,
-             const Glib::RefPtr<Gio::Settings>& refSettings,
-             Application* application);
+  SpectrumSettingsUi(BaseObjectType* cobject,
+                     const Glib::RefPtr<Gtk::Builder>& builder,
+                     const Glib::RefPtr<Gio::Settings>& refSettings,
+                     Application* application);
 
-  virtual ~SpectrumUi();
+  virtual ~SpectrumSettingsUi();
 
  private:
-  std::string log_tag = "spectrum_ui: ";
+  std::string log_tag = "spectrum_settings_ui: ";
 
   Glib::RefPtr<Gio::Settings> settings;
 

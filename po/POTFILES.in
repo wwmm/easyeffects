@@ -1,4 +1,6 @@
 data/ui/application.glade
+data/ui/spectrum.glade
+data/ui/spectrum_settings.glade
 data/ui/about.glade.in
 data/ui/effects_base.glade
 data/ui/app_info.glade
