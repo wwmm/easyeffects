@@ -8,22 +8,9 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject,
     : Gtk::Grid(cobject), settings(refSettings), app(application) {
   // loading glade widgets
 
-  builder->get_widget("show_spectrum", show_spectrum);
-  builder->get_widget("spectrum_fill", spectrum_fill);
-  builder->get_widget("spectrum_box", spectrum_box);
   builder->get_widget("spectrum", spectrum);
-  builder->get_widget("spectrum_color_button", spectrum_color_button);
-
-  get_object(builder, "spectrum_n_points", spectrum_n_points);
-  get_object(builder, "spectrum_height", spectrum_height);
-  get_object(builder, "spectrum_scale", spectrum_scale);
-  get_object(builder, "spectrum_exponent", spectrum_exponent);
-  get_object(builder, "spectrum_sampling_freq", spectrum_sampling_freq);
 
   // signals connection
-
-  show_spectrum->signal_state_set().connect(
-      sigc::mem_fun(*this, &SpectrumUi::on_show_spectrum), false);
 
   spectrum->signal_draw().connect(
       sigc::mem_fun(*this, &SpectrumUi::on_spectrum_draw));
@@ -37,43 +24,23 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject,
   connections.push_back(
       settings->signal_changed("spectrum-color").connect([&](auto key) {
         Glib::Variant<std::vector<double>> v;
+
         settings->get_value("spectrum-color", v);
+
         auto rgba = v.get();
+
         spectrum_color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
-        spectrum_color_button->set_rgba(spectrum_color);
       }));
 
-  spectrum_color_button->signal_color_set().connect([=]() {
-    spectrum_color = spectrum_color_button->get_rgba();
-    auto v = Glib::Variant<std::vector<double>>::create(std::vector<double>{
-        spectrum_color.get_red(), spectrum_color.get_green(),
-        spectrum_color.get_blue(), spectrum_color.get_alpha()});
-    settings->set_value("spectrum-color", v);
+  settings->signal_changed("spectrum-height").connect([&](auto key) {
+    auto v = settings->get_int("spectrum-height");
+
+    spectrum->set_size_request(-1, v);
   });
 
-  use_custom_color->signal_state_set().connect(
-      sigc::mem_fun(*this, &SpectrumUi::on_use_custom_color), false);
-
-  spectrum_height->signal_value_changed().connect(
-      [=]() { spectrum->set_size_request(-1, spectrum_height->get_value()); });
-
-  spectrum_sampling_freq->signal_value_changed().connect(
-      sigc::mem_fun(*this, &SpectrumUi::on_spectrum_sampling_freq_set), false);
-
-  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
   auto flag_get = Gio::SettingsBindFlags::SETTINGS_BIND_GET;
 
-  settings->bind("show-spectrum", show_spectrum, "active", flag);
-  settings->bind("show-spectrum", spectrum_box, "visible", flag_get);
-  settings->bind("spectrum-fill", spectrum_fill, "active", flag);
-  settings->bind("spectrum-n-points", spectrum_n_points.get(), "value", flag);
-  settings->bind("spectrum-height", spectrum_height.get(), "value", flag);
-  settings->bind("spectrum-scale", spectrum_scale.get(), "value", flag);
-  settings->bind("spectrum-exponent", spectrum_exponent.get(), "value", flag);
-  settings->bind("spectrum-sampling-freq", spectrum_sampling_freq.get(),
-                 "value", flag);
-  settings->bind("use-custom-color", use_custom_color, "active", flag);
-  settings->bind("use-custom-color", spectrum_color_button, "sensitive", flag);
+  settings->bind("show-spectrum", this, "visible", flag_get);
 }
 
 SpectrumUi::~SpectrumUi() {
@@ -88,34 +55,6 @@ void SpectrumUi::clear_spectrum() {
   spectrum_mag.resize(0);
 
   spectrum->queue_draw();
-}
-
-bool SpectrumUi::on_show_spectrum(bool state) {
-  if (state) {
-    app->sie->enable_spectrum();
-    app->soe->enable_spectrum();
-  } else {
-    app->sie->disable_spectrum();
-    app->soe->disable_spectrum();
-  }
-
-  return false;
-}
-
-bool SpectrumUi::on_use_custom_color(bool state) {
-  if (state) {
-    Glib::Variant<std::vector<double>> v;
-
-    settings->get_value("spectrum-color", v);
-
-    auto rgba = v.get();
-
-    spectrum_color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
-
-    spectrum_color_button->set_rgba(spectrum_color);
-  }
-
-  return false;
 }
 
 void SpectrumUi::on_new_spectrum(const std::vector<float>& magnitudes) {
@@ -135,8 +74,8 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
     auto height = allocation.get_height();
     auto n_bars = spectrum_mag.size();
     auto x = util::linspace(0, width, n_bars);
-    double scale = spectrum_scale.get()->get_value();
-    double exponent = spectrum_exponent.get()->get_value();
+    double scale = settings->get_double("spectrum-scale");
+    double exponent = settings->get_double("spectrum-exponent");
 
     for (uint n = 0; n < n_bars; n++) {
       auto bar_height =
@@ -161,7 +100,7 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
 
     ctx->set_line_width(1.1);
 
-    if (spectrum_fill->get_active())
+    if (settings->get_boolean("spectrum-fill"))
       ctx->fill();
     else
       ctx->stroke();
@@ -190,11 +129,6 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
   }
 
   return false;
-}
-
-void SpectrumUi::on_spectrum_sampling_freq_set() {
-  app->sie->update_spectrum_interval(spectrum_sampling_freq->get_value());
-  app->soe->update_spectrum_interval(spectrum_sampling_freq->get_value());
 }
 
 bool SpectrumUi::on_spectrum_enter_notify_event(GdkEventCrossing* event) {

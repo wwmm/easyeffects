@@ -3,9 +3,11 @@
 
 #include <giomm/settings.h>
 #include <gtkmm/adjustment.h>
-#include <gtkmm/box.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/colorbutton.h>
+#include <gtkmm/grid.h>
+#include <gtkmm/switch.h>
+#include "application.hpp"
 
 class SpectrumSettingsUi : public Gtk::Grid {
  public:
@@ -23,11 +25,8 @@ class SpectrumSettingsUi : public Gtk::Grid {
 
   Application* app;
 
-  Gtk::Box* spectrum_box;
-  Gtk::DrawingArea* spectrum;
   Gtk::Switch *show_spectrum, *use_custom_color, *spectrum_fill;
   Gtk::ColorButton* spectrum_color_button;
-  Gdk::RGBA spectrum_color;
 
   Glib::RefPtr<Gtk::Adjustment> spectrum_n_points, spectrum_height,
       spectrum_scale, spectrum_exponent, spectrum_sampling_freq;
