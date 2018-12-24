@@ -23,6 +23,7 @@
 #include "calibration_ui.hpp"
 #include "sink_input_effects_ui.hpp"
 #include "source_output_effects_ui.hpp"
+#include "spectrum_ui.hpp"
 
 class ApplicationUi : public Gtk::ApplicationWindow {
  public:
