@@ -41,15 +41,11 @@ long long RealtimeKit::get_int_property(const char* propname) {
 
   dbus_error_init(&error);
 
-  if (!(m = dbus_message_new_method_call(RTKIT_SERVICE_NAME, RTKIT_OBJECT_PATH,
-                                         "org.freedesktop.DBus.Properties",
-                                         "Get"))) {
-  }
+  m = dbus_message_new_method_call(RTKIT_SERVICE_NAME, RTKIT_OBJECT_PATH,
+                                   "org.freedesktop.DBus.Properties", "Get");
 
-  if (!dbus_message_append_args(m, DBUS_TYPE_STRING, &interfacestr,
-                                DBUS_TYPE_STRING, &propname,
-                                DBUS_TYPE_INVALID)) {
-  }
+  dbus_message_append_args(m, DBUS_TYPE_STRING, &interfacestr, DBUS_TYPE_STRING,
+                           &propname, DBUS_TYPE_INVALID);
 
   if (!(r = dbus_connection_send_with_reply_and_block(bus, m, -1, &error))) {
     util::warning(log_tag + error.name + " : " + error.message);
@@ -102,14 +98,12 @@ void RealtimeKit::make_realtime(const std::string& source_name,
   u64 = (dbus_uint64_t)thread;
   u32 = (dbus_uint32_t)priority;
 
-  if (!(m = dbus_message_new_method_call(RTKIT_SERVICE_NAME, RTKIT_OBJECT_PATH,
-                                         "org.freedesktop.RealtimeKit1",
-                                         "MakeThreadRealtime"))) {
-  }
+  m = dbus_message_new_method_call(RTKIT_SERVICE_NAME, RTKIT_OBJECT_PATH,
+                                   "org.freedesktop.RealtimeKit1",
+                                   "MakeThreadRealtime");
 
-  if (!dbus_message_append_args(m, DBUS_TYPE_UINT64, &u64, DBUS_TYPE_UINT32,
-                                &u32, DBUS_TYPE_INVALID)) {
-  }
+  dbus_message_append_args(m, DBUS_TYPE_UINT64, &u64, DBUS_TYPE_UINT32, &u32,
+                           DBUS_TYPE_INVALID);
 
   dbus_error_init(&error);
 
@@ -144,14 +138,12 @@ void RealtimeKit::make_high_priority(const std::string& source_name,
   u64 = (dbus_uint64_t)thread;
   u32 = (dbus_int32_t)nice_value;
 
-  if (!(m = dbus_message_new_method_call(RTKIT_SERVICE_NAME, RTKIT_OBJECT_PATH,
-                                         "org.freedesktop.RealtimeKit1",
-                                         "MakeThreadHighPriority"))) {
-  }
+  m = dbus_message_new_method_call(RTKIT_SERVICE_NAME, RTKIT_OBJECT_PATH,
+                                   "org.freedesktop.RealtimeKit1",
+                                   "MakeThreadHighPriority");
 
-  if (!dbus_message_append_args(m, DBUS_TYPE_UINT64, &u64, DBUS_TYPE_INT32,
-                                &u32, DBUS_TYPE_INVALID)) {
-  }
+  dbus_message_append_args(m, DBUS_TYPE_UINT64, &u64, DBUS_TYPE_INT32, &u32,
+                           DBUS_TYPE_INVALID);
 
   dbus_error_init(&error);
 
