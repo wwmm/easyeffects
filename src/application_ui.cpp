@@ -71,7 +71,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   Gtk::IconTheme::get_default()->add_resource_path(
       "/com/github/wwmm/pulseeffects/icons");
 
-  /*loading glade widgets*/
+  // loading glade widgets
 
   builder->get_widget("theme_switch", theme_switch);
   builder->get_widget("enable_autostart", enable_autostart);
@@ -81,10 +81,9 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   builder->get_widget("input_device", input_device);
   builder->get_widget("output_device", output_device);
   builder->get_widget("reset_settings", reset_settings);
-  builder->get_widget("show_spectrum", show_spectrum);
-  builder->get_widget("spectrum_fill", spectrum_fill);
-  builder->get_widget("spectrum_box", spectrum_box);
-  builder->get_widget("spectrum", spectrum);
+  builder->get_widget("placeholder_spectrum", placeholder_spectrum);
+  builder->get_widget("placeholder_spectrum_settings",
+                      placeholder_spectrum_settings);
   builder->get_widget("stack", stack);
   builder->get_widget("presets_listbox", presets_listbox);
   builder->get_widget("presets_menu_button", presets_menu_button);
@@ -93,8 +92,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   builder->get_widget("preset_name", preset_name);
   builder->get_widget("add_preset", add_preset);
   builder->get_widget("import_preset", import_preset);
-  builder->get_widget("use_custom_color", use_custom_color);
-  builder->get_widget("spectrum_color_button", spectrum_color_button);
   builder->get_widget("calibration_button", calibration_button);
   builder->get_widget("blocksize_in", blocksize_in);
   builder->get_widget("blocksize_out", blocksize_out);
@@ -121,60 +118,14 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   get_object(builder, "latency_out", latency_out);
   get_object(builder, "sink_list", sink_list);
   get_object(builder, "source_list", source_list);
-  get_object(builder, "spectrum_n_points", spectrum_n_points);
-  get_object(builder, "spectrum_height", spectrum_height);
-  get_object(builder, "spectrum_scale", spectrum_scale);
-  get_object(builder, "spectrum_exponent", spectrum_exponent);
-  get_object(builder, "spectrum_sampling_freq", spectrum_sampling_freq);
 
-  /*signals connection*/
+  // signals connection
 
   enable_autostart->signal_state_set().connect(
       sigc::mem_fun(*this, &ApplicationUi::on_enable_autostart), false);
 
   reset_settings->signal_clicked().connect(
       sigc::mem_fun(*this, &ApplicationUi::on_reset_settings));
-
-  // spectrum
-
-  show_spectrum->signal_state_set().connect(
-      sigc::mem_fun(*this, &ApplicationUi::on_show_spectrum), false);
-
-  spectrum->signal_draw().connect(
-      sigc::mem_fun(*this, &ApplicationUi::on_spectrum_draw));
-  spectrum->signal_enter_notify_event().connect(
-      sigc::mem_fun(*this, &ApplicationUi::on_spectrum_enter_notify_event));
-  spectrum->signal_leave_notify_event().connect(
-      sigc::mem_fun(*this, &ApplicationUi::on_spectrum_leave_notify_event));
-  spectrum->signal_motion_notify_event().connect(
-      sigc::mem_fun(*this, &ApplicationUi::on_spectrum_motion_notify_event));
-
-  connections.push_back(
-      settings->signal_changed("spectrum-color").connect([&](auto key) {
-        Glib::Variant<std::vector<double>> v;
-        settings->get_value("spectrum-color", v);
-        auto rgba = v.get();
-        spectrum_color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
-        spectrum_color_button->set_rgba(spectrum_color);
-      }));
-
-  spectrum_color_button->signal_color_set().connect([=]() {
-    spectrum_color = spectrum_color_button->get_rgba();
-    auto v = Glib::Variant<std::vector<double>>::create(std::vector<double>{
-        spectrum_color.get_red(), spectrum_color.get_green(),
-        spectrum_color.get_blue(), spectrum_color.get_alpha()});
-    settings->set_value("spectrum-color", v);
-  });
-
-  use_custom_color->signal_state_set().connect(
-      sigc::mem_fun(*this, &ApplicationUi::on_use_custom_color), false);
-
-  spectrum_height->signal_value_changed().connect(
-      [=]() { spectrum->set_size_request(-1, spectrum_height->get_value()); });
-
-  spectrum_sampling_freq->signal_value_changed().connect(
-      sigc::mem_fun(*this, &ApplicationUi::on_spectrum_sampling_freq_set),
-      false);
 
   // pulseaudio device selection
 
@@ -300,14 +251,26 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   about_button->signal_clicked().connect(
       [=]() { app->activate_action("about"); });
 
-  /*spectrum interface*/
+  // spectrum interface
 
-  // auto b_spectrum = Gtk::Builder::create_from_resource(
-  // "/com/github/wwmm/pulseeffects/ui/spectrum.glade");
+  auto b_spectrum = Gtk::Builder::create_from_resource(
+      "/com/github/wwmm/pulseeffects/ui/spectrum.glade");
 
-  // b_spectrum->get_widget_derived("spectrum_box", spectrum_ui, settings, app);
+  b_spectrum->get_widget_derived("widgets_grid", spectrum_ui, settings, app);
 
-  /*sink inputs interface*/
+  placeholder_spectrum->add(*spectrum_ui);
+
+  // spectrum settings interface
+
+  auto b_spectrum_settings = Gtk::Builder::create_from_resource(
+      "/com/github/wwmm/pulseeffects/ui/spectrum_settings.glade");
+
+  b_spectrum_settings->get_widget_derived("widgets_grid", spectrum_settings_ui,
+                                          settings, app);
+
+  placeholder_spectrum_settings->add(*spectrum_settings_ui);
+
+  // sink inputs interface
 
   auto b_sie_ui = Gtk::Builder::create_from_resource(
       "/com/github/wwmm/pulseeffects/ui/effects_base.glade");
@@ -340,7 +303,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     app->sie->get_latency();
   }
 
-  /*source outputs interface*/
+  // source outputs interface
 
   auto b_soe_ui = Gtk::Builder::create_from_resource(
       "/com/github/wwmm/pulseeffects/ui/effects_base.glade");
@@ -377,16 +340,15 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   // temporary spectrum connection. it changes with the selected stack child
 
   spectrum_connection = app->sie->new_spectrum.connect(
-      sigc::mem_fun(*this, &ApplicationUi::on_new_spectrum));
+      sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum));
 
   // updating headerbar info
 
   update_headerbar_subtitle(0);
 
-  /*binding glade widgets to gsettings keys*/
+  // binding glade widgets to gsettings keys
 
   auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
-  auto flag_get = Gio::SettingsBindFlags::SETTINGS_BIND_GET;
   auto flag_invert_boolean =
       Gio::SettingsBindFlags::SETTINGS_BIND_INVERT_BOOLEAN;
 
@@ -413,18 +375,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   settings->bind("buffer-in", buffer_in.get(), "value", flag);
   settings->bind("latency-in", latency_in.get(), "value", flag);
 
-  settings->bind("show-spectrum", show_spectrum, "active", flag);
-  settings->bind("show-spectrum", spectrum_box, "visible", flag_get);
-  settings->bind("spectrum-fill", spectrum_fill, "active", flag);
-  settings->bind("spectrum-n-points", spectrum_n_points.get(), "value", flag);
-  settings->bind("spectrum-height", spectrum_height.get(), "value", flag);
-  settings->bind("spectrum-scale", spectrum_scale.get(), "value", flag);
-  settings->bind("spectrum-exponent", spectrum_exponent.get(), "value", flag);
-  settings->bind("spectrum-sampling-freq", spectrum_sampling_freq.get(),
-                 "value", flag);
-  settings->bind("use-custom-color", use_custom_color, "active", flag);
-  settings->bind("use-custom-color", spectrum_color_button, "sensitive", flag);
-
   settings->bind("last-used-preset", presets_menu_label, "label", flag);
 
   g_settings_bind_with_mapping(settings->gobj(), "blocksize-in",
@@ -441,9 +391,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 }
 
 ApplicationUi::~ApplicationUi() {
-  app->sie->disable_spectrum();
-  app->soe->disable_spectrum();
-
   for (auto c : connections) {
     c.disconnect();
   }
@@ -493,12 +440,6 @@ void ApplicationUi::init_autostart_switch() {
   }
 }
 
-void ApplicationUi::clear_spectrum() {
-  spectrum_mag.resize(0);
-
-  spectrum->queue_draw();
-}
-
 bool ApplicationUi::on_enable_autostart(bool state) {
   boost::filesystem::path autostart_dir{Glib::get_user_config_dir() +
                                         "/autostart"};
@@ -540,144 +481,6 @@ bool ApplicationUi::on_enable_autostart(bool state) {
 
 void ApplicationUi::on_reset_settings() {
   settings->reset("");
-}
-
-bool ApplicationUi::on_show_spectrum(bool state) {
-  if (state) {
-    app->sie->enable_spectrum();
-    app->soe->enable_spectrum();
-  } else {
-    app->sie->disable_spectrum();
-    app->soe->disable_spectrum();
-  }
-
-  return false;
-}
-
-bool ApplicationUi::on_use_custom_color(bool state) {
-  if (state) {
-    Glib::Variant<std::vector<double>> v;
-
-    settings->get_value("spectrum-color", v);
-
-    auto rgba = v.get();
-
-    spectrum_color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
-
-    spectrum_color_button->set_rgba(spectrum_color);
-  }
-
-  return false;
-}
-
-void ApplicationUi::on_new_spectrum(const std::vector<float>& magnitudes) {
-  spectrum_mag = magnitudes;
-
-  spectrum->queue_draw();
-}
-
-bool ApplicationUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
-  ctx->paint();
-
-  auto n_bars = spectrum_mag.size();
-
-  if (n_bars > 0) {
-    auto allocation = spectrum->get_allocation();
-    auto width = allocation.get_width();
-    auto height = allocation.get_height();
-    auto n_bars = spectrum_mag.size();
-    auto x = util::linspace(0, width, n_bars);
-    double scale = spectrum_scale.get()->get_value();
-    double exponent = spectrum_exponent.get()->get_value();
-
-    for (uint n = 0; n < n_bars; n++) {
-      auto bar_height =
-          height * std::min(1., std::pow(scale * spectrum_mag[n], exponent));
-
-      ctx->rectangle(x[n], height - bar_height, width / n_bars, bar_height);
-    }
-
-    if (settings->get_boolean("use-custom-color")) {
-      ctx->set_source_rgba(spectrum_color.get_red(), spectrum_color.get_green(),
-                           spectrum_color.get_blue(),
-                           spectrum_color.get_alpha());
-    } else {
-      auto color = Gdk::RGBA();
-      auto style_ctx = spectrum->get_style_context();
-
-      style_ctx->lookup_color("theme_selected_bg_color", color);
-
-      ctx->set_source_rgba(color.get_red(), color.get_green(), color.get_blue(),
-                           1.0);
-    }
-
-    ctx->set_line_width(1.1);
-
-    if (spectrum_fill->get_active())
-      ctx->fill();
-    else
-      ctx->stroke();
-
-    if (mouse_inside) {
-      std::ostringstream msg;
-
-      msg.precision(0);
-      msg << std::fixed << mouse_freq << " Hz, ";
-      msg << std::fixed << mouse_intensity << " dB";
-
-      Pango::FontDescription font;
-      font.set_family("Monospace");
-      font.set_weight(Pango::WEIGHT_BOLD);
-
-      int text_width;
-      int text_height;
-      auto layout = create_pango_layout(msg.str());
-      layout->set_font_description(font);
-      layout->get_pixel_size(text_width, text_height);
-
-      ctx->move_to(width - text_width, 0);
-
-      layout->show_in_cairo_context(ctx);
-    }
-  }
-
-  return false;
-}
-
-void ApplicationUi::on_spectrum_sampling_freq_set() {
-  app->sie->update_spectrum_interval(spectrum_sampling_freq->get_value());
-  app->soe->update_spectrum_interval(spectrum_sampling_freq->get_value());
-}
-
-bool ApplicationUi::on_spectrum_enter_notify_event(GdkEventCrossing* event) {
-  mouse_inside = true;
-  return false;
-}
-
-bool ApplicationUi::on_spectrum_leave_notify_event(GdkEventCrossing* event) {
-  mouse_inside = false;
-  return false;
-}
-
-bool ApplicationUi::on_spectrum_motion_notify_event(GdkEventMotion* event) {
-  auto allocation = spectrum->get_allocation();
-
-  auto width = allocation.get_width();
-  auto height = allocation.get_height();
-
-  // frequency axis is logarithmic
-  // 20 Hz = 10^(1.3), 20000 Hz = 10^(4.3)
-
-  mouse_freq = pow(10, 1.3 + event->x * 3.0 / width);
-
-  // intensity scale is in decibel
-  // minimum intensity is -120 dB and maximum is 0 dB
-
-  mouse_intensity = -event->y * 120 / height;
-
-  spectrum->queue_draw();
-
-  return false;
 }
 
 void ApplicationUi::update_headerbar_subtitle(const int& index) {
@@ -734,7 +537,7 @@ void ApplicationUi::on_stack_visible_child_changed() {
     spectrum_connection.disconnect();
 
     spectrum_connection = app->sie->new_spectrum.connect(
-        sigc::mem_fun(*this, &ApplicationUi::on_new_spectrum));
+        sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum));
 
     update_headerbar_subtitle(0);
 
@@ -742,12 +545,12 @@ void ApplicationUi::on_stack_visible_child_changed() {
     spectrum_connection.disconnect();
 
     spectrum_connection = app->soe->new_spectrum.connect(
-        sigc::mem_fun(*this, &ApplicationUi::on_new_spectrum));
+        sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum));
 
     update_headerbar_subtitle(1);
   }
 
-  clear_spectrum();
+  spectrum_ui->clear_spectrum();
 }
 
 void ApplicationUi::on_sink_added(std::shared_ptr<mySinkInfo> info) {

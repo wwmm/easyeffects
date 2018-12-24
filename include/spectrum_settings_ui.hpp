@@ -44,23 +44,11 @@ class SpectrumSettingsUi : public Gtk::Grid {
         Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
   }
 
-  void clear_spectrum();
-
   bool on_show_spectrum(bool state);
 
   void on_spectrum_sampling_freq_set();
 
   bool on_use_custom_color(bool state);
-
-  void on_new_spectrum(const std::vector<float>& magnitudes);
-
-  bool on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx);
-
-  bool on_spectrum_enter_notify_event(GdkEventCrossing* event);
-
-  bool on_spectrum_leave_notify_event(GdkEventCrossing* event);
-
-  bool on_spectrum_motion_notify_event(GdkEventMotion* event);
 };
 
 #endif

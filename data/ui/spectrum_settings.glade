@@ -2,6 +2,34 @@
 <!-- Generated with glade 3.22.1 -->
 <interface domain="pulseeffects">
   <requires lib="gtk+" version="3.20"/>
+  <object class="GtkAdjustment" id="spectrum_exponent">
+    <property name="upper">10</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="spectrum_height">
+    <property name="lower">1</property>
+    <property name="upper">1000</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="spectrum_n_points">
+    <property name="lower">2</property>
+    <property name="upper">600</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="spectrum_sampling_freq">
+    <property name="lower">1</property>
+    <property name="upper">200</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="spectrum_scale">
+    <property name="upper">10</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">10</property>
+  </object>
   <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -75,7 +103,6 @@
             <property name="width_chars">8</property>
             <property name="text" translatable="yes">2</property>
             <property name="input_purpose">number</property>
-            <property name="adjustment">spectrum_n_points</property>
             <property name="numeric">True</property>
             <property name="update_policy">if-valid</property>
             <property name="value">2</property>
@@ -107,7 +134,6 @@
             <property name="width_chars">8</property>
             <property name="text" translatable="yes">100</property>
             <property name="input_purpose">number</property>
-            <property name="adjustment">spectrum_height</property>
             <property name="numeric">True</property>
             <property name="wrap">True</property>
             <property name="update_policy">if-valid</property>
@@ -165,7 +191,6 @@
             <property name="width_chars">8</property>
             <property name="text" translatable="yes">1,00</property>
             <property name="input_purpose">number</property>
-            <property name="adjustment">spectrum_scale</property>
             <property name="digits">2</property>
             <property name="numeric">True</property>
             <property name="update_policy">if-valid</property>
@@ -198,7 +223,6 @@
             <property name="width_chars">8</property>
             <property name="text" translatable="yes">1,00</property>
             <property name="input_purpose">number</property>
-            <property name="adjustment">spectrum_exponent</property>
             <property name="digits">2</property>
             <property name="numeric">True</property>
             <property name="update_policy">if-valid</property>
@@ -283,7 +307,6 @@
             <property name="width_chars">8</property>
             <property name="text" translatable="yes">15</property>
             <property name="secondary_icon_name">pulseeffects-hz-symbolic</property>
-            <property name="adjustment">spectrum_sampling_freq</property>
             <property name="numeric">True</property>
             <property name="value">15</property>
           </object>

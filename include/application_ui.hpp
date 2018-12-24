@@ -4,10 +4,8 @@
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/button.h>
-#include <gtkmm/colorbutton.h>
 #include <gtkmm/combobox.h>
 #include <gtkmm/comboboxtext.h>
-#include <gtkmm/drawingarea.h>
 #include <gtkmm/entry.h>
 #include <gtkmm/headerbar.h>
 #include <gtkmm/image.h>
@@ -23,6 +21,7 @@
 #include "calibration_ui.hpp"
 #include "sink_input_effects_ui.hpp"
 #include "source_output_effects_ui.hpp"
+#include "spectrum_settings_ui.hpp"
 #include "spectrum_ui.hpp"
 
 class ApplicationUi : public Gtk::ApplicationWindow {
@@ -42,12 +41,10 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   Glib::RefPtr<Gio::Settings> settings;
 
-  Gtk::Switch *enable_autostart, *enable_all_apps, *theme_switch,
-      *show_spectrum, *use_custom_color, *spectrum_fill;
+  Gtk::Switch *enable_autostart, *enable_all_apps, *theme_switch;
   Gtk::ToggleButton *use_default_sink, *use_default_source;
   Gtk::ComboBox *input_device, *output_device;
-  Gtk::DrawingArea* spectrum;
-  Gtk::Box* spectrum_box;
+  Gtk::Box *placeholder_spectrum, *placeholder_spectrum_settings;
   Gtk::Button *reset_settings, *add_preset, *import_preset, *calibration_button,
       *help_button, *add_blacklist_in, *add_blacklist_out, *about_button;
   Gtk::Stack* stack;
@@ -55,31 +52,24 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   Gtk::MenuButton* presets_menu_button;
   Gtk::Label *presets_menu_label, *headerbar_info;
   Gtk::Entry *preset_name, *blacklist_in_name, *blacklist_out_name;
-  Gtk::ColorButton* spectrum_color_button;
   Gtk::ScrolledWindow *presets_scrolled_window, *blacklist_in_scrolled_window,
       *blacklist_out_scrolled_window;
   Gtk::ComboBoxText *blocksize_in, *blocksize_out;
   Gtk::HeaderBar* headerbar;
   Gtk::Image *headerbar_icon1, *headerbar_icon2;
-  Gdk::RGBA spectrum_color;
 
-  Glib::RefPtr<Gtk::Adjustment> buffer_in, buffer_out, latency_in, latency_out,
-      spectrum_n_points, spectrum_height, spectrum_scale, spectrum_exponent,
-      spectrum_sampling_freq;
+  Glib::RefPtr<Gtk::Adjustment> buffer_in, buffer_out, latency_in, latency_out;
   Glib::RefPtr<Gtk::ListStore> sink_list, source_list;
 
   sigc::connection spectrum_connection;
   std::vector<sigc::connection> connections;
 
   SpectrumUi* spectrum_ui;
+  SpectrumSettingsUi* spectrum_settings_ui;
   SinkInputEffectsUi* sie_ui;
   SourceOutputEffectsUi* soe_ui;
 
   int sie_latency = 0, soe_latency = 0;
-
-  bool mouse_inside = false;
-  double mouse_intensity = 0, mouse_freq = 0;
-  std::vector<float> spectrum_mag;
 
   void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
                   const std::string& name,
@@ -101,8 +91,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   void init_autostart_switch();
 
-  void clear_spectrum();
-
   void populate_presets_listbox();
 
   void populate_blacklist_in_listbox();
@@ -112,22 +100,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   bool on_enable_autostart(bool state);
 
   void on_reset_settings();
-
-  bool on_show_spectrum(bool state);
-
-  void on_spectrum_sampling_freq_set();
-
-  bool on_use_custom_color(bool state);
-
-  void on_new_spectrum(const std::vector<float>& magnitudes);
-
-  bool on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx);
-
-  bool on_spectrum_enter_notify_event(GdkEventCrossing* event);
-
-  bool on_spectrum_leave_notify_event(GdkEventCrossing* event);
-
-  bool on_spectrum_motion_notify_event(GdkEventMotion* event);
 
   void on_stack_visible_child_changed();
 

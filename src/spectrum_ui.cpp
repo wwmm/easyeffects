@@ -44,6 +44,9 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject,
 }
 
 SpectrumUi::~SpectrumUi() {
+  app->sie->disable_spectrum();
+  app->soe->disable_spectrum();
+
   for (auto c : connections) {
     c.disconnect();
   }
