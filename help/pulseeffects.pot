@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-08-28 16:54-0300\n"
+"POT-Creation-Date: 2018-12-24 12:34-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1508,21 +1508,61 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/spectrum.page:37
-msgid "Use Custom Color"
+msgid "Scale"
 msgstr ""
 
 #. (itstool) path: item/p
 #: C/spectrum.page:39
-msgid "Use a user defined color or the GTK theme color."
+msgid "Bar height scaling factor."
 msgstr ""
 
 #. (itstool) path: title/em
 #: C/spectrum.page:45
-msgid "Spectrum Color"
+msgid "Exponent"
 msgstr ""
 
 #. (itstool) path: item/p
 #: C/spectrum.page:47
+msgid "Scaling factor exponent."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/spectrum.page:53
+msgid "Sampling"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/spectrum.page:55
+msgid "Spectrum update frequency."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/spectrum.page:61
+msgid "Fill"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/spectrum.page:63
+msgid "Draw filled bars."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/spectrum.page:69
+msgid "Use Custom Color"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/spectrum.page:71
+msgid "Use a user defined color or the GTK theme color."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/spectrum.page:77
+msgid "Spectrum Color"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/spectrum.page:79
 msgid "User defined color."
 msgstr ""
 

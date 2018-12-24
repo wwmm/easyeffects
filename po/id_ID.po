@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-25 13:09-0200\n"
+"POT-Creation-Date: 2018-12-24 12:12-0200\n"
 "PO-Revision-Date: 2018-11-19 14:31+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,127 +18,144 @@ msgstr ""
 "X-Generator: Poedit 2.0.6\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: data/ui/application.glade:60 data/ui/application.glade:1323
-#: data/ui/application.glade:1395
+#: data/ui/application.glade:60 data/ui/application.glade:1491
+#: data/ui/application.glade:1563
 msgid "Name"
 msgstr "Nama"
 
-#: data/ui/application.glade:73 data/ui/application.glade:1304
-#: data/ui/application.glade:1376
+#: data/ui/application.glade:73 data/ui/application.glade:1472
+#: data/ui/application.glade:1544
 msgid "Create Preset"
 msgstr "Buat Preset"
 
-#: data/ui/application.glade:91 src/application_ui.cpp:954
+#: data/ui/application.glade:91 src/application_ui.cpp:983
 msgid "Import Presets"
 msgstr "Muat Preset"
 
-#: data/ui/application.glade:200 src/calibration_ui.cpp:48
+#: data/ui/application.glade:219 src/calibration_ui.cpp:48
 #: src/calibration_ui.cpp:175
 msgid "Test Signals"
 msgstr "Uji Sinyal"
 
-#: data/ui/application.glade:222
+#: data/ui/application.glade:241
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
 #: data/com.github.wwmm.pulseeffects.desktop.in:3
 msgid "PulseEffects"
 msgstr "PulseEffects"
 
-#: data/ui/application.glade:294 data/ui/application.glade:703
+#: data/ui/application.glade:313 data/ui/application.glade:722
 msgid "Settings"
 msgstr "Setelan"
 
-#: data/ui/application.glade:316
+#: data/ui/application.glade:335
 msgid "Help"
 msgstr "Bantuan"
 
-#: data/ui/application.glade:339 data/ui/compressor.glade:205
+#: data/ui/application.glade:358 data/ui/compressor.glade:205
 #: data/ui/filter.glade:203 data/ui/equalizer.glade:280
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
-#: src/application_ui.cpp:959 src/application_ui.cpp:1034
+#: src/application_ui.cpp:988 src/application_ui.cpp:1063
 msgid "Presets"
 msgstr "Preset"
 
-#: data/ui/application.glade:628
+#: data/ui/application.glade:647
 #, fuzzy
 msgid "Start Service at Login"
 msgstr "Mulai Layanan Saat Login"
 
-#: data/ui/application.glade:653
+#: data/ui/application.glade:672
 msgid "Enable All Applications"
 msgstr "Terapkan Efek pada Semua Aplikasi"
 
-#: data/ui/application.glade:678
+#: data/ui/application.glade:697
 msgid "Use Dark Theme"
 msgstr "Gunakan Tema Gelap"
 
-#: data/ui/application.glade:712 data/ui/equalizer_band.glade:105
+#: data/ui/application.glade:731 data/ui/equalizer_band.glade:105
 #: data/ui/equalizer_band.glade:120
 msgid "Reset"
 msgstr "Atur Ulang"
 
-#: data/ui/application.glade:726
+#: data/ui/application.glade:745
 msgid "About"
 msgstr ""
 
-#: data/ui/application.glade:744
+#: data/ui/application.glade:763
 msgid "General"
 msgstr "Umum"
 
-#: data/ui/application.glade:762
+#: data/ui/application.glade:783
 msgid "Show"
 msgstr "Tampilkan"
 
-#: data/ui/application.glade:788
+#: data/ui/application.glade:827
 msgid "Points"
 msgstr "Titik"
 
-#: data/ui/application.glade:819
-msgid "Use Custom Color"
-msgstr "Gunakan Warna Kustom"
-
-#: data/ui/application.glade:844
-msgid "Spectrum Color"
-msgstr "Warna Spektrum"
-
-#: data/ui/application.glade:871
+#: data/ui/application.glade:858
 msgid "Height"
 msgstr "Tinggi"
 
-#: data/ui/application.glade:899 data/ui/convolver.glade:396
+#: data/ui/application.glade:889
+msgid "Use Custom Color"
+msgstr "Gunakan Warna Kustom"
+
+#: data/ui/application.glade:914
+msgid "Spectrum Color"
+msgstr "Warna Spektrum"
+
+#: data/ui/application.glade:942
+msgid "Fill"
+msgstr ""
+
+#: data/ui/application.glade:968
+msgid "Scale"
+msgstr ""
+
+#: data/ui/application.glade:1001
+msgid "Exponent"
+msgstr ""
+
+#: data/ui/application.glade:1034
+#, fuzzy
+msgid "Sampling"
+msgstr "Peningkat Sampling"
+
+#: data/ui/application.glade:1067 data/ui/convolver.glade:396
 msgid "Spectrum"
 msgstr "Spektrum"
 
-#: data/ui/application.glade:928 data/ui/application.glade:1077
+#: data/ui/application.glade:1096 data/ui/application.glade:1245
 msgid "Use Default"
 msgstr "Gunakan Aturan Bawaan"
 
-#: data/ui/application.glade:966 data/ui/application.glade:1114
+#: data/ui/application.glade:1134 data/ui/application.glade:1282
 #: data/ui/app_info.glade:156
 msgid "Buffer"
 msgstr "Ukuran Penyangga"
 
-#: data/ui/application.glade:999 data/ui/application.glade:1146
+#: data/ui/application.glade:1167 data/ui/application.glade:1314
 #: data/ui/app_info.glade:183
 msgid "Latency"
 msgstr "Besar Latensi"
 
-#: data/ui/application.glade:1032 data/ui/application.glade:1178
+#: data/ui/application.glade:1200 data/ui/application.glade:1346
 msgid "Block Size"
 msgstr "Ukuran Blok"
 
-#: data/ui/application.glade:1063 data/ui/application.glade:1334
+#: data/ui/application.glade:1231 data/ui/application.glade:1502
 msgid "Input Effects"
 msgstr "Efek Masukan"
 
-#: data/ui/application.glade:1209 data/ui/application.glade:1406
+#: data/ui/application.glade:1377 data/ui/application.glade:1574
 msgid "Output Effects"
 msgstr "Efek Luaran"
 
-#: data/ui/application.glade:1236
+#: data/ui/application.glade:1404
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
 
-#: data/ui/application.glade:1420
+#: data/ui/application.glade:1588
 msgid "Blacklist"
 msgstr "Daftar Blokir"
 
@@ -909,7 +926,7 @@ msgstr "Durasi"
 msgid "Samples"
 msgstr "Jumlah Sampel"
 
-#: data/ui/convolver.glade:324 src/convolver_ui.cpp:269
+#: data/ui/convolver.glade:324 src/convolver_ui.cpp:272
 msgid "Impulse Response"
 msgstr "Respons Impuls"
 
@@ -1189,7 +1206,7 @@ msgstr "limiter;compressor;reverberation;equalizer;autovolume;"
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:187
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:202
 #, fuzzy
 msgid "\"Presets\""
 msgstr "Preset"
@@ -1236,11 +1253,11 @@ msgstr "Ya"
 msgid "No"
 msgstr "Tidak"
 
-#: src/application_ui.cpp:955 src/convolver_ui.cpp:265
+#: src/application_ui.cpp:984 src/convolver_ui.cpp:268
 msgid "Open"
 msgstr "Buka"
 
-#: src/application_ui.cpp:955 src/convolver_ui.cpp:265
+#: src/application_ui.cpp:984 src/convolver_ui.cpp:268
 msgid "Cancel"
 msgstr "Batal"
 
@@ -1260,14 +1277,14 @@ msgstr "memutar"
 msgid "Calibration Microphone"
 msgstr "Kalibrasikan Mikrofon"
 
-#: src/convolver_ui.cpp:264
+#: src/convolver_ui.cpp:267
 msgid "Import Impulse File"
 msgstr "Muat Berkas Impuls"
 
-#: src/convolver_ui.cpp:307 src/convolver_ui.cpp:308 src/convolver_ui.cpp:310
+#: src/convolver_ui.cpp:310 src/convolver_ui.cpp:311 src/convolver_ui.cpp:313
 msgid "Failed"
 msgstr "Gagal"
 
-#: src/convolver_ui.cpp:312
+#: src/convolver_ui.cpp:315
 msgid "Could Not Load The Impulse File"
 msgstr "Tidak dapat Memuat Berkas Impuls"

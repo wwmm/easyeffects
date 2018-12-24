@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-08-28 16:54-0300\n"
+"POT-Creation-Date: 2018-12-24 12:34-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "MIME-Version: 1.0\n"
@@ -37,7 +37,9 @@ msgstr ""
 #: C/bassenhancer.page:16
 msgid "PulseEffects uses the bass enhancer developed by Calf Studio."
 msgstr ""
-"PulseEffects использует плагин бас-энхансера (генерирует высшие гармоники низких частот, благодаря чему повышается локализация низких частот и их «читаемость»), разработанный Calf Studio."
+"PulseEffects использует плагин бас-энхансера (генерирует высшие гармоники "
+"низких частот, благодаря чему повышается локализация низких частот и их "
+"«читаемость»), разработанный Calf Studio."
 
 #. (itstool) path: title/em
 #: C/bassenhancer.page:22 C/exciter.page:21 C/reverb.page:40
@@ -77,7 +79,8 @@ msgstr "Нижний предел частоты (кнопка)"
 #. (itstool) path: item/p
 #: C/bassenhancer.page:48
 msgid "Constrain the enhancement on the lower end."
-msgstr "Включение/выключение ограничения эффекта по нижнему пределу полосы частот."
+msgstr ""
+"Включение/выключение ограничения эффекта по нижнему пределу полосы частот."
 
 #. (itstool) path: title/em
 #: C/bassenhancer.page:54
@@ -87,7 +90,9 @@ msgstr "Нижний предел частоты (значение)"
 #. (itstool) path: item/p
 #: C/bassenhancer.page:56
 msgid "The frequency no harmonics are produced below."
-msgstr "Для частот ниже выставленной данным регулятором гармоники генерироваться не будут"
+msgstr ""
+"Для частот ниже выставленной данным регулятором гармоники генерироваться не "
+"будут"
 
 #. (itstool) path: title/em
 #: C/bassenhancer.page:62 C/exciter.page:61
@@ -128,7 +133,12 @@ msgstr "Компрессор"
 #. (itstool) path: page/p
 #: C/compressor.page:10
 msgid "A compressor is used to reduce the audio signal dynamic range."
-msgstr "Компрессор — это прибор, уменьшающий уровень сигнала на заданный пользователем коэффициент («Степень сжатия») при превышении сигналом уровня, заданного пользователем («Порог срабатывания»). Компрессор имеет возможность работы со среднеквадратичными (RMS) или пиковыми значениями сигнала (в зависимости от пользовательских настроек прибора)."
+msgstr ""
+"Компрессор — это прибор, уменьшающий уровень сигнала на заданный "
+"пользователем коэффициент («Степень сжатия») при превышении сигналом уровня, "
+"заданного пользователем («Порог срабатывания»). Компрессор имеет возможность "
+"работы со среднеквадратичными (RMS) или пиковыми значениями сигнала (в "
+"зависимости от пользовательских настроек прибора)."
 
 #. (itstool) path: page/p
 #: C/compressor.page:13
@@ -149,8 +159,8 @@ msgid ""
 "Amount of milliseconds the signal has to rise above the threshold before "
 "gain reduction starts."
 msgstr ""
-"Время (в миллисекундах), в течение которого «Компрессор» не уменьшает уровень сигнала после достижения сигналом уровня"
-"выше «Порога срабатывания»."
+"Время (в миллисекундах), в течение которого «Компрессор» не уменьшает "
+"уровень сигнала после достижения сигналом уровнявыше «Порога срабатывания»."
 
 #. (itstool) path: title/em
 #: C/compressor.page:28 C/gate.page:29 C/limiter.page:49
@@ -165,8 +175,9 @@ msgid ""
 "Amount of milliseconds the signal has to fall below the threshold before the "
 "reduction is decreased again."
 msgstr ""
-"Время (в миллисекундах), в течение которого «Компрессор» продолжает уменьшать уровень сигнала после достижения сигналом уровня"
-"ниже «Порога срабатывания»."
+"Время (в миллисекундах), в течение которого «Компрессор» продолжает "
+"уменьшать уровень сигнала после достижения сигналом уровняниже «Порога "
+"срабатывания»."
 
 #. (itstool) path: title/em
 #: C/compressor.page:37 C/deesser.page:26 C/gate.page:38 C/limiter.page:114
@@ -178,7 +189,9 @@ msgstr "Порог срабатывания"
 #: C/compressor.page:39 C/deesser.page:28 C/gate.page:40
 #: C/multibandcompressor.page:40 C/multibandgate.page:48 C/maximizer.page:23
 msgid "If a signal rises above this level it will affect the gain reduction."
-msgstr "Уровень сигнала, выше которого «Компрессор» уменьшает уровень сигнала на заданный пользователем коэффициент («Степень сжатия»)."
+msgstr ""
+"Уровень сигнала, выше которого «Компрессор» уменьшает уровень сигнала на "
+"заданный пользователем коэффициент («Степень сжатия»)."
 
 #. (itstool) path: title/em
 #: C/compressor.page:45 C/deesser.page:34 C/gate.page:46
@@ -268,7 +281,9 @@ msgstr "Допуск на срабатывание"
 #: C/deesser.page:20
 msgid ""
 "The reaction of the deesser. Higher values won't affect really short peaks."
-msgstr "Значение данного параметра позволяет пропускать без обработки короткие пики сигнала."
+msgstr ""
+"Значение данного параметра позволяет пропускать без обработки короткие пики "
+"сигнала."
 
 #. (itstool) path: title/em
 #: C/deesser.page:50
@@ -281,7 +296,8 @@ msgid ""
 "The split frequency. All signals above this frequency will affect the gain "
 "reduction (and in split mode they are affected by the reduction too)."
 msgstr ""
-"Уровень сигнала в полосе частот выше «Частоты раздела» при работе «Деэссера» будет уменьшен"
+"Уровень сигнала в полосе частот выше «Частоты раздела» при работе «Деэссера» "
+"будет уменьшен"
 
 #. (itstool) path: title/em
 #: C/deesser.page:59 C/autogain.page:78
@@ -294,8 +310,9 @@ msgid ""
 "It shifts the volume of the higher band. In wideband mode it affects the "
 "sidechain. In split mode it also affects the processed high frequencies."
 msgstr ""
-"В широкополосном режиме данный параметр влияет на работу «Боковой цепи/(Sidechain)»,"
-"в режиме разделения по частоте — на обрабатываемые высокие частоты."
+"В широкополосном режиме данный параметр влияет на работу «Боковой цепи/"
+"(Sidechain)»,в режиме разделения по частоте — на обрабатываемые высокие "
+"частоты."
 
 #. (itstool) path: title/em
 #: C/deesser.page:68
@@ -308,8 +325,8 @@ msgid ""
 "Center frequency of the bell filter. It allows a more precise selection of "
 "the sidechain signal."
 msgstr ""
-"Центр частоты фильтра типа «колокол». Позволяет произвести более точную настройку"
-"сигнала «Боковой цепи/(Sidechain)»"
+"Центр частоты фильтра типа «колокол». Позволяет произвести более точную "
+"настройкусигнала «Боковой цепи/(Sidechain)»"
 
 #. (itstool) path: title/em
 #: C/deesser.page:77
@@ -319,7 +336,9 @@ msgstr "Уровень"
 #. (itstool) path: item/p
 #: C/deesser.page:79
 msgid "Increase or decrease the frequencies around the center bell frequency."
-msgstr "Увеличение или уменьшение уровня частот вокруг центральной частоты фильтра типа «колокол»"
+msgstr ""
+"Увеличение или уменьшение уровня частот вокруг центральной частоты фильтра "
+"типа «колокол»"
 
 #. (itstool) path: title/em
 #: C/deesser.page:85
@@ -332,8 +351,10 @@ msgid ""
 "Set the quality of the bell. Higher values will affect a narrower frequency "
 "range. Lower values will affect a wider band."
 msgstr ""
-"Добротность фильтра типа «колокол». Более высокое значение добротности означает, что фильтр типа «колокол» влияет на более узкую полосу частот вокруг центральной частоты фильтра,"
-"более низкое значение добротности — на более широкую полосу частот вокруг центральной частоты фильтра."
+"Добротность фильтра типа «колокол». Более высокое значение добротности "
+"означает, что фильтр типа «колокол» влияет на более узкую полосу частот "
+"вокруг центральной частоты фильтра,более низкое значение добротности — на "
+"более широкую полосу частот вокруг центральной частоты фильтра."
 
 #. (itstool) path: item/p
 #: C/deesser.page:96
@@ -1600,21 +1621,61 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/spectrum.page:37
-msgid "Use Custom Color"
+msgid "Scale"
 msgstr ""
 
 #. (itstool) path: item/p
 #: C/spectrum.page:39
-msgid "Use a user defined color or the GTK theme color."
+msgid "Bar height scaling factor."
 msgstr ""
 
 #. (itstool) path: title/em
 #: C/spectrum.page:45
-msgid "Spectrum Color"
+msgid "Exponent"
 msgstr ""
 
 #. (itstool) path: item/p
 #: C/spectrum.page:47
+msgid "Scaling factor exponent."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/spectrum.page:53
+msgid "Sampling"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/spectrum.page:55
+msgid "Spectrum update frequency."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/spectrum.page:61
+msgid "Fill"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/spectrum.page:63
+msgid "Draw filled bars."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/spectrum.page:69
+msgid "Use Custom Color"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/spectrum.page:71
+msgid "Use a user defined color or the GTK theme color."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/spectrum.page:77
+msgid "Spectrum Color"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/spectrum.page:79
 msgid "User defined color."
 msgstr ""
 

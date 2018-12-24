@@ -838,7 +838,7 @@
                         <property name="halign">start</property>
                         <property name="valign">center</property>
                         <property name="margin_right">30</property>
-                        <property name="width_chars">10</property>
+                        <property name="width_chars">8</property>
                         <property name="input_purpose">number</property>
                         <property name="adjustment">spectrum_n_points</property>
                         <property name="numeric">True</property>
@@ -868,7 +868,7 @@
                         <property name="can_focus">True</property>
                         <property name="halign">start</property>
                         <property name="valign">center</property>
-                        <property name="width_chars">10</property>
+                        <property name="width_chars">8</property>
                         <property name="input_purpose">number</property>
                         <property name="adjustment">spectrum_height</property>
                         <property name="numeric">True</property>
@@ -878,58 +878,6 @@
                       <packing>
                         <property name="left_attach">1</property>
                         <property name="top_attach">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="halign">end</property>
-                        <property name="valign">center</property>
-                        <property name="label" translatable="yes">Use Custom Color</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkSwitch" id="use_custom_color">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="halign">end</property>
-                        <property name="valign">center</property>
-                        <property name="label" translatable="yes">Spectrum Color</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">3</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkColorButton" id="spectrum_color_button">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="use_alpha">True</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">3</property>
                       </packing>
                     </child>
                     <child>
@@ -968,8 +916,8 @@
                         <property name="label" translatable="yes">Scale</property>
                       </object>
                       <packing>
-                        <property name="left_attach">2</property>
-                        <property name="top_attach">1</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                     <child>
@@ -978,7 +926,7 @@
                         <property name="can_focus">True</property>
                         <property name="halign">start</property>
                         <property name="valign">center</property>
-                        <property name="width_chars">10</property>
+                        <property name="width_chars">8</property>
                         <property name="input_purpose">number</property>
                         <property name="adjustment">spectrum_scale</property>
                         <property name="digits">2</property>
@@ -987,8 +935,8 @@
                         <property name="value">1</property>
                       </object>
                       <packing>
-                        <property name="left_attach">3</property>
-                        <property name="top_attach">1</property>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                     <child>
@@ -1001,8 +949,8 @@
                         <property name="label" translatable="yes">Exponent</property>
                       </object>
                       <packing>
-                        <property name="left_attach">2</property>
-                        <property name="top_attach">2</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">3</property>
                       </packing>
                     </child>
                     <child>
@@ -1011,13 +959,65 @@
                         <property name="can_focus">True</property>
                         <property name="halign">start</property>
                         <property name="valign">center</property>
-                        <property name="width_chars">10</property>
+                        <property name="width_chars">8</property>
                         <property name="input_purpose">number</property>
                         <property name="adjustment">spectrum_exponent</property>
                         <property name="digits">2</property>
                         <property name="numeric">True</property>
                         <property name="update_policy">if-valid</property>
                         <property name="value">1</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">Use Custom Color</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">2</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSwitch" id="use_custom_color">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">3</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">Spectrum Color</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">2</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkColorButton" id="spectrum_color_button">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="use_alpha">True</property>
                       </object>
                       <packing>
                         <property name="left_attach">3</property>
@@ -1034,8 +1034,8 @@
                         <property name="label" translatable="yes">Sampling</property>
                       </object>
                       <packing>
-                        <property name="left_attach">2</property>
-                        <property name="top_attach">3</property>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">4</property>
                       </packing>
                     </child>
                     <child>
@@ -1044,15 +1044,27 @@
                         <property name="can_focus">True</property>
                         <property name="halign">start</property>
                         <property name="valign">center</property>
-                        <property name="width_chars">10</property>
+                        <property name="width_chars">8</property>
                         <property name="secondary_icon_name">pulseeffects-hz-symbolic</property>
                         <property name="adjustment">spectrum_sampling_freq</property>
                         <property name="numeric">True</property>
                       </object>
                       <packing>
-                        <property name="left_attach">3</property>
-                        <property name="top_attach">3</property>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">4</property>
                       </packing>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
                     </child>
                   </object>
                   <packing>

@@ -34,6 +34,38 @@
         </item>
         <item>
             <title>
+                <em style="strong" its:withinText="nested">Scale</em>
+            </title>
+            <p>
+                Bar height scaling factor.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Exponent</em>
+            </title>
+            <p>
+                Scaling factor exponent.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Sampling</em>
+            </title>
+            <p>
+                Spectrum update frequency.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Fill</em>
+            </title>
+            <p>
+                Draw filled bars.
+            </p>
+        </item>
+        <item>
+            <title>
                 <em style="strong" its:withinText="nested">Use Custom Color</em>
             </title>
             <p>

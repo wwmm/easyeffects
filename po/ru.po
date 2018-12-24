@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-25 13:09-0200\n"
+"POT-Creation-Date: 2018-12-24 12:12-0200\n"
 "PO-Revision-Date: 2018-07-18 22:14+0300\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -18,127 +18,144 @@ msgstr ""
 "X-Generator: Poedit 2.0.1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: data/ui/application.glade:60 data/ui/application.glade:1323
-#: data/ui/application.glade:1395
+#: data/ui/application.glade:60 data/ui/application.glade:1491
+#: data/ui/application.glade:1563
 msgid "Name"
 msgstr "Название"
 
-#: data/ui/application.glade:73 data/ui/application.glade:1304
-#: data/ui/application.glade:1376
+#: data/ui/application.glade:73 data/ui/application.glade:1472
+#: data/ui/application.glade:1544
 msgid "Create Preset"
 msgstr "Создать новый набор предустановок"
 
-#: data/ui/application.glade:91 src/application_ui.cpp:954
+#: data/ui/application.glade:91 src/application_ui.cpp:983
 msgid "Import Presets"
 msgstr "Импортировать предустановки"
 
-#: data/ui/application.glade:200 src/calibration_ui.cpp:48
+#: data/ui/application.glade:219 src/calibration_ui.cpp:48
 #: src/calibration_ui.cpp:175
 msgid "Test Signals"
 msgstr "Проверочный сигнал"
 
-#: data/ui/application.glade:222
+#: data/ui/application.glade:241
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
 #: data/com.github.wwmm.pulseeffects.desktop.in:3
 msgid "PulseEffects"
 msgstr "PulseEffects"
 
-#: data/ui/application.glade:294 data/ui/application.glade:703
+#: data/ui/application.glade:313 data/ui/application.glade:722
 msgid "Settings"
 msgstr "Настройки"
 
-#: data/ui/application.glade:316
+#: data/ui/application.glade:335
 msgid "Help"
 msgstr "Справка"
 
-#: data/ui/application.glade:339 data/ui/compressor.glade:205
+#: data/ui/application.glade:358 data/ui/compressor.glade:205
 #: data/ui/filter.glade:203 data/ui/equalizer.glade:280
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
-#: src/application_ui.cpp:959 src/application_ui.cpp:1034
+#: src/application_ui.cpp:988 src/application_ui.cpp:1063
 msgid "Presets"
 msgstr "Предустановки"
 
-#: data/ui/application.glade:628
+#: data/ui/application.glade:647
 msgid "Start Service at Login"
 msgstr "Запуск службы при запуске"
 
-#: data/ui/application.glade:653
+#: data/ui/application.glade:672
 msgid "Enable All Applications"
 msgstr "Включить для всех приложений"
 
-#: data/ui/application.glade:678
+#: data/ui/application.glade:697
 msgid "Use Dark Theme"
 msgstr "Исп. тёмную тему"
 
-#: data/ui/application.glade:712 data/ui/equalizer_band.glade:105
+#: data/ui/application.glade:731 data/ui/equalizer_band.glade:105
 #: data/ui/equalizer_band.glade:120
 msgid "Reset"
 msgstr "Сбросить"
 
-#: data/ui/application.glade:726
+#: data/ui/application.glade:745
 msgid "About"
 msgstr "О программе"
 
-#: data/ui/application.glade:744
+#: data/ui/application.glade:763
 msgid "General"
 msgstr "Общие"
 
-#: data/ui/application.glade:762
+#: data/ui/application.glade:783
 msgid "Show"
 msgstr "Показать"
 
-#: data/ui/application.glade:788
+#: data/ui/application.glade:827
 msgid "Points"
 msgstr "Точки"
 
-#: data/ui/application.glade:819
-msgid "Use Custom Color"
-msgstr "Использовать свой цвет"
-
-#: data/ui/application.glade:844
-msgid "Spectrum Color"
-msgstr "Цвет спектра"
-
-#: data/ui/application.glade:871
+#: data/ui/application.glade:858
 msgid "Height"
 msgstr "Высота"
 
-#: data/ui/application.glade:899 data/ui/convolver.glade:396
+#: data/ui/application.glade:889
+msgid "Use Custom Color"
+msgstr "Использовать свой цвет"
+
+#: data/ui/application.glade:914
+msgid "Spectrum Color"
+msgstr "Цвет спектра"
+
+#: data/ui/application.glade:942
+msgid "Fill"
+msgstr ""
+
+#: data/ui/application.glade:968
+msgid "Scale"
+msgstr ""
+
+#: data/ui/application.glade:1001
+msgid "Exponent"
+msgstr ""
+
+#: data/ui/application.glade:1034
+#, fuzzy
+msgid "Sampling"
+msgstr "Передискретизация"
+
+#: data/ui/application.glade:1067 data/ui/convolver.glade:396
 msgid "Spectrum"
 msgstr "Спектр"
 
-#: data/ui/application.glade:928 data/ui/application.glade:1077
+#: data/ui/application.glade:1096 data/ui/application.glade:1245
 msgid "Use Default"
 msgstr "По умолчанию"
 
-#: data/ui/application.glade:966 data/ui/application.glade:1114
+#: data/ui/application.glade:1134 data/ui/application.glade:1282
 #: data/ui/app_info.glade:156
 msgid "Buffer"
 msgstr "Буфер"
 
-#: data/ui/application.glade:999 data/ui/application.glade:1146
+#: data/ui/application.glade:1167 data/ui/application.glade:1314
 #: data/ui/app_info.glade:183
 msgid "Latency"
 msgstr "Задержка"
 
 # Taking lingual shortcuts to squeeze it in the text box
-#: data/ui/application.glade:1032 data/ui/application.glade:1178
+#: data/ui/application.glade:1200 data/ui/application.glade:1346
 msgid "Block Size"
 msgstr "Размер блока"
 
-#: data/ui/application.glade:1063 data/ui/application.glade:1334
+#: data/ui/application.glade:1231 data/ui/application.glade:1502
 msgid "Input Effects"
 msgstr "Эффекты для ввода звука"
 
-#: data/ui/application.glade:1209 data/ui/application.glade:1406
+#: data/ui/application.glade:1377 data/ui/application.glade:1574
 msgid "Output Effects"
 msgstr "Эффекты для вывода звука"
 
-#: data/ui/application.glade:1236
+#: data/ui/application.glade:1404
 msgid "Pulseaudio"
 msgstr ""
 
-#: data/ui/application.glade:1420
+#: data/ui/application.glade:1588
 msgid "Blacklist"
 msgstr "Черный список"
 
@@ -927,7 +944,7 @@ msgstr "Продолжительность"
 msgid "Samples"
 msgstr "Образцы"
 
-#: data/ui/convolver.glade:324 src/convolver_ui.cpp:269
+#: data/ui/convolver.glade:324 src/convolver_ui.cpp:272
 msgid "Impulse Response"
 msgstr "Импульсная реакция"
 
@@ -1210,7 +1227,7 @@ msgstr "лимитер;компрессор;ребербатор;эквалай�
 msgid "pulseeffects"
 msgstr ""
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:187
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:202
 msgid "\"Presets\""
 msgstr "\"Предустановки\""
 
@@ -1254,11 +1271,11 @@ msgstr "Да"
 msgid "No"
 msgstr "Нет"
 
-#: src/application_ui.cpp:955 src/convolver_ui.cpp:265
+#: src/application_ui.cpp:984 src/convolver_ui.cpp:268
 msgid "Open"
 msgstr "Открыть"
 
-#: src/application_ui.cpp:955 src/convolver_ui.cpp:265
+#: src/application_ui.cpp:984 src/convolver_ui.cpp:268
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -1278,15 +1295,15 @@ msgstr "воспроизводится"
 msgid "Calibration Microphone"
 msgstr "Калибровка корректировки микрофона"
 
-#: src/convolver_ui.cpp:264
+#: src/convolver_ui.cpp:267
 msgid "Import Impulse File"
 msgstr "Импортировать импульс"
 
-#: src/convolver_ui.cpp:307 src/convolver_ui.cpp:308 src/convolver_ui.cpp:310
+#: src/convolver_ui.cpp:310 src/convolver_ui.cpp:311 src/convolver_ui.cpp:313
 msgid "Failed"
 msgstr "Не получилось"
 
-#: src/convolver_ui.cpp:312
+#: src/convolver_ui.cpp:315
 msgid "Could Not Load The Impulse File"
 msgstr "Не смогли загрузить файл с импульсными реакциями"
 
@@ -1314,7 +1331,7 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Auto Volume"
 #~ msgstr "Автоподстройка уровня звука"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "Import"
 #~ msgstr "Импортировать предустановки"
 
@@ -1345,19 +1362,19 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Стерео база"
 #~ msgstr "Сетерео база"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "Output Device"
 #~ msgstr "Ограничитель ввода"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "Input Device"
 #~ msgstr "Ограничитель ввода"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "Advanced Settings"
 #~ msgstr "Параметры"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "Meters"
 #~ msgstr "Тип фильтра"
 
@@ -1370,19 +1387,19 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Low Pass"
 #~ msgstr "Фильтр низких частот"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "Source"
 #~ msgstr "Средний источник"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "Side"
 #~ msgstr "Усиление ввода [дБ]"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "Sidechain"
 #~ msgstr "Усиление ввода [дБ]"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "Ceil"
 #~ msgstr "Верхний порог (Гц)"
 
@@ -1398,37 +1415,37 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "peak"
 #~ msgstr "пик"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "F1"
 #~ msgstr "F"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "F1 Level"
 #~ msgstr "Уровень"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "F2"
 #~ msgstr "F"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "F2 Level"
 #~ msgstr "Уровень"
 
 #~ msgid "Quality"
 #~ msgstr "Качество"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "Reset Frequency"
 #~ msgstr "Сброс частоты"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "Reset Quality"
 #~ msgstr "Сброс качества"
 
 #~ msgid "Poles"
 #~ msgstr "Полюса"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "Output Limiter"
 #~ msgstr "Ограничитель ввода"
 
@@ -1444,7 +1461,7 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Stereo Spread"
 #~ msgstr "Рассеивание стерео"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "Mono Input"
 #~ msgstr "Моноввод"
 
@@ -1454,7 +1471,7 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Save Current Settings to Preset"
 #~ msgstr "Сохранить текущие настройки в набор преднастроек"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "Delete Preset"
 #~ msgstr "Удалить набор предустановок"
 
@@ -1470,11 +1487,11 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Test Signal"
 #~ msgstr "Проверочный сигнал"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "1"
 #~ msgstr "F"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "Reduction Level"
 #~ msgstr "Увеличение ослабления"
 
@@ -1484,11 +1501,11 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Frequency [Hz]"
 #~ msgstr "Частота [Hz]"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "Buffer [ms]"
 #~ msgstr "Буферизация"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "Latency [ms]"
 #~ msgstr "Задержка"
 
@@ -1498,46 +1515,46 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Makeup [dB]"
 #~ msgstr "Компенсирование [дБ]"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "F1 [Hz]"
 #~ msgstr "Шум [Гц]"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "F1 Level [dB]"
 #~ msgstr "Подача [дБ]"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "F2 [Hz]"
 #~ msgstr "Шум [Гц]"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "F2 Level [dB]"
 #~ msgstr "Подача [дБ]"
 
 #~ msgid "Release [ms]"
 #~ msgstr "Высвобождение [мс]"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "Delay [ms]"
 #~ msgstr "Задержка [ms]"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "Gain Reduction [dB]"
 #~ msgstr "Увеличение ослабления"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "Ceiling [dB]"
 #~ msgstr "Ограничение [dB]"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "Low [dB]"
 #~ msgstr "Низкие частоты [дБ]"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "High [dB]"
 #~ msgstr "Высокие частоты [дБ]"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "Input Gate"
 #~ msgstr "Ограничитель ввода"
 
@@ -1547,26 +1564,26 @@ msgstr "Не смогли загрузить файл с импульсными 
 #~ msgid "Audio Enhancer"
 #~ msgstr "Усилитель аудио"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "Buffer Latency"
 #~ msgstr "Задержка буферизации"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "buffer-time"
 #~ msgstr "Время буферизации [ms]"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "latency-time"
 #~ msgstr "Задержка [ms]"
 
 #~ msgid "Vlc"
 #~ msgstr "VLC"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "Sink Latency"
 #~ msgstr "Задержка затухания"
 
-##, fuzzy
+# #, fuzzy
 #~ msgid "Preset Name"
 #~ msgstr "Название предустановки"
 
