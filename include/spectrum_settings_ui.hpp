@@ -33,10 +33,6 @@ class SpectrumSettingsUi : public Gtk::Grid {
 
   std::vector<sigc::connection> connections;
 
-  bool mouse_inside = false;
-  double mouse_intensity = 0, mouse_freq = 0;
-  std::vector<float> spectrum_mag;
-
   void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
                   const std::string& name,
                   Glib::RefPtr<Gtk::Adjustment>& object) {
