@@ -44,10 +44,10 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   Gtk::Switch *enable_autostart, *enable_all_apps, *theme_switch;
   Gtk::ToggleButton *use_default_sink, *use_default_source;
   Gtk::ComboBox *input_device, *output_device;
-  Gtk::Box *placeholder_spectrum, *placeholder_spectrum_settings;
+  Gtk::Box* placeholder_spectrum;
   Gtk::Button *reset_settings, *add_preset, *import_preset, *calibration_button,
       *help_button, *add_blacklist_in, *add_blacklist_out, *about_button;
-  Gtk::Stack* stack;
+  Gtk::Stack *stack, *stack_menu_settings;
   Gtk::ListBox *presets_listbox, *blacklist_in_listbox, *blacklist_out_listbox;
   Gtk::MenuButton* presets_menu_button;
   Gtk::Label *presets_menu_label, *headerbar_info;

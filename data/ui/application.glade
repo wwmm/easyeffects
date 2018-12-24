@@ -397,7 +397,7 @@
             <property name="can_focus">False</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
-            <property name="stack">menu_stack</property>
+            <property name="stack">stack_menu_settings</property>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -405,7 +405,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkStack" id="menu_stack">
+          <object class="GtkStack" id="stack_menu_settings">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="hexpand">True</property>
@@ -545,19 +545,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkBox" id="placeholder_spectrum_settings">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="orientation">vertical</property>
-                <child>
-                  <placeholder/>
-                </child>
-              </object>
-              <packing>
-                <property name="name">spectrum</property>
-                <property name="title" translatable="yes">Spectrum</property>
-                <property name="position">1</property>
-              </packing>
+              <placeholder/>
             </child>
             <child>
               <object class="GtkGrid" id="settings_pulseaudio">

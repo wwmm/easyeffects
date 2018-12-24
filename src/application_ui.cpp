@@ -82,9 +82,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   builder->get_widget("output_device", output_device);
   builder->get_widget("reset_settings", reset_settings);
   builder->get_widget("placeholder_spectrum", placeholder_spectrum);
-  builder->get_widget("placeholder_spectrum_settings",
-                      placeholder_spectrum_settings);
   builder->get_widget("stack", stack);
+  builder->get_widget("stack_menu_settings", stack_menu_settings);
   builder->get_widget("presets_listbox", presets_listbox);
   builder->get_widget("presets_menu_button", presets_menu_button);
   builder->get_widget("presets_menu_label", presets_menu_label);
@@ -268,7 +267,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   b_spectrum_settings->get_widget_derived("widgets_grid", spectrum_settings_ui,
                                           settings, app);
 
-  placeholder_spectrum_settings->add(*spectrum_settings_ui);
+  stack_menu_settings->add(*spectrum_settings_ui, "settings_spectrum",
+                           _("Spectrum"));
 
   // sink inputs interface
 
