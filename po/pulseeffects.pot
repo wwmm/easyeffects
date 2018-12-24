@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-24 12:12-0200\n"
+"POT-Creation-Date: 2018-12-24 16:22-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,143 +17,143 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/ui/application.glade:60 data/ui/application.glade:1491
-#: data/ui/application.glade:1563
+#: data/ui/application.glade:60 data/ui/application.glade:982
+#: data/ui/application.glade:1054
 msgid "Name"
 msgstr ""
 
-#: data/ui/application.glade:73 data/ui/application.glade:1472
-#: data/ui/application.glade:1544
+#: data/ui/application.glade:73 data/ui/application.glade:963
+#: data/ui/application.glade:1035
 msgid "Create Preset"
 msgstr ""
 
-#: data/ui/application.glade:91 src/application_ui.cpp:983
+#: data/ui/application.glade:91 src/application_ui.cpp:791
 msgid "Import Presets"
 msgstr ""
 
-#: data/ui/application.glade:219 src/calibration_ui.cpp:48
+#: data/ui/application.glade:187 src/calibration_ui.cpp:48
 #: src/calibration_ui.cpp:175
 msgid "Test Signals"
 msgstr ""
 
-#: data/ui/application.glade:241
+#: data/ui/application.glade:209
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
 #: data/com.github.wwmm.pulseeffects.desktop.in:3
 msgid "PulseEffects"
 msgstr ""
 
-#: data/ui/application.glade:313 data/ui/application.glade:722
+#: data/ui/application.glade:281 data/ui/application.glade:503
 msgid "Settings"
 msgstr ""
 
-#: data/ui/application.glade:335
+#: data/ui/application.glade:303
 msgid "Help"
 msgstr ""
 
-#: data/ui/application.glade:358 data/ui/compressor.glade:205
+#: data/ui/application.glade:326 data/ui/compressor.glade:205
 #: data/ui/filter.glade:203 data/ui/equalizer.glade:280
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
-#: src/application_ui.cpp:988 src/application_ui.cpp:1063
+#: src/application_ui.cpp:796 src/application_ui.cpp:871
 msgid "Presets"
 msgstr ""
 
-#: data/ui/application.glade:647
+#: data/ui/application.glade:428
 msgid "Start Service at Login"
 msgstr ""
 
-#: data/ui/application.glade:672
+#: data/ui/application.glade:453
 msgid "Enable All Applications"
 msgstr ""
 
-#: data/ui/application.glade:697
+#: data/ui/application.glade:478
 msgid "Use Dark Theme"
 msgstr ""
 
-#: data/ui/application.glade:731 data/ui/equalizer_band.glade:105
+#: data/ui/application.glade:512 data/ui/equalizer_band.glade:105
 #: data/ui/equalizer_band.glade:120
 msgid "Reset"
 msgstr ""
 
-#: data/ui/application.glade:745
+#: data/ui/application.glade:526
 msgid "About"
 msgstr ""
 
-#: data/ui/application.glade:763
+#: data/ui/application.glade:544
 msgid "General"
 msgstr ""
 
-#: data/ui/application.glade:783
-msgid "Show"
-msgstr ""
-
-#: data/ui/application.glade:827
-msgid "Points"
-msgstr ""
-
-#: data/ui/application.glade:858
-msgid "Height"
-msgstr ""
-
-#: data/ui/application.glade:889
-msgid "Use Custom Color"
-msgstr ""
-
-#: data/ui/application.glade:914
-msgid "Spectrum Color"
-msgstr ""
-
-#: data/ui/application.glade:942
-msgid "Fill"
-msgstr ""
-
-#: data/ui/application.glade:968
-msgid "Scale"
-msgstr ""
-
-#: data/ui/application.glade:1001
-msgid "Exponent"
-msgstr ""
-
-#: data/ui/application.glade:1034
-msgid "Sampling"
-msgstr ""
-
-#: data/ui/application.glade:1067 data/ui/convolver.glade:396
+#: data/ui/application.glade:558 data/ui/convolver.glade:396
 msgid "Spectrum"
 msgstr ""
 
-#: data/ui/application.glade:1096 data/ui/application.glade:1245
+#: data/ui/application.glade:587 data/ui/application.glade:736
 msgid "Use Default"
 msgstr ""
 
-#: data/ui/application.glade:1134 data/ui/application.glade:1282
+#: data/ui/application.glade:625 data/ui/application.glade:773
 #: data/ui/app_info.glade:156
 msgid "Buffer"
 msgstr ""
 
-#: data/ui/application.glade:1167 data/ui/application.glade:1314
+#: data/ui/application.glade:658 data/ui/application.glade:805
 #: data/ui/app_info.glade:183
 msgid "Latency"
 msgstr ""
 
-#: data/ui/application.glade:1200 data/ui/application.glade:1346
+#: data/ui/application.glade:691 data/ui/application.glade:837
 msgid "Block Size"
 msgstr ""
 
-#: data/ui/application.glade:1231 data/ui/application.glade:1502
+#: data/ui/application.glade:722 data/ui/application.glade:993
 msgid "Input Effects"
 msgstr ""
 
-#: data/ui/application.glade:1377 data/ui/application.glade:1574
+#: data/ui/application.glade:868 data/ui/application.glade:1065
 msgid "Output Effects"
 msgstr ""
 
-#: data/ui/application.glade:1404
+#: data/ui/application.glade:895
 msgid "Pulseaudio"
 msgstr ""
 
-#: data/ui/application.glade:1588
+#: data/ui/application.glade:1079
 msgid "Blacklist"
+msgstr ""
+
+#: data/ui/spectrum_settings.glade:49
+msgid "Show"
+msgstr ""
+
+#: data/ui/spectrum_settings.glade:91
+msgid "Points"
+msgstr ""
+
+#: data/ui/spectrum_settings.glade:122
+msgid "Height"
+msgstr ""
+
+#: data/ui/spectrum_settings.glade:154
+msgid "Fill"
+msgstr ""
+
+#: data/ui/spectrum_settings.glade:179
+msgid "Scale"
+msgstr ""
+
+#: data/ui/spectrum_settings.glade:211
+msgid "Exponent"
+msgstr ""
+
+#: data/ui/spectrum_settings.glade:243
+msgid "Use Custom Color"
+msgstr ""
+
+#: data/ui/spectrum_settings.glade:268
+msgid "Spectrum Color"
+msgstr ""
+
+#: data/ui/spectrum_settings.glade:295
+msgid "Sampling"
 msgstr ""
 
 #: data/ui/about.glade.in:11
@@ -1227,11 +1227,11 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: src/application_ui.cpp:984 src/convolver_ui.cpp:268
+#: src/application_ui.cpp:792 src/convolver_ui.cpp:268
 msgid "Open"
 msgstr ""
 
-#: src/application_ui.cpp:984 src/convolver_ui.cpp:268
+#: src/application_ui.cpp:792 src/convolver_ui.cpp:268
 msgid "Cancel"
 msgstr ""
 

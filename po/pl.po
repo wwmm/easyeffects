@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-24 12:12-0200\n"
+"POT-Creation-Date: 2018-12-24 16:22-0200\n"
 "PO-Revision-Date: 2018-06-21 21:34+0200\n"
 "Last-Translator: Piotr Komur, pkomur@gmail.com\n"
 "Language-Team: \n"
@@ -19,146 +19,146 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: data/ui/application.glade:60 data/ui/application.glade:1491
-#: data/ui/application.glade:1563
+#: data/ui/application.glade:60 data/ui/application.glade:982
+#: data/ui/application.glade:1054
 msgid "Name"
 msgstr "Nazwa"
 
-#: data/ui/application.glade:73 data/ui/application.glade:1472
-#: data/ui/application.glade:1544
+#: data/ui/application.glade:73 data/ui/application.glade:963
+#: data/ui/application.glade:1035
 msgid "Create Preset"
 msgstr "Utwórz profil"
 
-#: data/ui/application.glade:91 src/application_ui.cpp:983
+#: data/ui/application.glade:91 src/application_ui.cpp:791
 msgid "Import Presets"
 msgstr "Importuj profile"
 
-#: data/ui/application.glade:219 src/calibration_ui.cpp:48
+#: data/ui/application.glade:187 src/calibration_ui.cpp:48
 #: src/calibration_ui.cpp:175
 msgid "Test Signals"
 msgstr "Sygnały testowe"
 
-#: data/ui/application.glade:241
+#: data/ui/application.glade:209
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
 #: data/com.github.wwmm.pulseeffects.desktop.in:3
 msgid "PulseEffects"
 msgstr "PulseEffects"
 
-#: data/ui/application.glade:313 data/ui/application.glade:722
+#: data/ui/application.glade:281 data/ui/application.glade:503
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: data/ui/application.glade:335
+#: data/ui/application.glade:303
 msgid "Help"
 msgstr ""
 
-#: data/ui/application.glade:358 data/ui/compressor.glade:205
+#: data/ui/application.glade:326 data/ui/compressor.glade:205
 #: data/ui/filter.glade:203 data/ui/equalizer.glade:280
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
-#: src/application_ui.cpp:988 src/application_ui.cpp:1063
+#: src/application_ui.cpp:796 src/application_ui.cpp:871
 msgid "Presets"
 msgstr "Profile"
 
-#: data/ui/application.glade:647
+#: data/ui/application.glade:428
 msgid "Start Service at Login"
 msgstr "Uruchom usługę przy logowaniu"
 
-#: data/ui/application.glade:672
+#: data/ui/application.glade:453
 msgid "Enable All Applications"
 msgstr "Włącz dla wszystkich programów"
 
-#: data/ui/application.glade:697
+#: data/ui/application.glade:478
 msgid "Use Dark Theme"
 msgstr "Używaj ciemnego motywu"
 
-#: data/ui/application.glade:731 data/ui/equalizer_band.glade:105
+#: data/ui/application.glade:512 data/ui/equalizer_band.glade:105
 #: data/ui/equalizer_band.glade:120
 msgid "Reset"
 msgstr "Zresetuj"
 
-#: data/ui/application.glade:745
+#: data/ui/application.glade:526
 msgid "About"
 msgstr ""
 
-#: data/ui/application.glade:763
+#: data/ui/application.glade:544
 msgid "General"
 msgstr "Ogólne"
 
-#: data/ui/application.glade:783
-msgid "Show"
-msgstr "Pokaż"
-
-#: data/ui/application.glade:827
-msgid "Points"
-msgstr "Punkty"
-
-#: data/ui/application.glade:858
-msgid "Height"
-msgstr "Wysokość"
-
-#: data/ui/application.glade:889
-msgid "Use Custom Color"
-msgstr "Użyj własnego koloru"
-
-#: data/ui/application.glade:914
-msgid "Spectrum Color"
-msgstr "Kolor widma"
-
-#: data/ui/application.glade:942
-msgid "Fill"
-msgstr ""
-
-#: data/ui/application.glade:968
-msgid "Scale"
-msgstr ""
-
-#: data/ui/application.glade:1001
-msgid "Exponent"
-msgstr ""
-
-#: data/ui/application.glade:1034
-#, fuzzy
-msgid "Sampling"
-msgstr "Nadpróbkowanie"
-
-#: data/ui/application.glade:1067 data/ui/convolver.glade:396
+#: data/ui/application.glade:558 data/ui/convolver.glade:396
 msgid "Spectrum"
 msgstr "Widmo"
 
-#: data/ui/application.glade:1096 data/ui/application.glade:1245
+#: data/ui/application.glade:587 data/ui/application.glade:736
 msgid "Use Default"
 msgstr "Użyj domyślnych"
 
-#: data/ui/application.glade:1134 data/ui/application.glade:1282
+#: data/ui/application.glade:625 data/ui/application.glade:773
 #: data/ui/app_info.glade:156
 msgid "Buffer"
 msgstr "Bufor"
 
-#: data/ui/application.glade:1167 data/ui/application.glade:1314
+#: data/ui/application.glade:658 data/ui/application.glade:805
 #: data/ui/app_info.glade:183
 msgid "Latency"
 msgstr "Oczekiwanie"
 
-#: data/ui/application.glade:1200 data/ui/application.glade:1346
+#: data/ui/application.glade:691 data/ui/application.glade:837
 #, fuzzy
 msgid "Block Size"
 msgstr "Rozmiar pomieszczenia"
 
-#: data/ui/application.glade:1231 data/ui/application.glade:1502
+#: data/ui/application.glade:722 data/ui/application.glade:993
 msgid "Input Effects"
 msgstr "Efekty wejściowe"
 
-#: data/ui/application.glade:1377 data/ui/application.glade:1574
+#: data/ui/application.glade:868 data/ui/application.glade:1065
 msgid "Output Effects"
 msgstr "Efekty wyjściowe"
 
-#: data/ui/application.glade:1404
+#: data/ui/application.glade:895
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
 
-#: data/ui/application.glade:1588
+#: data/ui/application.glade:1079
 msgid "Blacklist"
 msgstr ""
+
+#: data/ui/spectrum_settings.glade:49
+msgid "Show"
+msgstr "Pokaż"
+
+#: data/ui/spectrum_settings.glade:91
+msgid "Points"
+msgstr "Punkty"
+
+#: data/ui/spectrum_settings.glade:122
+msgid "Height"
+msgstr "Wysokość"
+
+#: data/ui/spectrum_settings.glade:154
+msgid "Fill"
+msgstr ""
+
+#: data/ui/spectrum_settings.glade:179
+msgid "Scale"
+msgstr ""
+
+#: data/ui/spectrum_settings.glade:211
+msgid "Exponent"
+msgstr ""
+
+#: data/ui/spectrum_settings.glade:243
+msgid "Use Custom Color"
+msgstr "Użyj własnego koloru"
+
+#: data/ui/spectrum_settings.glade:268
+msgid "Spectrum Color"
+msgstr "Kolor widma"
+
+#: data/ui/spectrum_settings.glade:295
+#, fuzzy
+msgid "Sampling"
+msgstr "Nadpróbkowanie"
 
 #: data/ui/about.glade.in:11
 msgid "Audio Effects for Pulseaudio Applications"
@@ -1283,11 +1283,11 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: src/application_ui.cpp:984 src/convolver_ui.cpp:268
+#: src/application_ui.cpp:792 src/convolver_ui.cpp:268
 msgid "Open"
 msgstr ""
 
-#: src/application_ui.cpp:984 src/convolver_ui.cpp:268
+#: src/application_ui.cpp:792 src/convolver_ui.cpp:268
 #, fuzzy
 msgid "Cancel"
 msgstr "Balans"

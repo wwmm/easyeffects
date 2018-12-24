@@ -102,7 +102,6 @@
             <property name="halign">start</property>
             <property name="valign">center</property>
             <property name="width_chars">8</property>
-            <property name="text" translatable="yes">2</property>
             <property name="input_purpose">number</property>
             <property name="adjustment">spectrum_n_points</property>
             <property name="numeric">True</property>
@@ -134,7 +133,6 @@
             <property name="halign">start</property>
             <property name="valign">center</property>
             <property name="width_chars">8</property>
-            <property name="text" translatable="yes">100</property>
             <property name="input_purpose">number</property>
             <property name="adjustment">spectrum_height</property>
             <property name="numeric">True</property>
@@ -192,7 +190,6 @@
             <property name="halign">start</property>
             <property name="valign">center</property>
             <property name="width_chars">8</property>
-            <property name="text" translatable="yes">1,00</property>
             <property name="input_purpose">number</property>
             <property name="adjustment">spectrum_scale</property>
             <property name="digits">2</property>
@@ -225,7 +222,6 @@
             <property name="halign">start</property>
             <property name="valign">center</property>
             <property name="width_chars">8</property>
-            <property name="text" translatable="yes">1,00</property>
             <property name="input_purpose">number</property>
             <property name="adjustment">spectrum_exponent</property>
             <property name="digits">2</property>
@@ -310,7 +306,6 @@
             <property name="halign">start</property>
             <property name="valign">center</property>
             <property name="width_chars">8</property>
-            <property name="text" translatable="yes">15</property>
             <property name="secondary_icon_name">pulseeffects-hz-symbolic</property>
             <property name="adjustment">spectrum_sampling_freq</property>
             <property name="numeric">True</property>
