@@ -300,6 +300,13 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   about_button->signal_clicked().connect(
       [=]() { app->activate_action("about"); });
 
+  /*spectrum interface*/
+
+  // auto b_spectrum = Gtk::Builder::create_from_resource(
+  // "/com/github/wwmm/pulseeffects/ui/spectrum.glade");
+
+  // b_spectrum->get_widget_derived("spectrum_box", spectrum_ui, settings, app);
+
   /*sink inputs interface*/
 
   auto b_sie_ui = Gtk::Builder::create_from_resource(

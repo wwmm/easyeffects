@@ -59,6 +59,21 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject,
 
   spectrum_sampling_freq->signal_value_changed().connect(
       sigc::mem_fun(*this, &SpectrumUi::on_spectrum_sampling_freq_set), false);
+
+  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
+  auto flag_get = Gio::SettingsBindFlags::SETTINGS_BIND_GET;
+
+  settings->bind("show-spectrum", show_spectrum, "active", flag);
+  settings->bind("show-spectrum", spectrum_box, "visible", flag_get);
+  settings->bind("spectrum-fill", spectrum_fill, "active", flag);
+  settings->bind("spectrum-n-points", spectrum_n_points.get(), "value", flag);
+  settings->bind("spectrum-height", spectrum_height.get(), "value", flag);
+  settings->bind("spectrum-scale", spectrum_scale.get(), "value", flag);
+  settings->bind("spectrum-exponent", spectrum_exponent.get(), "value", flag);
+  settings->bind("spectrum-sampling-freq", spectrum_sampling_freq.get(),
+                 "value", flag);
+  settings->bind("use-custom-color", use_custom_color, "active", flag);
+  settings->bind("use-custom-color", spectrum_color_button, "sensitive", flag);
 }
 
 SpectrumUi::~SpectrumUi() {

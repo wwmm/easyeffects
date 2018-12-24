@@ -71,6 +71,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   sigc::connection spectrum_connection;
   std::vector<sigc::connection> connections;
 
+  SpectrumUi* spectrum_ui;
   SinkInputEffectsUi* sie_ui;
   SourceOutputEffectsUi* soe_ui;
 
