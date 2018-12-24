@@ -23,13 +23,7 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject,
 
   connections.push_back(
       settings->signal_changed("spectrum-color").connect([&](auto key) {
-        Glib::Variant<std::vector<double>> v;
-
-        settings->get_value("spectrum-color", v);
-
-        auto rgba = v.get();
-
-        spectrum_color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
+        init_custom_color();
       }));
 
   settings->signal_changed("spectrum-height").connect([&](auto key) {
@@ -41,6 +35,8 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject,
   auto flag_get = Gio::SettingsBindFlags::SETTINGS_BIND_GET;
 
   settings->bind("show-spectrum", this, "visible", flag_get);
+
+  init_custom_color();
 }
 
 SpectrumUi::~SpectrumUi() {
@@ -163,4 +159,14 @@ bool SpectrumUi::on_spectrum_motion_notify_event(GdkEventMotion* event) {
   spectrum->queue_draw();
 
   return false;
+}
+
+void SpectrumUi::init_custom_color() {
+  Glib::Variant<std::vector<double>> v;
+
+  settings->get_value("spectrum-color", v);
+
+  auto rgba = v.get();
+
+  spectrum_color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
 }

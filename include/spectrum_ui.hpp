@@ -42,6 +42,8 @@ class SpectrumUi : public Gtk::Grid {
   bool on_spectrum_leave_notify_event(GdkEventCrossing* event);
 
   bool on_spectrum_motion_notify_event(GdkEventMotion* event);
+
+  void init_custom_color();
 };
 
 #endif
