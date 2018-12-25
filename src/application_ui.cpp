@@ -45,6 +45,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   builder->get_widget("headerbar_icon1", headerbar_icon1);
   builder->get_widget("headerbar_icon2", headerbar_icon2);
   builder->get_widget("headerbar_info", headerbar_info);
+
   builder->get_widget("blacklist_in_scrolled_window",
                       blacklist_in_scrolled_window);
   builder->get_widget("blacklist_out_scrolled_window",
@@ -55,6 +56,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   builder->get_widget("blacklist_out_listbox", blacklist_out_listbox);
   builder->get_widget("blacklist_in_name", blacklist_in_name);
   builder->get_widget("blacklist_out_name", blacklist_out_name);
+
   builder->get_widget("about_button", about_button);
 
   // signals connection
