@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-24 22:10-0200\n"
+"POT-Creation-Date: 2018-12-25 13:25-0200\n"
 "PO-Revision-Date: 2017-08-29 11:00+0200\n"
 "Last-Translator: Nathan Graule <solarliner@gmail.com>\n"
 "Language-Team: \n"
@@ -18,88 +18,74 @@ msgstr ""
 "X-Generator: Poedit 2.0.1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: data/ui/application.glade:46 data/ui/application.glade:589
-#: data/ui/application.glade:661
+#: data/ui/application.glade:36 data/ui/blacklist_settings.glade:97
+#: data/ui/blacklist_settings.glade:169
 msgid "Name"
 msgstr ""
 
-#: data/ui/application.glade:59 data/ui/application.glade:570
-#: data/ui/application.glade:642
+#: data/ui/application.glade:49 data/ui/blacklist_settings.glade:78
+#: data/ui/blacklist_settings.glade:150
 #, fuzzy
 msgid "Create Preset"
 msgstr "Sauvegarder préglage"
 
-#: data/ui/application.glade:77 src/application_ui.cpp:487
+#: data/ui/application.glade:67 src/application_ui.cpp:455
 #, fuzzy
 msgid "Import Presets"
 msgstr "Ouvrir préréglage"
 
-#: data/ui/application.glade:143 src/calibration_ui.cpp:48
+#: data/ui/application.glade:133 src/calibration_ui.cpp:48
 #: src/calibration_ui.cpp:175
 #, fuzzy
 msgid "Test Signals"
 msgstr "Signal de test"
 
-#: data/ui/application.glade:165
+#: data/ui/application.glade:155
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
 #: data/com.github.wwmm.pulseeffects.desktop.in:3
 msgid "PulseEffects"
 msgstr "PulseEffects"
 
-#: data/ui/application.glade:237 data/ui/application.glade:459
+#: data/ui/application.glade:227 data/ui/application.glade:449
 msgid "Settings"
 msgstr "Paramètres"
 
-#: data/ui/application.glade:259
+#: data/ui/application.glade:249
 msgid "Help"
 msgstr ""
 
-#: data/ui/application.glade:282 data/ui/compressor.glade:205
+#: data/ui/application.glade:272 data/ui/compressor.glade:205
 #: data/ui/filter.glade:203 data/ui/equalizer.glade:280
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
-#: src/application_ui.cpp:492 src/application_ui.cpp:567
+#: src/application_ui.cpp:460 src/application_ui.cpp:535
 msgid "Presets"
 msgstr "Préréglage"
 
-#: data/ui/application.glade:384
+#: data/ui/application.glade:374
 msgid "Start Service at Login"
 msgstr ""
 
-#: data/ui/application.glade:409
+#: data/ui/application.glade:399
 #, fuzzy
 msgid "Enable All Applications"
 msgstr "Calibration"
 
-#: data/ui/application.glade:434
+#: data/ui/application.glade:424
 msgid "Use Dark Theme"
 msgstr "Utiliser thème sombre"
 
-#: data/ui/application.glade:468 data/ui/equalizer_band.glade:105
+#: data/ui/application.glade:458 data/ui/equalizer_band.glade:105
 #: data/ui/equalizer_band.glade:120
 msgid "Reset"
 msgstr "Remettre à zéro"
 
-#: data/ui/application.glade:482
+#: data/ui/application.glade:472
 msgid "About"
 msgstr ""
 
-#: data/ui/application.glade:500
+#: data/ui/application.glade:490
 msgid "General"
 msgstr "Général"
-
-#: data/ui/application.glade:600 data/ui/pulse_settings.glade:204
-#, fuzzy
-msgid "Input Effects"
-msgstr "PulseEffects"
-
-#: data/ui/application.glade:672 data/ui/pulse_settings.glade:352
-#, fuzzy
-msgid "Output Effects"
-msgstr "Limiteur d'entrée"
-
-#: data/ui/application.glade:686
-msgid "Blacklist"
-msgstr ""
 
 #: data/ui/spectrum_settings.glade:49
 msgid "Show"
@@ -159,6 +145,16 @@ msgstr "Latence"
 #, fuzzy
 msgid "Block Size"
 msgstr "Taille pièce"
+
+#: data/ui/pulse_settings.glade:204 data/ui/blacklist_settings.glade:108
+#, fuzzy
+msgid "Input Effects"
+msgstr "PulseEffects"
+
+#: data/ui/pulse_settings.glade:352 data/ui/blacklist_settings.glade:180
+#, fuzzy
+msgid "Output Effects"
+msgstr "Limiteur d'entrée"
 
 #: data/ui/about.glade.in:11
 msgid "Audio Effects for Pulseaudio Applications"
@@ -986,7 +982,7 @@ msgstr "Amélioration audio"
 msgid "Select the impulse Response File"
 msgstr "Réponse plane"
 
-#: data/ui/convolver.glade:396 src/application_ui.cpp:189
+#: data/ui/convolver.glade:396 src/application_ui.cpp:146
 msgid "Spectrum"
 msgstr "Spectromètre"
 
@@ -1321,15 +1317,19 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: src/application_ui.cpp:200
+#: src/application_ui.cpp:157
 msgid "Pulseaudio"
 msgstr ""
 
-#: src/application_ui.cpp:488 src/convolver_ui.cpp:268
+#: src/application_ui.cpp:168
+msgid "Blacklist"
+msgstr ""
+
+#: src/application_ui.cpp:456 src/convolver_ui.cpp:268
 msgid "Open"
 msgstr ""
 
-#: src/application_ui.cpp:488 src/convolver_ui.cpp:268
+#: src/application_ui.cpp:456 src/convolver_ui.cpp:268
 #, fuzzy
 msgid "Cancel"
 msgstr "Amélioration audio"
