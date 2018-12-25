@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-25 13:25-0200\n"
+"POT-Creation-Date: 2018-12-25 15:04-0200\n"
 "PO-Revision-Date: 2018-02-06 20:54+0100\n"
 "Last-Translator: Pavel Fric <pavelfric@seznam.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -17,70 +17,53 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Lokalize 1.5\n"
 
-#: data/ui/application.glade:36 data/ui/blacklist_settings.glade:97
-#: data/ui/blacklist_settings.glade:169
-msgid "Name"
-msgstr "Název"
-
-#: data/ui/application.glade:49 data/ui/blacklist_settings.glade:78
-#: data/ui/blacklist_settings.glade:150
-#, fuzzy
-msgid "Create Preset"
-msgstr "Smazat přednastavení"
-
-#: data/ui/application.glade:67 src/application_ui.cpp:455
-#, fuzzy
-msgid "Import Presets"
-msgstr "Nahrát přednastavení"
-
-#: data/ui/application.glade:133 src/calibration_ui.cpp:48
+#: data/ui/application.glade:42 src/calibration_ui.cpp:48
 #: src/calibration_ui.cpp:175
 msgid "Test Signals"
 msgstr "Zkušební signály"
 
-#: data/ui/application.glade:155
+#: data/ui/application.glade:64
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
 #: data/com.github.wwmm.pulseeffects.desktop.in:3
 msgid "PulseEffects"
 msgstr "PulseEffects"
 
-#: data/ui/application.glade:227 data/ui/application.glade:449
+#: data/ui/application.glade:136 data/ui/application.glade:358
 msgid "Settings"
 msgstr "Nastavení"
 
-#: data/ui/application.glade:249
+#: data/ui/application.glade:158
 msgid "Help"
 msgstr ""
 
-#: data/ui/application.glade:272 data/ui/compressor.glade:205
+#: data/ui/application.glade:181 data/ui/compressor.glade:205
 #: data/ui/filter.glade:203 data/ui/equalizer.glade:280
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
-#: src/application_ui.cpp:460 src/application_ui.cpp:535
 msgid "Presets"
 msgstr "Přednastavení"
 
-#: data/ui/application.glade:374
+#: data/ui/application.glade:283
 msgid "Start Service at Login"
 msgstr "Spustit službu při přihlášení"
 
-#: data/ui/application.glade:399
+#: data/ui/application.glade:308
 msgid "Enable All Applications"
 msgstr "Povolit všechny programy"
 
-#: data/ui/application.glade:424
+#: data/ui/application.glade:333
 msgid "Use Dark Theme"
 msgstr "Použít tmavý vzhled"
 
-#: data/ui/application.glade:458 data/ui/equalizer_band.glade:105
+#: data/ui/application.glade:367 data/ui/equalizer_band.glade:105
 #: data/ui/equalizer_band.glade:120
 msgid "Reset"
 msgstr "Vrátit na výchozí"
 
-#: data/ui/application.glade:472
+#: data/ui/application.glade:381
 msgid "About"
 msgstr ""
 
-#: data/ui/application.glade:490
+#: data/ui/application.glade:399
 msgid "General"
 msgstr "Obecné"
 
@@ -152,6 +135,17 @@ msgstr "PulseEffects"
 #, fuzzy
 msgid "Output Effects"
 msgstr "Omezovač výstupu"
+
+#: data/ui/blacklist_settings.glade:78 data/ui/blacklist_settings.glade:150
+#: data/ui/presets_menu.glade:41
+#, fuzzy
+msgid "Create Preset"
+msgstr "Smazat přednastavení"
+
+#: data/ui/blacklist_settings.glade:97 data/ui/blacklist_settings.glade:169
+#: data/ui/presets_menu.glade:28
+msgid "Name"
+msgstr "Název"
 
 #: data/ui/about.glade.in:11
 msgid "Audio Effects for Pulseaudio Applications"
@@ -985,7 +979,7 @@ msgstr "Zlepšovač sterea"
 msgid "Select the impulse Response File"
 msgstr "Odpověď pod tónem"
 
-#: data/ui/convolver.glade:396 src/application_ui.cpp:146
+#: data/ui/convolver.glade:396 src/application_ui.cpp:126
 msgid "Spectrum"
 msgstr "Spektrum"
 
@@ -1121,6 +1115,11 @@ msgstr "Zeslabování"
 #, fuzzy
 msgid "Voice Detector"
 msgstr "Zeslabování"
+
+#: data/ui/presets_menu.glade:59
+#, fuzzy
+msgid "Import Presets"
+msgstr "Nahrát přednastavení"
 
 #: data/ui/calibration_signals.glade:64
 msgid "Volume"
@@ -1316,22 +1315,13 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: src/application_ui.cpp:157
+#: src/application_ui.cpp:137
 msgid "Pulseaudio"
 msgstr ""
 
-#: src/application_ui.cpp:168
+#: src/application_ui.cpp:148
 msgid "Blacklist"
 msgstr ""
-
-#: src/application_ui.cpp:456 src/convolver_ui.cpp:268
-msgid "Open"
-msgstr ""
-
-#: src/application_ui.cpp:456 src/convolver_ui.cpp:268
-#, fuzzy
-msgid "Cancel"
-msgstr "Vyvážení"
 
 #: src/effects_base_ui.cpp:23
 msgid "Applications"
@@ -1354,6 +1344,15 @@ msgstr "Oprava kalibrace mikrofonu"
 #, fuzzy
 msgid "Import Impulse File"
 msgstr "Odpověď pod tónem"
+
+#: src/convolver_ui.cpp:268
+msgid "Open"
+msgstr ""
+
+#: src/convolver_ui.cpp:268
+#, fuzzy
+msgid "Cancel"
+msgstr "Vyvážení"
 
 #: src/convolver_ui.cpp:310 src/convolver_ui.cpp:311 src/convolver_ui.cpp:313
 msgid "Failed"

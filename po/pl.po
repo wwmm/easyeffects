@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-25 13:25-0200\n"
+"POT-Creation-Date: 2018-12-25 15:04-0200\n"
 "PO-Revision-Date: 2018-06-21 21:34+0200\n"
 "Last-Translator: Piotr Komur, pkomur@gmail.com\n"
 "Language-Team: \n"
@@ -19,68 +19,53 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: data/ui/application.glade:36 data/ui/blacklist_settings.glade:97
-#: data/ui/blacklist_settings.glade:169
-msgid "Name"
-msgstr "Nazwa"
-
-#: data/ui/application.glade:49 data/ui/blacklist_settings.glade:78
-#: data/ui/blacklist_settings.glade:150
-msgid "Create Preset"
-msgstr "Utwórz profil"
-
-#: data/ui/application.glade:67 src/application_ui.cpp:455
-msgid "Import Presets"
-msgstr "Importuj profile"
-
-#: data/ui/application.glade:133 src/calibration_ui.cpp:48
+#: data/ui/application.glade:42 src/calibration_ui.cpp:48
 #: src/calibration_ui.cpp:175
 msgid "Test Signals"
 msgstr "Sygnały testowe"
 
-#: data/ui/application.glade:155
+#: data/ui/application.glade:64
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
 #: data/com.github.wwmm.pulseeffects.desktop.in:3
 msgid "PulseEffects"
 msgstr "PulseEffects"
 
-#: data/ui/application.glade:227 data/ui/application.glade:449
+#: data/ui/application.glade:136 data/ui/application.glade:358
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: data/ui/application.glade:249
+#: data/ui/application.glade:158
 msgid "Help"
 msgstr ""
 
-#: data/ui/application.glade:272 data/ui/compressor.glade:205
+#: data/ui/application.glade:181 data/ui/compressor.glade:205
 #: data/ui/filter.glade:203 data/ui/equalizer.glade:280
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
-#: src/application_ui.cpp:460 src/application_ui.cpp:535
 msgid "Presets"
 msgstr "Profile"
 
-#: data/ui/application.glade:374
+#: data/ui/application.glade:283
 msgid "Start Service at Login"
 msgstr "Uruchom usługę przy logowaniu"
 
-#: data/ui/application.glade:399
+#: data/ui/application.glade:308
 msgid "Enable All Applications"
 msgstr "Włącz dla wszystkich programów"
 
-#: data/ui/application.glade:424
+#: data/ui/application.glade:333
 msgid "Use Dark Theme"
 msgstr "Używaj ciemnego motywu"
 
-#: data/ui/application.glade:458 data/ui/equalizer_band.glade:105
+#: data/ui/application.glade:367 data/ui/equalizer_band.glade:105
 #: data/ui/equalizer_band.glade:120
 msgid "Reset"
 msgstr "Zresetuj"
 
-#: data/ui/application.glade:472
+#: data/ui/application.glade:381
 msgid "About"
 msgstr ""
 
-#: data/ui/application.glade:490
+#: data/ui/application.glade:399
 msgid "General"
 msgstr "Ogólne"
 
@@ -147,6 +132,16 @@ msgstr "Efekty wejściowe"
 #: data/ui/pulse_settings.glade:352 data/ui/blacklist_settings.glade:180
 msgid "Output Effects"
 msgstr "Efekty wyjściowe"
+
+#: data/ui/blacklist_settings.glade:78 data/ui/blacklist_settings.glade:150
+#: data/ui/presets_menu.glade:41
+msgid "Create Preset"
+msgstr "Utwórz profil"
+
+#: data/ui/blacklist_settings.glade:97 data/ui/blacklist_settings.glade:169
+#: data/ui/presets_menu.glade:28
+msgid "Name"
+msgstr "Nazwa"
 
 #: data/ui/about.glade.in:11
 msgid "Audio Effects for Pulseaudio Applications"
@@ -955,7 +950,7 @@ msgstr "Powiązanie stereo"
 msgid "Select the impulse Response File"
 msgstr ""
 
-#: data/ui/convolver.glade:396 src/application_ui.cpp:146
+#: data/ui/convolver.glade:396 src/application_ui.cpp:126
 msgid "Spectrum"
 msgstr "Widmo"
 
@@ -1080,6 +1075,10 @@ msgstr "Szansa wykrycia"
 #: data/ui/webrtc.glade:547
 msgid "Voice Detector"
 msgstr "Wykrywanie głosu"
+
+#: data/ui/presets_menu.glade:59
+msgid "Import Presets"
+msgstr "Importuj profile"
 
 #: data/ui/calibration_signals.glade:64
 msgid "Volume"
@@ -1275,22 +1274,13 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: src/application_ui.cpp:157
+#: src/application_ui.cpp:137
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
 
-#: src/application_ui.cpp:168
+#: src/application_ui.cpp:148
 msgid "Blacklist"
 msgstr ""
-
-#: src/application_ui.cpp:456 src/convolver_ui.cpp:268
-msgid "Open"
-msgstr ""
-
-#: src/application_ui.cpp:456 src/convolver_ui.cpp:268
-#, fuzzy
-msgid "Cancel"
-msgstr "Balans"
 
 #: src/effects_base_ui.cpp:23
 msgid "Applications"
@@ -1311,6 +1301,15 @@ msgstr "Kalibracja mikrofonu"
 #: src/convolver_ui.cpp:267
 msgid "Import Impulse File"
 msgstr ""
+
+#: src/convolver_ui.cpp:268
+msgid "Open"
+msgstr ""
+
+#: src/convolver_ui.cpp:268
+#, fuzzy
+msgid "Cancel"
+msgstr "Balans"
 
 #: src/convolver_ui.cpp:310 src/convolver_ui.cpp:311 src/convolver_ui.cpp:313
 msgid "Failed"

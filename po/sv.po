@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-25 13:25-0200\n"
+"POT-Creation-Date: 2018-12-25 15:04-0200\n"
 "PO-Revision-Date: 2017-10-14 10:20+0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: \n"
@@ -17,72 +17,55 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.4\n"
 
-#: data/ui/application.glade:36 data/ui/blacklist_settings.glade:97
-#: data/ui/blacklist_settings.glade:169
-msgid "Name"
-msgstr "Namn"
-
-#: data/ui/application.glade:49 data/ui/blacklist_settings.glade:78
-#: data/ui/blacklist_settings.glade:150
-#, fuzzy
-msgid "Create Preset"
-msgstr "Ta bort profil"
-
-#: data/ui/application.glade:67 src/application_ui.cpp:455
-#, fuzzy
-msgid "Import Presets"
-msgstr "Öppna förinställning"
-
-#: data/ui/application.glade:133 src/calibration_ui.cpp:48
+#: data/ui/application.glade:42 src/calibration_ui.cpp:48
 #: src/calibration_ui.cpp:175
 #, fuzzy
 msgid "Test Signals"
 msgstr "Testsignal"
 
-#: data/ui/application.glade:155
+#: data/ui/application.glade:64
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
 #: data/com.github.wwmm.pulseeffects.desktop.in:3
 msgid "PulseEffects"
 msgstr "PulseEffects"
 
-#: data/ui/application.glade:227 data/ui/application.glade:449
+#: data/ui/application.glade:136 data/ui/application.glade:358
 msgid "Settings"
 msgstr "Inställningar"
 
-#: data/ui/application.glade:249
+#: data/ui/application.glade:158
 msgid "Help"
 msgstr ""
 
-#: data/ui/application.glade:272 data/ui/compressor.glade:205
+#: data/ui/application.glade:181 data/ui/compressor.glade:205
 #: data/ui/filter.glade:203 data/ui/equalizer.glade:280
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
-#: src/application_ui.cpp:460 src/application_ui.cpp:535
 msgid "Presets"
 msgstr "Profiler"
 
-#: data/ui/application.glade:374
+#: data/ui/application.glade:283
 msgid "Start Service at Login"
 msgstr ""
 
-#: data/ui/application.glade:399
+#: data/ui/application.glade:308
 #, fuzzy
 msgid "Enable All Applications"
 msgstr "Program"
 
-#: data/ui/application.glade:424
+#: data/ui/application.glade:333
 msgid "Use Dark Theme"
 msgstr "Använd mörkt tema"
 
-#: data/ui/application.glade:458 data/ui/equalizer_band.glade:105
+#: data/ui/application.glade:367 data/ui/equalizer_band.glade:105
 #: data/ui/equalizer_band.glade:120
 msgid "Reset"
 msgstr "Återställ"
 
-#: data/ui/application.glade:472
+#: data/ui/application.glade:381
 msgid "About"
 msgstr ""
 
-#: data/ui/application.glade:490
+#: data/ui/application.glade:399
 msgid "General"
 msgstr "Allmänt"
 
@@ -153,6 +136,17 @@ msgstr "PulseEffects"
 #, fuzzy
 msgid "Output Effects"
 msgstr "Ingångs-begränsning"
+
+#: data/ui/blacklist_settings.glade:78 data/ui/blacklist_settings.glade:150
+#: data/ui/presets_menu.glade:41
+#, fuzzy
+msgid "Create Preset"
+msgstr "Ta bort profil"
+
+#: data/ui/blacklist_settings.glade:97 data/ui/blacklist_settings.glade:169
+#: data/ui/presets_menu.glade:28
+msgid "Name"
+msgstr "Namn"
 
 #: data/ui/about.glade.in:11
 msgid "Audio Effects for Pulseaudio Applications"
@@ -983,7 +977,7 @@ msgstr "Ljudförstärkare"
 msgid "Select the impulse Response File"
 msgstr "Platt respons"
 
-#: data/ui/convolver.glade:396 src/application_ui.cpp:146
+#: data/ui/convolver.glade:396 src/application_ui.cpp:126
 msgid "Spectrum"
 msgstr "Spektrum"
 
@@ -1119,6 +1113,11 @@ msgstr "Försvagning"
 #, fuzzy
 msgid "Voice Detector"
 msgstr "Försvagning"
+
+#: data/ui/presets_menu.glade:59
+#, fuzzy
+msgid "Import Presets"
+msgstr "Öppna förinställning"
 
 #: data/ui/calibration_signals.glade:64
 msgid "Volume"
@@ -1317,22 +1316,13 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: src/application_ui.cpp:157
+#: src/application_ui.cpp:137
 msgid "Pulseaudio"
 msgstr ""
 
-#: src/application_ui.cpp:168
+#: src/application_ui.cpp:148
 msgid "Blacklist"
 msgstr ""
-
-#: src/application_ui.cpp:456 src/convolver_ui.cpp:268
-msgid "Open"
-msgstr ""
-
-#: src/application_ui.cpp:456 src/convolver_ui.cpp:268
-#, fuzzy
-msgid "Cancel"
-msgstr "Ljudförstärkare"
 
 #: src/effects_base_ui.cpp:23
 msgid "Applications"
@@ -1355,6 +1345,15 @@ msgstr "Kalibrering och mikrofon korrigering"
 #, fuzzy
 msgid "Import Impulse File"
 msgstr "Platt respons"
+
+#: src/convolver_ui.cpp:268
+msgid "Open"
+msgstr ""
+
+#: src/convolver_ui.cpp:268
+#, fuzzy
+msgid "Cancel"
+msgstr "Ljudförstärkare"
 
 #: src/convolver_ui.cpp:310 src/convolver_ui.cpp:311 src/convolver_ui.cpp:313
 msgid "Failed"
