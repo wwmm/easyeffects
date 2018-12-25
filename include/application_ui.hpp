@@ -4,18 +4,17 @@
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/button.h>
-#include <gtkmm/entry.h>
 #include <gtkmm/headerbar.h>
 #include <gtkmm/image.h>
 #include <gtkmm/label.h>
-#include <gtkmm/listbox.h>
 #include <gtkmm/menubutton.h>
-#include <gtkmm/scrolledwindow.h>
+#include <gtkmm/popover.h>
 #include <gtkmm/stack.h>
 #include <gtkmm/switch.h>
 #include "application.hpp"
 #include "blacklist_settings_ui.hpp"
 #include "calibration_ui.hpp"
+#include "presets_menu_ui.hpp"
 #include "pulse_settings_ui.hpp"
 #include "sink_input_effects_ui.hpp"
 #include "source_output_effects_ui.hpp"
@@ -32,6 +31,9 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   static ApplicationUi* create(Application* app);
 
+  Gtk::MenuButton* presets_menu_button;
+  Gtk::Label* presets_menu_label;
+
  private:
   std::string log_tag = "application_ui: ";
 
@@ -42,14 +44,10 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   Gtk::Switch *enable_autostart, *enable_all_apps, *theme_switch;
 
   Gtk::Box* placeholder_spectrum;
-  Gtk::Button *reset_settings, *add_preset, *import_preset, *calibration_button,
-      *help_button, *about_button;
+  Gtk::Button *reset_settings, *calibration_button, *help_button, *about_button;
   Gtk::Stack *stack, *stack_menu_settings;
-  Gtk::ListBox* presets_listbox;
-  Gtk::MenuButton* presets_menu_button;
-  Gtk::Label *presets_menu_label, *headerbar_info;
-  Gtk::Entry* preset_name;
-  Gtk::ScrolledWindow* presets_scrolled_window;
+  Gtk::Label* headerbar_info;
+  Gtk::Popover* presets_menu;
 
   Gtk::HeaderBar* headerbar;
   Gtk::Image *headerbar_icon1, *headerbar_icon2;
@@ -57,6 +55,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   sigc::connection spectrum_connection;
   std::vector<sigc::connection> connections;
 
+  PresetsMenuUi* presets_menu_ui;
   SpectrumUi* spectrum_ui;
   SpectrumSettingsUi* spectrum_settings_ui;
   PulseSettingsUi* pulse_settings_ui;
@@ -79,19 +78,11 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   void init_autostart_switch();
 
-  void populate_presets_listbox();
-
   bool on_enable_autostart(bool state);
 
   void on_reset_settings();
 
   void on_stack_visible_child_changed();
-
-  int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
-
-  void on_presets_menu_button_clicked();
-
-  void on_import_preset_clicked();
 
   void on_calibration_button_clicked();
 };
