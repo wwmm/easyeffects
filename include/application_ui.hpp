@@ -4,19 +4,15 @@
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/button.h>
-#include <gtkmm/combobox.h>
-#include <gtkmm/comboboxtext.h>
 #include <gtkmm/entry.h>
 #include <gtkmm/headerbar.h>
 #include <gtkmm/image.h>
 #include <gtkmm/label.h>
 #include <gtkmm/listbox.h>
-#include <gtkmm/liststore.h>
 #include <gtkmm/menubutton.h>
 #include <gtkmm/scrolledwindow.h>
 #include <gtkmm/stack.h>
 #include <gtkmm/switch.h>
-#include <gtkmm/togglebutton.h>
 #include "application.hpp"
 #include "calibration_ui.hpp"
 #include "pulse_settings_ui.hpp"
@@ -44,9 +40,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   Gtk::Switch *enable_autostart, *enable_all_apps, *theme_switch;
 
-  Gtk::ToggleButton *use_default_sink, *use_default_source;
-  Gtk::ComboBox *input_device, *output_device;
-
   Gtk::Box* placeholder_spectrum;
   Gtk::Button *reset_settings, *add_preset, *import_preset, *calibration_button,
       *help_button, *add_blacklist_in, *add_blacklist_out, *about_button;
@@ -58,13 +51,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   Gtk::ScrolledWindow *presets_scrolled_window, *blacklist_in_scrolled_window,
       *blacklist_out_scrolled_window;
 
-  Gtk::ComboBoxText *blocksize_in, *blocksize_out;
-
   Gtk::HeaderBar* headerbar;
   Gtk::Image *headerbar_icon1, *headerbar_icon2;
-
-  Glib::RefPtr<Gtk::Adjustment> buffer_in, buffer_out, latency_in, latency_out;
-  Glib::RefPtr<Gtk::ListStore> sink_list, source_list;
 
   sigc::connection spectrum_connection;
   std::vector<sigc::connection> connections;
@@ -84,13 +72,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
         Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
   }
 
-  void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
-                  const std::string& name,
-                  Glib::RefPtr<Gtk::ListStore>& object) {
-    object =
-        Glib::RefPtr<Gtk::ListStore>::cast_dynamic(builder->get_object(name));
-  }
-
   void update_headerbar_subtitle(const int& index);
 
   void apply_css_style(std::string css_file_name);
@@ -108,22 +89,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   void on_reset_settings();
 
   void on_stack_visible_child_changed();
-
-  void on_sink_added(std::shared_ptr<mySinkInfo> info);
-
-  void on_sink_removed(uint idx);
-
-  void on_source_added(std::shared_ptr<mySourceInfo> info);
-
-  void on_source_removed(uint idx);
-
-  void on_use_default_sink_toggled();
-
-  void on_use_default_source_toggled();
-
-  void on_input_device_changed();
-
-  void on_output_device_changed();
 
   int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
 

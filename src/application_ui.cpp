@@ -10,56 +10,6 @@
 #include <future>
 #include "util.hpp"
 
-namespace {
-
-gboolean blocksize_enum_to_int(GValue* value,
-                               GVariant* variant,
-                               gpointer user_data) {
-  auto v = g_variant_get_string(variant, nullptr);
-
-  if (v == std::string("64")) {
-    g_value_set_int(value, 0);
-  } else if (v == std::string("128")) {
-    g_value_set_int(value, 1);
-  } else if (v == std::string("256")) {
-    g_value_set_int(value, 2);
-  } else if (v == std::string("512")) {
-    g_value_set_int(value, 3);
-  } else if (v == std::string("1024")) {
-    g_value_set_int(value, 4);
-  } else if (v == std::string("2048")) {
-    g_value_set_int(value, 5);
-  } else if (v == std::string("4096")) {
-    g_value_set_int(value, 6);
-  }
-
-  return true;
-}
-
-GVariant* int_to_blocksize_enum(const GValue* value,
-                                const GVariantType* expected_type,
-                                gpointer user_data) {
-  int v = g_value_get_int(value);
-
-  if (v == 0) {
-    return g_variant_new_string("64");
-  } else if (v == 1) {
-    return g_variant_new_string("128");
-  } else if (v == 2) {
-    return g_variant_new_string("256");
-  } else if (v == 3) {
-    return g_variant_new_string("512");
-  } else if (v == 4) {
-    return g_variant_new_string("1024");
-  } else if (v == 5) {
-    return g_variant_new_string("2048");
-  } else {
-    return g_variant_new_string("4096");
-  }
-}
-
-}  // namespace
-
 ApplicationUi::ApplicationUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& builder,
                              Application* application)
@@ -77,11 +27,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   builder->get_widget("enable_autostart", enable_autostart);
   builder->get_widget("enable_all_apps", enable_all_apps);
 
-  builder->get_widget("use_default_sink", use_default_sink);
-  builder->get_widget("use_default_source", use_default_source);
-  builder->get_widget("input_device", input_device);
-  builder->get_widget("output_device", output_device);
-
   builder->get_widget("reset_settings", reset_settings);
   builder->get_widget("placeholder_spectrum", placeholder_spectrum);
   builder->get_widget("stack", stack);
@@ -94,9 +39,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   builder->get_widget("add_preset", add_preset);
   builder->get_widget("import_preset", import_preset);
   builder->get_widget("calibration_button", calibration_button);
-
-  builder->get_widget("blocksize_in", blocksize_in);
-  builder->get_widget("blocksize_out", blocksize_out);
 
   builder->get_widget("headerbar", headerbar);
   builder->get_widget("help_button", help_button);
@@ -115,13 +57,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   builder->get_widget("blacklist_out_name", blacklist_out_name);
   builder->get_widget("about_button", about_button);
 
-  get_object(builder, "buffer_in", buffer_in);
-  get_object(builder, "buffer_out", buffer_out);
-  get_object(builder, "latency_in", latency_in);
-  get_object(builder, "latency_out", latency_out);
-  get_object(builder, "sink_list", sink_list);
-  get_object(builder, "source_list", source_list);
-
   // signals connection
 
   enable_autostart->signal_state_set().connect(
@@ -129,18 +64,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   reset_settings->signal_clicked().connect(
       sigc::mem_fun(*this, &ApplicationUi::on_reset_settings));
-
-  // pulseaudio device selection
-
-  use_default_sink->signal_toggled().connect(
-      sigc::mem_fun(*this, &ApplicationUi::on_use_default_sink_toggled));
-  use_default_source->signal_toggled().connect(
-      sigc::mem_fun(*this, &ApplicationUi::on_use_default_source_toggled));
-
-  input_device->signal_changed().connect(
-      sigc::mem_fun(*this, &ApplicationUi::on_input_device_changed));
-  output_device->signal_changed().connect(
-      sigc::mem_fun(*this, &ApplicationUi::on_output_device_changed));
 
   stack->connect_property_changed(
       "visible-child",
@@ -222,15 +145,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
       sigc::mem_fun(*this, &ApplicationUi::on_calibration_button_clicked));
 
   // pulseaudio signals
-
-  app->pm->sink_added.connect(
-      sigc::mem_fun(*this, &ApplicationUi::on_sink_added));
-  app->pm->sink_removed.connect(
-      sigc::mem_fun(*this, &ApplicationUi::on_sink_removed));
-  app->pm->source_added.connect(
-      sigc::mem_fun(*this, &ApplicationUi::on_source_added));
-  app->pm->source_removed.connect(
-      sigc::mem_fun(*this, &ApplicationUi::on_source_removed));
 
   connections.push_back(app->pm->new_default_sink.connect([&](auto name) {
     if (stack->get_visible_child_name() == "sink_inputs") {
@@ -364,8 +278,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   // binding glade widgets to gsettings keys
 
   auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
-  auto flag_invert_boolean =
-      Gio::SettingsBindFlags::SETTINGS_BIND_INVERT_BOOLEAN;
 
   settings->bind("use-dark-theme", theme_switch, "active", flag);
 
@@ -373,34 +285,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
                  "gtk_application_prefer_dark_theme", flag);
 
   settings->bind("enable-all-apps", enable_all_apps, "active", flag);
-
-  settings->bind("use-default-sink", use_default_sink, "active", flag);
-
-  settings->bind("use-default-sink", output_device, "sensitive",
-                 flag | flag_invert_boolean);
-
-  settings->bind("use-default-source", use_default_source, "active", flag);
-
-  settings->bind("use-default-source", input_device, "sensitive",
-                 flag | flag_invert_boolean);
-
-  settings->bind("buffer-out", buffer_out.get(), "value", flag);
-  settings->bind("latency-out", latency_out.get(), "value", flag);
-
-  settings->bind("buffer-in", buffer_in.get(), "value", flag);
-  settings->bind("latency-in", latency_in.get(), "value", flag);
-
-  settings->bind("last-used-preset", presets_menu_label, "label", flag);
-
-  g_settings_bind_with_mapping(settings->gobj(), "blocksize-in",
-                               blocksize_in->gobj(), "active",
-                               G_SETTINGS_BIND_DEFAULT, blocksize_enum_to_int,
-                               int_to_blocksize_enum, nullptr, nullptr);
-
-  g_settings_bind_with_mapping(settings->gobj(), "blocksize-out",
-                               blocksize_out->gobj(), "active",
-                               G_SETTINGS_BIND_DEFAULT, blocksize_enum_to_int,
-                               int_to_blocksize_enum, nullptr, nullptr);
 
   init_autostart_switch();
 }
@@ -566,209 +450,6 @@ void ApplicationUi::on_stack_visible_child_changed() {
   }
 
   spectrum_ui->clear_spectrum();
-}
-
-void ApplicationUi::on_sink_added(std::shared_ptr<mySinkInfo> info) {
-  bool add_to_list = true;
-
-  auto children = sink_list->children();
-
-  for (auto c : children) {
-    uint i;
-    std::string name;
-
-    c.get_value(0, i);
-    c.get_value(1, name);
-
-    if (info->index == i) {
-      add_to_list = false;
-
-      break;
-    }
-  }
-
-  if (add_to_list) {
-    Gtk::TreeModel::Row row = *(sink_list->append());
-
-    row->set_value(0, info->index);
-    row->set_value(1, info->name);
-
-    if (use_default_sink->get_active()) {
-      if (info->name == app->pm->server_info.default_sink_name) {
-        output_device->set_active(row);
-      }
-    } else {
-      auto custom_sink = settings->get_string("custom-sink");
-
-      if (info->name == custom_sink) {
-        output_device->set_active(row);
-      }
-    }
-
-    util::debug(log_tag + "added sink: " + info->name);
-  }
-}
-
-void ApplicationUi::on_sink_removed(uint idx) {
-  Gtk::TreeIter remove_iter;
-  std::string remove_name;
-
-  auto children = sink_list->children();
-
-  for (auto c : children) {
-    uint i;
-    std::string name;
-
-    c.get_value(0, i);
-    c.get_value(1, name);
-
-    if (idx == i) {
-      remove_iter = c;
-      remove_name = name;
-    }
-  }
-
-  sink_list->erase(remove_iter);
-
-  util::debug(log_tag + "removed sink: " + remove_name);
-}
-
-void ApplicationUi::on_source_added(std::shared_ptr<mySourceInfo> info) {
-  bool add_to_list = true;
-
-  auto children = source_list->children();
-
-  for (auto c : children) {
-    uint i;
-    std::string name;
-
-    c.get_value(0, i);
-    c.get_value(1, name);
-
-    if (info->index == i) {
-      add_to_list = false;
-
-      break;
-    }
-  }
-
-  if (add_to_list) {
-    Gtk::TreeModel::Row row = *(source_list->append());
-
-    row->set_value(0, info->index);
-    row->set_value(1, info->name);
-
-    if (use_default_source->get_active()) {
-      if (info->name == app->pm->server_info.default_source_name) {
-        input_device->set_active(row);
-      }
-    } else {
-      auto custom_source = settings->get_string("custom-source");
-
-      if (info->name == custom_source) {
-        input_device->set_active(row);
-      }
-    }
-
-    util::debug(log_tag + "added source: " + info->name);
-  }
-}
-
-void ApplicationUi::on_source_removed(uint idx) {
-  Gtk::TreeIter remove_iter;
-  std::string remove_name;
-
-  auto children = source_list->children();
-
-  for (auto c : children) {
-    uint i;
-    std::string name;
-
-    c.get_value(0, i);
-    c.get_value(1, name);
-
-    if (idx == i) {
-      remove_iter = c;
-      remove_name = name;
-    }
-  }
-
-  source_list->erase(remove_iter);
-
-  util::debug(log_tag + "removed source: " + remove_name);
-}
-
-void ApplicationUi::on_use_default_sink_toggled() {
-  if (use_default_sink->get_active()) {
-    auto children = sink_list->children();
-
-    for (auto c : children) {
-      std::string name;
-
-      c.get_value(1, name);
-
-      if (name == app->pm->server_info.default_sink_name) {
-        output_device->set_active(c);
-      }
-    }
-  }
-}
-
-void ApplicationUi::on_use_default_source_toggled() {
-  if (use_default_source->get_active()) {
-    auto children = source_list->children();
-
-    for (auto c : children) {
-      std::string name;
-
-      c.get_value(1, name);
-
-      if (name == app->pm->server_info.default_source_name) {
-        input_device->set_active(c);
-      }
-    }
-  }
-}
-
-void ApplicationUi::on_input_device_changed() {
-  Gtk::TreeModel::Row row = *(input_device->get_active());
-
-  if (row) {
-    uint index;
-    std::string name;
-
-    row.get_value(0, index);
-    row.get_value(1, name);
-
-    app->soe->set_source_monitor_name(name);
-
-    if (!use_default_source->get_active()) {
-      settings->set_string("custom-source", name);
-    }
-
-    util::debug(log_tag + "input device changed: " + name);
-  }
-}
-
-void ApplicationUi::on_output_device_changed() {
-  Gtk::TreeModel::Row row = *(output_device->get_active());
-
-  if (row) {
-    uint index;
-    std::string name;
-
-    row.get_value(0, index);
-    row.get_value(1, name);
-
-    app->sie->set_output_sink_name(name);
-    app->soe->webrtc->set_probe_src_device(name + ".monitor");
-
-    if (!use_default_sink->get_active()) {
-      settings->set_string("custom-sink", name);
-    }
-
-    util::debug(log_tag + "output device changed: " + name);
-  }
 }
 
 int ApplicationUi::on_listbox_sort(Gtk::ListBoxRow* row1,

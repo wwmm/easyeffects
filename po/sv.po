@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-24 16:22-0200\n"
+"POT-Creation-Date: 2018-12-24 22:10-0200\n"
 "PO-Revision-Date: 2017-10-14 10:20+0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: \n"
@@ -17,114 +17,86 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.4\n"
 
-#: data/ui/application.glade:60 data/ui/application.glade:982
-#: data/ui/application.glade:1054
+#: data/ui/application.glade:46 data/ui/application.glade:589
+#: data/ui/application.glade:661
 msgid "Name"
 msgstr "Namn"
 
-#: data/ui/application.glade:73 data/ui/application.glade:963
-#: data/ui/application.glade:1035
+#: data/ui/application.glade:59 data/ui/application.glade:570
+#: data/ui/application.glade:642
 #, fuzzy
 msgid "Create Preset"
 msgstr "Ta bort profil"
 
-#: data/ui/application.glade:91 src/application_ui.cpp:791
+#: data/ui/application.glade:77 src/application_ui.cpp:487
 #, fuzzy
 msgid "Import Presets"
 msgstr "Öppna förinställning"
 
-#: data/ui/application.glade:187 src/calibration_ui.cpp:48
+#: data/ui/application.glade:143 src/calibration_ui.cpp:48
 #: src/calibration_ui.cpp:175
 #, fuzzy
 msgid "Test Signals"
 msgstr "Testsignal"
 
-#: data/ui/application.glade:209
+#: data/ui/application.glade:165
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
 #: data/com.github.wwmm.pulseeffects.desktop.in:3
 msgid "PulseEffects"
 msgstr "PulseEffects"
 
-#: data/ui/application.glade:281 data/ui/application.glade:503
+#: data/ui/application.glade:237 data/ui/application.glade:459
 msgid "Settings"
 msgstr "Inställningar"
 
-#: data/ui/application.glade:303
+#: data/ui/application.glade:259
 msgid "Help"
 msgstr ""
 
-#: data/ui/application.glade:326 data/ui/compressor.glade:205
+#: data/ui/application.glade:282 data/ui/compressor.glade:205
 #: data/ui/filter.glade:203 data/ui/equalizer.glade:280
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
-#: src/application_ui.cpp:796 src/application_ui.cpp:871
+#: src/application_ui.cpp:492 src/application_ui.cpp:567
 msgid "Presets"
 msgstr "Profiler"
 
-#: data/ui/application.glade:428
+#: data/ui/application.glade:384
 msgid "Start Service at Login"
 msgstr ""
 
-#: data/ui/application.glade:453
+#: data/ui/application.glade:409
 #, fuzzy
 msgid "Enable All Applications"
 msgstr "Program"
 
-#: data/ui/application.glade:478
+#: data/ui/application.glade:434
 msgid "Use Dark Theme"
 msgstr "Använd mörkt tema"
 
-#: data/ui/application.glade:512 data/ui/equalizer_band.glade:105
+#: data/ui/application.glade:468 data/ui/equalizer_band.glade:105
 #: data/ui/equalizer_band.glade:120
 msgid "Reset"
 msgstr "Återställ"
 
-#: data/ui/application.glade:526
+#: data/ui/application.glade:482
 msgid "About"
 msgstr ""
 
-#: data/ui/application.glade:544
+#: data/ui/application.glade:500
 msgid "General"
 msgstr "Allmänt"
 
-#: data/ui/application.glade:558 data/ui/convolver.glade:396
-msgid "Spectrum"
-msgstr "Spektrum"
-
-#: data/ui/application.glade:587 data/ui/application.glade:736
-msgid "Use Default"
-msgstr ""
-
-#: data/ui/application.glade:625 data/ui/application.glade:773
-#: data/ui/app_info.glade:156
-#, fuzzy
-msgid "Buffer"
-msgstr "Latens"
-
-#: data/ui/application.glade:658 data/ui/application.glade:805
-#: data/ui/app_info.glade:183
-msgid "Latency"
-msgstr "Latens"
-
-#: data/ui/application.glade:691 data/ui/application.glade:837
-#, fuzzy
-msgid "Block Size"
-msgstr "Rumsstorlek"
-
-#: data/ui/application.glade:722 data/ui/application.glade:993
+#: data/ui/application.glade:600 data/ui/pulse_settings.glade:204
 #, fuzzy
 msgid "Input Effects"
 msgstr "PulseEffects"
 
-#: data/ui/application.glade:868 data/ui/application.glade:1065
+#: data/ui/application.glade:672 data/ui/pulse_settings.glade:352
 #, fuzzy
 msgid "Output Effects"
 msgstr "Ingångs-begränsning"
 
-#: data/ui/application.glade:895
-msgid "Pulseaudio"
-msgstr ""
-
-#: data/ui/application.glade:1079
+#: data/ui/application.glade:686
 msgid "Blacklist"
 msgstr ""
 
@@ -165,6 +137,26 @@ msgstr "Spektrum"
 #, fuzzy
 msgid "Sampling"
 msgstr "Resampler"
+
+#: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:218
+msgid "Use Default"
+msgstr ""
+
+#: data/ui/pulse_settings.glade:107 data/ui/pulse_settings.glade:255
+#: data/ui/app_info.glade:156
+#, fuzzy
+msgid "Buffer"
+msgstr "Latens"
+
+#: data/ui/pulse_settings.glade:140 data/ui/pulse_settings.glade:288
+#: data/ui/app_info.glade:183
+msgid "Latency"
+msgstr "Latens"
+
+#: data/ui/pulse_settings.glade:173 data/ui/pulse_settings.glade:321
+#, fuzzy
+msgid "Block Size"
+msgstr "Rumsstorlek"
 
 #: data/ui/about.glade.in:11
 msgid "Audio Effects for Pulseaudio Applications"
@@ -995,6 +987,10 @@ msgstr "Ljudförstärkare"
 msgid "Select the impulse Response File"
 msgstr "Platt respons"
 
+#: data/ui/convolver.glade:396 src/application_ui.cpp:189
+msgid "Spectrum"
+msgstr "Spektrum"
+
 #: data/ui/crystalizer.glade:24
 #, fuzzy
 msgid "Crystalizer"
@@ -1325,11 +1321,15 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: src/application_ui.cpp:792 src/convolver_ui.cpp:268
+#: src/application_ui.cpp:200
+msgid "Pulseaudio"
+msgstr ""
+
+#: src/application_ui.cpp:488 src/convolver_ui.cpp:268
 msgid "Open"
 msgstr ""
 
-#: src/application_ui.cpp:792 src/convolver_ui.cpp:268
+#: src/application_ui.cpp:488 src/convolver_ui.cpp:268
 #, fuzzy
 msgid "Cancel"
 msgstr "Ljudförstärkare"

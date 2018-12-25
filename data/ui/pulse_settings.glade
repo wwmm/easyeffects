@@ -118,7 +118,6 @@
                 <property name="halign">start</property>
                 <property name="valign">center</property>
                 <property name="width_chars">10</property>
-                <property name="text" translatable="yes">1000</property>
                 <property name="secondary_icon_name">pulseeffects-us-symbolic</property>
                 <property name="secondary_icon_activatable">False</property>
                 <property name="input_purpose">number</property>
@@ -152,7 +151,6 @@
                 <property name="halign">start</property>
                 <property name="valign">center</property>
                 <property name="width_chars">10</property>
-                <property name="text" translatable="yes">100</property>
                 <property name="secondary_icon_name">pulseeffects-us-symbolic</property>
                 <property name="secondary_icon_activatable">False</property>
                 <property name="input_purpose">number</property>
@@ -268,7 +266,6 @@
                 <property name="halign">start</property>
                 <property name="valign">center</property>
                 <property name="width_chars">10</property>
-                <property name="text" translatable="yes">100000</property>
                 <property name="secondary_icon_name">pulseeffects-us-symbolic</property>
                 <property name="secondary_icon_activatable">False</property>
                 <property name="input_purpose">number</property>
@@ -302,7 +299,6 @@
                 <property name="halign">start</property>
                 <property name="valign">center</property>
                 <property name="width_chars">10</property>
-                <property name="text" translatable="yes">10000</property>
                 <property name="secondary_icon_name">pulseeffects-us-symbolic</property>
                 <property name="secondary_icon_activatable">False</property>
                 <property name="input_purpose">number</property>
