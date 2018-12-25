@@ -56,6 +56,7 @@ pulseeffects_sources = [
 	'webrtc_ui.cpp',
 	'crystalizer.cpp',
 	'crystalizer_ui.cpp',
+	'presets_menu_ui.cpp',
 	'presets_manager.cpp',
 	'autogain_preset.cpp',
 	'limiter_preset.cpp',

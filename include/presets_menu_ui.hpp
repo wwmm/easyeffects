@@ -16,7 +16,7 @@ class PresetsMenuUi : public Gtk::Grid {
   virtual ~PresetsMenuUi();
 
  private:
-  std::string log_tag = "spectrum_ui: ";
+  std::string log_tag = "presets_menu_ui: ";
 
   Glib::RefPtr<Gio::Settings> settings;
 
