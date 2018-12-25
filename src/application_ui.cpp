@@ -101,6 +101,10 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   presets_menu_label->set_text(settings->get_string("last-used-preset"));
 
+  settings->signal_changed("last-used-preset").connect([=](auto key) {
+    presets_menu_label->set_text(settings->get_string("last-used-preset"));
+  });
+
   // spectrum widgets
 
   auto b_spectrum = Gtk::Builder::create_from_resource(

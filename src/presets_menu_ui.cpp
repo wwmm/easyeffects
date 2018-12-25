@@ -167,12 +167,13 @@ void PresetsMenuUi::populate_presets_listbox() {
     /*if the preset with the name in the button label still exists we do
     not reset the label to "Presets"
     */
-    // if (name == presets_menu_label->get_text()) {
-    //   reset_menu_button_label = false;
-    // }
+
+    if (name == settings->get_string("last-used-preset")) {
+      reset_menu_button_label = false;
+    }
   }
 
-  // if (reset_menu_button_label) {
-  //   presets_menu_label->set_text(_("Presets"));
-  // }
+  if (reset_menu_button_label) {
+    settings->set_string("last-used-preset", _("Presets"));
+  }
 }

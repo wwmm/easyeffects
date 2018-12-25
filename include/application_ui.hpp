@@ -31,9 +31,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   static ApplicationUi* create(Application* app);
 
-  Gtk::MenuButton* presets_menu_button;
-  Gtk::Label* presets_menu_label;
-
  private:
   std::string log_tag = "application_ui: ";
 
@@ -48,6 +45,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   Gtk::Stack *stack, *stack_menu_settings;
   Gtk::Label* headerbar_info;
   Gtk::Popover* presets_menu;
+  Gtk::MenuButton* presets_menu_button;
+  Gtk::Label* presets_menu_label;
 
   Gtk::HeaderBar* headerbar;
   Gtk::Image *headerbar_icon1, *headerbar_icon2;
