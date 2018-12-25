@@ -46,17 +46,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   builder->get_widget("headerbar_icon2", headerbar_icon2);
   builder->get_widget("headerbar_info", headerbar_info);
 
-  builder->get_widget("blacklist_in_scrolled_window",
-                      blacklist_in_scrolled_window);
-  builder->get_widget("blacklist_out_scrolled_window",
-                      blacklist_out_scrolled_window);
-  builder->get_widget("add_blacklist_in", add_blacklist_in);
-  builder->get_widget("add_blacklist_out", add_blacklist_out);
-  builder->get_widget("blacklist_in_listbox", blacklist_in_listbox);
-  builder->get_widget("blacklist_out_listbox", blacklist_out_listbox);
-  builder->get_widget("blacklist_in_name", blacklist_in_name);
-  builder->get_widget("blacklist_out_name", blacklist_out_name);
-
   builder->get_widget("about_button", about_button);
 
   // signals connection
@@ -106,40 +95,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   import_preset->signal_clicked().connect(
       sigc::mem_fun(*this, &ApplicationUi::on_import_preset_clicked));
-
-  // blacklist widgets callbacks
-
-  blacklist_in_listbox->set_sort_func(
-      sigc::mem_fun(*this, &ApplicationUi::on_listbox_sort));
-
-  blacklist_out_listbox->set_sort_func(
-      sigc::mem_fun(*this, &ApplicationUi::on_listbox_sort));
-
-  add_blacklist_in->signal_clicked().connect([=]() {
-    auto name = blacklist_in_name->get_text();
-
-    if (!name.empty()) {
-      std::vector<std::string> bl = settings->get_string_array("blacklist-in");
-      bl.push_back(name);
-      settings->set_string_array("blacklist-in", bl);
-      blacklist_in_name->set_text("");
-      populate_blacklist_in_listbox();
-    }
-  });
-
-  add_blacklist_out->signal_clicked().connect([=]() {
-    auto name = blacklist_out_name->get_text();
-    if (!name.empty()) {
-      std::vector<std::string> bl = settings->get_string_array("blacklist-out");
-      bl.push_back(name);
-      settings->set_string_array("blacklist-out", bl);
-      blacklist_out_name->set_text("");
-      populate_blacklist_out_listbox();
-    }
-  });
-
-  populate_blacklist_in_listbox();
-  populate_blacklist_out_listbox();
 
   // calibration
 
@@ -200,6 +155,17 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   stack_menu_settings->add(*pulse_settings_ui, "settings_pulse",
                            _("Pulseaudio"));
+
+  // Blacklist settings interface
+
+  auto b_blacklist_settings = Gtk::Builder::create_from_resource(
+      "/com/github/wwmm/pulseeffects/ui/blacklist_settings.glade");
+
+  b_blacklist_settings->get_widget_derived(
+      "widgets_grid", blacklist_settings_ui, settings, app);
+
+  stack_menu_settings->add(*blacklist_settings_ui, "settings_blacklist",
+                           _("Blacklist"));
 
   // sink inputs interface
 
@@ -567,88 +533,6 @@ void ApplicationUi::populate_presets_listbox() {
 
   if (reset_menu_button_label) {
     presets_menu_label->set_text(_("Presets"));
-  }
-}
-
-void ApplicationUi::populate_blacklist_in_listbox() {
-  auto children = blacklist_in_listbox->get_children();
-
-  for (auto c : children) {
-    blacklist_in_listbox->remove(*c);
-  }
-
-  std::vector<std::string> names = settings->get_string_array("blacklist-in");
-
-  for (auto name : names) {
-    auto b = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/ui/blacklist_row.glade");
-
-    Gtk::ListBoxRow* row;
-    Gtk::Button* remove_btn;
-    Gtk::Label* label;
-
-    b->get_widget("blacklist_row", row);
-    b->get_widget("remove", remove_btn);
-    b->get_widget("name", label);
-
-    row->set_name(name);
-    label->set_text(name);
-
-    connections.push_back(remove_btn->signal_clicked().connect([=]() {
-      std::vector<std::string> bl = settings->get_string_array("blacklist-in");
-
-      bl.erase(std::remove_if(bl.begin(), bl.end(),
-                              [=](auto& a) { return a == name; }),
-               bl.end());
-
-      settings->set_string_array("blacklist-in", bl);
-
-      populate_blacklist_in_listbox();
-    }));
-
-    blacklist_in_listbox->add(*row);
-    blacklist_in_listbox->show_all();
-  }
-}
-
-void ApplicationUi::populate_blacklist_out_listbox() {
-  auto children = blacklist_out_listbox->get_children();
-
-  for (auto c : children) {
-    blacklist_out_listbox->remove(*c);
-  }
-
-  std::vector<std::string> names = settings->get_string_array("blacklist-out");
-
-  for (auto name : names) {
-    auto b = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/ui/blacklist_row.glade");
-
-    Gtk::ListBoxRow* row;
-    Gtk::Button* remove_btn;
-    Gtk::Label* label;
-
-    b->get_widget("blacklist_row", row);
-    b->get_widget("remove", remove_btn);
-    b->get_widget("name", label);
-
-    row->set_name(name);
-    label->set_text(name);
-
-    connections.push_back(remove_btn->signal_clicked().connect([=]() {
-      std::vector<std::string> bl = settings->get_string_array("blacklist-out");
-
-      bl.erase(std::remove_if(bl.begin(), bl.end(),
-                              [=](auto& a) { return a == name; }),
-               bl.end());
-
-      settings->set_string_array("blacklist-out", bl);
-
-      populate_blacklist_out_listbox();
-    }));
-
-    blacklist_out_listbox->add(*row);
-    blacklist_out_listbox->show_all();
   }
 }
 

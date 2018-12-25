@@ -53,11 +53,6 @@ BlacklistSettingsUi::BlacklistSettingsUi(
 
   populate_blacklist_in_listbox();
   populate_blacklist_out_listbox();
-
-  // auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
-
-  // settings->bind("use-custom-color", spectrum_color_button, "sensitive",
-  // flag);
 }
 
 BlacklistSettingsUi::~BlacklistSettingsUi() {

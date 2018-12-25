@@ -12,7 +12,7 @@
     <property name="can_focus">False</property>
     <property name="icon_name">list-add-symbolic</property>
   </object>
-  <object class="GtkGrid" id="settings_blacklist">
+  <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="halign">center</property>

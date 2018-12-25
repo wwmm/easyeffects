@@ -14,6 +14,7 @@
 #include <gtkmm/stack.h>
 #include <gtkmm/switch.h>
 #include "application.hpp"
+#include "blacklist_settings_ui.hpp"
 #include "calibration_ui.hpp"
 #include "pulse_settings_ui.hpp"
 #include "sink_input_effects_ui.hpp"
@@ -42,14 +43,13 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   Gtk::Box* placeholder_spectrum;
   Gtk::Button *reset_settings, *add_preset, *import_preset, *calibration_button,
-      *help_button, *add_blacklist_in, *add_blacklist_out, *about_button;
+      *help_button, *about_button;
   Gtk::Stack *stack, *stack_menu_settings;
-  Gtk::ListBox *presets_listbox, *blacklist_in_listbox, *blacklist_out_listbox;
+  Gtk::ListBox* presets_listbox;
   Gtk::MenuButton* presets_menu_button;
   Gtk::Label *presets_menu_label, *headerbar_info;
-  Gtk::Entry *preset_name, *blacklist_in_name, *blacklist_out_name;
-  Gtk::ScrolledWindow *presets_scrolled_window, *blacklist_in_scrolled_window,
-      *blacklist_out_scrolled_window;
+  Gtk::Entry* preset_name;
+  Gtk::ScrolledWindow* presets_scrolled_window;
 
   Gtk::HeaderBar* headerbar;
   Gtk::Image *headerbar_icon1, *headerbar_icon2;
@@ -60,6 +60,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   SpectrumUi* spectrum_ui;
   SpectrumSettingsUi* spectrum_settings_ui;
   PulseSettingsUi* pulse_settings_ui;
+  BlacklistSettingsUi* blacklist_settings_ui;
   SinkInputEffectsUi* sie_ui;
   SourceOutputEffectsUi* soe_ui;
 
@@ -79,10 +80,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   void init_autostart_switch();
 
   void populate_presets_listbox();
-
-  void populate_blacklist_in_listbox();
-
-  void populate_blacklist_out_listbox();
 
   bool on_enable_autostart(bool state);
 
