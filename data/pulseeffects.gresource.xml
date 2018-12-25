@@ -32,6 +32,7 @@
         <file>ui/pitch.glade</file>
         <file>ui/webrtc.glade</file>
         <file>ui/preset_row.glade</file>
+        <file>ui/presets_menu.glade</file>
         <file>ui/blacklist_row.glade</file>
         <file>ui/calibration.glade</file>
         <file>ui/calibration_signals.glade</file>

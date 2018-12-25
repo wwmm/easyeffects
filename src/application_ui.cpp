@@ -62,6 +62,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // presets widgets callbacks
 
+  presets_menu_label->set_text(settings->get_string("last-used-preset"));
+
   presets_menu_button->signal_clicked().connect(
       sigc::mem_fun(*this, &ApplicationUi::on_presets_menu_button_clicked));
 
