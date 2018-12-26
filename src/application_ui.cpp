@@ -39,6 +39,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   spectrum_ui = SpectrumUi::add_to_box(placeholder_spectrum, app);
   presets_menu_ui = PresetsMenuUi::add_to_popover(presets_menu, app);
+  sie_ui = SinkInputEffectsUi::add_to_stack(stack, app->sie.get());
   GeneralSettingsUi::add_to_stack(stack_menu_settings, app);
   SpectrumSettingsUi::add_to_stack(stack_menu_settings, app);
   PulseSettingsUi::add_to_stack(stack_menu_settings, app);
@@ -81,24 +82,12 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // sink inputs widgets
 
-  auto b_sie_ui = Gtk::Builder::create_from_resource(
-      "/com/github/wwmm/pulseeffects/ui/effects_base.glade");
-
-  auto settings_sie_ui =
-      Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs");
-
-  b_sie_ui->get_widget_derived("widgets_box", sie_ui, settings_sie_ui,
-                               app->sie.get());
-
   app->pm->sink_input_added.connect(
       sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_added));
   app->pm->sink_input_changed.connect(
       sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_changed));
   app->pm->sink_input_removed.connect(
       sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_removed));
-
-  stack->add(*sie_ui, "sink_inputs");
-  stack->child_property_icon_name(*sie_ui).set_value("audio-speakers-symbolic");
 
   connections.push_back(app->sie->new_latency.connect([=](int latency) {
     sie_latency = latency;

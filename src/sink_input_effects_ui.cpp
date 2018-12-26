@@ -149,6 +149,25 @@ SinkInputEffectsUi::~SinkInputEffectsUi() {
   util::debug(log_tag + "destroyed");
 }
 
+SinkInputEffectsUi* SinkInputEffectsUi::add_to_stack(
+    Gtk::Stack* stack,
+    SinkInputEffects* sie_ptr) {
+  auto builder = Gtk::Builder::create_from_resource(
+      "/com/github/wwmm/pulseeffects/ui/effects_base.glade");
+
+  auto settings =
+      Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs");
+
+  SinkInputEffectsUi* ui;
+
+  builder->get_widget_derived("widgets_box", ui, settings, sie_ptr);
+
+  stack->add(*ui, "sink_inputs");
+  stack->child_property_icon_name(*ui).set_value("audio-speakers-symbolic");
+
+  return ui;
+}
+
 void SinkInputEffectsUi::level_meters_connections() {
   // limiter level meters connections
 

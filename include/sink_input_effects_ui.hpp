@@ -1,6 +1,7 @@
 #ifndef SINK_INPUT_EFFECTS_UI_HPP
 #define SINK_INPUT_EFFECTS_UI_HPP
 
+#include <gtkmm/stack.h>
 #include "autogain_ui.hpp"
 #include "bass_enhancer_ui.hpp"
 #include "compressor_ui.hpp"
@@ -30,6 +31,9 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
                      SinkInputEffects* sie_ptr);
 
   virtual ~SinkInputEffectsUi();
+
+  static SinkInputEffectsUi* add_to_stack(Gtk::Stack* stack,
+                                          SinkInputEffects* sie_ptr);
 
  protected:
   std::string log_tag = "sie_ui: ";
