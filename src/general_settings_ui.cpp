@@ -20,6 +20,9 @@ GeneralSettingsUi::GeneralSettingsUi(
   builder->get_widget("enable_realtime", enable_realtime);
   builder->get_widget("enable_high_priority", enable_high_priority);
 
+  get_object(builder, "adjustment_priority", adjustment_priority);
+  get_object(builder, "adjustment_niceness", adjustment_niceness);
+
   // signals connection
 
   enable_autostart->signal_state_set().connect(
@@ -34,8 +37,9 @@ GeneralSettingsUi::GeneralSettingsUi(
   auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
   settings->bind("use-dark-theme", theme_switch, "active", flag);
-
   settings->bind("enable-all-apps", enable_all_apps, "active", flag);
+  settings->bind("enable-realtime", enable_realtime, "active", flag);
+  settings->bind("enable-high-priority", enable_high_priority, "active", flag);
 
   init_autostart_switch();
 }

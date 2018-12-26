@@ -11,6 +11,7 @@
   </object>
   <object class="GtkAdjustment" id="adjustment_priority">
     <property name="upper">99.989999999999995</property>
+    <property name="value">4</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
@@ -227,7 +228,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkSpinButton" id="priority">
+      <object class="GtkSpinButton" id="realtime_priority">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="halign">start</property>
