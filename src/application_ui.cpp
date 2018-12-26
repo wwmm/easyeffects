@@ -63,13 +63,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // presets menu widgets
 
-  auto b_presets_menu_ui = Gtk::Builder::create_from_resource(
-      "/com/github/wwmm/pulseeffects/ui/presets_menu.glade");
-
-  b_presets_menu_ui->get_widget_derived("widgets_grid", presets_menu_ui,
-                                        settings, app);
-
-  presets_menu->add(*presets_menu_ui);
+  presets_menu_ui = PresetsMenuUi::add_to_popover(presets_menu, app);
 
   presets_menu_button->signal_clicked().connect(sigc::mem_fun(
       *presets_menu_ui, &PresetsMenuUi::on_presets_menu_button_clicked));

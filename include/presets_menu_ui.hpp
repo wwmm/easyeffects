@@ -7,6 +7,7 @@
 #include <gtkmm/entry.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/listbox.h>
+#include <gtkmm/popover.h>
 #include <gtkmm/scrolledwindow.h>
 #include "application.hpp"
 
@@ -18,6 +19,8 @@ class PresetsMenuUi : public Gtk::Grid {
                 Application* application);
 
   virtual ~PresetsMenuUi();
+
+  static PresetsMenuUi* add_to_popover(Gtk::Popover* popover, Application* app);
 
   void on_presets_menu_button_clicked();
 

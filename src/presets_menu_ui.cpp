@@ -58,6 +58,22 @@ PresetsMenuUi::~PresetsMenuUi() {
   util::debug(log_tag + "destroyed");
 }
 
+PresetsMenuUi* PresetsMenuUi::add_to_popover(Gtk::Popover* popover,
+                                             Application* app) {
+  auto builder = Gtk::Builder::create_from_resource(
+      "/com/github/wwmm/pulseeffects/ui/presets_menu.glade");
+
+  auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
+
+  PresetsMenuUi* ui;
+
+  builder->get_widget_derived("widgets_grid", ui, settings, app);
+
+  popover->add(*ui);
+
+  return ui;
+}
+
 int PresetsMenuUi::on_listbox_sort(Gtk::ListBoxRow* row1,
                                    Gtk::ListBoxRow* row2) {
   auto name1 = row1->get_name();
