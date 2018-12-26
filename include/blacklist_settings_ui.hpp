@@ -2,12 +2,14 @@
 #define BLACKLIST_SETTINGS_UI_HPP
 
 #include <giomm/settings.h>
+#include <glibmm/i18n.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/button.h>
 #include <gtkmm/entry.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/listbox.h>
 #include <gtkmm/scrolledwindow.h>
+#include <gtkmm/stack.h>
 
 class BlacklistSettingsUi : public Gtk::Grid {
  public:
@@ -16,6 +18,8 @@ class BlacklistSettingsUi : public Gtk::Grid {
                       const Glib::RefPtr<Gio::Settings>& refSettings);
 
   virtual ~BlacklistSettingsUi();
+
+  static BlacklistSettingsUi* add_to_stack(Gtk::Stack* stack);
 
  private:
   std::string log_tag = "blacklist_settings_ui: ";

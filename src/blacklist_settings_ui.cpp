@@ -72,6 +72,21 @@ BlacklistSettingsUi::~BlacklistSettingsUi() {
   util::debug(log_tag + "destroyed");
 }
 
+BlacklistSettingsUi* BlacklistSettingsUi::add_to_stack(Gtk::Stack* stack) {
+  auto builder = Gtk::Builder::create_from_resource(
+      "/com/github/wwmm/pulseeffects/ui/blacklist_settings.glade");
+
+  auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
+
+  BlacklistSettingsUi* ui;
+
+  builder->get_widget_derived("widgets_grid", ui, settings);
+
+  stack->add(*ui, "settings_blacklist", _("Blacklist"));
+
+  return ui;
+}
+
 void BlacklistSettingsUi::populate_blacklist_in_listbox() {
   auto children = blacklist_in_listbox->get_children();
 

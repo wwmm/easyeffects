@@ -90,27 +90,21 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // Pulseaudio settings widgets
 
-  // auto b_pulse_settings = Gtk::Builder::create_from_resource(
-  //     "/com/github/wwmm/pulseeffects/ui/pulse_settings.glade");
-  //
-  // b_pulse_settings->get_widget_derived("widgets_grid", pulse_settings_ui,
-  //                                      settings, app);
-  //
-  // stack_menu_settings->add(*pulse_settings_ui, "settings_pulse",
-  //                          _("Pulseaudio"));
-
   pulse_settings_ui = PulseSettingsUi::add_to_stack(stack_menu_settings, app);
 
   // Blacklist settings widgets
 
-  auto b_blacklist_settings = Gtk::Builder::create_from_resource(
-      "/com/github/wwmm/pulseeffects/ui/blacklist_settings.glade");
+  // auto b_blacklist_settings = Gtk::Builder::create_from_resource(
+  //     "/com/github/wwmm/pulseeffects/ui/blacklist_settings.glade");
+  //
+  // b_blacklist_settings->get_widget_derived("widgets_grid",
+  //                                          blacklist_settings_ui, settings);
+  //
+  // stack_menu_settings->add(*blacklist_settings_ui, "settings_blacklist",
+  //                          _("Blacklist"));
 
-  b_blacklist_settings->get_widget_derived("widgets_grid",
-                                           blacklist_settings_ui, settings);
-
-  stack_menu_settings->add(*blacklist_settings_ui, "settings_blacklist",
-                           _("Blacklist"));
+  blacklist_settings_ui =
+      BlacklistSettingsUi::add_to_stack(stack_menu_settings);
 
   // sink inputs widgets
 
