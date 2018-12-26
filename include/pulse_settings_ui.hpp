@@ -22,7 +22,7 @@ class PulseSettingsUi : public Gtk::Grid {
 
   virtual ~PulseSettingsUi();
 
-  static PulseSettingsUi* add_to_stack(Gtk::Stack* stack, Application* app);
+  static void add_to_stack(Gtk::Stack* stack, Application* app);
 
  private:
   std::string log_tag = "pulse_settings_ui: ";

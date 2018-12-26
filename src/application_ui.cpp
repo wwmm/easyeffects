@@ -5,6 +5,7 @@
 #include <gtkmm/settings.h>
 #include "blacklist_settings_ui.hpp"
 #include "general_settings_ui.hpp"
+#include "pulse_settings_ui.hpp"
 #include "spectrum_settings_ui.hpp"
 #include "util.hpp"
 
@@ -37,15 +38,10 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   builder->get_widget("headerbar_info", headerbar_info);
 
   spectrum_ui = SpectrumUi::add_to_box(placeholder_spectrum, app);
-
   presets_menu_ui = PresetsMenuUi::add_to_popover(presets_menu, app);
-
   GeneralSettingsUi::add_to_stack(stack_menu_settings, app);
-
   SpectrumSettingsUi::add_to_stack(stack_menu_settings, app);
-
-  pulse_settings_ui = PulseSettingsUi::add_to_stack(stack_menu_settings, app);
-
+  PulseSettingsUi::add_to_stack(stack_menu_settings, app);
   BlacklistSettingsUi::add_to_stack(stack_menu_settings);
 
   stack->connect_property_changed(

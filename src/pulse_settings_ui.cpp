@@ -132,8 +132,7 @@ PulseSettingsUi::~PulseSettingsUi() {
   util::debug(log_tag + "destroyed");
 }
 
-PulseSettingsUi* PulseSettingsUi::add_to_stack(Gtk::Stack* stack,
-                                               Application* app) {
+void PulseSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
   auto builder = Gtk::Builder::create_from_resource(
       "/com/github/wwmm/pulseeffects/ui/pulse_settings.glade");
 
@@ -144,8 +143,6 @@ PulseSettingsUi* PulseSettingsUi::add_to_stack(Gtk::Stack* stack,
   builder->get_widget_derived("widgets_grid", ui, settings, app);
 
   stack->add(*ui, "settings_pulse", _("Pulseaudio"));
-
-  return ui;
 }
 
 void PulseSettingsUi::on_sink_added(std::shared_ptr<mySinkInfo> info) {

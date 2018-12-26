@@ -13,7 +13,6 @@
 #include "application.hpp"
 #include "calibration_ui.hpp"
 #include "presets_menu_ui.hpp"
-#include "pulse_settings_ui.hpp"
 #include "sink_input_effects_ui.hpp"
 #include "source_output_effects_ui.hpp"
 
@@ -52,7 +51,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   PresetsMenuUi* presets_menu_ui;
   SpectrumUi* spectrum_ui;
-  PulseSettingsUi* pulse_settings_ui;
   SinkInputEffectsUi* sie_ui;
   SourceOutputEffectsUi* soe_ui;
 
