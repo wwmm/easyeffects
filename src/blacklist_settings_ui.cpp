@@ -51,6 +51,16 @@ BlacklistSettingsUi::BlacklistSettingsUi(
     }
   });
 
+  connections.push_back(
+      settings->signal_changed("blacklist-in").connect([&](auto key) {
+        populate_blacklist_in_listbox();
+      }));
+
+  connections.push_back(
+      settings->signal_changed("blacklist-out").connect([&](auto key) {
+        populate_blacklist_out_listbox();
+      }));
+
   populate_blacklist_in_listbox();
   populate_blacklist_out_listbox();
 }

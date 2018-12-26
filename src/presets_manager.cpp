@@ -89,6 +89,9 @@ void PresetsManager::add(const std::string& name) {
 void PresetsManager::save_general_settings(boost::property_tree::ptree& root) {
   boost::property_tree::ptree node_in;
   Glib::Variant<std::vector<double>> aux;
+  std::vector<std::string> blacklist;
+
+  // spectrum keys
 
   root.put("spectrum.show", settings->get_boolean("show-spectrum"));
   root.put("spectrum.n-points", settings->get_int("spectrum-n-points"));
@@ -110,9 +113,41 @@ void PresetsManager::save_general_settings(boost::property_tree::ptree& root) {
   }
 
   root.add_child("spectrum.color", node_in);
+
+  // input blacklist
+
+  blacklist = settings->get_string_array("blacklist-in");
+
+  node_in.clear();
+
+  for (auto& p : blacklist) {
+    boost::property_tree::ptree node;
+    node.put("", p);
+    node_in.push_back(std::make_pair("", node));
+  }
+
+  root.add_child("input.blacklist", node_in);
+
+  // output blacklist
+
+  blacklist = settings->get_string_array("blacklist-out");
+
+  node_in.clear();
+
+  for (auto& p : blacklist) {
+    boost::property_tree::ptree node;
+    node.put("", p);
+    node_in.push_back(std::make_pair("", node));
+  }
+
+  root.add_child("output.blacklist", node_in);
 }
 
 void PresetsManager::load_general_settings(boost::property_tree::ptree& root) {
+  std::vector<std::string> blacklist;
+
+  // spectrum keys
+
   settings->set_boolean(
       "show-spectrum",
       root.get<bool>("spectrum.show",
@@ -165,6 +200,32 @@ void PresetsManager::load_general_settings(boost::property_tree::ptree& root) {
     settings->set_value("spectrum-color", v);
   } catch (const boost::property_tree::ptree_error& e) {
     settings->reset("spectrum-color");
+  }
+
+  // input blacklist
+
+  try {
+    for (auto& p : root.get_child("input.blacklist")) {
+      blacklist.push_back(p.second.data());
+    }
+
+    settings->set_string_array("blacklist-in", blacklist);
+  } catch (const boost::property_tree::ptree_error& e) {
+    settings->reset("blacklist-in");
+  }
+
+  // output blacklist
+
+  blacklist.clear();
+
+  try {
+    for (auto& p : root.get_child("output.blacklist")) {
+      blacklist.push_back(p.second.data());
+    }
+
+    settings->set_string_array("blacklist-out", blacklist);
+  } catch (const boost::property_tree::ptree_error& e) {
+    settings->reset("blacklist-out");
   }
 }
 
