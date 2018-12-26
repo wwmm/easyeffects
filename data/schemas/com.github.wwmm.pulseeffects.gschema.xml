@@ -187,7 +187,7 @@
             <default>10</default>
         </key>
         <key name="enable-all-apps" type="b">
-            <default>false</default>
+            <default>true</default>
         </key>
         <key name="use-dark-theme" type="b">
             <default>false</default>
