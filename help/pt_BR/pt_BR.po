@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2018-12-24 12:34-0200\n"
+"POT-Creation-Date: 2018-12-26 20:40-0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -1712,6 +1712,41 @@ msgid ""
 msgstr ""
 "Redefine todos os parâmetros para seus valores padrões. Isto redefinirá os "
 "plugins também."
+
+#. (itstool) path: title/em
+#: C/general.page:48
+msgid "Priority type"
+msgstr "Tipo de Prioridade"
+
+#. (itstool) path: item/p
+#: C/general.page:50
+msgid ""
+"Choose between real time mode, niceness or none. This parameter allows to "
+"choose a higher priority for the threads that process audio."
+msgstr ""
+"Escolha entre o modo de tempo real, gentileza ou nenhum. Esse parâmetro "
+"permite escolher uma prioridade mais alta para os segmentos que processam "
+"áudio."
+
+#. (itstool) path: title/em
+#: C/general.page:57
+msgid "Niceness"
+msgstr "Gentileza"
+
+#. (itstool) path: item/p
+#: C/general.page:59
+msgid "Niceness value."
+msgstr "Valor da gentileza."
+
+#. (itstool) path: title/em
+#: C/general.page:65
+msgid "Priority"
+msgstr "Prioridade"
+
+#. (itstool) path: item/p
+#: C/general.page:67
+msgid "Real time priority."
+msgstr "Prioridade em tempo real"
 
 #. (itstool) path: title/em
 #: C/spectrum.page:13

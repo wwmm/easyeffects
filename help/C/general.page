@@ -43,5 +43,30 @@
                 Reset all parameters to their default values. This will reset the plugins too.
             </p>
         </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Priority type</em>
+            </title>
+            <p>
+                Choose between real time mode, niceness or none. This parameter allows to choose
+                a higher priority for the threads that process audio.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Niceness</em>
+            </title>
+            <p>
+                Niceness value.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Priority</em>
+            </title>
+            <p>
+                Real time priority.
+            </p>
+        </item>
     </terms>
 </page>

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-12-24 12:34-0200\n"
+"POT-Creation-Date: 2018-12-26 20:40-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1474,6 +1474,36 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/general.page:42
 msgid "Reset all parameters to their default values. This will reset the plugins too."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/general.page:48
+msgid "Priority type"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/general.page:50
+msgid "Choose between real time mode, niceness or none. This parameter allows to choose a higher priority for the threads that process audio."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/general.page:57
+msgid "Niceness"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/general.page:59
+msgid "Niceness value."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/general.page:65
+msgid "Priority"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/general.page:67
+msgid "Real time priority."
 msgstr ""
 
 #. (itstool) path: title/em
