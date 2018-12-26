@@ -8,14 +8,12 @@
 #include <gtkmm/grid.h>
 #include <gtkmm/listbox.h>
 #include <gtkmm/scrolledwindow.h>
-#include "application.hpp"
 
 class BlacklistSettingsUi : public Gtk::Grid {
  public:
   BlacklistSettingsUi(BaseObjectType* cobject,
                       const Glib::RefPtr<Gtk::Builder>& builder,
-                      const Glib::RefPtr<Gio::Settings>& refSettings,
-                      Application* application);
+                      const Glib::RefPtr<Gio::Settings>& refSettings);
 
   virtual ~BlacklistSettingsUi();
 
@@ -23,8 +21,6 @@ class BlacklistSettingsUi : public Gtk::Grid {
   std::string log_tag = "blacklist_settings_ui: ";
 
   Glib::RefPtr<Gio::Settings> settings;
-
-  Application* app;
 
   Gtk::Button *add_blacklist_in, *add_blacklist_out;
   Gtk::ListBox *blacklist_in_listbox, *blacklist_out_listbox;

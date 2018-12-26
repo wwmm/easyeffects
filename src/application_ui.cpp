@@ -141,8 +141,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   auto b_blacklist_settings = Gtk::Builder::create_from_resource(
       "/com/github/wwmm/pulseeffects/ui/blacklist_settings.glade");
 
-  b_blacklist_settings->get_widget_derived(
-      "widgets_grid", blacklist_settings_ui, settings, app);
+  b_blacklist_settings->get_widget_derived("widgets_grid",
+                                           blacklist_settings_ui, settings);
 
   stack_menu_settings->add(*blacklist_settings_ui, "settings_blacklist",
                            _("Blacklist"));
