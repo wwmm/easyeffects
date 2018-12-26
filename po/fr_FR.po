@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-25 15:04-0200\n"
+"POT-Creation-Date: 2018-12-26 13:02-0200\n"
 "PO-Revision-Date: 2017-08-29 11:00+0200\n"
 "Last-Translator: Nathan Graule <solarliner@gmail.com>\n"
 "Language-Team: \n"
@@ -30,7 +30,7 @@ msgstr "Signal de test"
 msgid "PulseEffects"
 msgstr "PulseEffects"
 
-#: data/ui/application.glade:136 data/ui/application.glade:358
+#: data/ui/application.glade:136 data/ui/general_settings.glade:93
 msgid "Settings"
 msgstr "Paramètres"
 
@@ -43,32 +43,6 @@ msgstr ""
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
 msgid "Presets"
 msgstr "Préréglage"
-
-#: data/ui/application.glade:283
-msgid "Start Service at Login"
-msgstr ""
-
-#: data/ui/application.glade:308
-#, fuzzy
-msgid "Enable All Applications"
-msgstr "Calibration"
-
-#: data/ui/application.glade:333
-msgid "Use Dark Theme"
-msgstr "Utiliser thème sombre"
-
-#: data/ui/application.glade:367 data/ui/equalizer_band.glade:105
-#: data/ui/equalizer_band.glade:120
-msgid "Reset"
-msgstr "Remettre à zéro"
-
-#: data/ui/application.glade:381
-msgid "About"
-msgstr ""
-
-#: data/ui/application.glade:399
-msgid "General"
-msgstr "Général"
 
 #: data/ui/spectrum_settings.glade:49
 msgid "Show"
@@ -148,6 +122,28 @@ msgstr "Sauvegarder préglage"
 #: data/ui/blacklist_settings.glade:97 data/ui/blacklist_settings.glade:169
 #: data/ui/presets_menu.glade:28
 msgid "Name"
+msgstr ""
+
+#: data/ui/general_settings.glade:18
+msgid "Start Service at Login"
+msgstr ""
+
+#: data/ui/general_settings.glade:43
+#, fuzzy
+msgid "Enable All Applications"
+msgstr "Calibration"
+
+#: data/ui/general_settings.glade:68
+msgid "Use Dark Theme"
+msgstr "Utiliser thème sombre"
+
+#: data/ui/general_settings.glade:102 data/ui/equalizer_band.glade:105
+#: data/ui/equalizer_band.glade:120
+msgid "Reset"
+msgstr "Remettre à zéro"
+
+#: data/ui/general_settings.glade:115
+msgid "About"
 msgstr ""
 
 #: data/ui/about.glade.in:11
@@ -976,7 +972,7 @@ msgstr "Amélioration audio"
 msgid "Select the impulse Response File"
 msgstr "Réponse plane"
 
-#: data/ui/convolver.glade:396 src/application_ui.cpp:126
+#: data/ui/convolver.glade:396 src/application_ui.cpp:117
 msgid "Spectrum"
 msgstr "Spectromètre"
 
@@ -1316,11 +1312,15 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: src/application_ui.cpp:137
+#: src/application_ui.cpp:106
+msgid "General"
+msgstr "Général"
+
+#: src/application_ui.cpp:128
 msgid "Pulseaudio"
 msgstr ""
 
-#: src/application_ui.cpp:148
+#: src/application_ui.cpp:139
 msgid "Blacklist"
 msgstr ""
 

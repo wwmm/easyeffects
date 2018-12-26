@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-25 15:04-0200\n"
+"POT-Creation-Date: 2018-12-26 13:02-0200\n"
 "PO-Revision-Date: 2018-06-21 21:34+0200\n"
 "Last-Translator: Piotr Komur, pkomur@gmail.com\n"
 "Language-Team: \n"
@@ -30,7 +30,7 @@ msgstr "Sygnały testowe"
 msgid "PulseEffects"
 msgstr "PulseEffects"
 
-#: data/ui/application.glade:136 data/ui/application.glade:358
+#: data/ui/application.glade:136 data/ui/general_settings.glade:93
 msgid "Settings"
 msgstr "Ustawienia"
 
@@ -43,31 +43,6 @@ msgstr ""
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
 msgid "Presets"
 msgstr "Profile"
-
-#: data/ui/application.glade:283
-msgid "Start Service at Login"
-msgstr "Uruchom usługę przy logowaniu"
-
-#: data/ui/application.glade:308
-msgid "Enable All Applications"
-msgstr "Włącz dla wszystkich programów"
-
-#: data/ui/application.glade:333
-msgid "Use Dark Theme"
-msgstr "Używaj ciemnego motywu"
-
-#: data/ui/application.glade:367 data/ui/equalizer_band.glade:105
-#: data/ui/equalizer_band.glade:120
-msgid "Reset"
-msgstr "Zresetuj"
-
-#: data/ui/application.glade:381
-msgid "About"
-msgstr ""
-
-#: data/ui/application.glade:399
-msgid "General"
-msgstr "Ogólne"
 
 #: data/ui/spectrum_settings.glade:49
 msgid "Show"
@@ -142,6 +117,27 @@ msgstr "Utwórz profil"
 #: data/ui/presets_menu.glade:28
 msgid "Name"
 msgstr "Nazwa"
+
+#: data/ui/general_settings.glade:18
+msgid "Start Service at Login"
+msgstr "Uruchom usługę przy logowaniu"
+
+#: data/ui/general_settings.glade:43
+msgid "Enable All Applications"
+msgstr "Włącz dla wszystkich programów"
+
+#: data/ui/general_settings.glade:68
+msgid "Use Dark Theme"
+msgstr "Używaj ciemnego motywu"
+
+#: data/ui/general_settings.glade:102 data/ui/equalizer_band.glade:105
+#: data/ui/equalizer_band.glade:120
+msgid "Reset"
+msgstr "Zresetuj"
+
+#: data/ui/general_settings.glade:115
+msgid "About"
+msgstr ""
 
 #: data/ui/about.glade.in:11
 msgid "Audio Effects for Pulseaudio Applications"
@@ -950,7 +946,7 @@ msgstr "Powiązanie stereo"
 msgid "Select the impulse Response File"
 msgstr ""
 
-#: data/ui/convolver.glade:396 src/application_ui.cpp:126
+#: data/ui/convolver.glade:396 src/application_ui.cpp:117
 msgid "Spectrum"
 msgstr "Widmo"
 
@@ -1274,11 +1270,15 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: src/application_ui.cpp:137
+#: src/application_ui.cpp:106
+msgid "General"
+msgstr "Ogólne"
+
+#: src/application_ui.cpp:128
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
 
-#: src/application_ui.cpp:148
+#: src/application_ui.cpp:139
 msgid "Blacklist"
 msgstr ""
 

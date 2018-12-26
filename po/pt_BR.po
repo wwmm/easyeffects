@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-25 15:04-0200\n"
+"POT-Creation-Date: 2018-12-26 13:02-0200\n"
 "PO-Revision-Date: 2018-12-24 12:15-0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
@@ -31,7 +31,7 @@ msgstr "Sinais de Teste"
 msgid "PulseEffects"
 msgstr "PulseEffects"
 
-#: data/ui/application.glade:136 data/ui/application.glade:358
+#: data/ui/application.glade:136 data/ui/general_settings.glade:93
 msgid "Settings"
 msgstr "Configurações"
 
@@ -44,31 +44,6 @@ msgstr "Ajuda"
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
 msgid "Presets"
 msgstr "Predefinições"
-
-#: data/ui/application.glade:283
-msgid "Start Service at Login"
-msgstr "Inicializar Serviço no Login"
-
-#: data/ui/application.glade:308
-msgid "Enable All Applications"
-msgstr "Habilitar Todos os Aplicativos"
-
-#: data/ui/application.glade:333
-msgid "Use Dark Theme"
-msgstr "Usar Tema Escuro"
-
-#: data/ui/application.glade:367 data/ui/equalizer_band.glade:105
-#: data/ui/equalizer_band.glade:120
-msgid "Reset"
-msgstr "Resetar"
-
-#: data/ui/application.glade:381
-msgid "About"
-msgstr "Sobre"
-
-#: data/ui/application.glade:399
-msgid "General"
-msgstr "Geral"
 
 #: data/ui/spectrum_settings.glade:49
 msgid "Show"
@@ -141,6 +116,27 @@ msgstr "Criar Predefinição"
 #: data/ui/presets_menu.glade:28
 msgid "Name"
 msgstr "Nome"
+
+#: data/ui/general_settings.glade:18
+msgid "Start Service at Login"
+msgstr "Inicializar Serviço no Login"
+
+#: data/ui/general_settings.glade:43
+msgid "Enable All Applications"
+msgstr "Habilitar Todos os Aplicativos"
+
+#: data/ui/general_settings.glade:68
+msgid "Use Dark Theme"
+msgstr "Usar Tema Escuro"
+
+#: data/ui/general_settings.glade:102 data/ui/equalizer_band.glade:105
+#: data/ui/equalizer_band.glade:120
+msgid "Reset"
+msgstr "Resetar"
+
+#: data/ui/general_settings.glade:115
+msgid "About"
+msgstr "Sobre"
 
 #: data/ui/about.glade.in:11
 msgid "Audio Effects for Pulseaudio Applications"
@@ -916,7 +912,7 @@ msgstr "Largura do Stereo"
 msgid "Select the impulse Response File"
 msgstr "Selecione o Arquivo com a Resposta de Impulso"
 
-#: data/ui/convolver.glade:396 src/application_ui.cpp:126
+#: data/ui/convolver.glade:396 src/application_ui.cpp:117
 msgid "Spectrum"
 msgstr "Espectro"
 
@@ -1237,11 +1233,15 @@ msgstr "Sim"
 msgid "No"
 msgstr "Não"
 
-#: src/application_ui.cpp:137
+#: src/application_ui.cpp:106
+msgid "General"
+msgstr "Geral"
+
+#: src/application_ui.cpp:128
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
 
-#: src/application_ui.cpp:148
+#: src/application_ui.cpp:139
 msgid "Blacklist"
 msgstr "Lista Negra"
 

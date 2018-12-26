@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-25 15:04-0200\n"
+"POT-Creation-Date: 2018-12-26 13:02-0200\n"
 "PO-Revision-Date: 2018-11-22 20:12+0200\n"
 "Last-Translator: flipwise <tyx027@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -31,7 +31,7 @@ msgstr "Testni signali"
 msgid "PulseEffects"
 msgstr "PulseEffects"
 
-#: data/ui/application.glade:136 data/ui/application.glade:358
+#: data/ui/application.glade:136 data/ui/general_settings.glade:93
 msgid "Settings"
 msgstr "Postavke"
 
@@ -44,31 +44,6 @@ msgstr "Pomoć"
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
 msgid "Presets"
 msgstr "Predlošci"
-
-#: data/ui/application.glade:283
-msgid "Start Service at Login"
-msgstr "Pokreni servis pri pokretanju računala"
-
-#: data/ui/application.glade:308
-msgid "Enable All Applications"
-msgstr "Uključi za sve aplikacije"
-
-#: data/ui/application.glade:333
-msgid "Use Dark Theme"
-msgstr "Koristi tamnu temu"
-
-#: data/ui/application.glade:367 data/ui/equalizer_band.glade:105
-#: data/ui/equalizer_band.glade:120
-msgid "Reset"
-msgstr "Vrati na tvorničke postavke"
-
-#: data/ui/application.glade:381
-msgid "About"
-msgstr ""
-
-#: data/ui/application.glade:399
-msgid "General"
-msgstr "Općenito"
 
 #: data/ui/spectrum_settings.glade:49
 msgid "Show"
@@ -145,6 +120,27 @@ msgstr "Stvori predložak"
 #: data/ui/presets_menu.glade:28
 msgid "Name"
 msgstr "Naziv"
+
+#: data/ui/general_settings.glade:18
+msgid "Start Service at Login"
+msgstr "Pokreni servis pri pokretanju računala"
+
+#: data/ui/general_settings.glade:43
+msgid "Enable All Applications"
+msgstr "Uključi za sve aplikacije"
+
+#: data/ui/general_settings.glade:68
+msgid "Use Dark Theme"
+msgstr "Koristi tamnu temu"
+
+#: data/ui/general_settings.glade:102 data/ui/equalizer_band.glade:105
+#: data/ui/equalizer_band.glade:120
+msgid "Reset"
+msgstr "Vrati na tvorničke postavke"
+
+#: data/ui/general_settings.glade:115
+msgid "About"
+msgstr ""
 
 #: data/ui/about.glade.in:11
 msgid "Audio Effects for Pulseaudio Applications"
@@ -963,7 +959,7 @@ msgstr "Stereo širina"
 msgid "Select the impulse Response File"
 msgstr "Odaberite datoteku reakcije impulsa"
 
-#: data/ui/convolver.glade:396 src/application_ui.cpp:126
+#: data/ui/convolver.glade:396 src/application_ui.cpp:117
 msgid "Spectrum"
 msgstr "Spektar"
 
@@ -1291,11 +1287,15 @@ msgstr "Da"
 msgid "No"
 msgstr "Ne"
 
-#: src/application_ui.cpp:137
+#: src/application_ui.cpp:106
+msgid "General"
+msgstr "Općenito"
+
+#: src/application_ui.cpp:128
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
 
-#: src/application_ui.cpp:148
+#: src/application_ui.cpp:139
 msgid "Blacklist"
 msgstr "Crna lista"
 

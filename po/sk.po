@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-25 15:04-0200\n"
+"POT-Creation-Date: 2018-12-26 13:02-0200\n"
 "PO-Revision-Date: 2017-06-11 22:19+0200\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: \n"
@@ -30,7 +30,7 @@ msgstr "Skúšobný signál"
 msgid "PulseEffects"
 msgstr ""
 
-#: data/ui/application.glade:136 data/ui/application.glade:358
+#: data/ui/application.glade:136 data/ui/general_settings.glade:93
 msgid "Settings"
 msgstr ""
 
@@ -43,32 +43,6 @@ msgstr ""
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
 msgid "Presets"
 msgstr "Predvoľby"
-
-#: data/ui/application.glade:283
-msgid "Start Service at Login"
-msgstr ""
-
-#: data/ui/application.glade:308
-msgid "Enable All Applications"
-msgstr ""
-
-#: data/ui/application.glade:333
-msgid "Use Dark Theme"
-msgstr ""
-
-#: data/ui/application.glade:367 data/ui/equalizer_band.glade:105
-#: data/ui/equalizer_band.glade:120
-#, fuzzy
-msgid "Reset"
-msgstr "Predvoľby"
-
-#: data/ui/application.glade:381
-msgid "About"
-msgstr ""
-
-#: data/ui/application.glade:399
-msgid "General"
-msgstr ""
 
 #: data/ui/spectrum_settings.glade:49
 msgid "Show"
@@ -146,6 +120,28 @@ msgstr "Uložiť predvoľbu"
 #: data/ui/blacklist_settings.glade:97 data/ui/blacklist_settings.glade:169
 #: data/ui/presets_menu.glade:28
 msgid "Name"
+msgstr ""
+
+#: data/ui/general_settings.glade:18
+msgid "Start Service at Login"
+msgstr ""
+
+#: data/ui/general_settings.glade:43
+msgid "Enable All Applications"
+msgstr ""
+
+#: data/ui/general_settings.glade:68
+msgid "Use Dark Theme"
+msgstr ""
+
+#: data/ui/general_settings.glade:102 data/ui/equalizer_band.glade:105
+#: data/ui/equalizer_band.glade:120
+#, fuzzy
+msgid "Reset"
+msgstr "Predvoľby"
+
+#: data/ui/general_settings.glade:115
+msgid "About"
 msgstr ""
 
 #: data/ui/about.glade.in:11
@@ -962,7 +958,7 @@ msgstr ""
 msgid "Select the impulse Response File"
 msgstr ""
 
-#: data/ui/convolver.glade:396 src/application_ui.cpp:126
+#: data/ui/convolver.glade:396 src/application_ui.cpp:117
 #, fuzzy
 msgid "Spectrum"
 msgstr "Zobraziť spektrum"
@@ -1283,11 +1279,15 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: src/application_ui.cpp:137
+#: src/application_ui.cpp:106
+msgid "General"
+msgstr ""
+
+#: src/application_ui.cpp:128
 msgid "Pulseaudio"
 msgstr ""
 
-#: src/application_ui.cpp:148
+#: src/application_ui.cpp:139
 msgid "Blacklist"
 msgstr ""
 

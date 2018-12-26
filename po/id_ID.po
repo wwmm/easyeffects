@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-25 15:04-0200\n"
+"POT-Creation-Date: 2018-12-26 13:02-0200\n"
 "PO-Revision-Date: 2018-11-19 14:31+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -29,7 +29,7 @@ msgstr "Uji Sinyal"
 msgid "PulseEffects"
 msgstr "PulseEffects"
 
-#: data/ui/application.glade:136 data/ui/application.glade:358
+#: data/ui/application.glade:136 data/ui/general_settings.glade:93
 msgid "Settings"
 msgstr "Setelan"
 
@@ -42,32 +42,6 @@ msgstr "Bantuan"
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
 msgid "Presets"
 msgstr "Preset"
-
-#: data/ui/application.glade:283
-#, fuzzy
-msgid "Start Service at Login"
-msgstr "Mulai Layanan Saat Login"
-
-#: data/ui/application.glade:308
-msgid "Enable All Applications"
-msgstr "Terapkan Efek pada Semua Aplikasi"
-
-#: data/ui/application.glade:333
-msgid "Use Dark Theme"
-msgstr "Gunakan Tema Gelap"
-
-#: data/ui/application.glade:367 data/ui/equalizer_band.glade:105
-#: data/ui/equalizer_band.glade:120
-msgid "Reset"
-msgstr "Atur Ulang"
-
-#: data/ui/application.glade:381
-msgid "About"
-msgstr ""
-
-#: data/ui/application.glade:399
-msgid "General"
-msgstr "Umum"
 
 #: data/ui/spectrum_settings.glade:49
 msgid "Show"
@@ -141,6 +115,28 @@ msgstr "Buat Preset"
 #: data/ui/presets_menu.glade:28
 msgid "Name"
 msgstr "Nama"
+
+#: data/ui/general_settings.glade:18
+#, fuzzy
+msgid "Start Service at Login"
+msgstr "Mulai Layanan Saat Login"
+
+#: data/ui/general_settings.glade:43
+msgid "Enable All Applications"
+msgstr "Terapkan Efek pada Semua Aplikasi"
+
+#: data/ui/general_settings.glade:68
+msgid "Use Dark Theme"
+msgstr "Gunakan Tema Gelap"
+
+#: data/ui/general_settings.glade:102 data/ui/equalizer_band.glade:105
+#: data/ui/equalizer_band.glade:120
+msgid "Reset"
+msgstr "Atur Ulang"
+
+#: data/ui/general_settings.glade:115
+msgid "About"
+msgstr ""
 
 #: data/ui/about.glade.in:11
 msgid "Audio Effects for Pulseaudio Applications"
@@ -921,7 +917,7 @@ msgstr "Lebar Stereo"
 msgid "Select the impulse Response File"
 msgstr "Pilih Berkas Repons Impuls"
 
-#: data/ui/convolver.glade:396 src/application_ui.cpp:126
+#: data/ui/convolver.glade:396 src/application_ui.cpp:117
 msgid "Spectrum"
 msgstr "Spektrum"
 
@@ -1244,11 +1240,15 @@ msgstr "Ya"
 msgid "No"
 msgstr "Tidak"
 
-#: src/application_ui.cpp:137
+#: src/application_ui.cpp:106
+msgid "General"
+msgstr "Umum"
+
+#: src/application_ui.cpp:128
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
 
-#: src/application_ui.cpp:148
+#: src/application_ui.cpp:139
 msgid "Blacklist"
 msgstr "Daftar Blokir"
 
