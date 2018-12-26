@@ -225,12 +225,6 @@
         <key name="priority-type" enum="com.github.wwmm.pulseeffects.prioritytype.enum">
             <default>"None"</default>
         </key>
-        <key name="enable-realtime" type="b">
-            <default>false</default>
-        </key>
-        <key name="enable-high-priority" type="b">
-            <default>false</default>
-        </key>
         <key name="realtime-priority" type="i">
             <range min="0" max="99"/>
             <default>4</default>

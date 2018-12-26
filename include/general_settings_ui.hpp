@@ -31,10 +31,9 @@ class GeneralSettingsUi : public Gtk::Grid {
 
   Application* app;
 
-  Gtk::Switch *enable_autostart, *enable_all_apps, *theme_switch,
-      *enable_realtime, *enable_high_priority;
+  Gtk::Switch *enable_autostart, *enable_all_apps, *theme_switch;
   Gtk::Button *reset_settings, *about_button;
-  Gtk::SpinButton *realtime_priority, *niceness;
+  Gtk::SpinButton *realtime_priority_control, *niceness_control;
   Gtk::ComboBoxText* priority_type;
 
   Glib::RefPtr<Gtk::Adjustment> adjustment_priority, adjustment_niceness;
@@ -53,6 +52,8 @@ class GeneralSettingsUi : public Gtk::Grid {
   bool on_enable_autostart(bool state);
 
   void on_reset_settings();
+
+  void set_priority_controls_visibility();
 };
 
 #endif

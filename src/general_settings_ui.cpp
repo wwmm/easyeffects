@@ -51,10 +51,8 @@ GeneralSettingsUi::GeneralSettingsUi(
   builder->get_widget("enable_all_apps", enable_all_apps);
   builder->get_widget("reset_settings", reset_settings);
   builder->get_widget("about_button", about_button);
-  builder->get_widget("enable_realtime", enable_realtime);
-  builder->get_widget("enable_high_priority", enable_high_priority);
-  builder->get_widget("realtime_priority", realtime_priority);
-  builder->get_widget("niceness", niceness);
+  builder->get_widget("realtime_priority", realtime_priority_control);
+  builder->get_widget("niceness", niceness_control);
   builder->get_widget("priority_type", priority_type);
 
   get_object(builder, "adjustment_priority", adjustment_priority);
@@ -73,6 +71,8 @@ GeneralSettingsUi::GeneralSettingsUi(
 
   connections.push_back(
       settings->signal_changed("priority-type").connect([&](auto key) {
+        set_priority_controls_visibility();
+
         app->sie->set_null_pipeline();
         app->soe->set_null_pipeline();
 
@@ -84,12 +84,10 @@ GeneralSettingsUi::GeneralSettingsUi(
 
   settings->bind("use-dark-theme", theme_switch, "active", flag);
   settings->bind("enable-all-apps", enable_all_apps, "active", flag);
-  settings->bind("enable-realtime", enable_realtime, "active", flag);
-  settings->bind("enable-high-priority", enable_high_priority, "active", flag);
   settings->bind("realtime-priority", adjustment_priority.get(), "value", flag);
   settings->bind("niceness", adjustment_niceness.get(), "value", flag);
-  settings->bind("enable-realtime", realtime_priority, "sensitive", flag);
-  settings->bind("enable-high-priority", niceness, "sensitive", flag);
+  // settings->bind("enable-realtime", realtime_priority, "sensitive", flag);
+  // settings->bind("enable-high-priority", niceness, "sensitive", flag);
 
   g_settings_bind_with_mapping(
       settings->gobj(), "priority-type", priority_type->gobj(), "active",
@@ -97,6 +95,7 @@ GeneralSettingsUi::GeneralSettingsUi(
       int_to_priority_type_enum, nullptr, nullptr);
 
   init_autostart_switch();
+  set_priority_controls_visibility();
 }
 
 GeneralSettingsUi::~GeneralSettingsUi() {
@@ -178,4 +177,19 @@ bool GeneralSettingsUi::on_enable_autostart(bool state) {
 
 void GeneralSettingsUi::on_reset_settings() {
   settings->reset("");
+}
+
+void GeneralSettingsUi::set_priority_controls_visibility() {
+  auto priority_type = settings->get_enum("priority-type");
+
+  if (priority_type == 0) {
+    niceness_control->set_sensitive(true);
+    realtime_priority_control->set_sensitive(false);
+  } else if (priority_type == 1) {
+    niceness_control->set_sensitive(false);
+    realtime_priority_control->set_sensitive(true);
+  } else if (priority_type == 3) {
+    niceness_control->set_sensitive(false);
+    realtime_priority_control->set_sensitive(false);
+  }
 }

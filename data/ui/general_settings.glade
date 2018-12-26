@@ -98,19 +98,6 @@
       </packing>
     </child>
     <child>
-      <object class="GtkButton" id="about_button">
-        <property name="label" translatable="yes">About</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="halign">start</property>
-      </object>
-      <packing>
-        <property name="left_attach">3</property>
-        <property name="top_attach">4</property>
-      </packing>
-    </child>
-    <child>
       <object class="GtkLabel">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
@@ -155,7 +142,7 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="halign">end</property>
-        <property name="margin_left">24</property>
+        <property name="margin_left">32</property>
         <property name="label" translatable="yes">Priority</property>
       </object>
       <packing>
@@ -169,7 +156,7 @@
         <property name="can_focus">False</property>
         <property name="halign">end</property>
         <property name="valign">center</property>
-        <property name="margin_left">24</property>
+        <property name="margin_left">32</property>
         <property name="label" translatable="yes">Niceness</property>
       </object>
       <packing>
@@ -194,7 +181,7 @@
       <object class="GtkComboBoxText" id="priority_type">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="margin_left">24</property>
+        <property name="margin_left">32</property>
         <items>
           <item translatable="yes">Niceness</item>
           <item translatable="yes">Real Time</item>
@@ -213,7 +200,7 @@
         <property name="can_focus">False</property>
         <property name="halign">center</property>
         <property name="valign">center</property>
-        <property name="margin_left">24</property>
+        <property name="margin_left">32</property>
         <property name="label" translatable="yes">Priority Type</property>
       </object>
       <packing>
@@ -221,6 +208,36 @@
         <property name="top_attach">0</property>
         <property name="width">2</property>
       </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="about_button">
+        <property name="label" translatable="yes">About</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="halign">start</property>
+        <property name="valign">center</property>
+        <property name="margin_left">32</property>
+      </object>
+      <packing>
+        <property name="left_attach">4</property>
+        <property name="top_attach">3</property>
+      </packing>
+    </child>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <placeholder/>
     </child>
     <child>
       <placeholder/>
