@@ -28,7 +28,8 @@ class GeneralSettingsUi : public Gtk::Grid {
 
   Application* app;
 
-  Gtk::Switch *enable_autostart, *enable_all_apps, *theme_switch;
+  Gtk::Switch *enable_autostart, *enable_all_apps, *theme_switch,
+      *enable_realtime, *enable_high_priority;
   Gtk::Button *reset_settings, *about_button;
 
   std::vector<sigc::connection> connections;

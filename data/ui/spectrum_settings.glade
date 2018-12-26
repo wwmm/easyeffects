@@ -151,6 +151,7 @@
             <property name="can_focus">False</property>
             <property name="halign">end</property>
             <property name="valign">center</property>
+            <property name="margin_left">24</property>
             <property name="label" translatable="yes">Fill</property>
           </object>
           <packing>
@@ -240,6 +241,7 @@
             <property name="can_focus">False</property>
             <property name="halign">end</property>
             <property name="valign">center</property>
+            <property name="margin_left">24</property>
             <property name="label" translatable="yes">Use Custom Color</property>
           </object>
           <packing>
@@ -265,6 +267,7 @@
             <property name="can_focus">False</property>
             <property name="halign">end</property>
             <property name="valign">center</property>
+            <property name="margin_left">24</property>
             <property name="label" translatable="yes">Spectrum Color</property>
           </object>
           <packing>

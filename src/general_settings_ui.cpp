@@ -17,6 +17,8 @@ GeneralSettingsUi::GeneralSettingsUi(
   builder->get_widget("enable_all_apps", enable_all_apps);
   builder->get_widget("reset_settings", reset_settings);
   builder->get_widget("about_button", about_button);
+  builder->get_widget("enable_realtime", enable_realtime);
+  builder->get_widget("enable_high_priority", enable_high_priority);
 
   // signals connection
 

@@ -223,5 +223,13 @@
         <key name="enable-high-priority" type="b">
             <default>false</default>
         </key>
+        <key name="realtime-priority" type="i">
+            <range min="0" max="99"/>
+            <default>4</default>
+        </key>
+        <key name="niceness" type="i">
+            <range min="-20" max="19"/>
+            <default>-10</default>
+        </key>
     </schema>
 </schemalist>
