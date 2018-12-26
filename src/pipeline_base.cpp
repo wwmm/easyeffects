@@ -56,7 +56,7 @@ static void on_stream_status(GstBus* bus,
 
       priority_type = g_settings_get_enum(pb->settings, "priority-type");
 
-      if (priority_type == 0) {  // Niceness (high priority)
+      if (priority_type == 0) {  // Niceness (high priority in rtkit terms)
         niceness = g_settings_get_int(pb->settings, "niceness");
 
         pb->rtkit->set_nice(source_name, niceness);

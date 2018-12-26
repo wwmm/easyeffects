@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-26 15:00-0200\n"
+"POT-Creation-Date: 2018-12-26 20:25-0200\n"
 "PO-Revision-Date: 2017-10-14 18:40+0200\n"
 "Last-Translator: Bleuzen <supgesu@gmail.com>\n"
 "Language-Team: \n"
@@ -30,7 +30,7 @@ msgstr "Testsignal"
 msgid "PulseEffects"
 msgstr "PulseEffects"
 
-#: data/ui/application.glade:136 data/ui/general_settings.glade:93
+#: data/ui/application.glade:136 data/ui/general_settings.glade:107
 msgid "Settings"
 msgstr "Einstellungen"
 
@@ -57,28 +57,28 @@ msgstr "Punkte"
 msgid "Height"
 msgstr ""
 
-#: data/ui/spectrum_settings.glade:154
+#: data/ui/spectrum_settings.glade:155
 msgid "Fill"
 msgstr ""
 
-#: data/ui/spectrum_settings.glade:179
+#: data/ui/spectrum_settings.glade:180
 msgid "Scale"
 msgstr ""
 
-#: data/ui/spectrum_settings.glade:211
+#: data/ui/spectrum_settings.glade:212
 msgid "Exponent"
 msgstr ""
 
-#: data/ui/spectrum_settings.glade:243
+#: data/ui/spectrum_settings.glade:245
 msgid "Use Custom Color"
 msgstr ""
 
-#: data/ui/spectrum_settings.glade:268
+#: data/ui/spectrum_settings.glade:271
 #, fuzzy
 msgid "Spectrum Color"
 msgstr "Spektrum"
 
-#: data/ui/spectrum_settings.glade:295
+#: data/ui/spectrum_settings.glade:298
 msgid "Sampling"
 msgstr ""
 
@@ -123,25 +123,45 @@ msgstr "Preset löschen"
 msgid "Name"
 msgstr ""
 
-#: data/ui/general_settings.glade:18
+#: data/ui/general_settings.glade:31
 msgid "Start Service at Login"
 msgstr ""
 
-#: data/ui/general_settings.glade:43
+#: data/ui/general_settings.glade:56
 #, fuzzy
 msgid "Enable All Applications"
 msgstr "Anwendungen"
 
-#: data/ui/general_settings.glade:68
+#: data/ui/general_settings.glade:81
 msgid "Use Dark Theme"
 msgstr "Benutze dunkles Thema"
 
-#: data/ui/general_settings.glade:102 data/ui/equalizer_band.glade:105
+#: data/ui/general_settings.glade:116 data/ui/equalizer_band.glade:105
 #: data/ui/equalizer_band.glade:120
 msgid "Reset"
 msgstr "Zurücksetzen"
 
-#: data/ui/general_settings.glade:115
+#: data/ui/general_settings.glade:146
+msgid "Priority"
+msgstr ""
+
+#: data/ui/general_settings.glade:160 data/ui/general_settings.glade:186
+msgid "Niceness"
+msgstr ""
+
+#: data/ui/general_settings.glade:187
+msgid "Real Time"
+msgstr ""
+
+#: data/ui/general_settings.glade:188
+msgid "None"
+msgstr ""
+
+#: data/ui/general_settings.glade:204
+msgid "Priority Type"
+msgstr ""
+
+#: data/ui/general_settings.glade:214
 msgid "About"
 msgstr ""
 
@@ -1259,7 +1279,7 @@ msgstr "Limiter;Kompressor;Hall;Equalizer;Autovolumen;"
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:202
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:207
 #, fuzzy
 msgid "\"Presets\""
 msgstr "Preset laden"
@@ -1312,7 +1332,7 @@ msgstr "Anwendungen"
 msgid "Blacklist"
 msgstr ""
 
-#: src/general_settings_ui.cpp:59
+#: src/general_settings_ui.cpp:135
 msgid "General"
 msgstr "Allgemein"
 

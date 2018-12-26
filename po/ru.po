@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-26 15:00-0200\n"
+"POT-Creation-Date: 2018-12-26 20:25-0200\n"
 "PO-Revision-Date: 2018-07-18 22:14+0300\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -29,7 +29,7 @@ msgstr "Проверочный сигнал"
 msgid "PulseEffects"
 msgstr "PulseEffects"
 
-#: data/ui/application.glade:136 data/ui/general_settings.glade:93
+#: data/ui/application.glade:136 data/ui/general_settings.glade:107
 msgid "Settings"
 msgstr "Настройки"
 
@@ -56,27 +56,27 @@ msgstr "Точки"
 msgid "Height"
 msgstr "Высота"
 
-#: data/ui/spectrum_settings.glade:154
+#: data/ui/spectrum_settings.glade:155
 msgid "Fill"
 msgstr ""
 
-#: data/ui/spectrum_settings.glade:179
+#: data/ui/spectrum_settings.glade:180
 msgid "Scale"
 msgstr ""
 
-#: data/ui/spectrum_settings.glade:211
+#: data/ui/spectrum_settings.glade:212
 msgid "Exponent"
 msgstr ""
 
-#: data/ui/spectrum_settings.glade:243
+#: data/ui/spectrum_settings.glade:245
 msgid "Use Custom Color"
 msgstr "Использовать свой цвет"
 
-#: data/ui/spectrum_settings.glade:268
+#: data/ui/spectrum_settings.glade:271
 msgid "Spectrum Color"
 msgstr "Цвет спектра"
 
-#: data/ui/spectrum_settings.glade:295
+#: data/ui/spectrum_settings.glade:298
 #, fuzzy
 msgid "Sampling"
 msgstr "Передискретизация"
@@ -118,24 +118,45 @@ msgstr "Создать новый набор предустановок"
 msgid "Name"
 msgstr "Название"
 
-#: data/ui/general_settings.glade:18
+#: data/ui/general_settings.glade:31
 msgid "Start Service at Login"
 msgstr "Запуск службы при запуске"
 
-#: data/ui/general_settings.glade:43
+#: data/ui/general_settings.glade:56
 msgid "Enable All Applications"
 msgstr "Включить для всех приложений"
 
-#: data/ui/general_settings.glade:68
+#: data/ui/general_settings.glade:81
 msgid "Use Dark Theme"
 msgstr "Исп. тёмную тему"
 
-#: data/ui/general_settings.glade:102 data/ui/equalizer_band.glade:105
+#: data/ui/general_settings.glade:116 data/ui/equalizer_band.glade:105
 #: data/ui/equalizer_band.glade:120
 msgid "Reset"
 msgstr "Сбросить"
 
-#: data/ui/general_settings.glade:115
+#: data/ui/general_settings.glade:146
+msgid "Priority"
+msgstr ""
+
+#: data/ui/general_settings.glade:160 data/ui/general_settings.glade:186
+msgid "Niceness"
+msgstr ""
+
+#: data/ui/general_settings.glade:187
+#, fuzzy
+msgid "Real Time"
+msgstr "Время распада"
+
+#: data/ui/general_settings.glade:188
+msgid "None"
+msgstr ""
+
+#: data/ui/general_settings.glade:204
+msgid "Priority Type"
+msgstr ""
+
+#: data/ui/general_settings.glade:214
 msgid "About"
 msgstr "О программе"
 
@@ -1215,7 +1236,7 @@ msgstr "лимитер;компрессор;ребербатор;эквалай�
 msgid "pulseeffects"
 msgstr ""
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:202
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:207
 msgid "\"Presets\""
 msgstr "\"Предустановки\""
 
@@ -1267,7 +1288,7 @@ msgstr "Приложения"
 msgid "Blacklist"
 msgstr "Черный список"
 
-#: src/general_settings_ui.cpp:59
+#: src/general_settings_ui.cpp:135
 msgid "General"
 msgstr "Общие"
 
