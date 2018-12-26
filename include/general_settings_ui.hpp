@@ -6,6 +6,7 @@
 #include <gtkmm/adjustment.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/button.h>
+#include <gtkmm/comboboxtext.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/spinbutton.h>
 #include <gtkmm/stack.h>
@@ -34,6 +35,7 @@ class GeneralSettingsUi : public Gtk::Grid {
       *enable_realtime, *enable_high_priority;
   Gtk::Button *reset_settings, *about_button;
   Gtk::SpinButton *realtime_priority, *niceness;
+  Gtk::ComboBoxText* priority_type;
 
   Glib::RefPtr<Gtk::Adjustment> adjustment_priority, adjustment_niceness;
 

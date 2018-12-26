@@ -4,6 +4,40 @@
 #include <boost/filesystem.hpp>
 #include "util.hpp"
 
+namespace {
+
+gboolean priority_type_enum_to_int(GValue* value,
+                                   GVariant* variant,
+                                   gpointer user_data) {
+  auto v = g_variant_get_string(variant, nullptr);
+
+  if (v == std::string("Niceness")) {
+    g_value_set_int(value, 0);
+  } else if (v == std::string("Real Time")) {
+    g_value_set_int(value, 1);
+  } else if (v == std::string("None")) {
+    g_value_set_int(value, 2);
+  }
+
+  return true;
+}
+
+GVariant* int_to_priority_type_enum(const GValue* value,
+                                    const GVariantType* expected_type,
+                                    gpointer user_data) {
+  int v = g_value_get_int(value);
+
+  if (v == 0) {
+    return g_variant_new_string("Niceness");
+  } else if (v == 1) {
+    return g_variant_new_string("Real Time");
+  } else {
+    return g_variant_new_string("None");
+  }
+}
+
+}  // namespace
+
 GeneralSettingsUi::GeneralSettingsUi(
     BaseObjectType* cobject,
     const Glib::RefPtr<Gtk::Builder>& builder,
@@ -21,6 +55,7 @@ GeneralSettingsUi::GeneralSettingsUi(
   builder->get_widget("enable_high_priority", enable_high_priority);
   builder->get_widget("realtime_priority", realtime_priority);
   builder->get_widget("niceness", niceness);
+  builder->get_widget("priority_type", priority_type);
 
   get_object(builder, "adjustment_priority", adjustment_priority);
   get_object(builder, "adjustment_niceness", adjustment_niceness);
@@ -36,6 +71,15 @@ GeneralSettingsUi::GeneralSettingsUi(
   about_button->signal_clicked().connect(
       [=]() { app->activate_action("about"); });
 
+  connections.push_back(
+      settings->signal_changed("priority-type").connect([&](auto key) {
+        app->sie->set_null_pipeline();
+        app->soe->set_null_pipeline();
+
+        app->sie->update_pipeline_state();
+        app->soe->update_pipeline_state();
+      }));
+
   auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
   settings->bind("use-dark-theme", theme_switch, "active", flag);
@@ -46,6 +90,11 @@ GeneralSettingsUi::GeneralSettingsUi(
   settings->bind("niceness", adjustment_niceness.get(), "value", flag);
   settings->bind("enable-realtime", realtime_priority, "sensitive", flag);
   settings->bind("enable-high-priority", niceness, "sensitive", flag);
+
+  g_settings_bind_with_mapping(
+      settings->gobj(), "priority-type", priority_type->gobj(), "active",
+      G_SETTINGS_BIND_DEFAULT, priority_type_enum_to_int,
+      int_to_priority_type_enum, nullptr, nullptr);
 
   init_autostart_switch();
 }

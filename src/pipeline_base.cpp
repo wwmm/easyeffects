@@ -36,7 +36,7 @@ static void on_stream_status(GstBus* bus,
   gchar* path;
   std::string path_str, source_name;
   std::size_t idx;
-  int priority, niceness;
+  int priority, niceness, priority_type;
 
   gst_message_parse_stream_status(message, &type, &owner);
 
@@ -54,13 +54,13 @@ static void on_stream_status(GstBus* bus,
 
       g_free(path);
 
-      if (g_settings_get_boolean(pb->settings, "enable-high-priority")) {
+      priority_type = g_settings_get_enum(pb->settings, "priority-type");
+
+      if (priority_type == 0) {  // Niceness (high priority)
         niceness = g_settings_get_int(pb->settings, "niceness");
 
         pb->rtkit->set_nice(source_name, niceness);
-      }
-
-      if (g_settings_get_boolean(pb->settings, "enable-realtime")) {
+      } else if (priority_type == 1) {  // Real Time
         priority = g_settings_get_int(pb->settings, "realtime-priority");
 
         pb->rtkit->set_priority(source_name, priority);

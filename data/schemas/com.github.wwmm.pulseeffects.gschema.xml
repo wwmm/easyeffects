@@ -129,6 +129,11 @@
         <value nick="2048" value="2048"/>
         <value nick="4096" value="4096"/>
     </enum>
+    <enum id="com.github.wwmm.pulseeffects.prioritytype.enum">
+        <value nick="Niceness" value="0"/>
+        <value nick="Real Time" value="1"/>
+        <value nick="None" value="2"/>
+    </enum>
     <schema id="com.github.wwmm.pulseeffects" path="/com/github/wwmm/pulseeffects/">
         <key name="version" type="s">
             <default>""</default>
@@ -216,6 +221,9 @@
             <default>
                 []
             </default>
+        </key>
+        <key name="priority-type" enum="com.github.wwmm.pulseeffects.prioritytype.enum">
+            <default>"None"</default>
         </key>
         <key name="enable-realtime" type="b">
             <default>false</default>
