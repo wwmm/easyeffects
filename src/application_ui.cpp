@@ -1,13 +1,8 @@
 #include "application_ui.hpp"
-#include <glibmm.h>
 #include <glibmm/i18n.h>
 #include <gtkmm/cssprovider.h>
 #include <gtkmm/icontheme.h>
-#include <gtkmm/listboxrow.h>
 #include <gtkmm/settings.h>
-#include <algorithm>
-#include <boost/filesystem.hpp>
-#include <future>
 #include "util.hpp"
 
 ApplicationUi::ApplicationUi(BaseObjectType* cobject,
