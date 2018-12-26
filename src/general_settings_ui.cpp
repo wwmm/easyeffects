@@ -204,7 +204,7 @@ void GeneralSettingsUi::set_priority_controls_visibility() {
   } else if (priority_type == 1) {
     niceness_control->set_sensitive(false);
     realtime_priority_control->set_sensitive(true);
-  } else if (priority_type == 3) {
+  } else if (priority_type == 2) {
     niceness_control->set_sensitive(false);
     realtime_priority_control->set_sensitive(false);
   }
