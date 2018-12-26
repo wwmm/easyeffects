@@ -50,6 +50,21 @@ SpectrumUi::~SpectrumUi() {
   util::debug(log_tag + "destroyed");
 }
 
+SpectrumUi* SpectrumUi::add_to_box(Gtk::Box* box, Application* app) {
+  auto builder = Gtk::Builder::create_from_resource(
+      "/com/github/wwmm/pulseeffects/ui/spectrum.glade");
+
+  auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
+
+  SpectrumUi* ui;
+
+  builder->get_widget_derived("widgets_grid", ui, settings, app);
+
+  box->add(*ui);
+
+  return ui;
+}
+
 void SpectrumUi::clear_spectrum() {
   spectrum_mag.resize(0);
 

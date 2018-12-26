@@ -1,6 +1,7 @@
 #ifndef SPECTRUM_UI_HPP
 #define SPECTRUM_UI_HPP
 
+#include <gtkmm/box.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/drawingarea.h>
 #include <gtkmm/grid.h>
@@ -14,6 +15,8 @@ class SpectrumUi : public Gtk::Grid {
              Application* application);
 
   virtual ~SpectrumUi();
+
+  static SpectrumUi* add_to_box(Gtk::Box* box, Application* app);
 
   void on_new_spectrum(const std::vector<float>& magnitudes);
 

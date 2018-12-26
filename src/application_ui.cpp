@@ -82,12 +82,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // spectrum widgets
 
-  auto b_spectrum = Gtk::Builder::create_from_resource(
-      "/com/github/wwmm/pulseeffects/ui/spectrum.glade");
-
-  b_spectrum->get_widget_derived("widgets_grid", spectrum_ui, settings, app);
-
-  placeholder_spectrum->add(*spectrum_ui);
+  spectrum_ui = SpectrumUi::add_to_box(placeholder_spectrum, app);
 
   // general settings widgets
 

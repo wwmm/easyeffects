@@ -19,20 +19,7 @@ class GeneralSettingsUi : public Gtk::Grid {
 
   virtual ~GeneralSettingsUi();
 
-  static GeneralSettingsUi* add_to_stack(Gtk::Stack* stack, Application* app) {
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/ui/general_settings.glade");
-
-    auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
-
-    GeneralSettingsUi* ui;
-
-    builder->get_widget_derived("widgets_grid", ui, settings, app);
-
-    stack->add(*ui, "general_spectrum", _("General"));
-
-    return ui;
-  }
+  static GeneralSettingsUi* add_to_stack(Gtk::Stack* stack, Application* app);
 
  private:
   std::string log_tag = "general_settings_ui: ";
