@@ -40,6 +40,8 @@ GeneralSettingsUi::GeneralSettingsUi(
   settings->bind("enable-all-apps", enable_all_apps, "active", flag);
   settings->bind("enable-realtime", enable_realtime, "active", flag);
   settings->bind("enable-high-priority", enable_high_priority, "active", flag);
+  settings->bind("realtime-priority", adjustment_priority.get(), "value", flag);
+  settings->bind("niceness", adjustment_niceness.get(), "value", flag);
 
   init_autostart_switch();
 }
