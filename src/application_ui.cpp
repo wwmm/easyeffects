@@ -104,25 +104,12 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // source outputs widgets
 
-  // auto b_soe_ui = Gtk::Builder::create_from_resource(
-  //     "/com/github/wwmm/pulseeffects/ui/effects_base.glade");
-  //
-  // auto settings_soe_ui =
-  //     Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs");
-  //
-  // b_soe_ui->get_widget_derived("widgets_box", soe_ui, settings_soe_ui,
-  //                              app->soe.get());
-
   app->pm->source_output_added.connect(
       sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_added));
   app->pm->source_output_changed.connect(
       sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_changed));
   app->pm->source_output_removed.connect(
       sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_removed));
-
-  // stack->add(*soe_ui, "source_outputs");
-  // stack->child_property_icon_name(*soe_ui).set_value(
-  //     "audio-input-microphone-symbolic");
 
   connections.push_back(app->soe->new_latency.connect([=](int latency) {
     soe_latency = latency;
