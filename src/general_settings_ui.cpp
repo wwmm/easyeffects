@@ -46,8 +46,7 @@ GeneralSettingsUi::~GeneralSettingsUi() {
   util::debug(log_tag + "destroyed");
 }
 
-GeneralSettingsUi* GeneralSettingsUi::add_to_stack(Gtk::Stack* stack,
-                                                   Application* app) {
+void GeneralSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
   auto builder = Gtk::Builder::create_from_resource(
       "/com/github/wwmm/pulseeffects/ui/general_settings.glade");
 
@@ -58,8 +57,6 @@ GeneralSettingsUi* GeneralSettingsUi::add_to_stack(Gtk::Stack* stack,
   builder->get_widget_derived("widgets_grid", ui, settings, app);
 
   stack->add(*ui, "general_spectrum", _("General"));
-
-  return ui;
 }
 
 void GeneralSettingsUi::init_autostart_switch() {

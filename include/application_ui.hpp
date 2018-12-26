@@ -11,14 +11,12 @@
 #include <gtkmm/popover.h>
 #include <gtkmm/stack.h>
 #include "application.hpp"
-#include "blacklist_settings_ui.hpp"
 #include "calibration_ui.hpp"
-#include "general_settings_ui.hpp"
 #include "presets_menu_ui.hpp"
 #include "pulse_settings_ui.hpp"
 #include "sink_input_effects_ui.hpp"
 #include "source_output_effects_ui.hpp"
-#include "spectrum_settings_ui.hpp"
+
 #include "spectrum_ui.hpp"
 
 class ApplicationUi : public Gtk::ApplicationWindow {
@@ -54,10 +52,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   PresetsMenuUi* presets_menu_ui;
   SpectrumUi* spectrum_ui;
-  GeneralSettingsUi* general_settings_ui;
-  SpectrumSettingsUi* spectrum_settings_ui;
   PulseSettingsUi* pulse_settings_ui;
-  BlacklistSettingsUi* blacklist_settings_ui;
   SinkInputEffectsUi* sie_ui;
   SourceOutputEffectsUi* soe_ui;
 

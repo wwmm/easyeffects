@@ -19,7 +19,7 @@ class BlacklistSettingsUi : public Gtk::Grid {
 
   virtual ~BlacklistSettingsUi();
 
-  static BlacklistSettingsUi* add_to_stack(Gtk::Stack* stack);
+  static void add_to_stack(Gtk::Stack* stack);
 
  private:
   std::string log_tag = "blacklist_settings_ui: ";

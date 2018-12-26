@@ -3,6 +3,9 @@
 #include <gtkmm/cssprovider.h>
 #include <gtkmm/icontheme.h>
 #include <gtkmm/settings.h>
+#include "blacklist_settings_ui.hpp"
+#include "general_settings_ui.hpp"
+#include "spectrum_settings_ui.hpp"
 #include "util.hpp"
 
 ApplicationUi::ApplicationUi(BaseObjectType* cobject,
@@ -33,6 +36,18 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   builder->get_widget("headerbar_icon2", headerbar_icon2);
   builder->get_widget("headerbar_info", headerbar_info);
 
+  spectrum_ui = SpectrumUi::add_to_box(placeholder_spectrum, app);
+
+  presets_menu_ui = PresetsMenuUi::add_to_popover(presets_menu, app);
+
+  GeneralSettingsUi::add_to_stack(stack_menu_settings, app);
+
+  SpectrumSettingsUi::add_to_stack(stack_menu_settings, app);
+
+  pulse_settings_ui = PulseSettingsUi::add_to_stack(stack_menu_settings, app);
+
+  BlacklistSettingsUi::add_to_stack(stack_menu_settings);
+
   stack->connect_property_changed(
       "visible-child",
       sigc::mem_fun(*this, &ApplicationUi::on_stack_visible_child_changed));
@@ -42,7 +57,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   calibration_button->signal_clicked().connect(
       sigc::mem_fun(*this, &ApplicationUi::on_calibration_button_clicked));
 
-  // pulseaudio signals
+  // signals
 
   connections.push_back(app->pm->new_default_sink.connect([&](auto name) {
     if (stack->get_visible_child_name() == "sink_inputs") {
@@ -56,14 +71,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     }
   }));
 
-  // help button
-
   help_button->signal_clicked().connect(
       [=]() { app->activate_action("help"); });
-
-  // presets menu widgets
-
-  presets_menu_ui = PresetsMenuUi::add_to_popover(presets_menu, app);
 
   presets_menu_button->signal_clicked().connect(sigc::mem_fun(
       *presets_menu_ui, &PresetsMenuUi::on_presets_menu_button_clicked));
@@ -73,38 +82,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   settings->signal_changed("last-used-preset").connect([=](auto key) {
     presets_menu_label->set_text(settings->get_string("last-used-preset"));
   });
-
-  // spectrum widgets
-
-  spectrum_ui = SpectrumUi::add_to_box(placeholder_spectrum, app);
-
-  // general settings widgets
-
-  general_settings_ui =
-      GeneralSettingsUi::add_to_stack(stack_menu_settings, app);
-
-  // spectrum settings widgets
-
-  spectrum_settings_ui =
-      SpectrumSettingsUi::add_to_stack(stack_menu_settings, app);
-
-  // Pulseaudio settings widgets
-
-  pulse_settings_ui = PulseSettingsUi::add_to_stack(stack_menu_settings, app);
-
-  // Blacklist settings widgets
-
-  // auto b_blacklist_settings = Gtk::Builder::create_from_resource(
-  //     "/com/github/wwmm/pulseeffects/ui/blacklist_settings.glade");
-  //
-  // b_blacklist_settings->get_widget_derived("widgets_grid",
-  //                                          blacklist_settings_ui, settings);
-  //
-  // stack_menu_settings->add(*blacklist_settings_ui, "settings_blacklist",
-  //                          _("Blacklist"));
-
-  blacklist_settings_ui =
-      BlacklistSettingsUi::add_to_stack(stack_menu_settings);
 
   // sink inputs widgets
 

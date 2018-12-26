@@ -20,7 +20,7 @@ class SpectrumSettingsUi : public Gtk::Grid {
 
   virtual ~SpectrumSettingsUi();
 
-  static SpectrumSettingsUi* add_to_stack(Gtk::Stack* stack, Application* app);
+  static void add_to_stack(Gtk::Stack* stack, Application* app);
 
  private:
   std::string log_tag = "spectrum_settings_ui: ";

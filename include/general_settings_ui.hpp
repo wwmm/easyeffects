@@ -19,7 +19,7 @@ class GeneralSettingsUi : public Gtk::Grid {
 
   virtual ~GeneralSettingsUi();
 
-  static GeneralSettingsUi* add_to_stack(Gtk::Stack* stack, Application* app);
+  static void add_to_stack(Gtk::Stack* stack, Application* app);
 
  private:
   std::string log_tag = "general_settings_ui: ";
