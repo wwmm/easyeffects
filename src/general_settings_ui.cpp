@@ -80,14 +80,30 @@ GeneralSettingsUi::GeneralSettingsUi(
         app->soe->update_pipeline_state();
       }));
 
+  connections.push_back(
+      settings->signal_changed("realtime-priority").connect([&](auto key) {
+        app->sie->set_null_pipeline();
+        app->soe->set_null_pipeline();
+
+        app->sie->update_pipeline_state();
+        app->soe->update_pipeline_state();
+      }));
+
+  connections.push_back(
+      settings->signal_changed("niceness").connect([&](auto key) {
+        app->sie->set_null_pipeline();
+        app->soe->set_null_pipeline();
+
+        app->sie->update_pipeline_state();
+        app->soe->update_pipeline_state();
+      }));
+
   auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
   settings->bind("use-dark-theme", theme_switch, "active", flag);
   settings->bind("enable-all-apps", enable_all_apps, "active", flag);
   settings->bind("realtime-priority", adjustment_priority.get(), "value", flag);
   settings->bind("niceness", adjustment_niceness.get(), "value", flag);
-  // settings->bind("enable-realtime", realtime_priority, "sensitive", flag);
-  // settings->bind("enable-high-priority", niceness, "sensitive", flag);
 
   g_settings_bind_with_mapping(
       settings->gobj(), "priority-type", priority_type->gobj(), "active",
