@@ -10,10 +10,10 @@
 #include <gtkmm/menubutton.h>
 #include <gtkmm/popover.h>
 #include <gtkmm/stack.h>
-#include <gtkmm/switch.h>
 #include "application.hpp"
 #include "blacklist_settings_ui.hpp"
 #include "calibration_ui.hpp"
+#include "general_settings_ui.hpp"
 #include "presets_menu_ui.hpp"
 #include "pulse_settings_ui.hpp"
 #include "sink_input_effects_ui.hpp"
@@ -38,10 +38,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   Glib::RefPtr<Gio::Settings> settings;
 
-  Gtk::Switch *enable_autostart, *enable_all_apps, *theme_switch;
-
   Gtk::Box* placeholder_spectrum;
-  Gtk::Button *reset_settings, *calibration_button, *help_button, *about_button;
+  Gtk::Button *calibration_button, *help_button;
   Gtk::Stack *stack, *stack_menu_settings;
   Gtk::Label* headerbar_info;
   Gtk::Popover* presets_menu;
@@ -56,6 +54,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   PresetsMenuUi* presets_menu_ui;
   SpectrumUi* spectrum_ui;
+  GeneralSettingsUi* general_settings_ui;
   SpectrumSettingsUi* spectrum_settings_ui;
   PulseSettingsUi* pulse_settings_ui;
   BlacklistSettingsUi* blacklist_settings_ui;
@@ -74,12 +73,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   void update_headerbar_subtitle(const int& index);
 
   void apply_css_style(std::string css_file_name);
-
-  void init_autostart_switch();
-
-  bool on_enable_autostart(bool state);
-
-  void on_reset_settings();
 
   void on_stack_visible_child_changed();
 

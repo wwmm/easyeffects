@@ -23,11 +23,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // loading glade widgets
 
-  builder->get_widget("theme_switch", theme_switch);
-  builder->get_widget("enable_autostart", enable_autostart);
-  builder->get_widget("enable_all_apps", enable_all_apps);
-
-  builder->get_widget("reset_settings", reset_settings);
   builder->get_widget("placeholder_spectrum", placeholder_spectrum);
   builder->get_widget("stack", stack);
   builder->get_widget("stack_menu_settings", stack_menu_settings);
@@ -42,16 +37,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   builder->get_widget("headerbar_icon1", headerbar_icon1);
   builder->get_widget("headerbar_icon2", headerbar_icon2);
   builder->get_widget("headerbar_info", headerbar_info);
-
-  builder->get_widget("about_button", about_button);
-
-  // signals connection
-
-  enable_autostart->signal_state_set().connect(
-      sigc::mem_fun(*this, &ApplicationUi::on_enable_autostart), false);
-
-  reset_settings->signal_clicked().connect(
-      sigc::mem_fun(*this, &ApplicationUi::on_reset_settings));
 
   stack->connect_property_changed(
       "visible-child",
@@ -81,11 +66,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   help_button->signal_clicked().connect(
       [=]() { app->activate_action("help"); });
 
-  // about button
-
-  about_button->signal_clicked().connect(
-      [=]() { app->activate_action("about"); });
-
   // presets menu widgets
 
   auto b_presets_menu_ui = Gtk::Builder::create_from_resource(
@@ -113,6 +93,17 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   b_spectrum->get_widget_derived("widgets_grid", spectrum_ui, settings, app);
 
   placeholder_spectrum->add(*spectrum_ui);
+
+  // general settings widgets
+
+  auto b_general_settings = Gtk::Builder::create_from_resource(
+      "/com/github/wwmm/pulseeffects/ui/general_settings.glade");
+
+  b_general_settings->get_widget_derived("widgets_grid", general_settings_ui,
+                                         settings, app);
+
+  stack_menu_settings->add(*general_settings_ui, "general_spectrum",
+                           _("General"));
 
   // spectrum settings widgets
 
@@ -227,14 +218,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
-  settings->bind("use-dark-theme", theme_switch, "active", flag);
-
   settings->bind("use-dark-theme", Gtk::Settings::get_default().get(),
                  "gtk_application_prefer_dark_theme", flag);
-
-  settings->bind("enable-all-apps", enable_all_apps, "active", flag);
-
-  init_autostart_switch();
 }
 
 ApplicationUi::~ApplicationUi() {
@@ -268,66 +253,6 @@ void ApplicationUi::apply_css_style(std::string css_file_name) {
   auto priority = GTK_STYLE_PROVIDER_PRIORITY_APPLICATION;
 
   Gtk::StyleContext::add_provider_for_screen(screen, provider, priority);
-}
-
-void ApplicationUi::init_autostart_switch() {
-  auto path =
-      Glib::get_user_config_dir() + "/autostart/pulseeffects-service.desktop";
-
-  try {
-    auto file = Gio::File::create_for_path(path);
-
-    if (file->query_exists()) {
-      enable_autostart->set_active(true);
-    } else {
-      enable_autostart->set_active(false);
-    }
-  } catch (const Glib::Exception& ex) {
-    util::warning(log_tag + ex.what());
-  }
-}
-
-bool ApplicationUi::on_enable_autostart(bool state) {
-  boost::filesystem::path autostart_dir{Glib::get_user_config_dir() +
-                                        "/autostart"};
-
-  if (!boost::filesystem::is_directory(autostart_dir)) {
-    boost::filesystem::create_directories(autostart_dir);
-  }
-
-  boost::filesystem::path autostart_file{
-      Glib::get_user_config_dir() + "/autostart/pulseeffects-service.desktop"};
-
-  if (state) {
-    if (!boost::filesystem::exists(autostart_file)) {
-      boost::filesystem::ofstream ofs{autostart_file};
-
-      ofs << "[Desktop Entry]\n";
-      ofs << "Name=PulseEffects\n";
-      ofs << "Comment=PulseEffects Service\n";
-      ofs << "Exec=pulseeffects --gapplication-service\n";
-      ofs << "Icon=pulseeffects\n";
-      ofs << "StartupNotify=false\n";
-      ofs << "Terminal=false\n";
-      ofs << "Type=Application\n";
-
-      ofs.close();
-
-      util::debug(log_tag + "autostart file created");
-    }
-  } else {
-    if (boost::filesystem::exists(autostart_file)) {
-      boost::filesystem::remove(autostart_file);
-
-      util::debug(log_tag + "autostart file removed");
-    }
-  }
-
-  return false;
-}
-
-void ApplicationUi::on_reset_settings() {
-  settings->reset("");
 }
 
 void ApplicationUi::update_headerbar_subtitle(const int& index) {
