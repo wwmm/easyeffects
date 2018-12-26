@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-26 13:02-0200\n"
+"POT-Creation-Date: 2018-12-26 15:00-0200\n"
 "PO-Revision-Date: 2018-06-21 21:34+0200\n"
 "Last-Translator: Piotr Komur, pkomur@gmail.com\n"
 "Language-Team: \n"
@@ -41,6 +41,7 @@ msgstr ""
 #: data/ui/application.glade:181 data/ui/compressor.glade:205
 #: data/ui/filter.glade:203 data/ui/equalizer.glade:280
 #: data/ui/reverb.glade:283 data/ui/crossfeed.glade:47
+#: src/presets_menu_ui.cpp:119 src/presets_menu_ui.cpp:195
 msgid "Presets"
 msgstr "Profile"
 
@@ -946,7 +947,7 @@ msgstr "Powiązanie stereo"
 msgid "Select the impulse Response File"
 msgstr ""
 
-#: data/ui/convolver.glade:396 src/application_ui.cpp:117
+#: data/ui/convolver.glade:396 src/spectrum_settings_ui.cpp:93
 msgid "Spectrum"
 msgstr "Widmo"
 
@@ -1072,7 +1073,7 @@ msgstr "Szansa wykrycia"
 msgid "Voice Detector"
 msgstr "Wykrywanie głosu"
 
-#: data/ui/presets_menu.glade:59
+#: data/ui/presets_menu.glade:59 src/presets_menu_ui.cpp:114
 msgid "Import Presets"
 msgstr "Importuj profile"
 
@@ -1270,21 +1271,30 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: src/application_ui.cpp:106
-msgid "General"
-msgstr "Ogólne"
-
-#: src/application_ui.cpp:128
-msgid "Pulseaudio"
-msgstr "Pulseaudio"
-
-#: src/application_ui.cpp:139
-msgid "Blacklist"
-msgstr ""
-
 #: src/effects_base_ui.cpp:23
 msgid "Applications"
 msgstr "Programy"
+
+#: src/blacklist_settings_ui.cpp:85
+msgid "Blacklist"
+msgstr ""
+
+#: src/general_settings_ui.cpp:59
+msgid "General"
+msgstr "Ogólne"
+
+#: src/pulse_settings_ui.cpp:145
+msgid "Pulseaudio"
+msgstr "Pulseaudio"
+
+#: src/presets_menu_ui.cpp:115 src/convolver_ui.cpp:268
+msgid "Open"
+msgstr ""
+
+#: src/presets_menu_ui.cpp:115 src/convolver_ui.cpp:268
+#, fuzzy
+msgid "Cancel"
+msgstr "Balans"
 
 #: src/app_info_ui.cpp:85
 msgid "paused"
@@ -1301,15 +1311,6 @@ msgstr "Kalibracja mikrofonu"
 #: src/convolver_ui.cpp:267
 msgid "Import Impulse File"
 msgstr ""
-
-#: src/convolver_ui.cpp:268
-msgid "Open"
-msgstr ""
-
-#: src/convolver_ui.cpp:268
-#, fuzzy
-msgid "Cancel"
-msgstr "Balans"
 
 #: src/convolver_ui.cpp:310 src/convolver_ui.cpp:311 src/convolver_ui.cpp:313
 msgid "Failed"
