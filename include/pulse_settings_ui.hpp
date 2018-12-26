@@ -2,12 +2,14 @@
 #define PULSE_SETTINGS_UI_HPP
 
 #include <giomm/settings.h>
+#include <glibmm/i18n.h>
 #include <gtkmm/adjustment.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/combobox.h>
 #include <gtkmm/comboboxtext.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/liststore.h>
+#include <gtkmm/stack.h>
 #include <gtkmm/togglebutton.h>
 #include "application.hpp"
 
@@ -19,6 +21,8 @@ class PulseSettingsUi : public Gtk::Grid {
                   Application* application);
 
   virtual ~PulseSettingsUi();
+
+  static PulseSettingsUi* add_to_stack(Gtk::Stack* stack, Application* app);
 
  private:
   std::string log_tag = "pulse_settings_ui: ";

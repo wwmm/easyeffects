@@ -90,14 +90,16 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // Pulseaudio settings widgets
 
-  auto b_pulse_settings = Gtk::Builder::create_from_resource(
-      "/com/github/wwmm/pulseeffects/ui/pulse_settings.glade");
+  // auto b_pulse_settings = Gtk::Builder::create_from_resource(
+  //     "/com/github/wwmm/pulseeffects/ui/pulse_settings.glade");
+  //
+  // b_pulse_settings->get_widget_derived("widgets_grid", pulse_settings_ui,
+  //                                      settings, app);
+  //
+  // stack_menu_settings->add(*pulse_settings_ui, "settings_pulse",
+  //                          _("Pulseaudio"));
 
-  b_pulse_settings->get_widget_derived("widgets_grid", pulse_settings_ui,
-                                       settings, app);
-
-  stack_menu_settings->add(*pulse_settings_ui, "settings_pulse",
-                           _("Pulseaudio"));
+  pulse_settings_ui = PulseSettingsUi::add_to_stack(stack_menu_settings, app);
 
   // Blacklist settings widgets
 
