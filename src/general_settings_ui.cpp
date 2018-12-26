@@ -19,6 +19,8 @@ GeneralSettingsUi::GeneralSettingsUi(
   builder->get_widget("about_button", about_button);
   builder->get_widget("enable_realtime", enable_realtime);
   builder->get_widget("enable_high_priority", enable_high_priority);
+  builder->get_widget("realtime_priority", realtime_priority);
+  builder->get_widget("niceness", niceness);
 
   get_object(builder, "adjustment_priority", adjustment_priority);
   get_object(builder, "adjustment_niceness", adjustment_niceness);
@@ -42,6 +44,8 @@ GeneralSettingsUi::GeneralSettingsUi(
   settings->bind("enable-high-priority", enable_high_priority, "active", flag);
   settings->bind("realtime-priority", adjustment_priority.get(), "value", flag);
   settings->bind("niceness", adjustment_niceness.get(), "value", flag);
+  settings->bind("enable-realtime", realtime_priority, "sensitive", flag);
+  settings->bind("enable-high-priority", niceness, "sensitive", flag);
 
   init_autostart_switch();
 }
