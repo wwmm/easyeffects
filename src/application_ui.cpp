@@ -91,14 +91,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // general settings widgets
 
-  auto b_general_settings = Gtk::Builder::create_from_resource(
-      "/com/github/wwmm/pulseeffects/ui/general_settings.glade");
-
-  b_general_settings->get_widget_derived("widgets_grid", general_settings_ui,
-                                         settings, app);
-
-  stack_menu_settings->add(*general_settings_ui, "general_spectrum",
-                           _("General"));
+  general_settings_ui =
+      GeneralSettingsUi::add_to_stack(stack_menu_settings, app);
 
   // spectrum settings widgets
 
