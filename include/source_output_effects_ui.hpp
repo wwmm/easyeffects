@@ -24,6 +24,9 @@ class SourceOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
 
   virtual ~SourceOutputEffectsUi();
 
+  static SourceOutputEffectsUi* add_to_stack(Gtk::Stack* stack,
+                                             SourceOutputEffects* soe_ptr);
+
  protected:
   std::string log_tag = "soe_ui: ";
 

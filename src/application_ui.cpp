@@ -40,6 +40,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   spectrum_ui = SpectrumUi::add_to_box(placeholder_spectrum, app);
   presets_menu_ui = PresetsMenuUi::add_to_popover(presets_menu, app);
   sie_ui = SinkInputEffectsUi::add_to_stack(stack, app->sie.get());
+  soe_ui = SourceOutputEffectsUi::add_to_stack(stack, app->soe.get());
   GeneralSettingsUi::add_to_stack(stack_menu_settings, app);
   SpectrumSettingsUi::add_to_stack(stack_menu_settings, app);
   PulseSettingsUi::add_to_stack(stack_menu_settings, app);
@@ -103,14 +104,14 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // source outputs widgets
 
-  auto b_soe_ui = Gtk::Builder::create_from_resource(
-      "/com/github/wwmm/pulseeffects/ui/effects_base.glade");
-
-  auto settings_soe_ui =
-      Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs");
-
-  b_soe_ui->get_widget_derived("widgets_box", soe_ui, settings_soe_ui,
-                               app->soe.get());
+  // auto b_soe_ui = Gtk::Builder::create_from_resource(
+  //     "/com/github/wwmm/pulseeffects/ui/effects_base.glade");
+  //
+  // auto settings_soe_ui =
+  //     Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs");
+  //
+  // b_soe_ui->get_widget_derived("widgets_box", soe_ui, settings_soe_ui,
+  //                              app->soe.get());
 
   app->pm->source_output_added.connect(
       sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_added));
@@ -119,9 +120,9 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   app->pm->source_output_removed.connect(
       sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_removed));
 
-  stack->add(*soe_ui, "source_outputs");
-  stack->child_property_icon_name(*soe_ui).set_value(
-      "audio-input-microphone-symbolic");
+  // stack->add(*soe_ui, "source_outputs");
+  // stack->child_property_icon_name(*soe_ui).set_value(
+  //     "audio-input-microphone-symbolic");
 
   connections.push_back(app->soe->new_latency.connect([=](int latency) {
     soe_latency = latency;
