@@ -2,10 +2,12 @@
 #define SPECTRUM_SETTINGS_UI_HPP
 
 #include <giomm/settings.h>
+#include <glibmm/i18n.h>
 #include <gtkmm/adjustment.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/colorbutton.h>
 #include <gtkmm/grid.h>
+#include <gtkmm/stack.h>
 #include <gtkmm/switch.h>
 #include "application.hpp"
 
@@ -17,6 +19,8 @@ class SpectrumSettingsUi : public Gtk::Grid {
                      Application* application);
 
   virtual ~SpectrumSettingsUi();
+
+  static SpectrumSettingsUi* add_to_stack(Gtk::Stack* stack, Application* app);
 
  private:
   std::string log_tag = "spectrum_settings_ui: ";

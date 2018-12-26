@@ -85,14 +85,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // spectrum settings widgets
 
-  auto b_spectrum_settings = Gtk::Builder::create_from_resource(
-      "/com/github/wwmm/pulseeffects/ui/spectrum_settings.glade");
-
-  b_spectrum_settings->get_widget_derived("widgets_grid", spectrum_settings_ui,
-                                          settings, app);
-
-  stack_menu_settings->add(*spectrum_settings_ui, "settings_spectrum",
-                           _("Spectrum"));
+  spectrum_settings_ui =
+      SpectrumSettingsUi::add_to_stack(stack_menu_settings, app);
 
   // Pulseaudio settings widgets
 

@@ -80,6 +80,22 @@ SpectrumSettingsUi::~SpectrumSettingsUi() {
   util::debug(log_tag + "destroyed");
 }
 
+SpectrumSettingsUi* SpectrumSettingsUi::add_to_stack(Gtk::Stack* stack,
+                                                     Application* app) {
+  auto builder = Gtk::Builder::create_from_resource(
+      "/com/github/wwmm/pulseeffects/ui/spectrum_settings.glade");
+
+  auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
+
+  SpectrumSettingsUi* ui;
+
+  builder->get_widget_derived("widgets_grid", ui, settings, app);
+
+  stack->add(*ui, "settings_spectrum", _("Spectrum"));
+
+  return ui;
+}
+
 bool SpectrumSettingsUi::on_show_spectrum(bool state) {
   if (state) {
     app->sie->enable_spectrum();
