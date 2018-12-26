@@ -92,8 +92,10 @@ void PresetsMenuUi::on_import_preset_clicked() {
 
   gint res;
 
+  auto main_window = gtk_widget_get_toplevel((GtkWidget*)this->gobj());
+
   auto dialog = gtk_file_chooser_native_new(
-      _("Import Presets"), (GtkWindow*)this->gobj(),
+      _("Import Presets"), (GtkWindow*)main_window,
       GTK_FILE_CHOOSER_ACTION_OPEN, _("Open"), _("Cancel"));
 
   auto filter = gtk_file_filter_new();

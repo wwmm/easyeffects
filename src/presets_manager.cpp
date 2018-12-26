@@ -5,8 +5,6 @@
 #include <iostream>
 #include "util.hpp"
 
-namespace fs = boost::filesystem;
-
 PresetsManager::PresetsManager()
     : presets_dir(Glib::get_user_config_dir() + "/PulseEffects"),
       settings(Gio::Settings::create("com.github.wwmm.pulseeffects")),
@@ -34,10 +32,10 @@ PresetsManager::PresetsManager()
       convolver(std::make_unique<ConvolverPreset>()),
       crystalizer(std::make_unique<CrystalizerPreset>()),
       autogain(std::make_unique<AutoGainPreset>()) {
-  auto dir_exists = fs::is_directory(presets_dir);
+  auto dir_exists = boost::filesystem::is_directory(presets_dir);
 
   if (!dir_exists) {
-    if (fs::create_directories(presets_dir)) {
+    if (boost::filesystem::create_directories(presets_dir)) {
       util::debug(log_tag +
                   "user presets directory created: " + presets_dir.string());
     } else {
@@ -58,11 +56,11 @@ PresetsManager::~PresetsManager() {
 }
 
 std::vector<std::string> PresetsManager::get_names() {
-  fs::directory_iterator it{presets_dir};
+  boost::filesystem::directory_iterator it{presets_dir};
   std::vector<std::string> names;
 
-  while (it != fs::directory_iterator{}) {
-    if (fs::is_regular_file(it->status())) {
+  while (it != boost::filesystem::directory_iterator{}) {
+    if (boost::filesystem::is_regular_file(it->status())) {
       if (it->path().extension().string() == ".json") {
         names.push_back(it->path().stem().string());
       }
@@ -93,14 +91,10 @@ void PresetsManager::save_general_settings(boost::property_tree::ptree& root) {
   Glib::Variant<std::vector<double>> aux;
 
   root.put("spectrum.show", settings->get_boolean("show-spectrum"));
-
   root.put("spectrum.n-points", settings->get_int("spectrum-n-points"));
-
   root.put("spectrum.height", settings->get_int("spectrum-height"));
-
   root.put("spectrum.use-custom-color",
            settings->get_boolean("use-custom-color"));
-
   root.put("spectrum.fill", settings->get_boolean("spectrum-fill"));
   root.put("spectrum.scale", settings->get_double("spectrum-scale"));
   root.put("spectrum.exponent", settings->get_double("spectrum-exponent"));
@@ -221,7 +215,7 @@ void PresetsManager::save(const std::string& name) {
   crystalizer->write(root);
   autogain->write(root);
 
-  auto output_file = presets_dir / fs::path{name + ".json"};
+  auto output_file = presets_dir / boost::filesystem::path{name + ".json"};
 
   boost::property_tree::write_json(output_file.string(), root);
 
@@ -229,10 +223,10 @@ void PresetsManager::save(const std::string& name) {
 }
 
 void PresetsManager::remove(const std::string& name) {
-  auto preset_file = presets_dir / fs::path{name + ".json"};
+  auto preset_file = presets_dir / boost::filesystem::path{name + ".json"};
 
-  if (fs::exists(preset_file)) {
-    fs::remove(preset_file);
+  if (boost::filesystem::exists(preset_file)) {
+    boost::filesystem::remove(preset_file);
 
     util::debug(log_tag + "removed preset: " + preset_file.string());
   }
@@ -243,7 +237,7 @@ void PresetsManager::load(const std::string& name) {
     boost::property_tree::ptree root;
     std::vector<std::string> input_plugins, output_plugins;
 
-    auto input_file = presets_dir / fs::path{name + ".json"};
+    auto input_file = presets_dir / boost::filesystem::path{name + ".json"};
 
     boost::property_tree::read_json(input_file.string(), root);
 
@@ -338,13 +332,14 @@ void PresetsManager::load(const std::string& name) {
 }
 
 void PresetsManager::import(const std::string& file_path) {
-  fs::path p{file_path};
+  boost::filesystem::path p{file_path};
 
-  if (fs::is_regular_file(p)) {
+  if (boost::filesystem::is_regular_file(p)) {
     if (p.extension().string() == ".json") {
       auto out_path = presets_dir / p.filename();
 
-      fs::copy_file(p, out_path, fs::copy_option::overwrite_if_exists);
+      boost::filesystem::copy_file(
+          p, out_path, boost::filesystem::copy_option::overwrite_if_exists);
 
       util::debug(log_tag + "imported preset to: " + out_path.string());
     }
