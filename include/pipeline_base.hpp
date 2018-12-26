@@ -25,6 +25,8 @@ class PipelineBase {
 
   GstBus* bus = nullptr;
 
+  GSettings* settings = nullptr;
+
   std::unique_ptr<RealtimeKit> rtkit;
 
   std::mutex pipeline_mutex;
@@ -56,8 +58,6 @@ class PipelineBase {
   sigc::signal<void, int> new_latency;
 
  protected:
-  GSettings* settings = nullptr;
-
   void set_pulseaudio_props(std::string props);
 
   void on_app_added(const std::shared_ptr<AppInfo>& app_info);

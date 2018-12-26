@@ -36,6 +36,7 @@ static void on_stream_status(GstBus* bus,
   gchar* path;
   std::string path_str, source_name;
   std::size_t idx;
+  int priority, niceness;
 
   gst_message_parse_stream_status(message, &type, &owner);
 
@@ -53,8 +54,17 @@ static void on_stream_status(GstBus* bus,
 
       g_free(path);
 
-      pb->rtkit->set_priority(source_name, 4);
-      pb->rtkit->set_nice(source_name, -10);
+      if (g_settings_get_boolean(pb->settings, "enable-high-priority")) {
+        niceness = g_settings_get_int(pb->settings, "niceness");
+
+        pb->rtkit->set_nice(source_name, niceness);
+      }
+
+      if (g_settings_get_boolean(pb->settings, "enable-realtime")) {
+        priority = g_settings_get_int(pb->settings, "realtime-priority");
+
+        pb->rtkit->set_priority(source_name, priority);
+      }
 
       break;
     case GST_STREAM_STATUS_TYPE_LEAVE:
@@ -229,8 +239,8 @@ void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
 
 PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     : log_tag(tag),
-      rtkit(std::make_unique<RealtimeKit>(tag)),
-      settings(g_settings_new("com.github.wwmm.pulseeffects")) {
+      settings(g_settings_new("com.github.wwmm.pulseeffects")),
+      rtkit(std::make_unique<RealtimeKit>(tag)) {
   gst_init(nullptr, nullptr);
 
   pipeline = gst_pipeline_new("pipeline");
