@@ -79,10 +79,10 @@ PulseSettingsUi::PulseSettingsUi(BaseObjectType* cobject,
   use_default_source->signal_toggled().connect(
       sigc::mem_fun(*this, &PulseSettingsUi::on_use_default_source_toggled));
 
-  input_device->signal_changed().connect(
-      sigc::mem_fun(*this, &PulseSettingsUi::on_input_device_changed));
-  output_device->signal_changed().connect(
-      sigc::mem_fun(*this, &PulseSettingsUi::on_output_device_changed));
+  connections.push_back(input_device->signal_changed().connect(
+      sigc::mem_fun(*this, &PulseSettingsUi::on_input_device_changed)));
+  connections.push_back(output_device->signal_changed().connect(
+      sigc::mem_fun(*this, &PulseSettingsUi::on_output_device_changed)));
 
   app->pm->sink_added.connect(
       sigc::mem_fun(*this, &PulseSettingsUi::on_sink_added));
