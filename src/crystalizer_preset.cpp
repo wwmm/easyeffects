@@ -32,26 +32,6 @@ void CrystalizerPreset::load(boost::property_tree::ptree& root,
 
   update_key<double>(root, settings, "intensity",
                      section + ".crystalizer.intensity");
-
-  // settings->set_boolean("state",
-  //                       root.get<bool>(section + ".crystalizer.state",
-  //                                      get_default<bool>(settings,
-  //                                      "state")));
-
-  // settings->set_double(
-  //     "input-gain",
-  //     root.get<double>(section + ".crystalizer.input-gain",
-  //                      get_default<double>(settings, "input-gain")));
-  //
-  // settings->set_double(
-  //     "output-gain",
-  //     root.get<double>(section + ".crystalizer.output-gain",
-  //                      get_default<double>(settings, "output-gain")));
-
-  // settings->set_double(
-  //     "intensity",
-  //     root.get<double>(section + ".crystalizer.intensity",
-  //                      get_default<double>(settings, "intensity")));
 }
 
 void CrystalizerPreset::write(boost::property_tree::ptree& root) {
