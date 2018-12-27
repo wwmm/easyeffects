@@ -152,47 +152,44 @@ void MultibandCompressorPreset::load(
     boost::property_tree::ptree& root,
     const std::string& section,
     const Glib::RefPtr<Gio::Settings>& settings) {
-  settings->set_boolean("state",
-                        root.get<bool>(section + ".multiband_compressor.state",
-                                       get_default<bool>(settings, "state")));
+  update_key<bool>(root, settings, "state",
+                   section + ".multiband_compressor.state");
 
-  settings->set_double(
-      "input-gain",
-      root.get<double>(section + ".multiband_compressor.input-gain",
-                       get_default<double>(settings, "input-gain")));
+  update_key<double>(root, settings, "input-gain",
+                     section + ".multiband_compressor.input-gain");
 
-  settings->set_double(
-      "output-gain",
-      root.get<double>(section + ".multiband_compressor.output-gain",
-                       get_default<double>(settings, "output-gain")));
+  update_key<double>(root, settings, "output-gain",
+                     section + ".multiband_compressor.output-gain");
 
-  settings->set_double(
-      "freq0", root.get<double>(section + ".multiband_compressor.freq0",
-                                get_default<double>(settings, "freq0")));
+  update_key<double>(root, settings, "freq0",
+                     section + ".multiband_compressor.freq0");
 
-  settings->set_double(
-      "freq1", root.get<double>(section + ".multiband_compressor.freq1",
-                                get_default<double>(settings, "freq1")));
+  update_key<double>(root, settings, "freq1",
+                     section + ".multiband_compressor.freq1");
 
-  settings->set_double(
-      "freq2", root.get<double>(section + ".multiband_compressor.freq2",
-                                get_default<double>(settings, "freq2")));
+  update_key<double>(root, settings, "freq2",
+                     section + ".multiband_compressor.freq2");
 
-  settings->set_string("mode", root.get<std::string>(
-                                   section + ".multiband_compressor.mode",
-                                   get_default<std::string>(settings, "mode")));
+  update_string_key(root, settings, "mode",
+                    section + ".multiband_compressor.mode");
 
   // sub band
 
-  settings->set_double(
-      "threshold0",
-      root.get<double>(section + ".multiband_compressor.subband.threshold",
-                       get_default<double>(settings, "threshold0")));
+  update_key<double>(root, settings, "threshold0",
+                     section + ".multiband_compressor.threshold0");
 
-  settings->set_double(
-      "ratio0",
-      root.get<double>(section + ".multiband_compressor.subband.ratio",
-                       get_default<double>(settings, "ratio0")));
+  update_key<double>(root, settings, "ratio0",
+                     section + ".multiband_compressor.ratio0");
+
+  // settings->set_double(
+  //     "threshold0",
+  //     root.get<double>(section + ".multiband_compressor.subband.threshold",
+  //                      get_default<double>(settings, "threshold0")));
+
+  // settings->set_double(
+  //     "ratio0",
+  //     root.get<double>(section + ".multiband_compressor.subband.ratio",
+  //                      get_default<double>(settings, "ratio0")));
 
   settings->set_double(
       "attack0",
