@@ -28,37 +28,23 @@ void FilterPreset::save(boost::property_tree::ptree& root,
 void FilterPreset::load(boost::property_tree::ptree& root,
                         const std::string& section,
                         const Glib::RefPtr<Gio::Settings>& settings) {
-  settings->set_boolean("state",
-                        root.get<bool>(section + ".filter.state",
-                                       get_default<bool>(settings, "state")));
+  update_key<bool>(root, settings, "state", section + ".filter.state");
 
-  settings->set_double(
-      "input-gain",
-      root.get<double>(section + ".filter.input-gain",
-                       get_default<double>(settings, "input-gain")));
+  update_key<double>(root, settings, "input-gain",
+                     section + ".filter.input-gain");
 
-  settings->set_double(
-      "output-gain",
-      root.get<double>(section + ".filter.output-gain",
-                       get_default<double>(settings, "output-gain")));
+  update_key<double>(root, settings, "output-gain",
+                     section + ".filter.output-gain");
 
-  settings->set_double(
-      "frequency",
-      root.get<double>(section + ".filter.frequency",
-                       get_default<double>(settings, "frequency")));
+  update_key<double>(root, settings, "frequency",
+                     section + ".filter.frequency");
 
-  settings->set_double(
-      "resonance",
-      root.get<double>(section + ".filter.resonance",
-                       get_default<double>(settings, "resonance")));
+  update_key<double>(root, settings, "resonance",
+                     section + ".filter.resonance");
 
-  settings->set_string("mode", root.get<std::string>(
-                                   section + ".filter.mode",
-                                   get_default<std::string>(settings, "mode")));
+  update_string_key(root, settings, "mode", section + ".filter.mode");
 
-  settings->set_double(
-      "inertia", root.get<double>(section + ".filter.inertia",
-                                  get_default<double>(settings, "inertia")));
+  update_key<double>(root, settings, "inertia", section + ".filter.inertia");
 }
 
 void FilterPreset::write(boost::property_tree::ptree& root) {
