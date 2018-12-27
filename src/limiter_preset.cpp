@@ -30,40 +30,25 @@ void LimiterPreset::save(boost::property_tree::ptree& root,
 void LimiterPreset::load(boost::property_tree::ptree& root,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {
-  settings->set_boolean("state",
-                        root.get<bool>(section + ".limiter.state",
-                                       get_default<bool>(settings, "state")));
+  update_key<bool>(root, settings, "state", section + ".limiter.state");
 
-  settings->set_double(
-      "input-gain",
-      root.get<double>(section + ".limiter.input-gain",
-                       get_default<double>(settings, "input-gain")));
+  update_key<double>(root, settings, "input-gain",
+                     section + ".limiter.input-gain");
 
-  settings->set_double(
-      "limit", root.get<double>(section + ".limiter.limit",
-                                get_default<double>(settings, "limit")));
+  update_key<double>(root, settings, "limit", section + ".limiter.limit");
 
-  settings->set_double(
-      "lookahead",
-      root.get<double>(section + ".limiter.lookahead",
-                       get_default<double>(settings, "lookahead")));
+  update_key<double>(root, settings, "lookahead",
+                     section + ".limiter.lookahead");
 
-  settings->set_double(
-      "release", root.get<double>(section + ".limiter.release",
-                                  get_default<double>(settings, "release")));
+  update_key<double>(root, settings, "release", section + ".limiter.release");
 
-  settings->set_boolean("asc",
-                        root.get<bool>(section + ".limiter.asc",
-                                       get_default<bool>(settings, "asc")));
+  update_key<bool>(root, settings, "asc", section + ".limiter.asc");
 
-  settings->set_double(
-      "asc-level",
-      root.get<double>(section + ".limiter.asc-level",
-                       get_default<double>(settings, "asc-level")));
+  update_key<double>(root, settings, "asc-level",
+                     section + ".limiter.asc-level");
 
-  settings->set_int("oversampling",
-                    root.get<int>(section + ".limiter.oversampling",
-                                  get_default<int>(settings, "oversampling")));
+  update_key<int>(root, settings, "oversampling",
+                  section + ".limiter.oversampling");
 }
 
 void LimiterPreset::write(boost::property_tree::ptree& root) {
