@@ -33,49 +33,29 @@ void ExciterPreset::save(boost::property_tree::ptree& root,
 void ExciterPreset::load(boost::property_tree::ptree& root,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {
-  settings->set_boolean("state",
-                        root.get<bool>(section + ".exciter.state",
-                                       get_default<bool>(settings, "state")));
+  update_key<bool>(root, settings, "state", section + ".exciter.state");
 
-  settings->set_double(
-      "input-gain",
-      root.get<double>(section + ".exciter.input-gain",
-                       get_default<double>(settings, "input-gain")));
+  update_key<double>(root, settings, "input-gain",
+                     section + ".exciter.input-gain");
 
-  settings->set_double(
-      "output-gain",
-      root.get<double>(section + ".exciter.output-gain",
-                       get_default<double>(settings, "output-gain")));
+  update_key<double>(root, settings, "output-gain",
+                     section + ".exciter.output-gain");
 
-  settings->set_double(
-      "amount", root.get<double>(section + ".exciter.amount",
-                                 get_default<double>(settings, "amount")));
+  update_key<double>(root, settings, "amount", section + ".exciter.amount");
 
-  settings->set_double(
-      "harmonics",
-      root.get<double>(section + ".exciter.harmonics",
-                       get_default<double>(settings, "harmonics")));
+  update_key<double>(root, settings, "harmonics",
+                     section + ".exciter.harmonics");
 
-  settings->set_double(
-      "scope", root.get<double>(section + ".exciter.scope",
-                                get_default<double>(settings, "scope")));
+  update_key<double>(root, settings, "scope", section + ".exciter.scope");
 
-  settings->set_double("ceil",
-                       root.get<double>(section + ".exciter.ceil",
-                                        get_default<double>(settings, "ceil")));
+  update_key<double>(root, settings, "ceil", section + ".exciter.ceil");
 
-  settings->set_double(
-      "blend", root.get<double>(section + ".exciter.blend",
-                                get_default<double>(settings, "blend")));
+  update_key<double>(root, settings, "blend", section + ".exciter.blend");
 
-  settings->set_boolean(
-      "ceil-active",
-      root.get<bool>(section + ".exciter.ceil-active",
-                     get_default<bool>(settings, "ceil-active")));
+  update_key<bool>(root, settings, "ceil-active",
+                   section + ".exciter.ceil-active");
 
-  settings->set_boolean("listen",
-                        root.get<bool>(section + ".exciter.listen",
-                                       get_default<bool>(settings, "listen")));
+  update_key<bool>(root, settings, "listen", section + ".exciter.listen");
 }
 
 void ExciterPreset::write(boost::property_tree::ptree& root) {
