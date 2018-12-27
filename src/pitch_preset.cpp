@@ -26,34 +26,20 @@ void PitchPreset::save(boost::property_tree::ptree& root,
 void PitchPreset::load(boost::property_tree::ptree& root,
                        const std::string& section,
                        const Glib::RefPtr<Gio::Settings>& settings) {
-  settings->set_boolean("state",
-                        root.get<bool>(section + ".pitch.state",
-                                       get_default<bool>(settings, "state")));
+  update_key<bool>(root, settings, "state", section + ".pitch.state");
 
-  settings->set_double(
-      "cents", root.get<double>(section + ".pitch.cents",
-                                get_default<double>(settings, "cents")));
+  update_key<double>(root, settings, "cents", section + ".pitch.cents");
 
-  settings->set_int("semitones",
-                    root.get<int>(section + ".pitch.semitones",
-                                  get_default<int>(settings, "semitones")));
+  update_key<int>(root, settings, "semitones", section + ".pitch.semitones");
 
-  settings->set_int("octaves",
-                    root.get<int>(section + ".pitch.octaves",
-                                  get_default<int>(settings, "octaves")));
+  update_key<int>(root, settings, "octaves", section + ".pitch.octaves");
 
-  settings->set_int("crispness",
-                    root.get<int>(section + ".pitch.crispness",
-                                  get_default<int>(settings, "crispness")));
+  update_key<int>(root, settings, "crispness", section + ".pitch.crispness");
 
-  settings->set_boolean(
-      "formant-preserving",
-      root.get<bool>(section + ".pitch.formant-preserving",
-                     get_default<bool>(settings, "formant-preserving")));
+  update_key<bool>(root, settings, "formant-preserving",
+                   section + ".pitch.formant-preserving");
 
-  settings->set_boolean("faster",
-                        root.get<bool>(section + ".pitch.faster",
-                                       get_default<bool>(settings, "faster")));
+  update_key<bool>(root, settings, "faster", section + ".pitch.faster");
 }
 
 void PitchPreset::write(boost::property_tree::ptree& root) {
