@@ -33,48 +33,26 @@ void GatePreset::save(boost::property_tree::ptree& root,
 void GatePreset::load(boost::property_tree::ptree& root,
                       const std::string& section,
                       const Glib::RefPtr<Gio::Settings>& settings) {
-  settings->set_boolean("state",
-                        root.get<bool>(section + ".gate.state",
-                                       get_default<bool>(settings, "state")));
+  update_key<bool>(root, settings, "state", section + ".gate.state");
 
-  settings->set_string(
-      "detection",
-      root.get<std::string>(section + ".gate.detection",
-                            get_default<std::string>(settings, "detection")));
+  update_string_key(root, settings, "detection", section + ".gate.detection");
 
-  settings->set_string(
-      "stereo-link",
-      root.get<std::string>(section + ".gate.stereo-link",
-                            get_default<std::string>(settings, "stereo-link")));
+  update_string_key(root, settings, "stereo-link",
+                    section + ".gate.stereo-link");
 
-  settings->set_double(
-      "range", root.get<double>(section + ".gate.range",
-                                get_default<double>(settings, "range")));
+  update_key<double>(root, settings, "range", section + ".gate.range");
 
-  settings->set_double(
-      "attack", root.get<double>(section + ".gate.attack",
-                                 get_default<double>(settings, "attack")));
+  update_key<double>(root, settings, "attack", section + ".gate.attack");
 
-  settings->set_double(
-      "release", root.get<double>(section + ".gate.release",
-                                  get_default<double>(settings, "release")));
+  update_key<double>(root, settings, "release", section + ".gate.release");
 
-  settings->set_double(
-      "threshold",
-      root.get<double>(section + ".gate.threshold",
-                       get_default<double>(settings, "threshold")));
+  update_key<double>(root, settings, "threshold", section + ".gate.threshold");
 
-  settings->set_double(
-      "ratio", root.get<double>(section + ".gate.ratio",
-                                get_default<double>(settings, "ratio")));
+  update_key<double>(root, settings, "ratio", section + ".gate.ratio");
 
-  settings->set_double("knee",
-                       root.get<double>(section + ".gate.knee",
-                                        get_default<double>(settings, "knee")));
+  update_key<double>(root, settings, "knee", section + ".gate.knee");
 
-  settings->set_double(
-      "makeup", root.get<double>(section + ".gate.makeup",
-                                 get_default<double>(settings, "makeup")));
+  update_key<double>(root, settings, "makeup", section + ".gate.makeup");
 }
 
 void GatePreset::write(boost::property_tree::ptree& root) {
