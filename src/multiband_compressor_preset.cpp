@@ -176,76 +176,60 @@ void MultibandCompressorPreset::load(
   // sub band
 
   update_key<double>(root, settings, "threshold0",
-                     section + ".multiband_compressor.threshold0");
+                     section + ".multiband_compressor.subband.threshold");
 
   update_key<double>(root, settings, "ratio0",
-                     section + ".multiband_compressor.ratio0");
+                     section + ".multiband_compressor.subband.ratio");
 
   update_key<double>(root, settings, "attack0",
-                     section + ".multiband_compressor.attack0");
+                     section + ".multiband_compressor.subband.attack");
 
   update_key<double>(root, settings, "release0",
-                     section + ".multiband_compressor.release0");
+                     section + ".multiband_compressor.subband.release");
 
   update_key<double>(root, settings, "makeup0",
-                     section + ".multiband_compressor.makeup0");
+                     section + ".multiband_compressor.subband.makeup");
 
   update_key<double>(root, settings, "knee0",
-                     section + ".multiband_compressor.knee0");
+                     section + ".multiband_compressor.subband.knee");
 
   update_string_key(root, settings, "detection0",
-                    section + ".multiband_compressor.detection0");
+                    section + ".multiband_compressor.subband.detection");
 
   update_key<bool>(root, settings, "bypass0",
-                   section + ".multiband_compressor.bypass0");
+                   section + ".multiband_compressor.subband.bypass");
 
   update_key<bool>(root, settings, "solo0",
-                   section + ".multiband_compressor.solo0");
+                   section + ".multiband_compressor.subband.solo");
 
   // low band
 
-  settings->set_double(
-      "threshold1",
-      root.get<double>(section + ".multiband_compressor.lowband.threshold",
-                       get_default<double>(settings, "threshold1")));
+  update_key<double>(root, settings, "threshold1",
+                     section + ".multiband_compressor.lowband.threshold");
 
-  settings->set_double(
-      "ratio1",
-      root.get<double>(section + ".multiband_compressor.lowband.ratio",
-                       get_default<double>(settings, "ratio1")));
+  update_key<double>(root, settings, "ratio1",
+                     section + ".multiband_compressor.lowband.ratio");
 
-  settings->set_double(
-      "attack1",
-      root.get<double>(section + ".multiband_compressor.lowband.attack",
-                       get_default<double>(settings, "attack1")));
+  update_key<double>(root, settings, "attack1",
+                     section + ".multiband_compressor.lowband.attack");
 
-  settings->set_double(
-      "release1",
-      root.get<double>(section + ".multiband_compressor.lowband.release",
-                       get_default<double>(settings, "release1")));
+  update_key<double>(root, settings, "release1",
+                     section + ".multiband_compressor.lowband.release");
 
-  settings->set_double(
-      "makeup1",
-      root.get<double>(section + ".multiband_compressor.lowband.makeup",
-                       get_default<double>(settings, "makeup1")));
+  update_key<double>(root, settings, "makeup1",
+                     section + ".multiband_compressor.lowband.makeup");
 
-  settings->set_double(
-      "knee1", root.get<double>(section + ".multiband_compressor.lowband.knee",
-                                get_default<double>(settings, "knee1")));
+  update_key<double>(root, settings, "knee1",
+                     section + ".multiband_compressor.lowband.knee");
 
-  settings->set_string(
-      "detection1",
-      root.get<std::string>(section + ".multiband_compressor.lowband.detection",
-                            get_default<std::string>(settings, "detection1")));
+  update_string_key(root, settings, "detection1",
+                    section + ".multiband_compressor.lowband.detection");
 
-  settings->set_boolean(
-      "bypass1",
-      root.get<bool>(section + ".multiband_compressor.lowband.bypass",
-                     get_default<bool>(settings, "bypass1")));
+  update_key<bool>(root, settings, "bypass1",
+                   section + ".multiband_compressor.lowband.bypass");
 
-  settings->set_boolean(
-      "solo1", root.get<bool>(section + ".multiband_compressor.lowband.solo",
-                              get_default<bool>(settings, "solo1")));
+  update_key<bool>(root, settings, "solo1",
+                   section + ".multiband_compressor.lowband.solo");
 
   // mid band
 
