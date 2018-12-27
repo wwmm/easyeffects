@@ -38,59 +38,34 @@ void ReverbPreset::save(boost::property_tree::ptree& root,
 void ReverbPreset::load(boost::property_tree::ptree& root,
                         const std::string& section,
                         const Glib::RefPtr<Gio::Settings>& settings) {
-  settings->set_boolean("state",
-                        root.get<bool>(section + ".reverb.state",
-                                       get_default<bool>(settings, "state")));
+  update_key<bool>(root, settings, "state", section + ".reverb.state");
 
-  settings->set_double(
-      "input-gain",
-      root.get<double>(section + ".reverb.input-gain",
-                       get_default<double>(settings, "input-gain")));
+  update_key<double>(root, settings, "input-gain",
+                     section + ".reverb.input-gain");
 
-  settings->set_double(
-      "output-gain",
-      root.get<double>(section + ".reverb.output-gain",
-                       get_default<double>(settings, "output-gain")));
+  update_key<double>(root, settings, "output-gain",
+                     section + ".reverb.output-gain");
 
-  settings->set_string(
-      "room-size",
-      root.get<std::string>(section + ".reverb.room-size",
-                            get_default<std::string>(settings, "room-size")));
+  update_string_key(root, settings, "room-size", section + ".reverb.room-size");
 
-  settings->set_double(
-      "decay-time",
-      root.get<double>(section + ".reverb.decay-time",
-                       get_default<double>(settings, "decay-time")));
+  update_key<double>(root, settings, "decay-time",
+                     section + ".reverb.decay-time");
 
-  settings->set_double(
-      "hf-damp", root.get<double>(section + ".reverb.hf-damp",
-                                  get_default<double>(settings, "hf-damp")));
+  update_key<double>(root, settings, "hf-damp", section + ".reverb.hf-damp");
 
-  settings->set_double(
-      "diffusion",
-      root.get<double>(section + ".reverb.diffusion",
-                       get_default<double>(settings, "diffusion")));
+  update_key<double>(root, settings, "diffusion",
+                     section + ".reverb.diffusion");
 
-  settings->set_double(
-      "amount", root.get<double>(section + ".reverb.amount",
-                                 get_default<double>(settings, "amount")));
+  update_key<double>(root, settings, "amount", section + ".reverb.amount");
 
-  settings->set_double("dry",
-                       root.get<double>(section + ".reverb.dry",
-                                        get_default<double>(settings, "dry")));
+  update_key<double>(root, settings, "dry", section + ".reverb.dry");
 
-  settings->set_double(
-      "predelay", root.get<double>(section + ".reverb.predelay",
-                                   get_default<double>(settings, "predelay")));
+  update_key<double>(root, settings, "predelay", section + ".reverb.predelay");
 
-  settings->set_double(
-      "bass-cut", root.get<double>(section + ".reverb.bass-cut",
-                                   get_default<double>(settings, "bass-cut")));
+  update_key<double>(root, settings, "bass-cut", section + ".reverb.bass-cut");
 
-  settings->set_double(
-      "treble-cut",
-      root.get<double>(section + ".reverb.treble-cut",
-                       get_default<double>(settings, "treble-cut")));
+  update_key<double>(root, settings, "treble-cut",
+                     section + ".reverb.treble-cut");
 }
 
 void ReverbPreset::write(boost::property_tree::ptree& root) {
