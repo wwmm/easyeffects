@@ -60,49 +60,79 @@ void StereoToolsPreset::save(boost::property_tree::ptree& root,
 void StereoToolsPreset::load(boost::property_tree::ptree& root,
                              const std::string& section,
                              const Glib::RefPtr<Gio::Settings>& settings) {
-  settings->set_boolean("state",
-                        root.get<bool>(section + ".stereo_tools.state",
-                                       get_default<bool>(settings, "state")));
+  update_key<bool>(root, settings, "state", section + ".stereo_tools.state");
 
-  settings->set_double(
-      "input-gain",
-      root.get<double>(section + ".stereo_tools.input-gain",
-                       get_default<double>(settings, "input-gain")));
+  update_key<double>(root, settings, "input-gain",
+                     section + ".stereo_tools.input-gain");
 
-  settings->set_double(
-      "output-gain",
-      root.get<double>(section + ".stereo_tools.output-gain",
-                       get_default<double>(settings, "output-gain")));
+  update_key<double>(root, settings, "output-gain",
+                     section + ".stereo_tools.output-gain");
 
-  settings->set_double(
-      "balance-in",
-      root.get<double>(section + ".stereo_tools.balance-in",
-                       get_default<double>(settings, "balance-in")));
+  update_key<double>(root, settings, "balance-in",
+                     section + ".stereo_tools.balance-in");
 
-  settings->set_double(
-      "balance-out",
-      root.get<double>(section + ".stereo_tools.balance-out",
-                       get_default<double>(settings, "balance-out")));
+  update_key<double>(root, settings, "balance-out",
+                     section + ".stereo_tools.balance-out");
 
-  settings->set_boolean(
-      "softclip", root.get<bool>(section + ".stereo_tools.softclip",
-                                 get_default<bool>(settings, "softclip")));
+  update_key<bool>(root, settings, "softclip",
+                   section + ".stereo_tools.softclip");
 
-  settings->set_boolean("mutel",
-                        root.get<bool>(section + ".stereo_tools.mutel",
-                                       get_default<bool>(settings, "mutel")));
+  update_key<bool>(root, settings, "mutel", section + ".stereo_tools.mutel");
 
-  settings->set_boolean("muter",
-                        root.get<bool>(section + ".stereo_tools.muter",
-                                       get_default<bool>(settings, "muter")));
+  update_key<bool>(root, settings, "muter", section + ".stereo_tools.muter");
 
-  settings->set_boolean("phasel",
-                        root.get<bool>(section + ".stereo_tools.phasel",
-                                       get_default<bool>(settings, "phasel")));
+  update_key<bool>(root, settings, "phasel", section + ".stereo_tools.phasel");
 
-  settings->set_boolean("phaser",
-                        root.get<bool>(section + ".stereo_tools.phaser",
-                                       get_default<bool>(settings, "phaser")));
+  update_key<bool>(root, settings, "phaser", section + ".stereo_tools.phaser");
+
+  // settings->set_boolean("state",
+  //                       root.get<bool>(section + ".stereo_tools.state",
+  //                                      get_default<bool>(settings,
+  //                                      "state")));
+
+  // settings->set_double(
+  //     "input-gain",
+  //     root.get<double>(section + ".stereo_tools.input-gain",
+  //                      get_default<double>(settings, "input-gain")));
+  //
+  // settings->set_double(
+  //     "output-gain",
+  //     root.get<double>(section + ".stereo_tools.output-gain",
+  //                      get_default<double>(settings, "output-gain")));
+
+  // settings->set_double(
+  //     "balance-in",
+  //     root.get<double>(section + ".stereo_tools.balance-in",
+  //                      get_default<double>(settings, "balance-in")));
+
+  // settings->set_double(
+  //     "balance-out",
+  //     root.get<double>(section + ".stereo_tools.balance-out",
+  //                      get_default<double>(settings, "balance-out")));
+
+  // settings->set_boolean(
+  //     "softclip", root.get<bool>(section + ".stereo_tools.softclip",
+  //                                get_default<bool>(settings, "softclip")));
+
+  // settings->set_boolean("mutel",
+  //                       root.get<bool>(section + ".stereo_tools.mutel",
+  //                                      get_default<bool>(settings,
+  //                                      "mutel")));
+
+  // settings->set_boolean("muter",
+  //                       root.get<bool>(section + ".stereo_tools.muter",
+  //                                      get_default<bool>(settings,
+  //                                      "muter")));
+
+  // settings->set_boolean("phasel",
+  //                       root.get<bool>(section + ".stereo_tools.phasel",
+  //                                      get_default<bool>(settings,
+  //                                      "phasel")));
+  //
+  // settings->set_boolean("phaser",
+  //                       root.get<bool>(section + ".stereo_tools.phaser",
+  //                                      get_default<bool>(settings,
+  //                                      "phaser")));
 
   settings->set_string("mode", root.get<std::string>(
                                    section + ".stereo_tools.mode",
