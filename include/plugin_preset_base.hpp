@@ -55,8 +55,6 @@ class PluginPresetBase {
   bool is_different(const T& a, const T& b) {
     return a != b;
   }
-
-  // bool is_different(const float& a, const float& b) { return a == b; }
 };
 
 #endif
