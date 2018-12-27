@@ -22,24 +22,36 @@ void CrystalizerPreset::save(boost::property_tree::ptree& root,
 void CrystalizerPreset::load(boost::property_tree::ptree& root,
                              const std::string& section,
                              const Glib::RefPtr<Gio::Settings>& settings) {
-  settings->set_boolean("state",
-                        root.get<bool>(section + ".crystalizer.state",
-                                       get_default<bool>(settings, "state")));
+  update_key<bool>(root, settings, "state", section + ".crystalizer.state");
 
-  settings->set_double(
-      "input-gain",
-      root.get<double>(section + ".crystalizer.input-gain",
-                       get_default<double>(settings, "input-gain")));
+  update_key<double>(root, settings, "input-gain",
+                     section + ".crystalizer.input-gain");
 
-  settings->set_double(
-      "output-gain",
-      root.get<double>(section + ".crystalizer.output-gain",
-                       get_default<double>(settings, "output-gain")));
+  update_key<double>(root, settings, "output-gain",
+                     section + ".crystalizer.output-gain");
 
-  settings->set_double(
-      "intensity",
-      root.get<double>(section + ".crystalizer.intensity",
-                       get_default<double>(settings, "intensity")));
+  update_key<double>(root, settings, "intensity",
+                     section + ".crystalizer.intensity");
+
+  // settings->set_boolean("state",
+  //                       root.get<bool>(section + ".crystalizer.state",
+  //                                      get_default<bool>(settings,
+  //                                      "state")));
+
+  // settings->set_double(
+  //     "input-gain",
+  //     root.get<double>(section + ".crystalizer.input-gain",
+  //                      get_default<double>(settings, "input-gain")));
+  //
+  // settings->set_double(
+  //     "output-gain",
+  //     root.get<double>(section + ".crystalizer.output-gain",
+  //                      get_default<double>(settings, "output-gain")));
+
+  // settings->set_double(
+  //     "intensity",
+  //     root.get<double>(section + ".crystalizer.intensity",
+  //                      get_default<double>(settings, "intensity")));
 }
 
 void CrystalizerPreset::write(boost::property_tree::ptree& root) {

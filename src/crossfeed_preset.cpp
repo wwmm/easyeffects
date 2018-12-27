@@ -22,20 +22,6 @@ void CrossfeedPreset::load(boost::property_tree::ptree& root,
   update_key<int>(root, settings, "fcut", section + ".crossfeed.fcut");
 
   update_key<double>(root, settings, "feed", section + ".crossfeed.feed");
-
-  // settings->set_boolean("state",
-  //                       root.get<bool>(section + ".crossfeed.state",
-  //                                      get_default<bool>(settings,
-  //                                      "state")));
-
-  // settings->set_int("fcut", root.get<int>(section + ".crossfeed.fcut",
-  //                                         get_default<int>(settings,
-  //                                         "fcut")));
-  //
-  // settings->set_double("feed",
-  //                      root.get<double>(section + ".crossfeed.feed",
-  //                                       get_default<double>(settings,
-  //                                       "feed")));
 }
 
 void CrossfeedPreset::write(boost::property_tree::ptree& root) {
