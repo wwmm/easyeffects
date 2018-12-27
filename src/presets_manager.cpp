@@ -146,45 +146,23 @@ void PresetsManager::load_general_settings(boost::property_tree::ptree& root) {
 
   // spectrum keys
 
-  settings->set_boolean(
-      "show-spectrum",
-      root.get<bool>("spectrum.show",
-                     get_default<bool>(settings, "show-spectrum")));
+  update_key<bool>(root, settings, "show-spectrum", "spectrum.show");
 
-  settings->set_int(
-      "spectrum-n-points",
-      root.get<int>("spectrum.n-points",
-                    get_default<int>(settings, "spectrum-n-points")));
+  update_key<int>(root, settings, "spectrum-n-points", "spectrum.n-points");
 
-  settings->set_int(
-      "spectrum-height",
-      root.get<int>("spectrum.height",
-                    get_default<int>(settings, "spectrum-height")));
+  update_key<int>(root, settings, "spectrum-height", "spectrum.height");
 
-  settings->set_boolean(
-      "use-custom-color",
-      root.get<bool>("spectrum.use-custom-color",
-                     get_default<bool>(settings, "use-custom-color")));
+  update_key<bool>(root, settings, "use-custom-color",
+                   "spectrum.use-custom-color");
 
-  settings->set_boolean(
-      "spectrum-fill",
-      root.get<bool>("spectrum.fill",
-                     get_default<bool>(settings, "spectrum-fill")));
+  update_key<bool>(root, settings, "spectrum-fill", "spectrum.fill");
 
-  settings->set_double(
-      "spectrum-scale",
-      root.get<double>("spectrum.scale",
-                       get_default<double>(settings, "spectrum-scale")));
+  update_key<double>(root, settings, "spectrum-scale", "spectrum.scale");
 
-  settings->set_double(
-      "spectrum-exponent",
-      root.get<double>("spectrum.exponent",
-                       get_default<double>(settings, "spectrum-exponent")));
+  update_key<double>(root, settings, "spectrum-exponent", "spectrum.exponent");
 
-  settings->set_int(
-      "spectrum-sampling-freq",
-      root.get<int>("spectrum.sampling-freq",
-                    get_default<int>(settings, "spectrum-sampling-freq")));
+  update_key<int>(root, settings, "spectrum-sampling-freq",
+                  "spectrum.sampling-freq");
 
   try {
     std::vector<double> spectrum_color;

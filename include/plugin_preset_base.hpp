@@ -44,8 +44,6 @@ class PluginPresetBase {
 
     T new_value = root.get<T>(json_key, get_default<T>(settings, key));
 
-    // std::cout << current_value << "\t" << new_value << std::endl;
-
     if (is_different(current_value, new_value)) {
       auto v = Glib::Variant<T>::create(new_value);
 
