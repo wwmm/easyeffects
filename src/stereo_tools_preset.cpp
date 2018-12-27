@@ -87,13 +87,17 @@ void StereoToolsPreset::load(boost::property_tree::ptree& root,
 
   update_string_key(root, settings, "mode", section + ".stereo_tools.mode");
 
-  update_key<double>(root, settings, "slev", section + ".stereo_tools.slev");
+  update_key<double>(root, settings, "slev",
+                     section + ".stereo_tools.side-level");
 
-  update_key<double>(root, settings, "sbal", section + ".stereo_tools.sbal");
+  update_key<double>(root, settings, "sbal",
+                     section + ".stereo_tools.side-balance");
 
-  update_key<double>(root, settings, "mlev", section + ".stereo_tools.mlev");
+  update_key<double>(root, settings, "mlev",
+                     section + ".stereo_tools.middle-level");
 
-  update_key<double>(root, settings, "mpan", section + ".stereo_tools.mpan");
+  update_key<double>(root, settings, "mpan",
+                     section + ".stereo_tools.middle-panorama");
 
   update_key<double>(root, settings, "stereo-base",
                      section + ".stereo_tools.stereo-base");
@@ -105,100 +109,6 @@ void StereoToolsPreset::load(boost::property_tree::ptree& root,
 
   update_key<double>(root, settings, "stereo-phase",
                      section + ".stereo_tools.stereo-phase");
-
-  // settings->set_boolean("state",
-  //                       root.get<bool>(section + ".stereo_tools.state",
-  //                                      get_default<bool>(settings,
-  //                                      "state")));
-
-  // settings->set_double(
-  //     "input-gain",
-  //     root.get<double>(section + ".stereo_tools.input-gain",
-  //                      get_default<double>(settings, "input-gain")));
-  //
-  // settings->set_double(
-  //     "output-gain",
-  //     root.get<double>(section + ".stereo_tools.output-gain",
-  //                      get_default<double>(settings, "output-gain")));
-
-  // settings->set_double(
-  //     "balance-in",
-  //     root.get<double>(section + ".stereo_tools.balance-in",
-  //                      get_default<double>(settings, "balance-in")));
-
-  // settings->set_double(
-  //     "balance-out",
-  //     root.get<double>(section + ".stereo_tools.balance-out",
-  //                      get_default<double>(settings, "balance-out")));
-
-  // settings->set_boolean(
-  //     "softclip", root.get<bool>(section + ".stereo_tools.softclip",
-  //                                get_default<bool>(settings, "softclip")));
-
-  // settings->set_boolean("mutel",
-  //                       root.get<bool>(section + ".stereo_tools.mutel",
-  //                                      get_default<bool>(settings,
-  //                                      "mutel")));
-
-  // settings->set_boolean("muter",
-  //                       root.get<bool>(section + ".stereo_tools.muter",
-  //                                      get_default<bool>(settings,
-  //                                      "muter")));
-
-  // settings->set_boolean("phasel",
-  //                       root.get<bool>(section + ".stereo_tools.phasel",
-  //                                      get_default<bool>(settings,
-  //                                      "phasel")));
-  //
-  // settings->set_boolean("phaser",
-  //                       root.get<bool>(section + ".stereo_tools.phaser",
-  //                                      get_default<bool>(settings,
-  //                                      "phaser")));
-
-  // settings->set_string("mode", root.get<std::string>(
-  //                                  section + ".stereo_tools.mode",
-  //                                  get_default<std::string>(settings,
-  //                                  "mode")));
-
-  // settings->set_double("slev",
-  //                      root.get<double>(section + ".stereo_tools.side-level",
-  //                                       get_default<double>(settings,
-  //                                       "slev")));
-
-  // settings->set_double("sbal",
-  //                      root.get<double>(section +
-  //                      ".stereo_tools.side-balance",
-  //                                       get_default<double>(settings,
-  //                                       "sbal")));
-  //
-  // settings->set_double("mlev",
-  //                      root.get<double>(section +
-  //                      ".stereo_tools.middle-level",
-  //                                       get_default<double>(settings,
-  //                                       "mlev")));
-
-  // settings->set_double(
-  //     "mpan", root.get<double>(section + ".stereo_tools.middle-panorama",
-  //                              get_default<double>(settings, "mpan")));
-
-  // settings->set_double(
-  //     "stereo-base",
-  //     root.get<double>(section + ".stereo_tools.stereo-base",
-  //                      get_default<double>(settings, "stereo-base")));
-
-  // settings->set_double(
-  //     "delay", root.get<double>(section + ".stereo_tools.delay",
-  //                               get_default<double>(settings, "delay")));
-
-  // settings->set_double(
-  //     "sc-level", root.get<double>(section + ".stereo_tools.sc-level",
-  //                                  get_default<double>(settings,
-  //                                  "sc-level")));
-
-  // settings->set_double(
-  //     "stereo-phase",
-  //     root.get<double>(section + ".stereo_tools.stereo-phase",
-  //                      get_default<double>(settings, "stereo-phase")));
 }
 
 void StereoToolsPreset::write(boost::property_tree::ptree& root) {
