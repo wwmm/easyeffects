@@ -26,11 +26,12 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject,
         init_custom_color();
       }));
 
-  settings->signal_changed("spectrum-height").connect([&](auto key) {
-    auto v = settings->get_int("spectrum-height");
+  connections.push_back(
+      settings->signal_changed("spectrum-height").connect([&](auto key) {
+        auto v = settings->get_int("spectrum-height");
 
-    spectrum->set_size_request(-1, v);
-  });
+        spectrum->set_size_request(-1, v);
+      }));
 
   auto flag_get = Gio::SettingsBindFlags::SETTINGS_BIND_GET;
 

@@ -122,16 +122,17 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
      is loaded
   */
 
-  settings->signal_changed("kernel-path").connect([=](auto key) {
-    auto f = [=]() {
-      std::lock_guard<std::mutex> lock(lock_guard_irs_info);
-      get_irs_info();
-    };
+  connections.push_back(
+      settings->signal_changed("kernel-path").connect([=](auto key) {
+        auto f = [=]() {
+          std::lock_guard<std::mutex> lock(lock_guard_irs_info);
+          get_irs_info();
+        };
 
-    auto future = std::async(std::launch::async, f);
+        auto future = std::async(std::launch::async, f);
 
-    futures.push_back(std::move(future));
-  });
+        futures.push_back(std::move(future));
+      }));
 }
 
 ConvolverUi::~ConvolverUi() {
