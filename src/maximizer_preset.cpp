@@ -27,24 +27,6 @@ void MaximizerPreset::load(boost::property_tree::ptree& root,
 
   update_key<double>(root, settings, "threshold",
                      section + ".maximizer.threshold");
-
-  // settings->set_boolean("state",
-  //                       root.get<bool>(section + ".maximizer.state",
-  //                                      get_default<bool>(settings,
-  //                                      "state")));
-
-  // settings->set_double(
-  //     "release", root.get<double>(section + ".maximizer.release",
-  //                                 get_default<double>(settings, "release")));
-  //
-  // settings->set_double(
-  //     "ceiling", root.get<double>(section + ".maximizer.ceiling",
-  //                                 get_default<double>(settings, "ceiling")));
-  //
-  // settings->set_double(
-  //     "threshold",
-  //     root.get<double>(section + ".maximizer.threshold",
-  //                      get_default<double>(settings, "threshold")));
 }
 
 void MaximizerPreset::write(boost::property_tree::ptree& root) {
