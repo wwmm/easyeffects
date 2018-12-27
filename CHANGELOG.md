@@ -11,6 +11,9 @@ this values. It is up to the user to enable this in the settings menu. Only the
  `ps -m -l pid` where pid is PulseEffects process pid.
 - The spectrum has more customization options.
 - The applications blacklist is saved to the user preset.
+- When alternating presets a large disk activity was generated. in order to
+avoid this we now check if each gsettings key really needs to be updated. As
+gsettings does not do that we had to implement our own checks.
 
 ### Changed
 - Effects are switched on to all audio applications. this can be disabled in the
