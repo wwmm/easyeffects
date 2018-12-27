@@ -233,48 +233,78 @@ void MultibandCompressorPreset::load(
 
   // mid band
 
-  settings->set_double(
-      "threshold2",
-      root.get<double>(section + ".multiband_compressor.midband.threshold",
-                       get_default<double>(settings, "threshold2")));
+  update_key<double>(root, settings, "threshold2",
+                     section + ".multiband_compressor.midband.threshold");
 
-  settings->set_double(
-      "ratio2",
-      root.get<double>(section + ".multiband_compressor.midband.ratio",
-                       get_default<double>(settings, "ratio2")));
+  update_key<double>(root, settings, "ratio2",
+                     section + ".multiband_compressor.midband.ratio");
 
-  settings->set_double(
-      "attack2",
-      root.get<double>(section + ".multiband_compressor.midband.attack",
-                       get_default<double>(settings, "attack2")));
+  update_key<double>(root, settings, "attack2",
+                     section + ".multiband_compressor.midband.attack");
 
-  settings->set_double(
-      "release2",
-      root.get<double>(section + ".multiband_compressor.midband.release",
-                       get_default<double>(settings, "release2")));
+  update_key<double>(root, settings, "release2",
+                     section + ".multiband_compressor.midband.release");
 
-  settings->set_double(
-      "makeup2",
-      root.get<double>(section + ".multiband_compressor.midband.makeup",
-                       get_default<double>(settings, "makeup2")));
+  update_key<double>(root, settings, "makeup2",
+                     section + ".multiband_compressor.midband.makeup");
 
-  settings->set_double(
-      "knee2", root.get<double>(section + ".multiband_compressor.midband.knee",
-                                get_default<double>(settings, "knee2")));
+  update_key<double>(root, settings, "knee2",
+                     section + ".multiband_compressor.midband.knee");
 
-  settings->set_string(
-      "detection2",
-      root.get<std::string>(section + ".multiband_compressor.midband.detection",
-                            get_default<std::string>(settings, "detection2")));
+  update_string_key(root, settings, "detection2",
+                    section + ".multiband_compressor.midband.detection");
 
-  settings->set_boolean(
-      "bypass2",
-      root.get<bool>(section + ".multiband_compressor.midband.bypass",
-                     get_default<bool>(settings, "bypass2")));
+  update_key<bool>(root, settings, "bypass2",
+                   section + ".multiband_compressor.midband.bypass");
 
-  settings->set_boolean(
-      "solo2", root.get<bool>(section + ".multiband_compressor.midband.solo",
-                              get_default<bool>(settings, "solo2")));
+  update_key<bool>(root, settings, "solo2",
+                   section + ".multiband_compressor.midband.solo");
+
+  // settings->set_double(
+  //     "threshold2",
+  //     root.get<double>(section + ".multiband_compressor.midband.threshold",
+  //                      get_default<double>(settings, "threshold2")));
+  //
+  // settings->set_double(
+  //     "ratio2",
+  //     root.get<double>(section + ".multiband_compressor.midband.ratio",
+  //                      get_default<double>(settings, "ratio2")));
+  //
+  // settings->set_double(
+  //     "attack2",
+  //     root.get<double>(section + ".multiband_compressor.midband.attack",
+  //                      get_default<double>(settings, "attack2")));
+  //
+  // settings->set_double(
+  //     "release2",
+  //     root.get<double>(section + ".multiband_compressor.midband.release",
+  //                      get_default<double>(settings, "release2")));
+  //
+  // settings->set_double(
+  //     "makeup2",
+  //     root.get<double>(section + ".multiband_compressor.midband.makeup",
+  //                      get_default<double>(settings, "makeup2")));
+  //
+  // settings->set_double(
+  //     "knee2", root.get<double>(section +
+  //     ".multiband_compressor.midband.knee",
+  //                               get_default<double>(settings, "knee2")));
+  //
+  // settings->set_string(
+  //     "detection2",
+  //     root.get<std::string>(section +
+  //     ".multiband_compressor.midband.detection",
+  //                           get_default<std::string>(settings,
+  //                           "detection2")));
+  //
+  // settings->set_boolean(
+  //     "bypass2",
+  //     root.get<bool>(section + ".multiband_compressor.midband.bypass",
+  //                    get_default<bool>(settings, "bypass2")));
+  //
+  // settings->set_boolean(
+  //     "solo2", root.get<bool>(section + ".multiband_compressor.midband.solo",
+  //                             get_default<bool>(settings, "solo2")));
 
   // high band
 
