@@ -27,35 +27,42 @@ void AutoGainPreset::save(boost::property_tree::ptree& root,
 void AutoGainPreset::load(boost::property_tree::ptree& root,
                           const std::string& section,
                           const Glib::RefPtr<Gio::Settings>& settings) {
-  settings->set_boolean("state",
-                        root.get<bool>(section + ".autogain.state",
-                                       get_default<bool>(settings, "state")));
+  update_key<bool>(root, settings, "state", section + ".autogain.state");
 
-  settings->set_double(
-      "input-gain",
-      root.get<double>(section + ".autogain.input-gain",
-                       get_default<double>(settings, "input-gain")));
+  update_key<double>(root, settings, "input-gain",
+                     section + ".autogain.input-gain");
 
-  settings->set_double(
-      "output-gain",
-      root.get<double>(section + ".autogain.output-gain",
-                       get_default<double>(settings, "output-gain")));
+  update_key<double>(root, settings, "output-gain",
+                     section + ".autogain.output-gain");
 
-  settings->set_double(
-      "target", root.get<double>(section + ".autogain.target",
-                                 get_default<double>(settings, "target")));
+  update_key<double>(root, settings, "target", section + ".autogain.target");
 
-  settings->set_int("weight-m",
-                    root.get<int>(section + ".autogain.weight-m",
-                                  get_default<int>(settings, "weight-m")));
+  update_key<int>(root, settings, "weight-m", section + ".autogain.weight-m");
 
-  settings->set_int("weight-s",
-                    root.get<int>(section + ".autogain.weight-s",
-                                  get_default<int>(settings, "weight-s")));
+  update_key<int>(root, settings, "weight-s", section + ".autogain.weight-s");
 
-  settings->set_int("weight-i",
-                    root.get<int>(section + ".autogain.weight-i",
-                                  get_default<int>(settings, "weight-i")));
+  update_key<int>(root, settings, "weight-i", section + ".autogain.weight-i");
+
+  // settings->set_double(
+  //     "output-gain",
+  //     root.get<double>(section + ".autogain.output-gain",
+  //                      get_default<double>(settings, "output-gain")));
+
+  // settings->set_double(
+  //     "target", root.get<double>(section + ".autogain.target",
+  //                                get_default<double>(settings, "target")));
+
+  // settings->set_int("weight-m",
+  //                   root.get<int>(section + ".autogain.weight-m",
+  //                                 get_default<int>(settings, "weight-m")));
+
+  // settings->set_int("weight-s",
+  //                   root.get<int>(section + ".autogain.weight-s",
+  //                                 get_default<int>(settings, "weight-s")));
+  //
+  // settings->set_int("weight-i",
+  //                   root.get<int>(section + ".autogain.weight-i",
+  //                                 get_default<int>(settings, "weight-i")));
 }
 
 void AutoGainPreset::write(boost::property_tree::ptree& root) {

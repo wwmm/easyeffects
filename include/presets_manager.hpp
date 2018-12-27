@@ -3,7 +3,6 @@
 
 #include <giomm/settings.h>
 #include <boost/filesystem.hpp>
-#include <future>
 #include <memory>
 #include <vector>
 #include "autogain_preset.hpp"
@@ -66,8 +65,6 @@ class PresetsManager {
   std::unique_ptr<ConvolverPreset> convolver;
   std::unique_ptr<CrystalizerPreset> crystalizer;
   std::unique_ptr<AutoGainPreset> autogain;
-
-  std::vector<std::future<void>> futures;
 
   template <typename T>
   T get_default(const Glib::RefPtr<Gio::Settings>& settings,

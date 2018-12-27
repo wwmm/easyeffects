@@ -29,6 +29,34 @@ class PluginPresetBase {
 
     return value.get();
   }
+
+  template <typename T>
+  void update_key(boost::property_tree::ptree& root,
+                  const Glib::RefPtr<Gio::Settings>& settings,
+                  const std::string& key,
+                  const std::string& json_key) {
+    Glib::Variant<T> aux;
+
+    settings->get_value(key, aux);
+
+    T current_value = aux.get();
+
+    T new_value = root.get<T>(json_key, get_default<T>(settings, key));
+
+    if (is_different(current_value, new_value)) {
+      auto v = Glib::Variant<T>::create(new_value);
+
+      settings->set_value(key, v);
+    }
+  }
+
+ private:
+  template <typename T>
+  bool is_different(const T& a, const T& b) {
+    return a != b;
+  }
+
+  // bool is_different(const float& a, const float& b) { return a == b; }
 };
 
 #endif

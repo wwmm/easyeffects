@@ -50,8 +50,6 @@ PresetsManager::PresetsManager()
 }
 
 PresetsManager::~PresetsManager() {
-  futures.clear();
-
   util::debug(log_tag + "destroyed");
 }
 
@@ -294,102 +292,96 @@ void PresetsManager::remove(const std::string& name) {
 }
 
 void PresetsManager::load(const std::string& name) {
-  auto f = [=]() {
-    boost::property_tree::ptree root;
-    std::vector<std::string> input_plugins, output_plugins;
+  boost::property_tree::ptree root;
+  std::vector<std::string> input_plugins, output_plugins;
 
-    auto input_file = presets_dir / boost::filesystem::path{name + ".json"};
+  auto input_file = presets_dir / boost::filesystem::path{name + ".json"};
 
-    boost::property_tree::read_json(input_file.string(), root);
+  boost::property_tree::read_json(input_file.string(), root);
 
-    load_general_settings(root);
+  load_general_settings(root);
 
-    try {
-      Glib::Variant<std::vector<std::string>> aux;
-      soe_settings->get_default_value("plugins", aux);
+  try {
+    Glib::Variant<std::vector<std::string>> aux;
+    soe_settings->get_default_value("plugins", aux);
 
-      for (auto& p : root.get_child("input.plugins_order")) {
-        auto value = p.second.data();
-
-        for (auto v : aux.get()) {
-          if (v == value) {
-            input_plugins.push_back(value);
-
-            break;
-          }
-        }
-      }
+    for (auto& p : root.get_child("input.plugins_order")) {
+      auto value = p.second.data();
 
       for (auto v : aux.get()) {
-        if (std::find(input_plugins.begin(), input_plugins.end(), v) ==
-            input_plugins.end()) {
-          input_plugins.push_back(v);
+        if (v == value) {
+          input_plugins.push_back(value);
+
+          break;
         }
       }
-    } catch (const boost::property_tree::ptree_error& e) {
-      Glib::Variant<std::vector<std::string>> aux;
-      soe_settings->get_default_value("plugins", aux);
-      input_plugins = aux.get();
     }
 
-    try {
-      Glib::Variant<std::vector<std::string>> aux;
-      sie_settings->get_default_value("plugins", aux);
-
-      for (auto& p : root.get_child("output.plugins_order")) {
-        auto value = p.second.data();
-
-        for (auto v : aux.get()) {
-          if (v == value) {
-            output_plugins.push_back(value);
-
-            break;
-          }
-        }
+    for (auto v : aux.get()) {
+      if (std::find(input_plugins.begin(), input_plugins.end(), v) ==
+          input_plugins.end()) {
+        input_plugins.push_back(v);
       }
+    }
+  } catch (const boost::property_tree::ptree_error& e) {
+    Glib::Variant<std::vector<std::string>> aux;
+    soe_settings->get_default_value("plugins", aux);
+    input_plugins = aux.get();
+  }
+
+  try {
+    Glib::Variant<std::vector<std::string>> aux;
+    sie_settings->get_default_value("plugins", aux);
+
+    for (auto& p : root.get_child("output.plugins_order")) {
+      auto value = p.second.data();
 
       for (auto v : aux.get()) {
-        if (std::find(output_plugins.begin(), output_plugins.end(), v) ==
-            output_plugins.end()) {
-          output_plugins.push_back(v);
+        if (v == value) {
+          output_plugins.push_back(value);
+
+          break;
         }
       }
-    } catch (const boost::property_tree::ptree_error& e) {
-      Glib::Variant<std::vector<std::string>> aux;
-      sie_settings->get_default_value("plugins", aux);
-      output_plugins = aux.get();
     }
 
-    soe_settings->set_string_array("plugins", input_plugins);
-    sie_settings->set_string_array("plugins", output_plugins);
+    for (auto v : aux.get()) {
+      if (std::find(output_plugins.begin(), output_plugins.end(), v) ==
+          output_plugins.end()) {
+        output_plugins.push_back(v);
+      }
+    }
+  } catch (const boost::property_tree::ptree_error& e) {
+    Glib::Variant<std::vector<std::string>> aux;
+    sie_settings->get_default_value("plugins", aux);
+    output_plugins = aux.get();
+  }
 
-    bass_enhancer->read(root);
-    compressor->read(root);
-    crossfeed->read(root);
-    deesser->read(root);
-    equalizer->read(root);
-    exciter->read(root);
-    filter->read(root);
-    gate->read(root);
-    limiter->read(root);
-    maximizer->read(root);
-    pitch->read(root);
-    reverb->read(root);
-    webrtc->read(root);
-    multiband_compressor->read(root);
-    loudness->read(root);
-    multiband_gate->read(root);
-    stereo_tools->read(root);
-    convolver->read(root);
-    crystalizer->read(root);
-    autogain->read(root);
+  soe_settings->set_string_array("plugins", input_plugins);
+  sie_settings->set_string_array("plugins", output_plugins);
 
-    util::debug(log_tag + "loaded preset: " + input_file.string());
-  };
+  bass_enhancer->read(root);
+  compressor->read(root);
+  crossfeed->read(root);
+  deesser->read(root);
+  equalizer->read(root);
+  exciter->read(root);
+  filter->read(root);
+  gate->read(root);
+  limiter->read(root);
+  maximizer->read(root);
+  pitch->read(root);
+  reverb->read(root);
+  webrtc->read(root);
+  multiband_compressor->read(root);
+  loudness->read(root);
+  multiband_gate->read(root);
+  stereo_tools->read(root);
+  convolver->read(root);
+  crystalizer->read(root);
+  autogain->read(root);
 
-  auto future = std::async(std::launch::async, f);
-
-  futures.push_back(std::move(future));
+  util::debug(log_tag + "loaded preset: " + input_file.string());
 }
 
 void PresetsManager::import(const std::string& file_path) {
