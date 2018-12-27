@@ -59,43 +59,6 @@ void CompressorPreset::load(boost::property_tree::ptree& root,
   update_key<double>(root, settings, "knee", section + ".compressor.knee");
 
   update_key<double>(root, settings, "makeup", section + ".compressor.makeup");
-
-  // settings->set_string(
-  //     "stereo-link",
-  //     root.get<std::string>(section + ".compressor.stereo-link",
-  //                           get_default<std::string>(settings,
-  //                           "stereo-link")));
-
-  // settings->set_double("mix",
-  //                      root.get<double>(section + ".compressor.mix",
-  //                                       get_default<double>(settings,
-  //                                       "mix")));
-
-  // settings->set_double(
-  //     "attack", root.get<double>(section + ".compressor.attack",
-  //                                get_default<double>(settings, "attack")));
-  //
-  // settings->set_double(
-  //     "release", root.get<double>(section + ".compressor.release",
-  //                                 get_default<double>(settings, "release")));
-
-  // settings->set_double(
-  //     "threshold",
-  //     root.get<double>(section + ".compressor.threshold",
-  //                      get_default<double>(settings, "threshold")));
-
-  // settings->set_double(
-  //     "ratio", root.get<double>(section + ".compressor.ratio",
-  //                               get_default<double>(settings, "ratio")));
-
-  // settings->set_double("knee",
-  //                      root.get<double>(section + ".compressor.knee",
-  //                                       get_default<double>(settings,
-  //                                       "knee")));
-  //
-  // settings->set_double(
-  //     "makeup", root.get<double>(section + ".compressor.makeup",
-  //                                get_default<double>(settings, "makeup")));
 }
 
 void CompressorPreset::write(boost::property_tree::ptree& root) {
