@@ -55,8 +55,10 @@ StereoTools::StereoTools(const std::string& tag, const std::string& schema)
       "calf-sourceforge-net-plugins-StereoTools", "stereo_tools");
 
   if (is_installed(stereo_tools)) {
-    auto audioconvert_in = gst_element_factory_make("audioconvert", nullptr);
-    auto audioconvert_out = gst_element_factory_make("audioconvert", nullptr);
+    auto audioconvert_in = gst_element_factory_make(
+        "audioconvert", "stereo_tools_audioconvert_in");
+    auto audioconvert_out = gst_element_factory_make(
+        "audioconvert", "stereo_tools_audioconvert_out");
 
     gst_bin_add_many(GST_BIN(bin), audioconvert_in, stereo_tools,
                      audioconvert_out, nullptr);
