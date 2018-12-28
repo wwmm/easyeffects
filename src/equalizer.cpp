@@ -12,6 +12,8 @@ void on_num_bands_changed(GSettings* settings, gchar* key, Equalizer* l) {
 void on_deinterleave_pad_added(GstElement*, GstPad* pad, Equalizer* l) {
   auto name = GST_PAD_NAME(pad);
 
+  util::debug(l->log_tag + l->name + " deinterleave pad added: " + name);
+
   if (name == std::string("src_0")) {
     auto sinkpad = gst_element_get_static_pad(l->queue_L, "sink");
 
@@ -27,7 +29,25 @@ void on_deinterleave_pad_added(GstElement*, GstPad* pad, Equalizer* l) {
   }
 }
 
-void on_deinterleave_pad_removed(GstElement*, GstPad* pad, Equalizer* l) {}
+void on_deinterleave_pad_removed(GstElement*, GstPad* pad, Equalizer* l) {
+  std::string name = GST_PAD_NAME(pad);
+
+  util::debug(l->log_tag + l->name + " deinterleave pad removed: " + name);
+
+  if (name == std::string("src_0")) {
+    auto sinkpad = gst_element_get_static_pad(l->queue_L, "sink");
+
+    gst_pad_unlink(pad, sinkpad);
+
+    gst_object_unref(GST_OBJECT(sinkpad));
+  } else if (name == std::string("src_1")) {
+    auto sinkpad = gst_element_get_static_pad(l->queue_R, "sink");
+
+    gst_pad_unlink(pad, sinkpad);
+
+    gst_object_unref(GST_OBJECT(sinkpad));
+  }
+}
 
 void on_deinterleave_no_more_pads(GstElement*, Equalizer* l) {}
 
@@ -66,8 +86,8 @@ Equalizer::Equalizer(const std::string& tag, const std::string& schema)
     gst_element_link_many(interleave, audioconvert_out, output_gain, out_level,
                           nullptr);
 
-    gst_element_link(queue_L, equalizer_L);
-    gst_element_link(queue_R, equalizer_R);
+    gst_element_link_many(queue_L, equalizer_L, nullptr);
+    gst_element_link_many(queue_R, equalizer_R, nullptr);
 
     // getting interleave pads
 
