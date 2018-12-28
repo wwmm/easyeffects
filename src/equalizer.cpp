@@ -87,10 +87,10 @@ Equalizer::Equalizer(const std::string& tag, const std::string& schema)
     // gst_element_release_request_pad(interleave, interleave_sink0_pad);
     // gst_element_release_request_pad(interleave, interleave_sink1_pad);
     //
-    // gst_object_unref(GST_OBJECT(interleave_sink0_pad));
-    // gst_object_unref(GST_OBJECT(interleave_sink1_pad));
-    // gst_object_unref(GST_OBJECT(eq_L_src_pad));
-    // gst_object_unref(GST_OBJECT(eq_R_src_pad));
+    gst_object_unref(GST_OBJECT(interleave_sink0_pad));
+    gst_object_unref(GST_OBJECT(interleave_sink1_pad));
+    gst_object_unref(GST_OBJECT(eq_L_src_pad));
+    gst_object_unref(GST_OBJECT(eq_R_src_pad));
 
     // setting bin ghost pads
 
