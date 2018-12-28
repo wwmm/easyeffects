@@ -14,6 +14,18 @@ void on_deinterleave_pad_added(GstElement*, GstPad* pad, Equalizer* l) {
 
   util::debug(l->log_tag + l->name + " deinterleave pad added: " + name);
 
+  // auto caps = gst_pad_get_current_caps(pad);
+  //
+  // GstStructure* structure = gst_caps_get_structure(caps, 0);
+  //
+  // int rate;
+  //
+  // gst_structure_get_int(structure, "rate", &rate);
+  //
+  // gst_caps_unref(caps);
+  //
+  // util::warning(std::to_string(rate));
+
   if (name == std::string("src_0")) {
     auto sinkpad = gst_element_get_static_pad(l->queue_L, "sink");
 
@@ -68,8 +80,9 @@ Equalizer::Equalizer(const std::string& tag, const std::string& schema)
         gst_element_factory_make("audioconvert", "eq_audioconvert_in");
     auto audioconvert_out =
         gst_element_factory_make("audioconvert", "eq_audioconvert_out");
-    auto deinterleave = gst_element_factory_make("deinterleave", nullptr);
-    auto interleave = gst_element_factory_make("interleave", nullptr);
+    auto deinterleave =
+        gst_element_factory_make("deinterleave", "eq_deinterleave");
+    auto interleave = gst_element_factory_make("interleave", "eq_interleave");
     auto capsfilter = gst_element_factory_make("capsfilter", nullptr);
 
     queue_L = gst_element_factory_make("queue", "eq_queue_L");
@@ -83,8 +96,8 @@ Equalizer::Equalizer(const std::string& tag, const std::string& schema)
     gst_element_link_many(input_gain, in_level, audioconvert_in, deinterleave,
                           nullptr);
 
-    gst_element_link_many(interleave, capsfilter, audioconvert_out, output_gain,
-                          out_level, nullptr);
+    gst_element_link_many(interleave, audioconvert_out, output_gain, out_level,
+                          nullptr);
 
     gst_element_link_many(queue_L, equalizer_L, nullptr);
     gst_element_link_many(queue_R, equalizer_R, nullptr);
