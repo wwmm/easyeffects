@@ -70,23 +70,33 @@ Equalizer::Equalizer(const std::string& tag, const std::string& schema)
         gst_element_factory_make("audioconvert", "eq_audioconvert_out");
     auto deinterleave = gst_element_factory_make("deinterleave", nullptr);
     auto interleave = gst_element_factory_make("interleave", nullptr);
+    auto capsfilter = gst_element_factory_make("capsfilter", nullptr);
 
     queue_L = gst_element_factory_make("queue", "eq_queue_L");
     queue_R = gst_element_factory_make("queue", "eq_queue_R");
 
     gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in,
                      deinterleave, queue_L, queue_R, equalizer_L, equalizer_R,
-                     interleave, audioconvert_out, output_gain, out_level,
-                     nullptr);
+                     interleave, capsfilter, audioconvert_out, output_gain,
+                     out_level, nullptr);
 
     gst_element_link_many(input_gain, in_level, audioconvert_in, deinterleave,
                           nullptr);
 
-    gst_element_link_many(interleave, audioconvert_out, output_gain, out_level,
-                          nullptr);
+    gst_element_link_many(interleave, capsfilter, audioconvert_out, output_gain,
+                          out_level, nullptr);
 
     gst_element_link_many(queue_L, equalizer_L, nullptr);
     gst_element_link_many(queue_R, equalizer_R, nullptr);
+
+    auto caps_str =
+        "audio/x-raw,format=F32LE,channels=2,rate=" + std::to_string(44100);
+
+    auto caps = gst_caps_from_string(caps_str.c_str());
+
+    g_object_set(capsfilter, "caps", caps, nullptr);
+
+    gst_caps_unref(caps);
 
     // getting interleave pads
 

@@ -339,8 +339,7 @@ PipelineBase::~PipelineBase() {
 
 void PipelineBase::set_caps(const uint& sampling_rate) {
   auto caps_str = "audio/x-raw,format=F32LE,channels=2,rate=" +
-                  std::to_string(sampling_rate) +
-                  ",channel-mask=(bitmask)0x0000000000000003";
+                  std::to_string(sampling_rate);
 
   auto caps = gst_caps_from_string(caps_str.c_str());
 
