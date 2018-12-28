@@ -9,7 +9,23 @@ void on_num_bands_changed(GSettings* settings, gchar* key, Equalizer* l) {
   l->update_equalizer();
 }
 
-void on_deinterleave_pad_added(GstElement*, GstPad* pad, Equalizer* l) {}
+void on_deinterleave_pad_added(GstElement*, GstPad* pad, Equalizer* l) {
+  auto name = GST_PAD_NAME(pad);
+
+  if (name == std::string("src_0")) {
+    auto sinkpad = gst_element_get_static_pad(l->queue_L, "sink");
+
+    gst_pad_link(pad, sinkpad);
+
+    gst_object_unref(GST_OBJECT(sinkpad));
+  } else if (name == std::string("src_1")) {
+    auto sinkpad = gst_element_get_static_pad(l->queue_R, "sink");
+
+    gst_pad_link(pad, sinkpad);
+
+    gst_object_unref(GST_OBJECT(sinkpad));
+  }
+}
 
 void on_deinterleave_pad_removed(GstElement*, GstPad* pad, Equalizer* l) {}
 
@@ -41,8 +57,42 @@ Equalizer::Equalizer(const std::string& tag, const std::string& schema)
                      interleave, audioconvert_out, output_gain, out_level,
                      nullptr);
 
-    gst_element_link_many(input_gain, in_level, audioconvert_in, equalizer_L,
-                          audioconvert_out, output_gain, out_level, nullptr);
+    // gst_element_link_many(input_gain, in_level, audioconvert_in, equalizer_L,
+    //                       audioconvert_out, output_gain, out_level, nullptr);
+
+    gst_element_link_many(input_gain, in_level, audioconvert_in, deinterleave,
+                          nullptr);
+
+    gst_element_link_many(interleave, audioconvert_out, output_gain, out_level,
+                          nullptr);
+
+    gst_element_link(queue_L, equalizer_L);
+    gst_element_link(queue_R, equalizer_R);
+
+    // getting interleave pads
+
+    auto interleave_sink0_pad =
+        gst_element_get_request_pad(interleave, "sink_0");
+
+    auto interleave_sink1_pad =
+        gst_element_get_request_pad(interleave, "sink_1");
+
+    auto eq_L_src_pad = gst_element_get_static_pad(equalizer_L, "src");
+
+    auto eq_R_src_pad = gst_element_get_static_pad(equalizer_R, "src");
+
+    gst_pad_link(eq_L_src_pad, interleave_sink0_pad);
+    gst_pad_link(eq_R_src_pad, interleave_sink1_pad);
+
+    // gst_element_release_request_pad(interleave, interleave_sink0_pad);
+    // gst_element_release_request_pad(interleave, interleave_sink1_pad);
+    //
+    // gst_object_unref(GST_OBJECT(interleave_sink0_pad));
+    // gst_object_unref(GST_OBJECT(interleave_sink1_pad));
+    // gst_object_unref(GST_OBJECT(eq_L_src_pad));
+    // gst_object_unref(GST_OBJECT(eq_R_src_pad));
+
+    // setting bin ghost pads
 
     auto pad_sink = gst_element_get_static_pad(input_gain, "sink");
     auto pad_src = gst_element_get_static_pad(out_level, "src");
