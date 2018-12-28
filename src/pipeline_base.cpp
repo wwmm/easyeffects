@@ -282,12 +282,12 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
 
   // building the pipeline
 
-  gst_bin_add_many(GST_BIN(pipeline), source, queue_src, capsfilter, src_type,
-                   audioconvert_in, adapter, audioconvert_out, effects_bin,
+  gst_bin_add_many(GST_BIN(pipeline), source, queue_src, audioconvert_in,
+                   capsfilter, src_type, adapter, audioconvert_out, effects_bin,
                    spectrum_bin, sink, nullptr);
 
-  gst_element_link_many(source, queue_src, capsfilter, src_type,
-                        audioconvert_in, adapter, audioconvert_out, effects_bin,
+  gst_element_link_many(source, queue_src, audioconvert_in, capsfilter,
+                        src_type, adapter, audioconvert_out, effects_bin,
                         spectrum_bin, sink, nullptr);
 
   // initializing properties
@@ -339,7 +339,8 @@ PipelineBase::~PipelineBase() {
 
 void PipelineBase::set_caps(const uint& sampling_rate) {
   auto caps_str = "audio/x-raw,format=F32LE,channels=2,rate=" +
-                  std::to_string(sampling_rate);
+                  std::to_string(sampling_rate) +
+                  ",channel-mask=(bitmask)0x0000000000000003";
 
   auto caps = gst_caps_from_string(caps_str.c_str());
 

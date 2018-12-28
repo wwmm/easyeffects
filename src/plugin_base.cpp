@@ -89,8 +89,10 @@ PluginBase::PluginBase(const std::string& tag,
       name(plugin_name),
       settings(g_settings_new(schema.c_str())) {
   plugin = gst_bin_new(std::string(name + "_plugin").c_str());
-  identity_in = gst_element_factory_make("identity", nullptr);
-  identity_out = gst_element_factory_make("identity", nullptr);
+  identity_in = gst_element_factory_make(
+      "identity", std::string(name + "_plugin_bin_identity_in").c_str());
+  identity_out = gst_element_factory_make(
+      "identity", std::string(name + "_plugin_bin_identity_out").c_str());
 
   gst_bin_add_many(GST_BIN(plugin), identity_in, identity_out, nullptr);
   gst_element_link_many(identity_in, identity_out, nullptr);
