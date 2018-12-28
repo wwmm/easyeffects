@@ -10,13 +10,14 @@ class Equalizer : public PluginBase {
   Equalizer(const std::string& tag, const std::string& schema);
   ~Equalizer();
 
-  GstElement* equalizer = nullptr;
+  GstElement *equalizer_L = nullptr, *equalizer_R = nullptr, *queue_L = nullptr,
+             *queue_R = nullptr;
 
   void update_equalizer();
 
  private:
-  void bind_band(const int index);
-  void unbind_band(const int index);
+  void bind_band(GstElement* equalizer, const int index);
+  void unbind_band(GstElement* equalizer, const int index);
 };
 
 #endif
