@@ -71,8 +71,10 @@ Limiter::Limiter(const std::string& tag, const std::string& schema)
       gst_element_factory_make("calf-sourceforge-net-plugins-Limiter", nullptr);
 
   if (is_installed(limiter)) {
-    auto audioconvert_in = gst_element_factory_make("audioconvert", nullptr);
-    auto audioconvert_out = gst_element_factory_make("audioconvert", nullptr);
+    auto audioconvert_in =
+        gst_element_factory_make("audioconvert", "limiter_audioconvert_in");
+    auto audioconvert_out =
+        gst_element_factory_make("audioconvert", "limiter_audioconvert_out");
 
     gst_bin_add_many(GST_BIN(bin), audioconvert_in, limiter, audioconvert_out,
                      nullptr);

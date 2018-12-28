@@ -181,8 +181,10 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
       "calf-sourceforge-net-plugins-MultibandCompressor", nullptr);
 
   if (is_installed(multiband_compressor)) {
-    auto audioconvert_in = gst_element_factory_make("audioconvert", nullptr);
-    auto audioconvert_out = gst_element_factory_make("audioconvert", nullptr);
+    auto audioconvert_in = gst_element_factory_make(
+        "audioconvert", "multiband_compressor_audioconvert_in");
+    auto audioconvert_out = gst_element_factory_make(
+        "audioconvert", "multiband_compressor_audioconvert_out");
 
     gst_bin_add_many(GST_BIN(bin), audioconvert_in, multiband_compressor,
                      audioconvert_out, nullptr);
