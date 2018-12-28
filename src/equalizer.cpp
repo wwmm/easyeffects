@@ -1,5 +1,6 @@
 #include "equalizer.hpp"
 #include <glibmm/main.h>
+#include <gst/audio/audio.h>
 #include <chrono>
 #include "util.hpp"
 
@@ -14,19 +15,9 @@ void on_deinterleave_pad_added(GstElement*, GstPad* pad, Equalizer* l) {
 
   util::debug(l->log_tag + l->name + " deinterleave pad added: " + name);
 
-  // auto caps = gst_pad_get_current_caps(pad);
-  //
-  // GstStructure* structure = gst_caps_get_structure(caps, 0);
-  //
-  // int rate;
-  //
-  // gst_structure_get_int(structure, "rate", &rate);
-  //
-  // gst_caps_unref(caps);
-  //
-  // util::warning(std::to_string(rate));
-
   if (name == std::string("src_0")) {
+    l->get_rate(pad);
+
     auto sinkpad = gst_element_get_static_pad(l->queue_L, "sink");
 
     gst_pad_link(pad, sinkpad);
@@ -47,6 +38,8 @@ void on_deinterleave_pad_removed(GstElement*, GstPad* pad, Equalizer* l) {
   util::debug(l->log_tag + l->name + " deinterleave pad removed: " + name);
 
   if (name == std::string("src_0")) {
+    // l->set_caps();
+
     auto sinkpad = gst_element_get_static_pad(l->queue_L, "sink");
 
     gst_pad_unlink(pad, sinkpad);
@@ -82,11 +75,19 @@ Equalizer::Equalizer(const std::string& tag, const std::string& schema)
         gst_element_factory_make("audioconvert", "eq_audioconvert_out");
     auto deinterleave =
         gst_element_factory_make("deinterleave", "eq_deinterleave");
-    auto interleave = gst_element_factory_make("interleave", "eq_interleave");
-    auto capsfilter = gst_element_factory_make("capsfilter", nullptr);
 
+    interleave = gst_element_factory_make("interleave", "eq_interleave");
+    capsfilter = gst_element_factory_make("capsfilter", nullptr);
     queue_L = gst_element_factory_make("queue", "eq_queue_L");
     queue_R = gst_element_factory_make("queue", "eq_queue_R");
+
+    auto caps_str = std::string("audio/x-raw,format=F32LE,channels=2");
+
+    auto caps = gst_caps_from_string(caps_str.c_str());
+
+    g_object_set(capsfilter, "caps", caps, nullptr);
+
+    gst_caps_unref(caps);
 
     gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in,
                      deinterleave, queue_L, queue_R, equalizer_L, equalizer_R,
@@ -101,15 +102,6 @@ Equalizer::Equalizer(const std::string& tag, const std::string& schema)
 
     gst_element_link_many(queue_L, equalizer_L, nullptr);
     gst_element_link_many(queue_R, equalizer_R, nullptr);
-
-    auto caps_str =
-        "audio/x-raw,format=F32LE,channels=2,rate=" + std::to_string(44100);
-
-    auto caps = gst_caps_from_string(caps_str.c_str());
-
-    g_object_set(capsfilter, "caps", caps, nullptr);
-
-    gst_caps_unref(caps);
 
     // getting interleave pads
 
@@ -147,6 +139,23 @@ Equalizer::Equalizer(const std::string& tag, const std::string& schema)
 
     // init
 
+    GValueArray* arr = g_value_array_new(2);
+    GValue val = {
+        0,
+    };
+    g_value_init(&val, GST_TYPE_AUDIO_CHANNEL_POSITION);
+    g_value_set_enum(&val, GST_AUDIO_CHANNEL_POSITION_FRONT_LEFT);
+    g_value_array_append(arr, &val);
+    g_value_reset(&val);
+    g_value_set_enum(&val, GST_AUDIO_CHANNEL_POSITION_FRONT_RIGHT);
+    g_value_array_append(arr, &val);
+    g_value_unset(&val);
+
+    g_object_set(deinterleave, "keep-positions", true, nullptr);
+    g_object_set(interleave, "channel-positions", arr, nullptr);
+
+    g_value_array_free(arr);
+
     int nbands = g_settings_get_int(settings, "num-bands");
 
     g_object_set(equalizer_L, "num-bands", nbands, nullptr);
@@ -157,9 +166,7 @@ Equalizer::Equalizer(const std::string& tag, const std::string& schema)
       bind_band(equalizer_R, n);
     }
 
-    g_object_set(deinterleave, "keep-positions", true, nullptr);
-
-    // conect signals
+    // connect signals
 
     g_signal_connect(settings, "changed::num-bands",
                      G_CALLBACK(on_num_bands_changed), this);
@@ -271,4 +278,27 @@ void Equalizer::update_equalizer() {
       bind_band(equalizer_R, n);
     }
   }
+}
+
+void Equalizer::get_rate(GstPad* pad) {
+  auto caps = gst_pad_get_current_caps(pad);
+
+  GstStructure* structure = gst_caps_get_structure(caps, 0);
+
+  gst_structure_get_int(structure, "rate", &rate);
+
+  gst_caps_unref(caps);
+
+  // util::warning(std::to_string(rate));
+}
+
+void Equalizer::set_caps() {
+  auto caps_str =
+      "audio/x-raw,format=F32LE,channels=2,rate=" + std::to_string(rate);
+
+  auto caps = gst_caps_from_string(caps_str.c_str());
+
+  g_object_set(capsfilter, "caps", caps, nullptr);
+
+  gst_caps_unref(caps);
 }
