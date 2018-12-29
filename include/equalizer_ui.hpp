@@ -12,12 +12,16 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
  public:
   EqualizerUi(BaseObjectType* cobject,
               const Glib::RefPtr<Gtk::Builder>& builder,
-              const std::string& settings_name);
+              const std::string& schema,
+              const std::string& schema_left,
+              const std::string& schema_right);
   virtual ~EqualizerUi();
 
   void reset();
 
  private:
+  Glib::RefPtr<Gio::Settings> settings_left, settings_right;
+
   Gtk::Grid* bands_grid;
   Glib::RefPtr<Gtk::Adjustment> nbands, input_gain, output_gain;
   Gtk::Button *reset_eq, *flat_response, *calculate_freqs;

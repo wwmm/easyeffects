@@ -58,7 +58,9 @@ SinkInputEffectsUi::SinkInputEffectsUi(
       "com.github.wwmm.pulseeffects.sinkinputs.filter");
   b_equalizer->get_widget_derived(
       "widgets_grid", equalizer_ui,
-      "com.github.wwmm.pulseeffects.sinkinputs.equalizer");
+      "com.github.wwmm.pulseeffects.sinkinputs.equalizer",
+      "com.github.wwmm.pulseeffects.sinkinputs.equalizer.leftchannel",
+      "com.github.wwmm.pulseeffects.sinkinputs.equalizer.rightchannel");
   b_reverb->get_widget_derived(
       "widgets_grid", reverb_ui,
       "com.github.wwmm.pulseeffects.sinkinputs.reverb");

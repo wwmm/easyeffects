@@ -44,7 +44,9 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(
       "com.github.wwmm.pulseeffects.sourceoutputs.filter");
   b_equalizer->get_widget_derived(
       "widgets_grid", equalizer_ui,
-      "com.github.wwmm.pulseeffects.sourceoutputs.equalizer");
+      "com.github.wwmm.pulseeffects.sourceoutputs.equalizer",
+      "com.github.wwmm.pulseeffects.sourceoutputs.equalizer.leftchannel",
+      "com.github.wwmm.pulseeffects.sourceoutputs.equalizer.rightchannel");
   b_reverb->get_widget_derived(
       "widgets_grid", reverb_ui,
       "com.github.wwmm.pulseeffects.sourceoutputs.reverb");

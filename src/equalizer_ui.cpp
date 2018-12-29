@@ -40,8 +40,10 @@ GVariant* int_to_bandtype_enum(const GValue* value,
 
 EqualizerUi::EqualizerUi(BaseObjectType* cobject,
                          const Glib::RefPtr<Gtk::Builder>& builder,
-                         const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
+                         const std::string& schema,
+                         const std::string& schema_left,
+                         const std::string& schema_right)
+    : Gtk::Grid(cobject), PluginUiBase(builder, schema) {
   name = "equalizer";
 
   // loading glade widgets
