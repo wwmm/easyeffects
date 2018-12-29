@@ -15,8 +15,6 @@ void on_deinterleave_pad_added(GstElement*, GstPad* pad, Equalizer* l) {
   util::debug(l->log_tag + l->name + " deinterleave pad added: " + name);
 
   if (name == std::string("src_0")) {
-    l->get_rate(pad);
-
     auto sinkpad = gst_element_get_static_pad(l->queue_L, "sink");
 
     gst_pad_link(pad, sinkpad);
@@ -37,8 +35,6 @@ void on_deinterleave_pad_removed(GstElement*, GstPad* pad, Equalizer* l) {
   util::debug(l->log_tag + l->name + " deinterleave pad removed: " + name);
 
   if (name == std::string("src_0")) {
-    // l->set_caps();
-
     auto sinkpad = gst_element_get_static_pad(l->queue_L, "sink");
 
     gst_pad_unlink(pad, sinkpad);
@@ -108,24 +104,14 @@ Equalizer::Equalizer(const std::string& tag, const std::string& schema)
     auto deinterleave =
         gst_element_factory_make("deinterleave", "eq_deinterleave");
 
-    capsfilter = gst_element_factory_make("capsfilter", nullptr);
     queue_L = gst_element_factory_make("queue", "eq_queue_L");
     queue_R = gst_element_factory_make("queue", "eq_queue_R");
     audioconvert_out =
         gst_element_factory_make("audioconvert", "eq_audioconvert_out");
 
-    auto caps_str = std::string("audio/x-raw,format=F32LE,channels=2");
-
-    auto caps = gst_caps_from_string(caps_str.c_str());
-
-    g_object_set(capsfilter, "caps", caps, nullptr);
-
-    gst_caps_unref(caps);
-
     gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in,
                      deinterleave, queue_L, queue_R, equalizer_L, equalizer_R,
-                     capsfilter, audioconvert_out, output_gain, out_level,
-                     nullptr);
+                     audioconvert_out, output_gain, out_level, nullptr);
 
     gst_element_link_many(input_gain, in_level, audioconvert_in, deinterleave,
                           nullptr);
@@ -134,29 +120,6 @@ Equalizer::Equalizer(const std::string& tag, const std::string& schema)
 
     gst_element_link_many(queue_L, equalizer_L, nullptr);
     gst_element_link_many(queue_R, equalizer_R, nullptr);
-
-    // getting interleave pads
-
-    // auto interleave_sink0_pad =
-    //     gst_element_get_request_pad(interleave, "sink_0");
-    //
-    // auto interleave_sink1_pad =
-    //     gst_element_get_request_pad(interleave, "sink_1");
-    //
-    // auto eq_L_src_pad = gst_element_get_static_pad(equalizer_L, "src");
-    //
-    // auto eq_R_src_pad = gst_element_get_static_pad(equalizer_R, "src");
-    //
-    // gst_pad_link(eq_L_src_pad, interleave_sink0_pad);
-    // gst_pad_link(eq_R_src_pad, interleave_sink1_pad);
-
-    // gst_element_release_request_pad(interleave, interleave_sink0_pad);
-    // gst_element_release_request_pad(interleave, interleave_sink1_pad);
-
-    // gst_object_unref(GST_OBJECT(interleave_sink0_pad));
-    // gst_object_unref(GST_OBJECT(interleave_sink1_pad));
-    // gst_object_unref(GST_OBJECT(eq_L_src_pad));
-    // gst_object_unref(GST_OBJECT(eq_R_src_pad));
 
     // setting bin ghost pads
 
@@ -295,27 +258,4 @@ void Equalizer::update_equalizer() {
       bind_band(equalizer_R, n);
     }
   }
-}
-
-void Equalizer::get_rate(GstPad* pad) {
-  auto caps = gst_pad_get_current_caps(pad);
-
-  GstStructure* structure = gst_caps_get_structure(caps, 0);
-
-  gst_structure_get_int(structure, "rate", &rate);
-
-  gst_caps_unref(caps);
-
-  // util::warning(std::to_string(rate));
-}
-
-void Equalizer::set_caps() {
-  auto caps_str =
-      "audio/x-raw,format=F32LE,channels=2,rate=" + std::to_string(rate);
-
-  auto caps = gst_caps_from_string(caps_str.c_str());
-
-  g_object_set(capsfilter, "caps", caps, nullptr);
-
-  gst_caps_unref(caps);
 }
