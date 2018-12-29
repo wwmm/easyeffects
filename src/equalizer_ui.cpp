@@ -464,7 +464,7 @@ void EqualizerUi::load_preset(const std::string& file_name) {
   settings->set_double("output-gain",
                        root.get<double>("equalizer.output-gain"));
 
-  settings->set_boolean("split-channels", false);
+  // settings->set_boolean("split-channels", false);
 
   for (int n = 0; n < nbands; n++) {
     // left channel
