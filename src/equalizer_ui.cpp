@@ -43,7 +43,10 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
                          const std::string& schema,
                          const std::string& schema_left,
                          const std::string& schema_right)
-    : Gtk::Grid(cobject), PluginUiBase(builder, schema) {
+    : Gtk::Grid(cobject),
+      PluginUiBase(builder, schema),
+      settings_left(Gio::Settings::create(schema_left)),
+      settings_right(Gio::Settings::create(schema_right)) {
   name = "equalizer";
 
   // loading glade widgets
