@@ -212,7 +212,13 @@ void EqualizerUi::on_nbands_changed() {
 
 void EqualizerUi::on_flat_response() {
   for (int n = 0; n < 30; n++) {
-    settings->reset(std::string("band" + std::to_string(n) + "-gain"));
+    // left channel
+
+    settings_left->reset(std::string("band" + std::to_string(n) + "-gain"));
+
+    // right channel
+
+    settings_right->reset(std::string("band" + std::to_string(n) + "-gain"));
   }
 }
 
@@ -237,11 +243,21 @@ void EqualizerUi::on_calculate_frequencies() {
 
     // std::cout << n << "\t" << freq << "\t" << width << std::endl;
 
-    settings->set_double(std::string("band" + std::to_string(n) + "-frequency"),
-                         freq);
+    // left channel
 
-    settings->set_double(std::string("band" + std::to_string(n) + "-width"),
-                         width);
+    settings_left->set_double(
+        std::string("band" + std::to_string(n) + "-frequency"), freq);
+
+    settings_left->set_double(
+        std::string("band" + std::to_string(n) + "-width"), width);
+
+    // right channel
+
+    settings_right->set_double(
+        std::string("band" + std::to_string(n) + "-frequency"), freq);
+
+    settings_right->set_double(
+        std::string("band" + std::to_string(n) + "-width"), width);
 
     freq0 = freq1;
   }
@@ -273,20 +289,42 @@ void EqualizerUi::load_preset(const std::string& file_name) {
   settings->set_double("output-gain",
                        root.get<double>("equalizer.output-gain"));
 
+  settings->set_boolean("split-channels", false);
+
   for (int n = 0; n < nbands; n++) {
-    settings->set_double(
+    // left channel
+
+    settings_left->set_double(
         std::string("band" + std::to_string(n) + "-gain"),
         root.get<double>("equalizer.band" + std::to_string(n) + ".gain"));
 
-    settings->set_double(
+    settings_left->set_double(
         std::string("band" + std::to_string(n) + "-frequency"),
         root.get<double>("equalizer.band" + std::to_string(n) + ".frequency"));
 
-    settings->set_double(
+    settings_left->set_double(
         std::string("band" + std::to_string(n) + "-width"),
         root.get<double>("equalizer.band" + std::to_string(n) + ".width"));
 
-    settings->set_string(
+    settings_left->set_string(
+        std::string("band" + std::to_string(n) + "-type"),
+        root.get<std::string>("equalizer.band" + std::to_string(n) + ".type"));
+
+    // right channel
+
+    settings_right->set_double(
+        std::string("band" + std::to_string(n) + "-gain"),
+        root.get<double>("equalizer.band" + std::to_string(n) + ".gain"));
+
+    settings_right->set_double(
+        std::string("band" + std::to_string(n) + "-frequency"),
+        root.get<double>("equalizer.band" + std::to_string(n) + ".frequency"));
+
+    settings_right->set_double(
+        std::string("band" + std::to_string(n) + "-width"),
+        root.get<double>("equalizer.band" + std::to_string(n) + ".width"));
+
+    settings_right->set_string(
         std::string("band" + std::to_string(n) + "-type"),
         root.get<std::string>("equalizer.band" + std::to_string(n) + ".type"));
   }
@@ -344,11 +382,21 @@ void EqualizerUi::on_presets_menu_button_clicked() {
 void EqualizerUi::reset() {
   settings->reset("state");
   settings->reset("num-bands");
+  settings->reset("split-channels");
+  settings->reset("input-gain");
+  settings->reset("output-gain");
 
   for (int n = 0; n < 30; n++) {
-    settings->reset(std::string("band" + std::to_string(n) + "-gain"));
-    settings->reset(std::string("band" + std::to_string(n) + "-frequency"));
-    settings->reset(std::string("band" + std::to_string(n) + "-width"));
-    settings->reset(std::string("band" + std::to_string(n) + "-type"));
+    settings_left->reset(std::string("band" + std::to_string(n) + "-gain"));
+    settings_left->reset(
+        std::string("band" + std::to_string(n) + "-frequency"));
+    settings_left->reset(std::string("band" + std::to_string(n) + "-width"));
+    settings_left->reset(std::string("band" + std::to_string(n) + "-type"));
+
+    settings_right->reset(std::string("band" + std::to_string(n) + "-gain"));
+    settings_right->reset(
+        std::string("band" + std::to_string(n) + "-frequency"));
+    settings_right->reset(std::string("band" + std::to_string(n) + "-width"));
+    settings_right->reset(std::string("band" + std::to_string(n) + "-type"));
   }
 }
