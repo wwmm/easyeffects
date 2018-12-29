@@ -11,7 +11,10 @@ class Equalizer : public PluginBase {
   ~Equalizer();
 
   GstElement *equalizer_L = nullptr, *equalizer_R = nullptr, *queue_L = nullptr,
-             *queue_R = nullptr, *interleave = nullptr, *capsfilter = nullptr;
+             *queue_R = nullptr, *interleave = nullptr, *capsfilter = nullptr,
+             *audioconvert_out = nullptr;
+
+  GstPad *interleave_sink0_pad = nullptr, *interleave_sink1_pad = nullptr;
 
   int rate = 0;
 
