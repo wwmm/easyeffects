@@ -110,6 +110,22 @@ Equalizer::Equalizer(const std::string& tag, const std::string& schema)
                      deinterleave, queue_L, queue_R, equalizer_L, equalizer_R,
                      audioconvert_out, output_gain, out_level, nullptr);
 
+    /*
+      Once the pipeline is running we will have the following link order:
+                            input_gain
+                            in_level
+                            audioconvert_in
+                            deinterleave
+                            /           \
+                         queue_L      queue_R
+                       equalizer_L  equalizer_R
+                              \        /
+                              interleave
+                              audioconvert_out
+                              output_gain
+                              out_level
+    */
+
     gst_element_link_many(input_gain, in_level, audioconvert_in, deinterleave,
                           nullptr);
 
