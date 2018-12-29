@@ -53,9 +53,6 @@ void on_deinterleave_no_more_pads(GstElement*, Equalizer* l) {
   auto b = gst_bin_get_by_name(GST_BIN(l->bin), "eq_interleave");
 
   if (b) {
-    gst_element_release_request_pad(b, l->interleave_sink0_pad);
-    gst_element_release_request_pad(b, l->interleave_sink1_pad);
-
     gst_bin_remove(GST_BIN(l->bin), b);
   }
 
@@ -65,23 +62,23 @@ void on_deinterleave_no_more_pads(GstElement*, Equalizer* l) {
 
   gst_element_link(l->interleave, l->audioconvert_out);
 
-  l->interleave_sink0_pad =
+  auto interleave_sink0_pad =
       gst_element_get_request_pad(l->interleave, "sink_0");
 
-  l->interleave_sink1_pad =
+  auto interleave_sink1_pad =
       gst_element_get_request_pad(l->interleave, "sink_1");
 
   auto eq_L_src_pad = gst_element_get_static_pad(l->equalizer_L, "src");
 
   auto eq_R_src_pad = gst_element_get_static_pad(l->equalizer_R, "src");
 
-  gst_pad_link(eq_L_src_pad, l->interleave_sink0_pad);
-  gst_pad_link(eq_R_src_pad, l->interleave_sink1_pad);
+  gst_pad_link(eq_L_src_pad, interleave_sink0_pad);
+  gst_pad_link(eq_R_src_pad, interleave_sink1_pad);
 
   gst_element_sync_state_with_parent(l->interleave);
 
-  gst_object_unref(GST_OBJECT(l->interleave_sink0_pad));
-  gst_object_unref(GST_OBJECT(l->interleave_sink1_pad));
+  gst_object_unref(GST_OBJECT(interleave_sink0_pad));
+  gst_object_unref(GST_OBJECT(interleave_sink1_pad));
   gst_object_unref(GST_OBJECT(eq_L_src_pad));
   gst_object_unref(GST_OBJECT(eq_R_src_pad));
 }
