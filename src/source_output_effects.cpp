@@ -221,7 +221,9 @@ SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager)
   filter = std::make_unique<Filter>(
       log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.filter");
   equalizer = std::make_unique<Equalizer>(
-      log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.equalizer");
+      log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.equalizer",
+      "com.github.wwmm.pulseeffects.sourceoutputs.equalizer.leftchannel",
+      "com.github.wwmm.pulseeffects.sourceoutputs.equalizer.rightchannel");
   reverb = std::make_unique<Reverb>(
       log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.reverb");
   gate = std::make_unique<Gate>(

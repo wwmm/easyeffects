@@ -245,7 +245,9 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
   filter = std::make_unique<Filter>(
       log_tag, "com.github.wwmm.pulseeffects.sinkinputs.filter");
   equalizer = std::make_unique<Equalizer>(
-      log_tag, "com.github.wwmm.pulseeffects.sinkinputs.equalizer");
+      log_tag, "com.github.wwmm.pulseeffects.sinkinputs.equalizer",
+      "com.github.wwmm.pulseeffects.sinkinputs.equalizer.leftchannel",
+      "com.github.wwmm.pulseeffects.sinkinputs.equalizer.rightchannel");
   reverb = std::make_unique<Reverb>(
       log_tag, "com.github.wwmm.pulseeffects.sinkinputs.reverb");
   bass_enhancer = std::make_unique<BassEnhancer>(

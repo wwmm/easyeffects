@@ -85,8 +85,13 @@ void on_deinterleave_no_more_pads(GstElement*, Equalizer* l) {
 
 }  // namespace
 
-Equalizer::Equalizer(const std::string& tag, const std::string& schema)
-    : PluginBase(tag, "equalizer", schema) {
+Equalizer::Equalizer(const std::string& tag,
+                     const std::string& schema,
+                     const std::string& schema_left,
+                     const std::string& schema_right)
+    : PluginBase(tag, "equalizer", schema),
+      settings_left(g_settings_new(schema_left.c_str())),
+      settings_right(g_settings_new(schema_right.c_str())) {
   equalizer_L = gst_element_factory_make("equalizer-nbands", nullptr);
   equalizer_R = gst_element_factory_make("equalizer-nbands", nullptr);
 
@@ -199,6 +204,9 @@ Equalizer::Equalizer(const std::string& tag, const std::string& schema)
 }
 
 Equalizer::~Equalizer() {
+  g_object_unref(settings_left);
+  g_object_unref(settings_right);
+
   util::debug(log_tag + name + " destroyed");
 }
 
