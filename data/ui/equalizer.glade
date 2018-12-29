@@ -102,8 +102,38 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="halign">center</property>
-        <property name="column_spacing">3</property>
+        <property name="row_spacing">6</property>
+        <property name="column_spacing">6</property>
         <property name="column_homogeneous">True</property>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">end</property>
+            <property name="valign">center</property>
+            <property name="label" translatable="yes">Bands</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSpinButton">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="halign">start</property>
+            <property name="valign">center</property>
+            <property name="input_purpose">number</property>
+            <property name="adjustment">nbands</property>
+            <property name="numeric">True</property>
+            <property name="update_policy">if-valid</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
         <child>
           <object class="GtkButton" id="flat_response">
             <property name="label" translatable="yes">Flat Response</property>
@@ -111,13 +141,26 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="valign">center</property>
-            <property name="margin_left">3</property>
-            <property name="margin_right">3</property>
+            <property name="margin_left">12</property>
             <signal name="clicked" handler="on_flat_response_button_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">2</property>
+            <property name="left_attach">2</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calculate_freqs">
+            <property name="label" translatable="yes">Calculate Frequencies</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="valign">center</property>
+            <property name="margin_left">12</property>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">1</property>
           </packing>
         </child>
         <child>
@@ -127,6 +170,7 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="valign">center</property>
+            <property name="margin_left">12</property>
           </object>
           <packing>
             <property name="left_attach">2</property>
@@ -137,44 +181,32 @@
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="halign">center</property>
-            <property name="label" translatable="yes">Bands</property>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">0</property>
-            <property name="width">3</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSpinButton">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="halign">center</property>
-            <property name="margin_bottom">12</property>
-            <property name="input_purpose">number</property>
-            <property name="adjustment">nbands</property>
-            <property name="numeric">True</property>
-            <property name="update_policy">if-valid</property>
+            <property name="halign">end</property>
+            <property name="valign">center</property>
+            <property name="label" translatable="yes">Split Channels</property>
           </object>
           <packing>
             <property name="left_attach">0</property>
             <property name="top_attach">1</property>
-            <property name="width">3</property>
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="calculate_freqs">
-            <property name="label" translatable="yes">Calculate Frequencies</property>
+          <object class="GtkSwitch" id="split_channels">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
+            <property name="halign">start</property>
             <property name="valign">center</property>
           </object>
           <packing>
             <property name="left_attach">1</property>
-            <property name="top_attach">2</property>
+            <property name="top_attach">1</property>
           </packing>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
         </child>
       </object>
     </child>

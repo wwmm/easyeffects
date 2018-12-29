@@ -6,6 +6,7 @@
 #include <gtkmm/listbox.h>
 #include <gtkmm/menubutton.h>
 #include <gtkmm/scrolledwindow.h>
+#include <gtkmm/switch.h>
 #include "plugin_ui_base.hpp"
 
 class EqualizerUi : public Gtk::Grid, public PluginUiBase {
@@ -28,6 +29,7 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
   Gtk::ScrolledWindow* presets_scrolled_window;
   Gtk::ListBox* presets_listbox;
   Gtk::MenuButton* presets_menu_button;
+  Gtk::Switch* split_channels;
 
   std::vector<sigc::connection> connections;
 

@@ -58,6 +58,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   builder->get_widget("presets_listbox", presets_listbox);
   builder->get_widget("presets_menu_button", presets_menu_button);
   builder->get_widget("presets_scrolled_window", presets_scrolled_window);
+  builder->get_widget("split_channels", split_channels);
 
   get_object(builder, "nbands", nbands);
   get_object(builder, "input_gain", input_gain);
@@ -91,6 +92,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   settings->bind("num-bands", nbands.get(), "value", flag);
   settings->bind("input-gain", input_gain.get(), "value", flag);
   settings->bind("output-gain", output_gain.get(), "value", flag);
+  settings->bind("split-channels", split_channels, "active", flag);
 
   settings->set_boolean("post-messages", true);
 
