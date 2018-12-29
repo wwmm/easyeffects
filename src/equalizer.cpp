@@ -160,8 +160,8 @@ Equalizer::Equalizer(const std::string& tag,
     g_object_set(equalizer_R, "num-bands", nbands, nullptr);
 
     for (int n = 0; n < nbands; n++) {
-      bind_band(equalizer_L, n);
-      bind_band(equalizer_R, n);
+      bind_band(equalizer_L, settings_left, n);
+      bind_band(equalizer_R, settings_right, n);
     }
 
     // connect signals
@@ -210,24 +210,25 @@ Equalizer::~Equalizer() {
   util::debug(log_tag + name + " destroyed");
 }
 
-void Equalizer::bind_band(GstElement* equalizer, const int index) {
+void Equalizer::bind_band(GstElement* equalizer,
+                          GSettings* cfg,
+                          const int index) {
   auto band =
       gst_child_proxy_get_child_by_index(GST_CHILD_PROXY(equalizer), index);
 
-  g_settings_bind(settings,
+  g_settings_bind(cfg,
                   std::string("band" + std::to_string(index) + "-gain").c_str(),
                   band, "gain", G_SETTINGS_BIND_GET);
 
   g_settings_bind(
-      settings,
-      std::string("band" + std::to_string(index) + "-frequency").c_str(), band,
-      "freq", G_SETTINGS_BIND_GET);
+      cfg, std::string("band" + std::to_string(index) + "-frequency").c_str(),
+      band, "freq", G_SETTINGS_BIND_GET);
 
   g_settings_bind(
-      settings, std::string("band" + std::to_string(index) + "-width").c_str(),
-      band, "bandwidth", G_SETTINGS_BIND_GET);
+      cfg, std::string("band" + std::to_string(index) + "-width").c_str(), band,
+      "bandwidth", G_SETTINGS_BIND_GET);
 
-  g_settings_bind(settings,
+  g_settings_bind(cfg,
                   std::string("band" + std::to_string(index) + "-type").c_str(),
                   band, "type", G_SETTINGS_BIND_GET);
 
@@ -275,8 +276,8 @@ void Equalizer::update_equalizer() {
     util::debug(log_tag + name + ": binding bands");
 
     for (int n = 0; n < nbands; n++) {
-      bind_band(equalizer_L, n);
-      bind_band(equalizer_R, n);
+      bind_band(equalizer_L, settings_left, n);
+      bind_band(equalizer_R, settings_right, n);
     }
   }
 }
