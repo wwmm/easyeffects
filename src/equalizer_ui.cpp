@@ -183,25 +183,26 @@ void EqualizerUi::on_nbands_changed() {
         band_f->signal_value_changed().connect(update_band_label));
     connections.push_back(band_w->signal_value_changed().connect(update_q));
 
-    settings->bind(std::string("band" + std::to_string(n) + "-gain"),
-                   band_g.get(), "value", flag);
-    settings->bind(std::string("band" + std::to_string(n) + "-frequency"),
-                   band_f.get(), "value", flag);
-    settings->bind(std::string("band" + std::to_string(n) + "-width"),
-                   band_w.get(), "value", flag);
+    settings_left->bind(std::string("band" + std::to_string(n) + "-gain"),
+                        band_g.get(), "value", flag);
+    settings_left->bind(std::string("band" + std::to_string(n) + "-frequency"),
+                        band_f.get(), "value", flag);
+    settings_left->bind(std::string("band" + std::to_string(n) + "-width"),
+                        band_w.get(), "value", flag);
 
     g_settings_bind_with_mapping(
-        settings->gobj(),
+        settings_left->gobj(),
         std::string("band" + std::to_string(n) + "-type").c_str(),
         band_t->gobj(), "active", G_SETTINGS_BIND_DEFAULT, bandtype_enum_to_int,
         int_to_bandtype_enum, nullptr, nullptr);
 
     connections.push_back(reset_f->signal_clicked().connect([=]() {
-      settings->reset(std::string("band" + std::to_string(n) + "-frequency"));
+      settings_left->reset(
+          std::string("band" + std::to_string(n) + "-frequency"));
     }));
 
     connections.push_back(reset_w->signal_clicked().connect([=]() {
-      settings->reset(std::string("band" + std::to_string(n) + "-width"));
+      settings_left->reset(std::string("band" + std::to_string(n) + "-width"));
     }));
 
     bands_grid->add(*band_grid);
@@ -387,11 +388,15 @@ void EqualizerUi::reset() {
   settings->reset("output-gain");
 
   for (int n = 0; n < 30; n++) {
+    // left channel
+
     settings_left->reset(std::string("band" + std::to_string(n) + "-gain"));
     settings_left->reset(
         std::string("band" + std::to_string(n) + "-frequency"));
     settings_left->reset(std::string("band" + std::to_string(n) + "-width"));
     settings_left->reset(std::string("band" + std::to_string(n) + "-type"));
+
+    // right channel
 
     settings_right->reset(std::string("band" + std::to_string(n) + "-gain"));
     settings_right->reset(
