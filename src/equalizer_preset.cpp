@@ -29,20 +29,55 @@ void EqualizerPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".equalizer.output-gain",
            settings->get_double("output-gain"));
 
+  //// remove this
+
+  // for (int n = 0; n < nbands; n++) {
+  //   root.put(section + ".equalizer.band" + std::to_string(n) + ".gain",
+  //            settings->get_double(
+  //                std::string("band" + std::to_string(n) + "-gain")));
+  //
+  //   root.put(section + ".equalizer.band" + std::to_string(n) + ".frequency",
+  //            settings->get_double(
+  //                std::string("band" + std::to_string(n) + "-frequency")));
+  //
+  //   root.put(section + ".equalizer.band" + std::to_string(n) + ".width",
+  //            settings->get_double(
+  //                std::string("band" + std::to_string(n) + "-width")));
+  //
+  //   root.put(section + ".equalizer.band" + std::to_string(n) + ".type",
+  //            settings->get_string(
+  //                std::string("band" + std::to_string(n) + "-type")));
+  // }
+
+  /////////
+
+  if (section == std::string("input")) {
+    save_channel(root, "input.equalizer.left", input_settings_left, nbands);
+    save_channel(root, "input.equalizer.right", input_settings_right, nbands);
+  } else if (section == std::string("output")) {
+    save_channel(root, "output.equalizer.left", output_settings_left, nbands);
+    save_channel(root, "output.equalizer.right", output_settings_right, nbands);
+  }
+}
+
+void EqualizerPreset::save_channel(boost::property_tree::ptree& root,
+                                   const std::string& section,
+                                   const Glib::RefPtr<Gio::Settings>& settings,
+                                   const int& nbands) {
   for (int n = 0; n < nbands; n++) {
-    root.put(section + ".equalizer.band" + std::to_string(n) + ".gain",
+    root.put(section + ".band" + std::to_string(n) + ".gain",
              settings->get_double(
                  std::string("band" + std::to_string(n) + "-gain")));
 
-    root.put(section + ".equalizer.band" + std::to_string(n) + ".frequency",
+    root.put(section + ".band" + std::to_string(n) + ".frequency",
              settings->get_double(
                  std::string("band" + std::to_string(n) + "-frequency")));
 
-    root.put(section + ".equalizer.band" + std::to_string(n) + ".width",
+    root.put(section + ".band" + std::to_string(n) + ".width",
              settings->get_double(
                  std::string("band" + std::to_string(n) + "-width")));
 
-    root.put(section + ".equalizer.band" + std::to_string(n) + ".type",
+    root.put(section + ".band" + std::to_string(n) + ".type",
              settings->get_string(
                  std::string("band" + std::to_string(n) + "-type")));
   }
