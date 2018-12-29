@@ -24,6 +24,9 @@
             <range min="-20" max="20.0"/>
             <default>0.0</default>
         </key>
+        <key name="split-channels" type="b">
+            <default>false</default>
+        </key>
         <key name="band0-gain" type="d">
             <range min="-24" max="12"/>
             <default>0</default>
