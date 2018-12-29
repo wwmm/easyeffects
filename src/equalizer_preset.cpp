@@ -3,8 +3,16 @@
 EqualizerPreset::EqualizerPreset()
     : input_settings(Gio::Settings::create(
           "com.github.wwmm.pulseeffects.sourceoutputs.equalizer")),
+      input_settings_left(Gio::Settings::create(
+          "com.github.wwmm.pulseeffects.sourceoutputs.equalizer.leftchannel")),
+      input_settings_right(Gio::Settings::create(
+          "com.github.wwmm.pulseeffects.sourceoutputs.equalizer.rightchannel")),
       output_settings(Gio::Settings::create(
-          "com.github.wwmm.pulseeffects.sinkinputs.equalizer")) {}
+          "com.github.wwmm.pulseeffects.sinkinputs.equalizer")),
+      output_settings_left(Gio::Settings::create(
+          "com.github.wwmm.pulseeffects.sinkinputs.equalizer.leftchannel")),
+      output_settings_right(Gio::Settings::create(
+          "com.github.wwmm.pulseeffects.sinkinputs.equalizer.rightchannel")) {}
 
 void EqualizerPreset::save(boost::property_tree::ptree& root,
                            const std::string& section,
