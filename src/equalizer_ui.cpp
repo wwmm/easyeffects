@@ -51,7 +51,8 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 
   // loading glade widgets
 
-  builder->get_widget("bands_grid", bands_grid);
+  builder->get_widget("bands_grid_left", bands_grid_left);
+  builder->get_widget("bands_grid_right", bands_grid_right);
   builder->get_widget("reset_eq", reset_eq);
   builder->get_widget("flat_response", flat_response);
   builder->get_widget("calculate_freqs", calculate_freqs);
@@ -59,10 +60,14 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   builder->get_widget("presets_menu_button", presets_menu_button);
   builder->get_widget("presets_scrolled_window", presets_scrolled_window);
   builder->get_widget("split_channels", split_channels);
+  builder->get_widget("stack", stack);
+  builder->get_widget("stack_switcher", stack_switcher);
 
   get_object(builder, "nbands", nbands);
   get_object(builder, "input_gain", input_gain);
   get_object(builder, "output_gain", output_gain);
+
+  // signals connections
 
   nbands->signal_value_changed().connect(
       sigc::mem_fun(*this, &EqualizerUi::on_nbands_changed));
@@ -84,6 +89,16 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   presets_listbox->signal_row_activated().connect(
       [&](auto row) { load_preset(row->get_name() + ".json"); });
 
+  connections.push_back(
+      settings->signal_changed("split-channels").connect([&](auto key) {
+        bool split = settings->get_boolean("split-channels");
+
+        if (split) {
+        } else {
+          stack->set_visible_child("left_channel");
+        }
+      }));
+
   // gsettings bindings
 
   auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
@@ -93,6 +108,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   settings->bind("input-gain", input_gain.get(), "value", flag);
   settings->bind("output-gain", output_gain.get(), "value", flag);
   settings->bind("split-channels", split_channels, "active", flag);
+  settings->bind("split-channels", stack_switcher, "visible", flag);
 
   settings->set_boolean("post-messages", true);
 
@@ -110,14 +126,19 @@ EqualizerUi::~EqualizerUi() {
 }
 
 void EqualizerUi::on_nbands_changed() {
-  int N = nbands->get_value();
-
   for (auto c : connections) {
     c.disconnect();
   }
 
   connections.clear();
 
+  build_bands(bands_grid_left, settings_left, nbands->get_value());
+  build_bands(bands_grid_right, settings_right, nbands->get_value());
+}
+
+void EqualizerUi::build_bands(Gtk::Grid* bands_grid,
+                              Glib::RefPtr<Gio::Settings> cfg,
+                              const int& nbands) {
   for (auto c : bands_grid->get_children()) {
     bands_grid->remove(*c);
 
@@ -126,7 +147,7 @@ void EqualizerUi::on_nbands_changed() {
 
   auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
-  for (int n = 0; n < N; n++) {
+  for (int n = 0; n < nbands; n++) {
     auto B = Gtk::Builder::create_from_resource(
         "/com/github/wwmm/pulseeffects/ui/equalizer_band.glade");
 
@@ -181,30 +202,30 @@ void EqualizerUi::on_nbands_changed() {
     };
 
     connections.push_back(band_f->signal_value_changed().connect(update_q));
+
     connections.push_back(
         band_f->signal_value_changed().connect(update_band_label));
+
     connections.push_back(band_w->signal_value_changed().connect(update_q));
 
-    settings_left->bind(std::string("band" + std::to_string(n) + "-gain"),
-                        band_g.get(), "value", flag);
-    settings_left->bind(std::string("band" + std::to_string(n) + "-frequency"),
-                        band_f.get(), "value", flag);
-    settings_left->bind(std::string("band" + std::to_string(n) + "-width"),
-                        band_w.get(), "value", flag);
+    cfg->bind(std::string("band" + std::to_string(n) + "-gain"), band_g.get(),
+              "value", flag);
+    cfg->bind(std::string("band" + std::to_string(n) + "-frequency"),
+              band_f.get(), "value", flag);
+    cfg->bind(std::string("band" + std::to_string(n) + "-width"), band_w.get(),
+              "value", flag);
 
     g_settings_bind_with_mapping(
-        settings_left->gobj(),
-        std::string("band" + std::to_string(n) + "-type").c_str(),
+        cfg->gobj(), std::string("band" + std::to_string(n) + "-type").c_str(),
         band_t->gobj(), "active", G_SETTINGS_BIND_DEFAULT, bandtype_enum_to_int,
         int_to_bandtype_enum, nullptr, nullptr);
 
     connections.push_back(reset_f->signal_clicked().connect([=]() {
-      settings_left->reset(
-          std::string("band" + std::to_string(n) + "-frequency"));
+      cfg->reset(std::string("band" + std::to_string(n) + "-frequency"));
     }));
 
     connections.push_back(reset_w->signal_clicked().connect([=]() {
-      settings_left->reset(std::string("band" + std::to_string(n) + "-width"));
+      cfg->reset(std::string("band" + std::to_string(n) + "-width"));
     }));
 
     bands_grid->add(*band_grid);

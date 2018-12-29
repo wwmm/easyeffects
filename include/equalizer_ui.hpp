@@ -6,6 +6,8 @@
 #include <gtkmm/listbox.h>
 #include <gtkmm/menubutton.h>
 #include <gtkmm/scrolledwindow.h>
+#include <gtkmm/stack.h>
+#include <gtkmm/stackswitcher.h>
 #include <gtkmm/switch.h>
 #include "plugin_ui_base.hpp"
 
@@ -23,13 +25,15 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
  private:
   Glib::RefPtr<Gio::Settings> settings_left, settings_right;
 
-  Gtk::Grid* bands_grid;
+  Gtk::Grid *bands_grid_left, *bands_grid_right;
   Glib::RefPtr<Gtk::Adjustment> nbands, input_gain, output_gain;
   Gtk::Button *reset_eq, *flat_response, *calculate_freqs;
   Gtk::ScrolledWindow* presets_scrolled_window;
   Gtk::ListBox* presets_listbox;
   Gtk::MenuButton* presets_menu_button;
   Gtk::Switch* split_channels;
+  Gtk::Stack* stack;
+  Gtk::StackSwitcher* stack_switcher;
 
   std::vector<sigc::connection> connections;
 
@@ -38,12 +42,21 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
   void load_preset(const std::string& file_name);
 
   void on_nbands_changed();
+
+  void build_bands(Gtk::Grid* bands_grid,
+                   Glib::RefPtr<Gio::Settings> cfg,
+                   const int& nbands);
+
   void on_flat_response();
+
   void on_calculate_frequencies();
 
   int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
+
   void on_presets_menu_button_clicked();
+
   void populate_presets_listbox();
+
   void on_import_preset_clicked();
 };
 
