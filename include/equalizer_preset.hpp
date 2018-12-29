@@ -11,6 +11,8 @@ class EqualizerPreset : public PluginPresetBase {
   void read(boost::property_tree::ptree& root) override;
 
  private:
+  std::string log_tag = "equalizer_preset: ";
+
   Glib::RefPtr<Gio::Settings> input_settings, input_settings_left,
       input_settings_right, output_settings, output_settings_left,
       output_settings_right;
@@ -31,6 +33,8 @@ class EqualizerPreset : public PluginPresetBase {
                     const std::string& section,
                     const Glib::RefPtr<Gio::Settings>& settings,
                     const int& nbands);
+
+  void load_legacy_preset();
 };
 
 #endif

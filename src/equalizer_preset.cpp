@@ -1,4 +1,5 @@
 #include "equalizer_preset.hpp"
+#include "util.hpp"
 
 EqualizerPreset::EqualizerPreset()
     : input_settings(Gio::Settings::create(
@@ -97,10 +98,6 @@ void EqualizerPreset::load(boost::property_tree::ptree& root,
   update_key<double>(root, settings, "output-gain",
                      section + ".equalizer.output-gain");
 
-  try {
-  } catch (const boost::property_tree::ptree_error& e) {
-  }
-
   int nbands = settings->get_int("num-bands");
 
   for (int n = 0; n < nbands; n++) {
@@ -121,12 +118,36 @@ void EqualizerPreset::load(boost::property_tree::ptree& root,
         section + ".equalizer.band" + std::to_string(n) + ".type");
   }
 
-  if (section == std::string("input")) {
-    load_channel(root, "input.equalizer.left", input_settings_left, nbands);
-    load_channel(root, "input.equalizer.right", input_settings_right, nbands);
-  } else if (section == std::string("output")) {
-    load_channel(root, "output.equalizer.left", output_settings_left, nbands);
-    load_channel(root, "output.equalizer.right", output_settings_right, nbands);
+  bool legacy_preset = false;
+
+  try {
+    root.get<bool>(section + ".equalizer.split-channels");
+  } catch (const boost::property_tree::ptree_error& e) {
+    util::warning(log_tag + "old preset format");
+
+    legacy_preset = true;
+  }
+
+  update_key<bool>(root, settings, "split-channels",
+                   section + ".equalizer.split-channels");
+
+  if (!legacy_preset) {
+    if (section == std::string("input")) {
+      load_channel(root, "input.equalizer.left", input_settings_left, nbands);
+      load_channel(root, "input.equalizer.right", input_settings_right, nbands);
+    } else if (section == std::string("output")) {
+      load_channel(root, "output.equalizer.left", output_settings_left, nbands);
+      load_channel(root, "output.equalizer.right", output_settings_right,
+                   nbands);
+    }
+  } else {
+    if (section == std::string("input")) {
+      load_channel(root, "input.equalizer", input_settings_left, nbands);
+      load_channel(root, "input.equalizer", input_settings_right, nbands);
+    } else if (section == std::string("output")) {
+      load_channel(root, "output.equalizer", output_settings_left, nbands);
+      load_channel(root, "output.equalizer", output_settings_right, nbands);
+    }
   }
 }
 
