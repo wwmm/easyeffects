@@ -103,24 +103,10 @@ void EqualizerPreset::load(boost::property_tree::ptree& root,
 
   int nbands = settings->get_int("num-bands");
 
-  // for (int n = 0; n < nbands; n++) {
-  //   update_key<double>(
-  //       root, settings, std::string("band" + std::to_string(n) + "-gain"),
-  //       section + ".equalizer.band" + std::to_string(n) + ".gain");
-  //
-  //   update_key<double>(
-  //       root, settings, std::string("band" + std::to_string(n) +
-  //       "-frequency"), section + ".equalizer.band" + std::to_string(n) +
-  //       ".frequency");
-  //
-  //   update_key<double>(
-  //       root, settings, std::string("band" + std::to_string(n) + "-width"),
-  //       section + ".equalizer.band" + std::to_string(n) + ".width");
-  //
-  //   update_string_key(
-  //       root, settings, std::string("band" + std::to_string(n) + "-type"),
-  //       section + ".equalizer.band" + std::to_string(n) + ".type");
-  // }
+  /*
+    For now we check if the user has an preset with old format. One day we
+    remove this...
+  */
 
   bool legacy_preset = false;
 
