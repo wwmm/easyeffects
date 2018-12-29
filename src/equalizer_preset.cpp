@@ -97,6 +97,10 @@ void EqualizerPreset::load(boost::property_tree::ptree& root,
   update_key<double>(root, settings, "output-gain",
                      section + ".equalizer.output-gain");
 
+  try {
+  } catch (const boost::property_tree::ptree_error& e) {
+  }
+
   int nbands = settings->get_int("num-bands");
 
   for (int n = 0; n < nbands; n++) {
@@ -115,6 +119,37 @@ void EqualizerPreset::load(boost::property_tree::ptree& root,
     update_string_key(
         root, settings, std::string("band" + std::to_string(n) + "-type"),
         section + ".equalizer.band" + std::to_string(n) + ".type");
+  }
+
+  if (section == std::string("input")) {
+    load_channel(root, "input.equalizer.left", input_settings_left, nbands);
+    load_channel(root, "input.equalizer.right", input_settings_right, nbands);
+  } else if (section == std::string("output")) {
+    load_channel(root, "output.equalizer.left", output_settings_left, nbands);
+    load_channel(root, "output.equalizer.right", output_settings_right, nbands);
+  }
+}
+
+void EqualizerPreset::load_channel(boost::property_tree::ptree& root,
+                                   const std::string& section,
+                                   const Glib::RefPtr<Gio::Settings>& settings,
+                                   const int& nbands) {
+  for (int n = 0; n < nbands; n++) {
+    update_key<double>(root, settings,
+                       std::string("band" + std::to_string(n) + "-gain"),
+                       section + ".band" + std::to_string(n) + ".gain");
+
+    update_key<double>(root, settings,
+                       std::string("band" + std::to_string(n) + "-frequency"),
+                       section + ".band" + std::to_string(n) + ".frequency");
+
+    update_key<double>(root, settings,
+                       std::string("band" + std::to_string(n) + "-width"),
+                       section + ".band" + std::to_string(n) + ".width");
+
+    update_string_key(root, settings,
+                      std::string("band" + std::to_string(n) + "-type"),
+                      section + ".band" + std::to_string(n) + ".type");
   }
 }
 
