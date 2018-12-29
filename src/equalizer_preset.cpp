@@ -30,6 +30,9 @@ void EqualizerPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".equalizer.output-gain",
            settings->get_double("output-gain"));
 
+  root.put(section + ".equalizer.split-channels",
+           settings->get_boolean("split-channels"));
+
   //// remove this
 
   // for (int n = 0; n < nbands; n++) {
@@ -100,30 +103,31 @@ void EqualizerPreset::load(boost::property_tree::ptree& root,
 
   int nbands = settings->get_int("num-bands");
 
-  for (int n = 0; n < nbands; n++) {
-    update_key<double>(
-        root, settings, std::string("band" + std::to_string(n) + "-gain"),
-        section + ".equalizer.band" + std::to_string(n) + ".gain");
-
-    update_key<double>(
-        root, settings, std::string("band" + std::to_string(n) + "-frequency"),
-        section + ".equalizer.band" + std::to_string(n) + ".frequency");
-
-    update_key<double>(
-        root, settings, std::string("band" + std::to_string(n) + "-width"),
-        section + ".equalizer.band" + std::to_string(n) + ".width");
-
-    update_string_key(
-        root, settings, std::string("band" + std::to_string(n) + "-type"),
-        section + ".equalizer.band" + std::to_string(n) + ".type");
-  }
+  // for (int n = 0; n < nbands; n++) {
+  //   update_key<double>(
+  //       root, settings, std::string("band" + std::to_string(n) + "-gain"),
+  //       section + ".equalizer.band" + std::to_string(n) + ".gain");
+  //
+  //   update_key<double>(
+  //       root, settings, std::string("band" + std::to_string(n) +
+  //       "-frequency"), section + ".equalizer.band" + std::to_string(n) +
+  //       ".frequency");
+  //
+  //   update_key<double>(
+  //       root, settings, std::string("band" + std::to_string(n) + "-width"),
+  //       section + ".equalizer.band" + std::to_string(n) + ".width");
+  //
+  //   update_string_key(
+  //       root, settings, std::string("band" + std::to_string(n) + "-type"),
+  //       section + ".equalizer.band" + std::to_string(n) + ".type");
+  // }
 
   bool legacy_preset = false;
 
   try {
     root.get<bool>(section + ".equalizer.split-channels");
   } catch (const boost::property_tree::ptree_error& e) {
-    util::warning(log_tag + "old preset format");
+    util::warning(log_tag + "old preset format detected");
 
     legacy_preset = true;
   }
