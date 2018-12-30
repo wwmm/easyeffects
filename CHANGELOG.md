@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 
+## [4.4.2]
 ### Added
 - It is now possible to change the realtime priority or the niceness value. We do
 this using RealtimeKit just like Pulseaudio. By default we do not change any of
