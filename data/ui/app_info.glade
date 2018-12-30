@@ -19,7 +19,7 @@
     <property name="margin_right">6</property>
     <property name="margin_top">6</property>
     <property name="margin_bottom">6</property>
-    <property name="column_spacing">6</property>
+    <property name="row_spacing">18</property>
     <child>
       <object class="GtkGrid">
         <property name="visible">True</property>
@@ -27,7 +27,7 @@
         <property name="halign">center</property>
         <property name="valign">center</property>
         <property name="row_spacing">6</property>
-        <property name="column_spacing">27</property>
+        <property name="column_spacing">30</property>
         <child>
           <object class="GtkLabel" id="format">
             <property name="visible">True</property>
@@ -228,8 +228,7 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="halign">center</property>
-        <property name="margin_bottom">12</property>
-        <property name="column_spacing">6</property>
+        <property name="column_spacing">12</property>
         <child>
           <object class="GtkImage" id="app_icon">
             <property name="visible">True</property>
@@ -282,6 +281,7 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="hexpand">True</property>
+        <property name="column_spacing">6</property>
         <child>
           <object class="GtkScale" id="volume">
             <property name="visible">True</property>

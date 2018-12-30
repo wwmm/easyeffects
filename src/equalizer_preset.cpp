@@ -33,28 +33,6 @@ void EqualizerPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".equalizer.split-channels",
            settings->get_boolean("split-channels"));
 
-  //// remove this
-
-  // for (int n = 0; n < nbands; n++) {
-  //   root.put(section + ".equalizer.band" + std::to_string(n) + ".gain",
-  //            settings->get_double(
-  //                std::string("band" + std::to_string(n) + "-gain")));
-  //
-  //   root.put(section + ".equalizer.band" + std::to_string(n) + ".frequency",
-  //            settings->get_double(
-  //                std::string("band" + std::to_string(n) + "-frequency")));
-  //
-  //   root.put(section + ".equalizer.band" + std::to_string(n) + ".width",
-  //            settings->get_double(
-  //                std::string("band" + std::to_string(n) + "-width")));
-  //
-  //   root.put(section + ".equalizer.band" + std::to_string(n) + ".type",
-  //            settings->get_string(
-  //                std::string("band" + std::to_string(n) + "-type")));
-  // }
-
-  /////////
-
   if (section == std::string("input")) {
     save_channel(root, "input.equalizer.left", input_settings_left, nbands);
     save_channel(root, "input.equalizer.right", input_settings_right, nbands);
