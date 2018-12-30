@@ -12,6 +12,7 @@
 #include "exciter.hpp"
 #include "filter.hpp"
 #include "gate.hpp"
+#include "pitch.hpp"
 #include "limiter.hpp"
 #include "loudness.hpp"
 #include "maximizer.hpp"
@@ -46,6 +47,7 @@ class SinkInputEffects : public PipelineBase {
   std::unique_ptr<MultibandCompressor> multiband_compressor;
   std::unique_ptr<Loudness> loudness;
   std::unique_ptr<Gate> gate;
+  std::unique_ptr<Pitch> pitch;
   std::unique_ptr<MultibandGate> multiband_gate;
   std::unique_ptr<Deesser> deesser;
   std::unique_ptr<StereoTools> stereo_tools;
@@ -57,6 +59,8 @@ class SinkInputEffects : public PipelineBase {
   sigc::signal<void, std::array<double, 2>> compressor_output_level;
   sigc::signal<void, std::array<double, 2>> equalizer_input_level;
   sigc::signal<void, std::array<double, 2>> equalizer_output_level;
+  sigc::signal<void, std::array<double, 2>> pitch_input_level;
+  sigc::signal<void, std::array<double, 2>> pitch_output_level;
   sigc::signal<void, std::array<double, 2>> bass_enhancer_input_level;
   sigc::signal<void, std::array<double, 2>> bass_enhancer_output_level;
   sigc::signal<void, std::array<double, 2>> exciter_input_level;

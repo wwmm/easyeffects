@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
     <schema
-        id="com.github.wwmm.pulseeffects.sourceoutputs.pitch"
-        path="/com/github/wwmm/pulseeffects/sourceoutputs/pitch/">
+        id="com.github.wwmm.pulseeffects.sinkinputs.pitch"
+        path="/com/github/wwmm/pulseeffects/sinkinputs/pitch/">
         <key name="state" type="b">
             <default>false</default>
         </key>
@@ -35,11 +35,11 @@
             <default>false</default>
         </key>
         <key name="input-gain" type="d">
-            <range min="-36.1" max="36.1"/>
+            <range min="-20.0" max="20.0"/>
             <default>0.0</default>
         </key>
         <key name="output-gain" type="d">
-            <range min="-36.1" max="36.1"/>
+            <range min="-20.0" max="20.0"/>
             <default>0.0</default>
         </key>
     </schema>

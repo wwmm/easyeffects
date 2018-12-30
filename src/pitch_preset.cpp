@@ -2,7 +2,9 @@
 
 PitchPreset::PitchPreset()
     : input_settings(Gio::Settings::create(
-          "com.github.wwmm.pulseeffects.sourceoutputs.pitch")) {}
+          "com.github.wwmm.pulseeffects.sourceoutputs.pitch")),
+      output_settings(Gio::Settings::create(
+          "com.github.wwmm.pulseeffects.sinkinputs.pitch")) {}
 
 void PitchPreset::save(boost::property_tree::ptree& root,
                        const std::string& section,
@@ -44,8 +46,10 @@ void PitchPreset::load(boost::property_tree::ptree& root,
 
 void PitchPreset::write(boost::property_tree::ptree& root) {
   save(root, "input", input_settings);
+  save(root, "output", output_settings);
 }
 
 void PitchPreset::read(boost::property_tree::ptree& root) {
   load(root, "input", input_settings);
+  load(root, "output", output_settings);
 }

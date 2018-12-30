@@ -14,6 +14,7 @@
 #include "exciter_ui.hpp"
 #include "filter_ui.hpp"
 #include "gate_ui.hpp"
+#include "pitch_ui.hpp"
 #include "limiter_ui.hpp"
 #include "loudness_ui.hpp"
 #include "maximizer_ui.hpp"
@@ -45,6 +46,7 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
   CompressorUi* compressor_ui;
   FilterUi* filter_ui;
   EqualizerUi* equalizer_ui;
+  PitchUi* pitch_ui;
   ReverbUi* reverb_ui;
   BassEnhancerUi* bass_enhancer_ui;
   ExciterUi* exciter_ui;

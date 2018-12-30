@@ -8,7 +8,9 @@ Pitch::Pitch(const std::string& tag, const std::string& schema)
       "ladspa-ladspa-rubberband-so-rubberband-pitchshifter-stereo", "pitch");
 
   if (is_installed(pitch)) {
+    auto input_gain = gst_element_factory_make("volume", nullptr);
     auto in_level = gst_element_factory_make("level", "pitch_input_level");
+    auto output_gain = gst_element_factory_make("volume", nullptr);
     auto out_level = gst_element_factory_make("level", "pitch_output_level");
     auto audioconvert_in = gst_element_factory_make("audioconvert", nullptr);
     auto audioresample_in = gst_element_factory_make("audioresample", nullptr);
@@ -16,14 +18,14 @@ Pitch::Pitch(const std::string& tag, const std::string& schema)
     auto audioconvert_out = gst_element_factory_make("audioconvert", nullptr);
     auto audioresample_out = gst_element_factory_make("audioresample", nullptr);
 
-    gst_bin_add_many(GST_BIN(bin), in_level, audioconvert_in, audioresample_in,
-                     pitch, audiorate, audioconvert_out, audioresample_out,
+    gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in, audioresample_in,
+                     pitch, audiorate, audioconvert_out, audioresample_out, output_gain,
                      out_level, nullptr);
-    gst_element_link_many(in_level, audioconvert_in, audioresample_in, pitch,
-                          audiorate, audioconvert_out, audioresample_out,
+    gst_element_link_many(input_gain, in_level, audioconvert_in, audioresample_in, pitch,
+                          audiorate, audioconvert_out, audioresample_out, output_gain,
                           out_level, nullptr);
 
-    auto pad_sink = gst_element_get_static_pad(in_level, "sink");
+    auto pad_sink = gst_element_get_static_pad(input_gain, "sink");
     auto pad_src = gst_element_get_static_pad(out_level, "src");
 
     gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
@@ -38,6 +40,16 @@ Pitch::Pitch(const std::string& tag, const std::string& schema)
                     G_SETTINGS_BIND_DEFAULT);
     g_settings_bind(settings, "post-messages", out_level, "post-messages",
                     G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind_with_mapping(
+        settings, "input-gain", input_gain, "volume", G_SETTINGS_BIND_DEFAULT,
+        util::db20_gain_to_linear_double, util::linear_double_gain_to_db20,
+        nullptr, nullptr);
+
+    g_settings_bind_with_mapping(
+        settings, "output-gain", output_gain, "volume", G_SETTINGS_BIND_DEFAULT,
+        util::db20_gain_to_linear_double, util::linear_double_gain_to_db20,
+        nullptr, nullptr);
 
     // useless write just to force callback call
 
