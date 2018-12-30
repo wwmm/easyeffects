@@ -88,6 +88,8 @@ long long RealtimeKit::get_int_property(const char* propname) {
 
 void RealtimeKit::make_realtime(const std::string& source_name,
                                 const int& priority) {
+#if defined(__linux__)
+
   DBusMessage *m = nullptr, *r = nullptr;
   dbus_uint64_t u64;
   dbus_uint32_t u32;
@@ -124,10 +126,14 @@ void RealtimeKit::make_realtime(const std::string& source_name,
   }
 
   dbus_error_free(&error);
+
+#endif
 }
 
 void RealtimeKit::make_high_priority(const std::string& source_name,
                                      const int& nice_value) {
+#if defined(__linux__)
+
   DBusMessage *m = nullptr, *r = nullptr;
   dbus_uint64_t u64;
   dbus_int32_t u32;
@@ -163,6 +169,8 @@ void RealtimeKit::make_high_priority(const std::string& source_name,
   }
 
   dbus_error_free(&error);
+
+#endif
 }
 
 void RealtimeKit::set_priority(const std::string& source_name,
