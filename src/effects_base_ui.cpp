@@ -18,6 +18,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   row->set_name("applications");
   row->set_margin_top(6);
   row->set_margin_bottom(6);
+  row->set_margin_right(12);
 
   auto row_label = Gtk::manage(new Gtk::Label(
       std::string("<b>") + _("Applications") + std::string("</b>")));

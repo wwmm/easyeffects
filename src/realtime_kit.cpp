@@ -176,10 +176,12 @@ void RealtimeKit::set_priority(const std::string& source_name,
     rl.rlim_cur = rl.rlim_max = rttime;
 
     if (setrlimit(RLIMIT_RTTIME, &rl) < 0) {
-      util::warning(log_tag + "failed to set rlimit value");
+      util::warning(log_tag + "failed to set rlimit value for the " +
+                    source_name + " thread");
     }
   } else {
-    util::warning(log_tag + "failed to get rlimit value");
+    util::warning(log_tag + "failed to get rlimit value for the " +
+                  source_name + " thread");
   }
 
   make_realtime(source_name, priority);
