@@ -118,7 +118,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   settings->bind("input-gain", input_gain.get(), "value", flag);
   settings->bind("output-gain", output_gain.get(), "value", flag);
   settings->bind("split-channels", split_channels, "active", flag);
-  // settings->bind("split-channels", stack_switcher, "visible", flag);
+  settings->bind("split-channels", stack_switcher, "visible", flag);
 
   settings->set_boolean("post-messages", true);
 
@@ -334,23 +334,10 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
     connections_bands.push_back(
         band_w->signal_value_changed().connect(update_q));
 
-    // left channel
-
-    settings_left->bind(std::string("band" + std::to_string(n) + "-gain"),
-                        band_g.get(), "value", flag);
-    settings_left->bind(std::string("band" + std::to_string(n) + "-frequency"),
-                        band_f.get(), "value", flag);
-    settings_left->bind(std::string("band" + std::to_string(n) + "-width"),
-                        band_w.get(), "value", flag);
-
-    g_settings_bind_with_mapping(
-        settings_left->gobj(),
-        std::string("band" + std::to_string(n) + "-type").c_str(),
-        band_t->gobj(), "active", G_SETTINGS_BIND_DEFAULT, bandtype_enum_to_int,
-        int_to_bandtype_enum, nullptr, nullptr);
-
-    // right channel
-    // we need the bindgins below for the right channel equalizer to be updated
+    /*right channel
+      we need the bindgins below for the right channel equalizer to be updated
+      they have to be before the bindings for the left channel.
+     */
 
     connections_bands.push_back(band_g->signal_value_changed().connect([=]() {
       settings_right->set_double(
@@ -371,17 +358,25 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
     }));
 
     connections_bands.push_back(band_t->signal_changed().connect([=]() {
-      int id = band_t->get_active_row_number();
-
       settings_right->set_enum(
-          std::string("band" + std::to_string(n) + "-type"), id);
+          std::string("band" + std::to_string(n) + "-type"),
+          band_t->get_active_row_number());
     }));
 
-    // g_settings_bind_with_mapping(
-    //     settings_right->gobj(),
-    //     std::string("band" + std::to_string(n) + "-type").c_str(),
-    //     band_t->gobj(), "active", G_SETTINGS_BIND_SET, bandtype_enum_to_int,
-    //     int_to_bandtype_enum, nullptr, nullptr);
+    // left channel
+
+    settings_left->bind(std::string("band" + std::to_string(n) + "-gain"),
+                        band_g.get(), "value", flag);
+    settings_left->bind(std::string("band" + std::to_string(n) + "-frequency"),
+                        band_f.get(), "value", flag);
+    settings_left->bind(std::string("band" + std::to_string(n) + "-width"),
+                        band_w.get(), "value", flag);
+
+    g_settings_bind_with_mapping(
+        settings_left->gobj(),
+        std::string("band" + std::to_string(n) + "-type").c_str(),
+        band_t->gobj(), "active", G_SETTINGS_BIND_DEFAULT, bandtype_enum_to_int,
+        int_to_bandtype_enum, nullptr, nullptr);
 
     connections_bands.push_back(reset_f->signal_clicked().connect([=]() {
       settings_left->reset(
