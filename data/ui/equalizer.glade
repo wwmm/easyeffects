@@ -330,6 +330,7 @@
           <object class="GtkStackSwitcher" id="stack_switcher">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="no_show_all">True</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
             <property name="margin_bottom">6</property>
