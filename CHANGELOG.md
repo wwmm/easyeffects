@@ -6,7 +6,7 @@
 ### Added
 - It is now possible to change the realtime priority or the niceness value. We do
 this using RealtimeKit just like Pulseaudio. By default we do not change any of
-this values. It is up to the user to enable this in the settings menu. Only the
+these values. It is up to the user to enable this in the settings menu. Only the
  Gstreamer threads responsible for the audio processing have their priorities
  changed. Users wanting to verify if the changes took effect can do this using
  `ps -m -l pid` where pid is PulseEffects process pid.
