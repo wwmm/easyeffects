@@ -24,8 +24,8 @@ gsettings does not do that we had to implement our own checks.
 
 
 ### Changed
-- Effects are switched on to all audio applications. this can be disabled in the
-settings menu.
+- Effects are by default switched on to all audio applications. This can be
+disabled in the settings menu.
 
 ### Fixed
 - When installed under /usr/local PulseEffects would crash because of not found
