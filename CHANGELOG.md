@@ -17,7 +17,7 @@ feature is particularly interesting for people with hearing loss. Take a look at
  know more.
 - The spectrum has more customization options.
 - The applications blacklist is saved to the user preset.
-- When alternating presets a large disk activity was generated. in order to
+- When alternating presets a large disk activity was generated. In order to
 avoid this we now check if each gsettings key really needs to be updated. As
 gsettings does not do that we had to implement our own checks.
 - Our interface should be a littler closer to the Gnome HIG guidelines.
