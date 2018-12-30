@@ -170,6 +170,7 @@ void PresetsMenuUi::populate_presets_listbox() {
     b->get_widget("name", label);
 
     row->set_name(name);
+    row->set_margin_bottom(6);
     label->set_text(name);
 
     connections.push_back(save_btn->signal_clicked().connect(
