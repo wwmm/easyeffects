@@ -363,7 +363,7 @@
                     <property name="can_focus">False</property>
                     <property name="vexpand">True</property>
                     <property name="transition_duration">250</property>
-                    <property name="transition_type">slide-right</property>
+                    <property name="transition_type">slide-left-right</property>
                     <child>
                       <object class="GtkGrid" id="bands_grid_left">
                         <property name="visible">True</property>
@@ -412,6 +412,7 @@
                         <property name="halign">center</property>
                         <property name="vexpand">True</property>
                         <property name="column_spacing">12</property>
+                        <property name="column_homogeneous">True</property>
                         <child>
                           <placeholder/>
                         </child>
