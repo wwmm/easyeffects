@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2018-12-26 20:40-0200\n"
+"POT-Creation-Date: 2018-12-30 17:17-0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -115,7 +115,7 @@ msgstr "Silenciar o sinal original e escutar exclusivamente aos harmônicos."
 #: C/exciter.page:77 C/filter.page:47 C/gate.page:96 C/limiter.page:123
 #: C/loudness.page:44 C/multibandcompressor.page:128 C/multibandgate.page:136
 #: C/reverb.page:97 C/stereotools.page:96 C/crossfeed.page:35
-#: C/equalizer.page:90 C/pitch.page:87 C/webrtc.page:140 C/crystalizer.page:27
+#: C/equalizer.page:99 C/pitch.page:87 C/webrtc.page:140 C/crystalizer.page:27
 #: C/convolver.page:42 C/autogain.page:87
 msgid "References"
 msgstr "Referências"
@@ -432,7 +432,7 @@ msgstr ""
 "definidas de um espectro de frequência."
 
 #. (itstool) path: title/em
-#: C/filter.page:21 C/equalizer.page:65
+#: C/filter.page:21 C/equalizer.page:74
 msgid "Frequency"
 msgstr "Frequência"
 
@@ -1225,21 +1225,35 @@ msgstr "O número de bandas do equalizador."
 
 #. (itstool) path: title/em
 #: C/equalizer.page:28
+msgid "Split Channels"
+msgstr "Canais Separados"
+
+#. (itstool) path: item/p
+#: C/equalizer.page:30
+msgid ""
+"When this option is enabled it is possible to apply different equalizations "
+"to the left and the right channel."
+msgstr ""
+"Quando esta opção está ativada, é possível aplicar diferentes equalizações "
+"ao canal esquerdo e direito."
+
+#. (itstool) path: title/em
+#: C/equalizer.page:37
 msgid "Flat Response"
 msgstr "Resposta Plana"
 
 #. (itstool) path: item/p
-#: C/equalizer.page:30
+#: C/equalizer.page:39
 msgid "This function sets each band gain to 0."
 msgstr "Esta função configura o ganho de cada banda para 0."
 
 #. (itstool) path: title/em
-#: C/equalizer.page:36
+#: C/equalizer.page:45
 msgid "Calculate Frequencies"
 msgstr "Calcular Frequências"
 
 #. (itstool) path: item/p
-#: C/equalizer.page:38
+#: C/equalizer.page:47
 msgid ""
 "This function can be used to calculate the center frequencies and bandwidth "
 "of a graphic equalizer with the current number of selected bands. Useful "
@@ -1253,22 +1267,22 @@ msgstr ""
 "escolher."
 
 #. (itstool) path: title/em
-#: C/equalizer.page:47
+#: C/equalizer.page:56
 msgid "Reset Equalizer"
 msgstr "Redefinir Equalizador"
 
 #. (itstool) path: item/p
-#: C/equalizer.page:49
+#: C/equalizer.page:58
 msgid "Reset the equalizer to its default settings."
 msgstr "Redefine o equalizador para suas configurações padrões."
 
 #. (itstool) path: title/em
-#: C/equalizer.page:55
+#: C/equalizer.page:64
 msgid "Filter Type"
 msgstr "Tipo de Filtro"
 
 #. (itstool) path: item/p
-#: C/equalizer.page:57
+#: C/equalizer.page:66
 msgid ""
 "Choose between Peak, Low Shelf and High Shelf. Usually you would set the "
 "band with the lowest frequency to Low Shelf, the one with the highest "
@@ -1279,33 +1293,33 @@ msgstr ""
 "para High Shelf e as outras para Pico."
 
 #. (itstool) path: item/p
-#: C/equalizer.page:67
+#: C/equalizer.page:76
 msgid "Band center frequency."
 msgstr "Frequência central da banda."
 
 #. (itstool) path: title/em
-#: C/equalizer.page:73
+#: C/equalizer.page:82
 msgid "Width"
 msgstr "Largura"
 
 #. (itstool) path: item/p
-#: C/equalizer.page:75
+#: C/equalizer.page:84
 msgid "Bandwidth."
 msgstr "Largura de banda."
 
 #. (itstool) path: title/em
-#: C/equalizer.page:81
+#: C/equalizer.page:90
 msgid "Q"
 msgstr "Q"
 
 #. (itstool) path: p/code
-#: C/equalizer.page:85
+#: C/equalizer.page:94
 #, no-wrap
 msgid "Q = frequency / width"
 msgstr "Q = frequência / largura"
 
 #. (itstool) path: item/p
-#: C/equalizer.page:83
+#: C/equalizer.page:92
 msgid "Quality factor. Calculated as <_:code-1/>."
 msgstr "Fator de qualidade. Calculado a partir de <_:code-1/>."
 
@@ -1746,7 +1760,7 @@ msgstr "Prioridade"
 #. (itstool) path: item/p
 #: C/general.page:67
 msgid "Real time priority."
-msgstr "Prioridade em tempo real"
+msgstr "Prioridade em tempo real."
 
 #. (itstool) path: title/em
 #: C/spectrum.page:13

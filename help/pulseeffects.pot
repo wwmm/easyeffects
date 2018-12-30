@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-12-26 20:40-0200\n"
+"POT-Creation-Date: 2018-12-30 17:17-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -124,7 +124,7 @@ msgstr ""
 #: C/reverb.page:97
 #: C/stereotools.page:96
 #: C/crossfeed.page:35
-#: C/equalizer.page:90
+#: C/equalizer.page:99
 #: C/pitch.page:87
 #: C/webrtc.page:140
 #: C/crystalizer.page:27
@@ -429,7 +429,7 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/filter.page:21
-#: C/equalizer.page:65
+#: C/equalizer.page:74
 msgid "Frequency"
 msgstr ""
 
@@ -1083,73 +1083,83 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/equalizer.page:28
-msgid "Flat Response"
+msgid "Split Channels"
 msgstr ""
 
 #. (itstool) path: item/p
 #: C/equalizer.page:30
+msgid "When this option is enabled it is possible to apply different equalizations to the left and the right channel."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/equalizer.page:37
+msgid "Flat Response"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/equalizer.page:39
 msgid "This function sets each band gain to 0."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/equalizer.page:36
+#: C/equalizer.page:45
 msgid "Calculate Frequencies"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/equalizer.page:38
+#: C/equalizer.page:47
 msgid "This function can be used to calculate the center frequencies and bandwidth of a graphic equalizer with the current number of selected bands. Useful when the user does not want the default number of 30 bands but has no idea about which frequencies and bandwidth he/she should choose."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/equalizer.page:47
+#: C/equalizer.page:56
 msgid "Reset Equalizer"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/equalizer.page:49
+#: C/equalizer.page:58
 msgid "Reset the equalizer to its default settings."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/equalizer.page:55
+#: C/equalizer.page:64
 msgid "Filter Type"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/equalizer.page:57
+#: C/equalizer.page:66
 msgid "Choose between Peak, Low Shelf and High Shelf. Usually you would set the band with the lowest frequency to Low Shelf, the one with the highest frequency to High Shelf and the others to Peak."
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/equalizer.page:67
+#: C/equalizer.page:76
 msgid "Band center frequency."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/equalizer.page:73
+#: C/equalizer.page:82
 msgid "Width"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/equalizer.page:75
+#: C/equalizer.page:84
 msgid "Bandwidth."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/equalizer.page:81
+#: C/equalizer.page:90
 msgid "Q"
 msgstr ""
 
 #. (itstool) path: p/code
-#: C/equalizer.page:85
+#: C/equalizer.page:94
 #, no-wrap
 msgid ""
 "Q = frequency / width"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/equalizer.page:83
+#: C/equalizer.page:92
 msgid "Quality factor. Calculated as <_:code-1/>."
 msgstr ""
 

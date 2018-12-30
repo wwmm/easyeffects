@@ -25,6 +25,15 @@
         </item>
         <item>
             <title>
+                <em style="strong" its:withinText="nested">Split Channels</em>
+            </title>
+            <p>
+                When this option is enabled it is possible to apply different equalizations to
+                the left and the right channel.
+            </p>
+        </item>
+        <item>
+            <title>
                 <em style="strong" its:withinText="nested">Flat Response</em>
             </title>
             <p>
