@@ -167,6 +167,21 @@ void RealtimeKit::make_high_priority(const std::string& source_name,
 
 void RealtimeKit::set_priority(const std::string& source_name,
                                const int& priority) {
+#ifdef SCHED_RESET_ON_FORK
+
+  struct sched_param sp;
+
+  if (pthread_setschedparam(pthread_self(), SCHED_RR | SCHED_RESET_ON_FORK,
+                            &sp) == 0) {
+    util::debug("SCHED_RR|SCHED_RESET_ON_FORK worked.");
+
+    return;
+  }
+
+#endif
+
+#ifdef RLIMIT_RTTIME
+
   struct rlimit rl;
   long long rttime;
 
@@ -184,10 +199,30 @@ void RealtimeKit::set_priority(const std::string& source_name,
                   source_name + " thread");
   }
 
+#endif
+
+#if defined(__linux__)
+
   make_realtime(source_name, priority);
+
+#endif
 }
 
 void RealtimeKit::set_nice(const std::string& source_name,
                            const int& nice_value) {
+#ifdef HAVE_SYS_RESOURCE_H
+
+  if (setpriority(PRIO_PROCESS, 0, nice_value) >= 0) {
+    util::debug("setpriority() worked.");
+
+    return;
+  }
+
+#endif
+
+#if defined(__linux__)
+
   make_high_priority(source_name, nice_value);
+
+#endif
 }
