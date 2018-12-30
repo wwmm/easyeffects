@@ -15,10 +15,10 @@
   <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="margin_left">12</property>
-    <property name="margin_right">12</property>
-    <property name="margin_top">12</property>
-    <property name="margin_bottom">12</property>
+    <property name="margin_left">18</property>
+    <property name="margin_right">18</property>
+    <property name="margin_top">18</property>
+    <property name="margin_bottom">18</property>
     <property name="row_spacing">18</property>
     <child>
       <object class="GtkGrid">
@@ -27,7 +27,7 @@
         <property name="halign">center</property>
         <property name="valign">center</property>
         <property name="row_spacing">6</property>
-        <property name="column_spacing">30</property>
+        <property name="column_spacing">24</property>
         <child>
           <object class="GtkLabel" id="format">
             <property name="visible">True</property>
@@ -281,7 +281,7 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="hexpand">True</property>
-        <property name="column_spacing">6</property>
+        <property name="column_spacing">12</property>
         <child>
           <object class="GtkScale" id="volume">
             <property name="visible">True</property>

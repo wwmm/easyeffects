@@ -258,7 +258,7 @@
   <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="row_spacing">6</property>
+    <property name="row_spacing">18</property>
     <child>
       <object class="GtkBox" id="controls">
         <property name="visible">True</property>
@@ -266,15 +266,13 @@
         <property name="hexpand">True</property>
         <property name="vexpand">True</property>
         <property name="orientation">vertical</property>
-        <property name="spacing">12</property>
+        <property name="spacing">18</property>
         <child>
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
-            <property name="margin_top">6</property>
-            <property name="margin_bottom">6</property>
             <property name="column_spacing">6</property>
             <child>
               <object class="GtkMenuButton" id="menu_button">
@@ -334,7 +332,6 @@
             <property name="no_show_all">True</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
-            <property name="margin_bottom">6</property>
             <property name="stack">stack</property>
           </object>
           <packing>
@@ -354,7 +351,6 @@
               <object class="GtkViewport">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_bottom">15</property>
                 <property name="vexpand">True</property>
                 <property name="shadow_type">none</property>
                 <child>
