@@ -152,6 +152,16 @@ Equalizer::Equalizer(const std::string& tag,
 
     // init
 
+    g_object_set(queue_L, "silent", true, nullptr);
+    g_object_set(queue_L, "max-size-buffers", 0, nullptr);
+    g_object_set(queue_L, "max-size-bytes", 0, nullptr);
+    g_object_set(queue_L, "max-size-time", 0, nullptr);
+
+    g_object_set(queue_R, "silent", true, nullptr);
+    g_object_set(queue_R, "max-size-buffers", 0, nullptr);
+    g_object_set(queue_R, "max-size-bytes", 0, nullptr);
+    g_object_set(queue_R, "max-size-time", 0, nullptr);
+
     g_object_set(deinterleave, "keep-positions", true, nullptr);
 
     int nbands = g_settings_get_int(settings, "num-bands");
