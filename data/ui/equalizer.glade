@@ -371,6 +371,7 @@
                         <property name="halign">center</property>
                         <property name="vexpand">True</property>
                         <property name="column_spacing">12</property>
+                        <property name="column_homogeneous">True</property>
                         <child>
                           <placeholder/>
                         </child>
