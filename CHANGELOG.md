@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [4.4.3]
+### Added
+- Added a few preprocessor directives to disable at compile time api that only
+exists on Linux. Now it should compile on Freebsd.
+
 ## [4.4.2]
 ### Added
 - It is now possible to change the realtime priority or the niceness value. We do

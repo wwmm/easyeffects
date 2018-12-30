@@ -3,6 +3,7 @@
 
 #include <gst/gst.h>
 #include <sigc++/sigc++.h>
+#include <iostream>
 #include <vector>
 
 class CalibrationMic {
