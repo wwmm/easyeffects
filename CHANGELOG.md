@@ -19,10 +19,7 @@ feature is particularly interesting for people with hearing loss. Take a look at
 - When alternating presets a large disk activity was generated. in order to
 avoid this we now check if each gsettings key really needs to be updated. As
 gsettings does not do that we had to implement our own checks.
-- Our interface should be a littler closer to the Gnome HIG guidelines. It was
-fun to read the crazy comments in the Phoronix forum XD. Honestly when you have
-so many controls too put in the interface following these guidelines is not
-easy... Put too much space and the interface gets huge...
+- Our interface should be a littler closer to the Gnome HIG guidelines.
 
 
 ### Changed
