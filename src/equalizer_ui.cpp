@@ -112,13 +112,14 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   // gsettings bindings
 
   auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
+  auto flag_get = Gio::SettingsBindFlags::SETTINGS_BIND_GET;
 
   settings->bind("installed", this, "sensitive", flag);
   settings->bind("num-bands", nbands.get(), "value", flag);
   settings->bind("input-gain", input_gain.get(), "value", flag);
   settings->bind("output-gain", output_gain.get(), "value", flag);
   settings->bind("split-channels", split_channels, "active", flag);
-  settings->bind("split-channels", stack_switcher, "visible", flag);
+  settings->bind("split-channels", stack_switcher, "visible", flag_get);
 
   settings->set_boolean("post-messages", true);
 
