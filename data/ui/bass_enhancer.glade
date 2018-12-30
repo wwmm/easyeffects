@@ -134,7 +134,7 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="valign">center</property>
-    <property name="row_spacing">12</property>
+    <property name="row_spacing">18</property>
     <child>
       <object class="GtkBox" id="controls">
         <property name="visible">True</property>
@@ -142,7 +142,7 @@
         <property name="valign">center</property>
         <property name="hexpand">True</property>
         <property name="orientation">vertical</property>
-        <property name="spacing">12</property>
+        <property name="spacing">18</property>
         <child>
           <object class="GtkToggleButton" id="listen">
             <property name="label" translatable="yes">Listen</property>

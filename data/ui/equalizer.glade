@@ -102,6 +102,10 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="halign">center</property>
+        <property name="margin_left">6</property>
+        <property name="margin_right">6</property>
+        <property name="margin_top">6</property>
+        <property name="margin_bottom">6</property>
         <property name="row_spacing">6</property>
         <property name="column_spacing">6</property>
         <property name="column_homogeneous">True</property>

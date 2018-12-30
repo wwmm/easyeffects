@@ -181,7 +181,7 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="valign">center</property>
-    <property name="row_spacing">12</property>
+    <property name="row_spacing">18</property>
     <child>
       <object class="GtkBox" id="controls">
         <property name="visible">True</property>
@@ -224,7 +224,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="column_spacing">3</property>
+                <property name="row_spacing">6</property>
                 <property name="column_homogeneous">True</property>
                 <child>
                   <object class="GtkLabel">
@@ -328,7 +328,8 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="column_spacing">30</property>
+                <property name="row_spacing">6</property>
+                <property name="column_spacing">48</property>
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">True</property>

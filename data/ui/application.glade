@@ -244,7 +244,7 @@
         <property name="margin_right">6</property>
         <property name="margin_top">6</property>
         <property name="margin_bottom">6</property>
-        <property name="row_spacing">30</property>
+        <property name="row_spacing">18</property>
         <child>
           <object class="GtkStackSwitcher">
             <property name="visible">True</property>

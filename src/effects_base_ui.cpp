@@ -16,7 +16,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   auto row = Gtk::manage(new Gtk::ListBoxRow());
 
   row->set_name("applications");
-  row->set_margin_top(12);
+  row->set_margin_top(6);
   row->set_margin_bottom(6);
   row->set_margin_right(6);
   row->set_margin_left(6);

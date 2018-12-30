@@ -239,6 +239,8 @@ void ConvolverUi::populate_irs_listbox() {
     b->get_widget("name", label);
 
     row->set_name(name);
+    row->set_margin_right(6);
+    row->set_margin_left(6);
     row->set_margin_bottom(6);
     label->set_text(name);
 

@@ -98,8 +98,7 @@
         <property name="margin_right">6</property>
         <property name="margin_top">6</property>
         <property name="margin_bottom">6</property>
-        <property name="row_spacing">12</property>
-        <property name="column_spacing">3</property>
+        <property name="row_spacing">18</property>
         <child>
           <object class="GtkButton" id="import_irs">
             <property name="label" translatable="yes">Import Impulse</property>
@@ -168,7 +167,7 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="vexpand">True</property>
-    <property name="row_spacing">12</property>
+    <property name="row_spacing">18</property>
     <child>
       <object class="GtkBox" id="controls">
         <property name="visible">True</property>
@@ -182,7 +181,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="vexpand">True</property>
-            <property name="row_spacing">12</property>
+            <property name="row_spacing">18</property>
             <property name="column_spacing">6</property>
             <child>
               <object class="GtkStack" id="stack">
@@ -234,7 +233,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="row_spacing">6</property>
-                <property name="column_spacing">30</property>
+                <property name="column_spacing">24</property>
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
@@ -338,7 +337,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="row_spacing">12</property>
+                <property name="row_spacing">18</property>
                 <child>
                   <object class="GtkMenuButton" id="irs_menu_button">
                     <property name="visible">True</property>
@@ -380,6 +379,7 @@
                   <object class="GtkGrid">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="row_spacing">6</property>
                     <child>
                       <object class="GtkSpinButton">
                         <property name="visible">True</property>

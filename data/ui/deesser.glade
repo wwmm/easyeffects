@@ -151,7 +151,7 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="valign">center</property>
-    <property name="row_spacing">12</property>
+    <property name="row_spacing">18</property>
     <child>
       <object class="GtkBox" id="controls">
         <property name="visible">True</property>
@@ -159,7 +159,7 @@
         <property name="valign">center</property>
         <property name="hexpand">True</property>
         <property name="orientation">vertical</property>
-        <property name="spacing">12</property>
+        <property name="spacing">18</property>
         <child>
           <object class="GtkToggleButton" id="sc_listen">
             <property name="label" translatable="yes">Listen</property>
@@ -181,7 +181,8 @@
             <property name="can_focus">False</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
-            <property name="column_spacing">30</property>
+            <property name="row_spacing">6</property>
+            <property name="column_spacing">60</property>
             <property name="column_homogeneous">True</property>
             <child>
               <object class="GtkLabel">
@@ -215,7 +216,6 @@
               <object class="GtkComboBoxText" id="detection">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="halign">center</property>
                 <items>
                   <item translatable="yes">RMS</item>
                   <item translatable="yes">Peak</item>
@@ -231,7 +231,6 @@
               <object class="GtkComboBoxText" id="mode">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="halign">center</property>
                 <items>
                   <item translatable="yes">Wide</item>
                   <item translatable="yes">Split</item>
@@ -255,6 +254,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
+            <property name="row_spacing">6</property>
             <property name="column_spacing">30</property>
             <child>
               <object class="GtkLabel">

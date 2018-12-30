@@ -26,10 +26,10 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="valign">center</property>
-        <property name="margin_left">18</property>
-        <property name="margin_right">18</property>
-        <property name="margin_top">18</property>
-        <property name="margin_bottom">18</property>
+        <property name="margin_left">6</property>
+        <property name="margin_right">6</property>
+        <property name="margin_top">6</property>
+        <property name="margin_bottom">6</property>
         <property name="row_spacing">18</property>
         <property name="column_spacing">12</property>
         <property name="column_homogeneous">True</property>
@@ -65,6 +65,7 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="row_spacing">6</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
@@ -108,6 +109,7 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="row_spacing">6</property>
             <child>
               <object class="GtkSpinButton">
                 <property name="visible">True</property>
@@ -194,6 +196,7 @@
             <property name="can_focus">False</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
+            <property name="row_spacing">6</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
