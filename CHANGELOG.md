@@ -9,6 +9,11 @@ this values. It is up to the user to enable this in the settings menu. Only the
  Gstreamer threads responsible for the audio processing have their priorities
  changed. Users wanting to verify if the changes took effect can do this using
  `ps -m -l pid` where pid is PulseEffects process pid.
+- Now the user is able to apply different equalizations for the left and the right
+channels. Just enable the option `Split Channels` in the equalizer menu. This
+feature is particularly interesting for people with hearing loss. Take a look at
+ this issue opened in our page https://github.com/wwmm/pulseeffects/issues/353 to
+ know more.
 - The spectrum has more customization options.
 - The applications blacklist is saved to the user preset.
 - When alternating presets a large disk activity was generated. in order to
