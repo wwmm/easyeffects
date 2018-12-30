@@ -6,6 +6,7 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="hexpand">True</property>
+    <property name="spacing">6</property>
     <child>
       <object class="GtkScrolledWindow">
         <property name="visible">True</property>
@@ -36,10 +37,9 @@
       <object class="GtkStack" id="stack">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="margin_left">3</property>
-        <property name="margin_right">3</property>
-        <property name="margin_top">3</property>
-        <property name="margin_bottom">3</property>
+        <property name="margin_right">6</property>
+        <property name="margin_top">6</property>
+        <property name="margin_bottom">6</property>
         <property name="hexpand">True</property>
         <property name="hhomogeneous">False</property>
         <property name="vhomogeneous">False</property>

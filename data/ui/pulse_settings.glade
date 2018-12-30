@@ -47,7 +47,7 @@
     <property name="can_focus">False</property>
     <property name="halign">center</property>
     <property name="valign">center</property>
-    <property name="row_spacing">6</property>
+    <property name="row_spacing">12</property>
     <child>
       <object class="GtkStack" id="pulse_stack">
         <property name="visible">True</property>

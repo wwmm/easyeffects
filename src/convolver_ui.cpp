@@ -239,6 +239,7 @@ void ConvolverUi::populate_irs_listbox() {
     b->get_widget("name", label);
 
     row->set_name(name);
+    row->set_margin_bottom(6);
     label->set_text(name);
 
     connections.push_back(remove_btn->signal_clicked().connect([=]() {

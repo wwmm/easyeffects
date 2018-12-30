@@ -17,7 +17,7 @@
     <property name="can_focus">False</property>
     <property name="halign">center</property>
     <property name="valign">center</property>
-    <property name="row_spacing">6</property>
+    <property name="row_spacing">12</property>
     <child>
       <object class="GtkStackSwitcher">
         <property name="visible">True</property>
@@ -41,8 +41,8 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="row_spacing">3</property>
-            <property name="column_spacing">3</property>
+            <property name="row_spacing">12</property>
+            <property name="column_spacing">6</property>
             <child>
               <object class="GtkScrolledWindow" id="blacklist_in_scrolled_window">
                 <property name="visible">True</property>
@@ -113,8 +113,8 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="row_spacing">3</property>
-            <property name="column_spacing">3</property>
+            <property name="row_spacing">12</property>
+            <property name="column_spacing">6</property>
             <child>
               <object class="GtkScrolledWindow" id="blacklist_out_scrolled_window">
                 <property name="visible">True</property>

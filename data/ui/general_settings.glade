@@ -20,8 +20,8 @@
     <property name="can_focus">False</property>
     <property name="halign">center</property>
     <property name="valign">center</property>
-    <property name="row_spacing">3</property>
-    <property name="column_spacing">3</property>
+    <property name="row_spacing">6</property>
+    <property name="column_spacing">6</property>
     <child>
       <object class="GtkLabel">
         <property name="visible">True</property>

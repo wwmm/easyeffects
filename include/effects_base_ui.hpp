@@ -37,8 +37,8 @@ class EffectsBaseUi {
     row->add(*p->listbox_control);
     row->set_name(p->name);
     row->set_margin_bottom(6);
-    row->set_margin_right(12);
-    row->set_margin_left(12);
+    row->set_margin_right(6);
+    row->set_margin_left(6);
 
     listbox->add(*row);
   }
