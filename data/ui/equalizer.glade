@@ -266,6 +266,7 @@
         <property name="hexpand">True</property>
         <property name="vexpand">True</property>
         <property name="orientation">vertical</property>
+        <property name="spacing">12</property>
         <child>
           <object class="GtkGrid">
             <property name="visible">True</property>
@@ -360,6 +361,7 @@
                   <object class="GtkStack" id="stack">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="vexpand">True</property>
                     <property name="transition_duration">250</property>
                     <property name="transition_type">slide-right</property>
                     <child>
@@ -458,6 +460,7 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="column_spacing">6</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
