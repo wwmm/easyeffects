@@ -18,6 +18,8 @@ SinkInputEffectsUi::SinkInputEffectsUi(
       "/com/github/wwmm/pulseeffects/ui/filter.glade");
   auto b_equalizer = Gtk::Builder::create_from_resource(
       "/com/github/wwmm/pulseeffects/ui/equalizer.glade");
+  auto b_pitch = Gtk::Builder::create_from_resource(
+      "/com/github/wwmm/pulseeffects/ui/pitch.glade");
   auto b_reverb = Gtk::Builder::create_from_resource(
       "/com/github/wwmm/pulseeffects/ui/reverb.glade");
   auto b_bass_enhancer = Gtk::Builder::create_from_resource(
@@ -61,6 +63,9 @@ SinkInputEffectsUi::SinkInputEffectsUi(
       "com.github.wwmm.pulseeffects.sinkinputs.equalizer",
       "com.github.wwmm.pulseeffects.sinkinputs.equalizer.leftchannel",
       "com.github.wwmm.pulseeffects.sinkinputs.equalizer.rightchannel");
+  b_pitch->get_widget_derived(
+      "widgets_grid", pitch_ui,
+      "com.github.wwmm.pulseeffects.sinkinputs.pitch");
   b_reverb->get_widget_derived(
       "widgets_grid", reverb_ui,
       "com.github.wwmm.pulseeffects.sinkinputs.reverb");
@@ -107,6 +112,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(
   stack->add(*compressor_ui, compressor_ui->name);
   stack->add(*filter_ui, filter_ui->name);
   stack->add(*equalizer_ui, equalizer_ui->name);
+  stack->add(*pitch_ui, pitch_ui->name);
   stack->add(*reverb_ui, reverb_ui->name);
   stack->add(*bass_enhancer_ui, bass_enhancer_ui->name);
   stack->add(*exciter_ui, exciter_ui->name);
@@ -128,6 +134,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(
   add_to_listbox(compressor_ui);
   add_to_listbox(filter_ui);
   add_to_listbox(equalizer_ui);
+  add_to_listbox(pitch_ui);
   add_to_listbox(reverb_ui);
   add_to_listbox(bass_enhancer_ui);
   add_to_listbox(exciter_ui);
@@ -202,6 +209,13 @@ void SinkInputEffectsUi::level_meters_connections() {
       sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_input_level_db)));
   connections.push_back(sie->equalizer_output_level.connect(
       sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_output_level_db)));
+
+  // pitch level meters connections
+
+  connections.push_back(sie->pitch_input_level.connect(
+      sigc::mem_fun(*pitch_ui, &PitchUi::on_new_input_level_db)));
+  connections.push_back(sie->pitch_output_level.connect(
+      sigc::mem_fun(*pitch_ui, &PitchUi::on_new_output_level_db)));
 
   // reverb level meters connections
 
@@ -421,6 +435,11 @@ void SinkInputEffectsUi::up_down_connections() {
       [=]() { on_up(filter_ui); }));
   connections.push_back(filter_ui->plugin_down->signal_clicked().connect(
       [=]() { on_down(filter_ui); }));
+
+  connections.push_back(pitch_ui->plugin_up->signal_clicked().connect(
+      [=]() { on_up(pitch_ui); }));
+  connections.push_back(pitch_ui->plugin_down->signal_clicked().connect(
+      [=]() { on_down(pitch_ui); }));
 
   connections.push_back(equalizer_ui->plugin_up->signal_clicked().connect(
       [=]() { on_up(equalizer_ui); }));

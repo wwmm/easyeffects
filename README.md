@@ -27,6 +27,7 @@ Audio effects for Pulseaudio applications
 - Stereo Tools
 - Loudness
 - Maximizer
+- Pitch
 - Gate
 - Multiband Gate
 - Deesser

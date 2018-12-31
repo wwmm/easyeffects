@@ -12,6 +12,10 @@ void on_message_element(const GstBus* gst_bus,
     sie->compressor_input_level.emit(sie->get_peak(message));
   } else if (src_name == std::string("compressor_output_level")) {
     sie->compressor_output_level.emit(sie->get_peak(message));
+  } else if (src_name == std::string("pitch_input_level")) {
+    sie->pitch_input_level.emit(sie->get_peak(message));
+  } else if (src_name == std::string("pitch_output_level")) {
+    sie->pitch_output_level.emit(sie->get_peak(message));
   } else if (src_name == std::string("equalizer_input_level")) {
     sie->equalizer_input_level.emit(sie->get_peak(message));
   } else if (src_name == std::string("equalizer_output_level")) {
@@ -264,6 +268,8 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
       log_tag, "com.github.wwmm.pulseeffects.sinkinputs.loudness");
   gate = std::make_unique<Gate>(log_tag,
                                 "com.github.wwmm.pulseeffects.sinkinputs.gate");
+  pitch = std::make_unique<Pitch>(
+      log_tag, "com.github.wwmm.pulseeffects.sinkinputs.pitch");
   multiband_gate = std::make_unique<MultibandGate>(
       log_tag, "com.github.wwmm.pulseeffects.sinkinputs.multibandgate");
   deesser = std::make_unique<Deesser>(
@@ -290,6 +296,7 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
       std::make_pair(multiband_compressor->name, multiband_compressor->plugin));
   plugins.insert(std::make_pair(loudness->name, loudness->plugin));
   plugins.insert(std::make_pair(gate->name, gate->plugin));
+  plugins.insert(std::make_pair(pitch->name, pitch->plugin));
   plugins.insert(std::make_pair(multiband_gate->name, multiband_gate->plugin));
   plugins.insert(std::make_pair(deesser->name, deesser->plugin));
   plugins.insert(std::make_pair(stereo_tools->name, stereo_tools->plugin));
