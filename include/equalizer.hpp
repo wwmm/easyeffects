@@ -14,13 +14,15 @@ class Equalizer : public PluginBase {
   ~Equalizer();
 
   GstElement *equalizer_L = nullptr, *equalizer_R = nullptr, *queue_L = nullptr,
-             *queue_R = nullptr, *interleave = nullptr,
+             *queue_R = nullptr, *interleave = nullptr, *deinterleave,
              *audioconvert_out = nullptr;
 
   void update_equalizer();
 
  private:
   GSettings *settings_left = nullptr, *settings_right = nullptr;
+
+  gulong handler_id_pad_removed;
 
   void bind_band(GstElement* equalizer, GSettings* cfg, const int index);
   void unbind_band(GstElement* equalizer, const int index);

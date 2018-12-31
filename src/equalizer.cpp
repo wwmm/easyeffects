@@ -30,22 +30,26 @@ void on_deinterleave_pad_added(GstElement*, GstPad* pad, Equalizer* l) {
 }
 
 void on_deinterleave_pad_removed(GstElement*, GstPad* pad, Equalizer* l) {
-  std::string name = GST_PAD_NAME(pad);
+  if (l) {
+    std::string name = GST_PAD_NAME(pad);
 
-  util::debug(l->log_tag + l->name + " deinterleave pad removed: " + name);
+    if (name == std::string("src_0")) {
+      auto sinkpad = gst_element_get_static_pad(l->queue_L, "sink");
 
-  if (name == std::string("src_0")) {
-    auto sinkpad = gst_element_get_static_pad(l->queue_L, "sink");
+      gst_pad_unlink(pad, sinkpad);
 
-    gst_pad_unlink(pad, sinkpad);
+      gst_object_unref(GST_OBJECT(sinkpad));
 
-    gst_object_unref(GST_OBJECT(sinkpad));
-  } else if (name == std::string("src_1")) {
-    auto sinkpad = gst_element_get_static_pad(l->queue_R, "sink");
+      util::debug(l->log_tag + l->name + " deinterleave pad removed: " + name);
+    } else if (name == std::string("src_1")) {
+      auto sinkpad = gst_element_get_static_pad(l->queue_R, "sink");
 
-    gst_pad_unlink(pad, sinkpad);
+      gst_pad_unlink(pad, sinkpad);
 
-    gst_object_unref(GST_OBJECT(sinkpad));
+      gst_object_unref(GST_OBJECT(sinkpad));
+
+      util::debug(l->log_tag + l->name + " deinterleave pad removed: " + name);
+    }
   }
 }
 
@@ -103,9 +107,8 @@ Equalizer::Equalizer(const std::string& tag,
     auto output_gain = gst_element_factory_make("volume", nullptr);
     auto audioconvert_in =
         gst_element_factory_make("audioconvert", "eq_audioconvert_in");
-    auto deinterleave =
-        gst_element_factory_make("deinterleave", "eq_deinterleave");
 
+    deinterleave = gst_element_factory_make("deinterleave", "eq_deinterleave");
     queue_L = gst_element_factory_make("queue", "eq_queue_L");
     queue_R = gst_element_factory_make("queue", "eq_queue_R");
     audioconvert_out =
@@ -182,8 +185,9 @@ Equalizer::Equalizer(const std::string& tag,
     g_signal_connect(deinterleave, "pad-added",
                      G_CALLBACK(on_deinterleave_pad_added), this);
 
-    g_signal_connect(deinterleave, "pad-removed",
-                     G_CALLBACK(on_deinterleave_pad_removed), this);
+    handler_id_pad_removed =
+        g_signal_connect(deinterleave, "pad-removed",
+                         G_CALLBACK(on_deinterleave_pad_removed), this);
 
     g_signal_connect(deinterleave, "no-more-pads",
                      G_CALLBACK(on_deinterleave_no_more_pads), this);
@@ -216,6 +220,8 @@ Equalizer::Equalizer(const std::string& tag,
 Equalizer::~Equalizer() {
   g_object_unref(settings_left);
   g_object_unref(settings_right);
+
+  g_signal_handler_disconnect(deinterleave, handler_id_pad_removed);
 
   util::debug(log_tag + name + " destroyed");
 }
