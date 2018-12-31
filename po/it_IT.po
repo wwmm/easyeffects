@@ -176,7 +176,7 @@ msgstr "Canali"
 
 #: data/ui/app_info.glade:129
 msgid "Resampler"
-msgstr "Ricampionatore"
+msgstr "Ricampiona"
 
 #: data/ui/app_info.glade:210
 msgid "State"
@@ -732,7 +732,7 @@ msgstr "Suolo"
 
 #: data/ui/exciter.glade:50
 msgid "Exciter"
-msgstr "Exciter"
+msgstr "Eccitatore"
 
 #: data/ui/exciter.glade:360 data/ui/maximizer.glade:162
 msgid "Ceiling"
@@ -942,7 +942,7 @@ msgstr "Ampiezza Stereo"
 
 #: data/ui/crystalizer.glade:24
 msgid "Crystalizer"
-msgstr "Crystalizer"
+msgstr "Cristallizza"
 
 #: data/ui/crystalizer.glade:130
 msgid "Intensity"
@@ -950,7 +950,7 @@ msgstr "Intensità"
 
 #: data/ui/pitch.glade:36
 msgid "Pitch"
-msgstr "Pitch"
+msgstr "Intonazione"
 
 #: data/ui/pitch.glade:133
 msgid "Faster"
