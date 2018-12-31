@@ -1,3 +1,10 @@
+pulseeffects (4.4.3-1) unstable; urgency=low
+
+  * Version 4.4.3 upstream (autobuild)
+  * Updated Russian translation
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 31 Dec 2018 07:12:30 +0300
+ 
 pulseeffects (4.4.1-1) unstable; urgency=low
 
   * Version 4.4.1 upstream (autobuild)
