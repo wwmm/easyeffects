@@ -56,7 +56,11 @@ do
 	# change PPA names to yours, you may leave only one PPA; I upload hw-probe to 2 different PPAs at the same time
 	for ppa_name in ppa:mikhailnov/pulseeffects ppa:mikhailnov/utils ppa:mikhailnov/desktop1-dev
 	do
-		dput -f "$ppa_name" "$(/bin/ls -tr ${pkg_name}_*_source.changes | tail -n 1)"
+		# example file name: pulseeffects_4.4.3-1~bionic1_source.changes
+		if [ -f "${pkg_name}_${new_version}_source.changes" ]
+			then dput -f "$ppa_name" "${pkg_name}_${new_version}_source.changes"
+			else echo ".changes file ${pkg_name}_${new_version}_source.changes not found, not uploading anything!"
+		fi
 	done
 	
 	cd "$dir0"
