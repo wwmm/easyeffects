@@ -58,15 +58,15 @@ msgstr "Высота"
 
 #: data/ui/spectrum_settings.glade:156
 msgid "Fill"
-msgstr ""
+msgstr "Заполнить диаграмму"
 
 #: data/ui/spectrum_settings.glade:181
 msgid "Scale"
-msgstr ""
+msgstr "Масштаб"
 
 #: data/ui/spectrum_settings.glade:213
 msgid "Exponent"
-msgstr ""
+msgstr "Степень"
 
 #: data/ui/spectrum_settings.glade:246
 msgid "Use Custom Color"
@@ -77,7 +77,6 @@ msgid "Spectrum Color"
 msgstr "Цвет спектра"
 
 #: data/ui/spectrum_settings.glade:299
-#, fuzzy
 msgid "Sampling"
 msgstr "Передискретизация"
 
@@ -137,31 +136,29 @@ msgstr "Сбросить"
 
 #: data/ui/general_settings.glade:146
 msgid "Priority"
-msgstr ""
+msgstr "Приоритет"
 
 #: data/ui/general_settings.glade:160 data/ui/general_settings.glade:186
 msgid "Niceness"
-msgstr ""
+msgstr "Приоритет процесса (nice)"
 
 #: data/ui/general_settings.glade:187
-#, fuzzy
 msgid "Real Time"
-msgstr "Время распада"
+msgstr "Режим реального времени"
 
 #: data/ui/general_settings.glade:188
 msgid "None"
-msgstr ""
+msgstr "Никакой"
 
 #: data/ui/general_settings.glade:204
 msgid "Priority Type"
-msgstr ""
+msgstr "Тип приоритета процесса"
 
 #: data/ui/general_settings.glade:214
 msgid "About"
 msgstr "О программе"
 
 #: data/ui/about.glade.in:11
-#, fuzzy
 msgid "Audio effects for PulseAudio applications"
 msgstr "Аудиоэффекты для приложений PulseAudio"
 
@@ -301,7 +298,7 @@ msgstr "Восстановление"
 
 #: data/ui/limiter.glade:253
 msgid "Lookahead"
-msgstr ""
+msgstr "Задержка (lookahead)"
 
 #: data/ui/limiter.glade:288
 msgid "Oversampling"
