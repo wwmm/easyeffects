@@ -11,6 +11,10 @@ void PitchPreset::save(boost::property_tree::ptree& root,
                        const Glib::RefPtr<Gio::Settings>& settings) {
   root.put(section + ".pitch.state", settings->get_boolean("state"));
 
+  root.put(section + ".pitch.input-gain", settings->get_double("input-gain"));
+
+  root.put(section + ".pitch.output-gain", settings->get_double("output-gain"));
+
   root.put(section + ".pitch.cents", settings->get_double("cents"));
 
   root.put(section + ".pitch.semitones", settings->get_int("semitones"));
@@ -29,6 +33,12 @@ void PitchPreset::load(boost::property_tree::ptree& root,
                        const std::string& section,
                        const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".pitch.state");
+
+  update_key<double>(root, settings, "input-gain",
+                     section + ".pitch.input-gain");
+
+  update_key<double>(root, settings, "output-gain",
+                     section + ".pitch.output-gain");
 
   update_key<double>(root, settings, "cents", section + ".pitch.cents");
 

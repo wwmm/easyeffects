@@ -15,6 +15,8 @@ PitchUi::PitchUi(BaseObjectType* cobject,
   get_object(builder, "crispness", crispness);
   get_object(builder, "semitones", semitones);
   get_object(builder, "octaves", octaves);
+  get_object(builder, "input_gain", input_gain);
+  get_object(builder, "output_gain", output_gain);
 
   // gsettings bindings
 
@@ -27,6 +29,8 @@ PitchUi::PitchUi(BaseObjectType* cobject,
   settings->bind("octaves", octaves.get(), "value", flag);
   settings->bind("faster", faster, "active", flag);
   settings->bind("formant-preserving", formant_preserving, "active", flag);
+  settings->bind("input-gain", input_gain.get(), "value", flag);
+  settings->bind("output-gain", output_gain.get(), "value", flag);
 
   settings->set_boolean("post-messages", true);
 }

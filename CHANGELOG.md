@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Added
+- The pitch plugin can be used in the applications output too besides the
+microphone.
+- updated Italian translations
+
 ## [4.4.3]
 ### Added
 - Added a few preprocessor directives to disable at compile time api that only

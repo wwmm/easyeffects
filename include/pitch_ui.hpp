@@ -13,8 +13,10 @@ class PitchUi : public Gtk::Grid, public PluginUiBase {
   virtual ~PitchUi();
 
  private:
-  Glib::RefPtr<Gtk::Adjustment> cents, crispness, semitones, octaves;
   Gtk::ToggleButton *faster, *formant_preserving;
+
+  Glib::RefPtr<Gtk::Adjustment> cents, crispness, semitones, octaves,
+      input_gain, output_gain;
 };
 
 #endif
