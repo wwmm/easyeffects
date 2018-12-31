@@ -33,6 +33,7 @@ debian/*
 !debian/watch
 !debian/patches
 !debian/patches/*.patch
+!debian/source
 
 /build-ppa.sh
 

@@ -68,16 +68,17 @@ check_fuzzy_po(){
 	do
 		if grep -q "^#, fuzzy" "po/${lang}.po"
 			then
-				echo "No fuzzies found in localization ${lang}"
-			else
 				read -p "Fuzzies FOUND in localization ${lang}"
+			else
+				echo "No fuzzies found in localization ${lang}"
 		fi
 		
 		if grep -q "^#, fuzzy" "help/${lang}/${lang}.po"
 			then
+				read -p "Fuzzies FOUND in help ${lang}"
 				echo "No fuzzies found in help ${lang}"
 			else
-				read -p "Fuzzies FOUND in help ${lang}"
+				echo "No fuzzies found in help ${lang}"
 		fi
 	done
 }
