@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-08-28 16:54-0300\n"
+"POT-Creation-Date: 2018-12-30 17:17-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -124,7 +124,7 @@ msgstr ""
 #: C/reverb.page:97
 #: C/stereotools.page:96
 #: C/crossfeed.page:35
-#: C/equalizer.page:90
+#: C/equalizer.page:99
 #: C/pitch.page:87
 #: C/webrtc.page:140
 #: C/crystalizer.page:27
@@ -429,7 +429,7 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/filter.page:21
-#: C/equalizer.page:65
+#: C/equalizer.page:74
 msgid "Frequency"
 msgstr ""
 
@@ -1083,73 +1083,83 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/equalizer.page:28
-msgid "Flat Response"
+msgid "Split Channels"
 msgstr ""
 
 #. (itstool) path: item/p
 #: C/equalizer.page:30
+msgid "When this option is enabled it is possible to apply different equalizations to the left and the right channel."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/equalizer.page:37
+msgid "Flat Response"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/equalizer.page:39
 msgid "This function sets each band gain to 0."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/equalizer.page:36
+#: C/equalizer.page:45
 msgid "Calculate Frequencies"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/equalizer.page:38
+#: C/equalizer.page:47
 msgid "This function can be used to calculate the center frequencies and bandwidth of a graphic equalizer with the current number of selected bands. Useful when the user does not want the default number of 30 bands but has no idea about which frequencies and bandwidth he/she should choose."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/equalizer.page:47
+#: C/equalizer.page:56
 msgid "Reset Equalizer"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/equalizer.page:49
+#: C/equalizer.page:58
 msgid "Reset the equalizer to its default settings."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/equalizer.page:55
+#: C/equalizer.page:64
 msgid "Filter Type"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/equalizer.page:57
+#: C/equalizer.page:66
 msgid "Choose between Peak, Low Shelf and High Shelf. Usually you would set the band with the lowest frequency to Low Shelf, the one with the highest frequency to High Shelf and the others to Peak."
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/equalizer.page:67
+#: C/equalizer.page:76
 msgid "Band center frequency."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/equalizer.page:73
+#: C/equalizer.page:82
 msgid "Width"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/equalizer.page:75
+#: C/equalizer.page:84
 msgid "Bandwidth."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/equalizer.page:81
+#: C/equalizer.page:90
 msgid "Q"
 msgstr ""
 
 #. (itstool) path: p/code
-#: C/equalizer.page:85
+#: C/equalizer.page:94
 #, no-wrap
 msgid ""
 "Q = frequency / width"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/equalizer.page:83
+#: C/equalizer.page:92
 msgid "Quality factor. Calculated as <_:code-1/>."
 msgstr ""
 
@@ -1477,6 +1487,36 @@ msgid "Reset all parameters to their default values. This will reset the plugins
 msgstr ""
 
 #. (itstool) path: title/em
+#: C/general.page:48
+msgid "Priority type"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/general.page:50
+msgid "Choose between real time mode, niceness or none. This parameter allows to choose a higher priority for the threads that process audio."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/general.page:57
+msgid "Niceness"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/general.page:59
+msgid "Niceness value."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/general.page:65
+msgid "Priority"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/general.page:67
+msgid "Real time priority."
+msgstr ""
+
+#. (itstool) path: title/em
 #: C/spectrum.page:13
 msgid "Show"
 msgstr ""
@@ -1508,21 +1548,61 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/spectrum.page:37
-msgid "Use Custom Color"
+msgid "Scale"
 msgstr ""
 
 #. (itstool) path: item/p
 #: C/spectrum.page:39
-msgid "Use a user defined color or the GTK theme color."
+msgid "Bar height scaling factor."
 msgstr ""
 
 #. (itstool) path: title/em
 #: C/spectrum.page:45
-msgid "Spectrum Color"
+msgid "Exponent"
 msgstr ""
 
 #. (itstool) path: item/p
 #: C/spectrum.page:47
+msgid "Scaling factor exponent."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/spectrum.page:53
+msgid "Sampling"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/spectrum.page:55
+msgid "Spectrum update frequency."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/spectrum.page:61
+msgid "Fill"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/spectrum.page:63
+msgid "Draw filled bars."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/spectrum.page:69
+msgid "Use Custom Color"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/spectrum.page:71
+msgid "Use a user defined color or the GTK theme color."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/spectrum.page:77
+msgid "Spectrum Color"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/spectrum.page:79
 msgid "User defined color."
 msgstr ""
 

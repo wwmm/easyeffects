@@ -44,3 +44,4 @@
 -I/usr/lib/glib-2.0/include
 -I/usr/include/orc-0.4
 -I/usr/include/gstreamer-1.0
+-I/dbus-1.0

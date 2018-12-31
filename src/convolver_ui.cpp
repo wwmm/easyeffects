@@ -1,9 +1,9 @@
+#include "convolver_ui.hpp"
 #include <glibmm.h>
 #include <glibmm/i18n.h>
 #include <gst/fft/gstfftf32.h>
 #include <boost/math/interpolators/cubic_b_spline.hpp>
 #include <sndfile.hh>
-#include "convolver_ui.hpp"
 
 ConvolverUi::ConvolverUi(BaseObjectType* cobject,
                          const Glib::RefPtr<Gtk::Builder>& builder,
@@ -122,16 +122,17 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
      is loaded
   */
 
-  settings->signal_changed("kernel-path").connect([=](auto key) {
-    auto f = [=]() {
-      std::lock_guard<std::mutex> lock(lock_guard_irs_info);
-      get_irs_info();
-    };
+  connections.push_back(
+      settings->signal_changed("kernel-path").connect([=](auto key) {
+        auto f = [=]() {
+          std::lock_guard<std::mutex> lock(lock_guard_irs_info);
+          get_irs_info();
+        };
 
-    auto future = std::async(std::launch::async, f);
+        auto future = std::async(std::launch::async, f);
 
-    futures.push_back(std::move(future));
-  });
+        futures.push_back(std::move(future));
+      }));
 }
 
 ConvolverUi::~ConvolverUi() {
@@ -238,6 +239,9 @@ void ConvolverUi::populate_irs_listbox() {
     b->get_widget("name", label);
 
     row->set_name(name);
+    row->set_margin_right(6);
+    row->set_margin_left(6);
+    row->set_margin_bottom(6);
     label->set_text(name);
 
     connections.push_back(remove_btn->signal_clicked().connect([=]() {

@@ -3,9 +3,11 @@
 
 #include <gio/gio.h>
 #include <gst/gst.h>
+#include <memory>
 #include <mutex>
 #include <vector>
 #include "pulse_manager.hpp"
+#include "realtime_kit.hpp"
 
 class PipelineBase {
  public:
@@ -22,6 +24,10 @@ class PipelineBase {
              *identity_out = nullptr;
 
   GstBus* bus = nullptr;
+
+  GSettings* settings = nullptr;
+
+  std::unique_ptr<RealtimeKit> rtkit;
 
   std::mutex pipeline_mutex;
 
@@ -46,13 +52,12 @@ class PipelineBase {
   void update_pipeline_state();
   void get_latency();
   void init_spectrum(const uint& sampling_rate);
+  void update_spectrum_interval(const double& value);
 
   sigc::signal<void, std::vector<float>> new_spectrum;
   sigc::signal<void, int> new_latency;
 
  protected:
-  GSettings* settings = nullptr;
-
   void set_pulseaudio_props(std::string props);
 
   void on_app_added(const std::shared_ptr<AppInfo>& app_info);
@@ -67,6 +72,8 @@ class PipelineBase {
   void set_caps(const uint& sampling_rate);
   void init_spectrum_bin();
   void init_effects_bin();
+
+  GstElement* get_required_plugin(const gchar* factoryname, const gchar* name);
 };
 
 #endif

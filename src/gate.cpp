@@ -1,5 +1,5 @@
-#include <glibmm/main.h>
 #include "gate.hpp"
+#include <glibmm/main.h>
 #include "util.hpp"
 
 namespace {
@@ -35,8 +35,10 @@ Gate::Gate(const std::string& tag, const std::string& schema)
   if (is_installed(gate)) {
     auto in_level = gst_element_factory_make("level", "gate_input_level");
     auto out_level = gst_element_factory_make("level", "gate_output_level");
-    auto audioconvert_in = gst_element_factory_make("audioconvert", nullptr);
-    auto audioconvert_out = gst_element_factory_make("audioconvert", nullptr);
+    auto audioconvert_in =
+        gst_element_factory_make("audioconvert", "gate_audioconvert_in");
+    auto audioconvert_out =
+        gst_element_factory_make("audioconvert", "gate_audioconvert_out");
 
     gst_bin_add_many(GST_BIN(bin), in_level, audioconvert_in, gate,
                      audioconvert_out, out_level, nullptr);

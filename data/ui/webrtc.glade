@@ -21,7 +21,7 @@
   <object class="GtkBox" id="listbox_control">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="spacing">3</property>
+    <property name="spacing">6</property>
     <child>
       <object class="GtkLabel">
         <property name="visible">True</property>
@@ -106,7 +106,7 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="valign">center</property>
-    <property name="row_spacing">12</property>
+    <property name="row_spacing">18</property>
     <child>
       <object class="GtkBox" id="controls">
         <property name="visible">True</property>
@@ -114,13 +114,13 @@
         <property name="valign">center</property>
         <property name="hexpand">True</property>
         <property name="orientation">vertical</property>
-        <property name="spacing">30</property>
+        <property name="spacing">18</property>
         <child>
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
-            <property name="row_spacing">30</property>
+            <property name="row_spacing">18</property>
             <child>
               <object class="GtkStack" id="stack">
                 <property name="visible">True</property>
@@ -133,8 +133,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <property name="row_spacing">30</property>
-                    <property name="column_spacing">12</property>
+                    <property name="row_spacing">18</property>
                     <property name="column_homogeneous">True</property>
                     <child>
                       <object class="GtkToggleButton" id="echo_cancel">
@@ -155,7 +154,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
-                        <property name="column_spacing">12</property>
+                        <property name="column_spacing">6</property>
                         <property name="column_homogeneous">True</property>
                         <child>
                           <object class="GtkToggleButton" id="extended_filter">
@@ -205,6 +204,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
+                        <property name="row_spacing">6</property>
                         <property name="column_homogeneous">True</property>
                         <child>
                           <object class="GtkLabel">
@@ -223,7 +223,6 @@
                           <object class="GtkComboBoxText" id="echo_suppression_level">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="halign">center</property>
                             <property name="valign">center</property>
                             <items>
                               <item translatable="yes">Low</item>
@@ -254,20 +253,8 @@
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
+                    <property name="row_spacing">18</property>
                     <property name="column_homogeneous">True</property>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="label" translatable="yes">Suppresion Level</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">1</property>
-                      </packing>
-                    </child>
                     <child>
                       <object class="GtkToggleButton" id="noise_suppression">
                         <property name="label" translatable="yes">Enable</property>
@@ -276,7 +263,6 @@
                         <property name="receives_default">True</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="margin_bottom">30</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -284,21 +270,44 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkComboBoxText" id="noise_suppression_level">
+                      <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <items>
-                          <item translatable="yes">Low</item>
-                          <item translatable="yes">Moderate</item>
-                          <item translatable="yes">High</item>
-                          <item translatable="yes">Very High</item>
-                        </items>
+                        <property name="row_spacing">6</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
+                            <property name="label" translatable="yes">Suppresion Level</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkComboBoxText" id="noise_suppression_level">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="valign">center</property>
+                            <items>
+                              <item translatable="yes">Low</item>
+                              <item translatable="yes">Moderate</item>
+                              <item translatable="yes">High</item>
+                              <item translatable="yes">Very High</item>
+                            </items>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">2</property>
+                        <property name="top_attach">1</property>
                       </packing>
                     </child>
                   </object>
@@ -313,6 +322,8 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="row_spacing">18</property>
                     <property name="column_homogeneous">True</property>
                     <child>
                       <object class="GtkToggleButton" id="gain_control">
@@ -322,7 +333,6 @@
                         <property name="receives_default">True</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="margin_bottom">30</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -330,32 +340,42 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel">
+                      <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="label" translatable="yes">Mode</property>
+                        <property name="row_spacing">6</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
+                            <property name="label" translatable="yes">Mode</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkComboBoxText" id="gain_control_mode">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="valign">center</property>
+                            <items>
+                              <item translatable="yes">Adaptive Digital</item>
+                              <item translatable="yes">Fixed Digital</item>
+                            </items>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
                         <property name="top_attach">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkComboBoxText" id="gain_control_mode">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <items>
-                          <item translatable="yes">Adaptive Digital</item>
-                          <item translatable="yes">Fixed Digital</item>
-                        </items>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                   </object>
@@ -370,7 +390,8 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
-                    <property name="column_spacing">30</property>
+                    <property name="valign">center</property>
+                    <property name="row_spacing">18</property>
                     <property name="column_homogeneous">True</property>
                     <child>
                       <object class="GtkToggleButton" id="limiter">
@@ -380,72 +401,82 @@
                         <property name="receives_default">True</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="margin_bottom">30</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
                         <property name="top_attach">0</property>
-                        <property name="width">2</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel">
+                      <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="label" translatable="yes">Target Level</property>
+                        <property name="row_spacing">6</property>
+                        <property name="column_spacing">60</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
+                            <property name="label" translatable="yes">Target Level</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkSpinButton">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="halign">center</property>
+                            <property name="width_chars">10</property>
+                            <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
+                            <property name="input_purpose">number</property>
+                            <property name="orientation">vertical</property>
+                            <property name="adjustment">target_level_dbfs</property>
+                            <property name="numeric">True</property>
+                            <property name="update_policy">if-valid</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes">Maximum Gain</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkSpinButton">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="halign">center</property>
+                            <property name="width_chars">10</property>
+                            <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
+                            <property name="input_purpose">number</property>
+                            <property name="orientation">vertical</property>
+                            <property name="adjustment">compression_gain_db</property>
+                            <property name="numeric">True</property>
+                            <property name="update_policy">if-valid</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
                         <property name="top_attach">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Maximum Gain</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkSpinButton">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="halign">center</property>
-                        <property name="width_chars">10</property>
-                        <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
-                        <property name="input_purpose">number</property>
-                        <property name="orientation">vertical</property>
-                        <property name="adjustment">target_level_dbfs</property>
-                        <property name="numeric">True</property>
-                        <property name="update_policy">if-valid</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkSpinButton">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="halign">center</property>
-                        <property name="width_chars">10</property>
-                        <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
-                        <property name="input_purpose">number</property>
-                        <property name="orientation">vertical</property>
-                        <property name="adjustment">compression_gain_db</property>
-                        <property name="numeric">True</property>
-                        <property name="update_policy">if-valid</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                   </object>
@@ -461,7 +492,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <property name="column_spacing">12</property>
+                    <property name="row_spacing">18</property>
                     <property name="column_homogeneous">True</property>
                     <child>
                       <object class="GtkToggleButton" id="voice_detection">
@@ -471,70 +502,79 @@
                         <property name="receives_default">True</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="margin_bottom">30</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
                         <property name="top_attach">0</property>
-                        <property name="width">2</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkComboBoxText" id="voice_detection_likelihood">
+                      <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <items>
-                          <item translatable="yes">Very Low</item>
-                          <item translatable="yes">Low</item>
-                          <item translatable="yes">Moderate</item>
-                          <item translatable="yes">High</item>
-                        </items>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="label" translatable="yes">Frame Size</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkSpinButton">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="width_chars">10</property>
-                        <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
-                        <property name="input_purpose">number</property>
-                        <property name="adjustment">voice_detection_frame_size</property>
-                        <property name="numeric">True</property>
-                        <property name="update_policy">if-valid</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="label" translatable="yes">Detection Likelihood</property>
+                        <property name="row_spacing">6</property>
+                        <property name="column_spacing">60</property>
+                        <property name="column_homogeneous">True</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
+                            <property name="label" translatable="yes">Detection Likelihood</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
+                            <property name="label" translatable="yes">Frame Size</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkComboBoxText" id="voice_detection_likelihood">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="valign">center</property>
+                            <items>
+                              <item translatable="yes">Very Low</item>
+                              <item translatable="yes">Low</item>
+                              <item translatable="yes">Moderate</item>
+                              <item translatable="yes">High</item>
+                            </items>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkSpinButton">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="valign">center</property>
+                            <property name="width_chars">10</property>
+                            <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
+                            <property name="input_purpose">number</property>
+                            <property name="adjustment">voice_detection_frame_size</property>
+                            <property name="numeric">True</property>
+                            <property name="update_policy">if-valid</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -576,6 +616,7 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="column_spacing">6</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>

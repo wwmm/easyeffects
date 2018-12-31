@@ -1,5 +1,5 @@
-#include <glibmm/main.h>
 #include "crystalizer.hpp"
+#include <glibmm/main.h>
 #include "util.hpp"
 
 Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
@@ -13,8 +13,10 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
     auto output_gain = gst_element_factory_make("volume", nullptr);
     auto out_level =
         gst_element_factory_make("level", "crystalizer_output_level");
-    auto audioconvert_in = gst_element_factory_make("audioconvert", nullptr);
-    auto audioconvert_out = gst_element_factory_make("audioconvert", nullptr);
+    auto audioconvert_in =
+        gst_element_factory_make("audioconvert", "crystalizer_audioconvert_in");
+    auto audioconvert_out = gst_element_factory_make(
+        "audioconvert", "crystalizer_audioconvert_out");
 
     gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in,
                      crystalizer, audioconvert_out, output_gain, out_level,

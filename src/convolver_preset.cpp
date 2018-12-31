@@ -24,28 +24,18 @@ void ConvolverPreset::save(boost::property_tree::ptree& root,
 void ConvolverPreset::load(boost::property_tree::ptree& root,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {
-  settings->set_boolean("state",
-                        root.get<bool>(section + ".convolver.state",
-                                       get_default<bool>(settings, "state")));
+  update_key<bool>(root, settings, "state", section + ".convolver.state");
 
-  settings->set_double(
-      "input-gain",
-      root.get<double>(section + ".convolver.input-gain",
-                       get_default<double>(settings, "input-gain")));
+  update_key<double>(root, settings, "input-gain",
+                     section + ".convolver.input-gain");
 
-  settings->set_double(
-      "output-gain",
-      root.get<double>(section + ".convolver.output-gain",
-                       get_default<double>(settings, "output-gain")));
+  update_key<double>(root, settings, "output-gain",
+                     section + ".convolver.output-gain");
 
-  settings->set_string(
-      "kernel-path",
-      root.get<std::string>(section + ".convolver.kernel-path",
-                            get_default<std::string>(settings, "kernel-path")));
+  update_string_key(root, settings, "kernel-path",
+                    section + ".convolver.kernel-path");
 
-  settings->set_int("ir-width",
-                    root.get<int>(section + ".convolver.ir-width",
-                                  get_default<int>(settings, "ir-width")));
+  update_key<int>(root, settings, "ir-width", section + ".convolver.ir-width");
 }
 
 void ConvolverPreset::write(boost::property_tree::ptree& root) {

@@ -35,49 +35,30 @@ void BassEnhancerPreset::save(boost::property_tree::ptree& root,
 void BassEnhancerPreset::load(boost::property_tree::ptree& root,
                               const std::string& section,
                               const Glib::RefPtr<Gio::Settings>& settings) {
-  settings->set_boolean("state",
-                        root.get<bool>(section + ".bass_enhancer.state",
-                                       get_default<bool>(settings, "state")));
+  update_key<bool>(root, settings, "state", section + ".bass_enhancer.state");
 
-  settings->set_double(
-      "input-gain",
-      root.get<double>(section + ".bass_enhancer.input-gain",
-                       get_default<double>(settings, "input-gain")));
+  update_key<double>(root, settings, "input-gain",
+                     section + ".bass_enhancer.input-gain");
 
-  settings->set_double(
-      "output-gain",
-      root.get<double>(section + ".bass_enhancer.output-gain",
-                       get_default<double>(settings, "output-gain")));
+  update_key<double>(root, settings, "output-gain",
+                     section + ".bass_enhancer.output-gain");
 
-  settings->set_double(
-      "amount", root.get<double>(section + ".bass_enhancer.amount",
-                                 get_default<double>(settings, "amount")));
+  update_key<double>(root, settings, "amount",
+                     section + ".bass_enhancer.amount");
 
-  settings->set_double(
-      "harmonics",
-      root.get<double>(section + ".bass_enhancer.harmonics",
-                       get_default<double>(settings, "harmonics")));
+  update_key<double>(root, settings, "harmonics",
+                     section + ".bass_enhancer.harmonics");
 
-  settings->set_double(
-      "scope", root.get<double>(section + ".bass_enhancer.scope",
-                                get_default<double>(settings, "scope")));
+  update_key<double>(root, settings, "scope", section + ".bass_enhancer.scope");
 
-  settings->set_double(
-      "floor", root.get<double>(section + ".bass_enhancer.floor",
-                                get_default<double>(settings, "floor")));
+  update_key<double>(root, settings, "floor", section + ".bass_enhancer.floor");
 
-  settings->set_double(
-      "blend", root.get<double>(section + ".bass_enhancer.blend",
-                                get_default<double>(settings, "blend")));
+  update_key<double>(root, settings, "blend", section + ".bass_enhancer.blend");
 
-  settings->set_boolean(
-      "floor-active",
-      root.get<bool>(section + ".bass_enhancer.floor-active",
-                     get_default<bool>(settings, "floor-active")));
+  update_key<bool>(root, settings, "floor-active",
+                   section + ".bass_enhancer.floor-active");
 
-  settings->set_boolean("listen",
-                        root.get<bool>(section + ".bass_enhancer.listen",
-                                       get_default<bool>(settings, "listen")));
+  update_key<bool>(root, settings, "listen", section + ".bass_enhancer.listen");
 }
 
 void BassEnhancerPreset::write(boost::property_tree::ptree& root) {

@@ -2,6 +2,40 @@
 
 ## [Unreleased]
 
+## [4.4.3]
+### Added
+- Added a few preprocessor directives to disable at compile time api that only
+exists on Linux. Now it should compile on Freebsd.
+
+## [4.4.2]
+### Added
+- It is now possible to change the realtime priority or the niceness value. We do
+this using RealtimeKit just like Pulseaudio. By default we do not change any of
+these values. It is up to the user to enable this in the settings menu. Only the
+ Gstreamer threads responsible for the audio processing have their priorities
+ changed. Users wanting to verify if the changes took effect can do this using
+ `ps -m -l pid` where pid is PulseEffects process pid.
+- Now the user is able to apply different equalizations for the left and the right
+channels. Just enable the option `Split Channels` in the equalizer menu. This
+feature is particularly interesting for people with hearing loss. Take a look at
+ this issue opened in our page https://github.com/wwmm/pulseeffects/issues/353 to
+ know more.
+- The spectrum has more customization options.
+- The applications blacklist is saved to the user preset.
+- When alternating presets a large disk activity was generated. In order to
+avoid this we now check if each gsettings key really needs to be updated. As
+gsettings does not do that we had to implement our own checks.
+- Our interface should be a littler closer to the Gnome HIG guidelines.
+
+
+### Changed
+- Effects are by default switched on to all audio applications. This can be
+disabled in the settings menu.
+
+### Fixed
+- When installed under /usr/local PulseEffects would crash because of not found
+plugins. This was fixed.
+
 ## [4.4.1]
 ### Added
 - Updated translations

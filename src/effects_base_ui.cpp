@@ -1,7 +1,7 @@
+#include "effects_base_ui.hpp"
 #include <glibmm/i18n.h>
 #include <gtkmm/button.h>
 #include <gtkmm/label.h>
-#include "effects_base_ui.hpp"
 
 EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
                              const Glib::RefPtr<Gio::Settings>& refSettings,
@@ -18,6 +18,8 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   row->set_name("applications");
   row->set_margin_top(6);
   row->set_margin_bottom(6);
+  row->set_margin_right(6);
+  row->set_margin_left(6);
 
   auto row_label = Gtk::manage(new Gtk::Label(
       std::string("<b>") + _("Applications") + std::string("</b>")));

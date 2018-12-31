@@ -15,7 +15,7 @@
   <object class="GtkBox" id="listbox_control">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="spacing">3</property>
+    <property name="spacing">6</property>
     <child>
       <object class="GtkLabel">
         <property name="visible">True</property>
@@ -95,11 +95,17 @@
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.01</property>
   </object>
+  <object class="GtkAdjustment" id="output_gain">
+    <property name="lower">-20</property>
+    <property name="upper">20</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+  </object>
   <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="valign">center</property>
-    <property name="row_spacing">12</property>
+    <property name="row_spacing">18</property>
     <child>
       <object class="GtkBox" id="controls">
         <property name="visible">True</property>
@@ -113,6 +119,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
+            <property name="row_spacing">6</property>
             <property name="column_spacing">60</property>
             <child>
               <object class="GtkLabel">
@@ -158,6 +165,7 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="column_spacing">6</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
@@ -369,11 +377,5 @@
         <property name="top_attach">0</property>
       </packing>
     </child>
-  </object>
-  <object class="GtkAdjustment" id="output_gain">
-    <property name="lower">-20</property>
-    <property name="upper">20</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">1</property>
   </object>
 </interface>

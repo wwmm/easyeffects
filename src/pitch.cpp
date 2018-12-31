@@ -1,5 +1,5 @@
-#include <glibmm/main.h>
 #include "pitch.hpp"
+#include <glibmm/main.h>
 #include "util.hpp"
 
 Pitch::Pitch(const std::string& tag, const std::string& schema)

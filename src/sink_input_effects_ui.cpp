@@ -58,7 +58,9 @@ SinkInputEffectsUi::SinkInputEffectsUi(
       "com.github.wwmm.pulseeffects.sinkinputs.filter");
   b_equalizer->get_widget_derived(
       "widgets_grid", equalizer_ui,
-      "com.github.wwmm.pulseeffects.sinkinputs.equalizer");
+      "com.github.wwmm.pulseeffects.sinkinputs.equalizer",
+      "com.github.wwmm.pulseeffects.sinkinputs.equalizer.leftchannel",
+      "com.github.wwmm.pulseeffects.sinkinputs.equalizer.rightchannel");
   b_reverb->get_widget_derived(
       "widgets_grid", reverb_ui,
       "com.github.wwmm.pulseeffects.sinkinputs.reverb");
@@ -147,6 +149,25 @@ SinkInputEffectsUi::SinkInputEffectsUi(
 
 SinkInputEffectsUi::~SinkInputEffectsUi() {
   util::debug(log_tag + "destroyed");
+}
+
+SinkInputEffectsUi* SinkInputEffectsUi::add_to_stack(
+    Gtk::Stack* stack,
+    SinkInputEffects* sie_ptr) {
+  auto builder = Gtk::Builder::create_from_resource(
+      "/com/github/wwmm/pulseeffects/ui/effects_base.glade");
+
+  auto settings =
+      Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs");
+
+  SinkInputEffectsUi* ui;
+
+  builder->get_widget_derived("widgets_box", ui, settings, sie_ptr);
+
+  stack->add(*ui, "sink_inputs");
+  stack->child_property_icon_name(*ui).set_value("audio-speakers-symbolic");
+
+  return ui;
 }
 
 void SinkInputEffectsUi::level_meters_connections() {

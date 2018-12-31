@@ -57,88 +57,51 @@ void WebrtcPreset::save(boost::property_tree::ptree& root,
 void WebrtcPreset::load(boost::property_tree::ptree& root,
                         const std::string& section,
                         const Glib::RefPtr<Gio::Settings>& settings) {
-  settings->set_boolean("state",
-                        root.get<bool>(section + ".webrtc.state",
-                                       get_default<bool>(settings, "state")));
+  update_key<bool>(root, settings, "state", section + ".webrtc.state");
 
-  settings->set_boolean(
-      "high-pass-filter",
-      root.get<bool>(section + ".webrtc.high-pass-filter",
-                     get_default<bool>(settings, "high-pass-filter")));
+  update_key<bool>(root, settings, "high-pass-filter",
+                   section + ".webrtc.high-pass-filter");
 
-  settings->set_boolean(
-      "echo-cancel",
-      root.get<bool>(section + ".webrtc.echo-cancel",
-                     get_default<bool>(settings, "echo-cancel")));
+  update_key<bool>(root, settings, "echo-cancel",
+                   section + ".webrtc.echo-cancel");
 
-  settings->set_string(
-      "echo-suppression-level",
-      root.get<std::string>(
-          section + ".webrtc.echo-suppression-level",
-          get_default<std::string>(settings, "echo-suppression-level")));
+  update_string_key(root, settings, "echo-suppression-level",
+                    section + ".webrtc.echo-suppression-level");
 
-  settings->set_boolean(
-      "noise-suppression",
-      root.get<bool>(section + ".webrtc.noise-suppression",
-                     get_default<bool>(settings, "noise-suppression")));
+  update_key<bool>(root, settings, "noise-suppression",
+                   section + ".webrtc.noise-suppression");
 
-  settings->set_string(
-      "noise-suppression-level",
-      root.get<std::string>(
-          section + ".webrtc.noise-suppression-level",
-          get_default<std::string>(settings, "noise-suppression-level")));
+  update_string_key(root, settings, "noise-suppression-level",
+                    section + ".webrtc.noise-suppression-level");
 
-  settings->set_boolean(
-      "gain-control",
-      root.get<bool>(section + ".webrtc.gain-control",
-                     get_default<bool>(settings, "gain-control")));
+  update_key<bool>(root, settings, "gain-control",
+                   section + ".webrtc.gain-control");
 
-  settings->set_boolean(
-      "extended-filter",
-      root.get<bool>(section + ".webrtc.extended-filter",
-                     get_default<bool>(settings, "extended-filter")));
+  update_key<bool>(root, settings, "extended-filter",
+                   section + ".webrtc.extended-filter");
 
-  settings->set_boolean(
-      "delay-agnostic",
-      root.get<bool>(section + ".webrtc.delay-agnostic",
-                     get_default<bool>(settings, "delay-agnostic")));
+  update_key<bool>(root, settings, "delay-agnostic",
+                   section + ".webrtc.delay-agnostic");
 
-  settings->set_int(
-      "target-level-dbfs",
-      root.get<int>(section + ".webrtc.target-level-dbfs",
-                    get_default<int>(settings, "target-level-dbfs")));
+  update_key<int>(root, settings, "target-level-dbfs",
+                  section + ".webrtc.target-level-dbfs");
 
-  settings->set_int(
-      "compression-gain-db",
-      root.get<int>(section + ".webrtc.compression-gain-db",
-                    get_default<int>(settings, "compression-gain-db")));
+  update_key<int>(root, settings, "compression-gain-db",
+                  section + ".webrtc.compression-gain-db");
 
-  settings->set_boolean("limiter",
-                        root.get<bool>(section + ".webrtc.limiter",
-                                       get_default<bool>(settings, "limiter")));
+  update_key<bool>(root, settings, "limiter", section + ".webrtc.limiter");
 
-  settings->set_string(
-      "gain-control-mode",
-      root.get<std::string>(
-          section + ".webrtc.gain-control-mode",
-          get_default<std::string>(settings, "gain-control-mode")));
+  update_string_key(root, settings, "gain-control-mode",
+                    section + ".webrtc.gain-control-mode");
 
-  settings->set_boolean(
-      "voice-detection",
-      root.get<bool>(section + ".webrtc.voice-detection",
-                     get_default<bool>(settings, "voice-detection")));
+  update_key<bool>(root, settings, "voice-detection",
+                   section + ".webrtc.voice-detection");
 
-  settings->set_int(
-      "voice-detection-frame-size-ms",
-      root.get<int>(
-          section + ".webrtc.voice-detection-frame-size-ms",
-          get_default<int>(settings, "voice-detection-frame-size-ms")));
+  update_key<int>(root, settings, "voice-detection-frame-size-ms",
+                  section + ".webrtc.voice-detection-frame-size-ms");
 
-  settings->set_string(
-      "voice-detection-likelihood",
-      root.get<std::string>(
-          section + ".webrtc.voice-detection-likelihood",
-          get_default<std::string>(settings, "voice-detection-likelihood")));
+  update_string_key(root, settings, "voice-detection-likelihood",
+                    section + ".webrtc.voice-detection-likelihood");
 }
 
 void WebrtcPreset::write(boost::property_tree::ptree& root) {

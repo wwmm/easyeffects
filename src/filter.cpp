@@ -1,5 +1,5 @@
-#include <glibmm/main.h>
 #include "filter.hpp"
+#include <glibmm/main.h>
 #include "util.hpp"
 
 namespace {
@@ -55,8 +55,10 @@ Filter::Filter(const std::string& tag, const std::string& schema)
       gst_element_factory_make("calf-sourceforge-net-plugins-Filter", "filter");
 
   if (is_installed(filter)) {
-    auto audioconvert_in = gst_element_factory_make("audioconvert", nullptr);
-    auto audioconvert_out = gst_element_factory_make("audioconvert", nullptr);
+    auto audioconvert_in =
+        gst_element_factory_make("audioconvert", "filter_audioconvert_in");
+    auto audioconvert_out =
+        gst_element_factory_make("audioconvert", "filter_audioconvert_out");
 
     gst_bin_add_many(GST_BIN(bin), audioconvert_in, filter, audioconvert_out,
                      nullptr);

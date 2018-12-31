@@ -1,5 +1,5 @@
-#include <glibmm/main.h>
 #include "deesser.hpp"
+#include <glibmm/main.h>
 #include "util.hpp"
 
 namespace {
@@ -51,8 +51,10 @@ Deesser::Deesser(const std::string& tag, const std::string& schema)
   if (is_installed(deesser)) {
     auto in_level = gst_element_factory_make("level", "deesser_input_level");
     auto out_level = gst_element_factory_make("level", "deesser_output_level");
-    auto audioconvert_in = gst_element_factory_make("audioconvert", nullptr);
-    auto audioconvert_out = gst_element_factory_make("audioconvert", nullptr);
+    auto audioconvert_in =
+        gst_element_factory_make("audioconvert", "deesser_audioconvert_in");
+    auto audioconvert_out =
+        gst_element_factory_make("audioconvert", "deesser_audioconvert_out");
 
     gst_bin_add_many(GST_BIN(bin), in_level, audioconvert_in, deesser,
                      audioconvert_out, out_level, nullptr);

@@ -44,12 +44,6 @@ void update_order(gpointer user_data) {
     }
   }
 
-  // setting null state
-
-  for (auto& p : l->plugins) {
-    gst_element_set_state(p.second, GST_STATE_NULL);
-  }
-
   // unlinking elements using old plugins order
 
   gst_element_unlink(l->identity_in, l->plugins[l->plugins_order_old[0]]);
@@ -92,51 +86,6 @@ void update_order(gpointer user_data) {
   util::debug(l->log_tag + "new plugins order: [" + list + "]");
 }
 
-static GstPadProbeReturn event_probe_cb(GstPad* pad,
-                                        GstPadProbeInfo* info,
-                                        gpointer user_data) {
-  if (GST_EVENT_TYPE(GST_PAD_PROBE_INFO_DATA(info)) != GST_EVENT_EOS) {
-    return GST_PAD_PROBE_PASS;
-  }
-
-  gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
-
-  auto l = static_cast<SourceOutputEffects*>(user_data);
-
-  std::lock_guard<std::mutex> lock(l->pipeline_mutex);
-
-  update_order(user_data);
-
-  return GST_PAD_PROBE_DROP;
-}
-
-GstPadProbeReturn on_pad_blocked_eos(GstPad* pad,
-                                     GstPadProbeInfo* info,
-                                     gpointer user_data) {
-  gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
-
-  auto l = static_cast<SourceOutputEffects*>(user_data);
-
-  auto srcpad = gst_element_get_static_pad(
-      l->plugins[l->plugins_order_old[l->plugins_order_old.size() - 1]], "src");
-
-  gst_pad_add_probe(
-      srcpad,
-      static_cast<GstPadProbeType>(GST_PAD_PROBE_TYPE_BLOCK |
-                                   GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM),
-      event_probe_cb, user_data, nullptr);
-
-  auto sinkpad =
-      gst_element_get_static_pad(l->plugins[l->plugins_order_old[0]], "sink");
-
-  gst_pad_send_event(sinkpad, gst_event_new_eos());
-
-  gst_object_unref(sinkpad);
-  gst_object_unref(srcpad);
-
-  return GST_PAD_PROBE_OK;
-}
-
 GstPadProbeReturn on_pad_idle(GstPad* pad,
                               GstPadProbeInfo* info,
                               gpointer user_data) {
@@ -177,18 +126,7 @@ void on_plugins_order_changed(GSettings* settings,
   if (update) {
     auto srcpad = gst_element_get_static_pad(l->identity_in, "src");
 
-    GstState state, pending;
-
-    gst_element_get_state(l->effects_bin, &state, &pending,
-                          l->state_check_timeout);
-
-    if (state != GST_STATE_PLAYING) {
-      gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE, on_pad_idle, l,
-                        nullptr);
-    } else {
-      gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE, on_pad_blocked_eos, l,
-                        nullptr);
-    }
+    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE, on_pad_idle, l, nullptr);
 
     g_object_unref(srcpad);
   }
@@ -283,7 +221,9 @@ SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager)
   filter = std::make_unique<Filter>(
       log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.filter");
   equalizer = std::make_unique<Equalizer>(
-      log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.equalizer");
+      log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.equalizer",
+      "com.github.wwmm.pulseeffects.sourceoutputs.equalizer.leftchannel",
+      "com.github.wwmm.pulseeffects.sourceoutputs.equalizer.rightchannel");
   reverb = std::make_unique<Reverb>(
       log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.reverb");
   gate = std::make_unique<Gate>(

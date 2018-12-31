@@ -157,211 +157,152 @@ void MultibandGatePreset::save(boost::property_tree::ptree& root,
 void MultibandGatePreset::load(boost::property_tree::ptree& root,
                                const std::string& section,
                                const Glib::RefPtr<Gio::Settings>& settings) {
-  settings->set_boolean("state",
-                        root.get<bool>(section + ".multiband_gate.state",
-                                       get_default<bool>(settings, "state")));
+  update_key<bool>(root, settings, "state", section + ".multiband_gate.state");
 
-  settings->set_double(
-      "input-gain",
-      root.get<double>(section + ".multiband_gate.input-gain",
-                       get_default<double>(settings, "input-gain")));
+  update_key<double>(root, settings, "input-gain",
+                     section + ".multiband_gate.input-gain");
 
-  settings->set_double(
-      "output-gain",
-      root.get<double>(section + ".multiband_gate.output-gain",
-                       get_default<double>(settings, "output-gain")));
+  update_key<double>(root, settings, "output-gain",
+                     section + ".multiband_gate.output-gain");
 
-  settings->set_double(
-      "freq0", root.get<double>(section + ".multiband_gate.freq0",
-                                get_default<double>(settings, "freq0")));
+  update_key<double>(root, settings, "freq0",
+                     section + ".multiband_gate.freq0");
 
-  settings->set_double(
-      "freq1", root.get<double>(section + ".multiband_gate.freq1",
-                                get_default<double>(settings, "freq1")));
+  update_key<double>(root, settings, "freq1",
+                     section + ".multiband_gate.freq1");
 
-  settings->set_double(
-      "freq2", root.get<double>(section + ".multiband_gate.freq2",
-                                get_default<double>(settings, "freq2")));
+  update_key<double>(root, settings, "freq2",
+                     section + ".multiband_gate.freq2");
 
-  settings->set_string("mode", root.get<std::string>(
-                                   section + ".multiband_gate.mode",
-                                   get_default<std::string>(settings, "mode")));
+  update_string_key(root, settings, "mode", section + ".multiband_gate.mode");
 
   // sub band
 
-  settings->set_double(
-      "range0", root.get<double>(section + ".multiband_gate.subband.reduction",
-                                 get_default<double>(settings, "range0")));
+  update_key<double>(root, settings, "range0",
+                     section + ".multiband_gate.subband.reduction");
 
-  settings->set_double(
-      "threshold0",
-      root.get<double>(section + ".multiband_gate.subband.threshold",
-                       get_default<double>(settings, "threshold0")));
+  update_key<double>(root, settings, "threshold0",
+                     section + ".multiband_gate.subband.threshold");
 
-  settings->set_double(
-      "ratio0", root.get<double>(section + ".multiband_gate.subband.ratio",
-                                 get_default<double>(settings, "ratio0")));
+  update_key<double>(root, settings, "ratio0",
+                     section + ".multiband_gate.subband.ratio");
 
-  settings->set_double(
-      "attack0", root.get<double>(section + ".multiband_gate.subband.attack",
-                                  get_default<double>(settings, "attack0")));
+  update_key<double>(root, settings, "attack0",
+                     section + ".multiband_gate.subband.attack");
 
-  settings->set_double(
-      "release0", root.get<double>(section + ".multiband_gate.subband.release",
-                                   get_default<double>(settings, "release0")));
+  update_key<double>(root, settings, "release0",
+                     section + ".multiband_gate.subband.release");
 
-  settings->set_double(
-      "makeup0", root.get<double>(section + ".multiband_gate.subband.makeup",
-                                  get_default<double>(settings, "makeup0")));
+  update_key<double>(root, settings, "makeup0",
+                     section + ".multiband_gate.subband.makeup");
 
-  settings->set_double(
-      "knee0", root.get<double>(section + ".multiband_gate.subband.knee",
-                                get_default<double>(settings, "knee0")));
+  update_key<double>(root, settings, "knee0",
+                     section + ".multiband_gate.subband.knee");
 
-  settings->set_string(
-      "detection0",
-      root.get<std::string>(section + ".multiband_gate.subband.detection",
-                            get_default<std::string>(settings, "detection0")));
+  update_string_key(root, settings, "detection0",
+                    section + ".multiband_gate.subband.detection");
 
-  settings->set_boolean(
-      "bypass0", root.get<bool>(section + ".multiband_gate.subband.bypass",
-                                get_default<bool>(settings, "bypass0")));
+  update_key<bool>(root, settings, "bypass0",
+                   section + ".multiband_gate.subband.bypass");
 
-  settings->set_boolean("solo0",
-                        root.get<bool>(section + ".multiband_gate.subband.solo",
-                                       get_default<bool>(settings, "solo0")));
+  update_key<bool>(root, settings, "solo0",
+                   section + ".multiband_gate.subband.solo");
 
   // low band
 
-  settings->set_double(
-      "range1", root.get<double>(section + ".multiband_gate.lowband.reduction",
-                                 get_default<double>(settings, "range1")));
+  update_key<double>(root, settings, "range1",
+                     section + ".multiband_gate.lowband.reduction");
 
-  settings->set_double(
-      "threshold1",
-      root.get<double>(section + ".multiband_gate.lowband.threshold",
-                       get_default<double>(settings, "threshold1")));
+  update_key<double>(root, settings, "threshold1",
+                     section + ".multiband_gate.lowband.threshold");
 
-  settings->set_double(
-      "ratio1", root.get<double>(section + ".multiband_gate.lowband.ratio",
-                                 get_default<double>(settings, "ratio1")));
+  update_key<double>(root, settings, "ratio1",
+                     section + ".multiband_gate.lowband.ratio");
 
-  settings->set_double(
-      "attack1", root.get<double>(section + ".multiband_gate.lowband.attack",
-                                  get_default<double>(settings, "attack1")));
+  update_key<double>(root, settings, "attack1",
+                     section + ".multiband_gate.lowband.attack");
 
-  settings->set_double(
-      "release1", root.get<double>(section + ".multiband_gate.lowband.release",
-                                   get_default<double>(settings, "release1")));
+  update_key<double>(root, settings, "release1",
+                     section + ".multiband_gate.lowband.release");
 
-  settings->set_double(
-      "makeup1", root.get<double>(section + ".multiband_gate.lowband.makeup",
-                                  get_default<double>(settings, "makeup1")));
+  update_key<double>(root, settings, "makeup1",
+                     section + ".multiband_gate.lowband.makeup");
 
-  settings->set_double(
-      "knee1", root.get<double>(section + ".multiband_gate.lowband.knee",
-                                get_default<double>(settings, "knee1")));
+  update_key<double>(root, settings, "knee1",
+                     section + ".multiband_gate.lowband.knee");
 
-  settings->set_string(
-      "detection1",
-      root.get<std::string>(section + ".multiband_gate.lowband.detection",
-                            get_default<std::string>(settings, "detection1")));
+  update_string_key(root, settings, "detection1",
+                    section + ".multiband_gate.lowband.detection");
 
-  settings->set_boolean(
-      "bypass1", root.get<bool>(section + ".multiband_gate.lowband.bypass",
-                                get_default<bool>(settings, "bypass1")));
+  update_key<bool>(root, settings, "bypass1",
+                   section + ".multiband_gate.lowband.bypass");
 
-  settings->set_boolean("solo1",
-                        root.get<bool>(section + ".multiband_gate.lowband.solo",
-                                       get_default<bool>(settings, "solo1")));
+  update_key<bool>(root, settings, "solo1",
+                   section + ".multiband_gate.lowband.solo");
 
   // mid band
 
-  settings->set_double(
-      "range2", root.get<double>(section + ".multiband_gate.midband.reduction",
-                                 get_default<double>(settings, "range2")));
+  update_key<double>(root, settings, "range2",
+                     section + ".multiband_gate.midband.reduction");
 
-  settings->set_double(
-      "threshold2",
-      root.get<double>(section + ".multiband_gate.midband.threshold",
-                       get_default<double>(settings, "threshold2")));
+  update_key<double>(root, settings, "threshold2",
+                     section + ".multiband_gate.midband.threshold");
 
-  settings->set_double(
-      "ratio2", root.get<double>(section + ".multiband_gate.midband.ratio",
-                                 get_default<double>(settings, "ratio2")));
+  update_key<double>(root, settings, "ratio2",
+                     section + ".multiband_gate.midband.ratio");
 
-  settings->set_double(
-      "attack2", root.get<double>(section + ".multiband_gate.midband.attack",
-                                  get_default<double>(settings, "attack2")));
+  update_key<double>(root, settings, "attack2",
+                     section + ".multiband_gate.midband.attack");
 
-  settings->set_double(
-      "release2", root.get<double>(section + ".multiband_gate.midband.release",
-                                   get_default<double>(settings, "release2")));
+  update_key<double>(root, settings, "release2",
+                     section + ".multiband_gate.midband.release");
 
-  settings->set_double(
-      "makeup2", root.get<double>(section + ".multiband_gate.midband.makeup",
-                                  get_default<double>(settings, "makeup2")));
+  update_key<double>(root, settings, "makeup2",
+                     section + ".multiband_gate.midband.makeup");
 
-  settings->set_double(
-      "knee2", root.get<double>(section + ".multiband_gate.midband.knee",
-                                get_default<double>(settings, "knee2")));
+  update_key<double>(root, settings, "knee2",
+                     section + ".multiband_gate.midband.knee");
 
-  settings->set_string(
-      "detection2",
-      root.get<std::string>(section + ".multiband_gate.midband.detection",
-                            get_default<std::string>(settings, "detection2")));
+  update_string_key(root, settings, "detection2",
+                    section + ".multiband_gate.midband.detection");
 
-  settings->set_boolean(
-      "bypass2", root.get<bool>(section + ".multiband_gate.midband.bypass",
-                                get_default<bool>(settings, "bypass2")));
+  update_key<bool>(root, settings, "bypass2",
+                   section + ".multiband_gate.midband.bypass");
 
-  settings->set_boolean("solo2",
-                        root.get<bool>(section + ".multiband_gate.midband.solo",
-                                       get_default<bool>(settings, "solo2")));
+  update_key<bool>(root, settings, "solo2",
+                   section + ".multiband_gate.midband.solo");
 
   // high band
 
-  settings->set_double(
-      "range3", root.get<double>(section + ".multiband_gate.highband.reduction",
-                                 get_default<double>(settings, "range3")));
+  update_key<double>(root, settings, "range3",
+                     section + ".multiband_gate.highband.reduction");
 
-  settings->set_double(
-      "threshold3",
-      root.get<double>(section + ".multiband_gate.highband.threshold",
-                       get_default<double>(settings, "threshold3")));
+  update_key<double>(root, settings, "threshold3",
+                     section + ".multiband_gate.highband.threshold");
 
-  settings->set_double(
-      "ratio3", root.get<double>(section + ".multiband_gate.highband.ratio",
-                                 get_default<double>(settings, "ratio3")));
+  update_key<double>(root, settings, "ratio3",
+                     section + ".multiband_gate.highband.ratio");
 
-  settings->set_double(
-      "attack3", root.get<double>(section + ".multiband_gate.highband.attack",
-                                  get_default<double>(settings, "attack3")));
+  update_key<double>(root, settings, "attack3",
+                     section + ".multiband_gate.highband.attack");
 
-  settings->set_double(
-      "release3", root.get<double>(section + ".multiband_gate.highband.release",
-                                   get_default<double>(settings, "release3")));
+  update_key<double>(root, settings, "release3",
+                     section + ".multiband_gate.highband.release");
 
-  settings->set_double(
-      "makeup3", root.get<double>(section + ".multiband_gate.highband.makeup",
-                                  get_default<double>(settings, "makeup3")));
+  update_key<double>(root, settings, "makeup3",
+                     section + ".multiband_gate.highband.makeup");
 
-  settings->set_double(
-      "knee3", root.get<double>(section + ".multiband_gate.highband.knee",
-                                get_default<double>(settings, "knee3")));
+  update_key<double>(root, settings, "knee3",
+                     section + ".multiband_gate.highband.knee");
 
-  settings->set_string(
-      "detection3",
-      root.get<std::string>(section + ".multiband_gate.highband.detection",
-                            get_default<std::string>(settings, "detection3")));
+  update_string_key(root, settings, "detection3",
+                    section + ".multiband_gate.highband.detection");
 
-  settings->set_boolean(
-      "bypass3", root.get<bool>(section + ".multiband_gate.highband.bypass",
-                                get_default<bool>(settings, "bypass3")));
+  update_key<bool>(root, settings, "bypass3",
+                   section + ".multiband_gate.highband.bypass");
 
-  settings->set_boolean(
-      "solo3", root.get<bool>(section + ".multiband_gate.highband.solo",
-                              get_default<bool>(settings, "solo3")));
+  update_key<bool>(root, settings, "solo3",
+                   section + ".multiband_gate.highband.solo");
 }
 
 void MultibandGatePreset::write(boost::property_tree::ptree& root) {

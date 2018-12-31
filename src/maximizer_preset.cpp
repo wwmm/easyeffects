@@ -19,22 +19,14 @@ void MaximizerPreset::save(boost::property_tree::ptree& root,
 void MaximizerPreset::load(boost::property_tree::ptree& root,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {
-  settings->set_boolean("state",
-                        root.get<bool>(section + ".maximizer.state",
-                                       get_default<bool>(settings, "state")));
+  update_key<bool>(root, settings, "state", section + ".maximizer.state");
 
-  settings->set_double(
-      "release", root.get<double>(section + ".maximizer.release",
-                                  get_default<double>(settings, "release")));
+  update_key<double>(root, settings, "release", section + ".maximizer.release");
 
-  settings->set_double(
-      "ceiling", root.get<double>(section + ".maximizer.ceiling",
-                                  get_default<double>(settings, "ceiling")));
+  update_key<double>(root, settings, "ceiling", section + ".maximizer.ceiling");
 
-  settings->set_double(
-      "threshold",
-      root.get<double>(section + ".maximizer.threshold",
-                       get_default<double>(settings, "threshold")));
+  update_key<double>(root, settings, "threshold",
+                     section + ".maximizer.threshold");
 }
 
 void MaximizerPreset::write(boost::property_tree::ptree& root) {

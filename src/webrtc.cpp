@@ -1,6 +1,6 @@
+#include "webrtc.hpp"
 #include <glibmm/main.h>
 #include "util.hpp"
-#include "webrtc.hpp"
 
 Webrtc::Webrtc(const std::string& tag,
                const std::string& schema,

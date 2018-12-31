@@ -36,7 +36,7 @@ Audio effects for Pulseaudio applications
 
 - Gate
 - Multiband Gate
-- Webrtc
+- WebRTC
 - Limiter
 - Compressor
 - Multiband Compressor

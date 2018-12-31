@@ -129,6 +129,11 @@
         <value nick="2048" value="2048"/>
         <value nick="4096" value="4096"/>
     </enum>
+    <enum id="com.github.wwmm.pulseeffects.prioritytype.enum">
+        <value nick="Niceness" value="0"/>
+        <value nick="Real Time" value="1"/>
+        <value nick="None" value="2"/>
+    </enum>
     <schema id="com.github.wwmm.pulseeffects" path="/com/github/wwmm/pulseeffects/">
         <key name="version" type="s">
             <default>""</default>
@@ -158,6 +163,9 @@
         <key name="show-spectrum" type="b">
             <default>true</default>
         </key>
+        <key name="spectrum-fill" type="b">
+            <default>false</default>
+        </key>
         <key name="spectrum-n-points" type="i">
             <range min="2" max="600"/>
             <default>150</default>
@@ -171,8 +179,20 @@
         <key name="spectrum-height" type="i">
             <default>100</default>
         </key>
+        <key name="spectrum-scale" type="d">
+            <range min="0.0" max="10.0"/>
+            <default>1.0</default>
+        </key>
+        <key name="spectrum-exponent" type="d">
+            <range min="0.0" max="10.0"/>
+            <default>1.0</default>
+        </key>
+        <key name="spectrum-sampling-freq" type="i">
+            <range min="1" max="200"/>
+            <default>10</default>
+        </key>
         <key name="enable-all-apps" type="b">
-            <default>false</default>
+            <default>true</default>
         </key>
         <key name="use-dark-theme" type="b">
             <default>false</default>
@@ -201,6 +221,17 @@
             <default>
                 []
             </default>
+        </key>
+        <key name="priority-type" enum="com.github.wwmm.pulseeffects.prioritytype.enum">
+            <default>"None"</default>
+        </key>
+        <key name="realtime-priority" type="i">
+            <range min="0" max="99"/>
+            <default>4</default>
+        </key>
+        <key name="niceness" type="i">
+            <range min="-20" max="19"/>
+            <default>-10</default>
         </key>
     </schema>
 </schemalist>

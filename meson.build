@@ -3,7 +3,7 @@ project(
 	'c',
 	'cpp',
 	default_options : ['cpp_std=c++17','buildtype=debugoptimized'],
-	version: '4.4.1',
+	version: '4.4.3',
 	meson_version: '>= 0.40.0'
 )
 
@@ -30,6 +30,7 @@ conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
 conf.set_quoted('LOCALE_DIR', localedir)
 conf.set_quoted('VERSION', meson.project_version())
 conf.set_quoted('PACKAGE', 'PulseEffects')
+conf.set_quoted('PLUGINS_INSTALL_DIR', join_paths(prefix, plugins_install_dir))
 
 configure_file(output: 'config.h', configuration: conf)
 

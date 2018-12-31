@@ -1,5 +1,5 @@
-#include <glibmm/i18n.h>
 #include "calibration_ui.hpp"
+#include <glibmm/i18n.h>
 #include "util.hpp"
 
 CalibrationUi::CalibrationUi(BaseObjectType* cobject,

@@ -1,4 +1,9 @@
 data/ui/application.glade
+data/ui/spectrum.glade
+data/ui/spectrum_settings.glade
+data/ui/pulse_settings.glade
+data/ui/blacklist_settings.glade
+data/ui/general_settings.glade
 data/ui/about.glade.in
 data/ui/effects_base.glade
 data/ui/app_info.glade
@@ -25,6 +30,7 @@ data/ui/crystalizer.glade
 data/ui/pitch.glade
 data/ui/webrtc.glade
 data/ui/preset_row.glade
+data/ui/presets_menu.glade
 data/ui/blacklist_row.glade
 data/ui/calibration.glade
 data/ui/calibration_signals.glade
@@ -35,6 +41,14 @@ data/schemas/com.github.wwmm.pulseeffects.gschema.xml
 src/application.cpp
 src/application_ui.cpp
 src/effects_base_ui.cpp
+src/blacklist_settings_ui.cpp
+src/general_settings_ui.cpp
+src/pulse_settings_ui.cpp
+src/presets_menu_ui.cpp
+src/spectrum_settings_ui.cpp
+src/spectrum_ui.cpp
+src/sink_input_effects_ui.cpp
+src/source_output_effects_ui.cpp
 src/app_info_ui.cpp
 src/calibration_ui.cpp
 src/convolver_ui.cpp

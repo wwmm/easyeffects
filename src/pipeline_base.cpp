@@ -1,10 +1,12 @@
+#include "pipeline_base.hpp"
 #include <glib-object.h>
 #include <gobject/gvaluecollector.h>
+#include <sys/resource.h>
 #include <algorithm>
 #include <boost/math/interpolators/cubic_b_spline.hpp>
 #include <cmath>
 #include <mutex>
-#include "pipeline_base.hpp"
+#include "config.h"
 #include "util.hpp"
 
 namespace {
@@ -24,6 +26,52 @@ void on_message_error(const GstBus* gst_bus,
 
   g_error_free(err);
   g_free(debug);
+}
+
+static void on_stream_status(GstBus* bus,
+                             GstMessage* message,
+                             PipelineBase* pb) {
+  GstStreamStatusType type;
+  GstElement* owner;
+  gchar* path;
+  std::string path_str, source_name;
+  std::size_t idx;
+  int priority, niceness, priority_type;
+
+  gst_message_parse_stream_status(message, &type, &owner);
+
+  switch (type) {
+    case GST_STREAM_STATUS_TYPE_CREATE:
+      break;
+    case GST_STREAM_STATUS_TYPE_ENTER:
+      path = gst_object_get_path_string(GST_OBJECT(owner));
+
+      path_str = path;
+
+      idx = path_str.find_last_of("/");
+
+      source_name = path_str.substr(idx + 1);
+
+      g_free(path);
+
+      priority_type = g_settings_get_enum(pb->settings, "priority-type");
+
+      if (priority_type == 0) {  // Niceness (high priority in rtkit terms)
+        niceness = g_settings_get_int(pb->settings, "niceness");
+
+        pb->rtkit->set_nice(source_name, niceness);
+      } else if (priority_type == 1) {  // Real Time
+        priority = g_settings_get_int(pb->settings, "realtime-priority");
+
+        pb->rtkit->set_priority(source_name, priority);
+      }
+
+      break;
+    case GST_STREAM_STATUS_TYPE_LEAVE:
+      break;
+    default:
+      break;
+  }
 }
 
 void on_message_state_changed(const GstBus* gst_bus,
@@ -108,7 +156,11 @@ void on_message_element(const GstBus* gst_bus,
 
     if (max_mag > min_mag) {
       for (uint n = 0; n < pb->spectrum_mag.size(); n++) {
-        pb->spectrum_mag[n] = (min_mag - pb->spectrum_mag[n]) / min_mag;
+        if (min_mag < pb->spectrum_mag[n]) {
+          pb->spectrum_mag[n] = (min_mag - pb->spectrum_mag[n]) / min_mag;
+        } else {
+          pb->spectrum_mag[n] = 0.0f;
+        }
       }
 
       Glib::signal_idle().connect_once(
@@ -186,18 +238,23 @@ void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
 }  // namespace
 
 PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
-    : log_tag(tag), settings(g_settings_new("com.github.wwmm.pulseeffects")) {
+    : log_tag(tag),
+      settings(g_settings_new("com.github.wwmm.pulseeffects")),
+      rtkit(std::make_unique<RealtimeKit>(tag)) {
   gst_init(nullptr, nullptr);
 
   pipeline = gst_pipeline_new("pipeline");
 
   bus = gst_element_get_bus(pipeline);
 
+  gst_bus_enable_sync_message_emission(bus);
   gst_bus_add_signal_watch(bus);
 
   // bus callbacks
 
   g_signal_connect(bus, "message::error", G_CALLBACK(on_message_error), this);
+  g_signal_connect(bus, "sync-message::stream-status",
+                   GCallback(on_stream_status), this);
   g_signal_connect(bus, "message::state-changed",
                    G_CALLBACK(on_message_state_changed), this);
   g_signal_connect(bus, "message::latency", G_CALLBACK(on_message_latency),
@@ -207,28 +264,30 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
 
   // creating elements common to all pipelines
 
-  source = gst_element_factory_make("pulsesrc", "source");
-  capsfilter = gst_element_factory_make("capsfilter", nullptr);
-  adapter = gst_element_factory_make("peadapter", nullptr);
-  sink = gst_element_factory_make("pulsesink", "sink");
-  spectrum = gst_element_factory_make("spectrum", "spectrum");
+  gst_registry_scan_path(gst_registry_get(), PLUGINS_INSTALL_DIR);
 
-  auto queue_src = gst_element_factory_make("queue", nullptr);
-  auto src_type = gst_element_factory_make("typefind", nullptr);
-  auto audioconvert_in = gst_element_factory_make("audioconvert", nullptr);
-  auto audioconvert_out = gst_element_factory_make("audioconvert", nullptr);
+  source = get_required_plugin("pulsesrc", "source");
+  capsfilter = get_required_plugin("capsfilter", nullptr);
+  adapter = get_required_plugin("peadapter", nullptr);
+  sink = get_required_plugin("pulsesink", "sink");
+  spectrum = get_required_plugin("spectrum", "spectrum");
+
+  auto queue_src = get_required_plugin("queue", nullptr);
+  auto src_type = get_required_plugin("typefind", nullptr);
+  auto audioconvert_in = get_required_plugin("audioconvert", nullptr);
+  auto audioconvert_out = get_required_plugin("audioconvert", nullptr);
 
   init_spectrum_bin();
   init_effects_bin();
 
   // building the pipeline
 
-  gst_bin_add_many(GST_BIN(pipeline), source, queue_src, capsfilter, src_type,
-                   audioconvert_in, adapter, audioconvert_out, effects_bin,
+  gst_bin_add_many(GST_BIN(pipeline), source, queue_src, audioconvert_in,
+                   capsfilter, src_type, adapter, audioconvert_out, effects_bin,
                    spectrum_bin, sink, nullptr);
 
-  gst_element_link_many(source, queue_src, capsfilter, src_type,
-                        audioconvert_in, adapter, audioconvert_out, effects_bin,
+  gst_element_link_many(source, queue_src, audioconvert_in, capsfilter,
+                        src_type, adapter, audioconvert_out, effects_bin,
                         spectrum_bin, sink, nullptr);
 
   // initializing properties
@@ -376,7 +435,7 @@ void PipelineBase::set_null_pipeline() {
   gst_element_get_state(pipeline, &state, &pending, state_check_timeout);
 
   /*on_message_state is not called when going to null. I don't know why.
-   *so we have to update the variable manually after setting to null.
+   * so we have to update the variable manually after setting to null.
    */
 
   if (state == GST_STATE_NULL) {
@@ -488,6 +547,12 @@ void PipelineBase::init_spectrum(const uint& sampling_rate) {
   spline_df = spectrum_freqs[1] - spectrum_freqs[0];
 }
 
+void PipelineBase::update_spectrum_interval(const double& value) {
+  auto interval = guint64(1000000000. / value);
+
+  g_object_set(spectrum, "interval", interval, nullptr);
+}
+
 void PipelineBase::enable_spectrum() {
   auto srcpad = gst_element_get_static_pad(spectrum_identity_in, "src");
 
@@ -582,4 +647,15 @@ std::array<double, 2> PipelineBase::get_peak(GstMessage* message) {
   }
 
   return peak;
+}
+
+GstElement* PipelineBase::get_required_plugin(const gchar* factoryname,
+                                              const gchar* name) {
+  GstElement* plugin = gst_element_factory_make(factoryname, name);
+
+  if (!plugin)
+    throw std::runtime_error(
+        log_tag + std::string("Failed to get required plugin: ") + factoryname);
+
+  return plugin;
 }

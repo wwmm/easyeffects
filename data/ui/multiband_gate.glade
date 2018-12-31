@@ -61,7 +61,7 @@
   <object class="GtkBox" id="listbox_control">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="spacing">3</property>
+    <property name="spacing">6</property>
     <child>
       <object class="GtkLabel">
         <property name="visible">True</property>
@@ -280,7 +280,7 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="valign">center</property>
-    <property name="row_spacing">12</property>
+    <property name="row_spacing">18</property>
     <child>
       <object class="GtkBox" id="controls">
         <property name="visible">True</property>
@@ -288,14 +288,15 @@
         <property name="valign">center</property>
         <property name="hexpand">True</property>
         <property name="orientation">vertical</property>
+        <property name="spacing">18</property>
         <child>
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
-            <property name="margin_bottom">30</property>
-            <property name="column_spacing">12</property>
+            <property name="row_spacing">6</property>
+            <property name="column_spacing">18</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
@@ -427,7 +428,7 @@
             <property name="can_focus">False</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
-            <property name="row_spacing">12</property>
+            <property name="row_spacing">18</property>
             <child>
               <object class="GtkStackSwitcher">
                 <property name="visible">True</property>
@@ -450,7 +451,7 @@
                   <object class="GtkGrid">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="row_spacing">15</property>
+                    <property name="row_spacing">18</property>
                     <child>
                       <object class="GtkGrid">
                         <property name="visible">True</property>
@@ -458,13 +459,13 @@
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="column_spacing">6</property>
+                        <property name="column_homogeneous">True</property>
                         <child>
                           <object class="GtkToggleButton" id="bypass0">
                             <property name="label" translatable="yes">Bypass</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
-                            <property name="halign">center</property>
                             <property name="valign">center</property>
                           </object>
                           <packing>
@@ -478,7 +479,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
-                            <property name="halign">center</property>
                             <property name="valign">center</property>
                           </object>
                           <packing>
@@ -490,7 +490,6 @@
                           <object class="GtkComboBoxText" id="detection0">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="halign">center</property>
                             <property name="valign">center</property>
                             <items>
                               <item translatable="yes">RMS</item>
@@ -513,7 +512,8 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
-                        <property name="column_spacing">30</property>
+                        <property name="row_spacing">6</property>
+                        <property name="column_spacing">48</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
@@ -856,7 +856,7 @@
                   <object class="GtkGrid">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="row_spacing">15</property>
+                    <property name="row_spacing">18</property>
                     <child>
                       <object class="GtkGrid">
                         <property name="visible">True</property>
@@ -864,13 +864,13 @@
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="column_spacing">6</property>
+                        <property name="column_homogeneous">True</property>
                         <child>
                           <object class="GtkToggleButton" id="bypass1">
                             <property name="label" translatable="yes">Bypass</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
-                            <property name="halign">center</property>
                             <property name="valign">center</property>
                           </object>
                           <packing>
@@ -884,7 +884,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
-                            <property name="halign">center</property>
                             <property name="valign">center</property>
                           </object>
                           <packing>
@@ -896,7 +895,6 @@
                           <object class="GtkComboBoxText" id="detection1">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="halign">center</property>
                             <property name="valign">center</property>
                             <items>
                               <item translatable="yes">RMS</item>
@@ -919,7 +917,8 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
-                        <property name="column_spacing">30</property>
+                        <property name="row_spacing">6</property>
+                        <property name="column_spacing">48</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
@@ -1267,7 +1266,7 @@
                   <object class="GtkGrid">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="row_spacing">15</property>
+                    <property name="row_spacing">18</property>
                     <child>
                       <object class="GtkGrid">
                         <property name="visible">True</property>
@@ -1275,13 +1274,13 @@
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="column_spacing">6</property>
+                        <property name="column_homogeneous">True</property>
                         <child>
                           <object class="GtkToggleButton" id="bypass2">
                             <property name="label" translatable="yes">Bypass</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
-                            <property name="halign">center</property>
                             <property name="valign">center</property>
                           </object>
                           <packing>
@@ -1295,7 +1294,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
-                            <property name="halign">center</property>
                             <property name="valign">center</property>
                           </object>
                           <packing>
@@ -1307,7 +1305,6 @@
                           <object class="GtkComboBoxText" id="detection2">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="halign">center</property>
                             <property name="valign">center</property>
                             <items>
                               <item translatable="yes">RMS</item>
@@ -1330,7 +1327,8 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
-                        <property name="column_spacing">30</property>
+                        <property name="row_spacing">6</property>
+                        <property name="column_spacing">48</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
@@ -1678,7 +1676,7 @@
                   <object class="GtkGrid">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="row_spacing">15</property>
+                    <property name="row_spacing">18</property>
                     <child>
                       <object class="GtkGrid">
                         <property name="visible">True</property>
@@ -1686,13 +1684,13 @@
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="column_spacing">6</property>
+                        <property name="column_homogeneous">True</property>
                         <child>
                           <object class="GtkToggleButton" id="bypass3">
                             <property name="label" translatable="yes">Bypass</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
-                            <property name="halign">center</property>
                             <property name="valign">center</property>
                           </object>
                           <packing>
@@ -1706,7 +1704,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
-                            <property name="halign">center</property>
                             <property name="valign">center</property>
                           </object>
                           <packing>
@@ -1718,7 +1715,6 @@
                           <object class="GtkComboBoxText" id="detection3">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="halign">center</property>
                             <property name="valign">center</property>
                             <items>
                               <item translatable="yes">RMS</item>
@@ -1741,7 +1737,8 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
-                        <property name="column_spacing">30</property>
+                        <property name="row_spacing">6</property>
+                        <property name="column_spacing">48</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
@@ -2102,6 +2099,7 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="column_spacing">6</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>

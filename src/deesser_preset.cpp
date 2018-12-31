@@ -39,59 +39,33 @@ void DeesserPreset::save(boost::property_tree::ptree& root,
 void DeesserPreset::load(boost::property_tree::ptree& root,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {
-  settings->set_boolean("state",
-                        root.get<bool>(section + ".deesser.state",
-                                       get_default<bool>(settings, "state")));
+  update_key<bool>(root, settings, "state", section + ".deesser.state");
 
-  settings->set_string(
-      "detection",
-      root.get<std::string>(section + ".deesser.detection",
-                            get_default<std::string>(settings, "detection")));
+  update_string_key(root, settings, "detection",
+                    section + ".deesser.detection");
 
-  settings->set_string("mode", root.get<std::string>(
-                                   section + ".deesser.mode",
-                                   get_default<std::string>(settings, "mode")));
+  update_string_key(root, settings, "mode", section + ".deesser.mode");
 
-  settings->set_double(
-      "threshold",
-      root.get<double>(section + ".deesser.threshold",
-                       get_default<double>(settings, "threshold")));
+  update_key<double>(root, settings, "threshold",
+                     section + ".deesser.threshold");
 
-  settings->set_double(
-      "ratio", root.get<double>(section + ".deesser.ratio",
-                                get_default<double>(settings, "ratio")));
+  update_key<double>(root, settings, "ratio", section + ".deesser.ratio");
 
-  settings->set_int("laxity",
-                    root.get<int>(section + ".deesser.laxity",
-                                  get_default<int>(settings, "laxity")));
+  update_key<int>(root, settings, "laxity", section + ".deesser.laxity");
 
-  settings->set_double(
-      "makeup", root.get<double>(section + ".deesser.makeup",
-                                 get_default<double>(settings, "makeup")));
+  update_key<double>(root, settings, "makeup", section + ".deesser.makeup");
 
-  settings->set_double(
-      "f1-freq", root.get<double>(section + ".deesser.f1-freq",
-                                  get_default<double>(settings, "f1-freq")));
+  update_key<double>(root, settings, "f1-freq", section + ".deesser.f1-freq");
 
-  settings->set_double(
-      "f2-freq", root.get<double>(section + ".deesser.f2-freq",
-                                  get_default<double>(settings, "f2-freq")));
+  update_key<double>(root, settings, "f2-freq", section + ".deesser.f2-freq");
 
-  settings->set_double(
-      "f1-level", root.get<double>(section + ".deesser.f1-level",
-                                   get_default<double>(settings, "f1-level")));
+  update_key<double>(root, settings, "f1-level", section + ".deesser.f1-level");
 
-  settings->set_double(
-      "f2-level", root.get<double>(section + ".deesser.f2-level",
-                                   get_default<double>(settings, "f2-level")));
+  update_key<double>(root, settings, "f2-level", section + ".deesser.f2-level");
 
-  settings->set_double("f2-q",
-                       root.get<double>(section + ".deesser.f2-q",
-                                        get_default<double>(settings, "f2-q")));
+  update_key<double>(root, settings, "f2-q", section + ".deesser.f2-q");
 
-  settings->set_boolean(
-      "sc-listen", root.get<bool>(section + ".deesser.sc-listen",
-                                  get_default<bool>(settings, "sc-listen")));
+  update_key<bool>(root, settings, "sc-listen", section + ".deesser.sc-listen");
 }
 
 void DeesserPreset::write(boost::property_tree::ptree& root) {

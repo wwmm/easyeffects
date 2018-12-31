@@ -2,6 +2,11 @@ pulseeffects_sources = [
 	'pulseeffects.cpp',
 	'application.cpp',
 	'application_ui.cpp',
+	'spectrum_ui.cpp',
+	'spectrum_settings_ui.cpp',
+	'pulse_settings_ui.cpp',
+	'blacklist_settings_ui.cpp',
+	'general_settings_ui.cpp',
 	'pulse_manager.cpp',
 	'effects_base_ui.cpp',
 	'app_info_ui.cpp',
@@ -52,6 +57,7 @@ pulseeffects_sources = [
 	'webrtc_ui.cpp',
 	'crystalizer.cpp',
 	'crystalizer_ui.cpp',
+	'presets_menu_ui.cpp',
 	'presets_manager.cpp',
 	'autogain_preset.cpp',
 	'limiter_preset.cpp',
@@ -78,6 +84,7 @@ pulseeffects_sources = [
 	'calibration_signals.cpp',
 	'calibration_mic_ui.cpp',
 	'calibration_mic.cpp',
+	'realtime_kit.cpp',
 	'util.cpp',
 	gresources
 ]
@@ -96,7 +103,9 @@ pulseeffects_deps = [
 	dependency('libbs2b', required: false),
 	dependency('boost', version: '>=1.65', modules:['system','filesystem']),
 	dependency('sndfile'),
-	dependency('threads')
+	dependency('threads'),
+	dependency('dbus-1'),
+	dependency('gstreamer-audio-1.0')
 ]
 
 executable(

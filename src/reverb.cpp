@@ -1,5 +1,5 @@
-#include <glibmm/main.h>
 #include "reverb.hpp"
+#include <glibmm/main.h>
 #include "util.hpp"
 
 namespace {
@@ -55,8 +55,10 @@ Reverb::Reverb(const std::string& tag, const std::string& schema)
       gst_element_factory_make("calf-sourceforge-net-plugins-Reverb", "reverb");
 
   if (is_installed(reverb)) {
-    auto audioconvert_in = gst_element_factory_make("audioconvert", nullptr);
-    auto audioconvert_out = gst_element_factory_make("audioconvert", nullptr);
+    auto audioconvert_in =
+        gst_element_factory_make("audioconvert", "reverb_audioconvert_in");
+    auto audioconvert_out =
+        gst_element_factory_make("audioconvert", "reverb_audioconvert_out");
 
     gst_bin_add_many(GST_BIN(bin), audioconvert_in, reverb, audioconvert_out,
                      nullptr);
