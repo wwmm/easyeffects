@@ -2,10 +2,14 @@
 
 ## [Unreleased]
 
+## [4.4.4]
+
+Last release of 2018! Happy new year! :D
+
 ### Added
 - The pitch plugin can be used in the applications output too besides the
 microphone.
-- updated Italian translations
+- Updated Italian translations.
 
 ## [4.4.3]
 ### Added
