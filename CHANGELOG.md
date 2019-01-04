@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Fixed
+- In some situations where audio devices were added and removed repeatedly very
+fast a crash would happen when updating the device selection in the interface.
+This should not cause a crash anymore.
+
 ## [4.4.4]
 
 Last release of 2018! Happy new year! :D

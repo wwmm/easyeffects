@@ -202,12 +202,14 @@ void PulseSettingsUi::on_sink_removed(uint idx) {
     if (idx == i) {
       remove_iter = c;
       remove_name = name;
+
+      sink_list->erase(remove_iter);
+
+      util::debug(log_tag + "removed sink: " + remove_name);
+
+      break;
     }
   }
-
-  sink_list->erase(remove_iter);
-
-  util::debug(log_tag + "removed sink: " + remove_name);
 }
 
 void PulseSettingsUi::on_source_added(std::shared_ptr<mySourceInfo> info) {
@@ -267,12 +269,14 @@ void PulseSettingsUi::on_source_removed(uint idx) {
     if (idx == i) {
       remove_iter = c;
       remove_name = name;
+
+      source_list->erase(remove_iter);
+
+      util::debug(log_tag + "removed source: " + remove_name);
+
+      break;
     }
   }
-
-  source_list->erase(remove_iter);
-
-  util::debug(log_tag + "removed source: " + remove_name);
 }
 
 void PulseSettingsUi::on_use_default_sink_toggled() {
