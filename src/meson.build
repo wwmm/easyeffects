@@ -103,8 +103,7 @@ pulseeffects_deps = [
 	dependency('libbs2b', required: false),
 	dependency('boost', version: '>=1.65', modules:['system','filesystem']),
 	dependency('sndfile'),
-	dependency('threads'),
-	dependency('gstreamer-audio-1.0')
+	dependency('threads')
 ]
 
 executable(

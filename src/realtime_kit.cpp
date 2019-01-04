@@ -9,26 +9,23 @@ RealtimeKit::RealtimeKit(const std::string& tag) {
   log_tag = tag + "rtkit: ";
 
   try {
-    proxy = Gio::DBus::Proxy::create_for_bus_sync(Gio::DBus::BusType::BUS_TYPE_SYSTEM,
-                                                  RTKIT_SERVICE_NAME,
-                                                  RTKIT_OBJECT_PATH,
-                                                  "org.freedesktop.RealtimeKit1");
-    properties_proxy = Gio::DBus::Proxy::create_for_bus_sync(Gio::DBus::BusType::BUS_TYPE_SYSTEM,
-                                                             RTKIT_SERVICE_NAME,
-                                                             RTKIT_OBJECT_PATH,
-                                                             "org.freedesktop.DBus.Properties");
+    proxy = Gio::DBus::Proxy::create_for_bus_sync(
+        Gio::DBus::BusType::BUS_TYPE_SYSTEM, RTKIT_SERVICE_NAME,
+        RTKIT_OBJECT_PATH, "org.freedesktop.RealtimeKit1");
+
+    properties_proxy = Gio::DBus::Proxy::create_for_bus_sync(
+        Gio::DBus::BusType::BUS_TYPE_SYSTEM, RTKIT_SERVICE_NAME,
+        RTKIT_OBJECT_PATH, "org.freedesktop.DBus.Properties");
   } catch (const Glib::Error& err) {
     util::warning(log_tag +
                   "Failed to connect to system bus: " + err.what().c_str());
   }
 }
 
-RealtimeKit::~RealtimeKit() {
-  // Glib::object_unref(proxy);
-}
+RealtimeKit::~RealtimeKit() {}
 
 /*
-  This method code was adapted from the one Pulseaudio sources. File rtkit.c
+  This method code was adapted from the one in Pulseaudio sources. File rtkit.c
 */
 
 long long RealtimeKit::get_int_property(const char* propname) {
@@ -36,27 +33,39 @@ long long RealtimeKit::get_int_property(const char* propname) {
   long long propval = 0;
   const char* interfacestr = "org.freedesktop.RealtimeKit1";
 
-  Glib::VariantContainerBase args = Glib::VariantContainerBase::create_tuple(std::vector<Glib::VariantBase>({
-    Glib::Variant<Glib::ustring>::create(interfacestr),
-    Glib::Variant<Glib::ustring>::create(propname)
-  }));
+  Glib::VariantContainerBase args =
+      Glib::VariantContainerBase::create_tuple(std::vector<Glib::VariantBase>(
+          {Glib::Variant<Glib::ustring>::create(interfacestr),
+           Glib::Variant<Glib::ustring>::create(propname)}));
 
   try {
     reply_body = properties_proxy->call_sync("Get", args);
 
-    // The rtkit reply is encoded as a tuple containing `@v <@x 123456>` instead of just plain @x or @i
+    // The rtkit reply is encoded as a tuple containing `@v <@x 123456>` instead
+    // of just plain @x or @i
     if (reply_body.get_type_string() == "(v)") {
-      Glib::VariantBase child = Glib::VariantBase::cast_dynamic<Glib::Variant<std::tuple<Glib::VariantBase>>>(reply_body).get_child<Glib::VariantBase>(0);
+      Glib::VariantBase child =
+          Glib::VariantBase::cast_dynamic<
+              Glib::Variant<std::tuple<Glib::VariantBase>>>(reply_body)
+              .get_child<Glib::VariantBase>(0);
 
       if (child.get_type_string() == "i") {
-        propval = *(const gint32*) Glib::VariantBase::cast_dynamic<Glib::Variant<gint32>>(child).get_data();
+        propval =
+            *(const gint32*)
+                 Glib::VariantBase::cast_dynamic<Glib::Variant<gint32>>(child)
+                     .get_data();
       } else if (child.get_type_string() == "x") {
-        propval = *(const gint64*) Glib::VariantBase::cast_dynamic<Glib::Variant<gint64>>(child).get_data();
+        propval =
+            *(const gint64*)
+                 Glib::VariantBase::cast_dynamic<Glib::Variant<gint64>>(child)
+                     .get_data();
       } else {
-        util::warning(log_tag + " Expected value of type i or x but received " + child.get_type_string());
+        util::warning(log_tag + " Expected value of type i or x but received " +
+                      child.get_type_string());
       }
     } else {
-      util::warning(log_tag + " Expected value of type (v) but received " + reply_body.get_type_string());
+      util::warning(log_tag + " Expected value of type (v) but received " +
+                    reply_body.get_type_string());
     }
   } catch (const Glib::Error& err) {
     util::warning(log_tag + err.what().c_str());
@@ -69,21 +78,17 @@ void RealtimeKit::make_realtime(const std::string& source_name,
                                 const int& priority) {
 #if defined(__linux__)
 
-  guint64 u64;
-  guint32 u32;
-
   pid_t thread = (pid_t)syscall(SYS_gettid);
+  guint64 u64 = (guint64)thread;
+  guint32 u32 = (guint32)priority;
 
-  u64 = (guint64)thread;
-  u32 = (guint32)priority;
-
-  Glib::VariantContainerBase args = Glib::VariantContainerBase::create_tuple(std::vector<Glib::VariantBase>({
-    Glib::Variant<guint64>::create(u64),
-    Glib::Variant<guint32>::create(u32)
-  }));
+  Glib::VariantContainerBase args = Glib::VariantContainerBase::create_tuple(
+      std::vector<Glib::VariantBase>({Glib::Variant<guint64>::create(u64),
+                                      Glib::Variant<guint32>::create(u32)}));
 
   try {
     proxy->call_sync("MakeThreadRealtime", args);
+
     util::debug(log_tag + "changed " + source_name +
                 " thread real-time priority value to " +
                 std::to_string(priority));
@@ -98,21 +103,17 @@ void RealtimeKit::make_high_priority(const std::string& source_name,
                                      const int& nice_value) {
 #if defined(__linux__)
 
-  guint64 u64;
-  gint32 i32;
-
   pid_t thread = (pid_t)syscall(SYS_gettid);
+  guint64 u64 = (guint64)thread;
+  gint32 i32 = (gint32)nice_value;
 
-  u64 = (guint64)thread;
-  i32 = (gint32)nice_value;
-
-  Glib::VariantContainerBase args = Glib::VariantContainerBase::create_tuple(std::vector<Glib::VariantBase>({
-    Glib::Variant<guint64>::create(u64),
-    Glib::Variant<gint32>::create(i32)
-  }));
+  Glib::VariantContainerBase args = Glib::VariantContainerBase::create_tuple(
+      std::vector<Glib::VariantBase>({Glib::Variant<guint64>::create(u64),
+                                      Glib::Variant<gint32>::create(i32)}));
 
   try {
     proxy->call_sync("MakeThreadHighPriority", args);
+
     util::debug(log_tag + "changed " + source_name + " thread nice value to " +
                 std::to_string(nice_value));
   } catch (const Glib::Error& err) {
