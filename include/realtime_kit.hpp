@@ -1,7 +1,7 @@
 #ifndef REALTIMEKIT_HPP
 #define REALTIMEKIT_HPP
 
-#include <dbus-1.0/dbus/dbus.h>
+#include <giomm/dbusproxy.h>
 #include <iostream>
 
 #define RTKIT_SERVICE_NAME "org.freedesktop.RealtimeKit1"
@@ -19,7 +19,8 @@ class RealtimeKit {
  private:
   std::string log_tag;
 
-  DBusConnection* bus;
+  Glib::RefPtr<Gio::DBus::Proxy> proxy;
+  Glib::RefPtr<Gio::DBus::Proxy> properties_proxy;
 
   long long get_int_property(const char* propname);
 
