@@ -2,9 +2,11 @@
 
 ## [Unreleased]
 
+## [4.4.5]
 ### Fixed
 - In some situations where audio devices were added and removed repeatedly very
-fast a crash would happen when updating the device selection in the interface.
+fast a crash would happen when updating the device list in the interface. Read
+this issue for more information https://github.com/wwmm/pulseeffects/issues/408
 This should not cause a crash anymore.
 
 ## [4.4.4]
