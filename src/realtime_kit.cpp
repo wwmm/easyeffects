@@ -8,79 +8,67 @@
 RealtimeKit::RealtimeKit(const std::string& tag) {
   log_tag = tag + "rtkit: ";
 
-  DBusError error;
+  try {
+    proxy = Gio::DBus::Proxy::create_for_bus_sync(
+        Gio::DBus::BusType::BUS_TYPE_SYSTEM, RTKIT_SERVICE_NAME,
+        RTKIT_OBJECT_PATH, "org.freedesktop.RealtimeKit1");
 
-  dbus_error_init(&error);
-
-  if (!(bus = dbus_bus_get_private(DBUS_BUS_SYSTEM, &error))) {
+    properties_proxy = Gio::DBus::Proxy::create_for_bus_sync(
+        Gio::DBus::BusType::BUS_TYPE_SYSTEM, RTKIT_SERVICE_NAME,
+        RTKIT_OBJECT_PATH, "org.freedesktop.DBus.Properties");
+  } catch (const Glib::Error& err) {
     util::warning(log_tag +
-                  "Failed to connect to system bus: " + error.message);
+                  "Failed to connect to system bus: " + err.what().c_str());
   }
-
-  dbus_connection_set_exit_on_disconnect(bus, false);
-
-  dbus_error_free(&error);
 }
 
-RealtimeKit::~RealtimeKit() {
-  dbus_connection_close(bus);
-  dbus_connection_unref(bus);
-}
+RealtimeKit::~RealtimeKit() {}
 
 /*
-  This method code was adapted from the one Pulseaudio sources. File rtkit.c
+  This method code was adapted from the one in Pulseaudio sources. File rtkit.c
 */
 
 long long RealtimeKit::get_int_property(const char* propname) {
-  DBusMessage *m = NULL, *r = NULL;
-  DBusMessageIter iter, subiter;
-  DBusError error;
-  int current_type;
+  Glib::VariantBase reply_body;
   long long propval = 0;
   const char* interfacestr = "org.freedesktop.RealtimeKit1";
 
-  dbus_error_init(&error);
+  Glib::VariantContainerBase args =
+      Glib::VariantContainerBase::create_tuple(std::vector<Glib::VariantBase>(
+          {Glib::Variant<Glib::ustring>::create(interfacestr),
+           Glib::Variant<Glib::ustring>::create(propname)}));
 
-  m = dbus_message_new_method_call(RTKIT_SERVICE_NAME, RTKIT_OBJECT_PATH,
-                                   "org.freedesktop.DBus.Properties", "Get");
+  try {
+    reply_body = properties_proxy->call_sync("Get", args);
 
-  dbus_message_append_args(m, DBUS_TYPE_STRING, &interfacestr, DBUS_TYPE_STRING,
-                           &propname, DBUS_TYPE_INVALID);
+    // The rtkit reply is encoded as a tuple containing `@v <@x 123456>` instead
+    // of just plain @x or @i
+    if (reply_body.get_type_string() == "(v)") {
+      Glib::VariantBase child =
+          Glib::VariantBase::cast_dynamic<
+              Glib::Variant<std::tuple<Glib::VariantBase>>>(reply_body)
+              .get_child<Glib::VariantBase>(0);
 
-  if (!(r = dbus_connection_send_with_reply_and_block(bus, m, -1, &error))) {
-    util::warning(log_tag + error.name + " : " + error.message);
-  }
-
-  dbus_message_iter_init(r, &iter);
-
-  while ((current_type = dbus_message_iter_get_arg_type(&iter)) !=
-         DBUS_TYPE_INVALID) {
-    if (current_type == DBUS_TYPE_VARIANT) {
-      dbus_message_iter_recurse(&iter, &subiter);
-
-      while ((current_type = dbus_message_iter_get_arg_type(&subiter)) !=
-             DBUS_TYPE_INVALID) {
-        if (current_type == DBUS_TYPE_INT32) {
-          dbus_int32_t i32;
-
-          dbus_message_iter_get_basic(&subiter, &i32);
-
-          propval = i32;
-        }
-
-        if (current_type == DBUS_TYPE_INT64) {
-          dbus_int32_t i64;
-
-          dbus_message_iter_get_basic(&subiter, &i64);
-
-          propval = i64;
-        }
-
-        dbus_message_iter_next(&subiter);
+      if (child.get_type_string() == "i") {
+        propval =
+            *(const gint32*)
+                 Glib::VariantBase::cast_dynamic<Glib::Variant<gint32>>(child)
+                     .get_data();
+      } else if (child.get_type_string() == "x") {
+        propval =
+            *(const gint64*)
+                 Glib::VariantBase::cast_dynamic<Glib::Variant<gint64>>(child)
+                     .get_data();
+      } else {
+        util::warning(log_tag + " Expected value of type i or x but received " +
+                      child.get_type_string());
       }
+    } else {
+      util::warning(log_tag + " Expected value of type (v) but received " +
+                    reply_body.get_type_string());
     }
-
-    dbus_message_iter_next(&iter);
+  } catch (const Glib::Error& err) {
+    util::warning(log_tag + err.what().c_str());
   }
 
   return propval;
@@ -90,42 +78,23 @@ void RealtimeKit::make_realtime(const std::string& source_name,
                                 const int& priority) {
 #if defined(__linux__)
 
-  DBusMessage *m = nullptr, *r = nullptr;
-  dbus_uint64_t u64;
-  dbus_uint32_t u32;
-  DBusError error;
-
   pid_t thread = (pid_t)syscall(SYS_gettid);
+  guint64 u64 = (guint64)thread;
+  guint32 u32 = (guint32)priority;
 
-  u64 = (dbus_uint64_t)thread;
-  u32 = (dbus_uint32_t)priority;
+  Glib::VariantContainerBase args = Glib::VariantContainerBase::create_tuple(
+      std::vector<Glib::VariantBase>({Glib::Variant<guint64>::create(u64),
+                                      Glib::Variant<guint32>::create(u32)}));
 
-  m = dbus_message_new_method_call(RTKIT_SERVICE_NAME, RTKIT_OBJECT_PATH,
-                                   "org.freedesktop.RealtimeKit1",
-                                   "MakeThreadRealtime");
+  try {
+    proxy->call_sync("MakeThreadRealtime", args);
 
-  dbus_message_append_args(m, DBUS_TYPE_UINT64, &u64, DBUS_TYPE_UINT32, &u32,
-                           DBUS_TYPE_INVALID);
-
-  dbus_error_init(&error);
-
-  if (!(r = dbus_connection_send_with_reply_and_block(bus, m, -1, &error))) {
-    util::warning(log_tag + error.name + " : " + error.message);
-  } else {
     util::debug(log_tag + "changed " + source_name +
                 " thread real-time priority value to " +
                 std::to_string(priority));
+  } catch (const Glib::Error& err) {
+    util::warning(log_tag + err.what().c_str());
   }
-
-  if (m) {
-    dbus_message_unref(m);
-  }
-
-  if (r) {
-    dbus_message_unref(r);
-  }
-
-  dbus_error_free(&error);
 
 #endif
 }
@@ -134,41 +103,22 @@ void RealtimeKit::make_high_priority(const std::string& source_name,
                                      const int& nice_value) {
 #if defined(__linux__)
 
-  DBusMessage *m = nullptr, *r = nullptr;
-  dbus_uint64_t u64;
-  dbus_int32_t u32;
-  DBusError error;
-
   pid_t thread = (pid_t)syscall(SYS_gettid);
+  guint64 u64 = (guint64)thread;
+  gint32 i32 = (gint32)nice_value;
 
-  u64 = (dbus_uint64_t)thread;
-  u32 = (dbus_int32_t)nice_value;
+  Glib::VariantContainerBase args = Glib::VariantContainerBase::create_tuple(
+      std::vector<Glib::VariantBase>({Glib::Variant<guint64>::create(u64),
+                                      Glib::Variant<gint32>::create(i32)}));
 
-  m = dbus_message_new_method_call(RTKIT_SERVICE_NAME, RTKIT_OBJECT_PATH,
-                                   "org.freedesktop.RealtimeKit1",
-                                   "MakeThreadHighPriority");
+  try {
+    proxy->call_sync("MakeThreadHighPriority", args);
 
-  dbus_message_append_args(m, DBUS_TYPE_UINT64, &u64, DBUS_TYPE_INT32, &u32,
-                           DBUS_TYPE_INVALID);
-
-  dbus_error_init(&error);
-
-  if (!(r = dbus_connection_send_with_reply_and_block(bus, m, -1, &error))) {
-    util::warning(log_tag + error.name + " : " + error.message);
-  } else {
     util::debug(log_tag + "changed " + source_name + " thread nice value to " +
                 std::to_string(nice_value));
+  } catch (const Glib::Error& err) {
+    util::warning(log_tag + err.what().c_str());
   }
-
-  if (m) {
-    dbus_message_unref(m);
-  }
-
-  if (r) {
-    dbus_message_unref(r);
-  }
-
-  dbus_error_free(&error);
 
 #endif
 }
