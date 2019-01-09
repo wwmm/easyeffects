@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 
+## [4.4.6]
 ### Fixed
 - When the user loaded a preset file pointing to a impulse file that did not
 exist the convolver would consume memory crazily while trying to do its setup
