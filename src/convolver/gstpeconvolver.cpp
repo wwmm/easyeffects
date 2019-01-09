@@ -12,10 +12,10 @@
  * </refsect2>
  */
 
+#include "gstpeconvolver.hpp"
 #include <gst/audio/gstaudiofilter.h>
 #include <gst/gst.h>
 #include "config.h"
-#include "gstpeconvolver.hpp"
 #include "read_kernel.hpp"
 
 GST_DEBUG_CATEGORY_STATIC(gst_peconvolver_debug_category);
@@ -158,6 +158,7 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
 static void gst_peconvolver_init(GstPeconvolver* peconvolver) {
   peconvolver->log_tag = "convolver: ";
   peconvolver->ready = false;
+  peconvolver->irs_fail_count = 0;
   peconvolver->rate = 0;
   peconvolver->bpf = 0;
   peconvolver->kernel_path = nullptr;
@@ -253,7 +254,7 @@ static GstFlowReturn gst_peconvolver_transform_ip(GstBaseTransform* trans,
 
   if (peconvolver->ready) {
     gst_peconvolver_process(peconvolver, buffer);
-  } else {
+  } else if (peconvolver->irs_fail_count == 0) {
     GstMapInfo map;
 
     gst_buffer_map(buffer, &map, GST_MAP_READ);
@@ -269,6 +270,7 @@ static GstFlowReturn gst_peconvolver_transform_ip(GstBaseTransform* trans,
 
     auto future = std::async(std::launch::async, f);
 
+    peconvolver->futures.clear();
     peconvolver->futures.push_back(std::move(future));
   }
 
@@ -335,6 +337,8 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver,
       float density = 0.0f;
       int max_size = peconvolver->kernel_n_frames, ret;
 
+      peconvolver->irs_fail_count = 0;
+
       peconvolver->conv = new Convproc();
 
       unsigned int options = 0;
@@ -395,6 +399,7 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver,
       util::debug(peconvolver->log_tag + "we will just passthrough data.");
 
       peconvolver->ready = false;
+      peconvolver->irs_fail_count++;
     }
   }
 }
@@ -432,6 +437,8 @@ static void gst_peconvolver_process(GstPeconvolver* peconvolver,
 }
 
 static void gst_peconvolver_finish_convolver(GstPeconvolver* peconvolver) {
+  peconvolver->irs_fail_count = 0;
+
   if (peconvolver->ready) {
     peconvolver->ready = false;
 
