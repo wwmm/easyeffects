@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Fixed
+- When the user loaded a preset file pointing to a impulse file that did not
+exist the convolver would consume memory crazily while trying to do its setup
+multiple times. This should not happen anymore.
+
 ## [4.4.5]
 ### Fixed
 - In some situations where audio devices were added and removed repeatedly very

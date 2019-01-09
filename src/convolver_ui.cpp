@@ -131,6 +131,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
         auto future = std::async(std::launch::async, f);
 
+        futures.clear();
         futures.push_back(std::move(future));
       }));
 }
