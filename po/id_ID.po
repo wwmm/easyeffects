@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pulseeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-30 17:16-0200\n"
-"PO-Revision-Date: 2018-11-19 14:31+0700\n"
+"PO-Revision-Date: 2019-01-17 18:30+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: id_ID\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: data/ui/application.glade:41 src/calibration_ui.cpp:48
@@ -58,15 +58,15 @@ msgstr "Tinggi"
 
 #: data/ui/spectrum_settings.glade:156
 msgid "Fill"
-msgstr ""
+msgstr "Spektrum Batangan"
 
 #: data/ui/spectrum_settings.glade:181
 msgid "Scale"
-msgstr ""
+msgstr "Skala"
 
 #: data/ui/spectrum_settings.glade:213
 msgid "Exponent"
-msgstr ""
+msgstr "Eksponen"
 
 #: data/ui/spectrum_settings.glade:246
 msgid "Use Custom Color"
@@ -77,9 +77,8 @@ msgid "Spectrum Color"
 msgstr "Warna Spektrum"
 
 #: data/ui/spectrum_settings.glade:299
-#, fuzzy
 msgid "Sampling"
-msgstr "Peningkat Sampling"
+msgstr "Atur Sampling"
 
 #: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:218
 msgid "Use Default"
@@ -118,9 +117,8 @@ msgid "Name"
 msgstr "Nama"
 
 #: data/ui/general_settings.glade:31
-#, fuzzy
 msgid "Start Service at Login"
-msgstr "Mulai Layanan Saat Login"
+msgstr "Mulai Layanan Saat Startup"
 
 #: data/ui/general_settings.glade:56
 msgid "Enable All Applications"
@@ -137,33 +135,31 @@ msgstr "Atur Ulang"
 
 #: data/ui/general_settings.glade:146
 msgid "Priority"
-msgstr ""
+msgstr "Prioritas"
 
 #: data/ui/general_settings.glade:160 data/ui/general_settings.glade:186
 msgid "Niceness"
-msgstr ""
+msgstr "Sempurna"
 
 #: data/ui/general_settings.glade:187
-#, fuzzy
 msgid "Real Time"
-msgstr "Waktu Decay"
+msgstr "Waktu Sebenarnya"
 
 #: data/ui/general_settings.glade:188
 msgid "None"
-msgstr ""
+msgstr "Biarkan"
 
 #: data/ui/general_settings.glade:204
 msgid "Priority Type"
-msgstr ""
+msgstr "Atur Prioritas"
 
 #: data/ui/general_settings.glade:214
 msgid "About"
-msgstr ""
+msgstr "Tentang aplikasi"
 
 #: data/ui/about.glade.in:11
-#, fuzzy
 msgid "Audio effects for PulseAudio applications"
-msgstr "Penerap Efek Suara untuk Aplikasi Berbasis Pulseaudio"
+msgstr "Terapkan Efek Suara via PulseAudio"
 
 #: data/ui/app_info.glade:48
 msgid "Format"
@@ -178,7 +174,6 @@ msgid "Channels"
 msgstr "Total Kanal"
 
 #: data/ui/app_info.glade:129
-#, fuzzy
 msgid "Resampler"
 msgstr "Modus Penyampling"
 
@@ -195,7 +190,6 @@ msgid "Momentary"
 msgstr "Efek Sejenak"
 
 #: data/ui/autogain.glade:167 data/ui/autogain.glade:544
-#, fuzzy
 msgid "Short Term"
 msgstr "Waktu Singkat"
 
@@ -585,9 +579,8 @@ msgid "Reset Equalizer"
 msgstr "Atur Ulang Ekualiser"
 
 #: data/ui/equalizer.glade:190
-#, fuzzy
 msgid "Split Channels"
-msgstr "Total Kanal"
+msgstr "Pisahkan Kanal"
 
 #: data/ui/equalizer.glade:405 data/ui/stereo_tools.glade:527
 msgid "Left"
@@ -659,12 +652,10 @@ msgid "Dry"
 msgstr "Dry"
 
 #: data/ui/reverb.glade:447
-#, fuzzy
 msgid "Bass Cut"
 msgstr "Potong Bass"
 
 #: data/ui/reverb.glade:498
-#, fuzzy
 msgid "Treble Cut"
 msgstr "Potong Treble"
 
@@ -905,7 +896,6 @@ msgid "Detected"
 msgstr "Terlacak"
 
 #: data/ui/convolver.glade:24
-#, fuzzy
 msgid "Convolver"
 msgstr "Konvolver"
 
@@ -958,7 +948,6 @@ msgid "Intensity"
 msgstr "Intensitas"
 
 #: data/ui/pitch.glade:36
-#, fuzzy
 msgid "Pitch"
 msgstr "Nada"
 
@@ -1177,8 +1166,8 @@ msgid ""
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
-"Selain memanipulasi suara yang keluar, PulseEffects dapat memanipulasi efek "
-"suara seperti pada mikrofon dan pengakat masukan lainnya. PulseEffects juga "
+"Selain mengolah suara yang keluar, PulseEffects dapat mengolah efek suara "
+"seperti pada mikrofon dan pengakat masukan lainnya. PulseEffects juga "
 "bekerja dengan baik ketika dipakai dalam percakapan suara."
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:27
@@ -1212,7 +1201,6 @@ msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Equalizer, Compressor and Other Audio Effects"
 
 #: data/com.github.wwmm.pulseeffects.desktop.in:6
-#, fuzzy
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr "limiter;compressor;reverberation;equalizer;autovolume;"
 
@@ -1222,7 +1210,6 @@ msgid "pulseeffects"
 msgstr "pulseeffects"
 
 #: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:207
-#, fuzzy
 msgid "\"Presets\""
 msgstr "Preset"
 
@@ -1235,14 +1222,12 @@ msgid "Show available presets."
 msgstr "Tampilkan Preset Tersedia."
 
 #: src/application.cpp:27
-#, fuzzy
 msgid "Load a preset. Example: pulseeffects -l music"
 msgstr "Muat Preset. Misalkan: pulseeffects -l music"
 
 #: src/application.cpp:30
-#, fuzzy
 msgid "Reset PulseEffects."
-msgstr "PulseEffects"
+msgstr "Atur Ulang PulseEffects"
 
 #: src/application.cpp:58
 msgid "Presets: "

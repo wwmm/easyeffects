@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+### Added
+- Updated Indonesian translation
+
 ## [4.4.6]
 ### Fixed
 - When the user loaded a preset file pointing to a impulse file that did not
