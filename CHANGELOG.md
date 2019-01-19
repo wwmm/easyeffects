@@ -3,7 +3,7 @@
 ## [Unreleased]
 
 ### Added
-- Updated Indonesian translation
+- Updated Indonesian and Czech localizations
 
 ## [4.4.6]
 ### Fixed
