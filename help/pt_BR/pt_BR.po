@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2018-12-30 17:17-0200\n"
+"POT-Creation-Date: 2019-01-20 13:15-0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.1\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
@@ -112,11 +112,11 @@ msgstr "Silenciar o sinal original e escutar exclusivamente aos harmônicos."
 
 #. (itstool) path: section/title
 #: C/bassenhancer.page:78 C/compressor.page:93 C/deesser.page:111
-#: C/exciter.page:77 C/filter.page:47 C/gate.page:96 C/limiter.page:123
-#: C/loudness.page:44 C/multibandcompressor.page:128 C/multibandgate.page:136
-#: C/reverb.page:97 C/stereotools.page:96 C/crossfeed.page:35
-#: C/equalizer.page:99 C/pitch.page:87 C/webrtc.page:140 C/crystalizer.page:27
-#: C/convolver.page:42 C/autogain.page:87
+#: C/exciter.page:77 C/filter.page:47 C/gate.page:96 C/delay.page:33
+#: C/limiter.page:123 C/loudness.page:44 C/multibandcompressor.page:128
+#: C/multibandgate.page:136 C/reverb.page:97 C/stereotools.page:96
+#: C/crossfeed.page:35 C/equalizer.page:99 C/pitch.page:87 C/webrtc.page:140
+#: C/crystalizer.page:27 C/convolver.page:42 C/autogain.page:87
 msgid "References"
 msgstr "Referências"
 
@@ -513,6 +513,39 @@ msgstr "Redução de Ganho"
 #: C/gate.page:90
 msgid "The level of gain reduction when the signal is below the threshold."
 msgstr "O nível da redução de ganho quando o sinal está abaixo do limiar."
+
+#. (itstool) path: page/title
+#: C/delay.page:9
+msgid "Delay"
+msgstr "Atraso"
+
+#. (itstool) path: page/p
+#: C/delay.page:10
+msgid ""
+"This plugin allows to add short delay to each individual channel of the "
+"stereo channel"
+msgstr ""
+"Este plugin permite adicionar um pequeno atraso a cada canal individualmente"
+
+#. (itstool) path: title/em
+#: C/delay.page:17
+msgid "Left"
+msgstr "Esquerdo"
+
+#. (itstool) path: item/p
+#: C/delay.page:19
+msgid "Left channel delay."
+msgstr "Atraso do canal esquerdo."
+
+#. (itstool) path: title/em
+#: C/delay.page:25
+msgid "Right"
+msgstr "Direito"
+
+#. (itstool) path: item/p
+#: C/delay.page:27
+msgid "Right channel delay."
+msgstr "Atraso do canal direito."
 
 #. (itstool) path: page/title
 #: C/index.page:12
@@ -2335,12 +2368,6 @@ msgstr ""
 #~ msgstr ""
 #~ "PulseEffects usa o melhorador de stereo desenvolvido por <_:link-1/>. Ele "
 #~ "usa efeito Haas para melhorar o sinal stereo."
-
-#~ msgid "Delay"
-#~ msgstr "Atraso"
-
-#~ msgid "Channel delay."
-#~ msgstr "Atraso do canal."
 
 #~ msgid "Choose how the middle signal is generated."
 #~ msgstr "Escolha como o sinal do meio é gerado."
