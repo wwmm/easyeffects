@@ -12,7 +12,7 @@ class DelayUi : public Gtk::Grid, public PluginUiBase {
   virtual ~DelayUi();
 
  private:
-  Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, intensity;
+  Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, time_l, time_r;
 };
 
 #endif

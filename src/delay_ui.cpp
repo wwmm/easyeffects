@@ -8,7 +8,8 @@ DelayUi::DelayUi(BaseObjectType* cobject,
 
   // loading glade widgets
 
-  // get_object(builder, "intensity", intensity);
+  get_object(builder, "time_l", time_l);
+  get_object(builder, "time_r", time_r);
   get_object(builder, "input_gain", input_gain);
   get_object(builder, "output_gain", output_gain);
 
@@ -19,7 +20,8 @@ DelayUi::DelayUi(BaseObjectType* cobject,
   settings->bind("installed", this, "sensitive", flag);
   settings->bind("input-gain", input_gain.get(), "value", flag);
   settings->bind("output-gain", output_gain.get(), "value", flag);
-  // settings->bind("intensity", intensity.get(), "value", flag);
+  settings->bind("time-l", time_l.get(), "value", flag);
+  settings->bind("time-r", time_r.get(), "value", flag);
 
   settings->set_boolean("post-messages", true);
 }
