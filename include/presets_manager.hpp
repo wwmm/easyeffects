@@ -12,6 +12,7 @@
 #include "crossfeed_preset.hpp"
 #include "crystalizer_preset.hpp"
 #include "deesser_preset.hpp"
+#include "delay_preset.hpp"
 #include "equalizer_preset.hpp"
 #include "exciter_preset.hpp"
 #include "filter_preset.hpp"
@@ -65,6 +66,7 @@ class PresetsManager {
   std::unique_ptr<ConvolverPreset> convolver;
   std::unique_ptr<CrystalizerPreset> crystalizer;
   std::unique_ptr<AutoGainPreset> autogain;
+  std::unique_ptr<DelayPreset> delay;
 
   template <typename T>
   T get_default(const Glib::RefPtr<Gio::Settings>& settings,

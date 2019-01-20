@@ -60,6 +60,10 @@ void on_message_element(const GstBus* gst_bus,
     sie->autogain_input_level.emit(sie->get_peak(message));
   } else if (src_name == std::string("autogain_output_level")) {
     sie->autogain_output_level.emit(sie->get_peak(message));
+  } else if (src_name == std::string("delay_input_level")) {
+    sie->delay_input_level.emit(sie->get_peak(message));
+  } else if (src_name == std::string("delay_output_level")) {
+    sie->delay_output_level.emit(sie->get_peak(message));
   }
 }
 
@@ -282,6 +286,8 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
       log_tag, "com.github.wwmm.pulseeffects.sinkinputs.crystalizer");
   autogain = std::make_unique<AutoGain>(
       log_tag, "com.github.wwmm.pulseeffects.sinkinputs.autogain");
+  delay = std::make_unique<Delay>(
+      log_tag, "com.github.wwmm.pulseeffects.sinkinputs.delay");
 
   plugins.insert(std::make_pair(limiter->name, limiter->plugin));
   plugins.insert(std::make_pair(compressor->name, compressor->plugin));
@@ -303,6 +309,7 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
   plugins.insert(std::make_pair(convolver->name, convolver->plugin));
   plugins.insert(std::make_pair(crystalizer->name, crystalizer->plugin));
   plugins.insert(std::make_pair(autogain->name, autogain->plugin));
+  plugins.insert(std::make_pair(delay->name, delay->plugin));
 
   add_plugins_to_pipeline();
 

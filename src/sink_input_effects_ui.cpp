@@ -48,6 +48,8 @@ SinkInputEffectsUi::SinkInputEffectsUi(
       "/com/github/wwmm/pulseeffects/ui/crystalizer.glade");
   auto b_autogain = Gtk::Builder::create_from_resource(
       "/com/github/wwmm/pulseeffects/ui/autogain.glade");
+  auto b_delay = Gtk::Builder::create_from_resource(
+      "/com/github/wwmm/pulseeffects/ui/delay.glade");
 
   b_limiter->get_widget_derived(
       "widgets_grid", limiter_ui,
@@ -63,9 +65,8 @@ SinkInputEffectsUi::SinkInputEffectsUi(
       "com.github.wwmm.pulseeffects.sinkinputs.equalizer",
       "com.github.wwmm.pulseeffects.sinkinputs.equalizer.leftchannel",
       "com.github.wwmm.pulseeffects.sinkinputs.equalizer.rightchannel");
-  b_pitch->get_widget_derived(
-      "widgets_grid", pitch_ui,
-      "com.github.wwmm.pulseeffects.sinkinputs.pitch");
+  b_pitch->get_widget_derived("widgets_grid", pitch_ui,
+                              "com.github.wwmm.pulseeffects.sinkinputs.pitch");
   b_reverb->get_widget_derived(
       "widgets_grid", reverb_ui,
       "com.github.wwmm.pulseeffects.sinkinputs.reverb");
@@ -107,6 +108,8 @@ SinkInputEffectsUi::SinkInputEffectsUi(
   b_autogain->get_widget_derived(
       "widgets_grid", autogain_ui,
       "com.github.wwmm.pulseeffects.sinkinputs.autogain");
+  b_delay->get_widget_derived("widgets_grid", delay_ui,
+                              "com.github.wwmm.pulseeffects.sinkinputs.delay");
 
   stack->add(*limiter_ui, limiter_ui->name);
   stack->add(*compressor_ui, compressor_ui->name);
@@ -127,6 +130,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(
   stack->add(*convolver_ui, convolver_ui->name);
   stack->add(*crystalizer_ui, crystalizer_ui->name);
   stack->add(*autogain_ui, autogain_ui->name);
+  stack->add(*delay_ui, delay_ui->name);
 
   // populate_listbox
 
@@ -149,6 +153,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(
   add_to_listbox(convolver_ui);
   add_to_listbox(crystalizer_ui);
   add_to_listbox(autogain_ui);
+  add_to_listbox(delay_ui);
 
   level_meters_connections();
   up_down_connections();
@@ -386,6 +391,13 @@ void SinkInputEffectsUi::level_meters_connections() {
       sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_range)));
   connections.push_back(sie->autogain->gain.connect(
       sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_gain)));
+
+  // delay level meters connections
+
+  connections.push_back(sie->delay_input_level.connect(
+      sigc::mem_fun(*delay_ui, &DelayUi::on_new_input_level_db)));
+  connections.push_back(sie->delay_output_level.connect(
+      sigc::mem_fun(*delay_ui, &DelayUi::on_new_output_level_db)));
 }
 
 void SinkInputEffectsUi::up_down_connections() {
@@ -518,4 +530,9 @@ void SinkInputEffectsUi::up_down_connections() {
       [=]() { on_up(autogain_ui); }));
   connections.push_back(autogain_ui->plugin_down->signal_clicked().connect(
       [=]() { on_down(autogain_ui); }));
+
+  connections.push_back(delay_ui->plugin_up->signal_clicked().connect(
+      [=]() { on_up(delay_ui); }));
+  connections.push_back(delay_ui->plugin_down->signal_clicked().connect(
+      [=]() { on_down(delay_ui); }));
 }

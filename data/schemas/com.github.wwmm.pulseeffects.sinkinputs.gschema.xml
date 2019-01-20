@@ -7,7 +7,7 @@
             <default>
                 ["limiter","autogain","gate","multiband_gate","compressor",
                 "multiband_compressor","convolver","bass_enhancer","exciter",
-                "crystalizer","stereo_tools","reverb","equalizer","deesser",
+                "crystalizer","stereo_tools","reverb","equalizer","delay", "deesser",
                 "crossfeed","loudness","maximizer","filter","pitch"]
             </default>
         </key>
