@@ -32,6 +32,15 @@ Delay::Delay(const std::string& tag, const std::string& schema)
     gst_object_unref(GST_OBJECT(pad_sink));
     gst_object_unref(GST_OBJECT(pad_src));
 
+    g_object_set(delay, "bypass", false, nullptr);
+    g_object_set(delay, "mode-l", 2, nullptr);
+    g_object_set(delay, "mode-r", 2, nullptr);
+    g_object_set(delay, "dry-l", 0.0f, nullptr);
+    g_object_set(delay, "dry-r", 0.0f, nullptr);
+    g_object_set(delay, "wet-l", 1.0f, nullptr);
+    g_object_set(delay, "wet-r", 1.0f, nullptr);
+    g_object_set(delay, "g-out", 1.0f, nullptr);
+
     bind_to_gsettings();
 
     g_settings_bind(settings, "post-messages", in_level, "post-messages",
@@ -62,7 +71,11 @@ Delay::~Delay() {
 }
 
 void Delay::bind_to_gsettings() {
-  // g_settings_bind_with_mapping(settings, "intensity", delay, "intensity",
-  //                              G_SETTINGS_BIND_GET, util::double_to_float,
-  //                              nullptr, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "time-l", delay, "time-l",
+                               G_SETTINGS_BIND_GET, util::double_to_float,
+                               nullptr, nullptr, nullptr);
+
+  g_settings_bind_with_mapping(settings, "time-r", delay, "time-r",
+                               G_SETTINGS_BIND_GET, util::double_to_float,
+                               nullptr, nullptr, nullptr);
 }
