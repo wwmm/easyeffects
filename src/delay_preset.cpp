@@ -13,7 +13,8 @@ void DelayPreset::save(boost::property_tree::ptree& root,
 
   root.put(section + ".delay.output-gain", settings->get_double("output-gain"));
 
-  // root.put(section + ".delay.intensity", settings->get_double("intensity"));
+  root.put(section + ".delay.time-l", settings->get_double("time-l"));
+  root.put(section + ".delay.time-r", settings->get_double("time-r"));
 }
 
 void DelayPreset::load(boost::property_tree::ptree& root,
@@ -27,8 +28,9 @@ void DelayPreset::load(boost::property_tree::ptree& root,
   update_key<double>(root, settings, "output-gain",
                      section + ".delay.output-gain");
 
-  // update_key<double>(root, settings, "intensity", section +
-  // ".delay.intensity");
+  update_key<double>(root, settings, "time-l", section + ".delay.time-l");
+
+  update_key<double>(root, settings, "time-r", section + ".delay.time-r");
 }
 
 void DelayPreset::write(boost::property_tree::ptree& root) {
