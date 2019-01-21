@@ -597,9 +597,8 @@ msgid "Reset Equalizer"
 msgstr "Сбросить эквалайзер"
 
 #: data/ui/equalizer.glade:190
-#, fuzzy
 msgid "Split Channels"
-msgstr "Каналы"
+msgstr "Разделить каналы"
 
 #: data/ui/equalizer.glade:405 data/ui/stereo_tools.glade:527
 #: data/ui/delay.glade:134
