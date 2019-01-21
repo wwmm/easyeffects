@@ -134,7 +134,16 @@ void Application::on_activate() {
 
     add_window(*window);
 
-    window->signal_hide().connect([&, window]() { delete window; });
+    window->signal_hide().connect([&, window]() {
+      int width, height;
+
+      window->get_size(width, height);
+
+      settings->set_int("window-width", width);
+      settings->set_int("window-height", height);
+
+      delete window;
+    });
 
     window->show_all();
 

@@ -233,5 +233,11 @@
             <range min="-20" max="19"/>
             <default>-10</default>
         </key>
+        <key name="window-width" type="i">
+            <default>0</default>
+        </key>
+        <key name="window-height" type="i">
+            <default>0</default>
+        </key>
     </schema>
 </schemalist>

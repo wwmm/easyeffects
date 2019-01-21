@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+### Added
+- Remember window size.
+
 ## [4.4.7]
 ### Added
 - Updated Indonesian and Czech localizations.

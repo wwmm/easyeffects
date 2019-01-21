@@ -139,6 +139,15 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   settings->bind("use-dark-theme", Gtk::Settings::get_default().get(),
                  "gtk_application_prefer_dark_theme", flag);
+
+  // restore window size
+
+  auto window_width = settings->get_int("window-width");
+  auto window_height = settings->get_int("window-height");
+
+  if (window_width > 0 && window_height > 0) {
+    set_default_size(window_width, window_height);
+  }
 }
 
 ApplicationUi::~ApplicationUi() {
