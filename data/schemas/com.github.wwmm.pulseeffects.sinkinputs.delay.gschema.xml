@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema
+        id="com.github.wwmm.pulseeffects.sinkinputs.delay"
+        path="/com/github/wwmm/pulseeffects/sinkinputs/delay/">
+        <key name="state" type="b">
+            <default>false</default>
+        </key>
+        <key name="installed" type="b">
+            <default>true</default>
+        </key>
+        <key name="post-messages" type="b">
+            <default>true</default>
+        </key>
+        <key name="input-gain" type="d">
+            <range min="-20.0" max="20.0"/>
+            <default>0.0</default>
+        </key>
+        <key name="output-gain" type="d">
+            <range min="-20.0" max="20.0"/>
+            <default>0.0</default>
+        </key>
+        <key name="time-l" type="d">
+            <range min="0" max="1000"/>
+            <default>0.0</default>
+        </key>
+        <key name="time-r" type="d">
+            <range min="0" max="1000"/>
+            <default>0.0</default>
+        </key>
+    </schema>
+</schemalist>

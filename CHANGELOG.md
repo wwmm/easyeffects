@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+## [4.4.7]
+### Added
+- Updated Indonesian and Czech localizations.
+- Added the delay compensator plugin from Linux Studio Plugins (LV2 library).
+It is an optional plugin. We used it in the past but it was removed because its
+ license was not as friendly as I would like. Now that their license has changed
+ we are using it again.
+
 ## [4.4.6]
 ### Fixed
 - When the user loaded a preset file pointing to a impulse file that did not

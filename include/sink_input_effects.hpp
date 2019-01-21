@@ -8,17 +8,18 @@
 #include "crossfeed.hpp"
 #include "crystalizer.hpp"
 #include "deesser.hpp"
+#include "delay.hpp"
 #include "equalizer.hpp"
 #include "exciter.hpp"
 #include "filter.hpp"
 #include "gate.hpp"
-#include "pitch.hpp"
 #include "limiter.hpp"
 #include "loudness.hpp"
 #include "maximizer.hpp"
 #include "multiband_compressor.hpp"
 #include "multiband_gate.hpp"
 #include "pipeline_base.hpp"
+#include "pitch.hpp"
 #include "pulse_manager.hpp"
 #include "reverb.hpp"
 #include "stereo_tools.hpp"
@@ -54,6 +55,7 @@ class SinkInputEffects : public PipelineBase {
   std::unique_ptr<Convolver> convolver;
   std::unique_ptr<Crystalizer> crystalizer;
   std::unique_ptr<AutoGain> autogain;
+  std::unique_ptr<Delay> delay;
 
   sigc::signal<void, std::array<double, 2>> compressor_input_level;
   sigc::signal<void, std::array<double, 2>> compressor_output_level;
@@ -81,6 +83,8 @@ class SinkInputEffects : public PipelineBase {
   sigc::signal<void, std::array<double, 2>> crystalizer_output_level;
   sigc::signal<void, std::array<double, 2>> autogain_input_level;
   sigc::signal<void, std::array<double, 2>> autogain_output_level;
+  sigc::signal<void, std::array<double, 2>> delay_input_level;
+  sigc::signal<void, std::array<double, 2>> delay_output_level;
 
  private:
   GSettings* sie_settings = nullptr;

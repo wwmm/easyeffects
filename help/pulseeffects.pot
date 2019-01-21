@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-12-30 17:17-0200\n"
+"POT-Creation-Date: 2019-01-20 13:15-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -117,6 +117,7 @@ msgstr ""
 #: C/exciter.page:77
 #: C/filter.page:47
 #: C/gate.page:96
+#: C/delay.page:33
 #: C/limiter.page:123
 #: C/loudness.page:44
 #: C/multibandcompressor.page:128
@@ -491,6 +492,36 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/gate.page:90
 msgid "The level of gain reduction when the signal is below the threshold."
+msgstr ""
+
+#. (itstool) path: page/title
+#: C/delay.page:9
+msgid "Delay"
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/delay.page:10
+msgid "This plugin allows to add short delay to each individual channel of the stereo channel"
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/delay.page:17
+msgid "Left"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/delay.page:19
+msgid "Left channel delay."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/delay.page:25
+msgid "Right"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/delay.page:27
+msgid "Right channel delay."
 msgstr ""
 
 #. (itstool) path: page/title

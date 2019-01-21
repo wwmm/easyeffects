@@ -55,7 +55,7 @@ next to the plugin label at the left side. To be able to use all plugins you
 Version `1.12.5` or higher
 - [GStreamer Plugins Bad](https://github.com/GStreamer/gst-plugins-bad).
 Version `1.12.5` or higher
-- [Calf Studio Plugins](https://calf-studio-gear.org/). Version `0.90` or higher.
+- [Calf Studio Plugins](https://calf-studio-gear.org/). Version `0.90.1` or higher.
 - [ZamAudio Plugins](http://www.zamaudio.com/)
 - [MDA.LV2](https://git.drobilla.net/cgit.cgi/mda.lv2.git/about/)
 - [libsamplerate](http://www.mega-nerd.com/SRC/index.html)
@@ -71,7 +71,7 @@ Version `1.12.5` or higher
 
 ### GNU/Linux Packages
 
-- [Arch Linux](https://aur.archlinux.org/packages/pulseeffects/)
+- [Arch Linux](https://www.archlinux.org/packages/?sort=repo&name=pulseeffects)
 - [Void Linux](https://github.com/void-linux/void-packages/blob/master/srcpkgs/pulseeffects/template)
 - [Gentoo](https://packages.gentoo.org/packages/media-sound/pulseeffects/)
 - [ROSA](https://abf.io/import/pulseeffects/)

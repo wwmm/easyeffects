@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-30 17:16-0200\n"
+"POT-Creation-Date: 2019-01-20 13:09-0200\n"
 "PO-Revision-Date: 2018-11-22 20:12+0200\n"
 "Last-Translator: flipwise <tyx027@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -218,14 +218,14 @@ msgstr "Otežanja"
 #: data/ui/autogain.glade:318 data/ui/autogain.glade:510
 #: data/ui/limiter.glade:368 data/ui/compressor.glade:561
 #: data/ui/multiband_compressor.glade:1961 data/ui/filter.glade:371
-#: data/ui/equalizer.glade:472 data/ui/reverb.glade:633
+#: data/ui/equalizer.glade:473 data/ui/reverb.glade:633
 #: data/ui/bass_enhancer.glade:482 data/ui/exciter.glade:485
 #: data/ui/stereo_tools.glade:302 data/ui/stereo_tools.glade:807
 #: data/ui/crossfeed.glade:202 data/ui/maximizer.glade:242
 #: data/ui/loudness.glade:247 data/ui/gate.glade:490
 #: data/ui/multiband_gate.glade:2110 data/ui/deesser.glade:571
 #: data/ui/convolver.glade:461 data/ui/crystalizer.glade:176
-#: data/ui/pitch.glade:314 data/ui/webrtc.glade:627
+#: data/ui/pitch.glade:325 data/ui/webrtc.glade:627 data/ui/delay.glade:213
 msgid "Input"
 msgstr "Ulaz"
 
@@ -236,7 +236,7 @@ msgstr "Ulaz"
 #: data/ui/multiband_compressor.glade:1511
 #: data/ui/multiband_compressor.glade:1889
 #: data/ui/multiband_compressor.glade:1976 data/ui/filter.glade:386
-#: data/ui/equalizer.glade:487 data/ui/reverb.glade:648
+#: data/ui/equalizer.glade:488 data/ui/reverb.glade:648
 #: data/ui/bass_enhancer.glade:514 data/ui/exciter.glade:517
 #: data/ui/stereo_tools.glade:779 data/ui/stereo_tools.glade:821
 #: data/ui/crossfeed.glade:217 data/ui/maximizer.glade:257
@@ -245,7 +245,7 @@ msgstr "Ulaz"
 #: data/ui/multiband_gate.glade:1628 data/ui/multiband_gate.glade:2038
 #: data/ui/multiband_gate.glade:2125 data/ui/deesser.glade:586
 #: data/ui/convolver.glade:476 data/ui/crystalizer.glade:191
-#: data/ui/pitch.glade:329 data/ui/webrtc.glade:642
+#: data/ui/pitch.glade:339 data/ui/webrtc.glade:642 data/ui/delay.glade:228
 msgid "Output"
 msgstr "Izlaz"
 
@@ -610,10 +610,12 @@ msgid "Split Channels"
 msgstr "Kanali"
 
 #: data/ui/equalizer.glade:405 data/ui/stereo_tools.glade:527
+#: data/ui/delay.glade:134
 msgid "Left"
 msgstr "Lijevo"
 
-#: data/ui/equalizer.glade:445 data/ui/stereo_tools.glade:599
+#: data/ui/equalizer.glade:446 data/ui/stereo_tools.glade:599
+#: data/ui/delay.glade:166
 msgid "Right"
 msgstr "Desno"
 
@@ -972,7 +974,7 @@ msgstr "Trajanje"
 msgid "Samples"
 msgstr "Semplovi"
 
-#: data/ui/convolver.glade:326 src/convolver_ui.cpp:276
+#: data/ui/convolver.glade:326 src/convolver_ui.cpp:277
 #, fuzzy
 msgid "Impulse Response"
 msgstr "Reakcija impulsa"
@@ -1004,27 +1006,27 @@ msgstr "Intenzitet"
 msgid "Pitch"
 msgstr "Visina"
 
-#: data/ui/pitch.glade:133
+#: data/ui/pitch.glade:145
 msgid "Faster"
 msgstr "Brže"
 
-#: data/ui/pitch.glade:147
+#: data/ui/pitch.glade:159
 msgid "Preserve Formant"
 msgstr "Sačuvaj formant"
 
-#: data/ui/pitch.glade:171
+#: data/ui/pitch.glade:183
 msgid "Cents"
 msgstr "Centi"
 
-#: data/ui/pitch.glade:202
+#: data/ui/pitch.glade:214
 msgid "Semitones"
 msgstr "Polustepeni"
 
-#: data/ui/pitch.glade:233
+#: data/ui/pitch.glade:245
 msgid "Octaves"
 msgstr "Oktave"
 
-#: data/ui/pitch.glade:264
+#: data/ui/pitch.glade:276
 msgid "Crispness"
 msgstr "Oštrina"
 
@@ -1114,6 +1116,10 @@ msgstr "Vrlo nisko"
 #: data/ui/webrtc.glade:587
 msgid "Voice Detector"
 msgstr "Detektor glasa"
+
+#: data/ui/delay.glade:24
+msgid "Delay"
+msgstr "Kašnjenje"
 
 #: data/ui/presets_menu.glade:61 src/presets_menu_ui.cpp:114
 msgid "Import Presets"
@@ -1331,11 +1337,11 @@ msgstr "Općenito"
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
 
-#: src/presets_menu_ui.cpp:115 src/convolver_ui.cpp:272
+#: src/presets_menu_ui.cpp:115 src/convolver_ui.cpp:273
 msgid "Open"
 msgstr "Otvori"
 
-#: src/presets_menu_ui.cpp:115 src/convolver_ui.cpp:272
+#: src/presets_menu_ui.cpp:115 src/convolver_ui.cpp:273
 msgid "Cancel"
 msgstr "Poništi"
 
@@ -1352,16 +1358,16 @@ msgstr "reprodukcija"
 msgid "Calibration Microphone"
 msgstr "Kalibracija mikrofona"
 
-#: src/convolver_ui.cpp:271
+#: src/convolver_ui.cpp:272
 #, fuzzy
 msgid "Import Impulse File"
 msgstr "Učitaj impuls datoteku"
 
-#: src/convolver_ui.cpp:314 src/convolver_ui.cpp:315 src/convolver_ui.cpp:317
+#: src/convolver_ui.cpp:315 src/convolver_ui.cpp:316 src/convolver_ui.cpp:318
 msgid "Failed"
 msgstr "Nije uspjelo"
 
-#: src/convolver_ui.cpp:319
+#: src/convolver_ui.cpp:320
 msgid "Could Not Load The Impulse File"
 msgstr "Nije bilo moguće učitati impuls datoteku"
 
@@ -1412,9 +1418,6 @@ msgstr "Nije bilo moguće učitati impuls datoteku"
 
 #~ msgid "Stereo Enhancer"
 #~ msgstr "Pojačanje sterea"
-
-#~ msgid "Delay"
-#~ msgstr "Kašnjenje"
 
 #~ msgid "Invert Middle Phase"
 #~ msgstr "Inverzija srednje faze"

@@ -1,0 +1,53 @@
+<page
+    xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its"
+    type="guide"
+    id="delay">
+    <info>
+        <link type="guide" xref="index#plugins"/>
+    </info>
+    <title>Delay</title>
+    <p>
+        This plugin allows to add short delay to each individual channel of the stereo
+        channel
+    </p>
+    <terms>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Left</em>
+            </title>
+            <p>
+                Left channel delay.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Right</em>
+            </title>
+            <p>
+                Right channel delay.
+            </p>
+        </item>
+    </terms>
+    <section>
+        <title>References</title>
+        <list>
+            <item>
+                <p>
+                    <link href="http://lsp-plug.in/?page=manuals" its:translate="no">
+                        http://lsp-plug.in/?page=manuals
+                    </link>
+                </p>
+            </item>
+            <item>
+                <p>
+                    <link
+                        href="https://en.wikipedia.org/wiki/Delay_(audio_effect)"
+                        its:translate="no">
+                        https://en.wikipedia.org/wiki/Delay_(audio_effect)
+                    </link>
+                </p>
+            </item>
+        </list>
+    </section>
+</page>

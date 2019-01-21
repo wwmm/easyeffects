@@ -1,7 +1,6 @@
 #ifndef SINK_INPUT_EFFECTS_UI_HPP
 #define SINK_INPUT_EFFECTS_UI_HPP
 
-#include <gtkmm/stack.h>
 #include "autogain_ui.hpp"
 #include "bass_enhancer_ui.hpp"
 #include "compressor_ui.hpp"
@@ -9,17 +8,18 @@
 #include "crossfeed_ui.hpp"
 #include "crystalizer_ui.hpp"
 #include "deesser_ui.hpp"
+#include "delay_ui.hpp"
 #include "effects_base_ui.hpp"
 #include "equalizer_ui.hpp"
 #include "exciter_ui.hpp"
 #include "filter_ui.hpp"
 #include "gate_ui.hpp"
-#include "pitch_ui.hpp"
 #include "limiter_ui.hpp"
 #include "loudness_ui.hpp"
 #include "maximizer_ui.hpp"
 #include "multiband_compressor_ui.hpp"
 #include "multiband_gate_ui.hpp"
+#include "pitch_ui.hpp"
 #include "reverb_ui.hpp"
 #include "sink_input_effects.hpp"
 #include "stereo_tools_ui.hpp"
@@ -61,6 +61,7 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
   ConvolverUi* convolver_ui;
   CrystalizerUi* crystalizer_ui;
   AutoGainUi* autogain_ui;
+  DelayUi* delay_ui;
 
   void level_meters_connections();
   void up_down_connections();

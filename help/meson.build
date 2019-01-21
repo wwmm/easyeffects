@@ -11,6 +11,7 @@ help_pages = [
   'exciter.page',
   'filter.page',
   'gate.page',
+  'delay.page',
   'index.page',
   'limiter.page',
   'loudness.page',

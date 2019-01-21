@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-30 17:16-0200\n"
+"POT-Creation-Date: 2019-01-20 13:09-0200\n"
 "PO-Revision-Date: 2018-12-31 13:07+0100\n"
-"Translator: Matteo Iervasi <matteoiervasi@gmail.com>\n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
 "Language: it_IT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Translator: Matteo Iervasi <matteoiervasi@gmail.com>\n"
 "X-Generator: Poedit 2.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -209,14 +209,14 @@ msgstr "Pesi"
 #: data/ui/autogain.glade:318 data/ui/autogain.glade:510
 #: data/ui/limiter.glade:368 data/ui/compressor.glade:561
 #: data/ui/multiband_compressor.glade:1961 data/ui/filter.glade:371
-#: data/ui/equalizer.glade:472 data/ui/reverb.glade:633
+#: data/ui/equalizer.glade:473 data/ui/reverb.glade:633
 #: data/ui/bass_enhancer.glade:482 data/ui/exciter.glade:485
 #: data/ui/stereo_tools.glade:302 data/ui/stereo_tools.glade:807
 #: data/ui/crossfeed.glade:202 data/ui/maximizer.glade:242
 #: data/ui/loudness.glade:247 data/ui/gate.glade:490
 #: data/ui/multiband_gate.glade:2110 data/ui/deesser.glade:571
 #: data/ui/convolver.glade:461 data/ui/crystalizer.glade:176
-#: data/ui/pitch.glade:314 data/ui/webrtc.glade:627
+#: data/ui/pitch.glade:325 data/ui/webrtc.glade:627 data/ui/delay.glade:213
 msgid "Input"
 msgstr "Ingresso"
 
@@ -227,7 +227,7 @@ msgstr "Ingresso"
 #: data/ui/multiband_compressor.glade:1511
 #: data/ui/multiband_compressor.glade:1889
 #: data/ui/multiband_compressor.glade:1976 data/ui/filter.glade:386
-#: data/ui/equalizer.glade:487 data/ui/reverb.glade:648
+#: data/ui/equalizer.glade:488 data/ui/reverb.glade:648
 #: data/ui/bass_enhancer.glade:514 data/ui/exciter.glade:517
 #: data/ui/stereo_tools.glade:779 data/ui/stereo_tools.glade:821
 #: data/ui/crossfeed.glade:217 data/ui/maximizer.glade:257
@@ -236,7 +236,7 @@ msgstr "Ingresso"
 #: data/ui/multiband_gate.glade:1628 data/ui/multiband_gate.glade:2038
 #: data/ui/multiband_gate.glade:2125 data/ui/deesser.glade:586
 #: data/ui/convolver.glade:476 data/ui/crystalizer.glade:191
-#: data/ui/pitch.glade:329 data/ui/webrtc.glade:642
+#: data/ui/pitch.glade:339 data/ui/webrtc.glade:642 data/ui/delay.glade:228
 msgid "Output"
 msgstr "Uscita"
 
@@ -584,10 +584,12 @@ msgid "Split Channels"
 msgstr "Dividi Canali"
 
 #: data/ui/equalizer.glade:405 data/ui/stereo_tools.glade:527
+#: data/ui/delay.glade:134
 msgid "Left"
 msgstr "Sinistra"
 
-#: data/ui/equalizer.glade:445 data/ui/stereo_tools.glade:599
+#: data/ui/equalizer.glade:446 data/ui/stereo_tools.glade:599
+#: data/ui/delay.glade:166
 msgid "Right"
 msgstr "Destra"
 
@@ -924,7 +926,7 @@ msgstr "Durata"
 msgid "Samples"
 msgstr "Campioni"
 
-#: data/ui/convolver.glade:326 src/convolver_ui.cpp:276
+#: data/ui/convolver.glade:326 src/convolver_ui.cpp:277
 msgid "Impulse Response"
 msgstr "Risposto all'Impulso"
 
@@ -952,27 +954,27 @@ msgstr "Intensità"
 msgid "Pitch"
 msgstr "Intonazione"
 
-#: data/ui/pitch.glade:133
+#: data/ui/pitch.glade:145
 msgid "Faster"
 msgstr "Più Veloce"
 
-#: data/ui/pitch.glade:147
+#: data/ui/pitch.glade:159
 msgid "Preserve Formant"
 msgstr "Preserva Formato"
 
-#: data/ui/pitch.glade:171
+#: data/ui/pitch.glade:183
 msgid "Cents"
 msgstr "Centesimi"
 
-#: data/ui/pitch.glade:202
+#: data/ui/pitch.glade:214
 msgid "Semitones"
 msgstr "Semitoni"
 
-#: data/ui/pitch.glade:233
+#: data/ui/pitch.glade:245
 msgid "Octaves"
 msgstr "Ottave"
 
-#: data/ui/pitch.glade:264
+#: data/ui/pitch.glade:276
 msgid "Crispness"
 msgstr "Durezza"
 
@@ -1060,6 +1062,10 @@ msgstr "Molto piccolo"
 #: data/ui/webrtc.glade:587
 msgid "Voice Detector"
 msgstr "Rilevatore Voce"
+
+#: data/ui/delay.glade:24
+msgid "Delay"
+msgstr "Ritardo"
 
 #: data/ui/presets_menu.glade:61 src/presets_menu_ui.cpp:114
 msgid "Import Presets"
@@ -1274,11 +1280,11 @@ msgstr "Generale"
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
 
-#: src/presets_menu_ui.cpp:115 src/convolver_ui.cpp:272
+#: src/presets_menu_ui.cpp:115 src/convolver_ui.cpp:273
 msgid "Open"
 msgstr "Apri"
 
-#: src/presets_menu_ui.cpp:115 src/convolver_ui.cpp:272
+#: src/presets_menu_ui.cpp:115 src/convolver_ui.cpp:273
 msgid "Cancel"
 msgstr "Cancella"
 
@@ -1294,15 +1300,15 @@ msgstr "in riproduzione"
 msgid "Calibration Microphone"
 msgstr "Calibrazione Microfono"
 
-#: src/convolver_ui.cpp:271
+#: src/convolver_ui.cpp:272
 msgid "Import Impulse File"
 msgstr "Importa File Impulso"
 
-#: src/convolver_ui.cpp:314 src/convolver_ui.cpp:315 src/convolver_ui.cpp:317
+#: src/convolver_ui.cpp:315 src/convolver_ui.cpp:316 src/convolver_ui.cpp:318
 msgid "Failed"
 msgstr "Fallito"
 
-#: src/convolver_ui.cpp:319
+#: src/convolver_ui.cpp:320
 msgid "Could Not Load The Impulse File"
 msgstr "Impossibile Caricare File Impulso"
 
@@ -1331,9 +1337,6 @@ msgstr "Impossibile Caricare File Impulso"
 #, fuzzy
 #~ msgid "Import"
 #~ msgstr "Carica Preset"
-
-#~ msgid "Delay"
-#~ msgstr "Ritardo"
 
 #~ msgid "Invert Middle Phase"
 #~ msgstr "Inverti fase medi"

@@ -31,7 +31,8 @@ PresetsManager::PresetsManager()
       stereo_tools(std::make_unique<StereoToolsPreset>()),
       convolver(std::make_unique<ConvolverPreset>()),
       crystalizer(std::make_unique<CrystalizerPreset>()),
-      autogain(std::make_unique<AutoGainPreset>()) {
+      autogain(std::make_unique<AutoGainPreset>()),
+      delay(std::make_unique<DelayPreset>()) {
   auto dir_exists = boost::filesystem::is_directory(presets_dir);
 
   if (!dir_exists) {
@@ -251,6 +252,7 @@ void PresetsManager::save(const std::string& name) {
   convolver->write(root);
   crystalizer->write(root);
   autogain->write(root);
+  delay->write(root);
 
   auto output_file = presets_dir / boost::filesystem::path{name + ".json"};
 
@@ -358,6 +360,7 @@ void PresetsManager::load(const std::string& name) {
   convolver->read(root);
   crystalizer->read(root);
   autogain->read(root);
+  delay->read(root);
 
   util::debug(log_tag + "loaded preset: " + input_file.string());
 }
