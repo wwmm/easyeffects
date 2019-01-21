@@ -1,7 +1,6 @@
 #ifndef SINK_INPUT_EFFECTS_UI_HPP
 #define SINK_INPUT_EFFECTS_UI_HPP
 
-#include <gtkmm/stack.h>
 #include "autogain_ui.hpp"
 #include "bass_enhancer_ui.hpp"
 #include "compressor_ui.hpp"
