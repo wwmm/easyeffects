@@ -5,6 +5,9 @@
 ### Added
 - Remember window size.
 
+### Fixed
+- Icon is properly rendered in QT environments
+
 ## [4.4.7]
 ### Added
 - Updated Indonesian and Czech localizations.
