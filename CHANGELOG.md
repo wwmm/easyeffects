@@ -4,6 +4,7 @@
 
 ### Added
 - Remember window size.
+- Updated limiter help.
 
 ### Fixed
 - Icon is properly rendered in QT environments

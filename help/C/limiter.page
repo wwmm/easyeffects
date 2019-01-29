@@ -6,15 +6,14 @@
     <info>
         <link type="guide" xref="index#plugins"/>
     </info>
-    <title>Limiter and Auto Volume</title>
+    <title>Limiter</title>
     <p>
         A limiter allows signals below a specified input power or level to pass
         unaffected while attenuating (lowering) the peaks of stronger signals that
         exceed this threshold.
     </p>
     <p>
-        PulseEffects uses the limiter developed by Calf Studio. We only attached to it a
-        routine to automatically set its input gain. This is what we call auto volume.
+        PulseEffects uses the limiter developed by Calf Studio.
     </p>
     <section>
         <title>Limiter</title>
@@ -77,44 +76,6 @@
                 <p>
                     Select how much the release time is affected by ASC, 0 means nearly no changes
                     in release time while 1 produces higher release times.
-                </p>
-            </item>
-        </terms>
-    </section>
-    <section>
-        <title>Auto Volume</title>
-        <terms>
-            <item>
-                <title>
-                    <em style="strong" its:withinText="nested">Window</em>
-                </title>
-                <p>
-                    The amount of time taken to measure the maximum audio peak.
-                </p>
-            </item>
-            <item>
-                <title>
-                    <em style="strong" its:withinText="nested">Target</em>
-                </title>
-                <p>
-                    The desired peak value.
-                </p>
-            </item>
-            <item>
-                <title>
-                    <em style="strong" its:withinText="nested">Tolerance</em>
-                </title>
-                <p>
-                    Maximum tolerated difference between the target level and the current peak
-                    level.
-                </p>
-            </item>
-            <item>
-                <title>
-                    <em style="strong" its:withinText="nested">Threshold</em>
-                </title>
-                <p>
-                    Auto volume works only when the audio level is above the threshold.
                 </p>
             </item>
         </terms>
