@@ -4,9 +4,10 @@
 
 Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
     : PluginBase(tag, "crystalizer", schema) {
-  crystalizer = gst_element_factory_make("pecrystalizer", nullptr);
+  crystalizer_low = gst_element_factory_make("pecrystalizer", nullptr);
+  crystalizer_high = gst_element_factory_make("pecrystalizer", nullptr);
 
-  if (is_installed(crystalizer)) {
+  if (is_installed(crystalizer_low)) {
     auto input_gain = gst_element_factory_make("volume", nullptr);
     auto in_level =
         gst_element_factory_make("level", "crystalizer_input_level");
@@ -18,12 +19,61 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
     auto audioconvert_out = gst_element_factory_make(
         "audioconvert", "crystalizer_audioconvert_out");
 
-    gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in,
-                     crystalizer, audioconvert_out, output_gain, out_level,
-                     nullptr);
+    auto tee = gst_element_factory_make("tee", "crystalizer_tee");
+    auto queue_low = gst_element_factory_make("queue", "crystalizer_queue0");
+    auto queue_high = gst_element_factory_make("queue", "crystalizer_queue1");
+    auto lowpass =
+        gst_element_factory_make("audiocheblimit", "crystalizer_lowpass");
+    auto highpass =
+        gst_element_factory_make("audiocheblimit", "crystalizer_highpass");
+    auto mixer = gst_element_factory_make("audiomixer", "crystalizer_mixer");
 
-    gst_element_link_many(input_gain, in_level, audioconvert_in, crystalizer,
-                          audioconvert_out, output_gain, out_level, nullptr);
+    g_object_set(queue_low, "silent", true, nullptr);
+    g_object_set(queue_low, "max-size-buffers", 0, nullptr);
+    g_object_set(queue_low, "max-size-bytes", 0, nullptr);
+    g_object_set(queue_low, "max-size-time", 0, nullptr);
+
+    g_object_set(queue_high, "silent", true, nullptr);
+    g_object_set(queue_high, "max-size-buffers", 0, nullptr);
+    g_object_set(queue_high, "max-size-bytes", 0, nullptr);
+    g_object_set(queue_high, "max-size-time", 0, nullptr);
+
+    g_object_set(lowpass, "mode", 0, nullptr);
+    g_object_set(lowpass, "type", 1, nullptr);
+    g_object_set(lowpass, "poles", 16, nullptr);
+    g_object_set(lowpass, "ripple", 0, nullptr);
+
+    g_object_set(highpass, "mode", 1, nullptr);
+    g_object_set(highpass, "type", 1, nullptr);
+    g_object_set(highpass, "poles", 16, nullptr);
+    g_object_set(highpass, "ripple", 0, nullptr);
+
+    g_object_set(lowpass, "cutoff", 12000.0f, nullptr);
+    g_object_set(highpass, "cutoff", 12000.0f, nullptr);
+    g_object_set(crystalizer_high, "intensity", 0.5f, nullptr);
+
+    // auto tee_srcpad0 = gst_element_get_request_pad(tee, "src_0");
+    // auto tee_srcpad1 = gst_element_get_request_pad(tee, "src_1");
+
+    // auto lowpass_sinkpad = gst_element_get_static_pad(lowpass, "sink");
+    // auto highpass_sinkpad = gst_element_get_static_pad(highpass, "sink");
+
+    gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in, tee,
+                     lowpass, highpass, crystalizer_low, crystalizer_high,
+                     mixer, audioconvert_out, output_gain, out_level, nullptr);
+
+    gst_element_link_many(input_gain, in_level, audioconvert_in, tee, nullptr);
+
+    gst_element_link_many(mixer, audioconvert_out, output_gain, out_level,
+                          nullptr);
+
+    gst_element_link_many(lowpass, crystalizer_low, mixer, nullptr);
+    gst_element_link_many(highpass, crystalizer_high, mixer, nullptr);
+
+    // gst_pad_link(tee_srcpad0, lowpass_sinkpad);
+    // gst_pad_link(tee_srcpad1, highpass_sinkpad);
+    gst_element_link(tee, lowpass);
+    gst_element_link(tee, highpass);
 
     auto pad_sink = gst_element_get_static_pad(input_gain, "sink");
     auto pad_src = gst_element_get_static_pad(out_level, "src");
@@ -33,6 +83,10 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
 
     gst_object_unref(GST_OBJECT(pad_sink));
     gst_object_unref(GST_OBJECT(pad_src));
+    // gst_object_unref(GST_OBJECT(tee_srcpad0));
+    // gst_object_unref(GST_OBJECT(tee_srcpad1));
+    // gst_object_unref(GST_OBJECT(lowpass_sinkpad));
+    // gst_object_unref(GST_OBJECT(highpass_sinkpad));
 
     bind_to_gsettings();
 
@@ -64,7 +118,7 @@ Crystalizer::~Crystalizer() {
 }
 
 void Crystalizer::bind_to_gsettings() {
-  g_settings_bind_with_mapping(settings, "intensity", crystalizer, "intensity",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
-                               nullptr, nullptr, nullptr);
+  g_settings_bind_with_mapping(
+      settings, "intensity", crystalizer_low, "intensity", G_SETTINGS_BIND_GET,
+      util::double_to_float, nullptr, nullptr, nullptr);
 }
