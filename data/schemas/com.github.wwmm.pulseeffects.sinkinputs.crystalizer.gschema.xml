@@ -26,11 +26,11 @@
         </key>
         <key name="intensity-lower" type="d">
             <range min="0" max="10"/>
-            <default>1.0</default>
+            <default>1.5</default>
         </key>
         <key name="intensity-higher" type="d">
             <range min="0" max="10"/>
-            <default>1.0</default>
+            <default>0.5</default>
         </key>
     </schema>
 </schemalist>
