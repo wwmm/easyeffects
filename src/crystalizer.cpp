@@ -29,12 +29,12 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
     auto mixer = gst_element_factory_make("audiomixer", "crystalizer_mixer");
 
     g_object_set(queue_low, "silent", true, nullptr);
-    g_object_set(queue_low, "max-size-buffers", 0, nullptr);
+    g_object_set(queue_low, "max-size-buffers", 1, nullptr);
     g_object_set(queue_low, "max-size-bytes", 0, nullptr);
     g_object_set(queue_low, "max-size-time", 0, nullptr);
 
     g_object_set(queue_high, "silent", true, nullptr);
-    g_object_set(queue_high, "max-size-buffers", 0, nullptr);
+    g_object_set(queue_high, "max-size-buffers", 1, nullptr);
     g_object_set(queue_high, "max-size-bytes", 0, nullptr);
     g_object_set(queue_high, "max-size-time", 0, nullptr);
 
