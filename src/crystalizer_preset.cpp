@@ -15,8 +15,14 @@ void CrystalizerPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".crystalizer.output-gain",
            settings->get_double("output-gain"));
 
-  root.put(section + ".crystalizer.intensity",
-           settings->get_double("intensity"));
+  root.put(section + ".crystalizer.split-frequency",
+           settings->get_double("split-frequency"));
+
+  root.put(section + ".crystalizer.intensity-lower",
+           settings->get_double("intensity-lower"));
+
+  root.put(section + ".crystalizer.intensity-higher",
+           settings->get_double("intensity-higher"));
 }
 
 void CrystalizerPreset::load(boost::property_tree::ptree& root,
@@ -30,8 +36,14 @@ void CrystalizerPreset::load(boost::property_tree::ptree& root,
   update_key<double>(root, settings, "output-gain",
                      section + ".crystalizer.output-gain");
 
-  update_key<double>(root, settings, "intensity",
-                     section + ".crystalizer.intensity");
+  update_key<double>(root, settings, "split-frequency",
+                     section + ".crystalizer.split-frequency");
+
+  update_key<double>(root, settings, "intensity-lower",
+                     section + ".crystalizer.intensity-lower");
+
+  update_key<double>(root, settings, "intensity-higher",
+                     section + ".crystalizer.intensity-higher");
 }
 
 void CrystalizerPreset::write(boost::property_tree::ptree& root) {

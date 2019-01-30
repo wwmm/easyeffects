@@ -10,7 +10,8 @@ class Crystalizer : public PluginBase {
   Crystalizer(const std::string& tag, const std::string& schema);
   ~Crystalizer();
 
-  GstElement *crystalizer_low = nullptr, *crystalizer_high = nullptr;
+  GstElement *crystalizer_low = nullptr, *crystalizer_high = nullptr,
+             *lowpass = nullptr, *highpass = nullptr;
 
  private:
   void bind_to_gsettings();

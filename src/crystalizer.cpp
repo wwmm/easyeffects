@@ -22,19 +22,20 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
     auto tee = gst_element_factory_make("tee", "crystalizer_tee");
     auto queue_low = gst_element_factory_make("queue", "crystalizer_queue0");
     auto queue_high = gst_element_factory_make("queue", "crystalizer_queue1");
-    auto lowpass =
-        gst_element_factory_make("audiocheblimit", "crystalizer_lowpass");
-    auto highpass =
-        gst_element_factory_make("audiocheblimit", "crystalizer_highpass");
+
     auto mixer = gst_element_factory_make("audiomixer", "crystalizer_mixer");
 
+    lowpass = gst_element_factory_make("audiocheblimit", "crystalizer_lowpass");
+    highpass =
+        gst_element_factory_make("audiocheblimit", "crystalizer_highpass");
+
     g_object_set(queue_low, "silent", true, nullptr);
-    g_object_set(queue_low, "max-size-buffers", 1, nullptr);
+    g_object_set(queue_low, "max-size-buffers", 0, nullptr);
     g_object_set(queue_low, "max-size-bytes", 0, nullptr);
     g_object_set(queue_low, "max-size-time", 0, nullptr);
 
     g_object_set(queue_high, "silent", true, nullptr);
-    g_object_set(queue_high, "max-size-buffers", 1, nullptr);
+    g_object_set(queue_high, "max-size-buffers", 0, nullptr);
     g_object_set(queue_high, "max-size-bytes", 0, nullptr);
     g_object_set(queue_high, "max-size-time", 0, nullptr);
 
@@ -47,10 +48,6 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
     g_object_set(highpass, "type", 1, nullptr);
     g_object_set(highpass, "poles", 16, nullptr);
     g_object_set(highpass, "ripple", 0, nullptr);
-
-    g_object_set(lowpass, "cutoff", 12000.0f, nullptr);
-    g_object_set(highpass, "cutoff", 12000.0f, nullptr);
-    g_object_set(crystalizer_high, "intensity", 0.5f, nullptr);
 
     gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in, tee,
                      queue_low, queue_high, lowpass, highpass, crystalizer_low,
@@ -106,7 +103,19 @@ Crystalizer::~Crystalizer() {
 }
 
 void Crystalizer::bind_to_gsettings() {
+  g_settings_bind_with_mapping(settings, "split-frequency", lowpass, "cutoff",
+                               G_SETTINGS_BIND_GET, util::double_to_float,
+                               nullptr, nullptr, nullptr);
+
+  g_settings_bind_with_mapping(settings, "split-frequency", highpass, "cutoff",
+                               G_SETTINGS_BIND_GET, util::double_to_float,
+                               nullptr, nullptr, nullptr);
+
   g_settings_bind_with_mapping(
-      settings, "intensity", crystalizer_low, "intensity", G_SETTINGS_BIND_GET,
-      util::double_to_float, nullptr, nullptr, nullptr);
+      settings, "intensity-lower", crystalizer_low, "intensity",
+      G_SETTINGS_BIND_GET, util::double_to_float, nullptr, nullptr, nullptr);
+
+  g_settings_bind_with_mapping(
+      settings, "intensity-higher", crystalizer_high, "intensity",
+      G_SETTINGS_BIND_GET, util::double_to_float, nullptr, nullptr, nullptr);
 }
