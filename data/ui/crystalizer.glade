@@ -110,7 +110,7 @@
   <object class="GtkAdjustment" id="split_frequency">
     <property name="lower">8000</property>
     <property name="upper">20000</property>
-    <property name="value">12000</property>
+    <property name="value">10000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
