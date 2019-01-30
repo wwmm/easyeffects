@@ -64,27 +64,11 @@ void on_deinterleave_no_more_pads(GstElement*, Equalizer* l) {
 
   gst_bin_add(GST_BIN(l->bin), l->interleave);
 
+  gst_element_link(l->equalizer_L, l->interleave);
+  gst_element_link(l->equalizer_R, l->interleave);
   gst_element_link(l->interleave, l->audioconvert_out);
 
-  auto interleave_sink0_pad =
-      gst_element_get_request_pad(l->interleave, "sink_0");
-
-  auto interleave_sink1_pad =
-      gst_element_get_request_pad(l->interleave, "sink_1");
-
-  auto eq_L_src_pad = gst_element_get_static_pad(l->equalizer_L, "src");
-
-  auto eq_R_src_pad = gst_element_get_static_pad(l->equalizer_R, "src");
-
-  gst_pad_link(eq_L_src_pad, interleave_sink0_pad);
-  gst_pad_link(eq_R_src_pad, interleave_sink1_pad);
-
   gst_element_sync_state_with_parent(l->interleave);
-
-  gst_object_unref(GST_OBJECT(interleave_sink0_pad));
-  gst_object_unref(GST_OBJECT(interleave_sink1_pad));
-  gst_object_unref(GST_OBJECT(eq_L_src_pad));
-  gst_object_unref(GST_OBJECT(eq_R_src_pad));
 }
 
 }  // namespace
@@ -156,11 +140,13 @@ Equalizer::Equalizer(const std::string& tag,
     // init
 
     g_object_set(queue_L, "silent", true, nullptr);
+    g_object_set(queue_L, "flush-on-eos", true, nullptr);
     g_object_set(queue_L, "max-size-buffers", 0, nullptr);
     g_object_set(queue_L, "max-size-bytes", 0, nullptr);
     g_object_set(queue_L, "max-size-time", 0, nullptr);
 
     g_object_set(queue_R, "silent", true, nullptr);
+    g_object_set(queue_R, "flush-on-eos", true, nullptr);
     g_object_set(queue_R, "max-size-buffers", 0, nullptr);
     g_object_set(queue_R, "max-size-bytes", 0, nullptr);
     g_object_set(queue_R, "max-size-time", 0, nullptr);

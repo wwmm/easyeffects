@@ -30,11 +30,13 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
         gst_element_factory_make("audiocheblimit", "crystalizer_highpass");
 
     g_object_set(queue_low, "silent", true, nullptr);
+    g_object_set(queue_low, "flush-on-eos", true, nullptr);
     g_object_set(queue_low, "max-size-buffers", 0, nullptr);
     g_object_set(queue_low, "max-size-bytes", 0, nullptr);
     g_object_set(queue_low, "max-size-time", 0, nullptr);
 
     g_object_set(queue_high, "silent", true, nullptr);
+    g_object_set(queue_high, "flush-on-eos", true, nullptr);
     g_object_set(queue_high, "max-size-buffers", 0, nullptr);
     g_object_set(queue_high, "max-size-bytes", 0, nullptr);
     g_object_set(queue_high, "max-size-time", 0, nullptr);
