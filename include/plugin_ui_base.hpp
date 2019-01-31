@@ -91,7 +91,15 @@ class PluginUiBase {
     auto right = peak[1];
 
     if (left >= -99) {
-      w_left->set_value(util::db_to_linear(left));
+      auto db_value = util::db_to_linear(left);
+
+      if (db_value < 0) {
+        db_value = 0;
+      } else if (db_value > 1) {
+        db_value = 1;
+      }
+
+      w_left->set_value(db_value);
       w_left_label->set_text(level_to_str(left));
     } else {
       w_left->set_value(0);
@@ -99,7 +107,15 @@ class PluginUiBase {
     }
 
     if (right >= -99) {
-      w_right->set_value(util::db_to_linear(right));
+      auto db_value = util::db_to_linear(right);
+
+      if (db_value < 0) {
+        db_value = 0;
+      } else if (db_value > 1) {
+        db_value = 1;
+      }
+
+      w_right->set_value(db_value);
       w_right_label->set_text(level_to_str(right));
     } else {
       w_right->set_value(0);

@@ -5,6 +5,56 @@
 #include <boost/math/interpolators/cubic_b_spline.hpp>
 #include <sndfile.hh>
 
+namespace {
+
+gboolean blocksize_enum_to_int(GValue* value,
+                               GVariant* variant,
+                               gpointer user_data) {
+  auto v = g_variant_get_string(variant, nullptr);
+
+  if (v == std::string("64")) {
+    g_value_set_int(value, 0);
+  } else if (v == std::string("128")) {
+    g_value_set_int(value, 1);
+  } else if (v == std::string("256")) {
+    g_value_set_int(value, 2);
+  } else if (v == std::string("512")) {
+    g_value_set_int(value, 3);
+  } else if (v == std::string("1024")) {
+    g_value_set_int(value, 4);
+  } else if (v == std::string("2048")) {
+    g_value_set_int(value, 5);
+  } else if (v == std::string("4096")) {
+    g_value_set_int(value, 6);
+  }
+
+  return true;
+}
+
+GVariant* int_to_blocksize_enum(const GValue* value,
+                                const GVariantType* expected_type,
+                                gpointer user_data) {
+  int v = g_value_get_int(value);
+
+  if (v == 0) {
+    return g_variant_new_string("64");
+  } else if (v == 1) {
+    return g_variant_new_string("128");
+  } else if (v == 2) {
+    return g_variant_new_string("256");
+  } else if (v == 3) {
+    return g_variant_new_string("512");
+  } else if (v == 4) {
+    return g_variant_new_string("1024");
+  } else if (v == 5) {
+    return g_variant_new_string("2048");
+  } else {
+    return g_variant_new_string("4096");
+  }
+}
+
+}  // namespace
+
 ConvolverUi::ConvolverUi(BaseObjectType* cobject,
                          const Glib::RefPtr<Gtk::Builder>& builder,
                          const std::string& settings_name)
@@ -27,6 +77,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
   builder->get_widget("samples", label_samples);
   builder->get_widget("duration", label_duration);
   builder->get_widget("show_fft", show_fft);
+  builder->get_widget("blocksize", blocksize);
 
   get_object(builder, "input_gain", input_gain);
   get_object(builder, "output_gain", output_gain);
@@ -90,6 +141,11 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
   settings->bind("ir-width", ir_width.get(), "value", flag);
 
   settings->set_boolean("post-messages", true);
+
+  g_settings_bind_with_mapping(settings->gobj(), "blocksize", blocksize->gobj(),
+                               "active", G_SETTINGS_BIND_DEFAULT,
+                               blocksize_enum_to_int, int_to_blocksize_enum,
+                               nullptr, nullptr);
 
   // irs dir
 

@@ -10,7 +10,7 @@ class Convolver : public PluginBase {
   Convolver(const std::string& tag, const std::string& schema);
   ~Convolver();
 
-  GstElement* convolver = nullptr;
+  GstElement *convolver = nullptr, *adapter = nullptr;
 
  private:
   void bind_to_gsettings();

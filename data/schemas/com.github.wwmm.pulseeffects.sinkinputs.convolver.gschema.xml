@@ -27,5 +27,8 @@
             <range min="0" max="200"/>
             <default>100</default>
         </key>
+        <key name="blocksize" enum="com.github.wwmm.pulseeffects.blocksize.enum">
+            <default>"512"</default>
+        </key>
     </schema>
 </schemalist>

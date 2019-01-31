@@ -17,8 +17,8 @@ class PipelineBase {
   bool playing = false;
   std::string log_tag;
 
-  GstElement *pipeline = nullptr, *source = nullptr, *adapter = nullptr,
-             *sink = nullptr, *spectrum = nullptr, *spectrum_bin = nullptr,
+  GstElement *pipeline = nullptr, *source = nullptr, *sink = nullptr,
+             *spectrum = nullptr, *spectrum_bin = nullptr,
              *spectrum_identity_in = nullptr, *spectrum_identity_out = nullptr,
              *effects_bin = nullptr, *identity_in = nullptr,
              *identity_out = nullptr;

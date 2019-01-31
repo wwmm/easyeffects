@@ -34,6 +34,7 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
   Gtk::Label *label_file_name, *label_sampling_rate, *label_samples,
       *label_duration;
   Gtk::ToggleButton* show_fft;
+  Gtk::ComboBoxText* blocksize;
 
   Pango::FontDescription font;
 

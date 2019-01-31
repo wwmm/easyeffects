@@ -281,7 +281,6 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
 
   source = get_required_plugin("pulsesrc", "source");
   capsfilter = get_required_plugin("capsfilter", nullptr);
-  adapter = get_required_plugin("peadapter", nullptr);
   sink = get_required_plugin("pulsesink", "sink");
   spectrum = get_required_plugin("spectrum", "spectrum");
 
@@ -296,12 +295,12 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
   // building the pipeline
 
   gst_bin_add_many(GST_BIN(pipeline), source, queue_src, audioconvert_in,
-                   capsfilter, src_type, adapter, audioconvert_out, effects_bin,
+                   capsfilter, src_type, audioconvert_out, effects_bin,
                    spectrum_bin, sink, nullptr);
 
   gst_element_link_many(source, queue_src, audioconvert_in, capsfilter,
-                        src_type, adapter, audioconvert_out, effects_bin,
-                        spectrum_bin, sink, nullptr);
+                        src_type, audioconvert_out, effects_bin, spectrum_bin,
+                        sink, nullptr);
 
   // initializing properties
 

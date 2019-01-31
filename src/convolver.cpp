@@ -2,6 +2,12 @@
 #include <glibmm/main.h>
 #include "util.hpp"
 
+namespace {
+
+void on_blocksize_changed(GSettings* settings, gchar* key, Convolver* c) {}
+
+}  // namespace
+
 Convolver::Convolver(const std::string& tag, const std::string& schema)
     : PluginBase(tag, "convolver", schema) {
   convolver = gst_element_factory_make("peconvolver", "convolver");
@@ -17,12 +23,15 @@ Convolver::Convolver(const std::string& tag, const std::string& schema)
     auto audioconvert_out =
         gst_element_factory_make("audioconvert", "convolver_audioconvert_out");
 
-    gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in,
-                     convolver, audioconvert_out, output_gain, out_level,
-                     nullptr);
+    adapter = gst_element_factory_make("peadapter", nullptr);
 
-    gst_element_link_many(input_gain, in_level, audioconvert_in, convolver,
-                          audioconvert_out, output_gain, out_level, nullptr);
+    gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in,
+                     adapter, convolver, audioconvert_out, output_gain,
+                     out_level, nullptr);
+
+    gst_element_link_many(input_gain, in_level, audioconvert_in, adapter,
+                          convolver, audioconvert_out, output_gain, out_level,
+                          nullptr);
 
     auto pad_sink = gst_element_get_static_pad(input_gain, "sink");
     auto pad_src = gst_element_get_static_pad(out_level, "src");
@@ -49,6 +58,12 @@ Convolver::Convolver(const std::string& tag, const std::string& schema)
         settings, "output-gain", output_gain, "volume", G_SETTINGS_BIND_DEFAULT,
         util::db20_gain_to_linear_double, util::linear_double_gain_to_db20,
         nullptr, nullptr);
+
+    g_settings_bind(settings, "blocksize", adapter, "blocksize",
+                    G_SETTINGS_BIND_DEFAULT);
+
+    g_signal_connect(settings, "changed::blocksize",
+                     G_CALLBACK(on_blocksize_changed), this);
 
     // useless write just to force callback call
 
