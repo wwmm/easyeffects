@@ -118,6 +118,8 @@ void on_message_latency(const GstBus* gst_bus,
     util::debug(pb->log_tag +
                 "pulsesink buffer [us]: " + std::to_string(buffer));
   }
+
+  pb->get_latency();
 }
 
 void on_message_element(const GstBus* gst_bus,
