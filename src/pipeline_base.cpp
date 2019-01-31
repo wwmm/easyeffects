@@ -88,7 +88,6 @@ void on_message_state_changed(const GstBus* gst_bus,
 
     if (new_state == GST_STATE_PLAYING) {
       pb->playing = true;
-      pb->get_latency();
     } else {
       pb->playing = false;
     }
@@ -235,6 +234,20 @@ void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
   }
 }
 
+GstPadProbeReturn on_sink_event(GstPad* pad,
+                                GstPadProbeInfo* info,
+                                gpointer user_data) {
+  GstEvent* event = GST_PAD_PROBE_INFO_EVENT(info);
+
+  if (event->type == GST_EVENT_LATENCY) {
+    auto pb = static_cast<PipelineBase*>(user_data);
+
+    pb->get_latency();
+  }
+
+  return GST_PAD_PROBE_OK;
+}
+
 }  // namespace
 
 PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
@@ -303,6 +316,7 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
   g_object_set(sink, "provide-clock", true, nullptr);
 
   g_object_set(queue_src, "silent", true, nullptr);
+  g_object_set(queue_src, "flush-on-eos", true, nullptr);
   g_object_set(queue_src, "max-size-buffers", 0, nullptr);
   g_object_set(queue_src, "max-size-bytes", 0, nullptr);
   g_object_set(queue_src, "max-size-time", 0, nullptr);
@@ -318,6 +332,13 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
                    this);
   g_signal_connect(source, "notify::latency-time",
                    G_CALLBACK(on_latency_changed), this);
+
+  auto sinkpad = gst_element_get_static_pad(sink, "sink");
+
+  gst_pad_add_probe(sinkpad, GST_PAD_PROBE_TYPE_EVENT_UPSTREAM, on_sink_event,
+                    this, nullptr);
+
+  g_object_unref(sinkpad);
 }
 
 PipelineBase::~PipelineBase() {
