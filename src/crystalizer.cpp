@@ -51,6 +51,8 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
     g_object_set(highpass, "poles", 16, nullptr);
     g_object_set(highpass, "ripple", 0, nullptr);
 
+    g_object_set(mixer, "start-time-selection", 1, nullptr);
+
     gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in, tee,
                      queue_low, queue_high, lowpass, highpass, crystalizer_low,
                      crystalizer_high, mixer, audioconvert_out, output_gain,
