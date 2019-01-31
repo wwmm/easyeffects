@@ -154,19 +154,14 @@ static void gst_peadapter_set_property(GObject* object,
                                        const GValue* value,
                                        GParamSpec* pspec) {
   GstPeadapter* peadapter = GST_PEADAPTER(object);
-  bool status = false;
 
   switch (prop_id) {
     case PROP_BLOCKSIZE:
       peadapter->blocksize = g_value_get_enum(value);
 
-      status = gst_element_post_message(
+      gst_element_post_message(
           GST_ELEMENT_CAST(peadapter),
           gst_message_new_latency(GST_OBJECT_CAST(peadapter)));
-
-      if (!status) {
-        util::warning("failed");
-      }
 
       break;
     default:
