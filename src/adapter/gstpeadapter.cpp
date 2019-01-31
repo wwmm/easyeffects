@@ -214,6 +214,10 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
                 std::to_string(peadapter->blocksize) + " frames");
 
     gst_buffer_unmap(buffer, &map);
+
+    gst_element_post_message(
+        GST_ELEMENT_CAST(peadapter),
+        gst_message_new_latency(GST_OBJECT_CAST(peadapter)));
   }
 
   gst_adapter_push(peadapter->adapter, buffer);
@@ -327,6 +331,10 @@ static GstStateChangeReturn gst_peadapter_change_state(
       gst_adapter_clear(peadapter->adapter);
 
       peadapter->inbuf_n_samples = -1;
+
+      gst_element_post_message(
+          GST_ELEMENT_CAST(peadapter),
+          gst_message_new_latency(GST_OBJECT_CAST(peadapter)));
 
       break;
     default:
