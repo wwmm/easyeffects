@@ -19,12 +19,11 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
     auto audioconvert_out = gst_element_factory_make(
         "audioconvert", "crystalizer_audioconvert_out");
 
-    auto tee = gst_element_factory_make("tee", "crystalizer_tee");
     auto queue_low = gst_element_factory_make("queue", "crystalizer_queue0");
     auto queue_high = gst_element_factory_make("queue", "crystalizer_queue1");
 
-    auto mixer = gst_element_factory_make("audiomixer", "crystalizer_mixer");
-
+    tee = gst_element_factory_make("tee", "crystalizer_tee");
+    mixer = gst_element_factory_make("audiomixer", "crystalizer_mixer");
     lowpass = gst_element_factory_make("audiocheblimit", "crystalizer_lowpass");
     highpass =
         gst_element_factory_make("audiocheblimit", "crystalizer_highpass");
@@ -53,6 +52,18 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
 
     g_object_set(mixer, "start-time-selection", 1, nullptr);
 
+    tee_src0 = gst_element_get_request_pad(tee, "src_0");
+    tee_src1 = gst_element_get_request_pad(tee, "src_1");
+    mixer_sink0 = gst_element_get_request_pad(mixer, "sink_0");
+    mixer_sink1 = gst_element_get_request_pad(mixer, "sink_1");
+
+    auto queue_low_sink = gst_element_get_static_pad(queue_low, "sink");
+    auto queue_high_sink = gst_element_get_static_pad(queue_high, "sink");
+    auto crystalizer_low_src =
+        gst_element_get_static_pad(crystalizer_low, "src");
+    auto crystalizer_high_src =
+        gst_element_get_static_pad(crystalizer_high, "src");
+
     gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in, tee,
                      queue_low, queue_high, lowpass, highpass, crystalizer_low,
                      crystalizer_high, mixer, audioconvert_out, output_gain,
@@ -60,10 +71,14 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
 
     gst_element_link_many(input_gain, in_level, audioconvert_in, tee, nullptr);
 
-    gst_element_link_many(tee, queue_low, lowpass, crystalizer_low, mixer,
-                          nullptr);
-    gst_element_link_many(tee, queue_high, highpass, crystalizer_high, mixer,
-                          nullptr);
+    gst_pad_link(tee_src0, queue_low_sink);
+    gst_pad_link(tee_src1, queue_high_sink);
+
+    gst_element_link_many(queue_low, lowpass, crystalizer_low, nullptr);
+    gst_element_link_many(queue_high, highpass, crystalizer_high, nullptr);
+
+    gst_pad_link(crystalizer_low_src, mixer_sink0);
+    gst_pad_link(crystalizer_high_src, mixer_sink1);
 
     gst_element_link_many(mixer, audioconvert_out, output_gain, out_level,
                           nullptr);
@@ -76,6 +91,10 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
 
     gst_object_unref(GST_OBJECT(pad_sink));
     gst_object_unref(GST_OBJECT(pad_src));
+    gst_object_unref(GST_OBJECT(queue_low_sink));
+    gst_object_unref(GST_OBJECT(queue_high_sink));
+    gst_object_unref(GST_OBJECT(crystalizer_low_src));
+    gst_object_unref(GST_OBJECT(crystalizer_high_src));
 
     bind_to_gsettings();
 
@@ -104,6 +123,16 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
 
 Crystalizer::~Crystalizer() {
   util::debug(log_tag + name + " destroyed");
+
+  gst_element_release_request_pad(tee, tee_src0);
+  gst_element_release_request_pad(tee, tee_src1);
+  gst_element_release_request_pad(mixer, mixer_sink0);
+  gst_element_release_request_pad(mixer, mixer_sink1);
+
+  gst_object_unref(GST_OBJECT(tee_src0));
+  gst_object_unref(GST_OBJECT(tee_src1));
+  gst_object_unref(GST_OBJECT(mixer_sink0));
+  gst_object_unref(GST_OBJECT(mixer_sink1));
 }
 
 void Crystalizer::bind_to_gsettings() {

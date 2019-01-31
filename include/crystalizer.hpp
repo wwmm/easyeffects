@@ -11,7 +11,10 @@ class Crystalizer : public PluginBase {
   ~Crystalizer();
 
   GstElement *crystalizer_low = nullptr, *crystalizer_high = nullptr,
-             *lowpass = nullptr, *highpass = nullptr;
+             *lowpass = nullptr, *highpass = nullptr, *tee = nullptr,
+             *mixer = nullptr;
+
+  GstPad *tee_src0, *tee_src1, *mixer_sink0, *mixer_sink1;
 
  private:
   void bind_to_gsettings();

@@ -22,7 +22,7 @@
         </key>
         <key name="split-frequency" type="d">
             <range min="8000" max="20000"/>
-            <default>10000</default>
+            <default>8000</default>
         </key>
         <key name="intensity-lower" type="d">
             <range min="0" max="10"/>
@@ -30,7 +30,7 @@
         </key>
         <key name="intensity-higher" type="d">
             <range min="0" max="10"/>
-            <default>0.5</default>
+            <default>0.25</default>
         </key>
     </schema>
 </schemalist>
