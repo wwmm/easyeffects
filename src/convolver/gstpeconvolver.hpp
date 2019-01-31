@@ -28,7 +28,7 @@ struct _GstPeconvolver {
   /* properties */
 
   gchar* kernel_path;
-  unsigned int ir_width;
+  unsigned int ir_width, num_samples;
 
   /* < private > */
 

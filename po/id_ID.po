@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-20 13:09-0200\n"
+"POT-Creation-Date: 2019-01-31 15:02-0200\n"
 "PO-Revision-Date: 2019-01-17 18:30+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -80,29 +80,25 @@ msgstr "Warna Spektrum"
 msgid "Sampling"
 msgstr "Atur Sampling"
 
-#: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:218
+#: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:184
 msgid "Use Default"
 msgstr "Gunakan Aturan Bawaan"
 
-#: data/ui/pulse_settings.glade:107 data/ui/pulse_settings.glade:255
+#: data/ui/pulse_settings.glade:107 data/ui/pulse_settings.glade:221
 #: data/ui/app_info.glade:156
 msgid "Buffer"
 msgstr "Ukuran Penyangga"
 
-#: data/ui/pulse_settings.glade:140 data/ui/pulse_settings.glade:288
+#: data/ui/pulse_settings.glade:140 data/ui/pulse_settings.glade:254
 #: data/ui/app_info.glade:183
 msgid "Latency"
 msgstr "Besar Latensi"
 
-#: data/ui/pulse_settings.glade:173 data/ui/pulse_settings.glade:321
-msgid "Block Size"
-msgstr "Ukuran Blok"
-
-#: data/ui/pulse_settings.glade:204 data/ui/blacklist_settings.glade:108
+#: data/ui/pulse_settings.glade:170 data/ui/blacklist_settings.glade:108
 msgid "Input Effects"
 msgstr "Efek Masukan"
 
-#: data/ui/pulse_settings.glade:352 data/ui/blacklist_settings.glade:180
+#: data/ui/pulse_settings.glade:284 data/ui/blacklist_settings.glade:180
 msgid "Output Effects"
 msgstr "Efek Luaran"
 
@@ -214,7 +210,7 @@ msgstr "Tinggi"
 #: data/ui/crossfeed.glade:202 data/ui/maximizer.glade:242
 #: data/ui/loudness.glade:247 data/ui/gate.glade:490
 #: data/ui/multiband_gate.glade:2110 data/ui/deesser.glade:571
-#: data/ui/convolver.glade:461 data/ui/crystalizer.glade:176
+#: data/ui/convolver.glade:507 data/ui/crystalizer.glade:275
 #: data/ui/pitch.glade:325 data/ui/webrtc.glade:627 data/ui/delay.glade:213
 msgid "Input"
 msgstr "Masukan"
@@ -234,7 +230,7 @@ msgstr "Masukan"
 #: data/ui/multiband_gate.glade:809 data/ui/multiband_gate.glade:1218
 #: data/ui/multiband_gate.glade:1628 data/ui/multiband_gate.glade:2038
 #: data/ui/multiband_gate.glade:2125 data/ui/deesser.glade:586
-#: data/ui/convolver.glade:476 data/ui/crystalizer.glade:191
+#: data/ui/convolver.glade:522 data/ui/crystalizer.glade:290
 #: data/ui/pitch.glade:339 data/ui/webrtc.glade:642 data/ui/delay.glade:228
 msgid "Output"
 msgstr "Luaran"
@@ -878,6 +874,7 @@ msgid "Wide"
 msgstr "Luas"
 
 #: data/ui/deesser.glade:236 data/ui/deesser.glade:265
+#: data/ui/crystalizer.glade:140
 msgid "Split"
 msgstr "Pisah"
 
@@ -925,7 +922,7 @@ msgstr "Durasi"
 msgid "Samples"
 msgstr "Jumlah Sampel"
 
-#: data/ui/convolver.glade:326 src/convolver_ui.cpp:277
+#: data/ui/convolver.glade:326 src/convolver_ui.cpp:333
 msgid "Impulse Response"
 msgstr "Respons Impuls"
 
@@ -941,13 +938,27 @@ msgstr "Spektrum"
 msgid "Stereo Width"
 msgstr "Lebar Stereo"
 
+#: data/ui/convolver.glade:432
+msgid "Block Size"
+msgstr "Ukuran Blok"
+
 #: data/ui/crystalizer.glade:24
 msgid "Crystalizer"
 msgstr "Pengkristal Suara"
 
-#: data/ui/crystalizer.glade:130
+#: data/ui/crystalizer.glade:205
 msgid "Intensity"
 msgstr "Intensitas"
+
+#: data/ui/crystalizer.glade:217
+#, fuzzy
+msgid "Lower Frequencies"
+msgstr "Hitung Frekuensi"
+
+#: data/ui/crystalizer.glade:228
+#, fuzzy
+msgid "Higher Frequencies"
+msgstr "Pembasahan Frekuensi Tinggi"
 
 #: data/ui/pitch.glade:36
 msgid "Pitch"
@@ -1216,7 +1227,7 @@ msgstr "limiter;compressor;reverberation;equalizer;autovolume;"
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:207
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:201
 msgid "\"Presets\""
 msgstr "Preset"
 
@@ -1240,11 +1251,11 @@ msgstr "Atur Ulang PulseEffects"
 msgid "Presets: "
 msgstr "Preset:"
 
-#: src/application.cpp:213
+#: src/application.cpp:222
 msgid "PulseEffects was updated"
 msgstr "PulseEffects telah dimutakhirkan"
 
-#: src/application.cpp:216
+#: src/application.cpp:225
 msgid ""
 "It is recommended to reset its configuration after an update. Do you want to "
 "do this?"
@@ -1252,11 +1263,11 @@ msgstr ""
 "Dianjurkan untuk mengatur ulang konfigurasi setelah pemutakhiran. Tetap "
 "Lanjutkan?"
 
-#: src/application.cpp:219
+#: src/application.cpp:228
 msgid "Yes"
 msgstr "Ya"
 
-#: src/application.cpp:220
+#: src/application.cpp:229
 msgid "No"
 msgstr "Tidak"
 
@@ -1272,15 +1283,15 @@ msgstr "Daftar Blokir"
 msgid "General"
 msgstr "Umum"
 
-#: src/pulse_settings_ui.cpp:145
+#: src/pulse_settings_ui.cpp:83
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
 
-#: src/presets_menu_ui.cpp:115 src/convolver_ui.cpp:273
+#: src/presets_menu_ui.cpp:115 src/convolver_ui.cpp:329
 msgid "Open"
 msgstr "Buka"
 
-#: src/presets_menu_ui.cpp:115 src/convolver_ui.cpp:273
+#: src/presets_menu_ui.cpp:115 src/convolver_ui.cpp:329
 msgid "Cancel"
 msgstr "Batal"
 
@@ -1296,15 +1307,15 @@ msgstr "memutar"
 msgid "Calibration Microphone"
 msgstr "Kalibrasikan Mikrofon"
 
-#: src/convolver_ui.cpp:272
+#: src/convolver_ui.cpp:328
 msgid "Import Impulse File"
 msgstr "Muat Berkas Impuls"
 
-#: src/convolver_ui.cpp:315 src/convolver_ui.cpp:316 src/convolver_ui.cpp:318
+#: src/convolver_ui.cpp:371 src/convolver_ui.cpp:372 src/convolver_ui.cpp:374
 msgid "Failed"
 msgstr "Gagal"
 
-#: src/convolver_ui.cpp:320
+#: src/convolver_ui.cpp:376
 msgid "Could Not Load The Impulse File"
 msgstr "Tidak dapat Memuat Berkas Impuls"
 

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2019-01-29 12:19-0200\n"
+"POT-Creation-Date: 2019-01-31 14:58-0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -116,7 +116,7 @@ msgstr "Silenciar o sinal original e escutar exclusivamente aos harmônicos."
 #: C/limiter.page:84 C/loudness.page:44 C/multibandcompressor.page:128
 #: C/multibandgate.page:136 C/reverb.page:97 C/stereotools.page:96
 #: C/crossfeed.page:35 C/equalizer.page:99 C/pitch.page:87 C/webrtc.page:140
-#: C/crystalizer.page:27 C/convolver.page:42 C/autogain.page:87
+#: C/crystalizer.page:27 C/convolver.page:51 C/autogain.page:87
 msgid "References"
 msgstr "Referências"
 
@@ -598,12 +598,8 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/limiter.page:15
-#, fuzzy
 msgid "PulseEffects uses the limiter developed by Calf Studio."
-msgstr ""
-"PulseEffects usa o limitador desenvolvido por Calf Studio. Nós apenas "
-"anexamos a ele uma rotina para definir automaticamente seu ganho de entrada. "
-"Isso é o que chamamos de volume automático."
+msgstr "PulseEffects usa o limitador desenvolvido por Calf Studio."
 
 #. (itstool) path: title/em
 #: C/limiter.page:23
@@ -1636,13 +1632,27 @@ msgid "Modify the impulse response stereo image width."
 msgstr "Modifica a imagem stereo da resposta de impulso."
 
 #. (itstool) path: title/em
+#: C/convolver.page:34
+msgid "Block Size"
+msgstr "Tamanho do Bloco"
+
+#. (itstool) path: item/p
+#: C/convolver.page:36
+msgid ""
+"This controls the size of the buffer that is used by the convolver. Higher "
+"values increase latency but may decrease cpu usage."
+msgstr ""
+"Isto controla o tamanho do buffer que é usado pelo convolver. Valores mais "
+"altos aumentam a latência mas podem reduzir o uso de cpu."
+
+#. (itstool) path: title/em
 #. (itstool) path: page/title
-#: C/convolver.page:34 C/spectrum.page:9
+#: C/convolver.page:43 C/spectrum.page:9
 msgid "Spectrum"
 msgstr "Espectro"
 
 #. (itstool) path: item/p
-#: C/convolver.page:36
+#: C/convolver.page:45
 msgid "Visualize the frequency spectrum of the selected channel."
 msgstr "Visualize o espectro de frequência do canal selecionado."
 
@@ -1881,20 +1891,6 @@ msgstr "Latência"
 #: C/pulseaudio.page:36
 msgid "Pulsesrc plugin latency value."
 msgstr "Valor de latência do plugin pulsesrc."
-
-#. (itstool) path: title/em
-#: C/pulseaudio.page:42
-msgid "Block Size"
-msgstr "Tamanho do Bloco"
-
-#. (itstool) path: item/p
-#: C/pulseaudio.page:44
-msgid ""
-"This controls the size of the buffer that is used by the plugins when "
-"applying effects."
-msgstr ""
-"Isto controla o tamanho do buffer que é usado pelos plugins quando eles "
-"aplicam efeitos."
 
 #. (itstool) path: page/title
 #: C/testsignals.page:9

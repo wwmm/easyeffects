@@ -37,14 +37,5 @@
                 Pulsesrc plugin latency value.
             </p>
         </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Block Size</em>
-            </title>
-            <p>
-                This controls the size of the buffer that is used by the plugins when applying
-                effects.
-            </p>
-        </item>
     </terms>
 </page>

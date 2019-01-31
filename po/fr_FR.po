@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-20 13:09-0200\n"
+"POT-Creation-Date: 2019-01-31 15:02-0200\n"
 "PO-Revision-Date: 2017-08-29 11:00+0200\n"
 "Last-Translator: Nathan Graule <solarliner@gmail.com>\n"
 "Language-Team: \n"
@@ -83,33 +83,27 @@ msgstr "Spectromètre"
 msgid "Sampling"
 msgstr ""
 
-#: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:218
+#: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:184
 msgid "Use Default"
 msgstr ""
 
-#: data/ui/pulse_settings.glade:107 data/ui/pulse_settings.glade:255
+#: data/ui/pulse_settings.glade:107 data/ui/pulse_settings.glade:221
 #: data/ui/app_info.glade:156
 #, fuzzy
 msgid "Buffer"
 msgstr "Latence"
 
-#: data/ui/pulse_settings.glade:140 data/ui/pulse_settings.glade:288
+#: data/ui/pulse_settings.glade:140 data/ui/pulse_settings.glade:254
 #: data/ui/app_info.glade:183
 msgid "Latency"
 msgstr "Latence"
 
-# Taking lingual shortcuts to squeeze it in the text box
-#: data/ui/pulse_settings.glade:173 data/ui/pulse_settings.glade:321
-#, fuzzy
-msgid "Block Size"
-msgstr "Taille pièce"
-
-#: data/ui/pulse_settings.glade:204 data/ui/blacklist_settings.glade:108
+#: data/ui/pulse_settings.glade:170 data/ui/blacklist_settings.glade:108
 #, fuzzy
 msgid "Input Effects"
 msgstr "PulseEffects"
 
-#: data/ui/pulse_settings.glade:352 data/ui/blacklist_settings.glade:180
+#: data/ui/pulse_settings.glade:284 data/ui/blacklist_settings.glade:180
 #, fuzzy
 msgid "Output Effects"
 msgstr "Limiteur d'entrée"
@@ -227,7 +221,7 @@ msgstr ""
 #: data/ui/crossfeed.glade:202 data/ui/maximizer.glade:242
 #: data/ui/loudness.glade:247 data/ui/gate.glade:490
 #: data/ui/multiband_gate.glade:2110 data/ui/deesser.glade:571
-#: data/ui/convolver.glade:461 data/ui/crystalizer.glade:176
+#: data/ui/convolver.glade:507 data/ui/crystalizer.glade:275
 #: data/ui/pitch.glade:325 data/ui/webrtc.glade:627 data/ui/delay.glade:213
 msgid "Input"
 msgstr "Entrée"
@@ -247,7 +241,7 @@ msgstr "Entrée"
 #: data/ui/multiband_gate.glade:809 data/ui/multiband_gate.glade:1218
 #: data/ui/multiband_gate.glade:1628 data/ui/multiband_gate.glade:2038
 #: data/ui/multiband_gate.glade:2125 data/ui/deesser.glade:586
-#: data/ui/convolver.glade:476 data/ui/crystalizer.glade:191
+#: data/ui/convolver.glade:522 data/ui/crystalizer.glade:290
 #: data/ui/pitch.glade:339 data/ui/webrtc.glade:642 data/ui/delay.glade:228
 msgid "Output"
 msgstr "Sortie"
@@ -935,6 +929,7 @@ msgid "Wide"
 msgstr ""
 
 #: data/ui/deesser.glade:236 data/ui/deesser.glade:265
+#: data/ui/crystalizer.glade:140
 msgid "Split"
 msgstr ""
 
@@ -985,7 +980,7 @@ msgstr "Calibration"
 msgid "Samples"
 msgstr ""
 
-#: data/ui/convolver.glade:326 src/convolver_ui.cpp:277
+#: data/ui/convolver.glade:326 src/convolver_ui.cpp:333
 #, fuzzy
 msgid "Impulse Response"
 msgstr "Réponse plane"
@@ -1004,14 +999,30 @@ msgstr "Spectromètre"
 msgid "Stereo Width"
 msgstr "Amélioration audio"
 
+# Taking lingual shortcuts to squeeze it in the text box
+#: data/ui/convolver.glade:432
+#, fuzzy
+msgid "Block Size"
+msgstr "Taille pièce"
+
 #: data/ui/crystalizer.glade:24
 #, fuzzy
 msgid "Crystalizer"
 msgstr "Égaliseur"
 
-#: data/ui/crystalizer.glade:130
+#: data/ui/crystalizer.glade:205
 msgid "Intensity"
 msgstr ""
+
+#: data/ui/crystalizer.glade:217
+#, fuzzy
+msgid "Lower Frequencies"
+msgstr "Recentrer fréquences"
+
+#: data/ui/crystalizer.glade:228
+#, fuzzy
+msgid "Higher Frequencies"
+msgstr "Recentrer fréquences"
 
 #: data/ui/pitch.glade:36
 msgid "Pitch"
@@ -1299,7 +1310,7 @@ msgstr "limiter;compressor;reverberation;equalizer;autovolume;"
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:207
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:201
 #, fuzzy
 msgid "\"Presets\""
 msgstr "Préréglage"
@@ -1326,22 +1337,22 @@ msgstr "PulseEffects"
 msgid "Presets: "
 msgstr "Préréglage"
 
-#: src/application.cpp:213
+#: src/application.cpp:222
 #, fuzzy
 msgid "PulseEffects was updated"
 msgstr "PulseEffects"
 
-#: src/application.cpp:216
+#: src/application.cpp:225
 msgid ""
 "It is recommended to reset its configuration after an update. Do you want to "
 "do this?"
 msgstr ""
 
-#: src/application.cpp:219
+#: src/application.cpp:228
 msgid "Yes"
 msgstr ""
 
-#: src/application.cpp:220
+#: src/application.cpp:229
 msgid "No"
 msgstr ""
 
@@ -1358,15 +1369,15 @@ msgstr ""
 msgid "General"
 msgstr "Général"
 
-#: src/pulse_settings_ui.cpp:145
+#: src/pulse_settings_ui.cpp:83
 msgid "Pulseaudio"
 msgstr ""
 
-#: src/presets_menu_ui.cpp:115 src/convolver_ui.cpp:273
+#: src/presets_menu_ui.cpp:115 src/convolver_ui.cpp:329
 msgid "Open"
 msgstr ""
 
-#: src/presets_menu_ui.cpp:115 src/convolver_ui.cpp:273
+#: src/presets_menu_ui.cpp:115 src/convolver_ui.cpp:329
 #, fuzzy
 msgid "Cancel"
 msgstr "Amélioration audio"
@@ -1384,16 +1395,16 @@ msgstr ""
 msgid "Calibration Microphone"
 msgstr "Calibration de la correction microphone"
 
-#: src/convolver_ui.cpp:272
+#: src/convolver_ui.cpp:328
 #, fuzzy
 msgid "Import Impulse File"
 msgstr "Réponse plane"
 
-#: src/convolver_ui.cpp:315 src/convolver_ui.cpp:316 src/convolver_ui.cpp:318
+#: src/convolver_ui.cpp:371 src/convolver_ui.cpp:372 src/convolver_ui.cpp:374
 msgid "Failed"
 msgstr ""
 
-#: src/convolver_ui.cpp:320
+#: src/convolver_ui.cpp:376
 msgid "Could Not Load The Impulse File"
 msgstr ""
 
@@ -1481,10 +1492,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "F2 Level"
 #~ msgstr "Niveau"
-
-#, fuzzy
-#~ msgid "Reset Frequency"
-#~ msgstr "Recentrer fréquences"
 
 #, fuzzy
 #~ msgid "Reset Quality"

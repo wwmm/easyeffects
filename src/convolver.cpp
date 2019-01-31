@@ -59,9 +59,6 @@ Convolver::Convolver(const std::string& tag, const std::string& schema)
         util::db20_gain_to_linear_double, util::linear_double_gain_to_db20,
         nullptr, nullptr);
 
-    g_settings_bind(settings, "blocksize", adapter, "blocksize",
-                    G_SETTINGS_BIND_DEFAULT);
-
     g_signal_connect(settings, "changed::blocksize",
                      G_CALLBACK(on_blocksize_changed), this);
 
@@ -78,6 +75,9 @@ Convolver::~Convolver() {
 }
 
 void Convolver::bind_to_gsettings() {
+  g_settings_bind(settings, "blocksize", adapter, "blocksize",
+                  G_SETTINGS_BIND_DEFAULT);
+
   g_settings_bind(settings, "kernel-path", convolver, "kernel-path",
                   G_SETTINGS_BIND_DEFAULT);
 

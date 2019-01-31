@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-01-29 12:19-0200\n"
+"POT-Creation-Date: 2019-01-31 14:58-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "MIME-Version: 1.0\n"
@@ -120,7 +120,7 @@ msgstr "Выключить исходный сигнал и прослушать
 #: C/limiter.page:84 C/loudness.page:44 C/multibandcompressor.page:128
 #: C/multibandgate.page:136 C/reverb.page:97 C/stereotools.page:96
 #: C/crossfeed.page:35 C/equalizer.page:99 C/pitch.page:87 C/webrtc.page:140
-#: C/crystalizer.page:27 C/convolver.page:42 C/autogain.page:87
+#: C/crystalizer.page:27 C/convolver.page:51 C/autogain.page:87
 msgid "References"
 msgstr "Отклики"
 
@@ -1520,13 +1520,25 @@ msgid "Modify the impulse response stereo image width."
 msgstr ""
 
 #. (itstool) path: title/em
-#. (itstool) path: page/title
-#: C/convolver.page:34 C/spectrum.page:9
-msgid "Spectrum"
+#: C/convolver.page:34
+msgid "Block Size"
 msgstr ""
 
 #. (itstool) path: item/p
 #: C/convolver.page:36
+msgid ""
+"This controls the size of the buffer that is used by the convolver. Higher "
+"values increase latency but may decrease cpu usage."
+msgstr ""
+
+#. (itstool) path: title/em
+#. (itstool) path: page/title
+#: C/convolver.page:43 C/spectrum.page:9
+msgid "Spectrum"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/convolver.page:45
 msgid "Visualize the frequency spectrum of the selected channel."
 msgstr ""
 
@@ -1749,18 +1761,6 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/pulseaudio.page:36
 msgid "Pulsesrc plugin latency value."
-msgstr ""
-
-#. (itstool) path: title/em
-#: C/pulseaudio.page:42
-msgid "Block Size"
-msgstr ""
-
-#. (itstool) path: item/p
-#: C/pulseaudio.page:44
-msgid ""
-"This controls the size of the buffer that is used by the plugins when "
-"applying effects."
 msgstr ""
 
 #. (itstool) path: page/title
