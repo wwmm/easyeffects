@@ -6,7 +6,9 @@
 - Remember window size.
 - Updated limiter help.
 - Crystalizer plugin now splits the frequency spectrum in two regions. This
-allows the application of a smaller intensity to high frequencies.
+allows the application of a smaller intensity to high frequencies. When you
+apply the same intensity to the whole spectrum the high frequencies receive too
+much amplification.
 
 ### Fixed
 - Icon is properly rendered in QT environments
