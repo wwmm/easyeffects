@@ -88,6 +88,8 @@ void on_message_state_changed(const GstBus* gst_bus,
 
     if (new_state == GST_STATE_PLAYING) {
       pb->playing = true;
+
+      pb->get_latency();
     } else {
       pb->playing = false;
     }
