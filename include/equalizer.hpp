@@ -17,6 +17,8 @@ class Equalizer : public PluginBase {
              *queue_R = nullptr, *interleave = nullptr, *deinterleave,
              *audioconvert_out = nullptr;
 
+  GstPad *interleave_sink0_pad, *interleave_sink1_pad;
+
   void update_equalizer();
 
  private:
