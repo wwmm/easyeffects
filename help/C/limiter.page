@@ -15,71 +15,69 @@
     <p>
         PulseEffects uses the limiter developed by Calf Studio.
     </p>
-    <section>
-        <title>Limiter</title>
-        <terms>
-            <item>
-                <title>
-                    <em style="strong" its:withinText="nested">Input Gain</em>
-                </title>
-                <p>
-                    Raises audio volume before it is sent ot the compression stage.
-                </p>
-            </item>
-            <item>
-                <title>
-                    <em style="strong" its:withinText="nested">Limit</em>
-                </title>
-                <p>
-                    No signal above this level will pass through the limiter.
-                </p>
-            </item>
-            <item>
-                <title>
-                    <em style="strong" its:withinText="nested">Lookahead</em>
-                </title>
-                <p>
-                    The Limiter will reach its attenuation level in this amount of time (output will
-                    be delayed two times this time).
-                </p>
-            </item>
-            <item>
-                <title>
-                    <em style="strong" its:withinText="nested">Release</em>
-                </title>
-                <p>
-                    Stop the attenuation after this amount of milliseconds.
-                </p>
-            </item>
-            <item>
-                <title>
-                    <em style="strong" its:withinText="nested">Oversampling</em>
-                </title>
-                <p>
-                    Increase the signal sampling to better detect the peaks. The signal is
-                    downsampled after processing.
-                </p>
-            </item>
-            <item>
-                <title>
-                    <em style="strong" its:withinText="nested">ASC</em>
-                </title>
-                <p>
-                    When gain reduction is always needed ASC takes care of releasing to an average
-                    reduction level rather than reaching a reduction of 0 in the release time.
-                </p>
-            </item>
-            <item>
-                <title>
-                    <em style="strong" its:withinText="nested">ASC Level</em>
-                </title>
-                <p>
-                    Select how much the release time is affected by ASC, 0 means nearly no changes
-                    in release time while 1 produces higher release times.
-                </p>
-            </item>
-        </terms>
-    </section>
+    <title>Limiter</title>
+    <terms>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Input Gain</em>
+            </title>
+            <p>
+                Raises audio volume before it is sent ot the compression stage.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Limit</em>
+            </title>
+            <p>
+                No signal above this level will pass through the limiter.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Lookahead</em>
+            </title>
+            <p>
+                The Limiter will reach its attenuation level in this amount of time (output will
+                be delayed two times this time).
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Release</em>
+            </title>
+            <p>
+                Stop the attenuation after this amount of milliseconds.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Oversampling</em>
+            </title>
+            <p>
+                Increase the signal sampling to better detect the peaks. The signal is
+                downsampled after processing.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">ASC</em>
+            </title>
+            <p>
+                When gain reduction is always needed ASC takes care of releasing to an average
+                reduction level rather than reaching a reduction of 0 in the release time.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">ASC Level</em>
+            </title>
+            <p>
+                Select how much the release time is affected by ASC, 0 means nearly no changes
+                in release time while 1 produces higher release times.
+            </p>
+        </item>
+    </terms>
     <section>
         <title>References</title>
         <list>

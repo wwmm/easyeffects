@@ -9,20 +9,43 @@
     <title>Crystalizer</title>
     <p>
         PulseEffects crystalizer is a port of the FFMPEG crystalizer code to the
-        GStreamer framework. This plugin can be used to add dynamic range to songs that
-        were overly compressed
+        GStreamer framework. We only added on top of it the possibility of applying
+        different intensities for different frequency ranges. This plugin can be used to
+        add dynamic range to songs that were overly compressed
     </p>
-    <terms>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Intensity</em>
-            </title>
-            <p>
-                The higher the value the higher is the difference in magnitude between loudest
-                and the quiestest sections of the music.
-            </p>
-        </item>
-    </terms>
+    <section>
+        <title>Intensity</title>
+        <p>
+            The higher the value the higher is the difference in magnitude between the
+            loudest and the quiestest sounds.
+        </p>
+        <terms>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Low Band</em>
+                </title>
+                <p>
+                    Intensity of the effect applied to frequencies below 3000 Hz.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Mid Band</em>
+                </title>
+                <p>
+                    Intensity of the effect applied to frequencies between 3000 Hz and 10000 Hz.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">High Band</em>
+                </title>
+                <p>
+                    Intensity of the effect applied to frequencies above 10000 Hz.
+                </p>
+            </item>
+        </terms>
+    </section>
     <section>
         <title>References</title>
         <list>

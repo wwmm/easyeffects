@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-01-31 14:58-0200\n"
+"POT-Creation-Date: 2019-01-31 23:28-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,7 +118,7 @@ msgstr ""
 #: C/filter.page:47
 #: C/gate.page:96
 #: C/delay.page:33
-#: C/limiter.page:84
+#: C/limiter.page:82
 #: C/loudness.page:44
 #: C/multibandcompressor.page:128
 #: C/multibandgate.page:136
@@ -128,7 +128,7 @@ msgstr ""
 #: C/equalizer.page:99
 #: C/pitch.page:87
 #: C/webrtc.page:140
-#: C/crystalizer.page:27
+#: C/crystalizer.page:50
 #: C/convolver.page:51
 #: C/autogain.page:87
 msgid "References"
@@ -170,7 +170,7 @@ msgstr ""
 #. (itstool) path: title/em
 #: C/compressor.page:28
 #: C/gate.page:29
-#: C/limiter.page:48
+#: C/limiter.page:47
 #: C/multibandcompressor.page:29
 #: C/multibandgate.page:29
 #: C/maximizer.page:37
@@ -549,10 +549,9 @@ msgid "Calibration"
 msgstr ""
 
 #. (itstool) path: page/title
-#. (itstool) path: section/title
 #. (itstool) path: title/em
 #: C/limiter.page:9
-#: C/limiter.page:19
+#: C/limiter.page:18
 #: C/webrtc.page:88
 msgid "Limiter"
 msgstr ""
@@ -568,67 +567,67 @@ msgid "PulseEffects uses the limiter developed by Calf Studio."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/limiter.page:23
+#: C/limiter.page:22
 msgid "Input Gain"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/limiter.page:25
+#: C/limiter.page:24
 msgid "Raises audio volume before it is sent ot the compression stage."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/limiter.page:31
+#: C/limiter.page:30
 msgid "Limit"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/limiter.page:33
+#: C/limiter.page:32
 msgid "No signal above this level will pass through the limiter."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/limiter.page:39
+#: C/limiter.page:38
 msgid "Lookahead"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/limiter.page:41
+#: C/limiter.page:40
 msgid "The Limiter will reach its attenuation level in this amount of time (output will be delayed two times this time)."
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/limiter.page:50
+#: C/limiter.page:49
 msgid "Stop the attenuation after this amount of milliseconds."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/limiter.page:56
+#: C/limiter.page:55
 msgid "Oversampling"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/limiter.page:58
+#: C/limiter.page:57
 msgid "Increase the signal sampling to better detect the peaks. The signal is downsampled after processing."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/limiter.page:65
+#: C/limiter.page:64
 msgid "ASC"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/limiter.page:67
+#: C/limiter.page:66
 msgid "When gain reduction is always needed ASC takes care of releasing to an average reduction level rather than reaching a reduction of 0 in the release time."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/limiter.page:74
+#: C/limiter.page:73
 msgid "ASC Level"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/limiter.page:76
+#: C/limiter.page:75
 msgid "Select how much the release time is affected by ASC, 0 means nearly no changes in release time while 1 produces higher release times."
 msgstr ""
 
@@ -1366,17 +1365,47 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/crystalizer.page:10
-msgid "PulseEffects crystalizer is a port of the FFMPEG crystalizer code to the GStreamer framework. This plugin can be used to add dynamic range to songs that were overly compressed"
+msgid "PulseEffects crystalizer is a port of the FFMPEG crystalizer code to the GStreamer framework. We only added on top of it the possibility of applying different intensities for different frequency ranges. This plugin can be used to add dynamic range to songs that were overly compressed"
 msgstr ""
 
-#. (itstool) path: title/em
-#: C/crystalizer.page:18
+#. (itstool) path: section/title
+#: C/crystalizer.page:17
 msgid "Intensity"
 msgstr ""
 
+#. (itstool) path: section/p
+#: C/crystalizer.page:18
+msgid "The higher the value the higher is the difference in magnitude between the loudest and the quiestest sounds."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/crystalizer.page:25
+msgid "Low Band"
+msgstr ""
+
 #. (itstool) path: item/p
-#: C/crystalizer.page:20
-msgid "The higher the value the higher is the difference in magnitude between loudest and the quiestest sections of the music."
+#: C/crystalizer.page:27
+msgid "Intensity of the effect applied to frequencies below 3000 Hz."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/crystalizer.page:33
+msgid "Mid Band"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/crystalizer.page:35
+msgid "Intensity of the effect applied to frequencies between 3000 Hz and 10000 Hz."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/crystalizer.page:41
+msgid "High Band"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/crystalizer.page:43
+msgid "Intensity of the effect applied to frequencies above 10000 Hz."
 msgstr ""
 
 #. (itstool) path: page/title
