@@ -8,7 +8,6 @@ CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
 
   // loading glade widgets
 
-  get_object(builder, "split_frequency", split_frequency);
   get_object(builder, "intensity_low", intensity_low);
   get_object(builder, "intensity_mid", intensity_mid);
   get_object(builder, "intensity_high", intensity_high);
@@ -22,7 +21,6 @@ CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
   settings->bind("installed", this, "sensitive", flag);
   settings->bind("input-gain", input_gain.get(), "value", flag);
   settings->bind("output-gain", output_gain.get(), "value", flag);
-  settings->bind("split-frequency", split_frequency.get(), "value", flag);
   settings->bind("intensity-low", intensity_low.get(), "value", flag);
   settings->bind("intensity-mid", intensity_mid.get(), "value", flag);
   settings->bind("intensity-high", intensity_high.get(), "value", flag);

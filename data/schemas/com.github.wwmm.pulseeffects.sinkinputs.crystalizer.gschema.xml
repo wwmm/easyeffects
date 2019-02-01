@@ -20,10 +20,6 @@
             <range min="-20.0" max="20.0"/>
             <default>0.0</default>
         </key>
-        <key name="split-frequency" type="d">
-            <range min="8000" max="20000"/>
-            <default>8000</default>
-        </key>
         <key name="intensity-low" type="d">
             <range min="0" max="10"/>
             <default>1.5</default>

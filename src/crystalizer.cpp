@@ -46,25 +46,25 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
 
     g_object_set(lowpass, "mode", 0, nullptr);
     g_object_set(lowpass, "type", 1, nullptr);
-    g_object_set(lowpass, "poles", 4, nullptr);
+    g_object_set(lowpass, "poles", 12, nullptr);
     g_object_set(lowpass, "ripple", 0, nullptr);
 
     g_object_set(bandpass, "mode", 0, nullptr);
     g_object_set(bandpass, "type", 1, nullptr);
-    g_object_set(bandpass, "poles", 8, nullptr);
+    g_object_set(bandpass, "poles", 12, nullptr);
     g_object_set(bandpass, "ripple", 0, nullptr);
 
     g_object_set(highpass, "mode", 1, nullptr);
     g_object_set(highpass, "type", 1, nullptr);
-    g_object_set(highpass, "poles", 8, nullptr);
+    g_object_set(highpass, "poles", 12, nullptr);
     g_object_set(highpass, "ripple", 0, nullptr);
 
     g_object_set(mixer, "start-time-selection", 1, nullptr);
 
-    g_object_set(lowpass, "cutoff", 300.0f, nullptr);
-    g_object_set(bandpass, "lower-frequency", 300.0f, nullptr);
-    g_object_set(bandpass, "upper-frequency", 5000.0f, nullptr);
-    g_object_set(highpass, "cutoff", 5000.0f, nullptr);
+    g_object_set(lowpass, "cutoff", 1000.0f, nullptr);
+    g_object_set(bandpass, "lower-frequency", 1000.0f, nullptr);
+    g_object_set(bandpass, "upper-frequency", 10000.0f, nullptr);
+    g_object_set(highpass, "cutoff", 10000.0f, nullptr);
 
     tee_src0 = gst_element_get_request_pad(tee, "src_0");
     tee_src1 = gst_element_get_request_pad(tee, "src_1");
@@ -162,16 +162,6 @@ Crystalizer::~Crystalizer() {
 }
 
 void Crystalizer::bind_to_gsettings() {
-  // g_settings_bind_with_mapping(settings, "split-frequency", lowpass,
-  // "cutoff",
-  //                              G_SETTINGS_BIND_GET, util::double_to_float,
-  //                              nullptr, nullptr, nullptr);
-  //
-  // g_settings_bind_with_mapping(settings, "split-frequency", highpass,
-  // "cutoff",
-  //                              G_SETTINGS_BIND_GET, util::double_to_float,
-  //                              nullptr, nullptr, nullptr);
-
   g_settings_bind_with_mapping(
       settings, "intensity-low", crystalizer_low, "intensity",
       G_SETTINGS_BIND_GET, util::double_to_float, nullptr, nullptr, nullptr);
