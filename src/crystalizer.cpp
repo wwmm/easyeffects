@@ -59,12 +59,12 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
     g_object_set(highpass, "poles", 16, nullptr);
     g_object_set(highpass, "ripple", 0, nullptr);
 
-    g_object_set(mixer, "start-time-selection", 1, nullptr);
-
-    g_object_set(lowpass, "cutoff", 2000.0f, nullptr);
-    g_object_set(bandpass, "lower-frequency", 2000.0f, nullptr);
+    g_object_set(lowpass, "cutoff", 3000.0f, nullptr);
+    g_object_set(bandpass, "lower-frequency", 3000.0f, nullptr);
     g_object_set(bandpass, "upper-frequency", 10000.0f, nullptr);
     g_object_set(highpass, "cutoff", 10000.0f, nullptr);
+
+    g_object_set(mixer, "start-time-selection", 1, nullptr);
 
     tee_src0 = gst_element_get_request_pad(tee, "src_0");
     tee_src1 = gst_element_get_request_pad(tee, "src_1");
