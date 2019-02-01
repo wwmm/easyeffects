@@ -46,23 +46,23 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
 
     g_object_set(lowpass, "mode", 0, nullptr);
     g_object_set(lowpass, "type", 1, nullptr);
-    g_object_set(lowpass, "poles", 12, nullptr);
+    g_object_set(lowpass, "poles", 16, nullptr);
     g_object_set(lowpass, "ripple", 0, nullptr);
 
     g_object_set(bandpass, "mode", 0, nullptr);
     g_object_set(bandpass, "type", 1, nullptr);
-    g_object_set(bandpass, "poles", 12, nullptr);
+    g_object_set(bandpass, "poles", 16, nullptr);
     g_object_set(bandpass, "ripple", 0, nullptr);
 
     g_object_set(highpass, "mode", 1, nullptr);
     g_object_set(highpass, "type", 1, nullptr);
-    g_object_set(highpass, "poles", 12, nullptr);
+    g_object_set(highpass, "poles", 16, nullptr);
     g_object_set(highpass, "ripple", 0, nullptr);
 
     g_object_set(mixer, "start-time-selection", 1, nullptr);
 
-    g_object_set(lowpass, "cutoff", 1000.0f, nullptr);
-    g_object_set(bandpass, "lower-frequency", 1000.0f, nullptr);
+    g_object_set(lowpass, "cutoff", 2000.0f, nullptr);
+    g_object_set(bandpass, "lower-frequency", 2000.0f, nullptr);
     g_object_set(bandpass, "upper-frequency", 10000.0f, nullptr);
     g_object_set(highpass, "cutoff", 10000.0f, nullptr);
 
