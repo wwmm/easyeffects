@@ -18,11 +18,14 @@ void CrystalizerPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".crystalizer.split-frequency",
            settings->get_double("split-frequency"));
 
-  root.put(section + ".crystalizer.intensity-lower",
-           settings->get_double("intensity-lower"));
+  root.put(section + ".crystalizer.intensity-low",
+           settings->get_double("intensity-low"));
 
-  root.put(section + ".crystalizer.intensity-higher",
-           settings->get_double("intensity-higher"));
+  root.put(section + ".crystalizer.intensity-mid",
+           settings->get_double("intensity-mid"));
+
+  root.put(section + ".crystalizer.intensity-high",
+           settings->get_double("intensity-high"));
 }
 
 void CrystalizerPreset::load(boost::property_tree::ptree& root,
@@ -39,11 +42,14 @@ void CrystalizerPreset::load(boost::property_tree::ptree& root,
   update_key<double>(root, settings, "split-frequency",
                      section + ".crystalizer.split-frequency");
 
-  update_key<double>(root, settings, "intensity-lower",
-                     section + ".crystalizer.intensity-lower");
+  update_key<double>(root, settings, "intensity-low",
+                     section + ".crystalizer.intensity-low");
 
-  update_key<double>(root, settings, "intensity-higher",
-                     section + ".crystalizer.intensity-higher");
+  update_key<double>(root, settings, "intensity-mid",
+                     section + ".crystalizer.intensity-mid");
+
+  update_key<double>(root, settings, "intensity-high",
+                     section + ".crystalizer.intensity-high");
 }
 
 void CrystalizerPreset::write(boost::property_tree::ptree& root) {

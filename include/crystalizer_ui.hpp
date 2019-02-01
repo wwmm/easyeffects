@@ -13,7 +13,7 @@ class CrystalizerUi : public Gtk::Grid, public PluginUiBase {
 
  private:
   Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, split_frequency,
-      intensity_lower, intensity_higher;
+      intensity_low, intensity_mid, intensity_high;
 };
 
 #endif

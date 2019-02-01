@@ -24,11 +24,15 @@
             <range min="8000" max="20000"/>
             <default>8000</default>
         </key>
-        <key name="intensity-lower" type="d">
+        <key name="intensity-low" type="d">
             <range min="0" max="10"/>
             <default>1.5</default>
         </key>
-        <key name="intensity-higher" type="d">
+        <key name="intensity-mid" type="d">
+            <range min="0" max="10"/>
+            <default>1.5</default>
+        </key>
+        <key name="intensity-high" type="d">
             <range min="0" max="10"/>
             <default>0.25</default>
         </key>

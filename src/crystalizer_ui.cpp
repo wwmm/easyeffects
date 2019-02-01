@@ -9,8 +9,9 @@ CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
   // loading glade widgets
 
   get_object(builder, "split_frequency", split_frequency);
-  get_object(builder, "intensity_lower", intensity_lower);
-  get_object(builder, "intensity_higher", intensity_higher);
+  get_object(builder, "intensity_low", intensity_low);
+  get_object(builder, "intensity_mid", intensity_mid);
+  get_object(builder, "intensity_high", intensity_high);
   get_object(builder, "input_gain", input_gain);
   get_object(builder, "output_gain", output_gain);
 
@@ -22,8 +23,9 @@ CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
   settings->bind("input-gain", input_gain.get(), "value", flag);
   settings->bind("output-gain", output_gain.get(), "value", flag);
   settings->bind("split-frequency", split_frequency.get(), "value", flag);
-  settings->bind("intensity-lower", intensity_lower.get(), "value", flag);
-  settings->bind("intensity-higher", intensity_higher.get(), "value", flag);
+  settings->bind("intensity-low", intensity_low.get(), "value", flag);
+  settings->bind("intensity-mid", intensity_mid.get(), "value", flag);
+  settings->bind("intensity-high", intensity_high.get(), "value", flag);
 
   settings->set_boolean("post-messages", true);
 }
