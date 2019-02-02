@@ -73,6 +73,9 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
     mixer_sink1 = gst_element_get_request_pad(mixer, "sink_1");
     mixer_sink2 = gst_element_get_request_pad(mixer, "sink_2");
 
+    // g_object_set(mixer_sink0, "mute", true, nullptr);
+    // g_object_set(mixer_sink1, "mute", true, nullptr);
+
     auto queue_low_sink = gst_element_get_static_pad(queue_low, "sink");
     auto queue_mid_sink = gst_element_get_static_pad(queue_mid, "sink");
     auto queue_high_sink = gst_element_get_static_pad(queue_high, "sink");
@@ -152,13 +155,17 @@ Crystalizer::~Crystalizer() {
 
   gst_element_release_request_pad(tee, tee_src0);
   gst_element_release_request_pad(tee, tee_src1);
+  gst_element_release_request_pad(tee, tee_src2);
   gst_element_release_request_pad(mixer, mixer_sink0);
   gst_element_release_request_pad(mixer, mixer_sink1);
+  gst_element_release_request_pad(mixer, mixer_sink2);
 
   gst_object_unref(GST_OBJECT(tee_src0));
   gst_object_unref(GST_OBJECT(tee_src1));
+  gst_object_unref(GST_OBJECT(tee_src2));
   gst_object_unref(GST_OBJECT(mixer_sink0));
   gst_object_unref(GST_OBJECT(mixer_sink1));
+  gst_object_unref(GST_OBJECT(mixer_sink2));
 }
 
 void Crystalizer::bind_to_gsettings() {
@@ -173,4 +180,28 @@ void Crystalizer::bind_to_gsettings() {
   g_settings_bind_with_mapping(
       settings, "intensity-high", crystalizer_high, "intensity",
       G_SETTINGS_BIND_GET, util::double_to_float, nullptr, nullptr, nullptr);
+
+  g_settings_bind(settings, "mute-low", mixer_sink0, "mute",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, "mute-mid", mixer_sink1, "mute",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, "mute-high", mixer_sink2, "mute",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind_with_mapping(
+      settings, "volume-low", mixer_sink0, "volume", G_SETTINGS_BIND_DEFAULT,
+      util::db20_gain_to_linear_double, util::linear_double_gain_to_db20,
+      nullptr, nullptr);
+
+  g_settings_bind_with_mapping(
+      settings, "volume-mid", mixer_sink1, "volume", G_SETTINGS_BIND_DEFAULT,
+      util::db20_gain_to_linear_double, util::linear_double_gain_to_db20,
+      nullptr, nullptr);
+
+  g_settings_bind_with_mapping(
+      settings, "volume-high", mixer_sink2, "volume", G_SETTINGS_BIND_DEFAULT,
+      util::db20_gain_to_linear_double, util::linear_double_gain_to_db20,
+      nullptr, nullptr);
 }

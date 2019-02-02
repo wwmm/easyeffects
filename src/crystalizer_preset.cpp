@@ -23,6 +23,24 @@ void CrystalizerPreset::save(boost::property_tree::ptree& root,
 
   root.put(section + ".crystalizer.intensity-high",
            settings->get_double("intensity-high"));
+
+  root.put(section + ".crystalizer.mute-low",
+           settings->get_boolean("mute-low"));
+
+  root.put(section + ".crystalizer.mute-mid",
+           settings->get_boolean("mute-mid"));
+
+  root.put(section + ".crystalizer.mute-high",
+           settings->get_boolean("mute-high"));
+
+  root.put(section + ".crystalizer.volume-low",
+           settings->get_double("volume-low"));
+
+  root.put(section + ".crystalizer.volume-mid",
+           settings->get_double("volume-mid"));
+
+  root.put(section + ".crystalizer.volume-high",
+           settings->get_double("volume-high"));
 }
 
 void CrystalizerPreset::load(boost::property_tree::ptree& root,
@@ -44,6 +62,24 @@ void CrystalizerPreset::load(boost::property_tree::ptree& root,
 
   update_key<double>(root, settings, "intensity-high",
                      section + ".crystalizer.intensity-high");
+
+  update_key<bool>(root, settings, "mute-low",
+                   section + ".crystalizer.mute-low");
+
+  update_key<bool>(root, settings, "mute-mid",
+                   section + ".crystalizer.mute-mid");
+
+  update_key<bool>(root, settings, "mute-high",
+                   section + ".crystalizer.mute-high");
+
+  update_key<double>(root, settings, "volume-low",
+                     section + ".crystalizer.volume-low");
+
+  update_key<double>(root, settings, "volume-mid",
+                     section + ".crystalizer.volume-mid");
+
+  update_key<double>(root, settings, "volume-high",
+                     section + ".crystalizer.volume-high");
 }
 
 void CrystalizerPreset::write(boost::property_tree::ptree& root) {

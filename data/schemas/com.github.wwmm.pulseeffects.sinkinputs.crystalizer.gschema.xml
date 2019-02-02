@@ -32,5 +32,26 @@
             <range min="0" max="10"/>
             <default>0.5</default>
         </key>
+        <key name="mute-low" type="b">
+            <default>false</default>
+        </key>
+        <key name="mute-mid" type="b">
+            <default>false</default>
+        </key>
+        <key name="mute-high" type="b">
+            <default>false</default>
+        </key>
+        <key name="volume-low" type="d">
+            <range min="-20.0" max="20.0"/>
+            <default>0.0</default>
+        </key>
+        <key name="volume-mid" type="d">
+            <range min="-20.0" max="20.0"/>
+            <default>0.0</default>
+        </key>
+        <key name="volume-high" type="d">
+            <range min="-20.0" max="20.0"/>
+            <default>0.0</default>
+        </key>
     </schema>
 </schemalist>
