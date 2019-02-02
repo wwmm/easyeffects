@@ -290,7 +290,7 @@ static gboolean gst_peadapter_sink_event(GstPad* pad,
 
       /* push the event downstream */
 
-      gst_pad_push_event(peadapter->srcpad, event);
+      ret = gst_pad_push_event(peadapter->srcpad, event);
 
       break;
     case GST_EVENT_EOS:
@@ -299,21 +299,11 @@ static gboolean gst_peadapter_sink_event(GstPad* pad,
 
       peadapter->inbuf_n_samples = -1;
 
-      ret = gst_pad_event_default(pad, parent, event);
-
-      break;
-
-    case GST_EVENT_SEGMENT:
-      ret = gst_pad_event_default(pad, parent, event);
-
-      break;
-
-    case GST_EVENT_RECONFIGURE:
-      ret = gst_pad_event_default(pad, parent, event);
+      ret = gst_pad_push_event(peadapter->srcpad, event);
 
       break;
     default:
-      ret = gst_pad_event_default(pad, parent, event);
+      ret = gst_pad_push_event(peadapter->srcpad, event);
       break;
   }
 
