@@ -19,11 +19,11 @@ Convolver::Convolver(const std::string& tag, const std::string& schema)
 
     adapter = gst_element_factory_make("peadapter", nullptr);
 
-    gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in,
-                     adapter, convolver, audioconvert_out, output_gain,
+    gst_bin_add_many(GST_BIN(bin), input_gain, in_level, adapter,
+                     audioconvert_in, convolver, audioconvert_out, output_gain,
                      out_level, nullptr);
 
-    gst_element_link_many(input_gain, in_level, audioconvert_in, adapter,
+    gst_element_link_many(input_gain, in_level, adapter, audioconvert_in,
                           convolver, audioconvert_out, output_gain, out_level,
                           nullptr);
 

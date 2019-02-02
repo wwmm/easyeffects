@@ -76,10 +76,6 @@ void update_order(gpointer user_data) {
     }
   }
 
-  for (auto& p : l->plugins) {
-    gst_element_set_state(p.second, GST_STATE_NULL);
-  }
-
   // unlinking elements using old plugins order
 
   gst_element_unlink(l->identity_in, l->plugins[l->plugins_order_old[0]]);

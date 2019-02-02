@@ -73,9 +73,6 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
     mixer_sink1 = gst_element_get_request_pad(mixer, "sink_1");
     mixer_sink2 = gst_element_get_request_pad(mixer, "sink_2");
 
-    // g_object_set(mixer_sink0, "mute", true, nullptr);
-    // g_object_set(mixer_sink1, "mute", true, nullptr);
-
     auto queue_low_sink = gst_element_get_static_pad(queue_low, "sink");
     auto queue_mid_sink = gst_element_get_static_pad(queue_mid, "sink");
     auto queue_high_sink = gst_element_get_static_pad(queue_high, "sink");

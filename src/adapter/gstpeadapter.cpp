@@ -155,6 +155,8 @@ static void gst_peadapter_set_property(GObject* object,
                                        GParamSpec* pspec) {
   GstPeadapter* peadapter = GST_PEADAPTER(object);
 
+  std::lock_guard<std::mutex> lock(peadapter->lock_guard);
+
   switch (prop_id) {
     case PROP_BLOCKSIZE:
       peadapter->blocksize = g_value_get_enum(value);
@@ -191,6 +193,8 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
                                          GstBuffer* buffer) {
   GstPeadapter* peadapter = GST_PEADAPTER(parent);
   GstFlowReturn ret = GST_FLOW_OK;
+
+  std::lock_guard<std::mutex> lock(peadapter->lock_guard);
 
   if (GST_BUFFER_FLAG_IS_SET(buffer, GST_BUFFER_FLAG_DISCONT)) {
     gst_adapter_clear(peadapter->adapter);
@@ -270,6 +274,8 @@ static gboolean gst_peadapter_sink_event(GstPad* pad,
   GstPeadapter* peadapter = GST_PEADAPTER(parent);
   gboolean ret = true;
 
+  std::lock_guard<std::mutex> lock(peadapter->lock_guard);
+
   switch (GST_EVENT_TYPE(event)) {
     case GST_EVENT_CAPS:
       GstCaps* caps;
@@ -309,6 +315,8 @@ static GstStateChangeReturn gst_peadapter_change_state(
     GstStateChange transition) {
   GstStateChangeReturn ret = GST_STATE_CHANGE_SUCCESS;
   GstPeadapter* peadapter = GST_PEADAPTER(element);
+
+  std::lock_guard<std::mutex> lock(peadapter->lock_guard);
 
   /*up changes*/
 
@@ -403,6 +411,8 @@ void gst_peadapter_finalize(GObject* object) {
   GstPeadapter* peadapter = GST_PEADAPTER(object);
 
   GST_DEBUG_OBJECT(peadapter, "finalize");
+
+  std::lock_guard<std::mutex> lock(peadapter->lock_guard);
 
   gst_adapter_clear(peadapter->adapter);
   g_object_unref(peadapter->adapter);
