@@ -302,6 +302,11 @@ static gboolean gst_peadapter_sink_event(GstPad* pad,
       ret = gst_pad_event_default(pad, parent, event);
 
       break;
+
+    case GST_EVENT_SEGMENT:
+      ret = gst_pad_event_default(pad, parent, event);
+
+      break;
     default:
       ret = gst_pad_event_default(pad, parent, event);
       break;
