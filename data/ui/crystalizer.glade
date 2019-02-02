@@ -106,17 +106,17 @@
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.01</property>
   </object>
-  <object class="GtkImage" id="mute_icon">
+  <object class="GtkImage" id="mute_icon_high">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="icon_name">audio-volume-high-symbolic</property>
   </object>
-  <object class="GtkImage" id="mute_icon1">
+  <object class="GtkImage" id="mute_icon_low">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="icon_name">audio-volume-high-symbolic</property>
   </object>
-  <object class="GtkImage" id="mute_icon2">
+  <object class="GtkImage" id="mute_icon_mid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="icon_name">audio-volume-high-symbolic</property>
@@ -248,7 +248,7 @@
                             <property name="receives_default">True</property>
                             <property name="halign">start</property>
                             <property name="valign">center</property>
-                            <property name="image">mute_icon</property>
+                            <property name="image">mute_icon_low</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -346,7 +346,7 @@
                             <property name="receives_default">True</property>
                             <property name="halign">start</property>
                             <property name="valign">center</property>
-                            <property name="image">mute_icon1</property>
+                            <property name="image">mute_icon_mid</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -444,7 +444,7 @@
                             <property name="receives_default">True</property>
                             <property name="halign">start</property>
                             <property name="valign">center</property>
-                            <property name="image">mute_icon2</property>
+                            <property name="image">mute_icon_high</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>

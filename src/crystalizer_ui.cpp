@@ -14,6 +14,9 @@ CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
   builder->get_widget("scale_low", scale_low);
   builder->get_widget("scale_mid", scale_mid);
   builder->get_widget("scale_high", scale_high);
+  builder->get_widget("mute_icon_low", mute_icon_low);
+  builder->get_widget("mute_icon_mid", mute_icon_mid);
+  builder->get_widget("mute_icon_high", mute_icon_high);
 
   get_object(builder, "intensity_low", intensity_low);
   get_object(builder, "intensity_mid", intensity_mid);
@@ -23,6 +26,36 @@ CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
   get_object(builder, "volume_low", volume_low);
   get_object(builder, "volume_mid", volume_mid);
   get_object(builder, "volume_high", volume_high);
+
+  mute_low->signal_toggled().connect([&]() {
+    if (mute_low->get_active()) {
+      mute_icon_low->set_from_icon_name("audio-volume-muted-symbolic",
+                                        Gtk::ICON_SIZE_BUTTON);
+    } else {
+      mute_icon_low->set_from_icon_name("audio-volume-high-symbolic",
+                                        Gtk::ICON_SIZE_BUTTON);
+    }
+  });
+
+  mute_mid->signal_toggled().connect([&]() {
+    if (mute_mid->get_active()) {
+      mute_icon_mid->set_from_icon_name("audio-volume-muted-symbolic",
+                                        Gtk::ICON_SIZE_BUTTON);
+    } else {
+      mute_icon_mid->set_from_icon_name("audio-volume-high-symbolic",
+                                        Gtk::ICON_SIZE_BUTTON);
+    }
+  });
+
+  mute_high->signal_toggled().connect([&]() {
+    if (mute_high->get_active()) {
+      mute_icon_high->set_from_icon_name("audio-volume-muted-symbolic",
+                                         Gtk::ICON_SIZE_BUTTON);
+    } else {
+      mute_icon_high->set_from_icon_name("audio-volume-high-symbolic",
+                                         Gtk::ICON_SIZE_BUTTON);
+    }
+  });
 
   // gsettings bindings
 
