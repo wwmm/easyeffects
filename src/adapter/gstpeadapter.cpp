@@ -332,9 +332,9 @@ static GstStateChangeReturn gst_peadapter_change_state(
 
       peadapter->inbuf_n_samples = -1;
 
-      gst_element_post_message(
-          GST_ELEMENT_CAST(peadapter),
-          gst_message_new_latency(GST_OBJECT_CAST(peadapter)));
+      // gst_element_post_message(
+      //     GST_ELEMENT_CAST(peadapter),
+      //     gst_message_new_latency(GST_OBJECT_CAST(peadapter)));
 
       break;
     default:
