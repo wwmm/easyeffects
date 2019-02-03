@@ -139,12 +139,8 @@ template <typename T>
 void on_plugins_order_changed(GSettings* settings, gchar* key, T* l) {
   auto srcpad = gst_element_get_static_pad(l->identity_in, "src");
 
-  auto id = gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE, on_pad_idle<T*>,
-                              l, nullptr);
-
-  if (id != 0) {
-    util::debug(l->log_tag + " plugins will be reordered in another thread");
-  }
+  gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE, on_pad_idle<T*>, l,
+                    nullptr);
 
   g_object_unref(srcpad);
 }
