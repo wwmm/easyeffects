@@ -15,8 +15,13 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
     auto output_gain = gst_element_factory_make("volume", nullptr);
     auto out_level =
         gst_element_factory_make("level", "crystalizer_output_level");
-    auto audioconvert_in =
-        gst_element_factory_make("audioconvert", "crystalizer_audioconvert_in");
+
+    auto audioconvert_low = gst_element_factory_make(
+        "audioconvert", "crystalizer_audioconvert_low");
+    auto audioconvert_mid = gst_element_factory_make(
+        "audioconvert", "crystalizer_audioconvert_mid");
+    auto audioconvert_high = gst_element_factory_make(
+        "audioconvert", "crystalizer_audioconvert_high");
     auto audioconvert_out = gst_element_factory_make(
         "audioconvert", "crystalizer_audioconvert_out");
 
@@ -84,21 +89,24 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
     auto crystalizer_high_src =
         gst_element_get_static_pad(crystalizer_high, "src");
 
-    gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in, tee,
-                     queue_low, queue_mid, queue_high, lowpass, bandpass,
-                     highpass, crystalizer_low, crystalizer_mid,
-                     crystalizer_high, mixer, audioconvert_out, output_gain,
-                     out_level, nullptr);
+    gst_bin_add_many(GST_BIN(bin), input_gain, in_level, tee, queue_low,
+                     queue_mid, queue_high, audioconvert_low, audioconvert_mid,
+                     audioconvert_high, lowpass, bandpass, highpass,
+                     crystalizer_low, crystalizer_mid, crystalizer_high, mixer,
+                     audioconvert_out, output_gain, out_level, nullptr);
 
-    gst_element_link_many(input_gain, in_level, audioconvert_in, tee, nullptr);
+    gst_element_link_many(input_gain, in_level, tee, nullptr);
 
     gst_pad_link(tee_src0, queue_low_sink);
     gst_pad_link(tee_src1, queue_mid_sink);
     gst_pad_link(tee_src2, queue_high_sink);
 
-    gst_element_link_many(queue_low, lowpass, crystalizer_low, nullptr);
-    gst_element_link_many(queue_mid, bandpass, crystalizer_mid, nullptr);
-    gst_element_link_many(queue_high, highpass, crystalizer_high, nullptr);
+    gst_element_link_many(queue_low, audioconvert_low, lowpass, crystalizer_low,
+                          nullptr);
+    gst_element_link_many(queue_mid, audioconvert_mid, bandpass,
+                          crystalizer_mid, nullptr);
+    gst_element_link_many(queue_high, audioconvert_high, highpass,
+                          crystalizer_high, nullptr);
 
     gst_pad_link(crystalizer_low_src, mixer_sink0);
     gst_pad_link(crystalizer_mid_src, mixer_sink1);

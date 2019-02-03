@@ -12,18 +12,6 @@ template <typename T>
 void update_effects_order(gpointer user_data) {
   auto l = static_cast<T>(user_data);
 
-  if (!gst_element_is_locked_state(l->effects_bin)) {
-    util::debug(l->log_tag + "effects_bin is not locked");
-
-    if (!gst_element_set_locked_state(l->effects_bin, true)) {
-      util::debug(l->log_tag + "could not lock effects_bin");
-    } else {
-      util::debug(l->log_tag + "effects_bin was locked");
-    }
-  } else {
-    util::debug(l->log_tag + "effects_bin is locked");
-  }
-
   // unlinking elements using old plugins order
 
   gst_element_unlink(l->identity_in, l->plugins[l->plugins_order_old[0]]);
@@ -33,9 +21,7 @@ void update_effects_order(gpointer user_data) {
                        l->plugins[l->plugins_order_old[n]]);
   }
 
-  gst_element_unlink(
-      l->plugins[l->plugins_order_old[l->plugins_order_old.size() - 1]],
-      l->identity_out);
+  gst_element_unlink(l->plugins[l->plugins_order_old.back()], l->identity_out);
 
   // linking elements using the new plugins order
 
@@ -72,18 +58,6 @@ void update_effects_order(gpointer user_data) {
       util::debug(l->log_tag + "failed to sync " + p.first +
                   " state with parent");
     }
-  }
-
-  if (gst_element_set_locked_state(l->effects_bin, false)) {
-    util::debug(l->log_tag + "effects_bin was unlocked");
-  } else {
-    util::debug(l->log_tag + "failed to unlock effects_bin");
-  }
-
-  if (gst_element_sync_state_with_parent(l->effects_bin)) {
-    util::debug(l->log_tag + "effects_bin state synced with parent");
-  } else {
-    util::debug(l->log_tag + "failed to sync effects_bin state with parent");
   }
 }
 
