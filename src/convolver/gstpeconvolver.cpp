@@ -357,8 +357,9 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver) {
 #if ZITA_CONVOLVER_MAJOR_VERSION == 3
       peconvolver->conv->set_density(density);
 
-      ret = peconvolver->conv->configure(2, 2, max_size, num_samples,
-                                         num_samples, Convproc::MAXPART);
+      ret = peconvolver->conv->configure(
+          2, 2, max_size, peconvolver->num_samples, peconvolver->num_samples,
+          Convproc::MAXPART);
 #endif
 
 #if ZITA_CONVOLVER_MAJOR_VERSION == 4
@@ -426,10 +427,8 @@ static void gst_peconvolver_process(GstPeconvolver* peconvolver,
 
     gst_buffer_map(buffer, &map, GST_MAP_READWRITE);
 
-    guint num_samples = map.size / peconvolver->bpf;
-
     // deinterleave
-    for (unsigned int n = 0; n < num_samples; n++) {
+    for (unsigned int n = 0; n < peconvolver->num_samples; n++) {
       peconvolver->conv->inpdata(0)[n] = ((float*)map.data)[2 * n];
       peconvolver->conv->inpdata(1)[n] = ((float*)map.data)[2 * n + 1];
     }
@@ -442,7 +441,7 @@ static void gst_peconvolver_process(GstPeconvolver* peconvolver,
     }
 
     // interleave
-    for (unsigned int n = 0; n < num_samples; n++) {
+    for (unsigned int n = 0; n < peconvolver->num_samples; n++) {
       ((float*)map.data)[2 * n] = peconvolver->conv->outdata(0)[n];
       ((float*)map.data)[2 * n + 1] = peconvolver->conv->outdata(1)[n];
     }
