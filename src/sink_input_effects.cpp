@@ -67,104 +67,6 @@ void on_message_element(const GstBus* gst_bus,
   }
 }
 
-void update_order(gpointer user_data) {
-  auto l = static_cast<SinkInputEffects*>(user_data);
-
-  if (!gst_element_is_locked_state(l->effects_bin)) {
-    if (!gst_element_set_locked_state(l->effects_bin, true)) {
-      util::debug(l->log_tag + " could not lock state changes");
-    }
-  }
-
-  // unlinking elements using old plugins order
-
-  gst_element_unlink(l->identity_in, l->plugins[l->plugins_order_old[0]]);
-
-  for (long unsigned int n = 1; n < l->plugins_order_old.size(); n++) {
-    gst_element_unlink(l->plugins[l->plugins_order_old[n - 1]],
-                       l->plugins[l->plugins_order_old[n]]);
-  }
-
-  gst_element_unlink(
-      l->plugins[l->plugins_order_old[l->plugins_order_old.size() - 1]],
-      l->identity_out);
-
-  // linking elements using the new plugins order
-
-  gst_element_link(l->identity_in, l->plugins[l->plugins_order[0]]);
-
-  for (long unsigned int n = 1; n < l->plugins_order.size(); n++) {
-    gst_element_link(l->plugins[l->plugins_order[n - 1]],
-                     l->plugins[l->plugins_order[n]]);
-  }
-
-  gst_element_link(l->plugins[l->plugins_order[l->plugins_order.size() - 1]],
-                   l->identity_out);
-
-  for (auto& p : l->plugins) {
-    gst_element_sync_state_with_parent(p.second);
-  }
-
-  gst_element_set_locked_state(l->effects_bin, false);
-
-  gst_element_sync_state_with_parent(l->effects_bin);
-
-  std::string list;
-
-  for (auto name : l->plugins_order) {
-    list += name + ",";
-  }
-
-  util::debug(l->log_tag + "new plugins order: [" + list + "]");
-}
-
-GstPadProbeReturn on_pad_idle(GstPad* pad,
-                              GstPadProbeInfo* info,
-                              gpointer user_data) {
-  auto l = static_cast<SinkInputEffects*>(user_data);
-
-  std::lock_guard<std::mutex> lock(l->pipeline_mutex);
-
-  update_order(user_data);
-
-  return GST_PAD_PROBE_REMOVE;
-}
-
-void on_plugins_order_changed(GSettings* settings,
-                              gchar* key,
-                              SinkInputEffects* l) {
-  bool update = false;
-  gchar* name;
-  GVariantIter* iter;
-
-  g_settings_get(settings, "plugins", "as", &iter);
-
-  l->plugins_order_old = l->plugins_order;
-  l->plugins_order.clear();
-
-  while (g_variant_iter_next(iter, "s", &name)) {
-    l->plugins_order.push_back(name);
-    g_free(name);
-  }
-
-  g_variant_iter_free(iter);
-
-  if (l->plugins_order.size() != l->plugins_order_old.size()) {
-    update = true;
-  } else if (!std::equal(l->plugins_order.begin(), l->plugins_order.end(),
-                         l->plugins_order_old.begin())) {
-    update = true;
-  }
-
-  if (update) {
-    auto srcpad = gst_element_get_static_pad(l->identity_in, "src");
-
-    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE, on_pad_idle, l, nullptr);
-
-    g_object_unref(srcpad);
-  }
-}
-
 }  // namespace
 
 SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
@@ -295,7 +197,8 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
   add_plugins_to_pipeline();
 
   g_signal_connect(sie_settings, "changed::plugins",
-                   G_CALLBACK(on_plugins_order_changed), this);
+                   G_CALLBACK(on_plugins_order_changed<SinkInputEffects>),
+                   this);
 }
 
 SinkInputEffects::~SinkInputEffects() {

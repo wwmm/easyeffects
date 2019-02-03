@@ -7,7 +7,6 @@
 #include <cmath>
 #include <mutex>
 #include "config.h"
-#include "util.hpp"
 
 namespace {
 
