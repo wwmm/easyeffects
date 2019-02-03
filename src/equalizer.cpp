@@ -107,8 +107,10 @@ Equalizer::Equalizer(const std::string& tag,
     auto out_level =
         gst_element_factory_make("level", "equalizer_output_level");
     auto output_gain = gst_element_factory_make("volume", nullptr);
-    auto audioconvert_in =
-        gst_element_factory_make("audioconvert", "eq_audioconvert_in");
+    auto audioconvert_L =
+        gst_element_factory_make("audioconvert", "eq_audioconvert_L");
+    auto audioconvert_R =
+        gst_element_factory_make("audioconvert", "eq_audioconvert_R");
 
     deinterleave = gst_element_factory_make("deinterleave", "eq_deinterleave");
     queue_L = gst_element_factory_make("queue", "eq_queue_L");
@@ -116,19 +118,20 @@ Equalizer::Equalizer(const std::string& tag,
     audioconvert_out =
         gst_element_factory_make("audioconvert", "eq_audioconvert_out");
 
-    gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in,
-                     deinterleave, queue_L, queue_R, equalizer_L, equalizer_R,
-                     audioconvert_out, output_gain, out_level, nullptr);
+    gst_bin_add_many(GST_BIN(bin), input_gain, in_level, deinterleave, queue_L,
+                     queue_R, audioconvert_L, audioconvert_R, equalizer_L,
+                     equalizer_R, audioconvert_out, output_gain, out_level,
+                     nullptr);
 
     /*
       Once the pipeline is running we will have the following link order:
                             input_gain
                             in_level
-                            audioconvert_in
                             deinterleave
                             /           \
-                         queue_L      queue_R
-                       equalizer_L  equalizer_R
+                      queue_L          queue_R
+                      audioconvert_L   audioconvert_R
+                      equalizer_L      equalizer_R
                               \        /
                               interleave
                               audioconvert_out
@@ -136,13 +139,12 @@ Equalizer::Equalizer(const std::string& tag,
                               out_level
     */
 
-    gst_element_link_many(input_gain, in_level, audioconvert_in, deinterleave,
-                          nullptr);
+    gst_element_link_many(input_gain, in_level, deinterleave, nullptr);
 
     gst_element_link_many(audioconvert_out, output_gain, out_level, nullptr);
 
-    gst_element_link(queue_L, equalizer_L);
-    gst_element_link(queue_R, equalizer_R);
+    gst_element_link_many(queue_L, audioconvert_L, equalizer_L, nullptr);
+    gst_element_link_many(queue_R, audioconvert_R, equalizer_R, nullptr);
 
     // setting bin ghost pads
 
