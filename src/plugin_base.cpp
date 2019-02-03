@@ -25,12 +25,6 @@ void on_enable(gpointer user_data) {
                                std::string(l->name + "_bin").c_str());
 
   if (!b) {
-    if (!gst_element_is_locked_state(l->plugin)) {
-      if (!gst_element_set_locked_state(l->plugin, true)) {
-        util::debug(l->log_tag + l->name + " could not lock state changes");
-      }
-    }
-
     gst_element_unlink(l->identity_in, l->identity_out);
 
     gst_bin_add(GST_BIN(l->plugin), l->bin);
@@ -38,10 +32,6 @@ void on_enable(gpointer user_data) {
     gst_element_link_many(l->identity_in, l->bin, l->identity_out, nullptr);
 
     gst_element_sync_state_with_parent(l->bin);
-
-    gst_element_set_locked_state(l->plugin, false);
-
-    gst_element_sync_state_with_parent(l->plugin);
 
     util::debug(l->log_tag + l->name + " is enabled");
   } else {
@@ -56,12 +46,6 @@ void on_disable(gpointer user_data) {
                                std::string(l->name + "_bin").c_str());
 
   if (b) {
-    if (!gst_element_is_locked_state(l->plugin)) {
-      if (!gst_element_set_locked_state(l->plugin, true)) {
-        util::debug(l->log_tag + l->name + " could not lock state changes");
-      }
-    }
-
     gst_element_set_state(l->bin, GST_STATE_NULL);
 
     gst_element_unlink_many(l->identity_in, l->bin, l->identity_out, nullptr);
@@ -69,10 +53,6 @@ void on_disable(gpointer user_data) {
     gst_bin_remove(GST_BIN(l->plugin), l->bin);
 
     gst_element_link(l->identity_in, l->identity_out);
-
-    gst_element_set_locked_state(l->plugin, false);
-
-    gst_element_sync_state_with_parent(l->plugin);
 
     util::debug(l->log_tag + l->name + " is disabled");
   } else {
@@ -145,15 +125,13 @@ void PluginBase::enable() {
 
   gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
                     [](auto pad, auto info, auto d) {
-                      gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
-
                       auto pb = static_cast<PluginBase*>(d);
 
                       std::lock_guard<std::mutex> lock(pb->plugin_mutex);
 
                       on_enable(d);
 
-                      return GST_PAD_PROBE_OK;
+                      return GST_PAD_PROBE_REMOVE;
                     },
                     this, nullptr);
 
@@ -165,15 +143,13 @@ void PluginBase::disable() {
 
   gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
                     [](auto pad, auto info, auto d) {
-                      gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
-
                       auto pb = static_cast<PluginBase*>(d);
 
                       std::lock_guard<std::mutex> lock(pb->plugin_mutex);
 
                       on_disable(d);
 
-                      return GST_PAD_PROBE_OK;
+                      return GST_PAD_PROBE_REMOVE;
                     },
                     this, nullptr);
 
