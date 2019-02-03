@@ -356,6 +356,7 @@ PipelineBase::~PipelineBase() {
   gst_object_unref(bus);
   gst_object_unref(pipeline);
   g_object_unref(settings);
+  g_object_unref(child_settings);
 }
 
 void PipelineBase::set_caps(const uint& sampling_rate) {

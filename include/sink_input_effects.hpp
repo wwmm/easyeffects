@@ -87,8 +87,6 @@ class SinkInputEffects : public PipelineBase {
   sigc::signal<void, std::array<double, 2>> delay_output_level;
 
  private:
-  GSettings* sie_settings = nullptr;
-
   void add_plugins_to_pipeline();
 
   void on_app_added(const std::shared_ptr<AppInfo>& app_info);

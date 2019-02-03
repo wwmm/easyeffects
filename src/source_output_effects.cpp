@@ -40,11 +40,11 @@ void on_message_element(const GstBus* gst_bus,
 SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager)
     : PipelineBase("soe: ", pulse_manager->mic_sink_info->rate),
       log_tag("soe: "),
-      pm(pulse_manager),
-      soe_settings(
-          g_settings_new("com.github.wwmm.pulseeffects.sourceoutputs")) {
+      pm(pulse_manager) {
   std::string pulse_props =
       "application.id=com.github.wwmm.pulseeffects.sourceoutputs";
+
+  child_settings = g_settings_new("com.github.wwmm.pulseeffects.sourceoutputs");
 
   set_pulseaudio_props(pulse_props);
 
@@ -140,14 +140,12 @@ SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager)
 
   add_plugins_to_pipeline();
 
-  g_signal_connect(soe_settings, "changed::plugins",
+  g_signal_connect(child_settings, "changed::plugins",
                    G_CALLBACK(on_plugins_order_changed<SourceOutputEffects>),
                    this);
 }
 
 SourceOutputEffects::~SourceOutputEffects() {
-  g_object_unref(soe_settings);
-
   util::debug(log_tag + "destroyed");
 }
 
@@ -167,14 +165,14 @@ void SourceOutputEffects::add_plugins_to_pipeline() {
   GVariantIter* iter;
   std::vector<std::string> default_order;
 
-  g_settings_get(soe_settings, "plugins", "as", &iter);
+  g_settings_get(child_settings, "plugins", "as", &iter);
 
   while (g_variant_iter_next(iter, "s", &name)) {
     plugins_order.push_back(name);
     g_free(name);
   }
 
-  auto gvariant = g_settings_get_default_value(soe_settings, "plugins");
+  auto gvariant = g_settings_get_default_value(child_settings, "plugins");
 
   g_variant_get(gvariant, "as", &iter);
 
@@ -192,7 +190,7 @@ void SourceOutputEffects::add_plugins_to_pipeline() {
   if (plugins_order.size() != default_order.size()) {
     plugins_order = default_order;
 
-    g_settings_reset(soe_settings, "plugins");
+    g_settings_reset(child_settings, "plugins");
   }
 
   for (auto v : plugins_order) {
@@ -202,7 +200,7 @@ void SourceOutputEffects::add_plugins_to_pipeline() {
         default_order.end()) {
       plugins_order = default_order;
 
-      g_settings_reset(soe_settings, "plugins");
+      g_settings_reset(child_settings, "plugins");
 
       break;
     }

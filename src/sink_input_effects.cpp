@@ -72,10 +72,11 @@ void on_message_element(const GstBus* gst_bus,
 SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
     : PipelineBase("sie: ", pulse_manager->apps_sink_info->rate),
       log_tag("sie: "),
-      pm(pulse_manager),
-      sie_settings(g_settings_new("com.github.wwmm.pulseeffects.sinkinputs")) {
+      pm(pulse_manager) {
   std::string pulse_props =
       "application.id=com.github.wwmm.pulseeffects.sinkinputs";
+
+  child_settings = g_settings_new("com.github.wwmm.pulseeffects.sinkinputs");
 
   set_pulseaudio_props(pulse_props);
 
@@ -196,14 +197,12 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
 
   add_plugins_to_pipeline();
 
-  g_signal_connect(sie_settings, "changed::plugins",
+  g_signal_connect(child_settings, "changed::plugins",
                    G_CALLBACK(on_plugins_order_changed<SinkInputEffects>),
                    this);
 }
 
 SinkInputEffects::~SinkInputEffects() {
-  g_object_unref(sie_settings);
-
   util::debug(log_tag + "destroyed");
 }
 
@@ -222,14 +221,14 @@ void SinkInputEffects::add_plugins_to_pipeline() {
   GVariantIter* iter;
   std::vector<std::string> default_order;
 
-  g_settings_get(sie_settings, "plugins", "as", &iter);
+  g_settings_get(child_settings, "plugins", "as", &iter);
 
   while (g_variant_iter_next(iter, "s", &name)) {
     plugins_order.push_back(name);
     g_free(name);
   }
 
-  auto gvariant = g_settings_get_default_value(sie_settings, "plugins");
+  auto gvariant = g_settings_get_default_value(child_settings, "plugins");
 
   g_variant_get(gvariant, "as", &iter);
 
@@ -247,7 +246,7 @@ void SinkInputEffects::add_plugins_to_pipeline() {
   if (plugins_order.size() != default_order.size()) {
     plugins_order = default_order;
 
-    g_settings_reset(sie_settings, "plugins");
+    g_settings_reset(child_settings, "plugins");
   }
 
   for (auto v : plugins_order) {
@@ -257,7 +256,7 @@ void SinkInputEffects::add_plugins_to_pipeline() {
         default_order.end()) {
       plugins_order = default_order;
 
-      g_settings_reset(sie_settings, "plugins");
+      g_settings_reset(child_settings, "plugins");
 
       break;
     }
