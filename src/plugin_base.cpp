@@ -143,18 +143,20 @@ bool PluginBase::is_installed(GstElement* e) {
 void PluginBase::enable() {
   auto srcpad = gst_element_get_static_pad(identity_in, "src");
 
-  auto id =
-      gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
-                        [](auto pad, auto info, auto d) {
-                          auto pb = static_cast<PluginBase*>(d);
+  auto id = gst_pad_add_probe(
+      srcpad, GST_PAD_PROBE_TYPE_IDLE,
+      [](auto pad, auto info, auto d) {
+        gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
 
-                          std::lock_guard<std::mutex> lock(pb->plugin_mutex);
+        auto pb = static_cast<PluginBase*>(d);
 
-                          on_enable(d);
+        std::lock_guard<std::mutex> lock(pb->plugin_mutex);
 
-                          return GST_PAD_PROBE_REMOVE;
-                        },
-                        this, nullptr);
+        on_enable(d);
+
+        return GST_PAD_PROBE_OK;
+      },
+      this, nullptr);
 
   if (id != 0) {
     util::debug(log_tag + name + " will be enabled in another thread");
@@ -166,18 +168,20 @@ void PluginBase::enable() {
 void PluginBase::disable() {
   auto srcpad = gst_element_get_static_pad(identity_in, "src");
 
-  auto id =
-      gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
-                        [](auto pad, auto info, auto d) {
-                          auto pb = static_cast<PluginBase*>(d);
+  auto id = gst_pad_add_probe(
+      srcpad, GST_PAD_PROBE_TYPE_IDLE,
+      [](auto pad, auto info, auto d) {
+        gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
 
-                          std::lock_guard<std::mutex> lock(pb->plugin_mutex);
+        auto pb = static_cast<PluginBase*>(d);
 
-                          on_disable(d);
+        std::lock_guard<std::mutex> lock(pb->plugin_mutex);
 
-                          return GST_PAD_PROBE_REMOVE;
-                        },
-                        this, nullptr);
+        on_disable(d);
+
+        return GST_PAD_PROBE_OK;
+      },
+      this, nullptr);
 
   if (id != 0) {
     util::debug(log_tag + name + " will be disabled in another thread");
