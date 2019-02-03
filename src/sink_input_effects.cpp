@@ -1,5 +1,5 @@
 #include "sink_input_effects.hpp"
-#include "util.hpp"
+#include "pipeline_common.hpp"
 
 namespace {
 

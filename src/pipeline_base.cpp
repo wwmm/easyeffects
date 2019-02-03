@@ -2,11 +2,9 @@
 #include <glib-object.h>
 #include <gobject/gvaluecollector.h>
 #include <sys/resource.h>
-#include <algorithm>
 #include <boost/math/interpolators/cubic_b_spline.hpp>
-#include <cmath>
-#include <mutex>
 #include "config.h"
+#include "util.hpp"
 
 namespace {
 

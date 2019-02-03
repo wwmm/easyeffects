@@ -1,5 +1,5 @@
 #include "source_output_effects.hpp"
-#include "util.hpp"
+#include "pipeline_common.hpp"
 
 namespace {
 
