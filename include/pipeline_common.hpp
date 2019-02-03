@@ -39,24 +39,31 @@ void update_effects_order(gpointer user_data) {
 
   // linking elements using the new plugins order
 
-  gst_element_link(l->identity_in, l->plugins[l->plugins_order[0]]);
+  if (gst_element_link(l->identity_in, l->plugins[l->plugins_order[0]])) {
+    util::debug(l->log_tag + "linked identity_in to " + l->plugins_order[0]);
+  } else {
+    util::debug(l->log_tag + "failed to link identity_in to " +
+                l->plugins_order[0]);
+  }
 
   for (long unsigned int n = 1; n < l->plugins_order.size(); n++) {
     auto p1_name = l->plugins_order[n - 1];
     auto p2_name = l->plugins_order[n];
 
-    auto p1 = l->plugins[p1_name];
-    auto p2 = l->plugins[p2_name];
-
-    if (gst_element_link(p1, p2)) {
+    if (gst_element_link(l->plugins[p1_name], l->plugins[p2_name])) {
       util::debug(l->log_tag + "linked " + p1_name + " to " + p2_name);
     } else {
       util::debug(l->log_tag + "failed to link " + p1_name + " to " + p2_name);
     }
   }
 
-  gst_element_link(l->plugins[l->plugins_order[l->plugins_order.size() - 1]],
-                   l->identity_out);
+  if (gst_element_link(l->plugins[l->plugins_order.back()], l->identity_out)) {
+    util::debug(l->log_tag + "linked " + l->plugins_order.back() +
+                " to identity_out");
+  } else {
+    util::debug(l->log_tag + "failed to link " + l->plugins_order.back() +
+                " to identity_out");
+  }
 
   for (auto& p : l->plugins) {
     if (gst_element_sync_state_with_parent(p.second)) {
