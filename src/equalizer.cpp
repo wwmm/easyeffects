@@ -17,13 +17,17 @@ void on_deinterleave_pad_added(GstElement*, GstPad* pad, Equalizer* l) {
   if (name == std::string("src_0")) {
     auto sinkpad = gst_element_get_static_pad(l->queue_L, "sink");
 
-    gst_pad_link(pad, sinkpad);
+    if (gst_pad_link(pad, sinkpad)) {
+      util::debug(l->log_tag + l->name + " failed to link deinterleave pad");
+    }
 
     gst_object_unref(GST_OBJECT(sinkpad));
   } else if (name == std::string("src_1")) {
     auto sinkpad = gst_element_get_static_pad(l->queue_R, "sink");
 
-    gst_pad_link(pad, sinkpad);
+    if (gst_pad_link(pad, sinkpad)) {
+      util::debug(l->log_tag + l->name + " failed to link deinterleave pad");
+    }
 
     gst_object_unref(GST_OBJECT(sinkpad));
   }
@@ -140,11 +144,9 @@ Equalizer::Equalizer(const std::string& tag,
     */
 
     gst_element_link_many(input_gain, in_level, deinterleave, nullptr);
-
-    gst_element_link_many(audioconvert_out, output_gain, out_level, nullptr);
-
     gst_element_link_many(queue_L, audioconvert_L, equalizer_L, nullptr);
     gst_element_link_many(queue_R, audioconvert_R, equalizer_R, nullptr);
+    gst_element_link_many(audioconvert_out, output_gain, out_level, nullptr);
 
     // setting bin ghost pads
 
