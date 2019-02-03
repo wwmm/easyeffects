@@ -316,8 +316,6 @@ static GstStateChangeReturn gst_peadapter_change_state(
   GstStateChangeReturn ret = GST_STATE_CHANGE_SUCCESS;
   GstPeadapter* peadapter = GST_PEADAPTER(element);
 
-  std::lock_guard<std::mutex> lock(peadapter->lock_guard);
-
   /*up changes*/
 
   switch (transition) {
@@ -339,10 +337,6 @@ static GstStateChangeReturn gst_peadapter_change_state(
       gst_adapter_clear(peadapter->adapter);
 
       peadapter->inbuf_n_samples = -1;
-
-      // gst_element_post_message(
-      //     GST_ELEMENT_CAST(peadapter),
-      //     gst_message_new_latency(GST_OBJECT_CAST(peadapter)));
 
       break;
     default:

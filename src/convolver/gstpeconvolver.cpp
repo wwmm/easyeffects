@@ -274,9 +274,10 @@ static GstFlowReturn gst_peconvolver_transform_ip(GstBaseTransform* trans,
       gst_peconvolver_setup_convolver(peconvolver);
     };
 
+    peconvolver->futures.clear();
+
     auto future = std::async(std::launch::async, f);
 
-    peconvolver->futures.clear();
     peconvolver->futures.push_back(std::move(future));
   }
 
@@ -371,6 +372,8 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver) {
         util::debug(
             peconvolver->log_tag +
             "can't initialise zita-convolver engine: " + std::to_string(ret));
+      } else {
+        util::debug(peconvolver->log_tag + "initialized zita-convolver engine");
       }
 
       ret = peconvolver->conv->impdata_create(0, 0, 1, peconvolver->kernel_L, 0,
@@ -380,6 +383,8 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver) {
         failed = true;
         util::debug(peconvolver->log_tag +
                     "left impdata_create failed: " + std::to_string(ret));
+      } else {
+        util::debug(peconvolver->log_tag + "left impdata_create success");
       }
 
       ret = peconvolver->conv->impdata_create(1, 1, 1, peconvolver->kernel_R, 0,
@@ -389,6 +394,8 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver) {
         failed = true;
         util::debug(peconvolver->log_tag +
                     "right impdata_create failed: " + std::to_string(ret));
+      } else {
+        util::debug(peconvolver->log_tag + "right impdata_create success");
       }
 
       ret = peconvolver->conv->start_process(CONVPROC_SCHEDULER_PRIORITY,
@@ -398,6 +405,8 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver) {
         failed = true;
         util::debug(peconvolver->log_tag +
                     "start_process failed: " + std::to_string(ret));
+      } else {
+        util::debug(peconvolver->log_tag + "start_process success");
       }
 
       peconvolver->ready = (failed) ? false : true;
