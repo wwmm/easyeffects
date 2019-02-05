@@ -98,27 +98,6 @@ Equalizer::~Equalizer() {
 }
 
 void Equalizer::bind_band(GstElement* equalizer, const int index) {
-  // auto band =
-  //     gst_child_proxy_get_child_by_index(GST_CHILD_PROXY(equalizer), index);
-  //
-  // g_settings_bind(cfg,
-  //                 std::string("band" + std::to_string(index) +
-  //                 "-gain").c_str(), band, "gain", G_SETTINGS_BIND_GET);
-  //
-  // g_settings_bind(
-  //     cfg, std::string("band" + std::to_string(index) +
-  //     "-frequency").c_str(), band, "freq", G_SETTINGS_BIND_GET);
-  //
-  // g_settings_bind(
-  //     cfg, std::string("band" + std::to_string(index) + "-width").c_str(),
-  //     band, "bandwidth", G_SETTINGS_BIND_GET);
-  //
-  // g_settings_bind(cfg,
-  //                 std::string("band" + std::to_string(index) +
-  //                 "-type").c_str(), band, "type", G_SETTINGS_BIND_GET);
-  //
-  // g_object_unref(band);
-
   // left channel
 
   g_settings_bind(
@@ -126,12 +105,47 @@ void Equalizer::bind_band(GstElement* equalizer, const int index) {
       std::string("band" + std::to_string(index) + "-type").c_str(), equalizer,
       std::string("ftl-" + std::to_string(index)).c_str(), G_SETTINGS_BIND_GET);
 
+  g_settings_bind_with_mapping(
+      settings_left,
+      std::string("band" + std::to_string(index) + "-frequency").c_str(),
+      equalizer, std::string("fl-" + std::to_string(index)).c_str(),
+      G_SETTINGS_BIND_GET, util::double_to_float, nullptr, nullptr, nullptr);
+
+  g_settings_bind_with_mapping(
+      settings_left, std::string("band" + std::to_string(index) + "-q").c_str(),
+      equalizer, std::string("ql-" + std::to_string(index)).c_str(),
+      G_SETTINGS_BIND_GET, util::double_to_float, nullptr, nullptr, nullptr);
+
+  g_settings_bind_with_mapping(
+      settings_left,
+      std::string("band" + std::to_string(index) + "-gain").c_str(), equalizer,
+      std::string("gl-" + std::to_string(index)).c_str(), G_SETTINGS_BIND_GET,
+      util::db20_gain_to_linear, nullptr, nullptr, nullptr);
+
   // right channel
 
   g_settings_bind(
       settings_right,
       std::string("band" + std::to_string(index) + "-type").c_str(), equalizer,
       std::string("ftr-" + std::to_string(index)).c_str(), G_SETTINGS_BIND_GET);
+
+  g_settings_bind_with_mapping(
+      settings_right,
+      std::string("band" + std::to_string(index) + "-frequency").c_str(),
+      equalizer, std::string("fr-" + std::to_string(index)).c_str(),
+      G_SETTINGS_BIND_GET, util::double_to_float, nullptr, nullptr, nullptr);
+
+  g_settings_bind_with_mapping(
+      settings_right,
+      std::string("band" + std::to_string(index) + "-q").c_str(), equalizer,
+      std::string("qr-" + std::to_string(index)).c_str(), G_SETTINGS_BIND_GET,
+      util::double_to_float, nullptr, nullptr, nullptr);
+
+  g_settings_bind_with_mapping(
+      settings_right,
+      std::string("band" + std::to_string(index) + "-gain").c_str(), equalizer,
+      std::string("gr-" + std::to_string(index)).c_str(), G_SETTINGS_BIND_GET,
+      util::db20_gain_to_linear, nullptr, nullptr, nullptr);
 }
 
 void Equalizer::unbind_band(GstElement* equalizer, const int index) {
