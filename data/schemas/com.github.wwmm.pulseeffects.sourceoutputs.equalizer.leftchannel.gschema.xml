@@ -366,152 +366,152 @@
         <key
             name="band0-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band1-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band2-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band3-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band4-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band5-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band6-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band7-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band8-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band9-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band10-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band11-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band12-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band13-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band14-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band15-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band16-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band17-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band18-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band19-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band20-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band21-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band22-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band23-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band24-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band25-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band26-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band27-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band28-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
         <key
             name="band29-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"peak"</default>
+            <default>"Bell"</default>
         </key>
     </schema>
 </schemalist>

@@ -53,14 +53,19 @@ Equalizer::Equalizer(const std::string& tag,
 
     // init
 
+    g_object_set(equalizer, "bypass", false, nullptr);
+    g_object_set(equalizer, "bal", 0.0f, nullptr);
+
     int nbands = g_settings_get_int(settings, "num-bands");
 
-    // g_object_set(equalizer_L, "num-bands", nbands, nullptr);
-    // g_object_set(equalizer_R, "num-bands", nbands, nullptr);
+    for (int n = 0; n < 32; n++) {
+      g_object_set(equalizer, std::string("ftl-" + std::to_string(n)).c_str(),
+                   false, nullptr);
 
-    for (int n = 0; n < nbands; n++) {
-      // bind_band(equalizer_L, settings_left, n);
-      // bind_band(equalizer_R, settings_right, n);
+      if (n < nbands) {
+        // bind_band(equalizer_L, settings_left, n);
+        // bind_band(equalizer_R, settings_right, n);
+      }
     }
 
     // connect signals
