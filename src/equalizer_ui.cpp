@@ -15,13 +15,13 @@ gboolean bandtype_enum_to_int(GValue* value,
     g_value_set_int(value, 0);
   } else if (v == std::string("Bell")) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("High-pass")) {
+  } else if (v == std::string("Hi-pass")) {
     g_value_set_int(value, 2);
-  } else if (v == std::string("High-shelf")) {
+  } else if (v == std::string("Hi-shelf")) {
     g_value_set_int(value, 3);
-  } else if (v == std::string("Low-pass")) {
+  } else if (v == std::string("Lo-pass")) {
     g_value_set_int(value, 4);
-  } else if (v == std::string("Low-pass")) {
+  } else if (v == std::string("Lo-shelf")) {
     g_value_set_int(value, 5);
   } else if (v == std::string("Notch")) {
     g_value_set_int(value, 6);
@@ -42,13 +42,13 @@ GVariant* int_to_bandtype_enum(const GValue* value,
   } else if (v == 1) {
     return g_variant_new_string("Bell");
   } else if (v == 2) {
-    return g_variant_new_string("High-pass");
+    return g_variant_new_string("Hi-pass");
   } else if (v == 3) {
-    return g_variant_new_string("High-shelf");
+    return g_variant_new_string("Hi-shelf");
   } else if (v == 4) {
-    return g_variant_new_string("Low-pass");
+    return g_variant_new_string("Lo-pass");
   } else if (v == 5) {
-    return g_variant_new_string("Low-shelf");
+    return g_variant_new_string("Lo-shelf");
   } else if (v == 6) {
     return g_variant_new_string("Notch");
   } else {

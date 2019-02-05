@@ -56,16 +56,8 @@ Equalizer::Equalizer(const std::string& tag,
     g_object_set(equalizer, "bypass", false, nullptr);
     g_object_set(equalizer, "bal", 0.0f, nullptr);
 
-    int nbands = g_settings_get_int(settings, "num-bands");
-
-    for (int n = 0; n < 32; n++) {
-      g_object_set(equalizer, std::string("ftl-" + std::to_string(n)).c_str(),
-                   false, nullptr);
-
-      if (n < nbands) {
-        // bind_band(equalizer_L, settings_left, n);
-        // bind_band(equalizer_R, settings_right, n);
-      }
+    for (int n = 0; n < 30; n++) {
+      bind_band(equalizer, n);
     }
 
     // connect signals
@@ -105,9 +97,7 @@ Equalizer::~Equalizer() {
   util::debug(log_tag + name + " destroyed");
 }
 
-void Equalizer::bind_band(GstElement* equalizer,
-                          GSettings* cfg,
-                          const int index) {
+void Equalizer::bind_band(GstElement* equalizer, const int index) {
   // auto band =
   //     gst_child_proxy_get_child_by_index(GST_CHILD_PROXY(equalizer), index);
   //
@@ -128,6 +118,20 @@ void Equalizer::bind_band(GstElement* equalizer,
   //                 "-type").c_str(), band, "type", G_SETTINGS_BIND_GET);
   //
   // g_object_unref(band);
+
+  // left channel
+
+  g_settings_bind(
+      settings_left,
+      std::string("band" + std::to_string(index) + "-type").c_str(), equalizer,
+      std::string("ftl-" + std::to_string(index)).c_str(), G_SETTINGS_BIND_GET);
+
+  // right channel
+
+  g_settings_bind(
+      settings_right,
+      std::string("band" + std::to_string(index) + "-type").c_str(), equalizer,
+      std::string("ftr-" + std::to_string(index)).c_str(), G_SETTINGS_BIND_GET);
 }
 
 void Equalizer::unbind_band(GstElement* equalizer, const int index) {
