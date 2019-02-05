@@ -148,50 +148,26 @@ void Equalizer::bind_band(GstElement* equalizer, const int index) {
       util::db20_gain_to_linear, nullptr, nullptr, nullptr);
 }
 
-void Equalizer::unbind_band(GstElement* equalizer, const int index) {
-  // auto band =
-  //     gst_child_proxy_get_child_by_index(GST_CHILD_PROXY(equalizer), index);
-  //
-  // g_settings_unbind(
-  //     band, std::string("band" + std::to_string(index) + "-gain").c_str());
-  //
-  // g_settings_unbind(
-  //     band, std::string("band" + std::to_string(index) +
-  //     "-frequency").c_str());
-  //
-  // g_settings_unbind(
-  //     band, std::string("band" + std::to_string(index) + "-width").c_str());
-  //
-  // g_settings_unbind(
-  //     band, std::string("band" + std::to_string(index) + "-type").c_str());
-  //
-  // g_object_unref(band);
-}
-
 void Equalizer::update_equalizer() {
-  // int nbands = g_settings_get_int(settings, "num-bands");
-  // int current_nbands;
+  int nbands = g_settings_get_int(settings, "num-bands");
 
-  // g_object_get(equalizer_L, "num-bands", &current_nbands, nullptr);
+  for (int n = 0; n < 30; n++) {
+    if (n < nbands) {
+      // initialize band type as Bell
 
-  // if (nbands != current_nbands) {
-  //   util::debug(log_tag + name + ": unbinding bands");
-  //
-  //   for (int n = 0; n < current_nbands; n++) {
-  //     unbind_band(equalizer_L, n);
-  //     unbind_band(equalizer_R, n);
-  //   }
-  //
-  //   util::debug(log_tag + name + ": setting new number of bands");
-  //
-  //   g_object_set(equalizer_L, "num-bands", nbands, nullptr);
-  //   g_object_set(equalizer_R, "num-bands", nbands, nullptr);
-  //
-  //   util::debug(log_tag + name + ": binding bands");
-  //
-  //   for (int n = 0; n < nbands; n++) {
-  //     bind_band(equalizer_L, settings_left, n);
-  //     bind_band(equalizer_R, settings_right, n);
-  //   }
-  // }
+      g_object_set(equalizer, std::string("ftl-" + std::to_string(n)).c_str(),
+                   1, nullptr);
+
+      g_object_set(equalizer, std::string("ftr-" + std::to_string(n)).c_str(),
+                   1, nullptr);
+    } else {
+      // turn off band
+
+      g_object_set(equalizer, std::string("ftl-" + std::to_string(n)).c_str(),
+                   0, nullptr);
+
+      g_object_set(equalizer, std::string("ftr-" + std::to_string(n)).c_str(),
+                   0, nullptr);
+    }
+  }
 }
