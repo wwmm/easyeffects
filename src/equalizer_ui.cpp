@@ -11,12 +11,22 @@ gboolean bandtype_enum_to_int(GValue* value,
                               gpointer user_data) {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("peak")) {
+  if (v == std::string("Off")) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("low-shelf")) {
+  } else if (v == std::string("Bell")) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("high-shelf")) {
+  } else if (v == std::string("Hi-pass")) {
     g_value_set_int(value, 2);
+  } else if (v == std::string("Hi-shelf")) {
+    g_value_set_int(value, 3);
+  } else if (v == std::string("Lo-pass")) {
+    g_value_set_int(value, 4);
+  } else if (v == std::string("Lo-pass")) {
+    g_value_set_int(value, 5);
+  } else if (v == std::string("Notch")) {
+    g_value_set_int(value, 6);
+  } else if (v == std::string("Resonance")) {
+    g_value_set_int(value, 7);
   }
 
   return true;
@@ -28,11 +38,21 @@ GVariant* int_to_bandtype_enum(const GValue* value,
   int v = g_value_get_int(value);
 
   if (v == 0) {
-    return g_variant_new_string("peak");
+    return g_variant_new_string("Off");
   } else if (v == 1) {
-    return g_variant_new_string("low-shelf");
+    return g_variant_new_string("Bell");
+  } else if (v == 2) {
+    return g_variant_new_string("Hi-pass");
+  } else if (v == 3) {
+    return g_variant_new_string("Hi-shelf");
+  } else if (v == 4) {
+    return g_variant_new_string("Lo-pass");
+  } else if (v == 5) {
+    return g_variant_new_string("Lo-shelf");
+  } else if (v == 6) {
+    return g_variant_new_string("Notch");
   } else {
-    return g_variant_new_string("high-shelf");
+    return g_variant_new_string("Resonance");
   }
 }
 
@@ -174,35 +194,35 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid,
 
     Gtk::Grid* band_grid;
     Gtk::ComboBoxText* band_t;
-    Gtk::Label *band_q, *band_label;
-    Gtk::Button *reset_f, *reset_w;
+    Gtk::Label *band_w, *band_label;
+    Gtk::Button *reset_f, *reset_q;
 
     B->get_widget("band_grid", band_grid);
     B->get_widget("band_t", band_t);
-    B->get_widget("band_q", band_q);
+    B->get_widget("band_w", band_w);
     B->get_widget("band_label", band_label);
     B->get_widget("reset_f", reset_f);
-    B->get_widget("reset_w", reset_w);
+    B->get_widget("reset_q", reset_q);
 
     auto band_g =
         Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(B->get_object("band_g"));
     auto band_f =
         Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(B->get_object("band_f"));
-    auto band_w =
-        Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(B->get_object("band_w"));
+    auto band_q =
+        Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(B->get_object("band_q"));
 
-    auto update_q = [=]() {
-      auto w = band_w->get_value();
+    auto update_w = [=]() {
+      auto q = band_q->get_value();
 
-      if (w > 0) {
+      if (q > 0) {
         auto f = band_f->get_value();
 
         std::ostringstream msg;
 
         msg.precision(2);
-        msg << std::fixed << f / w;
+        msg << std::fixed << f / q << " Hz";
 
-        band_q->set_text(msg.str());
+        band_w->set_text(msg.str());
       }
     };
 
@@ -223,34 +243,32 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid,
     };
 
     connections_bands.push_back(
-        band_f->signal_value_changed().connect(update_q));
+        band_f->signal_value_changed().connect(update_w));
 
     connections_bands.push_back(
         band_f->signal_value_changed().connect(update_band_label));
 
     connections_bands.push_back(
-        band_w->signal_value_changed().connect(update_q));
+        band_q->signal_value_changed().connect(update_w));
 
     cfg->bind(std::string("band" + std::to_string(n) + "-gain"), band_g.get(),
               "value", flag);
     cfg->bind(std::string("band" + std::to_string(n) + "-frequency"),
               band_f.get(), "value", flag);
-    // cfg->bind(std::string("band" + std::to_string(n) + "-width"),
-    // band_w.get(),
-    //           "value", flag);
+    cfg->bind(std::string("band" + std::to_string(n) + "-q"), band_q.get(),
+              "value", flag);
 
-    // g_settings_bind_with_mapping(
-    //     cfg->gobj(), std::string("band" + std::to_string(n) +
-    //     "-type").c_str(), band_t->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-    //     bandtype_enum_to_int, int_to_bandtype_enum, nullptr, nullptr);
+    g_settings_bind_with_mapping(
+        cfg->gobj(), std::string("band" + std::to_string(n) + "-type").c_str(),
+        band_t->gobj(), "active", G_SETTINGS_BIND_DEFAULT, bandtype_enum_to_int,
+        int_to_bandtype_enum, nullptr, nullptr);
 
     connections_bands.push_back(reset_f->signal_clicked().connect([=]() {
       cfg->reset(std::string("band" + std::to_string(n) + "-frequency"));
     }));
 
-    // connections_bands.push_back(reset_w->signal_clicked().connect([=]() {
-    //   cfg->reset(std::string("band" + std::to_string(n) + "-width"));
-    // }));
+    connections_bands.push_back(reset_q->signal_clicked().connect(
+        [=]() { cfg->reset(std::string("band" + std::to_string(n) + "-q")); }));
 
     bands_grid->add(*band_grid);
   }
@@ -279,35 +297,35 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
 
     Gtk::Grid* band_grid;
     Gtk::ComboBoxText* band_t;
-    Gtk::Label *band_q, *band_label;
-    Gtk::Button *reset_f, *reset_w;
+    Gtk::Label *band_w, *band_label;
+    Gtk::Button *reset_f, *reset_q;
 
     B->get_widget("band_grid", band_grid);
     B->get_widget("band_t", band_t);
-    B->get_widget("band_q", band_q);
+    B->get_widget("band_w", band_w);
     B->get_widget("band_label", band_label);
     B->get_widget("reset_f", reset_f);
-    B->get_widget("reset_w", reset_w);
+    B->get_widget("reset_q", reset_q);
 
     auto band_g =
         Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(B->get_object("band_g"));
     auto band_f =
         Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(B->get_object("band_f"));
-    auto band_w =
-        Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(B->get_object("band_w"));
+    auto band_q =
+        Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(B->get_object("band_q"));
 
-    auto update_q = [=]() {
-      auto w = band_w->get_value();
+    auto update_w = [=]() {
+      auto q = band_q->get_value();
 
-      if (w > 0) {
+      if (q > 0) {
         auto f = band_f->get_value();
 
         std::ostringstream msg;
 
         msg.precision(2);
-        msg << std::fixed << f / w;
+        msg << std::fixed << f / q << " Hz";
 
-        band_q->set_text(msg.str());
+        band_w->set_text(msg.str());
       }
     };
 
@@ -328,13 +346,13 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
     };
 
     connections_bands.push_back(
-        band_f->signal_value_changed().connect(update_q));
+        band_f->signal_value_changed().connect(update_w));
 
     connections_bands.push_back(
         band_f->signal_value_changed().connect(update_band_label));
 
     connections_bands.push_back(
-        band_w->signal_value_changed().connect(update_q));
+        band_q->signal_value_changed().connect(update_w));
 
     /*right channel
       we need the bindgins below for the right channel equalizer to be updated
@@ -353,10 +371,9 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
           band_f->get_value());
     }));
 
-    connections_bands.push_back(band_w->signal_value_changed().connect([=]() {
-      settings_right->set_double(
-          std::string("band" + std::to_string(n) + "-width"),
-          band_w->get_value());
+    connections_bands.push_back(band_q->signal_value_changed().connect([=]() {
+      settings_right->set_double(std::string("band" + std::to_string(n) + "-q"),
+                                 band_q->get_value());
     }));
 
     connections_bands.push_back(band_t->signal_changed().connect([=]() {
@@ -371,8 +388,8 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
                         band_g.get(), "value", flag);
     settings_left->bind(std::string("band" + std::to_string(n) + "-frequency"),
                         band_f.get(), "value", flag);
-    settings_left->bind(std::string("band" + std::to_string(n) + "-width"),
-                        band_w.get(), "value", flag);
+    settings_left->bind(std::string("band" + std::to_string(n) + "-q"),
+                        band_q.get(), "value", flag);
 
     g_settings_bind_with_mapping(
         settings_left->gobj(),
@@ -388,10 +405,10 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
           std::string("band" + std::to_string(n) + "-frequency"));
     }));
 
-    connections_bands.push_back(reset_w->signal_clicked().connect([=]() {
-      settings_left->reset(std::string("band" + std::to_string(n) + "-width"));
+    connections_bands.push_back(reset_q->signal_clicked().connect([=]() {
+      settings_left->reset(std::string("band" + std::to_string(n) + "-q"));
 
-      settings_right->reset(std::string("band" + std::to_string(n) + "-width"));
+      settings_right->reset(std::string("band" + std::to_string(n) + "-q"));
     }));
 
     bands_grid_left->add(*band_grid);
@@ -438,16 +455,16 @@ void EqualizerUi::on_calculate_frequencies() {
     settings_left->set_double(
         std::string("band" + std::to_string(n) + "-frequency"), freq);
 
-    settings_left->set_double(
-        std::string("band" + std::to_string(n) + "-width"), width);
+    // settings_left->set_double(
+    //     std::string("band" + std::to_string(n) + "-width"), width);
 
     // right channel
 
     settings_right->set_double(
         std::string("band" + std::to_string(n) + "-frequency"), freq);
 
-    settings_right->set_double(
-        std::string("band" + std::to_string(n) + "-width"), width);
+    // settings_right->set_double(
+    //     std::string("band" + std::to_string(n) + "-width"), width);
 
     freq0 = freq1;
   }
@@ -492,9 +509,9 @@ void EqualizerUi::load_preset(const std::string& file_name) {
         std::string("band" + std::to_string(n) + "-frequency"),
         root.get<double>("equalizer.band" + std::to_string(n) + ".frequency"));
 
-    settings_left->set_double(
-        std::string("band" + std::to_string(n) + "-width"),
-        root.get<double>("equalizer.band" + std::to_string(n) + ".width"));
+    // settings_left->set_double(
+    //     std::string("band" + std::to_string(n) + "-width"),
+    //     root.get<double>("equalizer.band" + std::to_string(n) + ".width"));
 
     settings_left->set_string(
         std::string("band" + std::to_string(n) + "-type"),
@@ -510,9 +527,9 @@ void EqualizerUi::load_preset(const std::string& file_name) {
         std::string("band" + std::to_string(n) + "-frequency"),
         root.get<double>("equalizer.band" + std::to_string(n) + ".frequency"));
 
-    settings_right->set_double(
-        std::string("band" + std::to_string(n) + "-width"),
-        root.get<double>("equalizer.band" + std::to_string(n) + ".width"));
+    // settings_right->set_double(
+    //     std::string("band" + std::to_string(n) + "-width"),
+    //     root.get<double>("equalizer.band" + std::to_string(n) + ".width"));
 
     settings_right->set_string(
         std::string("band" + std::to_string(n) + "-type"),
@@ -582,7 +599,7 @@ void EqualizerUi::reset() {
     settings_left->reset(std::string("band" + std::to_string(n) + "-gain"));
     settings_left->reset(
         std::string("band" + std::to_string(n) + "-frequency"));
-    settings_left->reset(std::string("band" + std::to_string(n) + "-width"));
+    // settings_left->reset(std::string("band" + std::to_string(n) + "-width"));
     settings_left->reset(std::string("band" + std::to_string(n) + "-type"));
 
     // right channel
@@ -590,7 +607,8 @@ void EqualizerUi::reset() {
     settings_right->reset(std::string("band" + std::to_string(n) + "-gain"));
     settings_right->reset(
         std::string("band" + std::to_string(n) + "-frequency"));
-    settings_right->reset(std::string("band" + std::to_string(n) + "-width"));
+    // settings_right->reset(std::string("band" + std::to_string(n) +
+    // "-width"));
     settings_right->reset(std::string("band" + std::to_string(n) + "-type"));
   }
 }

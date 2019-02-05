@@ -243,126 +243,128 @@
             <range min="20" max="20000"/>
             <default>17943.28</default>
         </key>
-        <key name="band0-width" type="d">
-            <range min="0" max="20000"/>
-            <default>5.18</default>
+
+        <key name="band0-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band1-width" type="d">
-            <range min="0" max="20000"/>
-            <default>6.52</default>
+        <key name="band1-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band2-width" type="d">
-            <range min="0" max="20000"/>
-            <default>8.21</default>
+        <key name="band2-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band3-width" type="d">
-            <range min="0" max="20000"/>
-            <default>10.33</default>
+        <key name="band3-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band4-width" type="d">
-            <range min="0" max="20000"/>
-            <default>13.0</default>
+        <key name="band4-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band5-width" type="d">
-            <range min="0" max="20000"/>
-            <default>16.38</default>
+        <key name="band5-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band6-width" type="d">
-            <range min="0" max="20000"/>
-            <default>20.62</default>
+        <key name="band6-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band7-width" type="d">
-            <range min="0" max="20000"/>
-            <default>25.95</default>
+        <key name="band7-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band8-width" type="d">
-            <range min="0" max="20000"/>
-            <default>32.67</default>
+        <key name="band8-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band9-width" type="d">
-            <range min="0" max="20000"/>
-            <default>41.13</default>
+        <key name="band9-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band10-width" type="d">
-            <range min="0" max="20000"/>
-            <default>51.79</default>
+        <key name="band10-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band11-width" type="d">
-            <range min="0" max="20000"/>
-            <default>65.19</default>
+        <key name="band11-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band12-width" type="d">
-            <range min="0" max="20000"/>
-            <default>82.07</default>
+        <key name="band12-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band13-width" type="d">
-            <range min="0" max="20000"/>
-            <default>103.33</default>
+        <key name="band13-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band14-width" type="d">
-            <range min="0" max="20000"/>
-            <default>130.08</default>
+        <key name="band14-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band15-width" type="d">
-            <range min="0" max="20000"/>
-            <default>163.76</default>
+        <key name="band15-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band16-width" type="d">
-            <range min="0" max="20000"/>
-            <default>206.16</default>
+        <key name="band16-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band17-width" type="d">
-            <range min="0" max="20000"/>
-            <default>259.54</default>
+        <key name="band17-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band18-width" type="d">
-            <range min="0" max="20000"/>
-            <default>326.74</default>
+        <key name="band18-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band19-width" type="d">
-            <range min="0" max="20000"/>
-            <default>411.34</default>
+        <key name="band19-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band20-width" type="d">
-            <range min="0" max="20000"/>
-            <default>517.85</default>
+        <key name="band20-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band21-width" type="d">
-            <range min="0" max="20000"/>
-            <default>651.94</default>
+        <key name="band21-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band22-width" type="d">
-            <range min="0" max="20000"/>
-            <default>820.74</default>
+        <key name="band22-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band23-width" type="d">
-            <range min="0" max="20000"/>
-            <default>1033.25</default>
+        <key name="band23-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band24-width" type="d">
-            <range min="0" max="20000"/>
-            <default>1300.78</default>
+        <key name="band24-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band25-width" type="d">
-            <range min="0" max="20000"/>
-            <default>1637.59</default>
+        <key name="band25-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band26-width" type="d">
-            <range min="0" max="20000"/>
-            <default>2061.6</default>
+        <key name="band26-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band27-width" type="d">
-            <range min="0" max="20000"/>
-            <default>2595.4</default>
+        <key name="band27-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band28-width" type="d">
-            <range min="0" max="20000"/>
-            <default>3267.42</default>
+        <key name="band28-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
-        <key name="band29-width" type="d">
-            <range min="0" max="20000"/>
-            <default>4113.44</default>
+        <key name="band29-q" type="d">
+            <range min="0" max="100"/>
+            <default>4.36</default>
         </key>
+
         <key
             name="band0-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
