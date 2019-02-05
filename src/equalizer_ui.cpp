@@ -15,13 +15,13 @@ gboolean bandtype_enum_to_int(GValue* value,
     g_value_set_int(value, 0);
   } else if (v == std::string("Bell")) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("Hi-pass")) {
+  } else if (v == std::string("High-pass")) {
     g_value_set_int(value, 2);
-  } else if (v == std::string("Hi-shelf")) {
+  } else if (v == std::string("High-shelf")) {
     g_value_set_int(value, 3);
-  } else if (v == std::string("Lo-pass")) {
+  } else if (v == std::string("Low-pass")) {
     g_value_set_int(value, 4);
-  } else if (v == std::string("Lo-pass")) {
+  } else if (v == std::string("Low-pass")) {
     g_value_set_int(value, 5);
   } else if (v == std::string("Notch")) {
     g_value_set_int(value, 6);
@@ -42,13 +42,13 @@ GVariant* int_to_bandtype_enum(const GValue* value,
   } else if (v == 1) {
     return g_variant_new_string("Bell");
   } else if (v == 2) {
-    return g_variant_new_string("Hi-pass");
+    return g_variant_new_string("High-pass");
   } else if (v == 3) {
-    return g_variant_new_string("Hi-shelf");
+    return g_variant_new_string("High-shelf");
   } else if (v == 4) {
-    return g_variant_new_string("Lo-pass");
+    return g_variant_new_string("Low-pass");
   } else if (v == 5) {
-    return g_variant_new_string("Lo-shelf");
+    return g_variant_new_string("Low-shelf");
   } else if (v == 6) {
     return g_variant_new_string("Notch");
   } else {
@@ -447,6 +447,7 @@ void EqualizerUi::on_calculate_frequencies() {
 
     double freq = freq0 + ((freq1 - freq0) / 2.0);
     double width = freq1 - freq0;
+    double q = freq / width;
 
     // std::cout << n << "\t" << freq << "\t" << width << std::endl;
 
@@ -455,16 +456,16 @@ void EqualizerUi::on_calculate_frequencies() {
     settings_left->set_double(
         std::string("band" + std::to_string(n) + "-frequency"), freq);
 
-    // settings_left->set_double(
-    //     std::string("band" + std::to_string(n) + "-width"), width);
+    settings_left->set_double(std::string("band" + std::to_string(n) + "-q"),
+                              q);
 
     // right channel
 
     settings_right->set_double(
         std::string("band" + std::to_string(n) + "-frequency"), freq);
 
-    // settings_right->set_double(
-    //     std::string("band" + std::to_string(n) + "-width"), width);
+    settings_right->set_double(std::string("band" + std::to_string(n) + "-q"),
+                               q);
 
     freq0 = freq1;
   }
@@ -501,17 +502,21 @@ void EqualizerUi::load_preset(const std::string& file_name) {
   for (int n = 0; n < nbands; n++) {
     // left channel
 
+    double f =
+        root.get<double>("equalizer.band" + std::to_string(n) + ".frequency");
+    double w =
+        root.get<double>("equalizer.band" + std::to_string(n) + ".width");
+    double q = f / w;
+
     settings_left->set_double(
         std::string("band" + std::to_string(n) + "-gain"),
         root.get<double>("equalizer.band" + std::to_string(n) + ".gain"));
 
     settings_left->set_double(
-        std::string("band" + std::to_string(n) + "-frequency"),
-        root.get<double>("equalizer.band" + std::to_string(n) + ".frequency"));
+        std::string("band" + std::to_string(n) + "-frequency"), f);
 
-    // settings_left->set_double(
-    //     std::string("band" + std::to_string(n) + "-width"),
-    //     root.get<double>("equalizer.band" + std::to_string(n) + ".width"));
+    settings_left->set_double(std::string("band" + std::to_string(n) + "-q"),
+                              q);
 
     settings_left->set_string(
         std::string("band" + std::to_string(n) + "-type"),
@@ -524,12 +529,10 @@ void EqualizerUi::load_preset(const std::string& file_name) {
         root.get<double>("equalizer.band" + std::to_string(n) + ".gain"));
 
     settings_right->set_double(
-        std::string("band" + std::to_string(n) + "-frequency"),
-        root.get<double>("equalizer.band" + std::to_string(n) + ".frequency"));
+        std::string("band" + std::to_string(n) + "-frequency"), f);
 
-    // settings_right->set_double(
-    //     std::string("band" + std::to_string(n) + "-width"),
-    //     root.get<double>("equalizer.band" + std::to_string(n) + ".width"));
+    settings_right->set_double(std::string("band" + std::to_string(n) + "-q"),
+                               q);
 
     settings_right->set_string(
         std::string("band" + std::to_string(n) + "-type"),

@@ -25,10 +25,10 @@
     <enum id="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
         <value nick="Off" value="0"/>
         <value nick="Bell" value="1"/>
-        <value nick="Hi-pass" value="2"/>
-        <value nick="Hi-shelf" value="3"/>
-        <value nick="Lo-pass" value="4"/>
-        <value nick="Lo-shelf" value="5"/>
+        <value nick="High-pass" value="2"/>
+        <value nick="High-shelf" value="3"/>
+        <value nick="Low-pass" value="4"/>
+        <value nick="Low-shelf" value="5"/>
         <value nick="Notch" value="6"/>
         <value nick="Resonance" value="7"/>
     </enum>
