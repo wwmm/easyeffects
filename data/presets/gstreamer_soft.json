@@ -8,7 +8,7 @@
             "gain": "5",
             "frequency": "29.952623149688797",
             "width": "19.905246299377595",
-            "type": "Low-shelf"
+            "type": "Lo-shelf"
         },
         "band1": {
             "gain": "1.5",
@@ -62,7 +62,7 @@
             "gain": "12",
             "frequency": "15011.872336272731",
             "width": "9976.2553274545608",
-            "type": "High-shelf"
+            "type": "Hi-shelf"
         }
     }
 }

@@ -368,7 +368,7 @@
         <key
             name="band0-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"Bell"</default>
+            <default>"Lo-shelf"</default>
         </key>
         <key
             name="band1-type"
@@ -513,7 +513,7 @@
         <key
             name="band29-type"
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-            <default>"Bell"</default>
+            <default>"Hi-shelf"</default>
         </key>
     </schema>
 </schemalist>
