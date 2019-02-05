@@ -1,4 +1,5 @@
 #include "equalizer_ui.hpp"
+#include <glibmm/i18n.h>
 #include <gtkmm/comboboxtext.h>
 #include <gtkmm/label.h>
 #include <boost/property_tree/json_parser.hpp>
@@ -223,6 +224,8 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid,
         msg << std::fixed << f / q << " Hz";
 
         band_w->set_text(msg.str());
+      } else {
+        band_w->set_text(_("infinity"));
       }
     };
 
@@ -326,6 +329,8 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
         msg << std::fixed << f / q << " Hz";
 
         band_w->set_text(msg.str());
+      } else {
+        band_w->set_text(_("infinity"));
       }
     };
 
