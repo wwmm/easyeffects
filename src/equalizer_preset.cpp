@@ -55,9 +55,9 @@ void EqualizerPreset::save_channel(boost::property_tree::ptree& root,
              settings->get_double(
                  std::string("band" + std::to_string(n) + "-frequency")));
 
-    root.put(section + ".band" + std::to_string(n) + ".width",
-             settings->get_double(
-                 std::string("band" + std::to_string(n) + "-width")));
+    root.put(
+        section + ".band" + std::to_string(n) + ".q",
+        settings->get_double(std::string("band" + std::to_string(n) + "-q")));
 
     root.put(section + ".band" + std::to_string(n) + ".type",
              settings->get_string(
@@ -81,41 +81,15 @@ void EqualizerPreset::load(boost::property_tree::ptree& root,
 
   int nbands = settings->get_int("num-bands");
 
-  /*
-    For now we check if the user has an preset with old format. One day we
-    remove this...
-  */
-
-  bool legacy_preset = false;
-
-  try {
-    root.get<bool>(section + ".equalizer.split-channels");
-  } catch (const boost::property_tree::ptree_error& e) {
-    util::warning(log_tag + "old preset format detected");
-
-    legacy_preset = true;
-  }
-
   update_key<bool>(root, settings, "split-channels",
                    section + ".equalizer.split-channels");
 
-  if (!legacy_preset) {
-    if (section == std::string("input")) {
-      load_channel(root, "input.equalizer.left", input_settings_left, nbands);
-      load_channel(root, "input.equalizer.right", input_settings_right, nbands);
-    } else if (section == std::string("output")) {
-      load_channel(root, "output.equalizer.left", output_settings_left, nbands);
-      load_channel(root, "output.equalizer.right", output_settings_right,
-                   nbands);
-    }
-  } else {
-    if (section == std::string("input")) {
-      load_channel(root, "input.equalizer", input_settings_left, nbands);
-      load_channel(root, "input.equalizer", input_settings_right, nbands);
-    } else if (section == std::string("output")) {
-      load_channel(root, "output.equalizer", output_settings_left, nbands);
-      load_channel(root, "output.equalizer", output_settings_right, nbands);
-    }
+  if (section == std::string("input")) {
+    load_channel(root, "input.equalizer.left", input_settings_left, nbands);
+    load_channel(root, "input.equalizer.right", input_settings_right, nbands);
+  } else if (section == std::string("output")) {
+    load_channel(root, "output.equalizer.left", output_settings_left, nbands);
+    load_channel(root, "output.equalizer.right", output_settings_right, nbands);
   }
 }
 
@@ -133,8 +107,8 @@ void EqualizerPreset::load_channel(boost::property_tree::ptree& root,
                        section + ".band" + std::to_string(n) + ".frequency");
 
     update_key<double>(root, settings,
-                       std::string("band" + std::to_string(n) + "-width"),
-                       section + ".band" + std::to_string(n) + ".width");
+                       std::string("band" + std::to_string(n) + "-q"),
+                       section + ".band" + std::to_string(n) + ".q");
 
     update_string_key(root, settings,
                       std::string("band" + std::to_string(n) + "-type"),

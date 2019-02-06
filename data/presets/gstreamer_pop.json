@@ -8,61 +8,61 @@
             "gain": "-1.6",
             "frequency": "29.952623149688797",
             "width": "19.905246299377595",
-            "type": "low-shelf"
+            "type": "Lo-shelf"
         },
         "band1": {
             "gain": "4.5",
             "frequency": "59.763340205038524",
             "width": "39.716187811321859",
-            "type": "peak"
+            "type": "Bell"
         },
         "band2": {
             "gain": "7",
             "frequency": "119.24354052777788",
             "width": "79.244212834156855",
-            "type": "peak"
+            "type": "Bell"
         },
         "band3": {
             "gain": "8",
             "frequency": "237.92214271853953",
             "width": "158.11299154736642",
-            "type": "peak"
+            "type": "Bell"
         },
         "band4": {
             "gain": "5.6",
             "frequency": "474.71708526294935",
             "width": "315.47689354145319",
-            "type": "peak"
+            "type": "Bell"
         },
         "band5": {
             "gain": "0",
             "frequency": "947.18511049703125",
             "width": "629.45915692671076",
-            "type": "peak"
+            "type": "Bell"
         },
         "band6": {
             "gain": "-2.5",
             "frequency": "1889.8827562743609",
             "width": "1255.9361346279484",
-            "type": "peak"
+            "type": "Bell"
         },
         "band7": {
             "gain": "-2",
             "frequency": "3770.8118433037489",
             "width": "2505.9220394308272",
-            "type": "peak"
+            "type": "Bell"
         },
         "band8": {
             "gain": "-1.6",
             "frequency": "7523.7587677823067",
             "width": "4999.9718095262879",
-            "type": "peak"
+            "type": "Bell"
         },
         "band9": {
             "gain": "-1.5",
             "frequency": "15011.872336272731",
             "width": "9976.2553274545608",
-            "type": "high-shelf"
+            "type": "Hi-shelf"
         }
     }
 }

@@ -23,9 +23,14 @@
         <value nick="18dB/oct Bandreject" value="11"/>
     </enum>
     <enum id="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-        <value nick="peak" value="0"/>
-        <value nick="low-shelf" value="1"/>
-        <value nick="high-shelf" value="2"/>
+        <value nick="Off" value="0"/>
+        <value nick="Bell" value="1"/>
+        <value nick="Hi-pass" value="2"/>
+        <value nick="Hi-shelf" value="3"/>
+        <value nick="Lo-pass" value="4"/>
+        <value nick="Lo-shelf" value="5"/>
+        <value nick="Notch" value="6"/>
+        <value nick="Resonance" value="7"/>
     </enum>
     <enum id="com.github.wwmm.pulseeffects.reverb.roomsize.enum">
         <value nick="Small" value="0"/>

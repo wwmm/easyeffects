@@ -9,15 +9,16 @@
     <property name="page_increment">10</property>
   </object>
   <object class="GtkAdjustment" id="band_g">
-    <property name="lower">-24</property>
-    <property name="upper">12</property>
+    <property name="lower">-35</property>
+    <property name="upper">35</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.10000000000000001</property>
   </object>
-  <object class="GtkAdjustment" id="band_w">
-    <property name="upper">20000</property>
+  <object class="GtkAdjustment" id="band_q">
+    <property name="upper">100</property>
+    <property name="value">4.3600000000000003</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">0.10000000000000001</property>
+    <property name="page_increment">0.01</property>
   </object>
   <object class="GtkPopover" id="menu">
     <property name="can_focus">False</property>
@@ -48,7 +49,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="reset_w">
+          <object class="GtkButton" id="reset_q">
             <property name="label" translatable="yes">Reset</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -72,7 +73,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="label" translatable="yes">Width</property>
+                <property name="label" translatable="yes">Quality</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -86,10 +87,9 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="width_chars">12</property>
-                <property name="secondary_icon_name">pulseeffects-hz-symbolic</property>
                 <property name="input_purpose">number</property>
                 <property name="orientation">vertical</property>
-                <property name="adjustment">band_w</property>
+                <property name="adjustment">band_q</property>
                 <property name="digits">2</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
@@ -159,12 +159,12 @@
             <property name="valign">center</property>
             <property name="row_spacing">6</property>
             <child>
-              <object class="GtkLabel" id="band_q">
+              <object class="GtkLabel" id="band_w">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">end</property>
-                <property name="label" translatable="yes">Q</property>
+                <property name="label" translatable="yes">w</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -177,7 +177,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="label" translatable="yes">Q</property>
+                <property name="label" translatable="yes">Width</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -214,9 +214,14 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <items>
-                  <item translatable="yes">Peak</item>
-                  <item translatable="yes">Low Shelf</item>
+                  <item translatable="yes">Off</item>
+                  <item translatable="yes">Bell</item>
+                  <item translatable="yes">High Pass</item>
                   <item translatable="yes">High Shelf</item>
+                  <item translatable="yes">Low Pass</item>
+                  <item translatable="yes">Low Shelf</item>
+                  <item translatable="yes">Notch</item>
+                  <item translatable="yes">Resonance</item>
                 </items>
               </object>
               <packing>
