@@ -156,23 +156,13 @@ void Equalizer::bind_band(GstElement* equalizer, const int index) {
 void Equalizer::update_equalizer() {
   int nbands = g_settings_get_int(settings, "num-bands");
 
-  for (int n = 0; n < 30; n++) {
-    if (n < nbands) {
-      // initialize band type as Bell
+  for (int n = nbands; n < 30; n++) {
+    // turn off unused band
 
-      g_object_set(equalizer, std::string("ftl-" + std::to_string(n)).c_str(),
-                   1, nullptr);
+    g_object_set(equalizer, std::string("ftl-" + std::to_string(n)).c_str(), 0,
+                 nullptr);
 
-      g_object_set(equalizer, std::string("ftr-" + std::to_string(n)).c_str(),
-                   1, nullptr);
-    } else {
-      // turn off band
-
-      g_object_set(equalizer, std::string("ftl-" + std::to_string(n)).c_str(),
-                   0, nullptr);
-
-      g_object_set(equalizer, std::string("ftr-" + std::to_string(n)).c_str(),
-                   0, nullptr);
-    }
+    g_object_set(equalizer, std::string("ftr-" + std::to_string(n)).c_str(), 0,
+                 nullptr);
   }
 }
