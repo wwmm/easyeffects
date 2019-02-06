@@ -1,6 +1,7 @@
 #include "equalizer_ui.hpp"
 #include <glibmm/i18n.h>
 #include <gtkmm/label.h>
+#include <gtkmm/togglebutton.h>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
 
@@ -307,6 +308,7 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid,
     Gtk::ComboBoxText *band_type, *band_mode, *band_slope;
     Gtk::Label *band_width, *band_label;
     Gtk::Button *reset_frequency, *reset_quality;
+    Gtk::ToggleButton *band_solo, *band_mute;
 
     B->get_widget("band_grid", band_grid);
     B->get_widget("band_type", band_type);
@@ -314,6 +316,8 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid,
     B->get_widget("band_slope", band_slope);
     B->get_widget("band_width", band_width);
     B->get_widget("band_label", band_label);
+    B->get_widget("band_solo", band_solo);
+    B->get_widget("band_mute", band_mute);
     B->get_widget("reset_frequency", reset_frequency);
     B->get_widget("reset_quality", reset_quality);
 
@@ -372,6 +376,10 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid,
               band_frequency.get(), "value", flag);
     cfg->bind(std::string("band" + std::to_string(n) + "-q"),
               band_quality.get(), "value", flag);
+    cfg->bind(std::string("band" + std::to_string(n) + "-solo"), band_solo,
+              "active", flag);
+    cfg->bind(std::string("band" + std::to_string(n) + "-mute"), band_mute,
+              "active", flag);
 
     g_settings_bind_with_mapping(
         cfg->gobj(), std::string("band" + std::to_string(n) + "-type").c_str(),
@@ -425,6 +433,7 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
     Gtk::ComboBoxText *band_type, *band_mode, *band_slope;
     Gtk::Label *band_width, *band_label;
     Gtk::Button *reset_frequency, *reset_quality;
+    Gtk::ToggleButton *band_solo, *band_mute;
 
     B->get_widget("band_grid", band_grid);
     B->get_widget("band_type", band_type);
@@ -432,6 +441,8 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
     B->get_widget("band_slope", band_slope);
     B->get_widget("band_width", band_width);
     B->get_widget("band_label", band_label);
+    B->get_widget("band_solo", band_solo);
+    B->get_widget("band_mute", band_mute);
     B->get_widget("reset_frequency", reset_frequency);
     B->get_widget("reset_quality", reset_quality);
 
@@ -528,6 +539,18 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
           band_slope->get_active_row_number());
     }));
 
+    connections_bands.push_back(band_solo->signal_toggled().connect([=]() {
+      settings_right->set_boolean(
+          std::string("band" + std::to_string(n) + "-solo"),
+          band_solo->get_active());
+    }));
+
+    connections_bands.push_back(band_mute->signal_toggled().connect([=]() {
+      settings_right->set_boolean(
+          std::string("band" + std::to_string(n) + "-mute"),
+          band_mute->get_active());
+    }));
+
     // left channel
 
     settings_left->bind(std::string("band" + std::to_string(n) + "-gain"),
@@ -536,6 +559,10 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
                         band_frequency.get(), "value", flag);
     settings_left->bind(std::string("band" + std::to_string(n) + "-q"),
                         band_quality.get(), "value", flag);
+    settings_left->bind(std::string("band" + std::to_string(n) + "-solo"),
+                        band_solo, "active", flag);
+    settings_left->bind(std::string("band" + std::to_string(n) + "-mute"),
+                        band_mute, "active", flag);
 
     g_settings_bind_with_mapping(
         settings_left->gobj(),
@@ -656,8 +683,6 @@ void EqualizerUi::load_preset(const std::string& file_name) {
   settings->set_double("output-gain",
                        root.get<double>("equalizer.output-gain"));
 
-  // settings->set_boolean("split-channels", false);
-
   for (int n = 0; n < nbands; n++) {
     // left channel
 
@@ -684,6 +709,12 @@ void EqualizerUi::load_preset(const std::string& file_name) {
     settings_left->set_string(std::string("band" + std::to_string(n) + "-mode"),
                               "RLC (BT)");
 
+    settings_left->set_boolean(
+        std::string("band" + std::to_string(n) + "-solo"), false);
+
+    settings_left->set_boolean(
+        std::string("band" + std::to_string(n) + "-mute"), false);
+
     // right channel
 
     settings_right->set_double(
@@ -702,6 +733,12 @@ void EqualizerUi::load_preset(const std::string& file_name) {
 
     settings_right->set_string(
         std::string("band" + std::to_string(n) + "-mode"), "RLC (BT)");
+
+    settings_right->set_boolean(
+        std::string("band" + std::to_string(n) + "-solo"), false);
+
+    settings_right->set_boolean(
+        std::string("band" + std::to_string(n) + "-mute"), false);
   }
 }
 
