@@ -1,6 +1,5 @@
 #include "equalizer_ui.hpp"
 #include <glibmm/i18n.h>
-#include <gtkmm/comboboxtext.h>
 #include <gtkmm/label.h>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
@@ -57,6 +56,36 @@ GVariant* int_to_bandtype_enum(const GValue* value,
   }
 }
 
+gboolean mode_enum_to_int(GValue* value,
+                          GVariant* variant,
+                          gpointer user_data) {
+  auto v = g_variant_get_string(variant, nullptr);
+
+  if (v == std::string("IIR")) {
+    g_value_set_int(value, 0);
+  } else if (v == std::string("FIR")) {
+    g_value_set_int(value, 1);
+  } else if (v == std::string("FFT")) {
+    g_value_set_int(value, 2);
+  }
+
+  return true;
+}
+
+GVariant* int_to_mode_enum(const GValue* value,
+                           const GVariantType* expected_type,
+                           gpointer user_data) {
+  int v = g_value_get_int(value);
+
+  if (v == 0) {
+    return g_variant_new_string("IIR");
+  } else if (v == 1) {
+    return g_variant_new_string("FIR");
+  } else {
+    return g_variant_new_string("FFT");
+  }
+}
+
 }  // namespace
 
 EqualizerUi::EqualizerUi(BaseObjectType* cobject,
@@ -83,6 +112,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   builder->get_widget("split_channels", split_channels);
   builder->get_widget("stack", stack);
   builder->get_widget("stack_switcher", stack_switcher);
+  builder->get_widget("mode", mode);
 
   get_object(builder, "nbands", nbands);
   get_object(builder, "input_gain", input_gain);
@@ -143,6 +173,10 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   settings->bind("split-channels", stack_switcher, "visible", flag_get);
 
   settings->set_boolean("post-messages", true);
+
+  g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active",
+                               G_SETTINGS_BIND_DEFAULT, mode_enum_to_int,
+                               int_to_mode_enum, nullptr, nullptr);
 
   populate_presets_listbox();
 }

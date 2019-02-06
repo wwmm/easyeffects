@@ -2,6 +2,7 @@
 #define EQUALIZER_UI_HPP
 
 #include <gtkmm/button.h>
+#include <gtkmm/comboboxtext.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/listbox.h>
 #include <gtkmm/menubutton.h>
@@ -34,6 +35,7 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
   Gtk::Switch* split_channels;
   Gtk::Stack* stack;
   Gtk::StackSwitcher* stack_switcher;
+  Gtk::ComboBoxText* mode;
 
   std::vector<sigc::connection> connections, connections_bands;
 

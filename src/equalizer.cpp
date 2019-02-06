@@ -82,6 +82,9 @@ Equalizer::Equalizer(const std::string& tag,
         util::db20_gain_to_linear_double, util::linear_double_gain_to_db20,
         nullptr, nullptr);
 
+    g_settings_bind(settings, "mode", equalizer, "mode",
+                    G_SETTINGS_BIND_DEFAULT);
+
     // useless write just to force on_state_changed callback call
 
     auto enable = g_settings_get_boolean(settings, "state");

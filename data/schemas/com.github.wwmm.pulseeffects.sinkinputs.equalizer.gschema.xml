@@ -27,5 +27,8 @@
         <key name="split-channels" type="b">
             <default>false</default>
         </key>
+        <key name="mode" enum="com.github.wwmm.pulseeffects.equalizer.mode.enum">
+            <default>"IIR"</default>
+        </key>
     </schema>
 </schemalist>
