@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-01-31 23:28-0200\n"
+"POT-Creation-Date: 2019-02-06 18:20-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "MIME-Version: 1.0\n"
@@ -1118,11 +1118,11 @@ msgstr ""
 #. (itstool) path: page/p
 #: C/equalizer.page:10
 msgid ""
-"PulseEffects uses the parametric equalizer from GStreamer. You can choose "
-"between 1 and 30 bands. You also can change the center frequency and the "
-"width of each band as needed. There are a few presets but at this moment all "
-"of them have only 10 bands. Presets with other number of bands may be added "
-"in the future."
+"PulseEffects uses the parametric equalizer from Linux Studio Plugins. You "
+"can choose between 1 and 30 bands. You also can change the center frequency "
+"and the width of each band as needed. There are a few presets but at this "
+"moment all of them have only 10 bands. Presets with other number of bands "
+"may be added in the future."
 msgstr ""
 
 #. (itstool) path: title/em
@@ -1204,25 +1204,25 @@ msgstr ""
 msgid "Width"
 msgstr ""
 
+#. (itstool) path: p/code
+#: C/equalizer.page:86
+#, no-wrap
+msgid "width = frequency / quality"
+msgstr ""
+
 #. (itstool) path: item/p
 #: C/equalizer.page:84
-msgid "Bandwidth."
+msgid "Bandwidth. Calculated as <_:code-1/>."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/equalizer.page:90
-msgid "Q"
-msgstr ""
-
-#. (itstool) path: p/code
-#: C/equalizer.page:94
-#, no-wrap
-msgid "Q = frequency / width"
+#: C/equalizer.page:91
+msgid "Quality"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/equalizer.page:92
-msgid "Quality factor. Calculated as <_:code-1/>."
+#: C/equalizer.page:93
+msgid "Quality factor."
 msgstr ""
 
 #. (itstool) path: page/title

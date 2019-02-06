@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2019-01-31 23:28-0200\n"
+"POT-Creation-Date: 2019-02-06 18:20-0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -1179,17 +1179,17 @@ msgstr "Equalizador"
 #. (itstool) path: page/p
 #: C/equalizer.page:10
 msgid ""
-"PulseEffects uses the parametric equalizer from GStreamer. You can choose "
-"between 1 and 30 bands. You also can change the center frequency and the "
-"width of each band as needed. There are a few presets but at this moment all "
-"of them have only 10 bands. Presets with other number of bands may be added "
-"in the future."
+"PulseEffects uses the parametric equalizer from Linux Studio Plugins. You "
+"can choose between 1 and 30 bands. You also can change the center frequency "
+"and the width of each band as needed. There are a few presets but at this "
+"moment all of them have only 10 bands. Presets with other number of bands "
+"may be added in the future."
 msgstr ""
-"O PulseEffects usa o equalizador paramétrico do GStreamer. Você pode "
-"escolher entre 1 e 30 bandas. Você também pode alterar a frequência central "
-"e a largura de cada banda conforme necessário. Há algumas predefinições, mas "
-"neste momento todos eles têm apenas 10 bandas. Predefinições com outro "
-"número de bandas podem ser adicionados no futuro."
+"O PulseEffects usa o equalizador paramétrico do Linux Studio Plugins. Você "
+"pode escolher entre 1 e 30 bandas. Você também pode alterar a frequência "
+"central e a largura de cada banda conforme necessário. Há algumas "
+"predefinições, mas neste momento todos eles têm apenas 10 bandas. "
+"Predefinições com outro número de bandas podem ser adicionados no futuro."
 
 #. (itstool) path: title/em
 #: C/equalizer.page:20
@@ -1280,26 +1280,26 @@ msgstr "Frequência central da banda."
 msgid "Width"
 msgstr "Largura"
 
+#. (itstool) path: p/code
+#: C/equalizer.page:86
+#, no-wrap
+msgid "width = frequency / quality"
+msgstr "largura = frequência / qualidade"
+
 #. (itstool) path: item/p
 #: C/equalizer.page:84
-msgid "Bandwidth."
-msgstr "Largura de banda."
+msgid "Bandwidth. Calculated as <_:code-1/>."
+msgstr "Largura de banda. Calculado a partir de <_:code-1/>."
 
 #. (itstool) path: title/em
-#: C/equalizer.page:90
-msgid "Q"
-msgstr "Q"
-
-#. (itstool) path: p/code
-#: C/equalizer.page:94
-#, no-wrap
-msgid "Q = frequency / width"
-msgstr "Q = frequência / largura"
+#: C/equalizer.page:91
+msgid "Quality"
+msgstr "Qualidade"
 
 #. (itstool) path: item/p
-#: C/equalizer.page:92
-msgid "Quality factor. Calculated as <_:code-1/>."
-msgstr "Fator de qualidade. Calculado a partir de <_:code-1/>."
+#: C/equalizer.page:93
+msgid "Quality factor."
+msgstr "Fator de qualidade."
 
 #. (itstool) path: page/title
 #: C/pitch.page:9
@@ -2230,6 +2230,12 @@ msgstr ""
 "específico seja excluído da funcionalidade \"Ativar tudo\". Isso pode ser "
 "feito usando uma lista negra. Basta adicionar o nome do aplicativo "
 "exatamente como é mostrado na entrada \"Aplicativos\"."
+
+#~ msgid "Bandwidth."
+#~ msgstr "Largura de banda."
+
+#~ msgid "Q"
+#~ msgstr "Q"
 
 #~ msgid "Limiter and Auto Volume"
 #~ msgstr "Limitador e Volume Automático"

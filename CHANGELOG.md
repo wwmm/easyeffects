@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+### Changed
+- We now use Linux Studio Plugins "Parametric Equalizer x32 LeftRight" instead
+of the one from Gstreamer. Reason: it has more features and supports different
+settings for each channel natively. Besides the usual high-pass and low-pass
+it has a notch and a resonant filter. It is also possible to mute
+ each band and change its filter slope.
+
 ### Added
 - Remember window size.
 - Updated limiter help.
