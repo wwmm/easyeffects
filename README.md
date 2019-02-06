@@ -55,6 +55,7 @@ next to the plugin label at the left side. To be able to use all plugins you
 Version `1.12.5` or higher
 - [GStreamer Plugins Bad](https://github.com/GStreamer/gst-plugins-bad).
 Version `1.12.5` or higher
+- [Linux Studio Plugins](http://lsp-plug.in/?page=home)
 - [Calf Studio Plugins](https://calf-studio-gear.org/). Version `0.90.1` or higher.
 - [ZamAudio Plugins](http://www.zamaudio.com/)
 - [MDA.LV2](https://git.drobilla.net/cgit.cgi/mda.lv2.git/about/)

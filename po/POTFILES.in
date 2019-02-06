@@ -53,3 +53,4 @@ src/source_output_effects_ui.cpp
 src/app_info_ui.cpp
 src/calibration_ui.cpp
 src/convolver_ui.cpp
+src/equalizer_ui.cpp

@@ -8,10 +8,10 @@
     </info>
     <title>Equalizer</title>
     <p>
-        PulseEffects uses the parametric equalizer from GStreamer. You can choose
-        between 1 and 30 bands. You also can change the center frequency and the width
-        of each band as needed. There are a few presets but at this moment all of them
-        have only 10 bands. Presets with other number of bands may be added in the
+        PulseEffects uses the parametric equalizer from Linux Studio Plugins. You can
+        choose between 1 and 30 bands. You also can change the center frequency and the
+        width of each band as needed. There are a few presets but at this moment all of
+        them have only 10 bands. Presets with other number of bands may be added in the
         future.
     </p>
     <terms>
@@ -82,16 +82,16 @@
                 <em style="strong" its:withinText="nested">Width</em>
             </title>
             <p>
-                Bandwidth.
+                Bandwidth. Calculated as
+                <code its:withinText="nested">width = frequency / quality</code>.
             </p>
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Q</em>
+                <em style="strong" its:withinText="nested">Quality</em>
             </title>
             <p>
-                Quality factor. Calculated as
-                <code its:withinText="nested">Q = frequency / width</code>.
+                Quality factor.
             </p>
         </item>
     </terms>
