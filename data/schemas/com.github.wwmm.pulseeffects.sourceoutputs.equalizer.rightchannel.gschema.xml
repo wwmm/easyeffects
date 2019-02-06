@@ -515,5 +515,156 @@
             enum="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
             <default>"Bell"</default>
         </key>
+
+        <key
+            name="band0-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band1-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band2-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band3-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band4-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band5-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band6-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band7-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band8-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band9-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band10-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band11-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band12-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band13-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band14-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band15-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band16-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band17-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band18-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band19-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band20-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band21-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band22-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band23-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band24-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band25-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band26-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band27-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band28-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
+        <key
+            name="band29-mode"
+            enum="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+            <default>"RLC (BT)"</default>
+        </key>
     </schema>
 </schemalist>
