@@ -121,6 +121,18 @@ void Equalizer::bind_band(GstElement* equalizer, const int index) {
       std::string("sl-" + std::to_string(index)).c_str(),
       G_SETTINGS_BIND_DEFAULT);
 
+  g_settings_bind(settings_left,
+                  std::string("band" + std::to_string(index) + "-solo").c_str(),
+                  equalizer,
+                  std::string("xsl-" + std::to_string(index)).c_str(),
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings_left,
+                  std::string("band" + std::to_string(index) + "-mute").c_str(),
+                  equalizer,
+                  std::string("xml-" + std::to_string(index)).c_str(),
+                  G_SETTINGS_BIND_DEFAULT);
+
   g_settings_bind_with_mapping(
       settings_left,
       std::string("band" + std::to_string(index) + "-frequency").c_str(),
@@ -157,6 +169,18 @@ void Equalizer::bind_band(GstElement* equalizer, const int index) {
       std::string("band" + std::to_string(index) + "-slope").c_str(), equalizer,
       std::string("sr-" + std::to_string(index)).c_str(),
       G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings_right,
+                  std::string("band" + std::to_string(index) + "-solo").c_str(),
+                  equalizer,
+                  std::string("xsr-" + std::to_string(index)).c_str(),
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings_right,
+                  std::string("band" + std::to_string(index) + "-mute").c_str(),
+                  equalizer,
+                  std::string("xmr-" + std::to_string(index)).c_str(),
+                  G_SETTINGS_BIND_DEFAULT);
 
   g_settings_bind_with_mapping(
       settings_right,
