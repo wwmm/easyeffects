@@ -297,7 +297,7 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid,
 
         std::ostringstream msg;
 
-        msg.precision(2);
+        msg.precision(1);
         msg << std::fixed << f / q << " Hz";
 
         band_w->set_text(msg.str());
@@ -408,7 +408,7 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
 
         std::ostringstream msg;
 
-        msg.precision(2);
+        msg.precision(1);
         msg << std::fixed << f / q << " Hz";
 
         band_w->set_text(msg.str());

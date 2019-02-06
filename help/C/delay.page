@@ -34,8 +34,10 @@
         <list>
             <item>
                 <p>
-                    <link href="http://lsp-plug.in/?page=manuals" its:translate="no">
-                        http://lsp-plug.in/?page=manuals
+                    <link
+                        href="http://lsp-plug.in/?page=manuals&amp;section=comp_delay_x2_stereo"
+                        its:translate="no">
+                        http://lsp-plug.in/?page=manuals&amp;section=comp_delay_x2_stereo
                     </link>
                 </p>
             </item>
