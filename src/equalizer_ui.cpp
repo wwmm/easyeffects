@@ -86,6 +86,48 @@ GVariant* int_to_mode_enum(const GValue* value,
   }
 }
 
+gboolean bandmode_enum_to_int(GValue* value,
+                              GVariant* variant,
+                              gpointer user_data) {
+  auto v = g_variant_get_string(variant, nullptr);
+
+  if (v == std::string("RLC (BT)")) {
+    g_value_set_int(value, 0);
+  } else if (v == std::string("RLC (MT)")) {
+    g_value_set_int(value, 1);
+  } else if (v == std::string("BWC (BT)")) {
+    g_value_set_int(value, 2);
+  } else if (v == std::string("BWC (MT)")) {
+    g_value_set_int(value, 3);
+  } else if (v == std::string("LRX (BT)")) {
+    g_value_set_int(value, 4);
+  } else if (v == std::string("LRX (MT)")) {
+    g_value_set_int(value, 5);
+  }
+
+  return true;
+}
+
+GVariant* int_to_bandmode_enum(const GValue* value,
+                               const GVariantType* expected_type,
+                               gpointer user_data) {
+  int v = g_value_get_int(value);
+
+  if (v == 0) {
+    return g_variant_new_string("RLC (BT)");
+  } else if (v == 1) {
+    return g_variant_new_string("RLC (MT)");
+  } else if (v == 2) {
+    return g_variant_new_string("BWC (BT)");
+  } else if (v == 3) {
+    return g_variant_new_string("BWC (MT)");
+  } else if (v == 4) {
+    return g_variant_new_string("LRX (BT)");
+  } else {
+    return g_variant_new_string("LRX (MT)");
+  }
+}
+
 }  // namespace
 
 EqualizerUi::EqualizerUi(BaseObjectType* cobject,
@@ -228,12 +270,13 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid,
         "/com/github/wwmm/pulseeffects/ui/equalizer_band.glade");
 
     Gtk::Grid* band_grid;
-    Gtk::ComboBoxText* band_t;
+    Gtk::ComboBoxText *band_t, *band_m;
     Gtk::Label *band_w, *band_label;
     Gtk::Button *reset_f, *reset_q;
 
     B->get_widget("band_grid", band_grid);
     B->get_widget("band_t", band_t);
+    B->get_widget("band_m", band_m);
     B->get_widget("band_w", band_w);
     B->get_widget("band_label", band_label);
     B->get_widget("reset_f", reset_f);
@@ -300,6 +343,11 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid,
         band_t->gobj(), "active", G_SETTINGS_BIND_DEFAULT, bandtype_enum_to_int,
         int_to_bandtype_enum, nullptr, nullptr);
 
+    g_settings_bind_with_mapping(
+        cfg->gobj(), std::string("band" + std::to_string(n) + "-mode").c_str(),
+        band_m->gobj(), "active", G_SETTINGS_BIND_DEFAULT, bandmode_enum_to_int,
+        int_to_bandmode_enum, nullptr, nullptr);
+
     connections_bands.push_back(reset_f->signal_clicked().connect([=]() {
       cfg->reset(std::string("band" + std::to_string(n) + "-frequency"));
     }));
@@ -333,12 +381,13 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
         "/com/github/wwmm/pulseeffects/ui/equalizer_band.glade");
 
     Gtk::Grid* band_grid;
-    Gtk::ComboBoxText* band_t;
+    Gtk::ComboBoxText *band_t, *band_m;
     Gtk::Label *band_w, *band_label;
     Gtk::Button *reset_f, *reset_q;
 
     B->get_widget("band_grid", band_grid);
     B->get_widget("band_t", band_t);
+    B->get_widget("band_m", band_m);
     B->get_widget("band_w", band_w);
     B->get_widget("band_label", band_label);
     B->get_widget("reset_f", reset_f);
@@ -421,6 +470,12 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
           band_t->get_active_row_number());
     }));
 
+    connections_bands.push_back(band_m->signal_changed().connect([=]() {
+      settings_right->set_enum(
+          std::string("band" + std::to_string(n) + "-mode"),
+          band_m->get_active_row_number());
+    }));
+
     // left channel
 
     settings_left->bind(std::string("band" + std::to_string(n) + "-gain"),
@@ -435,6 +490,12 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
         std::string("band" + std::to_string(n) + "-type").c_str(),
         band_t->gobj(), "active", G_SETTINGS_BIND_DEFAULT, bandtype_enum_to_int,
         int_to_bandtype_enum, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(
+        settings_left->gobj(),
+        std::string("band" + std::to_string(n) + "-mode").c_str(),
+        band_m->gobj(), "active", G_SETTINGS_BIND_DEFAULT, bandmode_enum_to_int,
+        int_to_bandmode_enum, nullptr, nullptr);
 
     connections_bands.push_back(reset_f->signal_clicked().connect([=]() {
       settings_left->reset(
@@ -561,6 +622,9 @@ void EqualizerUi::load_preset(const std::string& file_name) {
         std::string("band" + std::to_string(n) + "-type"),
         root.get<std::string>("equalizer.band" + std::to_string(n) + ".type"));
 
+    settings_left->set_string(std::string("band" + std::to_string(n) + "-mode"),
+                              "RLC (BT)");
+
     // right channel
 
     settings_right->set_double(
@@ -576,6 +640,9 @@ void EqualizerUi::load_preset(const std::string& file_name) {
     settings_right->set_string(
         std::string("band" + std::to_string(n) + "-type"),
         root.get<std::string>("equalizer.band" + std::to_string(n) + ".type"));
+
+    settings_right->set_string(
+        std::string("band" + std::to_string(n) + "-mode"), "RLC (BT)");
   }
 }
 
@@ -641,16 +708,17 @@ void EqualizerUi::reset() {
     settings_left->reset(std::string("band" + std::to_string(n) + "-gain"));
     settings_left->reset(
         std::string("band" + std::to_string(n) + "-frequency"));
-    // settings_left->reset(std::string("band" + std::to_string(n) + "-width"));
+    settings_left->reset(std::string("band" + std::to_string(n) + "-q"));
     settings_left->reset(std::string("band" + std::to_string(n) + "-type"));
+    settings_left->reset(std::string("band" + std::to_string(n) + "-mode"));
 
     // right channel
 
     settings_right->reset(std::string("band" + std::to_string(n) + "-gain"));
     settings_right->reset(
         std::string("band" + std::to_string(n) + "-frequency"));
-    // settings_right->reset(std::string("band" + std::to_string(n) +
-    // "-width"));
+    settings_right->reset(std::string("band" + std::to_string(n) + "-q"));
     settings_right->reset(std::string("band" + std::to_string(n) + "-type"));
+    settings_right->reset(std::string("band" + std::to_string(n) + "-mode"));
   }
 }

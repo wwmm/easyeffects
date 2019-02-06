@@ -49,6 +49,14 @@ void EqualizerPreset::save_channel(boost::property_tree::ptree& root,
                                    const Glib::RefPtr<Gio::Settings>& settings,
                                    const int& nbands) {
   for (int n = 0; n < nbands; n++) {
+    root.put(section + ".band" + std::to_string(n) + ".type",
+             settings->get_string(
+                 std::string("band" + std::to_string(n) + "-type")));
+
+    root.put(section + ".band" + std::to_string(n) + ".mode",
+             settings->get_string(
+                 std::string("band" + std::to_string(n) + "-mode")));
+
     root.put(section + ".band" + std::to_string(n) + ".gain",
              settings->get_double(
                  std::string("band" + std::to_string(n) + "-gain")));
@@ -60,10 +68,6 @@ void EqualizerPreset::save_channel(boost::property_tree::ptree& root,
     root.put(
         section + ".band" + std::to_string(n) + ".q",
         settings->get_double(std::string("band" + std::to_string(n) + "-q")));
-
-    root.put(section + ".band" + std::to_string(n) + ".type",
-             settings->get_string(
-                 std::string("band" + std::to_string(n) + "-type")));
   }
 }
 
@@ -102,6 +106,14 @@ void EqualizerPreset::load_channel(boost::property_tree::ptree& root,
                                    const Glib::RefPtr<Gio::Settings>& settings,
                                    const int& nbands) {
   for (int n = 0; n < nbands; n++) {
+    update_string_key(root, settings,
+                      std::string("band" + std::to_string(n) + "-type"),
+                      section + ".band" + std::to_string(n) + ".type");
+
+    update_string_key(root, settings,
+                      std::string("band" + std::to_string(n) + "-mode"),
+                      section + ".band" + std::to_string(n) + ".mode");
+
     update_key<double>(root, settings,
                        std::string("band" + std::to_string(n) + "-gain"),
                        section + ".band" + std::to_string(n) + ".gain");
@@ -113,10 +125,6 @@ void EqualizerPreset::load_channel(boost::property_tree::ptree& root,
     update_key<double>(root, settings,
                        std::string("band" + std::to_string(n) + "-q"),
                        section + ".band" + std::to_string(n) + ".q");
-
-    update_string_key(root, settings,
-                      std::string("band" + std::to_string(n) + "-type"),
-                      section + ".band" + std::to_string(n) + ".type");
   }
 }
 

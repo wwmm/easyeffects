@@ -33,7 +33,6 @@
         <property name="margin_bottom">6</property>
         <property name="row_spacing">18</property>
         <property name="column_spacing">12</property>
-        <property name="column_homogeneous">True</property>
         <child>
           <object class="GtkButton" id="reset_f">
             <property name="label" translatable="yes">Reset</property>
@@ -66,6 +65,7 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="halign">center</property>
             <property name="row_spacing">6</property>
             <child>
               <object class="GtkLabel">
@@ -109,6 +109,7 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="halign">center</property>
             <property name="row_spacing">6</property>
             <child>
               <object class="GtkSpinButton">
@@ -194,14 +195,13 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="halign">center</property>
-            <property name="valign">center</property>
-            <property name="row_spacing">6</property>
+            <property name="column_spacing">18</property>
+            <property name="column_homogeneous">True</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Filter Type</property>
+                <property name="label" translatable="yes">Type</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -212,7 +212,6 @@
               <object class="GtkComboBoxText" id="band_t">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="halign">center</property>
                 <items>
                   <item translatable="yes">Off</item>
                   <item translatable="yes">Bell</item>
@@ -229,12 +228,46 @@
                 <property name="top_attach">1</property>
               </packing>
             </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Mode</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkComboBoxText" id="band_m">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <items>
+                  <item translatable="yes">RLC (BT)</item>
+                  <item translatable="yes">RLC (MT)</item>
+                  <item translatable="yes">BWC (BT)</item>
+                  <item translatable="yes">BWC (MT)</item>
+                  <item translatable="yes">LRX (BT)</item>
+                  <item translatable="yes">LRX (MT)</item>
+                </items>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
           </object>
           <packing>
-            <property name="left_attach">0</property>
+            <property name="left_attach">1</property>
             <property name="top_attach">0</property>
-            <property name="width">3</property>
           </packing>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
         </child>
         <child>
           <placeholder/>
