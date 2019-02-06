@@ -818,5 +818,187 @@
             enum="com.github.wwmm.pulseeffects.equalizer.bandslope.enum">
             <default>"x1"</default>
         </key>
+
+        <key name="band0-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band1-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band2-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band3-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band4-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band5-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band6-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band7-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band8-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band9-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band10-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band11-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band12-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band13-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band14-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band15-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band16-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band17-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band18-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band19-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band20-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band21-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band22-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band23-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band24-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band25-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band26-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band27-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band28-solo" type="b">
+            <default>false</default>
+        </key>
+        <key name="band29-solo" type="b">
+            <default>false</default>
+        </key>
+
+        <key name="band0-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band1-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band2-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band3-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band4-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band5-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band6-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band7-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band8-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band9-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band10-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band11-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band12-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band13-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band14-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band15-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band16-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band17-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band18-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band19-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band20-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band21-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band22-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band23-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band24-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band25-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band26-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band27-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band28-mute" type="b">
+            <default>false</default>
+        </key>
+        <key name="band29-mute" type="b">
+            <default>false</default>
+        </key>
     </schema>
 </schemalist>

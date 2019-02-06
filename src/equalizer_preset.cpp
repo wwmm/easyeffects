@@ -61,6 +61,14 @@ void EqualizerPreset::save_channel(boost::property_tree::ptree& root,
              settings->get_string(
                  std::string("band" + std::to_string(n) + "-slope")));
 
+    root.put(section + ".band" + std::to_string(n) + ".solo",
+             settings->get_boolean(
+                 std::string("band" + std::to_string(n) + "-solo")));
+
+    root.put(section + ".band" + std::to_string(n) + ".mute",
+             settings->get_boolean(
+                 std::string("band" + std::to_string(n) + "-mute")));
+
     root.put(section + ".band" + std::to_string(n) + ".gain",
              settings->get_double(
                  std::string("band" + std::to_string(n) + "-gain")));
@@ -121,6 +129,14 @@ void EqualizerPreset::load_channel(boost::property_tree::ptree& root,
     update_string_key(root, settings,
                       std::string("band" + std::to_string(n) + "-slope"),
                       section + ".band" + std::to_string(n) + ".slope");
+
+    update_key<bool>(root, settings,
+                     std::string("band" + std::to_string(n) + "-solo"),
+                     section + ".band" + std::to_string(n) + ".solo");
+
+    update_key<bool>(root, settings,
+                     std::string("band" + std::to_string(n) + "-mute"),
+                     section + ".band" + std::to_string(n) + ".mute");
 
     update_key<double>(root, settings,
                        std::string("band" + std::to_string(n) + "-gain"),
