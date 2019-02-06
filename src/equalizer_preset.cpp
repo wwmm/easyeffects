@@ -57,6 +57,10 @@ void EqualizerPreset::save_channel(boost::property_tree::ptree& root,
              settings->get_string(
                  std::string("band" + std::to_string(n) + "-mode")));
 
+    root.put(section + ".band" + std::to_string(n) + ".slope",
+             settings->get_string(
+                 std::string("band" + std::to_string(n) + "-slope")));
+
     root.put(section + ".band" + std::to_string(n) + ".gain",
              settings->get_double(
                  std::string("band" + std::to_string(n) + "-gain")));
@@ -113,6 +117,10 @@ void EqualizerPreset::load_channel(boost::property_tree::ptree& root,
     update_string_key(root, settings,
                       std::string("band" + std::to_string(n) + "-mode"),
                       section + ".band" + std::to_string(n) + ".mode");
+
+    update_string_key(root, settings,
+                      std::string("band" + std::to_string(n) + "-slope"),
+                      section + ".band" + std::to_string(n) + ".slope");
 
     update_key<double>(root, settings,
                        std::string("band" + std::to_string(n) + "-gain"),
