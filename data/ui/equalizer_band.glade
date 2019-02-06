@@ -345,7 +345,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkScale">
+      <object class="GtkScale" id="band_scale">
         <property name="height_request">100</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
