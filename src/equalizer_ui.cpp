@@ -710,62 +710,44 @@ void EqualizerUi::load_preset(const std::string& file_name) {
   settings->set_double("output-gain",
                        root.get<double>("equalizer.output-gain"));
 
-  for (int n = 0; n < nbands; n++) {
-    // left channel
-
+  auto config_band = [&](auto cfg, auto n) {
     double f =
         root.get<double>("equalizer.band" + std::to_string(n) + ".frequency");
     double w =
         root.get<double>("equalizer.band" + std::to_string(n) + ".width");
     double q = f / w;
 
-    settings_left->set_double(
+    cfg->set_double(
         std::string("band" + std::to_string(n) + "-gain"),
         root.get<double>("equalizer.band" + std::to_string(n) + ".gain"));
 
-    settings_left->set_double(
-        std::string("band" + std::to_string(n) + "-frequency"), f);
+    cfg->set_double(std::string("band" + std::to_string(n) + "-frequency"), f);
 
-    settings_left->set_double(std::string("band" + std::to_string(n) + "-q"),
-                              q);
+    cfg->set_double(std::string("band" + std::to_string(n) + "-q"), q);
 
-    settings_left->set_string(
+    cfg->set_string(
         std::string("band" + std::to_string(n) + "-type"),
         root.get<std::string>("equalizer.band" + std::to_string(n) + ".type"));
 
-    settings_left->set_string(std::string("band" + std::to_string(n) + "-mode"),
-                              "RLC (BT)");
+    cfg->set_string(std::string("band" + std::to_string(n) + "-mode"),
+                    "RLC (BT)");
 
-    settings_left->set_boolean(
-        std::string("band" + std::to_string(n) + "-solo"), false);
+    cfg->set_string(
+        std::string("band" + std::to_string(n) + "-slope"),
+        root.get<std::string>("equalizer.band" + std::to_string(n) + ".slope"));
 
-    settings_left->set_boolean(
-        std::string("band" + std::to_string(n) + "-mute"), false);
+    cfg->set_boolean(
+        std::string("band" + std::to_string(n) + "-solo"),
+        root.get<bool>("equalizer.band" + std::to_string(n) + ".solo"));
 
-    // right channel
+    cfg->set_boolean(
+        std::string("band" + std::to_string(n) + "-mute"),
+        root.get<bool>("equalizer.band" + std::to_string(n) + ".mute"));
+  };
 
-    settings_right->set_double(
-        std::string("band" + std::to_string(n) + "-gain"),
-        root.get<double>("equalizer.band" + std::to_string(n) + ".gain"));
-
-    settings_right->set_double(
-        std::string("band" + std::to_string(n) + "-frequency"), f);
-
-    settings_right->set_double(std::string("band" + std::to_string(n) + "-q"),
-                               q);
-
-    settings_right->set_string(
-        std::string("band" + std::to_string(n) + "-type"),
-        root.get<std::string>("equalizer.band" + std::to_string(n) + ".type"));
-
-    settings_right->set_string(
-        std::string("band" + std::to_string(n) + "-mode"), "RLC (BT)");
-
-    settings_right->set_boolean(
-        std::string("band" + std::to_string(n) + "-solo"), false);
-
-    settings_right->set_boolean(
-        std::string("band" + std::to_string(n) + "-mute"), false);
+  for (int n = 0; n < nbands; n++) {
+    config_band(settings_left, n);
+    config_band(settings_right, n);
   }
 }
 
