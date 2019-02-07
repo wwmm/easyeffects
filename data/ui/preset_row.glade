@@ -2,12 +2,6 @@
 <!-- Generated with glade 3.22.1 -->
 <interface domain="pulseeffects">
   <requires lib="gtk+" version="3.20"/>
-  <object class="GtkImage" id="image_delete_preset">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">list-remove-symbolic</property>
-    <property name="icon_size">2</property>
-  </object>
   <object class="GtkListBoxRow" id="preset_row">
     <property name="visible">True</property>
     <property name="can_focus">True</property>
@@ -40,12 +34,12 @@
         </child>
         <child>
           <object class="GtkButton" id="remove">
+            <property name="label" translatable="yes">Remove</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
-            <property name="image">image_delete_preset</property>
             <property name="always_show_image">True</property>
             <style>
               <class name="destructive-action"/>
