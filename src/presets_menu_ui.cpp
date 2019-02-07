@@ -21,12 +21,6 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   presets_listbox->set_sort_func(
       sigc::mem_fun(*this, &PresetsMenuUi::on_listbox_sort));
 
-  presets_listbox->signal_row_activated().connect([=](auto row) {
-    // parent->presets_menu_label->set_text(row->get_name());
-    settings->set_string("last-used-preset", row->get_name());
-    app->presets_manager->load(row->get_name());
-  });
-
   add_preset->signal_clicked().connect([=]() {
     auto name = preset_name->get_text();
     if (!name.empty()) {
@@ -161,23 +155,27 @@ void PresetsMenuUi::populate_presets_listbox() {
         "/com/github/wwmm/pulseeffects/ui/preset_row.glade");
 
     Gtk::ListBoxRow* row;
-    Gtk::Button *save_btn, *remove_btn;
+    Gtk::Button *apply_btn, *save_btn, *remove_btn;
     Gtk::Label* label;
 
     b->get_widget("preset_row", row);
+    b->get_widget("apply", apply_btn);
     b->get_widget("save", save_btn);
     b->get_widget("remove", remove_btn);
     b->get_widget("name", label);
 
     row->set_name(name);
-    row->set_margin_right(6);
-    row->set_margin_left(6);
-    row->set_margin_bottom(6);
 
     label->set_text(name);
 
+    connections.push_back(apply_btn->signal_clicked().connect([=]() {
+      settings->set_string("last-used-preset", row->get_name());
+      app->presets_manager->load(row->get_name());
+    }));
+
     connections.push_back(save_btn->signal_clicked().connect(
         [=]() { app->presets_manager->save(name); }));
+
     connections.push_back(remove_btn->signal_clicked().connect([=]() {
       app->presets_manager->remove(name);
       populate_presets_listbox();

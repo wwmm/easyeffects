@@ -70,23 +70,43 @@
       </packing>
     </child>
     <child>
-      <object class="GtkScrolledWindow" id="presets_scrolled_window">
+      <object class="GtkFrame">
         <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="propagate_natural_width">True</property>
-        <property name="propagate_natural_height">True</property>
+        <property name="can_focus">False</property>
+        <property name="hexpand">True</property>
+        <property name="vexpand">True</property>
+        <property name="label_xalign">0</property>
+        <property name="shadow_type">in</property>
         <child>
-          <object class="GtkViewport">
+          <object class="GtkScrolledWindow" id="presets_scrolled_window">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="vexpand">True</property>
+            <property name="propagate_natural_width">True</property>
+            <property name="propagate_natural_height">True</property>
             <child>
-              <object class="GtkListBox" id="presets_listbox">
-                <property name="name">listbox_presets</property>
+              <object class="GtkViewport">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+                <child>
+                  <object class="GtkListBox" id="presets_listbox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
+                    <property name="vexpand">True</property>
+                    <property name="selection_mode">none</property>
+                    <property name="activate_on_single_click">False</property>
+                  </object>
+                </child>
               </object>
             </child>
           </object>
+        </child>
+        <child type="label_item">
+          <placeholder/>
         </child>
       </object>
       <packing>

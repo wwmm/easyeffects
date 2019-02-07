@@ -8,16 +8,16 @@
     <property name="icon_name">list-remove-symbolic</property>
     <property name="icon_size">2</property>
   </object>
-  <object class="GtkImage" id="image_save_preset">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">document-save-symbolic</property>
-    <property name="icon_size">2</property>
-  </object>
   <object class="GtkListBoxRow" id="preset_row">
     <property name="visible">True</property>
     <property name="can_focus">True</property>
     <property name="valign">center</property>
+    <property name="margin_left">6</property>
+    <property name="margin_right">6</property>
+    <property name="margin_top">6</property>
+    <property name="margin_bottom">6</property>
+    <property name="activatable">False</property>
+    <property name="selectable">False</property>
     <child>
       <object class="GtkBox">
         <property name="visible">True</property>
@@ -60,19 +60,34 @@
         </child>
         <child>
           <object class="GtkButton" id="save">
+            <property name="label" translatable="yes">Save</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
-            <property name="image">image_save_preset</property>
-            <property name="always_show_image">True</property>
           </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="pack_type">end</property>
             <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="apply">
+            <property name="label" translatable="yes">Apply</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
+            <property name="position">3</property>
           </packing>
         </child>
       </object>
