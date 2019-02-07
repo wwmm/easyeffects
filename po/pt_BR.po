@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-06 18:29-0200\n"
-"PO-Revision-Date: 2019-02-06 18:28-0200\n"
+"POT-Creation-Date: 2019-02-07 17:05-0200\n"
+"PO-Revision-Date: 2019-02-07 17:06-0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
@@ -32,6 +32,7 @@ msgid "PulseEffects"
 msgstr "PulseEffects"
 
 #: data/ui/application.glade:135 data/ui/general_settings.glade:107
+#: data/ui/equalizer.glade:256
 msgid "Settings"
 msgstr "Configurações"
 
@@ -40,9 +41,9 @@ msgid "Help"
 msgstr "Ajuda"
 
 #: data/ui/application.glade:180 data/ui/compressor.glade:205
-#: data/ui/filter.glade:207 data/ui/equalizer.glade:355
+#: data/ui/filter.glade:207 data/ui/equalizer.glade:312
 #: data/ui/reverb.glade:287 data/ui/crossfeed.glade:47
-#: src/presets_menu_ui.cpp:119 src/presets_menu_ui.cpp:199
+#: src/presets_menu_ui.cpp:113 src/presets_menu_ui.cpp:197
 msgid "Presets"
 msgstr "Predefinições"
 
@@ -163,7 +164,7 @@ msgstr "Efeitos de áudio para programas que Utilizam Pulseaudio"
 msgid "Format"
 msgstr "Formato"
 
-#: data/ui/app_info.glade:75 data/ui/convolver.glade:241
+#: data/ui/app_info.glade:75 data/ui/convolver.glade:260
 msgid "Rate"
 msgstr "Taxa"
 
@@ -206,13 +207,13 @@ msgstr "Pesos"
 #: data/ui/autogain.glade:318 data/ui/autogain.glade:510
 #: data/ui/limiter.glade:368 data/ui/compressor.glade:561
 #: data/ui/multiband_compressor.glade:1961 data/ui/filter.glade:371
-#: data/ui/equalizer.glade:512 data/ui/reverb.glade:633
+#: data/ui/equalizer.glade:519 data/ui/reverb.glade:633
 #: data/ui/bass_enhancer.glade:482 data/ui/exciter.glade:485
 #: data/ui/stereo_tools.glade:302 data/ui/stereo_tools.glade:807
 #: data/ui/crossfeed.glade:202 data/ui/maximizer.glade:242
 #: data/ui/loudness.glade:247 data/ui/gate.glade:490
 #: data/ui/multiband_gate.glade:2110 data/ui/deesser.glade:571
-#: data/ui/convolver.glade:507 data/ui/crystalizer.glade:504
+#: data/ui/convolver.glade:526 data/ui/crystalizer.glade:504
 #: data/ui/pitch.glade:325 data/ui/webrtc.glade:627 data/ui/delay.glade:213
 msgid "Input"
 msgstr "Entrada"
@@ -224,7 +225,7 @@ msgstr "Entrada"
 #: data/ui/multiband_compressor.glade:1511
 #: data/ui/multiband_compressor.glade:1889
 #: data/ui/multiband_compressor.glade:1976 data/ui/filter.glade:386
-#: data/ui/equalizer.glade:527 data/ui/reverb.glade:648
+#: data/ui/equalizer.glade:534 data/ui/reverb.glade:648
 #: data/ui/bass_enhancer.glade:514 data/ui/exciter.glade:517
 #: data/ui/stereo_tools.glade:779 data/ui/stereo_tools.glade:821
 #: data/ui/crossfeed.glade:217 data/ui/maximizer.glade:257
@@ -232,7 +233,7 @@ msgstr "Entrada"
 #: data/ui/multiband_gate.glade:809 data/ui/multiband_gate.glade:1218
 #: data/ui/multiband_gate.glade:1628 data/ui/multiband_gate.glade:2038
 #: data/ui/multiband_gate.glade:2125 data/ui/deesser.glade:586
-#: data/ui/convolver.glade:522 data/ui/crystalizer.glade:519
+#: data/ui/convolver.glade:541 data/ui/crystalizer.glade:519
 #: data/ui/pitch.glade:339 data/ui/webrtc.glade:642 data/ui/delay.glade:228
 msgid "Output"
 msgstr "Saída"
@@ -411,7 +412,7 @@ msgstr "Redução"
 msgid "Multiband Compressor"
 msgstr "Compressor Multibandas"
 
-#: data/ui/multiband_compressor.glade:286 data/ui/equalizer.glade:157
+#: data/ui/multiband_compressor.glade:286 data/ui/equalizer.glade:203
 #: data/ui/equalizer_band.glade:78 data/ui/stereo_tools.glade:464
 #: data/ui/multiband_gate.glade:306 data/ui/deesser.glade:207
 #: data/ui/webrtc.glade:353
@@ -563,44 +564,44 @@ msgstr "Inércia"
 msgid "Equalizer"
 msgstr "Equalizador"
 
-#: data/ui/equalizer.glade:118
+#: data/ui/equalizer.glade:132
 msgid "Split Channels"
 msgstr "Canais Separados"
 
-#: data/ui/equalizer.glade:143
+#: data/ui/equalizer.glade:158
 msgid "IIR"
 msgstr "IIR"
 
-#: data/ui/equalizer.glade:144
+#: data/ui/equalizer.glade:159
 msgid "FIR"
 msgstr "FIR"
 
-#: data/ui/equalizer.glade:145
+#: data/ui/equalizer.glade:160
 msgid "FFT"
 msgstr "FFT"
 
-#: data/ui/equalizer.glade:186
+#: data/ui/equalizer.glade:190
 msgid "Bands"
 msgstr "Bandas"
 
-#: data/ui/equalizer.glade:195
-msgid "Reset Equalizer"
-msgstr "Redefinir Equalizador"
-
-#: data/ui/equalizer.glade:209
-msgid "Calculate Frequencies"
-msgstr "Calcular Frequências"
-
-#: data/ui/equalizer.glade:223
+#: data/ui/equalizer.glade:212
 msgid "Flat Response"
 msgstr "Resposta Plana"
 
-#: data/ui/equalizer.glade:444 data/ui/stereo_tools.glade:527
+#: data/ui/equalizer.glade:227
+msgid "Calculate Frequencies"
+msgstr "Calcular Frequências"
+
+#: data/ui/equalizer.glade:241
+msgid "Reset Equalizer"
+msgstr "Redefinir Equalizador"
+
+#: data/ui/equalizer.glade:451 data/ui/stereo_tools.glade:527
 #: data/ui/delay.glade:134
 msgid "Left"
 msgstr "Esquerda"
 
-#: data/ui/equalizer.glade:485 data/ui/stereo_tools.glade:599
+#: data/ui/equalizer.glade:492 data/ui/stereo_tools.glade:599
 #: data/ui/delay.glade:166
 msgid "Right"
 msgstr "Direita"
@@ -693,6 +694,11 @@ msgstr "Largura"
 #: data/ui/stereo_tools.glade:612
 msgid "Mute"
 msgstr "Mudo"
+
+#: data/ui/equalizer_preset_row.glade:37 data/ui/irs_row.glade:57
+#: data/ui/preset_row.glade:73
+msgid "Apply"
+msgstr "Aplicar"
 
 #: data/ui/reverb.glade:64
 msgid "Reverberation"
@@ -987,41 +993,45 @@ msgstr "Importar Impulso"
 msgid "Import Impulse Response File"
 msgstr "Arquivo da Resposta de Impulso"
 
-#: data/ui/convolver.glade:205
+#: data/ui/convolver.glade:224
 msgid "L"
 msgstr "L"
 
-#: data/ui/convolver.glade:219
+#: data/ui/convolver.glade:238
 msgid "R"
 msgstr "R"
 
-#: data/ui/convolver.glade:279
+#: data/ui/convolver.glade:298
 msgid "Duration"
 msgstr "Duração"
 
-#: data/ui/convolver.glade:293
+#: data/ui/convolver.glade:312
 msgid "Samples"
 msgstr "Amostras"
 
-#: data/ui/convolver.glade:326 src/convolver_ui.cpp:333
+#: data/ui/convolver.glade:345 src/convolver_ui.cpp:332
 msgid "Impulse Response"
 msgstr "Resposta de Impulso"
 
-#: data/ui/convolver.glade:346
+#: data/ui/convolver.glade:365
 msgid "Select the impulse Response File"
 msgstr "Selecione o Arquivo com a Resposta de Impulso"
 
-#: data/ui/convolver.glade:366 src/spectrum_settings_ui.cpp:93
+#: data/ui/convolver.glade:385 src/spectrum_settings_ui.cpp:93
 msgid "Spectrum"
 msgstr "Espectro"
 
-#: data/ui/convolver.glade:407
+#: data/ui/convolver.glade:426
 msgid "Stereo Width"
 msgstr "Largura do Stereo"
 
-#: data/ui/convolver.glade:432
+#: data/ui/convolver.glade:451
 msgid "Block Size"
 msgstr "Tamanho do Bloco"
+
+#: data/ui/irs_row.glade:37 data/ui/preset_row.glade:37
+msgid "Remove"
+msgstr "Remover"
 
 #: data/ui/crystalizer.glade:24
 msgid "Crystalizer"
@@ -1149,7 +1159,11 @@ msgstr "Detector de Voz"
 msgid "Delay"
 msgstr "Atraso"
 
-#: data/ui/presets_menu.glade:61 src/presets_menu_ui.cpp:114
+#: data/ui/preset_row.glade:57
+msgid "Save"
+msgstr "Salvar"
+
+#: data/ui/presets_menu.glade:61 src/presets_menu_ui.cpp:108
 msgid "Import Presets"
 msgstr "Importar Predefinições"
 
@@ -1361,11 +1375,11 @@ msgstr "Geral"
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
 
-#: src/presets_menu_ui.cpp:115 src/convolver_ui.cpp:329
+#: src/presets_menu_ui.cpp:109 src/convolver_ui.cpp:328
 msgid "Open"
 msgstr "Abrir"
 
-#: src/presets_menu_ui.cpp:115 src/convolver_ui.cpp:329
+#: src/presets_menu_ui.cpp:109 src/convolver_ui.cpp:328
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -1381,19 +1395,19 @@ msgstr "tocando"
 msgid "Calibration Microphone"
 msgstr "Microfone de Calibração"
 
-#: src/convolver_ui.cpp:328
+#: src/convolver_ui.cpp:327
 msgid "Import Impulse File"
 msgstr "Importar Arquivo com a Resposta de Impulso"
 
-#: src/convolver_ui.cpp:371 src/convolver_ui.cpp:372 src/convolver_ui.cpp:374
+#: src/convolver_ui.cpp:370 src/convolver_ui.cpp:371 src/convolver_ui.cpp:373
 msgid "Failed"
 msgstr "Falhou"
 
-#: src/convolver_ui.cpp:376
+#: src/convolver_ui.cpp:375
 msgid "Could Not Load The Impulse File"
 msgstr "Não Foi Possível Carregar o Arquivo com o Impulso"
 
-#: src/equalizer_ui.cpp:344 src/equalizer_ui.cpp:469
+#: src/equalizer_ui.cpp:339 src/equalizer_ui.cpp:477
 msgid "infinity"
 msgstr "infinito"
 
