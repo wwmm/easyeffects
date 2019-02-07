@@ -705,17 +705,30 @@ void EqualizerUi::load_preset(const std::string& file_name) {
 
   settings->set_int("num-bands", nbands);
 
+  settings->set_string("mode", root.get<std::string>("equalizer.mode"));
+
   settings->set_double("input-gain", root.get<double>("equalizer.input-gain"));
 
   settings->set_double("output-gain",
                        root.get<double>("equalizer.output-gain"));
 
   auto config_band = [&](auto cfg, auto n) {
+    double q = 0;
+
     double f =
         root.get<double>("equalizer.band" + std::to_string(n) + ".frequency");
-    double w =
-        root.get<double>("equalizer.band" + std::to_string(n) + ".width");
-    double q = f / w;
+
+    try {
+      q = root.get<double>("equalizer.band" + std::to_string(n) + ".q");
+    } catch (const boost::property_tree::ptree_error& e) {
+      try {
+        double w =
+            root.get<double>("equalizer.band" + std::to_string(n) + ".width");
+
+        q = f / w;
+      } catch (const boost::property_tree::ptree_error& e) {
+      }
+    }
 
     cfg->set_double(
         std::string("band" + std::to_string(n) + "-gain"),
@@ -729,8 +742,9 @@ void EqualizerUi::load_preset(const std::string& file_name) {
         std::string("band" + std::to_string(n) + "-type"),
         root.get<std::string>("equalizer.band" + std::to_string(n) + ".type"));
 
-    cfg->set_string(std::string("band" + std::to_string(n) + "-mode"),
-                    "RLC (BT)");
+    cfg->set_string(
+        std::string("band" + std::to_string(n) + "-mode"),
+        root.get<std::string>("equalizer.band" + std::to_string(n) + ".mode"));
 
     cfg->set_string(
         std::string("band" + std::to_string(n) + "-slope"),
