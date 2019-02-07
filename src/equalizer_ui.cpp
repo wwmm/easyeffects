@@ -185,8 +185,6 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   builder->get_widget("flat_response", flat_response);
   builder->get_widget("calculate_freqs", calculate_freqs);
   builder->get_widget("presets_listbox", presets_listbox);
-  builder->get_widget("presets_menu_button", presets_menu_button);
-  builder->get_widget("presets_scrolled_window", presets_scrolled_window);
   builder->get_widget("split_channels", split_channels);
   builder->get_widget("stack", stack);
   builder->get_widget("stack_switcher", stack_switcher);
@@ -209,14 +207,8 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   calculate_freqs->signal_clicked().connect(
       sigc::mem_fun(*this, &EqualizerUi::on_calculate_frequencies));
 
-  presets_menu_button->signal_clicked().connect(
-      sigc::mem_fun(*this, &EqualizerUi::on_presets_menu_button_clicked));
-
   presets_listbox->set_sort_func(
       sigc::mem_fun(*this, &EqualizerUi::on_listbox_sort));
-
-  presets_listbox->signal_row_activated().connect(
-      [&](auto row) { load_preset(row->get_name() + ".json"); });
 
   connections.push_back(
       settings->signal_changed("split-channels").connect([&](auto key) {
@@ -655,6 +647,13 @@ void EqualizerUi::on_calculate_frequencies() {
   step = pow(max_freq / min_freq, 1.0 / nbands);
   freq0 = min_freq;
 
+  auto config_band = [&](auto cfg, auto n, auto freq, auto q) {
+    cfg->set_double(std::string("band" + std::to_string(n) + "-frequency"),
+                    freq);
+
+    cfg->set_double(std::string("band" + std::to_string(n) + "-q"), q);
+  };
+
   for (int n = 0; n < nbands; n++) {
     freq1 = freq0 * step;
 
@@ -664,21 +663,8 @@ void EqualizerUi::on_calculate_frequencies() {
 
     // std::cout << n << "\t" << freq << "\t" << width << std::endl;
 
-    // left channel
-
-    settings_left->set_double(
-        std::string("band" + std::to_string(n) + "-frequency"), freq);
-
-    settings_left->set_double(std::string("band" + std::to_string(n) + "-q"),
-                              q);
-
-    // right channel
-
-    settings_right->set_double(
-        std::string("band" + std::to_string(n) + "-frequency"), freq);
-
-    settings_right->set_double(std::string("band" + std::to_string(n) + "-q"),
-                               q);
+    config_band(settings_left, n, freq, q);
+    config_band(settings_right, n, freq, q);
 
     freq0 = freq1;
   }
@@ -791,27 +777,32 @@ void EqualizerUi::populate_presets_listbox() {
 
   auto names = Gio::Resource::enumerate_children_global(presets_path);
 
-  for (auto file_name : names) {
-    Gtk::ListBoxRow* row = Gtk::manage(new Gtk::ListBoxRow());
-    Gtk::Label* label = Gtk::manage(new Gtk::Label());
-
+  for (unsigned long int n = 0; n < names.size(); n++) {
+    auto file_name = names[n];
     auto name = file_name.substr(0, file_name.find("."));
 
-    row->set_name(name);
-    label->set_text(name);
-    label->set_halign(Gtk::ALIGN_START);
+    auto b = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/ui/equalizer_preset_row.glade");
 
-    row->add(*label);
+    Gtk::ListBoxRow* row;
+    Gtk::Button* apply_btn;
+    Gtk::Label* label;
+
+    b->get_widget("preset_row", row);
+    b->get_widget("apply", apply_btn);
+    b->get_widget("name", label);
+
+    row->set_name(name);
+
+    label->set_text(name);
+
+    connections.push_back(apply_btn->signal_clicked().connect(
+        [=]() { load_preset(row->get_name() + ".json"); }));
 
     presets_listbox->add(*row);
+
     presets_listbox->show_all();
   }
-}
-
-void EqualizerUi::on_presets_menu_button_clicked() {
-  int height = get_allocated_height();
-
-  presets_scrolled_window->set_max_content_height(height);
 }
 
 void EqualizerUi::reset() {

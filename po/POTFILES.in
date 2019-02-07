@@ -14,6 +14,7 @@ data/ui/multiband_compressor.glade
 data/ui/filter.glade
 data/ui/equalizer.glade
 data/ui/equalizer_band.glade
+data/ui/equalizer_preset_row.glade
 data/ui/reverb.glade
 data/ui/bass_enhancer.glade
 data/ui/exciter.glade
