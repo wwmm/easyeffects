@@ -17,6 +17,7 @@ allows the application of a smaller intensity to high frequencies.
 
 ### Fixed
 - Icon is properly rendered in QT environments
+- Custom spectrum height is applied on startup
 
 ## [4.4.7]
 ### Added
