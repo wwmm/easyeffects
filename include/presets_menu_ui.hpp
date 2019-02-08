@@ -41,11 +41,13 @@ class PresetsMenuUi : public Gtk::Grid {
 
   enum class PresetType { input, output };
 
+  void create_preset(PresetType preset_type);
+
+  void import_preset(PresetType preset_type);
+
   void populate_listbox(PresetType preset_type);
 
   int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
-
-  void on_import_output_clicked();
 };
 
 #endif

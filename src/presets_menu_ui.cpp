@@ -26,28 +26,20 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   output_listbox->set_sort_func(
       sigc::mem_fun(*this, &PresetsMenuUi::on_listbox_sort));
 
-  add_output->signal_clicked().connect([=]() {
-    auto name = output_name->get_text();
-    if (!name.empty()) {
-      std::string illegalChars = "\\/\0";
+  input_listbox->set_sort_func(
+      sigc::mem_fun(*this, &PresetsMenuUi::on_listbox_sort));
 
-      for (auto it = name.begin(); it < name.end(); ++it) {
-        bool found = illegalChars.find(*it) != std::string::npos;
-        if (found) {
-          output_name->set_text("");
-          return;
-        }
-      }
+  add_output->signal_clicked().connect(
+      [=]() { create_preset(PresetType::output); });
 
-      app->presets_manager->add(name);
-      output_name->set_text("");
-
-      populate_listbox(PresetType::output);
-    }
-  });
+  add_input->signal_clicked().connect(
+      [=]() { create_preset(PresetType::input); });
 
   import_output->signal_clicked().connect(
-      sigc::mem_fun(*this, &PresetsMenuUi::on_import_output_clicked));
+      [=]() { import_preset(PresetType::output); });
+
+  import_input->signal_clicked().connect(
+      [=]() { import_preset(PresetType::input); });
 }
 
 PresetsMenuUi::~PresetsMenuUi() {
@@ -74,36 +66,45 @@ PresetsMenuUi* PresetsMenuUi::add_to_popover(Gtk::Popover* popover,
   return ui;
 }
 
-int PresetsMenuUi::on_listbox_sort(Gtk::ListBoxRow* row1,
-                                   Gtk::ListBoxRow* row2) {
-  auto name1 = row1->get_name();
-  auto name2 = row2->get_name();
+void PresetsMenuUi::create_preset(PresetType preset_type) {
+  std::string name;
 
-  std::vector<std::string> names = {name1, name2};
-
-  std::sort(names.begin(), names.end());
-
-  if (name1 == names[0]) {
-    return -1;
-  } else if (name2 == names[0]) {
-    return 1;
+  if (preset_type == PresetType::output) {
+    name = output_name->get_text();
   } else {
-    return 0;
+    name = input_name->get_text();
+  }
+
+  if (!name.empty()) {
+    std::string illegalChars = "\\/\0";
+
+    for (auto it = name.begin(); it < name.end(); ++it) {
+      bool found = illegalChars.find(*it) != std::string::npos;
+
+      if (found) {
+        if (preset_type == PresetType::output) {
+          output_name->set_text("");
+        } else {
+          input_name->set_text("");
+        }
+
+        return;
+      }
+    }
+
+    if (preset_type == PresetType::output) {
+      app->presets_manager->add(name);
+      output_name->set_text("");
+    } else {
+      // app->presets_manager->add(name);
+      input_name->set_text("");
+    }
+
+    populate_listbox(preset_type);
   }
 }
 
-void PresetsMenuUi::on_presets_menu_button_clicked() {
-  Gtk::ApplicationWindow* parent =
-      dynamic_cast<Gtk::ApplicationWindow*>(this->get_toplevel());
-
-  int height = 0.7 * parent->get_allocated_height();
-
-  output_scrolled_window->set_max_content_height(height);
-
-  populate_listbox(PresetType::output);
-}
-
-void PresetsMenuUi::on_import_output_clicked() {
+void PresetsMenuUi::import_preset(PresetType preset_type) {
   // gtkmm 3.22 does not have FileChooseNative so we have to use C api :-(
 
   gint res;
@@ -133,7 +134,7 @@ void PresetsMenuUi::on_import_output_clicked() {
 
                       auto file_path = static_cast<char*>(data);
 
-                      aui->app->presets_manager->import(file_path);
+                      // aui->app->presets_manager->import(file_path);
                     },
                     this);
 
@@ -142,7 +143,36 @@ void PresetsMenuUi::on_import_output_clicked() {
 
   g_object_unref(dialog);
 
-  populate_listbox(PresetType::input);
+  populate_listbox(preset_type);
+}
+
+int PresetsMenuUi::on_listbox_sort(Gtk::ListBoxRow* row1,
+                                   Gtk::ListBoxRow* row2) {
+  auto name1 = row1->get_name();
+  auto name2 = row2->get_name();
+
+  std::vector<std::string> names = {name1, name2};
+
+  std::sort(names.begin(), names.end());
+
+  if (name1 == names[0]) {
+    return -1;
+  } else if (name2 == names[0]) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+void PresetsMenuUi::on_presets_menu_button_clicked() {
+  Gtk::ApplicationWindow* parent =
+      dynamic_cast<Gtk::ApplicationWindow*>(this->get_toplevel());
+
+  int height = 0.7 * parent->get_allocated_height();
+
+  output_scrolled_window->set_max_content_height(height);
+
+  populate_listbox(PresetType::output);
 }
 
 void PresetsMenuUi::populate_listbox(PresetType preset_type) {
