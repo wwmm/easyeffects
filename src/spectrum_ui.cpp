@@ -38,6 +38,8 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject,
   settings->bind("show-spectrum", this, "visible", flag_get);
 
   init_custom_color();
+
+  spectrum->set_size_request(-1, settings->get_int("spectrum-height"));
 }
 
 SpectrumUi::~SpectrumUi() {
