@@ -13,7 +13,7 @@ depends=(gtk3 gtkmm3 glibmm libpulse gstreamer gst-plugins-good gst-plugins-bad
 optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
             'zam-plugins: maximizer'
             'rubberband: pitch shifting'
-            'lsp-plugins: delay'
+            'lsp-plugins: equalizer, delay'
             'mda.lv2: loudness')
 makedepends=('meson' 'boost' 'itstool')
 options=(!emptydirs)

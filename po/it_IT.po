@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-07 17:05-0200\n"
+"POT-Creation-Date: 2019-02-08 12:32-0200\n"
 "PO-Revision-Date: 2018-12-31 13:07+0100\n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -119,8 +119,8 @@ msgid "Start Service at Login"
 msgstr "Avvio Servizio all'Accesso"
 
 #: data/ui/general_settings.glade:56
-msgid "Enable All Applications"
-msgstr "Abilita Tutte le Applicazioni"
+msgid "Process All Outputs"
+msgstr ""
 
 #: data/ui/general_settings.glade:81
 msgid "Use Dark Theme"
@@ -131,29 +131,33 @@ msgstr "Usa Tema Scuro"
 msgid "Reset"
 msgstr "Azzera"
 
-#: data/ui/general_settings.glade:146
-msgid "Priority"
-msgstr "Priorità"
-
-#: data/ui/general_settings.glade:160 data/ui/general_settings.glade:186
+#: data/ui/general_settings.glade:133 data/ui/general_settings.glade:206
 msgid "Niceness"
 msgstr "Affinità"
 
-#: data/ui/general_settings.glade:187
+#: data/ui/general_settings.glade:134
 msgid "Real Time"
 msgstr "Tempo Reale"
 
-#: data/ui/general_settings.glade:188
+#: data/ui/general_settings.glade:135
 msgid "None"
 msgstr "Nessuno"
 
-#: data/ui/general_settings.glade:204
+#: data/ui/general_settings.glade:151
 msgid "Priority Type"
 msgstr "Tipo di Priorità"
 
-#: data/ui/general_settings.glade:214
+#: data/ui/general_settings.glade:161
 msgid "About"
 msgstr "Info"
+
+#: data/ui/general_settings.glade:180
+msgid "Process All Inputs"
+msgstr ""
+
+#: data/ui/general_settings.glade:232
+msgid "Priority"
+msgstr "Priorità"
 
 #: data/ui/about.glade.in:11
 msgid "Audio effects for PulseAudio applications"
@@ -695,8 +699,8 @@ msgstr "Ampiezza"
 msgid "Mute"
 msgstr "Muto"
 
-#: data/ui/equalizer_preset_row.glade:37 data/ui/irs_row.glade:57
-#: data/ui/preset_row.glade:73
+#: data/ui/equalizer_preset_row.glade:37 data/ui/irs_row.glade:62
+#: data/ui/preset_row.glade:84
 msgid "Apply"
 msgstr ""
 
@@ -1029,10 +1033,6 @@ msgstr "Ampiezza Stereo"
 msgid "Block Size"
 msgstr "Dimensione Blocco"
 
-#: data/ui/irs_row.glade:37 data/ui/preset_row.glade:37
-msgid "Remove"
-msgstr ""
-
 #: data/ui/crystalizer.glade:24
 msgid "Crystalizer"
 msgstr "Cristallizza"
@@ -1158,10 +1158,6 @@ msgstr "Rilevatore Voce"
 #: data/ui/delay.glade:24
 msgid "Delay"
 msgstr "Ritardo"
-
-#: data/ui/preset_row.glade:57
-msgid "Save"
-msgstr ""
 
 #: data/ui/presets_menu.glade:61 src/presets_menu_ui.cpp:108
 msgid "Import Presets"
@@ -1316,7 +1312,7 @@ msgstr "limitatore;compressore;riverbero;equalizzatore;volumeauto;"
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:225
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:228
 msgid "\"Presets\""
 msgstr "\"Profili\""
 
@@ -1368,7 +1364,7 @@ msgstr "Applicazioni"
 msgid "Blacklist"
 msgstr "Blacklist"
 
-#: src/general_settings_ui.cpp:135
+#: src/general_settings_ui.cpp:139
 msgid "General"
 msgstr "Generale"
 
@@ -1411,6 +1407,9 @@ msgstr "Impossibile Caricare File Impulso"
 #: src/equalizer_ui.cpp:339 src/equalizer_ui.cpp:477
 msgid "infinity"
 msgstr ""
+
+#~ msgid "Enable All Applications"
+#~ msgstr "Abilita Tutte le Applicazioni"
 
 #~ msgid "Q"
 #~ msgstr "Q"

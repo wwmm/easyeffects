@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-07 17:05-0200\n"
+"POT-Creation-Date: 2019-02-08 12:32-0200\n"
 "PO-Revision-Date: 2019-01-17 18:30+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -118,8 +118,8 @@ msgid "Start Service at Login"
 msgstr "Mulai Layanan Saat Startup"
 
 #: data/ui/general_settings.glade:56
-msgid "Enable All Applications"
-msgstr "Terapkan Efek pada Semua Aplikasi"
+msgid "Process All Outputs"
+msgstr ""
 
 #: data/ui/general_settings.glade:81
 msgid "Use Dark Theme"
@@ -130,29 +130,33 @@ msgstr "Gunakan Tema Gelap"
 msgid "Reset"
 msgstr "Atur Ulang"
 
-#: data/ui/general_settings.glade:146
-msgid "Priority"
-msgstr "Prioritas"
-
-#: data/ui/general_settings.glade:160 data/ui/general_settings.glade:186
+#: data/ui/general_settings.glade:133 data/ui/general_settings.glade:206
 msgid "Niceness"
 msgstr "Sempurna"
 
-#: data/ui/general_settings.glade:187
+#: data/ui/general_settings.glade:134
 msgid "Real Time"
 msgstr "Waktu Sebenarnya"
 
-#: data/ui/general_settings.glade:188
+#: data/ui/general_settings.glade:135
 msgid "None"
 msgstr "Biarkan"
 
-#: data/ui/general_settings.glade:204
+#: data/ui/general_settings.glade:151
 msgid "Priority Type"
 msgstr "Atur Prioritas"
 
-#: data/ui/general_settings.glade:214
+#: data/ui/general_settings.glade:161
 msgid "About"
 msgstr "Tentang aplikasi"
+
+#: data/ui/general_settings.glade:180
+msgid "Process All Inputs"
+msgstr ""
+
+#: data/ui/general_settings.glade:232
+msgid "Priority"
+msgstr "Prioritas"
 
 #: data/ui/about.glade.in:11
 msgid "Audio effects for PulseAudio applications"
@@ -695,8 +699,8 @@ msgstr "Lebar"
 msgid "Mute"
 msgstr "Bungkam"
 
-#: data/ui/equalizer_preset_row.glade:37 data/ui/irs_row.glade:57
-#: data/ui/preset_row.glade:73
+#: data/ui/equalizer_preset_row.glade:37 data/ui/irs_row.glade:62
+#: data/ui/preset_row.glade:84
 msgid "Apply"
 msgstr ""
 
@@ -1029,10 +1033,6 @@ msgstr "Lebar Stereo"
 msgid "Block Size"
 msgstr "Ukuran Blok"
 
-#: data/ui/irs_row.glade:37 data/ui/preset_row.glade:37
-msgid "Remove"
-msgstr ""
-
 #: data/ui/crystalizer.glade:24
 msgid "Crystalizer"
 msgstr "Pengkristal Suara"
@@ -1159,10 +1159,6 @@ msgstr "Pelacak Vokal"
 #, fuzzy
 msgid "Delay"
 msgstr "Pra Tunda"
-
-#: data/ui/preset_row.glade:57
-msgid "Save"
-msgstr ""
 
 #: data/ui/presets_menu.glade:61 src/presets_menu_ui.cpp:108
 msgid "Import Presets"
@@ -1313,7 +1309,7 @@ msgstr "limiter;compressor;reverberation;equalizer;autovolume;"
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:225
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:228
 msgid "\"Presets\""
 msgstr "Preset"
 
@@ -1365,7 +1361,7 @@ msgstr "Aplikasi"
 msgid "Blacklist"
 msgstr "Daftar Blokir"
 
-#: src/general_settings_ui.cpp:135
+#: src/general_settings_ui.cpp:139
 msgid "General"
 msgstr "Umum"
 
@@ -1408,6 +1404,9 @@ msgstr "Tidak dapat Memuat Berkas Impuls"
 #: src/equalizer_ui.cpp:339 src/equalizer_ui.cpp:477
 msgid "infinity"
 msgstr ""
+
+#~ msgid "Enable All Applications"
+#~ msgstr "Terapkan Efek pada Semua Aplikasi"
 
 #~ msgid "Q"
 #~ msgstr "Q"

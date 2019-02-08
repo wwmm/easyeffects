@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2019-02-06 18:20-0200\n"
+"POT-Creation-Date: 2019-02-08 12:32-0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -1717,36 +1717,53 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/general.page:23
-msgid "Enable All Applications"
-msgstr "Habilitar Todos os Aplicativos"
+msgid "Process All Outputs"
+msgstr "Processar Todas as Saídas"
 
 #. (itstool) path: item/p
 #: C/general.page:25
 msgid ""
-"Apply effects to all audio applications. This will automatically switch on "
-"the per application switch that can be seen in the Applications entry."
+"Apply effects to the output of all audio applications. This will "
+"automatically switch on the per application switch that can be seen in the "
+"Applications entry."
 msgstr ""
-"Aplique efeitos a todos os aplicativos de áudio. Isso ativará "
+"Aplicar efeitos na saída de todos os aplicativos de áudio. Isso ativará "
 "automaticamente o interruptor de cada aplicativo que pode ser vista na "
 "entrada Aplicativos."
 
 #. (itstool) path: title/em
 #: C/general.page:32
+msgid "Process All Inputs"
+msgstr "Processar Todas as Entradas"
+
+#. (itstool) path: item/p
+#: C/general.page:34
+msgid ""
+"Apply effects to the input(microphone) of all audio applications. This will "
+"automatically switch on the per application switch that can be seen in the "
+"Applications entry."
+msgstr ""
+"Aplicar efeitos na entrada de todos os aplicativos de áudio. Isso ativará "
+"automaticamente o interruptor de cada aplicativo que pode ser vista na "
+"entrada Aplicativos."
+
+#. (itstool) path: title/em
+#: C/general.page:42
 msgid "Use Dark Theme"
 msgstr "Usar Tema Escuro"
 
 #. (itstool) path: item/p
-#: C/general.page:34
+#: C/general.page:44
 msgid "Use the dark version of the GTK theme."
 msgstr "Usar a variante escura do tema GTK."
 
 #. (itstool) path: title/em
-#: C/general.page:40
+#: C/general.page:50
 msgid "Reset"
 msgstr "Resetar"
 
 #. (itstool) path: item/p
-#: C/general.page:42
+#: C/general.page:52
 msgid ""
 "Reset all parameters to their default values. This will reset the plugins "
 "too."
@@ -1755,12 +1772,12 @@ msgstr ""
 "plugins também."
 
 #. (itstool) path: title/em
-#: C/general.page:48
+#: C/general.page:58
 msgid "Priority type"
 msgstr "Tipo de Prioridade"
 
 #. (itstool) path: item/p
-#: C/general.page:50
+#: C/general.page:60
 msgid ""
 "Choose between real time mode, niceness or none. This parameter allows to "
 "choose a higher priority for the threads that process audio."
@@ -1770,22 +1787,22 @@ msgstr ""
 "áudio."
 
 #. (itstool) path: title/em
-#: C/general.page:57
+#: C/general.page:67
 msgid "Niceness"
 msgstr "Gentileza"
 
 #. (itstool) path: item/p
-#: C/general.page:59
+#: C/general.page:69
 msgid "Niceness value."
 msgstr "Valor da gentileza."
 
 #. (itstool) path: title/em
-#: C/general.page:65
+#: C/general.page:75
 msgid "Priority"
 msgstr "Prioridade"
 
 #. (itstool) path: item/p
-#: C/general.page:67
+#: C/general.page:77
 msgid "Real time priority."
 msgstr "Prioridade em tempo real."
 
@@ -2230,6 +2247,9 @@ msgstr ""
 "específico seja excluído da funcionalidade \"Ativar tudo\". Isso pode ser "
 "feito usando uma lista negra. Basta adicionar o nome do aplicativo "
 "exatamente como é mostrado na entrada \"Aplicativos\"."
+
+#~ msgid "Enable All Applications"
+#~ msgstr "Habilitar Todos os Aplicativos"
 
 #~ msgid "Bandwidth."
 #~ msgstr "Largura de banda."

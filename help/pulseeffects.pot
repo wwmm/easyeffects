@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-02-06 18:20-0200\n"
+"POT-Creation-Date: 2019-02-08 12:32-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1482,61 +1482,71 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/general.page:23
-msgid "Enable All Applications"
+msgid "Process All Outputs"
 msgstr ""
 
 #. (itstool) path: item/p
 #: C/general.page:25
-msgid "Apply effects to all audio applications. This will automatically switch on the per application switch that can be seen in the Applications entry."
+msgid "Apply effects to the output of all audio applications. This will automatically switch on the per application switch that can be seen in the Applications entry."
 msgstr ""
 
 #. (itstool) path: title/em
 #: C/general.page:32
-msgid "Use Dark Theme"
+msgid "Process All Inputs"
 msgstr ""
 
 #. (itstool) path: item/p
 #: C/general.page:34
+msgid "Apply effects to the input(microphone) of all audio applications. This will automatically switch on the per application switch that can be seen in the Applications entry."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/general.page:42
+msgid "Use Dark Theme"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/general.page:44
 msgid "Use the dark version of the GTK theme."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/general.page:40
+#: C/general.page:50
 msgid "Reset"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/general.page:42
+#: C/general.page:52
 msgid "Reset all parameters to their default values. This will reset the plugins too."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/general.page:48
+#: C/general.page:58
 msgid "Priority type"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/general.page:50
+#: C/general.page:60
 msgid "Choose between real time mode, niceness or none. This parameter allows to choose a higher priority for the threads that process audio."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/general.page:57
+#: C/general.page:67
 msgid "Niceness"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/general.page:59
+#: C/general.page:69
 msgid "Niceness value."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/general.page:65
+#: C/general.page:75
 msgid "Priority"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/general.page:67
+#: C/general.page:77
 msgid "Real time priority."
 msgstr ""
 
