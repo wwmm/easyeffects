@@ -8,6 +8,10 @@ of the one from Gstreamer. Reason: it has more features and supports different
 settings for each channel natively. Besides the usual high-pass and low-pass
 it has a notch and a resonant filter. It is also possible to mute
  each band and change its filter slope.
+ - The `Enable All Apps` function was split in two. We now have
+ `Process All Outputs` and `Process All Inputs`. This way the user can choose
+ to automatically apply effects to the output of all apps while manually choosing
+ which ones will have their input processed.
 
 ### Added
 - Remember window size.

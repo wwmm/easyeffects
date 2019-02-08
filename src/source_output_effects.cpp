@@ -153,9 +153,10 @@ void SourceOutputEffects::on_app_added(
     const std::shared_ptr<AppInfo>& app_info) {
   PipelineBase::on_app_added(app_info);
 
-  auto enable_all_apps = g_settings_get_boolean(settings, "enable-all-apps");
+  auto enable_all =
+      g_settings_get_boolean(settings, "enable-all-sourceoutputs");
 
-  if (enable_all_apps && !app_info->connected) {
+  if (enable_all && !app_info->connected) {
     pm->move_source_output_to_pulseeffects(app_info->name, app_info->index);
   }
 }

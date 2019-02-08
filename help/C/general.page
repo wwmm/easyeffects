@@ -20,11 +20,21 @@
         </item>
         <item>
             <title id="title_enable_all_apps">
-                <em style="strong" its:withinText="nested">Enable All Applications</em>
+                <em style="strong" its:withinText="nested">Process All Outputs</em>
             </title>
             <p>
-                Apply effects to all audio applications. This will automatically switch on the
-                per application switch that can be seen in the Applications entry.
+                Apply effects to the output of all audio applications. This will automatically
+                switch on the per application switch that can be seen in the Applications entry.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Process All Inputs</em>
+            </title>
+            <p>
+                Apply effects to the input(microphone) of all audio applications. This will
+                automatically switch on the per application switch that can be seen in the
+                Applications entry.
             </p>
         </item>
         <item>

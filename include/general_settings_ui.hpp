@@ -31,7 +31,8 @@ class GeneralSettingsUi : public Gtk::Grid {
 
   Application* app;
 
-  Gtk::Switch *enable_autostart, *enable_all_apps, *theme_switch;
+  Gtk::Switch *enable_autostart, *enable_all_sinkinputs,
+      *enable_all_sourceoutputs, *theme_switch;
   Gtk::Button *reset_settings, *about_button;
   Gtk::SpinButton *realtime_priority_control, *niceness_control;
   Gtk::ComboBoxText* priority_type;

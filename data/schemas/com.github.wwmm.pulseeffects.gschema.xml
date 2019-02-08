@@ -209,8 +209,11 @@
             <range min="1" max="200"/>
             <default>10</default>
         </key>
-        <key name="enable-all-apps" type="b">
+        <key name="enable-all-sinkinputs" type="b">
             <default>true</default>
+        </key>
+        <key name="enable-all-sourceoutputs" type="b">
+            <default>false</default>
         </key>
         <key name="use-dark-theme" type="b">
             <default>false</default>

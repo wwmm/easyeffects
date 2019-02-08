@@ -48,7 +48,8 @@ GeneralSettingsUi::GeneralSettingsUi(
 
   builder->get_widget("theme_switch", theme_switch);
   builder->get_widget("enable_autostart", enable_autostart);
-  builder->get_widget("enable_all_apps", enable_all_apps);
+  builder->get_widget("enable_all_sinkinputs", enable_all_sinkinputs);
+  builder->get_widget("enable_all_sourceoutputs", enable_all_sourceoutputs);
   builder->get_widget("reset_settings", reset_settings);
   builder->get_widget("about_button", about_button);
   builder->get_widget("realtime_priority", realtime_priority_control);
@@ -101,7 +102,10 @@ GeneralSettingsUi::GeneralSettingsUi(
   auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
   settings->bind("use-dark-theme", theme_switch, "active", flag);
-  settings->bind("enable-all-apps", enable_all_apps, "active", flag);
+  settings->bind("enable-all-sinkinputs", enable_all_sinkinputs, "active",
+                 flag);
+  settings->bind("enable-all-sourceoutputs", enable_all_sourceoutputs, "active",
+                 flag);
   settings->bind("realtime-priority", adjustment_priority.get(), "value", flag);
   settings->bind("niceness", adjustment_niceness.get(), "value", flag);
 
