@@ -44,10 +44,12 @@ void AutoGainPreset::load(boost::property_tree::ptree& root,
   update_key<int>(root, settings, "weight-i", section + ".autogain.weight-i");
 }
 
-void AutoGainPreset::write(boost::property_tree::ptree& root) {
+void AutoGainPreset::write(PresetType preset_type,
+                           boost::property_tree::ptree& root) {
   save(root, "output", output_settings);
 }
 
-void AutoGainPreset::read(boost::property_tree::ptree& root) {
+void AutoGainPreset::read(PresetType preset_type,
+                          boost::property_tree::ptree& root) {
   load(root, "output", output_settings);
 }

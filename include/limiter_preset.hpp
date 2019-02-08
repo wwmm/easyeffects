@@ -7,8 +7,9 @@ class LimiterPreset : public PluginPresetBase {
  public:
   LimiterPreset();
 
-  void write(boost::property_tree::ptree& root) override;
-  void read(boost::property_tree::ptree& root) override;
+  void write(PresetType preset_type,
+             boost::property_tree::ptree& root) override;
+  void read(PresetType preset_type, boost::property_tree::ptree& root) override;
 
  private:
   Glib::RefPtr<Gio::Settings> input_settings, output_settings;

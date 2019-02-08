@@ -78,7 +78,7 @@ std::vector<std::string> PresetsManager::get_names() {
   return names;
 }
 
-void PresetsManager::add(const std::string& name) {
+void PresetsManager::add(PresetType preset_type, const std::string& name) {
   bool add_preset = true;
 
   for (auto p : get_names()) {
@@ -88,7 +88,7 @@ void PresetsManager::add(const std::string& name) {
   }
 
   if (add_preset) {
-    save(name);
+    save(preset_type, name);
   }
 }
 
@@ -213,7 +213,7 @@ void PresetsManager::load_general_settings(boost::property_tree::ptree& root) {
   }
 }
 
-void PresetsManager::save(const std::string& name) {
+void PresetsManager::save(PresetType preset_type, const std::string& name) {
   boost::property_tree::ptree root, node_in, node_out;
 
   save_general_settings(root);
@@ -239,27 +239,27 @@ void PresetsManager::save(const std::string& name) {
   root.add_child("input.plugins_order", node_in);
   root.add_child("output.plugins_order", node_out);
 
-  bass_enhancer->write(root);
-  compressor->write(root);
-  crossfeed->write(root);
-  deesser->write(root);
-  equalizer->write(root);
-  exciter->write(root);
-  filter->write(root);
-  gate->write(root);
-  limiter->write(root);
-  maximizer->write(root);
-  pitch->write(root);
-  reverb->write(root);
-  webrtc->write(root);
-  multiband_compressor->write(root);
-  loudness->write(root);
-  multiband_gate->write(root);
-  stereo_tools->write(root);
-  convolver->write(root);
-  crystalizer->write(root);
-  autogain->write(root);
-  delay->write(root);
+  bass_enhancer->write(preset_type, root);
+  compressor->write(preset_type, root);
+  crossfeed->write(preset_type, root);
+  deesser->write(preset_type, root);
+  equalizer->write(preset_type, root);
+  exciter->write(preset_type, root);
+  filter->write(preset_type, root);
+  gate->write(preset_type, root);
+  limiter->write(preset_type, root);
+  maximizer->write(preset_type, root);
+  pitch->write(preset_type, root);
+  reverb->write(preset_type, root);
+  webrtc->write(preset_type, root);
+  multiband_compressor->write(preset_type, root);
+  loudness->write(preset_type, root);
+  multiband_gate->write(preset_type, root);
+  stereo_tools->write(preset_type, root);
+  convolver->write(preset_type, root);
+  crystalizer->write(preset_type, root);
+  autogain->write(preset_type, root);
+  delay->write(preset_type, root);
 
   auto output_file = presets_dir / boost::filesystem::path{name + ".json"};
 
@@ -268,7 +268,7 @@ void PresetsManager::save(const std::string& name) {
   util::debug(log_tag + "saved preset: " + output_file.string());
 }
 
-void PresetsManager::remove(const std::string& name) {
+void PresetsManager::remove(PresetType preset_type, const std::string& name) {
   auto preset_file = presets_dir / boost::filesystem::path{name + ".json"};
 
   if (boost::filesystem::exists(preset_file)) {
@@ -278,7 +278,7 @@ void PresetsManager::remove(const std::string& name) {
   }
 }
 
-void PresetsManager::load(const std::string& name) {
+void PresetsManager::load(PresetType preset_type, const std::string& name) {
   boost::property_tree::ptree root;
   std::vector<std::string> input_plugins, output_plugins;
 
@@ -347,32 +347,33 @@ void PresetsManager::load(const std::string& name) {
   soe_settings->set_string_array("plugins", input_plugins);
   sie_settings->set_string_array("plugins", output_plugins);
 
-  bass_enhancer->read(root);
-  compressor->read(root);
-  crossfeed->read(root);
-  deesser->read(root);
-  equalizer->read(root);
-  exciter->read(root);
-  filter->read(root);
-  gate->read(root);
-  limiter->read(root);
-  maximizer->read(root);
-  pitch->read(root);
-  reverb->read(root);
-  webrtc->read(root);
-  multiband_compressor->read(root);
-  loudness->read(root);
-  multiband_gate->read(root);
-  stereo_tools->read(root);
-  convolver->read(root);
-  crystalizer->read(root);
-  autogain->read(root);
-  delay->read(root);
+  bass_enhancer->read(preset_type, root);
+  compressor->read(preset_type, root);
+  crossfeed->read(preset_type, root);
+  deesser->read(preset_type, root);
+  equalizer->read(preset_type, root);
+  exciter->read(preset_type, root);
+  filter->read(preset_type, root);
+  gate->read(preset_type, root);
+  limiter->read(preset_type, root);
+  maximizer->read(preset_type, root);
+  pitch->read(preset_type, root);
+  reverb->read(preset_type, root);
+  webrtc->read(preset_type, root);
+  multiband_compressor->read(preset_type, root);
+  loudness->read(preset_type, root);
+  multiband_gate->read(preset_type, root);
+  stereo_tools->read(preset_type, root);
+  convolver->read(preset_type, root);
+  crystalizer->read(preset_type, root);
+  autogain->read(preset_type, root);
+  delay->read(preset_type, root);
 
   util::debug(log_tag + "loaded preset: " + input_file.string());
 }
 
-void PresetsManager::import(const std::string& file_path) {
+void PresetsManager::import(PresetType preset_type,
+                            const std::string& file_path) {
   boost::filesystem::path p{file_path};
 
   if (boost::filesystem::is_regular_file(p)) {

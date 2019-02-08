@@ -82,10 +82,12 @@ void CrystalizerPreset::load(boost::property_tree::ptree& root,
                      section + ".crystalizer.volume-high");
 }
 
-void CrystalizerPreset::write(boost::property_tree::ptree& root) {
+void CrystalizerPreset::write(PresetType preset_type,
+                              boost::property_tree::ptree& root) {
   save(root, "output", output_settings);
 }
 
-void CrystalizerPreset::read(boost::property_tree::ptree& root) {
+void CrystalizerPreset::read(PresetType preset_type,
+                             boost::property_tree::ptree& root) {
   load(root, "output", output_settings);
 }

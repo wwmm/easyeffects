@@ -23,6 +23,7 @@
 #include "multiband_compressor_preset.hpp"
 #include "multiband_gate_preset.hpp"
 #include "pitch_preset.hpp"
+#include "preset_type.hpp"
 #include "reverb_preset.hpp"
 #include "stereo_tools_preset.hpp"
 #include "webrtc_preset.hpp"
@@ -33,11 +34,11 @@ class PresetsManager {
   virtual ~PresetsManager();
 
   std::vector<std::string> get_names();
-  void add(const std::string& name);
-  void save(const std::string& name);
-  void remove(const std::string& name);
-  void load(const std::string& name);
-  void import(const std::string& file_path);
+  void add(PresetType preset_type, const std::string& name);
+  void save(PresetType preset_type, const std::string& name);
+  void remove(PresetType preset_type, const std::string& name);
+  void load(PresetType preset_type, const std::string& name);
+  void import(PresetType preset_type, const std::string& file_path);
 
  private:
   std::string log_tag = "presets_manager: ";

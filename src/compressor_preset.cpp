@@ -61,12 +61,14 @@ void CompressorPreset::load(boost::property_tree::ptree& root,
   update_key<double>(root, settings, "makeup", section + ".compressor.makeup");
 }
 
-void CompressorPreset::write(boost::property_tree::ptree& root) {
+void CompressorPreset::write(PresetType preset_type,
+                             boost::property_tree::ptree& root) {
   save(root, "input", input_settings);
   save(root, "output", output_settings);
 }
 
-void CompressorPreset::read(boost::property_tree::ptree& root) {
+void CompressorPreset::read(PresetType preset_type,
+                            boost::property_tree::ptree& root) {
   load(root, "input", input_settings);
   load(root, "output", output_settings);
 }

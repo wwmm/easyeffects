@@ -68,12 +68,14 @@ void DeesserPreset::load(boost::property_tree::ptree& root,
   update_key<bool>(root, settings, "sc-listen", section + ".deesser.sc-listen");
 }
 
-void DeesserPreset::write(boost::property_tree::ptree& root) {
+void DeesserPreset::write(PresetType preset_type,
+                          boost::property_tree::ptree& root) {
   save(root, "input", input_settings);
   save(root, "output", output_settings);
 }
 
-void DeesserPreset::read(boost::property_tree::ptree& root) {
+void DeesserPreset::read(PresetType preset_type,
+                         boost::property_tree::ptree& root) {
   load(root, "input", input_settings);
   load(root, "output", output_settings);
 }

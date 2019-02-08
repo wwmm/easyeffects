@@ -43,10 +43,12 @@ void ConvolverPreset::load(boost::property_tree::ptree& root,
                     section + ".convolver.blocksize");
 }
 
-void ConvolverPreset::write(boost::property_tree::ptree& root) {
+void ConvolverPreset::write(PresetType preset_type,
+                            boost::property_tree::ptree& root) {
   save(root, "output", output_settings);
 }
 
-void ConvolverPreset::read(boost::property_tree::ptree& root) {
+void ConvolverPreset::read(PresetType preset_type,
+                           boost::property_tree::ptree& root) {
   load(root, "output", output_settings);
 }

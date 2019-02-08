@@ -93,12 +93,13 @@ void PresetsMenuUi::create_preset(PresetType preset_type) {
     }
 
     if (preset_type == PresetType::output) {
-      app->presets_manager->add(name);
       output_name->set_text("");
     } else {
       // app->presets_manager->add(name);
       input_name->set_text("");
     }
+
+    app->presets_manager->add(preset_type, name);
 
     populate_listbox(preset_type);
   }
@@ -128,15 +129,31 @@ void PresetsMenuUi::import_preset(PresetType preset_type) {
 
     auto file_list = gtk_file_chooser_get_filenames(chooser);
 
-    g_slist_foreach(file_list,
-                    [](auto data, auto user_data) {
-                      auto aui = static_cast<PresetsMenuUi*>(user_data);
+    if (preset_type == PresetType::input) {
+      g_slist_foreach(file_list,
+                      [](auto data, auto user_data) {
+                        auto aui = static_cast<PresetsMenuUi*>(user_data);
 
-                      auto file_path = static_cast<char*>(data);
+                        auto file_path = static_cast<char*>(data);
 
-                      // aui->app->presets_manager->import(file_path);
-                    },
-                    this);
+                        aui->app->presets_manager->import(PresetType::input,
+                                                          file_path);
+                      },
+                      this);
+    }
+
+    if (preset_type == PresetType::output) {
+      g_slist_foreach(file_list,
+                      [](auto data, auto user_data) {
+                        auto aui = static_cast<PresetsMenuUi*>(user_data);
+
+                        auto file_path = static_cast<char*>(data);
+
+                        aui->app->presets_manager->import(PresetType::output,
+                                                          file_path);
+                      },
+                      this);
+    }
 
     g_slist_free(file_list);
   }
@@ -172,6 +189,7 @@ void PresetsMenuUi::on_presets_menu_button_clicked() {
 
   output_scrolled_window->set_max_content_height(height);
 
+  populate_listbox(PresetType::input);
   populate_listbox(PresetType::output);
 }
 
@@ -215,27 +233,14 @@ void PresetsMenuUi::populate_listbox(PresetType preset_type) {
     connections.push_back(apply_btn->signal_clicked().connect([=]() {
       settings->set_string("last-used-preset", row->get_name());
 
-      if (preset_type == PresetType::output) {
-        app->presets_manager->load(row->get_name());
-      } else {
-        // app->presets_manager->load(row->get_name());
-      }
+      app->presets_manager->load(preset_type, row->get_name());
     }));
 
-    connections.push_back(save_btn->signal_clicked().connect([=]() {
-      if (preset_type == PresetType::output) {
-        app->presets_manager->save(name);
-      } else {
-        // app->presets_manager->save(name);
-      }
-    }));
+    connections.push_back(save_btn->signal_clicked().connect(
+        [=]() { app->presets_manager->save(preset_type, name); }));
 
     connections.push_back(remove_btn->signal_clicked().connect([=]() {
-      if (preset_type == PresetType::output) {
-        app->presets_manager->remove(name);
-      } else {
-        app->presets_manager->remove(name);
-      }
+      app->presets_manager->remove(preset_type, name);
 
       populate_listbox(preset_type);
     }));

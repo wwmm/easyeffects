@@ -68,12 +68,14 @@ void ReverbPreset::load(boost::property_tree::ptree& root,
                      section + ".reverb.treble-cut");
 }
 
-void ReverbPreset::write(boost::property_tree::ptree& root) {
+void ReverbPreset::write(PresetType preset_type,
+                         boost::property_tree::ptree& root) {
   save(root, "input", input_settings);
   save(root, "output", output_settings);
 }
 
-void ReverbPreset::read(boost::property_tree::ptree& root) {
+void ReverbPreset::read(PresetType preset_type,
+                        boost::property_tree::ptree& root) {
   load(root, "input", input_settings);
   load(root, "output", output_settings);
 }

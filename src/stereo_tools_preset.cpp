@@ -111,10 +111,12 @@ void StereoToolsPreset::load(boost::property_tree::ptree& root,
                      section + ".stereo_tools.stereo-phase");
 }
 
-void StereoToolsPreset::write(boost::property_tree::ptree& root) {
+void StereoToolsPreset::write(PresetType preset_type,
+                              boost::property_tree::ptree& root) {
   save(root, "output", output_settings);
 }
 
-void StereoToolsPreset::read(boost::property_tree::ptree& root) {
+void StereoToolsPreset::read(PresetType preset_type,
+                             boost::property_tree::ptree& root) {
   load(root, "output", output_settings);
 }

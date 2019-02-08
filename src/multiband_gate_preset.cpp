@@ -305,12 +305,14 @@ void MultibandGatePreset::load(boost::property_tree::ptree& root,
                    section + ".multiband_gate.highband.solo");
 }
 
-void MultibandGatePreset::write(boost::property_tree::ptree& root) {
+void MultibandGatePreset::write(PresetType preset_type,
+                                boost::property_tree::ptree& root) {
   save(root, "input", input_settings);
   save(root, "output", output_settings);
 }
 
-void MultibandGatePreset::read(boost::property_tree::ptree& root) {
+void MultibandGatePreset::read(PresetType preset_type,
+                               boost::property_tree::ptree& root) {
   load(root, "input", input_settings);
   load(root, "output", output_settings);
 }

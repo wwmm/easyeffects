@@ -33,10 +33,12 @@ void DelayPreset::load(boost::property_tree::ptree& root,
   update_key<double>(root, settings, "time-r", section + ".delay.time-r");
 }
 
-void DelayPreset::write(boost::property_tree::ptree& root) {
+void DelayPreset::write(PresetType preset_type,
+                        boost::property_tree::ptree& root) {
   save(root, "output", output_settings);
 }
 
-void DelayPreset::read(boost::property_tree::ptree& root) {
+void DelayPreset::read(PresetType preset_type,
+                       boost::property_tree::ptree& root) {
   load(root, "output", output_settings);
 }

@@ -10,6 +10,7 @@
 #include <gtkmm/popover.h>
 #include <gtkmm/scrolledwindow.h>
 #include "application.hpp"
+#include "preset_type.hpp"
 
 class PresetsMenuUi : public Gtk::Grid {
  public:
@@ -38,8 +39,6 @@ class PresetsMenuUi : public Gtk::Grid {
   Gtk::ScrolledWindow *output_scrolled_window, *input_scrolled_window;
 
   std::vector<sigc::connection> connections;
-
-  enum class PresetType { input, output };
 
   void create_preset(PresetType preset_type);
 

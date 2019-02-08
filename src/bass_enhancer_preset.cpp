@@ -61,10 +61,12 @@ void BassEnhancerPreset::load(boost::property_tree::ptree& root,
   update_key<bool>(root, settings, "listen", section + ".bass_enhancer.listen");
 }
 
-void BassEnhancerPreset::write(boost::property_tree::ptree& root) {
+void BassEnhancerPreset::write(PresetType preset_type,
+                               boost::property_tree::ptree& root) {
   save(root, "output", output_settings);
 }
 
-void BassEnhancerPreset::read(boost::property_tree::ptree& root) {
+void BassEnhancerPreset::read(PresetType preset_type,
+                              boost::property_tree::ptree& root) {
   load(root, "output", output_settings);
 }

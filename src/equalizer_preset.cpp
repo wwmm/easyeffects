@@ -152,12 +152,14 @@ void EqualizerPreset::load_channel(boost::property_tree::ptree& root,
   }
 }
 
-void EqualizerPreset::write(boost::property_tree::ptree& root) {
+void EqualizerPreset::write(PresetType preset_type,
+                            boost::property_tree::ptree& root) {
   save(root, "input", input_settings);
   save(root, "output", output_settings);
 }
 
-void EqualizerPreset::read(boost::property_tree::ptree& root) {
+void EqualizerPreset::read(PresetType preset_type,
+                           boost::property_tree::ptree& root) {
   load(root, "input", input_settings);
   load(root, "output", output_settings);
 }

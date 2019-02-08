@@ -29,10 +29,12 @@ void LoudnessPreset::load(boost::property_tree::ptree& root,
   update_key<double>(root, settings, "link", section + ".loudness.link");
 }
 
-void LoudnessPreset::write(boost::property_tree::ptree& root) {
+void LoudnessPreset::write(PresetType preset_type,
+                           boost::property_tree::ptree& root) {
   save(root, "output", output_settings);
 }
 
-void LoudnessPreset::read(boost::property_tree::ptree& root) {
+void LoudnessPreset::read(PresetType preset_type,
+                          boost::property_tree::ptree& root) {
   load(root, "output", output_settings);
 }
