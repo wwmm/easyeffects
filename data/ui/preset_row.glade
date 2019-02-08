@@ -2,6 +2,16 @@
 <!-- Generated with glade 3.22.1 -->
 <interface domain="pulseeffects">
   <requires lib="gtk+" version="3.20"/>
+  <object class="GtkImage" id="image_delete">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">list-remove-symbolic</property>
+  </object>
+  <object class="GtkImage" id="image_save">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">document-save-symbolic</property>
+  </object>
   <object class="GtkListBoxRow" id="preset_row">
     <property name="visible">True</property>
     <property name="can_focus">True</property>
@@ -34,12 +44,12 @@
         </child>
         <child>
           <object class="GtkButton" id="remove">
-            <property name="label" translatable="yes">Remove</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
+            <property name="image">image_delete</property>
             <property name="always_show_image">True</property>
             <style>
               <class name="destructive-action"/>
@@ -54,12 +64,13 @@
         </child>
         <child>
           <object class="GtkButton" id="save">
-            <property name="label" translatable="yes">Save</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
+            <property name="image">image_save</property>
+            <property name="always_show_image">True</property>
           </object>
           <packing>
             <property name="expand">False</property>
