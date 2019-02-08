@@ -2,22 +2,24 @@
 
 ## [Unreleased]
 
+### Added
+- Remember window size.
+- Updated help.
+- Crystalizer plugin now splits the frequency spectrum in three regions. This
+allows the application of a smaller intensity to high frequencies.
+
 ### Changed
 - We now use Linux Studio Plugins "Parametric Equalizer x32 LeftRight" instead
 of the one from Gstreamer. Reason: it has more features and supports different
 settings for each channel natively. Besides the usual high-pass and low-pass
 it has a notch and a resonant filter. It is also possible to mute
- each band and change its filter slope.
+ each band on the fly and change its filter slope. There is also a "solo" mode
+ where we can easily listen to the effect caused by a specific band without
+ having to manually disable all the others.
  - The `Enable All Apps` function was split in two. We now have
  `Process All Outputs` and `Process All Inputs`. This way the user can choose
  to automatically apply effects to the output of all apps while manually choosing
  which ones will have their input processed.
-
-### Added
-- Remember window size.
-- Updated limiter help.
-- Crystalizer plugin now splits the frequency spectrum in three regions. This
-allows the application of a smaller intensity to high frequencies.
 
 ### Fixed
 - Icon is properly rendered in QT environments
