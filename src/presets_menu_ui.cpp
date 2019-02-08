@@ -40,6 +40,8 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
 
   import_input->signal_clicked().connect(
       [=]() { import_preset(PresetType::input); });
+
+  reset_menu_button_label();
 }
 
 PresetsMenuUi::~PresetsMenuUi() {
@@ -208,8 +210,6 @@ void PresetsMenuUi::populate_listbox(PresetType preset_type) {
     listbox->remove(*c);
   }
 
-  bool reset_menu_button_label = true;
-
   auto names = app->presets_manager->get_names(preset_type);
 
   for (auto name : names) {
@@ -247,17 +247,30 @@ void PresetsMenuUi::populate_listbox(PresetType preset_type) {
 
     listbox->add(*row);
     listbox->show_all();
+  }
+}
 
-    /*if the preset with the name in the button label still exists we do
-    not reset the label to "Presets"
-    */
+void PresetsMenuUi::reset_menu_button_label() {
+  auto names_input = app->presets_manager->get_names(PresetType::input);
+  auto names_output = app->presets_manager->get_names(PresetType::output);
 
+  if (names_input.size() == 0 && names_output.size() == 0) {
+    settings->set_string("last-used-preset", _("Presets"));
+
+    return;
+  }
+
+  for (auto name : names_input) {
     if (name == settings->get_string("last-used-preset")) {
-      reset_menu_button_label = false;
+      return;
     }
   }
 
-  if (reset_menu_button_label) {
-    settings->set_string("last-used-preset", _("Presets"));
+  for (auto name : names_output) {
+    if (name == settings->get_string("last-used-preset")) {
+      return;
+    }
   }
+
+  settings->set_string("last-used-preset", _("Presets"));
 }
