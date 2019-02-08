@@ -12,6 +12,8 @@
     <property name="visible">True</property>
     <property name="can_focus">True</property>
     <property name="valign">center</property>
+    <property name="activatable">False</property>
+    <property name="selectable">False</property>
     <child>
       <object class="GtkBox">
         <property name="visible">True</property>
