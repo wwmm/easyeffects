@@ -123,6 +123,12 @@ class PresetsManager {
   void save_general_settings(boost::property_tree::ptree& root);
 
   void load_general_settings(boost::property_tree::ptree& root);
+
+  void save_blacklist(PresetType preset_type,
+                      boost::property_tree::ptree& root);
+
+  void load_blacklist(PresetType preset_type,
+                      boost::property_tree::ptree& root);
 };
 
 #endif

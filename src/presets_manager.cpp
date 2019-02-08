@@ -97,7 +97,6 @@ void PresetsManager::add(PresetType preset_type, const std::string& name) {
 void PresetsManager::save_general_settings(boost::property_tree::ptree& root) {
   boost::property_tree::ptree node_in;
   Glib::Variant<std::vector<double>> aux;
-  std::vector<std::string> blacklist;
 
   // spectrum keys
 
@@ -121,39 +120,9 @@ void PresetsManager::save_general_settings(boost::property_tree::ptree& root) {
   }
 
   root.add_child("spectrum.color", node_in);
-
-  // input blacklist
-
-  blacklist = settings->get_string_array("blacklist-in");
-
-  node_in.clear();
-
-  for (auto& p : blacklist) {
-    boost::property_tree::ptree node;
-    node.put("", p);
-    node_in.push_back(std::make_pair("", node));
-  }
-
-  root.add_child("input.blacklist", node_in);
-
-  // output blacklist
-
-  blacklist = settings->get_string_array("blacklist-out");
-
-  node_in.clear();
-
-  for (auto& p : blacklist) {
-    boost::property_tree::ptree node;
-    node.put("", p);
-    node_in.push_back(std::make_pair("", node));
-  }
-
-  root.add_child("output.blacklist", node_in);
 }
 
 void PresetsManager::load_general_settings(boost::property_tree::ptree& root) {
-  std::vector<std::string> blacklist;
-
   // spectrum keys
 
   update_key<bool>(root, settings, "show-spectrum", "spectrum.show");
@@ -187,31 +156,64 @@ void PresetsManager::load_general_settings(boost::property_tree::ptree& root) {
   } catch (const boost::property_tree::ptree_error& e) {
     settings->reset("spectrum-color");
   }
+}
 
-  // input blacklist
+void PresetsManager::save_blacklist(PresetType preset_type,
+                                    boost::property_tree::ptree& root) {
+  std::vector<std::string> blacklist;
+  boost::property_tree::ptree node_in;
 
-  try {
-    for (auto& p : root.get_child("input.blacklist")) {
-      blacklist.push_back(p.second.data());
+  if (preset_type == PresetType::output) {
+    blacklist = settings->get_string_array("blacklist-out");
+
+    node_in.clear();
+
+    for (auto& p : blacklist) {
+      boost::property_tree::ptree node;
+      node.put("", p);
+      node_in.push_back(std::make_pair("", node));
     }
 
-    settings->set_string_array("blacklist-in", blacklist);
-  } catch (const boost::property_tree::ptree_error& e) {
-    settings->reset("blacklist-in");
+    root.add_child("output.blacklist", node_in);
+  } else {
+    blacklist = settings->get_string_array("blacklist-in");
+
+    node_in.clear();
+
+    for (auto& p : blacklist) {
+      boost::property_tree::ptree node;
+      node.put("", p);
+      node_in.push_back(std::make_pair("", node));
+    }
+
+    root.add_child("input.blacklist", node_in);
   }
+}
 
-  // output blacklist
+void PresetsManager::load_blacklist(PresetType preset_type,
+                                    boost::property_tree::ptree& root) {
+  std::vector<std::string> blacklist;
 
-  blacklist.clear();
+  if (preset_type == PresetType::output) {
+    try {
+      for (auto& p : root.get_child("input.blacklist")) {
+        blacklist.push_back(p.second.data());
+      }
 
-  try {
-    for (auto& p : root.get_child("output.blacklist")) {
-      blacklist.push_back(p.second.data());
+      settings->set_string_array("blacklist-in", blacklist);
+    } catch (const boost::property_tree::ptree_error& e) {
+      settings->reset("blacklist-in");
     }
+  } else {
+    try {
+      for (auto& p : root.get_child("output.blacklist")) {
+        blacklist.push_back(p.second.data());
+      }
 
-    settings->set_string_array("blacklist-out", blacklist);
-  } catch (const boost::property_tree::ptree_error& e) {
-    settings->reset("blacklist-out");
+      settings->set_string_array("blacklist-out", blacklist);
+    } catch (const boost::property_tree::ptree_error& e) {
+      settings->reset("blacklist-out");
+    }
   }
 }
 
@@ -220,6 +222,7 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
   boost::filesystem::path output_file;
 
   save_general_settings(root);
+  save_blacklist(preset_type, root);
 
   if (preset_type == PresetType::output) {
     std::vector<std::string> output_plugins =
@@ -368,6 +371,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
   }
 
   load_general_settings(root);
+  load_blacklist(preset_type, root);
 
   bass_enhancer->read(preset_type, root);
   compressor->read(preset_type, root);
