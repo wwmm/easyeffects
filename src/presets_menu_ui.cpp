@@ -210,7 +210,7 @@ void PresetsMenuUi::populate_listbox(PresetType preset_type) {
 
   bool reset_menu_button_label = true;
 
-  auto names = app->presets_manager->get_names();
+  auto names = app->presets_manager->get_names(preset_type);
 
   for (auto name : names) {
     auto b = Gtk::Builder::create_from_resource(

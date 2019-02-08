@@ -51,11 +51,19 @@ int Application::on_command_line(
   } else if (options->contains("presets")) {
     std::string list;
 
-    for (auto name : presets_manager->get_names()) {
+    for (auto name : presets_manager->get_names(PresetType::output)) {
       list += name + ",";
     }
 
-    util::info(log_tag + _("Presets: ") + list);
+    util::info(log_tag + _("Output Presets: ") + list);
+
+    list = "";
+
+    for (auto name : presets_manager->get_names(PresetType::input)) {
+      list += name + ",";
+    }
+
+    util::info(log_tag + _("Input Presets: ") + list);
   } else if (options->contains("load-preset")) {
     Glib::ustring name;
 

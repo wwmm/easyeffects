@@ -33,7 +33,7 @@ class PresetsManager {
   PresetsManager();
   virtual ~PresetsManager();
 
-  std::vector<std::string> get_names();
+  std::vector<std::string> get_names(PresetType preset_type);
   void add(PresetType preset_type, const std::string& name);
   void save(PresetType preset_type, const std::string& name);
   void remove(PresetType preset_type, const std::string& name);
