@@ -7,6 +7,8 @@
 
 PresetsManager::PresetsManager()
     : presets_dir(Glib::get_user_config_dir() + "/PulseEffects"),
+      input_dir(Glib::get_user_config_dir() + "/PulseEffects/input"),
+      output_dir(Glib::get_user_config_dir() + "/PulseEffects/output"),
       settings(Gio::Settings::create("com.github.wwmm.pulseeffects")),
       sie_settings(
           Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs")),
@@ -33,25 +35,30 @@ PresetsManager::PresetsManager()
       crystalizer(std::make_unique<CrystalizerPreset>()),
       autogain(std::make_unique<AutoGainPreset>()),
       delay(std::make_unique<DelayPreset>()) {
-  auto dir_exists = boost::filesystem::is_directory(presets_dir);
-
-  if (!dir_exists) {
-    if (boost::filesystem::create_directories(presets_dir)) {
-      util::debug(log_tag +
-                  "user presets directory created: " + presets_dir.string());
-    } else {
-      util::warning(log_tag + "failed to create user presets directory: " +
-                    presets_dir.string());
-    }
-
-  } else {
-    util::debug(log_tag + "user preset directory already exists: " +
-                presets_dir.string());
-  }
+  create_directory(presets_dir);
+  create_directory(input_dir);
+  create_directory(output_dir);
 }
 
 PresetsManager::~PresetsManager() {
   util::debug(log_tag + "destroyed");
+}
+
+void PresetsManager::create_directory(boost::filesystem::path& path) {
+  auto dir_exists = boost::filesystem::is_directory(path);
+
+  if (!dir_exists) {
+    if (boost::filesystem::create_directories(path)) {
+      util::debug(log_tag + "user presets directory created: " + path.string());
+    } else {
+      util::warning(log_tag + "failed to create user presets directory: " +
+                    path.string());
+    }
+
+  } else {
+    util::debug(log_tag +
+                "user presets directory already exists: " + path.string());
+  }
 }
 
 std::vector<std::string> PresetsManager::get_names() {

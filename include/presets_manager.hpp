@@ -42,7 +42,7 @@ class PresetsManager {
  private:
   std::string log_tag = "presets_manager: ";
 
-  boost::filesystem::path presets_dir;
+  boost::filesystem::path presets_dir, input_dir, output_dir;
 
   Glib::RefPtr<Gio::Settings> settings, sie_settings, soe_settings;
 
@@ -116,6 +116,8 @@ class PresetsManager {
   bool is_different(const T& a, const T& b) {
     return a != b;
   }
+
+  void create_directory(boost::filesystem::path& path);
 
   void save_general_settings(boost::property_tree::ptree& root);
 
