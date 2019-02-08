@@ -49,12 +49,18 @@ void FilterPreset::load(boost::property_tree::ptree& root,
 
 void FilterPreset::write(PresetType preset_type,
                          boost::property_tree::ptree& root) {
-  save(root, "input", input_settings);
-  save(root, "output", output_settings);
+  if (preset_type == PresetType::output) {
+    save(root, "output", output_settings);
+  } else {
+    save(root, "input", input_settings);
+  }
 }
 
 void FilterPreset::read(PresetType preset_type,
                         boost::property_tree::ptree& root) {
-  load(root, "input", input_settings);
-  load(root, "output", output_settings);
+  if (preset_type == PresetType::output) {
+    load(root, "output", output_settings);
+  } else {
+    load(root, "input", input_settings);
+  }
 }

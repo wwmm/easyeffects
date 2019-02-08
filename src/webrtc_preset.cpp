@@ -106,10 +106,14 @@ void WebrtcPreset::load(boost::property_tree::ptree& root,
 
 void WebrtcPreset::write(PresetType preset_type,
                          boost::property_tree::ptree& root) {
-  save(root, "input", input_settings);
+  if (preset_type == PresetType::output) {
+    save(root, "output", input_settings);
+  }
 }
 
 void WebrtcPreset::read(PresetType preset_type,
                         boost::property_tree::ptree& root) {
-  load(root, "input", input_settings);
+  if (preset_type == PresetType::output) {
+    load(root, "output", input_settings);
+  }
 }

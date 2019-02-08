@@ -63,10 +63,14 @@ void BassEnhancerPreset::load(boost::property_tree::ptree& root,
 
 void BassEnhancerPreset::write(PresetType preset_type,
                                boost::property_tree::ptree& root) {
-  save(root, "output", output_settings);
+  if (preset_type == PresetType::output) {
+    save(root, "output", output_settings);
+  }
 }
 
 void BassEnhancerPreset::read(PresetType preset_type,
                               boost::property_tree::ptree& root) {
-  load(root, "output", output_settings);
+  if (preset_type == PresetType::output) {
+    load(root, "output", output_settings);
+  }
 }

@@ -277,7 +277,13 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
 }
 
 void PresetsManager::remove(PresetType preset_type, const std::string& name) {
-  auto preset_file = presets_dir / boost::filesystem::path{name + ".json"};
+  boost::filesystem::path preset_file;
+
+  if (preset_type == PresetType::output) {
+    preset_file = output_dir / boost::filesystem::path{name + ".json"};
+  } else {
+    preset_file = input_dir / boost::filesystem::path{name + ".json"};
+  }
 
   if (boost::filesystem::exists(preset_file)) {
     boost::filesystem::remove(preset_file);
