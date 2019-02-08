@@ -31,19 +31,21 @@ class PresetsMenuUi : public Gtk::Grid {
 
   Application* app;
 
-  Gtk::Button *add_preset, *import_preset;
-  Gtk::ListBox* presets_listbox;
+  Gtk::Button *add_output, *add_input, *import_output, *import_input;
+  Gtk::ListBox *output_listbox, *input_listbox;
 
-  Gtk::Entry* preset_name;
-  Gtk::ScrolledWindow* presets_scrolled_window;
+  Gtk::Entry *output_name, *input_name;
+  Gtk::ScrolledWindow *output_scrolled_window, *input_scrolled_window;
 
   std::vector<sigc::connection> connections;
 
-  void populate_presets_listbox();
+  enum class PresetType { input, output };
+
+  void populate_listbox(PresetType preset_type);
 
   int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
 
-  void on_import_preset_clicked();
+  void on_import_output_clicked();
 };
 
 #endif

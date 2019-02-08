@@ -10,38 +10,44 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
     : Gtk::Grid(cobject), settings(refSettings), app(application) {
   // loading glade widgets
 
-  builder->get_widget("presets_listbox", presets_listbox);
-  builder->get_widget("presets_scrolled_window", presets_scrolled_window);
-  builder->get_widget("preset_name", preset_name);
-  builder->get_widget("add_preset", add_preset);
-  builder->get_widget("import_preset", import_preset);
+  builder->get_widget("output_listbox", output_listbox);
+  builder->get_widget("output_scrolled_window", output_scrolled_window);
+  builder->get_widget("output_name", output_name);
+  builder->get_widget("add_output", add_output);
+  builder->get_widget("import_output", import_output);
+  builder->get_widget("input_listbox", input_listbox);
+  builder->get_widget("input_scrolled_window", input_scrolled_window);
+  builder->get_widget("input_name", input_name);
+  builder->get_widget("add_input", add_input);
+  builder->get_widget("import_input", import_input);
 
   // signals connection
 
-  presets_listbox->set_sort_func(
+  output_listbox->set_sort_func(
       sigc::mem_fun(*this, &PresetsMenuUi::on_listbox_sort));
 
-  add_preset->signal_clicked().connect([=]() {
-    auto name = preset_name->get_text();
+  add_output->signal_clicked().connect([=]() {
+    auto name = output_name->get_text();
     if (!name.empty()) {
       std::string illegalChars = "\\/\0";
 
       for (auto it = name.begin(); it < name.end(); ++it) {
         bool found = illegalChars.find(*it) != std::string::npos;
         if (found) {
-          preset_name->set_text("");
+          output_name->set_text("");
           return;
         }
       }
 
       app->presets_manager->add(name);
-      preset_name->set_text("");
-      populate_presets_listbox();
+      output_name->set_text("");
+
+      populate_listbox(PresetType::output);
     }
   });
 
-  import_preset->signal_clicked().connect(
-      sigc::mem_fun(*this, &PresetsMenuUi::on_import_preset_clicked));
+  import_output->signal_clicked().connect(
+      sigc::mem_fun(*this, &PresetsMenuUi::on_import_output_clicked));
 }
 
 PresetsMenuUi::~PresetsMenuUi() {
@@ -92,12 +98,12 @@ void PresetsMenuUi::on_presets_menu_button_clicked() {
 
   int height = 0.7 * parent->get_allocated_height();
 
-  presets_scrolled_window->set_max_content_height(height);
+  output_scrolled_window->set_max_content_height(height);
 
-  populate_presets_listbox();
+  populate_listbox(PresetType::output);
 }
 
-void PresetsMenuUi::on_import_preset_clicked() {
+void PresetsMenuUi::on_import_output_clicked() {
   // gtkmm 3.22 does not have FileChooseNative so we have to use C api :-(
 
   gint res;
@@ -136,14 +142,22 @@ void PresetsMenuUi::on_import_preset_clicked() {
 
   g_object_unref(dialog);
 
-  populate_presets_listbox();
+  populate_listbox(PresetType::input);
 }
 
-void PresetsMenuUi::populate_presets_listbox() {
-  auto children = presets_listbox->get_children();
+void PresetsMenuUi::populate_listbox(PresetType preset_type) {
+  Gtk::ListBox* listbox;
+
+  if (preset_type == PresetType::output) {
+    listbox = output_listbox;
+  } else {
+    listbox = input_listbox;
+  }
+
+  auto children = listbox->get_children();
 
   for (auto c : children) {
-    presets_listbox->remove(*c);
+    listbox->remove(*c);
   }
 
   bool reset_menu_button_label = true;
@@ -170,19 +184,34 @@ void PresetsMenuUi::populate_presets_listbox() {
 
     connections.push_back(apply_btn->signal_clicked().connect([=]() {
       settings->set_string("last-used-preset", row->get_name());
-      app->presets_manager->load(row->get_name());
+
+      if (preset_type == PresetType::output) {
+        app->presets_manager->load(row->get_name());
+      } else {
+        // app->presets_manager->load(row->get_name());
+      }
     }));
 
-    connections.push_back(save_btn->signal_clicked().connect(
-        [=]() { app->presets_manager->save(name); }));
+    connections.push_back(save_btn->signal_clicked().connect([=]() {
+      if (preset_type == PresetType::output) {
+        app->presets_manager->save(name);
+      } else {
+        // app->presets_manager->save(name);
+      }
+    }));
 
     connections.push_back(remove_btn->signal_clicked().connect([=]() {
-      app->presets_manager->remove(name);
-      populate_presets_listbox();
+      if (preset_type == PresetType::output) {
+        app->presets_manager->remove(name);
+      } else {
+        app->presets_manager->remove(name);
+      }
+
+      populate_listbox(preset_type);
     }));
 
-    presets_listbox->add(*row);
-    presets_listbox->show_all();
+    listbox->add(*row);
+    listbox->show_all();
 
     /*if the preset with the name in the button label still exists we do
     not reset the label to "Presets"
