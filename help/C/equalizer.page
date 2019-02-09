@@ -14,87 +14,218 @@
         them have only 10 bands. Presets with other number of bands may be added in the
         future.
     </p>
-    <terms>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Bands</em>
-            </title>
-            <p>
-                The number of equalizer bands.
-            </p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Split Channels</em>
-            </title>
-            <p>
-                When this option is enabled it is possible to apply different equalizations to
-                the left and the right channel.
-            </p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Flat Response</em>
-            </title>
-            <p>
-                This function sets each band gain to 0.
-            </p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Calculate Frequencies</em>
-            </title>
-            <p>
-                This function can be used to calculate the center frequencies and bandwidth of a
-                graphic equalizer with the current number of selected bands. Useful when the
-                user does not want the default number of 30 bands but has no idea about which
-                frequencies and bandwidth he/she should choose.
-            </p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Reset Equalizer</em>
-            </title>
-            <p>
-                Reset the equalizer to its default settings.
-            </p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Filter Type</em>
-            </title>
-            <p>
-                Choose between Peak, Low Shelf and High Shelf. Usually you would set the band
-                with the lowest frequency to Low Shelf, the one with the highest frequency to
-                High Shelf and the others to Peak.
-            </p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Frequency</em>
-            </title>
-            <p>
-                Band center frequency.
-            </p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Width</em>
-            </title>
-            <p>
-                Bandwidth. Calculated as
-                <code its:withinText="nested">width = frequency / quality</code>.
-            </p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Quality</em>
-            </title>
-            <p>
-                Quality factor.
-            </p>
-        </item>
-    </terms>
+    <section>
+        <title>Main Menu</title>
+
+        <terms>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Mode</em>
+                </title>
+                <list>
+                    <item>
+                        <p>
+                            <em style="strong">IIR</em>
+                            - Infinite Impulse Response filters, nonlinear minimal phase. In most cases does
+                            not add noticeable latency to output signal.</p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">FIR</em>
+                            - Finite Impulse Response filters with linear phase, finite approximation of
+                            equalizer's impulse response. Adds noticeable latency to output signal.</p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">FFT</em>
+                            - Fast Fourier Transform approximation of the frequency chart, linear phase.
+                            Adds noticeable latency to output signal.</p>
+                    </item>
+                </list>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Bands</em>
+                </title>
+                <p>
+                    The number of equalizer bands.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Split Channels</em>
+                </title>
+                <p>
+                    When this option is enabled it is possible to apply different equalizations to
+                    the left and the right channel.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Flat Response</em>
+                </title>
+                <p>
+                    This function sets each band gain to 0.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Calculate Frequencies</em>
+                </title>
+                <p>
+                    This function can be used to calculate the center frequencies and bandwidth of a
+                    graphic equalizer with the current number of selected bands. Useful when the
+                    user does not want the default number of 30 bands but has no idea about which
+                    frequencies and bandwidth he/she should choose.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Reset Equalizer</em>
+                </title>
+                <p>
+                    Reset the equalizer to its default settings.
+                </p>
+            </item>
+
+        </terms>
+    </section>
+
+    <section>
+        <title>Band Menu</title>
+        <terms>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Type</em>
+                </title>
+                <list>
+                    <item>
+                        <p>
+                            <em style="strong">Off</em>
+                            - Filter is not working (turned off).</p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">Bell</em>
+                            - Bell filter with smooth peak/recess.</p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">High-pass</em>
+                            - High-pass filter with rejection of low frequencies.</p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">High-shelf</em>
+                            - Shelving filter with adjustment of high frequency range.</p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">Low-pass</em>
+                            - Low-pass filter with rejection of high frequencies.</p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">Low-shelf</em>
+                            - Shelving filter with adjustment of low frequencies.</p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">Notch</em>
+                            - Notch filter with full rejection of selected frequency.</p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">Resonance</em>
+                            - Resonance filter wih sharp peak/recess.</p>
+                    </item>
+                </list>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Mode</em>
+                </title>
+                <list>
+                    <item>
+                        <p>
+                            <em style="strong">RLC</em>
+                            - Very smooth filters based on similar cascades of RLC contours.</p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">BWC</em>
+                            - Butterworth-Chebyshev-type-1 based filters. Does not affect Resonance and
+                            Notch filters.</p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">LRX</em>
+                            - Linkwitz-Riley based filters. Does not affect Resonance and Notch filters.</p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">(BT)</em>
+                            - Bilinear Z-transform is used for pole/zero mapping.</p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">(MT)</em>
+                            - Matched Z-transform is used for pole/zero mapping.</p>
+                    </item>
+                </list>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Slope</em>
+                </title>
+                <p>
+                    The slope of the filter characteristics.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Solo</em>
+                </title>
+                <p>
+                    Makes this band the only one active.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Mute</em>
+                </title>
+                <p>
+                    Mutes the band.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Frequency</em>
+                </title>
+                <p>
+                    Band center frequency.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Width</em>
+                </title>
+                <p>
+                    Bandwidth. Calculated as
+                    <code its:withinText="nested">width = frequency / quality</code>.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Quality</em>
+                </title>
+                <p>
+                    Quality factor.
+                </p>
+            </item>
+        </terms>
+    </section>
+
     <section>
         <title>References</title>
         <list>

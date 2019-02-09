@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2019-02-08 12:32-0200\n"
+"POT-Creation-Date: 2019-02-08 22:32-0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -115,7 +115,7 @@ msgstr "Silenciar o sinal original e escutar exclusivamente aos harmônicos."
 #: C/exciter.page:77 C/filter.page:47 C/gate.page:96 C/delay.page:33
 #: C/limiter.page:82 C/loudness.page:44 C/multibandcompressor.page:128
 #: C/multibandgate.page:136 C/reverb.page:97 C/stereotools.page:96
-#: C/crossfeed.page:35 C/equalizer.page:99 C/pitch.page:87 C/webrtc.page:140
+#: C/crossfeed.page:35 C/equalizer.page:230 C/pitch.page:87 C/webrtc.page:140
 #: C/crystalizer.page:50 C/convolver.page:51 C/autogain.page:87
 msgid "References"
 msgstr "Referências"
@@ -358,7 +358,8 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:103 C/multibandcompressor.page:95 C/multibandgate.page:103
-#: C/stereotools.page:38 C/webrtc.page:75
+#: C/stereotools.page:38 C/equalizer.page:23 C/equalizer.page:146
+#: C/webrtc.page:75
 msgid "Mode"
 msgstr "Modo"
 
@@ -432,7 +433,7 @@ msgstr ""
 "definidas de um espectro de frequência."
 
 #. (itstool) path: title/em
-#: C/filter.page:21 C/equalizer.page:74
+#: C/filter.page:21 C/equalizer.page:203
 msgid "Frequency"
 msgstr "Frequência"
 
@@ -778,7 +779,7 @@ msgstr ""
 "RMS(é mais suave)."
 
 #. (itstool) path: title/em
-#: C/multibandcompressor.page:87 C/multibandgate.page:95
+#: C/multibandcompressor.page:87 C/multibandgate.page:95 C/equalizer.page:187
 msgid "Solo"
 msgstr "Sozinho"
 
@@ -1191,23 +1192,60 @@ msgstr ""
 "predefinições, mas neste momento todos eles têm apenas 10 bandas. "
 "Predefinições com outro número de bandas podem ser adicionados no futuro."
 
+#. (itstool) path: section/title
+#: C/equalizer.page:18
+msgid "Main Menu"
+msgstr "Menu de Principal"
+
+#. (itstool) path: item/p
+#: C/equalizer.page:27
+msgid ""
+"<em style=\"strong\">IIR</em> - Infinite Impulse Response filters, nonlinear "
+"minimal phase. In most cases does not add noticeable latency to output "
+"signal."
+msgstr ""
+"<em style=\"strong\">IIR</em> - Filtros com resposta de impulso infinita, "
+"fase mínima não linear. Na maioria dos casos não adiciona uma latência "
+"siginificativa ao sinal de saída."
+
+#. (itstool) path: item/p
+#: C/equalizer.page:33
+msgid ""
+"<em style=\"strong\">FIR</em> - Finite Impulse Response filters with linear "
+"phase, finite approximation of equalizer's impulse response. Adds noticeable "
+"latency to output signal."
+msgstr ""
+"<em style=\"strong\">FIR</em> - Filtros de Resposta de impulso finitos com "
+"fase linear, aproximação finita da resposta de impulso do equalizador. "
+"Adiciona latência perceptível ao sinal de saída."
+
+#. (itstool) path: item/p
+#: C/equalizer.page:39
+msgid ""
+"<em style=\"strong\">FFT</em> - Fast Fourier Transform approximation of the "
+"frequency chart, linear phase. Adds noticeable latency to output signal."
+msgstr ""
+"<em style=\"strong\">FFT</em> - Aproximação rápida da Transformada de "
+"Fourier do gráfico de freqüência, fase linear. Adiciona latência perceptível "
+"ao sinal de saída."
+
 #. (itstool) path: title/em
-#: C/equalizer.page:20
+#: C/equalizer.page:48
 msgid "Bands"
 msgstr "Bandas"
 
 #. (itstool) path: item/p
-#: C/equalizer.page:22
+#: C/equalizer.page:50
 msgid "The number of equalizer bands."
 msgstr "O número de bandas do equalizador."
 
 #. (itstool) path: title/em
-#: C/equalizer.page:28
+#: C/equalizer.page:56
 msgid "Split Channels"
 msgstr "Canais Separados"
 
 #. (itstool) path: item/p
-#: C/equalizer.page:30
+#: C/equalizer.page:58
 msgid ""
 "When this option is enabled it is possible to apply different equalizations "
 "to the left and the right channel."
@@ -1216,22 +1254,22 @@ msgstr ""
 "ao canal esquerdo e direito."
 
 #. (itstool) path: title/em
-#: C/equalizer.page:37
+#: C/equalizer.page:65
 msgid "Flat Response"
 msgstr "Resposta Plana"
 
 #. (itstool) path: item/p
-#: C/equalizer.page:39
+#: C/equalizer.page:67
 msgid "This function sets each band gain to 0."
 msgstr "Esta função configura o ganho de cada banda para 0."
 
 #. (itstool) path: title/em
-#: C/equalizer.page:45
+#: C/equalizer.page:73
 msgid "Calculate Frequencies"
 msgstr "Calcular Frequências"
 
 #. (itstool) path: item/p
-#: C/equalizer.page:47
+#: C/equalizer.page:75
 msgid ""
 "This function can be used to calculate the center frequencies and bandwidth "
 "of a graphic equalizer with the current number of selected bands. Useful "
@@ -1245,59 +1283,188 @@ msgstr ""
 "escolher."
 
 #. (itstool) path: title/em
-#: C/equalizer.page:56
+#: C/equalizer.page:84
 msgid "Reset Equalizer"
 msgstr "Redefinir Equalizador"
 
 #. (itstool) path: item/p
-#: C/equalizer.page:58
+#: C/equalizer.page:86
 msgid "Reset the equalizer to its default settings."
 msgstr "Redefine o equalizador para suas configurações padrões."
 
+#. (itstool) path: section/title
+#: C/equalizer.page:95
+msgid "Band Menu"
+msgstr "Menu da Banda"
+
 #. (itstool) path: title/em
-#: C/equalizer.page:64
-msgid "Filter Type"
-msgstr "Tipo de Filtro"
+#: C/equalizer.page:99
+msgid "Type"
+msgstr "Tipo"
 
 #. (itstool) path: item/p
-#: C/equalizer.page:66
-msgid ""
-"Choose between Peak, Low Shelf and High Shelf. Usually you would set the "
-"band with the lowest frequency to Low Shelf, the one with the highest "
-"frequency to High Shelf and the others to Peak."
+#: C/equalizer.page:103
+msgid "<em style=\"strong\">Off</em> - Filter is not working (turned off)."
 msgstr ""
-"Escolha entre Peak, Low Shelf e High Shelf. Normalmente você ajustaria a "
-"banda com a menor frequência para Low Shelf, aquela com a maior frequência "
-"para High Shelf e as outras para Pico."
+"<em style=\"strong\">Off</em> - O filtro não está funcionando(desligado)."
 
 #. (itstool) path: item/p
-#: C/equalizer.page:76
+#: C/equalizer.page:108
+msgid "<em style=\"strong\">Bell</em> - Bell filter with smooth peak/recess."
+msgstr ""
+"<em style=\"strong\">Bell</em> - Filtro de Bell com pico / recesso suave."
+
+#. (itstool) path: item/p
+#: C/equalizer.page:113
+msgid ""
+"<em style=\"strong\">High-pass</em> - High-pass filter with rejection of low "
+"frequencies."
+msgstr ""
+"<em style=\"strong\">High-pass</em> - Filtro passa-altas com rejeição de "
+"baixas frequências."
+
+#. (itstool) path: item/p
+#: C/equalizer.page:118
+msgid ""
+"<em style=\"strong\">High-shelf</em> - Shelving filter with adjustment of "
+"high frequency range."
+msgstr ""
+"<em style=\"strong\">High-shelf</em> - Filtro do tipo shelf com ajuste do "
+"intervalo de alta frequência."
+
+#. (itstool) path: item/p
+#: C/equalizer.page:123
+msgid ""
+"<em style=\"strong\">Low-pass</em> - Low-pass filter with rejection of high "
+"frequencies."
+msgstr ""
+"<em style=\"strong\">Low-pass</em> - Filtro passa-baixa com rejeição de "
+"altas frequências."
+
+#. (itstool) path: item/p
+#: C/equalizer.page:128
+msgid ""
+"<em style=\"strong\">Low-shelf</em> - Shelving filter with adjustment of low "
+"frequencies."
+msgstr ""
+"<em style=\"strong\">Low-shelf</em> - Filtro do tipo shelf com ajuste de "
+"baixas frequências."
+
+#. (itstool) path: item/p
+#: C/equalizer.page:133
+msgid ""
+"<em style=\"strong\">Notch</em> - Notch filter with full rejection of "
+"selected frequency."
+msgstr ""
+"<em style=\"strong\">Notch</em> - Filtro refeita-faixa com rejeição total da "
+"frequência selecionada."
+
+#. (itstool) path: item/p
+#: C/equalizer.page:138
+msgid ""
+"<em style=\"strong\">Resonance</em> - Resonance filter wih sharp peak/recess."
+msgstr ""
+"<em style=\"strong\">Resonance</em> - Filtro de ressonânte com acentuado "
+"pico / recesso."
+
+#. (itstool) path: item/p
+#: C/equalizer.page:150
+msgid ""
+"<em style=\"strong\">RLC</em> - Very smooth filters based on similar "
+"cascades of RLC contours."
+msgstr ""
+"<em style=\"strong\">RLC</em> - Filtros muito suaves baseados em cascatas "
+"semelhantes de contornos RLC."
+
+#. (itstool) path: item/p
+#: C/equalizer.page:155
+msgid ""
+"<em style=\"strong\">BWC</em> - Butterworth-Chebyshev-type-1 based filters. "
+"Does not affect Resonance and Notch filters."
+msgstr ""
+"<em style=\"strong\">BWC</em> - Filtros baseados em Butterworth-Chebyshev do "
+"tipo 1. Não afetam os filtros rejeita-faixa e ressonante."
+
+#. (itstool) path: item/p
+#: C/equalizer.page:161
+msgid ""
+"<em style=\"strong\">LRX</em> - Linkwitz-Riley based filters. Does not "
+"affect Resonance and Notch filters."
+msgstr ""
+"<em style=\"strong\">LRX</em> - Filtros baseados em Linkwitz-Riley. Não "
+"afeta os filtros rejeita-faixa e ressonante."
+
+#. (itstool) path: item/p
+#: C/equalizer.page:166
+msgid ""
+"<em style=\"strong\">(BT)</em> - Bilinear Z-transform is used for pole/zero "
+"mapping."
+msgstr ""
+"<em style=\"strong\">(BT)</em> - A transformada Z bilinear é usada para "
+"mapeamento de pólo / zero."
+
+#. (itstool) path: item/p
+#: C/equalizer.page:171
+msgid ""
+"<em style=\"strong\">(MT)</em> - Matched Z-transform is used for pole/zero "
+"mapping."
+msgstr ""
+"<em style=\"strong\">(MT)</em> - Transformação Z combinada é usada para "
+"mapeamento de pólo / zero."
+
+#. (itstool) path: title/em
+#: C/equalizer.page:179
+msgid "Slope"
+msgstr "Inclinação"
+
+#. (itstool) path: item/p
+#: C/equalizer.page:181
+msgid "The slope of the filter characteristics."
+msgstr "A inclinação da curva do filtro do filtro."
+
+#. (itstool) path: item/p
+#: C/equalizer.page:189
+msgid "Makes this band the only one active."
+msgstr "Transforma esta banda na única ativa."
+
+#. (itstool) path: title/em
+#: C/equalizer.page:195
+msgid "Mute"
+msgstr "Mudo"
+
+#. (itstool) path: item/p
+#: C/equalizer.page:197
+msgid "Mutes the band."
+msgstr "Silencia a banda."
+
+#. (itstool) path: item/p
+#: C/equalizer.page:205
 msgid "Band center frequency."
 msgstr "Frequência central da banda."
 
 #. (itstool) path: title/em
-#: C/equalizer.page:82
+#: C/equalizer.page:211
 msgid "Width"
 msgstr "Largura"
 
 #. (itstool) path: p/code
-#: C/equalizer.page:86
+#: C/equalizer.page:215
 #, no-wrap
 msgid "width = frequency / quality"
 msgstr "largura = frequência / qualidade"
 
 #. (itstool) path: item/p
-#: C/equalizer.page:84
+#: C/equalizer.page:213
 msgid "Bandwidth. Calculated as <_:code-1/>."
 msgstr "Largura de banda. Calculado a partir de <_:code-1/>."
 
 #. (itstool) path: title/em
-#: C/equalizer.page:91
+#: C/equalizer.page:220
 msgid "Quality"
 msgstr "Qualidade"
 
 #. (itstool) path: item/p
-#: C/equalizer.page:93
+#: C/equalizer.page:222
 msgid "Quality factor."
 msgstr "Fator de qualidade."
 
@@ -2247,6 +2414,18 @@ msgstr ""
 "específico seja excluído da funcionalidade \"Ativar tudo\". Isso pode ser "
 "feito usando uma lista negra. Basta adicionar o nome do aplicativo "
 "exatamente como é mostrado na entrada \"Aplicativos\"."
+
+#~ msgid "Filter Type"
+#~ msgstr "Tipo de Filtro"
+
+#~ msgid ""
+#~ "Choose between Peak, Low Shelf and High Shelf. Usually you would set the "
+#~ "band with the lowest frequency to Low Shelf, the one with the highest "
+#~ "frequency to High Shelf and the others to Peak."
+#~ msgstr ""
+#~ "Escolha entre Peak, Low Shelf e High Shelf. Normalmente você ajustaria a "
+#~ "banda com a menor frequência para Low Shelf, aquela com a maior "
+#~ "frequência para High Shelf e as outras para Pico."
 
 #~ msgid "Enable All Applications"
 #~ msgstr "Habilitar Todos os Aplicativos"
