@@ -233,6 +233,10 @@ void PresetsMenuUi::populate_listbox(PresetType preset_type) {
 
     label->set_text(name);
 
+    if (is_autoloaded(preset_type, name)) {
+      autoload_btn->set_active(true);
+    }
+
     connections.push_back(apply_btn->signal_clicked().connect([=]() {
       settings->set_string("last-used-preset", row->get_name());
 
@@ -246,12 +250,22 @@ void PresetsMenuUi::populate_listbox(PresetType preset_type) {
       if (preset_type == PresetType::output) {
         auto sink = app->pm->server_info.default_sink_name;
 
-        app->presets_manager->add_autoload(sink, name);
+        if (autoload_btn->get_active()) {
+          app->presets_manager->add_autoload(sink, name);
+        } else {
+          app->presets_manager->remove_autoload(sink, name);
+        }
       } else {
         auto source = app->pm->server_info.default_source_name;
 
-        app->presets_manager->add_autoload(source, name);
+        if (autoload_btn->get_active()) {
+          app->presets_manager->add_autoload(source, name);
+        } else {
+          app->presets_manager->remove_autoload(source, name);
+        }
       }
+
+      populate_listbox(preset_type);
     }));
 
     connections.push_back(remove_btn->signal_clicked().connect([=]() {
@@ -288,4 +302,23 @@ void PresetsMenuUi::reset_menu_button_label() {
   }
 
   settings->set_string("last-used-preset", _("Presets"));
+}
+
+bool PresetsMenuUi::is_autoloaded(PresetType preset_type,
+                                  const std::string& name) {
+  std::string current_autoload;
+
+  if (preset_type == PresetType::output) {
+    current_autoload = app->presets_manager->find_autoload(
+        app->pm->server_info.default_sink_name);
+  } else {
+    current_autoload = app->presets_manager->find_autoload(
+        app->pm->server_info.default_source_name);
+  }
+
+  if (current_autoload == name) {
+    return true;
+  } else {
+    return false;
+  }
 }

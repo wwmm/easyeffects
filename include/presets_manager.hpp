@@ -40,6 +40,9 @@ class PresetsManager {
   void load(PresetType preset_type, const std::string& name);
   void import(PresetType preset_type, const std::string& file_path);
   void add_autoload(const std::string& device, const std::string& name);
+  void remove_autoload(const std::string& device, const std::string& name);
+  std::string find_autoload(const std::string& device);
+  void autoload(PresetType preset_type, const std::string& device);
 
  private:
   std::string log_tag = "presets_manager: ";

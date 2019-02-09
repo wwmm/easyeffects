@@ -437,3 +437,48 @@ void PresetsManager::add_autoload(const std::string& device,
 
   util::debug(log_tag + "added autoload preset file: " + output_file.string());
 }
+
+void PresetsManager::remove_autoload(const std::string& device,
+                                     const std::string& name) {
+  auto input_file = autoload_dir / boost::filesystem::path{device + ".json"};
+
+  if (boost::filesystem::is_regular_file(input_file)) {
+    boost::property_tree::ptree root;
+
+    boost::property_tree::read_json(input_file.string(), root);
+
+    auto current_autoload = root.get<std::string>("name", "");
+
+    if (current_autoload == name) {
+      boost::filesystem::remove(input_file);
+
+      util::debug(log_tag + "removed autoload: " + input_file.string());
+    }
+  }
+}
+
+std::string PresetsManager::find_autoload(const std::string& device) {
+  auto input_file = autoload_dir / boost::filesystem::path{device + ".json"};
+
+  if (boost::filesystem::is_regular_file(input_file)) {
+    boost::property_tree::ptree root;
+
+    boost::property_tree::read_json(input_file.string(), root);
+
+    return root.get<std::string>("name", "");
+  } else {
+    return "";
+  }
+}
+
+void PresetsManager::autoload(PresetType preset_type,
+                              const std::string& device) {
+  auto name = find_autoload(device);
+
+  if (name != "") {
+    util::debug(log_tag + "autoloading preset " + name + " for device " +
+                device);
+
+    load(preset_type, name);
+  }
+}
