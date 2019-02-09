@@ -1,12 +1,20 @@
 # Changelog
 
-## [Unreleased]
+## [Unreleased
+
+Warning: the features introduced required a few changes to the
+ preset format. It is not a total break like the last time(still using json) but
+ manual intervention will be necessary in order to use values from the old format.
+ With the exception of the equalizer it is just a matter of doing some copy and
+ paste in a text editor.
 
 ### Added
+- It is now possible to make a preset autoload when an input or output device is
+ plugged in the system.
+- The Crystalizer plugin now splits the frequency spectrum in three regions. This
+allows the application of a smaller intensity to high frequencies.
 - Remember window size.
 - Updated help.
-- Crystalizer plugin now splits the frequency spectrum in three regions. This
-allows the application of a smaller intensity to high frequencies.
 
 ### Changed
 - We now use Linux Studio Plugins "Parametric Equalizer x32 LeftRight" instead
