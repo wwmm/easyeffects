@@ -17,7 +17,8 @@ allows the application of a smaller intensity to high frequencies.
 - Updated help.
 
 ### Changed
-- We now use Linux Studio Plugins "Parametric Equalizer x32 LeftRight" instead
+- We now use Linux Studio Plugins "Parametric Equalizer x32 LeftRight"
+http://lsp-plug.in/?page=manuals&section=para_equalizer_x32_lr instead
 of the one from Gstreamer. Reason: it has more features and supports different
 settings for each channel natively. Besides the usual high-pass and low-pass
 it has a notch and a resonant filter. It is also possible to mute
