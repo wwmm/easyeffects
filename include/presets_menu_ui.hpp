@@ -49,6 +49,8 @@ class PresetsMenuUi : public Gtk::Grid {
   int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
 
   void reset_menu_button_label();
+
+  bool is_autoloaded(PresetType preset_type, const std::string& name);
 };
 
 #endif

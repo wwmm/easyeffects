@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-08 12:32-0200\n"
+"POT-Creation-Date: 2019-02-09 13:27-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,7 +40,8 @@ msgstr ""
 #: data/ui/application.glade:180 data/ui/compressor.glade:205
 #: data/ui/filter.glade:207 data/ui/equalizer.glade:312
 #: data/ui/reverb.glade:287 data/ui/crossfeed.glade:47
-#: src/presets_menu_ui.cpp:113 src/presets_menu_ui.cpp:197
+#: src/presets_menu_ui.cpp:124 src/presets_menu_ui.cpp:287
+#: src/presets_menu_ui.cpp:304
 msgid "Presets"
 msgstr ""
 
@@ -94,21 +95,21 @@ msgstr ""
 msgid "Latency"
 msgstr ""
 
-#: data/ui/pulse_settings.glade:170 data/ui/blacklist_settings.glade:108
+#: data/ui/pulse_settings.glade:170 data/ui/blacklist_settings.glade:130
 msgid "Input Effects"
 msgstr ""
 
-#: data/ui/pulse_settings.glade:284 data/ui/blacklist_settings.glade:180
+#: data/ui/pulse_settings.glade:284 data/ui/blacklist_settings.glade:224
 msgid "Output Effects"
 msgstr ""
 
-#: data/ui/blacklist_settings.glade:78 data/ui/blacklist_settings.glade:150
-#: data/ui/presets_menu.glade:43
+#: data/ui/blacklist_settings.glade:53 data/ui/blacklist_settings.glade:147
+#: data/ui/presets_menu.glade:68 data/ui/presets_menu.glade:177
 msgid "Create Preset"
 msgstr ""
 
-#: data/ui/blacklist_settings.glade:97 data/ui/blacklist_settings.glade:169
-#: data/ui/presets_menu.glade:30
+#: data/ui/blacklist_settings.glade:72 data/ui/blacklist_settings.glade:166
+#: data/ui/presets_menu.glade:55 data/ui/presets_menu.glade:164
 msgid "Name"
 msgstr ""
 
@@ -216,6 +217,7 @@ msgstr ""
 #: data/ui/multiband_gate.glade:2110 data/ui/deesser.glade:571
 #: data/ui/convolver.glade:526 data/ui/crystalizer.glade:504
 #: data/ui/pitch.glade:325 data/ui/webrtc.glade:627 data/ui/delay.glade:213
+#: data/ui/presets_menu.glade:255
 msgid "Input"
 msgstr ""
 
@@ -236,6 +238,7 @@ msgstr ""
 #: data/ui/multiband_gate.glade:2125 data/ui/deesser.glade:586
 #: data/ui/convolver.glade:541 data/ui/crystalizer.glade:519
 #: data/ui/pitch.glade:339 data/ui/webrtc.glade:642 data/ui/delay.glade:228
+#: data/ui/presets_menu.glade:146
 msgid "Output"
 msgstr ""
 
@@ -697,7 +700,7 @@ msgid "Mute"
 msgstr ""
 
 #: data/ui/equalizer_preset_row.glade:37 data/ui/irs_row.glade:62
-#: data/ui/preset_row.glade:84
+#: data/ui/preset_row.glade:51
 msgid "Apply"
 msgstr ""
 
@@ -1156,7 +1159,22 @@ msgstr ""
 msgid "Delay"
 msgstr ""
 
-#: data/ui/presets_menu.glade:61 src/presets_menu_ui.cpp:108
+#: data/ui/preset_row.glade:68
+msgid "Save current settings to this preset file"
+msgstr ""
+
+#: data/ui/preset_row.glade:84
+msgid "Remove this preset file"
+msgstr ""
+
+#: data/ui/preset_row.glade:103
+msgid ""
+"Automatically apply this preset whenever the currently used device is "
+"plugged in the system"
+msgstr ""
+
+#: data/ui/presets_menu.glade:86 data/ui/presets_menu.glade:195
+#: src/presets_menu_ui.cpp:119
 msgid "Import Presets"
 msgstr ""
 
@@ -1315,24 +1333,28 @@ msgid "Reset PulseEffects."
 msgstr ""
 
 #: src/application.cpp:58
-msgid "Presets: "
+msgid "Output Presets: "
 msgstr ""
 
-#: src/application.cpp:222
+#: src/application.cpp:66
+msgid "Input Presets: "
+msgstr ""
+
+#: src/application.cpp:237
 msgid "PulseEffects was updated"
 msgstr ""
 
-#: src/application.cpp:225
+#: src/application.cpp:240
 msgid ""
 "It is recommended to reset its configuration after an update. Do you want to "
 "do this?"
 msgstr ""
 
-#: src/application.cpp:228
+#: src/application.cpp:243
 msgid "Yes"
 msgstr ""
 
-#: src/application.cpp:229
+#: src/application.cpp:244
 msgid "No"
 msgstr ""
 
@@ -1352,11 +1374,11 @@ msgstr ""
 msgid "Pulseaudio"
 msgstr ""
 
-#: src/presets_menu_ui.cpp:109 src/convolver_ui.cpp:328
+#: src/presets_menu_ui.cpp:120 src/convolver_ui.cpp:328
 msgid "Open"
 msgstr ""
 
-#: src/presets_menu_ui.cpp:109 src/convolver_ui.cpp:328
+#: src/presets_menu_ui.cpp:120 src/convolver_ui.cpp:328
 msgid "Cancel"
 msgstr ""
 

@@ -7,21 +7,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-08 12:32-0200\n"
-"PO-Revision-Date: 2019-02-09 16:15+0100\n"
-"Last-Translator: David Keller <blobcodes@protonmail.com>\n"
+"POT-Creation-Date: 2019-02-09 13:27-0200\n"
+"PO-Revision-Date: 2017-10-14 18:40+0200\n"
+"Last-Translator: Bleuzen <supgesu@gmail.com>\n"
 "Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.0.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/ui/application.glade:41 src/calibration_ui.cpp:48
 #: src/calibration_ui.cpp:175
+#, fuzzy
 msgid "Test Signals"
-msgstr "Testsignale"
+msgstr "Testsignal"
 
 #: data/ui/application.glade:63
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
@@ -36,12 +37,13 @@ msgstr "Einstellungen"
 
 #: data/ui/application.glade:157
 msgid "Help"
-msgstr "Hilfe"
+msgstr ""
 
 #: data/ui/application.glade:180 data/ui/compressor.glade:205
 #: data/ui/filter.glade:207 data/ui/equalizer.glade:312
 #: data/ui/reverb.glade:287 data/ui/crossfeed.glade:47
-#: src/presets_menu_ui.cpp:113 src/presets_menu_ui.cpp:197
+#: src/presets_menu_ui.cpp:124 src/presets_menu_ui.cpp:287
+#: src/presets_menu_ui.cpp:304
 msgid "Presets"
 msgstr ""
 
@@ -55,71 +57,76 @@ msgstr "Punkte"
 
 #: data/ui/spectrum_settings.glade:123
 msgid "Height"
-msgstr "Höhe"
+msgstr ""
 
 #: data/ui/spectrum_settings.glade:156
 msgid "Fill"
-msgstr "Ausfüllen"
+msgstr ""
 
 #: data/ui/spectrum_settings.glade:181
 msgid "Scale"
-msgstr "Skala"
+msgstr ""
 
 #: data/ui/spectrum_settings.glade:213
 msgid "Exponent"
-msgstr "Exponent"
+msgstr ""
 
 #: data/ui/spectrum_settings.glade:246
 msgid "Use Custom Color"
-msgstr "Benutzerdefinierte Farbe benutzen"
+msgstr ""
 
 #: data/ui/spectrum_settings.glade:272
+#, fuzzy
 msgid "Spectrum Color"
-msgstr "Spektrumfarbe"
+msgstr "Spektrum"
 
 #: data/ui/spectrum_settings.glade:299
 msgid "Sampling"
-msgstr "Abtastrate"
+msgstr ""
 
 #: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:184
 msgid "Use Default"
-msgstr "Vorgabe verwenden"
+msgstr ""
 
 #: data/ui/pulse_settings.glade:107 data/ui/pulse_settings.glade:221
 #: data/ui/app_info.glade:156
+#, fuzzy
 msgid "Buffer"
-msgstr "Puffer"
+msgstr "Puffer Latenz"
 
 #: data/ui/pulse_settings.glade:140 data/ui/pulse_settings.glade:254
 #: data/ui/app_info.glade:183
 msgid "Latency"
 msgstr "Latenz"
 
-#: data/ui/pulse_settings.glade:170 data/ui/blacklist_settings.glade:108
+#: data/ui/pulse_settings.glade:170 data/ui/blacklist_settings.glade:130
+#, fuzzy
 msgid "Input Effects"
-msgstr "Eingangseffekte"
+msgstr "PulseEffects"
 
-#: data/ui/pulse_settings.glade:284 data/ui/blacklist_settings.glade:180
+#: data/ui/pulse_settings.glade:284 data/ui/blacklist_settings.glade:224
+#, fuzzy
 msgid "Output Effects"
-msgstr "Ausgabeeffekte"
+msgstr "Limiter"
 
-#: data/ui/blacklist_settings.glade:78 data/ui/blacklist_settings.glade:150
-#: data/ui/presets_menu.glade:43
+#: data/ui/blacklist_settings.glade:53 data/ui/blacklist_settings.glade:147
+#: data/ui/presets_menu.glade:68 data/ui/presets_menu.glade:177
+#, fuzzy
 msgid "Create Preset"
-msgstr "Preset erstellen"
+msgstr "Preset löschen"
 
-#: data/ui/blacklist_settings.glade:97 data/ui/blacklist_settings.glade:169
-#: data/ui/presets_menu.glade:30
+#: data/ui/blacklist_settings.glade:72 data/ui/blacklist_settings.glade:166
+#: data/ui/presets_menu.glade:55 data/ui/presets_menu.glade:164
 msgid "Name"
-msgstr "Name"
+msgstr ""
 
 #: data/ui/general_settings.glade:31
 msgid "Start Service at Login"
-msgstr "Dienst beim Login starten"
+msgstr ""
 
 #: data/ui/general_settings.glade:56
 msgid "Process All Outputs"
-msgstr "Alle Ausgänge verarbeiten"
+msgstr ""
 
 #: data/ui/general_settings.glade:81
 msgid "Use Dark Theme"
@@ -132,43 +139,44 @@ msgstr "Zurücksetzen"
 
 #: data/ui/general_settings.glade:133 data/ui/general_settings.glade:206
 msgid "Niceness"
-msgstr "Qualität"
+msgstr ""
 
 #: data/ui/general_settings.glade:134
 msgid "Real Time"
-msgstr "Echtzeit"
+msgstr ""
 
 #: data/ui/general_settings.glade:135
 msgid "None"
-msgstr "Keine"
+msgstr ""
 
 #: data/ui/general_settings.glade:151
 msgid "Priority Type"
-msgstr "Prioritätstyp"
+msgstr ""
 
 #: data/ui/general_settings.glade:161
 msgid "About"
-msgstr "Über"
+msgstr ""
 
 #: data/ui/general_settings.glade:180
 msgid "Process All Inputs"
-msgstr "Alle Eingänge verarbeiten"
+msgstr ""
 
 #: data/ui/general_settings.glade:232
 msgid "Priority"
-msgstr "Priorität"
+msgstr ""
 
 #: data/ui/about.glade.in:11
+#, fuzzy
 msgid "Audio effects for PulseAudio applications"
-msgstr "Audioeffekte für Pulseaudio-Anwendungen"
+msgstr "Audio Effekte für Pulseaudio Anwendungen"
 
 #: data/ui/app_info.glade:48
 msgid "Format"
-msgstr "Format"
+msgstr ""
 
 #: data/ui/app_info.glade:75 data/ui/convolver.glade:260
 msgid "Rate"
-msgstr "Rate"
+msgstr ""
 
 #: data/ui/app_info.glade:102 data/ui/stereo_tools.glade:632
 msgid "Channels"
@@ -176,7 +184,7 @@ msgstr "Kanäle"
 
 #: data/ui/app_info.glade:129
 msgid "Resampler"
-msgstr "Resampler"
+msgstr ""
 
 #: data/ui/app_info.glade:210
 msgid "State"
@@ -189,15 +197,15 @@ msgstr "Vorverstärkung [dB]"
 
 #: data/ui/autogain.glade:152 data/ui/autogain.glade:531
 msgid "Momentary"
-msgstr "Momentan"
+msgstr ""
 
 #: data/ui/autogain.glade:167 data/ui/autogain.glade:544
 msgid "Short Term"
-msgstr "Kurzfristig"
+msgstr ""
 
 #: data/ui/autogain.glade:182 data/ui/autogain.glade:557
 msgid "Integrated"
-msgstr "Integriert"
+msgstr ""
 
 #: data/ui/autogain.glade:198
 #, fuzzy
@@ -206,7 +214,7 @@ msgstr "Ziel [dB]"
 
 #: data/ui/autogain.glade:288
 msgid "Weights"
-msgstr "Gewichte"
+msgstr ""
 
 #: data/ui/autogain.glade:318 data/ui/autogain.glade:510
 #: data/ui/limiter.glade:368 data/ui/compressor.glade:561
@@ -219,6 +227,7 @@ msgstr "Gewichte"
 #: data/ui/multiband_gate.glade:2110 data/ui/deesser.glade:571
 #: data/ui/convolver.glade:526 data/ui/crystalizer.glade:504
 #: data/ui/pitch.glade:325 data/ui/webrtc.glade:627 data/ui/delay.glade:213
+#: data/ui/presets_menu.glade:255
 msgid "Input"
 msgstr "Eingang"
 
@@ -239,12 +248,13 @@ msgstr "Eingang"
 #: data/ui/multiband_gate.glade:2125 data/ui/deesser.glade:586
 #: data/ui/convolver.glade:541 data/ui/crystalizer.glade:519
 #: data/ui/pitch.glade:339 data/ui/webrtc.glade:642 data/ui/delay.glade:228
+#: data/ui/presets_menu.glade:146
 msgid "Output"
 msgstr "Ausgang"
 
 #: data/ui/autogain.glade:645
 msgid "Relative"
-msgstr "Relativ"
+msgstr ""
 
 #: data/ui/autogain.glade:658 data/ui/deesser.glade:298
 #, fuzzy
@@ -254,16 +264,16 @@ msgstr "Vorverstärkung [dB]"
 #: data/ui/autogain.glade:722 data/ui/loudness.glade:24
 #: data/ui/loudness.glade:131
 msgid "Loudness"
-msgstr "Lautstärke"
+msgstr ""
 
 #: data/ui/autogain.glade:774
 msgid "Range"
-msgstr "Umfang"
+msgstr ""
 
 #: data/ui/limiter.glade:30 data/ui/webrtc.glade:398
 #, fuzzy
 msgid "Limiter"
-msgstr "Begrenzer [dB]"
+msgstr "Grenze [dB]"
 
 #: data/ui/limiter.glade:152
 #, fuzzy
@@ -310,16 +320,16 @@ msgstr "Kompressor"
 
 #: data/ui/compressor.glade:122
 msgid "Vocal Leveller 1"
-msgstr "Stimmausgleicher 1"
+msgstr ""
 
 #: data/ui/compressor.glade:134
 msgid "Vocal Leveller 2"
-msgstr "Stimmausgleicher 2"
+msgstr ""
 
 #: data/ui/compressor.glade:146 data/ui/filter.glade:162
 #: data/ui/reverb.glade:238 data/ui/crossfeed.glade:72
 msgid "Default"
-msgstr "Standard"
+msgstr ""
 
 #: data/ui/compressor.glade:235 data/ui/gate.glade:165
 #: data/ui/deesser.glade:193
@@ -328,12 +338,13 @@ msgid "Detection"
 msgstr "Dämpfung"
 
 #: data/ui/compressor.glade:249 data/ui/gate.glade:179
+#, fuzzy
 msgid "Stereo Link"
-msgstr "Stereoverbindung"
+msgstr "Audio Enhancer"
 
 #: data/ui/compressor.glade:263
 msgid "Mix"
-msgstr "Mix"
+msgstr ""
 
 #: data/ui/compressor.glade:293 data/ui/multiband_compressor.glade:475
 #: data/ui/multiband_compressor.glade:847
@@ -353,15 +364,15 @@ msgstr ""
 #: data/ui/multiband_gate.glade:1311 data/ui/multiband_gate.glade:1721
 #: data/ui/deesser.glade:221 data/ui/deesser.glade:331
 msgid "Peak"
-msgstr "Hochpunkt"
+msgstr ""
 
 #: data/ui/compressor.glade:309 data/ui/gate.glade:238
 msgid "Average"
-msgstr "Durchschnitt"
+msgstr ""
 
 #: data/ui/compressor.glade:310 data/ui/gate.glade:239
 msgid "Maximum"
-msgstr "Maximum"
+msgstr ""
 
 #: data/ui/compressor.glade:339 data/ui/multiband_compressor.glade:503
 #: data/ui/multiband_compressor.glade:875
@@ -371,7 +382,7 @@ msgstr "Maximum"
 #: data/ui/multiband_gate.glade:1338 data/ui/multiband_gate.glade:1748
 #, fuzzy
 msgid "Attack"
-msgstr "Grenzwert [ms]"
+msgstr "Ansprechen [ms]"
 
 #: data/ui/compressor.glade:407 data/ui/multiband_compressor.glade:571
 #: data/ui/multiband_compressor.glade:945
@@ -512,15 +523,15 @@ msgstr "Filtertyp"
 
 #: data/ui/filter.glade:126
 msgid "Muted"
-msgstr "Stumm"
+msgstr ""
 
 #: data/ui/filter.glade:138 data/ui/reverb.glade:212
 msgid "Disco"
-msgstr "Disco"
+msgstr ""
 
 #: data/ui/filter.glade:150
 msgid "Distant Headphones"
-msgstr "Entfernte Kopfhörer"
+msgstr ""
 
 #: data/ui/filter.glade:223
 msgid "12dB/oct Lowpass"
@@ -578,7 +589,7 @@ msgstr "Frequenz [Hz]"
 
 #: data/ui/filter.glade:291 data/ui/equalizer_band.glade:66
 msgid "Resonance"
-msgstr "Resonanz"
+msgstr ""
 
 #: data/ui/filter.glade:326
 msgid "Inertia"
@@ -615,7 +626,7 @@ msgstr "Glätten"
 
 #: data/ui/equalizer.glade:227
 msgid "Calculate Frequencies"
-msgstr "Frequenzen berechnen"
+msgstr ""
 
 #: data/ui/equalizer.glade:241
 #, fuzzy
@@ -625,26 +636,27 @@ msgstr "Equalizer"
 #: data/ui/equalizer.glade:451 data/ui/stereo_tools.glade:527
 #: data/ui/delay.glade:134
 msgid "Left"
-msgstr "Links"
+msgstr ""
 
 #: data/ui/equalizer.glade:492 data/ui/stereo_tools.glade:599
 #: data/ui/delay.glade:166
 msgid "Right"
-msgstr "Rechts"
+msgstr ""
 
 #: data/ui/equalizer_band.glade:47
 msgid "Type"
-msgstr "Typ"
+msgstr ""
 
 #: data/ui/equalizer_band.glade:59
 msgid "Off"
-msgstr "Aus"
+msgstr ""
 
 #: data/ui/equalizer_band.glade:60
 msgid "Bell"
 msgstr ""
 
 #: data/ui/equalizer_band.glade:61
+#, fuzzy
 msgid "High Pass"
 msgstr "Hochpass"
 
@@ -720,12 +732,12 @@ msgstr "Breite"
 #: data/ui/equalizer_band.glade:309 data/ui/stereo_tools.glade:553
 #: data/ui/stereo_tools.glade:612
 msgid "Mute"
-msgstr "Stummschalten"
+msgstr ""
 
 #: data/ui/equalizer_preset_row.glade:37 data/ui/irs_row.glade:62
-#: data/ui/preset_row.glade:84
+#: data/ui/preset_row.glade:51
 msgid "Apply"
-msgstr "Anwenden"
+msgstr ""
 
 #: data/ui/reverb.glade:64
 msgid "Reverberation"
@@ -788,42 +800,44 @@ msgid "Room Size"
 msgstr "Raumgröße"
 
 #: data/ui/reverb.glade:566
+#, fuzzy
 msgid "Small"
-msgstr "Klein"
+msgstr "Kleiner Raum"
 
 #: data/ui/reverb.glade:567
 msgid "Medium"
-msgstr "Mittel"
+msgstr ""
 
 #: data/ui/reverb.glade:568
+#, fuzzy
 msgid "Large"
-msgstr "Groß"
+msgstr "Ziel [dB]"
 
 #: data/ui/reverb.glade:569
 msgid "Tunnel"
-msgstr "Tunnel"
+msgstr ""
 
 #: data/ui/reverb.glade:570
 msgid "Large/smooth"
-msgstr "Groß/sanft"
+msgstr ""
 
 #: data/ui/reverb.glade:571
 msgid "Experimental"
-msgstr "Experimentell"
+msgstr ""
 
 #: data/ui/reverb.glade:584
 msgid "High Frequency Damping"
-msgstr "Hochfrequenz-Dämpfung"
+msgstr ""
 
 #: data/ui/bass_enhancer.glade:50
 #, fuzzy
 msgid "Bass Enhancer"
-msgstr "Bass Enhancer"
+msgstr "Audio Enhancer"
 
 #: data/ui/bass_enhancer.glade:148 data/ui/exciter.glade:148
 #: data/ui/deesser.glade:165
 msgid "Listen"
-msgstr "Zuhören"
+msgstr ""
 
 #: data/ui/bass_enhancer.glade:189 data/ui/exciter.glade:190
 msgid "3rd"
@@ -1220,7 +1234,23 @@ msgstr "Dämpfung"
 msgid "Delay"
 msgstr "Öffnen [ms]"
 
-#: data/ui/presets_menu.glade:61 src/presets_menu_ui.cpp:108
+#: data/ui/preset_row.glade:68
+#, fuzzy
+msgid "Save current settings to this preset file"
+msgstr "Aktuelle Einstellungen als Preset speichern"
+
+#: data/ui/preset_row.glade:84
+msgid "Remove this preset file"
+msgstr ""
+
+#: data/ui/preset_row.glade:103
+msgid ""
+"Automatically apply this preset whenever the currently used device is "
+"plugged in the system"
+msgstr ""
+
+#: data/ui/presets_menu.glade:86 data/ui/presets_menu.glade:195
+#: src/presets_menu_ui.cpp:119
 #, fuzzy
 msgid "Import Presets"
 msgstr "Preset laden"
@@ -1243,7 +1273,7 @@ msgstr ""
 
 #: data/ui/calibration_signals.glade:111
 msgid "Triangle"
-msgstr "Dreieck"
+msgstr ""
 
 #: data/ui/calibration_signals.glade:112
 #, fuzzy
@@ -1260,7 +1290,7 @@ msgstr ""
 
 #: data/ui/calibration_signals.glade:115
 msgid "Sine Table"
-msgstr "Sinustabelle"
+msgstr ""
 
 #: data/ui/calibration_signals.glade:116
 msgid "Ticks"
@@ -1283,16 +1313,17 @@ msgid "Violet Noise"
 msgstr ""
 
 #: data/ui/calibration_mic.glade:29
+#, fuzzy
 msgid "Window"
-msgstr "Fenster"
+msgstr "Fenster [s]"
 
 #: data/ui/calibration_mic.glade:70
 msgid "Measure Noise"
-msgstr "Rauschen messen"
+msgstr ""
 
 #: data/ui/calibration_mic.glade:99
 msgid "Subtract Noise"
-msgstr "Rauschen reduzieren"
+msgstr ""
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:8
 #: data/com.github.wwmm.pulseeffects.desktop.in:5
@@ -1309,7 +1340,7 @@ msgid ""
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"PulseEffects ist ein Audio-Manipulations-Tool. Es enthält einen Equalizer, "
+"PulseEffects ist ein Audio-Manipulations-Tool. Es hat einen Equalizer, "
 "Limiter, Kompressor, Hall und ein Spektrumanalysator."
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:16
@@ -1318,9 +1349,9 @@ msgid ""
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"Da PulseEffects den Standard PulseAudio Sound Server benutzt, funktioniert "
+"Da PulseEffects den standard PulseAudio Sound Server benutzt, funktioniert "
 "es mit so ziemlich allen Anwendungen. Alle unterstützten Anwendungen werden "
-"im Hauptfenster angezeigt, wo alle individuell Ein-/Ausgeschaltet werden "
+"im Hauptfenster angezeigt, wo alle individuell ein-/ausgeschaltet werden "
 "können."
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:22
@@ -1345,15 +1376,15 @@ msgstr ""
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
 msgid "Set the volume and turn on/off effects"
-msgstr "Einstellen der Lautstärke und Ein-/Ausschalten von Effekten"
+msgstr ""
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
 msgid "Includes an equalizer with built-in presets"
-msgstr "Enthält einen Equalizer mit integrierten Presets."
+msgstr ""
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:48
 msgid "Input Limiter"
-msgstr "Eingabe-Limiter"
+msgstr "Limiter"
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
 msgid "Calibration"
@@ -1361,7 +1392,7 @@ msgstr "Kalibrierung"
 
 #: data/com.github.wwmm.pulseeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
-msgstr "Equalizer, Kompressor und andere Audioeffekte"
+msgstr ""
 
 #: data/com.github.wwmm.pulseeffects.desktop.in:6
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
@@ -1373,48 +1404,55 @@ msgid "pulseeffects"
 msgstr "pulseeffects"
 
 #: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:228
+#, fuzzy
 msgid "\"Presets\""
-msgstr "\"Presets\""
+msgstr "Preset laden"
 
 #: src/application.cpp:20
 msgid "Quit PulseEffects. Useful when running in service mode."
-msgstr "Beende PulseEffects. Nützlich bei der Ausführung als Service."
+msgstr ""
 
 #: src/application.cpp:23
 msgid "Show available presets."
-msgstr "Verfügbare Presets anzeigen."
+msgstr ""
 
 #: src/application.cpp:27
 msgid "Load a preset. Example: pulseeffects -l music"
-msgstr "Lade ein Preset. Beispiel: pulseeffects -l music"
-
-#: src/application.cpp:30
-msgid "Reset PulseEffects."
-msgstr "PulseEffects zurücksetzen"
-
-#: src/application.cpp:58
-msgid "Presets: "
 msgstr ""
 
-#: src/application.cpp:222
-msgid "PulseEffects was updated"
-msgstr "PulseEffects wurde Aktualisiert"
+#: src/application.cpp:30
+#, fuzzy
+msgid "Reset PulseEffects."
+msgstr "PulseEffects"
 
-#: src/application.cpp:225
+#: src/application.cpp:58
+#, fuzzy
+msgid "Output Presets: "
+msgstr "Preset laden"
+
+#: src/application.cpp:66
+#, fuzzy
+msgid "Input Presets: "
+msgstr "Preset laden"
+
+#: src/application.cpp:237
+#, fuzzy
+msgid "PulseEffects was updated"
+msgstr "PulseEffects"
+
+#: src/application.cpp:240
 msgid ""
 "It is recommended to reset its configuration after an update. Do you want to "
 "do this?"
 msgstr ""
-"Es wird empfohlen, die Konfiguration nach einem Update zurückzusetzen. "
-"Willst du das tun?"
 
-#: src/application.cpp:228
+#: src/application.cpp:243
 msgid "Yes"
-msgstr "Ja"
+msgstr ""
 
-#: src/application.cpp:229
+#: src/application.cpp:244
 msgid "No"
-msgstr "Nein"
+msgstr ""
 
 #: src/effects_base_ui.cpp:25
 msgid "Applications"
@@ -1422,7 +1460,7 @@ msgstr "Anwendungen"
 
 #: src/blacklist_settings_ui.cpp:85
 msgid "Blacklist"
-msgstr "Sperrliste"
+msgstr ""
 
 #: src/general_settings_ui.cpp:139
 msgid "General"
@@ -1430,15 +1468,16 @@ msgstr "Allgemein"
 
 #: src/pulse_settings_ui.cpp:83
 msgid "Pulseaudio"
-msgstr "PulseAudio"
+msgstr ""
 
-#: src/presets_menu_ui.cpp:109 src/convolver_ui.cpp:328
+#: src/presets_menu_ui.cpp:120 src/convolver_ui.cpp:328
 msgid "Open"
-msgstr "Öffnen"
+msgstr ""
 
-#: src/presets_menu_ui.cpp:109 src/convolver_ui.cpp:328
+#: src/presets_menu_ui.cpp:120 src/convolver_ui.cpp:328
+#, fuzzy
 msgid "Cancel"
-msgstr "abbrechen"
+msgstr "Audio Enhancer"
 
 #: src/app_info_ui.cpp:85
 msgid "paused"
@@ -1446,27 +1485,29 @@ msgstr "pausiert"
 
 #: src/app_info_ui.cpp:87
 msgid "playing"
-msgstr "spielt"
+msgstr ""
 
 #: src/calibration_ui.cpp:182
+#, fuzzy
 msgid "Calibration Microphone"
-msgstr "Kalibrationsmikrofon"
+msgstr "Kalibrierung der Mikrofonkorrektur"
 
 #: src/convolver_ui.cpp:327
+#, fuzzy
 msgid "Import Impulse File"
-msgstr "Impulsdatei importieren"
+msgstr "Glätten"
 
 #: src/convolver_ui.cpp:370 src/convolver_ui.cpp:371 src/convolver_ui.cpp:373
 msgid "Failed"
-msgstr "Gescheitert"
+msgstr ""
 
 #: src/convolver_ui.cpp:375
 msgid "Could Not Load The Impulse File"
-msgstr "Die Impulsdatei konnte nicht geladen werden."
+msgstr ""
 
 #: src/equalizer_ui.cpp:339 src/equalizer_ui.cpp:477
 msgid "infinity"
-msgstr "Unendlich"
+msgstr ""
 
 #, fuzzy
 #~ msgid "Enable All Applications"
@@ -1578,9 +1619,6 @@ msgstr "Unendlich"
 #, fuzzy
 #~ msgid "Mono Input"
 #~ msgstr "Eingang"
-
-#~ msgid "Save Current Settings to Preset"
-#~ msgstr "Aktuelle Einstellungen als Preset speichern"
 
 #~ msgid "Delete Preset"
 #~ msgstr "Preset löschen"
