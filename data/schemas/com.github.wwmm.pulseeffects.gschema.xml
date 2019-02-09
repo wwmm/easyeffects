@@ -184,6 +184,9 @@
         <key name="spectrum-fill" type="b">
             <default>false</default>
         </key>
+        <key name="spectrum-border" type="b">
+            <default>true</default>
+        </key>
         <key name="spectrum-n-points" type="i">
             <range min="2" max="600"/>
             <default>150</default>

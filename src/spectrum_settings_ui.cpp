@@ -11,6 +11,7 @@ SpectrumSettingsUi::SpectrumSettingsUi(
 
   builder->get_widget("show_spectrum", show_spectrum);
   builder->get_widget("spectrum_fill", spectrum_fill);
+  builder->get_widget("spectrum_border", spectrum_border);
   builder->get_widget("spectrum_color_button", spectrum_color_button);
   builder->get_widget("use_custom_color", use_custom_color);
 
@@ -62,6 +63,7 @@ SpectrumSettingsUi::SpectrumSettingsUi(
   settings->bind("show-spectrum", show_spectrum, "active", flag);
 
   settings->bind("spectrum-fill", spectrum_fill, "active", flag);
+  settings->bind("spectrum-border", spectrum_border, "active", flag);
   settings->bind("spectrum-n-points", spectrum_n_points.get(), "value", flag);
   settings->bind("spectrum-height", spectrum_height.get(), "value", flag);
   settings->bind("spectrum-scale", spectrum_scale.get(), "value", flag);

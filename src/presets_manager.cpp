@@ -108,6 +108,7 @@ void PresetsManager::save_general_settings(boost::property_tree::ptree& root) {
   root.put("spectrum.use-custom-color",
            settings->get_boolean("use-custom-color"));
   root.put("spectrum.fill", settings->get_boolean("spectrum-fill"));
+  root.put("spectrum.border", settings->get_boolean("spectrum-border"));
   root.put("spectrum.scale", settings->get_double("spectrum-scale"));
   root.put("spectrum.exponent", settings->get_double("spectrum-exponent"));
   root.put("spectrum.sampling-freq",
@@ -137,6 +138,8 @@ void PresetsManager::load_general_settings(boost::property_tree::ptree& root) {
                    "spectrum.use-custom-color");
 
   update_key<bool>(root, settings, "spectrum-fill", "spectrum.fill");
+
+  update_key<bool>(root, settings, "spectrum-border", "spectrum.border");
 
   update_key<double>(root, settings, "spectrum-scale", "spectrum.scale");
 
