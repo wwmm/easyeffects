@@ -18,4 +18,9 @@
         file. This means you can have presets that combine the effects of different
         plugins.
     </p>
+    <p>
+        You can also make a preset autoload when an input or output device is added to
+        the system. Just click on the button with curved arrows while the desired device
+        is selected as the system default device.
+    </p>
 </page>

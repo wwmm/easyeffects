@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2019-02-08 22:32-0200\n"
+"POT-Creation-Date: 2019-02-09 13:32-0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -2237,6 +2237,18 @@ msgstr ""
 "Quando você salva uma predefinição, a configuração atual de todos os plugins "
 "é salva em seu arquivo. Isso significa que você pode ter predefinições que "
 "combinam os efeitos de diferentes plugins."
+
+#. (itstool) path: page/p
+#: C/userpresets.page:21
+msgid ""
+"You can also make a preset autoload when an input or output device is added "
+"to the system. Just click on the button with curved arrows while the desired "
+"device is selected as the system default device."
+msgstr ""
+"Você também pode fazer uma predefinição carregar automaticamente quando um "
+"dispositivo de entrada ou saída é adicionado ao sistema. Basta clicar no "
+"botão com setas curvas enquanto o dispositivo desejado estiver selecionado "
+"como o dispositivo padrão do sistema."
 
 #. (itstool) path: page/title
 #: C/advancedinfo.page:10
