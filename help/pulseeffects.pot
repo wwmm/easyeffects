@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-02-08 22:32-0200\n"
+"POT-Creation-Date: 2019-02-09 13:32-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1876,6 +1876,11 @@ msgstr ""
 #. (itstool) path: page/p
 #: C/userpresets.page:16
 msgid "When you save a preset the current configuration of all plugins is saved to its file. This means you can have presets that combine the effects of different plugins."
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/userpresets.page:21
+msgid "You can also make a preset autoload when an input or output device is added to the system. Just click on the button with curved arrows while the desired device is selected as the system default device."
 msgstr ""
 
 #. (itstool) path: page/title

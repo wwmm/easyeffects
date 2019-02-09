@@ -108,13 +108,19 @@ void Application::on_startup() {
 
   pm->new_default_sink.connect([&](auto name) {
     util::debug("new default sink: " + name);
+
     sie->set_output_sink_name(name);
     soe->webrtc->set_probe_src_device(name + ".monitor");
+
+    presets_manager->autoload(PresetType::output, name);
   });
 
   pm->new_default_source.connect([&](auto name) {
     util::debug("new default source: " + name);
+
     soe->set_source_monitor_name(name);
+
+    presets_manager->autoload(PresetType::input, name);
   });
 
   settings->signal_changed("blacklist-in").connect([=](auto key) {
