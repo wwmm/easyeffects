@@ -480,5 +480,7 @@ void PresetsManager::autoload(PresetType preset_type,
                 device);
 
     load(preset_type, name);
+
+    settings->set_string("last-used-preset", name);
   }
 }
