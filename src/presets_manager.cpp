@@ -9,6 +9,7 @@ PresetsManager::PresetsManager()
     : presets_dir(Glib::get_user_config_dir() + "/PulseEffects"),
       input_dir(Glib::get_user_config_dir() + "/PulseEffects/input"),
       output_dir(Glib::get_user_config_dir() + "/PulseEffects/output"),
+      autoload_dir(Glib::get_user_config_dir() + "/PulseEffects/autoload"),
       settings(Gio::Settings::create("com.github.wwmm.pulseeffects")),
       sie_settings(
           Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs")),
@@ -38,6 +39,7 @@ PresetsManager::PresetsManager()
   create_directory(presets_dir);
   create_directory(input_dir);
   create_directory(output_dir);
+  create_directory(autoload_dir);
 }
 
 PresetsManager::~PresetsManager() {
@@ -420,4 +422,18 @@ void PresetsManager::import(PresetType preset_type,
   } else {
     util::warning(log_tag + p.string() + " is not a file!");
   }
+}
+
+void PresetsManager::add_autoload(const std::string& device,
+                                  const std::string& name) {
+  boost::property_tree::ptree root;
+  boost::filesystem::path output_file;
+
+  output_file = autoload_dir / boost::filesystem::path{device + ".json"};
+
+  root.put("name", name);
+
+  boost::property_tree::write_json(output_file.string(), root);
+
+  util::debug(log_tag + "added autoload preset file: " + output_file.string());
 }

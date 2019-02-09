@@ -1,6 +1,7 @@
 #include "presets_menu_ui.hpp"
 #include <glibmm/i18n.h>
 #include <gtkmm/applicationwindow.h>
+#include <gtkmm/togglebutton.h>
 #include "util.hpp"
 
 PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
@@ -219,12 +220,14 @@ void PresetsMenuUi::populate_listbox(PresetType preset_type) {
     Gtk::ListBoxRow* row;
     Gtk::Button *apply_btn, *save_btn, *remove_btn;
     Gtk::Label* label;
+    Gtk::ToggleButton* autoload_btn;
 
     b->get_widget("preset_row", row);
     b->get_widget("apply", apply_btn);
     b->get_widget("save", save_btn);
     b->get_widget("remove", remove_btn);
     b->get_widget("name", label);
+    b->get_widget("autoload", autoload_btn);
 
     row->set_name(name);
 
@@ -238,6 +241,18 @@ void PresetsMenuUi::populate_listbox(PresetType preset_type) {
 
     connections.push_back(save_btn->signal_clicked().connect(
         [=]() { app->presets_manager->save(preset_type, name); }));
+
+    connections.push_back(autoload_btn->signal_toggled().connect([=]() {
+      if (preset_type == PresetType::output) {
+        auto sink = app->pm->server_info.default_sink_name;
+
+        app->presets_manager->add_autoload(sink, name);
+      } else {
+        auto source = app->pm->server_info.default_source_name;
+
+        app->presets_manager->add_autoload(source, name);
+      }
+    }));
 
     connections.push_back(remove_btn->signal_clicked().connect([=]() {
       app->presets_manager->remove(preset_type, name);
