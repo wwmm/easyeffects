@@ -15,6 +15,8 @@ Warning: the features introduced required a few changes to the
 allows the application of a smaller intensity to high frequencies.
 - Remember window size.
 - Updated help.
+- Added options to show/hide bars borders in the spectrum and to change their
+line widths.
 
 ### Changed
 - We now use Linux Studio Plugins "Parametric Equalizer x32 LeftRight"

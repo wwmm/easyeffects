@@ -87,10 +87,11 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
 
   if (n_bars > 0) {
     auto allocation = spectrum->get_allocation();
-    auto width = allocation.get_width();
+    float width = allocation.get_width();
     auto height = allocation.get_height();
     auto n_bars = spectrum_mag.size();
-    auto x = util::linspace(0, width, n_bars);
+    auto line_width = settings->get_double("spectrum-line-width");
+    auto x = util::linspace(line_width, width - line_width, n_bars);
     double scale = settings->get_double("spectrum-scale");
     double exponent = settings->get_double("spectrum-exponent");
 
@@ -101,10 +102,10 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
           height * std::min(1., std::pow(scale * spectrum_mag[n], exponent));
 
       if (draw_border) {
-        ctx->rectangle(x[n], height - bar_height, width / n_bars, bar_height);
-      } else {
-        ctx->rectangle(x[n], height - bar_height, width / n_bars + 1,
+        ctx->rectangle(x[n], height - bar_height, width / n_bars - line_width,
                        bar_height);
+      } else {
+        ctx->rectangle(x[n], height - bar_height, width / n_bars, bar_height);
       }
     }
 
@@ -122,7 +123,7 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
                            1.0);
     }
 
-    ctx->set_line_width(1.1);
+    ctx->set_line_width(line_width);
 
     if (settings->get_boolean("spectrum-fill"))
       ctx->fill();
