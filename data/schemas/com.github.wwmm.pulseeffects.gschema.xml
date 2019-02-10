@@ -185,11 +185,15 @@
             <default>false</default>
         </key>
         <key name="spectrum-border" type="b">
-            <default>true</default>
+            <default>false</default>
         </key>
         <key name="spectrum-n-points" type="i">
             <range min="2" max="600"/>
-            <default>150</default>
+            <default>100</default>
+        </key>
+        <key name="spectrum-line-width" type="d">
+            <range min="0.1" max="100.0"/>
+            <default>2.0</default>
         </key>
         <key name="use-custom-color" type="b">
             <default>false</default>

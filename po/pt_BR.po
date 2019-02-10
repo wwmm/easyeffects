@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-09 13:40-0200\n"
-"PO-Revision-Date: 2019-02-09 13:30-0200\n"
+"POT-Creation-Date: 2019-02-10 00:02-0200\n"
+"PO-Revision-Date: 2019-02-10 00:03-0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
@@ -48,41 +48,49 @@ msgstr "Ajuda"
 msgid "Presets"
 msgstr "Predefinições"
 
-#: data/ui/spectrum_settings.glade:51
+#: data/ui/spectrum_settings.glade:58
 msgid "Show"
 msgstr "Mostrar"
 
-#: data/ui/spectrum_settings.glade:92
+#: data/ui/spectrum_settings.glade:99
 msgid "Points"
 msgstr "Pontos"
 
-#: data/ui/spectrum_settings.glade:123
+#: data/ui/spectrum_settings.glade:130
 msgid "Height"
 msgstr "Altura"
 
-#: data/ui/spectrum_settings.glade:156
+#: data/ui/spectrum_settings.glade:163
 msgid "Fill"
 msgstr "Preencher"
 
-#: data/ui/spectrum_settings.glade:181
+#: data/ui/spectrum_settings.glade:189
+msgid "Border"
+msgstr "Borda"
+
+#: data/ui/spectrum_settings.glade:214
 msgid "Scale"
 msgstr "Escala"
 
-#: data/ui/spectrum_settings.glade:213
+#: data/ui/spectrum_settings.glade:246
 msgid "Exponent"
 msgstr "Expoente"
 
-#: data/ui/spectrum_settings.glade:246
+#: data/ui/spectrum_settings.glade:279
 msgid "Use Custom Color"
 msgstr "Usar Cor Customizada"
 
-#: data/ui/spectrum_settings.glade:272
+#: data/ui/spectrum_settings.glade:305
 msgid "Spectrum Color"
 msgstr "Cor do Espectro"
 
-#: data/ui/spectrum_settings.glade:299
+#: data/ui/spectrum_settings.glade:332
 msgid "Sampling"
 msgstr "Amostragem"
+
+#: data/ui/spectrum_settings.glade:362
+msgid "Line Width"
+msgstr "Largura da Linha"
 
 #: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:184
 msgid "Use Default"
@@ -1024,7 +1032,7 @@ msgstr "Resposta de Impulso"
 msgid "Select the impulse Response File"
 msgstr "Selecione o Arquivo com a Resposta de Impulso"
 
-#: data/ui/convolver.glade:385 src/spectrum_settings_ui.cpp:93
+#: data/ui/convolver.glade:385 src/spectrum_settings_ui.cpp:97
 msgid "Spectrum"
 msgstr "Espectro"
 
@@ -1331,7 +1339,7 @@ msgstr "limitador;compressor;reverberação;equalizador;autovolume;"
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:228
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:235
 msgid "\"Presets\""
 msgstr "\"Predefinições\""
 

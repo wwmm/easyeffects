@@ -29,11 +29,12 @@ class SpectrumSettingsUi : public Gtk::Grid {
 
   Application* app;
 
-  Gtk::Switch *show_spectrum, *use_custom_color, *spectrum_fill, *spectrum_border;
+  Gtk::Switch *show_spectrum, *use_custom_color, *spectrum_fill,
+      *spectrum_border;
   Gtk::ColorButton* spectrum_color_button;
 
   Glib::RefPtr<Gtk::Adjustment> spectrum_n_points, spectrum_height,
-      spectrum_scale, spectrum_exponent, spectrum_sampling_freq;
+      spectrum_scale, spectrum_exponent, spectrum_sampling_freq, line_width;
 
   std::vector<sigc::connection> connections;
 

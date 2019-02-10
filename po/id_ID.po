@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-09 13:40-0200\n"
+"POT-Creation-Date: 2019-02-10 00:02-0200\n"
 "PO-Revision-Date: 2019-01-17 18:30+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -46,41 +46,50 @@ msgstr "Bantuan"
 msgid "Presets"
 msgstr "Preset"
 
-#: data/ui/spectrum_settings.glade:51
+#: data/ui/spectrum_settings.glade:58
 msgid "Show"
 msgstr "Tampilkan"
 
-#: data/ui/spectrum_settings.glade:92
+#: data/ui/spectrum_settings.glade:99
 msgid "Points"
 msgstr "Titik"
 
-#: data/ui/spectrum_settings.glade:123
+#: data/ui/spectrum_settings.glade:130
 msgid "Height"
 msgstr "Tinggi"
 
-#: data/ui/spectrum_settings.glade:156
+#: data/ui/spectrum_settings.glade:163
 msgid "Fill"
 msgstr "Spektrum Batangan"
 
-#: data/ui/spectrum_settings.glade:181
+#: data/ui/spectrum_settings.glade:189
+msgid "Border"
+msgstr ""
+
+#: data/ui/spectrum_settings.glade:214
 msgid "Scale"
 msgstr "Skala"
 
-#: data/ui/spectrum_settings.glade:213
+#: data/ui/spectrum_settings.glade:246
 msgid "Exponent"
 msgstr "Eksponen"
 
-#: data/ui/spectrum_settings.glade:246
+#: data/ui/spectrum_settings.glade:279
 msgid "Use Custom Color"
 msgstr "Gunakan Warna Kustom"
 
-#: data/ui/spectrum_settings.glade:272
+#: data/ui/spectrum_settings.glade:305
 msgid "Spectrum Color"
 msgstr "Warna Spektrum"
 
-#: data/ui/spectrum_settings.glade:299
+#: data/ui/spectrum_settings.glade:332
 msgid "Sampling"
 msgstr "Atur Sampling"
+
+#: data/ui/spectrum_settings.glade:362
+#, fuzzy
+msgid "Line Width"
+msgstr "Lebar"
 
 #: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:184
 msgid "Use Default"
@@ -1024,7 +1033,7 @@ msgstr "Respons Impuls"
 msgid "Select the impulse Response File"
 msgstr "Pilih Berkas Repons Impuls"
 
-#: data/ui/convolver.glade:385 src/spectrum_settings_ui.cpp:93
+#: data/ui/convolver.glade:385 src/spectrum_settings_ui.cpp:97
 msgid "Spectrum"
 msgstr "Spektrum"
 
@@ -1327,7 +1336,7 @@ msgstr "limiter;compressor;reverberation;equalizer;autovolume;"
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:228
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:235
 msgid "\"Presets\""
 msgstr "Preset"
 

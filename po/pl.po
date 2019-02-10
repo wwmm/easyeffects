@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-09 13:40-0200\n"
+"POT-Creation-Date: 2019-02-10 00:02-0200\n"
 "PO-Revision-Date: 2018-06-21 21:34+0200\n"
 "Last-Translator: Piotr Komur, pkomur@gmail.com\n"
 "Language-Team: \n"
@@ -47,42 +47,51 @@ msgstr ""
 msgid "Presets"
 msgstr "Profile"
 
-#: data/ui/spectrum_settings.glade:51
+#: data/ui/spectrum_settings.glade:58
 msgid "Show"
 msgstr "Pokaż"
 
-#: data/ui/spectrum_settings.glade:92
+#: data/ui/spectrum_settings.glade:99
 msgid "Points"
 msgstr "Punkty"
 
-#: data/ui/spectrum_settings.glade:123
+#: data/ui/spectrum_settings.glade:130
 msgid "Height"
 msgstr "Wysokość"
 
-#: data/ui/spectrum_settings.glade:156
+#: data/ui/spectrum_settings.glade:163
 msgid "Fill"
 msgstr ""
 
-#: data/ui/spectrum_settings.glade:181
+#: data/ui/spectrum_settings.glade:189
+msgid "Border"
+msgstr ""
+
+#: data/ui/spectrum_settings.glade:214
 msgid "Scale"
 msgstr ""
 
-#: data/ui/spectrum_settings.glade:213
+#: data/ui/spectrum_settings.glade:246
 msgid "Exponent"
 msgstr ""
 
-#: data/ui/spectrum_settings.glade:246
+#: data/ui/spectrum_settings.glade:279
 msgid "Use Custom Color"
 msgstr "Użyj własnego koloru"
 
-#: data/ui/spectrum_settings.glade:272
+#: data/ui/spectrum_settings.glade:305
 msgid "Spectrum Color"
 msgstr "Kolor widma"
 
-#: data/ui/spectrum_settings.glade:299
+#: data/ui/spectrum_settings.glade:332
 #, fuzzy
 msgid "Sampling"
 msgstr "Nadpróbkowanie"
+
+#: data/ui/spectrum_settings.glade:362
+#, fuzzy
+msgid "Line Width"
+msgstr "Szerokość"
 
 #: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:184
 msgid "Use Default"
@@ -1061,7 +1070,7 @@ msgstr "Płaska odpowiedź"
 msgid "Select the impulse Response File"
 msgstr ""
 
-#: data/ui/convolver.glade:385 src/spectrum_settings_ui.cpp:93
+#: data/ui/convolver.glade:385 src/spectrum_settings_ui.cpp:97
 msgid "Spectrum"
 msgstr "Widmo"
 
@@ -1371,7 +1380,7 @@ msgstr "limiter;kompresor;pogłos;korektor;autogłośność;"
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:228
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:235
 #, fuzzy
 msgid "\"Presets\""
 msgstr "Profile"

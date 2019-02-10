@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-09 13:40-0200\n"
+"POT-Creation-Date: 2019-02-10 00:02-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,40 +45,48 @@ msgstr ""
 msgid "Presets"
 msgstr ""
 
-#: data/ui/spectrum_settings.glade:51
+#: data/ui/spectrum_settings.glade:58
 msgid "Show"
 msgstr ""
 
-#: data/ui/spectrum_settings.glade:92
+#: data/ui/spectrum_settings.glade:99
 msgid "Points"
 msgstr ""
 
-#: data/ui/spectrum_settings.glade:123
+#: data/ui/spectrum_settings.glade:130
 msgid "Height"
 msgstr ""
 
-#: data/ui/spectrum_settings.glade:156
+#: data/ui/spectrum_settings.glade:163
 msgid "Fill"
 msgstr ""
 
-#: data/ui/spectrum_settings.glade:181
+#: data/ui/spectrum_settings.glade:189
+msgid "Border"
+msgstr ""
+
+#: data/ui/spectrum_settings.glade:214
 msgid "Scale"
 msgstr ""
 
-#: data/ui/spectrum_settings.glade:213
+#: data/ui/spectrum_settings.glade:246
 msgid "Exponent"
 msgstr ""
 
-#: data/ui/spectrum_settings.glade:246
+#: data/ui/spectrum_settings.glade:279
 msgid "Use Custom Color"
 msgstr ""
 
-#: data/ui/spectrum_settings.glade:272
+#: data/ui/spectrum_settings.glade:305
 msgid "Spectrum Color"
 msgstr ""
 
-#: data/ui/spectrum_settings.glade:299
+#: data/ui/spectrum_settings.glade:332
 msgid "Sampling"
+msgstr ""
+
+#: data/ui/spectrum_settings.glade:362
+msgid "Line Width"
 msgstr ""
 
 #: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:184
@@ -1021,7 +1029,7 @@ msgstr ""
 msgid "Select the impulse Response File"
 msgstr ""
 
-#: data/ui/convolver.glade:385 src/spectrum_settings_ui.cpp:93
+#: data/ui/convolver.glade:385 src/spectrum_settings_ui.cpp:97
 msgid "Spectrum"
 msgstr ""
 
@@ -1312,7 +1320,7 @@ msgstr ""
 msgid "pulseeffects"
 msgstr ""
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:228
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:235
 msgid "\"Presets\""
 msgstr ""
 

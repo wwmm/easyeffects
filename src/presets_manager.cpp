@@ -113,6 +113,7 @@ void PresetsManager::save_general_settings(boost::property_tree::ptree& root) {
   root.put("spectrum.exponent", settings->get_double("spectrum-exponent"));
   root.put("spectrum.sampling-freq",
            settings->get_int("spectrum-sampling-freq"));
+  root.put("spectrum.line-width", settings->get_double("spectrum-line-width"));
 
   settings->get_value("spectrum-color", aux);
 
@@ -147,6 +148,9 @@ void PresetsManager::load_general_settings(boost::property_tree::ptree& root) {
 
   update_key<int>(root, settings, "spectrum-sampling-freq",
                   "spectrum.sampling-freq");
+
+  update_key<double>(root, settings, "spectrum-line-width",
+                     "spectrum.line-width");
 
   try {
     std::vector<double> spectrum_color;

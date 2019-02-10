@@ -20,6 +20,7 @@ SpectrumSettingsUi::SpectrumSettingsUi(
   get_object(builder, "spectrum_scale", spectrum_scale);
   get_object(builder, "spectrum_exponent", spectrum_exponent);
   get_object(builder, "spectrum_sampling_freq", spectrum_sampling_freq);
+  get_object(builder, "line_width", line_width);
 
   // signals connection
 
@@ -70,6 +71,7 @@ SpectrumSettingsUi::SpectrumSettingsUi(
   settings->bind("spectrum-exponent", spectrum_exponent.get(), "value", flag);
   settings->bind("spectrum-sampling-freq", spectrum_sampling_freq.get(),
                  "value", flag);
+  settings->bind("spectrum-line-width", line_width.get(), "value", flag);
   settings->bind("use-custom-color", use_custom_color, "active", flag);
   settings->bind("use-custom-color", spectrum_color_button, "sensitive", flag);
 }

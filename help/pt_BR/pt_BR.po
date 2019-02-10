@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2019-02-09 13:32-0200\n"
+"POT-Creation-Date: 2019-02-10 00:02-0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -2035,31 +2035,51 @@ msgstr "Frequência de atualização do espectro."
 
 #. (itstool) path: title/em
 #: C/spectrum.page:61
+msgid "Line Width"
+msgstr "Largura da Linha"
+
+#. (itstool) path: item/p
+#: C/spectrum.page:63
+msgid "Bar line width."
+msgstr "Largura da linha da barra."
+
+#. (itstool) path: title/em
+#: C/spectrum.page:69
 msgid "Fill"
 msgstr "Preencher"
 
 #. (itstool) path: item/p
-#: C/spectrum.page:63
+#: C/spectrum.page:71
 msgid "Draw filled bars."
 msgstr "Desenhar barras preenchidas."
 
 #. (itstool) path: title/em
-#: C/spectrum.page:69
+#: C/spectrum.page:77
+msgid "Border"
+msgstr "Borda"
+
+#. (itstool) path: item/p
+#: C/spectrum.page:79
+msgid "Show bar border."
+msgstr "Mostrar borda da barra."
+
+#. (itstool) path: title/em
+#: C/spectrum.page:85
 msgid "Use Custom Color"
 msgstr "Usar Cor Customizada"
 
 #. (itstool) path: item/p
-#: C/spectrum.page:71
+#: C/spectrum.page:87
 msgid "Use a user defined color or the GTK theme color."
 msgstr "Utilize uma cor definida pelo usuário ou a cor do tema GTK."
 
 #. (itstool) path: title/em
-#: C/spectrum.page:77
+#: C/spectrum.page:93
 msgid "Spectrum Color"
 msgstr "Cor do Espectro"
 
 #. (itstool) path: item/p
-#: C/spectrum.page:79
+#: C/spectrum.page:95
 msgid "User defined color."
 msgstr "Cor definida pelo usuário."
 
@@ -2441,9 +2461,6 @@ msgstr ""
 
 #~ msgid "Enable All Applications"
 #~ msgstr "Habilitar Todos os Aplicativos"
-
-#~ msgid "Bandwidth."
-#~ msgstr "Largura de banda."
 
 #~ msgid "Q"
 #~ msgstr "Q"
