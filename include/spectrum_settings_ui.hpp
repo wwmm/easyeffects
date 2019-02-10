@@ -29,7 +29,7 @@ class SpectrumSettingsUi : public Gtk::Grid {
 
   Application* app;
 
-  Gtk::Switch *show_spectrum, *use_custom_color, *spectrum_fill;
+  Gtk::Switch *show_spectrum, *use_custom_color, *spectrum_fill, *spectrum_border;
   Gtk::ColorButton* spectrum_color_button;
 
   Glib::RefPtr<Gtk::Adjustment> spectrum_n_points, spectrum_height,

@@ -94,11 +94,17 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
     double scale = settings->get_double("spectrum-scale");
     double exponent = settings->get_double("spectrum-exponent");
 
+    auto draw_border = settings->get_boolean("spectrum-border");
+    
     for (uint n = 0; n < n_bars; n++) {
       auto bar_height =
           height * std::min(1., std::pow(scale * spectrum_mag[n], exponent));
 
-      ctx->rectangle(x[n], height - bar_height, width / n_bars, bar_height);
+      if(draw_border) {
+        ctx->rectangle(x[n], height - bar_height, width / n_bars, bar_height);
+      } else {
+        ctx->rectangle(x[n], height - bar_height, width / n_bars + 1, bar_height);
+      }
     }
 
     if (settings->get_boolean("use-custom-color")) {
