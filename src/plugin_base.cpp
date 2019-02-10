@@ -25,6 +25,8 @@ void on_enable(gpointer user_data) {
                                std::string(l->name + "_bin").c_str());
 
   if (!b) {
+    gst_element_set_state(l->bin, GST_STATE_NULL);
+
     gst_element_unlink(l->identity_in, l->identity_out);
 
     gst_bin_add(GST_BIN(l->plugin), l->bin);
@@ -46,7 +48,12 @@ void on_disable(gpointer user_data) {
                                std::string(l->name + "_bin").c_str());
 
   if (b) {
-    gst_element_set_state(l->bin, GST_STATE_NULL);
+    /*
+    now that the crystalizer plugins uses tee it has thread locking problems if
+    we try to change its state inside an event callback =/
+    */
+
+    // gst_element_set_state(l->bin, GST_STATE_NULL);
 
     gst_element_unlink_many(l->identity_in, l->bin, l->identity_out, nullptr);
 
@@ -58,6 +65,54 @@ void on_disable(gpointer user_data) {
   } else {
     util::debug(l->log_tag + l->name + " is already disabled");
   }
+}
+
+static GstPadProbeReturn event_probe_cb(GstPad* pad,
+                                        GstPadProbeInfo* info,
+                                        gpointer user_data) {
+  if (GST_EVENT_TYPE(GST_PAD_PROBE_INFO_DATA(info)) !=
+      GST_EVENT_CUSTOM_DOWNSTREAM) {
+    return GST_PAD_PROBE_PASS;
+  }
+
+  gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
+
+  auto l = static_cast<PluginBase*>(user_data);
+
+  std::lock_guard<std::mutex> lock(l->plugin_mutex);
+
+  on_disable(user_data);
+
+  return GST_PAD_PROBE_DROP;
+}
+
+GstPadProbeReturn on_pad_blocked(GstPad* pad,
+                                 GstPadProbeInfo* info,
+                                 gpointer user_data) {
+  auto l = static_cast<PluginBase*>(user_data);
+
+  gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
+
+  auto srcpad = gst_element_get_static_pad(l->identity_out, "src");
+
+  gst_pad_add_probe(
+      srcpad,
+      static_cast<GstPadProbeType>(GST_PAD_PROBE_TYPE_BLOCK |
+                                   GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM),
+      event_probe_cb, user_data, NULL);
+
+  auto sinkpad = gst_element_get_static_pad(l->bin, "sink");
+
+  GstStructure* s = gst_structure_new_empty("remove_plugin");
+
+  GstEvent* event = gst_event_new_custom(GST_EVENT_CUSTOM_DOWNSTREAM, s);
+
+  gst_pad_send_event(sinkpad, event);
+
+  gst_object_unref(sinkpad);
+  gst_object_unref(srcpad);
+
+  return GST_PAD_PROBE_OK;
 }
 
 }  // namespace
@@ -91,6 +146,8 @@ PluginBase::PluginBase(const std::string& tag,
 
 PluginBase::~PluginBase() {
   auto enable = g_settings_get_boolean(settings, "state");
+
+  gst_element_set_state(bin, GST_STATE_NULL);
 
   if (!enable) {
     gst_object_unref(bin);
@@ -141,17 +198,26 @@ void PluginBase::enable() {
 void PluginBase::disable() {
   auto srcpad = gst_element_get_static_pad(identity_in, "src");
 
-  gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
-                    [](auto pad, auto info, auto d) {
-                      auto pb = static_cast<PluginBase*>(d);
+  GstState state, pending;
 
-                      std::lock_guard<std::mutex> lock(pb->plugin_mutex);
+  gst_element_get_state(bin, &state, &pending, 0);
 
-                      on_disable(d);
+  if (state != GST_STATE_PLAYING) {
+    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
+                      [](auto pad, auto info, auto d) {
+                        auto pb = static_cast<PluginBase*>(d);
 
-                      return GST_PAD_PROBE_REMOVE;
-                    },
-                    this, nullptr);
+                        std::lock_guard<std::mutex> lock(pb->plugin_mutex);
+
+                        on_disable(d);
+
+                        return GST_PAD_PROBE_REMOVE;
+                      },
+                      this, nullptr);
+  } else {
+    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
+                      on_pad_blocked, this, nullptr);
+  }
 
   g_object_unref(srcpad);
 }

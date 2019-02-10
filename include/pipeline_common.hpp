@@ -103,8 +103,6 @@ static GstPadProbeReturn event_probe_cb(GstPad* pad,
 
   gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
 
-  util::warning("event_probe");
-
   auto l = static_cast<T>(user_data);
 
   std::lock_guard<std::mutex> lock(l->pipeline_mutex);
@@ -121,8 +119,6 @@ GstPadProbeReturn on_pad_blocked(GstPad* pad,
                                  GstPadProbeInfo* info,
                                  gpointer user_data) {
   auto l = static_cast<T>(user_data);
-
-  util::warning("pad_blocked");
 
   gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
 
