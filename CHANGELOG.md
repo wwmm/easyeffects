@@ -2,11 +2,12 @@
 
 ## [Unreleased
 
-Warning: the features introduced required a few changes to the
- preset format. It is not a total break like the last time(still using json) but
- manual intervention will be necessary in order to use values from the old format.
- With the exception of the equalizer it is just a matter of doing some copy and
- paste in a text editor.
+- Warning: This is not one more of the typical harmless updates I usually do.
+A few of the many features introduced required a few changes to the preset
+format. It is not a total break like the last time(still using json) but manual
+intervention will be necessary in order to use values from the old format. With
+the exception of the equalizer it is just a matter of doing some copy and paste
+in a text editor.
 
 ### Added
 - It is now possible to make a preset autoload when an input or output device is
@@ -17,9 +18,10 @@ allows the application of a smaller intensity to high frequencies.
 - Updated help and translations.
 - Added options to show/hide bars borders in the spectrum and to change their
 line widths.
+- Improved dynamic pipeline.
 
 ### Changed
-- We now use Linux Studio Plugins "Parametric Equalizer x32 LeftRight"
+- We now use Linux Studio Plugins "Parametric Equalizer x32 LeftRight" (LV2 version)
 http://lsp-plug.in/?page=manuals&section=para_equalizer_x32_lr instead
 of the one from Gstreamer. Reason: it has more features and supports different
 settings for each channel natively. Besides the usual high-pass and low-pass
