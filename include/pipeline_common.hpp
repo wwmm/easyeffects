@@ -28,8 +28,8 @@ void update_effects_order(gpointer user_data) {
   if (gst_element_link(l->identity_in, l->plugins[l->plugins_order[0]])) {
     util::debug(l->log_tag + "linked identity_in to " + l->plugins_order[0]);
   } else {
-    util::warning(l->log_tag + "failed to link identity_in to " +
-                  l->plugins_order[0]);
+    util::debug(l->log_tag + "failed to link identity_in to " +
+                l->plugins_order[0]);
   }
 
   for (long unsigned int n = 1; n < l->plugins_order.size(); n++) {
@@ -39,8 +39,7 @@ void update_effects_order(gpointer user_data) {
     if (gst_element_link(l->plugins[p1_name], l->plugins[p2_name])) {
       util::debug(l->log_tag + "linked " + p1_name + " to " + p2_name);
     } else {
-      util::warning(l->log_tag + "failed to link " + p1_name + " to " +
-                    p2_name);
+      util::debug(l->log_tag + "failed to link " + p1_name + " to " + p2_name);
     }
   }
 
@@ -48,8 +47,8 @@ void update_effects_order(gpointer user_data) {
     util::debug(l->log_tag + "linked " + l->plugins_order.back() +
                 " to identity_out");
   } else {
-    util::warning(l->log_tag + "failed to link " + l->plugins_order.back() +
-                  " to identity_out");
+    util::debug(l->log_tag + "failed to link " + l->plugins_order.back() +
+                " to identity_out");
   }
 }
 
@@ -102,9 +101,17 @@ static GstPadProbeReturn event_probe_cb(GstPad* pad,
     return GST_PAD_PROBE_PASS;
   }
 
-  update_effects_order<T>(user_data);
-
   gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
+
+  util::warning("event_probe");
+
+  auto l = static_cast<T>(user_data);
+
+  std::lock_guard<std::mutex> lock(l->pipeline_mutex);
+
+  if (check_update<T>(user_data)) {
+    update_effects_order<T>(user_data);
+  }
 
   return GST_PAD_PROBE_DROP;
 }
@@ -115,34 +122,30 @@ GstPadProbeReturn on_pad_blocked(GstPad* pad,
                                  gpointer user_data) {
   auto l = static_cast<T>(user_data);
 
-  std::lock_guard<std::mutex> lock(l->pipeline_mutex);
+  util::warning("pad_blocked");
 
-  if (check_update<T>(user_data)) {
-    gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
+  gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
 
-    auto srcpad = gst_element_get_static_pad(l->identity_out, "src");
+  auto srcpad = gst_element_get_static_pad(l->identity_out, "src");
 
-    gst_pad_add_probe(
-        srcpad,
-        static_cast<GstPadProbeType>(GST_PAD_PROBE_TYPE_BLOCK |
-                                     GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM),
-        event_probe_cb<T>, user_data, NULL);
+  gst_pad_add_probe(
+      srcpad,
+      static_cast<GstPadProbeType>(GST_PAD_PROBE_TYPE_BLOCK |
+                                   GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM),
+      event_probe_cb<T>, user_data, NULL);
 
-    auto sinkpad = gst_element_get_static_pad(l->queue_src, "sink");
+  auto sinkpad = gst_element_get_static_pad(l->queue_src, "sink");
 
-    GstStructure* s = gst_structure_new_empty("reorder_plugins");
+  GstStructure* s = gst_structure_new_empty("reorder_plugins");
 
-    GstEvent* event = gst_event_new_custom(GST_EVENT_CUSTOM_DOWNSTREAM, s);
+  GstEvent* event = gst_event_new_custom(GST_EVENT_CUSTOM_DOWNSTREAM, s);
 
-    gst_pad_send_event(sinkpad, event);
+  gst_pad_send_event(sinkpad, event);
 
-    gst_object_unref(sinkpad);
-    gst_object_unref(srcpad);
+  gst_object_unref(sinkpad);
+  gst_object_unref(srcpad);
 
-    return GST_PAD_PROBE_OK;
-  } else {
-    return GST_PAD_PROBE_REMOVE;
-  }
+  return GST_PAD_PROBE_OK;
 }
 
 template <typename T>
