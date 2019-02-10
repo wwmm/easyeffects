@@ -526,15 +526,15 @@ msgstr "36dB/okt Tiefpass"
 
 #: data/ui/filter.glade:226
 msgid "12dB/oct Highpass"
-msgstr "12dB/okt Tiefpass"
+msgstr "12dB/okt Hochpass"
 
 #: data/ui/filter.glade:227
 msgid "24dB/oct Highpass"
-msgstr "24dB/okt Tiefpass"
+msgstr "24dB/okt Hochpass"
 
 #: data/ui/filter.glade:228
 msgid "36dB/oct Highpass"
-msgstr "36dB/okt Tiefpass"
+msgstr "36dB/okt Hochpass"
 
 #: data/ui/filter.glade:229
 msgid "6dB/oct Bandpass"
