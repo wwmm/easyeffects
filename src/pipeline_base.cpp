@@ -281,11 +281,11 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
   gst_registry_scan_path(gst_registry_get(), PLUGINS_INSTALL_DIR);
 
   source = get_required_plugin("pulsesrc", "source");
+  queue_src = get_required_plugin("queue", nullptr);
   capsfilter = get_required_plugin("capsfilter", nullptr);
   sink = get_required_plugin("pulsesink", "sink");
   spectrum = get_required_plugin("spectrum", "spectrum");
 
-  auto queue_src = get_required_plugin("queue", nullptr);
   auto src_type = get_required_plugin("typefind", nullptr);
 
   init_spectrum_bin();

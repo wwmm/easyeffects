@@ -128,8 +128,7 @@ GstPadProbeReturn on_pad_blocked(GstPad* pad,
                                      GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM),
         event_probe_cb<T>, user_data, NULL);
 
-    auto sinkpad =
-        gst_element_get_static_pad(l->plugins[l->plugins_order_old[0]], "sink");
+    auto sinkpad = gst_element_get_static_pad(l->queue_src, "sink");
 
     GstStructure* s = gst_structure_new_empty("reorder_plugins");
 
@@ -163,7 +162,7 @@ GstPadProbeReturn on_pad_idle(GstPad* pad,
 
 template <typename T>
 void on_plugins_order_changed(GSettings* settings, gchar* key, T* l) {
-  auto srcpad = gst_element_get_static_pad(l->identity_in, "src");
+  auto srcpad = gst_element_get_static_pad(l->source, "src");
 
   GstState state, pending;
 
