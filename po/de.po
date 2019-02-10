@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-02-10 00:02-0200\n"
-"PO-Revision-Date: 2019-02-09 19:23+0100\n"
+"PO-Revision-Date: 2019-02-10 12:34+0100\n"
 "Last-Translator: David Keller <blobcodes@protonmail.com>\n"
 "Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/ui/application.glade:41 src/calibration_ui.cpp:48
@@ -64,7 +64,7 @@ msgstr "Ausfüllen"
 
 #: data/ui/spectrum_settings.glade:189
 msgid "Border"
-msgstr ""
+msgstr "Grenze"
 
 #: data/ui/spectrum_settings.glade:214
 msgid "Scale"
@@ -87,9 +87,8 @@ msgid "Sampling"
 msgstr "Abtastrate"
 
 #: data/ui/spectrum_settings.glade:362
-#, fuzzy
 msgid "Line Width"
-msgstr "Breite"
+msgstr "Linienbreite"
 
 #: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:184
 msgid "Use Default"
@@ -657,27 +656,22 @@ msgid "RLC (BT)"
 msgstr "RLC (BT)"
 
 #: data/ui/equalizer_band.glade:91
-#, fuzzy
 msgid "RLC (MT)"
 msgstr "RLC (MT)"
 
 #: data/ui/equalizer_band.glade:92
-#, fuzzy
 msgid "BWC (BT)"
 msgstr "BWC (BT)"
 
 #: data/ui/equalizer_band.glade:93
-#, fuzzy
 msgid "BWC (MT)"
 msgstr "BWC (MT)"
 
 #: data/ui/equalizer_band.glade:94
-#, fuzzy
 msgid "LRX (BT)"
 msgstr "LRX (BT)"
 
 #: data/ui/equalizer_band.glade:95
-#, fuzzy
 msgid "LRX (MT)"
 msgstr "LRX (MT)"
 
@@ -835,9 +829,8 @@ msgid "Scope"
 msgstr "Bereich"
 
 #: data/ui/bass_enhancer.glade:358
-#, fuzzy
 msgid "Floor"
-msgstr "Floor"
+msgstr "Boden"
 
 #: data/ui/exciter.glade:50
 msgid "Exciter"
@@ -852,7 +845,6 @@ msgid "Stereo Tools"
 msgstr "Stereowerkzeuge"
 
 #: data/ui/stereo_tools.glade:210
-#, fuzzy
 msgid "Softclip"
 msgstr "Softclip"
 
@@ -861,14 +853,12 @@ msgid "Balance"
 msgstr "Balance"
 
 #: data/ui/stereo_tools.glade:266
-#, fuzzy
 msgid "S/C Level"
-msgstr "S/C Level"
+msgstr "S/C-Level"
 
 #: data/ui/stereo_tools.glade:324
-#, fuzzy
 msgid "Side Level"
-msgstr "Side Level"
+msgstr "Seitenebene"
 
 #: data/ui/stereo_tools.glade:375
 msgid "Side Balance"
@@ -1054,7 +1044,7 @@ msgstr "Blockgröße"
 
 #: data/ui/crystalizer.glade:24
 msgid "Crystalizer"
-msgstr "Frequenzerweiterung"
+msgstr "Dynamikerweiterung"
 
 #: data/ui/crystalizer.glade:188 data/ui/crystalizer.glade:286
 #: data/ui/crystalizer.glade:384
@@ -1179,19 +1169,20 @@ msgid "Delay"
 msgstr "Verzögerung"
 
 #: data/ui/preset_row.glade:68
-#, fuzzy
 msgid "Save current settings to this preset file"
-msgstr "Aktuelle Einstellungen als Preset speichern"
+msgstr "Aktuelle Einstellungen in dieser Preset-Datei speichern"
 
 #: data/ui/preset_row.glade:84
 msgid "Remove this preset file"
-msgstr ""
+msgstr "Diese Preset-Datei entfernen"
 
 #: data/ui/preset_row.glade:103
 msgid ""
 "Automatically apply this preset whenever the currently used device is "
 "plugged in the system"
 msgstr ""
+"Dieses Preset automatisch anwenden, wenn das aktuell verwendete Gerät an das "
+"System angeschlossen ist."
 
 #: data/ui/presets_menu.glade:86 data/ui/presets_menu.glade:195
 #: src/presets_menu_ui.cpp:119
@@ -1365,14 +1356,12 @@ msgid "Reset PulseEffects."
 msgstr "PulseEffects zurücksetzen."
 
 #: src/application.cpp:58
-#, fuzzy
 msgid "Output Presets: "
-msgstr "Presets: "
+msgstr "Ausgabe-Presets:"
 
 #: src/application.cpp:66
-#, fuzzy
 msgid "Input Presets: "
-msgstr "Presets importieren"
+msgstr "Eingangs-Presets: "
 
 #: src/application.cpp:237
 msgid "PulseEffects was updated"
@@ -1420,11 +1409,11 @@ msgstr "Abbrechen"
 
 #: src/app_info_ui.cpp:85
 msgid "paused"
-msgstr "pausiert"
+msgstr "Pausiert"
 
 #: src/app_info_ui.cpp:87
 msgid "playing"
-msgstr "spielt"
+msgstr "Spielt"
 
 #: src/calibration_ui.cpp:182
 msgid "Calibration Microphone"
