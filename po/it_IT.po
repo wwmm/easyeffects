@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-09 13:40-0200\n"
+"POT-Creation-Date: 2019-02-10 00:02-0200\n"
 "PO-Revision-Date: 2018-12-31 13:07+0100\n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -47,41 +47,50 @@ msgstr "Aiuto"
 msgid "Presets"
 msgstr "Profili"
 
-#: data/ui/spectrum_settings.glade:51
+#: data/ui/spectrum_settings.glade:58
 msgid "Show"
 msgstr "Mostra"
 
-#: data/ui/spectrum_settings.glade:92
+#: data/ui/spectrum_settings.glade:99
 msgid "Points"
 msgstr "Punti"
 
-#: data/ui/spectrum_settings.glade:123
+#: data/ui/spectrum_settings.glade:130
 msgid "Height"
 msgstr "Altezza"
 
-#: data/ui/spectrum_settings.glade:156
+#: data/ui/spectrum_settings.glade:163
 msgid "Fill"
 msgstr "Riempimento"
 
-#: data/ui/spectrum_settings.glade:181
+#: data/ui/spectrum_settings.glade:189
+msgid "Border"
+msgstr ""
+
+#: data/ui/spectrum_settings.glade:214
 msgid "Scale"
 msgstr "Scala"
 
-#: data/ui/spectrum_settings.glade:213
+#: data/ui/spectrum_settings.glade:246
 msgid "Exponent"
 msgstr "Esponente"
 
-#: data/ui/spectrum_settings.glade:246
+#: data/ui/spectrum_settings.glade:279
 msgid "Use Custom Color"
 msgstr "Usa Colore Personalizzato"
 
-#: data/ui/spectrum_settings.glade:272
+#: data/ui/spectrum_settings.glade:305
 msgid "Spectrum Color"
 msgstr "Colore Spettro"
 
-#: data/ui/spectrum_settings.glade:299
+#: data/ui/spectrum_settings.glade:332
 msgid "Sampling"
 msgstr "Campionamento"
+
+#: data/ui/spectrum_settings.glade:362
+#, fuzzy
+msgid "Line Width"
+msgstr "Ampiezza"
 
 #: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:184
 msgid "Use Default"
@@ -1024,7 +1033,7 @@ msgstr "Risposto all'Impulso"
 msgid "Select the impulse Response File"
 msgstr "Seleziona il File di Risposta all'impulso"
 
-#: data/ui/convolver.glade:385 src/spectrum_settings_ui.cpp:93
+#: data/ui/convolver.glade:385 src/spectrum_settings_ui.cpp:97
 msgid "Spectrum"
 msgstr "Spettro"
 
@@ -1331,7 +1340,7 @@ msgstr "limitatore;compressore;riverbero;equalizzatore;volumeauto;"
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:228
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:235
 msgid "\"Presets\""
 msgstr "\"Profili\""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-08 12:32-0200\n"
+"POT-Creation-Date: 2019-02-10 00:02-0200\n"
 "PO-Revision-Date: 2019-02-09 19:23+0100\n"
 "Last-Translator: David Keller <blobcodes@protonmail.com>\n"
 "Language-Team: \n"
@@ -41,45 +41,55 @@ msgstr "Hilfe"
 #: data/ui/application.glade:180 data/ui/compressor.glade:205
 #: data/ui/filter.glade:207 data/ui/equalizer.glade:312
 #: data/ui/reverb.glade:287 data/ui/crossfeed.glade:47
-#: src/presets_menu_ui.cpp:113 src/presets_menu_ui.cpp:197
+#: src/presets_menu_ui.cpp:124 src/presets_menu_ui.cpp:287
+#: src/presets_menu_ui.cpp:304
 msgid "Presets"
 msgstr "Presets"
 
-#: data/ui/spectrum_settings.glade:51
+#: data/ui/spectrum_settings.glade:58
 msgid "Show"
 msgstr "Anzeigen"
 
-#: data/ui/spectrum_settings.glade:92
+#: data/ui/spectrum_settings.glade:99
 msgid "Points"
 msgstr "Punkte"
 
-#: data/ui/spectrum_settings.glade:123
+#: data/ui/spectrum_settings.glade:130
 msgid "Height"
 msgstr "Höhe"
 
-#: data/ui/spectrum_settings.glade:156
+#: data/ui/spectrum_settings.glade:163
 msgid "Fill"
 msgstr "Ausfüllen"
 
-#: data/ui/spectrum_settings.glade:181
+#: data/ui/spectrum_settings.glade:189
+msgid "Border"
+msgstr ""
+
+#: data/ui/spectrum_settings.glade:214
 msgid "Scale"
 msgstr "Skala"
 
-#: data/ui/spectrum_settings.glade:213
+#: data/ui/spectrum_settings.glade:246
 msgid "Exponent"
 msgstr "Exponent"
 
-#: data/ui/spectrum_settings.glade:246
+#: data/ui/spectrum_settings.glade:279
 msgid "Use Custom Color"
 msgstr "Benutzerdefinierte Farbe benutzen"
 
-#: data/ui/spectrum_settings.glade:272
+#: data/ui/spectrum_settings.glade:305
 msgid "Spectrum Color"
 msgstr "Spektrumfarbe"
 
-#: data/ui/spectrum_settings.glade:299
+#: data/ui/spectrum_settings.glade:332
 msgid "Sampling"
 msgstr "Abtastrate"
+
+#: data/ui/spectrum_settings.glade:362
+#, fuzzy
+msgid "Line Width"
+msgstr "Breite"
 
 #: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:184
 msgid "Use Default"
@@ -95,21 +105,21 @@ msgstr "Puffer"
 msgid "Latency"
 msgstr "Latenz"
 
-#: data/ui/pulse_settings.glade:170 data/ui/blacklist_settings.glade:108
+#: data/ui/pulse_settings.glade:170 data/ui/blacklist_settings.glade:130
 msgid "Input Effects"
 msgstr "Eingangseffekte"
 
-#: data/ui/pulse_settings.glade:284 data/ui/blacklist_settings.glade:180
+#: data/ui/pulse_settings.glade:284 data/ui/blacklist_settings.glade:224
 msgid "Output Effects"
 msgstr "Ausgabeeffekte"
 
-#: data/ui/blacklist_settings.glade:78 data/ui/blacklist_settings.glade:150
-#: data/ui/presets_menu.glade:43
+#: data/ui/blacklist_settings.glade:53 data/ui/blacklist_settings.glade:147
+#: data/ui/presets_menu.glade:68 data/ui/presets_menu.glade:177
 msgid "Create Preset"
 msgstr "Preset erstellen"
 
-#: data/ui/blacklist_settings.glade:97 data/ui/blacklist_settings.glade:169
-#: data/ui/presets_menu.glade:30
+#: data/ui/blacklist_settings.glade:72 data/ui/blacklist_settings.glade:166
+#: data/ui/presets_menu.glade:55 data/ui/presets_menu.glade:164
 msgid "Name"
 msgstr "Name"
 
@@ -217,6 +227,7 @@ msgstr "Gewichte"
 #: data/ui/multiband_gate.glade:2110 data/ui/deesser.glade:571
 #: data/ui/convolver.glade:526 data/ui/crystalizer.glade:504
 #: data/ui/pitch.glade:325 data/ui/webrtc.glade:627 data/ui/delay.glade:213
+#: data/ui/presets_menu.glade:255
 msgid "Input"
 msgstr "Eingang"
 
@@ -237,6 +248,7 @@ msgstr "Eingang"
 #: data/ui/multiband_gate.glade:2125 data/ui/deesser.glade:586
 #: data/ui/convolver.glade:541 data/ui/crystalizer.glade:519
 #: data/ui/pitch.glade:339 data/ui/webrtc.glade:642 data/ui/delay.glade:228
+#: data/ui/presets_menu.glade:146
 msgid "Output"
 msgstr "Ausgang"
 
@@ -703,7 +715,7 @@ msgid "Mute"
 msgstr "Stummschalten"
 
 #: data/ui/equalizer_preset_row.glade:37 data/ui/irs_row.glade:62
-#: data/ui/preset_row.glade:84
+#: data/ui/preset_row.glade:51
 msgid "Apply"
 msgstr "Anwenden"
 
@@ -1028,7 +1040,7 @@ msgstr "Impulsantwort"
 msgid "Select the impulse Response File"
 msgstr "Auswahl der Impulsantwortdatei"
 
-#: data/ui/convolver.glade:385 src/spectrum_settings_ui.cpp:93
+#: data/ui/convolver.glade:385 src/spectrum_settings_ui.cpp:97
 msgid "Spectrum"
 msgstr "Spektrum"
 
@@ -1166,7 +1178,23 @@ msgstr "Spracherkennung"
 msgid "Delay"
 msgstr "Verzögerung"
 
-#: data/ui/presets_menu.glade:61 src/presets_menu_ui.cpp:108
+#: data/ui/preset_row.glade:68
+#, fuzzy
+msgid "Save current settings to this preset file"
+msgstr "Aktuelle Einstellungen als Preset speichern"
+
+#: data/ui/preset_row.glade:84
+msgid "Remove this preset file"
+msgstr ""
+
+#: data/ui/preset_row.glade:103
+msgid ""
+"Automatically apply this preset whenever the currently used device is "
+"plugged in the system"
+msgstr ""
+
+#: data/ui/presets_menu.glade:86 data/ui/presets_menu.glade:195
+#: src/presets_menu_ui.cpp:119
 msgid "Import Presets"
 msgstr "Presets importieren"
 
@@ -1316,7 +1344,7 @@ msgstr "Limiter;Kompressor;Hall;Equalizer;Autovolumen;"
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:228
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:235
 msgid "\"Presets\""
 msgstr "\"Presets\""
 
@@ -1337,14 +1365,20 @@ msgid "Reset PulseEffects."
 msgstr "PulseEffects zurücksetzen."
 
 #: src/application.cpp:58
-msgid "Presets: "
+#, fuzzy
+msgid "Output Presets: "
 msgstr "Presets: "
 
-#: src/application.cpp:222
+#: src/application.cpp:66
+#, fuzzy
+msgid "Input Presets: "
+msgstr "Presets importieren"
+
+#: src/application.cpp:237
 msgid "PulseEffects was updated"
 msgstr "PulseEffects wurde Aktualisiert"
 
-#: src/application.cpp:225
+#: src/application.cpp:240
 msgid ""
 "It is recommended to reset its configuration after an update. Do you want to "
 "do this?"
@@ -1352,11 +1386,11 @@ msgstr ""
 "Es wird empfohlen, die Konfiguration nach einem Update zurückzusetzen. "
 "Willst du das tun?"
 
-#: src/application.cpp:228
+#: src/application.cpp:243
 msgid "Yes"
 msgstr "Ja"
 
-#: src/application.cpp:229
+#: src/application.cpp:244
 msgid "No"
 msgstr "Nein"
 
@@ -1376,11 +1410,11 @@ msgstr "Allgemein"
 msgid "Pulseaudio"
 msgstr "PulseAudio"
 
-#: src/presets_menu_ui.cpp:109 src/convolver_ui.cpp:328
+#: src/presets_menu_ui.cpp:120 src/convolver_ui.cpp:328
 msgid "Open"
 msgstr "Öffnen"
 
-#: src/presets_menu_ui.cpp:109 src/convolver_ui.cpp:328
+#: src/presets_menu_ui.cpp:120 src/convolver_ui.cpp:328
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -1522,9 +1556,6 @@ msgstr "Unendlich"
 #, fuzzy
 #~ msgid "Mono Input"
 #~ msgstr "Eingang"
-
-#~ msgid "Save Current Settings to Preset"
-#~ msgstr "Aktuelle Einstellungen als Preset speichern"
 
 #~ msgid "Delete Preset"
 #~ msgstr "Preset löschen"

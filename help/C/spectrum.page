@@ -58,10 +58,26 @@
         </item>
         <item>
             <title>
+                <em style="strong" its:withinText="nested">Line Width</em>
+            </title>
+            <p>
+                Bar line width.
+            </p>
+        </item>
+        <item>
+            <title>
                 <em style="strong" its:withinText="nested">Fill</em>
             </title>
             <p>
                 Draw filled bars.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Border</em>
+            </title>
+            <p>
+                Show bar border.
             </p>
         </item>
         <item>
