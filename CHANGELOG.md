@@ -2,6 +2,8 @@
 
 ## [Unreleased
 
+## [4.5.0]
+
 - Warning: This is not one more of the typical harmless updates I usually do.
 A few of the many features introduced required a few changes to the preset
 format. It is not a total break like the last time(still using json) but manual
