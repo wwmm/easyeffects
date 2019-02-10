@@ -66,12 +66,8 @@ void update_effects_order(gpointer user_data) {
 }
 
 template <typename T>
-GstPadProbeReturn on_pad_idle(GstPad* pad,
-                              GstPadProbeInfo* info,
-                              gpointer user_data) {
+bool check_update(gpointer user_data) {
   auto l = static_cast<T>(user_data);
-
-  std::lock_guard<std::mutex> lock(l->pipeline_mutex);
 
   bool update = false;
   gchar* name;
@@ -104,7 +100,20 @@ GstPadProbeReturn on_pad_idle(GstPad* pad,
     }
 
     util::debug(l->log_tag + "new plugins order: [" + list + "]");
+  }
 
+  return update;
+}
+
+template <typename T>
+GstPadProbeReturn on_pad_idle(GstPad* pad,
+                              GstPadProbeInfo* info,
+                              gpointer user_data) {
+  auto l = static_cast<T>(user_data);
+
+  std::lock_guard<std::mutex> lock(l->pipeline_mutex);
+
+  if (check_update<T>(user_data)) {
     update_effects_order<T>(user_data);
   }
 

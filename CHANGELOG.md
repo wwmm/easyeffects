@@ -14,7 +14,7 @@ Warning: the features introduced required a few changes to the
 - The Crystalizer plugin now splits the frequency spectrum in three regions. This
 allows the application of a smaller intensity to high frequencies.
 - Remember window size.
-- Updated help.
+- Updated help and translations.
 - Added options to show/hide bars borders in the spectrum and to change their
 line widths.
 
