@@ -27,7 +27,7 @@
             <default>[1.0,1.0,1.0,1.0]</default>
         </key>
         <key name="background-color" type="ad">
-            <default>[0.0,0.0,0.0,0.0]</default>
+            <default>[0.0,0.0,0.0,1.0]</default>
         </key>
         <key name="height" type="i">
             <default>100</default>
