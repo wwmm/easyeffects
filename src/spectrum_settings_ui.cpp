@@ -16,6 +16,7 @@ SpectrumSettingsUi::SpectrumSettingsUi(
   builder->get_widget("spectrum_color_button", spectrum_color_button);
   builder->get_widget("background_color_button", background_color_button);
   builder->get_widget("use_custom_color", use_custom_color);
+  builder->get_widget("use_gradient", use_gradient);
 
   get_object(builder, "n_points", n_points);
   get_object(builder, "height", height);
@@ -98,6 +99,7 @@ SpectrumSettingsUi::SpectrumSettingsUi(
   settings->bind("exponent", exponent.get(), "value", flag);
   settings->bind("sampling-freq", sampling_freq.get(), "value", flag);
   settings->bind("line-width", line_width.get(), "value", flag);
+  settings->bind("use-gradient", use_gradient, "active", flag);
   settings->bind("use-custom-color", use_custom_color, "active", flag);
   settings->bind("use-custom-color", spectrum_color_button, "sensitive", flag);
   settings->bind("use-custom-color", background_color_button, "sensitive",

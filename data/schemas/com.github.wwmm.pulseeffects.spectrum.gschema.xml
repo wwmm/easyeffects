@@ -7,10 +7,10 @@
             <default>true</default>
         </key>
         <key name="fill" type="b">
-            <default>false</default>
+            <default>true</default>
         </key>
         <key name="show-bar-border" type="b">
-            <default>false</default>
+            <default>true</default>
         </key>
         <key name="n-points" type="i">
             <range min="2" max="600"/>
@@ -22,6 +22,9 @@
         </key>
         <key name="use-custom-color" type="b">
             <default>false</default>
+        </key>
+        <key name="use-gradient" type="b">
+            <default>true</default>
         </key>
         <key name="color" type="ad">
             <default>[1.0,1.0,1.0,1.0]</default>
