@@ -108,16 +108,21 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
 
     auto draw_border = settings->get_boolean("show-bar-border");
 
-    auto gradient = Cairo::LinearGradient::create(0.0, 0.0, 0, height);
+    auto max_mag = *std::max_element(spectrum_mag.begin(), spectrum_mag.end());
+    auto max_bar_height =
+        height * std::min(1., std::pow(scale * max_mag, exponent));
 
-    gradient->add_color_stop_rgba(0, color.get_red(), color.get_green(),
-                                  color.get_blue(), 1.0);
+    auto gradient =
+        Cairo::LinearGradient::create(0.0, height - max_bar_height, 0, height);
+
+    gradient->add_color_stop_rgba(0.0, color.get_red(), color.get_green(),
+                                  color.get_blue(), color.get_alpha());
 
     gradient->add_color_stop_rgba(0.5, color.get_red(), color.get_green(),
-                                  color.get_blue(), 0.5);
+                                  color.get_blue(), 0.75 * color.get_alpha());
 
-    gradient->add_color_stop_rgba(1, color.get_red(), color.get_green(),
-                                  color.get_blue(), .25);
+    gradient->add_color_stop_rgba(1.0, color.get_red(), color.get_green(),
+                                  color.get_blue(), 0.25 * color.get_alpha());
 
     ctx->set_source(gradient);
 
