@@ -25,6 +25,7 @@
 #include "pitch_preset.hpp"
 #include "preset_type.hpp"
 #include "reverb_preset.hpp"
+#include "spectrum_preset.hpp"
 #include "stereo_tools_preset.hpp"
 #include "webrtc_preset.hpp"
 
@@ -72,6 +73,7 @@ class PresetsManager {
   std::unique_ptr<CrystalizerPreset> crystalizer;
   std::unique_ptr<AutoGainPreset> autogain;
   std::unique_ptr<DelayPreset> delay;
+  std::unique_ptr<SpectrumPreset> spectrum;
 
   template <typename T>
   T get_default(const Glib::RefPtr<Gio::Settings>& settings,
@@ -123,10 +125,6 @@ class PresetsManager {
   }
 
   void create_directory(boost::filesystem::path& path);
-
-  void save_general_settings(boost::property_tree::ptree& root);
-
-  void load_general_settings(boost::property_tree::ptree& root);
 
   void save_blacklist(PresetType preset_type,
                       boost::property_tree::ptree& root);

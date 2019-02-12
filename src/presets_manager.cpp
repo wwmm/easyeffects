@@ -35,7 +35,8 @@ PresetsManager::PresetsManager()
       convolver(std::make_unique<ConvolverPreset>()),
       crystalizer(std::make_unique<CrystalizerPreset>()),
       autogain(std::make_unique<AutoGainPreset>()),
-      delay(std::make_unique<DelayPreset>()) {
+      delay(std::make_unique<DelayPreset>()),
+      spectrum(std::make_unique<SpectrumPreset>()) {
   create_directory(presets_dir);
   create_directory(input_dir);
   create_directory(output_dir);
@@ -94,77 +95,6 @@ void PresetsManager::add(PresetType preset_type, const std::string& name) {
   }
 
   save(preset_type, name);
-}
-
-void PresetsManager::save_general_settings(boost::property_tree::ptree& root) {
-  boost::property_tree::ptree node_in;
-  Glib::Variant<std::vector<double>> aux;
-
-  // spectrum keys
-
-  root.put("spectrum.show", settings->get_boolean("show-spectrum"));
-  root.put("spectrum.n-points", settings->get_int("spectrum-n-points"));
-  root.put("spectrum.height", settings->get_int("spectrum-height"));
-  root.put("spectrum.use-custom-color",
-           settings->get_boolean("use-custom-color"));
-  root.put("spectrum.fill", settings->get_boolean("spectrum-fill"));
-  root.put("spectrum.border", settings->get_boolean("spectrum-border"));
-  root.put("spectrum.scale", settings->get_double("spectrum-scale"));
-  root.put("spectrum.exponent", settings->get_double("spectrum-exponent"));
-  root.put("spectrum.sampling-freq",
-           settings->get_int("spectrum-sampling-freq"));
-  root.put("spectrum.line-width", settings->get_double("spectrum-line-width"));
-
-  settings->get_value("spectrum-color", aux);
-
-  for (auto& p : aux.get()) {
-    boost::property_tree::ptree node;
-    node.put("", p);
-    node_in.push_back(std::make_pair("", node));
-  }
-
-  root.add_child("spectrum.color", node_in);
-}
-
-void PresetsManager::load_general_settings(boost::property_tree::ptree& root) {
-  // spectrum keys
-
-  update_key<bool>(root, settings, "show-spectrum", "spectrum.show");
-
-  update_key<int>(root, settings, "spectrum-n-points", "spectrum.n-points");
-
-  update_key<int>(root, settings, "spectrum-height", "spectrum.height");
-
-  update_key<bool>(root, settings, "use-custom-color",
-                   "spectrum.use-custom-color");
-
-  update_key<bool>(root, settings, "spectrum-fill", "spectrum.fill");
-
-  update_key<bool>(root, settings, "spectrum-border", "spectrum.border");
-
-  update_key<double>(root, settings, "spectrum-scale", "spectrum.scale");
-
-  update_key<double>(root, settings, "spectrum-exponent", "spectrum.exponent");
-
-  update_key<int>(root, settings, "spectrum-sampling-freq",
-                  "spectrum.sampling-freq");
-
-  update_key<double>(root, settings, "spectrum-line-width",
-                     "spectrum.line-width");
-
-  try {
-    std::vector<double> spectrum_color;
-
-    for (auto& p : root.get_child("spectrum.color")) {
-      spectrum_color.push_back(p.second.get<double>(""));
-    }
-
-    auto v = Glib::Variant<std::vector<double>>::create(spectrum_color);
-
-    settings->set_value("spectrum-color", v);
-  } catch (const boost::property_tree::ptree_error& e) {
-    settings->reset("spectrum-color");
-  }
 }
 
 void PresetsManager::save_blacklist(PresetType preset_type,
@@ -230,7 +160,7 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
   boost::property_tree::ptree root, node_in, node_out;
   boost::filesystem::path output_file;
 
-  save_general_settings(root);
+  spectrum->write(preset_type, root);
   save_blacklist(preset_type, root);
 
   if (preset_type == PresetType::output) {
@@ -379,9 +309,9 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
     soe_settings->set_string_array("plugins", input_plugins);
   }
 
-  load_general_settings(root);
   load_blacklist(preset_type, root);
 
+  spectrum->read(preset_type, root);
   bass_enhancer->read(preset_type, root);
   compressor->read(preset_type, root);
   crossfeed->read(preset_type, root);
