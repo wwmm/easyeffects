@@ -178,6 +178,7 @@
             <range min="100" max="100000"/>
             <default>10000</default>
         </key>
+
         <key name="show-spectrum" type="b">
             <default>true</default>
         </key>
@@ -201,6 +202,9 @@
         <key name="spectrum-color" type="ad">
             <default>[1.0,1.0,1.0,1.0]</default>
         </key>
+        <key name="spectrum-background-color" type="ad">
+            <default>[0.0,0.0,0.0,0.0]</default>
+        </key>
         <key name="spectrum-height" type="i">
             <default>100</default>
         </key>
@@ -216,6 +220,7 @@
             <range min="1" max="200"/>
             <default>10</default>
         </key>
+
         <key name="enable-all-sinkinputs" type="b">
             <default>true</default>
         </key>

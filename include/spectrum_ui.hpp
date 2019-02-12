@@ -11,7 +11,6 @@ class SpectrumUi : public Gtk::Grid {
  public:
   SpectrumUi(BaseObjectType* cobject,
              const Glib::RefPtr<Gtk::Builder>& builder,
-             const Glib::RefPtr<Gio::Settings>& refSettings,
              Application* application);
 
   virtual ~SpectrumUi();

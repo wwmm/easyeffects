@@ -3,9 +3,10 @@
 
 SpectrumUi::SpectrumUi(BaseObjectType* cobject,
                        const Glib::RefPtr<Gtk::Builder>& builder,
-                       const Glib::RefPtr<Gio::Settings>& refSettings,
                        Application* application)
-    : Gtk::Grid(cobject), settings(refSettings), app(application) {
+    : Gtk::Grid(cobject),
+      settings(Gio::Settings::create("com.github.wwmm.pulseeffects")),
+      app(application) {
   // loading glade widgets
 
   builder->get_widget("spectrum", spectrum);
@@ -57,11 +58,9 @@ SpectrumUi* SpectrumUi::add_to_box(Gtk::Box* box, Application* app) {
   auto builder = Gtk::Builder::create_from_resource(
       "/com/github/wwmm/pulseeffects/ui/spectrum.glade");
 
-  auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
-
   SpectrumUi* ui;
 
-  builder->get_widget_derived("widgets_grid", ui, settings, app);
+  builder->get_widget_derived("widgets_grid", ui, app);
 
   box->add(*ui);
 
@@ -108,6 +107,20 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
         ctx->rectangle(x[n], height - bar_height, width / n_bars, bar_height);
       }
     }
+
+    // ctx->move_to(0, height);
+    //
+    // for (uint n = 0; n < n_bars - 1; n++) {
+    //   auto bar_height = spectrum_mag[n] * height;
+    //
+    //   ctx->line_to(x[n], height - bar_height);
+    // }
+    //
+    // ctx->line_to(width, height);
+    //
+    // ctx->move_to(width, height);
+    //
+    // ctx->close_path();
 
     if (settings->get_boolean("use-custom-color")) {
       ctx->set_source_rgba(spectrum_color.get_red(), spectrum_color.get_green(),

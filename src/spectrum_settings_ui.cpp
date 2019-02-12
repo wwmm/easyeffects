@@ -13,6 +13,7 @@ SpectrumSettingsUi::SpectrumSettingsUi(
   builder->get_widget("spectrum_fill", spectrum_fill);
   builder->get_widget("spectrum_border", spectrum_border);
   builder->get_widget("spectrum_color_button", spectrum_color_button);
+  builder->get_widget("background_color_button", background_color_button);
   builder->get_widget("use_custom_color", use_custom_color);
 
   get_object(builder, "spectrum_n_points", spectrum_n_points);

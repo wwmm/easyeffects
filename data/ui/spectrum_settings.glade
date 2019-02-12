@@ -317,6 +317,7 @@
             <property name="halign">start</property>
             <property name="valign">center</property>
             <property name="use_alpha">True</property>
+            <property name="show_editor">True</property>
           </object>
           <packing>
             <property name="left_attach">3</property>
@@ -386,10 +387,31 @@
           </packing>
         </child>
         <child>
-          <placeholder/>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">end</property>
+            <property name="valign">center</property>
+            <property name="margin_left">30</property>
+            <property name="label" translatable="yes">Background Color</property>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">4</property>
+          </packing>
         </child>
         <child>
-          <placeholder/>
+          <object class="GtkColorButton" id="background_color_button">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_alpha">True</property>
+            <property name="show_editor">True</property>
+          </object>
+          <packing>
+            <property name="left_attach">3</property>
+            <property name="top_attach">4</property>
+          </packing>
         </child>
         <child>
           <placeholder/>
