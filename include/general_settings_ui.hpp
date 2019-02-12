@@ -17,7 +17,6 @@ class GeneralSettingsUi : public Gtk::Grid {
  public:
   GeneralSettingsUi(BaseObjectType* cobject,
                     const Glib::RefPtr<Gtk::Builder>& builder,
-                    const Glib::RefPtr<Gio::Settings>& refSettings,
                     Application* application);
 
   virtual ~GeneralSettingsUi();

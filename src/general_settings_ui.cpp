@@ -38,12 +38,12 @@ GVariant* int_to_priority_type_enum(const GValue* value,
 
 }  // namespace
 
-GeneralSettingsUi::GeneralSettingsUi(
-    BaseObjectType* cobject,
-    const Glib::RefPtr<Gtk::Builder>& builder,
-    const Glib::RefPtr<Gio::Settings>& refSettings,
-    Application* application)
-    : Gtk::Grid(cobject), settings(refSettings), app(application) {
+GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
+                                     const Glib::RefPtr<Gtk::Builder>& builder,
+                                     Application* application)
+    : Gtk::Grid(cobject),
+      settings(Gio::Settings::create("com.github.wwmm.pulseeffects")),
+      app(application) {
   // loading glade widgets
 
   builder->get_widget("theme_switch", theme_switch);
@@ -130,11 +130,9 @@ void GeneralSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
   auto builder = Gtk::Builder::create_from_resource(
       "/com/github/wwmm/pulseeffects/ui/general_settings.glade");
 
-  auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
-
   GeneralSettingsUi* ui;
 
-  builder->get_widget_derived("widgets_grid", ui, settings, app);
+  builder->get_widget_derived("widgets_grid", ui, app);
 
   stack->add(*ui, "general_spectrum", _("General"));
 }
