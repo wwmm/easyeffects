@@ -16,7 +16,6 @@ class PulseSettingsUi : public Gtk::Grid {
  public:
   PulseSettingsUi(BaseObjectType* cobject,
                   const Glib::RefPtr<Gtk::Builder>& builder,
-                  const Glib::RefPtr<Gio::Settings>& refSettings,
                   Application* application);
 
   virtual ~PulseSettingsUi();
