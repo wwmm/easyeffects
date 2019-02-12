@@ -178,49 +178,6 @@
             <range min="100" max="100000"/>
             <default>10000</default>
         </key>
-
-        <key name="show-spectrum" type="b">
-            <default>true</default>
-        </key>
-        <key name="spectrum-fill" type="b">
-            <default>false</default>
-        </key>
-        <key name="spectrum-border" type="b">
-            <default>false</default>
-        </key>
-        <key name="spectrum-n-points" type="i">
-            <range min="2" max="600"/>
-            <default>100</default>
-        </key>
-        <key name="spectrum-line-width" type="d">
-            <range min="0.1" max="100.0"/>
-            <default>2.0</default>
-        </key>
-        <key name="use-custom-color" type="b">
-            <default>false</default>
-        </key>
-        <key name="spectrum-color" type="ad">
-            <default>[1.0,1.0,1.0,1.0]</default>
-        </key>
-        <key name="spectrum-background-color" type="ad">
-            <default>[0.0,0.0,0.0,0.0]</default>
-        </key>
-        <key name="spectrum-height" type="i">
-            <default>100</default>
-        </key>
-        <key name="spectrum-scale" type="d">
-            <range min="0.0" max="10.0"/>
-            <default>1.0</default>
-        </key>
-        <key name="spectrum-exponent" type="d">
-            <range min="0.0" max="10.0"/>
-            <default>1.0</default>
-        </key>
-        <key name="spectrum-sampling-freq" type="i">
-            <range min="1" max="200"/>
-            <default>10</default>
-        </key>
-
         <key name="enable-all-sinkinputs" type="b">
             <default>true</default>
         </key>

@@ -25,7 +25,8 @@ class PipelineBase {
 
   GstBus* bus = nullptr;
 
-  GSettings *settings = nullptr, *child_settings = nullptr;
+  GSettings *settings = nullptr, *child_settings = nullptr,
+            *spectrum_settings = nullptr;
 
   std::unique_ptr<RealtimeKit> rtkit;
 

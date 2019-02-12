@@ -15,7 +15,6 @@ class SpectrumSettingsUi : public Gtk::Grid {
  public:
   SpectrumSettingsUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& builder,
-                     const Glib::RefPtr<Gio::Settings>& refSettings,
                      Application* application);
 
   virtual ~SpectrumSettingsUi();
@@ -29,12 +28,11 @@ class SpectrumSettingsUi : public Gtk::Grid {
 
   Application* app;
 
-  Gtk::Switch *show_spectrum, *use_custom_color, *spectrum_fill,
-      *spectrum_border;
+  Gtk::Switch *show, *use_custom_color, *fill, *show_bar_border;
   Gtk::ColorButton *spectrum_color_button, *background_color_button;
 
-  Glib::RefPtr<Gtk::Adjustment> spectrum_n_points, spectrum_height,
-      spectrum_scale, spectrum_exponent, spectrum_sampling_freq, line_width;
+  Glib::RefPtr<Gtk::Adjustment> n_points, height, scale, exponent,
+      sampling_freq, line_width;
 
   std::vector<sigc::connection> connections;
 

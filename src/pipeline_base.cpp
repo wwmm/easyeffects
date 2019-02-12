@@ -172,7 +172,7 @@ void on_message_element(const GstBus* gst_bus,
 void on_spectrum_n_points_changed(GSettings* settings,
                                   gchar* key,
                                   PipelineBase* pb) {
-  long unsigned int npoints = g_settings_get_int(settings, "spectrum-n-points");
+  long unsigned int npoints = g_settings_get_int(settings, "n-points");
 
   if (npoints != pb->spectrum_mag.size()) {
     pb->resizing_spectrum = true;
@@ -254,6 +254,8 @@ GstPadProbeReturn on_sink_event(GstPad* pad,
 PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     : log_tag(tag),
       settings(g_settings_new("com.github.wwmm.pulseeffects")),
+      spectrum_settings(
+          g_settings_new("com.github.wwmm.pulseeffects.spectrum")),
       rtkit(std::make_unique<RealtimeKit>(tag)) {
   gst_init(nullptr, nullptr);
 
@@ -352,6 +354,7 @@ PipelineBase::~PipelineBase() {
   gst_object_unref(bus);
   gst_object_unref(pipeline);
   g_object_unref(settings);
+  g_object_unref(spectrum_settings);
   g_object_unref(child_settings);
 }
 
@@ -535,7 +538,7 @@ void PipelineBase::on_app_removed(uint idx) {
 }
 
 void PipelineBase::init_spectrum(const uint& sampling_rate) {
-  g_signal_connect(settings, "changed::spectrum-n-points",
+  g_signal_connect(spectrum_settings, "changed::n-points",
                    G_CALLBACK(on_spectrum_n_points_changed), this);
 
   spectrum_freqs.clear();
@@ -554,7 +557,7 @@ void PipelineBase::init_spectrum(const uint& sampling_rate) {
 
   spectrum_mag_tmp.resize(spectrum_freqs.size());
 
-  auto npoints = g_settings_get_int(settings, "spectrum-n-points");
+  auto npoints = g_settings_get_int(spectrum_settings, "n-points");
 
   spectrum_x_axis = util::logspace(log10(min_spectrum_freq),
                                    log10(max_spectrum_freq), npoints);

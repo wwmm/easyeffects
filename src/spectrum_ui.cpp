@@ -5,7 +5,7 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject,
                        const Glib::RefPtr<Gtk::Builder>& builder,
                        Application* application)
     : Gtk::Grid(cobject),
-      settings(Gio::Settings::create("com.github.wwmm.pulseeffects")),
+      settings(Gio::Settings::create("com.github.wwmm.pulseeffects.spectrum")),
       app(application) {
   // loading glade widgets
 
@@ -22,25 +22,23 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject,
   spectrum->signal_motion_notify_event().connect(
       sigc::mem_fun(*this, &SpectrumUi::on_spectrum_motion_notify_event));
 
-  connections.push_back(
-      settings->signal_changed("spectrum-color").connect([&](auto key) {
-        init_custom_color();
-      }));
+  connections.push_back(settings->signal_changed("color").connect(
+      [&](auto key) { init_custom_color(); }));
 
   connections.push_back(
-      settings->signal_changed("spectrum-height").connect([&](auto key) {
-        auto v = settings->get_int("spectrum-height");
+      settings->signal_changed("height").connect([&](auto key) {
+        auto v = settings->get_int("height");
 
         spectrum->set_size_request(-1, v);
       }));
 
   auto flag_get = Gio::SettingsBindFlags::SETTINGS_BIND_GET;
 
-  settings->bind("show-spectrum", this, "visible", flag_get);
+  settings->bind("show", this, "visible", flag_get);
 
   init_custom_color();
 
-  spectrum->set_size_request(-1, settings->get_int("spectrum-height"));
+  spectrum->set_size_request(-1, settings->get_int("height"));
 }
 
 SpectrumUi::~SpectrumUi() {
@@ -89,12 +87,12 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
     float width = allocation.get_width();
     auto height = allocation.get_height();
     auto n_bars = spectrum_mag.size();
-    auto line_width = settings->get_double("spectrum-line-width");
+    auto line_width = settings->get_double("line-width");
     auto x = util::linspace(line_width, width - line_width, n_bars);
-    double scale = settings->get_double("spectrum-scale");
-    double exponent = settings->get_double("spectrum-exponent");
+    double scale = settings->get_double("scale");
+    double exponent = settings->get_double("exponent");
 
-    auto draw_border = settings->get_boolean("spectrum-border");
+    auto draw_border = settings->get_boolean("show-bar-border");
 
     for (uint n = 0; n < n_bars; n++) {
       auto bar_height =
@@ -138,10 +136,11 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
 
     ctx->set_line_width(line_width);
 
-    if (settings->get_boolean("spectrum-fill"))
+    if (settings->get_boolean("fill")) {
       ctx->fill();
-    else
+    } else {
       ctx->stroke();
+    }
 
     if (mouse_inside) {
       std::ostringstream msg;
@@ -203,7 +202,7 @@ bool SpectrumUi::on_spectrum_motion_notify_event(GdkEventMotion* event) {
 void SpectrumUi::init_custom_color() {
   Glib::Variant<std::vector<double>> v;
 
-  settings->get_value("spectrum-color", v);
+  settings->get_value("color", v);
 
   auto rgba = v.get();
 
