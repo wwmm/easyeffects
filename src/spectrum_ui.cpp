@@ -85,12 +85,12 @@ void SpectrumUi::on_new_spectrum(const std::vector<float>& magnitudes) {
 
 bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
   if (settings->get_boolean("use-custom-color")) {
-    ctx->set_source_rgba(
-        background_color.get_red(), background_color.get_green(),
-        background_color.get_blue(), background_color.get_alpha());
+    ctx->set_source_rgb(background_color.get_red(),
+                        background_color.get_green(),
+                        background_color.get_blue());
   }
 
-  ctx->paint();
+  ctx->paint_with_alpha(background_color.get_alpha());
 
   auto n_bars = spectrum_mag.size();
 
