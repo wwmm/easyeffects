@@ -132,11 +132,8 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
       gradient->add_color_stop_rgba(0.0, color.get_red(), color.get_green(),
                                     color.get_blue(), color.get_alpha());
 
-      gradient->add_color_stop_rgba(0.5, color.get_red(), color.get_green(),
-                                    color.get_blue(), 0.75 * color.get_alpha());
-
       gradient->add_color_stop_rgba(1.0, color.get_red(), color.get_green(),
-                                    color.get_blue(), 0.2 * color.get_alpha());
+                                    color.get_blue(), 0.75 * color.get_alpha());
 
       ctx->set_source(gradient);
     } else {
