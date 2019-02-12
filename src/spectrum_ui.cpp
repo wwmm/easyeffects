@@ -23,7 +23,12 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject,
       sigc::mem_fun(*this, &SpectrumUi::on_spectrum_motion_notify_event));
 
   connections.push_back(settings->signal_changed("color").connect(
-      [&](auto key) { init_custom_color(); }));
+      [&](auto key) { init_color(); }));
+
+  connections.push_back(
+      settings->signal_changed("background-color").connect([&](auto key) {
+        init_background_color();
+      }));
 
   connections.push_back(
       settings->signal_changed("height").connect([&](auto key) {
@@ -36,7 +41,8 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject,
 
   settings->bind("show", this, "visible", flag_get);
 
-  init_custom_color();
+  init_color();
+  init_background_color();
 
   spectrum->set_size_request(-1, settings->get_int("height"));
 }
@@ -78,6 +84,12 @@ void SpectrumUi::on_new_spectrum(const std::vector<float>& magnitudes) {
 }
 
 bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
+  if (settings->get_boolean("use-custom-color")) {
+    ctx->set_source_rgba(
+        background_color.get_red(), background_color.get_green(),
+        background_color.get_blue(), background_color.get_alpha());
+  }
+
   ctx->paint();
 
   auto n_bars = spectrum_mag.size();
@@ -121,9 +133,8 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
     // ctx->close_path();
 
     if (settings->get_boolean("use-custom-color")) {
-      ctx->set_source_rgba(spectrum_color.get_red(), spectrum_color.get_green(),
-                           spectrum_color.get_blue(),
-                           spectrum_color.get_alpha());
+      ctx->set_source_rgba(color.get_red(), color.get_green(), color.get_blue(),
+                           color.get_alpha());
     } else {
       auto color = Gdk::RGBA();
       auto style_ctx = spectrum->get_style_context();
@@ -199,12 +210,22 @@ bool SpectrumUi::on_spectrum_motion_notify_event(GdkEventMotion* event) {
   return false;
 }
 
-void SpectrumUi::init_custom_color() {
+void SpectrumUi::init_color() {
   Glib::Variant<std::vector<double>> v;
 
   settings->get_value("color", v);
 
   auto rgba = v.get();
 
-  spectrum_color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
+  color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
+}
+
+void SpectrumUi::init_background_color() {
+  Glib::Variant<std::vector<double>> v;
+
+  settings->get_value("background-color", v);
+
+  auto rgba = v.get();
+
+  background_color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
 }

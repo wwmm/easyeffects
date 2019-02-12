@@ -29,7 +29,7 @@ class SpectrumUi : public Gtk::Grid {
   Application* app;
 
   Gtk::DrawingArea* spectrum;
-  Gdk::RGBA spectrum_color;
+  Gdk::RGBA color, background_color;
 
   std::vector<sigc::connection> connections;
 
@@ -45,7 +45,9 @@ class SpectrumUi : public Gtk::Grid {
 
   bool on_spectrum_motion_notify_event(GdkEventMotion* event);
 
-  void init_custom_color();
+  void init_color();
+
+  void init_background_color();
 };
 
 #endif
