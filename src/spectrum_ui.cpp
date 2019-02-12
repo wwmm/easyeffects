@@ -88,9 +88,11 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
     ctx->set_source_rgb(background_color.get_red(),
                         background_color.get_green(),
                         background_color.get_blue());
-  }
 
-  ctx->paint_with_alpha(background_color.get_alpha());
+    ctx->paint_with_alpha(background_color.get_alpha());
+  } else {
+    ctx->paint();
+  }
 
   auto n_bars = spectrum_mag.size();
 
