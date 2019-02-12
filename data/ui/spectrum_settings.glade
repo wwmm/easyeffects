@@ -317,7 +317,6 @@
             <property name="halign">start</property>
             <property name="valign">center</property>
             <property name="use_alpha">True</property>
-            <property name="show_editor">True</property>
           </object>
           <packing>
             <property name="left_attach">3</property>
@@ -406,7 +405,6 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="use_alpha">True</property>
-            <property name="show_editor">True</property>
           </object>
           <packing>
             <property name="left_attach">3</property>

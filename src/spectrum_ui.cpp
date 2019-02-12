@@ -108,6 +108,19 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
 
     auto draw_border = settings->get_boolean("show-bar-border");
 
+    auto gradient = Cairo::LinearGradient::create(0.0, 0.0, 0, height);
+
+    gradient->add_color_stop_rgba(0, color.get_red(), color.get_green(),
+                                  color.get_blue(), 1.0);
+
+    gradient->add_color_stop_rgba(0.5, color.get_red(), color.get_green(),
+                                  color.get_blue(), 0.5);
+
+    gradient->add_color_stop_rgba(1, color.get_red(), color.get_green(),
+                                  color.get_blue(), .25);
+
+    ctx->set_source(gradient);
+
     for (uint n = 0; n < n_bars; n++) {
       auto bar_height =
           height * std::min(1., std::pow(scale * spectrum_mag[n], exponent));
@@ -134,18 +147,20 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
     //
     // ctx->close_path();
 
-    if (settings->get_boolean("use-custom-color")) {
-      ctx->set_source_rgba(color.get_red(), color.get_green(), color.get_blue(),
-                           color.get_alpha());
-    } else {
-      auto color = Gdk::RGBA();
-      auto style_ctx = spectrum->get_style_context();
-
-      style_ctx->lookup_color("theme_selected_bg_color", color);
-
-      ctx->set_source_rgba(color.get_red(), color.get_green(), color.get_blue(),
-                           1.0);
-    }
+    // if (settings->get_boolean("use-custom-color")) {
+    //   ctx->set_source_rgba(color.get_red(), color.get_green(),
+    //   color.get_blue(),
+    //                        color.get_alpha());
+    // } else {
+    //   auto color = Gdk::RGBA();
+    //   auto style_ctx = spectrum->get_style_context();
+    //
+    //   style_ctx->lookup_color("theme_selected_bg_color", color);
+    //
+    //   ctx->set_source_rgba(color.get_red(), color.get_green(),
+    //   color.get_blue(),
+    //                        1.0);
+    // }
 
     ctx->set_line_width(line_width);
 
