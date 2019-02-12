@@ -34,11 +34,26 @@ SpectrumSettingsUi::SpectrumSettingsUi(
 
         auto rgba = v.get();
 
-        Gdk::RGBA spectrum_color;
+        Gdk::RGBA color;
 
-        spectrum_color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
+        color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
 
-        spectrum_color_button->set_rgba(spectrum_color);
+        spectrum_color_button->set_rgba(color);
+      }));
+
+  connections.push_back(
+      settings->signal_changed("background-color").connect([&](auto key) {
+        Glib::Variant<std::vector<double>> v;
+
+        settings->get_value("background-color", v);
+
+        auto rgba = v.get();
+
+        Gdk::RGBA color;
+
+        color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
+
+        background_color_button->set_rgba(color);
       }));
 
   show->signal_state_set().connect(
@@ -52,6 +67,16 @@ SpectrumSettingsUi::SpectrumSettingsUi(
         spectrum_color.get_blue(), spectrum_color.get_alpha()});
 
     settings->set_value("color", v);
+  });
+
+  background_color_button->signal_color_set().connect([&]() {
+    auto color = background_color_button->get_rgba();
+
+    auto v = Glib::Variant<std::vector<double>>::create(
+        std::vector<double>{color.get_red(), color.get_green(),
+                            color.get_blue(), color.get_alpha()});
+
+    settings->set_value("background-color", v);
   });
 
   use_custom_color->signal_state_set().connect(
@@ -75,6 +100,8 @@ SpectrumSettingsUi::SpectrumSettingsUi(
   settings->bind("line-width", line_width.get(), "value", flag);
   settings->bind("use-custom-color", use_custom_color, "active", flag);
   settings->bind("use-custom-color", spectrum_color_button, "sensitive", flag);
+  settings->bind("use-custom-color", background_color_button, "sensitive",
+                 flag);
 }
 
 SpectrumSettingsUi::~SpectrumSettingsUi() {
@@ -116,11 +143,21 @@ bool SpectrumSettingsUi::on_use_custom_color(bool state) {
 
     auto rgba = v.get();
 
-    Gdk::RGBA spectrum_color;
+    Gdk::RGBA color;
 
-    spectrum_color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
+    color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
 
-    spectrum_color_button->set_rgba(spectrum_color);
+    spectrum_color_button->set_rgba(color);
+
+    // background color
+
+    settings->get_value("background-color", v);
+
+    rgba = v.get();
+
+    color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
+
+    background_color_button->set_rgba(color);
   }
 
   return false;
