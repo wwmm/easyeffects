@@ -47,5 +47,8 @@
             <range min="1" max="200"/>
             <default>10</default>
         </key>
+        <key name="type" enum="com.github.wwmm.pulseeffects.spectrum.type.enum">
+            <default>"Bars"</default>
+        </key>
     </schema>
 </schemalist>

@@ -43,46 +43,6 @@
     <property name="halign">center</property>
     <property name="row_spacing">18</property>
     <child>
-      <object class="GtkBox">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="halign">center</property>
-        <property name="spacing">6</property>
-        <property name="homogeneous">True</property>
-        <child>
-          <object class="GtkLabel">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">end</property>
-            <property name="valign">center</property>
-            <property name="label" translatable="yes">Show</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSwitch" id="show">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="halign">start</property>
-            <property name="valign">center</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">0</property>
-      </packing>
-    </child>
-    <child>
       <object class="GtkGrid">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
@@ -96,11 +56,223 @@
             <property name="can_focus">False</property>
             <property name="halign">end</property>
             <property name="valign">center</property>
-            <property name="label" translatable="yes">Points</property>
+            <property name="label" translatable="yes">Show Spectrum</property>
           </object>
           <packing>
             <property name="left_attach">0</property>
             <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSwitch" id="show">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="halign">start</property>
+            <property name="valign">center</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">end</property>
+            <property name="valign">center</property>
+            <property name="label" translatable="yes">Fill</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSwitch" id="fill">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="halign">start</property>
+            <property name="valign">center</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">end</property>
+            <property name="valign">center</property>
+            <property name="label" translatable="yes">Border</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSwitch" id="show_bar_border">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="halign">start</property>
+            <property name="valign">center</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">end</property>
+            <property name="valign">center</property>
+            <property name="label" translatable="yes">Use Custom Color</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSwitch" id="use_custom_color">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="halign">start</property>
+            <property name="valign">center</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">end</property>
+            <property name="valign">center</property>
+            <property name="label" translatable="yes">Use Gradient</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSwitch" id="use_gradient">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="halign">start</property>
+            <property name="valign">center</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">end</property>
+            <property name="valign">center</property>
+            <property name="margin_left">30</property>
+            <property name="label" translatable="yes">Spectrum Color</property>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkColorButton" id="spectrum_color_button">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="halign">start</property>
+            <property name="valign">center</property>
+            <property name="use_alpha">True</property>
+          </object>
+          <packing>
+            <property name="left_attach">3</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">end</property>
+            <property name="valign">center</property>
+            <property name="margin_left">30</property>
+            <property name="label" translatable="yes">Gradient Color</property>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkColorButton" id="gradient_color_button">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="halign">start</property>
+            <property name="valign">center</property>
+            <property name="use_alpha">True</property>
+          </object>
+          <packing>
+            <property name="left_attach">3</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">end</property>
+            <property name="valign">center</property>
+            <property name="margin_left">30</property>
+            <property name="label" translatable="yes">Spectrum Type</property>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkComboBoxText" id="spectrum_type">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">start</property>
+            <property name="valign">center</property>
+            <items>
+              <item translatable="yes">Bars</item>
+              <item translatable="yes">Lines</item>
+            </items>
+          </object>
+          <packing>
+            <property name="left_attach">3</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">end</property>
+            <property name="valign">center</property>
+            <property name="margin_left">30</property>
+            <property name="label" translatable="yes">Points</property>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">3</property>
           </packing>
         </child>
         <child>
@@ -117,8 +289,8 @@
             <property name="value">2</property>
           </object>
           <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">0</property>
+            <property name="left_attach">3</property>
+            <property name="top_attach">3</property>
           </packing>
         </child>
         <child>
@@ -127,11 +299,12 @@
             <property name="can_focus">False</property>
             <property name="halign">end</property>
             <property name="valign">center</property>
+            <property name="margin_left">30</property>
             <property name="label" translatable="yes">Height</property>
           </object>
           <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">1</property>
+            <property name="left_attach">2</property>
+            <property name="top_attach">4</property>
           </packing>
         </child>
         <child>
@@ -149,8 +322,8 @@
             <property name="value">100</property>
           </object>
           <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">1</property>
+            <property name="left_attach">3</property>
+            <property name="top_attach">4</property>
           </packing>
         </child>
         <child>
@@ -160,62 +333,11 @@
             <property name="halign">end</property>
             <property name="valign">center</property>
             <property name="margin_left">30</property>
-            <property name="label" translatable="yes">Fill</property>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSwitch" id="fill">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="halign">start</property>
-            <property name="valign">center</property>
-          </object>
-          <packing>
-            <property name="left_attach">3</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">end</property>
-            <property name="valign">center</property>
-            <property name="margin_left">30</property>
-            <property name="label" translatable="yes">Border</property>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSwitch" id="show_bar_border">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="halign">start</property>
-            <property name="valign">center</property>
-          </object>
-          <packing>
-            <property name="left_attach">3</property>
-            <property name="top_attach">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">end</property>
-            <property name="valign">center</property>
             <property name="label" translatable="yes">Scale</property>
           </object>
           <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">2</property>
+            <property name="left_attach">4</property>
+            <property name="top_attach">0</property>
           </packing>
         </child>
         <child>
@@ -233,8 +355,8 @@
             <property name="value">1</property>
           </object>
           <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">2</property>
+            <property name="left_attach">5</property>
+            <property name="top_attach">0</property>
           </packing>
         </child>
         <child>
@@ -243,11 +365,12 @@
             <property name="can_focus">False</property>
             <property name="halign">end</property>
             <property name="valign">center</property>
+            <property name="margin_left">30</property>
             <property name="label" translatable="yes">Exponent</property>
           </object>
           <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">3</property>
+            <property name="left_attach">4</property>
+            <property name="top_attach">1</property>
           </packing>
         </child>
         <child>
@@ -265,8 +388,8 @@
             <property name="value">1</property>
           </object>
           <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">3</property>
+            <property name="left_attach">5</property>
+            <property name="top_attach">1</property>
           </packing>
         </child>
         <child>
@@ -276,36 +399,11 @@
             <property name="halign">end</property>
             <property name="valign">center</property>
             <property name="margin_left">30</property>
-            <property name="label" translatable="yes">Use Custom Color</property>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSwitch" id="use_custom_color">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="halign">start</property>
-            <property name="valign">center</property>
-          </object>
-          <packing>
-            <property name="left_attach">3</property>
-            <property name="top_attach">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">end</property>
-            <property name="valign">center</property>
             <property name="label" translatable="yes">Sampling</property>
           </object>
           <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">4</property>
+            <property name="left_attach">4</property>
+            <property name="top_attach">2</property>
           </packing>
         </child>
         <child>
@@ -321,8 +419,8 @@
             <property name="value">15</property>
           </object>
           <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">4</property>
+            <property name="left_attach">5</property>
+            <property name="top_attach">2</property>
           </packing>
         </child>
         <child>
@@ -331,11 +429,12 @@
             <property name="can_focus">False</property>
             <property name="halign">end</property>
             <property name="valign">center</property>
+            <property name="margin_left">30</property>
             <property name="label" translatable="yes">Line Width</property>
           </object>
           <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">5</property>
+            <property name="left_attach">4</property>
+            <property name="top_attach">3</property>
           </packing>
         </child>
         <child>
@@ -353,92 +452,38 @@
             <property name="value">1</property>
           </object>
           <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">5</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">end</property>
-            <property name="valign">center</property>
-            <property name="margin_left">30</property>
-            <property name="label" translatable="yes">Gradient Color</property>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">5</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkColorButton" id="gradient_color_button">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_alpha">True</property>
-          </object>
-          <packing>
-            <property name="left_attach">3</property>
-            <property name="top_attach">5</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkColorButton" id="spectrum_color_button">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="halign">start</property>
-            <property name="valign">center</property>
-            <property name="use_alpha">True</property>
-          </object>
-          <packing>
-            <property name="left_attach">3</property>
-            <property name="top_attach">4</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">end</property>
-            <property name="valign">center</property>
-            <property name="margin_left">30</property>
-            <property name="label" translatable="yes">Spectrum Color</property>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">4</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">end</property>
-            <property name="valign">center</property>
-            <property name="label" translatable="yes">Use Gradient</property>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
+            <property name="left_attach">5</property>
             <property name="top_attach">3</property>
           </packing>
         </child>
         <child>
-          <object class="GtkSwitch" id="use_gradient">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="valign">center</property>
-          </object>
-          <packing>
-            <property name="left_attach">3</property>
-            <property name="top_attach">3</property>
-          </packing>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
         </child>
       </object>
       <packing>
         <property name="left_attach">0</property>
-        <property name="top_attach">1</property>
+        <property name="top_attach">0</property>
       </packing>
     </child>
   </object>

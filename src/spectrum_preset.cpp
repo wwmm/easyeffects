@@ -32,6 +32,8 @@ void SpectrumPreset::save(boost::property_tree::ptree& root,
 
   root.put("spectrum.line-width", settings->get_double("line-width"));
 
+  root.put("spectrum.type", settings->get_string("type"));
+
   settings->get_value("color", aux);
 
   for (auto& p : aux.get()) {
@@ -81,6 +83,8 @@ void SpectrumPreset::load(boost::property_tree::ptree& root,
   update_key<int>(root, settings, "sampling-freq", "spectrum.sampling-freq");
 
   update_key<double>(root, settings, "line-width", "spectrum.line-width");
+
+  update_string_key(root, settings, "type", "spectrum.type");
 
   try {
     std::vector<double> color;

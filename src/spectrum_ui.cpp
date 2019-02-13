@@ -92,19 +92,19 @@ void SpectrumUi::on_new_spectrum(const std::vector<float>& magnitudes) {
 bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
   ctx->paint();
 
-  auto n_bars = spectrum_mag.size();
+  auto n_points = spectrum_mag.size();
 
-  if (n_bars > 0) {
+  if (n_points > 0) {
     auto allocation = spectrum->get_allocation();
     float width = allocation.get_width();
     auto height = allocation.get_height();
-    auto n_bars = spectrum_mag.size();
     auto line_width = settings->get_double("line-width");
-    auto x = util::linspace(line_width, width - line_width, n_bars);
+    auto x = util::linspace(line_width, width - line_width, n_points);
     double scale = settings->get_double("scale");
     double exponent = settings->get_double("exponent");
     auto draw_border = settings->get_boolean("show-bar-border");
     auto use_gradient = settings->get_boolean("use-gradient");
+    auto spectrum_type = settings->get_enum("type");
 
     if (!settings->get_boolean("use-custom-color")) {
       auto style_ctx = spectrum->get_style_context();
@@ -122,10 +122,10 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
           0.0, height - max_bar_height, 0, height);
 
       gradient->add_color_stop_rgba(
-          0.2, gradient_color.get_red(), gradient_color.get_green(),
+          0.1, gradient_color.get_red(), gradient_color.get_green(),
           gradient_color.get_blue(), gradient_color.get_alpha());
 
-      gradient->add_color_stop_rgba(0.8, color.get_red(), color.get_green(),
+      gradient->add_color_stop_rgba(1.0, color.get_red(), color.get_green(),
                                     color.get_blue(), color.get_alpha());
 
       ctx->set_source(gradient);
@@ -134,31 +134,34 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
                            color.get_alpha());
     }
 
-    for (uint n = 0; n < n_bars; n++) {
-      auto bar_height =
-          height * std::min(1., std::pow(scale * spectrum_mag[n], exponent));
+    if (spectrum_type == 0) {  // Bars
+      for (uint n = 0; n < n_points; n++) {
+        auto bar_height =
+            height * std::min(1., std::pow(scale * spectrum_mag[n], exponent));
 
-      if (draw_border) {
-        ctx->rectangle(x[n], height - bar_height, width / n_bars - line_width,
-                       bar_height);
-      } else {
-        ctx->rectangle(x[n], height - bar_height, width / n_bars, bar_height);
+        if (draw_border) {
+          ctx->rectangle(x[n], height - bar_height,
+                         width / n_points - line_width, bar_height);
+        } else {
+          ctx->rectangle(x[n], height - bar_height, width / n_points,
+                         bar_height);
+        }
       }
-    }
+    } else if (spectrum_type == 1) {  // Lines
+      ctx->move_to(0, height);
 
-    // ctx->move_to(0, height);
-    //
-    // for (uint n = 0; n < n_bars - 1; n++) {
-    //   auto bar_height = spectrum_mag[n] * height;
-    //
-    //   ctx->line_to(x[n], height - bar_height);
-    // }
-    //
-    // ctx->line_to(width, height);
-    //
-    // ctx->move_to(width, height);
-    //
-    // ctx->close_path();
+      for (uint n = 0; n < n_points - 1; n++) {
+        auto bar_height = spectrum_mag[n] * height;
+
+        ctx->line_to(x[n], height - bar_height);
+      }
+
+      ctx->line_to(width, height);
+
+      ctx->move_to(width, height);
+
+      ctx->close_path();
+    }
 
     ctx->set_line_width(line_width);
 

@@ -1,6 +1,36 @@
 #include "spectrum_settings_ui.hpp"
 #include "util.hpp"
 
+namespace {
+
+gboolean spectrum_type_enum_to_int(GValue* value,
+                                   GVariant* variant,
+                                   gpointer user_data) {
+  auto v = g_variant_get_string(variant, nullptr);
+
+  if (v == std::string("Bars")) {
+    g_value_set_int(value, 0);
+  } else if (v == std::string("Lines")) {
+    g_value_set_int(value, 1);
+  }
+
+  return true;
+}
+
+GVariant* int_to_spectrum_type_enum(const GValue* value,
+                                    const GVariantType* expected_type,
+                                    gpointer user_data) {
+  int v = g_value_get_int(value);
+
+  if (v == 0) {
+    return g_variant_new_string("Bars");
+  } else {
+    return g_variant_new_string("Lines");
+  }
+}
+
+}  // namespace
+
 SpectrumSettingsUi::SpectrumSettingsUi(
     BaseObjectType* cobject,
     const Glib::RefPtr<Gtk::Builder>& builder,
@@ -17,6 +47,7 @@ SpectrumSettingsUi::SpectrumSettingsUi(
   builder->get_widget("gradient_color_button", gradient_color_button);
   builder->get_widget("use_custom_color", use_custom_color);
   builder->get_widget("use_gradient", use_gradient);
+  builder->get_widget("spectrum_type", spectrum_type);
 
   get_object(builder, "n_points", n_points);
   get_object(builder, "height", height);
@@ -103,6 +134,11 @@ SpectrumSettingsUi::SpectrumSettingsUi(
   settings->bind("use-custom-color", use_custom_color, "active", flag);
   settings->bind("use-custom-color", spectrum_color_button, "sensitive", flag);
   settings->bind("use-custom-color", gradient_color_button, "sensitive", flag);
+
+  g_settings_bind_with_mapping(settings->gobj(), "type", spectrum_type->gobj(),
+                               "active", G_SETTINGS_BIND_DEFAULT,
+                               spectrum_type_enum_to_int,
+                               int_to_spectrum_type_enum, nullptr, nullptr);
 }
 
 SpectrumSettingsUi::~SpectrumSettingsUi() {
