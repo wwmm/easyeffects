@@ -110,6 +110,11 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
       auto style_ctx = spectrum->get_style_context();
 
       style_ctx->lookup_color("theme_selected_bg_color", color);
+
+      if (use_gradient) {
+        gradient_color = color;
+        gradient_color.set_alpha(0.7);
+      }
     }
 
     if (use_gradient) {
@@ -121,12 +126,12 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
       auto gradient = Cairo::LinearGradient::create(
           0.0, height - max_bar_height, 0, height);
 
-      gradient->add_color_stop_rgba(
-          0.1, gradient_color.get_red(), gradient_color.get_green(),
-          gradient_color.get_blue(), gradient_color.get_alpha());
-
-      gradient->add_color_stop_rgba(1.0, color.get_red(), color.get_green(),
+      gradient->add_color_stop_rgba(0.15, color.get_red(), color.get_green(),
                                     color.get_blue(), color.get_alpha());
+
+      gradient->add_color_stop_rgba(
+          1.0, gradient_color.get_red(), gradient_color.get_green(),
+          gradient_color.get_blue(), gradient_color.get_alpha());
 
       ctx->set_source(gradient);
     } else {
@@ -162,6 +167,8 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
 
       ctx->close_path();
     }
+
+    // ctx->set_antialias(Cairo::Antialias::ANTIALIAS_SUBPIXEL);
 
     ctx->set_line_width(line_width);
 
