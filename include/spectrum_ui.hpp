@@ -29,7 +29,7 @@ class SpectrumUi : public Gtk::Grid {
   Application* app;
 
   Gtk::DrawingArea* spectrum;
-  Gdk::RGBA color, background_color;
+  Gdk::RGBA color, gradient_color;
 
   std::vector<sigc::connection> connections;
 
@@ -47,7 +47,7 @@ class SpectrumUi : public Gtk::Grid {
 
   void init_color();
 
-  void init_background_color();
+  void init_gradient_color();
 };
 
 #endif

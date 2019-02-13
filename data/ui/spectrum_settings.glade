@@ -22,7 +22,7 @@
   </object>
   <object class="GtkAdjustment" id="n_points">
     <property name="lower">2</property>
-    <property name="upper">600</property>
+    <property name="upper">1000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
@@ -364,7 +364,7 @@
             <property name="halign">end</property>
             <property name="valign">center</property>
             <property name="margin_left">30</property>
-            <property name="label" translatable="yes">Background Color</property>
+            <property name="label" translatable="yes">Gradient Color</property>
           </object>
           <packing>
             <property name="left_attach">2</property>
@@ -372,7 +372,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkColorButton" id="background_color_button">
+          <object class="GtkColorButton" id="gradient_color_button">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>

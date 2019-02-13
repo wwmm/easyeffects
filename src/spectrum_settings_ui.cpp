@@ -14,7 +14,7 @@ SpectrumSettingsUi::SpectrumSettingsUi(
   builder->get_widget("fill", fill);
   builder->get_widget("show_bar_border", show_bar_border);
   builder->get_widget("spectrum_color_button", spectrum_color_button);
-  builder->get_widget("background_color_button", background_color_button);
+  builder->get_widget("gradient_color_button", gradient_color_button);
   builder->get_widget("use_custom_color", use_custom_color);
   builder->get_widget("use_gradient", use_gradient);
 
@@ -43,10 +43,10 @@ SpectrumSettingsUi::SpectrumSettingsUi(
       }));
 
   connections.push_back(
-      settings->signal_changed("background-color").connect([&](auto key) {
+      settings->signal_changed("gradient-color").connect([&](auto key) {
         Glib::Variant<std::vector<double>> v;
 
-        settings->get_value("background-color", v);
+        settings->get_value("gradient-color", v);
 
         auto rgba = v.get();
 
@@ -54,7 +54,7 @@ SpectrumSettingsUi::SpectrumSettingsUi(
 
         color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
 
-        background_color_button->set_rgba(color);
+        gradient_color_button->set_rgba(color);
       }));
 
   show->signal_state_set().connect(
@@ -70,14 +70,14 @@ SpectrumSettingsUi::SpectrumSettingsUi(
     settings->set_value("color", v);
   });
 
-  background_color_button->signal_color_set().connect([&]() {
-    auto color = background_color_button->get_rgba();
+  gradient_color_button->signal_color_set().connect([&]() {
+    auto color = gradient_color_button->get_rgba();
 
     auto v = Glib::Variant<std::vector<double>>::create(
         std::vector<double>{color.get_red(), color.get_green(),
                             color.get_blue(), color.get_alpha()});
 
-    settings->set_value("background-color", v);
+    settings->set_value("gradient-color", v);
   });
 
   use_custom_color->signal_state_set().connect(
@@ -102,8 +102,7 @@ SpectrumSettingsUi::SpectrumSettingsUi(
   settings->bind("use-gradient", use_gradient, "active", flag);
   settings->bind("use-custom-color", use_custom_color, "active", flag);
   settings->bind("use-custom-color", spectrum_color_button, "sensitive", flag);
-  settings->bind("use-custom-color", background_color_button, "sensitive",
-                 flag);
+  settings->bind("use-custom-color", gradient_color_button, "sensitive", flag);
 }
 
 SpectrumSettingsUi::~SpectrumSettingsUi() {
@@ -153,13 +152,13 @@ bool SpectrumSettingsUi::on_use_custom_color(bool state) {
 
     // background color
 
-    settings->get_value("background-color", v);
+    settings->get_value("gradient-color", v);
 
     rgba = v.get();
 
     color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
 
-    background_color_button->set_rgba(color);
+    gradient_color_button->set_rgba(color);
   }
 
   return false;

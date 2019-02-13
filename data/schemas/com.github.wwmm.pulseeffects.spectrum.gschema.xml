@@ -13,7 +13,7 @@
             <default>true</default>
         </key>
         <key name="n-points" type="i">
-            <range min="2" max="600"/>
+            <range min="2" max="1000"/>
             <default>100</default>
         </key>
         <key name="line-width" type="d">
@@ -29,7 +29,7 @@
         <key name="color" type="ad">
             <default>[1.0,1.0,1.0,1.0]</default>
         </key>
-        <key name="background-color" type="ad">
+        <key name="gradient-color" type="ad">
             <default>[0.0,0.0,0.0,1.0]</default>
         </key>
         <key name="height" type="i">

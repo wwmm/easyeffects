@@ -25,15 +25,15 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject,
   connections.push_back(
       settings->signal_changed("use-custom-color").connect([&](auto key) {
         init_color();
-        init_background_color();
+        init_gradient_color();
       }));
 
   connections.push_back(settings->signal_changed("color").connect(
       [&](auto key) { init_color(); }));
 
   connections.push_back(
-      settings->signal_changed("background-color").connect([&](auto key) {
-        init_background_color();
+      settings->signal_changed("gradient-color").connect([&](auto key) {
+        init_gradient_color();
       }));
 
   connections.push_back(
@@ -48,7 +48,7 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject,
   settings->bind("show", this, "visible", flag_get);
 
   init_color();
-  init_background_color();
+  init_gradient_color();
 
   spectrum->set_size_request(-1, settings->get_int("height"));
 }
@@ -90,15 +90,7 @@ void SpectrumUi::on_new_spectrum(const std::vector<float>& magnitudes) {
 }
 
 bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
-  if (settings->get_boolean("use-custom-color")) {
-    ctx->set_source_rgb(background_color.get_red(),
-                        background_color.get_green(),
-                        background_color.get_blue());
-
-    ctx->paint_with_alpha(background_color.get_alpha());
-  } else {
-    ctx->paint();
-  }
+  ctx->paint();
 
   auto n_bars = spectrum_mag.size();
 
@@ -129,11 +121,12 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
       auto gradient = Cairo::LinearGradient::create(
           0.0, height - max_bar_height, 0, height);
 
-      gradient->add_color_stop_rgba(0.0, color.get_red(), color.get_green(),
-                                    color.get_blue(), color.get_alpha());
+      gradient->add_color_stop_rgba(
+          0.0, gradient_color.get_red(), gradient_color.get_green(),
+          gradient_color.get_blue(), gradient_color.get_alpha());
 
       gradient->add_color_stop_rgba(1.0, color.get_red(), color.get_green(),
-                                    color.get_blue(), 0.75 * color.get_alpha());
+                                    color.get_blue(), color.get_alpha());
 
       ctx->set_source(gradient);
     } else {
@@ -242,12 +235,12 @@ void SpectrumUi::init_color() {
   color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
 }
 
-void SpectrumUi::init_background_color() {
+void SpectrumUi::init_gradient_color() {
   Glib::Variant<std::vector<double>> v;
 
-  settings->get_value("background-color", v);
+  settings->get_value("gradient-color", v);
 
   auto rgba = v.get();
 
-  background_color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
+  gradient_color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
 }

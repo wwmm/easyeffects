@@ -46,7 +46,7 @@ void SpectrumPreset::save(boost::property_tree::ptree& root,
 
   node_in.clear();
 
-  settings->get_value("background-color", aux);
+  settings->get_value("gradient-color", aux);
 
   for (auto& p : aux.get()) {
     boost::property_tree::ptree node;
@@ -54,7 +54,7 @@ void SpectrumPreset::save(boost::property_tree::ptree& root,
     node_in.push_back(std::make_pair("", node));
   }
 
-  root.add_child("spectrum.background-color", node_in);
+  root.add_child("spectrum.gradient-color", node_in);
 }
 
 void SpectrumPreset::load(boost::property_tree::ptree& root,
@@ -101,15 +101,15 @@ void SpectrumPreset::load(boost::property_tree::ptree& root,
   try {
     std::vector<double> color;
 
-    for (auto& p : root.get_child("spectrum.background-color")) {
+    for (auto& p : root.get_child("spectrum.gradient-color")) {
       color.push_back(p.second.get<double>(""));
     }
 
     auto v = Glib::Variant<std::vector<double>>::create(color);
 
-    settings->set_value("background-color", v);
+    settings->set_value("gradient-color", v);
   } catch (const boost::property_tree::ptree_error& e) {
-    settings->reset("background-color");
+    settings->reset("gradient-color");
   }
 }
 
