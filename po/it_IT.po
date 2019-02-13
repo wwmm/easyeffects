@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-02-10 00:02-0200\n"
-"PO-Revision-Date: 2018-12-31 13:07+0100\n"
+"PO-Revision-Date: 2019-02-13 16:23+0100\n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
 "Language: it_IT\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Translator: Matteo Iervasi <matteoiervasi@gmail.com>\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/ui/application.glade:41 src/calibration_ui.cpp:48
@@ -65,7 +65,7 @@ msgstr "Riempimento"
 
 #: data/ui/spectrum_settings.glade:189
 msgid "Border"
-msgstr ""
+msgstr "Bordo"
 
 #: data/ui/spectrum_settings.glade:214
 msgid "Scale"
@@ -88,9 +88,8 @@ msgid "Sampling"
 msgstr "Campionamento"
 
 #: data/ui/spectrum_settings.glade:362
-#, fuzzy
 msgid "Line Width"
-msgstr "Ampiezza"
+msgstr "Spessore Linea"
 
 #: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:184
 msgid "Use Default"
@@ -108,11 +107,11 @@ msgstr "Latenza"
 
 #: data/ui/pulse_settings.glade:170 data/ui/blacklist_settings.glade:130
 msgid "Input Effects"
-msgstr "Effetti in Ingresso"
+msgstr "Effetti d'Ingresso"
 
 #: data/ui/pulse_settings.glade:284 data/ui/blacklist_settings.glade:224
 msgid "Output Effects"
-msgstr "Effetti in Uscita"
+msgstr "Effetti d'Uscita"
 
 #: data/ui/blacklist_settings.glade:53 data/ui/blacklist_settings.glade:147
 #: data/ui/presets_menu.glade:68 data/ui/presets_menu.glade:177
@@ -130,7 +129,7 @@ msgstr "Avvio Servizio all'Accesso"
 
 #: data/ui/general_settings.glade:56
 msgid "Process All Outputs"
-msgstr ""
+msgstr "Processa Ogni Uscita"
 
 #: data/ui/general_settings.glade:81
 msgid "Use Dark Theme"
@@ -155,7 +154,7 @@ msgstr "Nessuno"
 
 #: data/ui/general_settings.glade:151
 msgid "Priority Type"
-msgstr "Tipo di Priorità"
+msgstr "Tipo Priorità"
 
 #: data/ui/general_settings.glade:161
 msgid "About"
@@ -163,7 +162,7 @@ msgstr "Info"
 
 #: data/ui/general_settings.glade:180
 msgid "Process All Inputs"
-msgstr ""
+msgstr "Processa Ogni Ingresso"
 
 #: data/ui/general_settings.glade:232
 msgid "Priority"
@@ -585,15 +584,15 @@ msgstr "Dividi Canali"
 
 #: data/ui/equalizer.glade:158
 msgid "IIR"
-msgstr ""
+msgstr "IIR"
 
 #: data/ui/equalizer.glade:159
 msgid "FIR"
-msgstr ""
+msgstr "FIR"
 
 #: data/ui/equalizer.glade:160
 msgid "FFT"
-msgstr ""
+msgstr "FFT"
 
 #: data/ui/equalizer.glade:190
 msgid "Bands"
@@ -623,20 +622,19 @@ msgstr "Destra"
 
 #: data/ui/equalizer_band.glade:47
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: data/ui/equalizer_band.glade:59
 msgid "Off"
-msgstr ""
+msgstr "Inattivo"
 
 #: data/ui/equalizer_band.glade:60
 msgid "Bell"
-msgstr ""
+msgstr "A Campana"
 
 #: data/ui/equalizer_band.glade:61
-#, fuzzy
 msgid "High Pass"
-msgstr "Filtro Passa Alto"
+msgstr "Passa Alto"
 
 #: data/ui/equalizer_band.glade:62
 msgid "High Shelf"
@@ -644,7 +642,7 @@ msgstr "Shelf Alto"
 
 #: data/ui/equalizer_band.glade:63
 msgid "Low Pass"
-msgstr "Passa-basso"
+msgstr "Passa Basso"
 
 #: data/ui/equalizer_band.glade:64
 msgid "Low Shelf"
@@ -652,51 +650,51 @@ msgstr "Shelf Basso"
 
 #: data/ui/equalizer_band.glade:65
 msgid "Notch"
-msgstr ""
+msgstr "Elimina Banda"
 
 #: data/ui/equalizer_band.glade:90
 msgid "RLC (BT)"
-msgstr ""
+msgstr "RLC (BT)"
 
 #: data/ui/equalizer_band.glade:91
 msgid "RLC (MT)"
-msgstr ""
+msgstr "RLC (MT)"
 
 #: data/ui/equalizer_band.glade:92
 msgid "BWC (BT)"
-msgstr ""
+msgstr "BWC (BT)"
 
 #: data/ui/equalizer_band.glade:93
 msgid "BWC (MT)"
-msgstr ""
+msgstr "BWC (MT)"
 
 #: data/ui/equalizer_band.glade:94
 msgid "LRX (BT)"
-msgstr ""
+msgstr "LRX (BT)"
 
 #: data/ui/equalizer_band.glade:95
 msgid "LRX (MT)"
-msgstr ""
+msgstr "LRX (MT)"
 
 #: data/ui/equalizer_band.glade:107
 msgid "Slope"
-msgstr ""
+msgstr "Pendenza"
 
 #: data/ui/equalizer_band.glade:119
 msgid "x1"
-msgstr ""
+msgstr "x1"
 
 #: data/ui/equalizer_band.glade:120
 msgid "x2"
-msgstr ""
+msgstr "x2"
 
 #: data/ui/equalizer_band.glade:121
 msgid "x3"
-msgstr ""
+msgstr "x3"
 
 #: data/ui/equalizer_band.glade:122
 msgid "x4"
-msgstr ""
+msgstr "x4"
 
 #: data/ui/equalizer_band.glade:199
 msgid "Quality"
@@ -714,7 +712,7 @@ msgstr "Muto"
 #: data/ui/equalizer_preset_row.glade:37 data/ui/irs_row.glade:62
 #: data/ui/preset_row.glade:51
 msgid "Apply"
-msgstr ""
+msgstr "Applica"
 
 #: data/ui/reverb.glade:64
 msgid "Reverberation"
@@ -803,7 +801,7 @@ msgstr "Smorza Alte Frequenze"
 
 #: data/ui/bass_enhancer.glade:50
 msgid "Bass Enhancer"
-msgstr "Enfatizza Bassi"
+msgstr "Enfasi Bassi"
 
 #: data/ui/bass_enhancer.glade:148 data/ui/exciter.glade:148
 #: data/ui/deesser.glade:165
@@ -971,7 +969,7 @@ msgstr "Gate Multibanda"
 
 #: data/ui/deesser.glade:61
 msgid "Deesser"
-msgstr "Rimuovi Sibilo"
+msgstr "Rimozione Sibilo"
 
 #: data/ui/deesser.glade:235
 msgid "Wide"
@@ -1047,7 +1045,7 @@ msgstr "Dimensione Blocco"
 
 #: data/ui/crystalizer.glade:24
 msgid "Crystalizer"
-msgstr "Cristallizza"
+msgstr "Cristallizzazione"
 
 #: data/ui/crystalizer.glade:188 data/ui/crystalizer.glade:286
 #: data/ui/crystalizer.glade:384
@@ -1172,19 +1170,20 @@ msgid "Delay"
 msgstr "Ritardo"
 
 #: data/ui/preset_row.glade:68
-#, fuzzy
 msgid "Save current settings to this preset file"
-msgstr "Salva impostazioni attuali in un preset"
+msgstr "Salva impostazioni attuali in questo profilo"
 
 #: data/ui/preset_row.glade:84
 msgid "Remove this preset file"
-msgstr ""
+msgstr "Rimuovi file di questo profilo"
 
 #: data/ui/preset_row.glade:103
 msgid ""
 "Automatically apply this preset whenever the currently used device is "
 "plugged in the system"
 msgstr ""
+"Applica automaticamente questo profilo quando il dispositivo in uso ora è "
+"disponibile al sistema"
 
 #: data/ui/presets_menu.glade:86 data/ui/presets_menu.glade:195
 #: src/presets_menu_ui.cpp:119
@@ -1262,7 +1261,7 @@ msgstr "Sottrai Rumore"
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:8
 #: data/com.github.wwmm.pulseeffects.desktop.in:5
 msgid "Audio Effects for PulseAudio Applications"
-msgstr "Effetti Audio per applicazioni PulseAudio"
+msgstr "Effetti Audio per Applicazioni PulseAudio"
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:9
 msgid "Wellington Wallace"
@@ -1361,14 +1360,12 @@ msgid "Reset PulseEffects."
 msgstr "Azzera PulseEffects."
 
 #: src/application.cpp:58
-#, fuzzy
 msgid "Output Presets: "
-msgstr "Profili: "
+msgstr "Profili d'Uscita: "
 
 #: src/application.cpp:66
-#, fuzzy
 msgid "Input Presets: "
-msgstr "Importa Profili"
+msgstr "Profili d'Ingresso: "
 
 #: src/application.cpp:237
 msgid "PulseEffects was updated"
@@ -1440,7 +1437,7 @@ msgstr "Impossibile Caricare File Impulso"
 
 #: src/equalizer_ui.cpp:339 src/equalizer_ui.cpp:477
 msgid "infinity"
-msgstr ""
+msgstr "infinito"
 
 #~ msgid "Enable All Applications"
 #~ msgstr "Abilita Tutte le Applicazioni"
