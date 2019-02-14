@@ -12,10 +12,10 @@
  * </refsect2>
  */
 
+#include "gstpecrystalizer.hpp"
 #include <gst/audio/gstaudiofilter.h>
 #include <gst/gst.h>
 #include "config.h"
-#include "gstpecrystalizer.hpp"
 
 GST_DEBUG_CATEGORY_STATIC(gst_pecrystalizer_debug_category);
 #define GST_CAT_DEFAULT gst_pecrystalizer_debug_category
@@ -121,6 +121,8 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->intensity = 2.0f;
   pecrystalizer->last_L = 0.0f;
   pecrystalizer->last_R = 0.0f;
+
+  pecrystalizer->lowpass1 = Lowpass(256);
 
   gst_base_transform_set_in_place(GST_BASE_TRANSFORM(pecrystalizer), true);
 }

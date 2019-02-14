@@ -3,6 +3,7 @@
 
 #include <gst/audio/gstaudiofilter.h>
 #include <mutex>
+#include "lowpass.hpp"
 
 G_BEGIN_DECLS
 
@@ -34,6 +35,8 @@ struct _GstPecrystalizer {
   float last_L, last_R;
 
   std::mutex mutex;
+
+  Lowpass lowpass1;
 };
 
 struct _GstPecrystalizerClass {

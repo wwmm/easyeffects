@@ -2,6 +2,9 @@
 
 ## [Unreleased
 
+### Added
+- Updated Italian translations.
+
 ## [4.5.0]
 
 - Warning: This is not one more of the typical harmless updates I usually do.
