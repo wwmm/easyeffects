@@ -6,7 +6,7 @@
 
 class Lowpass {
  public:
-  Lowpass(const int& num_samples);
+  Lowpass(const int& num_samples, const float& fc);
 
   ~Lowpass();
 
@@ -15,9 +15,12 @@ class Lowpass {
 
   bool ready = false;
   int kernel_size = 1001, nsamples;
-  float *kernel_L, *kernel_R;  // left and right channels buffers
+  float* kernel;
 
   Convproc* conv;
+
+  void init_kernel(const float& fc);
+  void init_zita();
 };
 
 #endif

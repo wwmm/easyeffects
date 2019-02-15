@@ -1,15 +1,64 @@
 #include "lowpass.hpp"
+#include <boost/math/constants/constants.hpp>
+#include <boost/math/special_functions/sinc.hpp>
 
 #define CONVPROC_SCHEDULER_PRIORITY 0
 #define CONVPROC_SCHEDULER_CLASS SCHED_FIFO
 #define THREAD_SYNC_MODE true
 
-Lowpass::Lowpass(const int& num_samples) : nsamples(num_samples) {
-  conv = new Convproc();
+const float PI = boost::math::constants::pi<float>();
 
-  kernel_L = new float[nsamples];
-  kernel_R = new float[nsamples];
+Lowpass::Lowpass(const int& num_samples, const float& fc)
+    : nsamples(num_samples) {
+  init_kernel(fc);
+  init_zita();
+}
 
+Lowpass::~Lowpass() {
+  if (conv != nullptr) {
+    if (conv->state() != Convproc::ST_STOP) {
+      conv->stop_process();
+
+      conv->cleanup();
+
+      delete conv;
+
+      conv = nullptr;
+    }
+  }
+
+  if (kernel != nullptr) {
+    delete[] kernel;
+  }
+}
+
+void Lowpass::init_kernel(const float& fc) {
+  kernel = new float[kernel_size];
+
+  for (int n = 0; n < kernel_size; n++) {
+    kernel[n] =
+        boost::math::sinc_pi(2.0f * fc * (n - (kernel_size - 1.0f) / 2.0f));
+
+    auto w = 0.42f - 0.5f * cosf(2.0f * PI * n / (kernel_size - 1)) +
+             0.08f * cosf(4.0f * PI * n / (kernel_size - 1));
+
+    kernel[n] *= w;
+  }
+
+  float sum = 0.0f;
+
+  for (int n = 0; n < kernel_size; n++) {
+    sum += kernel[n];
+  }
+
+  if (sum > 0.0f) {
+    for (int n = 0; n < kernel_size; n++) {
+      kernel[n] /= sum;
+    }
+  }
+}
+
+void Lowpass::init_zita() {
   bool failed = false;
   float density = 0.0f;
   int ret;
@@ -17,6 +66,8 @@ Lowpass::Lowpass(const int& num_samples) : nsamples(num_samples) {
 
   options |= Convproc::OPT_FFTW_MEASURE;
   options |= Convproc::OPT_VECTOR_MODE;
+
+  conv = new Convproc();
 
   conv->set_options(options);
 
@@ -40,7 +91,7 @@ Lowpass::Lowpass(const int& num_samples) : nsamples(num_samples) {
     util::debug(log_tag + "initialized zita-convolver engine");
   }
 
-  ret = conv->impdata_create(0, 0, 1, kernel_L, 0, kernel_size);
+  ret = conv->impdata_create(0, 0, 1, kernel, 0, kernel_size);
 
   if (ret != 0) {
     failed = true;
@@ -49,7 +100,7 @@ Lowpass::Lowpass(const int& num_samples) : nsamples(num_samples) {
     util::debug(log_tag + "left impdata_create success");
   }
 
-  ret = conv->impdata_create(1, 1, 1, kernel_R, 0, kernel_size);
+  ret = conv->impdata_create(1, 1, 1, kernel, 0, kernel_size);
 
   if (ret != 0) {
     failed = true;
@@ -73,27 +124,5 @@ Lowpass::Lowpass(const int& num_samples) : nsamples(num_samples) {
     ready = true;
   } else {
     ready = false;
-  }
-}
-
-Lowpass::~Lowpass() {
-  if (conv != nullptr) {
-    if (conv->state() != Convproc::ST_STOP) {
-      conv->stop_process();
-
-      conv->cleanup();
-
-      delete conv;
-
-      conv = nullptr;
-    }
-  }
-
-  if (kernel_L != nullptr) {
-    delete[] kernel_L;
-  }
-
-  if (kernel_R != nullptr) {
-    delete[] kernel_R;
   }
 }
