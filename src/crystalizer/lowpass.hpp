@@ -22,7 +22,7 @@ class Lowpass {
  private:
   std::string log_tag = "lowpass: ";
 
-  uint kernel_size = 1001;
+  uint kernel_size = 10001;
   float* kernel;
 };
 

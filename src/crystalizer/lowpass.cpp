@@ -144,7 +144,7 @@ void Lowpass::process(float* data) {
     }
 
     // interleave
-    for (unsigned int n = 0; n < nsamples; n++) {
+    for (uint n = 0; n < nsamples; n++) {
       data[2 * n] = conv->outdata(0)[n];
       data[2 * n + 1] = conv->outdata(1)[n];
     }
