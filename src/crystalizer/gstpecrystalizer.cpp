@@ -122,9 +122,7 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->last_L = 0.0f;
   pecrystalizer->last_R = 0.0f;
 
-  pecrystalizer->lowpass1 = new Lowpass(3000);
-
-  // pecrystalizer->lowpass1->init_zita(512);
+  pecrystalizer->lowpass1 = new Lowpass(300);
 
   gst_base_transform_set_in_place(GST_BASE_TRANSFORM(pecrystalizer), true);
 }
@@ -193,7 +191,7 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
   float* data = (float*)map.data;
 
   if (pecrystalizer->lowpass1->ready) {
-    // pecrystalizer->lowpass1->process(data);
+    pecrystalizer->lowpass1->process(data);
   } else {
     pecrystalizer->lowpass1->init_zita(num_samples);
   }

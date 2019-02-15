@@ -23,8 +23,8 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
                      crystalizer, audioconvert_out, output_gain, out_level,
                      nullptr);
 
-    gst_element_link_many(input_gain, in_level, crystalizer, audioconvert_out,
-                          output_gain, out_level, nullptr);
+    gst_element_link_many(input_gain, in_level, audioconvert_in, crystalizer,
+                          audioconvert_out, output_gain, out_level, nullptr);
 
     auto pad_sink = gst_element_get_static_pad(input_gain, "sink");
     auto pad_src = gst_element_get_static_pad(out_level, "src");

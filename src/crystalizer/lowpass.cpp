@@ -123,10 +123,8 @@ void Lowpass::init_zita(const int& num_samples) {
   }
 
   if (failed) {
-    util::warning("failed");
     ready = false;
   } else {
-    util::warning("ready");
     ready = true;
   }
 }
