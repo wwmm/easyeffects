@@ -8,9 +8,8 @@
 
 const float PI = boost::math::constants::pi<float>();
 
-Lowpass::Lowpass(const float& fc) {
-  init_kernel(fc);
-}
+Lowpass::Lowpass(const float& fc, const float& tband)
+    : cutoff(fc), transition_band(tband) {}
 
 Lowpass::~Lowpass() {
   util::warning("destructor");
@@ -32,7 +31,17 @@ Lowpass::~Lowpass() {
   }
 }
 
-void Lowpass::init_kernel(const float& fc) {
+void Lowpass::init_kernel(const float& rate) {
+  float b = transition_band / rate;
+
+  kernel_size = std::ceil(4.0f / b);
+
+  kernel_size = (kernel_size % 2 == 0) ? kernel_size + 1 : kernel_size;
+
+  util::debug(log_tag + "kernel size: " + std::to_string(kernel_size));
+
+  float fc = cutoff / rate;
+
   kernel = new float[kernel_size];
 
   for (uint n = 0; n < kernel_size; n++) {

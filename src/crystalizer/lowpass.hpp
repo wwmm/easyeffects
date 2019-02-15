@@ -6,7 +6,7 @@
 
 class Lowpass {
  public:
-  Lowpass(const float& fc);
+  Lowpass(const float& fc, const float& tband);
 
   ~Lowpass();
 
@@ -15,14 +15,15 @@ class Lowpass {
 
   Convproc* conv;
 
-  void init_kernel(const float& fc);
+  void init_kernel(const float& rate);
   void init_zita(const int& num_samples);
   void process(float* data);
 
  private:
   std::string log_tag = "lowpass: ";
 
-  uint kernel_size = 10001;
+  uint kernel_size;
+  float cutoff, transition_band;
   float* kernel;
 };
 

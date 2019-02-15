@@ -31,7 +31,7 @@ struct _GstPecrystalizer {
   /* < private > */
 
   bool ready;
-  int bpf;  // bytes per frame : channels * bps
+  int rate, bpf;  // sampling rate,  bytes per frame : channels * bps
   float last_L, last_R;
 
   std::mutex mutex;
