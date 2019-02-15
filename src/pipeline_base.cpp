@@ -289,6 +289,7 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
   spectrum = get_required_plugin("spectrum", "spectrum");
 
   auto src_type = get_required_plugin("typefind", nullptr);
+  auto adapter = gst_element_factory_make("peadapter", nullptr);
 
   init_spectrum_bin();
   init_effects_bin();
@@ -296,10 +297,10 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
   // building the pipeline
 
   gst_bin_add_many(GST_BIN(pipeline), source, queue_src, capsfilter, src_type,
-                   effects_bin, spectrum_bin, sink, nullptr);
+                   adapter, effects_bin, spectrum_bin, sink, nullptr);
 
-  gst_element_link_many(source, queue_src, capsfilter, src_type, effects_bin,
-                        spectrum_bin, sink, nullptr);
+  gst_element_link_many(source, queue_src, capsfilter, src_type, adapter,
+                        effects_bin, spectrum_bin, sink, nullptr);
 
   // initializing properties
 

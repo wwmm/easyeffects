@@ -36,7 +36,7 @@ struct _GstPecrystalizer {
 
   std::mutex mutex;
 
-  Lowpass lowpass1;
+  Lowpass* lowpass1;
 };
 
 struct _GstPecrystalizerClass {

@@ -8,34 +8,32 @@
 
 const float PI = boost::math::constants::pi<float>();
 
-Lowpass::Lowpass(const int& num_samples, const float& fc)
-    : nsamples(num_samples) {
+Lowpass::Lowpass(const float& fc) {
   init_kernel(fc);
-  init_zita();
 }
 
 Lowpass::~Lowpass() {
-  if (conv != nullptr) {
-    if (conv->state() != Convproc::ST_STOP) {
-      conv->stop_process();
-
-      conv->cleanup();
-
-      delete conv;
-
-      conv = nullptr;
-    }
-  }
-
-  if (kernel != nullptr) {
-    delete[] kernel;
-  }
+  // if (conv != nullptr) {
+  //   if (conv->state() != Convproc::ST_STOP) {
+  //     conv->stop_process();
+  //
+  //     conv->cleanup();
+  //
+  //     delete conv;
+  //
+  //     conv = nullptr;
+  //   }
+  // }
+  //
+  // if (kernel != nullptr) {
+  //   delete[] kernel;
+  // }
 }
 
 void Lowpass::init_kernel(const float& fc) {
   kernel = new float[kernel_size];
 
-  for (int n = 0; n < kernel_size; n++) {
+  for (uint n = 0; n < kernel_size; n++) {
     kernel[n] =
         boost::math::sinc_pi(2.0f * fc * (n - (kernel_size - 1.0f) / 2.0f));
 
@@ -47,22 +45,24 @@ void Lowpass::init_kernel(const float& fc) {
 
   float sum = 0.0f;
 
-  for (int n = 0; n < kernel_size; n++) {
+  for (uint n = 0; n < kernel_size; n++) {
     sum += kernel[n];
   }
 
   if (sum > 0.0f) {
-    for (int n = 0; n < kernel_size; n++) {
+    for (uint n = 0; n < kernel_size; n++) {
       kernel[n] /= sum;
     }
   }
 }
 
-void Lowpass::init_zita() {
+void Lowpass::init_zita(const int& num_samples) {
   bool failed = false;
   float density = 0.0f;
   int ret;
   unsigned int options = 0;
+
+  nsamples = num_samples;
 
   options |= Convproc::OPT_FFTW_MEASURE;
   options |= Convproc::OPT_VECTOR_MODE;
@@ -120,9 +120,31 @@ void Lowpass::init_zita() {
     util::debug(log_tag + "start_process success");
   }
 
-  if (!failed) {
-    ready = true;
-  } else {
+  if (failed) {
     ready = false;
+  } else {
+    ready = true;
+  }
+}
+
+void Lowpass::process(float* data) {
+  if (ready) {
+    // deinterleave
+    for (uint n = 0; n < nsamples; n++) {
+      conv->inpdata(0)[n] = data[2 * n];
+      conv->inpdata(1)[n] = data[2 * n + 1];
+    }
+
+    int ret = conv->process(THREAD_SYNC_MODE);
+
+    if (ret != 0) {
+      util::debug(log_tag + "IR: process failed: " + std::to_string(ret));
+    }
+
+    // interleave
+    for (unsigned int n = 0; n < nsamples; n++) {
+      data[2 * n] = conv->outdata(0)[n];
+      data[2 * n + 1] = conv->outdata(1)[n];
+    }
   }
 }

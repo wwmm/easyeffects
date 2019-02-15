@@ -6,21 +6,24 @@
 
 class Lowpass {
  public:
-  Lowpass(const int& num_samples, const float& fc);
+  Lowpass(const float& fc);
 
   ~Lowpass();
 
- private:
-  std::string log_tag = "lowpass: ";
-
   bool ready = false;
-  int kernel_size = 1001, nsamples;
-  float* kernel;
+  uint nsamples;
 
   Convproc* conv;
 
   void init_kernel(const float& fc);
-  void init_zita();
+  void init_zita(const int& num_samples);
+  void process(float* data);
+
+ private:
+  std::string log_tag = "lowpass: ";
+
+  uint kernel_size = 1001;
+  float* kernel;
 };
 
 #endif
