@@ -122,7 +122,7 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->last_L = 0.0f;
   pecrystalizer->last_R = 0.0f;
 
-  pecrystalizer->lowpass1 = new Lowpass(300, 50);
+  pecrystalizer->lowpass1 = new Lowpass(3000, 100);
 
   gst_base_transform_set_in_place(GST_BASE_TRANSFORM(pecrystalizer), true);
 }

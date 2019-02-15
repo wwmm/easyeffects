@@ -19,6 +19,15 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
     auto audioconvert_out = gst_element_factory_make(
         "audioconvert", "crystalizer_audioconvert_out");
 
+    // auto lowpass =
+    //     gst_element_factory_make("audiocheblimit", "crystalizer_lowpass");
+    //
+    // g_object_set(lowpass, "mode", 0, nullptr);
+    // g_object_set(lowpass, "type", 1, nullptr);
+    // g_object_set(lowpass, "poles", 10, nullptr);
+    // g_object_set(lowpass, "ripple", 0, nullptr);
+    // g_object_set(lowpass, "cutoff", 3000.0f, nullptr);
+
     gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in,
                      crystalizer, audioconvert_out, output_gain, out_level,
                      nullptr);
