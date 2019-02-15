@@ -35,6 +35,7 @@ void Lowpass::init_kernel(const float& rate) {
   float b = transition_band / rate;
 
   kernel_size = std::ceil(4.0f / b);
+  // kernel_size = 10001;
 
   kernel_size = (kernel_size % 2 == 0) ? kernel_size + 1 : kernel_size;
 
@@ -46,6 +47,8 @@ void Lowpass::init_kernel(const float& rate) {
 
   kernel = new float[kernel_size];
 
+  float sum = 0.0f;
+
   for (uint n = 0; n < kernel_size; n++) {
     kernel[n] = boost::math::sinc_pi(2.0f * fc * PI *
                                      (n - (kernel_size - 1.0f) / 2.0f));
@@ -54,11 +57,7 @@ void Lowpass::init_kernel(const float& rate) {
              0.08f * cosf(4.0f * PI * n / (kernel_size - 1));
 
     kernel[n] *= w;
-  }
 
-  float sum = 0.0f;
-
-  for (uint n = 0; n < kernel_size; n++) {
     sum += kernel[n];
   }
 
