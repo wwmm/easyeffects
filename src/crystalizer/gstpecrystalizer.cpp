@@ -124,6 +124,8 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
 
   pecrystalizer->lowpass1 = new Lowpass(3000);
 
+  // pecrystalizer->lowpass1->init_zita(512);
+
   gst_base_transform_set_in_place(GST_BASE_TRANSFORM(pecrystalizer), true);
 }
 
@@ -180,6 +182,8 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
 
   GST_DEBUG_OBJECT(pecrystalizer, "transform");
 
+  std::lock_guard<std::mutex> lock(pecrystalizer->mutex);
+
   GstMapInfo map;
 
   gst_buffer_map(buffer, &map, GST_MAP_READWRITE);
@@ -193,8 +197,6 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
   } else {
     pecrystalizer->lowpass1->init_zita(num_samples);
   }
-
-  std::lock_guard<std::mutex> lock(pecrystalizer->mutex);
 
   if (!pecrystalizer->ready) {
     pecrystalizer->last_L = data[0];

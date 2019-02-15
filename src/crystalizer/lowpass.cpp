@@ -13,21 +13,23 @@ Lowpass::Lowpass(const float& fc) {
 }
 
 Lowpass::~Lowpass() {
-  // if (conv != nullptr) {
-  //   if (conv->state() != Convproc::ST_STOP) {
-  //     conv->stop_process();
-  //
-  //     conv->cleanup();
-  //
-  //     delete conv;
-  //
-  //     conv = nullptr;
-  //   }
-  // }
-  //
-  // if (kernel != nullptr) {
-  //   delete[] kernel;
-  // }
+  util::warning("destructor");
+
+  if (conv != nullptr) {
+    if (conv->state() != Convproc::ST_STOP) {
+      conv->stop_process();
+
+      conv->cleanup();
+
+      delete conv;
+
+      conv = nullptr;
+    }
+  }
+
+  if (kernel != nullptr) {
+    delete[] kernel;
+  }
 }
 
 void Lowpass::init_kernel(const float& fc) {
@@ -121,8 +123,10 @@ void Lowpass::init_zita(const int& num_samples) {
   }
 
   if (failed) {
+    util::warning("failed");
     ready = false;
   } else {
+    util::warning("ready");
     ready = true;
   }
 }
