@@ -131,187 +131,72 @@
             <property name="can_focus">False</property>
             <property name="halign">center</property>
             <property name="row_spacing">18</property>
+            <property name="column_spacing">60</property>
             <child>
-              <object class="GtkStack" id="stack">
+              <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="transition_duration">250</property>
-                <property name="transition_type">slide-left-right</property>
+                <property name="halign">center</property>
+                <property name="label" translatable="yes">Intensities</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+                <property name="width">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkGrid" id="lowband_grid">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="row_spacing">6</property>
                 <child>
-                  <object class="GtkGrid" id="lowband_grid">
+                  <object class="GtkSpinButton">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can_focus">True</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <property name="row_spacing">6</property>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Intensity</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkSpinButton">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="width_chars">10</property>
-                        <property name="secondary_icon_activatable">False</property>
-                        <property name="input_purpose">number</property>
-                        <property name="orientation">vertical</property>
-                        <property name="adjustment">intensity_low</property>
-                        <property name="digits">2</property>
-                        <property name="numeric">True</property>
-                        <property name="update_policy">if-valid</property>
-                        <property name="value">1</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkToggleButton" id="mute_low">
-                        <property name="label" translatable="yes">Mute</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="valign">center</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">2</property>
-                      </packing>
-                    </child>
+                    <property name="width_chars">10</property>
+                    <property name="secondary_icon_activatable">False</property>
+                    <property name="input_purpose">number</property>
+                    <property name="orientation">vertical</property>
+                    <property name="adjustment">intensity_low</property>
+                    <property name="digits">2</property>
+                    <property name="numeric">True</property>
+                    <property name="update_policy">if-valid</property>
+                    <property name="value">1</property>
                   </object>
                   <packing>
-                    <property name="name">low_band</property>
-                    <property name="title" translatable="yes">Low Band</property>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkGrid" id="midband_grid">
+                  <object class="GtkToggleButton" id="mute_low">
+                    <property name="label" translatable="yes">Mute</property>
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">center</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
                     <property name="valign">center</property>
-                    <property name="row_spacing">6</property>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="halign">center</property>
-                        <property name="label" translatable="yes">Intensity</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkSpinButton">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="width_chars">10</property>
-                        <property name="secondary_icon_activatable">False</property>
-                        <property name="input_purpose">number</property>
-                        <property name="orientation">vertical</property>
-                        <property name="adjustment">intensity_mid</property>
-                        <property name="digits">2</property>
-                        <property name="numeric">True</property>
-                        <property name="update_policy">if-valid</property>
-                        <property name="value">1</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkToggleButton" id="mute_mid">
-                        <property name="label" translatable="yes">Mute</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="valign">center</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">2</property>
-                      </packing>
-                    </child>
                   </object>
                   <packing>
-                    <property name="name">mid_band</property>
-                    <property name="title" translatable="yes">Mid Band</property>
-                    <property name="position">1</property>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">2</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkGrid" id="highband_grid">
+                  <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <property name="row_spacing">6</property>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Intensity</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkSpinButton">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="width_chars">10</property>
-                        <property name="secondary_icon_activatable">False</property>
-                        <property name="input_purpose">number</property>
-                        <property name="orientation">vertical</property>
-                        <property name="adjustment">intensity_high</property>
-                        <property name="digits">2</property>
-                        <property name="numeric">True</property>
-                        <property name="update_policy">if-valid</property>
-                        <property name="value">1</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkToggleButton" id="mute_high">
-                        <property name="label" translatable="yes">Mute</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="valign">center</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">2</property>
-                      </packing>
-                    </child>
+                    <property name="label" translatable="yes">Low Band</property>
                   </object>
                   <packing>
-                    <property name="name">high_band</property>
-                    <property name="title" translatable="yes">High Band</property>
-                    <property name="position">2</property>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
                   </packing>
                 </child>
               </object>
@@ -321,15 +206,123 @@
               </packing>
             </child>
             <child>
-              <object class="GtkStackSwitcher">
+              <object class="GtkGrid" id="midband_grid">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="stack">stack</property>
+                <property name="valign">center</property>
+                <property name="row_spacing">6</property>
+                <child>
+                  <object class="GtkSpinButton">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="width_chars">10</property>
+                    <property name="secondary_icon_activatable">False</property>
+                    <property name="input_purpose">number</property>
+                    <property name="orientation">vertical</property>
+                    <property name="adjustment">intensity_mid</property>
+                    <property name="digits">2</property>
+                    <property name="numeric">True</property>
+                    <property name="update_policy">if-valid</property>
+                    <property name="value">1</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkToggleButton" id="mute_mid">
+                    <property name="label" translatable="yes">Mute</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="valign">center</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="label" translatable="yes">Mid Band</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
               </object>
               <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">0</property>
+                <property name="left_attach">1</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkGrid" id="highband_grid">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="row_spacing">6</property>
+                <child>
+                  <object class="GtkSpinButton">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="width_chars">10</property>
+                    <property name="secondary_icon_activatable">False</property>
+                    <property name="input_purpose">number</property>
+                    <property name="orientation">vertical</property>
+                    <property name="adjustment">intensity_high</property>
+                    <property name="digits">2</property>
+                    <property name="numeric">True</property>
+                    <property name="update_policy">if-valid</property>
+                    <property name="value">1</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkToggleButton" id="mute_high">
+                    <property name="label" translatable="yes">Mute</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="valign">center</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="label" translatable="yes">High Band</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
           </object>
