@@ -429,18 +429,20 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
     }
   }
 
+  // add bands
+
   for (unsigned int n = 0; n < 2 * pecrystalizer->nsamples; n++) {
-    if (pecrystalizer->mute_mid) {
-      data[n] = 0.0f;
-    }
-
-    if (pecrystalizer->mute_low) {
-      pecrystalizer->data_low[n] = 0.0f;
-    }
-
-    if (pecrystalizer->mute_high) {
-      pecrystalizer->data_high[n] = 0.0f;
-    }
+    // if (pecrystalizer->mute_mid) {
+    //   data[n] = 0.0f;
+    // }
+    //
+    // if (pecrystalizer->mute_low) {
+    //   pecrystalizer->data_low[n] = 0.0f;
+    // }
+    //
+    // if (pecrystalizer->mute_high) {
+    //   pecrystalizer->data_high[n] = 0.0f;
+    // }
 
     data[n] += pecrystalizer->data_low[n] + pecrystalizer->data_high[n];
   }
