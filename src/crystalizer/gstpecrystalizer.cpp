@@ -123,6 +123,7 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->last_R = 0.0f;
 
   pecrystalizer->lowpass1 = new Lowpass(3000, 100);
+  pecrystalizer->lowpass2 = new Lowpass(10000, 100);
 
   gst_base_transform_set_in_place(GST_BASE_TRANSFORM(pecrystalizer), true);
 }
@@ -191,11 +192,41 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
 
   float* data = (float*)map.data;
 
-  if (pecrystalizer->lowpass1->ready) {
-    pecrystalizer->lowpass1->process(data);
+  if (pecrystalizer->lowpass1->ready && pecrystalizer->lowpass2->ready) {
+    memcpy(pecrystalizer->data_low, data, map.size);
+    memcpy(pecrystalizer->data_high, data, map.size);
+
+    // for (uint n = 0; n < 2 * num_samples; n++) {
+    //   pecrystalizer->data_low[n] = data[n];
+    //   pecrystalizer->data_high[n] = data[n];
+    // }
+
+    pecrystalizer->lowpass1->process(pecrystalizer->data_low);
+    pecrystalizer->lowpass2->process(pecrystalizer->data_high);
+
+    for (uint n = 0; n < 2 * num_samples; n++) {
+      data[n] = data[n] - pecrystalizer->data_high[n];
+    }
   } else {
+    if (pecrystalizer->data_low != nullptr) {
+      delete[] pecrystalizer->data_low;
+
+      pecrystalizer->data_low = nullptr;
+    }
+    if (pecrystalizer->data_high != nullptr) {
+      delete[] pecrystalizer->data_high;
+
+      pecrystalizer->data_high = nullptr;
+    }
+
+    pecrystalizer->data_low = new float[2 * num_samples];
+    pecrystalizer->data_high = new float[2 * num_samples];
+
     pecrystalizer->lowpass1->init_kernel(pecrystalizer->rate);
     pecrystalizer->lowpass1->init_zita(num_samples);
+
+    pecrystalizer->lowpass2->init_kernel(pecrystalizer->rate);
+    pecrystalizer->lowpass2->init_zita(num_samples);
   }
 
   if (!pecrystalizer->ready) {

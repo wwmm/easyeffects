@@ -35,15 +35,14 @@ void Lowpass::init_kernel(const float& rate) {
   float b = transition_band / rate;
 
   kernel_size = std::ceil(4.0f / b);
-  // kernel_size = 10001;
 
   kernel_size = (kernel_size % 2 == 0) ? kernel_size + 1 : kernel_size;
 
   float fc = cutoff / rate;
 
-  util::debug(log_tag + "kernel size: " + std::to_string(kernel_size));
-  util::debug(log_tag + "fc: " + std::to_string(fc));
-  util::debug(log_tag + "b: " + std::to_string(b));
+  util::debug(log_tag + "kernel size = " + std::to_string(kernel_size));
+  util::debug(log_tag + "fc = " + std::to_string(fc));
+  util::debug(log_tag + "b = " + std::to_string(b));
 
   kernel = new float[kernel_size];
 
