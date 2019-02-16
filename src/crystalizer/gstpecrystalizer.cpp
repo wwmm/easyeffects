@@ -125,6 +125,9 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->lowpass = new Filter(Mode::lowpass, 3000, 100);
   pecrystalizer->highpass = new Filter(Mode::highpass, 10000, 100);
 
+  pecrystalizer->bandlow = new Filter(Mode::lowpass, 10000, 100);
+  pecrystalizer->bandhigh = new Filter(Mode::highpass, 3000, 100);
+
   gst_base_transform_set_in_place(GST_BASE_TRANSFORM(pecrystalizer), true);
 }
 
@@ -199,9 +202,8 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
     pecrystalizer->lowpass->process(pecrystalizer->data_low);
     pecrystalizer->highpass->process(pecrystalizer->data_high);
 
-    for (uint n = 0; n < 2 * num_samples; n++) {
-      data[n] = pecrystalizer->data_high[n];
-    }
+    pecrystalizer->bandlow->process(data);
+    pecrystalizer->bandhigh->process(data);
   } else {
     if (pecrystalizer->data_low != nullptr) {
       delete[] pecrystalizer->data_low;
@@ -222,6 +224,12 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
 
     pecrystalizer->highpass->init_kernel(pecrystalizer->rate);
     pecrystalizer->highpass->init_zita(num_samples);
+
+    pecrystalizer->bandlow->init_kernel(pecrystalizer->rate);
+    pecrystalizer->bandlow->init_zita(num_samples);
+
+    pecrystalizer->bandhigh->init_kernel(pecrystalizer->rate);
+    pecrystalizer->bandhigh->init_zita(num_samples);
   }
 
   if (!pecrystalizer->ready) {
@@ -234,17 +242,17 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
    *https://git.ffmpeg.org/gitweb/ffmpeg.git/blob_plain/HEAD:/libavfilter/af_crystalizer.c
    */
 
-  for (unsigned int n = 0; n < num_samples; n++) {
-    float L = data[2 * n], R = data[2 * n + 1];
-
-    data[2 * n] = L + (L - pecrystalizer->last_L) * pecrystalizer->intensity;
-
-    data[2 * n + 1] =
-        R + (R - pecrystalizer->last_R) * pecrystalizer->intensity;
-
-    pecrystalizer->last_L = L;
-    pecrystalizer->last_R = R;
-  }
+  // for (unsigned int n = 0; n < num_samples; n++) {
+  //   float L = data[2 * n], R = data[2 * n + 1];
+  //
+  //   data[2 * n] = L + (L - pecrystalizer->last_L) * pecrystalizer->intensity;
+  //
+  //   data[2 * n + 1] =
+  //       R + (R - pecrystalizer->last_R) * pecrystalizer->intensity;
+  //
+  //   pecrystalizer->last_L = L;
+  //   pecrystalizer->last_R = R;
+  // }
 
   gst_buffer_unmap(buffer, &map);
 

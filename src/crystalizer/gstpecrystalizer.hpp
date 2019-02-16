@@ -37,7 +37,7 @@ struct _GstPecrystalizer {
 
   std::mutex mutex;
 
-  Filter *lowpass, *highpass;
+  Filter *lowpass, *highpass, *bandlow, *bandhigh;
 };
 
 struct _GstPecrystalizerClass {
