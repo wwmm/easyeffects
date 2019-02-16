@@ -161,9 +161,9 @@ static void gst_peadapter_set_property(GObject* object,
     case PROP_BLOCKSIZE:
       peadapter->blocksize = g_value_get_enum(value);
 
-      // gst_element_post_message(
-      //     GST_ELEMENT_CAST(peadapter),
-      //     gst_message_new_latency(GST_OBJECT_CAST(peadapter)));
+      gst_element_post_message(
+          GST_ELEMENT_CAST(peadapter),
+          gst_message_new_latency(GST_OBJECT_CAST(peadapter)));
 
       break;
     default:
