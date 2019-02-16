@@ -373,48 +373,75 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
   for (unsigned int n = 0; n < pecrystalizer->nsamples; n++) {
     // low
 
-    float L = pecrystalizer->data_low[2 * n];
-    float R = pecrystalizer->data_low[2 * n + 1];
+    if (!pecrystalizer->mute_low) {
+      float L = pecrystalizer->data_low[2 * n];
+      float R = pecrystalizer->data_low[2 * n + 1];
 
-    pecrystalizer->data_low[2 * n] =
-        L + (L - pecrystalizer->last_L_low) * pecrystalizer->intensity_low;
+      pecrystalizer->data_low[2 * n] =
+          L + (L - pecrystalizer->last_L_low) * pecrystalizer->intensity_low;
 
-    pecrystalizer->data_low[2 * n + 1] =
-        R + (R - pecrystalizer->last_R_low) * pecrystalizer->intensity_low;
+      pecrystalizer->data_low[2 * n + 1] =
+          R + (R - pecrystalizer->last_R_low) * pecrystalizer->intensity_low;
 
-    pecrystalizer->last_L_low = L;
-    pecrystalizer->last_R_low = R;
+      pecrystalizer->last_L_low = L;
+      pecrystalizer->last_R_low = R;
+    } else if (n == pecrystalizer->nsamples - 1) {
+      pecrystalizer->last_L_low = pecrystalizer->data_low[2 * n];
+      pecrystalizer->last_R_low = pecrystalizer->data_low[2 * n + 1];
+    }
 
     // mid
 
-    L = data[2 * n];
-    R = data[2 * n + 1];
+    if (!pecrystalizer->mute_mid) {
+      float L = data[2 * n];
+      float R = data[2 * n + 1];
 
-    data[2 * n] =
-        L + (L - pecrystalizer->last_L_mid) * pecrystalizer->intensity_mid;
+      data[2 * n] =
+          L + (L - pecrystalizer->last_L_mid) * pecrystalizer->intensity_mid;
 
-    data[2 * n + 1] =
-        R + (R - pecrystalizer->last_R_mid) * pecrystalizer->intensity_mid;
+      data[2 * n + 1] =
+          R + (R - pecrystalizer->last_R_mid) * pecrystalizer->intensity_mid;
 
-    pecrystalizer->last_L_mid = L;
-    pecrystalizer->last_R_mid = R;
+      pecrystalizer->last_L_mid = L;
+      pecrystalizer->last_R_mid = R;
+    } else if (n == pecrystalizer->nsamples - 1) {
+      pecrystalizer->last_L_mid = data[2 * n];
+      pecrystalizer->last_R_mid = data[2 * n + 1];
+    }
 
     // high
 
-    L = pecrystalizer->data_high[2 * n];
-    R = pecrystalizer->data_high[2 * n + 1];
+    if (!pecrystalizer->mute_high) {
+      float L = pecrystalizer->data_high[2 * n];
+      float R = pecrystalizer->data_high[2 * n + 1];
 
-    pecrystalizer->data_high[2 * n] =
-        L + (L - pecrystalizer->last_L_high) * pecrystalizer->intensity_high;
+      pecrystalizer->data_high[2 * n] =
+          L + (L - pecrystalizer->last_L_high) * pecrystalizer->intensity_high;
 
-    pecrystalizer->data_high[2 * n + 1] =
-        R + (R - pecrystalizer->last_R_high) * pecrystalizer->intensity_high;
+      pecrystalizer->data_high[2 * n + 1] =
+          R + (R - pecrystalizer->last_R_high) * pecrystalizer->intensity_high;
 
-    pecrystalizer->last_L_high = L;
-    pecrystalizer->last_R_high = R;
+      pecrystalizer->last_L_high = L;
+      pecrystalizer->last_R_high = R;
+    } else if (n == pecrystalizer->nsamples - 1) {
+      pecrystalizer->last_L_high = pecrystalizer->data_high[2 * n];
+      pecrystalizer->last_R_high = pecrystalizer->data_high[2 * n + 1];
+    }
   }
 
   for (unsigned int n = 0; n < 2 * pecrystalizer->nsamples; n++) {
+    if (pecrystalizer->mute_mid) {
+      data[n] = 0.0f;
+    }
+
+    if (pecrystalizer->mute_low) {
+      pecrystalizer->data_low[n] = 0.0f;
+    }
+
+    if (pecrystalizer->mute_high) {
+      pecrystalizer->data_high[n] = 0.0f;
+    }
+
     data[n] += pecrystalizer->data_low[n] + pecrystalizer->data_high[n];
   }
 
