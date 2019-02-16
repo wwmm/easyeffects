@@ -6,6 +6,7 @@
 #include <gtkmm/adjustment.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/combobox.h>
+#include <gtkmm/comboboxtext.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/liststore.h>
 #include <gtkmm/stack.h>
@@ -31,6 +32,7 @@ class PulseSettingsUi : public Gtk::Grid {
 
   Gtk::ToggleButton *use_default_sink, *use_default_source;
   Gtk::ComboBox *input_device, *output_device;
+  Gtk::ComboBoxText *blocksize_in, *blocksize_out;
 
   Glib::RefPtr<Gtk::Adjustment> buffer_in, buffer_out, latency_in, latency_out;
   Glib::RefPtr<Gtk::ListStore> sink_list, source_list;

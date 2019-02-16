@@ -182,6 +182,12 @@
             <range min="100" max="100000"/>
             <default>10000</default>
         </key>
+        <key name="blocksize-in" enum="com.github.wwmm.pulseeffects.blocksize.enum">
+            <default>"512"</default>
+        </key>
+        <key name="blocksize-out" enum="com.github.wwmm.pulseeffects.blocksize.enum">
+            <default>"512"</default>
+        </key>
         <key name="enable-all-sinkinputs" type="b">
             <default>true</default>
         </key>
