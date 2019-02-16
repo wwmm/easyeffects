@@ -47,7 +47,15 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
 
 static void gst_pecrystalizer_finish_filters(GstPecrystalizer* pecrystalizer);
 
-enum { PROP_0, PROP_INTENSITY_LOW, PROP_INTENSITY_MID, PROP_INTENSITY_HIGH };
+enum {
+  PROP_0,
+  PROP_INTENSITY_LOW,
+  PROP_INTENSITY_MID,
+  PROP_INTENSITY_HIGH,
+  PROP_MUTE_LOW,
+  PROP_MUTE_MID,
+  PROP_MUTE_HIGH
+};
 
 /* pad templates */
 
@@ -134,15 +142,38 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
                          "Expansion intensity", 0.0f, 10.0f, 2.0f,
                          static_cast<GParamFlags>(G_PARAM_READWRITE |
                                                   G_PARAM_STATIC_STRINGS)));
+
+  g_object_class_install_property(
+      gobject_class, PROP_MUTE_LOW,
+      g_param_spec_boolean("mute-low", "MUTE LOW BAND", "mute band", false,
+                           static_cast<GParamFlags>(G_PARAM_READWRITE |
+                                                    G_PARAM_STATIC_STRINGS)));
+
+  g_object_class_install_property(
+      gobject_class, PROP_MUTE_MID,
+      g_param_spec_boolean("mute-mid", "MUTE MID BAND", "mute band", false,
+                           static_cast<GParamFlags>(G_PARAM_READWRITE |
+                                                    G_PARAM_STATIC_STRINGS)));
+
+  g_object_class_install_property(
+      gobject_class, PROP_MUTE_HIGH,
+      g_param_spec_boolean("mute-high", "MUTE HIGH BAND", "mute band", false,
+                           static_cast<GParamFlags>(G_PARAM_READWRITE |
+                                                    G_PARAM_STATIC_STRINGS)));
 }
 
 static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->ready = false;
   pecrystalizer->bpf = 0;
   pecrystalizer->nsamples = 0;
+
   pecrystalizer->intensity_low = 2.0f;
   pecrystalizer->intensity_mid = 1.0f;
   pecrystalizer->intensity_high = 0.5f;
+  pecrystalizer->mute_low = false;
+  pecrystalizer->mute_mid = false;
+  pecrystalizer->mute_high = false;
+
   pecrystalizer->last_L_low = 0.0f;
   pecrystalizer->last_L_mid = 0.0f;
   pecrystalizer->last_L_high = 0.0f;
