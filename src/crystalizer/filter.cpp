@@ -63,14 +63,14 @@ void Filter::init_kernel(const float& rate) {
   if (sum > 0.0f) {
     for (uint n = 0; n < kernel_size; n++) {
       kernel[n] /= sum;
-
-      if (mode == Mode::highpass) {
-        kernel[n] *= -1;
-      }
     }
   }
 
   if (mode == Mode::highpass) {
+    for (uint n = 0; n < kernel_size; n++) {
+      kernel[n] *= -1;
+    }
+
     kernel[(kernel_size - 1) / 2] += 1;
   }
 }
