@@ -40,6 +40,8 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
 
 static gboolean gst_pecrystalizer_stop(GstBaseTransform* base);
 
+static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer);
+
 static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
                                       GstBuffer* buffer);
 
@@ -239,31 +241,7 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
   } else {
     pecrystalizer->nsamples = num_samples;
 
-    if (pecrystalizer->data_low != nullptr) {
-      delete[] pecrystalizer->data_low;
-
-      pecrystalizer->data_low = nullptr;
-    }
-    if (pecrystalizer->data_high != nullptr) {
-      delete[] pecrystalizer->data_high;
-
-      pecrystalizer->data_high = nullptr;
-    }
-
-    pecrystalizer->data_low = new float[2 * num_samples];
-    pecrystalizer->data_high = new float[2 * num_samples];
-
-    pecrystalizer->lowpass->init_kernel(pecrystalizer->rate);
-    pecrystalizer->lowpass->init_zita(num_samples);
-
-    pecrystalizer->highpass->init_kernel(pecrystalizer->rate);
-    pecrystalizer->highpass->init_zita(num_samples);
-
-    pecrystalizer->bandlow->init_kernel(pecrystalizer->rate);
-    pecrystalizer->bandlow->init_zita(num_samples);
-
-    pecrystalizer->bandhigh->init_kernel(pecrystalizer->rate);
-    pecrystalizer->bandhigh->init_zita(num_samples);
+    gst_pecrystalizer_setup_filters(pecrystalizer);
   }
 
   return GST_FLOW_OK;
@@ -279,6 +257,25 @@ static gboolean gst_pecrystalizer_stop(GstBaseTransform* base) {
   gst_pecrystalizer_finish_filters(pecrystalizer);
 
   return true;
+}
+
+static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer) {
+  if (pecrystalizer->rate != 0) {
+    pecrystalizer->data_low = new float[2 * pecrystalizer->nsamples];
+    pecrystalizer->data_high = new float[2 * pecrystalizer->nsamples];
+
+    pecrystalizer->lowpass->init_kernel(pecrystalizer->rate);
+    pecrystalizer->lowpass->init_zita(pecrystalizer->nsamples);
+
+    pecrystalizer->highpass->init_kernel(pecrystalizer->rate);
+    pecrystalizer->highpass->init_zita(pecrystalizer->nsamples);
+
+    pecrystalizer->bandlow->init_kernel(pecrystalizer->rate);
+    pecrystalizer->bandlow->init_zita(pecrystalizer->nsamples);
+
+    pecrystalizer->bandhigh->init_kernel(pecrystalizer->rate);
+    pecrystalizer->bandhigh->init_zita(pecrystalizer->nsamples);
+  }
 }
 
 static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
