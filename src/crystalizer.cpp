@@ -75,16 +75,16 @@ Crystalizer::~Crystalizer() {
 
 void Crystalizer::bind_to_gsettings() {
   g_settings_bind_with_mapping(
-      settings, "intensity-low", crystalizer, "intensity", G_SETTINGS_BIND_GET,
-      util::double_to_float, nullptr, nullptr, nullptr);
+      settings, "intensity-low", crystalizer, "intensity-low",
+      G_SETTINGS_BIND_GET, util::double_to_float, nullptr, nullptr, nullptr);
 
-  // g_settings_bind_with_mapping(
-  //     settings, "intensity-mid", crystalizer_mid, "intensity",
-  //     G_SETTINGS_BIND_GET, util::double_to_float, nullptr, nullptr, nullptr);
-  //
-  // g_settings_bind_with_mapping(
-  //     settings, "intensity-high", crystalizer_high, "intensity",
-  //     G_SETTINGS_BIND_GET, util::double_to_float, nullptr, nullptr, nullptr);
+  g_settings_bind_with_mapping(
+      settings, "intensity-mid", crystalizer, "intensity-mid",
+      G_SETTINGS_BIND_GET, util::double_to_float, nullptr, nullptr, nullptr);
+
+  g_settings_bind_with_mapping(
+      settings, "intensity-high", crystalizer, "intensity-high",
+      G_SETTINGS_BIND_GET, util::double_to_float, nullptr, nullptr, nullptr);
   //
   // g_settings_bind(settings, "mute-low", mixer_sink0, "mute",
   //                 G_SETTINGS_BIND_DEFAULT);
