@@ -26,9 +26,9 @@ void Filter::init_kernel(const float& rate) {
 
   float fc = cutoff / rate;
 
-  util::debug(log_tag + "kernel size = " + std::to_string(kernel_size));
-  util::debug(log_tag + "fc = " + std::to_string(fc));
-  util::debug(log_tag + "b = " + std::to_string(b));
+  // util::debug(log_tag + "kernel size = " + std::to_string(kernel_size));
+  // util::debug(log_tag + "fc = " + std::to_string(fc));
+  // util::debug(log_tag + "b = " + std::to_string(b));
 
   kernel = new float[kernel_size];
 
