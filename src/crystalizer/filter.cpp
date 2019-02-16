@@ -163,5 +163,7 @@ void Filter::finish() {
 
   if (kernel != nullptr) {
     delete[] kernel;
+
+    kernel = nullptr;
   }
 }

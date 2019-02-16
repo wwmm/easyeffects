@@ -278,7 +278,7 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
 
   GstMapInfo map;
 
-  gst_buffer_map(buffer, &map, GST_MAP_READWRITE);
+  gst_buffer_map(buffer, &map, GST_MAP_READ);
 
   guint num_samples = map.size / pecrystalizer->bpf;
 
@@ -287,14 +287,14 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
   if (pecrystalizer->lowpass->ready && pecrystalizer->highpass->ready &&
       pecrystalizer->bandlow->ready && pecrystalizer->bandhigh->ready) {
     if (pecrystalizer->nsamples == num_samples) {
-      gst_pecrystalizer_process(pecrystalizer, buffer);
+      // gst_pecrystalizer_process(pecrystalizer, buffer);
     } else {
-      gst_pecrystalizer_finish_filters(pecrystalizer);
+      // gst_pecrystalizer_finish_filters(pecrystalizer);
     }
   } else {
     pecrystalizer->nsamples = num_samples;
 
-    gst_pecrystalizer_setup_filters(pecrystalizer);
+    // gst_pecrystalizer_setup_filters(pecrystalizer);
   }
 
   return GST_FLOW_OK;

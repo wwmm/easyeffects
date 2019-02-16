@@ -26,9 +26,9 @@ class Filter {
 
   uint kernel_size, nsamples;
   float cutoff, transition_band;
-  float* kernel;
+  float* kernel = nullptr;
 
-  Convproc* conv;
+  Convproc* conv = nullptr;
 };
 
 #endif
