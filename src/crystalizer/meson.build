@@ -12,7 +12,7 @@ if cxx.compiles(
 
 plugin_sources = [
 	'gstpecrystalizer.cpp',
-	'lowpass.cpp',
+	'filter.cpp',
   '../util.cpp'
 ]
 
