@@ -69,6 +69,7 @@ void Filter::init_zita(const int& num_samples) {
 
   nsamples = num_samples;
 
+  // depending on buffer and kernel size OPT_FFTW_MEASURE may make un crash
   // options |= Convproc::OPT_FFTW_MEASURE;
   options |= Convproc::OPT_VECTOR_MODE;
 

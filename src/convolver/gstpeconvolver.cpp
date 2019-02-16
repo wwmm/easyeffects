@@ -349,7 +349,8 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver) {
 
       unsigned int options = 0;
 
-      options |= Convproc::OPT_FFTW_MEASURE;
+      // depending on buffer and kernel size OPT_FFTW_MEASURE may make un crash
+      // options |= Convproc::OPT_FFTW_MEASURE;
       options |= Convproc::OPT_VECTOR_MODE;
 
       peconvolver->conv->set_options(options);

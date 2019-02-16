@@ -181,11 +181,11 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->last_R_mid = 0.0f;
   pecrystalizer->last_R_high = 0.0f;
 
-  pecrystalizer->lowpass = new Filter(Mode::lowpass, 3000, 100);
-  pecrystalizer->highpass = new Filter(Mode::highpass, 10000, 100);
+  pecrystalizer->lowpass = new Filter(Mode::lowpass, 3000, 50);
+  pecrystalizer->highpass = new Filter(Mode::highpass, 10000, 50);
 
-  pecrystalizer->bandlow = new Filter(Mode::lowpass, 10000, 100);
-  pecrystalizer->bandhigh = new Filter(Mode::highpass, 3000, 100);
+  pecrystalizer->bandlow = new Filter(Mode::lowpass, 10000, 50);
+  pecrystalizer->bandhigh = new Filter(Mode::highpass, 3000, 50);
 
   gst_base_transform_set_in_place(GST_BASE_TRANSFORM(pecrystalizer), true);
 }
@@ -287,9 +287,9 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
   if (pecrystalizer->lowpass->ready && pecrystalizer->highpass->ready &&
       pecrystalizer->bandlow->ready && pecrystalizer->bandhigh->ready) {
     if (pecrystalizer->nsamples == num_samples) {
-      // gst_pecrystalizer_process(pecrystalizer, buffer);
+      gst_pecrystalizer_process(pecrystalizer, buffer);
     } else {
-      // gst_pecrystalizer_finish_filters(pecrystalizer);
+      gst_pecrystalizer_finish_filters(pecrystalizer);
     }
   } else {
     pecrystalizer->nsamples = num_samples;
