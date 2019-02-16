@@ -208,6 +208,15 @@ void gst_pecrystalizer_set_property(GObject* object,
     case PROP_INTENSITY_HIGH:
       pecrystalizer->intensity_high = g_value_get_float(value);
       break;
+    case PROP_MUTE_LOW:
+      pecrystalizer->mute_low = g_value_get_boolean(value);
+      break;
+    case PROP_MUTE_MID:
+      pecrystalizer->mute_mid = g_value_get_boolean(value);
+      break;
+    case PROP_MUTE_HIGH:
+      pecrystalizer->mute_high = g_value_get_boolean(value);
+      break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
       break;
@@ -231,6 +240,15 @@ void gst_pecrystalizer_get_property(GObject* object,
       break;
     case PROP_INTENSITY_HIGH:
       g_value_set_float(value, pecrystalizer->intensity_high);
+      break;
+    case PROP_MUTE_LOW:
+      g_value_set_float(value, pecrystalizer->mute_low);
+      break;
+    case PROP_MUTE_MID:
+      g_value_set_float(value, pecrystalizer->mute_mid);
+      break;
+    case PROP_MUTE_HIGH:
+      g_value_set_float(value, pecrystalizer->mute_high);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
