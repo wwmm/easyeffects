@@ -4,6 +4,11 @@
 
 ### Added
 - Updated Italian translations.
+- Reworked crystalizer plugin. It now has built-in band filters. CPU usage is
+a little higher but latency was reduced.
+- Block size is again a global setting. Crystalizer also uses it now.
+- The spectrum now has line mode and a switch to enable/disable color linear
+gradient.
 
 ## [4.5.0]
 
