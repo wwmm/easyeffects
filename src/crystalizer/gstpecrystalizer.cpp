@@ -40,7 +40,7 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
 
 static gboolean gst_pecrystalizer_stop(GstBaseTransform* base);
 
-enum { PROP_0, PROP_INTENSITY };
+enum { PROP_0, PROP_INTENSITY_LOW, PROP_INTENSITY_MID, PROP_INTENSITY_HIGH };
 
 /* pad templates */
 
@@ -108,9 +108,23 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
   /* define properties */
 
   g_object_class_install_property(
-      gobject_class, PROP_INTENSITY,
-      g_param_spec_float("intensity", "INTENSITY", "Expansion intensity", 0.0f,
-                         10.0f, 2.0f,
+      gobject_class, PROP_INTENSITY_LOW,
+      g_param_spec_float("intensity-low", "LOW BAND INTENSITY",
+                         "Expansion intensity", 0.0f, 10.0f, 2.0f,
+                         static_cast<GParamFlags>(G_PARAM_READWRITE |
+                                                  G_PARAM_STATIC_STRINGS)));
+
+  g_object_class_install_property(
+      gobject_class, PROP_INTENSITY_MID,
+      g_param_spec_float("intensity-mid", "MID BAND INTENSITY",
+                         "Expansion intensity", 0.0f, 10.0f, 2.0f,
+                         static_cast<GParamFlags>(G_PARAM_READWRITE |
+                                                  G_PARAM_STATIC_STRINGS)));
+
+  g_object_class_install_property(
+      gobject_class, PROP_INTENSITY_HIGH,
+      g_param_spec_float("intensity-high", "HIGH BAND INTENSITY",
+                         "Expansion intensity", 0.0f, 10.0f, 2.0f,
                          static_cast<GParamFlags>(G_PARAM_READWRITE |
                                                   G_PARAM_STATIC_STRINGS)));
 }
@@ -118,7 +132,9 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
 static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->ready = false;
   pecrystalizer->bpf = 0;
-  pecrystalizer->intensity = 2.0f;
+  pecrystalizer->intensity_low = 2.0f;
+  pecrystalizer->intensity_mid = 1.0f;
+  pecrystalizer->intensity_high = 0.5f;
   pecrystalizer->last_L = 0.0f;
   pecrystalizer->last_R = 0.0f;
 
@@ -140,8 +156,14 @@ void gst_pecrystalizer_set_property(GObject* object,
   GST_DEBUG_OBJECT(pecrystalizer, "set_property");
 
   switch (property_id) {
-    case PROP_INTENSITY:
-      pecrystalizer->intensity = g_value_get_float(value);
+    case PROP_INTENSITY_LOW:
+      pecrystalizer->intensity_low = g_value_get_float(value);
+      break;
+    case PROP_INTENSITY_MID:
+      pecrystalizer->intensity_mid = g_value_get_float(value);
+      break;
+    case PROP_INTENSITY_HIGH:
+      pecrystalizer->intensity_high = g_value_get_float(value);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -158,8 +180,14 @@ void gst_pecrystalizer_get_property(GObject* object,
   GST_DEBUG_OBJECT(pecrystalizer, "get_property");
 
   switch (property_id) {
-    case PROP_INTENSITY:
-      g_value_set_float(value, pecrystalizer->intensity);
+    case PROP_INTENSITY_LOW:
+      g_value_set_float(value, pecrystalizer->intensity_low);
+      break;
+    case PROP_INTENSITY_MID:
+      g_value_set_float(value, pecrystalizer->intensity_mid);
+      break;
+    case PROP_INTENSITY_HIGH:
+      g_value_set_float(value, pecrystalizer->intensity_high);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);

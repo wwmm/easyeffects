@@ -26,7 +26,7 @@ struct _GstPecrystalizer {
 
   /* properties */
 
-  float intensity;
+  float intensity_low, intensity_mid, intensity_high;
 
   /* < private > */
 
