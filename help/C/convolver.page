@@ -31,15 +31,6 @@
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Block Size</em>
-            </title>
-            <p>
-                This controls the size of the buffer that is used by the convolver. Higher
-                values increase latency but may decrease cpu usage.
-            </p>
-        </item>
-        <item>
-            <title>
                 <em style="strong" its:withinText="nested">Spectrum</em>
             </title>
             <p>

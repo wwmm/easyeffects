@@ -93,6 +93,9 @@ SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager)
   g_settings_bind(settings, "latency-in", sink, "latency-time",
                   G_SETTINGS_BIND_DEFAULT);
 
+  g_settings_bind(settings, "blocksize-in", adapter, "blocksize",
+                  G_SETTINGS_BIND_DEFAULT);
+
   // element message callback
 
   g_signal_connect(bus, "message::element", G_CALLBACK(on_message_element),

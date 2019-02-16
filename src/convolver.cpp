@@ -17,15 +17,12 @@ Convolver::Convolver(const std::string& tag, const std::string& schema)
     auto audioconvert_out =
         gst_element_factory_make("audioconvert", "convolver_audioconvert_out");
 
-    adapter = gst_element_factory_make("peadapter", nullptr);
+    gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in,
+                     convolver, audioconvert_out, output_gain, out_level,
+                     nullptr);
 
-    gst_bin_add_many(GST_BIN(bin), input_gain, in_level, adapter,
-                     audioconvert_in, convolver, audioconvert_out, output_gain,
-                     out_level, nullptr);
-
-    gst_element_link_many(input_gain, in_level, adapter, audioconvert_in,
-                          convolver, audioconvert_out, output_gain, out_level,
-                          nullptr);
+    gst_element_link_many(input_gain, in_level, audioconvert_in, convolver,
+                          audioconvert_out, output_gain, out_level, nullptr);
 
     auto pad_sink = gst_element_get_static_pad(input_gain, "sink");
     auto pad_src = gst_element_get_static_pad(out_level, "src");
@@ -66,9 +63,6 @@ Convolver::~Convolver() {
 }
 
 void Convolver::bind_to_gsettings() {
-  g_settings_bind(settings, "blocksize", adapter, "blocksize",
-                  G_SETTINGS_BIND_DEFAULT);
-
   g_settings_bind(settings, "kernel-path", convolver, "kernel-path",
                   G_SETTINGS_BIND_DEFAULT);
 

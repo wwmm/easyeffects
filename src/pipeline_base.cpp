@@ -287,9 +287,9 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
   capsfilter = get_required_plugin("capsfilter", nullptr);
   sink = get_required_plugin("pulsesink", "sink");
   spectrum = get_required_plugin("spectrum", "spectrum");
+  adapter = gst_element_factory_make("peadapter", nullptr);
 
   auto src_type = get_required_plugin("typefind", nullptr);
-  auto adapter = gst_element_factory_make("peadapter", nullptr);
 
   init_spectrum_bin();
   init_effects_bin();

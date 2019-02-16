@@ -78,7 +78,6 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
   builder->get_widget("samples", label_samples);
   builder->get_widget("duration", label_duration);
   builder->get_widget("show_fft", show_fft);
-  builder->get_widget("blocksize", blocksize);
 
   get_object(builder, "input_gain", input_gain);
   get_object(builder, "output_gain", output_gain);
@@ -136,11 +135,6 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
   settings->bind("ir-width", ir_width.get(), "value", flag);
 
   settings->set_boolean("post-messages", true);
-
-  g_settings_bind_with_mapping(settings->gobj(), "blocksize", blocksize->gobj(),
-                               "active", G_SETTINGS_BIND_DEFAULT,
-                               blocksize_enum_to_int, int_to_blocksize_enum,
-                               nullptr, nullptr);
 
   // irs dir
 

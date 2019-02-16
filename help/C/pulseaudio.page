@@ -37,5 +37,14 @@
                 Pulsesrc plugin latency value.
             </p>
         </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Block Size</em>
+            </title>
+            <p>
+                This controls the size of the audio buffer. Higher values increase latency but
+                decrease cpu usage of a few plugins.
+            </p>
+        </item>
     </terms>
 </page>

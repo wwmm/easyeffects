@@ -20,7 +20,7 @@ class PipelineBase {
   GstElement *pipeline = nullptr, *source = nullptr, *queue_src = nullptr,
              *sink = nullptr, *spectrum = nullptr, *spectrum_bin = nullptr,
              *spectrum_identity_in = nullptr, *spectrum_identity_out = nullptr,
-             *effects_bin = nullptr, *identity_in = nullptr,
+             *adapter = nullptr, *effects_bin = nullptr, *identity_in = nullptr,
              *identity_out = nullptr;
 
   GstBus* bus = nullptr;
