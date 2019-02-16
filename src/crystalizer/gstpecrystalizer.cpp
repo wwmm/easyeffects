@@ -143,8 +143,12 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->intensity_low = 2.0f;
   pecrystalizer->intensity_mid = 1.0f;
   pecrystalizer->intensity_high = 0.5f;
-  pecrystalizer->last_L = 0.0f;
-  pecrystalizer->last_R = 0.0f;
+  pecrystalizer->last_L_low = 0.0f;
+  pecrystalizer->last_L_mid = 0.0f;
+  pecrystalizer->last_L_high = 0.0f;
+  pecrystalizer->last_R_low = 0.0f;
+  pecrystalizer->last_R_mid = 0.0f;
+  pecrystalizer->last_R_high = 0.0f;
 
   pecrystalizer->lowpass = new Filter(Mode::lowpass, 3000, 100);
   pecrystalizer->highpass = new Filter(Mode::highpass, 10000, 100);
@@ -253,6 +257,10 @@ static gboolean gst_pecrystalizer_stop(GstBaseTransform* base) {
   std::lock_guard<std::mutex> lock(pecrystalizer->mutex);
 
   pecrystalizer->ready = false;
+  pecrystalizer->lowpass->ready = false;
+  pecrystalizer->highpass->ready = false;
+  pecrystalizer->bandlow->ready = false;
+  pecrystalizer->bandhigh->ready = false;
 
   gst_pecrystalizer_finish_filters(pecrystalizer);
 
@@ -297,8 +305,14 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
   pecrystalizer->bandhigh->process(data);
 
   if (!pecrystalizer->ready) {
-    // pecrystalizer->last_L = data[0];
-    // pecrystalizer->last_R = data[1];
+    pecrystalizer->last_L_low = pecrystalizer->data_low[0];
+    pecrystalizer->last_R_low = pecrystalizer->data_low[1];
+
+    pecrystalizer->last_L_mid = data[0];
+    pecrystalizer->last_R_mid = data[1];
+
+    pecrystalizer->last_L_high = pecrystalizer->data_high[0];
+    pecrystalizer->last_R_high = pecrystalizer->data_high[1];
 
     pecrystalizer->ready = true;
   }
