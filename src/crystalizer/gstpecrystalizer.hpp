@@ -35,12 +35,13 @@ struct _GstPecrystalizer {
   uint nsamples;
   float last_L_low, last_L_mid, last_L_high, last_R_low, last_R_mid,
       last_R_high;
-  float *data_low, *data_high;
+  float *data_low = nullptr, *data_high = nullptr;
   bool mute_low, mute_mid, mute_high;
 
   std::mutex mutex;
 
-  Filter *lowpass, *highpass, *bandlow, *bandhigh;
+  Filter *lowpass = nullptr, *highpass = nullptr, *bandlow = nullptr,
+         *bandhigh = nullptr;
 };
 
 struct _GstPecrystalizerClass {

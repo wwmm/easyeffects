@@ -45,7 +45,7 @@ struct _GstPeautogain {
 
   int notify_samples;  // number of samples to count before emit a notify
   int sample_count;
-  ebur128_state* ebur_state;
+  ebur128_state* ebur_state = nullptr;
 
   std::mutex lock_guard_ebu;
 };

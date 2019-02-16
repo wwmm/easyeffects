@@ -19,8 +19,6 @@ void ConvolverPreset::save(boost::property_tree::ptree& root,
            settings->get_string("kernel-path"));
 
   root.put(section + ".convolver.ir-width", settings->get_int("ir-width"));
-
-  root.put(section + ".convolver.blocksize", settings->get_string("blocksize"));
 }
 
 void ConvolverPreset::load(boost::property_tree::ptree& root,
@@ -38,9 +36,6 @@ void ConvolverPreset::load(boost::property_tree::ptree& root,
                     section + ".convolver.kernel-path");
 
   update_key<int>(root, settings, "ir-width", section + ".convolver.ir-width");
-
-  update_string_key(root, settings, "blocksize",
-                    section + ".convolver.blocksize");
 }
 
 void ConvolverPreset::write(PresetType preset_type,

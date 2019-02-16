@@ -27,19 +27,20 @@ struct _GstPeconvolver {
 
   /* properties */
 
-  gchar* kernel_path;
+  gchar* kernel_path = nullptr;
   unsigned int ir_width, num_samples;
 
   /* < private > */
 
   bool ready;
   int rate, kernel_n_frames, irs_fail_count;
-  int bpf;                     // bytes per frame : channels * bps
-  float *kernel_L, *kernel_R;  // left and right channels buffers
+  int bpf;                    // bytes per frame : channels * bps
+  float* kernel_L = nullptr;  // left channel buffer
+  float* kernel_R = nullptr;  // right channel buffer
 
   std::string log_tag;
 
-  Convproc* conv;
+  Convproc* conv = nullptr;
 
   std::mutex lock_guard_zita;
 
