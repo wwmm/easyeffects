@@ -26,7 +26,7 @@ void Filter::init_kernel(const float& rate) {
 
   float fc = cutoff / rate;
 
-  // util::debug(log_tag + "kernel size = " + std::to_string(kernel_size));
+  util::debug(log_tag + "kernel size = " + std::to_string(kernel_size));
   // util::debug(log_tag + "fc = " + std::to_string(fc));
   // util::debug(log_tag + "b = " + std::to_string(b));
 
@@ -69,7 +69,7 @@ void Filter::init_zita(const int& num_samples) {
 
   nsamples = num_samples;
 
-  options |= Convproc::OPT_FFTW_MEASURE;
+  // options |= Convproc::OPT_FFTW_MEASURE;
   options |= Convproc::OPT_VECTOR_MODE;
 
   conv = new Convproc();

@@ -67,18 +67,6 @@ void on_message_element(const GstBus* gst_bus,
   }
 }
 
-void on_blocksize_changed(GSettings* settings,
-                          gchar* key,
-                          SinkInputEffects* l) {
-  l->set_null_pipeline();
-
-  auto v = g_settings_get_enum(settings, key);
-
-  g_object_set(l->adapter, "blocksize", v, nullptr);
-
-  l->update_pipeline_state();
-}
-
 }  // namespace
 
 SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
@@ -144,9 +132,6 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
 
   g_signal_connect(bus, "message::element", G_CALLBACK(on_message_element),
                    this);
-
-  // g_signal_connect(settings, "changed::blocksize-out",
-  //                  G_CALLBACK(on_blocksize_changed), this);
 
   limiter = std::make_unique<Limiter>(
       log_tag, "com.github.wwmm.pulseeffects.sinkinputs.limiter");

@@ -294,7 +294,7 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
   } else {
     pecrystalizer->nsamples = num_samples;
 
-    // gst_pecrystalizer_setup_filters(pecrystalizer);
+    gst_pecrystalizer_setup_filters(pecrystalizer);
   }
 
   return GST_FLOW_OK;

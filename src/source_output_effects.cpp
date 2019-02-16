@@ -35,18 +35,6 @@ void on_message_element(const GstBus* gst_bus,
   }
 }
 
-void on_blocksize_changed(GSettings* settings,
-                          gchar* key,
-                          SourceOutputEffects* l) {
-  l->set_null_pipeline();
-
-  auto v = g_settings_get_enum(settings, key);
-
-  g_object_set(l->adapter, "blocksize", v, nullptr);
-
-  l->update_pipeline_state();
-}
-
 }  // namespace
 
 SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager)
@@ -110,11 +98,8 @@ SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager)
 
   // element message callback
 
-  // g_signal_connect(bus, "message::element", G_CALLBACK(on_message_element),
-  //                  this);
-
-  g_signal_connect(settings, "changed::blocksize-in",
-                   G_CALLBACK(on_blocksize_changed), this);
+  g_signal_connect(bus, "message::element", G_CALLBACK(on_message_element),
+                   this);
 
   limiter = std::make_unique<Limiter>(
       log_tag, "com.github.wwmm.pulseeffects.sourceoutputs.limiter");
