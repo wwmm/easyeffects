@@ -92,8 +92,6 @@ void Filter::init_zita(const int& num_samples) {
     failed = true;
     util::debug(log_tag + "can't initialise zita-convolver engine: " +
                 std::to_string(ret));
-  } else {
-    util::debug(log_tag + "initialized zita-convolver engine");
   }
 
   ret = conv->impdata_create(0, 0, 1, kernel, 0, kernel_size);
@@ -101,8 +99,6 @@ void Filter::init_zita(const int& num_samples) {
   if (ret != 0) {
     failed = true;
     util::debug(log_tag + "left impdata_create failed: " + std::to_string(ret));
-  } else {
-    util::debug(log_tag + "left impdata_create success");
   }
 
   ret = conv->impdata_create(1, 1, 1, kernel, 0, kernel_size);
@@ -111,8 +107,6 @@ void Filter::init_zita(const int& num_samples) {
     failed = true;
     util::debug(log_tag +
                 "right impdata_create failed: " + std::to_string(ret));
-  } else {
-    util::debug(log_tag + "right impdata_create success");
   }
 
   ret = conv->start_process(CONVPROC_SCHEDULER_PRIORITY,
@@ -121,8 +115,6 @@ void Filter::init_zita(const int& num_samples) {
   if (ret != 0) {
     failed = true;
     util::debug(log_tag + "start_process failed: " + std::to_string(ret));
-  } else {
-    util::debug(log_tag + "start_process success");
   }
 
   if (failed) {

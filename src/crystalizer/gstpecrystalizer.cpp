@@ -40,6 +40,9 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
 
 static gboolean gst_pecrystalizer_stop(GstBaseTransform* base);
 
+static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
+                                      GstBuffer* buffer);
+
 static void gst_pecrystalizer_finish_filters(GstPecrystalizer* pecrystalizer);
 
 enum { PROP_0, PROP_INTENSITY_LOW, PROP_INTENSITY_MID, PROP_INTENSITY_HIGH };
@@ -224,19 +227,18 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
 
   guint num_samples = map.size / pecrystalizer->bpf;
 
-  float* data = (float*)map.data;
+  gst_buffer_unmap(buffer, &map);
 
-  if (pecrystalizer->lowpass->ready && pecrystalizer->highpass->ready) {
-    memcpy(pecrystalizer->data_low, data, map.size);
-    memcpy(pecrystalizer->data_high, data, map.size);
-
-    pecrystalizer->lowpass->process(pecrystalizer->data_low);
-    pecrystalizer->highpass->process(pecrystalizer->data_high);
-
-    // bandpass
-    pecrystalizer->bandlow->process(data);
-    pecrystalizer->bandhigh->process(data);
+  if (pecrystalizer->lowpass->ready && pecrystalizer->highpass->ready &&
+      pecrystalizer->bandlow->ready && pecrystalizer->bandhigh->ready) {
+    if (pecrystalizer->nsamples == num_samples) {
+      gst_pecrystalizer_process(pecrystalizer, buffer);
+    } else {
+      gst_pecrystalizer_finish_filters(pecrystalizer);
+    }
   } else {
+    pecrystalizer->nsamples = num_samples;
+
     if (pecrystalizer->data_low != nullptr) {
       delete[] pecrystalizer->data_low;
 
@@ -264,9 +266,43 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
     pecrystalizer->bandhigh->init_zita(num_samples);
   }
 
+  return GST_FLOW_OK;
+}
+
+static gboolean gst_pecrystalizer_stop(GstBaseTransform* base) {
+  GstPecrystalizer* pecrystalizer = GST_PECRYSTALIZER(base);
+
+  std::lock_guard<std::mutex> lock(pecrystalizer->mutex);
+
+  pecrystalizer->ready = false;
+
+  gst_pecrystalizer_finish_filters(pecrystalizer);
+
+  return true;
+}
+
+static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
+                                      GstBuffer* buffer) {
+  GstMapInfo map;
+
+  gst_buffer_map(buffer, &map, GST_MAP_READWRITE);
+
+  float* data = (float*)map.data;
+
+  memcpy(pecrystalizer->data_low, data, map.size);
+  memcpy(pecrystalizer->data_high, data, map.size);
+
+  pecrystalizer->lowpass->process(pecrystalizer->data_low);
+  pecrystalizer->highpass->process(pecrystalizer->data_high);
+
+  // bandpass
+  pecrystalizer->bandlow->process(data);
+  pecrystalizer->bandhigh->process(data);
+
   if (!pecrystalizer->ready) {
-    pecrystalizer->last_L = data[0];
-    pecrystalizer->last_R = data[1];
+    // pecrystalizer->last_L = data[0];
+    // pecrystalizer->last_R = data[1];
+
     pecrystalizer->ready = true;
   }
 
@@ -287,20 +323,6 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
   // }
 
   gst_buffer_unmap(buffer, &map);
-
-  return GST_FLOW_OK;
-}
-
-static gboolean gst_pecrystalizer_stop(GstBaseTransform* base) {
-  GstPecrystalizer* pecrystalizer = GST_PECRYSTALIZER(base);
-
-  std::lock_guard<std::mutex> lock(pecrystalizer->mutex);
-
-  pecrystalizer->ready = false;
-
-  gst_pecrystalizer_finish_filters(pecrystalizer);
-
-  return true;
 }
 
 static void gst_pecrystalizer_finish_filters(GstPecrystalizer* pecrystalizer) {
