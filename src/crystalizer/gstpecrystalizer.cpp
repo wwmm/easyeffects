@@ -40,6 +40,8 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
 
 static gboolean gst_pecrystalizer_stop(GstBaseTransform* base);
 
+static void gst_pecrystalizer_finish_filters(GstPecrystalizer* pecrystalizer);
+
 enum { PROP_0, PROP_INTENSITY_LOW, PROP_INTENSITY_MID, PROP_INTENSITY_HIGH };
 
 /* pad templates */
@@ -132,6 +134,7 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
 static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->ready = false;
   pecrystalizer->bpf = 0;
+  pecrystalizer->nsamples = 0;
   pecrystalizer->intensity_low = 2.0f;
   pecrystalizer->intensity_mid = 1.0f;
   pecrystalizer->intensity_high = 0.5f;
@@ -230,6 +233,7 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
     pecrystalizer->lowpass->process(pecrystalizer->data_low);
     pecrystalizer->highpass->process(pecrystalizer->data_high);
 
+    // bandpass
     pecrystalizer->bandlow->process(data);
     pecrystalizer->bandhigh->process(data);
   } else {
@@ -294,7 +298,27 @@ static gboolean gst_pecrystalizer_stop(GstBaseTransform* base) {
 
   pecrystalizer->ready = false;
 
+  gst_pecrystalizer_finish_filters(pecrystalizer);
+
   return true;
+}
+
+static void gst_pecrystalizer_finish_filters(GstPecrystalizer* pecrystalizer) {
+  pecrystalizer->lowpass->finish();
+  pecrystalizer->highpass->finish();
+  pecrystalizer->bandlow->finish();
+  pecrystalizer->bandhigh->finish();
+
+  if (pecrystalizer->data_low != nullptr) {
+    delete[] pecrystalizer->data_low;
+
+    pecrystalizer->data_low = nullptr;
+  }
+  if (pecrystalizer->data_high != nullptr) {
+    delete[] pecrystalizer->data_high;
+
+    pecrystalizer->data_high = nullptr;
+  }
 }
 
 static gboolean plugin_init(GstPlugin* plugin) {

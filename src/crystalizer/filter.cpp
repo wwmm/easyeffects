@@ -14,21 +14,7 @@ Filter::Filter(Mode filter_mode, const float& fc, const float& tband)
 Filter::~Filter() {
   util::warning(log_tag + "destructed");
 
-  if (conv != nullptr) {
-    if (conv->state() != Convproc::ST_STOP) {
-      conv->stop_process();
-
-      conv->cleanup();
-
-      delete conv;
-
-      conv = nullptr;
-    }
-  }
-
-  if (kernel != nullptr) {
-    delete[] kernel;
-  }
+  finish();
 }
 
 void Filter::init_kernel(const float& rate) {
@@ -165,5 +151,25 @@ void Filter::process(float* data) {
       data[2 * n] = conv->outdata(0)[n];
       data[2 * n + 1] = conv->outdata(1)[n];
     }
+  }
+}
+
+void Filter::finish() {
+  ready = false;
+
+  if (conv != nullptr) {
+    if (conv->state() != Convproc::ST_STOP) {
+      conv->stop_process();
+
+      conv->cleanup();
+
+      delete conv;
+
+      conv = nullptr;
+    }
+  }
+
+  if (kernel != nullptr) {
+    delete[] kernel;
   }
 }

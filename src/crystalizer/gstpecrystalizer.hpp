@@ -32,6 +32,7 @@ struct _GstPecrystalizer {
 
   bool ready;
   int rate, bpf;  // sampling rate,  bytes per frame : channels * bps
+  int nsamples;
   float last_L, last_R;
   float *data_low, *data_high;
 
