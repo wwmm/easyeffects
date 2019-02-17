@@ -88,6 +88,40 @@ GVariant* int_to_sidechain_mode_enum(const GValue* value,
   }
 }
 
+gboolean sidechain_source_enum_to_int(GValue* value,
+                                      GVariant* variant,
+                                      gpointer user_data) {
+  auto v = g_variant_get_string(variant, nullptr);
+
+  if (v == std::string("Middle")) {
+    g_value_set_int(value, 0);
+  } else if (v == std::string("Side")) {
+    g_value_set_int(value, 1);
+  } else if (v == std::string("Left")) {
+    g_value_set_int(value, 2);
+  } else if (v == std::string("Right")) {
+    g_value_set_int(value, 3);
+  }
+
+  return true;
+}
+
+GVariant* int_to_sidechain_source_enum(const GValue* value,
+                                       const GVariantType* expected_type,
+                                       gpointer user_data) {
+  int v = g_value_get_int(value);
+
+  if (v == 0) {
+    return g_variant_new_string("Middle");
+  } else if (v == 1) {
+    return g_variant_new_string("Side");
+  } else if (v == 2) {
+    return g_variant_new_string("Left");
+  } else {
+    return g_variant_new_string("Right");
+  }
+}
+
 }  // namespace
 
 CompressorUi::CompressorUi(BaseObjectType* cobject,
@@ -143,9 +177,14 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
       int_to_sidechain_type_enum, nullptr, nullptr);
 
   g_settings_bind_with_mapping(
-      settings->gobj(), "sidechain-mode", sidechain_type->gobj(), "active",
+      settings->gobj(), "sidechain-mode", sidechain_mode->gobj(), "active",
       G_SETTINGS_BIND_DEFAULT, sidechain_mode_enum_to_int,
       int_to_sidechain_mode_enum, nullptr, nullptr);
+
+  g_settings_bind_with_mapping(
+      settings->gobj(), "sidechain-source", sidechain_source->gobj(), "active",
+      G_SETTINGS_BIND_DEFAULT, sidechain_source_enum_to_int,
+      int_to_sidechain_source_enum, nullptr, nullptr);
 
   settings->set_boolean("post-messages", true);
 }

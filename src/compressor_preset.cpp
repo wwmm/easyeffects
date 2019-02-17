@@ -53,7 +53,7 @@ void CompressorPreset::load(boost::property_tree::ptree& root,
                             const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".compressor.state");
 
-  update_key<bool>(root, settings, "mode", section + ".compressor.mode");
+  update_string_key(root, settings, "mode", section + ".compressor.mode");
 
   update_key<double>(root, settings, "attack", section + ".compressor.attack");
 
