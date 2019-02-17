@@ -194,7 +194,5 @@ CompressorUi::~CompressorUi() {
 void CompressorUi::on_new_reduction(double value) {
   reduction->set_value(1 - value);
 
-  std::cout << value << std::endl;
-
   reduction_label->set_text(level_to_str(util::linear_to_db(value)));
 }
