@@ -63,7 +63,7 @@
         </key>
         <key
             name="detection0"
-            enum="com.github.wwmm.pulseeffects.compressor.detection.enum">
+            enum="com.github.wwmm.pulseeffects.multibandcompressor.detection.enum">
             <default>"RMS"</default>
         </key>
         <key name="bypass0" type="b">
@@ -98,7 +98,7 @@
         </key>
         <key
             name="detection1"
-            enum="com.github.wwmm.pulseeffects.compressor.detection.enum">
+            enum="com.github.wwmm.pulseeffects.multibandcompressor.detection.enum">
             <default>"RMS"</default>
         </key>
         <key name="bypass1" type="b">
@@ -133,7 +133,7 @@
         </key>
         <key
             name="detection2"
-            enum="com.github.wwmm.pulseeffects.compressor.detection.enum">
+            enum="com.github.wwmm.pulseeffects.multibandcompressor.detection.enum">
             <default>"RMS"</default>
         </key>
         <key name="bypass2" type="b">
@@ -168,7 +168,7 @@
         </key>
         <key
             name="detection3"
-            enum="com.github.wwmm.pulseeffects.compressor.detection.enum">
+            enum="com.github.wwmm.pulseeffects.multibandcompressor.detection.enum">
             <default>"RMS"</default>
         </key>
         <key name="bypass3" type="b">

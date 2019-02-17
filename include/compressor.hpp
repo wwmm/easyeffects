@@ -12,9 +12,9 @@ class Compressor : public PluginBase {
 
   GstElement* compressor = nullptr;
 
-  sigc::connection compression_connection;
+  sigc::connection reduction_connection;
 
-  sigc::signal<void, double> compression;
+  sigc::signal<void, double> reduction;
 
  private:
   void bind_to_gsettings();

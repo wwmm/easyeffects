@@ -55,6 +55,7 @@ Equalizer::Equalizer(const std::string& tag,
 
     g_object_set(equalizer, "bypass", false, nullptr);
     g_object_set(equalizer, "bal", 0.0f, nullptr);
+    g_object_set(equalizer, "fft", 0, nullptr);  // off
 
     for (int n = 0; n < 30; n++) {
       bind_band(equalizer, n);

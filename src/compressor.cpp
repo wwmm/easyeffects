@@ -8,21 +8,21 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Compressor* l) {
   auto post = g_settings_get_boolean(settings, key);
 
   if (post) {
-    if (!l->compression_connection.connected()) {
-      l->compression_connection = Glib::signal_timeout().connect(
+    if (!l->reduction_connection.connected()) {
+      l->reduction_connection = Glib::signal_timeout().connect(
           [l]() {
             float compression;
 
-            g_object_get(l->compressor, "compression", &compression, nullptr);
+            g_object_get(l->compressor, "rlm", &compression, nullptr);
 
-            l->compression.emit(compression);
+            l->reduction.emit(compression);
 
             return true;
           },
           100);
     }
   } else {
-    l->compression_connection.disconnect();
+    l->reduction_connection.disconnect();
   }
 }
 
@@ -31,7 +31,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Compressor* l) {
 Compressor::Compressor(const std::string& tag, const std::string& schema)
     : PluginBase(tag, "compressor", schema) {
   compressor = gst_element_factory_make(
-      "calf-sourceforge-net-plugins-Compressor", nullptr);
+      "lsp-plug-in-plugins-lv2-compressor-stereo", nullptr);
 
   if (is_installed(compressor)) {
     auto in_level = gst_element_factory_make("level", "compressor_input_level");
@@ -58,6 +58,10 @@ Compressor::Compressor(const std::string& tag, const std::string& schema)
     gst_object_unref(GST_OBJECT(pad_src));
 
     g_object_set(compressor, "bypass", false, nullptr);
+    g_object_set(compressor, "pause", true, nullptr);  // pause graph analysis
+    g_object_set(compressor, "rrl", 0.0f, nullptr);    // relative release level
+    g_object_set(compressor, "cdr", 0.0f, nullptr);    // dry gain
+    g_object_set(compressor, "cwt", 1.0f, nullptr);    /// wet gain
 
     bind_to_gsettings();
 
@@ -82,36 +86,49 @@ Compressor::~Compressor() {
 }
 
 void Compressor::bind_to_gsettings() {
-  g_settings_bind(settings, "detection", compressor, "detection",
-                  G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(settings, "stereo-link", compressor, "stereo-link",
-                  G_SETTINGS_BIND_DEFAULT);
+  // g_settings_bind(settings, "detection", compressor, "detection",
+  //                 G_SETTINGS_BIND_DEFAULT);
+  // g_settings_bind(settings, "stereo-link", compressor, "stereo-link",
+  //                 G_SETTINGS_BIND_DEFAULT);
+  //
+  // g_settings_bind_with_mapping(settings, "mix", compressor, "mix",
+  //                              G_SETTINGS_BIND_GET,
+  //                              util::db20_gain_to_linear, nullptr, nullptr,
+  //                              nullptr);
 
-  g_settings_bind_with_mapping(settings, "mix", compressor, "mix",
-                               G_SETTINGS_BIND_GET, util::db20_gain_to_linear,
-                               nullptr, nullptr, nullptr);
-
-  g_settings_bind_with_mapping(settings, "attack", compressor, "attack",
+  g_settings_bind_with_mapping(settings, "attack", compressor, "at",
                                G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "release", compressor, "release",
+  g_settings_bind_with_mapping(settings, "release", compressor, "rt",
                                G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "ratio", compressor, "ratio",
+  g_settings_bind_with_mapping(settings, "ratio", compressor, "cr",
                                G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 
   g_settings_bind_with_mapping(
-      settings, "threshold", compressor, "threshold", G_SETTINGS_BIND_DEFAULT,
+      settings, "threshold", compressor, "al", G_SETTINGS_BIND_DEFAULT,
       util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
   g_settings_bind_with_mapping(
-      settings, "knee", compressor, "knee", G_SETTINGS_BIND_DEFAULT,
+      settings, "knee", compressor, "kn", G_SETTINGS_BIND_DEFAULT,
       util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
   g_settings_bind_with_mapping(
-      settings, "makeup", compressor, "makeup", G_SETTINGS_BIND_DEFAULT,
+      settings, "makeup", compressor, "mk", G_SETTINGS_BIND_DEFAULT,
       util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+
+  g_settings_bind_with_mapping(
+      settings, "preamp", compressor, "scp", G_SETTINGS_BIND_DEFAULT,
+      util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+
+  g_settings_bind_with_mapping(settings, "reactivity", compressor, "scr",
+                               G_SETTINGS_BIND_GET, util::double_to_float,
+                               nullptr, nullptr, nullptr);
+
+  g_settings_bind_with_mapping(settings, "lookahead", compressor, "sla",
+                               G_SETTINGS_BIND_GET, util::double_to_float,
+                               nullptr, nullptr, nullptr);
 }
