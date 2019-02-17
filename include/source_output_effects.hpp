@@ -39,8 +39,6 @@ class SourceOutputEffects : public PipelineBase {
   std::unique_ptr<MultibandCompressor> multiband_compressor;
   std::unique_ptr<MultibandGate> multiband_gate;
 
-  sigc::signal<void, std::array<double, 2>> compressor_input_level;
-  sigc::signal<void, std::array<double, 2>> compressor_output_level;
   sigc::signal<void, std::array<double, 2>> equalizer_input_level;
   sigc::signal<void, std::array<double, 2>> equalizer_output_level;
   sigc::signal<void, std::array<double, 2>> gate_input_level;

@@ -22,15 +22,15 @@
         </key>
         <key name="intensity-low" type="d">
             <range min="0" max="10"/>
-            <default>2.0</default>
+            <default>1.0</default>
         </key>
         <key name="intensity-mid" type="d">
             <range min="0" max="10"/>
-            <default>1.0</default>
+            <default>0.5</default>
         </key>
         <key name="intensity-high" type="d">
             <range min="0" max="10"/>
-            <default>0.5</default>
+            <default>0.25</default>
         </key>
         <key name="mute-low" type="b">
             <default>false</default>
