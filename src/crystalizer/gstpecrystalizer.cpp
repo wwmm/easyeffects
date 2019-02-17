@@ -265,6 +265,10 @@ static gboolean gst_pecrystalizer_setup(GstAudioFilter* filter,
   pecrystalizer->rate = info->rate;
   pecrystalizer->bpf = GST_AUDIO_INFO_BPF(info);
 
+  std::lock_guard<std::mutex> lock(pecrystalizer->mutex);
+
+  gst_pecrystalizer_finish_filters(pecrystalizer);
+
   return true;
 }
 
