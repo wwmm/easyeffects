@@ -8,8 +8,7 @@
 
 const float PI = boost::math::constants::pi<float>();
 
-Filter::Filter(Mode filter_mode, const float& fc, const float& tband)
-    : mode(filter_mode), cutoff(fc), transition_band(tband) {}
+Filter::Filter(Mode filter_mode) : mode(filter_mode) {}
 
 Filter::~Filter() {
   util::warning(log_tag + "destructed");
@@ -17,7 +16,9 @@ Filter::~Filter() {
   finish();
 }
 
-void Filter::init_kernel(const float& rate) {
+void Filter::init_kernel(const float& rate,
+                         const float& cutoff,
+                         const float& transition_band) {
   float b = transition_band / rate;
 
   kernel_size = std::ceil(4.0f / b);

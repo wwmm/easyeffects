@@ -8,13 +8,15 @@ enum class Mode { lowpass, highpass };
 
 class Filter {
  public:
-  Filter(Mode filter_mode, const float& fc, const float& tband);
+  Filter(Mode filter_mode);
 
   ~Filter();
 
   bool ready = false;
 
-  void init_kernel(const float& rate);
+  void init_kernel(const float& rate,
+                   const float& cutoff,
+                   const float& transition_band);
   void init_zita(const int& num_samples);
   void process(float* data);
   void finish();
@@ -25,7 +27,6 @@ class Filter {
   Mode mode;
 
   uint kernel_size, nsamples;
-  float cutoff, transition_band;
   float* kernel = nullptr;
 
   Convproc* conv = nullptr;

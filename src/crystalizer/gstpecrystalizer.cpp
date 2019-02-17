@@ -203,11 +203,11 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->last_R_mid = 0.0f;
   pecrystalizer->last_R_high = 0.0f;
 
-  pecrystalizer->lowpass = new Filter(Mode::lowpass, 3000, 50);
-  pecrystalizer->highpass = new Filter(Mode::highpass, 10000, 50);
+  pecrystalizer->lowpass = new Filter(Mode::lowpass);
+  pecrystalizer->highpass = new Filter(Mode::highpass);
 
-  pecrystalizer->bandlow = new Filter(Mode::lowpass, 10000, 50);
-  pecrystalizer->bandhigh = new Filter(Mode::highpass, 3000, 50);
+  pecrystalizer->bandlow = new Filter(Mode::lowpass);
+  pecrystalizer->bandhigh = new Filter(Mode::highpass);
 
   gst_base_transform_set_in_place(GST_BASE_TRANSFORM(pecrystalizer), true);
 }
@@ -361,16 +361,20 @@ static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer) {
     pecrystalizer->data_low = new float[2 * pecrystalizer->nsamples];
     pecrystalizer->data_high = new float[2 * pecrystalizer->nsamples];
 
-    pecrystalizer->lowpass->init_kernel(pecrystalizer->rate);
+    pecrystalizer->lowpass->init_kernel(pecrystalizer->rate,
+                                        pecrystalizer->freq1, 50);
     pecrystalizer->lowpass->init_zita(pecrystalizer->nsamples);
 
-    pecrystalizer->highpass->init_kernel(pecrystalizer->rate);
+    pecrystalizer->highpass->init_kernel(pecrystalizer->rate,
+                                         pecrystalizer->freq2, 50);
     pecrystalizer->highpass->init_zita(pecrystalizer->nsamples);
 
-    pecrystalizer->bandlow->init_kernel(pecrystalizer->rate);
+    pecrystalizer->bandlow->init_kernel(pecrystalizer->rate,
+                                        pecrystalizer->freq2, 50);
     pecrystalizer->bandlow->init_zita(pecrystalizer->nsamples);
 
-    pecrystalizer->bandhigh->init_kernel(pecrystalizer->rate);
+    pecrystalizer->bandhigh->init_kernel(pecrystalizer->rate,
+                                         pecrystalizer->freq1, 50);
     pecrystalizer->bandhigh->init_zita(pecrystalizer->nsamples);
   }
 }
