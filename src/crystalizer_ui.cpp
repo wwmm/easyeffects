@@ -17,6 +17,8 @@ CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
   get_object(builder, "intensity_high", intensity_high);
   get_object(builder, "input_gain", input_gain);
   get_object(builder, "output_gain", output_gain);
+  get_object(builder, "freq1", freq1);
+  get_object(builder, "freq2", freq2);
 
   // gsettings bindings
 
@@ -32,6 +34,8 @@ CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
   settings->bind("intensity-low", intensity_low.get(), "value", flag);
   settings->bind("intensity-mid", intensity_mid.get(), "value", flag);
   settings->bind("intensity-high", intensity_high.get(), "value", flag);
+  settings->bind("freq1", freq1.get(), "value", flag);
+  settings->bind("freq2", freq2.get(), "value", flag);
 }
 
 CrystalizerUi::~CrystalizerUi() {

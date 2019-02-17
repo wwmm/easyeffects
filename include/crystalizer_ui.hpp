@@ -16,7 +16,7 @@ class CrystalizerUi : public Gtk::Grid, public PluginUiBase {
   Gtk::ToggleButton *mute_low, *mute_mid, *mute_high;
 
   Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, intensity_low,
-      intensity_mid, intensity_high;
+      intensity_mid, intensity_high, freq1, freq2;
 };
 
 #endif
