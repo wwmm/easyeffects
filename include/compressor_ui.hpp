@@ -24,8 +24,6 @@ class CompressorUi : public Gtk::Grid, public PluginUiBase {
   Gtk::ComboBoxText *compression_mode, *sidechain_type, *sidechain_mode,
       *sidechain_source;
   Gtk::ToggleButton* listen;
-
-  std::vector<sigc::connection> connections;
 };
 
 #endif

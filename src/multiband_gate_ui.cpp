@@ -200,13 +200,9 @@ MultibandGateUi::MultibandGateUi(BaseObjectType* cobject,
                                detection3->gobj(), "active",
                                G_SETTINGS_BIND_DEFAULT, detection_enum_to_int,
                                int_to_detection_enum, nullptr, nullptr);
-
-  settings->set_boolean("post-messages", true);
 }
 
 MultibandGateUi::~MultibandGateUi() {
-  settings->set_boolean("post-messages", false);
-
   util::debug(name + " ui destroyed");
 }
 

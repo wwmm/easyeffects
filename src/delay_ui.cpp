@@ -22,12 +22,8 @@ DelayUi::DelayUi(BaseObjectType* cobject,
   settings->bind("output-gain", output_gain.get(), "value", flag);
   settings->bind("time-l", time_l.get(), "value", flag);
   settings->bind("time-r", time_r.get(), "value", flag);
-
-  settings->set_boolean("post-messages", true);
 }
 
 DelayUi::~DelayUi() {
-  settings->set_boolean("post-messages", false);
-
   util::debug(name + " ui destroyed");
 }

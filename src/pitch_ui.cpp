@@ -31,12 +31,8 @@ PitchUi::PitchUi(BaseObjectType* cobject,
   settings->bind("formant-preserving", formant_preserving, "active", flag);
   settings->bind("input-gain", input_gain.get(), "value", flag);
   settings->bind("output-gain", output_gain.get(), "value", flag);
-
-  settings->set_boolean("post-messages", true);
 }
 
 PitchUi::~PitchUi() {
-  settings->set_boolean("post-messages", false);
-
   util::debug(name + " ui destroyed");
 }

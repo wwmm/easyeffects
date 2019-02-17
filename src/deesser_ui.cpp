@@ -104,13 +104,9 @@ DeesserUi::DeesserUi(BaseObjectType* cobject,
   g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active",
                                G_SETTINGS_BIND_DEFAULT, mode_enum_to_int,
                                int_to_mode_enum, nullptr, nullptr);
-
-  settings->set_boolean("post-messages", true);
 }
 
 DeesserUi::~DeesserUi() {
-  settings->set_boolean("post-messages", false);
-
   util::debug(name + " ui destroyed");
 }
 

@@ -24,13 +24,9 @@ CrossfeedUi::CrossfeedUi(BaseObjectType* cobject,
   settings->bind("feed", feed.get(), "value", flag);
 
   init_presets_buttons();
-
-  settings->set_boolean("post-messages", true);
 }
 
 CrossfeedUi::~CrossfeedUi() {
-  settings->set_boolean("post-messages", false);
-
   util::debug(name + " ui destroyed");
 }
 

@@ -195,12 +195,8 @@ WebrtcUi::WebrtcUi(BaseObjectType* cobject,
       voice_detection_likelihood->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
       voice_detection_likelihood_to_int, int_to_voice_detection_likelihood,
       nullptr, nullptr);
-
-  settings->set_boolean("post-messages", true);
 }
 
 WebrtcUi::~WebrtcUi() {
-  settings->set_boolean("post-messages", false);
-
   util::debug(name + " ui destroyed");
 }

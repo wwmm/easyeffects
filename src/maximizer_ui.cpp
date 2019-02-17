@@ -23,13 +23,9 @@ MaximizerUi::MaximizerUi(BaseObjectType* cobject,
   settings->bind("ceiling", ceiling.get(), "value", flag);
   settings->bind("release", release.get(), "value", flag);
   settings->bind("threshold", threshold.get(), "value", flag);
-
-  settings->set_boolean("post-messages", true);
 }
 
 MaximizerUi::~MaximizerUi() {
-  settings->set_boolean("post-messages", false);
-
   util::debug(name + " ui destroyed");
 }
 

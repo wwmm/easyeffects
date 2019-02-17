@@ -43,6 +43,8 @@ class PluginUiBase {
 
   bool input_saturated = false;
 
+  std::vector<sigc::connection> connections;
+
   void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
                   const std::string& name,
                   Glib::RefPtr<Gtk::Adjustment>& object) {

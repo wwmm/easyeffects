@@ -35,13 +35,9 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
   settings->bind("output-gain", output_gain.get(), "value", flag);
   settings->bind("listen", listen, "active", flag);
   settings->bind("floor-active", floor_active, "active", flag);
-
-  settings->set_boolean("post-messages", true);
 }
 
 BassEnhancerUi::~BassEnhancerUi() {
-  settings->set_boolean("post-messages", false);
-
   util::debug(name + " ui destroyed");
 }
 

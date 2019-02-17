@@ -43,13 +43,9 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
   settings->bind("weight-m", weight_m.get(), "value", flag);
   settings->bind("weight-s", weight_s.get(), "value", flag);
   settings->bind("weight-i", weight_i.get(), "value", flag);
-
-  settings->set_boolean("post-messages", true);
 }
 
 AutoGainUi::~AutoGainUi() {
-  settings->set_boolean("post-messages", false);
-
   util::debug(name + " ui destroyed");
 }
 

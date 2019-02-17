@@ -242,8 +242,6 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   settings->bind("split-channels", split_channels, "active", flag);
   settings->bind("split-channels", stack_switcher, "visible", flag_get);
 
-  settings->set_boolean("post-messages", true);
-
   g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active",
                                G_SETTINGS_BIND_DEFAULT, mode_enum_to_int,
                                int_to_mode_enum, nullptr, nullptr);
@@ -252,12 +250,6 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 }
 
 EqualizerUi::~EqualizerUi() {
-  settings->set_boolean("post-messages", false);
-
-  for (auto c : connections) {
-    c.disconnect();
-  }
-
   for (auto c : connections_bands) {
     c.disconnect();
   }

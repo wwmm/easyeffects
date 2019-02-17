@@ -132,12 +132,6 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 }
 
 ConvolverUi::~ConvolverUi() {
-  settings->set_boolean("post-messages", false);
-
-  for (auto c : connections) {
-    c.disconnect();
-  }
-
   futures.clear();
 
   util::debug(name + " ui destroyed");

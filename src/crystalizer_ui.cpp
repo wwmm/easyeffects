@@ -32,12 +32,8 @@ CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
   settings->bind("intensity-low", intensity_low.get(), "value", flag);
   settings->bind("intensity-mid", intensity_mid.get(), "value", flag);
   settings->bind("intensity-high", intensity_high.get(), "value", flag);
-
-  settings->set_boolean("post-messages", true);
 }
 
 CrystalizerUi::~CrystalizerUi() {
-  settings->set_boolean("post-messages", false);
-
   util::debug(name + " ui destroyed");
 }

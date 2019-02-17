@@ -152,11 +152,6 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  connections.push_back(
-      settings->signal_changed("state").connect([=](auto key) {
-        settings->set_boolean("post-messages", settings->get_boolean(key));
-      }));
-
   auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
   settings->bind("installed", this, "sensitive", flag);
@@ -193,12 +188,6 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
 }
 
 CompressorUi::~CompressorUi() {
-  for (auto c : connections) {
-    c.disconnect();
-  }
-
-  settings->set_boolean("post-messages", false);
-
   util::debug(name + " ui destroyed");
 }
 

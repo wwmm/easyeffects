@@ -33,7 +33,7 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
   Gtk::StackSwitcher* stack_switcher;
   Gtk::ComboBoxText* mode;
 
-  std::vector<sigc::connection> connections, connections_bands;
+  std::vector<sigc::connection> connections_bands;
 
   std::string presets_path = "/com/github/wwmm/pulseeffects/presets/";
 

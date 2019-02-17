@@ -106,13 +106,9 @@ FilterUi::FilterUi(BaseObjectType* cobject,
                                int_to_filter_enum, nullptr, nullptr);
 
   init_presets_buttons();
-
-  settings->set_boolean("post-messages", true);
 }
 
 FilterUi::~FilterUi() {
-  settings->set_boolean("post-messages", false);
-
   util::debug(name + " ui destroyed");
 }
 

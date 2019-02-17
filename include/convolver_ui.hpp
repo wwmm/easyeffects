@@ -36,8 +36,6 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
 
   Pango::FontDescription font;
 
-  std::vector<sigc::connection> connections;
-
   boost::filesystem::path irs_dir;
 
   bool mouse_inside = false, show_fft_spectrum = false;
