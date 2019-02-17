@@ -149,6 +149,8 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   get_object(builder, "preamp", preamp);
   get_object(builder, "reactivity", reactivity);
   get_object(builder, "lookahead", lookahead);
+  get_object(builder, "input_gain", input_gain);
+  get_object(builder, "output_gain", output_gain);
 
   // gsettings bindings
 
@@ -165,6 +167,8 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   settings->bind("sidechain-preamp", preamp.get(), "value", flag);
   settings->bind("sidechain-reactivity", reactivity.get(), "value", flag);
   settings->bind("sidechain-lookahead", lookahead.get(), "value", flag);
+  settings->bind("input-gain", input_gain.get(), "value", flag);
+  settings->bind("output-gain", output_gain.get(), "value", flag);
 
   g_settings_bind_with_mapping(settings->gobj(), "mode",
                                compression_mode->gobj(), "active",

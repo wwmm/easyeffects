@@ -17,7 +17,7 @@ class CompressorUi : public Gtk::Grid, public PluginUiBase {
 
  private:
   Glib::RefPtr<Gtk::Adjustment> attack, release, threshold, knee, ratio, makeup,
-      preamp, reactivity, lookahead;
+      preamp, reactivity, lookahead, input_gain, output_gain;
 
   Gtk::LevelBar *reduction, *sidechain;
   Gtk::Label *reduction_label, *sidechain_label;

@@ -100,6 +100,14 @@ void Compressor::bind_to_gsettings() {
   g_settings_bind(settings, "sidechain-source", compressor, "scs",
                   G_SETTINGS_BIND_DEFAULT);
 
+  g_settings_bind_with_mapping(settings, "input-gain", compressor, "g-in",
+                               G_SETTINGS_BIND_GET, util::db20_gain_to_linear,
+                               nullptr, nullptr, nullptr);
+
+  g_settings_bind_with_mapping(settings, "output-gain", compressor, "g-out",
+                               G_SETTINGS_BIND_GET, util::db20_gain_to_linear,
+                               nullptr, nullptr, nullptr);
+
   g_settings_bind_with_mapping(settings, "attack", compressor, "at",
                                G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
