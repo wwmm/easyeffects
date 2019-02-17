@@ -12,9 +12,6 @@
         <key name="post-messages" type="b">
             <default>true</default>
         </key>
-        <key name="listen" type="b">
-            <default>false</default>
-        </key>
         <key name="input-gain" type="d">
             <range min="-20.0" max="20.0"/>
             <default>0.0</default>
@@ -23,20 +20,8 @@
             <range min="-20.0" max="20.0"/>
             <default>0.0</default>
         </key>
-        <key
-            name="sidechain-type"
-            enum="com.github.wwmm.pulseeffects.compressor.sidechain.type.enum">
-            <default>"Feed-forward"</default>
-        </key>
-        <key
-            name="sidechain-mode"
-            enum="com.github.wwmm.pulseeffects.compressor.sidechain.mode.enum">
-            <default>"RMS"</default>
-        </key>
-        <key
-            name="sidechain-source"
-            enum="com.github.wwmm.pulseeffects.compressor.sidechain.source.enum">
-            <default>"Middle"</default>
+        <key name="mode" enum="com.github.wwmm.pulseeffects.compressor.mode.enum">
+            <default>"Downward"</default>
         </key>
         <key name="attack" type="d">
             <range min="0.0" max="2000"/>
@@ -62,15 +47,33 @@
             <range min="-60" max="60"/>
             <default>0.0</default>
         </key>
-        <key name="preamp" type="d">
+        <key name="sidechain-listen" type="b">
+            <default>false</default>
+        </key>
+        <key
+            name="sidechain-type"
+            enum="com.github.wwmm.pulseeffects.compressor.sidechain.type.enum">
+            <default>"Feed-forward"</default>
+        </key>
+        <key
+            name="sidechain-mode"
+            enum="com.github.wwmm.pulseeffects.compressor.sidechain.mode.enum">
+            <default>"RMS"</default>
+        </key>
+        <key
+            name="sidechain-source"
+            enum="com.github.wwmm.pulseeffects.compressor.sidechain.source.enum">
+            <default>"Middle"</default>
+        </key>
+        <key name="sidechain-preamp" type="d">
             <range min="0.0" max="40"/>
             <default>0.0</default>
         </key>
-        <key name="reactivity" type="d">
+        <key name="sidechain-reactivity" type="d">
             <range min="0.0" max="250"/>
             <default>10.0</default>
         </key>
-        <key name="lookahead" type="d">
+        <key name="sidechain-lookahead" type="d">
             <range min="0.0" max="20"/>
             <default>0.0</default>
         </key>

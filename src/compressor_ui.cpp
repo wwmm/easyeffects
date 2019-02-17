@@ -92,9 +92,9 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   settings->bind("ratio", ratio.get(), "value", flag);
   settings->bind("release", release.get(), "value", flag);
   settings->bind("threshold", threshold.get(), "value", flag);
-  settings->bind("preamp", preamp.get(), "value", flag);
-  settings->bind("reactivity", reactivity.get(), "value", flag);
-  settings->bind("lookahead", lookahead.get(), "value", flag);
+  settings->bind("sidechain-preamp", preamp.get(), "value", flag);
+  settings->bind("sidechain-reactivity", reactivity.get(), "value", flag);
+  settings->bind("sidechain-lookahead", lookahead.get(), "value", flag);
 
   // g_settings_bind_with_mapping(settings->gobj(), "detection",
   // detection->gobj(),

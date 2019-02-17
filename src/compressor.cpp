@@ -86,15 +86,19 @@ Compressor::~Compressor() {
 }
 
 void Compressor::bind_to_gsettings() {
-  // g_settings_bind(settings, "detection", compressor, "detection",
-  //                 G_SETTINGS_BIND_DEFAULT);
-  // g_settings_bind(settings, "stereo-link", compressor, "stereo-link",
-  //                 G_SETTINGS_BIND_DEFAULT);
-  //
-  // g_settings_bind_with_mapping(settings, "mix", compressor, "mix",
-  //                              G_SETTINGS_BIND_GET,
-  //                              util::db20_gain_to_linear, nullptr, nullptr,
-  //                              nullptr);
+  g_settings_bind(settings, "mode", compressor, "cm", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, "sidechain-listen", compressor, "scl",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, "sidechain-type", compressor, "sct",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, "sidechain-mode", compressor, "scm",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, "sidechain-source", compressor, "scs",
+                  G_SETTINGS_BIND_DEFAULT);
 
   g_settings_bind_with_mapping(settings, "attack", compressor, "at",
                                G_SETTINGS_BIND_GET, util::double_to_float,
@@ -121,14 +125,14 @@ void Compressor::bind_to_gsettings() {
       util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
   g_settings_bind_with_mapping(
-      settings, "preamp", compressor, "scp", G_SETTINGS_BIND_DEFAULT,
+      settings, "sidechain-preamp", compressor, "scp", G_SETTINGS_BIND_DEFAULT,
       util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "reactivity", compressor, "scr",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
-                               nullptr, nullptr, nullptr);
+  g_settings_bind_with_mapping(
+      settings, "sidechain-reactivity", compressor, "scr", G_SETTINGS_BIND_GET,
+      util::double_to_float, nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "lookahead", compressor, "sla",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
-                               nullptr, nullptr, nullptr);
+  g_settings_bind_with_mapping(
+      settings, "sidechain-lookahead", compressor, "sla", G_SETTINGS_BIND_GET,
+      util::double_to_float, nullptr, nullptr, nullptr);
 }

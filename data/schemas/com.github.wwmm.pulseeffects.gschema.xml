@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="pulseeffects">
+    <enum id="com.github.wwmm.pulseeffects.compressor.mode.enum">
+        <value nick="Downward" value="0"/>
+        <value nick="Upward" value="1"/>
+    </enum>
     <enum id="com.github.wwmm.pulseeffects.compressor.sidechain.type.enum">
         <value nick="Feed-forward" value="0"/>
         <value nick="Feed-back" value="1"/>
