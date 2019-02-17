@@ -55,10 +55,40 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Compressor* l) {
           },
           100);
     }
+
+    if (!l->sidechain_connection.connected()) {
+      l->sidechain_connection = Glib::signal_timeout().connect(
+          [l]() {
+            float v;
+
+            g_object_get(l->compressor, "slm", &v, nullptr);
+
+            l->sidechain.emit(v);
+
+            return true;
+          },
+          100);
+    }
+
+    if (!l->curve_connection.connected()) {
+      l->curve_connection = Glib::signal_timeout().connect(
+          [l]() {
+            float v;
+
+            g_object_get(l->compressor, "clm", &v, nullptr);
+
+            l->curve.emit(v);
+
+            return true;
+          },
+          100);
+    }
   } else {
     l->input_level_connection.disconnect();
     l->output_level_connection.disconnect();
     l->reduction_connection.disconnect();
+    l->sidechain_connection.disconnect();
+    l->curve_connection.disconnect();
   }
 }
 

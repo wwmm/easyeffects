@@ -139,6 +139,10 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   builder->get_widget("sidechain_source", sidechain_source);
   builder->get_widget("reduction", reduction);
   builder->get_widget("reduction_label", reduction_label);
+  builder->get_widget("sidechain", sidechain);
+  builder->get_widget("sidechain_label", sidechain_label);
+  builder->get_widget("curve", curve);
+  builder->get_widget("curve_label", curve_label);
 
   get_object(builder, "attack", attack);
   get_object(builder, "knee", knee);
@@ -199,4 +203,16 @@ void CompressorUi::on_new_reduction(double value) {
   reduction->set_value(1 - value);
 
   reduction_label->set_text(level_to_str(util::linear_to_db(value)));
+}
+
+void CompressorUi::on_new_sidechain(double value) {
+  sidechain->set_value(1 - value);
+
+  sidechain_label->set_text(level_to_str(util::linear_to_db(value)));
+}
+
+void CompressorUi::on_new_curve(double value) {
+  curve->set_value(1 - value);
+
+  curve_label->set_text(level_to_str(util::linear_to_db(value)));
 }

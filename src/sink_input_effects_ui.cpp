@@ -200,6 +200,10 @@ void SinkInputEffectsUi::level_meters_connections() {
       sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_output_level)));
   connections.push_back(sie->compressor->reduction.connect(
       sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_reduction)));
+  connections.push_back(sie->compressor->sidechain.connect(
+      sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_sidechain)));
+  connections.push_back(sie->compressor->curve.connect(
+      sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_curve)));
 
   // filter level meters connections
 
