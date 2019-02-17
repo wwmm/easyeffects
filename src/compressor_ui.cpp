@@ -152,6 +152,11 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
+  connections.push_back(
+      settings->signal_changed("state").connect([=](auto key) {
+        settings->set_boolean("post-messages", settings->get_boolean(key));
+      }));
+
   auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
   settings->bind("installed", this, "sensitive", flag);
@@ -185,11 +190,13 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
       settings->gobj(), "sidechain-source", sidechain_source->gobj(), "active",
       G_SETTINGS_BIND_DEFAULT, sidechain_source_enum_to_int,
       int_to_sidechain_source_enum, nullptr, nullptr);
-
-  settings->set_boolean("post-messages", true);
 }
 
 CompressorUi::~CompressorUi() {
+  for (auto c : connections) {
+    c.disconnect();
+  }
+
   settings->set_boolean("post-messages", false);
 
   util::debug(name + " ui destroyed");
@@ -197,6 +204,8 @@ CompressorUi::~CompressorUi() {
 
 void CompressorUi::on_new_reduction(double value) {
   reduction->set_value(1 - value);
+
+  std::cout << value << std::endl;
 
   reduction_label->set_text(level_to_str(util::linear_to_db(value)));
 }
