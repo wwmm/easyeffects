@@ -400,15 +400,39 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkComboBoxText" id="compression_mode">
+                      <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <items>
-                          <item translatable="yes">Downward</item>
-                          <item translatable="yes">Upward</item>
-                        </items>
+                        <property name="row_spacing">6</property>
+                        <child>
+                          <object class="GtkComboBoxText" id="compression_mode">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
+                            <items>
+                              <item translatable="yes">Downward</item>
+                              <item translatable="yes">Upward</item>
+                            </items>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes">Compression Mode</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -456,7 +480,6 @@
                             <property name="halign">center</property>
                             <property name="valign">center</property>
                             <property name="width_chars">10</property>
-                            <property name="text" translatable="yes">-12</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
                             <property name="input_purpose">number</property>
@@ -491,7 +514,6 @@
                             <property name="halign">center</property>
                             <property name="valign">center</property>
                             <property name="width_chars">10</property>
-                            <property name="text" translatable="yes">20,00</property>
                             <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
                             <property name="input_purpose">number</property>
@@ -527,7 +549,6 @@
                             <property name="halign">center</property>
                             <property name="valign">center</property>
                             <property name="width_chars">10</property>
-                            <property name="text" translatable="yes">20,00</property>
                             <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
                             <property name="input_purpose">number</property>

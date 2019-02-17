@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2019-02-16 17:12-0200\n"
+"POT-Creation-Date: 2019-02-17 17:00-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -101,7 +101,7 @@ msgid "The \"colour\" (or octave) of the harmonics."
 msgstr "A \"cor\"(ou oitava) dos harmônicos."
 
 #. (itstool) path: title/em
-#: C/bassenhancer.page:70 C/exciter.page:69
+#: C/bassenhancer.page:70 C/compressor.page:92 C/exciter.page:69
 msgid "Listen"
 msgstr "Escutar"
 
@@ -111,7 +111,7 @@ msgid "Mute the original signal and listen to the harmonics exclusively."
 msgstr "Silenciar o sinal original e escutar exclusivamente aos harmônicos."
 
 #. (itstool) path: section/title
-#: C/bassenhancer.page:78 C/compressor.page:93 C/deesser.page:111
+#: C/bassenhancer.page:78 C/compressor.page:206 C/deesser.page:111
 #: C/exciter.page:77 C/filter.page:47 C/gate.page:96 C/delay.page:33
 #: C/limiter.page:82 C/loudness.page:44 C/multibandcompressor.page:128
 #: C/multibandgate.page:136 C/reverb.page:97 C/stereotools.page:96
@@ -133,17 +133,17 @@ msgstr "Um compressor é usado para reduzir a faixa dinâmica de áudio."
 
 #. (itstool) path: page/p
 #: C/compressor.page:13
-msgid "PulseEffects uses the compressor developed by Calf Studio."
-msgstr "PulseEffects usa o compressor desenvolvido por Calf Studio."
+msgid "PulseEffects uses the compressor from Linux Studio Plugins."
+msgstr "PulseEffects usa o compressor do Linux Studio Plugins."
 
 #. (itstool) path: title/em
-#: C/compressor.page:19 C/gate.page:20 C/multibandcompressor.page:20
+#: C/compressor.page:20 C/gate.page:20 C/multibandcompressor.page:20
 #: C/multibandgate.page:20
 msgid "Attack"
 msgstr "Ataque"
 
 #. (itstool) path: item/p
-#: C/compressor.page:21 C/gate.page:22 C/multibandcompressor.page:22
+#: C/compressor.page:22 C/gate.page:22 C/multibandcompressor.page:22
 #: C/multibandgate.page:22
 msgid ""
 "Amount of milliseconds the signal has to rise above the threshold before "
@@ -153,13 +153,13 @@ msgstr ""
 "a redução de ganho comece."
 
 #. (itstool) path: title/em
-#: C/compressor.page:28 C/gate.page:29 C/limiter.page:47
+#: C/compressor.page:29 C/gate.page:29 C/limiter.page:47
 #: C/multibandcompressor.page:29 C/multibandgate.page:29 C/maximizer.page:37
 msgid "Release"
 msgstr "Liberação"
 
 #. (itstool) path: item/p
-#: C/compressor.page:30 C/gate.page:31 C/multibandcompressor.page:31
+#: C/compressor.page:31 C/gate.page:31 C/multibandcompressor.page:31
 #: C/multibandgate.page:31
 msgid ""
 "Amount of milliseconds the signal has to fall below the threshold before the "
@@ -169,86 +169,215 @@ msgstr ""
 "que a magnitude da redução seja novamente diminuída."
 
 #. (itstool) path: title/em
-#: C/compressor.page:37 C/deesser.page:26 C/gate.page:38
+#: C/compressor.page:38 C/deesser.page:26 C/gate.page:38
 #: C/multibandcompressor.page:38 C/multibandgate.page:46 C/maximizer.page:21
 msgid "Threshold"
 msgstr "Limiar"
 
 #. (itstool) path: item/p
-#: C/compressor.page:39 C/deesser.page:28 C/gate.page:40
+#: C/compressor.page:40 C/deesser.page:28 C/gate.page:40
 #: C/multibandcompressor.page:40 C/multibandgate.page:48 C/maximizer.page:23
 msgid "If a signal rises above this level it will affect the gain reduction."
 msgstr "Se um sinal subir acima deste nível ele afetará a redução de ganho."
 
 #. (itstool) path: title/em
-#: C/compressor.page:45 C/deesser.page:34 C/gate.page:46
+#: C/compressor.page:46 C/deesser.page:34 C/gate.page:46
 #: C/multibandcompressor.page:46 C/multibandgate.page:54
 msgid "Ratio"
 msgstr "Razão"
 
 #. (itstool) path: item/p
-#: C/compressor.page:47 C/deesser.page:36 C/gate.page:48
+#: C/compressor.page:48 C/deesser.page:36 C/gate.page:48
 #: C/multibandcompressor.page:48 C/multibandgate.page:56
 msgid "Set the ratio by which the signal will be reduced."
 msgstr "Configura a razão pela a qual o sinal é reduzido."
 
 #. (itstool) path: title/em
-#: C/compressor.page:53 C/gate.page:54 C/multibandcompressor.page:54
+#: C/compressor.page:54 C/gate.page:54 C/multibandcompressor.page:54
 #: C/multibandgate.page:62
 msgid "Knee"
 msgstr "Joelho"
 
 #. (itstool) path: item/p
-#: C/compressor.page:55 C/gate.page:56 C/multibandcompressor.page:56
+#: C/compressor.page:56 C/gate.page:56 C/multibandcompressor.page:56
 #: C/multibandgate.page:64
 msgid "Controls how smooth is the entrance in the gain reduction phase."
 msgstr "Controla o quão suave é a entrada na fase de redução de ganho."
 
 #. (itstool) path: title/em
-#: C/compressor.page:61 C/deesser.page:42 C/gate.page:62
+#: C/compressor.page:62 C/deesser.page:42 C/gate.page:62
 #: C/multibandcompressor.page:62 C/multibandgate.page:70
 msgid "Makeup"
 msgstr "Ganho de Saída"
 
 #. (itstool) path: item/p
-#: C/compressor.page:63 C/deesser.page:44 C/gate.page:64
+#: C/compressor.page:64 C/deesser.page:44 C/gate.page:64
 #: C/multibandcompressor.page:64 C/multibandgate.page:72
 msgid "It amplifies your signal after processing."
 msgstr "Amplifique seu sinal após o processamento."
 
 #. (itstool) path: title/em
-#: C/compressor.page:69 C/gate.page:70
-msgid "Stereo Link"
-msgstr "Elo Stereo"
+#: C/compressor.page:70
+msgid "Compression Mode"
+msgstr "Modo de Compressão"
 
 #. (itstool) path: item/p
-#: C/compressor.page:71
+#: C/compressor.page:74
 msgid ""
-"Choose if the average level between both channels or the louder channel "
-"affects the reduction."
+"<em style=\"strong\">Downward</em> - Decreases the amplitude of the signal "
+"sections that are above the threshold."
 msgstr ""
-"Escolha se a redução será afetada pelo nível médio entre os canais ou pelo "
-"canal mais alto."
-
-#. (itstool) path: title/em
-#: C/compressor.page:78 C/deesser.page:94 C/gate.page:79
-#: C/multibandcompressor.page:78 C/multibandgate.page:86
-msgid "Detection"
-msgstr "Detecção"
+"<em style=\"strong\">Para Baixo</em> - Reduz a amplitude das partes do sinal "
+"que estão acima do limiar."
 
 #. (itstool) path: item/p
-#: C/compressor.page:80
+#: C/compressor.page:79
 msgid ""
-"Choose if the compressor should take the signal peak for detection or the "
-"RMS value (it is smoother)."
+"<em style=\"strong\">Upwards</em> - Increases the amplitude of the signal "
+"sections that are below the threshold."
 msgstr ""
-"Escolha se o compressor deve usar o pico do sinal para detecção ou o valor "
-"RMS (é mais suave)"
+"<em style=\"strong\">Para Cima</em> - Aumenta a amplitude das partes do "
+"sinal que estão abaixo do limiar."
+
+#. (itstool) path: section/title
+#: C/compressor.page:88
+msgid "Sidechain"
+msgstr "Cadeia Lateral"
+
+#. (itstool) path: item/p
+#: C/compressor.page:94
+msgid "Allows to listen the processed sidechain signal."
+msgstr "Permite ouvir o sinal de sidechain processado."
 
 #. (itstool) path: title/em
-#: C/compressor.page:87
-msgid "Mix"
-msgstr "Mistura"
+#: C/compressor.page:100 C/equalizer.page:99
+msgid "Type"
+msgstr "Tipo"
+
+#. (itstool) path: item/p
+#: C/compressor.page:104
+msgid ""
+"<em style=\"strong\">Feed-forward</em> - The sidechain input is connected to "
+"compressor's input. More aggressive compression."
+msgstr ""
+"<em style = \"strong\"> Feed-forward </ em> - A entrada cadeia lateral está "
+"conectada à entrada do compressor. Compressão mais agressiva."
+
+#. (itstool) path: item/p
+#: C/compressor.page:110
+msgid ""
+"<em style=\"strong\">Feed-back</em> - The sidechain input is connected to "
+"compressor's output. Vintage-style more accurate compression."
+msgstr ""
+"<em style = \"strong\"> Feed-back </ em> - A entrada da cadeia lateral está "
+"conectada à saída do compressor. Compressão mais precisa no estilo vintage."
+
+#. (itstool) path: title/em
+#: C/compressor.page:119 C/deesser.page:103 C/multibandcompressor.page:95
+#: C/multibandgate.page:103 C/stereotools.page:38 C/equalizer.page:23
+#: C/equalizer.page:146 C/webrtc.page:75
+msgid "Mode"
+msgstr "Modo"
+
+#. (itstool) path: item/p
+#: C/compressor.page:123
+msgid "<em style=\"strong\">Peak</em> - Measure signal's peak."
+msgstr "<em style=\"strong\">Peak</em> - Medir o pico do sinal."
+
+#. (itstool) path: item/p
+#: C/compressor.page:129
+msgid "<em style=\"strong\">RMS</em> - Root mean square of the input signal."
+msgstr ""
+"<em style=\"strong\">RMS</em> - Valor médio quadrático do sinal de Entrada."
+
+#. (itstool) path: item/p
+#: C/compressor.page:135
+msgid ""
+"<em style=\"strong\">Low-Pass</em> - Input signal is processed by a low-pass "
+"filter."
+msgstr ""
+"<em style=\"strong\">Passa-Baixa</em> - O sinal de entrada é processado por "
+"um filtro passa-baixa."
+
+#. (itstool) path: item/p
+#: C/compressor.page:141
+msgid ""
+"<em style=\"strong\">Uniform</em> - Input signal is processed by a uniform "
+"filter."
+msgstr ""
+"<em style=\"strong\">Uniforme</em> - O sinal de entrada é processado por um "
+"filtro uniforme."
+
+#. (itstool) path: title/em
+#: C/compressor.page:150
+msgid "Source"
+msgstr "Fonte"
+
+#. (itstool) path: item/p
+#: C/compressor.page:154
+msgid ""
+"<em style=\"strong\">Middle</em> - Middle part of signal is used for "
+"sidechain processing."
+msgstr ""
+"<em style=\"strong\">Meio</em> - A parte do meio do sinal é usada para o "
+"processamento da cadeia lateral."
+
+#. (itstool) path: item/p
+#: C/compressor.page:160
+msgid ""
+"<em style=\"strong\">Side</em> - Side part of signal is used for sidechain "
+"processing."
+msgstr ""
+"<em style=\"strong\">Lado</em> - A parte lateral do sinal é usada para "
+"processamento da cadeia lateral."
+
+#. (itstool) path: item/p
+#: C/compressor.page:166
+msgid ""
+"<em style=\"strong\">Left</em> - Only left channel is used for sidechain "
+"processing."
+msgstr ""
+"<em style=\"strong\">Esquerda</em> - Apenas o canal esquerdo é usado para "
+"processamento da cadeia lateral."
+
+#. (itstool) path: item/p
+#: C/compressor.page:172
+msgid ""
+"<em style=\"strong\">Right</em> - Only right channel is used for sidechain "
+"processing."
+msgstr ""
+"<em style=\"strong\">Direita</em> - Apenas o canal direito é usado para "
+"processamento da cadeia lateral."
+
+#. (itstool) path: title/em
+#: C/compressor.page:181
+msgid "Pre-amplification"
+msgstr "Pré-amplificação"
+
+#. (itstool) path: item/p
+#: C/compressor.page:183
+msgid "Pre-amplification of the sidechain signal."
+msgstr "Pré-amplificação do sinal da cadeia lateral."
+
+#. (itstool) path: title/em
+#: C/compressor.page:189
+msgid "Reactivity"
+msgstr "Reatividade"
+
+#. (itstool) path: item/p
+#: C/compressor.page:191
+msgid "Reactivity of the sidechain signal."
+msgstr "Reatividade do sinal da cadeia lateral."
+
+#. (itstool) path: title/em
+#: C/compressor.page:197 C/limiter.page:38
+msgid "Lookahead"
+msgstr "Lookahead"
+
+#. (itstool) path: item/p
+#: C/compressor.page:199
+msgid "Look-ahead time of the sidechain relative to the input signal."
+msgstr "Tempo de antecipação da cadeia lateral em relação ao sinal de entrada."
 
 #. (itstool) path: page/title
 #: C/deesser.page:9
@@ -347,6 +476,12 @@ msgstr ""
 "Define a qualidade do sino. Valores maiores afetarão um intervalo de "
 "frequência mais estreito. Valores menores afetarão uma faixa mais ampla."
 
+#. (itstool) path: title/em
+#: C/deesser.page:94 C/gate.page:79 C/multibandcompressor.page:78
+#: C/multibandgate.page:86
+msgid "Detection"
+msgstr "Detecção"
+
 #. (itstool) path: item/p
 #: C/deesser.page:96
 msgid ""
@@ -355,13 +490,6 @@ msgid ""
 msgstr ""
 "Escolha se o deesser deve tomar o pico do sinal para detecção ou o valor RMS "
 "(é mais suave)."
-
-#. (itstool) path: title/em
-#: C/deesser.page:103 C/multibandcompressor.page:95 C/multibandgate.page:103
-#: C/stereotools.page:38 C/equalizer.page:23 C/equalizer.page:146
-#: C/webrtc.page:75
-msgid "Mode"
-msgstr "Modo"
 
 #. (itstool) path: item/p
 #: C/deesser.page:105
@@ -486,6 +614,11 @@ msgstr ""
 #: C/gate.page:14
 msgid "PulseEffects uses the gate developed by Calf Studio."
 msgstr "PulseEffects usa o gate desenvolvido por Calf Studio."
+
+#. (itstool) path: title/em
+#: C/gate.page:70
+msgid "Stereo Link"
+msgstr "Elo Stereo"
 
 #. (itstool) path: item/p
 #: C/gate.page:72
@@ -620,11 +753,6 @@ msgstr "Limite"
 #: C/limiter.page:32
 msgid "No signal above this level will pass through the limiter."
 msgstr "Nenhum sinal acima deste nível passará pelo limitador."
-
-#. (itstool) path: title/em
-#: C/limiter.page:38
-msgid "Lookahead"
-msgstr "Lookahead"
 
 #. (itstool) path: item/p
 #: C/limiter.page:40
@@ -1296,11 +1424,6 @@ msgstr "Redefine o equalizador para suas configurações padrões."
 #: C/equalizer.page:95
 msgid "Band Menu"
 msgstr "Menu da Banda"
-
-#. (itstool) path: title/em
-#: C/equalizer.page:99
-msgid "Type"
-msgstr "Tipo"
 
 #. (itstool) path: item/p
 #: C/equalizer.page:103
@@ -2447,6 +2570,30 @@ msgstr ""
 "feito usando uma lista negra. Basta adicionar o nome do aplicativo "
 "exatamente como é mostrado na entrada \"Aplicativos\"."
 
+#~ msgid ""
+#~ "Downward decreases signals above the threshold. Upwards increases the "
+#~ "signal below the threshold."
+#~ msgstr ""
+#~ "Diminui para baixo os sinais acima do limiar. Upwards aumenta o sinal "
+#~ "abaixo do limite."
+
+#~ msgid ""
+#~ "Choose if the average level between both channels or the louder channel "
+#~ "affects the reduction."
+#~ msgstr ""
+#~ "Escolha se a redução será afetada pelo nível médio entre os canais ou "
+#~ "pelo canal mais alto."
+
+#~ msgid ""
+#~ "Choose if the compressor should take the signal peak for detection or the "
+#~ "RMS value (it is smoother)."
+#~ msgstr ""
+#~ "Escolha se o compressor deve usar o pico do sinal para detecção ou o "
+#~ "valor RMS (é mais suave)"
+
+#~ msgid "Mix"
+#~ msgstr "Mistura"
+
 #~ msgid "Filter Type"
 #~ msgstr "Tipo de Filtro"
 
@@ -2632,9 +2779,6 @@ msgstr ""
 #~ msgid "Choose how the middle signal is generated."
 #~ msgstr "Escolha como o sinal do meio é gerado."
 
-#~ msgid "Side Gain"
-#~ msgstr "Ganho Lateral"
-
 #~ msgid "If a signal rises above this level it will affect the gain reduction"
 #~ msgstr "Se um sinal subir acima deste nível ele afetará a redução de ganho"
 
@@ -2661,10 +2805,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "<em style=\"strong\">Window</em>"
 #~ msgstr "<em style=\"strong\">Quantidade</em>"
-
-#, fuzzy
-#~ msgid "<em style=\"strong\">Measure Noise</em>"
-#~ msgstr "<em style=\"strong\">Harmônicos</em>"
 
 #, fuzzy
 #~ msgid "<em style=\"strong\">Subtract Noise</em>"

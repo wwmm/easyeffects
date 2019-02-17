@@ -10,6 +10,9 @@ a little higher but latency was reduced.
 - The spectrum now has line mode and a switch to enable/disable color linear
 gradient.
 
+### Changed
+- The compressor(not the multiband) is now from the Linux Studio Plugins package. 
+
 ## [4.5.0]
 
 - Warning: This is not one more of the typical harmless updates I usually do.
