@@ -2,29 +2,29 @@
 
 namespace {
 
-gboolean detection_enum_to_int(GValue* value,
-                               GVariant* variant,
-                               gpointer user_data) {
+gboolean mode_enum_to_int(GValue* value,
+                          GVariant* variant,
+                          gpointer user_data) {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("RMS")) {
+  if (v == std::string("Downward")) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("Peak")) {
+  } else if (v == std::string("Upward")) {
     g_value_set_int(value, 1);
   }
 
   return true;
 }
 
-GVariant* int_to_detection_enum(const GValue* value,
-                                const GVariantType* expected_type,
-                                gpointer user_data) {
+GVariant* int_to_mode_enum(const GValue* value,
+                           const GVariantType* expected_type,
+                           gpointer user_data) {
   int v = g_value_get_int(value);
 
   if (v == 0) {
-    return g_variant_new_string("RMS");
+    return g_variant_new_string("Downward");
   } else {
-    return g_variant_new_string("Peak");
+    return g_variant_new_string("Upward");
   }
 }
 
@@ -96,12 +96,11 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   settings->bind("sidechain-reactivity", reactivity.get(), "value", flag);
   settings->bind("sidechain-lookahead", lookahead.get(), "value", flag);
 
-  // g_settings_bind_with_mapping(settings->gobj(), "detection",
-  // detection->gobj(),
-  //                              "active", G_SETTINGS_BIND_DEFAULT,
-  //                              detection_enum_to_int, int_to_detection_enum,
-  //                              nullptr, nullptr);
-  //
+  g_settings_bind_with_mapping(settings->gobj(), "mode",
+                               compression_mode->gobj(), "active",
+                               G_SETTINGS_BIND_DEFAULT, mode_enum_to_int,
+                               int_to_mode_enum, nullptr, nullptr);
+
   // g_settings_bind_with_mapping(settings->gobj(), "stereo-link",
   //                              stereo_link->gobj(), "active",
   //                              G_SETTINGS_BIND_DEFAULT,
