@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2019-02-17 17:00-0300\n"
+"POT-Creation-Date: 2019-02-17 18:11-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -116,7 +116,7 @@ msgstr "Silenciar o sinal original e escutar exclusivamente aos harmônicos."
 #: C/limiter.page:82 C/loudness.page:44 C/multibandcompressor.page:128
 #: C/multibandgate.page:136 C/reverb.page:97 C/stereotools.page:96
 #: C/crossfeed.page:35 C/equalizer.page:230 C/pitch.page:87 C/webrtc.page:140
-#: C/crystalizer.page:50 C/convolver.page:42 C/autogain.page:87
+#: C/crystalizer.page:71 C/convolver.page:42 C/autogain.page:87
 msgid "References"
 msgstr "Referências"
 
@@ -927,6 +927,7 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/multibandcompressor.page:104 C/multibandgate.page:112
+#: C/crystalizer.page:21
 msgid "Split 1/2"
 msgstr "Disivão 1/2"
 
@@ -937,6 +938,7 @@ msgstr "Frequência que separa as bandas sub e baixa."
 
 #. (itstool) path: title/em
 #: C/multibandcompressor.page:112 C/multibandgate.page:120
+#: C/crystalizer.page:29
 msgid "Split 2/3"
 msgstr "Disivão 2/3"
 
@@ -1872,11 +1874,26 @@ msgstr ""
 
 #. (itstool) path: section/title
 #: C/crystalizer.page:17
+msgid "Band Splitting"
+msgstr "Separação de Bandas"
+
+#. (itstool) path: item/p
+#: C/crystalizer.page:23
+msgid "Frequency that splits the low and mid bands."
+msgstr "Frequência que separa as bandas baixa e média."
+
+#. (itstool) path: item/p
+#: C/crystalizer.page:31
+msgid "Frequency that splits the mid and high bands."
+msgstr "Frequência que separa as bandas média e alta."
+
+#. (itstool) path: section/title
+#: C/crystalizer.page:38
 msgid "Intensity"
 msgstr "Intensidade"
 
 #. (itstool) path: section/p
-#: C/crystalizer.page:18
+#: C/crystalizer.page:39
 msgid ""
 "The higher the value the higher is the difference in magnitude between the "
 "loudest and the quiestest sounds."
@@ -1885,34 +1902,34 @@ msgstr ""
 "altos e mais quistos."
 
 #. (itstool) path: title/em
-#: C/crystalizer.page:25
+#: C/crystalizer.page:46
 msgid "Low Band"
 msgstr "Banda BAixa"
 
 #. (itstool) path: item/p
-#: C/crystalizer.page:27
+#: C/crystalizer.page:48
 msgid "Intensity of the effect applied to frequencies below 3000 Hz."
 msgstr "Intensidade do efeito aplicado às frequências abaixo de 3000 Hz."
 
 #. (itstool) path: title/em
-#: C/crystalizer.page:33
+#: C/crystalizer.page:54
 msgid "Mid Band"
 msgstr "Banda Média"
 
 #. (itstool) path: item/p
-#: C/crystalizer.page:35
+#: C/crystalizer.page:56
 msgid ""
 "Intensity of the effect applied to frequencies between 3000 Hz and 10000 Hz."
 msgstr ""
 "Intensidade do efeito aplicado às frequências entre 3000 Hz e 10000 Hz."
 
 #. (itstool) path: title/em
-#: C/crystalizer.page:41
+#: C/crystalizer.page:62
 msgid "High Band"
 msgstr "Banda Alta"
 
 #. (itstool) path: item/p
-#: C/crystalizer.page:43
+#: C/crystalizer.page:64
 msgid "Intensity of the effect applied to frequencies above 10000 Hz."
 msgstr "Intensidade do efeito aplicado às frequências acima de 10000 Hz."
 

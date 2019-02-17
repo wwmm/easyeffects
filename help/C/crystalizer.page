@@ -14,6 +14,27 @@
         add dynamic range to songs that were overly compressed
     </p>
     <section>
+        <title>Band Splitting</title>
+        <terms>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Split 1/2</em>
+                </title>
+                <p>
+                    Frequency that splits the low and mid bands.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Split 2/3</em>
+                </title>
+                <p>
+                    Frequency that splits the mid and high bands.
+                </p>
+            </item>
+        </terms>
+    </section>
+    <section>
         <title>Intensity</title>
         <p>
             The higher the value the higher is the difference in magnitude between the

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-02-17 17:00-0300\n"
+"POT-Creation-Date: 2019-02-17 18:11-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -129,7 +129,7 @@ msgstr ""
 #: C/equalizer.page:230
 #: C/pitch.page:87
 #: C/webrtc.page:140
-#: C/crystalizer.page:50
+#: C/crystalizer.page:71
 #: C/convolver.page:42
 #: C/autogain.page:87
 msgid "References"
@@ -822,6 +822,7 @@ msgstr ""
 #. (itstool) path: title/em
 #: C/multibandcompressor.page:104
 #: C/multibandgate.page:112
+#: C/crystalizer.page:21
 msgid "Split 1/2"
 msgstr ""
 
@@ -834,6 +835,7 @@ msgstr ""
 #. (itstool) path: title/em
 #: C/multibandcompressor.page:112
 #: C/multibandgate.page:120
+#: C/crystalizer.page:29
 msgid "Split 2/3"
 msgstr ""
 
@@ -1575,41 +1577,56 @@ msgstr ""
 
 #. (itstool) path: section/title
 #: C/crystalizer.page:17
+msgid "Band Splitting"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/crystalizer.page:23
+msgid "Frequency that splits the low and mid bands."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/crystalizer.page:31
+msgid "Frequency that splits the mid and high bands."
+msgstr ""
+
+#. (itstool) path: section/title
+#: C/crystalizer.page:38
 msgid "Intensity"
 msgstr ""
 
 #. (itstool) path: section/p
-#: C/crystalizer.page:18
+#: C/crystalizer.page:39
 msgid "The higher the value the higher is the difference in magnitude between the loudest and the quiestest sounds."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/crystalizer.page:25
+#: C/crystalizer.page:46
 msgid "Low Band"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/crystalizer.page:27
+#: C/crystalizer.page:48
 msgid "Intensity of the effect applied to frequencies below 3000 Hz."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/crystalizer.page:33
+#: C/crystalizer.page:54
 msgid "Mid Band"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/crystalizer.page:35
+#: C/crystalizer.page:56
 msgid "Intensity of the effect applied to frequencies between 3000 Hz and 10000 Hz."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/crystalizer.page:41
+#: C/crystalizer.page:62
 msgid "High Band"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/crystalizer.page:43
+#: C/crystalizer.page:64
 msgid "Intensity of the effect applied to frequencies above 10000 Hz."
 msgstr ""
 
