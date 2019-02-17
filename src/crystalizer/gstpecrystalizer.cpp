@@ -54,7 +54,9 @@ enum {
   PROP_INTENSITY_HIGH,
   PROP_MUTE_LOW,
   PROP_MUTE_MID,
-  PROP_MUTE_HIGH
+  PROP_MUTE_HIGH,
+  PROP_FREQ1,
+  PROP_FREQ2
 };
 
 /* pad templates */
@@ -123,6 +125,24 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
   /* define properties */
 
   g_object_class_install_property(
+      gobject_class, PROP_FREQ1,
+      g_param_spec_float(
+          "freq1", "SPLIT FREQUENCY 1",
+          "Split frequency between the first and the second band", 10.0f,
+          20000.0f, 3000.0f,
+          static_cast<GParamFlags>(G_PARAM_READWRITE |
+                                   G_PARAM_STATIC_STRINGS)));
+
+  g_object_class_install_property(
+      gobject_class, PROP_FREQ2,
+      g_param_spec_float(
+          "freq2", "SPLIT FREQUENCY 2",
+          "Split frequency between the second and the third band", 10.0f,
+          20000.0f, 10000.0f,
+          static_cast<GParamFlags>(G_PARAM_READWRITE |
+                                   G_PARAM_STATIC_STRINGS)));
+
+  g_object_class_install_property(
       gobject_class, PROP_INTENSITY_LOW,
       g_param_spec_float("intensity-low", "LOW BAND INTENSITY",
                          "Expansion intensity", 0.0f, 10.0f, 2.0f,
@@ -167,6 +187,8 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->bpf = 0;
   pecrystalizer->nsamples = 0;
 
+  pecrystalizer->freq1 = 3000.0f;
+  pecrystalizer->freq2 = 10000.0f;
   pecrystalizer->intensity_low = 2.0f;
   pecrystalizer->intensity_mid = 1.0f;
   pecrystalizer->intensity_high = 0.5f;
@@ -199,6 +221,12 @@ void gst_pecrystalizer_set_property(GObject* object,
   GST_DEBUG_OBJECT(pecrystalizer, "set_property");
 
   switch (property_id) {
+    case PROP_FREQ1:
+      pecrystalizer->freq1 = g_value_get_float(value);
+      break;
+    case PROP_FREQ2:
+      pecrystalizer->freq2 = g_value_get_float(value);
+      break;
     case PROP_INTENSITY_LOW:
       pecrystalizer->intensity_low = g_value_get_float(value);
       break;
@@ -232,6 +260,12 @@ void gst_pecrystalizer_get_property(GObject* object,
   GST_DEBUG_OBJECT(pecrystalizer, "get_property");
 
   switch (property_id) {
+    case PROP_FREQ1:
+      g_value_set_float(value, pecrystalizer->freq1);
+      break;
+    case PROP_FREQ2:
+      g_value_set_float(value, pecrystalizer->freq2);
+      break;
     case PROP_INTENSITY_LOW:
       g_value_set_float(value, pecrystalizer->intensity_low);
       break;

@@ -65,6 +65,14 @@ Crystalizer::~Crystalizer() {
 }
 
 void Crystalizer::bind_to_gsettings() {
+  g_settings_bind_with_mapping(settings, "freq1", crystalizer, "freq1",
+                               G_SETTINGS_BIND_GET, util::double_to_float,
+                               nullptr, nullptr, nullptr);
+
+  g_settings_bind_with_mapping(settings, "freq2", crystalizer, "freq2",
+                               G_SETTINGS_BIND_GET, util::double_to_float,
+                               nullptr, nullptr, nullptr);
+
   g_settings_bind_with_mapping(
       settings, "intensity-low", crystalizer, "intensity-low",
       G_SETTINGS_BIND_GET, util::double_to_float, nullptr, nullptr, nullptr);
