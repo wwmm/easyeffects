@@ -849,6 +849,7 @@
                 <property name="valign">center</property>
                 <property name="margin_top">4</property>
                 <property name="hexpand">True</property>
+                <property name="max_value">40</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -878,7 +879,7 @@
                 <property name="halign">end</property>
                 <property name="valign">center</property>
                 <property name="margin_right">3</property>
-                <property name="label" translatable="yes">Reduction</property>
+                <property name="label" translatable="yes">Gain</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
