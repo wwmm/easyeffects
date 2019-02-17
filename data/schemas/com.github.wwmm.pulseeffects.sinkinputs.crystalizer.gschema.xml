@@ -22,7 +22,7 @@
         </key>
         <key name="freq1" type="d">
             <range min="10" max="20000"/>
-            <default>3000</default>
+            <default>1000</default>
         </key>
         <key name="freq2" type="d">
             <range min="10" max="20000"/>

@@ -4,14 +4,14 @@
 
 ### Added
 - Updated Italian translations.
-- Reworked crystalizer plugin. It now has built-in band filters. CPU usage is
-a little higher but latency was reduced.
+- Reworked crystalizer plugin. It now has built-in band filters and is
+possible to changee the band split frequency.
 - Block size is again a global setting. Crystalizer also uses it now.
 - The spectrum now has line mode and a switch to enable/disable color linear
 gradient.
 
 ### Changed
-- The compressor(not the multiband) is now from the Linux Studio Plugins package. 
+- The compressor(not the multiband) is now from the Linux Studio Plugins package.
 
 ## [4.5.0]
 
