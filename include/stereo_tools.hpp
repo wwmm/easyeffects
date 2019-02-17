@@ -12,11 +12,9 @@ class StereoTools : public PluginBase {
 
   GstElement* stereo_tools = nullptr;
 
-  sigc::connection input_level_connection;
-  sigc::connection output_level_connection;
+  sigc::connection input_level_connection, output_level_connection;
 
-  sigc::signal<void, std::array<double, 2>> input_level;
-  sigc::signal<void, std::array<double, 2>> output_level;
+  sigc::signal<void, std::array<double, 2>> input_level, output_level;
 
  private:
   void bind_to_gsettings();
