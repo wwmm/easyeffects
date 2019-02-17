@@ -54,6 +54,40 @@ GVariant* int_to_sidechain_type_enum(const GValue* value,
   }
 }
 
+gboolean sidechain_mode_enum_to_int(GValue* value,
+                                    GVariant* variant,
+                                    gpointer user_data) {
+  auto v = g_variant_get_string(variant, nullptr);
+
+  if (v == std::string("Peak")) {
+    g_value_set_int(value, 0);
+  } else if (v == std::string("RMS")) {
+    g_value_set_int(value, 1);
+  } else if (v == std::string("Low-Pass")) {
+    g_value_set_int(value, 2);
+  } else if (v == std::string("Uniform")) {
+    g_value_set_int(value, 3);
+  }
+
+  return true;
+}
+
+GVariant* int_to_sidechain_mode_enum(const GValue* value,
+                                     const GVariantType* expected_type,
+                                     gpointer user_data) {
+  int v = g_value_get_int(value);
+
+  if (v == 0) {
+    return g_variant_new_string("Peak");
+  } else if (v == 1) {
+    return g_variant_new_string("RMS");
+  } else if (v == 2) {
+    return g_variant_new_string("Low-Pass");
+  } else {
+    return g_variant_new_string("Uniform");
+  }
+}
+
 }  // namespace
 
 CompressorUi::CompressorUi(BaseObjectType* cobject,
@@ -107,6 +141,11 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
       settings->gobj(), "sidechain-type", sidechain_type->gobj(), "active",
       G_SETTINGS_BIND_DEFAULT, sidechain_type_enum_to_int,
       int_to_sidechain_type_enum, nullptr, nullptr);
+
+  g_settings_bind_with_mapping(
+      settings->gobj(), "sidechain-mode", sidechain_type->gobj(), "active",
+      G_SETTINGS_BIND_DEFAULT, sidechain_mode_enum_to_int,
+      int_to_sidechain_mode_enum, nullptr, nullptr);
 
   settings->set_boolean("post-messages", true);
 }
