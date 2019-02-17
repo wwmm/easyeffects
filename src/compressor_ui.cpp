@@ -28,29 +28,29 @@ GVariant* int_to_mode_enum(const GValue* value,
   }
 }
 
-gboolean stereo_link_enum_to_int(GValue* value,
-                                 GVariant* variant,
-                                 gpointer user_data) {
+gboolean sidechain_type_enum_to_int(GValue* value,
+                                    GVariant* variant,
+                                    gpointer user_data) {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("Average")) {
+  if (v == std::string("Feed-forward")) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("Maximum")) {
+  } else if (v == std::string("Feed-back")) {
     g_value_set_int(value, 1);
   }
 
   return true;
 }
 
-GVariant* int_to_stereo_link_enum(const GValue* value,
-                                  const GVariantType* expected_type,
-                                  gpointer user_data) {
+GVariant* int_to_sidechain_type_enum(const GValue* value,
+                                     const GVariantType* expected_type,
+                                     gpointer user_data) {
   int v = g_value_get_int(value);
 
   if (v == 0) {
-    return g_variant_new_string("Average");
+    return g_variant_new_string("Feed-forward");
   } else {
-    return g_variant_new_string("Maximum");
+    return g_variant_new_string("Feed-back");
   }
 }
 
@@ -64,6 +64,7 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
 
   // loading glade widgets
 
+  builder->get_widget("listen", listen);
   builder->get_widget("compression_mode", compression_mode);
   builder->get_widget("sidechain_type", sidechain_type);
   builder->get_widget("sidechain_mode", sidechain_mode);
@@ -92,6 +93,7 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   settings->bind("ratio", ratio.get(), "value", flag);
   settings->bind("release", release.get(), "value", flag);
   settings->bind("threshold", threshold.get(), "value", flag);
+  settings->bind("sidechain-listen", listen, "active", flag);
   settings->bind("sidechain-preamp", preamp.get(), "value", flag);
   settings->bind("sidechain-reactivity", reactivity.get(), "value", flag);
   settings->bind("sidechain-lookahead", lookahead.get(), "value", flag);
@@ -101,11 +103,10 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
                                G_SETTINGS_BIND_DEFAULT, mode_enum_to_int,
                                int_to_mode_enum, nullptr, nullptr);
 
-  // g_settings_bind_with_mapping(settings->gobj(), "stereo-link",
-  //                              stereo_link->gobj(), "active",
-  //                              G_SETTINGS_BIND_DEFAULT,
-  //                              stereo_link_enum_to_int,
-  //                              int_to_stereo_link_enum, nullptr, nullptr);
+  g_settings_bind_with_mapping(
+      settings->gobj(), "sidechain-type", sidechain_type->gobj(), "active",
+      G_SETTINGS_BIND_DEFAULT, sidechain_type_enum_to_int,
+      int_to_sidechain_type_enum, nullptr, nullptr);
 
   settings->set_boolean("post-messages", true);
 }

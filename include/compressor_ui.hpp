@@ -3,6 +3,7 @@
 
 #include <gtkmm/comboboxtext.h>
 #include <gtkmm/grid.h>
+#include <gtkmm/togglebutton.h>
 #include "plugin_ui_base.hpp"
 
 class CompressorUi : public Gtk::Grid, public PluginUiBase {
@@ -22,6 +23,7 @@ class CompressorUi : public Gtk::Grid, public PluginUiBase {
   Gtk::Label *reduction_label, *sidechain_label;
   Gtk::ComboBoxText *compression_mode, *sidechain_type, *sidechain_mode,
       *sidechain_source;
+  Gtk::ToggleButton* listen;
 };
 
 #endif
