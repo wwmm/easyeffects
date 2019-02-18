@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-02-17 18:11-0300\n"
-"PO-Revision-Date: 2019-02-13 16:23+0100\n"
+"PO-Revision-Date: 2019-02-18 19:12+0100\n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
 "Language: it_IT\n"
@@ -47,9 +47,8 @@ msgid "Presets"
 msgstr "Profili"
 
 #: data/ui/spectrum_settings.glade:59
-#, fuzzy
 msgid "Show Spectrum"
-msgstr "Spettro"
+msgstr "Mostra Spettro"
 
 #: data/ui/spectrum_settings.glade:84
 msgid "Fill"
@@ -65,7 +64,7 @@ msgstr "Usa Colore Personalizzato"
 
 #: data/ui/spectrum_settings.glade:159
 msgid "Use Gradient"
-msgstr ""
+msgstr "Usa"
 
 #: data/ui/spectrum_settings.glade:185
 msgid "Spectrum Color"
@@ -73,20 +72,19 @@ msgstr "Colore Spettro"
 
 #: data/ui/spectrum_settings.glade:213
 msgid "Gradient Color"
-msgstr ""
+msgstr "Sfumatura Colore"
 
 #: data/ui/spectrum_settings.glade:241
-#, fuzzy
 msgid "Spectrum Type"
-msgstr "Spettro"
+msgstr "Aspetto Spettro"
 
 #: data/ui/spectrum_settings.glade:255
 msgid "Bars"
-msgstr ""
+msgstr "Barre"
 
 #: data/ui/spectrum_settings.glade:256
 msgid "Lines"
-msgstr ""
+msgstr "Linee"
 
 #: data/ui/spectrum_settings.glade:271
 msgid "Points"
@@ -219,7 +217,7 @@ msgstr "Stato"
 
 #: data/ui/autogain.glade:24
 msgid "Auto Gain"
-msgstr "Guadagno Auto"
+msgstr "Guadagno Automatico"
 
 #: data/ui/autogain.glade:152 data/ui/autogain.glade:531
 msgid "Momentary"
@@ -366,7 +364,7 @@ msgstr "Rapporto"
 #: data/ui/multiband_gate.glade:656 data/ui/multiband_gate.glade:1065
 #: data/ui/multiband_gate.glade:1475 data/ui/multiband_gate.glade:1885
 msgid "Knee"
-msgstr "Passaggio"
+msgstr "Ginocchio"
 
 #: data/ui/compressor.glade:341 data/ui/multiband_compressor.glade:670
 #: data/ui/multiband_compressor.glade:1047
@@ -389,16 +387,15 @@ msgstr "Attacco"
 
 #: data/ui/compressor.glade:416
 msgid "Downward"
-msgstr ""
+msgstr "Discendente"
 
 #: data/ui/compressor.glade:417
 msgid "Upward"
-msgstr ""
+msgstr "Ascendente"
 
 #: data/ui/compressor.glade:429
-#, fuzzy
 msgid "Compression Mode"
-msgstr "Compressione"
+msgstr "Modalità Compressione"
 
 #: data/ui/compressor.glade:457 data/ui/bass_enhancer.glade:148
 #: data/ui/exciter.glade:148 data/ui/deesser.glade:165
@@ -406,22 +403,20 @@ msgid "Listen"
 msgstr "Ascolta"
 
 #: data/ui/compressor.glade:503
-#, fuzzy
 msgid "Pre-amplification"
-msgstr "Applicazioni"
+msgstr "Pre-amplificazione"
 
 #: data/ui/compressor.glade:538
 msgid "Reactivity"
-msgstr ""
+msgstr "Reattività"
 
 #: data/ui/compressor.glade:586
 msgid "Feed-forward"
-msgstr ""
+msgstr "Controllo in avanti"
 
 #: data/ui/compressor.glade:587
-#, fuzzy
 msgid "Feed-back"
-msgstr "Feed"
+msgstr "Retroazione"
 
 #: data/ui/compressor.glade:601 data/ui/equalizer_band.glade:48
 msgid "Type"
@@ -448,13 +443,12 @@ msgid "RMS"
 msgstr "RMS"
 
 #: data/ui/compressor.glade:617
-#, fuzzy
 msgid "Low-Pass"
 msgstr "Passa Basso"
 
 #: data/ui/compressor.glade:618
 msgid "Uniform"
-msgstr ""
+msgstr "Uniforme"
 
 #: data/ui/compressor.glade:632 data/ui/multiband_compressor.glade:286
 #: data/ui/equalizer.glade:203 data/ui/equalizer_band.glade:79
@@ -464,14 +458,12 @@ msgid "Mode"
 msgstr "Modalità"
 
 #: data/ui/compressor.glade:646
-#, fuzzy
 msgid "Middle"
-msgstr "Livello Medi"
+msgstr "Centro"
 
 #: data/ui/compressor.glade:647
-#, fuzzy
 msgid "Side"
-msgstr "Guadagno laterale [dB]"
+msgstr "Lato"
 
 #: data/ui/compressor.glade:648 data/ui/equalizer.glade:451
 #: data/ui/stereo_tools.glade:527 data/ui/delay.glade:134
@@ -484,18 +476,16 @@ msgid "Right"
 msgstr "Destra"
 
 #: data/ui/compressor.glade:663
-#, fuzzy
 msgid "Source"
-msgstr "Sorgente medi"
+msgstr "Sorgente"
 
 #: data/ui/compressor.glade:679 data/ui/compressor.glade:916
-#, fuzzy
 msgid "Sidechain"
-msgstr "Guadagno laterale [dB]"
+msgstr "Catena Laterale"
 
 #: data/ui/compressor.glade:992
 msgid "Curve"
-msgstr ""
+msgstr "Curva"
 
 #: data/ui/multiband_compressor.glade:70
 msgid "Multiband Compressor"
@@ -512,16 +502,16 @@ msgstr "LR8"
 #: data/ui/multiband_compressor.glade:315 data/ui/multiband_gate.glade:335
 #: data/ui/crystalizer.glade:155
 msgid "Split 1/2"
-msgstr "Dividi 1/2"
+msgstr "Separa 1/2"
 
 #: data/ui/multiband_compressor.glade:328 data/ui/multiband_gate.glade:348
 #: data/ui/crystalizer.glade:168
 msgid "Split 2/3"
-msgstr "Dividi 2/3"
+msgstr "Separa 2/3"
 
 #: data/ui/multiband_compressor.glade:341 data/ui/multiband_gate.glade:361
 msgid "Split 3/4"
-msgstr "Dividi 3/4"
+msgstr "Separa 3/4"
 
 #: data/ui/multiband_compressor.glade:445
 #: data/ui/multiband_compressor.glade:817
@@ -654,7 +644,7 @@ msgstr "Equalizzatore"
 
 #: data/ui/equalizer.glade:132
 msgid "Split Channels"
-msgstr "Dividi Canali"
+msgstr "Separa Canali"
 
 #: data/ui/equalizer.glade:158
 msgid "IIR"
@@ -874,7 +864,7 @@ msgstr "2a"
 
 #: data/ui/bass_enhancer.glade:213 data/ui/exciter.glade:214
 msgid "Blend Harmonics"
-msgstr "Ottava Armoniche"
+msgstr "Mix Armoniche"
 
 #: data/ui/bass_enhancer.glade:257 data/ui/bass_enhancer.glade:389
 #: data/ui/exciter.glade:261 data/ui/exciter.glade:392
@@ -1055,7 +1045,7 @@ msgstr "Amplifica"
 
 #: data/ui/deesser.glade:236 data/ui/deesser.glade:265
 msgid "Split"
-msgstr "Dividi"
+msgstr "Separazione"
 
 #: data/ui/deesser.glade:384
 msgid "Level"
@@ -1067,7 +1057,7 @@ msgstr "Picco Q"
 
 #: data/ui/deesser.glade:429
 msgid "Laxity"
-msgstr "Intensità"
+msgstr "Rilassatezza"
 
 #: data/ui/deesser.glade:764
 msgid "Detected"
@@ -1122,7 +1112,6 @@ msgid "Crystalizer"
 msgstr "Cristallizzazione"
 
 #: data/ui/crystalizer.glade:228
-#, fuzzy
 msgid "Intensities"
 msgstr "Intensità"
 
