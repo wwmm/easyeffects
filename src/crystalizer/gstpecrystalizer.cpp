@@ -395,7 +395,16 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
   } else {
     pecrystalizer->nsamples = num_samples;
 
-    gst_pecrystalizer_setup_filters(pecrystalizer);
+    auto f = [=]() {
+      std::lock_guard<std::mutex> lock(pecrystalizer->mutex);
+      gst_pecrystalizer_setup_filters(pecrystalizer);
+    };
+
+    pecrystalizer->futures.clear();
+
+    auto future = std::async(std::launch::async, f);
+
+    pecrystalizer->futures.push_back(std::move(future));
   }
 
   return GST_FLOW_OK;
@@ -418,7 +427,7 @@ static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer) {
     pecrystalizer->data_band2 = new float[2 * pecrystalizer->nsamples];
     pecrystalizer->data_band3 = new float[2 * pecrystalizer->nsamples];
 
-    float transition_band = 100.0f;
+    float transition_band = 200.0f;
 
     // band 0
 
@@ -559,6 +568,8 @@ static void gst_pecrystalizer_finish_filters(GstPecrystalizer* pecrystalizer) {
   free_data(pecrystalizer->data_band1);
   free_data(pecrystalizer->data_band2);
   free_data(pecrystalizer->data_band3);
+
+  pecrystalizer->futures.clear();
 }
 
 static gboolean plugin_init(GstPlugin* plugin) {

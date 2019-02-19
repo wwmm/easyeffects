@@ -21,6 +21,7 @@ plugin_deps = [
 	dependency('gstreamer-base-1.0'),
 	dependency('gstreamer-controller-1.0'),
 	dependency('gstreamer-audio-1.0'),
+  dependency('threads'),
 	zita_convolver
 ]
 

@@ -2,6 +2,7 @@
 #define _GST_PECRYSTALIZER_H_
 
 #include <gst/audio/gstaudiofilter.h>
+#include <future>
 #include <mutex>
 #include "filter.hpp"
 
@@ -43,6 +44,8 @@ struct _GstPecrystalizer {
   std::mutex mutex;
 
   Filter *band0 = nullptr, *band1 = nullptr, *band2 = nullptr, *band3 = nullptr;
+
+  std::vector<std::future<void>> futures;
 };
 
 struct _GstPecrystalizerClass {
