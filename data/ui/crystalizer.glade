@@ -163,7 +163,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="label" translatable="yes">Split 1/2</property>
+                <property name="label" translatable="yes">Split 0/2</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -176,7 +176,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="label" translatable="yes">Split 2/3</property>
+                <property name="label" translatable="yes">Split 1/2</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -223,7 +223,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="label" translatable="yes">Split 3/4</property>
+                <property name="label" translatable="yes">Split 2/3</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -322,7 +322,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <property name="label" translatable="yes">Low</property>
+                    <property name="label" translatable="yes">Band 0</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -382,7 +382,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <property name="label" translatable="yes">Upper Mid</property>
+                    <property name="label" translatable="yes">Band 2</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -442,7 +442,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <property name="label" translatable="yes">High</property>
+                    <property name="label" translatable="yes">Band 3</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -503,7 +503,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <property name="label" translatable="yes">Lower Mid</property>
+                    <property name="label" translatable="yes">Band 1</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
