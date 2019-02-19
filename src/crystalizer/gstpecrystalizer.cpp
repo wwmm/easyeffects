@@ -132,7 +132,7 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
       g_param_spec_float(
           "freq1", "SPLIT FREQUENCY 1",
           "Split frequency between the first and the second band", 10.0f,
-          20000.0f, 500.0f,
+          20000.0f, 1000.0f,
           static_cast<GParamFlags>(G_PARAM_READWRITE |
                                    G_PARAM_STATIC_STRINGS)));
 
@@ -141,7 +141,7 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
       g_param_spec_float(
           "freq2", "SPLIT FREQUENCY 2",
           "Split frequency between the second and the third band", 10.0f,
-          20000.0f, 3000.0f,
+          20000.0f, 5000.0f,
           static_cast<GParamFlags>(G_PARAM_READWRITE |
                                    G_PARAM_STATIC_STRINGS)));
 
@@ -150,7 +150,7 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
       g_param_spec_float(
           "freq3", "SPLIT FREQUENCY 3",
           "Split frequency between the third and the fourth band", 10.0f,
-          20000.0f, 6000.0f,
+          20000.0f, 10000.0f,
           static_cast<GParamFlags>(G_PARAM_READWRITE |
                                    G_PARAM_STATIC_STRINGS)));
 
@@ -212,9 +212,9 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->bpf = 0;
   pecrystalizer->nsamples = 0;
 
-  pecrystalizer->freq1 = 500.0f;
-  pecrystalizer->freq2 = 3000.0f;
-  pecrystalizer->freq3 = 6000.0f;
+  pecrystalizer->freq1 = 1000.0f;
+  pecrystalizer->freq2 = 5000.0f;
+  pecrystalizer->freq3 = 10000.0f;
   pecrystalizer->intensity_band0 = 4.0f;
   pecrystalizer->intensity_band1 = 2.0f;
   pecrystalizer->intensity_band2 = 1.0f;
