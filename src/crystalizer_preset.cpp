@@ -19,23 +19,31 @@ void CrystalizerPreset::save(boost::property_tree::ptree& root,
 
   root.put(section + ".crystalizer.freq2", settings->get_double("freq2"));
 
-  root.put(section + ".crystalizer.intensity-low",
-           settings->get_double("intensity-low"));
+  root.put(section + ".crystalizer.freq3", settings->get_double("freq3"));
 
-  root.put(section + ".crystalizer.intensity-mid",
-           settings->get_double("intensity-mid"));
+  root.put(section + ".crystalizer.intensity-band0",
+           settings->get_double("intensity-band0"));
 
-  root.put(section + ".crystalizer.intensity-high",
-           settings->get_double("intensity-high"));
+  root.put(section + ".crystalizer.intensity-band1",
+           settings->get_double("intensity-band1"));
 
-  root.put(section + ".crystalizer.mute-low",
-           settings->get_boolean("mute-low"));
+  root.put(section + ".crystalizer.intensity-band2",
+           settings->get_double("intensity-band2"));
 
-  root.put(section + ".crystalizer.mute-mid",
-           settings->get_boolean("mute-mid"));
+  root.put(section + ".crystalizer.intensity-band3",
+           settings->get_double("intensity-band3"));
 
-  root.put(section + ".crystalizer.mute-high",
-           settings->get_boolean("mute-high"));
+  root.put(section + ".crystalizer.mute-band0",
+           settings->get_boolean("mute-band0"));
+
+  root.put(section + ".crystalizer.mute-band1",
+           settings->get_boolean("mute-band1"));
+
+  root.put(section + ".crystalizer.mute-band2",
+           settings->get_boolean("mute-band2"));
+
+  root.put(section + ".crystalizer.mute-band3",
+           settings->get_boolean("mute-band3"));
 }
 
 void CrystalizerPreset::load(boost::property_tree::ptree& root,
@@ -53,23 +61,31 @@ void CrystalizerPreset::load(boost::property_tree::ptree& root,
 
   update_key<double>(root, settings, "freq2", section + ".crystalizer.freq2");
 
-  update_key<double>(root, settings, "intensity-low",
-                     section + ".crystalizer.intensity-low");
+  update_key<double>(root, settings, "freq3", section + ".crystalizer.freq3");
 
-  update_key<double>(root, settings, "intensity-mid",
-                     section + ".crystalizer.intensity-mid");
+  update_key<double>(root, settings, "intensity-band0",
+                     section + ".crystalizer.intensity-band0");
 
-  update_key<double>(root, settings, "intensity-high",
-                     section + ".crystalizer.intensity-high");
+  update_key<double>(root, settings, "intensity-band1",
+                     section + ".crystalizer.intensity-band1");
 
-  update_key<bool>(root, settings, "mute-low",
-                   section + ".crystalizer.mute-low");
+  update_key<double>(root, settings, "intensity-band2",
+                     section + ".crystalizer.intensity-band2");
 
-  update_key<bool>(root, settings, "mute-mid",
-                   section + ".crystalizer.mute-mid");
+  update_key<double>(root, settings, "intensity-band3",
+                     section + ".crystalizer.intensity-band3");
 
-  update_key<bool>(root, settings, "mute-high",
-                   section + ".crystalizer.mute-high");
+  update_key<bool>(root, settings, "mute-band0",
+                   section + ".crystalizer.mute-band0");
+
+  update_key<bool>(root, settings, "mute-band1",
+                   section + ".crystalizer.mute-band1");
+
+  update_key<bool>(root, settings, "mute-band2",
+                   section + ".crystalizer.mute-band2");
+
+  update_key<bool>(root, settings, "mute-band3",
+                   section + ".crystalizer.mute-band3");
 }
 
 void CrystalizerPreset::write(PresetType preset_type,

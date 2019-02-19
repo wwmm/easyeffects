@@ -73,24 +73,35 @@ void Crystalizer::bind_to_gsettings() {
                                G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 
+  g_settings_bind_with_mapping(settings, "freq3", crystalizer, "freq3",
+                               G_SETTINGS_BIND_GET, util::double_to_float,
+                               nullptr, nullptr, nullptr);
+
   g_settings_bind_with_mapping(
-      settings, "intensity-low", crystalizer, "intensity-low",
+      settings, "intensity-band0", crystalizer, "intensity-band0",
       G_SETTINGS_BIND_GET, util::double_to_float, nullptr, nullptr, nullptr);
 
   g_settings_bind_with_mapping(
-      settings, "intensity-mid", crystalizer, "intensity-mid",
+      settings, "intensity-band1", crystalizer, "intensity-band1",
       G_SETTINGS_BIND_GET, util::double_to_float, nullptr, nullptr, nullptr);
 
   g_settings_bind_with_mapping(
-      settings, "intensity-high", crystalizer, "intensity-high",
+      settings, "intensity-band2", crystalizer, "intensity-band2",
       G_SETTINGS_BIND_GET, util::double_to_float, nullptr, nullptr, nullptr);
 
-  g_settings_bind(settings, "mute-low", crystalizer, "mute-low",
+  g_settings_bind_with_mapping(
+      settings, "intensity-band3", crystalizer, "intensity-band3",
+      G_SETTINGS_BIND_GET, util::double_to_float, nullptr, nullptr, nullptr);
+
+  g_settings_bind(settings, "mute-band0", crystalizer, "mute-band0",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, "mute-mid", crystalizer, "mute-mid",
+  g_settings_bind(settings, "mute-band1", crystalizer, "mute-band1",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, "mute-high", crystalizer, "mute-high",
+  g_settings_bind(settings, "mute-band2", crystalizer, "mute-band2",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, "mute-band3", crystalizer, "mute-band3",
                   G_SETTINGS_BIND_DEFAULT);
 }

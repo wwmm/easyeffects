@@ -22,31 +22,42 @@
         </key>
         <key name="freq1" type="d">
             <range min="10" max="20000"/>
-            <default>1000</default>
+            <default>500</default>
         </key>
         <key name="freq2" type="d">
             <range min="10" max="20000"/>
+            <default>3000</default>
+        </key>
+        <key name="freq3" type="d">
+            <range min="10" max="20000"/>
             <default>6000</default>
         </key>
-        <key name="intensity-low" type="d">
+        <key name="intensity-band0" type="d">
+            <range min="0" max="10"/>
+            <default>2.0</default>
+        </key>
+        <key name="intensity-band1" type="d">
             <range min="0" max="10"/>
             <default>1.0</default>
         </key>
-        <key name="intensity-mid" type="d">
+        <key name="intensity-band2" type="d">
             <range min="0" max="10"/>
             <default>0.5</default>
         </key>
-        <key name="intensity-high" type="d">
+        <key name="intensity-band3" type="d">
             <range min="0" max="10"/>
             <default>0.25</default>
         </key>
-        <key name="mute-low" type="b">
+        <key name="mute-band0" type="b">
             <default>false</default>
         </key>
-        <key name="mute-mid" type="b">
+        <key name="mute-band1" type="b">
             <default>false</default>
         </key>
-        <key name="mute-high" type="b">
+        <key name="mute-band2" type="b">
+            <default>false</default>
+        </key>
+        <key name="mute-band3" type="b">
             <default>false</default>
         </key>
     </schema>

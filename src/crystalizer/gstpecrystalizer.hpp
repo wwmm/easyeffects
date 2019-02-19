@@ -26,22 +26,25 @@ struct _GstPecrystalizer {
 
   /* properties */
 
-  float intensity_low, intensity_mid, intensity_high, freq1, freq2;
+  float intensity_band0, intensity_band1, intensity_band2, intensity_band3,
+      freq1, freq2, freq3;
 
   /* < private > */
 
   bool ready;
   int rate, bpf;  // sampling rate,  bytes per frame : channels * bps
   uint nsamples;
-  float last_L_low, last_L_mid, last_L_high, last_R_low, last_R_mid,
-      last_R_high;
-  float *data_low = nullptr, *data_high = nullptr;
-  bool mute_low, mute_mid, mute_high;
+  float last_L_band0, last_L_band1, last_L_band2, last_L_band3, last_R_band0,
+      last_R_band1, last_R_band2, last_R_band3;
+  float *data_band0 = nullptr, *data_band1 = nullptr, *data_band2 = nullptr,
+        *data_band3 = nullptr;
+  bool mute_band0, mute_band1, mute_band2, mute_band3;
 
   std::mutex mutex;
 
-  Filter *lowpass = nullptr, *highpass = nullptr, *bandlow = nullptr,
-         *bandhigh = nullptr;
+  Filter *band0_lowpass = nullptr, *band3_highpass = nullptr,
+         *band1_lowpass = nullptr, *band1_highpass = nullptr,
+         *band2_lowpass = nullptr, *band2_highpass = nullptr;
 };
 
 struct _GstPecrystalizerClass {
