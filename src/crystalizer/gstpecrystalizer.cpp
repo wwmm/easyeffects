@@ -517,70 +517,30 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
     }
   };
 
-  for (unsigned int n = 0; n < pecrystalizer->nsamples; n++) {
+  for (uint n = 0; n < pecrystalizer->nsamples; n++) {
     // band 0
 
     process_sample(pecrystalizer->data_band0, n, pecrystalizer->intensity_band0,
                    pecrystalizer->last_L_band0, pecrystalizer->last_R_band0,
                    pecrystalizer->mute_band0);
 
-    // if (!pecrystalizer->mute_band0) {
-    //   float L = pecrystalizer->data_band0[2 * n];
-    //   float R = pecrystalizer->data_band0[2 * n + 1];
-    //
-    //   pecrystalizer->data_band0[2 * n] = L + (L -
-    //   pecrystalizer->last_L_band0) *
-    //                                              pecrystalizer->intensity_band0;
-    //
-    //   pecrystalizer->data_band0[2 * n + 1] =
-    //       R +
-    //       (R - pecrystalizer->last_R_band0) * pecrystalizer->intensity_band0;
-    //
-    //   pecrystalizer->last_L_band0 = L;
-    //   pecrystalizer->last_R_band0 = R;
-    // } else if (n == pecrystalizer->nsamples - 1) {
-    //   pecrystalizer->last_L_band0 = pecrystalizer->data_band0[2 * n];
-    //   pecrystalizer->last_R_band0 = pecrystalizer->data_band0[2 * n + 1];
-    // }
+    // band 1
 
-    // lower mid
+    process_sample(pecrystalizer->data_band1, n, pecrystalizer->intensity_band1,
+                   pecrystalizer->last_L_band1, pecrystalizer->last_R_band1,
+                   pecrystalizer->mute_band1);
 
-    // if (!pecrystalizer->mute_band1) {
-    //   float L = data[2 * n];
-    //   float R = data[2 * n + 1];
-    //
-    //   data[2 * n] = L + (L - pecrystalizer->last_L_band1) *
-    //                         pecrystalizer->intensity_band1;
-    //
-    //   data[2 * n + 1] = R + (R - pecrystalizer->last_R_band1) *
-    //                             pecrystalizer->intensity_band1;
-    //
-    //   pecrystalizer->last_L_band1 = L;
-    //   pecrystalizer->last_R_band1 = R;
-    // } else if (n == pecrystalizer->nsamples - 1) {
-    //   pecrystalizer->last_L_band1 = data[2 * n];
-    //   pecrystalizer->last_R_band1 = data[2 * n + 1];
-    // }
+    // band 2
 
-    // upper mid
+    process_sample(pecrystalizer->data_band2, n, pecrystalizer->intensity_band2,
+                   pecrystalizer->last_L_band2, pecrystalizer->last_R_band2,
+                   pecrystalizer->mute_band2);
 
-    // if (!pecrystalizer->mute_band2) {
-    //   float L = data[2 * n];
-    //   float R = data[2 * n + 1];
-    //
-    //   data[2 * n] = L + (L - pecrystalizer->last_L_band2) *
-    //                         pecrystalizer->intensity_band2;
-    //
-    //   data[2 * n + 1] = R + (R - pecrystalizer->last_R_band2) *
-    //                             pecrystalizer->intensity_band2;
-    //
-    //   pecrystalizer->last_L_band2 = L;
-    //   pecrystalizer->last_R_band2 = R;
-    // } else if (n == pecrystalizer->nsamples - 1) {
-    //   pecrystalizer->last_L_band2 = data[2 * n];
-    //   pecrystalizer->last_R_band2 = data[2 * n + 1];
-    // }
+    // band 3
 
+    process_sample(pecrystalizer->data_band3, n, pecrystalizer->intensity_band3,
+                   pecrystalizer->last_L_band3, pecrystalizer->last_R_band3,
+                   pecrystalizer->mute_band3);
     // high
 
     // if (!pecrystalizer->mute_band3) {
@@ -606,7 +566,8 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
   // add bands
 
   for (unsigned int n = 0; n < 2 * pecrystalizer->nsamples; n++) {
-    data[n] = pecrystalizer->data_band0[n];
+    data[n] = pecrystalizer->data_band0[n] + pecrystalizer->data_band1[n] +
+              pecrystalizer->data_band2[n] + pecrystalizer->data_band3[n];
   }
 
   gst_buffer_unmap(buffer, &map);
