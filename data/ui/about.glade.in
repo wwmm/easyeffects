@@ -10,6 +10,8 @@
     <property name="version">@PROJECT_VERSION@</property>
     <property name="comments" translatable="yes">Audio effects for PulseAudio applications</property>
     <property name="authors">Wellington Wallace</property>
+    <property name="translator_credits">Wellington Wallace
+Gianluca Boiano</property>
     <property name="artists">ZenCubic</property>
     <property name="logo">icons/about_icon.png</property>
     <property name="license_type">gpl-3-0</property>
