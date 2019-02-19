@@ -8,23 +8,17 @@
 
 const float PI = boost::math::constants::pi<float>();
 
-Filter::Filter(Mode filter_mode, const std::string& tag) : mode(filter_mode) {
-  if (mode == Mode::highpass) {
-    log_tag = "crystalizer " + tag + " highpass: ";
-  } else {
-    log_tag = "crystalizer " + tag + " lowpass: ";
-  }
-}
+Filter::Filter(const std::string& tag) {}
 
 Filter::~Filter() {
-  util::warning(log_tag + "destructed");
+  util::warning(log_tag + " destructed");
 
   finish();
 }
 
-void Filter::init_kernel(const float& rate,
-                         const float& cutoff,
-                         const float& transition_band) {
+void Filter::create_lowpass_kernel(const float& rate,
+                                   const float& cutoff,
+                                   const float& transition_band) {
   float b = transition_band / rate;
 
   kernel_size = std::ceil(4.0f / b);
@@ -33,17 +27,19 @@ void Filter::init_kernel(const float& rate,
 
   float fc = cutoff / rate;
 
-  util::debug(log_tag + "kernel size = " + std::to_string(kernel_size));
-  // util::debug(log_tag + "fc = " + std::to_string(fc));
-  // util::debug(log_tag + "b = " + std::to_string(b));
+  if (kernel != nullptr) {
+    delete[] kernel;
+
+    kernel = nullptr;
+  }
 
   kernel = new float[kernel_size];
 
   float sum = 0.0f;
 
-  for (uint n = 0; n < kernel_size; n++) {
-    kernel[n] = boost::math::sinc_pi(2.0f * fc * PI *
-                                     (n - (kernel_size - 1.0f) / 2.0f));
+  for (int n = 0; n < kernel_size; n++) {
+    kernel[n] =
+        boost::math::sinc_pi(2.0f * fc * PI * (n - (kernel_size - 1) / 2));
 
     auto w = 0.42f - 0.5f * cosf(2.0f * PI * n / (kernel_size - 1)) +
              0.08f * cosf(4.0f * PI * n / (kernel_size - 1));
@@ -53,19 +49,96 @@ void Filter::init_kernel(const float& rate,
     sum += kernel[n];
   }
 
-  if (sum > 0.0f) {
-    for (uint n = 0; n < kernel_size; n++) {
-      kernel[n] /= sum;
-    }
+  for (int n = 0; n < kernel_size; n++) {
+    kernel[n] /= sum;
+  }
+}
+
+void Filter::create_highpass_kernel(const float& rate,
+                                    const float& cutoff,
+                                    const float& transition_band) {
+  create_lowpass_kernel(rate, cutoff, transition_band);
+
+  for (int n = 0; n < kernel_size; n++) {
+    kernel[n] *= -1;
   }
 
-  if (mode == Mode::highpass) {
-    for (uint n = 0; n < kernel_size; n++) {
-      kernel[n] *= -1;
-    }
+  kernel[(kernel_size - 1) / 2] += 1;
+}
 
-    kernel[(kernel_size - 1) / 2] += 1;
+void Filter::create_bandpass_kernel(const float& rate,
+                                    const float& cutoff1,
+                                    const float& cutoff2,
+                                    const float& transition_band) {
+  float* lowpass_kernel = new float[kernel_size];
+  float* highpass_kernel = new float[kernel_size];
+
+  create_lowpass_kernel(rate, cutoff2, transition_band);
+
+  memcpy(lowpass_kernel, kernel, kernel_size * sizeof(float));
+
+  create_highpass_kernel(rate, cutoff1, transition_band);
+
+  memcpy(highpass_kernel, kernel, kernel_size * sizeof(float));
+
+  delete[] kernel;
+
+  kernel_size = 2 * kernel_size - 1;
+
+  kernel = new float[kernel_size];
+
+  direct_conv(lowpass_kernel, highpass_kernel, kernel, kernel_size);
+
+  delete[] lowpass_kernel;
+  delete[] highpass_kernel;
+}
+
+void Filter::direct_conv(float*& a, float*& b, float*& c, const int& N) {
+  int M = (N + 1) / 2;
+
+  for (int n = 0; n < N; n++) {
+    c[n] = 0.0f;
+
+    for (int m = 0; m < M; m++) {
+      if (n > m && n - m < M) {
+        c[n] += a[n - m] * b[m];
+      }
+    }
   }
+}
+
+void Filter::create_lowpass(const int& nsamples,
+                            const float& rate,
+                            const float& cutoff,
+                            const float& transition_band) {
+  create_lowpass_kernel(rate, cutoff, transition_band);
+
+  util::debug(log_tag + " kernel size = " + std::to_string(kernel_size));
+
+  init_zita(nsamples);
+}
+
+void Filter::create_highpass(const int& nsamples,
+                             const float& rate,
+                             const float& cutoff,
+                             const float& transition_band) {
+  create_highpass_kernel(rate, cutoff, transition_band);
+
+  util::debug(log_tag + " kernel size = " + std::to_string(kernel_size));
+
+  init_zita(nsamples);
+}
+
+void Filter::create_bandpass(const int& nsamples,
+                             const float& rate,
+                             const float& cutoff1,
+                             const float& cutoff2,
+                             const float& transition_band) {
+  create_bandpass_kernel(rate, cutoff1, cutoff2, transition_band);
+
+  util::debug(log_tag + " kernel size = " + std::to_string(kernel_size));
+
+  init_zita(nsamples);
 }
 
 void Filter::init_zita(const int& num_samples) {
@@ -135,7 +208,7 @@ void Filter::init_zita(const int& num_samples) {
 void Filter::process(float* data) {
   if (ready) {
     // deinterleave
-    for (uint n = 0; n < nsamples; n++) {
+    for (int n = 0; n < nsamples; n++) {
       conv->inpdata(0)[n] = data[2 * n];
       conv->inpdata(1)[n] = data[2 * n + 1];
     }
@@ -147,7 +220,7 @@ void Filter::process(float* data) {
     }
 
     // interleave
-    for (uint n = 0; n < nsamples; n++) {
+    for (int n = 0; n < nsamples; n++) {
       data[2 * n] = conv->outdata(0)[n];
       data[2 * n + 1] = conv->outdata(1)[n];
     }

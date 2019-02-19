@@ -42,9 +42,7 @@ struct _GstPecrystalizer {
 
   std::mutex mutex;
 
-  Filter *band0_lowpass = nullptr, *band3_highpass = nullptr,
-         *band1_lowpass = nullptr, *band1_highpass = nullptr,
-         *band2_lowpass = nullptr, *band2_highpass = nullptr;
+  Filter *band0 = nullptr, *band1 = nullptr, *band2 = nullptr, *band3 = nullptr;
 };
 
 struct _GstPecrystalizerClass {
