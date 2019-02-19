@@ -157,7 +157,7 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
   g_object_class_install_property(
       gobject_class, PROP_INTENSITY_BAND0,
       g_param_spec_float("intensity-band0", "BAND 0 INTENSITY",
-                         "Expansion intensity", 0.0f, 10.0f, 2.0f,
+                         "Expansion intensity", 0.0f, 10.0f, 4.0f,
                          static_cast<GParamFlags>(G_PARAM_READWRITE |
                                                   G_PARAM_STATIC_STRINGS)));
 
@@ -171,14 +171,14 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
   g_object_class_install_property(
       gobject_class, PROP_INTENSITY_BAND2,
       g_param_spec_float("intensity-band2", "BAND 2 INTENSITY",
-                         "Expansion intensity", 0.0f, 10.0f, 2.0f,
+                         "Expansion intensity", 0.0f, 10.0f, 1.0f,
                          static_cast<GParamFlags>(G_PARAM_READWRITE |
                                                   G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
       gobject_class, PROP_INTENSITY_BAND3,
       g_param_spec_float("intensity-band3", "BAND 3 INTENSITY",
-                         "Expansion intensity", 0.0f, 10.0f, 2.0f,
+                         "Expansion intensity", 0.0f, 10.0f, 0.5f,
                          static_cast<GParamFlags>(G_PARAM_READWRITE |
                                                   G_PARAM_STATIC_STRINGS)));
 
@@ -233,14 +233,15 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->last_R_band2 = 0.0f;
   pecrystalizer->last_R_band3 = 0.0f;
 
-  pecrystalizer->band0_lowpass = new Filter(Mode::lowpass);
-  pecrystalizer->band3_highpass = new Filter(Mode::highpass);
+  pecrystalizer->band0_lowpass = new Filter(Mode::lowpass, "band0");
 
-  pecrystalizer->band1_lowpass = new Filter(Mode::lowpass);
-  pecrystalizer->band1_highpass = new Filter(Mode::highpass);
+  pecrystalizer->band1_lowpass = new Filter(Mode::lowpass, "band1");
+  pecrystalizer->band1_highpass = new Filter(Mode::highpass, "band1");
 
-  pecrystalizer->band2_lowpass = new Filter(Mode::lowpass);
-  pecrystalizer->band2_highpass = new Filter(Mode::highpass);
+  pecrystalizer->band2_lowpass = new Filter(Mode::lowpass, "band2");
+  pecrystalizer->band2_highpass = new Filter(Mode::highpass, "band2");
+
+  pecrystalizer->band3_highpass = new Filter(Mode::highpass, "band3");
 
   gst_base_transform_set_in_place(GST_BASE_TRANSFORM(pecrystalizer), true);
 }
@@ -421,36 +422,38 @@ static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer) {
     pecrystalizer->data_band2 = new float[2 * pecrystalizer->nsamples];
     pecrystalizer->data_band3 = new float[2 * pecrystalizer->nsamples];
 
+    float transition_band = 50.0f;
+
     // band 0
 
-    pecrystalizer->band0_lowpass->init_kernel(pecrystalizer->rate,
-                                              pecrystalizer->freq1, 100);
+    pecrystalizer->band0_lowpass->init_kernel(
+        pecrystalizer->rate, pecrystalizer->freq1, transition_band);
     pecrystalizer->band0_lowpass->init_zita(pecrystalizer->nsamples);
 
     // band 1
 
-    pecrystalizer->band1_lowpass->init_kernel(pecrystalizer->rate,
-                                              pecrystalizer->freq2, 100);
+    pecrystalizer->band1_lowpass->init_kernel(
+        pecrystalizer->rate, pecrystalizer->freq2, transition_band);
     pecrystalizer->band1_lowpass->init_zita(pecrystalizer->nsamples);
 
-    pecrystalizer->band1_highpass->init_kernel(pecrystalizer->rate,
-                                               pecrystalizer->freq1, 100);
+    pecrystalizer->band1_highpass->init_kernel(
+        pecrystalizer->rate, pecrystalizer->freq1, transition_band);
     pecrystalizer->band1_highpass->init_zita(pecrystalizer->nsamples);
 
     // band 2
 
-    pecrystalizer->band2_lowpass->init_kernel(pecrystalizer->rate,
-                                              pecrystalizer->freq3, 100);
+    pecrystalizer->band2_lowpass->init_kernel(
+        pecrystalizer->rate, pecrystalizer->freq3, transition_band);
     pecrystalizer->band2_lowpass->init_zita(pecrystalizer->nsamples);
 
-    pecrystalizer->band2_highpass->init_kernel(pecrystalizer->rate,
-                                               pecrystalizer->freq2, 100);
+    pecrystalizer->band2_highpass->init_kernel(
+        pecrystalizer->rate, pecrystalizer->freq2, transition_band);
     pecrystalizer->band2_highpass->init_zita(pecrystalizer->nsamples);
 
     // band 3
 
-    pecrystalizer->band3_highpass->init_kernel(pecrystalizer->rate,
-                                               pecrystalizer->freq3, 100);
+    pecrystalizer->band3_highpass->init_kernel(
+        pecrystalizer->rate, pecrystalizer->freq3, transition_band);
     pecrystalizer->band3_highpass->init_zita(pecrystalizer->nsamples);
   }
 }
@@ -541,26 +544,6 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
     process_sample(pecrystalizer->data_band3, n, pecrystalizer->intensity_band3,
                    pecrystalizer->last_L_band3, pecrystalizer->last_R_band3,
                    pecrystalizer->mute_band3);
-    // high
-
-    // if (!pecrystalizer->mute_band3) {
-    //   float L = pecrystalizer->data_high[2 * n];
-    //   float R = pecrystalizer->data_high[2 * n + 1];
-    //
-    //   pecrystalizer->data_high[2 * n] = L + (L - pecrystalizer->last_L_band3)
-    //   *
-    //                                             pecrystalizer->intensity_band3;
-    //
-    //   pecrystalizer->data_high[2 * n + 1] =
-    //       R +
-    //       (R - pecrystalizer->last_R_band3) * pecrystalizer->intensity_band3;
-    //
-    //   pecrystalizer->last_L_band3 = L;
-    //   pecrystalizer->last_R_band3 = R;
-    // } else if (n == pecrystalizer->nsamples - 1) {
-    //   pecrystalizer->last_L_band3 = pecrystalizer->data_high[2 * n];
-    //   pecrystalizer->last_R_band3 = pecrystalizer->data_high[2 * n + 1];
-    // }
   }
 
   // add bands

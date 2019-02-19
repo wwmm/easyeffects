@@ -8,7 +8,7 @@ enum class Mode { lowpass, highpass };
 
 class Filter {
  public:
-  Filter(Mode filter_mode);
+  Filter(Mode filter_mode, const std::string& tag);
 
   ~Filter();
 
@@ -22,7 +22,7 @@ class Filter {
   void finish();
 
  private:
-  std::string log_tag = "crystalizer filter: ";
+  std::string log_tag;
 
   Mode mode;
 

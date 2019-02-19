@@ -8,7 +8,13 @@
 
 const float PI = boost::math::constants::pi<float>();
 
-Filter::Filter(Mode filter_mode) : mode(filter_mode) {}
+Filter::Filter(Mode filter_mode, const std::string& tag) : mode(filter_mode) {
+  if (mode == Mode::highpass) {
+    log_tag = "crystalizer " + tag + " highpass: ";
+  } else {
+    log_tag = "crystalizer " + tag + " lowpass: ";
+  }
+}
 
 Filter::~Filter() {
   util::warning(log_tag + "destructed");
