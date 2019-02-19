@@ -520,7 +520,7 @@ msgstr "Separa 3/4"
 #: data/ui/multiband_gate.glade:870 data/ui/multiband_gate.glade:1280
 #: data/ui/multiband_gate.glade:1690
 msgid "Bypass"
-msgstr "Bypassa"
+msgstr "Ignora"
 
 #: data/ui/multiband_compressor.glade:458
 #: data/ui/multiband_compressor.glade:830
@@ -752,7 +752,7 @@ msgstr "Qualità"
 
 #: data/ui/equalizer_band.glade:251
 msgid "Width"
-msgstr "Ampiezza"
+msgstr "Larghezza"
 
 #: data/ui/equalizer_band.glade:310 data/ui/stereo_tools.glade:553
 #: data/ui/stereo_tools.glade:612 data/ui/crystalizer.glade:266
@@ -795,7 +795,7 @@ msgstr "Pre Ritardo"
 
 #: data/ui/reverb.glade:350
 msgid "Decay Time"
-msgstr "Decadimento"
+msgstr "Tempo di Decadimento"
 
 #: data/ui/reverb.glade:383 data/ui/bass_enhancer.glade:245
 #: data/ui/exciter.glade:248
@@ -804,15 +804,15 @@ msgstr "Quantità"
 
 #: data/ui/reverb.glade:415
 msgid "Dry"
-msgstr "Dry"
+msgstr "Secchezza"
 
 #: data/ui/reverb.glade:447
 msgid "Bass Cut"
-msgstr "Taglia Bassi"
+msgstr "Taglio Bassi"
 
 #: data/ui/reverb.glade:498
 msgid "Treble Cut"
-msgstr "Taglia Alti"
+msgstr "Taglio Alti"
 
 #: data/ui/reverb.glade:541
 msgid "Diffusion"
@@ -1041,7 +1041,7 @@ msgstr "Rimozione Sibilo"
 
 #: data/ui/deesser.glade:235
 msgid "Wide"
-msgstr "Amplifica"
+msgstr "Banda Larga"
 
 #: data/ui/deesser.glade:236 data/ui/deesser.glade:265
 msgid "Split"
@@ -1141,7 +1141,7 @@ msgstr "Ottave"
 
 #: data/ui/pitch.glade:276
 msgid "Crispness"
-msgstr "Durezza"
+msgstr "Chiarezza"
 
 #: data/ui/webrtc.glade:30
 msgid "Webrtc"
@@ -1182,7 +1182,7 @@ msgstr "Alto"
 
 #: data/ui/webrtc.glade:247
 msgid "Echo Canceller"
-msgstr "Cancella Eco"
+msgstr "Rimozione Eco"
 
 #: data/ui/webrtc.glade:299
 msgid "Very High"
@@ -1190,7 +1190,7 @@ msgstr "Molto Alto"
 
 #: data/ui/webrtc.glade:316
 msgid "Noise Suppressor"
-msgstr "Limita Rumore"
+msgstr "Soppressore Rumore"
 
 #: data/ui/webrtc.glade:366
 msgid "Adaptive Digital"
@@ -1202,7 +1202,7 @@ msgstr "Digitale Fisso"
 
 #: data/ui/webrtc.glade:384
 msgid "Gain Controller"
-msgstr "Controller Guadagno"
+msgstr "Controllo Guadagno"
 
 #: data/ui/webrtc.glade:422
 msgid "Target Level"
@@ -1456,7 +1456,7 @@ msgstr "Applicazioni"
 
 #: src/blacklist_settings_ui.cpp:83
 msgid "Blacklist"
-msgstr "Blacklist"
+msgstr "Applicazioni Escluse"
 
 #: src/general_settings_ui.cpp:137
 msgid "General"
