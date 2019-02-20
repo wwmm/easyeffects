@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: pulseeffects\n"
 "POT-Creation-Date: 2019-02-17 18:11-0300\n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
 "Language: it_IT\n"
 "MIME-Version: 1.0\n"
@@ -15,7 +15,7 @@ msgstr ""
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
-msgstr "wellington wallace<wellingtonwallace@gmail.com>,2018"
+msgstr "gianluca boiano<morf3089@gmail.com>,2019"
 
 #. (itstool) path: page/title
 #: C/bassenhancer.page:9
@@ -420,7 +420,7 @@ msgstr ""
 #. (itstool) path: title/em
 #: C/deesser.page:50
 msgid "Split"
-msgstr "Separazione"
+msgstr "Divisione"
 
 #. (itstool) path: item/p
 #: C/deesser.page:52
@@ -428,8 +428,8 @@ msgid ""
 "The split frequency. All signals above this frequency will affect the gain "
 "reduction (and in split mode they are affected by the reduction too)."
 msgstr ""
-"La frequenza di separazione. Tutti i segnali sopra questa frequenza "
-"influenzeranno la riduzione di guadagno (e in modalità separazione saranno "
+"La frequenza di divisione. Tutti i segnali sopra questa frequenza "
+"influenzeranno la riduzione di guadagno (e in modalità divisione saranno "
 "anche influenzati dalla riduzione)."
 
 #. (itstool) path: title/em
@@ -444,7 +444,7 @@ msgid ""
 "sidechain. In split mode it also affects the processed high frequencies."
 msgstr ""
 "Sposta il volume della banda più alta. In modalità banda ampia influisce "
-"sulla catena laterale. In modalità separazione influisce anche sulle alte "
+"sulla catena laterale. In modalità divisione influisce anche sulle alte "
 "frequenze elaborate."
 
 #. (itstool) path: title/em
@@ -507,7 +507,7 @@ msgstr ""
 #: C/deesser.page:105
 msgid "Select your operation mode between wideband or split"
 msgstr ""
-"Seleziona la tua modalità di funzionamento tra banda larga o separazione"
+"Seleziona la tua modalità di funzionamento tra banda larga o divisione"
 
 #. (itstool) path: page/title
 #: C/exciter.page:9
@@ -893,7 +893,7 @@ msgid ""
 "ranges. These ranges are compressed separately and mixed together afterwards "
 "again."
 msgstr ""
-"Questo tipo di compressore separa il segnale in quattro diverse bande di "
+"Questo tipo di compressore divide il segnale in quattro diverse bande di "
 "frequenza. Questi intervalli vengono compressi separatamente e poi mescolati "
 "di nuovo."
 
@@ -944,7 +944,7 @@ msgstr ""
 #: C/multibandcompressor.page:104 C/multibandgate.page:112
 #: C/crystalizer.page:21
 msgid "Split 1/2"
-msgstr "Separa 1/2"
+msgstr "Dividi 1/2"
 
 #. (itstool) path: item/p
 #: C/multibandcompressor.page:106 C/multibandgate.page:114
@@ -955,7 +955,7 @@ msgstr "Frequenza che separa le bande sub e basse."
 #: C/multibandcompressor.page:112 C/multibandgate.page:120
 #: C/crystalizer.page:29
 msgid "Split 2/3"
-msgstr "Separa 2/3"
+msgstr "Dividi 2/3"
 
 #. (itstool) path: item/p
 #: C/multibandcompressor.page:114 C/multibandgate.page:122
@@ -965,7 +965,7 @@ msgstr "Frequenza che separa le bande basse e medie."
 #. (itstool) path: title/em
 #: C/multibandcompressor.page:120 C/multibandgate.page:128
 msgid "Split 3/4"
-msgstr "Separa 3/4"
+msgstr "Dividi 3/4"
 
 #. (itstool) path: item/p
 #: C/multibandcompressor.page:122 C/multibandgate.page:130
@@ -1283,7 +1283,7 @@ msgstr "Arresta l'attenuazione dopo questo numero di secondi."
 #. (itstool) path: page/title
 #: C/crossfeed.page:9
 msgid "Crossfeed"
-msgstr "Crossfeed"
+msgstr "Alimentazione mutua"
 
 #. (itstool) path: page/p
 #: C/crossfeed.page:10
@@ -1293,7 +1293,7 @@ msgid ""
 "records. It does so by mixing the left and right channel in a way that "
 "simulates a stereo speaker setup while using headphones."
 msgstr ""
-"PulseEffects usa il crossfeed di GStreamer. Questo plugin si basa sulla "
+"PulseEffects usa l'alimentazione mutua di GStreamer. Questo plugin si basa sulla "
 "libreria bs2b e può essere utilizzato per migliorare l'ascolto dell'audio "
 "stereo tramite cuffie. Lo fa mescolando i canali sinistro e destro in un "
 "modo che simula la configurazione di un altoparlante stereo, mentre si usano "
@@ -1389,7 +1389,7 @@ msgstr "Il numero di bande dell'equalizzatore."
 #. (itstool) path: title/em
 #: C/equalizer.page:56
 msgid "Split Channels"
-msgstr "Separa Canali"
+msgstr "Dividi Canali"
 
 #. (itstool) path: item/p
 #: C/equalizer.page:58
@@ -1899,17 +1899,17 @@ msgstr ""
 #. (itstool) path: section/title
 #: C/crystalizer.page:17
 msgid "Band Splitting"
-msgstr "Separazione di Banda"
+msgstr "Divisione di Banda"
 
 #. (itstool) path: item/p
 #: C/crystalizer.page:23
 msgid "Frequency that splits the low and mid bands."
-msgstr "Frequenza che separa le bande basse e medie."
+msgstr "Frequenza che divide le bande basse e medie."
 
 #. (itstool) path: item/p
 #: C/crystalizer.page:31
 msgid "Frequency that splits the mid and high bands."
-msgstr "Frequenza che separa le bande medie e alte."
+msgstr "Frequenza che divide le bande medie e alte."
 
 #. (itstool) path: section/title
 #: C/crystalizer.page:38

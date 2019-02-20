@@ -981,11 +981,11 @@ msgstr "Taglio"
 
 #: data/ui/crossfeed.glade:155
 msgid "Feed"
-msgstr "Feed"
+msgstr "Alimentazione"
 
 #: data/ui/crossfeed.glade:392
 msgid "Crossfeed"
-msgstr "Crossfeed"
+msgstr "Alimentazione mutua"
 
 #: data/ui/maximizer.glade:29
 msgid "Maximizer"
