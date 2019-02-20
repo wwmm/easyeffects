@@ -163,7 +163,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="label" translatable="yes">Split 0/2</property>
+                <property name="label" translatable="yes">Split 0/1</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -235,7 +235,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="width_chars">10</property>
-                <property name="text" translatable="yes">120</property>
                 <property name="secondary_icon_name">pulseeffects-hz-symbolic</property>
                 <property name="input_purpose">number</property>
                 <property name="adjustment">freq3</property>
@@ -469,7 +468,6 @@
                     <property name="halign">center</property>
                     <property name="valign">center</property>
                     <property name="width_chars">10</property>
-                    <property name="text" translatable="yes">1,00</property>
                     <property name="secondary_icon_activatable">False</property>
                     <property name="input_purpose">number</property>
                     <property name="orientation">vertical</property>

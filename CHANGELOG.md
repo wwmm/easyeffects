@@ -2,10 +2,9 @@
 
 ## [Unreleased
 
-## [4.5.0]
 ### Added
 - Updated translations.
-- Reworked crystalizer plugin. It now has built-in band filters and is
+- Reworked crystalizer plugin. It now has more band filters and is
 possible to change the band split frequency.
 - Block size is again a global setting because besides the convolver
 crystalizer now also needs audio buffer sizes following a power of 2.

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2019-02-17 18:11-0300\n"
+"POT-Creation-Date: 2019-02-20 11:19-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -117,7 +117,7 @@ msgstr "Disattiva il segnale originale e ascolta esclusivamente le armoniche."
 #: C/limiter.page:82 C/loudness.page:44 C/multibandcompressor.page:128
 #: C/multibandgate.page:136 C/reverb.page:97 C/stereotools.page:96
 #: C/crossfeed.page:35 C/equalizer.page:230 C/pitch.page:87 C/webrtc.page:140
-#: C/crystalizer.page:71 C/convolver.page:42 C/autogain.page:87
+#: C/crystalizer.page:54 C/convolver.page:42 C/autogain.page:87
 msgid "References"
 msgstr "Riferimenti"
 
@@ -506,8 +506,7 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/deesser.page:105
 msgid "Select your operation mode between wideband or split"
-msgstr ""
-"Seleziona la tua modalità di funzionamento tra banda larga o divisione"
+msgstr "Seleziona la tua modalità di funzionamento tra banda larga o divisione"
 
 #. (itstool) path: page/title
 #: C/exciter.page:9
@@ -942,7 +941,7 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/multibandcompressor.page:104 C/multibandgate.page:112
-#: C/crystalizer.page:21
+#: C/crystalizer.page:29
 msgid "Split 1/2"
 msgstr "Dividi 1/2"
 
@@ -953,7 +952,7 @@ msgstr "Frequenza che separa le bande sub e basse."
 
 #. (itstool) path: title/em
 #: C/multibandcompressor.page:112 C/multibandgate.page:120
-#: C/crystalizer.page:29
+#: C/crystalizer.page:37
 msgid "Split 2/3"
 msgstr "Dividi 2/3"
 
@@ -1293,11 +1292,11 @@ msgid ""
 "records. It does so by mixing the left and right channel in a way that "
 "simulates a stereo speaker setup while using headphones."
 msgstr ""
-"PulseEffects usa l'alimentazione mutua di GStreamer. Questo plugin si basa sulla "
-"libreria bs2b e può essere utilizzato per migliorare l'ascolto dell'audio "
-"stereo tramite cuffie. Lo fa mescolando i canali sinistro e destro in un "
-"modo che simula la configurazione di un altoparlante stereo, mentre si usano "
-"le cuffie."
+"PulseEffects usa l'alimentazione mutua di GStreamer. Questo plugin si basa "
+"sulla libreria bs2b e può essere utilizzato per migliorare l'ascolto "
+"dell'audio stereo tramite cuffie. Lo fa mescolando i canali sinistro e "
+"destro in un modo che simula la configurazione di un altoparlante stereo, "
+"mentre si usano le cuffie."
 
 #. (itstool) path: title/em
 #: C/crossfeed.page:19
@@ -1901,61 +1900,46 @@ msgstr ""
 msgid "Band Splitting"
 msgstr "Divisione di Banda"
 
+#. (itstool) path: title/em
+#: C/crystalizer.page:21
+#, fuzzy
+msgid "Split 0/1"
+msgstr "Dividi 1/2"
+
 #. (itstool) path: item/p
 #: C/crystalizer.page:23
-msgid "Frequency that splits the low and mid bands."
+#, fuzzy
+msgid "Frequency that splits the bands 0 and 1."
 msgstr "Frequenza che divide le bande basse e medie."
 
 #. (itstool) path: item/p
 #: C/crystalizer.page:31
-msgid "Frequency that splits the mid and high bands."
-msgstr "Frequenza che divide le bande medie e alte."
+#, fuzzy
+msgid "Frequency that splits the bands 1 and 2."
+msgstr "Frequenza che divide le bande basse e medie."
+
+#. (itstool) path: item/p
+#: C/crystalizer.page:39
+#, fuzzy
+msgid "Frequency that splits the bands 2 and 3."
+msgstr "Frequenza che divide le bande basse e medie."
 
 #. (itstool) path: section/title
-#: C/crystalizer.page:38
-msgid "Intensity"
+#: C/crystalizer.page:46
+#, fuzzy
+msgid "Intensities"
 msgstr "Intensità"
 
 #. (itstool) path: section/p
-#: C/crystalizer.page:39
+#: C/crystalizer.page:47
+#, fuzzy
 msgid ""
 "The higher the value the higher is the difference in magnitude between the "
-"loudest and the quiestest sounds."
+"loudest and the quietest sounds. You can set different intensities for each "
+"frequency band."
 msgstr ""
 "Più alto è il valore, maggiore è la differenza di magnitudine tra i suoni "
 "forti e deboli."
-
-#. (itstool) path: title/em
-#: C/crystalizer.page:46
-msgid "Low Band"
-msgstr "Banda Bassa"
-
-#. (itstool) path: item/p
-#: C/crystalizer.page:48
-msgid "Intensity of the effect applied to frequencies below 3000 Hz."
-msgstr "Intensità dell'effetto applicato a frequenze sotto i 3000 Hz."
-
-#. (itstool) path: title/em
-#: C/crystalizer.page:54
-msgid "Mid Band"
-msgstr "Banda Media"
-
-#. (itstool) path: item/p
-#: C/crystalizer.page:56
-msgid ""
-"Intensity of the effect applied to frequencies between 3000 Hz and 10000 Hz."
-msgstr ""
-"Intensità dell'effetto applicato a frequenze tra i 3000 Hz e i 10000 Hz."
-
-#. (itstool) path: title/em
-#: C/crystalizer.page:62
-msgid "High Band"
-msgstr "Banda Alta"
-
-#. (itstool) path: item/p
-#: C/crystalizer.page:64
-msgid "Intensity of the effect applied to frequencies above 10000 Hz."
-msgstr "Intensità dell'effetto applicato a frequenze al di sopra dei 10000 Hz."
 
 #. (itstool) path: page/title
 #: C/convolver.page:9
@@ -2613,6 +2597,31 @@ msgstr ""
 "Applicazioni\". Ciò può essere fatto usando una lista nera. Basta aggiungere "
 "il nome dell'applicazione esattamente come mostrato nella voce \"Applicazioni"
 "\"."
+
+#~ msgid "Frequency that splits the mid and high bands."
+#~ msgstr "Frequenza che divide le bande medie e alte."
+
+#~ msgid "Low Band"
+#~ msgstr "Banda Bassa"
+
+#~ msgid "Intensity of the effect applied to frequencies below 3000 Hz."
+#~ msgstr "Intensità dell'effetto applicato a frequenze sotto i 3000 Hz."
+
+#~ msgid "Mid Band"
+#~ msgstr "Banda Media"
+
+#~ msgid ""
+#~ "Intensity of the effect applied to frequencies between 3000 Hz and 10000 "
+#~ "Hz."
+#~ msgstr ""
+#~ "Intensità dell'effetto applicato a frequenze tra i 3000 Hz e i 10000 Hz."
+
+#~ msgid "High Band"
+#~ msgstr "Banda Alta"
+
+#~ msgid "Intensity of the effect applied to frequencies above 10000 Hz."
+#~ msgstr ""
+#~ "Intensità dell'effetto applicato a frequenze al di sopra dei 10000 Hz."
 
 #~ msgid ""
 #~ "Downward decreases signals above the threshold. Upwards increases the "

@@ -8,7 +8,7 @@
 
 const float PI = boost::math::constants::pi<float>();
 
-Filter::Filter(const std::string& tag) {}
+Filter::Filter(const std::string& tag) : log_tag(tag) {}
 
 Filter::~Filter() {
   util::warning(log_tag + " destructed");

@@ -18,10 +18,18 @@
         <terms>
             <item>
                 <title>
+                    <em style="strong" its:withinText="nested">Split 0/1</em>
+                </title>
+                <p>
+                    Frequency that splits the bands 0 and 1.
+                </p>
+            </item>
+            <item>
+                <title>
                     <em style="strong" its:withinText="nested">Split 1/2</em>
                 </title>
                 <p>
-                    Frequency that splits the low and mid bands.
+                    Frequency that splits the bands 1 and 2.
                 </p>
             </item>
             <item>
@@ -29,43 +37,18 @@
                     <em style="strong" its:withinText="nested">Split 2/3</em>
                 </title>
                 <p>
-                    Frequency that splits the mid and high bands.
+                    Frequency that splits the bands 2 and 3.
                 </p>
             </item>
         </terms>
     </section>
     <section>
-        <title>Intensity</title>
+        <title>Intensities</title>
         <p>
             The higher the value the higher is the difference in magnitude between the
-            loudest and the quiestest sounds.
+            loudest and the quietest sounds. You can set different intensities for each
+            frequency band.
         </p>
-        <terms>
-            <item>
-                <title>
-                    <em style="strong" its:withinText="nested">Low Band</em>
-                </title>
-                <p>
-                    Intensity of the effect applied to frequencies below 3000 Hz.
-                </p>
-            </item>
-            <item>
-                <title>
-                    <em style="strong" its:withinText="nested">Mid Band</em>
-                </title>
-                <p>
-                    Intensity of the effect applied to frequencies between 3000 Hz and 10000 Hz.
-                </p>
-            </item>
-            <item>
-                <title>
-                    <em style="strong" its:withinText="nested">High Band</em>
-                </title>
-                <p>
-                    Intensity of the effect applied to frequencies above 10000 Hz.
-                </p>
-            </item>
-        </terms>
     </section>
     <section>
         <title>References</title>

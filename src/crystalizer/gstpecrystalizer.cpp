@@ -234,13 +234,8 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->last_R_band3 = 0.0f;
 
   pecrystalizer->band0 = new Filter("crystalizer band0");
-
   pecrystalizer->band1 = new Filter("crystalizer band1");
-  // pecrystalizer->band1_highpass = new Filter(Mode::highpass, "band1");
-
   pecrystalizer->band2 = new Filter("crystalizer band2");
-  // pecrystalizer->band2_highpass = new Filter(Mode::highpass, "band2");
-
   pecrystalizer->band3 = new Filter("crystalizer band3");
 
   gst_base_transform_set_in_place(GST_BASE_TRANSFORM(pecrystalizer), true);
@@ -427,7 +422,12 @@ static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer) {
     pecrystalizer->data_band2 = new float[2 * pecrystalizer->nsamples];
     pecrystalizer->data_band3 = new float[2 * pecrystalizer->nsamples];
 
-    float transition_band = 200.0f;
+    /*
+      Bandpass transition band has to be twice the value used for lowpass and
+      highpass. This way all filters will have the same delay.
+    */
+
+    float transition_band = 50.0f;  // Hz
 
     // band 0
 
@@ -439,13 +439,13 @@ static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer) {
 
     pecrystalizer->band1->create_bandpass(
         pecrystalizer->nsamples, pecrystalizer->rate, pecrystalizer->freq1,
-        pecrystalizer->freq2, transition_band);
+        pecrystalizer->freq2, 2.0f * transition_band);
 
     // band 2
 
     pecrystalizer->band2->create_bandpass(
         pecrystalizer->nsamples, pecrystalizer->rate, pecrystalizer->freq2,
-        pecrystalizer->freq3, transition_band);
+        pecrystalizer->freq3, 2.0f * transition_band);
 
     // band 3
 
