@@ -501,7 +501,7 @@ msgid ""
 "value (it is smoother)."
 msgstr ""
 "Decide se la rimozione sibilo deve prendere il picco del segnale per il "
-"rilevamento o il valore RMS (è più morbido)."
+"rilevamento o il valore RMS (più morbido)."
 
 #. (itstool) path: item/p
 #: C/deesser.page:105
@@ -1637,12 +1637,12 @@ msgstr "Più Veloce"
 #. (itstool) path: title/em
 #: C/pitch.page:26
 msgid "Preserve Formant"
-msgstr "Protezione Formato"
+msgstr "Preserva Formato"
 
 #. (itstool) path: item/p
 #: C/pitch.page:28
 msgid "Enable formant preservation when pitch shifting."
-msgstr "Abilita la protezione formato durante il cambio di intonazione."
+msgstr "Abilita la preservazione del formato durante il cambio di intonazione."
 
 #. (itstool) path: title/em
 #: C/pitch.page:34
