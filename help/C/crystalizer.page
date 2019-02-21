@@ -14,43 +14,6 @@
         add dynamic range to songs that were overly compressed
     </p>
     <section>
-        <title>Band Splitting</title>
-        <terms>
-            <item>
-                <title>
-                    <em style="strong" its:withinText="nested">Split 0/1</em>
-                </title>
-                <p>
-                    Frequency that splits the bands 0 and 1.
-                </p>
-            </item>
-            <item>
-                <title>
-                    <em style="strong" its:withinText="nested">Split 1/2</em>
-                </title>
-                <p>
-                    Frequency that splits the bands 1 and 2.
-                </p>
-            </item>
-            <item>
-                <title>
-                    <em style="strong" its:withinText="nested">Split 2/3</em>
-                </title>
-                <p>
-                    Frequency that splits the bands 2 and 3.
-                </p>
-            </item>
-            <item>
-                <title>
-                    <em style="strong" its:withinText="nested">Split 3/4</em>
-                </title>
-                <p>
-                    Frequency that splits the bands 3 and 4.
-                </p>
-            </item>
-        </terms>
-    </section>
-    <section>
         <title>Intensities</title>
         <p>
             The higher the value the higher is the difference in magnitude between the

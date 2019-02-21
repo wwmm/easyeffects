@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-02-20 23:16-0300\n"
+"POT-Creation-Date: 2019-02-21 18:41-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -129,7 +129,7 @@ msgstr ""
 #: C/equalizer.page:230
 #: C/pitch.page:87
 #: C/webrtc.page:140
-#: C/crystalizer.page:62
+#: C/crystalizer.page:25
 #: C/convolver.page:42
 #: C/autogain.page:87
 msgid "References"
@@ -822,7 +822,6 @@ msgstr ""
 #. (itstool) path: title/em
 #: C/multibandcompressor.page:104
 #: C/multibandgate.page:112
-#: C/crystalizer.page:29
 msgid "Split 1/2"
 msgstr ""
 
@@ -835,7 +834,6 @@ msgstr ""
 #. (itstool) path: title/em
 #: C/multibandcompressor.page:112
 #: C/multibandgate.page:120
-#: C/crystalizer.page:37
 msgid "Split 2/3"
 msgstr ""
 
@@ -848,7 +846,6 @@ msgstr ""
 #. (itstool) path: title/em
 #: C/multibandcompressor.page:120
 #: C/multibandgate.page:128
-#: C/crystalizer.page:45
 msgid "Split 3/4"
 msgstr ""
 
@@ -1578,41 +1575,11 @@ msgstr ""
 
 #. (itstool) path: section/title
 #: C/crystalizer.page:17
-msgid "Band Splitting"
-msgstr ""
-
-#. (itstool) path: title/em
-#: C/crystalizer.page:21
-msgid "Split 0/1"
-msgstr ""
-
-#. (itstool) path: item/p
-#: C/crystalizer.page:23
-msgid "Frequency that splits the bands 0 and 1."
-msgstr ""
-
-#. (itstool) path: item/p
-#: C/crystalizer.page:31
-msgid "Frequency that splits the bands 1 and 2."
-msgstr ""
-
-#. (itstool) path: item/p
-#: C/crystalizer.page:39
-msgid "Frequency that splits the bands 2 and 3."
-msgstr ""
-
-#. (itstool) path: item/p
-#: C/crystalizer.page:47
-msgid "Frequency that splits the bands 3 and 4."
-msgstr ""
-
-#. (itstool) path: section/title
-#: C/crystalizer.page:54
 msgid "Intensities"
 msgstr ""
 
 #. (itstool) path: section/p
-#: C/crystalizer.page:55
+#: C/crystalizer.page:18
 msgid "The higher the value the higher is the difference in magnitude between the loudest and the quietest sounds. You can set different intensities for each frequency band."
 msgstr ""
 
