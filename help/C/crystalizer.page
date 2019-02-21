@@ -40,6 +40,14 @@
                     Frequency that splits the bands 2 and 3.
                 </p>
             </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Split 3/4</em>
+                </title>
+                <p>
+                    Frequency that splits the bands 3 and 4.
+                </p>
+            </item>
         </terms>
     </section>
     <section>

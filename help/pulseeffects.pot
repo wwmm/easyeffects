@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-02-20 11:19-0300\n"
+"POT-Creation-Date: 2019-02-20 23:16-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -129,7 +129,7 @@ msgstr ""
 #: C/equalizer.page:230
 #: C/pitch.page:87
 #: C/webrtc.page:140
-#: C/crystalizer.page:54
+#: C/crystalizer.page:62
 #: C/convolver.page:42
 #: C/autogain.page:87
 msgid "References"
@@ -848,6 +848,7 @@ msgstr ""
 #. (itstool) path: title/em
 #: C/multibandcompressor.page:120
 #: C/multibandgate.page:128
+#: C/crystalizer.page:45
 msgid "Split 3/4"
 msgstr ""
 
@@ -1600,13 +1601,18 @@ msgstr ""
 msgid "Frequency that splits the bands 2 and 3."
 msgstr ""
 
+#. (itstool) path: item/p
+#: C/crystalizer.page:47
+msgid "Frequency that splits the bands 3 and 4."
+msgstr ""
+
 #. (itstool) path: section/title
-#: C/crystalizer.page:46
+#: C/crystalizer.page:54
 msgid "Intensities"
 msgstr ""
 
 #. (itstool) path: section/p
-#: C/crystalizer.page:47
+#: C/crystalizer.page:55
 msgid "The higher the value the higher is the difference in magnitude between the loudest and the quietest sounds. You can set different intensities for each frequency band."
 msgstr ""
 

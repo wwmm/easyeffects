@@ -13,10 +13,12 @@ class CrystalizerUi : public Gtk::Grid, public PluginUiBase {
   virtual ~CrystalizerUi();
 
  private:
-  Gtk::ToggleButton *mute_band0, *mute_band1, *mute_band2, *mute_band3;
+  Gtk::ToggleButton *mute_band0, *mute_band1, *mute_band2, *mute_band3,
+      *mute_band4;
 
   Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, intensity_band0,
-      intensity_band1, intensity_band2, intensity_band3, freq1, freq2, freq3;
+      intensity_band1, intensity_band2, intensity_band3, intensity_band4, freq1,
+      freq2, freq3, freq4;
 };
 
 #endif

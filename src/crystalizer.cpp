@@ -77,6 +77,10 @@ void Crystalizer::bind_to_gsettings() {
                                G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 
+  g_settings_bind_with_mapping(settings, "freq4", crystalizer, "freq4",
+                               G_SETTINGS_BIND_GET, util::double_to_float,
+                               nullptr, nullptr, nullptr);
+
   g_settings_bind_with_mapping(
       settings, "intensity-band0", crystalizer, "intensity-band0",
       G_SETTINGS_BIND_GET, util::double_to_float, nullptr, nullptr, nullptr);
@@ -93,6 +97,10 @@ void Crystalizer::bind_to_gsettings() {
       settings, "intensity-band3", crystalizer, "intensity-band3",
       G_SETTINGS_BIND_GET, util::double_to_float, nullptr, nullptr, nullptr);
 
+  g_settings_bind_with_mapping(
+      settings, "intensity-band4", crystalizer, "intensity-band4",
+      G_SETTINGS_BIND_GET, util::double_to_float, nullptr, nullptr, nullptr);
+
   g_settings_bind(settings, "mute-band0", crystalizer, "mute-band0",
                   G_SETTINGS_BIND_DEFAULT);
 
@@ -103,5 +111,8 @@ void Crystalizer::bind_to_gsettings() {
                   G_SETTINGS_BIND_DEFAULT);
 
   g_settings_bind(settings, "mute-band3", crystalizer, "mute-band3",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, "mute-band4", crystalizer, "mute-band4",
                   G_SETTINGS_BIND_DEFAULT);
 }
