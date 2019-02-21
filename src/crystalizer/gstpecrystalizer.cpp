@@ -237,37 +237,47 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->bpf = 0;
   pecrystalizer->nsamples = 0;
 
-  pecrystalizer->freq1 = 1250.0f;
-  pecrystalizer->freq2 = 2500.0f;
-  pecrystalizer->freq3 = 5000.0f;
-  pecrystalizer->freq4 = 10000.0f;
-  pecrystalizer->intensity_band0 = 4.0f;
-  pecrystalizer->intensity_band1 = 2.0f;
-  pecrystalizer->intensity_band2 = 1.0f;
-  pecrystalizer->intensity_band3 = 0.5f;
-  pecrystalizer->intensity_band4 = 0.25f;
-  pecrystalizer->mute_band0 = false;
-  pecrystalizer->mute_band1 = false;
-  pecrystalizer->mute_band2 = false;
-  pecrystalizer->mute_band3 = false;
-  pecrystalizer->mute_band4 = false;
+  // pecrystalizer->freq1 = 1250.0f;
+  // pecrystalizer->freq2 = 2500.0f;
+  // pecrystalizer->freq3 = 5000.0f;
+  // pecrystalizer->freq4 = 10000.0f;
+  // pecrystalizer->intensity_band0 = 4.0f;
+  // pecrystalizer->intensity_band1 = 2.0f;
+  // pecrystalizer->intensity_band2 = 1.0f;
+  // pecrystalizer->intensity_band3 = 0.5f;
+  // pecrystalizer->intensity_band4 = 0.25f;
+  // pecrystalizer->mute_band0 = false;
+  // pecrystalizer->mute_band1 = false;
+  // pecrystalizer->mute_band2 = false;
+  // pecrystalizer->mute_band3 = false;
+  // pecrystalizer->mute_band4 = false;
+  //
+  // pecrystalizer->last_L_band0 = 0.0f;
+  // pecrystalizer->last_L_band1 = 0.0f;
+  // pecrystalizer->last_L_band2 = 0.0f;
+  // pecrystalizer->last_L_band3 = 0.0f;
+  // pecrystalizer->last_L_band4 = 0.0f;
+  // pecrystalizer->last_R_band0 = 0.0f;
+  // pecrystalizer->last_R_band1 = 0.0f;
+  // pecrystalizer->last_R_band2 = 0.0f;
+  // pecrystalizer->last_R_band3 = 0.0f;
+  // pecrystalizer->last_R_band4 = 0.0f;
 
-  pecrystalizer->last_L_band0 = 0.0f;
-  pecrystalizer->last_L_band1 = 0.0f;
-  pecrystalizer->last_L_band2 = 0.0f;
-  pecrystalizer->last_L_band3 = 0.0f;
-  pecrystalizer->last_L_band4 = 0.0f;
-  pecrystalizer->last_R_band0 = 0.0f;
-  pecrystalizer->last_R_band1 = 0.0f;
-  pecrystalizer->last_R_band2 = 0.0f;
-  pecrystalizer->last_R_band3 = 0.0f;
-  pecrystalizer->last_R_band4 = 0.0f;
+  for (uint n = 0; n < pecrystalizer->filters.size(); n++) {
+    pecrystalizer->filters[n] =
+        new Filter("crystalizer band" + std::to_string(n));
 
-  pecrystalizer->band0 = new Filter("crystalizer band0");
-  pecrystalizer->band1 = new Filter("crystalizer band1");
-  pecrystalizer->band2 = new Filter("crystalizer band2");
-  pecrystalizer->band3 = new Filter("crystalizer band3");
-  pecrystalizer->band4 = new Filter("crystalizer band4");
+    pecrystalizer->intensities[n] = 1.0f;
+    pecrystalizer->mute[n] = false;
+    pecrystalizer->last_L[n] = 0.0f;
+    pecrystalizer->last_R[n] = 0.0f;
+  }
+
+  // pecrystalizer->band0 = new Filter("crystalizer band0");
+  // pecrystalizer->band1 = new Filter("crystalizer band1");
+  // pecrystalizer->band2 = new Filter("crystalizer band2");
+  // pecrystalizer->band3 = new Filter("crystalizer band3");
+  // pecrystalizer->band4 = new Filter("crystalizer band4");
 
   gst_base_transform_set_in_place(GST_BASE_TRANSFORM(pecrystalizer), true);
 }
@@ -432,9 +442,13 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
 
   gst_buffer_unmap(buffer, &map);
 
-  if (pecrystalizer->band0->ready && pecrystalizer->band1->ready &&
-      pecrystalizer->band2->ready && pecrystalizer->band3->ready &&
-      pecrystalizer->band4->ready) {
+  bool filters_ready = false;
+
+  for (uint n = 0; n < pecrystalizer->filters.size(); n++) {
+    filters_ready = filters_ready || pecrystalizer->filters[n]->ready;
+  }
+
+  if (filters_ready) {
     if (pecrystalizer->nsamples == num_samples) {
       gst_pecrystalizer_process(pecrystalizer, buffer);
     } else {
@@ -470,11 +484,15 @@ static gboolean gst_pecrystalizer_stop(GstBaseTransform* base) {
 
 static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer) {
   if (pecrystalizer->rate != 0) {
-    pecrystalizer->data_band0 = new float[2 * pecrystalizer->nsamples];
-    pecrystalizer->data_band1 = new float[2 * pecrystalizer->nsamples];
-    pecrystalizer->data_band2 = new float[2 * pecrystalizer->nsamples];
-    pecrystalizer->data_band3 = new float[2 * pecrystalizer->nsamples];
-    pecrystalizer->data_band4 = new float[2 * pecrystalizer->nsamples];
+    // pecrystalizer->data_band0 = new float[2 * pecrystalizer->nsamples];
+    // pecrystalizer->data_band1 = new float[2 * pecrystalizer->nsamples];
+    // pecrystalizer->data_band2 = new float[2 * pecrystalizer->nsamples];
+    // pecrystalizer->data_band3 = new float[2 * pecrystalizer->nsamples];
+    // pecrystalizer->data_band4 = new float[2 * pecrystalizer->nsamples];
+
+    for (uint n = 0; n < pecrystalizer->band_data.size(); n++) {
+      pecrystalizer->band_data[n].resize(2 * pecrystalizer->nsamples);
+    }
 
     /*
       Bandpass transition band has to be twice the value used for lowpass and
@@ -485,31 +503,52 @@ static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer) {
 
     // band 0
 
-    pecrystalizer->band0->create_lowpass(pecrystalizer->nsamples,
-                                         pecrystalizer->rate,
-                                         pecrystalizer->freq1, transition_band);
+    // pecrystalizer->band0->create_lowpass(pecrystalizer->nsamples,
+    //                                      pecrystalizer->rate,
+    //                                      pecrystalizer->freq1,
+    //                                      transition_band);
+
+    pecrystalizer->filters[0]->create_lowpass(
+        pecrystalizer->nsamples, pecrystalizer->rate, pecrystalizer->freq1,
+        transition_band);
 
     // band 1
 
-    pecrystalizer->band1->create_bandpass(
+    // pecrystalizer->band1->create_bandpass(
+    //     pecrystalizer->nsamples, pecrystalizer->rate, pecrystalizer->freq1,
+    //     pecrystalizer->freq2, 2.0f * transition_band);
+
+    pecrystalizer->filters[1]->create_bandpass(
         pecrystalizer->nsamples, pecrystalizer->rate, pecrystalizer->freq1,
         pecrystalizer->freq2, 2.0f * transition_band);
 
     // band 2
 
-    pecrystalizer->band2->create_bandpass(
+    // pecrystalizer->band2->create_bandpass(
+    //     pecrystalizer->nsamples, pecrystalizer->rate, pecrystalizer->freq2,
+    //     pecrystalizer->freq3, 2.0f * transition_band);
+
+    pecrystalizer->filters[2]->create_bandpass(
         pecrystalizer->nsamples, pecrystalizer->rate, pecrystalizer->freq2,
         pecrystalizer->freq3, 2.0f * transition_band);
 
     // band 3
 
-    pecrystalizer->band3->create_bandpass(
+    // pecrystalizer->band3->create_bandpass(
+    //     pecrystalizer->nsamples, pecrystalizer->rate, pecrystalizer->freq3,
+    //     pecrystalizer->freq4, 2.0f * transition_band);
+
+    pecrystalizer->filters[3]->create_bandpass(
         pecrystalizer->nsamples, pecrystalizer->rate, pecrystalizer->freq3,
         pecrystalizer->freq4, 2.0f * transition_band);
 
     // band 4
 
-    pecrystalizer->band4->create_highpass(
+    // pecrystalizer->band4->create_highpass(
+    //     pecrystalizer->nsamples, pecrystalizer->rate, pecrystalizer->freq4,
+    //     transition_band);
+
+    pecrystalizer->filters[4]->create_highpass(
         pecrystalizer->nsamples, pecrystalizer->rate, pecrystalizer->freq4,
         transition_band);
   }
@@ -523,98 +562,56 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
 
   float* data = (float*)map.data;
 
-  memcpy(pecrystalizer->data_band0, data, map.size);
-  memcpy(pecrystalizer->data_band1, data, map.size);
-  memcpy(pecrystalizer->data_band2, data, map.size);
-  memcpy(pecrystalizer->data_band3, data, map.size);
-  memcpy(pecrystalizer->data_band4, data, map.size);
+  for (uint n = 0; n < pecrystalizer->band_data.size(); n++) {
+    memcpy(pecrystalizer->band_data[n].data(), data, map.size);
 
-  pecrystalizer->band0->process(pecrystalizer->data_band0);
-  pecrystalizer->band1->process(pecrystalizer->data_band1);
-  pecrystalizer->band2->process(pecrystalizer->data_band2);
-  pecrystalizer->band3->process(pecrystalizer->data_band3);
-  pecrystalizer->band4->process(pecrystalizer->data_band4);
+    pecrystalizer->filters[n]->process(pecrystalizer->band_data[n].data());
+  }
 
   if (!pecrystalizer->ready) {
-    pecrystalizer->last_L_band0 = pecrystalizer->data_band0[0];
-    pecrystalizer->last_R_band0 = pecrystalizer->data_band0[1];
-
-    pecrystalizer->last_L_band1 = pecrystalizer->data_band1[0];
-    pecrystalizer->last_R_band1 = pecrystalizer->data_band1[1];
-
-    pecrystalizer->last_L_band2 = pecrystalizer->data_band2[0];
-    pecrystalizer->last_R_band2 = pecrystalizer->data_band2[1];
-
-    pecrystalizer->last_L_band3 = pecrystalizer->data_band3[0];
-    pecrystalizer->last_R_band3 = pecrystalizer->data_band3[1];
-
-    pecrystalizer->last_L_band4 = pecrystalizer->data_band4[0];
-    pecrystalizer->last_R_band4 = pecrystalizer->data_band4[1];
+    for (uint n = 0; n < pecrystalizer->band_data.size(); n++) {
+      pecrystalizer->last_L[n] = pecrystalizer->band_data[n][0];
+      pecrystalizer->last_R[n] = pecrystalizer->band_data[n][1];
+    }
 
     pecrystalizer->ready = true;
   }
 
-  /*Code taken from FFMPEG crystalizer plugin
+  /*Code adapted from FFMPEG crystalizer plugin
    *https://git.ffmpeg.org/gitweb/ffmpeg.git/blob_plain/HEAD:/libavfilter/af_crystalizer.c
    */
 
-  auto process_sample = [&](float*& band_data, uint& n, float& intensity,
-                            float& last_L, float& last_R, bool& mute) {
-    if (!mute) {
-      float L = band_data[2 * n];
-      float R = band_data[2 * n + 1];
+  for (uint n = 0; n < pecrystalizer->filters.size(); n++) {
+    if (!pecrystalizer->mute[n]) {
+      for (uint m = 0; m < pecrystalizer->nsamples; m++) {
+        float L = pecrystalizer->band_data[n][2 * m];
+        float R = pecrystalizer->band_data[n][2 * m + 1];
 
-      band_data[2 * n] = L + (L - last_L) * intensity;
-      band_data[2 * n + 1] = R + (R - last_R) * intensity;
+        pecrystalizer->band_data[n][2 * m] =
+            L + (L - pecrystalizer->last_L[n]) * pecrystalizer->intensities[n];
 
-      last_L = L;
-      last_R = R;
-    } else if (n == pecrystalizer->nsamples - 1) {
-      last_L = band_data[2 * n];
-      last_R = band_data[2 * n + 1];
+        pecrystalizer->band_data[n][2 * m + 1] =
+            R + (R - pecrystalizer->last_R[n]) * pecrystalizer->intensities[n];
+
+        pecrystalizer->last_L[n] = L;
+        pecrystalizer->last_R[n] = R;
+      }
+    } else {
+      pecrystalizer->last_L[n] =
+          pecrystalizer->band_data[n][2 * pecrystalizer->nsamples - 2];
+      pecrystalizer->last_R[n] =
+          pecrystalizer->band_data[n][2 * pecrystalizer->nsamples - 1];
     }
-  };
-
-  for (uint n = 0; n < pecrystalizer->nsamples; n++) {
-    // band 0
-
-    process_sample(pecrystalizer->data_band0, n, pecrystalizer->intensity_band0,
-                   pecrystalizer->last_L_band0, pecrystalizer->last_R_band0,
-                   pecrystalizer->mute_band0);
-
-    // band 1
-
-    process_sample(pecrystalizer->data_band1, n, pecrystalizer->intensity_band1,
-                   pecrystalizer->last_L_band1, pecrystalizer->last_R_band1,
-                   pecrystalizer->mute_band1);
-
-    // band 2
-
-    process_sample(pecrystalizer->data_band2, n, pecrystalizer->intensity_band2,
-                   pecrystalizer->last_L_band2, pecrystalizer->last_R_band2,
-                   pecrystalizer->mute_band2);
-
-    // band 3
-
-    process_sample(pecrystalizer->data_band3, n, pecrystalizer->intensity_band3,
-                   pecrystalizer->last_L_band3, pecrystalizer->last_R_band3,
-                   pecrystalizer->mute_band3);
-
-    // band 4
-
-    process_sample(pecrystalizer->data_band4, n, pecrystalizer->intensity_band4,
-                   pecrystalizer->last_L_band4, pecrystalizer->last_R_band4,
-                   pecrystalizer->mute_band4);
   }
 
   // add bands
 
   for (unsigned int n = 0; n < 2 * pecrystalizer->nsamples; n++) {
-    data[n] = pecrystalizer->data_band0[n] + pecrystalizer->data_band1[n] +
-              pecrystalizer->data_band2[n] + pecrystalizer->data_band3[n] +
-              pecrystalizer->data_band4[n];
+    data[n] = 0.0f;
 
-    // data[n] = pecrystalizer->data_band4[n];
+    for (uint m = 0; m < pecrystalizer->filters.size(); m++) {
+      data[n] += pecrystalizer->band_data[m][n];
+    }
   }
 
   gst_buffer_unmap(buffer, &map);
@@ -623,25 +620,9 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
 static void gst_pecrystalizer_finish_filters(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->ready = false;
 
-  pecrystalizer->band0->finish();
-  pecrystalizer->band1->finish();
-  pecrystalizer->band2->finish();
-  pecrystalizer->band3->finish();
-  pecrystalizer->band4->finish();
-
-  auto free_data = [](float*& data) {
-    if (data != nullptr) {
-      delete[] data;
-
-      data = nullptr;
-    }
-  };
-
-  free_data(pecrystalizer->data_band0);
-  free_data(pecrystalizer->data_band1);
-  free_data(pecrystalizer->data_band2);
-  free_data(pecrystalizer->data_band3);
-  free_data(pecrystalizer->data_band4);
+  for (uint m = 0; m < pecrystalizer->filters.size(); m++) {
+    pecrystalizer->filters[m]->finish();
+  }
 
   pecrystalizer->futures.clear();
 }

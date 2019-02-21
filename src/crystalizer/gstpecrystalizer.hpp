@@ -2,6 +2,7 @@
 #define _GST_PECRYSTALIZER_H_
 
 #include <gst/audio/gstaudiofilter.h>
+#include <array>
 #include <future>
 #include <mutex>
 #include "filter.hpp"
@@ -30,6 +31,11 @@ struct _GstPecrystalizer {
   float intensity_band0, intensity_band1, intensity_band2, intensity_band3,
       intensity_band4, freq1, freq2, freq3, freq4;
 
+  bool mute_band0, mute_band1, mute_band2, mute_band3, mute_band4;
+
+  std::array<float, 5> intensities;
+  std::array<bool, 5> mute;
+
   /* < private > */
 
   bool ready;
@@ -39,7 +45,11 @@ struct _GstPecrystalizer {
       last_R_band0, last_R_band1, last_R_band2, last_R_band3, last_R_band4;
   float *data_band0 = nullptr, *data_band1 = nullptr, *data_band2 = nullptr,
         *data_band3 = nullptr, *data_band4 = nullptr;
-  bool mute_band0, mute_band1, mute_band2, mute_band3, mute_band4;
+
+  // 5 bands
+  std::array<Filter*, 5> filters;
+  std::array<std::vector<float>, 5> band_data;
+  std::array<float, 5> last_L, last_R;
 
   std::mutex mutex;
 
