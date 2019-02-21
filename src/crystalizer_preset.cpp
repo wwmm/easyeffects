@@ -15,35 +15,13 @@ void CrystalizerPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".crystalizer.output-gain",
            settings->get_double("output-gain"));
 
-  root.put(section + ".crystalizer.intensity-band0",
-           settings->get_double("intensity-band0"));
+  for (int n = 0; n < 12; n++) {
+    root.put(section + ".crystalizer.band" + std::to_string(n) + ".intensity",
+             settings->get_double("intensity-band" + std::to_string(n)));
 
-  root.put(section + ".crystalizer.intensity-band1",
-           settings->get_double("intensity-band1"));
-
-  root.put(section + ".crystalizer.intensity-band2",
-           settings->get_double("intensity-band2"));
-
-  root.put(section + ".crystalizer.intensity-band3",
-           settings->get_double("intensity-band3"));
-
-  root.put(section + ".crystalizer.intensity-band4",
-           settings->get_double("intensity-band4"));
-
-  root.put(section + ".crystalizer.mute-band0",
-           settings->get_boolean("mute-band0"));
-
-  root.put(section + ".crystalizer.mute-band1",
-           settings->get_boolean("mute-band1"));
-
-  root.put(section + ".crystalizer.mute-band2",
-           settings->get_boolean("mute-band2"));
-
-  root.put(section + ".crystalizer.mute-band3",
-           settings->get_boolean("mute-band3"));
-
-  root.put(section + ".crystalizer.mute-band4",
-           settings->get_boolean("mute-band4"));
+    root.put(section + ".crystalizer.band" + std::to_string(n) + ".mute",
+             settings->get_boolean("mute-band" + std::to_string(n)));
+  }
 }
 
 void CrystalizerPreset::load(boost::property_tree::ptree& root,
@@ -57,35 +35,15 @@ void CrystalizerPreset::load(boost::property_tree::ptree& root,
   update_key<double>(root, settings, "output-gain",
                      section + ".crystalizer.output-gain");
 
-  update_key<double>(root, settings, "intensity-band0",
-                     section + ".crystalizer.intensity-band0");
+  for (int n = 0; n < 12; n++) {
+    update_key<double>(
+        root, settings, "intensity-band" + std::to_string(n),
+        section + ".crystalizer.band" + std::to_string(n) + ".intensity");
 
-  update_key<double>(root, settings, "intensity-band1",
-                     section + ".crystalizer.intensity-band1");
-
-  update_key<double>(root, settings, "intensity-band2",
-                     section + ".crystalizer.intensity-band2");
-
-  update_key<double>(root, settings, "intensity-band3",
-                     section + ".crystalizer.intensity-band3");
-
-  update_key<double>(root, settings, "intensity-band4",
-                     section + ".crystalizer.intensity-band4");
-
-  update_key<bool>(root, settings, "mute-band0",
-                   section + ".crystalizer.mute-band0");
-
-  update_key<bool>(root, settings, "mute-band1",
-                   section + ".crystalizer.mute-band1");
-
-  update_key<bool>(root, settings, "mute-band2",
-                   section + ".crystalizer.mute-band2");
-
-  update_key<bool>(root, settings, "mute-band3",
-                   section + ".crystalizer.mute-band3");
-
-  update_key<bool>(root, settings, "mute-band4",
-                   section + ".crystalizer.mute-band4");
+    update_key<bool>(
+        root, settings, "mute-band" + std::to_string(n),
+        section + ".crystalizer.band" + std::to_string(n) + ".mute");
+  }
 }
 
 void CrystalizerPreset::write(PresetType preset_type,

@@ -40,6 +40,34 @@
             <range min="-40" max="20"/>
             <default>-12.0</default>
         </key>
+        <key name="intensity-band5" type="d">
+            <range min="-40" max="20"/>
+            <default>-12.0</default>
+        </key>
+        <key name="intensity-band6" type="d">
+            <range min="-40" max="20"/>
+            <default>-12.0</default>
+        </key>
+        <key name="intensity-band7" type="d">
+            <range min="-40" max="20"/>
+            <default>-12.0</default>
+        </key>
+        <key name="intensity-band8" type="d">
+            <range min="-40" max="20"/>
+            <default>-12.0</default>
+        </key>
+        <key name="intensity-band9" type="d">
+            <range min="-40" max="20"/>
+            <default>-12.0</default>
+        </key>
+        <key name="intensity-band10" type="d">
+            <range min="-40" max="20"/>
+            <default>-12.0</default>
+        </key>
+        <key name="intensity-band11" type="d">
+            <range min="-40" max="20"/>
+            <default>-12.0</default>
+        </key>
         <key name="mute-band0" type="b">
             <default>false</default>
         </key>
@@ -53,6 +81,27 @@
             <default>false</default>
         </key>
         <key name="mute-band4" type="b">
+            <default>false</default>
+        </key>
+        <key name="mute-band5" type="b">
+            <default>false</default>
+        </key>
+        <key name="mute-band6" type="b">
+            <default>false</default>
+        </key>
+        <key name="mute-band7" type="b">
+            <default>false</default>
+        </key>
+        <key name="mute-band8" type="b">
+            <default>false</default>
+        </key>
+        <key name="mute-band9" type="b">
+            <default>false</default>
+        </key>
+        <key name="mute-band10" type="b">
+            <default>false</default>
+        </key>
+        <key name="mute-band11" type="b">
             <default>false</default>
         </key>
     </schema>
