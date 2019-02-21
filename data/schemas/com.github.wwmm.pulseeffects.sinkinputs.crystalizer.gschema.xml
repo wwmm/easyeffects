@@ -21,24 +21,24 @@
             <default>0.0</default>
         </key>
         <key name="intensity-band0" type="d">
-            <range min="0" max="10"/>
-            <default>4.0</default>
+            <range min="-40" max="20"/>
+            <default>12.0</default>
         </key>
         <key name="intensity-band1" type="d">
-            <range min="0" max="10"/>
-            <default>2.0</default>
+            <range min="-40" max="20"/>
+            <default>6.0</default>
         </key>
         <key name="intensity-band2" type="d">
-            <range min="0" max="10"/>
-            <default>1.0</default>
+            <range min="-40" max="20"/>
+            <default>0.0</default>
         </key>
         <key name="intensity-band3" type="d">
-            <range min="0" max="10"/>
-            <default>0.5</default>
+            <range min="-40" max="20"/>
+            <default>-6.0</default>
         </key>
         <key name="intensity-band4" type="d">
-            <range min="0" max="10"/>
-            <default>0.25</default>
+            <range min="-40" max="20"/>
+            <default>-12.0</default>
         </key>
         <key name="mute-band0" type="b">
             <default>false</default>
