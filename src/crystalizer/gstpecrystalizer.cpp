@@ -242,6 +242,11 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->freq3 = 5000.0f;
   pecrystalizer->freq4 = 10000.0f;
 
+  pecrystalizer->freqs[0] = 1250.0f;
+  pecrystalizer->freqs[1] = 2500.0f;
+  pecrystalizer->freqs[2] = 5000.0f;
+  pecrystalizer->freqs[3] = 10000.0f;
+
   for (uint n = 0; n < pecrystalizer->filters.size(); n++) {
     pecrystalizer->filters[n] =
         new Filter("crystalizer band" + std::to_string(n));
@@ -415,10 +420,10 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
 
   gst_buffer_unmap(buffer, &map);
 
-  bool filters_ready = false;
+  bool filters_ready = true;
 
   for (uint n = 0; n < pecrystalizer->filters.size(); n++) {
-    filters_ready = filters_ready || pecrystalizer->filters[n]->ready;
+    filters_ready = filters_ready && pecrystalizer->filters[n]->ready;
   }
 
   if (filters_ready) {
@@ -468,35 +473,22 @@ static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer) {
 
     float transition_band = 50.0f;  // Hz
 
-    // band 0
-
-    pecrystalizer->filters[0]->create_lowpass(
-        pecrystalizer->nsamples, pecrystalizer->rate, pecrystalizer->freq1,
-        transition_band);
-
-    // band 1
-
-    pecrystalizer->filters[1]->create_bandpass(
-        pecrystalizer->nsamples, pecrystalizer->rate, pecrystalizer->freq1,
-        pecrystalizer->freq2, 2.0f * transition_band);
-
-    // band 2
-
-    pecrystalizer->filters[2]->create_bandpass(
-        pecrystalizer->nsamples, pecrystalizer->rate, pecrystalizer->freq2,
-        pecrystalizer->freq3, 2.0f * transition_band);
-
-    // band 3
-
-    pecrystalizer->filters[3]->create_bandpass(
-        pecrystalizer->nsamples, pecrystalizer->rate, pecrystalizer->freq3,
-        pecrystalizer->freq4, 2.0f * transition_band);
-
-    // band 4
-
-    pecrystalizer->filters[4]->create_highpass(
-        pecrystalizer->nsamples, pecrystalizer->rate, pecrystalizer->freq4,
-        transition_band);
+    for (uint n = 0; n < pecrystalizer->filters.size(); n++) {
+      if (n == 0) {
+        pecrystalizer->filters[0]->create_lowpass(
+            pecrystalizer->nsamples, pecrystalizer->rate,
+            pecrystalizer->freqs[0], transition_band);
+      } else if (n == pecrystalizer->filters.size() - 1) {
+        pecrystalizer->filters[n]->create_highpass(
+            pecrystalizer->nsamples, pecrystalizer->rate,
+            pecrystalizer->freqs.back(), transition_band);
+      } else {
+        pecrystalizer->filters[n]->create_bandpass(
+            pecrystalizer->nsamples, pecrystalizer->rate,
+            pecrystalizer->freqs[n - 1], pecrystalizer->freqs[n],
+            2.0f * transition_band);
+      }
+    }
   }
 }
 

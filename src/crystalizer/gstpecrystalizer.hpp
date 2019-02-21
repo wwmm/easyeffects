@@ -30,6 +30,7 @@ struct _GstPecrystalizer {
 
   float freq1, freq2, freq3, freq4;
 
+  std::array<float, 4> freqs;
   std::array<float, 5> intensities;
   std::array<bool, 5> mute;
 
