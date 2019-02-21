@@ -28,10 +28,7 @@ struct _GstPecrystalizer {
 
   /* properties */
 
-  float intensity_band0, intensity_band1, intensity_band2, intensity_band3,
-      intensity_band4, freq1, freq2, freq3, freq4;
-
-  bool mute_band0, mute_band1, mute_band2, mute_band3, mute_band4;
+  float freq1, freq2, freq3, freq4;
 
   std::array<float, 5> intensities;
   std::array<bool, 5> mute;
@@ -41,10 +38,6 @@ struct _GstPecrystalizer {
   bool ready;
   int rate, bpf;  // sampling rate,  bytes per frame : channels * bps
   uint nsamples;
-  float last_L_band0, last_L_band1, last_L_band2, last_L_band3, last_L_band4,
-      last_R_band0, last_R_band1, last_R_band2, last_R_band3, last_R_band4;
-  float *data_band0 = nullptr, *data_band1 = nullptr, *data_band2 = nullptr,
-        *data_band3 = nullptr, *data_band4 = nullptr;
 
   // 5 bands
   std::array<Filter*, 5> filters;
@@ -52,9 +45,6 @@ struct _GstPecrystalizer {
   std::array<float, 5> last_L, last_R;
 
   std::mutex mutex;
-
-  Filter *band0 = nullptr, *band1 = nullptr, *band2 = nullptr, *band3 = nullptr,
-         *band4 = nullptr;
 
   std::vector<std::future<void>> futures;
 };
