@@ -58,11 +58,7 @@ enum {
   PROP_MUTE_BAND1,
   PROP_MUTE_BAND2,
   PROP_MUTE_BAND3,
-  PROP_MUTE_BAND4,
-  PROP_FREQ1,
-  PROP_FREQ2,
-  PROP_FREQ3,
-  PROP_FREQ4
+  PROP_MUTE_BAND4
 };
 
 /* pad templates */
@@ -129,42 +125,6 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
   base_transform_class->stop = GST_DEBUG_FUNCPTR(gst_pecrystalizer_stop);
 
   /* define properties */
-
-  g_object_class_install_property(
-      gobject_class, PROP_FREQ1,
-      g_param_spec_float(
-          "freq1", "SPLIT FREQUENCY 1",
-          "Split frequency between the first and the second band", 10.0f,
-          20000.0f, 1250.0f,
-          static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                   G_PARAM_STATIC_STRINGS)));
-
-  g_object_class_install_property(
-      gobject_class, PROP_FREQ2,
-      g_param_spec_float(
-          "freq2", "SPLIT FREQUENCY 2",
-          "Split frequency between the second and the third band", 10.0f,
-          20000.0f, 2500.0f,
-          static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                   G_PARAM_STATIC_STRINGS)));
-
-  g_object_class_install_property(
-      gobject_class, PROP_FREQ3,
-      g_param_spec_float(
-          "freq3", "SPLIT FREQUENCY 3",
-          "Split frequency between the third and the fourth band", 10.0f,
-          20000.0f, 5000.0f,
-          static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                   G_PARAM_STATIC_STRINGS)));
-
-  g_object_class_install_property(
-      gobject_class, PROP_FREQ4,
-      g_param_spec_float(
-          "freq4", "SPLIT FREQUENCY 4",
-          "Split frequency between the fourth and the fifth band", 10.0f,
-          20000.0f, 10000.0f,
-          static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                   G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
       gobject_class, PROP_INTENSITY_BAND0,
@@ -237,11 +197,6 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->bpf = 0;
   pecrystalizer->nsamples = 0;
 
-  pecrystalizer->freq1 = 1250.0f;
-  pecrystalizer->freq2 = 2500.0f;
-  pecrystalizer->freq3 = 5000.0f;
-  pecrystalizer->freq4 = 10000.0f;
-
   pecrystalizer->freqs[0] = 1250.0f;
   pecrystalizer->freqs[1] = 2500.0f;
   pecrystalizer->freqs[2] = 5000.0f;
@@ -271,30 +226,6 @@ void gst_pecrystalizer_set_property(GObject* object,
   std::lock_guard<std::mutex> lock(pecrystalizer->mutex);
 
   switch (property_id) {
-    case PROP_FREQ1:
-      pecrystalizer->freq1 = g_value_get_float(value);
-
-      gst_pecrystalizer_finish_filters(pecrystalizer);
-
-      break;
-    case PROP_FREQ2:
-      pecrystalizer->freq2 = g_value_get_float(value);
-
-      gst_pecrystalizer_finish_filters(pecrystalizer);
-
-      break;
-    case PROP_FREQ3:
-      pecrystalizer->freq3 = g_value_get_float(value);
-
-      gst_pecrystalizer_finish_filters(pecrystalizer);
-
-      break;
-    case PROP_FREQ4:
-      pecrystalizer->freq4 = g_value_get_float(value);
-
-      gst_pecrystalizer_finish_filters(pecrystalizer);
-
-      break;
     case PROP_INTENSITY_BAND0:
       pecrystalizer->intensities[0] = g_value_get_float(value);
       break;
@@ -340,18 +271,6 @@ void gst_pecrystalizer_get_property(GObject* object,
   GST_DEBUG_OBJECT(pecrystalizer, "get_property");
 
   switch (property_id) {
-    case PROP_FREQ1:
-      g_value_set_float(value, pecrystalizer->freq1);
-      break;
-    case PROP_FREQ2:
-      g_value_set_float(value, pecrystalizer->freq2);
-      break;
-    case PROP_FREQ3:
-      g_value_set_float(value, pecrystalizer->freq3);
-      break;
-    case PROP_FREQ4:
-      g_value_set_float(value, pecrystalizer->freq4);
-      break;
     case PROP_INTENSITY_BAND0:
       g_value_set_float(value, pecrystalizer->intensities[0]);
       break;

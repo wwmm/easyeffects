@@ -1,4 +1,6 @@
 #include "crystalizer_ui.hpp"
+#include <gtkmm/scale.h>
+#include <gtkmm/togglebutton.h>
 
 CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& builder,
@@ -8,48 +10,68 @@ CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
 
   // loading glade widgets
 
-  builder->get_widget("mute_band0", mute_band0);
-  builder->get_widget("mute_band1", mute_band1);
-  builder->get_widget("mute_band2", mute_band2);
-  builder->get_widget("mute_band3", mute_band3);
-  builder->get_widget("mute_band4", mute_band4);
+  builder->get_widget("bands_grid", bands_grid);
 
-  get_object(builder, "intensity_band0", intensity_band0);
-  get_object(builder, "intensity_band1", intensity_band1);
-  get_object(builder, "intensity_band2", intensity_band2);
-  get_object(builder, "intensity_band3", intensity_band3);
-  get_object(builder, "intensity_band4", intensity_band4);
   get_object(builder, "input_gain", input_gain);
   get_object(builder, "output_gain", output_gain);
-  get_object(builder, "freq1", freq1);
-  get_object(builder, "freq2", freq2);
-  get_object(builder, "freq3", freq3);
-  get_object(builder, "freq4", freq4);
 
   // gsettings bindings
 
   auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
   settings->bind("installed", this, "sensitive", flag);
-  settings->bind("mute-band0", mute_band0, "active", flag);
-  settings->bind("mute-band1", mute_band1, "active", flag);
-  settings->bind("mute-band2", mute_band2, "active", flag);
-  settings->bind("mute-band3", mute_band3, "active", flag);
-  settings->bind("mute-band4", mute_band4, "active", flag);
 
   settings->bind("input-gain", input_gain.get(), "value", flag);
   settings->bind("output-gain", output_gain.get(), "value", flag);
-  settings->bind("intensity-band0", intensity_band0.get(), "value", flag);
-  settings->bind("intensity-band1", intensity_band1.get(), "value", flag);
-  settings->bind("intensity-band2", intensity_band2.get(), "value", flag);
-  settings->bind("intensity-band3", intensity_band3.get(), "value", flag);
-  settings->bind("intensity-band4", intensity_band4.get(), "value", flag);
-  settings->bind("freq1", freq1.get(), "value", flag);
-  settings->bind("freq2", freq2.get(), "value", flag);
-  settings->bind("freq3", freq3.get(), "value", flag);
-  settings->bind("freq4", freq4.get(), "value", flag);
+
+  build_bands(5);
 }
 
 CrystalizerUi::~CrystalizerUi() {
   util::debug(name + " ui destroyed");
+}
+
+void CrystalizerUi::build_bands(const int& nbands) {
+  for (auto c : bands_grid->get_children()) {
+    bands_grid->remove(*c);
+
+    delete c;
+  }
+
+  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
+
+  for (int n = 0; n < nbands; n++) {
+    auto B = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/ui/crystalizer_band.glade");
+
+    Gtk::Grid* band_grid;
+    Gtk::Label* band_label;
+    Gtk::ToggleButton* band_mute;
+    Gtk::Scale* band_scale;
+
+    B->get_widget("band_grid", band_grid);
+    B->get_widget("band_label", band_label);
+    B->get_widget("band_mute", band_mute);
+    B->get_widget("band_scale", band_scale);
+
+    auto band_intensity = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(
+        B->get_object("band_intensity"));
+
+    connections.push_back(band_mute->signal_toggled().connect([=]() {
+      if (band_mute->get_active()) {
+        band_scale->set_sensitive(false);
+      } else {
+        band_scale->set_sensitive(true);
+      }
+    }));
+
+    settings->bind(std::string("intensity-band" + std::to_string(n)),
+                   band_intensity.get(), "value", flag);
+    settings->bind(std::string("mute-band" + std::to_string(n)), band_mute,
+                   "active", flag);
+
+    bands_grid->add(*band_grid);
+  }
+
+  bands_grid->show_all();
 }

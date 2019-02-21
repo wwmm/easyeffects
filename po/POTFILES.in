@@ -28,6 +28,7 @@ data/ui/deesser.glade
 data/ui/convolver.glade
 data/ui/irs_row.glade
 data/ui/crystalizer.glade
+data/ui/crystalizer_band.glade
 data/ui/pitch.glade
 data/ui/webrtc.glade
 data/ui/delay.glade

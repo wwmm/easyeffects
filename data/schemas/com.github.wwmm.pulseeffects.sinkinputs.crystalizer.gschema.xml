@@ -20,22 +20,6 @@
             <range min="-20.0" max="20.0"/>
             <default>0.0</default>
         </key>
-        <key name="freq1" type="d">
-            <range min="10" max="20000"/>
-            <default>1250</default>
-        </key>
-        <key name="freq2" type="d">
-            <range min="10" max="20000"/>
-            <default>2500</default>
-        </key>
-        <key name="freq3" type="d">
-            <range min="10" max="20000"/>
-            <default>5000</default>
-        </key>
-        <key name="freq4" type="d">
-            <range min="10" max="20000"/>
-            <default>10000</default>
-        </key>
         <key name="intensity-band0" type="d">
             <range min="0" max="10"/>
             <default>4.0</default>

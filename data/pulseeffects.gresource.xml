@@ -31,6 +31,7 @@
         <file>ui/convolver.glade</file>
         <file>ui/irs_row.glade</file>
         <file>ui/crystalizer.glade</file>
+        <file>ui/crystalizer_band.glade</file>
         <file>ui/delay.glade</file>
         <file>ui/pitch.glade</file>
         <file>ui/webrtc.glade</file>
