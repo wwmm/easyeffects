@@ -159,7 +159,7 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
 
     g_object_class_install_property(
         gobject_class, n + 1,
-        g_param_spec_float(name, nick, "Expansion intensity", 0.0f, 10.0f, 1.0f,
+        g_param_spec_float(name, nick, "Expansion intensity", 0.0f, 40.0f, 1.0f,
                            static_cast<GParamFlags>(G_PARAM_READWRITE |
                                                     G_PARAM_STATIC_STRINGS)));
   }
