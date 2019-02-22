@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2019-02-21 18:41-0300\n"
+"POT-Creation-Date: 2019-02-22 20:42-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -117,7 +117,7 @@ msgstr "Disattiva il segnale originale e ascolta esclusivamente le armoniche."
 #: C/limiter.page:82 C/loudness.page:44 C/multibandcompressor.page:128
 #: C/multibandgate.page:136 C/reverb.page:97 C/stereotools.page:96
 #: C/crossfeed.page:35 C/equalizer.page:230 C/pitch.page:87 C/webrtc.page:140
-#: C/crystalizer.page:25 C/convolver.page:42 C/autogain.page:87
+#: C/crystalizer.page:45 C/convolver.page:42 C/autogain.page:87
 msgid "References"
 msgstr "Riferimenti"
 
@@ -902,7 +902,7 @@ msgid "PulseEffects uses the multiband compressor developed by Calf Studio."
 msgstr "PulseEffects usa il compressore multibanda sviluppato da Calf Studio."
 
 #. (itstool) path: title/em
-#: C/multibandcompressor.page:70 C/multibandgate.page:78
+#: C/multibandcompressor.page:70 C/multibandgate.page:78 C/crystalizer.page:29
 msgid "Bypass"
 msgstr "Ignora"
 
@@ -1307,7 +1307,7 @@ msgid "Low-pass filter cutoff frequency."
 msgstr "Frequenza di taglio del filtro passa basso."
 
 #. (itstool) path: title/em
-#: C/crossfeed.page:27
+#: C/crossfeed.page:27 C/crystalizer.page:37
 msgid "Feed"
 msgstr "Alimentazione"
 
@@ -1893,13 +1893,13 @@ msgstr ""
 "Questo plugin può essere utilizzato per aggiungere un intervallo dinamico ai "
 "brani eccessivamente compressi"
 
-#. (itstool) path: section/title
-#: C/crystalizer.page:17
+#. (itstool) path: title/em
+#: C/crystalizer.page:19
 msgid "Intensities"
 msgstr "Intensità"
 
-#. (itstool) path: section/p
-#: C/crystalizer.page:18
+#. (itstool) path: item/p
+#: C/crystalizer.page:21
 msgid ""
 "The higher the value the higher is the difference in magnitude between the "
 "loudest and the quietest sounds. You can set different intensities for each "
@@ -1907,6 +1907,18 @@ msgid ""
 msgstr ""
 "Più alto è il valore, maggiore è la differenza di magnitudine tra i suoni "
 "forti e deboli. Puoi impostare intensità diverse per ogni banda di frequenza"
+
+#. (itstool) path: item/p
+#: C/crystalizer.page:31
+msgid ""
+"When active the audio signal passing through this band will not be modified."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/crystalizer.page:39
+#, fuzzy
+msgid "Silence the band."
+msgstr "Silenzia la banda."
 
 #. (itstool) path: page/title
 #: C/convolver.page:9

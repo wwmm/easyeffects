@@ -13,14 +13,34 @@
         different intensities for different frequency ranges. This plugin can be used to
         add dynamic range to songs that were overly compressed
     </p>
-    <section>
-        <title>Intensities</title>
-        <p>
-            The higher the value the higher is the difference in magnitude between the
-            loudest and the quietest sounds. You can set different intensities for each
-            frequency band.
-        </p>
-    </section>
+    <terms>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Intensities</em>
+            </title>
+            <p>
+                The higher the value the higher is the difference in magnitude between the
+                loudest and the quietest sounds. You can set different intensities for each
+                frequency band.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Bypass</em>
+            </title>
+            <p>
+                When active the audio signal passing through this band will not be modified.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Feed</em>
+            </title>
+            <p>
+                Silence the band.
+            </p>
+        </item>
+    </terms>
     <section>
         <title>References</title>
         <list>

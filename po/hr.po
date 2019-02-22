@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-21 18:40-0300\n"
+"POT-Creation-Date: 2019-02-22 20:40-0300\n"
 "PO-Revision-Date: 2018-11-22 20:12+0200\n"
 "Last-Translator: flipwise <tyx027@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -260,7 +260,7 @@ msgstr "Otežanja"
 #: data/ui/crossfeed.glade:202 data/ui/maximizer.glade:242
 #: data/ui/loudness.glade:247 data/ui/gate.glade:490
 #: data/ui/multiband_gate.glade:2110 data/ui/deesser.glade:571
-#: data/ui/convolver.glade:480 data/ui/crystalizer.glade:241
+#: data/ui/convolver.glade:480 data/ui/crystalizer.glade:216
 #: data/ui/pitch.glade:325 data/ui/webrtc.glade:627 data/ui/delay.glade:213
 #: data/ui/presets_menu.glade:255
 msgid "Input"
@@ -281,7 +281,7 @@ msgstr "Ulaz"
 #: data/ui/multiband_gate.glade:809 data/ui/multiband_gate.glade:1218
 #: data/ui/multiband_gate.glade:1628 data/ui/multiband_gate.glade:2038
 #: data/ui/multiband_gate.glade:2125 data/ui/deesser.glade:586
-#: data/ui/convolver.glade:495 data/ui/crystalizer.glade:256
+#: data/ui/convolver.glade:495 data/ui/crystalizer.glade:231
 #: data/ui/pitch.glade:339 data/ui/webrtc.glade:642 data/ui/delay.glade:228
 #: data/ui/presets_menu.glade:146
 msgid "Output"
@@ -542,7 +542,7 @@ msgstr "Razdvojeno 3/4"
 #: data/ui/multiband_compressor.glade:1195
 #: data/ui/multiband_compressor.glade:1573 data/ui/multiband_gate.glade:465
 #: data/ui/multiband_gate.glade:870 data/ui/multiband_gate.glade:1280
-#: data/ui/multiband_gate.glade:1690
+#: data/ui/multiband_gate.glade:1690 data/ui/crystalizer_band.glade:35
 msgid "Bypass"
 msgstr "Premosnica"
 
@@ -787,7 +787,7 @@ msgid "Width"
 msgstr "Širina"
 
 #: data/ui/equalizer_band.glade:310 data/ui/stereo_tools.glade:553
-#: data/ui/stereo_tools.glade:612 data/ui/crystalizer_band.glade:55
+#: data/ui/stereo_tools.glade:612 data/ui/crystalizer_band.glade:23
 msgid "Mute"
 msgstr "Bezvučno"
 
@@ -1169,11 +1169,6 @@ msgstr "Stereo širina"
 #, fuzzy
 msgid "Crystalizer"
 msgstr "Kristalizator"
-
-#: data/ui/crystalizer.glade:174
-#, fuzzy
-msgid "Intensities"
-msgstr "Intenzitet"
 
 #: data/ui/pitch.glade:36
 msgid "Pitch"
@@ -1568,6 +1563,10 @@ msgstr "Nije bilo moguće učitati impuls datoteku"
 #: src/equalizer_ui.cpp:331 src/equalizer_ui.cpp:469
 msgid "infinity"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Intensities"
+#~ msgstr "Intenzitet"
 
 #, fuzzy
 #~ msgid "Split 0/1"

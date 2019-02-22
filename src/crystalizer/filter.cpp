@@ -114,7 +114,7 @@ void Filter::create_lowpass(const int& nsamples,
                             const float& transition_band) {
   create_lowpass_kernel(rate, cutoff, transition_band);
 
-  util::debug(log_tag + " kernel size = " + std::to_string(kernel_size));
+  // util::debug(log_tag + " kernel size = " + std::to_string(kernel_size));
 
   init_zita(nsamples);
 }
@@ -125,7 +125,7 @@ void Filter::create_highpass(const int& nsamples,
                              const float& transition_band) {
   create_highpass_kernel(rate, cutoff, transition_band);
 
-  util::debug(log_tag + " kernel size = " + std::to_string(kernel_size));
+  // util::debug(log_tag + " kernel size = " + std::to_string(kernel_size));
 
   init_zita(nsamples);
 }
@@ -137,7 +137,7 @@ void Filter::create_bandpass(const int& nsamples,
                              const float& transition_band) {
   create_bandpass_kernel(rate, cutoff1, cutoff2, transition_band);
 
-  util::debug(log_tag + " kernel size = " + std::to_string(kernel_size));
+  // util::debug(log_tag + " kernel size = " + std::to_string(kernel_size));
 
   init_zita(nsamples);
 }
