@@ -71,6 +71,58 @@ void CrystalizerUi::build_bands(const int& nbands) {
                    "active", flag);
 
     bands_grid->add(*band_grid);
+
+    switch (n) {
+      case 0:
+        band_label->set_text("250 Hz");
+
+        break;
+      case 1:
+        band_label->set_text("750 Hz");
+
+        break;
+      case 2:
+        band_label->set_text("1.5 kHz");
+
+        break;
+      case 3:
+        band_label->set_text("2.5 kHz");
+
+        break;
+      case 4:
+        band_label->set_text("3.5 kHz");
+
+        break;
+
+      case 5:
+        band_label->set_text("4.5 kHz");
+
+        break;
+      case 6:
+        band_label->set_text("5.5 kHz");
+
+        break;
+      case 7:
+        band_label->set_text("6.5 kHz");
+
+        break;
+      case 8:
+        band_label->set_text("7.5 kHz");
+
+        break;
+      case 9:
+        band_label->set_text("8.5 kHz");
+
+        break;
+      case 10:
+        band_label->set_text("9.5 kHz");
+
+        break;
+      case 11:
+        band_label->set_text("15 kHz");
+
+        break;
+    }
   }
 
   bands_grid->show_all();
