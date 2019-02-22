@@ -1895,20 +1895,18 @@ msgstr ""
 
 #. (itstool) path: section/title
 #: C/crystalizer.page:17
-#, fuzzy
 msgid "Intensities"
 msgstr "Intensità"
 
 #. (itstool) path: section/p
 #: C/crystalizer.page:18
-#, fuzzy
 msgid ""
 "The higher the value the higher is the difference in magnitude between the "
 "loudest and the quietest sounds. You can set different intensities for each "
 "frequency band."
 msgstr ""
 "Più alto è il valore, maggiore è la differenza di magnitudine tra i suoni "
-"forti e deboli."
+"forti e deboli. Puoi impostare intensità diverse per ogni banda di frequenza"
 
 #. (itstool) path: page/title
 #: C/convolver.page:9
