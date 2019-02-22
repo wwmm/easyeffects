@@ -46,8 +46,7 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
                                    GstBuffer* buffer);
 
 enum {
-  PROP_0,
-  PROP_TARGET,
+  PROP_TARGET = 1,
   PROP_WEIGHT_M,
   PROP_WEIGHT_S,
   PROP_WEIGHT_I,

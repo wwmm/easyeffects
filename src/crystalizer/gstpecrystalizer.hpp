@@ -23,14 +23,16 @@ G_BEGIN_DECLS
 typedef struct _GstPecrystalizer GstPecrystalizer;
 typedef struct _GstPecrystalizerClass GstPecrystalizerClass;
 
+#define NBANDS 12
+
 struct _GstPecrystalizer {
   GstAudioFilter base_pecrystalizer;
 
   /* properties */
 
-  std::array<float, 4> freqs;
-  std::array<float, 5> intensities;
-  std::array<bool, 5> mute;
+  std::array<float, NBANDS - 1> freqs;
+  std::array<float, NBANDS> intensities;
+  std::array<bool, NBANDS> mute;
 
   /* < private > */
 
@@ -38,10 +40,9 @@ struct _GstPecrystalizer {
   int rate, bpf;  // sampling rate,  bytes per frame : channels * bps
   uint nsamples;
 
-  // 5 bands
-  std::array<Filter*, 5> filters;
-  std::array<std::vector<float>, 5> band_data;
-  std::array<float, 5> last_L, last_R;
+  std::array<Filter*, NBANDS> filters;
+  std::array<std::vector<float>, NBANDS> band_data;
+  std::array<float, NBANDS> last_L, last_R;
 
   std::mutex mutex;
 

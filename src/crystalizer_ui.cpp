@@ -24,7 +24,7 @@ CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
   settings->bind("input-gain", input_gain.get(), "value", flag);
   settings->bind("output-gain", output_gain.get(), "value", flag);
 
-  build_bands(5);
+  build_bands(12);
 }
 
 CrystalizerUi::~CrystalizerUi() {

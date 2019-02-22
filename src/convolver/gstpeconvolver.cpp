@@ -71,7 +71,7 @@ static void gst_peconvolver_finish_convolver(GstPeconvolver* peconvolver);
 #define CONVPROC_SCHEDULER_CLASS SCHED_FIFO
 #define THREAD_SYNC_MODE true
 
-enum { PROP_0, PROP_KERNEL_PATH, PROP_IR_WIDTH };
+enum { PROP_KERNEL_PATH = 1, PROP_IR_WIDTH };
 
 /* pad templates */
 

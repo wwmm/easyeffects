@@ -50,7 +50,7 @@ static GstStaticPadTemplate srctemplate = GST_STATIC_PAD_TEMPLATE(
     GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=[1,max],"
                     "channels=2,layout=interleaved"));
 
-enum { PROP_0, PROP_BLOCKSIZE };
+enum { PROP_BLOCKSIZE = 1 };
 
 enum {
   BLOCKSIZE_64 = 64,

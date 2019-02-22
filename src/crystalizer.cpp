@@ -65,43 +65,16 @@ Crystalizer::~Crystalizer() {
 }
 
 void Crystalizer::bind_to_gsettings() {
-  g_settings_bind_with_mapping(settings, "intensity-band0", crystalizer,
-                               "intensity-band0", G_SETTINGS_BIND_GET,
-                               util::db20_gain_to_linear, nullptr, nullptr,
-                               nullptr);
+  for (int n = 0; n < 12; n++) {
+    g_settings_bind_with_mapping(
+        settings, std::string("intensity-band" + std::to_string(n)).c_str(),
+        crystalizer, std::string("intensity-band" + std::to_string(n)).c_str(),
+        G_SETTINGS_BIND_GET, util::db20_gain_to_linear, nullptr, nullptr,
+        nullptr);
 
-  g_settings_bind_with_mapping(settings, "intensity-band1", crystalizer,
-                               "intensity-band1", G_SETTINGS_BIND_GET,
-                               util::db20_gain_to_linear, nullptr, nullptr,
-                               nullptr);
-
-  g_settings_bind_with_mapping(settings, "intensity-band2", crystalizer,
-                               "intensity-band2", G_SETTINGS_BIND_GET,
-                               util::db20_gain_to_linear, nullptr, nullptr,
-                               nullptr);
-
-  g_settings_bind_with_mapping(settings, "intensity-band3", crystalizer,
-                               "intensity-band3", G_SETTINGS_BIND_GET,
-                               util::db20_gain_to_linear, nullptr, nullptr,
-                               nullptr);
-
-  g_settings_bind_with_mapping(settings, "intensity-band4", crystalizer,
-                               "intensity-band4", G_SETTINGS_BIND_GET,
-                               util::db20_gain_to_linear, nullptr, nullptr,
-                               nullptr);
-
-  g_settings_bind(settings, "mute-band0", crystalizer, "mute-band0",
-                  G_SETTINGS_BIND_DEFAULT);
-
-  g_settings_bind(settings, "mute-band1", crystalizer, "mute-band1",
-                  G_SETTINGS_BIND_DEFAULT);
-
-  g_settings_bind(settings, "mute-band2", crystalizer, "mute-band2",
-                  G_SETTINGS_BIND_DEFAULT);
-
-  g_settings_bind(settings, "mute-band3", crystalizer, "mute-band3",
-                  G_SETTINGS_BIND_DEFAULT);
-
-  g_settings_bind(settings, "mute-band4", crystalizer, "mute-band4",
-                  G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind(
+        settings, std::string("mute-band" + std::to_string(n)).c_str(),
+        crystalizer, std::string("mute-band" + std::to_string(n)).c_str(),
+        G_SETTINGS_BIND_DEFAULT);
+  }
 }

@@ -48,17 +48,30 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
 static void gst_pecrystalizer_finish_filters(GstPecrystalizer* pecrystalizer);
 
 enum {
-  PROP_0,
-  PROP_INTENSITY_BAND0,
+  PROP_INTENSITY_BAND0 = 1,
   PROP_INTENSITY_BAND1,
   PROP_INTENSITY_BAND2,
   PROP_INTENSITY_BAND3,
   PROP_INTENSITY_BAND4,
+  PROP_INTENSITY_BAND5,
+  PROP_INTENSITY_BAND6,
+  PROP_INTENSITY_BAND7,
+  PROP_INTENSITY_BAND8,
+  PROP_INTENSITY_BAND9,
+  PROP_INTENSITY_BAND10,
+  PROP_INTENSITY_BAND11,
   PROP_MUTE_BAND0,
   PROP_MUTE_BAND1,
   PROP_MUTE_BAND2,
   PROP_MUTE_BAND3,
-  PROP_MUTE_BAND4
+  PROP_MUTE_BAND4,
+  PROP_MUTE_BAND5,
+  PROP_MUTE_BAND6,
+  PROP_MUTE_BAND7,
+  PROP_MUTE_BAND8,
+  PROP_MUTE_BAND9,
+  PROP_MUTE_BAND10,
+  PROP_MUTE_BAND11
 };
 
 /* pad templates */
@@ -126,70 +139,29 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
 
   /* define properties */
 
-  g_object_class_install_property(
-      gobject_class, PROP_INTENSITY_BAND0,
-      g_param_spec_float("intensity-band0", "BAND 0 INTENSITY",
-                         "Expansion intensity", 0.0f, 10.0f, 4.0f,
-                         static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                                  G_PARAM_STATIC_STRINGS)));
+  for (int n = 0; n < NBANDS; n++) {
+    char* name =
+        strdup(std::string("intensity-band" + std::to_string(n)).c_str());
+    char* nick =
+        strdup(std::string("BAND " + std::to_string(n) + " INTENSITY").c_str());
 
-  g_object_class_install_property(
-      gobject_class, PROP_INTENSITY_BAND1,
-      g_param_spec_float("intensity-band1", "BAND 1 INTENSITY",
-                         "Expansion intensity", 0.0f, 10.0f, 2.0f,
-                         static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                                  G_PARAM_STATIC_STRINGS)));
-
-  g_object_class_install_property(
-      gobject_class, PROP_INTENSITY_BAND2,
-      g_param_spec_float("intensity-band2", "BAND 2 INTENSITY",
-                         "Expansion intensity", 0.0f, 10.0f, 1.0f,
-                         static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                                  G_PARAM_STATIC_STRINGS)));
-
-  g_object_class_install_property(
-      gobject_class, PROP_INTENSITY_BAND3,
-      g_param_spec_float("intensity-band3", "BAND 3 INTENSITY",
-                         "Expansion intensity", 0.0f, 10.0f, 0.5f,
-                         static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                                  G_PARAM_STATIC_STRINGS)));
-
-  g_object_class_install_property(
-      gobject_class, PROP_INTENSITY_BAND4,
-      g_param_spec_float("intensity-band4", "BAND 4 INTENSITY",
-                         "Expansion intensity", 0.0f, 10.0f, 0.25f,
-                         static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                                  G_PARAM_STATIC_STRINGS)));
-
-  g_object_class_install_property(
-      gobject_class, PROP_MUTE_BAND0,
-      g_param_spec_boolean("mute-band0", "MUTE BAND 0", "mute band", false,
+    g_object_class_install_property(
+        gobject_class, n + 1,
+        g_param_spec_float(name, nick, "Expansion intensity", 0.0f, 10.0f, 1.0f,
                            static_cast<GParamFlags>(G_PARAM_READWRITE |
                                                     G_PARAM_STATIC_STRINGS)));
+  }
 
-  g_object_class_install_property(
-      gobject_class, PROP_MUTE_BAND1,
-      g_param_spec_boolean("mute-band1", "MUTE BAND 1", "mute band", false,
-                           static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                                    G_PARAM_STATIC_STRINGS)));
+  for (int n = 0; n < NBANDS; n++) {
+    char* name = strdup(std::string("mute-band" + std::to_string(n)).c_str());
+    char* nick = strdup(std::string("MUTE BAND " + std::to_string(n)).c_str());
 
-  g_object_class_install_property(
-      gobject_class, PROP_MUTE_BAND2,
-      g_param_spec_boolean("mute-band2", "MUTE BAND 2", "mute band", false,
-                           static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                                    G_PARAM_STATIC_STRINGS)));
-
-  g_object_class_install_property(
-      gobject_class, PROP_MUTE_BAND3,
-      g_param_spec_boolean("mute-band3", "MUTE BAND 3", "mute band", false,
-                           static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                                    G_PARAM_STATIC_STRINGS)));
-
-  g_object_class_install_property(
-      gobject_class, PROP_MUTE_BAND4,
-      g_param_spec_boolean("mute-band4", "MUTE BAND 4", "mute band", false,
-                           static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                                    G_PARAM_STATIC_STRINGS)));
+    g_object_class_install_property(
+        gobject_class, NBANDS + 1 + n,
+        g_param_spec_boolean(name, nick, "mute band", false,
+                             static_cast<GParamFlags>(G_PARAM_READWRITE |
+                                                      G_PARAM_STATIC_STRINGS)));
+  }
 }
 
 static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
@@ -197,12 +169,19 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->bpf = 0;
   pecrystalizer->nsamples = 0;
 
-  pecrystalizer->freqs[0] = 1250.0f;
-  pecrystalizer->freqs[1] = 2500.0f;
-  pecrystalizer->freqs[2] = 5000.0f;
-  pecrystalizer->freqs[3] = 10000.0f;
+  pecrystalizer->freqs[0] = 500.0f;
+  pecrystalizer->freqs[1] = 1000.0f;
+  pecrystalizer->freqs[2] = 2000.0f;
+  pecrystalizer->freqs[3] = 3000.0f;
+  pecrystalizer->freqs[4] = 4000.0f;
+  pecrystalizer->freqs[5] = 5000.0f;
+  pecrystalizer->freqs[6] = 6000.0f;
+  pecrystalizer->freqs[7] = 7000.0f;
+  pecrystalizer->freqs[8] = 8000.0f;
+  pecrystalizer->freqs[9] = 9000.0f;
+  pecrystalizer->freqs[10] = 10000.0f;
 
-  for (uint n = 0; n < pecrystalizer->filters.size(); n++) {
+  for (uint n = 0; n < NBANDS; n++) {
     pecrystalizer->filters[n] =
         new Filter("crystalizer band" + std::to_string(n));
 
@@ -241,6 +220,27 @@ void gst_pecrystalizer_set_property(GObject* object,
     case PROP_INTENSITY_BAND4:
       pecrystalizer->intensities[4] = g_value_get_float(value);
       break;
+    case PROP_INTENSITY_BAND5:
+      pecrystalizer->intensities[5] = g_value_get_float(value);
+      break;
+    case PROP_INTENSITY_BAND6:
+      pecrystalizer->intensities[6] = g_value_get_float(value);
+      break;
+    case PROP_INTENSITY_BAND7:
+      pecrystalizer->intensities[7] = g_value_get_float(value);
+      break;
+    case PROP_INTENSITY_BAND8:
+      pecrystalizer->intensities[8] = g_value_get_float(value);
+      break;
+    case PROP_INTENSITY_BAND9:
+      pecrystalizer->intensities[9] = g_value_get_float(value);
+      break;
+    case PROP_INTENSITY_BAND10:
+      pecrystalizer->intensities[10] = g_value_get_float(value);
+      break;
+    case PROP_INTENSITY_BAND11:
+      pecrystalizer->intensities[11] = g_value_get_float(value);
+      break;
     case PROP_MUTE_BAND0:
       pecrystalizer->mute[0] = g_value_get_boolean(value);
       break;
@@ -255,6 +255,27 @@ void gst_pecrystalizer_set_property(GObject* object,
       break;
     case PROP_MUTE_BAND4:
       pecrystalizer->mute[4] = g_value_get_boolean(value);
+      break;
+    case PROP_MUTE_BAND5:
+      pecrystalizer->mute[5] = g_value_get_boolean(value);
+      break;
+    case PROP_MUTE_BAND6:
+      pecrystalizer->mute[6] = g_value_get_boolean(value);
+      break;
+    case PROP_MUTE_BAND7:
+      pecrystalizer->mute[7] = g_value_get_boolean(value);
+      break;
+    case PROP_MUTE_BAND8:
+      pecrystalizer->mute[8] = g_value_get_boolean(value);
+      break;
+    case PROP_MUTE_BAND9:
+      pecrystalizer->mute[9] = g_value_get_boolean(value);
+      break;
+    case PROP_MUTE_BAND10:
+      pecrystalizer->mute[10] = g_value_get_boolean(value);
+      break;
+    case PROP_MUTE_BAND11:
+      pecrystalizer->mute[11] = g_value_get_boolean(value);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -286,20 +307,62 @@ void gst_pecrystalizer_get_property(GObject* object,
     case PROP_INTENSITY_BAND4:
       g_value_set_float(value, pecrystalizer->intensities[4]);
       break;
+    case PROP_INTENSITY_BAND5:
+      g_value_set_float(value, pecrystalizer->intensities[5]);
+      break;
+    case PROP_INTENSITY_BAND6:
+      g_value_set_float(value, pecrystalizer->intensities[6]);
+      break;
+    case PROP_INTENSITY_BAND7:
+      g_value_set_float(value, pecrystalizer->intensities[7]);
+      break;
+    case PROP_INTENSITY_BAND8:
+      g_value_set_float(value, pecrystalizer->intensities[8]);
+      break;
+    case PROP_INTENSITY_BAND9:
+      g_value_set_float(value, pecrystalizer->intensities[9]);
+      break;
+    case PROP_INTENSITY_BAND10:
+      g_value_set_float(value, pecrystalizer->intensities[10]);
+      break;
+    case PROP_INTENSITY_BAND11:
+      g_value_set_float(value, pecrystalizer->intensities[11]);
+      break;
     case PROP_MUTE_BAND0:
-      g_value_set_float(value, pecrystalizer->mute[0]);
+      g_value_set_boolean(value, pecrystalizer->mute[0]);
       break;
     case PROP_MUTE_BAND1:
-      g_value_set_float(value, pecrystalizer->mute[1]);
+      g_value_set_boolean(value, pecrystalizer->mute[1]);
       break;
     case PROP_MUTE_BAND2:
-      g_value_set_float(value, pecrystalizer->mute[2]);
+      g_value_set_boolean(value, pecrystalizer->mute[2]);
       break;
     case PROP_MUTE_BAND3:
-      g_value_set_float(value, pecrystalizer->mute[3]);
+      g_value_set_boolean(value, pecrystalizer->mute[3]);
       break;
     case PROP_MUTE_BAND4:
-      g_value_set_float(value, pecrystalizer->mute[4]);
+      g_value_set_boolean(value, pecrystalizer->mute[4]);
+      break;
+    case PROP_MUTE_BAND5:
+      g_value_set_boolean(value, pecrystalizer->mute[5]);
+      break;
+    case PROP_MUTE_BAND6:
+      g_value_set_boolean(value, pecrystalizer->mute[6]);
+      break;
+    case PROP_MUTE_BAND7:
+      g_value_set_boolean(value, pecrystalizer->mute[7]);
+      break;
+    case PROP_MUTE_BAND8:
+      g_value_set_boolean(value, pecrystalizer->mute[8]);
+      break;
+    case PROP_MUTE_BAND9:
+      g_value_set_boolean(value, pecrystalizer->mute[9]);
+      break;
+    case PROP_MUTE_BAND10:
+      g_value_set_boolean(value, pecrystalizer->mute[10]);
+      break;
+    case PROP_MUTE_BAND11:
+      g_value_set_boolean(value, pecrystalizer->mute[11]);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -341,7 +404,7 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
 
   bool filters_ready = true;
 
-  for (uint n = 0; n < pecrystalizer->filters.size(); n++) {
+  for (uint n = 0; n < NBANDS; n++) {
     filters_ready = filters_ready && pecrystalizer->filters[n]->ready;
   }
 
@@ -381,7 +444,7 @@ static gboolean gst_pecrystalizer_stop(GstBaseTransform* base) {
 
 static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer) {
   if (pecrystalizer->rate != 0) {
-    for (uint n = 0; n < pecrystalizer->band_data.size(); n++) {
+    for (uint n = 0; n < NBANDS; n++) {
       pecrystalizer->band_data[n].resize(2 * pecrystalizer->nsamples);
     }
 
@@ -392,7 +455,7 @@ static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer) {
 
     float transition_band = 50.0f;  // Hz
 
-    for (uint n = 0; n < pecrystalizer->filters.size(); n++) {
+    for (uint n = 0; n < NBANDS; n++) {
       if (n == 0) {
         pecrystalizer->filters[0]->create_lowpass(
             pecrystalizer->nsamples, pecrystalizer->rate,
@@ -419,14 +482,14 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
 
   float* data = (float*)map.data;
 
-  for (uint n = 0; n < pecrystalizer->band_data.size(); n++) {
+  for (uint n = 0; n < NBANDS; n++) {
     memcpy(pecrystalizer->band_data[n].data(), data, map.size);
 
     pecrystalizer->filters[n]->process(pecrystalizer->band_data[n].data());
   }
 
   if (!pecrystalizer->ready) {
-    for (uint n = 0; n < pecrystalizer->band_data.size(); n++) {
+    for (uint n = 0; n < NBANDS; n++) {
       pecrystalizer->last_L[n] = pecrystalizer->band_data[n][0];
       pecrystalizer->last_R[n] = pecrystalizer->band_data[n][1];
     }
@@ -438,7 +501,7 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
    *https://git.ffmpeg.org/gitweb/ffmpeg.git/blob_plain/HEAD:/libavfilter/af_crystalizer.c
    */
 
-  for (uint n = 0; n < pecrystalizer->filters.size(); n++) {
+  for (uint n = 0; n < NBANDS; n++) {
     if (!pecrystalizer->mute[n]) {
       for (uint m = 0; m < pecrystalizer->nsamples; m++) {
         float L = pecrystalizer->band_data[n][2 * m];
@@ -477,7 +540,7 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
 static void gst_pecrystalizer_finish_filters(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->ready = false;
 
-  for (uint m = 0; m < pecrystalizer->filters.size(); m++) {
+  for (uint m = 0; m < NBANDS; m++) {
     pecrystalizer->filters[m]->finish();
   }
 

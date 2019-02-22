@@ -70,14 +70,15 @@ void Filter::create_bandpass_kernel(const float& rate,
                                     const float& cutoff1,
                                     const float& cutoff2,
                                     const float& transition_band) {
-  float* lowpass_kernel = new float[kernel_size];
-  float* highpass_kernel = new float[kernel_size];
-
   create_lowpass_kernel(rate, cutoff2, transition_band);
+
+  float* lowpass_kernel = new float[kernel_size];
 
   memcpy(lowpass_kernel, kernel, kernel_size * sizeof(float));
 
   create_highpass_kernel(rate, cutoff1, transition_band);
+
+  float* highpass_kernel = new float[kernel_size];
 
   memcpy(highpass_kernel, kernel, kernel_size * sizeof(float));
 
