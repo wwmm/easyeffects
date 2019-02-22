@@ -71,7 +71,19 @@ enum {
   PROP_MUTE_BAND8,
   PROP_MUTE_BAND9,
   PROP_MUTE_BAND10,
-  PROP_MUTE_BAND11
+  PROP_MUTE_BAND11,
+  PROP_BYPASS_BAND0,
+  PROP_BYPASS_BAND1,
+  PROP_BYPASS_BAND2,
+  PROP_BYPASS_BAND3,
+  PROP_BYPASS_BAND4,
+  PROP_BYPASS_BAND5,
+  PROP_BYPASS_BAND6,
+  PROP_BYPASS_BAND7,
+  PROP_BYPASS_BAND8,
+  PROP_BYPASS_BAND9,
+  PROP_BYPASS_BAND10,
+  PROP_BYPASS_BAND11
 };
 
 /* pad templates */
@@ -162,6 +174,18 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
                              static_cast<GParamFlags>(G_PARAM_READWRITE |
                                                       G_PARAM_STATIC_STRINGS)));
   }
+
+  for (int n = 0; n < NBANDS; n++) {
+    char* name = strdup(std::string("bypass-band" + std::to_string(n)).c_str());
+    char* nick =
+        strdup(std::string("BYPASS BAND " + std::to_string(n)).c_str());
+
+    g_object_class_install_property(
+        gobject_class, 2 * NBANDS + 1 + n,
+        g_param_spec_boolean(name, nick, "bypass band", false,
+                             static_cast<GParamFlags>(G_PARAM_READWRITE |
+                                                      G_PARAM_STATIC_STRINGS)));
+  }
 }
 
 static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
@@ -187,6 +211,7 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
 
     pecrystalizer->intensities[n] = 1.0f;
     pecrystalizer->mute[n] = false;
+    pecrystalizer->bypass[n] = false;
     pecrystalizer->last_L[n] = 0.0f;
     pecrystalizer->last_R[n] = 0.0f;
   }
@@ -277,6 +302,42 @@ void gst_pecrystalizer_set_property(GObject* object,
     case PROP_MUTE_BAND11:
       pecrystalizer->mute[11] = g_value_get_boolean(value);
       break;
+    case PROP_BYPASS_BAND0:
+      pecrystalizer->bypass[0] = g_value_get_boolean(value);
+      break;
+    case PROP_BYPASS_BAND1:
+      pecrystalizer->bypass[1] = g_value_get_boolean(value);
+      break;
+    case PROP_BYPASS_BAND2:
+      pecrystalizer->bypass[2] = g_value_get_boolean(value);
+      break;
+    case PROP_BYPASS_BAND3:
+      pecrystalizer->bypass[3] = g_value_get_boolean(value);
+      break;
+    case PROP_BYPASS_BAND4:
+      pecrystalizer->bypass[4] = g_value_get_boolean(value);
+      break;
+    case PROP_BYPASS_BAND5:
+      pecrystalizer->bypass[5] = g_value_get_boolean(value);
+      break;
+    case PROP_BYPASS_BAND6:
+      pecrystalizer->bypass[6] = g_value_get_boolean(value);
+      break;
+    case PROP_BYPASS_BAND7:
+      pecrystalizer->bypass[7] = g_value_get_boolean(value);
+      break;
+    case PROP_BYPASS_BAND8:
+      pecrystalizer->bypass[8] = g_value_get_boolean(value);
+      break;
+    case PROP_BYPASS_BAND9:
+      pecrystalizer->bypass[9] = g_value_get_boolean(value);
+      break;
+    case PROP_BYPASS_BAND10:
+      pecrystalizer->bypass[10] = g_value_get_boolean(value);
+      break;
+    case PROP_BYPASS_BAND11:
+      pecrystalizer->bypass[11] = g_value_get_boolean(value);
+      break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
       break;
@@ -363,6 +424,42 @@ void gst_pecrystalizer_get_property(GObject* object,
       break;
     case PROP_MUTE_BAND11:
       g_value_set_boolean(value, pecrystalizer->mute[11]);
+      break;
+    case PROP_BYPASS_BAND0:
+      g_value_set_boolean(value, pecrystalizer->bypass[0]);
+      break;
+    case PROP_BYPASS_BAND1:
+      g_value_set_boolean(value, pecrystalizer->bypass[1]);
+      break;
+    case PROP_BYPASS_BAND2:
+      g_value_set_boolean(value, pecrystalizer->bypass[2]);
+      break;
+    case PROP_BYPASS_BAND3:
+      g_value_set_boolean(value, pecrystalizer->bypass[3]);
+      break;
+    case PROP_BYPASS_BAND4:
+      g_value_set_boolean(value, pecrystalizer->bypass[4]);
+      break;
+    case PROP_BYPASS_BAND5:
+      g_value_set_boolean(value, pecrystalizer->bypass[5]);
+      break;
+    case PROP_BYPASS_BAND6:
+      g_value_set_boolean(value, pecrystalizer->bypass[6]);
+      break;
+    case PROP_BYPASS_BAND7:
+      g_value_set_boolean(value, pecrystalizer->bypass[7]);
+      break;
+    case PROP_BYPASS_BAND8:
+      g_value_set_boolean(value, pecrystalizer->bypass[8]);
+      break;
+    case PROP_BYPASS_BAND9:
+      g_value_set_boolean(value, pecrystalizer->bypass[9]);
+      break;
+    case PROP_BYPASS_BAND10:
+      g_value_set_boolean(value, pecrystalizer->bypass[10]);
+      break;
+    case PROP_BYPASS_BAND11:
+      g_value_set_boolean(value, pecrystalizer->bypass[11]);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -502,7 +599,7 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
    */
 
   for (uint n = 0; n < NBANDS; n++) {
-    if (!pecrystalizer->mute[n]) {
+    if (!pecrystalizer->bypass[n]) {
       for (uint m = 0; m < pecrystalizer->nsamples; m++) {
         float L = pecrystalizer->band_data[n][2 * m];
         float R = pecrystalizer->band_data[n][2 * m + 1];
@@ -530,7 +627,9 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
     data[n] = 0.0f;
 
     for (uint m = 0; m < pecrystalizer->filters.size(); m++) {
-      data[n] += pecrystalizer->band_data[m][n];
+      if (!pecrystalizer->mute[m]) {
+        data[n] += pecrystalizer->band_data[m][n];
+      }
     }
   }
 

@@ -32,7 +32,7 @@ struct _GstPecrystalizer {
 
   std::array<float, NBANDS - 1> freqs;
   std::array<float, NBANDS> intensities;
-  std::array<bool, NBANDS> mute;
+  std::array<bool, NBANDS> mute, bypass;
 
   /* < private > */
 

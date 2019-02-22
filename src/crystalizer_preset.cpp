@@ -21,6 +21,9 @@ void CrystalizerPreset::save(boost::property_tree::ptree& root,
 
     root.put(section + ".crystalizer.band" + std::to_string(n) + ".mute",
              settings->get_boolean("mute-band" + std::to_string(n)));
+
+    root.put(section + ".crystalizer.band" + std::to_string(n) + ".bypass",
+             settings->get_boolean("bypass-band" + std::to_string(n)));
   }
 }
 
@@ -43,6 +46,10 @@ void CrystalizerPreset::load(boost::property_tree::ptree& root,
     update_key<bool>(
         root, settings, "mute-band" + std::to_string(n),
         section + ".crystalizer.band" + std::to_string(n) + ".mute");
+
+    update_key<bool>(
+        root, settings, "bypass-band" + std::to_string(n),
+        section + ".crystalizer.band" + std::to_string(n) + ".bypass");
   }
 }
 

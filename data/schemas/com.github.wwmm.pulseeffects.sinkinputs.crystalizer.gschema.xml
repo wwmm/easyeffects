@@ -20,6 +20,7 @@
             <range min="-20.0" max="20.0"/>
             <default>0.0</default>
         </key>
+
         <key name="intensity-band0" type="d">
             <range min="-40" max="20"/>
             <default>12.0</default>
@@ -68,6 +69,7 @@
             <range min="-40" max="20"/>
             <default>-10.0</default>
         </key>
+
         <key name="mute-band0" type="b">
             <default>false</default>
         </key>
@@ -102,6 +104,43 @@
             <default>false</default>
         </key>
         <key name="mute-band11" type="b">
+            <default>false</default>
+        </key>
+
+        <key name="bypass-band0" type="b">
+            <default>false</default>
+        </key>
+        <key name="bypass-band1" type="b">
+            <default>false</default>
+        </key>
+        <key name="bypass-band2" type="b">
+            <default>false</default>
+        </key>
+        <key name="bypass-band3" type="b">
+            <default>false</default>
+        </key>
+        <key name="bypass-band4" type="b">
+            <default>false</default>
+        </key>
+        <key name="bypass-band5" type="b">
+            <default>false</default>
+        </key>
+        <key name="bypass-band6" type="b">
+            <default>false</default>
+        </key>
+        <key name="bypass-band7" type="b">
+            <default>false</default>
+        </key>
+        <key name="bypass-band8" type="b">
+            <default>false</default>
+        </key>
+        <key name="bypass-band9" type="b">
+            <default>false</default>
+        </key>
+        <key name="bypass-band10" type="b">
+            <default>false</default>
+        </key>
+        <key name="bypass-band11" type="b">
             <default>false</default>
         </key>
     </schema>

@@ -8,9 +8,42 @@
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
-  <object class="GtkImage" id="mute_image">
-    <property name="visible">True</property>
+  <object class="GtkPopover" id="menu">
     <property name="can_focus">False</property>
+    <child>
+      <object class="GtkGrid">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="halign">center</property>
+        <property name="valign">center</property>
+        <property name="column_spacing">6</property>
+        <property name="column_homogeneous">True</property>
+        <child>
+          <object class="GtkToggleButton" id="band_mute">
+            <property name="label" translatable="yes">Mute</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkToggleButton" id="band_bypass">
+            <property name="label" translatable="yes">Bypass</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
   </object>
   <object class="GtkGrid" id="band_grid">
     <property name="visible">True</property>
@@ -28,7 +61,7 @@
       </object>
       <packing>
         <property name="left_attach">0</property>
-        <property name="top_attach">0</property>
+        <property name="top_attach">1</property>
       </packing>
     </child>
     <child>
@@ -47,21 +80,28 @@
       </object>
       <packing>
         <property name="left_attach">0</property>
-        <property name="top_attach">1</property>
+        <property name="top_attach">2</property>
       </packing>
     </child>
     <child>
-      <object class="GtkToggleButton" id="band_mute">
-        <property name="label" translatable="yes">Mute</property>
+      <object class="GtkMenuButton">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">True</property>
+        <property name="halign">center</property>
         <property name="valign">center</property>
-        <property name="image">mute_image</property>
+        <property name="popover">menu</property>
+        <child>
+          <object class="GtkImage">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="icon_name">emblem-system-symbolic</property>
+          </object>
+        </child>
       </object>
       <packing>
         <property name="left_attach">0</property>
-        <property name="top_attach">2</property>
+        <property name="top_attach">0</property>
       </packing>
     </child>
   </object>

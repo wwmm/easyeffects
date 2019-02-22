@@ -76,5 +76,10 @@ void Crystalizer::bind_to_gsettings() {
         settings, std::string("mute-band" + std::to_string(n)).c_str(),
         crystalizer, std::string("mute-band" + std::to_string(n)).c_str(),
         G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind(
+        settings, std::string("bypass-band" + std::to_string(n)).c_str(),
+        crystalizer, std::string("bypass-band" + std::to_string(n)).c_str(),
+        G_SETTINGS_BIND_DEFAULT);
   }
 }
