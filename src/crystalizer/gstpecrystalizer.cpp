@@ -60,6 +60,7 @@ enum {
   PROP_INTENSITY_BAND9,
   PROP_INTENSITY_BAND10,
   PROP_INTENSITY_BAND11,
+  PROP_INTENSITY_BAND12,
   PROP_MUTE_BAND0,
   PROP_MUTE_BAND1,
   PROP_MUTE_BAND2,
@@ -72,6 +73,7 @@ enum {
   PROP_MUTE_BAND9,
   PROP_MUTE_BAND10,
   PROP_MUTE_BAND11,
+  PROP_MUTE_BAND12,
   PROP_BYPASS_BAND0,
   PROP_BYPASS_BAND1,
   PROP_BYPASS_BAND2,
@@ -83,7 +85,8 @@ enum {
   PROP_BYPASS_BAND8,
   PROP_BYPASS_BAND9,
   PROP_BYPASS_BAND10,
-  PROP_BYPASS_BAND11
+  PROP_BYPASS_BAND11,
+  PROP_BYPASS_BAND12
 };
 
 /* pad templates */
@@ -204,6 +207,7 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->freqs[8] = 8000.0f;
   pecrystalizer->freqs[9] = 9000.0f;
   pecrystalizer->freqs[10] = 10000.0f;
+  pecrystalizer->freqs[11] = 15000.0f;
 
   for (uint n = 0; n < NBANDS; n++) {
     pecrystalizer->filters[n] =
@@ -266,6 +270,9 @@ void gst_pecrystalizer_set_property(GObject* object,
     case PROP_INTENSITY_BAND11:
       pecrystalizer->intensities[11] = g_value_get_float(value);
       break;
+    case PROP_INTENSITY_BAND12:
+      pecrystalizer->intensities[12] = g_value_get_float(value);
+      break;
     case PROP_MUTE_BAND0:
       pecrystalizer->mute[0] = g_value_get_boolean(value);
       break;
@@ -302,6 +309,9 @@ void gst_pecrystalizer_set_property(GObject* object,
     case PROP_MUTE_BAND11:
       pecrystalizer->mute[11] = g_value_get_boolean(value);
       break;
+    case PROP_MUTE_BAND12:
+      pecrystalizer->mute[12] = g_value_get_boolean(value);
+      break;
     case PROP_BYPASS_BAND0:
       pecrystalizer->bypass[0] = g_value_get_boolean(value);
       break;
@@ -337,6 +347,9 @@ void gst_pecrystalizer_set_property(GObject* object,
       break;
     case PROP_BYPASS_BAND11:
       pecrystalizer->bypass[11] = g_value_get_boolean(value);
+      break;
+    case PROP_BYPASS_BAND12:
+      pecrystalizer->bypass[12] = g_value_get_boolean(value);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -389,6 +402,9 @@ void gst_pecrystalizer_get_property(GObject* object,
     case PROP_INTENSITY_BAND11:
       g_value_set_float(value, pecrystalizer->intensities[11]);
       break;
+    case PROP_INTENSITY_BAND12:
+      g_value_set_float(value, pecrystalizer->intensities[12]);
+      break;
     case PROP_MUTE_BAND0:
       g_value_set_boolean(value, pecrystalizer->mute[0]);
       break;
@@ -425,6 +441,9 @@ void gst_pecrystalizer_get_property(GObject* object,
     case PROP_MUTE_BAND11:
       g_value_set_boolean(value, pecrystalizer->mute[11]);
       break;
+    case PROP_MUTE_BAND12:
+      g_value_set_boolean(value, pecrystalizer->mute[12]);
+      break;
     case PROP_BYPASS_BAND0:
       g_value_set_boolean(value, pecrystalizer->bypass[0]);
       break;
@@ -460,6 +479,9 @@ void gst_pecrystalizer_get_property(GObject* object,
       break;
     case PROP_BYPASS_BAND11:
       g_value_set_boolean(value, pecrystalizer->bypass[11]);
+      break;
+    case PROP_BYPASS_BAND12:
+      g_value_set_boolean(value, pecrystalizer->bypass[12]);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);

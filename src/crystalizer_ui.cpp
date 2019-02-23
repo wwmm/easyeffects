@@ -24,7 +24,7 @@ CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
   settings->bind("input-gain", input_gain.get(), "value", flag);
   settings->bind("output-gain", output_gain.get(), "value", flag);
 
-  build_bands(12);
+  build_bands(13);
 }
 
 CrystalizerUi::~CrystalizerUi() {
@@ -122,7 +122,11 @@ void CrystalizerUi::build_bands(const int& nbands) {
 
         break;
       case 11:
-        band_label->set_text("15 kHz");
+        band_label->set_text("12.5 kHz");
+
+        break;
+      case 12:
+        band_label->set_text("17.5 kHz");
 
         break;
     }

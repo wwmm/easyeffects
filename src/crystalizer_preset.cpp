@@ -15,7 +15,7 @@ void CrystalizerPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".crystalizer.output-gain",
            settings->get_double("output-gain"));
 
-  for (int n = 0; n < 12; n++) {
+  for (int n = 0; n < 13; n++) {
     root.put(section + ".crystalizer.band" + std::to_string(n) + ".intensity",
              settings->get_double("intensity-band" + std::to_string(n)));
 
@@ -38,7 +38,7 @@ void CrystalizerPreset::load(boost::property_tree::ptree& root,
   update_key<double>(root, settings, "output-gain",
                      section + ".crystalizer.output-gain");
 
-  for (int n = 0; n < 12; n++) {
+  for (int n = 0; n < 13; n++) {
     update_key<double>(
         root, settings, "intensity-band" + std::to_string(n),
         section + ".crystalizer.band" + std::to_string(n) + ".intensity");

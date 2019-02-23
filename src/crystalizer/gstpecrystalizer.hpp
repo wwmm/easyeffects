@@ -23,7 +23,7 @@ G_BEGIN_DECLS
 typedef struct _GstPecrystalizer GstPecrystalizer;
 typedef struct _GstPecrystalizerClass GstPecrystalizerClass;
 
-#define NBANDS 12
+#define NBANDS 13
 
 struct _GstPecrystalizer {
   GstAudioFilter base_pecrystalizer;
