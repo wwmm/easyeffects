@@ -3,28 +3,19 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-v = 344.0  # velocidade do som no ar
-
 f1, f2 = 50.0, 60.0  # frequencias
-A1, A2 = 1.0, 1.0     # amplitudes
 
 x = 100.0
-t1, t2 = 0.0, 200.0
-
-# comprimento de onda
-L1, L2 = v / f1, v / f2
+t1, t2 = 0.0, 100.0
 
 # frequencia angular
 omega1, omega2 = 2.0 * np.pi * f1, 2.0 * np.pi * f2
 
-# numero de onda
-k1, k2 = 2.0 * np.pi / L1, 2.0 * np.pi / L2
+
+def y1(x, t): return np.cos(omega1 * t)
 
 
-def y1(x, t): return A1 * np.cos(k1 * x - omega1 * t)
-
-
-def y2(x, t): return A2 * np.cos(k2 * x - omega2 * t)
+def y2(x, t): return np.cos(omega2 * t)
 
 
 def y(x, t): return y1(x, t) + y2(x, t)
@@ -40,11 +31,11 @@ last_v = modified[0]
 for n in range(modified.size):
     v = modified[n]
 
-    print("before: ", v)
+    # print("before: ", v)
 
     modified[n] = v + (v - last_v) * intensity
 
-    print("after: ", v)
+    # print("after: ", v)
 
     last_v = v
 
