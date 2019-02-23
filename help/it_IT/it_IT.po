@@ -1906,17 +1906,18 @@ msgid ""
 "frequency band."
 msgstr ""
 "Più alto è il valore, maggiore è la differenza di magnitudine tra i suoni "
-"forti e deboli. Puoi impostare intensità diverse per ogni banda di frequenza"
+"forti e deboli. Puoi impostare intensità diverse per ogni banda di frequenza."
 
 #. (itstool) path: item/p
 #: C/crystalizer.page:31
 msgid ""
 "When active the audio signal passing through this band will not be modified."
 msgstr ""
+"Quando attivo, il segnale audio che passa per questa banda non sarà "
+"modificato."
 
 #. (itstool) path: item/p
 #: C/crystalizer.page:39
-#, fuzzy
 msgid "Silence the band."
 msgstr "Silenzia la banda."
 
@@ -2464,7 +2465,7 @@ msgstr "Obiettivo"
 #. (itstool) path: item/p
 #: C/autogain.page:19
 msgid "Loudness level."
-msgstr "Livello di Rumorosità"
+msgstr "Livello di Rumorosità."
 
 #. (itstool) path: title/em
 #: C/autogain.page:25
