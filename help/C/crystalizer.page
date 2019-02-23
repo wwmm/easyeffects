@@ -34,7 +34,7 @@
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Feed</em>
+                <em style="strong" its:withinText="nested">Mute</em>
             </title>
             <p>
                 Silence the band.

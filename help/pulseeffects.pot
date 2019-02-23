@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-02-22 20:42-0300\n"
+"POT-Creation-Date: 2019-02-22 21:08-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1138,7 +1138,6 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/crossfeed.page:27
-#: C/crystalizer.page:37
 msgid "Feed"
 msgstr ""
 
@@ -1314,6 +1313,7 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/equalizer.page:195
+#: C/crystalizer.page:37
 msgid "Mute"
 msgstr ""
 

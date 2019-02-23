@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2019-02-22 20:42-0300\n"
+"POT-Creation-Date: 2019-02-22 21:08-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -1307,7 +1307,7 @@ msgid "Low-pass filter cutoff frequency."
 msgstr "Frequenza di taglio del filtro passa basso."
 
 #. (itstool) path: title/em
-#: C/crossfeed.page:27 C/crystalizer.page:37
+#: C/crossfeed.page:27
 msgid "Feed"
 msgstr "Alimentazione"
 
@@ -1567,7 +1567,7 @@ msgid "Makes this band the only one active."
 msgstr "Rende questa banda l'unica attiva."
 
 #. (itstool) path: title/em
-#: C/equalizer.page:195
+#: C/equalizer.page:195 C/crystalizer.page:37
 msgid "Mute"
 msgstr "Muto"
 

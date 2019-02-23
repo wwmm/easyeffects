@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-02-22 20:42-0300\n"
+"POT-Creation-Date: 2019-02-22 21:08-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "MIME-Version: 1.0\n"
@@ -1220,7 +1220,7 @@ msgid "Low-pass filter cutoff frequency."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/crossfeed.page:27 C/crystalizer.page:37
+#: C/crossfeed.page:27
 msgid "Feed"
 msgstr ""
 
@@ -1435,7 +1435,7 @@ msgid "Makes this band the only one active."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/equalizer.page:195
+#: C/equalizer.page:195 C/crystalizer.page:37
 msgid "Mute"
 msgstr ""
 
