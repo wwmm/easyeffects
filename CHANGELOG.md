@@ -2,12 +2,14 @@
 
 ## [Unreleased
 
+## [4.5.1]
 ### Added
-- Updated translations.
-- Reworked crystalizer plugin. It now has more band filters and is
-possible to change the band split frequency.
+- Updated help and translations.
+- Reworked crystalizer plugin. It now has more band filters.
 - Block size is again a global setting because besides the convolver
-crystalizer now also needs audio buffer sizes following a power of 2.
+crystalizer now also needs audio buffer sizes following a power of 2. As before
+higher block sizes will increase latency but will reduce cpu usage in plugins
+like the autogain.
 - The spectrum now has line mode and a switch to enable/disable linear
 gradient.
 
