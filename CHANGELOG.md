@@ -2,6 +2,10 @@
 
 ## [Unreleased
 
+### Added
+- Improved crystalizer algorithm. It should preserve more of the original wave
+shape when increasing the dynamic range.
+
 ## [4.5.1]
 ### Added
 - Updated help and translations.

@@ -44,6 +44,8 @@ struct _GstPecrystalizer {
   std::array<std::vector<float>, NBANDS> band_data;
   std::array<float, NBANDS> last_L, last_R;
 
+  std::vector<float> tmp_band_data;
+
   std::mutex mutex;
 
   std::vector<std::future<void>> futures;
