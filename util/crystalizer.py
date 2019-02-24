@@ -24,9 +24,9 @@ t = np.linspace(t1, t2, 1000)
 original = y(t)
 
 ffmpeg = np.copy(original)
-other = np.copy(original)
+our = np.copy(original)
 
-intensity = 10.0 * 10
+intensity = 50.0 * 10
 last_v_ffmpeg = ffmpeg[0]
 
 for n in range(ffmpeg.size):
@@ -37,22 +37,22 @@ for n in range(ffmpeg.size):
     last_v_ffmpeg = v
 
 
-last_v_other = other[-1]
-for n in range(other.size - 1, 0, -1):
-    v = other[n]
-    other[n] = v + (v - last_v_other) * intensity
-    last_v_other = v
+last_v_our = our[-1]
+for n in range(our.size - 1, 0, -1):
+    v = our[n]
+    our[n] = v + (v - last_v_our) * intensity
+    last_v_our = v
 
-other = 0.5 * (other + ffmpeg)
+our = 0.5 * (our + ffmpeg)
 
-other[0] = other[1] + (other[1] - other[2])
-other[-1] = other[-2] + (other[-2] - other[-3])
+our[0] = our[1] + (our[1] - our[2])
+our[-1] = our[-2] + (our[-2] - our[-3])
 
 fig = plt.figure()
 
 plt.plot(t, original, 'bo-', markersize=4, label='original')
 # plt.plot(t, ffmpeg, 'go-', markersize=4, label='ffmpeg')
-plt.plot(t, other, 'ro-', markersize=4, label='other')
+plt.plot(t, our, 'ro-', markersize=4, label='our')
 
 fig.legend()
 
