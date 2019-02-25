@@ -2,31 +2,24 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+import scipy.io.wavfile as wavefile
 
-f1, f2 = 50.0, 60.0  # frequencias
+rate, wave = wavefile.read('test.wav')
 
-t1, t2 = 0.0, 200.0
+wave_y = wave[0:500]
+wave_x = np.arange(wave_y.size)
 
-# frequencia angular
-omega1, omega2 = 2.0 * np.pi * f1, 2.0 * np.pi * f2
+# print(rate)
+# print(wave_x)
+# print(wave_y)
 
-
-def y1(t): return np.cos(omega1 * t)
-
-
-def y2(t): return np.cos(omega2 * t)
-
-
-def y(t): return y1(t) + y2(t)
-
-
-t = np.linspace(t1, t2, 1000)
-original = y(t)
+t = wave_x
+original = wave_y
 
 ffmpeg = np.copy(original)
 our = np.copy(original)
 
-intensity = 50.0 * 10
+intensity = 10.0
 last_v_ffmpeg = ffmpeg[0]
 
 for n in range(ffmpeg.size):
@@ -56,8 +49,8 @@ plt.plot(t, our, 'ro-', markersize=4, label='our')
 
 fig.legend()
 
-plt.xlabel('t [ s ]', fontsize=18)
-plt.ylabel('y [ m ]', fontsize=18)
+# plt.xlabel('t [ s ]', fontsize=18)
+# plt.ylabel('y [ m ]', fontsize=18)
 plt.grid()
 
 plt.show()
