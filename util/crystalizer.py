@@ -19,7 +19,7 @@ original = wave_y
 ffmpeg = np.copy(original)
 our = np.copy(original)
 
-intensity = 10.0
+intensity = 4.0
 last_v_ffmpeg = ffmpeg[0]
 
 for n in range(ffmpeg.size):
