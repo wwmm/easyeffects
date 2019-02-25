@@ -6,7 +6,7 @@ import scipy.io.wavfile as wavefile
 
 rate, wave = wavefile.read('test.wav')
 
-wave_y = wave[0:500]
+wave_y = wave[10000:11000]
 wave_x = np.arange(wave_y.size)
 
 # print(rate)
@@ -25,7 +25,7 @@ last_v_ffmpeg = ffmpeg[0]
 for n in range(ffmpeg.size):
     v = ffmpeg[n]
 
-    ffmpeg[n] = v + (v - last_v_ffmpeg) * intensity
+    ffmpeg[n] = last_v_ffmpeg + (v - last_v_ffmpeg) * intensity
 
     last_v_ffmpeg = v
 
@@ -33,7 +33,7 @@ for n in range(ffmpeg.size):
 last_v_our = our[-1]
 for n in range(our.size - 1, 0, -1):
     v = our[n]
-    our[n] = v + (v - last_v_our) * intensity
+    our[n] = last_v_our + (v - last_v_our) * intensity
     last_v_our = v
 
 our = 0.5 * (our + ffmpeg)
