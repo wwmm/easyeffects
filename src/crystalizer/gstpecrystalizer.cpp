@@ -627,17 +627,35 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
       memcpy(pecrystalizer->tmp_band_data.data(),
              pecrystalizer->band_data[n].data(), map.size);
 
-      // applying ffmpeg algorithm from buffer start to end
-
       for (uint m = 0; m < pecrystalizer->nsamples; m++) {
         float L = pecrystalizer->band_data[n][2 * m];
         float R = pecrystalizer->band_data[n][2 * m + 1];
 
-        pecrystalizer->band_data[n][2 * m] =
-            L + (L - pecrystalizer->last_L[n]) * pecrystalizer->intensities[n];
+        // ffmpeg algorithm
 
-        pecrystalizer->band_data[n][2 * m + 1] =
+        float v1_L =
+            L + (L - pecrystalizer->last_L[n]) * pecrystalizer->intensities[n];
+        float v1_R =
             R + (R - pecrystalizer->last_R[n]) * pecrystalizer->intensities[n];
+
+        /*
+         This modification avoids time shifts in the signal and a few
+         undesirable distortions in the waveform. See the graph made by
+         /util/crystalizer.py
+        */
+
+        float v2_L = 0.0f, v2_R = 0.0f;
+
+        if (m < pecrystalizer->nsamples - 1) {
+          float L_upper = pecrystalizer->band_data[n][2 * (m + 1)];
+          float R_upper = pecrystalizer->band_data[n][2 * (m + 1) + 1];
+
+          v2_L = L + (L - L_upper) * pecrystalizer->intensities[n];
+          v2_R = R + (R - R_upper) * pecrystalizer->intensities[n];
+        }
+
+        pecrystalizer->band_data[n][2 * m] = 0.5f * (v1_L + v2_L);
+        pecrystalizer->band_data[n][2 * m + 1] = 0.5f * (v1_R + v2_R);
 
         pecrystalizer->last_L[n] = L;
         pecrystalizer->last_R[n] = R;
@@ -645,33 +663,33 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
 
       // applying ffmpeg algorithm from buffer end to start
 
-      auto last_L =
-          pecrystalizer->tmp_band_data[2 * pecrystalizer->nsamples - 2];
-
-      auto last_R =
-          pecrystalizer->tmp_band_data[2 * pecrystalizer->nsamples - 1];
-
-      for (int m = pecrystalizer->nsamples - 1; m >= 0; m--) {
-        float L = pecrystalizer->tmp_band_data[2 * m];
-        float R = pecrystalizer->tmp_band_data[2 * m + 1];
-
-        pecrystalizer->tmp_band_data[2 * m] =
-            L + (L - last_L) * pecrystalizer->intensities[n];
-
-        pecrystalizer->tmp_band_data[2 * m + 1] =
-            R + (R - last_R) * pecrystalizer->intensities[n];
-
-        last_L = L;
-        last_R = R;
-      }
+      // auto last_L =
+      //     pecrystalizer->tmp_band_data[2 * pecrystalizer->nsamples - 2];
+      //
+      // auto last_R =
+      //     pecrystalizer->tmp_band_data[2 * pecrystalizer->nsamples - 1];
+      //
+      // for (int m = pecrystalizer->nsamples - 1; m >= 0; m--) {
+      //   float L = pecrystalizer->tmp_band_data[2 * m];
+      //   float R = pecrystalizer->tmp_band_data[2 * m + 1];
+      //
+      //   pecrystalizer->tmp_band_data[2 * m] =
+      //       L + (L - last_L) * pecrystalizer->intensities[n];
+      //
+      //   pecrystalizer->tmp_band_data[2 * m + 1] =
+      //       R + (R - last_R) * pecrystalizer->intensities[n];
+      //
+      //   last_L = L;
+      //   last_R = R;
+      // }
 
       /// taking the average of both runs
 
-      for (uint m = 0; m < 2 * pecrystalizer->nsamples; m++) {
-        pecrystalizer->band_data[n][m] += pecrystalizer->tmp_band_data[m];
-
-        pecrystalizer->band_data[n][m] *= 0.5f;
-      }
+      // for (uint m = 0; m < 2 * pecrystalizer->nsamples; m++) {
+      //   pecrystalizer->band_data[n][m] += pecrystalizer->tmp_band_data[m];
+      //
+      //   pecrystalizer->band_data[n][m] *= 0.5f;
+      // }
     } else {
       pecrystalizer->last_L[n] =
           pecrystalizer->band_data[n][2 * pecrystalizer->nsamples - 2];
