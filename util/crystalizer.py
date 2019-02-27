@@ -9,45 +9,37 @@ rate, wave = wavefile.read('test.wav')
 wave_y = wave[10000:11000]
 wave_x = np.arange(wave_y.size)
 
-# print(rate)
-# print(wave_x)
-# print(wave_y)
-
 t = wave_x
 original = wave_y
 
-ffmpeg = np.copy(original)
-our = np.copy(original)
+processed = np.copy(original)
 
-intensity = 10.0
-last_v = ffmpeg[0]
+intensity = 4.0
+last_v = processed[0]
 
-for n in range(ffmpeg.size):
-    v = ffmpeg[n]
+for n in range(processed.size):
+    v = processed[n]
 
-    ffmpeg[n] = v + (v - last_v) * intensity
+    v1 = v + (v - last_v) * intensity
+
+    v2 = 0.0
+    if n < processed.size - 1:
+        v2 = v + (v - processed[n + 1]) * intensity
+
+    processed[n] = 0.5 * (v1 + v2)
 
     last_v = v
 
-
-last_v = our[-1]
-for n in range(our.size - 1, 0, -1):
-    v = our[n]
-    our[n] = v + (v - last_v) * intensity
-    last_v = v
-
-our = 0.5 * (our + ffmpeg)
 
 fig = plt.figure()
 
 plt.plot(t, original, 'bo-', markersize=4, label='original')
-# plt.plot(t, ffmpeg, 'go-', markersize=4, label='ffmpeg')
-plt.plot(t, our, 'ro-', markersize=4, label='our')
+plt.plot(t, processed, 'ro-', markersize=4, label='processed')
 
 fig.legend()
 
-# plt.xlabel('t [ s ]', fontsize=18)
-# plt.ylabel('y [ m ]', fontsize=18)
+plt.xlabel('Arbitrary Time', fontsize=18)
+plt.ylabel('waveform', fontsize=18)
 plt.grid()
 
 plt.show()
