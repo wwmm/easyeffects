@@ -672,32 +672,6 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
 
         pecrystalizer->band_data[n][m] *= 0.5f;
       }
-
-      /* Removing jumps in the buffer extrems. Se the cryslizer.py script in
-         /util
-       */
-
-      // left
-
-      pecrystalizer->band_data[n][0] =
-          pecrystalizer->band_data[n][2] +
-          (pecrystalizer->band_data[n][2] - pecrystalizer->band_data[n][4]);
-
-      pecrystalizer->band_data[n][2 * pecrystalizer->nsamples - 2] =
-          pecrystalizer->band_data[n][2 * pecrystalizer->nsamples - 4] +
-          (pecrystalizer->band_data[n][2 * pecrystalizer->nsamples - 4] -
-           pecrystalizer->band_data[n][2 * pecrystalizer->nsamples - 6]);
-
-      // right
-
-      pecrystalizer->band_data[n][1] =
-          pecrystalizer->band_data[n][3] +
-          (pecrystalizer->band_data[n][3] - pecrystalizer->band_data[n][5]);
-
-      pecrystalizer->band_data[n][2 * pecrystalizer->nsamples - 1] =
-          pecrystalizer->band_data[n][2 * pecrystalizer->nsamples - 3] +
-          (pecrystalizer->band_data[n][2 * pecrystalizer->nsamples - 3] -
-           pecrystalizer->band_data[n][2 * pecrystalizer->nsamples - 5]);
     } else {
       pecrystalizer->last_L[n] =
           pecrystalizer->band_data[n][2 * pecrystalizer->nsamples - 2];

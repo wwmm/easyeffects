@@ -19,27 +19,24 @@ original = wave_y
 ffmpeg = np.copy(original)
 our = np.copy(original)
 
-intensity = 4.0
-last_v_ffmpeg = ffmpeg[0]
+intensity = 10.0
+last_v = ffmpeg[0]
 
 for n in range(ffmpeg.size):
     v = ffmpeg[n]
 
-    ffmpeg[n] = last_v_ffmpeg + (v - last_v_ffmpeg) * intensity
+    ffmpeg[n] = v + (v - last_v) * intensity
 
-    last_v_ffmpeg = v
+    last_v = v
 
 
-last_v_our = our[-1]
+last_v = our[-1]
 for n in range(our.size - 1, 0, -1):
     v = our[n]
-    our[n] = last_v_our + (v - last_v_our) * intensity
-    last_v_our = v
+    our[n] = v + (v - last_v) * intensity
+    last_v = v
 
 our = 0.5 * (our + ffmpeg)
-
-our[0] = our[1] + (our[1] - our[2])
-our[-1] = our[-2] + (our[-2] - our[-3])
 
 fig = plt.figure()
 
