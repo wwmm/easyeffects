@@ -1280,7 +1280,7 @@ msgstr "Arresta l'attenuazione dopo questo numero di secondi."
 #. (itstool) path: page/title
 #: C/crossfeed.page:9
 msgid "Crossfeed"
-msgstr "Alimentazione mutua"
+msgstr "Alimentazione Mutua"
 
 #. (itstool) path: page/p
 #: C/crossfeed.page:10

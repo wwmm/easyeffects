@@ -979,7 +979,7 @@ msgstr "Alimentazione"
 
 #: data/ui/crossfeed.glade:392
 msgid "Crossfeed"
-msgstr "Alimentazione mutua"
+msgstr "Alimentazione Mutua"
 
 #: data/ui/maximizer.glade:29
 msgid "Maximizer"
