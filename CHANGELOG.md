@@ -2,6 +2,11 @@
 
 ## [Unreleased
 
+## [4.5.3]
+### Added
+- Improved crystalizer algorithm. Its CPU usage was reduced.
+- Improved Italian translations.
+
 ## [4.5.2]
 ### Added
 - Improved crystalizer algorithm. It should preserve more of the original wave

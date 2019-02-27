@@ -567,8 +567,6 @@ static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer) {
       pecrystalizer->band_data[n].resize(2 * pecrystalizer->nsamples);
     }
 
-    pecrystalizer->tmp_band_data.resize(2 * pecrystalizer->nsamples);
-
     /*
       Bandpass transition band has to be twice the value used for lowpass and
       highpass. This way all filters will have the same delay.
@@ -624,9 +622,6 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
 
   for (uint n = 0; n < NBANDS; n++) {
     if (!pecrystalizer->bypass[n]) {
-      memcpy(pecrystalizer->tmp_band_data.data(),
-             pecrystalizer->band_data[n].data(), map.size);
-
       for (uint m = 0; m < pecrystalizer->nsamples; m++) {
         float L = pecrystalizer->band_data[n][2 * m];
         float R = pecrystalizer->band_data[n][2 * m + 1];
@@ -660,36 +655,6 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
         pecrystalizer->last_L[n] = L;
         pecrystalizer->last_R[n] = R;
       }
-
-      // applying ffmpeg algorithm from buffer end to start
-
-      // auto last_L =
-      //     pecrystalizer->tmp_band_data[2 * pecrystalizer->nsamples - 2];
-      //
-      // auto last_R =
-      //     pecrystalizer->tmp_band_data[2 * pecrystalizer->nsamples - 1];
-      //
-      // for (int m = pecrystalizer->nsamples - 1; m >= 0; m--) {
-      //   float L = pecrystalizer->tmp_band_data[2 * m];
-      //   float R = pecrystalizer->tmp_band_data[2 * m + 1];
-      //
-      //   pecrystalizer->tmp_band_data[2 * m] =
-      //       L + (L - last_L) * pecrystalizer->intensities[n];
-      //
-      //   pecrystalizer->tmp_band_data[2 * m + 1] =
-      //       R + (R - last_R) * pecrystalizer->intensities[n];
-      //
-      //   last_L = L;
-      //   last_R = R;
-      // }
-
-      /// taking the average of both runs
-
-      // for (uint m = 0; m < 2 * pecrystalizer->nsamples; m++) {
-      //   pecrystalizer->band_data[n][m] += pecrystalizer->tmp_band_data[m];
-      //
-      //   pecrystalizer->band_data[n][m] *= 0.5f;
-      // }
     } else {
       pecrystalizer->last_L[n] =
           pecrystalizer->band_data[n][2 * pecrystalizer->nsamples - 2];
