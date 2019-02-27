@@ -39,7 +39,7 @@ plt.plot(t, processed, 'ro-', markersize=4, label='processed')
 fig.legend()
 
 plt.xlabel('Arbitrary Time', fontsize=18)
-plt.ylabel('waveform', fontsize=18)
+plt.ylabel('Waveform', fontsize=18)
 plt.grid()
 
 plt.show()
