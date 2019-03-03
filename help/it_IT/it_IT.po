@@ -264,7 +264,7 @@ msgid ""
 "<em style=\"strong\">Feed-forward</em> - The sidechain input is connected to "
 "compressor's input. More aggressive compression."
 msgstr ""
-"<em style = \"strong\"> Controllo in avanti</ em> - L'ingresso della catena "
+"<em style=\"strong\">Controllo in avanti</em> - L'ingresso della catena "
 "laterale è collegato all'ingresso del compressore. Compressione più "
 "aggressiva."
 
@@ -274,8 +274,8 @@ msgid ""
 "<em style=\"strong\">Feed-back</em> - The sidechain input is connected to "
 "compressor's output. Vintage-style more accurate compression."
 msgstr ""
-"<em style = \"strong\">Retroazione </ em> - L'ingresso della catena laterale "
-"è collegato all'uscita del compressore. Compressione più accurata in stile "
+"<em style=\"strong\">Retroazione</em> - L'ingresso della catena laterale è "
+"collegato all'uscita del compressore. Compressione più accurata in stile "
 "vintage."
 
 #. (itstool) path: title/em
@@ -1579,7 +1579,7 @@ msgstr "Silenzia la banda."
 #. (itstool) path: item/p
 #: C/equalizer.page:205
 msgid "Band center frequency."
-msgstr "Frequência central da banda."
+msgstr "Frequenza centrale della banda."
 
 #. (itstool) path: title/em
 #: C/equalizer.page:211
@@ -1595,7 +1595,7 @@ msgstr "larghezza = frequenza / qualità"
 #. (itstool) path: item/p
 #: C/equalizer.page:213
 msgid "Bandwidth. Calculated as <_:code-1/>."
-msgstr "Larghezza di banda. Calculata a partire da <_:code-1/>."
+msgstr "Larghezza di banda. Calcolata a partire da <_:code-1/>."
 
 #. (itstool) path: title/em
 #: C/equalizer.page:220
@@ -1703,7 +1703,7 @@ msgstr ""
 #: C/pitch.page:74
 msgid "2 - Disable phase resynchronisation at transients and phase lamination."
 msgstr ""
-"2 - Desabilita la risincronizzazione di fase nei transitori e la laminazione "
+"2 - Disabilita la risincronizzazione di fase nei transitori e la laminazione "
 "di fase."
 
 #. (itstool) path: item/p
