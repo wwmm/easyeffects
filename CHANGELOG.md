@@ -6,6 +6,7 @@
 ### Added
 - Improved crystalizer algorithm. Some noises that could be created in a few
 cases do not happen anymore.
+- Improved Italian translations.
 
 ## [4.5.3]
 ### Added
