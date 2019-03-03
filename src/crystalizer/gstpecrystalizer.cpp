@@ -15,6 +15,7 @@
 #include "gstpecrystalizer.hpp"
 #include <gst/audio/gstaudiofilter.h>
 #include <gst/gst.h>
+#include <cmath>
 #include "config.h"
 
 GST_DEBUG_CATEGORY_STATIC(gst_pecrystalizer_debug_category);
@@ -44,6 +45,10 @@ static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer);
 
 static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
                                       GstBuffer* buffer);
+
+static gboolean gst_pecrystalizer_src_query(GstPad* pad,
+                                            GstObject* parent,
+                                            GstQuery* query);
 
 static void gst_pecrystalizer_finish_filters(GstPecrystalizer* pecrystalizer);
 
@@ -219,6 +224,15 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
     pecrystalizer->last_L[n] = 0.0f;
     pecrystalizer->last_R[n] = 0.0f;
   }
+
+  pecrystalizer->sinkpad =
+      gst_element_get_static_pad(GST_ELEMENT(pecrystalizer), "sink");
+
+  pecrystalizer->srcpad =
+      gst_element_get_static_pad(GST_ELEMENT(pecrystalizer), "src");
+
+  gst_pad_set_query_function(pecrystalizer->srcpad,
+                             gst_pecrystalizer_src_query);
 
   gst_base_transform_set_in_place(GST_BASE_TRANSFORM(pecrystalizer), true);
 }
@@ -546,6 +560,10 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
     auto future = std::async(std::launch::async, f);
 
     pecrystalizer->futures.push_back(std::move(future));
+
+    gst_element_post_message(
+        GST_ELEMENT_CAST(pecrystalizer),
+        gst_message_new_latency(GST_OBJECT_CAST(pecrystalizer)));
   }
 
   return GST_FLOW_OK;
@@ -565,6 +583,8 @@ static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer) {
   if (pecrystalizer->rate != 0) {
     for (uint n = 0; n < NBANDS; n++) {
       pecrystalizer->band_data[n].resize(2 * pecrystalizer->nsamples);
+
+      pecrystalizer->last_data[n].resize(2 * pecrystalizer->nsamples);
     }
 
     /*
@@ -572,7 +592,7 @@ static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer) {
       highpass. This way all filters will have the same delay.
     */
 
-    float transition_band = 50.0f;  // Hz
+    float transition_band = 100.0f;  // Hz
 
     for (uint n = 0; n < NBANDS; n++) {
       if (n == 0) {
@@ -611,9 +631,18 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
     for (uint n = 0; n < NBANDS; n++) {
       pecrystalizer->last_L[n] = pecrystalizer->band_data[n][0];
       pecrystalizer->last_R[n] = pecrystalizer->band_data[n][1];
+
+      memcpy(pecrystalizer->last_data[n].data(),
+             pecrystalizer->band_data[n].data(), map.size);
     }
 
     pecrystalizer->ready = true;
+
+    gst_buffer_unmap(buffer, &map);
+
+    gst_buffer_resize(buffer, 0, 0);
+
+    return;
   }
 
   /*This algorithm is based on the one from FFMPEG crystalizer plugin
@@ -623,59 +652,127 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
   for (uint n = 0; n < NBANDS; n++) {
     if (!pecrystalizer->bypass[n]) {
       for (uint m = 0; m < pecrystalizer->nsamples; m++) {
-        float L = pecrystalizer->band_data[n][2 * m];
-        float R = pecrystalizer->band_data[n][2 * m + 1];
+        float v1_L = 0.0f, v1_R = 0.0f, v2_L = 0.0f, v2_R = 0.0f;
+
+        float L = pecrystalizer->last_data[n][2 * m];
+        float R = pecrystalizer->last_data[n][2 * m + 1];
 
         // ffmpeg algorithm
 
-        float v1_L =
+        v1_L =
             L + (L - pecrystalizer->last_L[n]) * pecrystalizer->intensities[n];
-        float v1_R =
+        v1_R =
             R + (R - pecrystalizer->last_R[n]) * pecrystalizer->intensities[n];
 
         /*
-         This modification avoids time shifts in the signal and a few
+         The modification below avoids time shifts in the signal and a few
          undesirable distortions in the waveform. See the graph made by
-         /util/crystalizer.py
+         /util/crystalizer.py. But there is a catch. In other to apply ffmpeg
+         algorithm in reverse order to a live stream we need information from
+         the future. In other words we need to know the first data point of the
+         next audio buffer! That is why we are delaying the output by 1 buffer.
+         What will add latency :-( It is life...
         */
 
-        float v2_L = 0.0f, v2_R = 0.0f;
-
         if (m < pecrystalizer->nsamples - 1) {
-          float L_upper = pecrystalizer->band_data[n][2 * (m + 1)];
-          float R_upper = pecrystalizer->band_data[n][2 * (m + 1) + 1];
+          float L_upper = pecrystalizer->last_data[n][2 * (m + 1)];
+          float R_upper = pecrystalizer->last_data[n][2 * (m + 1) + 1];
 
           v2_L = L + (L - L_upper) * pecrystalizer->intensities[n];
           v2_R = R + (R - R_upper) * pecrystalizer->intensities[n];
+        } else {
+          float l = pecrystalizer->band_data[n][0];
+          float r = pecrystalizer->band_data[n][1];
+
+          v2_L = L + (L - l) * pecrystalizer->intensities[n];
+          v2_R = R + (R - r) * pecrystalizer->intensities[n];
         }
 
-        pecrystalizer->band_data[n][2 * m] = 0.5f * (v1_L + v2_L);
-        pecrystalizer->band_data[n][2 * m + 1] = 0.5f * (v1_R + v2_R);
+        pecrystalizer->last_data[n][2 * m] = 0.5f * (v1_L + v2_L);
+        pecrystalizer->last_data[n][2 * m + 1] = 0.5f * (v1_R + v2_R);
 
         pecrystalizer->last_L[n] = L;
         pecrystalizer->last_R[n] = R;
       }
     } else {
       pecrystalizer->last_L[n] =
-          pecrystalizer->band_data[n][2 * pecrystalizer->nsamples - 2];
+          pecrystalizer->last_data[n][2 * pecrystalizer->nsamples - 2];
       pecrystalizer->last_R[n] =
-          pecrystalizer->band_data[n][2 * pecrystalizer->nsamples - 1];
+          pecrystalizer->last_data[n][2 * pecrystalizer->nsamples - 1];
     }
   }
 
   // add bands
 
-  for (unsigned int n = 0; n < 2 * pecrystalizer->nsamples; n++) {
+  for (uint n = 0; n < 2 * pecrystalizer->nsamples; n++) {
     data[n] = 0.0f;
 
     for (uint m = 0; m < pecrystalizer->filters.size(); m++) {
       if (!pecrystalizer->mute[m]) {
-        data[n] += pecrystalizer->band_data[m][n];
+        data[n] += pecrystalizer->last_data[m][n];
       }
     }
   }
 
+  for (uint n = 0; n < NBANDS; n++) {
+    memcpy(pecrystalizer->last_data[n].data(),
+           pecrystalizer->band_data[n].data(), map.size);
+  }
+
   gst_buffer_unmap(buffer, &map);
+}
+
+static gboolean gst_pecrystalizer_src_query(GstPad* pad,
+                                            GstObject* parent,
+                                            GstQuery* query) {
+  GstPecrystalizer* pecrystalizer = GST_PECRYSTALIZER(parent);
+  bool ret = true;
+
+  switch (GST_QUERY_TYPE(query)) {
+    case GST_QUERY_LATENCY:
+      if (pecrystalizer->rate > 0) {
+        ret = gst_pad_peer_query(pecrystalizer->sinkpad, query);
+
+        if (ret) {
+          GstClockTime min, max;
+          gboolean live;
+          guint64 latency;
+
+          gst_query_parse_latency(query, &live, &min, &max);
+
+          /* add our own latency */
+
+          latency = gst_util_uint64_scale_round(
+              pecrystalizer->nsamples, GST_SECOND, pecrystalizer->rate);
+
+          // std::cout << "latency: " << latency << std::endl;
+          // std::cout << "n: " << pecrystalizer->inbuf_n_samples
+          //           << std::endl;
+
+          min += latency;
+
+          if (max != GST_CLOCK_TIME_NONE) {
+            max += latency;
+          }
+
+          // std::cout << min << "\t" << max << "\t" << live
+          //           << std::endl;
+
+          gst_query_set_latency(query, live, min, max);
+        }
+
+      } else {
+        ret = false;
+      }
+
+      break;
+    default:
+      /* just call the default handler */
+      ret = gst_pad_query_default(pad, parent, query);
+      break;
+  }
+
+  return ret;
 }
 
 static void gst_pecrystalizer_finish_filters(GstPecrystalizer* pecrystalizer) {

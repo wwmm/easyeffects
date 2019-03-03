@@ -41,12 +41,14 @@ struct _GstPecrystalizer {
   uint nsamples;
 
   std::array<Filter*, NBANDS> filters;
-  std::array<std::vector<float>, NBANDS> band_data;
+  std::array<std::vector<float>, NBANDS> band_data, last_data;
   std::array<float, NBANDS> last_L, last_R;
 
   std::mutex mutex;
 
   std::vector<std::future<void>> futures;
+
+  GstPad *srcpad = nullptr, *sinkpad = nullptr;
 };
 
 struct _GstPecrystalizerClass {

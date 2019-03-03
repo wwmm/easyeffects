@@ -2,6 +2,11 @@
 
 ## [Unreleased
 
+## [4.5.4]
+### Added
+- Improved crystalizer algorithm. Some noises that could be created in a few
+cases do not happen anymore.
+
 ## [4.5.3]
 ### Added
 - Improved crystalizer algorithm. Its CPU usage was reduced.
