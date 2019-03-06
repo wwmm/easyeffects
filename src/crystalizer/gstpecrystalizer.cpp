@@ -554,16 +554,19 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
   } else {
     pecrystalizer->nsamples = num_samples;
 
-    auto f = [=]() {
-      std::lock_guard<std::mutex> lock(pecrystalizer->mutex);
-      gst_pecrystalizer_setup_filters(pecrystalizer);
-    };
+    gst_pecrystalizer_finish_filters(pecrystalizer);
+    gst_pecrystalizer_setup_filters(pecrystalizer);
 
-    pecrystalizer->futures.clear();
-
-    auto future = std::async(std::launch::async, f);
-
-    pecrystalizer->futures.push_back(std::move(future));
+    // auto f = [=]() {
+    //   std::lock_guard<std::mutex> lock(pecrystalizer->mutex);
+    //   gst_pecrystalizer_setup_filters(pecrystalizer);
+    // };
+    //
+    // pecrystalizer->futures.clear();
+    //
+    // auto future = std::async(std::launch::async, f);
+    //
+    // pecrystalizer->futures.push_back(std::move(future));
 
     gst_element_post_message(
         GST_ELEMENT_CAST(pecrystalizer),
