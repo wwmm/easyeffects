@@ -52,6 +52,8 @@ static gboolean gst_pecrystalizer_src_query(GstPad* pad,
 
 static void gst_pecrystalizer_finish_filters(GstPecrystalizer* pecrystalizer);
 
+static void gst_pecrystalizer_finalize(GObject* object);
+
 enum {
   PROP_INTENSITY_BAND0 = 1,
   PROP_INTENSITY_BAND1,
@@ -156,6 +158,8 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
   base_transform_class->transform_ip_on_passthrough = false;
 
   base_transform_class->stop = GST_DEBUG_FUNCPTR(gst_pecrystalizer_stop);
+
+  gobject_class->finalize = gst_pecrystalizer_finalize;
 
   /* define properties */
 
@@ -783,6 +787,20 @@ static void gst_pecrystalizer_finish_filters(GstPecrystalizer* pecrystalizer) {
   }
 
   pecrystalizer->futures.clear();
+}
+
+void gst_pecrystalizer_finalize(GObject* object) {
+  GstPecrystalizer* pecrystalizer = GST_PECRYSTALIZER(object);
+
+  GST_DEBUG_OBJECT(pecrystalizer, "finalize");
+
+  std::lock_guard<std::mutex> lock(pecrystalizer->mutex);
+
+  gst_pecrystalizer_finish_filters(pecrystalizer);
+
+  /* clean up object here */
+
+  G_OBJECT_CLASS(gst_pecrystalizer_parent_class)->finalize(object);
 }
 
 static gboolean plugin_init(GstPlugin* plugin) {
