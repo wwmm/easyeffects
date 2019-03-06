@@ -2,6 +2,10 @@
 
 ## [Unreleased
 
+## [4.5.5]
+### Fixed
+- Fixed a memory leak that could happen in the crystalizer plugin in some cases.
+
 ## [4.5.4]
 ### Added
 - Improved crystalizer algorithm. Some noises that could be created in a few

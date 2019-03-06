@@ -3,7 +3,6 @@
 
 #include <gst/audio/gstaudiofilter.h>
 #include <array>
-#include <future>
 #include <mutex>
 #include "filter.hpp"
 
@@ -45,8 +44,6 @@ struct _GstPecrystalizer {
   std::array<float, NBANDS> last_L, last_R;
 
   std::mutex mutex;
-
-  std::vector<std::future<void>> futures;
 
   GstPad *srcpad = nullptr, *sinkpad = nullptr;
 };

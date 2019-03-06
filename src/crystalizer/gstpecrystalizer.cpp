@@ -557,17 +557,6 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans,
     gst_pecrystalizer_finish_filters(pecrystalizer);
     gst_pecrystalizer_setup_filters(pecrystalizer);
 
-    // auto f = [=]() {
-    //   std::lock_guard<std::mutex> lock(pecrystalizer->mutex);
-    //   gst_pecrystalizer_setup_filters(pecrystalizer);
-    // };
-    //
-    // pecrystalizer->futures.clear();
-    //
-    // auto future = std::async(std::launch::async, f);
-    //
-    // pecrystalizer->futures.push_back(std::move(future));
-
     gst_element_post_message(
         GST_ELEMENT_CAST(pecrystalizer),
         gst_message_new_latency(GST_OBJECT_CAST(pecrystalizer)));
@@ -788,8 +777,6 @@ static void gst_pecrystalizer_finish_filters(GstPecrystalizer* pecrystalizer) {
   for (uint m = 0; m < NBANDS; m++) {
     pecrystalizer->filters[m]->finish();
   }
-
-  pecrystalizer->futures.clear();
 }
 
 void gst_pecrystalizer_finalize(GObject* object) {
