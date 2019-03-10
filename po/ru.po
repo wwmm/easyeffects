@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-22 20:40-0300\n"
+"POT-Creation-Date: 2019-03-10 15:15-0300\n"
 "PO-Revision-Date: 2018-07-18 22:14+0300\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -1142,6 +1142,18 @@ msgstr "Ширина стерео"
 #: data/ui/crystalizer.glade:48
 msgid "Crystalizer"
 msgstr "Кристаллизатор"
+
+#: data/ui/crystalizer.glade:403
+msgid "Dynamic Range"
+msgstr ""
+
+#: data/ui/crystalizer.glade:432
+msgid "Before"
+msgstr ""
+
+#: data/ui/crystalizer.glade:445
+msgid "After"
+msgstr ""
 
 #: data/ui/pitch.glade:36
 msgid "Pitch"

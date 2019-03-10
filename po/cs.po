@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-22 20:40-0300\n"
+"POT-Creation-Date: 2019-03-10 15:15-0300\n"
 "PO-Revision-Date: 2019-01-19 22:42+0100\n"
 "Last-Translator: Pavel Fric <pavelfric@seznam.cz>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -1114,6 +1114,18 @@ msgstr "Šířka sterea"
 #: data/ui/crystalizer.glade:48
 msgid "Crystalizer"
 msgstr "Krystalizátor"
+
+#: data/ui/crystalizer.glade:403
+msgid "Dynamic Range"
+msgstr ""
+
+#: data/ui/crystalizer.glade:432
+msgid "Before"
+msgstr ""
+
+#: data/ui/crystalizer.glade:445
+msgid "After"
+msgstr ""
 
 #: data/ui/pitch.glade:36
 msgid "Pitch"

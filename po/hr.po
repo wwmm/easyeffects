@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-22 20:40-0300\n"
+"POT-Creation-Date: 2019-03-10 15:15-0300\n"
 "PO-Revision-Date: 2018-11-22 20:12+0200\n"
 "Last-Translator: flipwise <tyx027@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -1169,6 +1169,18 @@ msgstr "Stereo širina"
 #, fuzzy
 msgid "Crystalizer"
 msgstr "Kristalizator"
+
+#: data/ui/crystalizer.glade:403
+msgid "Dynamic Range"
+msgstr ""
+
+#: data/ui/crystalizer.glade:432
+msgid "Before"
+msgstr ""
+
+#: data/ui/crystalizer.glade:445
+msgid "After"
+msgstr ""
 
 #: data/ui/pitch.glade:36
 msgid "Pitch"

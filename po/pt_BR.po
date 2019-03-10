@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-22 20:40-0300\n"
-"PO-Revision-Date: 2019-02-20 23:16-0300\n"
+"POT-Creation-Date: 2019-03-10 15:15-0300\n"
+"PO-Revision-Date: 2019-03-10 15:17-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
@@ -1105,6 +1105,18 @@ msgstr "Largura do Stereo"
 #: data/ui/crystalizer.glade:48
 msgid "Crystalizer"
 msgstr "Cristalizador"
+
+#: data/ui/crystalizer.glade:403
+msgid "Dynamic Range"
+msgstr "Faixa Dinâmica"
+
+#: data/ui/crystalizer.glade:432
+msgid "Before"
+msgstr "Antes"
+
+#: data/ui/crystalizer.glade:445
+msgid "After"
+msgstr "Depois"
 
 #: data/ui/pitch.glade:36
 msgid "Pitch"
