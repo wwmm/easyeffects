@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-10 15:15-0300\n"
+"POT-Creation-Date: 2019-03-10 15:30-0300\n"
 "PO-Revision-Date: 2017-10-14 10:20+0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: \n"
@@ -1182,7 +1182,7 @@ msgid "Crystalizer"
 msgstr "Utjämnare"
 
 #: data/ui/crystalizer.glade:403
-msgid "Dynamic Range"
+msgid "Loudness Range"
 msgstr ""
 
 #: data/ui/crystalizer.glade:432

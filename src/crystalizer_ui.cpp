@@ -142,11 +142,11 @@ void CrystalizerUi::build_bands(const int& nbands) {
 void CrystalizerUi::on_new_range_before(double value) {
   range_before->set_value(util::db_to_linear(value));
 
-  range_before_label->set_text(level_to_str(value, 1));
+  range_before_label->set_text(level_to_str(value, 2));
 }
 
 void CrystalizerUi::on_new_range_after(double value) {
   range_after->set_value(util::db_to_linear(value));
 
-  range_after_label->set_text(level_to_str(value, 1));
+  range_after_label->set_text(level_to_str(value, 2));
 }

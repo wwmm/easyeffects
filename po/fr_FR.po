@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-10 15:15-0300\n"
+"POT-Creation-Date: 2019-03-10 15:30-0300\n"
 "PO-Revision-Date: 2017-08-29 11:00+0200\n"
 "Last-Translator: Nathan Graule <solarliner@gmail.com>\n"
 "Language-Team: \n"
@@ -1181,7 +1181,7 @@ msgid "Crystalizer"
 msgstr "Égaliseur"
 
 #: data/ui/crystalizer.glade:403
-msgid "Dynamic Range"
+msgid "Loudness Range"
 msgstr ""
 
 #: data/ui/crystalizer.glade:432

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-10 15:15-0300\n"
+"POT-Creation-Date: 2019-03-10 15:30-0300\n"
 "PO-Revision-Date: 2019-02-18 19:12+0100\n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -1106,8 +1106,9 @@ msgid "Crystalizer"
 msgstr "Cristallizzazione"
 
 #: data/ui/crystalizer.glade:403
-msgid "Dynamic Range"
-msgstr ""
+#, fuzzy
+msgid "Loudness Range"
+msgstr "Rumorosità"
 
 #: data/ui/crystalizer.glade:432
 msgid "Before"

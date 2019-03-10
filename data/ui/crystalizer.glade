@@ -400,7 +400,7 @@
                 <property name="valign">center</property>
                 <property name="margin_top">18</property>
                 <property name="margin_bottom">18</property>
-                <property name="label" translatable="yes">Dynamic Range</property>
+                <property name="label" translatable="yes">Loudness Range</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>

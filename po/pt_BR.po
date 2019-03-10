@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-10 15:15-0300\n"
-"PO-Revision-Date: 2019-03-10 15:17-0300\n"
+"POT-Creation-Date: 2019-03-10 15:30-0300\n"
+"PO-Revision-Date: 2019-03-10 15:31-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
@@ -1107,8 +1107,8 @@ msgid "Crystalizer"
 msgstr "Cristalizador"
 
 #: data/ui/crystalizer.glade:403
-msgid "Dynamic Range"
-msgstr "Faixa Dinâmica"
+msgid "Loudness Range"
+msgstr "Faixa de Sonoridade"
 
 #: data/ui/crystalizer.glade:432
 msgid "Before"
@@ -1503,6 +1503,9 @@ msgstr "Não Foi Possível Carregar o Arquivo com o Impulso"
 #: src/equalizer_ui.cpp:331 src/equalizer_ui.cpp:469
 msgid "infinity"
 msgstr "infinito"
+
+#~ msgid "Dynamic Range"
+#~ msgstr "Faixa Dinâmica"
 
 #~ msgid "Intensities"
 #~ msgstr "Intensidades"

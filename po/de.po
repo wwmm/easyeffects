@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-10 15:15-0300\n"
+"POT-Creation-Date: 2019-03-10 15:30-0300\n"
 "PO-Revision-Date: 2019-02-10 12:34+0100\n"
 "Last-Translator: David Keller <blobcodes@protonmail.com>\n"
 "Language-Team: \n"
@@ -1114,8 +1114,9 @@ msgid "Crystalizer"
 msgstr "Dynamikerweiterung"
 
 #: data/ui/crystalizer.glade:403
-msgid "Dynamic Range"
-msgstr ""
+#, fuzzy
+msgid "Loudness Range"
+msgstr "Lautstärke"
 
 #: data/ui/crystalizer.glade:432
 msgid "Before"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-10 15:15-0300\n"
+"POT-Creation-Date: 2019-03-10 15:30-0300\n"
 "PO-Revision-Date: 2018-06-21 21:34+0200\n"
 "Last-Translator: Piotr Komur, pkomur@gmail.com\n"
 "Language-Team: \n"
@@ -1157,7 +1157,7 @@ msgid "Crystalizer"
 msgstr "Resetuj korektor"
 
 #: data/ui/crystalizer.glade:403
-msgid "Dynamic Range"
+msgid "Loudness Range"
 msgstr ""
 
 #: data/ui/crystalizer.glade:432
