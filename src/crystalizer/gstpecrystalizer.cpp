@@ -93,7 +93,9 @@ enum {
   PROP_BYPASS_BAND9,
   PROP_BYPASS_BAND10,
   PROP_BYPASS_BAND11,
-  PROP_BYPASS_BAND12
+  PROP_BYPASS_BAND12,
+  PROP_RANGE_BEFORE,
+  PROP_RANGE_AFTER
 };
 
 /* pad templates */
@@ -198,6 +200,20 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
                              static_cast<GParamFlags>(G_PARAM_READWRITE |
                                                       G_PARAM_STATIC_STRINGS)));
   }
+
+  g_object_class_install_property(
+      gobject_class, PROP_RANGE_BEFORE,
+      g_param_spec_float(
+          "lra-before", "Loudness Range", "Loudness Range (in LUFS)",
+          -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
+          static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
+
+  g_object_class_install_property(
+      gobject_class, PROP_RANGE_AFTER,
+      g_param_spec_float(
+          "lra-after", "Loudness Range", "Loudness Range (in LUFS)",
+          -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
+          static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
 }
 
 static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
@@ -228,6 +244,13 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
     pecrystalizer->last_L[n] = 0.0f;
     pecrystalizer->last_R[n] = 0.0f;
   }
+
+  pecrystalizer->sample_count = 0;
+  pecrystalizer->notify = true;
+  pecrystalizer->range_before = 0.0f;
+  pecrystalizer->range_after = 0.0f;
+  pecrystalizer->ebur_state_before = nullptr;
+  pecrystalizer->ebur_state_after = nullptr;
 
   pecrystalizer->sinkpad =
       gst_element_get_static_pad(GST_ELEMENT(pecrystalizer), "sink");
@@ -501,6 +524,12 @@ void gst_pecrystalizer_get_property(GObject* object,
     case PROP_BYPASS_BAND12:
       g_value_set_boolean(value, pecrystalizer->bypass[12]);
       break;
+    case PROP_RANGE_BEFORE:
+      g_value_set_float(value, pecrystalizer->range_before);
+      break;
+    case PROP_RANGE_AFTER:
+      g_value_set_float(value, pecrystalizer->range_after);
+      break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
       break;
@@ -519,6 +548,31 @@ static gboolean gst_pecrystalizer_setup(GstAudioFilter* filter,
   std::lock_guard<std::mutex> lock(pecrystalizer->mutex);
 
   gst_pecrystalizer_finish_filters(pecrystalizer);
+
+  // before
+
+  pecrystalizer->ebur_state_before = ebur128_init(
+      2, pecrystalizer->rate, EBUR128_MODE_LRA | EBUR128_MODE_HISTOGRAM);
+
+  ebur128_set_channel(pecrystalizer->ebur_state_before, 0, EBUR128_LEFT);
+  ebur128_set_channel(pecrystalizer->ebur_state_before, 1, EBUR128_RIGHT);
+
+  ebur128_set_max_history(pecrystalizer->ebur_state_before, 30 * 1000);  // ms
+
+  // after
+
+  pecrystalizer->ebur_state_after = ebur128_init(
+      2, pecrystalizer->rate, EBUR128_MODE_LRA | EBUR128_MODE_HISTOGRAM);
+
+  ebur128_set_channel(pecrystalizer->ebur_state_after, 0, EBUR128_LEFT);
+  ebur128_set_channel(pecrystalizer->ebur_state_after, 1, EBUR128_RIGHT);
+
+  ebur128_set_max_history(pecrystalizer->ebur_state_after, 30 * 1000);  // ms
+
+  /*notify every 0.1 seconds*/
+
+  pecrystalizer->notify_samples =
+      GST_CLOCK_TIME_TO_FRAMES(GST_SECOND / 10, info->rate);
 
   return true;
 }
@@ -611,11 +665,25 @@ static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer) {
 
 static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
                                       GstBuffer* buffer) {
+  bool ebur_failed = false;
+  double range;
   GstMapInfo map;
 
   gst_buffer_map(buffer, &map, GST_MAP_READWRITE);
 
   float* data = (float*)map.data;
+
+  // measure dynamic range before the processing
+
+  ebur128_add_frames_float(pecrystalizer->ebur_state_before, data,
+                           pecrystalizer->nsamples);
+
+  if (EBUR128_SUCCESS !=
+      ebur128_loudness_range(pecrystalizer->ebur_state_before, &range)) {
+    ebur_failed = true;
+  } else {
+    pecrystalizer->range_before = (float)range;
+  }
 
   for (uint n = 0; n < NBANDS; n++) {
     memcpy(pecrystalizer->band_data[n].data(), data, map.size);
@@ -715,7 +783,36 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
            pecrystalizer->band_data[n].data(), map.size);
   }
 
+  ebur128_add_frames_float(pecrystalizer->ebur_state_after, data,
+                           pecrystalizer->nsamples);
+
+  // measure dynamic range after the processing
+
+  ebur128_add_frames_float(pecrystalizer->ebur_state_after, data,
+                           pecrystalizer->nsamples);
+
+  if (EBUR128_SUCCESS !=
+      ebur128_loudness_range(pecrystalizer->ebur_state_after, &range)) {
+    ebur_failed = true;
+  } else {
+    pecrystalizer->range_after = (float)range;
+  }
+
   gst_buffer_unmap(buffer, &map);
+
+  if (!ebur_failed && pecrystalizer->notify) {
+    pecrystalizer->sample_count += pecrystalizer->nsamples;
+
+    if (pecrystalizer->sample_count >= pecrystalizer->notify_samples) {
+      pecrystalizer->sample_count = 0;
+
+      std::cout << "range: " << pecrystalizer->range_before << "\t"
+                << pecrystalizer->range_after << std::endl;
+
+      g_object_notify(G_OBJECT(pecrystalizer), "lra-before");
+      g_object_notify(G_OBJECT(pecrystalizer), "lra-after");
+    }
+  }
 }
 
 static gboolean gst_pecrystalizer_src_query(GstPad* pad,
@@ -787,6 +884,16 @@ void gst_pecrystalizer_finalize(GObject* object) {
   std::lock_guard<std::mutex> lock(pecrystalizer->mutex);
 
   gst_pecrystalizer_finish_filters(pecrystalizer);
+
+  if (pecrystalizer->ebur_state_before != nullptr) {
+    ebur128_destroy(&pecrystalizer->ebur_state_before);
+    pecrystalizer->ebur_state_before = nullptr;
+  }
+
+  if (pecrystalizer->ebur_state_after != nullptr) {
+    ebur128_destroy(&pecrystalizer->ebur_state_after);
+    pecrystalizer->ebur_state_after = nullptr;
+  }
 
   /* clean up object here */
 

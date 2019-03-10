@@ -333,7 +333,7 @@ static gboolean gst_peautogain_setup(GstAudioFilter* filter,
 
     ebur128_set_max_history(peautogain->ebur_state, 30 * 1000);  // ms
 
-    /*notify every 0.2 seconds*/
+    /*notify every 0.1 seconds*/
 
     peautogain->notify_samples =
         GST_CLOCK_TIME_TO_FRAMES(GST_SECOND / 10, info->rate);

@@ -1,6 +1,7 @@
 #ifndef _GST_PECRYSTALIZER_H_
 #define _GST_PECRYSTALIZER_H_
 
+#include <ebur128.h>
 #include <gst/audio/gstaudiofilter.h>
 #include <array>
 #include <mutex>
@@ -33,15 +34,21 @@ struct _GstPecrystalizer {
   std::array<float, NBANDS> intensities;
   std::array<bool, NBANDS> mute, bypass;
 
+  float range_before, range_after;  // loudness range
+
   /* < private > */
 
-  bool ready;
+  bool ready, notify;
   int rate, bpf;  // sampling rate,  bytes per frame : channels * bps
   uint nsamples;
+  int notify_samples;  // number of samples to count before emit a notify
+  int sample_count;
 
   std::array<Filter*, NBANDS> filters;
   std::array<std::vector<float>, NBANDS> band_data, last_data;
   std::array<float, NBANDS> last_L, last_R;
+
+  ebur128_state *ebur_state_before, *ebur_state_after;
 
   std::mutex mutex;
 
