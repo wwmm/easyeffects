@@ -45,10 +45,10 @@ PluginUiBase::~PluginUiBase() {
   settings->set_boolean("post-messages", false);
 }
 
-std::string PluginUiBase::level_to_str(double value) {
+std::string PluginUiBase::level_to_str(const double& value, const int& places) {
   std::ostringstream msg;
 
-  msg.precision(0);
+  msg.precision(places);
   msg << std::fixed << value;
 
   return msg.str();

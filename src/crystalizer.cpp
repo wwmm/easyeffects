@@ -2,6 +2,47 @@
 #include <glibmm/main.h>
 #include "util.hpp"
 
+namespace {
+
+void on_post_messages_changed(GSettings* settings, gchar* key, Crystalizer* l) {
+  auto post = g_settings_get_boolean(settings, key);
+
+  if (post) {
+    if (!l->range_before_connection.connected()) {
+      l->range_before_connection = Glib::signal_timeout().connect(
+          [l]() {
+            float v;
+
+            g_object_get(l->crystalizer, "lra-before", &v, nullptr);
+
+            l->range_before.emit(v);
+
+            return true;
+          },
+          100);
+    }
+
+    if (!l->range_after_connection.connected()) {
+      l->range_after_connection = Glib::signal_timeout().connect(
+          [l]() {
+            float v;
+
+            g_object_get(l->crystalizer, "lra-after", &v, nullptr);
+
+            l->range_after.emit(v);
+
+            return true;
+          },
+          100);
+    }
+  } else {
+    l->range_before_connection.disconnect();
+    l->range_after_connection.disconnect();
+  }
+}
+
+}  // namespace
+
 Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
     : PluginBase(tag, "crystalizer", schema) {
   crystalizer = gst_element_factory_make("pecrystalizer", nullptr);
@@ -36,6 +77,9 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema)
     gst_object_unref(GST_OBJECT(pad_src));
 
     bind_to_gsettings();
+
+    g_signal_connect(settings, "changed::post-messages",
+                     G_CALLBACK(on_post_messages_changed), this);
 
     g_settings_bind(settings, "post-messages", in_level, "post-messages",
                     G_SETTINGS_BIND_DEFAULT);

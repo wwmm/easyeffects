@@ -108,5 +108,5 @@ GateUi::~GateUi() {
 void GateUi::on_new_gating(double value) {
   gating->set_value(1 - value);
 
-  gating_label->set_text(level_to_str(util::linear_to_db(value)));
+  gating_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }

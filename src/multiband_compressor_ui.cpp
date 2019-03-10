@@ -202,47 +202,47 @@ MultibandCompressorUi::~MultibandCompressorUi() {
 void MultibandCompressorUi::on_new_output0(double value) {
   output0->set_value(value);
 
-  output0_label->set_text(level_to_str(util::linear_to_db(value)));
+  output0_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
 
 void MultibandCompressorUi::on_new_output1(double value) {
   output1->set_value(value);
 
-  output1_label->set_text(level_to_str(util::linear_to_db(value)));
+  output1_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
 
 void MultibandCompressorUi::on_new_output2(double value) {
   output2->set_value(value);
 
-  output2_label->set_text(level_to_str(util::linear_to_db(value)));
+  output2_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
 
 void MultibandCompressorUi::on_new_output3(double value) {
   output3->set_value(value);
 
-  output3_label->set_text(level_to_str(util::linear_to_db(value)));
+  output3_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
 
 void MultibandCompressorUi::on_new_compression0(double value) {
   compression0->set_value(1 - value);
 
-  compression0_label->set_text(level_to_str(util::linear_to_db(value)));
+  compression0_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
 
 void MultibandCompressorUi::on_new_compression1(double value) {
   compression1->set_value(1 - value);
 
-  compression1_label->set_text(level_to_str(util::linear_to_db(value)));
+  compression1_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
 
 void MultibandCompressorUi::on_new_compression2(double value) {
   compression2->set_value(1 - value);
 
-  compression2_label->set_text(level_to_str(util::linear_to_db(value)));
+  compression2_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
 
 void MultibandCompressorUi::on_new_compression3(double value) {
   compression3->set_value(1 - value);
 
-  compression3_label->set_text(level_to_str(util::linear_to_db(value)));
+  compression3_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }

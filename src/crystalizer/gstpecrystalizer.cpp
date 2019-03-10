@@ -806,8 +806,8 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
     if (pecrystalizer->sample_count >= pecrystalizer->notify_samples) {
       pecrystalizer->sample_count = 0;
 
-      std::cout << "range: " << pecrystalizer->range_before << "\t"
-                << pecrystalizer->range_after << std::endl;
+      // std::cout << "range: " << pecrystalizer->range_before << "\t"
+      //           << pecrystalizer->range_after << std::endl;
 
       g_object_notify(G_OBJECT(pecrystalizer), "lra-before");
       g_object_notify(G_OBJECT(pecrystalizer), "lra-after");

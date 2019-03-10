@@ -11,8 +11,15 @@ class CrystalizerUi : public Gtk::Grid, public PluginUiBase {
                 const std::string& settings_name);
   virtual ~CrystalizerUi();
 
+  void on_new_range_before(double value);
+
+  void on_new_range_after(double value);
+
  private:
   Gtk::Grid* bands_grid;
+
+  Gtk::LevelBar *range_before, *range_after;
+  Gtk::Label *range_before_label, *range_after_label;
 
   Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain;
 

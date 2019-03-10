@@ -11,6 +11,10 @@ CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
   // loading glade widgets
 
   builder->get_widget("bands_grid", bands_grid);
+  builder->get_widget("range_before", range_before);
+  builder->get_widget("range_after", range_after);
+  builder->get_widget("range_before_label", range_before_label);
+  builder->get_widget("range_after_label", range_after_label);
 
   get_object(builder, "input_gain", input_gain);
   get_object(builder, "output_gain", output_gain);
@@ -133,4 +137,16 @@ void CrystalizerUi::build_bands(const int& nbands) {
   }
 
   bands_grid->show_all();
+}
+
+void CrystalizerUi::on_new_range_before(double value) {
+  range_before->set_value(util::db_to_linear(value));
+
+  range_before_label->set_text(level_to_str(value, 1));
+}
+
+void CrystalizerUi::on_new_range_after(double value) {
+  range_after->set_value(util::db_to_linear(value));
+
+  range_after_label->set_text(level_to_str(value, 1));
 }

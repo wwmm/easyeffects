@@ -51,35 +51,35 @@ AutoGainUi::~AutoGainUi() {
 
 void AutoGainUi::on_new_momentary(const float& value) {
   m_level->set_value(util::db_to_linear(value));
-  m_label->set_text(level_to_str(value));
+  m_label->set_text(level_to_str(value, 0));
 }
 
 void AutoGainUi::on_new_shortterm(const float& value) {
   s_level->set_value(util::db_to_linear(value));
-  s_label->set_text(level_to_str(value));
+  s_label->set_text(level_to_str(value, 0));
 }
 
 void AutoGainUi::on_new_integrated(const float& value) {
   i_level->set_value(util::db_to_linear(value));
-  i_label->set_text(level_to_str(value));
+  i_label->set_text(level_to_str(value, 0));
 }
 
 void AutoGainUi::on_new_relative(const float& value) {
   r_level->set_value(util::db_to_linear(value));
-  r_label->set_text(level_to_str(value));
+  r_label->set_text(level_to_str(value, 0));
 }
 
 void AutoGainUi::on_new_loudness(const float& value) {
   l_level->set_value(util::db_to_linear(value));
-  l_label->set_text(level_to_str(value));
+  l_label->set_text(level_to_str(value, 0));
 }
 
 void AutoGainUi::on_new_range(const float& value) {
   lra_level->set_value(util::db_to_linear(value));
-  lra_label->set_text(level_to_str(value));
+  lra_label->set_text(level_to_str(value, 0));
 }
 
 void AutoGainUi::on_new_gain(const float& value) {
   g_level->set_value(value);
-  g_label->set_text(level_to_str(util::linear_to_db(value)));
+  g_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }

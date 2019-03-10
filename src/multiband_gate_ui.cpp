@@ -209,47 +209,47 @@ MultibandGateUi::~MultibandGateUi() {
 void MultibandGateUi::on_new_output0(double value) {
   output0->set_value(value);
 
-  output0_label->set_text(level_to_str(util::linear_to_db(value)));
+  output0_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
 
 void MultibandGateUi::on_new_output1(double value) {
   output1->set_value(value);
 
-  output1_label->set_text(level_to_str(util::linear_to_db(value)));
+  output1_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
 
 void MultibandGateUi::on_new_output2(double value) {
   output2->set_value(value);
 
-  output2_label->set_text(level_to_str(util::linear_to_db(value)));
+  output2_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
 
 void MultibandGateUi::on_new_output3(double value) {
   output3->set_value(value);
 
-  output3_label->set_text(level_to_str(util::linear_to_db(value)));
+  output3_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
 
 void MultibandGateUi::on_new_gating0(double value) {
   gating0->set_value(1 - value);
 
-  gating0_label->set_text(level_to_str(util::linear_to_db(value)));
+  gating0_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
 
 void MultibandGateUi::on_new_gating1(double value) {
   gating1->set_value(1 - value);
 
-  gating1_label->set_text(level_to_str(util::linear_to_db(value)));
+  gating1_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
 
 void MultibandGateUi::on_new_gating2(double value) {
   gating2->set_value(1 - value);
 
-  gating2_label->set_text(level_to_str(util::linear_to_db(value)));
+  gating2_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
 
 void MultibandGateUi::on_new_gating3(double value) {
   gating3->set_value(1 - value);
 
-  gating3_label->set_text(level_to_str(util::linear_to_db(value)));
+  gating3_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }

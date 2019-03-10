@@ -32,5 +32,5 @@ MaximizerUi::~MaximizerUi() {
 void MaximizerUi::on_new_reduction(double value) {
   reduction->set_value(value);
 
-  reduction_label->set_text(level_to_str(value));
+  reduction_label->set_text(level_to_str(value, 0));
 }

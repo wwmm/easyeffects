@@ -374,6 +374,10 @@ void SinkInputEffectsUi::level_meters_connections() {
       sigc::mem_fun(*crystalizer_ui, &CrystalizerUi::on_new_input_level_db)));
   connections.push_back(sie->crystalizer_output_level.connect(
       sigc::mem_fun(*crystalizer_ui, &CrystalizerUi::on_new_output_level_db)));
+  connections.push_back(sie->crystalizer->range_before.connect(
+      sigc::mem_fun(*crystalizer_ui, &CrystalizerUi::on_new_range_before)));
+  connections.push_back(sie->crystalizer->range_after.connect(
+      sigc::mem_fun(*crystalizer_ui, &CrystalizerUi::on_new_range_after)));
 
   // autogain level meters connections
 

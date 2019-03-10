@@ -52,7 +52,7 @@ class PluginUiBase {
         Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
   }
 
-  std::string level_to_str(double value);
+  std::string level_to_str(const double& value, const int& places);
 
  private:
   template <typename T1, typename T2, typename T3, typename T4>
@@ -68,7 +68,7 @@ class PluginUiBase {
 
     if (left_db >= -99) {
       w_left->set_value(left);
-      w_left_label->set_text(level_to_str(left_db));
+      w_left_label->set_text(level_to_str(left_db, 0));
     } else {
       w_left->set_value(0);
       w_left_label->set_text("-99");
@@ -76,7 +76,7 @@ class PluginUiBase {
 
     if (right_db >= -99) {
       w_right->set_value(right);
-      w_right_label->set_text(level_to_str(right_db));
+      w_right_label->set_text(level_to_str(right_db, 0));
     } else {
       w_right->set_value(0);
       w_right_label->set_text("-99");
@@ -102,7 +102,7 @@ class PluginUiBase {
       }
 
       w_left->set_value(db_value);
-      w_left_label->set_text(level_to_str(left));
+      w_left_label->set_text(level_to_str(left, 0));
     } else {
       w_left->set_value(0);
       w_left_label->set_text("-99");
@@ -118,7 +118,7 @@ class PluginUiBase {
       }
 
       w_right->set_value(db_value);
-      w_right_label->set_text(level_to_str(right));
+      w_right_label->set_text(level_to_str(right, 0));
     } else {
       w_right->set_value(0);
       w_right_label->set_text("-99");

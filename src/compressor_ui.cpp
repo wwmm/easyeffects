@@ -202,17 +202,17 @@ CompressorUi::~CompressorUi() {
 void CompressorUi::on_new_reduction(double value) {
   reduction->set_value(value);
 
-  reduction_label->set_text(level_to_str(util::linear_to_db(value)));
+  reduction_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
 
 void CompressorUi::on_new_sidechain(double value) {
   sidechain->set_value(value);
 
-  sidechain_label->set_text(level_to_str(util::linear_to_db(value)));
+  sidechain_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
 
 void CompressorUi::on_new_curve(double value) {
   curve->set_value(value);
 
-  curve_label->set_text(level_to_str(util::linear_to_db(value)));
+  curve_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }

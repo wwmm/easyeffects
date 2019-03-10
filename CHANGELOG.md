@@ -2,6 +2,10 @@
 
 ## [Unreleased
 
+### Added
+- Chinese and Turkish translations.
+- Crystalizer plugin shows the dynamic range before and after processing.
+
 ## [4.5.5]
 ### Fixed
 - Fixed a memory leak that could happen in the crystalizer plugin in some cases.

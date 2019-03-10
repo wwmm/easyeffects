@@ -113,11 +113,11 @@ DeesserUi::~DeesserUi() {
 void DeesserUi::on_new_compression(double value) {
   compression->set_value(1 - value);
 
-  compression_label->set_text(level_to_str(util::linear_to_db(value)));
+  compression_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
 
 void DeesserUi::on_new_detected(double value) {
   detected->set_value(value);
 
-  detected_label->set_text(level_to_str(util::linear_to_db(value)));
+  detected_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
