@@ -549,26 +549,6 @@ static gboolean gst_pecrystalizer_setup(GstAudioFilter* filter,
 
   gst_pecrystalizer_finish_filters(pecrystalizer);
 
-  // before
-
-  pecrystalizer->ebur_state_before = ebur128_init(
-      2, pecrystalizer->rate, EBUR128_MODE_LRA | EBUR128_MODE_HISTOGRAM);
-
-  ebur128_set_channel(pecrystalizer->ebur_state_before, 0, EBUR128_LEFT);
-  ebur128_set_channel(pecrystalizer->ebur_state_before, 1, EBUR128_RIGHT);
-
-  ebur128_set_max_history(pecrystalizer->ebur_state_before, 30 * 1000);  // ms
-
-  // after
-
-  pecrystalizer->ebur_state_after = ebur128_init(
-      2, pecrystalizer->rate, EBUR128_MODE_LRA | EBUR128_MODE_HISTOGRAM);
-
-  ebur128_set_channel(pecrystalizer->ebur_state_after, 0, EBUR128_LEFT);
-  ebur128_set_channel(pecrystalizer->ebur_state_after, 1, EBUR128_RIGHT);
-
-  ebur128_set_max_history(pecrystalizer->ebur_state_after, 30 * 1000);  // ms
-
   /*notify every 0.1 seconds*/
 
   pecrystalizer->notify_samples =
@@ -660,6 +640,26 @@ static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer) {
             2.0f * transition_band);
       }
     }
+
+    // before
+
+    pecrystalizer->ebur_state_before = ebur128_init(
+        2, pecrystalizer->rate, EBUR128_MODE_LRA | EBUR128_MODE_HISTOGRAM);
+
+    ebur128_set_channel(pecrystalizer->ebur_state_before, 0, EBUR128_LEFT);
+    ebur128_set_channel(pecrystalizer->ebur_state_before, 1, EBUR128_RIGHT);
+
+    ebur128_set_max_history(pecrystalizer->ebur_state_before, 30 * 1000);  // ms
+
+    // after
+
+    pecrystalizer->ebur_state_after = ebur128_init(
+        2, pecrystalizer->rate, EBUR128_MODE_LRA | EBUR128_MODE_HISTOGRAM);
+
+    ebur128_set_channel(pecrystalizer->ebur_state_after, 0, EBUR128_LEFT);
+    ebur128_set_channel(pecrystalizer->ebur_state_after, 1, EBUR128_RIGHT);
+
+    ebur128_set_max_history(pecrystalizer->ebur_state_after, 30 * 1000);  // ms
   }
 }
 
@@ -874,16 +874,6 @@ static void gst_pecrystalizer_finish_filters(GstPecrystalizer* pecrystalizer) {
   for (uint m = 0; m < NBANDS; m++) {
     pecrystalizer->filters[m]->finish();
   }
-}
-
-void gst_pecrystalizer_finalize(GObject* object) {
-  GstPecrystalizer* pecrystalizer = GST_PECRYSTALIZER(object);
-
-  GST_DEBUG_OBJECT(pecrystalizer, "finalize");
-
-  std::lock_guard<std::mutex> lock(pecrystalizer->mutex);
-
-  gst_pecrystalizer_finish_filters(pecrystalizer);
 
   if (pecrystalizer->ebur_state_before != nullptr) {
     ebur128_destroy(&pecrystalizer->ebur_state_before);
@@ -894,6 +884,16 @@ void gst_pecrystalizer_finalize(GObject* object) {
     ebur128_destroy(&pecrystalizer->ebur_state_after);
     pecrystalizer->ebur_state_after = nullptr;
   }
+}
+
+void gst_pecrystalizer_finalize(GObject* object) {
+  GstPecrystalizer* pecrystalizer = GST_PECRYSTALIZER(object);
+
+  GST_DEBUG_OBJECT(pecrystalizer, "finalize");
+
+  std::lock_guard<std::mutex> lock(pecrystalizer->mutex);
+
+  gst_pecrystalizer_finish_filters(pecrystalizer);
 
   /* clean up object here */
 
