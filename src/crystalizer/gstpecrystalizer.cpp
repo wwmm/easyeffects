@@ -617,6 +617,8 @@ static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer) {
       pecrystalizer->last_data[n].resize(2 * pecrystalizer->nsamples);
     }
 
+    pecrystalizer->aux_data.resize(2 * pecrystalizer->nsamples);
+
     /*
       Bandpass transition band has to be twice the value used for lowpass and
       highpass. This way all filters will have the same delay.
@@ -673,18 +675,6 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
 
   float* data = (float*)map.data;
 
-  // measure dynamic range before the processing
-
-  ebur128_add_frames_float(pecrystalizer->ebur_state_before, data,
-                           pecrystalizer->nsamples);
-
-  if (EBUR128_SUCCESS !=
-      ebur128_loudness_range(pecrystalizer->ebur_state_before, &range)) {
-    ebur_failed = true;
-  } else {
-    pecrystalizer->range_before = (float)range;
-  }
-
   for (uint n = 0; n < NBANDS; n++) {
     memcpy(pecrystalizer->band_data[n].data(), data, map.size);
 
@@ -702,12 +692,31 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
 
     pecrystalizer->ready = true;
 
+    memcpy(pecrystalizer->aux_data.data(), data, map.size);
+
     gst_buffer_unmap(buffer, &map);
 
     gst_buffer_resize(buffer, 0, 0);
 
     return;
   }
+
+  /* Measure loudness range before the processing. We have to use the last
+     buffer
+   */
+
+  ebur128_add_frames_float(pecrystalizer->ebur_state_before,
+                           pecrystalizer->aux_data.data(),
+                           pecrystalizer->nsamples);
+
+  if (EBUR128_SUCCESS !=
+      ebur128_loudness_range(pecrystalizer->ebur_state_before, &range)) {
+    ebur_failed = true;
+  } else {
+    pecrystalizer->range_before = (float)range;
+  }
+
+  memcpy(pecrystalizer->aux_data.data(), data, map.size);
 
   /*This algorithm is based on the one from FFMPEG crystalizer plugin
    *https://git.ffmpeg.org/gitweb/ffmpeg.git/blob_plain/HEAD:/libavfilter/af_crystalizer.c
@@ -786,7 +795,7 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
   ebur128_add_frames_float(pecrystalizer->ebur_state_after, data,
                            pecrystalizer->nsamples);
 
-  // measure dynamic range after the processing
+  // Measure loudness range after the processing
 
   ebur128_add_frames_float(pecrystalizer->ebur_state_after, data,
                            pecrystalizer->nsamples);
