@@ -15,6 +15,7 @@ CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
   builder->get_widget("range_after", range_after);
   builder->get_widget("range_before_label", range_before_label);
   builder->get_widget("range_after_label", range_after_label);
+  builder->get_widget("aggressive", aggressive);
 
   get_object(builder, "input_gain", input_gain);
   get_object(builder, "output_gain", output_gain);
@@ -27,6 +28,7 @@ CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
 
   settings->bind("input-gain", input_gain.get(), "value", flag);
   settings->bind("output-gain", output_gain.get(), "value", flag);
+  settings->bind("aggressive", aggressive, "active", flag);
 
   build_bands(13);
 }

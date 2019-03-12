@@ -38,14 +38,14 @@ struct _GstPecrystalizer {
 
   /* < private > */
 
-  bool ready, notify;
+  bool ready, notify, aggressive;
   int rate, bpf;  // sampling rate,  bytes per frame : channels * bps
   uint nsamples;
   int notify_samples;  // number of samples to count before emit a notify
-  int sample_count;
+  int sample_count, ndivs;
 
   std::array<Filter*, NBANDS> filters;
-  std::array<std::vector<float>, NBANDS> band_data;
+  std::array<std::vector<float>, NBANDS> band_data, gain;
   std::array<float, NBANDS> last_L, last_R, delayed_L, delayed_R;
 
   std::vector<float> deriv2;

@@ -109,6 +109,9 @@ Crystalizer::~Crystalizer() {
 }
 
 void Crystalizer::bind_to_gsettings() {
+  g_settings_bind(settings, "aggressive", crystalizer, "aggressive",
+                  G_SETTINGS_BIND_DEFAULT);
+
   for (int n = 0; n < 13; n++) {
     g_settings_bind_with_mapping(
         settings, std::string("intensity-band" + std::to_string(n)).c_str(),

@@ -96,7 +96,8 @@ enum {
   PROP_BYPASS_BAND11,
   PROP_BYPASS_BAND12,
   PROP_RANGE_BEFORE,
-  PROP_RANGE_AFTER
+  PROP_RANGE_AFTER,
+  PROP_AGGRESSIVE
 };
 
 /* pad templates */
@@ -215,6 +216,13 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
           "lra-after", "Loudness Range", "Loudness Range (in LUFS)",
           -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
           static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
+
+  g_object_class_install_property(
+      gobject_class, PROP_AGGRESSIVE,
+      g_param_spec_boolean("aggressive", "Aggressive Mode", "Aggressive Mode",
+                           false,
+                           static_cast<GParamFlags>(G_PARAM_READWRITE |
+                                                    G_PARAM_STATIC_STRINGS)));
 }
 
 static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
@@ -253,6 +261,9 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->ebur_state_before = nullptr;
   pecrystalizer->ebur_state_after = nullptr;
 
+  pecrystalizer->ndivs = 100;
+  pecrystalizer->aggressive = false;
+
   pecrystalizer->sinkpad =
       gst_element_get_static_pad(GST_ELEMENT(pecrystalizer), "sink");
 
@@ -278,42 +289,68 @@ void gst_pecrystalizer_set_property(GObject* object,
   switch (property_id) {
     case PROP_INTENSITY_BAND0:
       pecrystalizer->intensities[0] = g_value_get_float(value);
+      pecrystalizer->gain[0] = util::linspace(
+          1.0f, pecrystalizer->intensities[0], pecrystalizer->ndivs);
       break;
     case PROP_INTENSITY_BAND1:
       pecrystalizer->intensities[1] = g_value_get_float(value);
+      pecrystalizer->gain[1] = util::linspace(
+          1.0f, pecrystalizer->intensities[1], pecrystalizer->ndivs);
       break;
     case PROP_INTENSITY_BAND2:
       pecrystalizer->intensities[2] = g_value_get_float(value);
+      pecrystalizer->gain[2] = util::linspace(
+          1.0f, pecrystalizer->intensities[2], pecrystalizer->ndivs);
       break;
     case PROP_INTENSITY_BAND3:
       pecrystalizer->intensities[3] = g_value_get_float(value);
+      pecrystalizer->gain[3] = util::linspace(
+          1.0f, pecrystalizer->intensities[3], pecrystalizer->ndivs);
       break;
     case PROP_INTENSITY_BAND4:
       pecrystalizer->intensities[4] = g_value_get_float(value);
+      pecrystalizer->gain[4] = util::linspace(
+          1.0f, pecrystalizer->intensities[4], pecrystalizer->ndivs);
       break;
     case PROP_INTENSITY_BAND5:
       pecrystalizer->intensities[5] = g_value_get_float(value);
+      pecrystalizer->gain[5] = util::linspace(
+          1.0f, pecrystalizer->intensities[5], pecrystalizer->ndivs);
       break;
     case PROP_INTENSITY_BAND6:
       pecrystalizer->intensities[6] = g_value_get_float(value);
+      pecrystalizer->gain[6] = util::linspace(
+          1.0f, pecrystalizer->intensities[6], pecrystalizer->ndivs);
       break;
     case PROP_INTENSITY_BAND7:
       pecrystalizer->intensities[7] = g_value_get_float(value);
+      pecrystalizer->gain[7] = util::linspace(
+          1.0f, pecrystalizer->intensities[7], pecrystalizer->ndivs);
       break;
     case PROP_INTENSITY_BAND8:
       pecrystalizer->intensities[8] = g_value_get_float(value);
+      pecrystalizer->gain[8] = util::linspace(
+          1.0f, pecrystalizer->intensities[8], pecrystalizer->ndivs);
       break;
     case PROP_INTENSITY_BAND9:
       pecrystalizer->intensities[9] = g_value_get_float(value);
+      pecrystalizer->gain[9] = util::linspace(
+          1.0f, pecrystalizer->intensities[9], pecrystalizer->ndivs);
       break;
     case PROP_INTENSITY_BAND10:
       pecrystalizer->intensities[10] = g_value_get_float(value);
+      pecrystalizer->gain[10] = util::linspace(
+          1.0f, pecrystalizer->intensities[10], pecrystalizer->ndivs);
       break;
     case PROP_INTENSITY_BAND11:
       pecrystalizer->intensities[11] = g_value_get_float(value);
+      pecrystalizer->gain[11] = util::linspace(
+          1.0f, pecrystalizer->intensities[11], pecrystalizer->ndivs);
       break;
     case PROP_INTENSITY_BAND12:
       pecrystalizer->intensities[12] = g_value_get_float(value);
+      pecrystalizer->gain[12] = util::linspace(
+          1.0f, pecrystalizer->intensities[12], pecrystalizer->ndivs);
       break;
     case PROP_MUTE_BAND0:
       pecrystalizer->mute[0] = g_value_get_boolean(value);
@@ -392,6 +429,9 @@ void gst_pecrystalizer_set_property(GObject* object,
       break;
     case PROP_BYPASS_BAND12:
       pecrystalizer->bypass[12] = g_value_get_boolean(value);
+      break;
+    case PROP_AGGRESSIVE:
+      pecrystalizer->aggressive = g_value_get_boolean(value);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -530,6 +570,9 @@ void gst_pecrystalizer_get_property(GObject* object,
       break;
     case PROP_RANGE_AFTER:
       g_value_set_float(value, pecrystalizer->range_after);
+      break;
+    case PROP_AGGRESSIVE:
+      g_value_set_boolean(value, pecrystalizer->aggressive);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);

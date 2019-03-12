@@ -2,6 +2,7 @@
 #define CRYSTALIZER_UI_HPP
 
 #include <gtkmm/grid.h>
+#include <gtkmm/togglebutton.h>
 #include "plugin_ui_base.hpp"
 
 class CrystalizerUi : public Gtk::Grid, public PluginUiBase {
@@ -20,6 +21,7 @@ class CrystalizerUi : public Gtk::Grid, public PluginUiBase {
 
   Gtk::LevelBar *range_before, *range_after;
   Gtk::Label *range_before_label, *range_after_label;
+  Gtk::ToggleButton* aggressive;
 
   Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain;
 
