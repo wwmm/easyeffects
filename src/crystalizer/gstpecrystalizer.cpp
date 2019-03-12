@@ -679,15 +679,23 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
 
     pecrystalizer->filters[n]->process(pecrystalizer->band_data[n].data());
 
+    /*
+      Later we will need to calculate the second derivative of each band. This
+      is done through the central difference method. In order to calculate
+      themderivative at the last elementsof the array we have to now the first
+      element of the next buffer. As we do not have this information the only
+      way to do this calculation is delaying the signal by 1 sample.
+    */
+
     // last (R,L) becomes the first
     std::rotate(pecrystalizer->band_data[n].rbegin(),
                 pecrystalizer->band_data[n].rbegin() + 2,
                 pecrystalizer->band_data[n].rend());
 
     if (!pecrystalizer->ready) {
-      /*pecrystalizer->data was rotated. Its first values are the
-        last ones from the data array. Now we save the last (R,L) values for the
-        next round
+      /*pecrystalizer->band_data was rotated. Its first values are the
+        last ones from the original array. Now we save the last (R,L) values for
+        the next round
       */
       pecrystalizer->delayed_L[n] = pecrystalizer->band_data[n][0];
       pecrystalizer->delayed_R[n] = pecrystalizer->band_data[n][1];
@@ -695,9 +703,17 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
       // first elements becomes silence
       pecrystalizer->band_data[n][0] = 0.0f;
       pecrystalizer->band_data[n][1] = 0.0f;
+
+      pecrystalizer->last_L[n] = 0.0f;
+      pecrystalizer->last_R[n] = 0.0f;
+
+      if (n == NBANDS - 1) {
+        pecrystalizer->ready = true;
+      }
     } else {
-      /*pecrystalizer->data was rotated. Its first values are the
-        last ones from the data array. we have to save them for the next round.
+      /*pecrystalizer->band_data was rotated. Its first values are the
+        last ones from the original array. we have to save them for the next
+        round.
       */
       float L = pecrystalizer->band_data[n][0];
       float R = pecrystalizer->band_data[n][1];
@@ -712,15 +728,6 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
       pecrystalizer->delayed_L[n] = L;
       pecrystalizer->delayed_R[n] = R;
     }
-  }
-
-  if (!pecrystalizer->ready) {
-    for (uint n = 0; n < NBANDS; n++) {
-      pecrystalizer->last_L[n] = pecrystalizer->band_data[n][0];
-      pecrystalizer->last_R[n] = pecrystalizer->band_data[n][1];
-    }
-
-    pecrystalizer->ready = true;
   }
 
   /* Measure loudness range before the processing. We have to use the last
