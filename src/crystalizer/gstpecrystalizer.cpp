@@ -262,6 +262,7 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->ebur_state_after = nullptr;
 
   pecrystalizer->ndivs = 100;
+  pecrystalizer->dv = 1.0f / pecrystalizer->ndivs;
   pecrystalizer->aggressive = false;
 
   pecrystalizer->sinkpad =
@@ -835,6 +836,38 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
             L - pecrystalizer->intensities[n] * d2L;
         pecrystalizer->band_data[n][2 * m + 1] =
             R - pecrystalizer->intensities[n] * d2R;
+
+        /*
+          Aggressive mode applies a amplitude dependent gain to every sample in
+          the signal
+        */
+
+        if (pecrystalizer->aggressive &&
+            pecrystalizer->intensities[n] > 1.01f) {
+          uint idx_L = floorf(fabsf(L) / pecrystalizer->dv);
+          uint idx_R = floorf(fabsf(R) / pecrystalizer->dv);
+
+          if (idx_L < 0) {
+            idx_L = 0;
+          } else if (idx_L > pecrystalizer->gain[n].size()) {
+            idx_L = pecrystalizer->gain[n].size() - 1;
+          }
+
+          if (idx_R < 0) {
+            idx_R = 0;
+          } else if (idx_R > pecrystalizer->gain[n].size()) {
+            idx_R = pecrystalizer->gain[n].size() - 1;
+          }
+
+          float vL = pecrystalizer->band_data[n][2 * m];
+          float vR = pecrystalizer->band_data[n][2 * m + 1];
+
+          pecrystalizer->band_data[n][2 * m] =
+              vL * pecrystalizer->gain[n][idx_L];
+
+          pecrystalizer->band_data[n][2 * m + 1] =
+              vR * pecrystalizer->gain[n][idx_R];
+        }
 
         if (m == pecrystalizer->nsamples - 1) {
           pecrystalizer->last_L[n] = L;

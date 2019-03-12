@@ -43,6 +43,7 @@ struct _GstPecrystalizer {
   uint nsamples;
   int notify_samples;  // number of samples to count before emit a notify
   int sample_count, ndivs;
+  float dv;
 
   std::array<Filter*, NBANDS> filters;
   std::array<std::vector<float>, NBANDS> band_data, gain;
