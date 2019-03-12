@@ -619,6 +619,8 @@ static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer) {
 
     pecrystalizer->aux_data.resize(2 * pecrystalizer->nsamples);
 
+    pecrystalizer->deriv2.resize(2 * pecrystalizer->nsamples);
+
     /*
       Bandpass transition band has to be twice the value used for lowpass and
       highpass. This way all filters will have the same delay.
@@ -718,54 +720,56 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
 
   memcpy(pecrystalizer->aux_data.data(), data, map.size);
 
-  /*This algorithm is based on the one from FFMPEG crystalizer plugin
-   *https://git.ffmpeg.org/gitweb/ffmpeg.git/blob_plain/HEAD:/libavfilter/af_crystalizer.c
-   */
-
   for (uint n = 0; n < NBANDS; n++) {
     if (!pecrystalizer->bypass[n]) {
       for (uint m = 0; m < pecrystalizer->nsamples; m++) {
-        float v1_L = 0.0f, v1_R = 0.0f, v2_L = 0.0f, v2_R = 0.0f;
-
         float L = pecrystalizer->last_data[n][2 * m];
         float R = pecrystalizer->last_data[n][2 * m + 1];
 
-        // ffmpeg algorithm
-
-        v1_L =
-            L + (L - pecrystalizer->last_L[n]) * pecrystalizer->intensities[n];
-        v1_R =
-            R + (R - pecrystalizer->last_R[n]) * pecrystalizer->intensities[n];
-
-        /*
-         The modification below avoids time shifts in the signal and a few
-         undesirable distortions in the waveform. See the graph made by
-         /util/crystalizer.py. But there is a catch. In other to apply ffmpeg
-         algorithm in reverse order to a live stream we need information from
-         the future. In other words we need to know the first data point of the
-         next audio buffer! That is why we are delaying the output by 1 buffer.
-         What will add latency :-( It is life...
-        */
-
-        if (m < pecrystalizer->nsamples - 1) {
+        if (m > 0 && m < pecrystalizer->nsamples - 1) {
+          float L_lower = pecrystalizer->last_data[n][2 * (m - 1)];
+          float R_lower = pecrystalizer->last_data[n][2 * (m - 1) + 1];
           float L_upper = pecrystalizer->last_data[n][2 * (m + 1)];
           float R_upper = pecrystalizer->last_data[n][2 * (m + 1) + 1];
 
-          v2_L = L + (L - L_upper) * pecrystalizer->intensities[n];
-          v2_R = R + (R - R_upper) * pecrystalizer->intensities[n];
-        } else {
-          float l = pecrystalizer->band_data[n][0];
-          float r = pecrystalizer->band_data[n][1];
+          pecrystalizer->deriv2[2 * m] = L_upper - 2 * L + L_lower;
+          pecrystalizer->deriv2[2 * m + 1] = R_upper - 2 * R + R_lower;
+        } else if (m == 0) {
+          float L_upper = pecrystalizer->last_data[n][2 * (m + 1)];
+          float R_upper = pecrystalizer->last_data[n][2 * (m + 1) + 1];
 
-          v2_L = L + (L - l) * pecrystalizer->intensities[n];
-          v2_R = R + (R - r) * pecrystalizer->intensities[n];
+          pecrystalizer->deriv2[2 * m] =
+              L_upper - 2 * L + pecrystalizer->last_L[n];
+          pecrystalizer->deriv2[2 * m + 1] =
+              R_upper - 2 * R + pecrystalizer->last_R[n];
+        } else if (m == pecrystalizer->nsamples - 1) {
+          float L_upper = pecrystalizer->band_data[n][0];
+          float R_upper = pecrystalizer->band_data[n][1];
+          float L_lower = pecrystalizer->last_data[n][2 * (m - 1)];
+          float R_lower = pecrystalizer->last_data[n][2 * (m - 1) + 1];
+
+          pecrystalizer->deriv2[2 * m] = L_upper - 2 * L + L_lower;
+          pecrystalizer->deriv2[2 * m + 1] = R_upper - 2 * R + R_lower;
         }
+      }
 
-        pecrystalizer->last_data[n][2 * m] = 0.5f * (v1_L + v2_L);
-        pecrystalizer->last_data[n][2 * m + 1] = 0.5f * (v1_R + v2_R);
+      for (uint m = 0; m < pecrystalizer->nsamples; m++) {
+        float L = pecrystalizer->last_data[n][2 * m];
+        float R = pecrystalizer->last_data[n][2 * m + 1];
+        float dL = pecrystalizer->deriv2[2 * m];
+        float dR = pecrystalizer->deriv2[2 * m + 1];
 
-        pecrystalizer->last_L[n] = L;
-        pecrystalizer->last_R[n] = R;
+        // peak enhancing using second derivative
+
+        pecrystalizer->last_data[n][2 * m] =
+            L - pecrystalizer->intensities[n] * dL;
+        pecrystalizer->last_data[n][2 * m + 1] =
+            R - pecrystalizer->intensities[n] * dR;
+
+        if (m == pecrystalizer->nsamples - 1) {
+          pecrystalizer->last_L[n] = L;
+          pecrystalizer->last_R[n] = R;
+        }
       }
     } else {
       pecrystalizer->last_L[n] =

@@ -13,26 +13,21 @@ t = wave_x
 original = wave_y
 
 processed = np.copy(original)
+deriv2 = np.zeros(original.size)
 
 intensity = 4.0
-last_v = processed[0]
+
+
+for n in range(original.size):
+    if n > 0 and n < original.size - 1:
+        deriv2[n] = original[n + 1] - 2 * original[n] + original[n - 1]
+    elif n == 0:
+        deriv2[0] = original[n + 1] - 2 * original[n] + original[n]
+    elif n == original.size - 1:
+        deriv2[n] = original[n] - 2 * original[n] + original[n - 1]
 
 for n in range(processed.size):
-    v = processed[n]
-
-    v1 = v + (v - last_v) * intensity
-
-    v2 = 0.0
-    if n < processed.size - 1:
-        v2 = v + (v - processed[n + 1]) * intensity
-    else:
-        # the correct thing to do would be to take the first element of the
-        # next buffer and do the same as above. This is done in our plugin code
-        v2 = v + (last_v - v) * intensity
-
-    processed[n] = 0.5 * (v1 + v2)
-
-    last_v = v
+    processed[n] -= intensity * deriv2[n]
 
 
 peak_original = np.amax(np.fabs(original))

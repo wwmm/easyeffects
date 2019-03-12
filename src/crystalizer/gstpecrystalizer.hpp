@@ -49,6 +49,7 @@ struct _GstPecrystalizer {
   std::array<float, NBANDS> last_L, last_R;
 
   std::vector<float> aux_data;
+  std::vector<float> deriv2;  // second derivative
 
   ebur128_state *ebur_state_before, *ebur_state_after;
 
