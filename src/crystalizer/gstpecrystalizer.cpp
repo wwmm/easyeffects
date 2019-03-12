@@ -261,7 +261,7 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->ebur_state_before = nullptr;
   pecrystalizer->ebur_state_after = nullptr;
 
-  pecrystalizer->ndivs = 100;
+  pecrystalizer->ndivs = 1000;
   pecrystalizer->dv = 1.0f / pecrystalizer->ndivs;
   pecrystalizer->aggressive = false;
 
@@ -842,8 +842,7 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
           the signal
         */
 
-        if (pecrystalizer->aggressive &&
-            pecrystalizer->intensities[n] > 1.01f) {
+        if (pecrystalizer->aggressive && pecrystalizer->gain[n].size() != 0) {
           uint idx_L = floorf(fabsf(L) / pecrystalizer->dv);
           uint idx_R = floorf(fabsf(R) / pecrystalizer->dv);
 
