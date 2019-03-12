@@ -4,7 +4,7 @@
 
 ### Added
 - Chinese and Turkish translations.
-- Crystalizer plugin shows the dynamic range before and after processing.
+- Crystalizer plugin shows the loudness range before and after processing.
 
 ## [4.5.5]
 ### Fixed
