@@ -674,6 +674,21 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
 
   float* data = (float*)map.data;
 
+  /* Measure loudness range before the processing. Rigorously speaking we should
+     add the band_data arrays because we will delay output by 1 sample. But I
+     think this sample will not affect the measruing that much.
+   */
+
+  ebur128_add_frames_float(pecrystalizer->ebur_state_before, data,
+                           pecrystalizer->nsamples);
+
+  if (EBUR128_SUCCESS !=
+      ebur128_loudness_range(pecrystalizer->ebur_state_before, &range)) {
+    ebur_failed = true;
+  } else {
+    pecrystalizer->range_before = (float)range;
+  }
+
   for (uint n = 0; n < NBANDS; n++) {
     memcpy(pecrystalizer->band_data[n].data(), data, map.size);
 
@@ -728,20 +743,6 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
       pecrystalizer->delayed_L[n] = L;
       pecrystalizer->delayed_R[n] = R;
     }
-  }
-
-  /* Measure loudness range before the processing. We have to use the last
-     buffer
-   */
-
-  ebur128_add_frames_float(pecrystalizer->ebur_state_before, data,
-                           pecrystalizer->nsamples);
-
-  if (EBUR128_SUCCESS !=
-      ebur128_loudness_range(pecrystalizer->ebur_state_before, &range)) {
-    ebur_failed = true;
-  } else {
-    pecrystalizer->range_before = (float)range;
   }
 
   for (uint n = 0; n < NBANDS; n++) {
@@ -816,9 +817,6 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
       }
     }
   }
-
-  ebur128_add_frames_float(pecrystalizer->ebur_state_after, data,
-                           pecrystalizer->nsamples);
 
   // Measure loudness range after the processing
 

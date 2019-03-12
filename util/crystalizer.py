@@ -15,7 +15,7 @@ original = wave_y
 processed = np.copy(original)
 deriv2 = np.zeros(original.size)
 
-intensity = 4.0
+intensity = 2.0
 
 # the boundaries are better handled in the plugin code
 
