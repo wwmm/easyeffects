@@ -4,8 +4,8 @@
 
 ### Added
 - Chinese and Turkish translations.
-- Crystalizer plugin shows the loudness range before and after processing. Some improvements
-to its algorithm were also done.
+- Crystalizer plugin shows the loudness range before and after processing. Some
+improvements to its algorithm were also done.
 
 ## [4.5.5]
 ### Fixed
