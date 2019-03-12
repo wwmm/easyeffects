@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2019-02-22 21:08-0300\n"
+"POT-Creation-Date: 2019-03-12 13:45-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -117,7 +117,7 @@ msgstr "Disattiva il segnale originale e ascolta esclusivamente le armoniche."
 #: C/limiter.page:82 C/loudness.page:44 C/multibandcompressor.page:128
 #: C/multibandgate.page:136 C/reverb.page:97 C/stereotools.page:96
 #: C/crossfeed.page:35 C/equalizer.page:230 C/pitch.page:87 C/webrtc.page:140
-#: C/crystalizer.page:45 C/convolver.page:42 C/autogain.page:87
+#: C/crystalizer.page:43 C/convolver.page:42 C/autogain.page:87
 msgid "References"
 msgstr "Riferimenti"
 
@@ -902,7 +902,7 @@ msgid "PulseEffects uses the multiband compressor developed by Calf Studio."
 msgstr "PulseEffects usa il compressore multibanda sviluppato da Calf Studio."
 
 #. (itstool) path: title/em
-#: C/multibandcompressor.page:70 C/multibandgate.page:78 C/crystalizer.page:29
+#: C/multibandcompressor.page:70 C/multibandgate.page:78 C/crystalizer.page:27
 msgid "Bypass"
 msgstr "Ignora"
 
@@ -1567,7 +1567,7 @@ msgid "Makes this band the only one active."
 msgstr "Rende questa banda l'unica attiva."
 
 #. (itstool) path: title/em
-#: C/equalizer.page:195 C/crystalizer.page:37
+#: C/equalizer.page:195 C/crystalizer.page:35
 msgid "Mute"
 msgstr "Muto"
 
@@ -1882,24 +1882,17 @@ msgstr "Cristalizzatore"
 #. (itstool) path: page/p
 #: C/crystalizer.page:10
 msgid ""
-"PulseEffects crystalizer is a port of the FFMPEG crystalizer code to the "
-"GStreamer framework. We only added on top of it the possibility of applying "
-"different intensities for different frequency ranges. This plugin can be "
-"used to add dynamic range to songs that were overly compressed"
+"This plugin can be used to add a little of dynamic range to songs that were "
+"overly compressed"
 msgstr ""
-"Il cristallizzatore di PulseEffects è un adattamento del codice del "
-"cristallizzatore FFMPEG alla struttura di GStreamer. Aggiungiamo solo la "
-"possibilità di applicare intensità diverse per diverse bande di frequenza. "
-"Questo plugin può essere utilizzato per aggiungere un intervallo dinamico ai "
-"brani eccessivamente compressi"
 
 #. (itstool) path: title/em
-#: C/crystalizer.page:19
+#: C/crystalizer.page:17
 msgid "Intensities"
 msgstr "Intensità"
 
 #. (itstool) path: item/p
-#: C/crystalizer.page:21
+#: C/crystalizer.page:19
 msgid ""
 "The higher the value the higher is the difference in magnitude between the "
 "loudest and the quietest sounds. You can set different intensities for each "
@@ -1909,7 +1902,7 @@ msgstr ""
 "forti e deboli. Puoi impostare intensità diverse per ogni banda di frequenza."
 
 #. (itstool) path: item/p
-#: C/crystalizer.page:31
+#: C/crystalizer.page:29
 msgid ""
 "When active the audio signal passing through this band will not be modified."
 msgstr ""
@@ -1917,7 +1910,7 @@ msgstr ""
 "modificato."
 
 #. (itstool) path: item/p
-#: C/crystalizer.page:39
+#: C/crystalizer.page:37
 msgid "Silence the band."
 msgstr "Silenzia la banda."
 
@@ -2577,6 +2570,19 @@ msgstr ""
 "Applicazioni\". Ciò può essere fatto usando una lista nera. Basta aggiungere "
 "il nome dell'applicazione esattamente come mostrato nella voce \"Applicazioni"
 "\"."
+
+#~ msgid ""
+#~ "PulseEffects crystalizer is a port of the FFMPEG crystalizer code to the "
+#~ "GStreamer framework. We only added on top of it the possibility of "
+#~ "applying different intensities for different frequency ranges. This "
+#~ "plugin can be used to add dynamic range to songs that were overly "
+#~ "compressed"
+#~ msgstr ""
+#~ "Il cristallizzatore di PulseEffects è un adattamento del codice del "
+#~ "cristallizzatore FFMPEG alla struttura di GStreamer. Aggiungiamo solo la "
+#~ "possibilità di applicare intensità diverse per diverse bande di "
+#~ "frequenza. Questo plugin può essere utilizzato per aggiungere un "
+#~ "intervallo dinamico ai brani eccessivamente compressi"
 
 #~ msgid "Band Splitting"
 #~ msgstr "Divisione di Banda"

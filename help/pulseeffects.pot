@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-02-22 21:08-0300\n"
+"POT-Creation-Date: 2019-03-12 13:45-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -129,7 +129,7 @@ msgstr ""
 #: C/equalizer.page:230
 #: C/pitch.page:87
 #: C/webrtc.page:140
-#: C/crystalizer.page:45
+#: C/crystalizer.page:43
 #: C/convolver.page:42
 #: C/autogain.page:87
 msgid "References"
@@ -786,7 +786,7 @@ msgstr ""
 #. (itstool) path: title/em
 #: C/multibandcompressor.page:70
 #: C/multibandgate.page:78
-#: C/crystalizer.page:29
+#: C/crystalizer.page:27
 msgid "Bypass"
 msgstr ""
 
@@ -1313,7 +1313,7 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/equalizer.page:195
-#: C/crystalizer.page:37
+#: C/crystalizer.page:35
 msgid "Mute"
 msgstr ""
 
@@ -1572,26 +1572,26 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/crystalizer.page:10
-msgid "PulseEffects crystalizer is a port of the FFMPEG crystalizer code to the GStreamer framework. We only added on top of it the possibility of applying different intensities for different frequency ranges. This plugin can be used to add dynamic range to songs that were overly compressed"
+msgid "This plugin can be used to add a little of dynamic range to songs that were overly compressed"
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/crystalizer.page:19
+#: C/crystalizer.page:17
 msgid "Intensities"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/crystalizer.page:21
+#: C/crystalizer.page:19
 msgid "The higher the value the higher is the difference in magnitude between the loudest and the quietest sounds. You can set different intensities for each frequency band."
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/crystalizer.page:31
+#: C/crystalizer.page:29
 msgid "When active the audio signal passing through this band will not be modified."
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/crystalizer.page:39
+#: C/crystalizer.page:37
 msgid "Silence the band."
 msgstr ""
 

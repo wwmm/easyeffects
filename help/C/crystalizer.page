@@ -8,10 +8,8 @@
     </info>
     <title>Crystalizer</title>
     <p>
-        PulseEffects crystalizer is a port of the FFMPEG crystalizer code to the
-        GStreamer framework. We only added on top of it the possibility of applying
-        different intensities for different frequency ranges. This plugin can be used to
-        add dynamic range to songs that were overly compressed
+        This plugin can be used to add a little of dynamic range to songs that were
+        overly compressed
     </p>
     <terms>
         <item>
