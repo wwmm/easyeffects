@@ -9,6 +9,9 @@ void CrystalizerPreset::save(boost::property_tree::ptree& root,
                              const Glib::RefPtr<Gio::Settings>& settings) {
   root.put(section + ".crystalizer.state", settings->get_boolean("state"));
 
+  root.put(section + ".crystalizer.aggressive",
+           settings->get_boolean("aggressive"));
+
   root.put(section + ".crystalizer.input-gain",
            settings->get_double("input-gain"));
 
@@ -31,6 +34,9 @@ void CrystalizerPreset::load(boost::property_tree::ptree& root,
                              const std::string& section,
                              const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".crystalizer.state");
+
+  update_key<bool>(root, settings, "aggressive",
+                   section + ".crystalizer.aggressive");
 
   update_key<double>(root, settings, "input-gain",
                      section + ".crystalizer.input-gain");
