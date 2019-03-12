@@ -722,6 +722,8 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
 
   for (uint n = 0; n < NBANDS; n++) {
     if (!pecrystalizer->bypass[n]) {
+      // Calculating second derivative
+
       for (uint m = 0; m < pecrystalizer->nsamples; m++) {
         float L = pecrystalizer->last_data[n][2 * m];
         float R = pecrystalizer->last_data[n][2 * m + 1];
@@ -753,13 +755,13 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
         }
       }
 
+      // peak enhancing using second derivative
+
       for (uint m = 0; m < pecrystalizer->nsamples; m++) {
         float L = pecrystalizer->last_data[n][2 * m];
         float R = pecrystalizer->last_data[n][2 * m + 1];
         float d2L = pecrystalizer->deriv2[2 * m];
         float d2R = pecrystalizer->deriv2[2 * m + 1];
-
-        // peak enhancing using second derivative
 
         pecrystalizer->last_data[n][2 * m] =
             L - pecrystalizer->intensities[n] * d2L;

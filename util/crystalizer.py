@@ -17,6 +17,7 @@ deriv2 = np.zeros(original.size)
 
 intensity = 4.0
 
+# the boundaries are better handled in the plugin code
 
 for n in range(original.size):
     if n > 0 and n < original.size - 1:
