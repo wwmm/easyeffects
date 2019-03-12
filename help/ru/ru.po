@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-03-12 13:45-0300\n"
+"POT-Creation-Date: 2019-03-12 16:16-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "MIME-Version: 1.0\n"
@@ -120,7 +120,7 @@ msgstr "Выключить исходный сигнал и прослушать
 #: C/limiter.page:82 C/loudness.page:44 C/multibandcompressor.page:128
 #: C/multibandgate.page:136 C/reverb.page:97 C/stereotools.page:96
 #: C/crossfeed.page:35 C/equalizer.page:230 C/pitch.page:87 C/webrtc.page:140
-#: C/crystalizer.page:43 C/convolver.page:42 C/autogain.page:87
+#: C/crystalizer.page:53 C/convolver.page:42 C/autogain.page:87
 msgid "References"
 msgstr "Отклики"
 
@@ -847,7 +847,7 @@ msgstr ""
 "PulseEffects использует плагин для усиления басов, разработанный Calf Studio."
 
 #. (itstool) path: title/em
-#: C/multibandcompressor.page:70 C/multibandgate.page:78 C/crystalizer.page:27
+#: C/multibandcompressor.page:70 C/multibandgate.page:78 C/crystalizer.page:37
 msgid "Bypass"
 msgstr ""
 
@@ -1435,7 +1435,7 @@ msgid "Makes this band the only one active."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/equalizer.page:195 C/crystalizer.page:35
+#: C/equalizer.page:195 C/crystalizer.page:45
 msgid "Mute"
 msgstr ""
 
@@ -1723,11 +1723,25 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/crystalizer.page:17
+#, fuzzy
+msgid "Aggressive Mode"
+msgstr "Компрессор"
+
+#. (itstool) path: item/p
+#: C/crystalizer.page:19
+msgid ""
+"When this option is enabled sample amplitude dependent amplification will be "
+"applied to the signal. Take care to not saturate the next plugin in the "
+"processing chain."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/crystalizer.page:27
 msgid "Intensities"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/crystalizer.page:19
+#: C/crystalizer.page:29
 msgid ""
 "The higher the value the higher is the difference in magnitude between the "
 "loudest and the quietest sounds. You can set different intensities for each "
@@ -1735,13 +1749,13 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/crystalizer.page:29
+#: C/crystalizer.page:39
 msgid ""
 "When active the audio signal passing through this band will not be modified."
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/crystalizer.page:37
+#: C/crystalizer.page:47
 msgid "Silence the band."
 msgstr ""
 

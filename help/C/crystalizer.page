@@ -14,6 +14,16 @@
     <terms>
         <item>
             <title>
+                <em style="strong" its:withinText="nested">Aggressive Mode</em>
+            </title>
+            <p>
+                When this option is enabled sample amplitude dependent amplification will be
+                applied to the signal. Take care to not saturate the next plugin in the
+                processing chain.
+            </p>
+        </item>
+        <item>
+            <title>
                 <em style="strong" its:withinText="nested">Intensities</em>
             </title>
             <p>
