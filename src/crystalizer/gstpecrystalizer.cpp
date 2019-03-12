@@ -15,6 +15,7 @@
 #include "gstpecrystalizer.hpp"
 #include <gst/audio/gstaudiofilter.h>
 #include <gst/gst.h>
+#include <algorithm>
 #include <cmath>
 #include "config.h"
 
@@ -613,11 +614,7 @@ static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer) {
   if (pecrystalizer->rate != 0) {
     for (uint n = 0; n < NBANDS; n++) {
       pecrystalizer->band_data[n].resize(2 * pecrystalizer->nsamples);
-
-      pecrystalizer->last_data[n].resize(2 * pecrystalizer->nsamples);
     }
-
-    pecrystalizer->aux_data.resize(2 * pecrystalizer->nsamples);
 
     pecrystalizer->deriv2.resize(2 * pecrystalizer->nsamples);
 
@@ -681,34 +678,56 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
     memcpy(pecrystalizer->band_data[n].data(), data, map.size);
 
     pecrystalizer->filters[n]->process(pecrystalizer->band_data[n].data());
+
+    // last (R,L) becomes the first
+    std::rotate(pecrystalizer->band_data[n].rbegin(),
+                pecrystalizer->band_data[n].rbegin() + 2,
+                pecrystalizer->band_data[n].rend());
+
+    if (!pecrystalizer->ready) {
+      /*pecrystalizer->data was rotated. Its first values are the
+        last ones from the data array. Now we save the last (R,L) values for the
+        next round
+      */
+      pecrystalizer->delayed_L[n] = pecrystalizer->band_data[n][0];
+      pecrystalizer->delayed_R[n] = pecrystalizer->band_data[n][1];
+
+      // first elements becomes silence
+      pecrystalizer->band_data[n][0] = 0.0f;
+      pecrystalizer->band_data[n][1] = 0.0f;
+    } else {
+      /*pecrystalizer->data was rotated. Its first values are the
+        last ones from the data array. we have to save them for the next round.
+      */
+      float L = pecrystalizer->band_data[n][0];
+      float R = pecrystalizer->band_data[n][1];
+
+      /*the previously delayed (R,L) pair becomes the first element of this
+        round.
+       */
+      pecrystalizer->band_data[n][0] = pecrystalizer->delayed_L[n];
+      pecrystalizer->band_data[n][1] = pecrystalizer->delayed_R[n];
+
+      // saving the last (R,L) values for the next round
+      pecrystalizer->delayed_L[n] = L;
+      pecrystalizer->delayed_R[n] = R;
+    }
   }
 
   if (!pecrystalizer->ready) {
     for (uint n = 0; n < NBANDS; n++) {
       pecrystalizer->last_L[n] = pecrystalizer->band_data[n][0];
       pecrystalizer->last_R[n] = pecrystalizer->band_data[n][1];
-
-      memcpy(pecrystalizer->last_data[n].data(),
-             pecrystalizer->band_data[n].data(), map.size);
     }
 
     pecrystalizer->ready = true;
-
-    memcpy(pecrystalizer->aux_data.data(), data, map.size);
-
-    gst_buffer_unmap(buffer, &map);
-
-    gst_buffer_resize(buffer, 0, 0);
-
-    return;
   }
 
   /* Measure loudness range before the processing. We have to use the last
      buffer
    */
 
-  ebur128_add_frames_float(pecrystalizer->ebur_state_before,
-                           pecrystalizer->aux_data.data(),
+  ebur128_add_frames_float(pecrystalizer->ebur_state_before, data,
                            pecrystalizer->nsamples);
 
   if (EBUR128_SUCCESS !=
@@ -718,37 +737,35 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
     pecrystalizer->range_before = (float)range;
   }
 
-  memcpy(pecrystalizer->aux_data.data(), data, map.size);
-
   for (uint n = 0; n < NBANDS; n++) {
     if (!pecrystalizer->bypass[n]) {
       // Calculating second derivative
 
       for (uint m = 0; m < pecrystalizer->nsamples; m++) {
-        float L = pecrystalizer->last_data[n][2 * m];
-        float R = pecrystalizer->last_data[n][2 * m + 1];
+        float L = pecrystalizer->band_data[n][2 * m];
+        float R = pecrystalizer->band_data[n][2 * m + 1];
 
         if (m > 0 && m < pecrystalizer->nsamples - 1) {
-          float L_lower = pecrystalizer->last_data[n][2 * (m - 1)];
-          float R_lower = pecrystalizer->last_data[n][2 * (m - 1) + 1];
-          float L_upper = pecrystalizer->last_data[n][2 * (m + 1)];
-          float R_upper = pecrystalizer->last_data[n][2 * (m + 1) + 1];
+          float L_lower = pecrystalizer->band_data[n][2 * (m - 1)];
+          float R_lower = pecrystalizer->band_data[n][2 * (m - 1) + 1];
+          float L_upper = pecrystalizer->band_data[n][2 * (m + 1)];
+          float R_upper = pecrystalizer->band_data[n][2 * (m + 1) + 1];
 
           pecrystalizer->deriv2[2 * m] = L_upper - 2 * L + L_lower;
           pecrystalizer->deriv2[2 * m + 1] = R_upper - 2 * R + R_lower;
         } else if (m == 0) {
-          float L_upper = pecrystalizer->last_data[n][2 * (m + 1)];
-          float R_upper = pecrystalizer->last_data[n][2 * (m + 1) + 1];
+          float L_upper = pecrystalizer->band_data[n][2 * (m + 1)];
+          float R_upper = pecrystalizer->band_data[n][2 * (m + 1) + 1];
 
           pecrystalizer->deriv2[2 * m] =
               L_upper - 2 * L + pecrystalizer->last_L[n];
           pecrystalizer->deriv2[2 * m + 1] =
               R_upper - 2 * R + pecrystalizer->last_R[n];
         } else if (m == pecrystalizer->nsamples - 1) {
-          float L_upper = pecrystalizer->band_data[n][0];
-          float R_upper = pecrystalizer->band_data[n][1];
-          float L_lower = pecrystalizer->last_data[n][2 * (m - 1)];
-          float R_lower = pecrystalizer->last_data[n][2 * (m - 1) + 1];
+          float L_upper = pecrystalizer->delayed_L[n];
+          float R_upper = pecrystalizer->delayed_R[n];
+          float L_lower = pecrystalizer->band_data[n][2 * (m - 1)];
+          float R_lower = pecrystalizer->band_data[n][2 * (m - 1) + 1];
 
           pecrystalizer->deriv2[2 * m] = L_upper - 2 * L + L_lower;
           pecrystalizer->deriv2[2 * m + 1] = R_upper - 2 * R + R_lower;
@@ -758,14 +775,14 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
       // peak enhancing using second derivative
 
       for (uint m = 0; m < pecrystalizer->nsamples; m++) {
-        float L = pecrystalizer->last_data[n][2 * m];
-        float R = pecrystalizer->last_data[n][2 * m + 1];
+        float L = pecrystalizer->band_data[n][2 * m];
+        float R = pecrystalizer->band_data[n][2 * m + 1];
         float d2L = pecrystalizer->deriv2[2 * m];
         float d2R = pecrystalizer->deriv2[2 * m + 1];
 
-        pecrystalizer->last_data[n][2 * m] =
+        pecrystalizer->band_data[n][2 * m] =
             L - pecrystalizer->intensities[n] * d2L;
-        pecrystalizer->last_data[n][2 * m + 1] =
+        pecrystalizer->band_data[n][2 * m + 1] =
             R - pecrystalizer->intensities[n] * d2R;
 
         if (m == pecrystalizer->nsamples - 1) {
@@ -775,9 +792,9 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
       }
     } else {
       pecrystalizer->last_L[n] =
-          pecrystalizer->last_data[n][2 * pecrystalizer->nsamples - 2];
+          pecrystalizer->band_data[n][2 * pecrystalizer->nsamples - 2];
       pecrystalizer->last_R[n] =
-          pecrystalizer->last_data[n][2 * pecrystalizer->nsamples - 1];
+          pecrystalizer->band_data[n][2 * pecrystalizer->nsamples - 1];
     }
   }
 
@@ -788,14 +805,9 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
 
     for (uint m = 0; m < pecrystalizer->filters.size(); m++) {
       if (!pecrystalizer->mute[m]) {
-        data[n] += pecrystalizer->last_data[m][n];
+        data[n] += pecrystalizer->band_data[m][n];
       }
     }
-  }
-
-  for (uint n = 0; n < NBANDS; n++) {
-    memcpy(pecrystalizer->last_data[n].data(),
-           pecrystalizer->band_data[n].data(), map.size);
   }
 
   ebur128_add_frames_float(pecrystalizer->ebur_state_after, data,
@@ -850,8 +862,8 @@ static gboolean gst_pecrystalizer_src_query(GstPad* pad,
 
           /* add our own latency */
 
-          latency = gst_util_uint64_scale_round(
-              pecrystalizer->nsamples, GST_SECOND, pecrystalizer->rate);
+          latency =
+              gst_util_uint64_scale_round(1, GST_SECOND, pecrystalizer->rate);
 
           // std::cout << "latency: " << latency << std::endl;
           // std::cout << "n: " << pecrystalizer->inbuf_n_samples

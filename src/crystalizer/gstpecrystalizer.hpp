@@ -45,10 +45,10 @@ struct _GstPecrystalizer {
   int sample_count;
 
   std::array<Filter*, NBANDS> filters;
-  std::array<std::vector<float>, NBANDS> band_data, last_data;
-  std::array<float, NBANDS> last_L, last_R;
+  std::array<std::vector<float>, NBANDS> band_data;
+  std::array<float, NBANDS> last_L, last_R, delayed_L, delayed_R;
 
-  std::vector<float> aux_data, deriv2;
+  std::vector<float> deriv2;
 
   ebur128_state *ebur_state_before, *ebur_state_after;
 
