@@ -2,12 +2,13 @@
 
 ## [Unreleased
 
+## [4.5.6]
 ### Added
 - Chinese and Turkish translations.
 - Improvements to the Crystalizer plugin. It now shows the loudness range before
  and after processing. Some improvements to its algorithm were also done.
  Latency and memory usage were reduced and it now has a toggle button to turn
- on/off an "Aggressive Mode". 
+ on/off an "Aggressive Mode".
 
 ## [4.5.5]
 ### Fixed
