@@ -97,7 +97,8 @@ enum {
   PROP_BYPASS_BAND12,
   PROP_RANGE_BEFORE,
   PROP_RANGE_AFTER,
-  PROP_AGGRESSIVE
+  PROP_AGGRESSIVE,
+  PROP_NOTIFY
 };
 
 /* pad templates */
@@ -221,6 +222,13 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
       gobject_class, PROP_AGGRESSIVE,
       g_param_spec_boolean("aggressive", "Aggressive Mode", "Aggressive Mode",
                            false,
+                           static_cast<GParamFlags>(G_PARAM_READWRITE |
+                                                    G_PARAM_STATIC_STRINGS)));
+
+  g_object_class_install_property(
+      gobject_class, PROP_NOTIFY,
+      g_param_spec_boolean("notify-host", "Notify Host",
+                           "Notify host of variable changes", true,
                            static_cast<GParamFlags>(G_PARAM_READWRITE |
                                                     G_PARAM_STATIC_STRINGS)));
 }
@@ -434,6 +442,9 @@ void gst_pecrystalizer_set_property(GObject* object,
     case PROP_AGGRESSIVE:
       pecrystalizer->aggressive = g_value_get_boolean(value);
       break;
+    case PROP_NOTIFY:
+      pecrystalizer->notify = g_value_get_boolean(value);
+      break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
       break;
@@ -574,6 +585,9 @@ void gst_pecrystalizer_get_property(GObject* object,
       break;
     case PROP_AGGRESSIVE:
       g_value_set_boolean(value, pecrystalizer->aggressive);
+      break;
+    case PROP_NOTIFY:
+      g_value_set_boolean(value, pecrystalizer->notify);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -727,14 +741,16 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
      think this sample will not affect the measruing that much.
    */
 
-  ebur128_add_frames_float(pecrystalizer->ebur_state_before, data,
-                           pecrystalizer->nsamples);
+  if (pecrystalizer->notify) {
+    ebur128_add_frames_float(pecrystalizer->ebur_state_before, data,
+                             pecrystalizer->nsamples);
 
-  if (EBUR128_SUCCESS !=
-      ebur128_loudness_range(pecrystalizer->ebur_state_before, &range)) {
-    ebur_failed = true;
-  } else {
-    pecrystalizer->range_before = (float)range;
+    if (EBUR128_SUCCESS !=
+        ebur128_loudness_range(pecrystalizer->ebur_state_before, &range)) {
+      ebur_failed = true;
+    } else {
+      pecrystalizer->range_before = (float)range;
+    }
   }
 
   for (uint n = 0; n < NBANDS; n++) {
@@ -899,14 +915,16 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer,
 
   // Measure loudness range after the processing
 
-  ebur128_add_frames_float(pecrystalizer->ebur_state_after, data,
-                           pecrystalizer->nsamples);
+  if (pecrystalizer->notify) {
+    ebur128_add_frames_float(pecrystalizer->ebur_state_after, data,
+                             pecrystalizer->nsamples);
 
-  if (EBUR128_SUCCESS !=
-      ebur128_loudness_range(pecrystalizer->ebur_state_after, &range)) {
-    ebur_failed = true;
-  } else {
-    pecrystalizer->range_after = (float)range;
+    if (EBUR128_SUCCESS !=
+        ebur128_loudness_range(pecrystalizer->ebur_state_after, &range)) {
+      ebur_failed = true;
+    } else {
+      pecrystalizer->range_after = (float)range;
+    }
   }
 
   gst_buffer_unmap(buffer, &map);

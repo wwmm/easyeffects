@@ -109,6 +109,9 @@ Crystalizer::~Crystalizer() {
 }
 
 void Crystalizer::bind_to_gsettings() {
+  g_settings_bind(settings, "post-messages", crystalizer, "notify-host",
+                  G_SETTINGS_BIND_DEFAULT);
+
   g_settings_bind(settings, "aggressive", crystalizer, "aggressive",
                   G_SETTINGS_BIND_DEFAULT);
 
