@@ -263,7 +263,7 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   }
 
   pecrystalizer->sample_count = 0;
-  pecrystalizer->notify = true;
+  pecrystalizer->notify = false;
   pecrystalizer->range_before = 0.0f;
   pecrystalizer->range_after = 0.0f;
   pecrystalizer->ebur_state_before = nullptr;
