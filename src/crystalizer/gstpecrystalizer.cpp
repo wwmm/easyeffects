@@ -657,10 +657,14 @@ static gboolean gst_pecrystalizer_stop(GstBaseTransform* base) {
 static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer) {
   if (pecrystalizer->rate != 0) {
     for (uint n = 0; n < NBANDS; n++) {
-      pecrystalizer->band_data[n].resize(2 * pecrystalizer->nsamples);
+      if (pecrystalizer->band_data[n].size() != 2 * pecrystalizer->nsamples) {
+        pecrystalizer->band_data[n].resize(2 * pecrystalizer->nsamples);
+      }
     }
 
-    pecrystalizer->deriv2.resize(2 * pecrystalizer->nsamples);
+    if (pecrystalizer->deriv2.size() != 2 * pecrystalizer->nsamples) {
+      pecrystalizer->deriv2.resize(2 * pecrystalizer->nsamples);
+    }
 
     /*
       Bandpass transition band has to be twice the value used for lowpass and
