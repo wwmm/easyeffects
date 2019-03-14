@@ -1885,12 +1885,13 @@ msgid ""
 "This plugin can be used to add a little of dynamic range to songs that were "
 "overly compressed"
 msgstr ""
+"Questo plugin può essere usato per aggiungere un po di gamma dinamica alle "
+"canzoni eccessivamente compresse"
 
 #. (itstool) path: title/em
 #: C/crystalizer.page:17
-#, fuzzy
 msgid "Aggressive Mode"
-msgstr "Modalità Compressione"
+msgstr "Modalità Aggressiva"
 
 #. (itstool) path: item/p
 #: C/crystalizer.page:19
@@ -1899,6 +1900,9 @@ msgid ""
 "applied to the signal. Take care to not saturate the next plugin in the "
 "processing chain."
 msgstr ""
+"Quando questa opzione è attiva, l'amplificazione legata al campione sarà "
+"applicata al segnale. Presta attenzione nel non saturare il plugin "
+"successivo nella catena di elaborazione."
 
 #. (itstool) path: title/em
 #: C/crystalizer.page:27
