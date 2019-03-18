@@ -46,6 +46,7 @@
         <value nick="BWC (MT)" value="3"/>
         <value nick="LRX (BT)" value="4"/>
         <value nick="LRX (MT)" value="5"/>
+        <value nick="APO (DR)" value="6"/>
     </enum>
     <enum id="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
         <value nick="Off" value="0"/>

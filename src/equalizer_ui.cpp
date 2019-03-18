@@ -105,6 +105,8 @@ gboolean bandmode_enum_to_int(GValue* value,
     g_value_set_int(value, 4);
   } else if (v == std::string("LRX (MT)")) {
     g_value_set_int(value, 5);
+  } else if (v == std::string("APO (DR)")) {
+    g_value_set_int(value, 6);
   }
 
   return true;
@@ -125,8 +127,10 @@ GVariant* int_to_bandmode_enum(const GValue* value,
     return g_variant_new_string("BWC (MT)");
   } else if (v == 4) {
     return g_variant_new_string("LRX (BT)");
-  } else {
+  } else if (v == 5) {
     return g_variant_new_string("LRX (MT)");
+  } else {
+    return g_variant_new_string("APO (DR)");
   }
 }
 
