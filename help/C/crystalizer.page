@@ -54,15 +54,6 @@
         <list>
             <item>
                 <p>
-                    <link
-                        href="https://ffmpeg.org/ffmpeg-filters.html#crystalizer"
-                        its:translate="no">
-                        https://ffmpeg.org/ffmpeg-filters.html#crystalizer
-                    </link>
-                </p>
-            </item>
-            <item>
-                <p>
                     <link href="https://en.wikipedia.org/wiki/Dynamic_range" its:translate="no">
                         https://en.wikipedia.org/wiki/Dynamic_range
                     </link>
