@@ -3,7 +3,7 @@
 ## [Unreleased
 
 ### Added
-- Updated Czech translations.
+- Updated Czech and Turkish translations.
 - Linus Studio Plugins developers kindly added additional filters to their
 parametric equalizer that are implemented just like the biquad filters found
 in Equalizer APO. A very popular equalizer used in Windows. This will help
