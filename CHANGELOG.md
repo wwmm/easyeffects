@@ -2,6 +2,9 @@
 
 ## [Unreleased
 
+### Added
+- Updated Czech translations.
+
 ## [4.5.6]
 ### Added
 - Chinese and Turkish translations.
