@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-03-12 16:16-0300\n"
+"POT-Creation-Date: 2019-03-18 11:59-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -126,7 +126,7 @@ msgstr ""
 #: C/reverb.page:97
 #: C/stereotools.page:96
 #: C/crossfeed.page:35
-#: C/equalizer.page:230
+#: C/equalizer.page:253
 #: C/pitch.page:87
 #: C/webrtc.page:140
 #: C/crystalizer.page:53
@@ -528,7 +528,7 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/filter.page:21
-#: C/equalizer.page:203
+#: C/equalizer.page:226
 msgid "Frequency"
 msgstr ""
 
@@ -804,7 +804,7 @@ msgstr ""
 #. (itstool) path: title/em
 #: C/multibandcompressor.page:87
 #: C/multibandgate.page:95
-#: C/equalizer.page:187
+#: C/equalizer.page:210
 msgid "Solo"
 msgstr ""
 
@@ -1288,69 +1288,79 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/equalizer.page:166
+msgid "<em style=\"strong\">APO</em> - Digital biquad filters derived from canonic analog biquad prototypes digitalized through Bilinear transform. These are <link href=\"https://shepazu.github.io/Audio-EQ-Cookbook/audio-eq-cookbook.html\" its:translate=\"yes\"> textbook filters </link> which are implemented as in the <_:link-1/> software."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/equalizer.page:183
 msgid "<em style=\"strong\">(BT)</em> - Bilinear Z-transform is used for pole/zero mapping."
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/equalizer.page:171
+#: C/equalizer.page:188
 msgid "<em style=\"strong\">(MT)</em> - Matched Z-transform is used for pole/zero mapping."
 msgstr ""
 
+#. (itstool) path: item/p
+#: C/equalizer.page:193
+msgid "<em style=\"strong\">(DR)</em> - Direct design is used to serve the digital filter coefficients directly in the digital domain without performing transforms."
+msgstr ""
+
 #. (itstool) path: title/em
-#: C/equalizer.page:179
+#: C/equalizer.page:202
 msgid "Slope"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/equalizer.page:181
+#: C/equalizer.page:204
 msgid "The slope of the filter characteristics."
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/equalizer.page:189
+#: C/equalizer.page:212
 msgid "Makes this band the only one active."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/equalizer.page:195
+#: C/equalizer.page:218
 #: C/crystalizer.page:45
 msgid "Mute"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/equalizer.page:197
+#: C/equalizer.page:220
 msgid "Mutes the band."
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/equalizer.page:205
+#: C/equalizer.page:228
 msgid "Band center frequency."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/equalizer.page:211
+#: C/equalizer.page:234
 msgid "Width"
 msgstr ""
 
 #. (itstool) path: p/code
-#: C/equalizer.page:215
+#: C/equalizer.page:238
 #, no-wrap
 msgid ""
 "width = frequency / quality"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/equalizer.page:213
+#: C/equalizer.page:236
 msgid "Bandwidth. Calculated as <_:code-1/>."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/equalizer.page:220
+#: C/equalizer.page:243
 msgid "Quality"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/equalizer.page:222
+#: C/equalizer.page:245
 msgid "Quality factor."
 msgstr ""
 

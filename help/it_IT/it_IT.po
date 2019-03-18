@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2019-03-12 16:16-0300\n"
+"POT-Creation-Date: 2019-03-18 11:59-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -116,7 +116,7 @@ msgstr "Disattiva il segnale originale e ascolta esclusivamente le armoniche."
 #: C/exciter.page:77 C/filter.page:47 C/gate.page:96 C/delay.page:33
 #: C/limiter.page:82 C/loudness.page:44 C/multibandcompressor.page:128
 #: C/multibandgate.page:136 C/reverb.page:97 C/stereotools.page:96
-#: C/crossfeed.page:35 C/equalizer.page:230 C/pitch.page:87 C/webrtc.page:140
+#: C/crossfeed.page:35 C/equalizer.page:253 C/pitch.page:87 C/webrtc.page:140
 #: C/crystalizer.page:53 C/convolver.page:42 C/autogain.page:87
 msgid "References"
 msgstr "Riferimenti"
@@ -573,7 +573,7 @@ msgstr ""
 "per rimuovere parti definite di uno spettro di frequenze."
 
 #. (itstool) path: title/em
-#: C/filter.page:21 C/equalizer.page:203
+#: C/filter.page:21 C/equalizer.page:226
 msgid "Frequency"
 msgstr "Frequenza"
 
@@ -921,7 +921,7 @@ msgstr ""
 "valore RMS (più morbido) per il rilevamento."
 
 #. (itstool) path: title/em
-#: C/multibandcompressor.page:87 C/multibandgate.page:95 C/equalizer.page:187
+#: C/multibandcompressor.page:87 C/multibandgate.page:95 C/equalizer.page:210
 msgid "Solo"
 msgstr "Solo"
 
@@ -1536,6 +1536,16 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/equalizer.page:166
 msgid ""
+"<em style=\"strong\">APO</em> - Digital biquad filters derived from canonic "
+"analog biquad prototypes digitalized through Bilinear transform. These are "
+"<link href=\"https://shepazu.github.io/Audio-EQ-Cookbook/audio-eq-cookbook."
+"html\" its:translate=\"yes\"> textbook filters </link> which are implemented "
+"as in the <_:link-1/> software."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/equalizer.page:183
+msgid ""
 "<em style=\"strong\">(BT)</em> - Bilinear Z-transform is used for pole/zero "
 "mapping."
 msgstr ""
@@ -1543,7 +1553,7 @@ msgstr ""
 "la mappatura polo/zero."
 
 #. (itstool) path: item/p
-#: C/equalizer.page:171
+#: C/equalizer.page:188
 msgid ""
 "<em style=\"strong\">(MT)</em> - Matched Z-transform is used for pole/zero "
 "mapping."
@@ -1551,59 +1561,67 @@ msgstr ""
 "<em style=\"strong\">(MT)</em> - La trasformata Z combinata viene utilizzata "
 "per la mappatura polo/zero."
 
+#. (itstool) path: item/p
+#: C/equalizer.page:193
+msgid ""
+"<em style=\"strong\">(DR)</em> - Direct design is used to serve the digital "
+"filter coefficients directly in the digital domain without performing "
+"transforms."
+msgstr ""
+
 #. (itstool) path: title/em
-#: C/equalizer.page:179
+#: C/equalizer.page:202
 msgid "Slope"
 msgstr "Pendenza"
 
 #. (itstool) path: item/p
-#: C/equalizer.page:181
+#: C/equalizer.page:204
 msgid "The slope of the filter characteristics."
 msgstr "La pendenza della curva caratteristica del filtro."
 
 #. (itstool) path: item/p
-#: C/equalizer.page:189
+#: C/equalizer.page:212
 msgid "Makes this band the only one active."
 msgstr "Rende questa banda l'unica attiva."
 
 #. (itstool) path: title/em
-#: C/equalizer.page:195 C/crystalizer.page:45
+#: C/equalizer.page:218 C/crystalizer.page:45
 msgid "Mute"
 msgstr "Muto"
 
 #. (itstool) path: item/p
-#: C/equalizer.page:197
+#: C/equalizer.page:220
 msgid "Mutes the band."
 msgstr "Silenzia la banda."
 
 #. (itstool) path: item/p
-#: C/equalizer.page:205
+#: C/equalizer.page:228
 msgid "Band center frequency."
 msgstr "Frequenza centrale della banda."
 
 #. (itstool) path: title/em
-#: C/equalizer.page:211
+#: C/equalizer.page:234
 msgid "Width"
 msgstr "Larghezza"
 
 #. (itstool) path: p/code
-#: C/equalizer.page:215
+#: C/equalizer.page:238
 #, no-wrap
 msgid "width = frequency / quality"
 msgstr "larghezza = frequenza / qualità"
 
 #. (itstool) path: item/p
-#: C/equalizer.page:213
+#: C/equalizer.page:236
 msgid "Bandwidth. Calculated as <_:code-1/>."
 msgstr "Larghezza di banda. Calcolata a partire da <_:code-1/>."
 
 #. (itstool) path: title/em
-#: C/equalizer.page:220
+#: C/equalizer.page:243
 msgid "Quality"
 msgstr "Qualità"
 
 #. (itstool) path: item/p
-#: C/equalizer.page:222
+#: C/equalizer.page:245
 msgid "Quality factor."
 msgstr "Fattore di qualità."
 

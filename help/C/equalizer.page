@@ -169,7 +169,7 @@
                             digitalized through Bilinear transform. These are
                             <link
                                 href="https://shepazu.github.io/Audio-EQ-Cookbook/audio-eq-cookbook.html"
-                                its:translate="no">
+                                its:translate="yes">
                                 textbook filters
                             </link>
                             which are implemented as in the

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-12 16:16-0300\n"
+"POT-Creation-Date: 2019-03-18 11:56-0300\n"
 "PO-Revision-Date: 2019-03-14 17:54+0100\n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -158,8 +158,8 @@ msgstr "Processa Ogni Uscita"
 msgid "Use Dark Theme"
 msgstr "Usa Tema Scuro"
 
-#: data/ui/general_settings.glade:116 data/ui/equalizer_band.glade:182
-#: data/ui/equalizer_band.glade:228
+#: data/ui/general_settings.glade:116 data/ui/equalizer_band.glade:183
+#: data/ui/equalizer_band.glade:229
 msgid "Reset"
 msgstr "Azzera"
 
@@ -523,7 +523,7 @@ msgstr "Ignora"
 #: data/ui/multiband_compressor.glade:458
 #: data/ui/multiband_compressor.glade:830
 #: data/ui/multiband_compressor.glade:1208
-#: data/ui/multiband_compressor.glade:1586 data/ui/equalizer_band.glade:298
+#: data/ui/multiband_compressor.glade:1586 data/ui/equalizer_band.glade:299
 #: data/ui/multiband_gate.glade:478 data/ui/multiband_gate.glade:883
 #: data/ui/multiband_gate.glade:1293 data/ui/multiband_gate.glade:1703
 msgid "Solo"
@@ -620,7 +620,7 @@ msgstr "Elimina Banda 12dB/ott"
 msgid "18dB/oct Bandreject"
 msgstr "Elimina Banda 18dB/ott"
 
-#: data/ui/filter.glade:257 data/ui/equalizer_band.glade:151
+#: data/ui/filter.glade:257 data/ui/equalizer_band.glade:152
 #: data/ui/calibration_signals.glade:32
 msgid "Frequency"
 msgstr "Frequenza"
@@ -721,35 +721,39 @@ msgstr "LRX (BT)"
 msgid "LRX (MT)"
 msgstr "LRX (MT)"
 
-#: data/ui/equalizer_band.glade:108
+#: data/ui/equalizer_band.glade:97
+msgid "APO (DR)"
+msgstr ""
+
+#: data/ui/equalizer_band.glade:109
 msgid "Slope"
 msgstr "Pendenza"
 
-#: data/ui/equalizer_band.glade:120
+#: data/ui/equalizer_band.glade:121
 msgid "x1"
 msgstr "x1"
 
-#: data/ui/equalizer_band.glade:121
+#: data/ui/equalizer_band.glade:122
 msgid "x2"
 msgstr "x2"
 
-#: data/ui/equalizer_band.glade:122
+#: data/ui/equalizer_band.glade:123
 msgid "x3"
 msgstr "x3"
 
-#: data/ui/equalizer_band.glade:123
+#: data/ui/equalizer_band.glade:124
 msgid "x4"
 msgstr "x4"
 
-#: data/ui/equalizer_band.glade:200
+#: data/ui/equalizer_band.glade:201
 msgid "Quality"
 msgstr "Qualità"
 
-#: data/ui/equalizer_band.glade:251
+#: data/ui/equalizer_band.glade:252
 msgid "Width"
 msgstr "Larghezza"
 
-#: data/ui/equalizer_band.glade:310 data/ui/stereo_tools.glade:553
+#: data/ui/equalizer_band.glade:311 data/ui/stereo_tools.glade:553
 #: data/ui/stereo_tools.glade:612 data/ui/crystalizer_band.glade:23
 msgid "Mute"
 msgstr "Muto"
@@ -1408,7 +1412,7 @@ msgstr "limitatore;compressore;riverbero;equalizzatore;volumeauto;"
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:219
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:220
 msgid "\"Presets\""
 msgstr "\"Profili\""
 
@@ -1504,7 +1508,7 @@ msgstr "Fallito"
 msgid "Could Not Load The Impulse File"
 msgstr "Impossibile Caricare File Impulso"
 
-#: src/equalizer_ui.cpp:331 src/equalizer_ui.cpp:469
+#: src/equalizer_ui.cpp:335 src/equalizer_ui.cpp:473
 msgid "infinity"
 msgstr "infinito"
 
