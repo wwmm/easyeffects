@@ -2,17 +2,22 @@
 
 ## [Unreleased
 
+## [4.5.7]
 ### Added
 - Updated Czech and Turkish translations.
-- Linus Studio Plugins developers kindly added additional filters to their
-parametric equalizer that are implemented just like the biquad filters found
-in Equalizer APO. A very popular equalizer used in Windows. This will help
-PulseEffects users to use headphone correction curves that were designed with
-Equalizer APO filters in mind. Just choose `APO (DR)` as mode in the band menu.
- You can have more information about why this is a useful feature here
+- Linux Studio Plugins `1.1.7` has new filters in its parametric equalizer that
+ are implemented just like the biquad filters found in Equalizer APO. A very
+ popular equalizer used in Windows. This will help PulseEffects users to
+ properly use headphone correction curves that were designed with Equalizer APO
+ filters in mind. Just choose `APO (DR)` as mode in each band menu. You can have
+  more information about why this is a useful feature here
 https://github.com/wwmm/pulseeffects/issues/421 and here
-https://github.com/sadko4u/lsp-plugins/issues/29. There is no problem with the
-default filters. They are just different from the ones used in APO.
+https://github.com/sadko4u/lsp-plugins/issues/29.
+
+### Note for packagers
+- PulseEffects will probably still work with older Linux Studio Plugins versions.
+But I would expect some errors printed in the system log if the user tries to
+choose the APO filter.
 
 ## [4.5.6]
 ### Added
