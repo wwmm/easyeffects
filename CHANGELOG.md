@@ -2,6 +2,11 @@
 
 ## [Unreleased
 
+## [4.5.8]
+### Fixed
+- Fixed problems in pt_BR translation that could make installation fail in
+some systems.
+
 ## [4.5.7]
 ### Added
 - Updated Czech and Turkish translations.

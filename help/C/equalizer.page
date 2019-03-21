@@ -166,12 +166,10 @@
                         <p>
                             <em style="strong">APO</em>
                             - Digital biquad filters derived from canonic analog biquad prototypes
-                            digitalized through Bilinear transform. These are
+                            digitalized through Bilinear transform. These are textbook filters
                             <link
                                 href="https://shepazu.github.io/Audio-EQ-Cookbook/audio-eq-cookbook.html"
-                                its:translate="yes">
-                                textbook filters
-                            </link>
+                                its:translate="no"></link>
                             which are implemented as in the
                             <link href="https://equalizerapo.com/" its:translate="no">
                                 Equalizer APO
