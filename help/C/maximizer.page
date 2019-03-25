@@ -8,9 +8,15 @@
     </info>
     <title>Maximizer</title>
     <p>
-        A maximizer is similar to a limiter. It attenuates peaks above the limit(ceiling
-        in our case) but it also boosts peaks that are between the limit and the
-        threshold.
+        Maximizer is a versatile plugin that can be tweaked to be a compressor, 
+        an amplifier and a limiter. It is basically controlled by only two 
+        parameters: ceiling and threshold. Threshold is a relative value 
+        representing the amplification of the signal while ceiling is the maximum 
+        allowed output peak level. Setting both values different from zero, the 
+        plugin will act as an upward compressor with a limiter on the ceiling 
+        level (overly amplified signal with ceiling set too low can result in 
+        distorted sound even without the presence of clipping). When only threshold 
+        is set equal to zero, it reduces the amplitude of the signal.
     </p>
     <p>
         PulseEffects uses the maximizer from ZamAudio.
@@ -21,7 +27,8 @@
                 <em style="strong" its:withinText="nested">Threshold</em>
             </title>
             <p>
-                If a signal rises above this level it will affect the gain reduction.
+                Relative value representing the amplification of the signal. 
+                Zero is no amplification. Lower values, higher amplification.
             </p>
         </item>
         <item>
@@ -29,7 +36,7 @@
                 <em style="strong" its:withinText="nested">Ceiling</em>
             </title>
             <p>
-                Maximum allowed peak value.
+                Maximum allowed peak level of the output signal.
             </p>
         </item>
         <item>

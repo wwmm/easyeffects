@@ -49,7 +49,7 @@ Audio effects for Pulseaudio applications
 
 The user has full control over the effects order. Just use the up/down arrows
 next to the plugin label at the left side. To be able to use all plugins you
- must have the following installed in your system:
+must have the following installed in your system:
 
 - [GStreamer Plugins Good](https://github.com/GStreamer/gst-plugins-good).
 Version `1.12.5` or higher
@@ -63,6 +63,8 @@ Version `1.12.5` or higher
 - [libsndfile](http://www.mega-nerd.com/libsndfile/)
 - [zita-convolver](https://kokkinizita.linuxaudio.org/linuxaudio/)
 - [libebur128](https://github.com/jiixyj/libebur128)
+
+To be able to read documentation inside the GUI, you need [yelp](https://gitlab.gnome.org/GNOME/yelp) package.
 
 ## Changelog
 - For information about changes between versions take a look at our
