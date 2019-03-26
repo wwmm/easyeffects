@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema
+        id="com.github.wwmm.pulseeffects.spectrum"
+        path="/com/github/wwmm/pulseeffects/spectrum/">
+        <key name="show" type="b">
+            <default>true</default>
+        </key>
+        <key name="fill" type="b">
+            <default>true</default>
+        </key>
+        <key name="show-bar-border" type="b">
+            <default>true</default>
+        </key>
+        <key name="n-points" type="i">
+            <range min="2" max="1000"/>
+            <default>100</default>
+        </key>
+        <key name="line-width" type="d">
+            <range min="0.1" max="100.0"/>
+            <default>2.0</default>
+        </key>
+        <key name="use-custom-color" type="b">
+            <default>false</default>
+        </key>
+        <key name="use-gradient" type="b">
+            <default>true</default>
+        </key>
+        <key name="color" type="ad">
+            <default>[1.0,1.0,1.0,1.0]</default>
+        </key>
+        <key name="gradient-color" type="ad">
+            <default>[0.0,0.0,0.0,1.0]</default>
+        </key>
+        <key name="height" type="i">
+            <default>100</default>
+        </key>
+        <key name="scale" type="d">
+            <range min="0.0" max="10.0"/>
+            <default>1.0</default>
+        </key>
+        <key name="exponent" type="d">
+            <range min="0.0" max="10.0"/>
+            <default>1.0</default>
+        </key>
+        <key name="sampling-freq" type="i">
+            <range min="1" max="200"/>
+            <default>10</default>
+        </key>
+        <key name="type" enum="com.github.wwmm.pulseeffects.spectrum.type.enum">
+            <default>"Bars"</default>
+        </key>
+    </schema>
+</schemalist>

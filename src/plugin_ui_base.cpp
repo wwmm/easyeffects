@@ -22,20 +22,33 @@ PluginUiBase::PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder,
 
   // gsettings bindings
 
+  connections.push_back(
+      settings->signal_changed("state").connect([=](auto key) {
+        settings->set_boolean("post-messages", settings->get_boolean(key));
+      }));
+
   auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
   auto flag_get = Gio::SettingsBindFlags::SETTINGS_BIND_GET;
 
   settings->bind("state", enable, "active", flag);
   settings->bind("state", controls, "sensitive", flag_get);
   settings->bind("state", img_state, "visible", flag_get);
+
+  settings->set_boolean("post-messages", settings->get_boolean("state"));
 }
 
-PluginUiBase::~PluginUiBase() {}
+PluginUiBase::~PluginUiBase() {
+  for (auto c : connections) {
+    c.disconnect();
+  }
 
-std::string PluginUiBase::level_to_str(double value) {
+  settings->set_boolean("post-messages", false);
+}
+
+std::string PluginUiBase::level_to_str(const double& value, const int& places) {
   std::ostringstream msg;
 
-  msg.precision(0);
+  msg.precision(places);
   msg << std::fixed << value;
 
   return msg.str();

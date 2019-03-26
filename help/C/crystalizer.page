@@ -8,33 +8,50 @@
     </info>
     <title>Crystalizer</title>
     <p>
-        PulseEffects crystalizer is a port of the FFMPEG crystalizer code to the
-        GStreamer framework. This plugin can be used to add dynamic range to songs that
-        were overly compressed
+        This plugin can be used to add a little of dynamic range to songs that were
+        overly compressed
     </p>
     <terms>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Intensity</em>
+                <em style="strong" its:withinText="nested">Aggressive Mode</em>
             </title>
             <p>
-                The higher the value the higher is the difference in magnitude between loudest
-                and the quiestest sections of the music.
+                When this option is enabled sample amplitude dependent amplification will be
+                applied to the signal. Take care to not saturate the next plugin in the
+                processing chain.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Intensities</em>
+            </title>
+            <p>
+                The higher the value the higher is the difference in magnitude between the
+                loudest and the quietest sounds. You can set different intensities for each
+                frequency band.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Bypass</em>
+            </title>
+            <p>
+                When active the audio signal passing through this band will not be modified.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Mute</em>
+            </title>
+            <p>
+                Silence the band.
             </p>
         </item>
     </terms>
     <section>
         <title>References</title>
         <list>
-            <item>
-                <p>
-                    <link
-                        href="https://ffmpeg.org/ffmpeg-filters.html#crystalizer"
-                        its:translate="no">
-                        https://ffmpeg.org/ffmpeg-filters.html#crystalizer
-                    </link>
-                </p>
-            </item>
             <item>
                 <p>
                     <link href="https://en.wikipedia.org/wiki/Dynamic_range" its:translate="no">

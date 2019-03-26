@@ -54,12 +54,20 @@ void PitchPreset::load(boost::property_tree::ptree& root,
   update_key<bool>(root, settings, "faster", section + ".pitch.faster");
 }
 
-void PitchPreset::write(boost::property_tree::ptree& root) {
-  save(root, "input", input_settings);
-  save(root, "output", output_settings);
+void PitchPreset::write(PresetType preset_type,
+                        boost::property_tree::ptree& root) {
+  if (preset_type == PresetType::output) {
+    save(root, "output", output_settings);
+  } else {
+    save(root, "input", input_settings);
+  }
 }
 
-void PitchPreset::read(boost::property_tree::ptree& root) {
-  load(root, "input", input_settings);
-  load(root, "output", output_settings);
+void PitchPreset::read(PresetType preset_type,
+                       boost::property_tree::ptree& root) {
+  if (preset_type == PresetType::output) {
+    load(root, "output", output_settings);
+  } else {
+    load(root, "input", input_settings);
+  }
 }

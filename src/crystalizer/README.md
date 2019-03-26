@@ -5,4 +5,4 @@ compressed. It is based on the [FFMPEG Crystalizer plugin code](https://git.ffmp
 
 You can test this plugin from command line executing:
 
-`gst-launch-1.0 -v audiotestsrc ! pecrystalizer intensity=2.0 ! pulsesink`
+`gst-launch-1.0 -v audiotestsrc ! pecrystalizer ! pulsesink`

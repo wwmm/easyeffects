@@ -12,6 +12,10 @@ class Crystalizer : public PluginBase {
 
   GstElement* crystalizer = nullptr;
 
+  sigc::connection range_before_connection, range_after_connection;
+
+  sigc::signal<void, double> range_before, range_after;
+
  private:
   void bind_to_gsettings();
 };

@@ -49,12 +49,13 @@ Audio effects for Pulseaudio applications
 
 The user has full control over the effects order. Just use the up/down arrows
 next to the plugin label at the left side. To be able to use all plugins you
- must have the following installed in your system:
+must have the following installed in your system:
 
 - [GStreamer Plugins Good](https://github.com/GStreamer/gst-plugins-good).
 Version `1.12.5` or higher
 - [GStreamer Plugins Bad](https://github.com/GStreamer/gst-plugins-bad).
 Version `1.12.5` or higher
+- [Linux Studio Plugins](http://lsp-plug.in/?page=home)
 - [Calf Studio Plugins](https://calf-studio-gear.org/). Version `0.90.1` or higher.
 - [ZamAudio Plugins](http://www.zamaudio.com/)
 - [MDA.LV2](https://git.drobilla.net/cgit.cgi/mda.lv2.git/about/)
@@ -62,6 +63,8 @@ Version `1.12.5` or higher
 - [libsndfile](http://www.mega-nerd.com/libsndfile/)
 - [zita-convolver](https://kokkinizita.linuxaudio.org/linuxaudio/)
 - [libebur128](https://github.com/jiixyj/libebur128)
+
+To be able to read documentation inside the GUI, you need [yelp](https://gitlab.gnome.org/GNOME/yelp) package.
 
 ## Changelog
 - For information about changes between versions take a look at our
@@ -71,7 +74,7 @@ Version `1.12.5` or higher
 
 ### GNU/Linux Packages
 
-- [Arch Linux](https://www.archlinux.org/packages/?sort=repo&name=pulseeffects)
+- [Arch Linux](https://www.archlinux.org/packages/?sort=repo&name=pulseeffects) / [git version](https://aur.archlinux.org/packages/pulseeffects-git/)
 - [Void Linux](https://github.com/void-linux/void-packages/blob/master/srcpkgs/pulseeffects/template)
 - [Gentoo](https://packages.gentoo.org/packages/media-sound/pulseeffects/)
 - [ROSA](https://abf.io/import/pulseeffects/)

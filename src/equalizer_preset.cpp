@@ -20,6 +20,8 @@ void EqualizerPreset::save(boost::property_tree::ptree& root,
                            const Glib::RefPtr<Gio::Settings>& settings) {
   root.put(section + ".equalizer.state", settings->get_boolean("state"));
 
+  root.put(section + ".equalizer.mode", settings->get_string("mode"));
+
   int nbands = settings->get_int("num-bands");
 
   root.put(section + ".equalizer.num-bands", nbands);
@@ -47,6 +49,26 @@ void EqualizerPreset::save_channel(boost::property_tree::ptree& root,
                                    const Glib::RefPtr<Gio::Settings>& settings,
                                    const int& nbands) {
   for (int n = 0; n < nbands; n++) {
+    root.put(section + ".band" + std::to_string(n) + ".type",
+             settings->get_string(
+                 std::string("band" + std::to_string(n) + "-type")));
+
+    root.put(section + ".band" + std::to_string(n) + ".mode",
+             settings->get_string(
+                 std::string("band" + std::to_string(n) + "-mode")));
+
+    root.put(section + ".band" + std::to_string(n) + ".slope",
+             settings->get_string(
+                 std::string("band" + std::to_string(n) + "-slope")));
+
+    root.put(section + ".band" + std::to_string(n) + ".solo",
+             settings->get_boolean(
+                 std::string("band" + std::to_string(n) + "-solo")));
+
+    root.put(section + ".band" + std::to_string(n) + ".mute",
+             settings->get_boolean(
+                 std::string("band" + std::to_string(n) + "-mute")));
+
     root.put(section + ".band" + std::to_string(n) + ".gain",
              settings->get_double(
                  std::string("band" + std::to_string(n) + "-gain")));
@@ -55,13 +77,9 @@ void EqualizerPreset::save_channel(boost::property_tree::ptree& root,
              settings->get_double(
                  std::string("band" + std::to_string(n) + "-frequency")));
 
-    root.put(section + ".band" + std::to_string(n) + ".width",
-             settings->get_double(
-                 std::string("band" + std::to_string(n) + "-width")));
-
-    root.put(section + ".band" + std::to_string(n) + ".type",
-             settings->get_string(
-                 std::string("band" + std::to_string(n) + "-type")));
+    root.put(
+        section + ".band" + std::to_string(n) + ".q",
+        settings->get_double(std::string("band" + std::to_string(n) + "-q")));
   }
 }
 
@@ -69,6 +87,8 @@ void EqualizerPreset::load(boost::property_tree::ptree& root,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".equalizer.state");
+
+  update_string_key(root, settings, "mode", section + ".equalizer.mode");
 
   update_key<int>(root, settings, "num-bands",
                   section + ".equalizer.num-bands");
@@ -81,41 +101,15 @@ void EqualizerPreset::load(boost::property_tree::ptree& root,
 
   int nbands = settings->get_int("num-bands");
 
-  /*
-    For now we check if the user has an preset with old format. One day we
-    remove this...
-  */
-
-  bool legacy_preset = false;
-
-  try {
-    root.get<bool>(section + ".equalizer.split-channels");
-  } catch (const boost::property_tree::ptree_error& e) {
-    util::warning(log_tag + "old preset format detected");
-
-    legacy_preset = true;
-  }
-
   update_key<bool>(root, settings, "split-channels",
                    section + ".equalizer.split-channels");
 
-  if (!legacy_preset) {
-    if (section == std::string("input")) {
-      load_channel(root, "input.equalizer.left", input_settings_left, nbands);
-      load_channel(root, "input.equalizer.right", input_settings_right, nbands);
-    } else if (section == std::string("output")) {
-      load_channel(root, "output.equalizer.left", output_settings_left, nbands);
-      load_channel(root, "output.equalizer.right", output_settings_right,
-                   nbands);
-    }
-  } else {
-    if (section == std::string("input")) {
-      load_channel(root, "input.equalizer", input_settings_left, nbands);
-      load_channel(root, "input.equalizer", input_settings_right, nbands);
-    } else if (section == std::string("output")) {
-      load_channel(root, "output.equalizer", output_settings_left, nbands);
-      load_channel(root, "output.equalizer", output_settings_right, nbands);
-    }
+  if (section == std::string("input")) {
+    load_channel(root, "input.equalizer.left", input_settings_left, nbands);
+    load_channel(root, "input.equalizer.right", input_settings_right, nbands);
+  } else if (section == std::string("output")) {
+    load_channel(root, "output.equalizer.left", output_settings_left, nbands);
+    load_channel(root, "output.equalizer.right", output_settings_right, nbands);
   }
 }
 
@@ -124,6 +118,26 @@ void EqualizerPreset::load_channel(boost::property_tree::ptree& root,
                                    const Glib::RefPtr<Gio::Settings>& settings,
                                    const int& nbands) {
   for (int n = 0; n < nbands; n++) {
+    update_string_key(root, settings,
+                      std::string("band" + std::to_string(n) + "-type"),
+                      section + ".band" + std::to_string(n) + ".type");
+
+    update_string_key(root, settings,
+                      std::string("band" + std::to_string(n) + "-mode"),
+                      section + ".band" + std::to_string(n) + ".mode");
+
+    update_string_key(root, settings,
+                      std::string("band" + std::to_string(n) + "-slope"),
+                      section + ".band" + std::to_string(n) + ".slope");
+
+    update_key<bool>(root, settings,
+                     std::string("band" + std::to_string(n) + "-solo"),
+                     section + ".band" + std::to_string(n) + ".solo");
+
+    update_key<bool>(root, settings,
+                     std::string("band" + std::to_string(n) + "-mute"),
+                     section + ".band" + std::to_string(n) + ".mute");
+
     update_key<double>(root, settings,
                        std::string("band" + std::to_string(n) + "-gain"),
                        section + ".band" + std::to_string(n) + ".gain");
@@ -133,21 +147,25 @@ void EqualizerPreset::load_channel(boost::property_tree::ptree& root,
                        section + ".band" + std::to_string(n) + ".frequency");
 
     update_key<double>(root, settings,
-                       std::string("band" + std::to_string(n) + "-width"),
-                       section + ".band" + std::to_string(n) + ".width");
-
-    update_string_key(root, settings,
-                      std::string("band" + std::to_string(n) + "-type"),
-                      section + ".band" + std::to_string(n) + ".type");
+                       std::string("band" + std::to_string(n) + "-q"),
+                       section + ".band" + std::to_string(n) + ".q");
   }
 }
 
-void EqualizerPreset::write(boost::property_tree::ptree& root) {
-  save(root, "input", input_settings);
-  save(root, "output", output_settings);
+void EqualizerPreset::write(PresetType preset_type,
+                            boost::property_tree::ptree& root) {
+  if (preset_type == PresetType::output) {
+    save(root, "output", output_settings);
+  } else {
+    save(root, "input", input_settings);
+  }
 }
 
-void EqualizerPreset::read(boost::property_tree::ptree& root) {
-  load(root, "input", input_settings);
-  load(root, "output", output_settings);
+void EqualizerPreset::read(PresetType preset_type,
+                           boost::property_tree::ptree& root) {
+  if (preset_type == PresetType::output) {
+    load(root, "output", output_settings);
+  } else {
+    load(root, "input", input_settings);
+  }
 }

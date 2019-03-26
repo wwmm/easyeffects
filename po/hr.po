@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-20 13:09-0200\n"
+"POT-Creation-Date: 2019-03-18 11:56-0300\n"
 "PO-Revision-Date: 2018-11-22 20:12+0200\n"
 "Last-Translator: flipwise <tyx027@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -32,6 +32,7 @@ msgid "PulseEffects"
 msgstr "PulseEffects"
 
 #: data/ui/application.glade:135 data/ui/general_settings.glade:107
+#: data/ui/equalizer.glade:256
 msgid "Settings"
 msgstr "Postavke"
 
@@ -39,51 +40,82 @@ msgstr "Postavke"
 msgid "Help"
 msgstr "Pomoć"
 
-#: data/ui/application.glade:180 data/ui/compressor.glade:205
-#: data/ui/filter.glade:207 data/ui/equalizer.glade:316
-#: data/ui/reverb.glade:287 data/ui/crossfeed.glade:47
-#: src/presets_menu_ui.cpp:119 src/presets_menu_ui.cpp:199
+#: data/ui/application.glade:180 data/ui/filter.glade:207
+#: data/ui/equalizer.glade:312 data/ui/reverb.glade:287
+#: data/ui/crossfeed.glade:47 src/presets_menu_ui.cpp:124
+#: src/presets_menu_ui.cpp:287 src/presets_menu_ui.cpp:304
 msgid "Presets"
 msgstr "Predlošci"
 
-#: data/ui/spectrum_settings.glade:51
-msgid "Show"
-msgstr "Prikaži"
-
-#: data/ui/spectrum_settings.glade:92
-msgid "Points"
-msgstr "Broj traka"
-
-#: data/ui/spectrum_settings.glade:123
+#: data/ui/spectrum_settings.glade:59
 #, fuzzy
-msgid "Height"
-msgstr "Visina"
+msgid "Show Spectrum"
+msgstr "Spektar"
 
-#: data/ui/spectrum_settings.glade:156
+#: data/ui/spectrum_settings.glade:84
 msgid "Fill"
 msgstr ""
 
-#: data/ui/spectrum_settings.glade:181
-msgid "Scale"
+#: data/ui/spectrum_settings.glade:109
+msgid "Border"
 msgstr ""
 
-#: data/ui/spectrum_settings.glade:213
-msgid "Exponent"
-msgstr ""
-
-#: data/ui/spectrum_settings.glade:246
+#: data/ui/spectrum_settings.glade:134
 msgid "Use Custom Color"
 msgstr "Koristi vlastitu boju"
 
-#: data/ui/spectrum_settings.glade:272
+#: data/ui/spectrum_settings.glade:159
+msgid "Use Gradient"
+msgstr ""
+
+#: data/ui/spectrum_settings.glade:185
 #, fuzzy
 msgid "Spectrum Color"
 msgstr "Boja spektra"
 
-#: data/ui/spectrum_settings.glade:299
+#: data/ui/spectrum_settings.glade:213
+msgid "Gradient Color"
+msgstr ""
+
+#: data/ui/spectrum_settings.glade:241
+#, fuzzy
+msgid "Spectrum Type"
+msgstr "Spektar"
+
+#: data/ui/spectrum_settings.glade:255
+msgid "Bars"
+msgstr ""
+
+#: data/ui/spectrum_settings.glade:256
+msgid "Lines"
+msgstr ""
+
+#: data/ui/spectrum_settings.glade:271
+msgid "Points"
+msgstr "Broj traka"
+
+#: data/ui/spectrum_settings.glade:303
+#, fuzzy
+msgid "Height"
+msgstr "Visina"
+
+#: data/ui/spectrum_settings.glade:336
+msgid "Scale"
+msgstr ""
+
+#: data/ui/spectrum_settings.glade:369
+msgid "Exponent"
+msgstr ""
+
+#: data/ui/spectrum_settings.glade:402
 #, fuzzy
 msgid "Sampling"
 msgstr "Jači sampling"
+
+#: data/ui/spectrum_settings.glade:433
+#, fuzzy
+msgid "Line Width"
+msgstr "Širina"
 
 #: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:218
 msgid "Use Default"
@@ -104,21 +136,21 @@ msgstr "Latencija"
 msgid "Block Size"
 msgstr "Veličina bloka"
 
-#: data/ui/pulse_settings.glade:204 data/ui/blacklist_settings.glade:108
+#: data/ui/pulse_settings.glade:204 data/ui/blacklist_settings.glade:130
 msgid "Input Effects"
 msgstr "Ulazni efekti"
 
-#: data/ui/pulse_settings.glade:352 data/ui/blacklist_settings.glade:180
+#: data/ui/pulse_settings.glade:352 data/ui/blacklist_settings.glade:224
 msgid "Output Effects"
 msgstr "Izlazni efekti"
 
-#: data/ui/blacklist_settings.glade:78 data/ui/blacklist_settings.glade:150
-#: data/ui/presets_menu.glade:43
+#: data/ui/blacklist_settings.glade:53 data/ui/blacklist_settings.glade:147
+#: data/ui/presets_menu.glade:68 data/ui/presets_menu.glade:177
 msgid "Create Preset"
 msgstr "Stvori predložak"
 
-#: data/ui/blacklist_settings.glade:97 data/ui/blacklist_settings.glade:169
-#: data/ui/presets_menu.glade:30
+#: data/ui/blacklist_settings.glade:72 data/ui/blacklist_settings.glade:166
+#: data/ui/presets_menu.glade:55 data/ui/presets_menu.glade:164
 msgid "Name"
 msgstr "Naziv"
 
@@ -127,41 +159,45 @@ msgid "Start Service at Login"
 msgstr "Pokreni servis pri pokretanju računala"
 
 #: data/ui/general_settings.glade:56
-msgid "Enable All Applications"
-msgstr "Uključi za sve aplikacije"
+msgid "Process All Outputs"
+msgstr ""
 
 #: data/ui/general_settings.glade:81
 msgid "Use Dark Theme"
 msgstr "Koristi tamnu temu"
 
-#: data/ui/general_settings.glade:116 data/ui/equalizer_band.glade:38
-#: data/ui/equalizer_band.glade:52
+#: data/ui/general_settings.glade:116 data/ui/equalizer_band.glade:183
+#: data/ui/equalizer_band.glade:229
 msgid "Reset"
 msgstr "Vrati na tvorničke postavke"
 
-#: data/ui/general_settings.glade:146
-msgid "Priority"
-msgstr ""
-
-#: data/ui/general_settings.glade:160 data/ui/general_settings.glade:186
+#: data/ui/general_settings.glade:133 data/ui/general_settings.glade:206
 msgid "Niceness"
 msgstr ""
 
-#: data/ui/general_settings.glade:187
+#: data/ui/general_settings.glade:134
 #, fuzzy
 msgid "Real Time"
 msgstr "Vrijeme opadanja intenziteta signala"
 
-#: data/ui/general_settings.glade:188
+#: data/ui/general_settings.glade:135
 msgid "None"
 msgstr ""
 
-#: data/ui/general_settings.glade:204
+#: data/ui/general_settings.glade:151
 msgid "Priority Type"
 msgstr ""
 
-#: data/ui/general_settings.glade:214
+#: data/ui/general_settings.glade:161
 msgid "About"
+msgstr ""
+
+#: data/ui/general_settings.glade:180
+msgid "Process All Inputs"
+msgstr ""
+
+#: data/ui/general_settings.glade:232
+msgid "Priority"
 msgstr ""
 
 #: data/ui/about.glade.in:11
@@ -173,7 +209,7 @@ msgstr "Zvučni efekti za Pulseaudio aplikacije"
 msgid "Format"
 msgstr "Format"
 
-#: data/ui/app_info.glade:75 data/ui/convolver.glade:241
+#: data/ui/app_info.glade:75 data/ui/convolver.glade:260
 msgid "Rate"
 msgstr "Frekvencija"
 
@@ -216,27 +252,28 @@ msgid "Weights"
 msgstr "Otežanja"
 
 #: data/ui/autogain.glade:318 data/ui/autogain.glade:510
-#: data/ui/limiter.glade:368 data/ui/compressor.glade:561
+#: data/ui/limiter.glade:368 data/ui/compressor.glade:721
 #: data/ui/multiband_compressor.glade:1961 data/ui/filter.glade:371
-#: data/ui/equalizer.glade:473 data/ui/reverb.glade:633
+#: data/ui/equalizer.glade:519 data/ui/reverb.glade:633
 #: data/ui/bass_enhancer.glade:482 data/ui/exciter.glade:485
 #: data/ui/stereo_tools.glade:302 data/ui/stereo_tools.glade:807
 #: data/ui/crossfeed.glade:202 data/ui/maximizer.glade:242
 #: data/ui/loudness.glade:247 data/ui/gate.glade:490
 #: data/ui/multiband_gate.glade:2110 data/ui/deesser.glade:571
-#: data/ui/convolver.glade:461 data/ui/crystalizer.glade:176
+#: data/ui/convolver.glade:480 data/ui/crystalizer.glade:231
 #: data/ui/pitch.glade:325 data/ui/webrtc.glade:627 data/ui/delay.glade:213
+#: data/ui/presets_menu.glade:255
 msgid "Input"
 msgstr "Ulaz"
 
 #: data/ui/autogain.glade:333 data/ui/autogain.glade:760
-#: data/ui/limiter.glade:383 data/ui/compressor.glade:576
+#: data/ui/limiter.glade:383 data/ui/compressor.glade:736
 #: data/ui/multiband_compressor.glade:756
 #: data/ui/multiband_compressor.glade:1133
 #: data/ui/multiband_compressor.glade:1511
 #: data/ui/multiband_compressor.glade:1889
 #: data/ui/multiband_compressor.glade:1976 data/ui/filter.glade:386
-#: data/ui/equalizer.glade:488 data/ui/reverb.glade:648
+#: data/ui/equalizer.glade:534 data/ui/reverb.glade:648
 #: data/ui/bass_enhancer.glade:514 data/ui/exciter.glade:517
 #: data/ui/stereo_tools.glade:779 data/ui/stereo_tools.glade:821
 #: data/ui/crossfeed.glade:217 data/ui/maximizer.glade:257
@@ -244,8 +281,9 @@ msgstr "Ulaz"
 #: data/ui/multiband_gate.glade:809 data/ui/multiband_gate.glade:1218
 #: data/ui/multiband_gate.glade:1628 data/ui/multiband_gate.glade:2038
 #: data/ui/multiband_gate.glade:2125 data/ui/deesser.glade:586
-#: data/ui/convolver.glade:476 data/ui/crystalizer.glade:191
+#: data/ui/convolver.glade:495 data/ui/crystalizer.glade:246
 #: data/ui/pitch.glade:339 data/ui/webrtc.glade:642 data/ui/delay.glade:228
+#: data/ui/presets_menu.glade:146
 msgid "Output"
 msgstr "Izlaz"
 
@@ -253,7 +291,8 @@ msgstr "Izlaz"
 msgid "Relative"
 msgstr "Relativno"
 
-#: data/ui/autogain.glade:658 data/ui/deesser.glade:298
+#: data/ui/autogain.glade:658 data/ui/compressor.glade:903
+#: data/ui/deesser.glade:298
 msgid "Gain"
 msgstr "Pojačanje"
 
@@ -278,7 +317,7 @@ msgstr "Pojačanje ulaza"
 msgid "Limit"
 msgstr "Granica"
 
-#: data/ui/limiter.glade:240 data/ui/compressor.glade:373
+#: data/ui/limiter.glade:240 data/ui/compressor.glade:376
 #: data/ui/multiband_compressor.glade:537
 #: data/ui/multiband_compressor.glade:910
 #: data/ui/multiband_compressor.glade:1288
@@ -289,7 +328,7 @@ msgstr "Granica"
 msgid "Release"
 msgstr "Vrijeme prijelaza"
 
-#: data/ui/limiter.glade:253
+#: data/ui/limiter.glade:253 data/ui/compressor.glade:573
 msgid "Lookahead"
 msgstr "Preduhvatiti"
 
@@ -305,78 +344,12 @@ msgstr "ASC"
 msgid "Attenuation"
 msgstr "Prigušenje"
 
-#: data/ui/compressor.glade:31 data/ui/webrtc.glade:485
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:52
+#: data/ui/compressor.glade:30 data/ui/compressor.glade:445
+#: data/ui/webrtc.glade:485 data/com.github.wwmm.pulseeffects.appdata.xml.in:52
 msgid "Compressor"
 msgstr "Kompresor"
 
-#: data/ui/compressor.glade:122
-msgid "Vocal Leveller 1"
-msgstr "Vokalni izravnavač 1"
-
-#: data/ui/compressor.glade:134
-msgid "Vocal Leveller 2"
-msgstr "Vokalni izravnavač 2"
-
-#: data/ui/compressor.glade:146 data/ui/filter.glade:162
-#: data/ui/reverb.glade:238 data/ui/crossfeed.glade:72
-msgid "Default"
-msgstr "Tvorničke postavke"
-
-#: data/ui/compressor.glade:235 data/ui/gate.glade:165
-#: data/ui/deesser.glade:193
-msgid "Detection"
-msgstr "Detekcija"
-
-#: data/ui/compressor.glade:249 data/ui/gate.glade:179
-msgid "Stereo Link"
-msgstr "Stereo veza"
-
-#: data/ui/compressor.glade:263
-msgid "Mix"
-msgstr "Miješanje"
-
-#: data/ui/compressor.glade:293 data/ui/multiband_compressor.glade:475
-#: data/ui/multiband_compressor.glade:847
-#: data/ui/multiband_compressor.glade:1225
-#: data/ui/multiband_compressor.glade:1603 data/ui/gate.glade:222
-#: data/ui/multiband_gate.glade:495 data/ui/multiband_gate.glade:900
-#: data/ui/multiband_gate.glade:1310 data/ui/multiband_gate.glade:1720
-#: data/ui/deesser.glade:220
-msgid "RMS"
-msgstr "RMS"
-
-#: data/ui/compressor.glade:294 data/ui/multiband_compressor.glade:476
-#: data/ui/multiband_compressor.glade:848
-#: data/ui/multiband_compressor.glade:1226
-#: data/ui/multiband_compressor.glade:1604 data/ui/equalizer_band.glade:217
-#: data/ui/gate.glade:223 data/ui/multiband_gate.glade:496
-#: data/ui/multiband_gate.glade:901 data/ui/multiband_gate.glade:1311
-#: data/ui/multiband_gate.glade:1721 data/ui/deesser.glade:221
-#: data/ui/deesser.glade:331
-msgid "Peak"
-msgstr "Vrhunac"
-
-#: data/ui/compressor.glade:309 data/ui/gate.glade:238
-#, fuzzy
-msgid "Average"
-msgstr "Prosjek"
-
-#: data/ui/compressor.glade:310 data/ui/gate.glade:239
-#, fuzzy
-msgid "Maximum"
-msgstr "Maksimum"
-
-#: data/ui/compressor.glade:339 data/ui/multiband_compressor.glade:503
-#: data/ui/multiband_compressor.glade:875
-#: data/ui/multiband_compressor.glade:1253
-#: data/ui/multiband_compressor.glade:1631 data/ui/gate.glade:268
-#: data/ui/multiband_gate.glade:523 data/ui/multiband_gate.glade:928
-#: data/ui/multiband_gate.glade:1338 data/ui/multiband_gate.glade:1748
-msgid "Attack"
-msgstr "Pokretanje"
-
-#: data/ui/compressor.glade:407 data/ui/multiband_compressor.glade:571
+#: data/ui/compressor.glade:242 data/ui/multiband_compressor.glade:571
 #: data/ui/multiband_compressor.glade:945
 #: data/ui/multiband_compressor.glade:1323
 #: data/ui/multiband_compressor.glade:1701 data/ui/maximizer.glade:129
@@ -386,7 +359,7 @@ msgstr "Pokretanje"
 msgid "Threshold"
 msgstr "Prag"
 
-#: data/ui/compressor.glade:440 data/ui/multiband_compressor.glade:604
+#: data/ui/compressor.glade:275 data/ui/multiband_compressor.glade:604
 #: data/ui/multiband_compressor.glade:979
 #: data/ui/multiband_compressor.glade:1357
 #: data/ui/multiband_compressor.glade:1735 data/ui/gate.glade:369
@@ -396,7 +369,7 @@ msgstr "Prag"
 msgid "Ratio"
 msgstr "Omjer"
 
-#: data/ui/compressor.glade:472 data/ui/multiband_compressor.glade:636
+#: data/ui/compressor.glade:307 data/ui/multiband_compressor.glade:636
 #: data/ui/multiband_compressor.glade:1012
 #: data/ui/multiband_compressor.glade:1390
 #: data/ui/multiband_compressor.glade:1768 data/ui/gate.glade:401
@@ -406,7 +379,7 @@ msgstr "Omjer"
 msgid "Knee"
 msgstr "Koljeno"
 
-#: data/ui/compressor.glade:506 data/ui/multiband_compressor.glade:670
+#: data/ui/compressor.glade:341 data/ui/multiband_compressor.glade:670
 #: data/ui/multiband_compressor.glade:1047
 #: data/ui/multiband_compressor.glade:1425
 #: data/ui/multiband_compressor.glade:1803 data/ui/gate.glade:435
@@ -417,23 +390,129 @@ msgstr "Koljeno"
 msgid "Makeup"
 msgstr "Dorada"
 
-#: data/ui/compressor.glade:741 data/ui/maximizer.glade:272
-#: data/ui/multiband_gate.glade:725 data/ui/multiband_gate.glade:1155
-#: data/ui/multiband_gate.glade:1565 data/ui/multiband_gate.glade:1975
-#: data/ui/deesser.glade:751
-msgid "Reduction"
-msgstr "Smanjenje"
+#: data/ui/compressor.glade:389 data/ui/multiband_compressor.glade:503
+#: data/ui/multiband_compressor.glade:875
+#: data/ui/multiband_compressor.glade:1253
+#: data/ui/multiband_compressor.glade:1631 data/ui/gate.glade:268
+#: data/ui/multiband_gate.glade:523 data/ui/multiband_gate.glade:928
+#: data/ui/multiband_gate.glade:1338 data/ui/multiband_gate.glade:1748
+msgid "Attack"
+msgstr "Pokretanje"
+
+#: data/ui/compressor.glade:416
+msgid "Downward"
+msgstr ""
+
+#: data/ui/compressor.glade:417
+msgid "Upward"
+msgstr ""
+
+#: data/ui/compressor.glade:429
+#, fuzzy
+msgid "Compression Mode"
+msgstr "Kompresija"
+
+#: data/ui/compressor.glade:457 data/ui/bass_enhancer.glade:148
+#: data/ui/exciter.glade:148 data/ui/deesser.glade:165
+msgid "Listen"
+msgstr "Poslušaj"
+
+#: data/ui/compressor.glade:503
+#, fuzzy
+msgid "Pre-amplification"
+msgstr "Aplikacije"
+
+#: data/ui/compressor.glade:538
+msgid "Reactivity"
+msgstr ""
+
+#: data/ui/compressor.glade:586
+msgid "Feed-forward"
+msgstr ""
+
+#: data/ui/compressor.glade:587
+#, fuzzy
+msgid "Feed-back"
+msgstr "Dovod zvuka"
+
+#: data/ui/compressor.glade:601 data/ui/equalizer_band.glade:48
+msgid "Type"
+msgstr ""
+
+#: data/ui/compressor.glade:615 data/ui/multiband_compressor.glade:476
+#: data/ui/multiband_compressor.glade:848
+#: data/ui/multiband_compressor.glade:1226
+#: data/ui/multiband_compressor.glade:1604 data/ui/gate.glade:223
+#: data/ui/multiband_gate.glade:496 data/ui/multiband_gate.glade:901
+#: data/ui/multiband_gate.glade:1311 data/ui/multiband_gate.glade:1721
+#: data/ui/deesser.glade:221 data/ui/deesser.glade:331
+msgid "Peak"
+msgstr "Vrhunac"
+
+#: data/ui/compressor.glade:616 data/ui/multiband_compressor.glade:475
+#: data/ui/multiband_compressor.glade:847
+#: data/ui/multiband_compressor.glade:1225
+#: data/ui/multiband_compressor.glade:1603 data/ui/gate.glade:222
+#: data/ui/multiband_gate.glade:495 data/ui/multiband_gate.glade:900
+#: data/ui/multiband_gate.glade:1310 data/ui/multiband_gate.glade:1720
+#: data/ui/deesser.glade:220
+msgid "RMS"
+msgstr "RMS"
+
+#: data/ui/compressor.glade:617
+#, fuzzy
+msgid "Low-Pass"
+msgstr "Nizak prolaz"
+
+#: data/ui/compressor.glade:618
+msgid "Uniform"
+msgstr ""
+
+#: data/ui/compressor.glade:632 data/ui/multiband_compressor.glade:286
+#: data/ui/equalizer.glade:203 data/ui/equalizer_band.glade:79
+#: data/ui/stereo_tools.glade:464 data/ui/multiband_gate.glade:306
+#: data/ui/deesser.glade:207 data/ui/webrtc.glade:353
+msgid "Mode"
+msgstr "Način"
+
+#: data/ui/compressor.glade:646
+#, fuzzy
+msgid "Middle"
+msgstr "Srednji nivo"
+
+#: data/ui/compressor.glade:647
+#, fuzzy
+msgid "Side"
+msgstr "Strana"
+
+#: data/ui/compressor.glade:648 data/ui/equalizer.glade:451
+#: data/ui/stereo_tools.glade:527 data/ui/delay.glade:134
+msgid "Left"
+msgstr "Lijevo"
+
+#: data/ui/compressor.glade:649 data/ui/equalizer.glade:492
+#: data/ui/stereo_tools.glade:599 data/ui/delay.glade:166
+msgid "Right"
+msgstr "Desno"
+
+#: data/ui/compressor.glade:663
+#, fuzzy
+msgid "Source"
+msgstr "Izvor"
+
+#: data/ui/compressor.glade:679 data/ui/compressor.glade:916
+#, fuzzy
+msgid "Sidechain"
+msgstr "Postranični ulaz"
+
+#: data/ui/compressor.glade:992
+msgid "Curve"
+msgstr ""
 
 #: data/ui/multiband_compressor.glade:70
 #, fuzzy
 msgid "Multiband Compressor"
 msgstr "Višerasponski kompresor"
-
-#: data/ui/multiband_compressor.glade:286 data/ui/stereo_tools.glade:464
-#: data/ui/multiband_gate.glade:306 data/ui/deesser.glade:207
-#: data/ui/webrtc.glade:353
-msgid "Mode"
-msgstr "Način"
 
 #: data/ui/multiband_compressor.glade:300 data/ui/multiband_gate.glade:320
 msgid "LR4"
@@ -463,16 +542,16 @@ msgstr "Razdvojeno 3/4"
 #: data/ui/multiband_compressor.glade:1195
 #: data/ui/multiband_compressor.glade:1573 data/ui/multiband_gate.glade:465
 #: data/ui/multiband_gate.glade:870 data/ui/multiband_gate.glade:1280
-#: data/ui/multiband_gate.glade:1690
+#: data/ui/multiband_gate.glade:1690 data/ui/crystalizer_band.glade:35
 msgid "Bypass"
 msgstr "Premosnica"
 
 #: data/ui/multiband_compressor.glade:458
 #: data/ui/multiband_compressor.glade:830
 #: data/ui/multiband_compressor.glade:1208
-#: data/ui/multiband_compressor.glade:1586 data/ui/multiband_gate.glade:478
-#: data/ui/multiband_gate.glade:883 data/ui/multiband_gate.glade:1293
-#: data/ui/multiband_gate.glade:1703
+#: data/ui/multiband_compressor.glade:1586 data/ui/equalizer_band.glade:299
+#: data/ui/multiband_gate.glade:478 data/ui/multiband_gate.glade:883
+#: data/ui/multiband_gate.glade:1293 data/ui/multiband_gate.glade:1703
 msgid "Solo"
 msgstr "Solo"
 
@@ -522,6 +601,10 @@ msgstr "Disco"
 msgid "Distant Headphones"
 msgstr "Udaljene slušalice"
 
+#: data/ui/filter.glade:162 data/ui/reverb.glade:238 data/ui/crossfeed.glade:72
+msgid "Default"
+msgstr "Tvorničke postavke"
+
 #: data/ui/filter.glade:223
 msgid "12dB/oct Lowpass"
 msgstr "12dB/oct niski prolaz"
@@ -570,12 +653,12 @@ msgstr "12dB/oct odbijanje banda"
 msgid "18dB/oct Bandreject"
 msgstr "18dB/oct odbijanje banda"
 
-#: data/ui/filter.glade:257 data/ui/equalizer_band.glade:141
+#: data/ui/filter.glade:257 data/ui/equalizer_band.glade:152
 #: data/ui/calibration_signals.glade:32
 msgid "Frequency"
 msgstr "Frekvencija"
 
-#: data/ui/filter.glade:291
+#: data/ui/filter.glade:291 data/ui/equalizer_band.glade:67
 msgid "Resonance"
 msgstr "Rezonancija"
 
@@ -587,57 +670,135 @@ msgstr "Inercija"
 msgid "Equalizer"
 msgstr "Ekvalizator"
 
-#: data/ui/equalizer.glade:118
-msgid "Bands"
-msgstr "Broj raspona"
-
-#: data/ui/equalizer.glade:143
-msgid "Flat Response"
-msgstr "Ravan izlaz"
-
-#: data/ui/equalizer.glade:158
-msgid "Calculate Frequencies"
-msgstr "Izračunaj frekvencije"
-
-#: data/ui/equalizer.glade:172
-#, fuzzy
-msgid "Reset Equalizer"
-msgstr "Vrati ekvalizator na tvorničke postavke"
-
-#: data/ui/equalizer.glade:190
+#: data/ui/equalizer.glade:132
 #, fuzzy
 msgid "Split Channels"
 msgstr "Kanali"
 
-#: data/ui/equalizer.glade:405 data/ui/stereo_tools.glade:527
-#: data/ui/delay.glade:134
-msgid "Left"
-msgstr "Lijevo"
+#: data/ui/equalizer.glade:158
+msgid "IIR"
+msgstr ""
 
-#: data/ui/equalizer.glade:446 data/ui/stereo_tools.glade:599
-#: data/ui/delay.glade:166
-msgid "Right"
-msgstr "Desno"
+#: data/ui/equalizer.glade:159
+msgid "FIR"
+msgstr ""
 
-#: data/ui/equalizer_band.glade:75
-msgid "Width"
-msgstr "Širina"
+#: data/ui/equalizer.glade:160
+msgid "FFT"
+msgstr ""
 
-#: data/ui/equalizer_band.glade:167 data/ui/equalizer_band.glade:180
-msgid "Q"
-msgstr "Q"
+#: data/ui/equalizer.glade:190
+msgid "Bands"
+msgstr "Broj raspona"
 
-#: data/ui/equalizer_band.glade:204
-msgid "Filter Type"
-msgstr "Vrsta filtera"
+#: data/ui/equalizer.glade:212
+msgid "Flat Response"
+msgstr "Ravan izlaz"
 
-#: data/ui/equalizer_band.glade:218
+#: data/ui/equalizer.glade:227
+msgid "Calculate Frequencies"
+msgstr "Izračunaj frekvencije"
+
+#: data/ui/equalizer.glade:241
+#, fuzzy
+msgid "Reset Equalizer"
+msgstr "Vrati ekvalizator na tvorničke postavke"
+
+#: data/ui/equalizer_band.glade:60
+msgid "Off"
+msgstr ""
+
+#: data/ui/equalizer_band.glade:61
+msgid "Bell"
+msgstr ""
+
+#: data/ui/equalizer_band.glade:62
+#, fuzzy
+msgid "High Pass"
+msgstr "Filter visokog prolaza"
+
+#: data/ui/equalizer_band.glade:63
+msgid "High Shelf"
+msgstr "Visoki shelf"
+
+#: data/ui/equalizer_band.glade:64
+msgid "Low Pass"
+msgstr "Nizak prolaz"
+
+#: data/ui/equalizer_band.glade:65
 msgid "Low Shelf"
 msgstr "Niski shelf"
 
-#: data/ui/equalizer_band.glade:219
-msgid "High Shelf"
-msgstr "Visoki shelf"
+#: data/ui/equalizer_band.glade:66
+msgid "Notch"
+msgstr ""
+
+#: data/ui/equalizer_band.glade:91
+msgid "RLC (BT)"
+msgstr ""
+
+#: data/ui/equalizer_band.glade:92
+msgid "RLC (MT)"
+msgstr ""
+
+#: data/ui/equalizer_band.glade:93
+msgid "BWC (BT)"
+msgstr ""
+
+#: data/ui/equalizer_band.glade:94
+msgid "BWC (MT)"
+msgstr ""
+
+#: data/ui/equalizer_band.glade:95
+msgid "LRX (BT)"
+msgstr ""
+
+#: data/ui/equalizer_band.glade:96
+msgid "LRX (MT)"
+msgstr ""
+
+#: data/ui/equalizer_band.glade:97
+msgid "APO (DR)"
+msgstr ""
+
+#: data/ui/equalizer_band.glade:109
+msgid "Slope"
+msgstr ""
+
+#: data/ui/equalizer_band.glade:121
+msgid "x1"
+msgstr ""
+
+#: data/ui/equalizer_band.glade:122
+#, fuzzy
+msgid "x2"
+msgstr "F2"
+
+#: data/ui/equalizer_band.glade:123
+msgid "x3"
+msgstr ""
+
+#: data/ui/equalizer_band.glade:124
+msgid "x4"
+msgstr ""
+
+#: data/ui/equalizer_band.glade:201
+msgid "Quality"
+msgstr "Kvaliteta"
+
+#: data/ui/equalizer_band.glade:252
+msgid "Width"
+msgstr "Širina"
+
+#: data/ui/equalizer_band.glade:311 data/ui/stereo_tools.glade:553
+#: data/ui/stereo_tools.glade:612 data/ui/crystalizer_band.glade:23
+msgid "Mute"
+msgstr "Bezvučno"
+
+#: data/ui/equalizer_preset_row.glade:37 data/ui/irs_row.glade:62
+#: data/ui/preset_row.glade:51
+msgid "Apply"
+msgstr ""
 
 #: data/ui/reverb.glade:64
 msgid "Reverberation"
@@ -732,11 +893,6 @@ msgstr "Prigušivanje visokih frekvencija"
 #: data/ui/bass_enhancer.glade:50
 msgid "Bass Enhancer"
 msgstr "Pojačanje basa"
-
-#: data/ui/bass_enhancer.glade:148 data/ui/exciter.glade:148
-#: data/ui/deesser.glade:165
-msgid "Listen"
-msgstr "Poslušaj"
 
 #: data/ui/bass_enhancer.glade:189 data/ui/exciter.glade:190
 msgid "3rd"
@@ -846,10 +1002,6 @@ msgstr "Stereo matrica"
 msgid "Invert Phase"
 msgstr "Inverzija faze"
 
-#: data/ui/stereo_tools.glade:553 data/ui/stereo_tools.glade:612
-msgid "Mute"
-msgstr "Bezvučno"
-
 #: data/ui/stereo_tools.glade:682
 #, fuzzy
 msgid "Delay L/R"
@@ -889,6 +1041,12 @@ msgstr "Križno spajanje"
 msgid "Maximizer"
 msgstr "Maksimizer"
 
+#: data/ui/maximizer.glade:272 data/ui/multiband_gate.glade:725
+#: data/ui/multiband_gate.glade:1155 data/ui/multiband_gate.glade:1565
+#: data/ui/multiband_gate.glade:1975 data/ui/deesser.glade:751
+msgid "Reduction"
+msgstr "Smanjenje"
+
 #: data/ui/loudness.glade:199
 msgid "Link"
 msgstr "Veza"
@@ -897,9 +1055,27 @@ msgstr "Veza"
 msgid "Gate"
 msgstr "Vrata"
 
+#: data/ui/gate.glade:165 data/ui/deesser.glade:193
+msgid "Detection"
+msgstr "Detekcija"
+
+#: data/ui/gate.glade:179
+msgid "Stereo Link"
+msgstr "Stereo veza"
+
 #: data/ui/gate.glade:193
 msgid "Gain Reduction"
 msgstr "Ograničenje pojačanja"
+
+#: data/ui/gate.glade:238
+#, fuzzy
+msgid "Average"
+msgstr "Prosjek"
+
+#: data/ui/gate.glade:239
+#, fuzzy
+msgid "Maximum"
+msgstr "Maksimum"
 
 #: data/ui/gate.glade:670 data/ui/multiband_gate.glade:769
 #: data/ui/multiband_gate.glade:1178 data/ui/multiband_gate.glade:1588
@@ -956,51 +1132,65 @@ msgstr "Učitaj impuls"
 msgid "Import Impulse Response File"
 msgstr "Učitaj datoteku reakcije impulsa"
 
-#: data/ui/convolver.glade:205
+#: data/ui/convolver.glade:224
 msgid "L"
 msgstr "L"
 
-#: data/ui/convolver.glade:219
+#: data/ui/convolver.glade:238
 msgid "R"
 msgstr "D"
 
-#: data/ui/convolver.glade:279
+#: data/ui/convolver.glade:298
 #, fuzzy
 msgid "Duration"
 msgstr "Trajanje"
 
-#: data/ui/convolver.glade:293
+#: data/ui/convolver.glade:312
 #, fuzzy
 msgid "Samples"
 msgstr "Semplovi"
 
-#: data/ui/convolver.glade:326 src/convolver_ui.cpp:277
+#: data/ui/convolver.glade:345 src/convolver_ui.cpp:271
 #, fuzzy
 msgid "Impulse Response"
 msgstr "Reakcija impulsa"
 
-#: data/ui/convolver.glade:346
+#: data/ui/convolver.glade:365
 #, fuzzy
 msgid "Select the impulse Response File"
 msgstr "Odaberite datoteku reakcije impulsa"
 
-#: data/ui/convolver.glade:366 src/spectrum_settings_ui.cpp:93
+#: data/ui/convolver.glade:385 src/spectrum_settings_ui.cpp:160
 msgid "Spectrum"
 msgstr "Spektar"
 
-#: data/ui/convolver.glade:407
+#: data/ui/convolver.glade:426
 #, fuzzy
 msgid "Stereo Width"
 msgstr "Stereo širina"
 
-#: data/ui/crystalizer.glade:24
+#: data/ui/crystalizer.glade:48
 #, fuzzy
 msgid "Crystalizer"
 msgstr "Kristalizator"
 
-#: data/ui/crystalizer.glade:130
-msgid "Intensity"
-msgstr "Intenzitet"
+#: data/ui/crystalizer.glade:164
+#, fuzzy
+msgid "Aggressive Mode"
+msgstr "Kompresija"
+
+#: data/ui/crystalizer.glade:423
+#, fuzzy
+msgid "Loudness Range"
+msgstr "Glasnoća"
+
+#: data/ui/crystalizer.glade:442
+msgid "Before"
+msgstr ""
+
+#: data/ui/crystalizer.glade:455
+msgid "After"
+msgstr ""
 
 #: data/ui/pitch.glade:36
 msgid "Pitch"
@@ -1121,7 +1311,23 @@ msgstr "Detektor glasa"
 msgid "Delay"
 msgstr "Kašnjenje"
 
-#: data/ui/presets_menu.glade:61 src/presets_menu_ui.cpp:114
+#: data/ui/preset_row.glade:68
+#, fuzzy
+msgid "Save current settings to this preset file"
+msgstr "Spremi trenutne postavke u predložak"
+
+#: data/ui/preset_row.glade:84
+msgid "Remove this preset file"
+msgstr ""
+
+#: data/ui/preset_row.glade:103
+msgid ""
+"Automatically apply this preset whenever the currently used device is "
+"plugged in the system"
+msgstr ""
+
+#: data/ui/presets_menu.glade:86 data/ui/presets_menu.glade:195
+#: src/presets_menu_ui.cpp:119
 msgid "Import Presets"
 msgstr "Učitaj predloške"
 
@@ -1272,7 +1478,7 @@ msgstr "graničnik;kompresor;odjek;ekvalizator;automatska glasnoća zvuka;"
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:207
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:220
 #, fuzzy
 msgid "\"Presets\""
 msgstr "Predlošci"
@@ -1297,15 +1503,20 @@ msgstr "PulseEffects"
 
 #: src/application.cpp:58
 #, fuzzy
-msgid "Presets: "
+msgid "Output Presets: "
 msgstr "Predlošci: "
 
-#: src/application.cpp:213
+#: src/application.cpp:66
+#, fuzzy
+msgid "Input Presets: "
+msgstr "Učitaj predloške"
+
+#: src/application.cpp:237
 #, fuzzy
 msgid "PulseEffects was updated"
 msgstr "PulseEffects je bio nadograđen"
 
-#: src/application.cpp:216
+#: src/application.cpp:240
 msgid ""
 "It is recommended to reset its configuration after an update. Do you want to "
 "do this?"
@@ -1313,11 +1524,11 @@ msgstr ""
 "Nakon nadogradnje preporučeno je vratiti njegovu konfiguraciju na tvorničke "
 "postavke. Želite li to učiniti?"
 
-#: src/application.cpp:219
+#: src/application.cpp:243
 msgid "Yes"
 msgstr "Da"
 
-#: src/application.cpp:220
+#: src/application.cpp:244
 msgid "No"
 msgstr "Ne"
 
@@ -1325,23 +1536,23 @@ msgstr "Ne"
 msgid "Applications"
 msgstr "Aplikacije"
 
-#: src/blacklist_settings_ui.cpp:85
+#: src/blacklist_settings_ui.cpp:83
 msgid "Blacklist"
 msgstr "Crna lista"
 
-#: src/general_settings_ui.cpp:135
+#: src/general_settings_ui.cpp:137
 msgid "General"
 msgstr "Općenito"
 
-#: src/pulse_settings_ui.cpp:145
+#: src/pulse_settings_ui.cpp:144
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
 
-#: src/presets_menu_ui.cpp:115 src/convolver_ui.cpp:273
+#: src/presets_menu_ui.cpp:120 src/convolver_ui.cpp:267
 msgid "Open"
 msgstr "Otvori"
 
-#: src/presets_menu_ui.cpp:115 src/convolver_ui.cpp:273
+#: src/presets_menu_ui.cpp:120 src/convolver_ui.cpp:267
 msgid "Cancel"
 msgstr "Poništi"
 
@@ -1358,25 +1569,82 @@ msgstr "reprodukcija"
 msgid "Calibration Microphone"
 msgstr "Kalibracija mikrofona"
 
-#: src/convolver_ui.cpp:272
+#: src/convolver_ui.cpp:266
 #, fuzzy
 msgid "Import Impulse File"
 msgstr "Učitaj impuls datoteku"
 
-#: src/convolver_ui.cpp:315 src/convolver_ui.cpp:316 src/convolver_ui.cpp:318
+#: src/convolver_ui.cpp:309 src/convolver_ui.cpp:310 src/convolver_ui.cpp:312
 msgid "Failed"
 msgstr "Nije uspjelo"
 
-#: src/convolver_ui.cpp:320
+#: src/convolver_ui.cpp:314
 msgid "Could Not Load The Impulse File"
 msgstr "Nije bilo moguće učitati impuls datoteku"
 
-#~ msgid "Audio Effects for Pulseaudio Applications"
-#~ msgstr "Zvučni efekti za Pulseaudio aplikacije"
+#: src/equalizer_ui.cpp:335 src/equalizer_ui.cpp:473
+msgid "infinity"
+msgstr ""
 
 #, fuzzy
-#~ msgid "2"
-#~ msgstr "F2"
+#~ msgid "Intensities"
+#~ msgstr "Intenzitet"
+
+#, fuzzy
+#~ msgid "Split 0/1"
+#~ msgstr "Razdvojeno 1/2"
+
+#, fuzzy
+#~ msgid "Band 0"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band 2"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band 3"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band 1"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band 4"
+#~ msgstr "Broj raspona"
+
+#~ msgid "Vocal Leveller 1"
+#~ msgstr "Vokalni izravnavač 1"
+
+#~ msgid "Vocal Leveller 2"
+#~ msgstr "Vokalni izravnavač 2"
+
+#~ msgid "Mix"
+#~ msgstr "Miješanje"
+
+#~ msgid "Show"
+#~ msgstr "Prikaži"
+
+#~ msgid "Enable All Applications"
+#~ msgstr "Uključi za sve aplikacije"
+
+#~ msgid "Q"
+#~ msgstr "Q"
+
+#~ msgid "Filter Type"
+#~ msgstr "Vrsta filtera"
+
+#, fuzzy
+#~ msgid "Lower Frequencies"
+#~ msgstr "Izračunaj frekvencije"
+
+#, fuzzy
+#~ msgid "Higher Frequencies"
+#~ msgstr "Prigušivanje visokih frekvencija"
+
+#~ msgid "Audio Effects for Pulseaudio Applications"
+#~ msgstr "Zvučni efekti za Pulseaudio aplikacije"
 
 #, fuzzy
 #~ msgid "Fixed:"
@@ -1431,9 +1699,6 @@ msgstr "Nije bilo moguće učitati impuls datoteku"
 #~ msgid "Middle Source"
 #~ msgstr "Srednji izvor"
 
-#~ msgid "Side Gain"
-#~ msgstr "Postranični ulaz"
-
 #, fuzzy
 #~ msgid "Import Impulse Response"
 #~ msgstr "Učitaj datoteku reakcije impulsa"
@@ -1455,17 +1720,6 @@ msgstr "Nije bilo moguće učitati impuls datoteku"
 
 #~ msgid "Temperature"
 #~ msgstr "Temperatura"
-
-#~ msgid "Low Pass"
-#~ msgstr "Nizak prolaz"
-
-#, fuzzy
-#~ msgid "Source"
-#~ msgstr "Izvor"
-
-#, fuzzy
-#~ msgid "Side"
-#~ msgstr "Strana"
 
 #, fuzzy
 #~ msgid "Ceil"
@@ -1497,9 +1751,6 @@ msgstr "Nije bilo moguće učitati impuls datoteku"
 
 #~ msgid "F2 Q"
 #~ msgstr "F2 Q"
-
-#~ msgid "Quality"
-#~ msgstr "Kvaliteta"
 
 #~ msgid "Reset Frequency"
 #~ msgstr "Vrati izvornu frekvenciju"
@@ -1536,9 +1787,6 @@ msgstr "Nije bilo moguće učitati impuls datoteku"
 
 #~ msgid "Running in background"
 #~ msgstr "Radi u pozadini"
-
-#~ msgid "Save Current Settings to Preset"
-#~ msgstr "Spremi trenutne postavke u predložak"
 
 #~ msgid "Delete Preset"
 #~ msgstr "Obriši predložak"

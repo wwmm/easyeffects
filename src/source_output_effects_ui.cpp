@@ -134,12 +134,16 @@ void SourceOutputEffectsUi::level_meters_connections() {
 
   // compressor level meters connections
 
-  connections.push_back(soe->compressor_input_level.connect(
-      sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_input_level_db)));
-  connections.push_back(soe->compressor_output_level.connect(
-      sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_output_level_db)));
-  connections.push_back(soe->compressor->compression.connect(
-      sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_compression)));
+  connections.push_back(soe->compressor->input_level.connect(
+      sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_input_level)));
+  connections.push_back(soe->compressor->output_level.connect(
+      sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_output_level)));
+  connections.push_back(soe->compressor->reduction.connect(
+      sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_reduction)));
+  connections.push_back(soe->compressor->sidechain.connect(
+      sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_sidechain)));
+  connections.push_back(soe->compressor->curve.connect(
+      sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_curve)));
 
   // filter level meters connections
 

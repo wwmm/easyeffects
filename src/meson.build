@@ -3,6 +3,7 @@ pulseeffects_sources = [
 	'application.cpp',
 	'application_ui.cpp',
 	'spectrum_ui.cpp',
+	'spectrum_preset.cpp',
 	'spectrum_settings_ui.cpp',
 	'pulse_settings_ui.cpp',
 	'blacklist_settings_ui.cpp',

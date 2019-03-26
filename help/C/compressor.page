@@ -11,84 +11,197 @@
         A compressor is used to reduce the audio signal dynamic range.
     </p>
     <p>
-        PulseEffects uses the compressor developed by Calf Studio.
+        PulseEffects uses the compressor from Linux Studio Plugins.
     </p>
-    <terms>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Attack</em>
-            </title>
-            <p>
-                Amount of milliseconds the signal has to rise above the threshold before gain
-                reduction starts.
-            </p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Release</em>
-            </title>
-            <p>
-                Amount of milliseconds the signal has to fall below the threshold before the
-                reduction is decreased again.
-            </p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Threshold</em>
-            </title>
-            <p>
-                If a signal rises above this level it will affect the gain reduction.
-            </p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Ratio</em>
-            </title>
-            <p>
-                Set the ratio by which the signal will be reduced.
-            </p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Knee</em>
-            </title>
-            <p>
-                Controls how smooth is the entrance in the gain reduction phase.
-            </p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Makeup</em>
-            </title>
-            <p>
-                It amplifies your signal after processing.
-            </p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Stereo Link</em>
-            </title>
-            <p>
-                Choose if the average level between both channels or the louder channel affects
-                the reduction.
-            </p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Detection</em>
-            </title>
-            <p>
-                Choose if the compressor should take the signal peak for detection or the RMS
-                value (it is smoother).
-            </p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Mix</em>
-            </title>
-            <p></p>
-        </item>
-    </terms>
+    <section>
+        <terms>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Attack</em>
+                </title>
+                <p>
+                    Amount of milliseconds the signal has to rise above the threshold before gain
+                    reduction starts.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Release</em>
+                </title>
+                <p>
+                    Amount of milliseconds the signal has to fall below the threshold before the
+                    reduction is decreased again.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Threshold</em>
+                </title>
+                <p>
+                    If a signal rises above this level it will affect the gain reduction.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Ratio</em>
+                </title>
+                <p>
+                    Set the ratio by which the signal will be reduced.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Knee</em>
+                </title>
+                <p>
+                    Controls how smooth is the entrance in the gain reduction phase.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Makeup</em>
+                </title>
+                <p>
+                    It amplifies your signal after processing.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Compression Mode</em>
+                </title>
+                <list>
+                    <item>
+                        <p>
+                            <em style="strong">Downward</em>
+                            - Decreases the amplitude of the signal sections that are above the threshold.</p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">Upwards</em>
+                            - Increases the amplitude of the signal sections that are below the threshold.</p>
+                    </item>
+                </list>
+            </item>
+        </terms>
+    </section>
+    <section>
+        <title>Sidechain</title>
+        <terms>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Listen</em>
+                </title>
+                <p>
+                    Allows to listen the processed sidechain signal.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Type</em>
+                </title>
+                <list>
+                    <item>
+                        <p>
+                            <em style="strong">Feed-forward</em>
+                            - The sidechain input is connected to compressor's input. More aggressive
+                            compression.</p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">Feed-back</em>
+                            - The sidechain input is connected to compressor's output. Vintage-style more
+                            accurate compression.</p>
+                    </item>
+                </list>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Mode</em>
+                </title>
+                <list>
+                    <item>
+                        <p>
+                            <em style="strong">Peak</em>
+                            - Measure signal's peak.
+                        </p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">RMS</em>
+                            - Root mean square of the input signal.
+                        </p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">Low-Pass</em>
+                            - Input signal is processed by a low-pass filter.
+                        </p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">Uniform</em>
+                            - Input signal is processed by a uniform filter.
+                        </p>
+                    </item>
+                </list>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Source</em>
+                </title>
+                <list>
+                    <item>
+                        <p>
+                            <em style="strong">Middle</em>
+                            - Middle part of signal is used for sidechain processing.
+                        </p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">Side</em>
+                            - Side part of signal is used for sidechain processing.
+                        </p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">Left</em>
+                            - Only left channel is used for sidechain processing.
+                        </p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">Right</em>
+                            - Only right channel is used for sidechain processing.
+                        </p>
+                    </item>
+                </list>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Pre-amplification</em>
+                </title>
+                <p>
+                    Pre-amplification of the sidechain signal.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Reactivity</em>
+                </title>
+                <p>
+                    Reactivity of the sidechain signal.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Lookahead</em>
+                </title>
+                <p>
+                    Look-ahead time of the sidechain relative to the input signal.
+                </p>
+            </item>
+        </terms>
+    </section>
     <section>
         <title>References</title>
         <list>

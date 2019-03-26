@@ -1,8 +1,11 @@
 #ifndef _GST_PECRYSTALIZER_H_
 #define _GST_PECRYSTALIZER_H_
 
+#include <ebur128.h>
 #include <gst/audio/gstaudiofilter.h>
+#include <array>
 #include <mutex>
+#include "filter.hpp"
 
 G_BEGIN_DECLS
 
@@ -20,20 +23,39 @@ G_BEGIN_DECLS
 typedef struct _GstPecrystalizer GstPecrystalizer;
 typedef struct _GstPecrystalizerClass GstPecrystalizerClass;
 
+#define NBANDS 13
+
 struct _GstPecrystalizer {
   GstAudioFilter base_pecrystalizer;
 
   /* properties */
 
-  float intensity;
+  std::array<float, NBANDS - 1> freqs;
+  std::array<float, NBANDS> intensities;
+  std::array<bool, NBANDS> mute, bypass;
+
+  float range_before, range_after;  // loudness range
 
   /* < private > */
 
-  bool ready;
-  int bpf;  // bytes per frame : channels * bps
-  float last_L, last_R;
+  bool ready, notify, aggressive;
+  int rate, bpf;  // sampling rate,  bytes per frame : channels * bps
+  uint nsamples;
+  int notify_samples;  // number of samples to count before emit a notify
+  int sample_count, ndivs;
+  float dv;
+
+  std::array<Filter*, NBANDS> filters;
+  std::array<std::vector<float>, NBANDS> band_data, gain;
+  std::array<float, NBANDS> last_L, last_R, delayed_L, delayed_R;
+
+  std::vector<float> deriv2;
+
+  ebur128_state *ebur_state_before, *ebur_state_after;
 
   std::mutex mutex;
+
+  GstPad *srcpad = nullptr, *sinkpad = nullptr;
 };
 
 struct _GstPecrystalizerClass {

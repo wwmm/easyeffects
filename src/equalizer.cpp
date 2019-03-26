@@ -9,84 +9,6 @@ void on_num_bands_changed(GSettings* settings, gchar* key, Equalizer* l) {
   l->update_equalizer();
 }
 
-void on_deinterleave_pad_added(GstElement*, GstPad* pad, Equalizer* l) {
-  auto name = GST_PAD_NAME(pad);
-
-  util::debug(l->log_tag + l->name + " deinterleave pad added: " + name);
-
-  if (name == std::string("src_0")) {
-    auto sinkpad = gst_element_get_static_pad(l->queue_L, "sink");
-
-    gst_pad_link(pad, sinkpad);
-
-    gst_object_unref(GST_OBJECT(sinkpad));
-  } else if (name == std::string("src_1")) {
-    auto sinkpad = gst_element_get_static_pad(l->queue_R, "sink");
-
-    gst_pad_link(pad, sinkpad);
-
-    gst_object_unref(GST_OBJECT(sinkpad));
-  }
-}
-
-void on_deinterleave_pad_removed(GstElement*, GstPad* pad, Equalizer* l) {
-  if (l) {
-    std::string name = GST_PAD_NAME(pad);
-
-    if (name == std::string("src_0")) {
-      auto sinkpad = gst_element_get_static_pad(l->queue_L, "sink");
-
-      gst_pad_unlink(pad, sinkpad);
-
-      gst_object_unref(GST_OBJECT(sinkpad));
-
-      util::debug(l->log_tag + l->name + " deinterleave pad removed: " + name);
-    } else if (name == std::string("src_1")) {
-      auto sinkpad = gst_element_get_static_pad(l->queue_R, "sink");
-
-      gst_pad_unlink(pad, sinkpad);
-
-      gst_object_unref(GST_OBJECT(sinkpad));
-
-      util::debug(l->log_tag + l->name + " deinterleave pad removed: " + name);
-    }
-  }
-}
-
-void on_deinterleave_no_more_pads(GstElement*, Equalizer* l) {
-  auto b = gst_bin_get_by_name(GST_BIN(l->bin), "eq_interleave");
-
-  if (b) {
-    gst_bin_remove(GST_BIN(l->bin), b);
-  }
-
-  l->interleave = gst_element_factory_make("interleave", "eq_interleave");
-
-  gst_bin_add(GST_BIN(l->bin), l->interleave);
-
-  gst_element_link(l->interleave, l->audioconvert_out);
-
-  auto interleave_sink0_pad =
-      gst_element_get_request_pad(l->interleave, "sink_0");
-
-  auto interleave_sink1_pad =
-      gst_element_get_request_pad(l->interleave, "sink_1");
-
-  auto eq_L_src_pad = gst_element_get_static_pad(l->equalizer_L, "src");
-
-  auto eq_R_src_pad = gst_element_get_static_pad(l->equalizer_R, "src");
-
-  gst_pad_link(eq_L_src_pad, interleave_sink0_pad);
-  gst_pad_link(eq_R_src_pad, interleave_sink1_pad);
-
-  gst_element_sync_state_with_parent(l->interleave);
-
-  gst_object_unref(GST_OBJECT(interleave_sink0_pad));
-  gst_object_unref(GST_OBJECT(interleave_sink1_pad));
-  gst_object_unref(GST_OBJECT(eq_L_src_pad));
-  gst_object_unref(GST_OBJECT(eq_R_src_pad));
-}
-
 }  // namespace
 
 Equalizer::Equalizer(const std::string& tag,
@@ -96,51 +18,27 @@ Equalizer::Equalizer(const std::string& tag,
     : PluginBase(tag, "equalizer", schema),
       settings_left(g_settings_new(schema_left.c_str())),
       settings_right(g_settings_new(schema_right.c_str())) {
-  equalizer_L = gst_element_factory_make("equalizer-nbands", nullptr);
-  equalizer_R = gst_element_factory_make("equalizer-nbands", nullptr);
+  equalizer = gst_element_factory_make(
+      "lsp-plug-in-plugins-lv2-para-equalizer-x32-lr", nullptr);
 
-  if (is_installed(equalizer_L)) {
+  if (is_installed(equalizer)) {
     auto input_gain = gst_element_factory_make("volume", nullptr);
     auto in_level = gst_element_factory_make("level", "equalizer_input_level");
     auto out_level =
         gst_element_factory_make("level", "equalizer_output_level");
     auto output_gain = gst_element_factory_make("volume", nullptr);
+
     auto audioconvert_in =
         gst_element_factory_make("audioconvert", "eq_audioconvert_in");
-
-    deinterleave = gst_element_factory_make("deinterleave", "eq_deinterleave");
-    queue_L = gst_element_factory_make("queue", "eq_queue_L");
-    queue_R = gst_element_factory_make("queue", "eq_queue_R");
-    audioconvert_out =
+    auto audioconvert_out =
         gst_element_factory_make("audioconvert", "eq_audioconvert_out");
 
     gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in,
-                     deinterleave, queue_L, queue_R, equalizer_L, equalizer_R,
-                     audioconvert_out, output_gain, out_level, nullptr);
+                     equalizer, audioconvert_out, output_gain, out_level,
+                     nullptr);
 
-    /*
-      Once the pipeline is running we will have the following link order:
-                            input_gain
-                            in_level
-                            audioconvert_in
-                            deinterleave
-                            /           \
-                         queue_L      queue_R
-                       equalizer_L  equalizer_R
-                              \        /
-                              interleave
-                              audioconvert_out
-                              output_gain
-                              out_level
-    */
-
-    gst_element_link_many(input_gain, in_level, audioconvert_in, deinterleave,
-                          nullptr);
-
-    gst_element_link_many(audioconvert_out, output_gain, out_level, nullptr);
-
-    gst_element_link_many(queue_L, equalizer_L, nullptr);
-    gst_element_link_many(queue_R, equalizer_R, nullptr);
+    gst_element_link_many(input_gain, in_level, audioconvert_in, equalizer,
+                          audioconvert_out, output_gain, out_level, nullptr);
 
     // setting bin ghost pads
 
@@ -155,42 +53,18 @@ Equalizer::Equalizer(const std::string& tag,
 
     // init
 
-    g_object_set(queue_L, "silent", true, nullptr);
-    g_object_set(queue_L, "max-size-buffers", 0, nullptr);
-    g_object_set(queue_L, "max-size-bytes", 0, nullptr);
-    g_object_set(queue_L, "max-size-time", 0, nullptr);
+    g_object_set(equalizer, "bypass", false, nullptr);
+    g_object_set(equalizer, "bal", 0.0f, nullptr);
+    g_object_set(equalizer, "fft", 0, nullptr);  // off
 
-    g_object_set(queue_R, "silent", true, nullptr);
-    g_object_set(queue_R, "max-size-buffers", 0, nullptr);
-    g_object_set(queue_R, "max-size-bytes", 0, nullptr);
-    g_object_set(queue_R, "max-size-time", 0, nullptr);
-
-    g_object_set(deinterleave, "keep-positions", true, nullptr);
-
-    int nbands = g_settings_get_int(settings, "num-bands");
-
-    g_object_set(equalizer_L, "num-bands", nbands, nullptr);
-    g_object_set(equalizer_R, "num-bands", nbands, nullptr);
-
-    for (int n = 0; n < nbands; n++) {
-      bind_band(equalizer_L, settings_left, n);
-      bind_band(equalizer_R, settings_right, n);
+    for (int n = 0; n < 30; n++) {
+      bind_band(equalizer, n);
     }
 
     // connect signals
 
     g_signal_connect(settings, "changed::num-bands",
                      G_CALLBACK(on_num_bands_changed), this);
-
-    g_signal_connect(deinterleave, "pad-added",
-                     G_CALLBACK(on_deinterleave_pad_added), this);
-
-    handler_id_pad_removed =
-        g_signal_connect(deinterleave, "pad-removed",
-                         G_CALLBACK(on_deinterleave_pad_removed), this);
-
-    g_signal_connect(deinterleave, "no-more-pads",
-                     G_CALLBACK(on_deinterleave_no_more_pads), this);
 
     // gsettings bindings
 
@@ -209,6 +83,9 @@ Equalizer::Equalizer(const std::string& tag,
         util::db20_gain_to_linear_double, util::linear_double_gain_to_db20,
         nullptr, nullptr);
 
+    g_settings_bind(settings, "mode", equalizer, "mode",
+                    G_SETTINGS_BIND_DEFAULT);
+
     // useless write just to force on_state_changed callback call
 
     auto enable = g_settings_get_boolean(settings, "state");
@@ -221,79 +98,120 @@ Equalizer::~Equalizer() {
   g_object_unref(settings_left);
   g_object_unref(settings_right);
 
-  g_signal_handler_disconnect(deinterleave, handler_id_pad_removed);
-
   util::debug(log_tag + name + " destroyed");
 }
 
-void Equalizer::bind_band(GstElement* equalizer,
-                          GSettings* cfg,
-                          const int index) {
-  auto band =
-      gst_child_proxy_get_child_by_index(GST_CHILD_PROXY(equalizer), index);
+void Equalizer::bind_band(GstElement* equalizer, const int index) {
+  // left channel
 
-  g_settings_bind(cfg,
-                  std::string("band" + std::to_string(index) + "-gain").c_str(),
-                  band, "gain", G_SETTINGS_BIND_GET);
-
-  g_settings_bind(
-      cfg, std::string("band" + std::to_string(index) + "-frequency").c_str(),
-      band, "freq", G_SETTINGS_BIND_GET);
-
-  g_settings_bind(
-      cfg, std::string("band" + std::to_string(index) + "-width").c_str(), band,
-      "bandwidth", G_SETTINGS_BIND_GET);
-
-  g_settings_bind(cfg,
+  g_settings_bind(settings_left,
                   std::string("band" + std::to_string(index) + "-type").c_str(),
-                  band, "type", G_SETTINGS_BIND_GET);
+                  equalizer,
+                  std::string("ftl-" + std::to_string(index)).c_str(),
+                  G_SETTINGS_BIND_DEFAULT);
 
-  g_object_unref(band);
-}
+  g_settings_bind(settings_left,
+                  std::string("band" + std::to_string(index) + "-mode").c_str(),
+                  equalizer,
+                  std::string("fml-" + std::to_string(index)).c_str(),
+                  G_SETTINGS_BIND_DEFAULT);
 
-void Equalizer::unbind_band(GstElement* equalizer, const int index) {
-  auto band =
-      gst_child_proxy_get_child_by_index(GST_CHILD_PROXY(equalizer), index);
+  g_settings_bind(
+      settings_left,
+      std::string("band" + std::to_string(index) + "-slope").c_str(), equalizer,
+      std::string("sl-" + std::to_string(index)).c_str(),
+      G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_unbind(
-      band, std::string("band" + std::to_string(index) + "-gain").c_str());
+  g_settings_bind(settings_left,
+                  std::string("band" + std::to_string(index) + "-solo").c_str(),
+                  equalizer,
+                  std::string("xsl-" + std::to_string(index)).c_str(),
+                  G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_unbind(
-      band, std::string("band" + std::to_string(index) + "-frequency").c_str());
+  g_settings_bind(settings_left,
+                  std::string("band" + std::to_string(index) + "-mute").c_str(),
+                  equalizer,
+                  std::string("xml-" + std::to_string(index)).c_str(),
+                  G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_unbind(
-      band, std::string("band" + std::to_string(index) + "-width").c_str());
+  g_settings_bind_with_mapping(
+      settings_left,
+      std::string("band" + std::to_string(index) + "-frequency").c_str(),
+      equalizer, std::string("fl-" + std::to_string(index)).c_str(),
+      G_SETTINGS_BIND_GET, util::double_to_float, nullptr, nullptr, nullptr);
 
-  g_settings_unbind(
-      band, std::string("band" + std::to_string(index) + "-type").c_str());
+  g_settings_bind_with_mapping(
+      settings_left, std::string("band" + std::to_string(index) + "-q").c_str(),
+      equalizer, std::string("ql-" + std::to_string(index)).c_str(),
+      G_SETTINGS_BIND_GET, util::double_to_float, nullptr, nullptr, nullptr);
 
-  g_object_unref(band);
+  g_settings_bind_with_mapping(
+      settings_left,
+      std::string("band" + std::to_string(index) + "-gain").c_str(), equalizer,
+      std::string("gl-" + std::to_string(index)).c_str(), G_SETTINGS_BIND_GET,
+      util::db20_gain_to_linear, nullptr, nullptr, nullptr);
+
+  // right channel
+
+  g_settings_bind(settings_right,
+                  std::string("band" + std::to_string(index) + "-type").c_str(),
+                  equalizer,
+                  std::string("ftr-" + std::to_string(index)).c_str(),
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings_right,
+                  std::string("band" + std::to_string(index) + "-mode").c_str(),
+                  equalizer,
+                  std::string("fmr-" + std::to_string(index)).c_str(),
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(
+      settings_right,
+      std::string("band" + std::to_string(index) + "-slope").c_str(), equalizer,
+      std::string("sr-" + std::to_string(index)).c_str(),
+      G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings_right,
+                  std::string("band" + std::to_string(index) + "-solo").c_str(),
+                  equalizer,
+                  std::string("xsr-" + std::to_string(index)).c_str(),
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings_right,
+                  std::string("band" + std::to_string(index) + "-mute").c_str(),
+                  equalizer,
+                  std::string("xmr-" + std::to_string(index)).c_str(),
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind_with_mapping(
+      settings_right,
+      std::string("band" + std::to_string(index) + "-frequency").c_str(),
+      equalizer, std::string("fr-" + std::to_string(index)).c_str(),
+      G_SETTINGS_BIND_GET, util::double_to_float, nullptr, nullptr, nullptr);
+
+  g_settings_bind_with_mapping(
+      settings_right,
+      std::string("band" + std::to_string(index) + "-q").c_str(), equalizer,
+      std::string("qr-" + std::to_string(index)).c_str(), G_SETTINGS_BIND_GET,
+      util::double_to_float, nullptr, nullptr, nullptr);
+
+  g_settings_bind_with_mapping(
+      settings_right,
+      std::string("band" + std::to_string(index) + "-gain").c_str(), equalizer,
+      std::string("gr-" + std::to_string(index)).c_str(), G_SETTINGS_BIND_GET,
+      util::db20_gain_to_linear, nullptr, nullptr, nullptr);
 }
 
 void Equalizer::update_equalizer() {
   int nbands = g_settings_get_int(settings, "num-bands");
-  int current_nbands;
 
-  g_object_get(equalizer_L, "num-bands", &current_nbands, nullptr);
+  for (int n = nbands; n < 30; n++) {
+    // turn off unused band
 
-  if (nbands != current_nbands) {
-    util::debug(log_tag + name + ": unbinding bands");
+    g_object_set(equalizer, std::string("ftl-" + std::to_string(n)).c_str(), 0,
+                 nullptr);
 
-    for (int n = 0; n < current_nbands; n++) {
-      unbind_band(equalizer_L, n);
-      unbind_band(equalizer_R, n);
-    }
-
-    util::debug(log_tag + name + ": setting new number of bands");
-
-    g_object_set(equalizer_L, "num-bands", nbands, nullptr);
-    g_object_set(equalizer_R, "num-bands", nbands, nullptr);
-
-    util::debug(log_tag + name + ": binding bands");
-
-    for (int n = 0; n < nbands; n++) {
-      bind_band(equalizer_L, settings_left, n);
-      bind_band(equalizer_R, settings_right, n);
-    }
+    g_object_set(equalizer, std::string("ftr-" + std::to_string(n)).c_str(), 0,
+                 nullptr);
   }
 }

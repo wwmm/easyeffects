@@ -11,7 +11,8 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
     : Gtk::Grid(cobject),
       PluginUiBase(builder, settings_name),
       irs_dir(Glib::get_user_config_dir() + "/PulseEffects/irs"),
-      global_settings(Gio::Settings::create("com.github.wwmm.pulseeffects")) {
+      spectrum_settings(
+          Gio::Settings::create("com.github.wwmm.pulseeffects.spectrum")) {
   name = "convolver";
 
   // loading glade widgets
@@ -62,12 +63,6 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   irs_listbox->set_sort_func(
       sigc::mem_fun(*this, &ConvolverUi::on_listbox_sort));
-
-  irs_listbox->signal_row_activated().connect([&](auto row) {
-    auto irs_file = irs_dir / boost::filesystem::path{row->get_name() + ".irs"};
-
-    settings->set_string("kernel-path", irs_file.string());
-  });
 
   import_irs->signal_clicked().connect(
       sigc::mem_fun(*this, &ConvolverUi::on_import_irs_clicked));
@@ -137,12 +132,6 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 }
 
 ConvolverUi::~ConvolverUi() {
-  settings->set_boolean("post-messages", false);
-
-  for (auto c : connections) {
-    c.disconnect();
-  }
-
   futures.clear();
 
   util::debug(name + " ui destroyed");
@@ -232,22 +221,27 @@ void ConvolverUi::populate_irs_listbox() {
         "/com/github/wwmm/pulseeffects/ui/irs_row.glade");
 
     Gtk::ListBoxRow* row;
-    Gtk::Button* remove_btn;
+    Gtk::Button *remove_btn, *apply_btn;
     Gtk::Label* label;
 
     b->get_widget("irs_row", row);
     b->get_widget("remove", remove_btn);
+    b->get_widget("apply", apply_btn);
     b->get_widget("name", label);
 
     row->set_name(name);
-    row->set_margin_right(6);
-    row->set_margin_left(6);
-    row->set_margin_bottom(6);
     label->set_text(name);
 
     connections.push_back(remove_btn->signal_clicked().connect([=]() {
       remove_irs_file(name);
       populate_irs_listbox();
+    }));
+
+    connections.push_back(apply_btn->signal_clicked().connect([=]() {
+      auto irs_file =
+          irs_dir / boost::filesystem::path{row->get_name() + ".irs"};
+
+      settings->set_string("kernel-path", irs_file.string());
     }));
 
     irs_listbox->add(*row);
@@ -562,9 +556,9 @@ void ConvolverUi::draw_channel(Gtk::DrawingArea* da,
       ctx->line_to(x[n + 1], height - bar_height);
     }
 
-    if (global_settings->get_boolean("use-custom-color")) {
+    if (spectrum_settings->get_boolean("use-custom-color")) {
       Glib::Variant<std::vector<double>> v;
-      global_settings->get_value("spectrum-color", v);
+      spectrum_settings->get_value("color", v);
       auto rgba = v.get();
 
       ctx->set_source_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);

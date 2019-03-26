@@ -3,6 +3,7 @@
 
 #include <gst/base/gstadapter.h>
 #include <gst/gst.h>
+#include <mutex>
 
 G_BEGIN_DECLS
 
@@ -38,9 +39,11 @@ struct _GstPeadapter {
   int inbuf_n_samples;  // number of samples in the input buffer
   bool flag_discont;
 
-  GstAdapter* adapter;
-  GstPad* srcpad;
-  GstPad* sinkpad;
+  GstAdapter* adapter = nullptr;
+  GstPad* srcpad = nullptr;
+  GstPad* sinkpad = nullptr;
+
+  std::mutex lock_guard;
 };
 
 struct _GstPeadapterClass {

@@ -23,7 +23,9 @@
 #include "multiband_compressor_preset.hpp"
 #include "multiband_gate_preset.hpp"
 #include "pitch_preset.hpp"
+#include "preset_type.hpp"
 #include "reverb_preset.hpp"
+#include "spectrum_preset.hpp"
 #include "stereo_tools_preset.hpp"
 #include "webrtc_preset.hpp"
 
@@ -32,17 +34,21 @@ class PresetsManager {
   PresetsManager();
   virtual ~PresetsManager();
 
-  std::vector<std::string> get_names();
-  void add(const std::string& name);
-  void save(const std::string& name);
-  void remove(const std::string& name);
-  void load(const std::string& name);
-  void import(const std::string& file_path);
+  std::vector<std::string> get_names(PresetType preset_type);
+  void add(PresetType preset_type, const std::string& name);
+  void save(PresetType preset_type, const std::string& name);
+  void remove(PresetType preset_type, const std::string& name);
+  void load(PresetType preset_type, const std::string& name);
+  void import(PresetType preset_type, const std::string& file_path);
+  void add_autoload(const std::string& device, const std::string& name);
+  void remove_autoload(const std::string& device, const std::string& name);
+  std::string find_autoload(const std::string& device);
+  void autoload(PresetType preset_type, const std::string& device);
 
  private:
   std::string log_tag = "presets_manager: ";
 
-  boost::filesystem::path presets_dir;
+  boost::filesystem::path presets_dir, input_dir, output_dir, autoload_dir;
 
   Glib::RefPtr<Gio::Settings> settings, sie_settings, soe_settings;
 
@@ -67,6 +73,7 @@ class PresetsManager {
   std::unique_ptr<CrystalizerPreset> crystalizer;
   std::unique_ptr<AutoGainPreset> autogain;
   std::unique_ptr<DelayPreset> delay;
+  std::unique_ptr<SpectrumPreset> spectrum;
 
   template <typename T>
   T get_default(const Glib::RefPtr<Gio::Settings>& settings,
@@ -117,9 +124,13 @@ class PresetsManager {
     return a != b;
   }
 
-  void save_general_settings(boost::property_tree::ptree& root);
+  void create_directory(boost::filesystem::path& path);
 
-  void load_general_settings(boost::property_tree::ptree& root);
+  void save_blacklist(PresetType preset_type,
+                      boost::property_tree::ptree& root);
+
+  void load_blacklist(PresetType preset_type,
+                      boost::property_tree::ptree& root);
 };
 
 #endif

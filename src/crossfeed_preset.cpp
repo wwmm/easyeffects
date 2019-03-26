@@ -24,10 +24,16 @@ void CrossfeedPreset::load(boost::property_tree::ptree& root,
   update_key<double>(root, settings, "feed", section + ".crossfeed.feed");
 }
 
-void CrossfeedPreset::write(boost::property_tree::ptree& root) {
-  save(root, "output", output_settings);
+void CrossfeedPreset::write(PresetType preset_type,
+                            boost::property_tree::ptree& root) {
+  if (preset_type == PresetType::output) {
+    save(root, "output", output_settings);
+  }
 }
 
-void CrossfeedPreset::read(boost::property_tree::ptree& root) {
-  load(root, "output", output_settings);
+void CrossfeedPreset::read(PresetType preset_type,
+                           boost::property_tree::ptree& root) {
+  if (preset_type == PresetType::output) {
+    load(root, "output", output_settings);
+  }
 }

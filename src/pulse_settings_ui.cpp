@@ -53,9 +53,10 @@ GVariant* int_to_blocksize_enum(const GValue* value,
 
 PulseSettingsUi::PulseSettingsUi(BaseObjectType* cobject,
                                  const Glib::RefPtr<Gtk::Builder>& builder,
-                                 const Glib::RefPtr<Gio::Settings>& refSettings,
                                  Application* application)
-    : Gtk::Grid(cobject), settings(refSettings), app(application) {
+    : Gtk::Grid(cobject),
+      settings(Gio::Settings::create("com.github.wwmm.pulseeffects")),
+      app(application) {
   // loading glade widgets
 
   builder->get_widget("use_default_sink", use_default_sink);
@@ -136,11 +137,9 @@ void PulseSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
   auto builder = Gtk::Builder::create_from_resource(
       "/com/github/wwmm/pulseeffects/ui/pulse_settings.glade");
 
-  auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
-
   PulseSettingsUi* ui;
 
-  builder->get_widget_derived("widgets_grid", ui, settings, app);
+  builder->get_widget_derived("widgets_grid", ui, app);
 
   stack->add(*ui, "settings_pulse", _("Pulseaudio"));
 }

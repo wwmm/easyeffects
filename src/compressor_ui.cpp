@@ -2,55 +2,123 @@
 
 namespace {
 
-gboolean detection_enum_to_int(GValue* value,
-                               GVariant* variant,
-                               gpointer user_data) {
+gboolean mode_enum_to_int(GValue* value,
+                          GVariant* variant,
+                          gpointer user_data) {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("RMS")) {
+  if (v == std::string("Downward")) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("Peak")) {
+  } else if (v == std::string("Upward")) {
     g_value_set_int(value, 1);
   }
 
   return true;
 }
 
-GVariant* int_to_detection_enum(const GValue* value,
-                                const GVariantType* expected_type,
-                                gpointer user_data) {
+GVariant* int_to_mode_enum(const GValue* value,
+                           const GVariantType* expected_type,
+                           gpointer user_data) {
   int v = g_value_get_int(value);
 
   if (v == 0) {
-    return g_variant_new_string("RMS");
+    return g_variant_new_string("Downward");
   } else {
+    return g_variant_new_string("Upward");
+  }
+}
+
+gboolean sidechain_type_enum_to_int(GValue* value,
+                                    GVariant* variant,
+                                    gpointer user_data) {
+  auto v = g_variant_get_string(variant, nullptr);
+
+  if (v == std::string("Feed-forward")) {
+    g_value_set_int(value, 0);
+  } else if (v == std::string("Feed-back")) {
+    g_value_set_int(value, 1);
+  }
+
+  return true;
+}
+
+GVariant* int_to_sidechain_type_enum(const GValue* value,
+                                     const GVariantType* expected_type,
+                                     gpointer user_data) {
+  int v = g_value_get_int(value);
+
+  if (v == 0) {
+    return g_variant_new_string("Feed-forward");
+  } else {
+    return g_variant_new_string("Feed-back");
+  }
+}
+
+gboolean sidechain_mode_enum_to_int(GValue* value,
+                                    GVariant* variant,
+                                    gpointer user_data) {
+  auto v = g_variant_get_string(variant, nullptr);
+
+  if (v == std::string("Peak")) {
+    g_value_set_int(value, 0);
+  } else if (v == std::string("RMS")) {
+    g_value_set_int(value, 1);
+  } else if (v == std::string("Low-Pass")) {
+    g_value_set_int(value, 2);
+  } else if (v == std::string("Uniform")) {
+    g_value_set_int(value, 3);
+  }
+
+  return true;
+}
+
+GVariant* int_to_sidechain_mode_enum(const GValue* value,
+                                     const GVariantType* expected_type,
+                                     gpointer user_data) {
+  int v = g_value_get_int(value);
+
+  if (v == 0) {
     return g_variant_new_string("Peak");
+  } else if (v == 1) {
+    return g_variant_new_string("RMS");
+  } else if (v == 2) {
+    return g_variant_new_string("Low-Pass");
+  } else {
+    return g_variant_new_string("Uniform");
   }
 }
 
-gboolean stereo_link_enum_to_int(GValue* value,
-                                 GVariant* variant,
-                                 gpointer user_data) {
+gboolean sidechain_source_enum_to_int(GValue* value,
+                                      GVariant* variant,
+                                      gpointer user_data) {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("Average")) {
+  if (v == std::string("Middle")) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("Maximum")) {
+  } else if (v == std::string("Side")) {
     g_value_set_int(value, 1);
+  } else if (v == std::string("Left")) {
+    g_value_set_int(value, 2);
+  } else if (v == std::string("Right")) {
+    g_value_set_int(value, 3);
   }
 
   return true;
 }
 
-GVariant* int_to_stereo_link_enum(const GValue* value,
-                                  const GVariantType* expected_type,
-                                  gpointer user_data) {
+GVariant* int_to_sidechain_source_enum(const GValue* value,
+                                       const GVariantType* expected_type,
+                                       gpointer user_data) {
   int v = g_value_get_int(value);
 
   if (v == 0) {
-    return g_variant_new_string("Average");
+    return g_variant_new_string("Middle");
+  } else if (v == 1) {
+    return g_variant_new_string("Side");
+  } else if (v == 2) {
+    return g_variant_new_string("Left");
   } else {
-    return g_variant_new_string("Maximum");
+    return g_variant_new_string("Right");
   }
 }
 
@@ -64,21 +132,29 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
 
   // loading glade widgets
 
-  builder->get_widget("detection", detection);
-  builder->get_widget("stereo_link", stereo_link);
-  builder->get_widget("compression", compression);
-  builder->get_widget("compression_label", compression_label);
-  builder->get_widget("preset_vocal_leveller1", preset_vocal_leveller1);
-  builder->get_widget("preset_vocal_leveller2", preset_vocal_leveller2);
-  builder->get_widget("preset_default", preset_default);
+  builder->get_widget("listen", listen);
+  builder->get_widget("compression_mode", compression_mode);
+  builder->get_widget("sidechain_type", sidechain_type);
+  builder->get_widget("sidechain_mode", sidechain_mode);
+  builder->get_widget("sidechain_source", sidechain_source);
+  builder->get_widget("reduction", reduction);
+  builder->get_widget("reduction_label", reduction_label);
+  builder->get_widget("sidechain", sidechain);
+  builder->get_widget("sidechain_label", sidechain_label);
+  builder->get_widget("curve", curve);
+  builder->get_widget("curve_label", curve_label);
 
   get_object(builder, "attack", attack);
   get_object(builder, "knee", knee);
   get_object(builder, "makeup", makeup);
-  get_object(builder, "mix", mix);
   get_object(builder, "ratio", ratio);
   get_object(builder, "release", release);
   get_object(builder, "threshold", threshold);
+  get_object(builder, "preamp", preamp);
+  get_object(builder, "reactivity", reactivity);
+  get_object(builder, "lookahead", lookahead);
+  get_object(builder, "input_gain", input_gain);
+  get_object(builder, "output_gain", output_gain);
 
   // gsettings bindings
 
@@ -88,72 +164,55 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   settings->bind("attack", attack.get(), "value", flag);
   settings->bind("knee", knee.get(), "value", flag);
   settings->bind("makeup", makeup.get(), "value", flag);
-  settings->bind("mix", mix.get(), "value", flag);
   settings->bind("ratio", ratio.get(), "value", flag);
   settings->bind("release", release.get(), "value", flag);
   settings->bind("threshold", threshold.get(), "value", flag);
+  settings->bind("sidechain-listen", listen, "active", flag);
+  settings->bind("sidechain-preamp", preamp.get(), "value", flag);
+  settings->bind("sidechain-reactivity", reactivity.get(), "value", flag);
+  settings->bind("sidechain-lookahead", lookahead.get(), "value", flag);
+  settings->bind("input-gain", input_gain.get(), "value", flag);
+  settings->bind("output-gain", output_gain.get(), "value", flag);
 
-  g_settings_bind_with_mapping(settings->gobj(), "detection", detection->gobj(),
-                               "active", G_SETTINGS_BIND_DEFAULT,
-                               detection_enum_to_int, int_to_detection_enum,
-                               nullptr, nullptr);
+  g_settings_bind_with_mapping(settings->gobj(), "mode",
+                               compression_mode->gobj(), "active",
+                               G_SETTINGS_BIND_DEFAULT, mode_enum_to_int,
+                               int_to_mode_enum, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings->gobj(), "stereo-link",
-                               stereo_link->gobj(), "active",
-                               G_SETTINGS_BIND_DEFAULT, stereo_link_enum_to_int,
-                               int_to_stereo_link_enum, nullptr, nullptr);
+  g_settings_bind_with_mapping(
+      settings->gobj(), "sidechain-type", sidechain_type->gobj(), "active",
+      G_SETTINGS_BIND_DEFAULT, sidechain_type_enum_to_int,
+      int_to_sidechain_type_enum, nullptr, nullptr);
 
-  init_presets_buttons();
+  g_settings_bind_with_mapping(
+      settings->gobj(), "sidechain-mode", sidechain_mode->gobj(), "active",
+      G_SETTINGS_BIND_DEFAULT, sidechain_mode_enum_to_int,
+      int_to_sidechain_mode_enum, nullptr, nullptr);
 
-  settings->set_boolean("post-messages", true);
+  g_settings_bind_with_mapping(
+      settings->gobj(), "sidechain-source", sidechain_source->gobj(), "active",
+      G_SETTINGS_BIND_DEFAULT, sidechain_source_enum_to_int,
+      int_to_sidechain_source_enum, nullptr, nullptr);
 }
 
 CompressorUi::~CompressorUi() {
-  settings->set_boolean("post-messages", false);
-
   util::debug(name + " ui destroyed");
 }
 
-void CompressorUi::on_new_compression(double value) {
-  compression->set_value(1 - value);
+void CompressorUi::on_new_reduction(double value) {
+  reduction->set_value(value);
 
-  compression_label->set_text(level_to_str(util::linear_to_db(value)));
+  reduction_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
 
-void CompressorUi::init_presets_buttons() {
-  preset_vocal_leveller1->signal_clicked().connect([=]() {
-    threshold->set_value(util::linear_to_db(0.0883884));
-    ratio->set_value(4.25008);
-    attack->set_value(3.10087);
-    release->set_value(25.0012);
-    makeup->set_value(util::linear_to_db(4.85678));
-    knee->set_value(util::linear_to_db(8));
-    detection->set_active(0);
-    stereo_link->set_active(0);
-    settings->reset("mix");
-  });
+void CompressorUi::on_new_sidechain(double value) {
+  sidechain->set_value(value);
 
-  preset_vocal_leveller2->signal_clicked().connect([=]() {
-    threshold->set_value(util::linear_to_db(0.0883884));
-    ratio->set_value(4.25008);
-    attack->set_value(10.5096);
-    release->set_value(106.852);
-    makeup->set_value(util::linear_to_db(4.85678));
-    knee->set_value(util::linear_to_db(8));
-    detection->set_active(0);
-    stereo_link->set_active(0);
-    settings->reset("mix");
-  });
+  sidechain_label->set_text(level_to_str(util::linear_to_db(value), 0));
+}
 
-  preset_default->signal_clicked().connect([=]() {
-    settings->reset("detection");
-    settings->reset("stereo-link");
-    settings->reset("mix");
-    settings->reset("attack");
-    settings->reset("release");
-    settings->reset("threshold");
-    settings->reset("ratio");
-    settings->reset("knee");
-    settings->reset("makeup");
-  });
+void CompressorUi::on_new_curve(double value) {
+  curve->set_value(value);
+
+  curve_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }

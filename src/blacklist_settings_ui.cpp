@@ -3,9 +3,9 @@
 
 BlacklistSettingsUi::BlacklistSettingsUi(
     BaseObjectType* cobject,
-    const Glib::RefPtr<Gtk::Builder>& builder,
-    const Glib::RefPtr<Gio::Settings>& refSettings)
-    : Gtk::Grid(cobject), settings(refSettings) {
+    const Glib::RefPtr<Gtk::Builder>& builder)
+    : Gtk::Grid(cobject),
+      settings(Gio::Settings::create("com.github.wwmm.pulseeffects")) {
   // loading glade widgets
 
   builder->get_widget("blacklist_in_scrolled_window",
@@ -76,11 +76,9 @@ void BlacklistSettingsUi::add_to_stack(Gtk::Stack* stack) {
   auto builder = Gtk::Builder::create_from_resource(
       "/com/github/wwmm/pulseeffects/ui/blacklist_settings.glade");
 
-  auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
-
   BlacklistSettingsUi* ui;
 
-  builder->get_widget_derived("widgets_grid", ui, settings);
+  builder->get_widget_derived("widgets_grid", ui);
 
   stack->add(*ui, "settings_blacklist", _("Blacklist"));
 }

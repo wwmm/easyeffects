@@ -1,6 +1,6 @@
+#include "gstpeadapter.hpp"
 #include <gst/audio/audio.h>
 #include "config.h"
-#include "gstpeadapter.hpp"
 #include "util.hpp"
 
 GST_DEBUG_CATEGORY_STATIC(peadapter_debug);
@@ -50,7 +50,7 @@ static GstStaticPadTemplate srctemplate = GST_STATIC_PAD_TEMPLATE(
     GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=[1,max],"
                     "channels=2,layout=interleaved"));
 
-enum { PROP_0, PROP_BLOCKSIZE };
+enum { PROP_BLOCKSIZE = 1 };
 
 enum {
   BLOCKSIZE_64 = 64,
@@ -155,9 +155,16 @@ static void gst_peadapter_set_property(GObject* object,
                                        GParamSpec* pspec) {
   GstPeadapter* peadapter = GST_PEADAPTER(object);
 
+  std::lock_guard<std::mutex> lock(peadapter->lock_guard);
+
   switch (prop_id) {
     case PROP_BLOCKSIZE:
       peadapter->blocksize = g_value_get_enum(value);
+
+      gst_element_post_message(
+          GST_ELEMENT_CAST(peadapter),
+          gst_message_new_latency(GST_OBJECT_CAST(peadapter)));
+
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -186,6 +193,8 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
                                          GstBuffer* buffer) {
   GstPeadapter* peadapter = GST_PEADAPTER(parent);
   GstFlowReturn ret = GST_FLOW_OK;
+
+  std::lock_guard<std::mutex> lock(peadapter->lock_guard);
 
   if (GST_BUFFER_FLAG_IS_SET(buffer, GST_BUFFER_FLAG_DISCONT)) {
     gst_adapter_clear(peadapter->adapter);
@@ -261,6 +270,8 @@ static gboolean gst_peadapter_sink_event(GstPad* pad,
   GstPeadapter* peadapter = GST_PEADAPTER(parent);
   gboolean ret = true;
 
+  std::lock_guard<std::mutex> lock(peadapter->lock_guard);
+
   switch (GST_EVENT_TYPE(event)) {
     case GST_EVENT_CAPS:
       GstCaps* caps;
@@ -275,7 +286,7 @@ static gboolean gst_peadapter_sink_event(GstPad* pad,
 
       /* push the event downstream */
 
-      gst_pad_push_event(peadapter->srcpad, event);
+      ret = gst_pad_push_event(peadapter->srcpad, event);
 
       break;
     case GST_EVENT_EOS:
@@ -284,11 +295,11 @@ static gboolean gst_peadapter_sink_event(GstPad* pad,
 
       peadapter->inbuf_n_samples = -1;
 
-      ret = gst_pad_event_default(pad, parent, event);
+      ret = gst_pad_push_event(peadapter->srcpad, event);
 
       break;
     default:
-      ret = gst_pad_event_default(pad, parent, event);
+      ret = gst_pad_push_event(peadapter->srcpad, event);
       break;
   }
 
@@ -390,6 +401,8 @@ void gst_peadapter_finalize(GObject* object) {
   GstPeadapter* peadapter = GST_PEADAPTER(object);
 
   GST_DEBUG_OBJECT(peadapter, "finalize");
+
+  std::lock_guard<std::mutex> lock(peadapter->lock_guard);
 
   gst_adapter_clear(peadapter->adapter);
   g_object_unref(peadapter->adapter);

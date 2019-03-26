@@ -426,6 +426,20 @@ msgstr "Прослушать"
 #, fuzzy
 msgid "Pre-amplification"
 msgstr "Приложения"
+<<<<<<< HEAD
+
+#: data/ui/compressor.glade:538
+msgid "Reactivity"
+msgstr ""
+
+#: data/ui/compressor.glade:586
+msgid "Feed-forward"
+msgstr ""
+
+#: data/ui/compressor.glade:587
+#, fuzzy
+msgid "Feed-back"
+msgstr "Подача"
 
 #: data/ui/compressor.glade:538
 msgid "Reactivity"
@@ -663,6 +677,10 @@ msgstr "Инертность"
 #: data/ui/equalizer.glade:24
 msgid "Equalizer"
 msgstr "Эквалайзер"
+
+#: data/ui/equalizer.glade:132
+msgid "Split Channels"
+msgstr "Разделить каналы"
 
 #: data/ui/equalizer.glade:158
 msgid "IIR"

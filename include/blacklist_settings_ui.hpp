@@ -14,8 +14,7 @@
 class BlacklistSettingsUi : public Gtk::Grid {
  public:
   BlacklistSettingsUi(BaseObjectType* cobject,
-                      const Glib::RefPtr<Gtk::Builder>& builder,
-                      const Glib::RefPtr<Gio::Settings>& refSettings);
+                      const Glib::RefPtr<Gtk::Builder>& builder);
 
   virtual ~BlacklistSettingsUi();
 

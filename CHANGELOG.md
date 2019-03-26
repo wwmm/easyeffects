@@ -1,6 +1,108 @@
 # Changelog
 
-## [Unreleased]
+## [Unreleased
+
+## [4.5.8]
+### Fixed
+- Fixed problems in pt_BR translation that could make installation fail in
+some systems.
+
+## [4.5.7]
+### Added
+- Updated Czech and Turkish translations.
+- Linux Studio Plugins `1.1.7` has new filters in its parametric equalizer that
+ are implemented just like the biquad filters found in Equalizer APO. A very
+ popular equalizer used in Windows. This will help PulseEffects users to
+ properly use headphone correction curves that were designed with Equalizer APO
+ filters in mind. Just choose `APO (DR)` as mode in each band menu. You can have
+  more information about why this is a useful feature here
+https://github.com/wwmm/pulseeffects/issues/421 and here
+https://github.com/sadko4u/lsp-plugins/issues/29.
+
+### Note for packagers
+- PulseEffects will probably still work with older Linux Studio Plugins versions.
+But I would expect some errors printed in the system log if the user tries to
+choose the APO filter.
+
+## [4.5.6]
+### Added
+- Chinese and Turkish translations.
+- Improvements to the Crystalizer plugin. It now shows the loudness range before
+ and after processing. Some improvements to its algorithm were also done.
+ Latency and memory usage were reduced and it now has a toggle button to turn
+ on/off an "Aggressive Mode".
+
+## [4.5.5]
+### Fixed
+- Fixed a memory leak that could happen in the crystalizer plugin in some cases.
+
+## [4.5.4]
+### Added
+- Improved crystalizer algorithm. Some noises that could be created in a few
+cases do not happen anymore.
+- Improved Italian translations.
+
+## [4.5.3]
+### Added
+- Improved crystalizer algorithm. Its CPU usage was reduced.
+- Improved Italian translations.
+
+## [4.5.2]
+### Added
+- Improved crystalizer algorithm. It should preserve more of the original wave
+shape when increasing the dynamic range.
+
+## [4.5.1]
+### Added
+- Updated help and translations.
+- Reworked crystalizer plugin. It now has more band filters.
+- Block size is again a global setting because besides the convolver
+crystalizer now also needs audio buffer sizes following a power of 2. As before
+higher block sizes will increase latency but will reduce cpu usage in plugins
+like the autogain.
+- The spectrum now has line mode and a switch to enable/disable linear
+gradient.
+
+### Changed
+- The compressor(not the multiband) is now from the Linux Studio Plugins package.
+
+## [4.5.0]
+
+- Warning: This is not one more of the typical harmless updates I usually do.
+A few of the many features introduced required a few changes to the preset
+format. It is not a total break like the last time(still using json) but manual
+intervention will be necessary in order to use values from the old format. With
+the exception of the equalizer it is just a matter of doing some copy and paste
+in a text editor.
+
+### Added
+- It is now possible to make a preset autoload when an input or output device is
+ plugged in the system.
+- The Crystalizer plugin now splits the frequency spectrum in three regions. This
+allows the application of a smaller intensity to high frequencies.
+- Remember window size.
+- Updated help and translations.
+- Added options to show/hide bars borders in the spectrum and to change their
+line widths.
+- Improved dynamic pipeline.
+
+### Changed
+- We now use Linux Studio Plugins "Parametric Equalizer x32 LeftRight" (LV2 version)
+http://lsp-plug.in/?page=manuals&section=para_equalizer_x32_lr instead
+of the one from Gstreamer. Reason: it has more features and supports different
+settings for each channel natively. Besides the usual high-pass and low-pass
+it has a notch and a resonant filter. It is also possible to mute
+ each band on the fly and change its filter slope. There is also a "solo" mode
+ where we can easily listen to the effect caused by a specific band without
+ having to manually disable all the others.
+ - The `Enable All Apps` function was split in two. We now have
+ `Process All Outputs` and `Process All Inputs`. This way the user can choose
+ to automatically apply effects to the output of all apps while manually choosing
+ which ones will have their input processed.
+
+### Fixed
+- Icon is properly rendered in QT environments
+- Custom spectrum height is applied on startup
 
 ## [4.4.7]
 ### Added

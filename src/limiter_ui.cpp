@@ -32,22 +32,14 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
   settings->bind("oversampling", oversampling.get(), "value", flag);
   settings->bind("asc", asc, "active", flag);
   settings->bind("asc-level", asc_level.get(), "value", flag);
-
-  settings->set_boolean("post-messages", true);
 }
 
 LimiterUi::~LimiterUi() {
-  settings->set_boolean("post-messages", false);
-
-  for (auto c : connections) {
-    c.disconnect();
-  }
-
   util::debug(name + " ui destroyed");
 }
 
 void LimiterUi::on_new_attenuation(double value) {
   attenuation->set_value(1 - value);
 
-  attenuation_label->set_text(level_to_str(util::linear_to_db(value)));
+  attenuation_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }

@@ -51,18 +51,27 @@ int Application::on_command_line(
   } else if (options->contains("presets")) {
     std::string list;
 
-    for (auto name : presets_manager->get_names()) {
+    for (auto name : presets_manager->get_names(PresetType::output)) {
       list += name + ",";
     }
 
-    util::info(log_tag + _("Presets: ") + list);
+    util::info(log_tag + _("Output Presets: ") + list);
+
+    list = "";
+
+    for (auto name : presets_manager->get_names(PresetType::input)) {
+      list += name + ",";
+    }
+
+    util::info(log_tag + _("Input Presets: ") + list);
   } else if (options->contains("load-preset")) {
     Glib::ustring name;
 
     if (!options->lookup_value("load-preset", name)) {
       util::debug(log_tag + "failed to load preset: " + name);
     } else {
-      presets_manager->load(name);
+      presets_manager->load(PresetType::input, name);
+      presets_manager->load(PresetType::output, name);
     }
   } else if (options->contains("reset")) {
     settings->reset("");
@@ -99,13 +108,19 @@ void Application::on_startup() {
 
   pm->new_default_sink.connect([&](auto name) {
     util::debug("new default sink: " + name);
+
     sie->set_output_sink_name(name);
     soe->webrtc->set_probe_src_device(name + ".monitor");
+
+    presets_manager->autoload(PresetType::output, name);
   });
 
   pm->new_default_source.connect([&](auto name) {
     util::debug("new default source: " + name);
+
     soe->set_source_monitor_name(name);
+
+    presets_manager->autoload(PresetType::input, name);
   });
 
   settings->signal_changed("blacklist-in").connect([=](auto key) {
@@ -134,7 +149,16 @@ void Application::on_activate() {
 
     add_window(*window);
 
-    window->signal_hide().connect([&, window]() { delete window; });
+    window->signal_hide().connect([&, window]() {
+      int width, height;
+
+      window->get_size(width, height);
+
+      settings->set_int("window-width", width);
+      settings->set_int("window-height", height);
+
+      delete window;
+    });
 
     window->show_all();
 

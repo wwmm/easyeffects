@@ -22,8 +22,6 @@ class LimiterUi : public Gtk::Grid, public PluginUiBase {
 
   Gtk::LevelBar* attenuation;
   Gtk::Label* attenuation_label;
-
-  std::vector<sigc::connection> connections;
 };
 
 #endif

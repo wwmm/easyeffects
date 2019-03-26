@@ -5,26 +5,25 @@
 
 PulseManager::PulseManager()
     : main_loop(pa_threaded_mainloop_new()),
-      main_loop_api(pa_threaded_mainloop_get_api(main_loop)),
-      context(pa_context_new(main_loop_api, "PulseEffects")) {
-  pa_context_set_state_callback(context, &PulseManager::context_state_cb, this);
-
-  pa_context_connect(context, nullptr, PA_CONTEXT_NOFAIL, nullptr);
-
+      main_loop_api(pa_threaded_mainloop_get_api(main_loop)) {
+  pa_threaded_mainloop_lock(main_loop);
   pa_threaded_mainloop_start(main_loop);
 
-  pa_threaded_mainloop_lock(main_loop);
+  context = pa_context_new(main_loop_api, "PulseEffects");
 
-  while (!context_ready) {
-    pa_threaded_mainloop_wait(main_loop);
-  }
-
+  pa_context_set_state_callback(context, &PulseManager::context_state_cb, this);
+  pa_context_connect(context, nullptr, PA_CONTEXT_NOFAIL, nullptr);
+  pa_threaded_mainloop_wait(main_loop);
   pa_threaded_mainloop_unlock(main_loop);
 
-  get_server_info();
-  load_apps_sink();
-  load_mic_sink();
-  subscribe_to_events();
+  if (context_ready) {
+    get_server_info();
+    load_apps_sink();
+    load_mic_sink();
+    subscribe_to_events();
+  } else {
+    util::error(log_tag + "context initialization failed");
+  }
 }
 
 PulseManager::~PulseManager() {
@@ -37,19 +36,15 @@ PulseManager::~PulseManager() {
   util::debug(log_tag + "disconnecting Pulseaudio context...");
   pa_context_disconnect(context);
 
-  while (context_ready) {
-    pa_threaded_mainloop_wait(main_loop);
-  }
-
-  pa_threaded_mainloop_unlock(main_loop);
-
   util::debug(log_tag + "Pulseaudio context was disconnected");
-
-  util::debug(log_tag + "stopping pulseaudio threaded main loop");
-  pa_threaded_mainloop_stop(main_loop);
 
   util::debug(log_tag + "unreferencing Pulseaudio context");
   pa_context_unref(context);
+
+  pa_threaded_mainloop_unlock(main_loop);
+
+  util::debug(log_tag + "stopping pulseaudio threaded main loop");
+  pa_threaded_mainloop_stop(main_loop);
 
   util::debug(log_tag + "freeing Pulseaudio threaded main loop");
   pa_threaded_mainloop_free(main_loop);
@@ -79,6 +74,7 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
   } else if (state == PA_CONTEXT_FAILED) {
     util::debug(pm->log_tag + "failed to connect context");
 
+    pm->context_ready = false;
     pa_threaded_mainloop_signal(pm->main_loop, false);
   } else if (state == PA_CONTEXT_TERMINATED) {
     util::debug(pm->log_tag + "context was terminated");
@@ -236,18 +232,23 @@ void PulseManager::subscribe_to_events() {
                     auto sink = info->default_sink_name;
                     auto source = info->default_source_name;
 
-                    pm->server_info.default_sink_name = sink;
-                    pm->server_info.default_source_name = source;
+                    if (sink != pm->server_info.default_sink_name) {
+                      pm->server_info.default_sink_name = sink;
 
-                    if (sink != std::string("PulseEffects_apps")) {
-                      Glib::signal_idle().connect_once(
-                          [pm, sink]() { pm->new_default_sink.emit(sink); });
+                      if (sink != std::string("PulseEffects_apps")) {
+                        Glib::signal_idle().connect_once(
+                            [pm, sink]() { pm->new_default_sink.emit(sink); });
+                      }
                     }
 
-                    if (source != std::string("PulseEffects_mic.monitor")) {
-                      Glib::signal_idle().connect_once([pm, source]() {
-                        pm->new_default_source.emit(source);
-                      });
+                    if (source != pm->server_info.default_source_name) {
+                      pm->server_info.default_source_name = source;
+
+                      if (source != std::string("PulseEffects_mic.monitor")) {
+                        Glib::signal_idle().connect_once([pm, source]() {
+                          pm->new_default_source.emit(source);
+                        });
+                      }
                     }
                   }
                 },

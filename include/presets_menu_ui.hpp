@@ -10,6 +10,7 @@
 #include <gtkmm/popover.h>
 #include <gtkmm/scrolledwindow.h>
 #include "application.hpp"
+#include "preset_type.hpp"
 
 class PresetsMenuUi : public Gtk::Grid {
  public:
@@ -31,19 +32,25 @@ class PresetsMenuUi : public Gtk::Grid {
 
   Application* app;
 
-  Gtk::Button *add_preset, *import_preset;
-  Gtk::ListBox* presets_listbox;
+  Gtk::Button *add_output, *add_input, *import_output, *import_input;
+  Gtk::ListBox *output_listbox, *input_listbox;
 
-  Gtk::Entry* preset_name;
-  Gtk::ScrolledWindow* presets_scrolled_window;
+  Gtk::Entry *output_name, *input_name;
+  Gtk::ScrolledWindow *output_scrolled_window, *input_scrolled_window;
 
   std::vector<sigc::connection> connections;
 
-  void populate_presets_listbox();
+  void create_preset(PresetType preset_type);
+
+  void import_preset(PresetType preset_type);
+
+  void populate_listbox(PresetType preset_type);
 
   int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
 
-  void on_import_preset_clicked();
+  void reset_menu_button_label();
+
+  bool is_autoloaded(PresetType preset_type, const std::string& name);
 };
 
 #endif

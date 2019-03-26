@@ -20,12 +20,8 @@ LoudnessUi::LoudnessUi(BaseObjectType* cobject,
   settings->bind("loudness", loudness.get(), "value", flag);
   settings->bind("output", output.get(), "value", flag);
   settings->bind("link", link.get(), "value", flag);
-
-  settings->set_boolean("post-messages", true);
 }
 
 LoudnessUi::~LoudnessUi() {
-  settings->set_boolean("post-messages", false);
-
   util::debug(name + " ui destroyed");
 }

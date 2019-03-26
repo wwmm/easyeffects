@@ -99,18 +99,14 @@ GateUi::GateUi(BaseObjectType* cobject,
                                stereo_link->gobj(), "active",
                                G_SETTINGS_BIND_DEFAULT, stereo_link_enum_to_int,
                                int_to_stereo_link_enum, nullptr, nullptr);
-
-  settings->set_boolean("post-messages", true);
 }
 
 GateUi::~GateUi() {
-  settings->set_boolean("post-messages", false);
-
   util::debug(name + " ui destroyed");
 }
 
 void GateUi::on_new_gating(double value) {
   gating->set_value(1 - value);
 
-  gating_label->set_text(level_to_str(util::linear_to_db(value)));
+  gating_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }

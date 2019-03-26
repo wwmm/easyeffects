@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="pulseeffects">
-    <enum id="com.github.wwmm.pulseeffects.compressor.detection.enum">
-        <value nick="RMS" value="0"/>
-        <value nick="Peak" value="1"/>
+    <enum id="com.github.wwmm.pulseeffects.compressor.mode.enum">
+        <value nick="Downward" value="0"/>
+        <value nick="Upward" value="1"/>
     </enum>
-    <enum id="com.github.wwmm.pulseeffects.compressor.stereo.link.enum">
-        <value nick="Average" value="0"/>
-        <value nick="Maximum" value="1"/>
+    <enum id="com.github.wwmm.pulseeffects.compressor.sidechain.type.enum">
+        <value nick="Feed-forward" value="0"/>
+        <value nick="Feed-back" value="1"/>
+    </enum>
+    <enum id="com.github.wwmm.pulseeffects.compressor.sidechain.mode.enum">
+        <value nick="Peak" value="0"/>
+        <value nick="RMS" value="1"/>
+        <value nick="Low-Pass" value="2"/>
+        <value nick="Uniform" value="3"/>
+    </enum>
+    <enum id="com.github.wwmm.pulseeffects.compressor.sidechain.source.enum">
+        <value nick="Middle" value="0"/>
+        <value nick="Side" value="1"/>
+        <value nick="Left" value="2"/>
+        <value nick="Right" value="3"/>
     </enum>
     <enum id="com.github.wwmm.pulseeffects.filter.enum">
         <value nick="12dB/oct Lowpass" value="0"/>
@@ -22,10 +34,35 @@
         <value nick="12dB/oct Bandreject" value="10"/>
         <value nick="18dB/oct Bandreject" value="11"/>
     </enum>
+    <enum id="com.github.wwmm.pulseeffects.equalizer.mode.enum">
+        <value nick="IIR" value="0"/>
+        <value nick="FIR" value="1"/>
+        <value nick="FFT" value="2"/>
+    </enum>
+    <enum id="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
+        <value nick="RLC (BT)" value="0"/>
+        <value nick="RLC (MT)" value="1"/>
+        <value nick="BWC (BT)" value="2"/>
+        <value nick="BWC (MT)" value="3"/>
+        <value nick="LRX (BT)" value="4"/>
+        <value nick="LRX (MT)" value="5"/>
+        <value nick="APO (DR)" value="6"/>
+    </enum>
     <enum id="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-        <value nick="peak" value="0"/>
-        <value nick="low-shelf" value="1"/>
-        <value nick="high-shelf" value="2"/>
+        <value nick="Off" value="0"/>
+        <value nick="Bell" value="1"/>
+        <value nick="Hi-pass" value="2"/>
+        <value nick="Hi-shelf" value="3"/>
+        <value nick="Lo-pass" value="4"/>
+        <value nick="Lo-shelf" value="5"/>
+        <value nick="Notch" value="6"/>
+        <value nick="Resonance" value="7"/>
+    </enum>
+    <enum id="com.github.wwmm.pulseeffects.equalizer.bandslope.enum">
+        <value nick="x1" value="0"/>
+        <value nick="x2" value="1"/>
+        <value nick="x3" value="2"/>
+        <value nick="x4" value="3"/>
     </enum>
     <enum id="com.github.wwmm.pulseeffects.reverb.roomsize.enum">
         <value nick="Small" value="0"/>
@@ -134,6 +171,10 @@
         <value nick="Real Time" value="1"/>
         <value nick="None" value="2"/>
     </enum>
+    <enum id="com.github.wwmm.pulseeffects.spectrum.type.enum">
+        <value nick="Bars" value="0"/>
+        <value nick="Lines" value="1"/>
+    </enum>
     <schema id="com.github.wwmm.pulseeffects" path="/com/github/wwmm/pulseeffects/">
         <key name="version" type="s">
             <default>""</default>
@@ -146,9 +187,6 @@
             <range min="100" max="100000"/>
             <default>10000</default>
         </key>
-        <key name="blocksize-out" enum="com.github.wwmm.pulseeffects.blocksize.enum">
-            <default>"512"</default>
-        </key>
         <key name="buffer-in" type="i">
             <range min="1000" max="1000000"/>
             <default>200000</default>
@@ -160,39 +198,14 @@
         <key name="blocksize-in" enum="com.github.wwmm.pulseeffects.blocksize.enum">
             <default>"512"</default>
         </key>
-        <key name="show-spectrum" type="b">
+        <key name="blocksize-out" enum="com.github.wwmm.pulseeffects.blocksize.enum">
+            <default>"512"</default>
+        </key>
+        <key name="enable-all-sinkinputs" type="b">
             <default>true</default>
         </key>
-        <key name="spectrum-fill" type="b">
+        <key name="enable-all-sourceoutputs" type="b">
             <default>false</default>
-        </key>
-        <key name="spectrum-n-points" type="i">
-            <range min="2" max="600"/>
-            <default>150</default>
-        </key>
-        <key name="use-custom-color" type="b">
-            <default>false</default>
-        </key>
-        <key name="spectrum-color" type="ad">
-            <default>[1.0,1.0,1.0,1.0]</default>
-        </key>
-        <key name="spectrum-height" type="i">
-            <default>100</default>
-        </key>
-        <key name="spectrum-scale" type="d">
-            <range min="0.0" max="10.0"/>
-            <default>1.0</default>
-        </key>
-        <key name="spectrum-exponent" type="d">
-            <range min="0.0" max="10.0"/>
-            <default>1.0</default>
-        </key>
-        <key name="spectrum-sampling-freq" type="i">
-            <range min="1" max="200"/>
-            <default>10</default>
-        </key>
-        <key name="enable-all-apps" type="b">
-            <default>true</default>
         </key>
         <key name="use-dark-theme" type="b">
             <default>false</default>
@@ -232,6 +245,12 @@
         <key name="niceness" type="i">
             <range min="-20" max="19"/>
             <default>-10</default>
+        </key>
+        <key name="window-width" type="i">
+            <default>0</default>
+        </key>
+        <key name="window-height" type="i">
+            <default>0</default>
         </key>
     </schema>
 </schemalist>

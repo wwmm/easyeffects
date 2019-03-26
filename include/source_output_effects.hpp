@@ -39,8 +39,6 @@ class SourceOutputEffects : public PipelineBase {
   std::unique_ptr<MultibandCompressor> multiband_compressor;
   std::unique_ptr<MultibandGate> multiband_gate;
 
-  sigc::signal<void, std::array<double, 2>> compressor_input_level;
-  sigc::signal<void, std::array<double, 2>> compressor_output_level;
   sigc::signal<void, std::array<double, 2>> equalizer_input_level;
   sigc::signal<void, std::array<double, 2>> equalizer_output_level;
   sigc::signal<void, std::array<double, 2>> gate_input_level;
@@ -53,8 +51,6 @@ class SourceOutputEffects : public PipelineBase {
   sigc::signal<void, std::array<double, 2>> webrtc_output_level;
 
  private:
-  GSettings* soe_settings = nullptr;
-
   void add_plugins_to_pipeline();
 
   void on_app_added(const std::shared_ptr<AppInfo>& app_info);

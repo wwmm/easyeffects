@@ -337,7 +337,7 @@
                   <item>256</item>
                   <item>512</item>
                   <item>1024</item>
-                  <item>2048</item>
+                  <item id="&lt;Enter ID&gt;">2048</item>
                   <item>4096</item>
                 </items>
               </object>

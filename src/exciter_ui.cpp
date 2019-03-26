@@ -35,18 +35,15 @@ ExciterUi::ExciterUi(BaseObjectType* cobject,
   settings->bind("output-gain", output_gain.get(), "value", flag);
   settings->bind("listen", listen, "active", flag);
   settings->bind("ceil-active", ceil_active, "active", flag);
-
-  settings->set_boolean("post-messages", true);
 }
 
 ExciterUi::~ExciterUi() {
-  settings->set_boolean("post-messages", false);
-
   util::debug(name + " ui destroyed");
 }
 
 void ExciterUi::on_new_harmonics_level(double value) {
   harmonics_levelbar->set_value(value);
 
-  harmonics_levelbar_label->set_text(level_to_str(util::linear_to_db(value)));
+  harmonics_levelbar_label->set_text(
+      level_to_str(util::linear_to_db(value), 0));
 }

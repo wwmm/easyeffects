@@ -29,10 +29,16 @@ void MaximizerPreset::load(boost::property_tree::ptree& root,
                      section + ".maximizer.threshold");
 }
 
-void MaximizerPreset::write(boost::property_tree::ptree& root) {
-  save(root, "output", output_settings);
+void MaximizerPreset::write(PresetType preset_type,
+                            boost::property_tree::ptree& root) {
+  if (preset_type == PresetType::output) {
+    save(root, "output", output_settings);
+  }
 }
 
-void MaximizerPreset::read(boost::property_tree::ptree& root) {
-  load(root, "output", output_settings);
+void MaximizerPreset::read(PresetType preset_type,
+                           boost::property_tree::ptree& root) {
+  if (preset_type == PresetType::output) {
+    load(root, "output", output_settings);
+  }
 }

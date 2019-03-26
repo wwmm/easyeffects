@@ -38,10 +38,16 @@ void ConvolverPreset::load(boost::property_tree::ptree& root,
   update_key<int>(root, settings, "ir-width", section + ".convolver.ir-width");
 }
 
-void ConvolverPreset::write(boost::property_tree::ptree& root) {
-  save(root, "output", output_settings);
+void ConvolverPreset::write(PresetType preset_type,
+                            boost::property_tree::ptree& root) {
+  if (preset_type == PresetType::output) {
+    save(root, "output", output_settings);
+  }
 }
 
-void ConvolverPreset::read(boost::property_tree::ptree& root) {
-  load(root, "output", output_settings);
+void ConvolverPreset::read(PresetType preset_type,
+                           boost::property_tree::ptree& root) {
+  if (preset_type == PresetType::output) {
+    load(root, "output", output_settings);
+  }
 }

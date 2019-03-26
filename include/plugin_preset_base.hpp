@@ -4,14 +4,17 @@
 #include <giomm/settings.h>
 #include <boost/property_tree/ptree.hpp>
 #include <iostream>
+#include "preset_type.hpp"
 
 class PluginPresetBase {
  public:
   PluginPresetBase() {}
   virtual ~PluginPresetBase() {}
 
-  virtual void write(boost::property_tree::ptree& root) = 0;
-  virtual void read(boost::property_tree::ptree& root) = 0;
+  virtual void write(PresetType preset_type,
+                     boost::property_tree::ptree& root) = 0;
+  virtual void read(PresetType preset_type,
+                    boost::property_tree::ptree& root) = 0;
 
  protected:
   virtual void save(boost::property_tree::ptree& root,

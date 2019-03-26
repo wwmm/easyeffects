@@ -6,6 +6,7 @@
 #include <gtkmm/adjustment.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/colorbutton.h>
+#include <gtkmm/comboboxtext.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/stack.h>
 #include <gtkmm/switch.h>
@@ -15,7 +16,6 @@ class SpectrumSettingsUi : public Gtk::Grid {
  public:
   SpectrumSettingsUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& builder,
-                     const Glib::RefPtr<Gio::Settings>& refSettings,
                      Application* application);
 
   virtual ~SpectrumSettingsUi();
@@ -29,11 +29,12 @@ class SpectrumSettingsUi : public Gtk::Grid {
 
   Application* app;
 
-  Gtk::Switch *show_spectrum, *use_custom_color, *spectrum_fill;
-  Gtk::ColorButton* spectrum_color_button;
+  Gtk::Switch *show, *use_custom_color, *fill, *show_bar_border, *use_gradient;
+  Gtk::ColorButton *spectrum_color_button, *gradient_color_button;
+  Gtk::ComboBoxText* spectrum_type;
 
-  Glib::RefPtr<Gtk::Adjustment> spectrum_n_points, spectrum_height,
-      spectrum_scale, spectrum_exponent, spectrum_sampling_freq;
+  Glib::RefPtr<Gtk::Adjustment> n_points, height, scale, exponent,
+      sampling_freq, line_width;
 
   std::vector<sigc::connection> connections;
 

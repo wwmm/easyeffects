@@ -2,10 +2,7 @@
 #include <glib-object.h>
 #include <gobject/gvaluecollector.h>
 #include <sys/resource.h>
-#include <algorithm>
 #include <boost/math/interpolators/cubic_b_spline.hpp>
-#include <cmath>
-#include <mutex>
 #include "config.h"
 #include "util.hpp"
 
@@ -88,6 +85,7 @@ void on_message_state_changed(const GstBus* gst_bus,
 
     if (new_state == GST_STATE_PLAYING) {
       pb->playing = true;
+
       pb->get_latency();
     } else {
       pb->playing = false;
@@ -119,6 +117,8 @@ void on_message_latency(const GstBus* gst_bus,
     util::debug(pb->log_tag +
                 "pulsesink buffer [us]: " + std::to_string(buffer));
   }
+
+  pb->get_latency();
 }
 
 void on_message_element(const GstBus* gst_bus,
@@ -172,7 +172,7 @@ void on_message_element(const GstBus* gst_bus,
 void on_spectrum_n_points_changed(GSettings* settings,
                                   gchar* key,
                                   PipelineBase* pb) {
-  long unsigned int npoints = g_settings_get_int(settings, "spectrum-n-points");
+  long unsigned int npoints = g_settings_get_int(settings, "n-points");
 
   if (npoints != pb->spectrum_mag.size()) {
     pb->resizing_spectrum = true;
@@ -235,11 +235,27 @@ void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
   }
 }
 
+GstPadProbeReturn on_sink_event(GstPad* pad,
+                                GstPadProbeInfo* info,
+                                gpointer user_data) {
+  GstEvent* event = GST_PAD_PROBE_INFO_EVENT(info);
+
+  if (event->type == GST_EVENT_LATENCY) {
+    auto pb = static_cast<PipelineBase*>(user_data);
+
+    pb->get_latency();
+  }
+
+  return GST_PAD_PROBE_OK;
+}
+
 }  // namespace
 
 PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
     : log_tag(tag),
       settings(g_settings_new("com.github.wwmm.pulseeffects")),
+      spectrum_settings(
+          g_settings_new("com.github.wwmm.pulseeffects.spectrum")),
       rtkit(std::make_unique<RealtimeKit>(tag)) {
   gst_init(nullptr, nullptr);
 
@@ -267,28 +283,24 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
   gst_registry_scan_path(gst_registry_get(), PLUGINS_INSTALL_DIR);
 
   source = get_required_plugin("pulsesrc", "source");
+  queue_src = get_required_plugin("queue", nullptr);
   capsfilter = get_required_plugin("capsfilter", nullptr);
-  adapter = get_required_plugin("peadapter", nullptr);
   sink = get_required_plugin("pulsesink", "sink");
   spectrum = get_required_plugin("spectrum", "spectrum");
+  adapter = gst_element_factory_make("peadapter", nullptr);
 
-  auto queue_src = get_required_plugin("queue", nullptr);
   auto src_type = get_required_plugin("typefind", nullptr);
-  auto audioconvert_in = get_required_plugin("audioconvert", nullptr);
-  auto audioconvert_out = get_required_plugin("audioconvert", nullptr);
 
   init_spectrum_bin();
   init_effects_bin();
 
   // building the pipeline
 
-  gst_bin_add_many(GST_BIN(pipeline), source, queue_src, audioconvert_in,
-                   capsfilter, src_type, adapter, audioconvert_out, effects_bin,
-                   spectrum_bin, sink, nullptr);
+  gst_bin_add_many(GST_BIN(pipeline), source, queue_src, capsfilter, src_type,
+                   adapter, effects_bin, spectrum_bin, sink, nullptr);
 
-  gst_element_link_many(source, queue_src, audioconvert_in, capsfilter,
-                        src_type, adapter, audioconvert_out, effects_bin,
-                        spectrum_bin, sink, nullptr);
+  gst_element_link_many(source, queue_src, capsfilter, src_type, adapter,
+                        effects_bin, spectrum_bin, sink, nullptr);
 
   // initializing properties
 
@@ -303,6 +315,7 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
   g_object_set(sink, "provide-clock", true, nullptr);
 
   g_object_set(queue_src, "silent", true, nullptr);
+  g_object_set(queue_src, "flush-on-eos", true, nullptr);
   g_object_set(queue_src, "max-size-buffers", 0, nullptr);
   g_object_set(queue_src, "max-size-bytes", 0, nullptr);
   g_object_set(queue_src, "max-size-time", 0, nullptr);
@@ -318,6 +331,13 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
                    this);
   g_signal_connect(source, "notify::latency-time",
                    G_CALLBACK(on_latency_changed), this);
+
+  auto sinkpad = gst_element_get_static_pad(sink, "sink");
+
+  gst_pad_add_probe(sinkpad, GST_PAD_PROBE_TYPE_EVENT_UPSTREAM, on_sink_event,
+                    this, nullptr);
+
+  g_object_unref(sinkpad);
 }
 
 PipelineBase::~PipelineBase() {
@@ -335,6 +355,8 @@ PipelineBase::~PipelineBase() {
   gst_object_unref(bus);
   gst_object_unref(pipeline);
   g_object_unref(settings);
+  g_object_unref(spectrum_settings);
+  g_object_unref(child_settings);
 }
 
 void PipelineBase::set_caps(const uint& sampling_rate) {
@@ -517,7 +539,7 @@ void PipelineBase::on_app_removed(uint idx) {
 }
 
 void PipelineBase::init_spectrum(const uint& sampling_rate) {
-  g_signal_connect(settings, "changed::spectrum-n-points",
+  g_signal_connect(spectrum_settings, "changed::n-points",
                    G_CALLBACK(on_spectrum_n_points_changed), this);
 
   spectrum_freqs.clear();
@@ -536,7 +558,7 @@ void PipelineBase::init_spectrum(const uint& sampling_rate) {
 
   spectrum_mag_tmp.resize(spectrum_freqs.size());
 
-  auto npoints = g_settings_get_int(settings, "spectrum-n-points");
+  auto npoints = g_settings_get_int(spectrum_settings, "n-points");
 
   spectrum_x_axis = util::logspace(log10(min_spectrum_freq),
                                    log10(max_spectrum_freq), npoints);

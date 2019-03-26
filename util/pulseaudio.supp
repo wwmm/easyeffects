@@ -1,0 +1,50 @@
+# This file contains error suppression rules for Valgrind. These rules suppress
+# errors in alsa-lib that are caused by Valgrind not handling the
+# SNDRV_CTL_IOCTL_TLV_READ ioctl. More information about the Valgrind bug:
+# http://thread.gmane.org/gmane.comp.debugging.valgrind/11888
+#
+# To use this file, pass the command line option --suppressions=<filename> to
+# Valgrind.
+#
+# If you find new false positives, and want to add new suppressions, the
+# --gen-suppression=all option can be very useful. It prints automatically
+# generated suppression rules that can be copy-pasted here.
+
+{
+        alsa-lib/snd_tlv_get_dB_range
+        Memcheck:Cond
+        fun:snd_tlv_get_dB_range
+}
+
+{
+        alsa-lib/snd_tlv_convert_to_dB
+        Memcheck:Cond
+        fun:snd_tlv_convert_to_dB
+}
+
+{
+        alsa-lib/snd_tlv_convert_from_dB
+        Memcheck:Cond
+        fun:snd_tlv_convert_from_dB
+}
+
+{
+        alsa-lib/set_volume_ops
+        Memcheck:Cond
+        fun:set_volume_ops
+}
+
+{
+        alsa-lib/snd_ctl_hw_elem_write
+        Memcheck:Param
+        ioctl(generic)
+        fun:ioctl
+        fun:snd_ctl_hw_elem_write
+}
+
+{
+        alsa-lib/selem_read
+        Memcheck:Cond
+        fun:bcmp
+        fun:selem_read
+}

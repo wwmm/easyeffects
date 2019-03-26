@@ -52,8 +52,7 @@ static void gst_peconvolver_set_ir_width(GstPeconvolver* peconvolver,
 static void gst_peconvolver_process(GstPeconvolver* peconvolver,
                                     GstBuffer* buffer);
 
-static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver,
-                                            const int& num_samples);
+static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver);
 
 static void gst_peconvolver_finish_convolver(GstPeconvolver* peconvolver);
 
@@ -72,7 +71,7 @@ static void gst_peconvolver_finish_convolver(GstPeconvolver* peconvolver);
 #define CONVPROC_SCHEDULER_CLASS SCHED_FIFO
 #define THREAD_SYNC_MODE true
 
-enum { PROP_0, PROP_KERNEL_PATH, PROP_IR_WIDTH };
+enum { PROP_KERNEL_PATH = 1, PROP_IR_WIDTH };
 
 /* pad templates */
 
@@ -163,6 +162,7 @@ static void gst_peconvolver_init(GstPeconvolver* peconvolver) {
   peconvolver->bpf = 0;
   peconvolver->kernel_path = nullptr;
   peconvolver->ir_width = 100;
+  peconvolver->num_samples = 0;
 
   gst_base_transform_set_in_place(GST_BASE_TRANSFORM(peconvolver), true);
 }
@@ -252,25 +252,32 @@ static GstFlowReturn gst_peconvolver_transform_ip(GstBaseTransform* trans,
 
   std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
 
+  GstMapInfo map;
+
+  gst_buffer_map(buffer, &map, GST_MAP_READ);
+
+  guint num_samples = map.size / peconvolver->bpf;
+
+  gst_buffer_unmap(buffer, &map);
+
   if (peconvolver->ready) {
-    gst_peconvolver_process(peconvolver, buffer);
+    if (peconvolver->num_samples == num_samples) {
+      gst_peconvolver_process(peconvolver, buffer);
+    } else {
+      gst_peconvolver_finish_convolver(peconvolver);
+    }
   } else if (peconvolver->irs_fail_count == 0) {
-    GstMapInfo map;
-
-    gst_buffer_map(buffer, &map, GST_MAP_READ);
-
-    guint num_samples = map.size / peconvolver->bpf;
-
-    gst_buffer_unmap(buffer, &map);
+    peconvolver->num_samples = num_samples;
 
     auto f = [=]() {
       std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
-      gst_peconvolver_setup_convolver(peconvolver, num_samples);
+      gst_peconvolver_setup_convolver(peconvolver);
     };
+
+    peconvolver->futures.clear();
 
     auto future = std::async(std::launch::async, f);
 
-    peconvolver->futures.clear();
     peconvolver->futures.push_back(std::move(future));
   }
 
@@ -327,8 +334,7 @@ static void gst_peconvolver_set_ir_width(GstPeconvolver* peconvolver,
   }
 }
 
-static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver,
-                                            const int& num_samples) {
+static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver) {
   if (!peconvolver->ready && peconvolver->rate != 0 && peconvolver->bpf != 0) {
     bool irs_ok = rk::read_file(peconvolver);
 
@@ -343,7 +349,8 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver,
 
       unsigned int options = 0;
 
-      options |= Convproc::OPT_FFTW_MEASURE;
+      // depending on buffer and kernel size OPT_FFTW_MEASURE may make un crash
+      // options |= Convproc::OPT_FFTW_MEASURE;
       options |= Convproc::OPT_VECTOR_MODE;
 
       peconvolver->conv->set_options(options);
@@ -351,13 +358,15 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver,
 #if ZITA_CONVOLVER_MAJOR_VERSION == 3
       peconvolver->conv->set_density(density);
 
-      ret = peconvolver->conv->configure(2, 2, max_size, num_samples,
-                                         num_samples, Convproc::MAXPART);
+      ret = peconvolver->conv->configure(
+          2, 2, max_size, peconvolver->num_samples, peconvolver->num_samples,
+          Convproc::MAXPART);
 #endif
 
 #if ZITA_CONVOLVER_MAJOR_VERSION == 4
       ret = peconvolver->conv->configure(
-          2, 2, max_size, num_samples, num_samples, Convproc::MAXPART, density);
+          2, 2, max_size, peconvolver->num_samples, peconvolver->num_samples,
+          Convproc::MAXPART, density);
 #endif
 
       if (ret != 0) {
@@ -411,10 +420,8 @@ static void gst_peconvolver_process(GstPeconvolver* peconvolver,
 
     gst_buffer_map(buffer, &map, GST_MAP_READWRITE);
 
-    guint num_samples = map.size / peconvolver->bpf;
-
     // deinterleave
-    for (unsigned int n = 0; n < num_samples; n++) {
+    for (unsigned int n = 0; n < peconvolver->num_samples; n++) {
       peconvolver->conv->inpdata(0)[n] = ((float*)map.data)[2 * n];
       peconvolver->conv->inpdata(1)[n] = ((float*)map.data)[2 * n + 1];
     }
@@ -427,7 +434,7 @@ static void gst_peconvolver_process(GstPeconvolver* peconvolver,
     }
 
     // interleave
-    for (unsigned int n = 0; n < num_samples; n++) {
+    for (unsigned int n = 0; n < peconvolver->num_samples; n++) {
       ((float*)map.data)[2 * n] = peconvolver->conv->outdata(0)[n];
       ((float*)map.data)[2 * n + 1] = peconvolver->conv->outdata(1)[n];
     }

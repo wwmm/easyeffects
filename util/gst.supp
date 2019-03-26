@@ -1,0 +1,1653 @@
+### this file contains suppressions for valgrind when running
+### the gstreamer unit tests
+### it might be useful for wider use as well
+
+### syscall suppressions
+
+{
+   <clone on Wim's Debian>
+   Memcheck:Param
+   clone(parent_tidptr)
+   fun:clone
+   fun:clone
+}
+
+{
+   <clone on Wim's Debian>
+   Memcheck:Param
+   clone(child_tidptr)
+   fun:clone
+   fun:clone
+}
+
+{
+   <clone on Wim's Debian>
+   Memcheck:Param
+   clone(tlsinfo)
+   fun:clone
+   fun:clone
+}
+
+# a thread-related free problem in glibc from Edgard
+{
+   __libc_freeres_rw_acess
+   Memcheck:Addr4
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   fun:__libc_freeres
+}
+
+{
+   <futex on Andy's 64-bit ubuntu>
+   Memcheck:Param
+   futex(uaddr2)
+   fun:pthread_once
+   obj:/lib/libc-2.3.*.so
+   obj:/lib/libc-2.3.*.so
+   fun:mbsnrtowcs
+   fun:vfprintf
+   fun:vsprintf
+   fun:sprintf
+   obj:/lib/libc-2.3.*.so
+   fun:tmpfile
+   fun:setup_pipe
+   fun:setup_messaging_with_key
+   fun:setup_messaging
+}
+
+# suppression for a glibc bug:
+# http://valgrind.org/docs/manual/faq.html#faq.exit_errors>
+{
+   <Workaround for a glibc bug>
+   Memcheck:Free
+   fun:free
+   obj:*libc-*.so
+   fun:__libc_freeres
+   fun:*
+   fun:_Exit
+}
+
+# same as above, just so it works for tpm on gutsy/x86-64
+{
+   <workaround glibc bug on gutsy x86-64>
+   Memcheck:Free
+   fun:free
+   fun:free_mem
+   fun:__libc_freeres
+}
+
+### glib suppressions
+{
+   <g_parse_debug_string>
+   Memcheck:Cond
+   fun:g_parse_debug_string
+   obj:/usr/lib*/libglib-2.0.so.*
+   fun:g_slice_alloc
+   fun:g_slice_alloc0
+}
+
+{
+   <g_type_init leaks>
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   fun:g_type_init*
+   fun:init_pre*
+}
+
+{
+   <g_type_register_fundamental leaks>
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   fun:g_type_register_fundamental
+}
+
+{
+   <glib 2.21 static type data>
+   Memcheck:Leak
+   fun:malloc
+   fun:realloc
+   fun:g_realloc
+   fun:type_node_any_new_W
+}
+
+{
+   <glib 2.21 static type data>
+   Memcheck:Leak
+   fun:realloc
+   fun:g_realloc
+   fun:type_node_any_new_W
+}
+
+{
+   <glib 2.21 static type data>
+   Memcheck:Leak
+   fun:calloc
+   fun:g_malloc0
+   fun:g_type_class_ref
+}
+
+{
+   <glib 2.21 static type data>
+   Memcheck:Leak
+   fun:malloc
+   fun:realloc
+   fun:g_realloc
+   fun:type_add_flags_W
+}
+
+{
+   <glib 2.21 static type data>
+   Memcheck:Leak
+   fun:calloc
+   fun:g_malloc0
+   fun:type_add_flags_W
+}
+
+#pthread memleaks
+
+{
+   pthread_create Syscall param write(buf) points to uninitialised byte(s)
+   Memcheck:Param
+   write(buf)
+   fun:pthread_create@@GLIBC_2.2.5
+   fun:g_thread_create*
+
+}
+
+# nss_parse_* memleak (used by g_option_context_parse)
+{
+   nss_parse_* memleak
+   Memcheck:Leak
+   fun:malloc
+   fun:nss_parse_service_list
+   fun:__nss_database_lookup
+}
+
+# liboil suppressions
+{
+   <liboil cpu_fault_check_try>
+   Memcheck:Value8
+   obj:/usr/lib/liboil-0.3.so.0.1.0
+   obj:/usr/lib/liboil-0.3.so.0.1.0
+   obj:/usr/lib/liboil-0.3.so.0.1.0
+   fun:oil_cpu_fault_check_try
+   fun:oil_test_check_impl
+   fun:oil_class_optimize
+   fun:oil_optimize_all
+   fun:oil_init
+}
+
+{
+   <Ubuntu Dapper x86_64>
+   Memcheck:Param
+   futex(uaddr2)
+   fun:pthread_once
+   obj:/lib/libc-2.3.6.so
+   obj:/lib/libc-2.3.6.so
+   fun:setlocale
+   fun:init_pre
+   fun:g_option_context_parse
+   fun:gst_init_check
+   fun:gst_init
+   fun:gst_check_init
+   fun:main
+}
+
+{
+   <libcdio 0.76 leak>
+   Memcheck:Leak
+   fun:calloc
+   obj:/usr/lib/libcdio.so.6.0.1
+   fun:cdio_open_am_linux
+   obj:/usr/lib/libcdio.so.6.0.1
+   fun:cdio_open_am
+}
+
+{
+   <First of many Alsa errors>
+   Memcheck:Cond
+   fun:snd_pcm_direct_shm_create_or_connect
+   fun:snd_pcm_dsnoop_open
+   fun:_snd_pcm_dsnoop_open
+   obj:/*lib/libasound.so.2.0.0
+   obj:/*lib/libasound.so.2.0.0
+   fun:snd_pcm_open_slave
+   fun:_snd_pcm_plug_open
+   obj:/*lib/libasound.so.2.0.0
+   fun:snd_pcm_open_slave
+   fun:_snd_pcm_asym_open
+   obj:/*lib/libasound.so.2.0.0
+   obj:/*lib/libasound.so.2.0.0
+}
+
+{
+   <alsa error>
+   Memcheck:Cond
+   fun:snd*_pcm_hw_param_set_near
+}
+
+{
+   <alsa error>
+   Memcheck:Cond
+   ...
+   fun:snd*_pcm_hw_param_set_near
+}
+
+{
+   <alsa error>
+   Memcheck:Cond
+   obj:/*lib/libasound.so.2.0.0
+   obj:/*lib/libasound.so.2.0.0
+   fun:snd_pcm_close
+   obj:/*lib/libasound.so.2.0.0
+}
+{
+   <alsa error>
+   Memcheck:Cond
+   fun:snd_pcm_direct_shm_create_or_connect
+   fun:snd_pcm_dmix_open
+   fun:_snd_pcm_dmix_open
+   obj:/*lib/libasound.so.2.0.0
+   obj:/*lib/libasound.so.2.0.0
+   fun:snd_pcm_open_slave
+   fun:_snd_pcm_softvol_open
+   obj:/*lib/libasound.so.2.0.0
+   fun:snd_pcm_open_slave
+   fun:_snd_pcm_plug_open
+   obj:/*lib/libasound.so.2.0.0
+   fun:snd_pcm_open_slave
+   fun:_snd_pcm_asym_open
+   obj:/*lib/libasound.so.2.0.0
+   obj:/*lib/libasound.so.2.0.0
+}
+{
+   <alsa error>
+   Memcheck:Leak
+   fun:malloc
+   fun:strdup
+   fun:snd_dlobj_cache_add
+   obj:/*lib/libasound.so.2.0.0
+   fun:snd_pcm_open_slave
+   fun:snd_pcm_dsnoop_open
+   fun:_snd_pcm_dsnoop_open
+   obj:/*lib/libasound.so.2.0.0
+   obj:/*lib/libasound.so.2.0.0
+   fun:snd_pcm_open_slave
+   fun:_snd_pcm_plug_open
+   obj:/*lib/libasound.so.2.0.0
+   fun:snd_pcm_open_slave
+   fun:_snd_pcm_asym_open
+   obj:/*lib/libasound.so.2.0.0
+   obj:/*lib/libasound.so.2.0.0
+}
+# Catch about 15 variations on inserting info into an ALSA
+# internal cache
+{
+   <alsa error>
+   Memcheck:Leak
+   fun:malloc
+   ...
+   fun:snd*_dlobj_cache_add
+   obj:/*lib*/libasound.so.2.0.0
+}
+
+{
+   <alsa leak in loading configuration>
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   fun:snd_pcm_open_conf
+}
+
+{
+   <alsa leak snd_config_hook_load>
+   Memcheck:Leak
+   fun:*alloc
+   obj:/*lib*/libasound.so.2.0.0
+   ...
+   fun:snd_config_hook_load
+}
+
+{
+   <alsa leak snd_config_update_r>
+   Memcheck:Leak
+   fun:*alloc
+   obj:/*lib*/libasound.so.2.0.0
+   ...
+   fun:snd_config_update_r
+   fun:snd_config_update
+}
+{
+   <alsa leak snd_config_update_r>
+   Memcheck:Leak
+   fun:*alloc
+   fun:strdup
+   ...
+   fun:snd_config_update_r
+   fun:snd_config_update
+}
+
+{
+   <nss lookup within ALSA>
+   Memcheck:Leak
+   fun:malloc
+   obj:/lib/libc*.so
+   fun:__nss_database_lookup
+   obj:*
+   obj:*
+   fun:getgrnam_r
+   fun:getgrnam
+   fun:snd_pcm_direct_parse_open_conf
+}
+
+{
+   <libxcb leak on Ubuntu Feisty>
+   Memcheck:Leak
+   fun:calloc
+   fun:_XCBInitDisplayLock
+   fun:XOpenDisplay
+}
+
+# GConf internal initialisations related to getting the default client.
+{
+   <Orbit something or other>
+   Memcheck:Leak
+   fun:calloc
+   fun:g_malloc0
+   fun:ORBit_alloc_tcval
+   obj:/usr/lib/libORBit-2.so.*
+   fun:ORBit_demarshal_IOR
+   fun:ORBit_demarshal_object
+   fun:CORBA_ORB_string_to_object
+   obj:/usr/lib/libgconf-2.so.*
+   fun:gconf_get_current_lock_holder
+   fun:gconf_activate_server
+   obj:/usr/lib/libgconf-2.so.*
+   obj:/usr/lib/libgconf-2.so.*
+   fun:gconf_engine_get_default
+}
+{
+   <gconf internal leak>
+   Memcheck:Leak
+   fun:calloc
+   fun:g_malloc0
+   fun:ORBit_alloc_tcval
+   obj:*
+   fun:PortableServer_POA_servant_to_reference
+   fun:*
+   fun:*
+   fun:*
+   fun:gconf_engine_get_default
+}
+{
+   <gconf internal leak>
+   Memcheck:Leak
+   fun:calloc
+   fun:g_malloc0
+   fun:ORBit_alloc_tcval
+   obj:/usr/lib/libORBit-2.so.*
+   fun:ORBit_demarshal_IOR
+   fun:ORBit_demarshal_object
+   fun:CORBA_ORB_string_to_object
+   obj:/usr/lib/libgconf-2.so.*
+   fun:gconf_get_current_lock_holder
+   fun:gconf_activate_server
+   obj:/usr/lib/libgconf-2.so.*
+   obj:/usr/lib/libgconf-2.so.*
+   fun:gconf_engine_get_default
+}
+{
+   <gconf internal initialisation>
+   Memcheck:Leak
+   fun:calloc
+   fun:g_malloc0
+   fun:ORBit_alloc*
+   fun:*
+   fun:ORBit_demarshal_IOR
+   fun:ORBit_demarshal_object
+   fun:ORBit_demarshal_value
+   fun:*
+   fun:ORBit_small_invoke_stub
+   fun:ConfigServer_get_default_database
+   fun:*
+   fun:gconf_engine_get_default
+}
+{
+   <gconf internal init>
+   Memcheck:Leak
+   fun:calloc
+   fun:g_malloc0
+   fun:ORBit_alloc*
+   fun:*
+   fun:IOP_generate_profiles
+   fun:ORBit_marshal_object
+   fun:ORBit_marshal_value
+   fun:*
+   fun:ORBit_small_invoke_stub
+   fun:ConfigServer_add_client
+   fun:*
+   fun:*
+   fun:gconf_engine_get_default
+}
+{
+   <gconf internal init>
+   Memcheck:Leak
+   fun:calloc
+   fun:g_malloc0
+   fun:ORBit_alloc_by_tc
+   fun:*
+   fun:PortableServer_POA_servant_to_reference
+   fun:*
+   fun:*
+   fun:*
+   fun:gconf_engine_get_default
+}
+{
+   <gconf internal init>
+   Memcheck:Leak
+   fun:calloc
+   fun:g_malloc0
+   fun:ORBit_alloc_by_tc
+   obj:/usr/lib/libORBit-2.so.*
+   fun:ORBit_demarshal_IOR
+   fun:ORBit_demarshal_object
+   fun:CORBA_ORB_string_to_object
+   obj:/usr/lib/libgconf-2.so.*
+   fun:gconf_get_current_lock_holder
+   fun:gconf_activate_server
+   obj:/usr/lib/libgconf-2.so.*
+   obj:/usr/lib/libgconf-2.so.*
+   fun:gconf_engine_get_default
+}
+
+{
+   <insert a suppression name here>
+   Memcheck:Leak
+   fun:calloc
+   fun:g_malloc0
+   fun:ORBit_alloc*
+   fun:*
+   fun:ORBit_demarshal_IOR
+   fun:ORBit_demarshal_object
+   fun:*
+   fun:*
+   fun:gconf_activate_server
+}
+
+# Some libORBit/bonobo initialisation stuff
+{
+   <bonobo init>
+   Memcheck:Leak
+   fun:malloc
+   fun:g_malloc
+   fun:ORBit_alloc_string
+   fun:CORBA_string_dup
+   fun:Bonobo_ActivationEnvValue_set
+   fun:bonobo_activation_init_activation_env
+   fun:bonobo_activation_orb_init
+   fun:bonobo_activation_init
+}
+{
+   <bonobo init>
+   Memcheck:Leak
+   fun:calloc
+   fun:g_malloc0
+   fun:ORBit_alloc*
+   fun:ORBit_small_alloc*
+   obj:/usr/lib/libORBit-2.so*
+   fun:PortableServer_POA_servant_to_reference
+   obj:/usr/lib/libbonobo-2.so*
+}
+{
+   <bonobo init>
+   Memcheck:Leak
+   fun:calloc
+   fun:g_malloc0
+   fun:ORBit_alloc_tcval
+   fun:ORBit_small_allocbuf
+   fun:ORBit_adaptor_setup
+   obj:/usr/lib/libORBit-2.so*
+   fun:ORBit_POA_setup_root
+   fun:ORBit_init_internals
+   fun:CORBA_ORB_init
+}
+{
+   <bonobo init - more recent variant of above>
+   Memcheck:Leak
+   fun:calloc
+   fun:g_malloc0
+   fun:ORBit_alloc_tcval
+   fun:ORBit_adaptor_setup
+   fun:*
+   fun:ORBit_POA_setup_root
+   fun:ORBit_init_internals
+   fun:CORBA_ORB_init
+}
+{
+   <bonobo init>
+   Memcheck:Leak
+   fun:calloc
+   fun:g_malloc0
+   fun:ORBit_alloc*
+   fun:ORBit_small_allocbuf
+   fun:bonobo_activation_init_activation_env
+   fun:bonobo_activation_orb_init
+   fun:bonobo_activation_init
+}
+
+# More GConf stuff from the FC5 buildbot, mostly variations on the
+# above stack traces
+{
+   <incompletely initialised ORBit buffer>
+   Memcheck:Param
+   writev(vector[...])
+   fun:writev
+   obj:/usr/lib/libORBit-2.so*
+   fun:link_connection_writev
+   fun:giop_send_buffer_write
+   obj:/usr/lib/libORBit-2.so*
+   fun:ORBit_small_invoke_stub
+   fun:ORBit_small_invoke_stub_n
+   fun:ORBit_c_stub_invoke
+   fun:ConfigServer_ping
+   fun:gconf_activate_server
+   obj:/usr/lib/libgconf-2.so*
+   obj:/usr/lib/libgconf-2.so*
+   fun:gconf_engine_get_default
+}
+{
+   <gconf init>
+   Memcheck:Leak
+   fun:calloc
+   fun:g_malloc0
+   fun:ORBit_alloc*
+   fun:ORBit_small_alloc*
+   obj:/usr/lib/libORBit-2.so*
+   fun:PortableServer_POA_servant_to_reference
+   obj:/usr/lib/libgconf-2.so*
+   obj:/usr/lib/libgconf-2.so*
+   obj:/usr/lib/libgconf-2.so*
+   fun:gconf_engine_get_default
+}
+{
+   <gconf init>
+   Memcheck:Leak
+   fun:calloc
+   fun:g_malloc0
+   fun:ORBit_alloc*
+   fun:ORBit_small_alloc
+   obj:/usr/lib/libORBit-2.so*
+   fun:ORBit_demarshal_IOR
+   fun:ORBit_demarshal_object
+   fun:CORBA_ORB_string_to_object
+   obj:/usr/lib/libgconf-2.so*
+   fun:gconf_get_current_lock_holder
+   fun:gconf_activate_server
+   obj:/usr/lib/libgconf-2.so*
+   obj:/usr/lib/libgconf-2.so*
+   fun:gconf_engine_get_default
+}
+{
+   <gconf init>
+   Memcheck:Leak
+   fun:calloc
+   fun:g_malloc0
+   fun:ORBit_alloc*
+   fun:ORBit_small_alloc*
+   obj:/usr/lib/libORBit-2.so*
+   fun:ORBit_demarshal_IOR
+   fun:ORBit_demarshal_object
+   fun:CORBA_ORB_string_to_object
+   obj:/usr/lib/libgconf-2.so*
+   fun:gconf_get_current_lock_holder
+   fun:gconf_activate_server
+   obj:/usr/lib/libgconf-2.so*
+   obj:/usr/lib/libgconf-2.so*
+   fun:gconf_engine_get_default
+}
+{
+   <bonobo init>
+   Memcheck:Leak
+   fun:calloc
+   fun:g_malloc0
+   fun:ORBit_alloc*
+   fun:ORBit_small_alloc*
+   obj:/usr/lib/libORBit-2.so*
+   fun:ORBit_demarshal_IOR
+   fun:ORBit_demarshal_object
+   fun:ORBit_demarshal_value
+   obj:/usr/lib/libORBit-2.so*
+   fun:ORBit_small_invoke_stub
+   fun:ORBit_small_invoke_stub_n
+   fun:ORBit_c_stub_invoke
+   fun:ConfigServer_get_default_database
+   obj:/usr/lib/libgconf-2.so*
+   fun:gconf_engine_get_default
+}
+{
+   <gconf init>
+   Memcheck:Leak
+   fun:calloc
+   fun:g_malloc0
+   fun:ORBit_alloc*
+   fun:ORBit_small_alloc*
+   obj:/usr/lib/libORBit-2.so*
+   fun:ORBit_OAObject_object_to_objkey
+   fun:IOP_generate_profiles
+   fun:ORBit_marshal_object
+   fun:ORBit_marshal_value
+   obj:/usr/lib/libORBit-2.so*
+   fun:ORBit_small_invoke_stub
+   fun:ORBit_small_invoke_stub_n
+   fun:ORBit_c_stub_invoke
+   fun:ConfigServer_add_client
+   obj:/usr/lib/libgconf-2.so*
+   obj:/usr/lib/libgconf-2.so*
+   fun:gconf_engine_get_default
+}
+{
+   <GLib caching the home dir>
+   Memcheck:Leak
+   fun:malloc
+   obj:*libc-*.so
+   fun:__nss_database_lookup
+   obj:*
+   obj:*
+   fun:getpwnam_r
+   obj:/usr/lib*/libglib-2.0.so.*
+   fun:g_get_home_dir
+}
+{
+   <GLib caching the user name>
+   Memcheck:Leak
+   fun:malloc
+   obj:*libc-*.so
+   fun:__nss_database_lookup
+   obj:*
+   obj:*
+   fun:getpwnam_r
+   obj:/usr/lib*/libglib-2.0.so.*
+   fun:g_get_user_name
+}
+{
+   <GLib caching the tmp dir>
+   Memcheck:Leak
+   fun:malloc
+   obj:*libc-*.so
+   fun:__nss_database_lookup
+   obj:*
+   obj:*
+   fun:getpwnam_r
+   obj:/usr/lib*/libglib-2.0.so.*
+   fun:g_get_tmp_dir
+}
+
+{
+   <GLib caching the host name>
+   Memcheck:Leak
+   fun:malloc
+   obj:*libc-*.so
+   fun:__nss_database_lookup
+   obj:*
+   obj:*
+   fun:getpwnam_r
+   obj:/usr/lib*/libglib-2.0.so.0.*
+   fun:g_get_host_name
+}
+
+
+## Some Fontconfig errors.
+{
+   <First time load of a font - feisty x86_64>
+   Memcheck:Leak
+   fun:malloc
+   fun:FcPatternObjectInsertElt
+   fun:FcPatternObjectAddWithBinding
+   fun:FcPatternAppend
+   fun:FcEndElement
+   obj:/usr/lib/libexpat.so.*
+   obj:/usr/lib/libexpat.so.*
+   obj:/usr/lib/libexpat.so.*
+   obj:/usr/lib/libexpat.so.*
+   fun:XML_ParseBuffer
+   fun:FcConfigParseAndLoad
+   fun:FcConfigParseAndLoad
+   fun:FcParseInclude
+   fun:FcEndElement
+   obj:/usr/lib/libexpat.so.*
+   obj:/usr/lib/libexpat.so.*
+   obj:/usr/lib/libexpat.so.*
+   obj:/usr/lib/libexpat.so.*
+   fun:XML_ParseBuffer
+   fun:FcConfigParseAndLoad
+}
+{
+   <First time load of a font - generic>
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   fun:FcInitLoadConfig
+}
+
+## Leaks in ALSA (variations of leak from snd_config_load1)
+
+{
+   <Alsa leak>
+   Memcheck:Leak
+   fun:calloc
+   fun:_snd_config_make
+   fun:_snd_config_make_add
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:snd_config_load1
+}
+
+{
+   <Alsa leak>
+   Memcheck:Leak
+   fun:calloc
+   fun:_snd_config_make
+   fun:_snd_config_make_add
+   fun:*
+   fun:*
+   fun:snd_config_load1
+}
+{
+   <Alsa leak>
+   Memcheck:Leak
+   fun:calloc
+   fun:_snd_config_make
+   fun:_snd_config_make_add
+   fun:*
+   fun:*
+   fun:*
+   fun:snd_config_load1
+}
+{
+   <Alsa leak>
+   Memcheck:Leak
+   fun:calloc
+   fun:_snd_config_make
+   fun:_snd_config_make_add
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:snd_config_load1
+}
+
+{
+   <Alsa leak>
+   Memcheck:Leak
+   fun:calloc
+   fun:_snd_config_make
+   fun:_snd_config_make_add
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:snd_config_load1
+}
+
+{
+   <Alsa leak>
+   Memcheck:Leak
+   fun:calloc
+   fun:_snd_config_make
+   fun:_snd_config_make_add
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:snd_config_load1
+}
+{
+   <Alsa leak>
+   Memcheck:Leak
+   fun:calloc
+   fun:_snd_config_make
+   fun:_snd_config_make_add
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:snd_config_load1
+}
+
+{
+   <Alsa leak>
+   Memcheck:Leak
+   fun:malloc
+   fun:snd1_dlobj_cache_add
+   fun:snd_ctl_open_noupdate
+}
+
+{
+   <Alsa leak>
+   Memcheck:Leak
+   fun:malloc
+   fun:*
+   fun:snd1_dlobj_cache_add
+   fun:snd_ctl_open_noupdate
+}
+
+{
+   <Alsa leak>
+   Memcheck:Leak
+   fun:*alloc
+   fun:*
+   fun:*
+   fun:*
+   fun:snd_config_load1
+}
+
+{
+   <Alsa leak>
+   Memcheck:Leak
+   fun:*alloc
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:snd_config_load1
+}
+
+{
+   <Alsa leak>
+   Memcheck:Leak
+   fun:*alloc
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:snd_config_load1
+}
+
+{
+   <Alsa leak>
+   Memcheck:Leak
+   fun:*alloc
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:snd_config_load1
+}
+
+{
+   <Alsa leak>
+   Memcheck:Leak
+   fun:*alloc
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:snd_config_load1
+}
+
+{
+   <Alsa leak>
+   Memcheck:Leak
+   fun:*alloc
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:snd_config_load1
+}
+
+{
+   <Alsa leak>
+   Memcheck:Leak
+   fun:*alloc
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:snd_config_load1
+}
+
+{
+   <Alsa leak>
+   Memcheck:Leak
+   fun:*alloc
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:snd_config_load1
+}
+
+
+# The following are leaks of caps that need to be created dynamically
+# in the type registration of the plugin (used for pad templates).
+
+{
+   <Leak in ogmparsers>
+   Memcheck:Leak
+   fun:malloc
+   fun:g_malloc
+   fun:g_slice_alloc
+   fun:gst_caps_new_empty
+   fun:gst_caps_new_simple
+   fun:*
+   fun:g_type_class_ref
+   fun:gst_element_register
+}
+
+{
+   <Leak in ogmparsers>
+   Memcheck:Leak
+   fun:malloc
+   fun:g_malloc
+   fun:g_slice_alloc
+   fun:gst_caps_new_empty
+   fun:*
+   fun:*
+   fun:g_type_class_ref
+   fun:gst_element_register
+   fun:gst_ogm_parse_plugin_init
+   fun:plugin_init
+}
+
+{
+   <Leak in videotestsrc>
+   Memcheck:Leak
+   fun:malloc
+   fun:g_malloc
+   fun:g_slice_alloc
+   fun:gst_caps_new_empty
+   fun:gst_caps_copy
+   fun:gst_video_test_src_base_init
+   fun:g_type_class_ref
+   fun:gst_element_register
+}
+
+{
+   <Leak in videotestsrc>
+   Memcheck:Leak
+   fun:malloc
+   fun:g_malloc
+   fun:g_slice_alloc
+   fun:gst_caps_new_empty
+   fun:gst_caps_copy
+   fun:gst_video_test_src_getcaps
+   fun:gst_video_test_src_base_init
+   fun:g_type_class_ref
+   fun:gst_element_register
+}
+
+{
+   <Leak in ffmpegcolorspace>
+   Memcheck:Leak
+   fun:malloc
+   fun:g_malloc
+   fun:g_slice_alloc
+   fun:gst_caps_new_empty
+   fun:gst_ffmpegcsp_codectype_to_caps
+   fun:gst_ffmpegcolorspace_register
+   fun:plugin_init
+}
+
+{
+   <Leak in ffmpegocolorspace>
+   Memcheck:Leak
+   fun:malloc
+   fun:g_malloc
+   fun:g_slice_alloc
+   fun:gst_caps_new_empty
+   fun:gst_caps_copy
+   fun:gst_ffmpegcolorspace_register
+   fun:plugin_init
+}
+
+{
+   <Leak in gstffmpegdemux>
+   Memcheck:Leak
+   fun:malloc
+   fun:g_malloc
+   fun:g_slice_alloc
+   fun:gst_caps_new_empty
+   fun:gst_caps_new_any
+   fun:gst_ffmpegdemux_register
+   fun:plugin_init
+}
+
+{
+   <Leak in GstAudioFilter subclasses>
+   Memcheck:Leak
+   fun:malloc
+   fun:g_malloc
+   fun:g_slice_alloc
+   fun:gst_caps_new_empty
+   fun:gst_caps_copy
+   fun:gst_audio_filter_class_add_pad_templates
+}
+
+{
+   <Leak in GstAudioFilter subclasses, variant>
+   Memcheck:Leak
+   fun:realloc
+   fun:g_realloc
+   fun:g_ptr_array_maybe_expand
+   fun:g_ptr_array_add
+   fun:gst_caps_append
+   fun:gst_audio_filter_class_add_pad_templates
+}
+
+{
+   <Leak in GstAudioFilter subclasses, variant>
+   Memcheck:Leak
+   fun:malloc
+   fun:realloc
+   fun:g_realloc
+   fun:g_ptr_array_maybe_expand
+   fun:g_ptr_array_add
+   fun:gst_caps_append
+   fun:gst_audio_filter_class_add_pad_templates
+}
+
+{
+   <Leak in GstAudioFilter subclasses, variant>
+   Memcheck:Leak
+   fun:malloc
+   fun:realloc
+   fun:g_realloc
+   fun:g_ptr_array_maybe_expand
+   fun:g_ptr_array_add
+   fun:gst_caps_copy
+   fun:gst_audio_filter_class_add_pad_templates
+}
+
+{
+   <Leak in GstAudioFilter subclasses, variant2>
+   Memcheck:Leak
+   fun:malloc
+   fun:g_malloc
+   fun:g_slice_alloc
+   fun:g_ptr_array_sized_new
+   fun:gst_caps_new_empty
+   fun:gst_caps_copy
+   fun:gst_audio_filter_class_add_pad_templates
+}
+{
+   <Leak in GstAudioFilter subclasses, variant3>
+   Memcheck:Leak
+   fun:malloc
+   fun:realloc
+   fun:g_realloc
+   fun:g_array_maybe_expand
+   fun:g_array_sized_new
+   fun:*
+   fun:*
+   fun:*
+   fun:gst_value_init_and_copy
+   fun:gst_structure_copy
+   fun:gst_caps_copy
+   fun:gst_audio_filter_class_add_pad_templates
+}
+{
+   <Leak in GstAudioFilter subclasses, variant4>
+   Memcheck:Leak
+   fun:malloc
+   fun:realloc
+   fun:g_realloc
+   fun:g_array_maybe_expand
+   fun:g_array_sized_new
+   fun:*
+   fun:gst_structure_copy
+   fun:gst_caps_copy
+   fun:gst_audio_filter_class_add_pad_templates
+}
+{
+   <Leak in GstAudioFilter subclasses, variant5>
+   Memcheck:Leak
+   fun:malloc
+   fun:g_malloc
+   fun:g_slice_alloc
+   fun:g_array_sized_new
+   fun:*
+   fun:gst_structure_copy
+   fun:gst_caps_copy
+   fun:gst_audio_filter_class_add_pad_templates
+}
+
+{
+   <Leak in riff-media>
+   Memcheck:Leak
+   fun:malloc
+   fun:g_malloc
+   fun:g_slice_alloc
+   fun:gst_caps_new_empty
+   fun:gst_riff_create_*_template_caps
+}
+{
+   <Leak in riff-media>
+   Memcheck:Leak
+   fun:malloc
+   fun:realloc
+   fun:g_realloc
+   fun:*
+   fun:*
+   fun:*
+   fun:gst_structure_copy
+   fun:gst_caps_copy
+   fun:gst_caps_append
+   fun:gst_riff_create_*_template_caps
+}
+{
+   <Leak in riff-media>
+   Memcheck:Leak
+   fun:malloc
+   fun:g_malloc
+   fun:g_slice_alloc
+   fun:g_array_sized_new
+   fun:*
+   fun:gst_structure_copy
+   fun:gst_caps_copy
+   fun:gst_caps_append
+   fun:gst_riff_create_*_template_caps
+}
+
+## Leaks in pango (bilboed: gentoo unstable amd64)
+
+{
+   <Pango leak - generic>
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   fun:pango_layout_get_pixel_extents
+}
+{
+   <insert a suppression name here>
+   Memcheck:Leak
+   fun:calloc
+   fun:g_malloc0
+   fun:pango_language_from_string
+   fun:pango_language_get_default
+   fun:pango_context_init
+   fun:g_type_create_instance
+   fun:g_object_constructor
+   fun:g_object_newv
+   fun:g_object_new_valist
+   fun:g_object_new
+   fun:pango_font_map_create_context
+}
+
+{
+   <PangoLanguage can never be freed>
+   Memcheck:Leak
+   fun:calloc
+   fun:g_malloc0
+   fun:pango_language_from_string
+}
+
+
+## Leak of everything allocated by gst-libav plugin init
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   fun:gst_ffmpeg_cfg_init
+}
+
+## Leak of GIO module through gnomevfs
+
+{
+   <gio leak>
+   Memcheck:Leak
+   fun:malloc
+   fun:g_malloc
+   fun:*
+   fun:*
+   fun:g_type_create_instance
+   fun:*
+   fun:*
+   fun:*
+   fun:*
+   fun:g_io_module_new
+   fun:g_io_modules_load_all_in_directory
+   fun:*
+   fun:get_default_vfs
+}
+
+## Conditional jump in getaddrinfo (bilboed, gentoo ~amd64, Dec 13 2008)
+{
+   <Leak of addrinfo in esd>
+   Memcheck:Cond
+   fun:gaih_inet
+   fun:getaddrinfo
+}
+
+## Dynamic pad templates in mxfmux
+{
+   <Dynamic pad templates in mxfmux>
+   Memcheck:Leak
+   fun:malloc
+   fun:g_malloc
+   fun:g_slice_alloc
+   fun:gst_caps_new_empty
+   fun:gst_caps_from_string
+   fun:mxf_*_init
+   fun:plugin_init
+}
+
+## We don't know if ffmpeg frees this or not and better pass a copy for safety
+{
+   <insert a suppression name here>
+   Memcheck:Leak
+   fun:malloc
+   fun:g_malloc
+   fun:g_strdup
+   fun:gst_ffmpeg_cfg_fill_context
+   fun:gst_ffmpegenc_setcaps
+   fun:gst_pad_set_caps
+}
+
+{
+   <glibc-2.10 overreads/conditionals>
+   Memcheck:Value8
+   obj:/lib*/libc-2.10.*.so
+   obj:/lib*/libc-2.10.*.so
+   fun:_vgnU_freeres
+}
+{
+   <glibc-2.10 overreads/conditionals>
+   Memcheck:Cond
+   obj:/lib*/libc-2.10.*.so
+   obj:/lib*/libc-2.10.*.so
+   fun:_vgnU_freeres
+}
+{
+   <glibc-2.10 mysterious invalid free on exit>
+   Memcheck:Free
+   fun:free
+   obj:/lib*/libc-2.10.*.so
+   obj:/lib*/libc-2.10.*.so
+   fun:_vgnU_freeres
+}
+
+# glibc-2.10 dl overreads
+
+{
+   <glibc-2.10 overreads/conditionals>
+   Memcheck:Cond
+   fun:__tls*
+   obj:*
+   obj:*
+   fun:_vgnU_freeres
+}
+
+{
+   <glibc-2.10 overreads/conditionals>
+   Memcheck:Param
+   arch_prctl(arg2)
+   fun:init_tls
+}
+
+# GModule issues with glibc-2.10
+{
+   <glibc-2.10 GLIB leaks>
+   Memcheck:Value8
+   fun:g_module_*
+   fun:gst_plugin*
+}
+{
+   <glibc-2.10 GLIB leaks>
+   Memcheck:Value8
+   fun:*
+   fun:g_module_*
+   fun:gst_plugin*
+}
+
+# Leak in GSlice
+{
+   <insert a suppression name here>
+   Memcheck:Value8
+   fun:g_parse_debug_string
+   fun:slice_config_init
+   fun:g_slice_init_nomessage
+   fun:_g_slice_thread_init_nomessage
+   fun:g_thread_init_glib
+}
+
+# 2.10 pthread issues
+{
+   <insert a suppression name here>
+   Memcheck:Value8
+   fun:__pthread_initialize_minimal
+}
+
+# glib type leaks
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   fun:g_type_register_static
+}
+
+# new registry system
+# all of this will only be created once when loading registry.
+
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   fun:_priv_gst_registry_chunks_load_plugin
+}
+
+# system-wide tags
+# these tags are registered once
+
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:*alloc
+   fun:*
+   fun:*
+   fun:gst_tag_register
+   fun:_gst_tag_initialize
+}
+
+# system-wide tags
+# these tags are registered once
+
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   fun:gst_tag_register_static
+}
+
+# system-wide type classes that we keep referenced
+
+{
+   <g_type_class_ref leaks>
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   fun:g_type_class_ref
+}
+
+# leaking cached queries which are only initialized once
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   fun:_gst_query_initialize
+   fun:init_post
+}
+
+# macosx (leopard) library loader leak
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:_Znwm
+   fun:_ZNSs4_Rep9_S_createEmmRKSaIcE
+   fun:_ZNSs12_S_constructIPKcEEPcT_S3_RKSaIcESt20forward_iterator_tag
+   fun:_ZNSsC2EPKcRKSaIcE
+   fun:_Z41__static_initialization_and_destruction_0ii
+   fun:_ZN16ImageLoaderMachO18doModInitFunctionsERKN11ImageLoader11LinkContextE
+}
+
+# GObject type registration
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   fun:_g_atomic_array_copy
+}
+
+{
+   <getdelim one-time inits called from libselinux>
+   Memcheck:Leak
+   fun:*alloc
+   fun:getdelim
+   obj:*libselinux*
+}
+
+{
+   <weird one when re-reading registry>
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   obj:*/sed
+}
+
+{
+   <weird one when re-reading registry>
+   Memcheck:Addr8
+   ...
+   obj:*/sed
+}
+
+# GLib 2.23 interface vtable
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   fun:g_type_add_interface_static
+}
+
+{
+   <leak in dash on debian sid>
+   Memcheck:Leak
+   fun:*alloc
+   obj:*/dash
+}
+
+# libtool/gentoo fake leak
+# it actually runs bash and valgrind complains
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:*alloc
+   obj:/bin/bash
+}
+
+{
+   <ignore possbly-lost leaks in the plugin scanner which doesn't clean up properly>
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   fun:_gst_plugin_loader_client_run
+   fun:main
+}
+
+{
+   <warning with libc 2.13-2 as in Debian/unstable on amd64>
+   Memcheck:Cond
+   fun:*strcasecmp*
+   ...
+   fun:__dcigettext
+}
+
+{
+   <warning with libc 2.13-2 as in Debian/unstable on amd64>
+   Memcheck:Value8
+   fun:*strcasecmp*
+   ...
+   fun:__dcigettext
+}
+
+{
+   <GstSystemClock is a singleton and does not leak>
+   Memcheck:Leak
+   fun:malloc
+   ...
+   fun:gst_poll_new
+   fun:gst_poll_new_timer
+   fun:gst_system_clock_init
+}
+
+{
+   <glib types are singletons>
+   Memcheck:Leak
+   fun:calloc
+   ...
+   fun:gobject_init_ctor
+}
+
+{
+   <quark table is leaked on purpose if it grows too big>
+   Memcheck:Leak
+   fun:malloc
+   ...
+   fun:g_quark_from*_string
+}
+
+{
+  <timer_create suppressions for earlier valgrind versions that complain>
+  Memcheck:Param
+  timer_create(evp)
+  fun:timer_create@@GLIBC_2.3.3
+}
+
+{
+   closures aren't valgrind friendly (bgo#739850)
+   Memcheck:Leak
+   fun:calloc
+   ...
+   fun:g_cclosure_new
+}
+
+{
+   closures aren't valgrind friendly (bgo#739850)
+   Memcheck:Leak
+   fun:malloc
+   ...
+   fun:g_closure_add_invalidate_notifier
+}
+
+{
+   closures aren't valgrind friendly (bgo#739850)
+   Memcheck:Leak
+   fun:calloc
+   ...
+   fun:g_closure_new_simple
+}
+
+{
+   glib/giomodules2 (from libsoup.supp)
+   Memcheck:Leak
+   ...
+   fun:_g_io_module_get_default
+}
+
+{
+   <valgrind bug when trying to parse "infinity" from "interleaved">
+   Memcheck:Addr8
+   fun:__GI___strncasecmp_l
+   fun:____strtod_l_internal
+   fun:gst_value_deserialize_double
+}
+
+{
+   <glibc overreads/conditionals>
+   Memcheck:Addr8
+   fun:do_lookup_x
+}
+
+{
+   <quark tables are leaked on purpose when they are expanded, observed with glib 2.46 and gst-rtsp-server tests>
+   Memcheck:Leak
+   fun:malloc
+   ...
+   fun:g_quark_init
+}
+
+{
+   Leak of debug function list
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   fun:g_slist_prepend
+   fun:gst_debug_add_log_function
+}
+{
+   <We do not care about anything ld related, and don't use library constructors>
+   Memcheck:Addr1
+   ...
+   obj:*/ld-*.so
+   ...
+}
+{
+   <We do not care about anything ld related, and don't use library constructors>
+   Memcheck:Addr2
+   ...
+   obj:*/ld-*.so
+   ...
+}
+{
+   <We do not care about anything ld related, and don't use library constructors>
+   Memcheck:Addr4
+   ...
+   obj:*/ld-*.so
+   ...
+}
+{
+   <We do not care about anything ld related, and don't use library constructors>
+   Memcheck:Addr8
+   ...
+   obj:*/ld-*.so
+   ...
+}
+{
+   <We do not care about anything ld related, and don't use library constructors>
+   Memcheck:Leak
+   ...
+   obj:*/ld-*.so
+   ...
+}
+{
+   <We do not care about anything ld related, and don't use library constructors>
+   Memcheck:Cond
+   ...
+   obj:*/ld-*.so
+   ...
+}

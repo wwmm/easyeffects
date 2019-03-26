@@ -11,13 +11,13 @@ void CompressorPreset::save(boost::property_tree::ptree& root,
                             const Glib::RefPtr<Gio::Settings>& settings) {
   root.put(section + ".compressor.state", settings->get_boolean("state"));
 
-  root.put(section + ".compressor.detection",
-           settings->get_string("detection"));
+  root.put(section + ".compressor.input-gain",
+           settings->get_double("input-gain"));
 
-  root.put(section + ".compressor.stereo-link",
-           settings->get_string("stereo-link"));
+  root.put(section + ".compressor.output-gain",
+           settings->get_double("output-gain"));
 
-  root.put(section + ".compressor.mix", settings->get_double("mix"));
+  root.put(section + ".compressor.mode", settings->get_string("mode"));
 
   root.put(section + ".compressor.attack", settings->get_double("attack"));
 
@@ -31,6 +31,27 @@ void CompressorPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".compressor.knee", settings->get_double("knee"));
 
   root.put(section + ".compressor.makeup", settings->get_double("makeup"));
+
+  root.put(section + ".compressor.sidechain.listen",
+           settings->get_boolean("sidechain-listen"));
+
+  root.put(section + ".compressor.sidechain.type",
+           settings->get_string("sidechain-type"));
+
+  root.put(section + ".compressor.sidechain.mode",
+           settings->get_string("sidechain-mode"));
+
+  root.put(section + ".compressor.sidechain.source",
+           settings->get_string("sidechain-source"));
+
+  root.put(section + ".compressor.sidechain.preamp",
+           settings->get_double("sidechain-preamp"));
+
+  root.put(section + ".compressor.sidechain.reactivity",
+           settings->get_double("sidechain-reactivity"));
+
+  root.put(section + ".compressor.sidechain.lookahead",
+           settings->get_double("sidechain-lookahead"));
 }
 
 void CompressorPreset::load(boost::property_tree::ptree& root,
@@ -38,13 +59,13 @@ void CompressorPreset::load(boost::property_tree::ptree& root,
                             const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".compressor.state");
 
-  update_string_key(root, settings, "detection",
-                    section + ".compressor.detection");
+  update_key<double>(root, settings, "input-gain",
+                     section + ".compressor.input-gain");
 
-  update_string_key(root, settings, "stereo-link",
-                    section + ".compressor.stereo-link");
+  update_key<double>(root, settings, "output-gain",
+                     section + ".compressor.output-gain");
 
-  update_key<double>(root, settings, "mix", section + ".compressor.mix");
+  update_string_key(root, settings, "mode", section + ".compressor.mode");
 
   update_key<double>(root, settings, "attack", section + ".compressor.attack");
 
@@ -59,14 +80,43 @@ void CompressorPreset::load(boost::property_tree::ptree& root,
   update_key<double>(root, settings, "knee", section + ".compressor.knee");
 
   update_key<double>(root, settings, "makeup", section + ".compressor.makeup");
+
+  update_key<bool>(root, settings, "sidechain-listen",
+                   section + ".compressor.sidechain.listen");
+
+  update_string_key(root, settings, "sidechain-type",
+                    section + ".compressor.sidechain.type");
+
+  update_string_key(root, settings, "sidechain-mode",
+                    section + ".compressor.sidechain.mode");
+
+  update_string_key(root, settings, "sidechain-source",
+                    section + ".compressor.sidechain.source");
+
+  update_key<double>(root, settings, "sidechain-preamp",
+                     section + ".compressor.sidechain.preamp");
+
+  update_key<double>(root, settings, "sidechain-reactivity",
+                     section + ".compressor.sidechain.reactivity");
+
+  update_key<double>(root, settings, "sidechain-lookahead",
+                     section + ".compressor.sidechain.lookahead");
 }
 
-void CompressorPreset::write(boost::property_tree::ptree& root) {
-  save(root, "input", input_settings);
-  save(root, "output", output_settings);
+void CompressorPreset::write(PresetType preset_type,
+                             boost::property_tree::ptree& root) {
+  if (preset_type == PresetType::output) {
+    save(root, "output", output_settings);
+  } else {
+    save(root, "input", input_settings);
+  }
 }
 
-void CompressorPreset::read(boost::property_tree::ptree& root) {
-  load(root, "input", input_settings);
-  load(root, "output", output_settings);
+void CompressorPreset::read(PresetType preset_type,
+                            boost::property_tree::ptree& root) {
+  if (preset_type == PresetType::output) {
+    load(root, "output", output_settings);
+  } else {
+    load(root, "input", input_settings);
+  }
 }

@@ -53,7 +53,7 @@
         <property name="can_focus">False</property>
         <property name="halign">end</property>
         <property name="valign">center</property>
-        <property name="label" translatable="yes">Enable All Applications</property>
+        <property name="label" translatable="yes">Process All Outputs</property>
       </object>
       <packing>
         <property name="left_attach">0</property>
@@ -61,7 +61,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkSwitch" id="enable_all_apps">
+      <object class="GtkSwitch" id="enable_all_sinkinputs">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="halign">start</property>
@@ -82,7 +82,7 @@
       </object>
       <packing>
         <property name="left_attach">0</property>
-        <property name="top_attach">2</property>
+        <property name="top_attach">3</property>
       </packing>
     </child>
     <child>
@@ -94,7 +94,7 @@
       </object>
       <packing>
         <property name="left_attach">1</property>
-        <property name="top_attach">2</property>
+        <property name="top_attach">3</property>
       </packing>
     </child>
     <child>
@@ -108,7 +108,7 @@
       </object>
       <packing>
         <property name="left_attach">0</property>
-        <property name="top_attach">3</property>
+        <property name="top_attach">4</property>
       </packing>
     </child>
     <child>
@@ -121,60 +121,7 @@
       </object>
       <packing>
         <property name="left_attach">1</property>
-        <property name="top_attach">3</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkSpinButton" id="realtime_priority">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="halign">start</property>
-        <property name="valign">center</property>
-        <property name="adjustment">adjustment_priority</property>
-      </object>
-      <packing>
-        <property name="left_attach">3</property>
-        <property name="top_attach">3</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="halign">end</property>
-        <property name="margin_left">32</property>
-        <property name="label" translatable="yes">Priority</property>
-      </object>
-      <packing>
-        <property name="left_attach">2</property>
-        <property name="top_attach">3</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="halign">end</property>
-        <property name="valign">center</property>
-        <property name="margin_left">32</property>
-        <property name="label" translatable="yes">Niceness</property>
-      </object>
-      <packing>
-        <property name="left_attach">2</property>
-        <property name="top_attach">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkSpinButton" id="niceness">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="halign">start</property>
-        <property name="valign">center</property>
-        <property name="adjustment">adjustment_niceness</property>
-      </object>
-      <packing>
-        <property name="left_attach">3</property>
-        <property name="top_attach">2</property>
+        <property name="top_attach">4</property>
       </packing>
     </child>
     <child>
@@ -221,8 +168,95 @@
       </object>
       <packing>
         <property name="left_attach">4</property>
+        <property name="top_attach">4</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="halign">end</property>
+        <property name="valign">center</property>
+        <property name="label" translatable="yes">Process All Inputs</property>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSwitch" id="enable_all_sourceoutputs">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="halign">start</property>
+        <property name="valign">center</property>
+      </object>
+      <packing>
+        <property name="left_attach">1</property>
+        <property name="top_attach">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="halign">end</property>
+        <property name="valign">center</property>
+        <property name="margin_left">32</property>
+        <property name="label" translatable="yes">Niceness</property>
+      </object>
+      <packing>
+        <property name="left_attach">2</property>
+        <property name="top_attach">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSpinButton" id="niceness">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="halign">start</property>
+        <property name="valign">center</property>
+        <property name="adjustment">adjustment_niceness</property>
+      </object>
+      <packing>
+        <property name="left_attach">3</property>
+        <property name="top_attach">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="halign">end</property>
+        <property name="margin_left">32</property>
+        <property name="label" translatable="yes">Priority</property>
+      </object>
+      <packing>
+        <property name="left_attach">2</property>
         <property name="top_attach">3</property>
       </packing>
+    </child>
+    <child>
+      <object class="GtkSpinButton" id="realtime_priority">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="halign">start</property>
+        <property name="valign">center</property>
+        <property name="adjustment">adjustment_priority</property>
+      </object>
+      <packing>
+        <property name="left_attach">3</property>
+        <property name="top_attach">3</property>
+      </packing>
+    </child>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <placeholder/>
     </child>
     <child>
       <placeholder/>

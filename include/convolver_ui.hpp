@@ -2,7 +2,6 @@
 #define CONVOLVER_UI_HPP
 
 #include <gtkmm/button.h>
-#include <gtkmm/comboboxtext.h>
 #include <gtkmm/drawingarea.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/label.h>
@@ -37,8 +36,6 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
 
   Pango::FontDescription font;
 
-  std::vector<sigc::connection> connections;
-
   boost::filesystem::path irs_dir;
 
   bool mouse_inside = false, show_fft_spectrum = false;
@@ -52,7 +49,7 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
   std::vector<float> left_mag, right_mag, time_axis;
   std::vector<float> left_spectrum, right_spectrum, freq_axis;
 
-  Glib::RefPtr<Gio::Settings> global_settings;
+  Glib::RefPtr<Gio::Settings> spectrum_settings;
 
   std::mutex lock_guard_irs_info;
 

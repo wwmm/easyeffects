@@ -43,6 +43,8 @@ class PluginUiBase {
 
   bool input_saturated = false;
 
+  std::vector<sigc::connection> connections;
+
   void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
                   const std::string& name,
                   Glib::RefPtr<Gtk::Adjustment>& object) {
@@ -50,7 +52,7 @@ class PluginUiBase {
         Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
   }
 
-  std::string level_to_str(double value);
+  std::string level_to_str(const double& value, const int& places);
 
  private:
   template <typename T1, typename T2, typename T3, typename T4>
@@ -66,7 +68,7 @@ class PluginUiBase {
 
     if (left_db >= -99) {
       w_left->set_value(left);
-      w_left_label->set_text(level_to_str(left_db));
+      w_left_label->set_text(level_to_str(left_db, 0));
     } else {
       w_left->set_value(0);
       w_left_label->set_text("-99");
@@ -74,7 +76,7 @@ class PluginUiBase {
 
     if (right_db >= -99) {
       w_right->set_value(right);
-      w_right_label->set_text(level_to_str(right_db));
+      w_right_label->set_text(level_to_str(right_db, 0));
     } else {
       w_right->set_value(0);
       w_right_label->set_text("-99");
@@ -91,16 +93,32 @@ class PluginUiBase {
     auto right = peak[1];
 
     if (left >= -99) {
-      w_left->set_value(util::db_to_linear(left));
-      w_left_label->set_text(level_to_str(left));
+      auto db_value = util::db_to_linear(left);
+
+      if (db_value < 0) {
+        db_value = 0;
+      } else if (db_value > 1) {
+        db_value = 1;
+      }
+
+      w_left->set_value(db_value);
+      w_left_label->set_text(level_to_str(left, 0));
     } else {
       w_left->set_value(0);
       w_left_label->set_text("-99");
     }
 
     if (right >= -99) {
-      w_right->set_value(util::db_to_linear(right));
-      w_right_label->set_text(level_to_str(right));
+      auto db_value = util::db_to_linear(right);
+
+      if (db_value < 0) {
+        db_value = 0;
+      } else if (db_value > 1) {
+        db_value = 1;
+      }
+
+      w_right->set_value(db_value);
+      w_right_label->set_text(level_to_str(right, 0));
     } else {
       w_right->set_value(0);
       w_right_label->set_text("-99");

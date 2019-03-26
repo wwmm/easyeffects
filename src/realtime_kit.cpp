@@ -93,7 +93,7 @@ void RealtimeKit::make_realtime(const std::string& source_name,
                 " thread real-time priority value to " +
                 std::to_string(priority));
   } catch (const Glib::Error& err) {
-    util::warning(log_tag + err.what().c_str());
+    util::warning(log_tag + "MakeThreadRealtime: " + err.what().c_str());
   }
 
 #endif
@@ -117,7 +117,7 @@ void RealtimeKit::make_high_priority(const std::string& source_name,
     util::debug(log_tag + "changed " + source_name + " thread nice value to " +
                 std::to_string(nice_value));
   } catch (const Glib::Error& err) {
-    util::warning(log_tag + err.what().c_str());
+    util::warning(log_tag + "MakeThreadHighPriority: " + err.what().c_str());
   }
 
 #endif

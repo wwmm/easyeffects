@@ -57,8 +57,6 @@ class SinkInputEffects : public PipelineBase {
   std::unique_ptr<AutoGain> autogain;
   std::unique_ptr<Delay> delay;
 
-  sigc::signal<void, std::array<double, 2>> compressor_input_level;
-  sigc::signal<void, std::array<double, 2>> compressor_output_level;
   sigc::signal<void, std::array<double, 2>> equalizer_input_level;
   sigc::signal<void, std::array<double, 2>> equalizer_output_level;
   sigc::signal<void, std::array<double, 2>> pitch_input_level;
@@ -87,8 +85,6 @@ class SinkInputEffects : public PipelineBase {
   sigc::signal<void, std::array<double, 2>> delay_output_level;
 
  private:
-  GSettings* sie_settings = nullptr;
-
   void add_plugins_to_pipeline();
 
   void on_app_added(const std::shared_ptr<AppInfo>& app_info);

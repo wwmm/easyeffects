@@ -1,0 +1,2432 @@
+# PulseEffects Yardım Dosyası Türkçe Çevirisi
+# Serdar Sağlam <teknomobil@yandex.com>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: pulseeffects-help\n"
+"POT-Creation-Date: 2019-02-22 21:08-0300\n"
+"PO-Revision-Date: 2019-03-11 18:39+0300\n"
+"Language-Team: Serdar Sağlam <teknomobil@yandex.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.1\n"
+"Last-Translator: Serdar Sağlam <teknomobil@yandex.com>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: tr\n"
+
+#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
+msgctxt "_"
+msgid "translator-credits"
+msgstr "Serdar Sağlam <teknomobil@yandex.com>, 2019"
+
+#. (itstool) path: page/title
+#: C/bassenhancer.page:9
+msgid "Bass Enhancer"
+msgstr "Bas Yükseltici"
+
+#. (itstool) path: page/p
+#: C/bassenhancer.page:10
+msgid ""
+"The brain perceives the pitch of a tone not only by its fundamental "
+"frequency but also by the periodicity implied by the relationship between "
+"the higher harmonics. We may perceive the same pitch even if the fundamental "
+"frequency is missing from a tone."
+msgstr ""
+"Beyin bir tonun perdesini sadece temel frekansı ile değil aynı zamanda "
+"yüksek harmonikler arasındaki ilişkinin ima ettiği periyodiklik ile algılar. "
+"Temel frekans bir tondan eksik olsa bile aynı perdeyi algılayabiliriz."
+
+#. (itstool) path: page/p
+#: C/bassenhancer.page:16
+msgid "PulseEffects uses the bass enhancer developed by Calf Studio."
+msgstr ""
+"PulseEffects, Calf Studio tarafından geliştirilen bas geliştiriciyi kullanır."
+
+#. (itstool) path: title/em
+#: C/bassenhancer.page:22 C/exciter.page:21 C/reverb.page:40
+msgid "Amount"
+msgstr "Miktar"
+
+#. (itstool) path: item/p
+#: C/bassenhancer.page:24 C/exciter.page:23
+msgid "Amount of harmonics added to the original signal."
+msgstr "Orijinal sinyale eklenen harmonik miktarı."
+
+#. (itstool) path: title/em
+#: C/bassenhancer.page:30 C/exciter.page:29
+msgid "Harmonics"
+msgstr "Harmonikler"
+
+#. (itstool) path: item/p
+#: C/bassenhancer.page:32 C/exciter.page:31
+msgid "Amount of newly created harmonics."
+msgstr "Yeni oluşturulan harmoniklerin miktarı."
+
+#. (itstool) path: title/em
+#: C/bassenhancer.page:38 C/exciter.page:37
+msgid "Scope"
+msgstr "Kapsam"
+
+#. (itstool) path: item/p
+#: C/bassenhancer.page:40 C/exciter.page:39
+msgid "The frequency harmonics are produced above."
+msgstr "Frekans harmonikleri yukarıda üretilmiştir."
+
+#. (itstool) path: title/em
+#: C/bassenhancer.page:46
+msgid "Floor(button)"
+msgstr "Zemin(düğme)"
+
+#. (itstool) path: item/p
+#: C/bassenhancer.page:48
+msgid "Constrain the enhancement on the lower end."
+msgstr "Geliştirmeyi alt uçta sınırlayın."
+
+#. (itstool) path: title/em
+#: C/bassenhancer.page:54
+msgid "Floor(value)"
+msgstr "Zemin(değer)"
+
+#. (itstool) path: item/p
+#: C/bassenhancer.page:56
+msgid "The frequency no harmonics are produced below."
+msgstr "Hiçbir harmonik frekansı aşağıda üretilmez."
+
+#. (itstool) path: title/em
+#: C/bassenhancer.page:62 C/exciter.page:61
+msgid "Blend Harmonics"
+msgstr "Harmonik Karışımları"
+
+#. (itstool) path: item/p
+#: C/bassenhancer.page:64 C/exciter.page:63
+msgid "The \"colour\" (or octave) of the harmonics."
+msgstr "Harmoniklerin (\"colour\" rengi) (veya oktavı)."
+
+#. (itstool) path: title/em
+#: C/bassenhancer.page:70 C/compressor.page:92 C/exciter.page:69
+msgid "Listen"
+msgstr "Liste"
+
+#. (itstool) path: item/p
+#: C/bassenhancer.page:72 C/exciter.page:71
+msgid "Mute the original signal and listen to the harmonics exclusively."
+msgstr "Orijinal sinyali susturun ve sadece harmonikleri dinleyin."
+
+#. (itstool) path: section/title
+#: C/bassenhancer.page:78 C/compressor.page:206 C/deesser.page:111
+#: C/exciter.page:77 C/filter.page:47 C/gate.page:96 C/delay.page:33
+#: C/limiter.page:82 C/loudness.page:44 C/multibandcompressor.page:128
+#: C/multibandgate.page:136 C/reverb.page:97 C/stereotools.page:96
+#: C/crossfeed.page:35 C/equalizer.page:230 C/pitch.page:87 C/webrtc.page:140
+#: C/crystalizer.page:45 C/convolver.page:42 C/autogain.page:87
+msgid "References"
+msgstr "Atıflar"
+
+#. (itstool) path: page/title
+#. (itstool) path: section/title
+#: C/compressor.page:9 C/webrtc.page:84
+msgid "Compressor"
+msgstr "Sıkıştırıcı"
+
+#. (itstool) path: page/p
+#: C/compressor.page:10
+msgid "A compressor is used to reduce the audio signal dynamic range."
+msgstr ""
+"Ses sinyali dinamik aralığını azaltmak için bir sıkıştırıcı kullanılır."
+
+#. (itstool) path: page/p
+#: C/compressor.page:13
+msgid "PulseEffects uses the compressor from Linux Studio Plugins."
+msgstr ""
+"PulseEffects, Linux Studio Eklentilerinden gelen sıkıştırıcıyı kullanır."
+
+#. (itstool) path: title/em
+#: C/compressor.page:20 C/gate.page:20 C/multibandcompressor.page:20
+#: C/multibandgate.page:20
+msgid "Attack"
+msgstr "Atak"
+
+#. (itstool) path: item/p
+#: C/compressor.page:22 C/gate.page:22 C/multibandcompressor.page:22
+#: C/multibandgate.page:22
+msgid ""
+"Amount of milliseconds the signal has to rise above the threshold before "
+"gain reduction starts."
+msgstr ""
+"Milisaniye miktarı, kazanım azaltma başlamadan önce sinyalin eşiğin üstüne "
+"çıkması gerekiyor."
+
+#. (itstool) path: title/em
+#: C/compressor.page:29 C/gate.page:29 C/limiter.page:47
+#: C/multibandcompressor.page:29 C/multibandgate.page:29 C/maximizer.page:37
+msgid "Release"
+msgstr "Bırak"
+
+#. (itstool) path: item/p
+#: C/compressor.page:31 C/gate.page:31 C/multibandcompressor.page:31
+#: C/multibandgate.page:31
+msgid ""
+"Amount of milliseconds the signal has to fall below the threshold before the "
+"reduction is decreased again."
+msgstr ""
+"Milisaniye miktarı, azaltma tekrar azaltılmadan önce sinyalin eşiğin altına "
+"düşmesi gerekir."
+
+#. (itstool) path: title/em
+#: C/compressor.page:38 C/deesser.page:26 C/gate.page:38
+#: C/multibandcompressor.page:38 C/multibandgate.page:46 C/maximizer.page:21
+msgid "Threshold"
+msgstr "Eşik"
+
+#. (itstool) path: item/p
+#: C/compressor.page:40 C/deesser.page:28 C/gate.page:40
+#: C/multibandcompressor.page:40 C/multibandgate.page:48 C/maximizer.page:23
+msgid "If a signal rises above this level it will affect the gain reduction."
+msgstr "Bir sinyal bu seviyenin üzerine çıkarsa, kazanç azalmasını etkiler."
+
+#. (itstool) path: title/em
+#: C/compressor.page:46 C/deesser.page:34 C/gate.page:46
+#: C/multibandcompressor.page:46 C/multibandgate.page:54
+msgid "Ratio"
+msgstr "Oran"
+
+#. (itstool) path: item/p
+#: C/compressor.page:48 C/deesser.page:36 C/gate.page:48
+#: C/multibandcompressor.page:48 C/multibandgate.page:56
+msgid "Set the ratio by which the signal will be reduced."
+msgstr "Sinyalin azaltılacağı oranı ayarlayın."
+
+#. (itstool) path: title/em
+#: C/compressor.page:54 C/gate.page:54 C/multibandcompressor.page:54
+#: C/multibandgate.page:62
+msgid "Knee"
+msgstr "Oynak"
+
+#. (itstool) path: item/p
+#: C/compressor.page:56 C/gate.page:56 C/multibandcompressor.page:56
+#: C/multibandgate.page:64
+msgid "Controls how smooth is the entrance in the gain reduction phase."
+msgstr ""
+"Kazanç azaltma aşamasındaki girişin ne kadar yumuşak olduğunu kontrol eder."
+
+#. (itstool) path: title/em
+#: C/compressor.page:62 C/deesser.page:42 C/gate.page:62
+#: C/multibandcompressor.page:62 C/multibandgate.page:70
+msgid "Makeup"
+msgstr "Süs"
+
+#. (itstool) path: item/p
+#: C/compressor.page:64 C/deesser.page:44 C/gate.page:64
+#: C/multibandcompressor.page:64 C/multibandgate.page:72
+msgid "It amplifies your signal after processing."
+msgstr "İşlemden sonra sinyalinizi yükseltir."
+
+#. (itstool) path: title/em
+#: C/compressor.page:70
+msgid "Compression Mode"
+msgstr "Sıkıştırma Kipi"
+
+#. (itstool) path: item/p
+#: C/compressor.page:74
+msgid ""
+"<em style=\"strong\">Downward</em> - Decreases the amplitude of the signal "
+"sections that are above the threshold."
+msgstr ""
+"<em style=\"strong\">Aşağı Doğru</em> -  Eşiğin üzerindeki sinyal "
+"bölümlerinin genliğini azaltır."
+
+#. (itstool) path: item/p
+#: C/compressor.page:79
+msgid ""
+"<em style=\"strong\">Upwards</em> - Increases the amplitude of the signal "
+"sections that are below the threshold."
+msgstr ""
+"<em style=\"strong\">Yukarı Doğru</em> - Eşiğin altındaki sinyal "
+"bölümlerinin genliğini arttırır."
+
+#. (itstool) path: section/title
+#: C/compressor.page:88
+msgid "Sidechain"
+msgstr "Yanzincir"
+
+#. (itstool) path: item/p
+#: C/compressor.page:94
+msgid "Allows to listen the processed sidechain signal."
+msgstr "İşlenmiş yan zincir sinyalini dinlemenizi sağlar."
+
+#. (itstool) path: title/em
+#: C/compressor.page:100 C/equalizer.page:99
+msgid "Type"
+msgstr "Tür"
+
+#. (itstool) path: item/p
+#: C/compressor.page:104
+msgid ""
+"<em style=\"strong\">Feed-forward</em> - The sidechain input is connected to "
+"compressor's input. More aggressive compression."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/compressor.page:110
+msgid ""
+"<em style=\"strong\">Feed-back</em> - The sidechain input is connected to "
+"compressor's output. Vintage-style more accurate compression."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/compressor.page:119 C/deesser.page:103 C/multibandcompressor.page:95
+#: C/multibandgate.page:103 C/stereotools.page:38 C/equalizer.page:23
+#: C/equalizer.page:146 C/webrtc.page:75
+msgid "Mode"
+msgstr "Kip"
+
+#. (itstool) path: item/p
+#: C/compressor.page:123
+msgid "<em style=\"strong\">Peak</em> - Measure signal's peak."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/compressor.page:129
+msgid "<em style=\"strong\">RMS</em> - Root mean square of the input signal."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/compressor.page:135
+msgid ""
+"<em style=\"strong\">Low-Pass</em> - Input signal is processed by a low-pass "
+"filter."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/compressor.page:141
+msgid ""
+"<em style=\"strong\">Uniform</em> - Input signal is processed by a uniform "
+"filter."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/compressor.page:150
+msgid "Source"
+msgstr "Kaynak"
+
+#. (itstool) path: item/p
+#: C/compressor.page:154
+msgid ""
+"<em style=\"strong\">Middle</em> - Middle part of signal is used for "
+"sidechain processing."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/compressor.page:160
+msgid ""
+"<em style=\"strong\">Side</em> - Side part of signal is used for sidechain "
+"processing."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/compressor.page:166
+msgid ""
+"<em style=\"strong\">Left</em> - Only left channel is used for sidechain "
+"processing."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/compressor.page:172
+msgid ""
+"<em style=\"strong\">Right</em> - Only right channel is used for sidechain "
+"processing."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/compressor.page:181
+msgid "Pre-amplification"
+msgstr "Öntanımlı-yükselticiler"
+
+#. (itstool) path: item/p
+#: C/compressor.page:183
+msgid "Pre-amplification of the sidechain signal."
+msgstr "Yan zincir sinyalinin öntanımlı yükselticileri."
+
+#. (itstool) path: title/em
+#: C/compressor.page:189
+msgid "Reactivity"
+msgstr "Tepkinirlik"
+
+#. (itstool) path: item/p
+#: C/compressor.page:191
+msgid "Reactivity of the sidechain signal."
+msgstr "Yan zincir sinyalinin tepkinirliği."
+
+#. (itstool) path: title/em
+#: C/compressor.page:197 C/limiter.page:38
+msgid "Lookahead"
+msgstr "İlerleme"
+
+#. (itstool) path: item/p
+#: C/compressor.page:199
+msgid "Look-ahead time of the sidechain relative to the input signal."
+msgstr "Giriş sinyaline göre yan zincirin önden bakma süresi."
+
+#. (itstool) path: page/title
+#: C/deesser.page:9
+msgid "Deesser"
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/deesser.page:10
+msgid ""
+"PulseEffects uses the deesser developed by Calf Studio. A deesser is used to "
+"dynamically reduce high frequencies. The standard field of use is the "
+"reduction of \"sssss\" and \"shhhh\" in vocal tracks."
+msgstr ""
+"PulseEffects, Calf Studio tarafından geliştirilen deesseri kullanır. Yüksek "
+"frekansları dinamik olarak azaltmak için bir deesser kullanılır. Standart "
+"kullanım alanı, ses parçalarında \"sssss\" ve \"shhhh\" değerlerinin "
+"azaltılmasıdır."
+
+#. (itstool) path: title/em
+#: C/deesser.page:18
+msgid "Laxity"
+msgstr "Gevşeklik"
+
+#. (itstool) path: item/p
+#: C/deesser.page:20
+msgid ""
+"The reaction of the deesser. Higher values won't affect really short peaks."
+msgstr ""
+"Deesser'in tepkisi. Daha yüksek değerler gerçekten kısa tepe noktalarını "
+"etkilemeyecektir."
+
+#. (itstool) path: title/em
+#: C/deesser.page:50
+msgid "Split"
+msgstr "Ayır"
+
+#. (itstool) path: item/p
+#: C/deesser.page:52
+msgid ""
+"The split frequency. All signals above this frequency will affect the gain "
+"reduction (and in split mode they are affected by the reduction too)."
+msgstr ""
+"Bölünme frekansı. Bu frekansın üzerindeki tüm sinyaller kazanç azalmasını "
+"etkiler (ve bölünmüş kipte de azaltmadan etkilenir)."
+
+#. (itstool) path: title/em
+#: C/deesser.page:59 C/autogain.page:78
+msgid "Gain"
+msgstr "Kazanç"
+
+#. (itstool) path: item/p
+#: C/deesser.page:61
+msgid ""
+"It shifts the volume of the higher band. In wideband mode it affects the "
+"sidechain. In split mode it also affects the processed high frequencies."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/deesser.page:68
+msgid "Peak"
+msgstr "Tepe"
+
+#. (itstool) path: item/p
+#: C/deesser.page:70
+msgid ""
+"Center frequency of the bell filter. It allows a more precise selection of "
+"the sidechain signal."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/deesser.page:77
+msgid "Level"
+msgstr "Seviye"
+
+#. (itstool) path: item/p
+#: C/deesser.page:79
+msgid "Increase or decrease the frequencies around the center bell frequency."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/deesser.page:85
+msgid "Peak Q"
+msgstr "Q Tepe"
+
+#. (itstool) path: item/p
+#: C/deesser.page:87
+msgid ""
+"Set the quality of the bell. Higher values will affect a narrower frequency "
+"range. Lower values will affect a wider band."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/deesser.page:94 C/gate.page:79 C/multibandcompressor.page:78
+#: C/multibandgate.page:86
+msgid "Detection"
+msgstr "Keşif"
+
+#. (itstool) path: item/p
+#: C/deesser.page:96
+msgid ""
+"Choose if the deesser should take the signal peak for detection or the RMS "
+"value (it is smoother)."
+msgstr ""
+"Deesser'ın algılama için sinyal tepe noktasını veya RMS değerini alması "
+"gerekip gerekmediğini seçin (daha pürüzsüz)."
+
+#. (itstool) path: item/p
+#: C/deesser.page:105
+msgid "Select your operation mode between wideband or split"
+msgstr "Çalışma kipini geniş bant veya bölme arasında seçin"
+
+#. (itstool) path: page/title
+#: C/exciter.page:9
+msgid "Exciter"
+msgstr "Uyarıcı"
+
+#. (itstool) path: page/p
+#: C/exciter.page:10
+msgid ""
+"An exciter is used to enhance a signal by dynamic equalization, phase "
+"manipulation, harmonic synthesis of high frequency signals, and through the "
+"addition of subtle harmonic distortion."
+msgstr ""
+"Bir uyarıcıyı, dinamik eşitleme, faz manipülasyonu, yüksek frekanslı "
+"sinyallerin harmonik sentezi ve ince harmonik bozulmaların eklenmesi yoluyla "
+"bir sinyal geliştirmek için kullanılır."
+
+#. (itstool) path: page/p
+#: C/exciter.page:15
+msgid "PulseEffects uses the exciter developed by Calf Studio."
+msgstr "PulseEffects, Calf Studio tarafından geliştirilen uyarıcıyı kullanır."
+
+#. (itstool) path: title/em
+#: C/exciter.page:45
+msgid "Ceiling(button)"
+msgstr "Tavan(düğme)"
+
+#. (itstool) path: item/p
+#: C/exciter.page:47
+msgid "Constrain the excitement on the upper end."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/exciter.page:53
+msgid "Ceiling(value)"
+msgstr "Tavan(değer)"
+
+#. (itstool) path: item/p
+#: C/exciter.page:55
+msgid "The frequency no harmonics are produced above."
+msgstr ""
+
+#. (itstool) path: page/title
+#: C/filter.page:9
+msgid "Filter"
+msgstr "Süzgeç"
+
+#. (itstool) path: page/p
+#: C/filter.page:10
+msgid ""
+"Audio filters can amplify (boost), pass or attenuate (cut) some frequency "
+"ranges."
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/filter.page:14
+msgid ""
+"PulseEffects uses the filter from Calf Studio. It can be used to remove "
+"defined parts of a frequency spectrum."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/filter.page:21 C/equalizer.page:203
+msgid "Frequency"
+msgstr "Sıklık"
+
+#. (itstool) path: item/p
+#: C/filter.page:23
+msgid "The center or cut-off frequency of the filter."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/filter.page:29
+msgid "Resonance"
+msgstr "Çınlama"
+
+#. (itstool) path: item/p
+#: C/filter.page:31
+msgid ""
+"Add an accentuation to the center frequency. When used on a bandpass the "
+"surrounding frequencies are decreased in level and the band gets more "
+"narrow, a bandreject is narrowed down to a thin needle."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/filter.page:39
+msgid "Inertia"
+msgstr "Durağan"
+
+#. (itstool) path: item/p
+#: C/filter.page:41
+msgid "Smooths the jumps between frequencies."
+msgstr ""
+
+#. (itstool) path: page/title
+#: C/gate.page:9
+msgid "Gate"
+msgstr "Aralık"
+
+#. (itstool) path: page/p
+#: C/gate.page:10
+msgid ""
+"Gates attenuate signals that register below the threshold. This kind of "
+"signal processing reduces disturbing noise between useful signals."
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/gate.page:14
+msgid "PulseEffects uses the gate developed by Calf Studio."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/gate.page:70
+msgid "Stereo Link"
+msgstr "Stereo Bağ"
+
+#. (itstool) path: item/p
+#: C/gate.page:72
+msgid ""
+"Choose if the gain reduction is affected by the louder channel or by the "
+"average level between the channels."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/gate.page:81
+msgid ""
+"Choose if the gate should take the signal peak for detection or the RMS "
+"value (it is smoother)."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/gate.page:88
+msgid "Gain Reduction"
+msgstr "Kazanç Azaltma"
+
+#. (itstool) path: item/p
+#: C/gate.page:90
+msgid "The level of gain reduction when the signal is below the threshold."
+msgstr ""
+
+#. (itstool) path: page/title
+#: C/delay.page:9
+msgid "Delay"
+msgstr "Gecikme"
+
+#. (itstool) path: page/p
+#: C/delay.page:10
+msgid ""
+"This plugin allows to add short delay to each individual channel of the "
+"stereo channel"
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/delay.page:17
+msgid "Left"
+msgstr "Sol"
+
+#. (itstool) path: item/p
+#: C/delay.page:19
+msgid "Left channel delay."
+msgstr "Sol kanal gecikmesi."
+
+#. (itstool) path: title/em
+#: C/delay.page:25
+msgid "Right"
+msgstr "Sağ"
+
+#. (itstool) path: item/p
+#: C/delay.page:27
+msgid "Right channel delay."
+msgstr "Sağ kanal gecikmesi."
+
+#. (itstool) path: page/title
+#: C/index.page:12
+msgid "PulseEffects"
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/index.page:15
+msgid ""
+"PulseEffects applies audio effects to Pulseaudio applications. You can apply "
+"effects to applications output or to your microphone before sending its "
+"audio to a recording application."
+msgstr ""
+
+#. (itstool) path: section/title
+#: C/index.page:21
+msgid "User Interface"
+msgstr "Kullanıcı Arayüzü"
+
+#. (itstool) path: section/title
+#: C/index.page:24
+msgid "Plugins"
+msgstr "Eklentiler"
+
+#. (itstool) path: section/title
+#: C/index.page:27
+msgid "Calibration"
+msgstr "Kalibrasyon"
+
+#. (itstool) path: page/title
+#. (itstool) path: title/em
+#: C/limiter.page:9 C/limiter.page:18 C/webrtc.page:88
+msgid "Limiter"
+msgstr "Sınırlayıcı"
+
+#. (itstool) path: page/p
+#: C/limiter.page:10
+msgid ""
+"A limiter allows signals below a specified input power or level to pass "
+"unaffected while attenuating (lowering) the peaks of stronger signals that "
+"exceed this threshold."
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/limiter.page:15
+msgid "PulseEffects uses the limiter developed by Calf Studio."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/limiter.page:22
+msgid "Input Gain"
+msgstr "Giriş Kazancı"
+
+#. (itstool) path: item/p
+#: C/limiter.page:24
+msgid "Raises audio volume before it is sent ot the compression stage."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/limiter.page:30
+msgid "Limit"
+msgstr "Limit"
+
+#. (itstool) path: item/p
+#: C/limiter.page:32
+msgid "No signal above this level will pass through the limiter."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/limiter.page:40
+msgid ""
+"The Limiter will reach its attenuation level in this amount of time (output "
+"will be delayed two times this time)."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/limiter.page:49
+msgid "Stop the attenuation after this amount of milliseconds."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/limiter.page:55
+msgid "Oversampling"
+msgstr "Aşırı Örnekleme"
+
+#. (itstool) path: item/p
+#: C/limiter.page:57
+msgid ""
+"Increase the signal sampling to better detect the peaks. The signal is "
+"downsampled after processing."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/limiter.page:64
+msgid "ASC"
+msgstr "ASC"
+
+#. (itstool) path: item/p
+#: C/limiter.page:66
+msgid ""
+"When gain reduction is always needed ASC takes care of releasing to an "
+"average reduction level rather than reaching a reduction of 0 in the release "
+"time."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/limiter.page:73
+msgid "ASC Level"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/limiter.page:75
+msgid ""
+"Select how much the release time is affected by ASC, 0 means nearly no "
+"changes in release time while 1 produces higher release times."
+msgstr ""
+
+#. (itstool) path: page/title
+#. (itstool) path: title/em
+#: C/loudness.page:9 C/loudness.page:19 C/autogain.page:61
+msgid "Loudness"
+msgstr "Yüksek Ses"
+
+#. (itstool) path: page/p
+#: C/loudness.page:10
+msgid ""
+"PulseEffects uses the loudness from MDA.LV2. The ear is less sensitive to "
+"low frequencies when listening at low volume. This plug-in is based on the "
+"Stevens-Davis equal loudness contours and allows the bass level to be "
+"adjusted to simulate or correct for this effect."
+msgstr ""
+"PulseEffects, MDA.LV2'den gelen ses seviyesini kullanır. Kulak, düşük ses "
+"seviyesinde dinlerken düşük frekanslara karşı daha az hassastır. Bu eklenti "
+"Stevens-Davis'in eşit yüksek ses kontürlerine dayanır ve bas seviyesinin bu "
+"etki için simülasyonu yapmak veya düzeltmek üzere ayarlanmasına izin verir."
+
+#. (itstool) path: item/p
+#: C/loudness.page:21
+msgid ""
+"Source level relative to listening level (based on a 100 dB SPL maximum "
+"level)."
+msgstr ""
+"Dinleme seviyesine göre kaynak seviyesi (azami 100 dB SPL seviyesine "
+"dayanarak)."
+
+#. (itstool) path: title/em
+#: C/loudness.page:27
+msgid "Output"
+msgstr "Çıkış"
+
+#. (itstool) path: item/p
+#: C/loudness.page:29
+msgid "Change output level."
+msgstr "Çıkış seviyesini değiştir."
+
+#. (itstool) path: title/em
+#: C/loudness.page:35
+msgid "Link"
+msgstr "Bağ"
+
+#. (itstool) path: item/p
+#: C/loudness.page:37
+msgid ""
+"Automatically adjusts Output to maintain a consistent tonal balance at all "
+"levels."
+msgstr ""
+"Tüm seviyelerde tutarlı bir ton dengesi sağlamak için Çıkışı otomatik olarak "
+"ayarlar."
+
+#. (itstool) path: page/title
+#: C/multibandcompressor.page:9
+msgid "Multiband Compressor"
+msgstr "Çoklu Bant Şıkıştırıcı"
+
+#. (itstool) path: page/p
+#: C/multibandcompressor.page:10
+msgid ""
+"This kind of compressor splits the signal in four different frequency "
+"ranges. These ranges are compressed separately and mixed together afterwards "
+"again."
+msgstr ""
+"Bu tür bir sıkıştırıcı, sinyali dört farklı frekans aralığında böler. Bu "
+"aralıklar ayrı ayrı sıkıştırılır ve daha sonra tekrar karıştırılır."
+
+#. (itstool) path: page/p
+#: C/multibandcompressor.page:14
+msgid "PulseEffects uses the multiband compressor developed by Calf Studio."
+msgstr ""
+"PulseEffects, Calf Studio tarafından geliştirilen çoklu bant sıkıştırıcıyı "
+"kullanır."
+
+#. (itstool) path: title/em
+#: C/multibandcompressor.page:70 C/multibandgate.page:78 C/crystalizer.page:29
+msgid "Bypass"
+msgstr "Atla"
+
+#. (itstool) path: item/p
+#: C/multibandcompressor.page:72 C/multibandgate.page:80
+msgid "Don't process anything, just bypass the signal of this strip."
+msgstr "Hiçbir şey işlemeyin, sadece bu şeridin sinyalini atlayın."
+
+#. (itstool) path: item/p
+#: C/multibandcompressor.page:80
+msgid ""
+"Choose if the multibandcompressor should take the signal peak for detection "
+"or the RMS value (it is smoother)."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/multibandcompressor.page:87 C/multibandgate.page:95 C/equalizer.page:187
+msgid "Solo"
+msgstr "Tekli"
+
+#. (itstool) path: item/p
+#: C/multibandcompressor.page:89 C/multibandgate.page:97
+msgid "Mute all strips not set to solo."
+msgstr "Yalnız ayarlanmayan tüm şeritleri sessize al."
+
+#. (itstool) path: item/p
+#: C/multibandcompressor.page:97 C/multibandgate.page:105
+msgid ""
+"The crossover mode. You can choose between the fourth order Linkwitz-"
+"Riley(LR4) and the eighth order Linkwitz-Riley(LR8)."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/multibandcompressor.page:104 C/multibandgate.page:112
+msgid "Split 1/2"
+msgstr "1/2 Böl"
+
+#. (itstool) path: item/p
+#: C/multibandcompressor.page:106 C/multibandgate.page:114
+msgid "Frequency that separates the sub band and the low band."
+msgstr "Alt bandı ve düşük bandı ayıran frekans."
+
+#. (itstool) path: title/em
+#: C/multibandcompressor.page:112 C/multibandgate.page:120
+msgid "Split 2/3"
+msgstr "2/3 Böl"
+
+#. (itstool) path: item/p
+#: C/multibandcompressor.page:114 C/multibandgate.page:122
+msgid "Frequency that separates the low band and the mid band."
+msgstr "Düşük bant ve orta bant ayıran frekans."
+
+#. (itstool) path: title/em
+#: C/multibandcompressor.page:120 C/multibandgate.page:128
+msgid "Split 3/4"
+msgstr "3/4 Böl"
+
+#. (itstool) path: item/p
+#: C/multibandcompressor.page:122 C/multibandgate.page:130
+msgid "Frequency that separates the mid band and the high band."
+msgstr "Orta bant ve yüksek bant ayıran frekans."
+
+#. (itstool) path: page/title
+#: C/multibandgate.page:9
+msgid "Multiband Gate"
+msgstr "Çoklu Bant Geçitleme"
+
+#. (itstool) path: page/p
+#: C/multibandgate.page:10
+msgid ""
+"This kind of gate splits the signal in four different frequency ranges. "
+"These ranges are processed separately and mixed together afterwards again."
+msgstr ""
+"Bu tür bir kapı, sinyali dört farklı frekans aralığında böler. Bu aralıklar "
+"ayrı olarak işlenir ve daha sonra tekrar karıştırılır."
+
+#. (itstool) path: page/p
+#: C/multibandgate.page:14
+msgid "PulseEffects uses the multiband gate developed by Calf Studio."
+msgstr ""
+"PulseEffects, Calf Studio tarafından geliştirilen çoklu bant geçidi kullanır."
+
+#. (itstool) path: title/em
+#: C/multibandgate.page:38
+msgid "Reduction"
+msgstr "Azalım"
+
+#. (itstool) path: item/p
+#: C/multibandgate.page:40
+msgid "The level of reduction in this strip."
+msgstr "Bu şeritteki azalma seviyesi."
+
+#. (itstool) path: item/p
+#: C/multibandgate.page:88
+msgid ""
+"Choose if the multibandgate should take the signal peak for detection or the "
+"RMS value (it is smoother)."
+msgstr ""
+
+#. (itstool) path: page/title
+#: C/reverb.page:9
+msgid "Reverberation"
+msgstr "Yankılanma"
+
+#. (itstool) path: page/p
+#: C/reverb.page:10
+msgid ""
+"Reverberation, in psychoacoustics and acoustics, is a persistence of sound "
+"after the sound is produced. A reverberation, or reverb, is created when a "
+"sound or signal is reflected causing a large number of reflections to build "
+"up and then decay as the sound is absorbed by the surfaces of objects in the "
+"space. Reverberation plugins can be used to artificially produce this effect."
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/reverb.page:17
+msgid "PulseEffects uses the reverberation developed by Calf Studio."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/reverb.page:23
+msgid "Pre Delay"
+msgstr "Ön Gecikme"
+
+#. (itstool) path: item/p
+#: C/reverb.page:25
+msgid ""
+"Additional delay - corresponds to a distance between sound source and the "
+"nearest wall."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/reverb.page:32
+msgid "Decay Time"
+msgstr "Bozunma Süresi"
+
+#. (itstool) path: item/p
+#: C/reverb.page:34
+msgid "Time it takes for reverberation to fade out."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/reverb.page:42
+msgid "Amount of processed signal (reverberation) in the output."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/reverb.page:48
+msgid "Dry"
+msgstr "Sertlik"
+
+#. (itstool) path: item/p
+#: C/reverb.page:50
+msgid "Amount of unprocessed signal in the output."
+msgstr "Çıkıştaki işlenmemiş sinyal miktarı."
+
+#. (itstool) path: title/em
+#: C/reverb.page:56
+msgid "Bass Cut"
+msgstr "Bas Kesim"
+
+#. (itstool) path: item/p
+#: C/reverb.page:58
+msgid "Removes low frequencies from the reverberation."
+msgstr "Yankılanmadan düşük frekansları kaldırır."
+
+#. (itstool) path: title/em
+#: C/reverb.page:64
+msgid "Treble Cut"
+msgstr "Tiz Kesim"
+
+#. (itstool) path: item/p
+#: C/reverb.page:66
+msgid "Removes high frequencies from the reverberation."
+msgstr "Yankılanmadan yüksek frekansları kaldırır."
+
+#. (itstool) path: title/em
+#: C/reverb.page:72
+msgid "Diffusion"
+msgstr "Yayılma"
+
+#. (itstool) path: item/p
+#: C/reverb.page:74
+msgid "Increase its value for less uniform reverberation."
+msgstr "Daha az tek biçimli yankılanma için değerini artırın."
+
+#. (itstool) path: title/em
+#: C/reverb.page:80
+msgid "Room Size"
+msgstr "Oda Boyutu"
+
+#. (itstool) path: item/p
+#: C/reverb.page:82
+msgid ""
+"Size of the space that simulated reverberation occurs in - determines times "
+"between reflections."
+msgstr ""
+"Yankılanmayı simüle eden alanın boyutu - yansımaların arasındaki süreleri "
+"belirler."
+
+#. (itstool) path: title/em
+#: C/reverb.page:89
+msgid "High Frequency Damping"
+msgstr "Yüksek Frekans Sönümleme"
+
+#. (itstool) path: item/p
+#: C/reverb.page:91
+msgid ""
+"Cutoff reflections high frequencies - causes higher frequencies to decay "
+"faster."
+msgstr ""
+"Kesim, yüksek frekansları yansıtır - daha yüksek frekansların daha hızlı "
+"çürümesine neden olur."
+
+#. (itstool) path: page/title
+#: C/stereotools.page:9
+msgid "Stereo Tools"
+msgstr "Stereo Araçları"
+
+#. (itstool) path: page/p
+#: C/stereotools.page:10
+msgid "PulseEffects uses the stereo tools developed by Calf Studio."
+msgstr ""
+"PulseEffects, Calf Studio tarafından geliştirilen stereo araçları kullanır."
+
+#. (itstool) path: title/em
+#: C/stereotools.page:16
+msgid "Softclip"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/stereotools.page:18
+msgid "Do kind of analog distortion instead of harsh digital 0db clipping."
+msgstr "Sert dijital 0db kırpma yerine bir tür analog bozulma yapın."
+
+#. (itstool) path: title/em
+#: C/stereotools.page:24
+msgid "Balance"
+msgstr "Denge"
+
+#. (itstool) path: item/p
+#: C/stereotools.page:26
+msgid "Set the balance between both channels."
+msgstr "Her iki kanal arasındaki dengeyi ayarlayın."
+
+#. (itstool) path: title/em
+#: C/stereotools.page:32
+msgid "S/C Level"
+msgstr "S/C Seviye"
+
+#. (itstool) path: item/p
+#: C/stereotools.page:40
+msgid "Choose normal stereo behavior (LR - LR) or convert between MS and LR."
+msgstr ""
+"Normal stereo davranışını (LR - LR) seçin veya MS ile LR arasında dönüştürün."
+
+#. (itstool) path: title/em
+#: C/stereotools.page:46
+msgid "Side Level"
+msgstr "Yan Sinyal Seviyesi"
+
+#. (itstool) path: item/p
+#: C/stereotools.page:48
+msgid "The level of the side signal."
+msgstr "Yan sinyalin seviyesi."
+
+#. (itstool) path: title/em
+#: C/stereotools.page:54
+msgid "Side Balance"
+msgstr "Denge Tarafı"
+
+#. (itstool) path: item/p
+#: C/stereotools.page:56
+msgid "The balance of the side signal."
+msgstr "Yan sinyalin dengesi."
+
+#. (itstool) path: title/em
+#: C/stereotools.page:62
+msgid "Middle Level"
+msgstr "Orta Seviye"
+
+#. (itstool) path: item/p
+#: C/stereotools.page:64
+msgid "Middle signal position in the stereo panorama."
+msgstr "Stereo panorama orta sinyal konumu."
+
+#. (itstool) path: title/em
+#: C/stereotools.page:70
+msgid "Delay L/R"
+msgstr "Gecikme L/R"
+
+#. (itstool) path: item/p
+#: C/stereotools.page:72
+msgid ""
+"Delay the left or the right channel (milliseconds). Negative values delay "
+"the left channel and positive values the right channel."
+msgstr ""
+"Sol veya sağ kanalı geciktirin (milisaniye). Negatif değerler sol kanalı "
+"geciktirir ve pozitif değerler sağ kanalı seçer."
+
+#. (itstool) path: title/em
+#: C/stereotools.page:79
+msgid "Stereo Base"
+msgstr "Stereo Taban"
+
+#. (itstool) path: item/p
+#: C/stereotools.page:81
+msgid ""
+"Set the stereo base of your material seamless between Mono and inverted "
+"Channels."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/stereotools.page:88
+msgid "Stereo Phase"
+msgstr "Stereo Faz"
+
+#. (itstool) path: item/p
+#: C/stereotools.page:90
+msgid "Set the stereo phase of your material."
+msgstr "Malzemenizin stereo fazını ayarlayın."
+
+#. (itstool) path: page/title
+#: C/maximizer.page:9
+msgid "Maximizer"
+msgstr "Yükseltici"
+
+#. (itstool) path: page/p
+#: C/maximizer.page:10
+msgid ""
+"A maximizer is similar to a limiter. It attenuates peaks above the "
+"limit(ceiling in our case) but it also boosts peaks that are between the "
+"limit and the threshold."
+msgstr ""
+"Bir yükseltici, sınırlayıcıya benzer. Sınırın üstündeki seviyeleri "
+"zayıflatır (bizim durumumuzda tavan) ancak aynı zamanda sınır ile eşik "
+"arasındaki seviyeyi de yükseltir."
+
+#. (itstool) path: page/p
+#: C/maximizer.page:15
+msgid "PulseEffects uses the maximizer from ZamAudio."
+msgstr "PulseEffects, ZamAudio'daki yükselticiyi kullanır."
+
+#. (itstool) path: title/em
+#: C/maximizer.page:29
+msgid "Ceiling"
+msgstr "Tavan"
+
+#. (itstool) path: item/p
+#: C/maximizer.page:31
+msgid "Maximum allowed peak value."
+msgstr "İzin verilen azami tepe değeri."
+
+#. (itstool) path: item/p
+#: C/maximizer.page:39
+msgid "Stop the attenuation after this amount of seconds."
+msgstr "Bu saniyeden sonra zayıflamayı durdurun."
+
+#. (itstool) path: page/title
+#: C/crossfeed.page:9
+msgid "Crossfeed"
+msgstr "Çapraz Besleme"
+
+#. (itstool) path: page/p
+#: C/crossfeed.page:10
+msgid ""
+"PulseEffects uses the crossfeed from GStreamer. This plugin is based on the "
+"bs2b library and can be used to improve headphone listening of stereo audio "
+"records. It does so by mixing the left and right channel in a way that "
+"simulates a stereo speaker setup while using headphones."
+msgstr ""
+"PulseEffects, GStreamer'den gelen çapraz beslemeyi kullanır. Bu eklenti bs2b "
+"kütüphanesini temel alır ve stereo ses kayıtlarının kulaklık dinlemesini "
+"geliştirmek için kullanılabilir. Bunu, kulaklık kullanırken stereo hoparlör "
+"kurulumunu taklit edecek şekilde sol ve sağ kanalı karıştırarak yapar."
+
+#. (itstool) path: title/em
+#: C/crossfeed.page:19
+msgid "Cutoff"
+msgstr "Kesici"
+
+#. (itstool) path: item/p
+#: C/crossfeed.page:21
+msgid "Low-pass filter cutoff frequency."
+msgstr "Düşük geçişli filtre kesme frekansı."
+
+#. (itstool) path: title/em
+#: C/crossfeed.page:27
+msgid "Feed"
+msgstr "Akış"
+
+#. (itstool) path: item/p
+#: C/crossfeed.page:29
+msgid "Amount of signal from a channel that is sent to the other."
+msgstr "Diğerine gönderilen bir kanaldan sinyal miktarı."
+
+#. (itstool) path: page/title
+#: C/equalizer.page:9
+msgid "Equalizer"
+msgstr "Ekolayzır"
+
+#. (itstool) path: page/p
+#: C/equalizer.page:10
+msgid ""
+"PulseEffects uses the parametric equalizer from Linux Studio Plugins. You "
+"can choose between 1 and 30 bands. You also can change the center frequency "
+"and the width of each band as needed. There are a few presets but at this "
+"moment all of them have only 10 bands. Presets with other number of bands "
+"may be added in the future."
+msgstr ""
+"PulseEffects, Linux Studio Eklentileri'nden gelen parametrik ekolayzır "
+"kullanır. 1 ile 30 bant arasında seçim yapabilirsiniz. Ayrıca, her bir "
+"bandın merkez frekansını ve genişliğini gerektiği gibi değiştirebilirsiniz. "
+"Birkaç ön ayar var ama şu anda hepsinde sadece 10 grup var. Diğer gruplara "
+"sahip ön ayarlar ileride eklenebilir."
+
+#. (itstool) path: section/title
+#: C/equalizer.page:18
+msgid "Main Menu"
+msgstr "Ana Menü"
+
+#. (itstool) path: item/p
+#: C/equalizer.page:27
+msgid ""
+"<em style=\"strong\">IIR</em> - Infinite Impulse Response filters, nonlinear "
+"minimal phase. In most cases does not add noticeable latency to output "
+"signal."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/equalizer.page:33
+msgid ""
+"<em style=\"strong\">FIR</em> - Finite Impulse Response filters with linear "
+"phase, finite approximation of equalizer's impulse response. Adds noticeable "
+"latency to output signal."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/equalizer.page:39
+msgid ""
+"<em style=\"strong\">FFT</em> - Fast Fourier Transform approximation of the "
+"frequency chart, linear phase. Adds noticeable latency to output signal."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/equalizer.page:48
+msgid "Bands"
+msgstr "Bantlar"
+
+#. (itstool) path: item/p
+#: C/equalizer.page:50
+msgid "The number of equalizer bands."
+msgstr "Ekolayzır bantlarının sayısı."
+
+#. (itstool) path: title/em
+#: C/equalizer.page:56
+msgid "Split Channels"
+msgstr "Kanalları Böl"
+
+#. (itstool) path: item/p
+#: C/equalizer.page:58
+msgid ""
+"When this option is enabled it is possible to apply different equalizations "
+"to the left and the right channel."
+msgstr ""
+"Bu seçenek etkinleştirildiğinde, sol ve sağ kanala farklı eşitlemeler "
+"uygulamak mümkündür."
+
+#. (itstool) path: title/em
+#: C/equalizer.page:65
+msgid "Flat Response"
+msgstr "Düz Yanıt"
+
+#. (itstool) path: item/p
+#: C/equalizer.page:67
+msgid "This function sets each band gain to 0."
+msgstr "Bu fonksiyon her bir bant kazancını 0'a ayarlar."
+
+#. (itstool) path: title/em
+#: C/equalizer.page:73
+msgid "Calculate Frequencies"
+msgstr "Frekansları Hesapla"
+
+#. (itstool) path: item/p
+#: C/equalizer.page:75
+msgid ""
+"This function can be used to calculate the center frequencies and bandwidth "
+"of a graphic equalizer with the current number of selected bands. Useful "
+"when the user does not want the default number of 30 bands but has no idea "
+"about which frequencies and bandwidth he/she should choose."
+msgstr ""
+"Bu fonksiyon, seçilen bantların mevcut sayısı ile bir grafik ekolayzırın "
+"merkez frekanslarını ve bant genişliğini hesaplamak için kullanılabilir. "
+"Kullanıcı öntanımlı 30 bant sayısını istemediğinde, ancak hangi frekansları "
+"ve bant genişliğini seçmesi gerektiğine dair hiçbir fikri olmadığı zaman "
+"kullanışlıdır."
+
+#. (itstool) path: title/em
+#: C/equalizer.page:84
+msgid "Reset Equalizer"
+msgstr "Ekolayzır Sıfırla"
+
+#. (itstool) path: item/p
+#: C/equalizer.page:86
+msgid "Reset the equalizer to its default settings."
+msgstr "Ekolayzırı öntanımlı ayarlarına sıfırlayın."
+
+#. (itstool) path: section/title
+#: C/equalizer.page:95
+msgid "Band Menu"
+msgstr "Bant Menüsü"
+
+#. (itstool) path: item/p
+#: C/equalizer.page:103
+msgid "<em style=\"strong\">Off</em> - Filter is not working (turned off)."
+msgstr "<em style=\"strong\">Kapalı</em> - Filtre çalışmıyor (kapalı)."
+
+#. (itstool) path: item/p
+#: C/equalizer.page:108
+msgid "<em style=\"strong\">Bell</em> - Bell filter with smooth peak/recess."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/equalizer.page:113
+msgid ""
+"<em style=\"strong\">High-pass</em> - High-pass filter with rejection of low "
+"frequencies."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/equalizer.page:118
+msgid ""
+"<em style=\"strong\">High-shelf</em> - Shelving filter with adjustment of "
+"high frequency range."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/equalizer.page:123
+msgid ""
+"<em style=\"strong\">Low-pass</em> - Low-pass filter with rejection of high "
+"frequencies."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/equalizer.page:128
+msgid ""
+"<em style=\"strong\">Low-shelf</em> - Shelving filter with adjustment of low "
+"frequencies."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/equalizer.page:133
+msgid ""
+"<em style=\"strong\">Notch</em> - Notch filter with full rejection of "
+"selected frequency."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/equalizer.page:138
+msgid ""
+"<em style=\"strong\">Resonance</em> - Resonance filter wih sharp peak/recess."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/equalizer.page:150
+msgid ""
+"<em style=\"strong\">RLC</em> - Very smooth filters based on similar "
+"cascades of RLC contours."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/equalizer.page:155
+msgid ""
+"<em style=\"strong\">BWC</em> - Butterworth-Chebyshev-type-1 based filters. "
+"Does not affect Resonance and Notch filters."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/equalizer.page:161
+msgid ""
+"<em style=\"strong\">LRX</em> - Linkwitz-Riley based filters. Does not "
+"affect Resonance and Notch filters."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/equalizer.page:166
+msgid ""
+"<em style=\"strong\">(BT)</em> - Bilinear Z-transform is used for pole/zero "
+"mapping."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/equalizer.page:171
+msgid ""
+"<em style=\"strong\">(MT)</em> - Matched Z-transform is used for pole/zero "
+"mapping."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/equalizer.page:179
+msgid "Slope"
+msgstr "Eğim"
+
+#. (itstool) path: item/p
+#: C/equalizer.page:181
+msgid "The slope of the filter characteristics."
+msgstr "Filtre özelliklerinin karakteristik eğimi."
+
+#. (itstool) path: item/p
+#: C/equalizer.page:189
+msgid "Makes this band the only one active."
+msgstr "Bu grup sadece tekini aktif yapar."
+
+#. (itstool) path: title/em
+#: C/equalizer.page:195 C/crystalizer.page:37
+msgid "Mute"
+msgstr "Sessiz"
+
+#. (itstool) path: item/p
+#: C/equalizer.page:197
+msgid "Mutes the band."
+msgstr "Frekansı susturur."
+
+#. (itstool) path: item/p
+#: C/equalizer.page:205
+msgid "Band center frequency."
+msgstr "Bant merkez frekansı."
+
+#. (itstool) path: title/em
+#: C/equalizer.page:211
+msgid "Width"
+msgstr "Genişlik"
+
+#. (itstool) path: p/code
+#: C/equalizer.page:215
+#, no-wrap
+msgid "width = frequency / quality"
+msgstr "genişlik = frekans/kalite"
+
+#. (itstool) path: item/p
+#: C/equalizer.page:213
+msgid "Bandwidth. Calculated as <_:code-1/>."
+msgstr "Bant genişliği. <_:code-1/>. olarak hesaplandı."
+
+#. (itstool) path: title/em
+#: C/equalizer.page:220
+msgid "Quality"
+msgstr "Kalite"
+
+#. (itstool) path: item/p
+#: C/equalizer.page:222
+msgid "Quality factor."
+msgstr "Kalite etkeni."
+
+#. (itstool) path: page/title
+#: C/pitch.page:9
+msgid "Pitch"
+msgstr "Perde"
+
+#. (itstool) path: page/p
+#: C/pitch.page:10
+msgid ""
+"Pitch shifting is a sound recording technique in which the original pitch of "
+"a sound is raised or lowered."
+msgstr ""
+"Perde kaydırma, bir sesin orijinal perdesinin yükseltildiği veya indirildiği "
+"ses kayıt tekniğidir."
+
+#. (itstool) path: page/p
+#: C/pitch.page:14
+msgid "PulseEffects uses the pitch shifter from RubberBand."
+msgstr "PulseEffects, RubberBand'deki perde değiştiriciyi kullanır."
+
+#. (itstool) path: title/em
+#: C/pitch.page:20
+msgid "Faster"
+msgstr "Daha Hızlı"
+
+#. (itstool) path: title/em
+#: C/pitch.page:26
+msgid "Preserve Formant"
+msgstr "Biçimlendiriciyi Koru"
+
+#. (itstool) path: item/p
+#: C/pitch.page:28
+msgid "Enable formant preservation when pitch shifting."
+msgstr "Perde kaydırma sırasında biçimlendirici korumayı etkinleştir."
+
+#. (itstool) path: title/em
+#: C/pitch.page:34
+msgid "Cents"
+msgstr "Küsür"
+
+#. (itstool) path: item/p
+#: C/pitch.page:36
+msgid "Number of cents the pitch will increased or decreased."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/pitch.page:42
+msgid "Semitones"
+msgstr "Yarım Ses"
+
+#. (itstool) path: item/p
+#: C/pitch.page:44
+msgid "Number of semitones the pitch will increased or decreased."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/pitch.page:50
+msgid "Octaves"
+msgstr "Oktav"
+
+#. (itstool) path: item/p
+#: C/pitch.page:52
+msgid "Number of octaves the pitch will increased or decreased."
+msgstr "Oktav sayısı, perdeyi artırır veya azaltır."
+
+#. (itstool) path: title/em
+#: C/pitch.page:58
+msgid "Crispness"
+msgstr "Canlılık"
+
+#. (itstool) path: item/p
+#: C/pitch.page:62
+msgid ""
+"0 - Disable phase resynchronisation at transients, phase lamination and use "
+"longer processing window."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/pitch.page:68
+msgid ""
+"1 - Use soft transient detector, disable phase lamination and use longer "
+"processing window."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/pitch.page:74
+msgid "2 - Disable phase resynchronisation at transients and phase lamination."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/pitch.page:79
+msgid "3 - Disable phase resynchronisation at transients."
+msgstr ""
+
+#. (itstool) path: page/title
+#: C/webrtc.page:9
+msgid "Webrtc"
+msgstr "Webrtc"
+
+#. (itstool) path: page/p
+#: C/webrtc.page:10
+msgid ""
+"PulseEffects uses the webrtc from GStreamer. This plugin offers a voice "
+"enhancement filter based on WebRTC Audio Processing library. This library "
+"provides a broad variety of enhancement algorithms. This plugin tries to "
+"enable as many of those as possible. The currently enabled enhancements are "
+"High Pass Filter, Echo Canceller, Noise Suppression, Automatic Gain Control, "
+"and some extended filters."
+msgstr ""
+"PulseEffects, GStreamer'ın webrtc'ini kullanır. Bu eklenti, WebRTC Ses "
+"İşleme kütüphanesini temel alan bir ses geliştirme filtresi sunar. Bu "
+"kütüphane çok çeşitli geliştirme algoritmaları sağlar. Bu eklenti mümkün "
+"olduğunca çoğunu etkinleştirmeye çalışır. Şu anda etkin olan geliştirmeler, "
+"Yüksek Geçişli Filtre, Yankı Önleyici, Gürültü Bastırma, Otomatik Kazanç "
+"Kontrolü ve bazı uzatılmış filtrelerdir."
+
+#. (itstool) path: section/title
+#: C/webrtc.page:19
+msgid "Echo Canceller"
+msgstr "Yankı Önleyici"
+
+#. (itstool) path: title/em
+#: C/webrtc.page:23
+msgid "Extended Filter"
+msgstr "Genişletilmiş Süzgeç"
+
+#. (itstool) path: item/p
+#: C/webrtc.page:25
+msgid "Enabled or disables the extended filter."
+msgstr "Genişletilmiş süzgeci etkinleştirir yada devre dışı bırakır."
+
+#. (itstool) path: title/em
+#: C/webrtc.page:31
+msgid "High Pass Filter"
+msgstr "Yüksek Geçiş Süzgeci"
+
+#. (itstool) path: item/p
+#: C/webrtc.page:33
+msgid "Enables or disables the high pass filter."
+msgstr "Yüksek geçiş süzgecini etkinleştirir yada devre dışı bırakır."
+
+#. (itstool) path: title/em
+#: C/webrtc.page:39
+msgid "Delay Agnostic"
+msgstr "Agnostik Gecikme"
+
+#. (itstool) path: item/p
+#: C/webrtc.page:41
+msgid "Enables or disables the delay agnostic mode."
+msgstr "Agnotik gecikme kipini etkinleştirir yada devre dışı bırakır."
+
+#. (itstool) path: title/em
+#: C/webrtc.page:47 C/webrtc.page:61
+msgid "Suppression Level"
+msgstr "Bastırma Seviyesi"
+
+#. (itstool) path: item/p
+#: C/webrtc.page:49
+msgid ""
+"Controls the aggressiveness of the suppressor. A higher level trades off "
+"double-talk performance for increased echo suppression."
+msgstr ""
+"Bastırıcının agrasifliğini kontrol eder. Daha yüksek bir seviye, yankı "
+"baskılamasının arttırılması için ikili konuşma performansını değiştirir."
+
+#. (itstool) path: section/title
+#: C/webrtc.page:57
+msgid "Noise Suppressor"
+msgstr "Gürültü Baskılayıcı"
+
+#. (itstool) path: item/p
+#: C/webrtc.page:63
+msgid ""
+"Controls the aggressiveness of the suppression. Increasing the level will "
+"reduce the noise level at the expense of a higher speech distortion."
+msgstr ""
+"Baskılayıcının agrasifliğini kontrol eder. Seviyeyi arttırmak, daha yüksek "
+"konuşma bozulmaları pahasına gürültü seviyesini azaltır."
+
+#. (itstool) path: section/title
+#: C/webrtc.page:71
+msgid "Gain Controller"
+msgstr "Kazanç Denetleyicisi"
+
+#. (itstool) path: item/p
+#: C/webrtc.page:77
+msgid "Controls the mode of the compression stage."
+msgstr "Sıkıştırma aşamasının kipini kontrol eder."
+
+#. (itstool) path: item/p
+#: C/webrtc.page:90
+msgid ""
+"When enabled, the compression stage will hard limit the signal to the target "
+"level. Otherwise, the signal will be compressed but not limited above the "
+"target level."
+msgstr ""
+"Etkinleştirildiğinde, sıkıştırma aşaması, sinyali hedef seviyeye "
+"zorlaştırır. Aksi takdirde, sinyal sıkıştırılacak ancak hedef seviyenin "
+"üzerinde sınırlı olmayacaktır."
+
+#. (itstool) path: title/em
+#: C/webrtc.page:98
+msgid "Target Level"
+msgstr "Hedef Seviye"
+
+#. (itstool) path: item/p
+#: C/webrtc.page:100
+msgid ""
+"Sets the target peak level of the gain control in dBFS (decibels from "
+"digital full-scale)."
+msgstr ""
+"DBFS'deki kazanç kontrolünün hedef tepe seviyesini ayarlar (dijital tam "
+"ölçekli desibel)."
+
+#. (itstool) path: title/em
+#: C/webrtc.page:107
+msgid "Maximum Gain"
+msgstr "Azami Kazanç"
+
+#. (itstool) path: item/p
+#: C/webrtc.page:109
+msgid "Sets the maximum gain the digital compression stage may apply."
+msgstr "Dijital sıkıştırma aşamasının uygulayabileceği azami kazancı ayarlar."
+
+#. (itstool) path: section/title
+#: C/webrtc.page:116
+msgid "Voice Detector"
+msgstr "Ses Dedektörü"
+
+#. (itstool) path: title/em
+#: C/webrtc.page:120
+msgid "Detection Likelihood"
+msgstr "Algılama Olasılığı"
+
+#. (itstool) path: item/p
+#: C/webrtc.page:122
+msgid ""
+"Specifies the likelihood that a frame will be declared to contain voice."
+msgstr "Bir karenin ses içerdiğini bildirme olasılığını belirtir."
+
+#. (itstool) path: title/em
+#: C/webrtc.page:130
+msgid "Frame Size"
+msgstr "Çerçeve Boyutu"
+
+#. (itstool) path: item/p
+#: C/webrtc.page:132
+msgid ""
+"Sets the size of the frames in ms on which the VAD will operate. Larger "
+"frames will improve detection accuracy, but reduce the frequency of updates."
+msgstr ""
+"VAD'ın çalışacağı karelerin ms cinsinden boyutunu ayarlar. Daha büyük "
+"çerçeveler algılama doğruluğunu iyileştirir, ancak güncelleme sıklığını "
+"azaltır."
+
+#. (itstool) path: page/title
+#: C/crystalizer.page:9
+msgid "Crystalizer"
+msgstr "Kristalleştirici"
+
+#. (itstool) path: page/p
+#: C/crystalizer.page:10
+msgid ""
+"PulseEffects crystalizer is a port of the FFMPEG crystalizer code to the "
+"GStreamer framework. We only added on top of it the possibility of applying "
+"different intensities for different frequency ranges. This plugin can be "
+"used to add dynamic range to songs that were overly compressed"
+msgstr ""
+"PulseEffects crystalizer, FFMPEG crystalizer kodunun GStreamer çerçevesine "
+"bir portudur. Bunun üzerine sadece farklı frekans aralıkları için farklı "
+"yoğunluklar uygulama imkanı ekledik. Bu eklenti aşırı sıkıştırılmış "
+"şarkılara dinamik aralık eklemek için kullanılabilir"
+
+#. (itstool) path: title/em
+#: C/crystalizer.page:19
+msgid "Intensities"
+msgstr "Yoğunluk"
+
+#. (itstool) path: item/p
+#: C/crystalizer.page:21
+msgid ""
+"The higher the value the higher is the difference in magnitude between the "
+"loudest and the quietest sounds. You can set different intensities for each "
+"frequency band."
+msgstr ""
+"Değer ne kadar yüksek olursa, en gürültülü ve en sessiz sesler arasındaki "
+"büyüklük farkı o kadar yüksektir. Her frekans bandı için farklı yoğunluklar "
+"ayarlayabilirsiniz."
+
+#. (itstool) path: item/p
+#: C/crystalizer.page:31
+msgid ""
+"When active the audio signal passing through this band will not be modified."
+msgstr "Aktif olduğunda bu banttan geçen ses sinyali değiştirilmez."
+
+#. (itstool) path: item/p
+#: C/crystalizer.page:39
+msgid "Silence the band."
+msgstr ""
+
+#. (itstool) path: page/title
+#: C/convolver.page:9
+msgid "Convolver"
+msgstr "Sarsıcı"
+
+#. (itstool) path: page/p
+#: C/convolver.page:10
+msgid ""
+"A convolver creates a simulation of an audio environment. It is based on the "
+"mathematical convolution operation, and uses a pre-recorded audio sample of "
+"the impulse response of the space being modeled."
+msgstr ""
+"Bir sarsıcı, bir ses ortamının simülasyonunu oluşturur. Matematiksel evrişim "
+"işlemine dayanır ve modellenen alanın dürtü yanıtının önceden kaydedilmiş "
+"bir ses örneğini kullanır."
+
+#. (itstool) path: title/em
+#: C/convolver.page:18
+msgid "Import Impulse"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/convolver.page:20
+msgid ""
+"Import an impulse response file to PulseEffects configuration directory."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/convolver.page:26
+msgid "Stereo Width"
+msgstr "Stereo Genişliği"
+
+#. (itstool) path: item/p
+#: C/convolver.page:28
+msgid "Modify the impulse response stereo image width."
+msgstr ""
+
+#. (itstool) path: title/em
+#. (itstool) path: page/title
+#: C/convolver.page:34 C/spectrum.page:9
+msgid "Spectrum"
+msgstr "Spektrum"
+
+#. (itstool) path: item/p
+#: C/convolver.page:36
+msgid "Visualize the frequency spectrum of the selected channel."
+msgstr "Seçilen kanalın frekans spektrumunu görselleştirin."
+
+#. (itstool) path: page/title
+#: C/settingsmenu.page:10
+msgid "Settings Menu"
+msgstr "Ayarlar Menüsü"
+
+#. (itstool) path: page/title
+#: C/general.page:9
+msgid "General"
+msgstr "Genel"
+
+#. (itstool) path: title/em
+#: C/general.page:13
+msgid "Start Service at Login"
+msgstr "Oturum Açarken Hizmeti Başlat"
+
+#. (itstool) path: item/p
+#: C/general.page:15
+msgid ""
+"Start PulseEffects as a service in the next login. This is done by creating "
+"an autostart file at <cmd its:withinText=\"yes\">~/.config/autostart</cmd>"
+msgstr ""
+"Bir sonraki girişte PulseEffects bir servis olarak başlar. Şurada, <cmd its:"
+"withinText=\"yes\">~/.config/autostart</cmd> otomatik başlatma dosyası "
+"oluşturulur"
+
+#. (itstool) path: title/em
+#: C/general.page:23
+msgid "Process All Outputs"
+msgstr "Tüm Çıkışları İşle"
+
+#. (itstool) path: item/p
+#: C/general.page:25
+msgid ""
+"Apply effects to the output of all audio applications. This will "
+"automatically switch on the per application switch that can be seen in the "
+"Applications entry."
+msgstr ""
+"Tüm ses uygulamalarının çıkışına efekt uygulayın. Tüm uygulama girişlerinde "
+"otomatik olarak Pulseeffects kullanılmış olacak."
+
+#. (itstool) path: title/em
+#: C/general.page:32
+msgid "Process All Inputs"
+msgstr "Tüm Girişleri İşle"
+
+#. (itstool) path: item/p
+#: C/general.page:34
+msgid ""
+"Apply effects to the input(microphone) of all audio applications. This will "
+"automatically switch on the per application switch that can be seen in the "
+"Applications entry."
+msgstr ""
+"Tüm ses uygulamalarının girişine (mikrofon) efekt uygulayın. Tüm uygulama "
+"girişlerinde otomatik olarak Pulseeffects kullanılmış olacak."
+
+#. (itstool) path: title/em
+#: C/general.page:42
+msgid "Use Dark Theme"
+msgstr "Koyu Tema Kullan"
+
+#. (itstool) path: item/p
+#: C/general.page:44
+msgid "Use the dark version of the GTK theme."
+msgstr "GTK temasının koyu sürümünü kullanın."
+
+#. (itstool) path: title/em
+#: C/general.page:50
+msgid "Reset"
+msgstr "Sıfırla"
+
+#. (itstool) path: item/p
+#: C/general.page:52
+msgid ""
+"Reset all parameters to their default values. This will reset the plugins "
+"too."
+msgstr ""
+"Tüm parametreleri öntanımlı değerlerine sıfırlayın. Bu eklentileri de "
+"sıfırlar."
+
+#. (itstool) path: title/em
+#: C/general.page:58
+msgid "Priority type"
+msgstr "Öncelik türü"
+
+#. (itstool) path: item/p
+#: C/general.page:60
+msgid ""
+"Choose between real time mode, niceness or none. This parameter allows to "
+"choose a higher priority for the threads that process audio."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/general.page:67
+msgid "Niceness"
+msgstr "Hassaslık"
+
+#. (itstool) path: item/p
+#: C/general.page:69
+msgid "Niceness value."
+msgstr "Hassaslık değeri."
+
+#. (itstool) path: title/em
+#: C/general.page:75
+msgid "Priority"
+msgstr "Öncelik"
+
+#. (itstool) path: item/p
+#: C/general.page:77
+msgid "Real time priority."
+msgstr "Gerçek zamanlı öncelik."
+
+#. (itstool) path: title/em
+#: C/spectrum.page:13
+msgid "Show"
+msgstr "Göster"
+
+#. (itstool) path: item/p
+#: C/spectrum.page:15
+msgid "Hide or show the spectrum."
+msgstr "Spektrumu gizleyin veya gösterin."
+
+#. (itstool) path: title/em
+#: C/spectrum.page:21
+msgid "Points"
+msgstr "Noktalar"
+
+#. (itstool) path: item/p
+#: C/spectrum.page:23
+msgid "Number of points displayed."
+msgstr "Görüntülenen noktaların sayısı."
+
+#. (itstool) path: title/em
+#: C/spectrum.page:29
+msgid "Height"
+msgstr "Yükseklik"
+
+#. (itstool) path: item/p
+#: C/spectrum.page:31
+msgid "Spectrum height."
+msgstr "Spektrum yüksekliği."
+
+#. (itstool) path: title/em
+#: C/spectrum.page:37
+msgid "Scale"
+msgstr "Ölçek"
+
+#. (itstool) path: item/p
+#: C/spectrum.page:39
+msgid "Bar height scaling factor."
+msgstr "Çubuk yüksekliği ölçeklendirmesi."
+
+#. (itstool) path: title/em
+#: C/spectrum.page:45
+msgid "Exponent"
+msgstr "Katsayı"
+
+#. (itstool) path: item/p
+#: C/spectrum.page:47
+msgid "Scaling factor exponent."
+msgstr "Ölçekleme katsayısı."
+
+#. (itstool) path: title/em
+#: C/spectrum.page:53
+msgid "Sampling"
+msgstr "Örnekleme"
+
+#. (itstool) path: item/p
+#: C/spectrum.page:55
+msgid "Spectrum update frequency."
+msgstr "Spektrum güncelleme sıklığı."
+
+#. (itstool) path: title/em
+#: C/spectrum.page:61
+msgid "Line Width"
+msgstr "Hat Genişliği"
+
+#. (itstool) path: item/p
+#: C/spectrum.page:63
+msgid "Bar line width."
+msgstr "Çubuk çizgi genişliği."
+
+#. (itstool) path: title/em
+#: C/spectrum.page:69
+msgid "Fill"
+msgstr "Dolgu"
+
+#. (itstool) path: item/p
+#: C/spectrum.page:71
+msgid "Draw filled bars."
+msgstr "Çubukların içine dolgu."
+
+#. (itstool) path: title/em
+#: C/spectrum.page:77
+msgid "Border"
+msgstr "Kenar"
+
+#. (itstool) path: item/p
+#: C/spectrum.page:79
+msgid "Show bar border."
+msgstr "Kenarlık çubuğunu göster."
+
+#. (itstool) path: title/em
+#: C/spectrum.page:85
+msgid "Use Custom Color"
+msgstr "Özel Renk Kullan"
+
+#. (itstool) path: item/p
+#: C/spectrum.page:87
+msgid "Use a user defined color or the GTK theme color."
+msgstr "Kullanıcı tanımlı bir renk veya GTK tema rengini kullanın."
+
+#. (itstool) path: title/em
+#: C/spectrum.page:93
+msgid "Spectrum Color"
+msgstr "Spektrum Rengi"
+
+#. (itstool) path: item/p
+#: C/spectrum.page:95
+msgid "User defined color."
+msgstr "Kullanıcı tanımlı renk."
+
+#. (itstool) path: page/title
+#: C/pulseaudio.page:9
+msgid "Pulseaudio"
+msgstr "Pulseaudio"
+
+#. (itstool) path: page/p
+#: C/pulseaudio.page:10
+msgid ""
+"PulseEffects has two GStreamer pipelines. One that applies effects for "
+"applications output and other that applies effects for microphone. Here the "
+"user can tweak a few advanced parameters for both pipelines."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/pulseaudio.page:18
+msgid "Use Default"
+msgstr "Öntanımlıyı Kullan"
+
+#. (itstool) path: item/p
+#: C/pulseaudio.page:20
+msgid "Use default input or output device."
+msgstr "Öntanımlı giriş veya çıkış cihazı kullanın."
+
+#. (itstool) path: title/em
+#: C/pulseaudio.page:26
+msgid "Buffer"
+msgstr "Arabellek"
+
+#. (itstool) path: item/p
+#: C/pulseaudio.page:28
+msgid "Pulsesrc plugin buffer size. It affects latency"
+msgstr "Pulsesrc eklenti arabellek boyutu. Gecikmeyi etkiler"
+
+#. (itstool) path: title/em
+#: C/pulseaudio.page:34
+msgid "Latency"
+msgstr "Gecikme"
+
+#. (itstool) path: item/p
+#: C/pulseaudio.page:36
+msgid "Pulsesrc plugin latency value."
+msgstr "Pulsesrc eklentisi gecikme değeri."
+
+#. (itstool) path: title/em
+#: C/pulseaudio.page:42
+msgid "Block Size"
+msgstr "Blok Boyutu"
+
+#. (itstool) path: item/p
+#: C/pulseaudio.page:44
+msgid ""
+"This controls the size of the audio buffer. Higher values increase latency "
+"but decrease cpu usage of a few plugins."
+msgstr ""
+"Bu ses arabelleğinin boyutunu kontrol eder. Daha yüksek değerler gecikmeyi "
+"arttırır, ancak birkaç eklentinin cpu kullanımını azaltır."
+
+#. (itstool) path: page/title
+#: C/testsignals.page:9
+msgid "Test Signals"
+msgstr "Test Sinyalleri"
+
+#. (itstool) path: page/p
+#: C/testsignals.page:10
+msgid ""
+"These signals can be used to test the frequency response of your speakers."
+msgstr ""
+"Bu sinyaller, hoparlörlerinizin frekans tepkisini test etmek için "
+"kullanılabilir."
+
+#. (itstool) path: page/title
+#: C/calibrationmic.page:9
+msgid "Microphone"
+msgstr "Mikrofon"
+
+#. (itstool) path: page/p
+#: C/calibrationmic.page:10
+msgid ""
+"If you have a microphone with reasonably flat response you can use it "
+"together with a pink noise test signal to estimate how flat is your audio "
+"setup frequency response."
+msgstr ""
+"Makul şekilde düz tepkili bir mikrofona sahipseniz, ses kurulum frekans "
+"tepkinizin ne kadar düz olduğunu tahmin etmek için 'pembe gürültü' test "
+"sinyali ile birlikte kullanabilirsiniz."
+
+#. (itstool) path: title/em
+#: C/calibrationmic.page:17
+msgid "Window"
+msgstr "Pencere"
+
+#. (itstool) path: item/p
+#: C/calibrationmic.page:19
+msgid ""
+"The amount of time the microphone signal will be measured. Higher values "
+"will reduce noises."
+msgstr ""
+"Mikrofon sinyalinin ölçüleceği süre. Daha yüksek değerler sesleri azaltır."
+
+#. (itstool) path: title/em
+#: C/calibrationmic.page:26
+msgid "Measure Noise"
+msgstr "Gürültü Ölçümü"
+
+#. (itstool) path: item/p
+#: C/calibrationmic.page:28
+msgid ""
+"Saves the last measurement to be used as background noise. Usually you would "
+"use this before turning on the pink noise."
+msgstr ""
+"Arka plan gürültüsü olarak kullanılacak son ölçümü kaydeder. Genellikle bunu "
+"'pembe gürültü' sesi açmadan önce kullanırsınız."
+
+#. (itstool) path: title/em
+#: C/calibrationmic.page:35
+msgid "Subtract Noise"
+msgstr "Gürültü Çıkar"
+
+#. (itstool) path: item/p
+#: C/calibrationmic.page:37
+msgid "Subtract the stored background noise from the measurement."
+msgstr "Depolanan arka plan gürültüsünü ölçümden çıkarın."
+
+#. (itstool) path: page/title
+#: C/enableapp.page:10
+msgid "Enable or Disable an Application"
+msgstr "Bir Uygulamayı Etkinleştirme veya Devre Dışı Bırakma"
+
+#. (itstool) path: page/p
+#: C/enableapp.page:12
+msgid ""
+"You can choose which applications have effects applied through the switch "
+"next to its name. If you always want to apply effects to all applications "
+"take a look at <link xref=\"general#title_enable_all_apps\" its:withinText="
+"\"yes\">Enable All Applications</link>."
+msgstr ""
+"Hangi uygulamaların, adının yanındaki anahtardan uygulanan efektlere sahip "
+"olduğunu seçebilirsiniz. Her zaman tüm uygulamalara efektler uygulamak "
+"istiyorsanız bir göz atın <link xref=\"general#title_enable_all_apps\" its:"
+"withinText=\"yes\">Tüm Uygulamaları Etkinleştir</link>."
+
+#. (itstool) path: page/title
+#: C/effectsorder.page:10
+msgid "Changing Effects Order"
+msgstr "Efekt Sıralamasını Değiştirme"
+
+#. (itstool) path: page/p
+#: C/effectsorder.page:12
+msgid ""
+"You can change the plugins order in the effects chain. Just click on the up "
+"and down arrows next to the plugin name. The first plugin from top to bottom "
+"is the first to receive the audio signal."
+msgstr ""
+"Eklentiler sırasını efektler zincirinde değiştirebilirsiniz. Eklenti adının "
+"yanındaki yukarı ve aşağı okları tıklamanız yeterlidir. Yukarıdan aşağıya "
+"doğru ilk eklenti, ses sinyalini ilk alandır."
+
+#. (itstool) path: page/title
+#: C/userpresets.page:10
+msgid "Creating and Importing User Presets"
+msgstr "Hazır Ayarları Oluşturma ve İçeri Aktarım"
+
+#. (itstool) path: page/p
+#: C/userpresets.page:12
+msgid ""
+"You can save your own presets. Just add write a name and click on the add "
+"button. Presets can be imported clicking on the button to the left."
+msgstr ""
+"Kendi ön ayarlarınızı kaydedebilirsiniz. Sadece bir isim yazın ve ekle "
+"düğmesine tıklayın. Soldaki düğmeye tıklayarak ön ayarlar alınabilir."
+
+#. (itstool) path: page/p
+#: C/userpresets.page:16
+msgid ""
+"When you save a preset the current configuration of all plugins is saved to "
+"its file. This means you can have presets that combine the effects of "
+"different plugins."
+msgstr ""
+"Bir ön ayarı kaydettiğinizde, tüm eklentilerin mevcut yapılandırması kendi "
+"dosyasına kaydedilir. Farklı eklentilerin etkilerini birleştiren hazır "
+"ayarlara sahip olursunuz."
+
+#. (itstool) path: page/p
+#: C/userpresets.page:21
+msgid ""
+"You can also make a preset autoload when an input or output device is added "
+"to the system. Just click on the button with curved arrows while the desired "
+"device is selected as the system default device."
+msgstr ""
+"Sisteme bir giriş veya çıkış cihazı eklendiğinde önceden belirlenmiş bir "
+"otomatik yükleme de yapabilirsiniz. Sistem öntanımlı cihazı olarak "
+"istediğiniz cihaz seçiliyken, sadece eğri oklu butona tıklayın."
+
+#. (itstool) path: page/title
+#: C/advancedinfo.page:10
+msgid "Advanced Information"
+msgstr "Gelişmiş Bilgi"
+
+#. (itstool) path: page/p
+#: C/advancedinfo.page:12
+msgid ""
+"PulseEffects audio processing is composed by 3 main stages. Each of them "
+"needs a specific audio format and sampling rate. This information is show in "
+"the headerbar subtitle."
+msgstr ""
+"PulseEffects ses işleme 3 ana aşamadan oluşur. Her birinin belirli bir ses "
+"biçimine ve örnekleme oranına ihtiyacı var. Bu bilgi başlık çubuğu alt "
+"başlığında gösterilir."
+
+#. (itstool) path: page/p
+#: C/advancedinfo.page:17
+msgid ""
+"Another important information is the latency introduced by the audio "
+"processing. This the the last information shown. The displayed value is in "
+"milliseconds."
+msgstr ""
+"Bir diğer önemli bilgi, ses işlemenin getirdiği gecikmedir. Bu gösterilen "
+"son bilgi. Görüntülenen değer milisaniye cinsindendir."
+
+#. (itstool) path: page/title
+#: C/saturated.page:10
+msgid "Saturation Warning"
+msgstr "Doygunluk Uyarısı"
+
+#. (itstool) path: page/p
+#: C/saturated.page:12
+msgid ""
+"If the audio signal arriving at the plugin input is too high very unpleasent "
+"noises will be produced. In case this happens the warning in the image above "
+"is shown so that the user can reduce the audio level."
+msgstr ""
+"Eklenti girişine gelen ses sinyali çok yüksek ise, çok hoş olmayan sesler "
+"çıkar. Bu durumda, yukarıdaki görüntüdeki uyarı, kullanıcının ses seviyesini "
+"azaltabilmesi için gösterilir."
+
+#. (itstool) path: page/title
+#: C/autogain.page:9
+msgid "Auto Gain"
+msgstr "Otomatik Kazanç"
+
+#. (itstool) path: page/p
+#: C/autogain.page:10
+msgid ""
+"PulseEffects auto gain is based on the library libebur128. It changes the "
+"audio volume to a perceived loudness level that can be tweaked by the user."
+msgstr ""
+"PulseEffects otomatik kazanç libebur128 kütüphanesini kullanır. Bu, "
+"Kullanıcı tarafından ince ayarlanabilir algılanan ses yüksekliği düzeyine "
+"sesi değiştirir."
+
+#. (itstool) path: title/em
+#: C/autogain.page:17
+msgid "Target"
+msgstr "Hedef"
+
+#. (itstool) path: item/p
+#: C/autogain.page:19
+msgid "Loudness level."
+msgstr "Yüksek ses seviyesi."
+
+#. (itstool) path: title/em
+#: C/autogain.page:25
+msgid "Momentary"
+msgstr "Anlık"
+
+#. (itstool) path: item/p
+#: C/autogain.page:27
+msgid ""
+"Controls how much the momentary term will influence the loudness level "
+"estimation."
+msgstr ""
+"Anlık terimin ses düzeyi tahminini ne kadar etkileyeceğini kontrol eder."
+
+#. (itstool) path: title/em
+#: C/autogain.page:34
+msgid "Short Term"
+msgstr "Kısa Süreli"
+
+#. (itstool) path: item/p
+#: C/autogain.page:36
+msgid ""
+"Controls how much the short term measure will influence the loudness level "
+"estimation."
+msgstr ""
+"Kısa süreli önlemin yüksek ses seviyesini tahminini ne kadar etkileyeceğini "
+"kontrol eder."
+
+#. (itstool) path: title/em
+#: C/autogain.page:43
+msgid "Integrated"
+msgstr "Tümleşik"
+
+#. (itstool) path: item/p
+#: C/autogain.page:45
+msgid ""
+"Controls how much the integrated term will influence the loudness level "
+"estimation."
+msgstr ""
+"Entegre terimin yüksek ses düzeyi tahminini ne kadar etkileyeceğini kontrol "
+"eder."
+
+#. (itstool) path: title/em
+#: C/autogain.page:52
+msgid "Relative"
+msgstr "Göreceli"
+
+#. (itstool) path: item/p
+#: C/autogain.page:54
+msgid ""
+"Relative threshold. It is used to detect silence. Whenever the momentary "
+"term is below this threshold modifications to the output gain will be "
+"disabled."
+msgstr ""
+"Göreceli eşik, sessizliği tespit etmek için kullanılır. Anlık terim bu "
+"eşiğin altında olduğunda çıkış kazancında değişiklikler devre dışı bırakılır."
+
+#. (itstool) path: item/p
+#: C/autogain.page:63
+msgid ""
+"Estimated input loudness. The difference between its value and the target "
+"loudness determines the output gain."
+msgstr ""
+"Tahmini giriş ses yüksekliği. Değeri ve hedef ses yüksekliği arasındaki fark "
+"çıkış kazancını belirler."
+
+#. (itstool) path: title/em
+#: C/autogain.page:70
+msgid "Range"
+msgstr "Sınır"
+
+#. (itstool) path: item/p
+#: C/autogain.page:72
+msgid "Loudness range. Indicates how large is the material dynamic range."
+msgstr ""
+"Ses yüksekliği aralığı. Malzeme dinamik aralığının ne kadar büyük olduğunu "
+"gösterir."
+
+#. (itstool) path: item/p
+#: C/autogain.page:80
+msgid ""
+"Output gain value. The input signal will be multiplied by this correction "
+"gain to bring its loudness to the target value."
+msgstr ""
+"Çıkış kazanç değeri. Giriş sinyali, ses seviyesini hedef değere getirmek "
+"için bu düzeltme kazancıyla çarpılır."
+
+#. (itstool) path: page/title
+#: C/blacklist.page:9
+msgid "Applications Blacklist"
+msgstr "Uygulama Karalistesi"
+
+#. (itstool) path: page/p
+#: C/blacklist.page:11
+msgid ""
+"In the settings menu there is an option that allows the user to apply "
+"effects to all applications without the need to switch each one on "
+"individually. But there are cases where the user wants a specific "
+"application to be excluded from the \"Enable All\" functionality. This can "
+"be done by using a blacklist. Just add the application name exactly as it is "
+"shown in the \"Applications\" entry."
+msgstr ""
+"Ayarlar menüsünde, kullanıcının her birini ayrı ayrı açmaya gerek kalmadan "
+"tüm uygulamalara efekt uygulamasına izin veren bir seçenek vardır. Ancak, "
+"kullanıcının belirli bir uygulamanın \"Tümünü Etkinleştir\" işlevinden "
+"dışlanmasını istediği durumlar vardır. Bu bir kara liste kullanarak "
+"yapılabilir. Uygulama adını tam olarak \"Uygulamalar\" girişinde "
+"gösterildiği şekilde ekleyin."
