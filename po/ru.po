@@ -153,7 +153,7 @@ msgstr "Запуск службы при запуске"
 
 #: data/ui/general_settings.glade:56
 msgid "Process All Outputs"
-msgstr ""
+msgstr "Вкл. для всех выводов"
 
 #: data/ui/general_settings.glade:81
 msgid "Use Dark Theme"
@@ -186,7 +186,7 @@ msgstr "О программе"
 
 #: data/ui/general_settings.glade:180
 msgid "Process All Inputs"
-msgstr ""
+msgstr "Вкл. для всех вводов"
 
 #: data/ui/general_settings.glade:232
 msgid "Priority"
