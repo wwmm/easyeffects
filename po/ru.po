@@ -1,8 +1,9 @@
 # PulseEffects Russian translation
 # This file is distributed under the same license as the PulseEffects package.
-# ⓒ  Mikhail Novosyolov [mikhailnov] <mikhailnov@dumalogiya.ru>, 2017-2018
+# ⓒ  Mikhail Novosyolov [mikhailnov] <mikhailnov@dumalogiya.ru>, 2017-2019
 # ⓒ  Georgiy Starodubtsov [Mewsimka] <mewsim-ka@yandex.ru>, 2018
 # ⓒ  Denis Goncharov, 2018
+# ⓒ  Vladimir Penchikov <vladi105@mail.ru>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
@@ -46,17 +47,16 @@ msgid "Presets"
 msgstr "Предустановки"
 
 #: data/ui/spectrum_settings.glade:59
-#, fuzzy
 msgid "Show Spectrum"
-msgstr "Спектр"
+msgstr "Показывать спектр"
 
 #: data/ui/spectrum_settings.glade:84
 msgid "Fill"
-msgstr "Заполнить диаграмму"
+msgstr "Заполнить"
 
 #: data/ui/spectrum_settings.glade:109
 msgid "Border"
-msgstr ""
+msgstr "Граница"
 
 #: data/ui/spectrum_settings.glade:134
 msgid "Use Custom Color"
@@ -64,7 +64,7 @@ msgstr "Использовать свой цвет"
 
 #: data/ui/spectrum_settings.glade:159
 msgid "Use Gradient"
-msgstr ""
+msgstr "Использовать градиент"
 
 #: data/ui/spectrum_settings.glade:185
 msgid "Spectrum Color"
@@ -72,20 +72,19 @@ msgstr "Цвет спектра"
 
 #: data/ui/spectrum_settings.glade:213
 msgid "Gradient Color"
-msgstr ""
+msgstr "Цвет градиента"
 
 #: data/ui/spectrum_settings.glade:241
-#, fuzzy
 msgid "Spectrum Type"
-msgstr "Спектр"
+msgstr "Тип спектра"
 
 #: data/ui/spectrum_settings.glade:255
 msgid "Bars"
-msgstr ""
+msgstr "Полосы"
 
 #: data/ui/spectrum_settings.glade:256
 msgid "Lines"
-msgstr ""
+msgstr "Линии"
 
 #: data/ui/spectrum_settings.glade:271
 msgid "Points"
@@ -108,9 +107,8 @@ msgid "Sampling"
 msgstr "Передискретизация"
 
 #: data/ui/spectrum_settings.glade:433
-#, fuzzy
 msgid "Line Width"
-msgstr "Ширина"
+msgstr "Ширина линии"
 
 #: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:218
 msgid "Use Default"
@@ -413,9 +411,8 @@ msgid "Upward"
 msgstr ""
 
 #: data/ui/compressor.glade:429
-#, fuzzy
 msgid "Compression Mode"
-msgstr "Сжатие"
+msgstr "Редим сжатия"
 
 #: data/ui/compressor.glade:457 data/ui/bass_enhancer.glade:148
 #: data/ui/exciter.glade:148 data/ui/deesser.glade:165
@@ -423,23 +420,8 @@ msgid "Listen"
 msgstr "Прослушать"
 
 #: data/ui/compressor.glade:503
-#, fuzzy
 msgid "Pre-amplification"
-msgstr "Приложения"
-<<<<<<< HEAD
-
-#: data/ui/compressor.glade:538
-msgid "Reactivity"
-msgstr ""
-
-#: data/ui/compressor.glade:586
-msgid "Feed-forward"
-msgstr ""
-
-#: data/ui/compressor.glade:587
-#, fuzzy
-msgid "Feed-back"
-msgstr "Подача"
+msgstr "Предварительное усилиние"
 
 #: data/ui/compressor.glade:538
 msgid "Reactivity"
@@ -495,9 +477,8 @@ msgid "Mode"
 msgstr "Режим"
 
 #: data/ui/compressor.glade:646
-#, fuzzy
 msgid "Middle"
-msgstr "Средний уровень"
+msgstr "Средний"
 
 # #, fuzzy
 #: data/ui/compressor.glade:647
@@ -710,10 +691,6 @@ msgstr "Подсчитать частоты"
 msgid "Reset Equalizer"
 msgstr "Сбросить эквалайзер"
 
-#: data/ui/equalizer.glade:190
-msgid "Split Channels"
-msgstr "Разделить каналы"
-
 #: data/ui/equalizer_band.glade:60
 msgid "Off"
 msgstr "Выкл"
@@ -780,9 +757,8 @@ msgstr ""
 
 # #, fuzzy
 #: data/ui/equalizer_band.glade:122
-#, fuzzy
 msgid "x2"
-msgstr "F"
+msgstr ""
 
 #: data/ui/equalizer_band.glade:123
 msgid "x3"
@@ -1299,9 +1275,8 @@ msgid "Delay"
 msgstr "Задержка"
 
 #: data/ui/preset_row.glade:68
-#, fuzzy
 msgid "Save current settings to this preset file"
-msgstr "Сохранить текущие настройки в набор преднастроек"
+msgstr "Сохранить текущие настройки в этот набор преднастроек"
 
 #: data/ui/preset_row.glade:84
 msgid "Remove this preset file"
@@ -1312,6 +1287,8 @@ msgid ""
 "Automatically apply this preset whenever the currently used device is "
 "plugged in the system"
 msgstr ""
+"Автоматически применять этот набор предустановок, когда текущее звукое "
+"устройство подключают к системе"
 
 #: data/ui/presets_menu.glade:86 data/ui/presets_menu.glade:195
 #: src/presets_menu_ui.cpp:119
