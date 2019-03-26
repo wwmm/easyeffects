@@ -193,7 +193,7 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="width_chars">10</property>
-                <property name="secondary_icon_name">pulseeffects-s-symbolic</property>
+                <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                 <property name="secondary_icon_activatable">False</property>
                 <property name="input_purpose">number</property>
                 <property name="orientation">vertical</property>

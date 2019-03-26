@@ -2,6 +2,12 @@
 
 ## [Unreleased
 
+### Added
+- Improved maximizer help
+
+### Fixed
+- fixed wrong release unit in maximizer interface
+
 ## [4.5.8]
 ### Fixed
 - Fixed problems in pt_BR translation that could make installation fail in
