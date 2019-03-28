@@ -1541,6 +1541,9 @@ msgid ""
 "textbook filters <_:link-1/> which are implemented as in the <_:link-2/> "
 "software."
 msgstr ""
+"<em style=\"strong\">APO</em> - Filtri biquadratici digitali, derivati dai "
+"prototipi canonici, digitalizzati tramite trasformata Bilineare. Questi sono "
+"filtri da manuale <_:link-1/> implementati come nel software <_:link-2/>."
 
 #. (itstool) path: item/p
 #: C/equalizer.page:181
@@ -1567,6 +1570,9 @@ msgid ""
 "filter coefficients directly in the digital domain without performing "
 "transforms."
 msgstr ""
+"<em style=\"strong\">(DR)</em> - Un'implementazione diretta viene utilizzata "
+"per ottenere i coefficienti del filtro digitale direttamente nel dominio "
+"digitale, senza eseguire trasformazioni."
 
 #. (itstool) path: title/em
 #: C/equalizer.page:200
