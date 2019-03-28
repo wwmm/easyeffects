@@ -45,6 +45,7 @@ Recommends: calf-plugins (>= 0.90.0),
             rubberband-ladspa,
             liblilv-0-0,
             mda-lv2,
+            lsp-plugins-lv2 | lsp-plugins,
             gstreamer1.0-convolver-pulseeffects,
             gstreamer1.0-crystalizer-pulseeffects,
             gstreamer1.0-autogain-pulseeffects

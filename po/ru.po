@@ -1,13 +1,14 @@
 # PulseEffects Russian translation
 # This file is distributed under the same license as the PulseEffects package.
-# ⓒ  Mikhail Novosyolov [mikhailnov] <mikhailnov@dumalogiya.ru>, 2017-2018
+# ⓒ  Mikhail Novosyolov [mikhailnov] <mikhailnov@dumalogiya.ru>, 2017-2019
 # ⓒ  Georgiy Starodubtsov [Mewsimka] <mewsim-ka@yandex.ru>, 2018
 # ⓒ  Denis Goncharov, 2018
+# ⓒ  Vladimir Penchikov <vladi105@mail.ru>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-12 16:16-0300\n"
+"POT-Creation-Date: 2019-03-18 11:56-0300\n"
 "PO-Revision-Date: 2018-07-18 22:14+0300\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -46,17 +47,16 @@ msgid "Presets"
 msgstr "Предустановки"
 
 #: data/ui/spectrum_settings.glade:59
-#, fuzzy
 msgid "Show Spectrum"
-msgstr "Спектр"
+msgstr "Показывать спектр"
 
 #: data/ui/spectrum_settings.glade:84
 msgid "Fill"
-msgstr "Заполнить диаграмму"
+msgstr "Заполнить"
 
 #: data/ui/spectrum_settings.glade:109
 msgid "Border"
-msgstr ""
+msgstr "Граница"
 
 #: data/ui/spectrum_settings.glade:134
 msgid "Use Custom Color"
@@ -64,7 +64,7 @@ msgstr "Использовать свой цвет"
 
 #: data/ui/spectrum_settings.glade:159
 msgid "Use Gradient"
-msgstr ""
+msgstr "Использовать градиент"
 
 #: data/ui/spectrum_settings.glade:185
 msgid "Spectrum Color"
@@ -72,20 +72,19 @@ msgstr "Цвет спектра"
 
 #: data/ui/spectrum_settings.glade:213
 msgid "Gradient Color"
-msgstr ""
+msgstr "Цвет градиента"
 
 #: data/ui/spectrum_settings.glade:241
-#, fuzzy
 msgid "Spectrum Type"
-msgstr "Спектр"
+msgstr "Тип спектра"
 
 #: data/ui/spectrum_settings.glade:255
 msgid "Bars"
-msgstr ""
+msgstr "Полосы"
 
 #: data/ui/spectrum_settings.glade:256
 msgid "Lines"
-msgstr ""
+msgstr "Линии"
 
 #: data/ui/spectrum_settings.glade:271
 msgid "Points"
@@ -108,9 +107,8 @@ msgid "Sampling"
 msgstr "Передискретизация"
 
 #: data/ui/spectrum_settings.glade:433
-#, fuzzy
 msgid "Line Width"
-msgstr "Ширина"
+msgstr "Ширина линии"
 
 #: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:218
 msgid "Use Default"
@@ -155,14 +153,14 @@ msgstr "Запуск службы при запуске"
 
 #: data/ui/general_settings.glade:56
 msgid "Process All Outputs"
-msgstr ""
+msgstr "Вкл. для всех выводов"
 
 #: data/ui/general_settings.glade:81
 msgid "Use Dark Theme"
 msgstr "Исп. тёмную тему"
 
-#: data/ui/general_settings.glade:116 data/ui/equalizer_band.glade:182
-#: data/ui/equalizer_band.glade:228
+#: data/ui/general_settings.glade:116 data/ui/equalizer_band.glade:183
+#: data/ui/equalizer_band.glade:229
 msgid "Reset"
 msgstr "Сбросить"
 
@@ -188,7 +186,7 @@ msgstr "О программе"
 
 #: data/ui/general_settings.glade:180
 msgid "Process All Inputs"
-msgstr ""
+msgstr "Вкл. для всех вводов"
 
 #: data/ui/general_settings.glade:232
 msgid "Priority"
@@ -413,9 +411,8 @@ msgid "Upward"
 msgstr ""
 
 #: data/ui/compressor.glade:429
-#, fuzzy
 msgid "Compression Mode"
-msgstr "Сжатие"
+msgstr "Редим сжатия"
 
 #: data/ui/compressor.glade:457 data/ui/bass_enhancer.glade:148
 #: data/ui/exciter.glade:148 data/ui/deesser.glade:165
@@ -423,9 +420,8 @@ msgid "Listen"
 msgstr "Прослушать"
 
 #: data/ui/compressor.glade:503
-#, fuzzy
 msgid "Pre-amplification"
-msgstr "Приложения"
+msgstr "Предварительное усилиние"
 
 #: data/ui/compressor.glade:538
 msgid "Reactivity"
@@ -481,9 +477,8 @@ msgid "Mode"
 msgstr "Режим"
 
 #: data/ui/compressor.glade:646
-#, fuzzy
 msgid "Middle"
-msgstr "Средний уровень"
+msgstr "Средний"
 
 # #, fuzzy
 #: data/ui/compressor.glade:647
@@ -550,7 +545,7 @@ msgstr ""
 #: data/ui/multiband_compressor.glade:458
 #: data/ui/multiband_compressor.glade:830
 #: data/ui/multiband_compressor.glade:1208
-#: data/ui/multiband_compressor.glade:1586 data/ui/equalizer_band.glade:298
+#: data/ui/multiband_compressor.glade:1586 data/ui/equalizer_band.glade:299
 #: data/ui/multiband_gate.glade:478 data/ui/multiband_gate.glade:883
 #: data/ui/multiband_gate.glade:1293 data/ui/multiband_gate.glade:1703
 msgid "Solo"
@@ -647,7 +642,7 @@ msgstr ""
 msgid "18dB/oct Bandreject"
 msgstr ""
 
-#: data/ui/filter.glade:257 data/ui/equalizer_band.glade:151
+#: data/ui/filter.glade:257 data/ui/equalizer_band.glade:152
 #: data/ui/calibration_signals.glade:32
 msgid "Frequency"
 msgstr "Частота"
@@ -665,9 +660,8 @@ msgid "Equalizer"
 msgstr "Эквалайзер"
 
 #: data/ui/equalizer.glade:132
-#, fuzzy
 msgid "Split Channels"
-msgstr "Каналы"
+msgstr "Разделить каналы"
 
 #: data/ui/equalizer.glade:158
 msgid "IIR"
@@ -699,14 +693,13 @@ msgstr "Сбросить эквалайзер"
 
 #: data/ui/equalizer_band.glade:60
 msgid "Off"
-msgstr ""
+msgstr "Выкл"
 
 #: data/ui/equalizer_band.glade:61
 msgid "Bell"
 msgstr ""
 
 #: data/ui/equalizer_band.glade:62
-#, fuzzy
 msgid "High Pass"
 msgstr "Высокачастотный фильтр"
 
@@ -750,37 +743,40 @@ msgstr ""
 msgid "LRX (MT)"
 msgstr ""
 
-#: data/ui/equalizer_band.glade:108
+#: data/ui/equalizer_band.glade:97
+msgid "APO (DR)"
+msgstr ""
+
+#: data/ui/equalizer_band.glade:109
 msgid "Slope"
 msgstr ""
 
-#: data/ui/equalizer_band.glade:120
+#: data/ui/equalizer_band.glade:121
 msgid "x1"
 msgstr ""
 
 # #, fuzzy
-#: data/ui/equalizer_band.glade:121
-#, fuzzy
-msgid "x2"
-msgstr "F"
-
 #: data/ui/equalizer_band.glade:122
-msgid "x3"
+msgid "x2"
 msgstr ""
 
 #: data/ui/equalizer_band.glade:123
+msgid "x3"
+msgstr ""
+
+#: data/ui/equalizer_band.glade:124
 msgid "x4"
 msgstr ""
 
-#: data/ui/equalizer_band.glade:200
+#: data/ui/equalizer_band.glade:201
 msgid "Quality"
 msgstr "Качество"
 
-#: data/ui/equalizer_band.glade:251
+#: data/ui/equalizer_band.glade:252
 msgid "Width"
 msgstr "Ширина"
 
-#: data/ui/equalizer_band.glade:310 data/ui/stereo_tools.glade:553
+#: data/ui/equalizer_band.glade:311 data/ui/stereo_tools.glade:553
 #: data/ui/stereo_tools.glade:612 data/ui/crystalizer_band.glade:23
 msgid "Mute"
 msgstr "Приглушить"
@@ -788,7 +784,7 @@ msgstr "Приглушить"
 #: data/ui/equalizer_preset_row.glade:37 data/ui/irs_row.glade:62
 #: data/ui/preset_row.glade:51
 msgid "Apply"
-msgstr ""
+msgstr "Применить"
 
 #: data/ui/reverb.glade:64
 msgid "Reverberation"
@@ -1144,22 +1140,20 @@ msgid "Crystalizer"
 msgstr "Кристаллизатор"
 
 #: data/ui/crystalizer.glade:164
-#, fuzzy
 msgid "Aggressive Mode"
-msgstr "Сжатие"
+msgstr "Агрессивный режим"
 
 #: data/ui/crystalizer.glade:423
-#, fuzzy
 msgid "Loudness Range"
-msgstr "Громкость"
+msgstr "Диапазон громкости"
 
 #: data/ui/crystalizer.glade:442
 msgid "Before"
-msgstr ""
+msgstr "До"
 
 #: data/ui/crystalizer.glade:455
 msgid "After"
-msgstr ""
+msgstr "После"
 
 #: data/ui/pitch.glade:36
 msgid "Pitch"
@@ -1281,9 +1275,8 @@ msgid "Delay"
 msgstr "Задержка"
 
 #: data/ui/preset_row.glade:68
-#, fuzzy
 msgid "Save current settings to this preset file"
-msgstr "Сохранить текущие настройки в набор преднастроек"
+msgstr "Сохранить текущие настройки в этот набор преднастроек"
 
 #: data/ui/preset_row.glade:84
 msgid "Remove this preset file"
@@ -1294,6 +1287,8 @@ msgid ""
 "Automatically apply this preset whenever the currently used device is "
 "plugged in the system"
 msgstr ""
+"Автоматически применять этот набор предустановок, когда текущее звукое "
+"устройство подключают к системе"
 
 #: data/ui/presets_menu.glade:86 data/ui/presets_menu.glade:195
 #: src/presets_menu_ui.cpp:119
@@ -1448,7 +1443,7 @@ msgstr "лимитер;компрессор;ребербатор;эквалай�
 msgid "pulseeffects"
 msgstr ""
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:219
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:220
 msgid "\"Presets\""
 msgstr "\"Предустановки\""
 
@@ -1469,14 +1464,12 @@ msgid "Reset PulseEffects."
 msgstr "Сбросить настройки PulseEffects"
 
 #: src/application.cpp:58
-#, fuzzy
 msgid "Output Presets: "
-msgstr "Предустановки: "
+msgstr "Выходные предустановки: "
 
 #: src/application.cpp:66
-#, fuzzy
 msgid "Input Presets: "
-msgstr "Импортировать предустановки"
+msgstr "Входные предустановки: "
 
 #: src/application.cpp:237
 msgid "PulseEffects was updated"
@@ -1546,7 +1539,7 @@ msgstr "Не получилось"
 msgid "Could Not Load The Impulse File"
 msgstr "Не смогли загрузить файл с импульсными реакциями"
 
-#: src/equalizer_ui.cpp:331 src/equalizer_ui.cpp:469
+#: src/equalizer_ui.cpp:335 src/equalizer_ui.cpp:473
 msgid "infinity"
 msgstr ""
 

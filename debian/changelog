@@ -1,3 +1,35 @@
+pulseeffects (4.5.8-1-git20190326) unstable; urgency=low
+
+  * Version 4.5.8 upstream
+  * Updated Russian translation
+  * New dependency from lsp-plugins-lv2 or lsp-plugins
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Tue, 26 Mar 2019 23:13:00 +0300
+
+pulseeffects (4.4.7-1) unstable; urgency=low
+
+  * Version 4.4.7 upstream (autobuild)
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 21 Jan 2019 22:01:52 +0300
+ 
+pulseeffects (4.4.6-1) unstable; urgency=low
+
+  * Version 4.4.6 upstream (autobuild)
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Thu, 10 Jan 2019 00:01:01 +0300
+ 
+pulseeffects (4.4.5-1) unstable; urgency=low
+
+  * Version 4.4.5 upstream (autobuild)
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Tue, 08 Jan 2019 20:01:44 +0300
+ 
+pulseeffects (4.4.4-1) unstable; urgency=low
+
+  * Version 4.4.4 upstream (autobuild)
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Tue, 01 Jan 2019 15:01:51 +0300
+ 
 pulseeffects (4.4.3-1) unstable; urgency=low
 
   * Version 4.4.3 upstream (autobuild)

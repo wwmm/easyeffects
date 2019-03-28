@@ -1,11 +1,10 @@
-Copyright 2017-2018 Wellington Wallace <wellingtonwallace@gmail.com>
-
-Format: http://dep.debian.net/deps/dep5
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: pulseeffects
 Upstream-Contact: Wellington Wallace <wellingtonwallace@gmail.com>
 Source: https://github.com/wwmm/pulseeffects
-Debianized by Mikhail Novosyolov <mikhailnov@dumalogiya.ru>
 
+Files: *
+Copyright: 2016-2019, Vladimir Sadovnikov <sadko4u@gmail.com>
 License: GPL-3.0+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -22,3 +21,10 @@ License: GPL-3.0+
  .
  On Debian systems, the complete text of the GNU General
  Public License version 3 can be found in "/usr/share/common-licenses/GPL-3". 
+
+Files: debian/*
+Copyright: 2017-2019, Mikhail Novosyolov <mikhailnov@dumalogiya.ru>
+License: permissive
+ Copying and distribution of this package, with or without
+ modification, are permitted in any medium without royalty
+ provided the copyright notice and this notice are preserved.

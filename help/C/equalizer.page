@@ -164,6 +164,21 @@
                     </item>
                     <item>
                         <p>
+                            <em style="strong">APO</em>
+                            - Digital biquad filters derived from canonic analog biquad prototypes
+                            digitalized through Bilinear transform. These are textbook filters
+                            <link
+                                href="https://shepazu.github.io/Audio-EQ-Cookbook/audio-eq-cookbook.html"
+                                its:translate="no"></link>
+                            which are implemented as in the
+                            <link href="https://equalizerapo.com/" its:translate="no">
+                                Equalizer APO
+                            </link>
+                            software.
+                        </p>
+                    </item>
+                    <item>
+                        <p>
                             <em style="strong">(BT)</em>
                             - Bilinear Z-transform is used for pole/zero mapping.</p>
                     </item>
@@ -171,6 +186,12 @@
                         <p>
                             <em style="strong">(MT)</em>
                             - Matched Z-transform is used for pole/zero mapping.</p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">(DR)</em>
+                            - Direct design is used to serve the digital filter coefficients directly in the
+                            digital domain without performing transforms.</p>
                     </item>
                 </list>
             </item>
