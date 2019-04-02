@@ -217,11 +217,11 @@ msgstr "Stato"
 
 #: data/ui/autogain.glade:24
 msgid "Auto Gain"
-msgstr "Guadagno Automatico"
+msgstr "Normalizzatore"
 
 #: data/ui/autogain.glade:152 data/ui/autogain.glade:531
 msgid "Momentary"
-msgstr "Transitorio"
+msgstr "Momentaneo"
 
 #: data/ui/autogain.glade:167 data/ui/autogain.glade:544
 msgid "Short Term"
@@ -233,11 +233,11 @@ msgstr "Integrato"
 
 #: data/ui/autogain.glade:198
 msgid "Target"
-msgstr "Obiettivo"
+msgstr "Livello"
 
 #: data/ui/autogain.glade:288
 msgid "Weights"
-msgstr "Pesi"
+msgstr "Ampiezze"
 
 #: data/ui/autogain.glade:318 data/ui/autogain.glade:510
 #: data/ui/limiter.glade:368 data/ui/compressor.glade:721
@@ -287,7 +287,7 @@ msgstr "Guadagno"
 #: data/ui/autogain.glade:722 data/ui/loudness.glade:24
 #: data/ui/loudness.glade:131
 msgid "Loudness"
-msgstr "Rumorosità"
+msgstr "Loudness"
 
 #: data/ui/autogain.glade:774
 msgid "Range"
@@ -318,7 +318,7 @@ msgstr "Rilascio"
 
 #: data/ui/limiter.glade:253 data/ui/compressor.glade:573
 msgid "Lookahead"
-msgstr "Retroazione"
+msgstr "Lookahead"
 
 #: data/ui/limiter.glade:288
 msgid "Oversampling"
@@ -364,7 +364,7 @@ msgstr "Rapporto"
 #: data/ui/multiband_gate.glade:656 data/ui/multiband_gate.glade:1065
 #: data/ui/multiband_gate.glade:1475 data/ui/multiband_gate.glade:1885
 msgid "Knee"
-msgstr "Ginocchio"
+msgstr "Curvatura"
 
 #: data/ui/compressor.glade:341 data/ui/multiband_compressor.glade:670
 #: data/ui/multiband_compressor.glade:1047
@@ -374,7 +374,7 @@ msgstr "Ginocchio"
 #: data/ui/multiband_gate.glade:1510 data/ui/multiband_gate.glade:1920
 #: data/ui/deesser.glade:525
 msgid "Makeup"
-msgstr "Artefatti"
+msgstr "Guadagno"
 
 #: data/ui/compressor.glade:389 data/ui/multiband_compressor.glade:503
 #: data/ui/multiband_compressor.glade:875
@@ -481,7 +481,7 @@ msgstr "Sorgente"
 
 #: data/ui/compressor.glade:679 data/ui/compressor.glade:916
 msgid "Sidechain"
-msgstr "Catena Laterale"
+msgstr "Sidechain"
 
 #: data/ui/compressor.glade:992
 msgid "Curve"
@@ -871,19 +871,19 @@ msgstr "Armoniche"
 
 #: data/ui/bass_enhancer.glade:269 data/ui/exciter.glade:274
 msgid "Scope"
-msgstr "Portata"
+msgstr "Soglia"
 
 #: data/ui/bass_enhancer.glade:358
 msgid "Floor"
-msgstr "Suolo"
+msgstr "Limite inferiore"
 
 #: data/ui/exciter.glade:50
 msgid "Exciter"
-msgstr "Eccitatore"
+msgstr "Exciter"
 
 #: data/ui/exciter.glade:360 data/ui/maximizer.glade:162
 msgid "Ceiling"
-msgstr "Soffitto"
+msgstr "Limite superiore"
 
 #: data/ui/stereo_tools.glade:42
 msgid "Stereo Tools"
@@ -987,7 +987,7 @@ msgstr "Alimentazione Mutua"
 
 #: data/ui/maximizer.glade:29
 msgid "Maximizer"
-msgstr "Massimizzatore"
+msgstr "Maximizer"
 
 #: data/ui/maximizer.glade:272 data/ui/multiband_gate.glade:725
 #: data/ui/multiband_gate.glade:1155 data/ui/multiband_gate.glade:1565
@@ -1035,7 +1035,7 @@ msgstr "Gate Multibanda"
 
 #: data/ui/deesser.glade:61
 msgid "Deesser"
-msgstr "Rimozione Sibilo"
+msgstr "Deesser"
 
 #: data/ui/deesser.glade:235
 msgid "Wide"
@@ -1055,7 +1055,7 @@ msgstr "Picco Q"
 
 #: data/ui/deesser.glade:429
 msgid "Laxity"
-msgstr "Rilassatezza"
+msgstr "Trascuranza"
 
 #: data/ui/deesser.glade:764
 msgid "Detected"
@@ -1115,7 +1115,7 @@ msgstr "Modalità Aggressiva"
 
 #: data/ui/crystalizer.glade:423
 msgid "Loudness Range"
-msgstr "Gamma Rumorosità"
+msgstr "Gamma Loudness"
 
 #: data/ui/crystalizer.glade:442
 msgid "Before"
@@ -1684,7 +1684,7 @@ msgstr "infinito"
 #~ msgstr "Cancella preset"
 
 #~ msgid "Equal Loudness Test Signals"
-#~ msgstr "Segnali di test per stessa intensità"
+#~ msgstr "Segnali di test per stesso loudness"
 
 #~ msgid "Test Signal"
 #~ msgstr "Segnale di Test"
@@ -1711,7 +1711,7 @@ msgstr "infinito"
 #~ msgstr "Soglia [dB]"
 
 #~ msgid "Makeup [dB]"
-#~ msgstr "Makeup [dB]"
+#~ msgstr "Guadagno [dB]"
 
 #, fuzzy
 #~ msgid "F1 [Hz]"
@@ -1778,13 +1778,13 @@ msgstr "infinito"
 #~ msgstr "Troncamento [Hz]"
 
 #~ msgid "Equal Loudness 60"
-#~ msgstr "Stessa Intensità 60"
+#~ msgstr "Stesso Loudness 60"
 
 #~ msgid "Equal Loudness 80"
-#~ msgstr "Stessa Intensità 80"
+#~ msgstr "Stesso Loudness 80"
 
 #~ msgid "Equal Loudness 100"
-#~ msgstr "Stessa Intensità 100"
+#~ msgstr "Stesso Loudness 100"
 
 #~ msgid "Flat"
 #~ msgstr "Piatto"
@@ -1796,4 +1796,4 @@ msgstr "infinito"
 #~ msgstr "Modalità"
 
 #~ msgid "Equal Loudness Curve Calibration"
-#~ msgstr "Calibrazione Curva delle Intensità"
+#~ msgstr "Calibrazione Curva di Loudness"

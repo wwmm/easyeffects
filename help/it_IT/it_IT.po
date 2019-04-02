@@ -63,7 +63,7 @@ msgstr "Quantità di nuove armoniche create."
 #. (itstool) path: title/em
 #: C/bassenhancer.page:38 C/exciter.page:37
 msgid "Scope"
-msgstr "Portata"
+msgstr "Soglia"
 
 #. (itstool) path: item/p
 #: C/bassenhancer.page:40 C/exciter.page:39
@@ -73,7 +73,7 @@ msgstr "La frequenza oltre la quale vengono prodotte le armoniche."
 #. (itstool) path: title/em
 #: C/bassenhancer.page:46
 msgid "Floor(button)"
-msgstr "Pavimento(pulsante)"
+msgstr "Limite Inferiore(pulsante)"
 
 #. (itstool) path: item/p
 #: C/bassenhancer.page:48
@@ -83,7 +83,7 @@ msgstr "Limita l'enfasi all'estremità inferiore."
 #. (itstool) path: title/em
 #: C/bassenhancer.page:54
 msgid "Floor(value)"
-msgstr "Pavimento(valore)"
+msgstr "Limite Inferiore(valore)"
 
 #. (itstool) path: item/p
 #: C/bassenhancer.page:56
@@ -199,7 +199,7 @@ msgstr "Imposta il rapporto per cui il segnale verrà ridotto."
 #: C/compressor.page:54 C/gate.page:54 C/multibandcompressor.page:54
 #: C/multibandgate.page:62
 msgid "Knee"
-msgstr "Ginocchio"
+msgstr "Curvatura"
 
 #. (itstool) path: item/p
 #: C/compressor.page:56 C/gate.page:56 C/multibandcompressor.page:56
@@ -212,7 +212,7 @@ msgstr ""
 #: C/compressor.page:62 C/deesser.page:42 C/gate.page:62
 #: C/multibandcompressor.page:62 C/multibandgate.page:70
 msgid "Makeup"
-msgstr "Guadagno d'Uscita"
+msgstr "Guadagno"
 
 #. (itstool) path: item/p
 #: C/compressor.page:64 C/deesser.page:44 C/gate.page:64
@@ -246,12 +246,12 @@ msgstr ""
 #. (itstool) path: section/title
 #: C/compressor.page:88
 msgid "Sidechain"
-msgstr "Catena Laterale"
+msgstr "Sidechain"
 
 #. (itstool) path: item/p
 #: C/compressor.page:94
 msgid "Allows to listen the processed sidechain signal."
-msgstr "Consente di ascoltare il segnale elaborato in catena laterale."
+msgstr "Consente di ascoltare il segnale elaborato in sidechain."
 
 #. (itstool) path: title/em
 #: C/compressor.page:100 C/equalizer.page:99
@@ -264,8 +264,8 @@ msgid ""
 "<em style=\"strong\">Feed-forward</em> - The sidechain input is connected to "
 "compressor's input. More aggressive compression."
 msgstr ""
-"<em style=\"strong\">Controllo in avanti</em> - L'ingresso della catena "
-"laterale è collegato all'ingresso del compressore. Compressione più "
+"<em style=\"strong\">Controllo in avanti</em> - L'ingresso di sidechain "
+"è collegato all'ingresso del compressore. Compressione più "
 "aggressiva."
 
 #. (itstool) path: item/p
@@ -274,7 +274,7 @@ msgid ""
 "<em style=\"strong\">Feed-back</em> - The sidechain input is connected to "
 "compressor's output. Vintage-style more accurate compression."
 msgstr ""
-"<em style=\"strong\">Retroazione</em> - L'ingresso della catena laterale è "
+"<em style=\"strong\">Retroazione</em> - L'ingresso di sidechain è "
 "collegato all'uscita del compressore. Compressione più accurata in stile "
 "vintage."
 
@@ -327,7 +327,7 @@ msgid ""
 "sidechain processing."
 msgstr ""
 "<em style=\"strong\">Centro</em> - La parte centrale del segnale è usata per "
-"elaborare la catena laterale."
+"l'elaborazione in sidechain."
 
 #. (itstool) path: item/p
 #: C/compressor.page:160
@@ -336,7 +336,7 @@ msgid ""
 "processing."
 msgstr ""
 "<em style=\"strong\">Lato</em> - La parte laterale del segnale é usata per "
-"elaborare la catena laterale."
+"l'elaborazione in sidechain."
 
 #. (itstool) path: item/p
 #: C/compressor.page:166
@@ -345,7 +345,7 @@ msgid ""
 "processing."
 msgstr ""
 "<em style=\"strong\">Sinistra</em> - Solo il canale sinistro è usato per "
-"elaborare la catena laterale."
+"l'elaborazione in sidechain."
 
 #. (itstool) path: item/p
 #: C/compressor.page:172
@@ -354,7 +354,7 @@ msgid ""
 "processing."
 msgstr ""
 "<em style=\"strong\">Destra</em> - Solo il canale destro è usato per "
-"elaborare la catena laterale."
+"l'elaborazione in sidechain."
 
 #. (itstool) path: title/em
 #: C/compressor.page:181
@@ -364,7 +364,7 @@ msgstr "Pre-amplificazione"
 #. (itstool) path: item/p
 #: C/compressor.page:183
 msgid "Pre-amplification of the sidechain signal."
-msgstr "Pre-amplificazione del segnale di catena laterale."
+msgstr "Pre-amplificazione del segnale di sidechain."
 
 #. (itstool) path: title/em
 #: C/compressor.page:189
@@ -374,23 +374,23 @@ msgstr "Reattività"
 #. (itstool) path: item/p
 #: C/compressor.page:191
 msgid "Reactivity of the sidechain signal."
-msgstr "Reattività del segnale di catena laterale."
+msgstr "Reattività del segnale di sidechain."
 
 #. (itstool) path: title/em
 #: C/compressor.page:197 C/limiter.page:38
 msgid "Lookahead"
-msgstr "Anticipo"
+msgstr "Lookahead"
 
 #. (itstool) path: item/p
 #: C/compressor.page:199
 msgid "Look-ahead time of the sidechain relative to the input signal."
 msgstr ""
-"Tempo di anticipo della catena laterale in relazione al segnale di ingresso."
+"Tempo di look-ahead in sidechain, relativo al segnale di ingresso."
 
 #. (itstool) path: page/title
 #: C/deesser.page:9
 msgid "Deesser"
-msgstr "Rimozione Sibilo"
+msgstr "Deesser"
 
 #. (itstool) path: page/p
 #: C/deesser.page:10
@@ -399,22 +399,22 @@ msgid ""
 "dynamically reduce high frequencies. The standard field of use is the "
 "reduction of \"sssss\" and \"shhhh\" in vocal tracks."
 msgstr ""
-"PulseEffects utilizza la rimozione sibilo sviluppata da Calf Studio. La "
-"rimozione sibilo è usata per ridurre dinamicamente le alte frequenze. Il "
+"PulseEffects utilizza il deesser sviluppato da Calf Studio. Esso "
+"è usato per ridurre dinamicamente le alte frequenze. Il "
 "campo di utilizzo predefinito è la riduzione di \"sssss\" e \"shhhh\" nelle "
 "tracce vocali."
 
 #. (itstool) path: title/em
 #: C/deesser.page:18
 msgid "Laxity"
-msgstr "Rilassatezza"
+msgstr "Trascuranza"
 
 #. (itstool) path: item/p
 #: C/deesser.page:20
 msgid ""
 "The reaction of the deesser. Higher values won't affect really short peaks."
 msgstr ""
-"La reazione della rimozione sibilo. Valori più grandi non influenzeranno "
+"La reazione del deesser. Valori più grandi non influenzeranno "
 "picchi molto brevi."
 
 #. (itstool) path: title/em
@@ -444,7 +444,7 @@ msgid ""
 "sidechain. In split mode it also affects the processed high frequencies."
 msgstr ""
 "Sposta il volume della banda più alta. In modalità banda ampia influisce "
-"sulla catena laterale. In modalità divisione influisce anche sulle alte "
+"sull'elaborazione in sidechain. In modalità divisione influisce anche sulle alte "
 "frequenze elaborate."
 
 #. (itstool) path: title/em
@@ -459,7 +459,7 @@ msgid ""
 "the sidechain signal."
 msgstr ""
 "Frequenza centrale del filtro a campana. Consente una selezione più precisa "
-"del segnale della catena laterale."
+"del segnale in sidechain."
 
 #. (itstool) path: title/em
 #: C/deesser.page:77
@@ -500,7 +500,7 @@ msgid ""
 "Choose if the deesser should take the signal peak for detection or the RMS "
 "value (it is smoother)."
 msgstr ""
-"Decide se la rimozione sibilo deve prendere il picco del segnale per il "
+"Decide se il plugin di deesser deve prendere il picco del segnale per il "
 "rilevamento o il valore RMS (più morbido)."
 
 #. (itstool) path: item/p
@@ -511,7 +511,7 @@ msgstr "Seleziona la tua modalità di funzionamento tra banda larga o divisione"
 #. (itstool) path: page/title
 #: C/exciter.page:9
 msgid "Exciter"
-msgstr "Eccitatore"
+msgstr "Exciter"
 
 #. (itstool) path: page/p
 #: C/exciter.page:10
@@ -520,29 +520,29 @@ msgid ""
 "manipulation, harmonic synthesis of high frequency signals, and through the "
 "addition of subtle harmonic distortion."
 msgstr ""
-"L'eccitatore è utilizzato per migliorare un segnale mediante equalizzazione "
+"L'exciter è utilizzato per migliorare un segnale mediante equalizzazione "
 "dinamica, manipolazione di fase, sintesi armonica di segnali ad alta "
 "frequenza, e mediante l'aggiunta di distorsione armonica sottile."
 
 #. (itstool) path: page/p
 #: C/exciter.page:15
 msgid "PulseEffects uses the exciter developed by Calf Studio."
-msgstr "PulseEffects usa l'eccitatore sviluppato da Calf Studio."
+msgstr "PulseEffects usa l'exciter sviluppato da Calf Studio."
 
 #. (itstool) path: title/em
 #: C/exciter.page:45
 msgid "Ceiling(button)"
-msgstr "Soffitto(pulsante)"
+msgstr "Limite Superiore(pulsante)"
 
 #. (itstool) path: item/p
 #: C/exciter.page:47
 msgid "Constrain the excitement on the upper end."
-msgstr "Limita l'eccitatore all'estremità inferiore."
+msgstr "Limita l'exciter all'estremità inferiore."
 
 #. (itstool) path: title/em
 #: C/exciter.page:53
 msgid "Ceiling(value)"
-msgstr "Soffitto(valore)"
+msgstr "Limite Superiore(valore)"
 
 #. (itstool) path: item/p
 #: C/exciter.page:55
@@ -832,7 +832,7 @@ msgstr ""
 #. (itstool) path: title/em
 #: C/loudness.page:9 C/loudness.page:19 C/autogain.page:61
 msgid "Loudness"
-msgstr "Rumorosità"
+msgstr "Loudness"
 
 #. (itstool) path: page/p
 #: C/loudness.page:10
@@ -1244,7 +1244,7 @@ msgstr "Configura la fase stereo del tuo materiale."
 #. (itstool) path: page/title
 #: C/maximizer.page:9
 msgid "Maximizer"
-msgstr "Massimizzatore"
+msgstr "Maximizer"
 
 #. (itstool) path: page/p
 #: C/maximizer.page:10
@@ -1253,19 +1253,19 @@ msgid ""
 "limit(ceiling in our case) but it also boosts peaks that are between the "
 "limit and the threshold."
 msgstr ""
-"Il massimizzatore è simile al limitatore. Attenua i picchi al di sopra del "
-"limite (soffitto nel nostro caso), ma potenzia anche i picchi che sono tra "
+"Il maximizer è simile al limitatore. Attenua i picchi al di sopra del "
+"limite (superiore nel nostro caso), ma potenzia anche i picchi che sono tra "
 "il limite e la soglia."
 
 #. (itstool) path: page/p
 #: C/maximizer.page:15
 msgid "PulseEffects uses the maximizer from ZamAudio."
-msgstr "PulseEffects usa il massimizzatore sviluppato da ZamAudio."
+msgstr "PulseEffects usa il maximizer sviluppato da ZamAudio."
 
 #. (itstool) path: title/em
 #: C/maximizer.page:29
 msgid "Ceiling"
-msgstr "Soffitto"
+msgstr "Limite Superiore"
 
 #. (itstool) path: item/p
 #: C/maximizer.page:31
@@ -2479,7 +2479,7 @@ msgstr ""
 #. (itstool) path: page/title
 #: C/autogain.page:9
 msgid "Auto Gain"
-msgstr "Guadagno Automatico"
+msgstr "Normalizzatore"
 
 #. (itstool) path: page/p
 #: C/autogain.page:10
@@ -2487,24 +2487,24 @@ msgid ""
 "PulseEffects auto gain is based on the library libebur128. It changes the "
 "audio volume to a perceived loudness level that can be tweaked by the user."
 msgstr ""
-"Il guadagno automatico di PulseEffects si basa sulla libreria libebur128. "
+"Il normalizzatore di PulseEffects si basa sulla libreria libebur128. "
 "Cambia il volume dell'audio a un livello di intensità percepita, che può "
 "essere regolato dall'utente."
 
 #. (itstool) path: title/em
 #: C/autogain.page:17
 msgid "Target"
-msgstr "Obiettivo"
+msgstr "Livello"
 
 #. (itstool) path: item/p
 #: C/autogain.page:19
 msgid "Loudness level."
-msgstr "Livello di Rumorosità."
+msgstr "Livello di Loudness."
 
 #. (itstool) path: title/em
 #: C/autogain.page:25
 msgid "Momentary"
-msgstr "Transitorio"
+msgstr "Momentaneo"
 
 #. (itstool) path: item/p
 #: C/autogain.page:27
@@ -2571,13 +2571,13 @@ msgstr ""
 #. (itstool) path: title/em
 #: C/autogain.page:70
 msgid "Range"
-msgstr "Intervallo"
+msgstr "Gamma"
 
 #. (itstool) path: item/p
 #: C/autogain.page:72
 msgid "Loudness range. Indicates how large is the material dynamic range."
 msgstr ""
-"Intervallo di rumorosità. Indica quanto è grande l'intervallo dinamico del "
+"Gamma di Loudness. Indica quanto è grande l'intervallo dinamico del "
 "materiale audio."
 
 #. (itstool) path: item/p
