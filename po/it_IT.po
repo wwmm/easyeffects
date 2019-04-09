@@ -114,7 +114,7 @@ msgstr "Spessore Linea"
 
 #: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:218
 msgid "Use Default"
-msgstr "Usa Predefinito"
+msgstr "Predefinito"
 
 #: data/ui/pulse_settings.glade:107 data/ui/pulse_settings.glade:255
 #: data/ui/app_info.glade:156
@@ -150,11 +150,11 @@ msgstr "Nome"
 
 #: data/ui/general_settings.glade:31
 msgid "Start Service at Login"
-msgstr "Avvio Servizio all'Accesso"
+msgstr "Esegui Servizio all'Avvio"
 
 #: data/ui/general_settings.glade:56
 msgid "Process All Outputs"
-msgstr "Processa Ogni Uscita"
+msgstr "Elabora Ogni Uscita"
 
 #: data/ui/general_settings.glade:81
 msgid "Use Dark Theme"
@@ -187,7 +187,7 @@ msgstr "Info"
 
 #: data/ui/general_settings.glade:180
 msgid "Process All Inputs"
-msgstr "Processa Ogni Ingresso"
+msgstr "Elabora Ogni Ingresso"
 
 #: data/ui/general_settings.glade:232
 msgid "Priority"
@@ -211,7 +211,7 @@ msgstr "Canali"
 
 #: data/ui/app_info.glade:129
 msgid "Resampler"
-msgstr "Ricampiona"
+msgstr "Ricampionamento"
 
 #: data/ui/app_info.glade:210
 msgid "State"
@@ -397,7 +397,7 @@ msgstr "Ascendente"
 
 #: data/ui/compressor.glade:429
 msgid "Compression Mode"
-msgstr "Modalità Compressione"
+msgstr "Modalità di compressione"
 
 #: data/ui/compressor.glade:457 data/ui/bass_enhancer.glade:148
 #: data/ui/exciter.glade:148 data/ui/deesser.glade:165
@@ -503,15 +503,15 @@ msgstr "LR8"
 
 #: data/ui/multiband_compressor.glade:315 data/ui/multiband_gate.glade:335
 msgid "Split 1/2"
-msgstr "Separa 1/2"
+msgstr "Frequenza Split 1/2"
 
 #: data/ui/multiband_compressor.glade:328 data/ui/multiband_gate.glade:348
 msgid "Split 2/3"
-msgstr "Separa 2/3"
+msgstr "Frequenza Split 2/3"
 
 #: data/ui/multiband_compressor.glade:341 data/ui/multiband_gate.glade:361
 msgid "Split 3/4"
-msgstr "Separa 3/4"
+msgstr "Frequenza Split 3/4"
 
 #: data/ui/multiband_compressor.glade:445
 #: data/ui/multiband_compressor.glade:817
@@ -889,7 +889,7 @@ msgstr "Limite superiore"
 
 #: data/ui/stereo_tools.glade:42
 msgid "Stereo Tools"
-msgstr "Strumenti Stereo"
+msgstr "Plugin Stereo"
 
 #: data/ui/stereo_tools.glade:210
 msgid "Softclip"
@@ -1129,7 +1129,7 @@ msgstr "Dopo"
 
 #: data/ui/pitch.glade:36
 msgid "Pitch"
-msgstr "Intonazione"
+msgstr "Pitch"
 
 #: data/ui/pitch.glade:145
 msgid "Faster"

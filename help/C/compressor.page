@@ -20,8 +20,10 @@
                     <em style="strong" its:withinText="nested">Attack</em>
                 </title>
                 <p>
-                    Amount of milliseconds the signal has to rise above the threshold before gain
-                    reduction starts.
+                    Attack determines how many milliseconds (ms) it takes your compressor to apply 
+                    a full dose of compression to your audio signal once it passes the threshold. 
+                    If the signal peaks above the threshold and quickly returns to below the 
+                    threshold, it may never receive a full dose of compression.
                 </p>
             </item>
             <item>
@@ -29,8 +31,11 @@
                     <em style="strong" its:withinText="nested">Release</em>
                 </title>
                 <p>
-                    Amount of milliseconds the signal has to fall below the threshold before the
-                    reduction is decreased again.
+                    Release determines how many milliseconds (ms) it takes your compressor to stop
+                    attenuating gain once your audio signal drops below the threshold. A fast 
+                    release will cause your compressor to stop attenuating gain quickly once the 
+                    signal returns below the threshold. A slow release will cause your compressor 
+                    to stop attenuating gain slowly once the signal returns below the threshold.
                 </p>
             </item>
             <item>
@@ -38,7 +43,7 @@
                     <em style="strong" its:withinText="nested">Threshold</em>
                 </title>
                 <p>
-                    If a signal rises above this level it will affect the gain reduction.
+                    If a signal surpass this level it will trigger the compression stage.
                 </p>
             </item>
             <item>
@@ -208,9 +213,18 @@
             <item>
                 <p>
                     <link
-                        href="https://calf-studio-gear.org/doc/Compressor.html"
+                        href="https://www.blackghostaudio.com/blog/the-ultimate-guide-to-compression"
                         its:translate="no">
-                        https://calf-studio-gear.org/doc/Compressor.html
+                        https://www.blackghostaudio.com/blog/the-ultimate-guide-to-compression
+                    </link>
+                </p>
+            </item>
+            <item>
+                <p>
+                    <link
+                        href="https://lsp-plug.in/?page=manuals&amp;section=compressor_stereo"
+                        its:translate="no">
+                        https://lsp-plug.in/?page=manuals&amp;section=compressor_stereo
                     </link>
                 </p>
             </item>

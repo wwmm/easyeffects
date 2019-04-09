@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2019-03-21 20:22-0300\n"
+"POT-Creation-Date: 2019-04-09 09:16+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -101,7 +101,7 @@ msgid "The \"colour\" (or octave) of the harmonics."
 msgstr "A \"cor\"(ou oitava) dos harmônicos."
 
 #. (itstool) path: title/em
-#: C/bassenhancer.page:70 C/compressor.page:92 C/exciter.page:69
+#: C/bassenhancer.page:70 C/compressor.page:97 C/exciter.page:69
 msgid "Listen"
 msgstr "Escutar"
 
@@ -111,7 +111,7 @@ msgid "Mute the original signal and listen to the harmonics exclusively."
 msgstr "Silenciar o sinal original e escutar exclusivamente aos harmônicos."
 
 #. (itstool) path: section/title
-#: C/bassenhancer.page:78 C/compressor.page:206 C/deesser.page:111
+#: C/bassenhancer.page:78 C/compressor.page:211 C/deesser.page:111
 #: C/exciter.page:77 C/filter.page:47 C/gate.page:96 C/delay.page:33
 #: C/limiter.page:82 C/loudness.page:44 C/multibandcompressor.page:128
 #: C/multibandgate.page:136 C/reverb.page:97 C/stereotools.page:96
@@ -143,86 +143,86 @@ msgid "Attack"
 msgstr "Ataque"
 
 #. (itstool) path: item/p
-#: C/compressor.page:22 C/gate.page:22 C/multibandcompressor.page:22
-#: C/multibandgate.page:22
+#: C/compressor.page:22
 msgid ""
-"Amount of milliseconds the signal has to rise above the threshold before "
-"gain reduction starts."
+"Attack determines how many milliseconds (ms) it takes your compressor to "
+"apply a full dose of compression to your audio signal once it passes the "
+"threshold. If the signal peaks above the threshold and quickly returns to "
+"below the threshold, it may never receive a full dose of compression."
 msgstr ""
-"Quantidade de milissegundos que o sinal deve passar acima do limiar para que "
-"a redução de ganho comece."
 
 #. (itstool) path: title/em
-#: C/compressor.page:29 C/gate.page:29 C/limiter.page:47
-#: C/multibandcompressor.page:29 C/multibandgate.page:29 C/maximizer.page:37
+#: C/compressor.page:31 C/gate.page:29 C/limiter.page:47
+#: C/multibandcompressor.page:29 C/multibandgate.page:29 C/maximizer.page:44
 msgid "Release"
 msgstr "Liberação"
 
 #. (itstool) path: item/p
-#: C/compressor.page:31 C/gate.page:31 C/multibandcompressor.page:31
-#: C/multibandgate.page:31
+#: C/compressor.page:33
 msgid ""
-"Amount of milliseconds the signal has to fall below the threshold before the "
-"reduction is decreased again."
+"Release determines how many milliseconds (ms) it takes your compressor to "
+"stop attenuating gain once your audio signal drops below the threshold. A "
+"fast release will cause your compressor to stop attenuating gain quickly "
+"once the signal returns below the threshold. A slow release will cause your "
+"compressor to stop attenuating gain slowly once the signal returns below the "
+"threshold."
 msgstr ""
-"Quantidade de milissegundos que o sinal tem que passar abaixo do limar antes "
-"que a magnitude da redução seja novamente diminuída."
 
 #. (itstool) path: title/em
-#: C/compressor.page:38 C/deesser.page:26 C/gate.page:38
-#: C/multibandcompressor.page:38 C/multibandgate.page:46 C/maximizer.page:21
+#: C/compressor.page:43 C/deesser.page:26 C/gate.page:38
+#: C/multibandcompressor.page:38 C/multibandgate.page:46 C/maximizer.page:27
 msgid "Threshold"
 msgstr "Limiar"
 
 #. (itstool) path: item/p
-#: C/compressor.page:40 C/deesser.page:28 C/gate.page:40
-#: C/multibandcompressor.page:40 C/multibandgate.page:48 C/maximizer.page:23
-msgid "If a signal rises above this level it will affect the gain reduction."
+#: C/compressor.page:45
+#, fuzzy
+msgid "If a signal surpass this level it will trigger the compression stage."
 msgstr "Se um sinal subir acima deste nível ele afetará a redução de ganho."
 
 #. (itstool) path: title/em
-#: C/compressor.page:46 C/deesser.page:34 C/gate.page:46
+#: C/compressor.page:51 C/deesser.page:34 C/gate.page:46
 #: C/multibandcompressor.page:46 C/multibandgate.page:54
 msgid "Ratio"
 msgstr "Razão"
 
 #. (itstool) path: item/p
-#: C/compressor.page:48 C/deesser.page:36 C/gate.page:48
+#: C/compressor.page:53 C/deesser.page:36 C/gate.page:48
 #: C/multibandcompressor.page:48 C/multibandgate.page:56
 msgid "Set the ratio by which the signal will be reduced."
 msgstr "Configura a razão pela a qual o sinal é reduzido."
 
 #. (itstool) path: title/em
-#: C/compressor.page:54 C/gate.page:54 C/multibandcompressor.page:54
+#: C/compressor.page:59 C/gate.page:54 C/multibandcompressor.page:54
 #: C/multibandgate.page:62
 msgid "Knee"
 msgstr "Joelho"
 
 #. (itstool) path: item/p
-#: C/compressor.page:56 C/gate.page:56 C/multibandcompressor.page:56
+#: C/compressor.page:61 C/gate.page:56 C/multibandcompressor.page:56
 #: C/multibandgate.page:64
 msgid "Controls how smooth is the entrance in the gain reduction phase."
 msgstr "Controla o quão suave é a entrada na fase de redução de ganho."
 
 #. (itstool) path: title/em
-#: C/compressor.page:62 C/deesser.page:42 C/gate.page:62
+#: C/compressor.page:67 C/deesser.page:42 C/gate.page:62
 #: C/multibandcompressor.page:62 C/multibandgate.page:70
 msgid "Makeup"
 msgstr "Ganho de Saída"
 
 #. (itstool) path: item/p
-#: C/compressor.page:64 C/deesser.page:44 C/gate.page:64
+#: C/compressor.page:69 C/deesser.page:44 C/gate.page:64
 #: C/multibandcompressor.page:64 C/multibandgate.page:72
 msgid "It amplifies your signal after processing."
 msgstr "Amplifique seu sinal após o processamento."
 
 #. (itstool) path: title/em
-#: C/compressor.page:70
+#: C/compressor.page:75
 msgid "Compression Mode"
 msgstr "Modo de Compressão"
 
 #. (itstool) path: item/p
-#: C/compressor.page:74
+#: C/compressor.page:79
 msgid ""
 "<em style=\"strong\">Downward</em> - Decreases the amplitude of the signal "
 "sections that are above the threshold."
@@ -231,7 +231,7 @@ msgstr ""
 "que estão acima do limiar."
 
 #. (itstool) path: item/p
-#: C/compressor.page:79
+#: C/compressor.page:84
 msgid ""
 "<em style=\"strong\">Upwards</em> - Increases the amplitude of the signal "
 "sections that are below the threshold."
@@ -240,22 +240,22 @@ msgstr ""
 "sinal que estão abaixo do limiar."
 
 #. (itstool) path: section/title
-#: C/compressor.page:88
+#: C/compressor.page:93
 msgid "Sidechain"
 msgstr "Cadeia Lateral"
 
 #. (itstool) path: item/p
-#: C/compressor.page:94
+#: C/compressor.page:99
 msgid "Allows to listen the processed sidechain signal."
 msgstr "Permite ouvir o sinal de sidechain processado."
 
 #. (itstool) path: title/em
-#: C/compressor.page:100 C/equalizer.page:99
+#: C/compressor.page:105 C/equalizer.page:99
 msgid "Type"
 msgstr "Tipo"
 
 #. (itstool) path: item/p
-#: C/compressor.page:104
+#: C/compressor.page:109
 msgid ""
 "<em style=\"strong\">Feed-forward</em> - The sidechain input is connected to "
 "compressor's input. More aggressive compression."
@@ -264,7 +264,7 @@ msgstr ""
 "conectada à entrada do compressor. Compressão mais agressiva."
 
 #. (itstool) path: item/p
-#: C/compressor.page:110
+#: C/compressor.page:115
 msgid ""
 "<em style=\"strong\">Feed-back</em> - The sidechain input is connected to "
 "compressor's output. Vintage-style more accurate compression."
@@ -273,25 +273,25 @@ msgstr ""
 "conectada à saída do compressor. Compressão mais precisa no estilo vintage."
 
 #. (itstool) path: title/em
-#: C/compressor.page:119 C/deesser.page:103 C/multibandcompressor.page:95
+#: C/compressor.page:124 C/deesser.page:103 C/multibandcompressor.page:95
 #: C/multibandgate.page:103 C/stereotools.page:38 C/equalizer.page:23
 #: C/equalizer.page:146 C/webrtc.page:75
 msgid "Mode"
 msgstr "Modo"
 
 #. (itstool) path: item/p
-#: C/compressor.page:123
+#: C/compressor.page:128
 msgid "<em style=\"strong\">Peak</em> - Measure signal's peak."
 msgstr "<em style=\"strong\">Peak</em> - Medir o pico do sinal."
 
 #. (itstool) path: item/p
-#: C/compressor.page:129
+#: C/compressor.page:134
 msgid "<em style=\"strong\">RMS</em> - Root mean square of the input signal."
 msgstr ""
 "<em style=\"strong\">RMS</em> - Valor médio quadrático do sinal de Entrada."
 
 #. (itstool) path: item/p
-#: C/compressor.page:135
+#: C/compressor.page:140
 msgid ""
 "<em style=\"strong\">Low-Pass</em> - Input signal is processed by a low-pass "
 "filter."
@@ -300,7 +300,7 @@ msgstr ""
 "um filtro passa-baixa."
 
 #. (itstool) path: item/p
-#: C/compressor.page:141
+#: C/compressor.page:146
 msgid ""
 "<em style=\"strong\">Uniform</em> - Input signal is processed by a uniform "
 "filter."
@@ -309,12 +309,12 @@ msgstr ""
 "filtro uniforme."
 
 #. (itstool) path: title/em
-#: C/compressor.page:150
+#: C/compressor.page:155
 msgid "Source"
 msgstr "Fonte"
 
 #. (itstool) path: item/p
-#: C/compressor.page:154
+#: C/compressor.page:159
 msgid ""
 "<em style=\"strong\">Middle</em> - Middle part of signal is used for "
 "sidechain processing."
@@ -323,7 +323,7 @@ msgstr ""
 "processamento da cadeia lateral."
 
 #. (itstool) path: item/p
-#: C/compressor.page:160
+#: C/compressor.page:165
 msgid ""
 "<em style=\"strong\">Side</em> - Side part of signal is used for sidechain "
 "processing."
@@ -332,7 +332,7 @@ msgstr ""
 "processamento da cadeia lateral."
 
 #. (itstool) path: item/p
-#: C/compressor.page:166
+#: C/compressor.page:171
 msgid ""
 "<em style=\"strong\">Left</em> - Only left channel is used for sidechain "
 "processing."
@@ -341,7 +341,7 @@ msgstr ""
 "processamento da cadeia lateral."
 
 #. (itstool) path: item/p
-#: C/compressor.page:172
+#: C/compressor.page:177
 msgid ""
 "<em style=\"strong\">Right</em> - Only right channel is used for sidechain "
 "processing."
@@ -350,32 +350,32 @@ msgstr ""
 "processamento da cadeia lateral."
 
 #. (itstool) path: title/em
-#: C/compressor.page:181
+#: C/compressor.page:186
 msgid "Pre-amplification"
 msgstr "Pré-amplificação"
 
 #. (itstool) path: item/p
-#: C/compressor.page:183
+#: C/compressor.page:188
 msgid "Pre-amplification of the sidechain signal."
 msgstr "Pré-amplificação do sinal da cadeia lateral."
 
 #. (itstool) path: title/em
-#: C/compressor.page:189
+#: C/compressor.page:194
 msgid "Reactivity"
 msgstr "Reatividade"
 
 #. (itstool) path: item/p
-#: C/compressor.page:191
+#: C/compressor.page:196
 msgid "Reactivity of the sidechain signal."
 msgstr "Reatividade do sinal da cadeia lateral."
 
 #. (itstool) path: title/em
-#: C/compressor.page:197 C/limiter.page:38
+#: C/compressor.page:202 C/limiter.page:38
 msgid "Lookahead"
 msgstr "Lookahead"
 
 #. (itstool) path: item/p
-#: C/compressor.page:199
+#: C/compressor.page:204
 msgid "Look-ahead time of the sidechain relative to the input signal."
 msgstr "Tempo de antecipação da cadeia lateral em relação ao sinal de entrada."
 
@@ -406,6 +406,12 @@ msgid ""
 "The reaction of the deesser. Higher values won't affect really short peaks."
 msgstr ""
 "A reação do deesser. Valores maiores não afetarão picos realmente curtos."
+
+#. (itstool) path: item/p
+#: C/deesser.page:28 C/gate.page:40 C/multibandcompressor.page:40
+#: C/multibandgate.page:48
+msgid "If a signal rises above this level it will affect the gain reduction."
+msgstr "Se um sinal subir acima deste nível ele afetará a redução de ganho."
 
 #. (itstool) path: title/em
 #: C/deesser.page:50
@@ -614,6 +620,24 @@ msgstr ""
 #: C/gate.page:14
 msgid "PulseEffects uses the gate developed by Calf Studio."
 msgstr "PulseEffects usa o gate desenvolvido por Calf Studio."
+
+#. (itstool) path: item/p
+#: C/gate.page:22 C/multibandcompressor.page:22 C/multibandgate.page:22
+msgid ""
+"Amount of milliseconds the signal has to rise above the threshold before "
+"gain reduction starts."
+msgstr ""
+"Quantidade de milissegundos que o sinal deve passar acima do limiar para que "
+"a redução de ganho comece."
+
+#. (itstool) path: item/p
+#: C/gate.page:31 C/multibandcompressor.page:31 C/multibandgate.page:31
+msgid ""
+"Amount of milliseconds the signal has to fall below the threshold before the "
+"reduction is decreased again."
+msgstr ""
+"Quantidade de milissegundos que o sinal tem que passar abaixo do limar antes "
+"que a magnitude da redução seja novamente diminuída."
 
 #. (itstool) path: title/em
 #: C/gate.page:70
@@ -1233,31 +1257,42 @@ msgstr "Maximizador"
 #. (itstool) path: page/p
 #: C/maximizer.page:10
 msgid ""
-"A maximizer is similar to a limiter. It attenuates peaks above the "
-"limit(ceiling in our case) but it also boosts peaks that are between the "
-"limit and the threshold."
+"Maximizer is a versatile plugin that can be tweaked to be a compressor, an "
+"amplifier and a limiter. It is basically controlled by only two parameters: "
+"ceiling and threshold. Threshold is a relative value representing the "
+"amplification of the signal while ceiling is the maximum allowed output peak "
+"level. Setting both values different from zero, the plugin will act as an "
+"upward compressor with a limiter on the ceiling level (overly amplified "
+"signal with ceiling set too low can result in distorted sound even without "
+"the presence of clipping). When only threshold is set equal to zero, it "
+"reduces the amplitude of the signal."
 msgstr ""
-"Um maximizador é semelhante a um limitador. Ele atenua os picos acima do "
-"limite (teto em nosso caso), mas também aumenta os picos que estão entre o "
-"limite e o limite."
 
 #. (itstool) path: page/p
-#: C/maximizer.page:15
+#: C/maximizer.page:21
 msgid "PulseEffects uses the maximizer from ZamAudio."
 msgstr "PulseEffects usa o maximizador desenvolvido por Zamaudio."
 
-#. (itstool) path: title/em
+#. (itstool) path: item/p
 #: C/maximizer.page:29
+msgid ""
+"Relative value representing the amplification of the signal. Zero is no "
+"amplification. Lower values, higher amplification."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/maximizer.page:36
 msgid "Ceiling"
 msgstr "Teto"
 
 #. (itstool) path: item/p
-#: C/maximizer.page:31
-msgid "Maximum allowed peak value."
+#: C/maximizer.page:38
+#, fuzzy
+msgid "Maximum allowed peak level of the output signal."
 msgstr "Máximo valor de pico permitido."
 
 #. (itstool) path: item/p
-#: C/maximizer.page:39
+#: C/maximizer.page:46
 msgid "Stop the attenuation after this amount of seconds."
 msgstr "Pare a atenuação após esta quantidade de segundos."
 
@@ -2586,6 +2621,15 @@ msgstr ""
 "específico seja excluído da funcionalidade \"Ativar tudo\". Isso pode ser "
 "feito usando uma lista negra. Basta adicionar o nome do aplicativo "
 "exatamente como é mostrado na entrada \"Aplicativos\"."
+
+#~ msgid ""
+#~ "A maximizer is similar to a limiter. It attenuates peaks above the "
+#~ "limit(ceiling in our case) but it also boosts peaks that are between the "
+#~ "limit and the threshold."
+#~ msgstr ""
+#~ "Um maximizador é semelhante a um limitador. Ele atenua os picos acima do "
+#~ "limite (teto em nosso caso), mas também aumenta os picos que estão entre "
+#~ "o limite e o limite."
 
 #~ msgid ""
 #~ "PulseEffects crystalizer is a port of the FFMPEG crystalizer code to the "
