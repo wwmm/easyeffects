@@ -3,7 +3,8 @@
 ## [Unreleased
 
 ### Added
-- Improved maximizer help
+- Improved maximizer and compressor help
+- Improved Italian translations
 
 ### Fixed
 - fixed wrong release unit in maximizer interface

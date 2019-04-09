@@ -150,6 +150,11 @@ msgid ""
 "threshold. If the signal peaks above the threshold and quickly returns to "
 "below the threshold, it may never receive a full dose of compression."
 msgstr ""
+"Ataque determina quantos milissegundos (ms) o seu compressor leva para "
+"aplicar uma dose completa de compressão ao seu sinal de áudio quando este "
+"passa do limiar especificado. Se o sinal atingir o pico acima do limite e "
+"retornar rapidamente abaixo do limite, talvez ele nunca receba uma dose "
+"completa de compactação."
 
 #. (itstool) path: title/em
 #: C/compressor.page:31 C/gate.page:29 C/limiter.page:47
@@ -167,6 +172,12 @@ msgid ""
 "compressor to stop attenuating gain slowly once the signal returns below the "
 "threshold."
 msgstr ""
+"A liberação determina quantos milissegundos (ms) o compressor demora para "
+"parar de atenuar o ganho quando o sinal de áudio cai abaixo do limite. Uma "
+"liberação rápida fará com que seu compressor pare de atenuar o ganho "
+"rapidamente quando o sinal retornar abaixo do limite. Uma liberação lenta "
+"fará com que seu compressor pare de atenuar o ganho lentamente quando o "
+"sinal retornar abaixo do limite."
 
 #. (itstool) path: title/em
 #: C/compressor.page:43 C/deesser.page:26 C/gate.page:38
@@ -176,9 +187,9 @@ msgstr "Limiar"
 
 #. (itstool) path: item/p
 #: C/compressor.page:45
-#, fuzzy
 msgid "If a signal surpass this level it will trigger the compression stage."
-msgstr "Se um sinal subir acima deste nível ele afetará a redução de ganho."
+msgstr ""
+"Se um sinal subir acima deste nível ele ativará o estágio de compressão."
 
 #. (itstool) path: title/em
 #: C/compressor.page:51 C/deesser.page:34 C/gate.page:46
@@ -1267,6 +1278,15 @@ msgid ""
 "the presence of clipping). When only threshold is set equal to zero, it "
 "reduces the amplitude of the signal."
 msgstr ""
+"O Maximizer é um plugin versátil que pode ser ajustado para ser um "
+"compressor, um amplificador e um limitador. É basicamente controlado por "
+"apenas dois parâmetros: teto e limite. O limiar é um valor relativo que "
+"representa a amplificação do sinal, enquanto o teto é o nível de pico de "
+"saída máximo permitido. Definindo ambos os valores diferentes de zero, o "
+"plugin funcionará como um compressor ascendente com um limitador no nível do "
+"teto (sinal excessivamente amplificado com o teto ajustado muito baixo pode "
+"resultar em som distorcido mesmo sem a presença de cortes). Quando apenas o "
+"limite é definido como zero, reduz a amplitude do sinal."
 
 #. (itstool) path: page/p
 #: C/maximizer.page:21
@@ -1279,6 +1299,8 @@ msgid ""
 "Relative value representing the amplification of the signal. Zero is no "
 "amplification. Lower values, higher amplification."
 msgstr ""
+"Valor relativo representando a amplificação do sinal. Zero não é "
+"amplificação. Valores mais baixos, maior amplificação."
 
 #. (itstool) path: title/em
 #: C/maximizer.page:36
@@ -1287,9 +1309,8 @@ msgstr "Teto"
 
 #. (itstool) path: item/p
 #: C/maximizer.page:38
-#, fuzzy
 msgid "Maximum allowed peak level of the output signal."
-msgstr "Máximo valor de pico permitido."
+msgstr "Máximo valor de pico permitido para o sinal de saída."
 
 #. (itstool) path: item/p
 #: C/maximizer.page:46
