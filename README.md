@@ -1,6 +1,6 @@
 # PulseEffects
 
-Audio effects for Pulseaudio applications
+Audio effects for Pulseaudio applications.
 
 ![](images/pulseeffects.png)
 ![](images/equalizer1.png)
@@ -8,56 +8,56 @@ Audio effects for Pulseaudio applications
 ![](images/convolver.png)
 ![](images/test_signals.png)
 
-## Effects Available
+## Effects available
 
-### Applications Output
+### Applications output
 
 - Limiter
-- Auto Gain
+- Auto gain
 - Expander
 - Compressor
-- Multiband Compressor
+- Multiband compressor
 - Equalizer
-- Bass Enhancer
+- Bass enhancer
 - Exciter
 - Crystalizer
 - Reverberation
 - Crossfeed
-- Filter (Lowpass, Highpass, Bandpass and Bandreject modes)
-- Stereo Tools
+- Filter (low-pass, high-pass, band-pass and band-reject modes)
+- Stereo tools
 - Loudness
 - Maximizer
 - Pitch
 - Gate
-- Multiband Gate
-- Deesser
+- Multiband gate
+- De-esser
 - Convolver
 
 ### Applications input
 
 - Gate
-- Multiband Gate
+- Multiband gate
 - WebRTC
 - Limiter
 - Compressor
-- Multiband Compressor
+- Multiband compressor
 - Equalizer
 - Reverberation
 - Pitch
-- Filter (Lowpass, Highpass, Bandpass and Bandreject modes)
-- Deesser
+- Filter (low-pass, high-pass, band-pass and band-reject modes)
+- De-esser
 
 The user has full control over the effects order. Just use the up/down arrows
 next to the plugin label at the left side. To be able to use all plugins you
 must have the following installed in your system:
 
-- [GStreamer Plugins Good](https://github.com/GStreamer/gst-plugins-good).
-Version `1.12.5` or higher
-- [GStreamer Plugins Bad](https://github.com/GStreamer/gst-plugins-bad).
-Version `1.12.5` or higher
-- [Linux Studio Plugins](http://lsp-plug.in/?page=home)
-- [Calf Studio Plugins](https://calf-studio-gear.org/). Version `0.90.1` or higher.
-- [ZamAudio Plugins](http://www.zamaudio.com/)
+- [GStreamer plugins "Good"](https://github.com/GStreamer/gst-plugins-good).
+Version 1.12.5 or higher
+- [GStreamer plugins "Bad"](https://github.com/GStreamer/gst-plugins-bad).
+Version 1.12.5 or higher
+- [Linux Studio plugins](http://lsp-plug.in/?page=home)
+- [Calf Studio plugins](https://calf-studio-gear.org/). Version 0.90.1 or higher.
+- [ZamAudio plugins](http://www.zamaudio.com/)
 - [MDA.LV2](https://git.drobilla.net/cgit.cgi/mda.lv2.git/about/)
 - [libsamplerate](http://www.mega-nerd.com/SRC/index.html)
 - [libsndfile](http://www.mega-nerd.com/libsndfile/)
@@ -72,15 +72,15 @@ To be able to read documentation inside the GUI, you need [yelp](https://gitlab.
 
 ## Installation
 
-### GNU/Linux Packages
+### GNU/Linux packages
 
-- [Arch Linux](https://www.archlinux.org/packages/?sort=repo&name=pulseeffects) / [git version](https://aur.archlinux.org/packages/pulseeffects-git/)
+- [Arch Linux](https://www.archlinux.org/packages/?sort=repo&name=pulseeffects) / [Git version](https://aur.archlinux.org/packages/pulseeffects-git/)
 - [Void Linux](https://github.com/void-linux/void-packages/blob/master/srcpkgs/pulseeffects/template)
 - [Gentoo](https://packages.gentoo.org/packages/media-sound/pulseeffects/)
 - [ROSA](https://abf.io/import/pulseeffects/)
 - [ALT Linux](https://packages.altlinux.org/Sisyphus/srpms/pulseeffects/)
 
-#### Community Packages
+#### Community packages
 
 These are community maintained repositories of distribution packages. You can
 find more information about these in the
@@ -90,7 +90,7 @@ find more information about these in the
 
 ### Flatpak
 
-[Flatpak](https://flatpak.org) packages support multiple distributions and are sandboxed.
+[Flatpak](https://flatpak.org/) packages support multiple Linux distributions and are sandboxed.
 
 Stable releases are hosted on
 [Flathub](https://flathub.org/apps/details/com.github.wwmm.pulseeffects):
@@ -100,16 +100,16 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 flatpak install flathub com.github.wwmm.pulseeffects
 ```
 
-#### Installing from Source
+#### Installing from source
 
 See the wiki: [Installing from Source](https://github.com/wwmm/pulseeffects/wiki/Installation-from-Source), for detailed instructions.
 
-## Frequently asked Questions
+## Frequently asked questions
 
 Take a look at our [FAQ](https://github.com/wwmm/pulseeffects/wiki/FAQ) to see
 if you are facing a known problem.
 
-## Command Line Options
+## Command-line options
 
 See the wiki: [Command Line Options](https://github.com/wwmm/pulseeffects/wiki/Command-Line-Options)
 
