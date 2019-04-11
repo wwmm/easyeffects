@@ -161,6 +161,8 @@ msgid ""
 "threshold. If the signal peaks above the threshold and quickly returns to "
 "below the threshold, it may never receive a full dose of compression."
 msgstr ""
+"Время (в миллисекундах), в течение которого «Компрессор» не уменьшает "
+"уровень сигнала после достижения сигналом уровнявыше «Порога срабатывания»."
 
 #. (itstool) path: title/em
 #: C/compressor.page:31 C/gate.page:29 C/limiter.page:47
@@ -178,6 +180,9 @@ msgid ""
 "compressor to stop attenuating gain slowly once the signal returns below the "
 "threshold."
 msgstr ""
+"Время (в миллисекундах), в течение которого «Компрессор» продолжает "
+"уменьшать уровень сигнала после достижения сигналом уровняниже «Порога "
+"срабатывания»."
 
 #. (itstool) path: title/em
 #: C/compressor.page:43 C/deesser.page:26 C/gate.page:38

@@ -635,7 +635,7 @@ msgid ""
 "Gates attenuate signals that register below the threshold. This kind of "
 "signal processing reduces disturbing noise between useful signals."
 msgstr ""
-"Il plugin gate attenua i segnali che si attestano al di sotto si una "
+"Il plugin gate attenua i segnali che si attestano al di sotto di una "
 "determinata soglia. Questo tipo di elaborazione riduce il livello del rumore "
 "(disturbo) tra segnali utili."
 

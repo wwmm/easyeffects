@@ -1350,7 +1350,7 @@ msgid ""
 msgstr ""
 "PulseEffects è uno strumento avanzato di manipolazione dell'audio. Include "
 "diversi plugin tra cui un equalizzatore, un limitatore, un compressore e uno "
-"strumento per il riverbero. È dotato inoltre di un'analizzatore di spettro."
+"strumento per il riverbero. È dotato inoltre di un analizzatore di spettro."
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:16
 msgid ""
