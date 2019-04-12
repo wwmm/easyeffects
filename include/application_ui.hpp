@@ -65,8 +65,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   void update_headerbar_subtitle(const int& index);
 
-  void apply_css_style(std::string css_file_name);
-
   void on_stack_visible_child_changed();
 
   void on_calibration_button_clicked();

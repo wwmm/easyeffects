@@ -15,8 +15,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     : Gtk::ApplicationWindow(cobject),
       app(application),
       settings(app->settings) {
-  apply_css_style("listbox.css");
-
   Gtk::IconTheme::get_default()->add_resource_path(
       "/com/github/wwmm/pulseeffects/icons");
 
@@ -169,18 +167,6 @@ ApplicationUi* ApplicationUi::create(Application* app_this) {
   builder->get_widget_derived("ApplicationUi", window, app_this);
 
   return window;
-}
-
-void ApplicationUi::apply_css_style(std::string css_file_name) {
-  auto provider = Gtk::CssProvider::create();
-
-  provider->load_from_resource("/com/github/wwmm/pulseeffects/ui/" +
-                               css_file_name);
-
-  auto screen = Gdk::Screen::get_default();
-  auto priority = GTK_STYLE_PROVIDER_PRIORITY_APPLICATION;
-
-  Gtk::StyleContext::add_provider_for_screen(screen, provider, priority);
 }
 
 void ApplicationUi::update_headerbar_subtitle(const int& index) {
