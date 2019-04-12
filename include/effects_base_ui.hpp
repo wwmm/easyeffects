@@ -4,6 +4,7 @@
 #include <giomm/settings.h>
 #include <gtkmm/box.h>
 #include <gtkmm/builder.h>
+#include <gtkmm/eventbox.h>
 #include <gtkmm/listbox.h>
 #include <gtkmm/stack.h>
 #include <memory>
@@ -33,12 +34,46 @@ class EffectsBaseUi {
   template <typename T>
   void add_to_listbox(T p) {
     auto row = Gtk::manage(new Gtk::ListBoxRow());
+    auto eventBox = Gtk::manage(new Gtk::EventBox());
 
-    row->add(*p->listbox_control);
+    eventBox->add(*p->listbox_control);
+
+    row->add(*eventBox);
     row->set_name(p->name);
     row->set_margin_bottom(6);
     row->set_margin_right(6);
     row->set_margin_left(6);
+
+    std::vector<Gtk::TargetEntry> listTargets;
+
+    auto entry = Gtk::TargetEntry("Gtk::ListBoxRow", Gtk::TARGET_SAME_APP, 0);
+
+    listTargets.push_back(entry);
+
+    eventBox->drag_source_set(listTargets, Gdk::MODIFIER_MASK,
+                              Gdk::ACTION_MOVE);
+
+    eventBox->drag_dest_set(listTargets, Gtk::DEST_DEFAULT_ALL,
+                            Gdk::ACTION_MOVE);
+
+    eventBox->signal_drag_data_get().connect(
+        [=](const Glib::RefPtr<Gdk::DragContext>& context,
+            Gtk::SelectionData& selection_data, guint info, guint time) {
+          selection_data.set(selection_data.get_target(), p->name);
+        });
+
+    eventBox->signal_drag_data_received().connect(
+        [=](const Glib::RefPtr<Gdk::DragContext>& context, int x, int y,
+            const Gtk::SelectionData& selection_data, guint info, guint time) {
+          const int length = selection_data.get_length();
+
+          if ((length >= 0) && (selection_data.get_format() == 8)) {
+            std::cout << "Received " << selection_data.get_data_as_string()
+                      << " in " + p->name << std::endl;
+          }
+
+          context->drag_finish(false, false, time);
+        });
 
     listbox->add(*row);
   }
