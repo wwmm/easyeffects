@@ -2,12 +2,18 @@
 
 ## [Unreleased
 
+## [4.5.9]
 ### Added
 - Improved maximizer and compressor help
 - Improved Italian translations
 
 ### Fixed
 - fixed wrong release unit in maximizer interface
+
+### Removed
+- Removed the destructive-action class from the "remove buttons". This used to
+make them red but in recent GTK versions this has been a little buggy. Sometimes
+it works sometimes it doesn't...
 
 ## [4.5.8]
 ### Fixed

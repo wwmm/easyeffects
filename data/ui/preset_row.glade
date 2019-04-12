@@ -86,9 +86,6 @@
             <property name="valign">center</property>
             <property name="image">image_delete</property>
             <property name="always_show_image">True</property>
-            <style>
-              <class name="destructive-action"/>
-            </style>
           </object>
           <packing>
             <property name="left_attach">4</property>
