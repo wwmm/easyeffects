@@ -2,6 +2,7 @@
 <gresources>
     <gresource prefix="/com/github/wwmm/pulseeffects">
         <file>about.glade</file>
+        <file>ui/custom.css</file>
         <file>ui/application.glade</file>
         <file>ui/spectrum.glade</file>
         <file>ui/spectrum_settings.glade</file>

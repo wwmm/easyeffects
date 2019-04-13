@@ -75,6 +75,27 @@ class EffectsBaseUi {
           context->drag_finish(false, false, time);
         });
 
+    eventBox->signal_drag_begin().connect(
+        [=](const Glib::RefPtr<Gdk::DragContext>& context) {
+          auto w = row->get_allocated_width();
+          auto h = row->get_allocated_height();
+
+          auto surface =
+              Cairo::ImageSurface::create(Cairo::FORMAT_ARGB32, w, h);
+
+          auto ctx = Cairo::Context::create(surface);
+
+          auto styleContext = row->get_style_context();
+
+          styleContext->add_class("drag-listboxrow-icon");
+
+          gtk_widget_draw(GTK_WIDGET(row->gobj()), ctx->cobj());
+
+          styleContext->remove_class("drag-listboxrow-icon");
+
+          context->set_icon(surface);
+        });
+
     listbox->add(*row);
   }
 
