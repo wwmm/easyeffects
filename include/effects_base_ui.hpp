@@ -81,23 +81,25 @@ class EffectsBaseUi {
 
             auto r1 = std::find(std::begin(vorder), std::end(vorder), src);
 
-            // for (auto v : vorder) {
-            //   std::cout << v << std::endl;
-            // }
+            if (r1 != std::end(vorder)) {
+              // for (auto v : vorder) {
+              //   std::cout << v << std::endl;
+              // }
 
-            vorder.erase(r1);
+              vorder.erase(r1);
 
-            auto r2 = std::find(std::begin(vorder), std::end(vorder), dst);
+              auto r2 = std::find(std::begin(vorder), std::end(vorder), dst);
 
-            vorder.insert(r2, src);
+              vorder.insert(r2, src);
 
-            settings->set_string_array("plugins", vorder);
+              settings->set_string_array("plugins", vorder);
 
-            // std::cout << "" << std::endl;
+              // std::cout << "" << std::endl;
 
-            // for (auto v : vorder) {
-            //   std::cout << v << std::endl;
-            // }
+              // for (auto v : vorder) {
+              //   std::cout << v << std::endl;
+              // }
+            }
           }
 
           context->drag_finish(false, false, time);

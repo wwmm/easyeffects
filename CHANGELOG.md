@@ -2,8 +2,10 @@
 
 ## [Unreleased
 
+## [4.5.9]
 ### Added
-- The user can use drag and drop to change effects order.
+- Drag and drop can be used to change effects order. Take a look at
+https://github.com/wwmm/pulseeffects/issues/447 for more information.
 - Improved maximizer and compressor help
 - Improved Italian translations
 
