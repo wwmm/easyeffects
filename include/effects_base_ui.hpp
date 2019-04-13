@@ -68,8 +68,36 @@ class EffectsBaseUi {
           const int length = selection_data.get_length();
 
           if ((length >= 0) && (selection_data.get_format() == 8)) {
-            std::cout << "Received " << selection_data.get_data_as_string()
-                      << " in " + p->name << std::endl;
+            auto src = selection_data.get_data_as_string();
+            auto dst = p->name;
+
+            // std::cout << "Received " << src << " in " + dst << std::endl;
+
+            auto order = Glib::Variant<std::vector<std::string>>();
+
+            settings->get_value("plugins", order);
+
+            auto vorder = order.get();
+
+            auto r1 = std::find(std::begin(vorder), std::end(vorder), src);
+
+            // for (auto v : vorder) {
+            //   std::cout << v << std::endl;
+            // }
+
+            vorder.erase(r1);
+
+            auto r2 = std::find(std::begin(vorder), std::end(vorder), dst);
+
+            vorder.insert(r2, src);
+
+            settings->set_string_array("plugins", vorder);
+
+            // std::cout << "" << std::endl;
+
+            // for (auto v : vorder) {
+            //   std::cout << v << std::endl;
+            // }
           }
 
           context->drag_finish(false, false, time);

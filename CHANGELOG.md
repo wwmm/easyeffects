@@ -2,8 +2,8 @@
 
 ## [Unreleased
 
-## [4.5.9]
 ### Added
+- The user can use drag and drop to change effects order.
 - Improved maximizer and compressor help
 - Improved Italian translations
 
