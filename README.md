@@ -64,8 +64,6 @@ Version 1.12.5 or higher
 - [zita-convolver](https://kokkinizita.linuxaudio.org/linuxaudio/)
 - [libebur128](https://github.com/jiixyj/libebur128)
 
-To be able to read documentation inside the GUI, you need [yelp](https://gitlab.gnome.org/GNOME/yelp) package.
-
 ## Changelog
 - For information about changes between versions take a look at our
 [changelog](https://github.com/wwmm/pulseeffects/blob/master/CHANGELOG.md)
@@ -103,6 +101,11 @@ flatpak install flathub com.github.wwmm.pulseeffects
 #### Installing from source
 
 See the wiki: [Installing from Source](https://github.com/wwmm/pulseeffects/wiki/Installation-from-Source), for detailed instructions.
+
+## Documentation
+
+PulseEffects documentation can be read inside the GUI installing 
+[yelp](https://gitlab.gnome.org/GNOME/yelp) package.
 
 ## Frequently asked questions
 
