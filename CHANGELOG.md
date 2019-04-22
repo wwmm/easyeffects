@@ -2,6 +2,9 @@
 
 ## [Unreleased
 
+### Added
+- Updated Indonesian translations.
+
 ## [4.5.9]
 ### Added
 - Drag and drop can be used to change effects order. Take a look at
