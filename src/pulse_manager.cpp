@@ -229,8 +229,8 @@ void PulseManager::subscribe_to_events() {
                     pm->server_info.server_name = info->server_name;
                     pm->server_info.server_version = info->server_version;
 
-                    auto sink = info->default_sink_name;
-                    auto source = info->default_source_name;
+                    std::string sink = info->default_sink_name;
+                    std::string source = info->default_source_name;
 
                     pm->server_info.default_sink_name = sink;
                     pm->server_info.default_source_name = source;
