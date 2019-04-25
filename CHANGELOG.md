@@ -4,6 +4,9 @@
 
 ### Added
 - Updated Indonesian translations.
+- Presets can now be automatically loaded when headphones are plugged in the
+soundcard jack. This did not work before because non bluetooth headphones do
+not create a new output device. They create are show as a port in the soundcard.
 
 ## [4.5.9]
 ### Added
