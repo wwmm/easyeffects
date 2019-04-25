@@ -248,20 +248,22 @@ void PresetsMenuUi::populate_listbox(PresetType preset_type) {
 
     connections.push_back(autoload_btn->signal_toggled().connect([=]() {
       if (preset_type == PresetType::output) {
-        auto sink = app->pm->server_info.default_sink_name;
+        auto dev_name = build_device_name(
+            preset_type, app->pm->server_info.default_sink_name);
 
         if (autoload_btn->get_active()) {
-          app->presets_manager->add_autoload(sink, name);
+          app->presets_manager->add_autoload(dev_name, name);
         } else {
-          app->presets_manager->remove_autoload(sink, name);
+          app->presets_manager->remove_autoload(dev_name, name);
         }
       } else {
-        auto source = app->pm->server_info.default_source_name;
+        auto dev_name = build_device_name(
+            preset_type, app->pm->server_info.default_source_name);
 
         if (autoload_btn->get_active()) {
-          app->presets_manager->add_autoload(source, name);
+          app->presets_manager->add_autoload(dev_name, name);
         } else {
-          app->presets_manager->remove_autoload(source, name);
+          app->presets_manager->remove_autoload(dev_name, name);
         }
       }
 
@@ -304,16 +306,43 @@ void PresetsMenuUi::reset_menu_button_label() {
   settings->set_string("last-used-preset", _("Presets"));
 }
 
+std::string PresetsMenuUi::build_device_name(PresetType preset_type,
+                                             const std::string& device) {
+  std::string port, dev_name;
+
+  if (preset_type == PresetType::output) {
+    auto info = app->pm->get_sink_info(device);
+
+    port = info->active_port;
+  } else {
+    auto info = app->pm->get_source_info(device);
+
+    port = info->active_port;
+  }
+
+  if (port != "null") {
+    dev_name = device + ":" + port;
+  } else {
+    dev_name = device;
+  }
+
+  return dev_name;
+}
+
 bool PresetsMenuUi::is_autoloaded(PresetType preset_type,
                                   const std::string& name) {
   std::string current_autoload;
 
   if (preset_type == PresetType::output) {
-    current_autoload = app->presets_manager->find_autoload(
-        app->pm->server_info.default_sink_name);
+    auto dev_name =
+        build_device_name(preset_type, app->pm->server_info.default_sink_name);
+
+    current_autoload = app->presets_manager->find_autoload(dev_name);
   } else {
-    current_autoload = app->presets_manager->find_autoload(
-        app->pm->server_info.default_source_name);
+    auto dev_name = build_device_name(preset_type,
+                                      app->pm->server_info.default_source_name);
+
+    current_autoload = app->presets_manager->find_autoload(dev_name);
   }
 
   if (current_autoload == name) {

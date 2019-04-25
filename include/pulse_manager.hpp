@@ -26,6 +26,7 @@ struct mySinkInfo {
   std::string monitor_source_name;
   uint rate;
   std::string format;
+  std::string active_port;
 };
 
 struct mySourceInfo {
@@ -34,6 +35,7 @@ struct mySourceInfo {
   std::string description;
   uint rate;
   std::string format;
+  std::string active_port;
 };
 
 struct AppInfo {

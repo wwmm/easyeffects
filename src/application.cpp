@@ -109,18 +109,42 @@ void Application::on_startup() {
   pm->new_default_sink.connect([&](auto name) {
     util::debug("new default sink: " + name);
 
-    sie->set_output_sink_name(name);
-    soe->webrtc->set_probe_src_device(name + ".monitor");
+    if (name != "") {
+      sie->set_output_sink_name(name);
+      soe->webrtc->set_probe_src_device(name + ".monitor");
 
-    presets_manager->autoload(PresetType::output, name);
+      auto info = pm->get_sink_info(name);
+      auto port = info->active_port;
+      std::string dev_name;
+
+      if (port != "null") {
+        dev_name = name + ":" + port;
+      } else {
+        dev_name = name;
+      }
+
+      presets_manager->autoload(PresetType::output, dev_name);
+    }
   });
 
   pm->new_default_source.connect([&](auto name) {
     util::debug("new default source: " + name);
 
-    soe->set_source_monitor_name(name);
+    if (name != "") {
+      soe->set_source_monitor_name(name);
 
-    presets_manager->autoload(PresetType::input, name);
+      auto info = pm->get_source_info(name);
+      auto port = info->active_port;
+      std::string dev_name;
+
+      if (port != "null") {
+        dev_name = name + ":" + port;
+      } else {
+        dev_name = name;
+      }
+
+      presets_manager->autoload(PresetType::input, dev_name);
+    }
   });
 
   settings->signal_changed("blacklist-in").connect([=](auto key) {
