@@ -251,7 +251,14 @@ void Application::create_actions() {
     withdraw_notification("reset");
   });
 
+  add_action("quit", [&] {
+    auto window = get_active_window();
+
+    window->hide();
+  });
+
   set_accel_for_action("app.help", "F1");
+  set_accel_for_action("app.quit", "<Ctrl>Q");
 }
 
 void Application::check_version() {
