@@ -3,7 +3,7 @@
 ## [Unreleased
 
 ### Added
-- Updated Indonesian translations.
+- Updated Indonesian and Italian translations.
 - Presets can now be automatically loaded when wired headphones are plugged in
 the soundcard jack. This did not work before because wired headphones do not
 create a new output device. They create are show as a port in the soundcard.
