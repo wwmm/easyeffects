@@ -6,7 +6,9 @@
 - Updated Indonesian and Italian translations.
 - Presets can now be automatically loaded when wired headphones are plugged in
 the soundcard jack. This did not work before because wired headphones do not
-create a new output device. They create are show as a port in the soundcard.
+create a new output device. They are shown as a port in the current default
+output device. This feature comes with a price. People may have to redefine
+their automatic preset loading settings.
 - Ctrl+Q closes the window
 
 ## [4.5.9]
