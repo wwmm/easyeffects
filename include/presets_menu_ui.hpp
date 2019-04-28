@@ -25,6 +25,9 @@ class PresetsMenuUi : public Gtk::Grid {
 
   void on_presets_menu_button_clicked();
 
+  std::string build_device_name(PresetType preset_type,
+                                const std::string& device);
+
  private:
   std::string log_tag = "presets_menu_ui: ";
 

@@ -14,7 +14,8 @@ optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
             'zam-plugins: maximizer'
             'rubberband: pitch shifting'
             'lsp-plugins: equalizer, delay'
-            'mda.lv2: loudness')
+            'mda.lv2: loudness'
+            'yelp: documentation')
 makedepends=('meson' 'boost' 'itstool')
 options=(!emptydirs)
 provides=("${_pkgname}")

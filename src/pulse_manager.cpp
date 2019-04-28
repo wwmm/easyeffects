@@ -229,26 +229,21 @@ void PulseManager::subscribe_to_events() {
                     pm->server_info.server_name = info->server_name;
                     pm->server_info.server_version = info->server_version;
 
-                    auto sink = info->default_sink_name;
-                    auto source = info->default_source_name;
+                    std::string sink = info->default_sink_name;
+                    std::string source = info->default_source_name;
 
-                    if (sink != pm->server_info.default_sink_name) {
-                      pm->server_info.default_sink_name = sink;
+                    pm->server_info.default_sink_name = sink;
+                    pm->server_info.default_source_name = source;
 
-                      if (sink != std::string("PulseEffects_apps")) {
-                        Glib::signal_idle().connect_once(
-                            [pm, sink]() { pm->new_default_sink.emit(sink); });
-                      }
+                    if (sink != std::string("PulseEffects_apps")) {
+                      Glib::signal_idle().connect_once(
+                          [pm, sink]() { pm->new_default_sink.emit(sink); });
                     }
 
-                    if (source != pm->server_info.default_source_name) {
-                      pm->server_info.default_source_name = source;
-
-                      if (source != std::string("PulseEffects_mic.monitor")) {
-                        Glib::signal_idle().connect_once([pm, source]() {
-                          pm->new_default_source.emit(source);
-                        });
-                      }
+                    if (source != std::string("PulseEffects_mic.monitor")) {
+                      Glib::signal_idle().connect_once([pm, source]() {
+                        pm->new_default_source.emit(source);
+                      });
                     }
                   }
                 },
@@ -346,6 +341,12 @@ std::shared_ptr<mySinkInfo> PulseManager::get_sink_info(std::string name) {
           d->si->monitor_source_name = info->monitor_source_name;
           d->si->rate = info->sample_spec.rate;
           d->si->format = pa_sample_format_to_string(info->sample_spec.format);
+
+          if (info->active_port != nullptr) {
+            d->si->active_port = info->active_port->name;
+          } else {
+            d->si->active_port = "null";
+          }
         }
       },
       &data);
@@ -398,6 +399,12 @@ std::shared_ptr<mySourceInfo> PulseManager::get_source_info(std::string name) {
           d->si->description = info->description;
           d->si->rate = info->sample_spec.rate;
           d->si->format = pa_sample_format_to_string(info->sample_spec.format);
+
+          if (info->active_port != nullptr) {
+            d->si->active_port = info->active_port->name;
+          } else {
+            d->si->active_port = "null";
+          }
         }
       },
       &data);

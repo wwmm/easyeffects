@@ -187,7 +187,6 @@ msgstr "Soglia"
 
 #. (itstool) path: item/p
 #: C/compressor.page:45
-#, fuzzy
 msgid "If a signal surpass this level it will trigger the compression stage."
 msgstr "Se il segnale supera il valore specificato, verrà applicata la compressione. "
 "In modalità discendente, il segnale verrà ridotto in ampiezza se salirà oltre la "
@@ -1695,7 +1694,7 @@ msgstr "Fattore di qualità."
 #. (itstool) path: page/title
 #: C/pitch.page:9
 msgid "Pitch"
-msgstr "Intonazione"
+msgstr "Pitch"
 
 #. (itstool) path: page/p
 #: C/pitch.page:10
@@ -2117,7 +2116,7 @@ msgid ""
 "automatically switch on the per application switch that can be seen in the "
 "Applications entry."
 msgstr ""
-"Applica effetti all'ingresso(microfono) di tutte le applicazioni audio. "
+"Applica effetti all'ingresso (microfono) di tutte le applicazioni audio. "
 "Questa opzione attiverà automaticamente il selettore di tutti i programmi in "
 "registrazione elencati nella voce Applicazioni."
 
@@ -2549,8 +2548,8 @@ msgid ""
 "audio volume to a perceived loudness level that can be tweaked by the user."
 msgstr ""
 "Il Normalizzatore di PulseEffects si basa sulla libreria libebur128. Questo "
-"plugin modifica il volume dell'audio basandosi su un livello di intensità "
-"percepita che può essere regolato dall'utente."
+"plugin modifica il volume dell'audio basandosi su un livello di Loudness "
+"(intensità del volume) percepito che può essere regolato dall'utente."
 
 #. (itstool) path: title/em
 #: C/autogain.page:17
