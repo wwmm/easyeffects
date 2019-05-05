@@ -251,8 +251,9 @@ GstPadProbeReturn on_sink_event(GstPad* pad,
 
 }  // namespace
 
-PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
+PipelineBase::PipelineBase(const std::string& tag, PulseManager* pulse_manager)
     : log_tag(tag),
+      pm(pulse_manager),
       settings(g_settings_new("com.github.wwmm.pulseeffects")),
       spectrum_settings(
           g_settings_new("com.github.wwmm.pulseeffects.spectrum")),
@@ -322,8 +323,6 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
 
   g_object_set(spectrum, "bands", spectrum_nbands, nullptr);
   g_object_set(spectrum, "threshold", spectrum_threshold, nullptr);
-
-  set_caps(sampling_rate);
 
   g_signal_connect(src_type, "have-type", G_CALLBACK(on_src_type_changed),
                    this);

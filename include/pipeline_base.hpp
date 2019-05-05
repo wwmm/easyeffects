@@ -11,11 +11,14 @@
 
 class PipelineBase {
  public:
-  PipelineBase(const std::string& tag, const uint& sampling_rate);
+  PipelineBase(const std::string& tag, PulseManager* pulse_manager);
   virtual ~PipelineBase();
 
   bool playing = false;
+  int pulse_version = 0;
   std::string log_tag;
+
+  PulseManager* pm = nullptr;
 
   GstElement *pipeline = nullptr, *source = nullptr, *queue_src = nullptr,
              *sink = nullptr, *spectrum = nullptr, *spectrum_bin = nullptr,
@@ -60,6 +63,7 @@ class PipelineBase {
 
  protected:
   void set_pulseaudio_props(std::string props);
+  void set_caps(const uint& sampling_rate);
 
   void on_app_added(const std::shared_ptr<AppInfo>& app_info);
   void on_app_changed(const std::shared_ptr<AppInfo>& app_info);
@@ -70,7 +74,6 @@ class PipelineBase {
 
   std::vector<std::shared_ptr<AppInfo>> apps_list;
 
-  void set_caps(const uint& sampling_rate);
   void init_spectrum_bin();
   void init_effects_bin();
 

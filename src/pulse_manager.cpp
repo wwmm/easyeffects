@@ -468,10 +468,21 @@ std::shared_ptr<mySinkInfo> PulseManager::load_sink(std::string name,
   auto si = get_sink_info(name);
 
   if (si == nullptr) {  // sink is not loaded
-    std::string argument = "sink_name=" + name + " " +
-                           "sink_properties=" + description +
-                           "device.class=\"sound\"" + " " + "channels=2" + " " +
-                           "rate=" + std::to_string(rate);
+    std::string argument;
+
+    int version = std::stoi(server_info.server_version);
+
+    version = 13;
+
+    if (version >= 13) {
+      argument = "sink_name=" + name + " " + "sink_properties=" + description +
+                 "device.class=\"sound\"" + " " + "channels=2" + " " +
+                 "rate=" + std::to_string(rate) + " " + "norewinds=1";
+    } else {
+      argument = "sink_name=" + name + " " + "sink_properties=" + description +
+                 "device.class=\"sound\"" + " " + "channels=2" + " " +
+                 "rate=" + std::to_string(rate);
+    }
 
     pa_threaded_mainloop_lock(main_loop);
 
