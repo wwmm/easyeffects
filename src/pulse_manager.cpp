@@ -523,7 +523,7 @@ std::shared_ptr<mySinkInfo> PulseManager::load_sink(std::string name,
 
     int version = std::stoi(server_info.server_version);
 
-    version = 13;
+    // version = 13;
 
     if (version >= 13) {
       argument = "sink_name=" + name + " " + "sink_properties=" + description +
