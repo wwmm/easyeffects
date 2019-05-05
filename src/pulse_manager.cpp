@@ -192,6 +192,11 @@ void PulseManager::subscribe_to_events() {
                     si->format =
                         pa_sample_format_to_string(info->sample_spec.format);
 
+                    if (si->name == "PulseEffects_mic.monitor") {
+                      pm->mic_sink_info->rate = si->rate;
+                      pm->mic_sink_info->format = si->format;
+                    }
+
                     Glib::signal_idle().connect_once([pm, si = move(si)] {
                       pm->source_changed.emit(move(si));
                     });
@@ -246,6 +251,11 @@ void PulseManager::subscribe_to_events() {
                     si->rate = info->sample_spec.rate;
                     si->format =
                         pa_sample_format_to_string(info->sample_spec.format);
+
+                    if (si->name == "PulseEffects_apps") {
+                      pm->apps_sink_info->rate = si->rate;
+                      pm->apps_sink_info->format = si->format;
+                    }
 
                     Glib::signal_idle().connect_once([pm, si = move(si)] {
                       pm->sink_changed.emit(move(si));
@@ -513,13 +523,11 @@ std::shared_ptr<mySinkInfo> PulseManager::load_sink(std::string name,
 
     int version = std::stoi(server_info.server_version);
 
-    // version = 13;
+    version = 13;
 
     if (version >= 13) {
-      std::string formats = "formats=pcm,format.channels=\"2\"";
-
       argument = "sink_name=" + name + " " + "sink_properties=" + description +
-                 "device.class=\"sound\"" + " " + "norewinds=1" + " " + formats;
+                 "device.class=\"sound\"" + " " + "norewinds=1";
     } else {
       argument = "sink_name=" + name + " " + "sink_properties=" + description +
                  "device.class=\"sound\"" + " " + "channels=2" + " " +

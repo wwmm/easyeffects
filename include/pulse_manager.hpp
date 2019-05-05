@@ -238,7 +238,7 @@ class PulseManager {
       if (info->resample_method) {
         ai->resampler = info->resample_method;
       } else {
-        ai->resampler = "null";
+        ai->resampler = "none";
       }
 
       ai->format = pa_sample_format_to_string(info->sample_spec.format);
