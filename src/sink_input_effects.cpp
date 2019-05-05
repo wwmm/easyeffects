@@ -110,6 +110,8 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager)
       sigc::mem_fun(*this, &SinkInputEffects::on_app_changed));
   pm->sink_input_removed.connect(
       sigc::mem_fun(*this, &SinkInputEffects::on_app_removed));
+  pm->sink_changed.connect(
+      sigc::mem_fun(*this, &SinkInputEffects::on_sink_changed));
 
   g_settings_bind(settings, "buffer-out", source, "buffer-time",
                   G_SETTINGS_BIND_DEFAULT);

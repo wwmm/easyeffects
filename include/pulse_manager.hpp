@@ -97,8 +97,10 @@ class PulseManager {
   void get_sink_input_info(uint idx);
 
   sigc::signal<void, std::shared_ptr<mySourceInfo>> source_added;
+  sigc::signal<void, std::shared_ptr<mySourceInfo>> source_changed;
   sigc::signal<void, uint> source_removed;
   sigc::signal<void, std::shared_ptr<mySinkInfo>> sink_added;
+  sigc::signal<void, std::shared_ptr<mySinkInfo>> sink_changed;
   sigc::signal<void, uint> sink_removed;
   sigc::signal<void, std::string> new_default_sink;
   sigc::signal<void, std::string> new_default_source;

@@ -77,6 +77,8 @@ SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager)
       sigc::mem_fun(*this, &SourceOutputEffects::on_app_changed));
   pm->source_output_removed.connect(
       sigc::mem_fun(*this, &SourceOutputEffects::on_app_removed));
+  pm->source_changed.connect(
+      sigc::mem_fun(*this, &SourceOutputEffects::on_source_changed));
 
   g_settings_bind(settings, "buffer-in", source, "buffer-time",
                   G_SETTINGS_BIND_DEFAULT);

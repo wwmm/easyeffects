@@ -177,6 +177,27 @@ void PulseManager::subscribe_to_events() {
                 },
                 pm);
           } else if (e == PA_SUBSCRIPTION_EVENT_CHANGE) {
+            pa_context_get_source_info_by_index(
+                c, idx,
+                [](auto cx, auto info, auto eol, auto d) {
+                  if (info != nullptr) {
+                    auto pm = static_cast<PulseManager*>(d);
+
+                    auto si = std::make_shared<mySourceInfo>();
+
+                    si->name = info->name;
+                    si->index = info->index;
+                    si->description = info->description;
+                    si->rate = info->sample_spec.rate;
+                    si->format =
+                        pa_sample_format_to_string(info->sample_spec.format);
+
+                    Glib::signal_idle().connect_once([pm, si = move(si)] {
+                      pm->source_changed.emit(move(si));
+                    });
+                  }
+                },
+                pm);
           } else if (e == PA_SUBSCRIPTION_EVENT_REMOVE) {
             Glib::signal_idle().connect_once(
                 [pm, idx]() { pm->source_removed.emit(idx); });
@@ -212,6 +233,26 @@ void PulseManager::subscribe_to_events() {
                 },
                 pm);
           } else if (e == PA_SUBSCRIPTION_EVENT_CHANGE) {
+            pa_context_get_sink_info_by_index(
+                c, idx,
+                [](auto cx, auto info, auto eol, auto d) {
+                  if (info != nullptr) {
+                    auto pm = static_cast<PulseManager*>(d);
+                    auto si = std::make_shared<mySinkInfo>();
+
+                    si->name = info->name;
+                    si->index = info->index;
+                    si->description = info->description;
+                    si->rate = info->sample_spec.rate;
+                    si->format =
+                        pa_sample_format_to_string(info->sample_spec.format);
+
+                    Glib::signal_idle().connect_once([pm, si = move(si)] {
+                      pm->sink_changed.emit(move(si));
+                    });
+                  }
+                },
+                pm);
           } else if (e == PA_SUBSCRIPTION_EVENT_REMOVE) {
             Glib::signal_idle().connect_once(
                 [pm, idx]() { pm->sink_removed.emit(idx); });
@@ -472,12 +513,13 @@ std::shared_ptr<mySinkInfo> PulseManager::load_sink(std::string name,
 
     int version = std::stoi(server_info.server_version);
 
-    version = 13;
+    // version = 13;
 
     if (version >= 13) {
+      std::string formats = "formats=pcm,format.channels=\"2\"";
+
       argument = "sink_name=" + name + " " + "sink_properties=" + description +
-                 "device.class=\"sound\"" + " " + "channels=2" + " " +
-                 "rate=" + std::to_string(rate) + " " + "norewinds=1";
+                 "device.class=\"sound\"" + " " + "norewinds=1" + " " + formats;
     } else {
       argument = "sink_name=" + name + " " + "sink_properties=" + description +
                  "device.class=\"sound\"" + " " + "channels=2" + " " +

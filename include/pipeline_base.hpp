@@ -15,7 +15,6 @@ class PipelineBase {
   virtual ~PipelineBase();
 
   bool playing = false;
-  int pulse_version = 0;
   std::string log_tag;
 
   PulseManager* pm = nullptr;
@@ -69,7 +68,12 @@ class PipelineBase {
   void on_app_changed(const std::shared_ptr<AppInfo>& app_info);
   void on_app_removed(uint idx);
 
+  void on_sink_changed(std::shared_ptr<mySinkInfo> sink_info);
+  void on_source_changed(std::shared_ptr<mySourceInfo> source_info);
+
  private:
+  uint current_rate = 0;
+
   GstElement* capsfilter = nullptr;
 
   std::vector<std::shared_ptr<AppInfo>> apps_list;
