@@ -97,7 +97,6 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
       util::warning(log_tag +
                     "failed to create irs directory: " + irs_dir.string());
     }
-
   } else {
     util::debug(log_tag + "irs directory already exists: " + irs_dir.string());
   }
@@ -126,7 +125,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
         auto future = std::async(std::launch::async, f);
 
-        futures.clear();
+        // futures.clear();
         futures.push_back(std::move(future));
       }));
 }
@@ -393,6 +392,8 @@ void ConvolverUi::get_irs_info() {
     right_mag[n] = (right_mag[n] - min_right) / (max_right - min_right);
   }
 
+  get_irs_spectrum(rate);
+
   // updating interface with ir file info
 
   Glib::signal_idle().connect_once([=]() {
@@ -409,12 +410,10 @@ void ConvolverUi::get_irs_info() {
     auto fpath = boost::filesystem::path{path};
 
     label_file_name->set_text(fpath.stem().string());
+
+    left_plot->queue_draw();
+    right_plot->queue_draw();
   });
-
-  get_irs_spectrum(rate);
-
-  left_plot->queue_draw();
-  right_plot->queue_draw();
 
   delete[] kernel;
 }

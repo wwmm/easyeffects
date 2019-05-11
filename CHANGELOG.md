@@ -1,6 +1,12 @@
 # Changelog
 
 ## [Unreleased
+### Added
+- Pulseaudio avoid-resampling feature is now supported. You will need Pulseaudio
+13 for that.
+
+### Fixed
+- Changing convolver files should not make us crash anymore. 
 
 ## [4.6.0]
 ### Added
