@@ -519,15 +519,20 @@ std::shared_ptr<mySinkInfo> PulseManager::load_sink(std::string name,
   auto si = get_sink_info(name);
 
   if (si == nullptr) {  // sink is not loaded
+    int version;
     std::string argument;
 
-    int version = std::stoi(server_info.server_version);
-
-    // version = 13;
+    if (server_info.server_version.find("-") == std::string::npos) {
+      version = std::stoi(server_info.server_version);
+    } else {  // User is running a development version of Pulseaudio
+      version = 13;
+    }
 
     if (version >= 13) {
       argument = "sink_name=" + name + " " + "sink_properties=" + description +
                  "device.class=\"sound\"" + " " + "norewinds=1";
+
+      util::debug(log_tag + "Null sinks rewinds will be disabled");
     } else {
       argument = "sink_name=" + name + " " + "sink_properties=" + description +
                  "device.class=\"sound\"" + " " + "channels=2" + " " +
