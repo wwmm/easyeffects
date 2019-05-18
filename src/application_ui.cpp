@@ -22,7 +22,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // loading glade widgets
 
-  builder->get_widget("placeholder_spectrum", placeholder_spectrum);
   builder->get_widget("stack", stack);
   builder->get_widget("stack_menu_settings", stack_menu_settings);
   builder->get_widget("presets_menu_button", presets_menu_button);
@@ -37,7 +36,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   builder->get_widget("headerbar_icon2", headerbar_icon2);
   builder->get_widget("headerbar_info", headerbar_info);
 
-  spectrum_ui = SpectrumUi::add_to_box(placeholder_spectrum, app);
   presets_menu_ui = PresetsMenuUi::add_to_popover(presets_menu, app);
   sie_ui = SinkInputEffectsUi::add_to_stack(stack, app->sie.get());
   soe_ui = SourceOutputEffectsUi::add_to_stack(stack, app->soe.get());
@@ -45,6 +43,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   SpectrumSettingsUi::add_to_stack(stack_menu_settings, app);
   PulseSettingsUi::add_to_stack(stack_menu_settings, app);
   BlacklistSettingsUi::add_to_stack(stack_menu_settings);
+  pulse_info_ui = PulseInfoUi::add_to_stack(stack);
 
   stack->connect_property_changed(
       "visible-child",
@@ -124,11 +123,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     app->soe->get_latency();
   }
 
-  // temporary spectrum connection. it changes with the selected stack child
-
-  spectrum_connection = app->sie->new_spectrum.connect(
-      sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum));
-
   // updating headerbar info
 
   update_headerbar_subtitle(0);
@@ -154,8 +148,6 @@ ApplicationUi::~ApplicationUi() {
   for (auto c : connections) {
     c.disconnect();
   }
-
-  spectrum_connection.disconnect();
 
   util::debug(log_tag + "destroyed");
 }
@@ -234,23 +226,10 @@ void ApplicationUi::on_stack_visible_child_changed() {
   auto name = stack->get_visible_child_name();
 
   if (name == std::string("sink_inputs")) {
-    spectrum_connection.disconnect();
-
-    spectrum_connection = app->sie->new_spectrum.connect(
-        sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum));
-
     update_headerbar_subtitle(0);
-
   } else if (name == std::string("source_outputs")) {
-    spectrum_connection.disconnect();
-
-    spectrum_connection = app->soe->new_spectrum.connect(
-        sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum));
-
     update_headerbar_subtitle(1);
   }
-
-  spectrum_ui->clear_spectrum();
 }
 
 void ApplicationUi::on_calibration_button_clicked() {

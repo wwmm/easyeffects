@@ -13,10 +13,9 @@
 #include "application.hpp"
 #include "calibration_ui.hpp"
 #include "presets_menu_ui.hpp"
+#include "pulse_info_ui.hpp"
 #include "sink_input_effects_ui.hpp"
 #include "source_output_effects_ui.hpp"
-
-#include "spectrum_ui.hpp"
 
 class ApplicationUi : public Gtk::ApplicationWindow {
  public:
@@ -35,7 +34,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   Glib::RefPtr<Gio::Settings> settings;
 
-  Gtk::Box* placeholder_spectrum;
   Gtk::Button *calibration_button, *help_button;
   Gtk::Stack *stack, *stack_menu_settings;
   Gtk::Label* headerbar_info;
@@ -46,13 +44,13 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   Gtk::HeaderBar* headerbar;
   Gtk::Image *headerbar_icon1, *headerbar_icon2;
 
-  sigc::connection spectrum_connection;
   std::vector<sigc::connection> connections;
 
   PresetsMenuUi* presets_menu_ui;
-  SpectrumUi* spectrum_ui;
+
   SinkInputEffectsUi* sie_ui;
   SourceOutputEffectsUi* soe_ui;
+  PulseInfoUi* pulse_info_ui;
 
   int sie_latency = 0, soe_latency = 0;
 

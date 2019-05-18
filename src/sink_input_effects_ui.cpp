@@ -157,9 +157,14 @@ SinkInputEffectsUi::SinkInputEffectsUi(
 
   level_meters_connections();
   up_down_connections();
+
+  sie->new_spectrum.connect(
+      sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum));
 }
 
 SinkInputEffectsUi::~SinkInputEffectsUi() {
+  sie->disable_spectrum();
+
   util::debug(log_tag + "destroyed");
 }
 
