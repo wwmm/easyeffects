@@ -229,6 +229,8 @@ void ApplicationUi::on_stack_visible_child_changed() {
     update_headerbar_subtitle(0);
   } else if (name == std::string("source_outputs")) {
     update_headerbar_subtitle(1);
+  } else if (name == std::string("pulse_info")) {
+    // update_headerbar_subtitle(1);
   }
 }
 
