@@ -66,8 +66,12 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
   } else if (state == PA_CONTEXT_READY) {
     util::debug(pm->log_tag + "context is ready");
     util::debug(pm->log_tag + "connected to: " + pa_context_get_server(ctx));
-    util::debug(pm->log_tag + "protocol version: " +
-                std::to_string(pa_context_get_protocol_version(ctx)));
+
+    auto protocol = std::to_string(pa_context_get_protocol_version(ctx));
+
+    pm->server_info.protocol = protocol;
+
+    util::debug(pm->log_tag + "protocol version: " + protocol);
 
     pm->context_ready = true;
     pa_threaded_mainloop_signal(pm->main_loop, false);

@@ -4,21 +4,27 @@
 #include <giomm/settings.h>
 #include <gtkmm/box.h>
 #include <gtkmm/builder.h>
+#include <gtkmm/label.h>
 #include <gtkmm/stack.h>
+#include "pulse_manager.hpp"
 
 class PulseInfoUi : public Gtk::Box {
  public:
   PulseInfoUi(BaseObjectType* cobject,
-              const Glib::RefPtr<Gtk::Builder>& refBuilder);
+              const Glib::RefPtr<Gtk::Builder>& builder,
+              PulseManager* pm_ptr);
 
   virtual ~PulseInfoUi();
 
-  static PulseInfoUi* add_to_stack(Gtk::Stack* stack);
-
- protected:
-  std::string log_tag = "pulse_info: ";
+  static PulseInfoUi* add_to_stack(Gtk::Stack* stack, PulseManager* pm);
 
  private:
+  std::string log_tag = "pulse_info: ";
+
+  PulseManager* pm;
+
+  Gtk::Label *server_name, *server_version, *default_sink, *default_source,
+      *protocol;
 };
 
 #endif

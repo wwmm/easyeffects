@@ -43,7 +43,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   SpectrumSettingsUi::add_to_stack(stack_menu_settings, app);
   PulseSettingsUi::add_to_stack(stack_menu_settings, app);
   BlacklistSettingsUi::add_to_stack(stack_menu_settings);
-  pulse_info_ui = PulseInfoUi::add_to_stack(stack);
+  pulse_info_ui = PulseInfoUi::add_to_stack(stack, app->pm.get());
 
   stack->connect_property_changed(
       "visible-child",

@@ -15,6 +15,8 @@ struct myServerInfo {
   std::string server_version;
   std::string default_sink_name;
   std::string default_source_name;
+  std::string format;
+  std::string protocol;
 };
 
 struct mySinkInfo {
