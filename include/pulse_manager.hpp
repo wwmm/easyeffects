@@ -17,6 +17,7 @@ struct myServerInfo {
   std::string default_source_name;
   std::string protocol;
   std::string format;
+  std::string channel_map;
   uint rate;
   uint8_t channels;
 };

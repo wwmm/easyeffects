@@ -332,6 +332,7 @@ void PulseManager::update_server_info(const pa_server_info* info) {
   server_info.format = pa_sample_format_to_string(info->sample_spec.format);
   server_info.rate = info->sample_spec.rate;
   server_info.channels = info->sample_spec.channels;
+  server_info.channel_map = pa_channel_map_to_pretty_name(&info->channel_map);
 }
 
 void PulseManager::get_server_info() {

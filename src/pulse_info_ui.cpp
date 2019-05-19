@@ -13,6 +13,7 @@ PulseInfoUi::PulseInfoUi(BaseObjectType* cobject,
   builder->get_widget("server_sample_format", server_sample_format);
   builder->get_widget("server_rate", server_rate);
   builder->get_widget("server_channels", server_channels);
+  builder->get_widget("server_channel_mapping", server_channel_mapping);
 
   update_server_info();
 
@@ -51,4 +52,5 @@ void PulseInfoUi::update_server_info() {
   server_sample_format->set_text(pm->server_info.format);
   server_rate->set_text(std::to_string(pm->server_info.rate));
   server_channels->set_text(std::to_string(pm->server_info.channels));
+  server_channel_mapping->set_text(pm->server_info.channel_map);
 }
