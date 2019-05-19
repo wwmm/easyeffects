@@ -12,6 +12,9 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   builder->get_widget("stack", stack);
   builder->get_widget("listbox", listbox);
   builder->get_widget("apps_box", apps_box);
+  builder->get_widget("placeholder_spectrum", placeholder_spectrum);
+
+  spectrum_ui = SpectrumUi::add_to_box(placeholder_spectrum);
 
   auto row = Gtk::manage(new Gtk::ListBoxRow());
 

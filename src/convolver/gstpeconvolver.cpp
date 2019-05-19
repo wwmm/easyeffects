@@ -274,8 +274,6 @@ static GstFlowReturn gst_peconvolver_transform_ip(GstBaseTransform* trans,
       gst_peconvolver_setup_convolver(peconvolver);
     };
 
-    peconvolver->futures.clear();
-
     auto future = std::async(std::launch::async, f);
 
     peconvolver->futures.push_back(std::move(future));
@@ -349,7 +347,7 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver) {
 
       unsigned int options = 0;
 
-      // depending on buffer and kernel size OPT_FFTW_MEASURE may make un crash
+      // depending on buffer and kernel size OPT_FFTW_MEASURE may make us crash
       // options |= Convproc::OPT_FFTW_MEASURE;
       options |= Convproc::OPT_VECTOR_MODE;
 

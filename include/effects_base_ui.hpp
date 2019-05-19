@@ -11,6 +11,7 @@
 #include <vector>
 #include "app_info_ui.hpp"
 #include "pulse_manager.hpp"
+#include "spectrum_ui.hpp"
 
 class EffectsBaseUi {
  public:
@@ -28,6 +29,8 @@ class EffectsBaseUi {
   Glib::RefPtr<Gio::Settings> settings;
   Gtk::ListBox* listbox;
   Gtk::Stack* stack;
+
+  SpectrumUi* spectrum_ui;
 
   std::vector<sigc::connection> connections;
 
@@ -133,6 +136,8 @@ class EffectsBaseUi {
   Gtk::Box* apps_box;
 
   PulseManager* pm;
+
+  Gtk::Box* placeholder_spectrum;
 
   std::vector<AppInfoUi*> apps_list;
 

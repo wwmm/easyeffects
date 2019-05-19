@@ -1,6 +1,14 @@
 # Changelog
 
 ## [Unreleased
+### Added
+- Pulseaudio avoid-resampling feature is now supported. You will need Pulseaudio
+13 or later for that.
+
+### Fixed
+- Changing convolver files should not make us crash anymore.
+- Changing applications volume will not result in noises anymore. You will need
+Pulseaudio 13 or later for that.
 
 ## [4.6.0]
 ### Added

@@ -1,21 +1,20 @@
 #ifndef SPECTRUM_UI_HPP
 #define SPECTRUM_UI_HPP
 
+#include <giomm/settings.h>
 #include <gtkmm/box.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/drawingarea.h>
 #include <gtkmm/grid.h>
-#include "application.hpp"
 
 class SpectrumUi : public Gtk::Grid {
  public:
   SpectrumUi(BaseObjectType* cobject,
-             const Glib::RefPtr<Gtk::Builder>& builder,
-             Application* application);
+             const Glib::RefPtr<Gtk::Builder>& builder);
 
   virtual ~SpectrumUi();
 
-  static SpectrumUi* add_to_box(Gtk::Box* box, Application* app);
+  static SpectrumUi* add_to_box(Gtk::Box* box);
 
   void on_new_spectrum(const std::vector<float>& magnitudes);
 
@@ -25,8 +24,6 @@ class SpectrumUi : public Gtk::Grid {
   std::string log_tag = "spectrum_ui: ";
 
   Glib::RefPtr<Gio::Settings> settings;
-
-  Application* app;
 
   Gtk::DrawingArea* spectrum;
   Gdk::RGBA color, gradient_color;

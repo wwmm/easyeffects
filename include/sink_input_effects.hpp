@@ -29,10 +29,6 @@ class SinkInputEffects : public PipelineBase {
   SinkInputEffects(PulseManager* pulse_manager);
   virtual ~SinkInputEffects();
 
-  std::string log_tag;
-
-  PulseManager* pm = nullptr;
-
   std::vector<std::string> plugins_order, plugins_order_old;
   std::map<std::string, GstElement*> plugins;
 

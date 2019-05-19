@@ -15,6 +15,11 @@ struct myServerInfo {
   std::string server_version;
   std::string default_sink_name;
   std::string default_source_name;
+  std::string protocol;
+  std::string format;
+  std::string channel_map;
+  uint rate;
+  uint8_t channels;
 };
 
 struct mySinkInfo {
@@ -95,10 +100,13 @@ class PulseManager {
                                 uint value);
   void set_source_output_mute(const std::string& name, uint idx, bool state);
   void get_sink_input_info(uint idx);
+  void update_server_info(const pa_server_info* info);
 
   sigc::signal<void, std::shared_ptr<mySourceInfo>> source_added;
+  sigc::signal<void, std::shared_ptr<mySourceInfo>> source_changed;
   sigc::signal<void, uint> source_removed;
   sigc::signal<void, std::shared_ptr<mySinkInfo>> sink_added;
+  sigc::signal<void, std::shared_ptr<mySinkInfo>> sink_changed;
   sigc::signal<void, uint> sink_removed;
   sigc::signal<void, std::string> new_default_sink;
   sigc::signal<void, std::string> new_default_source;
@@ -108,6 +116,7 @@ class PulseManager {
   sigc::signal<void, std::shared_ptr<AppInfo>> source_output_added;
   sigc::signal<void, std::shared_ptr<AppInfo>> source_output_changed;
   sigc::signal<void, uint> source_output_removed;
+  sigc::signal<void> server_changed;
 
  private:
   std::string log_tag = "pulse_manager: ";
@@ -236,7 +245,7 @@ class PulseManager {
       if (info->resample_method) {
         ai->resampler = info->resample_method;
       } else {
-        ai->resampler = "null";
+        ai->resampler = "none";
       }
 
       ai->format = pa_sample_format_to_string(info->sample_spec.format);

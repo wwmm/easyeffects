@@ -20,10 +20,6 @@ class SourceOutputEffects : public PipelineBase {
   SourceOutputEffects(PulseManager* pulse_manager);
   virtual ~SourceOutputEffects();
 
-  std::string log_tag;
-
-  PulseManager* pm = nullptr;
-
   std::vector<std::string> plugins_order, plugins_order_old;
   std::map<std::string, GstElement*> plugins;
 

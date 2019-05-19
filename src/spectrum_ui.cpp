@@ -2,11 +2,9 @@
 #include "util.hpp"
 
 SpectrumUi::SpectrumUi(BaseObjectType* cobject,
-                       const Glib::RefPtr<Gtk::Builder>& builder,
-                       Application* application)
+                       const Glib::RefPtr<Gtk::Builder>& builder)
     : Gtk::Grid(cobject),
-      settings(Gio::Settings::create("com.github.wwmm.pulseeffects.spectrum")),
-      app(application) {
+      settings(Gio::Settings::create("com.github.wwmm.pulseeffects.spectrum")) {
   // loading glade widgets
 
   builder->get_widget("spectrum", spectrum);
@@ -54,9 +52,6 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject,
 }
 
 SpectrumUi::~SpectrumUi() {
-  app->sie->disable_spectrum();
-  app->soe->disable_spectrum();
-
   for (auto c : connections) {
     c.disconnect();
   }
@@ -64,13 +59,13 @@ SpectrumUi::~SpectrumUi() {
   util::debug(log_tag + "destroyed");
 }
 
-SpectrumUi* SpectrumUi::add_to_box(Gtk::Box* box, Application* app) {
+SpectrumUi* SpectrumUi::add_to_box(Gtk::Box* box) {
   auto builder = Gtk::Builder::create_from_resource(
       "/com/github/wwmm/pulseeffects/ui/spectrum.glade");
 
   SpectrumUi* ui;
 
-  builder->get_widget_derived("widgets_grid", ui, app);
+  builder->get_widget_derived("widgets_grid", ui);
 
   box->add(*ui);
 

@@ -251,8 +251,9 @@ GstPadProbeReturn on_sink_event(GstPad* pad,
 
 }  // namespace
 
-PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
+PipelineBase::PipelineBase(const std::string& tag, PulseManager* pulse_manager)
     : log_tag(tag),
+      pm(pulse_manager),
       settings(g_settings_new("com.github.wwmm.pulseeffects")),
       spectrum_settings(
           g_settings_new("com.github.wwmm.pulseeffects.spectrum")),
@@ -323,8 +324,6 @@ PipelineBase::PipelineBase(const std::string& tag, const uint& sampling_rate)
   g_object_set(spectrum, "bands", spectrum_nbands, nullptr);
   g_object_set(spectrum, "threshold", spectrum_threshold, nullptr);
 
-  set_caps(sampling_rate);
-
   g_signal_connect(src_type, "have-type", G_CALLBACK(on_src_type_changed),
                    this);
   g_signal_connect(source, "notify::buffer-time", G_CALLBACK(on_buffer_changed),
@@ -360,6 +359,8 @@ PipelineBase::~PipelineBase() {
 }
 
 void PipelineBase::set_caps(const uint& sampling_rate) {
+  current_rate = sampling_rate;
+
   auto caps_str = "audio/x-raw,format=F32LE,channels=2,rate=" +
                   std::to_string(sampling_rate);
 
@@ -536,6 +537,31 @@ void PipelineBase::on_app_removed(uint idx) {
                   apps_list.end());
 
   update_pipeline_state();
+}
+
+void PipelineBase::on_sink_changed(std::shared_ptr<mySinkInfo> sink_info) {
+  if (sink_info->name == "PulseEffects_apps") {
+    if (sink_info->rate != current_rate) {
+      gst_element_set_state(pipeline, GST_STATE_READY);
+
+      set_caps(sink_info->rate);
+
+      update_pipeline_state();
+    }
+  }
+}
+
+void PipelineBase::on_source_changed(
+    std::shared_ptr<mySourceInfo> source_info) {
+  if (source_info->name == "PulseEffects_mic.monitor") {
+    if (source_info->rate != current_rate) {
+      gst_element_set_state(pipeline, GST_STATE_READY);
+
+      set_caps(source_info->rate);
+
+      update_pipeline_state();
+    }
+  }
 }
 
 void PipelineBase::init_spectrum(const uint& sampling_rate) {

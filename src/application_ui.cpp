@@ -22,7 +22,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // loading glade widgets
 
-  builder->get_widget("placeholder_spectrum", placeholder_spectrum);
   builder->get_widget("stack", stack);
   builder->get_widget("stack_menu_settings", stack_menu_settings);
   builder->get_widget("presets_menu_button", presets_menu_button);
@@ -31,13 +30,13 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   builder->get_widget("calibration_button", calibration_button);
 
+  builder->get_widget("subtitle_grid", subtitle_grid);
   builder->get_widget("headerbar", headerbar);
   builder->get_widget("help_button", help_button);
   builder->get_widget("headerbar_icon1", headerbar_icon1);
   builder->get_widget("headerbar_icon2", headerbar_icon2);
   builder->get_widget("headerbar_info", headerbar_info);
 
-  spectrum_ui = SpectrumUi::add_to_box(placeholder_spectrum, app);
   presets_menu_ui = PresetsMenuUi::add_to_popover(presets_menu, app);
   sie_ui = SinkInputEffectsUi::add_to_stack(stack, app->sie.get());
   soe_ui = SourceOutputEffectsUi::add_to_stack(stack, app->soe.get());
@@ -45,6 +44,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   SpectrumSettingsUi::add_to_stack(stack_menu_settings, app);
   PulseSettingsUi::add_to_stack(stack_menu_settings, app);
   BlacklistSettingsUi::add_to_stack(stack_menu_settings);
+  pulse_info_ui = PulseInfoUi::add_to_stack(stack, app->pm.get());
 
   stack->connect_property_changed(
       "visible-child",
@@ -84,12 +84,12 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // sink inputs widgets
 
-  app->pm->sink_input_added.connect(
-      sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_added));
-  app->pm->sink_input_changed.connect(
-      sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_changed));
-  app->pm->sink_input_removed.connect(
-      sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_removed));
+  connections.push_back(app->pm->sink_input_added.connect(
+      sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_added)));
+  connections.push_back(app->pm->sink_input_changed.connect(
+      sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_changed)));
+  connections.push_back(app->pm->sink_input_removed.connect(
+      sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_removed)));
 
   connections.push_back(app->sie->new_latency.connect([=](int latency) {
     sie_latency = latency;
@@ -105,12 +105,12 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // source outputs widgets
 
-  app->pm->source_output_added.connect(
-      sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_added));
-  app->pm->source_output_changed.connect(
-      sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_changed));
-  app->pm->source_output_removed.connect(
-      sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_removed));
+  connections.push_back(app->pm->source_output_added.connect(
+      sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_added)));
+  connections.push_back(app->pm->source_output_changed.connect(
+      sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_changed)));
+  connections.push_back(app->pm->source_output_removed.connect(
+      sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_removed)));
 
   connections.push_back(app->soe->new_latency.connect([=](int latency) {
     soe_latency = latency;
@@ -123,11 +123,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   if (app->soe->playing) {
     app->soe->get_latency();
   }
-
-  // temporary spectrum connection. it changes with the selected stack child
-
-  spectrum_connection = app->sie->new_spectrum.connect(
-      sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum));
 
   // updating headerbar info
 
@@ -154,8 +149,6 @@ ApplicationUi::~ApplicationUi() {
   for (auto c : connections) {
     c.disconnect();
   }
-
-  spectrum_connection.disconnect();
 
   util::debug(log_tag + "destroyed");
 }
@@ -190,6 +183,8 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
   current_dev_rate.precision(1);
 
   if (index == 0) {  // sie
+    subtitle_grid->show();
+
     headerbar_icon1->set_from_icon_name("emblem-music-symbolic",
                                         Gtk::ICON_SIZE_MENU);
 
@@ -208,7 +203,9 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
         " ⟶ F32LE," + null_sink_rate.str() + " ⟶ " + sink->format + "," +
         current_dev_rate.str() + " ⟶ " + std::to_string(sie_latency) + "ms ⟶ ");
 
-  } else {  // soe
+  } else if (index == 1) {  // soe
+    subtitle_grid->show();
+
     headerbar_icon1->set_from_icon_name("audio-input-microphone-symbolic",
                                         Gtk::ICON_SIZE_MENU);
 
@@ -227,6 +224,8 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
         " ⟶ " + source->format + "," + current_dev_rate.str() + " ⟶ F32LE," +
         null_sink_rate.str() + " ⟶ " + app->pm->mic_sink_info->format + "," +
         null_sink_rate.str() + " ⟶ " + std::to_string(soe_latency) + "ms ⟶ ");
+  } else if (index == 2) {  // pulse info
+    subtitle_grid->hide();
   }
 }
 
@@ -234,23 +233,12 @@ void ApplicationUi::on_stack_visible_child_changed() {
   auto name = stack->get_visible_child_name();
 
   if (name == std::string("sink_inputs")) {
-    spectrum_connection.disconnect();
-
-    spectrum_connection = app->sie->new_spectrum.connect(
-        sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum));
-
     update_headerbar_subtitle(0);
-
   } else if (name == std::string("source_outputs")) {
-    spectrum_connection.disconnect();
-
-    spectrum_connection = app->soe->new_spectrum.connect(
-        sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum));
-
     update_headerbar_subtitle(1);
+  } else if (name == std::string("pulse_info")) {
+    update_headerbar_subtitle(2);
   }
-
-  spectrum_ui->clear_spectrum();
 }
 
 void ApplicationUi::on_calibration_button_clicked() {
