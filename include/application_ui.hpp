@@ -4,6 +4,7 @@
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/button.h>
+#include <gtkmm/grid.h>
 #include <gtkmm/headerbar.h>
 #include <gtkmm/image.h>
 #include <gtkmm/label.h>
@@ -41,6 +42,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   Gtk::MenuButton* presets_menu_button;
   Gtk::Label* presets_menu_label;
 
+  Gtk::Grid* subtitle_grid;
   Gtk::HeaderBar* headerbar;
   Gtk::Image *headerbar_icon1, *headerbar_icon2;
 

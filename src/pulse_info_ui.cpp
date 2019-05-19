@@ -14,17 +14,17 @@ PulseInfoUi::PulseInfoUi(BaseObjectType* cobject,
   builder->get_widget("server_rate", server_rate);
   builder->get_widget("server_channels", server_channels);
 
-  server_name->set_text(pm->server_info.server_name);
-  server_version->set_text(pm->server_info.server_version);
-  default_sink->set_text(pm->server_info.default_sink_name);
-  default_source->set_text(pm->server_info.default_source_name);
-  protocol->set_text(pm->server_info.protocol);
-  server_sample_format->set_text(pm->server_info.format);
-  server_rate->set_text(std::to_string(pm->server_info.rate));
-  server_channels->set_text(std::to_string(pm->server_info.channels));
+  update_server_info();
+
+  connections.push_back(
+      pm->server_changed.connect([=]() { update_server_info(); }));
 }
 
 PulseInfoUi::~PulseInfoUi() {
+  for (auto c : connections) {
+    c.disconnect();
+  }
+
   util::debug(log_tag + "destroyed");
 }
 
@@ -40,4 +40,15 @@ PulseInfoUi* PulseInfoUi::add_to_stack(Gtk::Stack* stack, PulseManager* pm) {
   stack->child_property_icon_name(*ui).set_value("audio-card-symbolic");
 
   return ui;
+}
+
+void PulseInfoUi::update_server_info() {
+  server_name->set_text(pm->server_info.server_name);
+  server_version->set_text(pm->server_info.server_version);
+  default_sink->set_text(pm->server_info.default_sink_name);
+  default_source->set_text(pm->server_info.default_source_name);
+  protocol->set_text(pm->server_info.protocol);
+  server_sample_format->set_text(pm->server_info.format);
+  server_rate->set_text(std::to_string(pm->server_info.rate));
+  server_channels->set_text(std::to_string(pm->server_info.channels));
 }

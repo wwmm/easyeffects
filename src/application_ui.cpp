@@ -30,6 +30,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   builder->get_widget("calibration_button", calibration_button);
 
+  builder->get_widget("subtitle_grid", subtitle_grid);
   builder->get_widget("headerbar", headerbar);
   builder->get_widget("help_button", help_button);
   builder->get_widget("headerbar_icon1", headerbar_icon1);
@@ -83,12 +84,12 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // sink inputs widgets
 
-  app->pm->sink_input_added.connect(
-      sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_added));
-  app->pm->sink_input_changed.connect(
-      sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_changed));
-  app->pm->sink_input_removed.connect(
-      sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_removed));
+  connections.push_back(app->pm->sink_input_added.connect(
+      sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_added)));
+  connections.push_back(app->pm->sink_input_changed.connect(
+      sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_changed)));
+  connections.push_back(app->pm->sink_input_removed.connect(
+      sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_removed)));
 
   connections.push_back(app->sie->new_latency.connect([=](int latency) {
     sie_latency = latency;
@@ -104,12 +105,12 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // source outputs widgets
 
-  app->pm->source_output_added.connect(
-      sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_added));
-  app->pm->source_output_changed.connect(
-      sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_changed));
-  app->pm->source_output_removed.connect(
-      sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_removed));
+  connections.push_back(app->pm->source_output_added.connect(
+      sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_added)));
+  connections.push_back(app->pm->source_output_changed.connect(
+      sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_changed)));
+  connections.push_back(app->pm->source_output_removed.connect(
+      sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_removed)));
 
   connections.push_back(app->soe->new_latency.connect([=](int latency) {
     soe_latency = latency;
@@ -182,6 +183,8 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
   current_dev_rate.precision(1);
 
   if (index == 0) {  // sie
+    subtitle_grid->show();
+
     headerbar_icon1->set_from_icon_name("emblem-music-symbolic",
                                         Gtk::ICON_SIZE_MENU);
 
@@ -200,7 +203,9 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
         " ⟶ F32LE," + null_sink_rate.str() + " ⟶ " + sink->format + "," +
         current_dev_rate.str() + " ⟶ " + std::to_string(sie_latency) + "ms ⟶ ");
 
-  } else {  // soe
+  } else if (index == 1) {  // soe
+    subtitle_grid->show();
+
     headerbar_icon1->set_from_icon_name("audio-input-microphone-symbolic",
                                         Gtk::ICON_SIZE_MENU);
 
@@ -219,6 +224,8 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
         " ⟶ " + source->format + "," + current_dev_rate.str() + " ⟶ F32LE," +
         null_sink_rate.str() + " ⟶ " + app->pm->mic_sink_info->format + "," +
         null_sink_rate.str() + " ⟶ " + std::to_string(soe_latency) + "ms ⟶ ");
+  } else if (index == 2) {  // pulse info
+    subtitle_grid->hide();
   }
 }
 
@@ -230,7 +237,7 @@ void ApplicationUi::on_stack_visible_child_changed() {
   } else if (name == std::string("source_outputs")) {
     update_headerbar_subtitle(1);
   } else if (name == std::string("pulse_info")) {
-    // update_headerbar_subtitle(1);
+    update_headerbar_subtitle(2);
   }
 }
 

@@ -114,6 +114,7 @@ class PulseManager {
   sigc::signal<void, std::shared_ptr<AppInfo>> source_output_added;
   sigc::signal<void, std::shared_ptr<AppInfo>> source_output_changed;
   sigc::signal<void, uint> source_output_removed;
+  sigc::signal<void> server_changed;
 
  private:
   std::string log_tag = "pulse_manager: ";

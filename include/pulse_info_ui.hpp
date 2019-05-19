@@ -25,6 +25,10 @@ class PulseInfoUi : public Gtk::Box {
 
   Gtk::Label *server_name, *server_version, *default_sink, *default_source,
       *protocol, *server_sample_format, *server_rate, *server_channels;
+
+  std::vector<sigc::connection> connections;
+
+  void update_server_info();
 };
 
 #endif

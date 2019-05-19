@@ -304,6 +304,9 @@ void PulseManager::subscribe_to_events() {
                         pm->new_default_source.emit(source);
                       });
                     }
+
+                    Glib::signal_idle().connect_once(
+                        [pm]() { pm->server_changed.emit(); });
                   }
                 },
                 pm);
