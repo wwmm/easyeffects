@@ -10,12 +10,18 @@ PulseInfoUi::PulseInfoUi(BaseObjectType* cobject,
   builder->get_widget("default_sink", default_sink);
   builder->get_widget("default_source", default_source);
   builder->get_widget("server_protocol", protocol);
+  builder->get_widget("server_sample_format", server_sample_format);
+  builder->get_widget("server_rate", server_rate);
+  builder->get_widget("server_channels", server_channels);
 
   server_name->set_text(pm->server_info.server_name);
   server_version->set_text(pm->server_info.server_version);
   default_sink->set_text(pm->server_info.default_sink_name);
   default_source->set_text(pm->server_info.default_source_name);
   protocol->set_text(pm->server_info.protocol);
+  server_sample_format->set_text(pm->server_info.format);
+  server_rate->set_text(std::to_string(pm->server_info.rate));
+  server_channels->set_text(std::to_string(pm->server_info.channels));
 }
 
 PulseInfoUi::~PulseInfoUi() {

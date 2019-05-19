@@ -283,6 +283,10 @@ void PulseManager::subscribe_to_events() {
 
                     pm->server_info.server_name = info->server_name;
                     pm->server_info.server_version = info->server_version;
+                    pm->server_info.format =
+                        pa_sample_format_to_string(info->sample_spec.format);
+                    pm->server_info.rate = info->sample_spec.rate;
+                    pm->server_info.channels = info->sample_spec.channels;
 
                     std::string sink = info->default_sink_name;
                     std::string source = info->default_source_name;
@@ -338,6 +342,10 @@ void PulseManager::get_server_info() {
           pm->server_info.server_version = info->server_version;
           pm->server_info.default_sink_name = info->default_sink_name;
           pm->server_info.default_source_name = info->default_source_name;
+          pm->server_info.format =
+              pa_sample_format_to_string(info->sample_spec.format);
+          pm->server_info.rate = info->sample_spec.rate;
+          pm->server_info.channels = info->sample_spec.channels;
 
           util::debug(pm->log_tag +
                       "Pulseaudio version: " + info->server_version);
