@@ -281,18 +281,10 @@ void PulseManager::subscribe_to_events() {
                   if (info != nullptr) {
                     auto pm = static_cast<PulseManager*>(d);
 
-                    pm->server_info.server_name = info->server_name;
-                    pm->server_info.server_version = info->server_version;
-                    pm->server_info.format =
-                        pa_sample_format_to_string(info->sample_spec.format);
-                    pm->server_info.rate = info->sample_spec.rate;
-                    pm->server_info.channels = info->sample_spec.channels;
+                    pm->update_server_info(info);
 
                     std::string sink = info->default_sink_name;
                     std::string source = info->default_source_name;
-
-                    pm->server_info.default_sink_name = sink;
-                    pm->server_info.default_source_name = source;
 
                     if (sink != std::string("PulseEffects_apps")) {
                       Glib::signal_idle().connect_once(
@@ -332,6 +324,16 @@ void PulseManager::subscribe_to_events() {
       this);
 }
 
+void PulseManager::update_server_info(const pa_server_info* info) {
+  server_info.server_name = info->server_name;
+  server_info.server_version = info->server_version;
+  server_info.default_sink_name = info->default_sink_name;
+  server_info.default_source_name = info->default_source_name;
+  server_info.format = pa_sample_format_to_string(info->sample_spec.format);
+  server_info.rate = info->sample_spec.rate;
+  server_info.channels = info->sample_spec.channels;
+}
+
 void PulseManager::get_server_info() {
   pa_threaded_mainloop_lock(main_loop);
 
@@ -341,14 +343,7 @@ void PulseManager::get_server_info() {
         auto pm = static_cast<PulseManager*>(d);
 
         if (info != nullptr) {
-          pm->server_info.server_name = info->server_name;
-          pm->server_info.server_version = info->server_version;
-          pm->server_info.default_sink_name = info->default_sink_name;
-          pm->server_info.default_source_name = info->default_source_name;
-          pm->server_info.format =
-              pa_sample_format_to_string(info->sample_spec.format);
-          pm->server_info.rate = info->sample_spec.rate;
-          pm->server_info.channels = info->sample_spec.channels;
+          pm->update_server_info(info);
 
           util::debug(pm->log_tag +
                       "Pulseaudio version: " + info->server_version);

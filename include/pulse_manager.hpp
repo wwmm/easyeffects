@@ -99,6 +99,7 @@ class PulseManager {
                                 uint value);
   void set_source_output_mute(const std::string& name, uint idx, bool state);
   void get_sink_input_info(uint idx);
+  void update_server_info(const pa_server_info* info);
 
   sigc::signal<void, std::shared_ptr<mySourceInfo>> source_added;
   sigc::signal<void, std::shared_ptr<mySourceInfo>> source_changed;
