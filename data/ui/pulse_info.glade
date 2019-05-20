@@ -47,9 +47,6 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="label" translatable="yes">Name</property>
-                <attributes>
-                  <attribute name="weight" value="bold"/>
-                </attributes>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -62,6 +59,9 @@
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="label">name</property>
+                <style>
+                  <class name="dim-label"/>
+                </style>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -74,9 +74,6 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="label" translatable="yes">Version</property>
-                <attributes>
-                  <attribute name="weight" value="bold"/>
-                </attributes>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -89,6 +86,9 @@
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="label">version</property>
+                <style>
+                  <class name="dim-label"/>
+                </style>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -101,9 +101,6 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="label" translatable="yes">Default Sink</property>
-                <attributes>
-                  <attribute name="weight" value="bold"/>
-                </attributes>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -116,9 +113,6 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="label" translatable="yes">Default Source</property>
-                <attributes>
-                  <attribute name="weight" value="bold"/>
-                </attributes>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -131,6 +125,9 @@
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="label">sink</property>
+                <style>
+                  <class name="dim-label"/>
+                </style>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -143,6 +140,9 @@
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="label">source</property>
+                <style>
+                  <class name="dim-label"/>
+                </style>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -155,9 +155,6 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="label" translatable="yes">Protocol</property>
-                <attributes>
-                  <attribute name="weight" value="bold"/>
-                </attributes>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -170,6 +167,9 @@
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="label">protocol</property>
+                <style>
+                  <class name="dim-label"/>
+                </style>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -182,9 +182,6 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="label" translatable="yes">Default Sample Format</property>
-                <attributes>
-                  <attribute name="weight" value="bold"/>
-                </attributes>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -197,6 +194,9 @@
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="label">format</property>
+                <style>
+                  <class name="dim-label"/>
+                </style>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -209,9 +209,6 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="label" translatable="yes">Default Sampling Rate</property>
-                <attributes>
-                  <attribute name="weight" value="bold"/>
-                </attributes>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -224,6 +221,9 @@
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="label">rate</property>
+                <style>
+                  <class name="dim-label"/>
+                </style>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -236,9 +236,6 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="label" translatable="yes">Channels</property>
-                <attributes>
-                  <attribute name="weight" value="bold"/>
-                </attributes>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -251,6 +248,9 @@
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="label">channels</property>
+                <style>
+                  <class name="dim-label"/>
+                </style>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -263,9 +263,6 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="label" translatable="yes">Channel Mapping</property>
-                <attributes>
-                  <attribute name="weight" value="bold"/>
-                </attributes>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -278,6 +275,9 @@
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="label">mapping</property>
+                <style>
+                  <class name="dim-label"/>
+                </style>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -287,7 +287,7 @@
           </object>
           <packing>
             <property name="name">page_server</property>
-            <property name="title" translatable="yes">Audio Server</property>
+            <property name="title" translatable="yes">Server</property>
           </packing>
         </child>
         <child>
@@ -332,7 +332,7 @@
           </object>
           <packing>
             <property name="name">page_modules</property>
-            <property name="title" translatable="yes">Server Modules</property>
+            <property name="title" translatable="yes">Modules</property>
             <property name="position">1</property>
           </packing>
         </child>
