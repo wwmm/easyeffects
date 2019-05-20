@@ -262,6 +262,9 @@
                     <property name="can_focus">False</property>
                     <property name="valign">end</property>
                     <property name="label">w</property>
+                    <style>
+                      <class name="dim-label"/>
+                    </style>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -340,6 +343,9 @@
         <property name="valign">center</property>
         <property name="label">band</property>
         <property name="max_width_chars">7</property>
+        <style>
+          <class name="dim-label"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">0</property>

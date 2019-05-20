@@ -530,13 +530,19 @@ std::shared_ptr<mySinkInfo> PulseManager::load_sink(std::string name,
   auto si = get_sink_info(name);
 
   if (si == nullptr) {  // sink is not loaded
-    int version;
     std::string argument;
 
-    if (server_info.server_version.find("-") == std::string::npos) {
-      version = std::stoi(server_info.server_version);
-    } else {  // User is running a development version of Pulseaudio
-      version = 13;
+    int version = std::stoi(server_info.server_version);
+
+    if (server_info.server_version.find("-") != std::string::npos) {
+      /* The user is probably running a Pulseaudio compiled from git.
+         norewinds will be added to Pulseaudio 13. People running its
+         development branch 12.0-**** can use the option norewind.
+      */
+
+      if (version == 12) {
+        version = 13;
+      }
     }
 
     if (version >= 13) {

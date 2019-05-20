@@ -35,6 +35,9 @@
             <property name="halign">center</property>
             <property name="valign">center</property>
             <property name="label">f</property>
+            <style>
+              <class name="dim-label"/>
+            </style>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -46,9 +49,6 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Format</property>
-            <attributes>
-              <attribute name="weight" value="semibold"/>
-            </attributes>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -62,6 +62,9 @@
             <property name="halign">center</property>
             <property name="valign">center</property>
             <property name="label">r</property>
+            <style>
+              <class name="dim-label"/>
+            </style>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -73,9 +76,6 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Rate</property>
-            <attributes>
-              <attribute name="weight" value="semibold"/>
-            </attributes>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -89,6 +89,9 @@
             <property name="halign">center</property>
             <property name="valign">center</property>
             <property name="label">c</property>
+            <style>
+              <class name="dim-label"/>
+            </style>
           </object>
           <packing>
             <property name="left_attach">2</property>
@@ -100,9 +103,6 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Channels</property>
-            <attributes>
-              <attribute name="weight" value="semibold"/>
-            </attributes>
           </object>
           <packing>
             <property name="left_attach">2</property>
@@ -116,6 +116,9 @@
             <property name="halign">center</property>
             <property name="valign">center</property>
             <property name="label">r</property>
+            <style>
+              <class name="dim-label"/>
+            </style>
           </object>
           <packing>
             <property name="left_attach">3</property>
@@ -127,9 +130,6 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Resampler</property>
-            <attributes>
-              <attribute name="weight" value="semibold"/>
-            </attributes>
           </object>
           <packing>
             <property name="left_attach">3</property>
@@ -143,6 +143,9 @@
             <property name="halign">center</property>
             <property name="valign">center</property>
             <property name="label">b</property>
+            <style>
+              <class name="dim-label"/>
+            </style>
           </object>
           <packing>
             <property name="left_attach">4</property>
@@ -154,9 +157,6 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Buffer</property>
-            <attributes>
-              <attribute name="weight" value="semibold"/>
-            </attributes>
           </object>
           <packing>
             <property name="left_attach">4</property>
@@ -170,6 +170,9 @@
             <property name="halign">center</property>
             <property name="valign">center</property>
             <property name="label">sl</property>
+            <style>
+              <class name="dim-label"/>
+            </style>
           </object>
           <packing>
             <property name="left_attach">5</property>
@@ -181,9 +184,6 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Latency</property>
-            <attributes>
-              <attribute name="weight" value="semibold"/>
-            </attributes>
           </object>
           <packing>
             <property name="left_attach">5</property>
@@ -197,6 +197,9 @@
             <property name="halign">center</property>
             <property name="valign">center</property>
             <property name="label">s</property>
+            <style>
+              <class name="dim-label"/>
+            </style>
           </object>
           <packing>
             <property name="left_attach">6</property>
@@ -208,9 +211,6 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">State</property>
-            <attributes>
-              <attribute name="weight" value="semibold"/>
-            </attributes>
           </object>
           <packing>
             <property name="left_attach">6</property>
