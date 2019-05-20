@@ -12,6 +12,7 @@
         <file>ui/effects_base.glade</file>
         <file>ui/app_info.glade</file>
         <file>ui/pulse_info.glade</file>
+        <file>ui/module_info.glade</file>
         <file>ui/autogain.glade</file>
         <file>ui/limiter.glade</file>
         <file>ui/compressor.glade</file>

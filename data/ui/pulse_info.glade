@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.22.1 -->
-<interface>
+<interface domain="pulseeffects">
   <requires lib="gtk+" version="3.20"/>
   <object class="GtkBox" id="widgets_box">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="halign">center</property>
-    <property name="valign">center</property>
     <property name="margin_left">6</property>
     <property name="margin_right">6</property>
     <property name="margin_top">6</property>
     <property name="margin_bottom">6</property>
+    <property name="hexpand">True</property>
+    <property name="vexpand">True</property>
     <property name="orientation">vertical</property>
     <property name="spacing">18</property>
     <child>
@@ -30,6 +30,8 @@
       <object class="GtkStack" id="stack">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="hexpand">True</property>
+        <property name="vexpand">True</property>
         <property name="transition_duration">250</property>
         <property name="transition_type">slide-left-right</property>
         <child>
@@ -289,34 +291,42 @@
           </packing>
         </child>
         <child>
-          <object class="GtkGrid">
+          <object class="GtkFrame">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="hexpand">True</property>
+            <property name="vexpand">True</property>
+            <property name="label_xalign">0</property>
+            <property name="shadow_type">in</property>
             <child>
-              <placeholder/>
+              <object class="GtkScrolledWindow">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+                <property name="propagate_natural_width">True</property>
+                <property name="propagate_natural_height">True</property>
+                <child>
+                  <object class="GtkViewport">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
+                    <property name="vexpand">True</property>
+                    <child>
+                      <object class="GtkListBox" id="listbox_modules">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="selection_mode">none</property>
+                        <property name="activate_on_single_click">False</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
             </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
+            <child type="label_item">
               <placeholder/>
             </child>
           </object>

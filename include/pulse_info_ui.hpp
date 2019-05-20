@@ -5,6 +5,7 @@
 #include <gtkmm/box.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/label.h>
+#include <gtkmm/listbox.h>
 #include <gtkmm/stack.h>
 #include "pulse_manager.hpp"
 
@@ -27,9 +28,13 @@ class PulseInfoUi : public Gtk::Box {
       *protocol, *server_sample_format, *server_rate, *server_channels,
       *server_channel_mapping;
 
+  Gtk::ListBox* listbox_modules;
+
   std::vector<sigc::connection> connections;
 
   void update_server_info();
+
+  int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
 };
 
 #endif

@@ -43,6 +43,12 @@ struct mySourceInfo {
   std::string active_port;
 };
 
+struct myModuleInfo {
+  std::string name;
+  uint index;
+  std::string argument;
+};
+
 struct AppInfo {
   std::string app_type;
   uint index;
@@ -101,6 +107,7 @@ class PulseManager {
   void set_source_output_mute(const std::string& name, uint idx, bool state);
   void get_sink_input_info(uint idx);
   void update_server_info(const pa_server_info* info);
+  void get_modules_info();
 
   sigc::signal<void, std::shared_ptr<mySourceInfo>> source_added;
   sigc::signal<void, std::shared_ptr<mySourceInfo>> source_changed;
@@ -117,6 +124,7 @@ class PulseManager {
   sigc::signal<void, std::shared_ptr<AppInfo>> source_output_changed;
   sigc::signal<void, uint> source_output_removed;
   sigc::signal<void> server_changed;
+  sigc::signal<void, std::shared_ptr<myModuleInfo>> module_info;
 
  private:
   std::string log_tag = "pulse_manager: ";

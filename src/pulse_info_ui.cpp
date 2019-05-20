@@ -14,11 +14,36 @@ PulseInfoUi::PulseInfoUi(BaseObjectType* cobject,
   builder->get_widget("server_rate", server_rate);
   builder->get_widget("server_channels", server_channels);
   builder->get_widget("server_channel_mapping", server_channel_mapping);
+  builder->get_widget("listbox_modules", listbox_modules);
 
-  update_server_info();
+  listbox_modules->set_sort_func(
+      sigc::mem_fun(*this, &PulseInfoUi::on_listbox_sort));
 
   connections.push_back(
       pm->server_changed.connect([=]() { update_server_info(); }));
+
+  connections.push_back(pm->module_info.connect([=](auto info) {
+    auto b = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/ui/module_info.glade");
+
+    Gtk::ListBoxRow* row;
+    Gtk::Label *module_name, *module_argument;
+
+    b->get_widget("module_row", row);
+    b->get_widget("module_name", module_name);
+    b->get_widget("module_argument", module_argument);
+
+    row->set_name(info->name);
+    module_name->set_text(info->name);
+    module_argument->set_text(info->argument);
+
+    listbox_modules->add(*row);
+    listbox_modules->show_all();
+  }));
+
+  update_server_info();
+
+  pm->get_modules_info();
 }
 
 PulseInfoUi::~PulseInfoUi() {
@@ -53,4 +78,21 @@ void PulseInfoUi::update_server_info() {
   server_rate->set_text(std::to_string(pm->server_info.rate));
   server_channels->set_text(std::to_string(pm->server_info.channels));
   server_channel_mapping->set_text(pm->server_info.channel_map);
+}
+
+int PulseInfoUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) {
+  auto name1 = row1->get_name();
+  auto name2 = row2->get_name();
+
+  std::vector<std::string> names = {name1, name2};
+
+  std::sort(names.begin(), names.end());
+
+  if (name1 == names[0]) {
+    return -1;
+  } else if (name2 == names[0]) {
+    return 1;
+  } else {
+    return 0;
+  }
 }

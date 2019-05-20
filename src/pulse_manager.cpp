@@ -1169,6 +1169,51 @@ void PulseManager::get_sink_input_info(uint idx) {
   pa_threaded_mainloop_unlock(main_loop);
 }
 
+void PulseManager::get_modules_info() {
+  pa_threaded_mainloop_lock(main_loop);
+
+  auto o = pa_context_get_module_info_list(
+      context,
+      [](auto c, auto info, auto eol, auto d) {
+        auto pm = static_cast<PulseManager*>(d);
+
+        if (eol < 0) {
+          pa_threaded_mainloop_signal(pm->main_loop, false);
+        } else if (eol > 0) {
+          pa_threaded_mainloop_signal(pm->main_loop, false);
+        } else if (info != nullptr) {
+          auto mi = std::make_shared<myModuleInfo>();
+
+          if (info->name) {
+            mi->name = info->name;
+            mi->index = info->index;
+
+            if (info->argument) {
+              mi->argument = info->argument;
+            } else {
+              mi->argument = "";
+            }
+
+            Glib::signal_idle().connect_once(
+                [pm, mi = move(mi)] { pm->module_info.emit(move(mi)); });
+          }
+        }
+      },
+      this);
+
+  if (o != nullptr) {
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+      pa_threaded_mainloop_wait(main_loop);
+    }
+
+    pa_operation_unref(o);
+  } else {
+    util::critical(log_tag + "failed to get modules info");
+  }
+
+  pa_threaded_mainloop_unlock(main_loop);
+}
+
 void PulseManager::unload_module(uint idx) {
   struct Data {
     uint idx;
