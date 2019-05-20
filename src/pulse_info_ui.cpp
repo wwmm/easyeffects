@@ -63,7 +63,7 @@ PulseInfoUi* PulseInfoUi::add_to_stack(Gtk::Stack* stack, PulseManager* pm) {
   builder->get_widget_derived("widgets_box", ui, pm);
 
   stack->add(*ui, "pulse_info");
-  stack->child_property_icon_name(*ui).set_value("audio-card-symbolic");
+  stack->child_property_icon_name(*ui).set_value("network-server-symbolic");
 
   return ui;
 }
