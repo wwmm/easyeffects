@@ -49,6 +49,12 @@ struct myModuleInfo {
   std::string argument;
 };
 
+struct myClientInfo {
+  std::string name;
+  uint index;
+  std::string binary;
+};
+
 struct AppInfo {
   std::string app_type;
   uint index;
@@ -108,6 +114,7 @@ class PulseManager {
   void get_sink_input_info(uint idx);
   void update_server_info(const pa_server_info* info);
   void get_modules_info();
+  void get_clients_info();
 
   sigc::signal<void, std::shared_ptr<mySourceInfo>> source_added;
   sigc::signal<void, std::shared_ptr<mySourceInfo>> source_changed;
@@ -125,6 +132,7 @@ class PulseManager {
   sigc::signal<void, uint> source_output_removed;
   sigc::signal<void> server_changed;
   sigc::signal<void, std::shared_ptr<myModuleInfo>> module_info;
+  sigc::signal<void, std::shared_ptr<myClientInfo>> client_info;
 
  private:
   std::string log_tag = "pulse_manager: ";

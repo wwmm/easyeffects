@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-20 12:22-0300\n"
+"POT-Creation-Date: 2019-05-20 23:29-0300\n"
 "PO-Revision-Date: 2019-01-17 18:30+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -257,6 +257,11 @@ msgstr ""
 #: data/ui/pulse_info.glade:335
 msgid "Modules"
 msgstr ""
+
+#: data/ui/pulse_info.glade:381
+#, fuzzy
+msgid "Clients"
+msgstr "Sen"
 
 #: data/ui/autogain.glade:24
 msgid "Auto Gain"

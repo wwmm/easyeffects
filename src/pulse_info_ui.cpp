@@ -5,6 +5,7 @@ PulseInfoUi::PulseInfoUi(BaseObjectType* cobject,
                          const Glib::RefPtr<Gtk::Builder>& builder,
                          PulseManager* pm_ptr)
     : Gtk::Box(cobject), pm(pm_ptr) {
+  builder->get_widget("stack", stack);
   builder->get_widget("server_name", server_name);
   builder->get_widget("server_version", server_version);
   builder->get_widget("default_sink", default_sink);
@@ -15,9 +16,17 @@ PulseInfoUi::PulseInfoUi(BaseObjectType* cobject,
   builder->get_widget("server_channels", server_channels);
   builder->get_widget("server_channel_mapping", server_channel_mapping);
   builder->get_widget("listbox_modules", listbox_modules);
+  builder->get_widget("listbox_clients", listbox_clients);
 
   listbox_modules->set_sort_func(
       sigc::mem_fun(*this, &PulseInfoUi::on_listbox_sort));
+
+  listbox_clients->set_sort_func(
+      sigc::mem_fun(*this, &PulseInfoUi::on_listbox_sort));
+
+  stack->connect_property_changed(
+      "visible-child",
+      sigc::mem_fun(*this, &PulseInfoUi::on_stack_visible_child_changed));
 
   connections.push_back(
       pm->server_changed.connect([=]() { update_server_info(); }));
@@ -41,9 +50,29 @@ PulseInfoUi::PulseInfoUi(BaseObjectType* cobject,
     listbox_modules->show_all();
   }));
 
+  connections.push_back(pm->client_info.connect([=](auto info) {
+    auto b = Gtk::Builder::create_from_resource(
+        "/com/github/wwmm/pulseeffects/ui/client_info.glade");
+
+    Gtk::ListBoxRow* row;
+    Gtk::Label *client_name, *client_binary;
+
+    b->get_widget("client_row", row);
+    b->get_widget("client_name", client_name);
+    b->get_widget("client_binary", client_binary);
+
+    row->set_name(info->name);
+    client_name->set_text(info->name);
+    client_binary->set_text(info->binary);
+
+    listbox_clients->add(*row);
+    listbox_clients->show_all();
+  }));
+
   update_server_info();
 
   pm->get_modules_info();
+  pm->get_clients_info();
 }
 
 PulseInfoUi::~PulseInfoUi() {
@@ -94,5 +123,29 @@ int PulseInfoUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) {
     return 1;
   } else {
     return 0;
+  }
+}
+
+void PulseInfoUi::on_stack_visible_child_changed() {
+  auto name = stack->get_visible_child_name();
+
+  if (name == std::string("page_server")) {
+    update_server_info();
+  } else if (name == std::string("page_modules")) {
+    auto children = listbox_modules->get_children();
+
+    for (auto c : children) {
+      listbox_modules->remove(*c);
+    }
+
+    pm->get_modules_info();
+  } else if (name == std::string("page_clients")) {
+    auto children = listbox_clients->get_children();
+
+    for (auto c : children) {
+      listbox_clients->remove(*c);
+    }
+
+    pm->get_clients_info();
   }
 }

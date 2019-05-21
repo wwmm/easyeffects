@@ -35,7 +35,7 @@
         <property name="transition_duration">250</property>
         <property name="transition_type">slide-left-right</property>
         <child>
-          <object class="GtkGrid">
+          <object class="GtkGrid" id="grid_server">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">center</property>
@@ -291,7 +291,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkFrame">
+          <object class="GtkFrame" id="frame_modules">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="hexpand">True</property>
@@ -334,6 +334,52 @@
             <property name="name">page_modules</property>
             <property name="title" translatable="yes">Modules</property>
             <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFrame" id="frame_clients">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="hexpand">True</property>
+            <property name="vexpand">True</property>
+            <property name="label_xalign">0</property>
+            <property name="shadow_type">in</property>
+            <child>
+              <object class="GtkScrolledWindow">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+                <property name="propagate_natural_width">True</property>
+                <property name="propagate_natural_height">True</property>
+                <child>
+                  <object class="GtkViewport">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
+                    <property name="vexpand">True</property>
+                    <child>
+                      <object class="GtkListBox" id="listbox_clients">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="selection_mode">none</property>
+                        <property name="activate_on_single_click">False</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label_item">
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="name">page_clients</property>
+            <property name="title" translatable="yes">Clients</property>
+            <property name="position">2</property>
           </packing>
         </child>
       </object>
