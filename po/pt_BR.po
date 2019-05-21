@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-20 23:29-0300\n"
-"PO-Revision-Date: 2019-05-20 23:29-0300\n"
+"POT-Creation-Date: 2019-05-21 12:54-0300\n"
+"PO-Revision-Date: 2019-05-21 12:54-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
@@ -257,6 +257,14 @@ msgstr "Módulos"
 #: data/ui/pulse_info.glade:381
 msgid "Clients"
 msgstr "Clientes"
+
+#: data/ui/pulse_info.glade:444
+msgid "File"
+msgstr "Arquivo"
+
+#: data/ui/pulse_info.glade:454
+msgid "Configuration"
+msgstr "Configuração"
 
 #: data/ui/autogain.glade:24
 msgid "Auto Gain"

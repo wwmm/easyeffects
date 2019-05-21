@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-20 23:29-0300\n"
+"POT-Creation-Date: 2019-05-21 12:54-0300\n"
 "PO-Revision-Date: 2017-10-14 10:20+0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: \n"
@@ -267,6 +267,15 @@ msgstr ""
 #: data/ui/pulse_info.glade:381
 msgid "Clients"
 msgstr ""
+
+#: data/ui/pulse_info.glade:444
+msgid "File"
+msgstr ""
+
+#: data/ui/pulse_info.glade:454
+#, fuzzy
+msgid "Configuration"
+msgstr "Kalibrering"
 
 #: data/ui/autogain.glade:24
 #, fuzzy

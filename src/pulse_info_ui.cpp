@@ -19,11 +19,16 @@ PulseInfoUi::PulseInfoUi(BaseObjectType* cobject,
   builder->get_widget("server_channel_mapping", server_channel_mapping);
   builder->get_widget("listbox_modules", listbox_modules);
   builder->get_widget("listbox_clients", listbox_clients);
+  builder->get_widget("listbox_config", listbox_config);
+  builder->get_widget("config_file", config_file);
 
   listbox_modules->set_sort_func(
       sigc::mem_fun(*this, &PulseInfoUi::on_listbox_sort));
 
   listbox_clients->set_sort_func(
+      sigc::mem_fun(*this, &PulseInfoUi::on_listbox_sort));
+
+  listbox_config->set_sort_func(
       sigc::mem_fun(*this, &PulseInfoUi::on_listbox_sort));
 
   stack->connect_property_changed(
@@ -163,15 +168,40 @@ void PulseInfoUi::get_pulse_conf() {
 
   while (pipe_stream && std::getline(pipe_stream, line) && !line.empty()) {
     std::vector<std::string> aux;
+    std::string key, value;
 
     boost::split(aux, line, boost::is_any_of("="));
 
     if (aux.size() > 1) {
-      std::cerr << aux[0] << "\t" << aux[1] << std::endl;
+      auto b = Gtk::Builder::create_from_resource(
+          "/com/github/wwmm/pulseeffects/ui/pulse_conf_file_line.glade");
+
+      Gtk::ListBoxRow* row;
+      Gtk::Label *conf_key, *conf_value;
+
+      b->get_widget("conf_row", row);
+      b->get_widget("conf_key", conf_key);
+      b->get_widget("conf_value", conf_value);
+
+      row->set_name(aux[0]);
+      conf_key->set_text(aux[0]);
+      conf_value->set_text(aux[1]);
+
+      listbox_config->add(*row);
     } else {
-      std::cerr << aux[0] << std::endl;
+      boost::split(aux, line, boost::is_any_of(":"));
+
+      if (aux.size() > 1) {
+        std::string tmp = aux[1];
+
+        boost::split(aux, tmp, boost::is_any_of("#"));
+
+        config_file->set_text(aux[0]);
+      }
     }
   }
 
   // c.wait();
+
+  listbox_config->show_all();
 }

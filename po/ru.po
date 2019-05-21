@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-20 23:29-0300\n"
+"POT-Creation-Date: 2019-05-21 12:54-0300\n"
 "PO-Revision-Date: 2018-07-18 22:14+0300\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -261,6 +261,15 @@ msgstr ""
 #, fuzzy
 msgid "Clients"
 msgstr "Центы"
+
+#: data/ui/pulse_info.glade:444
+msgid "File"
+msgstr ""
+
+#: data/ui/pulse_info.glade:454
+#, fuzzy
+msgid "Configuration"
+msgstr "Продолжительность"
 
 #: data/ui/autogain.glade:24
 msgid "Auto Gain"

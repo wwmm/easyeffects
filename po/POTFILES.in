@@ -10,6 +10,7 @@ data/ui/app_info.glade
 data/ui/module_info.glade
 data/ui/client_info.glade
 data/ui/pulse_info.glade
+data/ui/pulse_conf_file_line.glade
 data/ui/autogain.glade
 data/ui/limiter.glade
 data/ui/compressor.glade

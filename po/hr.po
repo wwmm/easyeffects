@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-20 23:29-0300\n"
+"POT-Creation-Date: 2019-05-21 12:54-0300\n"
 "PO-Revision-Date: 2018-11-22 20:12+0200\n"
 "Last-Translator: flipwise <tyx027@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -270,6 +270,15 @@ msgstr ""
 #, fuzzy
 msgid "Clients"
 msgstr "Centi"
+
+#: data/ui/pulse_info.glade:444
+msgid "File"
+msgstr ""
+
+#: data/ui/pulse_info.glade:454
+#, fuzzy
+msgid "Configuration"
+msgstr "Trajanje"
 
 #: data/ui/autogain.glade:24
 #, fuzzy
