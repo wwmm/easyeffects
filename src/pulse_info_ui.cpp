@@ -20,6 +20,7 @@ PulseInfoUi::PulseInfoUi(BaseObjectType* cobject,
   builder->get_widget("listbox_modules", listbox_modules);
   builder->get_widget("listbox_clients", listbox_clients);
   builder->get_widget("listbox_config", listbox_config);
+  builder->get_widget("listbox_resamplers", listbox_resamplers);
   builder->get_widget("config_file", config_file);
 
   listbox_modules->set_sort_func(
@@ -29,6 +30,9 @@ PulseInfoUi::PulseInfoUi(BaseObjectType* cobject,
       sigc::mem_fun(*this, &PulseInfoUi::on_listbox_sort));
 
   listbox_config->set_sort_func(
+      sigc::mem_fun(*this, &PulseInfoUi::on_listbox_sort));
+
+  listbox_resamplers->set_sort_func(
       sigc::mem_fun(*this, &PulseInfoUi::on_listbox_sort));
 
   stack->connect_property_changed(
@@ -82,6 +86,7 @@ PulseInfoUi::PulseInfoUi(BaseObjectType* cobject,
   pm->get_clients_info();
 
   get_pulse_conf();
+  get_resamplers();
 }
 
 PulseInfoUi::~PulseInfoUi() {
@@ -202,6 +207,29 @@ void PulseInfoUi::get_pulse_conf() {
   }
 
   // c.wait();
-
   listbox_config->show_all();
+}
+
+void PulseInfoUi::get_resamplers() {
+  boost::process::ipstream pipe_stream;
+  boost::process::child c("pulseaudio --dump-resample-methods",
+                          boost::process::std_out > pipe_stream);
+
+  std::string line;
+
+  while (pipe_stream && std::getline(pipe_stream, line) && !line.empty()) {
+    auto row = Gtk::manage(new Gtk::ListBoxRow());
+    auto label = Gtk::manage(new Gtk::Label());
+
+    row->set_name(line);
+
+    label->set_text(line);
+    label->set_halign(Gtk::Align::ALIGN_START);
+
+    row->add(*label);
+
+    listbox_resamplers->add(*row);
+  }
+
+  listbox_resamplers->show_all();
 }

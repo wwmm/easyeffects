@@ -29,12 +29,14 @@ class PulseInfoUi : public Gtk::Box {
       *protocol, *server_sample_format, *server_rate, *server_channels,
       *server_channel_mapping, *config_file;
 
-  Gtk::ListBox *listbox_modules, *listbox_clients, *listbox_config;
+  Gtk::ListBox *listbox_modules, *listbox_clients, *listbox_config,
+      *listbox_resamplers;
 
   std::vector<sigc::connection> connections;
 
   void update_server_info();
   void get_pulse_conf();
+  void get_resamplers();
 
   int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
   void on_stack_visible_child_changed();
