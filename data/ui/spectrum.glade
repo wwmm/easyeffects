@@ -41,6 +41,9 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="label">20 Hz</property>
+                    <style>
+                      <class name="dim-label"/>
+                    </style>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -54,6 +57,9 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="label">47 Hz</property>
+                    <style>
+                      <class name="dim-label"/>
+                    </style>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -74,6 +80,9 @@
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="label">112 Hz</property>
+                <style>
+                  <class name="dim-label"/>
+                </style>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -99,6 +108,9 @@
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="label">630 Hz</property>
+                <style>
+                  <class name="dim-label"/>
+                </style>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -117,6 +129,9 @@
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="label">3.5 kHz</property>
+                    <style>
+                      <class name="dim-label"/>
+                    </style>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -135,6 +150,9 @@
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
                         <property name="label">8.4 kHz</property>
+                        <style>
+                          <class name="dim-label"/>
+                        </style>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -148,6 +166,9 @@
                         <property name="can_focus">False</property>
                         <property name="halign">end</property>
                         <property name="label">20 kHz</property>
+                        <style>
+                          <class name="dim-label"/>
+                        </style>
                       </object>
                       <packing>
                         <property name="expand">False</property>

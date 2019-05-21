@@ -48,9 +48,6 @@
         <property name="can_focus">False</property>
         <property name="valign">center</property>
         <property name="label" translatable="yes">Exciter</property>
-        <attributes>
-          <attribute name="weight" value="bold"/>
-        </attributes>
       </object>
       <packing>
         <property name="expand">False</property>

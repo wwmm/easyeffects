@@ -22,9 +22,6 @@
         <property name="can_focus">False</property>
         <property name="valign">center</property>
         <property name="label" translatable="yes">Auto Gain</property>
-        <attributes>
-          <attribute name="weight" value="bold"/>
-        </attributes>
       </object>
       <packing>
         <property name="expand">False</property>
@@ -576,6 +573,7 @@
             <child>
               <object class="GtkLabel" id="m_label">
                 <property name="visible">True</property>
+                <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
@@ -613,6 +611,7 @@
             <child>
               <object class="GtkLabel" id="s_label">
                 <property name="visible">True</property>
+                <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
@@ -626,6 +625,7 @@
             <child>
               <object class="GtkLabel" id="i_label">
                 <property name="visible">True</property>
+                <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
@@ -690,6 +690,7 @@
             <child>
               <object class="GtkLabel" id="r_label">
                 <property name="visible">True</property>
+                <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
@@ -703,6 +704,7 @@
             <child>
               <object class="GtkLabel" id="g_label">
                 <property name="visible">True</property>
+                <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
@@ -741,6 +743,7 @@
             <child>
               <object class="GtkLabel" id="l_label">
                 <property name="visible">True</property>
+                <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
@@ -795,6 +798,7 @@
             <child>
               <object class="GtkLabel" id="lra_label">
                 <property name="visible">True</property>
+                <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>

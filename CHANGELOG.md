@@ -4,6 +4,10 @@
 ### Added
 - Pulseaudio avoid-resampling feature is now supported. You will need Pulseaudio
 13 or later for that.
+- We now show in the interface Pulseaudio information that you would usually
+need to use command line tools or opening its configuration files to see. Thins
+like which modules are loaded and the current configuration that its daemon is
+using.
 
 ### Fixed
 - Changing convolver files should not make us crash anymore.

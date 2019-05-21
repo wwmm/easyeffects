@@ -530,13 +530,19 @@ std::shared_ptr<mySinkInfo> PulseManager::load_sink(std::string name,
   auto si = get_sink_info(name);
 
   if (si == nullptr) {  // sink is not loaded
-    int version;
     std::string argument;
 
-    if (server_info.server_version.find("-") == std::string::npos) {
-      version = std::stoi(server_info.server_version);
-    } else {  // User is running a development version of Pulseaudio
-      version = 13;
+    int version = std::stoi(server_info.server_version);
+
+    if (server_info.server_version.find("-") != std::string::npos) {
+      /* The user is probably running a Pulseaudio compiled from git.
+         norewinds will be added to Pulseaudio 13. People running its
+         development branch 12.0-**** can use the option norewind.
+      */
+
+      if (version == 12) {
+        version = 13;
+      }
     }
 
     if (version >= 13) {
@@ -1164,6 +1170,98 @@ void PulseManager::get_sink_input_info(uint idx) {
   } else {
     util::critical(log_tag +
                    "failed to get sink input info: " + std::to_string(idx));
+  }
+
+  pa_threaded_mainloop_unlock(main_loop);
+}
+
+void PulseManager::get_modules_info() {
+  pa_threaded_mainloop_lock(main_loop);
+
+  auto o = pa_context_get_module_info_list(
+      context,
+      [](auto c, auto info, auto eol, auto d) {
+        auto pm = static_cast<PulseManager*>(d);
+
+        if (eol < 0) {
+          pa_threaded_mainloop_signal(pm->main_loop, false);
+        } else if (eol > 0) {
+          pa_threaded_mainloop_signal(pm->main_loop, false);
+        } else if (info != nullptr) {
+          auto mi = std::make_shared<myModuleInfo>();
+
+          if (info->name) {
+            mi->name = info->name;
+            mi->index = info->index;
+
+            if (info->argument) {
+              mi->argument = info->argument;
+            } else {
+              mi->argument = "";
+            }
+
+            Glib::signal_idle().connect_once(
+                [pm, mi = move(mi)] { pm->module_info.emit(move(mi)); });
+          }
+        }
+      },
+      this);
+
+  if (o != nullptr) {
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+      pa_threaded_mainloop_wait(main_loop);
+    }
+
+    pa_operation_unref(o);
+  } else {
+    util::critical(log_tag + "failed to get modules info");
+  }
+
+  pa_threaded_mainloop_unlock(main_loop);
+}
+
+void PulseManager::get_clients_info() {
+  pa_threaded_mainloop_lock(main_loop);
+
+  auto o = pa_context_get_client_info_list(
+      context,
+      [](auto c, auto info, auto eol, auto d) {
+        auto pm = static_cast<PulseManager*>(d);
+
+        if (eol < 0) {
+          pa_threaded_mainloop_signal(pm->main_loop, false);
+        } else if (eol > 0) {
+          pa_threaded_mainloop_signal(pm->main_loop, false);
+        } else if (info != nullptr) {
+          auto mi = std::make_shared<myClientInfo>();
+
+          if (info->name) {
+            mi->name = info->name;
+            mi->index = info->index;
+
+            if (pa_proplist_contains(info->proplist,
+                                     "application.process.binary") == 1) {
+              mi->binary = pa_proplist_gets(info->proplist,
+                                            "application.process.binary");
+            } else {
+              mi->binary = "";
+            }
+
+            Glib::signal_idle().connect_once(
+                [pm, mi = move(mi)] { pm->client_info.emit(move(mi)); });
+          }
+        }
+      },
+      this);
+
+  if (o != nullptr) {
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+      pa_threaded_mainloop_wait(main_loop);
+    }
+
+    pa_operation_unref(o);
+  } else {
+    util::critical(log_tag + "failed to get clients info");
   }
 
   pa_threaded_mainloop_unlock(main_loop);
