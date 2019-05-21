@@ -34,6 +34,7 @@ class PulseInfoUi : public Gtk::Box {
   std::vector<sigc::connection> connections;
 
   void update_server_info();
+  void get_pulse_conf();
 
   int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
   void on_stack_visible_child_changed();

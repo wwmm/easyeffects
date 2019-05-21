@@ -1,4 +1,6 @@
 #include "pulse_info_ui.hpp"
+#include <boost/algorithm/string.hpp>
+#include <boost/process.hpp>
 #include "util.hpp"
 
 PulseInfoUi::PulseInfoUi(BaseObjectType* cobject,
@@ -73,6 +75,8 @@ PulseInfoUi::PulseInfoUi(BaseObjectType* cobject,
 
   pm->get_modules_info();
   pm->get_clients_info();
+
+  get_pulse_conf();
 }
 
 PulseInfoUi::~PulseInfoUi() {
@@ -148,4 +152,26 @@ void PulseInfoUi::on_stack_visible_child_changed() {
 
     pm->get_clients_info();
   }
+}
+
+void PulseInfoUi::get_pulse_conf() {
+  boost::process::ipstream pipe_stream;
+  boost::process::child c("pulseaudio --dump-conf",
+                          boost::process::std_out > pipe_stream);
+
+  std::string line;
+
+  while (pipe_stream && std::getline(pipe_stream, line) && !line.empty()) {
+    std::vector<std::string> aux;
+
+    boost::split(aux, line, boost::is_any_of("="));
+
+    if (aux.size() > 1) {
+      std::cerr << aux[0] << "\t" << aux[1] << std::endl;
+    } else {
+      std::cerr << aux[0] << std::endl;
+    }
+  }
+
+  // c.wait();
 }
