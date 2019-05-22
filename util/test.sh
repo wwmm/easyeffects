@@ -42,7 +42,9 @@ graphical_run_test(){
 	# Xephyr is an X server in a seperate graphical window - for local tests on developer PCs
 	# Xvfb is a headless X server - for automated tests
 	# Let's automatically use Xephyr on developers PCs
-	if [ -n "$DISPLAY" ]; then X_SERVER=Xephyr; fi
+	if [ -n "$DISPLAY" ] && [ -z "$X_SERVER" ]; then
+		X_SERVER=Xephyr
+	fi
 	X_SERVER="${X_SERVER:-Xvfb}"
 
 	# Keep GUI consistent to compare screenshots
@@ -58,9 +60,11 @@ graphical_run_test(){
 	
 	case "$X_SERVER" in
 		Xephyr|xephyr )
+			echo "Using Xephyr X server"
 			Xephyr -br -ac -noreset -screen 1024x720 ":${virt_display}" &
 		;;
 		Xvfb|xvfb )
+			echo "Using Xvfb X server"
 			Xvfb ":${virt_display}" -screen 0 1024x720x24 &
 		;;
 	esac
