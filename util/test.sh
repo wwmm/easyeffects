@@ -35,6 +35,16 @@ cleanup(){
 export -f cleanup
 trap cleanup EXIT
 
+prepare_pulseaudio_in_container(){
+	# Prepare PulseAudio in CI docker container
+	# https://superuser.com/a/1223119
+	pulseaudio -D --exit-idle-time=-1
+	pactl load-module module-null-sink sink_name=DummyOutput sink_properties=device.description="Virtual_Dummy_Output"
+	pactl load-module module-null-sink sink_name=MicOutput sink_properties=device.description="Virtual_Microphone_Output"
+	pacmd set-default-source MicOutput.monitor
+	pacmd set-default-sink DummyOutput
+}
+
 # This test runs a graphical app and checks that it ran OK
 # The idea is described here (in Russian):
 # https://lists.altlinux.org/pipermail/sisyphus/2018-April/366621.html
@@ -120,5 +130,14 @@ graphical_run_test(){
 	# trap cleanup will run if nothing else is planned to be after this function
 }
 
-# TODO: parse command line arguements etc.
-graphical_run_test
+while [ -n "$1" ]
+do
+	case "$1" in
+		-x|--debug ) set -x ;;
+		prepare_pulseaudio_in_container ) prepare_pulseaudio_in_container ;;
+		graphical_run_test ) graphical_run_test ;;
+		# TODO: default to graphical_run_test for now
+		* ) graphical_run_test ;;
+	esac
+	shift
+done

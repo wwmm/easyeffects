@@ -4,10 +4,21 @@ jobs:
   archlinux:
     docker:
       - image: archlinux/base:latest
+      # dbus is needed for pulseaudio, dbus will be semi-working this way
+      # systemd-nspawn would be better than docker...
+      - entrypoint: /usr/lib/systemd/systemd
     steps:
       - checkout
+      # install build dependencies to compile PulseEffects
       - run: pacman -Syu --noconfirm && pacman -S --noconfirm pkg-config git gcc meson itstool boost appstream-glib gettext gtk3 gtkmm3 glibmm libpulse gstreamer gst-plugins-good gst-plugins-bad boost-libs libsigc++ libsndfile libsamplerate zita-convolver libebur128 lilv
+      # build and install PulseEffects
       - run: meson build && cd build && ninja -j 1 && ninja -j 1 install
+      # install dependencies for util/test.sh
+      - run: pacman -S --noconfirm which grep gawk scrot imagemagick xorg-server-xvfb pulseaudio
+      # start and set up pulseaudio in this docker container
+      - run: util/test.sh prepare_pulseaudio_in_container
+      # run the test in a headless X server
+      - run: env X_SERVER=Xvfb util/test.sh graphical_run_test
 
 workflows:
   version: 2
