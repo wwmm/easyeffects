@@ -1,11 +1,13 @@
 # Changelog
 
 ## [Unreleased
+
+## [4.6.1]
 ### Added
 - Pulseaudio avoid-resampling feature is now supported. You will need Pulseaudio
 13 or later for that.
 - We now show in the interface Pulseaudio information that you would usually
-need to use command line tools or opening its configuration files to see. Thins
+need to use command line tools or opening its configuration files to see. Things
 like which modules are loaded and the current configuration that its daemon is
 using.
 
