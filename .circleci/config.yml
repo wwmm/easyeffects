@@ -15,10 +15,16 @@ jobs:
       - run: meson build && cd build && ninja -j 1 && ninja -j 1 install
       # install dependencies for util/test.sh
       - run: pacman -S --noconfirm which grep gawk scrot imagemagick xorg-server-xvfb pulseaudio
+
+      # Find optional runtime dependencies of PulseEffects to make the list of effects and thus the size of the window
+      # the same as on developers' PCs to allow using the same master screenshot for local and containerized tests
+      # TODO: this does not work for some reason, PE does not detect these effects, investigate why
+      #- run: pacman -S --noconfirm calf lsp-plugins mda.lv2 rubberband zam-plugins
+
       # start and set up pulseaudio in this docker container
       - run: util/test.sh prepare_pulseaudio_in_container
       # run the test in a headless X server
-      - run: env X_SERVER=Xvfb util/test.sh graphical_run_test
+      - run: env X_SERVER=Xvfb CONTAINER=1 util/test.sh graphical_run_test
 
 workflows:
   version: 2

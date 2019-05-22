@@ -24,13 +24,17 @@ PE_BIN="${PE_BIN:-pulseeffects}"
 
 cleanup(){
 	( set +e +f
+	if [ -z "$(ls -1v ${tmp_dir}/*.pid)" ]; then
+		return 0
+	fi
 	while read -r line
 	do
 		kill "$line"
 		# TODO: check if has been actually killed
 	done < <(cat ${tmp_dir}/*.pid)
+	if [ -z "$NO_CLEANUP" ] && [ -n "$tmp_dir" ]; then rm -fr ${tmp_dir:?}/* ; fi
 	)
-	if [ -z "$NO_CLEANUP" ]; then rm -fr ${tmp_dir:?}/* ; fi
+	return 0
 }
 export -f cleanup
 trap cleanup EXIT
@@ -102,13 +106,16 @@ graphical_run_test(){
 	scrot --quality 100 "${tmp_dir}/current_screenshot_full.png"
 	
 	# master screenshot of test result
-	MASTER_SCREENSHOT="${MASTER_SCREENSHOT:-${dir0}/images/master_screenshot_test.png}"
+	if [ "$CONTAINER" = 1 ]
+		then MASTER_SCREENSHOT="${MASTER_SCREENSHOT:-${dir0}/images/master_screenshot_test.png}"
+		else MASTER_SCREENSHOT="${MASTER_SCREENSHOT:-${dir0}/images/master_screenshot_test_container.png}"
+	fi
 	if [ ! -f "$MASTER_SCREENSHOT" ]; then
 		echo "Master screenshot ${MASTER_SCREENSHOT} not found!"
 		return 1
 	fi
 	
-	# reduce nu,ber of colors in screenshot to remove unneeded artefacts and differences
+	# reduce number of colors in screenshot to remove unneeded artefacts and differences
 	convert +dither -colors 2 "$MASTER_SCREENSHOT" "${tmp_dir}/master_screenshot_reduced.png"
 	convert +dither -colors 2 "${tmp_dir}/current_screenshot_full.png" "${tmp_dir}/current_screenshot_cropped.png"
 	# TODO: what will we do with different default fonts?
