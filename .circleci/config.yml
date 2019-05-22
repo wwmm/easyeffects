@@ -6,7 +6,8 @@ jobs:
       - image: archlinux/base:latest
     steps:
       - checkout
-      - run: pacman -Syu --noconfirm && pacman -S --noconfirm pkg-config git gcc meson itstool boost appstream-glib gettext gtk3 gtkmm3 glibmm libpulse gstreamer gst-plugins-good gst-plugins-bad boost-libs libsigc++ libsndfile libsamplerate zita-convolver libebur128 lilv
+      - run: pacman -Syu --noconfirm && pacman -S --noconfirm pkg-config git gcc meson itstool boost appstream-glib gettext gtk3 gtkmm3 glibmm pulseaudio gstreamer gst-plugins-good gst-plugins-bad boost-libs libsigc++ libsndfile libsamplerate zita-convolver libebur128 lilv
+      - run: ./util/start_pulseaudio.sh
       - run: meson build && cd build && ninja -j 1 && ninja -j 1 install
 
 workflows:
