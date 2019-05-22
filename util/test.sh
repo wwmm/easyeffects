@@ -5,7 +5,7 @@
 # This script is for testing PulseEffects.
 # Can be ran locally after making changes in code
 # or in continious integration systems.
-# Requirements for CI containers: bash ImageMagic scrot Xfvb
+# Requirements for CI containers: bash ImageMagic scrot Xvfb
 # Authors:
 # - Mikhail Novosyolov <mikhailnov@dumalogiya.ru>
 
@@ -40,7 +40,7 @@ trap cleanup EXIT
 # https://lists.altlinux.org/pipermail/sisyphus/2018-April/366621.html
 graphical_run_test(){
 	# Xephyr is an X server in a seperate graphical window - for local tests on developer PCs
-	# Xfvb is a headless X server - for automated tests
+	# Xvfb is a headless X server - for automated tests
 	# Let's automatically use Xephyr on developers PCs
 	if [ -n "$DISPLAY" ]; then X_SERVER=Xephyr; fi
 	X_SERVER="${X_SERVER:-Xvfb}"
@@ -60,7 +60,7 @@ graphical_run_test(){
 		Xephyr|xephyr )
 			Xephyr -br -ac -noreset -screen 1024x720 ":${virt_display}" &
 		;;
-		Xfvb|xfvb )
+		Xvfb|xvfb )
 			Xvfb ":${virt_display}" -screen 0 1024x720x24 &
 		;;
 	esac
