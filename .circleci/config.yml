@@ -4,11 +4,55 @@ jobs:
   archlinux:
     docker:
       - image: archlinux/base:latest
+    environment:
+      LANG: C
+      DISPLAY: :10
+      G_MESSAGES_DEBUG: pulseeffects
     steps:
+      - run: date +%F > date
+      - run: mkdir -p pacman_cache && pacman -Sy --noconfirm && pacman -S tar --noconfirm
+      - restore_cache:
+          keys:
+            - pacman-cache-{{ checksum "date" }}
+      - run: |
+          pacman -Su --cachedir pacman_cache --noconfirm
+          pacman -S --cachedir pacman_cache --noconfirm pkg-config git gcc meson itstool boost appstream-glib gettext gtk3 gtkmm3 glibmm pulseaudio gstreamer gst-plugins-good gst-plugins-bad boost-libs libsigc++ libsndfile libsamplerate zita-convolver libebur128 lilv calf zam-plugins rubberband mda.lv2 lsp-plugins xorg-server-xvfb
+          pacman -Sc --cachedir pacman_cache --noconfirm
+      - save_cache:
+          key: pacman-cache-{{ checksum "date" }}
+          paths:
+            - pacman_cache
+      - run: rm -rf pacman_cache && rm -rf date
+      - run:
+          name: Starting dbus
+          command: echo 'export $(dbus-launch)' >> $BASH_ENV
+          background: true
+      - run:
+          name: Starting Xvfb
+          command: Xvfb $DISPLAY -screen 0 1280x1024x24
+          background: true
+      - run:
+          name: Starting Pulseaudio
+          command: |
+                pulseaudio -D --exit-idle-time=-1
+                pactl load-module module-null-sink sink_name=DummyOutput
+                pactl load-module module-null-source source_name=DummyInput
+                pacmd set-default-source DummyInput
+                pacmd set-default-sink DummyOutput
+                pactl list sinks
+                pactl list sources
       - checkout
-      - run: pacman -Syu --noconfirm && pacman -S --noconfirm pkg-config git gcc meson itstool boost appstream-glib gettext gtk3 gtkmm3 glibmm pulseaudio gstreamer gst-plugins-good gst-plugins-bad boost-libs libsigc++ libsndfile libsamplerate zita-convolver libebur128 lilv
-      - run: ./util/start_pulseaudio.sh
-      - run: meson build && cd build && ninja -j 1 && ninja -j 1 install
+      - run:
+          name: Compile and install PulseEffects
+          command: |
+                meson build && cd build && ninja -j 2 && ninja -j 2 install
+      - run:
+          name: Running PulseEffects
+          command: |
+                pulseeffects &
+                sleep 10
+                gst-launch-1.0 audiotestsrc num-buffers=50 ! queue ! pulsesink
+                gst-launch-1.0 audiotestsrc num-buffers=50 ! queue ! pulsesink
 
 workflows:
   version: 2
