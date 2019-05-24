@@ -2,7 +2,7 @@
 
 # general settings
 
-gsettings set com.github.wwmm.pulseeffects.enable-all-sourceoutputs false
+gsettings set com.github.wwmm.pulseeffects enable-all-sourceoutputs false
 
 # effects for sink inputs
 
