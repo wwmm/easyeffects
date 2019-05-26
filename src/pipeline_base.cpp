@@ -246,7 +246,23 @@ GstPadProbeReturn on_sink_event(GstPad* pad,
     pb->get_latency();
   }
 
-  return GST_PAD_PROBE_OK;
+  return GST_PAD_PROBE_PASS;
+}
+
+GstPadProbeReturn on_flush_event(GstPad* pad,
+                                 GstPadProbeInfo* info,
+                                 gpointer user_data) {
+  auto pb = static_cast<PipelineBase*>(user_data);
+
+  GstEvent* event = GST_PAD_PROBE_INFO_EVENT(info);
+
+  if (GST_EVENT_TYPE(event) == GST_EVENT_FLUSH_START) {
+    util::debug(pb->log_tag + "pausing our pipeline");
+
+    gst_element_set_state(pb->pipeline, GST_STATE_PAUSED);
+  }
+
+  return GST_PAD_PROBE_PASS;
 }
 
 }  // namespace
@@ -334,6 +350,8 @@ PipelineBase::PipelineBase(const std::string& tag, PulseManager* pulse_manager)
   auto sinkpad = gst_element_get_static_pad(sink, "sink");
 
   gst_pad_add_probe(sinkpad, GST_PAD_PROBE_TYPE_EVENT_UPSTREAM, on_sink_event,
+                    this, nullptr);
+  gst_pad_add_probe(sinkpad, GST_PAD_PROBE_TYPE_EVENT_FLUSH, on_flush_event,
                     this, nullptr);
 
   g_object_unref(sinkpad);
@@ -491,36 +509,9 @@ void PipelineBase::update_pipeline_state() {
         log_tag +
         "No app wants to play audio. We will flush and pause our pipeline.");
 
-    auto sinkpad = gst_element_get_static_pad(sink, "sink");
-
-    gst_pad_add_probe(sinkpad, GST_PAD_PROBE_TYPE_EVENT_FLUSH,
-                      [](auto pad, auto info, auto d) {
-                        auto pb = static_cast<PipelineBase*>(d);
-
-                        GstEvent* event = GST_PAD_PROBE_INFO_EVENT(info);
-
-                        if (GST_EVENT_TYPE(event) == GST_EVENT_FLUSH_START) {
-                          util::debug(pb->log_tag + "pausing our pipeline");
-
-                          gst_element_set_state(pb->pipeline, GST_STATE_PAUSED);
-
-                          return GST_PAD_PROBE_REMOVE;
-                          // return GST_PAD_PROBE_PASS;
-                        } else {
-                          // Glib::signal_idle().connect_once([pb]() {
-                          //   gst_element_set_state(pb->pipeline,
-                          //   GST_STATE_PAUSED);
-                          // });
-
-                          return GST_PAD_PROBE_PASS;
-                          // return GST_PAD_PROBE_REMOVE;
-                        }
-                      },
-                      this, nullptr);
-
     gst_element_send_event(GST_ELEMENT(pipeline), gst_event_new_flush_start());
     gst_element_send_event(GST_ELEMENT(pipeline),
-                           gst_event_new_flush_stop(false));
+                           gst_event_new_flush_stop(true));
   }
 }
 
