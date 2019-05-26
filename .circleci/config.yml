@@ -16,7 +16,7 @@ jobs:
             - pacman-cache-{{ checksum "date" }}
       - run:            |
           pacman -Su --cachedir pacman_cache --noconfirm
-          pacman -S --cachedir pacman_cache --noconfirm pkg-config git gcc meson itstool boost appstream-glib gettext gtk3 gtkmm3 glibmm pulseaudio gstreamer gst-plugins-good gst-plugins-bad boost-libs libsigc++ libsndfile libsamplerate zita-convolver libebur128 lilv calf zam-plugins rubberband mda.lv2 lsp-plugins xorg-server-xvfb
+          pacman -S --cachedir pacman_cache --noconfirm pkg-config git gcc meson itstool boost appstream-glib gettext gtk3 gtkmm3 glibmm pulseaudio gstreamer gst-plugins-good gst-plugins-bad boost-libs libsigc++ libsndfile libsamplerate zita-convolver libebur128 lilv calf zam-plugins rubberband mda.lv2 lsp-plugins xorg-server-xvfb gawk
           pacman -Sc --cachedir pacman_cache --noconfirm
       - save_cache:
           key:          pacman-cache-{{ checksum "date" }}
@@ -24,13 +24,14 @@ jobs:
             - pacman_cache
       - run:            rm -rf pacman_cache && rm -rf date
       - run:
-          name:         Starting dbus
-          command:      echo 'export $(dbus-launch)' >> $BASH_ENV
-          background:   true
-      - run:
           name:         Starting Xvfb
           command:      Xvfb $DISPLAY -screen 0 1280x1024x24
           background:   true
+      - run:
+          name:         Starting dbus
+          command:      |
+                DBUS=$(dbus-launch | awk -F, '{print $1;exit}') && echo $DBUS
+                echo "export $DBUS" >> $BASH_ENV
       - run:
           name:         Starting Pulseaudio
           command:      |
@@ -39,45 +40,50 @@ jobs:
                 pactl load-module module-null-source source_name=DummyInput
                 pacmd set-default-source DummyInput
                 pacmd set-default-sink DummyOutput
-                pactl list sinks
-                pactl list sources
+                pactl list sinks && pactl list sources
       - checkout
       - run:
           name:         Compile and install PulseEffects
           command:      |
-                meson build && cd build && ninja -j 2 && ninja -j 2 install
+                meson build && cd build && ninja -j 4 && ninja -j 4 install
+      - run:
+          name:         Starting PE in background
+          command:      |
+                pulseeffects
+          background:   true
+      - run:
+          name:         Waiting PulseEffects initialization
+          command:      .circleci/wait_pe.sh
       - run:
           name:         Testing play/pause
           command:      |
-                pulseeffects &
-                sleep 5
                 .circleci/enable_all_plugins.sh
                 # sink inputs
-                gst-launch-1.0 audiotestsrc num-buffers=50 ! queue ! pulsesink
-                gst-launch-1.0 audiotestsrc num-buffers=50 ! queue ! pulsesink
+                gst-launch-1.0 audiotestsrc num-buffers=100 ! queue ! pulsesink
+                gst-launch-1.0 audiotestsrc num-buffers=100 ! queue ! pulsesink
                 # source outputs
-                gst-launch-1.0 pulsesrc num-buffers=50 ! queue ! pulsesink
-                gst-launch-1.0 pulsesrc num-buffers=50 ! queue ! pulsesink
+                gst-launch-1.0 pulsesrc num-buffers=100 ! queue ! pulsesink
+                gst-launch-1.0 pulsesrc num-buffers=100 ! queue ! pulsesink
       - run:
-          name:         Simulating an audio player
+          name:         Simulating audio applications
           command:      |
-                gst-launch-1.0 audiotestsrc ! queue ! pulsesink
-          background:   true
-      - run:
-          name:         Simulating an audio recorder
-          command:      |
+                gst-launch-1.0 audiotestsrc ! queue ! pulsesink &
                 gst-launch-1.0 pulsesrc ! queue ! pulsesink
           background:   true
       - run:
-           name:        Testing plugin enable/disable on the fly
-           command:     |
-                 pulseeffects &
-                 sleep 5
-                 .circleci/enable_all_plugins.sh
-                 .circleci/disable_all_plugins.sh
-                 sleep 1
-                 .circleci/enable_all_plugins.sh
-                 .circleci/disable_all_plugins.sh
+          name:         Testing plugin enable/disable on the fly
+          command:      |
+                sleep 5
+                .circleci/enable_all_plugins.sh
+                sleep 1
+                .circleci/disable_all_plugins.sh
+                sleep 1
+                .circleci/enable_all_plugins.sh
+                sleep 5
+      - run:            |
+          set +e
+          set +o pipefail
+          pulseeffects -q || true
 
 workflows:
   version:              2
