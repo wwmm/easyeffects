@@ -45,7 +45,7 @@ jobs:
       - run:
           name:         Compile and install PulseEffects
           command:      |
-                meson build && cd build && ninja -j 4 && ninja -j 4 install
+                meson build && cd build && ninja -j 8 && ninja -j 8 install
       - run:
           name:         Starting PE in background
           command:      |
@@ -96,8 +96,6 @@ jobs:
                 pulseeffects -l sie_preset_enalbe_all || true
                 sleep 5
       - run:            |
-          set +e
-          set +o pipefail
           pulseeffects -q || true
 
 workflows:
