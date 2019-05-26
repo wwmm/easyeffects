@@ -79,6 +79,21 @@ jobs:
                 .circleci/disable_all_plugins.sh
                 sleep 1
                 .circleci/enable_all_plugins.sh
+      - run:
+          name:         Testing presets
+          command:      |
+                sleep 5
+                cp -v .circleci/presets/soe_preset_disable_all.json /root/.config/PulseEffects/input
+                cp -v .circleci/presets/soe_preset_enable_all.json /root/.config/PulseEffects/input
+                cp -v .circleci/presets/sie_preset_disable_all.json /root/.config/PulseEffects/output
+                cp -v .circleci/presets/sie_preset_enable_all.json /root/.config/PulseEffects/output
+                pulseeffects -l soe_preset_disable_all
+                sleep 1
+                pulseeffects -l soe_preset_enable_all
+                sleep 1
+                pulseeffects -l sie_preset_disable_all
+                sleep 1
+                pulseeffects -l sie_preset_enalbe_all
                 sleep 5
       - run:            |
           set +e
