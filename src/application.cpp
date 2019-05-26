@@ -70,8 +70,13 @@ int Application::on_command_line(
     if (!options->lookup_value("load-preset", name)) {
       util::debug(log_tag + "failed to load preset: " + name);
     } else {
-      presets_manager->load(PresetType::input, name);
-      presets_manager->load(PresetType::output, name);
+      if (presets_manager->preset_file_exists(PresetType::input, name)) {
+        presets_manager->load(PresetType::input, name);
+      }
+
+      if (presets_manager->preset_file_exists(PresetType::output, name)) {
+        presets_manager->load(PresetType::output, name);
+      }
     }
   } else if (options->contains("reset")) {
     settings->reset("");

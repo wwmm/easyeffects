@@ -421,3 +421,26 @@ void PresetsManager::autoload(PresetType preset_type,
     settings->set_string("last-used-preset", name);
   }
 }
+
+bool PresetsManager::preset_file_exists(PresetType preset_type,
+                                        const std::string& name) {
+  boost::filesystem::path input_file;
+
+  if (preset_type == PresetType::output) {
+    input_file = output_dir / boost::filesystem::path{name + ".json"};
+
+    if (boost::filesystem::exists(input_file)) {
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    input_file = input_dir / boost::filesystem::path{name + ".json"};
+
+    if (boost::filesystem::exists(input_file)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}

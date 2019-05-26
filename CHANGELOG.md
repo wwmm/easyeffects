@@ -2,6 +2,13 @@
 
 ## [Unreleased
 
+### Added
+- Improved Pipeline state switch when audio applications alternate between
+the playing and paused state.
+
+### Fixed
+- Loading presets using the command line does not result in a crash anymore.
+
 ## [4.6.1]
 ### Added
 - Pulseaudio avoid-resampling feature is now supported. You will need Pulseaudio
