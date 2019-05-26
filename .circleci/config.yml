@@ -87,13 +87,13 @@ jobs:
                 cp -v .circleci/presets/soe_preset_enable_all.json /root/.config/PulseEffects/input
                 cp -v .circleci/presets/sie_preset_disable_all.json /root/.config/PulseEffects/output
                 cp -v .circleci/presets/sie_preset_enable_all.json /root/.config/PulseEffects/output
-                pulseeffects -l soe_preset_disable_all
+                pulseeffects -l soe_preset_disable_all || true
                 sleep 1
-                pulseeffects -l soe_preset_enable_all
+                pulseeffects -l soe_preset_enable_all || true
                 sleep 1
-                pulseeffects -l sie_preset_disable_all
+                pulseeffects -l sie_preset_disable_all || true
                 sleep 1
-                pulseeffects -l sie_preset_enalbe_all
+                pulseeffects -l sie_preset_enalbe_all || true
                 sleep 5
       - run:            |
           set +e
