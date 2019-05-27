@@ -94,9 +94,16 @@ jobs:
                 pulseeffects -l sie_preset_disable_all || true
                 sleep 1
                 pulseeffects -l sie_preset_enalbe_all || true
+      - run:
+          name:         Reset Configuration
+          command:      |
                 sleep 5
-      - run:            |
-          pulseeffects -q || true
+                pulseeffects -r || true
+      - run:
+          name:         Finish PE process
+          command:      |
+                sleep 5
+                pulseeffects -q || true
 
 workflows:
   version:              2
