@@ -509,9 +509,8 @@ void PipelineBase::update_pipeline_state() {
         log_tag +
         "No app wants to play audio. We will flush and pause our pipeline.");
 
-    gst_element_send_event(GST_ELEMENT(pipeline), gst_event_new_flush_start());
-    gst_element_send_event(GST_ELEMENT(pipeline),
-                           gst_event_new_flush_stop(true));
+    gst_element_send_event(GST_ELEMENT(source), gst_event_new_flush_start());
+    gst_element_send_event(GST_ELEMENT(source), gst_event_new_flush_stop(true));
   }
 }
 
