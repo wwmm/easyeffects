@@ -6,8 +6,16 @@
 #include <memory>
 #include <mutex>
 #include <vector>
+#include "compressor.hpp"
+#include "deesser.hpp"
+#include "equalizer.hpp"
+#include "filter.hpp"
+#include "gate.hpp"
+#include "limiter.hpp"
+#include "pitch.hpp"
 #include "pulse_manager.hpp"
 #include "realtime_kit.hpp"
+#include "reverb.hpp"
 
 class PipelineBase {
  public:
@@ -29,6 +37,18 @@ class PipelineBase {
 
   GSettings *settings = nullptr, *child_settings = nullptr,
             *spectrum_settings = nullptr;
+
+  std::vector<std::string> plugins_order, plugins_order_old;
+  std::map<std::string, GstElement*> plugins;
+
+  std::unique_ptr<Limiter> limiter;
+  std::unique_ptr<Compressor> compressor;
+  std::unique_ptr<Filter> filter;
+  std::unique_ptr<Equalizer> equalizer;
+  std::unique_ptr<Reverb> reverb;
+  std::unique_ptr<Gate> gate;
+  std::unique_ptr<Deesser> deesser;
+  std::unique_ptr<Pitch> pitch;
 
   std::unique_ptr<RealtimeKit> rtkit;
 
@@ -59,6 +79,14 @@ class PipelineBase {
 
   sigc::signal<void, std::vector<float>> new_spectrum;
   sigc::signal<void, int> new_latency;
+  sigc::signal<void, std::array<double, 2>> equalizer_input_level;
+  sigc::signal<void, std::array<double, 2>> equalizer_output_level;
+  sigc::signal<void, std::array<double, 2>> pitch_input_level;
+  sigc::signal<void, std::array<double, 2>> pitch_output_level;
+  sigc::signal<void, std::array<double, 2>> gate_input_level;
+  sigc::signal<void, std::array<double, 2>> gate_output_level;
+  sigc::signal<void, std::array<double, 2>> deesser_input_level;
+  sigc::signal<void, std::array<double, 2>> deesser_output_level;
 
  protected:
   void set_pulseaudio_props(std::string props);
@@ -78,8 +106,11 @@ class PipelineBase {
 
   std::vector<std::shared_ptr<AppInfo>> apps_list;
 
+  sigc::connection timeout_connection;
+
   void init_spectrum_bin();
   void init_effects_bin();
+  bool apps_want_to_play();
 
   GstElement* get_required_plugin(const gchar* factoryname, const gchar* name);
 };

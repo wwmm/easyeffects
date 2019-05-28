@@ -48,12 +48,7 @@ void on_disable(gpointer user_data) {
                                std::string(l->name + "_bin").c_str());
 
   if (b) {
-    /*
-    now that the crystalizer plugins uses tee it has thread locking problems if
-    we try to change its state inside an event callback =/
-    */
-
-    // gst_element_set_state(l->bin, GST_STATE_NULL);
+    gst_element_set_state(l->bin, GST_STATE_NULL);
 
     gst_element_unlink_many(l->identity_in, l->bin, l->identity_out, nullptr);
 
@@ -146,8 +141,6 @@ PluginBase::PluginBase(const std::string& tag,
 
 PluginBase::~PluginBase() {
   auto enable = g_settings_get_boolean(settings, "state");
-
-  gst_element_set_state(bin, GST_STATE_NULL);
 
   if (!enable) {
     gst_object_unref(bin);

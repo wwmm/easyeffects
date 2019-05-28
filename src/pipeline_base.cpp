@@ -249,22 +249,6 @@ GstPadProbeReturn on_sink_event(GstPad* pad,
   return GST_PAD_PROBE_PASS;
 }
 
-GstPadProbeReturn on_flush_event(GstPad* pad,
-                                 GstPadProbeInfo* info,
-                                 gpointer user_data) {
-  auto pb = static_cast<PipelineBase*>(user_data);
-
-  GstEvent* event = GST_PAD_PROBE_INFO_EVENT(info);
-
-  if (GST_EVENT_TYPE(event) == GST_EVENT_FLUSH_START) {
-    util::debug(pb->log_tag + "pausing our pipeline");
-
-    gst_element_set_state(pb->pipeline, GST_STATE_PAUSED);
-  }
-
-  return GST_PAD_PROBE_PASS;
-}
-
 }  // namespace
 
 PipelineBase::PipelineBase(const std::string& tag, PulseManager* pulse_manager)
@@ -351,13 +335,13 @@ PipelineBase::PipelineBase(const std::string& tag, PulseManager* pulse_manager)
 
   gst_pad_add_probe(sinkpad, GST_PAD_PROBE_TYPE_EVENT_UPSTREAM, on_sink_event,
                     this, nullptr);
-  gst_pad_add_probe(sinkpad, GST_PAD_PROBE_TYPE_EVENT_FLUSH, on_flush_event,
-                    this, nullptr);
 
   g_object_unref(sinkpad);
 }
 
 PipelineBase::~PipelineBase() {
+  timeout_connection.disconnect();
+
   set_null_pipeline();
 
   // avoinding memory leak. If the spectrum is not in a bin we have to unref
@@ -487,7 +471,7 @@ void PipelineBase::set_null_pipeline() {
               gst_element_state_get_name(pending));
 }
 
-void PipelineBase::update_pipeline_state() {
+bool PipelineBase::apps_want_to_play() {
   bool wants_to_play = false;
 
   for (auto& a : apps_list) {
@@ -498,19 +482,40 @@ void PipelineBase::update_pipeline_state() {
     }
   }
 
+  return wants_to_play;
+}
+
+void PipelineBase::update_pipeline_state() {
+  bool wants_to_play = apps_want_to_play();
+
   GstState state, pending;
 
   gst_element_get_state(pipeline, &state, &pending, state_check_timeout);
 
   if (state != GST_STATE_PLAYING && wants_to_play) {
+    timeout_connection.disconnect();
+
     gst_element_set_state(pipeline, GST_STATE_PLAYING);
   } else if (state == GST_STATE_PLAYING && !wants_to_play) {
-    util::debug(
-        log_tag +
-        "No app wants to play audio. We will flush and pause our pipeline.");
+    timeout_connection.disconnect();
 
-    gst_element_send_event(GST_ELEMENT(source), gst_event_new_flush_start());
-    gst_element_send_event(GST_ELEMENT(source), gst_event_new_flush_stop(true));
+    timeout_connection = Glib::signal_timeout().connect_seconds(
+        [=]() {
+          GstState s, p;
+
+          gst_element_get_state(pipeline, &s, &p, state_check_timeout);
+
+          if (s == GST_STATE_PLAYING && !apps_want_to_play()) {
+            util::debug(
+                log_tag +
+                "No app wants to play audio. We will pause our pipeline.");
+
+            gst_element_set_state(pipeline, GST_STATE_PAUSED);
+          }
+
+          return false;
+        },
+        5);
   }
 }
 

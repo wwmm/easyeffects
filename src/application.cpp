@@ -55,7 +55,7 @@ int Application::on_command_line(
       list += name + ",";
     }
 
-    util::info(log_tag + _("Output Presets: ") + list);
+    std::clog << log_tag + _("Output Presets: ") + list << std::endl;
 
     list = "";
 
@@ -63,7 +63,7 @@ int Application::on_command_line(
       list += name + ",";
     }
 
-    util::info(log_tag + _("Input Presets: ") + list);
+    std::clog << log_tag + _("Input Presets: ") + list << std::endl;
   } else if (options->contains("load-preset")) {
     Glib::ustring name;
 
