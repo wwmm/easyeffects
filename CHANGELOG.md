@@ -3,8 +3,9 @@
 ## [Unreleased
 
 ### Added
-- Improved Pipeline state switch when audio applications alternate between
-the playing and paused state.
+- Improved Pipeline state switching when audio applications alternate between
+the playing and paused state or skip tracks. These operations should cause less
+stuttering now.
 
 ### Fixed
 - Loading presets using the command line does not result in a crash anymore.
