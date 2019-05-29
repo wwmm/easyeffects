@@ -293,8 +293,6 @@ void gst_pecrystalizer_set_property(GObject* object,
 
   GST_DEBUG_OBJECT(pecrystalizer, "set_property");
 
-  std::lock_guard<std::mutex> lock(pecrystalizer->mutex);
-
   switch (property_id) {
     case PROP_INTENSITY_BAND0:
       pecrystalizer->intensities[0] = g_value_get_float(value);
