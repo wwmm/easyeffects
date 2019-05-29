@@ -3,7 +3,6 @@
 
 #include <gst/base/gstadapter.h>
 #include <gst/gst.h>
-#include <mutex>
 
 G_BEGIN_DECLS
 
@@ -42,8 +41,6 @@ struct _GstPeadapter {
   GstAdapter* adapter = nullptr;
   GstPad* srcpad = nullptr;
   GstPad* sinkpad = nullptr;
-
-  std::mutex lock_guard;
 };
 
 struct _GstPeadapterClass {

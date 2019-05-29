@@ -155,8 +155,6 @@ static void gst_peadapter_set_property(GObject* object,
                                        GParamSpec* pspec) {
   GstPeadapter* peadapter = GST_PEADAPTER(object);
 
-  std::lock_guard<std::mutex> lock(peadapter->lock_guard);
-
   switch (prop_id) {
     case PROP_BLOCKSIZE:
       peadapter->blocksize = g_value_get_enum(value);
@@ -194,8 +192,6 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
   GstPeadapter* peadapter = GST_PEADAPTER(parent);
   GstFlowReturn ret = GST_FLOW_OK;
 
-  std::lock_guard<std::mutex> lock(peadapter->lock_guard);
-
   if (GST_BUFFER_FLAG_IS_SET(buffer, GST_BUFFER_FLAG_DISCONT)) {
     gst_adapter_clear(peadapter->adapter);
 
@@ -231,6 +227,8 @@ static GstFlowReturn gst_peadapter_process(GstPeadapter* peadapter) {
   GstFlowReturn ret = GST_FLOW_OK;
 
   gsize nbytes = peadapter->blocksize * peadapter->bpf;
+  auto duration =
+      GST_FRAMES_TO_CLOCK_TIME(peadapter->blocksize, peadapter->rate);
 
   while (gst_adapter_available(peadapter->adapter) > nbytes &&
          (ret == GST_FLOW_OK)) {
@@ -242,8 +240,7 @@ static GstFlowReturn gst_peadapter_process(GstPeadapter* peadapter) {
       GST_BUFFER_OFFSET(b) =
           gst_adapter_prev_offset(peadapter->adapter, nullptr);
       GST_BUFFER_PTS(b) = gst_adapter_prev_pts(peadapter->adapter, nullptr);
-      GST_BUFFER_DURATION(b) =
-          GST_FRAMES_TO_CLOCK_TIME(peadapter->blocksize, peadapter->rate);
+      GST_BUFFER_DURATION(b) = duration;
 
       if (peadapter->flag_discont) {
         gst_buffer_set_flags(b, GST_BUFFER_FLAG_DISCONT);
@@ -269,8 +266,6 @@ static gboolean gst_peadapter_sink_event(GstPad* pad,
                                          GstEvent* event) {
   GstPeadapter* peadapter = GST_PEADAPTER(parent);
   gboolean ret = true;
-
-  std::lock_guard<std::mutex> lock(peadapter->lock_guard);
 
   switch (GST_EVENT_TYPE(event)) {
     case GST_EVENT_CAPS:
@@ -410,8 +405,6 @@ void gst_peadapter_finalize(GObject* object) {
   GstPeadapter* peadapter = GST_PEADAPTER(object);
 
   GST_DEBUG_OBJECT(peadapter, "finalize");
-
-  std::lock_guard<std::mutex> lock(peadapter->lock_guard);
 
   gst_adapter_clear(peadapter->adapter);
   g_object_unref(peadapter->adapter);
