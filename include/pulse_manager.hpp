@@ -171,7 +171,8 @@ class PulseManager {
 
   std::shared_ptr<mySinkInfo> load_sink(std::string name,
                                         std::string description,
-                                        uint rate);
+                                        uint rate,
+                                        int version = -1);
 
   void load_apps_sink();
 

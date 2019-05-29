@@ -526,22 +526,25 @@ std::shared_ptr<mySourceInfo> PulseManager::get_default_source_info() {
 
 std::shared_ptr<mySinkInfo> PulseManager::load_sink(std::string name,
                                                     std::string description,
-                                                    uint rate) {
+                                                    uint rate,
+                                                    int version) {
   auto si = get_sink_info(name);
 
   if (si == nullptr) {  // sink is not loaded
     std::string argument;
 
-    int version = std::stoi(server_info.server_version);
+    int orig_version = std::stoi(server_info.server_version);
 
-    if (server_info.server_version.find("-") != std::string::npos) {
-      /* The user is probably running a Pulseaudio compiled from git.
-         norewinds will be added to Pulseaudio 13. People running its
-         development branch 12.0-**** can use the option norewind.
-      */
-
-      if (version == 12) {
-        version = 13;
+    if (version < 0) {  // Use the server version by default
+      version = orig_version;
+      if (server_info.server_version.find("-") != std::string::npos) {
+        /* The user is probably running a Pulseaudio compiled from git.
+        norewinds will be added to Pulseaudio 13. People running its
+        development branch 12.0-**** can use the option norewind.
+        */
+        if (version == 12) {
+          version = 13;
+        }
       }
     }
 
@@ -583,6 +586,16 @@ std::shared_ptr<mySinkInfo> PulseManager::load_sink(std::string name,
 
     // now that the sink is loaded we get its info
     si = get_sink_info(name);
+    if (si == nullptr) {
+      if (version == 13 && version != orig_version) {
+        // We don't have norewinds, so we're probably not running 13
+        // Let's try again with the reported version
+        return load_sink(name, description, rate, orig_version);
+      } else {
+        // Let's tell the user something went wrong creating the sink
+        util::critical(log_tag + " failed to create sink " + name);
+      }
+    }
   }
 
   return si;
