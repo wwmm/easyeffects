@@ -524,76 +524,79 @@ std::shared_ptr<mySourceInfo> PulseManager::get_default_source_info() {
   }
 }
 
+bool PulseManager::load_module(const std::string& name,
+                               const std::string& argument) {
+  struct Data {
+    bool status;
+    PulseManager* pm;
+  };
+
+  Data data = {false, this};
+
+  pa_threaded_mainloop_lock(main_loop);
+
+  auto o = pa_context_load_module(context, name.c_str(), argument.c_str(),
+                                  [](auto c, auto idx, auto data) {
+                                    auto d = static_cast<Data*>(data);
+
+                                    if (idx == PA_INVALID_INDEX) {
+                                      d->status = false;
+                                    } else {
+                                      d->status = true;
+                                    }
+
+                                    pa_threaded_mainloop_signal(
+                                        d->pm->main_loop, false);
+                                  },
+                                  &data);
+
+  if (o != nullptr) {
+    while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+      pa_threaded_mainloop_wait(main_loop);
+    }
+
+    pa_operation_unref(o);
+  }
+
+  pa_threaded_mainloop_unlock(main_loop);
+
+  return data.status;
+}
+
 std::shared_ptr<mySinkInfo> PulseManager::load_sink(std::string name,
                                                     std::string description,
-                                                    uint rate,
-                                                    int version) {
+                                                    uint rate) {
   auto si = get_sink_info(name);
 
   if (si == nullptr) {  // sink is not loaded
-    std::string argument;
+    std::string argument = "sink_name=" + name + " " +
+                           "sink_properties=" + description +
+                           "device.class=\"sound\"" + " " + "norewinds=1";
 
-    int orig_version = std::stoi(server_info.server_version);
+    bool ok = load_module("module-null-sink", argument);
 
-    if (version < 0) {  // Use the server version by default
-      version = orig_version;
-      if (server_info.server_version.find("-") != std::string::npos) {
-        /* The user is probably running a Pulseaudio compiled from git.
-        norewinds will be added to Pulseaudio 13. People running its
-        development branch 12.0-**** can use the option norewind.
-        */
-        if (version == 12) {
-          version = 13;
-        }
-      }
-    }
+    if (ok) {
+      util::debug(log_tag + "loaded module-null-sink: " + argument);
 
-    if (version >= 13) {
-      argument = "sink_name=" + name + " " + "sink_properties=" + description +
-                 "device.class=\"sound\"" + " " + "norewinds=1";
-
-      util::debug(log_tag + "Null sinks rewinds will be disabled");
+      si = get_sink_info(name);
     } else {
+      util::debug(log_tag + "Pulseaudio " + server_info.server_version +
+                  " does not support norewinds. Loading sink the old way :-(");
+
       argument = "sink_name=" + name + " " + "sink_properties=" + description +
                  "device.class=\"sound\"" + " " + "channels=2" + " " +
                  "rate=" + std::to_string(rate);
-    }
 
-    pa_threaded_mainloop_lock(main_loop);
+      ok = load_module("module-null-sink", argument);
 
-    auto o = pa_context_load_module(
-        context, "module-null-sink", argument.c_str(),
-        [](auto c, auto idx, auto d) {
-          auto pm = static_cast<PulseManager*>(d);
+      if (ok) {
+        util::debug(log_tag + "loaded module-null-sink: " + argument);
 
-          util::debug(pm->log_tag + "sink loaded");
-
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        },
-        this);
-
-    if (o != nullptr) {
-      while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-        pa_threaded_mainloop_wait(main_loop);
-      }
-
-      pa_operation_unref(o);
-    } else {
-      util::critical(log_tag + " failed to load sink:" + name);
-    }
-
-    pa_threaded_mainloop_unlock(main_loop);
-
-    // now that the sink is loaded we get its info
-    si = get_sink_info(name);
-    if (si == nullptr) {
-      if (version == 13 && version != orig_version) {
-        // We don't have norewinds, so we're probably not running 13
-        // Let's try again with the reported version
-        return load_sink(name, description, rate, orig_version);
+        si = get_sink_info(name);
       } else {
-        // Let's tell the user something went wrong creating the sink
-        util::critical(log_tag + " failed to create sink " + name);
+        util::debug(
+            log_tag +
+            "failed to load module-null-sink with argument: " + argument);
       }
     }
   }

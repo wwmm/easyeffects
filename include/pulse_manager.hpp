@@ -171,12 +171,13 @@ class PulseManager {
 
   std::shared_ptr<mySinkInfo> load_sink(std::string name,
                                         std::string description,
-                                        uint rate,
-                                        int version = -1);
+                                        uint rate);
 
   void load_apps_sink();
 
   void load_mic_sink();
+
+  bool load_module(const std::string& name, const std::string& argument);
 
   void unload_module(uint idx);
 
