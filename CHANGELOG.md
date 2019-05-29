@@ -9,6 +9,8 @@ stuttering now.
 
 ### Fixed
 - Loading presets using the command line does not result in a crash anymore.
+- Fixed a bug that made PulseEffects crash in systems with custom Pulseaudio
+version string.
 
 ## [4.6.1]
 ### Added

@@ -594,7 +594,7 @@ std::shared_ptr<mySinkInfo> PulseManager::load_sink(std::string name,
 
         si = get_sink_info(name);
       } else {
-        util::debug(
+        util::critical(
             log_tag +
             "failed to load module-null-sink with argument: " + argument);
       }
