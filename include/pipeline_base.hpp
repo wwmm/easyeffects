@@ -4,7 +4,6 @@
 #include <gio/gio.h>
 #include <gst/gst.h>
 #include <memory>
-#include <mutex>
 #include <vector>
 #include "compressor.hpp"
 #include "deesser.hpp"
@@ -51,8 +50,6 @@ class PipelineBase {
   std::unique_ptr<Pitch> pitch;
 
   std::unique_ptr<RealtimeKit> rtkit;
-
-  std::mutex pipeline_mutex;
 
   GstClockTime state_check_timeout = 5 * GST_SECOND;
 

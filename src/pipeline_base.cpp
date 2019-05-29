@@ -637,8 +637,6 @@ void PipelineBase::enable_spectrum() {
       [](auto pad, auto info, auto d) {
         auto l = static_cast<PipelineBase*>(d);
 
-        std::lock_guard<std::mutex> lock(l->pipeline_mutex);
-
         auto plugin = gst_bin_get_by_name(GST_BIN(l->spectrum_bin), "spectrum");
 
         if (!plugin) {
@@ -674,8 +672,6 @@ void PipelineBase::disable_spectrum() {
       srcpad, GST_PAD_PROBE_TYPE_IDLE,
       [](auto pad, auto info, auto d) {
         auto l = static_cast<PipelineBase*>(d);
-
-        std::lock_guard<std::mutex> lock(l->pipeline_mutex);
 
         auto plugin = gst_bin_get_by_name(GST_BIN(l->spectrum_bin), "spectrum");
 

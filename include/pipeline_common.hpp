@@ -103,10 +103,6 @@ static GstPadProbeReturn event_probe_cb(GstPad* pad,
 
   gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
 
-  auto l = static_cast<T>(user_data);
-
-  std::lock_guard<std::mutex> lock(l->pipeline_mutex);
-
   if (check_update<T>(user_data)) {
     update_effects_order<T>(user_data);
   }
@@ -148,10 +144,6 @@ template <typename T>
 GstPadProbeReturn on_pad_idle(GstPad* pad,
                               GstPadProbeInfo* info,
                               gpointer user_data) {
-  auto l = static_cast<T>(user_data);
-
-  std::lock_guard<std::mutex> lock(l->pipeline_mutex);
-
   if (check_update<T>(user_data)) {
     update_effects_order<T>(user_data);
   }
