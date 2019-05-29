@@ -19,8 +19,6 @@ class PluginBase {
   GstElement *plugin = nullptr, *bin = nullptr, *identity_in = nullptr,
              *identity_out = nullptr;
 
-  std::mutex plugin_mutex;
-
   bool plugin_is_installed = false;
 
   void enable();

@@ -72,10 +72,6 @@ static GstPadProbeReturn event_probe_cb(GstPad* pad,
 
   gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
 
-  auto l = static_cast<PluginBase*>(user_data);
-
-  std::lock_guard<std::mutex> lock(l->plugin_mutex);
-
   on_disable(user_data);
 
   return GST_PAD_PROBE_DROP;
@@ -175,10 +171,6 @@ void PluginBase::enable() {
 
   gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
                     [](auto pad, auto info, auto d) {
-                      auto pb = static_cast<PluginBase*>(d);
-
-                      std::lock_guard<std::mutex> lock(pb->plugin_mutex);
-
                       on_enable(d);
 
                       return GST_PAD_PROBE_REMOVE;
@@ -198,10 +190,6 @@ void PluginBase::disable() {
   if (state != GST_STATE_PLAYING) {
     gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
                       [](auto pad, auto info, auto d) {
-                        auto pb = static_cast<PluginBase*>(d);
-
-                        std::lock_guard<std::mutex> lock(pb->plugin_mutex);
-
                         on_disable(d);
 
                         return GST_PAD_PROBE_REMOVE;
