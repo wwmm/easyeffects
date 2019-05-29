@@ -15,6 +15,9 @@ Application::Application()
   Glib::setenv("PULSE_PROP_application.id", "com.github.wwmm.pulseeffects");
   Glib::setenv("PULSE_PROP_application.icon_name", "pulseeffects");
 
+  signal_handle_local_options().connect(
+      sigc::mem_fun(*this, &Application::on_handle_local_options), false);
+
   add_main_option_entry(
       Gio::Application::OPTION_TYPE_BOOL, "quit", 'q',
       _("Quit PulseEffects. Useful when running in service mode."));
@@ -48,22 +51,6 @@ int Application::on_command_line(
     }
 
     quit();
-  } else if (options->contains("presets")) {
-    std::string list;
-
-    for (auto name : presets_manager->get_names(PresetType::output)) {
-      list += name + ",";
-    }
-
-    std::clog << log_tag + _("Output Presets: ") + list << std::endl;
-
-    list = "";
-
-    for (auto name : presets_manager->get_names(PresetType::input)) {
-      list += name + ",";
-    }
-
-    std::clog << log_tag + _("Input Presets: ") + list << std::endl;
   } else if (options->contains("load-preset")) {
     Glib::ustring name;
 
@@ -196,6 +183,39 @@ void Application::on_activate() {
     pm->find_sinks();
     pm->find_sources();
   }
+}
+
+int Application::on_handle_local_options(
+    const Glib::RefPtr<Glib::VariantDict>& options) {
+  if (!options) {
+    std::cerr << G_STRFUNC << ": options is null." << std::endl;
+  }
+
+  presets_manager = std::make_unique<PresetsManager>();
+
+  if (options->contains("presets")) {
+    std::string list;
+
+    for (auto name : presets_manager->get_names(PresetType::output)) {
+      list += name + ",";
+    }
+
+    std::clog << _("Output Presets: ") + list << std::endl;
+
+    list = "";
+
+    for (auto name : presets_manager->get_names(PresetType::input)) {
+      list += name + ",";
+    }
+
+    std::clog << _("Input Presets: ") + list << std::endl;
+  }
+
+  // Remove some options to show that we have handled them in the local
+  // instance, so they won't be passed to the primary (remote) instance:
+  options->remove("preset");
+
+  return -1;
 }
 
 void Application::create_actions() {

@@ -26,6 +26,8 @@ class Application : public Gtk::Application {
   int on_command_line(
       const Glib::RefPtr<Gio::ApplicationCommandLine>& command_line) override;
 
+  int on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>& options);
+
   void on_startup() override;
   void on_activate() override;
 
