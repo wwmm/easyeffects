@@ -191,6 +191,10 @@ int Application::on_handle_local_options(
     std::cerr << G_STRFUNC << ": options is null." << std::endl;
   }
 
+  // Remove some options to show that we have handled them in the local
+  // instance, so they won't be passed to the primary (remote) instance:
+  options->remove("preset");
+
   presets_manager = std::make_unique<PresetsManager>();
 
   if (options->contains("presets")) {
@@ -209,11 +213,9 @@ int Application::on_handle_local_options(
     }
 
     std::clog << _("Input Presets: ") + list << std::endl;
-  }
 
-  // Remove some options to show that we have handled them in the local
-  // instance, so they won't be passed to the primary (remote) instance:
-  options->remove("preset");
+    return EXIT_SUCCESS;
+  }
 
   return -1;
 }

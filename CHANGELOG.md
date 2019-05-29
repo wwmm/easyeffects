@@ -13,6 +13,8 @@ problems like the ones saw here https://github.com/wwmm/pulseeffects/issues/504.
 version string.
 - Changing the blocksize while our pipeline is playing should not freeze
 PulseEffects anymore.
+- The command line option used to list available presets was not working
+ properly. This was fixed.
 
 ## [4.6.1]
 ### Added
