@@ -5,7 +5,7 @@
 ### Added
 - Improved Pipeline state switching when audio applications alternate between
 the playing and paused state or skip tracks. These operations should cause less
-stuttering now.
+problems like the ones saw here https://github.com/wwmm/pulseeffects/issues/504.
 
 ### Fixed
 - Loading presets using the command line does not result in a crash anymore.
