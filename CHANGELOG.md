@@ -2,6 +2,7 @@
 
 ## [Unreleased
 
+## [4.6.2]
 ### Added
 - Improved Pipeline state switching when audio applications alternate between
 the playing and paused state or skip tracks. These operations should cause less
