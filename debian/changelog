@@ -1,3 +1,9 @@
+pulseeffects (4.6.2-1) unstable; urgency=low
+
+  * Version 4.6.2 upstream (autobuild)
+  
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sat, 01 Jun 2019 11:06:55 +0300
+ 
 pulseeffects (4.6.0-2-git20190519) unstable; urgency=medium
 
   *  Build from git 20190519 20:30 UTC+003 to test fix of
