@@ -2,9 +2,11 @@
 
 ## [Unreleased
 
+## [4.6.3]
 ### Fixed
-- Depending on the hardware we could crash when querying the current channel
-mapping. See https://github.com/wwmm/pulseeffects/pull/522. This was fixed.
+- Depending on the hardware we could crash when trying to show the channel
+mapping currently used by Pulseaudio.
+See https://github.com/wwmm/pulseeffects/pull/522. This was fixed.
 
 ### Changed
 - Maximizer plugin now uses 25 ms as default release value.
