@@ -333,7 +333,7 @@ void PulseManager::update_server_info(const pa_server_info* info) {
   server_info.rate = info->sample_spec.rate;
   server_info.channels = info->sample_spec.channels;
   if (pa_channel_map_to_pretty_name(&info->channel_map) != nullptr) {
-      server_info.channel_map = pa_channel_map_to_pretty_name(&info->channel_map)
+      server_info.channel_map = pa_channel_map_to_pretty_name(&info->channel_map);
   }
   else {
       server_info.channel_map = "unknown";
