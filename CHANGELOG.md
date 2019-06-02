@@ -2,6 +2,15 @@
 
 ## [Unreleased
 
+## [4.6.3]
+### Fixed
+- Depending on the hardware we could crash when trying to show the channel
+mapping in use by Pulseaudio.
+See https://github.com/wwmm/pulseeffects/pull/522. This was fixed.
+
+### Changed
+- Maximizer plugin now uses 25 ms as default release value.
+
 ## [4.6.2]
 ### Added
 - Improved Pipeline state switching when audio applications alternate between
