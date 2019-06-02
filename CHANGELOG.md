@@ -5,7 +5,7 @@
 ## [4.6.3]
 ### Fixed
 - Depending on the hardware we could crash when trying to show the channel
-mapping currently used by Pulseaudio.
+mapping in use by Pulseaudio.
 See https://github.com/wwmm/pulseeffects/pull/522. This was fixed.
 
 ### Changed
