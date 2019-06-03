@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-21 12:54-0300\n"
+"POT-Creation-Date: 2019-06-03 18:26+0200\n"
 "PO-Revision-Date: 2019-03-17 21:57+0100\n"
 "Last-Translator: Pavel Fric <pavelfric@seznam.cz>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -267,6 +267,11 @@ msgstr ""
 #, fuzzy
 msgid "Configuration"
 msgstr "Doba trvání"
+
+#: data/ui/pulse_info.glade:487
+#, fuzzy
+msgid "Resamplers"
+msgstr "Převzorkovač"
 
 #: data/ui/autogain.glade:24
 msgid "Auto Gain"
@@ -1467,50 +1472,50 @@ msgstr "PulseEffects"
 msgid "\"Presets\""
 msgstr "\"Přednastavení\""
 
-#: src/application.cpp:20
+#: src/application.cpp:23
 msgid "Quit PulseEffects. Useful when running in service mode."
 msgstr "Ukončit PulseEffects. Užitečné, když běži ve služebním režimu."
 
-#: src/application.cpp:23
+#: src/application.cpp:26
 msgid "Show available presets."
 msgstr "Ukázat dostupná přednastavení."
 
-#: src/application.cpp:27
+#: src/application.cpp:30
 msgid "Load a preset. Example: pulseeffects -l music"
 msgstr "Nahrát přednastavení. Příklad: pulseeffects -l music"
 
-#: src/application.cpp:30
+#: src/application.cpp:33
 msgid "Reset PulseEffects."
 msgstr "Vynulovat PulseEffects."
 
-#: src/application.cpp:58
+#: src/application.cpp:207
 msgid "Output Presets: "
 msgstr "Výstupní přednastavení:"
 
-#: src/application.cpp:66
+#: src/application.cpp:215
 msgid "Input Presets: "
 msgstr "Vstupní přednastavení:"
 
-#: src/application.cpp:268
+#: src/application.cpp:295
 msgid "PulseEffects was updated"
 msgstr "Program PulseEffects byl aktualizován"
 
-#: src/application.cpp:271
+#: src/application.cpp:298
 msgid ""
 "It is recommended to reset its configuration after an update. Do you want to "
 "do this?"
 msgstr ""
 "Po aktualizaci se doporučuje vynulovat jeho nastavení. Chcete to udělat?"
 
-#: src/application.cpp:274
+#: src/application.cpp:301
 msgid "Yes"
 msgstr "Ano"
 
-#: src/application.cpp:275
+#: src/application.cpp:302
 msgid "No"
 msgstr "Ne"
 
-#: src/effects_base_ui.cpp:28
+#: src/effects_base_ui.cpp:27
 msgid "Applications"
 msgstr "Programy"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-21 12:54-0300\n"
+"POT-Creation-Date: 2019-06-03 18:26+0200\n"
 "PO-Revision-Date: 2017-08-29 11:00+0200\n"
 "Last-Translator: Nathan Graule <solarliner@gmail.com>\n"
 "Language-Team: \n"
@@ -277,6 +277,10 @@ msgstr ""
 #, fuzzy
 msgid "Configuration"
 msgstr "Calibration"
+
+#: data/ui/pulse_info.glade:487
+msgid "Resamplers"
+msgstr ""
 
 #: data/ui/autogain.glade:24
 #, fuzzy
@@ -1558,53 +1562,53 @@ msgstr "pulseeffects"
 msgid "\"Presets\""
 msgstr "Préréglage"
 
-#: src/application.cpp:20
+#: src/application.cpp:23
 msgid "Quit PulseEffects. Useful when running in service mode."
 msgstr ""
 
-#: src/application.cpp:23
+#: src/application.cpp:26
 msgid "Show available presets."
 msgstr ""
 
-#: src/application.cpp:27
+#: src/application.cpp:30
 msgid "Load a preset. Example: pulseeffects -l music"
 msgstr ""
 
-#: src/application.cpp:30
+#: src/application.cpp:33
 #, fuzzy
 msgid "Reset PulseEffects."
 msgstr "PulseEffects"
 
-#: src/application.cpp:58
+#: src/application.cpp:207
 #, fuzzy
 msgid "Output Presets: "
 msgstr "Préréglage"
 
-#: src/application.cpp:66
+#: src/application.cpp:215
 #, fuzzy
 msgid "Input Presets: "
 msgstr "Ouvrir préréglage"
 
-#: src/application.cpp:268
+#: src/application.cpp:295
 #, fuzzy
 msgid "PulseEffects was updated"
 msgstr "PulseEffects"
 
-#: src/application.cpp:271
+#: src/application.cpp:298
 msgid ""
 "It is recommended to reset its configuration after an update. Do you want to "
 "do this?"
 msgstr ""
 
-#: src/application.cpp:274
+#: src/application.cpp:301
 msgid "Yes"
 msgstr ""
 
-#: src/application.cpp:275
+#: src/application.cpp:302
 msgid "No"
 msgstr ""
 
-#: src/effects_base_ui.cpp:28
+#: src/effects_base_ui.cpp:27
 #, fuzzy
 msgid "Applications"
 msgstr "Calibration"

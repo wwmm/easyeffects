@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-04-09 09:16+0200\n"
+"POT-Creation-Date: 2019-06-03 18:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1129,7 +1129,7 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/maximizer.page:46
-msgid "Stop the attenuation after this amount of seconds."
+msgid "Set the release in milliseconds."
 msgstr ""
 
 #. (itstool) path: page/title

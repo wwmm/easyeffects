@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-21 12:54-0300\n"
+"POT-Creation-Date: 2019-06-03 18:26+0200\n"
 "PO-Revision-Date: 2018-07-18 22:14+0300\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -270,6 +270,11 @@ msgstr ""
 #, fuzzy
 msgid "Configuration"
 msgstr "Продолжительность"
+
+#: data/ui/pulse_info.glade:487
+#, fuzzy
+msgid "Resamplers"
+msgstr "Ресемплер"
 
 #: data/ui/autogain.glade:24
 msgid "Auto Gain"
@@ -1502,35 +1507,35 @@ msgstr ""
 msgid "\"Presets\""
 msgstr "\"Предустановки\""
 
-#: src/application.cpp:20
+#: src/application.cpp:23
 msgid "Quit PulseEffects. Useful when running in service mode."
 msgstr "Выйти из PulseEffects. Полезно при запуске в режиме отладки."
 
-#: src/application.cpp:23
+#: src/application.cpp:26
 msgid "Show available presets."
 msgstr "Показать доступные пресеты."
 
-#: src/application.cpp:27
+#: src/application.cpp:30
 msgid "Load a preset. Example: pulseeffects -l music"
 msgstr "Загрузить пресет. Пример: pulseeffects -l music"
 
-#: src/application.cpp:30
+#: src/application.cpp:33
 msgid "Reset PulseEffects."
 msgstr "Сбросить настройки PulseEffects"
 
-#: src/application.cpp:58
+#: src/application.cpp:207
 msgid "Output Presets: "
 msgstr "Выходные предустановки: "
 
-#: src/application.cpp:66
+#: src/application.cpp:215
 msgid "Input Presets: "
 msgstr "Входные предустановки: "
 
-#: src/application.cpp:268
+#: src/application.cpp:295
 msgid "PulseEffects was updated"
 msgstr "Программа PulseEffects была обновлена"
 
-#: src/application.cpp:271
+#: src/application.cpp:298
 msgid ""
 "It is recommended to reset its configuration after an update. Do you want to "
 "do this?"
@@ -1538,15 +1543,15 @@ msgstr ""
 "После обновления рекомендуется сбросить настройки PulseEffects. Хотите ли вы "
 "это сделать?"
 
-#: src/application.cpp:274
+#: src/application.cpp:301
 msgid "Yes"
 msgstr "Да"
 
-#: src/application.cpp:275
+#: src/application.cpp:302
 msgid "No"
 msgstr "Нет"
 
-#: src/effects_base_ui.cpp:28
+#: src/effects_base_ui.cpp:27
 msgid "Applications"
 msgstr "Приложения"
 
