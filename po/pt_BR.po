@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-21 12:54-0300\n"
+"POT-Creation-Date: 2019-06-03 18:26+0200\n"
 "PO-Revision-Date: 2019-05-21 12:54-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
@@ -265,6 +265,11 @@ msgstr "Arquivo"
 #: data/ui/pulse_info.glade:454
 msgid "Configuration"
 msgstr "Configuração"
+
+#: data/ui/pulse_info.glade:487
+#, fuzzy
+msgid "Resamplers"
+msgstr "Resampler"
 
 #: data/ui/autogain.glade:24
 msgid "Auto Gain"
@@ -1466,35 +1471,35 @@ msgstr "pulseeffects"
 msgid "\"Presets\""
 msgstr "\"Predefinições\""
 
-#: src/application.cpp:20
+#: src/application.cpp:23
 msgid "Quit PulseEffects. Useful when running in service mode."
 msgstr "Sair do PulseEffects. Útil quando executando em modo de serviço."
 
-#: src/application.cpp:23
+#: src/application.cpp:26
 msgid "Show available presets."
 msgstr "Mostrar predefinições disponíveis."
 
-#: src/application.cpp:27
+#: src/application.cpp:30
 msgid "Load a preset. Example: pulseeffects -l music"
 msgstr "Carregar uma predefinição. Exemplo: pulseeffects -l musica"
 
-#: src/application.cpp:30
+#: src/application.cpp:33
 msgid "Reset PulseEffects."
 msgstr "Redefinir o PulseEffects."
 
-#: src/application.cpp:58
+#: src/application.cpp:207
 msgid "Output Presets: "
 msgstr "Predefinições de Saída: "
 
-#: src/application.cpp:66
+#: src/application.cpp:215
 msgid "Input Presets: "
 msgstr "Predefinições de Entrada: "
 
-#: src/application.cpp:268
+#: src/application.cpp:295
 msgid "PulseEffects was updated"
 msgstr "PulseEffects foi atualizado"
 
-#: src/application.cpp:271
+#: src/application.cpp:298
 msgid ""
 "It is recommended to reset its configuration after an update. Do you want to "
 "do this?"
@@ -1502,15 +1507,15 @@ msgstr ""
 "É recomendável redefinir as configurações dele após uma atualização. Você "
 "quer fazer isto?"
 
-#: src/application.cpp:274
+#: src/application.cpp:301
 msgid "Yes"
 msgstr "Sim"
 
-#: src/application.cpp:275
+#: src/application.cpp:302
 msgid "No"
 msgstr "Não"
 
-#: src/effects_base_ui.cpp:28
+#: src/effects_base_ui.cpp:27
 msgid "Applications"
 msgstr "Aplicativos"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-21 12:54-0300\n"
+"POT-Creation-Date: 2019-06-03 18:26+0200\n"
 "PO-Revision-Date: 2018-11-22 20:12+0200\n"
 "Last-Translator: flipwise <tyx027@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -279,6 +279,11 @@ msgstr ""
 #, fuzzy
 msgid "Configuration"
 msgstr "Trajanje"
+
+#: data/ui/pulse_info.glade:487
+#, fuzzy
+msgid "Resamplers"
+msgstr "Promjena frekvencije"
 
 #: data/ui/autogain.glade:24
 #, fuzzy
@@ -1538,40 +1543,40 @@ msgstr "pulseeffects"
 msgid "\"Presets\""
 msgstr "Predlošci"
 
-#: src/application.cpp:20
+#: src/application.cpp:23
 msgid "Quit PulseEffects. Useful when running in service mode."
 msgstr ""
 "Zatvori PulseEffects. Korisno pri upotrebi u servisnom načinu pokretanja."
 
-#: src/application.cpp:23
+#: src/application.cpp:26
 msgid "Show available presets."
 msgstr "Prikaži dostupne predloške."
 
-#: src/application.cpp:27
+#: src/application.cpp:30
 msgid "Load a preset. Example: pulseeffects -l music"
 msgstr "Učitaj predložak. Primjer: pulseeffects -l music"
 
-#: src/application.cpp:30
+#: src/application.cpp:33
 #, fuzzy
 msgid "Reset PulseEffects."
 msgstr "PulseEffects"
 
-#: src/application.cpp:58
+#: src/application.cpp:207
 #, fuzzy
 msgid "Output Presets: "
 msgstr "Predlošci: "
 
-#: src/application.cpp:66
+#: src/application.cpp:215
 #, fuzzy
 msgid "Input Presets: "
 msgstr "Učitaj predloške"
 
-#: src/application.cpp:268
+#: src/application.cpp:295
 #, fuzzy
 msgid "PulseEffects was updated"
 msgstr "PulseEffects je bio nadograđen"
 
-#: src/application.cpp:271
+#: src/application.cpp:298
 msgid ""
 "It is recommended to reset its configuration after an update. Do you want to "
 "do this?"
@@ -1579,15 +1584,15 @@ msgstr ""
 "Nakon nadogradnje preporučeno je vratiti njegovu konfiguraciju na tvorničke "
 "postavke. Želite li to učiniti?"
 
-#: src/application.cpp:274
+#: src/application.cpp:301
 msgid "Yes"
 msgstr "Da"
 
-#: src/application.cpp:275
+#: src/application.cpp:302
 msgid "No"
 msgstr "Ne"
 
-#: src/effects_base_ui.cpp:28
+#: src/effects_base_ui.cpp:27
 msgid "Applications"
 msgstr "Aplikacije"
 

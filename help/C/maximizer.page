@@ -44,7 +44,7 @@
                 <em style="strong" its:withinText="nested">Release</em>
             </title>
             <p>
-                Stop the attenuation after this amount of seconds.
+                Set the release in milliseconds.
             </p>
         </item>
     </terms>

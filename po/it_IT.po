@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-21 12:54-0300\n"
+"POT-Creation-Date: 2019-06-03 18:26+0200\n"
 "PO-Revision-Date: 2019-03-28 17:38+0100\n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -220,56 +220,61 @@ msgstr "Stato"
 
 #: data/ui/pulse_info.glade:76
 msgid "Version"
-msgstr ""
+msgstr "Versione"
 
 #: data/ui/pulse_info.glade:103
 #, fuzzy
 msgid "Default Sink"
-msgstr "Predefinito"
+msgstr "Sink Predefinito"
 
 #: data/ui/pulse_info.glade:115
 #, fuzzy
 msgid "Default Source"
-msgstr "Predefinito"
+msgstr "Ingresso Predefinito"
 
 #: data/ui/pulse_info.glade:157
 msgid "Protocol"
-msgstr ""
+msgstr "Protocollo"
 
 #: data/ui/pulse_info.glade:184
 msgid "Default Sample Format"
-msgstr ""
+msgstr "Formato di Campionamento Predefinito"
 
 #: data/ui/pulse_info.glade:211
 msgid "Default Sampling Rate"
-msgstr ""
+msgstr "Frequenza di Campionamento Predefinita"
 
 #: data/ui/pulse_info.glade:265
 #, fuzzy
 msgid "Channel Mapping"
-msgstr "Canali"
+msgstr "Mappatura Canali"
 
 #: data/ui/pulse_info.glade:290
 msgid "Server"
-msgstr ""
+msgstr "Server"
 
 #: data/ui/pulse_info.glade:335
 msgid "Modules"
-msgstr ""
+msgstr "Moduli"
 
 #: data/ui/pulse_info.glade:381
 #, fuzzy
 msgid "Clients"
-msgstr "Centesimi"
+msgstr "Client"
 
 #: data/ui/pulse_info.glade:444
 msgid "File"
-msgstr ""
+msgstr "File"
 
 #: data/ui/pulse_info.glade:454
 #, fuzzy
 msgid "Configuration"
-msgstr "Durata"
+msgstr "Configurazione"
+
+#: data/ui/pulse_info.glade:487
+#, fuzzy
+msgid "Resamplers"
+msgstr "Ricampionamento"
 
 #: data/ui/autogain.glade:24
 msgid "Auto Gain"
@@ -468,11 +473,11 @@ msgstr "Reattività"
 
 #: data/ui/compressor.glade:583
 msgid "Feed-forward"
-msgstr "Connesso in ingresso"
+msgstr "Prelievo in ingresso"
 
 #: data/ui/compressor.glade:584
 msgid "Feed-back"
-msgstr "Connesso in uscita"
+msgstr "Prelievo in uscita"
 
 #: data/ui/compressor.glade:598 data/ui/equalizer_band.glade:48
 msgid "Type"
@@ -1311,8 +1316,8 @@ msgid ""
 "Automatically apply this preset whenever the currently used device is "
 "plugged in the system"
 msgstr ""
-"Applica automaticamente questo profilo ogni volta che il dispositivo è "
-"connesso al sistema"
+"Applica automaticamente questo profilo ogni volta che il dispositivo "
+"viene connesso al sistema"
 
 #: data/ui/presets_menu.glade:86 data/ui/presets_menu.glade:195
 #: src/presets_menu_ui.cpp:119
@@ -1469,35 +1474,35 @@ msgstr "pulseeffects"
 msgid "\"Presets\""
 msgstr "\"Profili\""
 
-#: src/application.cpp:20
+#: src/application.cpp:23
 msgid "Quit PulseEffects. Useful when running in service mode."
 msgstr "Esci da PulseEffects. Utile quando in esecuzione come servizio."
 
-#: src/application.cpp:23
+#: src/application.cpp:26
 msgid "Show available presets."
 msgstr "Mostra profili disponibili."
 
-#: src/application.cpp:27
+#: src/application.cpp:30
 msgid "Load a preset. Example: pulseeffects -l music"
 msgstr "Carica un profilo. Esempio: pulseeffects -l music"
 
-#: src/application.cpp:30
+#: src/application.cpp:33
 msgid "Reset PulseEffects."
 msgstr "Reset PulseEffects."
 
-#: src/application.cpp:58
+#: src/application.cpp:207
 msgid "Output Presets: "
 msgstr "Profili d'Uscita: "
 
-#: src/application.cpp:66
+#: src/application.cpp:215
 msgid "Input Presets: "
 msgstr "Profili d'Ingresso: "
 
-#: src/application.cpp:268
+#: src/application.cpp:295
 msgid "PulseEffects was updated"
 msgstr "PulseEffects è stato aggiornato"
 
-#: src/application.cpp:271
+#: src/application.cpp:298
 msgid ""
 "It is recommended to reset its configuration after an update. Do you want to "
 "do this?"
@@ -1505,15 +1510,15 @@ msgstr ""
 "Si consiglia di effettuare un reset alla configurazione in seguito ad un "
 "aggiornamento. Procedere?"
 
-#: src/application.cpp:274
+#: src/application.cpp:301
 msgid "Yes"
 msgstr "Si"
 
-#: src/application.cpp:275
+#: src/application.cpp:302
 msgid "No"
 msgstr "No"
 
-#: src/effects_base_ui.cpp:28
+#: src/effects_base_ui.cpp:27
 msgid "Applications"
 msgstr "Applicazioni"
 

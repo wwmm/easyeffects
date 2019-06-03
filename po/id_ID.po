@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-21 12:54-0300\n"
+"POT-Creation-Date: 2019-06-03 18:26+0200\n"
 "PO-Revision-Date: 2019-01-17 18:30+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -271,6 +271,11 @@ msgstr ""
 #, fuzzy
 msgid "Configuration"
 msgstr "Durasi"
+
+#: data/ui/pulse_info.glade:487
+#, fuzzy
+msgid "Resamplers"
+msgstr "Modus Penyampling"
 
 #: data/ui/autogain.glade:24
 msgid "Auto Gain"
@@ -1477,37 +1482,37 @@ msgstr "pulseeffects"
 msgid "\"Presets\""
 msgstr "Preset"
 
-#: src/application.cpp:20
+#: src/application.cpp:23
 msgid "Quit PulseEffects. Useful when running in service mode."
 msgstr "Tutup PulseEffects. Berguna Ketika Berjalan dalam Modus Layanan."
 
-#: src/application.cpp:23
+#: src/application.cpp:26
 msgid "Show available presets."
 msgstr "Tampilkan Preset Tersedia."
 
-#: src/application.cpp:27
+#: src/application.cpp:30
 msgid "Load a preset. Example: pulseeffects -l music"
 msgstr "Muat Preset. Misalkan: pulseeffects -l music"
 
-#: src/application.cpp:30
+#: src/application.cpp:33
 msgid "Reset PulseEffects."
 msgstr "Atur Ulang PulseEffects"
 
-#: src/application.cpp:58
+#: src/application.cpp:207
 #, fuzzy
 msgid "Output Presets: "
 msgstr "Preset Output:"
 
-#: src/application.cpp:66
+#: src/application.cpp:215
 #, fuzzy
 msgid "Input Presets: "
 msgstr "Preset Input"
 
-#: src/application.cpp:268
+#: src/application.cpp:295
 msgid "PulseEffects was updated"
 msgstr "PulseEffects telah dimutakhirkan"
 
-#: src/application.cpp:271
+#: src/application.cpp:298
 msgid ""
 "It is recommended to reset its configuration after an update. Do you want to "
 "do this?"
@@ -1515,15 +1520,15 @@ msgstr ""
 "Dianjurkan untuk mengatur ulang konfigurasi setelah pemutakhiran. Tetap "
 "Lanjutkan?"
 
-#: src/application.cpp:274
+#: src/application.cpp:301
 msgid "Yes"
 msgstr "Ya"
 
-#: src/application.cpp:275
+#: src/application.cpp:302
 msgid "No"
 msgstr "Tidak"
 
-#: src/effects_base_ui.cpp:28
+#: src/effects_base_ui.cpp:27
 msgid "Applications"
 msgstr "Aplikasi"
 
