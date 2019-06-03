@@ -153,7 +153,7 @@ msgid ""
 "threshold. If the signal peaks above the threshold and quickly returns to "
 "below the threshold, it may never receive a full dose of compression."
 msgstr ""
-"L'attacco determina il tempo in millisecondi (ms) nel quale il plugin "
+"L'attacco indica il tempo in millisecondi (ms) nel quale il plugin "
 "applica interamente la compressione del segnale una volta superato il valore "
 "della soglia. Se il segnale supera la soglia e ritorna velocemente al di "
 "sotto di essa, allora non riceverà una compressione completa."
@@ -174,7 +174,7 @@ msgid ""
 "compressor to stop attenuating gain slowly once the signal returns below the "
 "threshold."
 msgstr ""
-"Il rilascio determina il tempo in millisecondi (ms) nel quale il plugin "
+"Il rilascio indica il tempo in millisecondi (ms) nel quale il plugin "
 "termina di applicare la fase di compressione quando il segnale scende al di "
 "sotto del valore della soglia. Un rilascio breve fa sì che il compressore "
 "smetta velocemente di comprimere il segnale. Un rilascio più lungo invece "
@@ -750,7 +750,7 @@ msgid ""
 "audio to a recording application."
 msgstr ""
 "PulseEffects applica effetti audio ai programmi che utilizzano Pulseaudio. È "
-"possibile aggiungere effetti all'audio proveniente in uscita da determinate "
+"possibile aggiungere effetti all'audio proveniente in uscita da specifiche "
 "applicazioni oppure in ingresso da un microfono (prima di inviarlo a "
 "un'applicazione di registrazione)."
 
@@ -1336,13 +1336,11 @@ msgstr "Limite Superiore"
 
 #. (itstool) path: item/p
 #: C/maximizer.page:38
-#, fuzzy
 msgid "Maximum allowed peak level of the output signal."
 msgstr "Massimo valore di picco ammesso in uscita."
 
 #. (itstool) path: item/p
 #: C/maximizer.page:46
-#, fuzzy
 msgid "Set the release in milliseconds."
 msgstr "Impostazione del tempo di release in millisecondi."
 
@@ -1384,7 +1382,7 @@ msgstr "Alimentazione"
 #: C/crossfeed.page:29
 msgid "Amount of signal from a channel that is sent to the other."
 msgstr ""
-"Quantità del segnale di un determinato canale che viene inviato all'altro."
+"Quantità del segnale di uno specifico canale da inviare all'altro."
 
 #. (itstool) path: page/title
 #: C/equalizer.page:9
@@ -2462,9 +2460,9 @@ msgid ""
 "and down arrows next to the plugin name. The first plugin from top to bottom "
 "is the first to receive the audio signal."
 msgstr ""
-"L'ordine dei plugin nella catena degli effetti può essere modificato. Basta "
-"cliccare sulle frecce accanto al nome dei plugin. Il primo plugin dall'alto "
-"verso il basso è il primo a ricevere il segnale audio."
+"L'ordine dei plugin nella catena degli effetti può essere modificato "
+"cliccando sulle frecce accanto al loro nome. Il primo plugin dall'alto verso "
+"il basso è il primo a ricevere il segnale audio."
 
 #. (itstool) path: page/title
 #: C/userpresets.page:10
@@ -2477,8 +2475,8 @@ msgid ""
 "You can save your own presets. Just add write a name and click on the add "
 "button. Presets can be imported clicking on the button to the left."
 msgstr ""
-"Si possono creare e salvare profili personalizzati. Basta scrivere un titolo "
-"e cliccare sul pulsante di aggiunta. I profili possono essere importati "
+"Si possono creare e salvare profili personalizzati scegliendo un titolo "
+"e cliccando sul pulsante di aggiunta. I profili possono essere importati "
 "facendo clic sul pulsante a sinistra."
 
 #. (itstool) path: page/p
@@ -2500,9 +2498,9 @@ msgid ""
 "device is selected as the system default device."
 msgstr ""
 "È inoltre possibile creare un profilo caricabile automaticamente quando un "
-"dispositivo di ingresso o uscita viene connesso al sistema. Basta cliccare "
-"sul pulsante con le frecce ricurve mentre il dispositivo desiderato è "
-"selezionato come predefinito per il sistema."
+"dispositivo di ingresso o di uscita viene connesso al sistema. È sufficiente "
+"cliccare sul pulsante con le frecce ricurve mentre il dispositivo desiderato "
+"è selezionato come predefinito per il sistema."
 
 #. (itstool) path: page/title
 #: C/advancedinfo.page:10
@@ -2682,8 +2680,8 @@ msgstr ""
 "individualmente. Tuttavia ci sono casi in cui l'utente vuole che una "
 "particolare applicazione sia esclusa dalla funzione \"Abilita Tutte le "
 "Applicazioni\". In questo caso è possibile usare una lista di esclusione. "
-"Basta aggiungere a tale lista il nome dell'applicazione esattamente come "
-"viene mostrata nella voce \"Applicazioni\"."
+"È sufficiente aggiungere a tale lista il nome dell'applicazione esattamente "
+"come viene mostrata nella voce \"Applicazioni\"."
 
 #~ msgid "Stop the attenuation after this amount of seconds."
 #~ msgstr "Arresta l'attenuazione dopo questo numero di secondi."

@@ -223,12 +223,10 @@ msgid "Version"
 msgstr "Versione"
 
 #: data/ui/pulse_info.glade:103
-#, fuzzy
 msgid "Default Sink"
 msgstr "Sink Predefinito"
 
 #: data/ui/pulse_info.glade:115
-#, fuzzy
 msgid "Default Source"
 msgstr "Ingresso Predefinito"
 
@@ -245,7 +243,6 @@ msgid "Default Sampling Rate"
 msgstr "Frequenza di Campionamento Predefinita"
 
 #: data/ui/pulse_info.glade:265
-#, fuzzy
 msgid "Channel Mapping"
 msgstr "Mappatura Canali"
 
@@ -258,7 +255,6 @@ msgid "Modules"
 msgstr "Moduli"
 
 #: data/ui/pulse_info.glade:381
-#, fuzzy
 msgid "Clients"
 msgstr "Client"
 
@@ -267,14 +263,12 @@ msgid "File"
 msgstr "File"
 
 #: data/ui/pulse_info.glade:454
-#, fuzzy
 msgid "Configuration"
 msgstr "Configurazione"
 
 #: data/ui/pulse_info.glade:487
-#, fuzzy
 msgid "Resamplers"
-msgstr "Ricampionamento"
+msgstr "Metodi di Ricampionamento"
 
 #: data/ui/autogain.glade:24
 msgid "Auto Gain"
