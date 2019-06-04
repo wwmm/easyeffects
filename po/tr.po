@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-21 12:54-0300\n"
-"PO-Revision-Date: 2019-05-25 04:05+0300\n"
+"POT-Creation-Date: 2019-06-03 18:26+0200\n"
+"PO-Revision-Date: 2019-06-04 07:47+0300\n"
 "Last-Translator: Serdar Sağlam <teknomobil@yandex.com>\n"
 "Language-Team: Turkish <teknomobil@yandex.com>\n"
 "Language: tr\n"
@@ -263,6 +263,10 @@ msgstr "Dosya"
 #: data/ui/pulse_info.glade:454
 msgid "Configuration"
 msgstr "Yapılandırma"
+
+#: data/ui/pulse_info.glade:487
+msgid "Resamplers"
+msgstr "Örnekleyiciler"
 
 #: data/ui/autogain.glade:24
 msgid "Auto Gain"
@@ -1464,35 +1468,35 @@ msgstr "pulseeffects"
 msgid "\"Presets\""
 msgstr "\"Ön Ayarlar\""
 
-#: src/application.cpp:20
+#: src/application.cpp:23
 msgid "Quit PulseEffects. Useful when running in service mode."
 msgstr "PulseEffects'ten çık. Servis kipinde çalışırken kullanışlıdır."
 
-#: src/application.cpp:23
+#: src/application.cpp:26
 msgid "Show available presets."
 msgstr "Kullanılabilir hazır ayarları göster."
 
-#: src/application.cpp:27
+#: src/application.cpp:30
 msgid "Load a preset. Example: pulseeffects -l music"
 msgstr "Bir ön ayar yükle. Örnek: pulseeffects -l music"
 
-#: src/application.cpp:30
+#: src/application.cpp:33
 msgid "Reset PulseEffects."
 msgstr "PulseEffects’i Sıfırla."
 
-#: src/application.cpp:58
+#: src/application.cpp:207
 msgid "Output Presets: "
 msgstr "Çıkış Ön Ayarları: "
 
-#: src/application.cpp:66
+#: src/application.cpp:215
 msgid "Input Presets: "
 msgstr "Giriş Ön Ayarları: "
 
-#: src/application.cpp:268
+#: src/application.cpp:295
 msgid "PulseEffects was updated"
 msgstr "PulseEffects güncellendi"
 
-#: src/application.cpp:271
+#: src/application.cpp:298
 msgid ""
 "It is recommended to reset its configuration after an update. Do you want to "
 "do this?"
@@ -1500,15 +1504,15 @@ msgstr ""
 "Güncellemeden sonra yapılandırmayı sıfırlamak önerilir. Bunu yapmak ister "
 "misin?"
 
-#: src/application.cpp:274
+#: src/application.cpp:301
 msgid "Yes"
 msgstr "Evet"
 
-#: src/application.cpp:275
+#: src/application.cpp:302
 msgid "No"
 msgstr "Hayır"
 
-#: src/effects_base_ui.cpp:28
+#: src/effects_base_ui.cpp:27
 msgid "Applications"
 msgstr "Uygulamalar"
 
