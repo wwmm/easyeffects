@@ -7,9 +7,9 @@ pulseeffects (4.6.3-1) unstable; urgency=low
 pulseeffects (4.6.2-1) unstable; urgency=low
 
   * Version 4.6.2 upstream (autobuild)
-  
+
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sat, 01 Jun 2019 11:06:55 +0300
- 
+
 pulseeffects (4.6.0-2-git20190519) unstable; urgency=medium
 
   *  Build from git 20190519 20:30 UTC+003 to test fix of
@@ -20,15 +20,15 @@ pulseeffects (4.6.0-2-git20190519) unstable; urgency=medium
 pulseeffects (4.6.0-1) unstable; urgency=low
 
   * Version 4.6.0 upstream (autobuild)
-  
+
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sun, 28 Apr 2019 22:04:13 +0300
- 
+
 pulseeffects (4.5.9-1) unstable; urgency=low
 
   * Version 4.5.9 upstream (autobuild)
-  
+
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sun, 14 Apr 2019 01:04:39 +0300
- 
+
 pulseeffects (4.5.8-1-git20190326) unstable; urgency=low
 
   * Version 4.5.8 upstream
@@ -40,82 +40,82 @@ pulseeffects (4.5.8-1-git20190326) unstable; urgency=low
 pulseeffects (4.4.7-1) unstable; urgency=low
 
   * Version 4.4.7 upstream (autobuild)
-  
+
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 21 Jan 2019 22:01:52 +0300
- 
+
 pulseeffects (4.4.6-1) unstable; urgency=low
 
   * Version 4.4.6 upstream (autobuild)
-  
+
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Thu, 10 Jan 2019 00:01:01 +0300
- 
+
 pulseeffects (4.4.5-1) unstable; urgency=low
 
   * Version 4.4.5 upstream (autobuild)
-  
+
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Tue, 08 Jan 2019 20:01:44 +0300
- 
+
 pulseeffects (4.4.4-1) unstable; urgency=low
 
   * Version 4.4.4 upstream (autobuild)
-  
+
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Tue, 01 Jan 2019 15:01:51 +0300
- 
+
 pulseeffects (4.4.3-1) unstable; urgency=low
 
   * Version 4.4.3 upstream (autobuild)
   * Updated Russian translation
-  
+
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 31 Dec 2018 07:12:30 +0300
- 
+
 pulseeffects (4.4.1-1) unstable; urgency=low
 
   * Version 4.4.1 upstream (autobuild)
-  
+
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Tue, 04 Dec 2018 07:12:38 +0300
- 
+
 pulseeffects (4.4.0-1) unstable; urgency=low
 
   * Version 4.4.0 upstream (autobuild)
-  
+
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sun, 25 Nov 2018 21:11:18 +0300
- 
+
 pulseeffects (4.3.9-1) unstable; urgency=low
 
   * Version 4.3.9 upstream (autobuild)
-  
+
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 24 Oct 2018 13:10:55 +0300
- 
+
 pulseeffects (4.3.8-1) unstable; urgency=low
 
   * Version 4.3.8 upstream (autobuild)
-  
+
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 17 Oct 2018 20:10:22 +0300
- 
+
 pulseeffects (4.3.7-1) unstable; urgency=low
 
   * Version 4.3.7 upstream (autobuild)
-  
+
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 26 Sep 2018 16:09:41 +0300
- 
+
 pulseeffects (4.3.5-1) unstable; urgency=low
 
   * Version 4.3.5 upstream (autobuild)
-  
+
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Tue, 18 Sep 2018 01:09:27 +0300
- 
+
 pulseeffects (4.3.4-1) unstable; urgency=low
 
   * Version 4.3.4 upstream (autobuild)
-  
+
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sun, 02 Sep 2018 18:09:10 +0300
- 
+
 pulseeffects (4.3.3-1) unstable; urgency=low
 
   * Version 4.3.3 upstream
   * Translated new language strings to Russian
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Fri, 31 Aug 2018 16:32:00 +0300
- 
+
 pulseeffects (4.3.2-2) unstable; urgency=low
 
   * Version 4.3.2 upstream
@@ -123,186 +123,186 @@ pulseeffects (4.3.2-2) unstable; urgency=low
     Debian Sid defaults to older libboost version 1.62, while we need >= 1.65
   * dconf settings will be reset, see upstream changelog:
     "Settings are automatically reset after an upgrade. If you want to know the reason why take a look at the issues #327, #318 and #293 in PulseEffects github page. A few users have configuration problems after an upgrade that are only solved after resetting PulseEffects settings. In all of the cases I could not reproduce the issue they had in my computers. As in some of the cases the crash was so severe that the only way to reset was using dconf in command line I decided to implement an automatic reset after upgrades or downgrades. As almost all PulseEffects settings are saved to the presets file this shouldn't be too annoying for the users."
-  
+
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Thu, 30 Aug 2018 22:29:00 +0300
- 
+
 pulseeffects (4.3.1-2) unstable; urgency=low
 
   * Fix https://github.com/wwmm/pulseeffects/issues/324
-  
+
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 29 Aug 2018 04:35:00 +0300
- 
+
 pulseeffects (4.3.1-1) unstable; urgency=low
 
   * version 4.3.1 upstream
-  
+
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 29 Aug 2018 00:59:00 +0300
 
 pulseeffects (4.2.9-1) unstable; urgency=low
 
   * version 4.2.9 upstream
-  
+
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Tue, 26 Aug 2018 23:46:00 +0300
- 
+
 pulseeffects (4.2.8-4) unstable; urgency=low
 
   * use dh_scour
     May help https://github.com/wwmm/pulseeffects/issues/308
     But scour seems to fail for this svg for now
-  
+
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Thu, 23 Aug 2018 15:29:00 +0300
 
 pulseeffects (4.2.8-3) unstable; urgency=low
 
   * adapter plugin now is a sctrict dependency
     Fixes https://github.com/wwmm/pulseeffects/issues/307
-  
+
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Thu, 23 Aug 2018 15:29:00 +0300
- 
+
 pulseeffects (4.2.8-2) unstable; urgency=low
 
   * version 4.2.8 upstream
-  
+
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Tue, 21 Aug 2018 20:53:00 +0300
- 
+
 pulseeffects (4.2.6-1) unstable; urgency=low
 
   * version 4.2.6 upstream
   * package adapter gstreamer plugin as
   gstreamer1.0-adapter-pulseeffects
-  
+
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sat, 11 Aug 2018 18:35:00 +0300
- 
+
 pulseeffects (4.2.2-2) unstable; urgency=low
 
   * version 4.2.2 upstream
   * small fixes to Russian localization
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 30 Jul 2018 03:31:00 +0300 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 30 Jul 2018 03:31:00 +0300
 
 pulseeffects (4.2.1-3) unstable; urgency=low
 
   * add mda-lv2 optional dependency
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sun, 29 Jul 2018 20:54:00 +0300 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sun, 29 Jul 2018 20:54:00 +0300
 
 pulseeffects (4.2.1-1) unstable; urgency=low
 
   * update to version 4.2.1 upstream
   * fixed Russian localization
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sun, 29 Jul 2018 12:54:00 +0300 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sun, 29 Jul 2018 12:54:00 +0300
 
 pulseeffects (4.2.0-1) unstable; urgency=low
 
   * update to version 4.2.0 upstream
   * fixed Russian localization
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 25 Jul 2018 03:13:00 +0300 
- 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 25 Jul 2018 03:13:00 +0300
+
 pulseeffects (4.1.9-6-git20180723) unstable; urgency=low
 
   * git code between v4.1.9 and v4.2
   * fixes in Russian translation
   * Started Russian translation of help
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sat, 23 Jul 2018 15:02:00 +0300 
- 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sat, 23 Jul 2018 15:02:00 +0300
+
 pulseeffects (4.1.9-3) unstable; urgency=low
 
   * updated Russian translation
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 18 Jul 2018 21:40:00 +0300 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 18 Jul 2018 21:40:00 +0300
 
 pulseeffects (4.1.9-1) unstable; urgency=low
 
   * update to version 4.1.9 upstream
   * package crystalizer gstreamer plugin as
   gstreamer1.0-crystalizer-pulseeffects
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 18 Jul 2018 20:26:00 +0300 
- 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 18 Jul 2018 20:26:00 +0300
+
 pulseeffects (4.1.8-1) unstable; urgency=low
 
   * update to version 4.1.8 upstream
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Tue, 17 Jul 2018 11:28:00 +0300 
- 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Tue, 17 Jul 2018 11:28:00 +0300
+
 pulseeffects (4.1.7-3) unstable; urgency=low
 
   * package gstreamer plugin peconvolver as a separate package
   gstreamer1.0-convolver-pulseeffects
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 16 Jul 2018 02:20:00 +0300 
- 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 16 Jul 2018 02:20:00 +0300
+
 pulseeffects (4.1.7-1) unstable; urgency=low
 
   * update to version 4.1.7 upstream
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sun, 15 Jul 2018 12:13:00 +0300 
- 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sun, 15 Jul 2018 12:13:00 +0300
+
 pulseeffects (4.1.6-2) unstable; urgency=low
 
   * Fixed Russian localization a bit (still requires a lot of work and fixes of regressions)
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sun, 15 Jul 2018 01:24:00 +0300 
- 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sun, 15 Jul 2018 01:24:00 +0300
+
 pulseeffects (4.1.6-1) unstable; urgency=low
 
   * update to version 4.1.6 upstream
   * add libzita-convolver-dev build dependency
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sat, 14 Jul 2018 20:56:00 +0300 
- 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sat, 14 Jul 2018 20:56:00 +0300
+
 pulseeffects (4.1.3-1) unstable; urgency=low
 
   * update to version 4.1.3 upstream
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sun, 08 Jul 2018 23:10:00 +0300 
- 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sun, 08 Jul 2018 23:10:00 +0300
+
 pulseeffects (4.1.2-2) unstable; urgency=low
 
   * update to version 4.1.2 upstream
   * Preparing to get this package into Debian repository
   * debian/compat: bump version 10 to 11
   * debian/control: bump Standards-Version from 3.9.6 to 4.1.4
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 02 Jul 2018 09:10:00 +0300 
- 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 02 Jul 2018 09:10:00 +0300
+
 pulseeffects (4.1.1-3) unstable; urgency=low
 
   * version dependency 'calf-plugins (>= 0.90.0)' to fix https://github.com/wwmm/pulseeffects/issues/227
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Fri, 29 Jun 2018 18:45:00 +0300 
- 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Fri, 29 Jun 2018 18:45:00 +0300
+
 pulseeffects (4.1.1-2) unstable; urgency=low
 
   * update to version 4.1.1 upstream
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Fri, 29 Jun 2018 18:08:00 +0300 
- 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Fri, 29 Jun 2018 18:08:00 +0300
+
 pulseeffects (4.1.0-1) unstable; urgency=low
 
   * update to version 4.1.0 upstream
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Fri, 22 Jun 2018 00:43:00 +0300 
- 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Fri, 22 Jun 2018 00:43:00 +0300
+
 pulseeffects (4.0.8-1) unstable; urgency=low
 
   * update to version 4.0.8 upstream
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 20 Jun 2018 15:55:00 +0300 
- 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 20 Jun 2018 15:55:00 +0300
+
 pulseeffects (4.0.7-1) unstable; urgency=low
 
   * update to version 4.0.7 upstream
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 18 Jun 2018 11:30:00 +0300 
- 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 18 Jun 2018 11:30:00 +0300
+
 pulseeffects (4.0.4-3) unstable; urgency=low
 
   * update to version 4.0.4 upstream
-  
+
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Fri, 15 Jun 2018 12:27:00 +0300
 
 pulseeffects (4.0.0-4) unstable; urgency=low
@@ -310,103 +310,103 @@ pulseeffects (4.0.0-4) unstable; urgency=low
   * update to version 4.0 upstream
   * transition from Python to C++
   * new build and runtime dependencies
-  
+
  -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 04 Jun 2018 04:40:00 +0300
- 
+
 pulseeffects (3.2.3-1) unstable; urgency=low
 
   * update to version 3.2.3 upstream (added gstreamer webrtcdsp plugin)
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sun, 22 Apr 2018 23:59:00 +0300 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sun, 22 Apr 2018 23:59:00 +0300
 
 pulseeffects (3.2.1-4) unstable; urgency=low
 
   * Update Russian localization
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Fri, 09 Mar 2018 01:55:00 +0300 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Fri, 09 Mar 2018 01:55:00 +0300
 
 pulseeffects (3.2.1-1) unstable; urgency=low
 
   * update to version 3.2.1 upstream
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Tue, 01 Mar 2018 22:01:00 +0300 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Tue, 01 Mar 2018 22:01:00 +0300
 
 pulseeffects (3.2.0-1) unstable; urgency=low
 
   * update to version 3.2.0 upstream
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Tue, 13 Feb 2018 05:12:00 +0300 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Tue, 13 Feb 2018 05:12:00 +0300
 
 pulseeffects (3.1.6-2) unstable; urgency=low
 
   * update to version 3.1.6 upstream
   * add zam-plugins as a new dependency
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sun, 21 Jan 2018 00:27:00 +0300 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sun, 21 Jan 2018 00:27:00 +0300
 
 pulseeffects (3.1.3-3) unstable; urgency=low
 
   * fix dependency: calf-ladspa --> calf-plugins
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Tue, 14 Dec 2017 20:02:00 +0300 
- 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Tue, 14 Dec 2017 20:02:00 +0300
+
 pulseeffects (3.1.3-2) unstable; urgency=low
 
   * Make the package architecture-independent
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Tue, 14 Dec 2017 19:51:00 +0300 
- 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Tue, 14 Dec 2017 19:51:00 +0300
+
 pulseeffects (3.1.3) unstable; urgency=low
 
   * Level meters: conversion from decibel to linear scale uses the correct factor
   * Auto volume: It is working in service mode and it does not reset the limiter
-  
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Tue, 14 Dec 2017 19:43:00 +0300 
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Tue, 14 Dec 2017 19:43:00 +0300
 
 pulseeffects (3.1.2-git131220170843msk) unstable; urgency=low
 
   * add gstreamer1.0-pulseaudio as a dependency
 
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 13 Dec 2017 08:43:00 +0300 
- 
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 13 Dec 2017 08:43:00 +0300
+
 pulseeffects (3.1.2-git131220170732msk) unstable; urgency=low
 
   * version 3.1.2 + latest Git
 
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 13 Dec 2017 07:33:00 +0300 
- 
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 13 Dec 2017 07:33:00 +0300
+
 pulseeffects (3.0.7.5) unstable; urgency=low
 
   * fix 3.0.7.4 git merging
 
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 08 Nov 2017 22:21:00 +0300 
- 
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 08 Nov 2017 22:21:00 +0300
+
 pulseeffects (3.0.7.4) unstable; urgency=low
 
   * = v3.0.7 upstream (synced with upstream versioning, all previous v3.0.7 here were v.3.0.6+git-master from upstream)
 
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 08 Nov 2017 22:21:00 +0300 
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 08 Nov 2017 22:21:00 +0300
 
 pulseeffects (3.0.7.3) unstable; urgency=high
 
   * Additional fixes for https://github.com/wwmm/pulseeffects/issues/111
 
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 08 Nov 2017 22:21:00 +0300 
- 
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 08 Nov 2017 22:21:00 +0300
+
 pulseeffects (3.0.7.2) unstable; urgency=high
 
   * Fix https://github.com/wwmm/pulseeffects/issues/111 (loosing files while building the deb package)
 
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 06 Nov 2017 22:21:00 +0300 
- 
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 06 Nov 2017 22:21:00 +0300
+
 pulseeffects (3.0.7) unstable; urgency=medium
 
   * Add Russian (ru) localisation
 
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 06 Nov 2017 22:21:00 +0300 
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 06 Nov 2017 22:21:00 +0300
 
 pulseeffects (3.0.6) unstable; urgency=medium
 
   * Package pulseeffects created
 
- -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 06 Nov 2017 22:21:00 +0300 
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Mon, 06 Nov 2017 22:21:00 +0300
