@@ -42,7 +42,7 @@ do
 	sed  -i -re "1s/.*/${old_header}/" ./debian/changelog
 	[ "$GIT" = 1 ] && git reset
 	[ -n "$old_source_format" ] && echo "$old_source_format" > ./debian/source/format
-	
+
 	# dpkg-buildpackage also tries to diff current git vs tarball if it finds it in ../
 	while read line
 	do
@@ -50,9 +50,9 @@ do
 		# TODO: check if target file already exists
 		mv -v "$line" "$new_name"
 	done < <(find ../ -maxdepth 1 -name "*.${tmp_suffix}")
-		
+
 	cd ..
-	
+
 	# change PPA names to yours, you may leave only one PPA; I upload hw-probe to 2 different PPAs at the same time
 	for ppa_name in ppa:mikhailnov/pulseeffects ppa:mikhailnov/utils ppa:mikhailnov/desktop1-dev
 	do
@@ -62,7 +62,7 @@ do
 			else echo ".changes file ${pkg_name}_${new_version}_source.changes not found, not uploading anything!"
 		fi
 	done
-	
+
 	cd "$dir0"
 	sleep 1
 done
