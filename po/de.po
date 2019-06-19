@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-03 18:26+0200\n"
+"POT-Creation-Date: 2019-06-19 12:32-0300\n"
 "PO-Revision-Date: 2019-02-10 12:34+0100\n"
 "Last-Translator: David Keller <blobcodes@protonmail.com>\n"
 "Language-Team: \n"
@@ -18,8 +18,8 @@ msgstr ""
 "X-Generator: Poedit 2.2.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/ui/application.glade:41 src/calibration_ui.cpp:48
-#: src/calibration_ui.cpp:175
+#: data/ui/application.glade:41 src/calibration_ui.cpp:39
+#: src/calibration_ui.cpp:164
 msgid "Test Signals"
 msgstr "Testsignale"
 
@@ -40,8 +40,8 @@ msgstr "Hilfe"
 
 #: data/ui/application.glade:180 data/ui/filter.glade:204
 #: data/ui/equalizer.glade:309 data/ui/reverb.glade:284
-#: data/ui/crossfeed.glade:47 src/presets_menu_ui.cpp:124
-#: src/presets_menu_ui.cpp:289 src/presets_menu_ui.cpp:306
+#: data/ui/crossfeed.glade:47 src/presets_menu_ui.cpp:115
+#: src/presets_menu_ui.cpp:274 src/presets_menu_ui.cpp:291
 msgid "Presets"
 msgstr "Presets"
 
@@ -1057,11 +1057,9 @@ msgstr "Quereinspeisung"
 msgid "Maximizer"
 msgstr "Maximierer"
 
-#: data/ui/maximizer.glade:269 data/ui/multiband_gate.glade:722
-#: data/ui/multiband_gate.glade:1152 data/ui/multiband_gate.glade:1562
-#: data/ui/multiband_gate.glade:1972 data/ui/deesser.glade:748
-msgid "Reduction"
-msgstr "Senkung"
+#: data/ui/maximizer.glade:269 data/ui/gate.glade:190
+msgid "Gain Reduction"
+msgstr "Verstärkungsreduzierung"
 
 #: data/ui/loudness.glade:196
 msgid "Link"
@@ -1078,10 +1076,6 @@ msgstr "Erkennung"
 #: data/ui/gate.glade:176
 msgid "Stereo Link"
 msgstr "Stereoverbindung"
-
-#: data/ui/gate.glade:190
-msgid "Gain Reduction"
-msgstr "Verstärkungsreduzierung"
 
 #: data/ui/gate.glade:235
 msgid "Average"
@@ -1100,6 +1094,12 @@ msgstr "Gating"
 #: data/ui/multiband_gate.glade:70
 msgid "Multiband Gate"
 msgstr "Multiband Gate"
+
+#: data/ui/multiband_gate.glade:722 data/ui/multiband_gate.glade:1152
+#: data/ui/multiband_gate.glade:1562 data/ui/multiband_gate.glade:1972
+#: data/ui/deesser.glade:748
+msgid "Reduction"
+msgstr "Senkung"
 
 #: data/ui/deesser.glade:61
 msgid "Deesser"
@@ -1157,7 +1157,7 @@ msgstr "Dauer"
 msgid "Samples"
 msgstr "Probenahme"
 
-#: data/ui/convolver.glade:342 src/convolver_ui.cpp:269
+#: data/ui/convolver.glade:342 src/convolver_ui.cpp:251
 msgid "Impulse Response"
 msgstr "Impulsantwort"
 
@@ -1329,7 +1329,7 @@ msgstr ""
 "System angeschlossen ist."
 
 #: data/ui/presets_menu.glade:86 data/ui/presets_menu.glade:195
-#: src/presets_menu_ui.cpp:119
+#: src/presets_menu_ui.cpp:110
 msgid "Import Presets"
 msgstr "Presets importieren"
 
@@ -1479,75 +1479,55 @@ msgstr "Limiter;Kompressor;Hall;Equalizer;Autovolumen;"
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:220
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:217
 msgid "\"Presets\""
 msgstr "\"Presets\""
 
-#: src/application.cpp:23
+#: src/application.cpp:19
 msgid "Quit PulseEffects. Useful when running in service mode."
 msgstr "Beende PulseEffects. Nützlich bei der Ausführung als Service."
 
-#: src/application.cpp:26
+#: src/application.cpp:21
 msgid "Show available presets."
 msgstr "Verfügbare Presets anzeigen."
 
-#: src/application.cpp:30
+#: src/application.cpp:24
 msgid "Load a preset. Example: pulseeffects -l music"
 msgstr "Lade ein Preset. Beispiel: pulseeffects -l music"
 
-#: src/application.cpp:33
+#: src/application.cpp:26
 msgid "Reset PulseEffects."
 msgstr "PulseEffects zurücksetzen."
 
-#: src/application.cpp:207
+#: src/application.cpp:199
 msgid "Output Presets: "
 msgstr "Ausgabe-Presets:"
 
-#: src/application.cpp:215
+#: src/application.cpp:207
 msgid "Input Presets: "
 msgstr "Eingangs-Presets: "
-
-#: src/application.cpp:295
-msgid "PulseEffects was updated"
-msgstr "PulseEffects wurde Aktualisiert"
-
-#: src/application.cpp:298
-msgid ""
-"It is recommended to reset its configuration after an update. Do you want to "
-"do this?"
-msgstr ""
-"Es wird empfohlen, die Konfiguration nach einem Update zurückzusetzen. "
-"Willst du das tun?"
-
-#: src/application.cpp:301
-msgid "Yes"
-msgstr "Ja"
-
-#: src/application.cpp:302
-msgid "No"
-msgstr "Nein"
 
 #: src/effects_base_ui.cpp:27
 msgid "Applications"
 msgstr "Anwendungen"
 
-#: src/blacklist_settings_ui.cpp:83
+#: src/blacklist_settings_ui.cpp:71
 msgid "Blacklist"
 msgstr "Sperrliste"
 
-#: src/general_settings_ui.cpp:137
+#: src/general_settings_ui.cpp:121
 msgid "General"
 msgstr "Allgemein"
 
-#: src/pulse_settings_ui.cpp:144
+#: src/pulse_settings_ui.cpp:124
 msgid "Pulseaudio"
 msgstr "PulseAudio"
 
-#: src/presets_menu_ui.cpp:120 src/convolver_ui.cpp:265
+#: src/presets_menu_ui.cpp:111 src/convolver_ui.cpp:247
 msgid "Open"
 msgstr "Öffnen"
 
-#: src/presets_menu_ui.cpp:120 src/convolver_ui.cpp:265
+#: src/presets_menu_ui.cpp:111 src/convolver_ui.cpp:247
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -1559,25 +1539,41 @@ msgstr "Pausiert"
 msgid "playing"
 msgstr "Spielt"
 
-#: src/calibration_ui.cpp:182
+#: src/calibration_ui.cpp:171
 msgid "Calibration Microphone"
 msgstr "Kalibrationsmikrofon"
 
-#: src/convolver_ui.cpp:264
+#: src/convolver_ui.cpp:246
 msgid "Import Impulse File"
 msgstr "Impulsdatei importieren"
 
-#: src/convolver_ui.cpp:307 src/convolver_ui.cpp:308 src/convolver_ui.cpp:310
+#: src/convolver_ui.cpp:290 src/convolver_ui.cpp:291 src/convolver_ui.cpp:293
 msgid "Failed"
 msgstr "Gescheitert"
 
-#: src/convolver_ui.cpp:312
+#: src/convolver_ui.cpp:295
 msgid "Could Not Load The Impulse File"
 msgstr "Die Impulsdatei konnte nicht geladen werden"
 
-#: src/equalizer_ui.cpp:335 src/equalizer_ui.cpp:473
+#: src/equalizer_ui.cpp:307 src/equalizer_ui.cpp:426
 msgid "infinity"
 msgstr "Unendlich"
+
+#~ msgid "PulseEffects was updated"
+#~ msgstr "PulseEffects wurde Aktualisiert"
+
+#~ msgid ""
+#~ "It is recommended to reset its configuration after an update. Do you want "
+#~ "to do this?"
+#~ msgstr ""
+#~ "Es wird empfohlen, die Konfiguration nach einem Update zurückzusetzen. "
+#~ "Willst du das tun?"
+
+#~ msgid "Yes"
+#~ msgstr "Ja"
+
+#~ msgid "No"
+#~ msgstr "Nein"
 
 #, fuzzy
 #~ msgid "Intensities"

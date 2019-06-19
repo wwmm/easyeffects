@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-03 18:26+0200\n"
+"POT-Creation-Date: 2019-06-19 12:32-0300\n"
 "PO-Revision-Date: 2017-10-14 10:20+0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: \n"
@@ -17,8 +17,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.4\n"
 
-#: data/ui/application.glade:41 src/calibration_ui.cpp:48
-#: src/calibration_ui.cpp:175
+#: data/ui/application.glade:41 src/calibration_ui.cpp:39
+#: src/calibration_ui.cpp:164
 #, fuzzy
 msgid "Test Signals"
 msgstr "Testsignal"
@@ -40,8 +40,8 @@ msgstr ""
 
 #: data/ui/application.glade:180 data/ui/filter.glade:204
 #: data/ui/equalizer.glade:309 data/ui/reverb.glade:284
-#: data/ui/crossfeed.glade:47 src/presets_menu_ui.cpp:124
-#: src/presets_menu_ui.cpp:289 src/presets_menu_ui.cpp:306
+#: data/ui/crossfeed.glade:47 src/presets_menu_ui.cpp:115
+#: src/presets_menu_ui.cpp:274 src/presets_menu_ui.cpp:291
 msgid "Presets"
 msgstr "Profiler"
 
@@ -1109,11 +1109,8 @@ msgstr ""
 msgid "Maximizer"
 msgstr ""
 
-#: data/ui/maximizer.glade:269 data/ui/multiband_gate.glade:722
-#: data/ui/multiband_gate.glade:1152 data/ui/multiband_gate.glade:1562
-#: data/ui/multiband_gate.glade:1972 data/ui/deesser.glade:748
-#, fuzzy
-msgid "Reduction"
+#: data/ui/maximizer.glade:269 data/ui/gate.glade:190
+msgid "Gain Reduction"
 msgstr "Förstärkningsreducering"
 
 #: data/ui/loudness.glade:196
@@ -1134,10 +1131,6 @@ msgstr "Försvagning"
 msgid "Stereo Link"
 msgstr "Ljudförstärkare"
 
-#: data/ui/gate.glade:190
-msgid "Gain Reduction"
-msgstr "Förstärkningsreducering"
-
 #: data/ui/gate.glade:235
 msgid "Average"
 msgstr ""
@@ -1156,6 +1149,13 @@ msgstr ""
 #, fuzzy
 msgid "Multiband Gate"
 msgstr "Kompressor"
+
+#: data/ui/multiband_gate.glade:722 data/ui/multiband_gate.glade:1152
+#: data/ui/multiband_gate.glade:1562 data/ui/multiband_gate.glade:1972
+#: data/ui/deesser.glade:748
+#, fuzzy
+msgid "Reduction"
+msgstr "Förstärkningsreducering"
 
 #: data/ui/deesser.glade:61
 msgid "Deesser"
@@ -1218,7 +1218,7 @@ msgstr "Kalibrering"
 msgid "Samples"
 msgstr "Resampler"
 
-#: data/ui/convolver.glade:342 src/convolver_ui.cpp:269
+#: data/ui/convolver.glade:342 src/convolver_ui.cpp:251
 #, fuzzy
 msgid "Impulse Response"
 msgstr "Platt respons"
@@ -1404,7 +1404,7 @@ msgid ""
 msgstr ""
 
 #: data/ui/presets_menu.glade:86 data/ui/presets_menu.glade:195
-#: src/presets_menu_ui.cpp:119
+#: src/presets_menu_ui.cpp:110
 #, fuzzy
 msgid "Import Presets"
 msgstr "Öppna förinställning"
@@ -1560,78 +1560,59 @@ msgstr ""
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:220
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:217
 #, fuzzy
 msgid "\"Presets\""
 msgstr "Profiler"
 
-#: src/application.cpp:23
+#: src/application.cpp:19
 msgid "Quit PulseEffects. Useful when running in service mode."
 msgstr ""
 
-#: src/application.cpp:26
+#: src/application.cpp:21
 msgid "Show available presets."
 msgstr ""
 
-#: src/application.cpp:30
+#: src/application.cpp:24
 msgid "Load a preset. Example: pulseeffects -l music"
 msgstr ""
 
-#: src/application.cpp:33
+#: src/application.cpp:26
 #, fuzzy
 msgid "Reset PulseEffects."
 msgstr "PulseEffects"
 
-#: src/application.cpp:207
+#: src/application.cpp:199
 #, fuzzy
 msgid "Output Presets: "
 msgstr "Profiler"
 
-#: src/application.cpp:215
+#: src/application.cpp:207
 #, fuzzy
 msgid "Input Presets: "
 msgstr "Öppna förinställning"
-
-#: src/application.cpp:295
-#, fuzzy
-msgid "PulseEffects was updated"
-msgstr "PulseEffects"
-
-#: src/application.cpp:298
-msgid ""
-"It is recommended to reset its configuration after an update. Do you want to "
-"do this?"
-msgstr ""
-
-#: src/application.cpp:301
-msgid "Yes"
-msgstr ""
-
-#: src/application.cpp:302
-msgid "No"
-msgstr ""
 
 #: src/effects_base_ui.cpp:27
 msgid "Applications"
 msgstr "Program"
 
-#: src/blacklist_settings_ui.cpp:83
+#: src/blacklist_settings_ui.cpp:71
 msgid "Blacklist"
 msgstr ""
 
-#: src/general_settings_ui.cpp:137
+#: src/general_settings_ui.cpp:121
 msgid "General"
 msgstr "Allmänt"
 
-#: src/pulse_settings_ui.cpp:144
+#: src/pulse_settings_ui.cpp:124
 msgid "Pulseaudio"
 msgstr ""
 
-#: src/presets_menu_ui.cpp:120 src/convolver_ui.cpp:265
+#: src/presets_menu_ui.cpp:111 src/convolver_ui.cpp:247
 msgid "Open"
 msgstr ""
 
-#: src/presets_menu_ui.cpp:120 src/convolver_ui.cpp:265
+#: src/presets_menu_ui.cpp:111 src/convolver_ui.cpp:247
 #, fuzzy
 msgid "Cancel"
 msgstr "Ljudförstärkare"
@@ -1644,27 +1625,31 @@ msgstr ""
 msgid "playing"
 msgstr ""
 
-#: src/calibration_ui.cpp:182
+#: src/calibration_ui.cpp:171
 #, fuzzy
 msgid "Calibration Microphone"
 msgstr "Kalibrering och mikrofon korrigering"
 
-#: src/convolver_ui.cpp:264
+#: src/convolver_ui.cpp:246
 #, fuzzy
 msgid "Import Impulse File"
 msgstr "Platt respons"
 
-#: src/convolver_ui.cpp:307 src/convolver_ui.cpp:308 src/convolver_ui.cpp:310
+#: src/convolver_ui.cpp:290 src/convolver_ui.cpp:291 src/convolver_ui.cpp:293
 msgid "Failed"
 msgstr ""
 
-#: src/convolver_ui.cpp:312
+#: src/convolver_ui.cpp:295
 msgid "Could Not Load The Impulse File"
 msgstr ""
 
-#: src/equalizer_ui.cpp:335 src/equalizer_ui.cpp:473
+#: src/equalizer_ui.cpp:307 src/equalizer_ui.cpp:426
 msgid "infinity"
 msgstr ""
+
+#, fuzzy
+#~ msgid "PulseEffects was updated"
+#~ msgstr "PulseEffects"
 
 #~ msgid "Show"
 #~ msgstr "Visa"
