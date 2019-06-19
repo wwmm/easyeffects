@@ -1,10 +1,8 @@
 #include "gate_preset.hpp"
 
 GatePreset::GatePreset()
-    : input_settings(Gio::Settings::create(
-          "com.github.wwmm.pulseeffects.sourceoutputs.gate")),
-      output_settings(Gio::Settings::create(
-          "com.github.wwmm.pulseeffects.sinkinputs.gate")) {}
+    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs.gate")),
+      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.gate")) {}
 
 void GatePreset::save(boost::property_tree::ptree& root,
                       const std::string& section,
@@ -37,8 +35,7 @@ void GatePreset::load(boost::property_tree::ptree& root,
 
   update_string_key(root, settings, "detection", section + ".gate.detection");
 
-  update_string_key(root, settings, "stereo-link",
-                    section + ".gate.stereo-link");
+  update_string_key(root, settings, "stereo-link", section + ".gate.stereo-link");
 
   update_key<double>(root, settings, "range", section + ".gate.range");
 
@@ -55,8 +52,7 @@ void GatePreset::load(boost::property_tree::ptree& root,
   update_key<double>(root, settings, "makeup", section + ".gate.makeup");
 }
 
-void GatePreset::write(PresetType preset_type,
-                       boost::property_tree::ptree& root) {
+void GatePreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     save(root, "output", output_settings);
   } else {
@@ -64,8 +60,7 @@ void GatePreset::write(PresetType preset_type,
   }
 }
 
-void GatePreset::read(PresetType preset_type,
-                      boost::property_tree::ptree& root) {
+void GatePreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     load(root, "output", output_settings);
   } else {

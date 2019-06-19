@@ -1,45 +1,33 @@
 #include "spectrum_ui.hpp"
 #include "util.hpp"
 
-SpectrumUi::SpectrumUi(BaseObjectType* cobject,
-                       const Glib::RefPtr<Gtk::Builder>& builder)
-    : Gtk::Grid(cobject),
-      settings(Gio::Settings::create("com.github.wwmm.pulseeffects.spectrum")) {
+SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder)
+    : Gtk::Grid(cobject), settings(Gio::Settings::create("com.github.wwmm.pulseeffects.spectrum")) {
   // loading glade widgets
 
   builder->get_widget("spectrum", spectrum);
 
   // signals connection
 
-  spectrum->signal_draw().connect(
-      sigc::mem_fun(*this, &SpectrumUi::on_spectrum_draw));
-  spectrum->signal_enter_notify_event().connect(
-      sigc::mem_fun(*this, &SpectrumUi::on_spectrum_enter_notify_event));
-  spectrum->signal_leave_notify_event().connect(
-      sigc::mem_fun(*this, &SpectrumUi::on_spectrum_leave_notify_event));
-  spectrum->signal_motion_notify_event().connect(
-      sigc::mem_fun(*this, &SpectrumUi::on_spectrum_motion_notify_event));
+  spectrum->signal_draw().connect(sigc::mem_fun(*this, &SpectrumUi::on_spectrum_draw));
+  spectrum->signal_enter_notify_event().connect(sigc::mem_fun(*this, &SpectrumUi::on_spectrum_enter_notify_event));
+  spectrum->signal_leave_notify_event().connect(sigc::mem_fun(*this, &SpectrumUi::on_spectrum_leave_notify_event));
+  spectrum->signal_motion_notify_event().connect(sigc::mem_fun(*this, &SpectrumUi::on_spectrum_motion_notify_event));
 
-  connections.push_back(
-      settings->signal_changed("use-custom-color").connect([&](auto key) {
-        init_color();
-        init_gradient_color();
-      }));
+  connections.push_back(settings->signal_changed("use-custom-color").connect([&](auto key) {
+    init_color();
+    init_gradient_color();
+  }));
 
-  connections.push_back(settings->signal_changed("color").connect(
-      [&](auto key) { init_color(); }));
+  connections.push_back(settings->signal_changed("color").connect([&](auto key) { init_color(); }));
 
-  connections.push_back(
-      settings->signal_changed("gradient-color").connect([&](auto key) {
-        init_gradient_color();
-      }));
+  connections.push_back(settings->signal_changed("gradient-color").connect([&](auto key) { init_gradient_color(); }));
 
-  connections.push_back(
-      settings->signal_changed("height").connect([&](auto key) {
-        auto v = settings->get_int("height");
+  connections.push_back(settings->signal_changed("height").connect([&](auto key) {
+    auto v = settings->get_int("height");
 
-        spectrum->set_size_request(-1, v);
-      }));
+    spectrum->set_size_request(-1, v);
+  }));
 
   auto flag_get = Gio::SettingsBindFlags::SETTINGS_BIND_GET;
 
@@ -60,8 +48,7 @@ SpectrumUi::~SpectrumUi() {
 }
 
 SpectrumUi* SpectrumUi::add_to_box(Gtk::Box* box) {
-  auto builder = Gtk::Builder::create_from_resource(
-      "/com/github/wwmm/pulseeffects/ui/spectrum.glade");
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/spectrum.glade");
 
   SpectrumUi* ui;
 
@@ -113,38 +100,29 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
     }
 
     if (use_gradient) {
-      auto max_mag =
-          *std::max_element(spectrum_mag.begin(), spectrum_mag.end());
-      auto max_bar_height =
-          height * std::min(1., std::pow(scale * max_mag, exponent));
+      auto max_mag = *std::max_element(spectrum_mag.begin(), spectrum_mag.end());
+      auto max_bar_height = height * std::min(1., std::pow(scale * max_mag, exponent));
 
-      auto gradient = Cairo::LinearGradient::create(
-          0.0, height - max_bar_height, 0, height);
+      auto gradient = Cairo::LinearGradient::create(0.0, height - max_bar_height, 0, height);
 
-      gradient->add_color_stop_rgba(0.15, color.get_red(), color.get_green(),
-                                    color.get_blue(), color.get_alpha());
+      gradient->add_color_stop_rgba(0.15, color.get_red(), color.get_green(), color.get_blue(), color.get_alpha());
 
-      gradient->add_color_stop_rgba(
-          1.0, gradient_color.get_red(), gradient_color.get_green(),
-          gradient_color.get_blue(), gradient_color.get_alpha());
+      gradient->add_color_stop_rgba(1.0, gradient_color.get_red(), gradient_color.get_green(),
+                                    gradient_color.get_blue(), gradient_color.get_alpha());
 
       ctx->set_source(gradient);
     } else {
-      ctx->set_source_rgba(color.get_red(), color.get_green(), color.get_blue(),
-                           color.get_alpha());
+      ctx->set_source_rgba(color.get_red(), color.get_green(), color.get_blue(), color.get_alpha());
     }
 
     if (spectrum_type == 0) {  // Bars
       for (uint n = 0; n < n_points; n++) {
-        auto bar_height =
-            height * std::min(1., std::pow(scale * spectrum_mag[n], exponent));
+        auto bar_height = height * std::min(1., std::pow(scale * spectrum_mag[n], exponent));
 
         if (draw_border) {
-          ctx->rectangle(x[n], height - bar_height,
-                         width / n_points - line_width, bar_height);
+          ctx->rectangle(x[n], height - bar_height, width / n_points - line_width, bar_height);
         } else {
-          ctx->rectangle(x[n], height - bar_height, width / n_points,
-                         bar_height);
+          ctx->rectangle(x[n], height - bar_height, width / n_points, bar_height);
         }
       }
     } else if (spectrum_type == 1) {  // Lines

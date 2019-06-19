@@ -24,23 +24,17 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
 
   // signals connection
 
-  output_listbox->set_sort_func(
-      sigc::mem_fun(*this, &PresetsMenuUi::on_listbox_sort));
+  output_listbox->set_sort_func(sigc::mem_fun(*this, &PresetsMenuUi::on_listbox_sort));
 
-  input_listbox->set_sort_func(
-      sigc::mem_fun(*this, &PresetsMenuUi::on_listbox_sort));
+  input_listbox->set_sort_func(sigc::mem_fun(*this, &PresetsMenuUi::on_listbox_sort));
 
-  add_output->signal_clicked().connect(
-      [=]() { create_preset(PresetType::output); });
+  add_output->signal_clicked().connect([=]() { create_preset(PresetType::output); });
 
-  add_input->signal_clicked().connect(
-      [=]() { create_preset(PresetType::input); });
+  add_input->signal_clicked().connect([=]() { create_preset(PresetType::input); });
 
-  import_output->signal_clicked().connect(
-      [=]() { import_preset(PresetType::output); });
+  import_output->signal_clicked().connect([=]() { import_preset(PresetType::output); });
 
-  import_input->signal_clicked().connect(
-      [=]() { import_preset(PresetType::input); });
+  import_input->signal_clicked().connect([=]() { import_preset(PresetType::input); });
 
   reset_menu_button_label();
 }
@@ -53,10 +47,8 @@ PresetsMenuUi::~PresetsMenuUi() {
   util::debug(log_tag + "destroyed");
 }
 
-PresetsMenuUi* PresetsMenuUi::add_to_popover(Gtk::Popover* popover,
-                                             Application* app) {
-  auto builder = Gtk::Builder::create_from_resource(
-      "/com/github/wwmm/pulseeffects/ui/presets_menu.glade");
+PresetsMenuUi* PresetsMenuUi::add_to_popover(Gtk::Popover* popover, Application* app) {
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/presets_menu.glade");
 
   auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
 
@@ -115,9 +107,8 @@ void PresetsMenuUi::import_preset(PresetType preset_type) {
 
   auto main_window = gtk_widget_get_toplevel((GtkWidget*)this->gobj());
 
-  auto dialog = gtk_file_chooser_native_new(
-      _("Import Presets"), (GtkWindow*)main_window,
-      GTK_FILE_CHOOSER_ACTION_OPEN, _("Open"), _("Cancel"));
+  auto dialog = gtk_file_chooser_native_new(_("Import Presets"), (GtkWindow*)main_window, GTK_FILE_CHOOSER_ACTION_OPEN,
+                                            _("Open"), _("Cancel"));
 
   auto filter = gtk_file_filter_new();
 
@@ -133,29 +124,29 @@ void PresetsMenuUi::import_preset(PresetType preset_type) {
     auto file_list = gtk_file_chooser_get_filenames(chooser);
 
     if (preset_type == PresetType::input) {
-      g_slist_foreach(file_list,
-                      [](auto data, auto user_data) {
-                        auto aui = static_cast<PresetsMenuUi*>(user_data);
+      g_slist_foreach(
+          file_list,
+          [](auto data, auto user_data) {
+            auto aui = static_cast<PresetsMenuUi*>(user_data);
 
-                        auto file_path = static_cast<char*>(data);
+            auto file_path = static_cast<char*>(data);
 
-                        aui->app->presets_manager->import(PresetType::input,
-                                                          file_path);
-                      },
-                      this);
+            aui->app->presets_manager->import(PresetType::input, file_path);
+          },
+          this);
     }
 
     if (preset_type == PresetType::output) {
-      g_slist_foreach(file_list,
-                      [](auto data, auto user_data) {
-                        auto aui = static_cast<PresetsMenuUi*>(user_data);
+      g_slist_foreach(
+          file_list,
+          [](auto data, auto user_data) {
+            auto aui = static_cast<PresetsMenuUi*>(user_data);
 
-                        auto file_path = static_cast<char*>(data);
+            auto file_path = static_cast<char*>(data);
 
-                        aui->app->presets_manager->import(PresetType::output,
-                                                          file_path);
-                      },
-                      this);
+            aui->app->presets_manager->import(PresetType::output, file_path);
+          },
+          this);
     }
 
     g_slist_free(file_list);
@@ -166,8 +157,7 @@ void PresetsMenuUi::import_preset(PresetType preset_type) {
   populate_listbox(preset_type);
 }
 
-int PresetsMenuUi::on_listbox_sort(Gtk::ListBoxRow* row1,
-                                   Gtk::ListBoxRow* row2) {
+int PresetsMenuUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) {
   auto name1 = row1->get_name();
   auto name2 = row2->get_name();
 
@@ -185,8 +175,7 @@ int PresetsMenuUi::on_listbox_sort(Gtk::ListBoxRow* row1,
 }
 
 void PresetsMenuUi::on_presets_menu_button_clicked() {
-  Gtk::ApplicationWindow* parent =
-      dynamic_cast<Gtk::ApplicationWindow*>(this->get_toplevel());
+  Gtk::ApplicationWindow* parent = dynamic_cast<Gtk::ApplicationWindow*>(this->get_toplevel());
 
   int height = 0.7 * parent->get_allocated_height();
 
@@ -214,8 +203,7 @@ void PresetsMenuUi::populate_listbox(PresetType preset_type) {
   auto names = app->presets_manager->get_names(preset_type);
 
   for (auto name : names) {
-    auto b = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/ui/preset_row.glade");
+    auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/preset_row.glade");
 
     Gtk::ListBoxRow* row;
     Gtk::Button *apply_btn, *save_btn, *remove_btn;
@@ -243,13 +231,11 @@ void PresetsMenuUi::populate_listbox(PresetType preset_type) {
       app->presets_manager->load(preset_type, row->get_name());
     }));
 
-    connections.push_back(save_btn->signal_clicked().connect(
-        [=]() { app->presets_manager->save(preset_type, name); }));
+    connections.push_back(save_btn->signal_clicked().connect([=]() { app->presets_manager->save(preset_type, name); }));
 
     connections.push_back(autoload_btn->signal_toggled().connect([=]() {
       if (preset_type == PresetType::output) {
-        auto dev_name = build_device_name(
-            preset_type, app->pm->server_info.default_sink_name);
+        auto dev_name = build_device_name(preset_type, app->pm->server_info.default_sink_name);
 
         if (autoload_btn->get_active()) {
           app->presets_manager->add_autoload(dev_name, name);
@@ -257,8 +243,7 @@ void PresetsMenuUi::populate_listbox(PresetType preset_type) {
           app->presets_manager->remove_autoload(dev_name, name);
         }
       } else {
-        auto dev_name = build_device_name(
-            preset_type, app->pm->server_info.default_source_name);
+        auto dev_name = build_device_name(preset_type, app->pm->server_info.default_source_name);
 
         if (autoload_btn->get_active()) {
           app->presets_manager->add_autoload(dev_name, name);
@@ -306,8 +291,7 @@ void PresetsMenuUi::reset_menu_button_label() {
   settings->set_string("last-used-preset", _("Presets"));
 }
 
-std::string PresetsMenuUi::build_device_name(PresetType preset_type,
-                                             const std::string& device) {
+std::string PresetsMenuUi::build_device_name(PresetType preset_type, const std::string& device) {
   std::string port, dev_name;
 
   if (preset_type == PresetType::output) {
@@ -329,18 +313,15 @@ std::string PresetsMenuUi::build_device_name(PresetType preset_type,
   return dev_name;
 }
 
-bool PresetsMenuUi::is_autoloaded(PresetType preset_type,
-                                  const std::string& name) {
+bool PresetsMenuUi::is_autoloaded(PresetType preset_type, const std::string& name) {
   std::string current_autoload;
 
   if (preset_type == PresetType::output) {
-    auto dev_name =
-        build_device_name(preset_type, app->pm->server_info.default_sink_name);
+    auto dev_name = build_device_name(preset_type, app->pm->server_info.default_sink_name);
 
     current_autoload = app->presets_manager->find_autoload(dev_name);
   } else {
-    auto dev_name = build_device_name(preset_type,
-                                      app->pm->server_info.default_source_name);
+    auto dev_name = build_device_name(preset_type, app->pm->server_info.default_source_name);
 
     current_autoload = app->presets_manager->find_autoload(dev_name);
   }

@@ -33,8 +33,7 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
 
   virtual ~SinkInputEffectsUi();
 
-  static SinkInputEffectsUi* add_to_stack(Gtk::Stack* stack,
-                                          SinkInputEffects* sie_ptr);
+  static SinkInputEffectsUi* add_to_stack(Gtk::Stack* stack, SinkInputEffects* sie_ptr);
 
  protected:
   std::string log_tag = "sie_ui: ";

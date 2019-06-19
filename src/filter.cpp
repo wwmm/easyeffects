@@ -49,19 +49,14 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Filter* l) {
 
 }  // namespace
 
-Filter::Filter(const std::string& tag, const std::string& schema)
-    : PluginBase(tag, "filter", schema) {
-  filter =
-      gst_element_factory_make("calf-sourceforge-net-plugins-Filter", "filter");
+Filter::Filter(const std::string& tag, const std::string& schema) : PluginBase(tag, "filter", schema) {
+  filter = gst_element_factory_make("calf-sourceforge-net-plugins-Filter", "filter");
 
   if (is_installed(filter)) {
-    auto audioconvert_in =
-        gst_element_factory_make("audioconvert", "filter_audioconvert_in");
-    auto audioconvert_out =
-        gst_element_factory_make("audioconvert", "filter_audioconvert_out");
+    auto audioconvert_in = gst_element_factory_make("audioconvert", "filter_audioconvert_in");
+    auto audioconvert_out = gst_element_factory_make("audioconvert", "filter_audioconvert_out");
 
-    gst_bin_add_many(GST_BIN(bin), audioconvert_in, filter, audioconvert_out,
-                     nullptr);
+    gst_bin_add_many(GST_BIN(bin), audioconvert_in, filter, audioconvert_out, nullptr);
 
     gst_element_link_many(audioconvert_in, filter, audioconvert_out, nullptr);
 
@@ -78,8 +73,7 @@ Filter::Filter(const std::string& tag, const std::string& schema)
 
     bind_to_gsettings();
 
-    g_signal_connect(settings, "changed::post-messages",
-                     G_CALLBACK(on_post_messages_changed), this);
+    g_signal_connect(settings, "changed::post-messages", G_CALLBACK(on_post_messages_changed), this);
 
     // useless write just to force callback call
 
@@ -94,25 +88,20 @@ Filter::~Filter() {
 }
 
 void Filter::bind_to_gsettings() {
-  g_settings_bind_with_mapping(
-      settings, "input-gain", filter, "level-in", G_SETTINGS_BIND_DEFAULT,
-      util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "input-gain", filter, "level-in", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(
-      settings, "output-gain", filter, "level-out", G_SETTINGS_BIND_DEFAULT,
-      util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "output-gain", filter, "level-out", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "frequency", filter, "freq",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
+  g_settings_bind_with_mapping(settings, "frequency", filter, "freq", G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(
-      settings, "resonance", filter, "res", G_SETTINGS_BIND_DEFAULT,
-      util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "resonance", filter, "res", G_SETTINGS_BIND_DEFAULT, util::db20_gain_to_linear,
+                               util::linear_gain_to_db20, nullptr, nullptr);
 
   g_settings_bind(settings, "mode", filter, "mode", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind_with_mapping(settings, "inertia", filter, "inertia",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
+  g_settings_bind_with_mapping(settings, "inertia", filter, "inertia", G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 }

@@ -32,13 +32,11 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
   listbox->add(*row);
 
-  listbox->signal_row_activated().connect(
-      [&](auto row) { stack->set_visible_child(row->get_name()); });
+  listbox->signal_row_activated().connect([&](auto row) { stack->set_visible_child(row->get_name()); });
 
   listbox->set_sort_func(sigc::mem_fun(*this, &EffectsBaseUi::on_listbox_sort));
 
-  connections.push_back(settings->signal_changed("plugins").connect(
-      [=](auto key) { listbox->invalidate_sort(); }));
+  connections.push_back(settings->signal_changed("plugins").connect([=](auto key) { listbox->invalidate_sort(); }));
 }
 
 EffectsBaseUi::~EffectsBaseUi() {
@@ -55,8 +53,7 @@ void EffectsBaseUi::on_app_added(std::shared_ptr<AppInfo> app_info) {
     }
   }
 
-  auto builder = Gtk::Builder::create_from_resource(
-      "/com/github/wwmm/pulseeffects/ui/app_info.glade");
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/app_info.glade");
 
   AppInfoUi* appui = nullptr;
 
@@ -93,8 +90,7 @@ void EffectsBaseUi::on_app_removed(uint idx) {
   }
 }
 
-int EffectsBaseUi::on_listbox_sort(Gtk::ListBoxRow* row1,
-                                   Gtk::ListBoxRow* row2) {
+int EffectsBaseUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) {
   auto name1 = row1->get_name();
   auto name2 = row2->get_name();
 

@@ -1,10 +1,8 @@
 #include "limiter_preset.hpp"
 
 LimiterPreset::LimiterPreset()
-    : input_settings(Gio::Settings::create(
-          "com.github.wwmm.pulseeffects.sourceoutputs.limiter")),
-      output_settings(Gio::Settings::create(
-          "com.github.wwmm.pulseeffects.sinkinputs.limiter")) {}
+    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs.limiter")),
+      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.limiter")) {}
 
 void LimiterPreset::save(boost::property_tree::ptree& root,
                          const std::string& section,
@@ -23,8 +21,7 @@ void LimiterPreset::save(boost::property_tree::ptree& root,
 
   root.put(section + ".limiter.asc-level", settings->get_double("asc-level"));
 
-  root.put(section + ".limiter.oversampling",
-           settings->get_int("oversampling"));
+  root.put(section + ".limiter.oversampling", settings->get_int("oversampling"));
 }
 
 void LimiterPreset::load(boost::property_tree::ptree& root,
@@ -32,27 +29,22 @@ void LimiterPreset::load(boost::property_tree::ptree& root,
                          const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".limiter.state");
 
-  update_key<double>(root, settings, "input-gain",
-                     section + ".limiter.input-gain");
+  update_key<double>(root, settings, "input-gain", section + ".limiter.input-gain");
 
   update_key<double>(root, settings, "limit", section + ".limiter.limit");
 
-  update_key<double>(root, settings, "lookahead",
-                     section + ".limiter.lookahead");
+  update_key<double>(root, settings, "lookahead", section + ".limiter.lookahead");
 
   update_key<double>(root, settings, "release", section + ".limiter.release");
 
   update_key<bool>(root, settings, "asc", section + ".limiter.asc");
 
-  update_key<double>(root, settings, "asc-level",
-                     section + ".limiter.asc-level");
+  update_key<double>(root, settings, "asc-level", section + ".limiter.asc-level");
 
-  update_key<int>(root, settings, "oversampling",
-                  section + ".limiter.oversampling");
+  update_key<int>(root, settings, "oversampling", section + ".limiter.oversampling");
 }
 
-void LimiterPreset::write(PresetType preset_type,
-                          boost::property_tree::ptree& root) {
+void LimiterPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     save(root, "output", output_settings);
   } else {
@@ -60,8 +52,7 @@ void LimiterPreset::write(PresetType preset_type,
   }
 }
 
-void LimiterPreset::read(PresetType preset_type,
-                         boost::property_tree::ptree& root) {
+void LimiterPreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     load(root, "output", output_settings);
   } else {

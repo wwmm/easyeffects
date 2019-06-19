@@ -1,8 +1,7 @@
 #include "crossfeed_preset.hpp"
 
 CrossfeedPreset::CrossfeedPreset()
-    : output_settings(Gio::Settings::create(
-          "com.github.wwmm.pulseeffects.sinkinputs.crossfeed")) {}
+    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.crossfeed")) {}
 
 void CrossfeedPreset::save(boost::property_tree::ptree& root,
                            const std::string& section,
@@ -24,15 +23,13 @@ void CrossfeedPreset::load(boost::property_tree::ptree& root,
   update_key<double>(root, settings, "feed", section + ".crossfeed.feed");
 }
 
-void CrossfeedPreset::write(PresetType preset_type,
-                            boost::property_tree::ptree& root) {
+void CrossfeedPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     save(root, "output", output_settings);
   }
 }
 
-void CrossfeedPreset::read(PresetType preset_type,
-                           boost::property_tree::ptree& root) {
+void CrossfeedPreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     load(root, "output", output_settings);
   }

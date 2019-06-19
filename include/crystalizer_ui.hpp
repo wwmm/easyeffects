@@ -7,9 +7,7 @@
 
 class CrystalizerUi : public Gtk::Grid, public PluginUiBase {
  public:
-  CrystalizerUi(BaseObjectType* cobject,
-                const Glib::RefPtr<Gtk::Builder>& builder,
-                const std::string& settings_name);
+  CrystalizerUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
   virtual ~CrystalizerUi();
 
   void on_new_range_before(double value);

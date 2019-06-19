@@ -1,0 +1,27 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"mesonbuild.buildFolder": "_build",
+		"mesonbuild.configureOnOpen": true,
+		"mesonbuild.configureOptions": [
+			"--buildtype=debugoptimized",
+			"--cpp_std=c++17"
+		],
+		"C_Cpp.clang_format_sortIncludes": true,
+		"C_Cpp.default.cppStandard": "c++17",
+		"C_Cpp.default.intelliSenseMode": "clang-x64",
+		"C_Cpp.clang_format_path": "/usr/bin/clang-format",
+		"editor.formatOnSave": true,
+		"editor.rulers": [
+			120
+		],
+		"files.associations": {
+			"*.tcc": "cpp",
+			"iostream": "cpp"
+		},
+	}
+}

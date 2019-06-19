@@ -49,22 +49,16 @@ void on_post_messages_changed(GSettings* settings, gchar* key, StereoTools* l) {
 
 }  // namespace
 
-StereoTools::StereoTools(const std::string& tag, const std::string& schema)
-    : PluginBase(tag, "stereo_tools", schema) {
-  stereo_tools = gst_element_factory_make(
-      "calf-sourceforge-net-plugins-StereoTools", "stereo_tools");
+StereoTools::StereoTools(const std::string& tag, const std::string& schema) : PluginBase(tag, "stereo_tools", schema) {
+  stereo_tools = gst_element_factory_make("calf-sourceforge-net-plugins-StereoTools", "stereo_tools");
 
   if (is_installed(stereo_tools)) {
-    auto audioconvert_in = gst_element_factory_make(
-        "audioconvert", "stereo_tools_audioconvert_in");
-    auto audioconvert_out = gst_element_factory_make(
-        "audioconvert", "stereo_tools_audioconvert_out");
+    auto audioconvert_in = gst_element_factory_make("audioconvert", "stereo_tools_audioconvert_in");
+    auto audioconvert_out = gst_element_factory_make("audioconvert", "stereo_tools_audioconvert_out");
 
-    gst_bin_add_many(GST_BIN(bin), audioconvert_in, stereo_tools,
-                     audioconvert_out, nullptr);
+    gst_bin_add_many(GST_BIN(bin), audioconvert_in, stereo_tools, audioconvert_out, nullptr);
 
-    gst_element_link_many(audioconvert_in, stereo_tools, audioconvert_out,
-                          nullptr);
+    gst_element_link_many(audioconvert_in, stereo_tools, audioconvert_out, nullptr);
 
     auto pad_sink = gst_element_get_static_pad(audioconvert_in, "sink");
     auto pad_src = gst_element_get_static_pad(audioconvert_out, "src");
@@ -79,8 +73,7 @@ StereoTools::StereoTools(const std::string& tag, const std::string& schema)
 
     bind_to_gsettings();
 
-    g_signal_connect(settings, "changed::post-messages",
-                     G_CALLBACK(on_post_messages_changed), this);
+    g_signal_connect(settings, "changed::post-messages", G_CALLBACK(on_post_messages_changed), this);
 
     // useless write just to force callback call
 
@@ -95,70 +88,51 @@ StereoTools::~StereoTools() {
 }
 
 void StereoTools::bind_to_gsettings() {
-  g_settings_bind_with_mapping(
-      settings, "input-gain", stereo_tools, "level-in", G_SETTINGS_BIND_DEFAULT,
-      util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "input-gain", stereo_tools, "level-in", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "output-gain", stereo_tools,
-                               "level-out", G_SETTINGS_BIND_DEFAULT,
-                               util::db20_gain_to_linear,
-                               util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "output-gain", stereo_tools, "level-out", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(
-      settings, "balance-in", stereo_tools, "balance-in", G_SETTINGS_BIND_GET,
-      util::double_to_float, nullptr, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "balance-in", stereo_tools, "balance-in", G_SETTINGS_BIND_GET,
+                               util::double_to_float, nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(
-      settings, "balance-out", stereo_tools, "balance-out", G_SETTINGS_BIND_GET,
-      util::double_to_float, nullptr, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "balance-out", stereo_tools, "balance-out", G_SETTINGS_BIND_GET,
+                               util::double_to_float, nullptr, nullptr, nullptr);
 
-  g_settings_bind(settings, "softclip", stereo_tools, "softclip",
-                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, "softclip", stereo_tools, "softclip", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, "mutel", stereo_tools, "mutel",
-                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, "mutel", stereo_tools, "mutel", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, "muter", stereo_tools, "muter",
-                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, "muter", stereo_tools, "muter", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, "phasel", stereo_tools, "phasel",
-                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, "phasel", stereo_tools, "phasel", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, "phaser", stereo_tools, "phaser",
-                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, "phaser", stereo_tools, "phaser", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, "mode", stereo_tools, "mode",
-                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, "mode", stereo_tools, "mode", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind_with_mapping(
-      settings, "slev", stereo_tools, "slev", G_SETTINGS_BIND_DEFAULT,
-      util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "slev", stereo_tools, "slev", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "sbal", stereo_tools, "sbal",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
+  g_settings_bind_with_mapping(settings, "sbal", stereo_tools, "sbal", G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(
-      settings, "mlev", stereo_tools, "mlev", G_SETTINGS_BIND_DEFAULT,
-      util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "mlev", stereo_tools, "mlev", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "mpan", stereo_tools, "mpan",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
+  g_settings_bind_with_mapping(settings, "mpan", stereo_tools, "mpan", G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(
-      settings, "stereo-base", stereo_tools, "stereo-base", G_SETTINGS_BIND_GET,
-      util::double_to_float, nullptr, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "stereo-base", stereo_tools, "stereo-base", G_SETTINGS_BIND_GET,
+                               util::double_to_float, nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "delay", stereo_tools, "delay",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
+  g_settings_bind_with_mapping(settings, "delay", stereo_tools, "delay", G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "sc-level", stereo_tools, "sc-level",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
-                               nullptr, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "sc-level", stereo_tools, "sc-level", G_SETTINGS_BIND_GET,
+                               util::double_to_float, nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(
-      settings, "stereo-phase", stereo_tools, "stereo-phase",
-      G_SETTINGS_BIND_GET, util::double_to_float, nullptr, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "stereo-phase", stereo_tools, "stereo-phase", G_SETTINGS_BIND_GET,
+                               util::double_to_float, nullptr, nullptr, nullptr);
 }

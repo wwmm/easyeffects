@@ -26,16 +26,13 @@ class PipelineBase {
 
   PulseManager* pm = nullptr;
 
-  GstElement *pipeline = nullptr, *source = nullptr, *queue_src = nullptr,
-             *sink = nullptr, *spectrum = nullptr, *spectrum_bin = nullptr,
-             *spectrum_identity_in = nullptr, *spectrum_identity_out = nullptr,
-             *adapter = nullptr, *effects_bin = nullptr, *identity_in = nullptr,
-             *identity_out = nullptr;
+  GstElement *pipeline = nullptr, *source = nullptr, *queue_src = nullptr, *sink = nullptr, *spectrum = nullptr,
+             *spectrum_bin = nullptr, *spectrum_identity_in = nullptr, *spectrum_identity_out = nullptr,
+             *adapter = nullptr, *effects_bin = nullptr, *identity_in = nullptr, *identity_out = nullptr;
 
   GstBus* bus = nullptr;
 
-  GSettings *settings = nullptr, *child_settings = nullptr,
-            *spectrum_settings = nullptr;
+  GSettings *settings = nullptr, *child_settings = nullptr, *spectrum_settings = nullptr;
 
   std::vector<std::string> plugins_order, plugins_order_old;
   std::map<std::string, GstElement*> plugins;

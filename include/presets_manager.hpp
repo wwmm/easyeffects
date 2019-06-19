@@ -77,8 +77,7 @@ class PresetsManager {
   std::unique_ptr<SpectrumPreset> spectrum;
 
   template <typename T>
-  T get_default(const Glib::RefPtr<Gio::Settings>& settings,
-                const std::string& key) {
+  T get_default(const Glib::RefPtr<Gio::Settings>& settings, const std::string& key) {
     Glib::Variant<T> value;
 
     settings->get_default_value(key, value);
@@ -112,8 +111,7 @@ class PresetsManager {
                          const std::string& json_key) {
     std::string current_value = settings->get_string(key);
 
-    std::string new_value = root.get<std::string>(
-        json_key, get_default<std::string>(settings, key));
+    std::string new_value = root.get<std::string>(json_key, get_default<std::string>(settings, key));
 
     if (current_value != new_value) {
       settings->set_string(key, new_value);
@@ -127,11 +125,9 @@ class PresetsManager {
 
   void create_directory(boost::filesystem::path& path);
 
-  void save_blacklist(PresetType preset_type,
-                      boost::property_tree::ptree& root);
+  void save_blacklist(PresetType preset_type, boost::property_tree::ptree& root);
 
-  void load_blacklist(PresetType preset_type,
-                      boost::property_tree::ptree& root);
+  void load_blacklist(PresetType preset_type, boost::property_tree::ptree& root);
 };
 
 #endif

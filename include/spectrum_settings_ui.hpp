@@ -14,9 +14,7 @@
 
 class SpectrumSettingsUi : public Gtk::Grid {
  public:
-  SpectrumSettingsUi(BaseObjectType* cobject,
-                     const Glib::RefPtr<Gtk::Builder>& builder,
-                     Application* application);
+  SpectrumSettingsUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, Application* application);
 
   virtual ~SpectrumSettingsUi();
 
@@ -33,16 +31,14 @@ class SpectrumSettingsUi : public Gtk::Grid {
   Gtk::ColorButton *spectrum_color_button, *gradient_color_button;
   Gtk::ComboBoxText* spectrum_type;
 
-  Glib::RefPtr<Gtk::Adjustment> n_points, height, scale, exponent,
-      sampling_freq, line_width;
+  Glib::RefPtr<Gtk::Adjustment> n_points, height, scale, exponent, sampling_freq, line_width;
 
   std::vector<sigc::connection> connections;
 
   void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
                   const std::string& name,
                   Glib::RefPtr<Gtk::Adjustment>& object) {
-    object =
-        Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
+    object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
   }
 
   bool on_show_spectrum(bool state);

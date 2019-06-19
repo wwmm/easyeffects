@@ -2,9 +2,7 @@
 
 namespace {
 
-gboolean detection_enum_to_int(GValue* value,
-                               GVariant* variant,
-                               gpointer user_data) {
+gboolean detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("RMS")) {
@@ -16,9 +14,7 @@ gboolean detection_enum_to_int(GValue* value,
   return true;
 }
 
-GVariant* int_to_detection_enum(const GValue* value,
-                                const GVariantType* expected_type,
-                                gpointer user_data) {
+GVariant* int_to_detection_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -28,9 +24,7 @@ GVariant* int_to_detection_enum(const GValue* value,
   }
 }
 
-gboolean mode_enum_to_int(GValue* value,
-                          GVariant* variant,
-                          gpointer user_data) {
+gboolean mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("Wide")) {
@@ -42,9 +36,7 @@ gboolean mode_enum_to_int(GValue* value,
   return true;
 }
 
-GVariant* int_to_mode_enum(const GValue* value,
-                           const GVariantType* expected_type,
-                           gpointer user_data) {
+GVariant* int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -96,14 +88,11 @@ DeesserUi::DeesserUi(BaseObjectType* cobject,
   settings->bind("f2-level", f2_level.get(), "value", flag);
   settings->bind("f2-q", f2_q.get(), "value", flag);
 
-  g_settings_bind_with_mapping(settings->gobj(), "detection", detection->gobj(),
-                               "active", G_SETTINGS_BIND_DEFAULT,
-                               detection_enum_to_int, int_to_detection_enum,
-                               nullptr, nullptr);
+  g_settings_bind_with_mapping(settings->gobj(), "detection", detection->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+                               detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active",
-                               G_SETTINGS_BIND_DEFAULT, mode_enum_to_int,
-                               int_to_mode_enum, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+                               mode_enum_to_int, int_to_mode_enum, nullptr, nullptr);
 }
 
 DeesserUi::~DeesserUi() {

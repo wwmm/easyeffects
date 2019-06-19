@@ -4,6 +4,7 @@ build
 locale
 gschemas.compiled
 obj-*-linux-gnu
+.vscode
 
 # Compiled python modules.
 *.pyc

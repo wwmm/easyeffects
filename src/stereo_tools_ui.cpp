@@ -2,9 +2,7 @@
 
 namespace {
 
-gboolean stereo_tools_enum_to_int(GValue* value,
-                                  GVariant* variant,
-                                  gpointer user_data) {
+gboolean stereo_tools_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("LR > LR (Stereo Default)")) {
@@ -26,9 +24,7 @@ gboolean stereo_tools_enum_to_int(GValue* value,
   return true;
 }
 
-GVariant* int_to_stereo_tools_enum(const GValue* value,
-                                   const GVariantType* expected_type,
-                                   gpointer user_data) {
+GVariant* int_to_stereo_tools_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -102,9 +98,8 @@ StereoToolsUi::StereoToolsUi(BaseObjectType* cobject,
   settings->bind("sc-level", sc_level.get(), "value", flag);
   settings->bind("stereo-phase", stereo_phase.get(), "value", flag);
 
-  g_settings_bind_with_mapping(
-      settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-      stereo_tools_enum_to_int, int_to_stereo_tools_enum, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+                               stereo_tools_enum_to_int, int_to_stereo_tools_enum, nullptr, nullptr);
 }
 
 StereoToolsUi::~StereoToolsUi() {

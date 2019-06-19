@@ -44,6 +44,5 @@ BassEnhancerUi::~BassEnhancerUi() {
 void BassEnhancerUi::on_new_harmonics_level(double value) {
   harmonics_levelbar->set_value(value);
 
-  harmonics_levelbar_label->set_text(
-      level_to_str(util::linear_to_db(value), 0));
+  harmonics_levelbar_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }

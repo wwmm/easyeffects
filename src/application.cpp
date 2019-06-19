@@ -8,29 +8,22 @@
 #include "pulse_manager.hpp"
 #include "util.hpp"
 
-Application::Application()
-    : Gtk::Application("com.github.wwmm.pulseeffects",
-                       Gio::APPLICATION_HANDLES_COMMAND_LINE) {
+Application::Application() : Gtk::Application("com.github.wwmm.pulseeffects", Gio::APPLICATION_HANDLES_COMMAND_LINE) {
   Glib::set_application_name("PulseEffects");
   Glib::setenv("PULSE_PROP_application.id", "com.github.wwmm.pulseeffects");
   Glib::setenv("PULSE_PROP_application.icon_name", "pulseeffects");
 
-  signal_handle_local_options().connect(
-      sigc::mem_fun(*this, &Application::on_handle_local_options), false);
+  signal_handle_local_options().connect(sigc::mem_fun(*this, &Application::on_handle_local_options), false);
 
-  add_main_option_entry(
-      Gio::Application::OPTION_TYPE_BOOL, "quit", 'q',
-      _("Quit PulseEffects. Useful when running in service mode."));
+  add_main_option_entry(Gio::Application::OPTION_TYPE_BOOL, "quit", 'q',
+                        _("Quit PulseEffects. Useful when running in service mode."));
 
-  add_main_option_entry(Gio::Application::OPTION_TYPE_BOOL, "presets", 'p',
-                        _("Show available presets."));
+  add_main_option_entry(Gio::Application::OPTION_TYPE_BOOL, "presets", 'p', _("Show available presets."));
 
-  add_main_option_entry(Gio::Application::OPTION_TYPE_STRING, "load-preset",
-                        'l',
+  add_main_option_entry(Gio::Application::OPTION_TYPE_STRING, "load-preset", 'l',
                         _("Load a preset. Example: pulseeffects -l music"));
 
-  add_main_option_entry(Gio::Application::OPTION_TYPE_BOOL, "reset", 'r',
-                        _("Reset PulseEffects."));
+  add_main_option_entry(Gio::Application::OPTION_TYPE_BOOL, "reset", 'r', _("Reset PulseEffects."));
 }
 
 Application::~Application() {
@@ -41,8 +34,7 @@ Glib::RefPtr<Application> Application::create() {
   return Glib::RefPtr<Application>(new Application());
 }
 
-int Application::on_command_line(
-    const Glib::RefPtr<Gio::ApplicationCommandLine>& command_line) {
+int Application::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine>& command_line) {
   auto options = command_line->get_options_dict();
 
   if (options->contains("quit")) {
@@ -185,8 +177,7 @@ void Application::on_activate() {
   }
 }
 
-int Application::on_handle_local_options(
-    const Glib::RefPtr<Glib::VariantDict>& options) {
+int Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>& options) {
   if (!options) {
     std::cerr << G_STRFUNC << ": options is null." << std::endl;
   }
@@ -222,8 +213,7 @@ int Application::on_handle_local_options(
 
 void Application::create_actions() {
   add_action("about", [&]() {
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/about.glade");
+    auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/about.glade");
 
     auto dialog = (Gtk::Dialog*)builder->get_object("about_dialog").get();
 
@@ -256,8 +246,7 @@ void Application::create_actions() {
      *So we have to use the C api :-(
      */
 
-    if (!gtk_show_uri_on_window(window->gobj(), "help:pulseeffects",
-                                gtk_get_current_event_time(), nullptr)) {
+    if (!gtk_show_uri_on_window(window->gobj(), "help:pulseeffects", gtk_get_current_event_time(), nullptr)) {
       util::warning("Failed to open help!");
     }
   });

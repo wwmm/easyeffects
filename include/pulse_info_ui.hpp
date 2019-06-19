@@ -11,9 +11,7 @@
 
 class PulseInfoUi : public Gtk::Box {
  public:
-  PulseInfoUi(BaseObjectType* cobject,
-              const Glib::RefPtr<Gtk::Builder>& builder,
-              PulseManager* pm_ptr);
+  PulseInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, PulseManager* pm_ptr);
 
   virtual ~PulseInfoUi();
 
@@ -25,12 +23,10 @@ class PulseInfoUi : public Gtk::Box {
   PulseManager* pm;
   Gtk::Stack* stack;
 
-  Gtk::Label *server_name, *server_version, *default_sink, *default_source,
-      *protocol, *server_sample_format, *server_rate, *server_channels,
-      *server_channel_mapping, *config_file;
+  Gtk::Label *server_name, *server_version, *default_sink, *default_source, *protocol, *server_sample_format,
+      *server_rate, *server_channels, *server_channel_mapping, *config_file;
 
-  Gtk::ListBox *listbox_modules, *listbox_clients, *listbox_config,
-      *listbox_resamplers;
+  Gtk::ListBox *listbox_modules, *listbox_clients, *listbox_config, *listbox_resamplers;
 
   std::vector<sigc::connection> connections;
 

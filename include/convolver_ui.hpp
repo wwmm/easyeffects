@@ -16,9 +16,7 @@
 
 class ConvolverUi : public Gtk::Grid, public PluginUiBase {
  public:
-  ConvolverUi(BaseObjectType* cobject,
-              const Glib::RefPtr<Gtk::Builder>& builder,
-              const std::string& settings_name);
+  ConvolverUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
   virtual ~ConvolverUi();
 
  private:
@@ -30,8 +28,7 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
   Gtk::ScrolledWindow* irs_scrolled_window;
   Gtk::Button* import_irs;
   Gtk::DrawingArea *left_plot, *right_plot;
-  Gtk::Label *label_file_name, *label_sampling_rate, *label_samples,
-      *label_duration;
+  Gtk::Label *label_file_name, *label_sampling_rate, *label_samples, *label_duration;
   Gtk::ToggleButton* show_fft;
 
   Pango::FontDescription font;
@@ -43,8 +40,7 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
   float mouse_intensity = 0.0f, mouse_time = 0.0f, mouse_freq = 0.0f;
   float min_left = 0.0f, max_left = 0.0f, min_right = 0.0f, max_right = 0.0f;
   float max_time = 0.0f;
-  float fft_min_left = 0.0f, fft_max_left = 0.0f, fft_min_right = 0.0f,
-        fft_max_right = 0.0f;
+  float fft_min_left = 0.0f, fft_max_left = 0.0f, fft_min_right = 0.0f, fft_max_right = 0.0f;
   float fft_max_freq = 0.0f, fft_min_freq = 0.0f;
   std::vector<float> left_mag, right_mag, time_axis;
   std::vector<float> left_spectrum, right_spectrum, freq_axis;

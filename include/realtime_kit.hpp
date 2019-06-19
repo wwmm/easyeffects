@@ -26,8 +26,7 @@ class RealtimeKit {
 
   void make_realtime(const std::string& source_name, const int& priority);
 
-  void make_high_priority(const std::string& source_name,
-                          const int& nice_value);
+  void make_high_priority(const std::string& source_name, const int& nice_value);
 };
 
 #endif

@@ -13,8 +13,7 @@
 
 class BlacklistSettingsUi : public Gtk::Grid {
  public:
-  BlacklistSettingsUi(BaseObjectType* cobject,
-                      const Glib::RefPtr<Gtk::Builder>& builder);
+  BlacklistSettingsUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
 
   virtual ~BlacklistSettingsUi();
 
@@ -28,8 +27,7 @@ class BlacklistSettingsUi : public Gtk::Grid {
   Gtk::Button *add_blacklist_in, *add_blacklist_out;
   Gtk::ListBox *blacklist_in_listbox, *blacklist_out_listbox;
   Gtk::Entry *blacklist_in_name, *blacklist_out_name;
-  Gtk::ScrolledWindow *blacklist_in_scrolled_window,
-      *blacklist_out_scrolled_window;
+  Gtk::ScrolledWindow *blacklist_in_scrolled_window, *blacklist_out_scrolled_window;
 
   std::vector<sigc::connection> connections;
 

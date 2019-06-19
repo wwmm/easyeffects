@@ -8,9 +8,7 @@
 
 class CompressorUi : public Gtk::Grid, public PluginUiBase {
  public:
-  CompressorUi(BaseObjectType* cobject,
-               const Glib::RefPtr<Gtk::Builder>& builder,
-               const std::string& settings_name);
+  CompressorUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
   virtual ~CompressorUi();
 
   void on_new_reduction(double value);
@@ -20,13 +18,12 @@ class CompressorUi : public Gtk::Grid, public PluginUiBase {
   void on_new_curve(double value);
 
  private:
-  Glib::RefPtr<Gtk::Adjustment> attack, release, threshold, knee, ratio, makeup,
-      preamp, reactivity, lookahead, input_gain, output_gain;
+  Glib::RefPtr<Gtk::Adjustment> attack, release, threshold, knee, ratio, makeup, preamp, reactivity, lookahead,
+      input_gain, output_gain;
 
   Gtk::LevelBar *reduction, *sidechain, *curve;
   Gtk::Label *reduction_label, *sidechain_label, *curve_label;
-  Gtk::ComboBoxText *compression_mode, *sidechain_type, *sidechain_mode,
-      *sidechain_source;
+  Gtk::ComboBoxText *compression_mode, *sidechain_type, *sidechain_mode, *sidechain_source;
   Gtk::ToggleButton* listen;
 };
 

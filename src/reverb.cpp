@@ -49,19 +49,14 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Reverb* l) {
 
 }  // namespace
 
-Reverb::Reverb(const std::string& tag, const std::string& schema)
-    : PluginBase(tag, "reverb", schema) {
-  reverb =
-      gst_element_factory_make("calf-sourceforge-net-plugins-Reverb", "reverb");
+Reverb::Reverb(const std::string& tag, const std::string& schema) : PluginBase(tag, "reverb", schema) {
+  reverb = gst_element_factory_make("calf-sourceforge-net-plugins-Reverb", "reverb");
 
   if (is_installed(reverb)) {
-    auto audioconvert_in =
-        gst_element_factory_make("audioconvert", "reverb_audioconvert_in");
-    auto audioconvert_out =
-        gst_element_factory_make("audioconvert", "reverb_audioconvert_out");
+    auto audioconvert_in = gst_element_factory_make("audioconvert", "reverb_audioconvert_in");
+    auto audioconvert_out = gst_element_factory_make("audioconvert", "reverb_audioconvert_out");
 
-    gst_bin_add_many(GST_BIN(bin), audioconvert_in, reverb, audioconvert_out,
-                     nullptr);
+    gst_bin_add_many(GST_BIN(bin), audioconvert_in, reverb, audioconvert_out, nullptr);
 
     gst_element_link_many(audioconvert_in, reverb, audioconvert_out, nullptr);
 
@@ -78,8 +73,7 @@ Reverb::Reverb(const std::string& tag, const std::string& schema)
 
     bind_to_gsettings();
 
-    g_signal_connect(settings, "changed::post-messages",
-                     G_CALLBACK(on_post_messages_changed), this);
+    g_signal_connect(settings, "changed::post-messages", G_CALLBACK(on_post_messages_changed), this);
 
     // useless write just to force callback call
 
@@ -94,46 +88,35 @@ Reverb::~Reverb() {
 }
 
 void Reverb::bind_to_gsettings() {
-  g_settings_bind_with_mapping(
-      settings, "input-gain", reverb, "level-in", G_SETTINGS_BIND_DEFAULT,
-      util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "input-gain", reverb, "level-in", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(
-      settings, "output-gain", reverb, "level-out", G_SETTINGS_BIND_DEFAULT,
-      util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "output-gain", reverb, "level-out", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind(settings, "room-size", reverb, "room-size",
-                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, "room-size", reverb, "room-size", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind_with_mapping(settings, "decay-time", reverb, "decay-time",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
+  g_settings_bind_with_mapping(settings, "decay-time", reverb, "decay-time", G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "hf-damp", reverb, "hf-damp",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
+  g_settings_bind_with_mapping(settings, "hf-damp", reverb, "hf-damp", G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "diffusion", reverb, "diffusion",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
+  g_settings_bind_with_mapping(settings, "diffusion", reverb, "diffusion", G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(
-      settings, "amount", reverb, "amount", G_SETTINGS_BIND_DEFAULT,
-      util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "amount", reverb, "amount", G_SETTINGS_BIND_DEFAULT, util::db20_gain_to_linear,
+                               util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(
-      settings, "dry", reverb, "dry", G_SETTINGS_BIND_DEFAULT,
-      util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "dry", reverb, "dry", G_SETTINGS_BIND_DEFAULT, util::db20_gain_to_linear,
+                               util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "predelay", reverb, "predelay",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
+  g_settings_bind_with_mapping(settings, "predelay", reverb, "predelay", G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "bass-cut", reverb, "bass-cut",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
+  g_settings_bind_with_mapping(settings, "bass-cut", reverb, "bass-cut", G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "treble-cut", reverb, "treble-cut",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
+  g_settings_bind_with_mapping(settings, "treble-cut", reverb, "treble-cut", G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 }

@@ -21,8 +21,7 @@ void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
 void on_enable(gpointer user_data) {
   auto l = static_cast<PluginBase*>(user_data);
 
-  auto b = gst_bin_get_by_name(GST_BIN(l->plugin),
-                               std::string(l->name + "_bin").c_str());
+  auto b = gst_bin_get_by_name(GST_BIN(l->plugin), std::string(l->name + "_bin").c_str());
 
   if (!b) {
     gst_element_set_state(l->bin, GST_STATE_NULL);
@@ -44,8 +43,7 @@ void on_enable(gpointer user_data) {
 void on_disable(gpointer user_data) {
   auto l = static_cast<PluginBase*>(user_data);
 
-  auto b = gst_bin_get_by_name(GST_BIN(l->plugin),
-                               std::string(l->name + "_bin").c_str());
+  auto b = gst_bin_get_by_name(GST_BIN(l->plugin), std::string(l->name + "_bin").c_str());
 
   if (b) {
     gst_element_set_state(l->bin, GST_STATE_NULL);
@@ -62,11 +60,8 @@ void on_disable(gpointer user_data) {
   }
 }
 
-static GstPadProbeReturn event_probe_cb(GstPad* pad,
-                                        GstPadProbeInfo* info,
-                                        gpointer user_data) {
-  if (GST_EVENT_TYPE(GST_PAD_PROBE_INFO_DATA(info)) !=
-      GST_EVENT_CUSTOM_DOWNSTREAM) {
+static GstPadProbeReturn event_probe_cb(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) {
+  if (GST_EVENT_TYPE(GST_PAD_PROBE_INFO_DATA(info)) != GST_EVENT_CUSTOM_DOWNSTREAM) {
     return GST_PAD_PROBE_PASS;
   }
 
@@ -77,20 +72,16 @@ static GstPadProbeReturn event_probe_cb(GstPad* pad,
   return GST_PAD_PROBE_DROP;
 }
 
-GstPadProbeReturn on_pad_blocked(GstPad* pad,
-                                 GstPadProbeInfo* info,
-                                 gpointer user_data) {
+GstPadProbeReturn on_pad_blocked(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) {
   auto l = static_cast<PluginBase*>(user_data);
 
   gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
 
   auto srcpad = gst_element_get_static_pad(l->identity_out, "src");
 
-  gst_pad_add_probe(
-      srcpad,
-      static_cast<GstPadProbeType>(GST_PAD_PROBE_TYPE_BLOCK |
-                                   GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM),
-      event_probe_cb, user_data, NULL);
+  gst_pad_add_probe(srcpad,
+                    static_cast<GstPadProbeType>(GST_PAD_PROBE_TYPE_BLOCK | GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM),
+                    event_probe_cb, user_data, NULL);
 
   auto sinkpad = gst_element_get_static_pad(l->bin, "sink");
 
@@ -108,17 +99,11 @@ GstPadProbeReturn on_pad_blocked(GstPad* pad,
 
 }  // namespace
 
-PluginBase::PluginBase(const std::string& tag,
-                       const std::string& plugin_name,
-                       const std::string& schema)
-    : log_tag(tag),
-      name(plugin_name),
-      settings(g_settings_new(schema.c_str())) {
+PluginBase::PluginBase(const std::string& tag, const std::string& plugin_name, const std::string& schema)
+    : log_tag(tag), name(plugin_name), settings(g_settings_new(schema.c_str())) {
   plugin = gst_bin_new(std::string(name + "_plugin").c_str());
-  identity_in = gst_element_factory_make(
-      "identity", std::string(name + "_plugin_bin_identity_in").c_str());
-  identity_out = gst_element_factory_make(
-      "identity", std::string(name + "_plugin_bin_identity_out").c_str());
+  identity_in = gst_element_factory_make("identity", std::string(name + "_plugin_bin_identity_in").c_str());
+  identity_out = gst_element_factory_make("identity", std::string(name + "_plugin_bin_identity_out").c_str());
 
   gst_bin_add_many(GST_BIN(plugin), identity_in, identity_out, nullptr);
   gst_element_link_many(identity_in, identity_out, nullptr);
@@ -151,8 +136,7 @@ bool PluginBase::is_installed(GstElement* e) {
 
     g_settings_set_boolean(settings, "installed", true);
 
-    g_signal_connect(settings, "changed::state", G_CALLBACK(on_state_changed),
-                     this);
+    g_signal_connect(settings, "changed::state", G_CALLBACK(on_state_changed), this);
 
     return true;
   } else {
@@ -169,13 +153,14 @@ bool PluginBase::is_installed(GstElement* e) {
 void PluginBase::enable() {
   auto srcpad = gst_element_get_static_pad(identity_in, "src");
 
-  gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
-                    [](auto pad, auto info, auto d) {
-                      on_enable(d);
+  gst_pad_add_probe(
+      srcpad, GST_PAD_PROBE_TYPE_IDLE,
+      [](auto pad, auto info, auto d) {
+        on_enable(d);
 
-                      return GST_PAD_PROBE_REMOVE;
-                    },
-                    this, nullptr);
+        return GST_PAD_PROBE_REMOVE;
+      },
+      this, nullptr);
 
   g_object_unref(srcpad);
 }
@@ -188,16 +173,16 @@ void PluginBase::disable() {
   gst_element_get_state(bin, &state, &pending, 0);
 
   if (state != GST_STATE_PLAYING) {
-    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE,
-                      [](auto pad, auto info, auto d) {
-                        on_disable(d);
+    gst_pad_add_probe(
+        srcpad, GST_PAD_PROBE_TYPE_IDLE,
+        [](auto pad, auto info, auto d) {
+          on_disable(d);
 
-                        return GST_PAD_PROBE_REMOVE;
-                      },
-                      this, nullptr);
+          return GST_PAD_PROBE_REMOVE;
+        },
+        this, nullptr);
   } else {
-    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
-                      on_pad_blocked, this, nullptr);
+    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM, on_pad_blocked, this, nullptr);
   }
 
   g_object_unref(srcpad);

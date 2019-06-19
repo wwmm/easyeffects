@@ -23,8 +23,7 @@ class Application : public Gtk::Application {
   std::unique_ptr<PresetsManager> presets_manager;
 
  protected:
-  int on_command_line(
-      const Glib::RefPtr<Gio::ApplicationCommandLine>& command_line) override;
+  int on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine>& command_line) override;
 
   int on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>& options);
 

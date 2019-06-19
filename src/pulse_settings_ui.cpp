@@ -3,9 +3,7 @@
 
 namespace {
 
-gboolean blocksize_enum_to_int(GValue* value,
-                               GVariant* variant,
-                               gpointer user_data) {
+gboolean blocksize_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("64")) {
@@ -27,9 +25,7 @@ gboolean blocksize_enum_to_int(GValue* value,
   return true;
 }
 
-GVariant* int_to_blocksize_enum(const GValue* value,
-                                const GVariantType* expected_type,
-                                gpointer user_data) {
+GVariant* int_to_blocksize_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -54,9 +50,7 @@ GVariant* int_to_blocksize_enum(const GValue* value,
 PulseSettingsUi::PulseSettingsUi(BaseObjectType* cobject,
                                  const Glib::RefPtr<Gtk::Builder>& builder,
                                  Application* application)
-    : Gtk::Grid(cobject),
-      settings(Gio::Settings::create("com.github.wwmm.pulseeffects")),
-      app(application) {
+    : Gtk::Grid(cobject), settings(Gio::Settings::create("com.github.wwmm.pulseeffects")), app(application) {
   // loading glade widgets
 
   builder->get_widget("use_default_sink", use_default_sink);
@@ -75,38 +69,29 @@ PulseSettingsUi::PulseSettingsUi(BaseObjectType* cobject,
 
   // signals connection
 
-  use_default_sink->signal_toggled().connect(
-      sigc::mem_fun(*this, &PulseSettingsUi::on_use_default_sink_toggled));
-  use_default_source->signal_toggled().connect(
-      sigc::mem_fun(*this, &PulseSettingsUi::on_use_default_source_toggled));
+  use_default_sink->signal_toggled().connect(sigc::mem_fun(*this, &PulseSettingsUi::on_use_default_sink_toggled));
+  use_default_source->signal_toggled().connect(sigc::mem_fun(*this, &PulseSettingsUi::on_use_default_source_toggled));
 
-  connections.push_back(input_device->signal_changed().connect(
-      sigc::mem_fun(*this, &PulseSettingsUi::on_input_device_changed)));
-  connections.push_back(output_device->signal_changed().connect(
-      sigc::mem_fun(*this, &PulseSettingsUi::on_output_device_changed)));
+  connections.push_back(
+      input_device->signal_changed().connect(sigc::mem_fun(*this, &PulseSettingsUi::on_input_device_changed)));
+  connections.push_back(
+      output_device->signal_changed().connect(sigc::mem_fun(*this, &PulseSettingsUi::on_output_device_changed)));
 
-  app->pm->sink_added.connect(
-      sigc::mem_fun(*this, &PulseSettingsUi::on_sink_added));
-  app->pm->sink_removed.connect(
-      sigc::mem_fun(*this, &PulseSettingsUi::on_sink_removed));
-  app->pm->source_added.connect(
-      sigc::mem_fun(*this, &PulseSettingsUi::on_source_added));
-  app->pm->source_removed.connect(
-      sigc::mem_fun(*this, &PulseSettingsUi::on_source_removed));
+  app->pm->sink_added.connect(sigc::mem_fun(*this, &PulseSettingsUi::on_sink_added));
+  app->pm->sink_removed.connect(sigc::mem_fun(*this, &PulseSettingsUi::on_sink_removed));
+  app->pm->source_added.connect(sigc::mem_fun(*this, &PulseSettingsUi::on_source_added));
+  app->pm->source_removed.connect(sigc::mem_fun(*this, &PulseSettingsUi::on_source_removed));
 
   auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
-  auto flag_invert_boolean =
-      Gio::SettingsBindFlags::SETTINGS_BIND_INVERT_BOOLEAN;
+  auto flag_invert_boolean = Gio::SettingsBindFlags::SETTINGS_BIND_INVERT_BOOLEAN;
 
   settings->bind("use-default-sink", use_default_sink, "active", flag);
 
-  settings->bind("use-default-sink", output_device, "sensitive",
-                 flag | flag_invert_boolean);
+  settings->bind("use-default-sink", output_device, "sensitive", flag | flag_invert_boolean);
 
   settings->bind("use-default-source", use_default_source, "active", flag);
 
-  settings->bind("use-default-source", input_device, "sensitive",
-                 flag | flag_invert_boolean);
+  settings->bind("use-default-source", input_device, "sensitive", flag | flag_invert_boolean);
 
   settings->bind("buffer-out", buffer_out.get(), "value", flag);
   settings->bind("latency-out", latency_out.get(), "value", flag);
@@ -114,15 +99,11 @@ PulseSettingsUi::PulseSettingsUi(BaseObjectType* cobject,
   settings->bind("buffer-in", buffer_in.get(), "value", flag);
   settings->bind("latency-in", latency_in.get(), "value", flag);
 
-  g_settings_bind_with_mapping(settings->gobj(), "blocksize-in",
-                               blocksize_in->gobj(), "active",
-                               G_SETTINGS_BIND_DEFAULT, blocksize_enum_to_int,
-                               int_to_blocksize_enum, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings->gobj(), "blocksize-in", blocksize_in->gobj(), "active",
+                               G_SETTINGS_BIND_DEFAULT, blocksize_enum_to_int, int_to_blocksize_enum, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings->gobj(), "blocksize-out",
-                               blocksize_out->gobj(), "active",
-                               G_SETTINGS_BIND_DEFAULT, blocksize_enum_to_int,
-                               int_to_blocksize_enum, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings->gobj(), "blocksize-out", blocksize_out->gobj(), "active",
+                               G_SETTINGS_BIND_DEFAULT, blocksize_enum_to_int, int_to_blocksize_enum, nullptr, nullptr);
 }
 
 PulseSettingsUi::~PulseSettingsUi() {
@@ -134,8 +115,7 @@ PulseSettingsUi::~PulseSettingsUi() {
 }
 
 void PulseSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
-  auto builder = Gtk::Builder::create_from_resource(
-      "/com/github/wwmm/pulseeffects/ui/pulse_settings.glade");
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pulse_settings.glade");
 
   PulseSettingsUi* ui;
 

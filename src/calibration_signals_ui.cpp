@@ -1,9 +1,7 @@
 #include "calibration_signals_ui.hpp"
 #include "util.hpp"
 
-CalibrationSignalsUi::CalibrationSignalsUi(
-    BaseObjectType* cobject,
-    const Glib::RefPtr<Gtk::Builder>& builder)
+CalibrationSignalsUi::CalibrationSignalsUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder)
     : Gtk::Grid(cobject), cs(std::make_unique<CalibrationSignals>()) {
   // loading glade widgets
 
@@ -24,14 +22,11 @@ CalibrationSignalsUi::CalibrationSignalsUi(
       },
       false);
 
-  g_object_bind_property(wave->gobj(), "active", cs->source, "wave",
-                         G_BINDING_DEFAULT);
+  g_object_bind_property(wave->gobj(), "active", cs->source, "wave", G_BINDING_DEFAULT);
 
-  frequency->signal_value_changed().connect(
-      [=]() { cs->set_freq(frequency->get_value()); });
+  frequency->signal_value_changed().connect([=]() { cs->set_freq(frequency->get_value()); });
 
-  volume->signal_value_changed().connect(
-      [=]() { cs->set_volume(volume->get_value()); });
+  volume->signal_value_changed().connect([=]() { cs->set_volume(volume->get_value()); });
 
   // default values
 

@@ -3,9 +3,7 @@
 #include <boost/process.hpp>
 #include "util.hpp"
 
-PulseInfoUi::PulseInfoUi(BaseObjectType* cobject,
-                         const Glib::RefPtr<Gtk::Builder>& builder,
-                         PulseManager* pm_ptr)
+PulseInfoUi::PulseInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, PulseManager* pm_ptr)
     : Gtk::Box(cobject), pm(pm_ptr) {
   builder->get_widget("stack", stack);
   builder->get_widget("server_name", server_name);
@@ -23,28 +21,20 @@ PulseInfoUi::PulseInfoUi(BaseObjectType* cobject,
   builder->get_widget("listbox_resamplers", listbox_resamplers);
   builder->get_widget("config_file", config_file);
 
-  listbox_modules->set_sort_func(
-      sigc::mem_fun(*this, &PulseInfoUi::on_listbox_sort));
+  listbox_modules->set_sort_func(sigc::mem_fun(*this, &PulseInfoUi::on_listbox_sort));
 
-  listbox_clients->set_sort_func(
-      sigc::mem_fun(*this, &PulseInfoUi::on_listbox_sort));
+  listbox_clients->set_sort_func(sigc::mem_fun(*this, &PulseInfoUi::on_listbox_sort));
 
-  listbox_config->set_sort_func(
-      sigc::mem_fun(*this, &PulseInfoUi::on_listbox_sort));
+  listbox_config->set_sort_func(sigc::mem_fun(*this, &PulseInfoUi::on_listbox_sort));
 
-  listbox_resamplers->set_sort_func(
-      sigc::mem_fun(*this, &PulseInfoUi::on_listbox_sort));
+  listbox_resamplers->set_sort_func(sigc::mem_fun(*this, &PulseInfoUi::on_listbox_sort));
 
-  stack->connect_property_changed(
-      "visible-child",
-      sigc::mem_fun(*this, &PulseInfoUi::on_stack_visible_child_changed));
+  stack->connect_property_changed("visible-child", sigc::mem_fun(*this, &PulseInfoUi::on_stack_visible_child_changed));
 
-  connections.push_back(
-      pm->server_changed.connect([=]() { update_server_info(); }));
+  connections.push_back(pm->server_changed.connect([=]() { update_server_info(); }));
 
   connections.push_back(pm->module_info.connect([=](auto info) {
-    auto b = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/ui/module_info.glade");
+    auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/module_info.glade");
 
     Gtk::ListBoxRow* row;
     Gtk::Label *module_name, *module_argument;
@@ -62,8 +52,7 @@ PulseInfoUi::PulseInfoUi(BaseObjectType* cobject,
   }));
 
   connections.push_back(pm->client_info.connect([=](auto info) {
-    auto b = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/ui/client_info.glade");
+    auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/client_info.glade");
 
     Gtk::ListBoxRow* row;
     Gtk::Label *client_name, *client_binary;
@@ -98,8 +87,7 @@ PulseInfoUi::~PulseInfoUi() {
 }
 
 PulseInfoUi* PulseInfoUi::add_to_stack(Gtk::Stack* stack, PulseManager* pm) {
-  auto builder = Gtk::Builder::create_from_resource(
-      "/com/github/wwmm/pulseeffects/ui/pulse_info.glade");
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pulse_info.glade");
 
   PulseInfoUi* ui;
 
@@ -166,8 +154,7 @@ void PulseInfoUi::on_stack_visible_child_changed() {
 
 void PulseInfoUi::get_pulse_conf() {
   boost::process::ipstream pipe_stream;
-  boost::process::child c("pulseaudio --dump-conf",
-                          boost::process::std_out > pipe_stream);
+  boost::process::child c("pulseaudio --dump-conf", boost::process::std_out > pipe_stream);
 
   std::string line;
 
@@ -178,8 +165,7 @@ void PulseInfoUi::get_pulse_conf() {
     boost::split(aux, line, boost::is_any_of("="));
 
     if (aux.size() > 1) {
-      auto b = Gtk::Builder::create_from_resource(
-          "/com/github/wwmm/pulseeffects/ui/pulse_conf_file_line.glade");
+      auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pulse_conf_file_line.glade");
 
       Gtk::ListBoxRow* row;
       Gtk::Label *conf_key, *conf_value;
@@ -212,8 +198,7 @@ void PulseInfoUi::get_pulse_conf() {
 
 void PulseInfoUi::get_resamplers() {
   boost::process::ipstream pipe_stream;
-  boost::process::child c("pulseaudio --dump-resample-methods",
-                          boost::process::std_out > pipe_stream);
+  boost::process::child c("pulseaudio --dump-resample-methods", boost::process::std_out > pipe_stream);
 
   std::string line;
 

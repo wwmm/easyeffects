@@ -1,10 +1,8 @@
 #include "reverb_preset.hpp"
 
 ReverbPreset::ReverbPreset()
-    : input_settings(Gio::Settings::create(
-          "com.github.wwmm.pulseeffects.sourceoutputs.reverb")),
-      output_settings(Gio::Settings::create(
-          "com.github.wwmm.pulseeffects.sinkinputs.reverb")) {}
+    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs.reverb")),
+      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.reverb")) {}
 
 void ReverbPreset::save(boost::property_tree::ptree& root,
                         const std::string& section,
@@ -13,8 +11,7 @@ void ReverbPreset::save(boost::property_tree::ptree& root,
 
   root.put(section + ".reverb.input-gain", settings->get_double("input-gain"));
 
-  root.put(section + ".reverb.output-gain",
-           settings->get_double("output-gain"));
+  root.put(section + ".reverb.output-gain", settings->get_double("output-gain"));
 
   root.put(section + ".reverb.room-size", settings->get_string("room-size"));
 
@@ -40,21 +37,17 @@ void ReverbPreset::load(boost::property_tree::ptree& root,
                         const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".reverb.state");
 
-  update_key<double>(root, settings, "input-gain",
-                     section + ".reverb.input-gain");
+  update_key<double>(root, settings, "input-gain", section + ".reverb.input-gain");
 
-  update_key<double>(root, settings, "output-gain",
-                     section + ".reverb.output-gain");
+  update_key<double>(root, settings, "output-gain", section + ".reverb.output-gain");
 
   update_string_key(root, settings, "room-size", section + ".reverb.room-size");
 
-  update_key<double>(root, settings, "decay-time",
-                     section + ".reverb.decay-time");
+  update_key<double>(root, settings, "decay-time", section + ".reverb.decay-time");
 
   update_key<double>(root, settings, "hf-damp", section + ".reverb.hf-damp");
 
-  update_key<double>(root, settings, "diffusion",
-                     section + ".reverb.diffusion");
+  update_key<double>(root, settings, "diffusion", section + ".reverb.diffusion");
 
   update_key<double>(root, settings, "amount", section + ".reverb.amount");
 
@@ -64,12 +57,10 @@ void ReverbPreset::load(boost::property_tree::ptree& root,
 
   update_key<double>(root, settings, "bass-cut", section + ".reverb.bass-cut");
 
-  update_key<double>(root, settings, "treble-cut",
-                     section + ".reverb.treble-cut");
+  update_key<double>(root, settings, "treble-cut", section + ".reverb.treble-cut");
 }
 
-void ReverbPreset::write(PresetType preset_type,
-                         boost::property_tree::ptree& root) {
+void ReverbPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     save(root, "output", output_settings);
   } else {
@@ -77,8 +68,7 @@ void ReverbPreset::write(PresetType preset_type,
   }
 }
 
-void ReverbPreset::read(PresetType preset_type,
-                        boost::property_tree::ptree& root) {
+void ReverbPreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     load(root, "output", output_settings);
   } else {

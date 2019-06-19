@@ -20,9 +20,7 @@
 
 class ApplicationUi : public Gtk::ApplicationWindow {
  public:
-  ApplicationUi(BaseObjectType* cobject,
-                const Glib::RefPtr<Gtk::Builder>& builder,
-                Application* application);
+  ApplicationUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, Application* application);
 
   virtual ~ApplicationUi();
 
@@ -59,8 +57,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
                   const std::string& name,
                   Glib::RefPtr<Gtk::Adjustment>& object) {
-    object =
-        Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
+    object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
   }
 
   void update_headerbar_subtitle(const int& index);

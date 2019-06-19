@@ -15,9 +15,7 @@
 
 class PulseSettingsUi : public Gtk::Grid {
  public:
-  PulseSettingsUi(BaseObjectType* cobject,
-                  const Glib::RefPtr<Gtk::Builder>& builder,
-                  Application* application);
+  PulseSettingsUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, Application* application);
 
   virtual ~PulseSettingsUi();
 
@@ -42,15 +40,13 @@ class PulseSettingsUi : public Gtk::Grid {
   void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
                   const std::string& name,
                   Glib::RefPtr<Gtk::Adjustment>& object) {
-    object =
-        Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
+    object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
   }
 
   void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
                   const std::string& name,
                   Glib::RefPtr<Gtk::ListStore>& object) {
-    object =
-        Glib::RefPtr<Gtk::ListStore>::cast_dynamic(builder->get_object(name));
+    object = Glib::RefPtr<Gtk::ListStore>::cast_dynamic(builder->get_object(name));
   }
 
   void on_sink_added(std::shared_ptr<mySinkInfo> info);
