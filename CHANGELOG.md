@@ -2,9 +2,12 @@
 
 ## [Unreleased]
 
+## [4.6.4]
 ### Removed
-- The reset settings popup was removed. It does not work reliably outise of Gnome
-and resetting settings after an upgrade hasn't been so necessary for a while.
+- The reset settings popup was removed. It does not work reliably outside of Gnome.
+On other desktops the popup may be shown whenever PE is started. Even if the user
+select yes or no. As resetting settings after an upgrade hasn't been necessary for 
+a while I removed this feature.
 
 ## [4.6.3]
 ### Fixed
