@@ -60,8 +60,6 @@ int Application::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine>
   } else if (options->contains("reset")) {
     settings->reset("");
 
-    settings->set_string("version", std::string(VERSION));
-
     util::info(log_tag + "All settings were reset");
   } else {
     activate();
