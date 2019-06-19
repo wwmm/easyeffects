@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Removed
+- The reset settings popup was removed. It does not work reliably outise of Gnome
+and resetting settings after an upgrade hasn't been so necessary for a while.
+
 ## [4.6.3]
 ### Fixed
 - Depending on the hardware we could crash when trying to show the channel

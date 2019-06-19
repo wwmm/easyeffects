@@ -36,8 +36,6 @@ class Application : public Gtk::Application {
   bool running_as_service = false;
 
   void create_actions();
-
-  void check_version();
 };
 
 #endif

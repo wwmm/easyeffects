@@ -73,6 +73,8 @@ int Application::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine>
 void Application::on_startup() {
   Gtk::Application::on_startup();
 
+  util::debug(log_tag + "PE version: " + std::string(VERSION));
+
   settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
 
   if (get_flags() & Gio::ApplicationFlags::APPLICATION_IS_SERVICE) {
@@ -80,7 +82,6 @@ void Application::on_startup() {
   }
 
   create_actions();
-  check_version();
 
   pm = std::make_unique<PulseManager>();
   sie = std::make_unique<SinkInputEffects>(pm.get());
@@ -251,22 +252,6 @@ void Application::create_actions() {
     }
   });
 
-  add_action("resetyes", [&] {
-    util::debug(log_tag + "Resetting configurations");
-
-    settings->reset("");
-
-    settings->set_string("version", std::string(VERSION));
-
-    withdraw_notification("reset");
-  });
-
-  add_action("resetno", [&] {
-    settings->set_string("version", std::string(VERSION));
-
-    withdraw_notification("reset");
-  });
-
   add_action("quit", [&] {
     auto window = get_active_window();
 
@@ -275,21 +260,4 @@ void Application::create_actions() {
 
   set_accel_for_action("app.help", "F1");
   set_accel_for_action("app.quit", "<Ctrl>Q");
-}
-
-void Application::check_version() {
-  util::debug(log_tag + "PE version: " + std::string(VERSION));
-
-  if (settings->get_string("version") != std::string(VERSION)) {
-    auto note = Gio::Notification::create(_("PulseEffects was updated"));
-
-    note->set_body(
-        _("It is recommended to reset its configuration after an "
-          "update. Do you want to do this?"));
-
-    note->add_button(_("Yes"), "app.resetyes");
-    note->add_button(_("No"), "app.resetno");
-
-    send_notification("reset", note);
-  }
 }
