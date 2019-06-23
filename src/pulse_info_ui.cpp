@@ -153,68 +153,80 @@ void PulseInfoUi::on_stack_visible_child_changed() {
 }
 
 void PulseInfoUi::get_pulse_conf() {
-  boost::process::ipstream pipe_stream;
-  boost::process::child c("pulseaudio --dump-conf", boost::process::std_out > pipe_stream);
+  std::string command = "pulseaudio --dump-conf";
 
-  std::string line;
+  try {
+    boost::process::ipstream pipe_stream;
+    boost::process::child c(command, boost::process::std_out > pipe_stream);
 
-  while (pipe_stream && std::getline(pipe_stream, line) && !line.empty()) {
-    std::vector<std::string> aux;
-    std::string key, value;
+    std::string line;
 
-    boost::split(aux, line, boost::is_any_of("="));
+    while (pipe_stream && std::getline(pipe_stream, line) && !line.empty()) {
+      std::vector<std::string> aux;
+      std::string key, value;
 
-    if (aux.size() > 1) {
-      auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pulse_conf_file_line.glade");
-
-      Gtk::ListBoxRow* row;
-      Gtk::Label *conf_key, *conf_value;
-
-      b->get_widget("conf_row", row);
-      b->get_widget("conf_key", conf_key);
-      b->get_widget("conf_value", conf_value);
-
-      row->set_name(aux[0]);
-      conf_key->set_text(aux[0]);
-      conf_value->set_text(aux[1]);
-
-      listbox_config->add(*row);
-    } else {
-      boost::split(aux, line, boost::is_any_of(":"));
+      boost::split(aux, line, boost::is_any_of("="));
 
       if (aux.size() > 1) {
-        std::string tmp = aux[1];
+        auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pulse_conf_file_line.glade");
 
-        boost::split(aux, tmp, boost::is_any_of("#"));
+        Gtk::ListBoxRow* row;
+        Gtk::Label *conf_key, *conf_value;
 
-        config_file->set_text(aux[0]);
+        b->get_widget("conf_row", row);
+        b->get_widget("conf_key", conf_key);
+        b->get_widget("conf_value", conf_value);
+
+        row->set_name(aux[0]);
+        conf_key->set_text(aux[0]);
+        conf_value->set_text(aux[1]);
+
+        listbox_config->add(*row);
+      } else {
+        boost::split(aux, line, boost::is_any_of(":"));
+
+        if (aux.size() > 1) {
+          std::string tmp = aux[1];
+
+          boost::split(aux, tmp, boost::is_any_of("#"));
+
+          config_file->set_text(aux[0]);
+        }
       }
     }
-  }
 
-  // c.wait();
-  listbox_config->show_all();
+    // c.wait();
+    listbox_config->show_all();
+  } catch (std::exception& e) {
+    util::warning(log_tag + command + " : " + e.what());
+  }
 }
 
 void PulseInfoUi::get_resamplers() {
-  boost::process::ipstream pipe_stream;
-  boost::process::child c("pulseaudio --dump-resample-methods", boost::process::std_out > pipe_stream);
+  std::string command = "pulseaudio --dump-resample-methods";
 
-  std::string line;
+  try {
+    boost::process::ipstream pipe_stream;
+    boost::process::child c(command, boost::process::std_out > pipe_stream);
 
-  while (pipe_stream && std::getline(pipe_stream, line) && !line.empty()) {
-    auto row = Gtk::manage(new Gtk::ListBoxRow());
-    auto label = Gtk::manage(new Gtk::Label());
+    std::string line;
 
-    row->set_name(line);
+    while (pipe_stream && std::getline(pipe_stream, line) && !line.empty()) {
+      auto row = Gtk::manage(new Gtk::ListBoxRow());
+      auto label = Gtk::manage(new Gtk::Label());
 
-    label->set_text(line);
-    label->set_halign(Gtk::Align::ALIGN_START);
+      row->set_name(line);
 
-    row->add(*label);
+      label->set_text(line);
+      label->set_halign(Gtk::Align::ALIGN_START);
 
-    listbox_resamplers->add(*row);
+      row->add(*label);
+
+      listbox_resamplers->add(*row);
+    }
+
+    listbox_resamplers->show_all();
+  } catch (std::exception& e) {
+    util::warning(log_tag + command + " : " + e.what());
   }
-
-  listbox_resamplers->show_all();
 }
