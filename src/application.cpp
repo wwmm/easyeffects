@@ -96,17 +96,24 @@ void Application::on_startup() {
       sie->set_output_sink_name(name);
       soe->webrtc->set_probe_src_device(name + ".monitor");
 
-      auto info = pm->get_sink_info(name);
-      auto port = info->active_port;
-      std::string dev_name;
+      Glib::signal_timeout().connect_seconds_once(
+          [=]() {
+            auto info = pm->get_sink_info(pm->server_info.default_sink_name);
 
-      if (port != "null") {
-        dev_name = name + ":" + port;
-      } else {
-        dev_name = name;
-      }
+            if (info != nullptr) {
+              auto port = info->active_port;
+              std::string dev_name;
 
-      presets_manager->autoload(PresetType::output, dev_name);
+              if (port != "null") {
+                dev_name = name + ":" + port;
+              } else {
+                dev_name = name;
+              }
+
+              presets_manager->autoload(PresetType::output, dev_name);
+            }
+          },
+          3);
     }
   });
 
@@ -116,17 +123,24 @@ void Application::on_startup() {
     if (name != "") {
       soe->set_source_monitor_name(name);
 
-      auto info = pm->get_source_info(name);
-      auto port = info->active_port;
-      std::string dev_name;
+      Glib::signal_timeout().connect_seconds_once(
+          [=]() {
+            auto info = pm->get_source_info(pm->server_info.default_source_name);
 
-      if (port != "null") {
-        dev_name = name + ":" + port;
-      } else {
-        dev_name = name;
-      }
+            if (info != nullptr) {
+              auto port = info->active_port;
+              std::string dev_name;
 
-      presets_manager->autoload(PresetType::input, dev_name);
+              if (port != "null") {
+                dev_name = name + ":" + port;
+              } else {
+                dev_name = name;
+              }
+
+              presets_manager->autoload(PresetType::input, dev_name);
+            }
+          },
+          3);
     }
   });
 

@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+- Delaying preset autoloading by 3 seconds. This should help to fix the issue reported
+at https://github.com/wwmm/pulseeffects/issues/520
+
 ## [4.6.4]
 ### Removed
 - The reset settings popup was removed. It does not work reliably outside of Gnome.

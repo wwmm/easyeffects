@@ -408,6 +408,8 @@ std::shared_ptr<mySinkInfo> PulseManager::get_sink_info(std::string name) {
   if (!data.failed) {
     return si;
   } else {
+    util::warning(log_tag + " failed to get sink info: " + name);
+
     return nullptr;
   }
 }
@@ -466,6 +468,8 @@ std::shared_ptr<mySourceInfo> PulseManager::get_source_info(std::string name) {
   if (!data.failed) {
     return si;
   } else {
+    util::warning(log_tag + " failed to get source info:" + name);
+
     return nullptr;
   }
 }
@@ -552,8 +556,9 @@ std::shared_ptr<mySinkInfo> PulseManager::load_sink(std::string name, std::strin
 
       si = get_sink_info(name);
     } else {
-      util::debug(log_tag + "Pulseaudio " + server_info.server_version +
-                  " does not support norewinds. Loading sink the old way :-(");
+      util::warning(
+          log_tag + "Pulseaudio " + server_info.server_version +
+          " does not support norewinds. Loading the sink the old way. Changing apps volume will cause cracklings");
 
       argument = "sink_name=" + name + " " + "sink_properties=" + description + "device.class=\"sound\"" + " " +
                  "channels=2" + " " + "rate=" + std::to_string(rate);
