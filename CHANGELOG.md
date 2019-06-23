@@ -2,13 +2,15 @@
 
 ## [Unreleased]
 
+## [4.6.5]
 ### Added
 - Delaying preset autoloading by 3 seconds. This should help to fix the issue reported
 at https://github.com/wwmm/pulseeffects/issues/520
 
 ### Fixed
 - When PE was executed in an environment without Pulseaudio executable in the system
-path a crash would happen because of unhandled execeptions. This was fixed
+path(like flatpak) a crash would happen because of unhandled execeptions. This was 
+fixed PE should not crash anymore when Pulseaudio exe is not found.
 
 ## [4.6.4]
 ### Removed
