@@ -37,5 +37,5 @@ library(
 
 else
 	message('Missing dependency zita-convolver = 3.x.x or zita-convolver = 4.x.x')
-	message('Convolver plugin will not be built')
+	message('Crystalizer plugin will not be built')
 endif
