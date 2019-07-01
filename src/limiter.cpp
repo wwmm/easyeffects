@@ -65,19 +65,14 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Limiter* l) {
 
 }  // namespace
 
-Limiter::Limiter(const std::string& tag, const std::string& schema)
-    : PluginBase(tag, "limiter", schema) {
-  limiter =
-      gst_element_factory_make("calf-sourceforge-net-plugins-Limiter", nullptr);
+Limiter::Limiter(const std::string& tag, const std::string& schema) : PluginBase(tag, "limiter", schema) {
+  limiter = gst_element_factory_make("calf-sourceforge-net-plugins-Limiter", nullptr);
 
   if (is_installed(limiter)) {
-    auto audioconvert_in =
-        gst_element_factory_make("audioconvert", "limiter_audioconvert_in");
-    auto audioconvert_out =
-        gst_element_factory_make("audioconvert", "limiter_audioconvert_out");
+    auto audioconvert_in = gst_element_factory_make("audioconvert", "limiter_audioconvert_in");
+    auto audioconvert_out = gst_element_factory_make("audioconvert", "limiter_audioconvert_out");
 
-    gst_bin_add_many(GST_BIN(bin), audioconvert_in, limiter, audioconvert_out,
-                     nullptr);
+    gst_bin_add_many(GST_BIN(bin), audioconvert_in, limiter, audioconvert_out, nullptr);
 
     gst_element_link_many(audioconvert_in, limiter, audioconvert_out, nullptr);
 
@@ -94,8 +89,7 @@ Limiter::Limiter(const std::string& tag, const std::string& schema)
 
     bind_to_gsettings();
 
-    g_signal_connect(settings, "changed::post-messages",
-                     G_CALLBACK(on_post_messages_changed), this);
+    g_signal_connect(settings, "changed::post-messages", G_CALLBACK(on_post_messages_changed), this);
 
     // useless write just to force callback call
 
@@ -110,36 +104,29 @@ Limiter::~Limiter() {
 }
 
 void Limiter::bind_to_gsettings() {
-  g_settings_bind_with_mapping(
-      settings, "input-gain", limiter, "level-in", G_SETTINGS_BIND_DEFAULT,
-      util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "input-gain", limiter, "level-in", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "limit", limiter, "limit",
-                               G_SETTINGS_BIND_GET, util::db20_gain_to_linear,
+  g_settings_bind_with_mapping(settings, "limit", limiter, "limit", G_SETTINGS_BIND_GET, util::db20_gain_to_linear,
                                nullptr, nullptr, nullptr);
 
   // calf limiter does automatic makeup gain by the same amount given as
   // limit. See https://github.com/calf-studio-gear/calf/issues/162
   // that is why we reduce the output level accordingly
 
-  g_settings_bind_with_mapping(settings, "limit", limiter, "level-out",
-                               G_SETTINGS_BIND_GET, util::db20_gain_to_linear,
+  g_settings_bind_with_mapping(settings, "limit", limiter, "level-out", G_SETTINGS_BIND_GET, util::db20_gain_to_linear,
                                nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "lookahead", limiter, "attack",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
+  g_settings_bind_with_mapping(settings, "lookahead", limiter, "attack", G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "release", limiter, "release",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
+  g_settings_bind_with_mapping(settings, "release", limiter, "release", G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 
   g_settings_bind(settings, "asc", limiter, "asc", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind_with_mapping(settings, "asc-level", limiter, "asc-coeff",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
+  g_settings_bind_with_mapping(settings, "asc-level", limiter, "asc-coeff", G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 
-  g_settings_bind(settings, "oversampling", limiter, "oversampling",
-                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, "oversampling", limiter, "oversampling", G_SETTINGS_BIND_DEFAULT);
 }

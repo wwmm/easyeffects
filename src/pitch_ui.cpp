@@ -1,8 +1,6 @@
 #include "pitch_ui.hpp"
 
-PitchUi::PitchUi(BaseObjectType* cobject,
-                 const Glib::RefPtr<Gtk::Builder>& builder,
-                 const std::string& settings_name)
+PitchUi::PitchUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name)
     : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
   name = "pitch";
 

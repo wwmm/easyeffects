@@ -15,9 +15,7 @@
 
 class GeneralSettingsUi : public Gtk::Grid {
  public:
-  GeneralSettingsUi(BaseObjectType* cobject,
-                    const Glib::RefPtr<Gtk::Builder>& builder,
-                    Application* application);
+  GeneralSettingsUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, Application* application);
 
   virtual ~GeneralSettingsUi();
 
@@ -30,8 +28,7 @@ class GeneralSettingsUi : public Gtk::Grid {
 
   Application* app;
 
-  Gtk::Switch *enable_autostart, *enable_all_sinkinputs,
-      *enable_all_sourceoutputs, *theme_switch;
+  Gtk::Switch *enable_autostart, *enable_all_sinkinputs, *enable_all_sourceoutputs, *theme_switch;
   Gtk::Button *reset_settings, *about_button;
   Gtk::SpinButton *realtime_priority_control, *niceness_control;
   Gtk::ComboBoxText* priority_type;
@@ -43,8 +40,7 @@ class GeneralSettingsUi : public Gtk::Grid {
   void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
                   const std::string& name,
                   Glib::RefPtr<Gtk::Adjustment>& object) {
-    object =
-        Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
+    object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
   }
 
   void init_autostart_switch();

@@ -2,9 +2,7 @@
 
 namespace {
 
-gboolean filter_enum_to_int(GValue* value,
-                            GVariant* variant,
-                            gpointer user_data) {
+gboolean filter_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("12dB/oct Lowpass")) {
@@ -36,9 +34,7 @@ gboolean filter_enum_to_int(GValue* value,
   return true;
 }
 
-GVariant* int_to_filter_enum(const GValue* value,
-                             const GVariantType* expected_type,
-                             gpointer user_data) {
+GVariant* int_to_filter_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -70,9 +66,7 @@ GVariant* int_to_filter_enum(const GValue* value,
 
 }  // namespace
 
-FilterUi::FilterUi(BaseObjectType* cobject,
-                   const Glib::RefPtr<Gtk::Builder>& builder,
-                   const std::string& settings_name)
+FilterUi::FilterUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name)
     : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
   name = "filter";
 
@@ -101,9 +95,8 @@ FilterUi::FilterUi(BaseObjectType* cobject,
   settings->bind("resonance", resonance.get(), "value", flag);
   settings->bind("inertia", inertia.get(), "value", flag);
 
-  g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active",
-                               G_SETTINGS_BIND_DEFAULT, filter_enum_to_int,
-                               int_to_filter_enum, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+                               filter_enum_to_int, int_to_filter_enum, nullptr, nullptr);
 
   init_presets_buttons();
 }

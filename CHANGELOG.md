@@ -1,6 +1,23 @@
 # Changelog
 
-## [Unreleased
+## [Unreleased]
+
+## [4.6.5]
+### Added
+- Delaying preset autoloading by 3 seconds. This should help to fix the issue reported
+at https://github.com/wwmm/pulseeffects/issues/520
+
+### Fixed
+- When PE was executed in an environment without Pulseaudio executable in the system
+path(like flatpak) a crash would happen because of unhandled execeptions. This was 
+fixed PE should not crash anymore when Pulseaudio exe is not found.
+
+## [4.6.4]
+### Removed
+- The reset settings popup was removed. It does not work reliably outside of Gnome.
+On other desktops the popup may be shown whenever PE is started. Even if the user
+select yes or no. As resetting settings after an upgrade hasn't been necessary for 
+a while I removed this feature.
 
 ## [4.6.3]
 ### Fixed

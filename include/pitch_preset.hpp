@@ -7,8 +7,7 @@ class PitchPreset : public PluginPresetBase {
  public:
   PitchPreset();
 
-  void write(PresetType preset_type,
-             boost::property_tree::ptree& root) override;
+  void write(PresetType preset_type, boost::property_tree::ptree& root) override;
   void read(PresetType preset_type, boost::property_tree::ptree& root) override;
 
  private:

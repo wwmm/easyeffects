@@ -15,8 +15,7 @@
 
 class PluginUiBase {
  public:
-  PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder,
-               const std::string& settings_name);
+  PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
   virtual ~PluginUiBase();
 
   std::string name;
@@ -48,8 +47,7 @@ class PluginUiBase {
   void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
                   const std::string& name,
                   Glib::RefPtr<Gtk::Adjustment>& object) {
-    object =
-        Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
+    object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
   }
 
   std::string level_to_str(const double& value, const int& places);

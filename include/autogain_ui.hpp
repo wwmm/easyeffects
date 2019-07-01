@@ -6,9 +6,7 @@
 
 class AutoGainUi : public Gtk::Grid, public PluginUiBase {
  public:
-  AutoGainUi(BaseObjectType* cobject,
-             const Glib::RefPtr<Gtk::Builder>& builder,
-             const std::string& settings_name);
+  AutoGainUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
   virtual ~AutoGainUi();
 
   void on_new_momentary(const float& value);
@@ -20,12 +18,9 @@ class AutoGainUi : public Gtk::Grid, public PluginUiBase {
   void on_new_gain(const float& value);
 
  private:
-  Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, target, weight_m,
-      weight_s, weight_i;
-  Gtk::LevelBar *m_level, *s_level, *i_level, *r_level, *g_level, *l_level,
-      *lra_level;
-  Gtk::Label *m_label, *s_label, *i_label, *r_label, *g_label, *l_label,
-      *lra_label;
+  Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, target, weight_m, weight_s, weight_i;
+  Gtk::LevelBar *m_level, *s_level, *i_level, *r_level, *g_level, *l_level, *lra_level;
+  Gtk::Label *m_label, *s_label, *i_label, *r_label, *g_label, *l_label, *lra_label;
 };
 
 #endif

@@ -23,34 +23,23 @@ GST_DEBUG_CATEGORY_STATIC(gst_peconvolver_debug_category);
 
 /* prototypes */
 
-static void gst_peconvolver_set_property(GObject* object,
-                                         guint property_id,
-                                         const GValue* value,
-                                         GParamSpec* pspec);
+static void gst_peconvolver_set_property(GObject* object, guint property_id, const GValue* value, GParamSpec* pspec);
 
-static void gst_peconvolver_get_property(GObject* object,
-                                         guint property_id,
-                                         GValue* value,
-                                         GParamSpec* pspec);
+static void gst_peconvolver_get_property(GObject* object, guint property_id, GValue* value, GParamSpec* pspec);
 
 static void gst_peconvolver_finalize(GObject* object);
 
-static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
-                                      const GstAudioInfo* info);
+static gboolean gst_peconvolver_setup(GstAudioFilter* filter, const GstAudioInfo* info);
 
-static GstFlowReturn gst_peconvolver_transform_ip(GstBaseTransform* trans,
-                                                  GstBuffer* buffer);
+static GstFlowReturn gst_peconvolver_transform_ip(GstBaseTransform* trans, GstBuffer* buffer);
 
 static gboolean gst_peconvolver_stop(GstBaseTransform* base);
 
-static void gst_peconvolver_set_kernel_path(GstPeconvolver* peconvolver,
-                                            gchar* value);
+static void gst_peconvolver_set_kernel_path(GstPeconvolver* peconvolver, gchar* value);
 
-static void gst_peconvolver_set_ir_width(GstPeconvolver* peconvolver,
-                                         const uint& value);
+static void gst_peconvolver_set_ir_width(GstPeconvolver* peconvolver, const uint& value);
 
-static void gst_peconvolver_process(GstPeconvolver* peconvolver,
-                                    GstBuffer* buffer);
+static void gst_peconvolver_process(GstPeconvolver* peconvolver, GstBuffer* buffer);
 
 static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver);
 
@@ -76,31 +65,28 @@ enum { PROP_KERNEL_PATH = 1, PROP_IR_WIDTH };
 /* pad templates */
 
 static GstStaticPadTemplate gst_peconvolver_src_template =
-    GST_STATIC_PAD_TEMPLATE(
-        "src",
-        GST_PAD_SRC,
-        GST_PAD_ALWAYS,
-        GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=[1,max],"
-                        "channels=2,layout=interleaved"));
+    GST_STATIC_PAD_TEMPLATE("src",
+                            GST_PAD_SRC,
+                            GST_PAD_ALWAYS,
+                            GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=[1,max],"
+                                            "channels=2,layout=interleaved"));
 
 static GstStaticPadTemplate gst_peconvolver_sink_template =
-    GST_STATIC_PAD_TEMPLATE(
-        "sink",
-        GST_PAD_SINK,
-        GST_PAD_ALWAYS,
-        GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=[1,max],"
-                        "channels=2,layout=interleaved"));
+    GST_STATIC_PAD_TEMPLATE("sink",
+                            GST_PAD_SINK,
+                            GST_PAD_ALWAYS,
+                            GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=[1,max],"
+                                            "channels=2,layout=interleaved"));
 
 /* class initialization */
 
-G_DEFINE_TYPE_WITH_CODE(
-    GstPeconvolver,
-    gst_peconvolver,
-    GST_TYPE_AUDIO_FILTER,
-    GST_DEBUG_CATEGORY_INIT(gst_peconvolver_debug_category,
-                            "peconvolver",
-                            0,
-                            "debug category for peconvolver element"));
+G_DEFINE_TYPE_WITH_CODE(GstPeconvolver,
+                        gst_peconvolver,
+                        GST_TYPE_AUDIO_FILTER,
+                        GST_DEBUG_CATEGORY_INIT(gst_peconvolver_debug_category,
+                                                "peconvolver",
+                                                0,
+                                                "debug category for peconvolver element"));
 
 static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
   GObjectClass* gobject_class = G_OBJECT_CLASS(klass);
@@ -112,14 +98,11 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
   /* Setting up pads and setting metadata should be moved to
      base_class_init if you intend to subclass this class. */
 
-  gst_element_class_add_static_pad_template(GST_ELEMENT_CLASS(klass),
-                                            &gst_peconvolver_src_template);
-  gst_element_class_add_static_pad_template(GST_ELEMENT_CLASS(klass),
-                                            &gst_peconvolver_sink_template);
+  gst_element_class_add_static_pad_template(GST_ELEMENT_CLASS(klass), &gst_peconvolver_src_template);
+  gst_element_class_add_static_pad_template(GST_ELEMENT_CLASS(klass), &gst_peconvolver_sink_template);
 
-  gst_element_class_set_static_metadata(
-      GST_ELEMENT_CLASS(klass), "PulseEffects Convolver", "Generic",
-      "PulseEffects Convolver", "Wellington <wellingtonwallace@gmail.com>");
+  gst_element_class_set_static_metadata(GST_ELEMENT_CLASS(klass), "PulseEffects Convolver", "Generic",
+                                        "PulseEffects Convolver", "Wellington <wellingtonwallace@gmail.com>");
 
   /* define virtual function pointers */
 
@@ -130,8 +113,7 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
 
   audio_filter_class->setup = GST_DEBUG_FUNCPTR(gst_peconvolver_setup);
 
-  base_transform_class->transform_ip =
-      GST_DEBUG_FUNCPTR(gst_peconvolver_transform_ip);
+  base_transform_class->transform_ip = GST_DEBUG_FUNCPTR(gst_peconvolver_transform_ip);
 
   base_transform_class->transform_ip_on_passthrough = false;
 
@@ -141,17 +123,13 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
 
   g_object_class_install_property(
       gobject_class, PROP_KERNEL_PATH,
-      g_param_spec_string("kernel-path", "Kernel Path",
-                          "Full path to kernel file", nullptr,
-                          static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                                   G_PARAM_STATIC_STRINGS)));
+      g_param_spec_string("kernel-path", "Kernel Path", "Full path to kernel file", nullptr,
+                          static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
       gobject_class, PROP_IR_WIDTH,
-      g_param_spec_int("ir-width", "IR Width", "ImpulseResponse Stereo Width",
-                       0, 200, 100,
-                       static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                                G_PARAM_STATIC_STRINGS)));
+      g_param_spec_int("ir-width", "IR Width", "ImpulseResponse Stereo Width", 0, 200, 100,
+                       static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
 }
 
 static void gst_peconvolver_init(GstPeconvolver* peconvolver) {
@@ -167,10 +145,7 @@ static void gst_peconvolver_init(GstPeconvolver* peconvolver) {
   gst_base_transform_set_in_place(GST_BASE_TRANSFORM(peconvolver), true);
 }
 
-void gst_peconvolver_set_property(GObject* object,
-                                  guint property_id,
-                                  const GValue* value,
-                                  GParamSpec* pspec) {
+void gst_peconvolver_set_property(GObject* object, guint property_id, const GValue* value, GParamSpec* pspec) {
   GstPeconvolver* peconvolver = GST_PECONVOLVER(object);
 
   GST_DEBUG_OBJECT(peconvolver, "set_property");
@@ -188,10 +163,7 @@ void gst_peconvolver_set_property(GObject* object,
   }
 }
 
-void gst_peconvolver_get_property(GObject* object,
-                                  guint property_id,
-                                  GValue* value,
-                                  GParamSpec* pspec) {
+void gst_peconvolver_get_property(GObject* object, guint property_id, GValue* value, GParamSpec* pspec) {
   GstPeconvolver* peconvolver = GST_PECONVOLVER(object);
 
   GST_DEBUG_OBJECT(peconvolver, "get_property");
@@ -223,8 +195,7 @@ void gst_peconvolver_finalize(GObject* object) {
   G_OBJECT_CLASS(gst_peconvolver_parent_class)->finalize(object);
 }
 
-static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
-                                      const GstAudioInfo* info) {
+static gboolean gst_peconvolver_setup(GstAudioFilter* filter, const GstAudioInfo* info) {
   GstPeconvolver* peconvolver = GST_PECONVOLVER(filter);
 
   GST_DEBUG_OBJECT(peconvolver, "setup");
@@ -244,8 +215,7 @@ static gboolean gst_peconvolver_setup(GstAudioFilter* filter,
   return true;
 }
 
-static GstFlowReturn gst_peconvolver_transform_ip(GstBaseTransform* trans,
-                                                  GstBuffer* buffer) {
+static GstFlowReturn gst_peconvolver_transform_ip(GstBaseTransform* trans, GstBuffer* buffer) {
   GstPeconvolver* peconvolver = GST_PECONVOLVER(trans);
 
   GST_DEBUG_OBJECT(peconvolver, "transform");
@@ -292,8 +262,7 @@ static gboolean gst_peconvolver_stop(GstBaseTransform* base) {
   return true;
 }
 
-static void gst_peconvolver_set_kernel_path(GstPeconvolver* peconvolver,
-                                            gchar* value) {
+static void gst_peconvolver_set_kernel_path(GstPeconvolver* peconvolver, gchar* value) {
   if (value != nullptr) {
     if (peconvolver->kernel_path != nullptr) {
       std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
@@ -318,8 +287,7 @@ static void gst_peconvolver_set_kernel_path(GstPeconvolver* peconvolver,
   }
 }
 
-static void gst_peconvolver_set_ir_width(GstPeconvolver* peconvolver,
-                                         const uint& value) {
+static void gst_peconvolver_set_ir_width(GstPeconvolver* peconvolver, const uint& value) {
   if (value != peconvolver->ir_width) {
     std::lock_guard<std::mutex> lock(peconvolver->lock_guard_zita);
 
@@ -356,49 +324,39 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver) {
 #if ZITA_CONVOLVER_MAJOR_VERSION == 3
       peconvolver->conv->set_density(density);
 
-      ret = peconvolver->conv->configure(
-          2, 2, max_size, peconvolver->num_samples, peconvolver->num_samples,
-          Convproc::MAXPART);
+      ret = peconvolver->conv->configure(2, 2, max_size, peconvolver->num_samples, peconvolver->num_samples,
+                                         Convproc::MAXPART);
 #endif
 
 #if ZITA_CONVOLVER_MAJOR_VERSION == 4
-      ret = peconvolver->conv->configure(
-          2, 2, max_size, peconvolver->num_samples, peconvolver->num_samples,
-          Convproc::MAXPART, density);
+      ret = peconvolver->conv->configure(2, 2, max_size, peconvolver->num_samples, peconvolver->num_samples,
+                                         Convproc::MAXPART, density);
 #endif
 
       if (ret != 0) {
         failed = true;
-        util::debug(
-            peconvolver->log_tag +
-            "can't initialise zita-convolver engine: " + std::to_string(ret));
+        util::debug(peconvolver->log_tag + "can't initialise zita-convolver engine: " + std::to_string(ret));
       }
 
-      ret = peconvolver->conv->impdata_create(0, 0, 1, peconvolver->kernel_L, 0,
-                                              peconvolver->kernel_n_frames);
+      ret = peconvolver->conv->impdata_create(0, 0, 1, peconvolver->kernel_L, 0, peconvolver->kernel_n_frames);
 
       if (ret != 0) {
         failed = true;
-        util::debug(peconvolver->log_tag +
-                    "left impdata_create failed: " + std::to_string(ret));
+        util::debug(peconvolver->log_tag + "left impdata_create failed: " + std::to_string(ret));
       }
 
-      ret = peconvolver->conv->impdata_create(1, 1, 1, peconvolver->kernel_R, 0,
-                                              peconvolver->kernel_n_frames);
+      ret = peconvolver->conv->impdata_create(1, 1, 1, peconvolver->kernel_R, 0, peconvolver->kernel_n_frames);
 
       if (ret != 0) {
         failed = true;
-        util::debug(peconvolver->log_tag +
-                    "right impdata_create failed: " + std::to_string(ret));
+        util::debug(peconvolver->log_tag + "right impdata_create failed: " + std::to_string(ret));
       }
 
-      ret = peconvolver->conv->start_process(CONVPROC_SCHEDULER_PRIORITY,
-                                             CONVPROC_SCHEDULER_CLASS);
+      ret = peconvolver->conv->start_process(CONVPROC_SCHEDULER_PRIORITY, CONVPROC_SCHEDULER_CLASS);
 
       if (ret != 0) {
         failed = true;
-        util::debug(peconvolver->log_tag +
-                    "start_process failed: " + std::to_string(ret));
+        util::debug(peconvolver->log_tag + "start_process failed: " + std::to_string(ret));
       }
 
       peconvolver->ready = (failed) ? false : true;
@@ -411,8 +369,7 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver) {
   }
 }
 
-static void gst_peconvolver_process(GstPeconvolver* peconvolver,
-                                    GstBuffer* buffer) {
+static void gst_peconvolver_process(GstPeconvolver* peconvolver, GstBuffer* buffer) {
   if (peconvolver->ready) {
     GstMapInfo map;
 
@@ -427,8 +384,7 @@ static void gst_peconvolver_process(GstPeconvolver* peconvolver,
     int ret = peconvolver->conv->process(THREAD_SYNC_MODE);
 
     if (ret != 0) {
-      util::debug(peconvolver->log_tag +
-                  "IR: process failed: " + std::to_string(ret));
+      util::debug(peconvolver->log_tag + "IR: process failed: " + std::to_string(ret));
     }
 
     // interleave
@@ -474,8 +430,7 @@ static void gst_peconvolver_finish_convolver(GstPeconvolver* peconvolver) {
 static gboolean plugin_init(GstPlugin* plugin) {
   /* FIXME Remember to set the rank if it's an element that is meant
      to be autoplugged by decodebin. */
-  return gst_element_register(plugin, "peconvolver", GST_RANK_NONE,
-                              GST_TYPE_PECONVOLVER);
+  return gst_element_register(plugin, "peconvolver", GST_RANK_NONE, GST_TYPE_PECONVOLVER);
 }
 
 GST_PLUGIN_DEFINE(GST_VERSION_MAJOR,

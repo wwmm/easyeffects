@@ -6,9 +6,7 @@
 
 namespace {
 
-gboolean priority_type_enum_to_int(GValue* value,
-                                   GVariant* variant,
-                                   gpointer user_data) {
+gboolean priority_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("Niceness")) {
@@ -22,9 +20,7 @@ gboolean priority_type_enum_to_int(GValue* value,
   return true;
 }
 
-GVariant* int_to_priority_type_enum(const GValue* value,
-                                    const GVariantType* expected_type,
-                                    gpointer user_data) {
+GVariant* int_to_priority_type_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -41,9 +37,7 @@ GVariant* int_to_priority_type_enum(const GValue* value,
 GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
                                      const Glib::RefPtr<Gtk::Builder>& builder,
                                      Application* application)
-    : Gtk::Grid(cobject),
-      settings(Gio::Settings::create("com.github.wwmm.pulseeffects")),
-      app(application) {
+    : Gtk::Grid(cobject), settings(Gio::Settings::create("com.github.wwmm.pulseeffects")), app(application) {
   // loading glade widgets
 
   builder->get_widget("theme_switch", theme_switch);
@@ -61,58 +55,49 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
 
   // signals connection
 
-  enable_autostart->signal_state_set().connect(
-      sigc::mem_fun(*this, &GeneralSettingsUi::on_enable_autostart), false);
+  enable_autostart->signal_state_set().connect(sigc::mem_fun(*this, &GeneralSettingsUi::on_enable_autostart), false);
 
-  reset_settings->signal_clicked().connect(
-      sigc::mem_fun(*this, &GeneralSettingsUi::on_reset_settings));
+  reset_settings->signal_clicked().connect(sigc::mem_fun(*this, &GeneralSettingsUi::on_reset_settings));
 
-  about_button->signal_clicked().connect(
-      [=]() { app->activate_action("about"); });
+  about_button->signal_clicked().connect([=]() { app->activate_action("about"); });
 
-  connections.push_back(
-      settings->signal_changed("priority-type").connect([&](auto key) {
-        set_priority_controls_visibility();
+  connections.push_back(settings->signal_changed("priority-type").connect([&](auto key) {
+    set_priority_controls_visibility();
 
-        app->sie->set_null_pipeline();
-        app->soe->set_null_pipeline();
+    app->sie->set_null_pipeline();
+    app->soe->set_null_pipeline();
 
-        app->sie->update_pipeline_state();
-        app->soe->update_pipeline_state();
-      }));
+    app->sie->update_pipeline_state();
+    app->soe->update_pipeline_state();
+  }));
 
-  connections.push_back(
-      settings->signal_changed("realtime-priority").connect([&](auto key) {
-        app->sie->set_null_pipeline();
-        app->soe->set_null_pipeline();
+  connections.push_back(settings->signal_changed("realtime-priority").connect([&](auto key) {
+    app->sie->set_null_pipeline();
+    app->soe->set_null_pipeline();
 
-        app->sie->update_pipeline_state();
-        app->soe->update_pipeline_state();
-      }));
+    app->sie->update_pipeline_state();
+    app->soe->update_pipeline_state();
+  }));
 
-  connections.push_back(
-      settings->signal_changed("niceness").connect([&](auto key) {
-        app->sie->set_null_pipeline();
-        app->soe->set_null_pipeline();
+  connections.push_back(settings->signal_changed("niceness").connect([&](auto key) {
+    app->sie->set_null_pipeline();
+    app->soe->set_null_pipeline();
 
-        app->sie->update_pipeline_state();
-        app->soe->update_pipeline_state();
-      }));
+    app->sie->update_pipeline_state();
+    app->soe->update_pipeline_state();
+  }));
 
   auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
   settings->bind("use-dark-theme", theme_switch, "active", flag);
-  settings->bind("enable-all-sinkinputs", enable_all_sinkinputs, "active",
-                 flag);
-  settings->bind("enable-all-sourceoutputs", enable_all_sourceoutputs, "active",
-                 flag);
+  settings->bind("enable-all-sinkinputs", enable_all_sinkinputs, "active", flag);
+  settings->bind("enable-all-sourceoutputs", enable_all_sourceoutputs, "active", flag);
   settings->bind("realtime-priority", adjustment_priority.get(), "value", flag);
   settings->bind("niceness", adjustment_niceness.get(), "value", flag);
 
-  g_settings_bind_with_mapping(
-      settings->gobj(), "priority-type", priority_type->gobj(), "active",
-      G_SETTINGS_BIND_DEFAULT, priority_type_enum_to_int,
-      int_to_priority_type_enum, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings->gobj(), "priority-type", priority_type->gobj(), "active",
+                               G_SETTINGS_BIND_DEFAULT, priority_type_enum_to_int, int_to_priority_type_enum, nullptr,
+                               nullptr);
 
   init_autostart_switch();
   set_priority_controls_visibility();
@@ -127,8 +112,7 @@ GeneralSettingsUi::~GeneralSettingsUi() {
 }
 
 void GeneralSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
-  auto builder = Gtk::Builder::create_from_resource(
-      "/com/github/wwmm/pulseeffects/ui/general_settings.glade");
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/general_settings.glade");
 
   GeneralSettingsUi* ui;
 
@@ -138,8 +122,7 @@ void GeneralSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
 }
 
 void GeneralSettingsUi::init_autostart_switch() {
-  auto path =
-      Glib::get_user_config_dir() + "/autostart/pulseeffects-service.desktop";
+  auto path = Glib::get_user_config_dir() + "/autostart/pulseeffects-service.desktop";
 
   try {
     auto file = Gio::File::create_for_path(path);
@@ -155,15 +138,13 @@ void GeneralSettingsUi::init_autostart_switch() {
 }
 
 bool GeneralSettingsUi::on_enable_autostart(bool state) {
-  boost::filesystem::path autostart_dir{Glib::get_user_config_dir() +
-                                        "/autostart"};
+  boost::filesystem::path autostart_dir{Glib::get_user_config_dir() + "/autostart"};
 
   if (!boost::filesystem::is_directory(autostart_dir)) {
     boost::filesystem::create_directories(autostart_dir);
   }
 
-  boost::filesystem::path autostart_file{
-      Glib::get_user_config_dir() + "/autostart/pulseeffects-service.desktop"};
+  boost::filesystem::path autostart_file{Glib::get_user_config_dir() + "/autostart/pulseeffects-service.desktop"};
 
   if (state) {
     if (!boost::filesystem::exists(autostart_file)) {

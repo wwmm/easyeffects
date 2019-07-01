@@ -8,9 +8,7 @@
 
 namespace {
 
-void on_message_error(const GstBus* gst_bus,
-                      GstMessage* message,
-                      PipelineBase* pb) {
+void on_message_error(const GstBus* gst_bus, GstMessage* message, PipelineBase* pb) {
   GError* err;
   gchar* debug;
 
@@ -25,9 +23,7 @@ void on_message_error(const GstBus* gst_bus,
   g_free(debug);
 }
 
-static void on_stream_status(GstBus* bus,
-                             GstMessage* message,
-                             PipelineBase* pb) {
+static void on_stream_status(GstBus* bus, GstMessage* message, PipelineBase* pb) {
   GstStreamStatusType type;
   GstElement* owner;
   gchar* path;
@@ -71,17 +67,14 @@ static void on_stream_status(GstBus* bus,
   }
 }
 
-void on_message_state_changed(const GstBus* gst_bus,
-                              GstMessage* message,
-                              PipelineBase* pb) {
+void on_message_state_changed(const GstBus* gst_bus, GstMessage* message, PipelineBase* pb) {
   if (GST_OBJECT_NAME(message->src) == std::string("pipeline")) {
     GstState old_state, new_state, pending;
 
     gst_message_parse_state_changed(message, &old_state, &new_state, &pending);
 
-    util::debug(pb->log_tag + gst_element_state_get_name(old_state) + " -> " +
-                gst_element_state_get_name(new_state) + " -> " +
-                gst_element_state_get_name(pending));
+    util::debug(pb->log_tag + gst_element_state_get_name(old_state) + " -> " + gst_element_state_get_name(new_state) +
+                " -> " + gst_element_state_get_name(pending));
 
     if (new_state == GST_STATE_PLAYING) {
       pb->playing = true;
@@ -93,39 +86,30 @@ void on_message_state_changed(const GstBus* gst_bus,
   }
 }
 
-void on_message_latency(const GstBus* gst_bus,
-                        GstMessage* message,
-                        PipelineBase* pb) {
+void on_message_latency(const GstBus* gst_bus, GstMessage* message, PipelineBase* pb) {
   if (GST_OBJECT_NAME(message->src) == std::string("source")) {
     int latency, buffer;
 
     g_object_get(pb->source, "latency-time", &latency, nullptr);
     g_object_get(pb->source, "buffer-time", &buffer, nullptr);
 
-    util::debug(pb->log_tag +
-                "pulsesrc latency [us]: " + std::to_string(latency));
-    util::debug(pb->log_tag +
-                "pulsesrc buffer [us]: " + std::to_string(buffer));
+    util::debug(pb->log_tag + "pulsesrc latency [us]: " + std::to_string(latency));
+    util::debug(pb->log_tag + "pulsesrc buffer [us]: " + std::to_string(buffer));
   } else if (GST_OBJECT_NAME(message->src) == std::string("sink")) {
     int latency, buffer;
 
     g_object_get(pb->sink, "latency-time", &latency, nullptr);
     g_object_get(pb->sink, "buffer-time", &buffer, nullptr);
 
-    util::debug(pb->log_tag +
-                "pulsesink latency [us]: " + std::to_string(latency));
-    util::debug(pb->log_tag +
-                "pulsesink buffer [us]: " + std::to_string(buffer));
+    util::debug(pb->log_tag + "pulsesink latency [us]: " + std::to_string(latency));
+    util::debug(pb->log_tag + "pulsesink buffer [us]: " + std::to_string(buffer));
   }
 
   pb->get_latency();
 }
 
-void on_message_element(const GstBus* gst_bus,
-                        GstMessage* message,
-                        PipelineBase* pb) {
-  if (GST_OBJECT_NAME(message->src) == std::string("spectrum") &&
-      !pb->resizing_spectrum) {
+void on_message_element(const GstBus* gst_bus, GstMessage* message, PipelineBase* pb) {
+  if (GST_OBJECT_NAME(message->src) == std::string("spectrum") && !pb->resizing_spectrum) {
     const GstStructure* s = gst_message_get_structure(message);
 
     const GValue* magnitudes;
@@ -133,26 +117,22 @@ void on_message_element(const GstBus* gst_bus,
     magnitudes = gst_structure_get_value(s, "magnitude");
 
     for (uint n = 0; n < pb->spectrum_freqs.size(); n++) {
-      pb->spectrum_mag_tmp[n] =
-          g_value_get_float(gst_value_list_get_value(magnitudes, n));
+      pb->spectrum_mag_tmp[n] = g_value_get_float(gst_value_list_get_value(magnitudes, n));
     }
 
     try {
-      boost::math::cubic_b_spline<float> spline(pb->spectrum_mag_tmp.begin(),
-                                                pb->spectrum_mag_tmp.end(),
-                                                pb->spline_f0, pb->spline_df);
+      boost::math::cubic_b_spline<float> spline(pb->spectrum_mag_tmp.begin(), pb->spectrum_mag_tmp.end(), pb->spline_f0,
+                                                pb->spline_df);
 
       for (uint n = 0; n < pb->spectrum_mag.size(); n++) {
         pb->spectrum_mag[n] = spline(pb->spectrum_x_axis[n]);
       }
     } catch (const std::exception& e) {
-      util::debug(std::string("Message from thrown exception was: ") +
-                  e.what());
+      util::debug(std::string("Message from thrown exception was: ") + e.what());
     }
 
     auto min_mag = pb->spectrum_threshold;
-    auto max_mag =
-        *std::max_element(pb->spectrum_mag.begin(), pb->spectrum_mag.end());
+    auto max_mag = *std::max_element(pb->spectrum_mag.begin(), pb->spectrum_mag.end());
 
     if (max_mag > min_mag) {
       for (uint n = 0; n < pb->spectrum_mag.size(); n++) {
@@ -163,15 +143,12 @@ void on_message_element(const GstBus* gst_bus,
         }
       }
 
-      Glib::signal_idle().connect_once(
-          [=] { pb->new_spectrum.emit(pb->spectrum_mag); });
+      Glib::signal_idle().connect_once([=] { pb->new_spectrum.emit(pb->spectrum_mag); });
     }
   }
 }
 
-void on_spectrum_n_points_changed(GSettings* settings,
-                                  gchar* key,
-                                  PipelineBase* pb) {
+void on_spectrum_n_points_changed(GSettings* settings, gchar* key, PipelineBase* pb) {
   long unsigned int npoints = g_settings_get_int(settings, "n-points");
 
   if (npoints != pb->spectrum_mag.size()) {
@@ -179,17 +156,13 @@ void on_spectrum_n_points_changed(GSettings* settings,
 
     pb->spectrum_mag.resize(npoints);
 
-    pb->spectrum_x_axis = util::logspace(log10(pb->min_spectrum_freq),
-                                         log10(pb->max_spectrum_freq), npoints);
+    pb->spectrum_x_axis = util::logspace(log10(pb->min_spectrum_freq), log10(pb->max_spectrum_freq), npoints);
 
     pb->resizing_spectrum = false;
   }
 }
 
-void on_src_type_changed(GstElement* typefind,
-                         guint probability,
-                         GstCaps* caps,
-                         PipelineBase* pb) {
+void on_src_type_changed(GstElement* typefind, guint probability, GstCaps* caps, PipelineBase* pb) {
   GstStructure* structure = gst_caps_get_structure(caps, 0);
 
   int rate;
@@ -204,8 +177,7 @@ void on_src_type_changed(GstElement* typefind,
 void on_buffer_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
   GstState state, pending;
 
-  gst_element_get_state(pb->pipeline, &state, &pending,
-                        pb->state_check_timeout);
+  gst_element_get_state(pb->pipeline, &state, &pending, pb->state_check_timeout);
 
   if (state == GST_STATE_PLAYING || state == GST_STATE_PAUSED) {
     /*when we are playing it is necessary to reset the pipeline for the new
@@ -221,8 +193,7 @@ void on_buffer_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
 void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
   GstState state, pending;
 
-  gst_element_get_state(pb->pipeline, &state, &pending,
-                        pb->state_check_timeout);
+  gst_element_get_state(pb->pipeline, &state, &pending, pb->state_check_timeout);
 
   if (state == GST_STATE_PLAYING || state == GST_STATE_PAUSED) {
     /*when we are playing it is necessary to reset the pipeline for the new
@@ -235,9 +206,7 @@ void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
   }
 }
 
-GstPadProbeReturn on_sink_event(GstPad* pad,
-                                GstPadProbeInfo* info,
-                                gpointer user_data) {
+GstPadProbeReturn on_sink_event(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) {
   GstEvent* event = GST_PAD_PROBE_INFO_EVENT(info);
 
   if (event->type == GST_EVENT_LATENCY) {
@@ -255,8 +224,7 @@ PipelineBase::PipelineBase(const std::string& tag, PulseManager* pulse_manager)
     : log_tag(tag),
       pm(pulse_manager),
       settings(g_settings_new("com.github.wwmm.pulseeffects")),
-      spectrum_settings(
-          g_settings_new("com.github.wwmm.pulseeffects.spectrum")),
+      spectrum_settings(g_settings_new("com.github.wwmm.pulseeffects.spectrum")),
       rtkit(std::make_unique<RealtimeKit>(tag)) {
   gst_init(nullptr, nullptr);
 
@@ -270,14 +238,10 @@ PipelineBase::PipelineBase(const std::string& tag, PulseManager* pulse_manager)
   // bus callbacks
 
   g_signal_connect(bus, "message::error", G_CALLBACK(on_message_error), this);
-  g_signal_connect(bus, "sync-message::stream-status",
-                   GCallback(on_stream_status), this);
-  g_signal_connect(bus, "message::state-changed",
-                   G_CALLBACK(on_message_state_changed), this);
-  g_signal_connect(bus, "message::latency", G_CALLBACK(on_message_latency),
-                   this);
-  g_signal_connect(bus, "message::element", G_CALLBACK(on_message_element),
-                   this);
+  g_signal_connect(bus, "sync-message::stream-status", GCallback(on_stream_status), this);
+  g_signal_connect(bus, "message::state-changed", G_CALLBACK(on_message_state_changed), this);
+  g_signal_connect(bus, "message::latency", G_CALLBACK(on_message_latency), this);
+  g_signal_connect(bus, "message::element", G_CALLBACK(on_message_element), this);
 
   // creating elements common to all pipelines
 
@@ -297,11 +261,10 @@ PipelineBase::PipelineBase(const std::string& tag, PulseManager* pulse_manager)
 
   // building the pipeline
 
-  gst_bin_add_many(GST_BIN(pipeline), source, queue_src, capsfilter, src_type,
-                   adapter, effects_bin, spectrum_bin, sink, nullptr);
+  gst_bin_add_many(GST_BIN(pipeline), source, queue_src, capsfilter, src_type, adapter, effects_bin, spectrum_bin, sink,
+                   nullptr);
 
-  gst_element_link_many(source, queue_src, capsfilter, src_type, adapter,
-                        effects_bin, spectrum_bin, sink, nullptr);
+  gst_element_link_many(source, queue_src, capsfilter, src_type, adapter, effects_bin, spectrum_bin, sink, nullptr);
 
   // initializing properties
 
@@ -324,17 +287,13 @@ PipelineBase::PipelineBase(const std::string& tag, PulseManager* pulse_manager)
   g_object_set(spectrum, "bands", spectrum_nbands, nullptr);
   g_object_set(spectrum, "threshold", spectrum_threshold, nullptr);
 
-  g_signal_connect(src_type, "have-type", G_CALLBACK(on_src_type_changed),
-                   this);
-  g_signal_connect(source, "notify::buffer-time", G_CALLBACK(on_buffer_changed),
-                   this);
-  g_signal_connect(source, "notify::latency-time",
-                   G_CALLBACK(on_latency_changed), this);
+  g_signal_connect(src_type, "have-type", G_CALLBACK(on_src_type_changed), this);
+  g_signal_connect(source, "notify::buffer-time", G_CALLBACK(on_buffer_changed), this);
+  g_signal_connect(source, "notify::latency-time", G_CALLBACK(on_latency_changed), this);
 
   auto sinkpad = gst_element_get_static_pad(sink, "sink");
 
-  gst_pad_add_probe(sinkpad, GST_PAD_PROBE_TYPE_EVENT_UPSTREAM, on_sink_event,
-                    this, nullptr);
+  gst_pad_add_probe(sinkpad, GST_PAD_PROBE_TYPE_EVENT_UPSTREAM, on_sink_event, this, nullptr);
 
   g_object_unref(sinkpad);
 }
@@ -363,8 +322,7 @@ PipelineBase::~PipelineBase() {
 void PipelineBase::set_caps(const uint& sampling_rate) {
   current_rate = sampling_rate;
 
-  auto caps_str = "audio/x-raw,format=F32LE,channels=2,rate=" +
-                  std::to_string(sampling_rate);
+  auto caps_str = "audio/x-raw,format=F32LE,channels=2,rate=" + std::to_string(sampling_rate);
 
   auto caps = gst_caps_from_string(caps_str.c_str());
 
@@ -378,8 +336,7 @@ void PipelineBase::init_spectrum_bin() {
   spectrum_identity_in = gst_element_factory_make("identity", nullptr);
   spectrum_identity_out = gst_element_factory_make("identity", nullptr);
 
-  gst_bin_add_many(GST_BIN(spectrum_bin), spectrum_identity_in,
-                   spectrum_identity_out, nullptr);
+  gst_bin_add_many(GST_BIN(spectrum_bin), spectrum_identity_in, spectrum_identity_out, nullptr);
 
   gst_element_link(spectrum_identity_in, spectrum_identity_out);
 
@@ -467,8 +424,7 @@ void PipelineBase::set_null_pipeline() {
     playing = false;
   }
 
-  util::debug(log_tag + gst_element_state_get_name(state) + " -> " +
-              gst_element_state_get_name(pending));
+  util::debug(log_tag + gst_element_state_get_name(state) + " -> " + gst_element_state_get_name(pending));
 }
 
 bool PipelineBase::apps_want_to_play() {
@@ -506,9 +462,7 @@ void PipelineBase::update_pipeline_state() {
           gst_element_get_state(pipeline, &s, &p, state_check_timeout);
 
           if (s == GST_STATE_PLAYING && !apps_want_to_play()) {
-            util::debug(
-                log_tag +
-                "No app wants to play audio. We will pause our pipeline.");
+            util::debug(log_tag + "No app wants to play audio. We will pause our pipeline.");
 
             gst_element_set_state(pipeline, GST_STATE_PAUSED);
           }
@@ -552,16 +506,15 @@ void PipelineBase::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
 }
 
 void PipelineBase::on_app_changed(const std::shared_ptr<AppInfo>& app_info) {
-  std::replace_copy_if(apps_list.begin(), apps_list.end(), apps_list.begin(),
-                       [=](auto& a) { return a->index == app_info->index; },
-                       move(app_info));
+  std::replace_copy_if(
+      apps_list.begin(), apps_list.end(), apps_list.begin(), [=](auto& a) { return a->index == app_info->index; },
+      move(app_info));
 
   update_pipeline_state();
 }
 
 void PipelineBase::on_app_removed(uint idx) {
-  apps_list.erase(std::remove_if(apps_list.begin(), apps_list.end(),
-                                 [=](auto& a) { return a->index == idx; }),
+  apps_list.erase(std::remove_if(apps_list.begin(), apps_list.end(), [=](auto& a) { return a->index == idx; }),
                   apps_list.end());
 
   update_pipeline_state();
@@ -579,8 +532,7 @@ void PipelineBase::on_sink_changed(std::shared_ptr<mySinkInfo> sink_info) {
   }
 }
 
-void PipelineBase::on_source_changed(
-    std::shared_ptr<mySourceInfo> source_info) {
+void PipelineBase::on_source_changed(std::shared_ptr<mySourceInfo> source_info) {
   if (source_info->name == "PulseEffects_mic.monitor") {
     if (source_info->rate != current_rate) {
       gst_element_set_state(pipeline, GST_STATE_READY);
@@ -593,8 +545,7 @@ void PipelineBase::on_source_changed(
 }
 
 void PipelineBase::init_spectrum(const uint& sampling_rate) {
-  g_signal_connect(spectrum_settings, "changed::n-points",
-                   G_CALLBACK(on_spectrum_n_points_changed), this);
+  g_signal_connect(spectrum_settings, "changed::n-points", G_CALLBACK(on_spectrum_n_points_changed), this);
 
   spectrum_freqs.clear();
 
@@ -614,8 +565,7 @@ void PipelineBase::init_spectrum(const uint& sampling_rate) {
 
   auto npoints = g_settings_get_int(spectrum_settings, "n-points");
 
-  spectrum_x_axis = util::logspace(log10(min_spectrum_freq),
-                                   log10(max_spectrum_freq), npoints);
+  spectrum_x_axis = util::logspace(log10(min_spectrum_freq), log10(max_spectrum_freq), npoints);
 
   spectrum_mag.resize(npoints);
 
@@ -644,8 +594,7 @@ void PipelineBase::enable_spectrum() {
 
           gst_bin_add(GST_BIN(l->spectrum_bin), l->spectrum);
 
-          gst_element_link_many(l->spectrum_identity_in, l->spectrum,
-                                l->spectrum_identity_out, nullptr);
+          gst_element_link_many(l->spectrum_identity_in, l->spectrum, l->spectrum_identity_out, nullptr);
 
           gst_element_sync_state_with_parent(l->spectrum);
 
@@ -678,8 +627,7 @@ void PipelineBase::disable_spectrum() {
         if (plugin) {
           gst_element_set_state(l->spectrum, GST_STATE_NULL);
 
-          gst_element_unlink_many(l->spectrum_identity_in, l->spectrum,
-                                  l->spectrum_identity_out, nullptr);
+          gst_element_unlink_many(l->spectrum_identity_in, l->spectrum, l->spectrum_identity_out, nullptr);
 
           gst_bin_remove(GST_BIN(l->spectrum_bin), l->spectrum);
 
@@ -706,8 +654,7 @@ std::array<double, 2> PipelineBase::get_peak(GstMessage* message) {
 
   const GstStructure* s = gst_message_get_structure(message);
 
-  auto gpeak =
-      (GValueArray*)g_value_get_boxed(gst_structure_get_value(s, "peak"));
+  auto gpeak = (GValueArray*)g_value_get_boxed(gst_structure_get_value(s, "peak"));
 
   if (gpeak != nullptr) {
     if (gpeak->n_values == 2) {
@@ -721,13 +668,11 @@ std::array<double, 2> PipelineBase::get_peak(GstMessage* message) {
   return peak;
 }
 
-GstElement* PipelineBase::get_required_plugin(const gchar* factoryname,
-                                              const gchar* name) {
+GstElement* PipelineBase::get_required_plugin(const gchar* factoryname, const gchar* name) {
   GstElement* plugin = gst_element_factory_make(factoryname, name);
 
   if (!plugin)
-    throw std::runtime_error(
-        log_tag + std::string("Failed to get required plugin: ") + factoryname);
+    throw std::runtime_error(log_tag + std::string("Failed to get required plugin: ") + factoryname);
 
   return plugin;
 }

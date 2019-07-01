@@ -89,14 +89,11 @@ void AppInfoUi::init_widgets() {
 }
 
 void AppInfoUi::connect_signals() {
-  enable_connection = enable->signal_state_set().connect(
-      sigc::mem_fun(*this, &AppInfoUi::on_enable_app), false);
+  enable_connection = enable->signal_state_set().connect(sigc::mem_fun(*this, &AppInfoUi::on_enable_app), false);
 
-  volume_connection = volume->signal_value_changed().connect(
-      sigc::mem_fun(*this, &AppInfoUi::on_volume_changed));
+  volume_connection = volume->signal_value_changed().connect(sigc::mem_fun(*this, &AppInfoUi::on_volume_changed));
 
-  mute_connection =
-      mute->signal_toggled().connect(sigc::mem_fun(*this, &AppInfoUi::on_mute));
+  mute_connection = mute->signal_toggled().connect(sigc::mem_fun(*this, &AppInfoUi::on_mute));
 }
 
 bool AppInfoUi::on_enable_app(bool state) {
@@ -110,8 +107,7 @@ bool AppInfoUi::on_enable_app(bool state) {
     if (app_info->app_type == "sink_input") {
       pm->remove_sink_input_from_pulseeffects(app_info->name, app_info->index);
     } else {
-      pm->remove_source_output_from_pulseeffects(app_info->name,
-                                                 app_info->index);
+      pm->remove_source_output_from_pulseeffects(app_info->name, app_info->index);
     }
   }
 
@@ -122,11 +118,9 @@ void AppInfoUi::on_volume_changed() {
   auto value = volume->get_value();
 
   if (app_info->app_type == "sink_input") {
-    pm->set_sink_input_volume(app_info->name, app_info->index,
-                              app_info->channels, value);
+    pm->set_sink_input_volume(app_info->name, app_info->index, app_info->channels, value);
   } else {
-    pm->set_source_output_volume(app_info->name, app_info->index,
-                                 app_info->channels, value);
+    pm->set_source_output_volume(app_info->name, app_info->index, app_info->channels, value);
   }
 }
 
@@ -134,13 +128,11 @@ void AppInfoUi::on_mute() {
   bool state = mute->get_active();
 
   if (state) {
-    mute_icon->set_from_icon_name("audio-volume-muted-symbolic",
-                                  Gtk::ICON_SIZE_BUTTON);
+    mute_icon->set_from_icon_name("audio-volume-muted-symbolic", Gtk::ICON_SIZE_BUTTON);
 
     volume->set_sensitive(false);
   } else {
-    mute_icon->set_from_icon_name("audio-volume-high-symbolic",
-                                  Gtk::ICON_SIZE_BUTTON);
+    mute_icon->set_from_icon_name("audio-volume-high-symbolic", Gtk::ICON_SIZE_BUTTON);
 
     volume->set_sensitive(true);
   }

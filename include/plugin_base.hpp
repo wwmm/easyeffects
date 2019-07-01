@@ -10,14 +10,11 @@
 
 class PluginBase {
  public:
-  PluginBase(const std::string& tag,
-             const std::string& plugin_name,
-             const std::string& schema);
+  PluginBase(const std::string& tag, const std::string& plugin_name, const std::string& schema);
   virtual ~PluginBase();
 
   std::string log_tag, name;
-  GstElement *plugin = nullptr, *bin = nullptr, *identity_in = nullptr,
-             *identity_out = nullptr;
+  GstElement *plugin = nullptr, *bin = nullptr, *identity_in = nullptr, *identity_out = nullptr;
 
   bool plugin_is_installed = false;
 

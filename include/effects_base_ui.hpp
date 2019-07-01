@@ -53,81 +53,76 @@ class EffectsBaseUi {
 
     listTargets.push_back(entry);
 
-    eventBox->drag_source_set(listTargets, Gdk::MODIFIER_MASK,
-                              Gdk::ACTION_MOVE);
+    eventBox->drag_source_set(listTargets, Gdk::MODIFIER_MASK, Gdk::ACTION_MOVE);
 
-    eventBox->drag_dest_set(listTargets, Gtk::DEST_DEFAULT_ALL,
-                            Gdk::ACTION_MOVE);
+    eventBox->drag_dest_set(listTargets, Gtk::DEST_DEFAULT_ALL, Gdk::ACTION_MOVE);
 
     eventBox->signal_drag_data_get().connect(
-        [=](const Glib::RefPtr<Gdk::DragContext>& context,
-            Gtk::SelectionData& selection_data, guint info, guint time) {
+        [=](const Glib::RefPtr<Gdk::DragContext>& context, Gtk::SelectionData& selection_data, guint info, guint time) {
           selection_data.set(selection_data.get_target(), p->name);
         });
 
-    eventBox->signal_drag_data_received().connect(
-        [=](const Glib::RefPtr<Gdk::DragContext>& context, int x, int y,
-            const Gtk::SelectionData& selection_data, guint info, guint time) {
-          const int length = selection_data.get_length();
+    eventBox->signal_drag_data_received().connect([=](const Glib::RefPtr<Gdk::DragContext>& context, int x, int y,
+                                                      const Gtk::SelectionData& selection_data, guint info,
+                                                      guint time) {
+      const int length = selection_data.get_length();
 
-          if ((length >= 0) && (selection_data.get_format() == 8)) {
-            auto src = selection_data.get_data_as_string();
-            auto dst = p->name;
+      if ((length >= 0) && (selection_data.get_format() == 8)) {
+        auto src = selection_data.get_data_as_string();
+        auto dst = p->name;
 
-            if (src != dst) {
-              auto order = Glib::Variant<std::vector<std::string>>();
+        if (src != dst) {
+          auto order = Glib::Variant<std::vector<std::string>>();
 
-              settings->get_value("plugins", order);
+          settings->get_value("plugins", order);
 
-              auto vorder = order.get();
+          auto vorder = order.get();
 
-              auto r1 = std::find(std::begin(vorder), std::end(vorder), src);
+          auto r1 = std::find(std::begin(vorder), std::end(vorder), src);
 
-              if (r1 != std::end(vorder)) {
-                // for (auto v : vorder) {
-                //   std::cout << v << std::endl;
-                // }
+          if (r1 != std::end(vorder)) {
+            // for (auto v : vorder) {
+            //   std::cout << v << std::endl;
+            // }
 
-                vorder.erase(r1);
+            vorder.erase(r1);
 
-                auto r2 = std::find(std::begin(vorder), std::end(vorder), dst);
+            auto r2 = std::find(std::begin(vorder), std::end(vorder), dst);
 
-                vorder.insert(r2, src);
+            vorder.insert(r2, src);
 
-                settings->set_string_array("plugins", vorder);
+            settings->set_string_array("plugins", vorder);
 
-                // std::cout << "" << std::endl;
+            // std::cout << "" << std::endl;
 
-                // for (auto v : vorder) {
-                //   std::cout << v << std::endl;
-                // }
-              }
-            }
+            // for (auto v : vorder) {
+            //   std::cout << v << std::endl;
+            // }
           }
+        }
+      }
 
-          context->drag_finish(false, false, time);
-        });
+      context->drag_finish(false, false, time);
+    });
 
-    eventBox->signal_drag_begin().connect(
-        [=](const Glib::RefPtr<Gdk::DragContext>& context) {
-          auto w = row->get_allocated_width();
-          auto h = row->get_allocated_height();
+    eventBox->signal_drag_begin().connect([=](const Glib::RefPtr<Gdk::DragContext>& context) {
+      auto w = row->get_allocated_width();
+      auto h = row->get_allocated_height();
 
-          auto surface =
-              Cairo::ImageSurface::create(Cairo::FORMAT_ARGB32, w, h);
+      auto surface = Cairo::ImageSurface::create(Cairo::FORMAT_ARGB32, w, h);
 
-          auto ctx = Cairo::Context::create(surface);
+      auto ctx = Cairo::Context::create(surface);
 
-          auto styleContext = row->get_style_context();
+      auto styleContext = row->get_style_context();
 
-          styleContext->add_class("drag-listboxrow-icon");
+      styleContext->add_class("drag-listboxrow-icon");
 
-          gtk_widget_draw(GTK_WIDGET(row->gobj()), ctx->cobj());
+      gtk_widget_draw(GTK_WIDGET(row->gobj()), ctx->cobj());
 
-          styleContext->remove_class("drag-listboxrow-icon");
+      styleContext->remove_class("drag-listboxrow-icon");
 
-          context->set_icon(surface);
-        });
+      context->set_icon(surface);
+    });
 
     listbox->add(*row);
   }

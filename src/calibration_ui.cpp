@@ -2,8 +2,7 @@
 #include <glibmm/i18n.h>
 #include "util.hpp"
 
-CalibrationUi::CalibrationUi(BaseObjectType* cobject,
-                             const Glib::RefPtr<Gtk::Builder>& refBuilder)
+CalibrationUi::CalibrationUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& refBuilder)
     : Gtk::Window(cobject), builder(refBuilder) {
   // loading glade widgets
 
@@ -11,39 +10,31 @@ CalibrationUi::CalibrationUi(BaseObjectType* cobject,
   builder->get_widget("spectrum", spectrum);
   builder->get_widget("headerbar", headerbar);
 
-  spectrum->signal_draw().connect(
-      sigc::mem_fun(*this, &CalibrationUi::on_spectrum_draw));
-  spectrum->signal_enter_notify_event().connect(
-      sigc::mem_fun(*this, &CalibrationUi::on_spectrum_enter_notify_event));
-  spectrum->signal_leave_notify_event().connect(
-      sigc::mem_fun(*this, &CalibrationUi::on_spectrum_leave_notify_event));
-  spectrum->signal_motion_notify_event().connect(
-      sigc::mem_fun(*this, &CalibrationUi::on_spectrum_motion_notify_event));
+  spectrum->signal_draw().connect(sigc::mem_fun(*this, &CalibrationUi::on_spectrum_draw));
+  spectrum->signal_enter_notify_event().connect(sigc::mem_fun(*this, &CalibrationUi::on_spectrum_enter_notify_event));
+  spectrum->signal_leave_notify_event().connect(sigc::mem_fun(*this, &CalibrationUi::on_spectrum_leave_notify_event));
+  spectrum->signal_motion_notify_event().connect(sigc::mem_fun(*this, &CalibrationUi::on_spectrum_motion_notify_event));
 
-  stack->connect_property_changed(
-      "visible-child",
-      sigc::mem_fun(*this, &CalibrationUi::on_stack_visible_child_changed));
+  stack->connect_property_changed("visible-child",
+                                  sigc::mem_fun(*this, &CalibrationUi::on_stack_visible_child_changed));
 
-  auto builder_signals = Gtk::Builder::create_from_resource(
-      "/com/github/wwmm/pulseeffects/ui/calibration_signals.glade");
-  auto builder_mic = Gtk::Builder::create_from_resource(
-      "/com/github/wwmm/pulseeffects/ui/calibration_mic.glade");
+  auto builder_signals =
+      Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/calibration_signals.glade");
+  auto builder_mic = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/calibration_mic.glade");
 
   builder_signals->get_widget_derived("widgets_grid", calibration_signals_ui);
   builder_mic->get_widget_derived("widgets_grid", calibration_mic_ui);
 
   stack->add(*calibration_signals_ui, "signals");
-  stack->child_property_icon_name(*calibration_signals_ui)
-      .set_value("pulseeffects-sine-symbolic");
+  stack->child_property_icon_name(*calibration_signals_ui).set_value("pulseeffects-sine-symbolic");
 
   stack->add(*calibration_mic_ui, "mic");
-  stack->child_property_icon_name(*calibration_mic_ui)
-      .set_value("audio-input-microphone-symbolic");
+  stack->child_property_icon_name(*calibration_mic_ui).set_value("audio-input-microphone-symbolic");
 
   // default spectrum connection
 
-  spectrum_connection = calibration_signals_ui->cs->new_spectrum.connect(
-      sigc::mem_fun(*this, &CalibrationUi::on_new_spectrum));
+  spectrum_connection =
+      calibration_signals_ui->cs->new_spectrum.connect(sigc::mem_fun(*this, &CalibrationUi::on_new_spectrum));
 
   headerbar->set_subtitle(_("Test Signals"));
 }
@@ -53,8 +44,7 @@ CalibrationUi::~CalibrationUi() {
 }
 
 CalibrationUi* CalibrationUi::create() {
-  auto builder = Gtk::Builder::create_from_resource(
-      "/com/github/wwmm/pulseeffects/ui/calibration.glade");
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/calibration.glade");
 
   CalibrationUi* window = nullptr;
 
@@ -103,8 +93,7 @@ bool CalibrationUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
 
     style_ctx->lookup_color("theme_selected_bg_color", color);
 
-    ctx->set_source_rgba(color.get_red(), color.get_green(), color.get_blue(),
-                         1.0);
+    ctx->set_source_rgba(color.get_red(), color.get_green(), color.get_blue(), 1.0);
 
     ctx->set_line_width(1.5);
     ctx->stroke();
@@ -174,15 +163,15 @@ void CalibrationUi::on_stack_visible_child_changed() {
 
     headerbar->set_subtitle(_("Test Signals"));
 
-    spectrum_connection = calibration_signals_ui->cs->new_spectrum.connect(
-        sigc::mem_fun(*this, &CalibrationUi::on_new_spectrum));
+    spectrum_connection =
+        calibration_signals_ui->cs->new_spectrum.connect(sigc::mem_fun(*this, &CalibrationUi::on_new_spectrum));
   } else if (name == std::string("mic")) {
     spectrum_connection.disconnect();
 
     headerbar->set_subtitle(_("Calibration Microphone"));
 
-    spectrum_connection = calibration_mic_ui->cm->new_spectrum.connect(
-        sigc::mem_fun(*this, &CalibrationUi::on_new_spectrum));
+    spectrum_connection =
+        calibration_mic_ui->cm->new_spectrum.connect(sigc::mem_fun(*this, &CalibrationUi::on_new_spectrum));
   }
 
   spectrum_mag.clear();

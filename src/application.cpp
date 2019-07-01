@@ -8,29 +8,22 @@
 #include "pulse_manager.hpp"
 #include "util.hpp"
 
-Application::Application()
-    : Gtk::Application("com.github.wwmm.pulseeffects",
-                       Gio::APPLICATION_HANDLES_COMMAND_LINE) {
+Application::Application() : Gtk::Application("com.github.wwmm.pulseeffects", Gio::APPLICATION_HANDLES_COMMAND_LINE) {
   Glib::set_application_name("PulseEffects");
   Glib::setenv("PULSE_PROP_application.id", "com.github.wwmm.pulseeffects");
   Glib::setenv("PULSE_PROP_application.icon_name", "pulseeffects");
 
-  signal_handle_local_options().connect(
-      sigc::mem_fun(*this, &Application::on_handle_local_options), false);
+  signal_handle_local_options().connect(sigc::mem_fun(*this, &Application::on_handle_local_options), false);
 
-  add_main_option_entry(
-      Gio::Application::OPTION_TYPE_BOOL, "quit", 'q',
-      _("Quit PulseEffects. Useful when running in service mode."));
+  add_main_option_entry(Gio::Application::OPTION_TYPE_BOOL, "quit", 'q',
+                        _("Quit PulseEffects. Useful when running in service mode."));
 
-  add_main_option_entry(Gio::Application::OPTION_TYPE_BOOL, "presets", 'p',
-                        _("Show available presets."));
+  add_main_option_entry(Gio::Application::OPTION_TYPE_BOOL, "presets", 'p', _("Show available presets."));
 
-  add_main_option_entry(Gio::Application::OPTION_TYPE_STRING, "load-preset",
-                        'l',
+  add_main_option_entry(Gio::Application::OPTION_TYPE_STRING, "load-preset", 'l',
                         _("Load a preset. Example: pulseeffects -l music"));
 
-  add_main_option_entry(Gio::Application::OPTION_TYPE_BOOL, "reset", 'r',
-                        _("Reset PulseEffects."));
+  add_main_option_entry(Gio::Application::OPTION_TYPE_BOOL, "reset", 'r', _("Reset PulseEffects."));
 }
 
 Application::~Application() {
@@ -41,8 +34,7 @@ Glib::RefPtr<Application> Application::create() {
   return Glib::RefPtr<Application>(new Application());
 }
 
-int Application::on_command_line(
-    const Glib::RefPtr<Gio::ApplicationCommandLine>& command_line) {
+int Application::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine>& command_line) {
   auto options = command_line->get_options_dict();
 
   if (options->contains("quit")) {
@@ -68,8 +60,6 @@ int Application::on_command_line(
   } else if (options->contains("reset")) {
     settings->reset("");
 
-    settings->set_string("version", std::string(VERSION));
-
     util::info(log_tag + "All settings were reset");
   } else {
     activate();
@@ -81,6 +71,8 @@ int Application::on_command_line(
 void Application::on_startup() {
   Gtk::Application::on_startup();
 
+  util::debug(log_tag + "PE version: " + std::string(VERSION));
+
   settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
 
   if (get_flags() & Gio::ApplicationFlags::APPLICATION_IS_SERVICE) {
@@ -88,7 +80,6 @@ void Application::on_startup() {
   }
 
   create_actions();
-  check_version();
 
   pm = std::make_unique<PulseManager>();
   sie = std::make_unique<SinkInputEffects>(pm.get());
@@ -105,17 +96,24 @@ void Application::on_startup() {
       sie->set_output_sink_name(name);
       soe->webrtc->set_probe_src_device(name + ".monitor");
 
-      auto info = pm->get_sink_info(name);
-      auto port = info->active_port;
-      std::string dev_name;
+      Glib::signal_timeout().connect_seconds_once(
+          [=]() {
+            auto info = pm->get_sink_info(pm->server_info.default_sink_name);
 
-      if (port != "null") {
-        dev_name = name + ":" + port;
-      } else {
-        dev_name = name;
-      }
+            if (info != nullptr) {
+              auto port = info->active_port;
+              std::string dev_name;
 
-      presets_manager->autoload(PresetType::output, dev_name);
+              if (port != "null") {
+                dev_name = name + ":" + port;
+              } else {
+                dev_name = name;
+              }
+
+              presets_manager->autoload(PresetType::output, dev_name);
+            }
+          },
+          3);
     }
   });
 
@@ -125,17 +123,24 @@ void Application::on_startup() {
     if (name != "") {
       soe->set_source_monitor_name(name);
 
-      auto info = pm->get_source_info(name);
-      auto port = info->active_port;
-      std::string dev_name;
+      Glib::signal_timeout().connect_seconds_once(
+          [=]() {
+            auto info = pm->get_source_info(pm->server_info.default_source_name);
 
-      if (port != "null") {
-        dev_name = name + ":" + port;
-      } else {
-        dev_name = name;
-      }
+            if (info != nullptr) {
+              auto port = info->active_port;
+              std::string dev_name;
 
-      presets_manager->autoload(PresetType::input, dev_name);
+              if (port != "null") {
+                dev_name = name + ":" + port;
+              } else {
+                dev_name = name;
+              }
+
+              presets_manager->autoload(PresetType::input, dev_name);
+            }
+          },
+          3);
     }
   });
 
@@ -185,8 +190,7 @@ void Application::on_activate() {
   }
 }
 
-int Application::on_handle_local_options(
-    const Glib::RefPtr<Glib::VariantDict>& options) {
+int Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>& options) {
   if (!options) {
     std::cerr << G_STRFUNC << ": options is null." << std::endl;
   }
@@ -222,8 +226,7 @@ int Application::on_handle_local_options(
 
 void Application::create_actions() {
   add_action("about", [&]() {
-    auto builder = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/about.glade");
+    auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/about.glade");
 
     auto dialog = (Gtk::Dialog*)builder->get_object("about_dialog").get();
 
@@ -256,26 +259,9 @@ void Application::create_actions() {
      *So we have to use the C api :-(
      */
 
-    if (!gtk_show_uri_on_window(window->gobj(), "help:pulseeffects",
-                                gtk_get_current_event_time(), nullptr)) {
+    if (!gtk_show_uri_on_window(window->gobj(), "help:pulseeffects", gtk_get_current_event_time(), nullptr)) {
       util::warning("Failed to open help!");
     }
-  });
-
-  add_action("resetyes", [&] {
-    util::debug(log_tag + "Resetting configurations");
-
-    settings->reset("");
-
-    settings->set_string("version", std::string(VERSION));
-
-    withdraw_notification("reset");
-  });
-
-  add_action("resetno", [&] {
-    settings->set_string("version", std::string(VERSION));
-
-    withdraw_notification("reset");
   });
 
   add_action("quit", [&] {
@@ -286,21 +272,4 @@ void Application::create_actions() {
 
   set_accel_for_action("app.help", "F1");
   set_accel_for_action("app.quit", "<Ctrl>Q");
-}
-
-void Application::check_version() {
-  util::debug(log_tag + "PE version: " + std::string(VERSION));
-
-  if (settings->get_string("version") != std::string(VERSION)) {
-    auto note = Gio::Notification::create(_("PulseEffects was updated"));
-
-    note->set_body(
-        _("It is recommended to reset its configuration after an "
-          "update. Do you want to do this?"));
-
-    note->add_button(_("Yes"), "app.resetyes");
-    note->add_button(_("No"), "app.resetno");
-
-    send_notification("reset", note);
-  }
 }

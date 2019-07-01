@@ -1,8 +1,6 @@
 #include "delay_preset.hpp"
 
-DelayPreset::DelayPreset()
-    : output_settings(Gio::Settings::create(
-          "com.github.wwmm.pulseeffects.sinkinputs.delay")) {}
+DelayPreset::DelayPreset() : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.delay")) {}
 
 void DelayPreset::save(boost::property_tree::ptree& root,
                        const std::string& section,
@@ -22,26 +20,22 @@ void DelayPreset::load(boost::property_tree::ptree& root,
                        const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".delay.state");
 
-  update_key<double>(root, settings, "input-gain",
-                     section + ".delay.input-gain");
+  update_key<double>(root, settings, "input-gain", section + ".delay.input-gain");
 
-  update_key<double>(root, settings, "output-gain",
-                     section + ".delay.output-gain");
+  update_key<double>(root, settings, "output-gain", section + ".delay.output-gain");
 
   update_key<double>(root, settings, "time-l", section + ".delay.time-l");
 
   update_key<double>(root, settings, "time-r", section + ".delay.time-r");
 }
 
-void DelayPreset::write(PresetType preset_type,
-                        boost::property_tree::ptree& root) {
+void DelayPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     save(root, "output", output_settings);
   }
 }
 
-void DelayPreset::read(PresetType preset_type,
-                       boost::property_tree::ptree& root) {
+void DelayPreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     load(root, "output", output_settings);
   }

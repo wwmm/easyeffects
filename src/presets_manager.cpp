@@ -11,10 +11,8 @@ PresetsManager::PresetsManager()
       output_dir(Glib::get_user_config_dir() + "/PulseEffects/output"),
       autoload_dir(Glib::get_user_config_dir() + "/PulseEffects/autoload"),
       settings(Gio::Settings::create("com.github.wwmm.pulseeffects")),
-      sie_settings(
-          Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs")),
-      soe_settings(
-          Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs")),
+      sie_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs")),
+      soe_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs")),
       limiter(std::make_unique<LimiterPreset>()),
       bass_enhancer(std::make_unique<BassEnhancerPreset>()),
       compressor(std::make_unique<CompressorPreset>()),
@@ -54,13 +52,11 @@ void PresetsManager::create_directory(boost::filesystem::path& path) {
     if (boost::filesystem::create_directories(path)) {
       util::debug(log_tag + "user presets directory created: " + path.string());
     } else {
-      util::warning(log_tag + "failed to create user presets directory: " +
-                    path.string());
+      util::warning(log_tag + "failed to create user presets directory: " + path.string());
     }
 
   } else {
-    util::debug(log_tag +
-                "user presets directory already exists: " + path.string());
+    util::debug(log_tag + "user presets directory already exists: " + path.string());
   }
 }
 
@@ -97,8 +93,7 @@ void PresetsManager::add(PresetType preset_type, const std::string& name) {
   save(preset_type, name);
 }
 
-void PresetsManager::save_blacklist(PresetType preset_type,
-                                    boost::property_tree::ptree& root) {
+void PresetsManager::save_blacklist(PresetType preset_type, boost::property_tree::ptree& root) {
   std::vector<std::string> blacklist;
   boost::property_tree::ptree node_in;
 
@@ -129,8 +124,7 @@ void PresetsManager::save_blacklist(PresetType preset_type,
   }
 }
 
-void PresetsManager::load_blacklist(PresetType preset_type,
-                                    boost::property_tree::ptree& root) {
+void PresetsManager::load_blacklist(PresetType preset_type, boost::property_tree::ptree& root) {
   std::vector<std::string> blacklist;
 
   if (preset_type == PresetType::output) {
@@ -164,8 +158,7 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
   save_blacklist(preset_type, root);
 
   if (preset_type == PresetType::output) {
-    std::vector<std::string> output_plugins =
-        sie_settings->get_string_array("plugins");
+    std::vector<std::string> output_plugins = sie_settings->get_string_array("plugins");
 
     for (auto& p : output_plugins) {
       boost::property_tree::ptree node;
@@ -177,8 +170,7 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
 
     output_file = output_dir / boost::filesystem::path{name + ".json"};
   } else {
-    std::vector<std::string> input_plugins =
-        soe_settings->get_string_array("plugins");
+    std::vector<std::string> input_plugins = soe_settings->get_string_array("plugins");
 
     for (auto& p : input_plugins) {
       boost::property_tree::ptree node;
@@ -261,8 +253,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
       }
 
       for (auto v : aux.get()) {
-        if (std::find(output_plugins.begin(), output_plugins.end(), v) ==
-            output_plugins.end()) {
+        if (std::find(output_plugins.begin(), output_plugins.end(), v) == output_plugins.end()) {
           output_plugins.push_back(v);
         }
       }
@@ -295,8 +286,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
       }
 
       for (auto v : aux.get()) {
-        if (std::find(input_plugins.begin(), input_plugins.end(), v) ==
-            input_plugins.end()) {
+        if (std::find(input_plugins.begin(), input_plugins.end(), v) == input_plugins.end()) {
           input_plugins.push_back(v);
         }
       }
@@ -337,8 +327,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
   util::debug(log_tag + "loaded preset: " + input_file.string());
 }
 
-void PresetsManager::import(PresetType preset_type,
-                            const std::string& file_path) {
+void PresetsManager::import(PresetType preset_type, const std::string& file_path) {
   boost::filesystem::path p{file_path};
 
   if (boost::filesystem::is_regular_file(p)) {
@@ -351,8 +340,7 @@ void PresetsManager::import(PresetType preset_type,
         out_path = input_dir / p.filename();
       }
 
-      boost::filesystem::copy_file(
-          p, out_path, boost::filesystem::copy_option::overwrite_if_exists);
+      boost::filesystem::copy_file(p, out_path, boost::filesystem::copy_option::overwrite_if_exists);
 
       util::debug(log_tag + "imported preset to: " + out_path.string());
     }
@@ -361,8 +349,7 @@ void PresetsManager::import(PresetType preset_type,
   }
 }
 
-void PresetsManager::add_autoload(const std::string& device,
-                                  const std::string& name) {
+void PresetsManager::add_autoload(const std::string& device, const std::string& name) {
   boost::property_tree::ptree root;
   boost::filesystem::path output_file;
 
@@ -375,8 +362,7 @@ void PresetsManager::add_autoload(const std::string& device,
   util::debug(log_tag + "added autoload preset file: " + output_file.string());
 }
 
-void PresetsManager::remove_autoload(const std::string& device,
-                                     const std::string& name) {
+void PresetsManager::remove_autoload(const std::string& device, const std::string& name) {
   auto input_file = autoload_dir / boost::filesystem::path{device + ".json"};
 
   if (boost::filesystem::is_regular_file(input_file)) {
@@ -408,13 +394,11 @@ std::string PresetsManager::find_autoload(const std::string& device) {
   }
 }
 
-void PresetsManager::autoload(PresetType preset_type,
-                              const std::string& device) {
+void PresetsManager::autoload(PresetType preset_type, const std::string& device) {
   auto name = find_autoload(device);
 
   if (name != "") {
-    util::debug(log_tag + "autoloading preset " + name + " for device " +
-                device);
+    util::debug(log_tag + "autoloading preset " + name + " for device " + device);
 
     load(preset_type, name);
 
@@ -422,8 +406,7 @@ void PresetsManager::autoload(PresetType preset_type,
   }
 }
 
-bool PresetsManager::preset_file_exists(PresetType preset_type,
-                                        const std::string& name) {
+bool PresetsManager::preset_file_exists(PresetType preset_type, const std::string& name) {
   boost::filesystem::path input_file;
 
   if (preset_type == PresetType::output) {

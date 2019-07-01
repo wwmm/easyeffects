@@ -6,49 +6,35 @@
 GST_DEBUG_CATEGORY_STATIC(peadapter_debug);
 #define GST_CAT_DEFAULT (peadapter_debug)
 
-static void gst_peadapter_set_property(GObject* object,
-                                       guint prop_id,
-                                       const GValue* value,
-                                       GParamSpec* pspec);
+static void gst_peadapter_set_property(GObject* object, guint prop_id, const GValue* value, GParamSpec* pspec);
 
-static void gst_peadapter_get_property(GObject* object,
-                                       guint prop_id,
-                                       GValue* value,
-                                       GParamSpec* pspec);
+static void gst_peadapter_get_property(GObject* object, guint prop_id, GValue* value, GParamSpec* pspec);
 
-static GstFlowReturn gst_peadapter_chain(GstPad* pad,
-                                         GstObject* parent,
-                                         GstBuffer* buffer);
+static GstFlowReturn gst_peadapter_chain(GstPad* pad, GstObject* parent, GstBuffer* buffer);
 
-static gboolean gst_peadapter_sink_event(GstPad* pad,
-                                         GstObject* parent,
-                                         GstEvent* event);
+static gboolean gst_peadapter_sink_event(GstPad* pad, GstObject* parent, GstEvent* event);
 
-static GstStateChangeReturn gst_peadapter_change_state(
-    GstElement* element,
-    GstStateChange transition);
+static GstStateChangeReturn gst_peadapter_change_state(GstElement* element, GstStateChange transition);
 
-static gboolean gst_peadapter_src_query(GstPad* pad,
-                                        GstObject* parent,
-                                        GstQuery* query);
+static gboolean gst_peadapter_src_query(GstPad* pad, GstObject* parent, GstQuery* query);
 
 static void gst_peadapter_finalize(GObject* object);
 
 static GstFlowReturn gst_peadapter_process(GstPeadapter* peadapter);
 
-static GstStaticPadTemplate sinktemplate = GST_STATIC_PAD_TEMPLATE(
-    "sink",
-    GST_PAD_SINK,
-    GST_PAD_ALWAYS,
-    GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=[1,max],"
-                    "channels=2,layout=interleaved"));
+static GstStaticPadTemplate sinktemplate =
+    GST_STATIC_PAD_TEMPLATE("sink",
+                            GST_PAD_SINK,
+                            GST_PAD_ALWAYS,
+                            GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=[1,max],"
+                                            "channels=2,layout=interleaved"));
 
-static GstStaticPadTemplate srctemplate = GST_STATIC_PAD_TEMPLATE(
-    "src",
-    GST_PAD_SRC,
-    GST_PAD_ALWAYS,
-    GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=[1,max],"
-                    "channels=2,layout=interleaved"));
+static GstStaticPadTemplate srctemplate =
+    GST_STATIC_PAD_TEMPLATE("src",
+                            GST_PAD_SRC,
+                            GST_PAD_ALWAYS,
+                            GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=[1,max],"
+                                            "channels=2,layout=interleaved"));
 
 enum { PROP_BLOCKSIZE = 1 };
 
@@ -68,14 +54,10 @@ static GType gst_peadapter_blocksize_get_type(void) {
 
   if (gtype == 0) {
     static const GEnumValue values[] = {
-        {BLOCKSIZE_64, "Block size 64", "64"},
-        {BLOCKSIZE_128, "Block size 128", "128"},
-        {BLOCKSIZE_256, "Block size 256", "256"},
-        {BLOCKSIZE_512, "Block size 512 (default)", "512"},
-        {BLOCKSIZE_1024, "Block size 1024", "1024"},
-        {BLOCKSIZE_2048, "Block size 2048", "2048"},
-        {BLOCKSIZE_4096, "Block size 4096", "4096"},
-        {0, NULL, NULL}};
+        {BLOCKSIZE_64, "Block size 64", "64"},       {BLOCKSIZE_128, "Block size 128", "128"},
+        {BLOCKSIZE_256, "Block size 256", "256"},    {BLOCKSIZE_512, "Block size 512 (default)", "512"},
+        {BLOCKSIZE_1024, "Block size 1024", "1024"}, {BLOCKSIZE_2048, "Block size 2048", "2048"},
+        {BLOCKSIZE_4096, "Block size 4096", "4096"}, {0, NULL, NULL}};
 
     gtype = g_enum_register_static("GstPeadapterBlockSize", values);
   }
@@ -84,11 +66,10 @@ static GType gst_peadapter_blocksize_get_type(void) {
 }
 
 #define gst_peadapter_parent_class parent_class
-G_DEFINE_TYPE_WITH_CODE(
-    GstPeadapter,
-    gst_peadapter,
-    GST_TYPE_ELEMENT,
-    GST_DEBUG_CATEGORY_INIT(peadapter_debug, "peadapter", 0, "Peadapter"));
+G_DEFINE_TYPE_WITH_CODE(GstPeadapter,
+                        gst_peadapter,
+                        GST_TYPE_ELEMENT,
+                        GST_DEBUG_CATEGORY_INIT(peadapter_debug, "peadapter", 0, "Peadapter"));
 
 static void gst_peadapter_class_init(GstPeadapterClass* klass) {
   GObjectClass* gobject_class;
@@ -107,18 +88,15 @@ static void gst_peadapter_class_init(GstPeadapterClass* klass) {
 
   gobject_class->finalize = gst_peadapter_finalize;
 
-  gst_element_class_set_static_metadata(
-      gstelement_class, "Peadapter element", "Filter",
-      "Gives output buffers sizes that are a power of 2",
-      "Wellington <wellingtonwallace@gmail.com>");
+  gst_element_class_set_static_metadata(gstelement_class, "Peadapter element", "Filter",
+                                        "Gives output buffers sizes that are a power of 2",
+                                        "Wellington <wellingtonwallace@gmail.com>");
 
   g_object_class_install_property(
       gobject_class, PROP_BLOCKSIZE,
-      g_param_spec_enum("blocksize", "Block Size",
-                        "Number of Samples in the Audio Buffer",
+      g_param_spec_enum("blocksize", "Block Size", "Number of Samples in the Audio Buffer",
                         GST_TYPE_PEADAPTER_BLOCKSIZE, BLOCKSIZE_512,
-                        static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                                 G_PARAM_STATIC_STRINGS)));
+                        static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
 }
 
 static void gst_peadapter_init(GstPeadapter* peadapter) {
@@ -140,28 +118,21 @@ static void gst_peadapter_init(GstPeadapter* peadapter) {
 
   peadapter->sinkpad = gst_pad_new_from_static_template(&sinktemplate, "sink");
 
-  gst_pad_set_chain_function(peadapter->sinkpad,
-                             GST_DEBUG_FUNCPTR(gst_peadapter_chain));
+  gst_pad_set_chain_function(peadapter->sinkpad, GST_DEBUG_FUNCPTR(gst_peadapter_chain));
 
-  gst_pad_set_event_function(peadapter->sinkpad,
-                             GST_DEBUG_FUNCPTR(gst_peadapter_sink_event));
+  gst_pad_set_event_function(peadapter->sinkpad, GST_DEBUG_FUNCPTR(gst_peadapter_sink_event));
 
   gst_element_add_pad(GST_ELEMENT(peadapter), peadapter->sinkpad);
 }
 
-static void gst_peadapter_set_property(GObject* object,
-                                       guint prop_id,
-                                       const GValue* value,
-                                       GParamSpec* pspec) {
+static void gst_peadapter_set_property(GObject* object, guint prop_id, const GValue* value, GParamSpec* pspec) {
   GstPeadapter* peadapter = GST_PEADAPTER(object);
 
   switch (prop_id) {
     case PROP_BLOCKSIZE:
       peadapter->blocksize = g_value_get_enum(value);
 
-      gst_element_post_message(
-          GST_ELEMENT_CAST(peadapter),
-          gst_message_new_latency(GST_OBJECT_CAST(peadapter)));
+      gst_element_post_message(GST_ELEMENT_CAST(peadapter), gst_message_new_latency(GST_OBJECT_CAST(peadapter)));
 
       break;
     default:
@@ -170,10 +141,7 @@ static void gst_peadapter_set_property(GObject* object,
   }
 }
 
-static void gst_peadapter_get_property(GObject* object,
-                                       guint prop_id,
-                                       GValue* value,
-                                       GParamSpec* pspec) {
+static void gst_peadapter_get_property(GObject* object, guint prop_id, GValue* value, GParamSpec* pspec) {
   GstPeadapter* peadapter = GST_PEADAPTER(object);
 
   switch (prop_id) {
@@ -186,9 +154,7 @@ static void gst_peadapter_get_property(GObject* object,
   }
 }
 
-static GstFlowReturn gst_peadapter_chain(GstPad* pad,
-                                         GstObject* parent,
-                                         GstBuffer* buffer) {
+static GstFlowReturn gst_peadapter_chain(GstPad* pad, GstObject* parent, GstBuffer* buffer) {
   GstPeadapter* peadapter = GST_PEADAPTER(parent);
   GstFlowReturn ret = GST_FLOW_OK;
 
@@ -207,11 +173,9 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad,
 
     peadapter->inbuf_n_samples = map.size / peadapter->bpf;
 
-    util::debug("peadapter: pulseaudio block size " +
-                std::to_string(peadapter->inbuf_n_samples) + " frames");
+    util::debug("peadapter: pulseaudio block size " + std::to_string(peadapter->inbuf_n_samples) + " frames");
 
-    util::debug("peadapter: we will read in chunks of " +
-                std::to_string(peadapter->blocksize) + " frames");
+    util::debug("peadapter: we will read in chunks of " + std::to_string(peadapter->blocksize) + " frames");
 
     gst_buffer_unmap(buffer, &map);
   }
@@ -227,18 +191,15 @@ static GstFlowReturn gst_peadapter_process(GstPeadapter* peadapter) {
   GstFlowReturn ret = GST_FLOW_OK;
 
   gsize nbytes = peadapter->blocksize * peadapter->bpf;
-  auto duration =
-      GST_FRAMES_TO_CLOCK_TIME(peadapter->blocksize, peadapter->rate);
+  auto duration = GST_FRAMES_TO_CLOCK_TIME(peadapter->blocksize, peadapter->rate);
 
-  while (gst_adapter_available(peadapter->adapter) > nbytes &&
-         (ret == GST_FLOW_OK)) {
+  while (gst_adapter_available(peadapter->adapter) > nbytes && (ret == GST_FLOW_OK)) {
     GstBuffer* b = gst_adapter_take_buffer(peadapter->adapter, nbytes);
 
     if (b != nullptr) {
       b = gst_buffer_make_writable(b);
 
-      GST_BUFFER_OFFSET(b) =
-          gst_adapter_prev_offset(peadapter->adapter, nullptr);
+      GST_BUFFER_OFFSET(b) = gst_adapter_prev_offset(peadapter->adapter, nullptr);
       GST_BUFFER_PTS(b) = gst_adapter_prev_pts(peadapter->adapter, nullptr);
       GST_BUFFER_DURATION(b) = duration;
 
@@ -261,9 +222,7 @@ static GstFlowReturn gst_peadapter_process(GstPeadapter* peadapter) {
   return ret;
 }
 
-static gboolean gst_peadapter_sink_event(GstPad* pad,
-                                         GstObject* parent,
-                                         GstEvent* event) {
+static gboolean gst_peadapter_sink_event(GstPad* pad, GstObject* parent, GstEvent* event) {
   GstPeadapter* peadapter = GST_PEADAPTER(parent);
   gboolean ret = true;
 
@@ -310,9 +269,7 @@ static gboolean gst_peadapter_sink_event(GstPad* pad,
   return ret;
 }
 
-static GstStateChangeReturn gst_peadapter_change_state(
-    GstElement* element,
-    GstStateChange transition) {
+static GstStateChangeReturn gst_peadapter_change_state(GstElement* element, GstStateChange transition) {
   GstStateChangeReturn ret = GST_STATE_CHANGE_SUCCESS;
   GstPeadapter* peadapter = GST_PEADAPTER(element);
 
@@ -346,9 +303,7 @@ static GstStateChangeReturn gst_peadapter_change_state(
   return ret;
 }
 
-static gboolean gst_peadapter_src_query(GstPad* pad,
-                                        GstObject* parent,
-                                        GstQuery* query) {
+static gboolean gst_peadapter_src_query(GstPad* pad, GstObject* parent, GstQuery* query) {
   GstPeadapter* peadapter = GST_PEADAPTER(parent);
   bool ret = true;
 
@@ -357,8 +312,7 @@ static gboolean gst_peadapter_src_query(GstPad* pad,
       if (peadapter->rate > 0) {
         ret = gst_pad_peer_query(peadapter->sinkpad, query);
 
-        if (ret && peadapter->inbuf_n_samples != -1 &&
-            peadapter->inbuf_n_samples < peadapter->blocksize) {
+        if (ret && peadapter->inbuf_n_samples != -1 && peadapter->inbuf_n_samples < peadapter->blocksize) {
           GstClockTime min, max;
           gboolean live;
           guint64 latency;
@@ -367,9 +321,8 @@ static gboolean gst_peadapter_src_query(GstPad* pad,
 
           /* add our own latency */
 
-          latency = gst_util_uint64_scale_round(
-              peadapter->blocksize - peadapter->inbuf_n_samples, GST_SECOND,
-              peadapter->rate);
+          latency = gst_util_uint64_scale_round(peadapter->blocksize - peadapter->inbuf_n_samples, GST_SECOND,
+                                                peadapter->rate);
 
           // std::cout << "latency: " << latency << std::endl;
           // std::cout << "n: " << peadapter->inbuf_n_samples
@@ -417,8 +370,7 @@ void gst_peadapter_finalize(GObject* object) {
 static gboolean plugin_init(GstPlugin* plugin) {
   /* FIXME Remember to set the rank if it's an element that is meant
      to be autoplugged by decodebin. */
-  return gst_element_register(plugin, "peadapter", GST_RANK_NONE,
-                              GST_TYPE_PEADAPTER);
+  return gst_element_register(plugin, "peadapter", GST_RANK_NONE, GST_TYPE_PEADAPTER);
 }
 
 GST_PLUGIN_DEFINE(GST_VERSION_MAJOR,

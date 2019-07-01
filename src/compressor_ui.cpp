@@ -2,9 +2,7 @@
 
 namespace {
 
-gboolean mode_enum_to_int(GValue* value,
-                          GVariant* variant,
-                          gpointer user_data) {
+gboolean mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("Downward")) {
@@ -16,9 +14,7 @@ gboolean mode_enum_to_int(GValue* value,
   return true;
 }
 
-GVariant* int_to_mode_enum(const GValue* value,
-                           const GVariantType* expected_type,
-                           gpointer user_data) {
+GVariant* int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -28,9 +24,7 @@ GVariant* int_to_mode_enum(const GValue* value,
   }
 }
 
-gboolean sidechain_type_enum_to_int(GValue* value,
-                                    GVariant* variant,
-                                    gpointer user_data) {
+gboolean sidechain_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("Feed-forward")) {
@@ -42,9 +36,7 @@ gboolean sidechain_type_enum_to_int(GValue* value,
   return true;
 }
 
-GVariant* int_to_sidechain_type_enum(const GValue* value,
-                                     const GVariantType* expected_type,
-                                     gpointer user_data) {
+GVariant* int_to_sidechain_type_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -54,9 +46,7 @@ GVariant* int_to_sidechain_type_enum(const GValue* value,
   }
 }
 
-gboolean sidechain_mode_enum_to_int(GValue* value,
-                                    GVariant* variant,
-                                    gpointer user_data) {
+gboolean sidechain_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("Peak")) {
@@ -72,9 +62,7 @@ gboolean sidechain_mode_enum_to_int(GValue* value,
   return true;
 }
 
-GVariant* int_to_sidechain_mode_enum(const GValue* value,
-                                     const GVariantType* expected_type,
-                                     gpointer user_data) {
+GVariant* int_to_sidechain_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -88,9 +76,7 @@ GVariant* int_to_sidechain_mode_enum(const GValue* value,
   }
 }
 
-gboolean sidechain_source_enum_to_int(GValue* value,
-                                      GVariant* variant,
-                                      gpointer user_data) {
+gboolean sidechain_source_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("Middle")) {
@@ -106,9 +92,7 @@ gboolean sidechain_source_enum_to_int(GValue* value,
   return true;
 }
 
-GVariant* int_to_sidechain_source_enum(const GValue* value,
-                                       const GVariantType* expected_type,
-                                       gpointer user_data) {
+GVariant* int_to_sidechain_source_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -174,25 +158,20 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   settings->bind("input-gain", input_gain.get(), "value", flag);
   settings->bind("output-gain", output_gain.get(), "value", flag);
 
-  g_settings_bind_with_mapping(settings->gobj(), "mode",
-                               compression_mode->gobj(), "active",
-                               G_SETTINGS_BIND_DEFAULT, mode_enum_to_int,
-                               int_to_mode_enum, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings->gobj(), "mode", compression_mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+                               mode_enum_to_int, int_to_mode_enum, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(
-      settings->gobj(), "sidechain-type", sidechain_type->gobj(), "active",
-      G_SETTINGS_BIND_DEFAULT, sidechain_type_enum_to_int,
-      int_to_sidechain_type_enum, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings->gobj(), "sidechain-type", sidechain_type->gobj(), "active",
+                               G_SETTINGS_BIND_DEFAULT, sidechain_type_enum_to_int, int_to_sidechain_type_enum, nullptr,
+                               nullptr);
 
-  g_settings_bind_with_mapping(
-      settings->gobj(), "sidechain-mode", sidechain_mode->gobj(), "active",
-      G_SETTINGS_BIND_DEFAULT, sidechain_mode_enum_to_int,
-      int_to_sidechain_mode_enum, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings->gobj(), "sidechain-mode", sidechain_mode->gobj(), "active",
+                               G_SETTINGS_BIND_DEFAULT, sidechain_mode_enum_to_int, int_to_sidechain_mode_enum, nullptr,
+                               nullptr);
 
-  g_settings_bind_with_mapping(
-      settings->gobj(), "sidechain-source", sidechain_source->gobj(), "active",
-      G_SETTINGS_BIND_DEFAULT, sidechain_source_enum_to_int,
-      int_to_sidechain_source_enum, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings->gobj(), "sidechain-source", sidechain_source->gobj(), "active",
+                               G_SETTINGS_BIND_DEFAULT, sidechain_source_enum_to_int, int_to_sidechain_source_enum,
+                               nullptr, nullptr);
 }
 
 CompressorUi::~CompressorUi() {

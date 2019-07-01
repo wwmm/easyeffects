@@ -17,8 +17,7 @@ void update_effects_order(gpointer user_data) {
   gst_element_unlink(l->identity_in, l->plugins[l->plugins_order_old[0]]);
 
   for (long unsigned int n = 1; n < l->plugins_order_old.size(); n++) {
-    gst_element_unlink(l->plugins[l->plugins_order_old[n - 1]],
-                       l->plugins[l->plugins_order_old[n]]);
+    gst_element_unlink(l->plugins[l->plugins_order_old[n - 1]], l->plugins[l->plugins_order_old[n]]);
   }
 
   gst_element_unlink(l->plugins[l->plugins_order_old.back()], l->identity_out);
@@ -28,8 +27,7 @@ void update_effects_order(gpointer user_data) {
   if (gst_element_link(l->identity_in, l->plugins[l->plugins_order[0]])) {
     util::debug(l->log_tag + "linked identity_in to " + l->plugins_order[0]);
   } else {
-    util::debug(l->log_tag + "failed to link identity_in to " +
-                l->plugins_order[0]);
+    util::debug(l->log_tag + "failed to link identity_in to " + l->plugins_order[0]);
   }
 
   for (long unsigned int n = 1; n < l->plugins_order.size(); n++) {
@@ -44,11 +42,9 @@ void update_effects_order(gpointer user_data) {
   }
 
   if (gst_element_link(l->plugins[l->plugins_order.back()], l->identity_out)) {
-    util::debug(l->log_tag + "linked " + l->plugins_order.back() +
-                " to identity_out");
+    util::debug(l->log_tag + "linked " + l->plugins_order.back() + " to identity_out");
   } else {
-    util::debug(l->log_tag + "failed to link " + l->plugins_order.back() +
-                " to identity_out");
+    util::debug(l->log_tag + "failed to link " + l->plugins_order.back() + " to identity_out");
   }
 }
 
@@ -74,8 +70,7 @@ bool check_update(gpointer user_data) {
 
   if (l->plugins_order.size() != l->plugins_order_old.size()) {
     update = true;
-  } else if (!std::equal(l->plugins_order.begin(), l->plugins_order.end(),
-                         l->plugins_order_old.begin())) {
+  } else if (!std::equal(l->plugins_order.begin(), l->plugins_order.end(), l->plugins_order_old.begin())) {
     update = true;
   }
 
@@ -93,11 +88,8 @@ bool check_update(gpointer user_data) {
 }
 
 template <typename T>
-static GstPadProbeReturn event_probe_cb(GstPad* pad,
-                                        GstPadProbeInfo* info,
-                                        gpointer user_data) {
-  if (GST_EVENT_TYPE(GST_PAD_PROBE_INFO_DATA(info)) !=
-      GST_EVENT_CUSTOM_DOWNSTREAM) {
+static GstPadProbeReturn event_probe_cb(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) {
+  if (GST_EVENT_TYPE(GST_PAD_PROBE_INFO_DATA(info)) != GST_EVENT_CUSTOM_DOWNSTREAM) {
     return GST_PAD_PROBE_PASS;
   }
 
@@ -111,20 +103,16 @@ static GstPadProbeReturn event_probe_cb(GstPad* pad,
 }
 
 template <typename T>
-GstPadProbeReturn on_pad_blocked(GstPad* pad,
-                                 GstPadProbeInfo* info,
-                                 gpointer user_data) {
+GstPadProbeReturn on_pad_blocked(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) {
   auto l = static_cast<T>(user_data);
 
   gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
 
   auto srcpad = gst_element_get_static_pad(l->identity_out, "src");
 
-  gst_pad_add_probe(
-      srcpad,
-      static_cast<GstPadProbeType>(GST_PAD_PROBE_TYPE_BLOCK |
-                                   GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM),
-      event_probe_cb<T>, user_data, NULL);
+  gst_pad_add_probe(srcpad,
+                    static_cast<GstPadProbeType>(GST_PAD_PROBE_TYPE_BLOCK | GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM),
+                    event_probe_cb<T>, user_data, NULL);
 
   auto sinkpad = gst_element_get_static_pad(l->queue_src, "sink");
 
@@ -141,9 +129,7 @@ GstPadProbeReturn on_pad_blocked(GstPad* pad,
 }
 
 template <typename T>
-GstPadProbeReturn on_pad_idle(GstPad* pad,
-                              GstPadProbeInfo* info,
-                              gpointer user_data) {
+GstPadProbeReturn on_pad_idle(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) {
   if (check_update<T>(user_data)) {
     update_effects_order<T>(user_data);
   }
@@ -160,11 +146,9 @@ void on_plugins_order_changed(GSettings* settings, gchar* key, T* l) {
   gst_element_get_state(l->pipeline, &state, &pending, 0);
 
   if (state != GST_STATE_PLAYING) {
-    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE, on_pad_idle<T*>, l,
-                      nullptr);
+    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_IDLE, on_pad_idle<T*>, l, nullptr);
   } else {
-    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM,
-                      on_pad_blocked<T*>, l, nullptr);
+    gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM, on_pad_blocked<T*>, l, nullptr);
   }
 
   g_object_unref(srcpad);

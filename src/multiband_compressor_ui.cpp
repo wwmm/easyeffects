@@ -2,9 +2,7 @@
 
 namespace {
 
-gboolean detection_enum_to_int(GValue* value,
-                               GVariant* variant,
-                               gpointer user_data) {
+gboolean detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("RMS")) {
@@ -16,9 +14,7 @@ gboolean detection_enum_to_int(GValue* value,
   return true;
 }
 
-GVariant* int_to_detection_enum(const GValue* value,
-                                const GVariantType* expected_type,
-                                gpointer user_data) {
+GVariant* int_to_detection_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -28,9 +24,7 @@ GVariant* int_to_detection_enum(const GValue* value,
   }
 }
 
-gboolean mode_enum_to_int(GValue* value,
-                          GVariant* variant,
-                          gpointer user_data) {
+gboolean mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("LR4")) {
@@ -42,9 +36,7 @@ gboolean mode_enum_to_int(GValue* value,
   return true;
 }
 
-GVariant* int_to_mode_enum(const GValue* value,
-                           const GVariantType* expected_type,
-                           gpointer user_data) {
+GVariant* int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -56,10 +48,9 @@ GVariant* int_to_mode_enum(const GValue* value,
 
 }  // namespace
 
-MultibandCompressorUi::MultibandCompressorUi(
-    BaseObjectType* cobject,
-    const Glib::RefPtr<Gtk::Builder>& builder,
-    const std::string& settings_name)
+MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
+                                             const Glib::RefPtr<Gtk::Builder>& builder,
+                                             const std::string& settings_name)
     : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
   name = "multiband_compressor";
 
@@ -170,29 +161,20 @@ MultibandCompressorUi::MultibandCompressorUi(
   settings->bind("solo2", solo2, "active", flag);
   settings->bind("solo3", solo3, "active", flag);
 
-  g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active",
-                               G_SETTINGS_BIND_DEFAULT, mode_enum_to_int,
-                               int_to_mode_enum, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+                               mode_enum_to_int, int_to_mode_enum, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings->gobj(), "detection0",
-                               detection0->gobj(), "active",
-                               G_SETTINGS_BIND_DEFAULT, detection_enum_to_int,
-                               int_to_detection_enum, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings->gobj(), "detection0", detection0->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+                               detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings->gobj(), "detection1",
-                               detection1->gobj(), "active",
-                               G_SETTINGS_BIND_DEFAULT, detection_enum_to_int,
-                               int_to_detection_enum, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings->gobj(), "detection1", detection1->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+                               detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings->gobj(), "detection2",
-                               detection2->gobj(), "active",
-                               G_SETTINGS_BIND_DEFAULT, detection_enum_to_int,
-                               int_to_detection_enum, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings->gobj(), "detection2", detection2->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+                               detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings->gobj(), "detection3",
-                               detection3->gobj(), "active",
-                               G_SETTINGS_BIND_DEFAULT, detection_enum_to_int,
-                               int_to_detection_enum, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings->gobj(), "detection3", detection3->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+                               detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
 }
 
 MultibandCompressorUi::~MultibandCompressorUi() {

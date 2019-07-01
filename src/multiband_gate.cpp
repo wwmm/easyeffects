@@ -4,9 +4,7 @@
 
 namespace {
 
-void on_post_messages_changed(GSettings* settings,
-                              gchar* key,
-                              MultibandGate* l) {
+void on_post_messages_changed(GSettings* settings, gchar* key, MultibandGate* l) {
   auto post = g_settings_get_boolean(settings, key);
 
   if (post) {
@@ -172,19 +170,14 @@ void on_post_messages_changed(GSettings* settings,
 
 MultibandGate::MultibandGate(const std::string& tag, const std::string& schema)
     : PluginBase(tag, "multiband_gate", schema) {
-  multiband_gate = gst_element_factory_make(
-      "calf-sourceforge-net-plugins-MultibandGate", nullptr);
+  multiband_gate = gst_element_factory_make("calf-sourceforge-net-plugins-MultibandGate", nullptr);
 
   if (is_installed(multiband_gate)) {
-    auto audioconvert_in = gst_element_factory_make(
-        "audioconvert", "multiband_gate_audioconvert_in");
-    auto audioconvert_out = gst_element_factory_make(
-        "audioconvert", "multiband_gate_audioconvert_out");
+    auto audioconvert_in = gst_element_factory_make("audioconvert", "multiband_gate_audioconvert_in");
+    auto audioconvert_out = gst_element_factory_make("audioconvert", "multiband_gate_audioconvert_out");
 
-    gst_bin_add_many(GST_BIN(bin), audioconvert_in, multiband_gate,
-                     audioconvert_out, nullptr);
-    gst_element_link_many(audioconvert_in, multiband_gate, audioconvert_out,
-                          nullptr);
+    gst_bin_add_many(GST_BIN(bin), audioconvert_in, multiband_gate, audioconvert_out, nullptr);
+    gst_element_link_many(audioconvert_in, multiband_gate, audioconvert_out, nullptr);
 
     auto pad_sink = gst_element_get_static_pad(audioconvert_in, "sink");
     auto pad_src = gst_element_get_static_pad(audioconvert_out, "src");
@@ -199,8 +192,7 @@ MultibandGate::MultibandGate(const std::string& tag, const std::string& schema)
 
     bind_to_gsettings();
 
-    g_signal_connect(settings, "changed::post-messages",
-                     G_CALLBACK(on_post_messages_changed), this);
+    g_signal_connect(settings, "changed::post-messages", G_CALLBACK(on_post_messages_changed), this);
 
     // useless write just to force callback call
 
@@ -215,188 +207,136 @@ MultibandGate::~MultibandGate() {
 }
 
 void MultibandGate::bind_to_gsettings() {
-  g_settings_bind_with_mapping(settings, "input-gain", multiband_gate,
-                               "level-in", G_SETTINGS_BIND_DEFAULT,
-                               util::db20_gain_to_linear,
-                               util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "input-gain", multiband_gate, "level-in", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "output-gain", multiband_gate,
-                               "level-out", G_SETTINGS_BIND_DEFAULT,
-                               util::db20_gain_to_linear,
-                               util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "output-gain", multiband_gate, "level-out", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "freq0", multiband_gate, "freq0",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
+  g_settings_bind_with_mapping(settings, "freq0", multiband_gate, "freq0", G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "freq1", multiband_gate, "freq1",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
+  g_settings_bind_with_mapping(settings, "freq1", multiband_gate, "freq1", G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "freq2", multiband_gate, "freq2",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
+  g_settings_bind_with_mapping(settings, "freq2", multiband_gate, "freq2", G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 
-  g_settings_bind(settings, "mode", multiband_gate, "mode",
-                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, "mode", multiband_gate, "mode", G_SETTINGS_BIND_DEFAULT);
 
   // sub band
 
-  g_settings_bind_with_mapping(
-      settings, "range0", multiband_gate, "range0", G_SETTINGS_BIND_DEFAULT,
-      util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "range0", multiband_gate, "range0", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "threshold0", multiband_gate,
-                               "threshold0", G_SETTINGS_BIND_DEFAULT,
-                               util::db20_gain_to_linear,
-                               util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "threshold0", multiband_gate, "threshold0", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "ratio0", multiband_gate, "ratio0",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
+  g_settings_bind_with_mapping(settings, "ratio0", multiband_gate, "ratio0", G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "attack0", multiband_gate, "attack0",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
-                               nullptr, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "attack0", multiband_gate, "attack0", G_SETTINGS_BIND_GET,
+                               util::double_to_float, nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "release0", multiband_gate, "release0",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
-                               nullptr, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "release0", multiband_gate, "release0", G_SETTINGS_BIND_GET,
+                               util::double_to_float, nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(
-      settings, "makeup0", multiband_gate, "makeup0", G_SETTINGS_BIND_DEFAULT,
-      util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "makeup0", multiband_gate, "makeup0", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(
-      settings, "knee0", multiband_gate, "knee0", G_SETTINGS_BIND_DEFAULT,
-      util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "knee0", multiband_gate, "knee0", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind(settings, "detection0", multiband_gate, "detection0",
-                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, "detection0", multiband_gate, "detection0", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, "bypass0", multiband_gate, "bypass0",
-                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, "bypass0", multiband_gate, "bypass0", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, "solo0", multiband_gate, "solo0",
-                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, "solo0", multiband_gate, "solo0", G_SETTINGS_BIND_DEFAULT);
 
   // low band
 
-  g_settings_bind_with_mapping(
-      settings, "range1", multiband_gate, "range1", G_SETTINGS_BIND_DEFAULT,
-      util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "range1", multiband_gate, "range1", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "threshold1", multiband_gate,
-                               "threshold1", G_SETTINGS_BIND_DEFAULT,
-                               util::db20_gain_to_linear,
-                               util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "threshold1", multiband_gate, "threshold1", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "ratio1", multiband_gate, "ratio1",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
+  g_settings_bind_with_mapping(settings, "ratio1", multiband_gate, "ratio1", G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "attack1", multiband_gate, "attack1",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
-                               nullptr, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "attack1", multiband_gate, "attack1", G_SETTINGS_BIND_GET,
+                               util::double_to_float, nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "release1", multiband_gate, "release1",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
-                               nullptr, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "release1", multiband_gate, "release1", G_SETTINGS_BIND_GET,
+                               util::double_to_float, nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(
-      settings, "makeup1", multiband_gate, "makeup1", G_SETTINGS_BIND_DEFAULT,
-      util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "makeup1", multiband_gate, "makeup1", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(
-      settings, "knee1", multiband_gate, "knee1", G_SETTINGS_BIND_DEFAULT,
-      util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "knee1", multiband_gate, "knee1", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind(settings, "detection1", multiband_gate, "detection1",
-                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, "detection1", multiband_gate, "detection1", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, "bypass1", multiband_gate, "bypass1",
-                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, "bypass1", multiband_gate, "bypass1", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, "solo1", multiband_gate, "solo1",
-                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, "solo1", multiband_gate, "solo1", G_SETTINGS_BIND_DEFAULT);
 
   // mid
 
-  g_settings_bind_with_mapping(
-      settings, "range2", multiband_gate, "range2", G_SETTINGS_BIND_DEFAULT,
-      util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "range2", multiband_gate, "range2", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "threshold2", multiband_gate,
-                               "threshold2", G_SETTINGS_BIND_DEFAULT,
-                               util::db20_gain_to_linear,
-                               util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "threshold2", multiband_gate, "threshold2", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "ratio2", multiband_gate, "ratio2",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
+  g_settings_bind_with_mapping(settings, "ratio2", multiband_gate, "ratio2", G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "attack2", multiband_gate, "attack2",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
-                               nullptr, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "attack2", multiband_gate, "attack2", G_SETTINGS_BIND_GET,
+                               util::double_to_float, nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "release2", multiband_gate, "release2",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
-                               nullptr, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "release2", multiband_gate, "release2", G_SETTINGS_BIND_GET,
+                               util::double_to_float, nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(
-      settings, "makeup2", multiband_gate, "makeup2", G_SETTINGS_BIND_DEFAULT,
-      util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "makeup2", multiband_gate, "makeup2", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(
-      settings, "knee2", multiband_gate, "knee2", G_SETTINGS_BIND_DEFAULT,
-      util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "knee2", multiband_gate, "knee2", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind(settings, "detection2", multiband_gate, "detection2",
-                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, "detection2", multiband_gate, "detection2", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, "bypass2", multiband_gate, "bypass2",
-                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, "bypass2", multiband_gate, "bypass2", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, "solo2", multiband_gate, "solo2",
-                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, "solo2", multiband_gate, "solo2", G_SETTINGS_BIND_DEFAULT);
 
   // high band
 
-  g_settings_bind_with_mapping(
-      settings, "range3", multiband_gate, "range3", G_SETTINGS_BIND_DEFAULT,
-      util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "range3", multiband_gate, "range3", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "threshold3", multiband_gate,
-                               "threshold3", G_SETTINGS_BIND_DEFAULT,
-                               util::db20_gain_to_linear,
-                               util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "threshold3", multiband_gate, "threshold3", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "ratio3", multiband_gate, "ratio3",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
+  g_settings_bind_with_mapping(settings, "ratio3", multiband_gate, "ratio3", G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "attack3", multiband_gate, "attack3",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
-                               nullptr, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "attack3", multiband_gate, "attack3", G_SETTINGS_BIND_GET,
+                               util::double_to_float, nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "release3", multiband_gate, "release3",
-                               G_SETTINGS_BIND_GET, util::double_to_float,
-                               nullptr, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "release3", multiband_gate, "release3", G_SETTINGS_BIND_GET,
+                               util::double_to_float, nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(
-      settings, "makeup3", multiband_gate, "makeup3", G_SETTINGS_BIND_DEFAULT,
-      util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "makeup3", multiband_gate, "makeup3", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(
-      settings, "knee3", multiband_gate, "knee3", G_SETTINGS_BIND_DEFAULT,
-      util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "knee3", multiband_gate, "knee3", G_SETTINGS_BIND_DEFAULT,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
-  g_settings_bind(settings, "detection3", multiband_gate, "detection3",
-                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, "detection3", multiband_gate, "detection3", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, "bypass3", multiband_gate, "bypass3",
-                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, "bypass3", multiband_gate, "bypass3", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, "solo3", multiband_gate, "solo3",
-                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, "solo3", multiband_gate, "solo3", G_SETTINGS_BIND_DEFAULT);
 }

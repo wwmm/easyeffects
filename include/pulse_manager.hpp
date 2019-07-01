@@ -99,17 +99,10 @@ class PulseManager {
   void move_sink_input_to_pulseeffects(const std::string& name, uint idx);
   void remove_sink_input_from_pulseeffects(const std::string& name, uint idx);
   void move_source_output_to_pulseeffects(const std::string& name, uint idx);
-  void remove_source_output_from_pulseeffects(const std::string& name,
-                                              uint idx);
-  void set_sink_input_volume(const std::string& name,
-                             uint idx,
-                             uint8_t channels,
-                             uint value);
+  void remove_source_output_from_pulseeffects(const std::string& name, uint idx);
+  void set_sink_input_volume(const std::string& name, uint idx, uint8_t channels, uint value);
   void set_sink_input_mute(const std::string& name, uint idx, bool state);
-  void set_source_output_volume(const std::string& name,
-                                uint idx,
-                                uint8_t channels,
-                                uint value);
+  void set_source_output_volume(const std::string& name, uint idx, uint8_t channels, uint value);
   void set_source_output_mute(const std::string& name, uint idx, bool state);
   void get_sink_input_info(uint idx);
   void update_server_info(const pa_server_info* info);
@@ -142,20 +135,12 @@ class PulseManager {
   pa_mainloop_api* main_loop_api = nullptr;
   pa_context* context = nullptr;
 
-  std::array<std::string, 10> blacklist_apps = {"PulseEffects",
-                                                "pulseeffects",
-                                                "PulseEffectsWebrtcProbe",
-                                                "gsd-media-keys",
-                                                "GNOME Shell",
-                                                "libcanberra",
-                                                "gnome-pomodoro",
-                                                "PulseAudio Volume Control",
-                                                "Screenshot",
-                                                "speech-dispatcher"};
+  std::array<std::string, 10> blacklist_apps = {
+      "PulseEffects", "pulseeffects",   "PulseEffectsWebrtcProbe",   "gsd-media-keys", "GNOME Shell",
+      "libcanberra",  "gnome-pomodoro", "PulseAudio Volume Control", "Screenshot",     "speech-dispatcher"};
 
-  std::array<std::string, 5> blacklist_media_name = {
-      "pulsesink probe", "bell-window-system", "audio-volume-change",
-      "Peak detect", "screen-capture"};
+  std::array<std::string, 5> blacklist_media_name = {"pulsesink probe", "bell-window-system", "audio-volume-change",
+                                                     "Peak detect", "screen-capture"};
 
   std::array<std::string, 1> blacklist_media_role = {"event"};
 
@@ -169,9 +154,7 @@ class PulseManager {
 
   std::shared_ptr<mySourceInfo> get_default_source_info();
 
-  std::shared_ptr<mySinkInfo> load_sink(std::string name,
-                                        std::string description,
-                                        uint rate);
+  std::shared_ptr<mySinkInfo> load_sink(std::string name, std::string description, uint rate);
 
   void load_apps_sink();
 
@@ -201,9 +184,7 @@ class PulseManager {
 
   uint get_latency(const pa_sink_input_info* info) { return info->sink_usec; }
 
-  uint get_latency(const pa_source_output_info* info) {
-    return info->source_usec;
-  }
+  uint get_latency(const pa_source_output_info* info) { return info->source_usec; }
 
   template <typename T>
   std::shared_ptr<AppInfo> parse_app_info(const T& info) {
@@ -229,18 +210,13 @@ class PulseManager {
     }
 
     auto forbidden_app =
-        std::find(std::begin(blacklist_apps), std::end(blacklist_apps),
-                  app_name) != std::end(blacklist_apps);
+        std::find(std::begin(blacklist_apps), std::end(blacklist_apps), app_name) != std::end(blacklist_apps);
 
-    auto forbidden_media_name =
-        std::find(std::begin(blacklist_media_name),
-                  std::end(blacklist_media_name),
-                  media_name) != std::end(blacklist_media_name);
+    auto forbidden_media_name = std::find(std::begin(blacklist_media_name), std::end(blacklist_media_name),
+                                          media_name) != std::end(blacklist_media_name);
 
-    auto forbidden_media_role =
-        std::find(std::begin(blacklist_media_role),
-                  std::end(blacklist_media_role),
-                  media_role) != std::end(blacklist_media_role);
+    auto forbidden_media_role = std::find(std::begin(blacklist_media_role), std::end(blacklist_media_role),
+                                          media_role) != std::end(blacklist_media_role);
 
     if (forbidden_app || forbidden_media_name || forbidden_media_role) {
       return nullptr;

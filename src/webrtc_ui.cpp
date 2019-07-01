@@ -2,9 +2,7 @@
 
 namespace {
 
-gboolean echo_suppression_level_to_int(GValue* value,
-                                       GVariant* variant,
-                                       gpointer user_data) {
+gboolean echo_suppression_level_to_int(GValue* value, GVariant* variant, gpointer user_data) {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("low")) {
@@ -18,9 +16,7 @@ gboolean echo_suppression_level_to_int(GValue* value,
   return true;
 }
 
-GVariant* int_to_echo_suppression_level(const GValue* value,
-                                        const GVariantType* expected_type,
-                                        gpointer user_data) {
+GVariant* int_to_echo_suppression_level(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -32,9 +28,7 @@ GVariant* int_to_echo_suppression_level(const GValue* value,
   }
 }
 
-gboolean noise_suppression_level_to_int(GValue* value,
-                                        GVariant* variant,
-                                        gpointer user_data) {
+gboolean noise_suppression_level_to_int(GValue* value, GVariant* variant, gpointer user_data) {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("low")) {
@@ -50,9 +44,7 @@ gboolean noise_suppression_level_to_int(GValue* value,
   return true;
 }
 
-GVariant* int_to_noise_suppression_level(const GValue* value,
-                                         const GVariantType* expected_type,
-                                         gpointer user_data) {
+GVariant* int_to_noise_suppression_level(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -66,9 +58,7 @@ GVariant* int_to_noise_suppression_level(const GValue* value,
   }
 }
 
-gboolean gain_control_mode_to_int(GValue* value,
-                                  GVariant* variant,
-                                  gpointer user_data) {
+gboolean gain_control_mode_to_int(GValue* value, GVariant* variant, gpointer user_data) {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("adaptive-digital")) {
@@ -80,9 +70,7 @@ gboolean gain_control_mode_to_int(GValue* value,
   return true;
 }
 
-GVariant* int_to_gain_control_mode(const GValue* value,
-                                   const GVariantType* expected_type,
-                                   gpointer user_data) {
+GVariant* int_to_gain_control_mode(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -92,9 +80,7 @@ GVariant* int_to_gain_control_mode(const GValue* value,
   }
 }
 
-gboolean voice_detection_likelihood_to_int(GValue* value,
-                                           GVariant* variant,
-                                           gpointer user_data) {
+gboolean voice_detection_likelihood_to_int(GValue* value, GVariant* variant, gpointer user_data) {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("very-low")) {
@@ -128,9 +114,7 @@ GVariant* int_to_voice_detection_likelihood(const GValue* value,
 
 }  // namespace
 
-WebrtcUi::WebrtcUi(BaseObjectType* cobject,
-                   const Glib::RefPtr<Gtk::Builder>& builder,
-                   const std::string& settings_name)
+WebrtcUi::WebrtcUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name)
     : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
   name = "webrtc";
 
@@ -159,11 +143,9 @@ WebrtcUi::WebrtcUi(BaseObjectType* cobject,
 
   settings->bind("installed", this, "sensitive", flag);
 
-  settings->bind("compression-gain-db", compression_gain_db.get(), "value",
-                 flag);
+  settings->bind("compression-gain-db", compression_gain_db.get(), "value", flag);
   settings->bind("target-level-dbfs", target_level_dbfs.get(), "value", flag);
-  settings->bind("voice-detection-frame-size-ms",
-                 voice_detection_frame_size.get(), "value", flag);
+  settings->bind("voice-detection-frame-size-ms", voice_detection_frame_size.get(), "value", flag);
   settings->bind("echo-cancel", echo_cancel, "active", flag);
   settings->bind("extended-filter", extended_filter, "active", flag);
   settings->bind("high-pass-filter", high_pass_filter, "active", flag);
@@ -173,28 +155,21 @@ WebrtcUi::WebrtcUi(BaseObjectType* cobject,
   settings->bind("limiter", limiter, "active", flag);
   settings->bind("voice-detection", voice_detection, "active", flag);
 
-  g_settings_bind_with_mapping(settings->gobj(), "echo-suppression-level",
-                               echo_suppression_level->gobj(), "active",
-                               G_SETTINGS_BIND_DEFAULT,
-                               echo_suppression_level_to_int,
-                               int_to_echo_suppression_level, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings->gobj(), "echo-suppression-level", echo_suppression_level->gobj(), "active",
+                               G_SETTINGS_BIND_DEFAULT, echo_suppression_level_to_int, int_to_echo_suppression_level,
+                               nullptr, nullptr);
 
-  g_settings_bind_with_mapping(
-      settings->gobj(), "noise-suppression-level",
-      noise_suppression_level->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-      noise_suppression_level_to_int, int_to_noise_suppression_level, nullptr,
-      nullptr);
+  g_settings_bind_with_mapping(settings->gobj(), "noise-suppression-level", noise_suppression_level->gobj(), "active",
+                               G_SETTINGS_BIND_DEFAULT, noise_suppression_level_to_int, int_to_noise_suppression_level,
+                               nullptr, nullptr);
 
-  g_settings_bind_with_mapping(
-      settings->gobj(), "gain-control-mode", gain_control_mode->gobj(),
-      "active", G_SETTINGS_BIND_DEFAULT, gain_control_mode_to_int,
-      int_to_gain_control_mode, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings->gobj(), "gain-control-mode", gain_control_mode->gobj(), "active",
+                               G_SETTINGS_BIND_DEFAULT, gain_control_mode_to_int, int_to_gain_control_mode, nullptr,
+                               nullptr);
 
-  g_settings_bind_with_mapping(
-      settings->gobj(), "voice-detection-likelihood",
-      voice_detection_likelihood->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-      voice_detection_likelihood_to_int, int_to_voice_detection_likelihood,
-      nullptr, nullptr);
+  g_settings_bind_with_mapping(settings->gobj(), "voice-detection-likelihood", voice_detection_likelihood->gobj(),
+                               "active", G_SETTINGS_BIND_DEFAULT, voice_detection_likelihood_to_int,
+                               int_to_voice_detection_likelihood, nullptr, nullptr);
 }
 
 WebrtcUi::~WebrtcUi() {

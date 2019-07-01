@@ -5,9 +5,7 @@
 
 namespace {
 
-void on_message_state_changed(const GstBus* gst_bus,
-                              GstMessage* message,
-                              CalibrationSignals* cs) {
+void on_message_state_changed(const GstBus* gst_bus, GstMessage* message, CalibrationSignals* cs) {
   if (GST_OBJECT_NAME(message->src) == std::string("pipeline")) {
     GstState old_state, new_state;
 
@@ -17,9 +15,7 @@ void on_message_state_changed(const GstBus* gst_bus,
   }
 }
 
-void on_message_element(const GstBus* gst_bus,
-                        GstMessage* message,
-                        CalibrationSignals* cs) {
+void on_message_element(const GstBus* gst_bus, GstMessage* message, CalibrationSignals* cs) {
   if (GST_OBJECT_NAME(message->src) == std::string("spectrum")) {
     const GstStructure* s = gst_message_get_structure(message);
 
@@ -28,31 +24,25 @@ void on_message_element(const GstBus* gst_bus,
     magnitudes = gst_structure_get_value(s, "magnitude");
 
     for (uint n = 0; n < cs->spectrum_freqs.size(); n++) {
-      cs->spectrum_mag_tmp[n] =
-          g_value_get_float(gst_value_list_get_value(magnitudes, n));
+      cs->spectrum_mag_tmp[n] = g_value_get_float(gst_value_list_get_value(magnitudes, n));
     }
 
-    boost::math::cubic_b_spline<float> spline(cs->spectrum_mag_tmp.begin(),
-                                              cs->spectrum_mag_tmp.end(),
-                                              cs->spline_f0, cs->spline_df);
+    boost::math::cubic_b_spline<float> spline(cs->spectrum_mag_tmp.begin(), cs->spectrum_mag_tmp.end(), cs->spline_f0,
+                                              cs->spline_df);
 
     for (uint n = 0; n < cs->spectrum_mag.size(); n++) {
       cs->spectrum_mag[n] = spline(cs->spectrum_x_axis[n]);
     }
 
-    auto min_mag =
-        *std::min_element(cs->spectrum_mag.begin(), cs->spectrum_mag.end());
-    auto max_mag =
-        *std::max_element(cs->spectrum_mag.begin(), cs->spectrum_mag.end());
+    auto min_mag = *std::min_element(cs->spectrum_mag.begin(), cs->spectrum_mag.end());
+    auto max_mag = *std::max_element(cs->spectrum_mag.begin(), cs->spectrum_mag.end());
 
     if (max_mag > min_mag) {
       for (uint n = 0; n < cs->spectrum_mag.size(); n++) {
-        cs->spectrum_mag[n] =
-            (cs->spectrum_mag[n] - min_mag) / (max_mag - min_mag);
+        cs->spectrum_mag[n] = (cs->spectrum_mag[n] - min_mag) / (max_mag - min_mag);
       }
 
-      Glib::signal_idle().connect_once(
-          [=] { cs->new_spectrum.emit(cs->spectrum_mag); });
+      Glib::signal_idle().connect_once([=] { cs->new_spectrum.emit(cs->spectrum_mag); });
     }
   }
 }
@@ -70,10 +60,8 @@ CalibrationSignals::CalibrationSignals() {
 
   // bus callbacks
 
-  g_signal_connect(bus, "message::state-changed",
-                   G_CALLBACK(on_message_state_changed), this);
-  g_signal_connect(bus, "message::element", G_CALLBACK(on_message_element),
-                   this);
+  g_signal_connect(bus, "message::state-changed", G_CALLBACK(on_message_state_changed), this);
+  g_signal_connect(bus, "message::element", G_CALLBACK(on_message_element), this);
 
   // creating elements
 
@@ -86,18 +74,15 @@ CalibrationSignals::CalibrationSignals() {
 
   // building the pipeline
 
-  gst_bin_add_many(GST_BIN(pipeline), source, capsfilter, queue, spectrum, sink,
-                   nullptr);
+  gst_bin_add_many(GST_BIN(pipeline), source, capsfilter, queue, spectrum, sink, nullptr);
 
   gst_element_link_many(source, capsfilter, queue, spectrum, sink, nullptr);
 
   // setting a few parameters
 
-  auto props = gst_structure_from_string(
-      "props,application.name=PulseEffectsCalibration", nullptr);
+  auto props = gst_structure_from_string("props,application.name=PulseEffectsCalibration", nullptr);
 
-  auto caps =
-      gst_caps_from_string("audio/x-raw,format=F32LE,channels=2,rate=48000");
+  auto caps = gst_caps_from_string("audio/x-raw,format=F32LE,channels=2,rate=48000");
 
   g_object_set(source, "wave", 0, nullptr);  // sine
   g_object_set(capsfilter, "caps", caps, nullptr);
@@ -125,8 +110,7 @@ CalibrationSignals::CalibrationSignals() {
 
   spectrum_mag_tmp.resize(spectrum_freqs.size());
 
-  spectrum_x_axis = util::logspace(log10(min_spectrum_freq),
-                                   log10(max_spectrum_freq), spectrum_npoints);
+  spectrum_x_axis = util::logspace(log10(min_spectrum_freq), log10(max_spectrum_freq), spectrum_npoints);
 
   spectrum_mag.resize(spectrum_npoints);
 

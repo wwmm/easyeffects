@@ -1,10 +1,8 @@
 #include "deesser_preset.hpp"
 
 DeesserPreset::DeesserPreset()
-    : input_settings(Gio::Settings::create(
-          "com.github.wwmm.pulseeffects.sourceoutputs.deesser")),
-      output_settings(Gio::Settings::create(
-          "com.github.wwmm.pulseeffects.sinkinputs.deesser")) {}
+    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs.deesser")),
+      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.deesser")) {}
 
 void DeesserPreset::save(boost::property_tree::ptree& root,
                          const std::string& section,
@@ -41,13 +39,11 @@ void DeesserPreset::load(boost::property_tree::ptree& root,
                          const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".deesser.state");
 
-  update_string_key(root, settings, "detection",
-                    section + ".deesser.detection");
+  update_string_key(root, settings, "detection", section + ".deesser.detection");
 
   update_string_key(root, settings, "mode", section + ".deesser.mode");
 
-  update_key<double>(root, settings, "threshold",
-                     section + ".deesser.threshold");
+  update_key<double>(root, settings, "threshold", section + ".deesser.threshold");
 
   update_key<double>(root, settings, "ratio", section + ".deesser.ratio");
 
@@ -68,8 +64,7 @@ void DeesserPreset::load(boost::property_tree::ptree& root,
   update_key<bool>(root, settings, "sc-listen", section + ".deesser.sc-listen");
 }
 
-void DeesserPreset::write(PresetType preset_type,
-                          boost::property_tree::ptree& root) {
+void DeesserPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     save(root, "output", output_settings);
   } else {
@@ -77,8 +72,7 @@ void DeesserPreset::write(PresetType preset_type,
   }
 }
 
-void DeesserPreset::read(PresetType preset_type,
-                         boost::property_tree::ptree& root) {
+void DeesserPreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     load(root, "output", output_settings);
   } else {

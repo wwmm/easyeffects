@@ -3,9 +3,7 @@
 
 namespace {
 
-gboolean room_size_enum_to_int(GValue* value,
-                               GVariant* variant,
-                               gpointer user_data) {
+gboolean room_size_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("Small")) {
@@ -25,9 +23,7 @@ gboolean room_size_enum_to_int(GValue* value,
   return true;
 }
 
-GVariant* int_to_room_size_enum(const GValue* value,
-                                const GVariantType* expected_type,
-                                gpointer user_data) {
+GVariant* int_to_room_size_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -47,9 +43,7 @@ GVariant* int_to_room_size_enum(const GValue* value,
 
 }  // namespace
 
-ReverbUi::ReverbUi(BaseObjectType* cobject,
-                   const Glib::RefPtr<Gtk::Builder>& builder,
-                   const std::string& settings_name)
+ReverbUi::ReverbUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name)
     : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
   name = "reverb";
 
@@ -91,10 +85,8 @@ ReverbUi::ReverbUi(BaseObjectType* cobject,
   settings->bind("bass-cut", bass_cut.get(), "value", flag);
   settings->bind("treble-cut", treble_cut.get(), "value", flag);
 
-  g_settings_bind_with_mapping(settings->gobj(), "room-size", room_size->gobj(),
-                               "active", G_SETTINGS_BIND_DEFAULT,
-                               room_size_enum_to_int, int_to_room_size_enum,
-                               nullptr, nullptr);
+  g_settings_bind_with_mapping(settings->gobj(), "room-size", room_size->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+                               room_size_enum_to_int, int_to_room_size_enum, nullptr, nullptr);
 
   init_presets_buttons();
 }

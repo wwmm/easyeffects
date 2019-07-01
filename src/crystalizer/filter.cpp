@@ -16,9 +16,7 @@ Filter::~Filter() {
   finish();
 }
 
-void Filter::create_lowpass_kernel(const float& rate,
-                                   const float& cutoff,
-                                   const float& transition_band) {
+void Filter::create_lowpass_kernel(const float& rate, const float& cutoff, const float& transition_band) {
   float b = transition_band / rate;
 
   kernel_size = std::ceil(4.0f / b);
@@ -38,11 +36,9 @@ void Filter::create_lowpass_kernel(const float& rate,
   float sum = 0.0f;
 
   for (int n = 0; n < kernel_size; n++) {
-    kernel[n] =
-        boost::math::sinc_pi(2.0f * fc * PI * (n - (kernel_size - 1) / 2));
+    kernel[n] = boost::math::sinc_pi(2.0f * fc * PI * (n - (kernel_size - 1) / 2));
 
-    auto w = 0.42f - 0.5f * cosf(2.0f * PI * n / (kernel_size - 1)) +
-             0.08f * cosf(4.0f * PI * n / (kernel_size - 1));
+    auto w = 0.42f - 0.5f * cosf(2.0f * PI * n / (kernel_size - 1)) + 0.08f * cosf(4.0f * PI * n / (kernel_size - 1));
 
     kernel[n] *= w;
 
@@ -54,9 +50,7 @@ void Filter::create_lowpass_kernel(const float& rate,
   }
 }
 
-void Filter::create_highpass_kernel(const float& rate,
-                                    const float& cutoff,
-                                    const float& transition_band) {
+void Filter::create_highpass_kernel(const float& rate, const float& cutoff, const float& transition_band) {
   create_lowpass_kernel(rate, cutoff, transition_band);
 
   for (int n = 0; n < kernel_size; n++) {
@@ -108,10 +102,7 @@ void Filter::direct_conv(float*& a, float*& b, float*& c, const int& N) {
   }
 }
 
-void Filter::create_lowpass(const int& nsamples,
-                            const float& rate,
-                            const float& cutoff,
-                            const float& transition_band) {
+void Filter::create_lowpass(const int& nsamples, const float& rate, const float& cutoff, const float& transition_band) {
   create_lowpass_kernel(rate, cutoff, transition_band);
 
   // util::debug(log_tag + " kernel size = " + std::to_string(kernel_size));
@@ -161,19 +152,16 @@ void Filter::init_zita(const int& num_samples) {
 #if ZITA_CONVOLVER_MAJOR_VERSION == 3
   conv->set_density(density);
 
-  ret =
-      conv->configure(2, 2, kernel_size, nsamples, nsamples, Convproc::MAXPART);
+  ret = conv->configure(2, 2, kernel_size, nsamples, nsamples, Convproc::MAXPART);
 #endif
 
 #if ZITA_CONVOLVER_MAJOR_VERSION == 4
-  ret = conv->configure(2, 2, kernel_size, nsamples, nsamples,
-                        Convproc::MAXPART, density);
+  ret = conv->configure(2, 2, kernel_size, nsamples, nsamples, Convproc::MAXPART, density);
 #endif
 
   if (ret != 0) {
     failed = true;
-    util::debug(log_tag + "can't initialise zita-convolver engine: " +
-                std::to_string(ret));
+    util::debug(log_tag + "can't initialise zita-convolver engine: " + std::to_string(ret));
   }
 
   ret = conv->impdata_create(0, 0, 1, kernel, 0, kernel_size);
@@ -187,12 +175,10 @@ void Filter::init_zita(const int& num_samples) {
 
   if (ret != 0) {
     failed = true;
-    util::debug(log_tag +
-                "right impdata_create failed: " + std::to_string(ret));
+    util::debug(log_tag + "right impdata_create failed: " + std::to_string(ret));
   }
 
-  ret = conv->start_process(CONVPROC_SCHEDULER_PRIORITY,
-                            CONVPROC_SCHEDULER_CLASS);
+  ret = conv->start_process(CONVPROC_SCHEDULER_PRIORITY, CONVPROC_SCHEDULER_CLASS);
 
   if (ret != 0) {
     failed = true;

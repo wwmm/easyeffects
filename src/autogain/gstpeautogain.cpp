@@ -24,26 +24,17 @@ GST_DEBUG_CATEGORY_STATIC(gst_peautogain_debug_category);
 
 /* prototypes */
 
-static void gst_peautogain_set_property(GObject* object,
-                                        guint property_id,
-                                        const GValue* value,
-                                        GParamSpec* pspec);
+static void gst_peautogain_set_property(GObject* object, guint property_id, const GValue* value, GParamSpec* pspec);
 
-static void gst_peautogain_get_property(GObject* object,
-                                        guint property_id,
-                                        GValue* value,
-                                        GParamSpec* pspec);
+static void gst_peautogain_get_property(GObject* object, guint property_id, GValue* value, GParamSpec* pspec);
 
-static gboolean gst_peautogain_setup(GstAudioFilter* filter,
-                                     const GstAudioInfo* info);
+static gboolean gst_peautogain_setup(GstAudioFilter* filter, const GstAudioInfo* info);
 
-static GstFlowReturn gst_peautogain_transform_ip(GstBaseTransform* trans,
-                                                 GstBuffer* buffer);
+static GstFlowReturn gst_peautogain_transform_ip(GstBaseTransform* trans, GstBuffer* buffer);
 
 static void gst_peautogain_finalize(GObject* object);
 
-static void gst_peautogain_process(GstPeautogain* peautogain,
-                                   GstBuffer* buffer);
+static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer);
 
 enum {
   PROP_TARGET = 1,
@@ -63,20 +54,18 @@ enum {
 /* pad templates */
 
 static GstStaticPadTemplate gst_peautogain_src_template =
-    GST_STATIC_PAD_TEMPLATE(
-        "src",
-        GST_PAD_SRC,
-        GST_PAD_ALWAYS,
-        GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=[1,max],"
-                        "channels=2,layout=interleaved"));
+    GST_STATIC_PAD_TEMPLATE("src",
+                            GST_PAD_SRC,
+                            GST_PAD_ALWAYS,
+                            GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=[1,max],"
+                                            "channels=2,layout=interleaved"));
 
 static GstStaticPadTemplate gst_peautogain_sink_template =
-    GST_STATIC_PAD_TEMPLATE(
-        "sink",
-        GST_PAD_SINK,
-        GST_PAD_ALWAYS,
-        GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=[1,max],"
-                        "channels=2,layout=interleaved"));
+    GST_STATIC_PAD_TEMPLATE("sink",
+                            GST_PAD_SINK,
+                            GST_PAD_ALWAYS,
+                            GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=[1,max],"
+                                            "channels=2,layout=interleaved"));
 
 /* class initialization */
 
@@ -84,10 +73,7 @@ G_DEFINE_TYPE_WITH_CODE(
     GstPeautogain,
     gst_peautogain,
     GST_TYPE_AUDIO_FILTER,
-    GST_DEBUG_CATEGORY_INIT(gst_peautogain_debug_category,
-                            "peautogain",
-                            0,
-                            "debug category for peautogain element"));
+    GST_DEBUG_CATEGORY_INIT(gst_peautogain_debug_category, "peautogain", 0, "debug category for peautogain element"));
 
 static void gst_peautogain_class_init(GstPeautogainClass* klass) {
   GObjectClass* gobject_class = G_OBJECT_CLASS(klass);
@@ -99,15 +85,11 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
   /* Setting up pads and setting metadata should be moved to
      base_class_init if you intend to subclass this class. */
 
-  gst_element_class_add_static_pad_template(GST_ELEMENT_CLASS(klass),
-                                            &gst_peautogain_src_template);
-  gst_element_class_add_static_pad_template(GST_ELEMENT_CLASS(klass),
-                                            &gst_peautogain_sink_template);
+  gst_element_class_add_static_pad_template(GST_ELEMENT_CLASS(klass), &gst_peautogain_src_template);
+  gst_element_class_add_static_pad_template(GST_ELEMENT_CLASS(klass), &gst_peautogain_sink_template);
 
-  gst_element_class_set_static_metadata(
-      GST_ELEMENT_CLASS(klass), "PulseEffects ebur128 level meter", "Generic",
-      "PulseEffects ebur128 level meter",
-      "Wellington <wellingtonwallace@gmail.com>");
+  gst_element_class_set_static_metadata(GST_ELEMENT_CLASS(klass), "PulseEffects ebur128 level meter", "Generic",
+                                        "PulseEffects ebur128 level meter", "Wellington <wellingtonwallace@gmail.com>");
 
   /* define virtual function pointers */
 
@@ -116,95 +98,70 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
   gobject_class->finalize = gst_peautogain_finalize;
 
   audio_filter_class->setup = GST_DEBUG_FUNCPTR(gst_peautogain_setup);
-  base_transform_class->transform_ip =
-      GST_DEBUG_FUNCPTR(gst_peautogain_transform_ip);
+  base_transform_class->transform_ip = GST_DEBUG_FUNCPTR(gst_peautogain_transform_ip);
   base_transform_class->transform_ip_on_passthrough = false;
 
   /* define properties */
 
   g_object_class_install_property(
       gobject_class, PROP_TARGET,
-      g_param_spec_float("target", "Target Level",
-                         "Target loudness level (in LUFS)", -100.0f, 0.0f,
-                         -23.0f,
-                         static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                                  G_PARAM_STATIC_STRINGS)));
+      g_param_spec_float("target", "Target Level", "Target loudness level (in LUFS)", -100.0f, 0.0f, -23.0f,
+                         static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
       gobject_class, PROP_WEIGHT_M,
-      g_param_spec_int("weight-m", "Weight 0", "Momentary loudness weight", 0,
-                       100, 1,
-                       static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                                G_PARAM_STATIC_STRINGS)));
+      g_param_spec_int("weight-m", "Weight 0", "Momentary loudness weight", 0, 100, 1,
+                       static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
       gobject_class, PROP_WEIGHT_S,
-      g_param_spec_int("weight-s", "Weight 1", "Short term loudness weight", 0,
-                       100, 1,
-                       static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                                G_PARAM_STATIC_STRINGS)));
+      g_param_spec_int("weight-s", "Weight 1", "Short term loudness weight", 0, 100, 1,
+                       static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
       gobject_class, PROP_WEIGHT_I,
-      g_param_spec_int("weight-i", "Weight 2", "Integrated loudness weight", 0,
-                       100, 1,
-                       static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                                G_PARAM_STATIC_STRINGS)));
+      g_param_spec_int("weight-i", "Weight 2", "Integrated loudness weight", 0, 100, 1,
+                       static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
       gobject_class, PROP_M,
-      g_param_spec_float(
-          "m", "Momentary Level", "Momentary loudness level (in LUFS)",
-          -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
-          static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
+      g_param_spec_float("m", "Momentary Level", "Momentary loudness level (in LUFS)", -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
+                         static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
       gobject_class, PROP_S,
-      g_param_spec_float(
-          "s", "Short Term Level", "Short term loudness level (in LUFS)",
-          -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
-          static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
+      g_param_spec_float("s", "Short Term Level", "Short term loudness level (in LUFS)", -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
+                         static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
       gobject_class, PROP_I,
-      g_param_spec_float(
-          "i", "Integrated Level", "Integrated loudness level (in LUFS)",
-          -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
-          static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
+      g_param_spec_float("i", "Integrated Level", "Integrated loudness level (in LUFS)", -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
+                         static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
       gobject_class, PROP_R,
-      g_param_spec_float(
-          "r", "Relative Level", "Relative threshold level (in LUFS)",
-          -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
-          static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
+      g_param_spec_float("r", "Relative Level", "Relative threshold level (in LUFS)", -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
+                         static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
       gobject_class, PROP_L,
-      g_param_spec_float(
-          "l", "Loudness Level", "Estimated Loudness level (in LUFS)",
-          -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
-          static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
+      g_param_spec_float("l", "Loudness Level", "Estimated Loudness level (in LUFS)", -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
+                         static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
       gobject_class, PROP_G,
-      g_param_spec_float(
-          "g", "Gain", "Correction gain", -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
-          static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
+      g_param_spec_float("g", "Gain", "Correction gain", -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
+                         static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
       gobject_class, PROP_NOTIFY,
-      g_param_spec_boolean("notify-host", "Notify Host",
-                           "Notify host of variable changes", true,
-                           static_cast<GParamFlags>(G_PARAM_READWRITE |
-                                                    G_PARAM_STATIC_STRINGS)));
+      g_param_spec_boolean("notify-host", "Notify Host", "Notify host of variable changes", true,
+                           static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
       gobject_class, PROP_LRA,
-      g_param_spec_float(
-          "lra", "Loudness Range", "Loudness Range (in LUFS)", -G_MAXFLOAT,
-          G_MAXFLOAT, 0.0f,
-          static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
+      g_param_spec_float("lra", "Loudness Range", "Loudness Range (in LUFS)", -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
+                         static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
 }
 
 static void gst_peautogain_init(GstPeautogain* peautogain) {
@@ -230,10 +187,7 @@ static void gst_peautogain_init(GstPeautogain* peautogain) {
   gst_base_transform_set_in_place(GST_BASE_TRANSFORM(peautogain), true);
 }
 
-void gst_peautogain_set_property(GObject* object,
-                                 guint property_id,
-                                 const GValue* value,
-                                 GParamSpec* pspec) {
+void gst_peautogain_set_property(GObject* object, guint property_id, const GValue* value, GParamSpec* pspec) {
   GstPeautogain* peautogain = GST_PEAUTOGAIN(object);
 
   GST_DEBUG_OBJECT(peautogain, "set_property");
@@ -260,10 +214,7 @@ void gst_peautogain_set_property(GObject* object,
   }
 }
 
-void gst_peautogain_get_property(GObject* object,
-                                 guint property_id,
-                                 GValue* value,
-                                 GParamSpec* pspec) {
+void gst_peautogain_get_property(GObject* object, guint property_id, GValue* value, GParamSpec* pspec) {
   GstPeautogain* peautogain = GST_PEAUTOGAIN(object);
 
   GST_DEBUG_OBJECT(peautogain, "get_property");
@@ -311,8 +262,7 @@ void gst_peautogain_get_property(GObject* object,
   }
 }
 
-static gboolean gst_peautogain_setup(GstAudioFilter* filter,
-                                     const GstAudioInfo* info) {
+static gboolean gst_peautogain_setup(GstAudioFilter* filter, const GstAudioInfo* info) {
   GstPeautogain* peautogain = GST_PEAUTOGAIN(filter);
 
   GST_DEBUG_OBJECT(peautogain, "setup");
@@ -323,10 +273,9 @@ static gboolean gst_peautogain_setup(GstAudioFilter* filter,
   peautogain->rate = info->rate;
 
   if (!peautogain->ready) {
-    peautogain->ebur_state =
-        ebur128_init(2, peautogain->rate,
-                     EBUR128_MODE_S | EBUR128_MODE_I | EBUR128_MODE_LRA |
-                         EBUR128_MODE_SAMPLE_PEAK | EBUR128_MODE_HISTOGRAM);
+    peautogain->ebur_state = ebur128_init(
+        2, peautogain->rate,
+        EBUR128_MODE_S | EBUR128_MODE_I | EBUR128_MODE_LRA | EBUR128_MODE_SAMPLE_PEAK | EBUR128_MODE_HISTOGRAM);
 
     ebur128_set_channel(peautogain->ebur_state, 0, EBUR128_LEFT);
     ebur128_set_channel(peautogain->ebur_state, 1, EBUR128_RIGHT);
@@ -335,8 +284,7 @@ static gboolean gst_peautogain_setup(GstAudioFilter* filter,
 
     /*notify every 0.1 seconds*/
 
-    peautogain->notify_samples =
-        GST_CLOCK_TIME_TO_FRAMES(GST_SECOND / 10, info->rate);
+    peautogain->notify_samples = GST_CLOCK_TIME_TO_FRAMES(GST_SECOND / 10, info->rate);
 
     peautogain->ready = true;
   }
@@ -344,8 +292,7 @@ static gboolean gst_peautogain_setup(GstAudioFilter* filter,
   return true;
 }
 
-static GstFlowReturn gst_peautogain_transform_ip(GstBaseTransform* trans,
-                                                 GstBuffer* buffer) {
+static GstFlowReturn gst_peautogain_transform_ip(GstBaseTransform* trans, GstBuffer* buffer) {
   GstPeautogain* peautogain = GST_PEAUTOGAIN(trans);
 
   GST_DEBUG_OBJECT(peautogain, "transform");
@@ -377,8 +324,7 @@ void gst_peautogain_finalize(GObject* object) {
   G_OBJECT_CLASS(gst_peautogain_parent_class)->finalize(object);
 }
 
-static void gst_peautogain_process(GstPeautogain* peautogain,
-                                   GstBuffer* buffer) {
+static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer) {
   GstMapInfo map;
   double relative, momentary, range;
   bool failed = false;
@@ -391,59 +337,50 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
 
   ebur128_add_frames_float(peautogain->ebur_state, data, num_samples);
 
-  if (EBUR128_SUCCESS !=
-      ebur128_relative_threshold(peautogain->ebur_state, &relative)) {
+  if (EBUR128_SUCCESS != ebur128_relative_threshold(peautogain->ebur_state, &relative)) {
     failed = true;
   } else {
     peautogain->relative = (float)relative;
   }
 
-  if (EBUR128_SUCCESS !=
-      ebur128_loudness_momentary(peautogain->ebur_state, &momentary)) {
+  if (EBUR128_SUCCESS != ebur128_loudness_momentary(peautogain->ebur_state, &momentary)) {
     failed = true;
   } else {
     peautogain->momentary = (float)momentary;
   }
 
-  if (EBUR128_SUCCESS !=
-      ebur128_loudness_range(peautogain->ebur_state, &range)) {
+  if (EBUR128_SUCCESS != ebur128_loudness_range(peautogain->ebur_state, &range)) {
     failed = true;
   } else {
     peautogain->range = (float)range;
   }
 
-  if (peautogain->momentary > peautogain->relative &&
-      peautogain->relative > -70 && !failed) {
+  if (peautogain->momentary > peautogain->relative && peautogain->relative > -70 && !failed) {
     double shortterm, global, peak_L, peak_R;
 
-    if (EBUR128_SUCCESS !=
-        ebur128_loudness_shortterm(peautogain->ebur_state, &shortterm)) {
+    if (EBUR128_SUCCESS != ebur128_loudness_shortterm(peautogain->ebur_state, &shortterm)) {
       failed = true;
     } else {
       peautogain->shortterm = (float)shortterm;
     }
 
-    if (EBUR128_SUCCESS !=
-        ebur128_loudness_global(peautogain->ebur_state, &global)) {
+    if (EBUR128_SUCCESS != ebur128_loudness_global(peautogain->ebur_state, &global)) {
       failed = true;
     } else {
       peautogain->global = (float)global;
     }
 
-    if (EBUR128_SUCCESS !=
-        ebur128_prev_sample_peak(peautogain->ebur_state, 0, &peak_L)) {
+    if (EBUR128_SUCCESS != ebur128_prev_sample_peak(peautogain->ebur_state, 0, &peak_L)) {
       failed = true;
     }
 
-    if (EBUR128_SUCCESS !=
-        ebur128_prev_sample_peak(peautogain->ebur_state, 1, &peak_R)) {
+    if (EBUR128_SUCCESS != ebur128_prev_sample_peak(peautogain->ebur_state, 1, &peak_R)) {
       failed = true;
     }
 
     if (!failed) {
       peautogain->loudness =
-          (peautogain->weight_m * peautogain->momentary +
-           peautogain->weight_s * peautogain->shortterm +
+          (peautogain->weight_m * peautogain->momentary + peautogain->weight_s * peautogain->shortterm +
            peautogain->weight_i * peautogain->global) /
           (peautogain->weight_m + peautogain->weight_s + peautogain->weight_i);
 
@@ -494,8 +431,7 @@ static void gst_peautogain_process(GstPeautogain* peautogain,
 static gboolean plugin_init(GstPlugin* plugin) {
   /* FIXME Remember to set the rank if it's an element that is meant
      to be autoplugged by decodebin. */
-  return gst_element_register(plugin, "peautogain", GST_RANK_NONE,
-                              GST_TYPE_PEAUTOGAIN);
+  return gst_element_register(plugin, "peautogain", GST_RANK_NONE, GST_TYPE_PEAUTOGAIN);
 }
 
 GST_PLUGIN_DEFINE(GST_VERSION_MAJOR,

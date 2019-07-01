@@ -10,10 +10,10 @@ license=('GPL3')
 depends=(gtk3 gtkmm3 glibmm libpulse gstreamer gst-plugins-good gst-plugins-bad
         lilv boost-libs libsigc++ libsndfile libsamplerate zita-convolver
         libebur128)
-optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
+optdepends=('calf: limiter, multiband compressor, exciter, bass enhancer and others'
             'zam-plugins: maximizer'
             'rubberband: pitch shifting'
-            'lsp-plugins: equalizer, delay'
+            'lsp-plugins: equalizer, sidechain compressor and delay'
             'mda.lv2: loudness'
             'yelp: documentation')
 makedepends=('meson' 'boost' 'itstool')

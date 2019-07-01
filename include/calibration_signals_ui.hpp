@@ -11,8 +11,7 @@
 
 class CalibrationSignalsUi : public Gtk::Grid {
  public:
-  CalibrationSignalsUi(BaseObjectType* cobject,
-                       const Glib::RefPtr<Gtk::Builder>& builder);
+  CalibrationSignalsUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
 
   virtual ~CalibrationSignalsUi();
 

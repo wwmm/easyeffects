@@ -1,8 +1,7 @@
 #include "calibration_mic_ui.hpp"
 #include "util.hpp"
 
-CalibrationMicUi::CalibrationMicUi(BaseObjectType* cobject,
-                                   const Glib::RefPtr<Gtk::Builder>& builder)
+CalibrationMicUi::CalibrationMicUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder)
     : Gtk::Grid(cobject), cm(std::make_unique<CalibrationMic>()) {
   // loading glade widgets
 
@@ -16,11 +15,9 @@ CalibrationMicUi::CalibrationMicUi(BaseObjectType* cobject,
     spinner->start();
   });
 
-  subtract_noise->signal_toggled().connect(
-      [=]() { cm->subtract_noise = subtract_noise->get_active(); });
+  subtract_noise->signal_toggled().connect([=]() { cm->subtract_noise = subtract_noise->get_active(); });
 
-  time_window->signal_value_changed().connect(
-      [=]() { cm->set_window(time_window->get_value()); });
+  time_window->signal_value_changed().connect([=]() { cm->set_window(time_window->get_value()); });
 
   cm->noise_measured.connect([=]() { spinner->stop(); });
 

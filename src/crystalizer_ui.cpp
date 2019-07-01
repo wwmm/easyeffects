@@ -47,8 +47,7 @@ void CrystalizerUi::build_bands(const int& nbands) {
   auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
   for (int n = 0; n < nbands; n++) {
-    auto B = Gtk::Builder::create_from_resource(
-        "/com/github/wwmm/pulseeffects/ui/crystalizer_band.glade");
+    auto B = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/crystalizer_band.glade");
 
     Gtk::Grid* band_grid;
     Gtk::Label* band_label;
@@ -61,8 +60,7 @@ void CrystalizerUi::build_bands(const int& nbands) {
     B->get_widget("band_bypass", band_bypass);
     B->get_widget("band_scale", band_scale);
 
-    auto band_intensity = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(
-        B->get_object("band_intensity"));
+    auto band_intensity = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(B->get_object("band_intensity"));
 
     connections.push_back(band_mute->signal_toggled().connect([=]() {
       if (band_mute->get_active()) {
@@ -72,12 +70,9 @@ void CrystalizerUi::build_bands(const int& nbands) {
       }
     }));
 
-    settings->bind(std::string("intensity-band" + std::to_string(n)),
-                   band_intensity.get(), "value", flag);
-    settings->bind(std::string("mute-band" + std::to_string(n)), band_mute,
-                   "active", flag);
-    settings->bind(std::string("bypass-band" + std::to_string(n)), band_bypass,
-                   "active", flag);
+    settings->bind(std::string("intensity-band" + std::to_string(n)), band_intensity.get(), "value", flag);
+    settings->bind(std::string("mute-band" + std::to_string(n)), band_mute, "active", flag);
+    settings->bind(std::string("bypass-band" + std::to_string(n)), band_bypass, "active", flag);
 
     bands_grid->add(*band_grid);
 

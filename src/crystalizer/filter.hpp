@@ -12,15 +12,9 @@ class Filter {
 
   bool ready = false;
 
-  void create_lowpass(const int& nsamples,
-                      const float& rate,
-                      const float& cutoff,
-                      const float& transition_band);
+  void create_lowpass(const int& nsamples, const float& rate, const float& cutoff, const float& transition_band);
 
-  void create_highpass(const int& nsamples,
-                       const float& rate,
-                       const float& cutoff,
-                       const float& transition_band);
+  void create_highpass(const int& nsamples, const float& rate, const float& cutoff, const float& transition_band);
 
   void create_bandpass(const int& nsamples,
                        const float& rate,
@@ -40,13 +34,9 @@ class Filter {
 
   Convproc* conv = nullptr;
 
-  void create_lowpass_kernel(const float& rate,
-                             const float& cutoff,
-                             const float& transition_band);
+  void create_lowpass_kernel(const float& rate, const float& cutoff, const float& transition_band);
 
-  void create_highpass_kernel(const float& rate,
-                              const float& cutoff,
-                              const float& transition_band);
+  void create_highpass_kernel(const float& rate, const float& cutoff, const float& transition_band);
 
   void create_bandpass_kernel(const float& rate,
                               const float& cutoff1,

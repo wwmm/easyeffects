@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-21 12:54-0300\n"
+"POT-Creation-Date: 2019-06-19 12:32-0300\n"
 "PO-Revision-Date: 2019-01-17 18:30+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,8 +18,8 @@ msgstr ""
 "X-Generator: Poedit 2.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: data/ui/application.glade:41 src/calibration_ui.cpp:48
-#: src/calibration_ui.cpp:175
+#: data/ui/application.glade:41 src/calibration_ui.cpp:39
+#: src/calibration_ui.cpp:164
 msgid "Test Signals"
 msgstr "Uji Sinyal"
 
@@ -40,8 +40,8 @@ msgstr "Bantuan"
 
 #: data/ui/application.glade:180 data/ui/filter.glade:204
 #: data/ui/equalizer.glade:309 data/ui/reverb.glade:284
-#: data/ui/crossfeed.glade:47 src/presets_menu_ui.cpp:124
-#: src/presets_menu_ui.cpp:289 src/presets_menu_ui.cpp:306
+#: data/ui/crossfeed.glade:47 src/presets_menu_ui.cpp:115
+#: src/presets_menu_ui.cpp:274 src/presets_menu_ui.cpp:291
 msgid "Presets"
 msgstr "Preset"
 
@@ -271,6 +271,11 @@ msgstr ""
 #, fuzzy
 msgid "Configuration"
 msgstr "Durasi"
+
+#: data/ui/pulse_info.glade:487
+#, fuzzy
+msgid "Resamplers"
+msgstr "Modus Penyampling"
 
 #: data/ui/autogain.glade:24
 msgid "Auto Gain"
@@ -1053,11 +1058,9 @@ msgstr "Crossfeed"
 msgid "Maximizer"
 msgstr "Pemaksimal Gain"
 
-#: data/ui/maximizer.glade:269 data/ui/multiband_gate.glade:722
-#: data/ui/multiband_gate.glade:1152 data/ui/multiband_gate.glade:1562
-#: data/ui/multiband_gate.glade:1972 data/ui/deesser.glade:748
-msgid "Reduction"
-msgstr "Pengurangan"
+#: data/ui/maximizer.glade:269 data/ui/gate.glade:190
+msgid "Gain Reduction"
+msgstr "Pengurangan Kuatan"
 
 #: data/ui/loudness.glade:196
 msgid "Link"
@@ -1074,10 +1077,6 @@ msgstr "Deteksi"
 #: data/ui/gate.glade:176
 msgid "Stereo Link"
 msgstr "Penautan Stereo"
-
-#: data/ui/gate.glade:190
-msgid "Gain Reduction"
-msgstr "Pengurangan Kuatan"
 
 #: data/ui/gate.glade:235
 msgid "Average"
@@ -1096,6 +1095,12 @@ msgstr "Gating"
 #: data/ui/multiband_gate.glade:70
 msgid "Multiband Gate"
 msgstr "Multiband Gate"
+
+#: data/ui/multiband_gate.glade:722 data/ui/multiband_gate.glade:1152
+#: data/ui/multiband_gate.glade:1562 data/ui/multiband_gate.glade:1972
+#: data/ui/deesser.glade:748
+msgid "Reduction"
+msgstr "Pengurangan"
 
 #: data/ui/deesser.glade:61
 msgid "Deesser"
@@ -1153,7 +1158,7 @@ msgstr "Durasi"
 msgid "Samples"
 msgstr "Jumlah Sampel"
 
-#: data/ui/convolver.glade:342 src/convolver_ui.cpp:269
+#: data/ui/convolver.glade:342 src/convolver_ui.cpp:251
 msgid "Impulse Response"
 msgstr "Respons Impuls"
 
@@ -1324,7 +1329,7 @@ msgid ""
 msgstr ""
 
 #: data/ui/presets_menu.glade:86 data/ui/presets_menu.glade:195
-#: src/presets_menu_ui.cpp:119
+#: src/presets_menu_ui.cpp:110
 msgid "Import Presets"
 msgstr "Muat Preset"
 
@@ -1473,77 +1478,57 @@ msgstr "limiter;compressor;reverberation;equalizer;autovolume;"
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:220
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:217
 msgid "\"Presets\""
 msgstr "Preset"
 
-#: src/application.cpp:20
+#: src/application.cpp:19
 msgid "Quit PulseEffects. Useful when running in service mode."
 msgstr "Tutup PulseEffects. Berguna Ketika Berjalan dalam Modus Layanan."
 
-#: src/application.cpp:23
+#: src/application.cpp:21
 msgid "Show available presets."
 msgstr "Tampilkan Preset Tersedia."
 
-#: src/application.cpp:27
+#: src/application.cpp:24
 msgid "Load a preset. Example: pulseeffects -l music"
 msgstr "Muat Preset. Misalkan: pulseeffects -l music"
 
-#: src/application.cpp:30
+#: src/application.cpp:26
 msgid "Reset PulseEffects."
 msgstr "Atur Ulang PulseEffects"
 
-#: src/application.cpp:58
+#: src/application.cpp:199
 #, fuzzy
 msgid "Output Presets: "
 msgstr "Preset Output:"
 
-#: src/application.cpp:66
+#: src/application.cpp:207
 #, fuzzy
 msgid "Input Presets: "
 msgstr "Preset Input"
 
-#: src/application.cpp:268
-msgid "PulseEffects was updated"
-msgstr "PulseEffects telah dimutakhirkan"
-
-#: src/application.cpp:271
-msgid ""
-"It is recommended to reset its configuration after an update. Do you want to "
-"do this?"
-msgstr ""
-"Dianjurkan untuk mengatur ulang konfigurasi setelah pemutakhiran. Tetap "
-"Lanjutkan?"
-
-#: src/application.cpp:274
-msgid "Yes"
-msgstr "Ya"
-
-#: src/application.cpp:275
-msgid "No"
-msgstr "Tidak"
-
-#: src/effects_base_ui.cpp:28
+#: src/effects_base_ui.cpp:27
 msgid "Applications"
 msgstr "Aplikasi"
 
-#: src/blacklist_settings_ui.cpp:83
+#: src/blacklist_settings_ui.cpp:71
 msgid "Blacklist"
 msgstr "Daftar Blokir"
 
-#: src/general_settings_ui.cpp:137
+#: src/general_settings_ui.cpp:121
 msgid "General"
 msgstr "Umum"
 
-#: src/pulse_settings_ui.cpp:144
+#: src/pulse_settings_ui.cpp:124
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
 
-#: src/presets_menu_ui.cpp:120 src/convolver_ui.cpp:265
+#: src/presets_menu_ui.cpp:111 src/convolver_ui.cpp:247
 msgid "Open"
 msgstr "Buka"
 
-#: src/presets_menu_ui.cpp:120 src/convolver_ui.cpp:265
+#: src/presets_menu_ui.cpp:111 src/convolver_ui.cpp:247
 msgid "Cancel"
 msgstr "Batal"
 
@@ -1555,25 +1540,41 @@ msgstr "terjeda"
 msgid "playing"
 msgstr "memutar"
 
-#: src/calibration_ui.cpp:182
+#: src/calibration_ui.cpp:171
 msgid "Calibration Microphone"
 msgstr "Kalibrasikan Mikrofon"
 
-#: src/convolver_ui.cpp:264
+#: src/convolver_ui.cpp:246
 msgid "Import Impulse File"
 msgstr "Muat Berkas Impuls"
 
-#: src/convolver_ui.cpp:307 src/convolver_ui.cpp:308 src/convolver_ui.cpp:310
+#: src/convolver_ui.cpp:290 src/convolver_ui.cpp:291 src/convolver_ui.cpp:293
 msgid "Failed"
 msgstr "Gagal"
 
-#: src/convolver_ui.cpp:312
+#: src/convolver_ui.cpp:295
 msgid "Could Not Load The Impulse File"
 msgstr "Tidak dapat Memuat Berkas Impuls"
 
-#: src/equalizer_ui.cpp:335 src/equalizer_ui.cpp:473
+#: src/equalizer_ui.cpp:307 src/equalizer_ui.cpp:426
 msgid "infinity"
 msgstr "Tak Terbatas"
+
+#~ msgid "PulseEffects was updated"
+#~ msgstr "PulseEffects telah dimutakhirkan"
+
+#~ msgid ""
+#~ "It is recommended to reset its configuration after an update. Do you want "
+#~ "to do this?"
+#~ msgstr ""
+#~ "Dianjurkan untuk mengatur ulang konfigurasi setelah pemutakhiran. Tetap "
+#~ "Lanjutkan?"
+
+#~ msgid "Yes"
+#~ msgstr "Ya"
+
+#~ msgid "No"
+#~ msgstr "Tidak"
 
 #, fuzzy
 #~ msgid "Intensities"
