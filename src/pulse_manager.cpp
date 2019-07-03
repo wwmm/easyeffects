@@ -408,7 +408,7 @@ std::shared_ptr<mySinkInfo> PulseManager::get_sink_info(std::string name) {
   if (!data.failed) {
     return si;
   } else {
-    util::warning(log_tag + " failed to get sink info: " + name);
+    util::debug(log_tag + " failed to get sink info: " + name);
 
     return nullptr;
   }
@@ -468,7 +468,7 @@ std::shared_ptr<mySourceInfo> PulseManager::get_source_info(std::string name) {
   if (!data.failed) {
     return si;
   } else {
-    util::warning(log_tag + " failed to get source info:" + name);
+    util::debug(log_tag + " failed to get source info:" + name);
 
     return nullptr;
   }
