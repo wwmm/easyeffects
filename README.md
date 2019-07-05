@@ -77,6 +77,7 @@ Version 1.12.5 or higher
 - [Gentoo](https://packages.gentoo.org/packages/media-sound/pulseeffects/)
 - [ROSA](https://abf.io/import/pulseeffects/)
 - [ALT Linux](https://packages.altlinux.org/Sisyphus/srpms/pulseeffects/)
+- [Fedora GNU/Linux](https://apps.fedoraproject.org/packages/pulseeffects)
 
 #### Community packages
 
