@@ -32,6 +32,7 @@ class Application : public Gtk::Application {
 
  private:
   std::string log_tag = "application: ";
+  std::string last_sink_dev_name, last_source_dev_name;
 
   bool running_as_service = false;
 
