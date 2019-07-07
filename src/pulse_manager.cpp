@@ -169,6 +169,12 @@ void PulseManager::subscribe_to_events() {
                       si->rate = info->sample_spec.rate;
                       si->format = pa_sample_format_to_string(info->sample_spec.format);
 
+                      if (info->active_port != nullptr) {
+                        si->active_port = info->active_port->name;
+                      } else {
+                        si->active_port = "null";
+                      }
+
                       Glib::signal_idle().connect_once([pm, si = move(si)] { pm->source_added.emit(move(si)); });
                     }
                   }
@@ -188,6 +194,12 @@ void PulseManager::subscribe_to_events() {
                     si->description = info->description;
                     si->rate = info->sample_spec.rate;
                     si->format = pa_sample_format_to_string(info->sample_spec.format);
+
+                    if (info->active_port != nullptr) {
+                      si->active_port = info->active_port->name;
+                    } else {
+                      si->active_port = "null";
+                    }
 
                     if (si->name == "PulseEffects_mic.monitor") {
                       pm->mic_sink_info->rate = si->rate;
@@ -223,6 +235,12 @@ void PulseManager::subscribe_to_events() {
                       si->rate = info->sample_spec.rate;
                       si->format = pa_sample_format_to_string(info->sample_spec.format);
 
+                      if (info->active_port != nullptr) {
+                        si->active_port = info->active_port->name;
+                      } else {
+                        si->active_port = "null";
+                      }
+
                       Glib::signal_idle().connect_once([pm, si = move(si)] { pm->sink_added.emit(move(si)); });
                     }
                   }
@@ -241,6 +259,12 @@ void PulseManager::subscribe_to_events() {
                     si->description = info->description;
                     si->rate = info->sample_spec.rate;
                     si->format = pa_sample_format_to_string(info->sample_spec.format);
+
+                    if (info->active_port != nullptr) {
+                      si->active_port = info->active_port->name;
+                    } else {
+                      si->active_port = "null";
+                    }
 
                     if (si->name == "PulseEffects_apps") {
                       pm->apps_sink_info->rate = si->rate;
