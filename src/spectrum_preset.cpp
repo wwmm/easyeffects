@@ -1,8 +1,6 @@
 #include "spectrum_preset.hpp"
 
-SpectrumPreset::SpectrumPreset()
-    : settings(Gio::Settings::create("com.github.wwmm.pulseeffects.spectrum")) {
-}
+SpectrumPreset::SpectrumPreset() : settings(Gio::Settings::create("com.github.wwmm.pulseeffects.spectrum")) {}
 
 void SpectrumPreset::save(boost::property_tree::ptree& root,
                           const std::string& section,
@@ -16,13 +14,11 @@ void SpectrumPreset::save(boost::property_tree::ptree& root,
 
   root.put("spectrum.height", settings->get_int("height"));
 
-  root.put("spectrum.use-custom-color",
-           settings->get_boolean("use-custom-color"));
+  root.put("spectrum.use-custom-color", settings->get_boolean("use-custom-color"));
 
   root.put("spectrum.fill", settings->get_boolean("fill"));
 
-  root.put("spectrum.show-bar-border",
-           settings->get_boolean("show-bar-border"));
+  root.put("spectrum.show-bar-border", settings->get_boolean("show-bar-border"));
 
   root.put("spectrum.scale", settings->get_double("scale"));
 
@@ -68,13 +64,11 @@ void SpectrumPreset::load(boost::property_tree::ptree& root,
 
   update_key<int>(root, settings, "height", "spectrum.height");
 
-  update_key<bool>(root, settings, "use-custom-color",
-                   "spectrum.use-custom-color");
+  update_key<bool>(root, settings, "use-custom-color", "spectrum.use-custom-color");
 
   update_key<bool>(root, settings, "fill", "spectrum.fill");
 
-  update_key<bool>(root, settings, "show-bar-border",
-                   "spectrum.show-bar-border");
+  update_key<bool>(root, settings, "show-bar-border", "spectrum.show-bar-border");
 
   update_key<double>(root, settings, "scale", "spectrum.scale");
 
@@ -117,12 +111,10 @@ void SpectrumPreset::load(boost::property_tree::ptree& root,
   }
 }
 
-void SpectrumPreset::write(PresetType preset_type,
-                           boost::property_tree::ptree& root) {
+void SpectrumPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
   save(root, "", settings);
 }
 
-void SpectrumPreset::read(PresetType preset_type,
-                          boost::property_tree::ptree& root) {
+void SpectrumPreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
   load(root, "", settings);
 }

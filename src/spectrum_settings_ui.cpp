@@ -3,9 +3,7 @@
 
 namespace {
 
-gboolean spectrum_type_enum_to_int(GValue* value,
-                                   GVariant* variant,
-                                   gpointer user_data) {
+gboolean spectrum_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("Bars")) {
@@ -17,9 +15,7 @@ gboolean spectrum_type_enum_to_int(GValue* value,
   return true;
 }
 
-GVariant* int_to_spectrum_type_enum(const GValue* value,
-                                    const GVariantType* expected_type,
-                                    gpointer user_data) {
+GVariant* int_to_spectrum_type_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -31,13 +27,10 @@ GVariant* int_to_spectrum_type_enum(const GValue* value,
 
 }  // namespace
 
-SpectrumSettingsUi::SpectrumSettingsUi(
-    BaseObjectType* cobject,
-    const Glib::RefPtr<Gtk::Builder>& builder,
-    Application* application)
-    : Gtk::Grid(cobject),
-      settings(Gio::Settings::create("com.github.wwmm.pulseeffects.spectrum")),
-      app(application) {
+SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
+                                       const Glib::RefPtr<Gtk::Builder>& builder,
+                                       Application* application)
+    : Gtk::Grid(cobject), settings(Gio::Settings::create("com.github.wwmm.pulseeffects.spectrum")), app(application) {
   // loading glade widgets
 
   builder->get_widget("show", show);
@@ -58,45 +51,41 @@ SpectrumSettingsUi::SpectrumSettingsUi(
 
   // signals connection
 
-  connections.push_back(
-      settings->signal_changed("color").connect([&](auto key) {
-        Glib::Variant<std::vector<double>> v;
+  connections.push_back(settings->signal_changed("color").connect([&](auto key) {
+    Glib::Variant<std::vector<double>> v;
 
-        settings->get_value("color", v);
+    settings->get_value("color", v);
 
-        auto rgba = v.get();
+    auto rgba = v.get();
 
-        Gdk::RGBA color;
+    Gdk::RGBA color;
 
-        color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
+    color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
 
-        spectrum_color_button->set_rgba(color);
-      }));
+    spectrum_color_button->set_rgba(color);
+  }));
 
-  connections.push_back(
-      settings->signal_changed("gradient-color").connect([&](auto key) {
-        Glib::Variant<std::vector<double>> v;
+  connections.push_back(settings->signal_changed("gradient-color").connect([&](auto key) {
+    Glib::Variant<std::vector<double>> v;
 
-        settings->get_value("gradient-color", v);
+    settings->get_value("gradient-color", v);
 
-        auto rgba = v.get();
+    auto rgba = v.get();
 
-        Gdk::RGBA color;
+    Gdk::RGBA color;
 
-        color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
+    color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
 
-        gradient_color_button->set_rgba(color);
-      }));
+    gradient_color_button->set_rgba(color);
+  }));
 
-  show->signal_state_set().connect(
-      sigc::mem_fun(*this, &SpectrumSettingsUi::on_show_spectrum), false);
+  show->signal_state_set().connect(sigc::mem_fun(*this, &SpectrumSettingsUi::on_show_spectrum), false);
 
   spectrum_color_button->signal_color_set().connect([&]() {
     auto spectrum_color = spectrum_color_button->get_rgba();
 
     auto v = Glib::Variant<std::vector<double>>::create(std::vector<double>{
-        spectrum_color.get_red(), spectrum_color.get_green(),
-        spectrum_color.get_blue(), spectrum_color.get_alpha()});
+        spectrum_color.get_red(), spectrum_color.get_green(), spectrum_color.get_blue(), spectrum_color.get_alpha()});
 
     settings->set_value("color", v);
   });
@@ -105,18 +94,15 @@ SpectrumSettingsUi::SpectrumSettingsUi(
     auto color = gradient_color_button->get_rgba();
 
     auto v = Glib::Variant<std::vector<double>>::create(
-        std::vector<double>{color.get_red(), color.get_green(),
-                            color.get_blue(), color.get_alpha()});
+        std::vector<double>{color.get_red(), color.get_green(), color.get_blue(), color.get_alpha()});
 
     settings->set_value("gradient-color", v);
   });
 
-  use_custom_color->signal_state_set().connect(
-      sigc::mem_fun(*this, &SpectrumSettingsUi::on_use_custom_color), false);
+  use_custom_color->signal_state_set().connect(sigc::mem_fun(*this, &SpectrumSettingsUi::on_use_custom_color), false);
 
   sampling_freq->signal_value_changed().connect(
-      sigc::mem_fun(*this, &SpectrumSettingsUi::on_spectrum_sampling_freq_set),
-      false);
+      sigc::mem_fun(*this, &SpectrumSettingsUi::on_spectrum_sampling_freq_set), false);
 
   auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
@@ -135,10 +121,8 @@ SpectrumSettingsUi::SpectrumSettingsUi(
   settings->bind("use-custom-color", spectrum_color_button, "sensitive", flag);
   settings->bind("use-custom-color", gradient_color_button, "sensitive", flag);
 
-  g_settings_bind_with_mapping(settings->gobj(), "type", spectrum_type->gobj(),
-                               "active", G_SETTINGS_BIND_DEFAULT,
-                               spectrum_type_enum_to_int,
-                               int_to_spectrum_type_enum, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings->gobj(), "type", spectrum_type->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+                               spectrum_type_enum_to_int, int_to_spectrum_type_enum, nullptr, nullptr);
 }
 
 SpectrumSettingsUi::~SpectrumSettingsUi() {
@@ -150,8 +134,7 @@ SpectrumSettingsUi::~SpectrumSettingsUi() {
 }
 
 void SpectrumSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
-  auto builder = Gtk::Builder::create_from_resource(
-      "/com/github/wwmm/pulseeffects/ui/spectrum_settings.glade");
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/spectrum_settings.glade");
 
   SpectrumSettingsUi* ui;
 
