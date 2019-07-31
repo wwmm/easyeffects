@@ -144,6 +144,8 @@ class PulseManager {
 
   std::array<std::string, 1> blacklist_media_role = {"event"};
 
+  std::array<std::string, 1> blacklist_app_id = {"org.PulseAudio.pavucontrol"};
+
   static void context_state_cb(pa_context* ctx, void* data);
 
   void subscribe_to_events();

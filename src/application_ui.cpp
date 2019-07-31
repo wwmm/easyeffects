@@ -75,13 +75,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     presets_menu_label->set_text(settings->get_string("last-used-preset"));
   }));
 
-  // sink inputs widgets
-
-  connections.push_back(app->pm->sink_input_added.connect(sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_added)));
-  connections.push_back(
-      app->pm->sink_input_changed.connect(sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_changed)));
-  connections.push_back(
-      app->pm->sink_input_removed.connect(sigc::mem_fun(*sie_ui, &SinkInputEffectsUi::on_app_removed)));
+  // headerbar info
 
   connections.push_back(app->sie->new_latency.connect([=](int latency) {
     sie_latency = latency;
@@ -94,15 +88,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   if (app->sie->playing) {
     app->sie->get_latency();
   }
-
-  // source outputs widgets
-
-  connections.push_back(
-      app->pm->source_output_added.connect(sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_added)));
-  connections.push_back(
-      app->pm->source_output_changed.connect(sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_changed)));
-  connections.push_back(
-      app->pm->source_output_removed.connect(sigc::mem_fun(*soe_ui, &SourceOutputEffectsUi::on_app_removed)));
 
   connections.push_back(app->soe->new_latency.connect([=](int latency) {
     soe_latency = latency;
