@@ -5,6 +5,8 @@
 ### Added
 
 - Improved preset auto loading. This should fix https://github.com/wwmm/pulseeffects/issues/520
+- Improved built-in applications blacklist. We now use the applications id where possible as they are not changed by
+  translations. This should avoid Pavucontrol probes being shown in PE window.
 
 ## [4.6.5]
 
