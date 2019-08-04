@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [4.6.6]
+
 ### Added
 
 - Improved preset auto loading. This should fix https://github.com/wwmm/pulseeffects/issues/520
