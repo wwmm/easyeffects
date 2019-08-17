@@ -104,7 +104,10 @@ SinkInputEffectsUi::SinkInputEffectsUi(BaseObjectType* cobject,
   level_meters_connections();
   up_down_connections();
 
-  sie->new_spectrum.connect(sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum));
+  connections.push_back(sie->new_spectrum.connect(sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum)));
+  connections.push_back(sie->pm->sink_input_added.connect(sigc::mem_fun(this, &SinkInputEffectsUi::on_app_added)));
+  connections.push_back(sie->pm->sink_input_changed.connect(sigc::mem_fun(this, &SinkInputEffectsUi::on_app_changed)));
+  connections.push_back(sie->pm->sink_input_removed.connect(sigc::mem_fun(this, &SinkInputEffectsUi::on_app_removed)));
 }
 
 SinkInputEffectsUi::~SinkInputEffectsUi() {
