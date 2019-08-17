@@ -61,7 +61,7 @@ Replaces: pulseeffects (<< 4.1.7-3)
 Description: Gstreamer convolver
  Simple Gstreamer crystalizer plugin based on
  the library Zita-convolver.
- 
+
 Package: gstreamer1.0-crystalizer-pulseeffects
 Architecture: any
 Depends: ${misc:Depends},
@@ -70,7 +70,7 @@ Provides: pecrystalizer, gstreamer1.0-crystalizer
 Description: Gstreamer crystalizer
  Simple Gstreamer plugin useful to add more dynamic range
  to songs that were overly compressed.
- 
+
 Package: gstreamer1.0-autogain-pulseeffects
 Architecture: any
 Depends: ${misc:Depends},
@@ -79,7 +79,7 @@ Provides: peautogain, gstreamer1.0-autogain
 Description: Gstreamer crystalizer
  Simple Gstreamer plugin that changes audio gain
  to match the levels recommended by the ebur128 standard.
- 
+
 Package: gstreamer1.0-adapter-pulseeffects
 Architecture: any
 Depends: ${misc:Depends},
