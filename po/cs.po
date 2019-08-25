@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-19 12:32-0300\n"
-"PO-Revision-Date: 2019-03-17 21:57+0100\n"
+"PO-Revision-Date: 2019-08-25 21:29+0200\n"
 "Last-Translator: Pavel Fric <pavelfric@seznam.cz>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "Language: cs\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 18.12.2\n"
+"X-Generator: Lokalize 19.04.0\n"
 
 #: data/ui/application.glade:41 src/calibration_ui.cpp:39
 #: src/calibration_ui.cpp:164
@@ -217,61 +217,55 @@ msgstr "Stav"
 
 #: data/ui/pulse_info.glade:76
 msgid "Version"
-msgstr ""
+msgstr "Verze"
 
 #: data/ui/pulse_info.glade:103
-#, fuzzy
 msgid "Default Sink"
-msgstr "Výchozí"
+msgstr "Výchozí zeslabení"
 
 #: data/ui/pulse_info.glade:115
-#, fuzzy
 msgid "Default Source"
-msgstr "Výchozí"
+msgstr "Výchozí zdroj"
 
 #: data/ui/pulse_info.glade:157
 msgid "Protocol"
-msgstr ""
+msgstr "Protokol"
 
 #: data/ui/pulse_info.glade:184
 msgid "Default Sample Format"
-msgstr ""
+msgstr "Výchozí formát vzorku"
 
 #: data/ui/pulse_info.glade:211
 msgid "Default Sampling Rate"
-msgstr ""
+msgstr "Výchozí rychlost vzorkování"
 
 #: data/ui/pulse_info.glade:265
-#, fuzzy
 msgid "Channel Mapping"
-msgstr "Kanály"
+msgstr "Přiřazení kanálu"
 
 #: data/ui/pulse_info.glade:290
 msgid "Server"
-msgstr ""
+msgstr "Server"
 
 #: data/ui/pulse_info.glade:335
 msgid "Modules"
-msgstr ""
+msgstr "Moduly"
 
 #: data/ui/pulse_info.glade:381
-#, fuzzy
 msgid "Clients"
-msgstr "Centy"
+msgstr "Klienti"
 
 #: data/ui/pulse_info.glade:444
 msgid "File"
-msgstr ""
+msgstr "Soubor"
 
 #: data/ui/pulse_info.glade:454
-#, fuzzy
 msgid "Configuration"
-msgstr "Doba trvání"
+msgstr "Nastavení"
 
 #: data/ui/pulse_info.glade:487
-#, fuzzy
 msgid "Resamplers"
-msgstr "Převzorkovač"
+msgstr "Převzorkovače"
 
 #: data/ui/autogain.glade:24
 msgid "Auto Gain"
@@ -279,15 +273,15 @@ msgstr "Automatické zesílení"
 
 #: data/ui/autogain.glade:149 data/ui/autogain.glade:528
 msgid "Momentary"
-msgstr "Chvilkový"
+msgstr "Chvilkové"
 
 #: data/ui/autogain.glade:164 data/ui/autogain.glade:541
 msgid "Short Term"
-msgstr "Jednorázový"
+msgstr "Jednorázové"
 
 #: data/ui/autogain.glade:179 data/ui/autogain.glade:554
 msgid "Integrated"
-msgstr "Sjednocený"
+msgstr "Sjednocené"
 
 #: data/ui/autogain.glade:195
 msgid "Target"
@@ -376,7 +370,7 @@ msgstr "Uvolnění"
 
 #: data/ui/limiter.glade:250 data/ui/compressor.glade:570
 msgid "Lookahead"
-msgstr "Dívat se do budoucna"
+msgstr "Výhled"
 
 #: data/ui/limiter.glade:285
 msgid "Oversampling"
@@ -388,7 +382,7 @@ msgstr "ASC"
 
 #: data/ui/limiter.glade:395
 msgid "Attenuation"
-msgstr "Zeslabování"
+msgstr "Tlumení"
 
 #: data/ui/compressor.glade:30 data/ui/compressor.glade:442
 #: data/ui/webrtc.glade:482 data/com.github.wwmm.pulseeffects.appdata.xml.in:52
@@ -422,7 +416,7 @@ msgstr "Poměr"
 #: data/ui/multiband_gate.glade:653 data/ui/multiband_gate.glade:1062
 #: data/ui/multiband_gate.glade:1472 data/ui/multiband_gate.glade:1882
 msgid "Knee"
-msgstr "Koleno"
+msgstr "Přechod"
 
 #: data/ui/compressor.glade:338 data/ui/multiband_compressor.glade:667
 #: data/ui/multiband_compressor.glade:1044
@@ -432,7 +426,7 @@ msgstr "Koleno"
 #: data/ui/multiband_gate.glade:1507 data/ui/multiband_gate.glade:1917
 #: data/ui/deesser.glade:522
 msgid "Makeup"
-msgstr "Zesílení na výstupu"
+msgstr "Pozvednutí"
 
 #: data/ui/compressor.glade:386 data/ui/multiband_compressor.glade:500
 #: data/ui/multiband_compressor.glade:872
@@ -466,16 +460,15 @@ msgstr "Předzesílení"
 
 #: data/ui/compressor.glade:535
 msgid "Reactivity"
-msgstr ""
+msgstr "Reaktivita"
 
 #: data/ui/compressor.glade:583
 msgid "Feed-forward"
-msgstr ""
+msgstr "Kanál-vpřed"
 
 #: data/ui/compressor.glade:584
-#, fuzzy
 msgid "Feed-back"
-msgstr "Kanál"
+msgstr "Kanál-zpět"
 
 #: data/ui/compressor.glade:598 data/ui/equalizer_band.glade:48
 msgid "Type"
@@ -507,7 +500,7 @@ msgstr "Dolní pásmo"
 
 #: data/ui/compressor.glade:615
 msgid "Uniform"
-msgstr ""
+msgstr "Rovnoměrný"
 
 #: data/ui/compressor.glade:629 data/ui/multiband_compressor.glade:283
 #: data/ui/equalizer.glade:200 data/ui/equalizer_band.glade:79
@@ -518,7 +511,7 @@ msgstr "Režim"
 
 #: data/ui/compressor.glade:643
 msgid "Middle"
-msgstr "Prostřední"
+msgstr "Střední"
 
 #: data/ui/compressor.glade:644
 msgid "Side"
@@ -601,7 +594,7 @@ msgstr "Spodní pásmo"
 
 #: data/ui/multiband_compressor.glade:1173 data/ui/multiband_gate.glade:1258
 msgid "Low Band"
-msgstr "Dolní pásmo"
+msgstr "Nízké pásmo"
 
 #: data/ui/multiband_compressor.glade:1551 data/ui/multiband_gate.glade:1668
 msgid "Mid Band"
@@ -609,7 +602,7 @@ msgstr "Střední pásmo"
 
 #: data/ui/multiband_compressor.glade:1929 data/ui/multiband_gate.glade:2078
 msgid "High Band"
-msgstr "Horní pásmo"
+msgstr "Vysoké pásmo"
 
 #: data/ui/filter.glade:31
 msgid "Filter"
@@ -625,7 +618,7 @@ msgstr "Disko"
 
 #: data/ui/filter.glade:147
 msgid "Distant Headphones"
-msgstr "Daleká sluchátka"
+msgstr "Vzdálená sluchátka"
 
 #: data/ui/filter.glade:159 data/ui/reverb.glade:235 data/ui/crossfeed.glade:72
 msgid "Default"
@@ -718,7 +711,7 @@ msgstr "Pásma"
 
 #: data/ui/equalizer.glade:209
 msgid "Flat Response"
-msgstr "Odpověď pod tónem"
+msgstr "Uhladit"
 
 #: data/ui/equalizer.glade:224
 msgid "Calculate Frequencies"
@@ -782,7 +775,7 @@ msgstr "LRX (MT)"
 
 #: data/ui/equalizer_band.glade:97
 msgid "APO (DR)"
-msgstr ""
+msgstr "APO (DR)"
 
 #: data/ui/equalizer_band.glade:109
 msgid "Slope"
@@ -938,7 +931,7 @@ msgstr "Spodní mez"
 
 #: data/ui/exciter.glade:50
 msgid "Exciter"
-msgstr "Budič"
+msgstr "Zvukový budič"
 
 #: data/ui/exciter.glade:357 data/ui/maximizer.glade:159
 msgid "Ceiling"
@@ -1074,7 +1067,7 @@ msgstr "Průměr"
 
 #: data/ui/gate.glade:236
 msgid "Maximum"
-msgstr "Nejvýš"
+msgstr "Nejvýše"
 
 #: data/ui/gate.glade:667 data/ui/multiband_gate.glade:766
 #: data/ui/multiband_gate.glade:1175 data/ui/multiband_gate.glade:1585
